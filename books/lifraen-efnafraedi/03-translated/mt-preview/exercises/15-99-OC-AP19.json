@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP19",
+  "source_uid": "37767@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358682",
+      "stem_html": "<p>Pentalen er afar torsótt sameind sem hefur aðeins verið einangruð við hitastig fljótandi köfnunarefnis. Pentalen-tvíanjónin er hins vegar vel þekkt og nokkuð stöðug. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c1c7ca4458b14a3b76340a458be6e4f11e29d38/OChem_15_EC_014.jpg\" alt=\"Pentalene has two fused cyclopentadiene rings. Pentalene dianion structure is similar to pentalene, except that pentalene dianion is enclosed in square brackets with 2 minus charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

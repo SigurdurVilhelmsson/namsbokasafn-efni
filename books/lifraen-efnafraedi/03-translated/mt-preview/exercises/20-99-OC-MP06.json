@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-MP06",
+  "source_uid": "38106@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359151",
+      "stem_html": "<p>Það er hægt að breyta nítrílum beint í estra með Pinner-efnahvarfi, sem myndar fyrst imínóestersalt sem er einangrað og síðan meðhöndlað með vatni til að gefa loka myndefnið. Leggðu til hvarfgang fyrir Pinner-efnahvarfið og notaðu sveigðar örvar til að sýna flæði rafeinda í hverju skrefi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef52629d4d3f17f52f395ff889836ebf7a932ec8/OChem_20_EC_017.jpg\" alt=\"Conversion of benzonitrile to methyl benzoate. An imine ester intermediate is formed (reacting with hydrochloric acid in methanol) in which carbon is double-bonded to nitrogen, carrying a positive charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

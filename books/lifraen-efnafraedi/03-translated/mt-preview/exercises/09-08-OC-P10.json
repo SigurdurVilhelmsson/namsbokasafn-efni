@@ -1,0 +1,37 @@
+{
+  "nickname": "09-08-OC-P10",
+  "source_uid": "37199@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu endastæða alkínið og alkýlhalíðið sem hægt er að fá eftirfarandi myndefni úr. Ef tvær leiðir virðast mögulegar skaltu skrá báðar.",
+  "questions": [
+    {
+      "id": "353730",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce3f8fa25a6e55979a8babdc2b24c7dbd7be55d8/OChem_09_08_006a.jpg\" alt=\"A C6 chain with a triple bond on the C2 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-pentín + CH<sub>3</sub>I, eða própín + CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>I"
+        }
+      ]
+    },
+    {
+      "id": "353731",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45acae51bd99448ebe770a58ba85d65545899019/OChem_09_08_006b.jpg\" alt=\"A C5 chain with a triple bond on the C2 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-metýl-1-bútín + CH<sub>3</sub>CH<sub>2</sub>I"
+        }
+      ]
+    },
+    {
+      "id": "353732",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--342ce63a0f168dadf537f9f17cfab929f73146c1/OChem_09_08_006c.jpg\" alt=\"A cyclohexane ring connected to a  triple bond linked to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexýlasetýlen + CH<sub>3</sub>I"
+        }
+      ]
+    }
+  ]
+}

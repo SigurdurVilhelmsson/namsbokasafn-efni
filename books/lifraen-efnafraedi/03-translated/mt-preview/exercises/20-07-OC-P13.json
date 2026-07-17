@@ -1,0 +1,28 @@
+{
+  "nickname": "20-07-OC-P13",
+  "source_uid": "38093@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi karbónýl efnasambönd úr nítríl?",
+  "questions": [
+    {
+      "id": "464248",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66fdb97ad5044e7970bd4b5677cd5ac84ad24283/OChem_20_07_015a.jpg\" alt=\"The structure of pentan-3-one, a five-carbon chain with a carbonyl on C 3.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Própannítríl + CH<sub>3</sub>CH<sub>2</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "464249",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9qIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffc31859e2900236efad16a98e15d49fac79a849/OChem_20_07_015b.jpg\" alt=\"The structure of 1-(4-nitrophenyl)ethanone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Klórbensónítríl + CH<sub>3</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

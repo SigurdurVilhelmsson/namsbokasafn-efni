@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP31",
+  "source_uid": "37457@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352817",
+      "stem_html": "<p>4-Metýl-2-pentanón og 3-metýlpentanal eru hverfur. Útskýrðu hvernig þú gætir greint þau í sundur, bæði með massarófsgreiningu og með innrauðri litrófsgreiningu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8def01bedf47fe69fda9877e7e5719d130aae55f/OChem_12_EC_011.jpg\" alt=\"The structures of 4-methyl-2-pentanone and 3-methylpentanal.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

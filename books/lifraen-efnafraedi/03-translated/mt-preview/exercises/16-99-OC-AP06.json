@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP06",
+  "source_uid": "37838@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um helsta myndefnið/helstu myndefnin sem þú myndir fá úr súlfóneringu eftirfarandi efnasambanda:",
+  "questions": [
+    {
+      "id": "339524",
+      "stem_html": "Flúorbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339525",
+      "stem_html": "<i>m</i>-Brómfenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339526",
+      "stem_html": "<i>m</i>-Díklórbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339527",
+      "stem_html": "2,4-Díbrómfenól",
+      "collaborator_solutions": []
+    }
+  ]
+}

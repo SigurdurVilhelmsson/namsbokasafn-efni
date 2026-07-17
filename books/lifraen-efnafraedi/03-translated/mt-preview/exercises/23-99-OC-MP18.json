@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP18",
+  "source_uid": "38924@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359872",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir eftirfarandi basahvataða ísómerun:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc39f93ae78546eafb9167644eae88c124721c77/OChem_23_EC_031.jpg\" alt=\"The reaction shows isomerization of a multiple-ring fused compound with sodium ethoxide in ethanol, giving a product in which a cyclohexanone ring is fused between a cyclopentane and cyclobutane ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

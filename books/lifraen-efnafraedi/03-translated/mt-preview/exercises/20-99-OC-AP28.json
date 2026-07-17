@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP28",
+  "source_uid": "38138@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359205",
+      "stem_html": "<p>Sýndu hvernig þú gætir útbúið bólgueyðandi lyfið íbúprófen með ísóbútýlbenseni sem upphafsefni. Fleiri en eitt skref er nauðsynlegt.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb35c603714d71b96350d1be1cb3a79052c8a102/OChem_20_EC_030.jpg\" alt=\"Chemical structure of isobutylbenzene with arrows pointing toward ibuprofen (isobutyl benzene with substituent in para position: ethyl group with C O 2 H at ethyl C 1).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

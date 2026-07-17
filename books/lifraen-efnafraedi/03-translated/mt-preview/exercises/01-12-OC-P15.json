@@ -1,0 +1,28 @@
+{
+  "nickname": "01-12-OC-P15",
+  "source_uid": "37552@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hversu mörg vetni eru tengd hverju kolefni í eftirfarandi efnasamböndum og hver er sameindaformúla hvers efnis?",
+  "questions": [
+    {
+      "id": "357569",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f2c6d2ab1f0f2d6c2f5a818b3d33cb0dbd66026/OChem_01_12_006a.jpg\" alt=\"The skeletal structure of adrenaline.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a6b7f467f7b3dfd8ebb03286416d173779e81273/OChem_01_EC_210a.jpg\" alt=\"The skeletal structure of adrenaline. Numbers (0 H, 1 H, and 2H) are used to represent the number of hydrogens on each carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "357570",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6dfe1b3b70fdf1c07cac030a21eeffec4ce8760/OChem_01_12_006b.jpg\" alt=\"The skeletal structure of estrone which is a hormone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eeae91f22c5b8842cc70365e5daa7904cfaedbb6/OChem_01_EC_210b.jpg\" alt=\"The skeletal structure of estrone. Numbers (0 H, 1 H, 2 H, and 3 H) are used to represent the number of hydrogens on each carbon.\">"
+        }
+      ]
+    }
+  ]
+}

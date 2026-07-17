@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP02",
+  "source_uid": "38850@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346654",
+      "stem_html": "Fita getur verið annaðhvort handvirk eða ekki handvirk, allt eftir byggingu hennar. Teiknaðu byggingu handvirkrar fitu sem gefur 2 jafngildi af sterínsýru og 1 jafngildi af óleínsýru við vatnsrof. Teiknaðu byggingu óhandvirkrar fitu sem gefur sömu myndefni.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-AP08",
+  "source_uid": "38054@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú framkvæmt eftirfarandi sértækar umbreytingar? Annað af tveimur kerfunum krefst verndunarskrefs. (Mundu úr kafla 19.4 að aldehýð eru hvarfgjarnari en ketón gagnvart kjarnsækinni álagningu.)",
+  "questions": [
+    {
+      "id": "360746",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94e889f39f7e47f27c22bbb42f9d13fd794c5fe3/OChem_19_EC_046a.jpg\" alt=\"The reaction shows the conversion of 5-oxohexanal to 6-hydroxyhexan-2-one.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360747",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--375b2b54d975d2049fd93fa5a7e40dd540aac9f8/OChem_19_EC_046b.jpg\" alt=\"The reaction shows the conversion of 5-oxohexanal to 5-hydroxyhexanal.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

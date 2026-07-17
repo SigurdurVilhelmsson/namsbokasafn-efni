@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP04",
+  "source_uid": "37218@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357318",
+      "stem_html": "<p>Endastæð alkýn hvarfast við Br<sub>2</sub> og vatn og mynda brómketón. Til dæmis:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76b79b9415fd4425af50588059fa7a0b9828f2ea/OChem_09_EC_025.jpg\" alt=\"A phenyl alkyne reacts with bromine and water to form a phenyl bromo methyl ketone.\">\n<p>Leggið til hvarfgang fyrir efnahvarfið. Hvaða efnahvarfi alkena er ferlið hliðstætt?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

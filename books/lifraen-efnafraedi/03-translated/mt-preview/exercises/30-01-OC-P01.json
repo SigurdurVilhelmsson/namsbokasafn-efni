@@ -1,0 +1,19 @@
+{
+  "nickname": "30-01-OC-P01",
+  "source_uid": "39351@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "350044",
+      "stem_html": "Skoðaðu mynd 30.2 og segðu til um hvaða sameindasvigrúm er HOMO og hvaða er LUMO fyrir bæði grunnástand og örvað ástand etýlens og 1,3-bútadíens.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlen: <i>ψ</i><sub>1</sub> er HOMO og <i>ψ</i><sub>2</sub>* er LUMO í grunnástandi; <i>ψ</i><sub>2</sub>* er HOMO og það er ekkert LUMO í örvuðu ástandi. 1,3-bútadíen: <i>ψ</i><sub>2</sub> er HOMO og <i>ψ</i><sub>3</sub>* er LUMO í grunnástandi; <i>ψ</i><sub>3</sub>* er HOMO og <i>ψ</i><sub>4</sub>* er LUMO í örvuðu ástandi."
+        }
+      ]
+    }
+  ]
+}

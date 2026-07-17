@@ -1,0 +1,19 @@
+{
+  "nickname": "31-03-OC-P07",
+  "source_uid": "39402@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358113",
+      "stem_html": "Geislun pólý(1,3-bútadíens), fylgt eftir með álagningu stýrens, gefur ágrædda samfjölliðu sem er notuð til að búa til gúmmísóla fyrir skó. Teiknið byggingu dæmigerðs hluta þessarar stýren-bútadíen ágræddu samfjölliðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a5fabe115907044e5c48459e36062a628fd097e0/OChem_31_EC_203.jpg\" alt=\"The figure shows the structure of a polymer with polybutadiene chain and polystyrene chain. A curved line is present at one end of styrene and both ends of polybutadiene.\">"
+        }
+      ]
+    }
+  ]
+}

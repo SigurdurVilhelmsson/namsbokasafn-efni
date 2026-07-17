@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-AP10",
+  "source_uid": "39424@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355042",
+      "stem_html": "<p>Pólý(vínýlbútýral) er notað sem plastlagskipting við framleiðslu á öryggisgleri í framrúður bifreiða. Hvernig myndir þú mynda þessa fjölliðu?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1bbe1762b131056f396250a3cd2672c39c919542/OChem_31_EC_010.jpg\" alt=\"The structure of poly(vinyl butyral). It comprises eleven-carbon chain with oxygen connected at C 3, C 5, C 7, and C 9. The oxygen is linked to the propyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P22",
+  "source_uid": "39060@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348042",
+      "stem_html": "Hvaða aldópentósi myndi gefa efnablöndu af <small style=\"font-variant: small-caps\">L</small>-gúlósa og <small style=\"font-variant: small-caps\">L</small>-ídósa við Kiliani–Fischer keðjulengingu?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">L</small>-Xýlósi"
+        }
+      ]
+    }
+  ]
+}

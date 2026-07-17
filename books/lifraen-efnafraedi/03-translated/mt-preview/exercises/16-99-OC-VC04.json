@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-VC04",
+  "source_uid": "37814@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358958",
+      "stem_html": "<p>Ekki er hægt að smíða eftirfarandi efnasamband með þeim aðferðum sem fjallað er um í þessum kafla. Hvers vegna ekki?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21f99fa66a816a11efd21b4a4028fa33ca6f9460/OChem_16_EC_020.jpg\" alt=\"The ball-and-stick model has a toluene ring. C 3 is bonded to an amino group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

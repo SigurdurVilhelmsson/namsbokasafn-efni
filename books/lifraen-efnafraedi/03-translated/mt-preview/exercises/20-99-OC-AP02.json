@@ -1,0 +1,50 @@
+{
+  "nickname": "20-99-OC-AP02",
+  "source_uid": "38112@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "342045",
+      "stem_html": "<i>cis</i>-1,2-Sýklóhexandíkarboxýlsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342046",
+      "stem_html": "Heptandísýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342047",
+      "stem_html": "2-Hexen-4-ýnsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342048",
+      "stem_html": "4-Etýl-2-própýloktansýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342049",
+      "stem_html": "3-Klórþalsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342050",
+      "stem_html": "Trífenýlediksýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342051",
+      "stem_html": "2-Sýklóbútenkarbónítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342052",
+      "stem_html": "<i>m</i>-Bensóýlbensónítríl",
+      "collaborator_solutions": []
+    }
+  ]
+}

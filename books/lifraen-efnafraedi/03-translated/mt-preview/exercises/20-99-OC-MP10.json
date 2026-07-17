@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-MP10",
+  "source_uid": "38110@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359161",
+      "stem_html": "<p>Í Ritter-efnahvarfinu hvarfast alkeni við nítríl í nærveru sterkrar vatnslausnar af brennisteinssýru til að gefa amíð. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ab6d6813ccf0473c4e8d5746a73ba181d4184a6/OChem_20_EC_021.jpg\" alt=\"Conversion of 1-methylcyclohex-1-ene to N-(1-methylcyclohexyl)acetamide. The reagents used are aqueous sulfuric acid and acetonitrile.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

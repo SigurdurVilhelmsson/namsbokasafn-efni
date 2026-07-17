@@ -1,0 +1,19 @@
+{
+  "nickname": "31-05-OC-P10",
+  "source_uid": "39405@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358119",
+      "stem_html": "Skoðið byggingu Vestenamer og Norsorex og sýnið hvernig þau gætu verið búin til með olefín metatesis fjölliðun.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Vestenamer: ADMET fjölliðun 1,9-dekadíens eða ROMP sýklóoktens; Norsorex: ROMP norbornens.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9774ad5d73488d4c13c437cb60608be4ac8f7b9/OChem_31_EC_206.jpg\" alt=\"The structure of norbornene comprising a cyclohexene ring and a bridged methylene group.\">"
+        }
+      ]
+    }
+  ]
+}

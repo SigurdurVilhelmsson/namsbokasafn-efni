@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP33",
+  "source_uid": "38879@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358249",
+      "stem_html": "<p>Fitusýrur eru myndaðar í fjölþrepa ferli sem byrjar með asetati. Fyrsta skrefið er efnahvarf milli próteinbundinna asetýl- og malónýleininga sem gefur próteinbundna 3-ketóbútýrýleiningu. Sýndu hvarfganginn og segðu til um hvers konar efnahvarf er að eiga sér stað.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d8d62910588bb1f5a8ac89acfbe05407dcfd189/OChem_27_EC_022.jpg\" alt=\"Malonyl protein reacts with an acetyl protein to form an intermediate. This reacts to form 3-ketobutyryl protein and carbon dioxide.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "07-04-OC-P09",
+  "source_uid": "36619@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347095",
+      "stem_html": "<p>Hver af eftirfarandi efnasamböndum geta verið til sem pör af cis-trans hverfum? Teiknaðu hvert par og tilgreindu rúmfræði hverrar hverfu.</p>\n<p><b>(a)</b> CH<sub>3</sub>CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub> <b>(b)</b> (CH<sub>3</sub>)<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHCH<sub>3</sub> <b>(c)</b> CH<sub>3</sub>CH<sub>2</sub>CH<span data-math=\"\\text{=}\"></span>CHCH<sub>3</sub> <b>(d)</b> (CH<sub>3</sub>)<sub>2</sub>C<span data-math=\"\\text{=}\"></span>C(CH<sub>3</sub>)CH<sub>2</sub>CH<sub>3</sub><br><b>(e)</b> ClCH<span data-math=\"\\text{=}\"></span>CHCl <b>(f)</b> BrCH<span data-math=\"\\text{=}\"></span>CHCl</p> \n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnasamböndin <b>(c)</b>, <b>(e)</b> og <b>(f)</b> hafa cis-trans hverfur."
+        }
+      ]
+    }
+  ]
+}

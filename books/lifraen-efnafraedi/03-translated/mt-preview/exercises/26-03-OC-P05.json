@@ -1,0 +1,28 @@
+{
+  "nickname": "26-03-OC-P05",
+  "source_uid": "39216@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu hvernig þú gætir búið til eftirfarandi <i>α</i>-amínósýrur úr viðeigandi karboxýlsýrum:",
+  "questions": [
+    {
+      "id": "348928",
+      "stem_html": "Fenýlalanín",
+      "collaborator_solutions": [
+        {
+          "content_html": "Byrjaðu með 3-fenýlprópansýru: 1. Br<sub>2</sub>, PBr<sub>3</sub>; 2. NH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "348929",
+      "stem_html": "Valín",
+      "collaborator_solutions": [
+        {
+          "content_html": "Byrjaðu með 3-metýlbútansýru: 1. Br<sub>2</sub>, PBr<sub>3</sub>; 2. NH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

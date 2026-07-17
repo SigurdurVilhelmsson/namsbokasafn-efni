@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-MP02",
+  "source_uid": "38720@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spyrðu fyrir um myndefni(n) og sýndu hvarfgang fyrir hvert eftirfarandi efnahvarfa.",
+  "questions": [
+    {
+      "id": "361178",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81a171177d9388d048bd799b93b329cef0526c4d/OChem_18_EC_020a.jpg\" alt=\"Tert-butyl ethyl ether reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361179",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--adb6d947add139cd5e0b0c0ed6e2a0cad87c6a9b/OChem_18_EC_020b.jpg\" alt=\"Tert-butoxybenzene reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

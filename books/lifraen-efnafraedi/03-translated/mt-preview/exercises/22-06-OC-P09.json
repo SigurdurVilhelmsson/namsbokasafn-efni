@@ -1,0 +1,19 @@
+{
+  "nickname": "22-06-OC-P09",
+  "source_uid": "38777@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346351",
+      "stem_html": "Hvers vegna heldur þú að halógenun ketóna í súrum miðli sé kölluð sýru-<i>hvötuð</i>, en halógenun í basískum miðli sé basa-<i>stuðluð</i>? Með öðrum orðum, hvers vegna er þörf á fullu jafngildi basa fyrir halógenun?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýra endurmyndast, en basi er notaður í jafnmiklu magni."
+        }
+      ]
+    }
+  ]
+}

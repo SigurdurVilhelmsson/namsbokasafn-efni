@@ -1,0 +1,19 @@
+{
+  "nickname": "13-07-OC-P14",
+  "source_uid": "37480@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358297",
+      "stem_html": "<p>Hversu mörgum gleypnum myndir þú búast við að (<i>S</i>)-malat, milliefni í efnaskiptum kolvetna, hefði í <sup>1</sup>H NMR-rófi sínu? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e93e4022a7243e138fc3b21408636f33295dbba5/OChem_13_07_006.jpg\" alt=\"The ball-and-stick model of (S)-Malate shows a 4-carbon chain. C 1 and C 4 are carboxyl groups. C 2 is bonded to hydroxyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4"
+        }
+      ]
+    }
+  ]
+}

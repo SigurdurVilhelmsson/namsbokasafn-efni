@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-AP27",
+  "source_uid": "37928@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Byrjaðu á testósteróni (dæmi 17-62), hvernig myndir þú búa til eftirfarandi efni?",
+  "questions": [
+    {
+      "id": "359552",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9256d4b32b8275a01160eb740134bda22db54d90/OChem_17_EC_046a.jpg\" alt=\"Cyclopentanone fused to cyclohexane with wedged methyl, dashed hydrogen. This is connected to cyclohexane with wedged hydrogen and methyl, dashed hydrogen. This is bonded to cyclohexanone with alkene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359553",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f50cd88b79a4c5674a2827e367f9ee0ad1d639e0/OChem_17_EC_046b.jpg\" alt=\"Cyclopentane with wedged hydroxyl, dashed hydrogen fused to cyclohexane with wedged methyl, dashed hydrogen. This is connected to cyclohexane with wedged hydrogen and methyl, dashed hydrogen, bonded to cyclohexene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359554",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7cfaa3a93e2a174414786eb1a526dd7ba01a8663/OChem_17_EC_046c.jpg\" alt=\"Cyclopentanone fused to cyclohexane with wedged methyl, dashed hydrogen. This is connected to cyclohexane with wedged hydrogen and methyl, dashed hydrogen. This is bonded to cyclohexanone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359555",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0eb6baf57664a1499a6c28900099d4b1a89b86a7/OChem_17_EC_046d.jpg\" alt=\"Cyclopentane with wedged hydroxyl, dashed hydrogen fused to cyclohexane with wedged methyl, dashed hydrogen. This is connected to cyclohexane with wedged hydrogen and methyl, dashed hydrogen, bonded to cyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

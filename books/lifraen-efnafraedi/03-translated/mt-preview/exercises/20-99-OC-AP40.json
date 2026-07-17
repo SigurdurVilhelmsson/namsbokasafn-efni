@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP40",
+  "source_uid": "38150@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359238",
+      "stem_html": "<p>Karboxýlsýrur með annan karbónýlhóp í tveggja frumeinda fjarlægð losa CO<sub>2</sub> <i>(afkarboxýlerast)</i> í gegnum enólatjón sem milliefni þegar þær eru meðhöndlaðar með basa. Skrifaðu hvarfgang þessa afkarboxýlerunarhvarfs með því að nota sveigðar örvar til að sýna flæði rafeinda í hverju skrefi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b4cb91f1eefde88bd2fad48ac0419c9137c4426/OChem_20_EC_041.jpg\" alt=\"Conversion of 3-oxobutanoic acid on reaction with aqueous sodium hydroxide to a three-carbon enolate ion and carbon dioxide. Further reaction with water produces propan-2-one.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

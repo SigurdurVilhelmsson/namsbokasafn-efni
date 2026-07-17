@@ -1,0 +1,19 @@
+{
+  "nickname": "27-02-OC-P03",
+  "source_uid": "38835@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347195",
+      "stem_html": "Teiknaðu byggingu magnesíumóleats, sem er hluti af baðkarssköm.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<span data-math=\"[{\\rm CH}_{3}({\\rm CH}_{2})_{7}{\\rm CH}\\text{═}{\\rm CH}({\\rm CH}_{2})_{7}{\\rm CO}_{2}\\!^{-}]{2}\\ {\\rm Mg}^{2+}\"></span>"
+        }
+      ]
+    }
+  ]
+}

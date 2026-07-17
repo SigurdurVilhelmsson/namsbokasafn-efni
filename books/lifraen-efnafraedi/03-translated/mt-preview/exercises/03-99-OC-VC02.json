@@ -1,0 +1,30 @@
+{
+  "nickname": "03-99-OC-VC02",
+  "source_uid": "36436@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi alkana og breyttu hverri teikningu í beinagrindarmynd.",
+  "questions": [
+    {
+      "id": "351247",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1d4bcafcd0b4c92290fd5ff61eff71272ae1d2e2/OChem_03_EC_002a.jpg\" alt=\"A ball and stick model of 3,3,5-trimethylheptane\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351248",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45f9c7ef0624f62e286cfcc62e2f05baf55335ff/OChem_03_EC_002b.jpg\" alt=\"A ball and stick model of 2-methyl-3-ethylpentane\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351249",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9fb84aede30498bcfe587a19205185cc1479f4aa/OChem_03_EC_002c.jpg\" alt=\"A ball and stick model of 2,4,4-trimethylpentane\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351250",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a1ae7a84866a143bc367cd551e0e6a8df60e32c0/OChem_03_EC_002d.jpg\" alt=\"A ball and stick model of 2-methyl-4-isopropylheptane\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

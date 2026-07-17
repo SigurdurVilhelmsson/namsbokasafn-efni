@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP10",
+  "source_uid": "37824@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358968",
+      "stem_html": "<p>Hexaklórfen, efni sem notað er við framleiðslu á sýkladrepandi sápum, er búið til með efnahvarfi 2,4,5-tríklórfenóls við formaldehýð í nærveru óblandaðrar brennisteinssýru. Settu fram hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5d6173f8ec1cb15df99078baa922975ae0adbd3/OChem_16_EC_025.jpg\" alt=\"Benzene bonded to three chlorine atoms and a hydroxyl group reacts with formaldehyde in the presence of sulfuric acid to form hexachlorophene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

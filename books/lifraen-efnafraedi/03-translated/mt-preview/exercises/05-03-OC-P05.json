@@ -1,0 +1,19 @@
+{
+  "nickname": "05-03-OC-P05",
+  "source_uid": "36497@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "329153",
+      "stem_html": "Er kókaín (Dæmi 5.2) hægrisnúnings eða vinstri snúnings?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Vinstri snúnings"
+        }
+      ]
+    }
+  ]
+}

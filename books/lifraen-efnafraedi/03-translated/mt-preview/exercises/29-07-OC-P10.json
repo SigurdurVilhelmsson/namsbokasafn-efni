@@ -1,0 +1,19 @@
+{
+  "nickname": "29-07-OC-P10",
+  "source_uid": "39304@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349278",
+      "stem_html": "Hvaða efni í sítrónusýruhringnum eru þríkarboxýlsýrur og gefa þannig hringnum annað nafn sitt?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sítrat og ísósítrat"
+        }
+      ]
+    }
+  ]
+}

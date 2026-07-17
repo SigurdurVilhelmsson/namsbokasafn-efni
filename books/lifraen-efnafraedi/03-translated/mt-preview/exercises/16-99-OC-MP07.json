@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP07",
+  "source_uid": "37821@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358962",
+      "stem_html": "<p>Útskýrðu með vokmyndum milliefnanna hvers vegna brómun bifenýls á sér stað í ortó- og para-stöðum frekar en í meta-stöðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2abfde70afbb60ebfe9f67e719e78e20caa2d26f/OChem_16_EC_022.jpg\" alt=\"Biphenyl has a benzene ring bonded to another benzene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

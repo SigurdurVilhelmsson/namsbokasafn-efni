@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-EDRM10",
+  "source_uid": "37320@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu heildarhvarfganginn fyrir hvert af eftirfarandi skautuðu efnahvörfum.",
+  "questions": [
+    {
+      "id": "357222",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a3028885f89b8d85df3615b4b91634976591e5b/OChem_06_EC_010a.jpg\" alt=\"2-methylbut-1-ene reacts with hydrogen chloride to form 2-chloro-2-methylbutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357223",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7dd0e0d4f01128adc60241d5c71c8d9bba972307/OChem_06_EC_010b.jpg\" alt=\"Styrene reacts with hydrogen bromide to form 1-bromoethylbenzene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357224",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0836547bdf9dbc4d493e85db94c834cfab981e1b/OChem_06_EC_010c.jpg\" alt=\"2-methylbut-2-ene reacts with hydrogen chloride to form 2-chloro-2-methylbutane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

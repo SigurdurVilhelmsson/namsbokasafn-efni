@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-AP14",
+  "source_uid": "38747@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361277",
+      "stem_html": "<p>Epoxíð eru afoxuð með meðhöndlun með litíumálhýdríði og mynda alkóhól. Leggðu til hvarfgang fyrir þetta efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e918894c85d1b67d338bde9f5dd005db5fe9ad3/OChem_18_EC_039.jpg\" alt=\"Cyclohexene oxide reacts with lithium aluminum hydride in ether, then hydronium, to form cyclohexanol. \">",
+      "collaborator_solutions": []
+    }
+  ]
+}

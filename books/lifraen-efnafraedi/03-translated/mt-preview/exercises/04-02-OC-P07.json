@@ -1,0 +1,28 @@
+{
+  "nickname": "04-02-OC-P07",
+  "source_uid": "36478@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi efni, þar með talið <i>cis</i>- eða <i>trans</i>- forskeytið (rauðbrúnt = Br):",
+  "questions": [
+    {
+      "id": "351079",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4673a01633f3b8ee671e0bd13a63c7ea07be1a37/OChem_04_02_008a.jpg\" alt=\"The ball and stick model of cis-1,2-dimethylcyclopentane,in which C1 and C2 are bonded to methyl groups. Black and gray spheres represent carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-1,2-Dímetýlsýklópentan"
+        }
+      ]
+    },
+    {
+      "id": "351080",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca5431be4fca0b6456e8638283261c85d9f420a6/OChem_04_02_008b.jpg\" alt=\"The ball and stick model of cis-1-bromo-3-methylcyclobutane. C1 and C3 are bonded to bromine atom and methyl group, respectively. Black, red, and gray spheres represent carbon, bromine, and hydrogen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-1-Bróm-3-metýlsýklóbútan"
+        }
+      ]
+    }
+  ]
+}

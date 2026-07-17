@@ -1,0 +1,35 @@
+{
+  "nickname": "09-99-OC-AP08",
+  "source_uid": "37222@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefni úr efnahvarfi 2-hexýns við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "333070",
+      "stem_html": "2 jafngildi Br<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333071",
+      "stem_html": "1 jafngildi HBr",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333072",
+      "stem_html": "Umframmagn HBr",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333073",
+      "stem_html": "Li í NH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333074",
+      "stem_html": "H<sub>2</sub>O, H<sub>2</sub>SO<sub>4</sub>, HgSO<sub>4</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

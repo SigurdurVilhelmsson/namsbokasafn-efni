@@ -1,0 +1,19 @@
+{
+  "nickname": "23-01-OC-P02",
+  "source_uid": "38882@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348982",
+      "stem_html": "Notaðu sveigðar örvar til að sýna rafeindaflæðið í hverju skrefi og sýndu hvernig basa-hvatað and-aldól-efnahvarf 4-hýdroxý-4-metýl-2-pentanóns á sér stað til að gefa 2 jafngildi af asetóni.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Andstæða efnahvarfið er nákvæmlega öfugt við framvirka efnahvarfið sem sýnt er á mynd 23.2."
+        }
+      ]
+    }
+  ]
+}

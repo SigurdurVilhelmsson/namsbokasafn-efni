@@ -1,0 +1,30 @@
+{
+  "nickname": "20-99-OC-VC01",
+  "source_uid": "38097@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi karboxýlsýrur (rauðbrúnt = Br):",
+  "questions": [
+    {
+      "id": "359117",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1df6287677e8d725ba0ba0e19ce1b95e2419d2ba/OChem_20_EC_008a.jpg\" alt=\"A ball-and-stick model of a benzene ring with a carboxyl group, a bromine meta to the carboxyl, and a methoxy group para to the carboxyl.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359118",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--604abc9a0714ef5954cf9838445fd4a8eb511548/OChem_20_EC_008b.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with a carboxyl end. There is a double bond on C 2 and a methyl on C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359119",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c3a1944ff00a7aa253f62e9885622e3897c5acf/OChem_20_EC_008c.jpg\" alt=\"The ball-and-stick model represents a cyclopentadiene ring with a carboxylic acid group attached to C 1. The double bonds are located on the first and third carbon atoms.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359120",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9fe4bfcdf326934ffad38c11a50a5306fd6184f/OChem_20_EC_008d.jpg\" alt=\"A ball-and-stick model of a three-carbon chain with a carboxyl end. There is a methyl on C 2 and a cyclopentane on C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nickname": "18-99-OC-AP03",
+  "source_uid": "38736@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi etera?",
+  "questions": [
+    {
+      "id": "361242",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00ae1ddba984330ec7cc48d92d4739236f6496ae/OChem_18_EC_034a.jpg\" alt=\"A central oxygen connected to a benzene ring and an ethyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361243",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2424db06e36bc5f90f4017c5c44bb45ef4164f8/OChem_18_EC_034b.jpg\" alt=\"A central oxygen connected to a benzene ring and an isopropyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361244",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5bc093d0d219a166363e596510111d522a50cff7/OChem_18_EC_034c.jpg\" alt=\"An oxirane drawn with oxygen on top, wedge hydrogen and dash methyl on left, and wedge methyl and dash hydrogen on right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361245",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f483cb7a285350a8d5d4d4f242eecca6a234d3b9/OChem_18_EC_034d.jpg\" alt=\"A central oxygen connected to a cyclopentane ring and a t-butyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361246",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6d5646865202a621b31da25b03e6fe8bceb5660/OChem_18_EC_034e.jpg\" alt=\"A cyclohexane with a wedge methoxy and dash hydrogen on one carbon, and on the adjacent (clockwise) carbon, a wedge hydrogen and dash methoxy.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361247",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2cbaeac0866031140045821c23f0d2b850739343/OChem_18_EC_034f.jpg\" alt=\"A cyclohexane with a wedge methoxy and dash hydrogen on one carbon, and on the adjacent (clockwise) carbon, a wedge deuterium and dash hydrogen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

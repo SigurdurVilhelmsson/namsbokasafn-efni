@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-EDRM11",
+  "source_uid": "37321@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu bognar örvar til að sýna flæði rafeinda og teiknaðu kolefnisstakeindina sem myndast þegar halógenstakeindirnar hér að neðan leggjast á samsvarandi alken.",
+  "questions": [
+    {
+      "id": "353310",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c94c83d07d35a82745d734d600284e354e2cac12/OChem_06_EC_011a.jpg\" alt=\"A chlorine radical reacts with but-2-ene to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353311",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d48b9862888a7d362ae08484b97703f2bf6e5ccb/OChem_06_EC_011b.jpg\" alt=\"A bromine radical reacts with cyclohexene to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353312",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46cc3bb03450a106899755b8b71dce8fd52c4bb1/OChem_06_EC_011c.jpg\" alt=\"Chlorine radical reacts with a five-membered ring made of four carbon and one oxygen, with a double bond at C2 to form unknown product(s). \">",
+      "collaborator_solutions": []
+    }
+  ]
+}

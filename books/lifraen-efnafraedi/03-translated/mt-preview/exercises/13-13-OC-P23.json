@@ -1,0 +1,19 @@
+{
+  "nickname": "13-13-OC-P23",
+  "source_uid": "37489@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342810",
+      "stem_html": "Við sáum í <b>kafla 9.3</b> að álagning HBr við endastætt alkín leiðir til Markovnikov-álagningarmyndefnis, þar sem Br tengist við kolefnið með fleiri hliðarhópum. Hvernig gætir þú notað <sup>13</sup>C NMR til að bera kennsl á myndefnið sem myndast við álagningu 1 jafngildis af HBr við 1-hexín?",
+      "collaborator_solutions": [
+        {
+          "content_html": "DEPT-90-róf myndi sýna tvö gleypnisvið fyrir myndefnið sem ekki fylgir Markovnikov-reglunni (RCH<span data-math=\"\\text{=}\"></span>CHBr) en engin gleypnisvið fyrir myndefnið sem fylgir Markovnikov-reglunni (RBrC<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>)."
+        }
+      ]
+    }
+  ]
+}

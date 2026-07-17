@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP34",
+  "source_uid": "36688@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Reiknaðu ómettunarstuðulinn í hverri eftirfarandi formúlu:",
+  "questions": [
+    {
+      "id": "330404",
+      "stem_html": "Kólesteról, C<sub>27</sub>H<sub>46</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330405",
+      "stem_html": "DDT, C<sub>14</sub>H<sub>9</sub>Cl<sub>5</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330406",
+      "stem_html": "Prostaglandín E<sub>1</sub>, C<sub>20</sub>H<sub>34</sub>O<sub>5</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330407",
+      "stem_html": "Koffín, C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330408",
+      "stem_html": "Kortisón, C<sub>21</sub>H<sub>28</sub>O<sub>5</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330409",
+      "stem_html": "Atrópín, C<sub>17</sub>H<sub>23</sub>NO<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

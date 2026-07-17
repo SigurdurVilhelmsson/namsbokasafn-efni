@@ -1,0 +1,19 @@
+{
+  "nickname": "02-08-OC-P13",
+  "source_uid": "36125@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "323620",
+      "stem_html": "Amíðjón, H<sub>2</sub>N<sup>–</sup>, er mun sterkari basi en hýdroxíðjón, HO<sup>–</sup>. Hvor er sterkari sýra, NH<sub>3</sub> eða H<sub>2</sub>O? Skýrðu svarið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Vatn er sterkari sýra."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "26-99-OC-AP17",
+  "source_uid": "39256@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingu PTH-afleiðunnar sem þú myndir fá með Edman-niðurbroti á eftirfarandi peptíðum:",
+  "questions": [
+    {
+      "id": "348889",
+      "stem_html": "I-L-P-F",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348890",
+      "stem_html": "D-T-S-G-A",
+      "collaborator_solutions": []
+    }
+  ]
+}

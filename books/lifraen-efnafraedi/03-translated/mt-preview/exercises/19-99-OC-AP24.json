@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP24",
+  "source_uid": "38070@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360809",
+      "stem_html": "<p>6-metýl-5-hepten-2-ón er innihaldsefni í sítrónugrasolíu. Hvernig gætuð þið smíðað þetta efni úr metýl 4-oxópentanóati?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59d8ed3057f0574304d67777d5b1666a64dbef3a/OChem_19_EC_058.jpg\" alt=\"Structure of methyl 4-oxopentanoate, a five-carbon methyl ester with a ketone at C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

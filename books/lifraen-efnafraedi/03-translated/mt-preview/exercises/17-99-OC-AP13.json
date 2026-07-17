@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-AP13",
+  "source_uid": "37914@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efni úr sýklópentanóli: Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "340821",
+      "stem_html": "Sýklópentanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340822",
+      "stem_html": "Sýklópenten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340823",
+      "stem_html": "1-Metýlsýklópentanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340824",
+      "stem_html": "<i>trans</i>-2-Metýlsýklópentanól",
+      "collaborator_solutions": []
+    }
+  ]
+}

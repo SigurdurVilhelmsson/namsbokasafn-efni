@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP34",
+  "source_uid": "39273@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359647",
+      "stem_html": "<p>Fyrsta skrefið í líffræðilegu niðurbroti lýsíns er afoxandi amínering með <i>α</i>-ketóglútarati til að gefa sakkarópín. Nikótínamíð adenín dínúkleótíð fosfat (NADPH), skyldmenni NADH, er afoxarinn. Sýndu hvarfganginn.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dedae959ce3890e71d025ccf36de6af967bfe7e9/OChem_26_EC_022.jpg\" alt=\"L-Lysine reacts with alpha-ketoglutarate and nicotinamide adenine dinucleotide phosphate hydrogen to form saccharopine and nicotinamide adenine dinucleotide phosphate cation.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

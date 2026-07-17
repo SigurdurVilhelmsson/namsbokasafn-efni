@@ -1,0 +1,19 @@
+{
+  "nickname": "20-04-OC-P08",
+  "source_uid": "38088@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341946",
+      "stem_html": "p<i>K</i><sub>a</sub> af <i>p</i>-sýklóprópýlbensósýru er 4,45. Er líklegt að sýklóprópýlbensen sé hvarfgjarnara eða minna hvarfgjarnt en bensen gagnvart rafsækinni brómun? Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hvarfgjarnara"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP12",
+  "source_uid": "37570@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu myndir af eftirfarandi sameindum og sýndu rafeindapör:",
+  "questions": [
+    {
+      "id": "338511",
+      "stem_html": "Akrylonítríl, C<sub>3</sub>H<sub>3</sub>N, sem inniheldur kolefnis-kolefnis-tvítengi og kolefnis-nitur-þrítengi",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338512",
+      "stem_html": "Etýlmetýleter, C<sub>3</sub>H<sub>8</sub>O, sem inniheldur súrefnisfrumeind tengda tveimur kolefnum",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338513",
+      "stem_html": "Bútan, C<sub>4</sub>H<sub>10</sub>, sem inniheldur keðju fjögurra kolefnisfrumeinda",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338514",
+      "stem_html": "Sýklóhexen, C<sub>6</sub>H<sub>10</sub>, sem inniheldur hring sex kolefnisfrumeinda og eitt kolefnis-kolefnis tvítengi",
+      "collaborator_solutions": []
+    }
+  ]
+}

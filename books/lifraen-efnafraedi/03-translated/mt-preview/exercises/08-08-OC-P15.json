@@ -1,0 +1,28 @@
+{
+  "nickname": "08-08-OC-P15",
+  "source_uid": "37099@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi 1-metýlsýklóhexens við eftirfarandi hvarfefni?",
+  "questions": [
+    {
+      "id": "332641",
+      "stem_html": "Súr vatnslausn KMnO<sub>4</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>COCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CO<sub>2</sub>H"
+        }
+      ]
+    },
+    {
+      "id": "332642",
+      "stem_html": "O<sub>3</sub>, síðan Zn, CH<sub>3</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>COCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CHO"
+        }
+      ]
+    }
+  ]
+}

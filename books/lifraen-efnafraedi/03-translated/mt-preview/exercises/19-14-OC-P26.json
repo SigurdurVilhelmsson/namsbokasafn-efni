@@ -1,0 +1,19 @@
+{
+  "nickname": "19-14-OC-P26",
+  "source_uid": "38020@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360650",
+      "stem_html": "<p>Lýstu áberandi IR-gleypnum og massarófstoppum sem þú myndir búast við fyrir eftirfarandi efnasamband:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02ce9ce4dbf0c34329d0e25c73732bd957367826/OChem_19_14_007.jpg\" alt=\"A ball-and-stick model of cyclopentene with carbonyl on C 1. C 2 is linked to a methylene further connected to a C H. This is linked to two methyl groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "IR: 1750 cm<sup>−1</sup>; MS: 140, 84"
+        }
+      ]
+    }
+  ]
+}

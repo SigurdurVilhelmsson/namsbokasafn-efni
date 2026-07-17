@@ -1,0 +1,37 @@
+{
+  "nickname": "24-04-OC-P06",
+  "source_uid": "38959@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Án þess að líta í töflu 24.2, raðaðu eftirfarandi efnasamböndum í röð eftir vaxandi basastigi.",
+  "questions": [
+    {
+      "id": "347505",
+      "stem_html": "<i>p</i>-Nítróanilín, <i>p</i>-amínóbensaldehýð, <i>p</i>-brómanilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Nítróanilín < <i>p</i>-Amínóbensaldehýð < <i>p</i>-Brómanilín"
+        }
+      ]
+    },
+    {
+      "id": "347506",
+      "stem_html": "<i>p</i>-Klóranilín, <i>p</i>-amínóasetófenón, <i>p</i>-metýlanilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Amínóasetófenón < <i>p</i>-klóranilín < <i>p</i>-metýlanilín"
+        }
+      ]
+    },
+    {
+      "id": "347507",
+      "stem_html": "<i>p</i>-(Tríflúormetýl)anilín, <i>p</i>-metýlanilín, <i>p</i>-(flúormetýl)anilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-(Tríflúormetýl)anilín < <i>p</i>-(flúormetýl)anilín < <i>p</i>-metýlanilín"
+        }
+      ]
+    }
+  ]
+}

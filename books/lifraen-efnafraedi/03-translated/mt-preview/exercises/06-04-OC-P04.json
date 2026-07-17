@@ -1,0 +1,46 @@
+{
+  "nickname": "06-04-OC-P04",
+  "source_uid": "37295@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hverjar af eftirfarandi efnaeindum eru líklegar til að vera kjarnsæknar og hverjar rafsæknar? Hverjar gætu verið hvort tveggja?",
+  "questions": [
+    {
+      "id": "374659",
+      "stem_html": "CH<sub>3</sub>Cl",
+      "collaborator_solutions": [
+        {
+          "content_html": "Kolefni er rafsækið."
+        }
+      ]
+    },
+    {
+      "id": "374660",
+      "stem_html": "CH<sub>3</sub>S<sup>–</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Brennisteinn er kjarnsækinn."
+        }
+      ]
+    },
+    {
+      "id": "374661",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4a2d9b3e7e36fbb00046c21736594c8c58969eb/OChem_06_04_007c.jpg\" alt=\"The figure shows a five-membered ring with nitrogens at positions 1 and 3, double bonds at N1 and C4, and a methyl group at N3.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Nituratómin eru kjarnsækin (af ástæðum sem verða útskýrðar í 15. kafla)."
+        }
+      ]
+    },
+    {
+      "id": "374662",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a550541382556daefaab6a674eb3c516b187754/OChem_06_04_007d.jpg\" alt=\"The chemical structure of ethanal.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Súrefni er kjarnsækið; kolefni er rafsækið."
+        }
+      ]
+    }
+  ]
+}

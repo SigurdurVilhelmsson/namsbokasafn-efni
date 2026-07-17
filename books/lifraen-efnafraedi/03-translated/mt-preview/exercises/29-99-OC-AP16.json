@@ -1,0 +1,25 @@
+{
+  "nickname": "29-99-OC-AP16",
+  "source_uid": "39341@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver er bygging <i>α</i>-ketósýrunnar sem myndast við transamínun hverrar af eftirfarandi amínósýra?",
+  "questions": [
+    {
+      "id": "349380",
+      "stem_html": "Þreónín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349381",
+      "stem_html": "Fenýlalanín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349382",
+      "stem_html": "Asparagín",
+      "collaborator_solutions": []
+    }
+  ]
+}

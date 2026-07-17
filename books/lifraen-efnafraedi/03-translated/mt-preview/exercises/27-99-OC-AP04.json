@@ -1,0 +1,40 @@
+{
+  "nickname": "27-99-OC-AP04",
+  "source_uid": "38852@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu myndefnin sem þú myndir búast við að fá úr efnahvarfi glýserýltríóleats við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "346664",
+      "stem_html": "Umframmagn af Br<sub>2</sub> í CH<sub>2</sub>Cl<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346665",
+      "stem_html": "H<sub>2</sub>/Pd",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346666",
+      "stem_html": "NaOH/H<sub>2</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346667",
+      "stem_html": "O<sub>3</sub>, síðan Zn/CH<sub>3</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346668",
+      "stem_html": "LiAlH<sub>4</sub>, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346669",
+      "stem_html": "CH<sub>3</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

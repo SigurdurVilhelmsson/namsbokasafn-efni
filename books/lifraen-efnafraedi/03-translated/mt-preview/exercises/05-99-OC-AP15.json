@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP15",
+  "source_uid": "36578@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í eftirfarandi lífsameindum:",
+  "questions": [
+    {
+      "id": "354192",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9606d18e7a5a7f3f64ca871fd3a7a6fe7691427/OChem_05_EC_012a.jpg\" alt=\"The wedge-dash structure of biotin.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354193",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f128ea5ec15aa03c91a045726057d49835c981ae/OChem_05_EC_012b.jpg\" alt=\"The wedge-dash structure of prostaglandin E 1.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

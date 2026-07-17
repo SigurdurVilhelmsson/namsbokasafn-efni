@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-MP05",
+  "source_uid": "37211@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefni og sýnið allan hvarfganginn með rafeindaflutningi fyrir hverja eftirfarandi afoxana með uppleystum málmi.",
+  "questions": [
+    {
+      "id": "353770",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f9f8f77c2403604f56cacc589a02db6b6dbc85d/OChem_09_EC_019a.jpg\" alt=\"The figure shows a C5 terminal alkyne reacting with lithium and ammonia.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353771",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b7561aacc44838f2b7cb93998ae2fae06d12b44/OChem_09_EC_019b.jpg\" alt=\"The figure shows a C5  terminal alkyne reacting with lithium and deuterated ammonia. \">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353772",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08df85e10227fb6a472c236051d79e001a3eb933/OChem_09_EC_019c.jpg\" alt=\"The figure shows a phenyl-substituted C3 internal alkyne reacting with lithium and deuterated ammonia. \">",
+      "collaborator_solutions": []
+    }
+  ]
+}

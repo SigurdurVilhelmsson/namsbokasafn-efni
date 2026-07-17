@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP05",
+  "source_uid": "38185@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361433",
+      "stem_html": "<p>Pívalísk blönduð anhýdríð eru oft notuð til að mynda amíðtengi milli amínósýra. Ólíkt samhverfu anhýdríði er þetta hvarf mjög staðsértækt, þar sem kjarnsæknin bætist aðeins við amínósýrukarbónýlið. Gefið upp fullkominn verkunarhátt fyrir eftirfarandi hvarf og útskýrið staðsértæknina.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b20e85823db4dd77d4288586bec23bb7efee089a/OChem_21_EC_030.jpg\" alt=\"Reaction between pivaloyl or amino acid mixed anhydride with another amine compound forming amide-bond containing compound and 2,2-dimethylpropanoic acid. The amine group in anhydride is B o c protected.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

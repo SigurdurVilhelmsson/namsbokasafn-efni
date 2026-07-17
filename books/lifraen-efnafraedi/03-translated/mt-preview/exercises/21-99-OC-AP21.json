@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP21",
+  "source_uid": "38215@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361497",
+      "stem_html": "<p>Leggðu til byggingu fyrir efnasamband, C<sub>4</sub>H<sub>7</sub>ClO<sub>2</sub>, sem hefur eftirfarandi IR- og <sup>1</sup>H NMR-róf:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--53cb4d790a8c8c765db9f7f60991aee7ef21c3c4/OChem_21_EC_046.jpg\" alt=\"The I R spectrum of a compound of molecular formula C 4 H 7 C l O 2 shows peaks at 2900 and 1750 wavenumbers as well as several peaks between 1500 and 700 wavenumbers. The proton N M R spectrum shows three signals, a doublet at 1.69, a singlet at 3.79, and a quartet at 4.41 p p m. The signals integrate as 3, 3, and 1 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

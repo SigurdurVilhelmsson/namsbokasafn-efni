@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP02",
+  "source_uid": "36565@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver af eftirfarandi efnasamböndum eru hendin? Teiknaðu þau og merktu hendnimiðjurnar.",
+  "questions": [
+    {
+      "id": "329271",
+      "stem_html": "2,4-Dímetýlheptan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329272",
+      "stem_html": "5-Etýl-3,3-dímetýlheptan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329273",
+      "stem_html": "<i>cis</i>-1,4-Díklórsýklóhexan",
+      "collaborator_solutions": []
+    }
+  ]
+}

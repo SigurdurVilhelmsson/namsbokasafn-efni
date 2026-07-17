@@ -1,0 +1,30 @@
+{
+  "nickname": "08-99-OC-AP03",
+  "source_uid": "37161@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni eftirfarandi efnahvarfa og sýndu bæði staðefnafræði og hverfisterkefnafræði þar sem við á:",
+  "questions": [
+    {
+      "id": "353517",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eed6c2cdd84b51725a2ed7a5f2dd7266c7974f66/OChem_08_EC_034a.jpg\" alt=\"Cyclohexene with a methyl group at C1 reacts with ozone in step 1 and zinc in hydronium ion in step 2 to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353518",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81c6dcf5a9ad328c48486cb82338e5d815c66075/OChem_08_EC_034b.jpg\" alt=\"Cyclohexene reacts with potassium permanganate in presence of hydronium ion to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353519",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d0c5002169092f2c0cd038dd1c0a147c5edb8689/OChem_08_EC_034c.jpg\" alt=\"Cyclohexene with methyl group at C1 reacts with borane in step 1 and hydrogen peroxide in hydroxide ion in step 2 to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353520",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac62e93d810504a6d6cdcc8da730cc0ae1f028f6/OChem_08_EC_034d.jpg\" alt=\"Cyclohexene with methyl group at C1 reacts with mercury (II) acetate in water in step 1 and sodium borohydride in step 2 to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

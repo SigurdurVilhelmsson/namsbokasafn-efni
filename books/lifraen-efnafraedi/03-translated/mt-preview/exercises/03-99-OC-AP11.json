@@ -1,0 +1,40 @@
+{
+  "nickname": "03-99-OC-AP11",
+  "source_uid": "36448@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið efnasambönd sem innihalda eftirfarandi:",
+  "questions": [
+    {
+      "id": "327923",
+      "stem_html": "Fyrsta stigs alkóhól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327924",
+      "stem_html": "Þriðja stigs nítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327925",
+      "stem_html": "Annars stigs þíól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327926",
+      "stem_html": "Bæði fyrsta og annars stigs alkóhól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327927",
+      "stem_html": "Ísóprópýlhópur",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327928",
+      "stem_html": "Fjórgreint kolefni",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "21-07-OC-P21",
+  "source_uid": "38171@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361393",
+      "stem_html": "<p>Hvernig myndir þú nota efnahvarf amíðs við LiAlH<sub>4</sub> sem lykilskref í að breyta brómsýklóhexani í (<i>N</i>,<i>N</i>-dímetýlamínómetýl)sýklóhexan? Skrifaðu öll skrefin í hvarfaröðinni.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6802dd2f8a50ef64f8b163dd0fe26261f93bafe9/OChem_21_07_011.jpg\" alt=\"Conversion of bromocyclohexane to (N, N-dimethylaminomethyl)cyclohexane using unknown reagents depicted by a question mark. The bromine in cyclohexane is replaced by an N, N-dimethyl amine group in the product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Mg; 2. CO<sub>2</sub>, síðan H<sub>3</sub>O<sup>+</sup>; 3. SOCl<sub>2</sub>; 4. (CH<sub>3</sub>)<sub>2</sub>NH; 5. LiAlH<sub>4</sub>"
+        }
+      ]
+    }
+  ]
+}

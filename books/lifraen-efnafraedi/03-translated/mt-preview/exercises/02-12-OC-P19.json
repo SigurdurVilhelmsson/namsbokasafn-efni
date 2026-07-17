@@ -1,0 +1,19 @@
+{
+  "nickname": "02-12-OC-P19",
+  "source_uid": "36131@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "552324",
+      "stem_html": "<p>Af vítamínunum tveimur, A og C, er annað vatnssækið og vatnsleysanlegt á meðan hitt er vatnsfælið og fituleysanlegt. Hvort er hvað?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9a6daca5f5a2e868e805ebf59c0acb56644f37c2/OChem_02_12_005.jpg\" alt=\"The bond-line structures of vitamin A (retinol) and vitamin C (ascorbic acid).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "C-vítamín er vatnsleysanlegt (vatnssækið); A-vítamín er fituleysanlegt (vatnsfælið)."
+        }
+      ]
+    }
+  ]
+}

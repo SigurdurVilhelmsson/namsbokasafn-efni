@@ -1,0 +1,19 @@
+{
+  "nickname": "13-12-OC-P20",
+  "source_uid": "37486@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358327",
+      "stem_html": "Úthlutaðu efnahliðrun á hvert kolefni í 6-metýl-5-hepten-2-óli (mynd 13.21).",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86dce578288ab7269364f41bb4050da2019f3571/OChem_13_EC_204.jpg\" alt=\"The structure has a 7-carbon chain with double bond between C 2-C 3. C 2 and C 6 are bonded to methyl and hydroxyl, respectively. Delta values are given.\">"
+        }
+      ]
+    }
+  ]
+}

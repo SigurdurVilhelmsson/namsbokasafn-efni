@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P18",
+  "source_uid": "39056@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348034",
+      "stem_html": "Afoxun <small style=\"font-variant: small-caps\">L</small>-gúlósa með NaBH<sub>4</sub> leiðir til sama alditóls (<small style=\"font-variant: small-caps\">D</small>-glúkitóls) og afoxun <small style=\"font-variant: small-caps\">D</small>-glúkósa. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CHO endi <small style=\"font-variant: small-caps\">L</small>-gúlósa samsvarar −CH<sub>2</sub>OH enda <small style=\"font-variant: small-caps\">D</small>-glúkósa eftir afoxun."
+        }
+      ]
+    }
+  ]
+}

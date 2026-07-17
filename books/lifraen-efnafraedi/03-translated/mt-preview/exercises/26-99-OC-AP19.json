@@ -1,0 +1,25 @@
+{
+  "nickname": "26-99-OC-AP19",
+  "source_uid": "39258@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvers konar efnahvörf hvetja eftirfarandi flokkar ensíma?",
+  "questions": [
+    {
+      "id": "348892",
+      "stem_html": "Hýdrólasar",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348893",
+      "stem_html": "Lýasar",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348894",
+      "stem_html": "Transferasar",
+      "collaborator_solutions": []
+    }
+  ]
+}

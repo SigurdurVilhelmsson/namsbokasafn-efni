@@ -1,0 +1,40 @@
+{
+  "nickname": "14-99-OC-AP03",
+  "source_uid": "37685@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Við hvaða myndefni(m) myndir þú búast við að fá úr efnahvarfi 1,3-sýklóhexadíens við hvert eftirfarandi efna?",
+  "questions": [
+    {
+      "id": "340916",
+      "stem_html": "1 mól Br<sub>2</sub> í CH<sub>2</sub>Cl<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340917",
+      "stem_html": "O<sub>3</sub> og síðan Zn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340918",
+      "stem_html": "1 mól HCl í eter",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340919",
+      "stem_html": "1 mól DCl í eter",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340920",
+      "stem_html": "3-búten-2-ón (H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHCOCH<sub>3</sub>)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340921",
+      "stem_html": "Umframmagn af OsO<sub>4</sub>, og síðan NaHSO<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

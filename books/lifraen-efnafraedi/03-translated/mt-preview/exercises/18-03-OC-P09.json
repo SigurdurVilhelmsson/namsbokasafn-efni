@@ -1,0 +1,19 @@
+{
+  "nickname": "18-03-OC-P09",
+  "source_uid": "38705@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "343689",
+      "stem_html": "Af hverju eru HI og HBr virkari en HCl við að kljúfa etra? (Sjá <b>kafla 11.3</b>.)",
+      "collaborator_solutions": [
+        {
+          "content_html": "Br<sup>−</sup> og I<sup>−</sup> eru betri kjarnsæknar en Cl<sup>−</sup>."
+        }
+      ]
+    }
+  ]
+}

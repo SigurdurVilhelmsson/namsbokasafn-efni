@@ -1,0 +1,37 @@
+{
+  "nickname": "03-03-OC-P08",
+  "source_uid": "36424@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Greindu kolefnisfrumeindirnar í eftirfarandi sameindum sem fyrsta stigs, annars stigs, þriðja stigs eða fjórða stigs:",
+  "questions": [
+    {
+      "id": "357608",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3fbd1e998ee1aa15476d9db46d0a125e798e3ae/OChem_03_03_006a.jpg\" alt=\"The molecular structure of 2-methylpentane\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b8dc4a2d931ec9d4de55f6028044536cc8b2641/OChem_03_EC_206a.jpg\" alt=\"The molecular structure of 2-methylpentane featurings three primary carbons, two secondary carbons, and one tertiary carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "357609",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14ea0d72b37551d06653de7efd0a7ec5bbf3a2f9/OChem_03_03_006b.jpg\" alt=\"The molecular structure of  3-ethyl-2-methylpentane is represented\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e08465a153a91217f85ee0d14fae74c43a1f803b/OChem_03_EC_206b.jpg\" alt=\"The molecular structure of 3-ethyl-2-methylpentane is represented featuring four primary carbons, two secondary carbons, and two tertiary carbons.\">"
+        }
+      ]
+    },
+    {
+      "id": "357610",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ddaca02beadf65eaf3b0cd0ef872ed5f6bbcb9b/OChem_03_03_006c.jpg\" alt=\"The molecular structure of 2,2,4-trimethylpentane is represented\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68ebe5b1cbe6b3739868fd59439d5930bf250952/OChem_03_EC_206c.jpg\" alt=\"The molecular structure of 2,2,4-trimethylpentane featuring five primary carbons, one secondary carbon, one tertiary carbon, and one quaternary carbon.\">"
+        }
+      ]
+    }
+  ]
+}

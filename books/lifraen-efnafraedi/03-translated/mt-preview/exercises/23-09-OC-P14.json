@@ -1,0 +1,19 @@
+{
+  "nickname": "23-09-OC-P14",
+  "source_uid": "38894@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359771",
+      "stem_html": "<p>Hvaða <i>myndefni</i> myndir þú búast við úr eftirfarandi <i>efnahvarfi</i>?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5876f54c1961af0c11d2e71d1ffc3fb4b408a51f/OChem_23_09_004.jpg\" alt=\"Diethyl-4-methylheptanedioate reacts with sodium ethoxide (first step) and hydronium (second step) to give unknown products, depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e024ff37a0fda0969640d831373c5b6fd71e440/OChem_23_EC_208.jpg\" alt=\"The structure of ethyl-5-methyl-2-oxocyclohexane carboxylate shows a cyclohexanone with methyl group on the fifth carbon and a C O O E t group on the first carbon of the ring.\">"
+        }
+      ]
+    }
+  ]
+}

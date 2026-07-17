@@ -1,0 +1,19 @@
+{
+  "nickname": "25-02-OC-P04",
+  "source_uid": "39042@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358736",
+      "stem_html": "<p>Endurteiknið eftirfarandi sameind sem Fischer-vörpun og úthlutið <i>R</i> eða <i>S</i> stillingu á hendnimiðjuna (grænt = Cl):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c794f4448c7e1dfab42eadcbde0482eb7af8ee3b/OChem_25_02_012.jpg\" alt=\"The ball-and-stick model comprises a three-carbon chain. The gray, black, green, and red spheres represent hydrogen, carbon, chlorine, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2eeedb5cbceb12c019ac8b068a064df0d7b849f6/OChem_25_EC_201.jpg\" alt=\"The central carbon is bonded to C H 3 on right, C H 2 O H on left, hydrogen on the top and chlorine on the bottom.\">"
+        }
+      ]
+    }
+  ]
+}

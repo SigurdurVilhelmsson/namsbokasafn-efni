@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP31",
+  "source_uid": "36558@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351141",
+      "stem_html": "<p>Julius Bredt, sem uppgötvaði byggingu kamfóru, lagði til árið 1935 að bísýklóalken eins og 1-norbornen, sem hafa tvítengi við brúarhausakolefni, væru of strekkt til að vera til. Útskýrðu. (Það hjálpar að búa til sameindalíkan.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65623e6f40deb8ba6d4527a29895358df8d67ae7/OChem_04_EC_015.jpg\" alt=\"The structure of 1-norbornene, in which C1 forms a bridge with C4 through a methylene group. C1 is double bonded to C2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

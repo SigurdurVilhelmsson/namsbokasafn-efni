@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-AP22",
+  "source_uid": "37516@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352915",
+      "stem_html": "<p>Hvernig gætir þú notað <sup>1</sup>H NMR, <sup>13</sup>C NMR og IR-litrófsgreiningu til að greina á milli eftirfarandi bygginga?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1146d2abdd9fe821be160b29c2a6353a4217277f/OChem_13_EC_015.jpg\" alt=\"An illustration shows the structures of 3-Methyl-2-cyclohexenone and 3-Cyclopentenyl methyl ketone. 3-Methyl-2-cyclohexenone shows a cyclohexenone bonded to a methyl group. 3-Cyclopentenyl methyl ketone shows a cyclopentene bonded to a carbonyl group bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

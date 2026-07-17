@@ -1,0 +1,19 @@
+{
+  "nickname": "22-07-OC-P12",
+  "source_uid": "38780@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360885",
+      "stem_html": "<p>Hvernig gætir þú notað malónestermyndun til að búa til eftirfarandi efnasamband?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bd7348cc8930f0c09df3b77fcc28d05c8f138dc/OChem_22_07_012.jpg\" alt=\"A ball-and-stick model of a compound comprising a five-carbon chain with a carboxylic acid group at C 2 and a methyl group at C 4.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Na<sup>+ −</sup>OEt; 2. (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>Br; 3. Na<sup>+ −</sup>OEt; 4. CH<sub>3</sub>Br; 5. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

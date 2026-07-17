@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP12",
+  "source_uid": "39011@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361689",
+      "stem_html": "<p>Hvernig mætti nota afoxandi amíneringu til að mynda efedrín, amínóalkóhól sem var mikið notað við berkjuastma?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3710b7a1b601e6884754e5045331bc415e979645/OChem_24_EC_036.jpg\" alt=\"The structure of ephedrine. It has benzene ring connected to a C H with hydroxyl linked to another C H with methyl. This is connected to N-H linked to methyl.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

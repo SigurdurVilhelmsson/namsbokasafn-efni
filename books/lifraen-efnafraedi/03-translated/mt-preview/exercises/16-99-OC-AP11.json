@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP11",
+  "source_uid": "37843@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efni ef bensen væri eini uppruni þinn að arómatískum efnasamböndum? Gerðu ráð fyrir að þú getir aðskilið ortho- og para-hverfur ef nauðsyn krefur.",
+  "questions": [
+    {
+      "id": "339568",
+      "stem_html": "<i>p</i>-Klóracetófenón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339569",
+      "stem_html": "<i>m</i>-Brómnítróbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339570",
+      "stem_html": "<i>o</i>-Brómbensensúlfónsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339571",
+      "stem_html": "<i>m</i>-Klórbensensúlfónsýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

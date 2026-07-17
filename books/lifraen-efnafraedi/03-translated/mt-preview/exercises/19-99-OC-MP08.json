@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP08",
+  "source_uid": "38030@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360693",
+      "stem_html": "<p>Þegar <i>α</i>-glúkósi er meðhöndlaður með sýruhvata í nærveru alkóhóls myndast asetal. Leggðu til hvarfgang fyrir þetta ferli og gefðu upp byggingu rúmhverfu-asetalsins sem þú myndir einnig búast við sem myndefni.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a25bab01eea3faf203da0be29ddf3ded01308c78/OChem_19_EC_027.jpg\" alt=\"The reaction shows the conversion of alpha-glucose to acetal in the presence of hydrogen ions and methanol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

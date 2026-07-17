@@ -1,0 +1,19 @@
+{
+  "nickname": "11-06-OC-P14",
+  "source_uid": "37355@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360398",
+      "stem_html": "<p>Skoðaðu hvarfgang lífmyndunar geraníóls sem sýndur er á mynd 11.16 og leggðu til hvarfgang fyrir lífmyndun límonens úr línalýl tvífosfati.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7b5ec39c21c60182777019d973a96ae326c5b808/OChem_11_06_004.jpg\" alt=\"The conversion reaction of linalyl diphosphate to limonene. Linalyl diphosphate comprises 8-carbon chain with double bonds at C1 and C6 and O P P at C3. Limonene is cyclic.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2763f60c9583e89c2947036ac848607206d55743/OChem_11_EC_203.jpg\" alt=\"The reaction mechanism of limonene from linalyl diphosphate through the formation of a carbocation, cyclization, and quenching of the carbocation through abstraction of H plus by base..\">"
+        }
+      ]
+    }
+  ]
+}

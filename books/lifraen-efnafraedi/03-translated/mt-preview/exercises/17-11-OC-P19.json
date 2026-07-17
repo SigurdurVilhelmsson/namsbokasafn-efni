@@ -1,0 +1,64 @@
+{
+  "nickname": "17-11-OC-P19",
+  "source_uid": "37884@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Þegar <sup>1</sup>H NMR-róf alkóhóls er tekið í dímetýlsúlfoxíð (DMSO) leysi frekar en í klóróformi, eru skipti á O–H-róteindinni hæg og spuna-spuna-klofningur sést milli O–H-róteindarinnar og C–H-róteinda á aðlægu kolefni. Hvaða spuna-margfeldni myndir þú búast við fyrir hýdroxýlróteindirnar í eftirfarandi alkóhólum?",
+  "questions": [
+    {
+      "id": "341890",
+      "stem_html": "2-Metýl-2-própanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "Eingildi"
+        }
+      ]
+    },
+    {
+      "id": "341891",
+      "stem_html": "Sýklóhexanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tvígildi"
+        }
+      ]
+    },
+    {
+      "id": "341892",
+      "stem_html": "Etanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "Þrígildi"
+        }
+      ]
+    },
+    {
+      "id": "341893",
+      "stem_html": "2-Própanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tvígildi"
+        }
+      ]
+    },
+    {
+      "id": "341894",
+      "stem_html": "Kólesteról",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tvígildi"
+        }
+      ]
+    },
+    {
+      "id": "341895",
+      "stem_html": "1-Metýlsýklóhexanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "Eingildi"
+        }
+      ]
+    }
+  ]
+}

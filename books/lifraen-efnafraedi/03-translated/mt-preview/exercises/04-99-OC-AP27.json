@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP27",
+  "source_uid": "36554@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357198",
+      "stem_html": "<p><i>trans</i>-dekalín er stöðugra en cis-hverfa þess, en <i>cis</i>-bísýkló[4.1.0]heptan er stöðugra en trans-hverfa þess. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3328ea5eebb642b28aead60977e575820459efdf/OChem_04_EC_011.jpg\" alt=\"Trans-Decalin has two cyclohexane rings fused together. Cis-Bicyclo[4.1.0]heptane has a cyclohexane ring fused to a cyclopropane ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

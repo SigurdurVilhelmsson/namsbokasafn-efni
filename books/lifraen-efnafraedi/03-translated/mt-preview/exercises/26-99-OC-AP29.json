@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP29",
+  "source_uid": "39268@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348910",
+      "stem_html": "<p>Oxýtósín, níupeptíðhormón sem heiladingullinn seytir, virkar með því að örva samdrætti í legi og mjólkurmyndun við fæðingu. Röð þess var ákvörðuð út frá eftirfarandi sönnunargögnum:</p>\n<p><b>1.</b> Oxýtósín er hringlaga efnasamband sem inniheldur tvísúlfíðbrú milli tveggja systeínleifa.</p>\n<p><b>2.</b> Þegar tvísúlfíðbrúin er afoxuð hefur oxýtósín samsetninguna Asn, Cys<sub>2</sub>, Gln, Gly, Ile, Leu, Pro, Tyr.</p>\n<p><b>3.</b> Hlutavatnsrof á afoxuðu oxýtósíni gefur sjö brot: Asp-Cys, Ile-Glu, Cys-Tyr, Leu-Gly, Tyr-Ile-Glu, Glu-Asp-Cys og Cys-Pro-Leu.</p>\n<p><b>4.</b> Gly er C-enda hópurinn.</p>\n<p><b>5.</b> Bæði Glu og Asp eru til staðar sem hliðarkeðjuamíð (Gln og Asn) frekar en sem frjálsar hliðarkeðjusýrur.</p>\n<p>Hver er amínósýruröð afoxaðs oxýtósíns? Hver er bygging oxýtósíns sjálfs?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

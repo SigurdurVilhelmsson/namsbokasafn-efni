@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP34",
+  "source_uid": "37408@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355434",
+      "stem_html": "<p>Meðhöndlun 1-bróm-2-tvívetna-2-fenýletans með sterkum basa leiðir til efnablöndu af tvívetnuðum og ótvívetnuðum fenýletýlenum í hlutföllunum u.þ.b. 7 : 1. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66a8f92e9ce4acc84b0abdba6a67cb98e71e1d4d/OChem_11_EC_043.jpg\" alt=\"A reaction in which 1-bromo-2-deuterio-2-phenylethane reacts with (C H 3)3 C O minus to form deuterated and non deuterated phenylethylene structures.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

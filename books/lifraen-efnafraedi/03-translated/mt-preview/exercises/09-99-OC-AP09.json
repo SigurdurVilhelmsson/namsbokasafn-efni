@@ -1,0 +1,35 @@
+{
+  "nickname": "09-99-OC-AP09",
+  "source_uid": "37223@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir kolvetni sem gefa eftirfarandi myndefni við oxandi klofnun með KMnO<sub>4</sub> eða O<sub>3</sub>:",
+  "questions": [
+    {
+      "id": "357326",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52615f8b1f7444967d52723771f33f0bc3052684/OChem_09_EC_026a.jpg\" alt=\"The figure shows carbon dioxide and heptanoic acid, the products of oxidative cleavage. \">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357327",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5eba9cf275de6bc5347e08a528007fe0f46121e/OChem_09_EC_026b.jpg\" alt=\"The figure shows acetic acid and benzoic acid, the products of oxidative cleavage.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357328",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad422a05c4a24c6ea47c6dcb83d0f71eadcb3b53/OChem_09_EC_026c.jpg\" alt=\"C10 dicarboxylic acid with carboxylate groups at C1 and C10.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357329",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41b8d28d8d653001f9f4f8800678c471922f480b/OChem_09_EC_026d.jpg\" alt=\"Acetal aldehyde, a C5  carboxylic acid with a C2 carbonyl, and carbon dioxide, the products of oxidative cleavage.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357330",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37dec2dd5b3d46c8a61c390f21b2c5d90c9ce719/OChem_09_EC_026e.jpg\" alt=\"C7 carboxylic acid with carbonyl at C2, aldehyde at C7, and carbon dioxide, the products of oxidative cleavage.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "25-99-OC-VC02",
+  "source_uid": "39065@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu Fischer-vörpun eftirfarandi sameinda og settu karbónýlhópinn efst á hefðbundinn hátt. Greindu hvort um er að ræða <small style=\"font-variant: small-caps\">D</small>- eða <small style=\"font-variant: small-caps\">L</small>-sykur.",
+  "questions": [
+    {
+      "id": "358775",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f643af715f967f4f3236635a195be1866fade4e/OChem_25_EC_003a.jpg\" alt=\"The ball-and-stick model of a three carbon aldose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358776",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d03198bd9b2672c7e7433354bb29b6ca0653de26/OChem_25_EC_003b.jpg\" alt=\"The ball-and-stick model of a four carbon aldose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

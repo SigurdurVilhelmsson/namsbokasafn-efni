@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP17",
+  "source_uid": "37574@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Við hvaða tengihorni býst þú fyrir hverja af tilgreindum frumeindum og hvers konar blendingsgerð býst þú við fyrir miðfrumeindina í hverri sameind?</p>",
+  "questions": [
+    {
+      "id": "358882",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0e9b680eea02f4744e3023c877742db3b85048a3/OChem_01_EC_009a.jpg\" alt=\"Condensed structural formula of glycine, an amino acid: H 2 N C H 2 C O O H. The carboxyl carbon and both oxygens are highlighted in red.\">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358883",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--189404ddca81b31de0b0729f5c6ef67257922dc3/OChem_01_EC_009b.jpg\" alt=\"Condensed structural formula of pyridine, a ring of five carbons and one nitrogen with alternating single and double bonds. The nitrogen and adjacent carbons are highlighted in red.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358884",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34cf10ce6aeeee2f3b4d6a82822e5546407c9292/OChem_01_EC_009c.jpg\" alt=\"Structure of lactic acid (in sour milk), a propionic acid with a hydroxyl group on C 2. The three carbons are highlighted in red.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

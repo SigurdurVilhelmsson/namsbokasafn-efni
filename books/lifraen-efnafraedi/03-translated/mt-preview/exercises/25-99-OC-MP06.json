@@ -1,0 +1,25 @@
+{
+  "nickname": "25-99-OC-MP06",
+  "source_uid": "39073@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p><small style=\"font-variant: small-caps\">L</small>-Fúkósi, ein af átta nauðsynlegu einsykrunum (<b>kafli 25.7</b>), er lífsmíðaður úr GDP-<small style=\"font-variant: small-caps\">D</small>-mannósa með eftirfarandi þriggja þrepa efnahvarfsröð, þar sem GDP = gúanósín tvífosfat (ríbónúkleósíð tvífosfat; <b>kafli 28.1</b>):</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69b6c7f775541ae7e57d32c3673adab5e09709fe/OChem_25_EC_011.jpg\" alt=\"G D P- L-Fucose, one of the essential monosaccharides, is biosynthesized from G D P - D-mannose by a three-step reaction sequence.\">",
+  "questions": [
+    {
+      "id": "358798",
+      "stem_html": "Þrep 1 felur í sér oxun í ketón, vötnun í enón og samtengda afoxun. Þrepið krefst NADP<sup>+</sup>, en ekkert NADPH myndast sem lokaafurð efnahvarfsins. Leggðu til hvarfgang.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358799",
+      "stem_html": "Í þrepi 2 eiga sér stað tvær epímeranir og það nýtir súr og basísk svæði í ensíminu en krefst ekki kóensíms. Leggðu til hvarfgang.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358800",
+      "stem_html": "Þrep 3 krefst NADPH sem kóensíms. Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    }
+  ]
+}

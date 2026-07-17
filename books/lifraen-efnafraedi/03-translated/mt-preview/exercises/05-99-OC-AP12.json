@@ -1,0 +1,30 @@
+{
+  "nickname": "05-99-OC-AP12",
+  "source_uid": "36575@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu Cahn–Ingold–Prelog-röðun á eftirfarandi sett af hliðarhópum:",
+  "questions": [
+    {
+      "id": "354174",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58c9007bf18738320afebb3d2f02632ce66ee015/OChem_05_EC_009a.jpg\" alt=\"C H double bonded to C H 2, C H (C H 3) 2, C (C H 3) 3, and C H 2 C H 3 with open single bonds.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354175",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffd7b2b6d6fe0e5779a4e0a52bb5ec0bbcabc4f1/OChem_05_EC_009b.jpg\" alt=\"C triple bonded to C H, C H double bonded to C H 2, C (C H 3) 3, and benzene each with an open single bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354176",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844a9b27b0f2a6069443a0609b2ebffb5780c099/OChem_05_EC_009c.jpg\" alt=\"C O 2 C H 3, C O C H 3, C H 2 O C H 3, and C H 2 C H 3, with open single bonds.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354177",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78fada91207ed30317f8745967e32d48b63b96f2/OChem_05_EC_009d.jpg\" alt=\"Four substituents are C triple bonded to N, C H 2 Br, C H 2 C H 2 Br, and Br each with an open single bond.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

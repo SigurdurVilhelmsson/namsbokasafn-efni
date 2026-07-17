@@ -1,0 +1,20 @@
+{
+  "nickname": "03-99-OC-VC01",
+  "source_uid": "36435@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Þekktu virknihópana í eftirfarandi efnum og breyttu hverri teikningu í sameindaformúlu (rautt = O, blátt = N).",
+  "questions": [
+    {
+      "id": "351241",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f56322bed787fd1ff48d81ce8c326f82aea76292/OChem_03_EC_001a.jpg\" alt=\"A ball and stick model of phenylalanine that includes a benzene ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351242",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--265c5c061e18b9021e6e9bdcba798c03030adeca/OChem_03_EC_001b.jpg\" alt=\"A ball and stick model of lidocaine that includes an amide group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

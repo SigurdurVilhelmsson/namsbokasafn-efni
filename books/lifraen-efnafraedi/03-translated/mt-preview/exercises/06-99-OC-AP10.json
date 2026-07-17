@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-AP10",
+  "source_uid": "37330@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu mismunandi einklóraðar byggingarhverfur sem þú myndir fá með stakeindaklórun eftirfarandi efnasambanda.",
+  "questions": [
+    {
+      "id": "353360",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2f96d790b32c2269ca05b557b9c5ef7f342cbc2/OChem_06_EC_019a.jpg\" alt=\"A chemical structure of n-butane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353361",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3706b6443ad5ca27fa950b5ea65c95f6264f371b/OChem_06_EC_019b.jpg\" alt=\"A chemical structure of isopentane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353362",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb0833d9cf5d864b2684980d17c93482e891a65d/OChem_06_EC_019c.jpg\" alt=\"A chemical structure of methylcyclopentane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

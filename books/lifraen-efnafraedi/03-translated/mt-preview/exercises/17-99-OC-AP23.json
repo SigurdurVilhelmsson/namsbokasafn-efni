@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP23",
+  "source_uid": "37924@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359541",
+      "stem_html": "<p>Raðaðu eftirfarandi skiptum fenólum í röð eftir vaxandi sýrustigi og útskýrðu svarið:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2263a58c5e055e8d101fde7f3f5fce73a239f972/OChem_17_EC_042.jpg\" alt=\"The structure of four compounds named phenol, 4-fluorophenol, 4-methoxyphenol and 4-hydroxybenzonitrile.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

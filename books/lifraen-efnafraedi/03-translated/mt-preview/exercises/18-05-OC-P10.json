@@ -1,0 +1,19 @@
+{
+  "nickname": "18-05-OC-P10",
+  "source_uid": "38706@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361067",
+      "stem_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi <i>trans</i>-2-bútens við <i>m</i>-klórperoxýbensósýru? Sýndu staðefnafræðina.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4a40238c6f969e10b63bc8f76e0ef5e3cfef2d/OSX_OrgChem_18_DD_A-TransBut_img.jpg\" alt=\"trans-2-Butene reacts with m C P B A to form trans-2,3-epoxybutane.\">"
+        }
+      ]
+    }
+  ]
+}

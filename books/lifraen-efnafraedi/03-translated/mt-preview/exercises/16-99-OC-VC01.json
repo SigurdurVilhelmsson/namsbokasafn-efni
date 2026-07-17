@@ -1,0 +1,20 @@
+{
+  "nickname": "16-99-OC-VC01",
+  "source_uid": "37811@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið myndefnið úr efnahvarfi hvers eftirfarandi efna við (1) Br<sub>2</sub>, FeBr<sub>3</sub> og (2) CH<sub>3</sub>COCl, AlCl<sub>3</sub>.",
+  "questions": [
+    {
+      "id": "358951",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7b0ab22a2bcdbf684f58bf7194c940c21b6e282e/OChem_16_EC_017a.jpg\" alt=\"The ball-and-stick model has a benzene ring bonded to an oxygen atom, which is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358952",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be72865972677bc8d31a43d646699c6ad5d9ff18/OChem_16_EC_017b.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to an aldehyde group. C 4 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

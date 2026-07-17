@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-MP04",
+  "source_uid": "39413@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355020",
+      "stem_html": "<p>Fjölliðukvoðan sem notuð er við Merrifield-peptíðsmíði á föstu formi (kafli 26.8) er búin til með því að meðhöndla pólýstýren með <i>N</i>-(hýdroxýmetýl)þalímíði og tríflúormetansúlfónsýru, fylgt eftir með efnahvarfi við hýdrasín. Leggið til hvarfgang fyrir bæði skrefin.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a97a893bf9fe24e54655dbeb5beaa4c50be4fe31/OChem_31_EC_005.jpg\" alt=\"Polystyrene reacts with N-(hydroxymethyl)phthalimide and trifluoromethanesulfonic acid to form an intermediate that further reacts with hydrazine to form resin. The product's structure is inside parentheses with n as the subscript.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

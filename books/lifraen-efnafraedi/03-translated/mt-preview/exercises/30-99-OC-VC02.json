@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-VC02",
+  "source_uid": "39364@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355068",
+      "stem_html": "<p><sup>13</sup>C NMR-róf hómótrópilíðens sem tekið er við stofuhita sýnir aðeins þrjá toppa. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b89b5defb35d79912d72b7eedef976817ebe708a/OChem_30_EC_002.jpg\" alt=\"A ball-and-stick model of cycloheptane with two double bonds connected to cyclopropane linked to two hydrogen atoms. Carbon and hydrogen are represented using black and gray spheres respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

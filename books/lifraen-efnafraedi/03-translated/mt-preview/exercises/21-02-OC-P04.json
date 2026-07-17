@@ -1,0 +1,28 @@
+{
+  "nickname": "21-02-OC-P04",
+  "source_uid": "38154@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðið efnasamböndunum í hverju eftirfarandi setti eftir væntri hvarfgirni þeirra gagnvart kjarnsæknu asýlskiptihvarfi:",
+  "questions": [
+    {
+      "id": "448149",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e84bba491f11c1405fd68482b28e841576206d06/OChem_21_02_010a.jpg\" alt=\"The structures show three carbonyl compounds. The first structure is acetyl chloride, the second is propan-2-one, and the third is acetamide.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Asetýlklóríð &gt; Metýlasetat &gt; Asetamíð"
+        }
+      ]
+    },
+    {
+      "id": "448150",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--178dfeff6fdb739b1af5a28656d9185fb28806a2/OChem_21_02_010b.jpg\" alt=\"The structures show three carbonyl compounds. The first structure is ethyl acetate, the second is 2,2,2-trichloroethyl acetate, and the third is hexafluoroisopropyl acetate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hexaflúorísóprópýlasetat &gt; 2,2,2-Tríklóretýlasetat &gt; Etýlasetat"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP09",
+  "source_uid": "37757@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358670",
+      "stem_html": "<p>Fenantren hefur fimm vokmynd, eitt þeirra er sýnt. Teiknaðu hin fjögur.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26ab2dd31aa65c9a23da464f8a23c901dba4fa6c/OChem_15_EC_008.jpg\" alt=\"Phenanthrene has three benzene rings fused to one another, two of them in a straight line and the third up to the top right..\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "16-09-OC-P21",
+  "source_uid": "37808@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351819",
+      "stem_html": "Hvernig myndir þú búa til dífenýlmetan, (Ph)<sub>2</sub>CH<sub>2</sub>, úr benseni og sýruklóríði?",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. PhCOCl, AlCl<sub>3</sub>; 2. H<sub>2</sub>/Pd"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP12",
+  "source_uid": "38799@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360941",
+      "stem_html": "<p><i>Favorskii-efnahvarfið</i> felur í sér meðhöndlun á <i>α</i>-brómóketóni með basa til að fá hringsamþjappað myndefni. Til dæmis gefur efnahvarf 2-brómsýklóhexanóns með vatnslausn af NaOH sýklópentankarboxýlsýru. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f61882d168170e0fddd0012250eb89751aeae79d/OChem_22_EC_024.jpg\" alt=\"When treated first with base and then with acid, 2-bromocyclohexanone is converted to cyclopentanecarboxylic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "30-08-OC-P11",
+  "source_uid": "39361@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355064",
+      "stem_html": "<p>Þegar 2,6-tvíáskipaður allýlfenýleter er hitaður í tilraun til Claisen umröðunar, á sér stað flutningur sem gefur <i>p</i>-allýl myndefnið sem afleiðingu tveggja samfelldra perihringlaga efnahvarfa. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--443da72287683c72fa63de7bde53330809a46b15/OChem_30_08_008.jpg\" alt=\"2,6-disubstituted allyl phenyl ether reacts with heat to form a para allyl product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Claisen umröðun er fylgt eftir af Cope umröðun."
+        }
+      ]
+    }
+  ]
+}

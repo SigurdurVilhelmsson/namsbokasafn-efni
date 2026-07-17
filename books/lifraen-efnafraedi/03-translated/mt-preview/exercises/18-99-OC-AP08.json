@@ -1,0 +1,35 @@
+{
+  "nickname": "18-99-OC-AP08",
+  "source_uid": "38741@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi umbreytingar? Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "361263",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c63bbf73f5ff3d4b06079de27cfd41c301df0d5/OChem_18_EC_037a.jpg\" alt=\"Cyclohexene reacts with unknown reagent(s) to produce cyclohexyl ethyl ether.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361264",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44526164beaf1385a020e727e4140291f3ae142b/OChem_18_EC_037b.jpg\" alt=\"Cis-1-methoxy-4-methylcyclohexane reacts with unknown reagent(s) to produce trans-1-bromo-4-methylcyclohexane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361265",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cc849adced344ba57c5bcb010ea1ba36d36cc27/OChem_18_EC_037c.jpg\" alt=\"4-t-butylcyclohexene reacts with unknown reagent(s) to produce cyclohexane with (counterclockwise) wedge hydroxide on C 1, dash hydroxide on C 2, wedge t-butyl on C 4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361266",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc53992241920aa6cb9e919887df6489341eecf2/OChem_18_EC_037d.jpg\" alt=\"1-hexyne is converted into hexyl methyl ether in the presence of an unknown reactant(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361267",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a925b1d8df8f2b9973466e79f7450c31aad37565/OChem_18_EC_037e.jpg\" alt=\"1-hexyne is converted into 2-methoxyhexane in the presence of an unknown reactant(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

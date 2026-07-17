@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP08",
+  "source_uid": "36660@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354400",
+      "stem_html": "<p><i>Α</i>-Farnesen er hluti af náttúrulegu vaxi sem finnst á eplum. Hvert er IUPAC-nafn þess, að meðtalinni staðefnafræði?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--faba47181b9f544067107f608218e7e8979d7aa5/OChem_07_EC_018.jpg\" alt=\"Twelve-carbon chain with bonds (from left) as: single, double, single, single, single, double, single, single, double, single, double. Methyl groups at the second, sixth, and tenth carbons from the left.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

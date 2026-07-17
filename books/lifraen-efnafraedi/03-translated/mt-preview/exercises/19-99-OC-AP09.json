@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-AP09",
+  "source_uid": "38055@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efni úr 2-sýklóhexenóni? Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "360752",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d369c554d8ea1e32757b4f5a44993a0656a7680/OChem_19_EC_047a.jpg\" alt=\"The structure of cyclohexene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360753",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a630de458d87f05562538f9ff69c6a89dce9869/OChem_19_EC_047b.jpg\" alt=\"The structure of 3-phenylcyclohexanone shows a phenyl group attached to the third carbon of the cyclohexanone ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360754",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff6e7572efbd398fc5c9695749048af22b1027a0/OChem_19_EC_047c.jpg\" alt=\"The structure of 3-oxocyclohexanecarboxylic acid shows a carboxylic acid group attached to the C 1 of a cyclohexane with an oxo group at C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360755",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a64cb03761f1ff06645c2527a93945cfd0b67db/OChem_19_EC_047d.jpg\" alt=\"The structure of methylcyclohexane shows a methyl group attached to a cyclohexane ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

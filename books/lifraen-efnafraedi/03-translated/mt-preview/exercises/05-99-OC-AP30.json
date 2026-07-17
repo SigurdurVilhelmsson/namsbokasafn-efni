@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP30",
+  "source_uid": "36593@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354237",
+      "stem_html": "<p>Fyrsta skrefið í efnaskiptum glýseróls, sem myndast við meltingu fitu, er fosfórun á pro-<i>R</i> –  CH<sub>2</sub>OH hópnum með efnahvarfi við adenósínþrífosfat (ATP) til að gefa samsvarandi glýserólfosfat auk adenósíndífosfats (ADP). Sýndu rúmefnafræði myndefnisins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26158a664ffbfdc34ea413d5b3bb5d885e6b81d2/OChem_05_EC_024.jpg\" alt=\"The figure shows a reaction where glycerol on the conversion of A T P to A D P forms glycerol phosphate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

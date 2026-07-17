@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP12",
+  "source_uid": "37760@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358674",
+      "stem_html": "<p>3-klórsýklóprópen, við meðhöndlun með AgBF<sub>4</sub>, gefur botnfall af AgCl og stöðuga lausn af myndefni sem sýnir eitt <sup>1</sup>H NMR-gleypitopp við 11,04 <i>δ</i>. Hver er líkleg bygging myndefnisins og hver er tenging þess við reglu Hückels?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e698ff6979ae14da98fbbf620c10c02a8dbc4e2a/OChem_15_EC_010.jpg\" alt=\"3-Chlorocyclopropene has a 3-carbon ring. C 1 is double bonded to C 2. C 3 is bonded to a chlorine atom and a hydrogen atom.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

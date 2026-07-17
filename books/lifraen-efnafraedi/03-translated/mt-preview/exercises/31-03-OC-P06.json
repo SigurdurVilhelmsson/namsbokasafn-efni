@@ -1,0 +1,19 @@
+{
+  "nickname": "31-03-OC-P06",
+  "source_uid": "39401@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358111",
+      "stem_html": "Teiknið byggingu á víxluðum hluta bútýlgúmmís, samfjölliðu ísóprens (2-metýl-1,3-bútadíens) og ísóbútýlens (2-metýlprópens) sem er útbúin með katjónískum frumkveiki.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05f1733d9359ff970b6aa5b40183ffd64cf891ea/OChem_31_EC_202.jpg\" alt=\"An eight-membered carbon with methyl and alkene on C 3 and two methyl groups on C 7 position. The compound is inside parentheses with a subscript n.\">"
+        }
+      ]
+    }
+  ]
+}

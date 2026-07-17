@@ -1,0 +1,19 @@
+{
+  "nickname": "20-08-OC-P15",
+  "source_uid": "38095@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341966",
+      "stem_html": "Sýklópentankarboxýlsýra og 4-hýdroxýsýklóhexanón hafa sömu formúlu (C<sub>6</sub>H<sub>10</sub>O<sub>2</sub>), og bæði innihalda –OH og C═O hóp. Hvernig gætir þú greint á milli þeirra með IR-litrófsgreiningu?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Karboxýlsýra hefur mjög breitt –OH-gleypnisvið við 2500–3300 cm<sup>−1</sup>."
+        }
+      ]
+    }
+  ]
+}

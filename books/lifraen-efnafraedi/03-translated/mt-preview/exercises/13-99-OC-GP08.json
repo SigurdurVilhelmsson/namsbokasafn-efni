@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP08",
+  "source_uid": "37525@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358417",
+      "stem_html": "<p>Massaróf og <sup>13</sup>C NMR-róf kolvetnis eru sýnd. Leggið til byggingarformúlu fyrir þetta kolvetni og útskýrið rófgögnin.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2dedd9e3bb82dea85ae278b89d434d2cece3e0fd/OChem_13_EC_024.jpg\" alt=\"The mass spectrum shows main peaks at 15, 26, 29, 39, 41, 42, 43, 56 (base), 69, and 84. C N M R spectrum shifts at 15, 26, ad 132.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

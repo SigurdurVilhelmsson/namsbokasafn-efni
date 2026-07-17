@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP29",
+  "source_uid": "38832@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361041",
+      "stem_html": "<p>Natríumpentótal er skammvirk barbitúratafleiða sem er notuð sem almennt svæfingarlyf og er þekkt í dægurmenningu sem sannleiksserum. Það er smíðað eins og önnur barbitúröt (sjá <i>Efnafræðin skiptir máli</i> í lok þessa kafla), með því að nota þíóúreu, (H<sub>2</sub>N)<sub>2</sub>C<span data-math=\"\\text{═}\"></span>S, í staðinn fyrir úreu. Hvernig myndir þú smíða natríumpentótal?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ea767dcb4d1a188f72a9183e632d9e92150bc6e/OChem_22_EC_049.jpg\" alt=\"The structure of sodium pentothal comprising of a six-membered ring with carbon atoms at positions 1 and 4, nitrogen atoms at positions 2 and 6, and carbonyl groups at positions 3 and 5. A sulfur anion is bonded to the carbon at position 1 and an alyl chain to the carbon at position 4. The sulfur anion is associated with a soidum cation.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

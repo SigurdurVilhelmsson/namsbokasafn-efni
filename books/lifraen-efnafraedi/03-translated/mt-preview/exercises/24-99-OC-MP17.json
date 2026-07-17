@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP17",
+  "source_uid": "38999@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361667",
+      "stem_html": "<p>Eitt skref í lífmyndun morfíns er efnahvarf dópamíns við <i>p</i>-hýdroxýfenýlasetaldehýð sem gefur (<i>S</i>)-norkóklarín. Gerðu ráð fyrir að efnahvarfið sé sýruhvatað og leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1190b45844ff7af70f635dd0f655cbb459abe632/OChem_24_EC_032.jpg\" alt=\"Dopamine reacts with p-hydroxyphenyl-acetaldehyde to yield (S)-norcoclaurine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

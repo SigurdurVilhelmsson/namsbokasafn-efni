@@ -1,0 +1,30 @@
+{
+  "nickname": "05-99-OC-AP03",
+  "source_uid": "36566@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu hendnar sameindir sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "329278",
+      "stem_html": "Klóralkan, C<sub>5</sub>H<sub>11</sub>Cl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329279",
+      "stem_html": "Alkóhól, C<sub>6</sub>H<sub>14</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329280",
+      "stem_html": "Alken, C<sub>6</sub>H<sub>12</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329281",
+      "stem_html": "Alkan, C<sub>8</sub>H<sub>18</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

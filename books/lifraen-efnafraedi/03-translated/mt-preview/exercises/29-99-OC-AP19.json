@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-AP19",
+  "source_uid": "39344@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358175",
+      "stem_html": "<p>Í skrefi 2 í sítrónusýruhringnum (mynd 29.14) hvarfast <i>cis</i>-akónítat við vatn og myndar (2<i>R</i>,3<i>S</i>)-ísósítrat. Legst –OH á Re-hlið tvítengisins eða Si-hliðina? Hvað með –H? Fer álagning vatns fram með syn- eða anti-rúmefnafræði?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed9c56a128e70e8def6eccf4b4edd13ffe91c92d/OChem_29_EC_016.jpg\" alt=\"Cis-aconitate having a three-carbon chain and a double bond reacts with water to form (2 R,3 S)-Isocitrate. The double bond is replaced by single bond in the product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP27",
+  "source_uid": "36679@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver eftirfarandi karbókatjóna getur umraðast í stöðugri jón. Stingdu upp á byggingum fyrir líkleg umröðunarmyndefni.",
+  "questions": [
+    {
+      "id": "354482",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3126307d7f67e9be5b2ac50d665bc2f249286c00/OChem_07_EC_030a.jpg\" alt=\"A 4-carbon chain with a positive charge at C1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354483",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9728fc234b9c30ffccae165fcef9343ca73e107b/OChem_07_EC_030b.jpg\" alt=\"A 4-carbon chain with a positive charge at C2 and a methyl group at C3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354484",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1cc18e89897f5b55193baab74819b16423e34642/OChem_07_EC_030c.jpg\" alt=\"A cyclobutane ring. C1 is bonded to a methyl group and a methylene group with a positive charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "21-05-OC-P15",
+  "source_uid": "38165@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361379",
+      "stem_html": "<p>Hvaða myndefni myndir þú búast við úr efnahvarfi eins jafngildis af metanóli við hringlaga anhýdríð, eins og þalsýruanhýdríð (1,2-bensendíkarboxýlanhýdríð)? Hvað verður um seinni „helming“ anhýdríðsins?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e73eecaf84cdae9a93f979074e593a487bf2e3f/OChem_21_05_005.jpg\" alt=\"The structure shows phthalic anhydride where a benzene ring is fused with a cyclopentane-2,5-dione ring where the carbon atom in between the carbonyl groups is replaced by an oxygen atom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Mónómetýlester af bensen-1,2-díkarboxýlsýru"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "05-03-OC-P06",
+  "source_uid": "36498@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "329155",
+      "stem_html": "1,50 g sýni af kóníni, eitraða útdrættinum úr flekkusveip, var leyst upp í 10,0 ml af etanóli og sett í sýnisglas með 5,00 cm vegalengd. Mældur snúningur við natríum D-línu var +1,21°. Reiknið [<i>α</i>]<sub>D</sub> fyrir kónín.",
+      "collaborator_solutions": [
+        {
+          "content_html": "+16,1°"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP36",
+  "source_uid": "37937@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359565",
+      "stem_html": "<p>Auðkenndu hvarfefnin <b>a</b>–<b>f</b> í eftirfarandi skema:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cbaa0d216c7bf6e8f6d741cfd26dc3654b8bcd5d/OChem_17_EC_052.jpg\" alt=\"Cyclohexanol reacts with reagent a to form cyclohexanol. b to form cyclohexylbromide. c to form cyclohexylmethanol. d to form cyclohexanecarbaldehyde, e to form 1-cyclohexyl-2-phenylethanol, f to form (E)-(2-cyclohexylvinyl)benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

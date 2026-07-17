@@ -1,0 +1,19 @@
+{
+  "nickname": "19-06-OC-P09",
+  "source_uid": "38003@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341371",
+      "stem_html": "Sýklóhexanón myndar sýanóhýdrín með góðum heimtum en 2,2,6-trímetýlsýklóhexanón gerir það ekki. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Jafnvægið er óhagstætt fyrir sterískt hindruð ketón."
+        }
+      ]
+    }
+  ]
+}

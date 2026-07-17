@@ -1,0 +1,19 @@
+{
+  "nickname": "23-03-OC-P04",
+  "source_uid": "38884@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359709",
+      "stem_html": "Aldól-þétting 3-metýlsýklóhexanóns leiðir til efnablöndu tveggja enón-myndefna, að ótöldum tvítengishverfum. Teiknaðu þau.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--edaf4db4f214a684046c9db95721cfbdf4801cba/OChem_23_EC_203.jpg\" alt=\"Two structures: methylcyclohexane double-bonded by C 3 to C 5 of 3-methylcyclohexanone, and methylcyclohexane double-bonded by C 3 to C 2 of to 3-methylcyclohexanone. \">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP06",
+  "source_uid": "39005@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347673",
+      "stem_html": "Gerðu grein fyrir því að <i>p</i>-nítróanilín (p<i>K</i><sub>a</sub> = 1,0) er 30 sinnum minna basískt en <i>m</i>-nítróanilín (p<i>K</i><sub>a</sub> = 2,5). Teiknaðu vokmyndir til að styðja rök þín. (p<i>K</i><sub>a</sub> gildin vísa til samsvarandi ammóníumjóna.)",
+      "collaborator_solutions": []
+    }
+  ]
+}

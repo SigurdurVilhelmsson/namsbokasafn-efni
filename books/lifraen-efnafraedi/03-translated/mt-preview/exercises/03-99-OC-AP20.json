@@ -1,0 +1,20 @@
+{
+  "nickname": "03-99-OC-AP20",
+  "source_uid": "36457@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingarformúlur og gefið IUPAC-nöfn fyrir eftirfarandi:",
+  "questions": [
+    {
+      "id": "327981",
+      "stem_html": "Díetýldímetýlhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327982",
+      "stem_html": "Alkani með (3-metýlbútýl)-hliðarhóp",
+      "collaborator_solutions": []
+    }
+  ]
+}

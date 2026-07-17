@@ -1,0 +1,40 @@
+{
+  "nickname": "11-99-OC-AP12",
+  "source_uid": "37391@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi 1-brómprópans við hvert eftirfarandi?",
+  "questions": [
+    {
+      "id": "346526",
+      "stem_html": "NaNH<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346527",
+      "stem_html": "KOC(CH<sub>3</sub>)<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346528",
+      "stem_html": "NaI",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346529",
+      "stem_html": "NaCN",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346530",
+      "stem_html": "NaC<span data-math=\"\\text{≡}\"></span>CH",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346531",
+      "stem_html": "Mg, síðan H<sub>2</sub>O",
+      "collaborator_solutions": []
+    }
+  ]
+}

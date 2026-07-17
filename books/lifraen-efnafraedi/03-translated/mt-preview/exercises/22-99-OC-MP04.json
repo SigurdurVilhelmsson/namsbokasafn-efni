@@ -1,0 +1,20 @@
+{
+  "nickname": "22-99-OC-MP04",
+  "source_uid": "38791@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi tvær handhverfar <i>β</i>-ketósýrur voru afkarboxýleraðar við þær aðstæður sem venjulega eru notaðar fyrir asetediksestersmíði. Verða ketónmyndefnin handhverf? Útskýrðu.",
+  "questions": [
+    {
+      "id": "360926",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ba554dbf2200a934d6a623205f2b77c1635c96d/OChem_22_EC_017a.jpg\" alt=\"2-ethyl-2-methyl-3-oxobutanoic acid is heated in the presence of acidt to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360927",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ddd01400544cc3c3862ae116bcb0152129ab476/OChem_22_EC_017b.jpg\" alt=\"4-methyl-3-oxohexanoic acid is heated in the presence of acid to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

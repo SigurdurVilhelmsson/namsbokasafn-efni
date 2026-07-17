@@ -1,0 +1,19 @@
+{
+  "nickname": "17-08-OC-P16",
+  "source_uid": "37881@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "340716",
+      "stem_html": "Leggðu til hvarfgang fyrir efnahvarf sýklóhexýl TMS-eters með LiF til að afverja sílýleterinn.",
+      "collaborator_solutions": [
+        {
+          "content_html": "S<sub>N</sub>2-efnahvarf F<sup>−</sup> á kísil með brottnámi alkoxíðjónar."
+        }
+      ]
+    }
+  ]
+}

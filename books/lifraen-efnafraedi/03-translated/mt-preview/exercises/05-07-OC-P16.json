@@ -1,0 +1,19 @@
+{
+  "nickname": "05-07-OC-P16",
+  "source_uid": "36508@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354117",
+      "stem_html": "<p>Hverjar af eftirfarandi byggingarmyndum tákna mesó-efnasambönd?</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ada88837bcb901ea75c61a429d16056debff03a/OChem_05_07_005a.jpg\" alt=\"In a cyclopentane ring, C1 and C2 are each wedge bonded to a hydroxyl group and dash bonded to a hydrogen atom.\">\n<b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--707d068a624667ffd268bb51cf46fe2172ffc2ec/OChem_05_07_005b.jpg\" alt=\"In a cyclopentane ring, C1 is dash bonded to hydrogen and wedge bonded to the hydroxyl group. C2 is dash bonded to the hydroxyl group and wedge bonded to hydrogen.\">\n<b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7061e73b0ce52bfd5f00bbb0e6468934958419c5/OChem_05_07_005c.jpg\" alt=\"The wedge-dash structure shows cyclopentane ring fusion. C2 of the right cyclopentane is wedge bonded to a methyl group and dash bonded to a hydrogen atom.\">\n<b>(d)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85eb5269d7fa91364fbc1b41cb63af4d10979eaf/OChem_05_07_005d.jpg\" alt=\"In a 2-carbon chain, C1 is wedge bonded to the bromine atom and methyl group. C2 is dash bonded to bromine, wedge bonded to a methyl group, and hydrogen atom.\"></p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnasambönd <b>(a)</b> og <b>(d)</b> eru mesó."
+        }
+      ]
+    }
+  ]
+}

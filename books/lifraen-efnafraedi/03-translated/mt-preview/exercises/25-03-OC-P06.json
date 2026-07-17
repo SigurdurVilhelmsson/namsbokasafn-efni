@@ -1,0 +1,37 @@
+{
+  "nickname": "25-03-OC-P06",
+  "source_uid": "39044@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "<p>Úthlutið <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í eftirfarandi einsykrum og segið til um hvort hver þeirra sé <small style=\"font-variant: small-caps\">D</small>-sykur eða <small style=\"font-variant: small-caps\">L</small>-sykur:</p>",
+  "questions": [
+    {
+      "id": "358742",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6542222adb812987e656dc8a12cea7b9c6f13560/OChem_25_03_003a.jpg\" alt=\"The structure of L-erythrose which is a tetrose saccharide part of the aldose family.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">L</small>-Erýþrósi; 2<i>S</i>,3<i>S</i>"
+        }
+      ]
+    },
+    {
+      "id": "358743",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ec447a9a46d5b31a0617317f674b4b232d53d01a/OChem_25_03_003b.jpg\" alt=\"The structure of D-xylose which is a monosaccharide containing five carbon atoms and an aldehyde functional group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">D</small>-Xýlósi; 2<i>R</i>,3<i>S</i>,4<i>R</i>"
+        }
+      ]
+    },
+    {
+      "id": "358744",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b969f302074c7f1b7e0ed4a6c92da1cd31108e0/OChem_25_03_003c.jpg\" alt=\"The structure of D-xylulose which is a ketopentose containing five carbon atoms ad a ketone functional group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">D</small>-Xýlúlósi; 3<i>S</i>,4<i>R</i>"
+        }
+      ]
+    }
+  ]
+}

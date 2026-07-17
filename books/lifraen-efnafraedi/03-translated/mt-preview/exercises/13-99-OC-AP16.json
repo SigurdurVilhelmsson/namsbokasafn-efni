@@ -1,0 +1,20 @@
+{
+  "nickname": "13-99-OC-AP16",
+  "source_uid": "37510@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggðu til byggingar fyrir efnasambönd sem passa við eftirfarandi <sup>1</sup>H NMR-gögn:",
+  "questions": [
+    {
+      "id": "374691",
+      "stem_html": "<ul style=\"list-style-type:none\">\n<li>C<sub>5</sub>H<sub>10</sub>O</li>\n<li>0,95 <i>δ</i> (6 H, tvíliða, <i>J</i> = 7 Hz)</li>\n<li>2,10 <i>δ</i> (3 H, einliða)</li>\n<li>2,43 <i>δ</i> (1 H, margliða)</li>\n</ul>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "374692",
+      "stem_html": "<ul style=\"list-style-type:none\">\n<li>C<sub>3</sub>H<sub>5</sub>Br</li>\n<li>2,32 δ (3 H, einliða)</li>\n<li>5,35 δ (2 H, margliða)</li>\n<li>5,54 δ (2 H, margliða)</li>\n</ul>",
+      "collaborator_solutions": []
+    }
+  ]
+}

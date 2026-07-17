@@ -1,0 +1,64 @@
+{
+  "nickname": "22-01-OC-P01",
+  "source_uid": "38769@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingu enól-ráphverfa eftirfarandi efnasambanda:",
+  "questions": [
+    {
+      "id": "360864",
+      "stem_html": "Sýklópentanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de0be72e646df03d6732ce063ecfec106b7c015a/OChem_22_EC_201a.jpg\" alt=\"A structure of cyclopentene with a hydroxyl group and double bond at C 1.\">"
+        }
+      ]
+    },
+    {
+      "id": "360865",
+      "stem_html": "Metýlþíóasetat",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49e5d35c00db08f9289894b09726e5aea9b873e8/OChem_22_EC_201b.jpg\" alt=\"An alkene in which C 1 is bonded to a hydroxyl group on top and methyl sulfide group on the right.\">"
+        }
+      ]
+    },
+    {
+      "id": "360866",
+      "stem_html": "Etýlasetat",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8fd911155b584a0b3766a91563132f9b0a0d7236/OChem_22_EC_201c.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to a  hydroxyl group and to an oxygen which in turn is linked to an ethyl group.\">"
+        }
+      ]
+    },
+    {
+      "id": "360867",
+      "stem_html": "Própanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94d83a44d654b08df5a517fd225fc9c7aeab0585/OChem_22_EC_201d.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to a  hydroxyl group and to a hydrogen atom\">"
+        }
+      ]
+    },
+    {
+      "id": "360868",
+      "stem_html": "Ediksýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8ebbc78875cc0ee7dee787d7f7f379ac94cbfd0/OChem_22_EC_201e.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to two  hydroxyl groups.\">"
+        }
+      ]
+    },
+    {
+      "id": "360869",
+      "stem_html": "Fenýlasetón",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fb88e9b5571659f234995307fddd44bc056611c/OChem_22_EC_201f.jpg\" alt=\"Two alkene structures. C 2 is bonded to hydroxyl and methyl groups but in second structure, C 2 is bonded to hydroxyl and C H 2 P h.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "26-99-OC-AP20",
+  "source_uid": "39259@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða af eftirfarandi amínósýrum er líklegra að finna á ytra byrði kúlulaga próteins og hverjar á innra byrði? Útskýrðu.",
+  "questions": [
+    {
+      "id": "348895",
+      "stem_html": "Valín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348896",
+      "stem_html": "Asparagínsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348897",
+      "stem_html": "Fenýlalanín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348898",
+      "stem_html": "Lýsín",
+      "collaborator_solutions": []
+    }
+  ]
+}

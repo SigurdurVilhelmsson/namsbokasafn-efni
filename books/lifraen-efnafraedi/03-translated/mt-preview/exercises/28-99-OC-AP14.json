@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-AP14",
+  "source_uid": "39143@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348373",
+      "stem_html": "<p>Hvaða amínósýruröð er táknuð af eftirfarandi mRNA-basaröð?</p>\n<p style=\"text-align: center\">(5′) CUA-GAC-CGU-UCC-AAG-UGA (3′)</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

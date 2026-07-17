@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP32",
+  "source_uid": "38142@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359216",
+      "stem_html": "<p>p<i>K</i><sub>a</sub>-gildi fimm <i>p</i>-skiptra bensósýra (<span class=\"magenta-text\">Y</span>C<sub>6</sub>H<sub>4</sub>CO<sub>2</sub>H) eru talin upp hér að neðan. Raðaðu samsvarandi skiptum bensenum (<span class=\"magenta-text\">Y</span>C<sub>6</sub>H<sub>5</sub>) eftir vaxandi hvarfgirni þeirra gagnvart rafseknu arómatísku skiptihvarfi. Ef bensósýra hefur p<i>K</i><sub>a</sub> = 4,19, hverjir af skiptihópunum eru virkjandi og hverjir eru afvirkjandi?</p>\n<table summary=\"\" class=\"unnumbered\">\n<tbody>\n<tr>\n<th><b>Skiptihópur Y</b></th>\n<th><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--459666c623c6e7ed73c2563d856ebf51353ab76e/OChem_20_EC_033.jpg\" alt=\"The structure of benzoic acid with a substituent Y placed para to the carboxylic acid group attached to the benzene ring. To the left, p k a term is mentioned.\"></th>\n</tr>\n<tr>\n<td>–Si(CH<sub>3</sub>)<sub>3</sub></td>\n<td>4,27</td>\n</tr>\n<tr>\n<td>–CH═CHC≡N</td>\n<td>4,03</td>\n</tr>\n<tr>\n<td>–HgCH<sub>3</sub></td>\n<td>4,10</td>\n</tr>\n<tr>\n<td>–OSO<sub>2</sub>CH<sub>3</sub></td>\n<td>3,84</td>\n</tr>\n<tr>\n<td>–PCl<sub>2</sub></td>\n<td>3,59</td>\n</tr>\n</tbody>\n</table>",
+      "collaborator_solutions": []
+    }
+  ]
+}

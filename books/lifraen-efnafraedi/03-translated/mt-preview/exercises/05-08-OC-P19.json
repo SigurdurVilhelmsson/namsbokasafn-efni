@@ -1,0 +1,19 @@
+{
+  "nickname": "05-08-OC-P19",
+  "source_uid": "36511@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "524236",
+      "stem_html": "<p>Gerum ráð fyrir að ediksýra (CH<sub>3</sub>CO<sub>2</sub>H) hvarfist við (<i>S</i>)-2-bútanól og myndi ester (sjá sýnidæmi 5.6). Hvaða rúmefnafræði myndir þú búast við að myndefnið/myndefnin hefðu? Hvert er samband myndefnanna?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c2ef613a175022aa210026b683c3b1d7b0ee1af/OChem_05_08_006.jpg\" alt=\"In a reaction, acetic acid reacts with 2-butanol in the presence of acid catalyst to form secondary-butyl acetate and water.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": " Myndefnið er hreinn <i>S</i>-ester. Engar nýjar hendnimiðjur myndast í efnahvarfinu og stellingin á hendnimiðju (<i>S</i>)-2-bútanóls er óbreytt."
+        }
+      ]
+    }
+  ]
+}

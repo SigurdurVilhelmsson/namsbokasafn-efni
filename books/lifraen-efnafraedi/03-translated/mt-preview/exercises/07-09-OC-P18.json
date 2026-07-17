@@ -1,0 +1,28 @@
+{
+  "nickname": "07-09-OC-P18",
+  "source_uid": "36641@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu byggingu karbókatjóna milliefnanna sem þú myndir búast við í eftirfarandi efnahvörfum:",
+  "questions": [
+    {
+      "id": "357716",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b66785fb901ed5ecb4a169e2f5a17e2a1ea68df/OChem_07_09_006a.jpg\" alt=\"2,4-dimethyl-3-hexene reacts with hydrogen bromide to form unknown product(s).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05d42a5b9d5aa2b5eea75b2abcfe9f3a1a768a96/OChem_07_EC_204a.jpg\" alt=\"2,4-dimethyl-3-hexene with a cation on C 4\">"
+        }
+      ]
+    },
+    {
+      "id": "357717",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b75227802679dfdb860fe510b84ada5c0fab60a7/OChem_07_09_006b.jpg\" alt=\"Ethylidenecyclopentane reacts with hydrogen iodide to form unknown product(s).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--927d3a644f56113e3f6c7963e3221aae7a072ea0/OChem_07_EC_204b.jpg\" alt=\"Ethylcyclopentane with a cation on C 1\">"
+        }
+      ]
+    }
+  ]
+}

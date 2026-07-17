@@ -1,0 +1,20 @@
+{
+  "nickname": "22-99-OC-MP03",
+  "source_uid": "38790@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og sýndu hvarfganginn fyrir hvert af eftirfarandi efnahvörfum:",
+  "questions": [
+    {
+      "id": "360922",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e4d9e7cb79e1a3aeda2925563553910a1259625/OChem_22_EC_016a.jpg\" alt=\"Methyl propionate reacts with L D A followed by bromoethane to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360923",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--674f4d8c08f2e88604f95cb6b551a72247259b9f/OChem_22_EC_016c.jpg\" alt=\"3-pentanone reacts with L D A followed by P h C H 2 B r to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

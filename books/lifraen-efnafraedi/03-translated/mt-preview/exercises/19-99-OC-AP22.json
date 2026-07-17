@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP22",
+  "source_uid": "38068@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360801",
+      "stem_html": "<p>Amínósýran metíónín er lífsmíðuð í mörgum skrefum sem fela í sér efnahvarf imíns pýridoxalfosfats (PLP) sem gefur ómettað imín, sem síðan hvarfast við cystein. Hvers konar efnahvörf eiga sér stað í þessum tveimur skrefum?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74f083b1dce444ed63ade4e7bf36efa8764c8aa4/OChem_19_EC_056.jpg\" alt=\"O-succinylhomoserine- P L P imine undergoes a reaction to form an unsaturated imine which further reacts with cysteine to form the final product.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

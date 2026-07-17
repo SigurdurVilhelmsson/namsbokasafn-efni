@@ -1,0 +1,19 @@
+{
+  "nickname": "21-05-OC-P14",
+  "source_uid": "38164@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342483",
+      "stem_html": "Skrifaðu hvarfgang efnahvarfsins á milli <i>p</i>-hýdroxýanilíns og ediksýruanhýdríðs til að búa til asetamínófen.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Þetta er dæmigert kjarnsækið asýlskiptihvarf, þar sem <i>p</i>-hýdroxýanilín er kjarnsækirinn og asetatjón er farhópurinn."
+        }
+      ]
+    }
+  ]
+}

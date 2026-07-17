@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP18",
+  "source_uid": "39091@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348160",
+      "stem_html": "Hægt er að búa til <small style=\"font-variant: small-caps\">L</small>-gúlósa úr <small style=\"font-variant: small-caps\">D</small>-glúkósa með ferli sem hefst á oxun yfir í <small style=\"font-variant: small-caps\">D</small>-glúkarsýru, sem hringtengist og myndar tvö sexliða hringlaktón. Með því að aðskilja laktónin og afoxa þau með natríummalgami fást <small style=\"font-variant: small-caps\">D</small>-glúkósi og <small style=\"font-variant: small-caps\">L</small>-gúlósi. Hver er bygging laktónanna tveggja og hvort þeirra er afoxað yfir í <small style=\"font-variant: small-caps\">L</small>-gúlósa?",
+      "collaborator_solutions": []
+    }
+  ]
+}

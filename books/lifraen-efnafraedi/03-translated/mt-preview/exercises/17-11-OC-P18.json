@@ -1,0 +1,19 @@
+{
+  "nickname": "17-11-OC-P18",
+  "source_uid": "37883@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359401",
+      "stem_html": "<p>Gefðu þér að þú þurfir að búa til 5-kólesten-3-ón úr kólesteróli. Hvernig gætirðu notað IR-litrófsgreiningu til að sjá hvort efnahvarfið hafi heppnast? Hvaða mun myndirðu leita að í IR-rófum upphafsefnis og myndefnis?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74ada6b1b5cd1f8be0f2acc0f6004f2ec07bed28/OChem_17_11_003.jpg\" alt=\"Cholesterol reacts with chromium trioxide and hydronium ion to form 5-cholestene-3-one.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hvarf –OH-gleypni; tilkoma C<span data-math=\"\\text{=}\"></span>O"
+        }
+      ]
+    }
+  ]
+}

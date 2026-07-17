@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-MP08",
+  "source_uid": "38108@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359157",
+      "stem_html": "<p>2-bróm-6,6-dímetýlsýklóhexanón gefur 2,2-dímetýlsýklópentankarboxýlsýru þegar það er meðhöndlað með vatnslausn af NaOH og síðan súrt gert, ferli sem kallast Favorskii-efnahvarfið. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--797d601a6df3da92703a09ee7eef37d1d222de8b/OChem_20_EC_019.jpg\" alt=\"Conversion of 6-bromo-2,2-dimethylcyclohexanone to 2,2-dimethylcyclopentanecarboxylic acid on reaction with aqueous sodium hydroxide followed by acid hydrolysis.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

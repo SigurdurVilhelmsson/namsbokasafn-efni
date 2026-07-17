@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP41",
+  "source_uid": "37730@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358557",
+      "stem_html": "<p>Tvítengi enamíns (alk<i>en</i> + <i>amín</i>) er mun kjarnsæknara en dæmigert tvítengi alkens. Gerðu ráð fyrir að niturfrumeindin í enamíni sé <i>sp</i><sup>2</sup>-blendinguð, teiknaðu svigrúmsmynd af enamíni og útskýrðu hvers vegna tvítengið er rafeindaríkt.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b33ced6634028ca3d305ba50e39d33b2f6eacdc3/OChem_14_EC_037.jpg\" alt=\"An enamine comprises of a 2-carbon chain with a double bond between. C 1 and C 2 and a nitrogen with two R groups and a lone pair is attached to C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

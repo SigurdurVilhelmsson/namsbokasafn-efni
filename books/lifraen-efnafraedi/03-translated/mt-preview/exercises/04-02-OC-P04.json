@@ -1,0 +1,28 @@
+{
+  "nickname": "04-02-OC-P04",
+  "source_uid": "36475@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi efni, þar með talið <i>cis</i>- eða <i>trans</i>- forskeytið:",
+  "questions": [
+    {
+      "id": "351067",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afb752bc837baeb696acd84e7a9935131a9e2b30/OChem_04_02_006a.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to chlorine and dash bonded to hydrogen. C4 is wedge bonded to hydrogen and dash bonded to methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-1-Klór-4-metýlsýklóhexan"
+        }
+      ]
+    },
+    {
+      "id": "351068",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c81a41b8993781e7821ceac3932b9d1b37a6a59c/OChem_04_02_006b.jpg\" alt=\"In a cycloheptane ring, C1 is wedge bonded to ethyl and dash bonded to hydrogen. C3 is wedge bonded to methyl and dash bonded to hydrogen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-1-Etýl-3-metýlsýklóheptan"
+        }
+      ]
+    }
+  ]
+}

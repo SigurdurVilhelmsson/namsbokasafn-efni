@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP16",
+  "source_uid": "37830@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358979",
+      "stem_html": "<p>Bensýlbrómíði er breytt í bensaldehýð með því að hita það í dímetýlsúlfoxíði. Leggið til byggingu fyrir milliefnið og sýnið hvarfganga beggja skrefa efnahvarfsins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02056e81ab49c20079571fa69cd18900105b2a74/OChem_16_EC_030.jpg\" alt=\"A two-step reaction shows benzene bonded to a C H 2 B r group being converted to benzene bonded to an aldehyde group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

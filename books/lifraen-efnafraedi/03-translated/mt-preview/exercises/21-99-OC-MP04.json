@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-MP04",
+  "source_uid": "38184@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um afurð(ir) og skrifið verkunarhátt fyrir eftirfarandi efnahvörf:",
+  "questions": [
+    {
+      "id": "361430",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7430b019966a185bd3f34b59fb2172ba42ec3073/OChem_21_EC_029b.jpg\" alt=\"The reaction of an ester with two equivalents of phenyl magnesium bromide in ether, followed by treatment with acid gives an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361431",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0fdf460d20344494b3ebb8ab478a0c040718cde6/OChem_21_EC_029c.jpg\" alt=\"The reaction of a four membered ring contaning a carbonyl group with an oxygen atom next to it with two equivalents of ethyl magnesium bromide in ether followed treatment with acid gives an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "13-99-OC-GP01",
+  "source_uid": "37518@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gerðu ráð fyrir að þú hafir efnasamband með formúluna C<sub>3</sub>H<sub>6</sub>O.",
+  "questions": [
+    {
+      "id": "338204",
+      "stem_html": "Hversu mörg tvítengi og/eða hringi inniheldur efnasambandið þitt?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338205",
+      "stem_html": "Leggið til eins margar byggingar og þið getið sem passa við sameindaformúluna.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338206",
+      "stem_html": "Ef efnasambandið þitt sýnir innrauðan gleypnitopp við 1715 cm<sup>–1</sup>, hvaða virknihóp hefur það?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338207",
+      "stem_html": "Ef efnasambandið þitt sýnir einn <sup>1</sup>H NMR-gleypnitopp við 2,1 <i>δ</i>, hver er bygging þess?",
+      "collaborator_solutions": []
+    }
+  ]
+}

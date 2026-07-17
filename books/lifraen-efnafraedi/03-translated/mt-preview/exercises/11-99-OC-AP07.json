@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-AP07",
+  "source_uid": "37386@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætuð þið búið til hvert eftirfarandi efna með því að nota kjarnsækið skiptihvarf í einhverju skrefi?",
+  "questions": [
+    {
+      "id": "355351",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b112c18969853739882278b7ff64b1f43727a7fa/OChem_11_EC_025a.jpg\" alt=\"The chemical structure of 4-methyl-2-pentyne.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355352",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f4e40cf8ac7a24f9c3fc0ea0ec8b4a96fc596407/OChem_11_EC_025b.jpg\" alt=\"The chemical structure of methyl t-butyl ether.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355353",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eedc93ca60a1e57a42d6020b072ae33d4f1c6c5c/OChem_11_EC_025c.jpg\" alt=\"The chemical structure of pentanenitrile.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355354",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e45eeb2e2be19e92cb5a203cd292ca788b192f7/OChem_11_EC_025d.jpg\" alt=\"The chemical structure of 1-aminopropane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

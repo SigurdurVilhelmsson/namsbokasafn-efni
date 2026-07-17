@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-MP02",
+  "source_uid": "38102@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sjáðu fyrir um myndefni og skrifaðu hvarfgang hvers eftirfarandi efnahvarfs:",
+  "questions": [
+    {
+      "id": "359136",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--99219cf8a9e8699c92a7eac015f1ea7395313165/OChem_20_EC_013b.jpg\" alt=\"Conversion of cyclopentanecarboxamide to unknown products depicted by a question mark by reaction with thionyl chloride.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359137",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6dbe411263dfc70f96bd099b71a3d489f4032e47/OChem_20_EC_013d.jpg\" alt=\"Conversion of benzamide to unknown products depicted by a question mark by reaction with thionyl chloride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

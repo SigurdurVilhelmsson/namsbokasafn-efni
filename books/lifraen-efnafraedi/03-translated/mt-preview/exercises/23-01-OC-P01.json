@@ -1,0 +1,37 @@
+{
+  "nickname": "23-01-OC-P01",
+  "source_uid": "38881@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáðu fyrir um myndefni aldól-efnahvarfs eftirfarandi efnasambanda:",
+  "questions": [
+    {
+      "id": "359699",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--229a36440c7f38f89ed625f7a482e53850331898/OChem_23_01_006a.jpg\" alt=\"The structure of butyraldehyde shows a four-carbon chain carrying a carbonyl group at first carbon and is single-bonded to H and propyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75c3c67b2a897229720284c0e3dfac434e941b30/OChem_23_EC_201a.jpg\" alt=\"The structure of 2-ethyl-3-hydroxyhexanal shows a six-carbon chain with aldehyde on the first, ethyl on the second, and hydroxyl group on the third carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "359700",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1fa8ca9fd4566089b665a6fddca75f8588dd420/OChem_23_01_006b.jpg\" alt=\"The structure of acetophenone shows a benzene ring single-bonded to the carbonyl group at the first carbon. The carbonyl carbon is single-bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9911c7424b781c69394f2108c8fc98436b215e76/OChem_23_EC_201b.jpg\" alt=\"The structure shows a benzene ring attached to the carbonyl carbon that is single-bonded to a methylene group, which single-bonded to a carbon with hydroxyl, methyl, and phenyl groups.\">"
+        }
+      ]
+    },
+    {
+      "id": "359701",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bd458b2482caba41c47cc972a2ea8c257a80750/OChem_23_01_006c.jpg\" alt=\"The structure of cyclopentanone shows a five-membered cyclic ring. The first carbon of the ring is double-bonded to an oxygen atom. Other carbon-carbon bonds are single-bonded.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ce7a5cffc695454c5989ad211aa5fac50c4ad26/OChem_23_EC_201c.jpg\" alt=\"The structure shows a cyclopentanol single-bonded via C 1 to C 2 of cyclopentanone.\">"
+        }
+      ]
+    }
+  ]
+}

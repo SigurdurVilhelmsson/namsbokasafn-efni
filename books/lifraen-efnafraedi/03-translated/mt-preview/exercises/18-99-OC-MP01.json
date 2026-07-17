@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-MP01",
+  "source_uid": "38719@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spyrðu fyrir um myndefni(n) og sýndu hvarfgang fyrir hvert eftirfarandi efnahvarfa.",
+  "questions": [
+    {
+      "id": "361174",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a70814729485c48025156b1ad26f1de0d2489b0/OChem_18_EC_019b.jpg\" alt=\"2-Ethoxypropane reacts with hydrogen iodide (H I) to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361175",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1045d487dc9c7cca09f452c068b0085721b6575b/OChem_18_EC_019c.jpg\" alt=\"Ethoxybenzene reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

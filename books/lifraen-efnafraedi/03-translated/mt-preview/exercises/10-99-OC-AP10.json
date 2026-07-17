@@ -1,0 +1,20 @@
+{
+  "nickname": "10-99-OC-AP10",
+  "source_uid": "37273@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu efnasamböndunum í hverri af eftirfarandi röðum eftir vaxandi oxunarstigi:",
+  "questions": [
+    {
+      "id": "657026",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ae62c8f47bd5f53bfc68f278c239b66e23d9636/OChem_10_EC_024a.jpg\" alt=\"The chemical structures of 2-butene, 1-butene, butanal, and butanoic acid.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "657027",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--164572a69434d042a52d6b26667e5c245a700b28/OChem_10_EC_024b.jpg\" alt=\"The chemical structures of propylamine, 1-bromopropane, 1-chloropropan-2-one, and 1-bromo-3-chloropropane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

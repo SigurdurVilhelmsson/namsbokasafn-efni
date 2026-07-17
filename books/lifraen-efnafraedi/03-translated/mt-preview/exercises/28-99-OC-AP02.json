@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-AP02",
+  "source_uid": "39131@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348338",
+      "stem_html": "Insúlín úr mönnum og hestum hefur tvær fjölpeptíðkeðjur, þar sem önnur keðjan inniheldur 21 amínósýru og hin 30 amínósýrur. Þau eru ólík í frumbyggingu á tveimur stöðum. Í stöðu 9 í annarri keðjunni hefur insúlín úr mönnum Ser og insúlín úr hestum hefur Gly; í stöðu 30 í hinni keðjunni hefur insúlín úr mönnum Thr og insúlín úr hestum hefur Ala. Hvernig hlýtur DNA-erfðaefnið fyrir þessi tvö insúlín að vera ólíkt?",
+      "collaborator_solutions": []
+    }
+  ]
+}

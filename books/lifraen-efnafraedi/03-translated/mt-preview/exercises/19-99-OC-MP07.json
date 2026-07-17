@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP07",
+  "source_uid": "38029@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi efnahvarf byrjar með asetali og breytir því í annað asetal. Spáðu fyrir um myndefnið/myndefnin og leggðu til hvarfgang.",
+  "questions": [
+    {
+      "id": "360690",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f52fe58523acfcedc8bb4f89d21dcb0cf183e28/OChem_19_EC_026a.jpg\" alt=\"The reaction shows 1,2-dihydroxybenzene and 2, 2-dimethoxypropane in the presence of hydrogen ion to yield the unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360691",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1ab3a4a41e59dd3e2103a3b78a5a2d9d7435d7f/OChem_19_EC_026b.jpg\" alt=\"The reaction shows 3, 3-dimethoxypentane with ethylene glycol in the presence of hydrogen ions, producing an unknown product denoted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

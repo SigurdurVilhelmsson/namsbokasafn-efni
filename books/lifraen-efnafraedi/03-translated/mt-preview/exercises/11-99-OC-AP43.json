@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-AP43",
+  "source_uid": "37416@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Geðrofslyfið flúpentixól er búið til samkvæmt eftirfarandi ferli:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--393fd1f5da7a84ded05d9ea74a924030f566e427/OChem_11_EC_049.jpg\" alt=\"Compound A undergoes a multi-step reaction to produce Flupentixol through the formation of intermediate compounds B, C, D, and E.\">",
+  "questions": [
+    {
+      "id": "355458",
+      "stem_html": "Hvaða alkýlklóríð <b>B</b> hvarfast við amín <b>A</b> til að mynda <b>C</b>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355459",
+      "stem_html": "Efnasamband <b>C</b> er meðhöndlað með SOCl<sub>2</sub> og myndefnið látið hvarfast við magnesíummálm til að gefa Grignard-hvarfefni <b>D</b>. Hver er bygging <b>D</b>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355460",
+      "stem_html": "Við munum sjá í kafla 19.7 að Grignard-hvarfefni leggjast á ketón, eins og <b>E</b>, og mynda þriðja stigs alkóhól, eins og <b>F</b>. Vegna nýmyndaðrar hendnimiðju er efnasamband <b>F</b> til sem par handhverfa. Teiknaðu báðar og úthlutaðu <i>R,S</i>-skilgreiningum.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355461",
+      "stem_html": "Tvær rúmhverfur flúpentixóls myndast síðan úr <b>F</b>, en aðeins önnur er sýnd. Teiknaðu hina hverfuna og tilgreindu gerð rúmhverfunnar.",
+      "collaborator_solutions": []
+    }
+  ]
+}

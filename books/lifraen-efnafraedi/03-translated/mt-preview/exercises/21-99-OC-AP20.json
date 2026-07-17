@@ -1,0 +1,30 @@
+{
+  "nickname": "21-99-OC-AP20",
+  "source_uid": "38214@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú greina á milli eftirfarandi hverfupara með litrófsgreiningu? Segið til um hvaða mun þið mynduð búast við að sjá.",
+  "questions": [
+    {
+      "id": "342708",
+      "stem_html": "<i>N</i>-Metýlprópanamíð og <i>N</i>,<i>N</i>-dímetýlasetamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342709",
+      "stem_html": "5-Hýdroxýpentanítríl og sýklóbútankarboxamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342710",
+      "stem_html": "4-Klórbútansýra og 3-metoxýprópanóýlklóríð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342711",
+      "stem_html": "Etýlprópanóat og própýlasetat",
+      "collaborator_solutions": []
+    }
+  ]
+}

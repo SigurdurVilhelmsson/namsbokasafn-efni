@@ -1,0 +1,64 @@
+{
+  "nickname": "09-09-OC-P12",
+  "source_uid": "37201@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Með 4-oktín sem eina kolefnisgjafann og með því að nota öll nauðsynleg ólífræn hvarfefni, hvernig myndir þú mynda eftirfarandi efnasambönd?",
+  "questions": [
+    {
+      "id": "374683",
+      "stem_html": "<i>cis</i>-4-okten",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>2</sub>, Lindlar-hvati"
+        }
+      ]
+    },
+    {
+      "id": "374684",
+      "stem_html": "Bútanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. H<sub>2</sub>, Lindlar-hvati; 2. O<sub>3</sub>; 3. Zn CH<sub>3</sub>CO<sub>2</sub>H"
+        }
+      ]
+    },
+    {
+      "id": "374685",
+      "stem_html": "4-brómoktan",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. H<sub>2</sub>/Lindlar; 2. HBr"
+        }
+      ]
+    },
+    {
+      "id": "374686",
+      "stem_html": "4-oktanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. H<sub>2</sub>/Lindlar; 2. BH<sub>3</sub>; 3. NaOH, H<sub>2</sub>O<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "374687",
+      "stem_html": "4,5-díklóroktan",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. H<sub>2</sub>/Lindlar; 2. Cl<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "374688",
+      "stem_html": "Bútansýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "KMnO<sub>4</sub>, H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

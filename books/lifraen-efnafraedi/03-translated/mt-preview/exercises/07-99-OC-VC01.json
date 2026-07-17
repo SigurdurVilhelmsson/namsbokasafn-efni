@@ -1,0 +1,20 @@
+{
+  "nickname": "07-99-OC-VC01",
+  "source_uid": "36630@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi alkena og breyttu hverri teikningu í beinagrindarmynd:",
+  "questions": [
+    {
+      "id": "354337",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--31f690feab10dcb651feea31b16a6745f80b006b/OChem_07_EC_002a.jpg\" alt=\"The ball-and-stick model has a 6-carbon chain. C2 is double bonded to C3. C2, C4, and C5 are each bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354338",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8919062a0631ea3f66d8dba01f8c59690479b141/OChem_07_EC_002b.jpg\" alt=\"The ball-and-stick model has a cyclohexene ring. C1 is bonded to an ethyl group. C3 is bonded to two methyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

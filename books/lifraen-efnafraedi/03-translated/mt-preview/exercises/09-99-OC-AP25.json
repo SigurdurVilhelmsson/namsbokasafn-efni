@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP25",
+  "source_uid": "37239@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357346",
+      "stem_html": "<p>Lífræn málmhvarfefni eins og natríumasetýlíð gangast undir álagningarefnahvarf með ketónum og mynda alkóhól:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa81b83ebd318d3bf4298eaa616e8cee94096963/OChem_09_EC_038.jpg\" alt=\"Acetone reacts in the presence of sodium acetylide and hydronium ion to form an alcohol.\">\n<p>Hvernig gætir þú notað þetta efnahvarf til að búa til 2-metýl-1,3-bútadíen, upphafsefnið sem notað er við framleiðslu á gervigúmmíi?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

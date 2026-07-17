@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP09",
+  "source_uid": "37526@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351578",
+      "stem_html": "<p>Efnasamband <b>A</b>, kolvetni með M<sup>+</sup> = 96 í massarófi sínu, hefur eftirfarandi <sup>13</sup>C-rófgögn. Við efnahvarf með BH<sub>3</sub>, og síðan meðferð með basísku H<sub>2</sub>O<sub>2</sub>, breytist <b>A</b> í <b>B</b>, en <sup>13</sup>C-rófgögn þess eru einnig gefin. Leggið til byggingarformúlur fyrir <b>A</b> og <b>B</b>.</p>\n<p><b>Efnasamband A</b></p>\n<ul style=\"list-style-type:none\">\n<li>Breiðbandsafþreytt <sup>13</sup>C NMR: 26,8, 28,7, 35,7, 106,9, 149,7 <i>δ</i></li>\n<li>DEPT-90: engir toppar</li>\n<li>DEPT-135: engir jákvæðir toppar; neikvæðir toppar við 26,8, 28,7, 35,7, 106,9 <i>δ</i></li>\n</ul>\n<p><b>Efnasamband B</b></p>\n<ul style=\"list-style-type:none\">\n<li>Breiðbandsafþreytt <sup>13</sup>C NMR: 26,1, 26,9, 29,9, 40,5, 68,2 <i>δ</i></li>\n<li>DEPT-90: 40,5 <i>δ</i></li>\n<li>DEPT-135: jákvæður toppur við 40,5 <i>δ;</i> neikvæðir toppar við 26,1, 26,9, 29,9, 68,2 <i>δ</i></li>\n</ul>",
+      "collaborator_solutions": []
+    }
+  ]
+}

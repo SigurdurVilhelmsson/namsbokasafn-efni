@@ -1,0 +1,19 @@
+{
+  "nickname": "22-04-OC-P06",
+  "source_uid": "38774@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360875",
+      "stem_html": "<p>Ef metanóli frekar en vatni er bætt við í lok Hell–Volhard–Zelinskii-efnahvarfs myndast ester frekar en sýra. Sýndu hvernig þú myndir framkvæma eftirfarandi umbreytingu og leggðu til hvarfgang fyrir estermyndunarskrefið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a31b4531993ba9f24f835cf0007698d4c6650cce/OChem_22_04_003.jpg\" alt=\"3-methyl pentanoic acid reacts with unknown reagent represented by question mark to form six-carbon chain with carbonyl group at C 2, bromine at C 3, and methyl at C 4.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Milliefnið <i>α</i>-brómsýrubrómíð gengst undir kjarnsækið asýl-skiptihvarf með metanóli til að gefa <i>α</i>-brómester."
+        }
+      ]
+    }
+  ]
+}

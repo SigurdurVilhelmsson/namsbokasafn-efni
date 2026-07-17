@@ -1,0 +1,28 @@
+{
+  "nickname": "02-11-OC-P17",
+  "source_uid": "36129@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Notaðu sveigðar örvar til að sýna hvernig efnin í hluta <b>(a)</b> geta virkað sem Lewis-basar í efnahvörfum sínum við HCl og sýndu hvernig efnin í hluta <b>(b)</b> geta virkað sem Lewis-sýrur í efnahvarfi sínu við OH<sup>–</sup>.",
+  "questions": [
+    {
+      "id": "350739",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>OH, HN(CH<sub>3</sub>)<sub>2</sub>, P(CH<sub>3</sub>)<sub>3</sub> ",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2121855194392fc7deee226b3596cdb3ba9ed1a3/OChem_02_EC_208.jpg\" alt=\"Three reversible reactions show ethanol, dimethylamine, and trimethylphosphine each reacting with hydrogen chloride to form protonated products.\">"
+        }
+      ]
+    },
+    {
+      "id": "350740",
+      "stem_html": "H<sub>3</sub>C<sup>+</sup>, B(CH<sub>3</sub>)<sub>3</sub>, MgBr<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea3ae58229c556b5e871612d113bc2405bc8ab45/OChem_02_EC_209.jpg\" alt=\"Three reversible reactions show methyl cation, trimethyl borane, and magnesium bromide each reacting with hydroxide ion to form products.\">"
+        }
+      ]
+    }
+  ]
+}

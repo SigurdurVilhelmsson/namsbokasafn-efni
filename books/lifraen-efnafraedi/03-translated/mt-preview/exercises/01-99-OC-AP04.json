@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP04",
+  "source_uid": "37562@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvers vegna geta sameindir með eftirfarandi formúlur ekki verið til?",
+  "questions": [
+    {
+      "id": "338480",
+      "stem_html": "CH<sub>5</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338481",
+      "stem_html": "C<sub>2</sub>H<sub>6</sub>N",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338482",
+      "stem_html": "C<sub>3</sub>H<sub>5</sub>Br<sub>2</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

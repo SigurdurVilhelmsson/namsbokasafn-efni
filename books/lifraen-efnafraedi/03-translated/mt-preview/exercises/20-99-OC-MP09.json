@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-MP09",
+  "source_uid": "38109@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359159",
+      "stem_html": "<p>Náttúruleg efnasambönd sem kallast <i>terpenóíðar,</i> sem við munum fjalla um í <b>kafla 27.5</b>, eru lífsmíðuð eftir ferli sem felur í sér losun CO<sub>2</sub> úr 3-fosfómevalónat 5-dífosfati til að gefa ísópentenýldífosfat. Notaðu sveigðar örvar til að sýna hvarfgang þessa efnahvarfs.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70b39f46c5ebada4380d7428ecaa4a398f0003b0/OChem_20_EC_020.jpg\" alt=\"The reaction of 3-phosphomevalonate 5-diphosphate forms three products: isopentenyl diphosphate, carbon dioxide, and phosphate.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

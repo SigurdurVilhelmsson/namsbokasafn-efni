@@ -1,0 +1,37 @@
+{
+  "nickname": "01-03-OC-P02",
+  "source_uid": "37539@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hversu margar rafeindir hefur hvert eftirfarandi líffræðilegra snefilefna í ysta rafeindahvolfinu sínu?",
+  "questions": [
+    {
+      "id": "338384",
+      "stem_html": "Magnesín",
+      "collaborator_solutions": [
+        {
+          "content_html": "2"
+        }
+      ]
+    },
+    {
+      "id": "338385",
+      "stem_html": "Kóbalt",
+      "collaborator_solutions": [
+        {
+          "content_html": "2"
+        }
+      ]
+    },
+    {
+      "id": "338386",
+      "stem_html": "Selen",
+      "collaborator_solutions": [
+        {
+          "content_html": "6"
+        }
+      ]
+    }
+  ]
+}

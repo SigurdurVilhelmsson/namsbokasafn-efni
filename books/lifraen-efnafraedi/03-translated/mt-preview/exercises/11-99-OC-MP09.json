@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP09",
+  "source_uid": "37374@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355320",
+      "stem_html": "<p>Efnaskipti <i>S</i>-adenósýlhómósýsteins (kafli 11.6) fela í sér eftirfarandi röð. Stingdu upp á hvarfgangi fyrir annað skrefið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57f1d31811d35e8bc89bef81e2aaf4cf7d8aa50c/OChem_11_EC_019.jpg\" alt=\"The reaction of S-Adenosylhomocysteine forms an intermediate through the conversion of N A D plus to N A D H, which further reacts with a base to yield homocysteine and another product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP38",
+  "source_uid": "36601@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354247",
+      "stem_html": "<p><i>Allen</i> eru efnasambönd með samliggjandi kolefnis-kolefnis tvítengi. Mörg allen eru hendin, jafnvel þótt þau innihaldi ekki hendnimiðjur. Mýkómýsín, til dæmis, náttúrulegt sýklalyf sem einangrað er úr bakteríunni <i>Nocardia acidophilus</i>, er hendin og hefur [<i>α</i>]<sub>D</sub> = −130. Útskýrið hvers vegna mýkómýsín er hendin.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46c112519c543b6f36c09d0a4380ec34e5ec573c/OChem_05_EC_029.jpg\" alt=\"The condensed structural formula of mycomycin.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "12-07-OC-P07",
+  "source_uid": "37423@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða virknihópa gætu eftirfarandi sameindir innihaldið?",
+  "questions": [
+    {
+      "id": "337569",
+      "stem_html": "Efnasamband með sterkt gleypni við 1710 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Keton eða aldehýð"
+        }
+      ]
+    },
+    {
+      "id": "337570",
+      "stem_html": "Efnasamband með sterkt gleypni við 1540 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Nítróefnasamband"
+        }
+      ]
+    },
+    {
+      "id": "337571",
+      "stem_html": "Efnasamband með sterkt gleypni við 1720 cm<sup>–1</sup> og 2500 til 3100 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Karboxýlsýra"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP29",
+  "source_uid": "39661@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361745",
+      "stem_html": "<p>Atrópín, C<sub>17</sub>H<sub>23</sub>NO<sub>3</sub>, er eitraður alkalóíði sem er einangraður úr laufum og rótum <i>Atropa belladonna,</i> belladonnajurtar. Í litlum skömmtum virkar atrópín sem vöðvaslakandi efni; 0,5 ng (nanógramm, 10<sup>–9</sup> g) er nóg til að valda útvíkkun sjáaldurs. Við basískt vatnsrof gefur atrópín af sér trópiksýru, C<sub>6</sub>H<sub>5</sub>CH(CH<sub>2</sub>OH)CO<sub>2</sub>H, og trópín, C<sub>8</sub>H<sub>15</sub>NO. Trópín er sjónhverfulega óvirkt alkóhól sem gefur af sér trópíden við vötnun með H<sub>2</sub>SO<sub>4</sub>. Leggðu til byggingu fyrir atrópín.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9aaf4a45ac46fb5c4c54a725f1ee98cf7ab125e8/OChem_24_EC_051.jpg\" alt=\"The structure of tropidene, a bicyclic compound incorporating a nitrogen with a methyl substituent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

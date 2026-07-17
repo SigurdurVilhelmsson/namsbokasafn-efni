@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-MP05",
+  "source_uid": "37677@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358471",
+      "stem_html": "<p>Nytjadrægt díen í nýmyndun margra náttúrulegra efna er þekkt sem díen Danishefskys. Það er nytjadrægt vegna þess að eftir Diels-Alder-efnahvarfið er hægt að breyta því í myndefni sem ekki er hægt að fá með dæmigerðu Diels-Alder-efnahvarfi. Sýndu Diels-Alder-álagningarafurðina og stingdu upp á hvarfgangi sem skýrir lokaafurðirnar.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--189065bc5f349a6f6af8640ccf516622c8df5641/OChem_14_EC_011.jpg\" alt=\"When heated, Danishefsky’s Diene reacts with ethene bound to an aldehyde group to yield Diels–Alder Adduct that reacts with hydrogen chloride to yield three products.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

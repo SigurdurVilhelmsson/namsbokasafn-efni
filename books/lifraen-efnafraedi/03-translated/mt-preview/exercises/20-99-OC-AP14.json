@@ -1,0 +1,35 @@
+{
+  "nickname": "20-99-OC-AP14",
+  "source_uid": "38124@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú breytt hverju eftirfarandi efnasambanda í bútansýru? Skrifaðu hvert skref og sýndu öll hvarfefni.",
+  "questions": [
+    {
+      "id": "342102",
+      "stem_html": "1-bútanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342103",
+      "stem_html": "1-brómbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342104",
+      "stem_html": "1-búten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342105",
+      "stem_html": "1-brómprópan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342106",
+      "stem_html": "4-okten",
+      "collaborator_solutions": []
+    }
+  ]
+}

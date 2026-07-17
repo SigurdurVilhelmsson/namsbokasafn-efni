@@ -1,0 +1,19 @@
+{
+  "nickname": "15-04-OC-P06",
+  "source_uid": "37737@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342866",
+      "stem_html": "Teiknaðu fimm vok myndir sýklópentadíenýl anjónarinnar. Eru öll kolefnis-kolefnis efnatengi jafngild? Hversu margar gleypnilínur myndir þú búast við að sjá í <sup>1</sup>H NMR og <sup>13</sup>C NMR rófum anjónarinnar?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Öll C–C efnatengi eru jafngild; ein vok mynd í bæði <sup>1</sup>H og <sup>13</sup>C NMR rófum."
+        }
+      ]
+    }
+  ]
+}

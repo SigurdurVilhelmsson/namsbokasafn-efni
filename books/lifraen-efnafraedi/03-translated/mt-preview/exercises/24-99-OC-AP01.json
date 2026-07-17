@@ -1,0 +1,40 @@
+{
+  "nickname": "24-99-OC-AP01",
+  "source_uid": "39000@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "361674",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb99b4c8e0a793bf559feb744967c74128836275/OChem_24_EC_033a.jpg\" alt=\"A benzene ring with an amino substituent. There are two bromine substituents, one ortho and one para to the amino group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361675",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51dd4cf5d942608096296f566bed6e6e43d8175f/OChem_24_EC_033b.jpg\" alt=\"A cyclopentane ring connected to C H 2 C H 2 N H 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361676",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4572919a46cf92bea58a68fbaaafdacf55ed933/OChem_24_EC_033c.jpg\" alt=\"A nitrogen atom with cyclopentyl and ethyl substituents.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361677",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e7b521ec2ba7793d01b212fbd5f635adf8dda1c/OChem_24_EC_033d.jpg\" alt=\"A nitrogen atom with one cyclopentyl and two methyl substituents.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361678",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10f46df89e7720c738a845b435e065c47ecc86b4/OChem_24_EC_033e.jpg\" alt=\"A five-membered ring incorporating one nitrogen. The nitrogen also has an n-propyl substituent.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361679",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7651d2aacfd8d0c4f2f029c6cce4e24c65d32b3/OChem_24_EC_033f.jpg\" alt=\"The structure of a four-carbon chain in which one terminal carbon is part of a nitrile. The other terminal carbon has an amino substituent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

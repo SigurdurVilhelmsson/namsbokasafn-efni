@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP53",
+  "source_uid": "36165@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357156",
+      "stem_html": "<p>Maleinsýra hefur tvískautsvægi en náskyld fúmarsýra, efni sem tekur þátt í sítrónusýruhringnum þar sem fæðusameindir umbrotna, hefur það ekki. Skýrðu þetta.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--120339351f7b186a18acb761ce53f57b11d1b70d/OChem_02_EC_019.jpg\" alt=\"The structural formulas of maleic acid and fumaric acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

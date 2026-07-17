@@ -1,0 +1,19 @@
+{
+  "nickname": "04-09-OC-P20",
+  "source_uid": "36491@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "330714",
+      "stem_html": "Hvor hverfan er stöðugri, <i>cis</i>-dekalín eða <i>trans</i>-dekalín (mynd 4.18)? Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-dekalín er stöðugra vegna þess að það hefur engar 1,3-tvíáslægar víxlverkanir."
+        }
+      ]
+    }
+  ]
+}

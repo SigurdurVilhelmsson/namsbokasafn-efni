@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP26",
+  "source_uid": "38829@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361031",
+      "stem_html": "<p>Keton hvarfast hægt við bensen selenýlklóríð í nærveru HCl og mynda <i>α</i>-fenýlselenóketon. Leggðu til hvarfgang fyrir þetta sýruhvataða <i>α</i>-skiptihvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--858684f520be7f7ae2928ca679659581e6ad42b1/OChem_22_EC_046.jpg\" alt=\"A ketone undergoes a chemical reaction with benzeneselenenyl chloride and hydrochloric acid, yielding an alpha-phenylseleno ketone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "28-99-OC-VC01",
+  "source_uid": "39122@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu eftirfarandi basa og segðu til um hvort hver þeirra finnist í DNA, RNA eða báðum:",
+  "questions": [
+    {
+      "id": "354966",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--304f33566981d68fa8a47f2de1bac21f66cd1433/OChem_28_EC_001a.jpg\" alt=\"The ball-and-stick model of Guanine. It is a purine base with two rings and one oxygen atom is attached to the five-membered ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354967",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a5a70763607aefaacae27d0fbe61974216bd5ae/OChem_28_EC_001b.jpg\" alt=\"The ball-and-stick model of Uracil. It is a pyrimidine base with one ring to which two oxygen atoms are attached.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354968",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd72b27e6716522bf584c47b786386e4607e0a54/OChem_28_EC_001c.jpg\" alt=\"The ball-and-stick model of Cytosine. It is a pyrimidine base with one ring to which one oxygen atom is attached.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

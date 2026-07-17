@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP11",
+  "source_uid": "37437@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356700",
+      "stem_html": "<p>2-metýlpentan (C<sub>6</sub>H<sub>14</sub>) hefur massarófið sem sýnt er. Hvaða toppur táknar M<sup>+</sup>? Hver er basatoppurinn? Leggið til byggingar fyrir brotajónir með <i>m/z</i> = 71, 57, 43 og 29. Af hverju hefur basatoppurinn þann massa sem hann hefur?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cb36a61ed62e7501735a55ca45aca89669ec5d41/OChem_12_EC_003.jpg\" alt=\"The mass spectrum of  2-methylpentane with a base peak at m / z 43 and highest m / z value peaks at 86 and 87.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

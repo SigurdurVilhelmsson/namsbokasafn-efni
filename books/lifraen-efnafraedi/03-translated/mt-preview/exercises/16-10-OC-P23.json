@@ -1,0 +1,28 @@
+{
+  "nickname": "16-10-OC-P23",
+  "source_uid": "37810@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Þegar efnasmíði er skipulögð er jafn mikilvægt að vita hvað á ekki að gera og hvað á að gera. Eins og þau eru skrifuð eru gallar í eftirfarandi efnahvarfaferlum. Hvað er rangt við hvern þeirra?",
+  "questions": [
+    {
+      "id": "358947",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--300fe7b89497254aee54a90e51fd310acb5f6a7d/OChem_16_10_011a.jpg\" alt=\"Benzonitrile reacts with propanoyl chloride in the presence of aluminum trichloride followed by nitric acid in the presence of sulfuric acid to form a trisubstituted benzene ring bearing a cyano, a nitro, and an acyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Friedel–Crafts-asýlering á sér ekki stað á afvirkjuðum hring."
+        }
+      ]
+    },
+    {
+      "id": "358948",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72f55eef255648ea1e379682b06aa96cb32adb02/OChem_16_10_011b.jpg\" alt=\"Chlorobenzene reacts with 1-chloropropane in the presence of aluminum trichloride in step 1 and chlorine in the presence of iron trichloride in step 2 to form a trisubstituted benzene bearing two chloro groups and a propyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Umröðun á sér stað við Friedel–Crafts-alkýleringu með frumstæðum halíðum; klórun á sér stað í ortó-stöðu við alkýlhópinn."
+        }
+      ]
+    }
+  ]
+}

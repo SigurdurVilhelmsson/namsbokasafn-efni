@@ -1,0 +1,20 @@
+{
+  "nickname": "27-99-OC-AP11",
+  "source_uid": "38859@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Án þess að leggja til heila lífefnasmíðaferil skaltu teikna viðeigandi forvera, annaðhvort geranýldífosfat eða farnesýldífosfat, í stellingu sem sýnir líkindi við hvert eftirfarandi terpenóíða:",
+  "questions": [
+    {
+      "id": "358220",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6118db23d306da92a6288ef2ec9cdc1ea009cae6/OChem_27_EC_009a.jpg\" alt=\"The structure of guaiol. It comprises of a bicyclo[5.3.0]decane ring with a double bond,  a wedged bonded propanol, and two wedged bonded methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358221",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ad4190ed33456ca5cf42b3dcfc505020abd2217/OChem_27_EC_009b.jpg\" alt=\"The structure of sabinene. It comprises of a bicyclo[3.1.0]hexane ring with an exocyclic double bond, and a bridgehead fused isopropyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

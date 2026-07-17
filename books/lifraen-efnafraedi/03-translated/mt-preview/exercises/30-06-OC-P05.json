@@ -1,0 +1,19 @@
+{
+  "nickname": "30-06-OC-P05",
+  "source_uid": "39355@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349622",
+      "stem_html": "Hvaða staðefnafræði myndir þú búast við fyrir myndefni Diels-Alder efnahvarfsins milli (2<i>E</i>,4<i>E</i>)-2,4-hexadíens og etýlens? Hvaða staðefnafræði myndir þú búast við ef (2<i>E</i>,4<i>Z</i>)-2,4-hexadíen væri notað í staðinn?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-3,6-dímetýlsýklóhexen; <i>trans</i>-3,6-dímetýlsýklóhexen"
+        }
+      ]
+    }
+  ]
+}

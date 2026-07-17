@@ -1,0 +1,50 @@
+{
+  "nickname": "21-99-OC-AP09",
+  "source_uid": "38203@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361478",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f05f4d4210b8de95b6e90bc6c4b3e2b6d237d7c/OChem_21_EC_040a.jpg\" alt=\"The reaction of ethyl cyclohexanecarboxylate with ethylmagnesium bromide followed by treatment with acid to give an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361479",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ed6bb89026aec9ff163801c8451677d2a4c0ecd/OChem_21_EC_040b.jpg\" alt=\"The reaction of methyl-4-methylpentanoate with D I B A H followe by treatment with acid to give an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361480",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--525b82b13bfa97676d06ae6aa220c4a01602b21f/OChem_21_EC_040c.jpg\" alt=\"The reaction of cyclopentanecarbonyl chloride with methyl amine to give an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361481",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1ecbf0d6b2accdaf6e24bbed38e8231450f2c21/OChem_21_EC_040d.jpg\" alt=\"The reaction of 2-methylcyclohexane carboxylic acid with methanol in the presence of sulfuric acid to give an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361482",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41dc93df48f7d66442829e6665519e134527bb5a/OChem_21_EC_040e.jpg\" alt=\"The reaction of methyl-3-methylpent-4-enoate with lithium aluminum hydride followed by treatment with acid to give a unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361483",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ade9adac6edffdc537b0fe1caf09d27fe72a93b/OChem_21_EC_040f.jpg\" alt=\"The reaction of cyclohexanol with acetic anhydride in pyridine to form an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361484",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--000bf63d73844df799e4440e88feb86d39b31655/OChem_21_EC_040g.jpg\" alt=\"The reaction of 2-methylbenzamide with lithium aluminum hydride and then water to give an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361485",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--274d49851b068c6d75bc5454636034847f05a7bc/OChem_21_EC_040h.jpg\" alt=\"The reaction of 2-(2-bromophenyl)acetic acid with thionyl chloride to form an unknown product, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

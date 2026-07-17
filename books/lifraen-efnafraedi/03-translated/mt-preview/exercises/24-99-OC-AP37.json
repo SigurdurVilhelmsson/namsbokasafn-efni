@@ -1,0 +1,20 @@
+{
+  "nickname": "24-99-OC-AP37",
+  "source_uid": "39669@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem sýna eftirfarandi <sup>1</sup>H NMR-róf.",
+  "questions": [
+    {
+      "id": "361758",
+      "stem_html": "<p>C<sub>9</sub>H<sub>13</sub>N</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f3230f843ed06c02a4815a86a9619a37c221807/OChem_24_EC_056.jpg\" alt=\"Proton spectrum with signals at shift 2.25 (singlet), 2.89 (singlet), 6.66 (doublet), and 7.03 (doublet). Relative areas are 1.50, 3.00, 1.00, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361759",
+      "stem_html": "<p>C<sub>15</sub>H<sub>17</sub>N</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61d49663386c1da93b1bfbee5cea7250ab8f6efb/OChem_24_EC_057.jpg\" alt=\"Proton spectrum with signals at shift 1.14 (triplet), 3.40 (quartet), 4.47 (singlet), 6.65 (multiplet) and 7.16 and 7.24 (multiplets). Relative areas are 1.50, 1.00, 1.00, 1.50, 1.50, 2.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

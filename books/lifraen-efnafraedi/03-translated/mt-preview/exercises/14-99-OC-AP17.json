@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP17",
+  "source_uid": "37707@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358507",
+      "stem_html": "<p>Sýndu myndefni eftirfarandi efnahvarfs.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2146d9711ae73b833cf7c673372a0bc2d33b0ad/OChem_14_99_OZnCl2.jpg\" alt=\"Cyclobutene with double bonded oxygen at C 3 reacts in the presence of zinc chloride with a 6-carbon chain that has double bonds between C 2-C 3 and C 4-C 5 .\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

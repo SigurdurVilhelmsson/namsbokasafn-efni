@@ -1,0 +1,25 @@
+{
+  "nickname": "03-99-OC-AP04",
+  "source_uid": "36441@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spyrjið fyrir um blendingu kolefnisfrumeindarinnar í hverjum eftirfarandi virknihópa:",
+  "questions": [
+    {
+      "id": "327882",
+      "stem_html": "Keton",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327883",
+      "stem_html": "Nítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327884",
+      "stem_html": "Karbónsýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

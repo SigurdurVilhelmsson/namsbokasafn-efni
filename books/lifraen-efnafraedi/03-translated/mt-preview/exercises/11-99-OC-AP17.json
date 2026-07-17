@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP17",
+  "source_uid": "37396@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu eftirfarandi karbókatjónum í röð eftir auknum stöðugleika.",
+  "questions": [
+    {
+      "id": "355372",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c286eb39f21bbcfb7808adc070881256c216e1e/OChem_11_EC_029a.jpg\" alt=\"Three cations of 3-methylcyclopentene. The carbocation is on C 4, the methyl group, and C 5 respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355373",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--485e1c13ccf5bee8352ba21696e9455587a7d0f0/OChem_11_EC_029b.jpg\" alt=\"Three cations of 2-methylpentane. The carbocation is on C 5, C 4, and C 2 respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355374",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a33db333bd607380ce1da1393035c6ff2284dc48/OChem_11_EC_029c.jpg\" alt=\"Three cations of 3-methyl-1-pentene. The carbocation is on C 3, C 4, and the methyl group respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP41",
+  "source_uid": "37414@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355444",
+      "stem_html": "<p>Amínósýran metíónín myndast við metýleringarefnahvarf hómósýsteins með <i>N</i>-metýltetrahýdrófólati. Staðefnafræði efnahvarfsins hefur verið könnuð með því að framkvæma umbreytinguna með gjafa með „handhverfum metýlhópi“ sem inniheldur samsæturnar prótíum (H), tvívetni (D) og þrívetni (T) af vetni. Fer metýleringarefnahvarfið fram með hvolfi eða varðveislu stillingar?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--717bef4e53ade447f70d8de10eb0bd0270a54445/OChem_11_EC_047.jpg\" alt=\"The reaction of homocysteine in the presence of methionine synthase forms methionine, N-methyltetrahydrofolate, and Tetrahydrofolate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

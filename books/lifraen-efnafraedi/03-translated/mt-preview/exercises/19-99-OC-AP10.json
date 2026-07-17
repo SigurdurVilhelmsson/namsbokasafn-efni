@@ -1,0 +1,25 @@
+{
+  "nickname": "19-99-OC-AP10",
+  "source_uid": "38056@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efni úr bensaldehýði og öðrum nauðsynlegum hvarfefnum?",
+  "questions": [
+    {
+      "id": "360759",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2dbb44800a932e23ea8aee57b2ea729c5b8ebd9f/OChem_19_EC_048a.jpg\" alt=\"The structure of 2-phenylacetaldehyde shows a benzene ring with a C H 2 C H O group as a side chain.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360760",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb12b015e51122c4cee044dc2e55ffb6274accfe/OChem_19_EC_048b.jpg\" alt=\"The structure shows a pyrrolidine ring attached through the nitrogen atom to a styrene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360761",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c0353b205681064452a7b8d0490da700f90722d/OChem_19_EC_048c.jpg\" alt=\"A central carbon with phenyl substituent and a double bond to C 1 of a cyclopentane ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

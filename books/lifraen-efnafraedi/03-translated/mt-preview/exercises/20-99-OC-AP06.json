@@ -1,0 +1,25 @@
+{
+  "nickname": "20-99-OC-AP06",
+  "source_uid": "38116@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðið efnasamböndunum í hverju eftirfarandi setta eftir vaxandi sýrustigi:",
+  "questions": [
+    {
+      "id": "342064",
+      "stem_html": "Ediksýra, oxalsýra, maurasýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342065",
+      "stem_html": "<i>p</i>-Brómbensósýra, <i>p</i>-nítróbensósýra, 2,4-dínítróbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342066",
+      "stem_html": "Flúorediksýra, 3-flúrprópansýra, joðediksýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

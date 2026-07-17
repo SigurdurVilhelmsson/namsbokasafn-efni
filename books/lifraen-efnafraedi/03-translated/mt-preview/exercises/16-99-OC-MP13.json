@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP13",
+  "source_uid": "37827@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358975",
+      "stem_html": "<p>Settu fram hvarfgang til að útskýra eftirfarandi efnahvarf:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27b097ed06601bdadcbdf106875d921311960b7d/OChem_16_EC_028.jpg\" alt=\"Benzene bonded to acetyl group at C 1 and a 4-carbon chain with terminal carbon bonded to chlorine reacts with aluminum chloride to form a product.where the 4-carbon chain is cyclized on to the benzene ring\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

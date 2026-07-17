@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP11",
+  "source_uid": "38121@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359179",
+      "stem_html": "<p>Hjá mönnum er lokaafurð niðurbrots púrín úr DNA þvagsýra, p<i>K</i><sub>a</sub> = 5,61, sem skilst út með þvagi. Hvert er klofnunarhlutfall þvagsýru í þvagi með dæmigerðu pH = 6,0? Hvers vegna heldurðu að þvagsýra sé súr þótt hún hafi ekki CO<sub>2</sub>H-hóp?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91f40aaed6854ea7e2e129a7afdacf69629ab879/OChem_20_EC_023.jpg\" alt=\"The structure of uric acid from pyrimidine base. The nitrogen atom in the five-membered ring is attached to a highlighted hydrogen. The nitrogen is placed in between two carbonyl groups.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

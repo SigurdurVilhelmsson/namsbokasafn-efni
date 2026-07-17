@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-MP27",
+  "source_uid": "36139@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Tvítengi geta einnig virkað eins og Lewis-basar og deilt rafeindum sínum með Lewis-sýrum. Notaðu sveigðar örvar til að sýna hvernig hvert eftirfarandi tvítengja hvarfast við HCl og teiknaðu karbókatjónina sem myndast.",
+  "questions": [
+    {
+      "id": "351687",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3c67c9c6522ff206751e3c3e4f12926f8bd965f/OChem_02_EC_008a.jpg\" alt=\"A methylene group is double bonded to another methylene group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351688",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa307274041d55569b4802affda79c44bf7ee431/OChem_02_EC_008b.jpg\" alt=\"A 4-carbon chain with a double bond between C2-C3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351689",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--711366d017bbfe54a159bea58cbf843ecf4d3042/OChem_02_EC_008c.jpg\" alt=\"The bond-line structure of a cyclohexene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

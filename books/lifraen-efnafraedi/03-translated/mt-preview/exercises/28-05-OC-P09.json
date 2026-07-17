@@ -1,0 +1,19 @@
+{
+  "nickname": "28-05-OC-P09",
+  "source_uid": "39117@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348308",
+      "stem_html": "<p>Hvaða amínósýruröð er táknuð með eftirfarandi mRNA-basaröð?</p>\n<p style=\"text-align: center\">CUU-AUG-GCU-UGG-CCC-UAA</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Leu-Met-Ala-Trp-Pro-Stopp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-AP04",
+  "source_uid": "39133@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348342",
+      "stem_html": "<p>Tákni UAA stöðvar próteinmyndun. Hvers vegna veldur röðin UAA í eftirfarandi mRNA-bút engum vandræðum?</p>\n<p style=\"text-align: center\">-GCA-UUC-GAG-G<span class=\"magenta-text\">UA-A</span>CG-CCC-</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

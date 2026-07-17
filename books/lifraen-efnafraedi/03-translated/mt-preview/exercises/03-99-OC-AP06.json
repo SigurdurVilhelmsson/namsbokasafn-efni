@@ -1,0 +1,20 @@
+{
+  "nickname": "03-99-OC-AP06",
+  "source_uid": "36443@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið byggingar sem uppfylla eftirfarandi lýsingar (margir möguleikar eru fyrir hendi):",
+  "questions": [
+    {
+      "id": "327893",
+      "stem_html": "Þrjár hverfur með formúluna C<sub>8</sub>H<sub>18</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327894",
+      "stem_html": "Tvær hverfur með formúluna C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

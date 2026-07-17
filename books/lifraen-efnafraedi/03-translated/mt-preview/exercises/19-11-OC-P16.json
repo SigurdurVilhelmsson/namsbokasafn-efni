@@ -1,0 +1,64 @@
+{
+  "nickname": "19-11-OC-P16",
+  "source_uid": "38010@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða karbónýlefnasamband og hvaða fosfórýlíð gætir þú notað til að búa til hvert eftirfarandi efnasambanda?",
+  "questions": [
+    {
+      "id": "360628",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0211b470e8a4a3c1dfa49e881b5fcad5ed220dd8/OChem_19_11_007a.jpg\" alt=\"A cyclohexane with a double bond from C 1 to a C H C H 3 group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexanón + (Ph)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CHCH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "360629",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--589306aa84766a205912e73d954d3ca0ba92cd3a/OChem_19_11_007b.jpg\" alt=\"A structure of vinylcyclohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexankarbaldehýð + (Ph)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "360630",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f6b4d7faea807973457b4cd450730017e88e95a2/OChem_19_11_007c.jpg\" alt=\"A structure of 2-methyl-2-hexene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Asetón + (Ph)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CHCH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "360631",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d4ac0cf37c075ea2886ce99a460101d7ce2fb19/OChem_19_11_007d.jpg\" alt=\"Ethene with two methyl groups on one carbon and a phenyl on the other carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Asetón + (Ph)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CHPh"
+        }
+      ]
+    },
+    {
+      "id": "360632",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c61d7577386435531a169d7c80c13b1262ab313a/OChem_19_11_007e.jpg\" alt=\"Ethene with methyl (up) and phenyl on one carbon, and ethyl (up) and hydrogen on the other carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "PhCOCH<sub>3</sub> + (Ph)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CHPh"
+        }
+      ]
+    },
+    {
+      "id": "360633",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c2aeb8063f245b4ab423c59df9fed2b506ac18cb/OChem_19_11_007f.jpg\" alt=\"A structure of 3-methylenecyclohexene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Sýklóhexenón + (Ph)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

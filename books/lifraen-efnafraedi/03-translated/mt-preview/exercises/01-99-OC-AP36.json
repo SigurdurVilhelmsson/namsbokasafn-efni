@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP36",
+  "source_uid": "37593@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Meðal algengustu lausasölulyfja sem þú gætir fundið í lyfjaskáp eru væg verkjalyf eins og íbúprófen (Advil, Motrin), naproxen (Aleve) og acetaminophen (Tylenol).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b2dfcb9f2b586cbbeb835209ca0104ade7adb3c/OChem_01_EC_020.jpg\" alt=\"The skeletal structures of ibuprofen, naproxen, and acetaminophen.\">",
+  "questions": [
+    {
+      "id": "352165",
+      "stem_html": "Hversu margar <i>sp</i><sup>3</sup>-tvinnblandaðar kolefnisfrumeindir hefur hver sameind?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352166",
+      "stem_html": "Hversu margar <i>sp</i><sup>2</sup>-tvinnblandaðar kolefnisfrumeindir hefur hver sameind?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352167",
+      "stem_html": "Hvaða líkindi sérðu í byggingu þeirra?",
+      "collaborator_solutions": []
+    }
+  ]
+}

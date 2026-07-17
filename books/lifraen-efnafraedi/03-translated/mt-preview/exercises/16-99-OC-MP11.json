@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP11",
+  "source_uid": "37825@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358970",
+      "stem_html": "<p>Bensendíazóníumkarboxýlat brotnar niður við hitun og gefur N<sub>2</sub>, CO<sub>2</sub> og hvarfgjarnt efni sem ekki er hægt að einangra. Þegar bensendíazóníumkarboxýlat er hitað í nærveru fúrans sést eftirfarandi efnahvarf:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8904ba8bbb96391cc1787f3591c46ba8773e298b/OChem_16_EC_026.jpg\" alt=\"When heated, benzenediazonium carboxylate reacts with furan to yield an organic product, carbon dioxide, and nitrogen.\">\n<p>Hvaða milliefni tekur þátt í þessu efnahvarfi? Settu fram hvarfgang fyrir myndun þess.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

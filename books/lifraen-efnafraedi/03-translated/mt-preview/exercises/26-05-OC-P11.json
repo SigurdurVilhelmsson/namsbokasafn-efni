@@ -1,0 +1,19 @@
+{
+  "nickname": "26-05-OC-P11",
+  "source_uid": "39222@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359591",
+      "stem_html": "Sýndu byggingu myndefnanna sem fást við efnahvarf valíns við ninhýdrín.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1214ef319cf546ef4cc2d6550688b4ecf18989e/OChem_26_EC_206.jpg\" alt=\"A benzene ring fused to cyclopentanedione linked to a double bond to a nitrogen to a cyclopentanedione with an oxygen ion fused to a benzene plus isobutyraldehyde plus carbon dioxide.\">"
+        }
+      ]
+    }
+  ]
+}

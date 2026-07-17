@@ -1,0 +1,40 @@
+{
+  "nickname": "24-99-OC-AP08",
+  "source_uid": "39007@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efni úr pentansýru?",
+  "questions": [
+    {
+      "id": "347716",
+      "stem_html": "Pentanamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347717",
+      "stem_html": "Bútýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347718",
+      "stem_html": "Pentýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347719",
+      "stem_html": "2-brómpentansýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347720",
+      "stem_html": "Hexannítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347721",
+      "stem_html": "Hexýlamín",
+      "collaborator_solutions": []
+    }
+  ]
+}

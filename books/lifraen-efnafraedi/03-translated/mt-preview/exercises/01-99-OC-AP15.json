@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP15",
+  "source_uid": "37572@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Hvers konar blendingsgerð býst þú við fyrir hverja kolefnisfrumeind í eftirfarandi sameindum?</p>",
+  "questions": [
+    {
+      "id": "358875",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71fde2252756dd25210a03f9d8c3d33286e27696/OChem_01_EC_007a.jpg\" alt=\"Condensed formula of C H 3 C H 2 C H 3 and text that says propane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358876",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20d9e71d6354a2f75b29ab24e8bec6529154b6fe/OChem_01_EC_007b.jpg\" alt=\"Text saying 2-methylpropene and condensed structural formula of a three-carbon chain laid out left to right with a methyl on the middle carbon and double bond between the right-most carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358877",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac392abd9269acac26bf7ce6a9e96787d75ce166/OChem_01_EC_007c.jpg\" alt=\"Text saying but-1-en-3-yne and condensed structural formula of a four-carbon chain laid out left to right with a double bond between the left-most carbons and triple bond between the right-most.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358878",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--406bc18e76940467932263291db85cc98c6ea94f/OChem_01_EC_007d.jpg\" alt=\"Text saying acetic acid and condensed structural formula of C H 3 C O O H, with a double bond between carbon and one oxygen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

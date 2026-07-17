@@ -1,0 +1,46 @@
+{
+  "nickname": "07-08-OC-P16",
+  "source_uid": "36639@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáðu fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "358076",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f04d501d21d2fb22665cf9a2469d157c9a6ea9b/OChem_07_08_009a.jpg\" alt=\"Cyclohexene reacts with hydrogen chloride to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Klórsýklóhexan"
+        }
+      ]
+    },
+    {
+      "id": "358077",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10d5a3e5701f4934f1d63c5cc7a341696f034d56/OChem_07_08_009b.jpg\" alt=\"2-methyl-2-pentene reacts with hydrogen bromide to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-bróm-2-metýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "358078",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1155fa3158a9c1669603fa87b726aea758c19cf/OChem_07_08_009c.jpg\" alt=\"4-methyl-1-pentene reacts with water and sulfuric acid to form an unknown product(s), depicted by a question mark. Text says addition of H 2 O occurs.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-metýl-2-pentanól"
+        }
+      ]
+    },
+    {
+      "id": "358079",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb02d0a64197425f30b30cac72811bd7c461ca00/OChem_07_08_009d.jpg\" alt=\"Methylenecyclohexane reacts with hydrogen bromide to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-bróm-1-metýlsýklóhexan"
+        }
+      ]
+    }
+  ]
+}

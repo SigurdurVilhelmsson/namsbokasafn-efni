@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP28",
+  "source_uid": "39660@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Tetrakaín er efni sem er notað sem mænudeyfing.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51b3b2d787a379ada8249989448b27bc4c04acf4/OChem_24_EC_050.jpg\" alt=\"The structure of Tetracaine.\">",
+  "questions": [
+    {
+      "id": "361741",
+      "stem_html": "Hvernig myndir þú búa til tetrakaín úr samsvarandi anilínafleiðu, ArNH<sub>2</sub>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361742",
+      "stem_html": "Hvernig myndir þú útbúa tetrakain úr <i>p</i>-nítróbensósýru?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361743",
+      "stem_html": "Hvernig myndir þú útbúa tetrakain úr benseni?",
+      "collaborator_solutions": []
+    }
+  ]
+}

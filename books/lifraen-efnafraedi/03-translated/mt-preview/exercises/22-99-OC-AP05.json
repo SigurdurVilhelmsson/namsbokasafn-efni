@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP05",
+  "source_uid": "38809@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360977",
+      "stem_html": "<p>Meðhöndlun 1-fenýl-2-própenóns með sterkum basa eins og LDA gefur ekki anjón, jafnvel þótt það innihaldi vetni á kolefnisfrumeindinni við hliðina á karbónýlhópnum. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--358602c19983beaa82acd78f588142fc9f72975f/OChem_22_EC_033.jpg\" alt=\"A structure of 1-phenyl-2-propenone where a phenyl ring is bonded to the carbonyl group of the propene chain.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

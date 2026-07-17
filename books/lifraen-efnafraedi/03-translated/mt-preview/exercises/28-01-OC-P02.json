@@ -1,0 +1,19 @@
+{
+  "nickname": "28-01-OC-P02",
+  "source_uid": "39111@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358103",
+      "stem_html": "Teiknaðu fulla byggingu RNA-tvíkirnisins UA.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78e11265c71ed4ac78475ef5b153f83cfa3070a5/OSX_OrgChem_28_DD_A-RNAdinUA_img.jpg\" alt=\"\">"
+        }
+      ]
+    }
+  ]
+}

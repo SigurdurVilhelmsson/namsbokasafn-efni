@@ -1,0 +1,46 @@
+{
+  "nickname": "10-05-OC-P08",
+  "source_uid": "37254@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi alkýlhalíð úr samsvarandi alkóhólum?",
+  "questions": [
+    {
+      "id": "352608",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e49a79f876c17ff3f512c6883c588c931ec3232f/OChem_10_05_005a.jpg\" alt=\"The structure of 2-chloro-2-methylpropane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýl-2-própanól + HCl"
+        }
+      ]
+    },
+    {
+      "id": "352609",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a2b53b8dd92617972c8d5f0d96ce8f051bdc1b9/OChem_10_05_005b.jpg\" alt=\"The structure of 2-bromo-4-methylpentane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-metýl-2-pentanól + PBr<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "352610",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fbcd821f3acf7f0f39983873e31a32dde80e9a8d/OChem_10_05_005c.jpg\" alt=\"The structure of 1-bromo-5-methylhexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "5-metýl-1-pentanól + PBr<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "352611",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--918055cdbf92b3ca7dab786b57a693510867b7af/OChem_10_05_005d.jpg\" alt=\"The structure of 3-fluoro-1,1-dimethylcyclopentane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3,3-dímetýl-sýklópentanól + HF, pýridín"
+        }
+      ]
+    }
+  ]
+}

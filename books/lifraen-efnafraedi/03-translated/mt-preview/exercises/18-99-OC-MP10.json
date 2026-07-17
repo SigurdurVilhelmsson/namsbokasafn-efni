@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-MP10",
+  "source_uid": "38728@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Flúoxetín, mikið ávísað þunglyndislyf sem markaðssett er undir nafninu Prozac, er hægt að framleiða með ferli sem hefst á efnahvarfi milli fenóls og alkýlklóríðs.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d9d103e6ce4e92481f5d554878f7043d4710194/OChem_18_EC_028.jpg\" alt=\"4-trifluoromethylphenol reacts with an alkyl chloride with phenyl and amine groups in potassium hydroxide and D M S O to produce fluoxetine through a series of steps.\">",
+  "questions": [
+    {
+      "id": "361202",
+      "stem_html": "Hraði efnahvarfsins er háður bæði fenóli og alkýlhalíði. Er þetta S<sub>N</sub>1- eða S<sub>N</sub>2-efnahvarf? Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361203",
+      "stem_html": "Lífeðlisfræðilega virka handhverfa flúoxetíns hefur (<i>S</i>)-handhverfisefnafræði. Byggt á svari þínu í hluta <b>(a)</b>, teiknaðu byggingu alkýlklóríðsins sem þú þyrftir og sýndu rétta handhverfisefnafræði.",
+      "collaborator_solutions": []
+    }
+  ]
+}

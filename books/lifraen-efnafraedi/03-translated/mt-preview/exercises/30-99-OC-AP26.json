@@ -1,0 +1,25 @@
+{
+  "nickname": "30-99-OC-AP26",
+  "source_uid": "39395@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin ef upphafsefnin gengjust undir Claisen-umröðun. Teiknaðu örvar til að sýna umröðun rafeinda.",
+  "questions": [
+    {
+      "id": "355130",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--897afcaf513d56c891e589d06b5966a5b509108f/OChem_18_EC_053a.jpg\" alt=\"A chemical structure of [(2-methyl-2-propen-1-yl)oxy]benzene\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355131",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c99b4e455ec440ad137981eaff7e4c030246c930/OChem_18_EC_053b.jpg\" alt=\"A chemical structure of (2E)-1-(vinyloxy)-2-butene with two deuterium atoms on the terminal vinyl carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355132",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad00a584aff3218699e25ed183b5a460c01ab534/OChem_18_EC_053c.jpg\" alt=\"A chemical structure of o-allyloxytoluene with two deuterium atoms on the carbon adjacent to oxygen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

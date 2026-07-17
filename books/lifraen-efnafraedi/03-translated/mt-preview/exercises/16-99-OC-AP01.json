@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP01",
+  "source_uid": "37833@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu hvorn eftirfarandi hópa sem virkjandi eða afvirkjandi og sem <i>o,p</i>-stýrihóp eða <i>m</i>-stýrihóp:",
+  "questions": [
+    {
+      "id": "358992",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dac8958b7f27ef40afe92f7411f99d8a0f1fc2e0/OChem_16_EC_033a.jpg\" alt=\"The structure of a group where N H (C H 3) 2 is bonded to an open single bond that has a wavy line across it.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358993",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5fa85b3e5a1e4f0fa6bb419a439c80c1680155b5/OChem_16_EC_033b.jpg\" alt=\"The structure of a group where cyclopentane ring is bonded to an open single bond that has a wavy line across it.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358994",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c91f32c8f76a2d888a5f3f7935e2cd2d329280d/OChem_16_EC_033c.jpg\" alt=\"The structure of a group where O C H 2 C H 3 is bonded to an open single bond that has a wavy line across it.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358995",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8941d3dc280ab8b4dfa113f87f33e4ae0af8984d/OChem_16_EC_033d.jpg\" alt=\"A cyclohexane ring bonded to a carbonyl group. The carbonyl carbon is bonded to an open single bond that has a wavy line across it.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

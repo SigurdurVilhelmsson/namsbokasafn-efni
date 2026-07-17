@@ -1,0 +1,30 @@
+{
+  "nickname": "09-99-OC-AP18",
+  "source_uid": "37232@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi efnahvörf til að koma tvívetni fyrir í lífrænum sameindum?",
+  "questions": [
+    {
+      "id": "357335",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c513ef9581873342e70f8d4204c8659a51db1b27/OChem_09_EC_035a.jpg\" alt=\"A C6 alkyne reacts in the presence of an unknown reagent denoted as a question mark to form a cis-deuterated alkene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357336",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b987599920c3aec02f71537884b9509b045d3f4/OChem_09_EC_035b.jpg\" alt=\"A C6 alkyne reacts in the presence of an unknown reagent denoted as a question mark to form a trans-deuterated alkene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357337",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cfb392bb76a968ccf88749b23a7684e4ea85def2/OChem_09_EC_035c.jpg\" alt=\"Pentyne reacts with an unknown reagent denoted as a question mark to form a deuterium-substituted alkyne.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357338",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3ebc3311d5ad368ade1bcd73396f3a207688d74/OChem_09_EC_035d.jpg\" alt=\"Ethynylbenzene reacts with an unknown reagent indicated as a question mark to form a deuterium-substituted alkene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

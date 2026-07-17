@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP08",
+  "source_uid": "36534@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351124",
+      "stem_html": "<p>Hýdrókortisón, náttúrulegt hormón sem myndast í nýrnahettunum, er oft notað til að meðhöndla bólgur, alvarleg ofnæmi og fjölmarga aðra sjúkdóma. Er tilgreindi −OH hópurinn áslægur eða miðlægur?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a62a9310a8480c5516324e6d924b5ad9d1600bef/OChem_04_EC_008.jpg\" alt=\"The chair conformation of hydrocortisone. The axial hydroxyl group bonded at C11 of the third ring is highlighted.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

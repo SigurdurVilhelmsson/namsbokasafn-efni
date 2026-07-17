@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-AP15",
+  "source_uid": "37335@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336313",
+      "stem_html": "<p>Efnahvarf hýdroxíðjónar við klórmetan sem myndar metanól og klóríðjón er dæmi um almenna tegund efnahvarfa sem kallast kjarnsækið skiptihvarf:</p>\n<p></p>HO<sup>−</sup> + CH<sub>3</sub>Cl ⇄ CH<sub>3</sub>OH + Cl<sup>−</sup><p></p>\n<p>Gildið á Δ<i>H</i>° fyrir efnahvarfið er −75 kJ/mól og gildið á Δ<i>S</i>° er +54 J/(K·mól). Hvert er gildið á Δ<i>G</i>° (í kJ/mól) við 298 K? Er efnahvarfið útvermið eða innvermið? Er það útvergið eða innvergið?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

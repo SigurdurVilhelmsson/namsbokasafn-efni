@@ -1,0 +1,19 @@
+{
+  "nickname": "21-08-OC-P22",
+  "source_uid": "38172@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361395",
+      "stem_html": "Skrifaðu hvarfgang efnahvarfsins sem sýnt er á mynd 21.10 milli kóensíms A og asetýladenýlats til að gefa asetýl CoA.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee861b04bf2f9c28bee7984a7095b63bd7590c2d/OChem_21_EC_205.jpg\" alt=\"The reaction shows the mechanism for the reaction of an ester attached to adenosine and a thiol forming acetyl coenzyme A, and a product in which a phosphate group is bonded to adenosine.\">"
+        }
+      ]
+    }
+  ]
+}

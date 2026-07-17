@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP20",
+  "source_uid": "39019@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggðu til byggingar fyrir amín með eftirfarandi <sup>1</sup>H NMR-róf:",
+  "questions": [
+    {
+      "id": "361723",
+      "stem_html": "<p>C<sub>3</sub>H<sub>9</sub>NO</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24602ce9e130a1432194dda2f040c94217425b66/OChem_24_EC_041.jpg\" alt=\"Proton spectrum with signals at shift 1.68 (quintet), 2.69 (wide singlet), 2.88 (triplet), and 3.72 (triplet). Relative areas are 1.00, 1.50, 1.00, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361724",
+      "stem_html": "<p>C<sub>4</sub>H<sub>11</sub>NO<sub>2</sub></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e95a834dc0b2a0140498d1e9081fd3adc416f5e2/OChem_24_EC_042.jpg\" alt=\"Proton spectrum with signals at shift 1.28 (wide singlet), 2.78 (doublet), 3.39 (singlet), and 4.31 (triplet). Relative areas are 2.00, 2.oo, 6.00, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361725",
+      "stem_html": "<p>C<sub>8</sub>H<sub>11</sub>N</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cac5d5859b6c5b538b798bd9d6783b0e6a89e315/OChem_24_EC_043.jpg\" alt=\"Proton spectrum with signals at shift 1.05 (wide singlet), 2.7 (triplet), 2.95 (triplet), and 7.25 (multiplets). Relative areas are 2.06, 2.02, 2.04, and 4.93 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

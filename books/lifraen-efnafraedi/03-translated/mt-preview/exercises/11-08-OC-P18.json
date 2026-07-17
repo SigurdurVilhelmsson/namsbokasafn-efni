@@ -1,0 +1,19 @@
+{
+  "nickname": "11-08-OC-P18",
+  "source_uid": "37359@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355160",
+      "stem_html": "<p>Við hvaða handhverfu býst þú fyrir þrískipta alkenann sem fæst með E2 brottnámi á eftirfarandi alkýlhalíði við meðhöndlun með KOH? (rauðbrúnt = Br.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--041dddd643b2079c078f6dd2b39bb12b5241f6f7/OChem_11_08_008.jpg\" alt=\"The ball-and-stick model of a bromo alkane. The gray, black, and red spheres represent hydrogen, carbon, and bromine, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "(<i>Z</i>)-3-metýl-2-penten"
+        }
+      ]
+    }
+  ]
+}

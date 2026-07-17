@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP26",
+  "source_uid": "38136@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359203",
+      "stem_html": "<p>Efnasamband <b>A</b>, C<sub>4</sub>H<sub>8</sub>O<sub>3</sub>, hefur innrautt gleypni við 1710 og 2500 til 3100 cm<sup>–1</sup> og hefur <sup>1</sup>H NMR-rófið sem sýnt er. Leggðu til byggingu fyrir <b>A</b>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79b3e8abb2a00a7be431c3b57ca7ac5099f061b3/OChem_20_EC_029.jpg\" alt=\"The proton spectrum of C 4 H 8 O 3 shows peaks at 1.26 (triplet), 3.64 (quartet), 4.14 (singlet), and 11.12 (singlet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

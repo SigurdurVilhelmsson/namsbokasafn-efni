@@ -1,0 +1,19 @@
+{
+  "nickname": "06-04-OC-P05",
+  "source_uid": "37296@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353198",
+      "stem_html": "<p>Rafstöðumöguleikakort af bórtríflúoríði er sýnt. Er líklegt að BF<sub>3</sub> sé kjarnsækir eða rafsækir? Teiknaðu Lewis-byggingu fyrir BF<sub>3</sub> og útskýrðu svarið.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff666026b0e118ba62b979e57a1a24c7e07ed216/OChem_06_04_008.jpg\" alt=\"The electrostatic potential map of B F 3 shows a ball-and-stick model at the center, in which gray and green spheres represent boron and fluorine atoms, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28573ce097e42e24daaf05f05d70becdf20a35bb/OChem_06_EC_202.jpg\" alt=\"A central boron atom labeled electrophilic, vacant p orbital bonded to three fluorine atoms.\">"
+        }
+      ]
+    }
+  ]
+}

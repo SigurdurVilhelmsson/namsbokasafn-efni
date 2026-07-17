@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP03",
+  "source_uid": "38025@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og leggðu til hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "360674",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91bd1de755fd186149dffe9190151b2fed52f9d8/OChem_19_EC_022b.jpg\" alt=\"The reaction shows butan-2-one with ethylene glycol using a hydrogen ion catalyst, producing an unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360675",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e7a622775a82cdcc657a1838d8a0f8605e3af58/OChem_19_EC_022c.jpg\" alt=\"The reaction shows acetone with (1S,2S)-cyclohexane-1, 2-diol using a hydrogen ion catalyst, yielding an unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

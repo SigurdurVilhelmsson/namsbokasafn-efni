@@ -1,0 +1,19 @@
+{
+  "nickname": "23-12-OC-P21",
+  "source_uid": "38901@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359816",
+      "stem_html": "<p>Hvaða <i>myndefni</i> myndir þú búast við úr Robinson-hringtengingar<i>efnahvarfi</i> af 2-metýl-1,3-sýklópentandíóni með 3-búten-2-óni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba82ca50c352cebc3aaeb79293194d517e43f2ea/OChem_23_12_003.jpg\" alt=\"2-methyl-1,3-cyclopentanedione reacts with 3-buten-2-one, yielding an unidentified product indicated by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--32bfb704423c5c69cb19e7795fe2aaf9127e0d4a/OChem_23_EC_213.jpg\" alt=\"2-Cyclohexenone in which C 3 is fused to C 3 of cyclopentanone, C 4 is fused to C 2 of cyclopentanone. C2 of cyclopentanone also has methyl substituent.\">"
+        }
+      ]
+    }
+  ]
+}

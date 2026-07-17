@@ -1,0 +1,19 @@
+{
+  "nickname": "26-01-OC-P02",
+  "source_uid": "39213@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349063",
+      "stem_html": "Af 19 <small style=\"font-variant: small-caps\">L</small> amínósýrum hafa 18 <i>S</i>-stillingu á <i>α</i>-kolefninu. Cysteín er eina <small style=\"font-variant: small-caps\">L</small> amínósýran sem hefur <i>R</i>-stillingu. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Brennisteinsfrumeindin í –CH<sub>2</sub>SH hópnum í cysteíni gerir það að verkum að hliðarkeðjan er hærra sett en –CO<sub>2</sub>H hópurinn."
+        }
+      ]
+    }
+  ]
+}

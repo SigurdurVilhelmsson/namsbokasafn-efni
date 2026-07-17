@@ -1,0 +1,19 @@
+{
+  "nickname": "21-02-OC-P03",
+  "source_uid": "38153@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361351",
+      "stem_html": "<p>Sýnið hvarfgang eftirfarandi kjarnsækins asýlskiptihvarfs og notið bognar örvar til að sýna flæði rafeinda í hverju skrefi:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74c85fb4f4c37555ba41d989952e11e0ae517bf0/OChem_21_02_003.jpg\" alt=\"Benzoyl chloride reacts with sodium methoxide in methanol to form methyl benzoate. The product structure has a benzene ring and a methoxy group attached to a central carbonyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79c8f7fcd60351ee6cb668af9f0c626386d14a7a/OChem_21_EC_202.jpg\" alt=\"Methoxide ion adds to the carbonyl carbon of benzoyl chloride, forming an intermediate, which on elimination of a chloride ion, gives the product methyl benzoate.\">"
+        }
+      ]
+    }
+  ]
+}

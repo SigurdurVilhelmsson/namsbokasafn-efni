@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP13",
+  "source_uid": "38919@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359862",
+      "stem_html": "<p>Darzens-efnahvarfið felur í sér tveggja þrepa, basahvataða þéttingu etýlklóróasetats við ketón til að gefa epoxýester. Fyrsta skrefið er karbónýlþéttingarefnahvarf og annað skrefið er S<sub>N</sub>2-efnahvarf. Skrifaðu bæði skrefin og sýndu hvarfgang þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5753dda625c1ff931d003925428ad66b5746810/OChem_23_EC_026.jpg\" alt=\"The reaction shows cyclohexanone and ethyl chloroacetate using sodium ethoxide and ethanol, forming an epoxy ester product. The epoxy ring is attached to the first carbon of the cyclohexane ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

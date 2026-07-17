@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-AP22",
+  "source_uid": "38216@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu byggingum til efnasambanda með eftirfarandi <sup>1</sup>H NMR-róf:",
+  "questions": [
+    {
+      "id": "361500",
+      "stem_html": "<p>C<sub>4</sub>H<sub>7</sub>ClO</p>\n<p>IR: 1810 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6291fe05378d1c3e062ba7701e6ed82d0dcc66fa/OChem_21_EC_047.jpg\" alt=\"The proton NMR spectrum of a compound of molecular formula C 4 H 7 C l O shows signals at 0 (T M S), 1.00 (triplet of integral 1.5), 1.75 (quartet of integral 1), and 2.86 (triplet of integral 1) p p m.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361501",
+      "stem_html": "<p>C<sub>5</sub>H<sub>7</sub>NO<sub>2</sub></p>\n<p>IR: 2250, 1735 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c15cb9af1377bdd7125c3f7cb66c0e636f55228b/OChem_21_EC_048.jpg\" alt=\"The proton NMR spectrum of a compound of molecular formula C 5 H 7 N O 2 show signals at 0 (T M S), 1.32 (triplet of integral 1.5), 3.51 (singlet of integral 1), and 4.27 (quartet of integral 1) p p m.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

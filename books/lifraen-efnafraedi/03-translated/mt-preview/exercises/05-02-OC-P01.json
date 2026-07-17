@@ -1,0 +1,19 @@
+{
+  "nickname": "05-02-OC-P01",
+  "source_uid": "36493@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347075",
+      "stem_html": "<p>Hvaða af eftirfarandi hlutum eru handhverfir?</p>\n<p><b>(a)</b> Gosdós <b>(b)</b> Skrúfjárn <b>(c)</b> Skrúfa <b>(d)</b> Skór</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Handhverfir: skrúfa, skór"
+        }
+      ]
+    }
+  ]
+}

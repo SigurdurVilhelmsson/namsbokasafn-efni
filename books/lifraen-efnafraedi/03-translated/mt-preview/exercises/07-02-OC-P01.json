@@ -1,0 +1,37 @@
+{
+  "nickname": "07-02-OC-P01",
+  "source_uid": "36611@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Reiknið ómettunarstuðulinn í hverri af eftirfarandi formúlum og teiknið síðan eins margar byggingar og þið getið fyrir hverja:",
+  "questions": [
+    {
+      "id": "330068",
+      "stem_html": "C<sub>4</sub>H<sub>8</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "1"
+        }
+      ]
+    },
+    {
+      "id": "330069",
+      "stem_html": "C<sub>4</sub>H<sub>6</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "2"
+        }
+      ]
+    },
+    {
+      "id": "330070",
+      "stem_html": "C<sub>3</sub>H<sub>4</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "2"
+        }
+      ]
+    }
+  ]
+}

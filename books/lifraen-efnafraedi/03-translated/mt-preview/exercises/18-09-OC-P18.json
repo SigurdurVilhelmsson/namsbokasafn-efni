@@ -1,0 +1,19 @@
+{
+  "nickname": "18-09-OC-P18",
+  "source_uid": "38714@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361149",
+      "stem_html": "<p><sup>1</sup>H NMR-rófið sem sýnt er er af hringlaga eter með formúluna C<sub>4</sub>H<sub>8</sub>O. Stingdu upp á byggingu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4cf8b192d5e83a3e66c601f69d07a977dcd425b/OChem_18_09_006.jpg\" alt=\"Proton N M R with shifts at 0 (TMS), 1.00 (triplet), 1.58 (multiplet), 2.48 and 2.73 (doublets), and 2.89 (multiplet). Relative areas are 3.00, 2.00, 1.00, 1.00, and 1.00 respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,2-Epoxýbútan"
+        }
+      ]
+    }
+  ]
+}

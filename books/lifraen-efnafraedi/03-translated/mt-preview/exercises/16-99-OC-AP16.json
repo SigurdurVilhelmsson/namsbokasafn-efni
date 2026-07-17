@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP16",
+  "source_uid": "37848@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Í hvaða stöðu og á hvaða hring myndir þú búast við að eftirfarandi efni gangist undir rafsækið skiptihvarf?",
+  "questions": [
+    {
+      "id": "359028",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c848d3bfda9b2b478c5a1aa61a4a4897a9ff3b7/OChem_16_EC_039a.jpg\" alt=\"A molecule in which a central oxygen atom is bonded to a benzene ring and and a second benzene ring bearing a methyl group in the para position\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359029",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96f25f72149538c111f92e6f84289eb8aa253171/OChem_16_EC_039b.jpg\" alt=\"A molecule in which a central N H group is bonded to a benzene ring and a second benzene ring bearing a bromine atom in the para position\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359030",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9390a39b542f63801a924343a4c4507967d49466/OChem_16_EC_039c.jpg\" alt=\"A molecule in which a benzene ring is bonded to a second benzene ring bearing a methyl group in the meta position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359031",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bbcae8cb5ee82188c847bfb33d33839396adb920/OChem_16_EC_039d.jpg\" alt=\"A molecule in which a central carbonyl group is bonded to a benzene ring and to a meta-substituted chlorobenzene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

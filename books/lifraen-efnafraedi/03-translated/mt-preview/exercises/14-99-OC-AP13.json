@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP13",
+  "source_uid": "37703@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358495",
+      "stem_html": "<p>Raðaðu eftirfarandi díensæknum í röð eftir væntanlegri hvarfgirni þeirra í Diels-Alder-efnahvarfi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b77f7a733dbe456935bb9c5309ede6b704acceb7/OChem_14_EC_019.jpg\" alt=\"Ethene with methyl at C 1, ethene with aldehyde at C 1, ethene with both carbons each bonded to two cyano groups, and ethene with both carbons each bonded to two methyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

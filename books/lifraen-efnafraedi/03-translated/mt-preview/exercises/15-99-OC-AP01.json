@@ -1,0 +1,40 @@
+{
+  "nickname": "15-99-OC-AP01",
+  "source_uid": "37749@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "358661",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5c5b2453d21bfaf9ffa89dcb4094e35d43434d3/OChem_15_EC_006a.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 5-carbon chain, in which C 1 and C 4 are each bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358662",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--952f3f24609e34c47a99ab6b0c4aff38f5aa6d1d/OChem_15_EC_006b.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a carboxylic acid group and a bromine atom, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358663",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3da5a770165efeda4d807398a0f81a16744bb0ef/OChem_15_EC_006c.jpg\" alt=\"In a benzene ring, C 1 is bonded to a bromine atom and C3 and C5 to methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358664",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff8857f9ad6a4ff736c53749c77faf1b7b0dfaf1/OChem_15_EC_006d.jpg\" alt=\"In a benzene ring, C 1 is bonded to a bromine atom and C 2 is bonded to a 3-carbon chain.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358665",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83d1182bd145da7ec210ebb96499433b25fac475/OChem_15_EC_006e.jpg\" alt=\"In a benzene ring, C 1 is bonded to a fluorine atom and C2 and C4 are each bonded to a nitro group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358666",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74d1e31e12f50db58deb0e2119b0f9b78c565d48/OChem_15_EC_006f.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to an amine group and a chlorine atom, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "07-11-OC-P21",
+  "source_uid": "36644@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357719",
+      "stem_html": "<p>Þegar vínýlsýklóhexan hvarfast við HBr verður álagning og umröðun og myndast 1-bróm-1-etýlsýklóhexan. Notaðu sveigðar örvar til að stinga upp á hvarfgangi sem skýrir þessa niðurstöðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2643d5c86bd202283ad3a111193bc5c2a8ea21a/OChem_07_11_005.jpg\" alt=\"Vinylcyclohexane reacts with hydrogen bromide to form 1-bromo-1-ethylcyclohexane.\">\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3383d4f6f94d82f39a740552d0fcde586df1ff0/OChem_07_EC_205.jpg\" alt=\"A reaction mechanism shows vinylcyclohexane reacting with hydrogen bromide to form 1-bromo-1-ethylcyclohexane via secondary carbocation and hydride shift to tertiary carbocation.\">"
+        }
+      ]
+    }
+  ]
+}

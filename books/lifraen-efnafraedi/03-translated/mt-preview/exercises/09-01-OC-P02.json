@@ -1,0 +1,19 @@
+{
+  "nickname": "09-01-OC-P02",
+  "source_uid": "37191@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "332888",
+      "stem_html": "Það eru sjö hverfu-alkín með formúluna C<sub>6</sub>H<sub>10</sub>. Teiknaðu þau og nefndu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-hexín, 2-hexín, 3-hexín, 3-metýl-1-pentín, 4-metýl-1-pentín, 4-metýl-2-pentín, 3,3-dímetýl-1-bútín"
+        }
+      ]
+    }
+  ]
+}

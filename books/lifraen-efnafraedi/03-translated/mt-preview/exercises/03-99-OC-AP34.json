@@ -1,0 +1,15 @@
+{
+  "nickname": "03-99-OC-AP34",
+  "source_uid": "36471@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351783",
+      "stem_html": "<p>Við munum sjá í næsta kafla að það eru tvö hverfuefni, bæði nefnd 1,2-dímetýlsýklóhexan. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--081dd3bcd6773d3eb96dfc3215a0d2f46aeb2d44/OChem_03_EC_010.jpg\" alt=\"The chemical structure of 1,2-dimethylcyclohexane is represented.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

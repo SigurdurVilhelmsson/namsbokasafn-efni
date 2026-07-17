@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP07",
+  "source_uid": "37165@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353524",
+      "stem_html": "<p>Spáðu fyrir um myndefni eftirfarandi efnahvarfa. Hafðu ekki áhyggjur af stærð sameindarinnar; einbeittu þér að virknihópunum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--07883fc583eba822205501e4039cead49b65474e/OChem_08_EC_036.jpg\" alt=\"Cholesterol undergoes multiple reactions with different sets of reagents to form five different unknown product(s), labeled A through E.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

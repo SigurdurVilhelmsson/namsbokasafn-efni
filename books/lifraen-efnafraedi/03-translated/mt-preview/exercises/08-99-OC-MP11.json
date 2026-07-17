@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP11",
+  "source_uid": "37118@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353488",
+      "stem_html": "<p>Preláreatín, sem er einangrað úr sjávarþörungum, er talið vera lífsmíðað úr láredíóli með eftirfarandi leið. Settu fram tillögu að hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc21fe91a76898b4dcf4421c1f4040d3d85fb976/OChem_08_EC_026.jpg\" alt=\"A reaction shows laurediol reacting with Br plus in the presence of bromoperoxidase to form prelaureatin.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "nickname": "20-99-OC-AP01",
+  "source_uid": "38111@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "359170",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a694edbca65efcd03afd4134edb334115a94ac7/OChem_20_EC_022a.jpg\" alt=\"A six-carbon chain with carboxyl groups on carbons 2 and 5.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359171",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4db06c7ca75eb5d7cb852608121699a30ccb386c/OChem_20_EC_022b.jpg\" alt=\"A three-carbon chain in which the first carbon is part of a carboxyl group. There are two methyl groups on the adjacent carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359172",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0884f119218a86b71ce5f10bb0be41376acfe419/OChem_20_EC_022c.jpg\" alt=\"A benzene ring with a carboxyl substituent. Meta to the carboxyl is a cyano substituent.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359173",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b48f5f66a5c78e22290825c41d96347eefc4ac/OChem_20_EC_022d.jpg\" alt=\"A ten-carbon ring with a carboxyl substituent. There is a double bond on the alpha carbon, with trans orientation.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359174",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3c4ff77bd7f451a77882133e08abd18f04a8c24/OChem_20_EC_022e.jpg\" alt=\"A three-carbon chain in which the first carbon is part of a nitrile group. There are two methyl groups on the adjacent carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359175",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac61b438880815408ae0d1d3842f8f74c3b36afa/OChem_20_EC_022f.jpg\" alt=\"A six-carbon chain with a substituent on the third carbon. The substituent has the condensed formula C H 2 C O 2 H.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359176",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d48cab01ea89a09b0a6abb0d6760ad3359462843/OChem_20_EC_022g.jpg\" alt=\"A five-carbon chain in which the first carbon is part of a carboxyl group. There are bromine groups on the furthest and next-to-furthest carbons from the carboxyl.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359177",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--508ebe425ba8318b91a845c44dae1a7a7a953ffe/OChem_20_EC_022h.jpg\" alt=\"A cyclopentene with a cyano substituent one carbon from the end of the double bond.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

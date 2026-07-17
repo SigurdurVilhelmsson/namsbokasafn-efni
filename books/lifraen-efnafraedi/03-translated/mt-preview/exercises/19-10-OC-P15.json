@@ -1,0 +1,19 @@
+{
+  "nickname": "19-10-OC-P15",
+  "source_uid": "38009@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360621",
+      "stem_html": "<p>Greindu karbónýlefnasambandið og alkóhólið sem voru notuð til að búa til eftirfarandi asetal:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70c1638207ec1729a46e91820a885edb84182f43/OChem_19_10_008.jpg\" alt=\"A ball-and-stick model of an acetal. It has benzene with C1 linked to acetate, C3 to methine chain with a methyl group, and two methoxide groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e73bc9587ccd07681cfe726875d514ed6104388f/OChem_19_EC_205.jpg\" alt=\"The structure of benzene with C 1 linked to C H connected to methyl and aldehyde group, C 5 position has an acetate group, plus ethanol.\">"
+        }
+      ]
+    }
+  ]
+}

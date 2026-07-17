@@ -1,0 +1,25 @@
+{
+  "nickname": "25-99-OC-AP01",
+  "source_uid": "39074@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Flokkaðu hverja af eftirfarandi sykrum. (Til dæmis er glúkósi aldóhexósi.)",
+  "questions": [
+    {
+      "id": "358804",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cfac261a5af44aa1784ea1e549f60e11e2ac05eb/OChem_25_EC_012a.jpg\" alt=\"Structure of dihydroxyacetone also known as glycerone. It is a simple triose carbohydrate.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358805",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d93e5ee5181ac96d883808136f0ae6463807c2c/OChem_25_EC_012b.jpg\" alt=\"Structure of a five-carbon atom ketopentose sugar with four -O H groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358806",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--53c024b435301c0fc3a0ece0a2bc61cf797a5f0c/OChem_25_EC_012c.jpg\" alt=\"Structural representation of aldoheptose which is a heptose with an aldehyde group and five chiral centers.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

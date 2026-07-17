@@ -1,0 +1,25 @@
+{
+  "nickname": "14-99-OC-AP27",
+  "source_uid": "37716@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu vokmyndirnar sem myndast þegar eftirfarandi díen eru róteinduð. Ef orka vokmyndanna er mismunandi skaltu tilgreina þá stöðugustu.",
+  "questions": [
+    {
+      "id": "358531",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34f95a0fe4b4a39c990535842fc57ce9f58612ba/OChem_14_EC_027a.jpg\" alt=\"The structure has a 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358532",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b339af52d623200c31c14fe3d933dbe7cff1b5c1/OChem_14_EC_027b.jpg\" alt=\"The structure has a cyclohexadiene ring with double bonds between C 1-C 2 and C 3-C 4. C 1 and C 4 are each bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358533",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ee75248a9ee0ca4381390e5f31587d85ed2ba37/OChem_14_EC_027c.jpg\" alt=\"The structure has a cyclopentadiene ring with double bonds between C 1-C 2 and C 3-C 4. C 2 and C 3 are each bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

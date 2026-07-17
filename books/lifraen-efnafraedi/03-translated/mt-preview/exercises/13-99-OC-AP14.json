@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-AP14",
+  "source_uid": "37508@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358381",
+      "stem_html": "<p>Sýruhvötuð vötnun 1-metýlsýklóhexanóls gefur af sér blöndu tveggja alkena. Hvernig gætirðu notað <sup>1</sup>H NMR til að hjálpa þér að ákveða hvor væri hvor?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--33c9c701525dd7df89213fccf94f6e3cdd29d658/OChem_13_EC_010.jpg\" alt=\"A cyclohexane ring with methyl and hydroxyl at C 1 reacts with hydronium ion to form cyclohexane double bonded to methylene and cyclohexene with methyl at C 1.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "nickname": "18-99-OC-AP02",
+  "source_uid": "38735@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Nefnið eftirfarandi byggingarformúlur samkvæmt IUPAC-reglum:</p>",
+  "questions": [
+    {
+      "id": "464259",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2934ae8fa03f1f16fadcf03c63e8c4d6eb7462a/OChem_18_EC_033a.jpg\" alt=\"A sulfur atom connected to a cyclohexane group and an isopropyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464260",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--084a5a65c43995ffe69ffccba09a07c3dc154118/OChem_18_EC_033b.jpg\" alt=\"A benzene ring with O C H 3 substituents on two adjacent carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464261",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d1573c4a20572ef936ef06ad32687ad4d14e78b/OChem_18_EC_033c.jpg\" alt=\"A five-membered ring in which two adjacent carbons are also connected by a shared oxygen atom.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464262",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b2f6009b61424b7ee2c072bbdc5149e696b99d/OChem_18_EC_033d.jpg\" alt=\"A five-membered ring in which one member is an oxygen. The ring is numbered starting at oxygen (1); there is a C H 3 on C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464263",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55d61a3263d1ccf72cb9fadcb1ded4814f2e1bc2/OChem_18_EC_033e.jpg\" alt=\"An oxygen atom connected to an isopropyl group and a cyclopropyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464264",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af9b8c75307a6a8b6402cd62a4b5debb3f16fd1b/OChem_18_EC_033f.jpg\" alt=\"A benzene ring with an S H substituent and, on an adjacent carbon, a nitro group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464265",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10581c8db4ca689bfcab4d52fca3ac2ab9838230/OChem_18_EC_033g.jpg\" alt=\"A sulfur with an isopropyl on the right, and a five-carbon chain on the left with methyl groups on (from left) third, fourth, and fifth carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464266",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--579a475b33ba38dc2c938795784e25fefc6becab/OChem_18_EC_033h.jpg\" alt=\"A central carbon with two methyl and two methoxy substituents.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464267",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f76bed8d1745deb2c91b093b65f230bc3f0abe4/OChem_18_EC_033i.jpg\" alt=\"A cyclohexane in which one carbon is substituted with two S C H 3 groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

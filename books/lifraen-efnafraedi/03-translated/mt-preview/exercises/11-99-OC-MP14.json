@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP14",
+  "source_uid": "37379@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355344",
+      "stem_html": "<p>Stingdu upp á hvarfgangi fyrir eftirfarandi efnahvarf, sem er mikilvægt skref í rannsóknarstofusmíði próteina:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65d6f507a09b7741a76853ae7a51c3c6c7984c22/OChem_11_EC_023.jpg\" alt=\"The reaction of a carbonyl compound in the presence of trifluoroacetic acid yields an alkene and carboxylic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

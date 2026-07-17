@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP03",
+  "source_uid": "39372@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355088",
+      "stem_html": "<p>Myndir þú búast við að eftirfarandi efnahvarf eigi sér stað á samhverfan eða andhverfan hátt? Sýnið rúmefnafræði sýklóbúten-myndefnisins og útskýrið svarið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d0e149d8ec975a33c187f562977434570c9fb882/OChem_30_EC_010.jpg\" alt=\"A reactant in which two cyclohexene rings are bonded together at C 1 reacts with light to form a product where cyclobutene is fused between two cyclohexane rings.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

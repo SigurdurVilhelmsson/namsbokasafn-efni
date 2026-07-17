@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-AP03",
+  "source_uid": "37904@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "351609",
+      "stem_html": "<i>Trans</i>-3-klórsýklóheptanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351610",
+      "stem_html": "2-Etýl-2-búten-1-ól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351611",
+      "stem_html": "<i>o</i>-(2-Hýdroxýetýl)fenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351612",
+      "stem_html": "3-Metýl-1-fenýl-1-bútanól",
+      "collaborator_solutions": []
+    }
+  ]
+}

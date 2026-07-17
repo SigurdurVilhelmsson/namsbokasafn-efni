@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-VC04",
+  "source_uid": "37109@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353453",
+      "stem_html": "<p>Úr hvaða alkena var eftirfarandi 1,2-díól búið til og hvaða aðferð var notuð, vatnsrof epoxíðs eða OsO<sub>4</sub>?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--febf130c7a1fb5ffdbaade09a6439112219adf99/OChem_08_EC_018.jpg\" alt=\"The ball-and-stick model has a cyclohexane ring. C1 and C2 are each bonded to an equatorial hydroxyl group. C5 is bonded to a methyl group. The red sphere denotes oxygen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

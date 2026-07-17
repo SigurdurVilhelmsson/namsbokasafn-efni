@@ -1,0 +1,25 @@
+{
+  "nickname": "29-99-OC-MP11",
+  "source_uid": "39325@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Amínósýran systein, C<sub>3</sub>H<sub>7</sub>NO<sub>2</sub>S, er lífsmíðuð úr efni sem kallast systatíónín með fjölþrepa ferli.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c93daf3a308627a76ca191ebe849e54786db778/OChem_29_EC_013.jpg\" alt=\"Cystathionine reacts to form ammonium ion, an unknown product represented as a question mark and cysteine.\">",
+  "questions": [
+    {
+      "id": "358163",
+      "stem_html": "Fyrsta skrefið er transamínering. Hvert er myndefnið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358164",
+      "stem_html": "Annað skrefið er E1cB-efnahvarf. Sýndu myndefnin og hvarfgang efnahvarfsins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358165",
+      "stem_html": "Lokaskrefið er afoxun tvítengis. Hvaða lífræna kó-faktor þarf fyrir þetta efnahvarf og hvaða myndefni táknar spurningarmerkið í jöfnunni?",
+      "collaborator_solutions": []
+    }
+  ]
+}

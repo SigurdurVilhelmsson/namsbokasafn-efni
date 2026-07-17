@@ -1,0 +1,35 @@
+{
+  "nickname": "17-99-OC-VC03",
+  "source_uid": "37887@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Spáðu fyrir um myndefnið úr efnahvarfi eftirfarandi efnis (rauðbrúnt = Br) við:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f37d60ba6cb36f122f4526bd338f21524d4a12c0/OSX_OrgChem_17_EC_BrAdd_img.jpg\" alt=\"A ball-and-stick model of benzene with bromine on C 1, C 3 of benzene has the substituent 2-butanol attached by C 3 of 2-butanol.\">",
+  "questions": [
+    {
+      "id": "359419",
+      "stem_html": "PBr<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359420",
+      "stem_html": "Vatnslausn af H<sub>2</sub>SO<sub>4</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359421",
+      "stem_html": "SOCl<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359422",
+      "stem_html": "Dess–Martin-perjódínan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359423",
+      "stem_html": "Br<sub>2</sub>, FeBr<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP02",
+  "source_uid": "37428@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifið sameindaformúlur fyrir efnasambönd sem sýna eftirfarandi sameindajónir í hárri upplausn massarófa sinna, að því gefnu að C, H, N og O gætu verið til staðar. Nákvæmir atómmassar eru: 1,007 83 (<sup>1</sup>H), 12,000 00 (<sup>12</sup>C), 14,003 07 (<sup>14</sup>N), 15,994 91 (<sup>16</sup>O).",
+  "questions": [
+    {
+      "id": "337606",
+      "stem_html": "M<sup>+</sup> = 98,0844",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337607",
+      "stem_html": "M<sup>+</sup> = 123,0320",
+      "collaborator_solutions": []
+    }
+  ]
+}

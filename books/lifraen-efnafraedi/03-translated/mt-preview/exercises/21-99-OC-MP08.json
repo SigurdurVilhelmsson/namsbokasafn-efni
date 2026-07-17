@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP08",
+  "source_uid": "38188@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361437",
+      "stem_html": "<p>Meðhöndlun á <i>α</i>-amínósýru með DCC gefur 2,5-díketópíperasín. Leggið til verkunarhátt.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff98315a1c3374d485987975b995f3126fabf5d1/OChem_21_EC_032.jpg\" alt=\"The reaction shows the conversion of an alpha-amino acid to a 2,5-diketopiperazine using D C C as a reagent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP15",
+  "source_uid": "38997@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361663",
+      "stem_html": "<p>Eftirfarandi umbreyting felur í sér samtengda kjarnsækna álagningu (<b>kafli 19.13</b>) og síðan innansameinda kjarnsækið asýlskiptihvarf (<b>kafli 21.2</b>). Sýndu hvarfganginn.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d377ef7559a516915864f7c7782545f264811258/OChem_24_EC_030.jpg\" alt=\"A carbonyl compound reacts with methylamine to form cyclopentanone with N C H 3 and methoxy group and methanol is the second product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

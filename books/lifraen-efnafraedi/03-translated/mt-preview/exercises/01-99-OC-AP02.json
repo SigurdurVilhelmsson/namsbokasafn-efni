@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP02",
+  "source_uid": "37560@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu upp rafeindaskipan á grunnástandi fyrir hvert eftirfarandi frumefna:",
+  "questions": [
+    {
+      "id": "338465",
+      "stem_html": "Kalín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338466",
+      "stem_html": "Arsen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338467",
+      "stem_html": "Ál",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338468",
+      "stem_html": "German",
+      "collaborator_solutions": []
+    }
+  ]
+}

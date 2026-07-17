@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP26",
+  "source_uid": "37927@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359547",
+      "stem_html": "<p>Testósterón er eitt mikilvægasta karlkyns sterahormónið. Þegar testósterón er þurrkað með meðhöndlun með sýru verður umröðun og myndefnið sem sýnt er myndast. Stingdu upp á hvarfgangi sem útskýrir þetta efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61823b3c17933204c110fdcbff80d1786eb321ea/OChem_17_EC_045.jpg\" alt=\"Testosterone reacts with hydronium ion to form a compound with alkene group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

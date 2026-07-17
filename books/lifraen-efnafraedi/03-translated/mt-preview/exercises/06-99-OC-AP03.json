@@ -1,0 +1,20 @@
+{
+  "nickname": "06-99-OC-AP03",
+  "source_uid": "37324@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu líklega rafsækna og kjarnsækna staði í hverri af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "353335",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a1ac5952da9848bb7df9d08044d080c9da0e1321/OChem_06_EC_014a.jpg\" alt=\"The wedge-dash structure of testosterone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353336",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fafd32b5fb0d6bab5e9655ea017dc8b6e645ad71/OChem_06_EC_014b.jpg\" alt=\"The wedge-dash structure of methamphetamine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

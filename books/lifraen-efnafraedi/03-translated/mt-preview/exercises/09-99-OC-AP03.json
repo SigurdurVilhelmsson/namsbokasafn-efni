@@ -1,0 +1,20 @@
+{
+  "nickname": "09-99-OC-AP03",
+  "source_uid": "37217@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi tvö kolvetni hafa verið einangruð úr ýmsum plöntum af körfublómaætt. Nefnið þau samkvæmt IUPAC-reglum.",
+  "questions": [
+    {
+      "id": "346476",
+      "stem_html": "CH<sub>3</sub>CH<span data-math=\"\\text{=}\"></span>CHC<span data-math=\"\\text{≡}\"></span>CC<span data-math=\"\\text{≡}\"></span>CCH<span data-math=\"\\text{=}\"></span>CHCH<span data-math=\"\\text{=}\"></span>CHCH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub> (allt trans)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346477",
+      "stem_html": "CH<sub>3</sub>C<span data-math=\"\\text{≡}\"></span>CC<span data-math=\"\\text{≡}\"></span>CC<span data-math=\"\\text{≡}\"></span>CC<span data-math=\"\\text{≡}\"></span>CC<span data-math=\"\\text{≡}\"></span>CCH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

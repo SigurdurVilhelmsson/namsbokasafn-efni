@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP62",
+  "source_uid": "36174@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351747",
+      "stem_html": "<p>Þíamíndífosfat (TPP), afleiða B<sub>1</sub>-vítamíns sem er nauðsynlegt fyrir glúkósaumbrot, er veik sýra sem basi getur róteindahreinsað. Úthlutaðu formlegum hleðslum á viðeigandi frumeindir í bæði TPP og róteindahreinsuðu myndefni þess.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b327915688994d191c769c9208fc0ddb911a42c6/OChem_02_EC_028.jpg\" alt=\"Thiamin diphosphate reacts with base forming a product, in which the hydrogen (with p K a 18) at C2 of the 5-membered ring is replaced with a lone pair.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

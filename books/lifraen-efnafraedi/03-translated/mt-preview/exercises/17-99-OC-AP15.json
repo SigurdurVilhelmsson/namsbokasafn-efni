@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP15",
+  "source_uid": "37916@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359525",
+      "stem_html": "<p>Eftirfarandi <sup>1</sup>H NMR-róf er af alkóhóli, C<sub>8</sub>H<sub>10</sub>O. Stingdu upp á byggingu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6266e0ad35d9aa4cfe4bc6ac4109583712d5f37/OChem_17_EC_036.jpg\" alt=\"H N M R spectrum with shifts at 2.32 (singlet), 2.43 (singlet), 4.50, 7.10 and 7.17 (two doublets). Relative areas are 3, 1, 2, 2, and 2 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

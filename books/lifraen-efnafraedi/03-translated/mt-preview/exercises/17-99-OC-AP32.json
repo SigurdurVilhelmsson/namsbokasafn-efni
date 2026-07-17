@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP32",
+  "source_uid": "37933@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359559",
+      "stem_html": "<p>2,3-Dímetýl-2,3-bútandíól hefur almenna heitið <i>pinakól.</i> Við hitun með vatnslausn sýru umraðast pinakól í <i>pinakólón,</i> 3,3-dímetýl-2-bútanón. Stingdu upp á hvarfgangi fyrir þetta efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--462a66c5e4d87bd7d97f442ceae595d9e8e44e5d/OChem_17_EC_048.jpg\" alt=\"Pinacol (2,3-dihydroxy-2,3-dimethylbutane) reacts with hydronium ion to form pinacolone (t-butyl methyl ketone) and water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

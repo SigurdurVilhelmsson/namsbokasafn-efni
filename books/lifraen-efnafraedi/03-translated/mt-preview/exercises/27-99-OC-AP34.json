@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP34",
+  "source_uid": "38880@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358251",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir lífmyndun seskvíterpenóíðans tríkódíens úr farnesýldífosfati. Ferlið felur í sér hringmyndun til að gefa milliefni sem er annars stigs karbkatjón, og síðan nokkrar umraðanir karbkatjónar.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd09c9ab97f62a1a4b535ae1ec5c183f8864719c/OChem_27_EC_023.jpg\" alt=\"Farnesyl diphosphate (F P P) cyclizes to form an intermediate. This further forms trichodiene as the final product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

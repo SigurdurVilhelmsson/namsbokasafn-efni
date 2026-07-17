@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP13",
+  "source_uid": "37171@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353556",
+      "stem_html": "<p>Hvaða af eftirfarandi alkóhólum væri ekki hægt að búa til sértækt með vatnsbórun-oxun á alkeni? Útskýrðu.</p>\n<p><b>(a)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd30995a14dad1cd405f1ac3bd4c970529affe4e/OChem_08_EC_041a.jpg\" alt=\"The condensed structural formula has a 5-carbon chain. C2 is bonded to a hydroxyl group.\">\n <b>(b)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62c3814e452507c526fceed33757a5122e01c74a/OChem_08_EC_041b.jpg\" alt=\"The condensed structural formula has a 4-carbon chain. C2 is bonded to a hydroxyl group and C1 and C4 to methyl groups\">\n <b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b7ffe0c53501bffc40ada844d4d4091d8df0c16/OChem_08_EC_041c.jpg\" alt=\"The structure has a cyclohexane ring. C1 is wedge bonded to a methyl group. C2 is wedge bonded to a hydroxyl group.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5dfa7b6a03b5ed23b4ab70072a3e3f9b2b81a21/OChem_08_EC_041d.jpg\" alt=\"The structure has a cyclohexane ring. C1 is wedge bonded to a methyl group and dash bonded to a hydroxyl group.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP42",
+  "source_uid": "37415@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355449",
+      "stem_html": "<p>Amín eru umbreytt í alken í tveggja þrepa ferli sem kallast Hofmann-brottnám. S<sub>N</sub>2-efnahvarf amínsins við umframmagn af CH<sub>3</sub>I í fyrsta skrefi gefur milliefni sem gengst undir E2-efnahvarf þegar það er meðhöndlað með silfuroxíði sem basa. Pentýlamín gefur til dæmis 1-penten. Leggðu til byggingu fyrir milliefnið og útskýrðu hvers vegna það gengst auðveldlega undir brottnám.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01ac86b28303959e89da3ea6168f0bb596b7546f/OChem_11_EC_048.jpg\" alt=\"A reaction of 1-aminopentane first with excess methyl iodide and then with Ag 2 O and water yields 1-pentene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

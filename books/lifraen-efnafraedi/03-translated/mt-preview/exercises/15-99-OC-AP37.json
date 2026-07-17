@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP37",
+  "source_uid": "37785@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358708",
+      "stem_html": "<p>Eftir eftirfarandi efnahvarf færist efnafræðilega hliðrun H<sub>a</sub> niður sviðið úr 6,98 ppm í 7,30 ppm. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b9bcfbfae4f6f73bbad96ae91350cbdc451abaf/OChem_15_EC_027.jpg\" alt=\"Benzene bonded to two methoxy and two ethyne chains. C 2 of each ethyne is bonded to position 3 of a pyridine ring where position 2 of that ring is bonded to another ethyne group. Palladium catalyzes a cyclization of this compound.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

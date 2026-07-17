@@ -1,0 +1,19 @@
+{
+  "nickname": "28-02-OC-P03",
+  "source_uid": "39112@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348284",
+      "stem_html": "<p>Hvaða basaröð á einum DNA-þræði er samsvarandi eftirfarandi röð á öðrum þræði?</p>\n<p style=\"text-align: center\">(5′) GGCTAATCCGT (3′)</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "(5′) ACGGATTAGCC (3′)"
+        }
+      ]
+    }
+  ]
+}

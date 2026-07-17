@@ -1,0 +1,19 @@
+{
+  "nickname": "02-09-OC-P16",
+  "source_uid": "36128@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "345884",
+      "stem_html": "Hvað er <i>K</i><sub>a</sub> HCN ef p<i>K</i><sub>a</sub> = 9,31?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>K</i><sub>a</sub> = 4,9 × 10<sup>–10</sup>"
+        }
+      ]
+    }
+  ]
+}

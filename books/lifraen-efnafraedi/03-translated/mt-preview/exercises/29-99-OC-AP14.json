@@ -1,0 +1,25 @@
+{
+  "nickname": "29-99-OC-AP14",
+  "source_uid": "39339@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu mörg mól af asetýl CoA myndast við niðurbrot eftirfarandi efna?",
+  "questions": [
+    {
+      "id": "349368",
+      "stem_html": "1,0 mól af glúkósa",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349369",
+      "stem_html": "1,0 mól af palmitínsýru",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349370",
+      "stem_html": "1,0 mól af maltósa",
+      "collaborator_solutions": []
+    }
+  ]
+}

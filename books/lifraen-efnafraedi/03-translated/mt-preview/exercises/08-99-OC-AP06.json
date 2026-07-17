@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP06",
+  "source_uid": "37164@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357264",
+      "stem_html": "<p>Cis- og trans-hverfur 2-bútens gefa mismunandi sýklóprópan-myndefni í Simmons-Smith-efnahvarfinu. Sýndu byggingu beggja og útskýrðu muninn.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8f45962ec60d2b031fc04da89f91a072083d2ed/OChem_08_EC_035.jpg\" alt=\"cis-2-Butene reacts with diiodomethane and copper-zinc catalyst to form unknown product(s). trans-2-Butene also reacts with the same reagent and catalyst to form unknown product(s). Products are depicted by question marks.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

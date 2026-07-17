@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP27",
+  "source_uid": "36590@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Tilgreindu hvort fletirnir sem sýndir eru í eftirfarandi sameindum séu Re eða Si:",
+  "questions": [
+    {
+      "id": "354230",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a5d7d7e7111261b689a394d61a175c83d9ab891/OChem_05_EC_021a.jpg\" alt=\"The structure of pyruvate. Two arrows, one from the top and the other from bottom, point toward the central carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354231",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f8ba9e5131d63ac2d646be7927a5bb694f2971e/OChem_05_EC_021b.jpg\" alt=\"The structure of crotonate. Two arrows, one from the top and the other from bottom, point toward C3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

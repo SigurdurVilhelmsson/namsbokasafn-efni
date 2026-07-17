@@ -1,0 +1,19 @@
+{
+  "nickname": "02-09-OC-P15",
+  "source_uid": "36127@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351648",
+      "stem_html": "<p>Ammóníak, NH<sub>3</sub>, hefur p<i>K</i><sub>a</sub> ≈ 36 og aseton hefur p<i>K</i><sub>a</sub> ≈ 19. Mun eftirfarandi efnahvarf eiga sér stað að verulegu leyti?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0cb484a36a70af75b654dd14c0d8faea44cc72a/OChem_02_09_005.jpg\" alt=\"The reaction of acetone and sodium amide in which acetone is deprotonated at C1 to form the acetone enolate sodium salt and ammonia.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnahvarfið mun eiga sér stað."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "04-99-OC-AP14",
+  "source_uid": "36540@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Áætlaðu út frá gögnum í mynd 4.13 og töflu 4.1 hlutfall sameinda sem hafa ásamtengda hópa sína í áslægri stöðu fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "330720",
+      "stem_html": "Ísóprópýlsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330721",
+      "stem_html": "Flúorsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330722",
+      "stem_html": "Sýklóhexankarbonítríl, C<sub>6</sub>H<sub>11</sub>CN",
+      "collaborator_solutions": []
+    }
+  ]
+}

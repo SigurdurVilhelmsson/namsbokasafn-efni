@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP15",
+  "source_uid": "38037@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360711",
+      "stem_html": "<p>Paraldehýð, sem er róandi og svefnlyf, er búið til með því að meðhöndla asetaldehýð með súrum hvata. Stingdu upp á hvarfgangi fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa8907d3d714a5a3f4e740f3f760031f7a7a6f3e/OChem_19_EC_034.jpg\" alt=\"Three acetaldehyde molecules react with proton catalyst giving paraldehyde, where three carbon atoms of cyclohexane ring are replaced with oxygen. Three methyl groups are connected to carbon atoms in ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP01",
+  "source_uid": "36653@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Reiknaðu ómettunarstuðulinn í eftirfarandi formúlum og teiknaðu fimm mögulegar byggingar fyrir hverja:",
+  "questions": [
+    {
+      "id": "330234",
+      "stem_html": "C<sub>10</sub>H<sub>16</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330235",
+      "stem_html": "C<sub>8</sub>H<sub>8</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330236",
+      "stem_html": "C<sub>7</sub>H<sub>10</sub>Cl<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330237",
+      "stem_html": "C<sub>10</sub>H<sub>16</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330238",
+      "stem_html": "C<sub>5</sub>H<sub>9</sub>NO<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330239",
+      "stem_html": "C<sub>8</sub>H<sub>10</sub>ClNO",
+      "collaborator_solutions": []
+    }
+  ]
+}

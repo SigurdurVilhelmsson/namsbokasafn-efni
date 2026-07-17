@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP01",
+  "source_uid": "39240@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349065",
+      "stem_html": "Fyrir utan cystein koma aðeins <i>S</i> amínósýrur fyrir í próteinum. Nokkrar <i>R</i> amínósýrur finnast þó einnig í náttúrunni. (<i>R</i>)-Serín finnst í ánamöðkum og (<i>R</i>)-alanín finnst í skordýralirfum. Teiknaðu Fischer-vörpun af (<i>R</i>)-seríni og (<i>R</i>)-alaníni. Eru þetta <small style=\"font-variant: small-caps\">D</small> eða <small style=\"font-variant: small-caps\">L</small> amínósýrur?",
+      "collaborator_solutions": []
+    }
+  ]
+}

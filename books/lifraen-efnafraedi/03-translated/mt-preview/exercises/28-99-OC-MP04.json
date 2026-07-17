@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-MP04",
+  "source_uid": "39128@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354980",
+      "stem_html": "<p>Eitt af skrefunum í niðurbroti gúaníns í efnaskiptum er vatnsrof þar sem xantín myndast. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bf2655d2cceade2e4fa96b539899be12c61b9609/OChem_28_EC_007.jpg\" alt=\"The hydrolysis reaction of guanine involves the formation of xanthine. In the process, ammonia is released.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

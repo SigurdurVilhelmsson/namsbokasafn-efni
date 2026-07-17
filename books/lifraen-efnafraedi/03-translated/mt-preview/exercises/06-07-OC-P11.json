@@ -1,0 +1,19 @@
+{
+  "nickname": "06-07-OC-P11",
+  "source_uid": "37304@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336367",
+      "stem_html": "Hvort efnahvarfið er meira útvermið, það sem hefur <i>K</i><sub>jafnv</sub> = 1000 eða það sem hefur <i>K</i><sub>jafnv</sub> = 0,001?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hærra <i>K</i><sub>jafnv</sub> er meira útvermið."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-VC02",
+  "source_uid": "38904@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359825",
+      "stem_html": "<p>Eftirfarandi bygging táknar milliefni sem myndaðist við álagningu esterenólatjónar á aðra estersameind. Tilgreindu hvarfefnið, farhópinn og myndefnið.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68fece221eceae0e605510f936ccbd877e886302/OChem_23_EC_012.jpg\" alt=\"Ball-and-stick model of alkoxide ion methyl-3-methoxy-2, 4-diphenylbutanoate where third carbon is connected to oxygen. Grey, white, and red spheres denote C, H, and O, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

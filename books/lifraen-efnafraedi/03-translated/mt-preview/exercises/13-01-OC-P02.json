@@ -1,0 +1,19 @@
+{
+  "nickname": "13-01-OC-P02",
+  "source_uid": "37468@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "337960",
+      "stem_html": "Reiknaðu orkuna sem þarf til að snúa róteind í rófsmæli sem starfar á 300 MHz. Eykur eða minnkar orkuþörfina fyrir vok mynd að auka tíðni rófsmælisins úr 200 í 300 MHz?",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,2 × 10<sup>−4</sup> kJ/mól"
+        }
+      ]
+    }
+  ]
+}

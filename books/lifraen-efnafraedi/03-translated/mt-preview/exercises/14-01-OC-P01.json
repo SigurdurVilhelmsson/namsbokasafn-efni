@@ -1,0 +1,19 @@
+{
+  "nickname": "14-01-OC-P01",
+  "source_uid": "37637@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342842",
+      "stem_html": "Allen, H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>C<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>, hefur vetnunarvarma upp á –298 kJ/mól (–71,3 kkal/mól). Raðaðu samtengdu díeni, ósamtengdu díeni og alleni í röð eftir stöðugleika.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Búist er við að Δ<i>H</i>°<sub>hydrog</sub> fyrir allen sé −252 kJ/mól. Allen er óstöðugra en ósamtengt díen, sem er óstöðugra en samtengt díen."
+        }
+      ]
+    }
+  ]
+}

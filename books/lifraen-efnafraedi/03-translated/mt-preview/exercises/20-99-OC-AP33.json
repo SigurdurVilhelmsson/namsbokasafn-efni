@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-AP33",
+  "source_uid": "38143@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi umbreytingar? Fleiri en eitt skref er nauðsynlegt í hverju tilfelli.",
+  "questions": [
+    {
+      "id": "359219",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--19ae8307cbdeca7e097f6ca59403ddb79ed1e5aa/OChem_20_EC_034a.jpg\" alt=\"Benzene separated from 2-methyl-2-phenylpropanoic acid by a reaction arrow.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359220",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c375d973d99dfc96339603ae9831cce60ae6e4c/OChem_20_EC_034b.jpg\" alt=\"Cyclohexanone separated from 1-phenylcyclohexanecarboxylic acid by a reaction arrow. 1-phenylcyclohexanecarboxylic acid has a cyclohexane ring single bonded to a phenyl group and a carboxyl group at C 1.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

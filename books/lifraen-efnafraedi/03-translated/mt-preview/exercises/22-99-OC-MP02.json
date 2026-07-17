@@ -1,0 +1,20 @@
+{
+  "nickname": "22-99-OC-MP02",
+  "source_uid": "38789@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og sýndu hvarfganginn fyrir hvert af eftirfarandi efnahvörfum:",
+  "questions": [
+    {
+      "id": "360918",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--730774853106cf90b579707d27560ae64d7ab777/OChem_22_EC_015a.jpg\" alt=\"Butyraldehyde reacts with bromine in acetic acid to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360919",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--895fcad3ecab11543d26b163a43505a027d55e62/OChem_22_EC_015d.jpg\" alt=\"3,3-Dimethyl-2-butanone reacts with bromine in acetic acid to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP37",
+  "source_uid": "37726@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358551",
+      "stem_html": "<p>Ergósteról, forveri D-vítamíns, hefur <i>λ</i><sub>max</sub> = 282 nm og mólgleypni <i>ε</i> = 11.900. Hver er styrkur ergósteróls í lausn með gleypni <i>A</i> = 0,065 og sýnisvegalengd <i>l</i> = 1,00 cm?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb949a64ac22db6119caae47f8a33b27326b4e63/OChem_14_EC_034.jpg\" alt=\"The wedge-dash structure of ergosterol that has the chemical formula C 28 H 44 O.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

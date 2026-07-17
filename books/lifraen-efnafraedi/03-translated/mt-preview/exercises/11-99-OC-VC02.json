@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-VC02",
+  "source_uid": "37363@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355176",
+      "stem_html": "<p>Úr hvaða alkýlbrómíði var eftirfarandi alkýlasetat búið til með S<sub>N</sub>2-efnahvarfi? Skrifaðu efnahvarfið og sýndu alla stereóefnafræði.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b489e94f17db936514e761d517382874d45929fd/OChem_11_EC_008.jpg\" alt=\"A ball-and-stick model of an alkyl acetate. The gray, black, and red spheres represent hydrogen, carbon, and bromine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

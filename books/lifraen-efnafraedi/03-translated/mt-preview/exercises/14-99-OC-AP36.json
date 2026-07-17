@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP36",
+  "source_uid": "37725@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358549",
+      "stem_html": "<p>Adipónítríl, hvarfefni sem notað er við framleiðslu á næloni, er hægt að búa til í þremur skrefum úr 1,3-bútadíeni. Hvernig myndir þú framkvæma þessa myndun?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65d4acf0928150b6d125e4c09b43af9acce50e8c/OChem_14_EC_033.jpg\" alt=\"A 3-step reaction shows the formation of adiponitrile from 1,3-butadiene\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

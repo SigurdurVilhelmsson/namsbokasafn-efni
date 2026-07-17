@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP08",
+  "source_uid": "37566@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Breytið eftirfarandi strikamyndum í sameindaformúlur:</p>",
+  "questions": [
+    {
+      "id": "358867",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8533f5cd24cd56d5f09d7b4c99f93864d2e6e4b8/OChem_01_EC_006a.jpg\" alt=\"Chemical structure of a benzene ring with a carboxyl group and an acetoxy group on adjacent carbons.\">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358868",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bf6d710d6f213a261b018193f083fd7e83613e78/OChem_01_EC_006b.jpg\" alt=\"Chemical structure of vitamin C.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358869",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--891677a8acea623698f848358e51644463d1320e/OChem_01_EC_006c.jpg\" alt=\"Chemical structure of nicotine.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358870",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0938df5266aa6373eb20f1c5055a24d7b261b2bc/OChem_01_EC_006d.jpg\" alt=\"Chemical structure of a six-membered ring incorporating one oxygen. There are hydroxyl groups on four of the carbons and a hydroxymethyl group on the fifth.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

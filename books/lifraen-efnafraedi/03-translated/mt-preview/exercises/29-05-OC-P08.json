@@ -1,0 +1,19 @@
+{
+  "nickname": "29-05-OC-P08",
+  "source_uid": "39302@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349274",
+      "stem_html": "Skoðaðu allan glýkólýsuferilinn og gerðu lista yfir þær tegundir lífrænna efnahvarfa sem eiga sér stað – kjarnsækin asýlskiptihvörf, aldólhvörf, E1cB-hvörf og svo framvegis.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Skref 1, 3: Fosfatflutningur; skref 2, 5, 8: Ísómerun; skref 4: Afturvirkt aldólefnhvarf; skref 5: Oxun og kjarnsækið asýlskiptihvarf; skref 7, 10: Fosfatflutningur; skref 9: E1cB-vötnun"
+        }
+      ]
+    }
+  ]
+}

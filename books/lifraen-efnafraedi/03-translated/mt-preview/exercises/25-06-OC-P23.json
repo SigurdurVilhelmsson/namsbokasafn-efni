@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P23",
+  "source_uid": "39061@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348044",
+      "stem_html": "Tveir af fjórum <small style=\"font-variant: small-caps\">D</small> aldópentósum gefa <small style=\"font-variant: small-caps\">D</small>-þreósa við Wohl-niðurbrot. Hver er bygging þeirra?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">D</small>-Xýlósi og <small style=\"font-variant: small-caps\">D</small>-lýxósi"
+        }
+      ]
+    }
+  ]
+}

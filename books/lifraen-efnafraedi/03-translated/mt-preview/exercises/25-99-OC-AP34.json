@@ -1,0 +1,30 @@
+{
+  "nickname": "25-99-OC-AP34",
+  "source_uid": "39107@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Einfaldar sykrur gangast undir efnahvarf með fenýlhýdrasíni, PhNH–NH<sub>2</sub>, og mynda kristallaðar afleiður sem kallast <i>ósazón</i>. Efnahvarfið er þó nokkuð flókið, eins og sést á því að glúkósi og frúktósi mynda sama ósazónið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08af525788811a8a323aaf62d70ea024a40240d4/OChem_25_EC_019.jpg\" alt=\"D-Glucose and D-fructose when treated with excess phenyl hydrazine form the same osazone  with  phenhydrazones at C 1 and C 2\">",
+  "questions": [
+    {
+      "id": "358831",
+      "stem_html": "Teiknaðu byggingu þriðju sykrutegundar sem myndar sama ósazón og glúkósi og frúktósi.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358832",
+      "stem_html": "Með glúkósa sem dæmi er fyrsta skrefið í ósazónmyndun efnahvarf sykrurnar við fenýlhýdrasín sem myndar imín sem kallast <i>fenýlhýdrasón</i>. Teiknaðu byggingu myndefnisins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358833",
+      "stem_html": "Annað og þriðja skrefið í ósazónmyndun eru ráphvarf fenýlhýdrasónsins til að mynda enól, og síðan brottnám anilíns til að mynda ketóimín. Teiknaðu byggingar bæði enólráphverfunnar og ketóimínsins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358834",
+      "stem_html": "Lokaskrefið er efnahvarf ketóimínsins við 2 jafngildi af fenýlhýdrasíni til að mynda ósazónið auk ammóníaks. Leggðu til hvarfgang fyrir þetta skref.",
+      "collaborator_solutions": []
+    }
+  ]
+}

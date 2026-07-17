@@ -1,0 +1,37 @@
+{
+  "nickname": "06-06-OC-P08",
+  "source_uid": "37299@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Bættu bogadregnum örvum við eftirfarandi skautuð efnahvörf til að sýna flæði rafeinda í hverju þeirra:",
+  "questions": [
+    {
+      "id": "358055",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3044051822eaa1d5e30d3fe9a69f9de42b44edf2/OChem_06_06_010a.jpg\" alt=\"Chlorine molecule reacts with ammonia to form nitrogen with a positive charge bonded to three hydrogen atoms and a chlorine atom. The side product is chloride ion.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8efd7d0c5e4a818eb68eea31dab55c4e4b425c2c/OChem_06_EC_204a.jpg\" alt=\"A reversible reaction shows chlorine molecule reacting with ammonia to form C l N H 3 plus and a chloride ion. Arrows depict electron flow from ammonia.\">"
+        }
+      ]
+    },
+    {
+      "id": "358056",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa76f58c8927a1ba33bff1f9e8aee9bd07c12a08/OChem_06_06_010b.jpg\" alt=\"A methoxide ion reacts with methyl bromide to form dimethyl ether and a bromide ion.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7067a565a15ec429bcea780aaa8f1510207660c9/OChem_06_EC_204b.jpg\" alt=\"A methoxide ion reacts with methyl bromide to form dimethyl ether and a bromide ion. Two arrows depict the movement of electrons, originating from the methoxide oxygen.\">"
+        }
+      ]
+    },
+    {
+      "id": "358057",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37f8c25f0ef8e40e6710df6b14656de88948b6be/OChem_06_06_010c.jpg\" alt=\"A carbon bonded to an oxygen ion, methyl, chlorine, and methoxy group forms a carbonyl group bonded to methyl and methoxy group. The side product is chloride ion.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--817c977cd5156f88718bac02fe83b85c8c8cb4dc/OChem_06_EC_204c.jpg\" alt=\"A carbon bonded to an oxygen ion, methyl group, chlorine atom, and methoxy group forms two products. Two arrows depict the movement of electrons, originating at the oxygen anion.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP18",
+  "source_uid": "39387@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355112",
+      "stem_html": "<p>Hringopnun á <i>trans</i>-sýklóbútenhverfunni sem sýnd er á sér stað við mun lægra hitastig en sambærileg hringopnun á <i>cis</i>-sýklóbútenhverfunni. Útskýrðu hitastigsáhrifin og tilgreindu staðefnafræði hvors efnahvarfs fyrir sig sem annaðhvort samstæða eða gagnstæða snúninga.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65ee0dca65b5b8022db1e6be52a1521cdb7cca61/OChem_30_EC_022.jpg\" alt=\"Cis cyclobutene reacts at 300 degree Celsius to give two cyclobutene rings fused by a bond. This reacts at 100 degree Celsius to give trans cyclobutene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

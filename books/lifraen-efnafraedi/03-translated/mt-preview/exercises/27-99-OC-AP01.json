@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP01",
+  "source_uid": "38849@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346652",
+      "stem_html": "Feitur fiskur eins og lax og hvítur túnfiskur er ríkur af <i>omega-3</i> fitusýrum, sem hafa tvítengi þremur kolefnum frá endanum sem ekki er karboxýl og hefur verið sýnt fram á að lækka kólesterólmagn í blóði. Teiknaðu byggingu 5,8,11,14,17-eíkósapentaensýru, sem er algengt dæmi. (Eikósan = C<sub>20</sub>H<sub>42</sub>.)",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "19-08-OC-P10",
+  "source_uid": "38004@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360611",
+      "stem_html": "Sýndu myndefnin sem þú myndir fá með sýruhvötuðu efnahvarfi sýklóhexanóns við etýlamín, CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub>, og við díetýlamín, (CH<sub>3</sub>CH<sub>2</sub>)<sub>2</sub>NH.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c19353ad79da759d1178d622ef899ffa67de731/OChem_19_EC_203.jpg\" alt=\"The first structure has cyclohexane double-bonded to N connected to the ethyl group. The second structure has cyclohexene linked to diethylamine at C 1 position.\">"
+        }
+      ]
+    }
+  ]
+}

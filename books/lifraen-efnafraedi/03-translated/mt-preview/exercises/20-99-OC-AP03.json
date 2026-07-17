@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-AP03",
+  "source_uid": "38113@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið og nefnið eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "342055",
+      "stem_html": "Átta karboxýlsýrurnar með formúluna C<sub>6</sub>H<sub>12</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342056",
+      "stem_html": "Þrjú nítríl með formúluna C<sub>5</sub>H<sub>7</sub>N",
+      "collaborator_solutions": []
+    }
+  ]
+}

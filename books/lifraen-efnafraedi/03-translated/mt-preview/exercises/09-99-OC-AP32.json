@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-AP32",
+  "source_uid": "37246@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðið eftirfarandi karbókatjónum í röð eftir auknum stöðugleika.",
+  "questions": [
+    {
+      "id": "360422",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--630f0906e4d11842e0cee95afde96f5ac57880b5/OSX_OrgChem_09_99_OChem-09-EC-044a_80485-09-u094_P-2Penta_img.jpg\" alt=\"The structure of three cyclopentene carbocations with positive charges at C 4, C 1, and C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360423",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10cdc0350b9b0170c59716a55f9fb89a58e410ae/OSX_OrgChem_09_99_OChem-09-EC-044b_80485-09-u094_P-3Llines_img.jpg\" alt=\"The structure of three 1-pentene carbocations, with positive charges at C 3, C 2, and C 4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360424",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c7e88440c52eb12845184f0b7c1a73e6099e43d/OSX_OrgChem_09_99_OChem-09-EC-044c_80485-09-u094_P-3Hexa_img.jpg\" alt=\"The structure of three 4-methylcyclohexene carbocations with positive charges at C 1, C 4, and C 5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

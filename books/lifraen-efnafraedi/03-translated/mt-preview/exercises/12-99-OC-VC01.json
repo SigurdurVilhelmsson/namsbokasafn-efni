@@ -1,0 +1,25 @@
+{
+  "nickname": "12-99-OC-VC01",
+  "source_uid": "37425@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvar á innrauða rófinu myndir þú búast við að hver eftirfarandi sameinda myndi gleypa?",
+  "questions": [
+    {
+      "id": "352195",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3840f9f8b28991e35068f6ee87322facfb3c3d9b/OChem_12_EC_001a.jpg\" alt=\"A ball and stick model of a six-membered ring connected to different groups. Carbon, hydrogen, oxygen, and nitrogen are shown as gray, white, red, and blue spheres, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352196",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e354643554862ac40d07c78cd304e786119c3497/OChem_12_EC_001b.jpg\" alt=\"A ball and stick model of a four-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352197",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c9ecacdcbe8eddc0ae993766c78fb3cb0565603d/OChem_12_EC_001c.jpg\" alt=\"A ball and stick model of a five-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

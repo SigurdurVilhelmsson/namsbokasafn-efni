@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-VC01",
+  "source_uid": "38903@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úr hvaða ketónum eða aldehýðum gætu eftirfarandi enón hafa verið búin til með aldól-efnahvarfi?",
+  "questions": [
+    {
+      "id": "359822",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc8545ef0b2f3ea0bdb3c89ccccbfbf04f6a8716/OChem_23_EC_011a.jpg\" alt=\"The ball-and-stick model of a seven-carbon chain with keto on the third, methyl on the fourth, and ethyl on the fifth carbon. The fourth and fifth carbon is double-bonded.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359823",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24c3284dffd4b05acb96ecc6979ecf528c3ab077/OChem_23_EC_011b.jpg\" alt=\"A ball-and-stick model of a six-carbon chain with aldehyde on C 1, C 2 has C H linked to two methyl, C 4 has C H linked to methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

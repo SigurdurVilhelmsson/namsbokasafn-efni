@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP15",
+  "source_uid": "38921@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359866",
+      "stem_html": "<p>Eftirfarandi efnahvarf felur í sér innansameinda Michael-efnahvarf og síðan innansameinda aldól-efnahvarf. Skrifaðu bæði skrefin og sýndu hvarfgang þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--488f9872c20283597cd8ec4f0822ceeba18f7aee/OChem_23_EC_028.jpg\" alt=\"A cyclopentenone ring with a 5-ethyl-6-methylhept-6-en-2-one side chain reacts with sodium hydroxide and ethanol to yield a product in which a cyclohexanone ring is fused with two cyclopentane rings.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

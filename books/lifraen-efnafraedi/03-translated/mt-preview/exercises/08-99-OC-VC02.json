@@ -1,0 +1,20 @@
+{
+  "nickname": "08-99-OC-VC02",
+  "source_uid": "37107@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingu alkena sem myndu gefa eftirfarandi alkóhól við vötnun (rautt = O). Segðu til um í hvoru tilviki þú myndir nota hýdróbórun–oxun eða oxýkvikasilfrun–afkvikasilfrun.",
+  "questions": [
+    {
+      "id": "353448",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f71a6b26e3cf7b1e8b7e3fb846ae966113549dca/OChem_08_EC_016a.jpg\" alt=\"The ball-and-stick model has a 5-carbon chain. C2 is bonded to a methyl group. C3 is bonded to a hydroxyl group and a methyl group. The red sphere denotes oxygen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353449",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--443d5174f3e917cab73a1b6f5ba9141f8f5dc663/OChem_08_EC_016b.jpg\" alt=\"The ball-and-stick model has a cyclopentane ring. C1 is bonded to a hydroxyl group. C3 is bonded to two methyl groups. The red sphere denotes oxygen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

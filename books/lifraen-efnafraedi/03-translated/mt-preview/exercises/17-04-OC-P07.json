@@ -1,0 +1,37 @@
+{
+  "nickname": "17-04-OC-P07",
+  "source_uid": "37872@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða hvarfefni myndir þú nota til að framkvæma eftirfarandi efnahvörf?",
+  "questions": [
+    {
+      "id": "359347",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2cc86fb537da95224064c5053a9d7cd579ae2a16/OChem_17_04_012a.jpg\" alt=\"Methyl 4-oxopentanoate reacts with an unknown reagent represented by a question mark to form methyl 4-hydroxypentanoate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "NaBH<sub>4</sub>"
+        }
+      ]
+    },
+    {
+      "id": "359348",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09c20bdca63901d50587ec9903cdd98e046789e6/OChem_17_04_012b.jpg\" alt=\"Methyl 4-oxopentanoate reacts with an unknown reagent represented by a question mark to form pentane-1,4-diol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "LiAlH<sub>4</sub>"
+        }
+      ]
+    },
+    {
+      "id": "359349",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de99968f827d1843f0137f1245a255c15102a6f9/OChem_17_04_012c.jpg\" alt=\"2-methyl-5-(prop-1-en-2-yl)cyclohex-2-enone reacts with an unknown reagent represented by a question mark to form a product with unchanged carbon skeleton, where carbonyl oxygen is now a hydroxy group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "LiAlH<sub>4</sub>"
+        }
+      ]
+    }
+  ]
+}

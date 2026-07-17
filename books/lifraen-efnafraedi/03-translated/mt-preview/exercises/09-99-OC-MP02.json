@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-MP02",
+  "source_uid": "37208@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gerið ráð fyrir að sterkar sýrur leggist á alkín á sama hátt og þær leggjast á alkena, leggið til hvarfgang fyrir hvert eftirfarandi efnahvarfa.",
+  "questions": [
+    {
+      "id": "357294",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08ddef34d07e2c735505a0670f4a538712b8e6b1/OChem_09_EC_016a.jpg\" alt=\"A C5 terminal alkyne reacts with two moles of hydrogen chloride to form 2,2-dichloropentane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357295",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2536fc6c59cf8b38c99d40ddae4b31f8727a23c1/OChem_09_EC_016b.jpg\" alt=\"A C4 internal alkyne reacts with two moles of hydrogen bromide to form 2,2-dibromobutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357296",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51c7076e930e5f7cc11d25a0dc593d19327b591d/OChem_09_EC_016c.jpg\" alt=\"A phenyl alkyne reacts with two moles of hydrogen chloride to form a benzene ring with a carbon connected to a  dichloroethyl group\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

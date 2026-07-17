@@ -1,0 +1,40 @@
+{
+  "nickname": "03-99-OC-AP01",
+  "source_uid": "36438@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Finndu og auðkenndu virknihópana í eftirfarandi sameindum.",
+  "questions": [
+    {
+      "id": "351776",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8e13f901ddbee4c345023f5f8488627f58d4244/OChem_03_EC_004a.jpg\" alt=\"A benzene ring with C H 2 O H group on the C 1 and N H C H 3 group on the C 2 carbon is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351777",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc9b1b30f2b4866eab1a5496a5aa4012c0ac2f25/OChem_03_EC_004b.jpg\" alt=\"A six membered ring with a double bond and a carbonyl group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351778",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9971c7f2f104122a9d2ec725820bfd4249b63dc9/OChem_03_EC_004c.jpg\" alt=\"A benzene ring linked to an N H group linked to a C O C H 3 group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351779",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17607c8344f6a900f373979de4e7e5485f32bc7c/OChem_03_EC_004d.jpg\" alt=\"A C H 3 group linked to a C H connected to an amine group is shown. The C H is connected to a C O O H group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351780",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d35289cffb7b535ce95a110c035af32118cc541/OChem_03_EC_004e.jpg\" alt=\"Two six membered rings fused together is shown. Both the rings have double bond, carbonyl group and a C H 3 group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351781",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--416841c09e5a85a9286988d86467d981449aada7/OChem_03_EC_004f.jpg\" alt=\"Two C H 3 groups linked to a triple bond linked to a carbonyl linked to a chlorine group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

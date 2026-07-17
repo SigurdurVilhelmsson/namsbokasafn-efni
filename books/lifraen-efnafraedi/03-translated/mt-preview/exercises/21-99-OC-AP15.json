@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP15",
+  "source_uid": "38209@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361487",
+      "stem_html": "<p><i>tert</i>-Bútoxýkarbónýlasíð, hvarfefni sem notað er við próteinmyndun, er framleitt með því að meðhöndla <i>tert</i>-bútoxýkarbónýlklóríð með natríumasíði. Stingið upp á hvarfgangi fyrir þetta efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9fc027357476757de4729de97e7987ec743109f5/OChem_21_EC_041.jpg\" alt=\"The reaction of tert-butyl chloroformate with sodium azide forming an azide derivative in which the chlorine atom is replaced by an N 3 (azide) group at the carbonyl carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

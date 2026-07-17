@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP09",
+  "source_uid": "37841@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um helsta myndefnið/helstu myndefnin í eftirfarandi efnahvörfum:",
+  "questions": [
+    {
+      "id": "359010",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--da3170e3c2b918ce6af0483f8967b9ab3fc81757/OChem_16_EC_035a.jpg\" alt=\"Chlorobenzene reacts with ethyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359011",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7be50583efaba8612bdd3ca860c47e8f65195370/OChem_16_EC_035b.jpg\" alt=\"A compound containg an oxygen atom bonded to two benzene rings reacts with propanoyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359012",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0b184549f25d11a0aea7cfd27dd4323b62c0568/OChem_16_EC_035c.jpg\" alt=\"Benzoic acid reacts with nitric acid in the presence of sulfuric acid to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359013",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14ae0cc184ef740472a7b7915d607d6dd60c78a5/OChem_16_EC_035d.jpg\" alt=\"Benzene bonded to N (C H 2 C H 3) 2 reacts with sulfur trioxide in presence of sulfuric acid to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

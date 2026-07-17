@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-AP16",
+  "source_uid": "38943@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359910",
+      "stem_html": "<p>Hið svokallaða Wieland–Miescher-ketón er verðmætt upphafsefni sem notað er við myndun sterahormóna. Hvernig gætir þú framleitt það úr 1,3-sýklóhexandíóni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e90f504711c44ee5a229497810fd8a5dbd1ed1e3/OChem_23_EC_041.jpg\" alt=\"A structure with cyclohex-2-enone fused by C 3 to C 3 of cyclohexanone, and by C 4 to C 2 of cyclohexanone. C 2 of cyclohexanone also has methyl substituent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

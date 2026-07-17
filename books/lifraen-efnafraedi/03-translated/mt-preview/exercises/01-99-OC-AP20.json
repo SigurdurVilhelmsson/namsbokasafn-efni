@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP20",
+  "source_uid": "37577@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357130",
+      "stem_html": "<p>Pýridoxalfosfat, náskylt B<sub>6</sub>-vítamíni, tekur þátt í fjölda efnaskiptahvarfa. Hver er blendingsgerðin og tengihornið fyrir hverja frumeind sem ekki er endastæð?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2ee3ae9f888c1d4725debd243e626d1fe700812/OChem_01_EC_011.jpg\" alt=\"The chemical structure of pyridoxal phosphate featuring a negative charge on two of the phosphate oxygen atoms.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

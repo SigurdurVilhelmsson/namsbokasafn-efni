@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-MP08",
+  "source_uid": "37214@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357304",
+      "stem_html": "<p>Efnahvarf asetóns við D<sub>3</sub>O<sup>+</sup> gefur hexatvívetnisasetón. Það er að segja, öllum vetnum í asetóni er skipt út fyrir tvívetni. Farið yfir hvarfgang kvikasilfursjónarhvataðrar vötnunar alkína og leggið síðan til hvarfgang fyrir þessa tvívetnisinnlimun.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--963276e5e9460c343e0ab9e8ea1a0e79d1e493e5/OChem_09_EC_022.jpg\" alt=\"The figure shows the reaction of acetone with tri-deuterium oxide to form hexadeuterioacetone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

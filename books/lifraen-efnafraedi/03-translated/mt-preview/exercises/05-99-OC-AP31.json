@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP31",
+  "source_uid": "36594@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354239",
+      "stem_html": "<p>Eitt af skrefunum í lífmyndun fitusýra er afvötnun (<i>R</i>)-3-hýdroxýbútýrýl ACP til að gefa <i>trans</i>-krótónýl ACP. Fjarlægir efnahvarfið pro-<i>R</i> eða pro-<i>S</i> vetnið frá C2?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bc528e3640839b1d36ace83e0b8556f2b0901ba/OChem_05_EC_025.jpg\" alt=\"The dehydration of (R)-3-hydroxybutyryl A C P to form trans-crotonyl A C P.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

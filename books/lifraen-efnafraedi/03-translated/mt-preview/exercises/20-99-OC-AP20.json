@@ -1,0 +1,30 @@
+{
+  "nickname": "20-99-OC-AP20",
+  "source_uid": "38130@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða aðferð – karboxýleringu með Grignard-hvarfefni eða vatnsrof nítríls – myndir þú nota fyrir hvert eftirfarandi efnahvarfa? Útskýrðu.",
+  "questions": [
+    {
+      "id": "359186",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9111a12cc690326c65752bb2524429b0fe54bed7/OChem_20_EC_025a.jpg\" alt=\"2-(bromomethyl)phenol separated from 2-(2-hydroxyphenyl)acetic acid by a reaction arrow.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359187",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a1710fb32a6749c2de5af69c296dad7f47408ccc/OChem_20_EC_025b.jpg\" alt=\"2-bromobutane separated from 3-methylbutanoic acid by a reaction arrow.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359188",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d1b981061a5b602af09441b6e92c91689e7d562a/OChem_20_EC_025c.jpg\" alt=\"5-iodopentan-2-one separated from 5-oxohexanoic acid by a reaction arrow.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359189",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d9bd8d5f50b0f06e27f3b62d6e20f629e1a08fb/OChem_20_EC_025d.jpg\" alt=\"3-bromopropanol separated from 4-hydroxybutanoic acid by a reaction arrow.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

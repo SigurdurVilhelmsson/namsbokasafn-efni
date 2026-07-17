@@ -1,0 +1,46 @@
+{
+  "nickname": "13-06-OC-P10",
+  "source_uid": "37476@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingu fyrir efnasambönd sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "338009",
+      "stem_html": "C<sub>2</sub>H<sub>6</sub>O; ein einliða",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>OCH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "338010",
+      "stem_html": "C<sub>3</sub>H<sub>7</sub>Cl; ein tvíliða og eitt sjöeyki",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH(Cl)CH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "338011",
+      "stem_html": "C<sub>4</sub>H<sub>8</sub>Cl<sub>2</sub>O; tvær þríliður",
+      "collaborator_solutions": [
+        {
+          "content_html": "ClCH<sub>2</sub>CH<sub>2</sub>OCH<sub>2</sub>CH<sub>2</sub>Cl"
+        }
+      ]
+    },
+    {
+      "id": "338012",
+      "stem_html": "C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>; ein einliða, ein þríliða og einn kvartett",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>CH<sub>3</sub> eða CH<sub>3</sub>CO<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

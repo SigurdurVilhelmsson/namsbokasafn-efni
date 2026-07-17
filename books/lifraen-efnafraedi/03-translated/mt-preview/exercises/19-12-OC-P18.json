@@ -1,0 +1,19 @@
+{
+  "nickname": "19-12-OC-P18",
+  "source_uid": "38012@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360637",
+      "stem_html": "<p>Þegar <i>o</i>-ftalaldehýð er meðhöndlað með basa myndast <i>o</i>-(hýdroxýmetýl)bensósýra. Sýndu hvarfgang þessa efnahvarfs.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96748acf80587a35595198fe30ac05eba17a4b48/OChem_19_12_004.jpg\" alt=\"Ortho-phthalaldehyde (1,2-diformylbenzene) reacts first with hydroxide, then with hydronium, to generate o-(hydroxymethyl)benzoic acid.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Cannizzaro-efnahvarf innan sameindar"
+        }
+      ]
+    }
+  ]
+}

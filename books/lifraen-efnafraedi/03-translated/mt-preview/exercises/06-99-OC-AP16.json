@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-AP16",
+  "source_uid": "37336@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353374",
+      "stem_html": "<p>Metoxíðjón (CH<sub>3</sub>O<sup>−</sup>) hvarfast við brómetan í einu skrefi samkvæmt eftirfarandi jöfnu:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51e9b462046b73148d5f0527f0039d8b13a75a0f/OChem_06_EC_022.jpg\" alt=\"A methoxide ion reacts with ethyl bromide to form ethene, methanol, and a bromide ion.\">\n<p>Tilgreindu hvaða tengi rofna og myndast og teiknaðu bogadregnar örvar til að tákna flæði rafeinda í efnahvarfinu.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

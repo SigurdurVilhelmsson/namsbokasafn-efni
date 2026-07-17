@@ -1,0 +1,37 @@
+{
+  "nickname": "17-03-OC-P06",
+  "source_uid": "37871@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáið fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "359341",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea11dadec2924e395366bcb8da9a0f4fabf36443/OChem_17_03_004a.jpg\" alt=\"2-methyl-pent-2-ene reacts with borane, then sodium hydroxide and hydrogen peroxide to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-3-pentanól"
+        }
+      ]
+    },
+    {
+      "id": "359342",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a40567457c5af533003aebfa162b9f604d86ab4b/OChem_17_03_004b.jpg\" alt=\"2-methyl-4-phenyl-1-butene reacts with mercuric acetate and water, then sodium borohydride to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-4-fenýl-2-bútanól"
+        }
+      ]
+    },
+    {
+      "id": "359343",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b71f12584ed2a319e901ff50171b51b6c4bb6164/OChem_17_03_004c.jpg\" alt=\"(Z)-dec-5-ene reacts first with osmium tetroxide, then sodium hydrogen sulfite and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>meso</i>-5,6-Dekandíól"
+        }
+      ]
+    }
+  ]
+}

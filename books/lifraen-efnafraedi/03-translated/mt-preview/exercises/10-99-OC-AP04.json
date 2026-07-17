@@ -1,0 +1,40 @@
+{
+  "nickname": "10-99-OC-AP04",
+  "source_uid": "37267@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd, með sýklópenten sem upphafsefni og hvaða önnur hvarfefni sem þarf?",
+  "questions": [
+    {
+      "id": "333437",
+      "stem_html": "Klórsýklópentan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333438",
+      "stem_html": "Metýlsýklópentan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333439",
+      "stem_html": "3-Brómsýklópenten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333440",
+      "stem_html": "Sýklópentanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333441",
+      "stem_html": "Sýklópentýlsýklópentan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333442",
+      "stem_html": "1,3-Sýklópentadíen",
+      "collaborator_solutions": []
+    }
+  ]
+}

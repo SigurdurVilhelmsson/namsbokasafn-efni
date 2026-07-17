@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP07",
+  "source_uid": "38725@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "464283",
+      "stem_html": "<p>Við myndun forfjölliðunnar sem notuð er til að búa til epoxýplastefni hvarfast tvö jafngildi af fenól við epiklórhýdrín í viðurvist basa. Sýndu myndefnið og hvarfganginn þegar tvö mól af fenól hvarfast við epiklórhýdrín.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b628e1c9057ad8af2c30c5e2b631cf6d56d3d43/OChem_18_EC_025.jpg\" alt=\"A chemical reaction between two equivalents of phenol and epichlorohydrin with sodium hydroxide and water leads to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

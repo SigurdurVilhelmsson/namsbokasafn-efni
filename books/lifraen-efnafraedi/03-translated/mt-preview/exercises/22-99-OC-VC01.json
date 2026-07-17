@@ -1,0 +1,20 @@
+{
+  "nickname": "22-99-OC-VC01",
+  "source_uid": "38785@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu skrefin við að búa til hvert eftirfarandi efna með því að nota annaðhvort malónestermyndun eða asetóediksestermyndun:\n",
+  "questions": [
+    {
+      "id": "360906",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8772c8322de9da58ce1882954ec957adc9d083ad/OChem_22_EC_011a.jpg\" alt=\"Ball-stick model of a compound comprising a seven-carbon chain with C 2 being a carbonyl group, a double bond between C 5 and C 6, and a methyl group on C 6. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360907",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3084ff203896e7af8e45dc83dbe81cb59d1d183a/OChem_22_EC_011b.jpg\" alt=\"A ball-stick model of a compound comprising a benzene ring and a C 3 chain, C1 of which is a carboxylic acid group, and C 2 bearing a methyl group. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

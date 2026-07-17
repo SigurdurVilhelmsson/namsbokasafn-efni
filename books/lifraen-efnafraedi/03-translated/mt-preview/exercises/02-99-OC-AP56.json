@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP56",
+  "source_uid": "36168@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351502",
+      "stem_html": "<p>Hver af eftirfarandi pörum tákna vokmyndir?</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b377828b96f7b05252a7636530f1c4588b3dea62/OChem_02_EC_021a.jpg\" alt=\"Lewis structures of acetonitrile oxide: (1) C and N triple bonded, with a positive charge on N, and (2) C and N double bonded, with a positive charge on C.\">\n<b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d060f45ab04edf4193333f56671ba8d08abbe294/OChem_02_EC_021b.jpg\" alt=\"Two Lewis structures: First shows a carbonyl group bonded to a methyl group and oxygen anion. Second shows a carbonyl group bonded to a hydroxyl group and a methylene anion.\">\n<br><b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12bac0f8db27239d58122c9bfadb54359d535d67/OChem_02_EC_021c.jpg\" alt=\"Two Lewis structures of protonated benzamide; one is protonated at the N, the other at the O.\">\n<b>(d)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8139da89fc0ac4df6fc132f11484e4ccc904ed0/OChem_02_EC_021d.jpg\" alt=\"First structure: Nitrogen cation bonded to two oxygen anions and double bonded to methylene. Second structure: Nitrogen cation is double bonded to oxygen, single bonded to methylene and oxygen anion.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

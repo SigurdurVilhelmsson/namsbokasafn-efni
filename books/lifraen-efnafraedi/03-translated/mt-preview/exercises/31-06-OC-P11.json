@@ -1,0 +1,19 @@
+{
+  "nickname": "31-06-OC-P11",
+  "source_uid": "39406@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358121",
+      "stem_html": "Hvaða myndefni myndir þú búast við að fá úr hvataðri vetnun náttúrulegs gúmmís? Væri myndefnið syndíótaktískt, ataktískt eða ísótaktískt?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85c4f542c2ac57b9f3bd1eea77bbafabe5d729ce/OChem_31_EC_207.jpg\" alt=\"The structure shows a six-carbon chain with a methyl group at C3. The structure is inside parentheses and has a subscript n. It is labeled as atactic.\">"
+        }
+      ]
+    }
+  ]
+}

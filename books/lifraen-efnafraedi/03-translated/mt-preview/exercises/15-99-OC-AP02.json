@@ -1,0 +1,40 @@
+{
+  "nickname": "15-99-OC-AP02",
+  "source_uid": "37750@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi heitum:",
+  "questions": [
+    {
+      "id": "339095",
+      "stem_html": "3-Metýl-1,2-bensendíamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339096",
+      "stem_html": "1,3,5-Bensentríól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339097",
+      "stem_html": "3-Metýl-2-fenýlhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339098",
+      "stem_html": "<i>o</i>-Amínóbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339099",
+      "stem_html": "<i>m</i>-Brómfenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339100",
+      "stem_html": "2,4,6-Trínitrófenól (pikrínsýra)",
+      "collaborator_solutions": []
+    }
+  ]
+}

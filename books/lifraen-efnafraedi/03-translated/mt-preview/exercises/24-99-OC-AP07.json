@@ -1,0 +1,40 @@
+{
+  "nickname": "24-99-OC-AP07",
+  "source_uid": "39006@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efni úr 1-bútanóli?",
+  "questions": [
+    {
+      "id": "347704",
+      "stem_html": "Bútýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347705",
+      "stem_html": "Díbútýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347706",
+      "stem_html": "Própýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347707",
+      "stem_html": "Pentýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347708",
+      "stem_html": "<i>N</i>,<i>N</i>-dímetýlbútýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347709",
+      "stem_html": "Própen",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-MP09",
+  "source_uid": "37898@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Fyrir hvert efnahvarf, skrifaðu hvarfganginn með bogadregnum örvum fyrir umbreytingu alkóhólsins í samsvarandi alken með POCl<sub>3</sub>. Í hverju tilviki, útskýrðu staðsetningu brottnámsins.",
+  "questions": [
+    {
+      "id": "359461",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--812317e1265757dbeb9954866769d7833f4c1d1f/OChem_17_EC_027a.jpg\" alt=\"Cyclohexane with dashed bond to isopropyl, wedged bond to hydroxyl on adjacent (clockwise) carbon reacts with phosphoryl chloride to form R-3-isopropylcyclohexene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359462",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1158a7bfea1dfa532c729924bacaa7132e78cdfb/OChem_17_EC_027b.jpg\" alt=\"3-methyl-2-pentanol reacts with P O Cl 3 in pyridine to produce E-3-methyl-2-pentene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359463",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa895d51d8092472fd419023e784022abd525021/OChem_17_EC_027c.jpg\" alt=\"1-phenyl-propan-1-ol reacts with phosphoryl chloride and pyridine to form prop-1-en-1-ylbenzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

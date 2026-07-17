@@ -1,0 +1,19 @@
+{
+  "nickname": "12-03-OC-P04",
+  "source_uid": "37420@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "628144",
+      "stem_html": "<p>Teldu upp massa forverajónarinnar og nokkurra brota sem þú gætir búist við að finna í massarófi eftirfarandi sameindar:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e4e00690cf7c0748cb7151ac85131e8b1d0e0e1/OChem_12_03_013.jpg\" alt=\"The ball and stick model of a compound with six carbons. Carbon, hydrogen, and oxygen are shown using gray, white and red spheres, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "102 (M<sup>+</sup>), 84 (vötnun), 87 (alfa-klofningur), 59 (alfa-klofningur)"
+        }
+      ]
+    }
+  ]
+}

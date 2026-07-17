@@ -1,0 +1,35 @@
+{
+  "nickname": "28-99-OC-AP18",
+  "source_uid": "39147@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Valganciclovir, markaðssett sem Valcyte, er veirulyf sem notað er til meðferðar á cýtómegalóveiru. Valganciclovir er kallað <i>forlyf</i> og er óvirkt eitt og sér en breytist hratt í þörmum með vatnsrofi estertengis þess og myndar virkt lyf, ganciclovir, ásamt amínósýru.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fce1a10ea6540f3475b3841001a00854b28f49fa/OChem_28_EC_009.jpg\" alt=\"The structure of Valganciclovir.\">",
+  "questions": [
+    {
+      "id": "354988",
+      "stem_html": "Hvaða amínósýra myndast við vatnsrof estertengisins í valgancicloviri?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354989",
+      "stem_html": "Hver er bygging ganciclovirs?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354990",
+      "stem_html": "Hvaða frumeindir sem eru til staðar í kirninu deoxýgúaníni vantar í ganciclovir?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354991",
+      "stem_html": "Hvaða hlutverki gegna frumeindirnar sem vantar í deoxýgúanín við DNA-eftirmyndun?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354992",
+      "stem_html": "Hvernig gæti valganciclovir truflað DNA-myndun?",
+      "collaborator_solutions": []
+    }
+  ]
+}

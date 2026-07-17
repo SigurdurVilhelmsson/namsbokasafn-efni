@@ -1,0 +1,46 @@
+{
+  "nickname": "02-02-OC-P06",
+  "source_uid": "36118@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gerðu þrívíddarteikningar af eftirfarandi sameindum og spáðu fyrir um hvort þær hafi tvískautsvægi. Ef þú býst við tvískautsvægi, sýndu þá stefnu þess.",
+  "questions": [
+    {
+      "id": "350720",
+      "stem_html": "H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CH<sub>2</sub> ",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d8e1fd5ec8c9f966d60f88d65690cded6f3ca2b/OChem-02-EC-204a.jpg\" alt=\"The chemical structure of ethylene, where the two carbon atoms are connected by a double bond and this structure has no dipole moment.\">"
+        }
+      ]
+    },
+    {
+      "id": "350721",
+      "stem_html": "CHCl<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28921257cf1b11e5c75f7dac67b8150b0860582b/OChem-02-EC-204b.jpg\" alt=\"The chemical structure of trichloromethane, where the direction of the resulting dipole moment points from hydrogen toward chlorine.\">"
+        }
+      ]
+    },
+    {
+      "id": "350722",
+      "stem_html": "CH<sub>2</sub>Cl<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ece08f469445e8d6053115340c2bb00949e499ac/OChem-02-EC-204c.jpg\" alt=\"The chemical structure of dichloromethane, where the direction of the resulting dipole moment points from carbon toward chlorine.\">"
+        }
+      ]
+    },
+    {
+      "id": "350723",
+      "stem_html": "H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CCl<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3d4bea2f104e7e2323286faff975f948533e7e6/OChem-02-EC-204d.jpg\" alt=\"The chemical structure of 1,2 - dichloroethene where the direction of the resulting dipole moment points from carbon toward chlorine.\">"
+        }
+      ]
+    }
+  ]
+}

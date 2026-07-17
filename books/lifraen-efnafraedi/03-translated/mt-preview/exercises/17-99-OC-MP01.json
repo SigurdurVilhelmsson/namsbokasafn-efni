@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-MP01",
+  "source_uid": "37890@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359433",
+      "stem_html": "<p>Sönnun fyrir milliefninu karbkatjónum í sýruhvataðri vötnun alkóhóla kemur frá þeirri athugun að umraðanir eiga sér stundum stað. Leggðu til hvarfgang sem skýrir myndun 2,3-dímetýl-2-bútens úr 3,3-dímetýl-2-bútanóli.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d667ee8469ed5c2e542df5ae36796c7dae3dd6a6/OChem_17_EC_020.jpg\" alt=\"3,3-dimethyl-2-butanol reacts with sulfuric acid to form 2,3-dimethyl-2-butene and water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

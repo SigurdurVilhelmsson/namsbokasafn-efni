@@ -1,0 +1,64 @@
+{
+  "nickname": "17-05-OC-P10",
+  "source_uid": "37875@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Notaðu Grignard-efnahvarf til að búa til eftirfarandi alkóhól:",
+  "questions": [
+    {
+      "id": "360840",
+      "stem_html": "2-Metýl-2-própanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f57f609634ba2acaa20ba7f5f8d4ae64a7adb35/OSX_OrgChem_17_05_A-Grignarda_img.jpg\" alt=\"Acetone reacts first with methylmagnesium bromide, then hydronium, to produce 2-methyl-2-propanol. C H 3 C O R reacts first with 2 equivalents methylmagnesium bromide, then hydronium, to produce same product.\">"
+        }
+      ]
+    },
+    {
+      "id": "360841",
+      "stem_html": "1-Metýlsýklóhexanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12ac25ac208f276c8cf27272f8cff638a596853c/OSX_OrgChem_17_05_A-Grignardb_img.jpg\" alt=\"Cyclohexanone reacts first with methylmagnesium bromide, then hydronium, to produce 1-methylcyclohexanol.\">"
+        }
+      ]
+    },
+    {
+      "id": "360842",
+      "stem_html": "3-Metýl-3-pentanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7baa849209ef273d61b7319a0a0d60db2d4a41f/OSX_OrgChem_17_05_A-Grignardc_img.jpg\" alt=\"Three ways to make 3-methyl-3-pentanol: 2-pentanone with methylmagnesium bromide, then hydronium; 2-butanone with ethylmagnesium bromide, then hydronium; alkyl acetate with two equivalents ethylmagnesium bromide, then hydronium.\">"
+        }
+      ]
+    },
+    {
+      "id": "360843",
+      "stem_html": "2-Fenýl-2-bútanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41e32d2bd380711a5bc296c1154994c4f02124b1/OSX_OrgChem_17_05_A-Grignardd_img.jpg\" alt=\"Three ways to make 2-phenyl-2-butanol: propiophenone with methylmagnesium bromide, then hydronium; acetophenone with ethylmagnesium bromide, then hydronium; 2-butanone with phenylmagnesium bromide, then hydronium.\">"
+        }
+      ]
+    },
+    {
+      "id": "360844",
+      "stem_html": "Bensýlalkóhól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22ffaa505878a80eb7ee6f17aca648ef60f9b45e/OSX_OrgChem_17_05_A-Grignarde_img.jpg\" alt=\"Formaldehyde reacts first with phenylmagnesium bromide, then hydronium, to make benzyl alcohol.\">"
+        }
+      ]
+    },
+    {
+      "id": "360845",
+      "stem_html": "4-Metýl-1-pentanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57d4b927cba5f42c9bbd236a8aa2d42e2cbd6beb/OSX_OrgChem_17_05_A-Grignardf_img.jpg\" alt=\"Formaldehyde reacts first with isopentylmagnesium bromide, then hydronium, to make 4-methyl-1-pentanol.\">"
+        }
+      ]
+    }
+  ]
+}

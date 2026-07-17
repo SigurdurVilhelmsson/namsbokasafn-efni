@@ -1,0 +1,19 @@
+{
+  "nickname": "02-09-OC-P14",
+  "source_uid": "36126@16",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358914",
+      "stem_html": "<p>Mun annaðhvort eftirfarandi efnahvarfa eiga sér stað að verulegu leyti eins og það er skrifað, samkvæmt gögnum í töflu 2.3?</p>\n<p><b>(a)</b> <img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e0f47201f80f045e3c64eef25de6fb80d9a7a00b/OChem_02_09_004a.jpg\" alt=\"Hydrocyanic acid and sodium acetate with an arrow pointing toward products sodium cyanide and acetic acid. There is a question mark over the arrow.\">\n<br><b>(b)</b> <img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0acf37bc7c9c6c037b480aa1df6314caff76279a/OChem_02_09_004b.jpg\" alt=\"Ethanol and sodium cyanide with an arrow pointing toward products sodium ethoxide and hydrocyanic acid. There is a question mark over the arrow.\"></p>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hvorugt efnahvarfið mun eiga sér stað."
+        }
+      ]
+    }
+  ]
+}

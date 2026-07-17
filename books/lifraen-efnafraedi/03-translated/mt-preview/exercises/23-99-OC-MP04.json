@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-MP04",
+  "source_uid": "38910@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og sýndu hvarfganginn fyrir eftirfarandi efnahvörf.",
+  "questions": [
+    {
+      "id": "359841",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22a066b333e872e57340814967985bff635fde7a/OChem_23_EC_017a.jpg\" alt=\"(E)-pent-3-en-2-one reacts with ethyl 2-cyanoacetate in the presence of sodium ethoxide, then hydronium ion to form an unknown product.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359842",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ccaaf03c197d1f754460223387cd19bc3e088a75/OChem_23_EC_017d.jpg\" alt=\"Ethyl acrylate reacts with ethyl 3-oxobutanoate in the presence of sodium ethoxide, then hydronium ion to form an unknown product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

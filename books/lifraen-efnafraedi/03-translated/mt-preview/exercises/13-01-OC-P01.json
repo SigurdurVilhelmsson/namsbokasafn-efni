@@ -1,0 +1,19 @@
+{
+  "nickname": "13-01-OC-P01",
+  "source_uid": "37467@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "337958",
+      "stem_html": "Orkan sem þarf til að snúa kjarna veltur bæði á styrk ytra segulsviðsins og á kjarnanum. Við segulsviðsstyrk 4,7 T þarf 200 MHz útvarpsbylgjuorku til að koma <sup>1</sup>H-kjarna í vok mynd, en aðeins 187 MHz orka þarf til að koma <sup>19</sup>F-kjarna í vok mynd. Reiknaðu orkuna sem þarf til að snúa <sup>19</sup>F-kjarna. Er þessi orka meiri eða minni en sú sem þarf til að snúa <sup>1</sup>H-kjarna?",
+      "collaborator_solutions": [
+        {
+          "content_html": "7,5 × 10<sup>−5</sup> kJ/mól fyrir <sup>19</sup>F; 8,0 × 10<sup>−5</sup> kJ/mól fyrir <sup>1</sup>H"
+        }
+      ]
+    }
+  ]
+}

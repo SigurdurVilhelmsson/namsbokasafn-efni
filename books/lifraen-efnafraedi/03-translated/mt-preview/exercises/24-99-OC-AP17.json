@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP17",
+  "source_uid": "39016@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd úr tólúeni? Í sumum tilfellum er þörf á díazóníum-skiptihvarfi.",
+  "questions": [
+    {
+      "id": "361699",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97d2cdb0b5055140794f7d49c8463c63784b6d9f/OChem_24_EC_038a.jpg\" alt=\"The structure of benzene with methyl and amino substituents para to one another.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361700",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10d79ef59b275d41096daf31797c4a47ef908408/OChem_24_EC_038b.jpg\" alt=\"The structure of benzene with a methyl substituent and, para to that, a C H 2 N H 2 substituent.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361701",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa6979facf72ac54e21b88e148b903053df6d56e/OChem_24_EC_038c.jpg\" alt=\"The structure of benzene with C OO C H 3 on C 1 and iodine on C 3 position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

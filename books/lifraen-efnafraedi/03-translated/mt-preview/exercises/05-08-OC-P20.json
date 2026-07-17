@@ -1,0 +1,19 @@
+{
+  "nickname": "05-08-OC-P20",
+  "source_uid": "36512@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "329213",
+      "stem_html": "Hvaða rúmhverfur myndu verða til við efnahvarf (±)-mjólkursýru með (<i>S</i>)-1-fenýletýlamíni og hvert er samband þeirra?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tvö víxlhverf sölt: (<i>R</i>)-mjólkursýra ásamt (<i>S</i>)-1-fenýletýlamíni og (<i>S</i>)-mjólkursýra ásamt (<i>S</i>)-1-fenýletýlamíni"
+        }
+      ]
+    }
+  ]
+}

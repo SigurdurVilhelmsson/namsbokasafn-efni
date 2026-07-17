@@ -1,0 +1,19 @@
+{
+  "nickname": "05-02-OC-P03",
+  "source_uid": "36495@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357671",
+      "stem_html": "<p>Alanín, amínósýra sem finnst í prótínum, er handhverf. Teiknið handhverfurnar tvær af alaníni með því að nota hefðbundnar heilar, fleygaðar og brotnar línur.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f81df7c7bcb0c41322c15dfdd91e18764a2c2657/OChem_05_02_008.jpg\" alt=\"Alanine has a 3-carbon chain. C1 is a carboxylic acid group. C2 is bonded to an amino group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e922540932066d6859c0a14ddd01fc29508b76a/OChem_05_EC_202.jpg\" alt=\"The figure shows two enantiomers of alanine represented in wedge-dash form.\">"
+        }
+      ]
+    }
+  ]
+}

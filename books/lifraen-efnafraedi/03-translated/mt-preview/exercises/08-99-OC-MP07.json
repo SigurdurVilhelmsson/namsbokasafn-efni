@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP07",
+  "source_uid": "37114@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353478",
+      "stem_html": "<p>Hvaða af efnahvörfunum hér að neðan myndi leiða til myndefnablöndu sem myndi snúa skautuðu ljósi?</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d87f9698a4750c0376383be085be8531527e505/OChem_08_EC_023a.jpg\" alt=\"Cyclohexane ring with double bonded methylene at C1 and dash bonded methyl at C4 reacting with hydrogen, palladium on carbon to form unknown product(s), depicted by question mark.\">\n<b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e8fd2118a32fbdd8f48dc4638eda21147964c5a/OChem_08_EC_023b.jpg\" alt=\"A reaction shows an oxirane with dash bonded methyl at C2 and wedge bonded methyl group at C3 reacting with hydronium to form unknown product(s), depicted by a question mark.\">\n<br><b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a9cef8ec3764ef98ccc61a0e177c39e92cfbc71/OChem_08_EC_023c.jpg\" alt=\"A reaction shows 1-pentene with wedge-bonded methyl at C3 reactingwith ozone in first step and zinc, hydronium ion in the second step to form unknown product(s), depicted by question mark.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

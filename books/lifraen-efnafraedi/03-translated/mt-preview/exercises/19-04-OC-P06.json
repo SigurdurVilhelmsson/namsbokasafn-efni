@@ -1,0 +1,19 @@
+{
+  "nickname": "19-04-OC-P06",
+  "source_uid": "38000@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341365",
+      "stem_html": "<i>p</i>-Nítróbensaldehýð er hvarfgjarnara gagnvart kjarnsækinni álagningu en <i>p</i>-metoxýbensaldehýð. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Rafeindadregni nítróhópurinn í <i>p</i>-nítróbensaldehýði skautar karbónýlhópinn."
+        }
+      ]
+    }
+  ]
+}

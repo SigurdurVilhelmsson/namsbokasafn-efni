@@ -1,0 +1,25 @@
+{
+  "nickname": "03-99-OC-AP21",
+  "source_uid": "36458@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Lítum á 2-metýlbútan (ísópentan). Horft meðfram C2–C3-efnatenginu:",
+  "questions": [
+    {
+      "id": "347291",
+      "stem_html": "Teiknið Newman-vörpun af stöðugustu stellingunni.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347292",
+      "stem_html": "Teiknið Newman-vörpun af óstöðugustu stellingunni.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347293",
+      "stem_html": "Ef skyggð víxlverkun CH<sub>3</sub> ⟷ CH<sub>3</sub> kostar 11 kJ/mól (2,5 kkal/mól) og skökk víxlverkun CH<sub>3</sub> ⟷ CH<sub>3</sub> kostar 3,8 kJ/mól (0,9 kkal/mól), gerið magnbundið línurit af orku á móti snúningi um C2–C3-efnatengið.",
+      "collaborator_solutions": []
+    }
+  ]
+}

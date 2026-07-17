@@ -1,0 +1,37 @@
+{
+  "nickname": "17-05-OC-P09",
+  "source_uid": "37874@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu myndefnin sem fást við álagningu metýlmagnesíumbrómíðs á eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "340674",
+      "stem_html": "Sýklópentanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Metýlsýklópentanól"
+        }
+      ]
+    },
+    {
+      "id": "340675",
+      "stem_html": "Bensófenón (dífenýlketón)",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,1-Dífenýletanól"
+        }
+      ]
+    },
+    {
+      "id": "340676",
+      "stem_html": "3-Hexanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Metýl-3-hexanól"
+        }
+      ]
+    }
+  ]
+}

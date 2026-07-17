@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP63",
+  "source_uid": "36175@10",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351749",
+      "stem_html": "<p>Hver af eftirfarandi efnasamböndum eða jónum hefur tvískautsvægi?</p>\n<p><b>(a)</b> Karbónatjón (CO<sub>3</sub><sup>2–</sup>) <b>(b)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38a3b19e9c43e810f3ef1b4d2cf2deff4d5d3ce0/OChem_02_EC_029b.jpg\" alt=\"An oxygen atom with two single bonds carries two lone pairs.\"> <b>(c)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ab7ffdc804557ba02b9d801386008de5567b528/OChem_02_EC_029c.jpg\" alt=\"A condensed formula reads, carbon with a positive charge bonded to three methyl groups.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

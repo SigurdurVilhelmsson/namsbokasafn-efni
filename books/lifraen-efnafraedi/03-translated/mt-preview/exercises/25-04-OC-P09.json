@@ -1,0 +1,19 @@
+{
+  "nickname": "25-04-OC-P09",
+  "source_uid": "39047@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348014",
+      "stem_html": "Hversu margir aldóheptósar eru til? Hversu margir eru <small style=\"font-variant: small-caps\">D</small>-sykrur og hversu margir eru <small style=\"font-variant: small-caps\">L</small>-sykrur?",
+      "collaborator_solutions": [
+        {
+          "content_html": "16 <small style=\"font-variant: small-caps\">D</small>- og 16 <small style=\"font-variant: small-caps\">L</small>-aldóheptósar"
+        }
+      ]
+    }
+  ]
+}

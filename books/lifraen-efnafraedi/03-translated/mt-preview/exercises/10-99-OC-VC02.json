@@ -1,0 +1,20 @@
+{
+  "nickname": "10-99-OC-VC02",
+  "source_uid": "37261@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu myndefni(n) úr efnahvarfi eftirfarandi alkena við NBS:",
+  "questions": [
+    {
+      "id": "357353",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d0f91949cb44bf1472dfe6497b40621a246954b/OChem_10_EC_012a.jpg\" alt=\"The ball and stick model of alkene that comprises a six-carbon chain. C2 and C3 are double bonded and black and gray spheres represent carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357354",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa8647737613deb5d2476425bd437ca6088ceacd/OChem_10_EC_012b.jpg\" alt=\"The ball and stick model of alkene that comprises two cyclopentane rings joined by a double bond. Black and gray spheres represent carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

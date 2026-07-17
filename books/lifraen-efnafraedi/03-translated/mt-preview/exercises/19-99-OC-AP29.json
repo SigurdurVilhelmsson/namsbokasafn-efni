@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP29",
+  "source_uid": "38075@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360815",
+      "stem_html": "<p><sup>1</sup>H NMR-rófið sem sýnt er er af efnasambandi sem er hverfa þess sem er í dæmi 19-80. Þessi hverfa hefur IR-gleypni við 1730 cm<sup>–1</sup>. Stingdu upp á byggingu. [<i>Athugið:</i> Aldehýðróteindir (CHO) sýna oft lága tengifasta við aðlægar vetnisfrumeindir, þannig að klofnun aldehýðmerkja er ekki alltaf augljós.]</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0bee5f1aa7781c05d8078a32cc9371322a7f545d/OChem_19_EC_061.jpg\" alt=\"Proton spectrum shows shifts of 0 (T M S), 2.75 (triplet), 2.95 (triplet), 7.23 and 7.31 (multiplet), and 9.82 (singlet). Relative areas are 2.00, 2.00, 3.00, 2.00, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

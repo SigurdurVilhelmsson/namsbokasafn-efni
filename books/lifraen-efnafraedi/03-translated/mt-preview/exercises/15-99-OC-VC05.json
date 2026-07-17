@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-VC05",
+  "source_uid": "37748@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358654",
+      "stem_html": "<p>Azúlen, hverfa naftalens, hefur óvenju stórt tvískautsvægi fyrir kolvetni (<i>μ</i> = 1,0 D). Útskýrðu með því að nota vokmyndir.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e3587d3932fc82f4916d8571554704f3f8ebd50/OChem_15_EC_005.jpg\" alt=\"The ball-and-stick model with the electrostatic potential map of azulene. In the structure, a seven-membered ring is fused with a 5-membered ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

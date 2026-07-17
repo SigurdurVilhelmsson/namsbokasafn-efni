@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP08",
+  "source_uid": "37434@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Það er sérstaklega auðvelt að bera kennsl á halógenuð efnasambönd út frá massarófum þeirra þar sem bæði klór og bróm koma náttúrulega fyrir sem efnablöndur tveggja algengra samsæta. Munum að klór kemur fyrir sem <sup>35</sup>Cl (75,8%) og <sup>37</sup>Cl (24,2%); og bróm kemur fyrir sem <sup>79</sup>Br (50,7%) og <sup>81</sup>Br (49,3%). Við hvaða massa koma sameindajónirnar fram fyrir eftirfarandi formúlur? Hver eru hlutfallsleg prósentuhlutfall hverrar sameindajónar?",
+  "questions": [
+    {
+      "id": "337620",
+      "stem_html": "Brómmetan, CH<sub>3</sub>Br",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337621",
+      "stem_html": "1-klórhexan, C<sub>6</sub>H<sub>13</sub>Cl",
+      "collaborator_solutions": []
+    }
+  ]
+}

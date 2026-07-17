@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP25",
+  "source_uid": "39264@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359643",
+      "stem_html": "<p>Sönnunargögn fyrir takmörkuðum snúningi í kringum amíð <span data-math=\"{\\rm O}\\text{═}{\\rm C}\\text{–}{\\rm N}\"></span> efnatengi koma úr NMR-rannsóknum. Við stofuhita sýnir <sup>1</sup>H NMR-róf <i>N</i>,<i>N</i>-dímetýlformamíðs þrjá toppa: 2,9 <i>δ</i> (eintoppur, 3 H), 3,0 <i>δ</i> (eintoppur, 3 H) og 8,0 <i>δ</i> (eintoppur, 1 H). Þegar hitastigið er hækkað renna eintopparnir tveir við 2,9 <i>δ</i> og 3,0 <i>δ</i> hins vegar hægt og rólega saman. Við 180 °C sýnir <sup>1</sup>H NMR-rófið aðeins tvo toppa: 2,95 <i>δ</i> (eintoppur, 6 H) og 8,0 <i>δ</i> (eintoppur, 1 H). Útskýrðu þessa hitastigsháðu hegðun.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f832e22a35df67719ec899f62a970b8b44391f0/OChem_26_EC_020.jpg\" alt=\"The structure of N,N-dimethylformamide, an aldehyde group linked to a nitrogen atom to two methyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

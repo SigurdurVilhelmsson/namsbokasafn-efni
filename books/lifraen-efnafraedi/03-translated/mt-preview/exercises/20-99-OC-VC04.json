@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-VC04",
+  "source_uid": "38100@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359128",
+      "stem_html": "<p>Rafstöðumöguleikakort af anísóli og þíóanísóli eru sýnd. Hvora telur þú vera sterkari sýruna, <i>p</i>-metoxýbensósýru eða <i>p</i>-(metýlþíó)bensósýru? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5a0eca4e6686b010b82dd0eae39de81d50e9b33/OChem_20_EC_011.jpg\" alt=\"The ball-and-stick model with electrostatic potential maps of anisole (methoxybenzene) and thioanisole ([methylsulfanyl]benzene).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

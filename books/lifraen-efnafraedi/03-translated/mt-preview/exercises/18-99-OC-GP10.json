@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP10",
+  "source_uid": "38761@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361299",
+      "stem_html": "<p>Hvernig myndir þú útbúa <i>o</i>-hýdroxýfenýlasetaldehýð úr fenól? Fleiri en eitt skref er nauðsynlegt.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3b7dcc9c6461b9648992d3d824a595c42e48c847/OChem_18_EC_047.jpg\" alt=\"O-Hydroxyphenylacetaldehyde has a structure in which a benzene ring has hydroxyl on one carbon, and C H 2 C H O on an adjacent carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "24-07-OC-P15",
+  "source_uid": "38968@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361599",
+      "stem_html": "<p>Hvaða myndefni myndir þú búast við úr Hofmann-brottnámi á heteróhringlaga amíni eins og píperidíni? Skrifaðu öll skrefin.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b99ce5dc35d578c6768e520228de3189da060777/OChem_24_07_009.jpg\" alt=\"The ball-and-stick model of piperidine, a six-membered, single-bonded ring, one member of which is nitrogen with a hydrogen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>N(CH<sub>3</sub>)<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

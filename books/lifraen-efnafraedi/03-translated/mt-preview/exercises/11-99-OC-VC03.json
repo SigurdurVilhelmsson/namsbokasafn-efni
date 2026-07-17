@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-VC03",
+  "source_uid": "37364@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355178",
+      "stem_html": "<p>Úthlutaðu <i>R</i> eða <i>S</i> stillingu á eftirfarandi sameind, skrifaðu myndefnið sem þú myndir búast við úr S<sub>N</sub>2-efnahvarfi við NaCN og úthlutaðu <i>R</i> eða <i>S</i> stillingu á myndefnið (grænt = Cl):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0db9ce480fac4594282137e5d300bffc34f2f0ba/OChem_11_EC_009.jpg\" alt=\"A ball-and-stick model of an alkyl chloride having a double bond. The gray, black, and green spheres represent hydrogen, carbon, and chlorine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

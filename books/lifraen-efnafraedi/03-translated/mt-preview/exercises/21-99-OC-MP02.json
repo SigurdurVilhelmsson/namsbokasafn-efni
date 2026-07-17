@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-MP02",
+  "source_uid": "38182@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um afurð(ir) og skrifið verkunarhátt fyrir eftirfarandi efnahvörf:",
+  "questions": [
+    {
+      "id": "361422",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--54dc7643bd1c206ed8f32639a63d83836304657b/OChem_21_EC_027b.jpg\" alt=\"The reaction between cyclopentane carboxylic acid and thionyl chloride gives unknown products depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361423",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8e97636a77b70ad90b9d892987ce5c8c41f668f/OChem_21_EC_027d.jpg\" alt=\"The reaction of but-2-enoic acid with thionyl chloride giving unknown products depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

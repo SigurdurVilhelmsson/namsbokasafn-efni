@@ -1,0 +1,37 @@
+{
+  "nickname": "12-08-OC-P10",
+  "source_uid": "37465@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvar gætu eftirfarandi efnasambönd haft IR-gleypni?",
+  "questions": [
+    {
+      "id": "352779",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ace7e4dd9869143dec246c1403a83ea86ed7c4dc/OChem_12_08_019a.jpg\" alt=\"Chemical structure of a cyclohexene with a C O O C H 3 substituent.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1715, 1640, 1250 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "352780",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ba0303ddfb2dea6b924d1463ae00b58e2cc7b6e/OChem_12_08_019b.jpg\" alt=\"A five-carbon chain with a triple bond on C4 and a C H O group on C1.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1730, 2100, 3300 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "352781",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66c920a345dcfd6105d272ffd85dffa0de78deb9/OChem_12_08_019c.jpg\" alt=\"A benzene ring with a C O O H  on C1 and C H 2 O H on C2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1720, 2500–3100, 3400–3650 cm<sup>−1</sup>"
+        }
+      ]
+    }
+  ]
+}

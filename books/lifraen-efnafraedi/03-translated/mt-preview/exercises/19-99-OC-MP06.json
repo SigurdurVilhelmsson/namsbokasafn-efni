@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP06",
+  "source_uid": "38028@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og leggðu til hvarfganga fyrir eftirfarandi efnahvörf:",
+  "questions": [
+    {
+      "id": "360686",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c46e4c4322ee51fc82a379e051a72efa7ea6de5/OChem_19_EC_025b.jpg\" alt=\"The reaction shows N-(butan-2-ylidine)methanamine with hydrochloric acid and water to yield an unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360687",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f11fd4348a04174e1e20aaf4ddfba85bee44697a/OChem_19_EC_025d.jpg\" alt=\"The reaction shows N, N-dimethylcyclohex-1-enamine with hydrochloric acid and water to yield an unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP08",
+  "source_uid": "37822@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358964",
+      "stem_html": "<p>Bensen og alkýltengd bensen má hýdroxýlera með efnahvarfi við H<sub>2</sub>O<sub>2</sub> í nærveru súrs hvata. Hver er bygging hvarfgjarna rafsæknisins? Settu fram hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58637bc70e0c65e557314a32b886971a2c21a093/OChem_16_EC_023.jpg\" alt=\"Benzene reacts with hydrogen peroxide in the presence of trifluoromethanesulfonic acid catalyst to form phenol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-VC01",
+  "source_uid": "37362@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifaðu myndefnið sem þú myndir búast við úr efnahvarfi hvers eftirfarandi alkýlhalíða við (1) Na<sup>+</sup> <sup>–</sup>SCH<sub>3</sub> og (2) Na<sup>+ –</sup>OH (grænt = Cl):",
+  "questions": [
+    {
+      "id": "360073",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--73a57527d59e0a5732405cac5af1a72a9492ca37/OChem_11_EC_007a.jpg\" alt=\"A ball-and-stick model of an alkyl halide comprising a two-carbon chain. The gray, black, and green spheres represent hydrogen, carbon, and chlorine, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360074",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7804b6afbf6adc8ab6c7035af1061f431dc87d35/OChem_11_EC_007b.jpg\" alt=\"A ball-and-stick model of an alkyl halide comprising a four-carbon chain. The gray, black, and green spheres represent hydrogen, carbon, and chlorine, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360075",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--661c9817a85da60f13d88270cc9f4fb523036bf3/OChem_11_EC_007c.jpg\" alt=\"A ball-and-stick model of an alkyl halide comprising a six-carbon chain. The gray, black, and green spheres represent hydrogen, carbon, and chlorine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

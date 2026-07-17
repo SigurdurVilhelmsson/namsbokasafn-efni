@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP29",
+  "source_uid": "37455@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Massaróf <b>(a)</b> og innrautt róf <b>(b)</b> annars óþekkts kolvetnis eru sýnd. Stingdu upp á eins mörgum byggingum og þú getur.",
+  "questions": [
+    {
+      "id": "359266",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d194d1044431915a0773fae106898dd226f2e88/OChem_12_EC_010a.jpg\" alt=\"The mass spectrum of an unknown compound with a base peak at m / z 54 and highest m / z value peaks at 70 and 71 inverse centimeters.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359267",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de8a4da4578992eb29cac0acb174796b45216f64/OChem_12_EC_010b.jpg\" alt=\"An infrared spectrum with  bands just above and below 3000, and just below 1500 inverse centimeters.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "nickname": "28-05-OC-P07",
+  "source_uid": "39116@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teldu upp táknaraðir fyrir eftirfarandi amínósýrur:",
+  "questions": [
+    {
+      "id": "348295",
+      "stem_html": "Ala",
+      "collaborator_solutions": [
+        {
+          "content_html": "GCU, GCC, GCA, GCG"
+        }
+      ]
+    },
+    {
+      "id": "348296",
+      "stem_html": "Phe",
+      "collaborator_solutions": [
+        {
+          "content_html": "UUU, UUC"
+        }
+      ]
+    },
+    {
+      "id": "348297",
+      "stem_html": "Leu",
+      "collaborator_solutions": [
+        {
+          "content_html": "UUA, UUG, CUU, CUC, CUA, CUG"
+        }
+      ]
+    },
+    {
+      "id": "348298",
+      "stem_html": "Tyr",
+      "collaborator_solutions": [
+        {
+          "content_html": "UAU, UAC"
+        }
+      ]
+    }
+  ]
+}

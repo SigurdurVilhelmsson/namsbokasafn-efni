@@ -1,0 +1,20 @@
+{
+  "nickname": "01-99-OC-AP24",
+  "source_uid": "37581@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Hversu mörg vetni eru tengd hverri kolefnisfrumeind í (a) inflúensulyfinu oseltamivir, markaðssettu sem Tamiflu, og (b) blóðflöguþyrpingarhemilinum clopidogrel, markaðssettu sem Plavix? Gefið upp sameindaformúlu hvors um sig.</p>",
+  "questions": [
+    {
+      "id": "358905",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94858c902ef7589767b4380fe4bc5363bb0286c3/OChem_01_EC_015a.jpg\" alt=\"The line-bond structure of oseltamivir (Tamiflu).\">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358906",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9ef4990312a182d35164101227d3d9189dd1d8b/OChem_01_EC_015b.jpg\" alt=\"The line-bond structure of clopidogrel (Plavix).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

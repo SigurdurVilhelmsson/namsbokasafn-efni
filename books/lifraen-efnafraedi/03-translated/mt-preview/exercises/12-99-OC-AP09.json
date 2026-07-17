@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP09",
+  "source_uid": "37435@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341853",
+      "stem_html": "Með því að þekkja náttúrulega algengi minniháttar samsæta er hægt að reikna út hlutfallslega hæð M<sup>+</sup> og M + 1 toppanna. Ef <sup>13</sup>C hefur náttúrulegt algengi upp á 1,10%, hver er þá hlutfallsleg hæð M<sup>+</sup> og M + 1 toppanna í massarófi bensens, C<sub>6</sub>H<sub>6</sub>?",
+      "collaborator_solutions": []
+    }
+  ]
+}

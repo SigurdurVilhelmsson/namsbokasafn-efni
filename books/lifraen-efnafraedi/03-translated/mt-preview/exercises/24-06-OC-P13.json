@@ -1,0 +1,28 @@
+{
+  "nickname": "24-06-OC-P13",
+  "source_uid": "38966@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi amín með því að nota bæði Hofmann- og Curtius-umröðun á karboxýlsýruafleiðu?",
+  "questions": [
+    {
+      "id": "361588",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--681fe68a555868bb2826a29be1154ac75eae9692/OChem_24_06_022a.jpg\" alt=\"The structure of a four-carbon chain with an amino group on C 1 and two methyl groups on C 3.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,4-Dímetýlpentanamíð eða 4,4-dímetýlpentanóýlasíð"
+        }
+      ]
+    },
+    {
+      "id": "361589",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--15b8f56612dc06466206cbb9c77fbdd7061603ba/OChem_24_06_022b.jpg\" alt=\"The structure of the benzene ring with an amino group on C 1 and a methyl group on C 4.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Metýlbensamíð eða <i>p</i>-metýlbensóýlasíð"
+        }
+      ]
+    }
+  ]
+}

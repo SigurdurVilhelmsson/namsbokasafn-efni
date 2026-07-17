@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP28",
+  "source_uid": "38876@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358243",
+      "stem_html": "<p>Díetýlstilbestról (DES) hefur estrógenvirka virkni þótt það sé byggingarlega óskylt sterum. DES var eitt sinn notað sem aukefni í dýrafóður en hefur verið bendlað við nokkrar tegundir krabbameins sem orsakavaldur. Sýndu hvernig hægt er að teikna DES þannig að það sé sterískt svipað estradíóli.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12bd4be4bb0a96549a4750f827ebf8ce8f86b5fd/OChem_27_EC_019.jpg\" alt=\"The structures of diethylstilbestrol and estradiol. Diethylstilbestrol is a diethyl subsituted diphenol. Estradiol is an aromatic steroid with a phenol and wedged methyl and hydroxyl groups. \">",
+      "collaborator_solutions": []
+    }
+  ]
+}

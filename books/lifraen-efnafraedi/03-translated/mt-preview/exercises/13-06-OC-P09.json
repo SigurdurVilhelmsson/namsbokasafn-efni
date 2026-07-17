@@ -1,0 +1,64 @@
+{
+  "nickname": "13-06-OC-P09",
+  "source_uid": "37475@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sjáðu fyrir þér klofningsmynstur sem þú myndir búast við fyrir hverja róteind í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "358276",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41b858425a2425360f1982f0af96592a35aa324e/OChem_13_06_008a.jpg\" alt=\"The condensed structural formula reads, C H B r 2 C H 3.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": " −CHBr<sub>2</sub>, kvartett; −CH<sub>3</sub>, tvíliða"
+        }
+      ]
+    },
+    {
+      "id": "358277",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b89b9a8fa00e032de59664180ea709270c918455/OChem_13_06_008b.jpg\" alt=\"The condensed structural formula reads, C H 3 O C H 2 C H 2 B r.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>O−, einliða; −OCH<sub>2</sub>−, þríliða; −CH<sub>2</sub>Br, þríliða"
+        }
+      ]
+    },
+    {
+      "id": "358278",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df0e2a013fc0b73ad19350e890956e891c55799d/OChem_13_06_008c.jpg\" alt=\"The condensed structural formula reads, C l C H 2 C H 2 C H 2 C l.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "ClCH<sub>2</sub>−, þríliða; −CH<sub>2</sub>−, fimmeyki"
+        }
+      ]
+    },
+    {
+      "id": "358279",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fdc4ad7e13c6684d21b4d6873d0fae4c989bc187/OChem_13_06_008d.jpg\" alt=\"The condensed structural formula of ethyl isobutyrate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>−, þríliða; −CH<sub>2</sub>−, kvartett; −CH−, sjöeyki; (CH<sub>3</sub>)<sub>2</sub>, tvíliða"
+        }
+      ]
+    },
+    {
+      "id": "358280",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d125cdb014fcabd48db68e9125cd0f2621d22294/OChem_13_06_008e.jpg\" alt=\"The condensed structural formula of isopropyl propanoate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>−, þríliða; −CH<sub>2</sub>−, kvartett; −CH−, sjöeyki; (CH<sub>3</sub>)<sub>2</sub>, tvíliða"
+        }
+      ]
+    },
+    {
+      "id": "358281",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aceef4c009382508d16d3be6a50e90031255f047/OChem_13_06_008f.jpg\" alt=\"The structure has a cyclohexene ring fused to a benzene ring; double bond in cyclohexene is opposite fusion.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<span data-math=\"\\text{=}\"></span>CH, þríliða, −CH<sub>2</sub>−, tvíliða, arómatískt C−H, tvær margliður"
+        }
+      ]
+    }
+  ]
+}

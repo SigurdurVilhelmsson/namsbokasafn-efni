@@ -1,0 +1,19 @@
+{
+  "nickname": "01-08-OC-P10",
+  "source_uid": "37547@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357556",
+      "stem_html": "Teiknaðu línutengibyggingu fyrir própen, CH<sub>3</sub>CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>. Tilgreindu blendingun svigrúma á hverju kolefni og spáðu fyrir um gildi hvers efnatengishorns.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>CH<sub>3</sub> kolefnið er <i>sp</i><sup>3</sup>; kolefnin í tvítenginu eru <i>sp</i><sup>2</sup>; C<span data-math=\"\\text{=}\"></span>C−C og C<span data-math=\"\\text{=}\"></span>C−H efnatengishornin eru um það bil 120°; önnur efnatengishorn eru nálægt 109°.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1a5688dd803439fa16f140b6d2f073c49d80018/OChem_01_EC_206.jpg\" alt=\"The chemical structure of propene featuring the wedge-dash bonds between hydrogen and C3.\">"
+        }
+      ]
+    }
+  ]
+}

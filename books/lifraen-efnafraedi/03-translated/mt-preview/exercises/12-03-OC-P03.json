@@ -1,0 +1,46 @@
+{
+  "nickname": "12-03-OC-P03",
+  "source_uid": "37419@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hver er massi hlaðinna brota sem myndast í eftirfarandi klofningsferlum?",
+  "questions": [
+    {
+      "id": "337546",
+      "stem_html": "Alfa-klofningur 2-pentanóns (CH<sub>3</sub>COCH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>)",
+      "collaborator_solutions": [
+        {
+          "content_html": "43, 71"
+        }
+      ]
+    },
+    {
+      "id": "337547",
+      "stem_html": "Vötnun sýklóhexanóls (hýdroxýsýklóhexan)",
+      "collaborator_solutions": [
+        {
+          "content_html": "82"
+        }
+      ]
+    },
+    {
+      "id": "337548",
+      "stem_html": "McLafferty-umröðun 4-metýl-2-pentanóns [CH<sub>3</sub>COCH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub>]",
+      "collaborator_solutions": [
+        {
+          "content_html": "58"
+        }
+      ]
+    },
+    {
+      "id": "337549",
+      "stem_html": "Alfa-klofningur tríetýlamíns [(CH<sub>3</sub>CH<sub>2</sub>)<sub>3</sub>N]",
+      "collaborator_solutions": [
+        {
+          "content_html": "86"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP15",
+  "source_uid": "37122@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353496",
+      "stem_html": "<p>Meðhöndlun 4-penten-1-óls með vatnslausn af Br<sub>2</sub> gefur hringlaga brómetra frekar en brómhýdrínið sem búist var við. Settu fram tillögu að hvarfgangi og notaðu sveigðar örvar til að sýna hreyfingu rafeinda.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3df9af482ed45bce509a79a340df6f40f4da2729/OChem_08_EC_030.jpg\" alt=\"A reaction shows 4-penten-1-ol reacting with molecular bromine in the presence of water to form 2-(bromomethyl)tetrahydrofuran.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

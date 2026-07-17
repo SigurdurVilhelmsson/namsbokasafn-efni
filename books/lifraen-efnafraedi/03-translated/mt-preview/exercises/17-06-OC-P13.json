@@ -1,0 +1,55 @@
+{
+  "nickname": "17-06-OC-P13",
+  "source_uid": "37878@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr vötnun eftirfarandi alkóhóla með POCl<sub>3</sub> í pýridíni? Tilgreindu aðalmyndefnið í hverju tilviki.",
+  "questions": [
+    {
+      "id": "359387",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d646b703a36c805d375dfa06f4df34bbf351eca/OChem_17_06_012a.jpg\" alt=\"Chemical structure of 2-methylpentan-3-ol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-2-penten"
+        }
+      ]
+    },
+    {
+      "id": "359388",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62a5366273e939e58fa3ace3bc6a9b011ee61065/OChem_17_06_012b.jpg\" alt=\"Cyclohexane with hydroxyl (wedge) and hydrogen (dash). On adjacent carbon clockwise, hydrogen (wedge) and methyl (dash).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Metýlsýklóhexen"
+        }
+      ]
+    },
+    {
+      "id": "359389",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7f47f63e925f5a533af0927ac61d6307c11aad9/OChem_17_06_012c.jpg\" alt=\"Cyclohexane with hydroxyl (wedge) and hydrogen (dash). On adjacent carbon clockwise, methyl (wedge) and hydrogen (dash).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Metýlsýklóhexen"
+        }
+      ]
+    },
+    {
+      "id": "359390",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f4c1f4bf43d9128748e187133dba520c1175a449/OChem_17_06_012d.jpg\" alt=\"Chemical structure of 2,3-dimethylpentan-3-ol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,3-Dímetýl-2-penten"
+        }
+      ]
+    },
+    {
+      "id": "359391",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0d1de975fa26cc28657054a25b6e160bcf53b74/OChem_17_06_012e.jpg\" alt=\"Chemical structure of 2-methylpentan-2-ol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-2-penten"
+        }
+      ]
+    }
+  ]
+}

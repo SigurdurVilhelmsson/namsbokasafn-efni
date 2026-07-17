@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-MP05",
+  "source_uid": "39239@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359631",
+      "stem_html": "<p>Nýleg og snjöll aðferð við peptíðsmíði felur í sér myndun amíðefnatengis með efnahvarfi <i>α</i>-ketósýru við <i>N</i>-alkýlhýdroxýlamín:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--012896e0c8886dbc8b5fd032328e662074ddfb7d/OChem_26_EC_017.jpg\" alt=\"An alpha-keto acid reacts with hydroxylamine in the presence of N, N-dimethylformamide to form an amide, with carbon dioxide and water as the products.\">\n<p>Talið er að efnahvarfið eigi sér stað með kjarnsækinni álagningu <i>N</i>-alkýlhýdroxýlamíns á ketósýruna eins og við myndun oxíms (kafli 19.8), fylgt eftir af afkarboxýleringu og brottnámi vatns. Sýndu hvarfganginn.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nickname": "11-99-OC-AP04",
+  "source_uid": "37383@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða hvarfefni í hverju eftirfarandi pari er meira kjarnsækið? Útskýrið.",
+  "questions": [
+    {
+      "id": "340591",
+      "stem_html": "<sup>–</sup>NH<sub>2</sub> eða NH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340592",
+      "stem_html": "H<sub>2</sub>O eða CH<sub>3</sub>CO<sub>2</sub><sup>–</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340593",
+      "stem_html": "BF<sub>3</sub> eða F<sup>–</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340594",
+      "stem_html": "(CH<sub>3</sub>)<sub>3</sub>P eða (CH<sub>3</sub>)<sub>3</sub>N",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340595",
+      "stem_html": "I<sup>–</sup> eða Cl<sup>–</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340596",
+      "stem_html": "<sup>–</sup>C<span data-math=\"\\text{≡}\"></span>N eða <sup>–</sup>OCH<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

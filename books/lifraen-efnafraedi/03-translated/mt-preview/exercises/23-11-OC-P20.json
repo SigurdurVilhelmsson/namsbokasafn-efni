@@ -1,0 +1,28 @@
+{
+  "nickname": "23-11-OC-P20",
+  "source_uid": "38900@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu hvernig þú gætir notað enamín-<i>efnahvarf</i> til að búa til hvert eftirfarandi <i>efnasambanda</i>:",
+  "questions": [
+    {
+      "id": "359813",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb6814ce189b0b722e62699c39add8429fcacf54/OChem_23_11_006a.jpg\" alt=\"The structure of cyclopentanone with C H 2 C H 2 C N on the second carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklópentanón enamín + própenítríl"
+        }
+      ]
+    },
+    {
+      "id": "359814",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78a4d69da5d26b49f6a39e64021f985e1d49d658/OChem_23_11_006b.jpg\" alt=\"The structure of cyclohexanone with C H 2 C H 2 C O O C H 3 on the second carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexanón enamín + metýlprópenóat"
+        }
+      ]
+    }
+  ]
+}

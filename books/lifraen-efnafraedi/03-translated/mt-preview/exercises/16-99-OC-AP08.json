@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP08",
+  "source_uid": "37840@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Við hvaða myndefni(m) myndir þú búast úr eftirfarandi efnahvörfum:",
+  "questions": [
+    {
+      "id": "359000",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5e825df1e7921f7087f914373d22562789fa120/OChem_16_EC_034a.jpg\" alt=\"Benzene with an acyl group and a nitro group ortho to one another reacts with hydrogen in the presence of a palladium catalyst to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359001",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4919a56a40693a5c00402ec251e965784c8edadc/OChem_16_EC_034b.jpg\" alt=\"ortho-Dibromobenzene reacts with nitric acid in the presence of sulfuric acid followed by iron and actd forming unknown product(s), depicted by a question mark\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359002",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95904b7991d49b014135a33559683fcf021e23f0/OChem_16_EC_034c.jpg\" alt=\"In water, benzene fused to a cyclohexane ring reacts with potassium permanganate to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359003",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff7ce265de5319dc541f88c1a2531a4b2b3df693/OChem_16_EC_034d.jpg\" alt=\"Benzene bonded to a methoxy group and a chlorine atom para to one another reacts with propyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "09-99-OC-VC01",
+  "source_uid": "37203@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefnið eftirfarandi alkín og spáið fyrir um myndefni efnahvarfs þeirra við <b>(1)</b> H<sub>2</sub> í viðurvist Lindlar-hvata og <b>(2)</b> H<sub>3</sub>O<sup>+</sup> í viðurvist HgSO<sub>4</sub>:",
+  "questions": [
+    {
+      "id": "353737",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6147a62bb392fe8840fa2b9ea37344a7ea638666/OChem_09_EC_011a.jpg\" alt=\"A ball and stick model of a C8 alkyne. Carbon and hydrogen are denoted using gray and white spheres, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353738",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abf872815c5eb2f7b1597c5d741af39a0e4cd867/OChem_09_EC_011b.jpg\" alt=\"A ball and stick model of a C10 alkyne. Carbon and hydrogen are denoted using gray and white spheres, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

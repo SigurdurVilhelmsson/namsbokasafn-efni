@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP13",
+  "source_uid": "37392@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355356",
+      "stem_html": "<p>1-klór-1,2-dífenýletan getur gengist undir E2-brottnám og gefið annaðhvort <i>cis</i>- eða <i>trans</i>-1,2-dífenýletýlen (stilben). Teiknaðu Newman-vörpun af hvarfgjörnu stellingunum sem leiða til beggja mögulegra myndefna og stingdu upp á ástæðu fyrir því að <i>trans</i>-alkeninn er aðalmyndefnið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6e593a8c8f216f72989ae76c2701bcd741bb8711/OChem_11_EC_026.jpg\" alt=\"The conversion of 1-chloro-1,2-diphenylethane to trans-1,2-Diphenylethylene in the presence of methoxy ion.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

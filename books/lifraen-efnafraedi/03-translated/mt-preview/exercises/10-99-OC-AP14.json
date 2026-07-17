@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP14",
+  "source_uid": "37277@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357384",
+      "stem_html": "<p>Alkýlbensen eins og tólúen (metýlbensen) hvarfast við NBS og gefa myndefni þar sem brómskiptihvarf hefur átt sér stað í stöðunni við hliðina á arómatíska hringnum (<i>bensýl</i>staða). Útskýrðu, byggt á klofnunarorku efnatengja í töflu 6.3.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0125cf5921025d5a30761a9158a9c8fb6fa76d15/OChem_10_EC_028.jpg\" alt=\"Toluene reacts with N-bromosuccinimide, light, and carbon tetrachloride to form benzyl bromide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

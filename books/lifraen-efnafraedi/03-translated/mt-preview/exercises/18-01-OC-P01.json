@@ -1,0 +1,64 @@
+{
+  "nickname": "18-01-OC-P01",
+  "source_uid": "38697@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi etera:",
+  "questions": [
+    {
+      "id": "361108",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5295cd067a2edcb45793ceaf2e91b096df664300/OChem_18_01_005a.jpg\" alt=\"The structure of two isopropyl groups bonded to an oxygen atom in an ether linkage.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Díísóprópýleter"
+        }
+      ]
+    },
+    {
+      "id": "361109",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ec34eb58a78c4393b184b55ca42a70516382e8c/OChem_18_01_005b.jpg\" alt=\"The structure of cyclopentane with a propoxy (O C H 2 C H 2 C H 3) substituent.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklópentýlprópýleter"
+        }
+      ]
+    },
+    {
+      "id": "361110",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--647a4d37c9a85813681620484bda702152f232bb/OChem_18_01_005c.jpg\" alt=\"The structure of benzene with methoxy and bromine groups positioned para to one another.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Brómanísól eða 4-bróm-1-metoxýbensen"
+        }
+      ]
+    },
+    {
+      "id": "361111",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d873c0183c5c8a703a0fdc1c8505acbdc2ef3623/OChem_18_01_005d.jpg\" alt=\"The structure of cyclohexene with a methoxy substituent at one of the double-bonded carbons.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Metoxýsýklóhexen"
+        }
+      ]
+    },
+    {
+      "id": "361112",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b70c72686e0e63ac88fbca03bf1b004eb22a1278/OChem_18_01_005e.jpg\" alt=\"An ethyl group connected to an isobutyl group through an oxygen atom, forming an ether linkage.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlísóbútýleter"
+        }
+      ]
+    },
+    {
+      "id": "361113",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a856edb332c0f6bef6c0ab6c3a4d2be298c1dbc5/OChem_18_01_005f.jpg\" alt=\"An allyl group attached to a vinyl group through an oxygen atom, forming an ether linkage.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Allýlvínýleter"
+        }
+      ]
+    }
+  ]
+}

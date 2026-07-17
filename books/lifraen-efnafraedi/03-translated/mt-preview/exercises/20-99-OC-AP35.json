@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP35",
+  "source_uid": "38145@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359224",
+      "stem_html": "<p>Greindu hvarfefnin <b>a</b>–<b>f</b> sem vantar í eftirfarandi skema:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef7fb0ab9dd6b67c8420859738a9e4ad48a23cd5/OChem_20_EC_036.jpg\" alt=\"Reaction of 3-methylbut-1-ene to form 3-methylbutan-1-ol, then 3-methyl-1-bromobutane, then 3-methylpentanoic acid, then 4-methylpentan-1-ol, then 4-methylpentanal, then 4-methyl pentane. Missing reagents in each step indicated using letters a through f.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

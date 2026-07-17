@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP16",
+  "source_uid": "36579@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu ferflötungsmyndir af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "346161",
+      "stem_html": "(<i>S</i>)-2-Klórbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346162",
+      "stem_html": "(<i>R</i>)-3-Klór-1-penten [H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHCH(Cl)CH<sub>2</sub>CH<sub>3</sub>]",
+      "collaborator_solutions": []
+    }
+  ]
+}

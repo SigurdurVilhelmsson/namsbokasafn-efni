@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-AP15",
+  "source_uid": "39429@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355052",
+      "stem_html": "<p>Reyksalir Hindenburgs og annarra vetnisfylltra loftskipa frá fjórða áratugnum voru einangraðir með úrea–formaldehýð fjölliðufroðu. Bygging þessarar fjölliðu er mjög krosstengd, líkt og Bakelít (kafli 31.7). Stingdu upp á byggingu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--236a3c9c47f5c143af501848a5ebd2685053e52e/OChem_31_EC_014.jpg\" alt=\"An incomplete reaction in which urea reacts with formaldehyde to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

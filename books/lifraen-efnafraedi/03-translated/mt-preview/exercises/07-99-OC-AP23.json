@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP23",
+  "source_uid": "36675@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hægt er að stöðga eftirfarandi karbókatjónir með vokmyndum. Teiknaðu öll vokmyndir sem myndu stöðga hverja karbókatjón.",
+  "questions": [
+    {
+      "id": "354456",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b08b11076159758a9cf0e3b64b64c8702cba6142/OChem_07_EC_026a.jpg\" alt=\"2-methyl-1,4-pentadiene with carbocation on C 3 in resonance with an unknown compound indicated by question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354457",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4b5b8b6a1d2c94bf1775a52242f2238492ee3f3/OChem_07_EC_026b.jpg\" alt=\"A cyclohexadiene ring with a positive charge at C 6 and a nitro group at C 5 in resonance with an unknown compound indicated by question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354458",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1d4cca50204d2db71f735a5052046a8b36bc70e6/OChem_07_EC_026c.jpg\" alt=\"3-methoxy-1-butene with carbocation on C 3 in resonance with an unknown compound indicated by question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

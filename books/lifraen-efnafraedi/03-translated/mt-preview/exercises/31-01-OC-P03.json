@@ -1,0 +1,19 @@
+{
+  "nickname": "31-01-OC-P03",
+  "source_uid": "39398@9",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360400",
+      "stem_html": "<p>Pólýstýren er framleitt í iðnaði með efnahvarfi stýrens við bútýllitíum sem anjónískan frumkveiki. Notið vok myndir til að útskýra hvernig keðjuberandi milliefnið er stöðgað.</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Milliefnið er bensýlískt karbanjón sem er stöðgað með vok myndum, <img style=\"vertical-align:middle\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c6d37c824b13f5a5df99c0e5ea88b7139569f46/OChem_31_EC_201.jpg\" alt=\"The structure shows phenyl group connected to a C H R group with lone pair of electron and negative charge on carbon.\"></p>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-VC02",
+  "source_uid": "38098@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Myndir þú búast við að eftirfarandi karboxýlsýrur væru súrari eða minna súrar en bensósýra? Útskýrðu. (Rauðbrúnt = Br.)",
+  "questions": [
+    {
+      "id": "359123",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e8dec903f63fcbb55b77bddbfe52fff5af724f9/OChem_20_EC_009a.jpg\" alt=\"A ball-and-stick model of a benzene ring with a carboxyl group and a bromine para to the carboxyl.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359124",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28adc02bc7330a5ede23941a117b231002b685b5/OChem_20_EC_009b.jpg\" alt=\"A ball-and-stick model of a benzene ring with a carboxyl group and a dimethylamine group para to the carboxyl.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

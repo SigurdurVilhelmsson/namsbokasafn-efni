@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP04",
+  "source_uid": "39373@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355090",
+      "stem_html": "<p>Hitun á (1<i>Z</i>,3<i>Z</i>,5<i>Z</i>)-1,3,5-sýklónónatríeni upp í 100 °C veldur hringmyndun og myndun tvíhringja myndefnis. Er efnahvarfið samhverft eða andhverft? Hver er rúmefnafræðileg afstaða vetnanna tveggja við hringamótin, cis eða trans?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c1f943b67f026ee8ac5e590798acc572caa0845/OChem_30_EC_011.jpg\" alt=\"(1Z,3Z,5Z)-1,3,5-Cyclononatriene reacts at 100 degree Celsius to form a six-membered ring with two double bonds fused to a five-membered ring with two hydrogen atoms.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "23-12-OC-P22",
+  "source_uid": "38902@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359818",
+      "stem_html": "<p>Hvernig myndir þú búa til eftirfarandi <i>efnasamband</i> með Robinson-hringtengingar<i>efnahvarfi</i> milli <i>β</i>-díketóns og <i>α</i>,<i>β</i>-ómettaðs ketóns? Teiknaðu byggingu beggja <i>hvarfefna</i> og Michael-<i>álagningar</i> <i>milliefnisins</i>.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00f17c0346cff26127656bf9c2464864a7b7806d/OChem_23_12_004.jpg\" alt=\"Bicyclo[4.4.0]dec-1-ene, with oxo groups on C 3 and C 7, methyl groups on C 2 and C 6, and two methyl groups on C 9.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,5,5-trímetýl-1,3-sýklóhexandíón + 1-penten-3-ón"
+        }
+      ]
+    }
+  ]
+}

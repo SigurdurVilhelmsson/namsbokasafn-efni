@@ -1,0 +1,19 @@
+{
+  "nickname": "15-05-OC-P10",
+  "source_uid": "37741@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358638",
+      "stem_html": "<p>Þíamín, eða B<sub>1</sub>-vítamín, inniheldur jákvætt hlaðinn fimm liða nitur-brennisteins-hringliðu sem kallast <i>þíasólíum</i>hringur. Útskýrðu hvers vegna þíasólíumhringurinn er arómatískur.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--041df881d7e06174946707272fbdf3616e58e546/OChem_15_05_007.jpg\" alt=\"Vitamin B 1 contains a thiazolium ring in which C 2 is bonded to 2-carbon chain with terminal carbon bonded to hydroxyl group. N 3 of the ring is bonded to a C H 2 whch in turn is bonded to a 6-membered substituted ring.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Þíasólíumhringurinn hefur sex <i>π</i>-rafeindir.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f1b528f2b7809e3ad7e70a00b91602d21c94554/OChem_15_EC_205.jpg\" alt=\"The orbital representation of thiazolium ring shows two lobes around sulfur each with a lone pair and upper lobes of the remaining atoms of the ring each with an unpaired electron.\">"
+        }
+      ]
+    }
+  ]
+}

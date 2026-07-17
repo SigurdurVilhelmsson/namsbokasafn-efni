@@ -1,0 +1,19 @@
+{
+  "nickname": "24-03-OC-P05",
+  "source_uid": "38958@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347501",
+      "stem_html": "Bensýlammóníumjónin (C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>NH<sub>3</sub><sup>+</sup>) hefur p<i>K</i><sub>a</sub> = 9,33 og própýlammóníumjónin hefur p<i>K</i><sub>a</sub> = 10,71. Hvor er sterkari basi, bensýlamín eða própýlamín? Hver eru p<i>K</i><sub>b</sub> gildi bensýlamíns og própýlamíns?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Própýlamín er sterkara; bensýlamín p<i>K</i><sub>b</sub> = 4,67; própýlamín p<i>K</i><sub>b</sub> = 3,29"
+        }
+      ]
+    }
+  ]
+}

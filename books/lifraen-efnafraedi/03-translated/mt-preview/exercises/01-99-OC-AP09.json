@@ -1,0 +1,40 @@
+{
+  "nickname": "01-99-OC-AP09",
+  "source_uid": "37567@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Breytið eftirfarandi sameindaformúlum í strikamyndir sem samræmast gildisreglum:",
+  "questions": [
+    {
+      "id": "338497",
+      "stem_html": "C<sub>3</sub>H<sub>8</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338498",
+      "stem_html": "CH<sub>5</sub>N",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338499",
+      "stem_html": "C<sub>2</sub>H<sub>6</sub>O (2 möguleikar)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338500",
+      "stem_html": "C<sub>3</sub>H<sub>7</sub>Br (2 möguleikar)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338501",
+      "stem_html": "C<sub>2</sub>H<sub>4</sub>O (3 möguleikar)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338502",
+      "stem_html": "C<sub>3</sub>H<sub>9</sub>N (4 möguleikar)",
+      "collaborator_solutions": []
+    }
+  ]
+}

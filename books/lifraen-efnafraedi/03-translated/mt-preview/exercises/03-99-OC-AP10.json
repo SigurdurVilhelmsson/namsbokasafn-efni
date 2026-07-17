@@ -1,0 +1,40 @@
+{
+  "nickname": "03-99-OC-AP10",
+  "source_uid": "36447@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið eins mörg efnasambönd og þið getið sem passa við eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "327911",
+      "stem_html": "Alkóhól með formúluna C<sub>4</sub>H<sub>10</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327912",
+      "stem_html": "Amín með formúluna C<sub>5</sub>H<sub>13</sub>N",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327913",
+      "stem_html": "Keton með formúluna C<sub>5</sub>H<sub>10</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327914",
+      "stem_html": "Aldehýð með formúluna C<sub>5</sub>H<sub>10</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327915",
+      "stem_html": "Esterar með formúluna C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327916",
+      "stem_html": "Etrar með formúluna C<sub>4</sub>H<sub>10</sub>O",
+      "collaborator_solutions": []
+    }
+  ]
+}

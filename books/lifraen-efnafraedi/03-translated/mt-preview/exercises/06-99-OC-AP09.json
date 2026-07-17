@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-AP09",
+  "source_uid": "37329@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353356",
+      "stem_html": "<p>Þrátt fyrir takmarkanir stakeindaklórunar alkana er efnahvarfið samt sem áður gagnlegt til að mynda ákveðin halógenuð efnasambönd. Fyrir hvaða af eftirfarandi efnasamböndum gefur stakeindaklórun eitt einklórað myndefni?</p>\n<p><b>(a)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d63853e67c225fad5dd694ce6b2d6e8e56362529/OChem_06_EC_018a.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 3.\">\n <b>(b)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13a0ac40afd5bb690a1f0033e03b95366a83fee4/OChem_06_EC_018b.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 2 C H 3.\">\n <b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4d0e0099f10f02e9afdc164df0003316df88f9/OChem_06_EC_018c.jpg\" alt=\"A chemical structure of cyclohexane.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--822dbd6d79e191ac64d89e107ea92bb1568262bf/OChem_06_EC_018d.jpg\" alt=\"A chemical structure of 2,2-dimethylbutane.\">\n <b>(e)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cdb8be5c5dded5642577dc20592bf133a23e62b/OChem_06_EC_018e.jpg\" alt=\"A condensed structure of 2-butyne.\">\n<br><b>(f)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844755bf6ef1ab6a85f6a9c61368f4e035804d2a/OChem_06_EC_018f.jpg\" alt=\"A chemical structure of hexamethylbenzene.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

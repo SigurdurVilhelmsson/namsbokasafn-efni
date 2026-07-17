@@ -1,0 +1,19 @@
+{
+  "nickname": "16-02-OC-P02",
+  "source_uid": "37789@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361099",
+      "stem_html": "Leggðu til hvarfgang fyrir rafsækna flúorun á benseni með SelectFluor.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20eed4d698bddb00d62ff1b1c9c39e3ea2a5d629/OSX_OrgChem_16_02_%20A-FTEDABF_img.jpg\" alt=\"Two-step reaction shows benzene reacting with F-T E D A-B F 4. Cation intermediate (fluorine on s p 3 carbon adjacent to carbocation) is deprotonated by base to fluorobenzene.\">"
+        }
+      ]
+    }
+  ]
+}

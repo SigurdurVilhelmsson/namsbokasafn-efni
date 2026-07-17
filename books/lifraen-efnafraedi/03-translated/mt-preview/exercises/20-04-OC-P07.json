@@ -1,0 +1,19 @@
+{
+  "nickname": "20-04-OC-P07",
+  "source_uid": "38087@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347247",
+      "stem_html": "Díkarboxýlsýrur hafa tvo klofnunarfasta, einn fyrir upphaflega klofnun í mónóanjón og einn fyrir seinni klofnun í díanjón. Fyrir oxalsýru, HO<sub>2</sub>C–CO<sub>2</sub>H, er fyrsti jónunarfastinn p<i>K</i><sub>a1</sub> = 1,2 og seinni jónunarfastinn er p<i>K</i><sub>a2</sub> = 4,2. Hvers vegna er seinni karboxýlhópurinn mun minna súr en sá fyrri?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Díanjónin er óstöðguð vegna fráhrindikrafta milli hleðslna."
+        }
+      ]
+    }
+  ]
+}

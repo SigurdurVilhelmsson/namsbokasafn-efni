@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP28",
+  "source_uid": "37860@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359055",
+      "stem_html": "<p>Notaðu þekkingu þína á stýrandi áhrifum, ásamt eftirfarandi gögnum, til að álykta um stefnu tvískautsátakanna í anilíni, brómbenseni og brómanilíni.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4bfcdbf95919ca7cb05c182624cacec38df6a639/OChem_16_EC_048.jpg\" alt=\"Structures of aniline, bromobenzene, and 4-bromoaniline with dipole moment values equal 1.53, 1.52, and 2.91 D, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

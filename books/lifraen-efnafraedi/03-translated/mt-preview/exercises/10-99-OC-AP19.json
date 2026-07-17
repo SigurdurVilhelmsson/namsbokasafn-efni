@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP19",
+  "source_uid": "37282@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357386",
+      "stem_html": "<p>Hvernig myndir þú framkvæma eftirfarandi efnasmíðar?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e13c67b71532fa02f9382d39070ba09217c31f0/OChem_10_EC_030.jpg\" alt=\"Cyclohexene, cyclohexanol, and cyclohexane eacg react with unknown reagents represented by question marks to form n-butylcyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

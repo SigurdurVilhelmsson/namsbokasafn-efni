@@ -1,0 +1,19 @@
+{
+  "nickname": "16-04-OC-P11",
+  "source_uid": "37799@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358924",
+      "stem_html": "<p>Rafstöðumöguleikakort af (tríflúormetýl)benseni, C<sub>6</sub>H<sub>5</sub>CF<sub>3</sub>, er sýnt. Myndir þú búast við að (tríflúormetýl)bensen væri hvarfgjarnara eða óhvarfgjarnara en tólúen gagnvart rafsæknu skiptihvarfi? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c9a74b1c41bc1dc746dc920c591074b5a821218/OChem_16_04_010.jpg\" alt=\"Electrostatic potential maps constituting the ball-and-stick models of (trifluoromethyl)benzene and toluene show redness around fluorine atoms and in the ring region, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tólúen er hvarfgjarnara; tríflúormetýlhópurinn er rafeindadrægur."
+        }
+      ]
+    }
+  ]
+}

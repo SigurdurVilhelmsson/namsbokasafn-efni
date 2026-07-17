@@ -1,0 +1,30 @@
+{
+  "nickname": "02-99-OC-AP30",
+  "source_uid": "36142@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver af eftirfarandi sameindum hefur tvískautsvægi? Sýndu væntanlega stefnu hvers og eins.",
+  "questions": [
+    {
+      "id": "351694",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fae4a78a354b4474b6f734270c0b3d842e80b6b5/OChem_02_EC_009a.jpg\" alt=\"The bond-line structure has a benzene ring with a hydroxyl group at C1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351695",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b17fca58e9dd19d2e6e51bf5729d7cc54bf1eb93/OChem_02_EC_009b.jpg\" alt=\"In a benzene ring, both C1 and C2 are bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351696",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17151794cfd4287c63a19945eb941eb2fb8cc8e0/OChem_02_EC_009c.jpg\" alt=\"In a benzene ring, both C1 and C3 are bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351697",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--670333db1402e06eaacdfd11050f9939344b55b0/OChem_02_EC_009d.jpg\" alt=\"In a benzene ring, both C1 and C4 are bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

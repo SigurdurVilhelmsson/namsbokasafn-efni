@@ -1,0 +1,64 @@
+{
+  "nickname": "17-01-OC-P02",
+  "source_uid": "37867@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknið byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "360050",
+      "stem_html": "(<i>Z</i>)-2-Etýl-2-búten-1-ól\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9bf95c1ccda5d8ee151fe4e8bd20ad4cf8c4e00a/OChem_17_EC_201a.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    },
+    {
+      "id": "360051",
+      "stem_html": "3-Sýklóhexen-1-ól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e423d40cde92fe61ed3897b5cdd91a685e0d9937/OChem_17_EC_201b.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    },
+    {
+      "id": "360052",
+      "stem_html": "<i>trans</i>-3-Klórsýklóheptanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95912d6d7c9a07a7ff0ef0de4b35951d9a0830cb/OChem_17_EC_201c.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    },
+    {
+      "id": "360053",
+      "stem_html": "1,4-Pentandíól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86d74779d60d1e58d980b725fd6d5af6e0e8e372/OChem_17_EC_201d.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    },
+    {
+      "id": "360054",
+      "stem_html": "2,6-Dímetýlfenól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b84bbc1bcd20966753573c190509ca622c19e74d/OChem_17_EC_201e.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    },
+    {
+      "id": "360055",
+      "stem_html": "<i>o</i>-(2-Hýdroxýetýl)fenól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87337834af5692d8383b0e857f48f2371b7262f3/OChem_17_EC_201f.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    }
+  ]
+}

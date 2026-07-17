@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP25",
+  "source_uid": "36552@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346045",
+      "stem_html": "Við sáum í dæmi 4-20 að <i>cis</i>-dekalín er óstöðugra en <i>trans</i>-dekalín. Gerðu ráð fyrir að 1,3-öxul-öxul víxlverkanir í <i>cis</i>-dekalíni séu svipaðar og í öxulmetýlsýklóhexani [þ.e. ein CH2↔H víxlverkun kostar 3,8 kJ/mól (0,9 kkal/mól)], og reiknaðu stærð orkumunarins milli <i>cis</i>- og <i>trans</i>-dekalíns.",
+      "collaborator_solutions": []
+    }
+  ]
+}

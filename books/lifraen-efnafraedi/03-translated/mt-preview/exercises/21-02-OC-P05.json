@@ -1,0 +1,46 @@
+{
+  "nickname": "21-02-OC-P05",
+  "source_uid": "38155@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáið fyrir um myndefni eftirfarandi kjarnsækinna asýlskiptihvarfa:",
+  "questions": [
+    {
+      "id": "361360",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67a77869f391810e06c3a3f4c26a0978fc76f340/OChem_21_02_011a.jpg\" alt=\"Methyl acetate reacts with aqueous sodium hydroxide to give an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CO<sub>2</sub><sup>–</sup> Na<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "361361",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f897f2ed7f167a133dc457cc8a2cec92ae84ea99/OChem_21_02_011b.jpg\" alt=\"Acetyl chloride reacts with ammonia to give an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CONH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "361362",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee5f167bd673c2a305f881714153f46daf17ff35/OChem_21_02_011c.jpg\" alt=\"Acetic anhydride reacts with sodium methoxide in methanol to give an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CO<sub>2</sub>CH<sub>3</sub> + CH<sub>3</sub>CO<sub>2</sub><sup>–</sup> Na<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "361363",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b73fafb8c3493104d5b0798d3c9c5ea3767fe1/OChem_21_02_011d.jpg\" alt=\"Methyl ethanethioate reacts with methylamine to give an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CONHCH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

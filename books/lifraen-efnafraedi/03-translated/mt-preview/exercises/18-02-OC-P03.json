@@ -1,0 +1,46 @@
+{
+  "nickname": "18-02-OC-P03",
+  "source_uid": "38699@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú framleiða eftirfarandi etera með Williamson-nýmyndun?",
+  "questions": [
+    {
+      "id": "343664",
+      "stem_html": "Metýlprópýleter",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>O<sup>−</sup> + CH<sub>3</sub>Br"
+        }
+      ]
+    },
+    {
+      "id": "343665",
+      "stem_html": "Anísól (metýlfenýleter)",
+      "collaborator_solutions": [
+        {
+          "content_html": "PhO<sup>−</sup> + CH<sub>3</sub>Br"
+        }
+      ]
+    },
+    {
+      "id": "343666",
+      "stem_html": "Bensýlísóprópýleter",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>2</sub>CHO<sup>−</sup> + PhCH<sub>2</sub>Br"
+        }
+      ]
+    },
+    {
+      "id": "343667",
+      "stem_html": "Etýl 2,2-dímetýlprópýleter",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>3</sub>CCH<sub>2</sub>O<sup>−</sup> + CH<sub>3</sub>CH<sub>2</sub>Br"
+        }
+      ]
+    }
+  ]
+}

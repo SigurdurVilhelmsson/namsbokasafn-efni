@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP20",
+  "source_uid": "38823@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361007",
+      "stem_html": "<p>Þrátt fyrir að 2-tengd 2-sýklópentenón séu í basahvötuðu jafnvægi við 5-tengdar 2-sýklópentenón-hverfur sínar, sést samsvarandi hverfun ekki fyrir 2-tengd 2-sýklóhexenón. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--357a23e798fda94411e38958e7601e349d5d7367/OChem_22_EC_041.jpg\" alt=\"2-Methyl-2-cyclohexen-1-one reacts with base to form 6-Methyl-2-cyclohexen-1-one\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

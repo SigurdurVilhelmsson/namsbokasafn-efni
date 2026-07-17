@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP29",
+  "source_uid": "37861@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359058",
+      "stem_html": "<p>Greindu hvarfefnin sem táknuð eru með bókstöfunum <b>a</b>–<b>e</b> í eftirfarandi skema:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f2704cfd068ddadef410b441b8964020e2b3047/OChem_16_EC_049.jpg\" alt=\"A five-step process converting benzene to a product comprising of a benzene ring with a three carbob chain in which there is a double bond between C 1 and C 2. The steps are labeled from a to e.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

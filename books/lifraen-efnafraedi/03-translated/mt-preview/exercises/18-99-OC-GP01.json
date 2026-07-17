@@ -1,0 +1,30 @@
+{
+  "nickname": "18-99-OC-GP01",
+  "source_uid": "38752@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361290",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a148babbd719d13e5fc4f6a7deac025d2b616a50/OChem_18_EC_044a.jpg\" alt=\"Isobutyl phenyl ether reacts with hydrogen bromide to form an unknown product(s) depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361291",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f010d5898eeffe7a30148d3e8d3b4f33e467b6ef/OChem_18_EC_044b.jpg\" alt=\"1-bromo-4-methylpentane reacts with thiourea, then sodium hydroxide and water to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361292",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e11adb770d5ed732769d0b5ac487d42d56d1f86b/OChem_18_EC_044c.jpg\" alt=\"Cyclopentanethiol reacts in the presence of bromine to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361293",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d1b851530d98d5f9d510d9b1df2419cca615a466/OChem_18_EC_044d.jpg\" alt=\"Cyclohexene with ethanethiol on C 4 reacts with hydrogen peroxide and water, to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

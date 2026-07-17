@@ -1,0 +1,20 @@
+{
+  "nickname": "13-99-OC-AP17",
+  "source_uid": "37511@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasamböndin tvö sem sýnd eru á <sup>1</sup>H NMR-rófunum.",
+  "questions": [
+    {
+      "id": "358396",
+      "stem_html": "<p>C<sub>4</sub>H<sub>9</sub>Br</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a0296c997778afb3d26131a49f10672e36de8a6/OChem_13_EC_012.jpg\" alt=\"The 1 H N M R spectrum of C 4 H 9 B r shows peaks at 0 (T M S), 1 (doublet), 2 (septet), and 3.3 (doublet).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358397",
+      "stem_html": "<p>C<sub>4</sub>H<sub>8</sub>Cl<sub>2</sub></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7159f414a9fde01794480c91fff5727f0715c2ef/OChem_13_EC_013.jpg\" alt=\"1 H N M R spectrum of C 4 H 8 C l 2 shows peaks at 0 (T M S), 1.5 (doublet), 2.1 (quartet), 3.7 (multiplet), and 4.2 (multiplet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-VC04",
+  "source_uid": "38982@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361621",
+      "stem_html": "<p>Hvaða niturfrumeind í eftirfarandi efnasambandi er mest basísk? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--378389381b4c68fdd40553071041c087abf0bad1/OChem_24_EC_017.jpg\" alt=\"A ball-and-stick model of a large molecule with different functional groups. Black, grey, and blue spheres represent carbon, hydrogen, and nitrogen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

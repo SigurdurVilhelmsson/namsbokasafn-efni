@@ -1,0 +1,37 @@
+{
+  "nickname": "05-05-OC-P09",
+  "source_uid": "36501@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Snúðu eftirfarandi teikningum þannig að hópurinn með lægsta forgang snúi aftur og gefðu síðan upp <i>R</i>- eða <i>S</i>-stellingu:",
+  "questions": [
+    {
+      "id": "354097",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0bd08dfa7784d17c6b90909f4c4f33c5276602d8/OChem_05_05_013a.jpg\" alt=\"A central carbon is single bonded to substituents 1 and 3, wedge bonded to 2, and dash bonded to 4 (clockwise).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    },
+    {
+      "id": "354098",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02d02cec386f0446f9f07279b02b1d3a32909908/OChem_05_05_013b.jpg\" alt=\"A central carbon is single bonded to substituents 3 and 4, wedge bonded to 1, and dash bonded to 2 (clockwise).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>R</i>"
+        }
+      ]
+    },
+    {
+      "id": "354099",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--efc345ce9a207b9db47b9a7c2e0fc5e69a7a592a/OChem_05_05_013c.jpg\" alt=\"A central carbon is single bonded to substituents 4 and 2, wedge bonded to 3, and dash bonded to 1 (clockwise).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "06-06-OC-P09",
+  "source_uid": "37300@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "544159",
+      "stem_html": "<p>Spáðu fyrir um myndefni eftirfarandi skautaðs efnahvarfs, sem er skref í sítrónusýruhringnum í efnaskiptum fæðu, með því að túlka flæði rafeinda sem sýnt er með bogadregnum örvum:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9e4297a0f8d85f3e21cf43486ad19a7ba9017ca/OChem_06_06_011.jpg\" alt=\"An incomplete reaction with an unknown product shows water molecule attacking an alkene carbon. The electrons from the double bond deprotonate hydronium.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d5bab6cb0b8fa0e936bb7b5f757cf89d2e61bf9/OChem_06_EC_205.jpg\" alt=\"A reaction shows water, alkene, and hydronium ion reacting to form a product.\">"
+        }
+      ]
+    }
+  ]
+}

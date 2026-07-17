@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP33",
+  "source_uid": "37781@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358706",
+      "stem_html": "<p>Róteinda-NMR-róf efnasambands með formúluna C<sub>6</sub>H<sub>5</sub>NCl<sub>2</sub> er sýnt. Niðurstöður úr venjulegri kolefnis-13 og DEPT-tilraun eru settar fram í töflu. Innrautt róf sýnir toppa við 3432 og 3313 cm<sup>–1</sup> og röð meðalstórra toppa á milli 1618 og 1466 cm<sup>–1</sup>. Teiknaðu byggingu þessa efnasambands.</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th style=\"text-align:left;\"><b>Venjulegt kolefni</b></th>\n<th style=\"text-align:left;\"><b>DEPT-135</b></th>\n<th style=\"text-align:left;\"><b>DEPT-90</b></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left;\">118,0 ppm</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">119,5</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">128,0</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">140,0</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n</tbody>\n</table>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca9da1e95b1e62d10237b2fd4097181095d9dfd4/OChem_15_EC_025.jpg\" alt=\"The 1 H N M R spectrum of C 6 H 5 N C l 2 shows peaks in parts per million at 4.4 (broad), 6.6 (triplet), and 7.3 (doublet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nickname": "10-08-OC-P12",
+  "source_uid": "37258@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðaðu báðum settum efnasambanda í röð eftir vaxandi oxunarstigi:",
+  "questions": [
+    {
+      "id": "360040",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b1b8cf85fca535f56318d890d26387f8c217c28/OChem_10_08_006a.jpg\" alt=\"Chemical structures of cyclohexane, benzene, cyclohexanone, and 1-chloro-1-cyclohexene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea6cdffc68f7b90cf908fb554ea41e51a250afe9/OChem_10_EC_203a.jpg\" alt=\"Four compounds arranged in order of increasing oxidation level: cyclohexane is lowest, cyclohexanone and 1-chloro-1-cyclohexene are equal and intermediate, and benzene is highest. \">"
+        }
+      ]
+    },
+    {
+      "id": "360041",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d90ae402d41c14e09e12856a97826ef7cc7484d/OChem_10_08_006b.jpg\" alt=\"Chemical strutures of acetonitrile, ethylamine, and ethylenediamine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3031426709927f5d3ff438f0bf6dad08dd8cabac/OChem_10_EC_203b.jpg\" alt=\"Three compounds arranged in order of increasing oxidation level: ethylamine is lowest, ethylenediamine intermediate, and acetonitrile is highest. \">"
+        }
+      ]
+    }
+  ]
+}

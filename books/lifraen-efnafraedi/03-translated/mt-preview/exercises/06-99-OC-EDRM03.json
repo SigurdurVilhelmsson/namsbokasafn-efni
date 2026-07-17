@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-EDRM03",
+  "source_uid": "37314@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336375",
+      "stem_html": "Teiknaðu orkurit fyrir tveggja skrefa efnahvarf með <i>K</i><sub>eq</sub> > 1. Merktu heildar-Δ<i>G</i>°, virkniástönd og milliefni. Er Δ<i>G</i>° jákvætt eða neikvætt?",
+      "collaborator_solutions": []
+    }
+  ]
+}

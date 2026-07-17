@@ -1,0 +1,30 @@
+{
+  "nickname": "05-99-OC-AP24",
+  "source_uid": "36587@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Ríbósi, sem er ómissandi hluti ríbósakjarnsýru (RNA), hefur eftirfarandi byggingu:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7baa5ec84946d13f8d3fca95f06919cd220a430b/OChem_05_EC_018.jpg\" alt=\"Acyclic wedge-dash structure of ribose.\">",
+  "questions": [
+    {
+      "id": "357211",
+      "stem_html": "Hversu margar hendnimiðjur hefur ríbósi? Tilgreindu þær.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357212",
+      "stem_html": "Hversu margar rúmhverfur af ríbósa eru til?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357213",
+      "stem_html": "Teiknaðu byggingu handhverfu ríbósa.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357214",
+      "stem_html": "Teiknaðu byggingu víxlhverfu ríbósa.",
+      "collaborator_solutions": []
+    }
+  ]
+}

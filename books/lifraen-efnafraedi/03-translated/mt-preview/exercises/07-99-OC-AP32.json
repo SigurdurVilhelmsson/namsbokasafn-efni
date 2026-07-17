@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP32",
+  "source_uid": "36684@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354490",
+      "stem_html": "<p><i>tert</i>-bútýlesterum [RCO<sub>2</sub>C(CH<sub>3</sub>)<sub>3</sub>] er breytt í karboxýlsýrur (RCO<sub>2</sub>H) með efnahvarfi við tríflúorediksýru, efnahvarf sem er gagnlegt við próteinmyndun <b>(kafli 26.7)</b>. Úthlutaðu <i>E,Z</i>-tilnefningu á tvítengi bæði hvarfefnis og myndefnis í eftirfarandi skema og útskýrðu hvers vegna sýnileg breyting verður á staðefnafræði tvítengis:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75e88214e1d339b19a2eb29b019299a19dcaf789/OChem_07_EC_033.jpg\" alt=\"The figure shows tertiary-butyl ester reacts with trifluoroacetic acid to form a carboxylic acid and an alkene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

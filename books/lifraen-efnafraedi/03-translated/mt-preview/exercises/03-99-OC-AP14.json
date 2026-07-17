@@ -1,0 +1,40 @@
+{
+  "nickname": "03-99-OC-AP14",
+  "source_uid": "36451@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið byggingarformúlur fyrir eftirfarandi:",
+  "questions": [
+    {
+      "id": "327939",
+      "stem_html": "2-Metýlheptan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327940",
+      "stem_html": "4-Etýl-2,2-dímetýlhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327941",
+      "stem_html": "4-Etýl-3,4-dímetýloktan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327942",
+      "stem_html": "2,4,4-Trímetýlheptan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327943",
+      "stem_html": "3,3-Díetýl-2,5-dímetýlnónan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327944",
+      "stem_html": "4-Ísóprópýl-3-metýlheptan",
+      "collaborator_solutions": []
+    }
+  ]
+}

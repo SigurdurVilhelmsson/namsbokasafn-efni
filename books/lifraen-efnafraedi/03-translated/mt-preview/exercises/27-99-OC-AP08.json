@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP08",
+  "source_uid": "38856@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "374676",
+      "stem_html": "<p><i>Kardíólípín</i> eru hópur lípíða sem finnast í hjartavöðvum. Hvaða myndefni myndu myndast ef öll estertengi, þar með talin fosföt, væru sápunargerð með vatnslausn af NaOH?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBiIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70ba02d67df1dc246456a5cd265164a0b8cea66a/OChem_27_EC_010.jpg\" alt=\"The structure of a cardiolipin. It comprises several ester molecules with two phosphate groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

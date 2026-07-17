@@ -1,0 +1,19 @@
+{
+  "nickname": "20-02-OC-P03",
+  "source_uid": "38083@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341934",
+      "stem_html": "Gefðu þér að þú hafir efnablöndu af naftaleni og bensósýru sem þú vilt aðskilja. Hvernig gætirðu nýtt þér sýrustig annars efnisins í efnablöndunni til að framkvæma aðskilnað?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Leystu efnablönduna upp í eter, þeyttu með vatnslausn af NaOH, aðskildu og sýrðu vatnslagið og þeyttu með eter."
+        }
+      ]
+    }
+  ]
+}

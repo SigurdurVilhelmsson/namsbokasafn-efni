@@ -1,0 +1,25 @@
+{
+  "nickname": "12-99-OC-AP13",
+  "source_uid": "37439@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða brotum gætir þú búist við í massarófum eftirfarandi efnasambanda?",
+  "questions": [
+    {
+      "id": "352785",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69234e3db05ab99c8c0f031478599a38a8ba26b8/OChem_12_EC_004a.jpg\" alt=\"A chemical structure of 1-phenylbutan-1-one\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352786",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0b3a8703970e3dc0e5edf0c22e628f7d894ccd3/OChem_12_EC_004b.jpg\" alt=\"A chemical structure of 1-ethylcyclohexan-1-ol\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352787",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad570eeba7db2434c2a6808a9a58f6df9a2f2139/OChem_12_EC_004c.jpg\" alt=\"A chemical structure of N-cyclopentyl-N-methylamine\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

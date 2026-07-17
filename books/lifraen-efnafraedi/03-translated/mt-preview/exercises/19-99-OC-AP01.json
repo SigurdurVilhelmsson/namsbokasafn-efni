@@ -1,0 +1,60 @@
+{
+  "nickname": "19-99-OC-AP01",
+  "source_uid": "38047@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi nöfnum:",
+  "questions": [
+    {
+      "id": "341528",
+      "stem_html": "Brómasetón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341529",
+      "stem_html": "(<i>S</i>)-2-Hýdroxýprópanal",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341530",
+      "stem_html": "2-Metýl-3-heptanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341531",
+      "stem_html": "(2<i>S</i>,3<i>R</i>)-2,3,4-Tríhýdroxýbútanal",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341532",
+      "stem_html": "2,2,4,4-Tetrametýl-3-pentanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341533",
+      "stem_html": "4-Metýl-3-penten-2-ón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341534",
+      "stem_html": "Bútandíal",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341535",
+      "stem_html": "3-Fenýl-2-própenal",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341536",
+      "stem_html": "6,6-Dímetýl-2,4-sýklóhexadíenón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341537",
+      "stem_html": "<i>p</i>-Nítróasetófenón",
+      "collaborator_solutions": []
+    }
+  ]
+}

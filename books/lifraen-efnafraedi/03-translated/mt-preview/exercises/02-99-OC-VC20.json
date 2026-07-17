@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-VC20",
+  "source_uid": "36132@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351408",
+      "stem_html": "<p>Fylltu inn í margföldu tengin í eftirfarandi líkani af naftaleni, C<sub>10</sub>H<sub>8</sub> (svart = C, grátt = H). Hversu margar vok myndir hefur naftalen? Teiknaðu þær.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--008f84e9d47a586dd22e170bc6aaca9b621f7b96/OChem_02_EC_001.jpg\" alt=\"The ball and stick model of naphthalene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

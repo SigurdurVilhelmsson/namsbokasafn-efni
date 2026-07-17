@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-MP12",
+  "source_uid": "37901@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Fenól hafa yfirleitt lægri p<i>K</i><sub>a</sub> gildi en alkóhól vegna stöðgunar með vokmyndum með arómatíska hringnum. Teiknaðu alla þátttakendur í vokmyndum fyrir eftirfarandi fenólatjónir.",
+  "questions": [
+    {
+      "id": "359469",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5dc50b34048d2e2a4731f963dfcb2fa28b4028d7/OChem_17_EC_029a.jpg\" alt=\"Chemical structure of 4-methylphenoxide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359470",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--47f730fb5e354fa7cef20220a237a6a86ff1e232/OChem_17_EC_029b.jpg\" alt=\"Chemical structure of 4-cyanophenoxide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359471",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76b32cd9321d846d3981d8bbfc5c2e0363ab926d/OChem_17_EC_029c.jpg\" alt=\"Chemical structure of 3-methoxyphenoxide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

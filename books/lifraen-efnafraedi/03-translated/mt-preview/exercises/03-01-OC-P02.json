@@ -1,0 +1,64 @@
+{
+  "nickname": "03-01-OC-P02",
+  "source_uid": "36418@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Settu fram byggingar fyrir einfaldar sameindir sem innihalda eftirfarandi virknihópa:",
+  "questions": [
+    {
+      "id": "357587",
+      "stem_html": "Alkóhól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abb2b2acccfd754abe841442b21cb103a697a1e3/OChem_03_EC_201a.jpg\" alt=\"The chemical structure of methanol that has an alcohol functional group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357588",
+      "stem_html": "Arómatískur hringur",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b25d3ff1e978d54d8074c37867acbbed1cdf0ba/OChem_03_EC_201b.jpg\" alt=\"The chemical structure of toluene that has an aromatic ring functional group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357589",
+      "stem_html": "Karboxýlsýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1405cc0211a5ce0c605cc35a8ffd2d05c3657dbc/OChem_03_EC_201c.jpg\" alt=\"The chemical structure of acetic acid that has a carboxylic acid functional group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357590",
+      "stem_html": "Amín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69a4aa6ec7bba3f6637dbbd08561f85c7d1ba75b/OChem_03_EC_201d.jpg\" alt=\"The chemical structure of methylamine that has an amine functional group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357591",
+      "stem_html": "Bæði ketón og amín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebeee4876938eef749267531fdfe2237c27e67e7/OChem_03_EC_201e.jpg\" alt=\"The chemical structure of methyl acetamide that has a carbonyl and an amino functional group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357592",
+      "stem_html": "Tvö tvítengi",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c891c1fcb613250c31dbccb754cce2a62396eddf/OChem_03_EC_201f.jpg\" alt=\"The chemical structure of 1,3-butadiene that has two double bonds functional group.\">"
+        }
+      ]
+    }
+  ]
+}

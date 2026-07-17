@@ -1,0 +1,19 @@
+{
+  "nickname": "05-06-OC-P15",
+  "source_uid": "36507@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354116",
+      "stem_html": "<p>Gefðu upp <i>R</i>- eða <i>S</i>-stellingu fyrir hverja hendnimiðju í eftirfarandi sameindalíkani af amínósýrunni ísóleucíni (blátt = N):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--738ddb8e61a537e6480c5d2efafaebe3bdb358f3/OChem_05_06_005.jpg\" alt=\"The ball-and-stick model of isoleucine where gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>,<i>S</i>"
+        }
+      ]
+    }
+  ]
+}

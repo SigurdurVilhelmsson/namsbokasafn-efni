@@ -1,0 +1,37 @@
+{
+  "nickname": "24-06-OC-P11",
+  "source_uid": "38964@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig mætti búa til eftirfarandi amín með afoxandi amíneringarhvarfi? Sýndu alla forvera ef fleiri en einn er mögulegur.",
+  "questions": [
+    {
+      "id": "361581",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87c091bf53240cd4a951ad745df627b227b31f2f/OChem_24_06_014a.jpg\" alt=\"The structure of N-ethylpropan-2-amine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlamín + asetón, eða ísóprópýlamín + asetaldehýð"
+        }
+      ]
+    },
+    {
+      "id": "361582",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ef443ef900e89723466643a73df202f642d5e5b/OChem_24_06_014b.jpg\" alt=\"The structure of N-ethylaniline.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Anilín + asetaldehýð"
+        }
+      ]
+    },
+    {
+      "id": "361583",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cf8b25e8baf1168c09ddaf4baf559d4f16bf2f94/OChem_24_06_014c.jpg\" alt=\"The structure of N-methylcyclopentanamine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklópentýlamín + formaldehýð, eða metýlamín + sýklópentanón"
+        }
+      ]
+    }
+  ]
+}

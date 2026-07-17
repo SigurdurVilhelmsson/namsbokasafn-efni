@@ -1,0 +1,19 @@
+{
+  "nickname": "16-04-OC-P10",
+  "source_uid": "37798@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358922",
+      "stem_html": "<p>Notaðu mynd 16.12 til að útskýra hvers vegna Friedel–Crafts-alkýleringar gefa oft fjölskiptihvörf en Friedel–Crafts-asýleringar ekki.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce85304ec73cbee5d24693737daedc5306bc1761/OChem_16_04_009.jpg\" alt=\"Benzene reacts with methyl chloride in the presence of aluminum trichloride to form mono and para disubstituted products. Benzene reacts with acetyl chloride in the presence of aluminum trichloride to form only one product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Alkýlbensen eru hvarfgjarnari en bensen sjálft, en asýlbensen eru minna hvarfgjörn."
+        }
+      ]
+    }
+  ]
+}

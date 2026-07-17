@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP17",
+  "source_uid": "38923@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359870",
+      "stem_html": "<p>Eftirfarandi efnahvarf felur í sér innansameinda aldól-efnahvarf og síðan <i>retro</i> aldól-líkt efnahvarf. Skrifaðu bæði skrefin og sýndu hvarfgang þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1eaaef4fae17ee64a1a486572490f1c4a0af4565/OChem_23_EC_030.jpg\" alt=\"The intramolecular aldol reaction shows ethyl-2-oxo-1-(4-oxopentyl)cyclopentanecarboxylate with sodium ethoxide in ethanol, forming a cyclic nine-carbon chain compound with attached substituents.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

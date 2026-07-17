@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-MP02",
+  "source_uid": "39316@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358143",
+      "stem_html": "<p>Annað skref í pentósafosfatferlinu við niðurbrot sykra (sjá dæmi 29-21) er umbreyting ríbósa-5-fosfats í glýseraldehýð-3-fosfat. Hvers konar lífrænt ferli er að eiga sér stað? Leggðu til hvarfgang fyrir umbreytinguna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f21c5d3a5d100ca4597617c9e9bb5b8088f9a82/OChem_29_EC_006.jpg\" alt=\"Ribose-5-phosphate reacts to form glyceraldehyde-3-phosphate and an aldehyde connected to a methylene linked to a phosphate group. Both structures are presented in Fischer projection.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP37",
+  "source_uid": "37938@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359567",
+      "stem_html": "<p>Galaktósi, sem er hluti af tvísykrunni laktósa sem finnst í mjólkurvörum, umbrotnar eftir ferli sem felur í sér ísómerun UDP-galaktósa í UDP-glúkósa, þar sem UDP = úridýlýl tvífosfat. Ensímið sem sér um umbreytinguna notar NAD<sup>+</sup> sem hjálparþátt. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6485b3fa9769f510d16872d65c445a04b7a05565/OChem_17_EC_053.jpg\" alt=\"The compound, U D P-galactose isomerizes to form U D P-glucose.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

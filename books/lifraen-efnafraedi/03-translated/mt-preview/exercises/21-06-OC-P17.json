@@ -1,0 +1,19 @@
+{
+  "nickname": "21-06-OC-P17",
+  "source_uid": "38167@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361381",
+      "stem_html": "<p>Hvaða myndefni myndir þú búast við úr efnahvarfi bútýrólaktóns við LiAlH<sub>4</sub>? Við DIBAH?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--77acaacccfe496b98193d8011e84aa0c403d8c99/OChem_21_06_014.jpg\" alt=\"The structure of butyrolactone comprises of a five-membered ring with one oxygen and four carbon atoms. The carbon adjacent to oxygen is a carbonyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "LiAlH<sub>4</sub> gefur HOCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>OH; DIBAH gefur HOCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CHO."
+        }
+      ]
+    }
+  ]
+}

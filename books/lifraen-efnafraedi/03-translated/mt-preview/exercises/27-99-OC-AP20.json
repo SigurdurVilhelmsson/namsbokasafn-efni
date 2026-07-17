@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP20",
+  "source_uid": "38868@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358233",
+      "stem_html": "<p>Teiknaðu stöðugustu stólstellingu mentóls og merktu hvern hliðarhóp sem áslægan eða miðlægan.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3416eac587eea9b098d8cf53c522c9b45e1194a4/OChem_27_EC_015.jpg\" alt=\"The structure of menthol. It is a cyclohexane with dashed hydroxyl at C 1, a wedged isopropyl at C2, and a dashed methyl at C5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

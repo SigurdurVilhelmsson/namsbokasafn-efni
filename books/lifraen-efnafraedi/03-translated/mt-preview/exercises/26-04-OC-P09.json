@@ -1,0 +1,19 @@
+{
+  "nickname": "26-04-OC-P09",
+  "source_uid": "39220@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359587",
+      "stem_html": "Teiknaðu byggingu M-P-V-G og sýndu amíðtengi þess.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03204916976d252a783392bde392868f3f77c04c/OChem_26_EC_204.jpg\" alt=\"The structure of M P V G.  A tetrapeptide, starting at the N-terminus  containing a methionine,  a proline, a valine, and a  glycine,\">"
+        }
+      ]
+    }
+  ]
+}

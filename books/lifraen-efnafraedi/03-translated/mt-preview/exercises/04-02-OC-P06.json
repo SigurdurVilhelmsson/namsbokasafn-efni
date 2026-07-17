@@ -1,0 +1,19 @@
+{
+  "nickname": "04-02-OC-P06",
+  "source_uid": "36477@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357218",
+      "stem_html": "<p>Prostaglandín F<sub>2<i>α</i></sub>, hormón sem veldur samdrætti í legi við fæðingu, hefur eftirfarandi byggingu. Eru hýdroxýlhóparnir tveir (–OH) á sýklópentanhringnum cis eða trans hvor við annan? Hvað með kolefniskeðjurnar tvær sem eru festar við hringinn?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0ce366a30e69f62d88a192ca7ca6038f2b434c4/OChem_04_02_007.jpg\" alt=\"The wedge-dash structure of Prostaglandin F 2 alpha.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hýdroxýlhóparnir tveir eru cis. Hliðarkeðjurnar tvær eru trans."
+        }
+      ]
+    }
+  ]
+}

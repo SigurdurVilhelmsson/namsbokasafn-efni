@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-EDRM04",
+  "source_uid": "37315@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336377",
+      "stem_html": "Teiknaðu orkurit fyrir tveggja skrefa útvergið efnahvarf þar sem annað skrefið er hraðara en það fyrsta.",
+      "collaborator_solutions": []
+    }
+  ]
+}

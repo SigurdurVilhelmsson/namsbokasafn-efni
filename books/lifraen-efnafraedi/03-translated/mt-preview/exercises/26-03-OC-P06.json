@@ -1,0 +1,46 @@
+{
+  "nickname": "26-03-OC-P06",
+  "source_uid": "39217@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða alkýlhalíð myndir þú nota til að búa til eftirfarandi <i>α</i>-amínósýrur með amídómalónataðferðinni?",
+  "questions": [
+    {
+      "id": "359580",
+      "stem_html": "Leucín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03292165888f2729a0a884a81c787160c90570a0/OChem_26_EC_202a.jpg\" alt=\"The structure of a linear three-carbon alkyl bromide, with bromine attached at C 1 and a methyl group at C 3.\">"
+        }
+      ]
+    },
+    {
+      "id": "359581",
+      "stem_html": "Histidín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5979ba53df01ed49c2f369ca237c0dec2036462/OChem_26_EC_202b.jpg\" alt=\"The structure of an imidazole, with an N-H group at C 1, nitrogen at C 3,  and a bromomethyl group at C 5.\">"
+        }
+      ]
+    },
+    {
+      "id": "359582",
+      "stem_html": "Tryptófan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba41ee67d8bcfb6a68026a4bef7e762be6a460e1/OChem_26_EC_202c.jpg\" alt=\"The structure of an indole comprises a benzene ring fused to a cyclopentene, with an N-H group at C 1,  and a bromomethyl group at C 3.\">"
+        }
+      ]
+    },
+    {
+      "id": "359583",
+      "stem_html": "Metíónín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8b2c5903c17d235f089475f9ef6ee41257c8706/OChem_26_EC_202d.jpg\" alt=\"The structure of a methyl bromoethyl thioether, with a bromoethyl and methyl groups.\">"
+        }
+      ]
+    }
+  ]
+}

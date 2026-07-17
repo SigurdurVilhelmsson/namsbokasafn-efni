@@ -1,0 +1,19 @@
+{
+  "nickname": "14-03-OC-P06",
+  "source_uid": "37642@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338840",
+      "stem_html": "Af hverju heldurðu að 1,4-álagningarefni 1,3-bútadíens séu almennt stöðugri en 1,2-álagningarefni?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tvítengið er meira skipt."
+        }
+      ]
+    }
+  ]
+}

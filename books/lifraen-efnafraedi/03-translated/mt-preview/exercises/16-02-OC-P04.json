@@ -1,0 +1,19 @@
+{
+  "nickname": "16-02-OC-P04",
+  "source_uid": "37791@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "339343",
+      "stem_html": "Þegar bensen er meðhöndlað með D<sub>2</sub>SO<sub>4</sub> kemur tvívetni hægt og rólega í stað allra sex vetnisatómanna í arómatíska hringnum. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "D<sup>+</sup> framkvæmir rafsækin skiptihvörf á hringnum."
+        }
+      ]
+    }
+  ]
+}

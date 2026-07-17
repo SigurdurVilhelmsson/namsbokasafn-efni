@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-MP03",
+  "source_uid": "38909@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og sýndu hvarfgangana fyrir eftirfarandi efnahvörf.",
+  "questions": [
+    {
+      "id": "359837",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--852395e0d46ef8745415462e1428a6e7af59fea4/OChem_23_EC_016a.jpg\" alt=\"A seven-carbon chain with ethyl esters on terminal carbons and methyl on C 4 reacts with sodium ethoxide, then hydronium to form an unknown product.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359838",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fdf6c33c0c9174874336b4740a4d9fd05517e9b9/OChem_23_EC_016d.jpg\" alt=\"Benzene with C H 2 C O O C H 3 reacts with sodium methoxide, then hydronium ion to form an unknown product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

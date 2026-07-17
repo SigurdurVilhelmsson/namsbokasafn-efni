@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP10",
+  "source_uid": "39379@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355098",
+      "stem_html": "<p>Tvö hringhvarf í röð eiga sér stað í eftirfarandi fúranmyndun. Greinið þau og stingið upp á hvarfgangi fyrir ummyndunina.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d764383ef47c03d3c6b24a07b7c395f41e85aad/OChem_30_EC_015.jpg\" alt=\"Isoxazole bonded with phenyl reacts with alkyne linked to methyl and aldehyde in heat to form furan bonded with methyl and aldehyde groups at C 4 and C 5, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

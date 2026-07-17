@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP36",
+  "source_uid": "39109@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358844",
+      "stem_html": "<p>Asetýl kóensím A (asetýl CoA) er lykilmilliefni í fæðuefnaskiptum. Hvaða sykra er í asetýl CoA?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96a08a1dac9dc53b73ff72f50506f2fbcc051a97/OChem_25_EC_021.jpg\" alt=\"The structure of the acetyl CoA consists of two parts: the acetyl group and CoA. CoA  is a beta mercaptoethylamine, pantothenic acid, phosphate  linked adenosine diphosphate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

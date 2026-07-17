@@ -1,0 +1,19 @@
+{
+  "nickname": "26-03-OC-P07",
+  "source_uid": "39218@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360847",
+      "stem_html": "<p>Sýndu hvernig þú gætir búið til eftirfarandi amínósýru með sérhverfni:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed3eca23d1d23a35d2d21b7ca89d38996ba689d0/OChem_26_03_006.jpg\" alt=\"A ball-and-stick model of a five-carbon compound with a carboxylate anion at C 1, an amine at C 2, and a methyl group at C 4 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5108e48e38be2b055b8718bdbfa49f7bf7c960ec/OSX_OrgChem_26_DD_A-Show_img.jpg\" alt=\"Ethene with H (up) and isopropyl on left, and carboxyl (up) and N with acetyl on right reacts with hydrogen and rhodium catalyst, then aqueous hydroxide, forming (2S)-2-amino-4-methylpentanoic acid.\">"
+        }
+      ]
+    }
+  ]
+}

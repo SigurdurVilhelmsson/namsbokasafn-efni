@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP10",
+  "source_uid": "37527@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338235",
+      "stem_html": "<p>Leggið til byggingarformúlu fyrir efnasamband <b>C</b>, sem hefur M<sup>+</sup> = 86 í massarófi sínu, IR-gleypni við 3400 cm<sup>–1</sup> og eftirfarandi <sup>13</sup>C NMR-rófgögn:</p>\n<p><b>Efnasamband C</b></p>\n<ul style=\"list-style-type:none\">\n<li>Breiðbandsafþreytt <sup>13</sup>C NMR: 30,2, 31,9, 61,8, 114,7, 138,4 <i>δ</i></li>\n<li>DEPT-90: 138,4 <i>δ</i></li>\n<li>DEPT-135: jákvæður toppur við 138,4 <i>δ</i>; neikvæðir toppar við 30,2, 31,9, 61,8, 114,7 <i>δ</i></li>\n</ul>",
+      "collaborator_solutions": []
+    }
+  ]
+}

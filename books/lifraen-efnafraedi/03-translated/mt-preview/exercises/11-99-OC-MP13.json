@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP13",
+  "source_uid": "37378@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355336",
+      "stem_html": "<p>S<sub>N</sub>2-efnahvörf eiga sér stað með umhverfingu á stillingu og S<sub>N</sub>1-efnahvörf eiga sér stað með rasemeringu. Eftirfarandi skiptihvarf á sér hins vegar stað með fullkominni <i>varðveislu</i> á stillingu. Stingdu upp á hvarfgangi. (Vísbending: tvær umhverfingar = varðveisla.)</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e47856c24e0bdbb5ab05c5d59eb66bf8e833f87f/OChem_11_EC_022.jpg\" alt=\"The reaction of (R)-2-bromopropanoic acid first with one percent sodium hydroxide and water, and then with hydronium ion, forms (R)-2-hydroxypropanoic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

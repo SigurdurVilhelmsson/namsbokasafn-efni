@@ -1,0 +1,19 @@
+{
+  "nickname": "30-04-OC-P04",
+  "source_uid": "39354@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349620",
+      "stem_html": "Hvaða myndefni myndir þú búast við að fá úr ljóshvataðri hringlokun (2<i>E</i>,4<i>Z</i>,6<i>E</i>)-2,4,6-oktatríens? Úr (2<i>E</i>,4<i>Z</i>,6<i>Z</i>)-2,4,6-oktatríeni?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-5,6-dímetýl-1,3-sýklóhexadíen; <i>cis</i>-5,6-dímetýl-1,3-sýklóhexadíen"
+        }
+      ]
+    }
+  ]
+}

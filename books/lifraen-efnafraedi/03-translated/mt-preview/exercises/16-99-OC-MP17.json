@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP17",
+  "source_uid": "37831@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358981",
+      "stem_html": "<p>Leggið til hvarfgang fyrir <i>Smiles-umröðunina</i> hér að neðan.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8653a2187c83ba37a53ab523bf5e7e3d9011596c/OChem_16_EC_031.jpg\" alt=\"When heated, pyridine with a nitro group at C 2 and, at C 5, an oxygen bonded to ethylamine reacts to form a product where the substituent at C 5 rearranges.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-VC02",
+  "source_uid": "36515@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351098",
+      "stem_html": "<p>Nefndu eftirfarandi efnasamband, tilgreindu hvort hver skiptihópur sé áslægur eða miðlægur og segðu til um hvort stellingin sem sýnd er sé stöðugri eða óstöðugri stólastellingin (grænt = Cl):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4496a8f6c74db1f7b913572c1333fb3175e47b68/OChem_04_EC_002.jpg\" alt=\"The ball and stick model of substituted cyclohexane, represented by its chair conformation. C1 is bonded to an equatorial  chlorine atom (green sphere). C3 is bonded to an axial methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

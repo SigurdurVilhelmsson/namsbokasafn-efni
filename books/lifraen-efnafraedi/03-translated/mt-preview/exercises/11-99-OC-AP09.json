@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP09",
+  "source_uid": "37388@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sjáið fyrir ykkur myndefnið og gefið upp handhverfufræðina sem verður til við efnahvarf hvers eftirfarandi kjarnsækis við (<i>R</i>)-2-brómoktan:",
+  "questions": [
+    {
+      "id": "337110",
+      "stem_html": "<sup>–</sup>CN",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337111",
+      "stem_html": "CH<sub>3</sub>CO<sub>2</sub><sup>–</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337112",
+      "stem_html": "CH<sub>3</sub>S<sup>–</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

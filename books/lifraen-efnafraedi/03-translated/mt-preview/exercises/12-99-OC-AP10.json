@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP10",
+  "source_uid": "37436@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem passa við eftirfarandi gögn:",
+  "questions": [
+    {
+      "id": "337626",
+      "stem_html": "Keton með M<sup>+</sup> = 86 og brot við <i>m/z</i> = 71 og <i>m/z</i> = 43",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337627",
+      "stem_html": "Alkóhól með M<sup>+</sup> = 88 og brot við <i>m/z</i> = 73, <i>m/z</i> = 70 og <i>m/z</i> = 59",
+      "collaborator_solutions": []
+    }
+  ]
+}

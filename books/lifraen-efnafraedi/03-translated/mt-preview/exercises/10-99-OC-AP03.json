@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP03",
+  "source_uid": "37266@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu og nefndu allar einklórunarafurðir sem þú gætir fengið úr stakeindaklórun eftirfarandi efnasambanda. Hverjar afurðanna eru óhendnar? Eru einhverjar afurðanna ljósvirkar?",
+  "questions": [
+    {
+      "id": "333428",
+      "stem_html": "2-metýlbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333429",
+      "stem_html": "metýlsýklóprópan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333430",
+      "stem_html": "2,2-dímetýlpentan",
+      "collaborator_solutions": []
+    }
+  ]
+}

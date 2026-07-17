@@ -1,0 +1,25 @@
+{
+  "nickname": "08-99-OC-AP26",
+  "source_uid": "37184@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p><i>α</i>-terpínen, C<sub>10</sub>H<sub>16</sub>, er ilmgott kolvetni sem hefur verið einangrað úr marjoramolíu. Við vetnun yfir palladíumhvata hvarfast <i>α</i>-terpínen við 2 mólígildi af H<sub>2</sub> og gefur kolvetni, C<sub>10</sub>H<sub>20</sub>. Við ósonrof, fylgt eftir með afoxun með sinki og ediksýru, gefur <i>α</i>-terpínen tvö myndefni, glýoxal og 6-metýl-2,5-heptandíón.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a283ab2d98b9726e6ecab514a3dfe1c8bdb9da61/OChem_08_EC_048.jpg\" alt=\"The structures of glyoxal and 6-methyl-2,5-heptanedione.\">",
+  "questions": [
+    {
+      "id": "357286",
+      "stem_html": "Hversu margar ómettunarstig hefur <i>α</i>-terpínen?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357287",
+      "stem_html": "Hversu mörg tvítengi og hversu marga hringi hefur það?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357288",
+      "stem_html": "Stingdu upp á byggingu fyrir <i>α</i>-terpínen.",
+      "collaborator_solutions": []
+    }
+  ]
+}

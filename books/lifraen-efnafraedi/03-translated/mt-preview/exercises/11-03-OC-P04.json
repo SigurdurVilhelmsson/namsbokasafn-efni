@@ -1,0 +1,46 @@
+{
+  "nickname": "11-03-OC-P04",
+  "source_uid": "37345@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr S<sub>N</sub>2-efnahvarfi 1-brómbútans við hvert eftirfarandi efna?",
+  "questions": [
+    {
+      "id": "346514",
+      "stem_html": "NaI",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-joðbútan"
+        }
+      ]
+    },
+    {
+      "id": "346515",
+      "stem_html": "KOH",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-bútanól"
+        }
+      ]
+    },
+    {
+      "id": "346516",
+      "stem_html": "H−C<span data-math=\"\\text{≡}\"></span>C−Li",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-hexýn"
+        }
+      ]
+    },
+    {
+      "id": "346517",
+      "stem_html": "NH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bútýlammoníumbrómíð"
+        }
+      ]
+    }
+  ]
+}

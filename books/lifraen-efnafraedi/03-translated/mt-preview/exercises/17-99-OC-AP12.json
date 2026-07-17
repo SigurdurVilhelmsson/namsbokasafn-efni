@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-AP12",
+  "source_uid": "37913@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd úr 1-fenýletanóli: Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "340817",
+      "stem_html": "Asetófenón (PhCOCH<sub>3</sub>)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340818",
+      "stem_html": "Bensýlalkóhól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340819",
+      "stem_html": "<i>m</i>-Brómbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340820",
+      "stem_html": "2-Fenýl-2-própanól",
+      "collaborator_solutions": []
+    }
+  ]
+}

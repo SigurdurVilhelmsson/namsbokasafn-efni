@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-MP01",
+  "source_uid": "36645@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spyrðu fyrir um aðalmyndefnið og sýndu allan hvarfganginn fyrir hvert eftirfarandi rafsækið álagningarefnahvarf.",
+  "questions": [
+    {
+      "id": "448136",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17bebfcafc2f0449e3d19b9c37ddd397a52f6c18/OChem_07_EC_006a.jpg\" alt=\"An incomplete reaction shows vinylcyclohexane reacting with hydrogen chloride to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "448137",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d344a6046d8aaa0b09dfcf9cee2f03216b6a9ce3/OChem_07_EC_006b.jpg\" alt=\"An incomplete reaction shows 4-methyl-1-pentene reacting with hydrogen bromide to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "448138",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2bf20dacbd7f143dc580ef3c7c728ba35cd7702a/OChem_07_EC_006c.jpg\" alt=\"An incomplete reaction shows 1-methylcyclopentene reacting with K I and phosphoric acid to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

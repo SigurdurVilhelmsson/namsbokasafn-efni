@@ -1,0 +1,19 @@
+{
+  "nickname": "20-06-OC-P11",
+  "source_uid": "38091@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359106",
+      "stem_html": "<p>Hvernig gætir þú búið til 2-fenýletanól úr bensýlbrómíði? Fleiri en eitt skref þarf.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38eff5aeb3d9b9f02252ad8971916ab9d80ec30a/OChem_20_06_002.jpg\" alt=\"Benzyl bromide reacts with unknown reagent(s) depicted by question mark to produce 2-phenylethanol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. NaCN; 2. H<sub>3</sub>O<sup>+</sup>; 3. LiAlH<sub>4</sub>"
+        }
+      ]
+    }
+  ]
+}

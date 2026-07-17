@@ -1,0 +1,46 @@
+{
+  "nickname": "24-06-OC-P08",
+  "source_uid": "38961@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Settu fram byggingar fyrir annaðhvort nítríl eða amíð sem gæti verið forveri hvers eftirfarandi amína:",
+  "questions": [
+    {
+      "id": "347514",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Própannítríl eða própanamíð"
+        }
+      ]
+    },
+    {
+      "id": "347515",
+      "stem_html": "(CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>)<sub>2</sub>NH",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>N</i>-Própýlprópanamíð"
+        }
+      ]
+    },
+    {
+      "id": "347516",
+      "stem_html": "Bensýlamín, C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>NH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensónítríl eða bensamíð"
+        }
+      ]
+    },
+    {
+      "id": "347517",
+      "stem_html": "<i>N</i>-Etýlanilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>N</i>-Fenýlasetamíð"
+        }
+      ]
+    }
+  ]
+}

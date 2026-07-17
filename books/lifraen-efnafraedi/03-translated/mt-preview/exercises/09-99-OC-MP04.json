@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-MP04",
+  "source_uid": "37210@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Lokaskrefið í vötnun alkíns við súrar aðstæður er ráphvarf enól-milliefnis til að gefa samsvarandi ketón. Hvarfgangurinn felur í sér róteindingu og síðan afróteindingu. Sýnið hvarfganginn fyrir hvert eftirfarandi ráphvarfa.",
+  "questions": [
+    {
+      "id": "357300",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e118d5fde5e2a34bc2da9d9758a89df40421cd95/OChem_09_EC_018a.jpg\" alt=\"A benzene ring connected to an OH-substituted alkene reacts with hydronium ions to form a benzene ring with a C O C H 3 group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357301",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5fa2d0dbc8d671a79cfc34f017983bc08ebcdf3e/OChem_09_EC_018b.jpg\" alt=\"A C3 OH-substituted alkene reacts with hydronium ions  to form acetone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357302",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5252535e7b05e5f97426b13fb6b51565a4ef3599/OChem_09_EC_018c.jpg\" alt=\"A  C5  OH-substituted alkene reacts with hydronium ion to form a C5 methyl ketone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-AP09",
+  "source_uid": "37503@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggðu til byggingar fyrir efnasambönd með eftirfarandi formúlur sem sýna aðeins einn topp í <sup>1</sup>H NMR-rófum sínum:",
+  "questions": [
+    {
+      "id": "338137",
+      "stem_html": "C<sub>5</sub>H<sub>12</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338138",
+      "stem_html": "C<sub>5</sub>H<sub>10</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338139",
+      "stem_html": "C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

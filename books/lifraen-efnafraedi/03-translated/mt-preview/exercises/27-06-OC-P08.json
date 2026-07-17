@@ -1,0 +1,28 @@
+{
+  "nickname": "27-06-OC-P08",
+  "source_uid": "38840@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu eftirfarandi sameindir í stólstellingum og segðu til um hvort hringhóparnir séu áslægir eða miðlægir:",
+  "questions": [
+    {
+      "id": "358198",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f53d82beae21c0a87773841ad48551f685c2acc1/OChem_27_06_005a.jpg\" alt=\"The structure of a trans-decline with dashed and wedged hydrogens at the ring junction and a wedged methyl group and dashed hydrogen on the second ring.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f89913beff9834604322824f30e1837647228f5/OChem_27_EC_204a.jpg\" alt=\"trans-Decaline in chair conformation with hydrogens at the ring junctions and an equatorial methyl group at C1.\">"
+        }
+      ]
+    },
+    {
+      "id": "358199",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9fd0f7c9f63bc73c99520539df9d034d1c02b355/OChem_27_06_005b.jpg\" alt=\"The structure of a trans-decline with dashed and wedged hydrogens at the ring junctions and an equatorial methyl group at C2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--92e12257c78663161f0fabf23105c424e6e75f1a/OChem_27_EC_204b.jpg\" alt=\"The structure of a trans-decline with dashed and wedged hydrogens at the ring junctions and an equatorial methyl group at C2.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-VC03",
+  "source_uid": "37262@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352333",
+      "stem_html": "<p>Eftirfarandi alkýlbrómíð er hægt að mynda með efnahvarfi alkóhólsins (<i>S</i>)-2-pentanóls við PBr<sub>3</sub>. Nefndu efnasambandið, tilgreindu (<i>R</i>) eða (<i>S</i>) handhverfu og segðu til um hvort efnahvarf alkóhólsins leiði til sömu handhverfu eða breytingar á handhverfu (rauðbrúnt = Br).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c69ffc0d0681dc66764656360f4a75617b21410e/OChem_10_EC_013.jpg\" alt=\"The ball and stick model of an alkyl bromide that comprises a five-carbon chain joined by single bonds. Black, gray, and red spheres represent carbon, hydrogen, and bromine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

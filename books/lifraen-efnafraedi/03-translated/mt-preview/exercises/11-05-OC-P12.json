@@ -1,0 +1,19 @@
+{
+  "nickname": "11-05-OC-P12",
+  "source_uid": "37353@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336958",
+      "stem_html": "3-bróm-1-búten og 1-bróm-2-búten gangast undir S<sub>N</sub>1 efnahvarf á næstum sama hraða, jafnvel þótt annað sé annars stigs halíð og hitt fyrsta stigs. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sama allýlíska karbókatjón-milliefnið myndast."
+        }
+      ]
+    }
+  ]
+}

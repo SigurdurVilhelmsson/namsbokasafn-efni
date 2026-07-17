@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP05",
+  "source_uid": "37906@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359485",
+      "stem_html": "<p>Karvakról er náttúrulegt efni sem er einangrað úr óreganó, timjan og marjoram. Hvert er IUPAC-nafn þess?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b490692e63d0c4eaea5dd51f260f84bfb439251b/OChem_17_EC_031.jpg\" alt=\"The structure of carvacrol. It is a benzene with hydroxyl on C 1, methyl on C 2, and isopropyl on C 5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

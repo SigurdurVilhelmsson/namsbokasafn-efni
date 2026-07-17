@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP11",
+  "source_uid": "37225@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353816",
+      "stem_html": "<p>Hvernig myndir þú framkvæma eftirfarandi fjölþrepa umbreytingar? Fleiri en eitt skref gæti verið nauðsynlegt í sumum tilfellum.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--469f69a74f6affaf58907b2e7ff45a42ac9159eb/OChem_09_EC_028.jpg\" alt=\"Figure shows eight reactions of a terminal alkyne. Each arrow points in different directions to give either an aldehyde, alkane, alkene, epoxide, ketone, alkyne, alcohol, or an alkyl halide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

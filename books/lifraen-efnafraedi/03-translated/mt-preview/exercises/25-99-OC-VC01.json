@@ -1,0 +1,20 @@
+{
+  "nickname": "25-99-OC-VC01",
+  "source_uid": "39064@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu eftirfarandi aldósa og segðu til um hvort hver þeirra sé <small style=\"font-variant: small-caps\">D</small>- eða <small style=\"font-variant: small-caps\">L</small>-sykur:",
+  "questions": [
+    {
+      "id": "358771",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67c509d6923576d6ea3b82123664da9f088803c2/OChem_25_EC_002a.jpg\" alt=\"The ball-and-stick model of a four-carbon aldose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358772",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a97603b77b8f4f986a3a85cdf1a4aa6ac6e6d5d4/OChem_25_EC_002b.jpg\" alt=\"The ball-and-stick model of a pyranose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

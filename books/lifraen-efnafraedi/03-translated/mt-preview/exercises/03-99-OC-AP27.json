@@ -1,0 +1,40 @@
+{
+  "nickname": "03-99-OC-AP27",
+  "source_uid": "36464@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu hverfu fyrir hvert eftirfarandi efnasambanda sem hefur sömu virknihópa.",
+  "questions": [
+    {
+      "id": "351559",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--302d0d3ba7e7ef8c141ab9151aebf9f98093cb86/OChem_03_EC_007a.jpg\" alt=\"A four membered ring with C H 3 on the C2 and Br group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351560",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61c45ad9850742f9f1d988abbd0a6f252100cbdb/OChem_03_EC_007b.jpg\" alt=\"A five membered ring with an O C H 3 group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351561",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3abd662f0194da73201ee09e43f4c57bb2f7984d/OChem_03_EC_007c.jpg\" alt=\"A four membered carbon chain with a cyano group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351562",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d9211512ad31018afc51d38031de863c0b9028/OChem_03_EC_007d.jpg\" alt=\"A six membered ring with an O H group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351563",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--826eecc96f6fb7f72d4ad4d68bbbaeaacdfae099/OChem_03_EC_007e.jpg\" alt=\"A three membered ring with a C H O group is represented.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351564",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8e0aa82c4a2e9c10e7346bf0459c6071c45e149/OChem_03_EC_007f.jpg\" alt=\"A benzene ring with a C H 2 C O O H group is represented.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

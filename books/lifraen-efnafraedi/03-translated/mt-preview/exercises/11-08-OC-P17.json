@@ -1,0 +1,19 @@
+{
+  "nickname": "11-08-OC-P17",
+  "source_uid": "37358@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336976",
+      "stem_html": "Við hvaða handhverfu býst þú fyrir alkenann sem fæst með E2 brottnámi á (1<i>R</i>,2<i>R</i>)-1,2-díbróm-1,2-dífenýletani? Teiknaðu Newman-vörpun af hvarfstellingunni.",
+      "collaborator_solutions": [
+        {
+          "content_html": "(<i>Z</i>)-1-bróm-1,2-dífenýletýlen"
+        }
+      ]
+    }
+  ]
+}

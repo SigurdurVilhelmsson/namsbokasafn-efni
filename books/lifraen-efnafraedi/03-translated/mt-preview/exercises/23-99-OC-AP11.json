@@ -1,0 +1,30 @@
+{
+  "nickname": "23-99-OC-AP11",
+  "source_uid": "38938@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu upp byggingar mögulegra Claisen-þéttingarmyndefna úr eftirfarandi efnahvörfum. Segðu til um hvort þú myndir búast við að eitthvert þeirra væri ríkjandi í hverju tilviki.",
+  "questions": [
+    {
+      "id": "347025",
+      "stem_html": "CH<sub>3</sub>CO<sub>2</sub>Et + CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>Et",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347026",
+      "stem_html": "C<sub>6</sub>H<sub>5</sub>CO<sub>2</sub>Et + C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>CO<sub>2</sub>Et",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347027",
+      "stem_html": "EtOCO<sub>2</sub>Et + sýklóhexanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347028",
+      "stem_html": "C<sub>6</sub>H<sub>5</sub>CHO + CH<sub>3</sub>CO<sub>2</sub>Et",
+      "collaborator_solutions": []
+    }
+  ]
+}

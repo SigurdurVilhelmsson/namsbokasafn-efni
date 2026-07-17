@@ -1,0 +1,64 @@
+{
+  "nickname": "05-05-OC-P07",
+  "source_uid": "36499@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða liður í hverju af eftirfarandi settum er ofar í röðinni?",
+  "questions": [
+    {
+      "id": "346179",
+      "stem_html": "−H eða −Br",
+      "collaborator_solutions": [
+        {
+          "content_html": "−Br"
+        }
+      ]
+    },
+    {
+      "id": "346180",
+      "stem_html": "−Cl eða −Br",
+      "collaborator_solutions": [
+        {
+          "content_html": "−Br"
+        }
+      ]
+    },
+    {
+      "id": "346181",
+      "stem_html": "−CH<sub>3</sub> eða −CH<sub>2</sub>CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<sub>2</sub>CH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "346182",
+      "stem_html": "−NH<sub>2</sub> eða −OH",
+      "collaborator_solutions": [
+        {
+          "content_html": "−OH"
+        }
+      ]
+    },
+    {
+      "id": "346183",
+      "stem_html": "−CH<sub>2</sub>OH eða −CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<sub>2</sub>OH"
+        }
+      ]
+    },
+    {
+      "id": "346184",
+      "stem_html": "−CH<sub>2</sub>OH eða −CH<span data-math=\"\\text{=}\"></span>O",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<span data-math=\"\\text{=}\"></span>O"
+        }
+      ]
+    }
+  ]
+}

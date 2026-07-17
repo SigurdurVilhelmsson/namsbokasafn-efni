@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-MP03",
+  "source_uid": "39070@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358790",
+      "stem_html": "<p>Glúkósamín, ein af átta nauðsynlegu einsykrunum (<b>kafli 25.7</b>), er lífsmíðað sem 6-fosfat afleiða þess úr frúktósa 6-fosfati með efnahvarfi við ammóníak. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fbd0bb85c07401d1df73502c5a735e34de1fe5f/OChem_25_EC_008.jpg\" alt=\"Glucosamine, one of the essential monosaccharides, is biosynthesized as its 6-phosphate derivative from fructose 6-phosphate by reaction with ammonia.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

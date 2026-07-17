@@ -1,0 +1,19 @@
+{
+  "nickname": "30-07-OC-P07",
+  "source_uid": "39357@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355058",
+      "stem_html": "<p>Flokkaðu eftirfarandi sigmatrópískt efnahvarf eftir röð [<i>x</i>,<i>y</i>] og segðu til um hvort það muni halda áfram með yfirborðslegri eða andborðslegri staðefnafræði:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--755a2ac61bcfbff1a455eb4d98120c5fcd26afc7/OChem_30_07_003.jpg\" alt=\"A 1,3,5-heptatriene with featured C H bond on C 7 undergoes sigmatropic rearrangement to produce a product drawn as the mirror image of the reactant.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Andborðsleg [1,7] sigmatrópísk umröðun"
+        }
+      ]
+    }
+  ]
+}

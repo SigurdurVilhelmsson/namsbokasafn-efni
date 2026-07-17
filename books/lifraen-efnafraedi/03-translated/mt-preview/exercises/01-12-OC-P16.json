@@ -1,0 +1,46 @@
+{
+  "nickname": "01-12-OC-P16",
+  "source_uid": "37553@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Leggðu til beinagrindarbyggingar fyrir efnasambönd sem uppfylla eftirfarandi sameindaformúlur: Fleiri en einn möguleiki er í hverju tilviki.",
+  "questions": [
+    {
+      "id": "358849",
+      "stem_html": "C<sub>5</sub>H<sub>12</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Fjölmargir möguleikar eru fyrir hendi, svo sem:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8e559a90e6f8dc597ac8bb1c41116aeb68df4f4/OSX_OrgChem_01_12_p16ansa_img.jpg\" alt=\"Chemical structures of n-pentane, isopentane, and neopentane.\">\n"
+        }
+      ]
+    },
+    {
+      "id": "358850",
+      "stem_html": "C<sub>2</sub>H<sub>7</sub>N",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Fjölmargir möguleikar eru fyrir hendi, svo sem:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2eead4d4ee9ce98469339a6065144a1c13a69263/OSX_OrgChem_01_12_p16ansb_img.jpg\" alt=\"Chemical structures of ethylamine and dimethylamine.\">"
+        }
+      ]
+    },
+    {
+      "id": "358851",
+      "stem_html": "C<sub>3</sub>H<sub>6</sub>O",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Fjölmargir möguleikar eru fyrir hendi, svo sem:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2257fb31784aae54bb120c434bdec59c3185776/OSX_OrgChem_01_12_p16ansc_img.jpg\" alt=\"Chemical structures of propanal, 2-propen-1-ol, 1-propen-1-ol, methyl vinyl ether, cyclopropanol, propylene oxide, oxetane, acetone, and 1-propen-2-ol.\">\n"
+        }
+      ]
+    },
+    {
+      "id": "358852",
+      "stem_html": "C<sub>4</sub>H<sub>9</sub>Cl",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Fjölmargir möguleikar eru fyrir hendi, svo sem:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c74fa1a6796d868441ca82697b1525f5b13717e/OSX_OrgChem_01_12_p16ansd_img.jpg\" alt=\"Chemical structures of 1-chlorobutane, 2-chlorobutane, 1-chloro-2-methylpropane, and t-butylchloride.\">\n"
+        }
+      ]
+    }
+  ]
+}

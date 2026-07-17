@@ -1,0 +1,30 @@
+{
+  "nickname": "07-99-OC-AP24",
+  "source_uid": "36676@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um aðalmyndefnið í hverju eftirfarandi efnahvarfi:",
+  "questions": [
+    {
+      "id": "360066",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6030e7262abe58c7a9790da6626f584de0a54680/OChem_07_EC_027a.jpg\" alt=\"An incomplete reaction shows 3-methyl-3-hexene reacting with water and sulfuric acid to form unknown product(s) indicated by a question mark. Text says addition of H 2 O occurs.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360067",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71e4753a1f6959ed72367997065e747328d15ec7/OChem_07_EC_027b.jpg\" alt=\"An incomplete reaction shows 1-ethylcyclopentene reacting with H Br to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360068",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2927f92012a9e0e2b577f73697c4c9c3a9741a5/OChem_07_EC_027c.jpg\" alt=\"An incomplete reaction shows 3-methylcyclohexene reacting with H Br to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360069",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81c5613f0b8dcf0f2a088c6bd93ac13c3614240f/OChem_07_EC_027d.jpg\" alt=\"An incomplete reaction shows 1,6-heptadiene reacting with 2 equivalents of H Cl to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

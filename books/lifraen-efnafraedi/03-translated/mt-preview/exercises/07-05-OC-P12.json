@@ -1,0 +1,46 @@
+{
+  "nickname": "07-05-OC-P12",
+  "source_uid": "36632@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðaðu hliðarhópunum í hverju af eftirfarandi settum samkvæmt forgangsröðunarreglunum:",
+  "questions": [
+    {
+      "id": "346440",
+      "stem_html": "−CH<sub>3</sub>,  −OH,  −H,  −Cl",
+      "collaborator_solutions": [
+        {
+          "content_html": "−Cl,  −OH,  −CH<sub>3</sub>,  −H"
+        }
+      ]
+    },
+    {
+      "id": "346441",
+      "stem_html": "−CH<sub>3</sub>,  −CH<sub>2</sub>CH<sub>3</sub>,  −CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>,  −CH<sub>2</sub>OH",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<sub>2</sub>OH,  −CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>,  −CH<sub>2</sub>CH<sub>3</sub>,  −CH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "346442",
+      "stem_html": "−CO<sub>2</sub>H,  −CH<sub>2</sub>OH,  −C<span data-math=\"\\text{≡}\"></span>N,  −CH<sub>2</sub>NH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CO<sub>2</sub>H,  −CH<sub>2</sub>OH,  −C<span data-math=\"\\text{≡}\"></span>N,  −CH<sub>2</sub>NH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "346443",
+      "stem_html": "−CH<sub>2</sub>CH<sub>3</sub>,  −C<span data-math=\"\\text{≡}\"></span>CH,  −C<span data-math=\"\\text{≡}\"></span>N,  −CH<sub>2</sub>OCH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<sub>2</sub>OCH<sub>3</sub>,  −C<span data-math=\"\\text{≡}\"></span>N,  −C<span data-math=\"\\text{≡}\"></span>CH,  −CH<sub>2</sub>CH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

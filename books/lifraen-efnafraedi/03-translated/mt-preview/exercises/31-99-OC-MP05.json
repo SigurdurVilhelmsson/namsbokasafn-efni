@@ -1,0 +1,25 @@
+{
+  "nickname": "31-99-OC-MP05",
+  "source_uid": "39414@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Pólýdísýklópentadíen (PDCPD), markaðssett sem Telene eða Metton, er mjög krosstengd hitastorknandi kvoða sem notuð er til að móta höggþolna hluti eins og stýrishús fyrir stóra vörubíla og jarðvinnuvélar. PDCPD er búið til með hringopnandi víxlhvarfsfjölliðun dísýklópentadíens, sem er sjálft búið til úr 1,3-sýklópentadíeni. Fjölliðunin á sér stað með upphaflegu víxlhvarfi á meira strekkta tvítenginu í bísýkló[2.2.1]heptan hluta sameindarinnar (kafli 4.9) til að gefa línulega fjölliðu, fylgt eftir með krosstengingu mismunandi keðja í öðru víxlhvarfi á eftirstandandi sýklópenten tvítenginu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39dce82da8704809aa789f8067d8bc1f46ccaae5/OChem_31_EC_006.jpg\" alt=\"Two molecules of cyclopentadiene react with heat to form dicyclopentadiene. This further undergoes ring-opening metathesis polymerization to form polydicyclopentadiene. Wavy lines denote the bond extensions.\">",
+  "questions": [
+    {
+      "id": "355024",
+      "stem_html": "Sýnið hvarfgang myndunar dísýklópentadíens úr sýklópentadíeni.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355025",
+      "stem_html": "Teiknið byggingu dæmigerðs sýnis af upphaflega mynduðu línulegu fjölliðunni sem inniheldur þrjár einliðueiningar.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355026",
+      "stem_html": "Teiknið byggingu dæmigerðs sýnis af PDCPD sem sýnir hvernig krosstenging línulegu keðjanna á sér stað.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP18",
+  "source_uid": "37766@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358680",
+      "stem_html": "<p>Kalisín, líkt og asúlen (dæmi 17), hefur óvenju stórt tvískautsvægi fyrir kolvetni. Útskýrðu með því að nota vokmyndir.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9868d17f294c3aaa1862fc3f9f335b8395e9540/OChem_15_EC_013.jpg\" alt=\"Calicene has a cyclopentadiene ring double bonded to a cyclopropene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

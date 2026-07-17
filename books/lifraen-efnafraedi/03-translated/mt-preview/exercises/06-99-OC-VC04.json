@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-VC04",
+  "source_uid": "37310@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Skoðaðu eftirfarandi orkulínurit:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2cebc4173f1d46bf5c7825d7ef3b45f71a7e9ca/OChem_06_EC_005.jpg\" alt=\"An energy diagram shows a curve forming two crests and one trough. The second crest is higher than the first, and the endpoint is higher than the start.\">",
+  "questions": [
+    {
+      "id": "353282",
+      "stem_html": "Er Δ<i>G</i>° fyrir efnahvarfið jákvætt eða neikvætt? Merktu það inn á línuritið.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353283",
+      "stem_html": "Hversu mörg skref eru í efnahvarfinu?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353284",
+      "stem_html": "Hversu mörg virkniástönd eru til staðar? Merktu þau inn á línuritið.",
+      "collaborator_solutions": []
+    }
+  ]
+}

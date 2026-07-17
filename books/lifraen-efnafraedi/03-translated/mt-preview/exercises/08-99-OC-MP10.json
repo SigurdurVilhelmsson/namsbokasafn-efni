@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP10",
+  "source_uid": "37117@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353486",
+      "stem_html": "<p>10-bróm-<i>α</i>-kamigren, efnasamband sem einangrað er úr sjávarþörungum, er talið vera lífsmíðað úr <i>γ</i>-bisabóleni með eftirfarandi leið:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d44bd9531650fe07a00ad87c3eb5ce97d7c9325/OChem_08_EC_025.jpg\" alt=\"A 3-step reaction shows the formation of 10-bromo-alpha-chamigrene from gamma-bisabolene.\">\n<p>Teiknaðu uppbyggingu milliefnanna brómóníumjónar og hringlaga karbkatjónar og settu fram tillögu að hvarfgangi fyrir öll þrjú skrefin.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

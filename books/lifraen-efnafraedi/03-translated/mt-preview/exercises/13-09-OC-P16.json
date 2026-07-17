@@ -1,0 +1,19 @@
+{
+  "nickname": "13-09-OC-P16",
+  "source_uid": "37482@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338044",
+      "stem_html": "Hvernig gætir þú notað <sup>1</sup>H NMR til að ákvarða staðefnafræði rafsækinnar álagningar á alkena? Til dæmis, gefur álagning HCl á 1-metýlsýklóhexen 1-klór-1-metýlsýklóhexan eða 1-klór-2-metýlsýklóhexan?",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Klór-1-metýlsýklóhexan hefur einliða metýlgleypni."
+        }
+      ]
+    }
+  ]
+}

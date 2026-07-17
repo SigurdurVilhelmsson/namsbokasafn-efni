@@ -1,0 +1,19 @@
+{
+  "nickname": "08-13-OC-P21",
+  "source_uid": "37105@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "332660",
+      "stem_html": "Hvaða myndefni myndast við vötnun 4-metýlsýklópentens? Hvað getur þú sagt um hlutfallslegt magn myndefnanna?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnablanda sem er ekki 50:50 af tveimur rasemískum pörum: (1<i>S</i>,3<i>R</i>) + (1<i>R</i>,3<i>S</i>) og (1<i>S</i>,3<i>S</i>) + (1<i>R</i>,3<i>R</i>)"
+        }
+      ]
+    }
+  ]
+}

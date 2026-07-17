@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP04",
+  "source_uid": "38722@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361185",
+      "stem_html": "<p>Alkoxýkvikasilfrun alkena felur í sér myndun lífræns kvikasilfursmilliefnis (I), sem er afoxað með NaBH<sub>4</sub> til að gefa etermyndefni. Spáðu fyrir um etermyndefnið og sýndu hvarfganginn fyrir eftirfarandi efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6b5c9da2fe032e0af15b084a19b07fb54b9e89e/OChem_18_EC_022c.jpg\" alt=\"Ethylidenecyclopentane reacts with mercury(II) trifluoroacetate and ethanol to create an intermediate (I), followed by reaction with sodium borohydride to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

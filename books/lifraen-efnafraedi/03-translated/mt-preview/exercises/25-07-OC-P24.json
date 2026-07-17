@@ -1,0 +1,19 @@
+{
+  "nickname": "25-07-OC-P24",
+  "source_uid": "39062@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358768",
+      "stem_html": "<p>Sýndu hvernig neiramínsýra getur myndast við aldól-efnahvarf <i>N</i>-asetýlmannósamíns við pýrúvat (CH<sub>3</sub>COCO<sub>2</sub><sup>–</sup>).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ac172df47526957b214ee4ad84238d28d1e0cd0/OChem_25_07_003.jpg\" alt=\"Fischer projection of N-acetylmannosamine. It is a hexosamine monosaccharide with chemical formula  C 8 H15 N O 6.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e64d203b6deea927d1cb7e701beca81f6afbae1/OChem_25_EC_211.jpg\" alt=\"Fischer projection of N-acetylmannosamine. The reaction of N-acetylmannosamine with pyruvate ion involving a base to form neuraminic acid. The reaction has multiple steps.\">"
+        }
+      ]
+    }
+  ]
+}

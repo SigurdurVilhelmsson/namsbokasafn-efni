@@ -1,0 +1,30 @@
+{
+  "nickname": "02-99-OC-MP25",
+  "source_uid": "36137@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu sveigðar örvar til að teikna róteindabætt form eftirfarandi Lewis-basa.",
+  "questions": [
+    {
+      "id": "351680",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ee7fe863735a1f93b1ab50fdd4f58a8a2f02154/OChem_02_EC_006a.jpg\" alt=\"The bond-line structure of tetrahydrofuran has a 5-membered ring made of an oxygen atom and four carbon atoms.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351681",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83dd12cc50fe98116e5e5d84249164f05653150a/OChem_02_EC_006b.jpg\" alt=\"The bond-line structure of N-methylacetamide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351682",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773a1b6e5fd7c13326a982f04ed3319f1d286374/OChem_02_EC_006c.jpg\" alt=\"The bond-line structure of pyridine.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351683",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--224cf03924eb762914695058c28bb54d6b9c07dd/OChem_02_EC_006d.jpg\" alt=\"The bond-line structure of benzaldehyde\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

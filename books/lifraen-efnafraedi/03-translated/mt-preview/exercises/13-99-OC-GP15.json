@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP15",
+  "source_uid": "37532@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358421",
+      "stem_html": "<p><sup>13</sup>C NMR-róf af 2,4-pentandíóli úr verslun sýnir <i>fimm</i> toppa við 23,3, 23,9, 46,5, 64,8 og 68,1 <i>δ.</i> Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--056fe221be281a65f8b9796377cf64e01c89e73c/OChem_13_EC_026.jpg\" alt=\"The structure of 2,4-pentanediol has a 5-carbon chain. C 2 and C 4 are each bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

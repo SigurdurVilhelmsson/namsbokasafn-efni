@@ -1,0 +1,19 @@
+{
+  "nickname": "19-14-OC-P23",
+  "source_uid": "38017@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341419",
+      "stem_html": "Hvernig gætir þú notað IR-litrófsgreiningu til að ákvarða hvort efnahvarf milli 2-sýklóhexenóns og litíumdímetýlkúprats gefi beina álagningarafurð eða samtengda álagningarafurð?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Leitaðu að myndun annaðhvort alkóhóls eða mettaðs ketóns í myndefninu."
+        }
+      ]
+    }
+  ]
+}

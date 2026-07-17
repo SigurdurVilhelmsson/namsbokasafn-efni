@@ -1,0 +1,50 @@
+{
+  "nickname": "09-99-OC-AP02",
+  "source_uid": "37216@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið byggingarformúlur sem samsvara eftirfarandi heitum:",
+  "questions": [
+    {
+      "id": "333025",
+      "stem_html": "3,3-dímetýl-4-oktýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333026",
+      "stem_html": "3-etýl-5-metýl-1,6,8-dekatríýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333027",
+      "stem_html": "2,2,5,5-tetrametýl-3-hexýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333028",
+      "stem_html": "3,4-dímetýlsýklódekýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333029",
+      "stem_html": "3,5-heptadíen-1-ýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333030",
+      "stem_html": "3-klór-4,4-dímetýl-1-nónen-6-ýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333031",
+      "stem_html": "3-<i>sek</i><b>-</b>bútýl-1-heptýn",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333032",
+      "stem_html": "5-<i>tert</i>-bútýl-2-metýl-3-oktýn",
+      "collaborator_solutions": []
+    }
+  ]
+}

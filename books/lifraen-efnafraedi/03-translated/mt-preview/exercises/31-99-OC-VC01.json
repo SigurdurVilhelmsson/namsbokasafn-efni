@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-VC01",
+  "source_uid": "39408@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355010",
+      "stem_html": "<p>Tilgreinið byggingarflokkinn sem eftirfarandi fjölliða tilheyrir og sýnið byggingu einliðueininganna sem notaðar eru til að búa hana til:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--308f0a9e552525539b7103e7d71b5a7be26dc1db/OChem_31_EC_001.jpg\" alt=\"A ball-and-stick model of a polymer showing two benzene rings and connecting substituents. Wavy lines indicate boundaries of the repeating unit.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

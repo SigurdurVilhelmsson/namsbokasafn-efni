@@ -1,0 +1,46 @@
+{
+  "nickname": "11-12-OC-P20",
+  "source_uid": "37361@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Segðu til um hvort hvert eftirfarandi efnahvarfa sé líklegt til að vera S<sub>N</sub>1, S<sub>N</sub>2, E1, E1cB eða E2:",
+  "questions": [
+    {
+      "id": "355165",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cb631a2d633cb357dde6d55b704427abbafda736/OChem_11_12_004a.jpg\" alt=\"1-bromobutane reacts with sodium azide in T H F to form a 1-azidobutane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "S<sub>N</sub>2"
+        }
+      ]
+    },
+    {
+      "id": "355166",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2e93845ab766e9262ab315d0a0c926e119126ac/OChem_11_12_004b.jpg\" alt=\"3-chloropentane reacts with K O H in ethanol to produce 2-pentene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "E2"
+        }
+      ]
+    },
+    {
+      "id": "355167",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e9ad38bf02984cdd0336bb373e681b1f2e8a8e1/OChem_11_12_004c.jpg\" alt=\"1-chloro-1-methylcyclohexane reacts with acetic acid. Product has acetate substituted for chlorine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "S<sub>N</sub>1"
+        }
+      ]
+    },
+    {
+      "id": "355168",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f936eaec0bdd647d7b4d3c14659707bf682ca5cd/OChem_11_12_004d.jpg\" alt=\"A tertiary alcohol reacts in the presence of sodium hydroxide and ethanol to form a product with a double bond.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "E1cB"
+        }
+      ]
+    }
+  ]
+}

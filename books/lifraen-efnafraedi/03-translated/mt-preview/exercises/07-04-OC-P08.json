@@ -1,0 +1,19 @@
+{
+  "nickname": "07-04-OC-P08",
+  "source_uid": "36618@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357711",
+      "stem_html": "Kynferomon húsflugunnar er alken sem nefnist <i>cis</i>-9-tríkósen. Teiknaðu byggingu þess. (Tríkósan er beinkeðja alkansins C<sub>23</sub>H<sub>48</sub>.)",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17e5fa5a98f3a18da3b8cced6d60a8714bead5dd/OChem_07_EC_202.jpg\" alt=\"A structure of a 23-carbon chain. C9 is cis double bonded to C10.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "nickname": "17-99-OC-AP19",
+  "source_uid": "37920@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Efnasamband með óþekkta byggingu gaf eftirfarandi rófsgreiningargögn:</p>\n<ul style=\"list-style-type:none\">\n<li>Massaróf: M<sup>+</sup> = 88,1</li>\n<li>IR: 3600 cm<sup>–1</sup></li>\n<li><sup>1</sup>H NMR: 1,4 <i>δ</i> (2 H, ferliða, <i>J</i> = 7 Hz); 1,2 <i>δ</i> (6 H, einliða); 1,0 <i>δ</i> (1 H, einliða); 0,9 <i>δ</i> (3 H, þríliða, <i>J</i> = 7 Hz)</li>\n<li><sup>13</sup>C NMR: 74, 35, 27, 25 <i>δ</i></li>\n</ul>",
+  "questions": [
+    {
+      "id": "340865",
+      "stem_html": "Gefðu þrjár mögulegar sameindaformúlur að því gefnu að efnasambandið innihaldi C og H en gæti innihaldið O eða ekki.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340866",
+      "stem_html": "Hversu mörg vetni inniheldur efnasambandið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340867",
+      "stem_html": "Hvaða virknihóp(a) inniheldur efnasambandið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340868",
+      "stem_html": "Hversu mörg kolefni inniheldur efnasambandið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340869",
+      "stem_html": "Hver er sameindaformúla efnasambandsins?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340870",
+      "stem_html": "Hver er bygging efnasambandsins?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340871",
+      "stem_html": "Úthlutaðu toppum í <sup>1</sup>H NMR-rófi sameindarinnar til tiltekinna róteinda.",
+      "collaborator_solutions": []
+    }
+  ]
+}

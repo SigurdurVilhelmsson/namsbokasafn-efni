@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP25",
+  "source_uid": "39025@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361733",
+      "stem_html": "<p>Hver er bygging efnasambandsins með formúluna C<sub>8</sub>H<sub>11</sub>N sem gaf eftirfarandi IR-róf?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ceff5f904c7094c8a22545ce7a7c640cde6ed850/OChem_24_EC_047.jpg\" alt=\"An I R spectrum with major peaks at wavenumbers 1500, 1600, just above and below 3000, and 3400 (single).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

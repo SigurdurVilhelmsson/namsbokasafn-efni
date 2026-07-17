@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-VC05",
+  "source_uid": "37311@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Skoðaðu eftirfarandi orkulínurit fyrir ensímhvatað efnahvarf:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91572441dcb2d136b0112ba76b4bfd54a985463c/OChem_06_EC_006.jpg\" alt=\"An energy diagram shows a curve forming four crests of varying height. The endpoint is lower than the start.\">",
+  "questions": [
+    {
+      "id": "353288",
+      "stem_html": "Hversu mörg skref eiga sér stað?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353289",
+      "stem_html": "Hvert skrefanna er mest útvermið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353290",
+      "stem_html": "Hvert skrefanna er hægast?",
+      "collaborator_solutions": []
+    }
+  ]
+}

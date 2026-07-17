@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP35",
+  "source_uid": "36690@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354494",
+      "stem_html": "<p>Ísóbútýlkatjónin umraðast sjálfgengt yfir í <i>tert</i>-bútýlkatjónina með hýdríðfærslu. Er umröðunin útvermin eða innvermin? Teiknaðu hvernig þú heldur að virkniástandið fyrir hýdríðfærsluna gæti litið út samkvæmt Hammond-setningunni.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c89b1bb8d1a8ec8e2a51328c4d29c4e43faba1de/OChem_07_EC_035.jpg\" alt=\"The figure shows isobutyl cation converts to tertiary-butyl cation.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

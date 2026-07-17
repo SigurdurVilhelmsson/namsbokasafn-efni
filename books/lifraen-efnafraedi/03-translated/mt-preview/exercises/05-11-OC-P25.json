@@ -1,0 +1,19 @@
+{
+  "nickname": "05-11-OC-P25",
+  "source_uid": "36519@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354133",
+      "stem_html": "<p>Akónítasa-hvötuð álagning vatns á <i>cis</i>-akónítat í sítrónusýruhringnum á sér stað með eftirfarandi rúmefnafræði. Á sér álagning OH-hópsins stað á Re- eða Si-fleti hvarfefnisins? Hvað með álagningu H? Leggjast H- og OH-hóparnir á sömu hlið tvítengisins eða á gagnstæðar hliðar?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--233e7422a21027d42f0c14b073e2c415b9556ae7/OChem_05_11_011.jpg\" alt=\"The figure shows a reaction where cis-aconitate reacts with water in the presence of aconitase to form (2 R, 3 S)-isocitrate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "−OH leggst á Re-flöt C2 og −H leggst á Re-flöt C3. Heildarálagningin hefur and-rúmefnafræði."
+        }
+      ]
+    }
+  ]
+}

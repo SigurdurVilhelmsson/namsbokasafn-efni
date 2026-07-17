@@ -1,0 +1,19 @@
+{
+  "nickname": "02-02-OC-P05",
+  "source_uid": "36117@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "657029",
+      "stem_html": "Etýlen glýkól, HOCH<sub>2</sub>CH<sub>2</sub>OH, kann að virðast óskautað þegar það er teiknað, en innra vetnistengi milli –OH hópanna tveggja veldur tvískautsvægi. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>C–O tvískautin tvö núllast út vegna samhverfu sameindarinnar:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9rIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--620202e0e91107828bfa4a7387c1804d4225d0a6/OChem_02_EC_203.jpg\" alt=\"The chemical structure of ethylene glycol, where the direction of both dipole moments points from carbon toward the hydroxyl group in opposite directions.\">"
+        }
+      ]
+    }
+  ]
+}

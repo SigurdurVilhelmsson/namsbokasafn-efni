@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-MP24",
+  "source_uid": "36136@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sjáðu fyrir um myndefni eftirfarandi sýru/basa-efnahvarfa. Teiknaðu sveigðar örvar til að sýna myndun og rof efnatengja.",
+  "questions": [
+    {
+      "id": "351420",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b82f8987170b3195f03e06ff04920936aace5916/OChem_02_EC_005a.jpg\" alt=\"An incomplete reaction shows tetrahydrofuran reacting with B F 3. The product is not depicted.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351421",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cccafa16b688e1e2ee21247f03f8cb52897dea61/OChem_02_EC_005b.jpg\" alt=\"An incomplete reaction shows H I reacting with acetone that has two lone pairs on the oxygen. The product is not depicted.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351422",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b8a25fe405c09d5ec46583119527a721acaf089/OChem_02_EC_005c.jpg\" alt=\"An incomplete reaction shows acetic acid reacting with methylamine. The product is not depicted.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

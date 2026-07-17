@@ -1,0 +1,19 @@
+{
+  "nickname": "08-03-OC-P06",
+  "source_uid": "37090@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358081",
+      "stem_html": "<p>Þegar ósamhverfur alkeni eins og própen er meðhöndlaður með <i>N</i>-brómsúkkínímíði í vatnslausn dímetýlsúlfoxíðs, hefur aðalmyndefnið brómfrumeindina tengda við kolefnisfrumeindina með færri tengi. Er þetta Markovnikov- eða and-Markovnikov-stefna? (Kafli 7.8) Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--675f193f0abf54683fb2110bb3f9d9c3eec4aedf/OChem_08_03_005.jpg\" alt=\"A reaction shows propene reacting with molecular bromine in the presence of water to form bromo-2-propanol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Markovnikov"
+        }
+      ]
+    }
+  ]
+}

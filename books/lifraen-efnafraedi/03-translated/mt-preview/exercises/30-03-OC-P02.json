@@ -1,0 +1,19 @@
+{
+  "nickname": "30-03-OC-P02",
+  "source_uid": "39352@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360414",
+      "stem_html": "Teiknaðu myndefnin sem þú myndir búast við úr sam- og mótstæðum hringlokunum (2<i>Z</i>,4<i>Z</i>,6<i>Z</i>)-2,4,6-oktatríens. Hvora af þessum tveimur leiðum myndir þú búast við að varmaefnahvarfið fylgdi?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Mótstæð: <i>cis</i>-5,6-dímetýl-1,3-sýklóhexadíen; <br>Samstæð: <i>trans</i>-5,6-dímetýl-1,3-sýklóhexadíen. Mótstæð lokun á sér stað."
+        }
+      ]
+    }
+  ]
+}

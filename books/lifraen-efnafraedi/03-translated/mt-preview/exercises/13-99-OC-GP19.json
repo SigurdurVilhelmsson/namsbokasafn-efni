@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP19",
+  "source_uid": "37536@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358429",
+      "stem_html": "<p>Róteinda-NMR-róf efnasambands með formúluna C<sub>5</sub>H<sub>10</sub>O er sýnt. Niðurstöður úr venjulegri kolefnis-13 og DEPT-tilraun eru sýndar í töflu. Innrautt róf sýnir breiðan topp við um 3340 cm<sup>–1</sup> og meðalstóran topp við um 1651 cm<sup>–1</sup>. Teiknaðu byggingu þessa efnasambands.</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th><b>Venjulegt kolefni</b></th>\n<th><b>DEPT-135</b></th>\n<th><b>DEPT-90</b></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>    22,2 ppm</td>\n<td>Jákvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 40,9</td>\n<td>Neikvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 60,2</td>\n<td>Neikvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td>112,5</td>\n<td>Neikvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td>142,3</td>\n<td>Enginn toppur</td>\n<td>Enginn toppur</td>\n</tr>\n</tbody>\n</table>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2944627cf8807329d0c44bb6a3f2275715dfc39f/OChem_13_EC_030.jpg\" alt=\"Proton spectrum of C 5 H 10 O shifts: 1.75 (singlet), 2.15 (singlet), 2.3 (triplet), 3.7 (triplet), and 4.8 (doublet). Relative areas of 3, 1.2, 2, 2.1, and 2.1 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

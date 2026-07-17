@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-EDRM07",
+  "source_uid": "37318@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Þegar ísóprópýlýdensýklóhexan er meðhöndlað með sterkri sýru við stofuhita á sér stað hverfing samkvæmt hvarfganginum sem sýndur er hér að neðan til að gefa 1-ísóprópýlsýklóhexen sem myndefni:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67c8e42e212a2ac11ae0317d2f2b7bf9d4d72c83/OChem_06_EC_008.jpg\" alt=\"A 2-step reversible reaction shows isopropylidenecyclohexane in the presence of acid catalyst forming 1-isopropylcyclohexene via a carbocation intermediate.\">\n<p>Við jafnvægi inniheldur efnablandan um 30% ísóprópýlýdensýklóhexan og um 70% 1-ísóprópýlsýklóhexen.</p>",
+  "questions": [
+    {
+      "id": "353298",
+      "stem_html": "Hvert er áætlað gildi á <i>K</i><sub>eq</sub> fyrir efnahvarfið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353299",
+      "stem_html": "Þar sem efnahvarfið gerist hægt við stofuhita, hvert er áætlað Δ<i>G</i><sup>‡</sup> þess?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353300",
+      "stem_html": "Teiknaðu orkulínurit fyrir efnahvarfið.",
+      "collaborator_solutions": []
+    }
+  ]
+}

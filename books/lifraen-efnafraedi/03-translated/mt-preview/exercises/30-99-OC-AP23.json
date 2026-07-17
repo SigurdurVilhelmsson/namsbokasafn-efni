@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP23",
+  "source_uid": "39392@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355122",
+      "stem_html": "<p>Þegar efnasambandið með sýklóbúteni samrunnu við fimm liða hring er hitað myndast (1<i>Z</i>,3<i>Z</i>)-1,3-sýklóheptadíen. Þegar skylda efnasambandið með sýklóbúteni samrunnu við átta liða hring er hins vegar hitað myndast (1<i>E</i>,3<i>Z</i>)-1,3-sýklódekadíen. Útskýrðu þessar niðurstöður og stingdu upp á ástæðu fyrir því að opnun átta liða hringsins á sér stað við lægra hitastig.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0203dda586d775c58ec9c58e3f944663d38634d5/OChem_30_EC_027.jpg\" alt=\"Cyclobutene linked to cyclopentane reacts at 270 degree Celsius to form 1,3-cycloheptadiene. Cyclooctane fused to cyclobutene reacts at 190 degree Celsius to form cyclodecadiene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

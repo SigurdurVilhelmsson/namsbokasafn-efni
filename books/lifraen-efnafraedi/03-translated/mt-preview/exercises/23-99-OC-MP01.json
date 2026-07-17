@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-MP01",
+  "source_uid": "38907@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um álagningarmyndefnið fyrir hvert eftirfarandi efnahvarfa og skrifaðu hvarfganginn.",
+  "questions": [
+    {
+      "id": "359833",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45431531f43f5376462f943d9278132982c4c265/OChem_23_EC_015b.jpg\" alt=\"Cyclobutanone reacts with sodium hydroxide and ethanol to form an unknown product.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359834",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9fe15fbc656906f09126b7b7d9601bef85fa571/OChem_23_EC_015d.jpg\" alt=\"A six-carbon chain with oxo groups on C 2 and C 5 reacts with sodium hydroxide and ethanol to form an unknown product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

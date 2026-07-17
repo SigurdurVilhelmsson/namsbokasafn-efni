@@ -1,0 +1,19 @@
+{
+  "nickname": "04-04-OC-P11",
+  "source_uid": "36482@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351082",
+      "stem_html": "<p>Tvær stellingar af <i>cis</i>-1,3-dímetýlsýklóbútani eru sýndar. Hver er munurinn á þeim og hvor telurðu að sé líklegri til að vera stöðugri?</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1413dc02d1f61e35e67f838176cc3ae5989b191e/OChem_04_04_005a.jpg\" alt=\"The ball and stick model of cis 1,3-dimethylcyclobutane. C1 is bonded to methyl at the top right. C3 is bonded to another methyl on the left.\">\n<b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--232ee8efc048065dce0a962d0caf83d7a38c328f/OChem_04_04_005b.jpg\" alt=\"The ball and stick model of cis 1,3-dimethylcyclobutane. C1 and C3 are each bonded to a methyl group at the bottom.\"></p>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Stelling <b>(a)</b> er stöðugri vegna þess að metýlhóparnir eru lengra frá hvor öðrum."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP16",
+  "source_uid": "37395@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi efnahvörf eru ólíkleg til að eiga sér stað eins og þau eru skrifuð. Segðu hvað er rangt við hvert þeirra og spáðu fyrir um raunverulegt myndefni.",
+  "questions": [
+    {
+      "id": "355366",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--235df4cba8477262d5f478061d6f16e520167fcf/OChem_11_EC_028a.jpg\" alt=\"The reaction of 2-bromobutane with potassium t-butoxide in t-butanol yields s-butyl t-butyl ether.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355367",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04a7ad594218bafedb8499b2fdf8b1ab39531277/OChem_11_EC_028b.jpg\" alt=\"The reaction of fluorocyclohexane with Na O H yields cyclohexanol.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355368",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a95cd0840d72b433a6beffdfb455f5b2e41bd9c5/OChem_11_EC_028c.jpg\" alt=\"The reaction of 1-methylcyclohexanol with thionyl chloride and pyridine (a base) yields 1-chloro-1-methylcyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "25-05-OC-P11",
+  "source_uid": "39049@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358756",
+      "stem_html": "Ríbósi er að mestu leyti á fúranósaformi, sem myndast við álagningu C4 –OH hópsins á C1 aldehýðið. Teiknaðu <small style=\"font-variant: small-caps\">D</small>-ríbósa á fúranósaformi.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d24c01f5a0bf89902d022eb5f4529d3e7d468bc/OChem_25_EC_206.jpg\" alt=\"A  furanose D-ribose is presented. The cyclization of ribose occurs via hemiacetal formation due to an attack on aldehyde by C 4 hydroxyl group to produce a furanose ring .\">"
+        }
+      ]
+    }
+  ]
+}

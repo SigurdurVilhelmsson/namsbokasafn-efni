@@ -1,0 +1,20 @@
+{
+  "nickname": "13-99-OC-VC05",
+  "source_uid": "37494@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu merktu róteindirnar í eftirfarandi sameindum sem ótengdar, hómótópískar, enantíótópískar eða díasteríótópískar.",
+  "questions": [
+    {
+      "id": "358344",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6f5011637245a2ac70bf5e8d85f555903b9c479/OChem_13_EC_005a.jpg\" alt=\"The ball-and-stick model of cysteine. The gray, black, blue, yellow, and red spheres represent hydrogen, carbon, nitrogen, sulfur, and oxygen atoms, respectively. Arrows point toward hydrogens at C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358345",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ab4a8fc95397de90b8bc99fba567ff994b97579/OChem_13_EC_005b.jpg\" alt=\"Ball-and-stick model of cyclopentanol. Gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively. Arrows point toward hydrogens trans to the hydroxy group on C 3 and 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

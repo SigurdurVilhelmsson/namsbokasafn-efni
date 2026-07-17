@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-MP02",
+  "source_uid": "37674@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358463",
+      "stem_html": "<p>Við höfum séð að Diels-Alder-hringálagning er eins þreps hringhverft ferli sem á sér stað í gegnum hringlaga virkniástand. Stingdu upp á hvarfgangi fyrir eftirfarandi efnahvarf:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--293eccfd1c72e7edb2b9e57c58fef5b980d36629/OChem_14_EC_008.jpg\" alt=\"When heated, an 8-membered ring with two double bonds between C 2-C 3 and C 5-C 6 forms benzene and ethene.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

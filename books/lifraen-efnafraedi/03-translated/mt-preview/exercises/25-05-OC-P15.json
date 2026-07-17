@@ -1,0 +1,19 @@
+{
+  "nickname": "25-05-OC-P15",
+  "source_uid": "39053@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358764",
+      "stem_html": "<p>Greindu eftirfarandi einsykru, skrifaðu fullt nafn hennar og teiknaðu opna keðjuform hennar sem Fischer-vörpun.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9eef9d0dbfbc4b667399f789c724b94692412e02/OChem_25_05_007.jpg\" alt=\"The ball-and-stick model of an alpha aldohexose monosaccharide.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>α</i>-<small style=\"font-variant: small-caps\">D</small>-Allópýranósi"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP58",
+  "source_uid": "36170@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351729",
+      "stem_html": "<p>Karbókatjónir, sem innihalda þrígilda, jákvætt hlaðna kolefnisfrumeind, hvarfast við vatn og mynda alkóhól:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--164af3969387dafc125110d7605c49d8750a29d8/OChem_02_EC_023.jpg\" alt=\"A three-carbon chain with a carbocation at C2 reacts with water to form 2-propanol and a hydrogen ion.\">\n<p>Hvernig getur þú útskýrt þá staðreynd að eftirfarandi karbókatjón gefur efnablöndu af <i>tveimur</i> alkóhólum við efnahvarf við vatn?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d24b11d7178826bf3459f7666c360b501ac67456/OChem_02_EC_024.jpg\" alt=\"In a reaction, a carbocation (a carbon cation bonded to a methyl group and an ethene group) reacts with water to form two alcohols.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

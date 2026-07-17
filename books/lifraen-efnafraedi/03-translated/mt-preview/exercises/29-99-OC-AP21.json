@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-AP21",
+  "source_uid": "39346@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358179",
+      "stem_html": "<p>Meginörlög asetýl-CoA við venjulegar efnaskiptaaðstæður eru niðurbrot í sítrónusýruhringnum til að mynda CO<sub>2</sub>. Þegar líkaminn er undir álagi vegna langvarandi hungurs breytist asetýl-CoA hins vegar í efnasambönd sem kallast <i>ketónar</i> og heilinn getur notað sem tímabundið eldsneyti. Fylltu inn upplýsingarnar sem vantar og eru merktar með spurningamerkjunum fjórum í eftirfarandi lífefnafræðilegri ferli fyrir myndun ketóna úr asetýl-CoA:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5c5b8ecc70689d0f1c000432c97ba58601d4c12/OChem_29_EC_018.jpg\" alt=\"Acetyl CoA forms acetoacetyl CoA , which converts water to an unknown reagent and acetoacetate anion,  the acetoacetate anion reacts with unknown reagents to form ketone bodies acetone and 3-hydroxybutyrate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

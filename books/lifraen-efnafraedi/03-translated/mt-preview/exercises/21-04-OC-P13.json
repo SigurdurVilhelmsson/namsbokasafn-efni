@@ -1,0 +1,28 @@
+{
+  "nickname": "21-04-OC-P13",
+  "source_uid": "38163@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig gætir þú búið til eftirfarandi ketón með efnahvarfi sýruklóríðs við litíumdíorganókúprat hvarfefni?",
+  "questions": [
+    {
+      "id": "361376",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed2d45a4a205e64bab0f11a87fe174157d62966d/OChem_21_04_014a.jpg\" alt=\"The ball-and-stick model shows a benzene ring single-bonded to a carbonyl carbon single-bonded to an isopropyl group. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensóýlklóríð + [(CH<sub>3</sub>)<sub>2</sub>CH]<sub>2</sub>CuLi, eða 2-metýlprópanóýlklóríð + Ph<sub>2</sub>CuLi"
+        }
+      ]
+    },
+    {
+      "id": "361377",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58be48b3170c21d2fc7fa6ebda72f699b0f5d054/OChem_21_04_014b.jpg\" alt=\"The ball-and-stick model shows a six-carbon chain. The first carbon is double-bonded to second carbon. Third carbon is a carbonyl. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Própenóýlklóríð + (CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>)<sub>2</sub>CuLi, eða bútanóýlklóríð + (H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CH)<sub>2</sub>CuLi"
+        }
+      ]
+    }
+  ]
+}

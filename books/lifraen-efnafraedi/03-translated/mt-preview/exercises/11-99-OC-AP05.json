@@ -1,0 +1,20 @@
+{
+  "nickname": "11-99-OC-AP05",
+  "source_uid": "37384@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða áhrif mynduð þið búast við að eftirfarandi breytingar hefðu á hraða S<sub>N</sub>2-efnahvarfs 1-joð-2-metýlbútans við sýaníðjón?",
+  "questions": [
+    {
+      "id": "337083",
+      "stem_html": "Styrkur CN<sup>–</sup> er helmingaður og styrkur 1-joð-2-metýlbútans er tvöfaldaður.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337084",
+      "stem_html": "Bæði styrkur CN<sup>–</sup> og 1-joð-2-metýlbútans er þrefaldaður.",
+      "collaborator_solutions": []
+    }
+  ]
+}

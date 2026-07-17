@@ -1,0 +1,19 @@
+{
+  "nickname": "10-02-OC-P03",
+  "source_uid": "37249@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359331",
+      "stem_html": "Teiknaðu og nefndu öll einklóruð myndefni sem þú myndir búast við að fá úr stakeindar-klórun 2-metýlpentans. Hver þeirra, ef einhver, eru hendin?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hendin: 1-klór-2-metýlpentan, 3-klór-2-metýlpentan, 2-klór-4-metýlpentan Óhendin: 2-klór-2-metýlpentan, 1-klór-4-metýlpentan\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3979a6d7ca71a4458d1b42273f4e2f825f5f14a/OSX_OrgChem_10_DD_A-EC10-3a_img.jpg\" alt=\"A condensed formula for 1-chloro-2-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af12c807dce1ba16a07cc4722f4cdd66fe69abd7/OSX_OrgChem_10_DD_A-EC10-3b_img.jpg\" alt=\"A condensed formula for 2-chloro-2-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55984476e2135c6c6d34481fc118b6581eeb48ba/OSX_OrgChem_10_DD_A-EC10-3c_img.jpg\" alt=\"A condensed formula for 3-chloro-2-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db8a5257f7b32dcbd3fbf53f571fbb5cc640ecb9/OSX_OrgChem_10_DD_A-EC10-3d_img.jpg\" alt=\"A condensed formula for 2-chloro-4-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e20d9b9ecbbdcd6f5ab9b5d19c8bb13f8005caf3/OSX_OrgChem_10_DD_A-EC10-3e_img.jpg\" alt=\"A condensed formula for 1-chloro-4-methylpentane.\">"
+        }
+      ]
+    }
+  ]
+}

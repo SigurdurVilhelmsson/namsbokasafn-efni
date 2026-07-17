@@ -1,0 +1,50 @@
+{
+  "nickname": "16-99-OC-AP04",
+  "source_uid": "37836@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um helstu mónóalkýleruðu myndefnin sem þú myndir búast við að fá úr efnahvarfi eftirfarandi efna við klórmetan og AlCl<sub>3</sub>:",
+  "questions": [
+    {
+      "id": "339504",
+      "stem_html": "Brómbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339505",
+      "stem_html": "<i>m</i>-Brómfenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339506",
+      "stem_html": "<i>p</i>-Klóranilín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339507",
+      "stem_html": "2,4-Díklórónítróbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339508",
+      "stem_html": "2,4-Díklórfenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339509",
+      "stem_html": "Bensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339510",
+      "stem_html": "<i>p</i>-Metýlbensensúlfónsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339511",
+      "stem_html": "2,5-Díbrómtólúen",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP14",
+  "source_uid": "37393@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355362",
+      "stem_html": "<p>Spáðu fyrir um aðalalkenamyndefnið í eftirfarandi E1-efnahvarfi:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--229660f1851181ab6f8c8ec7d0f08fd2cf0da358/OChem_11_EC_027.jpg\" alt=\"The reaction of 3-bromo-2,3-dimethylpentane in acetic acid and heat yields an unknown product, depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

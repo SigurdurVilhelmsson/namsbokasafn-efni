@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-VC21",
+  "source_uid": "36133@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351410",
+      "stem_html": "<p>Eftirfarandi líkan er framsetning á íbúprófeni, algengu lausasöluverkjalyfi. Sýndu staðsetningu margföldu tengjanna og teiknaðu beinagrindarmynd (svart = C, rautt = O, grátt = H).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--119aa01a79c9c93a8a27eb0b013262b2b28dd3e6/OChem_02_EC_002.jpg\" alt=\"The ball and stick model of ibuprofen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

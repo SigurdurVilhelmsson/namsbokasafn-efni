@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP19",
+  "source_uid": "38041@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361071",
+      "stem_html": "<p>Trans-alkenum er breytt í cis-ísómerur sínar og öfugt með epoxíðun og síðan meðhöndlun epoxíðsins með trifenýlfosfíni. Stingdu upp á hvarfgangi fyrir efnahvarfið.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ff6ea384b92304fe417018c4a9a203bb8f3cefb/OChem_19_EC_038.jpg\" alt=\"Trans alkene reacts with R C O 3 H to form trans epoxide, which reacts with P Ph 3 to form cis alkene and Ph 3 P double bond O.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

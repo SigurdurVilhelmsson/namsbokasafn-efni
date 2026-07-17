@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP10",
+  "source_uid": "38190@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361441",
+      "stem_html": "<p>Vatnsrof líffræðilegs þíóesters í samsvarandi karboxýlat er oft flóknara en heildarniðurstaðan gæti gefið til kynna. Umbreyting súksínýl CoA í súksínat í sítrónusýruhringnum á sér til dæmis stað með upphaflegri myndun asýlfosfats, fylgt eftir með hvarfi við gúanósíndífosfat (GDP, skyldingur adenósíndífosfats [ADP]) til að gefa súksínat og gúanósíntrífosfat (GTP, skyldingur ATP). Leggðu til verkunarmáta fyrir bæði skrefin.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0feb609b41067e6c7c471d06c1a4789af2255d3/OChem_21_EC_034.jpg\" alt=\"Conversion of succinyl coenzyme A to succinate and G T P. The process involves use of hydrogen phosphate to make an acyl phosphate, followed by reaction with guanosine diphosphate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

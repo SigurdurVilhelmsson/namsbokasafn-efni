@@ -1,0 +1,46 @@
+{
+  "nickname": "07-03-OC-P05",
+  "source_uid": "36615@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknið byggingar sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "357706",
+      "stem_html": "2-Metýl-1,5-hexadíen",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f9f3a86c4392352f7859a3624a16cdffe490a81/OChem_07_EC_201a.jpg\" alt=\"A condensed structural formula has a 6-carbon chain with double bonds between C1-C2 and C5-C6. C2 is bonded to a methyl group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357707",
+      "stem_html": "3-Etýl-2,2-dímetýl-3-hepten",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d002440950f633a791e16ebed7553ea7d45d630/OChem_07_EC_201b.jpg\" alt=\"A condensed structural formula has a 7-carbon chain with a double bond between C3-C4. C1 and C3 are bonded to three methyl and one ethyl group, respectively.\">"
+        }
+      ]
+    },
+    {
+      "id": "357708",
+      "stem_html": "2,3,3-Trímetýl-1,4,6-oktatríen",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--464d3146abb266d63fb4e927386f4f645567b9ed/OChem_07_EC_201c.jpg\" alt=\"A structure of octane with double bonds between C1-C2, C4-C5, and C6-C7. C2 and C3 are bonded to one methyl and two methyl groups, respectively.\">"
+        }
+      ]
+    },
+    {
+      "id": "357709",
+      "stem_html": "3,4-Díísóprópýl-2,5-dímetýl-3-hexen",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57bffb0d670c20ad314999d3ccfe402cb2ea72a3/OChem_07_EC_201d.jpg\" alt=\"A 2-carbon chain with a double bond in between. C1 and C2 are each bonded to two isopropyl groups.\">"
+        }
+      ]
+    }
+  ]
+}

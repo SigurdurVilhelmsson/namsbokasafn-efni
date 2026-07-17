@@ -1,0 +1,19 @@
+{
+  "nickname": "17-09-OC-P17",
+  "source_uid": "37882@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "340718",
+      "stem_html": "Sýndu hvarfganginn fyrir efnahvarf <i>p</i>-metýlfenóls með 2-metýlprópeni og H<sub>3</sub>PO<sub>4</sub>-hvata til að fá matvælaaukefnið BHT.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Róteindun 2-metýlprópens gefur <i>tert</i>-bútýlkatjónina, sem tekur þátt í rafseknu arómatísku skiptihvarfi."
+        }
+      ]
+    }
+  ]
+}

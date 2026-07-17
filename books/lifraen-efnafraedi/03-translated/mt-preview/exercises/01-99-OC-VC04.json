@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-VC04",
+  "source_uid": "37558@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352083",
+      "stem_html": "<p>Eftirfarandi líkan er mynd af aspartami, C<sub>14</sub>H<sub>18</sub>N<sub>2</sub>O<sub>5</sub>, þekkt undir mörgum vöruheitum, þar á meðal NutraSweet. Aðeins tengingar milli frumeinda eru sýndar; margföld tengi eru ekki tilgreind. Ljúktu við byggingu aspartams og tilgreindu staðsetningu margfaldra tengja (svart = C, rautt = O, blátt = N, grátt = H).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6e56644cb9de087c0c38a4a11eeeffd69477b61e/OChem_01_EC_004.jpg\" alt=\"The ball and stick model of aspartame where grey, black, blue and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

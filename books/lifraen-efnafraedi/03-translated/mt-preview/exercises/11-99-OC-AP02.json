@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP02",
+  "source_uid": "37381@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355346",
+      "stem_html": "<p>Eftirfarandi Walden-hringur hefur verið framkvæmdur: Útskýrið niðurstöðurnar og tilgreinið hvar umsnúningur á sér stað.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d1430db5a456437d3b6b47119e0afe1192556ce/OChem_11_EC_024.jpg\" alt=\"Two reactions of a compound with alpha subscript D equals 33. In first and second reactions, compounds with alpha subscript D equal to negative 19.9 and 23.5, respectively, are formed.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

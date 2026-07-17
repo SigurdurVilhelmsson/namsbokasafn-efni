@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP17",
+  "source_uid": "38804@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360949",
+      "stem_html": "<p>Þegar karvón er hitað með brennisteinssýruvatnslausn breytist það í karvakról. Leggðu til hvarfgang fyrir ísómerunina.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d966c2cd77adfb346d2181521b4964b83afb0d9e/OChem_22_EC_028.jpg\" alt=\"When heated, carvone reacts with aqueous sulfuric acid to yield carvacrol.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

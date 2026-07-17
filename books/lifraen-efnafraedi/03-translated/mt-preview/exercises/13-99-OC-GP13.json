@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP13",
+  "source_uid": "37530@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338241",
+      "stem_html": "<p>Efnasamband <b>F</b>, kolvetni með M<sup>+</sup> = 96 í massarófi sínu, hvarfast við HBr og myndar efnasamband <b>G</b>. Stingdu upp á byggingu fyrir <b>F</b> og <b>G</b>, en <sup>13</sup>C NMR-rófsgögn þeirra eru gefin hér að neðan.</p>\n<p><b>Efnasamband F</b></p>\n<ul style=\"list-style-type:none\">\n<li>Breiðbandsafþreytt <sup>13</sup>C NMR: 27,6, 29,3, 32,2, 132,4 <i>δ</i></li>\n<li>DEPT-90: 132,4 <i>δ</i></li>\n<li>DEPT-135: jákvæður toppur við 132,4 <i>δ;</i> neikvæðir toppar við 27,6, 29,3, 32,2 <i>δ</i></li>\n</ul>\n<p><b>Efnasamband G</b></p>\n<ul style=\"list-style-type:none\">\n<li>Breiðbandsafþreytt <sup>13</sup>C NMR: 25,1, 27,7, 39,9, 56,0 <i>δ</i></li>\n<li>DEPT-90: 56,0 <i>δ</i></li>\n<li>DEPT-135: jákvæður toppur við 56,0 <i>δ;</i> neikvæðir toppar við 25,1, 27,7, 39,9 <i>δ</i></li>\n</ul>",
+      "collaborator_solutions": []
+    }
+  ]
+}

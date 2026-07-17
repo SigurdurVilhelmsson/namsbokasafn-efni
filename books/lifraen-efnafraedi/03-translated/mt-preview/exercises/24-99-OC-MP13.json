@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP13",
+  "source_uid": "38995@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361659",
+      "stem_html": "<p>Eitt af þeim efnahvörfum sem notuð eru við að ákvarða röð kirna í DNA-þræði er efnahvarf við hýdrasín. Leggðu til hvarfgang fyrir eftirfarandi efnahvarf, sem á sér stað með samtengdri álagningu í upphafi og síðan innansameinda amíðmyndun.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d184d8e428bdc513203a77d6b300f9efcff32109/OChem_24_EC_028.jpg\" alt=\"A six-membered ring with two incorporated nitrogens, two carbonyls, and two methyl substituents reacts with hydrazine to form an amide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

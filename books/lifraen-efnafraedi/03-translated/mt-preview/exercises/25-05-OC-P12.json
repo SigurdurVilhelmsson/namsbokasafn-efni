@@ -1,0 +1,19 @@
+{
+  "nickname": "25-05-OC-P12",
+  "source_uid": "39050@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358758",
+      "stem_html": "Mynd 25.6 sýnir aðeins <i>β</i>-pýranósa- og <i>β</i>-fúranósa-anómerur <small style=\"font-variant: small-caps\">D</small>-frúktósa. Teiknaðu <i>α</i>-pýranósa- og <i>α</i>-fúranósa-anómerurnar.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12777d9ccb9e43b706ea69419950a60f59be47fa/OChem_25_EC_207.jpg\" alt=\"Structures of alpha D-fructopyranose and alpha-D fructofuranose with 6-membered and 5-membered  ether rings, respectively. In both structures, the anomeric  O H group on C 2 is pointing down.\">"
+        }
+      ]
+    }
+  ]
+}

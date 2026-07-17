@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-VC02",
+  "source_uid": "38716@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361167",
+      "stem_html": "<p>Sýndu myndefnið, þar með talið handhverfisefnafræði, sem myndi verða til úr efnahvarfi eftirfarandi epoxíðs við HBr:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76f26091552f41dc5ff3dbd929e25c5bc62f4565/OChem_18_EC_016.jpg\" alt=\"A ball-and-stick model with a benzene ring linked to an epoxide ring which is connected to hydrogen and two methyl groups on both sides.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

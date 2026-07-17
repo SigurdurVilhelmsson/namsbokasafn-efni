@@ -1,0 +1,30 @@
+{
+  "nickname": "22-99-OC-AP06",
+  "source_uid": "38810@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "360982",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a83848b3aff1b9347edfddc720074bae419a623d/OChem_22_EC_034a.jpg\" alt=\"When heated, a compound which has two carboxylic acid groups are bonded to the same carbon of a cyclohexane ring reacts to form an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360983",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1084af37c124cbb706b3d6a8c59c4d66b94aa847/OChem_22_EC_034b.jpg\" alt=\"1, 3-cyclopentanedione reacts first with sodium ethoxide and then with methyl iodide to yield an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360984",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f33666e9f450b855cedea1a0731bbc43e753dc67/OChem_22_EC_034c.jpg\" alt=\"Butanoic acid reacts with bromine and phosphorus tribromide, yielding an unknown product which further reacts with water to yield another unknown product. Unknown products are represented by question marks.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360985",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3df28fcc9056bfdadb57346f0938a3d0fda751d9/OChem_22_EC_034d.jpg\" alt=\"Acetophenone  reacts with sodiium hydroxide, water, and iodine to give an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP08",
+  "source_uid": "38914@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359852",
+      "stem_html": "<p>Leusín, ein af tuttugu amínósýrum sem finnast í próteinum, umbrotnar eftir ferli sem felur í sér eftirfarandi skref. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6ac79bd7d53eb07bd00b8a7ae93b1ebb0c4a061/OChem_23_EC_021.jpg\" alt=\"The reaction shows the metabolism of 3-hydroxy-3-methyl-glutaryl coenzyme A to acetyl coenzyme A and acetoacetate. The acetoacetate structure has a negative charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "13-03-OC-P05",
+  "source_uid": "37471@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Þegar <sup>1</sup>H NMR-róf asetóns, CH<sub>3</sub>COCH<sub>3</sub>, er skráð á tæki sem starfar á 200 MHz, sést einn skarpur vok mynd við 2,1 <i>δ</i>.",
+  "questions": [
+    {
+      "id": "337974",
+      "stem_html": "Hversu mörgum hertsum niður sviðið frá TMS samsvarar vok mynd asetóns?",
+      "collaborator_solutions": [
+        {
+          "content_html": "420 Hz"
+        }
+      ]
+    },
+    {
+      "id": "337975",
+      "stem_html": "Ef <sup>1</sup>H NMR-róf asetóns er skráð á 500 MHz, hver væri staða gleypninnar í <i>δ</i> einingum?",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,1 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "337976",
+      "stem_html": "Hversu mörgum hertsum niður sviðið frá TMS samsvarar þessi 500 MHz vok mynd?",
+      "collaborator_solutions": [
+        {
+          "content_html": "1050 Hz"
+        }
+      ]
+    }
+  ]
+}

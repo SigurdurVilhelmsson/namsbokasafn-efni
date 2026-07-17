@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-VC03",
+  "source_uid": "36525@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver, ef einhver, af eftirfarandi byggingum táknar mesó-efnasambönd? (Blátt = N, grænt = Cl.)",
+  "questions": [
+    {
+      "id": "354143",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fa27e7f08164c8c63c70a5302afe15c2543253/OChem_05_EC_003a.jpg\" alt=\"The ball-and-stick model has a cyclopentane ring. C1 and C3 are each bonded to cis hydroxyl groups where red spheres represent oxygen atoms.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354144",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c62319505e49b8a5a3ce71f9ec19a32bdfadfec7/OChem_05_EC_003b.jpg\" alt=\"The ball-and-stick model has a 5-carbon chain. C2 and C4 are each bonded to an amino group where blue spheres represent nitrogen atoms.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354145",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7fdcd1592f2ae30c5d3052b6fa757d3abbe1e3c1/OChem_05_EC_003c.jpg\" alt=\"The ball-and-stick model has a 4-carbon chain. C2 and C3 are each bonded to a chlorine atom where green spheres represent chlorine atoms.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

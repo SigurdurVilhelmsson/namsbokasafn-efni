@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-AP24",
+  "source_uid": "38951@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Efnasambandið sem þekkt er sem Hagemann-ester er framleitt með því að meðhöndla efnablöndu af formaldehýði og etýlasetóasetati með basa, fylgt eftir með sýruhvataðri afkarboxýleringu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b424f51038a4499043067929147857ed264cf319/OChem_23_EC_048.jpg\" alt=\"Ethyl acetoacetate reacts with formaldehyde in the presence of sodium ethoxide and ethanol, then hydronium ion to yield Hagemann’s ester, carbon dioxide, and ethanol.\">",
+  "questions": [
+    {
+      "id": "359939",
+      "stem_html": "Fyrsta skrefið er aldól-lík þétting milli etýlasetóasetats og formaldehýðs sem gefur af sér <i>α</i>,<i>β</i>-ómettað myndefni. Skrifaðu efnahvarfið og sýndu byggingu myndefnisins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359940",
+      "stem_html": "Annað skrefið er Michael-efnahvarf milli etýlasetóasetats og ómettaða myndefnisins úr fyrsta skrefinu. Sýndu byggingu myndefnisins.",
+      "collaborator_solutions": []
+    }
+  ]
+}

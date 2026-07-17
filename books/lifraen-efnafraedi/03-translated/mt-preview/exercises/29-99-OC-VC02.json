@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-VC02",
+  "source_uid": "39312@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358135",
+      "stem_html": "<p>Greindu eftirfarandi milliefni í sítrónusýruhringnum og segðu til um hvort það hafi <i>R</i> eða <i>S</i> handhverfu:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1148b245c1671d7b334ba3d1b2c22099ff17643b/OChem_29_EC_002.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with two  carboxylate anions at C1 and C4, and a hydroxyl group at C2\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

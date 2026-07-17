@@ -1,0 +1,19 @@
+{
+  "nickname": "10-02-OC-P04",
+  "source_uid": "37250@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "333358",
+      "stem_html": "Með hliðsjón af hlutfallslegum hvarfgirnum 1°, 2° og 3° vetnisfrumeinda, hvaða myndefni myndir þú búast við að fá úr einklórun 2-metýlbútans? Hver væri áætluð prósenta hvers myndefnis? (Ekki gleyma að taka tillit til fjölda hverrar tegundar vetnis.)",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-klór-2-metýlbútan (29%), 1-klór-3-metýlbútan (14%), 2-klór-2-metýlbútan (24%), 2-klór-3-metýlbútan (33%)"
+        }
+      ]
+    }
+  ]
+}

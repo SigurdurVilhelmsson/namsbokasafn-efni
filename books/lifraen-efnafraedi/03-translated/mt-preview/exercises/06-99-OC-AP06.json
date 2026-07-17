@@ -1,0 +1,30 @@
+{
+  "nickname": "06-99-OC-AP06",
+  "source_uid": "37327@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Fylgdu flæði rafeinda sem sýnt er með bogadregnum örvum í hverju eftirfarandi skautuðu efnahvarfa og spáðu fyrir um myndefnin sem myndast:",
+  "questions": [
+    {
+      "id": "353351",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--889254a719666f2d630e9191aee007dc349b6f49/OChem_06_EC_017a.jpg\" alt=\"2-methoxypropan-2-ol undergoes a reversible reaction with hydroxide to produce unknown product(s), depicted by a question mark. Arrows indicate hydroxide abstracts alcohol hydrogen, and methoxide leaves.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353352",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--186d1d8473251ac431a7f57e8bf7a2fb20618a26/OChem_06_EC_017b.jpg\" alt=\"Acetone undergoes a reversible reaction with hydroxide to produce unknown product(s), depicted by a question mark. Arrows indicate hydroxide abstracts alpha hydrogen, pushing electrons toward carbonyl oxygen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353353",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2edae4cb373fac68553375684990f74a675c60d/OChem_06_EC_017c.jpg\" alt=\"Protonated acetone undergoes a reversible reaction with water to produce unknown product(s), depicted by a question mark. Arrows indicate water attacks carbonyl, pushing electrons toward carbonyl oxygen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353354",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--728b1b3d7ec105ebfbf293dbb4a1f400bf04194f/OChem_06_EC_017d.jpg\" alt=\"1-bromo-1,2-dimethylcyclohexane undergoes a reversible reaction with methoxide to produce unknown product(s), depicted by a question mark. Arrows indicate methoxide abstracts C2 hydrogen, bromine leaves.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "02-99-OC-AP50",
+  "source_uid": "36162@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Reiknaðu p<i>K</i><sub>a</sub>-gildi út frá eftirfarandi <i>K</i><sub>a</sub>-gildum:",
+  "questions": [
+    {
+      "id": "323787",
+      "stem_html": "Nítrómetan, <i>K</i><sub>a</sub> = 5,0 × 10<sup>–11</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323788",
+      "stem_html": "Akýlsýra, <i>K</i><sub>a</sub> = 5,6 × 10<sup>–5</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

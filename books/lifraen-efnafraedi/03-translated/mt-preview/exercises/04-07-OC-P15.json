@@ -1,0 +1,19 @@
+{
+  "nickname": "04-07-OC-P15",
+  "source_uid": "36486@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "328995",
+      "stem_html": "Hver er orkumunurinn á áslægum og miðlægum stellingum sýklóhexanóls (hýdroxýsýklóhexans)?",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,2 kJ/mól"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "04-99-OC-AP32",
+  "source_uid": "36559@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu til um hvort hver eftirfarandi hliðarhópa á stera sé öxul- eða miðlægur. (Hliðarhópur sem er „upp“ er efst á sameindinni eins og hún er teiknuð og hliðarhópur sem er „niður“ er neðst.)",
+  "questions": [
+    {
+      "id": "351145",
+      "stem_html": "Hliðarhópur upp við C3",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351146",
+      "stem_html": "Hliðarhópur niður við C7",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351147",
+      "stem_html": "<p>Hliðarhópur niður við C11</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a38d5450ce3b3ac28be616a53eb6667a8d52c505/OChem_04_EC_016.jpg\" alt=\"Chair conformation of the steroid ring system with three cyclohexane rings fused together and one cyclopentane ring. Hydrogen atom and  methyl groups are bonded to the top face of the ring junctions.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nickname": "14-99-OC-AP28",
+  "source_uid": "37717@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Svaraðu eftirfarandi spurningum fyrir 1,3,5-sýklóheptatríen.",
+  "questions": [
+    {
+      "id": "338806",
+      "stem_html": "Hversu mörg <i>p</i>-frumeindasvigrúm eru í samoka kerfinu?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338807",
+      "stem_html": "Hversu mörg sameindasvigrúm lýsa samoka kerfinu?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338808",
+      "stem_html": "Hversu mörg sameindasvigrúm eru bindandi sameindasvigrúm?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338809",
+      "stem_html": "Hversu mörg sameindasvigrúm eru andbindandi sameindasvigrúm?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338810",
+      "stem_html": "Hvaða sameindasvigrúm eru fyllt með rafeindum?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338811",
+      "stem_html": "Ef þessi sameind myndi gleypa ljóseind útfjólublás ljóss, á milli hvaða tveggja sameindasvigrúma myndi rafeind færast (vertu nákvæm/ur)?",
+      "collaborator_solutions": []
+    }
+  ]
+}

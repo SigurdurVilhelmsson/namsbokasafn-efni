@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP10",
+  "source_uid": "38797@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360937",
+      "stem_html": "<p>Leggðu til hvarfgang með bogadregnum örvum fyrir eftirfarandi efnahvarf, sem er eitt af skrefunum í lífsmíði amínósýrunnar týrósíns.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d1fe300188505ecb6d91ade34068da9e79e9022/OChem_22_EC_022.jpg\" alt=\"A reactant comprising a cyclohexadiene ring with substituents attached para to the carbonyl groupundergoes a chemical reaction to yield tyrosine and carbon dioxide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP14",
+  "source_uid": "36666@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hverjar af eftirfarandi <i>E,Z</i>-merkingum eru réttar og hverjar eru rangar?",
+  "questions": [
+    {
+      "id": "354427",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--878cd5316bef221f830f655fd7dc3989d3353275/OChem_07_EC_021a.jpg\" alt=\"The structure labeled Z shows C1 of a cyclohexane ring double bonded to carbon, which is bonded to a carboxylic acid group (up). C3 (up) is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354428",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0bfa559049ed4befcb6aa77dba191140db7a5364/OChem_07_EC_021b.jpg\" alt=\"The structure labeled E has a double bond with hydrogen (up) and methyl (down) substituents on the left and allyl (up) and s-butyl (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354429",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24a112019da52adfb27b922321050f42c488b307/OChem_07_EC_021c.jpg\" alt=\"Structure labeled Z has double bond. C1 has bromine (up). C2 has C H 2 N H 2 (up) and C H 2 N H C H 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354430",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29cafeed8985165a9744fdd946bad8adc9508ede/OChem_07_EC_021d.jpg\" alt=\"Structure labeled E has double bond. C1 has nitrile (up) and C H 2 N (C H 3) 2. C2 has methyl (up) and ethyl.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354431",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12fb08546a144aba435d5435275f53a131368a57/OChem_07_EC_021e.jpg\" alt=\"The structure labeled Z shows C1 of cyclopentane double bonded to carbon, which is single bonded to bromine and hydrogen atom.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354432",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ff8b471ed6b2af40f3b6edfa7913c20fd87438e/OChem_07_EC_021f.jpg\" alt=\"Structure labeled E has double bond. C1 has hydroxymethyl (up) and C H 2 O C H 3. C2 has carboxyl (up) and acetyl.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

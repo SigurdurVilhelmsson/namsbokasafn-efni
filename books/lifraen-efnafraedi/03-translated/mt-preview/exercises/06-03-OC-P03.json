@@ -1,0 +1,19 @@
+{
+  "nickname": "06-03-OC-P03",
+  "source_uid": "37302@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357699",
+      "stem_html": "<p>Notaðu bognar örvar með einum oddi og leggðu til hvarfgang fyrir myndun sýklópentanhrings prostaglandíns H<sub>2</sub>.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70147ea76e37cd9033aa6965d13335ab101d323f/OChem_06_03_009.jpg\" alt=\"Electron movement results in formation of cyclopentane ring in a prostaglandin H 2 radical.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b5cc87503dcf953d52309bb6553d98eb189e37d/OSX_OrgChem_06_03_cyclopent_img.jpg\" alt=\"The mechanism for the formation of cyclopentane ring in prostaglandin H 2 radical.\">"
+        }
+      ]
+    }
+  ]
+}

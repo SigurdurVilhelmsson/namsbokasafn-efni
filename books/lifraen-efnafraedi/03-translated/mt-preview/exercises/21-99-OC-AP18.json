@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP18",
+  "source_uid": "38212@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361493",
+      "stem_html": "<p>Hver er bygging fjölliðunnar sem myndast við meðhöndlun <i>β</i>-própíólaktóns með litlu magni af hýdroxíðjón?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f302eed347b63c2074d10fce0e78da815327d84/OChem_21_EC_044.jpg\" alt=\"The structure of beta-propiolactone comprises of a four-membered ring with a carbonyl group linked to an oxygen atom in the ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

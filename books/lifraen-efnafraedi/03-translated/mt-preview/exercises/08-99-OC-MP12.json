@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP12",
+  "source_uid": "37119@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353490",
+      "stem_html": "<p>Díklórkarben er hægt að mynda með því að hita natríumtríklórasetat. Settu fram tillögu að hvarfgangi fyrir efnahvarfið og notaðu sveigðar örvar til að sýna hreyfingu rafeinda í hverju skrefi. Hvaða tengsl hefur hvarfgangurinn þinn við basahvatað brottnám HCl úr klóróformi?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34e9aae220a042e6e5603bd4cea0730982bd6f87/OChem_08_EC_027.jpg\" alt=\"A reaction shows sodium trichloroacetate heated at 70 degrees Celsius to form dichlorocarbene, carbon dioxide, and sodium chloride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

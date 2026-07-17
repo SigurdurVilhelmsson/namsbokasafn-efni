@@ -1,0 +1,19 @@
+{
+  "nickname": "25-03-OC-P07",
+  "source_uid": "39045@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358746",
+      "stem_html": "(+)-Arabínósi, aldópentósi sem er víða að finna í plöntum, er kerfisbundið nefndur (2<i>R</i>,3<i>S</i>,4<i>S</i>)-2,3,4,5-tetrahýdroxýpentanal. Teiknið Fischer-vörpun af (+)-arabínósa og tilgreinið hvort hann sé <small style=\"font-variant: small-caps\">D</small>-sykur eða <small style=\"font-variant: small-caps\">L</small>-sykur.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85044b350acb6e2a004e7c5d07d6276ddd76a019/OChem_25_EC_203.jpg\" alt=\"The structure of L-arabinose which is an aldopentose containing five carbon atoms and including an aldehyde functional group.\">"
+        }
+      ]
+    }
+  ]
+}

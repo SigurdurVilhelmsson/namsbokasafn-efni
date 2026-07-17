@@ -1,0 +1,30 @@
+{
+  "nickname": "13-99-OC-AP02",
+  "source_uid": "37496@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi <sup>1</sup>H NMR-gleypnisvið voru fengin með rófgreini sem starfar á 300 MHz. Umbreyttu efnahliðruninni úr <i>Δ</i>-einingum í hertza niður sviðið frá TMS.",
+  "questions": [
+    {
+      "id": "338096",
+      "stem_html": "2,1 <i>Δ</i>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338097",
+      "stem_html": "3,45 <i>Δ</i>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338098",
+      "stem_html": "6,30 <i>Δ</i>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338099",
+      "stem_html": "7,70 <i>Δ</i>",
+      "collaborator_solutions": []
+    }
+  ]
+}

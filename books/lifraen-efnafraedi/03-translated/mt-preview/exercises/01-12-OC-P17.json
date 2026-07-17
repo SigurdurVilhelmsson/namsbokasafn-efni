@@ -1,0 +1,19 @@
+{
+  "nickname": "01-12-OC-P17",
+  "source_uid": "37554@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360226",
+      "stem_html": "<p>Eftirfarandi sameindalíkan er mynd af <i>para</i>-amínóbensósýru (PABA), virka innihaldsefninu í mörgum sólarvörnum. Sýndu staðsetningu margfaldra efnatengja og teiknaðu beinagrindarmynd (svart = C, rautt = O, blátt = N, grátt = H).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05c964f4c855c165cfa3c8161a6db3f5ab637449/OChem_01_12_007.jpg\" alt=\"The ball and stick model of para-aminobenzoic acid abbreviated as PABA.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37d0477dcd126d2f071733a664c5525b8a43c912/OChem_01_EC_211.jpg\" alt=\"The chemical structure of para-aminobenzoic acid.\">"
+        }
+      ]
+    }
+  ]
+}

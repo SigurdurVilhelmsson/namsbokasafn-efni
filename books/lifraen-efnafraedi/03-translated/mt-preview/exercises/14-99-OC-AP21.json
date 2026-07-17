@@ -1,0 +1,25 @@
+{
+  "nickname": "14-99-OC-AP21",
+  "source_uid": "37710@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu sameindunum í hverju eftirfarandi setta eftir því hvar þú myndir búast við að finna bylgjulengd hámarksgleypni þeirra í UV-litrófsgreiningu, frá stystu til lengstu bylgjulengdar.",
+  "questions": [
+    {
+      "id": "358511",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f0ffb057e63cc5ba05c01fca745dd41fe9e16cd2/OChem_14_EC_024a.jpg\" alt=\"Three cyclohexadienes fused to cyclohexenes. First 1,4,5,8-tetrahydronaphthalene. Second 1,6-dihydronaphthalene. Third 1,2,5,6-eetrahydronaphthaline.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358512",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd1976905049bc8ce5fecca29e8a6f61eb901949/OChem_14_EC_024b.jpg\" alt=\"Three 1,3-cyclohexadiene rings. First: with methylene groups at C 5 and C 6. Second: with methyl groups at C 5 and C 6. Third: with a methylene group at C 5 and a methyl group at C 6.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358513",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--197ab14d97ac24e9e81719f15d04c537f8e79e74/OChem_14_EC_024c.jpg\" alt=\"Three structures with a benzene ring at the end of a 5-carbon chain. First: Double bonds at C 1 and C 4 of the chain. Second: Double bonds at C 1 and C 3 of the chain. Third: Double bonds at C 2 and C 4 of the chain.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "24-09-OC-P21",
+  "source_uid": "38974@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347569",
+      "stem_html": "Hvert er róteindunarhlutfall niturfrumeindar imídasóls í histidíni við lífeðlisfræðilegt pH 7,3 <b>(kafli 24.5)</b>?",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,1% róteindað"
+        }
+      ]
+    }
+  ]
+}

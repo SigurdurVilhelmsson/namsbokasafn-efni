@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-AP13",
+  "source_uid": "37507@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu tilgreind sett af róteindum sem ótengd, hómótópísk, enantíótópísk eða díasteríótópísk:",
+  "questions": [
+    {
+      "id": "358377",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a7d0301ea3668d66d984506b1e729972d579e73/OChem_13_EC_009a.jpg\" alt=\"A cyclohexane ring is fused to another cyclohexane ring. The top and bottom fusion sites are wedge bonded to hydrogen (highlighted) and dash bonded to another hydrogen (highlighted), respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358378",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--139b5d37ecf422c024147cff7d25b6881b9c95c3/OChem_13_EC_009b.jpg\" alt=\"A cyclohexane ring is fused to a cyclopentane ring. The top and bottom fusion sites are wedge bonded to hydrogen (highlighted) and dash bonded to another hydrogen (highlighted), respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358379",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a3d566110457f4069425d80945a4d27fd90de1f/OChem_13_EC_009c.jpg\" alt=\"A structure of bicyclo[3.1.1.]heptane. C 2 has a methylene substituent. C 6 has two methyl substituents with highlighted hydrogens.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

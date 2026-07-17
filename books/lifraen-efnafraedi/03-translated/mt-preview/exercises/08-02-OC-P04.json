@@ -1,0 +1,19 @@
+{
+  "nickname": "08-02-OC-P04",
+  "source_uid": "37088@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357721",
+      "stem_html": "Álagning HCl á 1,2-dímetýlsýklóhexen gefur efnablöndu af tveimur myndefnum. Sýndu staðefnafræði hvors um sig og útskýrðu hvers vegna efnablanda myndast.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--88b577684e97fa12feba0b8a25e4d404c5810930/OChem_08_EC_201.jpg\" alt=\"First structure has cyclohexane ring with wedge bonded chlorine, dash bonded methyl at C1, and dash bonded methyl at C2. In second structure, wedge and dash bonds interchange at C1.\">"
+        }
+      ]
+    }
+  ]
+}

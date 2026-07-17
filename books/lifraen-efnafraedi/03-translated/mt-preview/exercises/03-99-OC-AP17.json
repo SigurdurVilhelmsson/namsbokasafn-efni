@@ -1,0 +1,40 @@
+{
+  "nickname": "03-99-OC-AP17",
+  "source_uid": "36454@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefnið eftirfarandi efnasambönd samkvæmt IUPAC-nafnakerfinu:",
+  "questions": [
+    {
+      "id": "357187",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61a469242ff384961ccccbda45c597a39976dc81/OChem_03_EC_006a.jpg\" alt=\"The compound is a five membered ring with a C H 3 group on the second position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357188",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc719d2d28b02d505db784b7afaf84aaf3c6ca5b/OChem_03_EC_006b.jpg\" alt=\"The given compound is a four membered ring. Two C H 3 groups are present on the third position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357189",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78846850831a1247b9006c518f110c86037a1eca/OChem_03_EC_006c.jpg\" alt=\"The given compound is a six membered ring. A C H 3 group is present on C 2 and two C H 3 groups are present on C3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357190",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fcaff58f7b7474d2df96f79650c4e0d1ba72dff/OChem_03_EC_006d.jpg\" alt=\"The given compound is a seven membered ring with a C H 2 C H 3 on the third position and C H 3 on the sixth position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357191",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfea8acfe3fc8181d926b8a637b519d9684aaa72/OChem_03_EC_006e.jpg\" alt=\"The compound comprises seven carbon with a C H 3 on the C4 carbon and a C H 3 and C H 2 C H 3 on the C6 carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357192",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e86f19d8d06c01711fc602fc9f05ceb1e39fca4/OChem_03_EC_006f.jpg\" alt=\"A six membered ring with two C H 3 groups on C 2 carbon and two C H 3 groups on the C 3 carbon is shown.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

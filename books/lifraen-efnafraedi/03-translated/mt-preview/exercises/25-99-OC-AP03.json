@@ -1,0 +1,30 @@
+{
+  "nickname": "25-99-OC-AP03",
+  "source_uid": "39076@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvert er handhverfutengsl <small style=\"font-variant: small-caps\">D</small>-ríbósa og <small style=\"font-variant: small-caps\">L</small>-xýlósa? Hvaða alhæfingar getur þú gert um eftirfarandi eiginleika þessara tveggja sykra?",
+  "questions": [
+    {
+      "id": "348103",
+      "stem_html": "Bræðslumark",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348104",
+      "stem_html": "Leysni í vatni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348105",
+      "stem_html": "Sérsnúningur",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348106",
+      "stem_html": "Eðlismassi",
+      "collaborator_solutions": []
+    }
+  ]
+}

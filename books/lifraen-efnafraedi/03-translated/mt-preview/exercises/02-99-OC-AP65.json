@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-AP65",
+  "source_uid": "36177@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða millisameindakraftur er aðallega ábyrgur fyrir hverri athugun hér að neðan?",
+  "questions": [
+    {
+      "id": "324655",
+      "stem_html": "CH<sub>3</sub>(CH<sub>2</sub>)<sub>29</sub>CH<sub>3</sub>, sem er hluti af paraffínvaxi, er fast efni við stofuhita á meðan CH<sub>3</sub>(CH<sub>2</sub>)<sub>6</sub>CH<sub>3</sub> er vökvi.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "324656",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH hefur hærra suðumark en CH<sub>4</sub>.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "324657",
+      "stem_html": "CH<sub>3</sub>CO<sub>2</sub>H, sem finnst í ediki, leysist upp í vatni en ekki í olíu. Gerðu ráð fyrir að olía sé CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>CH<sub>3</sub>.",
+      "collaborator_solutions": []
+    }
+  ]
+}

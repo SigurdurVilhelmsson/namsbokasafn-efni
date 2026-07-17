@@ -1,0 +1,19 @@
+{
+  "nickname": "11-01-OC-P01",
+  "source_uid": "37342@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336926",
+      "stem_html": "Hvaða myndefni myndir þú búast við úr kjarnsæknu skiptihvarfi (<i>S</i>)-2-brómhexans við asetatjón, CH<sub>3</sub>CO<sub>2</sub><sup>–</sup>? Gerðu ráð fyrir að andhverfing stellingar eigi sér stað og sýndu handhverfu bæði hvarfefnis og myndefnis.",
+      "collaborator_solutions": [
+        {
+          "content_html": "(<i>R</i>)-1-metýlpentýlasetat, CH<sub>3</sub>CO<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

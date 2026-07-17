@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP19",
+  "source_uid": "39388@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355114",
+      "stem_html": "<p>Ljósgreining á <i>cis</i>-sýklóbútenhverfunni í dæmi 30-37 gefur <i>cis</i>-sýklódódekaen-7-ýn, en ljósgreining á trans-hverfunni gefur <i>trans</i>-sýklódódekaen-7-ýn. Útskýrðu þessar niðurstöður og tilgreindu gerð og staðefnafræði hringhverfa efnahvarfsins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65323240bcf73c1c6939921eead0e2dbf9cb5f13/OChem_30_EC_023.jpg\" alt=\"Cis cyclobutene isomer undergoes a photochemical reaction to give cis-cyclododecaen-7-yne. The trans-isomer undergoes a photochemical reaction to give trans-cyclododecaen-7-yne. A double bond is between C 1 and C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

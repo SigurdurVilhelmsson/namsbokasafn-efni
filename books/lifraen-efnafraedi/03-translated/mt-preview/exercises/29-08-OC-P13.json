@@ -1,0 +1,19 @@
+{
+  "nickname": "29-08-OC-P13",
+  "source_uid": "39307@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349284",
+      "stem_html": "Skrifaðu hvarfgang fyrir skref 6 í glúkógenmyndun, afoxun 3-fosfóglýserýlfosfats með NADH/H<sup>+</sup> sem gefur glýseraldehýð-3-fosfat.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnahvarfið á sér stað með tveimur kjarnsæknum asýlskiptihvörfum í röð, það fyrra með cysteinleif í ensíminu, með fosfat sem farhóp, og það síðara með hýdríðgjöf frá NADH, með cysteinleifina sem farhóp."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "nickname": "24-08-OC-P17",
+  "source_uid": "38970@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Leggðu til myndun eftirfarandi efnasambanda úr benseni:",
+  "questions": [
+    {
+      "id": "347550",
+      "stem_html": "<i>N</i>,<i>N</i>-Dímetýlanilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. H<sub>2</sub>/PtO<sub>2</sub>; 3. 2 CH<sub>3</sub>Br"
+        }
+      ]
+    },
+    {
+      "id": "347551",
+      "stem_html": "<i>p</i>-Klóranilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. H<sub>2</sub>/PtO<sub>2</sub>; 3. (CH<sub>3</sub>CO)<sub>2</sub>O; 4. Cl<sub>2</sub>; 5. H<sub>2</sub>O, NaOH"
+        }
+      ]
+    },
+    {
+      "id": "347552",
+      "stem_html": "<i>m</i>-Klóranilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. Cl<sub>2</sub>, FeCl<sub>3</sub>; 3. SnCl<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "347553",
+      "stem_html": "2,4-Dímetýlanilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. H<sub>2</sub>/PtO<sub>2</sub>; 3. (CH<sub>3</sub>CO)<sub>2</sub>O; 4. 2 CH<sub>3</sub>Cl, AlCl<sub>3</sub>; 5. H<sub>2</sub>O, NaOH"
+        }
+      ]
+    }
+  ]
+}

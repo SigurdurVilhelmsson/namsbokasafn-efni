@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-MP26",
+  "source_uid": "36138@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu sveigðu örvarnar til að sýna hvernig rafeindirnar flæða í vok myndinni til vinstri til að gefa þá til hægri.",
+  "questions": [
+    {
+      "id": "351434",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9efa9788c0af5b47c042a6e2eef7f55583798334/OChem_02_EC_007a.jpg\" alt=\"A 4-carbon chain with a double bond and amine at C1 and a positive charge at C3. Its resonance form shows double bonded amine with positive charge on the nitrogen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351435",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87fea02a78ac3356b913f16dff06833850089136/OChem_02_EC_007b.jpg\" alt=\"Two resonance structures of an anionic compound that has a 4-carbon chain with a double bond and an oxygen anion at C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351436",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23daa7ff10824b1a2ffa8e7f88d1aa686306d2a5/OChem_02_EC_007c.jpg\" alt=\"Two resonance structures of the 5-methyl-1,3-cyclohexadiene cation. In the first structure, the cation is at C6; in the second, it is on the opposite side of the methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

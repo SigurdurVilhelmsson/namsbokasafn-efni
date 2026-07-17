@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP05",
+  "source_uid": "37522@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358407",
+      "stem_html": "<p>Langdræg tenging milli róteinda sem eru meira en tvær kolefnisfrumeindir í burtu sést stundum þegar <i>π</i>-efnatengi koma við sögu. Dæmi um þetta má finna í 1-metoxý-1-búten-3-ýni. Ekki aðeins tengist asetýlenróteindin, H<i><sub>a</sub></i>, við vínýlróteindina H<i><sub>b</sub></i>, hún tengist einnig við vínýlróteindina H<i><sub>c</sub></i>, sem er í fjögurra kolefnisfrumeinda fjarlægð. Gögnin eru:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--136e2759daeaac1f2fbb5048920b05225bc29567/OChem_13_EC_019.jpg\" alt=\"1-Methoxy-1-buten-3-yne structure with hydrogen shifts of 3.08 (alkyne). 4.52 (on C 2), and 6.35 (on C 1). J values are also mentioned.\">\n<p>Búðu til trémyndir sem útskýra klofningsmynstur H<i><sub>a</sub></i>, H<i><sub>b</sub></i> og H<i><sub>c</sub></i>.</p>\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

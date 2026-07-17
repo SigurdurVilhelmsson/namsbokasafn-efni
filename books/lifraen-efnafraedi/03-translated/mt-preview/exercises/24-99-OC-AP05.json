@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP05",
+  "source_uid": "39004@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361687",
+      "stem_html": "<p>Histamín, en losun þess í líkamanum veldur nefrennsli og þrengingu í öndunarvegi, hefur þrjár niturfrumeindir. Raðaðu þeim eftir vaxandi basastigi og útskýrðu röðunina.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d19686909e9438218b37e3992eaf65f68d450c9d/OChem_24_EC_035.jpg\" alt=\"The structure of histamine, a five-membered ring incorporating two nitrogens with a carbon between them. There are two double bonds (one nitrogen has a hydrogen), and an ethylamine substituent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

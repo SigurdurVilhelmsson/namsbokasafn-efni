@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-MP06",
+  "source_uid": "37371@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni hvers eftirfarandi efnahvarfs og tilgreindu hvort hvarfgangurinn sé líklega S<sub>N</sub>1, S<sub>N</sub>2, E1, E2 eða E1cB.",
+  "questions": [
+    {
+      "id": "356289",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a46d08c479fde4c613b09a614599f1d08314bf9b/OChem_11_EC_016a.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356290",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aea3caf93e234cfc0aabe1e9b42e2dbc2fc481d6/OChem_11_EC_016b.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356291",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3b535883686bafcba952c62f227624f9cb309b8/OChem_11_EC_016c.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356292",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b23923e46acc9a31f5e6f6f6afa4acd0e9f86ed/OChem_11_EC_016d.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

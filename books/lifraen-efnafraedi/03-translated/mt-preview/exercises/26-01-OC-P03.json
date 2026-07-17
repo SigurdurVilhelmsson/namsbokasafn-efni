@@ -1,0 +1,19 @@
+{
+  "nickname": "26-01-OC-P03",
+  "source_uid": "39214@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359575",
+      "stem_html": "<p>Amínósýran þreónín, (2<i>S</i>,3<i>R</i>)-2-amínó-3-hýdroxýbútansýra, hefur tvær hendnimiðjur.</p>\n<p><b>(a)</b> Teiknaðu þreónín og notaðu venjulegar línur, fleyglínur og brotnar línur til að sýna þrívídd.</p>\n<p><b>(b)</b> Teiknaðu víxlhverfu af þreóníni og merktu hendnimiðjur hennar sem <i>R</i> eða <i>S</i>.</p>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--105dbf13237e51fd264b6bd27b0d5ec76fd9410c/OChem_26_EC_201.jpg\" alt=\"Three structures of threonine. One structure is a Fischer projection of L-threonine. The other two structures represent the diastereomers of L-threonine. The configuration of each carbon atom is mentioned.\">"
+        }
+      ]
+    }
+  ]
+}

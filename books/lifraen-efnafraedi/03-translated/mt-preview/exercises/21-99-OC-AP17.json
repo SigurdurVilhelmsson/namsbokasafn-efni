@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP17",
+  "source_uid": "38211@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361491",
+      "stem_html": "<p><i>Qiana,</i> pólýamíðtrefjar með silkimjúkri áferð, hefur eftirfarandi byggingu. Hverjar eru einliðurnar sem notaðar eru við myndun Qiana?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6446128ae972e0b4c442978be0ca64f8385209ff/OChem_21_EC_043.jpg\" alt=\"Qiana has a repeating unit that comprises of a dicarbonyl group, an amide bond, and two methylene linked cyclohexane rings.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

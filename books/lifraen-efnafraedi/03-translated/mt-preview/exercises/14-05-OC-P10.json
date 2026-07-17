@@ -1,0 +1,19 @@
+{
+  "nickname": "14-05-OC-P10",
+  "source_uid": "37646@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358441",
+      "stem_html": "<p>Spáðu fyrir um myndefni eftirfarandi Diels-Alder-efnahvarfs:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebbb246b81a926180aee45601be901cede3e5d01/OChem_14_05_016.jpg\" alt=\"Ball-and-stick model of cyclohexene bonded to C 2 of propene reacts with 4-carbon chain with double bond at C 2. C 1 and C 4 are carbonyls bonded to methoxy.groups\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ab80070a385e917d3e520cdef20b0b10fa194d1/OChem_14_EC_202.jpg\" alt=\"A cyclohexane is fused to a cyclohexene with the double bond between C1 and C2. There is a methyl at C 2. C 3 and C 4 of second ring are each wedge bonded to C O 2 C H 3.\">"
+        }
+      ]
+    }
+  ]
+}

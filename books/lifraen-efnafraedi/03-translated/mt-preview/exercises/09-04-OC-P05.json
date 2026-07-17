@@ -1,0 +1,28 @@
+{
+  "nickname": "09-04-OC-P05",
+  "source_uid": "37194@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Með hvaða alkínum myndir þú byrja til að búa til eftirfarandi ketón?",
+  "questions": [
+    {
+      "id": "353717",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97af3a32e00884c8d26df797e9fec5011c30ee54/OChem_09_04_006a.jpg\" alt=\"A C5 chain with a keto group on the C2 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-pentín"
+        }
+      ]
+    },
+    {
+      "id": "353718",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--992853ac9879f309db24f069418a741c28685111/OChem_09_04_006b.jpg\" alt=\"A C5 chain with a keto group on the C3 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-pentín"
+        }
+      ]
+    }
+  ]
+}

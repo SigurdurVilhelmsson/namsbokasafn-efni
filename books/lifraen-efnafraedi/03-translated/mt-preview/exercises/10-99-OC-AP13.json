@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP13",
+  "source_uid": "37276@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu eftirfarandi stakeindum frá þeirri stöðugustu til þeirrar óstöðugustu.",
+  "questions": [
+    {
+      "id": "352693",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d03f3c91476f4a1a8250f7af3d0a89ec76fe758/OChem_10_EC_027a.jpg\" alt=\"The figure shows three structures of 2-hexene radicals. The radical is on C2 in one structure, C6 in another, and C5 in the third.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352694",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--def1aa6a25b888999314c054ed51b532a3d69f92/OChem_10_EC_027b.jpg\" alt=\"Three structures of cyclohexene radical with the radical located on C3, C1, and C4 positions, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352695",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fdaa0ce626851e1f73062044d162b87aa9ca3539/OChem_10_EC_027c.jpg\" alt=\"Three structures of isopentane radical with the radical on the C3, C2, and C1 positions, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

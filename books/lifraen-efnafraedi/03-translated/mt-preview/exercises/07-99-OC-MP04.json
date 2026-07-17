@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-MP04",
+  "source_uid": "36648@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354362",
+      "stem_html": "<p>Þegar metýlvínýleter hvarfast við sterka sýru leggst H<sup>+</sup> á C2 í stað C1 eða súrefnisfrumeindarinnar. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc02f6a449038f2b25e24942c4b0b2a0afbb0c16/OChem_07_EC_009.jpg\" alt=\"The structure of methyl vinyl ether shows C1 bonded to a methoxy group and a hydrogen atom. C2 is bonded to two hydrogen atoms.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

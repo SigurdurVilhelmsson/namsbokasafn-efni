@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-VC04",
+  "source_uid": "39233@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359607",
+      "stem_html": "<p>Er eftirfarandi bygging <small style=\"font-variant: small-caps\">D</small>-amínósýra eða <small style=\"font-variant: small-caps\">L</small>-amínósýra? Greindu hana.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ef673a4f92f326b3530d693f661cd8a52bc8628/OChem_26_EC_011.jpg\" alt=\"A ball-and-stick model of a four-carbon amino acid with a carboxylate anion at C 1, an amine at  C 1, and a methyl group at  C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

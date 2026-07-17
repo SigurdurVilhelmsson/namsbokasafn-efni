@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP26",
+  "source_uid": "36589@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Tilgreindu hvort vetnisatómin sem sýnd eru í eftirfarandi sameindum séu pro-<i>R</i> eða pro-<i>S:</i>",
+  "questions": [
+    {
+      "id": "354225",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f27374bd7334d2d44f528302fb683d88a9672a61/OChem_05_EC_020a.jpg\" alt=\"Wedge-dash structure of malic acid. Two arrows point toward the pro-S  and pro-R hydrogen atoms bonded at C3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354226",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba87e3cc79293d14a9b70170b7fb3c0a2bb035ef/OChem_05_EC_020b.jpg\" alt=\"Wedge-dash structure of methionine zwitterion. Arrows point toward the pro-S  and pro-R hydrogen atoms bonded at C3 and C4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354227",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21768d7b44c6d20bfe0ade835c969c0f78a07b7f/OChem_05_EC_020c.jpg\" alt=\"Wedge-dash structure of cysteine zwitterion. Arrows point toward the pro-S and pro-R hydrogen atoms bonded at C3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

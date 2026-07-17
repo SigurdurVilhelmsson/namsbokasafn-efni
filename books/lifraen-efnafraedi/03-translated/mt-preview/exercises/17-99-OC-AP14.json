@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-AP14",
+  "source_uid": "37915@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við að fá úr efnahvarfi 1-metýlsýklóhexanóls við eftirfarandi hvarfefni?",
+  "questions": [
+    {
+      "id": "464157",
+      "stem_html": "NaH",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464158",
+      "stem_html": "HBr",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464159",
+      "stem_html": "H<sub>2</sub>SO<sub>4</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

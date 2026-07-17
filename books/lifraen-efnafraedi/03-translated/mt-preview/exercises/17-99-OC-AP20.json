@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP20",
+  "source_uid": "37921@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359533",
+      "stem_html": "<p>Stingdu upp á byggingu fyrir efnasambandið C<sub>15</sub>H<sub>24</sub>O sem hefur eftirfarandi <sup>1</sup>H NMR-róf. Toppurinn sem merktur er með stjörnu hverfur þegar D<sub>2</sub>O er bætt við sýnið.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--693dfc97c9852f829ea0ecf68188ead502ecf408/OChem_17_EC_040.jpg\" alt=\"H N M R spectrum with shifts at 1.41, 2.24, 5.00, and 6.97 (all singlets). Relative areas of 18, 3, 1, and 2 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

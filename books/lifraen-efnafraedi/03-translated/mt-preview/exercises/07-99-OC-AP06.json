@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP06",
+  "source_uid": "36658@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi sýklóalkena:",
+  "questions": [
+    {
+      "id": "354391",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7796845d552d46d4c4b49a5be8c314e3c2953862/OChem_07_EC_016a.jpg\" alt=\"A six-membered ring with one double bond. There is a methyl group one carbon from the double bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354392",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6998ffe89ee71c15323f1301ef4e38ab425d9e02/OChem_07_EC_016b.jpg\" alt=\"A five-membered ring with one double bond. There are methyl groups on a double-bonded carbon and on the single-bonded carbon next to it.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354393",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21161a6d83705f082657d7a19c06bc37b143751f/OChem_07_EC_016c.jpg\" alt=\"A four-membered ring with two double bonds. There is one ethyl substituent.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354394",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62d3a04699775b4d8b298942dbae4dd687bc910a/OChem_07_EC_016d.jpg\" alt=\"A six-membered ring with two double bonds opposite one another on the ring. There are methyl groups at each end of one double bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354395",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55c789de68785d82901e10240c8af68d74c4437a/OChem_07_EC_016e.jpg\" alt=\"A six-membered ring with two double bonds separated by one single bond. There is one methyl group one carbon away from the end of one double bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354396",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd4669aabc4a0c0fb9a2df230a18730f36d4f795/OChem_07_EC_016f.jpg\" alt=\"An eight-membered ring with two double bonds opposite one another on the ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP15",
+  "source_uid": "39384@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355108",
+      "stem_html": "<p>Karahanaenón, terpenóíð einangrað úr humlaolíu, hefur verið myndað með hitahvarfinu sem sýnt er. Tilgreindu hvers konar hringhverft efnahvarf er um að ræða og útskýrðu hvernig karahanaenón myndast.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--613567a154d3ca9555db4cc223e603342ce6865f/OChem_30_EC_020.jpg\" alt=\"Cyclopentane having oxygen atom, methyl, methine double bonded to methylene, and double bond linked to two methyl groups reacts with heat to form Karahanaenone with double bond at C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

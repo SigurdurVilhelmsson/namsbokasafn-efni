@@ -1,0 +1,64 @@
+{
+  "nickname": "17-01-OC-P01",
+  "source_uid": "37866@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefið IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "359300",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--98e815ccdc8392f8fc9f10b626acbfe370c31758/OChem_17_01_005a.jpg\" alt=\"A six-carbon chain with hydroxyl on C 2 and C 4, and methyl group on C 5.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "5-Metýl-2,4-hexandíól"
+        }
+      ]
+    },
+    {
+      "id": "359301",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--25eea63ca25dd0197dcd3680806a399bb4108c75/OChem_17_01_005b.jpg\" alt=\"A four-carbon chain with hydroxyl and methyl on C 2, and a benzene ring on C 4 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-4-fenýl-2-bútanól"
+        }
+      ]
+    },
+    {
+      "id": "359302",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4364911fc3bee0cddf280da91d5e94b1860edae/OChem_17_01_005c.jpg\" alt=\"The structure of cyclohexanol with two methyl groups on the C 4 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,4-Dímetýlsýklóhexanól"
+        }
+      ]
+    },
+    {
+      "id": "359303",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8555b9a71c75ae3d2090e058a50e1f925f728fb/OChem_17_01_005d.jpg\" alt=\"Cyclopentane ring with hydrogen on wedge and bromine on dash. On the adjacent (clockwise) carbon, hydroxyl on wedge and hydrogen on dash.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-2-Brómsýklópentanól"
+        }
+      ]
+    },
+    {
+      "id": "359304",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d41242395116adfebc5e9f6125f67d17960ef77/OChem_17_01_005e.jpg\" alt=\"A phenol with methyl two carbons and bromine three carbons from the hydroxyl carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-Bróm-3-metýlfenól"
+        }
+      ]
+    },
+    {
+      "id": "359305",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--30c42f2e2228d0d046b0959dbdade88012e0d0b8/OChem_17_01_005f.jpg\" alt=\"Cyclopentene with a hydroxyl on a carbon adjacent to the double bond.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Sýklópenten-1-ól"
+        }
+      ]
+    }
+  ]
+}

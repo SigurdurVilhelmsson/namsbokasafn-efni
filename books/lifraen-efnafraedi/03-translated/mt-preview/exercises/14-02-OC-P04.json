@@ -1,0 +1,19 @@
+{
+  "nickname": "14-02-OC-P04",
+  "source_uid": "37640@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358433",
+      "stem_html": "<p>Sýndu byggingu bæði 1,2- og 1,4-álagningarefna sem myndast við efnahvarf 1 jafngildis af HBr við eftirfarandi efnasamband:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2389ff5deb79615833f3b86783e0581e15fd7f5c/OChem_14_02_007.jpg\" alt=\"The ball-and-stick model shows a cyclohexadiene ring. C 2 and C 3 are each bonded to a methyl group. The gray and white spheres represent carbon and hydrogen atoms, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,2-álagning: 6-bróm-1,6-dímetýlsýklóhexen 1,4-álagning: 3-bróm-1,2-dímetýlsýklóhexen"
+        }
+      ]
+    }
+  ]
+}

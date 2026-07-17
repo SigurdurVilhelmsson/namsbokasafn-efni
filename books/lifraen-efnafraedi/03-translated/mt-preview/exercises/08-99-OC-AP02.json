@@ -1,0 +1,40 @@
+{
+  "nickname": "08-99-OC-AP02",
+  "source_uid": "37160@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Stingdu upp á byggingu alkena sem gefa eftirfarandi myndefni. Fleiri en eitt svar gæti verið rétt í sumum tilvikum.",
+  "questions": [
+    {
+      "id": "353507",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5f2664afc97a1fddd66a54f6151732d8267caf4/OChem_08_EC_033a.jpg\" alt=\"A reaction shows an unknown reactant  reacting with hydrogen on palladium catalyst to form a 6-carbon chain with a methyl group at C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353508",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--556bf657d3b392f0da4636255bae60057c9cd852/OChem_08_EC_033b.jpg\" alt=\"A reaction shows an unknown reactant reacting with hydrogen on palladium to form cyclohexane ring, in which C1 is bonded to two methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353509",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--855e2f197b86bc8beedd433a19c56d30e3f7aaf7/OChem_08_EC_033c.jpg\" alt=\"A reaction shows an unknown reactant reacting with molecular bromine to form a product with 6-carbon chain. C2 and C3 each bond to bromine atom. C5 bonds to methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353510",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5844e5150219bf85626e2bd9607cc9c1a77cef8b/OChem_08_EC_033d.jpg\" alt=\"A reaction shows an unknown reactant reacting with HCl to form a product with a 7-carbon chain. C2 is bonded to chlorine atom. C3 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353511",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46e1f16061dc62f957944bf930e57932b12eaaf9/OChem_08_EC_033e.jpg\" alt=\"A reaction shows an unknown reactant reacting with mercury (II) acetate in water and sodium borohydride to form 5-carbon chain, in which C2 is bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353512",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb7613d6801446fdc926584b22a69a32e768bdc5/OChem_08_EC_033f.jpg\" alt=\"A reaction shows an unknown reactant reacting  with diiodomethane in presence of zinc-copper to form cyclohexane fused to cyclopropane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

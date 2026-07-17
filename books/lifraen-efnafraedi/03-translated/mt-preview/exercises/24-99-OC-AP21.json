@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP21",
+  "source_uid": "39020@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "448132",
+      "stem_html": "Teiknaðu byggingu amínsins sem gaf <sup>1</sup>H NMR-rófið sem sýnt er. <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1809dac8eb0d6799d796785f819df0a4daf90343/OSX_OrgChem_24_97_OChem-24-EC-208_NMRspec.jpg\" alt=\"Proton spectrum with signals at approximate chemical shifts 0.9 (triplet), 1.4 (multiplet), 2 (broad singlet), and 2.55 (triplet) parts per million.\"> Þetta efnasamband hefur einn sterkan topp í IR-rófi sínu við 3280 cm<sup>–1</sup>.",
+      "collaborator_solutions": []
+    }
+  ]
+}

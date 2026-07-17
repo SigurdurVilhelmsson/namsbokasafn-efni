@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-AP21",
+  "source_uid": "37922@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi umbreytingar?",
+  "questions": [
+    {
+      "id": "359537",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fba9becac68ff098a70105513bb0451c32f8e4ec/OChem_17_EC_041a.jpg\" alt=\"Cinnamic acid ((E)-3-phenyl prop-2-enoic acid) reacts with an unknown reagent represented as question mark to form 3-phenylpropanoic acid.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359538",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a132518853b068d85a54ad29b340bf084fe9d31/OChem_17_EC_041b.jpg\" alt=\"Cinnamic acid ((E)-3-phenyl prop-2-enoic acid) reacts with an unknown reagent represented as question mark to form trans-3-phenylprop-2-en-1-ol\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359539",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69100c1fc32eaf21608e60185e28d37ada0a4a25/OChem_17_EC_041c.jpg\" alt=\"Cinnamic acid ((E)-3-phenyl prop-2-enoic acid) reacts with an unknown reagent represented as question mark to form trans-3-phenylprop-2-en-1-thiol\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "05-05-OC-P12",
+  "source_uid": "36504@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354110",
+      "stem_html": "<p>Gefðu upp <i>R</i>- eða <i>S</i>-stellingu fyrir hendnimiðjuna í eftirfarandi sameindalíkani af amínósýrunni metíóníni (blátt = N, gult = S):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--169888aae5c37ad15a4903ff7fb49f966589fd8c/OChem_05_05_015.jpg\" alt=\"The ball-and-stick model of methionine where gray, black, blue, yellow, and red spheres represent hydrogen, carbon, nitrogen, sulfur, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    }
+  ]
+}

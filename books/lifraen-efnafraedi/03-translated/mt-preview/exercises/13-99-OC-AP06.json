@@ -1,0 +1,35 @@
+{
+  "nickname": "13-99-OC-AP06",
+  "source_uid": "37500@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu margar gerðir af ójafngildum róteindum eru til staðar í hverri af eftirfarandi sameindum?",
+  "questions": [
+    {
+      "id": "358351",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1debbe5ba192e793ce5c280e74f2b45750d79539/OChem_13_EC_006a.jpg\" alt=\"A chemical structure of 1,1-dimethylcyclohexane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358352",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a123e170636135cb13a5466f1ce739e09e1a4474/OChem_13_EC_006b.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 2 C H 2 O C H 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358353",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d68e26bc6e3e47410d82a81f92cf8a0875bb97d/OChem_13_EC_006c.jpg\" alt=\"Naphthalene has a benzene ring fused to a cyclohexadiene ring with alternating double bonds.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358354",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--484f65bab8167a18b2590d7b8a849766395baaca/OChem_13_EC_006d.jpg\" alt=\"A chemical structure of styrene (vinyl benzene).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358355",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1878c07e9ba32c6bdbbf901ded0b092f02df0607/OChem_13_EC_006e.jpg\" alt=\"Ethyl acrylate has a carbon atom double bonded to another carbon. C 1 is bonded to C O 2 C H 2 C H 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

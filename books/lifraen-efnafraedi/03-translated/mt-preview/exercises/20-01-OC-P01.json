@@ -1,0 +1,64 @@
+{
+  "nickname": "20-01-OC-P01",
+  "source_uid": "38081@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "359080",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f57242dc430892c4dbd275a03085ed644fbc997d/OChem_20_01_008a.jpg\" alt=\"The structure of 3-methylbutanoic acid, which has a C O O H group on C 1 and a methyl group on C 3 of a four-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Metýlbútansýra"
+        }
+      ]
+    },
+    {
+      "id": "359081",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8f6f263745a02b2c6335696b17aace7bfde4df8/OChem_20_01_008b.jpg\" alt=\"The structure of 4-bromopentanoic acid, which has a C O O H group on C 1 and a bromine atom on C 4 of a five-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-Brómpentansýra"
+        }
+      ]
+    },
+    {
+      "id": "359082",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e302ef3a2f3df0cc751f9e0f7d0627dea8bdd60/OChem_20_01_008c.jpg\" alt=\"The structure of 2-ethylpentanoic acid, which has a C O O H group on C 1 and an ethyl on C 2 of a five-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Etýlpentansýra"
+        }
+      ]
+    },
+    {
+      "id": "359083",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41346fb39187ca958438bad7673e41816b8a742b/OChem_20_01_008d.jpg\" alt=\"The structure of (Z)-hex-4-enoic acid with six-carbon atoms. There is a C O O H on C 1, and C 4 and C 5 are double bonded with cis arrangement.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-4-Hexensýra"
+        }
+      ]
+    },
+    {
+      "id": "359084",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--48f2aabf0dad0f425654441d2866f7043ad8156e/OChem_20_01_008e.jpg\" alt=\"The structure of 2,4-dimethylpentane, which is a five-carbon chain in which C 1 is part of a C N group. There are methyl groups on C 2 and C 4.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,4-Dímetýlpentannítríl"
+        }
+      ]
+    },
+    {
+      "id": "359085",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2643a46b4470085b07a0d78eef02f2fd2cfa69de/OChem_20_01_008f.jpg\" alt=\"The structure of cyclopentane-1,3-dicarboxylic acid with cyclopentane ring. There are C O O H groups on C 1 and C 3, positioned cis to each other.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-1,3-Sýklópentandíkarboxýlsýra"
+        }
+      ]
+    }
+  ]
+}

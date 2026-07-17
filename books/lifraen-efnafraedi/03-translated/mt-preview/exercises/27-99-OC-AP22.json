@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP22",
+  "source_uid": "38870@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358239",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir lífmyndun ísóborneóls. Á einum stað í ferlinu er nauðsynlegt að gera umröðun á karbkatjón.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37923584bd0b3d63b5f437d50d1d94cd160bac10/OChem_27_EC_017.jpg\" alt=\"The structure of Isoborneol. It is a norbornane with three methyl groups, a hydroxyl group, and a hydrogen atom.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

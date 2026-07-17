@@ -1,0 +1,19 @@
+{
+  "nickname": "24-09-OC-P23",
+  "source_uid": "38976@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361607",
+      "stem_html": "<p>Hvor niturfrumeindin í ofskynjunarvaldandi indólalkalóíðanum <i>N</i>,<i>N</i>-dímetýltryptamíni er basískari? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8be207caffe2e3934d81eb49f630fd25b5d6f3ec/OChem_24_09_016.jpg\" alt=\"The ball-and-stick model in the electrostatic potential map of N, N-dimethyltryptamine. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Nitur hliðarkeðjunnar er basískara en nitur hringsins."
+        }
+      ]
+    }
+  ]
+}

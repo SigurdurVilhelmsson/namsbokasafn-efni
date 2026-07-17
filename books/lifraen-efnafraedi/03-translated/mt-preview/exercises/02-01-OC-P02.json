@@ -1,0 +1,64 @@
+{
+  "nickname": "02-01-OC-P02",
+  "source_uid": "36116@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Notaðu <i>δ</i>+/<i>δ</i>– til að sýna stefnu skautunar fyrir hvert efnatengi sem sýnt er.",
+  "questions": [
+    {
+      "id": "350706",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>Cl",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa8a32420d863709f7d8fa7f5c925bb533a2ee9e/OChem_02_EC_201a.jpg\" alt=\"The chemical structure of chloromethane with a delta plus charge on carbon and a delta minus charge on chlorine.\">"
+        }
+      ]
+    },
+    {
+      "id": "350707",
+      "stem_html": " H<sub>3</sub>C<span class=\"magenta-text\">–</span>NH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b25c5b41b1f5e596f316ed4cff5efca416a3fbf/OChem_02_EC_201b.jpg\" alt=\"The chemical structure of methylamine with a delta plus charge on carbon and a delta minus on nitrogen.\">\n"
+        }
+      ]
+    },
+    {
+      "id": "350708",
+      "stem_html": " H<sub>2</sub>N<span class=\"magenta-text\">–</span>H",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--faa0991c11ed69b3dac07e68a96fdc020a87504a/OChem_02_EC_201c.jpg\" alt=\"The chemical structure of ammonia with a  delta minus charge on nitrogen and a delta plus charge on hydrogen.\">"
+        }
+      ]
+    },
+    {
+      "id": "350709",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>SH",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa4be433bfe9c8e45537292c0938fff5ed508d2/OChem_02_EC_201d.jpg\" alt=\"The chemical structure of methanethiol.\">"
+        }
+      ]
+    },
+    {
+      "id": "350710",
+      "stem_html": " H<sub>3</sub>C<span class=\"magenta-text\">–</span>MgBr",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cdddaf7ba1185446089fdf04c2190bdd2595d8fe/OChem_02_EC_201e.jpg\" alt=\"The chemical structure of methyl magnesium bromide with a delta minus charge on carbon and a delta plus charge on magnesium.\">"
+        }
+      ]
+    },
+    {
+      "id": "350711",
+      "stem_html": " H<sub>3</sub>C<span class=\"magenta-text\">–</span>F",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fea33f20bb494f5b603a7ea1b85f8a8146f01435/OChem_02_EC_201f.jpg\" alt=\"The chemical structure of fluoromethane with a delta plus charge on carbon and a delta minus charge on fluorine.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "nickname": "09-99-OC-AP06",
+  "source_uid": "37220@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefni úr efnahvarfi 1-hexýns við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "333047",
+      "stem_html": "1 jafngildi HBr",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333048",
+      "stem_html": "1 jafngildi Cl<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333049",
+      "stem_html": "H<sub>2</sub>, Lindlar-hvati",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333050",
+      "stem_html": "NaNH<sub>2</sub> í NH<sub>3</sub>, síðan CH<sub>3</sub>Br",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333051",
+      "stem_html": "H<sub>2</sub>O, H<sub>2</sub>SO<sub>4</sub>, HgSO<sub>4</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333052",
+      "stem_html": "2 jafngildi HCl",
+      "collaborator_solutions": []
+    }
+  ]
+}

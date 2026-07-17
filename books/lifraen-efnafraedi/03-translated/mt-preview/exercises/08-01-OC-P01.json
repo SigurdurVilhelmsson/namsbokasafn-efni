@@ -1,0 +1,19 @@
+{
+  "nickname": "08-01-OC-P01",
+  "source_uid": "37085@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "332594",
+      "stem_html": "Eitt vandamál við brottnáms-efnahvörf er að oft myndast efnablöndur af myndefnum. Til dæmis gefur meðhöndlun á 2-bróm-2-metýlbútani með KOH í etanóli efnablöndu af tveimur alkena-myndefnum. Hver er líkleg bygging þeirra?",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýl-2-búten og 2-metýl-1-búten"
+        }
+      ]
+    }
+  ]
+}

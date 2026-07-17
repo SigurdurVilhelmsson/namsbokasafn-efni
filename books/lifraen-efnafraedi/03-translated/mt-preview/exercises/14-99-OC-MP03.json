@@ -1,0 +1,20 @@
+{
+  "nickname": "14-99-OC-MP03",
+  "source_uid": "37675@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Í ljósi svars þíns við dæmi 14-21, stingdu upp á hvarfgöngum fyrir eftirfarandi efnahvörf.",
+  "questions": [
+    {
+      "id": "358466",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58f0b58ed77e1b2be6869c531503b05eeee95882/OChem_14_EC_009a.jpg\" alt=\"When heated, a 6-membered ring made of one oxygen and five carbon atoms with two double bonds and a carbonyl group at position 2 reacts with an alkyne, forming a benzene ring and carbon dioxide..\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358467",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04465097952ce15f7695f1676f42d3c7ee481dd1/OChem_14_EC_009b.jpg\" alt=\"A 6-membered ring made of two carbons and four nitrogens (at positions 1, 2, 4, and 5) with alternate double bonds, and with methyl groups at positions 3 and 6 reacts with benzene bonded to ethyne.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

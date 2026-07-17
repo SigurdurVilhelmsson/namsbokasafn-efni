@@ -1,0 +1,50 @@
+{
+  "nickname": "24-99-OC-AP15",
+  "source_uid": "39014@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu myndefnin úr efnahvarfi <i>p</i>-brómanilíns við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "347768",
+      "stem_html": "CH<sub>3</sub>I (umframmagn)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347769",
+      "stem_html": "HCl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347770",
+      "stem_html": "HNO<sub>2</sub>, H<sub>2</sub>SO<sub>4</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347771",
+      "stem_html": "CH<sub>3</sub>COCl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347772",
+      "stem_html": "CH<sub>3</sub>MgBr",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347773",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>Cl, AlCl<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347774",
+      "stem_html": "Myndefni úr (<b>c</b>) með CuCl, HCl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347775",
+      "stem_html": "Myndefni úr (<b>d</b>) með CH<sub>3</sub>CH<sub>2</sub>Cl, AlCl<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "22-03-OC-P05",
+  "source_uid": "38773@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346333",
+      "stem_html": "Sýndu hvernig þú gætir búið til 1-penten-3-ón úr 3-pentanóni.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Br<sub>2</sub>; 2. Pýridín, varmi"
+        }
+      ]
+    }
+  ]
+}

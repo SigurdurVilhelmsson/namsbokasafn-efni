@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP42",
+  "source_uid": "36605@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið bæði <i>cis</i>- og <i>trans</i>-1,4-dímetýlsýklóhexan í stöðugri stólstellingum sínum.",
+  "questions": [
+    {
+      "id": "329423",
+      "stem_html": "Hversu margar rúmhverfur eru til af <i>cis</i>-1,4-dímetýlsýklóhexani og hversu margar af <i>trans</i>-1,4-dímetýlsýklóhexani?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329424",
+      "stem_html": "Eru einhverjar bygginganna hendnar?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329425",
+      "stem_html": "Hver eru rúmefnafræðileg tengsl milli hinna ýmsu rúmhverfa 1,4-dímetýlsýklóhexans?",
+      "collaborator_solutions": []
+    }
+  ]
+}

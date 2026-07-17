@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP11",
+  "source_uid": "38917@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359858",
+      "stem_html": "<p>Amínósýran leusín er lífmynduð úr <i>α</i>-ketóísóvalerati með eftirfarandi röð skrefa. Sýndu hvarfgang hvers skrefs.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45916cc496bf7de1f487c1b2ff98f70c7c90e0ee/OChem_23_EC_024.jpg\" alt=\"The reaction shows alpha-ketoisovalerate transforming into leucine through intermediaries 1-isopropylmalate, 2-isopropylmalate, and alpha-ketoisocaproate, leading to leucine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

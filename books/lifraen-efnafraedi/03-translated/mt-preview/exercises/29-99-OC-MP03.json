@@ -1,0 +1,20 @@
+{
+  "nickname": "29-99-OC-MP03",
+  "source_uid": "39317@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Eitt af skrefunum í pentósafosfatferlinu við niðurbrot glúkósa er efnahvarf sedóheptúlósa-7-fosfats við glýseraldehýð-3-fosfat í viðurvist transaldólasa til að mynda erýþrósa-4-fosfat og frúktósa-6-fosfat.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594ec03f5ddcede14e6029d47e895cf67e7bf7ba/OChem_29_EC_007.jpg\" alt=\"Sedoheptulose-7-phosphate reacts with glyceraldehyde-3-phosphate to form erythrose-4-phosphate and fructose-6-phosphate. All the structures are presented in Fischer projection.\">",
+  "questions": [
+    {
+      "id": "358146",
+      "stem_html": "Fyrri hluti efnahvarfsins er myndun róteindaðs Schiff-basa úr sedóheptúlósa-7-fosfati með lýsínleif í ensíminu, fylgt eftir með retro-aldólklofnun til að mynda enamín auk erýþrósa-4-fosfats. Sýndu byggingu enamínsins og hvarfganginn sem það myndast eftir.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358147",
+      "stem_html": "Seinni hluti efnahvarfsins er kjarnsækin álagning enamínsins á glýseraldehýð-3-fosfat, fylgt eftir með vatnsrofi á Schiff-basanum til að mynda frúktósa-6-fosfat. Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    }
+  ]
+}

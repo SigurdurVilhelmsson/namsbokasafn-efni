@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP33",
+  "source_uid": "38079@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360831",
+      "stem_html": "<p>Róteinda- og kolefnis-NMR-róf fyrir hvert þriggja hverfu-ketóna með formúluna C<sub>7</sub>H<sub>14</sub>O eru sýnd. Úthlutaðu byggingu til hvers rófapars.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ea2331c57bdabf3d297ea4053327535db8312df/OChem_19_EC_067.jpg\" alt=\"C-13 N M R spectrum displays peaks at 221.04, 44.79, 17.39, and 13.78, along with a C D C l 3 peak around 80.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--779d76f64232f1e8d324605dd3c2943356bc03b1/OChem_19_EC_068.jpg\" alt=\"Proton spectrum with shifts around 0.95 (triplet), around 1.6 (sextet), and around 2.35 (triplet). Relative areas indicated with integral lines are 2.91, 2.00, and 1.96 respectively.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b71a95805a3e77b51c867d9c89a758d2758915e/OChem_19_EC_069.jpg\" alt=\"Carbon spectrum B displays peaks: spiky line at 218.40, unevenly shaded peaks at 80 delta for C D C l 3, medium-length peak at 38.85, and tall peak at 18.55.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22fd207c361aaf3395220fa15b78b5b98cfa7813/OChem_19_EC_070.jpg\" alt=\"Proton spectrum with shifts around 1.1 (doublet) and around 2.8 (septet). Relative areas indicated with integral lines are 6.18 and 1.04 respectively.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7bc82df6e2c3192246ff115822b3e47e465671b/OChem_19_EC_071.jpg\" alt=\"Carbon spectrum C shows peaks at 218.31, 75 delta (C D C l 3), 55.98, set between 29 to 32.5 delta, and expanded view with peaks at 32.27, 30.88, 29.73.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b00cb9e688b4646ddf3de9f22145a499ef8281ed/OChem_19_EC_072.jpg\" alt=\"Proton spectrum with shifts around 1.0 (singlet), 2.15 (singlet), and 2.35 (singlet). Relative areas indicated with integral lines are 8.91, 2.98, and 1.95 respectively.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

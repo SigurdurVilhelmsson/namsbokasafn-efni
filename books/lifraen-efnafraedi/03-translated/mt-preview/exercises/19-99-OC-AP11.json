@@ -1,0 +1,45 @@
+{
+  "nickname": "19-99-OC-AP11",
+  "source_uid": "38057@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Karvón er aðalefnið í grænmintuolíu. Hvaða myndefni myndir þú búast við úr efnahvarfi karvóns við eftirfarandi hvarfefni?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4aca2a35dff8bc8760e5851ebfbacc92c157b039/OChem_19_EC_049.jpg\" alt=\"The carvone structure shows a cyclohexanone ring with a methyl group at the second carbon and an isopropyl on the fifth. A double bond connects the second and third carbon.\">",
+  "questions": [
+    {
+      "id": "668122",
+      "stem_html": "(CH<sub>3</sub>)<sub>2</sub>Cu<sup>–</sup>Li<sup>+</sup>, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "668123",
+      "stem_html": "LiAlH<sub>4</sub>, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "668124",
+      "stem_html": "CH<sub>3</sub>NH<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "668125",
+      "stem_html": "C<sub>6</sub>H<sub>5</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "668126",
+      "stem_html": "H<sub>2</sub>/Pd",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "668127",
+      "stem_html": "HOCH<sub>2</sub>CH<sub>2</sub>OH, HCl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "668128",
+      "stem_html": "(C<sub>6</sub>H<sub>5</sub>)<sub>3</sub><span data-math=\"\\overset{+}{\\mathrm{P}}\\overset{-}{\\mathrm{C}}\"></span>HCH<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

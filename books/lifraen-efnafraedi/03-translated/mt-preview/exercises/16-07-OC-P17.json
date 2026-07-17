@@ -1,0 +1,19 @@
+{
+  "nickname": "16-07-OC-P17",
+  "source_uid": "37804@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "339395",
+      "stem_html": "Meðhöndlun á <i>p</i>-brómtólúeni með NaOH við 300 °C gefur efnablöndu af tveimur myndefnum, en meðhöndlun á <i>m</i>-brómtólúeni með NaOH gefur efnablöndu af þremur myndefnum. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Aðeins eitt bensýn-milliefni getur myndast úr <i>p</i>-brómtólúeni; tvö mismunandi bensýn-milliefni geta myndast úr <i>m</i>-brómtólúeni."
+        }
+      ]
+    }
+  ]
+}

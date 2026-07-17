@@ -1,0 +1,64 @@
+{
+  "nickname": "19-14-OC-P24",
+  "source_uid": "38018@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvar myndir þú búast við að hvert eftirfarandi efnasambanda gleypi í IR-rófinu?",
+  "questions": [
+    {
+      "id": "341426",
+      "stem_html": "4-Penten-2-ón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1715 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341427",
+      "stem_html": "3-Penten-2-ón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1685 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341428",
+      "stem_html": "2,2-Dímetýlsýklópentanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1750 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341429",
+      "stem_html": "<i>m</i>-Klórbensaldehýð",
+      "collaborator_solutions": [
+        {
+          "content_html": "1705 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341430",
+      "stem_html": "3-Sýklóhexenón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1715 cm<sup>−1</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341431",
+      "stem_html": "2-Hexenal",
+      "collaborator_solutions": [
+        {
+          "content_html": "1705 cm<sup>−1</sup>"
+        }
+      ]
+    }
+  ]
+}

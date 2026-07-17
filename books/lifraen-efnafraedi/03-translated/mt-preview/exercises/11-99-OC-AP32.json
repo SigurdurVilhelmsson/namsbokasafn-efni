@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP32",
+  "source_uid": "37406@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355430",
+      "stem_html": "<p>(<i>S</i>)-2-Bútanól rasemast hægt þegar það stendur í þynntri brennisteinssýru. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0fbae6da8313879c6f042ec2e676698a9b5f367d/OChem_11_EC_041.jpg\" alt=\"The structure of 2-butanol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

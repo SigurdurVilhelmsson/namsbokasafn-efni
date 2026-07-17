@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP23",
+  "source_uid": "38217@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361503",
+      "stem_html": "<p>Eftirfarandi hvarfgirnisröð hefur fundist fyrir basískt vatnsrof <i>p</i>-skiptra metýlbensóata:</p>\n<p>Y=NO<sub>2</sub> > Br > H > CH<sub>3</sub> > OCH<sub>3</sub></p>\n<p>Hvernig geturðu útskýrt þessa hvarfgirnisröð? Hvar myndir þú búast við að Y=C<span data-math=\"\\text{≡}\"></span>N, Y=CHO og Y=NH<sub>2</sub> væru á hvarfgirnislistanum?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80b740280520b7c4c3ef028a1b76a429db686239/OChem_21_EC_049.jpg\" alt=\"Reaction of a para-substituted methyl benzoate with aqueous base to give the corresponding carboxylate ion and methanol. The substitutent at the para position is represented by the letter Y.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

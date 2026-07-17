@@ -1,0 +1,28 @@
+{
+  "nickname": "22-07-OC-P13",
+  "source_uid": "38781@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða alkýlhalíð myndir þú nota til að búa til eftirfarandi ketóna með asetóedikestersmyndun?",
+  "questions": [
+    {
+      "id": "360888",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--353ee5ebfb7e8deee3ca84b3926d7cb1b09c2d9c/OChem_22_07_019a.jpg\" alt=\"The structure of 5-methyl-2-hexanone in which a methyl group is bonded to C 5 and the carbonyl group is at C 2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>Br"
+        }
+      ]
+    },
+    {
+      "id": "360889",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c9e83934a8198854bd8d2344a0a3ee6465096737/OChem_22_07_019b.jpg\" alt=\"The structure of 5-phenylpentan-2-one in which a phenyl group is bonded to C 5 and the carbonyl group is at C 2\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "PhCH<sub>2</sub>CH<sub>2</sub>Br"
+        }
+      ]
+    }
+  ]
+}

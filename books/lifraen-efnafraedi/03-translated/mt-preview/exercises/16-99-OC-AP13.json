@@ -1,0 +1,25 @@
+{
+  "nickname": "16-99-OC-AP13",
+  "source_uid": "37845@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eins og þær eru skrifaðar eru gallar á eftirfarandi efnasmíðum. Hvað er rangt við hverja þeirra?",
+  "questions": [
+    {
+      "id": "359017",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10f5e2679744ed2d483fc1c0948a740cf4d59a16/OChem_16_EC_036a.jpg\" alt=\"Toluene reacts with chlorine in the presence of iron trichloride in step 1 and potassium permanganate in step 2 to form benzoic acid with chlorine atom at C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359018",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--520ad477346bd2b64805436c1c34f58302fe2461/OChem_16_EC_036b.jpg\" alt=\"Chlorobenzene reacts with nitric acid in sulfuric acid, followed by methyl chloride and aluminum trichloride, then iron and acid, and finally sodium hydroxide in water to form a substituted benzene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359019",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f825ed34bfcf7a6c005f46198790bac28a8bbbfe/OChem_16_EC_036c.jpg\" alt=\"Toluene reacts with acetyl chloride in the presence of aluminum trichloride, then with nitric acid in the presence of sulfuric acid, then hydrogen and a palladium catalyst to form a substituted benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

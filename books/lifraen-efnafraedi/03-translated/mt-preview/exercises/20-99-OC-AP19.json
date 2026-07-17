@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP19",
+  "source_uid": "38129@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359181",
+      "stem_html": "<p>Hvernig myndir þú framkvæma eftirfarandi umbreytingar?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29cc00e7902ea2a5974f65f2a8eb0f66970630f7/OChem_20_EC_024.jpg\" alt=\"The conversion of methylenecyclohexane reacts with one set of unknown reagents to form 2-cyclohexylacetic acid, and with another set of unknown reagents to form 1-methylcyclohexanecarboxylic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

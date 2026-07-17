@@ -1,0 +1,19 @@
+{
+  "nickname": "26-06-OC-P12",
+  "source_uid": "39223@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348949",
+      "stem_html": "Áttupeptíðið angíótensín II hefur röðina Asp-Arg-Val-Tyr-Ile-His-Pro-Phe. Hvaða brot myndu myndast ef angíótensín II væri klofið með trypsíni? Með kýmótrypsíni?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Trypsín: Asp-Arg + Val-Tyr-Ile-His-Pro-Phe</p>\n<p>Kýmótrypsín: Asp-Arg-Val-Tyr + Ile-His-Pro-Phe</p>"
+        }
+      ]
+    }
+  ]
+}

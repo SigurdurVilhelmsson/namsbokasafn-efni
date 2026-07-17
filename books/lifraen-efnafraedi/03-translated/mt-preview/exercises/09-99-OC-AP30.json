@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP30",
+  "source_uid": "37244@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353870",
+      "stem_html": "<p><i>Kúmúlen</i> er efnasamband með þremur samliggjandi tvítengjum. Teiknaðu svigrúmsmynd af kúmúleni. Hvers konar blendingu hafa miðjukolefnisfrumeindirnar tvær? Hvert er rúmfræðilegt samband hliðarhópanna á öðrum endanum við hliðarhópana á hinum endanum? Hvers konar hverfubrigði eru möguleg? Búðu til líkan til að hjálpa þér að sjá svarið.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--302526f9742003c35cf5b0f63ea105d26ccfbeee/OChem_09_EC_042.jpg\" alt=\"The structure of a cumulene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

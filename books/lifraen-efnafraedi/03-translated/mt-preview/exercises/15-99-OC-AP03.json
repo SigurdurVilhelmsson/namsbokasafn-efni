@@ -1,0 +1,25 @@
+{
+  "nickname": "15-99-OC-AP03",
+  "source_uid": "37751@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu og nefndu allar mögulegar hverfur eftirfarandi:",
+  "questions": [
+    {
+      "id": "339104",
+      "stem_html": "Dínitróbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339105",
+      "stem_html": "Brómdímetýlbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339106",
+      "stem_html": "Trínitrófenól",
+      "collaborator_solutions": []
+    }
+  ]
+}

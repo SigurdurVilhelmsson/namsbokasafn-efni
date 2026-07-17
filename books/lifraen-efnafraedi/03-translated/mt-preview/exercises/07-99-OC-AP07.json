@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP07",
+  "source_uid": "36659@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354398",
+      "stem_html": "<p>Ósímen er tríen sem finnst í ilmkjarnaolíum margra plantna. Hvert er IUPAC-nafn þess, að meðtalinni staðefnafræði?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b6d8e39426529c0d3023c3c8c3c42a969f18fb14/OChem_07_EC_017.jpg\" alt=\"An eight-carbon chain with bonds (from left) as: single, double, single, single, double, single, double. There are methyl groups at the second and sixth carbons from the left.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "03-04-OC-P14",
+  "source_uid": "36430@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360394",
+      "stem_html": "<p>Gefðu IUPAC-heiti fyrir eftirfarandi kolvetni og breyttu teikningunni í beinagrindarmynd.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--526772dc2b0d1c2f5917df4f9f1d8d03bcb7aa97/OChem_03_04_020.jpg\" alt=\"A ball and stick model of a hydrocarbon that includes a central methine group, which is bonded to a methyl group at the top.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4847fe7fd6e88543fcf0b3db32c236eb537a8cbd/OChem_03_EC_209.jpg\" alt=\"The skeletal structure of 3,3,4,5-tetramethylheptane featuring a seven-carbon chain.\">"
+        }
+      ]
+    }
+  ]
+}

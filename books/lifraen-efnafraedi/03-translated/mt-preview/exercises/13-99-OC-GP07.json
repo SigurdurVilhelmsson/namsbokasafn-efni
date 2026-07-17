@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-GP07",
+  "source_uid": "37524@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingarformúlur fyrir efnasamböndin þrjú sem sýnd eru á <sup>1</sup>H NMR-rófunum.",
+  "questions": [
+    {
+      "id": "358413",
+      "stem_html": "<p>C<sub>5</sub>H<sub>10</sub>O</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--196cbc069ac93b2f0e062717eac3265c77daf5c0/OChem_13_EC_021.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 0.9 (triplet), 1.7 (sextet), and 2.4 (triplet).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358414",
+      "stem_html": "<p>C<sub>7</sub>H<sub>7</sub>Br</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01805bc0e93d775b3b935f0792f3965d36ce686c/OChem_13_EC_022.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 2.3 (singlet), 7 (doublet), and 7.3 (doublet).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358415",
+      "stem_html": "<p>C<sub>8</sub>H<sub>9</sub>Br</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6603aa931605e89c7fb36f77a66b5249e3c3c815/OChem_13_EC_023.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 3.1 (triplet), 3.6 (triplet), and 7.2 (indistinct, messy multiplet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

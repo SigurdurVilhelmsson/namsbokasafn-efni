@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP20",
+  "source_uid": "37399@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um aðalmyndefnið/myndefnin í hverju eftirfarandi efnahvarfa. Tilgreindu þau efnahvörf þar sem þú myndir búast við að efnablandan snúi skautuðu ljósi.",
+  "questions": [
+    {
+      "id": "355392",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f842045ba53ddbbfc13167b70c5251a968ba8f1/OChem_11_EC_032a.jpg\" alt=\"An incomplete reaction between the tosylate of cis-4-methyl-1-cyclohexanol and K C N in D M S O to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355393",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f803bd3bd1a1c4d7891f8659ef382cfa48ea6eb1/OChem_11_EC_032b.jpg\" alt=\"An incomplete reaction between (S)-2-bromo-2,3-dimethylpentane in sodium methoxide and methanol to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355394",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa3ffc0b73a8a3b10a24927f305116d0700e70e1/OChem_11_EC_032c.jpg\" alt=\"An incomplete reaction between (1S,2S)-1-chloro-1,2-dimethylcyclopentane and methanol to form unknown product(s).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-MP01",
+  "source_uid": "38181@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um afurð(ir) og skrifið verkunarhátt fyrir eftirfarandi efnahvörf:",
+  "questions": [
+    {
+      "id": "361418",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b4eb3bc65583783d261f7c8da9a6b9f0284a33b/OChem_21_EC_026b.jpg\" alt=\"The reaction between ethyl propionate and ethyl amine in the presence of pyridine gives unknown products depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361419",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6e0e8d0079df8b2a4f2873182eefcf733d9b08fa/OChem_21_EC_026c.jpg\" alt=\"The reaction between a five-membered ring containing two carbonyl groups with an oxygen atom between them and sodium methoxide gives unknown products depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

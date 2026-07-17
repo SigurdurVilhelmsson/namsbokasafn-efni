@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP06",
+  "source_uid": "36532@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351122",
+      "stem_html": "<p>Greindu hvert par tengsla milli –OH hópanna í glúkósa (rauður–blár, rauður–grænn, rauður–svartur, blár–grænn, blár–svartur, grænn–svartur) sem cis eða trans.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--621708ec234323df0edbbc7313aa6bbe2e68605b/OChem_04_EC_007.jpg\" alt=\"The Haworth projection of glucose has a pyranose ring with its four carbons bonded to hydroxyl groups and one carbon is bonded to a hydroxymethyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "29-04-OC-P06",
+  "source_uid": "39300@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358125",
+      "stem_html": "<p>Fer afoxun asetóasetýl-ACP í <b><span class=\"magenta-text\">skrefi 6</span></b> fram á Re-fleti eða Si-fleti sameindarinnar?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4f42ff4baf59ae4d4d98692447a6d96387e92eb/OChem_29_04_009.jpg\" alt=\"Acetoacetyl A C P reacts nicotinamide adenine dinucleotide phosphate hydride to form beta-hydroxybutyryl A C P and nicotinamide adenine dinucleotide phosphate cation.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Si-fletinum"
+        }
+      ]
+    }
+  ]
+}

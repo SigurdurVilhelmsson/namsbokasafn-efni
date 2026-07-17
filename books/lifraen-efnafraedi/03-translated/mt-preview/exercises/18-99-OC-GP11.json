@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP11",
+  "source_uid": "38762@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361301",
+      "stem_html": "<p>Greindu hvarfefnin <b>a</b>–<b>e</b> í eftirfarandi skema:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--695662cd8c081289f8cb2b773a66ecaebb284a21/OChem_18_EC_048.jpg\" alt=\"Cyclohexanone is transformed into 1-methylcyclohexanol by reagent a; b and c convert 1-methylcyclohexanol to 1-methylcyclohexene and 1-methyl-1-methoxycyclohexane respectively. D converts 1-methylcyclohexene into 1,2-epoxy-1-methylcyclohexane, which is converted by e into (1S,2S)-1-methylcyclohexan-1,2-diol. \">",
+      "collaborator_solutions": []
+    }
+  ]
+}

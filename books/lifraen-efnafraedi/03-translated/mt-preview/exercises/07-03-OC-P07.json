@@ -1,0 +1,28 @@
+{
+  "nickname": "07-03-OC-P07",
+  "source_uid": "36617@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Breyttu eftirfarandi gömlum heitum í ný heiti, eftir 1993, og teiknaðu byggingu hvers efnasambands:",
+  "questions": [
+    {
+      "id": "330109",
+      "stem_html": "2,5,5-Trímetýl-2-hexen",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,5,5-Trímetýlhex-2-en"
+        }
+      ]
+    },
+    {
+      "id": "330110",
+      "stem_html": "2,3-Dímetýl-1,3-sýklóhexadíen",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,3-Dímetýlsýklóhexa-1,3-díen"
+        }
+      ]
+    }
+  ]
+}

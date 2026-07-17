@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP32",
+  "source_uid": "37864@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin fyrir hvert eftirfarandi efnahvarfa. Í hverju tilviki, teiknaðu vok myndir milliefnisins til að útskýra staðsetningarefnafræðina sem sést.",
+  "questions": [
+    {
+      "id": "374671",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a4ab6e895799627125c43c39007b7e2cf4830833/OChem_16_EC_050a.jpg\" alt=\"Benzene bonded to acetyl group reacts with nitric acid in the presence of sulfuric acid to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "374672",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NiIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5ac9c7c60d41a5bb82ec10a8ccebbebbbe7a09b/OChem_16_EC_050b.jpg\" alt=\"Toluene reacts with 2-chloropropane in the presence of aluminum trichloride to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "374673",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3diIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e742c1dd8f2e81abd1d11985bd18e81b4dc8b5b3/OChem_16_EC_050c.jpg\" alt=\"Benzene bonded to a cyano group reacts with C I 2 in the presence of iron trichloride to form unknown products, depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "374674",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfc4de03294eef314ccbf8854c85503c7ba65cb8/OChem_16_EC_050d.jpg\" alt=\"Benzene bonded to a methoxy group reacts with iodine in the presence of copper (2) chloride to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

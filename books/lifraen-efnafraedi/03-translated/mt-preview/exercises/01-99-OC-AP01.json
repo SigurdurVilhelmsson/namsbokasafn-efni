@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP01",
+  "source_uid": "37559@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu margar gildisrafeindir hefur hvert eftirfarandi snefilefna í fæðu?",
+  "questions": [
+    {
+      "id": "338457",
+      "stem_html": "Sink",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338458",
+      "stem_html": "Joð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338459",
+      "stem_html": "Kísill",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338460",
+      "stem_html": "Járn",
+      "collaborator_solutions": []
+    }
+  ]
+}

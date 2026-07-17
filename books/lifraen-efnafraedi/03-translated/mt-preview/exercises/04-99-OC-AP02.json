@@ -1,0 +1,35 @@
+{
+  "nickname": "04-99-OC-AP02",
+  "source_uid": "36528@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi efnasambönd samkvæmt IUPAC-nafnakerfinu.",
+  "questions": [
+    {
+      "id": "351883",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29fe8a0c20118d90d26f831c0a2b2c8636a1ce90/04_99_P-Ch3oct_img.jpg\" alt=\"In a 7-membered ring, C1 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351884",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d40389328a1d5b98af6539ede14b23d217f0619/04_99_P-H3Cpent_img.jpg\" alt=\"In a cyclopentane ring, C1 and C3 are each wedge bonded to methyl groups and dash bonded to hydrogen atoms.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351885",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb226a276bb0de5804e6fe7051dc44f9b0b252e9/04_99_P-Ch3sext_img.jpg\" alt=\"In a cyclohexane ring, C1 is dash bonded to methyl and wedge bonded to hydrogen atom. C2 is wedge bonded to methyl and dash bonded to hydrogen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351886",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b402b7ab742d642e2cf08fe604ae922971a6160/04_99_CH3square_img.jpg\" alt=\"In a cyclobutane ring, C1 is wedge bonded to an isopropyl group. C2 is dash bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351887",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd10bb122c8b20c433aa15caea98cc4dd5747552/04_99_H3Csext_img.jpg\" alt=\"In a cyclohexane ring, C1 is bonded to two methyl groups. C4 is bonded to a single methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

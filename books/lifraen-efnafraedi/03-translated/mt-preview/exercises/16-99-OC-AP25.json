@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP25",
+  "source_uid": "37857@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359047",
+      "stem_html": "<p>Leggðu til hvarfgang til að útskýra efnahvarf bensens við 2,2,5,5-tetrametýltetrahýdrófúran.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db1cfb4148132fed456dcca2be4f4c01973ad68b/OChem_16_EC_045.jpg\" alt=\"Benzene reacts with a five-membered ring compound made up of one oxygen and four carbons with two methyl groups on each of the two carbons next to the O atom. A fused product is formed.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

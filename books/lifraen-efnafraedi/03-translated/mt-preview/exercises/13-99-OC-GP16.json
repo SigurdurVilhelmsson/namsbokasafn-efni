@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP16",
+  "source_uid": "37533@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358423",
+      "stem_html": "<p>Karboxýlsýrur (RCO<sub>2</sub>H) hvarfast við alkóhól (R′OH) í nærveru sýruhvara. Myndefni efnahvarfs própansýru við metanól hefur eftirfarandi rófseiginleika. Stingdu upp á byggingu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5e5995017bf4296199e40e3c581e791c044b8f3/OChem_13_EC_027.jpg\" alt=\"Propanoic acid reacts with methanol in the presence of hydrogen ion catalyst to form unknown product(s), depicted by a question mark.\">\n<p>MS: M<sup>+</sup> = 88</p>\n<p>IR: 1735 cm<sup>–1</sup></p>\n<p><sup>1</sup>H NMR: 1,11 <i>δ</i> (3 H, þríliða, <i>J</i> = 7 Hz); 2,32 <i>δ</i> (2 H, ferliða, <i>J</i> = 7 Hz);</p>\n<p>3,65 <i>δ</i> (3 H, einliða)</p>\n<p><sup>13</sup>C NMR: 9,3, 27,6, 51,4, 174,6 <i>δ</i></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

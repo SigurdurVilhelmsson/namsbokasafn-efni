@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP04",
+  "source_uid": "36656@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi alkena:",
+  "questions": [
+    {
+      "id": "357245",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3c00c063150d793cc208d47beba492010e1036f/OChem_07_EC_015a.jpg\" alt=\"A double bond with hydrogen (up) and methyl (down) substituents on the left and s-butyl (up) and hydrogen (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357246",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a40cbcb30debf06b33958cc1b4d58b9a5acde4fa/OChem_07_EC_015b.jpg\" alt=\"A double bond with 2-methylheptane connected by C 5 (up) and methyl (down) substituents on the left and methyl (up) and hydrogen (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357247",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2219f88d43afe5a6e8c9d5606b3afca8faad719e/OChem_07_EC_015c.jpg\" alt=\"A double bond withtwo hydrogen substituents on the left and two ethyl substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357248",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--598a0fbcb464182361f1a5ee0e397b2fc29a6737/OChem_07_EC_015d.jpg\" alt=\"A double bond with H (up) and 3-methyl-1-pentene connected by C 4 (down) substituents on the left and methyl (up) and hydrogen (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357249",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1507a90192f763f991c1ecf26267e6898195ecd3/OChem_07_EC_015e.jpg\" alt=\"An 8-carbon chain with double bonds between C2-C3 and C4-C5. C4 and C5 are each bonded to a methyl group (opposite sides).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357250",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1308c9945e9be49a9eab519b7b70da2b8072775f/OChem_07_EC_015f.jpg\" alt=\"The structure has a methylene group double bonded to carbon, which is double bonded to C H C H 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

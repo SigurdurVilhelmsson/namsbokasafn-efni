@@ -1,0 +1,30 @@
+{
+  "nickname": "25-99-OC-AP02",
+  "source_uid": "39075@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifaðu opnar keðjubyggingar fyrir eftirfarandi:",
+  "questions": [
+    {
+      "id": "348095",
+      "stem_html": "Ketótetrósa",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348096",
+      "stem_html": "Ketópentósa",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348097",
+      "stem_html": "Deoxýaldóhexósa",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348098",
+      "stem_html": "Fimm kolefna amínósykur",
+      "collaborator_solutions": []
+    }
+  ]
+}

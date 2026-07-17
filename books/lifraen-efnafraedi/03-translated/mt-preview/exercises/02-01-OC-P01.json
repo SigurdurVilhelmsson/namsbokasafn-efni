@@ -1,0 +1,46 @@
+{
+  "nickname": "02-01-OC-P01",
+  "source_uid": "36113@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvort frumefnið í hverju pari fyrir sig er með meiri rafneikvæðni?",
+  "questions": [
+    {
+      "id": "323587",
+      "stem_html": "Li eða H",
+      "collaborator_solutions": [
+        {
+          "content_html": "H"
+        }
+      ]
+    },
+    {
+      "id": "323588",
+      "stem_html": "B eða Br",
+      "collaborator_solutions": [
+        {
+          "content_html": "Br"
+        }
+      ]
+    },
+    {
+      "id": "323589",
+      "stem_html": "Cl eða I",
+      "collaborator_solutions": [
+        {
+          "content_html": "Cl"
+        }
+      ]
+    },
+    {
+      "id": "323590",
+      "stem_html": "C eða H",
+      "collaborator_solutions": [
+        {
+          "content_html": "C"
+        }
+      ]
+    }
+  ]
+}

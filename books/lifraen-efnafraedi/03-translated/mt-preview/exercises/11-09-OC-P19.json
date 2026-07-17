@@ -1,0 +1,19 @@
+{
+  "nickname": "11-09-OC-P19",
+  "source_uid": "37360@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336980",
+      "stem_html": "Hvort myndir þú búast við að hverfan <i>trans</i>-1-bróm-4-<i>tert</i>-bútýlsýklóhexan eða <i>cis</i>-1-bróm-4-<i>tert</i>-bútýlsýklóhexan gangist hraðar undir E2 brottnám? Teiknaðu hvoru tveggja sameind í sinni stöðugri stólastellingu og útskýrðu svarið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Cis-hverfan hvarfast hraðar vegna þess að brómið er áslægt."
+        }
+      ]
+    }
+  ]
+}

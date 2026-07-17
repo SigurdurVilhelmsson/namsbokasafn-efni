@@ -1,0 +1,28 @@
+{
+  "nickname": "08-05-OC-P09",
+  "source_uid": "37093@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu byggingu myndefnanna sem þú myndir fá með vatnsbórun-oxun eftirfarandi alkena:",
+  "questions": [
+    {
+      "id": "357724",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--489a8ea2e42a66ed570d70684380c3ead3f3edfa/OChem_08_05_010a.jpg\" alt=\"The condensed structural formula has a 5-carbon chain. C2 is double bonded to C3 and single bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6474626e6c53c3b2fc7cfe7cc3ca92b2d0fe1227/OChem_08_EC_202a.jpg\" alt=\"The condensed structural formula has a 5-carbon chain. C2 is bonded to a methyl group. C3 is bonded to a hydroxyl group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357725",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e1cc68f14dd11b3e8cf139e43fd851f3eed3643/OChem_08_05_010b.jpg\" alt=\"The bond-line structure has a cyclohexane ring. C1 is double bonded to a carbon atom, which is single bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--290928ab0189fc6aca5ae74adf7bc3e3df61088f/OChem_08_EC_202b.jpg\" alt=\"The structure has a cyclohexane ring bonded to a 2-carbon chain with a hydroxyl group bonded to C1  ring attachment.\">"
+        }
+      ]
+    }
+  ]
+}

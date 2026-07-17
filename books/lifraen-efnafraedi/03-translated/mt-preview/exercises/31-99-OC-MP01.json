@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-MP01",
+  "source_uid": "39410@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355016",
+      "stem_html": "<p>Pólý(etýlen glýkól), eða Carbowax, er búið til með anjónískri fjölliðun etýlenoxíðs með NaOH sem hvata. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7639637ca6ccb7dcdf47cbdb71c313e68105c1e1/OChem_31_EC_003.jpg\" alt=\"The structure of polyethylene glycol. Oxygen is connected to two methylene units and its structure is inside parentheses with n as the subscript.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

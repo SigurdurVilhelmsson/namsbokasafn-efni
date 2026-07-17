@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-VC03",
+  "source_uid": "37671@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358453",
+      "stem_html": "<p>Eftirfarandi díen gengst ekki undir Diels-Alder-efnahvörf. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6701369a12f35dfbadf342b8297ba45e1572232d/OChem_14_EC_005.jpg\" alt=\"The ball-and-stick model has cyclohexene. C 1 is bonded to 3-carbon chain with double bond at C 1. C 2 of ring and chain are each bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nickname": "27-05-OC-P07",
+  "source_uid": "38839@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Leggðu til hvarfganga fyrir lífefnamyndun eftirfarandi terpenóíða:",
+  "questions": [
+    {
+      "id": "358194",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--951e8cac2bb64d5da5e29ab1361e00790afa568a/OChem_27_05_016a.jpg\" alt=\"The structure of alpha-pinene in which cyclohexene has a methyl group on C 1, two methyl groups on C 3, and two methyl groups connected inside the ring.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5249dd7d550a7eebc120cd749a44bbf26d866eaf/OChem_27_EC_202.jpg\" alt=\"O P P releases from linalyl diphosphate leading to a carbocation intermediate. The double bond shifts to form another carbocation. The base reacts with carbocation to form alpha-pinene.\">"
+        }
+      ]
+    },
+    {
+      "id": "358195",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7af4051c5bc291a339b9803aac0e40f36a7c1ea/OChem_27_05_016b.jpg\" alt=\"Gamma-bisabolene comprises cyclohexene bonded with methyl and a double bond linked to methyl. Further linked to two methylene groups and C-H is linked to double bond with two methyl groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84090902fbee2592d52c6c3956150f6766741d79/OChem_27_EC_203.jpg\" alt=\"The structure shows the formation of gamma-bisabolene from several carbocations involving four steps.\">"
+        }
+      ]
+    }
+  ]
+}

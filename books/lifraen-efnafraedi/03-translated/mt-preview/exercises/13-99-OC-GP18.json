@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP18",
+  "source_uid": "37535@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358427",
+      "stem_html": "<p>Róteinda-NMR-róf er sýnt fyrir efnasamband með formúluna C<sub>5</sub>H<sub>9</sub>NO<sub>4</sub>. Innrautt róf sýnir sterkar gleypnirásir við 1750 og 1562 cm<sup>–1</sup> og meðalsterka gleypnirás við 1320 cm<sup>–1</sup>. Venjulegt kolefni-13 og niðurstöður DEPT-tilraunar eru í töflu. Teiknaðu byggingu þessa efnasambands.</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th><b>Venjulegt kolefni</b></th>\n<th><b>DEPT-135</b></th>\n<th><b>DEPT-90</b></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>    14 ppm</td>\n<td>Jákvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 16</td>\n<td>Jákvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 63</td>\n<td>Neikvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 83</td>\n<td>Jákvætt</td>\n<td>Jákvætt</td>\n</tr>\n<tr>\n<td>165</td>\n<td>Enginn toppur</td>\n<td>Enginn toppur</td>\n</tr>\n</tbody>\n</table>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fd35362eef37d1fef1e93baaaef42ec82f3bc336/OChem_13_EC_029.jpg\" alt=\"Proton spectrum of C 5 H 9 N O 4 shifts: 0, 1.3 (triplet), 1.8 (doublet), 4.3 (quartet), and 5.2 (quartet). Relative areas of 3, 3, 2, and 0.92 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

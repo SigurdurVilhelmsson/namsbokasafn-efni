@@ -1,0 +1,30 @@
+{
+  "nickname": "25-99-OC-AP35",
+  "source_uid": "39108@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Þegar <small style=\"font-variant: small-caps\">D</small>-ídósi er hitaður í 100 °C gengst hann undir afturkræft vatnstap og er aðallega til sem 1,6-anhýdró-<small style=\"font-variant: small-caps\">D</small>-ídópýranósi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--345985aa8ab3075d570414814b0be4362cc48e54/OChem_25_EC_020.jpg\" alt=\"Fischer projection of D-idose, two hydroxyl groups on the left at C2, C3, two hydroxyl groups on the right at C3, C5  in equilibrium with idopyranose and water. \">",
+  "questions": [
+    {
+      "id": "358839",
+      "stem_html": "Teiknaðu <small style=\"font-variant: small-caps\">D</small>-ídósa í pýranósaformi sínu og sýndu stöðugri stólstellingu hringsins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358840",
+      "stem_html": "Hvort er stöðugra, <i>α</i>-<small style=\"font-variant: small-caps\">D</small>-ídópýranósi eða <i>β</i>-<small style=\"font-variant: small-caps\">D</small>-ídópýranósi? Útskýrðu.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358841",
+      "stem_html": "Teiknaðu 1,6-anhýdró-<small style=\"font-variant: small-caps\">D</small>-ídópýranósa í sinni stöðugustu stellingu.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358842",
+      "stem_html": "Þegar <small style=\"font-variant: small-caps\">D</small>-glúkósi er hitaður í 100 °C við sömu aðstæður og notaðar voru fyrir <small style=\"font-variant: small-caps\">D</small>-ídósa, tapar hann ekki vatni og er ekki til á 1,6-anhýdróformi. Útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

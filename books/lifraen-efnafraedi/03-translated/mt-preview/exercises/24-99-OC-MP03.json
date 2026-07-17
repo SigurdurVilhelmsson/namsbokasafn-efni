@@ -1,0 +1,30 @@
+{
+  "nickname": "24-99-OC-MP03",
+  "source_uid": "38985@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og skrifaðu hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361634",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b961e2894f4b2253d34c2391e45f989fdcbec48c/OChem_24_EC_020a.jpg\" alt=\"3-Methylbutanamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361635",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1a7dc5e4aff4bea945bddd46e9e7fbea1536b2e/OChem_24_EC_020b.jpg\" alt=\"Cyclopentanecarboxamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361636",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a4a456ccf2f2c1e3d62dc4f466a904bccea50a3/OChem_24_EC_020c.jpg\" alt=\"2-Methoxyacetamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361637",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6504f818d13535394aea4b82548dd32e7ce7ade3/OChem_24_EC_020d.jpg\" alt=\"2,3-Dihydro-1H-indene-2-carboxamide reacts with bromine, sodium hydroxide, and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

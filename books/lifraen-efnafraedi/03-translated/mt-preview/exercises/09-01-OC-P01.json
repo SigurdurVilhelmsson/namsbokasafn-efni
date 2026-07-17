@@ -1,0 +1,55 @@
+{
+  "nickname": "09-01-OC-P01",
+  "source_uid": "37190@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi alkín:",
+  "questions": [
+    {
+      "id": "353698",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6e4936b3388574182024764620186259bc12ec7/OChem_09_01_004a.jpg\" alt=\"The structure of 2,5-dimethyl-3-hexyne.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,5-dímetýl-3-hexín"
+        }
+      ]
+    },
+    {
+      "id": "353699",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--857790e1c9949361cb5f10b1fc00520430281f90/OChem_09_01_004b.jpg\" alt=\"The structure of 3,3-dimethyl-1-butyne.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3,3-dímetýl-1-bútín"
+        }
+      ]
+    },
+    {
+      "id": "353700",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7251c36332d16f75dc0c618e3ee6e703f3ae98/OChem_09_01_004c.jpg\" alt=\"The structure of 3,3-dimethyl-4-octyne.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3,3-dímetýl-4-oktín"
+        }
+      ]
+    },
+    {
+      "id": "353701",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3d3f3f05d0df9332407ea45cc8f55ba69f0b05b/OChem_09_01_004d.jpg\" alt=\"The structure of 2,5,5-trimethyl-3-heptyne.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,5,5-trímetýl-3-heptín"
+        }
+      ]
+    },
+    {
+      "id": "353702",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--880091bf3636383cd6cfd5f08610ace96bd4de62/OChem_09_01_004f.jpg\" alt=\"The structure of 2,4-octadiene-6-yne.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,4-oktadíen-6-ín"
+        }
+      ]
+    }
+  ]
+}

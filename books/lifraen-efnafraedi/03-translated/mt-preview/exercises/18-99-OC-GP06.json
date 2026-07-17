@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP06",
+  "source_uid": "38757@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361297",
+      "stem_html": "<p>Grignard-hvarfefni hvarfast við oxetan, fjögurra liða hringlaga eter, og mynda fyrsta stigs alkóhól, en efnahvarfið er mun hægara en samsvarandi efnahvarf við etýlenoxíð. Stingdu upp á ástæðu fyrir muninum á hvarfgirni oxetans og etýlenoxíðs.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--601dba8cf8f2698decab5c25dda616d68deebcb8/OChem_18_EC_046.jpg\" alt=\"Oxetane (four-membered ring incorporating one oxygen) reacts with R Mg X, then hydronium, to produce R C H 2 C H 2 C H 2 O H.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

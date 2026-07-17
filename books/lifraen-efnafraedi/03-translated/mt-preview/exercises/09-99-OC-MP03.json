@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-MP03",
+  "source_uid": "37209@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Kvikasilfurshvötuð vötnun alkína felur í sér myndun lífræns kvikasilfursenól-milliefnis. Teiknið hvarfganginn með rafeindaflutningi til að sýna hvernig hvert eftirfarandi milliefna myndast.",
+  "questions": [
+    {
+      "id": "353758",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5de5a7366cf7d6b4fafbbf4da2bbfaf7920c94ab/OChem_09_EC_017a.jpg\" alt=\"A phenyl alkyne reacts with water, sulfuric acid, and mercuric sulfate to form a benzene ring connected to an ionic organomercury enol sulfate intermediate.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353759",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7317c277461bf945f9400974a5f0f3321b009bb8/OChem_09_EC_017b.jpg\" alt=\"A C3 alkyne reacts with water, sulfuric acid, and mercuric sulfate to form a C3 ionic organomercury enol sulfate  intermediate.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353760",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f39720b6114faa3930deafe8de1224a07a6a9b5a/OChem_09_EC_017c.jpg\" alt=\"A C4 terminal alkyne reacts with water, sulfuric acid, and mercuric sulfate to form a C4 ionic organomercury enol sulfate  intermediate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

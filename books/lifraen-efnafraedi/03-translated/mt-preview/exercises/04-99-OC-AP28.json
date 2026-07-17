@@ -1,0 +1,25 @@
+{
+  "nickname": "04-99-OC-AP28",
+  "source_uid": "36555@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Eins og getið er í dæmi 3-53 eru statínlyf, svo sem simvastatín (Zocor), pravastatín (Pravachol) og atorvastatín (Lipitor), mest ávísuðu lyf í heimi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dd7f28a3f7261fcf3183edd178bed91b4dc33cd/OChem_04_EC_012.jpg\" alt=\"The structures of simvastatin (Zocor), pravastatin (Pravachol), and atorvastatin (Lipitor).\">",
+  "questions": [
+    {
+      "id": "351891",
+      "stem_html": "Eru tvö tilgreind efnatengi á simvastatíni cis eða trans?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351892",
+      "stem_html": "Hver eru cis/trans-tengslin milli þriggja tilgreindra efnatengja á pravastatíni?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351893",
+      "stem_html": "Hvers vegna er ekki hægt að skilgreina þrjú tilgreind efnatengi á atorvastatíni sem cis eða trans?",
+      "collaborator_solutions": []
+    }
+  ]
+}

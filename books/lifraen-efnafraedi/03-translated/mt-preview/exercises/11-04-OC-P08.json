@@ -1,0 +1,19 @@
+{
+  "nickname": "11-04-OC-P08",
+  "source_uid": "37349@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336950",
+      "stem_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi (<i>S</i>)-3-klór-3-metýloktans við ediksýru? Sýndu handhverfu bæði hvarfefnis og myndefnis.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Rasemískt 1-etýl-1-metýlhexýlasetat"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "23-11-OC-P19",
+  "source_uid": "38899@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða <i>myndefni</i> myndu myndast eftir <i>vatnsrof</i> úr <i>efnahvarfi</i> enamínsins sem búið er til úr sýklópentanóni og pýrrólidíni með eftirfarandi <i>α</i>,<i>β</i>-ómettuðum viðtökum?",
+  "questions": [
+    {
+      "id": "359807",
+      "stem_html": "H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHCO<sub>2</sub>Et",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--25e7ecfcd300b277569ef15b3d35e44c20a480a6/OChem_23_EC_212a.jpg\" alt=\"The structure of cyclopentanone with C H 2 C H 2 C O O E t on second carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "359808",
+      "stem_html": "H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHCHO",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2ef1708153eeefb1941f016d4a90621263066b6/OChem_23_EC_212b.jpg\" alt=\"The structure of cyclopentanone with C H 2 C H 2 C H O on second carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "359809",
+      "stem_html": "CH<sub>3</sub>CH<span data-math=\"\\text{═}\"></span>CHCOCH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45a6bd81e170d7b25c7b663236a0e17fd926c5cc/OChem_23_EC_212c.jpg\" alt=\"The structure of cyclopentanone in which C 2 is attached to the fourth carbon of pentan-2-one.\">"
+        }
+      ]
+    }
+  ]
+}

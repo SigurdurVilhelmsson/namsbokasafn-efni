@@ -1,0 +1,19 @@
+{
+  "nickname": "09-07-OC-P09",
+  "source_uid": "37198@9",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347101",
+      "stem_html": "<p>p<i>K</i><sub>a</sub> asetóns, CH<sub>3</sub>COCH<sub>3</sub>, er 19,3. Hver af eftirfarandi bösum er nógu sterkur til að afprótóna asetón?</p>\n<p><b>(a)</b> KOH (p<i>K</i><sub>a</sub> af H<sub>2</sub>O = 15,7) <b>(b)</b> Na<sup>+</sup> <sup>−</sup>C <span data-math=\"\\text{≡}\"></span> etín (p<i>K</i><sub>a</sub> af C<sub>2</sub>H<sub>2</sub> = 25) <b>(c)</b> NaHCO<sub>3</sub> (p<i>K</i><sub>a</sub> af H<sub>2</sub>CO<sub>3</sub> = 6,4)<br><b>(d)</b> NaOCH<sub>3</sub> (p<i>K</i><sub>a</sub> af CH<sub>3</sub>OH = 15,6)</p>\n\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Nei: <b>(a)</b>, <b>(c)</b>, <b>(d)</b>; já: <b>(b)</b>"
+        }
+      ]
+    }
+  ]
+}

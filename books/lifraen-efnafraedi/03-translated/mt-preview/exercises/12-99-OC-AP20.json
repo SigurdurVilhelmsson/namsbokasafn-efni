@@ -1,0 +1,35 @@
+{
+  "nickname": "12-99-OC-AP20",
+  "source_uid": "37446@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Við hvaða áætluðu stöður gætu eftirfarandi efnasambönd sýnt IR-gleypni (hunsið gleypni alkana)?",
+  "questions": [
+    {
+      "id": "447733",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bfb1f3aaf53a87363d2264b547acb80f3a8b7f27/OChem_12_EC_006a.jpg\" alt=\"The structure of benzoic acid.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "447734",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55fff08a02f92737d1366dac18980dfb8417dfad/OChem_12_EC_006b.jpg\" alt=\"The structure of methyl benzoate.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "447735",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d7da1686e16a425811f556a3b8b787dfe0edad8/OChem_12_EC_006c.jpg\" alt=\"The structure of 4-hydroxybenzonitrile\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "447736",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6946136485d6f1573d66ebec47d2ceabf43f2553/OChem_12_EC_006d.jpg\" alt=\"The structure of cyclohex-3-en-1-one\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "447737",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46d9c5f8aae113f8a54ae6111cac5c35ef61ea11/OChem_12_EC_006e.jpg\" alt=\"The structure of a methyl ester with a five-carbon alkyl chain and a ketone group at C4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

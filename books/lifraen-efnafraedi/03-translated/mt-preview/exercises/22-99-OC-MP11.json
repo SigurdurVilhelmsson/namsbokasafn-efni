@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP11",
+  "source_uid": "38798@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360939",
+      "stem_html": "<p>Eitt af síðari skrefunum í lífsmíði glúkósa er hverfun frúktósa-6-fosfats í glúkósa-6-fosfat. Leggðu til hvarfgang með sýru- eða basahvötun eftir þörfum.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--791d4e9a7bedfd6fc4de3affbae2f60c82a8c027/OChem_22_EC_023.jpg\" alt=\"Fructose-6-phosphate undergoes a chemical reaction to yield glucose-6-phosphate as a product. Both the structures are represented in Fischer projection.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

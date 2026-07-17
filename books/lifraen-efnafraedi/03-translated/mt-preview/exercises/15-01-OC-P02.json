@@ -1,0 +1,64 @@
+{
+  "nickname": "15-01-OC-P02",
+  "source_uid": "37733@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "358613",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d74ce7e5ddd922a3b9d391f0e002012f72490c1/OChem_15_01_009a.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a bromine atom and a chlorine atom, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>m</i>-Brómklóróbensen"
+        }
+      ]
+    },
+    {
+      "id": "358614",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43f7b75a97ff1c43ee5c1746da760adc4568efe7/OChem_15_01_009b.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 4-carbon chain, in which C 3 is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "(3-Metýlbútýl)bensen"
+        }
+      ]
+    },
+    {
+      "id": "358615",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8257bf1885ea8f77212833198ae052a8479a9d4d/OChem_15_01_009c.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to an amine group and a bromine atom, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Brómanilín"
+        }
+      ]
+    },
+    {
+      "id": "358616",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7163a091308d9afb11e292e5aa2e8056b9386e79/OChem_15_01_009d.jpg\" alt=\"In a benzene ring, C 1 and C 4 are each bonded to a chlorine atom and C 2 is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,5-Díklórtólúen"
+        }
+      ]
+    },
+    {
+      "id": "358617",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb03c630dc622a6e932a762212a3d3c990a0d845/OChem_15_01_009e.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 2-carbon chain. C 2 and C 4 are each bonded to an N O 2 group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Etýl-2,4-dínítróbensen"
+        }
+      ]
+    },
+    {
+      "id": "358618",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28e4d42e956928bfad33b399d936889ed52a8e59/OChem_15_01_009f.jpg\" alt=\"In a benzene ring, C 1, C 2, C 3, and C 5 are each bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,2,3,5-Tetrametýlbensen"
+        }
+      ]
+    }
+  ]
+}

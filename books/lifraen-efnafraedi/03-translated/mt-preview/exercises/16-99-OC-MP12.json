@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP12",
+  "source_uid": "37826@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358973",
+      "stem_html": "<p>4-klórpýridín hvarfast við dímetýlamín og gefur 4-dímetýlamínópýridín. Settu fram hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b3dd7b896069a4f47122b1863ad58f9414a17ee/OChem_16_EC_027.jpg\" alt=\"4-Chloropyridine reacts with dimethylamine to yield 4-dimethylaminopyridine and hydrogen chloride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

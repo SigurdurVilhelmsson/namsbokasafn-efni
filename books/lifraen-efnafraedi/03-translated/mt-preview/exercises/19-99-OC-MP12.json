@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP12",
+  "source_uid": "38034@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360705",
+      "stem_html": "<p>Aldehýð og ketón hvarfast við þíól og mynda <i>þíóasetöl</i> á sama hátt og þau hvarfast við alkóhól og mynda asetöl. Spáðu fyrir um myndefni eftirfarandi efnahvarfs og leggðu til hvarfgang:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c15ab398d56d67d2d8c8d016e33a4de3fe42103a/OChem_19_EC_031.jpg\" alt=\"The reaction shows a cyclopentanone with two molecules of ethanethiol, in the presence of a proton catalyst to yield an unknown compound indicated by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

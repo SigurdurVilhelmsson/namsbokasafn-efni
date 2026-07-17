@@ -1,0 +1,37 @@
+{
+  "nickname": "09-03-OC-P03",
+  "source_uid": "37192@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr eftirfarandi efnahvörfum?",
+  "questions": [
+    {
+      "id": "353706",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--419eca4bf2d79fbeb3373809ac8593c94aa132ae/OChem_09_03_007a.jpg\" alt=\"The figure shows a C5 alkyne reacting with two moles of chlorine to give an unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,1,2,2-tetraklórpentan"
+        }
+      ]
+    },
+    {
+      "id": "353707",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f8bcbe9f0f711b4d12f515fc9181ad6768f73e1/OChem_09_03_007b.jpg\" alt=\"A cyclopentane connected to an alkyne reacts with one mole of hydrogen bromide to give an unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-bróm-1-sýklópentýletýlen"
+        }
+      ]
+    },
+    {
+      "id": "353708",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e9e141ab71b13013ec710863c363bb4c0e7f28a/OChem_09_03_007c.jpg\" alt=\"A C7 alkyne reacts with one mole of hydrogen bromide to give an unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-bróm-2-hepten og 3-bróm-2-hepten"
+        }
+      ]
+    }
+  ]
+}

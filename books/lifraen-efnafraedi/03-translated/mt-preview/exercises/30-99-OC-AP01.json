@@ -1,0 +1,20 @@
+{
+  "nickname": "30-99-OC-AP01",
+  "source_uid": "39370@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eiga eftirfarandi rafhringhvarf sér stað á samhverfan eða andhverfan hátt? Við hvaða aðstæður, varma eða ljóshvötun, myndir þú framkvæma hvort efnahvarf?",
+  "questions": [
+    {
+      "id": "358576",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0ba37056110c25c2dae0e9f5367ba6ffbc0f1aa/OChem_30_EC_008a.jpg\" alt=\"Two six-membered rings fused together with double bonds undergo electrocyclic reactions to form two fused six-membered rings with the shift of double bonds.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358577",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--912be0d2618adb0e0ea4261ae5197c26bfee7e61/OChem_30_EC_008b.jpg\" alt=\"Three six-membered rings fused together undergo an electrocyclic reaction to form three fused six-membered rings with wedged and dashed hydrogen atoms at the middle ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

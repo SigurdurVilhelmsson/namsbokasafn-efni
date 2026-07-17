@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP30",
+  "source_uid": "37719@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358535",
+      "stem_html": "<p>Álagning HCl á 1-metoxýsýklóhexen gefur 1-klór-1-metoxýsýklóhexan sem eina myndefnið. Notaðu vokmyndir til að útskýra hvers vegna engin af hinum staðsetningarsameindunum myndast.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--acafabb8acf5e4b9e9a8265241da30a2db9c5fb4/OChem_14_EC_028.jpg\" alt=\"A cyclohexene with a double bond between C1-C2 and a methoxy group at C1 reacts with hydrogen chloride to form a cyclohexane ring, in which C 1 is bonded to a methoxy group and a chlorine atom.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

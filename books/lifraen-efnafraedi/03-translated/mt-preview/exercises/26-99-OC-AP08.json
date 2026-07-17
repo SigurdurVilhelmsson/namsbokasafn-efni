@@ -1,0 +1,20 @@
+{
+  "nickname": "26-99-OC-AP08",
+  "source_uid": "39247@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu hvernig þú gætir notað asetamíðómalónataðferðina til að búa til eftirfarandi amínósýrur:",
+  "questions": [
+    {
+      "id": "348873",
+      "stem_html": "Leusín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348874",
+      "stem_html": "Tryptófan",
+      "collaborator_solutions": []
+    }
+  ]
+}

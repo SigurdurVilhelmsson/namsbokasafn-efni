@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-MP03",
+  "source_uid": "38721@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spyrðu fyrir um myndefni(n) og sýndu hvarfgang fyrir hvert eftirfarandi tveggja þrepa ferla.",
+  "questions": [
+    {
+      "id": "361182",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71b5765cc00f6ebb12c6afb6d120a7f3a34a2bfb/OChem_18_EC_021b.jpg\" alt=\"1-propanol reacts with sodium hydride, then 1-bromopropane to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361183",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--667b7b44b186dd3eda7d7041f14f1fc532153e39/OChem_18_EC_021c.jpg\" alt=\"Cyclopentanol reacts with sodium hydride, then methyl p-toluenesulfonate to form unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "21-99-OC-MP12",
+  "source_uid": "38192@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Bakteríur þróa venjulega ónæmi fyrir penisillínum og öðrum <i>β</i>-laktam sýklalyfjum (sjá <i>Efnafræði skiptir máli</i> í lok þessa kafla) vegna myndunar <i>β</i>-laktamasa ensíma í bakteríum. Tazobactam getur hins vegar hamlað virkni <i>β</i>-laktamasa með því að fanga það og koma þannig í veg fyrir að ónæmi þróist.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7efb3b60e97c02f85cf315c1bb1b58e90c4b04fa/OChem_21_EC_036.jpg\" alt=\"Reaction of beta-lactamase and tazobactam generates a  trapped beta-lactamase. The reaction proceeds through multiple steps. Tazobactam contain a four-membered lactam ring.\">",
+  "questions": [
+    {
+      "id": "361447",
+      "stem_html": "Fyrsta skrefið í fönguninni er hvarf hýdroxýlhóps á <i>β</i>-laktamasanum til að opna <i>β</i>-laktamhring tazobactams. Sýndu verkunarmátann.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361448",
+      "stem_html": "Annað skrefið er opnun brennisteinsinnihaldandi hringsins í tazobactam til að gefa óhringlaga imín milliefni. Sýndu verkunarmátann.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361449",
+      "stem_html": "Hringmyndun imín milliefnisins gefur fangaða <i>β</i>-laktamasa afurðina. Sýndu verkunarmátann.",
+      "collaborator_solutions": []
+    }
+  ]
+}

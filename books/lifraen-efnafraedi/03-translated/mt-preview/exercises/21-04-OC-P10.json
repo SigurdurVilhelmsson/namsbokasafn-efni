@@ -1,0 +1,19 @@
+{
+  "nickname": "21-04-OC-P10",
+  "source_uid": "38160@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342469",
+      "stem_html": "Hvaða aðferð myndir þú velja ef þú vildir búa til sýklóhexýlbensóat – Fischer-esterun eða efnahvarf sýruklóríðs við alkóhól? Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensóýlklóríð + sýklóhexanól"
+        }
+      ]
+    }
+  ]
+}

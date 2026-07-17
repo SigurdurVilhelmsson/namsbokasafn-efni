@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP22",
+  "source_uid": "39022@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361727",
+      "stem_html": "<p>Fylltu inn í hvarfefnin sem vantar <b>a</b>–<b>e</b> í eftirfarandi ferli:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a94adbce357286a360dad51e0670d62684b73428/OChem_24_EC_044.jpg\" alt=\"Acetophenone reacts with a to form 1-phenylethanamine. This reacts with b and c to form styrene. This reacts with d to form 2-phenyloxirane. This reacts with e to form 2-(dimethylamino)-1-phenylethanol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

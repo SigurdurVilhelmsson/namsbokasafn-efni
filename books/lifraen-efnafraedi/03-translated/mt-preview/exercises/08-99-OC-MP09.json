@@ -1,0 +1,25 @@
+{
+  "nickname": "08-99-OC-MP09",
+  "source_uid": "37116@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Joðasíð, IN<sub>3</sub>, leggst á alkena með rafsæknum hvarfgangi svipuðum og hjá brómi. Ef notaður er einskiptur alkeni eins og 1-búten myndast aðeins eitt myndefni:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--40c1fe3a05a8671bdd14dedadf340dfc6468448c/OChem_08_EC_024.jpg\" alt=\"A reaction shows 1-butene reacting with iodine azide to form product where C1 of butane is bonded to iodine an C2 is bonded to the azide group.\">",
+  "questions": [
+    {
+      "id": "353482",
+      "stem_html": "Bættu stökum rafeindapörum við uppbygginguna sem sýnd er fyrir IN<sub>3</sub> og teiknaðu annað vok mynd fyrir sameindina.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353483",
+      "stem_html": "Reiknaðu formlegar hleðslur fyrir frumeindirnar í báðum vok myndunum sem þú teiknaðir fyrir IN<sub>3</sub> í hluta <b>(a)</b>.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353484",
+      "stem_html": "Í ljósi niðurstaðnanna sem sjást þegar IN<sub>3</sub> er bætt við 1-búten, hver er skautun I − N<sub>3</sub> efnatengisins? Settu fram tillögu að hvarfgangi fyrir efnahvarfið með því að nota sveigðar örvar til að sýna flæði rafeinda í hverju skrefi.",
+      "collaborator_solutions": []
+    }
+  ]
+}

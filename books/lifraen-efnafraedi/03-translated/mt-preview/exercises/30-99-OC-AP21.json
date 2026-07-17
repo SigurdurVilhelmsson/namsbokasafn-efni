@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP21",
+  "source_uid": "39390@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355118",
+      "stem_html": "<p>Eftirfarandi umröðun var hönnuð og framkvæmd til að sanna staðefnafræði [1,5] sigmatrópískra vetnisflutninga. Útskýrðu hvernig niðurstaðan sem sést staðfestir spár um samhverfu svigrúma.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--261edf2bf7e41fca682b1832c100ebee0374c09a/OChem_30_EC_025.jpg\" alt=\"A reversible chemical reaction where a reactant with heat gives two products. C 5 is bonded to hydrogen on left and deuterium on bottom and vice versa in second product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

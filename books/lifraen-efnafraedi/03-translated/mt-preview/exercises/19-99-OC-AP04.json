@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-AP04",
+  "source_uid": "38050@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingar efnasambanda sem passa við eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "341556",
+      "stem_html": "<i>α</i>,<i>β</i>-ómettað ketón, C<sub>6</sub>H<sub>8</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341557",
+      "stem_html": "<i>α</i>-díketón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341558",
+      "stem_html": "Arómatískt ketón, C<sub>9</sub>H<sub>10</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341559",
+      "stem_html": "Díenaldehýð, C<sub>7</sub>H<sub>8</sub>O",
+      "collaborator_solutions": []
+    }
+  ]
+}

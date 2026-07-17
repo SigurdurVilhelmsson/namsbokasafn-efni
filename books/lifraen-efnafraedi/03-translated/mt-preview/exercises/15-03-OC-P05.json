@@ -1,0 +1,19 @@
+{
+  "nickname": "15-03-OC-P05",
+  "source_uid": "37736@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358630",
+      "stem_html": "<p>Til að vera arómatísk verður sameind að hafa 4<i>n</i> + 2 <i>π</i> rafeindir og verður að hafa slétt, einhringja samokakerfi. Sýklódekapentaen uppfyllir eitt af þessum skilyrðum en ekki hitt og hefur staðist allar tilraunir til myndunar. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b39dc271a1e1bb88f1811a8e01ebd0ad95aa9427/OChem_15_03_006.jpg\" alt=\"The ball-and-stick model shows a ten-membered ring with five alternate double bonds. The gray and black spheres represent hydrogen and carbon atoms, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklódekapentaen er ekki flatt vegna sterískra víxlverkana."
+        }
+      ]
+    }
+  ]
+}

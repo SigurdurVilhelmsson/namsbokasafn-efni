@@ -1,0 +1,19 @@
+{
+  "nickname": "01-04-OC-P03",
+  "source_uid": "37540@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357564",
+      "stem_html": "Teiknaðu sameind af klóróformi, CHCl<sub>3</sub>, með því að nota heilar, fleyglaga og brotnar línur til að sýna ferflötungslögun þess.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4acc157de8ef590006733bf77a4a18d512b354ed/OChem_01_EC_201.jpg\" alt=\"The wedge-dash structure of chloroform.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-AP04",
+  "source_uid": "39418@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355040",
+      "stem_html": "<p>Sýndu byggingu fjölliðunnar sem myndast við hitun eftirfarandi díepoxíðs og díamíns:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a5884abc815f448fcd558491df7e198bca4f69f/OChem_31_EC_009.jpg\" alt=\"Diepoxide comprises benzene bonded to two O-atoms on both sides. Further bonded to methylene and epoxide ring. It reacts with diamine to give unknown product, shown as a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

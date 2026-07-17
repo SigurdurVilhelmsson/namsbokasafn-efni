@@ -1,0 +1,64 @@
+{
+  "nickname": "04-01-OC-P01",
+  "source_uid": "36472@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi sýklóalkana:",
+  "questions": [
+    {
+      "id": "351872",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5931f409ce85c9721e953795960c87545ceaa4ac/OChem_04_01_008a.jpg\" alt=\"In a 6-membered carbon ring, C1 and C4 are each bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,4-Dímetýlsýklóhexan"
+        }
+      ]
+    },
+    {
+      "id": "351873",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a012f1985bc52471ab1cdcc88bc0f906fd81e9d6/OChem_04_01_008b.jpg\" alt=\"In a 5-membered carbon ring, C1 and C3 are bonded to a methyl and a propyl group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Metýl-3-própýlsýklópentan"
+        }
+      ]
+    },
+    {
+      "id": "351874",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7dae6071bb96c46bfae0846e68936c899accc67/OChem_04_01_008c.jpg\" alt=\"A cyclobutane ring is bonded to C3 of a 5-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Sýklóbútýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "351875",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58ca6b69bcdd6856500c2907eec80c4eb6a833a5/OChem_04_01_008d.jpg\" alt=\"In a 10-membered carbon ring, C1 and C4 are bonded to a bromine atom and an ethyl group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Bróm-4-etýlsýklódekan"
+        }
+      ]
+    },
+    {
+      "id": "351876",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2565a38ae3674dcb68d7bc3976ae2f58241bace/OChem_04_01_008e.jpg\" alt=\"In a 6-membered carbon ring, C1 and C2 are bonded to a C H (C H 3) 2 group and a methyl group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Ísóprópýl-2-metýlsýklóhexan"
+        }
+      ]
+    },
+    {
+      "id": "351877",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c602540559d5758c010d6334284cb322a6fdca44/OChem_04_01_008f.jpg\" alt=\"In a 7-membered carbon ring, C1, C2, and C4 are bonded to a C (C H 3) 3 group, a methyl group, and a bromine atom, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-Bróm-1-<i>tert</i>-bútýl-2-metýlsýklóheptan"
+        }
+      ]
+    }
+  ]
+}

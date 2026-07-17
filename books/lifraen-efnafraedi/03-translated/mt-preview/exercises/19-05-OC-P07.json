@@ -1,0 +1,19 @@
+{
+  "nickname": "19-05-OC-P07",
+  "source_uid": "38001@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341367",
+      "stem_html": "Þegar tríklórasetaldehýð er leyst upp í vatni er það aðallega til staðar sem hýdrat þess, sem kallast klóralhýdrat. Sýndu byggingu klóralhýdrats.",
+      "collaborator_solutions": [
+        {
+          "content_html": "CCl<sub>3</sub>CH(OH)<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

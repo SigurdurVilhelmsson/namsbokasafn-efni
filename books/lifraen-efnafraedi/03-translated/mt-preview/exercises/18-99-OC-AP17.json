@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-AP17",
+  "source_uid": "38750@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361279",
+      "stem_html": "<p>Anetól, C<sub>10</sub>H<sub>12</sub>O, aðalefni anísolíu, hefur <sup>1</sup>H NMR-rófið sem sýnt er. Við vandlega oxun með Na<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> gefur anetól <i>p</i>-metoxýbensósýru. Hver er bygging anetóls? Úthlutaðu öllum toppum í NMR-rófinu og útskýrðu klofningsmynstrið sem sést.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--63101273475613aee686626e8d7bf02f4d9ce1eb/OChem_18_EC_040.jpg\" alt=\"Proton N M R with shifts at 1.84 (doublet), 3.76 (singlet), 6.09 and 6.36 (multiplets), 6.82 and 7.23 (doublets). Relative areas are 3.00, 3.00, 1.00, 1.00, 2.00, 2.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

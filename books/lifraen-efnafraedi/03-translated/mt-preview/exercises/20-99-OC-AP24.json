@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP24",
+  "source_uid": "38134@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359193",
+      "stem_html": "<p>Hvaða litrófsgreiningaraðferð gætir þú notað til að greina á milli eftirfarandi þriggja sýruhverfa? Segðu til um hvaða einkennandi eiginleika þú myndir búast við fyrir hverja sýru.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9a30ba911f27b0b98604be878be2b4965aa32fdd/OChem_20_EC_027.jpg\" alt=\"The condensed formulas for pentanoic acid, 3-methylbutanoic acid, and 2,2-dimethylpropanoic acid.\">\n\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

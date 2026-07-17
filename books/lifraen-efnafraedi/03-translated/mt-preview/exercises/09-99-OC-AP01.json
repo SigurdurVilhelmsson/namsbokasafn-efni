@@ -1,0 +1,40 @@
+{
+  "nickname": "09-99-OC-AP01",
+  "source_uid": "37215@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefið IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "357311",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--815b43438c7eddbbbea44ad1168f88558d90155e/OChem_09_EC_023a.jpg\" alt=\"A C8 internal alkyne with two methyl groups at C2 and a triple bond at C3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357312",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4cce7c3303d2649ddb911a8622c8012c96138ce/OChem_09_EC_023b.jpg\" alt=\"A C8 dialkyne with triple bonds at C2 and C5 positions.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357313",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--139d7a698d3adad6c096da35d28e532bbdbf5a5c/OChem_09_EC_023c.jpg\" alt=\"A C9 enyne with a  triple bond at C3, double bond at C5 , and two methyl groups at C2 and C5.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357314",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--449e97ce9b7db51558b936b39f7a49deec0ea954/OChem_09_EC_023d.jpg\" alt=\"A C8 dialkyne with triple bonds at C1 , C5, and two methyl groups at C4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357315",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--495e5a56f3ab463f6ee77cc70713a1e98a6f5aba/OChem_09_EC_023e.jpg\" alt=\"A C6 dienyne with a triple bond at C2 and two double bonds at C3 and C5.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357316",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86a902696d071909da390748b28fcd64876abd0d/OChem_09_EC_023f.jpg\" alt=\"A C13 alkyne with a methyl group at C2,  a triple bond at C4, and two ethyl groups at C3 and C6.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

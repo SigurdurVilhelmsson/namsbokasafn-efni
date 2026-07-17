@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-AP17",
+  "source_uid": "38944@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359912",
+      "stem_html": "<p>Hægt er að framkvæma Stork-enamín efnahvarfið og innansameinda aldól efnahvarfið í röð til að gera kleift að mynda sýklóhexenón. Til dæmis, efnahvarf pýrrólidín enamíns sýklóhexanóns við 3-búten-2-ón, fylgt eftir með vatnsrofi enamíns og meðhöndlun með basa, gefur af sér myndefnið sem sýnt er. Skrifaðu hvert skref og sýndu hvarfgang hvers þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26667a531fd105adb9e0e182b00d1ae06791b4dc/OChem_23_EC_042.jpg\" alt=\"Three-step reaction of 1-cyclohexenylpyrrolidine to produce a bicyclo[4.4.0]decane with C 1 double bond, C 3 oxo. Reaction are 3-buten-2-one, then hydronium, then sodium hydroxide and water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

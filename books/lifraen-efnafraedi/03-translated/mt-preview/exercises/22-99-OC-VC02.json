@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-VC02",
+  "source_uid": "38786@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360909",
+      "stem_html": "<p>Ólíkt flestum <i>β</i>-díketónum hefur eftirfarandi <i>β</i>-díketón ekkert greinanlegt enól-innihald og er um það bil jafn súrt og asetón. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a80e62e5abfbeef1cf43eeb4ada90b6d1d31e9b4/OChem_22_EC_012.jpg\" alt=\"A ball-stick model of a compound comprising a six membered ring with carbonyl groups at C 1 and C 3 and with a C H 2 bridge between C 2 and C 5. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

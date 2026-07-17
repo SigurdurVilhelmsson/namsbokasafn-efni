@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP03",
+  "source_uid": "36655@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354372",
+      "stem_html": "<p>Lóratadín, sem er selt sem ofnæmislyf undir vörumerkinu Claritin, hefur fjóra hringi, átta tvítengi og formúluna C<sub>22</sub>H<sub><span class=\"magenta-text\">?</span></sub>ClN<sub>2</sub>O<sub>2</sub>. Hversu mörg vetni hefur lóratadín? (Reiknaðu svarið; ekki telja vetnin í byggingunni.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49b8ee6261819fbf609ec901e26bea0f9e0ef4fb/OChem_07_EC_014.jpg\" alt=\"The structure of Loratadine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

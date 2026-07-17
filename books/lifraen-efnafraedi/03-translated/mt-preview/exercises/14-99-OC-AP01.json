@@ -1,0 +1,30 @@
+{
+  "nickname": "14-99-OC-AP01",
+  "source_uid": "37683@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "358476",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c22cd3a0bfdb604dd30e57414b4bac76d040352/OChem_14_EC_012a.jpg\" alt=\"The condensed structural formula has a 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5. C 3 is single bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358477",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a2c686b9c5253ada57d65467d9fc1cc3cab5322/OChem_14_EC_012b.jpg\" alt=\"The condensed structural formula has a 7-carbon chain with double bonds between C 1-C 2, C 3-C 4, and C 5-C 6.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358478",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--606d969ecb8c731e073bd0f9b092263cdd5a2a9b/OChem_14_EC_012c.jpg\" alt=\"The condensed structural formula has a 7-carbon chain with double bonds between C 2-C 3, C 3-C 4, and C 5-C 6.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358479",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8657b4efeebbf03ce92d46085b5e9dc0e098cac/OChem_14_EC_012d.jpg\" alt=\"The condensed structural formula has a 5-carbon chain with double bonds between C 1-C 2 and C 3-C 4. C 3 is further single bonded to a 3-carbon chain.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

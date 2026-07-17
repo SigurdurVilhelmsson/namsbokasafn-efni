@@ -1,0 +1,19 @@
+{
+  "nickname": "01-07-OC-P08",
+  "source_uid": "37545@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357534",
+      "stem_html": "Teiknaðu línutengibyggingu fyrir própan, CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>. Spáðu fyrir um gildi hvers efnatengishorns og tilgreindu heildarlögun sameindarinnar.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cdfd90c988fc2848988c7d4900c3781842b4125/OChem_01_EC_204.jpg\" alt=\"The chemical structure and wedge-dash structure of propane, where all bond angles are near 109 degrees.\">"
+        }
+      ]
+    }
+  ]
+}

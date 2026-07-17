@@ -1,0 +1,30 @@
+{
+  "nickname": "07-99-OC-AP13",
+  "source_uid": "36665@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>E</i>- eða <i>Z</i>-stillingu til hvers eftirfarandi efnasambands:",
+  "questions": [
+    {
+      "id": "354417",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62b6941d46becc4f35672350e7ac676174b9251d/OChem_07_EC_020a.jpg\" alt=\"A double bond with hydroxymethyl (up) and methyl (down) substituents on the left and methyl (up) and hydrogen (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354418",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36b228fdfdb08cebe065ec6dd783042cc42dbd6b/OChem_07_EC_020b.jpg\" alt=\"A double bond with carbonyl (up) and chlorine (down) substituents on the left and hydrogen (up) and methoxy (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354419",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e430c93d558fd4c567184f13d26dc4c749de1618/OChem_07_EC_020c.jpg\" alt=\"A double bond with nitrile (up) and ethyl (down) substituents on the left and methyl (up) and hydroxymethyl (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354420",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87c13b263dec4d03477ac5963b818866e6646fc4/OChem_07_EC_020d.jpg\" alt=\"A double bond with methyl ester (up) and carboxyl (down) substituents on the left and vinyl (up) and ethyl (down) substituents on the right.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "12-07-OC-P08",
+  "source_uid": "37424@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig gætirðu notað IR-litrófsgreiningu til að greina á milli eftirfarandi hverfupara?",
+  "questions": [
+    {
+      "id": "346545",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>OH og CH<sub>3</sub>OCH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>OH hefur –OH gleypni."
+        }
+      ]
+    },
+    {
+      "id": "346546",
+      "stem_html": "Sýklóhexan og 1-hexen",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-hexen hefur gleypni fyrir tvítengi."
+        }
+      ]
+    },
+    {
+      "id": "346547",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>H og HOCH<sub>2</sub>CH<sub>2</sub>CHO",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>H hefur mjög breiða –OH gleypni."
+        }
+      ]
+    }
+  ]
+}

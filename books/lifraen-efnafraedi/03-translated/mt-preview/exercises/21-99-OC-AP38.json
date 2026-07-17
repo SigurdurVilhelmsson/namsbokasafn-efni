@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP38",
+  "source_uid": "38232@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361537",
+      "stem_html": "<p>Epoxýlím eru útbúin í tveimur skrefum. S<sub>N</sub>2-hvarf tvínatríumsalls bisfenóls A við epiklórhýdrín myndar „forfjölliðu“ sem er síðan „hert“ með meðhöndlun með tríamíni eins og H<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>NHCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--082f39b2579d08f682f10b9ea10907b29f69287d/OChem_21_EC_065.jpg\" alt=\"The reaction of Bisphenol A with epichlorohydrin to form a polymer termed as \">\n<p>Teiknið byggingar til að sýna hvernig viðbót tríamínsins leiðir til styrkingar á fjölliðunni.</p>\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

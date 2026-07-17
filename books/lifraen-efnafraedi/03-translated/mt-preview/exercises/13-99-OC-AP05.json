@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-AP05",
+  "source_uid": "37499@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338109",
+      "stem_html": "Er kjarni sem gleypir við 6,50 <i>δ</i> meira skyggður eða minna skyggður en kjarni sem gleypir við 3,20 <i>δ</i>? Þarf kjarninn sem gleypir við 6,50 <i>δ</i> sterkara eða veikara ytra segulsvið til að komast í vokmynd en sá sem gleypir við 3,20 <i>δ</i>?",
+      "collaborator_solutions": []
+    }
+  ]
+}

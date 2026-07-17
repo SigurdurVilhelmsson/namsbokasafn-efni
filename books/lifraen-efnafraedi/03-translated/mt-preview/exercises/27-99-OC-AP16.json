@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP16",
+  "source_uid": "38864@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358225",
+      "stem_html": "<p>Gefðu þér að asetýl CoA sem inniheldur <sup>14</sup>C samsætumerki í karboxýlkolefnisfrumeindinni sé notað sem upphafsefni og að mevalónatferlinum sé fylgt. Tilgreindu stöðurnar í skvaleni þar sem merkið myndi birtast.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b79418517e7f2a9cd0fa25686127b2ffd990a2e/OChem_27_EC_011.jpg\" alt=\"The structure of squalene. It is a thirty-carbon chain with double bonds and methyl groups at different positions.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "01-03-OC-P01",
+  "source_uid": "37538@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hver er grunnástandsrafeindaskipan eftirfarandi frumefna:",
+  "questions": [
+    {
+      "id": "448142",
+      "stem_html": "Súrefni",
+      "collaborator_solutions": [
+        {
+          "content_html": "1<i>s</i><sup>2</sup> 2<i>s</i><sup>2</sup> 2<i>p</i><sup>4</sup>"
+        }
+      ]
+    },
+    {
+      "id": "448143",
+      "stem_html": "Nitur",
+      "collaborator_solutions": [
+        {
+          "content_html": "1<i>s</i><sup>2</sup> 2<i>s</i><sup>2</sup> 2<i>p</i><sup>3</sup>"
+        }
+      ]
+    },
+    {
+      "id": "448144",
+      "stem_html": "Brennisteinn",
+      "collaborator_solutions": [
+        {
+          "content_html": "1<i>s</i><sup>2</sup> 2<i>s</i><sup>2</sup> 2<i>p</i><sup>6</sup> 3<i>s</i><sup>2</sup> 3<i>p</i><sup>4</sup>"
+        }
+      ]
+    }
+  ]
+}

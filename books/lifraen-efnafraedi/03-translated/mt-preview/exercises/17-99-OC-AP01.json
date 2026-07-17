@@ -1,0 +1,40 @@
+{
+  "nickname": "17-99-OC-AP01",
+  "source_uid": "37902@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "359478",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ade0028377a6d9e5f82925e2b68f5591e8803895/OChem_17_EC_030a.jpg\" alt=\"Condensed structural formula of a four carbon chain with (counting from left) hydroxyl groups on first and fourth carbons, methyl on third carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359479",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c41001dcc1d11af734f3005206d408c14ebadb3/OChem_17_EC_030b.jpg\" alt=\"Condensed structural formula of a five carbon chain with (counting from left) hydroxyl group on second carbon, n-propyl group on third carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359480",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e0bd798cccc09d3ff811ee4b79ee4ae769672ee7/OChem_17_EC_030c.jpg\" alt=\"Four-carbon ring with wedged hydroxyl and dashed hydrogen on C 1, and dashed hydrogen and wedged hydroxyl on C 3 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359481",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e1f8645a9e81715b7f6362df849fdf465008310/OChem_17_EC_030d.jpg\" alt=\"Seven-membered ring with hydroxyl (wedge) and hydrogen (dash) on a carbon, methyl (wedge) and hydrogen (dash) on clockwise adjacent carbon, and double bond starting two carbons further clockwise.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359482",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--30653479d2c90a9c201c9c657ccdc4e418389102/OChem_17_EC_030e.jpg\" alt=\"Five-carbon ring with phenyl (wedge) and hydrogen (dash) on a carbon, and hydroxyl (wedge) and hydrogen (dash) two carbons away, clockwise.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359483",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c526be0278549b9cf931c34daa77da7d9d0eb87/OChem_17_EC_030f.jpg\" alt=\"Benzene with hydroxyl on C 1, bromine group on C 2, and cyano group on C 4 position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

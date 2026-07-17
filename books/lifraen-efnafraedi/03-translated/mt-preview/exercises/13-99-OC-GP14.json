@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP14",
+  "source_uid": "37531@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358419",
+      "stem_html": "<p>3-Metýl-2-bútanól hefur fimm merki í <sup>13</sup>C NMR-rófi sínu við 17,90, 18,15, 20,00, 35,05 og 72,75 <i>δ.</i> Hvers vegna eru metýlhóparnir tveir sem tengjast C3 ójafngildir? Það ætti að hjálpa að búa til sameindalíkan.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--236bd4e08de266798f4fddeeef595d76df58bf20/OChem_13_EC_025.jpg\" alt=\"The structure of 2-methyl-2-butanol with main chain carbons numbered 1 through 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

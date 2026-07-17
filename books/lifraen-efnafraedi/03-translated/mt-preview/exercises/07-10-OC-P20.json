@@ -1,0 +1,19 @@
+{
+  "nickname": "07-10-OC-P20",
+  "source_uid": "36643@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "330188",
+      "stem_html": "Hvað með annað skrefið í rafsekinni álagningu HCl á alken—efnahvarf klóríðjónar við karbókatjón milliefnið? Er þetta skref útvermið eða innvermið? Líkist virkniástandið fyrir þetta annað skref hvarfefninu (karbókatjón) eða myndefninu (alkýlklóríð)? Gerðu grófa teikningu af því hvernig bygging virkniástandsins gæti litið út.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Annað skrefið er útvermið; virkniástandið líkist karbókatjóninni."
+        }
+      ]
+    }
+  ]
+}

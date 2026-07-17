@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP29",
+  "source_uid": "37586@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Flestar stöðugar lífrænar sameindir hafa fjórgildar kolefnisfrumeindir, en einnig eru til sameindir með þrígildum kolefnisfrumeindum. Karbókatjónir eru einn slíkur flokkur efnasambanda.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--208355dc1cf5af72a9e5fe727c6be9afdf25d49c/OChem_01_EC_018.jpg\" alt=\"A chemical structure of a carbocation featuring a carbon atom with a positive charge bonded to three hydrogen atoms.\">",
+  "questions": [
+    {
+      "id": "352151",
+      "stem_html": "Hversu margar gildisrafeindir hefur jákvætt hlaðna kolefnisfrumeindin?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352152",
+      "stem_html": "Hvaða tvinnblöndun býstu við að þessi kolefnisfrumeind hafi?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352153",
+      "stem_html": "Hvaða lögun er líklegt að karbókatjónin hafi?",
+      "collaborator_solutions": []
+    }
+  ]
+}

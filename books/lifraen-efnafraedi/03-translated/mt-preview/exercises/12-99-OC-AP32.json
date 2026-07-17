@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP32",
+  "source_uid": "37458@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352253",
+      "stem_html": "<p>Grignard-hvarfefni (alkýlmagnesíumhalíð) gangast undir almennt og mjög gagnlegt efnahvarf með ketónum. Metýlmagnesíumbrómíð hvarfast til dæmis við sýklóhexanón og gefur myndefni með formúluna C<sub>7</sub>H<sub>14</sub>O. Hver er bygging þessa myndefnis ef það hefur IR-gleypni við 3400 cm<sup>–1</sup>?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6087ab935759eae8c588800e34d2dd6ec7433913/OChem_12_EC_012.jpg\" alt=\"Cyclohexanone reacts first with methyl magnesium bromide and then hydronium ion to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

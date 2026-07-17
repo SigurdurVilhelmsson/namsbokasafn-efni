@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP06",
+  "source_uid": "38854@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358215",
+      "stem_html": "<p><i>Plasmalógen</i> eru hópur lípíða sem finnast í tauga- og vöðvafrumum. Hvernig eru plasmalógen frábrugðin fitu?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d00a7a671818de24077c7dd44775b579915153c/OChem_27_EC_007.jpg\" alt=\"The structure of a plasmalogen lipid, contains a vinyl-ether and two fatty acids.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

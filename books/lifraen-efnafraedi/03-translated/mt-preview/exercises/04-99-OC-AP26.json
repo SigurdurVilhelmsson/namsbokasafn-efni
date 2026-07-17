@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP26",
+  "source_uid": "36553@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "329103",
+      "stem_html": "Notaðu sameindalíkön og byggingarteikningar til að útskýra hvers vegna <i>trans</i>-dekalín er stíft og getur ekki hringsnúist en <i>cis</i>-dekalín getur auðveldlega hringsnúist.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "04-04-OC-P10",
+  "source_uid": "36481@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347297",
+      "stem_html": "Hversu margar H ⟷ H skyggnivíxlverkanir yrðu til staðar ef sýklópentan væri flatt? Miðað við orkukostnað upp á 4,0 kJ/mól fyrir hverja skyggnivíxlverkun, hversu mikil snúningsspenna væri í flötu sýklópentani? Þar sem mæld heildarspenna sýklópentans er 26 kJ/mól, hversu mikið af snúningsspennunni minnkar við hrukku?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tíu skyggnivíxlverkanir; 40 kJ/mól; 35% minnkar."
+        }
+      ]
+    }
+  ]
+}

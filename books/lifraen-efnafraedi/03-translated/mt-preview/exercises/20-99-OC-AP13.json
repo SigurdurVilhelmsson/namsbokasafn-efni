@@ -1,0 +1,35 @@
+{
+  "nickname": "20-99-OC-AP13",
+  "source_uid": "38123@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú breytt bútansýru í eftirfarandi efnasambönd? Skrifaðu hvert skref og sýndu hvaða hvarfefni þarf.",
+  "questions": [
+    {
+      "id": "342092",
+      "stem_html": "1-bútanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342093",
+      "stem_html": "1-brómbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342094",
+      "stem_html": "Pentansýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342095",
+      "stem_html": "1-búten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342096",
+      "stem_html": "Oktan",
+      "collaborator_solutions": []
+    }
+  ]
+}

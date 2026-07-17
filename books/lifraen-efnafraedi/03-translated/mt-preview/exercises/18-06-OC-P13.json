@@ -1,0 +1,28 @@
+{
+  "nickname": "18-06-OC-P13",
+  "source_uid": "38709@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú útbúa eftirfarandi díól?",
+  "questions": [
+    {
+      "id": "361126",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c33f6aa483f1687d0960407c9e70597c3033ea50/OChem_18_06_008a.jpg\" alt=\"A ball-and-stick model of a chair conformation of six-membered ring with two hydroxyl groups attached to C 1 and C 2. Methyl is bonded to C 1 at the right.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Metýlsýklóhexen + OsO<sub>4</sub>; síðan NaHSO<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "361127",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f66960de2a89da09358b7af686ef72ccf9b4603/OChem_18_06_008b.jpg\" alt=\"A ball-and-stick model of a chair conformation of a six-membered ring with neighboring carbons linked to two hydroxyl groups. A methyl group is bonded to C 1 at the bottom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Metýlsýklóhexen + <i>m</i>-klórperoxýbensósýra, síðan H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

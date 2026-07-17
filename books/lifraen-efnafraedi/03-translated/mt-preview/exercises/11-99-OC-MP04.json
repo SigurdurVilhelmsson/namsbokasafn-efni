@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-MP04",
+  "source_uid": "37369@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin fyrir hvert eftirfarandi brottnámshvarf. Sýndu hvarfganginn í hverju tilviki. Hvað eiga hvarfgangarnir sameiginlegt? Hvers vegna?",
+  "questions": [
+    {
+      "id": "355276",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b81fc0e63ed6dc39e5b7da961b37a7ef539773/OChem_11_EC_014a.jpg\" alt=\"An incomplete reaction between 1S,2S-1,2-dimethylcyclohexanol in sulfuric acid to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355277",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--360d94ba603356ca95c31bb23cb307e1db033394/OChem_11_EC_014b.jpg\" alt=\"An incomplete reaction between 1R,2R-1-chloro-2-methylcyclohexane in sodium methoxide and methanol to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355278",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a19567c6eefb5dee0ed88cf22114357309ae777/OChem_11_EC_014c.jpg\" alt=\"An incomplete reaction between 1-bromo-2-methylpropane in potassium t-butoxide and T H F to form unknown product(s).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

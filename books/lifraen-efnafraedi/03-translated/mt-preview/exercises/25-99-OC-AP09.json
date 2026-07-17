@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP09",
+  "source_uid": "39082@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358816",
+      "stem_html": "<p>Eftirfarandi hringbygging er af allósa. Er þetta fúranósa- eða pýranósaform? Er þetta <i>Α</i> eða <i>Β</i> anómer? Er þetta <small style=\"font-variant: small-caps\">D</small>- eða <small style=\"font-variant: small-caps\">L</small>-sykur?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55028d8c3b0ed924ef41e04f52fb82d312c21b08/OChem_25_EC_015.jpg\" alt=\"The Haworth projection of beta anomer of pyranose sugar named allose.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

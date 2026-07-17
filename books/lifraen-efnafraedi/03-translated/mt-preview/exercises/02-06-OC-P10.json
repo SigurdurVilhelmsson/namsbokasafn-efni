@@ -1,0 +1,46 @@
+{
+  "nickname": "02-06-OC-P10",
+  "source_uid": "36122@13",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu tilgreindan fjölda vok mynda fyrir hvert af eftirfarandi efnum:",
+  "questions": [
+    {
+      "id": "361076",
+      "stem_html": "Metýlfosfat-anjónin, CH<sub>3</sub>OPO<sub>3</sub><sup>2–</sup> (3)",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8bb48f55b034fb27203386b29042c3e67e00f196/OChem_02_EC_206a.jpg\" alt=\"Three different resonance forms of methyl phosphate anion, featuring a phosphorus atom at the center and separated by double-headed arrows.\">"
+        }
+      ]
+    },
+    {
+      "id": "361077",
+      "stem_html": "Nítrat-anjónin, NO<sub>3</sub><sup>–</sup> (3)",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2574c0a174828eb25d906ff13b098a7bd4d55ba8/OChem_02_EC_206b.jpg\" alt=\"Three different resonance forms of nitrate anion featuring a nitrogen atom at the center and separated by two double-headed arrows.\">"
+        }
+      ]
+    },
+    {
+      "id": "361078",
+      "stem_html": "Allýlkatjónin, H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CH–CH<sub>2</sub><sup>+</sup> (2)",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e7b96cd9638284f3397f84770b776fb7fdf7525/OChem_02_EC_206c.jpg\" alt=\"Two different resonance forms of allyl cation separated by one double-headed arrow.\">"
+        }
+      ]
+    },
+    {
+      "id": "361079",
+      "stem_html": "<p>Bensóat-anjónin (2)</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea61928e13b5801e40ad4dccdca8f686fddeaa1d/OChem_02_06_013.jpg\" alt=\"The chemical structure of benzoate anion where a carboxylate group COO- is attached to a benzene ring.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cc330251d36f8c7d46cb222a114c56689fe17ec/OChem_02_EC_206d.jpg\" alt=\"Two different resonance forms of benzoate, resulting in the migration of a negative charge from one oxygen to the other.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP17",
+  "source_uid": "38039@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360715",
+      "stem_html": "<p>Stingdu upp á hvarfgangi til að útskýra myndun 3,5-dímetýlpýrasóls úr hýdrasíni og 2,4-pentandíóni. Hvað hefur orðið um hvort karbónýlkolefni fyrir sig við breytinguna úr upphafsefni í myndefni.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dcb6aabd10c863c1c2a48c1f656853e17733819/OChem_19_EC_036.jpg\" alt=\"The reaction shows 2,4-pentanedione with hydrazine and a proton to form 3,5-dimethylpyrazole.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

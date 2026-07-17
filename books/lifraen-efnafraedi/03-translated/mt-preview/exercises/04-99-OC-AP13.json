@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP13",
+  "source_uid": "36539@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "329063",
+      "stem_html": "<i>cis</i>-1,2-dímetýlsýklóbútan er óstöðugra en trans-hverfa þess, en <i>cis</i>-1,3-dímetýlsýklóbútan er stöðugra en trans-hverfa þess. Teiknaðu stöðugustu stellingar beggja og útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

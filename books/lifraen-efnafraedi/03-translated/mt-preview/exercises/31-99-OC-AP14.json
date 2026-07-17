@@ -1,0 +1,20 @@
+{
+  "nickname": "31-99-OC-AP14",
+  "source_uid": "39428@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Epoxýlím eru krosstengd plastefni sem eru framleidd í tveimur skrefum. Fyrsta skrefið felur í sér S<sub>N</sub>2-efnahvarf tvínatríumsalts bisfenóls A við epiklórhýdrín til að mynda forfjölliðu með lágan mólmassa. Þessi forfjölliða er síðan „hert“ í krosstengt plastefni með meðhöndlun með tríamíni eins og H<sub>2</sub>NCH<sub>2</sub>CH<sub>2</sub>NHCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--535bf10d2cca0fccab4907c901785e76d703f647/OChem_31_EC_013.jpg\" alt=\"The structures of Bisphenol A and Epichlorohydrin.\">",
+  "questions": [
+    {
+      "id": "355049",
+      "stem_html": "Hver er bygging forfjölliðunnar?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355050",
+      "stem_html": "Hvernig leiðir álagning tríamínsins á forfjölliðuna til krosstengingar?",
+      "collaborator_solutions": []
+    }
+  ]
+}

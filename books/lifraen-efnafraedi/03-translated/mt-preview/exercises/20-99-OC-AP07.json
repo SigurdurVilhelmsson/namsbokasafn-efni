@@ -1,0 +1,25 @@
+{
+  "nickname": "20-99-OC-AP07",
+  "source_uid": "38117@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðið efnasamböndunum í hverju eftirfarandi setta eftir vaxandi basastigi:",
+  "questions": [
+    {
+      "id": "342070",
+      "stem_html": "Magnesíumasetat, magnesíumhýdroxíð, metýlmagnesíumbrómíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342071",
+      "stem_html": "Natríumbensóat, natríum-<i>p</i>-nítróbensóat, natríumasetýlíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342072",
+      "stem_html": "Litíumhýdroxíð, litíumetoxíð, litíumformat",
+      "collaborator_solutions": []
+    }
+  ]
+}

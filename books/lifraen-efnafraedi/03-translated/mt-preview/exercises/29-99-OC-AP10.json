@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-AP10",
+  "source_uid": "39335@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358167",
+      "stem_html": "<p>Laktat, myndefni úr niðurbroti glúkósa í súrefnissnauðum vöðvum, er hægt að breyta í pýrúvat með oxun. Hvaða kóensím telur þú að þurfi? Skrifaðu jöfnuna á venjulegu lífefnafræðilegu formi með boginni ör.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8ca09da8638248ebcb928de250dc45f304b1f68/OChem_29_EC_014.jpg\" alt=\"The structure of lactate anion, having a four-carbon chain with a carboxylate anion at C1 and a hydroxyl group at C2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

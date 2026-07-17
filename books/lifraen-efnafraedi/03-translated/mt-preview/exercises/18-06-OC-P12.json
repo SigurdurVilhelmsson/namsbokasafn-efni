@@ -1,0 +1,28 @@
+{
+  "nickname": "18-06-OC-P12",
+  "source_uid": "38708@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spyrðu fyrir um aðalmyndefni hvers eftirfarandi efnahvarfs:",
+  "questions": [
+    {
+      "id": "361122",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0194106cc474db3b023826cb07af80ce3b077fde/OChem_18_06_007a.jpg\" alt=\"3-Cyclohexyl-2,2-dimethyloxirane reacts with HCl in the presence of ether to form an unknown product(s), depicted by a question mark\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7007ac74bfd07f844c93bcf2a195f2a1bbc7e078/OChem_18_EC_203a.jpg\" alt=\"The structure of 2-chloro-1-cyclohexyl-2-methylpropan-1-ol.\">"
+        }
+      ]
+    },
+    {
+      "id": "361123",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f02ffd7d8f05cb2597b15fe4aed601c5ab8b725/OChem_18_06_007b.jpg\" alt=\"1-Oxaspiro[2.5]octane reacts with hydrochloric acid and an ether to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c0c8a3fd2efaa57b42c22aac846c55731866872/OChem_18_EC_203b.jpg\" alt=\"The structure of cyclohexane comprising chlorine atom and C H 2 O H group linked to the C 1 position of the ring.\">"
+        }
+      ]
+    }
+  ]
+}

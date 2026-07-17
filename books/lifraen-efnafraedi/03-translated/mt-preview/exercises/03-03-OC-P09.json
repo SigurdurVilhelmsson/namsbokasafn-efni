@@ -1,0 +1,19 @@
+{
+  "nickname": "03-03-OC-P09",
+  "source_uid": "36425@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "345874",
+      "stem_html": "Greindu vetnisfrumeindirnar á efnasamböndunum sem sýnd eru í dæmi 3-8 sem fyrsta stigs, annars stigs eða þriðja stigs.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fyrsta stigs kolefni hafa fyrsta stigs vetni, annars stigs kolefni hafa annars stigs vetni og þriðja stigs kolefni hafa þriðja stigs vetni."
+        }
+      ]
+    }
+  ]
+}

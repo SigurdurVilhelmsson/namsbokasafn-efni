@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP25",
+  "source_uid": "37926@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359545",
+      "stem_html": "<p>Efnahvarf (<i>S</i>)-3-metýl-2-pentanóns við metýlmagnesíumbrómíð og síðan sýring gefur 2,3-dímetýl-2-pentanól. Hver er handhverfufræði myndefnisins? Er myndefnið ljósvirkt?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83952df611c1aac2d2c833c1953f34dae5752064/OChem_17_EC_044.jpg\" alt=\"The structure of 3-methyl-2-pentanone. It is a five-carbon chain with keto group on C 2 and methyl group on C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

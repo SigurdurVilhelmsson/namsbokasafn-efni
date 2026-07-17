@@ -1,0 +1,30 @@
+{
+  "nickname": "14-99-OC-AP26",
+  "source_uid": "37715@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p><i>β</i>-ósímen er kolvetni með þægilega lykt sem finnst í laufum ákveðinna jurta. Það hefur sameindaformúluna C<sub>10</sub>H<sub>16</sub> og hámarksgleypni í útfjólubláu ljósi við 232 nm. Við vetnun með palladíumhvata fæst 2,6-dímetýloktan. Ósongreining á <i>β</i>-ósímeni, fylgt eftir með meðhöndlun með sinki og ediksýru, gefur eftirfarandi fjögur brot:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee5dc2cafb3b71c5d6f0ae4be5438ea26a5d206f/OChem_14_EC_026.jpg\" alt=\"The structures of acetone, formaldehyde, pyruvaldehyde, and malonaldehyde.\">",
+  "questions": [
+    {
+      "id": "358524",
+      "stem_html": "Hversu mörg tvítengi hefur <i>β</i>-ósímen?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358525",
+      "stem_html": "Er <i>β</i>-ósímen samfellt eða ósamfellt?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358526",
+      "stem_html": "Leggðu til byggingu fyrir <i>β</i>-ósímen.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358527",
+      "stem_html": "Skrifaðu efnahvörfin og sýndu hvarfefni og myndefni.",
+      "collaborator_solutions": []
+    }
+  ]
+}

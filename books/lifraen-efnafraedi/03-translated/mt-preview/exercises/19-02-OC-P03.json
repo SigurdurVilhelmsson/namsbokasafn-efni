@@ -1,0 +1,46 @@
+{
+  "nickname": "19-02-OC-P03",
+  "source_uid": "37997@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú útbúa pentanal úr eftirfarandi upphafsefnum?",
+  "questions": [
+    {
+      "id": "341350",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>OH",
+      "collaborator_solutions": [
+        {
+          "content_html": "Dess–Martin-perjódínan"
+        }
+      ]
+    },
+    {
+      "id": "341351",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. O<sub>3</sub>; 2. Zn"
+        }
+      ]
+    },
+    {
+      "id": "341352",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CO<sub>2</sub>CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "DIBAH"
+        }
+      ]
+    },
+    {
+      "id": "341353",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. BH<sub>3</sub>, síðan H<sub>2</sub>O<sub>2</sub>, NaOH; 2. Dess–Martin-perjódínan"
+        }
+      ]
+    }
+  ]
+}

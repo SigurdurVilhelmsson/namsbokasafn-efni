@@ -1,0 +1,40 @@
+{
+  "nickname": "13-99-OC-AP19",
+  "source_uid": "37513@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu marga gleypnitoppa myndir þú búast við að sjá í <sup>13</sup>C NMR-rófum eftirfarandi efnasambanda?",
+  "questions": [
+    {
+      "id": "338186",
+      "stem_html": "1,1-dímetýlsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338187",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>OCH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338188",
+      "stem_html": "<i>tert</i>-bútýlsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338189",
+      "stem_html": "3-metýl-1-pentín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338190",
+      "stem_html": "<i>cis</i>-1,2-dímetýlsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338191",
+      "stem_html": "Sýklóhexanón",
+      "collaborator_solutions": []
+    }
+  ]
+}

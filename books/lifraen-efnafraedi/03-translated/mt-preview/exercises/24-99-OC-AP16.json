@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP16",
+  "source_uid": "39015@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver eru helstu myndefnin sem þú myndir búast við úr Hofmann-brottnámi eftirfarandi amína?",
+  "questions": [
+    {
+      "id": "361693",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--041fa650a096fa87193905289c4a276ee2f01dbd/OChem_24_EC_037a.jpg\" alt=\"Structure of cyclopentyl methyl amine.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361694",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--92c499a28eec1df0977cd79ed3b94b0d3be2d258/OChem_24_EC_037b.jpg\" alt=\"A nitrogen atom with three substituents: H, benzene ring, and n-hexane (attached by C 2).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361695",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c92d9e42a5ff0f3d07ac907d35d8ce6a0e28bbc/OChem_24_EC_037c.jpg\" alt=\"The structure of a six-carbon chain with methyl on C 2 and amine on C 3 position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

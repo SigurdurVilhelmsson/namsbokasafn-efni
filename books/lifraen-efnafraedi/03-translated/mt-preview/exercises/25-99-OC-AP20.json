@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP20",
+  "source_uid": "39093@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348164",
+      "stem_html": "Allir aldósar sýna fjölhverfingu. Til dæmis hefur <i>α</i>-<small style=\"font-variant: small-caps\">D</small>-galaktópýranósi [<i>α</i>]<sub><small style=\"font-variant: small-caps\">D</small></sub> = +150,7 og <i>β</i>-<small style=\"font-variant: small-caps\">D</small>-galaktópýranósi hefur [<i>α</i>]<sub><small style=\"font-variant: small-caps\">D</small></sub> = +52,8. Ef hvor anómeran er leyst upp í vatni og látin ná jafnvægi er sérsnúningur lausnarinnar +80,2. Hvert er hlutfall hvorrar anómeru við jafnvægi? Teiknaðu pýranósaform beggja anómera.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-VC05",
+  "source_uid": "39234@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359609",
+      "stem_html": "<p>Gefðu upp röð eftirfarandi tetrapeptíðs:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f18bd35793a0d7c9dec5272565fe0c8d8f8a54c6/OChem_26_EC_012.jpg\" alt=\"A ball-and-stick model of a tetrapeptide. Black, gray, blue, and red spheres indicate carbon, hydrogen, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

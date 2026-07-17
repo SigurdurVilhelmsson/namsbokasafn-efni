@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP18",
+  "source_uid": "38822@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361005",
+      "stem_html": "<p>Fylltu inn hvarfefnin <b>a</b>–<b>c</b> sem vantar í eftirfarandi skema:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78651c1aacba7bd20b4562f0773f4bb2bd94b767/OChem_22_EC_040.jpg\" alt=\"A three-step reaction in which cyclohexanone sequentially reacts with reagents a, b, and c yielding 2, 6-dimethylcyclohexanone via two intermediate products.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

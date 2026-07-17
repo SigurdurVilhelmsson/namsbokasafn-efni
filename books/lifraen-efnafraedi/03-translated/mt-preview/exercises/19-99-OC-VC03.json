@@ -1,0 +1,25 @@
+{
+  "nickname": "19-99-OC-VC03",
+  "source_uid": "38023@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Enamínið sem búið er til úr asetóni og dímetýlamíni er sýnt í lægsta orkuformi sínu.",
+  "questions": [
+    {
+      "id": "360665",
+      "stem_html": "Hver er rúmfræði og blendingun nituratómsins?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360666",
+      "stem_html": "Í hvaða svigrúmi á nitri er rafeindaparið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360667",
+      "stem_html": "<p>Hvert er rúmfræðilega sambandið milli <i>p</i>-svigrúma tvítengisins og nitursvigrúmsins sem heldur rafeindaparinu? Hvers vegna heldurðu að þessi rúmfræði tákni lágmarksorkuna?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76bde337c3b4e230a3cc6f672dffcca9f7e85231/OChem_19_EC_019.jpg\" alt=\"The ball-and-stick model shows a three-carbon chain with a double bond between first and second carbons. The second carbon is attached to N, N-dimethyl amine group\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "20-06-OC-P12",
+  "source_uid": "38092@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359108",
+      "stem_html": "<p>Hvernig gætir þú framkvæmt eftirfarandi umbreytingu? Fleiri en eitt skref þarf.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38a927fe76316128e9b173339a60dac0886dbbec/OChem_20_06_003.jpg\" alt=\"Cyclopentylmethanol reacts with unknown reagent(s) depicted by question mark to produce 2-cyclopentylethanol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. PBr<sub>3</sub>; 2. NaCN; 3. H<sub>3</sub>O<sup>+</sup>; 4. LiAlH<sub>4</sub>"
+        }
+      ]
+    }
+  ]
+}

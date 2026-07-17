@@ -1,0 +1,19 @@
+{
+  "nickname": "08-07-OC-P13",
+  "source_uid": "37097@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357729",
+      "stem_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi <i>cis</i>-2-bútens við <i>meta</i>-klórperoxýbensósýru? Sýndu staðefnafræðina.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--affa31b014fe0b0db0631fa5afb7e3188d92da83/OChem_08_EC_204.jpg\" alt=\"The structure of cis-2,3-epoxybutane.\">"
+        }
+      ]
+    }
+  ]
+}

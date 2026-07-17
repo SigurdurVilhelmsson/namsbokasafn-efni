@@ -1,0 +1,19 @@
+{
+  "nickname": "23-06-OC-P09",
+  "source_uid": "38889@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346881",
+      "stem_html": "Meðhöndlun 1,3-díketóns eins og 2,4-pentandíóns með basa gefur ekki myndefni aldól-þéttingar. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>2</sub> staðan á milli karbónýlhópanna tveggja er svo súr að hún er algjörlega afprótónuð til að gefa stöðuga enólatjón."
+        }
+      ]
+    }
+  ]
+}

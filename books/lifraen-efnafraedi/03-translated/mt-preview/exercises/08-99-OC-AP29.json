@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP29",
+  "source_uid": "37187@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353580",
+      "stem_html": "<p>Við munum sjá í næsta kafla að alkínar gangast undir mörg af sömu efnahvörfum og alkenar. Hvaða myndefni gætir þú búist við úr hverju af eftirfarandi efnahvörfum?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2caa93ff824d843649d08791af46ee2577db09e1/OChem_08_EC_051.jpg\" alt=\"A reaction shows 5-methyl-1-hexyne reacting with bromine, hydrogen on palladium-carbon, and hydrogen bromide to yield unknown product(s), depicted by question marks.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

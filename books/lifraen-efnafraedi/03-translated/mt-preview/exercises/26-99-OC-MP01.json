@@ -1,0 +1,30 @@
+{
+  "nickname": "26-99-OC-MP01",
+  "source_uid": "39235@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Efnahvarf ninhýdríns við <i>α</i>-amínósýru á sér stað í nokkrum skrefum.",
+  "questions": [
+    {
+      "id": "360852",
+      "stem_html": "Fyrsta skrefið er myndun imíns með efnahvarfi amínósýrunnar við ninhýdrín. Sýndu byggingu þess og hvarfgang myndunarinnar.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360853",
+      "stem_html": "Annað skrefið er afkarboxýlering. Sýndu byggingu myndefnisins og hvarfgang afkarboxýleringarefnahvarfsins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360854",
+      "stem_html": "Þriðja skrefið er vatnsrof imíns sem gefur amín og aldehýð. Sýndu byggingu beggja myndefna og hvarfgang vatnsrofsefnahvarfsins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360855",
+      "stem_html": "<p>Lokaskrefið er myndun fjólubláu anjónarinnar. Sýndu hvarfgang efnahvarfsins.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--48d319e401d34e4b0c4ef14aeadb3daef450269d/OSX_OrgChem_26_99_%20P-Ninhyd_img.jpg\" alt=\"Two molecules of ninhydrin react with an amino acid to form a large compound with multiple ring structures. The other byproducts are aldehyde and carbon dioxide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

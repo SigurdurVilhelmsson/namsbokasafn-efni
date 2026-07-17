@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-VC04",
+  "source_uid": "37747@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358652",
+      "stem_html": "<p>Eftirfarandi sameindalíkan er af karbkatjón. Teiknaðu tvær vokmyndir fyrir karbkatjónina og sýndu staðsetningu tvítengjanna.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--271774e4213be3fa34658dd1318c27811c8aa089/OChem_15_EC_004.jpg\" alt=\"The ball-and-stick model of a cationic molecule has three six-membered rings fused together.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

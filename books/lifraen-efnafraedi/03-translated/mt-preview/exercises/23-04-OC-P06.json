@@ -1,0 +1,19 @@
+{
+  "nickname": "23-04-OC-P06",
+  "source_uid": "38886@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346829",
+      "stem_html": "1-bútanól er framleitt í atvinnuskyni með ferli sem hefst með aldól-efnahvarfi. Sýndu skrefin sem líklegt er að eigi sér stað.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. NaOH; 2. LiAlH<sub>4</sub>; 3. H<sub>2</sub>/Pd"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP17",
+  "source_uid": "37849@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359033",
+      "stem_html": "<p>Í hvaða stöðu og á hvaða hring myndir þú búast við að brómun bensanílíðs eigi sér stað? Útskýrðu með því að teikna vok myndir milliefnanna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea436a65daa153d8ff03ae0419da948ac98159b7/OChem_16_EC_040.jpg\" alt=\"Benzanilide has a benzene ring bonded to a carbonyl group, which is bonded to an N H group. The nitrogen of N H group is bonded to another benzene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

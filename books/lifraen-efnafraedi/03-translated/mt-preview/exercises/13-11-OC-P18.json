@@ -1,0 +1,37 @@
+{
+  "nickname": "13-11-OC-P18",
+  "source_uid": "37484@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Leggðu til byggingar fyrir efnasambönd sem passa við eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "338058",
+      "stem_html": "Kolvetni með sjö línum í <sup>13</sup>C NMR-rófi sínu",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,3-Dímetýlsýklópenten"
+        }
+      ]
+    },
+    {
+      "id": "338059",
+      "stem_html": "Sex kolefna efnasamband með aðeins fimm línum í <sup>13</sup>C NMR-rófi sínu",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "338060",
+      "stem_html": "Efnasamband með fjórum kolefnisatómum sem hefur þrjár línur í <sup>13</sup>C NMR-rófi sínu",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-klór-2-metýlprópan"
+        }
+      ]
+    }
+  ]
+}

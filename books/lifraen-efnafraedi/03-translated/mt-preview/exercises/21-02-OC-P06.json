@@ -1,0 +1,19 @@
+{
+  "nickname": "21-02-OC-P06",
+  "source_uid": "38156@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361365",
+      "stem_html": "<p>Eftirfarandi bygging táknar alkoxíðjón sem er ferflötungs milliefni og myndast við álagningu kjarnsækis á karboxýlsýruafleiðu. Tilgreindu kjarnsækinn, farhópinn, upphaflegu sýruafleiðuna og endanlegt myndefni.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3cfe473e4441e19841a0cc89d25648ab1fda793d/OChem_21_02_012.jpg\" alt=\"The ball-and-stick model of tetrahedral-alkoxide shows cyclopentane connected to methylene, connected to carbon single-bonded to hydroxyl, methoxide, and oxygen atoms. Black, gray, and red spheres denote carbon, hydrogen, and oxygen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02fa1522bee353cf55a5a8fcbbdde62f62946ded/OChem_21_EC_203.jpg\" alt=\"Methyl-2-cyclopentylacetate reacts with hydroxide ions. The product is not shown. The carboxylate analog of methyl-2-cyclopentylacetate reacts with methoxide ions and again the product is not shown.\">"
+        }
+      ]
+    }
+  ]
+}

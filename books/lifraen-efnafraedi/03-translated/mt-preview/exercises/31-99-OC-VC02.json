@@ -1,0 +1,20 @@
+{
+  "nickname": "31-99-OC-VC02",
+  "source_uid": "39409@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýnið byggingu fjölliðanna sem hægt væri að búa til úr eftirfarandi einliðum (grænt = Cl):",
+  "questions": [
+    {
+      "id": "355013",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--720c6f29de15c9bf5352131aa1b04093f677cd29/OChem_31_EC_002a.jpg\" alt=\"A ball-and-stick model of a monomer showing five-carbon chain with nitrogen, carbonyl, and alkene bond. Carbon, hydrogen, oxygen, and nitrogen are denoted using black, gray, red, and blue spheres, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355014",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f01f01549d3cd11cf6c0045d8ec7f5ff93da1606/OChem_31_EC_002b.jpg\" alt=\"Ball-and-stick model of 2-chloro-1,3-butadiene. Carbon, hydrogen, and halogen are denoted using black, gray, and green spheres, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

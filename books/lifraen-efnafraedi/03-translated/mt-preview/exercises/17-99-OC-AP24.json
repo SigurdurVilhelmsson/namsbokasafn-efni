@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP24",
+  "source_uid": "37925@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359543",
+      "stem_html": "<p>Hægt er að breyta bensýlklóríði í bensaldehýð með meðhöndlun með nítrómetani og basa. Efnahvarfið felur í sér upphaflega umbreytingu nítrómetans í anjón þess, fylgt eftir með S<sub>N</sub>2-skiptihvarfi anjónarinnar við bensýlklóríð og síðan E2-efnahvarf. Skrifaðu hvarfganginn í smáatriðum og notaðu sveigðar örvar til að sýna flæði rafeinda í hverju skrefi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9a3b39625897e5fb1f03c5a8a66906e4d4145a10/OChem_17_EC_043.jpg\" alt=\"Benzyl chloride reacts with nitromethane anion to form benzaldehyde.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

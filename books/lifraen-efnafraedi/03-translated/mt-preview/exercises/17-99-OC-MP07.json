@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-MP07",
+  "source_uid": "37896@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu gerð skiptihvarfgangs (S<sub>N</sub>1, S<sub>N</sub>2) sem á sér stað við umbreytingu eftirfarandi alkóhóla í samsvarandi alkýlhalíð.",
+  "questions": [
+    {
+      "id": "359449",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6581c7729e5192dad0c5ca8738f49bb26bb8651/OChem_17_EC_025a.jpg\" alt=\"2-methylbutan-2-ol reacts with H Cl to form 2-chloro-2-methylbutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359450",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fe732371bef9bd50e7e14f68085e0ffb5480a278/OChem_17_EC_025b.jpg\" alt=\"2-butanol reacts with P Br 3 to form 2-bromobutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359451",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be1e6beae78842b74b6b4d7bf5f6396ff2b458c7/OChem_17_EC_025c.jpg\" alt=\"1-propanol reacts first with tosyl chloride and pyridine, then sodium bromide, to form 1-bromopropane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

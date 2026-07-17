@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP13",
+  "source_uid": "37120@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353492",
+      "stem_html": "<p>Efnahvarf sýklóhexens við kvikasilfur(II)asetat í CH<sub>3</sub>OH frekar en H<sub>2</sub>O, og síðan meðhöndlun með NaBH<sub>4</sub>, gefur sýklóhexýlmetýleter frekar en sýklóhexanól. Settu fram tillögu að hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2210c6fbedc8e23119d33c7f3af7b6811564a10/OChem_08_EC_028.jpg\" alt=\"A reaction shows cyclohexene reacting with mercury (II) acetate in the presence of methanol and sodium borohydride to form cyclohexyl methyl ether.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

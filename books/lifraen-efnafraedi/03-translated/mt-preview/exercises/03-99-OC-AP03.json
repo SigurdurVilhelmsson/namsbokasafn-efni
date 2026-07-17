@@ -1,0 +1,50 @@
+{
+  "nickname": "03-99-OC-AP03",
+  "source_uid": "36440@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir eftirfarandi:",
+  "questions": [
+    {
+      "id": "327871",
+      "stem_html": "Keton, C<sub>4</sub>H<sub>8</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327872",
+      "stem_html": "Nítríl, C<sub>5</sub>H<sub>9</sub>N",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327873",
+      "stem_html": "Díaldehýð, C<sub>4</sub>H<sub>6</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327874",
+      "stem_html": "Brómalken, C<sub>6</sub>H<sub>11</sub>Br",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327875",
+      "stem_html": "Alkan, C<sub>6</sub>H<sub>14</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327876",
+      "stem_html": "<i>Hringlaga</i> mettað kolvetni, C<sub>6</sub>H<sub>12</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327877",
+      "stem_html": "Díen (díalken), C<sub>5</sub>H<sub>8</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327878",
+      "stem_html": "Ketóalken, C<sub>5</sub>H<sub>8</sub>O",
+      "collaborator_solutions": []
+    }
+  ]
+}

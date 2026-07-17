@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP30",
+  "source_uid": "37587@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p><i>Karbanjón</i> er sameind sem inniheldur neikvætt hlaðið, þrígilt kolefni.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f955878017e7e54573419437499ca2100b21d7d/OChem_01_EC_019.jpg\" alt=\"A chemical structure of a carbanion featuring a carbon atom with a negative charge and a lone pair bonded to three hydrogen atoms.\">",
+  "questions": [
+    {
+      "id": "352158",
+      "stem_html": "Hvert er rafeindatengsl milli karbanjónar og þrígilds niturefnasambands eins og NH<sub>3</sub>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352159",
+      "stem_html": "Hversu margar gildisrafeindir hefur neikvætt hlaðna kolefnisfrumeindin?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352160",
+      "stem_html": "Hvaða tvinnblöndun býstu við að þessi kolefnisfrumeind hafi?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352161",
+      "stem_html": "Hvaða lögun er líklegt að karbanjónin hafi?",
+      "collaborator_solutions": []
+    }
+  ]
+}

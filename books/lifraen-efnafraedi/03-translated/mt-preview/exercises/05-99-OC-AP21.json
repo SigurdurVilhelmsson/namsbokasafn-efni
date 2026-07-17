@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP21",
+  "source_uid": "36584@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu dæmi um eftirfarandi:",
+  "questions": [
+    {
+      "id": "329357",
+      "stem_html": "Mesó-efnasamband með formúluna C<sub>8</sub>H<sub>18</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329358",
+      "stem_html": "Mesó-efnasamband með formúluna C<sub>9</sub>H<sub>20</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329359",
+      "stem_html": "Efnasamband með tvær hendnimiðjur, önnur <i>R</i> og hin <i>S</i>",
+      "collaborator_solutions": []
+    }
+  ]
+}

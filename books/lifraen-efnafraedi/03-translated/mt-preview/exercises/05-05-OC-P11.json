@@ -1,0 +1,19 @@
+{
+  "nickname": "05-05-OC-P11",
+  "source_uid": "36503@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357677",
+      "stem_html": "Teiknaðu ferflötungsmynd af (<i>S</i>)-2-pentanóli (2-hýdroxýpentani).",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--19ba6e9b5d63b09a239c74149c45b8980ccab065/OChem_05_EC_204.jpg\" alt=\"A central carbon atom is single bonded to hydrogen and a propyl group, wedge bonded to a methyl group, and dash bonded to a hydroxyl group (clockwise).\">"
+        }
+      ]
+    }
+  ]
+}

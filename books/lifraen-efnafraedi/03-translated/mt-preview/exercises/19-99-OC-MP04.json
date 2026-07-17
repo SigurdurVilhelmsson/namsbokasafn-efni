@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP04",
+  "source_uid": "38026@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og leggðu til hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "360678",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--89f57d425d2c7b75150e43046162569edefe195d/OChem_19_EC_023b.jpg\" alt=\"The reaction shows fused cyclohexane and cyclopentane rings with oxygen and methyl groups with hydrogen ion catalyst and water to yield an unknown product denoted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360679",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79358f81cdc894d94fac80d415f0f2900b4aad02/OChem_19_EC_023d.jpg\" alt=\"The reaction shows a compound with benzene attached to cyclopentane with oxygen, hydrogen, and methyl groups with hydrogen ion catalyst and water, yielding unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

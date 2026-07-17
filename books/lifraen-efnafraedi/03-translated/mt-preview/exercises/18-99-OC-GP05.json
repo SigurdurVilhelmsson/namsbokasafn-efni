@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP05",
+  "source_uid": "38756@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361295",
+      "stem_html": "<p>Safról, efni sem einangrað er úr sassafrasolíu, er notað sem ilmefni. Stingdu upp á myndunarferli fyrir safról úr katekóli (1,2-bensendíóli).</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6965d44433fb948b3c004ff981e6a826b7045911/OChem_18_EC_045.jpg\" alt=\"The structure of safrole is a benzene ring with C 1 connected to C 2 by O C H 2 O, and with an allyl group on C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

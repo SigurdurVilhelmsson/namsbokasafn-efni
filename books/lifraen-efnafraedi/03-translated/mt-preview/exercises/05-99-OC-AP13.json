@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP13",
+  "source_uid": "36576@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingum á hverja hendnimiðju í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "354181",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f033f595161d9de255888a4f39551e82110ba3f0/OChem_05_EC_010a.jpg\" alt=\"A carbon is single-bonded to wedge hydrogen (front),  dash bonded to hydroxyl (behind ), ethyl (right), and methyl (left).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354182",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abe1f9e2854c7cb4d71188fe87c5dc4ecfe6ed02/OChem_05_EC_010b.jpg\" alt=\"A carbon is single-bonded to wedge chlorine atom (front),  dash bonded to hydrogen atom (behind ), methyl (right), and phenyl (left).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354183",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b7f8dd8cadad0495edba160ecac0328e8c583c7/OChem_05_EC_010c.jpg\" alt=\"A carbon is single-bonded to wedge hyrdrogen atom (front),  dash bonded to methoxy group (behind ), carboxylic acid  (right), and hydroxymethyl group (left).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

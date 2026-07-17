@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP22",
+  "source_uid": "36585@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu mesó-form hverrar eftirfarandi sameindar og sýndu samhverfuplan í hverri þeirra:",
+  "questions": [
+    {
+      "id": "354209",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d07c1b5037878a67f2991ab99eb59564f230ed/OChem_05_EC_017a.jpg\" alt=\"In a 6-carbon chain, C2 and C5 are each bonded to hydroxyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354210",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3b861805fb4eb79f883e24a5c13909817580382/OChem_05_EC_017b.jpg\" alt=\"In a cyclohexane ring, C1 and C3 are each bonded to methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354211",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42da995dee8b7ffe100cfb30101dbf4b5ef7fa7a/OChem_05_EC_017c.jpg\" alt=\"In a cyclohexane ring, C1 and C3 are each bonded to methyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "19-12-OC-P19",
+  "source_uid": "38013@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351821",
+      "stem_html": "Hver er handhverf efnafræði pýrúvat-afoxunarinnar sem sýnd er á mynd 19.13? Missir NADH pro-<i>R</i> eða pro-<i>S</i> vetnið sitt? Fer álagningin fram á Si-hlið eða Re-hlið pýrúvats? (Sjá <b>kafla 5.11</b>.)",
+      "collaborator_solutions": [
+        {
+          "content_html": "Álagning pro-<i>R</i> vetnis NADH fer fram á Re-hlið pýrúvats."
+        }
+      ]
+    }
+  ]
+}

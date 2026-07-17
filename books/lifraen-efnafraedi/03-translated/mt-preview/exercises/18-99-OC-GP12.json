@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-GP12",
+  "source_uid": "38763@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Stingdu upp á byggingum fyrir efnasambönd sem hafa eftirfarandi <sup>1</sup>H NMR-róf:",
+  "questions": [
+    {
+      "id": "361304",
+      "stem_html": "<p>C<sub>4</sub>H<sub>10</sub>O<sub>2</sub></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--128d2deba890a3773e2ba675158cdd40d0b00d9a/OChem_18_EC_049.jpg\" alt=\"Proton N M R with shifts at 0 (T M S), 1.27 (doublet), 3.31 (singlet), and 4.57 (quartet). Relative areas are 3.00, 6.00, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361305",
+      "stem_html": "<p>C<sub>9</sub>H<sub>10</sub>O</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d730d32f32e5efa6acae5b9da51790544f5793e/OChem_18_EC_050.jpg\" alt=\"Proton N M R with shifts at 3.71 (singlet), 5.17 (doublet), 6.08 (doublet) 7.10 (multiplet), 7.25 (triplet), and 7.55 (multiplet). Relative areas are 3.00, 1.00, 1.00, 1.00, 2.00, 2.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

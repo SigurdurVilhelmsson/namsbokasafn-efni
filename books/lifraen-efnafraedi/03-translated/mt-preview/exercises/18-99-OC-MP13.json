@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP13",
+  "source_uid": "38731@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361207",
+      "stem_html": "<p>Illgresiseyðirinn acifluorfen er hægt að framleiða með ferli sem hefst á efnahvarfi milli fenóls og arýlflúoríðs. Leggðu til hvarfgang.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49016890f2a607e8c52310b546ce641cf2178fde/OChem_18_EC_030.jpg\" alt=\"A substituted phenol and sutstituted aryl fluoride react in potassium hydride and dimethyl sulfoxide to yield acifluorfen through a series of steps.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

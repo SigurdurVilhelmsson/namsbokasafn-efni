@@ -1,0 +1,30 @@
+{
+  "nickname": "08-99-OC-AP11",
+  "source_uid": "37169@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu byggingu alkena sem gefa eftirfarandi myndefni við oxandi klofnun með KMnO<sub>4</sub> í súrri lausn:",
+  "questions": [
+    {
+      "id": "353543",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0375ba28984579761ff0f9be127d9467d7414c62/OChem_08_EC_039a.jpg\" alt=\"The condensed formulas of two products, propionic acid and carbon dioxide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353544",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2a57fa77c0674276dc7b6762b92bf00aef6bd8f/OChem_08_EC_039b.jpg\" alt=\"The condensed formulas of two products, acetone and butyric acid.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353545",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5138de6ba03a9efa590a79a3bf1bbf18d5c06168/OChem_08_EC_039c.jpg\" alt=\"The condensed formulas of two products, cyclohexanone  and acetone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353546",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--224fa212bd51924c2f63a54a23d9ed08d88c538b/OChem_08_EC_039d.jpg\" alt=\"The condensed structural formula has an 8-carbon chain. C1 is a carboxylic acid group. C6 is a carbonyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

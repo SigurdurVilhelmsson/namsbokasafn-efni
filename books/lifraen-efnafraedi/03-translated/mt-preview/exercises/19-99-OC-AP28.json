@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP28",
+  "source_uid": "38074@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360813",
+      "stem_html": "<p><sup>1</sup>H NMR-rófið sem sýnt er er af efnasambandi með formúluna C<sub>9</sub>H<sub>10</sub>O. Hversu mörg tvítengi og/eða hringi inniheldur þetta efnasamband? Ef óþekkta efnasambandið hefur IR-gleypni við 1690 cm<sup>–1</sup>, hver er líkleg bygging þess?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69db3a6960436849ad2d5e76b2c510ad3b9328e8/OChem_19_EC_060.jpg\" alt=\"Proton spectrum shows shifts of 0 (T M S), 1.20 (triplet), 2.97 (quartet, 7.39 and 7.56 (multiplet), and 7.97 (doublet). Relative areas are 3.00, 2.00, 2.00, 1.00, and 2.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

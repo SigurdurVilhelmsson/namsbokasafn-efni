@@ -1,0 +1,19 @@
+{
+  "nickname": "10-06-OC-P09",
+  "source_uid": "37255@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347113",
+      "stem_html": "<p>Hversu sterkan basa myndir þú búast við að Grignard-hvarfefni væri? Skoðaðu töflu 9.1 og spáðu fyrir um hvort eftirfarandi efnahvörf muni eiga sér stað eins og þau eru skrifuð. (p<i>K</i><sub>a</sub> NH<sub>3</sub> er 35.)</p>\n<p><b>(a)</b> CH<sub>3</sub>MgBr + H–C<span data-math=\"\\text{≡}\"></span>C–H ​<span data-math=\"\\text{⟶}\"></span> ​CH<sub>4</sub> + H–C<span data-math=\"\\text{≡}\"></span>C–MgBr <b>(b)</b> CH<sub>3</sub>MgBr + NH<sub>3</sub> ​<span data-math=\"\\text{⟶}\"></span> ​CH<sub>4</sub> + H<sub>2</sub>N–MgBr</p>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bæði efnahvörfin eiga sér stað."
+        }
+      ]
+    }
+  ]
+}

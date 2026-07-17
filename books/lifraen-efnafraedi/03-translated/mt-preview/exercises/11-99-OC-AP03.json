@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-AP03",
+  "source_uid": "37382@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða efnasamband í hverju eftirfarandi pari hvarfast hraðar í S<sub>N</sub>2-efnahvarfi við OH<sup>–</sup>?",
+  "questions": [
+    {
+      "id": "340601",
+      "stem_html": "CH<sub>3</sub>Br eða CH<sub>3</sub>I",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340602",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>I í etanóli eða í dímetýlsúlfoxíði",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340603",
+      "stem_html": "(CH<sub>3</sub>)<sub>3</sub>CCl eða CH<sub>3</sub>Cl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340604",
+      "stem_html": "H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHBr eða H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHCH<sub>2</sub>Br",
+      "collaborator_solutions": []
+    }
+  ]
+}

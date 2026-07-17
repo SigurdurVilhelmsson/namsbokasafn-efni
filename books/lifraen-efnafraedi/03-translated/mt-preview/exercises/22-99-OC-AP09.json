@@ -1,0 +1,20 @@
+{
+  "nickname": "22-99-OC-AP09",
+  "source_uid": "38813@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi ketón með asetóediksestermyndun?",
+  "questions": [
+    {
+      "id": "360990",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d67ada9f7d7ca755649f6cf96d46eed8f27b46/OChem_22_EC_036a.jpg\" alt=\"The structure of 3-ethyl-2-hexanone where the carbonyl group is located at C 2 and an ethyl group at C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360991",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5fe957bc50951b057a1657a546b88b21eed1ea2/OChem_22_EC_036b.jpg\" alt=\"The structure of 3-methyl-2-hexanone where the carbonyl group is located at C 2 and a methyl group at C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

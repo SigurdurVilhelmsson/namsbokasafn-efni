@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP33",
+  "source_uid": "37459@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352255",
+      "stem_html": "<p>Ketón gangast undir afoxun þegar þau eru meðhöndluð með natríumbórhýdríði, NaBH<sub>4</sub>. Hver er bygging efnasambandsins sem myndast við efnahvarf 2-bútanóns með NaBH<sub>4</sub> ef það hefur IR-gleypni við 3400 cm<sup>–1</sup> og M<sup>+</sup> = 74 í massarófinu?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8db72d274583864afb77c0afc74dee84d2890aa4/OChem_12_EC_013.jpg\" alt=\"2-butanone reacts first with sodium borohydride and then with hydronium ion to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

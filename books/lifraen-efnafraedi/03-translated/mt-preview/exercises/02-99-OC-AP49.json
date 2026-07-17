@@ -1,0 +1,20 @@
+{
+  "nickname": "02-99-OC-AP49",
+  "source_uid": "36161@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Reiknaðu <i>K</i><sub>a</sub> gildi út frá eftirfarandi p<i>K</i><sub>a</sub> gildum:",
+  "questions": [
+    {
+      "id": "323785",
+      "stem_html": "Asetón, p<i>K</i><sub>a</sub> = 19,3",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323786",
+      "stem_html": "Maurasýra, p<i>K</i><sub>a</sub> = 3,75",
+      "collaborator_solutions": []
+    }
+  ]
+}

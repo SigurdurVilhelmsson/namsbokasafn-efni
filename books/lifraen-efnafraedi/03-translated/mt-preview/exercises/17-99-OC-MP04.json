@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-MP04",
+  "source_uid": "37893@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359439",
+      "stem_html": "<p>Meðhöndlun eftirfarandi epoxíðs með vatnskenndri sýru myndar karbkatjón milliefni sem hvarfast við vatn og gefur díól myndefni. Sýndu byggingu karbkatjónarinnar og leggðu til hvarfgang fyrir annað skrefið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d7002ed72d3c38e98c3ae659ec11982e0585323/OChem_17_EC_023.jpg\" alt=\"An epoxide reacts with hydronium ion to form a carbocation. This reacts with water to form a diol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "02-99-OC-AP55",
+  "source_uid": "36167@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu sýrurnar og basana í eftirfarandi efnahvörfum:",
+  "questions": [
+    {
+      "id": "357161",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72beb0126483280381b9b5e256406c156fa618a5/OChem_02_EC_020a.jpg\" alt=\"In a reaction, methanol reacts with hydrogen ion to form the protonated (at oxygen) methanol product.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357162",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc3956077a791b0ff290ddf12529b3acfe42ef4d/OChem_02_EC_020b.jpg\" alt=\"In a reaction, acetone reacts with T i C l 4 to form a product (the oxygen is positively charged and is bonded to T i C l 4 negative).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357163",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1939bc065b88f934872d7837336d2a1acc857098/OChem_02_EC_020c.jpg\" alt=\"In a reaction, cyclohexanone reacts with N a H to form an enolate sodium salt product and a hydrogen molecule.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357164",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84665ab984666151704845f9f0acf7f4f9200220/OChem_02_EC_020d.jpg\" alt=\"In a reaction, morpholine reacts with B H 3 to form a product with a positive charge and single bonded B H 3 negative at the nitrogen of the ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

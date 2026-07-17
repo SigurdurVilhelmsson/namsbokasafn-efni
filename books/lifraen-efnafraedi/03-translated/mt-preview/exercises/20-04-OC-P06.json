@@ -1,0 +1,19 @@
+{
+  "nickname": "20-04-OC-P06",
+  "source_uid": "38086@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347263",
+      "stem_html": "<p>Hvora myndir þú búast við að væri sterkari sýra, mjólkursýran sem finnst í þreyttum vöðvum eða ediksýra? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08031a8aa3e14f3eaeaf9aff6627e9decc77a19c/OChem_20_04_007.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Mjólkursýra er sterkari vegna spanáhrifa  −OH-hópsins."
+        }
+      ]
+    }
+  ]
+}

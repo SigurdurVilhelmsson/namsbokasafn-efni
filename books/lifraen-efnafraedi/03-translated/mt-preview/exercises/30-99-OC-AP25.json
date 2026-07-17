@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP25",
+  "source_uid": "39394@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355126",
+      "stem_html": "<p>Í náttúrunni hvetur ensímið kórismat mútasi Claisen-umröðun á kórismati sem felur í sér bæði endastæða tvítengið og tvítengið með auðkennda kolefninu. Hver er bygging prephenats, líffræðilegs forvera amínósýranna fenýlalaníns og týrósíns?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20275d99cea1f5481564e11347c528d633543c83/OChem_18_EC_052.jpg\" alt=\"The reaction of chorismate in the presence of chorismate mutase to form prephenate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

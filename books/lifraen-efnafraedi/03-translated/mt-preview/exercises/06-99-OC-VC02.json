@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-VC02",
+  "source_uid": "37308@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353274",
+      "stem_html": "<p>Eftirfarandi bygging sýnir karbókatjónarmilliefnið sem myndast við álagningarhvarf HBr á tvö mismunandi alken. Teiknaðu byggingu beggja.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5564270b9fb02ee39d3929abf664060db5d9605c/OChem_06_EC_003.jpg\" alt=\"The ball-and-stick model has a cyclohexane ring in its chair conformation. C1 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

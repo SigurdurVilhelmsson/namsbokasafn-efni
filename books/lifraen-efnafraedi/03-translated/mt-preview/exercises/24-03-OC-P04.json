@@ -1,0 +1,37 @@
+{
+  "nickname": "24-03-OC-P04",
+  "source_uid": "38957@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvort efnasambandið í hvoru eftirfarandi pari er basískara?",
+  "questions": [
+    {
+      "id": "347497",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub> eða CH<sub>3</sub>CH<sub>2</sub>CONH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "347498",
+      "stem_html": "NaOH eða CH<sub>3</sub>NH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "NaOH"
+        }
+      ]
+    },
+    {
+      "id": "347499",
+      "stem_html": "CH<sub>3</sub>NHCH<sub>3</sub> eða pýridín",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>NHCH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

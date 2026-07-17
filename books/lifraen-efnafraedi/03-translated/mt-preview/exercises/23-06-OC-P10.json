@@ -1,0 +1,19 @@
+{
+  "nickname": "23-06-OC-P10",
+  "source_uid": "38890@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360059",
+      "stem_html": "<p>Hvaða myndefni myndir þú búast við að fá úr basameðhöndlun 1,6-sýklódekandíóns?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9edf35c0c5b66557bb08684e4f145c1fcc9bf36/OChem_23_06_003.jpg\" alt=\"An illustration shows a chemical reaction with the product yet to be identified (?). The structure of the reactant 1 6-Cyclodecanedione shows a cyclohexane ring fused with another cyclohexane with the bond missing at the fused position. The top and bottom positions of fusion is double bonded to an oxygen atom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca8ea4cc9c3ce5162cc27ab11f7d3100ccfa7b45/OChem_23_EC_205.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    }
+  ]
+}

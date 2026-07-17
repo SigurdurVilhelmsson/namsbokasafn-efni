@@ -1,0 +1,19 @@
+{
+  "nickname": "29-03-OC-P02",
+  "source_uid": "39296@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349864",
+      "stem_html": "Skrifaðu jöfnurnar fyrir þau skref <i>β</i>-oxunarferilsins sem eftir eru á eftir þeim sem sýnd eru á mynd 29.5.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Kaprýlýl-CoA ​→ ​Hexanóýl-CoA ​→ ​ Bútýrýl-CoA ​→ ​2 asetýl-CoA"
+        }
+      ]
+    }
+  ]
+}

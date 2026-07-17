@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP17",
+  "source_uid": "37534@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358425",
+      "stem_html": "<p>Nítríl (RC<span data-math=\"\\text{≡}\"></span>N) hvarfast við Grignard-hvarfefni (R′MgBr). Myndefni efnahvarfs 2-metýlprópannítríls við metýlmagnesíumbrómíð hefur eftirfarandi rófseiginleika. Stingdu upp á byggingu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--31c7e48f6bebef3e3cead597c4162f4d478bc6fc/OChem_13_EC_028.jpg\" alt=\"2-Methylpropanenitrile reacts with methyl magnesium bromide in step 1 and hydronium ion in step 2 to form unknown product(s), depicted by a question mark.\">\n<p>MS: M<sup>+</sup> = 86</p>\n<p>IR: 1715 cm<sup>–1</sup></p>\n<p><sup>1</sup>H NMR: 1,05 <i>δ</i> (6 H, tvíliða, <i>J</i> = 7 Hz); 2,12 <i>δ</i> (3 H, einliða);</p>\n<p>2,67 <i>δ</i> (1 H, sjöliða, <i>J</i> = 7 Hz)</p>\n<p><sup>13</sup>C NMR: 18,2, 27,2, 41,6, 211,2 <i>δ</i></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

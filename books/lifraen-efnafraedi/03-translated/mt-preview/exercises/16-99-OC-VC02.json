@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-VC02",
+  "source_uid": "37812@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358954",
+      "stem_html": "<p>Eftirfarandi sameindalíkan af dímetýl-skiptu bífenýli táknar lægstu orkustellingu sameindarinnar. Hvers vegna halla bensenhringirnir tveir 63° hvor að öðrum í stað þess að vera í sama plani þannig að <i>p</i>-svigrúm þeirra skarist? Hvers vegna verður ekki fullur snúningur um eintengið sem tengir hringina tvo?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a0c1ecc96ec968772ff836282997452334bb93b/OChem_16_EC_018.jpg\" alt=\"The ball-and-stick model has two benzene rings bonded to each other. Each benzene ring also has an ortho methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}
