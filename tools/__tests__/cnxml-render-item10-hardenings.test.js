@@ -69,6 +69,11 @@ describe('P0-5 — emphasis class preservation', () => {
   });
   it('class attr value is escaped', () => {
     const html = render('<para id="p1"><emphasis class="a&quot;b">t</emphasis></para>');
+    // Pins the CURRENT serialize→escapeAttr double-encode seam (osd-3,
+    // registered): the source's already-entity-encoded `&quot;` gets
+    // re-escaped instead of decoded first. When osd-3 is fixed
+    // (decode-before-escape), this expectation flips intentionally to
+    // '<em class="a&quot;b">t</em>'.
     expect(html).toContain('<em class="a&amp;quot;b">t</em>');
   });
 });

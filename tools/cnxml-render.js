@@ -513,6 +513,9 @@ Examples:
 /**
  * Filter module sections, excluding intro (section '0') and metadata keys.
  * Key guard is placed first to avoid accessing info.section on _-prefixed metadata.
+ * Tolerates a null/falsy `info` value (item 10/P0-3, m4): such an entry is
+ * excluded rather than throwing on `info.section`, even though today's call
+ * site only ever populates real section objects — defensive-only.
  * @param {Object} moduleSections - Object with section data
  * @returns {Array} Array of [key, info] entries after filtering
  */
@@ -3200,7 +3203,9 @@ function buildKeyTermsItems(sectionInner, opts) {
         moduleId: linkModuleId,
       });
       if (resolved.href && resolved.href.includes('/vidauki/')) {
-        termLines.push(`<li><a href="${resolved.href}">${escapeHtml(termText)}</a></li>`);
+        termLines.push(
+          `<li><a href="${escapeAttr(resolved.href)}">${escapeHtml(termText)}</a></li>`
+        );
       } else {
         const sectionSlug = opts.sectionSlugFor(linkModuleId);
         termLines.push(
@@ -3407,8 +3412,9 @@ async function main() {
       //   <example id="..."><title>...</title>            (direct)
       //   <example id="..."><para id="..."><title>...</title>  (nested in para)
       // (Deliberately preserves today's latent "first title anywhere after the
-      // tag" semantics — tightening it is out of scope; the corpus sweep
-      // enforces no-change.)
+      // tag" semantics — tightening it is out of scope; the corpus has no
+      // consumed-example shape (verified 2026-07-17); the divergence class
+      // only adds entries the old regex's match-consumption skipped.)
       for (const ex of scanBlocks(modCnxml, 'example')) {
         const tail = modCnxml.slice(ex.index);
         const tm2 = tail.match(/<title>([\s\S]*?)<\/title>/);
