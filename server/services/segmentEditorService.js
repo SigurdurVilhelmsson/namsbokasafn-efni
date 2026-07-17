@@ -392,6 +392,23 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   // separation still holds for the normal flow, where editors can't approve at all.
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
+  // Item 13 guard: approving an edit a newer APPROVED edit already outranks
+  // is a meaningless act — convergent apply would supersede it immediately.
+  // Tell the head-editor now instead of silently flipping it later. A newer
+  // PENDING/discuss edit does NOT block (normal review freedom).
+  const newerApproved = conn
+    .prepare(
+      `SELECT id, created_at FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'approved'`
+    )
+    .all(edit.book, edit.module_id, edit.segment_id)
+    .some((e) => isNewer(e, edit));
+  if (newerApproved) {
+    const err = new Error('Nýrri samþykkt breyting er þegar til á þessum bút.');
+    err.code = 'SUPERSEDED_BY_NEWER';
+    throw err;
+  }
+
   conn
     .prepare(
       `UPDATE segment_edits

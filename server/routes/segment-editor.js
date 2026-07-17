@@ -601,7 +601,8 @@ router.post(
       notifyDecision(edit, 'approved', req);
       res.json({ success: true, edit });
     } catch (err) {
-      res.status(400).json({ error: err.message });
+      const status = err.code === 'SUPERSEDED_BY_NEWER' ? 409 : 400;
+      res.status(status).json({ error: err.message });
     }
   }
 );

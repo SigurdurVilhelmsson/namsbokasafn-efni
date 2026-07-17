@@ -1146,15 +1146,22 @@ describe('applyApprovedEdits — integration', () => {
     service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
     service.applyApprovedEdits('testbook', 1, 'm00001');
 
-    // Now approve the OLDER and apply again — pre-fix this overwrote the
-    // published content with the older edit.
-    service.approveEdit(older.id, 'he-1', 'yfirlesari', null);
-    const second = service.applyApprovedEdits('testbook', 1, 'm00001');
-
-    expect(second.appliedCount).toBe(0); // nothing NEW published
-    expect(second.supersededCount).toBe(1);
+    // Now try to approve the OLDER — pre-Task-8 this succeeded and the
+    // regression was caught only later, at apply time, by convergent apply.
+    // Task 8's approve-time guard now catches it immediately instead, for
+    // the "newer edit already approved AND applied" branch of its "applied
+    // or not" semantics (the plain "approved but not yet applied" branch is
+    // covered by the 'apply is convergent' test above).
+    let err;
+    try {
+      service.approveEdit(older.id, 'he-1', 'yfirlesari', null);
+    } catch (e) {
+      err = e;
+    }
+    expect(err).toBeTruthy();
+    expect(err.code).toBe('SUPERSEDED_BY_NEWER');
     expect(readFaithful()['m00001:para:fs-id001']).toBe('Nýrri breyting');
-    expect(service.getEditById(older.id).status).toBe('superseded');
+    expect(service.getEditById(older.id).status).toBe('pending'); // untouched
     expect(service.getEditById(newer.id).status).toBe('approved');
   });
 
@@ -1187,7 +1194,11 @@ describe('applyApprovedEdits — integration', () => {
     );
 
     service.approveEdit(b.id, 'he-1', 'yfirlesari', null);
-    service.approveEdit(a.id, 'he-1', 'yfirlesari', null);
+    // Task 8 guard: approving the outranked older edit is refused — it could
+    // never publish. Convergence is then trivially "the newer one".
+    expect(() => service.approveEdit(a.id, 'he-1', 'yfirlesari', null)).toThrow(
+      /Nýrri samþykkt breyting/
+    );
     service.applyApprovedEdits('testbook', 1, 'm00001');
 
     const preview = service
@@ -1195,6 +1206,71 @@ describe('applyApprovedEdits — integration', () => {
       .find((s) => s.segmentId === 'm00001:para:fs-id001');
     expect(preview.isContent).toBe('B-efni');
     expect(readFaithful()['m00001:para:fs-id001']).toBe('B-efni');
+  });
+
+  it('approveEdit refuses (SUPERSEDED_BY_NEWER) when a newer approved edit exists', () => {
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const newer = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      older.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      newer.id
+    );
+
+    service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
+
+    let err;
+    try {
+      service.approveEdit(older.id, 'he-1', 'yfirlesari', null);
+    } catch (e) {
+      err = e;
+    }
+    expect(err).toBeTruthy();
+    expect(err.code).toBe('SUPERSEDED_BY_NEWER');
+    expect(service.getEditById(older.id).status).toBe('pending'); // untouched
+  });
+
+  it('approveEdit is NOT blocked by a newer pending edit (review freedom)', () => {
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri (enn í bið)',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    expect(() => service.approveEdit(older.id, 'he-1', 'yfirlesari', null)).not.toThrow();
   });
 
   describe("apply-time supersede uses 'superseded' (was mislabelled 'rejected')", () => {
