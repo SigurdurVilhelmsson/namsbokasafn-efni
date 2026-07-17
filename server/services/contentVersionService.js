@@ -12,6 +12,8 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
 const activityLog = require('./activityLog');
+const tmService = require('./tmService');
+const concordanceService = require('./concordanceService');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -224,6 +226,20 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}) {
 
   // 5. Write the restored content back as the new faithful baseline
   const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, restoredSegments);
+
+  // Keep derived caches current — the same two best-effort steps the apply
+  // path runs after writing the faithful file (segmentEditorService
+  // :995-1009). Never fail the restore over a cache refresh.
+  try {
+    tmService.scheduleTmRegen(book);
+  } catch (err) {
+    log.error({ err, book }, 'Scheduling TM regeneration after restore failed');
+  }
+  try {
+    concordanceService.indexModule(book, chapter, moduleId);
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'Concordance indexing after restore failed');
+  }
 
   const result = {
     restoredVersion: version,

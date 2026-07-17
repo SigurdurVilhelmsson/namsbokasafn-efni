@@ -17,10 +17,18 @@ import { join, dirname } from 'path';
 import { tmpdir } from 'os';
 
 const require = createRequire(import.meta.url);
+
+// Env BEFORE any server require: concordanceService resolves its DB path at
+// first use — never let a mis-wired singleton reach a real sessions.db.
+process.env.SESSIONS_DB_PATH = join(tmpdir(), `cvs-test-${process.pid}.db`);
+
 const Database = require('better-sqlite3');
 
 const contentVersionService = require('../services/contentVersionService');
 const segmentParser = require('../services/segmentParser');
+const concordance = require('../services/concordanceService');
+const tmService = require('../services/tmService');
+const migration036 = require('../migrations/036-tm-segments');
 
 const originalBooksDir = segmentParser.BOOKS_DIR;
 
@@ -79,6 +87,9 @@ describe('contentVersionService.restoreVersion', () => {
   beforeEach(() => {
     db = createTestDb();
     contentVersionService._setTestDb(db);
+    migration036.up(db); // tm_segments + FTS5 mirror for the F16 reindex assertions
+    concordance._setTestDb(db);
+    tmService._setRunner(() => Promise.resolve({ code: 0, stderr: '' }));
 
     tmpDir = mkdtempSync(join(tmpdir(), 'restore-test-'));
     booksDir = join(tmpDir, 'books');
@@ -100,6 +111,8 @@ describe('contentVersionService.restoreVersion', () => {
     db.close();
     contentVersionService._setTestDb(null);
     segmentParser._setTestBooksDir(originalBooksDir);
+    concordance._setTestDb(null);
+    tmService._setRunner();
   });
 
   /** Write the faithful file with the given {id: content} for the EN segments. */
@@ -335,6 +348,52 @@ describe('contentVersionService.restoreVersion', () => {
       )
       .get(BOOK, MODULE, before).n;
     expect(rows).toBe(0); // transaction rolled back — no partial snapshot
+  });
+
+  it('restore reindexes concordance and schedules TM regen (F16)', () => {
+    const snap = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [
+        { segmentId: SEG('fs-id001'), content: 'Endurheimt efni 1' },
+        { segmentId: SEG('fs-id002'), content: 'Endurheimt efni 2' },
+        { segmentId: SEG('fs-id003'), content: 'Endurheimt efni 3' },
+      ],
+      'prófari',
+      db
+    );
+
+    contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, snap.version, { username: 'hx' });
+
+    // Concordance now reflects the RESTORED text (indexModule re-read the file).
+    const rows = db
+      .prepare(`SELECT segment_id, is_text FROM tm_segments WHERE book = ? AND module_id = ?`)
+      .all(BOOK, MODULE);
+    expect(rows.length).toBeGreaterThan(0);
+    expect(rows.find((r) => r.segment_id === SEG('fs-id001'))?.is_text).toBe('Endurheimt efni 1');
+
+    // TM regeneration was scheduled for this book (debounced; stub runner).
+    expect(tmService._pendingBooks()).toContain(BOOK);
+  });
+
+  it('restore still succeeds when reindexing fails (best-effort, F16)', () => {
+    const snap = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [{ segmentId: SEG('fs-id001'), content: 'Þolið efni' }],
+      'prófari',
+      db
+    );
+
+    const broken = new Database(':memory:'); // no tm tables → indexModule throws
+    concordance._setTestDb(broken);
+    const res = contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, snap.version, {
+      username: 'hx',
+    });
+    expect(res.restoredVersion).toBe(snap.version);
+    broken.close();
   });
 });
 
