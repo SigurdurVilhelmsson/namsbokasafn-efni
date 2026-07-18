@@ -166,7 +166,8 @@ no code in this PR.
   assignment rows vs. treat appendices as book-level access.
 - **I14-R2 `[fix]`** — remaining inline chapter validators rejecting appendices:
   `publication.js:47` (whole publication API), `books.js:372/487` (+ bare
-  unvalidated `parseInt` at `:213/248/276/522`), `admin.js:497/1067`.
+  unvalidated `parseInt` at `:213/248/276/522`), `admin.js:497/1067`, `status.js:1279`
+  (`/sections`) and `:1846`.
 - **I14-R3 `[fix]`** — `ch`-prefix directory-scan family silently skipping
   `appendices/`: `scripts/validate-status.js:245` (`npm run validate` never
   validates `chapters/appendices/status.json`), `routes/status.js:148/628/826`,
@@ -197,6 +198,11 @@ no code in this PR.
 - **I14-R9 `[ux]`** — "Kafli -1" display labels in `my-work.html:1380` (+5
   sites) and `books.html:1786/2325` chapter surfaces; item 16 (Batch 7
   dashboard/view contract repair) territory.
+- **I14-R10 `[latent]`** — pipelineService non-panel runners still chNN-only:
+  `runProtect`/`runUnprotect` (:102/:144, archived-tool runners), `runGenerateTm`
+  (:856 throws loud on `-1` dir check; only whole-book callers exist today),
+  `computeSourceHash` (:591 returns null for appendices → staleness checks blind
+  there).
 
 ## 6. Register interactions
 
