@@ -139,3 +139,24 @@ describe('item16 PR2 — F29: unreachable blocked-issues banner removed', () => 
     expect(view('my-work.html')).toMatch(/attention\.blockedIssues/);
   });
 });
+
+describe('item16 PR2 — F30+F25: dormant assignment-task branch removed', () => {
+  it('my-work.html has no assignment-task remnants', () => {
+    const src = view('my-work.html');
+    expect(src).not.toMatch(/STAGE_LABELS/);
+    expect(src).not.toMatch(/getDueDateText/);
+    expect(src).not.toMatch(/stageLabel/);
+    expect(src).not.toMatch(/dueDate/);
+    expect(src).not.toMatch(/overdue/i);
+  });
+
+  it('the live changes-requested alert wording survives', () => {
+    expect(view('my-work.html')).toMatch(/verkefni þarfnast lagfæringa/);
+  });
+
+  it('routes/my-work.js no longer reads the legacy chapter_assignments table', () => {
+    const src = serverFile('routes/my-work.js');
+    expect(src).not.toMatch(/(?<!user_)chapter_assignments/);
+    expect(src).not.toMatch(/'assignment'/);
+  });
+});

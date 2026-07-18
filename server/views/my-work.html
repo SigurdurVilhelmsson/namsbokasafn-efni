@@ -145,16 +145,6 @@
       color: var(--text-secondary);
     }
 
-    .meta-stage {
-      background: var(--bg-elevated);
-      padding: 0.125rem var(--spacing-sm);
-      border-radius: var(--radius-sm);
-      font-size: var(--text-sm);
-    }
-
-    .meta-due { font-weight: 500; }
-    .meta-due.due-overdue { color: var(--error); }
-    .meta-due.due-today { color: var(--warning); }
     .meta-reviewer { font-style: italic; }
 
     .task-notes {
@@ -237,11 +227,6 @@
     .item-badge.badge-changes {
       background: var(--warning-subtle);
       color: var(--warning);
-    }
-
-    .item-badge.badge-overdue {
-      background: var(--error-subtle);
-      color: var(--error);
     }
 
     .item-arrow {
@@ -518,7 +503,6 @@
       flex-shrink: 0;
     }
 
-    .attention-item-icon.overdue { background: var(--error-subtle); color: var(--error); }
     .attention-item-icon.blocked { background: var(--error-subtle); color: var(--error); }
     .attention-item-icon.unassigned { background: var(--warning-subtle); color: var(--warning); }
     .attention-item-icon.review { background: var(--info-subtle); color: var(--info); }
@@ -1082,19 +1066,6 @@
     let currentView = 'focus';
     let adminRefreshInterval = null;
 
-    // Stage label translations. Vocabulary tuned for chemistry teachers
-    // (audit Phase 1.7): use everyday verbs, drop translator jargon.
-    const STAGE_LABELS = {
-      'extraction': 'Útdráttur',
-      'mtReady': 'Tilbúið fyrir vélþýðingu',
-      'mtOutput': 'Vélþýðing',
-      'linguisticReview': 'Yfirlestur',
-      'tmCreated': 'Vistað í gagnagrunn',
-      'injection': 'Innsetning',
-      'rendering': 'Birting',
-      'publication': 'Útgáfa'
-    };
-
     // ========================================================================
     // INITIALIZATION — listens for layout.js userLoaded event
     // ========================================================================
@@ -1166,15 +1137,10 @@
           var alertBanner = document.getElementById('alert-banner');
           var alertText = document.getElementById('alert-text');
 
-          var overdue = todayData.quickStats.overdue;
           var changes = todayData.quickStats.changesRequested;
 
           var alertMsg = '';
-          if (overdue > 0 && changes > 0) {
-            alertMsg = overdue + ' verkefni yfir tíma og ' + changes + ' með óskum um breytingar';
-          } else if (overdue > 0) {
-            alertMsg = overdue + (overdue === 1 ? ' verkefni er' : ' verkefni eru') + ' yfir tíma';
-          } else if (changes > 0) {
+          if (changes > 0) {
             alertMsg = changes + ' verkefni þarfnast lagfæringa';
           }
 
@@ -1279,23 +1245,13 @@
       var taskTitle = '';
       var taskMeta = '';
 
-      if (isChangesRequested) {
-        taskTitle = task.bookLabel + ' - Kafli ' + task.chapter + ', ' + task.section;
-        taskMeta = '<span class="meta-reviewer">Athugasemdir frá ' + escapeHtml(task.reviewedBy) + '</span>';
-      } else {
-        taskTitle = task.bookLabel + ' - Kafli ' + task.chapter;
-        taskMeta = '<span class="meta-stage">' + escapeHtml(task.stageLabel) + '</span>';
-        if (task.dueDate) {
-          var dueDateClass = task.dueDate.status === 'overdue' ? 'due-overdue' :
-                             task.dueDate.status === 'today' ? 'due-today' : '';
-          taskMeta += ' <span class="meta-due ' + dueDateClass + '">' + task.priorityLabel + '</span>';
-        }
-      }
+      taskTitle = task.bookLabel + ' - Kafli ' + task.chapter + ', ' + task.section;
+      taskMeta = '<span class="meta-reviewer">Athugasemdir frá ' + escapeHtml(task.reviewedBy) + '</span>';
 
       container.innerHTML =
         '<div class="task-card-content ' + priorityClass + '">' +
           '<div class="task-priority-badge ' + (isChangesRequested ? 'badge-changes' : '') + '">' +
-            (isChangesRequested ? 'Breytingar óskast' : task.priorityLabel) +
+            'Breytingar óskast' +
           '</div>' +
           '<h3 class="task-title">' + escapeHtml(taskTitle) + '</h3>' +
           '<div class="task-meta">' + taskMeta + '</div>' +
@@ -1327,18 +1283,11 @@
       countBadge.textContent = tasks.length;
 
       var renderTask = function(task) {
-        var isChangesRequested = task.type === 'changes_requested';
         var priorityClass = task.priority === 1 ? 'item-urgent' : task.priority === 2 ? 'item-soon' : '';
 
-        var title = isChangesRequested
-          ? task.bookLabel + ' K' + task.chapter + '/' + task.section
-          : task.bookLabel + ' - Kafli ' + task.chapter;
+        var title = task.bookLabel + ' K' + task.chapter + '/' + task.section;
 
-        var badge = isChangesRequested
-          ? '<span class="item-badge badge-changes">Laga</span>'
-          : task.dueDate
-            ? '<span class="item-badge ' + (task.dueDate.status === 'overdue' ? 'badge-overdue' : '') + '">' + task.priorityLabel + '</span>'
-            : '<span class="item-badge">' + task.stageLabel + '</span>';
+        var badge = '<span class="item-badge badge-changes">Laga</span>';
 
         return '<a href="' + task.editorUrl + '" class="up-next-item ' + priorityClass + '">' +
           '<div class="item-content">' +
@@ -1940,19 +1889,6 @@
       if (diffDays === 1) return 'Í gær';
       if (diffDays < 7) return diffDays + ' dögum síðan';
       return formatDate(dateStr);
-    }
-
-    function getDueDateText(dueInfo) {
-      if (!dueInfo) return '';
-      if (dueInfo.status === 'overdue') {
-        var days = Math.abs(dueInfo.daysUntil);
-        return days + (days === 1 ? ' dagur' : ' dagar') + ' yfir tíma!';
-      }
-      if (dueInfo.status === 'today') return 'Skiladagur í dag!';
-      if (dueInfo.status === 'soon') {
-        return dueInfo.daysUntil + (dueInfo.daysUntil === 1 ? ' dagur' : ' dagar') + ' eftir';
-      }
-      return 'Skiladagur: ' + dueInfo.formatted;
     }
 
     function getStatusLabel(status) {
