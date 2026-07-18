@@ -29,6 +29,7 @@ const segmentParser = require('../services/segmentParser');
 const concordance = require('../services/concordanceService');
 const tmService = require('../services/tmService');
 const migration036 = require('../migrations/036-tm-segments');
+const migration042 = require('../migrations/042-content-versions-track');
 
 const originalBooksDir = segmentParser.BOOKS_DIR;
 
@@ -73,6 +74,10 @@ function createTestDb() {
       UNIQUE(book, module_id, segment_id, version)
     );
   `);
+  // item 15: rebuild in the track column the same way production migrations
+  // do, so the in-memory test schema matches what contentVersionService now
+  // expects (track-scoped WHERE clauses, widened UNIQUE).
+  migration042.up(db);
   return db;
 }
 
@@ -442,5 +447,152 @@ describe('contentVersionService.snapshotModule connection threading', () => {
       { segmentId: SEG('1'), content: 'sjálfgefið' },
     ]);
     expect(contentVersionService.getModuleVersions(BOOK, MODULE)).toHaveLength(1);
+  });
+});
+
+describe('track parameterization (item 15)', () => {
+  let db;
+  let tmpDir;
+  let booksDir;
+
+  beforeEach(() => {
+    db = createTestDb();
+    contentVersionService._setTestDb(db);
+
+    tmpDir = mkdtempSync(join(tmpdir(), 'track-test-'));
+    booksDir = join(tmpDir, 'books');
+    segmentParser._setTestBooksDir(booksDir);
+  });
+
+  afterEach(() => {
+    db.close();
+    contentVersionService._setTestDb(null);
+    segmentParser._setTestBooksDir(originalBooksDir);
+  });
+
+  // Helper: write EN + faithful + (optionally) localized fixture files for a module.
+  // Mirrors the file layout segmentParser.getModulePaths expects.
+  function writeLocModule(moduleId, { faithful, localized }) {
+    const seg = (id, text) => `<!-- SEG:${moduleId}:para:${id} -->\n${text}\n`;
+    const base = join(booksDir, BOOK);
+    const files = [
+      [
+        '02-for-mt/ch03',
+        `${moduleId}-segments.en.md`,
+        seg('a', 'EN one') + '\n' + seg('b', 'EN two'),
+      ],
+      [
+        '03-faithful-translation/ch03',
+        `${moduleId}-segments.is.md`,
+        seg('a', faithful[0]) + '\n' + seg('b', faithful[1]),
+      ],
+    ];
+    if (localized) {
+      files.push([
+        '04-localized-content/ch03',
+        `${moduleId}-segments.is.md`,
+        seg('a', localized[0]) + '\n' + seg('b', localized[1]),
+      ]);
+    }
+    for (const [dir, name, content] of files) {
+      mkdirSync(join(base, dir), { recursive: true });
+      writeFileSync(join(base, dir, name), content);
+    }
+  }
+
+  it('keeps independent version counters per track for the same module', () => {
+    const segs = [{ segmentId: 'mX:para:a', content: 'A' }];
+    contentVersionService.snapshotModule(BOOK, 3, 'mX', segs, 'ed1');
+    contentVersionService.snapshotModule(BOOK, 3, 'mX', segs, 'ed1');
+    contentVersionService.snapshotModule(BOOK, 3, 'mX', segs, 'ed1', undefined, 'localized');
+    expect(contentVersionService.getModuleVersions(BOOK, 'mX').map((v) => v.version)).toEqual([
+      2, 1,
+    ]);
+    expect(
+      contentVersionService.getModuleVersions(BOOK, 'mX', 'localized').map((v) => v.version)
+    ).toEqual([1]);
+  });
+
+  it('throws TypeError on unknown track', () => {
+    expect(() => contentVersionService.getModuleVersions(BOOK, 'mX', 'mt-preview')).toThrow(
+      TypeError
+    );
+    expect(() => contentVersionService.restoreVersion(BOOK, 3, 'mX', 1, {}, 'mt-preview')).toThrow(
+      TypeError
+    );
+  });
+
+  it('localized restore round-trips through the localized file', () => {
+    writeLocModule('m77001', {
+      faithful: ['trúr A', 'trúr B'],
+      localized: ['staðfært A v1', 'staðfært B v1'],
+    });
+    // Snapshot the v1 localized state (as saveLocalizedWithSnapshot would pre-write)
+    contentVersionService.snapshotModule(
+      BOOK,
+      3,
+      'm77001',
+      [
+        { segmentId: 'm77001:para:a', content: 'staðfært A v1' },
+        { segmentId: 'm77001:para:b', content: 'staðfært B v1' },
+      ],
+      'ed1',
+      undefined,
+      'localized'
+    );
+    // Editor writes v2 on disk
+    segmentParser.saveLocalizedSegments(BOOK, 3, 'm77001', [
+      { segmentId: 'm77001:para:a', content: 'staðfært A v2' },
+      { segmentId: 'm77001:para:b', content: 'staðfært B v2' },
+    ]);
+
+    const result = contentVersionService.restoreVersion(BOOK, 3, 'm77001', 1, {}, 'localized');
+    expect(result.segmentsRestored).toBe(2);
+    expect(result.snapshotVersion).toBe(2); // current v2 content snapshotted first
+
+    const filePath = join(booksDir, BOOK, '04-localized-content/ch03/m77001-segments.is.md');
+    let file = readFileSync(filePath, 'utf-8');
+    expect(file).toContain('staðfært A v1');
+    expect(file).not.toContain('staðfært A v2');
+    // Faithful history untouched by localized activity
+    expect(contentVersionService.getModuleVersions(BOOK, 'm77001')).toEqual([]);
+
+    // Restore is itself reversible: roll forward to the pre-restore snapshot (v2)
+    const forward = contentVersionService.restoreVersion(BOOK, 3, 'm77001', 2, {}, 'localized');
+    expect(forward.segmentsRestored).toBe(2);
+    file = readFileSync(filePath, 'utf-8');
+    expect(file).toContain('staðfært A v2');
+  });
+
+  it('localized current-content field is hasLocalized ? localized : faithful', () => {
+    writeLocModule('m77002', { faithful: ['trúr A', 'trúr B'] }); // NO localized file yet
+    // Snapshot v1 then create a localized file so restore has a writer target
+    contentVersionService.snapshotModule(
+      BOOK,
+      3,
+      'm77002',
+      [
+        { segmentId: 'm77002:para:a', content: 'fyrsta staðfærsla' },
+        { segmentId: 'm77002:para:b', content: '' },
+      ],
+      'ed1',
+      undefined,
+      'localized'
+    );
+    segmentParser.saveLocalizedSegments(BOOK, 3, 'm77002', [
+      { segmentId: 'm77002:para:a', content: 'önnur staðfærsla' },
+      { segmentId: 'm77002:para:b', content: 'ný staðfærsla B' },
+    ]);
+    const result = contentVersionService.restoreVersion(BOOK, 3, 'm77002', 1, {}, 'localized');
+    expect(result.segmentsRestored).toBe(2);
+    // The pre-restore snapshot (v2) captured the CURRENT localized content
+    const v2 = contentVersionService.getVersionContent(BOOK, 'm77002', 2, 'localized');
+    expect(v2.find((s) => s.segment_id === 'm77002:para:a').content).toBe('önnur staðfærsla');
+    // Empty string from v1 restored verbatim (F19: empties are recorded)
+    const file = readFileSync(
+      join(booksDir, BOOK, '04-localized-content/ch03/m77002-segments.is.md'),
+      'utf-8'
+    );
+    expect(file).toContain('fyrsta staðfærsla');
   });
 });
