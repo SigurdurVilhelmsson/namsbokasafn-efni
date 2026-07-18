@@ -1326,6 +1326,52 @@
         color: var(--text-muted, #666);
         font-size: var(--text-sm, 0.85rem);
       }
+
+      /* --- Version history modal --- */
+      .vh-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+      }
+      .vh-overlay.active { display: flex; }
+      .vh-modal {
+        background: var(--bg-card, #fff);
+        color: var(--text, #111);
+        border-radius: var(--radius-md, 8px);
+        box-shadow: var(--shadow-modal);
+        width: min(560px, 92vw);
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .vh-modal header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--spacing-md, 12px);
+        border-bottom: 1px solid var(--border, #ddd);
+      }
+      .vh-modal header h3 { margin: 0; font-size: var(--text-md, 1rem); }
+      .vh-list { overflow-y: auto; padding: var(--spacing-sm, 8px); }
+      .vh-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-sm, 8px);
+        padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+        border-bottom: 1px solid var(--border, #eee);
+      }
+      .vh-row:last-child { border-bottom: none; }
+      .vh-meta { font-size: var(--text-sm, 0.85rem); }
+      .vh-meta .vh-ver { font-weight: 700; }
+      .vh-meta .vh-sub { color: var(--text-muted, #666); font-size: var(--text-xs, 0.75rem); }
+      .vh-empty { padding: var(--spacing-md, 12px); color: var(--text-muted, #666); }
+      .vh-caption { margin: 0; padding: 8px 16px; font-size: 0.85em; color: var(--text-muted, #666); border-bottom: 1px solid var(--border, #e2e2e2); }
     </style>
   </head>
   <body>
@@ -1499,6 +1545,10 @@
                     <polyline points="7 3 7 8 15 8"></polyline>
                   </svg>
                   Vista allt
+                </button>
+                <button class="btn btn-secondary" id="ed-btn-history" hidden
+                        title="Skoða eldri útgáfur og færa einingu aftur í fyrri útgáfu">
+                  Útgáfusaga
                 </button>
                 <span class="save-indicator" id="global-save-indicator"></span>
               </div>
@@ -2002,6 +2052,18 @@
           </button>
           <button class="btn btn-primary" onclick="rvSaveLogEntry()">Vista</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Version history modal (HEAD_EDITOR only) -->
+    <div class="vh-overlay" id="ed-vh-overlay">
+      <div class="vh-modal" role="dialog" aria-modal="true" aria-labelledby="ed-vh-title">
+        <header>
+          <h3 id="ed-vh-title">Útgáfusaga</h3>
+          <button class="btn btn-secondary btn-sm" id="ed-vh-close" title="Loka">Loka</button>
+        </header>
+        <p class="vh-caption">Hver útgáfa sýnir efnið eins og það var <strong>áður en</strong> viðkomandi vistun átti sér stað.</p>
+        <div class="vh-list" id="ed-vh-list"></div>
       </div>
     </div>
 

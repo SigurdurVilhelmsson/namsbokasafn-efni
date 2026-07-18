@@ -23,6 +23,7 @@ const Database = require('better-sqlite3');
 const service = require('../services/segmentEditorService');
 const segmentParser = require('../services/segmentParser');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+const migration042 = require('../migrations/042-content-versions-track');
 
 // Store original BOOKS_DIR to restore after tests
 const originalBooksDir = segmentParser.BOOKS_DIR;
@@ -88,6 +89,10 @@ function createTestDb() {
       UNIQUE(book, module_id, segment_id, version)
     );
   `);
+  // item 15: contentVersionService.snapshotModule now always writes a `track`
+  // column (default 'faithful') — rebuild in the same column production
+  // migrations add, so the apply path's snapshot insert doesn't 500.
+  migration042.up(db);
 
   return db;
 }

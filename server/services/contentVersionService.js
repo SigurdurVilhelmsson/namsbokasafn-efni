@@ -18,6 +18,38 @@ const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
 
+// item 15: the two content tracks that carry version history. Each entry
+// wires the loader, the editable-content field, the writer, and the
+// post-write cache hooks for restoreVersion.
+const TRACKS = {
+  faithful: {
+    load: (book, chapter, moduleId) => segmentParser.loadModuleForEditing(book, chapter, moduleId),
+    currentContent: (seg) => seg.is || '',
+    write: (book, chapter, moduleId, segments) =>
+      segmentParser.saveModuleSegments(book, chapter, moduleId, segments),
+    runPostWriteHooks: true,
+  },
+  localized: {
+    load: (book, chapter, moduleId) =>
+      segmentParser.loadModuleForLocalization(book, chapter, moduleId),
+    // The loc editor's editable baseline: localized when present, else faithful.
+    currentContent: (seg) => (seg.hasLocalized ? seg.localized : seg.faithful) || '',
+    write: (book, chapter, moduleId, segments) =>
+      segmentParser.saveLocalizedSegments(book, chapter, moduleId, segments),
+    // TM regen + concordance both consume FAITHFUL content — a localized
+    // restore must refresh neither.
+    runPostWriteHooks: false,
+  },
+};
+
+function trackConfig(track) {
+  const cfg = TRACKS[track];
+  if (!cfg) {
+    throw new TypeError(`Unknown content track: ${JSON.stringify(track)}`);
+  }
+  return cfg;
+}
+
 let _db;
 let _testDb;
 
@@ -46,22 +78,34 @@ function getDb() {
  *   on. Pass the caller's connection when the snapshot must run inside an
  *   already-open (IMMEDIATE) write transaction — otherwise a second connection
  *   would deadlock on SQLITE_BUSY and the snapshot would be silently lost.
+ * @param {'faithful'|'localized'} [track='faithful'] - Content track this
+ *   snapshot belongs to. Each track keeps its own version counter.
  * @returns {{ version: number, segmentsSnapshotted: number }}
  */
-function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb()) {
-  // Determine next version number for this module
+function snapshotModule(
+  book,
+  chapter,
+  moduleId,
+  segments,
+  appliedBy,
+  db = getDb(),
+  track = 'faithful'
+) {
+  trackConfig(track); // validate before touching the DB
+
+  // Determine next version number for this module, scoped to this track
   const latest = db
     .prepare(
       `SELECT MAX(version) as maxVer FROM content_versions
-       WHERE book = ? AND module_id = ?`
+       WHERE book = ? AND module_id = ? AND track = ?`
     )
-    .get(book, moduleId);
+    .get(book, moduleId, track);
 
   const nextVersion = (latest?.maxVer || 0) + 1;
 
   const insert = db.prepare(
-    `INSERT INTO content_versions (book, chapter, module_id, segment_id, content, version, applied_by)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO content_versions (book, chapter, module_id, segment_id, content, version, track, applied_by)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
   );
 
   const insertAll = db.transaction(() => {
@@ -72,7 +116,16 @@ function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb
       // which broke restore-undo for untranslated segments (item 12, F19).
       // Nullish content throws (NOT NULL / binding error) and aborts the
       // snapshot transaction — a bad caller must fail loud, not shrink history.
-      insert.run(book, chapter, moduleId, seg.segmentId, seg.content, nextVersion, appliedBy);
+      insert.run(
+        book,
+        chapter,
+        moduleId,
+        seg.segmentId,
+        seg.content,
+        nextVersion,
+        track,
+        appliedBy
+      );
       count++;
     }
     return count;
@@ -80,7 +133,7 @@ function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb
 
   const segmentsSnapshotted = insertAll();
   log.info(
-    { book, moduleId, version: nextVersion, segments: segmentsSnapshotted },
+    { book, moduleId, version: nextVersion, track, segments: segmentsSnapshotted },
     'Content snapshot created'
   );
 
@@ -92,19 +145,21 @@ function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb
  *
  * @param {string} book
  * @param {string} moduleId
+ * @param {'faithful'|'localized'} [track='faithful']
  * @returns {Array<{ version: number, applied_by: string, applied_at: string, segments: number }>}
  */
-function getModuleVersions(book, moduleId) {
+function getModuleVersions(book, moduleId, track = 'faithful') {
+  trackConfig(track);
   const db = getDb();
   return db
     .prepare(
       `SELECT version, applied_by, applied_at, COUNT(*) as segments
        FROM content_versions
-       WHERE book = ? AND module_id = ?
+       WHERE book = ? AND module_id = ? AND track = ?
        GROUP BY version
        ORDER BY version DESC`
     )
-    .all(book, moduleId);
+    .all(book, moduleId, track);
 }
 
 /**
@@ -113,18 +168,20 @@ function getModuleVersions(book, moduleId) {
  * @param {string} book
  * @param {string} moduleId
  * @param {number} version
+ * @param {'faithful'|'localized'} [track='faithful']
  * @returns {Array<{ segment_id: string, content: string }>}
  */
-function getVersionContent(book, moduleId, version) {
+function getVersionContent(book, moduleId, version, track = 'faithful') {
+  trackConfig(track);
   const db = getDb();
   return db
     .prepare(
       `SELECT segment_id, content
        FROM content_versions
-       WHERE book = ? AND module_id = ? AND version = ?
+       WHERE book = ? AND module_id = ? AND version = ? AND track = ?
        ORDER BY segment_id`
     )
-    .all(book, moduleId, version);
+    .all(book, moduleId, version, track);
 }
 
 /**
@@ -133,18 +190,20 @@ function getVersionContent(book, moduleId, version) {
  * @param {string} book
  * @param {string} moduleId
  * @param {string} segmentId
+ * @param {'faithful'|'localized'} [track='faithful']
  * @returns {Array<{ version: number, content: string, applied_by: string, applied_at: string }>}
  */
-function getSegmentHistory(book, moduleId, segmentId) {
+function getSegmentHistory(book, moduleId, segmentId, track = 'faithful') {
+  trackConfig(track);
   const db = getDb();
   return db
     .prepare(
       `SELECT version, content, applied_by, applied_at
        FROM content_versions
-       WHERE book = ? AND module_id = ? AND segment_id = ?
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND track = ?
        ORDER BY version DESC`
     )
-    .all(book, moduleId, segmentId);
+    .all(book, moduleId, segmentId, track);
 }
 
 /**
@@ -172,38 +231,45 @@ function getSegmentHistory(book, moduleId, segmentId) {
  * @param {string} moduleId
  * @param {number} version - the snapshot version to restore
  * @param {{ userId?: string|number, username?: string }} [restoredBy] - actor
+ * @param {'faithful'|'localized'} [track='faithful'] - Which content track to
+ *   restore. 'localized' loads/writes via the Pass-2 (localization) files and
+ *   skips the faithful-only post-write cache hooks (TM regen, concordance) —
+ *   those consume faithful content only.
  * @returns {{ restoredVersion: number, snapshotVersion: number,
  *   segmentsRestored: number, segmentsKept: number, segmentsSkipped: number,
  *   savedPath: string }}
  */
-function restoreVersion(book, chapter, moduleId, version, restoredBy = {}) {
+function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track = 'faithful') {
+  const cfg = trackConfig(track); // validate before touching the DB or filesystem
   const actorName =
     restoredBy.username || (restoredBy.userId != null ? String(restoredBy.userId) : 'system');
 
   // 1. Load the requested snapshot
-  const snapshot = getVersionContent(book, moduleId, version);
+  const snapshot = getVersionContent(book, moduleId, version, track);
   if (snapshot.length === 0) {
     throw new Error(`Version ${version} not found for ${moduleId}`);
   }
   const snapshotLookup = new Map(snapshot.map((s) => [s.segment_id, s.content]));
 
   // 2. Load the current module for canonical segment order + current content
-  const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+  const data = cfg.load(book, chapter, moduleId);
 
   // 3. Snapshot current content first, so this restore can itself be undone
   const currentSegments = data.segments.map((seg) => ({
     segmentId: seg.segmentId,
-    content: seg.is || '',
+    content: cfg.currentContent(seg),
   }));
   const { version: snapshotVersion } = snapshotModule(
     book,
     chapter,
     moduleId,
     currentSegments,
-    actorName
+    actorName,
+    getDb(),
+    track
   );
 
-  // 4. Rebuild the faithful file from the snapshot, aligned to current extraction
+  // 4. Rebuild the file from the snapshot, aligned to current extraction
   let segmentsRestored = 0;
   let segmentsKept = 0;
   const restoredSegments = data.segments.map((seg) => {
@@ -212,33 +278,37 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}) {
       return { segmentId: seg.segmentId, content: snapshotLookup.get(seg.segmentId) };
     }
     segmentsKept++;
-    return { segmentId: seg.segmentId, content: seg.is || '' };
+    return { segmentId: seg.segmentId, content: cfg.currentContent(seg) };
   });
 
   const currentIds = new Set(data.segments.map((s) => s.segmentId));
   const skipped = snapshot.filter((s) => !currentIds.has(s.segment_id));
   if (skipped.length > 0) {
     log.warn(
-      { book, moduleId, version, skipped: skipped.map((s) => s.segment_id) },
+      { book, moduleId, version, track, skipped: skipped.map((s) => s.segment_id) },
       'Restore: snapshot segments no longer in current extraction were skipped'
     );
   }
 
-  // 5. Write the restored content back as the new faithful baseline
-  const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, restoredSegments);
+  // 5. Write the restored content back as the new baseline for this track
+  const savedPath = cfg.write(book, chapter, moduleId, restoredSegments);
 
   // Keep derived caches current — the same two best-effort steps the apply
   // path runs after writing the faithful file (segmentEditorService
-  // :995-1009). Never fail the restore over a cache refresh.
-  try {
-    tmService.scheduleTmRegen(book);
-  } catch (err) {
-    log.error({ err, book }, 'Scheduling TM regeneration after restore failed');
-  }
-  try {
-    concordanceService.indexModule(book, chapter, moduleId);
-  } catch (err) {
-    log.error({ err, book, moduleId }, 'Concordance indexing after restore failed');
+  // :995-1009). Never fail the restore over a cache refresh. TM regen and
+  // concordance both index FAITHFUL content only, so a localized restore
+  // must not trigger either (cfg.runPostWriteHooks is false for 'localized').
+  if (cfg.runPostWriteHooks) {
+    try {
+      tmService.scheduleTmRegen(book);
+    } catch (err) {
+      log.error({ err, book }, 'Scheduling TM regeneration after restore failed');
+    }
+    try {
+      concordanceService.indexModule(book, chapter, moduleId);
+    } catch (err) {
+      log.error({ err, book, moduleId }, 'Concordance indexing after restore failed');
+    }
   }
 
   const result = {
@@ -265,11 +335,43 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}) {
       segmentsRestored,
       segmentsKept,
       segmentsSkipped: skipped.length,
+      track,
     },
   });
 
-  log.info({ book, moduleId, ...result }, 'Module restored to previous version');
+  log.info({ book, moduleId, track, ...result }, 'Module restored to previous version');
   return result;
+}
+
+/**
+ * The single localized write path (item 15): snapshot current content, then
+ * write. All writers of 04-localized-content/ MUST go through this — the
+ * snapshot lives here (not in segmentParser) because segmentParser cannot
+ * require this service (require cycle).
+ *
+ * Snapshot failure is logged loud but never blocks the save (parity with the
+ * faithful apply hook's posture).
+ *
+ * @param {string} book
+ * @param {number} chapter
+ * @param {string} moduleId
+ * @param {Array<{segmentId: string, content: string}>} segments - new content to write
+ * @param {string} [actor] - username for the snapshot's applied_by
+ * @returns {{ savedPath: string }}
+ */
+function saveLocalizedWithSnapshot(book, chapter, moduleId, segments, actor) {
+  try {
+    const data = segmentParser.loadModuleForLocalization(book, chapter, moduleId);
+    const current = data.segments.map((seg) => ({
+      segmentId: seg.segmentId,
+      content: TRACKS.localized.currentContent(seg),
+    }));
+    snapshotModule(book, chapter, moduleId, current, actor, getDb(), 'localized');
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'Localized pre-write snapshot failed (save proceeds)');
+  }
+  const savedPath = segmentParser.saveLocalizedSegments(book, chapter, moduleId, segments);
+  return { savedPath };
 }
 
 /** @internal Test helper */
@@ -283,5 +385,6 @@ module.exports = {
   getVersionContent,
   getSegmentHistory,
   restoreVersion,
+  saveLocalizedWithSnapshot,
   _setTestDb,
 };

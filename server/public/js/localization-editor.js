@@ -532,6 +532,9 @@
       // Show save status bar and update it
       document.getElementById('save-status-bar').style.display = 'flex';
       edUpdateSaveStatusBar();
+
+      // Version history (restore) is a head-editor-only affordance
+      document.getElementById('ed-btn-history').hidden = !edIsHeadEditor();
     } catch (err) {
       alert(UI.common.errorLoading + err.message);
     }
@@ -1258,6 +1261,124 @@
   // ----------------------------------------------------------------
 
   document.getElementById('btn-save-all').addEventListener('click', edSaveAllSegments);
+
+  // ================================================================
+  // VERSION HISTORY (revert a module to a previous localized snapshot)
+  // ================================================================
+
+  /** Format a SQLite UTC datetime ("YYYY-MM-DD HH:MM:SS") for display. */
+  function edVhFormatDate(raw) {
+    if (!raw) return '';
+    const d = new Date(raw.replace(' ', 'T') + 'Z');
+    return isNaN(d.getTime()) ? raw : d.toLocaleString('is-IS');
+  }
+
+  function edCloseVersionHistory() {
+    document.getElementById('ed-vh-overlay').classList.remove('active');
+  }
+
+  async function edOpenVersionHistory() {
+    const overlay = document.getElementById('ed-vh-overlay');
+    const list = document.getElementById('ed-vh-list');
+    list.innerHTML = '<div class="vh-empty">Hleður…</div>';
+    overlay.classList.add('active');
+
+    try {
+      const data = await fetchJson(
+        `${ED_API_BASE}/${edCurrentBook}/${edCurrentChapter}/${edCurrentModuleId}/versions`,
+        { credentials: 'include' }
+      );
+      const versions = data.versions || [];
+      if (versions.length === 0) {
+        list.innerHTML =
+          '<div class="vh-empty">Engar eldri útgáfur. Útgáfur verða til þegar staðfærsla er vistuð.</div>';
+        return;
+      }
+
+      const newest = versions[0].version;
+      list.innerHTML = versions
+        .map((v) => {
+          const who = v.applied_by ? escapeHtml(v.applied_by) : '—';
+          const when = escapeHtml(edVhFormatDate(v.applied_at));
+          const latest = v.version === newest ? ' · nýjasta' : '';
+          return (
+            '<div class="vh-row">' +
+            '<div class="vh-meta">' +
+            '<div><span class="vh-sub">' +
+            who +
+            ' · ' +
+            when +
+            '</span></div>' +
+            '<div><span class="vh-ver">Útgáfa ' +
+            v.version +
+            '</span> <span class="vh-sub">(' +
+            v.segments +
+            ' einingar' +
+            latest +
+            ')</span></div>' +
+            '</div>' +
+            '<button class="btn btn-secondary btn-sm vh-restore" data-version="' +
+            v.version +
+            '">Færa í þessa útgáfu</button>' +
+            '</div>'
+          );
+        })
+        .join('');
+
+      list.querySelectorAll('.vh-restore').forEach((btn) => {
+        btn.addEventListener('click', () =>
+          edRestoreToVersion(parseInt(btn.getAttribute('data-version'), 10))
+        );
+      });
+    } catch (err) {
+      list.innerHTML =
+        '<div class="vh-empty">Villa við að sækja sögu: ' + escapeHtml(err.message) + '</div>';
+    }
+  }
+
+  async function edRestoreToVersion(version) {
+    const ok = window.confirm(
+      'Færa þessa einingu aftur í útgáfu ' +
+        version +
+        '?\n\nNúverandi efni er fyrst vistað sem ný útgáfa, svo þetta er afturkræft.'
+    );
+    if (!ok) return;
+
+    try {
+      const result = await fetchJson(
+        `${ED_API_BASE}/${edCurrentBook}/${edCurrentChapter}/${edCurrentModuleId}/restore/${version}`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ confirm: true }),
+        }
+      );
+      edCloseVersionHistory();
+      if (result.lastModified != null) edLastModified = result.lastModified;
+      if (saveRetry && saveRetry.showToast) {
+        saveRetry.showToast(
+          'Fært í útgáfu ' +
+            version +
+            ' (núverandi efni vistað sem útgáfa ' +
+            result.snapshotVersion +
+            ')',
+          'success'
+        );
+      }
+      // A pre-restore draft is stale by definition — the restore snapshot preserves that content (final-review F3).
+      edClearDraft();
+      await edLoadModule(edCurrentModuleId);
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
+  }
+
+  document.getElementById('ed-btn-history').addEventListener('click', edOpenVersionHistory);
+  document.getElementById('ed-vh-close').addEventListener('click', edCloseVersionHistory);
+  document.getElementById('ed-vh-overlay').addEventListener('click', (e) => {
+    if (e.target.id === 'ed-vh-overlay') edCloseVersionHistory();
+  });
 
   // ----------------------------------------------------------------
   // FILTERS

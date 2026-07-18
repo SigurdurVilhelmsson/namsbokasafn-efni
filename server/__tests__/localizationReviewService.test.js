@@ -25,8 +25,10 @@ const Database = require('better-sqlite3');
 
 const review = require('../services/localizationReviewService');
 const segmentParser = require('../services/segmentParser');
+const contentVersionService = require('../services/contentVersionService');
 const migration = require('../migrations/034-localization-review');
 const migration041 = require('../migrations/041-localization-pending-per-editor');
+const migration042 = require('../migrations/042-content-versions-track');
 
 const originalBooksDir = segmentParser.BOOKS_DIR;
 
@@ -70,6 +72,28 @@ describe('localizationReviewService', () => {
     migration041.up(db); // canonical schema: per-editor pendings + 'superseded'
     review._setTestDb(db);
 
+    // item 15: approveAndApply now writes via contentVersionService
+    // (saveLocalizedWithSnapshot), so it needs its own test DB wired to the
+    // SAME in-memory connection — otherwise it falls back to the real
+    // pipeline-output/sessions.db (contentVersionService.test.js sets this
+    // up the same way; see createTestDb() there).
+    db.exec(`
+      CREATE TABLE content_versions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        book TEXT NOT NULL,
+        chapter INTEGER NOT NULL,
+        module_id TEXT NOT NULL,
+        segment_id TEXT NOT NULL,
+        content TEXT NOT NULL,
+        version INTEGER NOT NULL DEFAULT 1,
+        applied_by TEXT,
+        applied_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(book, module_id, segment_id, version)
+      );
+    `);
+    migration042.up(db); // adds the track column contentVersionService expects
+    contentVersionService._setTestDb(db);
+
     tmpDir = mkdtempSync(join(tmpdir(), 'locreview-test-'));
     booksDir = join(tmpDir, 'books');
     const bookDir = join(booksDir, BOOK);
@@ -96,6 +120,7 @@ describe('localizationReviewService', () => {
   afterEach(() => {
     db.close();
     review._setTestDb(null);
+    contentVersionService._setTestDb(null);
     segmentParser._setTestBooksDir(originalBooksDir);
   });
 
