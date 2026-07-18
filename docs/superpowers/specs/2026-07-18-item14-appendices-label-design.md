@@ -153,7 +153,7 @@ Client JS: the three touched panes have no unit harness (saveRetry's UMD-factory
 pattern doesn't extend here without out-of-scope refactoring) → covered by the
 register's manual-QA line (I14-R8) instead.
 
-## 5. Out of scope → campaign register (I14-R1..R9)
+## 5. Out of scope → campaign register (I14-R1..R10)
 
 Logged in `docs/plans/2026-07-11-pre-semester-coding-campaign.md` under item 14;
 no code in this PR.
