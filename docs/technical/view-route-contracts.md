@@ -35,6 +35,8 @@ legacy failed-lookup writes) never match a filtered query, only unfiltered
 ones.
 Note (register I16-R4): plain editors get 403 — the panel renders its
 empty state for them.
+Non-numeric `chapter` params: `'appendices'` is accepted as chapter `-1`;
+any other non-numeric value matches nothing (never collides with chapter 0).
 
 ## GET /api/status/activity/timeline — routes/status.js
 Consumed by: status.html timeline.
@@ -42,19 +44,44 @@ Rows are parseRow **plus** `{ timeAgo, icon, color }` — `timeAgo` is a
 pre-formatted Icelandic string; render it directly, do not parse dates
 client-side (SQLite UTC strings parse as local time in browsers). The
 envelope also carries `hasMore` (currently unused by views; status.html
-derives its own "more" heuristic).
+derives its own "more" heuristic). Endpoints WITHOUT a server `timeAgo`
+(e.g. `/api/activity`, `/api/analytics/recent`) are parsed client-side via
+the guarded SQLite-UTC idiom (`replace(' ','T')+'Z'` + `isNaN` guard), now
+used by both `formatTimeAgo` helpers (books.html, my-work.html) and
+admin.html's analytics activity list.
 
 ## GET /api/status/dashboard — routes/status.js
 Consumed by: my-work.html admin panels.
 Fields consumed: `needsAttention` `{ unassignedWork, pendingReviews,
-blockedIssues (a NUMBER), overdueCount }`, `teamActivity` (timeline-shaped
-rows incl. `timeAgo`/`icon`/`color` — `icon` is always truthy, `color` is a
-class token `success|warning|info|default`), `readyForAssignment`.
+blockedIssues (a NUMBER), overdueCount, items }`, `teamActivity`
+(timeline-shaped rows incl. `timeAgo`/`icon`/`color` — `icon` is always
+truthy, `color` is a class token `success|warning|info|default`),
+`readyForAssignment`, `workload`.
 `overdueCount` is structurally 0 today (F28 → removed in item 16 PR2).
+`needsAttention.items` (`dashboardReadModel`-fed, `routes/status.js`): the
+view renders `item.type` (icon lookup: `overdue|blocked|unassigned|review`),
+`item.message`, `item.book`, `item.chapter` (also reads `item.assignedTo`
+and `item.daysOld`, which the current route never populates — both render
+as their falsy-guard fallback).
+`workload` (`dashboardReadModel.getEditorWorkload`): rows carry `{ editor,
+active, pending, approved, rejected, oldestPendingHours }`; the view renders
+`editor`, `active`, `pending`, `oldestPendingHours` only (`approved`/
+`rejected` are sent but not read).
+`readyForAssignment` (`dashboardReadModel.getReadyToApply`): rows carry
+`{ book, chapter, moduleId, approvedCount, pendingCount }`; the view renders
+`book`, `chapter`, `moduleId`, `approvedCount` (`pendingCount` is sent but
+not read).
 
 ## GET /api/my-work and /api/my-work/today — routes/my-work.js
 Consumed by: my-work.html.
 `/api/my-work`: `recentActivity` = parseRow rows (camelCase `createdAt`).
+Also consumed: `summary { pendingSubmissionsCount, changesRequestedCount,
+proposedTermsCount }` (nav badges + summary cards); `pendingSubmissions`
+(`{ bookLabel, chapter, section, submittedAt, daysPending, editorUrl }`);
+`recentReviews` (`{ bookLabel, chapter, section, notes, reviewedBy,
+reviewedAt, editorUrl, status }` — the view filters this list client-side to
+`status === 'rejected' || 'discuss'` for the "changes requested" panel);
+`proposedTerms` (`{ english, icelandic, status, discussionCount }`).
 `/today`: `{ user, currentTask, upNext, needsAttention, quickStats
 { totalTasks, changesRequested, pendingReview, completedThisWeek,
 proposedTerms }, adminStats, allTasks }`. There is NO `blockedIssues` and
@@ -62,5 +89,7 @@ NO `quickStats.overdue` (dead reads removed in item 16 PR2).
 
 ## GET {API_BASE}/terminology/lookup — routes/segment-editor.js
 Consumed by: segment-editor popup autocomplete.
-Query: `q` (min 2 chars), `bookSlug` (slug string — ranks the current
-book's terms first). Response: `{ terms }`.
+Query: `q` (min 2 chars), `bookSlug` (slug string). `bookSlug` marks the
+current book's subject translations as primary (`isPrimary`); the client
+renders primary translations first. It does not reorder the term list
+itself. Response: `{ terms }`.

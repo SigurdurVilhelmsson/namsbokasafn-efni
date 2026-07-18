@@ -249,7 +249,16 @@ function search(options = {}) {
     limit = 50,
     offset = 0,
   } = options;
-  const chapterText = chapter == null ? null : String(chapter);
+  let chapterText = chapter == null ? null : String(chapter);
+  if (chapterText !== null && !/^-?\d+$/.test(chapterText)) {
+    // 'appendices' is the on-URL dialect for chapter -1 (item 14 convention);
+    // any other non-numeric param matches nothing rather than colliding with ch0.
+    if (chapterText === 'appendices') {
+      chapterText = '-1';
+    } else {
+      return { activities: [], total: 0, limit: Math.min(limit, 200), offset };
+    }
+  }
 
   const rows = stmts().search.all(
     book,

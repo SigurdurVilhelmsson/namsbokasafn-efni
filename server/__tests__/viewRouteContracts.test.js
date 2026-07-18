@@ -34,7 +34,7 @@ describe('books.html chapter activity panel (F12)', () => {
 
   it('both panels share one render function (dedupe)', () => {
     expect(src.match(/function renderActivityRows\(/g)).toHaveLength(1);
-    expect(src.match(/renderActivityRows\(activities\)/g).length).toBeGreaterThanOrEqual(2);
+    expect(src.match(/panel\.innerHTML = renderActivityRows\(activities\)/g)).toHaveLength(2);
   });
 
   it('icon map keys on live ACTIVITY_TYPES vocabulary', () => {
@@ -78,6 +78,20 @@ describe('my-work.html personal activity feed (F26)', () => {
   it('timestamp reads the camelCase field parseRow sends', () => {
     expect(src).toMatch(/formatTimeAgo\(a\.createdAt\)/);
     expect(src).not.toMatch(/a\.created_at\b/);
+  });
+
+  it('icon map keys on live ACTIVITY_TYPES vocabulary, not the dead legacy set', () => {
+    expect(src).toMatch(/segment_edit_saved:/);
+    expect(src).not.toMatch(/term_propose:/);
+  });
+});
+
+describe('admin.html analytics activity list timestamp (F27 sibling)', () => {
+  const src = view('admin.html');
+
+  it('reads the camelCase createdAt field analyticsService parseRow sends', () => {
+    expect(src).toMatch(/ev\.createdAt/);
+    expect(src).not.toMatch(/ev\.timestamp/);
   });
 });
 

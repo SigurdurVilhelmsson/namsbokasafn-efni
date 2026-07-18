@@ -71,6 +71,16 @@ beforeAll(() => {
     chapter: 0,
     description: 'ch0 edit',
   });
+  // Appendix row: chapter -1 is the DB/route dialect (I14-R7); 'appendices'
+  // is the on-URL dialect the client sends (item 14 convention).
+  activityLog.log({
+    type: 'segment_edit_saved',
+    userId: 'u1',
+    username: 'ed1',
+    book: BOOK,
+    chapter: -1,
+    description: 'appendix edit',
+  });
 });
 
 afterAll(() => {
@@ -89,7 +99,7 @@ describe('activityLog.search chapter filter (F12)', () => {
 
   it('omitting chapter returns all book rows (unchanged behavior)', () => {
     const all = activityLog.search({ book: BOOK });
-    expect(all.total).toBe(4);
+    expect(all.total).toBe(5);
   });
 
   it('chapter=0 filter excludes empty-string edge-case rows (Important fix)', () => {
@@ -102,5 +112,17 @@ describe('activityLog.search chapter filter (F12)', () => {
     const src = fs.readFileSync(require.resolve('../routes/activity.js'), 'utf8');
     expect(src).toMatch(/const\s*\{\s*book,\s*type,\s*user,\s*chapter\b/);
     expect(src).toMatch(/chapter:\s*chapter\s*\|\|\s*null/);
+  });
+
+  it("chapter='appendices' maps to chapter -1 (Minor fix)", () => {
+    const result = activityLog.search({ book: BOOK, chapter: 'appendices' });
+    expect(result.activities.map((a) => a.description)).toEqual(['appendix edit']);
+    expect(result.total).toBe(1);
+  });
+
+  it('non-numeric, non-appendices chapter param matches nothing (not ch0)', () => {
+    const result = activityLog.search({ book: BOOK, chapter: 'abc' });
+    expect(result.activities).toEqual([]);
+    expect(result.total).toBe(0);
   });
 });

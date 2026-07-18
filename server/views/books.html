@@ -2764,7 +2764,8 @@
 
       function formatTimeAgo(dateStr) {
         if (!dateStr) return '';
-        var date = new Date(dateStr);
+        var date = new Date(String(dateStr).replace(' ', 'T') + 'Z');
+        if (isNaN(date.getTime())) return '';
         var now = new Date();
         var diffMs = now - date;
         var diffMins = Math.floor(diffMs / 60000);

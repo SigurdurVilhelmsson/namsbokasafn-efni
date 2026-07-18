@@ -159,6 +159,7 @@ describe('GET /api/status/:book/:chapter appendices acceptance', () => {
     expect(pub).toBeDefined();
     expect(pub).toHaveProperty('mtPreview');
     expect(pub).toHaveProperty('faithful');
+    expect(pub).toHaveProperty('localized');
   });
 });
 
