@@ -1330,7 +1330,9 @@ function getEditorialProgress(book) {
       // Module is "complete" when approved records >= segment count
       const modEdits = moduleEditMap[mod.moduleId];
       if (modEdits && segCount > 0) {
-        const approvedRecords = (modEdits.approved || 0) + (modEdits.applied || 0);
+        // applied ⊂ approved by SQL construction (applied_at is a stamp on an
+        // 'approved' row) — approved alone is the whole reviewed count (F18).
+        const approvedRecords = modEdits.approved || 0;
         if (approvedRecords >= segCount) {
           modulesComplete++;
         }

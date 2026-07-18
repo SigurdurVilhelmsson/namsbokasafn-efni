@@ -976,7 +976,7 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
         const review = reviewLookup[mod.moduleId];
 
         const edited = edits ? edits.segments_edited : 0;
-        const approved = edits ? edits.approved + edits.applied : 0;
+        const approved = edits ? edits.approved : 0;
         const rejected = edits ? edits.rejected : 0;
         const pending = edits ? edits.pending : 0;
         const discuss = edits ? edits.discuss : 0;
