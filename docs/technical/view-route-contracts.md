@@ -17,8 +17,9 @@ Consumed by: status.html (pipeline badges), books.html (chapter status).
 Shape: `{ book, chapter, chapterDir, title, progress, nextStage, stages,
 files, actions }`. **`stages` is a top-level ARRAY** of
 `{ stage, status, symbol, complete, date, editor, notes }`; the
-`stage === 'publication'` entry additionally carries `mtPreview` and
-`faithful` objects (each `{ complete, ... }`). There is NO `status` key.
+`stage === 'publication'` entry additionally carries `mtPreview`,
+`faithful`, and `localized` objects (each `{ complete, ... }`). There is NO
+`status` key.
 Views convert the array to a name-keyed object locally.
 
 ## GET /api/activity — routes/activity.js (HEAD_EDITOR-gated)
@@ -39,7 +40,9 @@ empty state for them.
 Consumed by: status.html timeline.
 Rows are parseRow **plus** `{ timeAgo, icon, color }` — `timeAgo` is a
 pre-formatted Icelandic string; render it directly, do not parse dates
-client-side (SQLite UTC strings parse as local time in browsers).
+client-side (SQLite UTC strings parse as local time in browsers). The
+envelope also carries `hasMore` (currently unused by views; status.html
+derives its own "more" heuristic).
 
 ## GET /api/status/dashboard — routes/status.js
 Consumed by: my-work.html admin panels.
