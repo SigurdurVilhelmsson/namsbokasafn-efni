@@ -2070,6 +2070,11 @@
           return (
             '<div class="vh-row">' +
             '<div class="vh-meta">' +
+            '<div><span class="vh-sub">' +
+            who +
+            ' · ' +
+            when +
+            '</span></div>' +
             '<div><span class="vh-ver">Útgáfa ' +
             v.version +
             '</span> <span class="vh-sub">(' +
@@ -2077,11 +2082,6 @@
             ' einingar' +
             latest +
             ')</span></div>' +
-            '<div class="vh-sub">' +
-            who +
-            ' · ' +
-            when +
-            '</div>' +
             '</div>' +
             '<button class="btn btn-secondary btn-sm vh-restore" data-version="' +
             v.version +
