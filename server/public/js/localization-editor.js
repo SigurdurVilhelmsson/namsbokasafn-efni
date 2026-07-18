@@ -1366,6 +1366,8 @@
           'success'
         );
       }
+      // A pre-restore draft is stale by definition — the restore snapshot preserves that content (final-review F3).
+      edClearDraft();
       await edLoadModule(edCurrentModuleId);
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
