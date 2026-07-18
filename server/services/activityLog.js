@@ -107,11 +107,19 @@ function initStatements(db) {
       ORDER BY created_at DESC
       LIMIT ?
     `),
+    // Chapter compare uses CAST(... AS INTEGER), not TEXT: better-sqlite3 binds
+    // plain JS numbers as REAL, so a raw-number chapter (e.g. admin.js
+    // assign/unassign passing chapterNum) lands in this TEXT-affinity column
+    // as "1.0", not "1" (verified empirically — SQLite's REAL→TEXT affinity
+    // conversion appends the decimal). CAST(x AS TEXT) can't reconcile "1.0"
+    // with "1"; CAST(x AS INTEGER) normalizes both storage shapes (and the
+    // String()-wrapped "1"/"-1" rows everywhere else) to the same integer.
     search: db.prepare(`
       SELECT * FROM activity_log
       WHERE (book = ? OR ? IS NULL)
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
+        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) OR ? IS NULL)
       ORDER BY created_at DESC
       LIMIT ? OFFSET ?
     `),
@@ -120,6 +128,7 @@ function initStatements(db) {
       WHERE (book = ? OR ? IS NULL)
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
+        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) OR ? IS NULL)
     `),
   };
 }
@@ -222,7 +231,15 @@ function getBySection(book, chapter, section, limit = 50) {
  * Search activity with filters
  */
 function search(options = {}) {
-  const { book = null, type = null, userId = null, limit = 50, offset = 0 } = options;
+  const {
+    book = null,
+    type = null,
+    userId = null,
+    chapter = null,
+    limit = 50,
+    offset = 0,
+  } = options;
+  const chapterText = chapter == null ? null : String(chapter);
 
   const rows = stmts().search.all(
     book,
@@ -231,11 +248,22 @@ function search(options = {}) {
     type,
     userId,
     userId,
+    chapterText,
+    chapterText,
     Math.min(limit, 200),
     offset
   );
 
-  const countResult = stmts().count.get(book, book, type, type, userId, userId);
+  const countResult = stmts().count.get(
+    book,
+    book,
+    type,
+    type,
+    userId,
+    userId,
+    chapterText,
+    chapterText
+  );
 
   return {
     activities: rows.map(parseRow),

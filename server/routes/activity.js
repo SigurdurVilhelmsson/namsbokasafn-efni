@@ -22,13 +22,14 @@ const { requireRole, requireHeadEditor, ROLES } = require('../middleware/require
  * Get recent activity (admin/head-editor only)
  */
 router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  const { book, type, user, limit, offset } = req.query;
+  const { book, type, user, chapter, limit, offset } = req.query;
 
   try {
     const result = activityLog.search({
       book: book || null,
       type: type || null,
       userId: user || null,
+      chapter: chapter || null,
       limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
       offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
