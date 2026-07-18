@@ -803,7 +803,7 @@
       if (!chapter || chapter < 1) { showToast('Sl\u00e1\u00f0u inn kaflan\u00famer','error'); return; }
       try {
         await fetchJson('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
-        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast(chapterLabel.full(chapter) + ' \u00fathluta\u00f0ur','success');
+        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('\u00dathluta\u00f0: ' + chapterLabel.full(chapter),'success');
       } catch(e) { showToast(e.message || 'Villa vi\u00f0 \u00fathlutun','error'); }
     };
 
@@ -811,7 +811,7 @@
       if (!currentEditUser) return;
       try {
         var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters/' + book + '/' + chapter, { method:'DELETE' });
-        if (res.ok) { usersLoadChapterAssignments(); showToast(chapterLabel.full(chapter) + ' fjarl\u00e6g\u00f0ur','success'); }
+        if (res.ok) { usersLoadChapterAssignments(); showToast('Fjarl\u00e6gt: ' + chapterLabel.full(chapter),'success'); }
         else { showToast('Villa vi\u00f0 a\u00f0 fjarl\u00e6gja kafla','error'); }
       } catch(e) { showToast('Villa','error'); }
     };

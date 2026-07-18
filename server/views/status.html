@@ -434,6 +434,7 @@
   <script src="/js/htmlUtils.js"></script>
   <script src="/js/layout.js"></script>
   <script src="/js/bookSelector.js"></script>
+  <script src="/js/chapter-label.js"></script>
   <script>
   (function() {
     'use strict';
@@ -512,7 +513,7 @@
       // Per-chapter attention
       data.chapters.forEach(function(ch) {
         ch.needsAttention.forEach(function(msg) {
-          attentionItems.push('K' + (ch.chapter === -1 ? 'Vi\u00f0auki' : ch.chapter) + ': ' + msg);
+          attentionItems.push(chapterLabel.compact(ch.chapter) + ': ' + msg);
         });
       });
 
@@ -531,7 +532,7 @@
       // Chapter progress list
       var listEl = document.getElementById('chapter-list');
       listEl.innerHTML = data.chapters.map(function(ch) {
-        var label = ch.chapter === -1 ? 'Vi\u00f0.' : 'K' + ch.chapter;
+        var label = chapterLabel.compact(ch.chapter);
         var pctApproved = ch.segmentsTotal > 0
           ? Math.round(ch.segmentsApproved / ch.segmentsTotal * 100) : 0;
         var pctEdited = ch.segmentsTotal > 0
@@ -574,7 +575,7 @@
       document.getElementById('detail-empty').style.display = 'none';
       document.getElementById('detail-content').style.display = '';
 
-      var label = chapterNum === -1 ? 'Vi\u00f0auki' : 'Kafli ' + chapterNum;
+      var label = chapterLabel.full(chapterNum);
       document.getElementById('detail-title').textContent = label;
       document.getElementById('detail-editor-link').href =
         '/editor?book=' + progressData.book + '&chapter=' + (chapterNum === -1 ? 'appendices' : chapterNum);

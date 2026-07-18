@@ -114,3 +114,20 @@ describe('adoption — latent sites (books.html, localization-editor.js)', () =>
     expect(read('views/localization-editor.html')).toMatch(/src="\/js\/chapter-label\.js"/);
   });
 });
+
+describe('adoption — status.html (final-review must-fix: missed by the I14-R9 sweep)', () => {
+  it('includes the helper before the inline script', () => {
+    expect(read('views/status.html')).toMatch(/src="\/js\/chapter-label\.js"/);
+  });
+
+  it('builds every chapter label through the helper — no glued "KViðauki", no hand-rolled "Við.", no singular "Viðauki" title', () => {
+    const src = read('views/status.html');
+    // status.html's inline <script> spells Icelandic chars as \uXXXX JS
+    // escapes (not raw UTF-8 — that's the HTML markup's convention via
+    // &eth;/&iacute; entities instead), so the regression pin has to match
+    // that literal escape-sequence byte form, e.g. 'Viðauki'.
+    expect(src).not.toMatch(/Vi\\u00f0auki'/);
+    expect(src).not.toMatch(/Kafli ' \+/);
+    expect((src.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(3);
+  });
+});

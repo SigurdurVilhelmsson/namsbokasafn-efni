@@ -95,7 +95,7 @@ proposedTerms }, adminStats, allTasks }`. `allTasks` (and therefore
 assignment-derived task, so `quickStats.totalTasks === allTasks.length ===
 quickStats.changesRequested` always (dormant assignment-task branch
 deleted in item 16 PR2, F30+F25). There is NO `blockedIssues` and NO
-`quickStats.overdue` (dead reads removed in item 16 PR2, F28/F29).
+`quickStats.overdue` (dead reads removed in item 16 PR2, F29/F30+F25).
 
 ## GET {API_BASE}/terminology/lookup — routes/segment-editor.js
 Consumed by: segment-editor popup autocomplete.

@@ -879,7 +879,7 @@ PR body must include:
 - Personal dashboard (`/`): console clean; changes-requested alert still appears; no Tímafrestur tile; no blocked banner; appendix work items say "Viðaukar".
 - Admin attention panel: three stat tiles; blocked item click → `/progress`.
 - Assignments page: appendix row shows `Við.` and `Viðaukar` fallback title.
-- Admin → user chapters: appendix tag `Við.`; remove-toast says "Viðaukar fjarlægður".
+- Admin → user chapters: appendix tag `Við.`; remove-toast says "Fjarlægt: Viðaukar" (final-review fix — agreement-free supine phrasing, not "Viðaukar fjarlægður").
 - Books page: cards `K5`; chapter detail `Kafli N`; cv-panel dropdown labels unchanged.
 - Loc-editor: chapter dropdowns unchanged incl. Viðaukar entries.
 
