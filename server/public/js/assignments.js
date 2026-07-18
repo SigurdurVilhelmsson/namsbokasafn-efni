@@ -91,7 +91,7 @@
       const isAssigned = ch.assignment && ch.assignment.user_id;
       const rowClass = isAssigned ? '' : ' class="row-unassigned"';
 
-      const title = ch.titleIs || ch.title || 'Kafli ' + ch.chapter;
+      const title = ch.titleIs || ch.title || chapterLabel.full(ch.chapter);
 
       // Build editor dropdown
       let options = '<option value="">— Óúthlutað —</option>';
@@ -130,8 +130,8 @@
         '<tr' +
         rowClass +
         '>' +
-        '<td>K' +
-        escapeHtml(String(ch.chapter)) +
+        '<td>' +
+        escapeHtml(chapterLabel.compact(ch.chapter)) +
         '</td>' +
         '<td>' +
         escapeHtml(title) +

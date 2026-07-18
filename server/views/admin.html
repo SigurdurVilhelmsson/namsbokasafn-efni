@@ -552,6 +552,7 @@
   <script src="/js/layout.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
+  <script src="/js/chapter-label.js"></script>
   <script>
   /* ==================================================================
      ADMIN PAGE — MASTER CONTROLLER
@@ -787,7 +788,7 @@
         var html = '';
         Object.keys(byBook).forEach(function(book) {
           html += '<div style="margin-bottom:0.5rem"><strong>' + escapeHtml(book) + ':</strong> ';
-          html += byBook[book].map(function(ch) { return '<span class="chapter-tag">K' + ch + '<span class="remove-ch" onclick="usersRemoveChapter(\'' + book + '\',' + ch + ')" title="Fjarl\u00e6gja">&times;</span></span>'; }).join('');
+          html += byBook[book].map(function(ch) { return '<span class="chapter-tag">' + chapterLabel.compact(ch) + '<span class="remove-ch" onclick="usersRemoveChapter(\'' + book + '\',' + ch + ')" title="Fjarl\u00e6gja">&times;</span></span>'; }).join('');
           html += '</div>';
         });
         container.innerHTML = html;
@@ -802,7 +803,7 @@
       if (!chapter || chapter < 1) { showToast('Sl\u00e1\u00f0u inn kaflan\u00famer','error'); return; }
       try {
         await fetchJson('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
-        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('Kafli ' + chapter + ' \u00fathluta\u00f0ur','success');
+        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast(chapterLabel.full(chapter) + ' \u00fathluta\u00f0ur','success');
       } catch(e) { showToast(e.message || 'Villa vi\u00f0 \u00fathlutun','error'); }
     };
 
@@ -810,7 +811,7 @@
       if (!currentEditUser) return;
       try {
         var res = await fetch('/api/admin/users/' + currentEditUser.id + '/chapters/' + book + '/' + chapter, { method:'DELETE' });
-        if (res.ok) { usersLoadChapterAssignments(); showToast('Kafli ' + chapter + ' fjarl\u00e6g\u00f0ur','success'); }
+        if (res.ok) { usersLoadChapterAssignments(); showToast(chapterLabel.full(chapter) + ' fjarl\u00e6g\u00f0ur','success'); }
         else { showToast('Villa vi\u00f0 a\u00f0 fjarl\u00e6gja kafla','error'); }
       } catch(e) { showToast('Villa','error'); }
     };
@@ -1315,7 +1316,7 @@
       var maxViews = Math.max.apply(null, stats.topContent.map(function(c){return c.views;}));
       tbody.innerHTML = stats.topContent.slice(0,10).map(function(item) {
         var pct = Math.round((item.views/maxViews)*100);
-        return '<tr><td><strong>' + escapeHtml(item.book||'Efnafr\u00e6\u00f0i') + '</strong>' + (item.chapter ? ' / K' + item.chapter : '') + (item.section ? ' / ' + item.section : '') + '</td><td class="views-col">' + anFormatNumber(item.views) + '</td><td class="progress-col"><div class="mini-progress"><div class="mini-progress-bar" style="width:' + pct + '%"></div></div></td></tr>';
+        return '<tr><td><strong>' + escapeHtml(item.book||'Efnafr\u00e6\u00f0i') + '</strong>' + (item.chapter ? ' / ' + chapterLabel.compact(item.chapter) : '') + (item.section ? ' / ' + item.section : '') + '</td><td class="views-col">' + anFormatNumber(item.views) + '</td><td class="progress-col"><div class="mini-progress"><div class="mini-progress-bar" style="width:' + pct + '%"></div></div></td></tr>';
       }).join('');
     }
 
@@ -1332,7 +1333,7 @@
     function anGetEventDesc(ev) {
       var parts = [];
       if (ev.book) parts.push(ev.book);
-      if (ev.chapter) parts.push('K' + ev.chapter);
+      if (ev.chapter) parts.push(chapterLabel.compact(ev.chapter));
       if (ev.section) parts.push(ev.section);
       var loc = parts.join(' / ');
       switch(ev.eventType) {

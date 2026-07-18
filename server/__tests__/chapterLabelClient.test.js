@@ -77,3 +77,23 @@ describe('adoption — my-work.html', () => {
     expect((src.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(6);
   });
 });
+
+describe('adoption — admin.html + assignments', () => {
+  it('admin.html includes the helper and uses it at all five sites', () => {
+    const src = read('views/admin.html');
+    expect(src).toMatch(/src="\/js\/chapter-label\.js"/);
+    expect(src).not.toMatch(/Kafli ' \+/);
+    expect(src).not.toMatch(/K' \+ ev\.chapter/);
+    expect(src).not.toMatch(/K' \+ item\.chapter/);
+    expect(src).not.toMatch(/">K' \+/);
+    expect((src.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(5);
+  });
+
+  it('assignments.js + its view', () => {
+    const js = read('public/js/assignments.js');
+    expect(js).not.toMatch(/Kafli ' \+/);
+    expect(js).not.toMatch(/K' \+/);
+    expect((js.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(2);
+    expect(read('views/assignments.html')).toMatch(/src="\/js\/chapter-label\.js"/);
+  });
+});
