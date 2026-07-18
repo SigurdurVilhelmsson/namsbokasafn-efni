@@ -2059,7 +2059,9 @@
 
     function formatDate(dateStr) {
       if (!dateStr) return '';
-      return new Date(dateStr).toLocaleDateString('is-IS');
+      var date = new Date(String(dateStr).replace(' ', 'T') + 'Z');
+      if (isNaN(date.getTime())) return '';
+      return date.toLocaleDateString('is-IS');
     }
 
     function formatTimeAgo(dateStr) {
