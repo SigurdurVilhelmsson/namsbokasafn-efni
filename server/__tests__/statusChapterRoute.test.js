@@ -1,7 +1,11 @@
 /**
  * GET /api/status/:book/:chapter accepts the appendices chapter (item 14).
  * Harness idiom: handler extracted from the router stack, invoked with fake
- * req/res (cf. locApproveConflict.test.js).
+ * req/res (cf. locApproveConflict.test.js) — this BYPASSES the
+ * router.param('book') guard (routes/status.js) that 400s unregistered
+ * books on the real route. Assertions below pin HANDLER-LEVEL
+ * chapter-normalization behavior only; they do not exercise, and must not
+ * be read as describing, full-route book validation.
  */
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
@@ -99,15 +103,21 @@ afterAll(() => {
 });
 
 describe('GET /api/status/:book/:chapter appendices acceptance', () => {
-  // NOTE (deviation from the brief, see task-4-report.md): getStatusDataFromDb
-  // never throws for a book/chapter absent from chapter_pipeline_status — the
-  // underlying SELECT just returns zero rows and the route builds a default
-  // "not started" status, so a nonexistent book resolves 200, not 404, for
-  // ANY chapter (verified empirically both pre- and post-fix). The brief's
-  // 404 expectation was a mispredicted assumption; asserting on it would
-  // require inventing 404 behavior the brief's own edit instructions never
-  // call for. Asserting `chapterDir` instead exercises the brief's actual
-  // stated "Produces" contract and still fails pre-fix (400).
+  // NOTE (deviation from the brief, see task-4-report.md): at the HANDLER
+  // level exercised by this harness (which bypasses the router.param('book')
+  // guard — see file header), getStatusDataFromDb never throws for a
+  // book/chapter absent from chapter_pipeline_status — the underlying SELECT
+  // just returns zero rows and the route builds a default "not started"
+  // status, so calling the handler directly with an unregistered book
+  // resolves 200, not 404, for ANY chapter (verified empirically both
+  // pre- and post-fix). This is NOT what the real route does: in production
+  // router.param('book') 400s an unregistered book before this handler ever
+  // runs, so a real request for 'nosuch-book' never reaches the 200 path
+  // asserted below. The brief's 404 expectation was a mispredicted
+  // assumption; asserting on it would require inventing 404 behavior the
+  // brief's own edit instructions never call for. Asserting `chapterDir`
+  // instead exercises the brief's actual stated "Produces" contract and
+  // still fails pre-fix (400).
   it('accepts "appendices" — 200 with chapterDir "appendices", NOT 400', async () => {
     const r = await invoke(handler, { params: { book: 'nosuch-book', chapter: 'appendices' } });
     expect(r.status).toBe(200);

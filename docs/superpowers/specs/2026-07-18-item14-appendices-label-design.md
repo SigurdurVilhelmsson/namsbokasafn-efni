@@ -175,7 +175,12 @@ no code in this PR.
   `bookRegistration.scanAndUpdateStatus:1020`, `generate-glossary.js:139`,
   `terminologyService.importFromKeyTerms:922`,
   `publicationService.checkTrackReadiness:54`, `exercise-extract.js:99`,
-  `audit-equation-notation.js:66`.
+  `audit-equation-notation.js:66`. **Panel consequence (final-review F1):** with
+  the panel now accepting Viðaukar, the inject/run extraction-prerequisite
+  check 409s with a factually wrong "Extraction has not been run" confirmation
+  every time (no automated path ever writes an appendices extraction row);
+  confirm-through completes the action. Clears when R3 lands, or via a
+  one-time manual stage seed (`POST /api/pipeline-status/{book}/-1/advance`).
 - **I14-R4 `[fix]`** — the DB section registry never contains appendices
   (`bookRegistration.registerBook:199` iterates `bookData.chapters` only;
   appendices ride a separate array) → sections/suggestions/localization review
@@ -194,7 +199,9 @@ no code in this PR.
   status dashboard → appendix chapter shows real counts; deep-link "Opna ritil"
   from an appendix row lands with Viðaukar selected; pipeline panel
   inject/render on Viðaukar runs; concordance hit from an appendix row renders
-  "Viðaukar" and its provenance link loads.
+  "Viðaukar" and its provenance link loads. NOTE: inject/run on Viðaukar will
+  show the false "Extraction has not been run" confirm dialog (see I14-R3
+  panel consequence) — confirm through; it is not a branch failure.
 - **I14-R9 `[ux]`** — "Kafli -1" display labels in `my-work.html:1380` (+5
   sites) and `books.html:1786/2325` chapter surfaces; item 16 (Batch 7
   dashboard/view contract repair) territory.
