@@ -21,6 +21,7 @@ const greynirEngine = require('./greynirEngine');
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const resolveDbPath = require('../lib/dbPath');
 const DB_PATH = resolveDbPath();
+const { isNewer, pickLatest } = require('../lib/editRecency');
 
 let db;
 function getDb() {
@@ -242,9 +243,13 @@ function getModuleEdits(book, moduleId, statusFilter) {
 }
 
 /**
- * Build the module's "to-be-published" segments: faithful/MT baseline with the
- * latest live edit per segment (rejected and superseded rows are skipped)
- * overlaid (what apply would write).
+ * Build the module's effective segments: faithful/MT baseline with the newest
+ * live edit per segment overlaid (rejected and superseded rows are skipped).
+ * "Newest" is the canonical (created_at, id) rule shared with
+ * applyApprovedEdits — see lib/editRecency. NOTE: pending/discuss edits are
+ * deliberately included (spellcheck/terminology consumers need draft state),
+ * so this is "the draft state once everything live is approved", NOT literally
+ * what apply would write today.
  *
  * @returns {Array<{segmentId, enContent, isContent}>}
  */
@@ -254,7 +259,7 @@ function buildEffectiveSegments(book, chapter, moduleId) {
   for (const e of getModuleEdits(book, moduleId)) {
     if (e.status === 'rejected' || e.status === 'superseded') continue;
     const cur = latestBySeg[e.segment_id];
-    if (!cur || e.id > cur.id) latestBySeg[e.segment_id] = e;
+    if (!cur || isNewer(e, cur)) latestBySeg[e.segment_id] = e;
   }
   return data.segments.map((s) => ({
     segmentId: s.segmentId,
@@ -386,6 +391,23 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   // published segment (edit-again) and approves it. The editor→head-editor
   // separation still holds for the normal flow, where editors can't approve at all.
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
+
+  // Item 13 guard: approving an edit a newer APPROVED edit already outranks
+  // is a meaningless act — convergent apply would supersede it immediately.
+  // Tell the head-editor now instead of silently flipping it later. A newer
+  // PENDING/discuss edit does NOT block (normal review freedom).
+  const newerApproved = conn
+    .prepare(
+      `SELECT id, created_at FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'approved'`
+    )
+    .all(edit.book, edit.module_id, edit.segment_id)
+    .some((e) => isNewer(e, edit));
+  if (newerApproved) {
+    const err = new Error('Nýrri samþykkt breyting er þegar til á þessum bút.');
+    err.code = 'SUPERSEDED_BY_NEWER';
+    throw err;
+  }
 
   conn
     .prepare(
@@ -778,8 +800,16 @@ const MAX_APPLY_RETRIES = 1;
 
 /**
  * Apply all approved (and not yet applied) edits for a module to the
- * 03-faithful-translation/ segment file. Starts from MT output as the base text
- * and overlays every approved edit.
+ * 03-faithful-translation/ segment file. Starts from the current baseline
+ * (faithful file if present, else MT output) and overlays each segment's
+ * newest approved edit that has not yet been applied.
+ *
+ * Contract (final review, 2026-07-17): already-applied content is the file's
+ * own; deliberate file-side changes (a "Saga útgáfa" restore, a manual
+ * faithful-file fix) must stick — apply only imposes newly-approved work.
+ * Winner selection still spans ALL approved rows so a late older approval is
+ * superseded rather than published (I12-R5), but the FILE overlay writes only
+ * the winners whose applied_at is still null.
  *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
@@ -794,13 +824,13 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     typeof options.appliedBy === 'string' && options.appliedBy ? options.appliedBy : null;
   const conn = getDb();
 
-  // Pre-check: any approved edits at all?
+  // Pre-check: any approved edits at all? (ordering is dead weight now that
+  // winners are chosen by pickLatest inside the transaction — this query is
+  // only ever used for its .length)
   const approvedEdits = conn
     .prepare(
-      `SELECT id, segment_id, edited_content
-       FROM segment_edits
-       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
-       ORDER BY reviewed_at DESC, id DESC`
+      `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL`
     )
     .all(book, moduleId);
 
@@ -860,31 +890,48 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
   // Use IMMEDIATE transaction to hold write lock for the entire apply cycle.
   // This prevents concurrent apply calls from reading the same edits.
   const applyTransaction = conn.transaction(() => {
-    // Re-query inside the transaction to ensure consistency
-    const edits = conn
+    // Re-query inside the transaction to ensure consistency. Unapplied rows
+    // gate the run; winners are then chosen across ALL approved rows —
+    // applied or not — so a late approval of an older edit can never regress
+    // a segment whose newer approved content already published (I12-R5).
+    const unapplied = conn
       .prepare(
-        `SELECT id, segment_id, edited_content
-         FROM segment_edits
-         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
-         ORDER BY reviewed_at DESC, id DESC`
+        `SELECT id FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL`
       )
       .all(book, moduleId);
 
-    if (edits.length === 0) {
+    if (unapplied.length === 0) {
       throw new Error('Edits were applied by a concurrent request');
     }
 
     // 1. Load module data
     const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
 
-    // 2. Build approved-content lookup (latest approved edit per segment wins)
+    const allApproved = conn
+      .prepare(
+        `SELECT id, segment_id, edited_content, created_at, applied_at
+         FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved'`
+      )
+      .all(book, moduleId);
+
+    // 2. Winner per segment = canonical newest (created_at, id) — the same
+    // rule buildEffectiveSegments uses. Unapplied losers are superseded;
+    // already-applied losers stay as resolved history (unchanged behavior).
+    const bySegment = {};
+    for (const edit of allApproved) {
+      (bySegment[edit.segment_id] = bySegment[edit.segment_id] || []).push(edit);
+    }
     const approvedLookup = {};
     const supersededIds = [];
-    for (const edit of edits) {
-      if (!approvedLookup[edit.segment_id]) {
-        approvedLookup[edit.segment_id] = edit;
-      } else {
-        supersededIds.push(edit.id);
+    for (const [segId, list] of Object.entries(bySegment)) {
+      const winner = pickLatest(list);
+      approvedLookup[segId] = winner;
+      for (const edit of list) {
+        if (edit.id !== winner.id && edit.applied_at === null) {
+          supersededIds.push(edit.id);
+        }
       }
     }
 
@@ -899,12 +946,22 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       }
     }
 
-    // 4. Build the full segment list: approved content overrides existing IS content
+    // 4. Build the full segment list. Overlay ONLY winners that are not yet
+    // applied (the newly-approved work this apply publishes). Already-applied
+    // content is the file's own: deliberate file-side changes (a "Saga útgáfa"
+    // restore via contentVersionService.restoreVersion, or a manual faithful-file
+    // fix) rewrite the file WITHOUT touching segment_edits and have no
+    // neutralization path (unapproveEdit refuses applied edits), so re-imposing
+    // an already-applied winner would silently revert them on every subsequent
+    // apply. Apply only imposes newly-approved work; already-applied segments
+    // keep seg.is (the current file baseline). (Winner selection still spans ALL
+    // approved rows above — that's what supersedes an older late approval, I12-R5.)
     const segments = data.segments.map((seg) => {
-      const approved = approvedLookup[seg.segmentId];
+      const winner = approvedLookup[seg.segmentId];
+      const overlay = winner && winner.applied_at === null;
       return {
         segmentId: seg.segmentId,
-        content: approved ? approved.edited_content : seg.is,
+        content: overlay ? winner.edited_content : seg.is,
       };
     });
 
@@ -938,12 +995,15 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       throw new Error(`Failed to write faithful file: ${savedPath}`);
     }
     const written = fs.readFileSync(savedPath, 'utf-8');
-    const appliedCount = Object.keys(approvedLookup).length;
     if (written.length === 0) {
       throw new Error(`Faithful file written but empty: ${savedPath}`);
     }
-    // Verify at least one approved edit's content appears in the file
-    const sampleEdit = Object.values(approvedLookup)[0];
+    // Verify at least one NEWLY-APPLIED edit's content appears in the file.
+    // Sample only from newly-applied winners — an apply that overlays nothing
+    // (every winner already applied; the run just rewrote identical baseline
+    // content, or the file was restored out-of-band) has no content to look
+    // for, so skip the check rather than false-warn on a restored segment.
+    const sampleEdit = Object.values(approvedLookup).find((e) => e.applied_at === null);
     const sampleText = sampleEdit?.edited_content || '';
     if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
       log.warn(
@@ -952,8 +1012,13 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       );
     }
 
-    // 6. Mark winning edits as applied; mark losing approved edits as superseded
-    const winnerIds = Object.values(approvedLookup).map((e) => e.id);
+    // 6. Mark winning edits as applied; mark losing approved edits as superseded.
+    // Only stamp winners not already applied — appliedCount reports what THIS
+    // apply newly published.
+    const winnerIds = Object.values(approvedLookup)
+      .filter((e) => e.applied_at === null)
+      .map((e) => e.id);
+    const appliedCount = winnerIds.length;
     const markApplied = conn.prepare(
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
@@ -971,7 +1036,7 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     return {
       appliedCount,
       supersededCount: supersededIds.length,
-      totalEditsMarked: edits.length,
+      totalEditsMarked: winnerIds.length + supersededIds.length,
       savedPath,
     };
   });

@@ -162,7 +162,8 @@ router.post(
         description: `${req.user.username} samþykkti staðfærslu á ${edit.module_id}:${edit.segment_id}`,
       });
     } catch (err) {
-      const status = err.message.includes('not found') ? 404 : 400;
+      const status =
+        err.code === 'PENDING_EXISTS' ? 409 : err.message.includes('not found') ? 404 : 400;
       res.status(status).json({ error: err.message });
     }
   }

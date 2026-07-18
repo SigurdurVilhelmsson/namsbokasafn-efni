@@ -406,7 +406,7 @@ test.describe('Editor lifecycle', () => {
     // Navigate to editor and immediately kill the saveRetry queue
     await page.goto('/editor');
     await page.evaluate(() => {
-      localStorage.removeItem('save-retry-queue');
+      localStorage.removeItem('saveRetryQueue');
       for (let i = localStorage.length - 1; i >= 0; i--) {
         const key = localStorage.key(i);
         if (key && key.startsWith('seg-draft:')) localStorage.removeItem(key);

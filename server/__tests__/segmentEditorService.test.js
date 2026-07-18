@@ -947,6 +947,42 @@ describe('applyApprovedEdits — integration', () => {
     expect(service.getEditById(id2).applied_at).toBeTruthy();
   });
 
+  it('preview winner: in-place re-save (older id, newer created_at) wins (item 13)', () => {
+    // editor-1 saves first (row id A), editor-2 saves second (row id B > A),
+    // then editor-1's row is refreshed in place — newest CONTENT, lowest id.
+    const a = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Útgáfa A v1',
+      editorId: 'editor-1',
+      editorUsername: 'editor1',
+    });
+    const b = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Útgáfa B',
+      editorId: 'editor-2',
+      editorUsername: 'editor2',
+    });
+    // Deterministic cross-second timestamps (CURRENT_TIMESTAMP is 1s-granular).
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      b.id
+    );
+    db.prepare(
+      `UPDATE segment_edits SET created_at = '2026-07-17 10:00:05', edited_content = 'Útgáfa A v2' WHERE id = ?`
+    ).run(a.id);
+
+    const segs = service.buildEffectiveSegments('testbook', 1, 'm00001');
+    const seg = segs.find((s) => s.segmentId === 'm00001:para:fs-id001');
+    expect(seg.isContent).toBe('Útgáfa A v2');
+  });
+
   function maxVersion() {
     return (
       db
@@ -1055,6 +1091,290 @@ describe('applyApprovedEdits — integration', () => {
     const segments = segmentParser.parseSegments(content);
     const seg1 = segments.find((s) => s.segmentId === 'm00001:para:fs-id001');
     expect(seg1.content).toBe('Yfirfarið efnisgrein.');
+  });
+
+  /**
+   * Parses the module's current faithful file into a segmentId -> content map.
+   * Same parse this describe block already uses (segmentParser.parseSegments
+   * over the file at result.savedPath) — the path is deterministic for this
+   * describe block's fixed book/chapter/module, so no result handle is needed.
+   */
+  function readFaithful() {
+    const faithfulPath = join(
+      tmpDir,
+      'books',
+      'testbook',
+      '03-faithful-translation',
+      'ch01',
+      'm00001-segments.is.md'
+    );
+    const segments = segmentParser.parseSegments(readFileSync(faithfulPath, 'utf-8'));
+    const map = {};
+    for (const seg of segments) map[seg.segmentId] = seg.content;
+    return map;
+  }
+
+  it('approval-order inversion cannot regress published content (I12-R5)', () => {
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri breyting',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const newer = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri breyting',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      older.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      newer.id
+    );
+
+    // Approve the NEWER first and apply it (publishes 'Nýrri breyting').
+    service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // Now try to approve the OLDER — pre-Task-8 this succeeded and the
+    // regression was caught only later, at apply time, by convergent apply.
+    // Task 8's approve-time guard now catches it immediately instead, for
+    // the "newer edit already approved AND applied" branch of its "applied
+    // or not" semantics (the plain "approved but not yet applied" branch is
+    // covered by the 'apply is convergent' test above).
+    let err;
+    try {
+      service.approveEdit(older.id, 'he-1', 'yfirlesari', null);
+    } catch (e) {
+      err = e;
+    }
+    expect(err).toBeTruthy();
+    expect(err.code).toBe('SUPERSEDED_BY_NEWER');
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Nýrri breyting');
+    expect(service.getEditById(older.id).status).toBe('pending'); // untouched
+    expect(service.getEditById(newer.id).status).toBe('approved');
+  });
+
+  it('apply-time convergence: a legacy approved-unapplied older row cannot regress an applied newer winner (I12-R5 apply layer)', () => {
+    // Task 8's approve-time guard (SUPERSEDED_BY_NEWER, see the test above)
+    // now stops an older edit from ever reaching approved-unapplied once a
+    // newer edit on the same segment is already applied — so the API can no
+    // longer create the state this test forces. But applyApprovedEdits()
+    // still has its own convergence defense (winner picked across ALL
+    // approved rows, applied or not) for legacy/manual DB states — e.g. a
+    // row hand-edited in the DB, or data from before Task 8's guard existed.
+    // Force that state directly with raw SQL to keep the apply-layer branch
+    // pinned instead of letting it go untested (campaign lesson: a test
+    // whose scenario becomes invariant silently stops testing — retarget
+    // it).
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri breyting',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const newer = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri breyting',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      older.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      newer.id
+    );
+
+    // Approve and apply the NEWER edit first — it publishes on its own, via
+    // the same-batch path (appliedCount === 1). This must happen BEFORE the
+    // older row becomes approved-unapplied, or the two approvals would land
+    // in the same apply batch and miss the apply-layer branch entirely.
+    service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // Force the older row into the now-API-unreachable state: approved but
+    // never applied, sitting alongside an already-applied newer winner.
+    db.prepare(
+      `UPDATE segment_edits SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP, applied_at = NULL WHERE id = ?`
+    ).run(older.id);
+
+    const second = service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // The apply-layer defense: the older row is superseded, not applied —
+    // published content does not regress.
+    expect(second.appliedCount).toBe(0);
+    expect(second.supersededCount).toBe(1);
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Nýrri breyting');
+    const olderAfter = service.getEditById(older.id);
+    expect(olderAfter.status).toBe('superseded');
+    expect(olderAfter.applied_at).toBeTruthy();
+    expect(service.getEditById(newer.id).status).toBe('approved');
+  });
+
+  it('a restore/manual faithful-file fix is not re-clobbered by a later apply on another segment (overlay only newly-applied winners)', () => {
+    // Segment S (fs-id001): approve + apply an edit via the API — the faithful
+    // file now holds its content and the edit is applied (applied_at set).
+    saveAndApprove('m00001:para:fs-id001', 'Samþykkt S-efni.');
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Samþykkt S-efni.');
+
+    // Simulate a "Saga útgáfa" restore / manual faithful-file fix: rewrite S's
+    // content directly in the file. contentVersionService.restoreVersion (and a
+    // hand edit) rewrite the faithful file WITHOUT touching segment_edits, so
+    // S's edit stays status='approved', applied_at set — there is no
+    // neutralization path (unapproveEdit refuses applied edits).
+    const faithfulPath = join(
+      tmpDir,
+      'books',
+      'testbook',
+      '03-faithful-translation',
+      'ch01',
+      'm00001-segments.is.md'
+    );
+    const restored = segmentParser.parseSegments(readFileSync(faithfulPath, 'utf-8')).map((s) => ({
+      segmentId: s.segmentId,
+      content: s.segmentId === 'm00001:para:fs-id001' ? 'Endurheimt S-efni.' : s.content,
+    }));
+    segmentParser.saveModuleSegments('testbook', 1, 'm00001', restored);
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Endurheimt S-efni.');
+
+    // Now approve + apply a NEW edit on a DIFFERENT segment T (fs-id002).
+    saveAndApprove('m00001:para:fs-id002', 'Samþykkt T-efni.');
+    const result = service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(result.appliedCount).toBe(1); // only T's newly-applied winner counts
+
+    const faithful = readFaithful();
+    // T's newly-approved edit landed…
+    expect(faithful['m00001:para:fs-id002']).toBe('Samþykkt T-efni.');
+    // …and S's restored text is NOT re-imposed from S's already-applied winner.
+    expect(faithful['m00001:para:fs-id001']).toBe('Endurheimt S-efni.');
+  });
+
+  it('apply is convergent: preview and file agree after any approval order', () => {
+    const a = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'A-efni',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const b = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'B-efni',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      a.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      b.id
+    );
+
+    service.approveEdit(b.id, 'he-1', 'yfirlesari', null);
+    // Task 8 guard: approving the outranked older edit is refused — it could
+    // never publish. Convergence is then trivially "the newer one".
+    expect(() => service.approveEdit(a.id, 'he-1', 'yfirlesari', null)).toThrow(
+      /Nýrri samþykkt breyting/
+    );
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    const preview = service
+      .buildEffectiveSegments('testbook', 1, 'm00001')
+      .find((s) => s.segmentId === 'm00001:para:fs-id001');
+    expect(preview.isContent).toBe('B-efni');
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('B-efni');
+  });
+
+  it('approveEdit refuses (SUPERSEDED_BY_NEWER) when a newer approved edit exists', () => {
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const newer = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      older.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      newer.id
+    );
+
+    service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
+
+    let err;
+    try {
+      service.approveEdit(older.id, 'he-1', 'yfirlesari', null);
+    } catch (e) {
+      err = e;
+    }
+    expect(err).toBeTruthy();
+    expect(err.code).toBe('SUPERSEDED_BY_NEWER');
+    expect(service.getEditById(older.id).status).toBe('pending'); // untouched
+  });
+
+  it('approveEdit is NOT blocked by a newer pending edit (review freedom)', () => {
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri (enn í bið)',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    expect(() => service.approveEdit(older.id, 'he-1', 'yfirlesari', null)).not.toThrow();
   });
 
   describe("apply-time supersede uses 'superseded' (was mislabelled 'rejected')", () => {

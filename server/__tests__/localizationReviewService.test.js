@@ -26,6 +26,7 @@ const Database = require('better-sqlite3');
 const review = require('../services/localizationReviewService');
 const segmentParser = require('../services/segmentParser');
 const migration = require('../migrations/034-localization-review');
+const migration041 = require('../migrations/041-localization-pending-per-editor');
 
 const originalBooksDir = segmentParser.BOOKS_DIR;
 
@@ -66,6 +67,7 @@ describe('localizationReviewService', () => {
     db = new Database(':memory:');
     db.pragma('journal_mode = WAL');
     migration.up(db); // build localization_pending_edits + book_settings
+    migration041.up(db); // canonical schema: per-editor pendings + 'superseded'
     review._setTestDb(db);
 
     tmpDir = mkdtempSync(join(tmpdir(), 'locreview-test-'));
@@ -290,5 +292,142 @@ describe('localizationReviewService', () => {
     expect(queue).toHaveLength(1);
     expect(queue[0].module_id).toBe(MODULE);
     expect(queue[0].pending_edits).toBe(2);
+  });
+
+  it('cross-editor submit preserves both pending rows (finding 7)', () => {
+    review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Útgáfa ritstjóra A',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    const second = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Útgáfa ritstjóra B',
+      editorId: 5,
+      editorUsername: 'editorB',
+    });
+
+    expect(second.updated).toBe(false); // B got their OWN row, not A's
+    const pending = review.getPendingByModule(BOOK, MODULE);
+    expect(pending).toHaveLength(2);
+    const byEditor = Object.fromEntries(pending.map((p) => [p.editor_username, p]));
+    expect(byEditor.editorA.edited_content).toBe('Útgáfa ritstjóra A');
+    expect(byEditor.editorB.edited_content).toBe('Útgáfa ritstjóra B');
+  });
+
+  it('same-editor re-submit still updates in place after per-editor scoping', () => {
+    const first = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'v1',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    const second = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'v2',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    expect(second.id).toBe(first.id);
+    expect(second.updated).toBe(true);
+    expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(1);
+  });
+
+  it('approve refuses (PENDING_EXISTS) when a newer pending exists on the segment', () => {
+    const older = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Eldri útgáfa',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    const newer = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Nýrri útgáfa',
+      editorId: 5,
+      editorUsername: 'editorB',
+    });
+    // Force a deterministic cross-second recency inversion-proof ordering
+    // (CURRENT_TIMESTAMP is 1s-granular; same trick as the F15 test).
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`
+    ).run(older.id);
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`
+    ).run(newer.id);
+
+    let err;
+    try {
+      review.approveAndApply(older.id, 2, 'headX', null);
+    } catch (e) {
+      err = e;
+    }
+    expect(err).toBeTruthy();
+    expect(err.code).toBe('PENDING_EXISTS');
+    // Nothing changed: both rows still pending, no file write for this segment.
+    expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(2);
+  });
+
+  it('approving the newest pending supersedes older pendings on the segment', () => {
+    const older = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Eldri útgáfa',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    const newer = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Nýrri útgáfa',
+      editorId: 5,
+      editorUsername: 'editorB',
+    });
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`
+    ).run(older.id);
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`
+    ).run(newer.id);
+
+    const { edit } = review.approveAndApply(newer.id, 2, 'headX', null);
+    expect(edit.status).toBe('approved');
+    expect(readLocalized(booksDir)[SEG('fs-id001')]).toBe('Nýrri útgáfa');
+
+    const olderRow = review.getEditById(older.id);
+    expect(olderRow.status).toBe('superseded');
+    expect(olderRow.reviewer_note).toBe('Leyst úr gildi af nýrri samþykktri breytingu');
+    expect(olderRow.reviewer_username).toBe('headX');
+    expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(0);
   });
 });
