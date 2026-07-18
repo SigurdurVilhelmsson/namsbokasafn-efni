@@ -184,7 +184,7 @@ Note: the two index names collide with 031's (`CREATE INDEX IF NOT EXISTS` guard
 - [ ] **Step 4: Run to verify it passes + idempotency suite**
 
 Run: `npx vitest run server/__tests__/migration042Track.test.js server/__tests__/migrationIdempotency.test.js`
-Expected: PASS (042 is picked up by `runAllMigrations` automatically; the idempotency suite runs everything twice).
+Expected: PASS. (CORRECTED during execution: migrations are NOT auto-discovered — migrationRunner.js has a hardcoded array and startup.test.js pins the inventory count; Task 1 registers 042 there and bumps the guards 41→42.)
 
 - [ ] **Step 5: Commit**
 
