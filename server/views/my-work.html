@@ -61,90 +61,6 @@
     .alert-text { font-weight: 500; }
 
     /* ========================================
-       BLOCKED ISSUES BANNER
-       ======================================== */
-
-    .blocked-banner {
-      background: var(--error-subtle);
-      border: 2px solid var(--error);
-      border-radius: var(--radius-lg);
-      margin-bottom: var(--spacing-lg);
-      overflow: hidden;
-    }
-
-    .blocked-header {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      padding: 0.75rem var(--spacing-md);
-      background: rgba(181,74,74,0.1);
-      border-bottom: 1px solid rgba(181,74,74,0.2);
-    }
-
-    .blocked-icon { font-size: 1.25rem; }
-    .blocked-header strong { color: var(--error); }
-
-    .blocked-count {
-      background: var(--error);
-      color: white;
-      font-size: var(--text-xs);
-      font-weight: 600;
-      padding: 0.125rem var(--spacing-sm);
-      border-radius: var(--radius-full);
-      margin-left: auto;
-    }
-
-    .blocked-list { padding: var(--spacing-sm); }
-
-    .blocked-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .blocked-item:last-child { margin-bottom: 0; }
-
-    .blocked-item-main {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-xs);
-    }
-
-    .blocked-item-location {
-      font-size: var(--text-xs);
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-
-    .blocked-item-description {
-      font-size: var(--text-base);
-      color: var(--text-primary);
-    }
-
-    .btn-blocked {
-      background: var(--error);
-      color: white;
-      padding: 0.375rem 0.75rem;
-      font-size: var(--text-xs);
-      border: none;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      text-decoration: none;
-      transition: filter var(--transition-fast);
-    }
-
-    .btn-blocked:hover {
-      filter: brightness(1.1);
-      color: white;
-      text-decoration: none;
-    }
-
-    /* ========================================
        SECTION LABEL (sidebar-style)
        ======================================== */
 
@@ -952,16 +868,6 @@
         <span class="alert-text" id="alert-text"></span>
       </div>
 
-      <!-- Blocked Issues Banner -->
-      <div class="blocked-banner" id="blocked-banner" style="display: none;">
-        <div class="blocked-header">
-          <span class="blocked-icon">&#128683;</span>
-          <strong>Verk st&ouml;&#240;va&#240;</strong>
-          <span class="blocked-count" id="blocked-count">0</span>
-        </div>
-        <div class="blocked-list" id="blocked-list"></div>
-      </div>
-
       <!-- Current Task Card -->
       <div class="current-task-section" id="current-task-section">
         <div class="section-label">N&uacute;verandi verkefni</div>
@@ -1255,11 +1161,6 @@
         }
         document.getElementById('greeting-subtitle').textContent = subtitle;
 
-        // Show blocked issues banner (highest priority)
-        if (todayData.blockedIssues && todayData.blockedIssues.length > 0) {
-          renderBlockedBanner(todayData.blockedIssues);
-        }
-
         // Show alert if needed
         if (todayData.needsAttention && todayData.needsAttention.length > 0) {
           var alertBanner = document.getElementById('alert-banner');
@@ -1469,37 +1370,6 @@
       }
 
       container.innerHTML = html;
-    }
-
-    // ========================================================================
-    // BLOCKED ISSUES BANNER
-    // ========================================================================
-
-    function renderBlockedBanner(blockedIssues) {
-      var banner = document.getElementById('blocked-banner');
-      var countEl = document.getElementById('blocked-count');
-      var listEl = document.getElementById('blocked-list');
-
-      if (!blockedIssues || blockedIssues.length === 0) {
-        banner.style.display = 'none';
-        return;
-      }
-
-      countEl.textContent = blockedIssues.length;
-
-      listEl.innerHTML = blockedIssues.map(function(issue) {
-        return '<div class="blocked-item">' +
-          '<div class="blocked-item-main">' +
-            '<span class="blocked-item-location">' +
-              escapeHtml(issue.bookLabel) + ' - Kafli ' + issue.chapter +
-            '</span>' +
-            '<span class="blocked-item-description">' + escapeHtml(issue.description) + '</span>' +
-          '</div>' +
-          '<a href="/issues?id=' + issue.id + '" class="btn-blocked">Sjá atriði</a>' +
-        '</div>';
-      }).join('');
-
-      banner.style.display = 'block';
     }
 
     // ========================================================================
@@ -1933,9 +1803,6 @@
 
     function handleAttentionItem(type, book, chapter, stage) {
       switch (type) {
-        case 'blocked':
-          window.location.href = '/issues?category=BLOCKED';
-          break;
         case 'review':
           window.location.href = '/editor?view=reviews';
           break;

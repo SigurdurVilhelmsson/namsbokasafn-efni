@@ -125,3 +125,17 @@ describe('item16 PR2 — F28: dead Tímafrestur overdue stat removed', () => {
     expect(serverFile('routes/status.js')).not.toMatch(/overdueCount/);
   });
 });
+
+describe('item16 PR2 — F29: unreachable blocked-issues banner removed', () => {
+  it('no banner code or retired /issues links remain in my-work.html', () => {
+    const src = view('my-work.html');
+    expect(src).not.toMatch(/renderBlockedBanner/);
+    expect(src).not.toMatch(/blocked-banner/);
+    expect(src).not.toMatch(/todayData\.blockedIssues/);
+    expect(src).not.toMatch(/\/issues/);
+  });
+
+  it('the live dashboard blockedIssues stat survives', () => {
+    expect(view('my-work.html')).toMatch(/attention\.blockedIssues/);
+  });
+});
