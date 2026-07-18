@@ -395,7 +395,9 @@
       }
       resultsEl.innerHTML = results
         .map((r) => {
-          const prov = `${escapeHtml(r.module_id)} · kafli ${escapeHtml(String(r.chapter))}`;
+          const provChapter =
+            Number(r.chapter) === -1 ? 'Viðaukar' : `kafli ${escapeHtml(String(r.chapter))}`;
+          const prov = `${escapeHtml(r.module_id)} · ${provChapter}`;
           const href =
             `/segment-editor?book=${encodeURIComponent(r.book)}` +
             `&chapter=${encodeURIComponent(r.chapter)}&module=${encodeURIComponent(r.module_id)}`;
@@ -750,8 +752,8 @@
     if (rep?.suggestion) {
       const s = rep.suggestion;
       const where =
-        s.chapter === 'appendices'
-          ? escapeHtml(s.module_id)
+        Number(s.chapter) === -1
+          ? `${escapeHtml(s.module_id)} (Viðaukar)`
           : `${escapeHtml(s.module_id)} (kafli ${escapeHtml(String(s.chapter))})`;
       repetitionHint = `
           <div class="repetition-hint" title="Sama setning var þegar samþykkt annars staðar">
@@ -2522,7 +2524,10 @@
 
     const params = new URLSearchParams(window.location.search);
     const book = params.get('book');
-    const chapter = params.get('chapter');
+    let chapter = params.get('chapter');
+    // Item 14: status-page deep links and old bookmarks say 'appendices';
+    // dropdown option values are canonical '-1'.
+    if (chapter === 'appendices') chapter = '-1';
     const module = params.get('module');
     const view = params.get('view');
 
