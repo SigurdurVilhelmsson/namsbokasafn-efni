@@ -40,5 +40,8 @@ describe('books.html chapter activity panel (F12)', () => {
   it('icon map keys on live ACTIVITY_TYPES vocabulary', () => {
     expect(src).toMatch(/segment_edit_saved:/);
     expect(src).toMatch(/segment_edit_approved:/);
+    expect(src).toMatch(/assign_chapter:/);
+    expect(src).not.toMatch(/assignment_created:/);
+    expect(src).not.toMatch(/assignment_completed:/);
   });
 });
