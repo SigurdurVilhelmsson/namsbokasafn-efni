@@ -80,3 +80,20 @@ describe('my-work.html personal activity feed (F26)', () => {
     expect(src).not.toMatch(/a\.created_at\b/);
   });
 });
+
+describe('my-work.html admin activity feed (F31)', () => {
+  const src = view('my-work.html');
+
+  it('icon renders when present (ternary was backwards)', () => {
+    expect(src).toMatch(/activity\.icon \|\| '●'/);
+    expect(src).not.toMatch(/activity\.icon \? '' :/);
+  });
+
+  it('color applied as a CSS class, not an inline hex-alpha style', () => {
+    expect(src).not.toMatch(/background:' \+ activity\.color \+ '20/);
+    expect(src).toMatch(/admin-activity-icon' \+ \(activity\.color \? ' ' \+/);
+    expect(src).toMatch(/\.admin-activity-icon\.success/);
+    expect(src).toMatch(/\.admin-activity-icon\.warning/);
+    expect(src).toMatch(/\.admin-activity-icon\.info/);
+  });
+});
