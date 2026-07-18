@@ -45,3 +45,20 @@ describe('books.html chapter activity panel (F12)', () => {
     expect(src).not.toMatch(/assignment_completed:/);
   });
 });
+
+describe('status.html pipeline badges (F11)', () => {
+  const src = view('status.html');
+
+  it('converts the top-level stages array instead of reading data.status', () => {
+    expect(src).not.toMatch(/data\.status\s*&&\s*data\.status\.stages/);
+    expect(src).toMatch(/data\.stages \|\| \[\]/);
+  });
+});
+
+describe('books.html dead cvLoadStatus removed (F11 rider)', () => {
+  it('the object-shaped misread is gone', () => {
+    const src = view('books.html');
+    expect(src).not.toMatch(/function cvLoadStatus\(/);
+    expect(src).not.toMatch(/cvLoadStatus\(/);
+  });
+});

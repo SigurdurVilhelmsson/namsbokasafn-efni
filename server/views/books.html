@@ -2331,7 +2331,6 @@
           cvLoadSections(book, chapter),
           cvLoadIssues(book, chapter),
           cvLoadActivity(book, chapter),
-          cvLoadStatus(book, chapter),
         ]);
       }
 
@@ -2511,18 +2510,6 @@
         } catch (err) {
           console.error('Error loading activity:', err);
           panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
-        }
-      }
-
-      async function cvLoadStatus(book, chapter) {
-        try {
-          var data = await fetchJson('/api/status/' + book + '/' + chapter);
-
-          var stages = data.stages || {};
-          var linguisticReview = stages.linguisticReview || {};
-          var tmCreated = stages.tmCreated || {};
-        } catch (err) {
-          console.error('Error loading chapter status:', err);
         }
       }
 
