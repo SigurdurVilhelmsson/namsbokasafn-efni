@@ -71,6 +71,7 @@ function runAllMigrations() {
     require('../migrations/039-segment-edit-exit-path'),
     require('../migrations/040-service-table-ownership'),
     require('../migrations/041-localization-pending-per-editor'),
+    require('../migrations/042-content-versions-track'),
   ];
 
   let applied = 0;

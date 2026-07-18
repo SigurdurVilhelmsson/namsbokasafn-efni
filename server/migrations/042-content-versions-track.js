@@ -23,7 +23,7 @@ module.exports = {
       .get();
 
     if (!tableInfo) return;
-    if (/\btrack\b/.test(tableInfo.sql)) return; // already rebuilt
+    if (tableInfo.sql.includes("'localized'")) return; // already rebuilt
 
     const rebuild = db.transaction(() => {
       db.exec(`
