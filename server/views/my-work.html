@@ -1897,7 +1897,7 @@
       var renderActivityItem = function(activity) {
         return '<div class="admin-activity-item">' +
           '<div class="admin-activity-icon' + (activity.color ? ' ' + escapeHtml(activity.color) : '') + '">' +
-            (activity.icon || '●') +
+            escapeHtml(activity.icon || '●') +
           '</div>' +
           '<div class="admin-activity-content">' +
             '<div class="admin-activity-text">' +
