@@ -24,6 +24,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireHeadEditorFor, ROLES } = require('../middleware/requireRole');
 const { VALID_BOOKS } = require('../config');
 const { VALID_TRACKS, MAX_CHAPTERS } = require('../constants');
+const { normalizeChapter } = require('../lib/chapterLabel');
 
 // All pipeline operations require HEAD_EDITOR
 router.use(requireAuth, requireRole(ROLES.HEAD_EDITOR));
@@ -39,8 +40,8 @@ function validateParams(req, res) {
     return null;
   }
 
-  const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > MAX_CHAPTERS) {
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null || (chapterNum !== -1 && (chapterNum < 1 || chapterNum > MAX_CHAPTERS))) {
     res.status(400).json({ error: 'Invalid chapter number' });
     return null;
   }
@@ -241,5 +242,8 @@ router.get('/jobs/:jobId', (req, res) => {
 
   res.json({ job });
 });
+
+/** @internal Test-only: expose validateParams for the acceptance-matrix test */
+router._validateParams = validateParams;
 
 module.exports = router;

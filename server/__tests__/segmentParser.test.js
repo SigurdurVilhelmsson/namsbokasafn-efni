@@ -2,8 +2,11 @@
  * Tests for Segment Parser Service
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 
 const require = createRequire(import.meta.url);
 const {
@@ -297,5 +300,63 @@ A title.`;
       expect(reparsed[i].segmentId).toBe(segments[i].segmentId);
       expect(reparsed[i].content).toBe(segments[i].content);
     }
+  });
+});
+
+const segmentParser = require('../services/segmentParser');
+const chapterLabelLib = require('../lib/chapterLabel');
+
+describe('chapterDir re-export (item 14 contract)', () => {
+  it('is reference-identical to lib/chapterLabel.chapterDir (protects backfill-mt-locks.js)', () => {
+    expect(segmentParser.chapterDir).toBe(chapterLabelLib.chapterDir);
+  });
+});
+
+describe('countModuleSegments appendices dialects (item 14, finding 17a)', () => {
+  let tmpRoot;
+  let realBooksDir;
+
+  beforeEach(() => {
+    realBooksDir = segmentParser.BOOKS_DIR;
+    tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'segcount-'));
+    const booksDir = path.join(tmpRoot, 'books');
+    const write = (chDir, moduleId, nSegs) => {
+      const dir = path.join(booksDir, 'testbook', '02-for-mt', chDir);
+      fs.mkdirSync(dir, { recursive: true });
+      const body = Array.from(
+        { length: nSegs },
+        (_, i) => `<!-- SEG:${moduleId}:para:fs-id00${i + 1} -->\nText ${i + 1}.\n`
+      ).join('\n');
+      fs.writeFileSync(path.join(dir, `${moduleId}-segments.en.md`), body);
+    };
+    write('appendices', 'm99901', 2);
+    write('ch03', 'm99902', 1);
+    segmentParser._setTestBooksDir(booksDir);
+  });
+
+  afterEach(() => {
+    segmentParser._setTestBooksDir(realBooksDir);
+    fs.rmSync(tmpRoot, { recursive: true, force: true });
+  });
+
+  it('counts appendix segments identically for -1, "-1", and "appendices"', () => {
+    expect(segmentParser.countModuleSegments('testbook', -1, 'm99901')).toBe(2);
+    expect(segmentParser.countModuleSegments('testbook', '-1', 'm99901')).toBe(2);
+    expect(segmentParser.countModuleSegments('testbook', 'appendices', 'm99901')).toBe(2);
+  });
+
+  it('counts regular chapters for number and string forms', () => {
+    expect(segmentParser.countModuleSegments('testbook', 3, 'm99902')).toBe(1);
+    expect(segmentParser.countModuleSegments('testbook', '3', 'm99902')).toBe(1);
+  });
+
+  it('returns 0 for a valid chapter whose file is missing (dashboard semantics)', () => {
+    expect(segmentParser.countModuleSegments('testbook', 5, 'm99999')).toBe(0);
+  });
+
+  it('throws TypeError on unrecognizable chapter (no silent zero)', () => {
+    expect(() => segmentParser.countModuleSegments('testbook', 'chappendices', 'm99901')).toThrow(
+      TypeError
+    );
   });
 });

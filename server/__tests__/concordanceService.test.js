@@ -193,4 +193,46 @@ describe('concordanceService', () => {
       expect(row.distinctTranslations).toBe(2);
     });
   });
+
+  describe('appendices label unification (item 14, finding 17b)', () => {
+    it('backfill indexes an appendices module (was silently skipped)', () => {
+      writeModule('bok', 'appendices', 'm99903', [
+        ['para', 'fs-a1', 'Periodic table.', 'Lotukerfið.'],
+      ]);
+      const r = concordance.backfill('bok');
+      expect(r.indexed).toBe(1);
+    });
+
+    it('stores the canonical "-1" chapter label from the backfill path', () => {
+      writeModule('bok', 'appendices', 'm99903', [
+        ['para', 'fs-a1', 'Periodic table.', 'Lotukerfið.'],
+      ]);
+      concordance.backfill('bok');
+      const row = db.prepare(`SELECT chapter FROM tm_segments WHERE module_id = 'm99903'`).get();
+      expect(row.chapter).toBe('-1');
+    });
+
+    it('stores "-1" from the apply-path form too (indexModule with -1)', () => {
+      writeModule('bok', 'appendices', 'm99904', [
+        ['para', 'fs-a2', 'Units appendix.', 'Einingaviðauki.'],
+      ]);
+      concordance.indexModule('bok', -1, 'm99904');
+      const row = db.prepare(`SELECT chapter FROM tm_segments WHERE module_id = 'm99904'`).get();
+      expect(row.chapter).toBe('-1');
+    });
+
+    it('repetitionReport finds appendix rows when filtered by -1', () => {
+      writeModule('bok', 'appendices', 'm99905', [
+        ['para', 'fs-a3', 'Same sentence.', 'Sama setning.'],
+        ['para', 'fs-a4', 'Same sentence.', 'Sama setning.'],
+      ]);
+      concordance.indexModule('bok', -1, 'm99905');
+      const report = concordance.repetitionReport('bok', -1, { limit: 10 });
+      expect(report.length).toBeGreaterThan(0);
+    });
+
+    it('indexModule throws on unrecognizable chapter', () => {
+      expect(() => concordance.indexModule('bok', 'chappendices', 'm99903')).toThrow(TypeError);
+    });
+  });
 });

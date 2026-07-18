@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { parseSegmentRecords } = require('../../tools/lib/seg-markers.cjs');
+const { normalizeChapter, chapterDir } = require('../lib/chapterLabel');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 let BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
@@ -126,17 +127,6 @@ function assembleSegments(segments) {
       return `<!-- SEG:${moduleId}:${segmentType}:${elementId} -->\n${seg.content}`;
     })
     .join('\n\n');
-}
-
-/**
- * Convert a chapter number to its directory name.
- * Chapter -1 is the appendices directory; all others are chNN.
- *
- * @param {number} chapter - Chapter number (-1 for appendices)
- * @returns {string} Directory name (e.g. 'ch01', 'appendices')
- */
-function chapterDir(chapter) {
-  return chapter === -1 ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
 }
 
 /**
@@ -501,7 +491,11 @@ function listChapterModules(book, chapter) {
  * @returns {number} Number of segments in the EN source file
  */
 function countModuleSegments(book, chapter, moduleId) {
-  const chDir = chapterDir(parseInt(chapter, 10) || chapter);
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null) {
+    throw new TypeError(`countModuleSegments: unrecognizable chapter ${JSON.stringify(chapter)}`);
+  }
+  const chDir = chapterDir(chapterNum);
   const enPath = path.join(BOOKS_DIR, book, '02-for-mt', chDir, `${moduleId}-segments.en.md`);
 
   if (!fs.existsSync(enPath)) return 0;
