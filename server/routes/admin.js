@@ -24,6 +24,7 @@ const {
   ROLES,
 } = require('../middleware/requireRole');
 const { refreshValidBooks, VALID_BOOKS } = require('../config');
+const chapterLabel = require('../lib/chapterLabel');
 const activityLog = require('../services/activityLog');
 const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
@@ -1064,8 +1065,10 @@ router.post('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({ error: `Invalid book: ${book}` });
   }
-  const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 0 || chapterNum > 30) {
+  // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
+  // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
+  const chapterNum = chapterLabel.normalizeChapter(chapter);
+  if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
     return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
   }
   if (!userId || typeof userId !== 'number') {
@@ -1099,8 +1102,10 @@ router.delete('/assignments/:book/:chapter', requireAuth, requireHeadEditor('boo
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({ error: `Invalid book: ${book}` });
   }
-  const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 0 || chapterNum > 30) {
+  // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
+  // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
+  const chapterNum = chapterLabel.normalizeChapter(chapter);
+  if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
     return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
   }
 

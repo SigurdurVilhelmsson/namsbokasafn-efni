@@ -357,18 +357,31 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
  * @param {string} moduleId
  * @param {Array<{segmentId: string, content: string}>} segments - new content to write
  * @param {string} [actor] - username for the snapshot's applied_by
+ * @param {{ snapshot?: boolean }} [options] - snapshot=false skips the version
+ *   snapshot but still writes (I15-R5 lead decision, mechanism c: machine
+ *   autosaves don't snapshot; explicit saves and approvals always do — a
+ *   version is a deliberate save point, not heartbeat noise)
  * @returns {{ savedPath: string }}
  */
-function saveLocalizedWithSnapshot(book, chapter, moduleId, segments, actor) {
-  try {
-    const data = segmentParser.loadModuleForLocalization(book, chapter, moduleId);
-    const current = data.segments.map((seg) => ({
-      segmentId: seg.segmentId,
-      content: TRACKS.localized.currentContent(seg),
-    }));
-    snapshotModule(book, chapter, moduleId, current, actor, getDb(), 'localized');
-  } catch (err) {
-    log.error({ err, book, moduleId }, 'Localized pre-write snapshot failed (save proceeds)');
+function saveLocalizedWithSnapshot(
+  book,
+  chapter,
+  moduleId,
+  segments,
+  actor,
+  { snapshot = true } = {}
+) {
+  if (snapshot) {
+    try {
+      const data = segmentParser.loadModuleForLocalization(book, chapter, moduleId);
+      const current = data.segments.map((seg) => ({
+        segmentId: seg.segmentId,
+        content: TRACKS.localized.currentContent(seg),
+      }));
+      snapshotModule(book, chapter, moduleId, current, actor, getDb(), 'localized');
+    } catch (err) {
+      log.error({ err, book, moduleId }, 'Localized pre-write snapshot failed (save proceeds)');
+    }
   }
   const savedPath = segmentParser.saveLocalizedSegments(book, chapter, moduleId, segments);
   return { savedPath };
