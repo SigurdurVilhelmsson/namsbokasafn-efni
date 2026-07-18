@@ -14,6 +14,7 @@ import { fileURLToPath } from 'url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const view = (name) => fs.readFileSync(path.join(here, '..', 'views', name), 'utf8');
+const serverFile = (name) => fs.readFileSync(path.join(here, '..', name), 'utf8');
 
 describe('books.html chapter activity panel (F12)', () => {
   const src = view('books.html');
@@ -109,5 +110,18 @@ describe('my-work.html admin activity feed (F31)', () => {
     expect(src).toMatch(/\.admin-activity-icon\.success/);
     expect(src).toMatch(/\.admin-activity-icon\.warning/);
     expect(src).toMatch(/\.admin-activity-icon\.info/);
+  });
+});
+
+describe('item16 PR2 — F28: dead Tímafrestur overdue stat removed', () => {
+  it('my-work.html carries no overdue-stat remnants', () => {
+    const src = view('my-work.html');
+    expect(src).not.toMatch(/Tímafrestur/);
+    expect(src).not.toMatch(/overdueCount/);
+    expect(src).not.toMatch(/overdueItems/);
+  });
+
+  it('GET /api/status/dashboard no longer initializes overdueCount', () => {
+    expect(serverFile('routes/status.js')).not.toMatch(/overdueCount/);
   });
 });

@@ -1671,7 +1671,7 @@
       try {
         var data = await fetchJson('/api/status/dashboard');
 
-        renderAttentionPanel(data.needsAttention, data.overdueItems);
+        renderAttentionPanel(data.needsAttention);
         renderWorkload(data.workload);
         renderReadyList(data.readyForAssignment);
         renderAdminActivity(data.teamActivity);
@@ -1687,23 +1687,17 @@
     // ADMIN: ATTENTION PANEL
     // ========================================================================
 
-    function renderAttentionPanel(attention, overdueItems) {
+    function renderAttentionPanel(attention) {
       var panel = document.getElementById('attention-panel');
       var statsEl = document.getElementById('attention-stats');
       var itemsEl = document.getElementById('attention-items');
 
-      var totalIssues = (attention.overdueCount || 0) + (attention.blockedIssues || 0) +
+      var totalIssues = (attention.blockedIssues || 0) +
                        (attention.unassignedWork || 0) + (attention.pendingReviews || 0);
 
       panel.className = totalIssues > 0 ? 'attention-panel has-issues' : 'attention-panel all-clear';
 
       statsEl.innerHTML =
-        '<div class="attention-stat">' +
-          '<div class="attention-stat-value ' + ((attention.overdueCount || 0) > 0 ? 'danger' : 'zero') + '">' +
-            (attention.overdueCount || 0) +
-          '</div>' +
-          '<div class="attention-stat-label">Tímafrestur</div>' +
-        '</div>' +
         '<div class="attention-stat">' +
           '<div class="attention-stat-value ' + (attention.blockedIssues > 0 ? 'danger' : 'zero') + '">' +
             attention.blockedIssues +
@@ -1737,7 +1731,6 @@
       var renderItem = function(item) {
         var iconClass = item.type;
         var icons = {
-          overdue: '\u23F0',
           blocked: '\u26D4',
           unassigned: '\uD83D\uDC64',
           review: '\uD83D\uDC41\uFE0F'
