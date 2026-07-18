@@ -114,12 +114,22 @@ function initStatements(db) {
     // conversion appends the decimal). CAST(x AS TEXT) can't reconcile "1.0"
     // with "1"; CAST(x AS INTEGER) normalizes both storage shapes (and the
     // String()-wrapped "1"/"-1" rows everywhere else) to the same integer.
+    //
+    // The GLOB numeric guard (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*')
+    // is required because CAST('' AS INTEGER) = 0 and CAST('garbage' AS
+    // INTEGER) = 0 too — without it, a chapter=0 filter would false-positive
+    // on empty-string chapter rows (real write path: segment-editor.js writes
+    // `chapter: String(edit?.chapter || '')` on failed-lookup edges), and
+    // chapter 0 (front matter) is a real, selectable chapter in this project.
+    // AND binds tighter than OR, so this groups as
+    // (numeric match AND is-numeric-string) OR (omitted-filter bypass) —
+    // verified empirically against '1.0', '-1', '0.0', '0', and '' rows.
     search: db.prepare(`
       SELECT * FROM activity_log
       WHERE (book = ? OR ? IS NULL)
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
-        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) OR ? IS NULL)
+        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) AND (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*') OR ? IS NULL)
       ORDER BY created_at DESC
       LIMIT ? OFFSET ?
     `),
@@ -128,7 +138,7 @@ function initStatements(db) {
       WHERE (book = ? OR ? IS NULL)
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
-        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) OR ? IS NULL)
+        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) AND (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*') OR ? IS NULL)
     `),
   };
 }
