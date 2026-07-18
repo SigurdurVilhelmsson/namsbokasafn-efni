@@ -22,6 +22,7 @@ const segmentParser = require('../services/segmentParser');
 const segmentValidation = require('../public/js/segment-validation');
 const localizationEditService = require('../services/localizationEditService');
 const localizationReview = require('../services/localizationReviewService');
+const contentVersionService = require('../services/contentVersionService');
 const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const {
@@ -403,11 +404,12 @@ router.post(
         return;
       }
 
-      const savedPath = segmentParser.saveLocalizedSegments(
+      const { savedPath } = contentVersionService.saveLocalizedWithSnapshot(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
-        segments
+        segments,
+        req.user.username
       );
 
       // Get updated mtime for client
@@ -613,11 +615,12 @@ router.post(
         return;
       }
 
-      const savedPath = segmentParser.saveLocalizedSegments(
+      const { savedPath } = contentVersionService.saveLocalizedWithSnapshot(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
-        allSegments
+        allSegments,
+        req.user.username
       );
 
       // Get updated mtime for client

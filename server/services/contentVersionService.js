@@ -343,6 +343,37 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
   return result;
 }
 
+/**
+ * The single localized write path (item 15): snapshot current content, then
+ * write. All writers of 04-localized-content/ MUST go through this — the
+ * snapshot lives here (not in segmentParser) because segmentParser cannot
+ * require this service (require cycle).
+ *
+ * Snapshot failure is logged loud but never blocks the save (parity with the
+ * faithful apply hook's posture).
+ *
+ * @param {string} book
+ * @param {number} chapter
+ * @param {string} moduleId
+ * @param {Array<{segmentId: string, content: string}>} segments - new content to write
+ * @param {string} [actor] - username for the snapshot's applied_by
+ * @returns {{ savedPath: string }}
+ */
+function saveLocalizedWithSnapshot(book, chapter, moduleId, segments, actor) {
+  try {
+    const data = segmentParser.loadModuleForLocalization(book, chapter, moduleId);
+    const current = data.segments.map((seg) => ({
+      segmentId: seg.segmentId,
+      content: TRACKS.localized.currentContent(seg),
+    }));
+    snapshotModule(book, chapter, moduleId, current, actor, getDb(), 'localized');
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'Localized pre-write snapshot failed (save proceeds)');
+  }
+  const savedPath = segmentParser.saveLocalizedSegments(book, chapter, moduleId, segments);
+  return { savedPath };
+}
+
 /** @internal Test helper */
 function _setTestDb(testDb) {
   _testDb = testDb;
@@ -354,5 +385,6 @@ module.exports = {
   getVersionContent,
   getSegmentHistory,
   restoreVersion,
+  saveLocalizedWithSnapshot,
   _setTestDb,
 };

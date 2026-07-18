@@ -19,6 +19,7 @@ const path = require('path');
 const fs = require('fs');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
+const contentVersionService = require('./contentVersionService');
 const resolveDbPath = require('../lib/dbPath');
 const { isNewer } = require('../lib/editRecency');
 
@@ -201,9 +202,13 @@ function getReviewQueue(book) {
 /**
  * Approve a pending localization edit and apply it to 04-localized-content/.
  *
- * Self-approval is permitted (see module header). `saveLocalizedSegments`
- * snapshots the prior file to a `.bak` before overwriting (parity with the
- * Pass 1 F10 snapshot-before-apply mitigation), so the overwrite is recoverable.
+ * Self-approval is permitted (see module header). The write goes through
+ * `contentVersionService.saveLocalizedWithSnapshot` (item 15), which records
+ * a `content_versions` (track='localized') snapshot of the pre-approval
+ * content before `saveLocalizedSegments` overwrites the file — that function
+ * additionally snapshots the prior file to a `.bak` before overwriting
+ * (parity with the Pass 1 F10 snapshot-before-apply mitigation), so the
+ * overwrite is recoverable at both layers.
  *
  * @returns {{ edit: object, savedPath: string }}
  */
@@ -245,11 +250,12 @@ function approveAndApply(editId, reviewerId, reviewerUsername, reviewerNote) {
           ? seg.localized
           : seg.faithful,
   }));
-  const savedPath = segmentParser.saveLocalizedSegments(
+  const { savedPath } = contentVersionService.saveLocalizedWithSnapshot(
     edit.book,
     edit.chapter,
     edit.module_id,
-    segments
+    segments,
+    reviewerUsername
   );
 
   // 2. Mark approved + applied, and supersede the (strictly older — the guard
