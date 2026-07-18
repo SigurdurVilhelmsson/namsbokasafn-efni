@@ -71,3 +71,12 @@ describe('status.html activity timeline (F27)', () => {
     expect(src).not.toMatch(/new Date\(a\.created_at \|\| a\.timestamp\)/);
   });
 });
+
+describe('my-work.html personal activity feed (F26)', () => {
+  const src = view('my-work.html');
+
+  it('timestamp reads the camelCase field parseRow sends', () => {
+    expect(src).toMatch(/formatTimeAgo\(a\.createdAt\)/);
+    expect(src).not.toMatch(/a\.created_at\b/);
+  });
+});
