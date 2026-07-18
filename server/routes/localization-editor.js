@@ -749,6 +749,149 @@ router.get(
   }
 );
 
+// =====================================================================
+// CONTENT VERSIONING — localized history and rollback (item 15)
+// Mirrors the faithful block in routes/segment-editor.js:1248-1345, but
+// track-parameterized to 'localized' throughout.
+// =====================================================================
+
+/**
+ * GET /:book/:chapter/:moduleId/versions
+ * List all localized content versions for a module.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/versions',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const versions = contentVersionService.getModuleVersions(
+        req.params.book,
+        req.params.moduleId,
+        'localized'
+      );
+      res.json({ versions });
+    } catch (err) {
+      log.error({ err }, 'Error loading localized versions');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/versions/:version
+ * Get localized content for a specific version (all segments).
+ */
+router.get(
+  '/:book/:chapter/:moduleId/versions/:version',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const segments = contentVersionService.getVersionContent(
+        req.params.book,
+        req.params.moduleId,
+        parseInt(req.params.version, 10),
+        'localized'
+      );
+      res.json({ segments });
+    } catch (err) {
+      log.error({ err }, 'Error loading localized version content');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/version-history/:segmentId
+ * Per-segment localized snapshot history. Distinct from
+ * GET /:segmentId/history, which serves the localization_edits audit log.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/version-history/:segmentId',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const history = contentVersionService.getSegmentHistory(
+        req.params.book,
+        req.params.moduleId,
+        req.params.segmentId,
+        'localized'
+      );
+      res.json({ history });
+    } catch (err) {
+      log.error({ err }, 'Error loading localized segment history');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// requireHeadEditor() returns an anonymous middleware function; wrap it with a
+// named function so route.stack introspection (used by this file's own
+// restore-route test, and any future authz-composition check) can assert the
+// head-editor guard is mounted without invoking it.
+const headEditorGuard = requireHeadEditor();
+function requireHeadEditorGuard(req, res, next) {
+  return headEditorGuard(req, res, next);
+}
+
+/**
+ * POST /:book/:chapter/:moduleId/restore/:version
+ * Restore a module's localized content to a previous snapshot version.
+ * Book-scoped head-editor only (admin bypasses). Requires { confirm: true }.
+ * Takes the module lock (restore is a write) and returns the fresh mtime so
+ * clients update lastModified; an editor holding a stale token 409s on their
+ * next save — restore composes with the conflict machinery, not around it.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/restore/:version',
+  requireAuth,
+  requireHeadEditorGuard,
+  validateBookChapter,
+  validateModule,
+  async (req, res) => {
+    const version = parseInt(req.params.version, 10);
+    if (!Number.isInteger(version) || version < 1) {
+      return res.status(400).json({ error: `Invalid version: ${req.params.version}` });
+    }
+    if (req.body?.confirm !== true) {
+      return res.status(400).json({
+        error: 'Confirmation required',
+        message: 'Pass { "confirm": true } to restore this module to a previous version',
+      });
+    }
+
+    const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;
+    const release = await acquireModuleLock(lockKey);
+    try {
+      const result = contentVersionService.restoreVersion(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId,
+        version,
+        { userId: req.user.id, username: req.user.username },
+        'localized'
+      );
+      const lastModified = segmentParser.getLocalizedMtime(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ success: true, ...result, lastModified });
+    } catch (err) {
+      log.error({ err }, 'Error restoring localized version');
+      const status = err.message.includes('not found') ? 404 : 500;
+      res.status(status).json({ error: err.message });
+    } finally {
+      release();
+    }
+  }
+);
+
 /**
  * POST /:book/:chapter/:moduleId/log
  * Add a manual localization log entry (for the review tab's changelog).
