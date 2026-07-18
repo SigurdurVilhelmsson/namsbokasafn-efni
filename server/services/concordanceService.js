@@ -20,6 +20,7 @@ const Database = require('better-sqlite3');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
 const resolveDbPath = require('../lib/dbPath');
+const { normalizeChapter } = require('../lib/chapterLabel');
 
 const DB_PATH = resolveDbPath();
 
@@ -93,16 +94,21 @@ function normalizeEn(text) {
  * @returns {{ indexed: number, skipped: number }}
  */
 function indexModule(book, chapter, moduleId) {
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null) {
+    throw new TypeError(`indexModule: unrecognizable chapter ${JSON.stringify(chapter)}`);
+  }
+
   const conn = getDb();
   let data;
   try {
-    data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+    data = segmentParser.loadModuleForEditing(book, chapterNum, moduleId);
   } catch (err) {
     log.warn({ err, book, moduleId }, 'Concordance index skipped — module not loadable');
     return { indexed: 0, skipped: 0 };
   }
 
-  const chapterLabel = String(chapter);
+  const chapterLabel = String(chapterNum);
   const rows = [];
   let skipped = 0;
   for (const seg of data.segments) {
@@ -166,7 +172,7 @@ function backfill(book) {
     if (!fs.existsSync(faithfulRoot)) continue;
     for (const dir of safeReaddir(faithfulRoot)) {
       if (!/^ch\d+$/.test(dir) && dir !== 'appendices') continue;
-      const chapter = dir === 'appendices' ? 'appendices' : parseInt(dir.replace('ch', ''), 10);
+      const chapter = dir === 'appendices' ? -1 : parseInt(dir.replace('ch', ''), 10);
       const chDir = path.join(faithfulRoot, dir);
       for (const f of safeReaddir(chDir)) {
         if (!f.endsWith('-segments.is.md')) continue;
