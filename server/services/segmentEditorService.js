@@ -1319,12 +1319,11 @@ function getEditorialProgress(book) {
   }
 
   for (const chNum of chapterNums) {
-    const chLabel = chNum === -1 ? 'appendices' : String(chNum);
     const modules = segmentParser.listChapterModules(book, chNum);
     let chSegments = 0;
 
     for (const mod of modules) {
-      const segCount = segmentParser.countModuleSegments(book, chLabel, mod.moduleId);
+      const segCount = segmentParser.countModuleSegments(book, chNum, mod.moduleId);
       chSegments += segCount;
       totalModules++;
 
@@ -1338,7 +1337,7 @@ function getEditorialProgress(book) {
       }
     }
 
-    const edits = editMap[chLabel] || { approved_segments: 0, edited_segments: 0 };
+    const edits = editMap[chNum] || { approved_segments: 0, edited_segments: 0 };
 
     chapters[chNum] = {
       approvedSegments: edits.approved_segments,
