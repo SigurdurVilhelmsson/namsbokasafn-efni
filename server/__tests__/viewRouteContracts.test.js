@@ -62,3 +62,12 @@ describe('books.html dead cvLoadStatus removed (F11 rider)', () => {
     expect(src).not.toMatch(/cvLoadStatus\(/);
   });
 });
+
+describe('status.html activity timeline (F27)', () => {
+  const src = view('status.html');
+
+  it('renders the server-provided timeAgo, no client date parsing', () => {
+    expect(src).toMatch(/a\.timeAgo/);
+    expect(src).not.toMatch(/new Date\(a\.created_at \|\| a\.timestamp\)/);
+  });
+});

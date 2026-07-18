@@ -704,11 +704,9 @@
         var li = document.createElement('li');
         li.className = 'timeline-item';
 
-        var time = new Date(a.created_at || a.timestamp);
-        var timeStr = time.toLocaleDateString('is-IS', { month: 'short', day: 'numeric' }) +
-          ' ' + time.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
+        var timeStr = a.timeAgo || '';
 
-        li.innerHTML = '<span class="timeline-time">' + timeStr + '</span>' +
+        li.innerHTML = '<span class="timeline-time">' + escapeHtml(timeStr) + '</span>' +
           '<span class="timeline-msg">' + escapeHtml(a.description || a.message || a.type) + '</span>';
         list.appendChild(li);
       });
