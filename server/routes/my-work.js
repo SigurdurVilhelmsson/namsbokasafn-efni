@@ -2,7 +2,7 @@
  * My Work Routes
  *
  * API endpoints for the translator's "My Work" dashboard.
- * Aggregates assignments, pending reviews, and terminology proposals.
+ * Aggregates pending reviews, changes requested, and terminology proposals.
  *
  * Endpoints:
  *   GET /api/my-work          Get all work items for current user
@@ -233,7 +233,7 @@ router.get('/today', requireAuth, (req, res) => {
         priorityLabel: 'Breytingar óskast',
       }));
 
-    const allTasks = [...changesRequested];
+    const allTasks = changesRequested;
 
     // Current task is the most urgent
     const currentTask = allTasks.length > 0 ? allTasks[0] : null;
@@ -242,7 +242,7 @@ router.get('/today', requireAuth, (req, res) => {
     const upNext = allTasks.slice(1, 6);
 
     // Needs attention: changes requested (for alert banner)
-    const needsAttention = allTasks.filter((t) => t.type === 'changes_requested');
+    const needsAttention = changesRequested;
 
     // Quick stats
     const pendingSubmissions = getUserPendingSubmissions(username);
