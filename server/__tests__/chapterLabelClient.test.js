@@ -12,9 +12,15 @@
  */
 import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
 const { full, compact } = require('../public/js/chapter-label');
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const read = (rel) => fs.readFileSync(path.join(here, '..', rel), 'utf8');
 
 describe('full()', () => {
   it('maps every appendices dialect to Viðaukar', () => {
@@ -56,5 +62,18 @@ describe('UMD contract', () => {
     const mod = require('../public/js/chapter-label');
     expect(typeof mod.full).toBe('function');
     expect(typeof mod.compact).toBe('function');
+  });
+});
+
+describe('adoption — my-work.html', () => {
+  it('loads the helper before the inline script', () => {
+    expect(read('views/my-work.html')).toMatch(/src="\/js\/chapter-label\.js"/);
+  });
+
+  it('builds every chapter label through the helper', () => {
+    const src = read('views/my-work.html');
+    expect(src).not.toMatch(/Kafli ' \+/);
+    expect(src).not.toMatch(/' K' \+/);
+    expect((src.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(6);
   });
 });

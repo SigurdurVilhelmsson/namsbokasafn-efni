@@ -1055,6 +1055,7 @@
   <script src="/js/layout.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
+  <script src="/js/chapter-label.js"></script>
   <script>
     // ========================================================================
     // HOME PAGE — Merged my-work + dashboard JavaScript
@@ -1245,7 +1246,7 @@
       var taskTitle = '';
       var taskMeta = '';
 
-      taskTitle = task.bookLabel + ' - Kafli ' + task.chapter + ', ' + task.section;
+      taskTitle = task.bookLabel + ' - ' + chapterLabel.full(task.chapter) + ', ' + task.section;
       taskMeta = '<span class="meta-reviewer">Athugasemdir frá ' + escapeHtml(task.reviewedBy) + '</span>';
 
       container.innerHTML =
@@ -1285,7 +1286,7 @@
       var renderTask = function(task) {
         var priorityClass = task.priority === 1 ? 'item-urgent' : task.priority === 2 ? 'item-soon' : '';
 
-        var title = task.bookLabel + ' K' + task.chapter + '/' + task.section;
+        var title = task.bookLabel + ' ' + chapterLabel.compact(task.chapter) + '/' + task.section;
 
         var badge = '<span class="item-badge badge-changes">Laga</span>';
 
@@ -1396,7 +1397,7 @@
           '<div class="work-item-main">' +
             '<div class="work-item-title">' +
               '<span class="book-label">' + escapeHtml(s.bookLabel) + '</span>' +
-              '<span class="section-label-text">Kafli ' + s.chapter + ', hluti ' + s.section + '</span>' +
+              '<span class="section-label-text">' + chapterLabel.full(s.chapter) + ', hluti ' + s.section + '</span>' +
             '</div>' +
             '<div class="work-item-meta">' +
               '<span>Sent ' + formatDate(s.submittedAt) + '</span>' +
@@ -1425,7 +1426,7 @@
           '<div class="work-item-main">' +
             '<div class="work-item-title">' +
               '<span class="book-label">' + escapeHtml(r.bookLabel) + '</span>' +
-              '<span class="section-label-text">Kafli ' + r.chapter + ', hluti ' + r.section + '</span>' +
+              '<span class="section-label-text">' + chapterLabel.full(r.chapter) + ', hluti ' + r.section + '</span>' +
             '</div>' +
             (r.notes ? '<div class="review-notes"><strong>Athugasemd:</strong> ' + escapeHtml(r.notes) + '</div>' : '') +
             '<div class="work-item-meta">' +
@@ -1562,7 +1563,7 @@
             '<div class="attention-item-title">' + escapeHtml(item.message) + '</div>' +
             '<div class="attention-item-meta">' +
               (item.book ? item.book + ' / ' : '') +
-              (item.chapter ? 'Kafli ' + item.chapter : '') +
+              (item.chapter ? chapterLabel.full(item.chapter) : '') +
               (item.assignedTo ? ' - ' + escapeHtml(item.assignedTo) : '') +
               (item.daysOld ? ' (' + item.daysOld + ' dagar)' : '') +
             '</div>' +
@@ -1661,7 +1662,7 @@
                   '&module=' + encodeURIComponent(item.moduleId);
         return '<a href="' + url + '" class="ready-item" style="text-decoration:none;color:inherit">' +
           '<div class="ready-item-header">' +
-            '<span class="ready-item-title">Kafli ' + item.chapter + ' / ' + escapeHtml(item.moduleId) + '</span>' +
+            '<span class="ready-item-title">' + chapterLabel.full(item.chapter) + ' / ' + escapeHtml(item.moduleId) + '</span>' +
             '<span class="badge">' + item.approvedCount + ' samþykkt</span>' +
           '</div>' +
           '<div class="ready-item-meta">' +
