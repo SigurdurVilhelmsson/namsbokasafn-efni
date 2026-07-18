@@ -167,7 +167,9 @@
       '/' +
       edCurrentModuleId +
       '/save-all';
-    var saveBody = { segments: segments };
+    // I15-R5: mark machine autosaves so the server skips the version snapshot
+    // (explicit saves and approvals still snapshot).
+    var saveBody = { segments: segments, autosave: true };
     if (edLastModified != null) saveBody.lastModified = edLastModified;
     var saveOptions = {
       method: 'POST',

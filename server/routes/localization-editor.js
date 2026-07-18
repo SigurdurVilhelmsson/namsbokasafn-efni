@@ -615,12 +615,16 @@ router.post(
         return;
       }
 
+      // I15-R5 (lead-decided mechanism c): the 60s autosave marks itself and
+      // skips the version snapshot — explicit saves and approvals still
+      // snapshot. Strict === true so nothing else can accidentally skip.
       const { savedPath } = contentVersionService.saveLocalizedWithSnapshot(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         allSegments,
-        req.user.username
+        req.user.username,
+        { snapshot: req.body.autosave !== true }
       );
 
       // Get updated mtime for client
