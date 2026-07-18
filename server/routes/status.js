@@ -32,6 +32,7 @@ const userService = require('../services/userService');
 const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES, PUBLICATION_TRACKS } = require('../constants');
 const pipelineStatusService = require('../services/pipelineStatusService');
 const segmentParser = require('../services/segmentParser');
+const chapterLabel = require('../lib/chapterLabel');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -957,7 +958,6 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
 
     const chapterProgress = chapterNums.map((chapterNum) => {
       const modules = segmentParser.listChapterModules(book, chapterNum);
-      const chapterLabel = chapterNum === -1 ? 'appendices' : String(chapterNum);
       const chProgress = progress.chapters[chapterNum] || {
         approvedSegments: 0,
         editedSegments: 0,
@@ -971,7 +971,7 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
       const needsAttention = [];
 
       const moduleDetails = modules.map((mod) => {
-        const segCount = segmentParser.countModuleSegments(book, chapterLabel, mod.moduleId);
+        const segCount = segmentParser.countModuleSegments(book, chapterNum, mod.moduleId);
         const edits = editLookup[mod.moduleId];
         const review = reviewLookup[mod.moduleId];
 
@@ -1218,9 +1218,9 @@ router.get('/:book/summary', requireAuth, (req, res) => {
  */
 router.get('/:book/:chapter', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
-  const chapterNum = parseInt(chapter, 10);
+  const chapterNum = chapterLabel.normalizeChapter(chapter);
 
-  if (isNaN(chapterNum) || chapterNum < 1) {
+  if (chapterNum === null || (chapterNum !== -1 && chapterNum < 1)) {
     return res.status(400).json({
       error: 'Invalid chapter',
       message: 'Chapter must be a positive number',
@@ -1228,7 +1228,7 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
   }
 
   try {
-    const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    const chapterDir = chapterLabel.chapterDir(chapterNum);
 
     let statusData;
     try {
