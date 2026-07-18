@@ -97,14 +97,14 @@ function bookFromReviewId(req) {
  * Quick term lookup for editor popups (delegates to terminology service).
  */
 router.get('/terminology/lookup', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { q, bookId } = req.query;
+  const { q, bookSlug } = req.query;
 
   if (!q || q.length < 2) {
     return res.json({ terms: [] });
   }
 
   try {
-    const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
+    const terms = terminology.lookupTerm(q, bookSlug || null);
     res.json({ terms });
   } catch (err) {
     res.status(500).json({ error: err.message });

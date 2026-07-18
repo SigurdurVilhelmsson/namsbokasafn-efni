@@ -814,6 +814,11 @@
       flex-shrink: 0;
     }
 
+    .admin-activity-icon.success { background: var(--success-subtle); color: var(--success); }
+    .admin-activity-icon.warning { background: var(--warning-subtle); color: var(--warning); }
+    .admin-activity-icon.info { background: var(--info-subtle); color: var(--info); }
+    /* .default keeps the base .admin-activity-icon styles */
+
     .admin-activity-content { flex: 1; }
 
     .admin-activity-text {
@@ -1652,7 +1657,7 @@
           '<span class="editor-activity-icon">' + getActivityIcon(a.type) + '</span>' +
           '<div class="editor-activity-content">' +
             '<span class="editor-activity-desc">' + escapeHtml(a.description) + '</span>' +
-            '<span class="editor-activity-time">' + formatTimeAgo(a.created_at) + '</span>' +
+            '<span class="editor-activity-time">' + formatTimeAgo(a.createdAt) + '</span>' +
           '</div>' +
         '</div>';
       }).join('');
@@ -1891,9 +1896,8 @@
 
       var renderActivityItem = function(activity) {
         return '<div class="admin-activity-item">' +
-          '<div class="admin-activity-icon" ' +
-            (activity.color ? 'style="background:' + activity.color + '20;color:' + activity.color + '"' : '') + '>' +
-            (activity.icon ? '' : '\u25CF') +
+          '<div class="admin-activity-icon' + (activity.color ? ' ' + escapeHtml(activity.color) : '') + '">' +
+            escapeHtml(activity.icon || '●') +
           '</div>' +
           '<div class="admin-activity-content">' +
             '<div class="admin-activity-text">' +
@@ -2055,12 +2059,15 @@
 
     function formatDate(dateStr) {
       if (!dateStr) return '';
-      return new Date(dateStr).toLocaleDateString('is-IS');
+      var date = new Date(String(dateStr).replace(' ', 'T') + 'Z');
+      if (isNaN(date.getTime())) return '';
+      return date.toLocaleDateString('is-IS');
     }
 
     function formatTimeAgo(dateStr) {
       if (!dateStr) return '';
-      var date = new Date(dateStr);
+      var date = new Date(String(dateStr).replace(' ', 'T') + 'Z');
+      if (isNaN(date.getTime())) return '';
       var now = new Date();
       var diffMs = now - date;
       var diffMins = Math.floor(diffMs / 60000);
@@ -2100,8 +2107,19 @@
 
     function getActivityIcon(type) {
       var icons = {
-        'edit': '\u270F\uFE0F', 'submit': '\uD83D\uDCE4', 'approve': '\u2705', 'reject': '\u274C',
-        'term_propose': '\uD83D\uDCD6', 'term_approve': '\u2713', 'assign': '\uD83D\uDC64'
+        segment_edit_saved: '\u270F\uFE0F',
+        segment_edit_approved: '\u2705',
+        segment_edit_rejected: '\u274C',
+        segment_edit_discuss: '\uD83D\uDCAC',
+        segment_edits_applied: '\uD83D\uDCE5',
+        review_submitted: '\uD83D\uDCE4',
+        review_approved: '\u2705',
+        changes_requested: '\uD83D\uDCDD',
+        version_restored: '\uD83D\uDD04',
+        assign_chapter: '\uD83D\uDC64',
+        unassign_chapter: '\u2796',
+        assign_reviewer: '\uD83D\uDC64',
+        assign_localizer: '\uD83C\uDF0D'
       };
       return icons[type] || '\uD83D\uDCCC';
     }

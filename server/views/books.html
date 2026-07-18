@@ -2088,28 +2088,7 @@
             return;
           }
 
-          panel.innerHTML = activities
-            .map(function (a) {
-              return (
-                '<div class="activity-row">' +
-                '<span class="activity-icon">' +
-                getActivityIcon(a.action) +
-                '</span>' +
-                '<div class="activity-content">' +
-                '<span class="activity-user">' +
-                escapeHtml(a.userName || 'Kerfi') +
-                '</span> ' +
-                '<span>' +
-                escapeHtml(a.details) +
-                '</span>' +
-                '<span class="activity-time">' +
-                formatTimeAgo(a.timestamp) +
-                '</span>' +
-                '</div>' +
-                '</div>'
-              );
-            })
-            .join('');
+          panel.innerHTML = renderActivityRows(activities);
         } catch (err) {
           console.error('Error loading activity:', err);
           panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
@@ -2352,7 +2331,6 @@
           cvLoadSections(book, chapter),
           cvLoadIssues(book, chapter),
           cvLoadActivity(book, chapter),
-          cvLoadStatus(book, chapter),
         ]);
       }
 
@@ -2528,43 +2506,10 @@
             return;
           }
 
-          panel.innerHTML = activities
-            .map(function (a) {
-              return (
-                '<div class="activity-row">' +
-                '<span class="activity-icon">' +
-                getActivityIcon(a.action) +
-                '</span>' +
-                '<div class="activity-content">' +
-                '<span class="activity-user">' +
-                escapeHtml(a.userName || 'Kerfi') +
-                '</span> ' +
-                '<span>' +
-                escapeHtml(a.details) +
-                '</span>' +
-                '<span class="activity-time">' +
-                formatTimeAgo(a.timestamp) +
-                '</span>' +
-                '</div>' +
-                '</div>'
-              );
-            })
-            .join('');
+          panel.innerHTML = renderActivityRows(activities);
         } catch (err) {
           console.error('Error loading activity:', err);
           panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
-        }
-      }
-
-      async function cvLoadStatus(book, chapter) {
-        try {
-          var data = await fetchJson('/api/status/' + book + '/' + chapter);
-
-          var stages = data.stages || {};
-          var linguisticReview = stages.linguisticReview || {};
-          var tmCreated = stages.tmCreated || {};
-        } catch (err) {
-          console.error('Error loading chapter status:', err);
         }
       }
 
@@ -2819,7 +2764,8 @@
 
       function formatTimeAgo(dateStr) {
         if (!dateStr) return '';
-        var date = new Date(dateStr);
+        var date = new Date(String(dateStr).replace(' ', 'T') + 'Z');
+        if (isNaN(date.getTime())) return '';
         var now = new Date();
         var diffMs = now - date;
         var diffMins = Math.floor(diffMs / 60000);
@@ -2833,16 +2779,48 @@
         return diffDays + ' d\u00f6gum s\u00ed\u00f0an';
       }
 
-      function getActivityIcon(action) {
+      function renderActivityRows(activities) {
+        return activities
+          .map(function (a) {
+            return (
+              '<div class="activity-row">' +
+              '<span class="activity-icon">' +
+              getActivityIcon(a.type) +
+              '</span>' +
+              '<div class="activity-content">' +
+              '<span class="activity-user">' +
+              escapeHtml(a.username || 'Kerfi') +
+              '</span> ' +
+              '<span>' +
+              escapeHtml(a.description) +
+              '</span>' +
+              '<span class="activity-time">' +
+              formatTimeAgo(a.createdAt) +
+              '</span>' +
+              '</div>' +
+              '</div>'
+            );
+          })
+          .join('');
+      }
+
+      function getActivityIcon(type) {
         var icons = {
-          edit: '\u270F\uFE0F',
-          submit: '\uD83D\uDCE4',
-          approve: '\u2705',
-          reject: '\u274C',
-          assignment_created: '\uD83D\uDC64',
-          assignment_completed: '\u2713',
+          segment_edit_saved: '\u270F\uFE0F',
+          segment_edit_approved: '\u2705',
+          segment_edit_rejected: '\u274C',
+          segment_edit_discuss: '\uD83D\uDCAC',
+          segment_edits_applied: '\uD83D\uDCE5',
+          review_submitted: '\uD83D\uDCE4',
+          review_approved: '\u2705',
+          changes_requested: '\uD83D\uDCDD',
+          version_restored: '\uD83D\uDD04',
+          assign_chapter: '\uD83D\uDC64',
+          unassign_chapter: '\u2796',
+          assign_reviewer: '\uD83D\uDC64',
+          assign_localizer: '\uD83C\uDF0D',
         };
-        return icons[action] || '\uD83D\uDCCC';
+        return icons[type] || '\uD83D\uDCCC';
       }
     </script>
   </body>

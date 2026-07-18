@@ -146,6 +146,21 @@ describe('GET /api/status/:book/:chapter appendices acceptance', () => {
     expect(r.status).toBe(200);
     expect(r.body.chapterDir).toBe('ch03');
   });
+
+  it('response shape contract (F11): stages is a top-level array, no status key', async () => {
+    const r = await invoke(handler, {
+      params: { book: BOOK, chapter: 'appendices' },
+      query: {},
+    });
+    expect(r.status).toBe(200);
+    expect(Array.isArray(r.body.stages)).toBe(true);
+    expect(r.body.status).toBeUndefined();
+    const pub = r.body.stages.find((s) => s.stage === 'publication');
+    expect(pub).toBeDefined();
+    expect(pub).toHaveProperty('mtPreview');
+    expect(pub).toHaveProperty('faithful');
+    expect(pub).toHaveProperty('localized');
+  });
 });
 
 describe('GET /api/status/:book/editorial-progress appendices counts (finding 17a route surface)', () => {

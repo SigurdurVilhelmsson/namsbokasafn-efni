@@ -1323,7 +1323,8 @@
       var list = document.getElementById('an-activity-list');
       if (!events || events.length === 0) { list.innerHTML = '<p style="text-align:center;color:var(--text-muted)">Engin n\u00fdleg virkni</p>'; return; }
       list.innerHTML = events.slice(0,20).map(function(ev) {
-        var time = new Date(ev.timestamp).toLocaleString('is-IS',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+        var d = new Date(String(ev.createdAt || '').replace(' ', 'T') + 'Z');
+        var time = isNaN(d.getTime()) ? (ev.createdAt || '') : d.toLocaleString('is-IS',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
         return '<div class="activity-item"><span class="activity-icon">\u25cf</span><span class="activity-text">' + anGetEventDesc(ev) + '</span><span class="activity-time">' + time + '</span></div>';
       }).join('');
     }

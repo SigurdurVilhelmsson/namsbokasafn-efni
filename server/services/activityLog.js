@@ -107,11 +107,29 @@ function initStatements(db) {
       ORDER BY created_at DESC
       LIMIT ?
     `),
+    // Chapter compare uses CAST(... AS INTEGER), not TEXT: better-sqlite3 binds
+    // plain JS numbers as REAL, so a raw-number chapter (e.g. admin.js
+    // assign/unassign passing chapterNum) lands in this TEXT-affinity column
+    // as "1.0", not "1" (verified empirically — SQLite's REAL→TEXT affinity
+    // conversion appends the decimal). CAST(x AS TEXT) can't reconcile "1.0"
+    // with "1"; CAST(x AS INTEGER) normalizes both storage shapes (and the
+    // String()-wrapped "1"/"-1" rows everywhere else) to the same integer.
+    //
+    // The GLOB numeric guard (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*')
+    // is required because CAST('' AS INTEGER) = 0 and CAST('garbage' AS
+    // INTEGER) = 0 too — without it, a chapter=0 filter would false-positive
+    // on empty-string chapter rows (real write path: segment-editor.js writes
+    // `chapter: String(edit?.chapter || '')` on failed-lookup edges), and
+    // chapter 0 (front matter) is a real, selectable chapter in this project.
+    // AND binds tighter than OR, so this groups as
+    // (numeric match AND is-numeric-string) OR (omitted-filter bypass) —
+    // verified empirically against '1.0', '-1', '0.0', '0', and '' rows.
     search: db.prepare(`
       SELECT * FROM activity_log
       WHERE (book = ? OR ? IS NULL)
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
+        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) AND (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*') OR ? IS NULL)
       ORDER BY created_at DESC
       LIMIT ? OFFSET ?
     `),
@@ -120,6 +138,7 @@ function initStatements(db) {
       WHERE (book = ? OR ? IS NULL)
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
+        AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) AND (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*') OR ? IS NULL)
     `),
   };
 }
@@ -222,7 +241,24 @@ function getBySection(book, chapter, section, limit = 50) {
  * Search activity with filters
  */
 function search(options = {}) {
-  const { book = null, type = null, userId = null, limit = 50, offset = 0 } = options;
+  const {
+    book = null,
+    type = null,
+    userId = null,
+    chapter = null,
+    limit = 50,
+    offset = 0,
+  } = options;
+  let chapterText = chapter == null ? null : String(chapter);
+  if (chapterText !== null && !/^-?\d+$/.test(chapterText)) {
+    // 'appendices' is the on-URL dialect for chapter -1 (item 14 convention);
+    // any other non-numeric param matches nothing rather than colliding with ch0.
+    if (chapterText === 'appendices') {
+      chapterText = '-1';
+    } else {
+      return { activities: [], total: 0, limit: Math.min(limit, 200), offset };
+    }
+  }
 
   const rows = stmts().search.all(
     book,
@@ -231,11 +267,22 @@ function search(options = {}) {
     type,
     userId,
     userId,
+    chapterText,
+    chapterText,
     Math.min(limit, 200),
     offset
   );
 
-  const countResult = stmts().count.get(book, book, type, type, userId, userId);
+  const countResult = stmts().count.get(
+    book,
+    book,
+    type,
+    type,
+    userId,
+    userId,
+    chapterText,
+    chapterText
+  );
 
   return {
     activities: rows.map(parseRow),
