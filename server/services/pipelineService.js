@@ -20,6 +20,15 @@ const crypto = require('crypto');
 const log = require('../lib/logger');
 const pipelineStatus = require('./pipelineStatusService');
 const { listCnxmlFiles } = require('../../tools/lib/source-manifest.cjs');
+const { cliChapterArg } = require('../lib/chapterLabel');
+
+// Test seam: spawnJob spawns through this indirection (item 14).
+let spawnImpl = spawn;
+
+/** @internal Test-only: override the spawn implementation (null restores). */
+function _setTestSpawn(fn) {
+  spawnImpl = fn || spawn;
+}
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const TOOLS_DIR = path.join(PROJECT_ROOT, 'tools');
@@ -55,7 +64,7 @@ function runExtract({ book, chapter, moduleId, userId }) {
     '--book',
     book,
     '--chapter',
-    String(chapter),
+    cliChapterArg(chapter),
     '--verbose',
   ];
 
@@ -190,7 +199,7 @@ function runInject({ book, chapter, moduleId, track = 'faithful', userId }) {
     '--book',
     book,
     '--chapter',
-    String(chapter),
+    cliChapterArg(chapter),
     '--source-dir',
     sourceDir,
     '--verbose',
@@ -228,7 +237,7 @@ function runRender({ book, chapter, moduleId, track = 'faithful', userId }) {
     '--book',
     book,
     '--chapter',
-    String(chapter),
+    cliChapterArg(chapter),
     '--track',
     track,
     '--verbose',
@@ -389,7 +398,7 @@ function spawnJob({ type, book, chapter, moduleId, track, userId, command, args 
   jobs.set(jobId, job);
 
   const promise = new Promise((resolve) => {
-    const child = spawn(command, args, {
+    const child = spawnImpl(command, args, {
       cwd: PROJECT_ROOT,
       env: { ...process.env, NODE_NO_WARNINGS: '1' },
     });
@@ -953,4 +962,5 @@ module.exports = {
   computeSourceHash,
   TRACK_SOURCE_DIR,
   _jobsMap,
+  _setTestSpawn,
 };
