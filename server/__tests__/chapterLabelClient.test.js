@@ -97,3 +97,20 @@ describe('adoption — admin.html + assignments', () => {
     expect(read('views/assignments.html')).toMatch(/src="\/js\/chapter-label\.js"/);
   });
 });
+
+describe('adoption — latent sites (books.html, localization-editor.js)', () => {
+  it('books.html includes the helper and uses it at all six sites', () => {
+    const src = read('views/books.html');
+    expect(src).toMatch(/src="\/js\/chapter-label\.js"/);
+    expect(src).not.toMatch(/Kafli ' \+/);
+    expect(src).not.toMatch(/K\. ' \+/);
+    expect((src.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(6);
+  });
+
+  it('localization-editor.js + its view', () => {
+    const js = read('public/js/localization-editor.js');
+    expect(js).not.toMatch(/Kafli ' \+/);
+    expect((js.match(/chapterLabel\.(full|compact)\(/g) || []).length).toBeGreaterThanOrEqual(3);
+    expect(read('views/localization-editor.html')).toMatch(/src="\/js\/chapter-label\.js"/);
+  });
+});

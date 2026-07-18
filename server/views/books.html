@@ -1444,6 +1444,7 @@
     <script src="/js/bookSelector.js"></script>
     <script src="/js/theme.js"></script>
     <script src="/js/htmlUtils.js"></script>
+    <script src="/js/chapter-label.js"></script>
     <script>
       // ========================================================================
       // LIBRARY PAGE — Merged books + chapter + images
@@ -1782,8 +1783,8 @@
                 ch.chapterNum +
                 ')">' +
                 '<div class="chapter-card-header">' +
-                '<span class="chapter-card-num">K. ' +
-                ch.chapterNum +
+                '<span class="chapter-card-num">' +
+                chapterLabel.compact(ch.chapterNum) +
                 '</span>' +
                 '<a href="/pipeline/' +
                 slug +
@@ -1861,14 +1862,14 @@
           escapeHtml(document.getElementById('book-title').textContent) +
           '</a>' +
           '<span class="breadcrumb-sep">/</span>' +
-          '<span class="breadcrumb-current">Kafli ' +
-          chapterNum +
+          '<span class="breadcrumb-current">' +
+          chapterLabel.full(chapterNum) +
           '</span>';
 
         var titleEl = document.getElementById('chapter-detail-title');
         var badgeEl = document.getElementById('chapter-detail-badge');
 
-        titleEl.textContent = 'Kafli ' + chapterNum;
+        titleEl.textContent = chapterLabel.full(chapterNum);
         badgeEl.textContent = 'Hle\u00f0ur...';
         badgeEl.className = 'chapter-card-badge';
 
@@ -1913,7 +1914,7 @@
 
           var titleEl = document.getElementById('chapter-detail-title');
           titleEl.textContent =
-            'Kafli ' + chapterNum + ': ' + (data.chapter.titleIs || data.chapter.titleEn);
+            chapterLabel.full(chapterNum) + ': ' + (data.chapter.titleIs || data.chapter.titleEn);
 
           panel.innerHTML = data.chapter.sections
             .map(function (sec) {
@@ -2301,7 +2302,9 @@
             '<option value="">Veldu kafla...</option>' +
             chapters
               .map(function (ch) {
-                return '<option value="' + ch.chapter + '">Kafli ' + ch.chapter + '</option>';
+                return (
+                  '<option value="' + ch.chapter + '">' + chapterLabel.full(ch.chapter) + '</option>'
+                );
               })
               .join('');
 
@@ -2318,7 +2321,7 @@
         cvCurrentChapter = chapter;
 
         document.getElementById('cv-control-panel').style.display = 'block';
-        document.getElementById('cv-chapter-title').textContent = 'Kafli ' + chapter;
+        document.getElementById('cv-chapter-title').textContent = chapterLabel.full(chapter);
 
         // Update links
         document.getElementById('cv-editor-link').href =
