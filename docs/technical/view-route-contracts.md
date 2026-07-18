@@ -59,7 +59,10 @@ truthy, `color` is a class token `success|warning|info|default`),
 `readyForAssignment`, `workload`.
 There is NO `overdueCount` (dead field removed in item 16 PR2, F28 — the
 route never incremented it and no view ever rendered a non-zero value).
-`needsAttention.items` (`dashboardReadModel`-fed, `routes/status.js`): the
+`needsAttention.items` (mixed-source, `routes/status.js` — `review` items
+from `dashboardReadModel.getGlobalPendingEdits()`, `unassigned` from
+`userService.getBookAssignments()`, `blocked` from
+`segmentEditorService.getDiscussEdits()`): the
 view renders `item.type` (icon lookup: `blocked|unassigned|review` — no
 `overdue` type is ever emitted, F28), `item.message`, `item.book`,
 `item.chapter` (also reads `item.assignedTo` and `item.daysOld`, which the
