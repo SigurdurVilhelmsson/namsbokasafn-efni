@@ -175,6 +175,13 @@ Rationale: editors return at semester start; these protect and de-confuse their 
 - **I19-R9 `[test-hygiene]`** — (I12-M5 class) `terminologyReviewRoutes.test.js` migrates `os.tmpdir()/term-review-routes-<pid>.db` but `afterAll` never removes it (nor `-wal`/`-shm`) — one stale SQLite file per run. Fix: `rmSync(..., {force:true})` in `afterAll`.
 - **I19-R10 `[coverage]`** — (plan-inherited scope) queue filter composition unpinned: subject-beats-book precedence and source+subject combos have no test; single-dimension filters are service-tested.
 
+### Register — findings/deferrals from item 20 (2026-07-19)
+- **I20-R1 `[doc/impl]`** — `scripts/git-backup.sh` PATHSPECS stages neither `books/*/tm/` nor `books/*/glossary/`, but `docs/technical/architecture.md:431-433` claims both ride the cron; glossary-unified.json and TMX reach git only via manual commits.
+- **I20-R2 `[data]`** — `books/lifraen-efnafraedi/glossary/glossary-unified.json` is byte-size-identical (445,395 B) to chemistry's — likely a stale copy; check before organic MT-priming relies on it.
+- **I20-R3 `[hygiene]`** — efnafraedi `02-for-mt` contains 30 stray `.is.md` files and 49 `(b)/(c)/(d)` EN variants; ch05 `02-mt-output` has 7 variant `.is.md` (m68724/m68726/m68727) with no recorded authoritative-variant decision. The corpus exporter skip-reports all of them.
+- **I20-R4 `[minor]`** — generate-tm's date-stamped default out path accumulates one TMX per regeneration day in `books/{book}/tm/` with no pruning/latest pointer.
+- **I20-R5 `[note]`** — M-e (TM exercise pairing) remains open for the TM proper; the corpus includes exercise sidecars regardless, with the `[[lb:]]`/`[[rb:]]` decode the TM lacks.
+
 ## Phase 4 — products & provenance gaps (weeks 4–5, audit's own order)
 17. **Licence metadata per product** — needs lead posture decision on Physics+Organic (CC BY-NC-SA) FIRST (decision lane); then book-config licence field → renderer emission → vefur consumption (small cross-repo tail).
 18. ✅ **Terminology subject-fallback-on-miss** — **MERGED PR #305 (2026-07-19, main `b0cd3a9e`, suite 2963/2963).** Shared `translationTier()` policy: `findTermsInSegments` partitions (fallback surfaces on a true miss, badged, NEVER QA issues; in-scope claims overlap spans first), `lookupTerm` stamps+sorts best-first, MT export deliberately strict + pinned. Client: `cross-subject` highlight, popup fallback note + badges, quick-lookup subject labels incl. einnig-alternatives (final-review F1). Spec `docs/superpowers/specs/2026-07-19-item18-terminology-subject-fallback-design.md`; registers I18-R1..R6 above. ⚠️ reaches ritstjórn only via `./scripts/deploy.sh` (rides the pending items-14..16 deploy batch).
