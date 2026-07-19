@@ -205,13 +205,27 @@ function lookupTerm(query, bookSlug = null) {
 
   const rows = db.prepare(sql).all(exact, startsWith, contains, contains, contains);
 
+  // Item 18: stamp tier flags and sort best-first so callers can safely take
+  // translations[0]. Rank: primary → in-scope → fallback; approved before
+  // proposed within a tier (Array#sort is stable, ties keep DB order).
+  const TIER_RANK = { primary: 0, 'in-scope': 1, fallback: 2 };
+  const tierOf = (tr) => translationTier(tr.subjects || [], bookSubject);
+
   return rows.map((r) => {
     const hw = loadHeadword(db, r.id);
-    // Mark primary translation based on book's domain
-    if (bookSubject && hw.translations) {
+    if (hw.translations) {
       for (const tr of hw.translations) {
-        tr.isPrimary = tr.subjects.includes(bookSubject);
+        const tier = tierOf(tr);
+        tr.isPrimary = tier === 'primary';
+        tr.isFallback = tier === 'fallback';
       }
+      hw.translations.sort((a, b) => {
+        const byTier = TIER_RANK[tierOf(a)] - TIER_RANK[tierOf(b)];
+        if (byTier !== 0) return byTier;
+        if (a.status === 'approved' && b.status !== 'approved') return -1;
+        if (a.status !== 'approved' && b.status === 'approved') return 1;
+        return 0;
+      });
     }
     return hw;
   });

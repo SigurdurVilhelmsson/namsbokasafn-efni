@@ -301,6 +301,47 @@ describe('lookupTerm()', () => {
     expect(bioTr.isPrimary).toBe(true);
     expect(chemTr.isPrimary).toBe(false);
   });
+
+  it('stamps isFallback and sorts primary → in-scope → fallback (item 18)', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    // Inserted worst-first so DB order alone would fail the assertion.
+    const trChem = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    insertTranslation(hwId, { icelandic: 'eining', status: 'approved' }); // untagged, no addSubject call
+    const trBio = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
+    addSubject(trChem, 'chemistry');
+    addSubject(trBio, 'biology');
+
+    const result = terminologyService.lookupTerm('cell', 'liffraedi-2e'); // biology book
+    expect(result[0].translations.map((t) => t.icelandic)).toEqual(['fruma', 'eining', 'hólf']);
+    expect(result[0].translations[0].isPrimary).toBe(true);
+    expect(result[0].translations[0].isFallback).toBe(false);
+    expect(result[0].translations[1].isFallback).toBe(false); // untagged = in-scope
+    expect(result[0].translations[2].isFallback).toBe(true); // chemistry in a biology book
+  });
+
+  it('approved outranks proposed within a tier (item 18)', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    const trProposed = insertTranslation(hwId, { icelandic: 'tengsl', status: 'proposed' });
+    const trApproved = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    addSubject(trProposed, 'chemistry');
+    addSubject(trApproved, 'chemistry');
+
+    const result = terminologyService.lookupTerm('bond', 'efnafraedi-2e');
+    expect(result[0].translations.map((t) => t.icelandic)).toEqual(['tengi', 'tengsl']);
+  });
+
+  it('unmapped book: nothing primary, nothing fallback, approved-first order', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    const trProposed = insertTranslation(hwId, { icelandic: 'fruma', status: 'proposed' });
+    const trApproved = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    addSubject(trProposed, 'biology');
+    addSubject(trApproved, 'chemistry');
+
+    const result = terminologyService.lookupTerm('cell', null);
+    expect(result[0].translations.every((t) => t.isPrimary === false)).toBe(true);
+    expect(result[0].translations.every((t) => t.isFallback === false)).toBe(true);
+    expect(result[0].translations[0].icelandic).toBe('hólf');
+  });
 });
 
 // =====================
