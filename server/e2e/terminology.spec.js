@@ -600,13 +600,14 @@ test.describe('Terminology read-only endpoints', () => {
     expect(header).toContain('icelandic');
   });
 
-  test('review queue returns array', async ({ page }) => {
+  test('review queue returns items with total', async ({ page }) => {
     // Need editor+ role for review queue
     const res = await page.request.get(`${API}/review-queue`);
     expect(res.ok()).toBe(true);
     const body = await res.json();
-    expect(body).toHaveProperty('terms');
-    expect(Array.isArray(body.terms)).toBe(true);
+    expect(body).toHaveProperty('items');
+    expect(Array.isArray(body.items)).toBe(true);
+    expect(typeof body.total).toBe('number');
   });
 });
 
