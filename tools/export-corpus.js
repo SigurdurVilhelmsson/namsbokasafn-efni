@@ -35,6 +35,10 @@ let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books'
 
 /**
  * Corpus clean text: the TM's cleanSegmentText plus corpus-only additions.
+ * The legacy `[#id]` xref dialect is dropped (reference-only, mirrors
+ * generate-tm's `[[xref:]]` drop) — this MUST run before the lb/rb decode:
+ * a restored literal bracket sequence like `[[lb:]]#1[[rb:]]` decodes to
+ * `[#1]`, and running the `[#id]` strip after decode would wrongly eat it.
  * [[lb:]]/[[rb:]] (item-9 literal-bracket escapes) decode LAST so restored
  * brackets can never be re-parsed as markers; [[MATH:N]]/[[MEDIA:n]] pass
  * through verbatim (positional placeholders, resolvable via 02-structure).
@@ -44,6 +48,7 @@ let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books'
  */
 function corpusCleanText(raw) {
   return cleanSegmentText(raw)
+    .replace(/ ?\[#[^\]\s]+\]/g, '')
     .replace(/\[\[lb:\]\]/g, '[')
     .replace(/\[\[rb:\]\]/g, ']');
 }
@@ -63,8 +68,8 @@ function splitSegId(id) {
 }
 
 /**
- * The editor-visible view of an IS tier, per loadModuleForEditing
- * (server/services/segmentParser.js:164-239): normalizeWraps on parse →
+ * The editor-visible view of an IS tier, per loadModuleForEditing in
+ * server/services/segmentParser.js: normalizeWraps on parse →
  * unescapeMtMarkers → normalizeTermMarkers against the wrap-normalized EN.
  * postEdited answers "would the editor's diff view show a change" —
  * a byte-comparison against raw MT would mislabel every normalization
@@ -73,10 +78,11 @@ function splitSegId(id) {
  * @param {string} enRaw
  * @param {string|null} mtRaw
  * @param {string|null} faithfulRaw
- * @returns {boolean|null} null unless both IS tiers are present
+ * @returns {boolean|null} null unless both IS tiers are present and non-blank
  */
 function computePostEdited(enRaw, mtRaw, faithfulRaw) {
-  if (mtRaw == null || faithfulRaw == null) return null;
+  if (mtRaw == null || faithfulRaw == null || mtRaw.trim() === '' || faithfulRaw.trim() === '')
+    return null;
   const enView = normalizeWraps(enRaw ?? '');
   const view = (t) => normalizeTermMarkers(enView, unescapeMtMarkers(normalizeWraps(t)));
   return view(faithfulRaw).trim() !== view(mtRaw).trim();
@@ -223,9 +229,9 @@ function buildCorpus(book, opts = {}) {
           module: moduleName,
           licence,
           en: enRaw,
-          mt: tierMaps.mt ? (tierMaps.mt.get(segId) ?? null) : null,
-          faithful: tierMaps.faithful ? (tierMaps.faithful.get(segId) ?? null) : null,
-          localized: tierMaps.localized ? (tierMaps.localized.get(segId) ?? null) : null,
+          mt: tierMaps.mt ? tierMaps.mt.get(segId) || null : null,
+          faithful: tierMaps.faithful ? tierMaps.faithful.get(segId) || null : null,
+          localized: tierMaps.localized ? tierMaps.localized.get(segId) || null : null,
         });
         for (const tierName of ['mt', 'faithful', 'localized']) {
           if (row[tierName]) stats.tiers[tierName]++;
@@ -253,6 +259,7 @@ function buildCorpus(book, opts = {}) {
     }
   }
 
+  skipped.sort(); // cross-clone manifest determinism
   return { rows, stats, skipped };
 }
 
@@ -331,8 +338,9 @@ function buildManifest(p) {
     skipped: p.skipped,
     notes: [
       'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
-      '[[MATH:N]]/[[MEDIA:n]] placeholders retained; resolve via 02-structure sidecars',
+      '[[MATH:N]]/[[MEDIA:n]] placeholders retained, resolve via 02-structure sidecars; [[BR]]/[[SPACE]] formatting placeholders also retained and are NOT sidecar-resolvable',
       `EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
+      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; per-segment review status lives only in the production DB (segment_edits)',
     ],
   };
 }
@@ -422,6 +430,8 @@ function main() {
     `Tiers present:      mt=${stats.tiers.mt} faithful=${stats.tiers.faithful} localized=${stats.tiers.localized}`
   );
   console.log(`postEdited:         true=${stats.postEditedTrue} false=${stats.postEditedFalse}`);
+  if (stats.tiers.faithful > 0)
+    console.log('  (faithful presence != per-segment review — see manifest notes)');
   if (stats.duplicateIds) console.log(`  duplicate seg-ids (first-wins): ${stats.duplicateIds}`);
   if (stats.orphanIs) console.log(`  orphan IS seg-ids (no EN):      ${stats.orphanIs}`);
   if (stats.emptyClean) console.log(`  tier texts empty after strip:   ${stats.emptyClean}`);
