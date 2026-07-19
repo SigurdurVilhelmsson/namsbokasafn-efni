@@ -160,6 +160,8 @@ Rationale: editors return at semester start; these protect and de-confuse their 
 - **I18-R2 `[hygiene]`** — `routes/terminology.js` `resolveBookSubject` (~`:989-1018`) is a divergent duplicate of `terminologyService.getBookSubjectBySlug` (opens its own better-sqlite3 connection per call, swallows errors → null); consolidate when convenient.
 - **I18-R3 `[latent]`** — `views/terminology.html` `loadStats()` reads `bookSlug` but never uses it, despite a comment claiming fallback (~`:1277-1284`).
 - **I18-R4 `[minor]`** — `SUBJECT_NAMES` is hardcoded client-side (`segment-editor.js` ~`:2157`); a subject added server-side renders as a raw slug in badges.
+- **I18-R5 `[test-quality]`** — `lookupTerm`'s sort comparator status arm is non-discriminative in tests: `loadHeadword` already orders approved-first (`terminologyService.js` ORDER BY), so any tier-subset stays status-sorted and no fixture can make the arm decisive without a test seam into `loadHeadword`. The arm is protective redundancy against a future `loadHeadword` ORDER BY change (final-review triage).
+- **I18-R6 `[hygiene]`** — full-suite stderr noise: a `check-source-updates.js` CLI test exercises the deleted-`update`-subcommand rejection path (Track B #264) and writes "Unknown command 'update'" to stderr on every run; erodes the clean-output signal (predates item 18).
 
 ## Phase 4 — products & provenance gaps (weeks 4–5, audit's own order)
 17. **Licence metadata per product** — needs lead posture decision on Physics+Organic (CC BY-NC-SA) FIRST (decision lane); then book-config licence field → renderer emission → vefur consumption (small cross-repo tail).
