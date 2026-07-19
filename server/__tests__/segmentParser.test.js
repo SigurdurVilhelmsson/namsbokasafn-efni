@@ -15,6 +15,7 @@ const {
   normalizeTermMarkers,
   unescapeMtMarkers,
 } = require('../services/segmentParser');
+const mtNormalize = require('../../tools/lib/mt-normalize.cjs');
 
 describe('parseSegments', () => {
   it('parses HTML comment markers', () => {
@@ -309,6 +310,14 @@ const chapterLabelLib = require('../lib/chapterLabel');
 describe('chapterDir re-export (item 14 contract)', () => {
   it('is reference-identical to lib/chapterLabel.chapterDir (protects backfill-mt-locks.js)', () => {
     expect(segmentParser.chapterDir).toBe(chapterLabelLib.chapterDir);
+  });
+});
+
+describe('mt-normalize functions re-export (item 20 contract)', () => {
+  it('re-exports mt-normalize functions reference-identical (protects backfill-content-versions.js)', () => {
+    expect(segmentParser.normalizeWraps).toBe(mtNormalize.normalizeWraps);
+    expect(segmentParser.unescapeMtMarkers).toBe(mtNormalize.unescapeMtMarkers);
+    expect(segmentParser.normalizeTermMarkers).toBe(mtNormalize.normalizeTermMarkers);
   });
 });
 
