@@ -205,6 +205,41 @@ describe('POST /translations/batch-approve', () => {
   });
 });
 
+describe('role gates', () => {
+  // requireRole responds via res.status(403).json(...) with no DB access, so
+  // these invoke it directly (route.stack[1] — [0]=requireAuth, [1]=requireRole,
+  // [2]=handler) rather than going through the full handler.
+  it('requireRole 403s an editor on POST /translations/batch-approve (needs head-editor)', async () => {
+    const layer = getLayer('/translations/batch-approve', 'post');
+    expect(layer.route.stack).toHaveLength(3);
+    const gate = layer.route.stack[1].handle;
+    const out = await invoke(gate, {
+      user: { role: 'editor', id: 'e1', name: 'E', username: 'e' },
+    });
+    expect(out.status).toBe(403);
+  });
+
+  it('requireRole 403s an editor on POST /translations/:id/reject (needs head-editor)', async () => {
+    const layer = getLayer('/translations/:id/reject', 'post');
+    expect(layer.route.stack).toHaveLength(3);
+    const gate = layer.route.stack[1].handle;
+    const out = await invoke(gate, {
+      user: { role: 'editor', id: 'e1', name: 'E', username: 'e' },
+    });
+    expect(out.status).toBe(403);
+  });
+
+  it('requireRole 403s a viewer on GET /review-queue (needs editor)', async () => {
+    const layer = getLayer('/review-queue', 'get');
+    expect(layer.route.stack).toHaveLength(3);
+    const gate = layer.route.stack[1].handle;
+    const out = await invoke(gate, {
+      user: { role: 'viewer', id: 'v1', name: 'V', username: 'v' },
+    });
+    expect(out.status).toBe(403);
+  });
+});
+
 describe('POST /translations/:id/reject', () => {
   it('rejects with reason; 404 unknown; 400 oversize reason', async () => {
     const trId = insertTerm('a', 'a1', 'proposed');

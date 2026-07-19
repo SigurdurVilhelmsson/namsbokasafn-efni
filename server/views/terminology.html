@@ -880,7 +880,7 @@
     <!-- Review Queue Alert -->
     <div class="review-alert" id="review-queue-alert" style="display: none;">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-      <span><span id="review-queue-count"></span> or&#240; b&#237;&#240;a yfirlestrar.</span>
+      <span><span id="review-queue-count"></span> or&#240; <span id="review-queue-verb">b&#237;&#240;a</span> yfirlestrar.</span>
       <a href="#" onclick="showReviewQueue(); return false;">Sko&#240;a</a>
     </div>
 
@@ -1339,6 +1339,7 @@
     let queueStatusFilter = 'proposed';
     let queueTotal = 0;
     const queueSelected = new Set();
+    let queueSubjectPrefill = '';
 
     function canActOnQueue() {
       return currentUser && ['admin', 'head-editor'].includes(currentUser.role);
@@ -1375,16 +1376,21 @@
       document.getElementById('queue-count-needs_review').textContent = counts.needsReview || 0;
       const total = (counts.proposed || 0) + (counts.disputed || 0) + (counts.needsReview || 0);
       const alertBox = document.getElementById('review-queue-alert');
+      document.getElementById('review-queue-verb').textContent = total === 1 ? 'bíður' : 'bíða';
       if (total > 0) {
         document.getElementById('review-queue-count').textContent = total;
         alertBox.style.display = 'flex';
       } else {
         alertBox.style.display = 'none';
       }
-      // Prefill the tag-at-approval picker from the book's resolved subject
+      // Prefill the tag-at-approval picker from the book's resolved subject.
+      // Only re-sync while the field still holds our own last prefill (first
+      // load, or a book-filter change) — an explicit user choice, including
+      // deliberately clearing it, is never clobbered.
       const batchSel = document.getElementById('queue-batch-subject');
-      if (counts.subject && !batchSel.value) {
-        batchSel.value = counts.subject;
+      if (batchSel.value === queueSubjectPrefill) {
+        batchSel.value = counts.subject || '';
+        queueSubjectPrefill = batchSel.value;
       }
       return counts;
     }
@@ -1503,14 +1509,17 @@
 
     async function queueApprove(id, untagged) {
       const subject = document.getElementById('queue-batch-subject').value;
-      if (
+      if (untagged && subject) {
+        if (!confirm('Samþykkja með fagið „' + (SUBJECT_NAMES[subject] || subject) + '“?')) return;
+      } else if (
         untagged &&
         !subject &&
         !confirm(
-          'Þýðingin er ómerkt (ekkert fag). Samþykkja án fags? Ómerkt orð ná ekki í vélþýðingar-orðasafnið.'
+          'Þýðingin er ómerkt (ekkert fag). Samþykkja án fags? Ómerkt orð skila sér ekki í vélþýðingarorðasafnið.'
         )
-      )
+      ) {
         return;
+      }
       try {
         const body = untagged && subject ? { subjects: [subject] } : {};
         const data = await fetchJson('/api/terminology/translations/' + id + '/approve', {
@@ -1545,10 +1554,12 @@
       const ids = Array.from(queueSelected);
       if (ids.length === 0) return;
       const subject = document.getElementById('queue-batch-subject').value;
+      const single = ids.length === 1;
+      const noun = single ? 'þýðingu' : 'þýðingar';
       const subjectNote = subject
-        ? ' með fagið „' + (SUBJECT_NAMES[subject] || subject) + '“ á ómerktar'
-        : ' án fags á ómerktar';
-      if (!confirm('Samþykkja ' + ids.length + ' þýðingar' + subjectNote + '?')) return;
+        ? ' með fagið „' + (SUBJECT_NAMES[subject] || subject) + '“' + (single ? '' : ' á ómerktar')
+        : ' án fags' + (single ? '' : ' á ómerktar');
+      if (!confirm('Samþykkja ' + ids.length + ' ' + noun + subjectNote + '?')) return;
       try {
         const body = subject ? { ids, subjects: [subject] } : { ids };
         const data = await fetchJson('/api/terminology/translations/batch-approve', {
@@ -1614,8 +1625,9 @@
       const stats = await fetchJson(statsUrl);
 
       var byStatus = stats.byStatus || {};
+      var totalTranslations = (stats.total || 0) - (byStatus.rejected || 0);
       document.getElementById('stat-total').textContent =
-        (stats.headwords || 0) + ' or\u00F0h. / ' + (stats.total || 0) + ' \u00FE\u00FD\u00F0.';
+        (stats.headwords || 0) + ' or\u00F0h. / ' + totalTranslations + ' \u00FE\u00FD\u00F0.';
       document.getElementById('stat-approved').textContent = byStatus.approved || 0;
       document.getElementById('stat-proposed').textContent = byStatus.proposed || 0;
       document.getElementById('stat-disputed').textContent = byStatus.disputed || 0;
