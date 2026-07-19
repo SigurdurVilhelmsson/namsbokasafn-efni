@@ -58,7 +58,7 @@ router.get('/', requireAuth, (req, res) => {
 
   try {
     // bookSlug is a convenience alias: resolve to subject
-    const effectiveSubject = subject || resolveBookSubject(bookSlug);
+    const effectiveSubject = subject || terminology.getBookSubject(bookSlug);
 
     const result = terminology.searchTerms(q, {
       subject: effectiveSubject || undefined,
@@ -116,23 +116,60 @@ router.get('/stats', requireAuth, (req, res) => {
 });
 
 /**
- * GET /api/terminology/review-queue
- * Get headwords with translations needing review (disputed/needs_review)
+ * GET /api/terminology/review-queue  (item 19 — translation-granular)
+ * Query: status (comma-list, default proposed,disputed,needs_review),
+ *        source, subject ('untagged' allowed), book, limit, offset.
+ * Read = EDITOR; actions are HEAD_EDITOR (pinned RBAC asymmetry).
  */
 router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { subject, limit, offset } = req.query;
+  const { status, source, subject, book, limit, offset } = req.query;
+
+  const effLimit = Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200);
+  const effOffset = Math.max(parseInt(offset, 10) || 0, 0);
 
   try {
-    const terms = terminology.getReviewQueue({
+    const statuses = status
+      ? String(status)
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean)
+      : undefined;
+
+    const result = terminology.getTranslationReviewQueue({
+      statuses,
+      source: source || undefined,
       subject: subject || undefined,
-      limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
-      offset: Math.max(parseInt(offset, 10) || 0, 0),
+      book: book || undefined,
+      limit: effLimit,
+      offset: effOffset,
     });
 
-    res.json({ terms });
+    res.json({ ...result, limit: effLimit, offset: effOffset });
   } catch (err) {
     log.error({ err }, 'Review queue error');
-    res.status(500).json({ error: 'Failed to get review queue', message: err.message });
+    const badRequest = err.message.includes('Invalid') || err.message.includes('must be');
+    res.status(badRequest ? 400 : 500).json({
+      error: 'Failed to get review queue',
+      message: err.message,
+    });
+  }
+});
+
+/**
+ * GET /api/terminology/review-queue/counts  (item 19)
+ * Feeds the banner + queue chips; `subject` in the response is the resolved
+ * effective subject for the client's tag-at-approval picker prefill.
+ */
+router.get('/review-queue/counts', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  try {
+    const counts = terminology.getReviewQueueCounts({
+      book: req.query.book || undefined,
+      subject: req.query.subject || undefined,
+    });
+    res.json(counts);
+  } catch (err) {
+    log.error({ err }, 'Review queue counts error');
+    res.status(500).json({ error: 'Failed to get review queue counts', message: err.message });
   }
 });
 
@@ -175,7 +212,7 @@ router.get('/categories', requireAuth, (req, res) => {
 router.get('/export', requireAuth, (req, res) => {
   const { format = 'json', q, subject, bookSlug, status } = req.query;
 
-  const effectiveSubject = subject || resolveBookSubject(bookSlug);
+  const effectiveSubject = subject || terminology.getBookSubject(bookSlug);
 
   try {
     const result = terminology.searchTerms(q || '', {
@@ -559,6 +596,82 @@ router.delete('/translations/:id', requireAuth, requireRole(ROLES.ADMIN), (req, 
 // ============================================================================
 
 /**
+ * POST /api/terminology/translations/batch-approve  (item 19)
+ * Body: { ids: number[], subjects?: string[] }.
+ * All-or-nothing; batch subjects tag ONLY currently-untagged rows.
+ */
+router.post(
+  '/translations/batch-approve',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    const { ids, subjects } = req.body || {};
+
+    try {
+      const result = terminology.batchApproveTranslations(
+        ids,
+        req.user.id,
+        req.user.name,
+        subjects !== undefined ? { subjects } : {}
+      );
+
+      activityLog.log({
+        type: 'batch_approve_translations',
+        userId: req.user.id,
+        username: req.user.username,
+        description: `Batch-approved ${result.approved} translations (${result.tagged} tagged)`,
+        metadata: { ids, subjects: subjects || null, ...result },
+      });
+
+      res.json({ success: true, ...result });
+    } catch (err) {
+      log.error({ err }, 'Batch approve error');
+      const badRequest =
+        err.message.includes('must be') ||
+        err.message.includes('Invalid') ||
+        err.message.includes('Too many');
+      res
+        .status(err.message.includes('not found') ? 404 : badRequest ? 400 : 500)
+        .json({ error: 'Failed to batch-approve translations', message: err.message });
+    }
+  }
+);
+
+/**
+ * POST /api/terminology/translations/:id/reject  (item 19)
+ * Body: { reason?: string } (≤500 chars). Terminal-but-reversible.
+ */
+router.post('/translations/:id/reject', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const { id } = req.params;
+  const { reason } = req.body || {};
+
+  try {
+    const term = terminology.rejectTranslation(
+      parseInt(id, 10),
+      req.user.id,
+      req.user.name,
+      typeof reason === 'string' ? reason : ''
+    );
+
+    activityLog.log({
+      type: 'reject_translation',
+      userId: req.user.id,
+      username: req.user.username,
+      description: `Rejected translation #${id} for "${term.english}"`,
+      metadata: { headwordId: term.id, translationId: parseInt(id, 10) },
+    });
+
+    res.json({ success: true, term });
+  } catch (err) {
+    log.error({ err }, 'Reject translation error');
+    const badRequest = err.message.includes('must be');
+    res
+      .status(err.message.includes('not found') ? 404 : badRequest ? 400 : 500)
+      .json({ error: 'Failed to reject translation', message: err.message });
+  }
+});
+
+/**
  * POST /api/terminology/translations/:id/approve
  * Approve a translation (HEAD_EDITOR+)
  */
@@ -570,7 +683,14 @@ router.post(
     const { id } = req.params;
 
     try {
-      const term = terminology.approveTranslation(parseInt(id, 10), req.user.id, req.user.name);
+      const options =
+        req.body && req.body.subjects !== undefined ? { subjects: req.body.subjects } : {};
+      const term = terminology.approveTranslation(
+        parseInt(id, 10),
+        req.user.id,
+        req.user.name,
+        options
+      );
 
       activityLog.log({
         type: 'approve_translation',
@@ -583,10 +703,10 @@ router.post(
       res.json({ success: true, term });
     } catch (err) {
       log.error({ err }, 'Approve translation error');
-      res.status(err.message.includes('not found') ? 404 : 500).json({
-        error: 'Failed to approve translation',
-        message: err.message,
-      });
+      const badRequest = err.message.includes('Invalid') || err.message.includes('must be');
+      res
+        .status(err.message.includes('not found') ? 404 : badRequest ? 400 : 500)
+        .json({ error: 'Failed to approve translation', message: err.message });
     }
   }
 );
@@ -749,7 +869,7 @@ router.post(
       return res.status(400).json({ error: 'bookSlug is required' });
     }
 
-    const bookSubject = resolveBookSubject(bookSlug);
+    const bookSubject = terminology.getBookSubject(bookSlug);
     const subjects = bookSubject ? [bookSubject] : [];
 
     let csvParseSync;
@@ -903,7 +1023,7 @@ router.post(
       });
     }
 
-    const bookSubject = resolveBookSubject(bookSlug);
+    const bookSubject = terminology.getBookSubject(bookSlug);
     const subjects = bookSubject ? [bookSubject] : [];
 
     try {
@@ -977,44 +1097,5 @@ router.post('/check-consistency', requireAuth, (req, res) => {
     res.status(500).json({ error: 'Failed to check consistency', message: err.message });
   }
 });
-
-// ============================================================================
-// HELPERS
-// ============================================================================
-
-/**
- * Resolve a book slug to its primary subject domain.
- * Returns null if not found.
- */
-function resolveBookSubject(bookSlug) {
-  if (!bookSlug) return null;
-
-  const Database = require('better-sqlite3');
-  const dbPath = require('../lib/dbPath')();
-  if (!fs.existsSync(dbPath)) return null;
-
-  const db = new Database(dbPath);
-  try {
-    const row = db
-      .prepare(
-        `
-        SELECT bsm.primary_subject
-        FROM book_subject_mapping bsm
-        JOIN registered_books rb ON rb.id = bsm.book_id
-        WHERE rb.slug = ?
-      `
-      )
-      .get(bookSlug);
-    db.close();
-    return row ? row.primary_subject : null;
-  } catch {
-    try {
-      db.close();
-    } catch {
-      /* ignore */
-    }
-    return null;
-  }
-}
 
 module.exports = router;

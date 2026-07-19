@@ -660,41 +660,6 @@ function addDiscussion(headwordId, comment, userId, username, proposedTranslatio
 // ─────────────────────────────────────────
 
 /**
- * Get translations needing review (disputed or needs_review).
- */
-function getReviewQueue(options = {}) {
-  const { subject, limit = 50, offset = 0 } = options;
-  const db = getDb();
-
-  let sql = `
-    SELECT DISTINCT h.id
-    FROM terminology_headwords h
-    JOIN terminology_translations t ON t.headword_id = h.id
-  `;
-  const params = [];
-
-  if (subject) {
-    sql += ` JOIN terminology_translation_subjects ts ON ts.translation_id = t.id`;
-  }
-
-  sql += ` WHERE t.status IN ('disputed', 'needs_review')`;
-
-  if (subject) {
-    sql += ` AND ts.subject = ?`;
-    params.push(subject);
-  }
-
-  sql += ` ORDER BY h.updated_at DESC LIMIT ? OFFSET ?`;
-  params.push(limit, offset);
-
-  const ids = db
-    .prepare(sql)
-    .all(...params)
-    .map((r) => r.id);
-  return ids.map((id) => loadHeadword(db, id));
-}
-
-/**
  * Public book→subject resolver (item 19; consolidates the routes-level
  * resolveBookSubject duplicate — I18-R2). Errors propagate: fail loud.
  */
@@ -1822,7 +1787,6 @@ module.exports = {
   disputeTerm,
   rejectTranslation,
   addDiscussion,
-  getReviewQueue,
   getTranslationReviewQueue,
   getReviewQueueCounts,
   getBookSubject,

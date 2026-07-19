@@ -10,89 +10,10 @@ import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const Database = require('better-sqlite3');
 const terminologyService = require('../services/terminologyService');
+const { createTestDb } = require('./helpers/terminologyTestDb');
 
 let db;
-
-function createTestDb() {
-  const testDb = new Database(':memory:');
-  testDb.pragma('journal_mode = WAL');
-  testDb.pragma('foreign_keys = ON');
-
-  testDb.exec(`
-    CREATE TABLE registered_books (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      slug TEXT UNIQUE NOT NULL,
-      title_is TEXT,
-      status TEXT DEFAULT 'active'
-    );
-
-    CREATE TABLE terminology_headwords (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      english TEXT NOT NULL,
-      pos TEXT,
-      definition_en TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE(english, pos)
-    );
-
-    CREATE TABLE terminology_translations (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      headword_id INTEGER NOT NULL,
-      icelandic TEXT NOT NULL,
-      definition_is TEXT,
-      inflections TEXT,
-      source TEXT,
-      idordabanki_id INTEGER,
-      notes TEXT,
-      status TEXT DEFAULT 'proposed',
-      proposed_by TEXT,
-      proposed_by_name TEXT,
-      approved_by TEXT,
-      approved_by_name TEXT,
-      approved_at DATETIME,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE,
-      UNIQUE(headword_id, icelandic)
-    );
-
-    CREATE TABLE terminology_translation_subjects (
-      translation_id INTEGER NOT NULL,
-      subject TEXT NOT NULL,
-      PRIMARY KEY (translation_id, subject),
-      FOREIGN KEY (translation_id) REFERENCES terminology_translations(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE book_subject_mapping (
-      book_id INTEGER NOT NULL,
-      primary_subject TEXT NOT NULL,
-      PRIMARY KEY (book_id),
-      FOREIGN KEY (book_id) REFERENCES registered_books(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE terminology_discussions (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      headword_id INTEGER NOT NULL,
-      user_id TEXT NOT NULL,
-      username TEXT NOT NULL,
-      comment TEXT NOT NULL,
-      proposed_translation TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE
-    );
-
-    INSERT INTO registered_books (slug, title_is) VALUES ('efnafraedi-2e', 'Efnafræði 2e');
-    INSERT INTO registered_books (slug, title_is) VALUES ('liffraedi-2e', 'Líffræði 2e');
-
-    INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (1, 'chemistry');
-    INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (2, 'biology');
-  `);
-
-  return testDb;
-}
 
 beforeAll(() => {
   db = createTestDb();
@@ -724,55 +645,6 @@ describe('deleteHeadword() and deleteTranslation()', () => {
     expect(hw).not.toBeNull();
     expect(hw.translations).toHaveLength(1);
     expect(hw.translations[0].icelandic).toBe('hólf');
-  });
-});
-
-// =====================
-// getReviewQueue()
-// =====================
-describe('getReviewQueue()', () => {
-  it('returns only headwords with disputed/needs_review translations', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'disputed' });
-    insertFullTerm({ english: 'ion', icelandic: 'jón', status: 'needs_review' });
-    insertFullTerm({ english: 'bond', icelandic: 'tengi', status: 'proposed' });
-
-    const queue = terminologyService.getReviewQueue();
-    expect(queue).toHaveLength(2);
-    const terms = queue.map((t) => t.english).sort();
-    expect(terms).toEqual(['atom', 'ion']);
-  });
-
-  it('filters by subject', () => {
-    insertFullTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-      status: 'disputed',
-      subjects: ['chemistry'],
-    });
-    insertFullTerm({
-      english: 'cell',
-      icelandic: 'fruma',
-      status: 'disputed',
-      subjects: ['biology'],
-    });
-
-    const queue = terminologyService.getReviewQueue({ subject: 'chemistry' });
-    const terms = queue.map((t) => t.english);
-    expect(terms).toContain('molecule');
-    expect(terms).not.toContain('cell');
-  });
-
-  it('supports pagination (limit/offset)', () => {
-    insertFullTerm({ english: 'alpha', icelandic: 'alfa', status: 'disputed' });
-    insertFullTerm({ english: 'beta', icelandic: 'beta', status: 'disputed' });
-    insertFullTerm({ english: 'gamma', icelandic: 'gamma', status: 'disputed' });
-
-    const page1 = terminologyService.getReviewQueue({ limit: 2, offset: 0 });
-    expect(page1).toHaveLength(2);
-
-    const page2 = terminologyService.getReviewQueue({ limit: 2, offset: 2 });
-    expect(page2).toHaveLength(1);
   });
 });
 
