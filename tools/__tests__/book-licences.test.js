@@ -19,13 +19,13 @@ describe('getBookLicence', () => {
     expect(() => getBookLicence('testbook')).toThrow(/book-licences\.cjs/);
   });
 
-  it('covers exactly the five active pipeline books', () => {
-    expect(Object.keys(BOOK_LICENCES).sort()).toEqual([
-      'edlisfraedi-2e',
-      'efnafraedi-2e',
-      'liffraedi-2e',
-      'lifraen-efnafraedi',
-      'orverufraedi',
-    ]);
+  it('pins the full BOOK_LICENCES map (F8; values reviewer-verified against the provenance doc)', () => {
+    expect(BOOK_LICENCES).toEqual({
+      'efnafraedi-2e': { licence: 'CC BY 4.0', obtained: '2026-01-19' },
+      'liffraedi-2e': { licence: 'CC BY 4.0', obtained: '2026-03-11' },
+      orverufraedi: { licence: 'CC BY 4.0', obtained: '2026-03-09' },
+      'edlisfraedi-2e': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
+      'lifraen-efnafraedi': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
+    });
   });
 });

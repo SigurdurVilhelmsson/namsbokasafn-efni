@@ -39,6 +39,18 @@ describe('corpusCleanText', () => {
       'H~2~O og *Macro* og __efnafræði__'
     );
   });
+
+  it('drops the legacy [#id] xref dialect, eating one leading space (m68700 chloroform case)', () => {
+    expect(
+      corpusCleanText('þessara frumeinda. [#CNX_Chem_03_01_chloroform] sýnir útreikningana')
+    ).toBe('þessara frumeinda. sýnir útreikningana');
+  });
+
+  it('strips [#id] BEFORE lb/rb decode so a restored literal bracket is never re-eaten', () => {
+    // If the [#id] strip ran after lb/rb decode, "[[lb:]]#1[[rb:]]" would
+    // decode to "[#1]" first and then be wrongly stripped to "".
+    expect(corpusCleanText('[[lb:]]#1[[rb:]]')).toBe('[#1]');
+  });
 });
 
 describe('splitSegId', () => {
@@ -86,6 +98,11 @@ describe('computePostEdited', () => {
   it('is null when either IS tier is missing', () => {
     expect(computePostEdited('Water.', null, 'Vatn.')).toBeNull();
     expect(computePostEdited('Water.', 'Vatn.', null)).toBeNull();
+  });
+
+  it('is null when either IS tier is whitespace-only (MUSTFIX2/F3)', () => {
+    expect(computePostEdited('Water.', '   ', 'Vatn.')).toBeNull();
+    expect(computePostEdited('Water.', 'Vatn.', '   ')).toBeNull();
   });
 });
 
@@ -141,28 +158,33 @@ describe('buildCorpus over a book fixture', () => {
   }
 
   function writeFixtureBook() {
-    // m1: all-tier module — t untouched, p1 untouched-but-normalized, p2 edited
+    // m1: all-tier module — t untouched, p1 untouched-but-normalized, p2 edited,
+    // p3 has MT but an empty-content faithful marker (MUSTFIX2/F3: must gate to null)
     fs.writeFileSync(
       mk('books', BOOK, '02-for-mt', 'ch01', 'm1-segments.en.md'),
       '<!-- SEG:m1:title:t -->\nIntroduction\n\n' +
         '<!-- SEG:m1:para:p1 -->\nWater is a [[i:solid]].\n\n' +
-        '<!-- SEG:m1:para:p2 -->\nSolid.'
+        '<!-- SEG:m1:para:p2 -->\nSolid.\n\n' +
+        '<!-- SEG:m1:para:p3 -->\nGas.'
     );
-    // MT: p1 carries escapes+wrap; p2 duplicated (benign, first-wins);
-    // px is an IS orphan (no EN counterpart)
+    // MT: p1 carries escapes+wrap; p2 duplicated (benign, first-wins — occurrences
+    // deliberately DIFFER so first-wins is discriminated, not accidentally proven
+    // by two identical strings); px is an IS orphan (no EN counterpart)
     fs.writeFileSync(
       mk('books', BOOK, '02-mt-output', 'ch01', 'm1-segments.is.md'),
       '<!-- SEG:m1:title:t -->\nInngangur\n\n' +
         '<!-- SEG:m1:para:p1 -->\nVatn er\n\\[\\[MATH:1\\]\\] fast efni.\n\n' +
         '<!-- SEG:m1:para:p2 -->\nFast.\n\n' +
-        '<!-- SEG:m1:para:p2 -->\nFast.\n\n' +
-        '<!-- SEG:m1:para:px -->\nMunaðarlaus.'
+        '<!-- SEG:m1:para:p2 -->\nÖNNUR.\n\n' +
+        '<!-- SEG:m1:para:px -->\nMunaðarlaus.\n\n' +
+        '<!-- SEG:m1:para:p3 -->\nGas.'
     );
     fs.writeFileSync(
       mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-segments.is.md'),
       '<!-- SEG:m1:title:t -->\nInngangur\n\n' +
         '<!-- SEG:m1:para:p1 -->\nVatn er [[MATH:1]] fast efni.\n\n' +
-        '<!-- SEG:m1:para:p2 -->\nFast efni.'
+        '<!-- SEG:m1:para:p2 -->\nFast efni.\n\n' +
+        '<!-- SEG:m1:para:p3 -->\n'
     );
     fs.writeFileSync(
       mk('books', BOOK, '04-localized-content', 'ch01', 'm1-segments.is.md'),
@@ -183,6 +205,16 @@ describe('buildCorpus over a book fixture', () => {
     fs.writeFileSync(
       mk('books', BOOK, '02-for-mt', 'ch01', 'm3-segments.en.md'),
       '<!-- SEG:m3:para:p1 -->\nIons.'
+    );
+    // chapter-metadata: accepted basename, no tier files (F13)
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch01', 'chapter-metadata-segments.en.md'),
+      '<!-- SEG:chapter-title -->\nChapter One'
+    );
+    // m4: accepted basename but zero SEG markers — skip-reported, not fatal (M8)
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch01', 'm4-segments.en.md'),
+      'No markers here, just prose.'
     );
     // skip-report triggers in ch01
     fs.writeFileSync(
@@ -226,11 +258,12 @@ describe('buildCorpus over a book fixture', () => {
 
   it('builds rows for every EN segment with correct tier presence', () => {
     const { rows, stats } = buildCorpus(BOOK, {});
-    // 3 (m1) + 1 (m2) + 1 (m3) + 1 (exercises) + 1 (m9) = 7 rows
-    expect(rows).toHaveLength(7);
-    expect(stats.rows).toBe(7);
-    expect(stats.modulesListed).toBe(5);
-    expect(stats.tiers).toEqual({ mt: 5, faithful: 3, localized: 3 });
+    // 4 (m1: t,p1,p2,p3) + 1 (m2) + 1 (m3) + 1 (chapter-metadata) + 1 (exercises)
+    // + 1 (m9) = 9 rows; m4 has zero SEG markers and contributes none (M8)
+    expect(rows).toHaveLength(9);
+    expect(stats.rows).toBe(9);
+    expect(stats.modulesListed).toBe(6);
+    expect(stats.tiers).toEqual({ mt: 6, faithful: 3, localized: 3 });
 
     const byId = new Map(rows.map((r) => [r.id, r]));
     expect(byId.get('m3:para:p1').mt).toBeNull();
@@ -238,15 +271,48 @@ describe('buildCorpus over a book fixture', () => {
     expect(byId.get('m9:para:p1').chapter).toBe('appendices');
     expect(byId.get('m1:title:t').chapter).toBe('1');
     expect(byId.get('m1:title:t').licence).toBe('CC BY 4.0');
+    // F10: pin passthrough fields exactly (a field swap would otherwise pass)
+    expect(byId.get('m1:title:t').id).toBe('m1:title:t');
+    expect(byId.get('m1:title:t').book).toBe('efnafraedi-2e');
+    expect(byId.get('m1:title:t').module).toBe('m1');
+    // F13: chapter-metadata basename is accepted; the row carries the short seg-id
+    const meta = byId.get('chapter-title');
+    expect(meta.module).toBe('chapter-metadata');
+    expect(meta.mt).toBeNull();
+    // MUSTFIX2 (F3): an empty-content faithful marker is gated to null, not
+    // treated as present — mt stays non-null, faithful and postEdited go null
+    expect(byId.get('m1:para:p3').mt).not.toBeNull();
+    expect(byId.get('m1:para:p3').faithful).toBeNull();
+  });
+
+  it('emits rows in deterministic chapter -> file -> segment order (F11)', () => {
+    const { rows } = buildCorpus(BOOK, {});
+    expect(rows.map((r) => r.id)).toEqual([
+      'chapter-title',
+      'm1:title:t',
+      'm1:para:p1',
+      'm1:para:p2',
+      'm1:para:p3',
+      'm2:para:p1',
+      'm3:para:p1',
+      '02-01-X:stimulus:b0',
+      'm9:para:p1',
+    ]);
   });
 
   it('computes postEdited per the editor view: normalization is not an edit', () => {
-    const byId = new Map(buildCorpus(BOOK, {}).rows.map((r) => [r.id, r]));
+    const { rows, stats } = buildCorpus(BOOK, {});
+    const byId = new Map(rows.map((r) => [r.id, r]));
     expect(byId.get('m1:title:t').postEdited).toBe(false);
     expect(byId.get('m1:para:p1').postEdited).toBe(false); // escapes+wrap only
     expect(byId.get('m1:para:p2').postEdited).toBe(true); // real edit
+    expect(byId.get('m1:para:p3').postEdited).toBeNull(); // empty faithful (MUSTFIX2/F3)
     expect(byId.get('m2:para:p1').postEdited).toBeNull(); // no faithful
     expect(byId.get('m3:para:p1').postEdited).toBeNull(); // no MT
+    // F12: pin the aggregate stats too (previously computed but unasserted)
+    expect(stats.postEditedTrue).toBe(1);
+    expect(stats.postEditedFalse).toBe(2);
+    expect(stats.emptyClean).toBe(0);
   });
 
   it('decodes exercise lb/rb in clean text and keeps MEDIA verbatim', () => {
@@ -258,12 +324,17 @@ describe('buildCorpus over a book fixture', () => {
   });
 
   it('counts duplicates, orphans, and skipped files without dropping data silently', () => {
-    const { stats, skipped } = buildCorpus(BOOK, {});
+    const { rows, stats, skipped } = buildCorpus(BOOK, {});
     expect(stats.duplicateIds).toBe(1); // m1 MT p2 twice
     expect(stats.orphanIs).toBe(1); // m1 MT px
-    expect(stats.filesSkipped).toBe(2);
+    expect(stats.filesSkipped).toBe(3); // + m4 (no SEG markers, M8)
     expect(skipped).toContain(path.join('ch01', 'm1-segments.en.md.backup.20260701'));
     expect(skipped).toContain(path.join('ch01', 'm1-segments-links.json'));
+    expect(skipped).toContain(`${path.join('ch01', 'm4-segments.en.md')} (no SEG markers)`);
+    // Fixture honesty: the two p2 MT occurrences now differ, so first-wins is
+    // actually discriminated rather than incidentally proven by two identical strings.
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:para:p2').mt.raw).toBe('Fast.');
   });
 
   it('respects the chapter filter', () => {
@@ -292,10 +363,10 @@ describe('buildCorpus over a book fixture', () => {
     });
     const outDir = path.join(tmpRoot, 'out');
     const paths = writeOutputs(rows, manifest, outDir, BOOK);
-    expect(fs.readFileSync(paths.jsonlPath, 'utf-8').trimEnd().split('\n')).toHaveLength(7);
+    expect(fs.readFileSync(paths.jsonlPath, 'utf-8').trimEnd().split('\n')).toHaveLength(9);
     expect(fs.readFileSync(paths.tsvPath, 'utf-8').startsWith('id\tbook\t')).toBe(true);
     const written = JSON.parse(fs.readFileSync(paths.manifestPath, 'utf-8'));
-    expect(written.stats.rows).toBe(7);
+    expect(written.stats.rows).toBe(9);
   });
 });
 
@@ -364,8 +435,9 @@ describe('serializers', () => {
     // Byte-exact notes pin: verifies UTF-8 typographic apostrophe in MT'd (not ASCII)
     expect(manifest.notes).toEqual([
       'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
-      '[[MATH:N]]/[[MEDIA:n]] placeholders retained; resolve via 02-structure sidecars',
+      '[[MATH:N]]/[[MEDIA:n]] placeholders retained, resolve via 02-structure sidecars; [[BR]]/[[SPACE]] formatting placeholders also retained and are NOT sidecar-resolvable',
       `EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
+      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; per-segment review status lives only in the production DB (segment_edits)',
     ]);
   });
 });
