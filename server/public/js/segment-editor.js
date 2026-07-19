@@ -2285,9 +2285,19 @@
               const primary = translations.find((t) => t.isPrimary) || translations[0];
               if (!primary) return '';
               const others = translations.filter((t) => t !== primary);
+              // Final-review F1: alternatives carry their own subject badges —
+              // the einnig list is the only surface where a foreign sibling of
+              // a mixed homograph appears at all, so it must be labeled too.
+              const otherLabel = (t) =>
+                `${escapeHtml(t.icelandic)}${(t.subjects || [])
+                  .map(
+                    (s) =>
+                      ` <span class="term-subject-badge${t.isFallback ? ' other' : ''}">${escapeHtml(SUBJECT_NAMES[s] || s)}</span>`
+                  )
+                  .join('')}`;
               const othersText =
                 others.length > 0
-                  ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${others.map((t) => escapeHtml(t.icelandic)).join(', ')})</span>`
+                  ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${others.map(otherLabel).join(', ')})</span>`
                   : '';
               // Item 18: label where the shown translation comes from; the
               // 'other' modifier marks a fallback (foreign-subject) pick.

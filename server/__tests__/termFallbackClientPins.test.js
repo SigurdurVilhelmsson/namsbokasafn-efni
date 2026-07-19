@@ -21,6 +21,7 @@ describe('term popup fallback presentation (item 18)', () => {
   it('renders the fallback note when the match is fallback', () => {
     expect(editorJs).toMatch(/termInfo\.isFallback/);
     expect(editorJs).toMatch(/term-popup-fallback-note/);
+    expect(editorJs).toMatch(/\$\{fallbackNote\}/);
     expect(uiStrings).toMatch(/termPopup:\s*\{/);
     expect(uiStrings).toMatch(/fallbackNote:/);
   });
@@ -41,5 +42,9 @@ describe('quick-lookup subject labeling (item 18)', () => {
 
   it('lookup rows badge the primary translation subjects and mark fallback', () => {
     expect(editorJs).toMatch(/term-subject-badge\$\{primary\.isFallback \? ' other' : ''\}/);
+  });
+
+  it('einnig-alternatives carry their own subject badges with fallback modifier', () => {
+    expect(editorJs).toMatch(/term-subject-badge\$\{t\.isFallback \? ' other' : ''\}/);
   });
 });
