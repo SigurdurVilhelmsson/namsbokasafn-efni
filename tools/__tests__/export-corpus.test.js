@@ -51,6 +51,10 @@ describe('corpusCleanText', () => {
     // decode to "[#1]" first and then be wrongly stripped to "".
     expect(corpusCleanText('[[lb:]]#1[[rb:]]')).toBe('[#1]');
   });
+
+  it('trims the leading space left behind when a segment BEGINS with [#id]', () => {
+    expect(corpusCleanText('[#CNX_Chem_12_07_CatReCoDig] sýnir hvarfið')).toBe('sýnir hvarfið');
+  });
 });
 
 describe('splitSegId', () => {

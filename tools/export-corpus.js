@@ -50,7 +50,8 @@ function corpusCleanText(raw) {
   return cleanSegmentText(raw)
     .replace(/ ?\[#[^\]\s]+\]/g, '')
     .replace(/\[\[lb:\]\]/g, '[')
-    .replace(/\[\[rb:\]\]/g, ']');
+    .replace(/\[\[rb:\]\]/g, ']')
+    .trim();
 }
 
 /**
