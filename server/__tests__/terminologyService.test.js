@@ -1049,6 +1049,31 @@ describe('findTermsInSegments() — subject scoping', () => {
     expect(result.s.matches[0].isFallback).toBe(false);
     expect(result.s.matches[0].translations[0].isFallback).toBe(false);
   });
+
+  it('a longer fallback term never shadows an overlapping in-scope term (in-scope wins)', () => {
+    // chemistry book: in-scope 'electron' (approved 'rafeind') overlaps
+    // biology-only 'electron transport chain'. The in-scope term must claim
+    // the span — its match AND its missing-term issue must both survive.
+    const hwShort = insertHeadword({ english: 'electron' });
+    const trShort = insertTranslation(hwShort, { icelandic: 'rafeind', status: 'approved' });
+    addSubject(trShort, 'chemistry');
+    const hwLong = insertHeadword({ english: 'electron transport chain' });
+    const trLong = insertTranslation(hwLong, {
+      icelandic: 'rafeindaflutningskeðja',
+      status: 'approved',
+    });
+    addSubject(trLong, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('the electron transport chain moves', 'eitthvað flyst'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].english).toBe('electron');
+    expect(result.s.matches[0].isFallback).toBe(false);
+    expect(result.s.issues).toHaveLength(1);
+    expect(result.s.issues[0].expected).toBe('rafeind');
+  });
 });
 
 // =====================

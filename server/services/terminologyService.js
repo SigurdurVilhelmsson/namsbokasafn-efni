@@ -1087,7 +1087,7 @@ function findTermsInSegments(segments, bookSlug = null) {
   // surfaces, badged via isFallback) but never produces missing-term issues —
   // QA must not demand another subject's translation. Every headword has ≥1
   // translation (SQL inner join), so the partition is total.
-  const terms = Array.from(termMap.values()).map((term) => {
+  const partitioned = Array.from(termMap.values()).map((term) => {
     const inScope = term.translations.filter(
       (t) => translationTier(t.subjects, bookSubject) !== 'fallback'
     );
@@ -1095,6 +1095,14 @@ function findTermsInSegments(segments, bookSlug = null) {
       ? { ...term, translations: inScope, isFallback: false }
       : { ...term, isFallback: true };
   });
+  // In-scope terms claim their spans before any fallback term is considered:
+  // the book's own subject always wins an overlap (a fallback may only fill
+  // spans no in-scope term claimed). Within each group the SQL longest-first
+  // order is preserved, so "melting point" still beats "melting".
+  const terms = [
+    ...partitioned.filter((t) => !t.isFallback),
+    ...partitioned.filter((t) => t.isFallback),
+  ];
   const result = {};
 
   for (const seg of segments) {
