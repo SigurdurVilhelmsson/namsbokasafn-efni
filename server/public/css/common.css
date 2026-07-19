@@ -1404,6 +1404,11 @@ a:focus-visible,
   color: var(--warning);
 }
 
+.status-rejected {
+  background: var(--error-subtle);
+  color: var(--text-muted);
+}
+
 .status-complete {
   background: var(--success-subtle);
   color: var(--success);

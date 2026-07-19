@@ -10,89 +10,10 @@ import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const Database = require('better-sqlite3');
 const terminologyService = require('../services/terminologyService');
+const { createTestDb } = require('./helpers/terminologyTestDb');
 
 let db;
-
-function createTestDb() {
-  const testDb = new Database(':memory:');
-  testDb.pragma('journal_mode = WAL');
-  testDb.pragma('foreign_keys = ON');
-
-  testDb.exec(`
-    CREATE TABLE registered_books (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      slug TEXT UNIQUE NOT NULL,
-      title_is TEXT,
-      status TEXT DEFAULT 'active'
-    );
-
-    CREATE TABLE terminology_headwords (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      english TEXT NOT NULL,
-      pos TEXT,
-      definition_en TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE(english, pos)
-    );
-
-    CREATE TABLE terminology_translations (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      headword_id INTEGER NOT NULL,
-      icelandic TEXT NOT NULL,
-      definition_is TEXT,
-      inflections TEXT,
-      source TEXT,
-      idordabanki_id INTEGER,
-      notes TEXT,
-      status TEXT DEFAULT 'proposed',
-      proposed_by TEXT,
-      proposed_by_name TEXT,
-      approved_by TEXT,
-      approved_by_name TEXT,
-      approved_at DATETIME,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE,
-      UNIQUE(headword_id, icelandic)
-    );
-
-    CREATE TABLE terminology_translation_subjects (
-      translation_id INTEGER NOT NULL,
-      subject TEXT NOT NULL,
-      PRIMARY KEY (translation_id, subject),
-      FOREIGN KEY (translation_id) REFERENCES terminology_translations(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE book_subject_mapping (
-      book_id INTEGER NOT NULL,
-      primary_subject TEXT NOT NULL,
-      PRIMARY KEY (book_id),
-      FOREIGN KEY (book_id) REFERENCES registered_books(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE terminology_discussions (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      headword_id INTEGER NOT NULL,
-      user_id TEXT NOT NULL,
-      username TEXT NOT NULL,
-      comment TEXT NOT NULL,
-      proposed_translation TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE
-    );
-
-    INSERT INTO registered_books (slug, title_is) VALUES ('efnafraedi-2e', 'Efnafræði 2e');
-    INSERT INTO registered_books (slug, title_is) VALUES ('liffraedi-2e', 'Líffræði 2e');
-
-    INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (1, 'chemistry');
-    INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (2, 'biology');
-  `);
-
-  return testDb;
-}
 
 beforeAll(() => {
   db = createTestDb();
@@ -611,6 +532,90 @@ describe('disputeTranslation() and addDiscussion()', () => {
 });
 
 // =====================
+// rejectTranslation() — item 19
+// =====================
+describe('rejectTranslation()', () => {
+  it('exposes rejected as the fifth status', () => {
+    expect(terminologyService.TERM_STATUSES).toEqual([
+      'approved',
+      'proposed',
+      'disputed',
+      'needs_review',
+      'rejected',
+    ]);
+  });
+
+  it('sets status rejected and records a discussion entry with actor + reason', () => {
+    const { hwId, trId } = insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'proposed',
+    });
+    const hw = terminologyService.rejectTranslation(trId, 'u9', 'Head Editor', 'rangt fag');
+    expect(hw.translations[0].status).toBe('rejected');
+    const disc = db
+      .prepare('SELECT * FROM terminology_discussions WHERE headword_id = ?')
+      .all(hwId);
+    expect(disc).toHaveLength(1);
+    expect(disc[0].comment).toBe('Hafnað: rangt fag');
+    expect(disc[0].username).toBe('Head Editor');
+    expect(disc[0].user_id).toBe('u9');
+  });
+
+  it('records a bare "Hafnað" entry when no reason is given', () => {
+    const { hwId, trId } = insertFullTerm({ english: 'atom', icelandic: 'frumeind' });
+    terminologyService.rejectTranslation(trId, 'u9', 'Head Editor');
+    const disc = db
+      .prepare('SELECT comment FROM terminology_discussions WHERE headword_id = ?')
+      .get(hwId);
+    expect(disc.comment).toBe('Hafnað');
+  });
+
+  it('rejects from any prior status, including approved', () => {
+    const { trId } = insertFullTerm({ english: 'ion', icelandic: 'jón', status: 'approved' });
+    const hw = terminologyService.rejectTranslation(trId, 'u9', 'HE', '');
+    expect(hw.translations[0].status).toBe('rejected');
+  });
+
+  it('approve after reject works (un-reject for free)', () => {
+    const { trId } = insertFullTerm({ english: 'bond', icelandic: 'tengi', status: 'proposed' });
+    terminologyService.rejectTranslation(trId, 'u9', 'HE', '');
+    const hw = terminologyService.approveTranslation(trId, 'u9', 'HE');
+    expect(hw.translations[0].status).toBe('approved');
+  });
+
+  it('throws on unknown translation id', () => {
+    expect(() => terminologyService.rejectTranslation(9999, 'u', 'U', '')).toThrow(
+      'Translation not found'
+    );
+  });
+
+  it('throws when reason exceeds 500 characters, leaving status unchanged', () => {
+    const { trId } = insertFullTerm({ english: 'gas', icelandic: 'gas', status: 'proposed' });
+    expect(() => terminologyService.rejectTranslation(trId, 'u', 'U', 'a'.repeat(501))).toThrow(
+      'reason must be a string of at most 500 characters'
+    );
+    const row = db.prepare('SELECT status FROM terminology_translations WHERE id = ?').get(trId);
+    expect(row.status).toBe('proposed');
+  });
+
+  it('rejected translations vanish from lookupTerm and findTermsInSegments', () => {
+    const { trId } = insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+    });
+    terminologyService.rejectTranslation(trId, 'u', 'U', '');
+    expect(terminologyService.lookupTerm('molecule')).toHaveLength(0);
+    const res = terminologyService.findTermsInSegments([
+      { segmentId: 's1', enContent: 'a molecule here', isContent: 'texti' },
+    ]);
+    expect(res.s1.matches).toHaveLength(0);
+    expect(res.s1.issues).toHaveLength(0);
+  });
+});
+
+// =====================
 // deleteHeadword() / deleteTranslation()
 // =====================
 describe('deleteHeadword() and deleteTranslation()', () => {
@@ -640,55 +645,6 @@ describe('deleteHeadword() and deleteTranslation()', () => {
     expect(hw).not.toBeNull();
     expect(hw.translations).toHaveLength(1);
     expect(hw.translations[0].icelandic).toBe('hólf');
-  });
-});
-
-// =====================
-// getReviewQueue()
-// =====================
-describe('getReviewQueue()', () => {
-  it('returns only headwords with disputed/needs_review translations', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'disputed' });
-    insertFullTerm({ english: 'ion', icelandic: 'jón', status: 'needs_review' });
-    insertFullTerm({ english: 'bond', icelandic: 'tengi', status: 'proposed' });
-
-    const queue = terminologyService.getReviewQueue();
-    expect(queue).toHaveLength(2);
-    const terms = queue.map((t) => t.english).sort();
-    expect(terms).toEqual(['atom', 'ion']);
-  });
-
-  it('filters by subject', () => {
-    insertFullTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-      status: 'disputed',
-      subjects: ['chemistry'],
-    });
-    insertFullTerm({
-      english: 'cell',
-      icelandic: 'fruma',
-      status: 'disputed',
-      subjects: ['biology'],
-    });
-
-    const queue = terminologyService.getReviewQueue({ subject: 'chemistry' });
-    const terms = queue.map((t) => t.english);
-    expect(terms).toContain('molecule');
-    expect(terms).not.toContain('cell');
-  });
-
-  it('supports pagination (limit/offset)', () => {
-    insertFullTerm({ english: 'alpha', icelandic: 'alfa', status: 'disputed' });
-    insertFullTerm({ english: 'beta', icelandic: 'beta', status: 'disputed' });
-    insertFullTerm({ english: 'gamma', icelandic: 'gamma', status: 'disputed' });
-
-    const page1 = terminologyService.getReviewQueue({ limit: 2, offset: 0 });
-    expect(page1).toHaveLength(2);
-
-    const page2 = terminologyService.getReviewQueue({ limit: 2, offset: 2 });
-    expect(page2).toHaveLength(1);
   });
 });
 
@@ -726,6 +682,14 @@ describe('getStats()', () => {
 
     const stats = terminologyService.getStats();
     expect(stats.headwords).toBe(2);
+  });
+
+  it('counts rejected translations (item 19)', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'rejected' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
+    const stats = terminologyService.getStats();
+    expect(stats.byStatus.rejected).toBe(1);
+    expect(stats.byStatus.approved).toBe(1);
   });
 });
 
@@ -1296,6 +1260,35 @@ describe('exportBookGlossary()', () => {
     expect(data.terms).toHaveLength(1);
     expect(data.terms[0].english).toBe('molecule');
   });
+
+  it('excludes rejected translations from the export (item 19)', () => {
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['chemistry'],
+    });
+    insertFullTerm({
+      english: 'atom',
+      icelandic: 'frumeind',
+      status: 'rejected',
+      subjects: ['chemistry'],
+    });
+    const out = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(out.terms.map((t) => t.english)).toEqual(['molecule']);
+    expect(out.stats.total).toBe(1);
+  });
+
+  it('rejected siblings do not appear as alternatives (item 19)', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    const approvedId = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    const rejectedId = insertTranslation(hwId, { icelandic: 'efnatengi', status: 'rejected' });
+    addSubject(approvedId, 'chemistry');
+    addSubject(rejectedId, 'chemistry');
+    const out = terminologyService.exportBookGlossary('efnafraedi-2e');
+    const bond = out.terms.find((t) => t.english === 'bond');
+    expect(bond.alternatives).toEqual([]);
+  });
 });
 
 // =====================
@@ -1343,5 +1336,291 @@ describe('findTermsInSegments() — Unicode word boundary', () => {
     insertFullTerm({ english: 'acid', icelandic: 'sýra', status: 'approved' });
     const result = terminologyService.findTermsInSegments(seg('an acid', 'Sýra og basi'));
     expect(result.s.issues).toHaveLength(0);
+  });
+});
+
+// =====================
+// getBookSubject() / getTranslationReviewQueue() / getReviewQueueCounts() — item 19
+// =====================
+describe('getBookSubject()', () => {
+  it('resolves a mapped book, null for unmapped or missing input', () => {
+    expect(terminologyService.getBookSubject('efnafraedi-2e')).toBe('chemistry');
+    expect(terminologyService.getBookSubject('unknown-book')).toBeNull();
+    expect(terminologyService.getBookSubject(null)).toBeNull();
+    expect(terminologyService.getBookSubject(undefined)).toBeNull();
+  });
+});
+
+describe('getTranslationReviewQueue()', () => {
+  it('defaults to proposed+disputed+needs_review, excluding approved and rejected', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', status: 'approved' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', status: 'proposed' });
+    insertFullTerm({ english: 'c', icelandic: 'c1', status: 'disputed' });
+    insertFullTerm({ english: 'd', icelandic: 'd1', status: 'needs_review' });
+    insertFullTerm({ english: 'e', icelandic: 'e1', status: 'rejected' });
+    const { items, total } = terminologyService.getTranslationReviewQueue();
+    expect(total).toBe(3);
+    expect(items.map((i) => i.english).sort()).toEqual(['b', 'c', 'd']);
+  });
+
+  it('is translation-granular: mixed-status headword contributes only queued rows', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    insertTranslation(hwId, { icelandic: 'efnatengi', status: 'proposed' });
+    const { items, total } = terminologyService.getTranslationReviewQueue();
+    expect(total).toBe(1);
+    expect(items[0].icelandic).toBe('efnatengi');
+    expect(items[0].english).toBe('bond');
+    expect(items[0].headwordId).toBe(hwId);
+  });
+
+  it('accepts explicit statuses including rejected', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', status: 'proposed' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', status: 'rejected' });
+    const { items, total } = terminologyService.getTranslationReviewQueue({
+      statuses: ['rejected'],
+    });
+    expect(total).toBe(1);
+    expect(items[0].english).toBe('b');
+  });
+
+  it('throws on an unknown status', () => {
+    expect(() => terminologyService.getTranslationReviewQueue({ statuses: ['bogus'] })).toThrow(
+      'Invalid status: bogus'
+    );
+    expect(() => terminologyService.getTranslationReviewQueue({ statuses: [] })).toThrow(
+      'statuses must be a non-empty array'
+    );
+  });
+
+  it('filters by source', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', source: 'mined-postedit' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', source: 'manual' });
+    const { items } = terminologyService.getTranslationReviewQueue({ source: 'mined-postedit' });
+    expect(items.map((i) => i.english)).toEqual(['a']);
+  });
+
+  it("subject slug matches tagged rows; 'untagged' matches only untagged rows", () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'b', icelandic: 'b1' }); // untagged
+    const chem = terminologyService.getTranslationReviewQueue({ subject: 'chemistry' });
+    expect(chem.items.map((i) => i.english)).toEqual(['a']);
+    const untagged = terminologyService.getTranslationReviewQueue({ subject: 'untagged' });
+    expect(untagged.items.map((i) => i.english)).toEqual(['b']);
+  });
+
+  it('book resolves to the mapped subject; unmapped book applies no constraint', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'b', icelandic: 'b1', subjects: ['biology'] });
+    const chem = terminologyService.getTranslationReviewQueue({ book: 'efnafraedi-2e' });
+    expect(chem.items.map((i) => i.english)).toEqual(['a']);
+    const all = terminologyService.getTranslationReviewQueue({ book: 'no-such-book' });
+    expect(all.total).toBe(2);
+  });
+
+  it('paginates with a real total, newest-first (created_at DESC, id DESC)', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1' });
+    insertFullTerm({ english: 'b', icelandic: 'b1' });
+    insertFullTerm({ english: 'c', icelandic: 'c1' });
+    const page1 = terminologyService.getTranslationReviewQueue({ limit: 2, offset: 0 });
+    expect(page1.total).toBe(3);
+    expect(page1.items).toHaveLength(2);
+    // Same-second created_at → id DESC tie-break: newest insert first
+    expect(page1.items[0].english).toBe('c');
+    const page2 = terminologyService.getTranslationReviewQueue({ limit: 2, offset: 2 });
+    expect(page2.items).toHaveLength(1);
+    expect(page2.items[0].english).toBe('a');
+  });
+
+  it('rows carry headword context, subjects, and proposer', () => {
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      subjects: ['chemistry', 'general'],
+      proposed_by_name: 'Jón',
+    });
+    const { items } = terminologyService.getTranslationReviewQueue();
+    const it0 = items[0];
+    expect(it0.english).toBe('molecule');
+    expect(it0.icelandic).toBe('sameind');
+    expect(it0.subjects.sort()).toEqual(['chemistry', 'general']);
+    expect(it0.proposedByName).toBe('Jón');
+    expect(it0.status).toBe('proposed');
+    expect(typeof it0.translationId).toBe('number');
+  });
+});
+
+describe('getReviewQueueCounts()', () => {
+  it('returns per-status counts', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', status: 'proposed' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', status: 'proposed' });
+    insertFullTerm({ english: 'c', icelandic: 'c1', status: 'disputed' });
+    insertFullTerm({ english: 'd', icelandic: 'd1', status: 'approved' });
+    const counts = terminologyService.getReviewQueueCounts();
+    expect(counts).toEqual({ proposed: 2, disputed: 1, needsReview: 0, subject: null });
+  });
+
+  it('scopes by book subject and reports the resolved subject for picker prefill', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'b', icelandic: 'b1', subjects: ['biology'] });
+    const counts = terminologyService.getReviewQueueCounts({ book: 'efnafraedi-2e' });
+    expect(counts.proposed).toBe(1);
+    expect(counts.subject).toBe('chemistry');
+  });
+});
+
+// =====================
+// approveTranslation({subjects}) + batchApproveTranslations() — item 19
+// =====================
+describe('approveTranslation() with subjects (tag-at-approval, I18-R1)', () => {
+  it('replaces subject tags and approves in one action', () => {
+    const { trId } = insertFullTerm({ status: 'proposed', subjects: ['general'] });
+    const hw = terminologyService.approveTranslation(trId, 'u1', 'Head', {
+      subjects: ['chemistry'],
+    });
+    expect(hw.translations[0].status).toBe('approved');
+    expect(hw.translations[0].subjects).toEqual(['chemistry']);
+    expect(hw.translations[0].approvedByName).toBe('Head');
+  });
+
+  it('without subjects keeps the idempotent early-return (stamps unchanged)', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    terminologyService.approveTranslation(trId, 'u1', 'First');
+    const before = db
+      .prepare('SELECT approved_by, approved_by_name FROM terminology_translations WHERE id = ?')
+      .get(trId);
+    terminologyService.approveTranslation(trId, 'u2', 'Second');
+    const after = db
+      .prepare('SELECT approved_by, approved_by_name FROM terminology_translations WHERE id = ?')
+      .get(trId);
+    expect(after).toEqual(before);
+    expect(after.approved_by_name).toBe('First');
+  });
+
+  it('with subjects on an already-approved row re-tags (no early-return)', () => {
+    const { trId } = insertFullTerm({ status: 'approved', subjects: ['general'] });
+    const hw = terminologyService.approveTranslation(trId, 'u1', 'Head', {
+      subjects: ['chemistry', 'biology'],
+    });
+    expect(hw.translations[0].subjects.sort()).toEqual(['biology', 'chemistry']);
+    expect(hw.translations[0].status).toBe('approved');
+  });
+
+  it('throws on an invalid subject slug before any write', () => {
+    const { trId } = insertFullTerm({ status: 'proposed', subjects: ['general'] });
+    expect(() =>
+      terminologyService.approveTranslation(trId, 'u', 'U', { subjects: ['klingon'] })
+    ).toThrow('Invalid subject: klingon');
+    const row = db.prepare('SELECT status FROM terminology_translations WHERE id = ?').get(trId);
+    expect(row.status).toBe('proposed');
+    const tags = db
+      .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+      .all(trId);
+    expect(tags.map((t) => t.subject)).toEqual(['general']);
+  });
+
+  it('throws on an empty subjects array', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    expect(() => terminologyService.approveTranslation(trId, 'u', 'U', { subjects: [] })).toThrow(
+      'subjects must be a non-empty array'
+    );
+  });
+
+  it('closes I18-R1 end-to-end: mined term tagged at approval passes the strict MT export', () => {
+    const { translationId } = terminologyService.proposeMinedTerm(
+      'yield',
+      'heimta',
+      null,
+      'he1',
+      'Head'
+    );
+    // Untagged + proposed → invisible to the subject-mapped export today
+    expect(
+      terminologyService.exportBookGlossary('efnafraedi-2e').terms.map((t) => t.english)
+    ).not.toContain('yield');
+    terminologyService.approveTranslation(translationId, 'he1', 'Head', {
+      subjects: ['chemistry'],
+    });
+    const out = terminologyService.exportBookGlossary('efnafraedi-2e');
+    const yieldTerm = out.terms.find((t) => t.english === 'yield');
+    expect(yieldTerm).toBeDefined();
+    expect(yieldTerm.status).toBe('approved');
+  });
+});
+
+describe('batchApproveTranslations()', () => {
+  it('approves all ids and tags only the untagged rows', () => {
+    const tagged = insertFullTerm({
+      english: 'a',
+      icelandic: 'a1',
+      status: 'proposed',
+      subjects: ['biology'],
+    });
+    const untagged = insertFullTerm({ english: 'b', icelandic: 'b1', status: 'proposed' });
+    const result = terminologyService.batchApproveTranslations(
+      [tagged.trId, untagged.trId],
+      'he1',
+      'Head',
+      { subjects: ['chemistry'] }
+    );
+    expect(result).toEqual({ approved: 2, alreadyApproved: 0, tagged: 1 });
+    const tagsOfTagged = db
+      .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+      .all(tagged.trId)
+      .map((r) => r.subject);
+    expect(tagsOfTagged).toEqual(['biology']); // untouched
+    const tagsOfUntagged = db
+      .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+      .all(untagged.trId)
+      .map((r) => r.subject);
+    expect(tagsOfUntagged).toEqual(['chemistry']);
+    const statuses = db
+      .prepare('SELECT status FROM terminology_translations WHERE id IN (?, ?)')
+      .all(tagged.trId, untagged.trId)
+      .map((r) => r.status);
+    expect(statuses).toEqual(['approved', 'approved']);
+  });
+
+  it('works without subjects (plain batch approve)', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    const result = terminologyService.batchApproveTranslations([trId], 'he1', 'Head');
+    expect(result.approved).toBe(1);
+  });
+
+  it('is all-or-nothing: unknown id throws naming it, nothing applied', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    expect(() => terminologyService.batchApproveTranslations([trId, 9999], 'he1', 'Head')).toThrow(
+      'Translations not found: 9999'
+    );
+    const row = db.prepare('SELECT status FROM terminology_translations WHERE id = ?').get(trId);
+    expect(row.status).toBe('proposed');
+  });
+
+  it('skips re-stamping already-approved rows but still tags them if untagged', () => {
+    const { trId } = insertFullTerm({ status: 'approved' }); // untagged, approved by nobody
+    db.prepare(
+      "UPDATE terminology_translations SET approved_by = 'orig', approved_by_name = 'Original' WHERE id = ?"
+    ).run(trId);
+    const result = terminologyService.batchApproveTranslations([trId], 'he2', 'Second', {
+      subjects: ['chemistry'],
+    });
+    expect(result).toEqual({ approved: 0, alreadyApproved: 1, tagged: 1 });
+    const row = db
+      .prepare('SELECT approved_by_name FROM terminology_translations WHERE id = ?')
+      .get(trId);
+    expect(row.approved_by_name).toBe('Original');
+  });
+
+  it('validates ids: empty, non-integer, and >200 all throw', () => {
+    expect(() => terminologyService.batchApproveTranslations([], 'u', 'U')).toThrow(
+      'ids must be a non-empty array'
+    );
+    expect(() => terminologyService.batchApproveTranslations(['x'], 'u', 'U')).toThrow(
+      'ids must be positive integers'
+    );
+    const tooMany = Array.from({ length: 201 }, (_, i) => i + 1);
+    expect(() => terminologyService.batchApproveTranslations(tooMany, 'u', 'U')).toThrow(
+      'Too many ids (max 200)'
+    );
   });
 });

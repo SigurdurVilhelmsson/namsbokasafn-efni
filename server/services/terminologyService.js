@@ -30,7 +30,7 @@ function _setTestDb(db) {
 }
 
 // Valid translation statuses
-const TERM_STATUSES = ['approved', 'proposed', 'disputed', 'needs_review'];
+const TERM_STATUSES = ['approved', 'proposed', 'disputed', 'needs_review', 'rejected'];
 
 // Valid term sources
 const TERM_SOURCES = [
@@ -427,14 +427,55 @@ function updateTranslation(id, updates) {
 // ─────────────────────────────────────────
 
 /**
- * Approve a translation.
+ * Validate a tag-at-approval subjects array (item 19). Throws before any write.
  */
-function approveTranslation(translationId, userId, username) {
+function validateSubjects(subjects) {
+  if (!Array.isArray(subjects) || subjects.length === 0) {
+    throw new Error('subjects must be a non-empty array');
+  }
+  for (const s of subjects) {
+    if (!SUBJECTS.includes(s)) throw new Error(`Invalid subject: ${s}`);
+  }
+}
+
+/**
+ * Approve a translation. With options.subjects (item 19, tag-at-approval /
+ * I18-R1): wholesale-replace the subject tags and approve in one transaction —
+ * runs even if already approved (re-tagging through approve is legitimate).
+ * Without options.subjects: legacy behavior, byte-identical, including the
+ * already-approved early-return.
+ */
+function approveTranslation(translationId, userId, username, options = {}) {
+  const { subjects } = options;
   const db = getDb();
 
   const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(translationId);
   if (!tr) {
     throw new Error('Translation not found');
+  }
+
+  if (subjects !== undefined) {
+    validateSubjects(subjects);
+    const approveTx = db.transaction(() => {
+      db.prepare('DELETE FROM terminology_translation_subjects WHERE translation_id = ?').run(
+        translationId
+      );
+      const insertSubject = db.prepare(
+        'INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+      );
+      for (const subj of subjects) {
+        insertSubject.run(translationId, subj);
+      }
+      db.prepare(
+        `
+        UPDATE terminology_translations
+        SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `
+      ).run(userId, username, translationId);
+    });
+    approveTx();
+    return getHeadword(tr.headword_id);
   }
 
   if (tr.status === 'approved') {
@@ -454,6 +495,77 @@ function approveTranslation(translationId, userId, username) {
 
 // Alias: old API approved "terms" (headwords), new API approves translations
 const approveTerm = approveTranslation;
+
+const BATCH_APPROVE_LIMIT = 200;
+
+/**
+ * Batch approve (item 19). One transaction, all-or-nothing, fail-loud.
+ * Subject semantics deliberately differ from single approve: the batch tag is
+ * applied ONLY to currently-untagged rows — a bulk action can never clobber
+ * deliberate per-term tagging. Already-approved rows keep their original
+ * approval stamps (idempotency parity with single approve).
+ *
+ * @returns {{ approved: number, alreadyApproved: number, tagged: number }}
+ */
+function batchApproveTranslations(ids, userId, username, options = {}) {
+  const { subjects } = options;
+  if (!Array.isArray(ids) || ids.length === 0) {
+    throw new Error('ids must be a non-empty array');
+  }
+  if (ids.length > BATCH_APPROVE_LIMIT) {
+    throw new Error(`Too many ids (max ${BATCH_APPROVE_LIMIT})`);
+  }
+  if (!ids.every((id) => Number.isInteger(id) && id > 0)) {
+    throw new Error('ids must be positive integers');
+  }
+  if (subjects !== undefined) {
+    validateSubjects(subjects);
+  }
+
+  const db = getDb();
+  const selectStmt = db.prepare('SELECT id, status FROM terminology_translations WHERE id = ?');
+  const hasSubjectStmt = db.prepare(
+    'SELECT 1 FROM terminology_translation_subjects WHERE translation_id = ? LIMIT 1'
+  );
+  const insertSubject = db.prepare(
+    'INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+  );
+  const approveStmt = db.prepare(
+    `
+    UPDATE terminology_translations
+    SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `
+  );
+
+  const batchTx = db.transaction(() => {
+    const rows = ids.map((id) => ({ id, row: selectStmt.get(id) }));
+    const missing = rows.filter((r) => !r.row).map((r) => r.id);
+    if (missing.length > 0) {
+      throw new Error(`Translations not found: ${missing.join(', ')}`);
+    }
+    let approved = 0;
+    let alreadyApproved = 0;
+    let tagged = 0;
+    for (const { id, row } of rows) {
+      if (subjects !== undefined && !hasSubjectStmt.get(id)) {
+        for (const subj of subjects) {
+          insertSubject.run(id, subj);
+        }
+        tagged++;
+      }
+      if (row.status === 'approved') {
+        alreadyApproved++;
+      } else {
+        approveStmt.run(userId, username, id);
+        approved++;
+      }
+    }
+    return { approved, alreadyApproved, tagged };
+  });
+
+  return batchTx();
+}
 
 /**
  * Dispute a translation — sets status to disputed, adds discussion on the headword.
@@ -482,6 +594,41 @@ function disputeTranslation(translationId, comment, userId, username, proposedTr
 }
 
 const disputeTerm = disputeTranslation;
+
+const REJECT_REASON_MAX = 500;
+
+/**
+ * Reject a translation (item 19 — the review queue's negative action).
+ * Terminal-but-reversible: approveTranslation approves from any status.
+ * Audit trail is a terminology_discussions entry (dispute's pattern — no
+ * schema change; the translations table has no rejected_by columns).
+ */
+function rejectTranslation(translationId, userId, username, reason = '') {
+  const db = getDb();
+
+  const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(translationId);
+  if (!tr) {
+    throw new Error('Translation not found');
+  }
+  if (typeof reason !== 'string' || reason.length > REJECT_REASON_MAX) {
+    throw new Error(`reason must be a string of at most ${REJECT_REASON_MAX} characters`);
+  }
+
+  const rejectTx = db.transaction(() => {
+    db.prepare(`UPDATE terminology_translations SET status = 'rejected' WHERE id = ?`).run(
+      translationId
+    );
+    db.prepare(
+      `
+      INSERT INTO terminology_discussions (headword_id, user_id, username, comment, proposed_translation)
+      VALUES (?, ?, ?, ?, NULL)
+    `
+    ).run(tr.headword_id, userId, username, reason ? `Hafnað: ${reason}` : 'Hafnað');
+  });
+  rejectTx();
+
+  return getHeadword(tr.headword_id);
+}
 
 /**
  * Add a discussion comment to a headword.
@@ -513,38 +660,146 @@ function addDiscussion(headwordId, comment, userId, username, proposedTranslatio
 // ─────────────────────────────────────────
 
 /**
- * Get translations needing review (disputed or needs_review).
+ * Public book→subject resolver (item 19; consolidates the routes-level
+ * resolveBookSubject duplicate — I18-R2). Errors propagate: fail loud.
  */
-function getReviewQueue(options = {}) {
-  const { subject, limit = 50, offset = 0 } = options;
+function getBookSubject(bookSlug) {
+  if (!bookSlug) return null;
+  return getBookSubjectBySlug(getDb(), bookSlug);
+}
+
+const REVIEW_QUEUE_DEFAULT_STATUSES = ['proposed', 'disputed', 'needs_review'];
+
+/**
+ * Build the subject-scoping WHERE fragment shared by the queue query and the
+ * counts query. subject === 'untagged' selects rows with zero subject tags
+ * (the I18-R1 targets a slug-filtered view must not silently hide).
+ */
+function subjectScopeClause(effectiveSubject, where, params) {
+  if (effectiveSubject === 'untagged') {
+    where.push(
+      'NOT EXISTS (SELECT 1 FROM terminology_translation_subjects x WHERE x.translation_id = t.id)'
+    );
+  } else if (effectiveSubject) {
+    where.push(
+      'EXISTS (SELECT 1 FROM terminology_translation_subjects x WHERE x.translation_id = t.id AND x.subject = ?)'
+    );
+    params.push(effectiveSubject);
+  }
+}
+
+/**
+ * Translation-granular review queue (item 19). Replaces the headword-granular
+ * getReviewQueue. Explicit `subject` beats `book`; a book without a subject
+ * mapping applies no subject constraint.
+ *
+ * @returns {{ items: Array, total: number }}
+ */
+function getTranslationReviewQueue(options = {}) {
+  const {
+    statuses = REVIEW_QUEUE_DEFAULT_STATUSES,
+    source,
+    subject,
+    book,
+    limit = 50,
+    offset = 0,
+  } = options;
   const db = getDb();
 
-  let sql = `
-    SELECT DISTINCT h.id
-    FROM terminology_headwords h
-    JOIN terminology_translations t ON t.headword_id = h.id
-  `;
+  if (!Array.isArray(statuses) || statuses.length === 0) {
+    throw new Error('statuses must be a non-empty array');
+  }
+  for (const s of statuses) {
+    if (!TERM_STATUSES.includes(s)) throw new Error(`Invalid status: ${s}`);
+  }
+
+  const effectiveSubject = subject || (book ? getBookSubjectBySlug(db, book) : null);
+
+  const where = [`t.status IN (${statuses.map(() => '?').join(', ')})`];
+  const params = [...statuses];
+  if (source) {
+    where.push('t.source = ?');
+    params.push(source);
+  }
+  subjectScopeClause(effectiveSubject, where, params);
+  const whereSql = where.join(' AND ');
+
+  const total = db
+    .prepare(`SELECT COUNT(*) AS total FROM terminology_translations t WHERE ${whereSql}`)
+    .get(...params).total;
+
+  const rows = db
+    .prepare(
+      `
+      SELECT t.id, t.headword_id, h.english, h.pos,
+             t.icelandic, t.definition_is, t.notes, t.source, t.status,
+             t.proposed_by, t.proposed_by_name, t.created_at
+      FROM terminology_translations t
+      JOIN terminology_headwords h ON h.id = t.headword_id
+      WHERE ${whereSql}
+      ORDER BY t.created_at DESC, t.id DESC
+      LIMIT ? OFFSET ?
+    `
+    )
+    .all(...params, limit, offset);
+
+  const subjectStmt = db.prepare(
+    'SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?'
+  );
+
+  const items = rows.map((r) => ({
+    translationId: r.id,
+    headwordId: r.headword_id,
+    english: r.english,
+    pos: r.pos || null,
+    icelandic: r.icelandic,
+    definitionIs: r.definition_is || null,
+    notes: r.notes,
+    source: r.source,
+    status: r.status,
+    subjects: subjectStmt.all(r.id).map((s) => s.subject),
+    proposedBy: r.proposed_by,
+    proposedByName: r.proposed_by_name,
+    createdAt: r.created_at,
+  }));
+
+  return { items, total };
+}
+
+/**
+ * Lightweight per-status counts for the review banner and queue chips.
+ * `subject` in the result is the resolved effective subject (or null) so the
+ * client can prefill its tag-at-approval picker without a book→subject map.
+ */
+function getReviewQueueCounts(options = {}) {
+  const { book, subject } = options;
+  const db = getDb();
+
+  const effectiveSubject = subject || (book ? getBookSubjectBySlug(db, book) : null);
+
+  const where = [`t.status IN ('proposed', 'disputed', 'needs_review')`];
   const params = [];
+  subjectScopeClause(effectiveSubject, where, params);
 
-  if (subject) {
-    sql += ` JOIN terminology_translation_subjects ts ON ts.translation_id = t.id`;
-  }
+  const row = db
+    .prepare(
+      `
+      SELECT
+        SUM(CASE WHEN t.status = 'proposed' THEN 1 ELSE 0 END) AS proposed,
+        SUM(CASE WHEN t.status = 'disputed' THEN 1 ELSE 0 END) AS disputed,
+        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) AS needs_review
+      FROM terminology_translations t
+      WHERE ${where.join(' AND ')}
+    `
+    )
+    .get(...params);
 
-  sql += ` WHERE t.status IN ('disputed', 'needs_review')`;
-
-  if (subject) {
-    sql += ` AND ts.subject = ?`;
-    params.push(subject);
-  }
-
-  sql += ` ORDER BY h.updated_at DESC LIMIT ? OFFSET ?`;
-  params.push(limit, offset);
-
-  const ids = db
-    .prepare(sql)
-    .all(...params)
-    .map((r) => r.id);
-  return ids.map((id) => loadHeadword(db, id));
+  return {
+    proposed: row?.proposed || 0,
+    disputed: row?.disputed || 0,
+    needsReview: row?.needs_review || 0,
+    subject: effectiveSubject || null,
+  };
 }
 
 // ─────────────────────────────────────────
@@ -601,7 +856,8 @@ function getStats(subject = null) {
         SUM(CASE WHEN t.status = 'approved' THEN 1 ELSE 0 END) as approved,
         SUM(CASE WHEN t.status = 'proposed' THEN 1 ELSE 0 END) as proposed,
         SUM(CASE WHEN t.status = 'disputed' THEN 1 ELSE 0 END) as disputed,
-        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) as needs_review
+        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) as needs_review,
+        SUM(CASE WHEN t.status = 'rejected' THEN 1 ELSE 0 END) as rejected
       FROM terminology_translations t
       ${translationWhere}
     `
@@ -638,6 +894,7 @@ function getStats(subject = null) {
       proposed: stats?.proposed || 0,
       disputed: stats?.disputed || 0,
       needsReview: stats?.needs_review || 0,
+      rejected: stats?.rejected || 0,
     },
     bySubject: bySubject.reduce((acc, row) => {
       acc[row.subject] = row.count;
@@ -1250,6 +1507,7 @@ function exportBookGlossary(bookSlug) {
        FROM terminology_headwords h
        JOIN terminology_translations t ON t.headword_id = h.id
        LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
+       WHERE t.status != 'rejected'
        GROUP BY t.id
        ORDER BY h.english COLLATE NOCASE ASC`
     )
@@ -1524,10 +1782,14 @@ module.exports = {
   // Approval workflow
   approveTranslation,
   approveTerm,
+  batchApproveTranslations,
   disputeTranslation,
   disputeTerm,
+  rejectTranslation,
   addDiscussion,
-  getReviewQueue,
+  getTranslationReviewQueue,
+  getReviewQueueCounts,
+  getBookSubject,
 
   // Delete
   deleteHeadword,
