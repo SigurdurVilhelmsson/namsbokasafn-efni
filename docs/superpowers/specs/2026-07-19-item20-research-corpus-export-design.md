@@ -189,7 +189,7 @@ single swap point (and can then delegate to book-config).
  "skipped": ["…relative paths…"],
  "notes": ["single-char legacy markers retained in clean text",
            "[[MATH:N]]/[[MEDIA:n]] placeholders retained; resolve via 02-structure sidecars",
-           "EN tier is the current extraction; for modules MT'd before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)"]}
+           "EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)"]}
 ```
 
 That last note is a **known honesty caveat**: `02-for-mt` was re-extracted for chemistry on

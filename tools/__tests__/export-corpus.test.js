@@ -342,5 +342,11 @@ describe('serializers', () => {
     expect(manifest.provenance).toBe('docs/provenance/openstax-cnxml-licence-provenance.md');
     expect(manifest.skipped).toEqual(['ch01/x.bak']);
     expect(manifest.notes.some((n) => n.includes('dialect drift'))).toBe(true);
+    // Byte-exact notes pin: verifies UTF-8 typographic apostrophe in MT'd (not ASCII)
+    expect(manifest.notes).toEqual([
+      'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
+      '[[MATH:N]]/[[MEDIA:n]] placeholders retained; resolve via 02-structure sidecars',
+      `EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
+    ]);
   });
 });
