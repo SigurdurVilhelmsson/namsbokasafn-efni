@@ -68,7 +68,9 @@
           continue;
         }
         if (depth > 0 || !pattern.test(tok)) continue;
-        const cls = m.status === 'approved' ? 'term-highlight' : 'term-highlight proposed';
+        const cls =
+          (m.status === 'approved' ? 'term-highlight' : 'term-highlight proposed') +
+          (m.isFallback ? ' cross-subject' : '');
         tokens[i] = tok.replace(
           pattern,
           (match) =>

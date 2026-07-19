@@ -205,13 +205,27 @@ function lookupTerm(query, bookSlug = null) {
 
   const rows = db.prepare(sql).all(exact, startsWith, contains, contains, contains);
 
+  // Item 18: stamp tier flags and sort best-first so callers can safely take
+  // translations[0]. Rank: primary → in-scope → fallback; approved before
+  // proposed within a tier (Array#sort is stable, ties keep DB order).
+  const TIER_RANK = { primary: 0, 'in-scope': 1, fallback: 2 };
+  const tierOf = (tr) => translationTier(tr.subjects || [], bookSubject);
+
   return rows.map((r) => {
     const hw = loadHeadword(db, r.id);
-    // Mark primary translation based on book's domain
-    if (bookSubject && hw.translations) {
+    if (hw.translations) {
       for (const tr of hw.translations) {
-        tr.isPrimary = tr.subjects.includes(bookSubject);
+        const tier = tierOf(tr);
+        tr.isPrimary = tier === 'primary';
+        tr.isFallback = tier === 'fallback';
       }
+      hw.translations.sort((a, b) => {
+        const byTier = TIER_RANK[tierOf(a)] - TIER_RANK[tierOf(b)];
+        if (byTier !== 0) return byTier;
+        if (a.status === 'approved' && b.status !== 'approved') return -1;
+        if (a.status !== 'approved' && b.status === 'approved') return 1;
+        return 0;
+      });
     }
     return hw;
   });
@@ -1001,6 +1015,28 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
 // ─────────────────────────────────────────
 
 /**
+ * Item 18 — the single subject-scoping policy for editing surfaces.
+ * Classifies one translation relative to a book's primary subject:
+ *   'primary'  — tagged with the book's subject (ranks first, drives isPrimary)
+ *   'in-scope' — untagged or tagged 'general' (or the book has no subject
+ *                mapping at all → nothing is filtered, nothing is primary)
+ *   'fallback' — tagged only with other subjects; surfaces ONLY when a
+ *                headword has no in-scope translation, and never produces
+ *                missing-term issues.
+ * exportBookGlossary deliberately does NOT use this (MT priming stays strict).
+ *
+ * @param {string[]} subjects
+ * @param {string|null} bookSubject
+ * @returns {'primary'|'in-scope'|'fallback'}
+ */
+function translationTier(subjects, bookSubject) {
+  if (!bookSubject) return 'in-scope';
+  if (subjects.includes(bookSubject)) return 'primary';
+  if (subjects.length === 0 || subjects.includes('general')) return 'in-scope';
+  return 'fallback';
+}
+
+/**
  * Find terminology matches in segments.
  * Uses inflection-aware matching and domain priority ranking.
  *
@@ -1057,22 +1093,30 @@ function findTermsInSegments(segments, bookSlug = null) {
     });
   }
 
-  // Item N: scope translations to the book's subject. A translation is in-scope
-  // when the book has no subject mapping (→ no filtering), or it is tagged with
-  // the book subject, or 'general', or it is untagged. Headwords left with no
-  // in-scope translation are dropped entirely (no match, no missing-term issue).
-  const subjectAllowed = (subjects) =>
-    !bookSubject ||
-    subjects.length === 0 ||
-    subjects.includes(bookSubject) ||
-    subjects.includes('general');
-
-  const terms = Array.from(termMap.values())
-    .map((term) => ({
-      ...term,
-      translations: term.translations.filter((t) => subjectAllowed(t.subjects)),
-    }))
-    .filter((term) => term.translations.length > 0);
+  // Item N → item 18: scope translations to the book's subject, but never hide
+  // a headword entirely. A headword with at least one in-scope translation
+  // (tier 'primary'/'in-scope') behaves exactly as before — foreign-subject
+  // siblings stay hidden (homograph guard). A headword whose translations are
+  // ALL foreign-subject becomes a FALLBACK term: it still matches (suggestion
+  // surfaces, badged via isFallback) but never produces missing-term issues —
+  // QA must not demand another subject's translation. Every headword has ≥1
+  // translation (SQL inner join), so the partition is total.
+  const partitioned = Array.from(termMap.values()).map((term) => {
+    const inScope = term.translations.filter(
+      (t) => translationTier(t.subjects, bookSubject) !== 'fallback'
+    );
+    return inScope.length > 0
+      ? { ...term, translations: inScope, isFallback: false }
+      : { ...term, isFallback: true };
+  });
+  // In-scope terms claim their spans before any fallback term is considered:
+  // the book's own subject always wins an overlap (a fallback may only fill
+  // spans no in-scope term claimed). Within each group the SQL longest-first
+  // order is preserved, so "melting point" still beats "melting".
+  const terms = [
+    ...partitioned.filter((t) => !t.isFallback),
+    ...partitioned.filter((t) => t.isFallback),
+  ];
   const result = {};
 
   for (const seg of segments) {
@@ -1121,6 +1165,7 @@ function findTermsInSegments(segments, bookSlug = null) {
           subjects: primary.subjects,
           status: primary.status,
           isPrimary: primary.isPrimary,
+          isFallback: term.isFallback,
           position: enMatch.index,
           translations: sorted.map((t) => ({
             id: t.id,
@@ -1128,11 +1173,12 @@ function findTermsInSegments(segments, bookSlug = null) {
             subjects: t.subjects,
             status: t.status,
             isPrimary: t.isPrimary,
+            isFallback: term.isFallback,
           })),
         });
 
         // Check if any approved translation appears in IS text
-        if (seg.isContent) {
+        if (!term.isFallback && seg.isContent) {
           const approvedTranslations = term.translations.filter((t) => t.status === 'approved');
           if (approvedTranslations.length > 0) {
             const anyFound = approvedTranslations.some((t) => {
@@ -1223,6 +1269,11 @@ function exportBookGlossary(bookSlug) {
     for (const t of translations) {
       // Subject scoping: include when the translation carries the book's
       // subject, or when the book has no subject mapping.
+      // DELIBERATELY STRICT (item 18): unlike the editor surfaces
+      // (findTermsInSegments/lookupTerm admit 'general'/untagged and fall back
+      // on a miss), MT priming exports ONLY exact-subject-tagged translations —
+      // cross-subject or unclassified terms in the MT glossary would harm MT
+      // quality. Pinned by 'deliberately strict' in terminologyService.test.js.
       if (bookSubject && !t.subjects.includes(bookSubject)) continue;
       terms.push({
         english: t.english,
@@ -1492,6 +1543,7 @@ module.exports = {
   // Query
   getStats,
   findTermsInSegments,
+  translationTier,
   checkSegmentConsistency,
   buildModuleTerminologyReport,
   exportBookGlossary,

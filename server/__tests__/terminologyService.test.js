@@ -301,6 +301,79 @@ describe('lookupTerm()', () => {
     expect(bioTr.isPrimary).toBe(true);
     expect(chemTr.isPrimary).toBe(false);
   });
+
+  it('stamps isFallback and sorts primary → in-scope → fallback (item 18)', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    // Inserted worst-first so DB order alone would fail the assertion.
+    const trChem = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    insertTranslation(hwId, { icelandic: 'eining', status: 'approved' }); // untagged, no addSubject call
+    const trBio = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
+    addSubject(trChem, 'chemistry');
+    addSubject(trBio, 'biology');
+
+    const result = terminologyService.lookupTerm('cell', 'liffraedi-2e'); // biology book
+    expect(result[0].translations.map((t) => t.icelandic)).toEqual(['fruma', 'eining', 'hólf']);
+    expect(result[0].translations[0].isPrimary).toBe(true);
+    expect(result[0].translations[0].isFallback).toBe(false);
+    expect(result[0].translations[1].isFallback).toBe(false); // untagged = in-scope
+    expect(result[0].translations[2].isFallback).toBe(true); // chemistry in a biology book
+  });
+
+  it('approved outranks proposed within a tier (item 18)', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    const trProposed = insertTranslation(hwId, { icelandic: 'tengsl', status: 'proposed' });
+    const trApproved = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    addSubject(trProposed, 'chemistry');
+    addSubject(trApproved, 'chemistry');
+
+    const result = terminologyService.lookupTerm('bond', 'efnafraedi-2e');
+    expect(result[0].translations.map((t) => t.icelandic)).toEqual(['tengi', 'tengsl']);
+  });
+
+  it('unmapped book: nothing primary, nothing fallback, approved-first order', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    const trProposed = insertTranslation(hwId, { icelandic: 'fruma', status: 'proposed' });
+    const trApproved = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    addSubject(trProposed, 'biology');
+    addSubject(trApproved, 'chemistry');
+
+    const result = terminologyService.lookupTerm('cell', null);
+    expect(result[0].translations.every((t) => t.isPrimary === false)).toBe(true);
+    expect(result[0].translations.every((t) => t.isFallback === false)).toBe(true);
+    expect(result[0].translations[0].icelandic).toBe('hólf');
+  });
+});
+
+// =====================
+// translationTier() — item 18 shared scoping policy
+// =====================
+describe('translationTier()', () => {
+  it('returns in-scope for every translation when the book has no subject', () => {
+    expect(terminologyService.translationTier(['biology'], null)).toBe('in-scope');
+    expect(terminologyService.translationTier([], null)).toBe('in-scope');
+  });
+
+  it('returns primary when tagged with the book subject', () => {
+    expect(terminologyService.translationTier(['chemistry'], 'chemistry')).toBe('primary');
+    expect(terminologyService.translationTier(['biology', 'chemistry'], 'chemistry')).toBe(
+      'primary'
+    );
+  });
+
+  it('returns in-scope for untagged and general-tagged translations', () => {
+    expect(terminologyService.translationTier([], 'chemistry')).toBe('in-scope');
+    expect(terminologyService.translationTier(['general'], 'chemistry')).toBe('in-scope');
+    expect(terminologyService.translationTier(['biology', 'general'], 'chemistry')).toBe(
+      'in-scope'
+    );
+  });
+
+  it('returns fallback only when all tags are foreign subjects', () => {
+    expect(terminologyService.translationTier(['biology'], 'chemistry')).toBe('fallback');
+    expect(terminologyService.translationTier(['biology', 'physics'], 'chemistry')).toBe(
+      'fallback'
+    );
+  });
 });
 
 // =====================
@@ -866,17 +939,24 @@ describe('findTermsInSegments()', () => {
 describe('findTermsInSegments() — subject scoping', () => {
   const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
 
-  it('hides a headword whose only translation is another subject', () => {
-    // "mole" with only a biology translation must not surface in a chemistry book
+  it('surfaces a fallback match when the only translation is another subject — no issues', () => {
+    // Item 18: "mole" with only a biology translation surfaces in a chemistry
+    // book as a BADGED fallback suggestion (isFallback) — but never as a QA
+    // issue: a chemistry editor is not warned for skipping a biology term.
     const hw = insertHeadword({ english: 'mole' });
     const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
     addSubject(tr, 'biology');
 
     const result = terminologyService.findTermsInSegments(
-      seg('one mole of carbon', 'eitt mól af kolefni'),
+      seg('one mole of carbon', 'eitt kolefnismagn'),
       'efnafraedi-2e'
     );
-    expect(result.s.matches).toHaveLength(0);
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].isFallback).toBe(true);
+    expect(result.s.matches[0].icelandic).toBe('moldvarpa');
+    expect(result.s.matches[0].isPrimary).toBe(false);
+    expect(result.s.matches[0].translations[0].isFallback).toBe(true);
+    // The IS text does NOT contain 'moldvarpa' — an in-scope term would issue here.
     expect(result.s.issues).toHaveLength(0);
   });
 
@@ -963,6 +1043,78 @@ describe('findTermsInSegments() — subject scoping', () => {
     expect(result.s.matches).toHaveLength(1);
     expect(result.s.matches[0].translations).toHaveLength(2);
   });
+
+  it('fallback match prefers the approved foreign translation over a proposed one', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    // Proposed inserted FIRST so DB order alone would rank it first.
+    const trProposed = insertTranslation(hw, { icelandic: 'jarðvarpa', status: 'proposed' });
+    const trApproved = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(trProposed, 'biology');
+    addSubject(trApproved, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of carbon', 'eitt kolefnismagn'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches[0].icelandic).toBe('moldvarpa');
+    expect(result.s.matches[0].translations.map((t) => t.icelandic)).toEqual([
+      'moldvarpa',
+      'jarðvarpa',
+    ]);
+  });
+
+  it('fallback with only proposed translations still surfaces, marked proposed', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'proposed' });
+    addSubject(tr, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of carbon', 'eitt kolefnismagn'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].isFallback).toBe(true);
+    expect(result.s.matches[0].status).toBe('proposed');
+    expect(result.s.issues).toHaveLength(0);
+  });
+
+  it('normal (in-scope) matches carry isFallback: false at both levels', () => {
+    const hw = insertHeadword({ english: 'acid' });
+    const tr = insertTranslation(hw, { icelandic: 'sýra', status: 'approved' });
+    addSubject(tr, 'chemistry');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('an acid reacts', 'sýra hvarfast'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches[0].isFallback).toBe(false);
+    expect(result.s.matches[0].translations[0].isFallback).toBe(false);
+  });
+
+  it('a longer fallback term never shadows an overlapping in-scope term (in-scope wins)', () => {
+    // chemistry book: in-scope 'electron' (approved 'rafeind') overlaps
+    // biology-only 'electron transport chain'. The in-scope term must claim
+    // the span — its match AND its missing-term issue must both survive.
+    const hwShort = insertHeadword({ english: 'electron' });
+    const trShort = insertTranslation(hwShort, { icelandic: 'rafeind', status: 'approved' });
+    addSubject(trShort, 'chemistry');
+    const hwLong = insertHeadword({ english: 'electron transport chain' });
+    const trLong = insertTranslation(hwLong, {
+      icelandic: 'rafeindaflutningskeðja',
+      status: 'approved',
+    });
+    addSubject(trLong, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('the electron transport chain moves', 'eitthvað flyst'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].english).toBe('electron');
+    expect(result.s.matches[0].isFallback).toBe(false);
+    expect(result.s.issues).toHaveLength(1);
+    expect(result.s.issues[0].expected).toBe('rafeind');
+  });
 });
 
 // =====================
@@ -1042,6 +1194,19 @@ describe('checkSegmentConsistency()', () => {
     );
     expect(issues).toHaveLength(0);
   });
+
+  it('foreign-only term produces no issue even though it matches as fallback (item 18)', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(tr, 'biology');
+
+    const issues = terminologyService.checkSegmentConsistency(
+      'one mole of carbon',
+      'eitt kolefnismagn',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(0);
+  });
 });
 
 describe('buildModuleTerminologyReport()', () => {
@@ -1107,6 +1272,29 @@ describe('exportBookGlossary()', () => {
     expect(primary.alternatives).toContain('efnatengi');
     expect(data.stats.total).toBe(2);
     expect(data.stats.proposed).toBe(1);
+  });
+
+  it('excludes untagged and general-tagged translations for a mapped book (deliberately strict, item 18)', () => {
+    // The MT-priming export is STRICTER than the editor surfaces on purpose:
+    // cross-subject/unclassified terms in the MT glossary would harm MT quality.
+    // The editor-side fallback (findTermsInSegments/lookupTerm) must NOT leak here.
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['chemistry'],
+    });
+    insertFullTerm({
+      english: 'energy',
+      icelandic: 'orka',
+      status: 'approved',
+      subjects: ['general'],
+    });
+    insertFullTerm({ english: 'thing', icelandic: 'hlutur', status: 'approved' }); // untagged
+
+    const data = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(data.terms).toHaveLength(1);
+    expect(data.terms[0].english).toBe('molecule');
   });
 });
 

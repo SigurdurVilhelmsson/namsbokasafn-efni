@@ -98,3 +98,29 @@ describe('highlightTermsInHtml — tag-aware splice guard (B-4)', () => {
     expect(out).toContain('data-term-id="2"');
   });
 });
+
+describe('highlightTermsInHtml — cross-subject fallback modifier (item 18)', () => {
+  it('adds the cross-subject class for fallback matches, composing with status', () => {
+    const approved = highlightTermsInHtml('the mole is a unit', [
+      { english: 'mole', headwordId: 7, status: 'approved', isFallback: true },
+    ]);
+    expect(approved).toContain('class="term-highlight cross-subject"');
+
+    const proposed = highlightTermsInHtml('the mole is a unit', [
+      { english: 'mole', headwordId: 7, status: 'proposed', isFallback: true },
+    ]);
+    expect(proposed).toContain('class="term-highlight proposed cross-subject"');
+  });
+
+  it('omits the modifier for normal matches (isFallback absent or false)', () => {
+    const absent = highlightTermsInHtml('the mole is a unit', [
+      { english: 'mole', headwordId: 7, status: 'approved' },
+    ]);
+    expect(absent).not.toContain('cross-subject');
+
+    const explicit = highlightTermsInHtml('the mole is a unit', [
+      { english: 'mole', headwordId: 7, status: 'approved', isFallback: false },
+    ]);
+    expect(explicit).not.toContain('cross-subject');
+  });
+});
