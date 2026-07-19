@@ -1269,6 +1269,11 @@ function exportBookGlossary(bookSlug) {
     for (const t of translations) {
       // Subject scoping: include when the translation carries the book's
       // subject, or when the book has no subject mapping.
+      // DELIBERATELY STRICT (item 18): unlike the editor surfaces
+      // (findTermsInSegments/lookupTerm admit 'general'/untagged and fall back
+      // on a miss), MT priming exports ONLY exact-subject-tagged translations —
+      // cross-subject or unclassified terms in the MT glossary would harm MT
+      // quality. Pinned by 'deliberately strict' in terminologyService.test.js.
       if (bookSubject && !t.subjects.includes(bookSubject)) continue;
       terms.push({
         english: t.english,

@@ -1273,6 +1273,29 @@ describe('exportBookGlossary()', () => {
     expect(data.stats.total).toBe(2);
     expect(data.stats.proposed).toBe(1);
   });
+
+  it('excludes untagged and general-tagged translations for a mapped book (deliberately strict, item 18)', () => {
+    // The MT-priming export is STRICTER than the editor surfaces on purpose:
+    // cross-subject/unclassified terms in the MT glossary would harm MT quality.
+    // The editor-side fallback (findTermsInSegments/lookupTerm) must NOT leak here.
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['chemistry'],
+    });
+    insertFullTerm({
+      english: 'energy',
+      icelandic: 'orka',
+      status: 'approved',
+      subjects: ['general'],
+    });
+    insertFullTerm({ english: 'thing', icelandic: 'hlutur', status: 'approved' }); // untagged
+
+    const data = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(data.terms).toHaveLength(1);
+    expect(data.terms[0].english).toBe('molecule');
+  });
 });
 
 // =====================
