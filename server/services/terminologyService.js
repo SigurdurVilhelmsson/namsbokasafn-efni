@@ -1001,6 +1001,28 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
 // ─────────────────────────────────────────
 
 /**
+ * Item 18 — the single subject-scoping policy for editing surfaces.
+ * Classifies one translation relative to a book's primary subject:
+ *   'primary'  — tagged with the book's subject (ranks first, drives isPrimary)
+ *   'in-scope' — untagged or tagged 'general' (or the book has no subject
+ *                mapping at all → nothing is filtered, nothing is primary)
+ *   'fallback' — tagged only with other subjects; surfaces ONLY when a
+ *                headword has no in-scope translation, and never produces
+ *                missing-term issues.
+ * exportBookGlossary deliberately does NOT use this (MT priming stays strict).
+ *
+ * @param {string[]} subjects
+ * @param {string|null} bookSubject
+ * @returns {'primary'|'in-scope'|'fallback'}
+ */
+function translationTier(subjects, bookSubject) {
+  if (!bookSubject) return 'in-scope';
+  if (subjects.includes(bookSubject)) return 'primary';
+  if (subjects.length === 0 || subjects.includes('general')) return 'in-scope';
+  return 'fallback';
+}
+
+/**
  * Find terminology matches in segments.
  * Uses inflection-aware matching and domain priority ranking.
  *
@@ -1492,6 +1514,7 @@ module.exports = {
   // Query
   getStats,
   findTermsInSegments,
+  translationTier,
   checkSegmentConsistency,
   buildModuleTerminologyReport,
   exportBookGlossary,

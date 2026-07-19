@@ -304,6 +304,38 @@ describe('lookupTerm()', () => {
 });
 
 // =====================
+// translationTier() — item 18 shared scoping policy
+// =====================
+describe('translationTier()', () => {
+  it('returns in-scope for every translation when the book has no subject', () => {
+    expect(terminologyService.translationTier(['biology'], null)).toBe('in-scope');
+    expect(terminologyService.translationTier([], null)).toBe('in-scope');
+  });
+
+  it('returns primary when tagged with the book subject', () => {
+    expect(terminologyService.translationTier(['chemistry'], 'chemistry')).toBe('primary');
+    expect(terminologyService.translationTier(['biology', 'chemistry'], 'chemistry')).toBe(
+      'primary'
+    );
+  });
+
+  it('returns in-scope for untagged and general-tagged translations', () => {
+    expect(terminologyService.translationTier([], 'chemistry')).toBe('in-scope');
+    expect(terminologyService.translationTier(['general'], 'chemistry')).toBe('in-scope');
+    expect(terminologyService.translationTier(['biology', 'general'], 'chemistry')).toBe(
+      'in-scope'
+    );
+  });
+
+  it('returns fallback only when all tags are foreign subjects', () => {
+    expect(terminologyService.translationTier(['biology'], 'chemistry')).toBe('fallback');
+    expect(terminologyService.translationTier(['biology', 'physics'], 'chemistry')).toBe(
+      'fallback'
+    );
+  });
+});
+
+// =====================
 // createTerm()
 // =====================
 describe('createTerm()', () => {
