@@ -611,6 +611,90 @@ describe('disputeTranslation() and addDiscussion()', () => {
 });
 
 // =====================
+// rejectTranslation() — item 19
+// =====================
+describe('rejectTranslation()', () => {
+  it('exposes rejected as the fifth status', () => {
+    expect(terminologyService.TERM_STATUSES).toEqual([
+      'approved',
+      'proposed',
+      'disputed',
+      'needs_review',
+      'rejected',
+    ]);
+  });
+
+  it('sets status rejected and records a discussion entry with actor + reason', () => {
+    const { hwId, trId } = insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'proposed',
+    });
+    const hw = terminologyService.rejectTranslation(trId, 'u9', 'Head Editor', 'rangt fag');
+    expect(hw.translations[0].status).toBe('rejected');
+    const disc = db
+      .prepare('SELECT * FROM terminology_discussions WHERE headword_id = ?')
+      .all(hwId);
+    expect(disc).toHaveLength(1);
+    expect(disc[0].comment).toBe('Hafnað: rangt fag');
+    expect(disc[0].username).toBe('Head Editor');
+    expect(disc[0].user_id).toBe('u9');
+  });
+
+  it('records a bare "Hafnað" entry when no reason is given', () => {
+    const { hwId, trId } = insertFullTerm({ english: 'atom', icelandic: 'frumeind' });
+    terminologyService.rejectTranslation(trId, 'u9', 'Head Editor');
+    const disc = db
+      .prepare('SELECT comment FROM terminology_discussions WHERE headword_id = ?')
+      .get(hwId);
+    expect(disc.comment).toBe('Hafnað');
+  });
+
+  it('rejects from any prior status, including approved', () => {
+    const { trId } = insertFullTerm({ english: 'ion', icelandic: 'jón', status: 'approved' });
+    const hw = terminologyService.rejectTranslation(trId, 'u9', 'HE', '');
+    expect(hw.translations[0].status).toBe('rejected');
+  });
+
+  it('approve after reject works (un-reject for free)', () => {
+    const { trId } = insertFullTerm({ english: 'bond', icelandic: 'tengi', status: 'proposed' });
+    terminologyService.rejectTranslation(trId, 'u9', 'HE', '');
+    const hw = terminologyService.approveTranslation(trId, 'u9', 'HE');
+    expect(hw.translations[0].status).toBe('approved');
+  });
+
+  it('throws on unknown translation id', () => {
+    expect(() => terminologyService.rejectTranslation(9999, 'u', 'U', '')).toThrow(
+      'Translation not found'
+    );
+  });
+
+  it('throws when reason exceeds 500 characters, leaving status unchanged', () => {
+    const { trId } = insertFullTerm({ english: 'gas', icelandic: 'gas', status: 'proposed' });
+    expect(() => terminologyService.rejectTranslation(trId, 'u', 'U', 'a'.repeat(501))).toThrow(
+      'reason must be a string of at most 500 characters'
+    );
+    const row = db.prepare('SELECT status FROM terminology_translations WHERE id = ?').get(trId);
+    expect(row.status).toBe('proposed');
+  });
+
+  it('rejected translations vanish from lookupTerm and findTermsInSegments', () => {
+    const { trId } = insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+    });
+    terminologyService.rejectTranslation(trId, 'u', 'U', '');
+    expect(terminologyService.lookupTerm('molecule')).toHaveLength(0);
+    const res = terminologyService.findTermsInSegments([
+      { segmentId: 's1', enContent: 'a molecule here', isContent: 'texti' },
+    ]);
+    expect(res.s1.matches).toHaveLength(0);
+    expect(res.s1.issues).toHaveLength(0);
+  });
+});
+
+// =====================
 // deleteHeadword() / deleteTranslation()
 // =====================
 describe('deleteHeadword() and deleteTranslation()', () => {
@@ -726,6 +810,14 @@ describe('getStats()', () => {
 
     const stats = terminologyService.getStats();
     expect(stats.headwords).toBe(2);
+  });
+
+  it('counts rejected translations (item 19)', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'rejected' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
+    const stats = terminologyService.getStats();
+    expect(stats.byStatus.rejected).toBe(1);
+    expect(stats.byStatus.approved).toBe(1);
   });
 });
 
@@ -1295,6 +1387,35 @@ describe('exportBookGlossary()', () => {
     const data = terminologyService.exportBookGlossary('efnafraedi-2e');
     expect(data.terms).toHaveLength(1);
     expect(data.terms[0].english).toBe('molecule');
+  });
+
+  it('excludes rejected translations from the export (item 19)', () => {
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['chemistry'],
+    });
+    insertFullTerm({
+      english: 'atom',
+      icelandic: 'frumeind',
+      status: 'rejected',
+      subjects: ['chemistry'],
+    });
+    const out = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(out.terms.map((t) => t.english)).toEqual(['molecule']);
+    expect(out.stats.total).toBe(1);
+  });
+
+  it('rejected siblings do not appear as alternatives (item 19)', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    const approvedId = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    const rejectedId = insertTranslation(hwId, { icelandic: 'efnatengi', status: 'rejected' });
+    addSubject(approvedId, 'chemistry');
+    addSubject(rejectedId, 'chemistry');
+    const out = terminologyService.exportBookGlossary('efnafraedi-2e');
+    const bond = out.terms.find((t) => t.english === 'bond');
+    expect(bond.alternatives).toEqual([]);
   });
 });
 

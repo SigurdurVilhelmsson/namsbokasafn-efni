@@ -30,7 +30,7 @@ function _setTestDb(db) {
 }
 
 // Valid translation statuses
-const TERM_STATUSES = ['approved', 'proposed', 'disputed', 'needs_review'];
+const TERM_STATUSES = ['approved', 'proposed', 'disputed', 'needs_review', 'rejected'];
 
 // Valid term sources
 const TERM_SOURCES = [
@@ -483,6 +483,41 @@ function disputeTranslation(translationId, comment, userId, username, proposedTr
 
 const disputeTerm = disputeTranslation;
 
+const REJECT_REASON_MAX = 500;
+
+/**
+ * Reject a translation (item 19 — the review queue's negative action).
+ * Terminal-but-reversible: approveTranslation approves from any status.
+ * Audit trail is a terminology_discussions entry (dispute's pattern — no
+ * schema change; the translations table has no rejected_by columns).
+ */
+function rejectTranslation(translationId, userId, username, reason = '') {
+  const db = getDb();
+
+  const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(translationId);
+  if (!tr) {
+    throw new Error('Translation not found');
+  }
+  if (typeof reason !== 'string' || reason.length > REJECT_REASON_MAX) {
+    throw new Error(`reason must be a string of at most ${REJECT_REASON_MAX} characters`);
+  }
+
+  const rejectTx = db.transaction(() => {
+    db.prepare(`UPDATE terminology_translations SET status = 'rejected' WHERE id = ?`).run(
+      translationId
+    );
+    db.prepare(
+      `
+      INSERT INTO terminology_discussions (headword_id, user_id, username, comment, proposed_translation)
+      VALUES (?, ?, ?, ?, NULL)
+    `
+    ).run(tr.headword_id, userId, username, reason ? `Hafnað: ${reason}` : 'Hafnað');
+  });
+  rejectTx();
+
+  return getHeadword(tr.headword_id);
+}
+
 /**
  * Add a discussion comment to a headword.
  */
@@ -601,7 +636,8 @@ function getStats(subject = null) {
         SUM(CASE WHEN t.status = 'approved' THEN 1 ELSE 0 END) as approved,
         SUM(CASE WHEN t.status = 'proposed' THEN 1 ELSE 0 END) as proposed,
         SUM(CASE WHEN t.status = 'disputed' THEN 1 ELSE 0 END) as disputed,
-        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) as needs_review
+        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) as needs_review,
+        SUM(CASE WHEN t.status = 'rejected' THEN 1 ELSE 0 END) as rejected
       FROM terminology_translations t
       ${translationWhere}
     `
@@ -638,6 +674,7 @@ function getStats(subject = null) {
       proposed: stats?.proposed || 0,
       disputed: stats?.disputed || 0,
       needsReview: stats?.needs_review || 0,
+      rejected: stats?.rejected || 0,
     },
     bySubject: bySubject.reduce((acc, row) => {
       acc[row.subject] = row.count;
@@ -1250,6 +1287,7 @@ function exportBookGlossary(bookSlug) {
        FROM terminology_headwords h
        JOIN terminology_translations t ON t.headword_id = h.id
        LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
+       WHERE t.status != 'rejected'
        GROUP BY t.id
        ORDER BY h.english COLLATE NOCASE ASC`
     )
@@ -1526,6 +1564,7 @@ module.exports = {
   approveTerm,
   disputeTranslation,
   disputeTerm,
+  rejectTranslation,
   addDiscussion,
   getReviewQueue,
 
