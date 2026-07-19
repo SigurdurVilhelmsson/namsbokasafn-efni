@@ -117,5 +117,8 @@ books/*/media/_reexport-pending/
 books/*/media/_broken/
 books/*/media/_suspect/
 
+# Aligned research-corpus export (item 20) — regenerable from pipeline tiers
+books/*/corpus/
+
 # B1 glossary probe output (paid run artifacts; regenerate via docs/audit/b1-glossary-probe.mjs)
 docs/audit/probe-out/

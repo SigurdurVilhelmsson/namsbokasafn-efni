@@ -13,6 +13,7 @@ import {
   toJsonl,
   toTsv,
   buildManifest,
+  writeOutputs,
   TSV_COLUMNS,
 } from '../export-corpus.js';
 
@@ -277,6 +278,24 @@ describe('buildCorpus over a book fixture', () => {
       '<!-- SEG:m1:para:p1 -->\nStars.'
     );
     expect(() => buildCorpus('stjornufraedi', {})).toThrow(/book-licences\.cjs/);
+  });
+
+  it('writeOutputs writes jsonl, tsv, and manifest to the out dir', () => {
+    const { rows, stats, skipped } = buildCorpus(BOOK, {});
+    const manifest = buildManifest({
+      book: BOOK,
+      licence: 'CC BY 4.0',
+      obtained: '2026-01-19',
+      stats,
+      skipped,
+      generated: '2026-07-19T12:00:00.000Z',
+    });
+    const outDir = path.join(tmpRoot, 'out');
+    const paths = writeOutputs(rows, manifest, outDir, BOOK);
+    expect(fs.readFileSync(paths.jsonlPath, 'utf-8').trimEnd().split('\n')).toHaveLength(7);
+    expect(fs.readFileSync(paths.tsvPath, 'utf-8').startsWith('id\tbook\t')).toBe(true);
+    const written = JSON.parse(fs.readFileSync(paths.manifestPath, 'utf-8'));
+    expect(written.stats.rows).toBe(7);
   });
 });
 

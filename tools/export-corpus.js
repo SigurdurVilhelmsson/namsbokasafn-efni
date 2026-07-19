@@ -24,6 +24,7 @@ import { normalizeWraps, unescapeMtMarkers, normalizeTermMarkers } from './lib/m
 import { cleanSegmentText, chapterLabel } from './generate-tm.js';
 import { parseSegmentsMap, parseSegmentRecords } from './lib/seg-markers.cjs';
 import { getBookLicence } from './lib/book-licences.cjs';
+import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
 
 const TOOL_NAME = 'export-corpus.js';
 const TOOL_VERSION = '1.0';
@@ -336,6 +337,126 @@ function buildManifest(p) {
   };
 }
 
+// ─── CLI ──────────────────────────────────────────────────────────────
+
+const OUT_OPTION = { name: 'out', flags: ['--out', '-o'], type: 'string', default: null };
+const DRY_RUN_OPTION = {
+  name: 'dryRun',
+  flags: ['--dry-run', '-n'],
+  type: 'boolean',
+  default: false,
+};
+
+/**
+ * Write the three corpus artifacts. Stable filenames — regeneration
+ * overwrites (spec §3; no date-stamp accumulation).
+ */
+function writeOutputs(rows, manifest, outDir, book) {
+  fs.mkdirSync(outDir, { recursive: true });
+  const jsonlPath = path.join(outDir, `${book}.corpus.jsonl`);
+  const tsvPath = path.join(outDir, `${book}.corpus.tsv`);
+  const manifestPath = path.join(outDir, `${book}.corpus-manifest.json`);
+  fs.writeFileSync(jsonlPath, toJsonl(rows), 'utf-8');
+  fs.writeFileSync(tsvPath, toTsv(rows), 'utf-8');
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf-8');
+  return { jsonlPath, tsvPath, manifestPath };
+}
+
+function printHelp() {
+  console.log(`
+${TOOL_NAME} - Export the aligned {EN, MT, faithful, localized} research corpus
+
+Every extracted EN segment becomes a row, joined to the IS tiers on the frozen
+SEG id; absent tiers are null. postEdited reproduces the segment editor's view
+semantics. Output: JSONL (raw+clean per tier) + TSV (clean) + manifest.
+
+Usage:
+  node tools/export-corpus.js --book <book> [--chapter N] [--out <dir>] [--dry-run]
+
+Options:
+  --book <slug>      Book slug (required; must have a licence in tools/lib/book-licences.cjs)
+  --chapter <N>      Limit to one chapter (number or 'appendices'); default all
+  --out, -o <dir>    Output directory (default: books/<book>/corpus/)
+  --dry-run, -n      Report what would be written without writing
+  --verbose, -v      List skipped files
+  -h, --help         Show this help
+`);
+}
+
+function main() {
+  const args = parseArgs(process.argv.slice(2), [
+    BOOK_OPTION,
+    CHAPTER_OPTION,
+    OUT_OPTION,
+    DRY_RUN_OPTION,
+  ]);
+
+  if (args.help) {
+    printHelp();
+    process.exit(0);
+  }
+  requireBook(args);
+  const book = args.book;
+
+  let licenceEntry;
+  try {
+    licenceEntry = getBookLicence(book);
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    process.exit(1);
+  }
+
+  const { rows, stats, skipped } = buildCorpus(book, { chapter: args.chapter });
+
+  if (args.verbose && skipped.length) {
+    console.log(`\nSkipped files (${skipped.length}):`);
+    for (const s of skipped) console.log(`  ${s}`);
+  }
+
+  console.log('\n' + '='.repeat(56));
+  console.log(`Book:               ${book} (${licenceEntry.licence})`);
+  console.log(`Chapter filter:     ${args.chapter ?? '(all)'}`);
+  console.log(`Modules:            ${stats.modulesListed}`);
+  console.log(`Rows:               ${stats.rows}`);
+  console.log(
+    `Tiers present:      mt=${stats.tiers.mt} faithful=${stats.tiers.faithful} localized=${stats.tiers.localized}`
+  );
+  console.log(`postEdited:         true=${stats.postEditedTrue} false=${stats.postEditedFalse}`);
+  if (stats.duplicateIds) console.log(`  duplicate seg-ids (first-wins): ${stats.duplicateIds}`);
+  if (stats.orphanIs) console.log(`  orphan IS seg-ids (no EN):      ${stats.orphanIs}`);
+  if (stats.emptyClean) console.log(`  tier texts empty after strip:   ${stats.emptyClean}`);
+  if (stats.filesSkipped) console.log(`  files skipped (see manifest):   ${stats.filesSkipped}`);
+
+  if (rows.length === 0) {
+    console.error('\nNo corpus rows produced. Is there extracted content in 02-for-mt/?');
+    process.exit(1);
+  }
+
+  const outDir = args.out || path.join(BOOKS_DIR, book, 'corpus');
+  const manifest = buildManifest({
+    book,
+    licence: licenceEntry.licence,
+    obtained: licenceEntry.obtained,
+    stats,
+    skipped,
+    generated: new Date().toISOString(),
+  });
+
+  if (args.dryRun) {
+    console.log(`\nDRY RUN — would write ${rows.length} rows to:\n  ${outDir}`);
+    return;
+  }
+
+  const paths = writeOutputs(rows, manifest, outDir, book);
+  console.log(
+    `\nWrote ${rows.length} rows:\n  ${paths.jsonlPath}\n  ${paths.tsvPath}\n  ${paths.manifestPath}`
+  );
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
+
 export {
   corpusCleanText,
   splitSegId,
@@ -347,5 +468,6 @@ export {
   toJsonl,
   toTsv,
   buildManifest,
+  writeOutputs,
   TSV_COLUMNS,
 };
