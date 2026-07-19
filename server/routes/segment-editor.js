@@ -37,6 +37,7 @@ const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const segmentValidation = require('../public/js/segment-validation');
 const segmentEditor = require('../services/segmentEditorService');
+const acceptanceService = require('../services/acceptanceService');
 const concordance = require('../services/concordanceService');
 const propagation = require('../services/propagationService');
 const activityLog = require('../services/activityLog');
@@ -295,6 +296,15 @@ router.get(
       // Get stats
       const stats = segmentEditor.getModuleStats(req.params.book, req.params.moduleId);
 
+      // Active MT acceptances keyed by segmentId (item 20b)
+      const acceptances = {};
+      for (const a of acceptanceService.getModuleAcceptances(
+        req.params.book,
+        req.params.moduleId
+      )) {
+        acceptances[a.segment_id] = a;
+      }
+
       // Identify segments with pending edits from OTHER editors (cross-editor awareness)
       const currentUserId = req.user?.id;
       const otherEdits = segmentEditor
@@ -306,6 +316,7 @@ router.get(
         ...data,
         edits: editsBySegment,
         stats,
+        acceptances,
         otherPendingSegments,
       });
     } catch (err) {
@@ -469,6 +480,102 @@ router.post(
     }
   }
 );
+
+/**
+ * POST /:book/:chapter/:moduleId/accept
+ * Record a per-segment MT acceptance ("Staðfesta vélþýðingu", item 20b).
+ * Chain mirrors the edit save. acceptedContent must equal the current
+ * baseline byte-for-byte (409 STALE_CONTENT — doubles as the saveRetry
+ * replay guard); an active edit wins (409 EDIT_EXISTS).
+ */
+router.post(
+  '/:book/:chapter/:moduleId/accept',
+  requireAuth,
+  validateBookChapter,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const { segmentId, acceptedContent } = req.body || {};
+    if (!segmentId) {
+      return res.status(400).json({ error: 'segmentId is required' });
+    }
+    if (typeof acceptedContent !== 'string' || acceptedContent === '') {
+      return res.status(400).json({ error: 'acceptedContent is required' });
+    }
+    if (acceptedContent.length > 10000) {
+      return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
+    }
+
+    try {
+      const result = acceptanceService.acceptSegment({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+        acceptedContent,
+        userId: String(req.user.id),
+        username: req.user.username,
+      });
+
+      if (!result.alreadyAccepted) {
+        activityLog.log({
+          type: 'segment_accepted',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} staðfesti vélþýðingu á ${req.params.moduleId}:${segmentId}`,
+        });
+      }
+
+      res.json({ success: true, ...result });
+    } catch (err) {
+      if (err.code === 'STALE_CONTENT' || err.code === 'EDIT_EXISTS') {
+        return res.status(409).json({ error: err.code, message: err.message });
+      }
+      if (err.code === 'NO_TRANSLATION') {
+        return res.status(400).json({ error: err.code, message: err.message });
+      }
+      if (err.code === 'SEGMENT_NOT_FOUND' || err.message.includes('not found')) {
+        return res.status(404).json({ error: err.message });
+      }
+      log.error({ err }, 'Error accepting segment');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /acceptance/:id/revoke
+ * Revoke an active acceptance. Route gate is editor-tier; the owner-or-
+ * book-scoped-head-editor rule lives in the service (owner-OR-HE cannot be
+ * expressed as middleware — same pattern as DELETE /edit/:editId).
+ */
+router.post('/acceptance/:id/revoke', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  try {
+    const row = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
+      actorId: String(req.user.id),
+      actorRole: req.user.role,
+      actorBooks: req.user.books || [],
+    });
+    res.json({ success: true, acceptance: row });
+    activityLog.log({
+      type: 'acceptance_revoked',
+      userId: String(req.user.id),
+      username: req.user.username,
+      book: row.book,
+      chapter: String(row.chapter),
+      section: row.module_id,
+      description: `${req.user.username} afturkallaði staðfestingu á ${row.module_id}:${row.segment_id}`,
+    });
+  } catch (err) {
+    if (err.code === 'FORBIDDEN') {
+      return res.status(403).json({ error: err.message });
+    }
+    res.status(err.message.includes('not found') ? 404 : 400).json({ error: err.message });
+  }
+});
 
 /**
  * DELETE /edit/:editId
