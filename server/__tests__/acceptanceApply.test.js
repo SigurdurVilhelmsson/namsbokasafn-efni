@@ -260,3 +260,47 @@ describe('getApplyStatus widening', () => {
     expect(status.can_rebuild).toBe(true);
   });
 });
+
+describe('faithful restore lapses drifted acceptances (spec §7)', () => {
+  it('restoreVersion supersedes acceptances whose bytes it rewrote, and refreshes the sidecar', () => {
+    const contentVersionService = require('../services/contentVersionService');
+    contentVersionService._setTestDb(db);
+    try {
+      vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+      // Round 1: an edit publishes v-baseline snapshot
+      saveAndApprove('m00001:para:fs-id001', 'Útgáfa eitt.');
+      service.applyApprovedEdits(BOOK, 1, MODULE);
+      // Round 2: edit again → apply snapshots "Útgáfa eitt." as version 2
+      saveAndApprove('m00001:para:fs-id001', 'Útgáfa tvö.');
+      service.applyApprovedEdits(BOOK, 1, MODULE);
+      // Accept an untouched sibling segment at its current bytes
+      accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+      // Accept-record for the edited segment's CURRENT bytes via direct
+      // insert (UI never offers this; simulates the restore-drift edge)
+      db.prepare(
+        `INSERT INTO segment_acceptances
+           (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+         VALUES (?, 1, ?, 'm00001:para:fs-id001', 'Útgáfa tvö.', 'u1', 'editor1')`
+      ).run(BOOK, MODULE);
+
+      // Restore version 2 ("Útgáfa eitt.") → fs-id001's acceptance drifts,
+      // fs-id002's survives (same bytes restored)
+      contentVersionService.restoreVersion(BOOK, 1, MODULE, 2, { username: 'he1' });
+
+      const rows = db
+        .prepare(
+          `SELECT segment_id, status, superseded_reason FROM segment_acceptances ORDER BY id`
+        )
+        .all();
+      const drifted = rows.find((r) => r.segment_id === 'm00001:para:fs-id001');
+      const kept = rows.find((r) => r.segment_id === 'm00001:para:fs-id002');
+      expect(drifted).toMatchObject({ status: 'superseded', superseded_reason: 'content-drift' });
+      expect(kept.status).toBe('active');
+
+      const sidecar = JSON.parse(readFileSync(acceptance.sidecarPathFor(BOOK, 1, MODULE), 'utf-8'));
+      expect(sidecar.segments['m00001:para:fs-id002'].status).toBe('accepted');
+    } finally {
+      contentVersionService._setTestDb(null);
+    }
+  });
+});
