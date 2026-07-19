@@ -24,6 +24,7 @@ const service = require('../services/segmentEditorService');
 const segmentParser = require('../services/segmentParser');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration042 = require('../migrations/042-content-versions-track');
+const migration043 = require('../migrations/043-segment-acceptances');
 
 // Store original BOOKS_DIR to restore after tests
 const originalBooksDir = segmentParser.BOOKS_DIR;
@@ -93,6 +94,10 @@ function createTestDb() {
   // column (default 'faithful') — rebuild in the same column production
   // migrations add, so the apply path's snapshot insert doesn't 500.
   migration042.up(db);
+  // item 20b: saveSegmentEdit now calls acceptanceService.supersedeForEdit on
+  // its own connection inside both save transactions — the test DB needs the
+  // segment_acceptances table or that call throws "no such table".
+  migration043.up(db);
 
   return db;
 }

@@ -12,6 +12,7 @@ const log = require('../lib/logger');
 const mtLock = require('../../tools/lib/mt-lock.cjs');
 const { advanceChapterStatus } = require('./pipelineService');
 const contentVersionService = require('./contentVersionService');
+const acceptanceService = require('./acceptanceService');
 const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
 const terminologyService = require('./terminologyService');
@@ -128,6 +129,10 @@ function saveSegmentEdit(params) {
     // so this costs nothing on the common post-039 case where it never
     // matches anything.
     const updateWithSupersede = conn.transaction(() => {
+      // item 20b: a saved revision supersedes the segment's active acceptance
+      // (spec §7) — same transaction, same connection.
+      acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
+
       conn
         .prepare(
           `UPDATE segment_edits SET status = 'superseded'
@@ -161,6 +166,10 @@ function saveSegmentEdit(params) {
   // time it runs on the update path; it stays load-bearing for legacy
   // pre-039 data where that invariant doesn't hold.
   const insertWithSupersede = conn.transaction(() => {
+    // item 20b: a saved revision supersedes the segment's active acceptance
+    // (spec §7) — same transaction, same connection.
+    acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
+
     conn
       .prepare(
         `UPDATE segment_edits SET status = 'superseded'

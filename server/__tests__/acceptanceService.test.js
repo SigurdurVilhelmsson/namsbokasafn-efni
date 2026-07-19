@@ -209,3 +209,198 @@ describe('acceptSegment', () => {
     expect(rows[0].segment_id).toBe('m00001:para:fs-id001');
   });
 });
+
+describe('revokeAcceptance authz', () => {
+  it('owner can revoke; row flips to superseded(revoked)', () => {
+    const { acceptance: a } = accept();
+    const row = acceptance.revokeAcceptance(a.id, {
+      actorId: 'user-1',
+      actorRole: 'editor',
+      actorBooks: [],
+    });
+    expect(row.status).toBe('superseded');
+    expect(row.superseded_reason).toBe('revoked');
+    expect(row.superseded_at).toBeTruthy();
+  });
+
+  it('another editor cannot revoke (FORBIDDEN)', () => {
+    const { acceptance: a } = accept();
+    expectCode(
+      () =>
+        acceptance.revokeAcceptance(a.id, {
+          actorId: 'user-9',
+          actorRole: 'editor',
+          actorBooks: [],
+        }),
+      'FORBIDDEN'
+    );
+  });
+
+  it('book-scoped head editor can revoke; head editor of ANOTHER book cannot', () => {
+    const { acceptance: a } = accept();
+    expectCode(
+      () =>
+        acceptance.revokeAcceptance(a.id, {
+          actorId: 'he-2',
+          actorRole: 'head-editor',
+          actorBooks: ['other-book'],
+        }),
+      'FORBIDDEN'
+    );
+    const row = acceptance.revokeAcceptance(a.id, {
+      actorId: 'he-1',
+      actorRole: 'head-editor',
+      actorBooks: [BOOK],
+    });
+    expect(row.status).toBe('superseded');
+  });
+
+  it('admin can revoke', () => {
+    const { acceptance: a } = accept();
+    const row = acceptance.revokeAcceptance(a.id, {
+      actorId: 'adm',
+      actorRole: 'admin',
+      actorBooks: [],
+    });
+    expect(row.status).toBe('superseded');
+  });
+
+  it('unknown id / non-active row throw', () => {
+    expect(() =>
+      acceptance.revokeAcceptance(99999, {
+        actorId: 'user-1',
+        actorRole: 'editor',
+        actorBooks: [],
+      })
+    ).toThrow('Acceptance not found');
+    const { acceptance: a } = accept();
+    acceptance.revokeAcceptance(a.id, {
+      actorId: 'user-1',
+      actorRole: 'editor',
+      actorBooks: [],
+    });
+    expect(() =>
+      acceptance.revokeAcceptance(a.id, {
+        actorId: 'user-1',
+        actorRole: 'editor',
+        actorBooks: [],
+      })
+    ).toThrow('Acceptance is not active');
+  });
+});
+
+describe('edit supersedes acceptance (spec §7)', () => {
+  it('saving an edit on an accepted segment lapses the acceptance', () => {
+    const { acceptance: a } = accept();
+    editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Fyrsta efnisgrein.',
+      editedContent: 'Breytt efnisgrein.',
+      editorId: 'user-2',
+      editorUsername: 'editor2',
+    });
+    const row = acceptance.getAcceptanceById(a.id);
+    expect(row.status).toBe('superseded');
+    expect(row.superseded_reason).toBe('superseded-by-edit');
+  });
+
+  it('withdrawing the edit does NOT resurrect the acceptance (re-accept is one keypress)', () => {
+    const { acceptance: a } = accept();
+    editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Fyrsta efnisgrein.',
+      editedContent: 'Breytt efnisgrein.',
+      editorId: 'user-2',
+      editorUsername: 'editor2',
+    });
+    // Withdraw: identical content deletes the pending row (server :107-115)
+    editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Fyrsta efnisgrein.',
+      editedContent: 'Fyrsta efnisgrein.',
+      editorId: 'user-2',
+      editorUsername: 'editor2',
+    });
+    expect(acceptance.getAcceptanceById(a.id).status).toBe('superseded');
+    // ...and the segment can simply be re-accepted
+    expect(accept().alreadyAccepted).toBe(false);
+  });
+
+  it('the UPDATE-existing-pending path also supersedes a later acceptance', () => {
+    // pending edit first, acceptance would be blocked — so build the edge the
+    // other way: edit on seg2, accept seg2 is blocked; instead verify the
+    // update path on seg1: edit → (acceptance impossible) — so directly
+    // insert an active acceptance row, then update the pending edit.
+    editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Fyrsta efnisgrein.',
+      editedContent: 'Breytt v1.',
+      editorId: 'user-2',
+      editorUsername: 'editor2',
+    });
+    db.prepare(
+      `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'Fyrsta efnisgrein.', 'u9', 'editor9')`
+    ).run(BOOK, MODULE);
+    editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Fyrsta efnisgrein.',
+      editedContent: 'Breytt v2.',
+      editorId: 'user-2',
+      editorUsername: 'editor2',
+    });
+    const row = db.prepare(`SELECT * FROM segment_acceptances WHERE accepted_by = 'u9'`).get();
+    expect(row.status).toBe('superseded');
+    expect(row.superseded_reason).toBe('superseded-by-edit');
+  });
+});
+
+describe('lapseDrifted + stampApplied', () => {
+  it('lapses when written bytes differ; keeps a matching acceptance active', () => {
+    accept();
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+    const lapsed = acceptance.lapseDrifted(BOOK, MODULE, [
+      { segmentId: 'm00001:para:fs-id001', content: 'Allt aðrir bætar.' },
+      { segmentId: 'm00001:para:fs-id002', content: 'Önnur efnisgrein.' },
+    ]);
+    expect(lapsed).toBe(1);
+    const rows = db
+      .prepare(`SELECT segment_id, status, superseded_reason FROM segment_acceptances ORDER BY id`)
+      .all();
+    expect(rows[0]).toMatchObject({ status: 'superseded', superseded_reason: 'content-drift' });
+    expect(rows[1]).toMatchObject({ status: 'active', superseded_reason: null });
+  });
+
+  it('a segment missing from the written set lapses too', () => {
+    accept();
+    expect(acceptance.lapseDrifted(BOOK, MODULE, [])).toBe(1);
+  });
+
+  it('stampApplied stamps active NULL rows only, returns the count', () => {
+    accept();
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+    expect(acceptance.stampApplied(BOOK, MODULE)).toBe(2);
+    // Second stamp is a no-op (already applied)
+    expect(acceptance.stampApplied(BOOK, MODULE)).toBe(0);
+    const stamped = db
+      .prepare(`SELECT COUNT(*) AS n FROM segment_acceptances WHERE applied_at IS NOT NULL`)
+      .get().n;
+    expect(stamped).toBe(2);
+  });
+});
