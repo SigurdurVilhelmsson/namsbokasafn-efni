@@ -131,6 +131,13 @@ no-op, segmentParser.js:71-77). `normalizeWraps` is applied by `parseSegments` o
 Applying the identical chain to both tiers makes the flag exactly "would the editor's diff view
 show a change".
 
+**Caveat (review coverage, final-review MUSTFIX 3/F1):** faithful-tier presence and
+`postEdited: false` do not imply per-segment human review. `applyApprovedEdits` rebuilds
+whole-module files, so unreviewed segments carry through into the faithful file as the
+normalized MT view — `postEdited` cannot distinguish "reviewed and confirmed unchanged" from
+"never reviewed". Per-segment review status lives only in the production DB (`segment_edits`),
+which this corpus does not join. Mirrored in manifest note 4 and the CLI summary.
+
 ### Shared-code extraction (the one refactor in this PR)
 
 `normalizeWraps` / `unescapeMtMarkers` / `normalizeTermMarkers` currently live in
@@ -188,8 +195,9 @@ single swap point (and can then delegate to book-config).
            "orphanIs": 0, "duplicateIds": 0, "emptyClean": 0},
  "skipped": ["…relative paths…"],
  "notes": ["single-char legacy markers retained in clean text",
-           "[[MATH:N]]/[[MEDIA:n]] placeholders retained; resolve via 02-structure sidecars",
-           "EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)"]}
+           "[[MATH:N]]/[[MEDIA:n]] placeholders retained, resolve via 02-structure sidecars; [[BR]]/[[SPACE]] formatting placeholders also retained and are NOT sidecar-resolvable",
+           "EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)",
+           "faithful-tier presence and postEdited=false do not imply per-segment human review — see §6 caveat"]}
 ```
 
 That last note is a **known honesty caveat**: `02-for-mt` was re-extracted for chemistry on
@@ -245,7 +253,10 @@ alignment is unaffected; the caveat is documented rather than silently ignored.
   organic MT-priming relies on it.
 - **I20-R3 `[hygiene]`** — efnafraedi `02-for-mt` contains 30 stray `.is.md` files and 49
   `(b)/(c)/(d)` EN variants; ch05 `02-mt-output` has 7 variant `.is.md` (m68724/m68726/m68727)
-  with no recorded authoritative-variant decision.
+  with no recorded authoritative-variant decision. The exporter skip-reports the 02-for-mt
+  strays; the 7 ch05 02-mt-output (b)/(c)/(d) variants are invisible to it (tier files are
+  probed by exact basename, never enumerated) — the variant decision is purely a data-hygiene
+  call.
 - **I20-R4 `[minor]`** — generate-tm's date-stamped default out path accumulates one TMX per
   regeneration day in `books/{book}/tm/` with no pruning/latest pointer.
 - **I20-R5 `[note]`** — M-e (TM exercise pairing) remains open for the TM proper; the corpus
