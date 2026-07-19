@@ -843,7 +843,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     )
     .all(book, moduleId);
 
-  if (approvedEdits.length === 0) {
+  const unappliedAcceptances = conn
+    .prepare(
+      `SELECT COUNT(*) AS n FROM segment_acceptances
+       WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+    )
+    .get(book, moduleId).n;
+
+  if (approvedEdits.length === 0 && unappliedAcceptances === 0) {
     const anyApproved = conn
       .prepare(
         `SELECT COUNT(*) as count FROM segment_edits
@@ -851,7 +858,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       )
       .get(book, moduleId);
 
-    if (anyApproved.count === 0) {
+    const anyAcceptances = conn
+      .prepare(
+        `SELECT COUNT(*) AS count FROM segment_acceptances
+         WHERE book = ? AND module_id = ? AND status = 'active'`
+      )
+      .get(book, moduleId);
+
+    if (anyApproved.count === 0 && anyAcceptances.count === 0) {
       throw new Error('No approved edits to apply for this module');
     }
 
@@ -883,6 +897,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
            WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
         )
         .run(book, moduleId);
+      // item 20b: the acceptance mirror of the reset — an acceptance-only
+      // module whose faithful file vanished must also be rebuildable.
+      conn
+        .prepare(
+          `UPDATE segment_acceptances SET applied_at = NULL
+           WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NOT NULL`
+        )
+        .run(book, moduleId);
       try {
         const result = applyApprovedEdits(book, chapter, moduleId, options);
         _applyRetryState.delete(retryKey);
@@ -910,7 +932,13 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       )
       .all(book, moduleId);
 
-    if (unapplied.length === 0) {
+    const unappliedAccInTxn = conn
+      .prepare(
+        `SELECT COUNT(*) AS n FROM segment_acceptances
+         WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+      )
+      .get(book, moduleId).n;
+    if (unapplied.length === 0 && unappliedAccInTxn === 0) {
       throw new Error('Edits were applied by a concurrent request');
     }
 
@@ -1042,15 +1070,32 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       markSuperseded.run(id);
     }
 
+    // 7. Acceptance lifecycle (item 20b, spec §7): lapse attestations whose
+    // bytes this apply just changed, then stamp the surviving active ones as
+    // published. Same connection, same transaction — atomic with the file
+    // bookkeeping. `segments` is the exact array written to disk in step 5.
+    const lapsedAcceptances = acceptanceService.lapseDrifted(book, moduleId, segments, conn);
+    const acceptedCount = acceptanceService.stampApplied(book, moduleId, conn);
+
     return {
       appliedCount,
       supersededCount: supersededIds.length,
       totalEditsMarked: winnerIds.length + supersededIds.length,
+      acceptedCount,
+      lapsedAcceptances,
       savedPath,
     };
   });
 
   const result = applyTransaction.immediate();
+
+  // Derived review-status sidecar (item 20b) — best-effort; it regenerates
+  // on the next apply/restore if this write fails.
+  try {
+    acceptanceService.writeReviewStatusSidecar(book, chapter, moduleId, conn);
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'Review-status sidecar write failed');
+  }
 
   // Auto-advance status (best-effort, outside transaction)
   try {
@@ -1118,6 +1163,16 @@ function getApplyStatus(book, moduleId, chapter) {
     )
     .get(book, moduleId);
 
+  const accCounts = conn
+    .prepare(
+      `SELECT
+         COUNT(CASE WHEN applied_at IS NULL THEN 1 END) AS unapplied_acceptances,
+         COUNT(CASE WHEN applied_at IS NOT NULL THEN 1 END) AS applied_acceptances
+       FROM segment_acceptances
+       WHERE book = ? AND module_id = ? AND status = 'active'`
+    )
+    .get(book, moduleId);
+
   // When the chapter is known, report whether the faithful file actually exists.
   // If every approved edit is marked applied but the file is gone (e.g. it was
   // deleted out of band), the module can be *rebuilt*: applyApprovedEdits
@@ -1135,10 +1190,14 @@ function getApplyStatus(book, moduleId, chapter) {
       `${moduleId}-segments.is.md`
     );
     faithfulExists = fs.existsSync(faithfulPath);
-    canRebuild = !faithfulExists && counts.unapplied_count === 0 && counts.applied_count > 0;
+    canRebuild =
+      !faithfulExists &&
+      counts.unapplied_count === 0 &&
+      accCounts.unapplied_acceptances === 0 &&
+      (counts.applied_count > 0 || accCounts.applied_acceptances > 0);
   }
 
-  return { ...counts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
+  return { ...counts, ...accCounts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
 }
 
 // =====================================================================
