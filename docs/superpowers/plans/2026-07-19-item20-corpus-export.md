@@ -81,8 +81,8 @@ Move the three functions **verbatim** (bodies AND JSDoc) from `server/services/s
  */
 
 /**
- * Normalize hard line-wraps to spaces. Single newlines inside a segment are
- * wrapping artifacts from extraction; double newlines are kept as
+ * Normalize hard line wraps in segment content.
+ * Joins single-newline continuation lines into spaces while preserving
  * intentional paragraph breaks (double newlines).
  *
  * @param {string} text - Raw segment content
