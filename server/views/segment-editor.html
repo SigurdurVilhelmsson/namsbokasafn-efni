@@ -771,6 +771,18 @@
       background: rgba(196,150,58,0.25);
     }
 
+    /* Item 18 — fallback (cross-subject) matches: visibly secondary. Declared
+       after .proposed so at equal specificity the muted look wins for
+       proposed+fallback; status still shows in the popup badges. */
+    .term-highlight.cross-subject {
+      background: transparent;
+      border-bottom: 2px dashed var(--text-muted);
+    }
+
+    .term-highlight.cross-subject:hover {
+      background: var(--bg-elevated);
+    }
+
     /* --- Term issue indicators --- */
     .term-issue {
       display: flex;
