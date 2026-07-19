@@ -53,16 +53,21 @@ admin.html's analytics activity list.
 ## GET /api/status/dashboard — routes/status.js
 Consumed by: my-work.html admin panels.
 Fields consumed: `needsAttention` `{ unassignedWork, pendingReviews,
-blockedIssues (a NUMBER), overdueCount, items }`, `teamActivity`
+blockedIssues (a NUMBER), items }`, `teamActivity`
 (timeline-shaped rows incl. `timeAgo`/`icon`/`color` — `icon` is always
 truthy, `color` is a class token `success|warning|info|default`),
 `readyForAssignment`, `workload`.
-`overdueCount` is structurally 0 today (F28 → removed in item 16 PR2).
-`needsAttention.items` (`dashboardReadModel`-fed, `routes/status.js`): the
-view renders `item.type` (icon lookup: `overdue|blocked|unassigned|review`),
-`item.message`, `item.book`, `item.chapter` (also reads `item.assignedTo`
-and `item.daysOld`, which the current route never populates — both render
-as their falsy-guard fallback).
+There is NO `overdueCount` (dead field removed in item 16 PR2, F28 — the
+route never incremented it and no view ever rendered a non-zero value).
+`needsAttention.items` (mixed-source, `routes/status.js` — `review` items
+from `dashboardReadModel.getGlobalPendingEdits()`, `unassigned` from
+`userService.getBookAssignments()`, `blocked` from
+`segmentEditorService.getDiscussEdits()`): the
+view renders `item.type` (icon lookup: `blocked|unassigned|review` — no
+`overdue` type is ever emitted, F28), `item.message`, `item.book`,
+`item.chapter` (also reads `item.assignedTo` and `item.daysOld`, which the
+current route never populates — both render as their falsy-guard
+fallback).
 `workload` (`dashboardReadModel.getEditorWorkload`): rows carry `{ editor,
 active, pending, approved, rejected, oldestPendingHours }`; the view renders
 `editor`, `active`, `pending`, `oldestPendingHours` only (`approved`/
@@ -84,8 +89,13 @@ reviewedAt, editorUrl, status }` — the view filters this list client-side to
 `proposedTerms` (`{ english, icelandic, status, discussionCount }`).
 `/today`: `{ user, currentTask, upNext, needsAttention, quickStats
 { totalTasks, changesRequested, pendingReview, completedThisWeek,
-proposedTerms }, adminStats, allTasks }`. There is NO `blockedIssues` and
-NO `quickStats.overdue` (dead reads removed in item 16 PR2).
+proposedTerms }, adminStats, allTasks }`. `allTasks` (and therefore
+`currentTask`/`upNext`/`needsAttention`, all derived from it) contains
+**only** `type: 'changes_requested'` items — the route never assembles an
+assignment-derived task, so `quickStats.totalTasks === allTasks.length ===
+quickStats.changesRequested` always (dormant assignment-task branch
+deleted in item 16 PR2, F30+F25). There is NO `blockedIssues` and NO
+`quickStats.overdue` (dead reads removed in item 16 PR2, F29/F30+F25).
 
 ## GET {API_BASE}/terminology/lookup — routes/segment-editor.js
 Consumed by: segment-editor popup autocomplete.

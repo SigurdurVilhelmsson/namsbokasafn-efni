@@ -359,14 +359,10 @@
           var ch = data.chapters[j];
           var num = ch.chapter != null ? ch.chapter : ch;
           var label = ch.titleIs || ch.title;
+          var base = chapterLabel.full(num);
           var opt = document.createElement('option');
           opt.value = num;
-          opt.textContent =
-            num === -1
-              ? label || 'Viðaukar'
-              : label
-                ? 'Kafli ' + num + ' — ' + label
-                : 'Kafli ' + num;
+          opt.textContent = label ? (num === -1 ? label : base + ' — ' + label) : base;
           edChapterSelect.appendChild(opt);
         }
       } catch (err) {
@@ -550,7 +546,7 @@
     document.getElementById('module-title').textContent =
       edModuleData.moduleId + ' \u2014 ' + edModuleData.title;
     document.getElementById('module-meta').textContent =
-      (edModuleData.chapter === -1 ? 'Vi\u00F0aukar' : 'Kafli ' + edModuleData.chapter) +
+      chapterLabel.full(edModuleData.chapter) +
       ' \u00B7 ' +
       edModuleData.segmentCount +
       ' b\u00FAtar \u00B7 ' +
@@ -1750,8 +1746,8 @@
         select.innerHTML +=
           '<option value="' +
           ch.chapter +
-          '">Kafli ' +
-          ch.chapter +
+          '">' +
+          chapterLabel.full(ch.chapter) +
           ': ' +
           escapeHtml(ch.titleIs || ch.title) +
           '</option>';

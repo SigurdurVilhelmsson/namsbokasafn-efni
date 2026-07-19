@@ -14,6 +14,7 @@ import { fileURLToPath } from 'url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const view = (name) => fs.readFileSync(path.join(here, '..', 'views', name), 'utf8');
+const serverFile = (name) => fs.readFileSync(path.join(here, '..', name), 'utf8');
 
 describe('books.html chapter activity panel (F12)', () => {
   const src = view('books.html');
@@ -109,5 +110,53 @@ describe('my-work.html admin activity feed (F31)', () => {
     expect(src).toMatch(/\.admin-activity-icon\.success/);
     expect(src).toMatch(/\.admin-activity-icon\.warning/);
     expect(src).toMatch(/\.admin-activity-icon\.info/);
+  });
+});
+
+describe('item16 PR2 — F28: dead Tímafrestur overdue stat removed', () => {
+  it('my-work.html carries no overdue-stat remnants', () => {
+    const src = view('my-work.html');
+    expect(src).not.toMatch(/Tímafrestur/);
+    expect(src).not.toMatch(/overdueCount/);
+    expect(src).not.toMatch(/overdueItems/);
+  });
+
+  it('GET /api/status/dashboard no longer initializes overdueCount', () => {
+    expect(serverFile('routes/status.js')).not.toMatch(/overdueCount/);
+  });
+});
+
+describe('item16 PR2 — F29: unreachable blocked-issues banner removed', () => {
+  it('no banner code or retired /issues links remain in my-work.html', () => {
+    const src = view('my-work.html');
+    expect(src).not.toMatch(/renderBlockedBanner/);
+    expect(src).not.toMatch(/blocked-banner/);
+    expect(src).not.toMatch(/todayData\.blockedIssues/);
+    expect(src).not.toMatch(/\/issues/);
+  });
+
+  it('the live dashboard blockedIssues stat survives', () => {
+    expect(view('my-work.html')).toMatch(/attention\.blockedIssues/);
+  });
+});
+
+describe('item16 PR2 — F30+F25: dormant assignment-task branch removed', () => {
+  it('my-work.html has no assignment-task remnants', () => {
+    const src = view('my-work.html');
+    expect(src).not.toMatch(/STAGE_LABELS/);
+    expect(src).not.toMatch(/getDueDateText/);
+    expect(src).not.toMatch(/stageLabel/);
+    expect(src).not.toMatch(/dueDate/);
+    expect(src).not.toMatch(/overdue/i);
+  });
+
+  it('the live changes-requested alert wording survives', () => {
+    expect(view('my-work.html')).toMatch(/verkefni þarfnast lagfæringa/);
+  });
+
+  it('routes/my-work.js no longer reads the legacy chapter_assignments table', () => {
+    const src = serverFile('routes/my-work.js');
+    expect(src).not.toMatch(/(?<!user_)chapter_assignments/);
+    expect(src).not.toMatch(/'assignment'/);
   });
 });
