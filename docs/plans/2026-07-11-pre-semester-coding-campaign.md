@@ -165,7 +165,7 @@ Rationale: editors return at semester start; these protect and de-confuse their 
 
 ## Phase 4 — products & provenance gaps (weeks 4–5, audit's own order)
 17. **Licence metadata per product** — needs lead posture decision on Physics+Organic (CC BY-NC-SA) FIRST (decision lane); then book-config licence field → renderer emission → vefur consumption (small cross-repo tail).
-18. **Terminology subject-fallback-on-miss** (lead-clarified requirement; currently hides other subjects).
+18. ✅ **Terminology subject-fallback-on-miss** — **MERGED PR #305 (2026-07-19, main `b0cd3a9e`, suite 2963/2963).** Shared `translationTier()` policy: `findTermsInSegments` partitions (fallback surfaces on a true miss, badged, NEVER QA issues; in-scope claims overlap spans first), `lookupTerm` stamps+sorts best-first, MT export deliberately strict + pinned. Client: `cross-subject` highlight, popup fallback note + badges, quick-lookup subject labels incl. einnig-alternatives (final-review F1). Spec `docs/superpowers/specs/2026-07-19-item18-terminology-subject-fallback-design.md`; registers I18-R1..R6 above. ⚠️ reaches ritstjórn only via `./scripts/deploy.sh` (rides the pending items-14..16 deploy batch).
 19. **Glossary review-queue** (proposed terms go live immediately today).
 20. **Aligned research-corpus export** (EN/MT/faithful/localized; MT↔edited is the MTPE research asset).
 21. **TM + Árnastofnun export path.**
