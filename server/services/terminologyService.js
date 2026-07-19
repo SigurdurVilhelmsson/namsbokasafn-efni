@@ -1079,22 +1079,22 @@ function findTermsInSegments(segments, bookSlug = null) {
     });
   }
 
-  // Item N: scope translations to the book's subject. A translation is in-scope
-  // when the book has no subject mapping (→ no filtering), or it is tagged with
-  // the book subject, or 'general', or it is untagged. Headwords left with no
-  // in-scope translation are dropped entirely (no match, no missing-term issue).
-  const subjectAllowed = (subjects) =>
-    !bookSubject ||
-    subjects.length === 0 ||
-    subjects.includes(bookSubject) ||
-    subjects.includes('general');
-
-  const terms = Array.from(termMap.values())
-    .map((term) => ({
-      ...term,
-      translations: term.translations.filter((t) => subjectAllowed(t.subjects)),
-    }))
-    .filter((term) => term.translations.length > 0);
+  // Item N → item 18: scope translations to the book's subject, but never hide
+  // a headword entirely. A headword with at least one in-scope translation
+  // (tier 'primary'/'in-scope') behaves exactly as before — foreign-subject
+  // siblings stay hidden (homograph guard). A headword whose translations are
+  // ALL foreign-subject becomes a FALLBACK term: it still matches (suggestion
+  // surfaces, badged via isFallback) but never produces missing-term issues —
+  // QA must not demand another subject's translation. Every headword has ≥1
+  // translation (SQL inner join), so the partition is total.
+  const terms = Array.from(termMap.values()).map((term) => {
+    const inScope = term.translations.filter(
+      (t) => translationTier(t.subjects, bookSubject) !== 'fallback'
+    );
+    return inScope.length > 0
+      ? { ...term, translations: inScope, isFallback: false }
+      : { ...term, isFallback: true };
+  });
   const result = {};
 
   for (const seg of segments) {
@@ -1143,6 +1143,7 @@ function findTermsInSegments(segments, bookSlug = null) {
           subjects: primary.subjects,
           status: primary.status,
           isPrimary: primary.isPrimary,
+          isFallback: term.isFallback,
           position: enMatch.index,
           translations: sorted.map((t) => ({
             id: t.id,
@@ -1150,11 +1151,12 @@ function findTermsInSegments(segments, bookSlug = null) {
             subjects: t.subjects,
             status: t.status,
             isPrimary: t.isPrimary,
+            isFallback: term.isFallback,
           })),
         });
 
         // Check if any approved translation appears in IS text
-        if (seg.isContent) {
+        if (!term.isFallback && seg.isContent) {
           const approvedTranslations = term.translations.filter((t) => t.status === 'approved');
           if (approvedTranslations.length > 0) {
             const anyFound = approvedTranslations.some((t) => {

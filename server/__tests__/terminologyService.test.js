@@ -898,17 +898,24 @@ describe('findTermsInSegments()', () => {
 describe('findTermsInSegments() — subject scoping', () => {
   const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
 
-  it('hides a headword whose only translation is another subject', () => {
-    // "mole" with only a biology translation must not surface in a chemistry book
+  it('surfaces a fallback match when the only translation is another subject — no issues', () => {
+    // Item 18: "mole" with only a biology translation surfaces in a chemistry
+    // book as a BADGED fallback suggestion (isFallback) — but never as a QA
+    // issue: a chemistry editor is not warned for skipping a biology term.
     const hw = insertHeadword({ english: 'mole' });
     const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
     addSubject(tr, 'biology');
 
     const result = terminologyService.findTermsInSegments(
-      seg('one mole of carbon', 'eitt mól af kolefni'),
+      seg('one mole of carbon', 'eitt kolefnismagn'),
       'efnafraedi-2e'
     );
-    expect(result.s.matches).toHaveLength(0);
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].isFallback).toBe(true);
+    expect(result.s.matches[0].icelandic).toBe('moldvarpa');
+    expect(result.s.matches[0].isPrimary).toBe(false);
+    expect(result.s.matches[0].translations[0].isFallback).toBe(true);
+    // The IS text does NOT contain 'moldvarpa' — an in-scope term would issue here.
     expect(result.s.issues).toHaveLength(0);
   });
 
@@ -995,6 +1002,53 @@ describe('findTermsInSegments() — subject scoping', () => {
     expect(result.s.matches).toHaveLength(1);
     expect(result.s.matches[0].translations).toHaveLength(2);
   });
+
+  it('fallback match prefers the approved foreign translation over a proposed one', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    // Proposed inserted FIRST so DB order alone would rank it first.
+    const trProposed = insertTranslation(hw, { icelandic: 'jarðvarpa', status: 'proposed' });
+    const trApproved = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(trProposed, 'biology');
+    addSubject(trApproved, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of carbon', 'eitt kolefnismagn'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches[0].icelandic).toBe('moldvarpa');
+    expect(result.s.matches[0].translations.map((t) => t.icelandic)).toEqual([
+      'moldvarpa',
+      'jarðvarpa',
+    ]);
+  });
+
+  it('fallback with only proposed translations still surfaces, marked proposed', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'proposed' });
+    addSubject(tr, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of carbon', 'eitt kolefnismagn'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].isFallback).toBe(true);
+    expect(result.s.matches[0].status).toBe('proposed');
+    expect(result.s.issues).toHaveLength(0);
+  });
+
+  it('normal (in-scope) matches carry isFallback: false at both levels', () => {
+    const hw = insertHeadword({ english: 'acid' });
+    const tr = insertTranslation(hw, { icelandic: 'sýra', status: 'approved' });
+    addSubject(tr, 'chemistry');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('an acid reacts', 'sýra hvarfast'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches[0].isFallback).toBe(false);
+    expect(result.s.matches[0].translations[0].isFallback).toBe(false);
+  });
 });
 
 // =====================
@@ -1070,6 +1124,19 @@ describe('checkSegmentConsistency()', () => {
     const issues = terminologyService.checkSegmentConsistency(
       'A molecule is small.',
       'Eitthvað er lítið.',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(0);
+  });
+
+  it('foreign-only term produces no issue even though it matches as fallback (item 18)', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(tr, 'biology');
+
+    const issues = terminologyService.checkSegmentConsistency(
+      'one mole of carbon',
+      'eitt kolefnismagn',
       'efnafraedi-2e'
     );
     expect(issues).toHaveLength(0);
