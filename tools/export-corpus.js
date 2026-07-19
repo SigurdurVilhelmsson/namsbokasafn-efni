@@ -25,6 +25,9 @@ import { cleanSegmentText, chapterLabel } from './generate-tm.js';
 import { parseSegmentsMap, parseSegmentRecords } from './lib/seg-markers.cjs';
 import { getBookLicence } from './lib/book-licences.cjs';
 
+const TOOL_NAME = 'export-corpus.js';
+const TOOL_VERSION = '1.0';
+
 let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books');
 
 // ─── Text & row helpers ───────────────────────────────────────────────
@@ -259,6 +262,80 @@ function _setTestBooksDir(dir) {
   BOOKS_DIR = dir;
 }
 
+// ─── Serialization ────────────────────────────────────────────────────
+
+const TSV_COLUMNS = [
+  'id',
+  'book',
+  'chapter',
+  'module',
+  'type',
+  'licence',
+  'en_clean',
+  'mt_clean',
+  'faithful_clean',
+  'localized_clean',
+  'postEdited',
+];
+
+/** @param {Array<object>} rows */
+function toJsonl(rows) {
+  return rows.map((r) => JSON.stringify(r)).join('\n') + '\n';
+}
+
+function tsvField(v) {
+  if (v === null || v === undefined) return '';
+  return String(v).replace(/[\t\n\r]/g, ' ');
+}
+
+/** @param {Array<object>} rows */
+function toTsv(rows) {
+  const lines = [TSV_COLUMNS.join('\t')];
+  for (const r of rows) {
+    lines.push(
+      [
+        r.id,
+        r.book,
+        r.chapter,
+        r.module,
+        r.type,
+        r.licence,
+        r.en ? r.en.clean : '',
+        r.mt ? r.mt.clean : '',
+        r.faithful ? r.faithful.clean : '',
+        r.localized ? r.localized.clean : '',
+        r.postEdited === null ? '' : String(r.postEdited),
+      ]
+        .map(tsvField)
+        .join('\t')
+    );
+  }
+  return lines.join('\n') + '\n';
+}
+
+/**
+ * @param {{book: string, licence: string, obtained: string, stats: object,
+ *          skipped: string[], generated: string}} p
+ */
+function buildManifest(p) {
+  return {
+    generated: p.generated,
+    tool: TOOL_NAME,
+    toolVersion: TOOL_VERSION,
+    book: p.book,
+    licence: p.licence,
+    licenceObtained: p.obtained,
+    provenance: 'docs/provenance/openstax-cnxml-licence-provenance.md',
+    stats: p.stats,
+    skipped: p.skipped,
+    notes: [
+      'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
+      '[[MATH:N]]/[[MEDIA:n]] placeholders retained; resolve via 02-structure sidecars',
+      `EN tier is the current extraction; for modules MT'd before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
+    ],
+  };
+}
+
 export {
   corpusCleanText,
   splitSegId,
@@ -267,4 +344,8 @@ export {
   listEnChapterDirs,
   buildCorpus,
   _setTestBooksDir,
+  toJsonl,
+  toTsv,
+  buildManifest,
+  TSV_COLUMNS,
 };

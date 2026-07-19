@@ -10,6 +10,10 @@ import {
   listEnChapterDirs,
   buildCorpus,
   _setTestBooksDir,
+  toJsonl,
+  toTsv,
+  buildManifest,
+  TSV_COLUMNS,
 } from '../export-corpus.js';
 
 describe('corpusCleanText', () => {
@@ -273,5 +277,70 @@ describe('buildCorpus over a book fixture', () => {
       '<!-- SEG:m1:para:p1 -->\nStars.'
     );
     expect(() => buildCorpus('stjornufraedi', {})).toThrow(/book-licences\.cjs/);
+  });
+});
+
+describe('serializers', () => {
+  const row = buildRow({
+    id: 'm1:para:p1',
+    book: 'efnafraedi-2e',
+    chapter: '1',
+    module: 'm1',
+    licence: 'CC BY 4.0',
+    en: 'A\tB\nC.',
+    mt: 'Vatn.',
+    faithful: 'Vatnið.',
+    localized: null,
+  });
+
+  it('toJsonl emits one parseable object per line in frozen key order', () => {
+    const jsonl = toJsonl([row, row]);
+    const lines = jsonl.trimEnd().split('\n');
+    expect(lines).toHaveLength(2);
+    const parsed = JSON.parse(lines[0]);
+    expect(Object.keys(parsed)).toEqual([
+      'id',
+      'book',
+      'chapter',
+      'module',
+      'type',
+      'elementId',
+      'licence',
+      'en',
+      'mt',
+      'faithful',
+      'localized',
+      'postEdited',
+    ]);
+    expect(jsonl.endsWith('\n')).toBe(true);
+  });
+
+  it('toTsv emits the frozen header and sanitizes tabs/newlines in fields', () => {
+    const tsv = toTsv([row]);
+    const lines = tsv.trimEnd().split('\n');
+    expect(lines[0]).toBe(TSV_COLUMNS.join('\t'));
+    const fields = lines[1].split('\t');
+    expect(fields).toHaveLength(TSV_COLUMNS.length);
+    // en clean had a tab; the raw text's tab/newline must not split columns
+    expect(fields[TSV_COLUMNS.indexOf('en_clean')]).toBe('A B C.');
+    expect(fields[TSV_COLUMNS.indexOf('localized_clean')]).toBe('');
+    expect(fields[TSV_COLUMNS.indexOf('postEdited')]).toBe('true');
+  });
+
+  it('buildManifest carries licence, stats, skipped, and the spec notes', () => {
+    const manifest = buildManifest({
+      book: 'efnafraedi-2e',
+      licence: 'CC BY 4.0',
+      obtained: '2026-01-19',
+      stats: { rows: 1 },
+      skipped: ['ch01/x.bak'],
+      generated: '2026-07-19T12:00:00.000Z',
+    });
+    expect(manifest.tool).toBe('export-corpus.js');
+    expect(manifest.licence).toBe('CC BY 4.0');
+    expect(manifest.licenceObtained).toBe('2026-01-19');
+    expect(manifest.provenance).toBe('docs/provenance/openstax-cnxml-licence-provenance.md');
+    expect(manifest.skipped).toEqual(['ch01/x.bak']);
+    expect(manifest.notes.some((n) => n.includes('dialect drift'))).toBe(true);
   });
 });
