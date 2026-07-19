@@ -353,4 +353,8 @@ const UI = {
     placeholder: 'Fletta upp hugtaki...',
     openGlossary: 'Opna í orðasafni →',
   },
+
+  termPopup: {
+    fallbackNote: 'Ekkert hugtak í fagi bókarinnar — sýnt úr öðru fagi',
+  },
 };

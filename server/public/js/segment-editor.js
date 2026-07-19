@@ -2198,7 +2198,7 @@
         const subjectBadges = (tr.subjects || [])
           .map(
             (s) =>
-              `<span style="font-size: 0.7em; padding: 0.1em 0.4em; background: var(--bg-elevated); border-radius: 3px; color: var(--text-muted);">${SUBJECT_NAMES[s] || s}</span>`
+              `<span class="term-subject-badge${tr.isFallback ? ' other' : ''}">${escapeHtml(SUBJECT_NAMES[s] || s)}</span>`
           )
           .join(' ');
         const primaryMark = tr.isPrimary ? ' ★' : '';
@@ -2210,7 +2210,12 @@
       })
       .join('');
 
+    const fallbackNote = termInfo.isFallback
+      ? `<div class="term-popup-fallback-note">${UI.termPopup.fallbackNote}</div>`
+      : '';
+
     document.getElementById('term-popup-body').innerHTML = `
+        ${fallbackNote}
         ${translationsHtml}
         <div style="margin-top: 0.5rem; padding-top: 0.4rem; border-top: 1px solid var(--border);">
           <a href="/terminology" target="_blank" style="font-size: var(--text-xs); color: var(--accent);">

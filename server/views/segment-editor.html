@@ -783,6 +783,28 @@
       background: var(--bg-elevated);
     }
 
+    /* Item 18 — term popup subject badges + fallback note */
+    .term-subject-badge {
+      font-size: 0.7em;
+      padding: 0.1em 0.4em;
+      background: var(--bg-elevated);
+      border-radius: 3px;
+      color: var(--text-muted);
+    }
+
+    .term-subject-badge.other {
+      background: transparent;
+      border: 1px dashed var(--text-muted);
+    }
+
+    .term-popup-fallback-note {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.3rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
     /* --- Term issue indicators --- */
     .term-issue {
       display: flex;
