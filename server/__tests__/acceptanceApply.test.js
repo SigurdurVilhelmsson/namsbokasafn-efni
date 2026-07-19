@@ -304,3 +304,35 @@ describe('faithful restore lapses drifted acceptances (spec §7)', () => {
     }
   });
 });
+
+describe('metrics redefinition: reviewed = approved ∪ accepted (spec §8)', () => {
+  it('getModuleStats reports accepted count', () => {
+    accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');
+    const stats = service.getModuleStats(BOOK, MODULE);
+    expect(stats.accepted).toBe(1);
+  });
+
+  it('module completes when distinct approved ∪ accepted covers every segment', () => {
+    // 3 segments: 1 approved edit + 2 acceptances = complete
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin.');
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+    accept('m00001:title:fs-id003', 'Titill kafla');
+    const progress = service.getEditorialProgress(BOOK);
+    expect(progress.summary.modulesComplete).toBe(1);
+    expect(progress.chapters[1].approvedSegments).toBe(3);
+  });
+
+  it('overlap does not double-count: edit + acceptance on the same segment = 1', () => {
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin.');
+    // acceptance on the SAME segment via direct insert (API blocks this
+    // while the edit is active; the metric must still be distinct-safe)
+    db.prepare(
+      `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'Yfirfarin.', 'u1', 'editor1')`
+    ).run(BOOK, MODULE);
+    const progress = service.getEditorialProgress(BOOK);
+    expect(progress.chapters[1].approvedSegments).toBe(1);
+    expect(progress.summary.modulesComplete).toBe(0);
+  });
+});

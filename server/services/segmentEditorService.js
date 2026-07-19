@@ -1210,7 +1210,7 @@ function getApplyStatus(book, moduleId, chapter) {
 function getModuleStats(book, moduleId) {
   const conn = getDb();
 
-  return conn
+  const editStats = conn
     .prepare(
       `SELECT
        COUNT(*) as total_edits,
@@ -1229,6 +1229,17 @@ function getModuleStats(book, moduleId) {
      WHERE book = ? AND module_id = ?`
     )
     .get(book, moduleId);
+
+  // item 20b: active MT acceptances are the second reviewed-tier signal
+  // (spec §8 metrics redefinition — reviewed = approved edit ∪ active acceptance).
+  const accepted = conn
+    .prepare(
+      `SELECT COUNT(*) as n FROM segment_acceptances
+       WHERE book = ? AND module_id = ? AND status = 'active'`
+    )
+    .get(book, moduleId).n;
+
+  return { ...editStats, accepted };
 }
 
 /**
@@ -1351,18 +1362,34 @@ function getEditorialProgress(book) {
   const conn = getDb();
 
   // 1. Get DISTINCT segment counts per chapter from DB
-  //    This is the key fix: counting distinct segment_ids, not edit records
+  //    This is the key fix: counting distinct segment_ids, not edit records.
+  //    item 20b (spec §8 metrics redefinition): approved_segments is now the
+  //    reviewed UNION — DISTINCT(segment with approved edit ∪ segment with
+  //    active acceptance). Driven from a chapter-keyed UNION ALL rather than
+  //    a LEFT JOIN off the edits subquery, because an acceptance-only chapter
+  //    (active acceptances, zero segment_edits rows) has no row on the edits
+  //    side to join from and would otherwise be dropped entirely.
   const editRows = conn
     .prepare(
       `SELECT
-        chapter,
-        COUNT(DISTINCT segment_id) as edited_segments,
-        COUNT(DISTINCT CASE WHEN status = 'approved' THEN segment_id ELSE NULL END) as approved_segments
-      FROM segment_edits
-      WHERE book = ?
-      GROUP BY chapter`
+         chapter,
+         SUM(edited) as edited_segments,
+         SUM(reviewed) as approved_segments
+       FROM (
+         SELECT chapter, COUNT(DISTINCT segment_id) as edited, 0 as reviewed
+           FROM segment_edits WHERE book = ? GROUP BY chapter
+         UNION ALL
+         SELECT chapter, 0 as edited, COUNT(DISTINCT segment_id) as reviewed FROM (
+           SELECT chapter, segment_id FROM segment_edits
+            WHERE book = ? AND status = 'approved'
+           UNION
+           SELECT chapter, segment_id FROM segment_acceptances
+            WHERE book = ? AND status = 'active'
+         ) GROUP BY chapter
+       )
+       GROUP BY chapter`
     )
-    .all(book);
+    .all(book, book, book);
 
   const editMap = {};
   for (const row of editRows) {
@@ -1379,11 +1406,21 @@ function getEditorialProgress(book) {
   let modulesComplete = 0;
   let totalModules = 0;
 
-  // For module completion, reuse existing per-module record counts
-  const moduleEdits = getBookEditsByModule(book);
-  const moduleEditMap = {};
-  for (const row of moduleEdits) {
-    moduleEditMap[row.module_id] = row;
+  // item 20b: module completion counts DISTINCT(approved-edit ∪ active-
+  // acceptance) segments — reviewed(segment) has two flavors now (spec §8).
+  const reviewedByModule = {};
+  for (const row of conn
+    .prepare(
+      `SELECT module_id, COUNT(DISTINCT segment_id) as reviewed FROM (
+         SELECT module_id, segment_id FROM segment_edits
+          WHERE book = ? AND status = 'approved'
+         UNION
+         SELECT module_id, segment_id FROM segment_acceptances
+          WHERE book = ? AND status = 'active'
+       ) GROUP BY module_id`
+    )
+    .all(book, book)) {
+    reviewedByModule[row.module_id] = row.reviewed;
   }
 
   for (const chNum of chapterNums) {
@@ -1395,15 +1432,12 @@ function getEditorialProgress(book) {
       chSegments += segCount;
       totalModules++;
 
-      // Module is "complete" when approved records >= segment count
-      const modEdits = moduleEditMap[mod.moduleId];
-      if (modEdits && segCount > 0) {
-        // applied ⊂ approved by SQL construction (applied_at is a stamp on an
-        // 'approved' row) — approved alone is the whole reviewed count (F18).
-        const approvedRecords = modEdits.approved || 0;
-        if (approvedRecords >= segCount) {
-          modulesComplete++;
-        }
+      // Module is "complete" when reviewed (approved ∪ accepted) segments
+      // cover the segment count (item 20b redefinition; F18-class comms —
+      // numbers RISE at deploy, see register MTA-R1).
+      const reviewedCount = reviewedByModule[mod.moduleId] || 0;
+      if (segCount > 0 && reviewedCount >= segCount) {
+        modulesComplete++;
       }
     }
 
