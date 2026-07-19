@@ -582,6 +582,149 @@ function getReviewQueue(options = {}) {
   return ids.map((id) => loadHeadword(db, id));
 }
 
+/**
+ * Public book→subject resolver (item 19; consolidates the routes-level
+ * resolveBookSubject duplicate — I18-R2). Errors propagate: fail loud.
+ */
+function getBookSubject(bookSlug) {
+  if (!bookSlug) return null;
+  return getBookSubjectBySlug(getDb(), bookSlug);
+}
+
+const REVIEW_QUEUE_DEFAULT_STATUSES = ['proposed', 'disputed', 'needs_review'];
+
+/**
+ * Build the subject-scoping WHERE fragment shared by the queue query and the
+ * counts query. subject === 'untagged' selects rows with zero subject tags
+ * (the I18-R1 targets a slug-filtered view must not silently hide).
+ */
+function subjectScopeClause(effectiveSubject, where, params) {
+  if (effectiveSubject === 'untagged') {
+    where.push(
+      'NOT EXISTS (SELECT 1 FROM terminology_translation_subjects x WHERE x.translation_id = t.id)'
+    );
+  } else if (effectiveSubject) {
+    where.push(
+      'EXISTS (SELECT 1 FROM terminology_translation_subjects x WHERE x.translation_id = t.id AND x.subject = ?)'
+    );
+    params.push(effectiveSubject);
+  }
+}
+
+/**
+ * Translation-granular review queue (item 19). Replaces the headword-granular
+ * getReviewQueue. Explicit `subject` beats `book`; a book without a subject
+ * mapping applies no subject constraint.
+ *
+ * @returns {{ items: Array, total: number }}
+ */
+function getTranslationReviewQueue(options = {}) {
+  const {
+    statuses = REVIEW_QUEUE_DEFAULT_STATUSES,
+    source,
+    subject,
+    book,
+    limit = 50,
+    offset = 0,
+  } = options;
+  const db = getDb();
+
+  if (!Array.isArray(statuses) || statuses.length === 0) {
+    throw new Error('statuses must be a non-empty array');
+  }
+  for (const s of statuses) {
+    if (!TERM_STATUSES.includes(s)) throw new Error(`Invalid status: ${s}`);
+  }
+
+  const effectiveSubject = subject || (book ? getBookSubjectBySlug(db, book) : null);
+
+  const where = [`t.status IN (${statuses.map(() => '?').join(', ')})`];
+  const params = [...statuses];
+  if (source) {
+    where.push('t.source = ?');
+    params.push(source);
+  }
+  subjectScopeClause(effectiveSubject, where, params);
+  const whereSql = where.join(' AND ');
+
+  const total = db
+    .prepare(`SELECT COUNT(*) AS total FROM terminology_translations t WHERE ${whereSql}`)
+    .get(...params).total;
+
+  const rows = db
+    .prepare(
+      `
+      SELECT t.id, t.headword_id, h.english, h.pos,
+             t.icelandic, t.definition_is, t.notes, t.source, t.status,
+             t.proposed_by, t.proposed_by_name, t.created_at
+      FROM terminology_translations t
+      JOIN terminology_headwords h ON h.id = t.headword_id
+      WHERE ${whereSql}
+      ORDER BY t.created_at DESC, t.id DESC
+      LIMIT ? OFFSET ?
+    `
+    )
+    .all(...params, limit, offset);
+
+  const subjectStmt = db.prepare(
+    'SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?'
+  );
+
+  const items = rows.map((r) => ({
+    translationId: r.id,
+    headwordId: r.headword_id,
+    english: r.english,
+    pos: r.pos || null,
+    icelandic: r.icelandic,
+    definitionIs: r.definition_is || null,
+    notes: r.notes,
+    source: r.source,
+    status: r.status,
+    subjects: subjectStmt.all(r.id).map((s) => s.subject),
+    proposedBy: r.proposed_by,
+    proposedByName: r.proposed_by_name,
+    createdAt: r.created_at,
+  }));
+
+  return { items, total };
+}
+
+/**
+ * Lightweight per-status counts for the review banner and queue chips.
+ * `subject` in the result is the resolved effective subject (or null) so the
+ * client can prefill its tag-at-approval picker without a book→subject map.
+ */
+function getReviewQueueCounts(options = {}) {
+  const { book, subject } = options;
+  const db = getDb();
+
+  const effectiveSubject = subject || (book ? getBookSubjectBySlug(db, book) : null);
+
+  const where = [`t.status IN ('proposed', 'disputed', 'needs_review')`];
+  const params = [];
+  subjectScopeClause(effectiveSubject, where, params);
+
+  const row = db
+    .prepare(
+      `
+      SELECT
+        SUM(CASE WHEN t.status = 'proposed' THEN 1 ELSE 0 END) AS proposed,
+        SUM(CASE WHEN t.status = 'disputed' THEN 1 ELSE 0 END) AS disputed,
+        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) AS needs_review
+      FROM terminology_translations t
+      WHERE ${where.join(' AND ')}
+    `
+    )
+    .get(...params);
+
+  return {
+    proposed: row?.proposed || 0,
+    disputed: row?.disputed || 0,
+    needsReview: row?.needs_review || 0,
+    subject: effectiveSubject || null,
+  };
+}
+
 // ─────────────────────────────────────────
 // Delete
 // ─────────────────────────────────────────
@@ -1567,6 +1710,9 @@ module.exports = {
   rejectTranslation,
   addDiscussion,
   getReviewQueue,
+  getTranslationReviewQueue,
+  getReviewQueueCounts,
+  getBookSubject,
 
   // Delete
   deleteHeadword,

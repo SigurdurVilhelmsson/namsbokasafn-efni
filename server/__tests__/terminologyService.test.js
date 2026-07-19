@@ -1466,3 +1466,133 @@ describe('findTermsInSegments() — Unicode word boundary', () => {
     expect(result.s.issues).toHaveLength(0);
   });
 });
+
+// =====================
+// getBookSubject() / getTranslationReviewQueue() / getReviewQueueCounts() — item 19
+// =====================
+describe('getBookSubject()', () => {
+  it('resolves a mapped book, null for unmapped or missing input', () => {
+    expect(terminologyService.getBookSubject('efnafraedi-2e')).toBe('chemistry');
+    expect(terminologyService.getBookSubject('unknown-book')).toBeNull();
+    expect(terminologyService.getBookSubject(null)).toBeNull();
+    expect(terminologyService.getBookSubject(undefined)).toBeNull();
+  });
+});
+
+describe('getTranslationReviewQueue()', () => {
+  it('defaults to proposed+disputed+needs_review, excluding approved and rejected', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', status: 'approved' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', status: 'proposed' });
+    insertFullTerm({ english: 'c', icelandic: 'c1', status: 'disputed' });
+    insertFullTerm({ english: 'd', icelandic: 'd1', status: 'needs_review' });
+    insertFullTerm({ english: 'e', icelandic: 'e1', status: 'rejected' });
+    const { items, total } = terminologyService.getTranslationReviewQueue();
+    expect(total).toBe(3);
+    expect(items.map((i) => i.english).sort()).toEqual(['b', 'c', 'd']);
+  });
+
+  it('is translation-granular: mixed-status headword contributes only queued rows', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    insertTranslation(hwId, { icelandic: 'efnatengi', status: 'proposed' });
+    const { items, total } = terminologyService.getTranslationReviewQueue();
+    expect(total).toBe(1);
+    expect(items[0].icelandic).toBe('efnatengi');
+    expect(items[0].english).toBe('bond');
+    expect(items[0].headwordId).toBe(hwId);
+  });
+
+  it('accepts explicit statuses including rejected', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', status: 'proposed' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', status: 'rejected' });
+    const { items, total } = terminologyService.getTranslationReviewQueue({
+      statuses: ['rejected'],
+    });
+    expect(total).toBe(1);
+    expect(items[0].english).toBe('b');
+  });
+
+  it('throws on an unknown status', () => {
+    expect(() => terminologyService.getTranslationReviewQueue({ statuses: ['bogus'] })).toThrow(
+      'Invalid status: bogus'
+    );
+    expect(() => terminologyService.getTranslationReviewQueue({ statuses: [] })).toThrow(
+      'statuses must be a non-empty array'
+    );
+  });
+
+  it('filters by source', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', source: 'mined-postedit' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', source: 'manual' });
+    const { items } = terminologyService.getTranslationReviewQueue({ source: 'mined-postedit' });
+    expect(items.map((i) => i.english)).toEqual(['a']);
+  });
+
+  it("subject slug matches tagged rows; 'untagged' matches only untagged rows", () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'b', icelandic: 'b1' }); // untagged
+    const chem = terminologyService.getTranslationReviewQueue({ subject: 'chemistry' });
+    expect(chem.items.map((i) => i.english)).toEqual(['a']);
+    const untagged = terminologyService.getTranslationReviewQueue({ subject: 'untagged' });
+    expect(untagged.items.map((i) => i.english)).toEqual(['b']);
+  });
+
+  it('book resolves to the mapped subject; unmapped book applies no constraint', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'b', icelandic: 'b1', subjects: ['biology'] });
+    const chem = terminologyService.getTranslationReviewQueue({ book: 'efnafraedi-2e' });
+    expect(chem.items.map((i) => i.english)).toEqual(['a']);
+    const all = terminologyService.getTranslationReviewQueue({ book: 'no-such-book' });
+    expect(all.total).toBe(2);
+  });
+
+  it('paginates with a real total, newest-first (created_at DESC, id DESC)', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1' });
+    insertFullTerm({ english: 'b', icelandic: 'b1' });
+    insertFullTerm({ english: 'c', icelandic: 'c1' });
+    const page1 = terminologyService.getTranslationReviewQueue({ limit: 2, offset: 0 });
+    expect(page1.total).toBe(3);
+    expect(page1.items).toHaveLength(2);
+    // Same-second created_at → id DESC tie-break: newest insert first
+    expect(page1.items[0].english).toBe('c');
+    const page2 = terminologyService.getTranslationReviewQueue({ limit: 2, offset: 2 });
+    expect(page2.items).toHaveLength(1);
+    expect(page2.items[0].english).toBe('a');
+  });
+
+  it('rows carry headword context, subjects, and proposer', () => {
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      subjects: ['chemistry', 'general'],
+      proposed_by_name: 'Jón',
+    });
+    const { items } = terminologyService.getTranslationReviewQueue();
+    const it0 = items[0];
+    expect(it0.english).toBe('molecule');
+    expect(it0.icelandic).toBe('sameind');
+    expect(it0.subjects.sort()).toEqual(['chemistry', 'general']);
+    expect(it0.proposedByName).toBe('Jón');
+    expect(it0.status).toBe('proposed');
+    expect(typeof it0.translationId).toBe('number');
+  });
+});
+
+describe('getReviewQueueCounts()', () => {
+  it('returns per-status counts', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', status: 'proposed' });
+    insertFullTerm({ english: 'b', icelandic: 'b1', status: 'proposed' });
+    insertFullTerm({ english: 'c', icelandic: 'c1', status: 'disputed' });
+    insertFullTerm({ english: 'd', icelandic: 'd1', status: 'approved' });
+    const counts = terminologyService.getReviewQueueCounts();
+    expect(counts).toEqual({ proposed: 2, disputed: 1, needsReview: 0, subject: null });
+  });
+
+  it('scopes by book subject and reports the resolved subject for picker prefill', () => {
+    insertFullTerm({ english: 'a', icelandic: 'a1', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'b', icelandic: 'b1', subjects: ['biology'] });
+    const counts = terminologyService.getReviewQueueCounts({ book: 'efnafraedi-2e' });
+    expect(counts.proposed).toBe(1);
+    expect(counts.subject).toBe('chemistry');
+  });
+});
