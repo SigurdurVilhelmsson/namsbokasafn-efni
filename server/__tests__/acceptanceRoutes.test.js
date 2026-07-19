@@ -24,6 +24,8 @@ let acceptHandler;
 let revokeLayer;
 let revokeHandler;
 let moduleGetLayer;
+let applyLayer;
+let applyHandler;
 let segmentParser;
 let realBooksDir;
 // eslint-disable-next-line no-unused-vars -- assigned in beforeAll for parity with segmentParser above; not called directly in this suite (handler-level assertions cover the service)
@@ -77,6 +79,8 @@ beforeAll(() => {
   revokeLayer = find('/acceptance/:id/revoke', 'post');
   revokeHandler = revokeLayer.route.stack.at(-1).handle;
   moduleGetLayer = find('/:book/:chapter/:moduleId', 'get');
+  applyLayer = find('/:book/:chapter/:moduleId/apply', 'post');
+  applyHandler = applyLayer.route.stack.at(-1).handle;
 });
 
 afterAll(() => {
@@ -230,5 +234,39 @@ describe('module GET exposes acceptances', () => {
       accepted_by_username: 'editor1',
     });
     expect(out.body.acceptances[`${MODULE}:para:b`]).toBeUndefined();
+  });
+});
+
+describe('apply handler activity-log description includes acceptance counts (final-review F2)', () => {
+  it('accept-only module: 0 edits/2 acceptances logs "0 breytingu/ar og 2 staðfestingar"', async () => {
+    await invoke(
+      acceptHandler,
+      acceptReq({ body: { segmentId: `${MODULE}:para:a`, acceptedContent: 'IS a' } })
+    );
+    await invoke(
+      acceptHandler,
+      acceptReq({ body: { segmentId: `${MODULE}:para:b`, acceptedContent: 'IS b' } })
+    );
+
+    const out = await invoke(applyHandler, {
+      params: { book: BOOK, chapter: '1', moduleId: MODULE },
+      chapterNum: 1,
+      user: EDITOR,
+    });
+    expect(out.status).toBe(200);
+    expect(out.body.appliedCount).toBe(0);
+    expect(out.body.acceptedCount).toBe(2);
+
+    const Database = require('better-sqlite3');
+    const db = new Database(process.env.SESSIONS_DB_PATH);
+    const row = db
+      .prepare(
+        `SELECT description FROM activity_log
+         WHERE type = 'segment_edits_applied'
+         ORDER BY id DESC LIMIT 1`
+      )
+      .get();
+    db.close();
+    expect(row.description).toContain('0 breytingu/ar og 2 staðfestingar');
   });
 });

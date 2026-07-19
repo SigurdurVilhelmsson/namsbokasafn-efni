@@ -2048,7 +2048,13 @@
         { credentials: 'include' }
       );
 
-      const { unapplied_count, unapplied_acceptances, total_approved, can_rebuild } = data;
+      const {
+        unapplied_count,
+        unapplied_acceptances,
+        total_approved,
+        can_rebuild,
+        applied_acceptances,
+      } = data;
       const totalUnapplied = (unapplied_count || 0) + (unapplied_acceptances || 0);
 
       if (totalUnapplied > 0) {
@@ -2066,6 +2072,12 @@
         btnApplyRender.disabled = false;
       } else if (total_approved > 0) {
         statusEl.textContent = UI.apply.allApplied(total_approved);
+      } else if (applied_acceptances > 0) {
+        // item 20b final-review F2: an accept-only publish has
+        // total_approved === 0 but applied_acceptances > 0 — without this
+        // branch it fell through to noApproved ("Engar samþykktar
+        // breytingar"), which is wrong for a module that was just published.
+        statusEl.textContent = UI.apply.acceptancesApplied(applied_acceptances);
       } else {
         statusEl.textContent = UI.apply.noApproved;
       }
@@ -2091,7 +2103,7 @@
         `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply`,
         { method: 'POST', credentials: 'include' }
       );
-      badge.textContent = UI.apply.saved(data.appliedCount);
+      badge.textContent = UI.apply.saved(data.appliedCount, data.acceptedCount);
       badge.className = 'pipeline-status-badge success';
       // Refresh status
       loadApplyStatus();
@@ -2121,7 +2133,10 @@
         { method: 'POST', credentials: 'include' }
       );
 
-      badge.textContent = UI.apply.saveAndRenderProgress(data.applied.appliedCount);
+      badge.textContent = UI.apply.saveAndRenderProgress(
+        data.applied.appliedCount,
+        data.applied.acceptedCount
+      );
 
       // Poll the pipeline job
       if (data.jobId) {

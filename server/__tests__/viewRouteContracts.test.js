@@ -85,6 +85,34 @@ describe('my-work.html personal activity feed (F26)', () => {
     expect(src).toMatch(/segment_edit_saved:/);
     expect(src).not.toMatch(/term_propose:/);
   });
+
+  it('item 20b final-review F6: icon map has entries for the acceptance activity types', () => {
+    expect(src).toMatch(/segment_accepted:/);
+    expect(src).toMatch(/acceptance_revoked:/);
+  });
+});
+
+describe('books.html activity icon map (item 20b final-review F6, duplicate of my-work.html)', () => {
+  const src = view('books.html');
+
+  it('has entries for the acceptance activity types too (routes/segment-editor.js logs both)', () => {
+    expect(src).toMatch(/segment_accepted:/);
+    expect(src).toMatch(/acceptance_revoked:/);
+  });
+});
+
+describe('routes/status.js server-side getActivityIcon (item 20b final-review F6, third copy the brief missed)', () => {
+  // The brief named my-work.html + books.html, but the dashboard teamActivity
+  // feed and /api/status/activity/timeline (routes/status.js:getActivityIcon)
+  // format the SAME activity_log rows through their own icon map — a third,
+  // independent copy that would otherwise still fall back to 📌 for
+  // segment_accepted/acceptance_revoked.
+  const src = serverFile('routes/status.js');
+
+  it('has entries for the acceptance activity types', () => {
+    expect(src).toMatch(/segment_accepted:/);
+    expect(src).toMatch(/acceptance_revoked:/);
+  });
 });
 
 describe('admin.html analytics activity list timestamp (F27 sibling)', () => {

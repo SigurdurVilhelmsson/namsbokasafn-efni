@@ -160,14 +160,34 @@ const UI = {
       return 'Allar ' + total + ' samþykktar breytingar vistaðar';
     },
     noApproved: 'Engar samþykktar breytingar',
+    // item 20b final-review F2: an accept-only publish has appliedCount === 0,
+    // so `applied_acceptances > 0` needs its own message instead of falling
+    // through to noApproved.
+    acceptancesApplied: function (n) {
+      return n + ' staðfestingar vistaðar';
+    },
     errorLoading: 'Villa við að sækja stöðu',
     saving: 'Vista...',
-    saved: function (count) {
-      return 'Vistað (' + count + ' breytingar)';
+    // item 20b final-review F2: accept-only / mixed apply must surface the
+    // acceptance count too, not just appliedCount (which is 0 for an
+    // accept-only module) — accepted is an optional trailing arg.
+    saved: function (count, accepted) {
+      return (
+        'Vistað (' +
+        count +
+        ' breytingar' +
+        (accepted ? ', ' + accepted + ' staðfestingar' : '') +
+        ')'
+      );
     },
     saveAndRender: 'Vista + Birta...',
-    saveAndRenderProgress: function (count) {
-      return 'Vistað (' + count + '), birting í gangi...';
+    saveAndRenderProgress: function (count, accepted) {
+      return (
+        'Vistað (' +
+        count +
+        (accepted ? ', ' + accepted + ' staðfestingar' : '') +
+        '), birting í gangi...'
+      );
     },
     saveAndRenderDone: 'Vistað + Birt!',
     saveNoRender: 'Vistað, en birting hófst ekki',

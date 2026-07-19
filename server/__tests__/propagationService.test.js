@@ -3,6 +3,12 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const svc = require('../services/propagationService');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+// item 20b final-review F4: createPropagatedEdits now calls
+// acceptanceService.supersedeForEdit unconditionally on every eligible
+// occurrence, which touches segment_acceptances — every freshDb() that backs
+// a createPropagatedEdits call needs the table (migration043 precedent from
+// Tasks 3/5).
+const migration043 = require('../migrations/043-segment-acceptances');
 
 describe('classifyOccurrence', () => {
   const P = 'Sýra og basi'; // propagated text
@@ -87,6 +93,7 @@ describe('createPropagatedEdits', () => {
   function freshDb() {
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
+    migration043.up(d);
     return d;
   }
 
@@ -225,6 +232,7 @@ describe('superseded rows are not live content', () => {
   function freshDb() {
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
+    migration043.up(d);
     return d;
   }
 
@@ -287,12 +295,70 @@ describe('superseded rows are not live content', () => {
   });
 });
 
+describe('createPropagatedEdits supersedes an active acceptance (final-review F4)', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    createSegmentEditsSchema(d);
+    migration043.up(d);
+    return d;
+  }
+
+  const base = {
+    book: 'efnafraedi-2e',
+    editorId: '42',
+    editorUsername: 'tester',
+    propagatedText: 'Sýra og basi',
+    category: 'terminology',
+    note: 'Sjálfvirk fjölgun',
+    sourceEn: '',
+  };
+
+  it("an eligible propagated edit flips the segment's active acceptance to superseded-by-edit", () => {
+    const d = freshDb();
+    d.prepare(
+      `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 1, 'm020', 'm020:para:h', 'gömul', 'u1', 'editor1')`
+    ).run(base.book);
+    const occurrences = [
+      { chapter: 1, moduleId: 'm020', segmentId: 'm020:para:h', currentIs: 'gömul' },
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.created).toHaveLength(1);
+
+    const acc = d.prepare(`SELECT * FROM segment_acceptances WHERE module_id = 'm020'`).get();
+    expect(acc.status).toBe('superseded');
+    expect(acc.superseded_reason).toBe('superseded-by-edit');
+  });
+
+  it('a skipped (already-matches) occurrence leaves its acceptance untouched', () => {
+    const d = freshDb();
+    d.prepare(
+      `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 1, 'm021', 'm021:para:i', 'Sýra og basi', 'u1', 'editor1')`
+    ).run(base.book);
+    const occurrences = [
+      // currentIs already equals propagatedText → already-matches, not eligible.
+      { chapter: 1, moduleId: 'm021', segmentId: 'm021:para:i', currentIs: 'Sýra og basi' },
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.skipped).toHaveLength(1);
+
+    const acc = d.prepare(`SELECT * FROM segment_acceptances WHERE module_id = 'm021'`).get();
+    expect(acc.status).toBe('active');
+  });
+});
+
 describe('structural-marker guard on propagation (SR-OOS-2 D8)', () => {
   const Database = require('better-sqlite3');
 
   function freshDb() {
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
+    migration043.up(d);
     return d;
   }
 

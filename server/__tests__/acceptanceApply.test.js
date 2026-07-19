@@ -305,6 +305,58 @@ describe('faithful restore lapses drifted acceptances (spec §7)', () => {
   });
 });
 
+describe('regenSidecarSafe (final-review F1: revoke must refresh the stale sidecar)', () => {
+  it('after a DB-level status flip (simulating revoke), regenSidecarSafe rewrites the segment as carryover', () => {
+    accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');
+    vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+    service.applyApprovedEdits(BOOK, 1, MODULE);
+
+    let sidecar = JSON.parse(readFileSync(acceptance.sidecarPathFor(BOOK, 1, MODULE), 'utf-8'));
+    expect(sidecar.segments['m00001:para:fs-id001'].status).toBe('accepted');
+
+    // revokeAcceptance itself does not touch the sidecar (route-level concern) —
+    // simulate its DB effect directly, then call the fix's helper.
+    db.prepare(
+      `UPDATE segment_acceptances SET status = 'superseded', superseded_reason = 'revoked'`
+    ).run();
+    acceptance.regenSidecarSafe(BOOK, 1, MODULE);
+
+    sidecar = JSON.parse(readFileSync(acceptance.sidecarPathFor(BOOK, 1, MODULE), 'utf-8'));
+    expect(sidecar.segments['m00001:para:fs-id001'].status).toBe('carryover');
+  });
+
+  it('no-ops (never throws) when there is no faithful file yet', () => {
+    expect(() => acceptance.regenSidecarSafe(BOOK, 1, MODULE)).not.toThrow();
+  });
+});
+
+describe('getReviewedSegmentsByModule (final-review F3 extraction)', () => {
+  it('counts distinct approved-edit ∪ active-acceptance segments per module', () => {
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+    const byModule = service.getReviewedSegmentsByModule(BOOK);
+    expect(byModule[MODULE]).toBe(2);
+  });
+
+  it('dedupes an edit and an acceptance on the SAME segment to 1', () => {
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
+    db.prepare(
+      `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'Yfirfarin efnisgrein.', 'u1', 'editor1')`
+    ).run(BOOK, MODULE);
+    const byModule = service.getReviewedSegmentsByModule(BOOK);
+    expect(byModule[MODULE]).toBe(1);
+  });
+
+  it('an acceptance-only module counts via the UNION path (not edits-only)', () => {
+    accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+    const byModule = service.getReviewedSegmentsByModule(BOOK);
+    expect(byModule[MODULE]).toBe(2);
+  });
+});
+
 describe('metrics redefinition: reviewed = approved ∪ accepted (spec §8)', () => {
   it('getModuleStats reports accepted count', () => {
     accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');

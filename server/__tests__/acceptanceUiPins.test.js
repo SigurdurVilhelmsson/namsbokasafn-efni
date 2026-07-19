@@ -63,4 +63,16 @@ describe('acceptance UI pins', () => {
       'books/*/03-faithful-translation/*/*-review-status.json merge=ours'
     );
   });
+
+  it('final-review F2: apply UI surfaces acceptance counts, not just appliedCount (byte + reference pins)', () => {
+    // ui-strings.js: acceptance-aware message text (raw UTF-8 — byte-check).
+    expect(strings).toContain('staðfestingar');
+    expect(strings).toContain('acceptancesApplied');
+    // segment-editor.js: the apply path reads acceptedCount, and loadApplyStatus
+    // reads applied_acceptances instead of falling through to noApproved.
+    expect(clientJs).toContain('data.acceptedCount');
+    expect(clientJs).toContain('data.applied.acceptedCount');
+    expect(clientJs).toContain('applied_acceptances');
+    expect(clientJs).toContain('UI.apply.acceptancesApplied');
+  });
 });

@@ -569,6 +569,11 @@ router.post('/acceptance/:id/revoke', requireAuth, requireRole(ROLES.EDITOR), (r
       section: row.module_id,
       description: `${req.user.username} afturkallaði staðfestingu á ${row.module_id}:${row.segment_id}`,
     });
+    // item 20b final-review F1: a revoke changes the segment's review status,
+    // so refresh the durable sidecar (parity with apply/restore). Best-effort
+    // and never fails the revoke — regenSidecarSafe swallows the expected
+    // "no faithful file yet" case and logs (never throws) anything else.
+    acceptanceService.regenSidecarSafe(row.book, row.chapter, row.module_id);
   } catch (err) {
     if (err.code === 'FORBIDDEN') {
       return res.status(403).json({ error: err.message });
@@ -1255,7 +1260,9 @@ router.post(
         book: req.params.book,
         chapter: String(req.chapterNum),
         section: req.params.moduleId,
-        description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
+        description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar${
+          result.acceptedCount ? ` og ${result.acceptedCount} staðfestingar` : ''
+        } á ${req.params.moduleId}`,
       });
 
       res.json({
@@ -1328,7 +1335,9 @@ router.post(
         book: req.params.book,
         chapter: String(req.chapterNum),
         section: req.params.moduleId,
-        description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
+        description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar${
+          applyResult.acceptedCount ? ` og ${applyResult.acceptedCount} staðfestingar` : ''
+        } á ${req.params.moduleId} og ræsti leiðslu`,
       });
 
       res.json({

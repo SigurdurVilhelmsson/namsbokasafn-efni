@@ -350,6 +350,25 @@ function writeReviewStatusSidecar(book, chapter, moduleId, dbConn = getDb()) {
   return outPath;
 }
 
+/**
+ * Best-effort sidecar regen: a revoke (or any other status flip) changes what
+ * the durable sidecar should say, so refresh it — but the sidecar only
+ * exists once the module has been applied, and writeReviewStatusSidecar
+ * throws 'Faithful file not found' otherwise. That's an expected no-op here;
+ * any OTHER failure is logged, never thrown — never turn a succeeded
+ * mutation into a failed request over a best-effort regen (item 20b
+ * final-review F1).
+ */
+function regenSidecarSafe(book, chapter, moduleId, dbConn = getDb()) {
+  try {
+    writeReviewStatusSidecar(book, chapter, moduleId, dbConn);
+  } catch (err) {
+    if (!/Faithful file not found/.test(err.message)) {
+      log.error({ err, book, moduleId }, 'Sidecar regen failed');
+    }
+  }
+}
+
 /** @internal Test-only: inject an in-memory DB instance */
 function _setTestDb(testDb) {
   db = testDb;
@@ -365,5 +384,6 @@ module.exports = {
   stampApplied,
   sidecarPathFor,
   writeReviewStatusSidecar,
+  regenSidecarSafe,
   _setTestDb,
 };

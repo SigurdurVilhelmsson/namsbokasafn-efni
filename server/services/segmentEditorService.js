@@ -1350,6 +1350,36 @@ function getBookEditsByModule(book) {
 }
 
 /**
+ * Per-module reviewed-segment counts: DISTINCT(segment with an approved edit
+ * ∪ segment with an active acceptance), keyed by module_id. Extracted from
+ * getEditorialProgress (item 20b final-review F3) so routes/status.js's
+ * per-module/per-chapter completion can use the exact same UNION instead of
+ * drifting out of sync with the book-wide summary (which was already
+ * acceptance-aware per item 20b Task 8, while the route stayed edits-only).
+ *
+ * @param {string} book - Book slug
+ * @returns {Object<string, number>} moduleId -> distinct reviewed segment count
+ */
+function getReviewedSegmentsByModule(book) {
+  const conn = getDb();
+  const reviewedByModule = {};
+  for (const row of conn
+    .prepare(
+      `SELECT module_id, COUNT(DISTINCT segment_id) as reviewed FROM (
+         SELECT module_id, segment_id FROM segment_edits
+          WHERE book = ? AND status = 'approved'
+         UNION
+         SELECT module_id, segment_id FROM segment_acceptances
+          WHERE book = ? AND status = 'active'
+       ) GROUP BY module_id`
+    )
+    .all(book, book)) {
+    reviewedByModule[row.module_id] = row.reviewed;
+  }
+  return reviewedByModule;
+}
+
+/**
  * Get per-chapter and book-wide editorial progress using DISTINCT segment counts.
  *
  * Uses COUNT(DISTINCT segment_id) rather than edit record counts, so that
@@ -1408,20 +1438,7 @@ function getEditorialProgress(book) {
 
   // item 20b: module completion counts DISTINCT(approved-edit ∪ active-
   // acceptance) segments — reviewed(segment) has two flavors now (spec §8).
-  const reviewedByModule = {};
-  for (const row of conn
-    .prepare(
-      `SELECT module_id, COUNT(DISTINCT segment_id) as reviewed FROM (
-         SELECT module_id, segment_id FROM segment_edits
-          WHERE book = ? AND status = 'approved'
-         UNION
-         SELECT module_id, segment_id FROM segment_acceptances
-          WHERE book = ? AND status = 'active'
-       ) GROUP BY module_id`
-    )
-    .all(book, book)) {
-    reviewedByModule[row.module_id] = row.reviewed;
-  }
+  const reviewedByModule = getReviewedSegmentsByModule(book);
 
   for (const chNum of chapterNums) {
     const modules = segmentParser.listChapterModules(book, chNum);
@@ -1521,6 +1538,7 @@ module.exports = {
   // Per-book aggregation
   getBookEditsByModule,
   getEditorialProgress,
+  getReviewedSegmentsByModule,
   // Test helpers
   _setTestDb,
   _setTestBooksDir,

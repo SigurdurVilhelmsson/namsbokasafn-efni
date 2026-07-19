@@ -11,6 +11,7 @@ const Database = require('better-sqlite3');
 const segmentParser = require('./segmentParser');
 const concordance = require('./concordanceService');
 const segmentValidation = require('../public/js/segment-validation');
+const acceptanceService = require('./acceptanceService');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -126,6 +127,12 @@ function createPropagatedEdits(
         });
         continue;
       }
+      // item 20b final-review F4: a propagated edit is still an edit —
+      // supersede any active acceptance on this occurrence's segment, exactly
+      // like saveSegmentEdit does, inside this same transaction/connection.
+      // Parity keeps the "edit supersedes acceptance" invariant on the
+      // cross-module write path too (propagation bypasses saveSegmentEdit).
+      acceptanceService.supersedeForEdit(book, occ.moduleId, occ.segmentId, conn);
       // Eligible because of an own pending edit → supersede it in place rather
       // than inserting a duplicate pending row (keeps the one-row-per-(seg,editor)
       // invariant; classifyOccurrence already guaranteed it is ours + pending).
