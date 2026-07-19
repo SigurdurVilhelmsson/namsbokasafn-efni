@@ -6,7 +6,15 @@
  */
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createRequire } from 'module';
-import { mkdtempSync, mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs';
+import {
+  mkdtempSync,
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  existsSync,
+  unlinkSync,
+  rmSync,
+} from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
@@ -87,6 +95,7 @@ beforeEach(() => {
   db.exec('DELETE FROM segment_edits');
   const lockPath = mtLock.mtLockPathFor(segmentParser.getModulePaths(BOOK, 1, MODULE).mtOutput);
   if (existsSync(lockPath)) unlinkSync(lockPath);
+  rmSync(join(booksDir, BOOK, '03-faithful-translation'), { recursive: true, force: true });
 });
 
 function accept(segmentId = 'm00001:para:fs-id001', content = 'Fyrsta efnisgrein.') {
@@ -402,5 +411,84 @@ describe('lapseDrifted + stampApplied', () => {
       .prepare(`SELECT COUNT(*) AS n FROM segment_acceptances WHERE applied_at IS NOT NULL`)
       .get().n;
     expect(stamped).toBe(2);
+  });
+});
+
+describe('writeReviewStatusSidecar (spec §8)', () => {
+  const FAITHFUL_DIR = () => join(booksDir, BOOK, '03-faithful-translation', 'ch01');
+
+  function writeFaithful(entries) {
+    mkdirSync(FAITHFUL_DIR(), { recursive: true });
+    writeFileSync(
+      join(FAITHFUL_DIR(), `${MODULE}-segments.is.md`),
+      entries.map(([segId, text]) => `<!-- SEG:${segId} -->\n${text}`).join('\n\n'),
+      'utf-8'
+    );
+  }
+
+  it('derives the full per-segment map with all three statuses, file key order', () => {
+    writeFaithful([
+      ['m00001:para:fs-id001', 'Breytt og birt.'],
+      ['m00001:para:fs-id002', 'Önnur efnisgrein.'],
+      ['m00001:para:fs-id003', 'Carryover texti.'],
+    ]);
+    // fs-id001: approved+applied edit
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at, applied_at)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'x', 'Breytt og birt.',
+               'u2', 'editor2', 'approved', '2026-07-19 10:00:00', '2026-07-19 10:05:00')`
+    ).run(BOOK, MODULE);
+    // fs-id002: active acceptance
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+
+    const outPath = acceptance.writeReviewStatusSidecar(BOOK, 1, MODULE);
+    expect(outPath).toBe(acceptance.sidecarPathFor(BOOK, 1, MODULE));
+    const sidecar = JSON.parse(readFileSync(outPath, 'utf-8'));
+
+    expect(sidecar.book).toBe(BOOK);
+    expect(sidecar.chapter).toBe('1');
+    expect(sidecar.module).toBe(MODULE);
+    expect(sidecar.generated).toBeTruthy();
+    // Deterministic key order = file segment order
+    expect(Object.keys(sidecar.segments)).toEqual([
+      'm00001:para:fs-id001',
+      'm00001:para:fs-id002',
+      'm00001:para:fs-id003',
+    ]);
+    expect(sidecar.segments['m00001:para:fs-id001']).toEqual({
+      status: 'edited',
+      by: 'editor2',
+      at: '2026-07-19 10:00:00',
+    });
+    expect(sidecar.segments['m00001:para:fs-id002']).toMatchObject({
+      status: 'accepted',
+      by: 'editor1',
+    });
+    expect(sidecar.segments['m00001:para:fs-id003']).toEqual({ status: 'carryover' });
+  });
+
+  it('an active acceptance outranks an older applied edit on the same segment (restore edge)', () => {
+    writeFaithful([['m00001:para:fs-id001', 'Fyrsta efnisgrein.']]);
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at, applied_at)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'x', 'Gömul breyting.',
+               'u2', 'editor2', 'approved', '2026-07-01 10:00:00', '2026-07-01 10:05:00')`
+    ).run(BOOK, MODULE);
+    accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');
+    const sidecar = JSON.parse(
+      readFileSync(acceptance.writeReviewStatusSidecar(BOOK, 1, MODULE), 'utf-8')
+    );
+    expect(sidecar.segments['m00001:para:fs-id001'].status).toBe('accepted');
+  });
+
+  it('throws when no faithful file exists', () => {
+    rmSync(FAITHFUL_DIR(), { recursive: true, force: true });
+    expect(() => acceptance.writeReviewStatusSidecar(BOOK, 1, MODULE)).toThrow(
+      'Faithful file not found'
+    );
   });
 });
