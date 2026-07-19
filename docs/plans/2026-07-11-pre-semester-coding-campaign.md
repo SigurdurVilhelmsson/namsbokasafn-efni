@@ -170,6 +170,10 @@ Rationale: editors return at semester start; these protect and de-confuse their 
 - **I19-R4 `[gap]`** — `PUT /translations/:id` lets any EDITOR silently rewrite the Icelandic text and subjects of an **approved** translation with no status reset — undermines the queue's trust in "approved"; decide reset-on-edit vs gate.
 - **I19-R5 `[yagni]`** — batch-reject deliberately omitted; add only if triage practice demands it.
 - **I19-R6 `[minor]`** — mining headword dedupe is case-sensitive (`Mole` vs `mole` fork headwords).
+- **I19-R7 `[minor]`** — (final-review triage) single-approve with a duplicate subject slug in one request (`subjects:['chemistry','chemistry']`) throws raw UNIQUE → route maps to 500; full rollback confirmed, no partial write; unreachable from the shipped client (single-subject body). Fix shape: Set-dedup (or 'must be'-worded reject) in `validateSubjects` → 400; also removes the single-INSERT vs batch-OR-IGNORE asymmetry.
+- **I19-R8 `[minor]`** — (final-review triage) new client fail-quiet paths: `maybeReloadQueue`'s `loadQueueCounts().catch(() => {})` discards errors (chips/banner silently stale) and `queueRefreshAll` fire-and-forgets `loadStats()`/`searchTerms()`. Fix shape: catch-with-`console.error`, parity with init's pattern.
+- **I19-R9 `[test-hygiene]`** — (I12-M5 class) `terminologyReviewRoutes.test.js` migrates `os.tmpdir()/term-review-routes-<pid>.db` but `afterAll` never removes it (nor `-wal`/`-shm`) — one stale SQLite file per run. Fix: `rmSync(..., {force:true})` in `afterAll`.
+- **I19-R10 `[coverage]`** — (plan-inherited scope) queue filter composition unpinned: subject-beats-book precedence and source+subject combos have no test; single-dimension filters are service-tested.
 
 ## Phase 4 — products & provenance gaps (weeks 4–5, audit's own order)
 17. **Licence metadata per product** — needs lead posture decision on Physics+Organic (CC BY-NC-SA) FIRST (decision lane); then book-config licence field → renderer emission → vefur consumption (small cross-repo tail).
