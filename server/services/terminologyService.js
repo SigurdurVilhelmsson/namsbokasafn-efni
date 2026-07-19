@@ -427,14 +427,55 @@ function updateTranslation(id, updates) {
 // ─────────────────────────────────────────
 
 /**
- * Approve a translation.
+ * Validate a tag-at-approval subjects array (item 19). Throws before any write.
  */
-function approveTranslation(translationId, userId, username) {
+function validateSubjects(subjects) {
+  if (!Array.isArray(subjects) || subjects.length === 0) {
+    throw new Error('subjects must be a non-empty array');
+  }
+  for (const s of subjects) {
+    if (!SUBJECTS.includes(s)) throw new Error(`Invalid subject: ${s}`);
+  }
+}
+
+/**
+ * Approve a translation. With options.subjects (item 19, tag-at-approval /
+ * I18-R1): wholesale-replace the subject tags and approve in one transaction —
+ * runs even if already approved (re-tagging through approve is legitimate).
+ * Without options.subjects: legacy behavior, byte-identical, including the
+ * already-approved early-return.
+ */
+function approveTranslation(translationId, userId, username, options = {}) {
+  const { subjects } = options;
   const db = getDb();
 
   const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(translationId);
   if (!tr) {
     throw new Error('Translation not found');
+  }
+
+  if (subjects !== undefined) {
+    validateSubjects(subjects);
+    const approveTx = db.transaction(() => {
+      db.prepare('DELETE FROM terminology_translation_subjects WHERE translation_id = ?').run(
+        translationId
+      );
+      const insertSubject = db.prepare(
+        'INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+      );
+      for (const subj of subjects) {
+        insertSubject.run(translationId, subj);
+      }
+      db.prepare(
+        `
+        UPDATE terminology_translations
+        SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `
+      ).run(userId, username, translationId);
+    });
+    approveTx();
+    return getHeadword(tr.headword_id);
   }
 
   if (tr.status === 'approved') {
@@ -454,6 +495,77 @@ function approveTranslation(translationId, userId, username) {
 
 // Alias: old API approved "terms" (headwords), new API approves translations
 const approveTerm = approveTranslation;
+
+const BATCH_APPROVE_LIMIT = 200;
+
+/**
+ * Batch approve (item 19). One transaction, all-or-nothing, fail-loud.
+ * Subject semantics deliberately differ from single approve: the batch tag is
+ * applied ONLY to currently-untagged rows — a bulk action can never clobber
+ * deliberate per-term tagging. Already-approved rows keep their original
+ * approval stamps (idempotency parity with single approve).
+ *
+ * @returns {{ approved: number, alreadyApproved: number, tagged: number }}
+ */
+function batchApproveTranslations(ids, userId, username, options = {}) {
+  const { subjects } = options;
+  if (!Array.isArray(ids) || ids.length === 0) {
+    throw new Error('ids must be a non-empty array');
+  }
+  if (ids.length > BATCH_APPROVE_LIMIT) {
+    throw new Error(`Too many ids (max ${BATCH_APPROVE_LIMIT})`);
+  }
+  if (!ids.every((id) => Number.isInteger(id) && id > 0)) {
+    throw new Error('ids must be positive integers');
+  }
+  if (subjects !== undefined) {
+    validateSubjects(subjects);
+  }
+
+  const db = getDb();
+  const selectStmt = db.prepare('SELECT id, status FROM terminology_translations WHERE id = ?');
+  const hasSubjectStmt = db.prepare(
+    'SELECT 1 FROM terminology_translation_subjects WHERE translation_id = ? LIMIT 1'
+  );
+  const insertSubject = db.prepare(
+    'INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+  );
+  const approveStmt = db.prepare(
+    `
+    UPDATE terminology_translations
+    SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `
+  );
+
+  const batchTx = db.transaction(() => {
+    const rows = ids.map((id) => ({ id, row: selectStmt.get(id) }));
+    const missing = rows.filter((r) => !r.row).map((r) => r.id);
+    if (missing.length > 0) {
+      throw new Error(`Translations not found: ${missing.join(', ')}`);
+    }
+    let approved = 0;
+    let alreadyApproved = 0;
+    let tagged = 0;
+    for (const { id, row } of rows) {
+      if (subjects !== undefined && !hasSubjectStmt.get(id)) {
+        for (const subj of subjects) {
+          insertSubject.run(id, subj);
+        }
+        tagged++;
+      }
+      if (row.status === 'approved') {
+        alreadyApproved++;
+      } else {
+        approveStmt.run(userId, username, id);
+        approved++;
+      }
+    }
+    return { approved, alreadyApproved, tagged };
+  });
+
+  return batchTx();
+}
 
 /**
  * Dispute a translation — sets status to disputed, adds discussion on the headword.
@@ -1705,6 +1817,7 @@ module.exports = {
   // Approval workflow
   approveTranslation,
   approveTerm,
+  batchApproveTranslations,
   disputeTranslation,
   disputeTerm,
   rejectTranslation,

@@ -1596,3 +1596,159 @@ describe('getReviewQueueCounts()', () => {
     expect(counts.subject).toBe('chemistry');
   });
 });
+
+// =====================
+// approveTranslation({subjects}) + batchApproveTranslations() — item 19
+// =====================
+describe('approveTranslation() with subjects (tag-at-approval, I18-R1)', () => {
+  it('replaces subject tags and approves in one action', () => {
+    const { trId } = insertFullTerm({ status: 'proposed', subjects: ['general'] });
+    const hw = terminologyService.approveTranslation(trId, 'u1', 'Head', {
+      subjects: ['chemistry'],
+    });
+    expect(hw.translations[0].status).toBe('approved');
+    expect(hw.translations[0].subjects).toEqual(['chemistry']);
+    expect(hw.translations[0].approvedByName).toBe('Head');
+  });
+
+  it('without subjects keeps the idempotent early-return (stamps unchanged)', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    terminologyService.approveTranslation(trId, 'u1', 'First');
+    const before = db
+      .prepare('SELECT approved_by, approved_by_name FROM terminology_translations WHERE id = ?')
+      .get(trId);
+    terminologyService.approveTranslation(trId, 'u2', 'Second');
+    const after = db
+      .prepare('SELECT approved_by, approved_by_name FROM terminology_translations WHERE id = ?')
+      .get(trId);
+    expect(after).toEqual(before);
+    expect(after.approved_by_name).toBe('First');
+  });
+
+  it('with subjects on an already-approved row re-tags (no early-return)', () => {
+    const { trId } = insertFullTerm({ status: 'approved', subjects: ['general'] });
+    const hw = terminologyService.approveTranslation(trId, 'u1', 'Head', {
+      subjects: ['chemistry', 'biology'],
+    });
+    expect(hw.translations[0].subjects.sort()).toEqual(['biology', 'chemistry']);
+    expect(hw.translations[0].status).toBe('approved');
+  });
+
+  it('throws on an invalid subject slug before any write', () => {
+    const { trId } = insertFullTerm({ status: 'proposed', subjects: ['general'] });
+    expect(() =>
+      terminologyService.approveTranslation(trId, 'u', 'U', { subjects: ['klingon'] })
+    ).toThrow('Invalid subject: klingon');
+    const row = db.prepare('SELECT status FROM terminology_translations WHERE id = ?').get(trId);
+    expect(row.status).toBe('proposed');
+    const tags = db
+      .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+      .all(trId);
+    expect(tags.map((t) => t.subject)).toEqual(['general']);
+  });
+
+  it('throws on an empty subjects array', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    expect(() => terminologyService.approveTranslation(trId, 'u', 'U', { subjects: [] })).toThrow(
+      'subjects must be a non-empty array'
+    );
+  });
+
+  it('closes I18-R1 end-to-end: mined term tagged at approval passes the strict MT export', () => {
+    const { translationId } = terminologyService.proposeMinedTerm(
+      'yield',
+      'heimta',
+      null,
+      'he1',
+      'Head'
+    );
+    // Untagged + proposed → invisible to the subject-mapped export today
+    expect(
+      terminologyService.exportBookGlossary('efnafraedi-2e').terms.map((t) => t.english)
+    ).not.toContain('yield');
+    terminologyService.approveTranslation(translationId, 'he1', 'Head', {
+      subjects: ['chemistry'],
+    });
+    const out = terminologyService.exportBookGlossary('efnafraedi-2e');
+    const yieldTerm = out.terms.find((t) => t.english === 'yield');
+    expect(yieldTerm).toBeDefined();
+    expect(yieldTerm.status).toBe('approved');
+  });
+});
+
+describe('batchApproveTranslations()', () => {
+  it('approves all ids and tags only the untagged rows', () => {
+    const tagged = insertFullTerm({
+      english: 'a',
+      icelandic: 'a1',
+      status: 'proposed',
+      subjects: ['biology'],
+    });
+    const untagged = insertFullTerm({ english: 'b', icelandic: 'b1', status: 'proposed' });
+    const result = terminologyService.batchApproveTranslations(
+      [tagged.trId, untagged.trId],
+      'he1',
+      'Head',
+      { subjects: ['chemistry'] }
+    );
+    expect(result).toEqual({ approved: 2, alreadyApproved: 0, tagged: 1 });
+    const tagsOfTagged = db
+      .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+      .all(tagged.trId)
+      .map((r) => r.subject);
+    expect(tagsOfTagged).toEqual(['biology']); // untouched
+    const tagsOfUntagged = db
+      .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+      .all(untagged.trId)
+      .map((r) => r.subject);
+    expect(tagsOfUntagged).toEqual(['chemistry']);
+    const statuses = db
+      .prepare('SELECT status FROM terminology_translations WHERE id IN (?, ?)')
+      .all(tagged.trId, untagged.trId)
+      .map((r) => r.status);
+    expect(statuses).toEqual(['approved', 'approved']);
+  });
+
+  it('works without subjects (plain batch approve)', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    const result = terminologyService.batchApproveTranslations([trId], 'he1', 'Head');
+    expect(result.approved).toBe(1);
+  });
+
+  it('is all-or-nothing: unknown id throws naming it, nothing applied', () => {
+    const { trId } = insertFullTerm({ status: 'proposed' });
+    expect(() => terminologyService.batchApproveTranslations([trId, 9999], 'he1', 'Head')).toThrow(
+      'Translations not found: 9999'
+    );
+    const row = db.prepare('SELECT status FROM terminology_translations WHERE id = ?').get(trId);
+    expect(row.status).toBe('proposed');
+  });
+
+  it('skips re-stamping already-approved rows but still tags them if untagged', () => {
+    const { trId } = insertFullTerm({ status: 'approved' }); // untagged, approved by nobody
+    db.prepare(
+      "UPDATE terminology_translations SET approved_by = 'orig', approved_by_name = 'Original' WHERE id = ?"
+    ).run(trId);
+    const result = terminologyService.batchApproveTranslations([trId], 'he2', 'Second', {
+      subjects: ['chemistry'],
+    });
+    expect(result).toEqual({ approved: 0, alreadyApproved: 1, tagged: 1 });
+    const row = db
+      .prepare('SELECT approved_by_name FROM terminology_translations WHERE id = ?')
+      .get(trId);
+    expect(row.approved_by_name).toBe('Original');
+  });
+
+  it('validates ids: empty, non-integer, and >200 all throw', () => {
+    expect(() => terminologyService.batchApproveTranslations([], 'u', 'U')).toThrow(
+      'ids must be a non-empty array'
+    );
+    expect(() => terminologyService.batchApproveTranslations(['x'], 'u', 'U')).toThrow(
+      'ids must be positive integers'
+    );
+    const tooMany = Array.from({ length: 201 }, (_, i) => i + 1);
+    expect(() => terminologyService.batchApproveTranslations(tooMany, 'u', 'U')).toThrow(
+      'Too many ids (max 200)'
+    );
+  });
+});
