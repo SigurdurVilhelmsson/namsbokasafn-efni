@@ -316,6 +316,16 @@
       background: var(--warning-subtle);
     }
 
+    /* MT acceptance (item 20b) */
+    .segment-row.accepted-row {
+      background: var(--success-subtle);
+    }
+
+    /* Keyboard accept-and-advance cursor */
+    .segment-row.kbd-cursor td:first-child {
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
     .segment-row.no-translation {
       background: var(--warning-subtle);
     }
@@ -556,6 +566,12 @@
     .btn-reject:hover { filter: brightness(1.1); }
     .btn-discuss:hover { filter: brightness(1.1); }
     .btn-reopen:hover { filter: brightness(1.1); }
+    .btn-accept {
+      background: var(--success-subtle);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+    .btn-accept:hover { filter: brightness(1.1); }
 
     /* --- Edit status badges --- */
     .edit-status {
@@ -589,6 +605,11 @@
     .edit-status.superseded {
       background: var(--bg-elevated);
       color: var(--text-muted);
+    }
+
+    .edit-status.accepted {
+      background: var(--success-subtle);
+      color: var(--success);
     }
 
     /* --- Category badges --- */
@@ -1505,8 +1526,10 @@
           <select id="filter-status">
             <option value="all">Allir</option>
             <option value="unedited">Óbreyttir</option>
+            <option value="unhandled">Óyfirfarnir</option>
             <option value="pending">Breytt</option>
             <option value="approved">Samþykkt</option>
+            <option value="accepted">Staðfest</option>
             <option value="rejected">Hafnað</option>
             <option value="discuss">Í umræðu</option>
           </select>

@@ -84,6 +84,28 @@ const UI = {
     },
   },
 
+  // ── MT acceptance (Staðfesta vélþýðingu, item 20b) ─────────
+  acceptance: {
+    acceptButton: 'Staðfesta MT',
+    acceptTooltip: 'Staðfesta að vélþýðingin sé rétt eins og hún er (Ctrl+Shift+Enter)',
+    chip: 'Staðfest',
+    chipTitle: function (by, at) {
+      return 'Staðfest af ' + by + (at ? ' · ' + at : '');
+    },
+    revokeButton: 'Afturkalla staðfestingu',
+    revokeConfirm: 'Afturkalla staðfestingu á þessum bút? Hann telst þá óyfirfarinn aftur.',
+    conflict:
+      'Innihald bútsins hefur breyst eða bútur er með virka breytingu í ferli. Endurhleð...',
+    noneLeft: 'Engir óyfirfarnir bútar eftir í einingunni.',
+    unchangedNothingSaved:
+      'Textinn er óbreyttur — engin breyting er vistuð og flokkur/athugasemd fylgja ekki með.\n\n' +
+      'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".',
+    unchangedWithdrawConfirm:
+      'Textinn er aftur eins og upprunalega — breytingin í bið verður dregin til baka og ' +
+      'flokkur/athugasemd falla niður.\n\n' +
+      'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".\n\nHalda áfram?',
+  },
+
   // ── Edit status labels ──────────────────────────────────────
   editStatus: {
     pending: 'Bíður',
@@ -130,6 +152,9 @@ const UI = {
     loading: 'Hleður...',
     unapplied: function (count) {
       return count + ' samþykktar breytingar til að vista';
+    },
+    unappliedCombined: function (edits, acceptances) {
+      return edits + ' samþykktar breytingar og ' + acceptances + ' staðfestingar til að vista';
     },
     allApplied: function (total) {
       return 'Allar ' + total + ' samþykktar breytingar vistaðar';

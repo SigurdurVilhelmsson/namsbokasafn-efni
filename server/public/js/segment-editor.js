@@ -25,6 +25,7 @@
   let lastServerSaveTime = null;
   const recentlySaved = new Set(); // Track recently saved segment IDs for indicators
   let lastFocusedTextarea = null; // Track last-focused edit textarea for term insertion
+  let cursorSegmentId = null; // keyboard accept-and-advance cursor (item 20b)
 
   // Track textarea focus so term lookup can insert at the right place
   document.addEventListener('focusin', (e) => {
@@ -579,11 +580,12 @@
       return;
     }
 
-    // Count segments that have at least one edit (any status)
+    // Count segments that have at least one edit (any status) OR an active
+    // acceptance (item 20b: edits ∪ acceptances drive the progress bar)
     let editedCount = 0;
     for (const seg of moduleData.segments) {
       const edits = moduleData.edits[seg.segmentId] || [];
-      if (edits.length > 0) {
+      if (edits.length > 0 || moduleData.acceptances?.[seg.segmentId]) {
         editedCount++;
       }
     }
@@ -622,6 +624,7 @@
         <div class="stat-chip${chipVal(s.total_edits)}"><strong>${s.total_edits || 0}</strong> breytingar</div>
         <div class="stat-chip${chipVal(s.pending)}"><strong>${s.pending || 0}</strong> bíða</div>
         <div class="stat-chip${chipVal(s.approved)}"><strong>${s.approved || 0}</strong> samþykkt</div>
+        <div class="stat-chip${chipVal(s.accepted)}"><strong>${s.accepted || 0}</strong> staðfest</div>
         <div class="stat-chip${chipVal(s.rejected)}"><strong>${s.rejected || 0}</strong> hafnað</div>
         <div class="stat-chip${chipVal(s.discuss)}"><strong>${s.discuss || 0}</strong> umræða</div>
         ${
@@ -687,6 +690,14 @@
       segments = segments.filter((s) => {
         const edits = moduleData.edits[s.segmentId] || [];
         const latestEdit = edits[0];
+        if (filterStatus === 'accepted') {
+          return !!moduleData.acceptances?.[s.segmentId];
+        }
+        if (filterStatus === 'unhandled') {
+          return (
+            !(moduleData.edits[s.segmentId] || []).length && !moduleData.acceptances?.[s.segmentId]
+          );
+        }
         if (filterStatus === 'unedited') {
           return !latestEdit;
         }
@@ -700,12 +711,19 @@
   function renderSegmentRow(seg) {
     const edits = moduleData.edits[seg.segmentId] || [];
     const latestEdit = edits[0]; // Most recent
+    const acceptance = moduleData.acceptances?.[seg.segmentId] || null;
     let rowClass = 'segment-row';
     if (latestEdit) {
       rowClass += ` has-edit ${latestEdit.status}`;
     }
     if (!seg.is && !latestEdit) {
       rowClass += ' no-translation';
+    }
+    if (!latestEdit && acceptance) {
+      rowClass += ' accepted-row';
+    }
+    if (seg.segmentId === cursorSegmentId) {
+      rowClass += ' kbd-cursor';
     }
 
     // Determine what IS text to display and what to pre-fill in the editor
@@ -840,9 +858,29 @@
               : ''
           }
         `;
+    } else if (acceptance) {
+      const canRevoke = acceptance.accepted_by_username === userName || isHeadEditor;
+      actionsHtml = `
+          <div>
+            <span class="edit-status accepted" title="${escapeHtml(UI.acceptance.chipTitle(acceptance.accepted_by_username, acceptance.accepted_at))}">${UI.acceptance.chip}</span>
+          </div>
+          ${
+            canRevoke
+              ? `<button class="btn btn-sm btn-secondary" onclick="revokeAcceptance(${acceptance.id})" style="margin-top: 0.25rem;">&#8617; ${UI.acceptance.revokeButton}</button>`
+              : ''
+          }
+          <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')" style="margin-top: 0.25rem;">
+            Breyta
+          </button>
+        `;
     } else {
       actionsHtml = `
-          <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')">
+          ${
+            seg.hasTranslation
+              ? `<button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}')" title="${UI.acceptance.acceptTooltip}">&#10003; ${UI.acceptance.acceptButton}</button>`
+              : ''
+          }
+          <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')"${seg.hasTranslation ? ' style="margin-top: 0.25rem;"' : ''}>
             Breyta
           </button>
         `;
@@ -905,6 +943,118 @@
           <td class="col-actions">${actionsHtml}<span class="seg-save-ind${recentlySaved.has(seg.segmentId) ? ' saved' : ''}" id="seg-ind-${cssId(seg.segmentId)}">${recentlySaved.has(seg.segmentId) ? 'Vistað' : ''}</span></td>
         </tr>
       `;
+  }
+
+  // ================================================================
+  // MT ACCEPTANCE ("Staðfesta vélþýðingu", item 20b)
+  // ================================================================
+
+  /** Unhandled = has a translation but no edit and no acceptance. */
+  function isUnhandled(seg) {
+    return (
+      seg.hasTranslation &&
+      !(moduleData.edits[seg.segmentId] || []).length &&
+      !moduleData.acceptances?.[seg.segmentId]
+    );
+  }
+
+  /** Next unhandled segment AFTER the given one (document order), or null. */
+  function nextUnhandledAfter(segmentId) {
+    const segs = moduleData?.segments || [];
+    const start = segs.findIndex((s) => s.segmentId === segmentId);
+    for (let i = start + 1; i < segs.length; i++) {
+      if (isUnhandled(segs[i])) return segs[i].segmentId;
+    }
+    return null;
+  }
+
+  /** Re-apply the cursor class (rows are re-rendered on reload) and scroll it into view. */
+  function paintCursor() {
+    document
+      .querySelectorAll('.segment-row.kbd-cursor')
+      .forEach((r) => r.classList.remove('kbd-cursor'));
+    if (!cursorSegmentId) return;
+    const row = document.getElementById('row-' + cssId(cursorSegmentId));
+    if (row) {
+      row.classList.add('kbd-cursor');
+      row.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }
+
+  async function acceptSegment(segmentId) {
+    if (!moduleData?.segments) return;
+    const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+    if (!seg || !seg.hasTranslation) return;
+
+    try {
+      await saveRetry.attempt(
+        `acc:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`,
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/accept`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ segmentId, acceptedContent: seg.is }),
+        }
+      );
+      lastServerSaveTime = Date.now();
+      await loadModule(currentModuleId, { force: true });
+      paintCursor();
+    } catch (err) {
+      if (err.status === 409) {
+        // Content changed or an edit is in flight — reload to the fresh state
+        // (parity with the edit-save conflict flow).
+        alert(err.message || UI.acceptance.conflict);
+        await loadModule(currentModuleId, { force: true });
+        paintCursor();
+      } else if (!saveRetry.isRetryable(err)) {
+        alert(UI.common.errorPrefix + err.message);
+      }
+      // Retryable errors queue in saveRetry; the STALE_CONTENT guard makes
+      // a late replay safe (it 409s instead of blessing changed bytes).
+    }
+  }
+
+  /** Accept a segment and advance the cursor to the next unhandled row. */
+  async function acceptSegmentAndAdvance(segmentId) {
+    cursorSegmentId = nextUnhandledAfter(segmentId);
+    await acceptSegment(segmentId);
+  }
+
+  /**
+   * Keyboard entry point (Ctrl/Cmd+Shift+Enter): first press positions the
+   * visible cursor on the first unhandled row; a press with the cursor on an
+   * unhandled row accepts it and advances. Never blind-accepts a row the
+   * editor hasn't seen highlighted.
+   */
+  function acceptAtCursor() {
+    if (!moduleData?.segments) return;
+    const cur = cursorSegmentId && moduleData.segments.find((s) => s.segmentId === cursorSegmentId);
+    if (cur && isUnhandled(cur)) {
+      acceptSegmentAndAdvance(cur.segmentId);
+      return;
+    }
+    const first = moduleData.segments.find(isUnhandled);
+    if (!first) {
+      saveRetry.showToast(UI.acceptance.noneLeft, 'info');
+      return;
+    }
+    cursorSegmentId = first.segmentId;
+    paintCursor();
+  }
+
+  async function revokeAcceptance(acceptanceId) {
+    if (!confirm(UI.acceptance.revokeConfirm)) return;
+    try {
+      await fetchJson(`${API_BASE}/acceptance/${acceptanceId}/revoke`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+      });
+      await loadModule(currentModuleId, { force: true });
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
   }
 
   // ================================================================
@@ -1074,6 +1224,18 @@
     if (editedContent === seg.is && !category && !editorNote && !hasPendingEdit) {
       closeEditPanel(segmentId);
       return; // No change from original, no annotation, no edit to withdraw
+    }
+
+    // Withdraw-branch honesty (item 20b, spec §6): an unchanged save that
+    // carries a category/note is NOT an edit — the server's withdraw branch
+    // would silently drop the annotation (and delete a pending edit).
+    // Explain, and point at Staðfesta MT. Server behavior unchanged.
+    if (editedContent === seg.is && (category || editorNote)) {
+      if (!hasPendingEdit) {
+        alert(UI.acceptance.unchangedNothingSaved);
+        return;
+      }
+      if (!confirm(UI.acceptance.unchangedWithdrawConfirm)) return;
     }
 
     // Validate before saving
@@ -1337,6 +1499,7 @@
     moduleData = null;
     termData = null;
     repetitionData = {};
+    cursorSegmentId = null;
     lastServerSaveTime = null;
     recentlySaved.clear();
     clearInterval(pipelinePollingTimer);
@@ -1885,10 +2048,14 @@
         { credentials: 'include' }
       );
 
-      const { unapplied_count, total_approved, can_rebuild } = data;
+      const { unapplied_count, unapplied_acceptances, total_approved, can_rebuild } = data;
+      const totalUnapplied = (unapplied_count || 0) + (unapplied_acceptances || 0);
 
-      if (unapplied_count > 0) {
-        statusEl.textContent = UI.apply.unapplied(unapplied_count);
+      if (totalUnapplied > 0) {
+        statusEl.textContent =
+          unapplied_acceptances > 0
+            ? UI.apply.unappliedCombined(unapplied_count || 0, unapplied_acceptances)
+            : UI.apply.unapplied(unapplied_count);
         btnApply.disabled = false;
         btnApplyRender.disabled = false;
       } else if (can_rebuild) {
@@ -2487,8 +2654,15 @@
       }
     }
 
+    // Ctrl/Cmd+Shift+Enter: accept-and-advance (Staðfesta MT, item 20b)
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && e.shiftKey) {
+      e.preventDefault();
+      acceptAtCursor();
+      return;
+    }
+
     // Ctrl+Enter to save active edit
-    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && !e.shiftKey) {
       const focused = document.activeElement;
       if (focused && focused.tagName === 'TEXTAREA' && focused.id.startsWith('textarea-')) {
         const panel = focused.closest('.edit-panel');
@@ -2625,4 +2799,6 @@
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;
   window.propagateSegment = propagateSegment;
+  window.acceptSegmentAndAdvance = acceptSegmentAndAdvance;
+  window.revokeAcceptance = revokeAcceptance;
 })(); // end IIFE
