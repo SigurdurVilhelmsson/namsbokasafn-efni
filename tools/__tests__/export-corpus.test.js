@@ -1,5 +1,16 @@
-import { describe, it, expect } from 'vitest';
-import { corpusCleanText, splitSegId, computePostEdited, buildRow } from '../export-corpus.js';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import {
+  corpusCleanText,
+  splitSegId,
+  computePostEdited,
+  buildRow,
+  listEnChapterDirs,
+  buildCorpus,
+  _setTestBooksDir,
+} from '../export-corpus.js';
 
 describe('corpusCleanText', () => {
   it('strips TM markers and decodes lb/rb escapes to literal brackets', () => {
@@ -107,5 +118,160 @@ describe('buildRow', () => {
     expect(row.faithful).toBeNull();
     expect(row.localized).toBeNull();
     expect(row.postEdited).toBeNull();
+  });
+});
+
+// ─── buildCorpus over a book fixture ─────────────────────────────────
+// The fixture book MUST use a real licence-map slug (efnafraedi-2e):
+// buildCorpus calls getBookLicence, which throws for unknown slugs.
+
+describe('buildCorpus over a book fixture', () => {
+  let tmpRoot;
+  const BOOK = 'efnafraedi-2e';
+
+  function mk(...p) {
+    const full = path.join(tmpRoot, ...p);
+    fs.mkdirSync(path.dirname(full), { recursive: true });
+    return full;
+  }
+
+  function writeFixtureBook() {
+    // m1: all-tier module — t untouched, p1 untouched-but-normalized, p2 edited
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch01', 'm1-segments.en.md'),
+      '<!-- SEG:m1:title:t -->\nIntroduction\n\n' +
+        '<!-- SEG:m1:para:p1 -->\nWater is a [[i:solid]].\n\n' +
+        '<!-- SEG:m1:para:p2 -->\nSolid.'
+    );
+    // MT: p1 carries escapes+wrap; p2 duplicated (benign, first-wins);
+    // px is an IS orphan (no EN counterpart)
+    fs.writeFileSync(
+      mk('books', BOOK, '02-mt-output', 'ch01', 'm1-segments.is.md'),
+      '<!-- SEG:m1:title:t -->\nInngangur\n\n' +
+        '<!-- SEG:m1:para:p1 -->\nVatn er\n\\[\\[MATH:1\\]\\] fast efni.\n\n' +
+        '<!-- SEG:m1:para:p2 -->\nFast.\n\n' +
+        '<!-- SEG:m1:para:p2 -->\nFast.\n\n' +
+        '<!-- SEG:m1:para:px -->\nMunaðarlaus.'
+    );
+    fs.writeFileSync(
+      mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-segments.is.md'),
+      '<!-- SEG:m1:title:t -->\nInngangur\n\n' +
+        '<!-- SEG:m1:para:p1 -->\nVatn er [[MATH:1]] fast efni.\n\n' +
+        '<!-- SEG:m1:para:p2 -->\nFast efni.'
+    );
+    fs.writeFileSync(
+      mk('books', BOOK, '04-localized-content', 'ch01', 'm1-segments.is.md'),
+      '<!-- SEG:m1:title:t -->\nInngangur\n\n' +
+        '<!-- SEG:m1:para:p1 -->\nVatn er [[MATH:1]] fast efni.\n\n' +
+        '<!-- SEG:m1:para:p2 -->\nFast efni (staðfært).'
+    );
+    // m2: EN+MT only (no faithful/localized)
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch01', 'm2-segments.en.md'),
+      '<!-- SEG:m2:para:p1 -->\nAtoms.'
+    );
+    fs.writeFileSync(
+      mk('books', BOOK, '02-mt-output', 'ch01', 'm2-segments.is.md'),
+      '<!-- SEG:m2:para:p1 -->\nFrumeindir.'
+    );
+    // m3: EN only (no MT) — tier must be null, not an error
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch01', 'm3-segments.en.md'),
+      '<!-- SEG:m3:para:p1 -->\nIons.'
+    );
+    // skip-report triggers in ch01
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch01', 'm1-segments.en.md.backup.20260701'),
+      'x'
+    );
+    fs.writeFileSync(mk('books', BOOK, '02-for-mt', 'ch01', 'm1-segments-links.json'), '{}');
+    // ch02: exercise sidecar with lb/rb + MEDIA markers
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'ch02', 'exercises-segments.en.md'),
+      '<!-- SEG:02-01-X:stimulus:b0 -->\n[[lb:]]Choice A[[rb:]] [[MEDIA:1]]'
+    );
+    fs.writeFileSync(
+      mk('books', BOOK, '02-mt-output', 'ch02', 'exercises-segments.is.md'),
+      '<!-- SEG:02-01-X:stimulus:b0 -->\n[[lb:]]Valkostur A[[rb:]] [[MEDIA:1]]'
+    );
+    // appendices module
+    fs.writeFileSync(
+      mk('books', BOOK, '02-for-mt', 'appendices', 'm9-segments.en.md'),
+      '<!-- SEG:m9:para:p1 -->\nAppendix.'
+    );
+  }
+
+  beforeEach(() => {
+    tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'export-corpus-'));
+    _setTestBooksDir(path.join(tmpRoot, 'books'));
+    writeFixtureBook();
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpRoot, { recursive: true, force: true });
+    _setTestBooksDir(path.join(process.cwd(), 'books'));
+  });
+
+  it('lists EN chapter dirs numeric-ascending with appendices last, and filters', () => {
+    expect(listEnChapterDirs(BOOK, null)).toEqual(['ch01', 'ch02', 'appendices']);
+    expect(listEnChapterDirs(BOOK, 1)).toEqual(['ch01']);
+    expect(listEnChapterDirs(BOOK, 'appendices')).toEqual(['appendices']);
+    expect(listEnChapterDirs(BOOK, 7)).toEqual([]);
+  });
+
+  it('builds rows for every EN segment with correct tier presence', () => {
+    const { rows, stats } = buildCorpus(BOOK, {});
+    // 3 (m1) + 1 (m2) + 1 (m3) + 1 (exercises) + 1 (m9) = 7 rows
+    expect(rows).toHaveLength(7);
+    expect(stats.rows).toBe(7);
+    expect(stats.modulesListed).toBe(5);
+    expect(stats.tiers).toEqual({ mt: 5, faithful: 3, localized: 3 });
+
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m3:para:p1').mt).toBeNull();
+    expect(byId.get('m2:para:p1').faithful).toBeNull();
+    expect(byId.get('m9:para:p1').chapter).toBe('appendices');
+    expect(byId.get('m1:title:t').chapter).toBe('1');
+    expect(byId.get('m1:title:t').licence).toBe('CC BY 4.0');
+  });
+
+  it('computes postEdited per the editor view: normalization is not an edit', () => {
+    const byId = new Map(buildCorpus(BOOK, {}).rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:title:t').postEdited).toBe(false);
+    expect(byId.get('m1:para:p1').postEdited).toBe(false); // escapes+wrap only
+    expect(byId.get('m1:para:p2').postEdited).toBe(true); // real edit
+    expect(byId.get('m2:para:p1').postEdited).toBeNull(); // no faithful
+    expect(byId.get('m3:para:p1').postEdited).toBeNull(); // no MT
+  });
+
+  it('decodes exercise lb/rb in clean text and keeps MEDIA verbatim', () => {
+    const byId = new Map(buildCorpus(BOOK, {}).rows.map((r) => [r.id, r]));
+    const ex = byId.get('02-01-X:stimulus:b0');
+    expect(ex.module).toBe('exercises');
+    expect(ex.en.clean).toBe('[Choice A] [[MEDIA:1]]');
+    expect(ex.mt.clean).toBe('[Valkostur A] [[MEDIA:1]]');
+  });
+
+  it('counts duplicates, orphans, and skipped files without dropping data silently', () => {
+    const { stats, skipped } = buildCorpus(BOOK, {});
+    expect(stats.duplicateIds).toBe(1); // m1 MT p2 twice
+    expect(stats.orphanIs).toBe(1); // m1 MT px
+    expect(stats.filesSkipped).toBe(2);
+    expect(skipped).toContain(path.join('ch01', 'm1-segments.en.md.backup.20260701'));
+    expect(skipped).toContain(path.join('ch01', 'm1-segments-links.json'));
+  });
+
+  it('respects the chapter filter', () => {
+    const { rows, stats } = buildCorpus(BOOK, { chapter: 2 });
+    expect(rows).toHaveLength(1);
+    expect(stats.modulesListed).toBe(1);
+  });
+
+  it('throws loudly for a book with no recorded licence', () => {
+    fs.writeFileSync(
+      mk('books', 'stjornufraedi', '02-for-mt', 'ch01', 'm1-segments.en.md'),
+      '<!-- SEG:m1:para:p1 -->\nStars.'
+    );
+    expect(() => buildCorpus('stjornufraedi', {})).toThrow(/book-licences\.cjs/);
   });
 });
