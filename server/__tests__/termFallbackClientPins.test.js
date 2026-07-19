@@ -35,3 +35,11 @@ describe('term popup fallback presentation (item 18)', () => {
     expect(editorHtml).toMatch(/\.term-popup-fallback-note\s*\{/);
   });
 });
+
+describe('quick-lookup subject labeling (item 18)', () => {
+  const editorJs = read('public/js/segment-editor.js');
+
+  it('lookup rows badge the primary translation subjects and mark fallback', () => {
+    expect(editorJs).toMatch(/term-subject-badge\$\{primary\.isFallback \? ' other' : ''\}/);
+  });
+});

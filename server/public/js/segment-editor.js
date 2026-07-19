@@ -2289,11 +2289,19 @@
                 others.length > 0
                   ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${others.map((t) => escapeHtml(t.icelandic)).join(', ')})</span>`
                   : '';
+              // Item 18: label where the shown translation comes from; the
+              // 'other' modifier marks a fallback (foreign-subject) pick.
+              const subjectBadges = (primary.subjects || [])
+                .map(
+                  (s) =>
+                    `<span class="term-subject-badge${primary.isFallback ? ' other' : ''}">${escapeHtml(SUBJECT_NAMES[s] || s)}</span>`
+                )
+                .join(' ');
               return `
               <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(primary.icelandic)}')">
                 <span class="term-lookup-en">${escapeHtml(hw.english)}</span>
                 &#8594; <span class="term-lookup-is">${escapeHtml(primary.icelandic)}</span>
-                ${primary.status === 'approved' ? ' &#10003;' : ''}${othersText}
+                ${primary.status === 'approved' ? ' &#10003;' : ''} ${subjectBadges}${othersText}
               </div>`;
             })
             .join('');
