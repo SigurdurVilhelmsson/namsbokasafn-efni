@@ -9,7 +9,11 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { acceptBlockReason, canAcceptMt } = require('../public/js/accept-eligibility');
+const {
+  acceptBlockReason,
+  canAcceptMt,
+  isEditInFlight,
+} = require('../public/js/accept-eligibility');
 const { CASES, BASELINE } = require('./helpers/acceptEligibilityCases.cjs');
 
 function seg(edits, overrides = {}) {
@@ -48,5 +52,49 @@ describe('canAcceptMt', () => {
     // predicate answers only "would the server accept this?", so the two
     // concerns stay separable and the server-parity table stays exact.
     expect(canAcceptMt(seg([], { acceptance: { id: 1 } }))).toBe(true);
+  });
+});
+
+/**
+ * MTA-R12: the row renderer uses this SAME predicate to decide which IS text
+ * to show and pre-fill. "An edit whose text the editor should see" and "an
+ * edit that blocks acceptance" are one concept — an edit still in flight.
+ * They must never drift: if display counted an APPLIED edit as in-flight
+ * while the accept path posts seg.is, the editor reads one string and
+ * attests another.
+ */
+describe('isEditInFlight', () => {
+  const edit = (status, applied_at = null) => ({ status, applied_at });
+
+  it('a pending edit is in flight', () => {
+    expect(isEditInFlight(edit('pending'))).toBe(true);
+  });
+
+  it('an approved but unapplied edit is in flight', () => {
+    expect(isEditInFlight(edit('approved'))).toBe(true);
+  });
+
+  it('an approved and APPLIED edit is NOT in flight — the file is the truth', () => {
+    expect(isEditInFlight(edit('approved', '2026-07-19 10:05:00'))).toBe(false);
+  });
+
+  it('a rejected edit is not in flight', () => {
+    expect(isEditInFlight(edit('rejected'))).toBe(false);
+  });
+
+  it('a superseded edit is not in flight', () => {
+    expect(isEditInFlight(edit('superseded'))).toBe(false);
+  });
+
+  it('no edit at all is not in flight', () => {
+    expect(isEditInFlight(undefined)).toBe(false);
+  });
+
+  it('is the exact predicate behind the EDIT_EXISTS block', () => {
+    // Same rule, one implementation: anything in flight blocks acceptance.
+    for (const e of [edit('pending'), edit('approved')]) {
+      expect(isEditInFlight(e)).toBe(true);
+      expect(acceptBlockReason({ hasTranslation: true, is: 'x', edits: [e] })).toBe('EDIT_EXISTS');
+    }
   });
 });
