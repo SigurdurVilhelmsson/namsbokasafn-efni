@@ -62,6 +62,65 @@ test.describe('MT acceptance', () => {
     await expect(page.locator('#segments-body tr.kbd-cursor')).toHaveCount(1);
   });
 
+  /**
+   * MTA-R3: the row-render chain used to be
+   * `if (latestEdit) … else if (acceptance) … else`, so a contested row never
+   * offered "Staðfesta MT" — and had it, the chip and revoke button would have
+   * been shadowed too, making the acceptance invisible and unrevokable.
+   */
+  test('MTA-R3: a rejected edit still offers Staðfesta MT, beside its history chip', async ({
+    page,
+  }) => {
+    await openModule(page);
+    page.on('dialog', (d) => d.accept('MTA-R3 próf'));
+
+    // Take a virgin row and give it a REJECTED edit.
+    const rowId = await page
+      .locator('#segments-body tr')
+      .filter({ has: page.locator('.btn-accept') })
+      .first()
+      .getAttribute('id');
+    const row = page.locator(`tr[id="${rowId}"]`);
+
+    await row.locator('.btn-edit').click();
+    const textarea = row.locator('textarea');
+    // Append rather than replace: keeps any structural markers intact so the
+    // save isn't blocked by segment-validation.
+    await textarea.fill((await textarea.inputValue()) + ' MTA-R3.');
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(row.locator('.edit-status.pending')).toBeVisible({ timeout: 10000 });
+
+    await row.locator('.btn-reject').click();
+    await expect(row.locator('.edit-status.rejected')).toBeVisible({ timeout: 10000 });
+
+    // THE FIX: contested, but the MT still stands and may be attested.
+    await expect(row.locator('.btn-accept')).toBeVisible();
+    await row.locator('.btn-accept').click();
+
+    // Compound chip — acceptance NEXT TO the retained history, not instead of it.
+    await expect(row.locator('.edit-status.accepted')).toBeVisible({ timeout: 10000 });
+    await expect(row.locator('.edit-status.rejected')).toBeVisible();
+    // ...and the state is escapable, which it was not before.
+    const revoke = row.locator('button:has-text("Afturkalla staðfestingu")');
+    await expect(revoke).toBeVisible();
+
+    await revoke.click();
+    await expect.poll(() => row.locator('.btn-accept').count(), { timeout: 10000 }).toBe(1);
+
+    // Best-effort: drop the edit so the shared fixture module is unchanged
+    // (same known editor_id caveat as editor-lifecycle's teardown).
+    const data = await (
+      await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}/${MODULE}`)
+    ).json();
+    for (const list of Object.values(data.edits || {})) {
+      for (const e of list) {
+        if (typeof e.edited_content === 'string' && e.edited_content.endsWith(' MTA-R3.')) {
+          await page.request.delete(`/api/segment-editor/edit/${e.id}`);
+        }
+      }
+    }
+  });
+
   test('revoke returns the segments to unhandled (cleanup)', async ({ page }) => {
     await openModule(page);
     // Revoke every acceptance this spec created
