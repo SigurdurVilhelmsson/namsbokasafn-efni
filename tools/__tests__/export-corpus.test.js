@@ -534,6 +534,17 @@ describe('buildCorpus over a book fixture', () => {
     expect(stats.reviewStatus).toEqual({ edited: 1, accepted: 1, carryover: 1, null: 6 });
   });
 
+  it('passes an out-of-vocabulary status through verbatim and gives it its own stats key (honesty)', () => {
+    fs.writeFileSync(
+      mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-review-status.json'),
+      JSON.stringify({ module: 'm1', segments: { 'm1:title:t': { status: 'reviewed' } } })
+    );
+    const { rows, stats } = buildCorpus(BOOK, {});
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:title:t').reviewStatus).toBe('reviewed'); // verbatim, not remapped to null
+    expect(stats.reviewStatus.reviewed).toBe(1); // own key, not dropped
+  });
+
   it('counts sidecar states and holds the read+malformed+absent === listed invariant (D4)', () => {
     const { stats } = buildCorpus(BOOK, {});
     expect(stats.sidecarsRead).toBe(1); // m1
@@ -692,9 +703,12 @@ describe('serializers', () => {
 
   it('serializes postEdited true/false/null through the bare accessor (ternary removal safe)', () => {
     const col = (pe) =>
-      // No trimEnd(): postEdited is the last column, and trimEnd() strips
-      // trailing tab whitespace too, silently eating an empty last field
-      // (the null case) before it can be split out.
+      // No trimEnd(): reviewStatus (not postEdited) is the last column now,
+      // and trimEnd() strips trailing tab whitespace too, silently eating an
+      // empty last field before it can be split out — any column whose value
+      // can be empty is vulnerable if it ends up last, so this locates the
+      // field via TSV_COLUMNS.indexOf('postEdited') rather than a hardcoded
+      // index/position assumption.
       toTsv([{ ...row, postEdited: pe }])
         .split('\n')[1]
         .split('\t')[TSV_COLUMNS.indexOf('postEdited')];

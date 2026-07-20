@@ -241,7 +241,15 @@ function buildCorpus(book, opts = {}) {
     orphanIs: 0,
     duplicateIds: 0,
     emptyClean: 0,
-    reviewStatus: { edited: 0, accepted: 0, carryover: 0, null: 0 },
+    // Null-prototype map: a status value keyed literally '__proto__' must
+    // become its own property, not silently hit the inherited __proto__
+    // setter and vanish (F2).
+    reviewStatus: Object.assign(Object.create(null), {
+      edited: 0,
+      accepted: 0,
+      carryover: 0,
+      null: 0,
+    }),
     sidecarsRead: 0,
     sidecarsMalformed: 0,
     sidecarsAbsent: 0,
