@@ -180,17 +180,21 @@ function tmxDate(d) {
  * Build a TMX 1.4b document from translation units.
  *
  * @param {Array<{book:string, chapter:string, module:string, segmentId:string, en:string, is:string}>} tus
- * @param {{ date?: Date, srclang?: string }} [opts]
+ * @param {{ date?: Date, srclang?: string, licence?: string }} [opts]
  * @returns {string} TMX document
  */
 function buildTmx(tus, opts = {}) {
   const date = tmxDate(opts.date || new Date());
   const srclang = opts.srclang || 'en';
 
-  const header =
+  const licenceProp = opts.licence
+    ? `\n    <prop type="licence">${xmlEscape(opts.licence)}</prop>\n  `
+    : '';
+  const headerOpen =
     `  <header creationtool="${TOOL_NAME}" creationtoolversion="${TOOL_VERSION}" ` +
     `segtype="paragraph" o-tmf="namsbokasafn" adminlang="en" srclang="${srclang}" ` +
-    `datatype="plaintext" creationdate="${date}"/>`;
+    `datatype="plaintext" creationdate="${date}"`;
+  const header = licenceProp ? `${headerOpen}>${licenceProp}</header>` : `${headerOpen}/>`;
 
   const body = tus
     .map((tu) => {
@@ -368,6 +372,88 @@ function generateTm(book, opts = {}) {
   return { tus, modules, totals };
 }
 
+// ─── Multi-format serialization ───────────────────────────────────────
+
+const FORMATS = ['tmx', 'csv', 'json'];
+
+/**
+ * RFC-4180 CSV field escape: quote fields with comma/quote/CR/LF; double inner quotes.
+ * @param {*} value
+ * @returns {string}
+ */
+function csvEscapeField(value) {
+  const s = value == null ? '' : String(value);
+  return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+/**
+ * Serialize TUs as CSV: header + one row per TU. Every row carries the same
+ * per-export licence (opts.licence), row-stamped like the corpus TSV.
+ * @param {Array<{book,chapter,module,segmentId,en,is}>} tus
+ * @param {{licence?:string}} [opts]
+ * @returns {string}
+ */
+function serializeCsv(tus, opts = {}) {
+  const licence = opts.licence || '';
+  const rows = ['book,chapter,module,segment_id,en,is,licence'];
+  for (const tu of tus) {
+    rows.push(
+      [tu.book, tu.chapter, tu.module, tu.segmentId, tu.en, tu.is, licence]
+        .map(csvEscapeField)
+        .join(',')
+    );
+  }
+  return rows.join('\n') + '\n';
+}
+
+/**
+ * Serialize TUs as a pretty JSON document with per-book licence in the manifest.
+ * @param {Array} tus
+ * @param {{date?:Date, book?:string, licence?:string, obtained?:string}} [opts]
+ * @returns {string}
+ */
+function serializeJson(tus, opts = {}) {
+  const doc = {
+    generated: (opts.date || new Date()).toISOString(),
+    tool: TOOL_NAME,
+    version: TOOL_VERSION,
+    book: opts.book || (tus[0] && tus[0].book) || null,
+    licence: opts.licence || null,
+    obtained: opts.obtained || null,
+    stats: { units: tus.length },
+    units: tus.map((tu) => ({
+      book: tu.book,
+      chapter: tu.chapter,
+      module: tu.module,
+      segmentId: tu.segmentId,
+      en: tu.en,
+      is: tu.is,
+    })),
+  };
+  return JSON.stringify(doc, null, 2) + '\n';
+}
+
+/**
+ * Dispatch serialization by format. Passes opts (incl. licence/obtained) through
+ * unchanged. Throws on unknown format. Licence LOOKUP is the caller's job.
+ * @param {Array} tus
+ * @param {'tmx'|'csv'|'json'} [format]
+ * @param {{date?:Date, book?:string, srclang?:string, licence?:string, obtained?:string}} [opts]
+ * @returns {string}
+ */
+function serializeTm(tus, format = 'tmx', opts = {}) {
+  switch (format) {
+    case 'tmx':
+      return buildTmx(tus, opts);
+    case 'csv':
+      return serializeCsv(tus, opts);
+    case 'json':
+      return serializeJson(tus, opts);
+    default:
+      throw new Error(`Unknown TM format: ${format} (valid: ${FORMATS.join(', ')})`);
+  }
+}
+
 module.exports = {
   parseSegments,
   decodeEntities,
@@ -383,4 +469,8 @@ module.exports = {
   TOOL_NAME,
   TOOL_VERSION,
   _setTestBooksDir,
+  FORMATS,
+  serializeCsv,
+  serializeJson,
+  serializeTm,
 };
