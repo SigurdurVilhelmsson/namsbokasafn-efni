@@ -17,6 +17,13 @@ const BOOK_LICENCES = {
   orverufraedi: { licence: 'CC BY 4.0', obtained: '2026-03-09' },
   'edlisfraedi-2e': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
   'lifraen-efnafraedi': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
+  // TEST FIXTURE — NOT a real-book provenance claim. `__e2e-fixture__` is the
+  // committed E2E/apply-flow fixture book (see provenance doc §4 footnote);
+  // it has faithful content, so its `scheduleTmRegen` calls would otherwise
+  // fail-loud silently (fire-and-forget cron, warn-only) on every apply. A
+  // placeholder entry is here purely so the fixture's TM regen doesn't go
+  // stale; it says nothing about any real book's licence.
+  '__e2e-fixture__': { licence: 'CC BY 4.0', obtained: '2026-01-01' },
 };
 
 /**

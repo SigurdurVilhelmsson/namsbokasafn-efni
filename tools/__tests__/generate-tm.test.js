@@ -15,7 +15,11 @@ import {
   listFaithfulChapterDirs,
   generateTm,
   _setTestBooksDir,
+  FORMAT_OPTION,
+  defaultOutPath,
+  runExport,
 } from '../generate-tm.js';
+import { parseArgs, BOOK_OPTION, CHAPTER_OPTION } from '../lib/parseArgs.js';
 
 // ─── parseSegments ─────────────────────────────────────────────────
 
@@ -338,5 +342,97 @@ describe('generateTm over a book fixture', () => {
     expect(tmx.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
     expect(tmx).toContain('<prop type="module">m1</prop>');
     expect(tmx).toContain('Vatn er H2O.');
+  });
+});
+
+// ─── CLI --format (auto-regen contract) ──────────────────────────────
+
+describe('CLI --format (auto-regen contract)', () => {
+  it('defaults to tmx when --format is absent (protects tmService spawn)', () => {
+    const args = parseArgs(
+      ['--book', 'efnafraedi-2e'],
+      [BOOK_OPTION, CHAPTER_OPTION, FORMAT_OPTION]
+    );
+    expect(args.format).toBe('tmx');
+  });
+
+  it('parses an explicit --format', () => {
+    const args = parseArgs(
+      ['--book', 'b', '--format', 'csv'],
+      [BOOK_OPTION, CHAPTER_OPTION, FORMAT_OPTION]
+    );
+    expect(args.format).toBe('csv');
+  });
+
+  it('default out-path keeps the .tmx extension for tmx', () => {
+    expect(defaultOutPath('efnafraedi-2e', 'tmx').endsWith('.tmx')).toBe(true);
+  });
+
+  it('default out-path swaps the extension per format', () => {
+    expect(defaultOutPath('b', 'csv').endsWith('.csv')).toBe(true);
+    expect(defaultOutPath('b', 'json').endsWith('.json')).toBe(true);
+  });
+
+  it('default out-path lives under books/<book>/tm/', () => {
+    expect(defaultOutPath('b', 'tmx').includes(`${'b'}/tm/`)).toBe(true);
+  });
+});
+
+// End-to-end wiring of main()'s core: the load-bearing "no --format → TMX at
+// .tmx" contract, driven through the real generate → serialize → write path
+// (tmService.test.js mocks the runner and can't catch a mis-wired main()).
+describe('runExport (main() core, fixture-backed)', () => {
+  let tmpRoot;
+  function writeFixture() {
+    const mk = (...p) => {
+      const full = path.join(tmpRoot, ...p);
+      fs.mkdirSync(path.dirname(full), { recursive: true });
+      return full;
+    };
+    fs.writeFileSync(
+      mk('books', 'efnafraedi-2e', '02-for-mt', 'ch03', 'm1-segments.en.md'),
+      '<!-- SEG:m1:para:p1 -->\nWater.'
+    );
+    fs.writeFileSync(
+      mk('books', 'efnafraedi-2e', '03-faithful-translation', 'ch03', 'm1-segments.is.md'),
+      '<!-- SEG:m1:para:p1 -->\nVatn.'
+    );
+  }
+  beforeEach(() => {
+    tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'run-export-'));
+    _setTestBooksDir(path.join(tmpRoot, 'books'));
+  });
+  afterEach(() => {
+    fs.rmSync(tmpRoot, { recursive: true, force: true });
+    _setTestBooksDir(path.join(process.cwd(), 'books'));
+  });
+
+  it('with no format writes TMX at a .tmx path (the tmService contract)', () => {
+    writeFixture();
+    const r = runExport({ book: 'efnafraedi-2e' });
+    expect(r.outPath.endsWith('.tmx')).toBe(true);
+    const written = fs.readFileSync(r.outPath, 'utf-8');
+    expect(written).toContain('<tmx version="1.4">');
+    // getBookLicence is wired end-to-end on the default (TMX) path too, not
+    // just CSV — the auto-regen cron never passes --format.
+    expect(written).toContain('<prop type="licence">CC BY 4.0</prop>');
+    expect(r.tus).toHaveLength(1);
+  });
+
+  it('honors an explicit format + out path', () => {
+    writeFixture();
+    const out = path.join(tmpRoot, 'x.csv');
+    const r = runExport({ book: 'efnafraedi-2e', format: 'csv', out });
+    expect(r.outPath).toBe(out);
+    const lines = fs.readFileSync(out, 'utf-8').split('\n');
+    expect(lines[0]).toBe('book,chapter,module,segment_id,en,is,licence');
+    expect(lines[1].endsWith(',CC BY 4.0')).toBe(true); // efnafraedi-2e licence stamped
+  });
+
+  it('dry-run computes the path + bytes without writing', () => {
+    writeFixture();
+    const r = runExport({ book: 'efnafraedi-2e', dryRun: true });
+    expect(r.bytes).toBeGreaterThan(0);
+    expect(fs.existsSync(r.outPath)).toBe(false);
   });
 });
