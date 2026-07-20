@@ -26,6 +26,17 @@ describe('getBookLicence', () => {
       orverufraedi: { licence: 'CC BY 4.0', obtained: '2026-03-09' },
       'edlisfraedi-2e': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
       'lifraen-efnafraedi': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
+      '__e2e-fixture__': { licence: 'CC BY 4.0', obtained: '2026-01-01' },
+    });
+  });
+
+  it('returns a placeholder (not a real provenance claim) for the __e2e-fixture__ test book', () => {
+    // Present so the committed fixture's scheduleTmRegen doesn't silently
+    // warn-fail on apply (final-review finding #1). See the BOOK_LICENCES
+    // comment for why this entry exists.
+    expect(getBookLicence('__e2e-fixture__')).toEqual({
+      licence: 'CC BY 4.0',
+      obtained: '2026-01-01',
     });
   });
 });

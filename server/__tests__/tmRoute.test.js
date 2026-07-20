@@ -17,6 +17,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 const require = createRequire(import.meta.url);
 const tmExport = require('../../tools/lib/tm-export.cjs');
 const router = require('../routes/tm');
+const { VALID_BOOKS } = require('../config');
 
 const BOOK = 'efnafraedi-2e'; // a real VALID_BOOKS slug; content is fixture-only
 let work;
@@ -134,5 +135,32 @@ describe('GET /api/tm/export', () => {
       user: { id: 'u1' },
     });
     expect(out.status).toBe(404);
+  });
+
+  it('500s a VALID_BOOKS book that has no book-licences.cjs row (final-review #1)', async () => {
+    // getBookLicence() fail-loud is deliberate (lead's policy); this pins
+    // that the route's catch block turns the throw into a 500 rather than
+    // an uncaught exception. UNLICENSED must never be added to
+    // tools/lib/book-licences.cjs — that's the point of this fixture.
+    const UNLICENSED = 'unlicensed-fixture-x';
+    const en = path.join(work, 'books', UNLICENSED, '02-for-mt', 'ch01');
+    const is = path.join(work, 'books', UNLICENSED, '03-faithful-translation', 'ch01');
+    mkdirSync(en, { recursive: true });
+    mkdirSync(is, { recursive: true });
+    writeFileSync(path.join(en, 'm1-segments.en.md'), '<!-- SEG:m1:para:p1 -->\nHello.\n');
+    writeFileSync(path.join(is, 'm1-segments.is.md'), '<!-- SEG:m1:para:p1 -->\nHalló.\n');
+
+    VALID_BOOKS.push(UNLICENSED);
+    try {
+      const out = await invoke(handler('get', '/export'), {
+        query: { book: UNLICENSED },
+        user: { id: 'u1' },
+      });
+      expect(out.status).toBe(500);
+      expect(out.body).toMatchObject({ error: 'TM export failed' });
+    } finally {
+      const idx = VALID_BOOKS.indexOf(UNLICENSED);
+      if (idx !== -1) VALID_BOOKS.splice(idx, 1);
+    }
   });
 });
