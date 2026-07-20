@@ -11,7 +11,8 @@
 ## Global Constraints
 
 - **Auto-regen contract (load-bearing):** `server/services/tmService.js` spawns `node tools/generate-tm.js --book <book>` with **no `--format` and no `--out`** and expects TMX at `books/<book>/tm/<book>-<date>.tmx`. `--format` MUST default to `tmx`; the default out-path MUST stay `.tmx` when format is tmx. (Spec §3.)
-- **`TOOL_VERSION` stays `'1.0'`** — the TMX `creationtoolversion` header, hence the TMX bytes, must not change (we are *adding* formats, not changing TMX). Do not bump it in this PR.
+- **`TOOL_VERSION` stays `'1.0'`** (the TMX `creationtoolversion`). The only TMX byte change is an **additive** `<prop type="licence">` in the header (below) — not a version/format change. Real exports always carry a licence; direct `buildTmx` calls without `opts.licence` emit the old self-closed header unchanged (so the existing `buildTmx` tests stay green).
+- **Licence stamping (lead decision 2026-07-20, parity with the item-20 corpus export):** every TM export carries the per-book licence from `tools/lib/book-licences.cjs` `getBookLicence(book)` → `{licence, obtained}` (fail-loud on unknown slug). Placement: TMX `<prop type="licence">` in `<header>`; CSV trailing `licence` column (row-stamped); JSON manifest `licence` + `obtained`. **The lookup lives in the callers** (`runExport`, the route) — the serializers stay pure and take `opts.licence`/`opts.obtained`. NOT item 17's containment guard/footer (still out of scope).
 - **Formats = exactly `['tmx','csv','json']`** (spec §2.5). No TSV.
 - **Boundary-lib module style:** `tools/lib/tm-export.cjs` is CommonJS, ending in a single `module.exports = { … }` object literal (identifier shorthand) so `cjs-module-lexer` exposes every name for ESM named-import — mirror `tools/lib/seg-markers.cjs`.
 - **Tests use fixtures only** (`_setTestBooksDir` + temp dirs), never live `books/` data. `VALID_BOOKS = ["efnafraedi-2e","liffraedi-2e","orverufraedi","lifraen-efnafraedi","edlisfraedi-2e"]`; `MAX_CHAPTERS = 99`.
@@ -143,7 +144,13 @@ export {
 };
 ```
 
-Keep `main()` exactly as it is for now (it still calls `generateTm` + `buildTmx`, both now imported). Delete the now-duplicate `TOOL_NAME`/`TOOL_VERSION`/`BOOKS_DIR` declarations from `generate-tm.js` (they come from the lib). `defaultOutPath`, `printHelp`, `OUT_OPTION`, `DRY_RUN_OPTION`, `main`, and the `if (process.argv[1] === fileURLToPath(import.meta.url)) main();` guard stay.
+Keep `main()` exactly as it is for now (it still calls `generateTm` + `buildTmx`, both now imported). Delete the CLI's own `TOOL_NAME`/`TOOL_VERSION` `const` declarations (`TOOL_NAME` is now imported for `printHelp`; `TOOL_VERSION` is unused in the CLI). **Keep a CLI-local `BOOKS_DIR`** — `main()`'s book-exists check and `defaultOutPath` still reference it at this task:
+
+```js
+const BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books');
+```
+
+(This CLI copy is *not* the lib's — it is only for the CLI's default write location. Task 3 removes it once `defaultOutPath` moves to the lib and `runExport` takes over writing.) `defaultOutPath`, `printHelp`, `OUT_OPTION`, `DRY_RUN_OPTION`, `main`, and the `if (process.argv[1] === fileURLToPath(import.meta.url)) main();` guard stay. Note the CLI's `_setTestBooksDir` is now the lib's (re-exported) and steers `generateTm`/`listFaithfulChapterDirs` (lib funcs) — not this CLI `BOOKS_DIR`, which no test exercises at this task (the existing tests never call `main`/`defaultOutPath`).
 
 - [ ] **Step 3: Run the existing suite to verify the refactor is behavior-preserving**
 
@@ -184,9 +191,10 @@ CommonJS server route to share one code path (spec item 21 PR-A)."
 - Consumes: `buildTmx`, `TOOL_NAME`, `TOOL_VERSION` (Task 1).
 - Produces:
   - `FORMATS = ['tmx','csv','json']`
-  - `serializeCsv(tus) → string` (header `book,chapter,module,segment_id,en,is` + one row per TU, RFC-4180 escaping, trailing `\n`)
-  - `serializeJson(tus, opts={date,book}) → string` (pretty JSON doc + trailing `\n`)
-  - `serializeTm(tus, format='tmx', opts={}) → string` (dispatch; throws on unknown format)
+  - `serializeCsv(tus, opts={licence}) → string` (header `book,chapter,module,segment_id,en,is,licence` + one row per TU, RFC-4180 escaping, trailing `\n`; `licence` from `opts.licence`, same for every row)
+  - `serializeJson(tus, opts={date,book,licence,obtained}) → string` (pretty JSON doc with `licence`/`obtained` in the manifest + trailing `\n`)
+  - `serializeTm(tus, format='tmx', opts={}) → string` (dispatch; passes `opts` through unchanged — including `licence`/`obtained`; throws on unknown format)
+  - `buildTmx(tus, opts={date,srclang,licence})` gains an additive `<prop type="licence">` in `<header>` when `opts.licence` is set (Task 1 moved it verbatim; this task adds the prop).
 
 - [ ] **Step 1: Write the failing test** — `tools/__tests__/tm-export.test.js`:
 
@@ -206,6 +214,7 @@ const TUS = [
   { book: 'efnafraedi-2e', chapter: '3', module: 'm1', segmentId: 'm1:para:p1', en: 'Water is H2O.', is: 'Vatn er H2O.' },
   { book: 'efnafraedi-2e', chapter: '3', module: 'm1', segmentId: 'm1:para:p2', en: 'Acids, bases "and" salts', is: 'Sýrur' },
 ];
+const LIC = 'CC BY 4.0';
 
 describe('FORMATS', () => {
   it('is exactly tmx, csv, json', () => {
@@ -214,53 +223,65 @@ describe('FORMATS', () => {
 });
 
 describe('serializeCsv', () => {
-  it('emits a header and one row per TU', () => {
-    const csv = serializeCsv(TUS);
+  it('emits a header (with licence column) and one row per TU', () => {
+    const csv = serializeCsv(TUS, { licence: LIC });
     const lines = csv.trimEnd().split('\n');
-    expect(lines[0]).toBe('book,chapter,module,segment_id,en,is');
+    expect(lines[0]).toBe('book,chapter,module,segment_id,en,is,licence');
     expect(lines).toHaveLength(3);
-    expect(lines[1]).toBe('efnafraedi-2e,3,m1,m1:para:p1,Water is H2O.,Vatn er H2O.');
+    expect(lines[1]).toBe('efnafraedi-2e,3,m1,m1:para:p1,Water is H2O.,Vatn er H2O.,CC BY 4.0');
   });
 
   it('quotes fields containing commas or quotes (RFC 4180)', () => {
-    const csv = serializeCsv(TUS);
+    const csv = serializeCsv(TUS, { licence: LIC });
     // en of p2 has a comma AND embedded quotes -> quoted, inner " doubled
     expect(csv).toContain('"Acids, bases ""and"" salts"');
   });
 
   it('ends with a trailing newline', () => {
-    expect(serializeCsv(TUS).endsWith('\n')).toBe(true);
+    expect(serializeCsv(TUS, { licence: LIC }).endsWith('\n')).toBe(true);
   });
 });
 
 describe('serializeJson', () => {
-  it('emits a doc with stats + units and a fixed date when provided', () => {
-    const json = serializeJson(TUS, { date: new Date('2026-01-02T03:04:05Z'), book: 'efnafraedi-2e' });
+  it('emits a doc with stats + units + licence and a fixed date when provided', () => {
+    const json = serializeJson(TUS, { date: new Date('2026-01-02T03:04:05Z'), book: 'efnafraedi-2e', licence: LIC, obtained: '2026-01-19' });
     const doc = JSON.parse(json);
     expect(doc.generated).toBe('2026-01-02T03:04:05.000Z');
     expect(doc.tool).toBe('generate-tm.js');
     expect(doc.version).toBe('1.0');
     expect(doc.book).toBe('efnafraedi-2e');
+    expect(doc.licence).toBe('CC BY 4.0');
+    expect(doc.obtained).toBe('2026-01-19');
     expect(doc.stats.units).toBe(2);
     expect(doc.units[0]).toEqual({ book: 'efnafraedi-2e', chapter: '3', module: 'm1', segmentId: 'm1:para:p1', en: 'Water is H2O.', is: 'Vatn er H2O.' });
   });
 });
 
+describe('buildTmx licence prop', () => {
+  it('emits a licence header prop when opts.licence is set', () => {
+    expect(buildTmx(TUS, { date: new Date('2026-01-02Z'), licence: LIC })).toContain('<prop type="licence">CC BY 4.0</prop>');
+  });
+  it('omits the licence prop (self-closed header) when no licence given', () => {
+    expect(buildTmx(TUS, { date: new Date('2026-01-02Z') })).not.toContain('type="licence"');
+  });
+});
+
 describe('serializeTm dispatch', () => {
-  it('tmx dispatches to buildTmx byte-identically', () => {
+  it('tmx dispatches to buildTmx, passing licence through', () => {
     const d = new Date('2026-01-02T03:04:05Z');
-    expect(serializeTm(TUS, 'tmx', { date: d })).toBe(buildTmx(TUS, { date: d }));
+    expect(serializeTm(TUS, 'tmx', { date: d, licence: LIC })).toBe(buildTmx(TUS, { date: d, licence: LIC }));
   });
-  it('csv dispatches to serializeCsv', () => {
-    expect(serializeTm(TUS, 'csv')).toBe(serializeCsv(TUS));
+  it('csv dispatches to serializeCsv, passing licence through', () => {
+    expect(serializeTm(TUS, 'csv', { licence: LIC })).toBe(serializeCsv(TUS, { licence: LIC }));
   });
-  it('json dispatches to serializeJson', () => {
+  it('json dispatches to serializeJson, passing licence through', () => {
     const d = new Date('2026-01-02T03:04:05Z');
-    expect(serializeTm(TUS, 'json', { date: d, book: 'efnafraedi-2e' })).toBe(serializeJson(TUS, { date: d, book: 'efnafraedi-2e' }));
+    const o = { date: d, book: 'efnafraedi-2e', licence: LIC, obtained: '2026-01-19' };
+    expect(serializeTm(TUS, 'json', o)).toBe(serializeJson(TUS, o));
   });
   it('defaults to tmx when no format given', () => {
     const d = new Date('2026-01-02T03:04:05Z');
-    expect(serializeTm(TUS, undefined, { date: d })).toBe(buildTmx(TUS, { date: d }));
+    expect(serializeTm(TUS, undefined, { date: d, licence: LIC })).toBe(buildTmx(TUS, { date: d, licence: LIC }));
   });
   it('throws on an unknown format', () => {
     expect(() => serializeTm(TUS, 'xml')).toThrow(/Unknown TM format/);
@@ -273,7 +294,20 @@ describe('serializeTm dispatch', () => {
 Run: `npm test -- tools/__tests__/tm-export.test.js`
 Expected: FAIL — `serializeCsv`/`serializeJson`/`serializeTm`/`FORMATS` are undefined.
 
-- [ ] **Step 3: Implement the serializers in `tools/lib/tm-export.cjs`.** Add before the `module.exports` block:
+- [ ] **Step 3a: Add the licence header prop to `buildTmx`** (in `tools/lib/tm-export.cjs` — the function Task 1 moved verbatim). Replace the self-closed `<header … />` construction with a conditional open/child/close so the prop appears only when `opts.licence` is set (self-closed form otherwise → existing `buildTmx` tests unchanged):
+
+```js
+  const licenceProp = opts.licence
+    ? `\n    <prop type="licence">${xmlEscape(opts.licence)}</prop>\n  `
+    : '';
+  const headerOpen =
+    `  <header creationtool="${TOOL_NAME}" creationtoolversion="${TOOL_VERSION}" ` +
+    `segtype="paragraph" o-tmf="namsbokasafn" adminlang="en" srclang="${srclang}" ` +
+    `datatype="plaintext" creationdate="${date}"`;
+  const header = licenceProp ? `${headerOpen}>${licenceProp}</header>` : `${headerOpen}/>`;
+```
+
+- [ ] **Step 3b: Add the serializers + dispatcher** before the `module.exports` block:
 
 ```js
 const FORMATS = ['tmx', 'csv', 'json'];
@@ -289,24 +323,29 @@ function csvEscapeField(value) {
 }
 
 /**
- * Serialize TUs as CSV: header + one row per TU.
+ * Serialize TUs as CSV: header + one row per TU. Every row carries the same
+ * per-export licence (opts.licence), row-stamped like the corpus TSV.
  * @param {Array<{book,chapter,module,segmentId,en,is}>} tus
+ * @param {{licence?:string}} [opts]
  * @returns {string}
  */
-function serializeCsv(tus) {
-  const rows = ['book,chapter,module,segment_id,en,is'];
+function serializeCsv(tus, opts = {}) {
+  const licence = opts.licence || '';
+  const rows = ['book,chapter,module,segment_id,en,is,licence'];
   for (const tu of tus) {
     rows.push(
-      [tu.book, tu.chapter, tu.module, tu.segmentId, tu.en, tu.is].map(csvEscapeField).join(',')
+      [tu.book, tu.chapter, tu.module, tu.segmentId, tu.en, tu.is, licence]
+        .map(csvEscapeField)
+        .join(',')
     );
   }
   return rows.join('\n') + '\n';
 }
 
 /**
- * Serialize TUs as a pretty JSON document.
+ * Serialize TUs as a pretty JSON document with per-book licence in the manifest.
  * @param {Array} tus
- * @param {{date?:Date, book?:string}} [opts]
+ * @param {{date?:Date, book?:string, licence?:string, obtained?:string}} [opts]
  * @returns {string}
  */
 function serializeJson(tus, opts = {}) {
@@ -315,6 +354,8 @@ function serializeJson(tus, opts = {}) {
     tool: TOOL_NAME,
     version: TOOL_VERSION,
     book: opts.book || (tus[0] && tus[0].book) || null,
+    licence: opts.licence || null,
+    obtained: opts.obtained || null,
     stats: { units: tus.length },
     units: tus.map((tu) => ({
       book: tu.book,
@@ -329,10 +370,11 @@ function serializeJson(tus, opts = {}) {
 }
 
 /**
- * Dispatch serialization by format. Throws on unknown format.
+ * Dispatch serialization by format. Passes opts (incl. licence/obtained) through
+ * unchanged. Throws on unknown format. Licence LOOKUP is the caller's job.
  * @param {Array} tus
  * @param {'tmx'|'csv'|'json'} [format]
- * @param {{date?:Date, book?:string, srclang?:string}} [opts]
+ * @param {{date?:Date, book?:string, srclang?:string, licence?:string, obtained?:string}} [opts]
  * @returns {string}
  */
 function serializeTm(tus, format = 'tmx', opts = {}) {
@@ -340,7 +382,7 @@ function serializeTm(tus, format = 'tmx', opts = {}) {
     case 'tmx':
       return buildTmx(tus, opts);
     case 'csv':
-      return serializeCsv(tus);
+      return serializeCsv(tus, opts);
     case 'json':
       return serializeJson(tus, opts);
     default:
@@ -360,10 +402,12 @@ Expected: PASS (all describes green).
 
 ```bash
 git add tools/lib/tm-export.cjs tools/__tests__/tm-export.test.js
-git commit -m "feat(tm): CSV + JSON serializers behind serializeTm dispatcher
+git commit -m "feat(tm): CSV + JSON serializers + licence stamping behind serializeTm
 
-FORMATS=['tmx','csv','json']; tmx still routes to buildTmx byte-identically.
-serializeJson takes an explicit opts.date for deterministic output."
+FORMATS=['tmx','csv','json']. buildTmx gains an additive <prop type=licence>
+header prop (self-closed form unchanged without it); CSV a row-stamped licence
+column; JSON a manifest licence/obtained. serializeJson takes an explicit
+opts.date for deterministic output. Licence lookup is the caller's job."
 ```
 
 ---
@@ -380,11 +424,12 @@ serializeJson takes an explicit opts.date for deterministic output."
 - Produces:
   - `defaultOutPath(book, format) → string` — **added to `tools/lib/tm-export.cjs`** so it shares the lib's `BOOKS_DIR` (one source of truth; `_setTestBooksDir` steers it and `generateTm` alike). Re-exported from `generate-tm.js` for the pin test.
   - `FORMAT_OPTION` — exported from `generate-tm.js` (CLI-only).
+  - `runExport({book, chapter, format, out, dryRun}) → {outPath, bytes, tus, totals}` — **the testable core of `main()`** (extracted so the load-bearing "no `--format` → TMX at `.tmx`" wiring is driven end-to-end, not just via isolated unit pins; `tmService.test.js` mocks the runner and cannot catch a mis-wired `main()`). Exported from `generate-tm.js`.
 
-- [ ] **Step 1: Write the failing test** — append to `tools/__tests__/generate-tm.test.js`:
+- [ ] **Step 1: Write the failing test** — append to `tools/__tests__/generate-tm.test.js` (adds `os`/`fs`/`path` are already imported at the top of that file):
 
 ```js
-import { FORMAT_OPTION, defaultOutPath } from '../generate-tm.js';
+import { FORMAT_OPTION, defaultOutPath, runExport } from '../generate-tm.js';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION } from '../lib/parseArgs.js';
 
 describe('CLI --format (auto-regen contract)', () => {
@@ -411,7 +456,58 @@ describe('CLI --format (auto-regen contract)', () => {
     expect(defaultOutPath('b', 'tmx').includes(`${'b'}/tm/`)).toBe(true);
   });
 });
+
+// End-to-end wiring of main()'s core: the load-bearing "no --format → TMX at
+// .tmx" contract, driven through the real generate → serialize → write path
+// (tmService.test.js mocks the runner and can't catch a mis-wired main()).
+describe('runExport (main() core, fixture-backed)', () => {
+  let tmpRoot;
+  function writeFixture() {
+    const mk = (...p) => {
+      const full = path.join(tmpRoot, ...p);
+      fs.mkdirSync(path.dirname(full), { recursive: true });
+      return full;
+    };
+    fs.writeFileSync(mk('books', 'efnafraedi-2e', '02-for-mt', 'ch03', 'm1-segments.en.md'), '<!-- SEG:m1:para:p1 -->\nWater.');
+    fs.writeFileSync(mk('books', 'efnafraedi-2e', '03-faithful-translation', 'ch03', 'm1-segments.is.md'), '<!-- SEG:m1:para:p1 -->\nVatn.');
+  }
+  beforeEach(() => {
+    tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'run-export-'));
+    _setTestBooksDir(path.join(tmpRoot, 'books'));
+  });
+  afterEach(() => {
+    fs.rmSync(tmpRoot, { recursive: true, force: true });
+    _setTestBooksDir(path.join(process.cwd(), 'books'));
+  });
+
+  it('with no format writes TMX at a .tmx path (the tmService contract)', () => {
+    writeFixture();
+    const r = runExport({ book: 'efnafraedi-2e' });
+    expect(r.outPath.endsWith('.tmx')).toBe(true);
+    expect(fs.readFileSync(r.outPath, 'utf-8')).toContain('<tmx version="1.4">');
+    expect(r.tus).toHaveLength(1);
+  });
+
+  it('honors an explicit format + out path', () => {
+    writeFixture();
+    const out = path.join(tmpRoot, 'x.csv');
+    const r = runExport({ book: 'efnafraedi-2e', format: 'csv', out });
+    expect(r.outPath).toBe(out);
+    const lines = fs.readFileSync(out, 'utf-8').split('\n');
+    expect(lines[0]).toBe('book,chapter,module,segment_id,en,is,licence');
+    expect(lines[1].endsWith(',CC BY 4.0')).toBe(true); // efnafraedi-2e licence stamped
+  });
+
+  it('dry-run computes the path + bytes without writing', () => {
+    writeFixture();
+    const r = runExport({ book: 'efnafraedi-2e', dryRun: true });
+    expect(r.bytes).toBeGreaterThan(0);
+    expect(fs.existsSync(r.outPath)).toBe(false);
+  });
+});
 ```
+
+(`_setTestBooksDir`, `fs`, `os`, `path` are already imported at the top of `generate-tm.test.js`.)
 
 - [ ] **Step 2: Run to verify it fails**
 
@@ -448,7 +544,40 @@ const FORMAT_OPTION = {
 };
 ```
 
-In `main()`, add format resolution + validation after `requireBook(args)` and use it for both the out-path and serialization:
+Import `FORMATS`, `serializeTm`, and `defaultOutPath` at the top (add to the existing named import from `./lib/tm-export.cjs`), and add a licence import: `import { getBookLicence } from './lib/book-licences.cjs';`.
+
+**Extract the CLI core into a testable `runExport`** so the auto-regen wiring is driven end-to-end (inline-exported). The caller owns the licence lookup (fail-loud, mirrors the corpus export):
+
+```js
+/**
+ * Pair → validate format → look up licence → serialize → write (unless dryRun).
+ * The testable core of main(). Writes only when there are TUs — an empty TM is
+ * never written (preserves the prior 0-pairs → no-file behavior). Throws (fail
+ * loud) if the book has no licence recorded.
+ * @param {{book:string, chapter?:number|string|null, format?:string, out?:string, dryRun?:boolean}} o
+ * @returns {{outPath:string, bytes:number, tus:Array, totals:object, modules:Array, wrote:boolean}}
+ */
+export function runExport({ book, chapter = null, format = 'tmx', out = null, dryRun = false }) {
+  if (!FORMATS.includes(format)) {
+    throw new Error(`invalid --format '${format}' (valid: ${FORMATS.join(', ')})`);
+  }
+  const { tus, modules, totals } = generateTm(book, { chapter });
+  const { licence, obtained } = getBookLicence(book); // fail-loud on unknown slug
+  const outPath = out || defaultOutPath(book, format);
+  const output = serializeTm(tus, format, { date: new Date(), book, licence, obtained });
+  const wrote = tus.length > 0 && !dryRun;
+  if (wrote) {
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, output, 'utf-8');
+  }
+  return { outPath, bytes: output.length, tus, totals, modules, wrote };
+}
+```
+
+**Slim `main()` to parse → runExport → report.** After `requireBook(args)`:
+- **Remove** the CLI-local `BOOKS_DIR` const and the `bookDir` / `fs.existsSync(bookDir)` book-exists check (this deletes the CLI's last `BOOKS_DIR` use; a missing book now yields 0 pairs → the existing "No translation units produced" error + exit 1 — an acceptable, clearer message).
+- Add `FORMAT_OPTION` to the `parseArgs([...])` list.
+- Replace the generate/serialize/write tail with:
 
 ```js
   const format = args.format;
@@ -456,31 +585,34 @@ In `main()`, add format resolution + validation after `requireBook(args)` and us
     console.error(`Error: invalid --format '${format}' (valid: ${FORMATS.join(', ')})`);
     process.exit(1);
   }
-```
 
-Import `FORMATS` and `serializeTm` at the top (add to the existing named import from `./lib/tm-export.cjs`). Replace the two output lines:
+  const { tus, modules, totals, outPath, bytes } = runExport({
+    book,
+    chapter: args.chapter,
+    format,
+    out: args.out,
+    dryRun: args.dryRun,
+  });
 
-```js
-  const outPath = args.out || defaultOutPath(book, format);
-  const output = serializeTm(tus, format, { date: new Date(), book });
-```
+  // Keep the existing --verbose per-module loop + the totals summary block,
+  // now reading `modules`/`totals` from runExport's return (delete the separate
+  // `const { tus, modules, totals } = generateTm(...)` call — runExport ran it).
 
-and the write/dry-run block to use `output` instead of `tmx`:
-
-```js
-  if (args.dryRun) {
-    console.log(
-      `\nDRY RUN — would write ${tus.length} TUs as ${format} (${output.length} bytes) to:\n  ${outPath}`
+  if (totals.pairs === 0) {
+    console.error(
+      '\nNo translation units produced. Is there reviewed content in 03-faithful-translation/?'
     );
-    return;
+    process.exit(1);
   }
 
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, output, 'utf-8');
+  if (args.dryRun) {
+    console.log(`\nDRY RUN — would write ${tus.length} TUs as ${format} (${bytes} bytes) to:\n  ${outPath}`);
+    return;
+  }
   console.log(`\nWrote ${tus.length} TUs as ${format} to:\n  ${outPath}`);
 ```
 
-Add `FORMAT_OPTION` to the `parseArgs([...])` list in `main()`, and add `FORMAT_OPTION, defaultOutPath` to the bottom `export { … }` block.
+Add `FORMAT_OPTION, defaultOutPath` to the bottom `export { … }` block (`runExport` is already exported inline via `export function`; do not list it again).
 
 Update `printHelp()` — add under Options:
 
@@ -500,7 +632,7 @@ Run:
 mkdir -p /tmp/tmf/books/efnafraedi-2e/02-for-mt/ch03 /tmp/tmf/books/efnafraedi-2e/03-faithful-translation/ch03
 printf '<!-- SEG:m1:para:p1 -->\nWater.\n' > /tmp/tmf/books/efnafraedi-2e/02-for-mt/ch03/m1-segments.en.md
 printf '<!-- SEG:m1:para:p1 -->\nVatn.\n' > /tmp/tmf/books/efnafraedi-2e/03-faithful-translation/ch03/m1-segments.is.md
-node -e "const t=require('./tools/lib/tm-export.cjs'); t._setTestBooksDir('/tmp/tmf/books'); const {tus}=t.generateTm('efnafraedi-2e',{}); console.log('CSV:\n'+t.serializeTm(tus,'csv')); console.log('JSON units:', JSON.parse(t.serializeTm(tus,'json',{date:new Date('2026-01-01Z')})).stats.units);"
+node -e "const t=require('./tools/lib/tm-export.cjs'); const {getBookLicence}=require('./tools/lib/book-licences.cjs'); t._setTestBooksDir('/tmp/tmf/books'); const {tus}=t.generateTm('efnafraedi-2e',{}); const {licence,obtained}=getBookLicence('efnafraedi-2e'); console.log('CSV:\n'+t.serializeTm(tus,'csv',{licence})); console.log('JSON licence:', JSON.parse(t.serializeTm(tus,'json',{date:new Date('2026-01-01Z'),book:'efnafraedi-2e',licence,obtained})).licence);"
 rm -rf /tmp/tmf
 ```
 Expected: a CSV header+row and `JSON units: 1`.
@@ -514,7 +646,7 @@ Expected: a CSV header+row and `JSON units: 1`.
 - [ ] **Step 7: Commit**
 
 ```bash
-git add tools/generate-tm.js tools/__tests__/generate-tm.test.js CLAUDE.md
+git add tools/lib/tm-export.cjs tools/generate-tm.js tools/__tests__/generate-tm.test.js CLAUDE.md
 git commit -m "feat(tm): generate-tm.js --format tmx|csv|json (tmx default)
 
 Default format tmx + default .tmx out-path preserve the tmService auto-regen
@@ -612,13 +744,14 @@ describe('GET /api/tm/export', () => {
     expect(out.headers['Content-Type']).toMatch(/xml/);
     expect(out.headers['Content-Disposition']).toContain(`${BOOK}-tm.tmx`);
     expect(out.body).toContain('<tmx version="1.4">');
+    expect(out.body).toContain('<prop type="licence">CC BY 4.0</prop>'); // efnafraedi-2e licence stamped
   });
 
   it('serves csv when asked', async () => {
     const out = await invoke(handler('get', '/export'), { query: { book: BOOK, format: 'csv' }, user: { id: 'u1' } });
     expect(out.status).toBe(200);
     expect(out.headers['Content-Type']).toMatch(/csv/);
-    expect(out.body.split('\n')[0]).toBe('book,chapter,module,segment_id,en,is');
+    expect(out.body.split('\n')[0]).toBe('book,chapter,module,segment_id,en,is,licence');
   });
 
   it('400s an unknown book', async () => {
@@ -664,6 +797,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { VALID_BOOKS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
 const { generateTm, serializeTm, FORMATS } = require('../../tools/lib/tm-export.cjs');
+const { getBookLicence } = require('../../tools/lib/book-licences.cjs');
 
 const CONTENT_TYPE = {
   tmx: 'application/xml; charset=utf-8',
@@ -702,7 +836,8 @@ router.get('/export', requireAuth, (req, res) => {
         message: `No reviewed (faithful) content for ${book}${chapter ? ` chapter ${chapter}` : ''}.`,
       });
     }
-    const body = serializeTm(tus, format, { date: new Date(), book });
+    const { licence, obtained } = getBookLicence(book); // fail-loud; VALID_BOOKS all have rows
+    const body = serializeTm(tus, format, { date: new Date(), book, licence, obtained });
     const fname = `${book}${chapter ? `-K${chapter}` : ''}-tm.${format}`;
     res.setHeader('Content-Type', CONTENT_TYPE[format]);
     res.setHeader('Content-Disposition', `attachment; filename="${fname}"`);
@@ -739,8 +874,9 @@ Expected: PASS (all 7 cases: auth gate 401, tmx default, csv, 3×400, 404).
 git add server/routes/tm.js server/index.js server/__tests__/tmRoute.test.js
 git commit -m "feat(tm): GET /api/tm/export route (tmx|csv|json, requireAuth)
 
-Regenerates on demand via tools/lib/tm-export.cjs. VALID_BOOKS + chapter
-guards mirror the book /download route; 404 on a book with no faithful TM."
+Regenerates on demand via tools/lib/tm-export.cjs; stamps per-book licence
+(getBookLicence, fail-loud). VALID_BOOKS + chapter guards mirror the book
+/download route; 404 on a book with no faithful TM."
 ```
 
 ---
@@ -831,8 +967,9 @@ git commit -m "docs(campaign): item 21 PR-A register notes"
 - A2 formats tmx/csv/json — Task 2 (`FORMATS`) + Task 2/3 serializers. ✓
 - A3 CLI `--format` default tmx + per-format out-path — Task 3. ✓
 - A4 route (requireAuth, VALID_BOOKS/chapter guards, regenerate-on-demand, Content-Disposition, 404 empty, 500 log) — Task 4. ✓
-- A5 testing (TMX byte-identical via dispatch pin; CSV escaping; JSON shape; **auto-regen default-tmx behavioral pin**; route dispatch/auth/400/404) — Tasks 2–4. ✓
-- Global constraint TOOL_VERSION unchanged — honored (Task 2 asserts version '1.0'; TMX untouched). ✓
+- A5 testing (TMX byte-identical via dispatch pin; CSV escaping; JSON shape; **auto-regen default-tmx wiring pinned end-to-end through `runExport`**, not just isolated units; route dispatch/auth/400/404) — Tasks 2–4. ✓
+- Global constraint TOOL_VERSION unchanged — honored (Task 2 asserts version '1.0'; TMX gains only the additive licence prop). ✓
+- Licence stamping (lead 2026-07-20) — buildTmx prop + CSV column + JSON manifest (Task 2), caller lookup via `getBookLicence` in `runExport` (Task 3) + route (Task 4), all fail-loud + test-asserted. ✓
 
 **2. Placeholder scan:** every code step shows full code; every run step gives the command + expected result. No TBD/TODO. ✓
 

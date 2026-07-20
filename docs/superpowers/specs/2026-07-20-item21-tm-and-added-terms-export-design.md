@@ -41,6 +41,11 @@ PR-B (Árnastofnun) second. This spec covers both; the plans are separate.
    TSV research format; adding it here would duplicate a house format for no new consumer.
 6. **PR-B auth = HEAD_EDITOR.** Relaying terms outward is a governance act, stricter than the plain
    glossary export's `requireAuth`.
+7. **TM export stamps per-book licence (added 2026-07-20 during planning, advisor Finding 2).** For
+   parity with the item-20 corpus export (which already stamps via `tools/lib/book-licences.cjs`,
+   fail-loud) and the audit's rank-4 ("every export … TM, glossary, corpus" carries licence). This is
+   a metadata **stamp**, distinct from item 17's containment guard/footer (still out of scope, §B6).
+   See §A6.
 
 ## 3. Backward-compatibility constraint (verified, load-bearing)
 
@@ -130,6 +135,18 @@ project's "one real code path" rule.
 - **Route**: format dispatch (3 formats, correct Content-Type/Disposition); `requireAuth`; 400 on
   bad book/chapter/format; 404 on no-TU book. Fixtures via `_setTestBooksDir` / synthetic segment
   files — never live book data.
+
+## A6. Licence stamping (§2.7)
+
+Every TM export carries the per-book licence from `tools/lib/book-licences.cjs`
+`getBookLicence(book)` → `{licence, obtained}` (throws on an unknown slug — fail-loud, as the
+corpus export does). Placement per format: **TMX** an additive `<prop type="licence">` in
+`<header>` (self-closed header preserved when absent, so `buildTmx`'s existing tests are
+untouched); **CSV** a trailing `licence` column, row-stamped (same value every row, mirroring the
+corpus TSV); **JSON** `licence` + `obtained` in the manifest. **The lookup lives in the callers**
+(`runExport`, the route) so the serializers stay pure and take `opts.licence`/`opts.obtained` —
+the route's `VALID_BOOKS` check already guarantees a licence row exists. This is *not* item 17's
+containment guard or page footer (§B6); it is the same metadata-stamp the corpus already ships.
 
 ---
 
