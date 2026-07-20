@@ -709,6 +709,20 @@
     tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
   }
 
+  /**
+   * The IS text an editor should SEE and EDIT for a segment: the faithful file,
+   * unless an edit is still in flight (MTA-R12).
+   *
+   * One rule, four call sites — the row renderer plus the three textarea
+   * restore paths (cancel, "Til baka", Escape-close), which had drifted into
+   * three different answers: two restored ANY latest edit's text (so cancelling
+   * on a rejected row replaced the baseline with the rejected text the row had
+   * never shown) and one counted applied edits as active.
+   */
+  function baselineTextFor(seg, latestEdit) {
+    return acceptEligibility.isEditInFlight(latestEdit) ? latestEdit.edited_content : seg.is;
+  }
+
   function renderSegmentRow(seg) {
     const edits = moduleData.edits[seg.segmentId] || [];
     const latestEdit = edits[0]; // Most recent
@@ -729,11 +743,22 @@
       rowClass += ' kbd-cursor';
     }
 
-    // Determine what IS text to display and what to pre-fill in the editor
-    const hasActiveEdit =
-      latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
-    const displayIs = hasActiveEdit ? latestEdit.edited_content : seg.is;
-    const editableText = hasActiveEdit ? latestEdit.edited_content : seg.is;
+    // Determine what IS text to display and what to pre-fill in the editor.
+    //
+    // MTA-R12: only an edit still IN FLIGHT gets to override the file. This
+    // used to count applied edits too, so after a "Saga útgáfa" restore past an
+    // applied edit the row displayed the edit's stale text while "Staðfesta MT"
+    // attested the on-disk bytes (the accept posts seg.is — anything else 409s
+    // STALE_CONTENT). The editor read one string and attested another.
+    //
+    // For an applied edit the faithful file IS the truth: loadModuleForEditing
+    // rebuilds seg.is from it. Showing seg.is is also the more correct pre-fill
+    // for "Breyta aftur" — edited_content is the raw stored text, so pre-filling
+    // it made an open-and-save with no typing produce a spurious diff against
+    // the normalized baseline.
+    const hasActiveEdit = acceptEligibility.isEditInFlight(latestEdit);
+    const displayIs = baselineTextFor(seg, latestEdit);
+    const editableText = displayIs;
 
     let enHtml = renderMarkdownPreview(seg.en);
     const isHtml = renderMarkdownPreview(displayIs);
@@ -1203,7 +1228,7 @@
         const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
         if (seg) {
           const latestEdit = moduleData.edits[segmentId]?.[0];
-          textarea.value = latestEdit ? latestEdit.edited_content : seg.is;
+          textarea.value = baselineTextFor(seg, latestEdit);
         }
       }
     }
@@ -1221,9 +1246,7 @@
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg) return;
     const latestEdit = moduleData.edits[segmentId]?.[0];
-    const hasActiveEdit =
-      latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
-    textarea.value = hasActiveEdit ? latestEdit.edited_content : seg.is;
+    textarea.value = baselineTextFor(seg, latestEdit);
     dirtyEdits.delete(segmentId);
     const ind = document.getElementById('seg-ind-' + cssId(segmentId));
     if (ind) {
@@ -2705,7 +2728,7 @@
             const seg = moduleData.segments.find((s) => s.segmentId === segId);
             if (seg && textarea) {
               const latestEdit = moduleData.edits[segId]?.[0];
-              textarea.value = latestEdit ? latestEdit.edited_content : seg.is;
+              textarea.value = baselineTextFor(seg, latestEdit);
             }
           }
           dirtyEdits.delete(segId);

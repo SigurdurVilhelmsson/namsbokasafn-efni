@@ -110,6 +110,19 @@ describe('acceptance UI pins', () => {
     expect(clientJs).toContain('UI.acceptance.discussBlocked');
   });
 
+  it('MTA-R12: one rule decides which IS text is shown and edited', () => {
+    // Behaviour lives in acceptEligibility.test.js (isEditInFlight). What this
+    // pins is single-sourcing: the four call sites — row render, cancel,
+    // "Til baka", Escape-close — had drifted into three different answers.
+    expect(clientJs).toContain('function baselineTextFor(');
+    expect(clientJs).toContain('acceptEligibility.isEditInFlight');
+    // 5 = the definition plus its four call sites.
+    expect(clientJs.match(/baselineTextFor\(seg, latestEdit\)/g) || []).toHaveLength(5);
+    // No hand-rolled copies of the in-flight test.
+    expect(clientJs).not.toMatch(/=== 'pending' \|\| latestEdit\.status === 'approved'/);
+    expect(clientJs).not.toMatch(/latestEdit \? latestEdit\.edited_content : seg\.is/);
+  });
+
   it('.gitattributes carries the sidecar merge=ours line', () => {
     expect(gitattributes).toContain(
       'books/*/03-faithful-translation/*/*-review-status.json merge=ours'

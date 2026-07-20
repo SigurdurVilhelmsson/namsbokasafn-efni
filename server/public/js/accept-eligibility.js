@@ -28,9 +28,18 @@
  * A refactor that weakens that implication reintroduces the original bug.
  */
 (function (root) {
-  /** An edit still in flight: the segment is not "MT as-is" while it lands. */
-  function isActive(e) {
-    return e.status === 'pending' || (e.status === 'approved' && !e.applied_at);
+  /**
+   * An edit still IN FLIGHT: pending, or approved but not yet written to the
+   * faithful file. Two callers, one concept — it decides both whether the edit
+   * blocks acceptance AND whether its text is what the editor should see.
+   *
+   * Those must not drift (MTA-R12). Once an edit is APPLIED the file is the
+   * truth: loadModuleForEditing rebuilds seg.is from disk and the accept path
+   * attests seg.is, so a row that still displayed edited_content would show
+   * the editor one string while attesting another.
+   */
+  function isEditInFlight(e) {
+    return !!e && (e.status === 'pending' || (e.status === 'approved' && !e.applied_at));
   }
 
   /**
@@ -44,7 +53,7 @@
   function acceptBlockReason(seg) {
     if (!seg || !seg.hasTranslation) return 'NO_TRANSLATION';
     const edits = seg.edits || [];
-    if (edits.some(isActive)) return 'EDIT_EXISTS';
+    if (edits.some(isEditInFlight)) return 'EDIT_EXISTS';
     // An open discussion is unresolved review work — attesting over it would
     // let an uninvolved editor close a flagged disagreement single-handedly.
     if (edits.some((e) => e.status === 'discuss')) return 'DISCUSS_OPEN';
@@ -61,7 +70,11 @@
     return acceptBlockReason(seg) === null;
   }
 
-  const api = { acceptBlockReason: acceptBlockReason, canAcceptMt: canAcceptMt };
+  const api = {
+    acceptBlockReason: acceptBlockReason,
+    canAcceptMt: canAcceptMt,
+    isEditInFlight: isEditInFlight,
+  };
   if (typeof root !== 'undefined') root.acceptEligibility = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);
