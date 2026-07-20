@@ -216,6 +216,34 @@ attribution; the upstream relicense does not affect copies obtained before it.
 
 No remediation needed for Chemistry / Biology / Microbiology derivatives.
 
+### 6.1 Disposition — RELABEL (lead decision 2026-07-20)
+
+The remediation fork above (relabel vs withdraw) is **decided: relabel.** The Organic
+(102 published) and College Physics (15 published) MT-preview derivatives stay
+published and are labelled **CC BY-NC-SA 4.0** with attribution + NonCommercial +
+ShareAlike notice — not withdrawn. Rationale: they are legitimate NC-SA derivative
+works; a correct label satisfies the licence, and withdrawing would discard
+already-translated student content for no compliance gain.
+
+Decided facets (adopted as the campaign item-17 build posture):
+
+- **Display.** A per-product licence footer, keyed off a new `books/<slug>/book-config.json`
+  licence field, renders on published pages: attribution for the three CC BY books;
+  attribution + NonCommercial + ShareAlike for Organic and Physics. `tools/lib/book-licences.cjs`
+  stays the corpus-export map; item 17 moves the canonical licence into book-config and the
+  two must agree (single provenance source: this document §1).
+- **Containment.** NC-SA content must not be folded into any CC BY aggregate or combined
+  deliverable (cross-book glossary/index aggregates, combined/library exports). A lightweight
+  licence-aware guard enforces this; the research corpus already stamps licence per row and is
+  unaffected.
+- **NonCommercial.** The lead affirms namsbókasafn.is's use is non-commercial (free
+  educational access), consistent with the NC term.
+- **ShareAlike.** The Icelandic MT-preview of an NC-SA source is itself offered under
+  CC BY-NC-SA 4.0; the footer for those two books states this.
+
+This is licence posture, not legal advice; counsel review remains advisable but is not a
+blocker on the item-17 build. This resolves the L7 licence-posture gate on campaign item 17.
+
 ---
 
 ## 7. Evidence integrity / reproducibility
