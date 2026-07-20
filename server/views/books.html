@@ -944,6 +944,19 @@
                 </svg>
                 S&#230;kja allt EN markdown
               </button>
+              <div class="tm-download" style="display:inline-block; margin-left:0.5rem;">
+                <label for="tm-format" class="visually-hidden">Sni&#240; &#254;&#253;&#240;ingaminnis</label>
+                <select id="tm-format" class="btn btn-sm">
+                  <option value="tmx">TMX</option>
+                  <option value="csv">CSV</option>
+                  <option value="json">JSON</option>
+                </select>
+                <button class="btn btn-sm btn-secondary"
+                        onclick="downloadTm(selectedBook, document.getElementById('tm-format').value)"
+                        title="S&#230;kja &#254;&#253;&#240;ingaminni b&#243;karinnar (TMX/CSV/JSON)">
+                  S&#230;kja &#254;&#253;&#240;ingaminni
+                </button>
+              </div>
             </div>
           </div>
           <div id="chapters-grid" class="chapter-grid"></div>
@@ -2237,6 +2250,12 @@
       function downloadPublishedHtml(book, chapter) {
         window.location.href =
           '/api/books/' + book + '/download?chapter=' + chapter + '&type=pub-faithful';
+      }
+
+      function downloadTm(book, format) {
+        if (!book) return;
+        var url = '/api/tm/export?book=' + encodeURIComponent(book) + '&format=' + encodeURIComponent(format);
+        window.location.href = url;
       }
 
       // ========================================================================
