@@ -486,7 +486,10 @@ router.post(
  * Record a per-segment MT acceptance ("Staðfesta vélþýðingu", item 20b).
  * Chain mirrors the edit save. acceptedContent must equal the current
  * baseline byte-for-byte (409 STALE_CONTENT — doubles as the saveRetry
- * replay guard); an active edit wins (409 EDIT_EXISTS).
+ * replay guard); an active edit wins (409 EDIT_EXISTS); an open discussion
+ * blocks (409 DISCUSS_OPEN) and so does published human text that is still the
+ * live baseline (409 HUMAN_CONTENT). Eligibility is enforced HERE, not in the
+ * client — this endpoint is directly reachable (MTA-R3).
  */
 router.post(
   '/:book/:chapter/:moduleId/accept',
@@ -531,7 +534,14 @@ router.post(
 
       res.json({ success: true, ...result });
     } catch (err) {
-      if (err.code === 'STALE_CONTENT' || err.code === 'EDIT_EXISTS') {
+      // MTA-R3 adds DISCUSS_OPEN / HUMAN_CONTENT to the eligibility guard;
+      // they are conflict states like the other two, not server errors.
+      if (
+        err.code === 'STALE_CONTENT' ||
+        err.code === 'EDIT_EXISTS' ||
+        err.code === 'DISCUSS_OPEN' ||
+        err.code === 'HUMAN_CONTENT'
+      ) {
         return res.status(409).json({ error: err.code, message: err.message });
       }
       if (err.code === 'NO_TRANSLATION') {

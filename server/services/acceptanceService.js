@@ -92,6 +92,45 @@ function acceptSegment({ book, chapter, moduleId, segmentId, acceptedContent, us
     );
   }
 
+  // An open discussion is unresolved review work. Accepting over it would let
+  // an editor who is not party to the discussion close a flagged disagreement
+  // single-handedly, and would fork the two definitions of "done": the
+  // reviewed-union would count the module complete while completeModuleReview
+  // still refuses it (counts.discuss === 0 gate). MTA-R3, lead decision.
+  const discussEdit = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'discuss'`
+    )
+    .get(book, moduleId, segmentId);
+  if (discussEdit) {
+    throw codedError(
+      'DISCUSS_OPEN',
+      'Umræða er opin um þennan bút — leysa þarf úr henni áður en hægt er að staðfesta.'
+    );
+  }
+
+  // A published edit whose text IS the current baseline means seg.is is human
+  // translation, not MT (loadModuleForEditing reads 03-faithful-translation as
+  // the baseline once it exists). Attesting it as MT would flip the review-status
+  // sidecar from `edited` to `accepted` and misattribute a human's work in the
+  // durable provenance record. Byte-based on purpose: after a content restore
+  // the applied text is no longer on disk, the bytes really are MT again, and
+  // accepting them is honest — the restore edge (MTA-R4) stays open.
+  const publishedEdit = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ?
+         AND status = 'approved' AND applied_at IS NOT NULL AND edited_content = ?`
+    )
+    .get(book, moduleId, segmentId, seg.is);
+  if (publishedEdit) {
+    throw codedError(
+      'HUMAN_CONTENT',
+      'Núverandi texti er samþykkt breyting ritstjóra, ekki vélþýðing — ekki hægt að staðfesta hann sem vélþýðingu.'
+    );
+  }
+
   const existing = conn
     .prepare(
       `SELECT * FROM segment_acceptances

@@ -191,6 +191,94 @@ describe('acceptSegment', () => {
     expect(accept().alreadyAccepted).toBe(false);
   });
 
+  // ── MTA-R3 eligibility (spec 2026-07-20-mta-r3-accept-eligibility-design) ──
+
+  it('409 DISCUSS_OPEN on an edit marked for discussion', () => {
+    const { id } = editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Fyrsta efnisgrein.',
+      editedContent: 'Breytt.',
+      editorId: 'user-2',
+      editorUsername: 'editor2',
+    });
+    editorService.markForDiscussion(id, 'rev-1', 'reviewer1');
+    expectCode(() => accept(), 'DISCUSS_OPEN');
+  });
+
+  it('a SUPERSEDED edit does not block acceptance', () => {
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'x', 'Dregið til baka.',
+               'u2', 'editor2', 'superseded')`
+    ).run(BOOK, MODULE);
+    expect(accept().alreadyAccepted).toBe(false);
+  });
+
+  it('409 HUMAN_CONTENT when a published edit IS the current baseline', () => {
+    // The faithful file holds the human-edited text, so seg.is is not MT:
+    // "Staðfesta MT" would attest a human translation as machine output.
+    mkdirSync(join(booksDir, BOOK, '03-faithful-translation', 'ch01'), { recursive: true });
+    writeFileSync(
+      join(booksDir, BOOK, '03-faithful-translation', 'ch01', `${MODULE}-segments.is.md`),
+      '<!-- SEG:m00001:para:fs-id001 -->\nBreytt og birt.',
+      'utf-8'
+    );
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at, applied_at)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'Fyrsta efnisgrein.', 'Breytt og birt.',
+               'u2', 'editor2', 'approved', '2026-07-19 10:00:00', '2026-07-19 10:05:00')`
+    ).run(BOOK, MODULE);
+    expectCode(() => accept('m00001:para:fs-id001', 'Breytt og birt.'), 'HUMAN_CONTENT');
+  });
+
+  it('a published edit whose text is NOT the baseline still accepts (restore edge)', () => {
+    // Content was restored past the applied edit, so the current bytes are MT
+    // again — the acceptance is honest. Guards the MTA-R4 restore edge against
+    // a naive "any applied edit blocks" rule.
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at, applied_at)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'x', 'Gömul breyting.',
+               'u2', 'editor2', 'approved', '2026-07-01 10:00:00', '2026-07-01 10:05:00')`
+    ).run(BOOK, MODULE);
+    expect(accept().alreadyAccepted).toBe(false);
+  });
+
+  // Parity pin: the SAME scenario table the client predicate is asserted
+  // against (acceptEligibility.test.js). The MTA-R3 defect was the two gates
+  // disagreeing, so a change to either that the other doesn't follow must fail
+  // here rather than ship as a hidden or dead button.
+  describe('server/client gate parity', () => {
+    const { CASES, BASELINE } = require('./helpers/acceptEligibilityCases.cjs');
+    const SEG = 'm00001:para:fs-id001';
+
+    for (const c of CASES) {
+      it(`${c.name} → ${c.expect || 'eligible'}`, () => {
+        for (const e of c.edits) {
+          db.prepare(
+            `INSERT INTO segment_edits
+               (book, chapter, module_id, segment_id, original_content, edited_content,
+                editor_id, editor_username, status, reviewed_at, applied_at)
+             VALUES (?, 1, ?, ?, 'x', ?, 'u2', 'editor2', ?, '2026-07-19 10:00:00', ?)`
+          ).run(BOOK, MODULE, SEG, e.edited_content, e.status, e.applied_at);
+        }
+        if (c.expect === null) {
+          expect(accept(SEG, BASELINE).alreadyAccepted).toBe(false);
+        } else {
+          expectCode(() => accept(SEG, BASELINE), c.expect);
+        }
+      });
+    }
+  });
+
   it('NO_TRANSLATION for a segment with no IS content', () => {
     expectCode(() => accept('m00001:para:fs-id004', ''), 'NO_TRANSLATION');
   });

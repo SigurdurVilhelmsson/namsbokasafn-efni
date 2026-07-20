@@ -174,6 +174,40 @@ describe('accept handler mapping', () => {
     expect(out.body.error).toBe('EDIT_EXISTS');
   });
 
+  it('open discussion → 409 DISCUSS_OPEN (MTA-R3)', async () => {
+    const editorService = require('../services/segmentEditorService');
+    const { id } = editorService.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: `${MODULE}:para:a`,
+      originalContent: 'IS a',
+      editedContent: 'IS a breytt',
+      editorId: 'u-ed2',
+      editorUsername: 'editor2',
+    });
+    editorService.markForDiscussion(id, 'u-he', 'headeditor');
+    const out = await invoke(acceptHandler, acceptReq());
+    expect(out.status).toBe(409);
+    expect(out.body.error).toBe('DISCUSS_OPEN');
+  });
+
+  it('published human text → 409 HUMAN_CONTENT (MTA-R3)', async () => {
+    const Database = require('better-sqlite3');
+    const db = new Database(process.env.SESSIONS_DB_PATH);
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at, applied_at)
+       VALUES (?, 1, ?, ?, 'x', 'IS a', 'u-ed2', 'editor2', 'approved',
+               '2026-07-19 10:00:00', '2026-07-19 10:05:00')`
+    ).run(BOOK, MODULE, `${MODULE}:para:a`);
+    db.close();
+    const out = await invoke(acceptHandler, acceptReq());
+    expect(out.status).toBe(409);
+    expect(out.body.error).toBe('HUMAN_CONTENT');
+  });
+
   it('missing segmentId / missing acceptedContent → 400', async () => {
     expect((await invoke(acceptHandler, acceptReq({ body: {} }))).status).toBe(400);
     expect((await invoke(acceptHandler, acceptReq({ body: { segmentId: 'x' } }))).status).toBe(400);
