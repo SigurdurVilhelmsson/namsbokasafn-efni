@@ -14,6 +14,18 @@
  * Deliberately does NOT consider an existing acceptance. "Is this already
  * accepted?" is a rendering branch (chip + revoke), not an eligibility
  * question — keeping them separate is what makes the server-parity table exact.
+ *
+ * KNOWN, SAFE LOOSENESS — do not "fix" by porting mt-normalize to the browser.
+ * The server compares a published edit against the baseline through the editor
+ * view (normalizeWraps → unescapeMtMarkers → normalizeTermMarkers); this
+ * predicate compares raw bytes, so it misses a HUMAN_CONTENT case whose only
+ * difference is normalization. That direction is harmless: the editor clicks,
+ * the server 409s, and the Icelandic message is shown. The reverse — client
+ * stricter than server — is the MTA-R3 defect itself and must never happen.
+ * It cannot here: this predicate only blocks when edited_content === seg.is
+ * exactly, which forces the stored text to be wrap/escape-free, making the
+ * server's normalization a fixed point on it. So client-blocks ⟹ server-blocks.
+ * A refactor that weakens that implication reintroduces the original bug.
  */
 (function (root) {
   /** An edit still in flight: the segment is not "MT as-is" while it lands. */
