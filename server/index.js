@@ -68,6 +68,7 @@ const suggestionsRoutes = require('./routes/suggestions');
 const statusRoutes = require('./routes/status');
 const adminRoutes = require('./routes/admin');
 const booksRoutes = require('./routes/books');
+const tmRoutes = require('./routes/tm');
 const sectionsRoutes = require('./routes/sections');
 const myWorkRoutes = require('./routes/my-work');
 
@@ -239,6 +240,7 @@ app.use('/api/suggestions', suggestionsRoutes);
 app.use('/api/status', statusRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/books', booksRoutes);
+app.use('/api/tm', tmRoutes);
 app.use('/api/sections', sectionsRoutes);
 app.use('/api/my-work', myWorkRoutes);
 
