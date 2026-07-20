@@ -622,7 +622,11 @@ In `tools/__tests__/export-corpus.test.js`:
 ```js
   it('toTsv emits the byte-literal 12-column header and sanitizes tabs/newlines', () => {
     const tsv = toTsv([row]);
-    const lines = tsv.trimEnd().split('\n');
+    // No trimEnd(): reviewStatus is now the LAST column and is empty here (null);
+    // trimEnd() strips trailing tab whitespace and would eat that empty field
+    // before the split, collapsing 12 fields to 11. split('\n')[1] is the row;
+    // toTsv's single real trailing '\n' becomes a harmless final '' element.
+    const lines = tsv.split('\n');
     expect(lines[0]).toBe(
       'id\tbook\tchapter\tmodule\ttype\tlicence\ten_clean\tmt_clean\tfaithful_clean\tlocalized_clean\tpostEdited\treviewStatus'
     );
@@ -635,7 +639,13 @@ In `tools/__tests__/export-corpus.test.js`:
   });
 ```
 
-Add one assertion to the `it('maps every column to its value at the right index …')` test — after the `fields[10]` line add:
+Update the `it('maps every column to its value at the right index …')` test (added in Task 1): its first line currently reads `const fields = toTsv([row]).trimEnd().split('\n')[1].split('\t');` — change it to drop `.trimEnd()` (same trailing-empty-field trap now that `reviewStatus` is the last column):
+
+```js
+    const fields = toTsv([row]).split('\n')[1].split('\t');
+```
+
+and add, after the `fields[10]` line:
 
 ```js
     expect(fields[11]).toBe(''); // reviewStatus (null → '')
@@ -657,7 +667,7 @@ Add a focused test proving a non-null status maps through:
       localized: null,
       reviewStatus: 'accepted',
     });
-    const fields = toTsv([r]).trimEnd().split('\n')[1].split('\t');
+    const fields = toTsv([r]).split('\n')[1].split('\t');
     expect(fields[TSV_COLUMNS.indexOf('reviewStatus')]).toBe('accepted');
   });
 ```
