@@ -454,6 +454,21 @@ function serializeTm(tus, format = 'tmx', opts = {}) {
   }
 }
 
+const EXT = { tmx: 'tmx', csv: 'csv', json: 'json' };
+
+/**
+ * Default output path for a book's TM in the given format:
+ * books/<book>/tm/<book>-<YYYY-MM-DD>.<ext>. Uses the lib's BOOKS_DIR so a
+ * test override via _setTestBooksDir steers it and generateTm together.
+ * @param {string} book
+ * @param {'tmx'|'csv'|'json'} [format]
+ * @returns {string}
+ */
+function defaultOutPath(book, format = 'tmx') {
+  const date = new Date().toISOString().slice(0, 10);
+  return path.join(BOOKS_DIR, book, 'tm', `${book}-${date}.${EXT[format]}`);
+}
+
 module.exports = {
   parseSegments,
   decodeEntities,
@@ -473,4 +488,5 @@ module.exports = {
   serializeCsv,
   serializeJson,
   serializeTm,
+  defaultOutPath,
 };

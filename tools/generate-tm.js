@@ -29,12 +29,11 @@ import {
   generateTm,
   TOOL_NAME,
   _setTestBooksDir,
+  FORMATS,
+  serializeTm,
+  defaultOutPath,
 } from './lib/tm-export.cjs';
-
-// CLI-local default write location only (not the lib's BOOKS_DIR). Task 3
-// removes this once defaultOutPath moves to the lib and runExport takes
-// over writing.
-const BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books');
+import { getBookLicence } from './lib/book-licences.cjs';
 
 // ─── CLI ──────────────────────────────────────────────────────────────
 
@@ -45,10 +44,35 @@ const DRY_RUN_OPTION = {
   type: 'boolean',
   default: false,
 };
+const FORMAT_OPTION = {
+  name: 'format',
+  flags: ['--format'],
+  type: 'string',
+  default: 'tmx',
+};
 
-function defaultOutPath(book) {
-  const date = new Date().toISOString().slice(0, 10);
-  return path.join(BOOKS_DIR, book, 'tm', `${book}-${date}.tmx`);
+/**
+ * Pair → validate format → look up licence → serialize → write (unless dryRun).
+ * The testable core of main(). Writes only when there are TUs — an empty TM is
+ * never written (preserves the prior 0-pairs → no-file behavior). Throws (fail
+ * loud) if the book has no licence recorded.
+ * @param {{book:string, chapter?:number|string|null, format?:string, out?:string, dryRun?:boolean}} o
+ * @returns {{outPath:string, bytes:number, tus:Array, totals:object, modules:Array, wrote:boolean}}
+ */
+export function runExport({ book, chapter = null, format = 'tmx', out = null, dryRun = false }) {
+  if (!FORMATS.includes(format)) {
+    throw new Error(`invalid --format '${format}' (valid: ${FORMATS.join(', ')})`);
+  }
+  const { tus, modules, totals } = generateTm(book, { chapter });
+  const { licence, obtained } = getBookLicence(book); // fail-loud on unknown slug
+  const outPath = out || defaultOutPath(book, format);
+  const output = serializeTm(tus, format, { date: new Date(), book, licence, obtained });
+  const wrote = tus.length > 0 && !dryRun;
+  if (wrote) {
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, output, 'utf-8');
+  }
+  return { outPath, bytes: output.length, tus, totals, modules, wrote };
 }
 
 function printHelp() {
@@ -60,12 +84,13 @@ Pairs EN source segments (02-for-mt/) with human-reviewed IS segments
 and emits a TMX 1.4b file. No Matecat Align, no manual alignment step.
 
 Usage:
-  node tools/generate-tm.js --book <book> [--chapter N] [--out <path>] [--dry-run]
+  node tools/generate-tm.js --book <book> [--chapter N] [--format tmx|csv|json] [--out <path>] [--dry-run]
 
 Options:
   --book <slug>      Book slug (default: efnafraedi-2e)
   --chapter <N>      Limit to one chapter (number or 'appendices'); default all
-  --out, -o <path>   Output TMX path (default: books/<book>/tm/<book>-<date>.tmx)
+  --format <fmt>     Output format: tmx (default) | csv | json
+  --out, -o <path>   Output path (default: books/<book>/tm/<book>-<date>.<ext>)
   --dry-run, -n      Report what would be written without writing
   --verbose, -v      Show per-module pairing stats
   -h, --help         Show this help
@@ -78,6 +103,7 @@ function main() {
     CHAPTER_OPTION,
     OUT_OPTION,
     DRY_RUN_OPTION,
+    FORMAT_OPTION,
   ]);
 
   if (args.help) {
@@ -87,13 +113,20 @@ function main() {
   requireBook(args);
 
   const book = args.book;
-  const bookDir = path.join(BOOKS_DIR, book);
-  if (!fs.existsSync(bookDir)) {
-    console.error(`Error: book not found: ${bookDir}`);
+
+  const format = args.format;
+  if (!FORMATS.includes(format)) {
+    console.error(`Error: invalid --format '${format}' (valid: ${FORMATS.join(', ')})`);
     process.exit(1);
   }
 
-  const { tus, modules, totals } = generateTm(book, { chapter: args.chapter });
+  const { tus, modules, totals, outPath, bytes } = runExport({
+    book,
+    chapter: args.chapter,
+    format,
+    out: args.out,
+    dryRun: args.dryRun,
+  });
 
   if (args.verbose) {
     console.log(`\nPer-module pairing (${book}):`);
@@ -132,19 +165,13 @@ function main() {
     process.exit(1);
   }
 
-  const outPath = args.out || defaultOutPath(book);
-  const tmx = buildTmx(tus, { date: new Date() });
-
   if (args.dryRun) {
     console.log(
-      `\nDRY RUN — would write ${tus.length} TUs (${tmx.length} bytes) to:\n  ${outPath}`
+      `\nDRY RUN — would write ${tus.length} TUs as ${format} (${bytes} bytes) to:\n  ${outPath}`
     );
     return;
   }
-
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, tmx, 'utf-8');
-  console.log(`\nWrote ${tus.length} TUs to:\n  ${outPath}`);
+  console.log(`\nWrote ${tus.length} TUs as ${format} to:\n  ${outPath}`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
@@ -164,4 +191,6 @@ export {
   listFaithfulChapterDirs,
   generateTm,
   _setTestBooksDir,
+  FORMAT_OPTION,
+  defaultOutPath,
 };
