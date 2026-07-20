@@ -245,6 +245,7 @@ describe('buildRow', () => {
       'faithful',
       'localized',
       'postEdited',
+      'reviewStatus',
     ]);
     expect(row.type).toBe('para');
     expect(row.elementId).toBe('p1');
@@ -253,6 +254,24 @@ describe('buildRow', () => {
     expect(row.faithful).toBeNull();
     expect(row.localized).toBeNull();
     expect(row.postEdited).toBeNull();
+    expect(row.reviewStatus).toBeNull(); // absent from p → defaults null
+  });
+
+  it('carries a provided reviewStatus through as the last key', () => {
+    const row = buildRow({
+      id: 'm1:para:p1',
+      book: 'efnafraedi-2e',
+      chapter: '1',
+      module: 'm1',
+      licence: 'CC BY 4.0',
+      en: 'Water.',
+      mt: 'Vatn.',
+      faithful: 'Vatn.',
+      localized: null,
+      reviewStatus: 'accepted',
+    });
+    expect(Object.keys(row).at(-1)).toBe('reviewStatus');
+    expect(row.reviewStatus).toBe('accepted');
   });
 });
 
@@ -304,6 +323,24 @@ describe('buildCorpus over a book fixture', () => {
       '<!-- SEG:m1:title:t -->\nInngangur\n\n' +
         '<!-- SEG:m1:para:p1 -->\nVatn er [[MATH:1]] fast efni.\n\n' +
         '<!-- SEG:m1:para:p2 -->\nFast efni (staðfært).'
+    );
+    // m1 review-status sidecar (item 20b PR2): all three statuses on
+    // faithful-present segments, plus a STALE accepted claim on p3 whose
+    // faithful is empty — D3.1 must override it to null.
+    fs.writeFileSync(
+      mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-review-status.json'),
+      JSON.stringify({
+        generated: '2026-07-19T00:00:00.000Z',
+        book: BOOK,
+        chapter: '1',
+        module: 'm1',
+        segments: {
+          'm1:title:t': { status: 'edited', by: 'ed', at: '2026-07-19 09:00:00' },
+          'm1:para:p1': { status: 'accepted', by: 'ed', at: '2026-07-19 09:00:00' },
+          'm1:para:p2': { status: 'carryover' },
+          'm1:para:p3': { status: 'accepted', by: 'ed', at: '2026-07-19 09:00:00' },
+        },
+      })
     );
     // m2: EN+MT only (no faithful/localized)
     fs.writeFileSync(
@@ -481,6 +518,81 @@ describe('buildCorpus over a book fixture', () => {
     const written = JSON.parse(fs.readFileSync(paths.manifestPath, 'utf-8'));
     expect(written.stats.rows).toBe(9);
   });
+
+  it('resolves reviewStatus from the sidecar; faithful-null beats a stale sidecar (D3)', () => {
+    const { rows, stats } = buildCorpus(BOOK, {});
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:title:t').reviewStatus).toBe('edited');
+    expect(byId.get('m1:para:p1').reviewStatus).toBe('accepted');
+    expect(byId.get('m1:para:p2').reviewStatus).toBe('carryover');
+    // p3: sidecar says 'accepted' but faithful is empty -> null (D3.1)
+    expect(byId.get('m1:para:p3').reviewStatus).toBeNull();
+    // no faithful tier at all -> null (D3.1)
+    expect(byId.get('m2:para:p1').reviewStatus).toBeNull();
+    // no sidecar for m2/m3/... -> null (D3.2)
+    expect(byId.get('m3:para:p1').reviewStatus).toBeNull();
+    expect(stats.reviewStatus).toEqual({ edited: 1, accepted: 1, carryover: 1, null: 6 });
+  });
+
+  it('counts sidecar states and holds the read+malformed+absent === listed invariant (D4)', () => {
+    const { stats } = buildCorpus(BOOK, {});
+    expect(stats.sidecarsRead).toBe(1); // m1
+    expect(stats.sidecarsMalformed).toBe(0);
+    expect(stats.sidecarsAbsent).toBe(5); // m2, m3, chapter-metadata, exercises, m9
+    expect(stats.sidecarsRead + stats.sidecarsMalformed + stats.sidecarsAbsent).toBe(
+      stats.modulesListed
+    );
+    expect(stats.sidecarSegMissing).toBe(0);
+  });
+
+  it('treats a malformed sidecar as null for the whole module without aborting (D3.3)', () => {
+    // Overwrite the fixture's good sidecar with invalid JSON.
+    fs.writeFileSync(
+      mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-review-status.json'),
+      '{ this is not json'
+    );
+    const { rows, stats } = buildCorpus(BOOK, {});
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:title:t').reviewStatus).toBeNull();
+    expect(byId.get('m1:para:p1').reviewStatus).toBeNull();
+    expect(stats.sidecarsMalformed).toBe(1);
+    expect(stats.sidecarsRead).toBe(0);
+    expect(stats.reviewStatus).toEqual({ edited: 0, accepted: 0, carryover: 0, null: 9 });
+  });
+
+  it('flags the drift tripwire when the sidecar omits a faithful-present segment (D3.4)', () => {
+    // Rewrite the sidecar to list t and p1 but OMIT p2 (whose faithful text
+    // "Fast efni." exists). m1's faithful-present segments are t, p1, p2 —
+    // p3 is empty so D3.1 nulls it before any lookup and it never counts as
+    // drift. Only p2 is present-in-file-absent-from-sidecar → exactly 1.
+    fs.writeFileSync(
+      mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-review-status.json'),
+      JSON.stringify({
+        module: 'm1',
+        segments: {
+          'm1:title:t': { status: 'edited' },
+          'm1:para:p1': { status: 'accepted' },
+        },
+      })
+    );
+    const { rows, stats } = buildCorpus(BOOK, {});
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:para:p2').reviewStatus).toBeNull();
+    expect(byId.get('m1:para:p3').reviewStatus).toBeNull(); // empty faithful, NOT counted as drift
+    expect(stats.sidecarSegMissing).toBe(1); // only p2: present in file, absent from sidecar
+    expect(stats.sidecarsRead).toBe(1);
+  });
+
+  it('treats a module-mismatched sidecar as malformed (D2)', () => {
+    fs.writeFileSync(
+      mk('books', BOOK, '03-faithful-translation', 'ch01', 'm1-review-status.json'),
+      JSON.stringify({ module: 'mWRONG', segments: { 'm1:title:t': { status: 'edited' } } })
+    );
+    const { rows, stats } = buildCorpus(BOOK, {});
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get('m1:title:t').reviewStatus).toBeNull();
+    expect(stats.sidecarsMalformed).toBe(1);
+  });
 });
 
 describe('serializers', () => {
@@ -514,6 +626,7 @@ describe('serializers', () => {
       'faithful',
       'localized',
       'postEdited',
+      'reviewStatus',
     ]);
     expect(jsonl.endsWith('\n')).toBe(true);
   });

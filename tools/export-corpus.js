@@ -114,6 +114,7 @@ function buildRow(p) {
     faithful: tier(p.faithful),
     localized: tier(p.localized),
     postEdited: computePostEdited(p.en, p.mt, p.faithful),
+    reviewStatus: p.reviewStatus ?? null,
   };
 }
 
@@ -240,6 +241,11 @@ function buildCorpus(book, opts = {}) {
     orphanIs: 0,
     duplicateIds: 0,
     emptyClean: 0,
+    reviewStatus: { edited: 0, accepted: 0, carryover: 0, null: 0 },
+    sidecarsRead: 0,
+    sidecarsMalformed: 0,
+    sidecarsAbsent: 0,
+    sidecarSegMissing: 0,
   };
 
   for (const dir of dirs) {
@@ -274,7 +280,31 @@ function buildCorpus(book, opts = {}) {
           : null;
       }
 
+      // Review-status sidecar (D1/D2): sibling of the faithful file, one per
+      // module. Classified once here so the module-grain counters stay in step
+      // with modulesListed (invariant: read + malformed + absent === listed).
+      const sidecar = loadSidecar(
+        path.join(
+          BOOKS_DIR,
+          book,
+          '03-faithful-translation',
+          dir,
+          `${moduleName}-review-status.json`
+        ),
+        moduleName
+      );
+      if (sidecar.state === 'ok') stats.sidecarsRead++;
+      else if (sidecar.state === 'absent') stats.sidecarsAbsent++;
+      else stats.sidecarsMalformed++;
+
       for (const [segId, enRaw] of enMap) {
+        const faithfulRaw = tierMaps.faithful ? tierMaps.faithful.get(segId) || null : null;
+        const { status: reviewStatus, segMissing } = resolveReviewStatus(
+          sidecar,
+          segId,
+          faithfulRaw
+        );
+        if (segMissing) stats.sidecarSegMissing++;
         const row = buildRow({
           id: segId,
           book,
@@ -283,8 +313,9 @@ function buildCorpus(book, opts = {}) {
           licence,
           en: enRaw,
           mt: tierMaps.mt ? tierMaps.mt.get(segId) || null : null,
-          faithful: tierMaps.faithful ? tierMaps.faithful.get(segId) || null : null,
+          faithful: faithfulRaw,
           localized: tierMaps.localized ? tierMaps.localized.get(segId) || null : null,
+          reviewStatus,
         });
         for (const tierName of ['mt', 'faithful', 'localized']) {
           if (row[tierName]) stats.tiers[tierName]++;
@@ -294,6 +325,8 @@ function buildCorpus(book, opts = {}) {
         }
         if (row.postEdited === true) stats.postEditedTrue++;
         if (row.postEdited === false) stats.postEditedFalse++;
+        const rsKey = row.reviewStatus === null ? 'null' : row.reviewStatus;
+        stats.reviewStatus[rsKey] = (stats.reviewStatus[rsKey] || 0) + 1;
         rows.push(row);
         stats.rows++;
       }
