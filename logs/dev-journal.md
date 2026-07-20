@@ -103,3 +103,18 @@ eda42a2b docs(6b): register note — adversarial review + 11 fixes, suite 2639
 **Process:** brainstorm → spec (self-reviewed; revised on the 285-dup finding, user-signed-off) → plan (complete code per step) → subagent-driven TDD (5 impl tasks + task reviews + 1 fix for a real/benign-split test gap) → independent final review (opus, merge-ready) → PR #288. SDD ledger: `.superpowers/sdd/progress.md`.
 
 **NEXT:** item 8 PR2 = D2 (shared HANDLED_INLINE/BLOCK lib; behavior-preserving refactor; spec §D2 written). Then Phase-2 #9 (D3 os-embed), #10 (renderer bio-watch, must-survive), #11 (vefur embed CSS, must-survive). Deferred: GATE-1 (gate modulesMissingSource:21), REEQ-1 (normalizeVisibleText nested-bracket term).
+## 2026-07-20 14:05 - Item 20b accept-gate complete: MT-acceptance + both fast-follows merged; next is item 20b PR2
+
+**Branch:** main (clean, synced)
+**Modified:**
+ (clean — all work merged to main)
+
+**Recent commits:**
+ccc97d7f docs(campaign): item 20b + accept-gate fast-follows merged (#308–#310)
+b99c2adc Merge pull request #310 from SigurdurVilhelmsson/fix/mta-r12-shown-equals-attested
+03e1a16e fix(mta-r12): shown === attested — one rule for which IS text the editor sees
+
+**Why:** MTA-R3's written fix design was verified broken BEFORE implementing it — it would have created an attestation the editor could enter but never see or undo. Replacement enforces eligibility server-side with one shared predicate mirrored client-side; MTA-R12 then closed the last shown-vs-attested gap. Both had defects that only whole-branch adversarial review found (the new HUMAN_CONTENT guard was itself failing open on normalization).
+
+---
+
