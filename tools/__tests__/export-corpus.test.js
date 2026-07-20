@@ -6,6 +6,8 @@ import {
   corpusCleanText,
   splitSegId,
   computePostEdited,
+  loadSidecar,
+  resolveReviewStatus,
   buildRow,
   listEnChapterDirs,
   buildCorpus,
@@ -108,6 +110,112 @@ describe('computePostEdited', () => {
   it('is null when either IS tier is whitespace-only (MUSTFIX2/F3)', () => {
     expect(computePostEdited('Water.', '   ', 'Vatn.')).toBeNull();
     expect(computePostEdited('Water.', 'Vatn.', '   ')).toBeNull();
+  });
+});
+
+describe('loadSidecar', () => {
+  let tmp;
+  beforeEach(() => {
+    tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'sidecar-'));
+  });
+  afterEach(() => {
+    fs.rmSync(tmp, { recursive: true, force: true });
+  });
+
+  const write = (name, body) => {
+    const p = path.join(tmp, name);
+    fs.writeFileSync(p, typeof body === 'string' ? body : JSON.stringify(body));
+    return p;
+  };
+
+  it('returns absent when the file does not exist', () => {
+    expect(loadSidecar(path.join(tmp, 'nope.json'), 'm1')).toEqual({ state: 'absent' });
+  });
+
+  it('returns ok with the segments map for a well-formed matching sidecar', () => {
+    const p = write('s.json', { module: 'm1', segments: { 'm1:para:p1': { status: 'accepted' } } });
+    const r = loadSidecar(p, 'm1');
+    expect(r.state).toBe('ok');
+    expect(r.segments['m1:para:p1'].status).toBe('accepted');
+  });
+
+  it('returns malformed on invalid JSON (D3.3)', () => {
+    expect(loadSidecar(write('s.json', '{not json'), 'm1').state).toBe('malformed');
+  });
+
+  it('returns malformed when segments is missing or not a plain object', () => {
+    expect(loadSidecar(write('a.json', { module: 'm1' }), 'm1').state).toBe('malformed');
+    expect(loadSidecar(write('b.json', { module: 'm1', segments: [] }), 'm1').state).toBe(
+      'malformed'
+    );
+    expect(loadSidecar(write('c.json', { module: 'm1', segments: null }), 'm1').state).toBe(
+      'malformed'
+    );
+  });
+
+  it('returns malformed when the sidecar module does not match the expected module (D2)', () => {
+    const p = write('s.json', { module: 'mOTHER', segments: {} });
+    expect(loadSidecar(p, 'm1').state).toBe('malformed');
+  });
+});
+
+describe('resolveReviewStatus', () => {
+  const ok = {
+    state: 'ok',
+    segments: {
+      'm1:para:p1': { status: 'accepted' },
+      'm1:para:p2': { status: 'edited' },
+      'm1:para:p3': { status: 'carryover' },
+    },
+  };
+
+  it('returns the verbatim status for a listed segment with faithful text (D3.5)', () => {
+    expect(resolveReviewStatus(ok, 'm1:para:p2', 'Fast efni.')).toEqual({
+      status: 'edited',
+      segMissing: false,
+    });
+  });
+
+  it('is null when faithful is null even if the sidecar lists the segment (D3.1 beats a stale sidecar)', () => {
+    expect(resolveReviewStatus(ok, 'm1:para:p1', null)).toEqual({
+      status: null,
+      segMissing: false,
+    });
+  });
+
+  it('is null when faithful is whitespace-only', () => {
+    expect(resolveReviewStatus(ok, 'm1:para:p1', '   ')).toEqual({
+      status: null,
+      segMissing: false,
+    });
+  });
+
+  it('is null for an absent sidecar (D3.2)', () => {
+    expect(resolveReviewStatus({ state: 'absent' }, 'm1:para:p1', 'Vatn.')).toEqual({
+      status: null,
+      segMissing: false,
+    });
+  });
+
+  it('is null for a malformed sidecar (D3.3)', () => {
+    expect(resolveReviewStatus({ state: 'malformed' }, 'm1:para:p1', 'Vatn.')).toEqual({
+      status: null,
+      segMissing: false,
+    });
+  });
+
+  it('flags segMissing when the sidecar is ok but omits the segment (D3.4 drift tripwire)', () => {
+    expect(resolveReviewStatus(ok, 'm1:para:pX', 'Vatn.')).toEqual({
+      status: null,
+      segMissing: true,
+    });
+  });
+
+  it('does not flag segMissing for an omitted segment whose faithful is null', () => {
+    expect(resolveReviewStatus(ok, 'm1:para:pX', null)).toEqual({
+      status: null,
+      segMissing: false,
+    });
   });
 });
 

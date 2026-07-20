@@ -166,6 +166,58 @@ function parseAndCount(content, stats) {
 }
 
 /**
+ * Load a module's derived review-status sidecar from disk (D1). Classification
+ * is defensive by construction: any shape the corpus reader cannot trust — bad
+ * JSON, a non-object `segments`, or a `module` that does not match the module
+ * being exported (D2) — is 'malformed', so a single corrupt file yields `null`
+ * for that module's rows without ever aborting the book export (D3.3).
+ *
+ * @param {string} sidecarPath  books/<book>/03-faithful-translation/<dir>/<mod>-review-status.json
+ * @param {string} expectedModule  the module id the corpus is currently exporting
+ * @returns {{state:'ok', segments:object} | {state:'absent'} | {state:'malformed'}}
+ */
+function loadSidecar(sidecarPath, expectedModule) {
+  if (!fs.existsSync(sidecarPath)) return { state: 'absent' };
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(sidecarPath, 'utf-8'));
+  } catch {
+    return { state: 'malformed' };
+  }
+  const segments = parsed && parsed.segments;
+  if (!segments || typeof segments !== 'object' || Array.isArray(segments)) {
+    return { state: 'malformed' };
+  }
+  if (parsed.module !== expectedModule) return { state: 'malformed' };
+  return { state: 'ok', segments };
+}
+
+/**
+ * Resolve a row's reviewStatus per the addendum's ordered rules (D3). Returns
+ * both the status and a `segMissing` flag so the caller can count the drift
+ * tripwire (D3.4). Statuses pass through verbatim — the per-status counter is
+ * the vocabulary check, so a future/malformed status reports itself rather than
+ * being silently remapped.
+ *
+ * @param {{state:string, segments?:object}} sidecar  result of loadSidecar
+ * @param {string} segId
+ * @param {string|null} faithfulRaw  the row's faithful tier (already `|| null`-coerced)
+ * @returns {{status: string|null, segMissing: boolean}}
+ */
+function resolveReviewStatus(sidecar, segId, faithfulRaw) {
+  // D3.1 — cannot have reviewed a translation that is not there; also stops a
+  // stale sidecar asserting a status on a row whose faithful tier is null.
+  if (faithfulRaw == null || faithfulRaw.trim() === '') return { status: null, segMissing: false };
+  // D3.2 (absent) + D3.3 (malformed)
+  if (!sidecar || sidecar.state !== 'ok') return { status: null, segMissing: false };
+  const entry = sidecar.segments[segId];
+  // D3.5 — verbatim status
+  if (entry && typeof entry.status === 'string') return { status: entry.status, segMissing: false };
+  // D3.4 — file segment the sidecar does not list: a post-write drift tripwire
+  return { status: null, segMissing: true };
+}
+
+/**
  * Assemble the corpus for a book (optionally one chapter).
  *
  * @param {string} book
@@ -465,6 +517,8 @@ export {
   corpusCleanText,
   splitSegId,
   computePostEdited,
+  loadSidecar,
+  resolveReviewStatus,
   buildRow,
   listEnChapterDirs,
   buildCorpus,
