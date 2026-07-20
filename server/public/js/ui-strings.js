@@ -84,6 +84,28 @@ const UI = {
     },
   },
 
+  // ── MT acceptance (Staðfesta vélþýðingu, item 20b) ─────────
+  acceptance: {
+    acceptButton: 'Staðfesta MT',
+    acceptTooltip: 'Staðfesta að vélþýðingin sé rétt eins og hún er (Ctrl+Shift+Enter)',
+    chip: 'Staðfest',
+    chipTitle: function (by, at) {
+      return 'Staðfest af ' + by + (at ? ' · ' + at : '');
+    },
+    revokeButton: 'Afturkalla staðfestingu',
+    revokeConfirm: 'Afturkalla staðfestingu á þessum bút? Hann telst þá óyfirfarinn aftur.',
+    conflict:
+      'Innihald bútsins hefur breyst eða bútur er með virka breytingu í ferli. Endurhleð...',
+    noneLeft: 'Engir óyfirfarnir bútar eftir í einingunni.',
+    unchangedNothingSaved:
+      'Textinn er óbreyttur — engin breyting er vistuð og flokkur/athugasemd fylgja ekki með.\n\n' +
+      'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".',
+    unchangedWithdrawConfirm:
+      'Textinn er aftur eins og upprunalega — breytingin í bið verður dregin til baka og ' +
+      'flokkur/athugasemd falla niður.\n\n' +
+      'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".\n\nHalda áfram?',
+  },
+
   // ── Edit status labels ──────────────────────────────────────
   editStatus: {
     pending: 'Bíður',
@@ -131,18 +153,41 @@ const UI = {
     unapplied: function (count) {
       return count + ' samþykktar breytingar til að vista';
     },
+    unappliedCombined: function (edits, acceptances) {
+      return edits + ' samþykktar breytingar og ' + acceptances + ' staðfestingar til að vista';
+    },
     allApplied: function (total) {
       return 'Allar ' + total + ' samþykktar breytingar vistaðar';
     },
     noApproved: 'Engar samþykktar breytingar',
+    // item 20b final-review F2: an accept-only publish has appliedCount === 0,
+    // so `applied_acceptances > 0` needs its own message instead of falling
+    // through to noApproved.
+    acceptancesApplied: function (n) {
+      return n + ' staðfestingar vistaðar';
+    },
     errorLoading: 'Villa við að sækja stöðu',
     saving: 'Vista...',
-    saved: function (count) {
-      return 'Vistað (' + count + ' breytingar)';
+    // item 20b final-review F2: accept-only / mixed apply must surface the
+    // acceptance count too, not just appliedCount (which is 0 for an
+    // accept-only module) — accepted is an optional trailing arg.
+    saved: function (count, accepted) {
+      return (
+        'Vistað (' +
+        count +
+        ' breytingar' +
+        (accepted ? ', ' + accepted + ' staðfestingar' : '') +
+        ')'
+      );
     },
     saveAndRender: 'Vista + Birta...',
-    saveAndRenderProgress: function (count) {
-      return 'Vistað (' + count + '), birting í gangi...';
+    saveAndRenderProgress: function (count, accepted) {
+      return (
+        'Vistað (' +
+        count +
+        (accepted ? ', ' + accepted + ' staðfestingar' : '') +
+        '), birting í gangi...'
+      );
     },
     saveAndRenderDone: 'Vistað + Birt!',
     saveNoRender: 'Vistað, en birting hófst ekki',

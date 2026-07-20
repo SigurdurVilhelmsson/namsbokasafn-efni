@@ -17,6 +17,7 @@ const Database = require('better-sqlite3');
 
 const service = require('../services/segmentEditorService');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+const migration043 = require('../migrations/043-segment-acceptances');
 
 const BOOK = 'testbook';
 const CHAPTER = 1;
@@ -26,6 +27,8 @@ function createTestDb() {
   const db = new Database(':memory:');
   db.pragma('journal_mode = WAL');
   createSegmentEditsSchema(db);
+  // item 20b: getApplyStatus now also queries segment_acceptances.
+  migration043.up(db);
   return db;
 }
 
@@ -79,6 +82,9 @@ describe('getApplyStatus rebuild affordance', () => {
     expect(status.applied_count).toBe(1);
     expect(status.faithful_exists).toBe(true);
     expect(status.can_rebuild).toBe(false);
+    // item 20b: no acceptances in this fixture — both counts are zero.
+    expect(status.unapplied_acceptances).toBe(0);
+    expect(status.applied_acceptances).toBe(0);
   });
 
   it('flags can_rebuild when all edits are applied but the faithful file is gone', () => {
@@ -89,6 +95,8 @@ describe('getApplyStatus rebuild affordance', () => {
     expect(status.applied_count).toBe(1);
     expect(status.faithful_exists).toBe(false);
     expect(status.can_rebuild).toBe(true);
+    expect(status.unapplied_acceptances).toBe(0);
+    expect(status.applied_acceptances).toBe(0);
   });
 
   it('does not flag rebuild when there are still unapplied approved edits', () => {
@@ -96,6 +104,8 @@ describe('getApplyStatus rebuild affordance', () => {
     const status = service.getApplyStatus(BOOK, MODULE, CHAPTER);
     expect(status.unapplied_count).toBe(1);
     expect(status.can_rebuild).toBe(false);
+    expect(status.unapplied_acceptances).toBe(0);
+    expect(status.applied_acceptances).toBe(0);
   });
 
   it('omits file info when no chapter is supplied (backward compatible)', () => {
@@ -104,5 +114,7 @@ describe('getApplyStatus rebuild affordance', () => {
     expect(status.applied_count).toBe(1);
     expect(status.faithful_exists).toBe(null);
     expect(status.can_rebuild).toBe(false);
+    expect(status.unapplied_acceptances).toBe(0);
+    expect(status.applied_acceptances).toBe(0);
   });
 });

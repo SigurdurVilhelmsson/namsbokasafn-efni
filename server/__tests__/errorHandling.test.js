@@ -13,6 +13,7 @@ const Database = require('better-sqlite3');
 
 const service = require('../services/segmentEditorService');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+const migration043 = require('../migrations/043-segment-acceptances');
 
 /**
  * Create an in-memory DB with the segment_edits schema.
@@ -22,6 +23,10 @@ function createTestDb() {
   db.pragma('journal_mode = WAL');
 
   createSegmentEditsSchema(db);
+  // item 20b: saveSegmentEdit now calls acceptanceService.supersedeForEdit on
+  // its own connection inside both save transactions — the test DB needs the
+  // segment_acceptances table or that call throws "no such table".
+  migration043.up(db);
 
   return db;
 }

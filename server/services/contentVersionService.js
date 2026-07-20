@@ -14,6 +14,7 @@ const segmentParser = require('./segmentParser');
 const activityLog = require('./activityLog');
 const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
+const acceptanceService = require('./acceptanceService');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -308,6 +309,16 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
       concordanceService.indexModule(book, chapter, moduleId);
     } catch (err) {
       log.error({ err, book, moduleId }, 'Concordance indexing after restore failed');
+    }
+    // item 20b: a restore rewrites faithful bytes without touching
+    // segment_acceptances — lapse any attestation whose bytes just changed
+    // (spec §7) and refresh the derived sidecar. Best-effort, same posture
+    // as the TM/concordance hooks above.
+    try {
+      acceptanceService.lapseDrifted(book, moduleId, restoredSegments);
+      acceptanceService.writeReviewStatusSidecar(book, chapter, moduleId);
+    } catch (err) {
+      log.error({ err, book, moduleId }, 'Acceptance drift-lapse/sidecar after restore failed');
     }
   }
 

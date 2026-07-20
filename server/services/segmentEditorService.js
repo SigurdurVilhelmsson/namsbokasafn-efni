@@ -12,6 +12,7 @@ const log = require('../lib/logger');
 const mtLock = require('../../tools/lib/mt-lock.cjs');
 const { advanceChapterStatus } = require('./pipelineService');
 const contentVersionService = require('./contentVersionService');
+const acceptanceService = require('./acceptanceService');
 const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
 const terminologyService = require('./terminologyService');
@@ -128,6 +129,10 @@ function saveSegmentEdit(params) {
     // so this costs nothing on the common post-039 case where it never
     // matches anything.
     const updateWithSupersede = conn.transaction(() => {
+      // item 20b: a saved revision supersedes the segment's active acceptance
+      // (spec §7) — same transaction, same connection.
+      acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
+
       conn
         .prepare(
           `UPDATE segment_edits SET status = 'superseded'
@@ -161,6 +166,10 @@ function saveSegmentEdit(params) {
   // time it runs on the update path; it stays load-bearing for legacy
   // pre-039 data where that invariant doesn't hold.
   const insertWithSupersede = conn.transaction(() => {
+    // item 20b: a saved revision supersedes the segment's active acceptance
+    // (spec §7) — same transaction, same connection.
+    acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
+
     conn
       .prepare(
         `UPDATE segment_edits SET status = 'superseded'
@@ -834,7 +843,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     )
     .all(book, moduleId);
 
-  if (approvedEdits.length === 0) {
+  const unappliedAcceptances = conn
+    .prepare(
+      `SELECT COUNT(*) AS n FROM segment_acceptances
+       WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+    )
+    .get(book, moduleId).n;
+
+  if (approvedEdits.length === 0 && unappliedAcceptances === 0) {
     const anyApproved = conn
       .prepare(
         `SELECT COUNT(*) as count FROM segment_edits
@@ -842,7 +858,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       )
       .get(book, moduleId);
 
-    if (anyApproved.count === 0) {
+    const anyAcceptances = conn
+      .prepare(
+        `SELECT COUNT(*) AS count FROM segment_acceptances
+         WHERE book = ? AND module_id = ? AND status = 'active'`
+      )
+      .get(book, moduleId);
+
+    if (anyApproved.count === 0 && anyAcceptances.count === 0) {
       throw new Error('No approved edits to apply for this module');
     }
 
@@ -874,6 +897,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
            WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
         )
         .run(book, moduleId);
+      // item 20b: the acceptance mirror of the reset — an acceptance-only
+      // module whose faithful file vanished must also be rebuildable.
+      conn
+        .prepare(
+          `UPDATE segment_acceptances SET applied_at = NULL
+           WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NOT NULL`
+        )
+        .run(book, moduleId);
       try {
         const result = applyApprovedEdits(book, chapter, moduleId, options);
         _applyRetryState.delete(retryKey);
@@ -901,7 +932,13 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       )
       .all(book, moduleId);
 
-    if (unapplied.length === 0) {
+    const unappliedAccInTxn = conn
+      .prepare(
+        `SELECT COUNT(*) AS n FROM segment_acceptances
+         WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+      )
+      .get(book, moduleId).n;
+    if (unapplied.length === 0 && unappliedAccInTxn === 0) {
       throw new Error('Edits were applied by a concurrent request');
     }
 
@@ -1033,15 +1070,32 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       markSuperseded.run(id);
     }
 
+    // 7. Acceptance lifecycle (item 20b, spec §7): lapse attestations whose
+    // bytes this apply just changed, then stamp the surviving active ones as
+    // published. Same connection, same transaction — atomic with the file
+    // bookkeeping. `segments` is the exact array written to disk in step 5.
+    const lapsedAcceptances = acceptanceService.lapseDrifted(book, moduleId, segments, conn);
+    const acceptedCount = acceptanceService.stampApplied(book, moduleId, conn);
+
     return {
       appliedCount,
       supersededCount: supersededIds.length,
       totalEditsMarked: winnerIds.length + supersededIds.length,
+      acceptedCount,
+      lapsedAcceptances,
       savedPath,
     };
   });
 
   const result = applyTransaction.immediate();
+
+  // Derived review-status sidecar (item 20b) — best-effort; it regenerates
+  // on the next apply/restore if this write fails.
+  try {
+    acceptanceService.writeReviewStatusSidecar(book, chapter, moduleId, conn);
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'Review-status sidecar write failed');
+  }
 
   // Auto-advance status (best-effort, outside transaction)
   try {
@@ -1109,6 +1163,16 @@ function getApplyStatus(book, moduleId, chapter) {
     )
     .get(book, moduleId);
 
+  const accCounts = conn
+    .prepare(
+      `SELECT
+         COUNT(CASE WHEN applied_at IS NULL THEN 1 END) AS unapplied_acceptances,
+         COUNT(CASE WHEN applied_at IS NOT NULL THEN 1 END) AS applied_acceptances
+       FROM segment_acceptances
+       WHERE book = ? AND module_id = ? AND status = 'active'`
+    )
+    .get(book, moduleId);
+
   // When the chapter is known, report whether the faithful file actually exists.
   // If every approved edit is marked applied but the file is gone (e.g. it was
   // deleted out of band), the module can be *rebuilt*: applyApprovedEdits
@@ -1126,10 +1190,14 @@ function getApplyStatus(book, moduleId, chapter) {
       `${moduleId}-segments.is.md`
     );
     faithfulExists = fs.existsSync(faithfulPath);
-    canRebuild = !faithfulExists && counts.unapplied_count === 0 && counts.applied_count > 0;
+    canRebuild =
+      !faithfulExists &&
+      counts.unapplied_count === 0 &&
+      accCounts.unapplied_acceptances === 0 &&
+      (counts.applied_count > 0 || accCounts.applied_acceptances > 0);
   }
 
-  return { ...counts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
+  return { ...counts, ...accCounts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
 }
 
 // =====================================================================
@@ -1142,7 +1210,7 @@ function getApplyStatus(book, moduleId, chapter) {
 function getModuleStats(book, moduleId) {
   const conn = getDb();
 
-  return conn
+  const editStats = conn
     .prepare(
       `SELECT
        COUNT(*) as total_edits,
@@ -1161,6 +1229,17 @@ function getModuleStats(book, moduleId) {
      WHERE book = ? AND module_id = ?`
     )
     .get(book, moduleId);
+
+  // item 20b: active MT acceptances are the second reviewed-tier signal
+  // (spec §8 metrics redefinition — reviewed = approved edit ∪ active acceptance).
+  const accepted = conn
+    .prepare(
+      `SELECT COUNT(*) as n FROM segment_acceptances
+       WHERE book = ? AND module_id = ? AND status = 'active'`
+    )
+    .get(book, moduleId).n;
+
+  return { ...editStats, accepted };
 }
 
 /**
@@ -1271,6 +1350,36 @@ function getBookEditsByModule(book) {
 }
 
 /**
+ * Per-module reviewed-segment counts: DISTINCT(segment with an approved edit
+ * ∪ segment with an active acceptance), keyed by module_id. Extracted from
+ * getEditorialProgress (item 20b final-review F3) so routes/status.js's
+ * per-module/per-chapter completion can use the exact same UNION instead of
+ * drifting out of sync with the book-wide summary (which was already
+ * acceptance-aware per item 20b Task 8, while the route stayed edits-only).
+ *
+ * @param {string} book - Book slug
+ * @returns {Object<string, number>} moduleId -> distinct reviewed segment count
+ */
+function getReviewedSegmentsByModule(book) {
+  const conn = getDb();
+  const reviewedByModule = {};
+  for (const row of conn
+    .prepare(
+      `SELECT module_id, COUNT(DISTINCT segment_id) as reviewed FROM (
+         SELECT module_id, segment_id FROM segment_edits
+          WHERE book = ? AND status = 'approved'
+         UNION
+         SELECT module_id, segment_id FROM segment_acceptances
+          WHERE book = ? AND status = 'active'
+       ) GROUP BY module_id`
+    )
+    .all(book, book)) {
+    reviewedByModule[row.module_id] = row.reviewed;
+  }
+  return reviewedByModule;
+}
+
+/**
  * Get per-chapter and book-wide editorial progress using DISTINCT segment counts.
  *
  * Uses COUNT(DISTINCT segment_id) rather than edit record counts, so that
@@ -1283,18 +1392,34 @@ function getEditorialProgress(book) {
   const conn = getDb();
 
   // 1. Get DISTINCT segment counts per chapter from DB
-  //    This is the key fix: counting distinct segment_ids, not edit records
+  //    This is the key fix: counting distinct segment_ids, not edit records.
+  //    item 20b (spec §8 metrics redefinition): approved_segments is now the
+  //    reviewed UNION — DISTINCT(segment with approved edit ∪ segment with
+  //    active acceptance). Driven from a chapter-keyed UNION ALL rather than
+  //    a LEFT JOIN off the edits subquery, because an acceptance-only chapter
+  //    (active acceptances, zero segment_edits rows) has no row on the edits
+  //    side to join from and would otherwise be dropped entirely.
   const editRows = conn
     .prepare(
       `SELECT
-        chapter,
-        COUNT(DISTINCT segment_id) as edited_segments,
-        COUNT(DISTINCT CASE WHEN status = 'approved' THEN segment_id ELSE NULL END) as approved_segments
-      FROM segment_edits
-      WHERE book = ?
-      GROUP BY chapter`
+         chapter,
+         SUM(edited) as edited_segments,
+         SUM(reviewed) as approved_segments
+       FROM (
+         SELECT chapter, COUNT(DISTINCT segment_id) as edited, 0 as reviewed
+           FROM segment_edits WHERE book = ? GROUP BY chapter
+         UNION ALL
+         SELECT chapter, 0 as edited, COUNT(DISTINCT segment_id) as reviewed FROM (
+           SELECT chapter, segment_id FROM segment_edits
+            WHERE book = ? AND status = 'approved'
+           UNION
+           SELECT chapter, segment_id FROM segment_acceptances
+            WHERE book = ? AND status = 'active'
+         ) GROUP BY chapter
+       )
+       GROUP BY chapter`
     )
-    .all(book);
+    .all(book, book, book);
 
   const editMap = {};
   for (const row of editRows) {
@@ -1311,12 +1436,9 @@ function getEditorialProgress(book) {
   let modulesComplete = 0;
   let totalModules = 0;
 
-  // For module completion, reuse existing per-module record counts
-  const moduleEdits = getBookEditsByModule(book);
-  const moduleEditMap = {};
-  for (const row of moduleEdits) {
-    moduleEditMap[row.module_id] = row;
-  }
+  // item 20b: module completion counts DISTINCT(approved-edit ∪ active-
+  // acceptance) segments — reviewed(segment) has two flavors now (spec §8).
+  const reviewedByModule = getReviewedSegmentsByModule(book);
 
   for (const chNum of chapterNums) {
     const modules = segmentParser.listChapterModules(book, chNum);
@@ -1327,15 +1449,12 @@ function getEditorialProgress(book) {
       chSegments += segCount;
       totalModules++;
 
-      // Module is "complete" when approved records >= segment count
-      const modEdits = moduleEditMap[mod.moduleId];
-      if (modEdits && segCount > 0) {
-        // applied ⊂ approved by SQL construction (applied_at is a stamp on an
-        // 'approved' row) — approved alone is the whole reviewed count (F18).
-        const approvedRecords = modEdits.approved || 0;
-        if (approvedRecords >= segCount) {
-          modulesComplete++;
-        }
+      // Module is "complete" when reviewed (approved ∪ accepted) segments
+      // cover the segment count (item 20b redefinition; F18-class comms —
+      // numbers RISE at deploy, see register MTA-R1).
+      const reviewedCount = reviewedByModule[mod.moduleId] || 0;
+      if (segCount > 0 && reviewedCount >= segCount) {
+        modulesComplete++;
       }
     }
 
@@ -1419,6 +1538,7 @@ module.exports = {
   // Per-book aggregation
   getBookEditsByModule,
   getEditorialProgress,
+  getReviewedSegmentsByModule,
   // Test helpers
   _setTestDb,
   _setTestBooksDir,

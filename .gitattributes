@@ -16,3 +16,8 @@
 # prod after each "Vista + Birta" and would otherwise wedge the deploy pull.
 books/*/translation-errors.json merge=ours
 books/*/residue-report.*.json merge=ours
+# books/<book>/03-faithful-translation/<ch>/<module>-review-status.json is the
+# derived per-module review-status sidecar (item 20b): regenerated from DB
+# state on every apply/restore, committed by both the prod git-backup cron and
+# dev — same class as the manifests above, keep the current side.
+books/*/03-faithful-translation/*/*-review-status.json merge=ours

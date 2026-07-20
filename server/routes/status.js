@@ -939,6 +939,13 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
       editLookup[row.module_id] = row;
     }
 
+    // item 20b final-review F3: per-module completion must use the same
+    // reviewed = approved-edit ∪ active-acceptance UNION as the book-wide
+    // summary (getEditorialProgress), or an accept-only module can show
+    // `complete` in summary.modulesComplete but `not-started` here — same
+    // JSON payload, same page.
+    const reviewedByModule = segmentEditorService.getReviewedSegmentsByModule(book);
+
     // 3. Get pending reviews
     const pendingReviews = segmentEditorService.getPendingModuleReviews(book);
     const reviewLookup = {};
@@ -980,12 +987,15 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
         const pending = edits ? edits.pending : 0;
         const discuss = edits ? edits.discuss : 0;
 
-        // Module status: complete if all segments approved, in-progress if any edits, else not-started
+        // item 20b final-review F3: "reviewed" = approved-edit ∪ active-acceptance
+        // (same UNION as getEditorialProgress), so per-module/per-chapter status
+        // agrees with the book-wide summary. Was edits-only (approved >= segCount).
+        const reviewed = reviewedByModule[mod.moduleId] || 0;
         let status = 'not-started';
-        if (approved >= segCount && segCount > 0) {
+        if (reviewed >= segCount && segCount > 0) {
           status = 'complete';
           chModulesComplete++;
-        } else if (edited > 0 || review) {
+        } else if (edited > 0 || reviewed > 0 || review) {
           status = 'in-progress';
           chModulesInProgress++;
         } else {
@@ -1677,6 +1687,8 @@ function getActivityIcon(type) {
     segment_edit_rejected: '❌',
     segment_edit_discuss: '💬',
     segment_edits_applied: '📥',
+    segment_accepted: '🟢',
+    acceptance_revoked: '↩️',
     assign_localizer: '🌍',
     status_change: '🔀',
     submit_review: '📋',
