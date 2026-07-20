@@ -273,19 +273,28 @@ function _setTestBooksDir(dir) {
 
 // ─── Serialization ────────────────────────────────────────────────────
 
-const TSV_COLUMNS = [
-  'id',
-  'book',
-  'chapter',
-  'module',
-  'type',
-  'licence',
-  'en_clean',
-  'mt_clean',
-  'faithful_clean',
-  'localized_clean',
-  'postEdited',
+/**
+ * Single source of truth for the TSV contract (I20-R6): one record per column,
+ * each carrying its own getter. The header and every row derive from this array,
+ * so a column can never drift between the two. Column name != row key for the
+ * clean-tier columns (they dereference `.clean` off a nullable tier object) and
+ * `elementId` is JSONL-only — so these are real accessors, not key lookups.
+ */
+const TSV_SPEC = [
+  { column: 'id', get: (r) => r.id },
+  { column: 'book', get: (r) => r.book },
+  { column: 'chapter', get: (r) => r.chapter },
+  { column: 'module', get: (r) => r.module },
+  { column: 'type', get: (r) => r.type },
+  { column: 'licence', get: (r) => r.licence },
+  { column: 'en_clean', get: (r) => (r.en ? r.en.clean : '') },
+  { column: 'mt_clean', get: (r) => (r.mt ? r.mt.clean : '') },
+  { column: 'faithful_clean', get: (r) => (r.faithful ? r.faithful.clean : '') },
+  { column: 'localized_clean', get: (r) => (r.localized ? r.localized.clean : '') },
+  { column: 'postEdited', get: (r) => r.postEdited },
 ];
+
+const TSV_COLUMNS = TSV_SPEC.map((c) => c.column);
 
 /** @param {Array<object>} rows */
 function toJsonl(rows) {
@@ -301,23 +310,7 @@ function tsvField(v) {
 function toTsv(rows) {
   const lines = [TSV_COLUMNS.join('\t')];
   for (const r of rows) {
-    lines.push(
-      [
-        r.id,
-        r.book,
-        r.chapter,
-        r.module,
-        r.type,
-        r.licence,
-        r.en ? r.en.clean : '',
-        r.mt ? r.mt.clean : '',
-        r.faithful ? r.faithful.clean : '',
-        r.localized ? r.localized.clean : '',
-        r.postEdited === null ? '' : String(r.postEdited),
-      ]
-        .map(tsvField)
-        .join('\t')
-    );
+    lines.push(TSV_SPEC.map((c) => tsvField(c.get(r))).join('\t'));
   }
   return lines.join('\n') + '\n';
 }
@@ -481,4 +474,5 @@ export {
   buildManifest,
   writeOutputs,
   TSV_COLUMNS,
+  TSV_SPEC,
 };

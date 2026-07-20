@@ -15,6 +15,7 @@ import {
   buildManifest,
   writeOutputs,
   TSV_COLUMNS,
+  TSV_SPEC,
 } from '../export-corpus.js';
 
 describe('corpusCleanText', () => {
@@ -409,16 +410,54 @@ describe('serializers', () => {
     expect(jsonl.endsWith('\n')).toBe(true);
   });
 
-  it('toTsv emits the frozen header and sanitizes tabs/newlines in fields', () => {
+  it('toTsv emits the byte-literal 11-column header and sanitizes tabs/newlines', () => {
     const tsv = toTsv([row]);
     const lines = tsv.trimEnd().split('\n');
-    expect(lines[0]).toBe(TSV_COLUMNS.join('\t'));
+    expect(lines[0]).toBe(
+      'id\tbook\tchapter\tmodule\ttype\tlicence\ten_clean\tmt_clean\tfaithful_clean\tlocalized_clean\tpostEdited'
+    );
     const fields = lines[1].split('\t');
-    expect(fields).toHaveLength(TSV_COLUMNS.length);
+    expect(fields).toHaveLength(11);
     // en clean had a tab; the raw text's tab/newline must not split columns
     expect(fields[TSV_COLUMNS.indexOf('en_clean')]).toBe('A B C.');
     expect(fields[TSV_COLUMNS.indexOf('localized_clean')]).toBe('');
     expect(fields[TSV_COLUMNS.indexOf('postEdited')]).toBe('true');
+  });
+
+  it('exports TSV_SPEC as the single source TSV_COLUMNS derives from (I20-R6)', () => {
+    expect(TSV_SPEC.map((c) => c.column)).toEqual(TSV_COLUMNS);
+    expect(TSV_SPEC).toHaveLength(11);
+    for (const entry of TSV_SPEC) {
+      expect(typeof entry.get).toBe('function');
+    }
+  });
+
+  it('maps every column to its value at the right index (I20-R6: no silent field swap)', () => {
+    const fields = toTsv([row]).trimEnd().split('\n')[1].split('\t');
+    expect(fields[0]).toBe('m1:para:p1'); // id
+    expect(fields[1]).toBe('efnafraedi-2e'); // book
+    expect(fields[2]).toBe('1'); // chapter
+    expect(fields[3]).toBe('m1'); // module
+    expect(fields[4]).toBe('para'); // type
+    expect(fields[5]).toBe('CC BY 4.0'); // licence
+    expect(fields[6]).toBe('A B C.'); // en_clean
+    expect(fields[7]).toBe('Vatn.'); // mt_clean
+    expect(fields[8]).toBe('Vatnið.'); // faithful_clean
+    expect(fields[9]).toBe(''); // localized_clean (null tier)
+    expect(fields[10]).toBe('true'); // postEdited
+  });
+
+  it('serializes postEdited true/false/null through the bare accessor (ternary removal safe)', () => {
+    const col = (pe) =>
+      // No trimEnd(): postEdited is the last column, and trimEnd() strips
+      // trailing tab whitespace too, silently eating an empty last field
+      // (the null case) before it can be split out.
+      toTsv([{ ...row, postEdited: pe }])
+        .split('\n')[1]
+        .split('\t')[TSV_COLUMNS.indexOf('postEdited')];
+    expect(col(true)).toBe('true');
+    expect(col(false)).toBe('false');
+    expect(col(null)).toBe('');
   });
 
   it('buildManifest carries licence, stats, skipped, and the spec notes', () => {
