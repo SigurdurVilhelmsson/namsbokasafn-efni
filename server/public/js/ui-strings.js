@@ -97,6 +97,28 @@ const UI = {
     conflict:
       'Innihald bútsins hefur breyst eða bútur er með virka breytingu í ferli. Endurhleð...',
     noneLeft: 'Engir óyfirfarnir bútar eftir í einingunni.',
+    // MTA-R3: the keyboard stream deliberately skips rows with edit history, so
+    // "none left" must not imply the module is done while accept buttons are
+    // still on screen.
+    noneLeftContested: function (n) {
+      return (
+        'Engir ósnertir bútar eftir — ' +
+        n +
+        // Icelandic number agreement follows the LAST digit: 21/31/101 take the
+        // singular, 11 takes the plural. Noun and verb are both in the switched
+        // fragment, so the whole clause agrees together.
+        (n % 10 === 1 && n % 100 !== 11
+          ? ' bútur með fyrri breytingu bíður'
+          : ' bútar með fyrri breytingu bíða') +
+        ' staðfestingar. Smelltu á „Staðfesta MT" í þeim röðum.'
+      );
+    },
+    // MTA-R3: a contested row may be attested, but the reason must be ON SCREEN
+    // — a title= tooltip is invisible on a keyboard or touch pass, and this is
+    // an attestation, not a convenience action.
+    contestedRejected: 'Breytingu var hafnað — vélþýðingin stendur óbreytt.',
+    contestedSuperseded: 'Fyrri breyting var dregin til baka — vélþýðingin stendur óbreytt.',
+    discussBlocked: 'Umræða er opin — leysa þarf úr henni áður en hægt er að staðfesta.',
     unchangedNothingSaved:
       'Textinn er óbreyttur — engin breyting er vistuð og flokkur/athugasemd fylgja ekki með.\n\n' +
       'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".',

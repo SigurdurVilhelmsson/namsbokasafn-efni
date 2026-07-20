@@ -58,6 +58,58 @@ describe('acceptance UI pins', () => {
     expect(clientJs).toContain('unapplied_acceptances');
   });
 
+  // ── MTA-R3 structural pins ──
+  // Presence only: the eligibility RULE is behaviour-tested in
+  // acceptEligibility.test.js and pinned against the server in
+  // acceptanceService.test.js ("server/client gate parity").
+
+  it('the accept gate comes from the shared predicate, not an ad-hoc condition', () => {
+    expect(html).toContain('<script src="/js/accept-eligibility.js"></script>');
+    expect(clientJs).toContain('acceptEligibility.acceptBlockReason');
+    expect(clientJs).toContain('acceptEligibility.canAcceptMt');
+  });
+
+  it('acceptance UI is not gated on the absence of an edit', () => {
+    // A static pin CANNOT prove branch independence: the whole-branch review
+    // showed `if (!latestEdit && acceptance)` restores the original defect
+    // (chip + revoke shadowed by any edit) without writing any pinned string.
+    // The real gate is e2e/acceptance.spec.js "a rejected edit still offers
+    // Staðfesta MT…". These regexes only catch the two obvious regressions,
+    // and are whitespace-tolerant so a prettier reflow can't false-RED them.
+    // Anchored on the closing brace so the prose in the code comment above the
+    // restructured block (which quotes the old chain) doesn't false-RED it.
+    expect(clientJs).not.toMatch(/\}\s*else\s+if\s*\(\s*acceptance\s*\)/);
+    expect(clientJs).not.toMatch(/if\s*\(\s*!\s*latestEdit\s*&&\s*acceptance\s*\)/);
+  });
+
+  it('the two accept predicates are named, distinct, and fed by ONE adapter', () => {
+    expect(clientJs).toContain('function isUnreviewedBacklog(');
+    expect(clientJs).toContain('function isKeyboardAcceptTarget(');
+    expect(clientJs).not.toContain('function isUnhandled(');
+    // Behaviour — that the keyboard stream actually SKIPS contested rows — is
+    // covered by e2e; a name pin cannot see a body collapsed to the other
+    // predicate. What this does pin: the predicate input is built in exactly
+    // one place, so the two gates cannot drift apart again (MTA-R3's cause).
+    expect(clientJs.match(/acceptEligibility\.\w+\(eligibilityView\(seg\)\)/g) || []).toHaveLength(
+      3
+    );
+    expect(clientJs).not.toMatch(/acceptBlockReason\(\{/);
+  });
+
+  it('contested rows carry an on-screen reason and the honest exhausted-stream toast', () => {
+    expect(strings).toContain('contestedRejected');
+    expect(strings).toContain('contestedSuperseded');
+    expect(strings).toContain('discussBlocked');
+    expect(strings).toContain('noneLeftContested');
+    expect(html).toContain('.accept-context-hint');
+    // The strings must be RENDERED, not merely defined — the review deleted
+    // every hint from the DOM with the old key-name-only pins still green.
+    expect(clientJs).toContain('UI.acceptance.noneLeftContested');
+    expect(clientJs).toContain('UI.acceptance.contestedRejected');
+    expect(clientJs).toContain('UI.acceptance.contestedSuperseded');
+    expect(clientJs).toContain('UI.acceptance.discussBlocked');
+  });
+
   it('.gitattributes carries the sidecar merge=ours line', () => {
     expect(gitattributes).toContain(
       'books/*/03-faithful-translation/*/*-review-status.json merge=ours'

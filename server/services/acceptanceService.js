@@ -26,6 +26,11 @@ const mtLock = require('../../tools/lib/mt-lock.cjs');
 const segmentParser = require('./segmentParser');
 const resolveDbPath = require('../lib/dbPath');
 const { pickLatest } = require('../lib/editRecency');
+const {
+  normalizeWraps,
+  unescapeMtMarkers,
+  normalizeTermMarkers,
+} = require('../../tools/lib/mt-normalize.cjs');
 
 const DB_PATH = resolveDbPath();
 
@@ -46,6 +51,19 @@ function codedError(code, message) {
   const err = new Error(message);
   err.code = code;
   return err;
+}
+
+/**
+ * Reconstruct the editor-visible view of a stored segment text.
+ *
+ * Mirrors loadModuleForEditing exactly — parseSegments applies normalizeWraps,
+ * then the IS lookup unescapes MT markers, then term markers are normalized
+ * against the EN source. Used to compare stored `edited_content` with the
+ * live baseline like-for-like.
+ */
+function editorViewOf(enContent, storedText) {
+  if (typeof storedText !== 'string') return null;
+  return normalizeTermMarkers(enContent, unescapeMtMarkers(normalizeWraps(storedText)));
 }
 
 /**
@@ -89,6 +107,54 @@ function acceptSegment({ book, chapter, moduleId, segmentId, acceptedContent, us
     throw codedError(
       'EDIT_EXISTS',
       'Bútur er með virka breytingu í ferli — staðfesting á ekki við.'
+    );
+  }
+
+  // An open discussion is unresolved review work. Accepting over it would let
+  // an editor who is not party to the discussion close a flagged disagreement
+  // single-handedly, and would fork the two definitions of "done": the
+  // reviewed-union would count the module complete while completeModuleReview
+  // still refuses it (counts.discuss === 0 gate). MTA-R3, lead decision.
+  const discussEdit = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'discuss'`
+    )
+    .get(book, moduleId, segmentId);
+  if (discussEdit) {
+    throw codedError(
+      'DISCUSS_OPEN',
+      'Umræða er opin um þennan bút — leysa þarf úr henni áður en hægt er að staðfesta.'
+    );
+  }
+
+  // A published edit whose text IS the current baseline means seg.is is human
+  // translation, not MT (loadModuleForEditing reads 03-faithful-translation as
+  // the baseline once it exists). Attesting it as MT would flip the review-status
+  // sidecar from `edited` to `accepted` and misattribute a human's work in the
+  // durable provenance record. Byte-based on purpose: after a content restore
+  // the applied text is no longer on disk, the bytes really are MT again, and
+  // accepting them is honest — the restore edge (MTA-R4) stays open.
+  //
+  // Compared through the SAME normalization the editor view applies, not on
+  // raw bytes: applyApprovedEdits writes edited_content verbatim into the
+  // faithful file, and loadModuleForEditing normalizes what it reads back
+  // (normalizeWraps → unescapeMtMarkers → normalizeTermMarkers). A raw
+  // comparison therefore fails OPEN whenever the editor's text contained a
+  // hard wrap, a backslash escape or a term marker — letting human text be
+  // attested as MT, which is the exact hole this guard exists to close.
+  const publishedEdit = conn
+    .prepare(
+      `SELECT id, edited_content FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ?
+         AND status = 'approved' AND applied_at IS NOT NULL`
+    )
+    .all(book, moduleId, segmentId)
+    .find((e) => editorViewOf(seg.en, e.edited_content) === seg.is);
+  if (publishedEdit) {
+    throw codedError(
+      'HUMAN_CONTENT',
+      'Núverandi texti er samþykkt breyting ritstjóra, ekki vélþýðing — ekki hægt að staðfesta hann sem vélþýðingu.'
     );
   }
 
