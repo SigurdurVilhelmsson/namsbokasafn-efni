@@ -27,7 +27,7 @@ import { getBookLicence } from './lib/book-licences.cjs';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
 
 const TOOL_NAME = 'export-corpus.js';
-const TOOL_VERSION = '1.0';
+const TOOL_VERSION = '1.1';
 
 let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books');
 
@@ -114,6 +114,7 @@ function buildRow(p) {
     faithful: tier(p.faithful),
     localized: tier(p.localized),
     postEdited: computePostEdited(p.en, p.mt, p.faithful),
+    reviewStatus: p.reviewStatus ?? null,
   };
 }
 
@@ -166,6 +167,58 @@ function parseAndCount(content, stats) {
 }
 
 /**
+ * Load a module's derived review-status sidecar from disk (D1). Classification
+ * is defensive by construction: any shape the corpus reader cannot trust — bad
+ * JSON, a non-object `segments`, or a `module` that does not match the module
+ * being exported (D2) — is 'malformed', so a single corrupt file yields `null`
+ * for that module's rows without ever aborting the book export (D3.3).
+ *
+ * @param {string} sidecarPath  books/<book>/03-faithful-translation/<dir>/<mod>-review-status.json
+ * @param {string} expectedModule  the module id the corpus is currently exporting
+ * @returns {{state:'ok', segments:object} | {state:'absent'} | {state:'malformed'}}
+ */
+function loadSidecar(sidecarPath, expectedModule) {
+  if (!fs.existsSync(sidecarPath)) return { state: 'absent' };
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(sidecarPath, 'utf-8'));
+  } catch {
+    return { state: 'malformed' };
+  }
+  const segments = parsed && parsed.segments;
+  if (!segments || typeof segments !== 'object' || Array.isArray(segments)) {
+    return { state: 'malformed' };
+  }
+  if (parsed.module !== expectedModule) return { state: 'malformed' };
+  return { state: 'ok', segments };
+}
+
+/**
+ * Resolve a row's reviewStatus per the addendum's ordered rules (D3). Returns
+ * both the status and a `segMissing` flag so the caller can count the drift
+ * tripwire (D3.4). Statuses pass through verbatim — the per-status counter is
+ * the vocabulary check, so a future/malformed status reports itself rather than
+ * being silently remapped.
+ *
+ * @param {{state:string, segments?:object}} sidecar  result of loadSidecar
+ * @param {string} segId
+ * @param {string|null} faithfulRaw  the row's faithful tier (already `|| null`-coerced)
+ * @returns {{status: string|null, segMissing: boolean}}
+ */
+function resolveReviewStatus(sidecar, segId, faithfulRaw) {
+  // D3.1 — cannot have reviewed a translation that is not there; also stops a
+  // stale sidecar asserting a status on a row whose faithful tier is null.
+  if (faithfulRaw == null || faithfulRaw.trim() === '') return { status: null, segMissing: false };
+  // D3.2 (absent) + D3.3 (malformed)
+  if (!sidecar || sidecar.state !== 'ok') return { status: null, segMissing: false };
+  const entry = sidecar.segments[segId];
+  // D3.5 — verbatim status
+  if (entry && typeof entry.status === 'string') return { status: entry.status, segMissing: false };
+  // D3.4 — file segment the sidecar does not list: a post-write drift tripwire
+  return { status: null, segMissing: true };
+}
+
+/**
  * Assemble the corpus for a book (optionally one chapter).
  *
  * @param {string} book
@@ -188,6 +241,19 @@ function buildCorpus(book, opts = {}) {
     orphanIs: 0,
     duplicateIds: 0,
     emptyClean: 0,
+    // Null-prototype map: a status value keyed literally '__proto__' must
+    // become its own property, not silently hit the inherited __proto__
+    // setter and vanish (F2).
+    reviewStatus: Object.assign(Object.create(null), {
+      edited: 0,
+      accepted: 0,
+      carryover: 0,
+      null: 0,
+    }),
+    sidecarsRead: 0,
+    sidecarsMalformed: 0,
+    sidecarsAbsent: 0,
+    sidecarSegMissing: 0,
   };
 
   for (const dir of dirs) {
@@ -222,7 +288,31 @@ function buildCorpus(book, opts = {}) {
           : null;
       }
 
+      // Review-status sidecar (D1/D2): sibling of the faithful file, one per
+      // module. Classified once here so the module-grain counters stay in step
+      // with modulesListed (invariant: read + malformed + absent === listed).
+      const sidecar = loadSidecar(
+        path.join(
+          BOOKS_DIR,
+          book,
+          '03-faithful-translation',
+          dir,
+          `${moduleName}-review-status.json`
+        ),
+        moduleName
+      );
+      if (sidecar.state === 'ok') stats.sidecarsRead++;
+      else if (sidecar.state === 'absent') stats.sidecarsAbsent++;
+      else stats.sidecarsMalformed++;
+
       for (const [segId, enRaw] of enMap) {
+        const faithfulRaw = tierMaps.faithful ? tierMaps.faithful.get(segId) || null : null;
+        const { status: reviewStatus, segMissing } = resolveReviewStatus(
+          sidecar,
+          segId,
+          faithfulRaw
+        );
+        if (segMissing) stats.sidecarSegMissing++;
         const row = buildRow({
           id: segId,
           book,
@@ -231,8 +321,9 @@ function buildCorpus(book, opts = {}) {
           licence,
           en: enRaw,
           mt: tierMaps.mt ? tierMaps.mt.get(segId) || null : null,
-          faithful: tierMaps.faithful ? tierMaps.faithful.get(segId) || null : null,
+          faithful: faithfulRaw,
           localized: tierMaps.localized ? tierMaps.localized.get(segId) || null : null,
+          reviewStatus,
         });
         for (const tierName of ['mt', 'faithful', 'localized']) {
           if (row[tierName]) stats.tiers[tierName]++;
@@ -242,6 +333,8 @@ function buildCorpus(book, opts = {}) {
         }
         if (row.postEdited === true) stats.postEditedTrue++;
         if (row.postEdited === false) stats.postEditedFalse++;
+        const rsKey = row.reviewStatus === null ? 'null' : row.reviewStatus;
+        stats.reviewStatus[rsKey] = (stats.reviewStatus[rsKey] || 0) + 1;
         rows.push(row);
         stats.rows++;
       }
@@ -273,19 +366,29 @@ function _setTestBooksDir(dir) {
 
 // ─── Serialization ────────────────────────────────────────────────────
 
-const TSV_COLUMNS = [
-  'id',
-  'book',
-  'chapter',
-  'module',
-  'type',
-  'licence',
-  'en_clean',
-  'mt_clean',
-  'faithful_clean',
-  'localized_clean',
-  'postEdited',
+/**
+ * Single source of truth for the TSV contract (I20-R6): one record per column,
+ * each carrying its own getter. The header and every row derive from this array,
+ * so a column can never drift between the two. Column name != row key for the
+ * clean-tier columns (they dereference `.clean` off a nullable tier object) and
+ * `elementId` is JSONL-only — so these are real accessors, not key lookups.
+ */
+const TSV_SPEC = [
+  { column: 'id', get: (r) => r.id },
+  { column: 'book', get: (r) => r.book },
+  { column: 'chapter', get: (r) => r.chapter },
+  { column: 'module', get: (r) => r.module },
+  { column: 'type', get: (r) => r.type },
+  { column: 'licence', get: (r) => r.licence },
+  { column: 'en_clean', get: (r) => (r.en ? r.en.clean : '') },
+  { column: 'mt_clean', get: (r) => (r.mt ? r.mt.clean : '') },
+  { column: 'faithful_clean', get: (r) => (r.faithful ? r.faithful.clean : '') },
+  { column: 'localized_clean', get: (r) => (r.localized ? r.localized.clean : '') },
+  { column: 'postEdited', get: (r) => r.postEdited },
+  { column: 'reviewStatus', get: (r) => r.reviewStatus },
 ];
+
+const TSV_COLUMNS = TSV_SPEC.map((c) => c.column);
 
 /** @param {Array<object>} rows */
 function toJsonl(rows) {
@@ -301,23 +404,7 @@ function tsvField(v) {
 function toTsv(rows) {
   const lines = [TSV_COLUMNS.join('\t')];
   for (const r of rows) {
-    lines.push(
-      [
-        r.id,
-        r.book,
-        r.chapter,
-        r.module,
-        r.type,
-        r.licence,
-        r.en ? r.en.clean : '',
-        r.mt ? r.mt.clean : '',
-        r.faithful ? r.faithful.clean : '',
-        r.localized ? r.localized.clean : '',
-        r.postEdited === null ? '' : String(r.postEdited),
-      ]
-        .map(tsvField)
-        .join('\t')
-    );
+    lines.push(TSV_SPEC.map((c) => tsvField(c.get(r))).join('\t'));
   }
   return lines.join('\n') + '\n';
 }
@@ -341,7 +428,8 @@ function buildManifest(p) {
       'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
       '[[MATH:N]]/[[MEDIA:n]] placeholders retained, resolve via 02-structure sidecars; [[BR]]/[[SPACE]] formatting placeholders also retained and are NOT sidecar-resolvable',
       `EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
-      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; per-segment review status lives only in the production DB (segment_edits)',
+      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; the per-segment record is the reviewStatus field (note 5)',
+      'reviewStatus reflects the last apply, faithful-restore, or acceptance-revoke for the module — not live DB state, and not necessarily the current file bytes (a hand-edit to 03-faithful-translation/ does not regenerate the sidecar); null means unknown (no sidecar, no faithful tier, or a segment the sidecar does not list), never "unreviewed"',
     ],
   };
 }
@@ -431,12 +519,26 @@ function main() {
     `Tiers present:      mt=${stats.tiers.mt} faithful=${stats.tiers.faithful} localized=${stats.tiers.localized}`
   );
   console.log(`postEdited:         true=${stats.postEditedTrue} false=${stats.postEditedFalse}`);
+  const rs = stats.reviewStatus;
+  console.log(
+    `reviewStatus:       edited=${rs.edited} accepted=${rs.accepted} carryover=${rs.carryover} null=${rs.null}`
+  );
   if (stats.tiers.faithful > 0)
     console.log('  (faithful presence != per-segment review — see manifest notes)');
   if (stats.duplicateIds) console.log(`  duplicate seg-ids (first-wins): ${stats.duplicateIds}`);
   if (stats.orphanIs) console.log(`  orphan IS seg-ids (no EN):      ${stats.orphanIs}`);
   if (stats.emptyClean) console.log(`  tier texts empty after strip:   ${stats.emptyClean}`);
   if (stats.filesSkipped) console.log(`  files skipped (see manifest):   ${stats.filesSkipped}`);
+  if (stats.sidecarsRead) console.log(`  review-status sidecars read:    ${stats.sidecarsRead}`);
+  if (stats.sidecarsMalformed)
+    console.log(`  review-status sidecars bad:     ${stats.sidecarsMalformed}`);
+  if (stats.sidecarSegMissing)
+    console.log(`  sidecar seg-id absent (drift):  ${stats.sidecarSegMissing}`);
+  const rsUnexpected = Object.keys(rs).filter(
+    (k) => !['edited', 'accepted', 'carryover', 'null'].includes(k)
+  );
+  if (rsUnexpected.length)
+    console.log(`  unexpected reviewStatus values: ${rsUnexpected.join(', ')}`);
 
   if (rows.length === 0) {
     console.error('\nNo corpus rows produced. Is there extracted content in 02-for-mt/?');
@@ -472,6 +574,8 @@ export {
   corpusCleanText,
   splitSegId,
   computePostEdited,
+  loadSidecar,
+  resolveReviewStatus,
   buildRow,
   listEnChapterDirs,
   buildCorpus,
@@ -481,4 +585,5 @@ export {
   buildManifest,
   writeOutputs,
   TSV_COLUMNS,
+  TSV_SPEC,
 };
