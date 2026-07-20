@@ -58,6 +58,39 @@ describe('acceptance UI pins', () => {
     expect(clientJs).toContain('unapplied_acceptances');
   });
 
+  // ── MTA-R3 structural pins ──
+  // Presence only: the eligibility RULE is behaviour-tested in
+  // acceptEligibility.test.js and pinned against the server in
+  // acceptanceService.test.js ("server/client gate parity").
+
+  it('the accept gate comes from the shared predicate, not an ad-hoc condition', () => {
+    expect(html).toContain('<script src="/js/accept-eligibility.js"></script>');
+    expect(clientJs).toContain('acceptEligibility.acceptBlockReason');
+    expect(clientJs).toContain('acceptEligibility.canAcceptMt');
+  });
+
+  it('acceptance UI is no longer an else-if arm shadowed by any edit', () => {
+    // The defect: `} else if (acceptance) {` meant chip+revoke were unreachable
+    // whenever the segment had an edit of any status.
+    expect(clientJs).not.toContain('} else if (acceptance) {');
+    expect(clientJs).toContain('if (acceptance) {');
+  });
+
+  it('the two accept predicates are named and distinct (facet ≠ keyboard stream)', () => {
+    expect(clientJs).toContain('function isUnreviewedBacklog(');
+    expect(clientJs).toContain('function isKeyboardAcceptTarget(');
+    expect(clientJs).not.toContain('function isUnhandled(');
+  });
+
+  it('contested rows carry an on-screen reason and the honest exhausted-stream toast', () => {
+    expect(strings).toContain('contestedRejected');
+    expect(strings).toContain('contestedSuperseded');
+    expect(strings).toContain('discussBlocked');
+    expect(strings).toContain('noneLeftContested');
+    expect(clientJs).toContain('UI.acceptance.noneLeftContested');
+    expect(html).toContain('.accept-context-hint');
+  });
+
   it('.gitattributes carries the sidecar merge=ours line', () => {
     expect(gitattributes).toContain(
       'books/*/03-faithful-translation/*/*-review-status.json merge=ours'

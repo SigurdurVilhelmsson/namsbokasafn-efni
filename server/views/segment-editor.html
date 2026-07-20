@@ -612,6 +612,15 @@
       color: var(--success);
     }
 
+    /* MTA-R3: why a contested row may still be attested — visible text, not a
+       tooltip, so it is on screen at the moment the editor attests. */
+    .accept-context-hint {
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+      line-height: 1.3;
+      color: var(--text-muted);
+    }
+
     /* --- Category badges --- */
     .category-badge {
       display: inline-block;
@@ -1606,6 +1615,7 @@
   <script src="/js/tabGuard.js"></script>
   <script src="/js/ui-strings.js"></script>
   <script src="/js/segment-validation.js"></script>
+  <script src="/js/accept-eligibility.js"></script>
   <script src="/js/marker-highlight.js"></script>
   <script src="/js/term-highlight.js"></script>
   <script src="/js/segment-editor.js"></script>

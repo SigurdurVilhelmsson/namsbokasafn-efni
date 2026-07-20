@@ -694,9 +694,10 @@
           return !!moduleData.acceptances?.[s.segmentId];
         }
         if (filterStatus === 'unhandled') {
-          return (
-            !(moduleData.edits[s.segmentId] || []).length && !moduleData.acceptances?.[s.segmentId]
-          );
+          // MTA-R3: the shared backlog predicate, so the facet can no longer
+          // disagree with the button (it used to omit hasTranslation, and to
+          // exclude every contested row the button now offers).
+          return isUnreviewedBacklog(s);
         }
         if (filterStatus === 'unedited') {
           return !latestEdit;
@@ -719,7 +720,9 @@
     if (!seg.is && !latestEdit) {
       rowClass += ' no-translation';
     }
-    if (!latestEdit && acceptance) {
+    // MTA-R3: an acceptance can now coexist with a non-active edit, so the
+    // tint follows the acceptance itself rather than the absence of history.
+    if (acceptance) {
       rowClass += ' accepted-row';
     }
     if (seg.segmentId === cursorSegmentId) {
@@ -858,10 +861,28 @@
               : ''
           }
         `;
-    } else if (acceptance) {
+    }
+
+    // ── MT acceptance, rendered INDEPENDENTLY of edit history (MTA-R3) ──
+    // The old chain was `if (latestEdit) … else if (acceptance) … else`, so the
+    // Staðfest chip and the revoke button — which live only in the acceptance
+    // arm — were permanently shadowed by any edit. A segment holding both an
+    // edit and an acceptance showed neither: an attestation the editor could
+    // enter but never see or undo. Eligibility comes from the shared predicate
+    // that mirrors the server guard, never from ad-hoc conditions here.
+    const blockReason = acceptEligibility.acceptBlockReason({
+      hasTranslation: seg.hasTranslation,
+      is: seg.is,
+      edits,
+    });
+    const stacked = latestEdit ? ' style="margin-top: 0.25rem;"' : '';
+
+    if (acceptance) {
       const canRevoke = acceptance.accepted_by_username === userName || isHeadEditor;
-      actionsHtml = `
-          <div>
+      // Shown NEXT TO the retained history chip, never instead of it: hiding
+      // that a segment was contested would trade one honesty hole for another.
+      actionsHtml += `
+          <div${latestEdit ? ' style="margin-top: 0.25rem;"' : ''}>
             <span class="edit-status accepted" title="${escapeHtml(UI.acceptance.chipTitle(acceptance.accepted_by_username, acceptance.accepted_at))}">${UI.acceptance.chip}</span>
           </div>
           ${
@@ -869,18 +890,30 @@
               ? `<button class="btn btn-sm btn-secondary" onclick="revokeAcceptance(${acceptance.id})" style="margin-top: 0.25rem;">&#8617; ${UI.acceptance.revokeButton}</button>`
               : ''
           }
-          <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')" style="margin-top: 0.25rem;">
-            Breyta
-          </button>
         `;
-    } else {
-      actionsHtml = `
-          ${
-            seg.hasTranslation
-              ? `<button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}')" title="${UI.acceptance.acceptTooltip}">&#10003; ${UI.acceptance.acceptButton}</button>`
-              : ''
-          }
-          <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')"${seg.hasTranslation ? ' style="margin-top: 0.25rem;"' : ''}>
+    } else if (!blockReason) {
+      // Contested rows get their reason ON SCREEN — a title= tooltip is
+      // invisible on a keyboard or touch pass, and this is an attestation.
+      const contestedHint =
+        latestEdit && latestEdit.status === 'rejected'
+          ? `<div class="accept-context-hint">${UI.acceptance.contestedRejected}</div>`
+          : latestEdit && latestEdit.status === 'superseded'
+            ? `<div class="accept-context-hint">${UI.acceptance.contestedSuperseded}</div>`
+            : '';
+      actionsHtml += `
+          ${contestedHint}
+          <button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}')"${stacked} title="${UI.acceptance.acceptTooltip}">&#10003; ${UI.acceptance.acceptButton}</button>
+        `;
+    } else if (blockReason === 'DISCUSS_OPEN') {
+      actionsHtml += `<div class="accept-context-hint"${stacked}>${UI.acceptance.discussBlocked}</div>`;
+    }
+
+    // The edit branch renders its own (conditional, sometimes "Breyta aftur")
+    // edit button; rows without history still need the plain one.
+    if (!latestEdit) {
+      const precededByAcceptanceUi = !!acceptance || !blockReason;
+      actionsHtml += `
+          <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')"${precededByAcceptanceUi ? ' style="margin-top: 0.25rem;"' : ''}>
             Breyta
           </button>
         `;
@@ -949,21 +982,51 @@
   // MT ACCEPTANCE ("Staðfesta vélþýðingu", item 20b)
   // ================================================================
 
-  /** Unhandled = has a translation but no edit and no acceptance. */
-  function isUnhandled(seg) {
+  /** Shape the shared eligibility predicate expects, from editor state. */
+  function eligibilityView(seg) {
+    return {
+      hasTranslation: seg.hasTranslation,
+      is: seg.is,
+      edits: moduleData.edits[seg.segmentId] || [],
+    };
+  }
+
+  /**
+   * The unreviewed backlog — what the Óyfirfarnir facet lists.
+   *
+   * Everything still awaiting attestation, INCLUDING contested rows (a
+   * rejected or withdrawn edit leaves the MT standing and unreviewed).
+   */
+  function isUnreviewedBacklog(seg) {
+    if (moduleData.acceptances?.[seg.segmentId]) return false;
+    return acceptEligibility.canAcceptMt(eligibilityView(seg));
+  }
+
+  /**
+   * The Ctrl+Shift+Enter rapid-accept stream — virgin MT rows only.
+   *
+   * Deliberately NARROWER than accept-eligibility (MTA-R3). A row carrying a
+   * head editor's rejection may be attested, but with a deliberate click and
+   * its history on screen. The keyboard flow is a motor rhythm — read, press,
+   * read, press — built for rows whose only judgment is "is this sentence
+   * fine"; sweeping contested rows into it is exactly where blind attestation
+   * happens. The facet above intentionally disagrees, and says so in the
+   * exhausted-stream toast.
+   */
+  function isKeyboardAcceptTarget(seg) {
     return (
-      seg.hasTranslation &&
       !(moduleData.edits[seg.segmentId] || []).length &&
-      !moduleData.acceptances?.[seg.segmentId]
+      !moduleData.acceptances?.[seg.segmentId] &&
+      acceptEligibility.canAcceptMt(eligibilityView(seg))
     );
   }
 
-  /** Next unhandled segment AFTER the given one (document order), or null. */
+  /** Next keyboard-acceptable segment AFTER the given one (document order). */
   function nextUnhandledAfter(segmentId) {
     const segs = moduleData?.segments || [];
     const start = segs.findIndex((s) => s.segmentId === segmentId);
     for (let i = start + 1; i < segs.length; i++) {
-      if (isUnhandled(segs[i])) return segs[i].segmentId;
+      if (isKeyboardAcceptTarget(segs[i])) return segs[i].segmentId;
     }
     return null;
   }
@@ -1030,13 +1093,19 @@
   function acceptAtCursor() {
     if (!moduleData?.segments) return;
     const cur = cursorSegmentId && moduleData.segments.find((s) => s.segmentId === cursorSegmentId);
-    if (cur && isUnhandled(cur)) {
+    if (cur && isKeyboardAcceptTarget(cur)) {
       acceptSegmentAndAdvance(cur.segmentId);
       return;
     }
-    const first = moduleData.segments.find(isUnhandled);
+    const first = moduleData.segments.find(isKeyboardAcceptTarget);
     if (!first) {
-      saveRetry.showToast(UI.acceptance.noneLeft, 'info');
+      // The keyboard stream skips contested rows on purpose, so "none left"
+      // must not imply the module is done while accept buttons remain (MTA-R3).
+      const contested = moduleData.segments.filter(isUnreviewedBacklog).length;
+      saveRetry.showToast(
+        contested ? UI.acceptance.noneLeftContested(contested) : UI.acceptance.noneLeft,
+        'info'
+      );
       return;
     }
     cursorSegmentId = first.segmentId;
