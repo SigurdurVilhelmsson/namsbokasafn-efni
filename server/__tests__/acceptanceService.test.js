@@ -238,6 +238,33 @@ describe('acceptSegment', () => {
     expectCode(() => accept('m00001:para:fs-id001', 'Breytt og birt.'), 'HUMAN_CONTENT');
   });
 
+  it('409 HUMAN_CONTENT when the published text differs from the baseline only by normalization', () => {
+    // applyApprovedEdits writes edited_content VERBATIM into the faithful
+    // file; loadModuleForEditing then normalizes what it reads back
+    // (normalizeWraps → unescapeMtMarkers → normalizeTermMarkers). Comparing
+    // the raw stored bytes to that normalized view fails OPEN — exactly the
+    // provenance hole this guard exists to close. Deliberately NOT in the
+    // shared parity table: the client predicate cannot normalize (no
+    // mt-normalize in the browser), so here it is knowingly the more lenient
+    // of the two — which only ever costs a 409, never a bad attestation.
+    mkdirSync(join(booksDir, BOOK, '03-faithful-translation', 'ch01'), { recursive: true });
+    writeFileSync(
+      join(booksDir, BOOK, '03-faithful-translation', 'ch01', `${MODULE}-segments.is.md`),
+      '<!-- SEG:m00001:para:fs-id001 -->\nBreytt og\nbirt.',
+      'utf-8'
+    );
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at, applied_at)
+       VALUES (?, 1, ?, 'm00001:para:fs-id001', 'x', 'Breytt og' || char(10) || 'birt.',
+               'u2', 'editor2', 'approved', '2026-07-19 10:00:00', '2026-07-19 10:05:00')`
+    ).run(BOOK, MODULE);
+    // seg.is is the wrap-normalized 'Breytt og birt.'; the stored bytes hold
+    // the newline, so a raw byte comparison would let this through.
+    expectCode(() => accept('m00001:para:fs-id001', 'Breytt og birt.'), 'HUMAN_CONTENT');
+  });
+
   it('a published edit whose text is NOT the baseline still accepts (restore edge)', () => {
     // Content was restored past the applied edit, so the current bytes are MT
     // again — the acceptance is honest. Guards the MTA-R4 restore edge against

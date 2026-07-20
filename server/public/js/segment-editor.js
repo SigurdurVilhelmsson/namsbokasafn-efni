@@ -870,11 +870,10 @@
     // edit and an acceptance showed neither: an attestation the editor could
     // enter but never see or undo. Eligibility comes from the shared predicate
     // that mirrors the server guard, never from ad-hoc conditions here.
-    const blockReason = acceptEligibility.acceptBlockReason({
-      hasTranslation: seg.hasTranslation,
-      is: seg.is,
-      edits,
-    });
+    // Via the SAME adapter the facet and keyboard stream use. Building the
+    // predicate's input twice is how two gates drift apart — which is MTA-R3
+    // itself; the shared scenario table cannot see an adapter, only the rule.
+    const blockReason = acceptEligibility.acceptBlockReason(eligibilityView(seg));
     const stacked = latestEdit ? ' style="margin-top: 0.25rem;"' : '';
 
     if (acceptance) {

@@ -95,6 +95,22 @@ test.describe('MT acceptance', () => {
 
     // THE FIX: contested, but the MT still stands and may be attested.
     await expect(row.locator('.btn-accept')).toBeVisible();
+
+    // The reason is ON SCREEN, not in a title= tooltip (the whole argument for
+    // widening the gate at all — an editor must see that a colleague contested
+    // this text before attesting it).
+    await expect(row.locator('.accept-context-hint')).toHaveText(
+      'Breytingu var hafnað — vélþýðingin stendur óbreytt.'
+    );
+
+    // The branch's headline SAFETY property: the Ctrl+Shift+Enter stream is
+    // deliberately narrower than the accept gate, so rapid-fire attestation can
+    // never sweep a head editor's rejection. The cursor must skip this row even
+    // though it now carries an accept button.
+    await page.keyboard.press('Control+Shift+Enter');
+    await expect(page.locator('#segments-body tr.kbd-cursor')).toHaveCount(1);
+    await expect(row).not.toHaveClass(/kbd-cursor/);
+
     await row.locator('.btn-accept').click();
 
     // Compound chip — acceptance NEXT TO the retained history, not instead of it.
@@ -107,18 +123,30 @@ test.describe('MT acceptance', () => {
     await revoke.click();
     await expect.poll(() => row.locator('.btn-accept').count(), { timeout: 10000 }).toBe(1);
 
-    // Best-effort: drop the edit so the shared fixture module is unchanged
-    // (same known editor_id caveat as editor-lifecycle's teardown).
+    // Cleanup, ASSERTED — a silent teardown failure leaves a permanent rejected
+    // edit on this shared fixture module and makes every other spec's view of
+    // its early rows order-dependent. deleteSegmentEdit refuses anything but a
+    // pending edit, so the rejected row must be reopened first.
+    await row.locator('button:has-text("Opna aftur")').click();
+    await expect(row.locator('.edit-status.pending')).toBeVisible({ timeout: 10000 });
+
     const data = await (
       await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}/${MODULE}`)
     ).json();
     for (const list of Object.values(data.edits || {})) {
       for (const e of list) {
         if (typeof e.edited_content === 'string' && e.edited_content.endsWith(' MTA-R3.')) {
-          await page.request.delete(`/api/segment-editor/edit/${e.id}`);
+          const res = await page.request.delete(`/api/segment-editor/edit/${e.id}`);
+          expect(res.status(), 'teardown DELETE must succeed').toBe(200);
         }
       }
     }
+
+    // The row is virgin again: no history chip, accept offered.
+    await page.reload();
+    await expect(page.locator('#editor-container')).toBeVisible({ timeout: 15000 });
+    await expect(row.locator('.edit-status')).toHaveCount(0);
+    await expect(row.locator('.btn-accept')).toBeVisible();
   });
 
   test('revoke returns the segments to unhandled (cleanup)', async ({ page }) => {

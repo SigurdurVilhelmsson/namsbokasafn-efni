@@ -104,7 +104,12 @@ const UI = {
       return (
         'Engir ósnertir bútar eftir — ' +
         n +
-        (n === 1 ? ' bútur með fyrri breytingu bíður' : ' bútar með fyrri breytingu bíða') +
+        // Icelandic number agreement follows the LAST digit: 21/31/101 take the
+        // singular, 11 takes the plural. Noun and verb are both in the switched
+        // fragment, so the whole clause agrees together.
+        (n % 10 === 1 && n % 100 !== 11
+          ? ' bútur með fyrri breytingu bíður'
+          : ' bútar með fyrri breytingu bíða') +
         ' staðfestingar. Smelltu á „Staðfesta MT" í þeim röðum.'
       );
     },
