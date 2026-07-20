@@ -631,30 +631,34 @@ describe('serializers', () => {
     expect(jsonl.endsWith('\n')).toBe(true);
   });
 
-  it('toTsv emits the byte-literal 11-column header and sanitizes tabs/newlines', () => {
+  it('toTsv emits the byte-literal 12-column header and sanitizes tabs/newlines', () => {
     const tsv = toTsv([row]);
-    const lines = tsv.trimEnd().split('\n');
+    // No trimEnd(): reviewStatus is now the LAST column and is empty here (null);
+    // trimEnd() strips trailing tab whitespace and would eat that empty field
+    // before the split, collapsing 12 fields to 11. split('\n')[1] is the row;
+    // toTsv's single real trailing '\n' becomes a harmless final '' element.
+    const lines = tsv.split('\n');
     expect(lines[0]).toBe(
-      'id\tbook\tchapter\tmodule\ttype\tlicence\ten_clean\tmt_clean\tfaithful_clean\tlocalized_clean\tpostEdited'
+      'id\tbook\tchapter\tmodule\ttype\tlicence\ten_clean\tmt_clean\tfaithful_clean\tlocalized_clean\tpostEdited\treviewStatus'
     );
     const fields = lines[1].split('\t');
-    expect(fields).toHaveLength(11);
-    // en clean had a tab; the raw text's tab/newline must not split columns
+    expect(fields).toHaveLength(12);
     expect(fields[TSV_COLUMNS.indexOf('en_clean')]).toBe('A B C.');
     expect(fields[TSV_COLUMNS.indexOf('localized_clean')]).toBe('');
     expect(fields[TSV_COLUMNS.indexOf('postEdited')]).toBe('true');
+    expect(fields[TSV_COLUMNS.indexOf('reviewStatus')]).toBe(''); // row has no status → null → ''
   });
 
   it('exports TSV_SPEC as the single source TSV_COLUMNS derives from (I20-R6)', () => {
     expect(TSV_SPEC.map((c) => c.column)).toEqual(TSV_COLUMNS);
-    expect(TSV_SPEC).toHaveLength(11);
+    expect(TSV_SPEC).toHaveLength(12);
     for (const entry of TSV_SPEC) {
       expect(typeof entry.get).toBe('function');
     }
   });
 
   it('maps every column to its value at the right index (I20-R6: no silent field swap)', () => {
-    const fields = toTsv([row]).trimEnd().split('\n')[1].split('\t');
+    const fields = toTsv([row]).split('\n')[1].split('\t');
     expect(fields[0]).toBe('m1:para:p1'); // id
     expect(fields[1]).toBe('efnafraedi-2e'); // book
     expect(fields[2]).toBe('1'); // chapter
@@ -666,6 +670,24 @@ describe('serializers', () => {
     expect(fields[8]).toBe('Vatnið.'); // faithful_clean
     expect(fields[9]).toBe(''); // localized_clean (null tier)
     expect(fields[10]).toBe('true'); // postEdited
+    expect(fields[11]).toBe(''); // reviewStatus (null → '')
+  });
+
+  it('serializes a non-null reviewStatus into the last column', () => {
+    const r = buildRow({
+      id: 'm1:para:p1',
+      book: 'efnafraedi-2e',
+      chapter: '1',
+      module: 'm1',
+      licence: 'CC BY 4.0',
+      en: 'Water.',
+      mt: 'Vatn.',
+      faithful: 'Vatn.',
+      localized: null,
+      reviewStatus: 'accepted',
+    });
+    const fields = toTsv([r]).split('\n')[1].split('\t');
+    expect(fields[TSV_COLUMNS.indexOf('reviewStatus')]).toBe('accepted');
   });
 
   it('serializes postEdited true/false/null through the bare accessor (ternary removal safe)', () => {
@@ -701,7 +723,9 @@ describe('serializers', () => {
       'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
       '[[MATH:N]]/[[MEDIA:n]] placeholders retained, resolve via 02-structure sidecars; [[BR]]/[[SPACE]] formatting placeholders also retained and are NOT sidecar-resolvable',
       `EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
-      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; per-segment review status lives only in the production DB (segment_edits)',
+      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; the per-segment record is the reviewStatus field (note 5)',
+      'reviewStatus reflects the last apply, faithful-restore, or acceptance-revoke for the module — not live DB state, and not necessarily the current file bytes (a hand-edit to 03-faithful-translation/ does not regenerate the sidecar); null means unknown (no sidecar, no faithful tier, or a segment the sidecar does not list), never "unreviewed"',
     ]);
+    expect(manifest.toolVersion).toBe('1.1');
   });
 });

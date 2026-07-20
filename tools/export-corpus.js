@@ -27,7 +27,7 @@ import { getBookLicence } from './lib/book-licences.cjs';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
 
 const TOOL_NAME = 'export-corpus.js';
-const TOOL_VERSION = '1.0';
+const TOOL_VERSION = '1.1';
 
 let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books');
 
@@ -377,6 +377,7 @@ const TSV_SPEC = [
   { column: 'faithful_clean', get: (r) => (r.faithful ? r.faithful.clean : '') },
   { column: 'localized_clean', get: (r) => (r.localized ? r.localized.clean : '') },
   { column: 'postEdited', get: (r) => r.postEdited },
+  { column: 'reviewStatus', get: (r) => r.reviewStatus },
 ];
 
 const TSV_COLUMNS = TSV_SPEC.map((c) => c.column);
@@ -419,7 +420,8 @@ function buildManifest(p) {
       'single-char legacy markers (*…*, ~…~, ^…^, __…__) retained in clean text (TM ambiguity rationale)',
       '[[MATH:N]]/[[MEDIA:n]] placeholders retained, resolve via 02-structure sidecars; [[BR]]/[[SPACE]] formatting placeholders also retained and are NOT sidecar-resolvable',
       `EN tier is the current extraction; for modules MT’d before a re-extraction the exact bytes sent to MT may differ (dialect drift, e.g. m68664)`,
-      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; per-segment review status lives only in the production DB (segment_edits)',
+      'faithful-tier presence and postEdited=false do not imply per-segment human review — apply rebuilds whole-module files, carrying unreviewed segments through as the normalized MT view; the per-segment record is the reviewStatus field (note 5)',
+      'reviewStatus reflects the last apply, faithful-restore, or acceptance-revoke for the module — not live DB state, and not necessarily the current file bytes (a hand-edit to 03-faithful-translation/ does not regenerate the sidecar); null means unknown (no sidecar, no faithful tier, or a segment the sidecar does not list), never "unreviewed"',
     ],
   };
 }
@@ -509,12 +511,26 @@ function main() {
     `Tiers present:      mt=${stats.tiers.mt} faithful=${stats.tiers.faithful} localized=${stats.tiers.localized}`
   );
   console.log(`postEdited:         true=${stats.postEditedTrue} false=${stats.postEditedFalse}`);
+  const rs = stats.reviewStatus;
+  console.log(
+    `reviewStatus:       edited=${rs.edited} accepted=${rs.accepted} carryover=${rs.carryover} null=${rs.null}`
+  );
   if (stats.tiers.faithful > 0)
     console.log('  (faithful presence != per-segment review — see manifest notes)');
   if (stats.duplicateIds) console.log(`  duplicate seg-ids (first-wins): ${stats.duplicateIds}`);
   if (stats.orphanIs) console.log(`  orphan IS seg-ids (no EN):      ${stats.orphanIs}`);
   if (stats.emptyClean) console.log(`  tier texts empty after strip:   ${stats.emptyClean}`);
   if (stats.filesSkipped) console.log(`  files skipped (see manifest):   ${stats.filesSkipped}`);
+  if (stats.sidecarsRead) console.log(`  review-status sidecars read:    ${stats.sidecarsRead}`);
+  if (stats.sidecarsMalformed)
+    console.log(`  review-status sidecars bad:     ${stats.sidecarsMalformed}`);
+  if (stats.sidecarSegMissing)
+    console.log(`  sidecar seg-id absent (drift):  ${stats.sidecarSegMissing}`);
+  const rsUnexpected = Object.keys(rs).filter(
+    (k) => !['edited', 'accepted', 'carryover', 'null'].includes(k)
+  );
+  if (rsUnexpected.length)
+    console.log(`  unexpected reviewStatus values: ${rsUnexpected.join(', ')}`);
 
   if (rows.length === 0) {
     console.error('\nNo corpus rows produced. Is there extracted content in 02-for-mt/?');
