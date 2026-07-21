@@ -137,11 +137,13 @@ describe('GET /api/tm/export', () => {
     expect(out.status).toBe(404);
   });
 
-  it('500s a VALID_BOOKS book that has no book-licences.cjs row (final-review #1)', async () => {
+  it('500s a VALID_BOOKS book with no licence in its book-config.json (final-review #1)', async () => {
     // getBookLicence() fail-loud is deliberate (lead's policy); this pins
     // that the route's catch block turns the throw into a 500 rather than
-    // an uncaught exception. UNLICENSED must never be added to
-    // tools/lib/book-licences.cjs — that's the point of this fixture.
+    // an uncaught exception. UNLICENSED must never gain a real
+    // books/unlicensed-fixture-x/book-config.json (with or without a
+    // licence block) — that's the point of this fixture (item 17: the
+    // canonical licence datum is book-config.json, not an inline map).
     const UNLICENSED = 'unlicensed-fixture-x';
     const en = path.join(work, 'books', UNLICENSED, '02-for-mt', 'ch01');
     const is = path.join(work, 'books', UNLICENSED, '03-faithful-translation', 'ch01');
@@ -160,7 +162,7 @@ describe('GET /api/tm/export', () => {
       expect(out.body).toMatchObject({ error: 'TM export failed' });
       // Pins that the 500 came from getBookLicence's fail-loud throw
       // specifically, not from an incidental generateTm failure.
-      expect(out.body.message).toMatch(/No licence recorded|book-licences\.cjs/);
+      expect(out.body.message).toMatch(/licence/i);
     } finally {
       const idx = VALID_BOOKS.indexOf(UNLICENSED);
       if (idx !== -1) VALID_BOOKS.splice(idx, 1);
