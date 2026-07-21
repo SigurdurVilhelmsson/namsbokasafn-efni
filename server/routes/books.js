@@ -25,6 +25,7 @@ const {
 const chapterFilesService = require('../services/chapterFilesService');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
+const { normalizeChapter } = require('../lib/chapterLabel');
 
 // Configure multer for file uploads
 const uploadDir = path.join(__dirname, '..', '..', 'pipeline-output', 'uploads');
@@ -483,12 +484,17 @@ router.get(
   requireBookAccess(),
   (req, res) => {
     const { book, chapter } = req.params;
-    const chapterNum = parseInt(chapter, 10);
-    if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
+    const chapterNum = normalizeChapter(chapter);
+    if (chapterNum === null || chapterNum === 0 || chapterNum < -1 || chapterNum > 99) {
       return res.status(400).json({ error: 'Ógilt kaflanúmer' });
     }
-    const paddedChapter = String(chapterNum).padStart(2, '0');
-    const faithfulDir = path.join(booksDir, book, '03-faithful-translation', `ch${paddedChapter}`);
+    const paddedChapter = chapterNum === -1 ? 'appendices' : String(chapterNum).padStart(2, '0');
+    const faithfulDir = path.join(
+      booksDir,
+      book,
+      '03-faithful-translation',
+      paddedChapter === 'appendices' ? 'appendices' : `ch${paddedChapter}`
+    );
 
     let count = 0;
     const modules = [];
