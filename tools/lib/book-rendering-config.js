@@ -83,7 +83,8 @@ function readBookConfigFile(bookSlug) {
  */
 // Keys the loader handles specially: `domain` belongs to bookToDomain (not
 // render config); the other three are SHARED-merged below. Everything else in
-// the file passes through losslessly (e.g. organic's `sectionExercises`).
+// the file passes through losslessly (e.g. organic's `sectionExercises`) —
+// EXCEPT the NON_RENDER_KEYS below.
 const SHARED_BACKED_KEYS = new Set([
   'domain',
   'noteTypeLabels',
@@ -91,10 +92,17 @@ const SHARED_BACKED_KEYS = new Set([
   'endOfChapterSections',
 ]);
 
+// Book-config keys that are NOT render concerns and must not enter the render
+// config: `licence` is export/provenance metadata read by
+// tools/lib/book-licences.cjs getBookLicence for export stamping; vefur (not
+// efni) owns the per-page licence footer. Keeping it out stops export metadata
+// leaking into rendered output. (Item 17, 2026-07-21.)
+const NON_RENDER_KEYS = new Set(['licence']);
+
 function mergeWithShared(file) {
   const f = file || {};
   const passthrough = Object.fromEntries(
-    Object.entries(f).filter(([k]) => !SHARED_BACKED_KEYS.has(k))
+    Object.entries(f).filter(([k]) => !SHARED_BACKED_KEYS.has(k) && !NON_RENDER_KEYS.has(k))
   );
   return {
     excludedSectionClasses: ['summary'],

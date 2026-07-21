@@ -1,4 +1,5 @@
 {
+  "licence": { "code": "CC BY-NC-SA 4.0", "obtained": "2026-03-23" },
   "domain": "chemistry",
   "excludedSectionClasses": [
     "summary",

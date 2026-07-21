@@ -1,44 +1,59 @@
 /**
  * book-licences.cjs — per-book licence for export tools.
  *
- * Transcribed from docs/provenance/openstax-cnxml-licence-provenance.md §1
- * (the authoritative record; Physics resolved CC BY-NC-SA by user decision
- * 2026-06-24). Campaign item 17 will move licence metadata into book-config;
- * until then this file is the single swap point.
+ * Item 17 (2026-07-21): book-config.json is now the CANONICAL licence datum.
+ * getBookLicence reads books/<slug>/book-config.json's `licence` block; there
+ * is no inline map. Source of truth for the values:
+ * docs/provenance/openstax-cnxml-licence-provenance.md §1.
  *
- * getBookLicence THROWS on an unknown slug: a new book enters the export
- * corpus deliberately, licence-first — add its row here after checking the
- * provenance doc.
+ * getBookLicence THROWS when a book has no licence — a book enters the export
+ * path deliberately, licence-first: add a `"licence": { "code", "obtained" }`
+ * block to its book-config after checking the provenance doc. (stjornufraedi /
+ * testbook carry none and therefore throw, unchanged.)
  */
+'use strict';
 
-const BOOK_LICENCES = {
-  'efnafraedi-2e': { licence: 'CC BY 4.0', obtained: '2026-01-19' },
-  'liffraedi-2e': { licence: 'CC BY 4.0', obtained: '2026-03-11' },
-  orverufraedi: { licence: 'CC BY 4.0', obtained: '2026-03-09' },
-  'edlisfraedi-2e': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
-  'lifraen-efnafraedi': { licence: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' },
-  // TEST FIXTURE — NOT a real-book provenance claim. `__e2e-fixture__` is the
-  // committed E2E/apply-flow fixture book (see provenance doc §4 footnote);
-  // it has faithful content, so its `scheduleTmRegen` calls would otherwise
-  // fail-loud silently (fire-and-forget cron, warn-only) on every apply. A
-  // placeholder entry is here purely so the fixture's TM regen doesn't go
-  // stale; it says nothing about any real book's licence.
-  '__e2e-fixture__': { licence: 'CC BY 4.0', obtained: '2026-01-01' },
-};
+const fs = require('fs');
+const path = require('path');
+
+// Books root: intrinsic (__dirname), never process.cwd() — the server runs cwd=server/.
+// tools/lib/../../books == repo-root/books.
+const REPO_ROOT = path.join(__dirname, '..', '..');
 
 /**
  * @param {string} slug
  * @returns {{licence: string, obtained: string}}
  */
 function getBookLicence(slug) {
-  const entry = BOOK_LICENCES[slug];
-  if (!entry) {
+  const configPath = path.join(REPO_ROOT, 'books', slug, 'book-config.json');
+  let raw;
+  try {
+    raw = fs.readFileSync(configPath, 'utf-8');
+  } catch {
     throw new Error(
-      `No licence recorded for book "${slug}" — add it to tools/lib/book-licences.cjs ` +
-        'after checking docs/provenance/openstax-cnxml-licence-provenance.md'
+      `No book-config.json for book "${slug}" (${configPath}) — cannot resolve its licence. ` +
+        'Onboard licence-first; see docs/provenance/openstax-cnxml-licence-provenance.md'
     );
   }
-  return entry;
+  let cfg;
+  try {
+    cfg = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(
+      `Malformed book-config.json for book "${slug}" (${configPath}): ${err.message} — ` +
+        'cannot resolve its licence.'
+    );
+  }
+  const code = cfg.licence && cfg.licence.code;
+  const obtained = cfg.licence && cfg.licence.obtained;
+  if (!code || !obtained) {
+    throw new Error(
+      `No licence recorded for book "${slug}" in ${configPath} — add a ` +
+        '`"licence": { "code": …, "obtained": … }` block after checking ' +
+        'docs/provenance/openstax-cnxml-licence-provenance.md'
+    );
+  }
+  return { licence: code, obtained };
 }
 
-module.exports = { BOOK_LICENCES, getBookLicence };
+module.exports = { getBookLicence };

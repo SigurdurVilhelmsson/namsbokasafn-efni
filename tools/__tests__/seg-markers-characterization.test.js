@@ -67,7 +67,16 @@ function allSegmentFiles() {
   };
   for (const b of fs.readdirSync(path.join(REPO, 'books'))) {
     const bd = path.join(REPO, 'books', b);
-    if (!fs.statSync(bd).isDirectory()) continue;
+    // Tolerate an entry that vanished between readdir and statSync — a parallel
+    // test worker may create+remove a transient books/<slug> dir (e.g. the
+    // getBookLicence behavioral probe). Mirrors walk()'s existsSync guard above.
+    let bdIsDir;
+    try {
+      bdIsDir = fs.statSync(bd).isDirectory();
+    } catch {
+      continue;
+    }
+    if (!bdIsDir) continue;
     for (const sub of ['02-for-mt', '02-mt-output', '03-faithful-translation'])
       walk(path.join(bd, sub));
   }

@@ -30,4 +30,13 @@ describe('book-config.json loader merge semantics', () => {
   it('throws for a book with no config file (fail-loud)', () => {
     expect(() => getBookRenderConfig('no-such-book-xyz')).toThrow(/no-such-book-xyz/);
   });
+
+  it('excludes the non-render `licence` key from the render config (item 17)', () => {
+    // licence is export/provenance metadata (getBookLicence) and vefur owns the
+    // footer — it must NOT leak into efni's render config. Target a LICENSED
+    // book (efnafraedi-2e carries a licence block); stjornufraedi would pass
+    // this vacuously.
+    const cfg = getBookRenderConfig('efnafraedi-2e');
+    expect('licence' in cfg).toBe(false);
+  });
 });

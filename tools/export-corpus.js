@@ -471,7 +471,7 @@ Usage:
   node tools/export-corpus.js --book <book> [--chapter N] [--out <dir>] [--dry-run]
 
 Options:
-  --book <slug>      Book slug (required; must have a licence in tools/lib/book-licences.cjs)
+  --book <slug>      Book slug (required; must have a licence block in its books/<slug>/book-config.json)
   --chapter <N>      Limit to one chapter (number or 'appendices'); default all
   --out, -o <dir>    Output directory (default: books/<book>/corpus/)
   --dry-run, -n      Report what would be written without writing
