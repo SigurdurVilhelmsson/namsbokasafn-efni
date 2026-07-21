@@ -22,6 +22,28 @@
 
 ---
 
+## Pre-Handoff Verifications (confirmed 2026-07-21 — do not re-litigate)
+
+- **All 7 `status.js` scan loops are disk-backed** (`fs.readdirSync(chapters/)`), not
+  DB-backed → appendices appear after the filter fix with **no R4/DB dependency**. Routes:
+  `/dashboard` (`:118`, loops `:148/:173`), `/analytics` (`:413`, loops `:472/:630/:716`),
+  `/meeting-agenda` (`:768`, loop `:832`), `/:book` (`:1083`, loop `:1101/:1111`),
+  `/:book/summary` (`:1150`, loop `:1167/:1175`).
+- **No non-standard `chapters/` dirs exist** in any book (only `chNN` + `appendices`), so
+  `chapterFromDir`'s stricter `/^ch\d{1,2}$/` excludes nothing the old `startsWith('ch')`
+  admitted. Safe.
+- **No test pins the old validator error strings** (`"between 1 and 99"`, `"must be a
+  positive number"`, etc.), so the message changes in Tasks 5–7 will not surprise-red the
+  suite.
+- **Editors can ALREADY reach appendix segments** — `segmentParser.listChapters` already
+  pushes `-1` when the `02-for-mt/appendices` dir exists (comment `// O6`), and the load
+  path (`validateBookChapter`) already accepts `-1`. So PR-1 is **not** "enable appendix
+  editing" (that works); it makes the **status/dashboard/publication/validate read-path
+  consistent** with the editing path that already exists. DB-registry surfaces
+  (`books.html` sections, loc-editor, suggestions) still need PR-2/R4.
+
+---
+
 ## File Structure
 
 - **Modify** `server/lib/chapterLabel.js` — add `chapterFromDir(dir) → number|null` and `compareChapters(a,b)` (appendices last). *(Task 1)*
@@ -186,33 +208,38 @@ function invoke(h, req) {
   return Promise.resolve(h(req, res)).then(() => done);
 }
 
-let dashboardHandler;
+let bookStatusHandler;
 beforeAll(() => {
   require('../services/migrationRunner').runAllMigrations();
   const router = require('../routes/status');
-  // The dashboard route: GET '/' (per-book chapter breakdown). Confirm the
-  // exact path during execution by inspecting router.stack; adjust the finder.
+  // Representative route: GET /:book (status.js:1083) — disk-scans chapters/ at
+  // :1099-1111 and returns { book, totalChapters, summary, chapters:[{chapter,
+  // chapterDir,...}] }. Handler does NOT reference req.user. (VERIFIED shape.)
   const layer = router.stack.find(
-    (l) => l.route && l.route.path === '/' && l.route.methods.get
+    (l) => l.route && l.route.path === '/:book' && l.route.methods.get
   );
-  dashboardHandler = layer.route.stack[layer.route.stack.length - 1].handle;
+  bookStatusHandler = layer.route.stack[layer.route.stack.length - 1].handle;
 });
 
-describe('status.js dashboard scan includes appendices', () => {
+describe('status.js /:book scan includes appendices', () => {
   it('lists the appendices chapter (-1) for efnafraedi-2e, sorted last', async () => {
-    const r = await invoke(dashboardHandler, { params: {}, query: {} });
+    const r = await invoke(bookStatusHandler, { params: { book: 'efnafraedi-2e' } });
     expect(r.status).toBe(200);
-    const book = r.body.books.find((b) => b.book === 'efnafraedi-2e');
-    expect(book).toBeDefined();
-    const chapters = book.chapters.map((c) => c.chapter);
+    const chapters = r.body.chapters.map((c) => c.chapter);
     expect(chapters).toContain(-1);
     expect(chapters[chapters.length - 1]).toBe(-1); // appendices sorted last
     expect(chapters).not.toContain(NaN);
+    expect(r.body.chapters.find((c) => c.chapter === -1).chapterDir).toBe('appendices');
   });
 });
 ```
 
-> **Execution note:** the exact dashboard route path and response shape (`r.body.books[].chapters[]`) must be confirmed against `status.js` when implementing — inspect `router.stack` and the handler's response object, and adjust the finder + assertions to the real shape. Do NOT invent a shape; pin the one the handler actually returns (the statusChapterRoute.test.js honesty note is the precedent).
+> `GET /:book` is the representative test surface (simplest assertable per-chapter
+> array). The **same mechanical fix** applies to the other disk-scan loops —
+> `/dashboard` (`:148/:173`), `/analytics` (`:472/:630/:716`), `/meeting-agenda`
+> (`:832`), `/:book/summary` (`:1175`) — which are identical `chapterFromDir`
+> swaps; they need no separate integration test because Task 1 unit-tests the
+> helper exhaustively and these loops are byte-identical transforms.
 
 - [ ] **Step 2: Run test to verify it fails**
 
@@ -699,7 +726,12 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 
 - [ ] **Step 6: Whole-branch adversarial review + PR**
 
-Per the campaign's per-item flow, run a whole-branch adversarial review (the item-17/-21 pattern) before opening the PR. Then push and open the PR titled `fix: appendices read-path adoption (C1a — I14-R2/R3)`, body noting the PR-1/PR-2 split and that this is **merge-safe but deploy-gated by A4 (mid-QA)**.
+Per the campaign's per-item flow, run a whole-branch adversarial review (the item-17/-21 pattern) before opening the PR. Then push and open the PR titled `fix: appendices read-path adoption (C1a — I14-R2/R3)`. The body MUST state precisely, to avoid over-claiming:
+
+- **What this delivers:** the status/dashboard/`/sections`/publication-API/`npm run validate` read-path is now appendix-aware — appendices stop being invisible in progress reporting and can be checked for publication readiness.
+- **What already worked (not this PR):** editors can already open and edit appendix segments (`listChapters` + `validateBookChapter`, item-14).
+- **What still needs PR-2 (R4/backfill):** the DB-registry surfaces (`books.html` sections, loc-editor, term suggestions) will not show appendices until `registerBook` populates appendix rows and a prod backfill runs.
+- **Deploy posture:** merge-safe (no data/on-disk change); **deploy-gated by A4 (do not deploy server units mid-QA)**.
 
 ---
 
