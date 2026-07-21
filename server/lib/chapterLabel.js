@@ -50,4 +50,32 @@ function cliChapterArg(chapter) {
   return chapter === -1 ? 'appendices' : String(chapter);
 }
 
-module.exports = { normalizeChapter, chapterDir, cliChapterArg };
+/**
+ * Chapter number for an on-disk chapter directory name, or null if the name is
+ * not a chapter dir. 'appendices' → -1 ; 'chNN' → N ; anything else → null.
+ * Replaces the fragile `parseInt(dir.replace('ch',''), 10)` idiom (which
+ * NaN-maps 'appendices' and mis-parses non-ch dirs).
+ * @param {string} dir
+ * @returns {number|null}
+ */
+function chapterFromDir(dir) {
+  if (dir === 'appendices') return -1;
+  const m = /^ch(\d{1,2})$/.exec(dir);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+/**
+ * Sort comparator ordering numeric chapters ascending with the appendices
+ * chapter (-1) placed AFTER all non-negative chapters. Mirrors the ordering in
+ * tools/lib/update-translation-errors.js.
+ * @param {number} a
+ * @param {number} b
+ * @returns {number}
+ */
+function compareChapters(a, b) {
+  if (a === -1) return b === -1 ? 0 : 1;
+  if (b === -1) return -1;
+  return a - b;
+}
+
+module.exports = { normalizeChapter, chapterDir, cliChapterArg, chapterFromDir, compareChapters };
