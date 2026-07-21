@@ -19,6 +19,7 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
+const seed = require('../lib/arnastofnunSeed');
 const termMining = require('../services/termMiningService');
 const activityLog = require('../services/activityLog');
 
@@ -275,6 +276,43 @@ function csvEscapeField(str) {
   }
   return str;
 }
+
+/**
+ * GET /added-terms/export?format=csv|json&subject=&book=
+ * Árnastofnun submission seed: the project's approved, project-authored terms
+ * not already in Íðorðabankinn, each classified new-translation | new-alternative
+ * (item 21 PR-B). HEAD_EDITOR — relaying terms outward is a governance act.
+ * MUST stay before the parametric /:id route (shadowing hazard).
+ */
+router.get('/added-terms/export', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const { format = 'json', subject, book } = req.query;
+
+  if (format !== 'csv' && format !== 'json') {
+    return res
+      .status(400)
+      .json({ error: 'Invalid format', message: "format must be 'csv' or 'json'" });
+  }
+  if (subject && !terminology.SUBJECTS.includes(subject)) {
+    return res
+      .status(400)
+      .json({ error: 'Invalid subject', message: `Unknown subject: ${subject}` });
+  }
+
+  try {
+    const rows = terminology.getAddedTerms({ subject: subject || null, book: book || null });
+    if (format === 'csv') {
+      res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+      res.setHeader('Content-Disposition', 'attachment; filename="arnastofnun-added-terms.csv"');
+      return res.send(seed.serializeSeedCsv(rows));
+    }
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.setHeader('Content-Disposition', 'attachment; filename="arnastofnun-added-terms.json"');
+    return res.send(seed.serializeSeedJson(rows, { date: new Date() }));
+  } catch (err) {
+    log.error({ err }, 'Added-terms export failed');
+    return res.status(500).json({ error: 'Failed to export added terms', message: err.message });
+  }
+});
 
 // ─── Term-decision mining (Unit 3.5, head-editor) ─────────────────────
 // NOTE: these MUST be registered before the parametric `/:id` routes below,

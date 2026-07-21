@@ -931,6 +931,14 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Flytja inn
         </button>
+        <span id="added-terms-export" style="display: none;">
+          <button class="btn btn-sm btn-secondary" onclick="downloadAddedTerms('csv')" title="S&#230;kja vi&#240;b&#230;tt hugt&#246;k fyrir &#193;rnastofnun (CSV)">
+            Vi&#240;b&#230;tt hugt&#246;k (CSV)
+          </button>
+          <button class="btn btn-sm btn-secondary" onclick="downloadAddedTerms('json')" title="S&#230;kja vi&#240;b&#230;tt hugt&#246;k fyrir &#193;rnastofnun (JSON)">
+            JSON
+          </button>
+        </span>
       </div>
     </div>
 
@@ -1200,6 +1208,7 @@
       // Mined term-decision candidates are a head-editor tool.
       if (currentUser && ['admin', 'head-editor'].includes(currentUser.role)) {
         document.getElementById('mined-section').style.display = 'block';
+        document.getElementById('added-terms-export').style.display = 'inline';
         try { await loadMinedCandidates(); } catch (e) { console.error('Load mined candidates failed:', e); }
       }
 
@@ -2314,6 +2323,27 @@
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = 'glossary-export.' + format;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function downloadAddedTerms(format) {
+      const bookSlug = document.getElementById('filter-book')?.value || '';
+      const subject = document.getElementById('filter-subject').value;
+      const params = new URLSearchParams({ format: format });
+      if (subject) params.set('subject', subject);
+      else if (bookSlug) params.set('book', bookSlug);
+      const url = '/api/terminology/added-terms/export?' + params.toString();
+      try {
+        const res = await fetch(url, { credentials: 'include' });
+        if (!res.ok) throw new Error('Villa við útflutning viðbættra hugtaka');
+        const blob = await res.blob();
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'arnastofnun-added-terms.' + format;
         a.click();
         URL.revokeObjectURL(a.href);
       } catch (err) {
