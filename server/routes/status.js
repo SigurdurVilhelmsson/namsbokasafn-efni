@@ -145,12 +145,13 @@ router.get('/dashboard', requireAuth, async (req, res) => {
 
       const chapterDirs = fs
         .readdirSync(chaptersPath)
-        .filter((d) => d.startsWith('ch'))
-        .sort((a, b) => {
-          const aNum = parseInt(a.replace('ch', ''), 10);
-          const bNum = parseInt(b.replace('ch', ''), 10);
-          return aNum - bNum;
-        });
+        .filter((d) => chapterLabel.chapterFromDir(d) !== null)
+        .sort((a, b) =>
+          chapterLabel.compareChapters(
+            chapterLabel.chapterFromDir(a),
+            chapterLabel.chapterFromDir(b)
+          )
+        );
 
       dashboard.chapterMatrix[book] = {
         totalChapters: chapterDirs.length,
@@ -170,7 +171,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       }
 
       for (const chapterDir of chapterDirs) {
-        const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
+        const chapterNum = chapterLabel.chapterFromDir(chapterDir);
 
         const chapterData = {
           chapter: chapterNum,
@@ -469,16 +470,14 @@ router.get('/analytics', requireAuth, async (req, res) => {
 
       if (!fs.existsSync(chaptersPath)) continue;
 
-      const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
+      const chapterDirs = fs
+        .readdirSync(chaptersPath)
+        .filter((d) => chapterLabel.chapterFromDir(d) !== null);
 
       for (const chapterDir of chapterDirs) {
         // Count sections in this chapter
-        const faithfulPath = path.join(
-          bookPath,
-          '03-faithful-translation',
-          chapterDir.replace('ch', 'ch')
-        );
-        const mtOutputPath = path.join(bookPath, '02-mt-output', chapterDir.replace('ch', 'ch'));
+        const faithfulPath = path.join(bookPath, '03-faithful-translation', chapterDir);
+        const mtOutputPath = path.join(bookPath, '02-mt-output', chapterDir);
 
         // Estimate sections based on files (normalize split files to base sections)
         if (fs.existsSync(faithfulPath)) {
@@ -624,10 +623,12 @@ router.get('/analytics', requireAuth, async (req, res) => {
       const chaptersPath = path.join(PROJECT_ROOT, 'books', book, 'chapters');
       if (!fs.existsSync(chaptersPath)) continue;
 
-      const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
+      const chapterDirs = fs
+        .readdirSync(chaptersPath)
+        .filter((d) => chapterLabel.chapterFromDir(d) !== null);
 
       for (const chapterDir of chapterDirs) {
-        const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
+        const chapterNum = chapterLabel.chapterFromDir(chapterDir);
 
         try {
           const statusData = getStatusDataFromDb(book, chapterNum);
@@ -825,11 +826,16 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
 
       const chapterDirs = fs
         .readdirSync(chaptersPath)
-        .filter((d) => d.startsWith('ch'))
-        .sort();
+        .filter((d) => chapterLabel.chapterFromDir(d) !== null)
+        .sort((a, b) =>
+          chapterLabel.compareChapters(
+            chapterLabel.chapterFromDir(a),
+            chapterLabel.chapterFromDir(b)
+          )
+        );
 
       for (const chDir of chapterDirs) {
-        const chapterNum = parseInt(chDir.replace('ch', ''), 10);
+        const chapterNum = chapterLabel.chapterFromDir(chDir);
 
         try {
           const statusData = getStatusDataFromDb(book, chapterNum);
@@ -1098,17 +1104,15 @@ router.get('/:book', requireAuth, (req, res) => {
     // Read all chapter directories
     const chapterDirs = fs
       .readdirSync(chaptersPath)
-      .filter((d) => d.startsWith('ch'))
-      .sort((a, b) => {
-        const aNum = parseInt(a.replace('ch', ''), 10);
-        const bNum = parseInt(b.replace('ch', ''), 10);
-        return aNum - bNum;
-      });
+      .filter((d) => chapterLabel.chapterFromDir(d) !== null)
+      .sort((a, b) =>
+        chapterLabel.compareChapters(chapterLabel.chapterFromDir(a), chapterLabel.chapterFromDir(b))
+      );
 
     const chapters = [];
 
     for (const chDir of chapterDirs) {
-      const chapterNum = parseInt(chDir.replace('ch', ''), 10);
+      const chapterNum = chapterLabel.chapterFromDir(chDir);
 
       try {
         const statusData = getStatusDataFromDb(book, chapterNum);
@@ -1164,7 +1168,9 @@ router.get('/:book/summary', requireAuth, (req, res) => {
       });
     }
 
-    const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
+    const chapterDirs = fs
+      .readdirSync(chaptersPath)
+      .filter((d) => chapterLabel.chapterFromDir(d) !== null);
 
     const stageCounts = {};
     PIPELINE_STAGES.forEach((stage) => {
@@ -1172,7 +1178,7 @@ router.get('/:book/summary', requireAuth, (req, res) => {
     });
 
     for (const chDir of chapterDirs) {
-      const chapterNum = parseInt(chDir.replace('ch', ''), 10);
+      const chapterNum = chapterLabel.chapterFromDir(chDir);
 
       try {
         const statusData = getStatusDataFromDb(book, chapterNum);
@@ -1283,21 +1289,22 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
  */
 router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
-  const chapterNum = parseInt(chapter, 10);
+  const chapterNum = chapterLabel.normalizeChapter(chapter);
 
-  if (isNaN(chapterNum) || chapterNum < 1) {
+  if (chapterNum === null || chapterNum === 0 || chapterNum < -1) {
     return res.status(400).json({
       error: 'Invalid chapter',
-      message: 'Chapter must be a positive number',
+      message: 'Chapter must be a positive number or appendices',
     });
   }
 
   try {
-    const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    const chapterDir =
+      chapterNum === -1 ? 'appendices' : `ch${String(chapterNum).padStart(2, '0')}`;
     const bookPath = path.join(PROJECT_ROOT, 'books', book);
 
     // Define directories to check for sections/modules
-    const chapterStr = String(chapterNum).padStart(2, '0');
+    const chapterStr = chapterNum === -1 ? 'appendices' : String(chapterNum).padStart(2, '0');
     const stagePaths = {
       extraction: path.join(bookPath, '02-for-mt', chapterDir),
       mtReady: path.join(bookPath, '02-for-mt', chapterDir), // Check for -links.json

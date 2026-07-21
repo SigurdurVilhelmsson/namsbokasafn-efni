@@ -7,7 +7,13 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { normalizeChapter, chapterDir, cliChapterArg } = require('../lib/chapterLabel');
+const {
+  normalizeChapter,
+  chapterDir,
+  cliChapterArg,
+  chapterFromDir,
+  compareChapters,
+} = require('../lib/chapterLabel');
 
 describe('normalizeChapter', () => {
   it('maps the word appendices to -1', () => {
@@ -57,5 +63,32 @@ describe('cliChapterArg', () => {
   it('stringifies regular chapters without padding', () => {
     expect(cliChapterArg(3)).toBe('3');
     expect(cliChapterArg(21)).toBe('21');
+  });
+});
+
+describe('chapterFromDir', () => {
+  it('maps ch-prefixed dirs to their number', () => {
+    expect(chapterFromDir('ch03')).toBe(3);
+    expect(chapterFromDir('ch00')).toBe(0);
+    expect(chapterFromDir('ch3')).toBe(3);
+    expect(chapterFromDir('ch21')).toBe(21);
+  });
+  it('maps the appendices dir to -1', () => {
+    expect(chapterFromDir('appendices')).toBe(-1);
+  });
+  it('returns null for non-chapter dirs', () => {
+    expect(chapterFromDir('tm')).toBeNull();
+    expect(chapterFromDir('chappendices')).toBeNull();
+    expect(chapterFromDir('')).toBeNull();
+    expect(chapterFromDir('glossary')).toBeNull();
+  });
+});
+
+describe('compareChapters', () => {
+  it('orders numeric chapters ascending with appendices (-1) last', () => {
+    expect([3, -1, 1, 2].sort(compareChapters)).toEqual([1, 2, 3, -1]);
+  });
+  it('keeps ch0 (front-matter) first, not treated as appendices', () => {
+    expect([2, -1, 0].sort(compareChapters)).toEqual([0, 2, -1]);
   });
 });

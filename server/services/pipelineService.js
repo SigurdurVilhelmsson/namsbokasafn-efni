@@ -20,7 +20,7 @@ const crypto = require('crypto');
 const log = require('../lib/logger');
 const pipelineStatus = require('./pipelineStatusService');
 const { listCnxmlFiles } = require('../../tools/lib/source-manifest.cjs');
-const { cliChapterArg } = require('../lib/chapterLabel');
+const { cliChapterArg, chapterFromDir } = require('../lib/chapterLabel');
 
 // Test seam: spawnJob spawns through this indirection (item 14).
 let spawnImpl = spawn;
@@ -510,8 +510,11 @@ function generateJobId() {
  * @returns {Object} Impact report with module counts and IDs
  */
 function checkExtractionImpact(book, chapter) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const chapterDir = `ch${chapterStr}`;
+  // chapter === -1 is the canonical appendices number (chapterLabel.js); every
+  // other caller in this file already special-cases it (see :702/:735/:757).
+  // Without this, `${String(-1).padStart(2,'0')}` yields the nonexistent
+  // 'ch-1' instead of 'appendices', silently zeroing the appendices impact.
+  const chapterDir = chapter === -1 ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
 
   // Check existing manifests (extraction has run before)
   const structDir = path.join(BOOKS_DIR, book, '02-structure', chapterDir);
@@ -660,11 +663,10 @@ function checkBookDownstreamWork(book) {
     };
   }
 
-  const chapterDirs = fs.readdirSync(structBaseDir).filter((d) => d.startsWith('ch'));
+  const chapterDirs = fs.readdirSync(structBaseDir).filter((d) => chapterFromDir(d) !== null);
 
   for (const chDir of chapterDirs) {
-    const chapterNum = parseInt(chDir.replace('ch', ''), 10);
-    if (isNaN(chapterNum)) continue;
+    const chapterNum = chapterFromDir(chDir);
 
     const impact = checkExtractionImpact(book, chapterNum);
     totalExtracted += impact.extractedModules;

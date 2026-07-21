@@ -10,7 +10,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
+import { chapterFromDir } from '../server/lib/chapterLabel.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -175,126 +176,150 @@ function expandRefs(schema, rootSchema) {
   return result;
 }
 
+/**
+ * List a book's canonical chapter directories under `chaptersDir`: `chNN`
+ * dirs and the singular `appendices` dir, via `chapterFromDir` (server/lib/
+ * chapterLabel.js). Excludes sibling non-chapter dirs (`tm/`, `glossary/`,
+ * `corpus/`, etc.) that also live under `chapters/`'s parent in some books.
+ * @param {string} chaptersDir
+ * @returns {string[]}
+ */
+export function listChapterDirsForBook(chaptersDir) {
+  return fs.readdirSync(chaptersDir).filter((name) => chapterFromDir(name) !== null);
+}
+
 // Main validation
-const bookFilter = process.argv[2];
+function main() {
+  const bookFilter = process.argv[2];
 
-// Load schema
-let schema;
-try {
-  schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
-} catch (err) {
-  console.error(`Error loading schema: ${err.message}`);
-  process.exit(1);
-}
-
-// Expand $ref references
-const expandedSchema = expandRefs(schema, schema);
-
-// Find all books
-let books;
-try {
-  books = fs.readdirSync(booksDir).filter((name) => {
-    const bookPath = path.join(booksDir, name);
-    return fs.statSync(bookPath).isDirectory() && fs.existsSync(path.join(bookPath, 'chapters'));
-  });
-} catch (err) {
-  console.error(`Error reading books directory: ${err.message}`);
-  process.exit(1);
-}
-
-if (bookFilter) {
-  if (!books.includes(bookFilter)) {
-    console.error(`Book "${bookFilter}" not found. Available: ${books.join(', ')}`);
+  // Load schema
+  let schema;
+  try {
+    schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+  } catch (err) {
+    console.error(`Error loading schema: ${err.message}`);
     process.exit(1);
   }
-  books = [bookFilter];
-}
 
-let totalFiles = 0;
-let validFiles = 0;
-const allErrors = [];
+  // Expand $ref references
+  const expandedSchema = expandRefs(schema, schema);
 
-// D1: every book must have a valid book-config.json (domain required).
-for (const book of books) {
-  const cfgPath = path.join(booksDir, book, 'book-config.json');
-  const errors = [];
-  if (!fs.existsSync(cfgPath)) {
-    errors.push('missing book-config.json');
-  } else {
-    try {
-      const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
-      if (!cfg.domain || typeof cfg.domain !== 'string') {
-        errors.push('missing or invalid "domain"');
-      }
-    } catch (err) {
-      errors.push(`invalid JSON (${err.message})`);
-    }
-  }
-  if (errors.length > 0) {
-    allErrors.push({ file: `${book}/book-config.json`, errors });
-  }
-}
-
-console.log('Validating chapter status files...\n');
-
-for (const book of books) {
-  const chaptersDir = path.join(booksDir, book, 'chapters');
-
-  let chapters;
+  // Find all books
+  let books;
   try {
-    chapters = fs.readdirSync(chaptersDir).filter((name) => name.startsWith('ch'));
-  } catch {
-    continue;
+    books = fs.readdirSync(booksDir).filter((name) => {
+      const bookPath = path.join(booksDir, name);
+      return fs.statSync(bookPath).isDirectory() && fs.existsSync(path.join(bookPath, 'chapters'));
+    });
+  } catch (err) {
+    console.error(`Error reading books directory: ${err.message}`);
+    process.exit(1);
   }
 
-  for (const chapter of chapters) {
-    const statusPath = path.join(chaptersDir, chapter, 'status.json');
-
-    if (!fs.existsSync(statusPath)) {
-      continue;
+  if (bookFilter) {
+    if (!books.includes(bookFilter)) {
+      console.error(`Book "${bookFilter}" not found. Available: ${books.join(', ')}`);
+      process.exit(1);
     }
+    books = [bookFilter];
+  }
 
-    totalFiles++;
+  let totalFiles = 0;
+  let validFiles = 0;
+  const allErrors = [];
 
-    let data;
-    try {
-      data = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
-    } catch (err) {
-      allErrors.push({
-        file: `${book}/${chapter}/status.json`,
-        errors: [`JSON parse error: ${err.message}`],
-      });
-      continue;
-    }
-
-    const errors = validateAgainstSchema(data, expandedSchema);
-
-    if (errors.length === 0) {
-      validFiles++;
-      console.log(`  ✓ ${book}/${chapter}/status.json`);
+  // D1: every book must have a valid book-config.json (domain required).
+  for (const book of books) {
+    const cfgPath = path.join(booksDir, book, 'book-config.json');
+    const errors = [];
+    if (!fs.existsSync(cfgPath)) {
+      errors.push('missing book-config.json');
     } else {
-      allErrors.push({ file: `${book}/${chapter}/status.json`, errors });
-      console.log(
-        `  ✗ ${book}/${chapter}/status.json (${errors.length} error${errors.length > 1 ? 's' : ''})`
-      );
+      try {
+        const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+        if (!cfg.domain || typeof cfg.domain !== 'string') {
+          errors.push('missing or invalid "domain"');
+        }
+      } catch (err) {
+        errors.push(`invalid JSON (${err.message})`);
+      }
     }
+    if (errors.length > 0) {
+      allErrors.push({ file: `${book}/book-config.json`, errors });
+    }
+  }
+
+  console.log('Validating chapter status files...\n');
+
+  for (const book of books) {
+    const chaptersDir = path.join(booksDir, book, 'chapters');
+
+    let chapters;
+    try {
+      chapters = listChapterDirsForBook(chaptersDir);
+    } catch {
+      continue;
+    }
+
+    for (const chapter of chapters) {
+      const statusPath = path.join(chaptersDir, chapter, 'status.json');
+
+      if (!fs.existsSync(statusPath)) {
+        continue;
+      }
+
+      totalFiles++;
+
+      let data;
+      try {
+        data = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
+      } catch (err) {
+        allErrors.push({
+          file: `${book}/${chapter}/status.json`,
+          errors: [`JSON parse error: ${err.message}`],
+        });
+        continue;
+      }
+
+      const errors = validateAgainstSchema(data, expandedSchema);
+
+      if (errors.length === 0) {
+        validFiles++;
+        console.log(`  ✓ ${book}/${chapter}/status.json`);
+      } else {
+        allErrors.push({ file: `${book}/${chapter}/status.json`, errors });
+        console.log(
+          `  ✗ ${book}/${chapter}/status.json (${errors.length} error${errors.length > 1 ? 's' : ''})`
+        );
+      }
+    }
+  }
+
+  console.log('\n' + '─'.repeat(50));
+  console.log(`\nResults: ${validFiles}/${totalFiles} files valid`);
+
+  if (allErrors.length > 0) {
+    console.log('\nErrors:\n');
+    for (const { file, errors } of allErrors) {
+      console.log(`  ${file}:`);
+      for (const error of errors) {
+        console.log(`    - ${error}`);
+      }
+      console.log('');
+    }
+    process.exit(1);
+  } else {
+    console.log('\nAll files valid!');
+    process.exit(0);
   }
 }
 
-console.log('\n' + '─'.repeat(50));
-console.log(`\nResults: ${validFiles}/${totalFiles} files valid`);
+// Only run the validator when this file is executed directly (`node
+// scripts/validate-status.js`), not when imported for `listChapterDirsForBook`
+// (e.g. by tests) — otherwise importing this module would trigger a full
+// disk scan and an unconditional process.exit().
+const isMainModule = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
-if (allErrors.length > 0) {
-  console.log('\nErrors:\n');
-  for (const { file, errors } of allErrors) {
-    console.log(`  ${file}:`);
-    for (const error of errors) {
-      console.log(`    - ${error}`);
-    }
-    console.log('');
-  }
-  process.exit(1);
-} else {
-  console.log('\nAll files valid!');
-  process.exit(0);
+if (isMainModule) {
+  main();
 }

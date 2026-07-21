@@ -26,6 +26,7 @@ const MODULE = 'm99901';
 
 let handler;
 let progressHandler;
+let sectionsHandler;
 let segmentParser;
 let realBooksDir;
 
@@ -92,6 +93,10 @@ beforeAll(() => {
     (l) => l.route && l.route.path === '/:book/editorial-progress' && l.route.methods.get
   );
   progressHandler = progressLayer.route.stack[progressLayer.route.stack.length - 1].handle;
+  const sectionsLayer = router.stack.find(
+    (l) => l.route && l.route.path === '/:book/:chapter/sections' && l.route.methods.get
+  );
+  sectionsHandler = sectionsLayer.route.stack[sectionsLayer.route.stack.length - 1].handle;
 });
 
 afterAll(() => {
@@ -160,6 +165,27 @@ describe('GET /api/status/:book/:chapter appendices acceptance', () => {
     expect(pub).toHaveProperty('mtPreview');
     expect(pub).toHaveProperty('faithful');
     expect(pub).toHaveProperty('localized');
+  });
+});
+
+describe('GET /:book/:chapter/sections appendices acceptance', () => {
+  it('accepts "appendices" (200, not 400)', async () => {
+    const r = await invoke(sectionsHandler, {
+      params: { book: BOOK, chapter: 'appendices' },
+      query: {},
+    });
+    expect(r.status).toBe(200);
+  });
+  it('still rejects 0', async () => {
+    const r = await invoke(sectionsHandler, { params: { book: BOOK, chapter: '0' }, query: {} });
+    expect(r.status).toBe(400);
+  });
+  it('still rejects garbage', async () => {
+    const r = await invoke(sectionsHandler, {
+      params: { book: BOOK, chapter: 'chappendices' },
+      query: {},
+    });
+    expect(r.status).toBe(400);
   });
 });
 
