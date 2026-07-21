@@ -1289,21 +1289,22 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
  */
 router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
   const { book, chapter } = req.params;
-  const chapterNum = parseInt(chapter, 10);
+  const chapterNum = chapterLabel.normalizeChapter(chapter);
 
-  if (isNaN(chapterNum) || chapterNum < 1) {
+  if (chapterNum === null || chapterNum === 0 || chapterNum < -1) {
     return res.status(400).json({
       error: 'Invalid chapter',
-      message: 'Chapter must be a positive number',
+      message: 'Chapter must be a positive number or appendices',
     });
   }
 
   try {
-    const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    const chapterDir =
+      chapterNum === -1 ? 'appendices' : `ch${String(chapterNum).padStart(2, '0')}`;
     const bookPath = path.join(PROJECT_ROOT, 'books', book);
 
     // Define directories to check for sections/modules
-    const chapterStr = String(chapterNum).padStart(2, '0');
+    const chapterStr = chapterNum === -1 ? 'appendices' : String(chapterNum).padStart(2, '0');
     const stagePaths = {
       extraction: path.join(bookPath, '02-for-mt', chapterDir),
       mtReady: path.join(bookPath, '02-for-mt', chapterDir), // Check for -links.json
