@@ -568,16 +568,17 @@ function scanBlocks(cnxml, tagName) {
 }
 
 /**
- * Format a table caption number. Normal chapters get "chapter.n"; appendix
- * modules get a per-letter, per-module-reset "LetterN" (R4-3), e.g. "B3".
- * Falls back to "appendices.n" defensively if an appendix module has no
- * resolved letter (should not happen in practice).
+ * Format a numbered-element label (table / figure / example / equation).
+ * Normal chapters get "chapter.n"; appendix modules get a per-letter,
+ * per-module-reset "LetterN" (R4-3 and its figure/example/equation siblings),
+ * e.g. "B3". Falls back to "appendices.n" defensively if an appendix module
+ * has no resolved letter (should not happen in practice).
  * @param {string|number} chapter
  * @param {string|null} letter
  * @param {number} counter
  * @returns {string}
  */
-function formatTableNumber(chapter, letter, counter) {
+function formatElementNumber(chapter, letter, counter) {
   return chapter === 'appendices' && letter ? `${letter}${counter}` : `${chapter}.${counter}`;
 }
 
@@ -3344,6 +3345,17 @@ async function main() {
       const modPath = translatedCnxmlPath(args.track, chapterDir, modId);
       const modCnxml = fs.readFileSync(modPath, 'utf-8');
 
+      // R4-3 (+ its figure/example/equation siblings): in the appendices pass
+      // every numbered element gets a per-letter, per-module-reset label
+      // ("B1", "E1", …) instead of the continuous "appendices.N". Computed here,
+      // above the figure loop, so all four element types below share one scheme.
+      const isAppendixChapter = args.chapter === 'appendices';
+      const appendixLetter = isAppendixChapter ? appendixModuleLetters.get(modId) : null;
+      let appendixFigCounter = 0; // each resets every modId iteration
+      let appendixTableCounter = 0;
+      let appendixExampleCounter = 0;
+      let appendixEquationCounter = 0;
+
       // Use composite keys (moduleId:elementId) because some books (e.g., lifraen-efnafraedi)
       // reuse IDs like fig-00001, exam-00001 across modules within the same chapter.
       for (const fig of scanBlocks(modCnxml, 'figure')) {
@@ -3352,26 +3364,29 @@ async function main() {
         // and unnumbered figures).
         addId(fig.id, modId);
         if (fig.unnumbered) continue;
-        chapterFigCounter++;
-        chapterFigureNumbers.set(`${modId}:${fig.id}`, `${args.chapter}.${chapterFigCounter}`);
+        let num;
+        if (isAppendixChapter && appendixLetter) {
+          appendixFigCounter++;
+          num = formatElementNumber('appendices', appendixLetter, appendixFigCounter);
+        } else {
+          chapterFigCounter++;
+          num = formatElementNumber(args.chapter, null, chapterFigCounter);
+        }
+        chapterFigureNumbers.set(`${modId}:${fig.id}`, num);
       }
 
       // R4-2: skip numbering for class="unnumbered" tables (but addId still runs,
       // unconditionally, below — the id registry drives link resolution and must
-      // not change). R4-3: appendix tables get a per-letter, per-module-reset
-      // label ("B1", "B2", …) instead of "appendices.N".
-      const isAppendixChapter = args.chapter === 'appendices';
-      const appendixLetter = isAppendixChapter ? appendixModuleLetters.get(modId) : null;
-      let appendixTableCounter = 0; // reset every modId iteration
+      // not change).
       for (const tbl of scanBlocks(modCnxml, 'table')) {
         if (!tbl.unnumbered) {
           let num;
           if (isAppendixChapter && appendixLetter) {
             appendixTableCounter++;
-            num = formatTableNumber('appendices', appendixLetter, appendixTableCounter);
+            num = formatElementNumber('appendices', appendixLetter, appendixTableCounter);
           } else {
             chapterTableCounter++;
-            num = formatTableNumber(args.chapter, null, chapterTableCounter);
+            num = formatElementNumber(args.chapter, null, chapterTableCounter);
           }
           chapterTableNumbers.set(`${modId}:${tbl.id}`, num);
         }
@@ -3379,8 +3394,15 @@ async function main() {
       }
 
       for (const ex of scanBlocks(modCnxml, 'example')) {
-        chapterExampleCounter++;
-        chapterExampleNumbers.set(`${modId}:${ex.id}`, `${args.chapter}.${chapterExampleCounter}`);
+        let num;
+        if (isAppendixChapter && appendixLetter) {
+          appendixExampleCounter++;
+          num = formatElementNumber('appendices', appendixLetter, appendixExampleCounter);
+        } else {
+          chapterExampleCounter++;
+          num = formatElementNumber(args.chapter, null, chapterExampleCounter);
+        }
+        chapterExampleNumbers.set(`${modId}:${ex.id}`, num);
         addId(ex.id, modId);
       }
 
@@ -3390,11 +3412,15 @@ async function main() {
         // unnumbered equations also resolve.
         addId(eq.id, modId);
         if (eq.unnumbered) continue;
-        chapterEquationCounter++;
-        chapterEquationNumbers.set(
-          `${modId}:${eq.id}`,
-          `${args.chapter}.${chapterEquationCounter}`
-        );
+        let num;
+        if (isAppendixChapter && appendixLetter) {
+          appendixEquationCounter++;
+          num = formatElementNumber('appendices', appendixLetter, appendixEquationCounter);
+        } else {
+          chapterEquationCounter++;
+          num = formatElementNumber(args.chapter, null, chapterEquationCounter);
+        }
+        chapterEquationNumbers.set(`${modId}:${eq.id}`, num);
       }
 
       // Build section title map for cross-reference resolution
@@ -4100,7 +4126,7 @@ export {
   renderChildrenInDocumentOrder,
   hasUnnumberedClass,
   scanBlocks,
-  formatTableNumber,
+  formatElementNumber,
   renderExercise,
   _loadBookConfigForTest,
   _setBooksDirForTest,

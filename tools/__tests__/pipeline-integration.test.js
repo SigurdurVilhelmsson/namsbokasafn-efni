@@ -321,7 +321,7 @@ describe('cnxml-render', () => {
     // R4-3: appendix table captions must read "Tafla B1", not "Tafla appendices.N".
     // The letters map is consumed inside main()'s appendices pass, so only a real
     // CLI render of --chapter appendices exercises that wiring (the unit tests
-    // pin formatTableNumber alone and stayed green while the page was wrong).
+    // pin formatElementNumber alone and stayed green while the page was wrong).
     run(
       `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter appendices --track mt-preview`
     );
@@ -342,6 +342,44 @@ describe('cnxml-render', () => {
     // The continuous chapter-style fallback must be gone
     expect(b).not.toContain('Tafla appendices.');
     expect(c).not.toContain('Tafla appendices.');
+  });
+
+  it('appendix render labels examples + figures per-letter with per-module reset (R4-3 siblings)', () => {
+    // R4-3 fixed only the TABLE loop; the example (Dæmi), figure (Mynd) and
+    // equation (Jafna) loops still emitted "appendices.N". Examples must read
+    // "Dæmi B1", figures "Mynd E1" — same per-letter, per-module-reset scheme as
+    // tables. Render-level, because main()'s appendices pass wires the letters
+    // (a formatter unit test stays green while the page is wrong — see R4-3).
+    run(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter appendices --track mt-preview`
+    );
+
+    const outputPath = join(BOOKS, '05-publication', 'mt-preview', 'chapters', 'appendices');
+    // appendix B (appendices-2) carries 12 worked examples; appendix E
+    // (appendices-5) carries one figure.
+    const b = readFileSync(
+      join(outputPath, 'appendices-2-grundvallaratridi-i-staerdfraedi.html'),
+      'utf8'
+    );
+    const e = readFileSync(join(outputPath, 'appendices-5-eiginleikar-vatns.html'), 'utf8');
+
+    // Examples: per-letter label + count (appendix B has 12 → B1..B12). These
+    // pin that the example loop takes the appendix-letter branch (else it would
+    // render "Dæmi appendices.N"). The per-MODULE reset itself is pinned by the
+    // figure assertion below (Mynd E1 would be "E2" if the shared appendix
+    // counter didn't reset): examples/equations reset via the identical code
+    // path, but only module B carries any, so their reset can't be pinned
+    // independently on real data.
+    expect(b).toContain('Dæmi B1</p>');
+    expect(b).toContain('Dæmi B12</p>');
+    expect(b).not.toContain('Dæmi appendices.');
+    // Figure: per-letter, per-module reset (first figure in module E → E1)
+    expect(e).toContain('Mynd E1');
+    expect(e).not.toContain('Mynd appendices.');
+    // Equations have no appendix instance today, but the sibling loop must not
+    // regress to the continuous form either.
+    expect(b).not.toContain('Jafna appendices.');
+    expect(e).not.toContain('Jafna appendices.');
   });
 });
 
