@@ -47,6 +47,32 @@ const TERM_SOURCES = [
   'mined-postedit',
 ];
 
+// Sources whose ICELANDIC is project-authored — the Árnastofnun added-terms
+// rights allowlist (item 21 PR-B, spec PR-B Amendment 1). Excludes sources
+// already in Íðorðabankinn (idordabankinn/chemistry-association/chemistry-
+// society-csv) and indeterminate-origin bulk imports (imported-csv/-excel/
+// merge-glossary). A scientific term is not source-owned; the discriminator is
+// whose Icelandic it is + idordabanki_id IS NULL (not already in Íðorðabankinn).
+const PROJECT_ORIGINATED_SOURCES = [
+  'manual',
+  'mined-postedit',
+  'chapter-glossary',
+  'openstax-mt',
+  'openstax-glossary',
+];
+
+// Sources the lead confirmed are ALREADY in Íðorðabankinn (2026-07-21). They
+// carry idordabanki_id = NULL because the id is written only by the
+// Íðorðabankinn *fetch* import — so a headword owning one of these siblings has
+// a concept Íðorðabankinn already holds (⇒ a kept project term is a NEW
+// ALTERNATIVE, not a new translation). The lead said "(at least)" these three;
+// extend if more in-Íðorðabankinn sources are identified.
+const IN_IDORDABANKINN_SOURCES = [
+  'idordabankinn',
+  'chemistry-association',
+  'chemistry-society-csv',
+];
+
 // Known subject domains (from Íðorðabankinn collection codes)
 const SUBJECTS = [
   'chemistry',
@@ -1556,6 +1582,109 @@ function exportBookGlossary(bookSlug) {
 }
 
 /**
+ * Árnastofnun added-terms seed rows (item 21 PR-B). Selects the project's
+ * approved, project-authored Icelandic terms that are NOT already in
+ * Íðorðabankinn, then classifies each as a new translation or a new
+ * alternative to an existing Íðorðabankinn entry.
+ *
+ * Filter: status='approved' AND idordabanki_id IS NULL AND
+ *         source IN PROJECT_ORIGINATED_SOURCES [AND subject scope].
+ *
+ * `alternatives` are the other KEPT (approved project-Icelandic) translations
+ * of the same headword. `submissionType`/`existingIdordabanki*` come from a
+ * per-headword lookup of the id-linked siblings the filter excluded.
+ *
+ * @param {{ subject?: string|null, book?: string|null }} [options]
+ * @returns {Array<object>} rows ordered by english then icelandic (NOCASE)
+ */
+function getAddedTerms(options = {}) {
+  const { subject = null, book = null } = options;
+  const db = getDb();
+
+  const effectiveSubject = subject || (book ? getBookSubjectBySlug(db, book) : null);
+
+  const where = [
+    "t.status = 'approved'",
+    't.idordabanki_id IS NULL',
+    `t.source IN (${PROJECT_ORIGINATED_SOURCES.map(() => '?').join(', ')})`,
+  ];
+  const params = [...PROJECT_ORIGINATED_SOURCES];
+  subjectScopeClause(effectiveSubject, where, params);
+  const whereSql = where.join(' AND ');
+
+  const rows = db
+    .prepare(
+      `SELECT h.id AS headword_id, h.english, h.pos, h.definition_en,
+              t.icelandic, t.definition_is, t.notes, t.source,
+              t.proposed_by, t.proposed_by_name, t.approved_by, t.approved_by_name, t.approved_at,
+              GROUP_CONCAT(ts.subject) AS subjects
+       FROM terminology_headwords h
+       JOIN terminology_translations t ON t.headword_id = h.id
+       LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
+       WHERE ${whereSql}
+       GROUP BY t.id
+       ORDER BY h.english COLLATE NOCASE ASC, t.icelandic COLLATE NOCASE ASC`
+    )
+    .all(...params);
+
+  if (rows.length === 0) return [];
+
+  // Kept siblings per headword (for `alternatives`).
+  const keptByHeadword = new Map();
+  for (const r of rows) {
+    if (!keptByHeadword.has(r.headword_id)) keptByHeadword.set(r.headword_id, []);
+    keptByHeadword.get(r.headword_id).push(r.icelandic);
+  }
+
+  // Siblings KNOWN to be in Íðorðabankinn (the ones the filter excluded): either
+  // idordabanki_id-linked (fetched from Íðorðabankinn) OR sourced from a set the
+  // lead confirmed is already in Íðorðabankinn (those carry a NULL id). Presence
+  // ⇒ the concept is in Íðorðabankinn ⇒ the kept project term is a NEW
+  // ALTERNATIVE. One query over the kept headword ids.
+  const hwIds = [...keptByHeadword.keys()];
+  const anchorRows = db
+    .prepare(
+      `SELECT headword_id, icelandic, idordabanki_id
+       FROM terminology_translations
+       WHERE headword_id IN (${hwIds.map(() => '?').join(', ')})
+         AND (idordabanki_id IS NOT NULL
+              OR source IN (${IN_IDORDABANKINN_SOURCES.map(() => '?').join(', ')}))
+       ORDER BY idordabanki_id ASC`
+    )
+    .all(...hwIds, ...IN_IDORDABANKINN_SOURCES);
+  const anchorByHeadword = new Map();
+  for (const a of anchorRows) {
+    if (!anchorByHeadword.has(a.headword_id)) anchorByHeadword.set(a.headword_id, []);
+    anchorByHeadword.get(a.headword_id).push(a);
+  }
+
+  return rows.map((r) => {
+    const anchors = anchorByHeadword.get(r.headword_id) || [];
+    return {
+      english: r.english,
+      pos: r.pos || null,
+      definitionEn: r.definition_en || null,
+      icelandic: r.icelandic,
+      definitionIs: r.definition_is || null,
+      alternatives: keptByHeadword.get(r.headword_id).filter((is) => is !== r.icelandic),
+      subjects: r.subjects ? r.subjects.split(',') : [],
+      notes: r.notes || null,
+      source: r.source,
+      submissionType: anchors.length ? 'new-alternative' : 'new-translation',
+      existingIdordabankiTerm: anchors.map((a) => a.icelandic).join('; '),
+      // Only the non-null ids — a chem-society anchor has no Íðorðabankinn id.
+      existingIdordabankiId: anchors
+        .map((a) => a.idordabanki_id)
+        .filter((v) => v != null)
+        .join('; '),
+      proposedBy: r.proposed_by_name || r.proposed_by || '',
+      approvedBy: r.approved_by_name || r.approved_by || '',
+      approvedAt: r.approved_at || null,
+    };
+  });
+}
+
+/**
  * Terminology consistency for a single segment (save-path QA, Unit 3.1).
  * Returns the "missing approved translation" issues for one EN/IS pair.
  *
@@ -1809,11 +1938,14 @@ module.exports = {
   checkSegmentConsistency,
   buildModuleTerminologyReport,
   exportBookGlossary,
+  getAddedTerms,
   proposeMinedTerm,
 
   // Constants
   TERM_STATUSES,
   TERM_SOURCES,
+  PROJECT_ORIGINATED_SOURCES,
+  IN_IDORDABANKINN_SOURCES,
   SUBJECTS,
 
   // Test injection
