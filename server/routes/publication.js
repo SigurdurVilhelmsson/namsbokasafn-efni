@@ -32,6 +32,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireHeadEditor } = require('../middleware/requireRole');
 const activityLog = require('../services/activityLog');
 const { VALID_BOOKS } = require('../config');
+const { normalizeChapter, chapterFromDir, compareChapters } = require('../lib/chapterLabel');
 
 // Validation middleware for chapter params
 function validateChapterParams(req, res, next) {
@@ -44,11 +45,11 @@ function validateChapterParams(req, res, next) {
     });
   }
 
-  const chapter = parseInt(chapterNum, 10);
-  if (isNaN(chapter) || chapter < 1 || chapter > 99) {
+  const chapter = normalizeChapter(chapterNum);
+  if (chapter === null || chapter === 0 || chapter < -1 || chapter > 99) {
     return res.status(400).json({
       error: 'Invalid chapter number',
-      message: 'Chapter number must be between 1 and 99',
+      message: 'Chapter number must be 1–99 or appendices',
     });
   }
 
@@ -316,14 +317,16 @@ router.get('/:bookSlug/overview', requireAuth, (req, res) => {
     if (fs.existsSync(mtOutputDir)) {
       const dirs = fs.readdirSync(mtOutputDir);
       for (const dir of dirs) {
-        const match = dir.match(/^ch(\d{2})$/);
-        if (match) {
-          chapters.push(parseInt(match[1], 10));
+        const n = chapterFromDir(dir);
+        if (n !== null) {
+          chapters.push(n);
         }
       }
     }
 
-    chapters.sort((a, b) => a - b);
+    // compareChapters orders appendices (-1) after all numbered chapters,
+    // matching the convention documented in server/lib/chapterLabel.js.
+    chapters.sort(compareChapters);
 
     const overview = chapters.map((chapterNum) => {
       const status = publicationService.getPublicationStatus(bookSlug, chapterNum);

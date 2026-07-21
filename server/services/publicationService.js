@@ -25,6 +25,7 @@ const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const TOOLS_DIR = path.join(__dirname, '..', '..', 'tools');
 
 const { PUBLICATION_TRACK_DIRS } = require('../constants');
+const { chapterDir } = require('../lib/chapterLabel');
 
 // Source directory for each track (maps to pipelineService.TRACK_SOURCE_DIR)
 const TRACK_SOURCE_DIRS = {
@@ -51,13 +52,15 @@ function checkTrackReadiness(bookSlug, chapterNum, track) {
     return { ready: false, reason: `Unknown track: ${track}` };
   }
 
-  const chapterStr = String(chapterNum).padStart(2, '0');
-  const fullDir = path.join(BOOKS_DIR, bookSlug, sourceDir, `ch${chapterStr}`);
+  // md-style source dir: chNN for numbered chapters, `appendices` for -1
+  // (chapterDir() resolves both — see server/lib/chapterLabel.js).
+  const chapterDirName = chapterDir(chapterNum);
+  const fullDir = path.join(BOOKS_DIR, bookSlug, sourceDir, chapterDirName);
 
   if (!fs.existsSync(fullDir)) {
     return {
       ready: false,
-      reason: `Source directory not found: ${sourceDir}/ch${chapterStr}`,
+      reason: `Source directory not found: ${sourceDir}/${chapterDirName}`,
       modules: [],
     };
   }
@@ -68,7 +71,7 @@ function checkTrackReadiness(bookSlug, chapterNum, track) {
   if (files.length === 0) {
     return {
       ready: false,
-      reason: `No segment files found in ${sourceDir}/ch${chapterStr}`,
+      reason: `No segment files found in ${sourceDir}/${chapterDirName}`,
       modules: [],
     };
   }
@@ -84,7 +87,7 @@ function checkTrackReadiness(bookSlug, chapterNum, track) {
     ready: true,
     moduleCount: modules.length,
     modules,
-    sourceDir: `${sourceDir}/ch${chapterStr}`,
+    sourceDir: `${sourceDir}/${chapterDirName}`,
   };
 }
 
@@ -303,7 +306,10 @@ function publishLocalized(bookSlug, chapterNum, userId) {
  * @returns {object} Status for each track + active track + readiness
  */
 function getPublicationStatus(bookSlug, chapterNum) {
-  const chapterStr = String(chapterNum).padStart(2, '0');
+  // Publication-track output dirs are bare (no `ch` prefix): `NN` for numbered
+  // chapters, `appendices` for -1 — NOT the same convention as chapterDir(),
+  // which prepends `ch`. See books/*/05-publication/*/chapters/appendices/.
+  const chapterStr = chapterNum === -1 ? 'appendices' : String(chapterNum).padStart(2, '0');
   const pubDir = path.join(BOOKS_DIR, bookSlug, '05-publication');
 
   function trackStatus(trackDir) {
@@ -407,8 +413,8 @@ function getExistingFiles(targetDir, pattern = '.html') {
  * Update chapter status.json with publication data.
  */
 function updateChapterStatus(bookSlug, chapterNum, stage, data) {
-  const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
-  const statusPath = path.join(BOOKS_DIR, bookSlug, 'chapters', chapterDir, 'status.json');
+  const chapterDirName = chapterDir(chapterNum);
+  const statusPath = path.join(BOOKS_DIR, bookSlug, 'chapters', chapterDirName, 'status.json');
 
   let status = {};
   if (fs.existsSync(statusPath)) {
