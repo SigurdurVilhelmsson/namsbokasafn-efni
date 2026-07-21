@@ -134,14 +134,20 @@ if (bookData.appendices && bookData.appendices.length) {
 }
 ```
 
-Fix the `:199` hardcode inside the chapter section loop:
+Fix the `:199` hardcode inside the chapter section loop. **Shadow footgun — resolve unambiguously (a silent shadow mislabels EVERY chapter's paths, not just appendices):** the imported helper is `chapterDir`; there is currently a LOCAL `const chapterDir = \`ch${…}\`` at `:199` used at `:209-210`. Import the helper as `chapterDir` and **rename the local** to `chapterDirName`:
 ```js
-// before
+// before (:199, :209-210)
 const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
-// after (rename the local to avoid shadowing the imported chapterDir())
-const chapterDirName = chapterLabelChapterDir(chapterNum);
+... `01-source/${chapterDir}/${mod.id}.cnxml`
+... `02-for-mt/${chapterDir}/${sectionNum.replace('.', '-')}.en.md`
+// after
+const chapterDirName = chapterDir(chapterNum); // imported helper; identical 'chNN' for numeric chapters
+... `01-source/${chapterDirName}/${mod.id}.cnxml`
+... `02-for-mt/${chapterDirName}/${sectionNum.replace('.', '-')}.en.md`
 ```
-— import as `const { chapterDir: chapterLabelChapterDir } = require('../lib/chapterLabel');` OR keep the import name `chapterDir` and rename the LOCAL `const chapterDir` at `:199` to `chapterDirName` and update its two uses at `:209-210`. (The local currently shadows; pick one name and apply consistently — verify no other `chapterDir` local in the function.)
+Then **grep the function body for any other `chapterDir` local** and confirm `insertAppendixSections`'s `chapterDir(-1)` binds to the import (not a shadow). `chapterDir(N)` for numeric N is byte-identical to the old `ch${padStart}` — verify the existing registration tests stay green (the "no behavior change for existing chapters" invariant).
+
+**Confirm `en_md_path`/`cnxml_path` are nominal:** this plan writes `en_md_path = 02-for-mt/appendices/<section_num>.en.md`, matching the chapter convention (`<sectionNum>.en.md`) even though real files are `m…-segments.en.md`. That mismatch already exists for chapter rows, so the column is almost certainly unused for content loading — but grep for readers of `en_md_path`/`cnxml_path` that load file CONTENT (not just display). If something reads them to load content, chapters have the same latent bug: **note it, don't inherit it silently.**
 
 Add `insertAppendixSections` to `module.exports`.
 
@@ -190,9 +196,13 @@ expect(count(db, SLUG, -1)).toBe(0);
 // --db inserts:
 await runBackfill({ book: SLUG, db: true, booksDir: tmpBooks });
 expect(count(db, SLUG, -1)).toBe(2);
-// idempotent second run:
+// idempotent second run — sections NOT duplicated AND the appendix chapter row NOT duplicated:
 await runBackfill({ book: SLUG, db: true, booksDir: tmpBooks });
-expect(count(db, SLUG, -1)).toBe(2);
+expect(count(db, SLUG, -1)).toBe(2); // sections still 2
+const apxChapters = db.prepare(
+  `SELECT COUNT(*) n FROM book_chapters bc JOIN registered_books rb ON rb.id=bc.book_id
+   WHERE rb.slug=? AND bc.chapter_num=-1`).get(SLUG).n;
+expect(apxChapters).toBe(1); // "insert chapter if missing" guard — exactly one -1 chapter row
 // fail-loud on unreadable collection-order.json:
 await expect(runBackfill({ book: BROKEN, db: true, booksDir: tmpBooks })).rejects.toThrow();
 ```
@@ -276,6 +286,10 @@ const chDir = chapterDir(c.chapter_num); // was `ch${String(c.chapter_num).padSt
 
 Run: `npm test -- books-routes admin`
 Expected: PASS.
+
+- [ ] **Step 4.5: Usability verification — "rows exist" ≠ "appendices are usable" (advisor)**
+
+The feature's point is that an appendix section can be **assigned and reached**. `bookRegistration.js:679/751` set `sectionNum: s.section_num` (the literal `section_num`, NOT `module_id`), and `sections.js:123/206` build the editor link as `…&module=${section.sectionNum}` while segment-editor's `validateModule` requires `^m\d{5}$`. So an appendix link is `module=1` — but a **chapter** link is `module=5.1`, which *also* fails `validateModule`. **Verify:** confirm chapters behave the same (assignment link uses `section_num` for chapters too) → appendices inherit **pre-existing** behavior, introduce NO new breakage. If confirmed pre-existing: **log it** (assignment-link `module=` uses `section_num`, mismatches `validateModule` for ALL chapters + appendices) as an out-of-scope finding in the campaign register; do NOT fix in PR-2. If chapters somehow resolve correctly and appendices don't, that IS a PR-2 gap — fix it. Also confirm an appendix section row is a valid target for the `sections.js` assignment flow (the assign query returns it).
 
 - [ ] **Step 5: Commit**
 
