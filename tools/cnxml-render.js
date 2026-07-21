@@ -702,7 +702,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   // Get section info from dynamically built module sections
   const moduleSections = options.moduleSections || {};
   const sectionInfo = moduleSections[moduleId] || { section: '0', titleEn: title };
-  const sectionNumber = `${chapter}.${sectionInfo.section}`;
+  // Appendices have no section number (vefur zeroes it — its contentLoader
+  // says "Appendices don't have section numbers"): emit "" so the <title> is
+  // the clean title and page-data `section` is empty, not the raw "appendices.N".
+  const sectionNumber = chapter === 'appendices' ? '' : `${chapter}.${sectionInfo.section}`;
 
   // Build page data
   const pageData = {

@@ -381,6 +381,31 @@ describe('cnxml-render', () => {
     expect(b).not.toContain('Jafna appendices.');
     expect(e).not.toContain('Jafna appendices.');
   });
+
+  it('appendix pages carry no section number in the <title> or page-data (matches vefur)', () => {
+    // Normal chapters get a "chapter.section" number ("1.1 Title"); appendices
+    // have none (vefur zeroes it — contentLoader: "Appendices don't have section
+    // numbers"). efni must not emit the raw "appendices.N": the <title> is the
+    // clean title, and page-data section is "".
+    run(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter appendices --track mt-preview`
+    );
+    const b = readFileSync(
+      join(
+        BOOKS,
+        '05-publication',
+        'mt-preview',
+        'chapters',
+        'appendices',
+        'appendices-2-grundvallaratridi-i-staerdfraedi.html'
+      ),
+      'utf8'
+    );
+    expect(b).toContain('<title>Grundvallaratriði í stærðfræði</title>');
+    expect(b).not.toContain('<title>appendices.');
+    expect(b).toContain('"section": ""');
+    expect(b).not.toContain('"section": "appendices');
+  });
 });
 
 // =====================================================================
