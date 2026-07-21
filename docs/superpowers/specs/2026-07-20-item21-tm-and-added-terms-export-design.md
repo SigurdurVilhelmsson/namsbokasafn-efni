@@ -152,6 +152,62 @@ containment guard or page footer (§B6); it is the same metadata-stamp the corpu
 
 # PR-B — Árnastofnun added-terms seed
 
+## PR-B Amendments (2026-07-21 — lead decisions, supersede §2.3/§B2/§B3 where noted)
+
+Five decisions taken during PR-B planning (grounded against merged main + a source×status
+read of the dev DB; recorded here so the as-built seed matches the design record). The core
+insight: **the seed is a *diff against Íðorðabankinn*** — candidate rows Árnastofnun does not
+already hold — not "the project's glossary."
+
+1. **Source rule reversed to *Icelandic-origin* (supersedes §2.3's `openstax-mt` exclusion).**
+   A scientific term is not copyrightable, and the same English concept appears in every
+   textbook, so an *English*-origin exclusion is unfounded. The discriminator is **whose
+   *Icelandic* it is** + **not already in Íðorðabankinn**. Therefore:
+   `PROJECT_ORIGINATED_SOURCES = ['manual', 'mined-postedit', 'chapter-glossary', 'openstax-mt', 'openstax-glossary']`
+   (all carry project-authored Icelandic — OpenStax publishes no Icelandic).
+   **Excluded:** `idordabankinn`, `chemistry-association`, `chemistry-society-csv` (lead:
+   *these are already in the Íðorðabankinn database* → re-submitting = duplicates) **and**
+   `imported-csv`, `imported-excel`, `merge-glossary` (Icelandic origin indeterminate from the
+   source tag; their `'proposed'` insert-default already keeps them out via the `status='approved'`
+   gate — belt-and-suspenders). This **resolves I21-R1** (`chapter-glossary` and `openstax-mt`
+   share the OpenStax-English property; the Icelandic-origin rule includes *both* consistently).
+
+2. **`alternatives` kept + derived from *approved project-Icelandic siblings*.** It maps to
+   Árnastofnun's native **`synonyms`** field (`tools/idordabanki_schema_mapping.md`), so it is not
+   droppable. Derived *within* the already-filtered kept set (siblings' `icelandic`, excl. self) —
+   so it automatically excludes Íðorðabankinn-sourced Icelandic. Emitted `'; '`-joined (house
+   convention).
+
+3. **Per-row submission model (new; makes each row actionable to Árnastofnun's reviewers):**
+   - `submission_type` = `'new-alternative'` when the row's headword has a sibling translation
+     **known to be in Íðorðabankinn** — one with `idordabanki_id IS NOT NULL` **OR**
+     `source IN ('idordabankinn', 'chemistry-association', 'chemistry-society-csv')` (the lead
+     confirmed those three are already in Íðorðabankinn, yet they carry a NULL id because the id
+     is written only by the Íðorðabankinn *fetch* — so an id-only test would mislabel them
+     `'new-translation'`). Else `'new-translation'`.
+   - For `new-alternative` rows, `existing_idordabanki_term` lists those siblings' Icelandic
+     (`'; '`-joined) and `existing_idordabanki_id` lists only their **non-null** ids (a
+     chem-society anchor has no Íðorðabankinn id to surface — an empty id on a new-alternative is
+     honest; fabricating one is not).
+   - **Best-effort, stated in `provenance_note`:** a `'new-translation'` label means "no such known
+     sibling in our data," not a guarantee of absence in Íðorðabankinn. `idordabanki_id IS NULL`
+     is the best-available dedup signal, not a proof.
+
+4. **CSV formula-injection guard (PR-B-local).** Unlike the internal glossary/corpus exports, this
+   file is opened in Árnastofnun's spreadsheet — an external destination. A PR-B-local
+   `csvSeedField` prepends a `'` to any field beginning with `= + - @` (tab/CR too) on top of the
+   RFC-4180 quoting. **Do NOT** harden the shared `csvEscapeField` (would break the glossary
+   export's byte-exact pins).
+
+5. **Attribution names emitted.** `proposed_by`/`approved_by` columns carry the human name
+   (`proposed_by_name`/`approved_by_name`, falling back to the id) — a provenance hand-off to a
+   national authority is attribution-appropriate.
+
+**Revised §B3 seed columns (supersede the §B3 list):**
+`english, pos, definition_en, icelandic, definition_is, alternatives, subject, notes, source,
+submission_type, existing_idordabanki_term, existing_idordabanki_id, proposed_by, approved_by,
+approved_at`
+
 ## B1. Components
 
 - **`terminologyService.getAddedTerms({ subjects, book })`** (new) — selects the added-terms rows
