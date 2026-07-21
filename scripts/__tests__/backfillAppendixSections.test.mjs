@@ -38,6 +38,7 @@ const Database = require(path.join(REPO_ROOT, 'server', 'node_modules', 'better-
 
 const SLUG = 'prufubok-apx';
 const BROKEN = 'brotin-bok-apx';
+const ROLLBACK = 'aftur-baka-bok-apx';
 
 let db;
 let tmpBooks;
@@ -82,6 +83,13 @@ beforeAll(() => {
     `INSERT INTO registered_books (slug, title_is, registered_by, status)
      VALUES (?, 'Brotin bók', 'u-test', 'active')`
   ).run(BROKEN);
+  const rollbackResult = db
+    .prepare(
+      `INSERT INTO registered_books (slug, title_is, registered_by, status)
+       VALUES (?, 'Aftur bók', 'u-test', 'active')`
+    )
+    .run(ROLLBACK);
+  const rollbackBookId = rollbackResult.lastInsertRowid;
 
   // Temp books/ tree. SLUG gets a real appendices source dir + a valid
   // collection-order.json with 2 appendix modules (one has a structure.json
@@ -107,6 +115,40 @@ beforeAll(() => {
   const brokenSourceDir = path.join(tmpBooks, BROKEN, '01-source');
   mkdirSync(path.join(brokenSourceDir, 'appendices'), { recursive: true });
   writeFileSync(path.join(brokenSourceDir, 'collection-order.json'), '{ not valid json');
+
+  // ROLLBACK book: has an appendices dir + a VALID collection-order.json
+  // whose sole module ('mNEW') would land on section_num='1' — but a
+  // book_sections row for section_num='1' with a DIFFERENT module_id
+  // ('mOLD') is pre-seeded directly (no appendix book_chapters row yet).
+  // insertAppendixSections's dedup guard keys on module_id, so 'mNEW' !=
+  // 'mOLD' looks like a fresh insert to it — the raw INSERT then collides
+  // with book_sections' UNIQUE(book_id, chapter_num, section_num) and
+  // throws SQLITE_CONSTRAINT *inside* the per-book transaction, after the
+  // chapter-row insert-if-missing has already run in the same transaction.
+  // This pins the transaction-wrapping requirement for real: it proves the
+  // chapter-row insert is rolled back too, not left as a stray -1 chapter
+  // row with no matching sections.
+  const rollbackSourceDir = path.join(tmpBooks, ROLLBACK, '01-source');
+  mkdirSync(path.join(rollbackSourceDir, 'appendices'), { recursive: true });
+  writeFileSync(
+    path.join(rollbackSourceDir, 'collection-order.json'),
+    JSON.stringify({ appendixModules: ['mNEW'] })
+  );
+  // book_sections.chapter_id has a real FK to book_chapters(id) (foreign_keys
+  // is ON in this environment), so the pre-seeded row needs a valid target —
+  // an UNRELATED placeholder chapter (chapter_num=0), deliberately NOT the
+  // appendix chapter (chapter_num=-1), so "0 appendix chapter rows exist yet"
+  // still holds for this book before the backfill runs.
+  const placeholderChapterId = db
+    .prepare(
+      `INSERT INTO book_chapters (book_id, chapter_num, title_en, title_is, section_count, status)
+       VALUES (?, 0, 'Placeholder', 'Staðgengill', 1, 'not_started')`
+    )
+    .run(rollbackBookId).lastInsertRowid;
+  db.prepare(
+    `INSERT INTO book_sections (book_id, chapter_id, chapter_num, section_num, module_id, status)
+     VALUES (?, ?, -1, '1', 'mOLD', 'not_started')`
+  ).run(rollbackBookId, placeholderChapterId);
 });
 
 afterAll(() => {
@@ -153,5 +195,29 @@ describe('backfill-appendix-sections runBackfill()', () => {
     // ... and the failure must not have written a partial row for BROKEN.
     expect(countAppendixChapters(db, BROKEN)).toBe(0);
     expect(countSections(db, BROKEN, -1)).toBe(0);
+  });
+
+  it('rolls back the whole book atomically when a section INSERT collides mid-transaction', async () => {
+    const { runBackfill } = await import('../backfill-appendix-sections.js');
+
+    // Before: 1 pre-seeded section row ('mOLD' @ section_num='1'), NO
+    // appendix chapter row yet.
+    expect(countAppendixChapters(db, ROLLBACK)).toBe(0);
+    expect(countSections(db, ROLLBACK, -1)).toBe(1);
+
+    // 'mNEW' also wants section_num='1' (its collection-order.json position
+    // is 0-indexed → String(0+1) = '1'), colliding with the pre-seeded
+    // 'mOLD' row on book_sections' UNIQUE(book_id, chapter_num, section_num).
+    await expect(runBackfill({ book: ROLLBACK, db: true, booksDir: tmpBooks })).rejects.toThrow();
+
+    // If the chapter-row insert-if-missing were NOT wrapped in the same
+    // transaction as the colliding section insert, it would have committed
+    // on its own (autocommit) before the section INSERT threw, leaving a
+    // stray -1 chapter row. Asserting it's still 0 proves the whole book's
+    // writes rolled back atomically, not just "nothing was attempted."
+    expect(countAppendixChapters(db, ROLLBACK)).toBe(0);
+    // The pre-seeded row survives (it was never part of this transaction);
+    // the failed 'mNEW' insert did not get committed either.
+    expect(countSections(db, ROLLBACK, -1)).toBe(1);
   });
 });
