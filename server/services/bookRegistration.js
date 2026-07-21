@@ -472,7 +472,7 @@ function getRegisteredBook(slug) {
       status: book.status,
       chapters: chapters.map((c) => {
         // Count faithful-translation files on disk for this chapter
-        const chDir = `ch${String(c.chapter_num).padStart(2, '0')}`;
+        const chDir = chapterDir(c.chapter_num);
         const faithfulDir = path.join(BOOKS_DIR, book.slug, '03-faithful-translation', chDir);
         let hasFaithful = 0;
         try {
