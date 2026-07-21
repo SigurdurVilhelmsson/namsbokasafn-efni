@@ -23,6 +23,9 @@ describe('mostRestrictive', () => {
   it('throws on an empty set', () => {
     expect(() => mostRestrictive([])).toThrow();
   });
+  it('throws on an inherited Object.prototype key (not just any string)', () => {
+    expect(() => mostRestrictive(['toString'])).toThrow(/Unknown licence/);
+  });
 });
 
 describe('assertLicenceContainment', () => {

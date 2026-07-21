@@ -15,7 +15,7 @@
 const RESTRICTIVENESS = { 'CC BY 4.0': 0, 'CC BY-NC-SA 4.0': 1 };
 
 function rank(code) {
-  if (!(code in RESTRICTIVENESS)) {
+  if (!Object.prototype.hasOwnProperty.call(RESTRICTIVENESS, code)) {
     throw new Error(
       `Unknown licence code "${code}" — add it to tools/lib/licence-containment.cjs RESTRICTIVENESS`
     );

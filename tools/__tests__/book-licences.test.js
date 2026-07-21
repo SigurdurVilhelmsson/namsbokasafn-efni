@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'module';
@@ -48,5 +48,44 @@ describe('getBookLicence — sourced from book-config.json', () => {
 
   it('no longer exports the inline BOOK_LICENCES map (single source is book-config)', () => {
     expect(mod.BOOK_LICENCES).toBeUndefined();
+  });
+});
+
+describe('getBookLicence genuinely READS book-config.json (behavioral, not a same-valued map)', () => {
+  // A probe book that exists ONLY as a freshly-written file with a licence value
+  // no hardcoded map would carry. A map-based getBookLicence would THROW for this
+  // unknown slug; the real file-reading impl returns the written value. So this
+  // test fails if getBookLicence ever stops reading book-config.json.
+  const PROBE = '__licence-probe__';
+  const probeDir = path.join(REPO_ROOT, 'books', PROBE);
+
+  beforeAll(() => {
+    fs.mkdirSync(probeDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(probeDir, 'book-config.json'),
+      JSON.stringify({ licence: { code: 'CC0 1.0', obtained: '1970-01-01' }, domain: 'test' }),
+      'utf-8'
+    );
+  });
+  afterAll(() => {
+    fs.rmSync(probeDir, { recursive: true, force: true });
+  });
+
+  it('returns the licence written to a freshly-created book-config.json', () => {
+    expect(getBookLicence(PROBE)).toEqual({ licence: 'CC0 1.0', obtained: '1970-01-01' });
+  });
+
+  it('throws for a book whose freshly-written config has malformed JSON', () => {
+    // Fix 4's guard: a parse failure must fail-loud with a licence-mentioning
+    // message, not a raw SyntaxError.
+    const BAD = '__licence-malformed__';
+    const badDir = path.join(REPO_ROOT, 'books', BAD);
+    fs.mkdirSync(badDir, { recursive: true });
+    fs.writeFileSync(path.join(badDir, 'book-config.json'), '{ this is not json', 'utf-8');
+    try {
+      expect(() => getBookLicence(BAD)).toThrow(/licence/i);
+    } finally {
+      fs.rmSync(badDir, { recursive: true, force: true });
+    }
   });
 });

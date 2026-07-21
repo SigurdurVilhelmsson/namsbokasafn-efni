@@ -498,7 +498,7 @@ describe('buildCorpus over a book fixture', () => {
       mk('books', 'stjornufraedi', '02-for-mt', 'ch01', 'm1-segments.en.md'),
       '<!-- SEG:m1:para:p1 -->\nStars.'
     );
-    expect(() => buildCorpus('stjornufraedi', {})).toThrow(/licence/i);
+    expect(() => buildCorpus('stjornufraedi', {})).toThrow(/book-config\.json/i);
   });
 
   it('writeOutputs writes jsonl, tsv, and manifest to the out dir', () => {

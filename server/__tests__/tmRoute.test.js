@@ -162,7 +162,7 @@ describe('GET /api/tm/export', () => {
       expect(out.body).toMatchObject({ error: 'TM export failed' });
       // Pins that the 500 came from getBookLicence's fail-loud throw
       // specifically, not from an incidental generateTm failure.
-      expect(out.body.message).toMatch(/licence/i);
+      expect(out.body.message).toMatch(/book-config\.json/i);
     } finally {
       const idx = VALID_BOOKS.indexOf(UNLICENSED);
       if (idx !== -1) VALID_BOOKS.splice(idx, 1);

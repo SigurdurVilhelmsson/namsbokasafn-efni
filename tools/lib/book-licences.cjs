@@ -35,7 +35,15 @@ function getBookLicence(slug) {
         'Onboard licence-first; see docs/provenance/openstax-cnxml-licence-provenance.md'
     );
   }
-  const cfg = JSON.parse(raw);
+  let cfg;
+  try {
+    cfg = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(
+      `Malformed book-config.json for book "${slug}" (${configPath}): ${err.message} — ` +
+        'cannot resolve its licence.'
+    );
+  }
   const code = cfg.licence && cfg.licence.code;
   const obtained = cfg.licence && cfg.licence.obtained;
   if (!code || !obtained) {
