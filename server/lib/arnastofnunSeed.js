@@ -9,6 +9,12 @@
  * shared csvEscapeField (would break the glossary export's byte-exact pins).
  */
 
+// LICENCE (item 17): this export is intentionally LICENCE-NEUTRAL and carries no
+// licence stamp — individual terms aren't copyrightable (established in item 21
+// PR-B). It is the only cross-book mixer, so this is recorded as its deliberate
+// disposition rather than guarded (see docs/provenance/…-provenance.md §6.1 and
+// tools/lib/licence-containment.cjs). Do not add a licence column here.
+
 const SEED_COLUMNS = [
   'english',
   'pos',

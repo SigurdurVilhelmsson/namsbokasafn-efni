@@ -244,6 +244,21 @@ Decided facets (adopted as the campaign item-17 build posture):
 This is licence posture, not legal advice; counsel review remains advisable but is not a
 blocker on the item-17 build. This resolves the L7 licence-posture gate on campaign item 17.
 
+#### 6.1.a — Item 17 implementation (2026-07-21)
+
+- **Canonical datum.** The per-book licence now lives in `books/<slug>/book-config.json`
+  (`"licence": { "code", "obtained" }`); `tools/lib/book-licences.cjs` `getBookLicence()` reads it
+  (return contract unchanged; the inline map is retired). Provenanced books only — `stjornufraedi`/`testbook`
+  carry none and `getBookLicence` throws for them.
+- **Display mechanism adjusted.** The §6.1 "per-product licence footer keyed off book-config" is delivered by
+  **vefur**, which already renders a correct, data-driven per-page/print licence footer (`BookAttribution.svelte`,
+  build-gated). **efni emits no footer.** A `VEFUR_CONTRACT`-gated test asserts efni's `book-config` licence codes
+  agree (after format normalisation) with vefur's `book.ts` `derivativeLicence`.
+- **Containment.** corpus + TM already row-stamp per-book and are unaffected. No cross-book aggregate export
+  exists; `tools/lib/licence-containment.cjs` encodes the "no restrictive book in a permissive aggregate" rule for
+  any future one. The Árnastofnun added-terms export is **licence-neutral** (terms aren't copyrightable) and is
+  therefore not a containment target.
+
 ---
 
 ## 7. Evidence integrity / reproducibility

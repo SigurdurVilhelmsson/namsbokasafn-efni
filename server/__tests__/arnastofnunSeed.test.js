@@ -98,3 +98,15 @@ describe('serializeSeedJson', () => {
     expect(doc.stats).toEqual({ total: 2, newTranslation: 1, newAlternative: 1 });
   });
 });
+
+describe('added-terms seed is intentionally licence-neutral (item 17 c2)', () => {
+  it('has no licence column in the CSV header', () => {
+    expect(SEED_COLUMNS).not.toContain('licence');
+    expect(SEED_COLUMNS.join(',')).not.toMatch(/licen[cs]e/i);
+  });
+  it('emits no licence field in the JSON doc or its terms', () => {
+    const doc = JSON.parse(serializeSeedJson([ROW], { date: new Date('2026-01-02Z') }));
+    expect('licence' in doc).toBe(false);
+    expect(Object.keys(doc.terms[0])).not.toContain('licence');
+  });
+});
