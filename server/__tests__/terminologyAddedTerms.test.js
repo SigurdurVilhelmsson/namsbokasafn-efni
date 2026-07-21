@@ -170,6 +170,23 @@ describe('getAddedTerms submission classification', () => {
     expect(rows[0].existingIdordabankiTerm).toBe('jafnalausn');
     expect(rows[0].existingIdordabankiId).toBe(''); // no id to surface — honest, not fabricated
   });
+
+  // Isolates the anchor query's id-leg from its source-leg. Every other
+  // id-bearing anchor fixture in this suite (móleind/salti) ALSO carries a
+  // source in IN_IDORDABANKINN_SOURCES, so dropping the
+  // `idordabanki_id IS NOT NULL OR` half of the anchor predicate would still
+  // pass those. Here the id-bearing sibling's source is 'manual' (not an
+  // IN_IDORDABANKINN_SOURCES value) — it can ONLY match via the id-leg.
+  it('labels new-alternative via the id-leg alone (anchor source is NOT in IN_IDORDABANKINN_SOURCES)', () => {
+    const h = hw('valence');
+    tr(h, 'gildi', { source: 'manual' }); // kept (id null)
+    tr(h, 'rafgildi', { source: 'manual', idordabankiId: 42 }); // excluded (id set); anchor via id-leg ONLY
+    const rows = terminology.getAddedTerms();
+    expect(rows).toHaveLength(1);
+    expect(rows[0].icelandic).toBe('gildi');
+    expect(rows[0].submissionType).toBe('new-alternative');
+    expect(rows[0].existingIdordabankiId).toBe('42');
+  });
 });
 
 describe('getAddedTerms alternatives (approved project-Icelandic siblings)', () => {

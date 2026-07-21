@@ -66,6 +66,15 @@ describe('serializeSeedCsv', () => {
   it('ends with a trailing newline', () => {
     expect(serializeSeedCsv([ROW]).endsWith('\n')).toBe(true);
   });
+  it('wires csvSeedField into every cell: formula-guards notes and RFC-4180-quotes a comma-bearing definition_en', () => {
+    const row = { ...ROW, notes: '=SUM(A1)', definitionEn: 'a, b' };
+    const lines = serializeSeedCsv([row]).split('\n');
+    expect(lines[1]).toBe(
+      'mole,noun,"a, b",mól,SI-eining efnismagns,mólmagn,chemistry; general,\'=SUM(A1),openstax-mt,new-alternative,móleind,931162,Anna,Björn,2026-07-01T00:00:00Z'
+    );
+    expect(lines[1]).toContain("'=SUM(A1)"); // formula-guard survived the map
+    expect(lines[1]).toContain('"a, b"'); // RFC-4180 quoting survived the map
+  });
 });
 
 describe('serializeSeedJson', () => {

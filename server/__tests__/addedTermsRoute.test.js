@@ -48,6 +48,35 @@ function invoke(handler, req) {
   });
 }
 
+/**
+ * Drive a middleware layer (not a terminal handler) through req/res/next.
+ * Resolves with { nextCalled: true } if `next()` ran, or with the terminal
+ * res.json()/res.send() call otherwise — so a positive pass and a 403 denial
+ * are both observable from the same helper.
+ */
+function invokeGate(handler, req) {
+  return new Promise((resolve) => {
+    const res = {
+      statusCode: 200,
+      headers: {},
+      status(c) {
+        this.statusCode = c;
+        return this;
+      },
+      setHeader(k, v) {
+        this.headers[k] = v;
+      },
+      json(b) {
+        resolve({ status: this.statusCode, headers: this.headers, body: b, nextCalled: false });
+      },
+      send(b) {
+        resolve({ status: this.statusCode, headers: this.headers, body: b, nextCalled: false });
+      },
+    };
+    handler(req, res, () => resolve({ nextCalled: true }));
+  });
+}
+
 const HE_USER = { id: 'he1', name: 'Head Editor', username: 'head', role: 'head-editor' };
 const ROUTE = '/added-terms/export';
 
@@ -88,6 +117,16 @@ describe('GET /api/terminology/added-terms/export', () => {
     const gate = layer.route.stack[1].handle;
     const out = await invoke(gate, { user: { role: 'editor', id: 'e1' }, query: {} });
     expect(out.status).toBe(403);
+  });
+
+  it('requireRole gate passes a head-editor through (positive pin on the minimum role)', async () => {
+    // The 403 test above only proves an editor is blocked; it can't tell
+    // requireRole(HEAD_EDITOR) apart from requireRole(ADMIN) (both would
+    // still 403 an editor). This drives HE_USER through the actual gate
+    // and asserts it reaches next() rather than being denied.
+    const gate = getLayer(ROUTE, 'get').route.stack[1].handle;
+    const out = await invokeGate(gate, { user: HE_USER, query: {} });
+    expect(out.nextCalled).toBe(true);
   });
 
   it('defaults to json and returns provenance_note + terms for a head-editor', async () => {
