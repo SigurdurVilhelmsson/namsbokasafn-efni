@@ -86,13 +86,26 @@ makes one function consistent with its own file.
   → gates `/status`, `/readiness`, `/modules`, `/publish`. Accept `-1`.
 - `server/routes/publication.js` `/modules`-list ch-scan (`:320`, `dir.match(/^ch(\d{2})$/)`)
   → also detect the `appendices` dir so the chapter list includes it.
-- `server/routes/status.js:1286` `GET /:book/:chapter/sections` (`<1` reject). Accept `-1`.
+- `server/routes/status.js:1286` `GET /:book/:chapter/sections` (`<1` reject; handler builds
+  `ch${NN}` at `:1296` + bare `${NN}` at `:1300` inline). Accept `-1`; both dir forms become
+  `appendices` via the `=== -1 ? 'appendices'` idiom.
 - `server/routes/books.js:484` `GET /:book/chapters/:chapter/faithful-count`
-  (`<1||>99`, then `padStart` → `chNN`). Accept `-1`; build dir via `chapterDir(-1)`.
-- `server/routes/books.js:368` file-list route (traversal-guarded, F15). Accept `-1` but
-  build the path via `chapterDir(-1)` (fixed safe string `'appendices'`) so the
-  traversal protection is **preserved, not weakened**. `typeConfig` publication entries use
-  `chPrefix:''` and the appendix dir is literally `appendices/`.
+  (`<1||>99`, then `padStart` → `chNN`). Accept `-1`; build dir via the `-1` idiom.
+- **Service-layer (planning discovery):** `server/services/publicationService.js:54/306/410`
+  build `ch${chapterStr}` and yield `ch-1` for appendices. The publication.js validator
+  change is inert without adopting the `=== -1 ? 'appendices'` idiom here (the same idiom is
+  already live in `status.js` `getStatusDataFromDb:63/82`).
+
+**Deferred to PR-2 (planning discovery):**
+- `server/routes/books.js:368` `/download` ZIP route: its `chPrefix`-vs-appendices dir build
+  (`${chPrefix}${padStart}` → `chappendices`) is not a clean R2 swap, and it is a
+  content-download convenience, not editorial read-path. Defer.
+
+**Already appendix-aware from item-14 (excluded — verified by existing tests):**
+`GET /:book/:chapter` chapter-status (`statusChapterRoute.test.js`), `editorial-progress`
+(finding-17a test), admin assign/unassign editor↔chapter (`adminAssignAppendices.test.js`,
+stores `-1`), and the segment-editor edit path (`validateBookChapter`). PR-1 is about the
+remaining **visibility/status** laggards, not enabling appendix editing (which already works).
 
 **R3 scans:**
 - `server/routes/status.js` scan loops: `:148` (+ sort comparator `:150/151`), `:173`,
