@@ -972,7 +972,7 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
   const { book, chapter } = req.params;
 
   try {
-    userService.removeChapterAssignment(userId, book, parseInt(chapter, 10));
+    userService.removeChapterAssignment(userId, book, chapterLabel.normalizeChapter(chapter));
 
     const assignments = userService.getChapterAssignments(userId, book);
     res.json({
