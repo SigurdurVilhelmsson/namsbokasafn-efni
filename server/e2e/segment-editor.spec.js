@@ -420,3 +420,25 @@ test.describe('O segment propagation', () => {
     expect(body.created.length + body.skipped.length).toBeGreaterThan(0);
   });
 });
+
+test.describe('§0.1 live-preview guards', () => {
+  test('§0.1a preview of a real module is not an invalid-input 400', async ({ page }) => {
+    await loginAs(page, 'editor');
+    const resp = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/preview');
+    expect(resp.status()).not.toBe(400); // 200 if inject ran, else 404 "run inject" — never a validation 400
+  });
+
+  test('§0.1b traversal track query is rejected 400', async ({ page }) => {
+    await loginAs(page, 'editor');
+    const resp = await page.request.get(
+      '/api/segment-editor/efnafraedi-2e/1/m68664/preview?track=..%2F..%2F..%2Fetc%2Fpasswd'
+    );
+    expect(resp.status()).toBe(400);
+  });
+
+  test('§0.1c malformed module id is rejected 400', async ({ page }) => {
+    await loginAs(page, 'editor');
+    const resp = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m123/preview');
+    expect(resp.status()).toBe(400); // fails ^(m\d{5}|chapter-metadata)$
+  });
+});
