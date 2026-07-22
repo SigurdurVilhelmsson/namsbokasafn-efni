@@ -10,6 +10,7 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { VALID_BOOKS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
+const { normalizeChapter } = require('../lib/chapterLabel');
 const { generateTm, serializeTm, FORMATS } = require('../../tools/lib/tm-export.cjs');
 const { getBookLicence } = require('../../tools/lib/book-licences.cjs');
 
@@ -35,24 +36,33 @@ router.get('/export', requireAuth, (req, res) => {
 
   let chapter = null;
   if (chapterRaw !== undefined && chapterRaw !== '') {
-    const n = Number(chapterRaw);
-    if (!/^\d+$/.test(String(chapterRaw)) || !Number.isInteger(n) || n < 1 || n > MAX_CHAPTERS) {
-      return res.status(400).json({ error: 'Invalid chapter', message: 'Chapter must be 1–99' });
+    const n = normalizeChapter(chapterRaw);
+    // accept -1 (appendices); numeric must be 1..MAX_CHAPTERS; reject 0/junk (null)
+    if (n === null || (n !== -1 && (n < 1 || n > MAX_CHAPTERS))) {
+      return res
+        .status(400)
+        .json({ error: 'Invalid chapter', message: 'Chapter must be 1–99 or appendices' });
     }
     chapter = n;
   }
 
   try {
-    const { tus } = generateTm(book, { chapter });
+    // generateTm/listFaithfulChapterDirs reads the on-disk dir dialect
+    // ('appendices'), not the canonical number -1 — convert at this
+    // disk-reading boundary (chapterLabel's contract).
+    const { tus } = generateTm(book, { chapter: chapter === -1 ? 'appendices' : chapter });
     if (!tus.length) {
       return res.status(404).json({
         error: 'No translation memory',
-        message: `No reviewed (faithful) content for ${book}${chapter ? ` chapter ${chapter}` : ''}.`,
+        message: `No reviewed (faithful) content for ${book}${
+          chapter === -1 ? ' appendices' : chapter ? ` chapter ${chapter}` : ''
+        }.`,
       });
     }
     const { licence, obtained } = getBookLicence(book); // fail-loud; VALID_BOOKS all have rows
     const body = serializeTm(tus, format, { date: new Date(), book, licence, obtained });
-    const fname = `${book}${chapter ? `-K${chapter}` : ''}-tm.${format}`;
+    const chapterLabelPart = chapter === -1 ? '-appendices' : chapter ? `-K${chapter}` : '';
+    const fname = `${book}${chapterLabelPart}-tm.${format}`;
     res.setHeader('Content-Type', CONTENT_TYPE[format]);
     res.setHeader('Content-Disposition', `attachment; filename="${fname}"`);
     return res.send(body);
