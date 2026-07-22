@@ -367,15 +367,23 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
   }
 
   // Validate path components before they reach path.join (F15). `bookId` and a
-  // traversing `chapter` (padStart is a no-op for long strings) would otherwise
-  // escape the book directory.
+  // traversing `chapter` would otherwise escape the book directory.
+  // normalizeChapter() only ever returns an integer or null — never a raw
+  // traversing string — so chapterNum (below) is safe to build dir names from.
   if (!VALID_BOOKS.includes(bookId)) {
     return res.status(400).json({ error: 'Invalid book', message: `Unknown book: ${bookId}` });
   }
+  let chapterNum = null;
   if (chapter !== undefined) {
-    const n = Number(chapter);
-    if (!/^\d+$/.test(String(chapter)) || !Number.isInteger(n) || n < 1 || n > MAX_CHAPTERS) {
-      return res.status(400).json({ error: 'Invalid chapter', message: 'Chapter must be 1–99' });
+    chapterNum = normalizeChapter(chapter);
+    // accept -1 (appendices); numeric must be 1..MAX_CHAPTERS; reject 0/junk/traversal (null)
+    if (
+      chapterNum === null ||
+      (chapterNum !== -1 && (chapterNum < 1 || chapterNum > MAX_CHAPTERS))
+    ) {
+      return res
+        .status(400)
+        .json({ error: 'Invalid chapter', message: 'Chapter must be 1–99 or appendices' });
     }
   }
 
@@ -390,14 +398,19 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
   }
 
   try {
-    // Chapter directory name: "ch01" for markdown types, "01" for publication types
-    const paddedChapter = chapter ? String(chapter).padStart(2, '0') : null;
-    const chapterDirName = paddedChapter ? `${config.chPrefix}${paddedChapter}` : null;
+    // Chapter directory name: "ch01"/"appendices" for markdown types, "01"/"appendices"
+    // for publication types — appendices dir is 'appendices' for BOTH conventions.
+    const chapterDirName =
+      chapterNum === null
+        ? null
+        : chapterNum === -1
+          ? 'appendices'
+          : `${config.chPrefix}${String(chapterNum).padStart(2, '0')}`;
 
     // Build ZIP filename
     let zipName;
-    if (chapter) {
-      zipName = `${bookId}-K${chapter}-${type}.zip`;
+    if (chapterNum !== null) {
+      zipName = `${bookId}-${chapterNum === -1 ? 'appendices' : `K${chapterNum}`}-${type}.zip`;
 
       // Check chapter directory exists
       const chapterPath = path.join(sourceDir, chapterDirName);
@@ -413,7 +426,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     // For EN markdown downloads, verify files are protected for MT
     if (type === 'en-md') {
-      const checkDir = chapter ? path.join(sourceDir, chapterDirName) : sourceDir;
+      const checkDir = chapterNum !== null ? path.join(sourceDir, chapterDirName) : sourceDir;
       const sampleFile = findFirstMdFile(checkDir, config.ext);
       if (sampleFile) {
         const sample = fs.readFileSync(sampleFile, 'utf-8').slice(0, 2000);
@@ -448,7 +461,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       }
     };
 
-    if (chapter) {
+    if (chapterNum !== null) {
       // Download single chapter
       const chapterPath = path.join(sourceDir, chapterDirName);
       addFilesFromDir(chapterPath, chapterDirName);

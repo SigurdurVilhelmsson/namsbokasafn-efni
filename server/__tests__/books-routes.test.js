@@ -11,6 +11,7 @@
 import { writeFileSync, existsSync, unlinkSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { PassThrough } from 'stream';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'module';
 
@@ -159,5 +160,119 @@ describe('GET /:bookId/chapters/:chapter — appendices (disk-sourced)', () => {
     expect(r.status).toBe(200);
     expect(r.body.chapter).toBe(1);
     expect(r.body.title).toBe('Chapter One');
+  });
+});
+
+/**
+ * GET /:bookId/download — appendices (C1c task 1).
+ *
+ * This route streams a ZIP (never calls res.json() on success), so the
+ * json-only `invoke()` harness above can't observe a 200. `invokeDownload`
+ * mocks res as a real Writable (PassThrough) so `archive.pipe(res)` works,
+ * and settles the test as soon as the load-bearing `Content-Disposition`
+ * header is set — that header is only reached once every early-return guard
+ * (invalid type/book/chapter, missing source dir, missing chapter dir, the
+ * en-md unprotected-segment check) has been passed, so observing it proves
+ * the chapter resolved to a real on-disk directory. We don't wait for the
+ * archive to finish zipping; a `data` listener drains bytes so archiver
+ * never backpressure-hangs on a large real file.
+ *
+ * Uses the real `efnafraedi-2e` book fixture (books/efnafraedi-2e/...),
+ * which already has content under both `02-for-mt/appendices/` and
+ * `05-publication/mt-preview/chapters/{appendices,01}` — no fixture
+ * directories needed. `pub-mt-preview` is used for the success-path
+ * assertions specifically to sidestep the (unrelated) en-md
+ * unprotected-segment 409 gate that appendices' real en-md content would
+ * otherwise trip.
+ */
+describe('GET /:bookId/download — appendices (C1c task 1)', () => {
+  const router = require('../routes/books');
+  const downloadHandler = router.stack
+    .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
+    .route.stack.at(-1).handle;
+
+  function invokeDownload(req) {
+    const res = new PassThrough();
+    res.statusCode = 200;
+    res.status = function (c) {
+      this.statusCode = c;
+      return this;
+    };
+    res.headersSent = false;
+    res.on('data', () => {}); // drain piped zip bytes; avoid backpressure hangs
+    res.on('error', () => {}); // ignore late stream errors after we've settled
+
+    const headers = {};
+
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const settle = (result) => {
+        if (settled) return;
+        settled = true;
+        resolve(result);
+      };
+
+      res.setHeader = function (name, value) {
+        headers[name] = value;
+        if (name === 'Content-Disposition') {
+          // Reached only after every early-return guard has passed.
+          settle({ status: res.statusCode, headers });
+        }
+      };
+      res.json = function (body) {
+        res.headersSent = true;
+        settle({ status: res.statusCode, headers, body });
+      };
+
+      Promise.resolve(downloadHandler(req, res)).catch((err) => {
+        if (!settled) reject(err);
+      });
+    });
+  }
+
+  it('resolves "appendices" to the appendices dir + zip name (not 400/404, not ch-1/chappendices)', async () => {
+    const r = await invokeDownload({
+      params: { bookId: 'efnafraedi-2e' },
+      query: { chapter: 'appendices', type: 'pub-mt-preview' },
+    });
+    expect(r.status).not.toBe(400);
+    expect(r.status).not.toBe(404);
+    expect(r.headers['Content-Disposition']).toContain(
+      'efnafraedi-2e-appendices-pub-mt-preview.zip'
+    );
+  });
+
+  it('leaves a numeric chapter byte-identical (dir + zip name)', async () => {
+    const r = await invokeDownload({
+      params: { bookId: 'efnafraedi-2e' },
+      query: { chapter: '1', type: 'pub-mt-preview' },
+    });
+    expect(r.status).not.toBe(400);
+    expect(r.status).not.toBe(404);
+    expect(r.headers['Content-Disposition']).toContain('efnafraedi-2e-K1-pub-mt-preview.zip');
+  });
+
+  it('still rejects chapter "0"', async () => {
+    const r = await invokeDownload({
+      params: { bookId: 'efnafraedi-2e' },
+      query: { chapter: '0', type: 'pub-mt-preview' },
+    });
+    expect(r.status).toBe(400);
+  });
+
+  it('still rejects garbage', async () => {
+    const r = await invokeDownload({
+      params: { bookId: 'efnafraedi-2e' },
+      query: { chapter: 'xyz', type: 'pub-mt-preview' },
+    });
+    expect(r.status).toBe(400);
+  });
+
+  it('still rejects a path-traversal chapter value', async () => {
+    const r = await invokeDownload({
+      params: { bookId: 'efnafraedi-2e' },
+      query: { chapter: '../../../etc/passwd', type: 'pub-mt-preview' },
+    });
+    expect(r.status).toBe(400);
   });
 });
