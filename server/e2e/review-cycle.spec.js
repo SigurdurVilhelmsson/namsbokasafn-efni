@@ -28,7 +28,7 @@ const EDITOR_ID = 70000 + (RUN_ID % 10000);
 const REVIEWER_ID = 80000 + (RUN_ID % 10000);
 const EDIT_MARKER = `[e2e-${RUN_ID}]`;
 
-test.describe.serial('Pass 1 review cycle', () => {
+test.describe.serial('§0.reg Pass 1 review cycle', () => {
   /** Shared state across serial tests */
   let segmentId;
   let originalContent;
