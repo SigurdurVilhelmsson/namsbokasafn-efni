@@ -142,4 +142,66 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     // (it reads from 03-faithful-translation/ which was just written)
     expect(seg.is).toContain(EDIT_MARKER);
   });
+
+  // §1b/§1d content-restore round-trip. Appended to THIS serial describe
+  // (rather than a standalone spec) because restore needs an existing
+  // version, and the apply above just created one via
+  // contentVersionService.snapshotModule (called from applyApprovedEdits
+  // just before it overwrote the faithful file with the pre-edit content —
+  // i.e. content WITHOUT EDIT_MARKER). Reuses this describe's closure state
+  // (segmentId, EDIT_MARKER, MODULE, BOOK, CHAPTER) — running in a separate
+  // parallel-worker spec would race applyApprovedEdits' (book, moduleId)
+  // scoping on the same m68663 module.
+
+  test('§1b restore reverts to the pre-edit version', async ({ page }) => {
+    await loginAs(page, 'admin', REVIEWER_ID);
+
+    const versionsRes = await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}/versions`);
+    expect(versionsRes.ok()).toBe(true);
+    const { versions } = await versionsRes.json();
+    expect(versions.length).toBeGreaterThan(0);
+
+    // getModuleVersions orders by version DESC, so the LAST entry is the
+    // lowest version number — the pre-edit snapshot taken just before the
+    // apply above overwrote the faithful file.
+    const target = versions[versions.length - 1].version;
+
+    const restoreRes = await page.request.post(
+      `${API}/${BOOK}/${CHAPTER}/${MODULE}/restore/${target}`,
+      { data: { confirm: true } }
+    );
+    const restoreData = await restoreRes.json();
+    expect(
+      restoreRes.ok(),
+      `Restore failed (${restoreRes.status()}): ${JSON.stringify(restoreData)}`
+    ).toBe(true);
+    expect(restoreData.success).toBe(true);
+    expect(restoreData.restoredVersion).toBe(target);
+
+    const reloadRes = await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}`);
+    expect(reloadRes.ok()).toBe(true);
+    const reloadData = await reloadRes.json();
+    const seg = reloadData.segments.find((s) => s.segmentId === segmentId);
+    expect(seg).toBeTruthy();
+    // Reverted to the pre-edit snapshot — the marker should be gone.
+    expect(seg.is).not.toContain(EDIT_MARKER);
+  });
+
+  test('§1b restore without confirm is rejected 400', async ({ page }) => {
+    await loginAs(page, 'admin', REVIEWER_ID);
+
+    const res = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/restore/1`, {
+      data: {},
+    });
+    expect(res.status()).toBe(400);
+  });
+
+  test('§1d version_restored appears in the activity log', async ({ page }) => {
+    await loginAs(page, 'admin', REVIEWER_ID);
+
+    const res = await page.request.get(`/api/activity/section/${BOOK}/${CHAPTER}/${MODULE}`);
+    expect(res.ok()).toBe(true);
+    const { activities } = await res.json();
+    expect(activities.some((a) => a.type === 'version_restored')).toBe(true);
+  });
 });
