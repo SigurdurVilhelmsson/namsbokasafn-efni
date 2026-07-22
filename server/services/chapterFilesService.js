@@ -15,6 +15,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const log = require('../lib/logger');
 const resolveDbPath = require('../lib/dbPath');
+const { chapterDir } = require('../lib/chapterLabel');
 
 const DB_PATH = resolveDbPath();
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -67,8 +68,7 @@ function isTableReady() {
  * Get the directory path for a chapter's generated files
  */
 function getChapterDir(bookSlug, chapterNum) {
-  const paddedChapter = String(chapterNum).padStart(2, '0');
-  return path.join(BOOKS_DIR, bookSlug, '02-for-mt', `ch${paddedChapter}`);
+  return path.join(BOOKS_DIR, bookSlug, '02-for-mt', chapterDir(chapterNum));
 }
 
 /**

@@ -215,7 +215,10 @@ router.get('/:bookId/chapters/:chapter', requireAuth, (req, res) => {
  */
 router.get('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
   const { bookId, chapter } = req.params;
-  const chapterNum = parseInt(chapter, 10);
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null) {
+    return res.status(400).json({ error: 'Invalid chapter' });
+  }
 
   try {
     // Get files from database
@@ -250,7 +253,10 @@ router.get('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
  */
 router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, requireEditor(), (req, res) => {
   const { bookId, chapter } = req.params;
-  const chapterNum = parseInt(chapter, 10);
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null) {
+    return res.status(400).json({ error: 'Invalid chapter' });
+  }
   const userId = req.user?.username || 'system';
 
   try {
@@ -278,7 +284,10 @@ router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, requireEditor(
 router.delete('/:bookId/chapters/:chapter/files', requireAuth, requireAdmin(), (req, res) => {
   const { bookId, chapter } = req.params;
   const { deleteFromDisk } = req.query;
-  const chapterNum = parseInt(chapter, 10);
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null) {
+    return res.status(400).json({ error: 'Invalid chapter' });
+  }
   const userId = req.user?.username || 'system';
 
   try {
@@ -542,7 +551,10 @@ router.post(
   upload.array('files', 50),
   async (req, res) => {
     const { bookId, chapter } = req.params;
-    const chapterNum = parseInt(chapter, 10);
+    const chapterNum = normalizeChapter(chapter);
+    if (chapterNum === null) {
+      return res.status(400).json({ error: 'Invalid chapter' });
+    }
     const userId = req.user?.username || 'system';
 
     if (!req.files || req.files.length === 0) {
