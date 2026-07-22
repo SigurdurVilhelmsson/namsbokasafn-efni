@@ -97,3 +97,41 @@ test.describe('§0.4a stored-XSS in a term source renders inert', () => {
     expect(dialogFired).toBe(false);
   });
 });
+
+/**
+ * §5a — page-auth: an anonymous browser hitting `/admin` (requirePageAuth →
+ * ADMIN, server/routes/views.js) must be redirected to `/login` server-side
+ * before any admin markup is ever sent — never a client-side-only guard that
+ * flashes the admin shell before redirecting.
+ *
+ * §sweep — a console-error tripwire across the main authenticated editor
+ * surfaces. Any `pageerror` or `console.error` here is a genuine page bug the
+ * manual QA sweep would have caught; the assertion must not be weakened to
+ * paper over a real finding.
+ */
+test.describe('§5a page-auth + console sweep', () => {
+  test('§5a anon /admin redirects to login, no admin DOM painted', async ({ browser }) => {
+    const context = await browser.newContext({ baseURL: 'http://localhost:3456' });
+    const anon = await context.newPage();
+    await anon.goto('/admin');
+    await anon.waitForLoadState('networkidle');
+    expect(anon.url()).toContain('/login');
+    // admin-only controls never rendered
+    expect(await anon.locator('#register-btn, button.tab[data-tab="users"]').count()).toBe(0);
+    await context.close();
+  });
+
+  test('§sweep no console/page errors across editor surfaces', async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
+    page.on('console', (m) => {
+      if (m.type() === 'error') errors.push(`console: ${m.text()}`);
+    });
+    await loginAs(page, 'admin');
+    for (const route of ['/editor', '/localization', '/library', '/admin']) {
+      await page.goto(route);
+      await page.waitForLoadState('networkidle');
+    }
+    expect(errors).toEqual([]);
+  });
+});
