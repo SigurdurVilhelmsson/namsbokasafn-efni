@@ -495,7 +495,7 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
       });
     }
 
-    const chapterNum = parseInt(chapter, 10);
+    const chapterNum = chapterLabel.normalizeChapter(chapter);
     const chapterData = book.chapters.find((c) => c.chapterNum === chapterNum);
 
     if (!chapterData) {

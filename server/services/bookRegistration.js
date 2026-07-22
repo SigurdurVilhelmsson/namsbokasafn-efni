@@ -19,6 +19,7 @@ const openstaxCatalogue = require('./openstaxCatalogue');
 const openstaxFetcher = require('./openstaxFetcher');
 const pipelineStatusService = require('./pipelineStatusService');
 const resolveDbPath = require('../lib/dbPath');
+const { chapterDir, compareChapters } = require('../lib/chapterLabel');
 
 const DB_PATH = resolveDbPath();
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -33,6 +34,45 @@ function getDb() {
     fs.mkdirSync(dbDir, { recursive: true });
   }
   return new Database(DB_PATH);
+}
+
+/**
+ * Insert appendix (chapter_num=-1) section rows. Add-only + idempotent: skips a
+ * section whose (book_id, chapter_num=-1, module_id) row already exists, so it
+ * is safe to call on a partially-registered book (registration OR backfill).
+ * @param {import('better-sqlite3').Database} db - Open DB handle (caller manages
+ *   transaction/connection lifecycle)
+ * @param {object} params
+ * @param {number} params.bookId - registered_books.id
+ * @param {number} params.chapterId - book_chapters.id for the appendices chapter (chapter_num=-1)
+ * @param {Array<{module_id: string, section_num: string, title_en: string|null}>} params.sections
+ * @returns {number} rows inserted
+ */
+function insertAppendixSections(db, { bookId, chapterId, sections }) {
+  const exists = db.prepare(
+    `SELECT 1 FROM book_sections WHERE book_id = ? AND chapter_num = -1 AND module_id = ?`
+  );
+  const insert = db.prepare(`
+    INSERT INTO book_sections
+      (book_id, chapter_id, chapter_num, section_num, module_id, title_en, title_is, cnxml_path, en_md_path, status)
+    VALUES (?, ?, -1, ?, ?, ?, NULL, ?, ?, 'not_started')
+  `);
+  const dir = chapterDir(-1); // 'appendices'
+  let inserted = 0;
+  for (const s of sections) {
+    if (exists.get(bookId, s.module_id)) continue;
+    insert.run(
+      bookId,
+      chapterId,
+      s.section_num,
+      s.module_id,
+      s.title_en ?? null,
+      `01-source/${dir}/${s.module_id}.cnxml`,
+      `02-for-mt/${dir}/${s.section_num}.en.md`
+    );
+    inserted++;
+  }
+  return inserted;
 }
 
 /**
@@ -196,7 +236,7 @@ async function registerBook(options) {
         // Insert sections
         for (const mod of modules) {
           const sectionNum = mod.section || `${chapterNum}.${modules.indexOf(mod)}`;
-          const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+          const chapterDirName = chapterDir(chapterNum); // imported helper; identical 'chNN' for numeric chapters
 
           insertSection.run(
             bookId,
@@ -206,8 +246,8 @@ async function registerBook(options) {
             mod.id,
             mod.title,
             null, // title_is - to be filled during translation
-            `01-source/${chapterDir}/${mod.id}.cnxml`,
-            `02-for-mt/${chapterDir}/${sectionNum.replace('.', '-')}.en.md`
+            `01-source/${chapterDirName}/${mod.id}.cnxml`,
+            `02-for-mt/${chapterDirName}/${sectionNum.replace('.', '-')}.en.md`
           );
 
           totalSections++;
@@ -218,6 +258,33 @@ async function registerBook(options) {
           title: chapter.title,
           titleIs: chapter.titleIs,
           sectionCount: modules.length,
+        });
+      }
+
+      if (bookData.appendices && bookData.appendices.length) {
+        const apxResult = insertChapter.run(
+          bookId,
+          -1,
+          'Appendices',
+          'Viðaukar',
+          bookData.appendices.length
+        );
+        const apxChapterId = apxResult.lastInsertRowid;
+        const apxSections = bookData.appendices.map((a, i) => ({
+          module_id: a.id,
+          section_num: String(i + 1),
+          title_en: a.title ?? null,
+        }));
+        totalSections += insertAppendixSections(db, {
+          bookId,
+          chapterId: apxChapterId,
+          sections: apxSections,
+        });
+        chapters.push({
+          chapterNum: -1,
+          title: 'Appendices',
+          titleIs: 'Viðaukar',
+          sectionCount: bookData.appendices.length,
         });
       }
 
@@ -403,55 +470,57 @@ function getRegisteredBook(slug) {
       registeredBy: book.registered_by,
       registeredAt: book.registered_at,
       status: book.status,
-      chapters: chapters.map((c) => {
-        // Count faithful-translation files on disk for this chapter
-        const chDir = `ch${String(c.chapter_num).padStart(2, '0')}`;
-        const faithfulDir = path.join(BOOKS_DIR, book.slug, '03-faithful-translation', chDir);
-        let hasFaithful = 0;
-        try {
-          if (fs.existsSync(faithfulDir)) {
-            hasFaithful = fs
-              .readdirSync(faithfulDir)
-              .filter((f) => f.match(/^m\d+-segments\.is\.md$/)).length;
+      chapters: chapters
+        .map((c) => {
+          // Count faithful-translation files on disk for this chapter
+          const chDir = chapterDir(c.chapter_num);
+          const faithfulDir = path.join(BOOKS_DIR, book.slug, '03-faithful-translation', chDir);
+          let hasFaithful = 0;
+          try {
+            if (fs.existsSync(faithfulDir)) {
+              hasFaithful = fs
+                .readdirSync(faithfulDir)
+                .filter((f) => f.match(/^m\d+-segments\.is\.md$/)).length;
+            }
+          } catch {
+            /* ignore */
           }
-        } catch {
-          /* ignore */
-        }
 
-        // Read pipeline progress from DB (authoritative source)
-        let pipelineProgress = { completed: 0, total: 7, pct: 0 };
-        try {
-          const dbStatus = pipelineStatusService.getChapterStage(book.slug, c.chapter_num);
-          if (dbStatus) {
-            pipelineProgress = computeChapterPipelineProgressFromDb(dbStatus);
+          // Read pipeline progress from DB (authoritative source)
+          let pipelineProgress = { completed: 0, total: 7, pct: 0 };
+          try {
+            const dbStatus = pipelineStatusService.getChapterStage(book.slug, c.chapter_num);
+            if (dbStatus) {
+              pipelineProgress = computeChapterPipelineProgressFromDb(dbStatus);
+            }
+          } catch (err) {
+            log.warn(
+              { slug: book.slug, chapter: c.chapter_num, err },
+              'DB read failed for chapter pipeline status'
+            );
           }
-        } catch (err) {
-          log.warn(
-            { slug: book.slug, chapter: c.chapter_num, err },
-            'DB read failed for chapter pipeline status'
-          );
-        }
 
-        return {
-          id: c.id,
-          chapterNum: c.chapter_num,
-          titleEn: c.title_en,
-          titleIs: c.title_is,
-          sectionCount: c.section_count,
-          status: c.status,
-          hasFaithful,
-          pipelineProgress,
-          progress: {
-            total: c.total_sections,
-            notStarted: c.not_started,
-            inMT: c.in_mt,
-            inReview: c.in_review,
-            reviewApproved: c.review_approved,
-            inLocalization: c.in_localization,
-            published: c.published,
-          },
-        };
-      }),
+          return {
+            id: c.id,
+            chapterNum: c.chapter_num,
+            titleEn: c.title_en,
+            titleIs: c.title_is,
+            sectionCount: c.section_count,
+            status: c.status,
+            hasFaithful,
+            pipelineProgress,
+            progress: {
+              total: c.total_sections,
+              notStarted: c.not_started,
+              inMT: c.in_mt,
+              inReview: c.in_review,
+              reviewApproved: c.review_approved,
+              inLocalization: c.in_localization,
+              published: c.published,
+            },
+          };
+        })
+        .sort((a, b) => compareChapters(a.chapterNum, b.chapterNum)),
     };
   } catch (err) {
     db.close();
@@ -1272,6 +1341,7 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
 
 module.exports = {
   registerBook,
+  insertAppendixSections,
   isBookRegistered,
   getRegisteredBook,
   listRegisteredBooks,

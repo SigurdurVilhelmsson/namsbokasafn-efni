@@ -1925,8 +1925,10 @@
           }
 
           var titleEl = document.getElementById('chapter-detail-title');
+          var fullLabel = chapterLabel.full(chapterNum);
+          var chTitle = data.chapter.titleIs || data.chapter.titleEn;
           titleEl.textContent =
-            chapterLabel.full(chapterNum) + ': ' + (data.chapter.titleIs || data.chapter.titleEn);
+            chTitle && chTitle !== fullLabel ? fullLabel + ': ' + chTitle : fullLabel;
 
           panel.innerHTML = data.chapter.sections
             .map(function (sec) {

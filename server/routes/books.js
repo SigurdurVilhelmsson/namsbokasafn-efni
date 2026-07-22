@@ -192,7 +192,11 @@ router.get('/:bookId/chapters/:chapter', requireAuth, (req, res) => {
     return res.status(404).json({ error: 'Bók fannst ekki' });
   }
 
-  const chapterData = book.chapters.find((c) => c.chapter === parseInt(chapter, 10));
+  const chapterNum = normalizeChapter(chapter);
+  const chapterData =
+    chapterNum === -1
+      ? { chapter: -1, title: 'Viðaukar', modules: book.appendices || [] }
+      : book.chapters.find((c) => c.chapter === chapterNum);
 
   if (!chapterData) {
     return res.status(404).json({ error: 'Chapter not found' });
