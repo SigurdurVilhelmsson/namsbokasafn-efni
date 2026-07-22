@@ -91,6 +91,12 @@ beforeAll(async () => {
           titleIs: null,
           modules: [{ id: 'm10001', title: 'Section One', section: '1.1' }],
         },
+        {
+          chapter: 2,
+          title: 'Chapter Two',
+          titleIs: null,
+          modules: [{ id: 'm10002', title: 'Section Two', section: '2.1' }],
+        },
       ],
       appendices: [
         { id: 'm90001', title: 'Periodic Table' },
@@ -163,6 +169,23 @@ describe('registerBook — appendix section registration', () => {
 
     expect(ch).toBeTruthy();
     expect(ch.title_is).toBe('Viðaukar');
+  });
+
+  it('getRegisteredBook orders the appendix chapter LAST, after numeric chapters ascending', () => {
+    // SQLite integer-sorts -1 before 1/2 under a plain `ORDER BY chapter_num`;
+    // every other read site (chapterLabel.compareChapters, status.js,
+    // publication.js) treats appendices as sorting AFTER all numeric
+    // chapters. getRegisteredBook's chapters array feeds admin.js's
+    // GET /api/admin/books/:slug verbatim into books.html, which renders the
+    // chapters grid in array order with no client re-sort — so this pins the
+    // same appendices-last convention here.
+    const book = bookRegistration.getRegisteredBook(SLUG);
+    const nums = book.chapters.map((c) => c.chapterNum);
+
+    expect(nums[nums.length - 1]).toBe(-1);
+    const numericNums = nums.filter((n) => n !== -1);
+    expect(numericNums).toEqual([...numericNums].sort((a, b) => a - b));
+    expect(numericNums).toEqual([1, 2]);
   });
 
   it('insertAppendixSections is exported, add-only, and idempotent', () => {

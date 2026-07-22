@@ -19,7 +19,7 @@ const openstaxCatalogue = require('./openstaxCatalogue');
 const openstaxFetcher = require('./openstaxFetcher');
 const pipelineStatusService = require('./pipelineStatusService');
 const resolveDbPath = require('../lib/dbPath');
-const { chapterDir } = require('../lib/chapterLabel');
+const { chapterDir, compareChapters } = require('../lib/chapterLabel');
 
 const DB_PATH = resolveDbPath();
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -470,55 +470,57 @@ function getRegisteredBook(slug) {
       registeredBy: book.registered_by,
       registeredAt: book.registered_at,
       status: book.status,
-      chapters: chapters.map((c) => {
-        // Count faithful-translation files on disk for this chapter
-        const chDir = chapterDir(c.chapter_num);
-        const faithfulDir = path.join(BOOKS_DIR, book.slug, '03-faithful-translation', chDir);
-        let hasFaithful = 0;
-        try {
-          if (fs.existsSync(faithfulDir)) {
-            hasFaithful = fs
-              .readdirSync(faithfulDir)
-              .filter((f) => f.match(/^m\d+-segments\.is\.md$/)).length;
+      chapters: chapters
+        .map((c) => {
+          // Count faithful-translation files on disk for this chapter
+          const chDir = chapterDir(c.chapter_num);
+          const faithfulDir = path.join(BOOKS_DIR, book.slug, '03-faithful-translation', chDir);
+          let hasFaithful = 0;
+          try {
+            if (fs.existsSync(faithfulDir)) {
+              hasFaithful = fs
+                .readdirSync(faithfulDir)
+                .filter((f) => f.match(/^m\d+-segments\.is\.md$/)).length;
+            }
+          } catch {
+            /* ignore */
           }
-        } catch {
-          /* ignore */
-        }
 
-        // Read pipeline progress from DB (authoritative source)
-        let pipelineProgress = { completed: 0, total: 7, pct: 0 };
-        try {
-          const dbStatus = pipelineStatusService.getChapterStage(book.slug, c.chapter_num);
-          if (dbStatus) {
-            pipelineProgress = computeChapterPipelineProgressFromDb(dbStatus);
+          // Read pipeline progress from DB (authoritative source)
+          let pipelineProgress = { completed: 0, total: 7, pct: 0 };
+          try {
+            const dbStatus = pipelineStatusService.getChapterStage(book.slug, c.chapter_num);
+            if (dbStatus) {
+              pipelineProgress = computeChapterPipelineProgressFromDb(dbStatus);
+            }
+          } catch (err) {
+            log.warn(
+              { slug: book.slug, chapter: c.chapter_num, err },
+              'DB read failed for chapter pipeline status'
+            );
           }
-        } catch (err) {
-          log.warn(
-            { slug: book.slug, chapter: c.chapter_num, err },
-            'DB read failed for chapter pipeline status'
-          );
-        }
 
-        return {
-          id: c.id,
-          chapterNum: c.chapter_num,
-          titleEn: c.title_en,
-          titleIs: c.title_is,
-          sectionCount: c.section_count,
-          status: c.status,
-          hasFaithful,
-          pipelineProgress,
-          progress: {
-            total: c.total_sections,
-            notStarted: c.not_started,
-            inMT: c.in_mt,
-            inReview: c.in_review,
-            reviewApproved: c.review_approved,
-            inLocalization: c.in_localization,
-            published: c.published,
-          },
-        };
-      }),
+          return {
+            id: c.id,
+            chapterNum: c.chapter_num,
+            titleEn: c.title_en,
+            titleIs: c.title_is,
+            sectionCount: c.section_count,
+            status: c.status,
+            hasFaithful,
+            pipelineProgress,
+            progress: {
+              total: c.total_sections,
+              notStarted: c.not_started,
+              inMT: c.in_mt,
+              inReview: c.in_review,
+              reviewApproved: c.review_approved,
+              inLocalization: c.in_localization,
+              published: c.published,
+            },
+          };
+        })
+        .sort((a, b) => compareChapters(a.chapterNum, b.chapterNum)),
     };
   } catch (err) {
     db.close();
