@@ -135,3 +135,42 @@ test.describe('§5a page-auth + console sweep', () => {
     expect(errors).toEqual([]);
   });
 });
+
+/**
+ * §4c — pipeline/apply controls are role-gated: `/editor`'s `#pipeline-panel`
+ * and `#apply-panel` are shown only for head-editor/admin (client
+ * `showPipelinePanel`/`showApplyPanel` in server/public/js/segment-editor.js,
+ * gated on `getEffectiveRole()`; default `display:none` in the markup).
+ *
+ * This is read-only navigation — loading a module and reading panel
+ * visibility depends on ROLE, not module content, so it carries no
+ * fixture-mutation collision with the writer specs that also touch m68664.
+ *
+ * Both directions are asserted: hidden for `editor` (least-privilege), and
+ * at least one panel visible for `head-editor` (role-sensitivity proof — so
+ * the assertion isn't vacuously "always hidden").
+ */
+test.describe('§4c pipeline/apply controls are role-gated', () => {
+  test('§4c editor does not see pipeline/apply panels', async ({ page }) => {
+    await loginAs(page, 'editor');
+    await page.goto('/editor?book=efnafraedi-2e&chapter=1&module=m68664');
+    await page.waitForLoadState('networkidle');
+    // Panel visibility is decided synchronously inside loadModule() right
+    // after renderModule(), so waiting for the rendered segment list proves
+    // the module (and therefore the panel gating) has finished loading.
+    await expect(page.locator('.segment-row').first()).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('#pipeline-panel')).toBeHidden();
+    await expect(page.locator('#apply-panel')).toBeHidden();
+  });
+
+  test('§4c head-editor DOES see them (role-sensitivity proof)', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await page.goto('/editor?book=efnafraedi-2e&chapter=1&module=m68664');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('.segment-row').first()).toBeVisible({ timeout: 10000 });
+    // opening a module triggers showApplyPanel/showPipelinePanel for privileged roles
+    await expect(page.locator('#pipeline-panel, #apply-panel').first()).toBeVisible({
+      timeout: 10000,
+    });
+  });
+});
