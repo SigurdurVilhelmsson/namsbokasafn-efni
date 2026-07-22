@@ -120,7 +120,7 @@ router.post(
         type: 'assignment',
         title: 'Nýr yfirlestur úthlutaður',
         message: `Þú hefur verið úthlutað yfirlestri á kafla ${section.sectionNum} í ${section.bookTitleIs}`,
-        link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.sectionNum}`,
+        link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.moduleId}`,
       });
 
       // Log activity
@@ -203,7 +203,7 @@ router.post(
         type: 'assignment',
         title: 'Ný staðfæring úthlutað',
         message: `Þú hefur verið úthlutað staðfæringu á kafla ${section.sectionNum} í ${section.bookTitleIs}`,
-        link: `/localization-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.sectionNum}`,
+        link: `/localization-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.moduleId}`,
       });
 
       // Log activity
@@ -450,7 +450,7 @@ router.post(
           type: 'approval',
           title: 'Yfirlestur samþykktur',
           message: `Yfirlestur þinn á kafla ${section.sectionNum} hefur verið samþykktur`,
-          link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.sectionNum}`,
+          link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.moduleId}`,
         });
       }
 
@@ -533,7 +533,7 @@ router.post(
           type: 'changes_requested',
           title: 'Breytingar óskast',
           message: `Breytingar óskast á kafla ${section.sectionNum}: ${notes.substring(0, 100)}...`,
-          link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.sectionNum}`,
+          link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.moduleId}`,
         });
       }
 
