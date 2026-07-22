@@ -33,7 +33,7 @@
 
 ## File Structure
 
-- **Modify** `server/e2e/review-cycle.spec.js` — Task 1 (tag its describe `§0.reg …`; §0.reg is already covered there).
+- **Modify** `server/e2e/review-cycle.spec.js` — Task 1 (tag its describe `§0.reg …`) + Task 7 (append §1b/§1d restore steps to its serial describe).
 - **Create** `server/e2e/a4-coverage.spec.js` — first CREATED by Task 4, then extended by Tasks 5, 6, 7 (new cross-cutting flows).
 - **Modify** `server/e2e/rbac.spec.js` — Task 2 (cross-book authz + no-session).
 - **Modify** `server/e2e/segment-editor.spec.js` — Task 3 (preview guards).
@@ -355,9 +355,11 @@ test.describe('§4c pipeline/apply controls are role-gated', () => {
 
 ---
 
-## Task 7: `a4-coverage.spec.js` — §1b/§1d restore round-trip + version_restored activity
+## Task 7: §1b/§1d restore round-trip (RESCOPED — extend `review-cycle.spec.js`)
 
-**Files:** Modify `server/e2e/a4-coverage.spec.js`.
+> **RESCOPED 2026-07-22 (same reason as Task 1):** restore needs an existing version, which means applying an edit to a module — and doing that on `m68663` in a NEW parallel-worker spec races `review-cycle.spec.js` (m68663's exclusive owner); a4-coverage cannot depend on review-cycle's version either (cross-worker timing is nondeterministic on the shared DB). **Resolution: append the §1b/§1d restore steps to `review-cycle.spec.js`'s existing `§0.reg Pass 1 review cycle` serial describe**, AFTER its chain (which already applies an edit to `m68663`, creating version history). Serial + same worker = no collision; reuse the describe's `segmentId`/`EDIT_MARKER`/`MODULE` closure variables. Do NOT add a restore describe to `a4-coverage.spec.js`.
+
+**Files:** Modify `server/e2e/review-cycle.spec.js` (append restore steps to its serial describe).
 **Interfaces:** `GET /api/segment-editor/:book/:ch/:module/versions` → `{versions:[{version,applied_by,applied_at}]}`; `POST .../restore/:version` `{confirm:true}` → `{success:true,restoredVersion,snapshotVersion,segmentsRestored}` (requireHeadEditor); `GET /api/activity/section/:book/:ch/:section` → activity rows incl. `type:'version_restored'`. Depends on a module that has ≥1 applied version — Task 1's chain applies one to `__e2e-fixture__ m68663`, so run this AFTER a version exists (serial, or apply one here).
 
 - [ ] **Step 1: Write the test** (self-contained: apply an edit to create version history, then restore, asserting the revert + the activity event; head-editor owns `__e2e-fixture__`):
