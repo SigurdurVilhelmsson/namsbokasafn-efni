@@ -15,6 +15,7 @@
 - **§4a/§4b DROPPED (finding, not a test):** the `/` my-work "current task" header renders the raw `module_id` (`server/views/my-work.html:1249`, `task.section` = unresolved id from `server/routes/my-work.js:86`), and the task URL carries `module=mNNNNN` (`my-work.js:51-60`). These rows describe behavior the app does not have → a passing coverage test is impossible. Task 8 logs this as a UX finding; do NOT write §4a/§4b tests.
 - **§2 (localization review tier) + §3 (assignment enforcement) DEFERRED to a follow-up "PR 1b":** both need persistent `book_settings` toggles on the single shared E2E server/DB (cross-spec-parallel leak hazard), and §3 additionally needs a seeded DB user whose `provider_id` matches the JWT `sub` plus an assignment row — no existing E2E seeding idiom (`seed-fixture.js` seeds no users/settings). Their logic is already unit-covered (`assignmentEnforcement.test.js`, `localizationReviewService.test.js`). PR 1b will register a dedicated fixture book (e.g. `__e2e-enforce__`) + seed a user in `seed-fixture.js` to isolate the toggles. Out of scope here.
 - **Already-green rows NOT re-tested:** §4d (`concurrent-editing.spec`), §5d (`smoke.spec`), CSP (`csp.spec`), the §0.3 basics already in `rbac.spec`.
+- **§0.reg is ALREADY covered by `review-cycle.spec.js`** (recon correction, 2026-07-22): that spec drives the full editor→submit→approve→complete(`appliedCount>0`)→reload-marker chain as one serial flow on `__e2e-fixture__`/`m68663` — exactly §0.reg. The checklist's "not asserted as one flow" mark predates it. Duplicating it (a) re-tests a green flow and (b) races `review-cycle.spec.js` on its *exclusive* fixture module `m68663` across parallel workers (`applyApprovedEdits` is `(book,module_id)`-scoped → `'All approved edits have already been applied'` → `applied.appliedCount` undefined → intermittent RED). **Resolution: §0.reg's tagged home is `review-cycle.spec.js` (add the `§0.reg` tag to its describe); do NOT add a duplicate chain to `a4-coverage.spec.js`.** Task 1 is rescoped accordingly; `a4-coverage.spec.js` is first CREATED by Task 4.
 
 ## Global Constraints
 
@@ -32,15 +33,18 @@
 
 ## File Structure
 
-- **Create** `server/e2e/a4-coverage.spec.js` — Tasks 1, 4, 5, 6, 7 (new cross-cutting flows).
+- **Modify** `server/e2e/review-cycle.spec.js` — Task 1 (tag its describe `§0.reg …`; §0.reg is already covered there).
+- **Create** `server/e2e/a4-coverage.spec.js` — first CREATED by Task 4, then extended by Tasks 5, 6, 7 (new cross-cutting flows).
 - **Modify** `server/e2e/rbac.spec.js` — Task 2 (cross-book authz + no-session).
 - **Modify** `server/e2e/segment-editor.spec.js` — Task 3 (preview guards).
 
 ---
 
-## Task 1: `a4-coverage.spec.js` scaffold + §0.reg full approve/apply chain
+## Task 1: Tag §0.reg on `review-cycle.spec.js` (RESCOPED — see scope decision above)
 
-**Files:** Create `server/e2e/a4-coverage.spec.js`.
+> **RESCOPED 2026-07-22:** recon confirmed `review-cycle.spec.js` already covers §0.reg on the same fixture module (`__e2e-fixture__`/`m68663`). Task 1 is therefore: **(a) add the `§0.reg` tag to `review-cycle.spec.js`'s describe title** (`test.describe.serial('§0.reg Pass 1 review cycle', …)`), and **(b) ensure `a4-coverage.spec.js` does NOT contain a duplicate chain** (it is first created by Task 4). No new mutating chain, no `m68663` collision. The original duplicate-chain steps below are SUPERSEDED — do not implement them.
+
+**Files:** Modify `server/e2e/review-cycle.spec.js` (tag its describe only — no behavior change).
 **Interfaces:** Consumes `loginAs`. Endpoints (base `API='/api/segment-editor'`): `GET ${API}/:book/:ch/:module` → `{segments:[{segmentId,is,...}]}`; `POST ${API}/:book/:ch/:module/edit` `{segmentId,originalContent,editedContent,category}` → `{editId}`; `POST ${API}/:book/:ch/:module/submit` → `{reviewId}` (or 409 → look up via `GET ${API}/review-queue?book=`); `POST ${API}/edit/:editId/approve` `{note}` → `{success:true}`; `POST ${API}/reviews/:reviewId/complete` → `{status:'approved',applied:{appliedCount}}`.
 
 - [ ] **Step 1: Write the test** (mirror `review-cycle.spec.js`, but assert the WHOLE chain as one serial flow — this is the §0.reg gap "full chain not asserted as one flow"):
@@ -221,7 +225,7 @@ test.describe('§0.1 live-preview guards', () => {
 
 ## Task 4: `a4-coverage.spec.js` — §0.4a stored-XSS rendered inert
 
-**Files:** Modify `server/e2e/a4-coverage.spec.js`.
+**Files:** **Create** `server/e2e/a4-coverage.spec.js` (this task is its first content — Task 1 was rescoped to tag `review-cycle.spec.js` instead of creating this file). Add the standard header `const { test, expect } = require('@playwright/test'); const { loginAs } = require('./helpers/auth');`.
 **Interfaces:** `POST /api/terminology/` `{english,icelandic,source,...}` → `201 {term:{id}}` (free-text `source` accepted only via API; the UI is a `<select>`). List render: `/editor` terminology panel or the terminology page renders source via `formatSource(src)` → `escapeHtml`. Cleanup: `DELETE /api/terminology/:id`.
 
 - [ ] **Step 1: Write the test** (create the term with an XSS `source` via API, then load the terminology UI and assert the payload is inert — no dialog, no `window.__xss`, and the payload appears as escaped text. The implementer must open `server/views/terminology.html` to confirm the exact list container/search selector; the assertion below targets the documented `.term-source`/`.translation-meta` render + a global side-effect probe, which does not depend on the search path):
