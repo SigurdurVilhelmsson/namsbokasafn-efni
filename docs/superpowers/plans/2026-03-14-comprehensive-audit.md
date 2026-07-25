@@ -453,7 +453,7 @@ git commit -m "fix: systematic sweep — fix stale references and inconsistencie
 - [ ] **Step 1: Start the server**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni/server
+cd <repo>/server
 node app.js
 ```
 

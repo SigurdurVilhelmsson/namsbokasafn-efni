@@ -122,7 +122,7 @@ describe('getBookLicence — sourced from book-config.json', () => {
 
 - [ ] **Step 3: Run to verify it fails**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/book-licences.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/book-licences.test.js`
 Expected: FAIL — `mod.BOOK_LICENCES` is still defined (old code), and the throw-message regex changed from `/book-licences\.cjs/` to `/licence/i`.
 
 - [ ] **Step 4: Rewrite `tools/lib/book-licences.cjs`:**
@@ -185,12 +185,12 @@ module.exports = { getBookLicence };
 
 - [ ] **Step 5: Run to verify it passes**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/book-licences.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/book-licences.test.js`
 Expected: PASS (all slugs return the pinned values from book-config; throws for stjornufraedi/testbook/no-such-book; no BOOK_LICENCES).
 
 - [ ] **Step 6: Verify the consumers are byte-unchanged.** Run their suites — the TM licence-stamp + corpus licence tests must stay green with no snapshot/byte change:
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/export-corpus.test.js tools/__tests__/generate-tm.test.js tools/__tests__/tm-export.test.js && cd server && npx vitest run __tests__/tmRoute.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/export-corpus.test.js tools/__tests__/generate-tm.test.js tools/__tests__/tm-export.test.js && cd server && npx vitest run __tests__/tmRoute.test.js`
 Expected: PASS — all **THREE** byte-frozen consumers green (export-corpus, generate-tm, tm route), proving the `{licence, obtained}` contract held. `export-corpus.test.js` exercises the licence stamp (18 assertions) — it is the third named consumer and MUST be in this gate (advisor catch: `tm-export.test.js` tests the lib, not the corpus). If any snapshot/byte assertion moves, STOP — the contract was not preserved.
 
 - [ ] **Step 7: Commit**
@@ -282,7 +282,7 @@ describe('licence agreement: efni book-config ↔ vefur book.ts', () => {
 
 - [ ] **Step 2: Run it (vefur is checked out here, so it runs — not skips)**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/licence-vefur-contract.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/licence-vefur-contract.test.js`
 Expected: PASS — the 5 provenanced books agree after normalisation. If it FAILS on a specific book, that is a real efni↔vefur licence disagreement — STOP and report it (a provenance-integrity finding for the lead, not a test to loosen).
 
 - [ ] **Step 3: Mutation-check the normalisation + gate.** Temporarily change one book's `book-config.json` `licence.code` to a wrong value (e.g. `edlisfraedi-2e` → `"CC BY 4.0"`), re-run, CONFIRM the agreement test goes RED (disagreement with vefur's `CC-BY-NC-SA-4.0`), then REVERT the config. Record the RED output. (Proves the test actually compares, not just normalises to a constant.)
@@ -356,7 +356,7 @@ describe('RESTRICTIVENESS', () => {
 
 - [ ] **Step 2: Run to verify it fails**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/licence-containment.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/licence-containment.test.js`
 Expected: FAIL — `Cannot find module '../lib/licence-containment.cjs'`.
 
 - [ ] **Step 3: Create `tools/lib/licence-containment.cjs`:**
@@ -420,7 +420,7 @@ module.exports = { assertLicenceContainment, mostRestrictive, RESTRICTIVENESS };
 
 - [ ] **Step 4: Run to verify it passes**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/licence-containment.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/licence-containment.test.js`
 Expected: PASS.
 
 - [ ] **Step 5: Commit**
@@ -466,7 +466,7 @@ describe('added-terms seed is intentionally licence-neutral (item 17 c2)', () =>
 
 - [ ] **Step 2: Run to verify it passes** (the seed already carries no licence — this LOCKS that):
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni/server && npx vitest run __tests__/arnastofnunSeed.test.js`
+Run: `cd <repo>/server && npx vitest run __tests__/arnastofnunSeed.test.js`
 Expected: PASS.
 
 - [ ] **Step 3: Add the disposition comment** at the top of `server/lib/arnastofnunSeed.js`, after the existing header block's final line (before `const SEED_COLUMNS`):
@@ -520,7 +520,7 @@ footer owner, and the containment invariant."
 
 - [ ] **Step 1: Run the full suite from the repo root**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npm test`
+Run: `cd <repo> && npm test`
 Expected: PASS — baseline **3271** + the new `book-licences` (rewritten), `licence-vefur-contract`, `licence-containment`, and `arnastofnunSeed` disposition cases; **no reds**. Record the new total. Also run once with the cross-repo gate armed to prove it: `VEFUR_CONTRACT=1 npx vitest run tools/__tests__/licence-vefur-contract.test.js` → PASS (vefur present).
 
 - [ ] **Step 2: Update the campaign doc** — flip item 17 from "Not started"/"unblocked" to shipped, and note Phase 4 complete. In `docs/plans/2026-07-11-pre-semester-coding-campaign.md`, edit the item-17 bullet (search `**Licence metadata per product**` / the `17.` line) to record: book-config canonical + getBookLicence reads it (contract frozen); VEFUR_CONTRACT cross-repo pin; containment helper (no caller); added-terms licence-neutral; footer stays vefur-owned (part b dropped). Add any out-of-scope register notes discovered during implementation.

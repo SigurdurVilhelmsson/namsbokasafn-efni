@@ -32,9 +32,9 @@ There are two layers:
 
 ```cron
 # DB backup: local + encrypted off-box, every 6 hours
-30 */6 * * * BACKUP_REMOTE=secret:namsbokasafn-db /home/siggi/repos/namsbokasafn-efni/scripts/backup-db.sh
+30 */6 * * * BACKUP_REMOTE=secret:namsbokasafn-db <repo>/scripts/backup-db.sh
 # Monthly restore-test: prove an off-box backup is actually recoverable
-0 4 1 * *   BACKUP_REMOTE=secret:namsbokasafn-db /home/siggi/repos/namsbokasafn-efni/scripts/verify-db-backup.sh
+0 4 1 * *   BACKUP_REMOTE=secret:namsbokasafn-db <repo>/scripts/verify-db-backup.sh
 ```
 
 The crypt passphrase is **not** on the cron line — it lives in the rclone config that cron's environment inherits.

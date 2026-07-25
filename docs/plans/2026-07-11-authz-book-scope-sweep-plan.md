@@ -152,7 +152,7 @@ describe('pipeline POSTs are book-scoped', () => {
 
 - [ ] **Step 2: Run to verify the cross-book cases FAIL (RED)**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run server/__tests__/crossBookAuthz.test.js`
+Run: `cd <repo> && npx vitest run server/__tests__/crossBookAuthz.test.js`
 Expected: the three `head-editor of another book → 403` cases FAIL receiving **400** (today the role-only gate passes them through to `validateParams`); owner/admin/editor cases already pass. If a case fails with 401, the mint (issuer/secret) is wrong — fix the harness, not the assertion.
 
 - [ ] **Step 3: Wire the guard into pipeline.js**

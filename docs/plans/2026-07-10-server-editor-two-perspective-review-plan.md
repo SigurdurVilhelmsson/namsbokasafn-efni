@@ -60,7 +60,7 @@
 ```bash
 SCRATCH="/tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/0f8a1aa0-d1bd-4b9c-a9e9-62f5c41fd512/scratchpad/server-review"
 mkdir -p "$SCRATCH"
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git status --short          # expect: clean (design doc + this plan already committed)
 node --version             # expect: v22.x  (run `nvm use` first if not)
 lsof -ti:3456 || echo "port 3456 free"
@@ -140,7 +140,7 @@ export const meta = {
 // --- inlined context (pasted from SCRATCH at author time) ---
 const INVENTORY = `<<PASTE finder-context.md file-inventory table here>>`
 const EXCLUSIONS = `<<PASTE exclusion-list.md here>>`
-const ROOT = '/home/siggi/dev/repos/namsbokasafn-efni/server'
+const ROOT = '<repo>/server'
 
 const FINDING_SCHEMA = {
   type: 'object',
@@ -340,13 +340,13 @@ Confirm every gate in `workflow-model.md` has a corresponding row (match or drif
 - [ ] **Step 1: Bring up a throwaway live server + capture the pre-walkthrough fixture baseline**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni/server
+cd <repo>/server
 lsof -ti:3456 | xargs -r kill
 # Record the fixture's git state (tracked + ignored) BEFORE any live writes,
 # so teardown removes only paths that appear afterward (apply/publish create
 # NEW untracked files under 03-faithful-translation/ and 05-publication/;
 # `git checkout` won't remove those and `git clean` would eat gitignored .bak files).
-( cd /home/siggi/dev/repos/namsbokasafn-efni && \
+( cd <repo> && \
   git status --porcelain --ignored books/__e2e-fixture__/ | sort > "$SCRATCH/fixture-before.txt" )
 E2E_DB="$(pwd)/../pipeline-output/review-sessions.db"
 rm -f "$E2E_DB" "$E2E_DB-wal" "$E2E_DB-shm"
@@ -379,7 +379,7 @@ Rule: a dimension assessed CODE-READ is labeled as such in the report and in Pha
 Write `server/e2e/walk.spec.js` (NOT in SCRATCH — Playwright's config uses `testDir: '.'` = `server/e2e/` with `testMatch: '*.spec.js'`, so a spec outside that dir is not discovered). Use `loginAs(page, role)` from `server/e2e/helpers/auth.js`. It is a *driver*, not an assertion suite — it navigates each persona's path, screenshots each screen to `SCRATCH/shots/`, and dumps any non-2xx API response + browser console errors to stdout. Cover the fixture book `__e2e-fixture__` (chapter 1, module `m68664`). With the manual server from Step 1 already up, `reuseExistingServer` (dev, non-CI) reuses it on `review-sessions.db` rather than spawning one on `e2e-sessions.db`:
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni/server
+cd <repo>/server
 npx playwright test --config=e2e/playwright.config.js walk.spec.js \
   --reporter=list 2>&1 | tee "$SCRATCH/walk-run.txt"
 ```
@@ -452,7 +452,7 @@ Items needing real Entra OAuth, nginx headers, or the deploy path (e.g. §5c bro
 Revert the fixture precisely: restore *modified tracked* files with `git checkout`, and delete only paths that appeared *after* the baseline (apply/publish create new untracked files under `03-faithful-translation/`/`05-publication/`; `git clean` is banned because it would also eat the gitignored `.bak` files the fixture legitimately carries).
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 lsof -ti:3456 | xargs -r kill
 rm -f pipeline-output/review-sessions.db*
 rm -f server/e2e/walk.spec.js                     # delete the temporary driver spec
@@ -491,7 +491,7 @@ Expected: `survivorCount` ≥ 0 with a real report; `agents_error` was 0 during 
 
 Also confirm the finders (which have Bash) left the tree clean — read-only review means no source drift:
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni && git status --short
+cd <repo> && git status --short
 ```
 Expected: clean. If a finder wrote a file, revert it before proceeding (memory: review finder-agents with Bash can dirty the tree — `git status` before merging after fan-outs).
 
@@ -576,7 +576,7 @@ Re-read all three with fresh eyes: no placeholder/TBD; every finding has file:li
 - [ ] **Step 5: Commit on a docs branch**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git checkout -b docs/server-editor-review
 git add docs/audit/2026-07-10-server-code-review.md \
         docs/audit/2026-07-10-editorial-workflow-review.md \
@@ -603,12 +603,12 @@ Append any non-server/editor discoveries (e.g. a tools/ or vefur seam noticed in
 
 - [ ] **Step 2: Write the memory topic file**
 
-Create `/home/siggi/.claude/projects/-home-siggi-dev-repos-namsbokasafn-efni/memory/server-editor-review-2026-07.md` (frontmatter: type project): what the two reviews covered, where the reports live, the top themes, the model mix of the fan-out, and the RESUME POINT (lead triages the joint summary → consolidated remediation). Add a one-line pointer to `MEMORY.md` under Active Topics.
+Create `<claude-memory>/memory/server-editor-review-2026-07.md` (frontmatter: type project): what the two reviews covered, where the reports live, the top themes, the model mix of the fan-out, and the RESUME POINT (lead triages the joint summary → consolidated remediation). Add a one-line pointer to `MEMORY.md` under Active Topics.
 
 - [ ] **Step 3: Push and open the PR**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git add docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md
 git commit -m "docs(register): log out-of-scope finds from server/editor review"
 git push -u origin docs/server-editor-review

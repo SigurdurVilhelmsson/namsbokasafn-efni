@@ -49,7 +49,7 @@
 - [ ] **Step 1: Confirm the branch and clean tree**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git branch --show-current   # expect: feat/item9-d3-os-embed
 git status --short          # expect: clean
 git log --oneline -1        # expect: docs(item9/D3): design spec — os-embed exercise translation path

@@ -7,7 +7,7 @@
 #   ./scripts/backup-db.sh /path/to/backups   # backup to custom directory
 #
 # Designed to run as a cron job, e.g.:
-#   0 */6 * * * /home/siggi/dev/repos/namsbokasafn-efni/scripts/backup-db.sh
+#   0 */6 * * * /path/to/namsbokasafn-efni/scripts/backup-db.sh
 #
 # The script:
 #   1. Checkpoints the WAL to ensure all data is in the main DB file

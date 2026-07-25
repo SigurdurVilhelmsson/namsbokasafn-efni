@@ -338,7 +338,7 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 **Files:**
 - Modify: `docs/plans/2026-07-07-byte-perfect-efnafraedi-roadmap.md` (mark #2 DELIVERED)
 - Modify: `docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md` (register row for F1)
-- Modify: `/home/siggi/.claude/projects/-home-siggi-dev-repos-namsbokasafn-efni/memory/MEMORY.md` and `chemistry-clean-slate.md` (RESUME POINT → next = tech-debt sweep / Pass-1)
+- Modify: `<claude-memory>/memory/MEMORY.md` and `chemistry-clean-slate.md` (RESUME POINT → next = tech-debt sweep / Pass-1)
 
 **Interfaces:**
 - Consumes: all prior tasks.

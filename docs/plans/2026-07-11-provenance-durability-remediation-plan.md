@@ -107,7 +107,7 @@ describe('backup-db.sh off-box upload', () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run scripts/__tests__/backup-db.test.mjs`
+Run: `cd <repo> && npx vitest run scripts/__tests__/backup-db.test.mjs`
 Expected: FAIL — the script doesn't honor `DB_PATH_OVERRIDE`, doesn't emit the skip message, doesn't upload or write the heartbeat.
 
 - [ ] **Step 3: Implement the script changes**
@@ -343,8 +343,8 @@ git commit -m "feat(health): surface off-box backup staleness in /api/health"
 Create `docs/technical/backup-and-restore.md` covering: the env vars the scripts read (`BACKUP_REMOTE`, `BACKUP_REMOTE_KEEP`, `OFFBOX_BACKUP_STALE_HOURS`); **where the encryption passphrase lives** — in the rclone crypt remote's config (`rclone config` sets it, or `RCLONE_CONFIG_<NAME>_PASSWORD`), *not* in a script env var — so encryption is client-side and the scripts never handle plaintext keys; the one-time Linode Object Storage setup (create bucket + S3 access key; `rclone config` a `linode` s3 remote + a `secret:` crypt remote wrapping it with the passphrase); the crontab lines:
 
 ```cron
-0 */6 * * * BACKUP_REMOTE=secret:namsbokasafn-db /home/siggi/dev/repos/namsbokasafn-efni/scripts/backup-db.sh
-0 4 1 * *  BACKUP_REMOTE=secret:namsbokasafn-db /home/siggi/dev/repos/namsbokasafn-efni/scripts/verify-db-backup.sh
+0 */6 * * * BACKUP_REMOTE=secret:namsbokasafn-db <repo>/scripts/backup-db.sh
+0 4 1 * *  BACKUP_REMOTE=secret:namsbokasafn-db <repo>/scripts/verify-db-backup.sh
 ```
 
 (The crypt passphrase is not on the cron line — it lives in the rclone config that cron's environment inherits.) And a **restore runbook**: install rclone, configure the same `secret:` crypt remote with the passphrase, run `scripts/verify-db-backup.sh` to confirm, then `rclone copyto secret:<latest> pipeline-output/sessions.db` and restart the server. Note that `/api/health` now shows `offbox_backup.stale=true` if the 6h cron stops.
@@ -365,7 +365,7 @@ git commit -m "docs(backup): off-box backup + restore runbook and cron"
 
 - [ ] **Step 1: Full suite**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npm test`
+Run: `cd <repo> && npm test`
 Expected: green (the new backup + health tests included). **Honesty note:** the encrypt/upload and restore/integrity cases use `it.skipIf(!hasRclone)` / require `sqlite3`, so a bare CI without those binaries **skips the upload+restore core** — "npm test green" then only proves the unset-remote skip path + the pure health helper. Before shipping Track A, run the suite **once on a box with `rclone` + `sqlite3` installed** (or in the deploy environment) so the encrypt→upload→restore→integrity path is actually exercised; note in the PR whether that run happened.
 
 - [ ] **Step 2: Open the PR**
@@ -431,7 +431,7 @@ describe('01-source overwrite path removed (PROV-1)', () => {
 
 - [ ] **Step 2: Run to verify test (1) fails, test (2) passes**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/source-write-guard.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/source-write-guard.test.js`
 Expected: test (1) FAILS (`cmdUpdate` + the `upstreamContent` write + the `update <moduleId>` usage line still exist); test (2) PASSES (the current tools all match the allowlist). Do NOT weaken test (1) to pass here — B2 makes it green by removing the verb.
 
 ### Task B2: Delete the `update` verb + correct the F2 doc
@@ -553,7 +553,7 @@ describe('mt-lock', () => {
 
 - [ ] **Step 2: Run to verify it fails**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/mt-lock.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/mt-lock.test.js`
 Expected: FAIL — `../lib/mt-lock.cjs` does not exist.
 
 - [ ] **Step 3: Implement `tools/lib/mt-lock.cjs`**
@@ -724,7 +724,7 @@ describe('api-translate lock decision', () => {
 
 - [ ] **Step 2: Run to verify it fails**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npx vitest run tools/__tests__/api-translate-mt-lock.test.js`
+Run: `cd <repo> && npx vitest run tools/__tests__/api-translate-mt-lock.test.js`
 Expected: FAIL — `mtRunDecision` is not exported.
 
 - [ ] **Step 3: Implement the decision + wire it**
@@ -859,7 +859,7 @@ git commit -m "feat(mt-lock): stage markers in git-backup + backfill already-edi
 
 - [ ] **Step 1: Full suite**
 
-Run: `cd /home/siggi/dev/repos/namsbokasafn-efni && npm test`
+Run: `cd <repo> && npm test`
 Expected: green (mt-lock lib, first-edit hook, api-translate decision all included).
 
 - [ ] **Step 2: Confirm no cross-tier write regression**

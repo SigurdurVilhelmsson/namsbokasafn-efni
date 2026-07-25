@@ -81,7 +81,7 @@ sudo journalctl -u ritstjorn -p err
 ### Location
 
 ```
-/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db
+<repo>/pipeline-output/sessions.db
 ```
 
 SQLite database containing: users, workflow sessions, segment edits, module reviews, terminology, feedback, notifications.

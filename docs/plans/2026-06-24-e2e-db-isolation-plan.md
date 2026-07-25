@@ -236,7 +236,7 @@ Expected: all green. This is the real acceptance test — it proves (a) the refa
 
 Run:
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 BEFORE=$(stat -c %Y pipeline-output/sessions.db 2>/dev/null || echo none)
 ( cd server/e2e && lsof -ti:3456 | xargs -r kill; CI=1 npx playwright test smoke.spec.js terminology.spec.js segment-editor.spec.js --reporter=line >/dev/null 2>&1 )
 AFTER=$(stat -c %Y pipeline-output/sessions.db 2>/dev/null || echo none)

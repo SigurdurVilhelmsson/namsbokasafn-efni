@@ -20,7 +20,7 @@
 - New user-facing strings are Icelandic and live in `server/public/js/ui-strings.js` (never hardcoded English; UI terminology per `ui-terminology-convention`: the tool is "Ritill").
 - Four guard tests in `server/__tests__/terminologyService.test.js` MUST remain green **unmodified**: `homograph: keeps only the in-subject sense in primary + dropdown`, `missing-term issue uses only the in-subject approved translation`, `no book subject (unmapped) → no filtering, all senses kept`, and the three allow-list arm tests (`keeps an in-subject translation` / `keeps a general-tagged translation` / `keeps an untagged translation (no subjects)`). If any of them fails, the implementation is wrong — do not edit the test.
 - Commit messages end with: `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`
-- Run all test commands from the **repo root** (`/home/siggi/dev/repos/namsbokasafn-efni`).
+- Run all test commands from the **repo root** (`<repo>`).
 
 ## File Structure
 

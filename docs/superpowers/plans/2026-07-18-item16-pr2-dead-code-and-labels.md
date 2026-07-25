@@ -58,7 +58,7 @@ Background: the stat is dead end-to-end — `GET /api/status/dashboard` initiali
 - [ ] **Step 1: Create the branch and the progress header**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git fetch origin && git status -sb   # expect: ## main...origin/main, clean
 git checkout -b fix/item16-pr2-dead-code-and-labels
 ```

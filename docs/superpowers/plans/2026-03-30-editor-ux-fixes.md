@@ -974,7 +974,7 @@ git commit -m "fix(dashboard): connect Skoða buttons to assignments page"
 - [ ] **Step 1: Run all tests**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni && npm test
+cd <repo> && npm test
 ```
 
 Expected: All ~1070 tests pass (new test for `chapter-metadata` included).

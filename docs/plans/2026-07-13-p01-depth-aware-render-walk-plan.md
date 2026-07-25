@@ -833,7 +833,7 @@ Set up the comparison checkout and run:
 
 ```bash
 git worktree add /tmp/claude-1000/p01-main-worktree origin/main
-node <scratchpad>/render-diff-harness.mjs /tmp/claude-1000/p01-main-worktree /home/siggi/dev/repos/namsbokasafn-efni
+node <scratchpad>/render-diff-harness.mjs /tmp/claude-1000/p01-main-worktree <repo>
 git worktree remove /tmp/claude-1000/p01-main-worktree
 ```
 

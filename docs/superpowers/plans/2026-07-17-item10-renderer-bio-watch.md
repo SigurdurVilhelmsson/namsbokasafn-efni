@@ -43,7 +43,7 @@
 
 - [ ] **Step 1:**
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git branch --show-current   # expect: fix/item10-renderer-bio-watch
 git status --short          # expect: clean
 git log --oneline -1        # expect: docs(item10): design spec — renderer biology-watch sweep
@@ -869,9 +869,9 @@ Adapt the item-8 harness (`docs/superpowers/plans/2026-07-16-item8-pr2-handled-t
 
 ```bash
 SCRATCH=<session scratchpad>
-node "$SCRATCH/render-corpus-hash-allbooks.mjs" /home/siggi/dev/repos/namsbokasafn-efni "$SCRATCH/h-branch.txt"
+node "$SCRATCH/render-corpus-hash-allbooks.mjs" <repo> "$SCRATCH/h-branch.txt"
 git worktree add "$SCRATCH/main-tree" main
-ln -s /home/siggi/dev/repos/namsbokasafn-efni/node_modules "$SCRATCH/main-tree/node_modules"
+ln -s <repo>/node_modules "$SCRATCH/main-tree/node_modules"
 node "$SCRATCH/render-corpus-hash-allbooks.mjs" "$SCRATCH/main-tree" "$SCRATCH/h-main.txt"
 diff "$SCRATCH/h-main.txt" "$SCRATCH/h-branch.txt" > "$SCRATCH/corpus-diff.txt"; wc -l "$SCRATCH/corpus-diff.txt"
 rm "$SCRATCH/main-tree/node_modules"; git worktree remove "$SCRATCH/main-tree"

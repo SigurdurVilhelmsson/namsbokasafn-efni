@@ -48,7 +48,7 @@
 - [ ] **Step 1: Copy the fixture inputs**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 for d in 02-for-mt 02-mt-output 02-structure; do
   mkdir -p "books/__e2e-fixture__/$d/ch01"
 done
@@ -187,7 +187,7 @@ Expected: B-1 now PASSES (its efnafraedi-2e m68664 content is no longer mutated 
 - [ ] **Step 5: Isolation check — books/ clean after a full run**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 ( cd server/e2e && lsof -ti:3456 | xargs -r kill; CI=1 npx playwright test --reporter=line >/dev/null 2>&1 )
 echo "--- books/ status after full run (expect empty) ---"
 git status --porcelain books/

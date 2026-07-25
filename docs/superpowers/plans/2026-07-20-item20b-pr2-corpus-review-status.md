@@ -6,7 +6,7 @@
 
 **Architecture:** A pure consumer change, `tools/` only — no server code, no data op, no re-render. The corpus loop already builds each module's tier maps from disk; PR2 loads the sidecar from the sibling path in that same loop, resolves a per-row `reviewStatus` through an ordered rule set, and counts the outcomes. The TSV's duplicated column contract (`TSV_COLUMNS` + a hand-built positional row array) collapses into one `TSV_SPEC` array of `{ column, get }` records that both the header and every row derive from.
 
-**Tech Stack:** Node ESM, Vitest. Run every command from the repo root (`/home/siggi/dev/repos/namsbokasafn-efni`).
+**Tech Stack:** Node ESM, Vitest. Run every command from the repo root (`<repo>`).
 
 ## Global Constraints
 

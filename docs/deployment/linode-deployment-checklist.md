@@ -141,7 +141,7 @@ curl -X POST https://ritstjorn.namsbokasafn.is/api/admin/migrate \
 
 ## 6. Environment Configuration
 
-Create `/home/siggi/repos/namsbokasafn-efni/server/.env`:
+Create `<repo>/server/.env`:
 
 ```bash
 # Server Configuration
@@ -187,7 +187,7 @@ After=network.target
 [Service]
 Type=simple
 User=siggi
-WorkingDirectory=/home/siggi/repos/namsbokasafn-efni/server
+WorkingDirectory=<repo>/server
 ExecStart=/usr/bin/node index.js
 Restart=on-failure
 RestartSec=10

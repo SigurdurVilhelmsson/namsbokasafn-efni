@@ -474,7 +474,7 @@ git commit -m "feat(assignments): show editorial progress per chapter"
 - [ ] **Step 1: Run all tests**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni && npm test
+cd <repo> && npm test
 ```
 
 Expected: All tests pass.

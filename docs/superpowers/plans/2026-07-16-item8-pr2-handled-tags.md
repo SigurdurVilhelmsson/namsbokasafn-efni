@@ -49,7 +49,7 @@ So "extractor adoption" is satisfied vacuously and the probe's check 5 (unknown-
 - [ ] **Step 1: Create the branch**
 
 ```bash
-cd /home/siggi/dev/repos/namsbokasafn-efni
+cd <repo>
 git fetch origin
 git checkout main && git pull --rebase
 git checkout -b refactor/item8-d2-handled-tags
@@ -613,7 +613,7 @@ console.log(`${files.length} modules hashed -> ${outFile}`);
 
 ```bash
 SCRATCH=<scratchpad directory from the session>
-node "$SCRATCH/render-corpus-hash.mjs" /home/siggi/dev/repos/namsbokasafn-efni "$SCRATCH/hashes-branch.txt"
+node "$SCRATCH/render-corpus-hash.mjs" <repo> "$SCRATCH/hashes-branch.txt"
 ```
 
 Expected: `N modules hashed` (N ≈ 150+, every mt-preview/faithful module present on disk).
@@ -621,10 +621,10 @@ Expected: `N modules hashed` (N ≈ 150+, every mt-preview/faithful module prese
 - [ ] **Step 3: Run against a pristine `main` worktree, then diff**
 
 ```bash
-git -C /home/siggi/dev/repos/namsbokasafn-efni worktree add "$SCRATCH/main-tree" main
+git -C <repo> worktree add "$SCRATCH/main-tree" main
 node "$SCRATCH/render-corpus-hash.mjs" "$SCRATCH/main-tree" "$SCRATCH/hashes-main.txt"
 diff "$SCRATCH/hashes-main.txt" "$SCRATCH/hashes-branch.txt" && echo "CORPUS EQUIVALENT"
-git -C /home/siggi/dev/repos/namsbokasafn-efni worktree remove "$SCRATCH/main-tree"
+git -C <repo> worktree remove "$SCRATCH/main-tree"
 ```
 
 Expected: `diff` prints nothing; `CORPUS EQUIVALENT` echoes; worktree removed. **If any line differs, STOP** — the refactor changed rendering; find the membership/behavior leak before proceeding (do not rationalize a diff away).
