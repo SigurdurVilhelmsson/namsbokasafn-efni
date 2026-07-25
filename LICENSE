@@ -30,10 +30,39 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## Translations (CC BY 4.0)
+## Content (`books/`) — per book, not uniform
 
-All translations in the `books/` directory are licensed under the Creative Commons
-Attribution 4.0 International License (CC BY 4.0).
+**There is no single licence for `books/`.** Each book's Icelandic derivative
+carries the Creative Commons licence that was in force on its OpenStax source
+**on the date that source was obtained**. OpenStax relicensed several titles from
+CC BY 4.0 to CC BY-NC-SA 4.0 in 2026; a CC licence is irrevocable for the copy
+obtained under it, so the books differ.
+
+| Book (slug) | OpenStax source | Obtained | Licence |
+|---|---|---|---|
+| `efnafraedi-2e` | Chemistry 2e | 2026-01-19 | CC BY 4.0 |
+| `liffraedi-2e` | Biology 2e | 2026-03-11 | CC BY 4.0 |
+| `orverufraedi` | Microbiology | 2026-03-09 | CC BY 4.0 |
+| `lifraen-efnafraedi` | Organic Chemistry | 2026-03-23 | **CC BY-NC-SA 4.0** |
+| `edlisfraedi-2e` | College Physics 2e | 2026-03-23 | **CC BY-NC-SA 4.0** |
+
+**The two CC BY-NC-SA 4.0 books grant no commercial rights and no
+non-ShareAlike rights.** For `lifraen-efnafraedi` and `edlisfraedi-2e` you may
+not use the material commercially, and any adaptation you distribute must be
+licensed CC BY-NC-SA 4.0. Do not assume the CC BY terms above apply to them.
+
+The authoritative, machine-readable licence for each book is the `licence` block
+in `books/<slug>/book-config.json`. That file — not this one — is the source of
+truth; if the two ever disagree, `book-config.json` governs. The evidence behind
+each determination (upstream commit hashes, relicense dates, the reasoning for
+College Physics) is recorded in
+[docs/provenance/openstax-cnxml-licence-provenance.md](docs/provenance/openstax-cnxml-licence-provenance.md).
+
+Any directory under `books/` not listed above (e.g. `stjornufraedi`,
+`__e2e-fixture__`) is scaffolding or test fixture, is not published content, and
+carries no content licence grant.
+
+### CC BY 4.0 terms (the three books marked CC BY 4.0 above)
 
 You are free to:
 - Share — copy and redistribute the material in any medium or format
@@ -45,10 +74,15 @@ Under the following terms:
 
 Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
 
+### CC BY-NC-SA 4.0 terms (Organic Chemistry, College Physics 2e)
+
+Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
 ## Original Source Material
 
-The translations are derived from OpenStax textbooks, which are also licensed
-under CC BY 4.0. Original authors and OpenStax must be credited in any use
-of the translated materials.
+The translations are derived from OpenStax textbooks. Each derivative inherits
+its source's licence as listed in the table above — **the sources are not all
+CC BY 4.0.** Original authors and OpenStax must be credited in any use of the
+translated materials.
 
 OpenStax: https://openstax.org/

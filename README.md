@@ -12,15 +12,17 @@ The pipeline produces three distinct assets, each valuable on its own:
 2. **Translation memory** — Segment-aligned EN-IS parallel corpus in TMX format. Useful for training MT systems, fine-tuning Icelandic language models, and other translation projects.
 3. **Localized content** — Versions adapted specifically for Icelandic secondary school students, with SI units, local context, and extended exercises where beneficial.
 
-All content is released under CC BY 4.0. The tooling is MIT-licensed. If you're working on textbook translation for another language, the pipeline and tools are designed to be reusable.
+Content licensing is **per book, not uniform** — see [Licensing](#license). The tooling is MIT-licensed, except the editorial server (`server/`), which is AGPL-3.0. If you're working on textbook translation for another language, the pipeline and tools are designed to be reusable.
 
 ### Books
 
-| Book | Slug | Source | Status | Published |
-|------|------|--------|--------|-----------|
-| **Efnafraedi** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) | In progress | [namsbokasafn.is](https://namsbokasafn.is) |
-| **Liffraedi** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) | Proof-of-concept (Ch3 imported) | — |
-| **Orverufraedi** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) | Registered | — |
+| Book | Slug | Source | Licence | Status | Published |
+|------|------|--------|---------|--------|-----------|
+| **Efnafræði** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) | CC BY 4.0 | In progress | [namsbokasafn.is](https://namsbokasafn.is) |
+| **Líffræði** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) | CC BY 4.0 | Proof-of-concept (Ch3 imported) | — |
+| **Örverufræði** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) | CC BY 4.0 | Registered | — |
+| **Lífræn efnafræði** (Organic Chemistry) | `lifraen-efnafraedi` | [OpenStax](https://openstax.org/details/books/organic-chemistry) | **CC BY-NC-SA 4.0** | MT preview | [namsbokasafn.is](https://namsbokasafn.is) |
+| **Eðlisfræði** (College Physics 2e) | `edlisfraedi-2e` | [OpenStax](https://openstax.org/details/books/college-physics-2e) | **CC BY-NC-SA 4.0** | MT preview | [namsbokasafn.is](https://namsbokasafn.is) |
 
 ## Demo / Live Version
 
@@ -297,7 +299,30 @@ The project needs editors to review translations. No programming experience requ
 ### Dual license
 
 1. **Tools and scripts** (`tools/`, `server/`, `scripts/`) — [MIT License](LICENSE)
-2. **Translations and content** (`books/`) — [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+2. **Content** (`books/`) — a **per-book** Creative Commons licence, not one blanket licence
+
+### Content licensing is per book
+
+Each book's Icelandic derivative carries the licence in force on its OpenStax
+source **when that source was obtained**. OpenStax relicensed several titles
+CC BY 4.0 → CC BY-NC-SA 4.0 during 2026, and a CC licence is irrevocable for the
+copy obtained under it — so these differ, and no blanket claim is accurate.
+
+| Book | Licence |
+|------|---------|
+| Efnafræði (Chemistry 2e) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Líffræði (Biology 2e) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Örverufræði (Microbiology) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Lífræn efnafræði (Organic Chemistry) | [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| Eðlisfræði (College Physics 2e) | [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+
+**Lífræn efnafræði and Eðlisfræði carry no commercial rights and no
+non-ShareAlike rights.** You may not use them commercially, and any adaptation
+you distribute must itself be CC BY-NC-SA 4.0.
+
+Authoritative source: the `licence` block in `books/<slug>/book-config.json`.
+Evidence and reasoning: [docs/provenance/openstax-cnxml-licence-provenance.md](docs/provenance/openstax-cnxml-licence-provenance.md).
+See [LICENSE](LICENSE) for the full terms.
 
 ### Content attribution
 
