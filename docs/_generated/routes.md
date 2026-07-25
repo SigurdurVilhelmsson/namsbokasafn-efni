@@ -117,6 +117,10 @@
 | GET | `/:book/:chapter/:moduleId/pending-edits` |
 | GET | `/:book/:chapter/:moduleId/history` |
 | GET | `/:book/:chapter/:moduleId/:segmentId/history` |
+| GET | `/:book/:chapter/:moduleId/versions` |
+| GET | `/:book/:chapter/:moduleId/versions/:version` |
+| GET | `/:book/:chapter/:moduleId/version-history/:segmentId` |
+| POST | `/:book/:chapter/:moduleId/restore/:version` |
 | POST | `/:book/:chapter/:moduleId/log` |
 
 ## /my-work
@@ -202,6 +206,8 @@
 | GET | `/:book/:chapter/repetition-report` |
 | GET | `/:book/:chapter/:moduleId` |
 | POST | `/:book/:chapter/:moduleId/edit` |
+| POST | `/:book/:chapter/:moduleId/accept` |
+| POST | `/acceptance/:id/revoke` |
 | DELETE | `/edit/:editId` |
 | POST | `/:book/:chapter/:moduleId/submit` |
 | GET | `/reviews` |
@@ -270,9 +276,11 @@
 | GET | `/lookup` |
 | GET | `/stats` |
 | GET | `/review-queue` |
+| GET | `/review-queue/counts` |
 | GET | `/subjects` |
 | GET | `/categories` |
 | GET | `/export` |
+| GET | `/added-terms/export` |
 | POST | `/mine` |
 | GET | `/mined-candidates` |
 | POST | `/mined-candidates/:id/dismiss` |
@@ -284,6 +292,8 @@
 | POST | `/:headwordId/translations` |
 | PUT | `/translations/:id` |
 | DELETE | `/translations/:id` |
+| POST | `/translations/batch-approve` |
+| POST | `/translations/:id/reject` |
 | POST | `/translations/:id/approve` |
 | POST | `/translations/:id/dispute` |
 | POST | `/:id/discuss` |
@@ -293,6 +303,12 @@
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
 | POST | `/check-consistency` |
+
+## /tm
+
+| Method | Path |
+|--------|------|
+| GET | `/export` |
 
 ## /views
 

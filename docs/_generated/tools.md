@@ -31,11 +31,12 @@
 | `download-source` | Downloads a tarball of the repository, extracts module CNXML files organized |
 | `exercise-assemble` | (item 9 / D3). The inject-stage counterpart for exercise content. |
 | `exercise-extract` | segments (item 9 / D3). |
+| `export-corpus` | Emits, per segment, the four pipeline tiers {EN, MT, faithful, localized} |
 | `generate-glossary` | translated CNXML files. Produces a book-wide glossary sorted by |
 | `generate-image-mapping` | translated figure files. This is the producer side of the image-localization |
 | `generate-index` | translated CNXML files and organizing them alphabetically with |
 | `generate-source-manifest` | the committed sha256 baseline that makes a silent 01-source swap detectable (F2) |
-| `generate-tm` | The EN source segments (02-for-mt/) and the human-reviewed IS segments |
+| `generate-tm` | Pairing + serialization live in the boundary lib so the server route |
 | `inventory-math-labels` | generate (default): scan a book's 01-source math text nodes → write a ranked |
 | `merge-glossary` | Three-source glossary merge tool. Combines: |
 | `migrate-pipeline-status` | and populates the chapter_pipeline_status table in the database. |
@@ -63,6 +64,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*42 tools total (42 active, 0 deprecated)*
+*43 tools total (43 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
