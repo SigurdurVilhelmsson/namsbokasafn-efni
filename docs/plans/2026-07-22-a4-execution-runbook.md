@@ -27,7 +27,9 @@ A4 = the manual QA §0–§5 walk plus 3 prod-only cases. This runbook runs it *
 ## Phase 1 — Automated gate (10 min, mostly waiting)
 
 4. **Unit gate (efni):** from the repo root, `npm test` → **all green**. This is the authoritative unit gate (authz logic, restore/version service, enforcement, escaping, render rollback). 🟢
-5. **E2E gate (efni):** `npm run test:e2e` → **all green** (kill anything on `:3456` first). Once the buildout PR 1 lands, this turns these rows 🟢: **§0.1a–c, §0.3a–d, §0.4a, §0.reg, §1b/1d/1e, §2a–f, §3a–e, §4a/4b/4c, §5a/5b**, plus the console-error sweep. 🟡→🟢
+5. **E2E gate (efni):** `npm run test:e2e` (kill anything on `:3456` first). **⚠️ Known baseline: 2 PRE-EXISTING failures** — `editor-workflow.spec` + `ux-phase2.spec` (module m68664), red since 2026-07-12, tracked as campaign item **C2**, plus their deterministic serial-cascade skips. Everything else must pass; **any third failure is a real regression.**
+   **Rows this turns 🟢 (delivered by buildout PR 1, merged as of this line):** **§0.1a/b/c** (preview: 200 + rendered HTML; traversal `track` → 400; malformed module → 400) · **§0.3a/c/d** (cross-book head-editor apply/publish → authz 403; admin bypass) · **§0.4a** (stored-XSS term source renders inert in the real DOM) · **§0.reg** (full editor→submit→approve→apply chain — tagged on `review-cycle.spec`) · **§1b/§1d** (restore round-trip reverts + `version_restored` activity) · **§1e** (cross-book restore → 403) · **§4c** (pipeline/apply panels role-gated) · **§5a** (anon `/admin` 302→`/login`, admin shell never sent — transport-level no-flash proof) · **§5b** (no-session state change rejected) · **console-error sweep** across `/editor`,`/localization`,`/library`,`/admin`.
+   **NOT covered by PR 1 — still hand-walk these:** **§2a–f** (localization review tier) and **§3a–e** (assignment enforcement) → deferred to **PR 1b** (both need persistent per-book `book_settings` toggles on the shared E2E DB + a seeded DB user; their logic is already Vitest-covered). **§4a/§4b** → **not automatable: a real UX gap** — the my-work "current task" header renders the raw `mNNNNN` (`server/views/my-work.html:1249` uses the unresolved `module_id`), so the row's stated expectation ("Chapter N · Section title") does not exist in the app today. Treat §4a/§4b as a logged finding, not a QA failure. 🟡→🟢
 6. **E2E gate (vefur):** after buildout PR 2 lands, run vefur's E2E (in `namsbokasafn-vefur`) → green. Covers **§0.4b** (published-page breakout) + reader render spot-check. 🟡→🟢
 7. **Status validation:** `npm run validate` → clean (if any chapter status files changed).
 
@@ -72,8 +74,8 @@ A4 = the manual QA §0–§5 walk plus 3 prod-only cases. This runbook runs it *
 
 | Phase | Rows / cases | Effort after buildout |
 |---|---|---|
-| 1 Automated | §0.1–0.4, §0.reg, §1a–e, §2, §3, §4a–d, §5a/b/d + console sweep | run 2 commands, confirm green |
-| 2 Manual residual | §0.2, §1f, §4e, §2f/§3f judgment | ~30 min hand-walk |
+| 1 Automated | §0.1, §0.3, §0.4a, §0.reg, §1a–e, §4c, §4d, §5a/b/d + console sweep | run 2 commands, confirm green (mind the 2 known C2 reds) |
+| 2 Manual residual | §0.2, §1f, §4e + **§2 and §3 until PR 1b lands**; §4a/§4b = logged UX finding, not a walk | ~45 min hand-walk (~30 once PR 1b lands) |
 | 3 Prod-only | Entra OAuth · nginx posture · §5c boot | ~20 min on prod |
 | 4 Deploy | — | `deploy.sh` + backfill |
 | 5 Sign-off | record + lift gate | 5 min |

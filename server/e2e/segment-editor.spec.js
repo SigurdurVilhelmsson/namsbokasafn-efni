@@ -420,3 +420,33 @@ test.describe('O segment propagation', () => {
     expect(body.created.length + body.skipped.length).toBeGreaterThan(0);
   });
 });
+
+test.describe('§0.1 live-preview guards', () => {
+  test('§0.1a preview of a real module renders expected HTML', async ({ page }) => {
+    await loginAs(page, 'editor');
+    const resp = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/preview');
+    // m68664.cnxml (mt-preview track) is tracked in git, so it exists on any
+    // fresh clone — hard-pin 200, not just "not 400" (that also passed for a
+    // broken-renderer 500). Confirm the body is genuinely rendered HTML, not
+    // just a 200 with an empty/error payload.
+    expect(resp.status()).toBe(200);
+    expect(resp.headers()['content-type']).toContain('text/html');
+    const body = await resp.text();
+    expect(body).toContain('<article class="cnx-module');
+    expect(body).toContain('data-module-id="m68664"');
+  });
+
+  test('§0.1b traversal track query is rejected 400', async ({ page }) => {
+    await loginAs(page, 'editor');
+    const resp = await page.request.get(
+      '/api/segment-editor/efnafraedi-2e/1/m68664/preview?track=..%2F..%2F..%2Fetc%2Fpasswd'
+    );
+    expect(resp.status()).toBe(400);
+  });
+
+  test('§0.1c malformed module id is rejected 400', async ({ page }) => {
+    await loginAs(page, 'editor');
+    const resp = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m123/preview');
+    expect(resp.status()).toBe(400); // fails ^(m\d{5}|chapter-metadata)$
+  });
+});
