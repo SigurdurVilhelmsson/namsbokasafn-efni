@@ -341,13 +341,29 @@ See [LICENSE](LICENSE) for the full terms.
 
 Based on open textbooks from [OpenStax](https://openstax.org/), Rice University.
 
-**Chemistry 2e** — Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
-Translated by Sigurdur E. Vilhelmsson. Licensed under CC BY 4.0.
+**Credit follows the method, not the job title.** For most books the first draft
+is machine translation (Erlendur, Miðeind) which people then edit — so the
+machine is the translator, and the people are credited for **ritstjórn** and
+**yfirlestur**. Biology is the exception: it is human-translated. No reviewer is
+credited on chapters that have not actually been reviewed; chapters marked
+*forskoðun* (preview) are raw machine translation.
 
-When using these assets, please attribute:
+| Hlutverk | |
+|----------|---|
+| Verkefnastjóri og ritstjórn | Sigurður Einar Vilhelmsson |
+| Yfirlestur og málfar í efnafræði | Guðrún Ingibjörg Stefánsdóttir |
+| Þýðing og yfirlestur í líffræði | Þórhallur Halldórsson |
+| Vélþýðing | Erlendur ([Miðeind](https://mideind.is/)) |
+| Íðorð | Íðorðabankinn (Árnastofnun), Efnafræðifélag Íslands |
+
+**Chemistry 2e** — Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson.
+Icelandic edition: machine translation with human editorial review. CC BY 4.0.
+
+When reusing this content, attribute it like this — and use **the licence of the
+specific book** (see the table above; two books are CC BY-NC-SA 4.0):
 
 ```
-Icelandic translation by Sigurdur E. Vilhelmsson
+Íslensk vélþýðing (Erlendur, Miðeind), ritstjórn og yfirlestur: Námsbókasafn.
 Original: Chemistry 2e, OpenStax, Rice University
 License: CC BY 4.0
 ```

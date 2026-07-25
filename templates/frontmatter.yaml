@@ -9,7 +9,12 @@ source:
   license: "CC BY 4.0"
   licenseUrl: "https://creativecommons.org/licenses/by/4.0/"
   originalUrl: "https://openstax.org/details/books/chemistry-2e"
-  translator: "Sigurður E. Vilhelmsson"
+  # Credit follows the METHOD. The first draft is machine translation, so the
+  # machine is the translator and people are credited for ritstjórn/yfirlestur.
+  # Only use `translatedBy: "<person>"` for genuinely human-translated content.
+  translatedBy: "Erlendur (Miðeind)"
+  ritstjorn: "Sigurður Einar Vilhelmsson"
+  yfirlestur: "Guðrún Ingibjörg Stefánsdóttir"
   translationYear: 2025
   modifications: "Translated to Icelandic, adapted for Icelandic secondary school students"
 ---
