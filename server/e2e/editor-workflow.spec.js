@@ -31,7 +31,10 @@ const HEAD_EDITOR_ID = 88002;
 
 const RUN_ID = Date.now();
 const EDIT_SUFFIX = ` [e2e-editor-workflow-${RUN_ID}]`;
-// Pinned by literal in segment-editor.spec.js's propagation tests — leave it alone.
+// `m68664:abstract:auto-2` is pinned by literal in segment-editor.spec.js's propagation
+// tests. Those run against `efnafraedi-2e`, not this fixture book (segment-editor only
+// READS the fixture), so excluding it here is not strictly required — it is reserved
+// project-wide so the same id never means two different things in two books.
 const RESERVED_SEGMENTS = ['m68664:abstract:auto-2'];
 
 test.describe.serial('Editor workflow', () => {
