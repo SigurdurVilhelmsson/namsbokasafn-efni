@@ -19,7 +19,10 @@ on:
       - 'scripts/validate-status.js'
       - 'books/**/05-publication/**'
       - 'tools/cnxml-render*.js'
-
+  # Manual trigger. Needed to re-verify CI health without inventing a commit —
+  # e.g. after the 2026-07 Actions billing outage, when every run failed in ~3s
+  # and there was no way to confirm the fix short of pushing something.
+  workflow_dispatch:
 jobs:
   validate-status:
     name: Validate Status Files

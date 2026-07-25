@@ -8,7 +8,10 @@ on:
   schedule:
     # Run weekly on Monday at midnight UTC
     - cron: '0 0 * * 1'
-
+  # Manual trigger. Needed to re-verify CI health without inventing a commit —
+  # e.g. after the 2026-07 Actions billing outage, when every run failed in ~3s
+  # and there was no way to confirm the fix short of pushing something.
+  workflow_dispatch:
 jobs:
   audit:
     runs-on: ubuntu-latest
