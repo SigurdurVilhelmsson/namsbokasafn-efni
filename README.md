@@ -12,7 +12,7 @@ The pipeline produces three distinct assets, each valuable on its own:
 2. **Translation memory** — Segment-aligned EN-IS parallel corpus in TMX format. Useful for training MT systems, fine-tuning Icelandic language models, and other translation projects.
 3. **Localized content** — Versions adapted specifically for Icelandic secondary school students, with SI units, local context, and extended exercises where beneficial.
 
-Content licensing is **per book, not uniform** — see [Licensing](#license). The tooling is MIT-licensed, except the editorial server (`server/`), which is AGPL-3.0. If you're working on textbook translation for another language, the pipeline and tools are designed to be reusable.
+Content licensing is **per book, not uniform** — see [Licensing](#licensing). The tooling is MIT-licensed, except the editorial server (`server/`), which is AGPL-3.0. If you're working on textbook translation for another language, the pipeline and tools are designed to be reusable.
 
 ### Books
 
@@ -294,12 +294,25 @@ The project needs editors to review translations. No programming experience requ
 - **Get started:** [docs/contributing/getting-started.md](docs/contributing/getting-started.md)
 - **Bug reports:** [Open an issue](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/issues)
 
-## License
+## Licensing
 
-### Dual license
+Three licences apply, depending on where a file lives:
 
-1. **Tools and scripts** (`tools/`, `server/`, `scripts/`) — [MIT License](LICENSE)
-2. **Content** (`books/`) — a **per-book** Creative Commons licence, not one blanket licence
+| Path | Licence | |
+|------|---------|---|
+| `tools/`, `scripts/` — the CNXML extract → MT → inject → render pipeline, plus root config | **MIT** | [LICENSE](LICENSE) |
+| `server/` — Ritstjóri, the editorial workflow server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [server/LICENSE](server/LICENSE) |
+| `books/` — translated content | **per-book Creative Commons** | [table below](#content-licensing-is-per-book) |
+
+Ritstjóri is AGPL-3.0 because it is normally operated as a network service: if
+you run a modified version and let users interact with it over a network, AGPL
+section 13 requires you to offer those users your modified source. The pipeline
+tooling is MIT so it can be freely reused by other language projects.
+
+The MIT grant does **not** extend to `server/`. If you take only `tools/` under
+MIT, note that `tools/api-translate.js` has one optional runtime `require()`
+into `server/`, guarded by try/catch — the pipeline works without the server,
+skipping only a status update.
 
 ### Content licensing is per book
 

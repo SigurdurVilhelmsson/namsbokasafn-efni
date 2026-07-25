@@ -1,15 +1,37 @@
-# Dual License
+# Licensing
 
-This repository contains two types of content with different licenses:
+This repository carries **three** different licences. Which one applies depends
+on where a file lives:
 
-## Tools and Scripts (MIT License)
+| Path | Licence | Where |
+|---|---|---|
+| `tools/`, `scripts/` — pipeline & tooling | **MIT** | below |
+| `server/` — Ritstjóri editorial server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [`server/LICENSE`](server/LICENSE) |
+| `books/` — translated content | **per-book Creative Commons** | below |
 
-All code in the `tools/` directory is licensed under the MIT License:
+Repository-root configuration files (`package.json`, `eslint.config.js`,
+`vitest.*`, `.gitignore` and similar) are offered under the MIT terms below.
+
+## Pipeline and Tooling (MIT License)
+
+The MIT grant covers the CNXML extraction, machine-translation integration,
+reinjection and HTML-rendering pipeline: the `tools/` and `scripts/` directories
+and the root configuration files listed above.
+
+**It does not cover `server/`** (which is AGPL-3.0 — see `server/LICENSE`) **or
+`books/`** (which is content under per-book Creative Commons terms — see below).
+
+> Note for downstream users taking only `tools/` under MIT:
+> `tools/api-translate.js` contains one optional runtime `require()` into
+> `server/services/pipelineStatusService.js`, guarded by a try/catch that warns
+> and continues if the module is absent. The pipeline runs correctly without
+> `server/`; only the convenience status update is skipped. That one call is the
+> sole code-level dependency from the MIT tooling into the AGPL server.
 
 ```
 MIT License
 
-Copyright (c) 2024 Sigurður E. Vilhelmsson
+Copyright (c) 2024–2026 Sigurður E. Vilhelmsson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +51,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## Ritstjóri editorial server (`server/`) — AGPL-3.0
+
+Everything under `server/`, including `greynir-sidecar/`, is licensed under the
+**GNU Affero General Public License, version 3 or later**.
+
+Copyright (C) 2025–2026 Sigurður E. Vilhelmsson
+
+Full text: [`server/LICENSE`](server/LICENSE).
+
+Ritstjóri is normally run as a network service, so AGPL section 13 is the
+operative clause: if you run a modified version and let users interact with it
+over a network, you must offer those users the source of your modified version.
 
 ## Content (`books/`) — per book, not uniform
 
