@@ -1,0 +1,4 @@
+{
+  "_comment": "Default allowlist for validate-cnxml.js — INTENTIONALLY EMPTY. Task 2 found zero class-(b) intentional divergences in our reinjected output, so nothing is suppressed by default. To suppress the class-(c) schema noise that is also present in pristine OpenStax sources, pass --allowlist allowlist.recommended.json. See FINDINGS.md §2.",
+  "rules": []
+}
