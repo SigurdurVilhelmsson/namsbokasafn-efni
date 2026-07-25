@@ -1,50 +1,51 @@
 <document xmlns="http://cnx.rice.edu/cnxml">
-<title>Myndun Lífrænna Stórsameinda</title>
+<title>Nýmyndun lífrænna stórsameinda</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m66438</md:content-id>
-  <md:title>Synthesis of Biological Macromolecules</md:title>
-  <md:abstract><para id="para-00001">Í lok þessa kafla átt þú að geta eftirfarandi:</para><list id="list-00001"><item>Skilja hvernig stórsameindir eru myndaðar</item><item>Útskýrt hvað afvötnun (eða vatnsþétting) og vatnsrofhvörf eru</item></list></md:abstract>
+  <md:title>Nýmyndun lífrænna stórsameinda</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta gert eftirfarandi:</para><list id="list-00001"><item>Skilið nýmyndun stórsameinda</item><item>Útskýrt afvötnunar- (eða þétti-) og vatnsrofshvörf</item></list></md:abstract>
   <md:uuid>4acfa729-2ba0-4675-ac7d-1f3e8c0434f2</md:uuid>
 </metadata>
 
 <content>
-<para id="fs-id1724224">Lífrænar stórsameindir eru stór efnasambönd, nauðsynleg til að viðhalda lífi, og mynduð úr mörgum smærri lífrænum efnasamböndum.  Hægt er að skipta þessum efnum upp í fjóra flokkar (kolvetni, lípíð, prótein og kjarnsýrur).  Þar sem hver flokkur er nauðsynlegur í starfsemi frumna þar sem þau gegna margskonar hlutverkum. Saman mynda þessar sameindir megnið af þurrmassa frumunnar (vatn er stærsti hlut af massa okkar).  Lífrænar stórsameindir eru, eins og öll lífræn efni, kolefnissambönd sem að auki innihalda vetni, súrefni, nitur sem og önnur frumefni í minna mæli.</para>
+<para id="fs-id1724224">Eins og þú hefur lært eru <term id="term-00001">lífrænar stórsameindir (e. biological macromolecules)</term> stórar sameindir, nauðsynlegar fyrir líf, sem eru byggðar úr minni lífrænum sameindum. Það eru fjórir meginflokkar lífrænna stórsameinda (kolvetni, lípíð, prótein og kjarnsýrur). Hver þeirra er mikilvægur hluti frumunnar og gegnir fjölbreyttu hlutverki. Samanlagt mynda þessar sameindir meirihluta þurrmassa frumu (mundu að vatn myndar meirihluta heildarmassa hennar). Lífrænar stórsameindir eru lífrænar, sem þýðir að þær innihalda kolefni og eru bundnar við vetni, og geta innihaldið súrefni, köfnunarefni og önnur snefilefni.</para>
 <section id="fs-id1266915">
-<title>Afvötnunar Nýsmíði</title>
-<para id="fs-id1384510">Flestar stórsameindir eru samsettar úr stökum byggingareiningum sem kallast einliður.  Einliður tengjast saman með samgildum tengjum og mynda þannig stærri sameind sem kallast fjölliða.  Við þetta myndast vatnssameind sem losuð er frá einliðunum sem aukaafurð.  Þannig efnahvörf kallast afvötnunar nýsmíði.</para>
+<title>Afvötnunarnýmyndun</title>
+<para id="fs-id1384510">Flestar stórsameindir eru gerðar úr stökum undireiningum, eða byggingareiningum, sem kallast <term id="term-00002">einingar (e. monomers)</term>. Einingarnar sameinast með samgildum tengjum og mynda stærri sameindir sem kallast <term id="term-00003">fjölliður (e. polymers)</term>. Við það losa einingarnar frá sér vatnssameindir sem aukaafurðir. Þessi tegund efnahvarfs er <term id="term-00004">afvötnunarnýmyndun (e. dehydration synthesis)</term>, sem þýðir „að setja saman með því að missa vatn“.</para>
 <figure id="fig-ch03_01_01" class="span-all"><media id="fs-id1477384" alt="Shown is the reaction of two glucose monomers to form maltose. When maltose is formed, a water molecule is released. The components of the linkage are upper case O upper case H from one glucose molecule combining with one upper case H from the second glucose molecule.">
 <image mime-type="image/jpeg" src="../../media/Figure_03_01_01_is.jpg" width="600"/>
 </media>
 
-<caption>Í afvötnunarnýsmíðinni hér að ofan eru tvær glúkósa sameindir tengdar saman þannig að tvísykran maltósi myndast.  Aukaafurð þessa efnahvarfs er vatnssameind.</caption></figure>
-<para id="fs-id1730720">Í afvötnunarnýsmíði (sjá mynd 3.2), tengist vetnisatóm einnar einliðu við hýdroxýlhóp annarrar einliðu, þannig að vatn gengur af.  Á sama tíma, deila einliðurnar rafeindum og mynda samgildtengi.  Eftir því sem fleiri einliður tengjast keðjunni, lengist fjölliðan.  Ólíkar einliður geta tengst á marga mismunandi vegu, og þannig myndað margar ólíkar stórsameindir.  Einnig er hægt að tengja saman eina gerð af einliðu, en á ólíkan hátt og mynda þannig ólíkar fjölliður.  Sem dæmi um það, þá er glúkósi eina byggingarefnið í sterkju, glýkógen og beðmi.</para>
+<caption>Í afvötnunarnýmyndunarhvarfinu hér að ofan tengjast tvær glúkósasameindir og mynda tvísykruna maltósa. Í ferlinu myndast vatnssameind.</caption></figure>
+<para id="fs-id1730720">Í afvötnunarnýmyndunarhvarfi (<link target-id="fig-ch03_01_01"/>) sameinast vetni einnar einingar við hýdroxýlhóp annarrar einingar og losar þannig vatnssameind. Á sama tíma deila einingarnar rafeindum og mynda samgild tengi. Eftir því sem fleiri einingar bætast við myndar þessi keðja af endurteknum einingum fjölliðu. Mismunandi gerðir eininga geta sameinast á marga vegu og myndað fjölbreyttan hóp stórsameinda. Jafnvel ein tegund eininga getur sameinast á ýmsa vegu og myndað nokkrar mismunandi fjölliður. Til dæmis eru glúkósaeiningar byggingarefni sterkju, glýkógens og sellulósa.</para>
 </section>
 <section id="fs-id1808810">
 <title>Vatnsrof</title>
-<para id="fs-id1431430">Fjölliður eru brotna niður í einliður með vatnsrofi.  Efnahvarfið verður þegar vatnssameind er sett á milli tenginga sem halda einliðunum saman.  Rof á samgildum tengjum með vatnssameind kallast vatnsrof (sjá mynd 3.3).  Við vatnsrof, klofnar fjölliðan í tvennt: Önnur sameindin fær vetnisatóm (H+) og hin fær hýdoxýlhóp (OH-) frá vatnssameindinni.</para>
+<para id="fs-id1431430">Fjölliður brotna niður í einingar við vatnsrof. Efnahvarf á sér stað þegar vatnssameind er sett inn yfir tengið. Þetta er gert með því að rjúfa samgilt tengi með þessari vatnssameind í efnasambandinu (<link target-id="fig-ch03_01_02"/>). Við þessi hvörf brotnar fjölliðan í tvo hluta: annar hlutinn fær vetnisatóm (H+) og hinn fær hýdroxýlsameind (OH–) úr klofinni vatnssameind.</para>
 <figure id="fig-ch03_01_02" class="span-all"><media id="fs-id1405882" alt="Shown is the breakdown of maltose to form two glucose monomers. Water is a reactant. The water molecule, upper case H subscript 2 baseline upper case O, breaks apart, with upper O upper H obtained by one of the glucose molecules, and upper H obtained by the second glucose molecule.">
 <image mime-type="image/jpeg" src="../../media/Figure_03_01_02_is.jpeg" width="600"/>
 </media>
 
-<caption>Í vatnsrofshvarfinu sem hér er sýnt, brotnar tvísykran maltósi niður í tvær glúkósa sameindir með því að setja vatn á milli þeirra.  ATH þetta efnahvarf er í raun nýmyndunarhvarfið sem sýnt var í mynd 3.2 aftur á bak.</caption></figure>
-<para id="fs-id2016502">Efnahvörf með afvötnun og vatnsrofi eru hvött, eða hraðað með sérhæfðum ensímum; afvötnunarhvörf mynda ný efnatengi og þurfa því orku, meðan vatnsrofshvörf rjúfa efnatengi losa því orku.  Þessi efnahvörf eru mjög áþekk hjá flestum stórsameindum, en hvörf hverrar einliðu og fjölliðu eru einstök í hverjum efnaflokk fyrir sig.  Sem dæmi þá hvata ensím í meltingavegi niðurbrot á fæðu okkar niður í smærri sameindir.  Það auðveldar frumum okkar að taka upp næringarefni frá þörmum.  Sérhæft ensím brýtur niður hverja stórsameind fyrir sig.  Sem dæmi þá sjá ensímin amýlasi, súkrasi, laktasi og maltasi um að brjóta niður kolvetni.  Ensím sem kallast próteasar, eins og pepsín og peptíðasar í samvinnu við saltsýru (HCl) sjá um niðurbrot á próteinum.  Lípasar brjóta niður lípíð.  Þessar niðurbrotnu stórsameindir sjá frumu fyrir orku svo þær geti viðhaldið starfsemi sinni.</para>
+<caption>Í vatnsrofshvarfinu hér brotnar tvísykran maltósi niður og myndar tvær glúkósaeiningar með því að bæta við vatnssameind. Athugið að þetta hvarf er andstæðan við nýmyndunarhvarfið í <link target-id="fig-ch03_01_01"/>.</caption></figure>
+<para id="fs-id2016502">Afvötnunar- og <term id="term-00005">vatnsrofshvörf (e. hydrolysis reactions)</term> eru hvötuð, eða „flýtt“, af sérstökum ensímum; afvötnunarhvörf fela í sér myndun nýrra tengja, sem krefst orku, en vatnsrofshvörf rjúfa tengi og losa orku. Þessi hvörf eru svipuð fyrir flestar stórsameindir, en hvert eininga- og fjölliðuhvarf er sérstakt fyrir sinn flokk. Til dæmis vatnsrjúfa eða brjóta hvataensím í meltingarkerfinu niður matinn sem við neytum í smærri sameindir. Þetta gerir frumum í líkama okkar kleift að taka auðveldlega upp næringarefni í þörmunum. Sérstakt ensím brýtur niður hverja stórsameind. Til dæmis brjóta amýlasi, súkrasi, laktasi eða maltasi niður kolvetni. Ensím sem kallast próteasar, svo sem pepsín og peptídasi, og saltsýra brjóta niður prótein. Lípasi brýtur niður lípíð. Þessar niðurbrotnu stórsameindir veita orku fyrir frumustarfsemi.</para>
 <note id="fs-id1425951" class="interactive">
-<para id="fs-id1443321">Visit <link window="new" url="https://openstax.org/l/hydrolysis">this site</link> to see visual representations of dehydration synthesis and hydrolysis.</para>
+<para id="fs-id1443321">Farðu á <link url="https://openstax.org/l/hydrolysis">þessa síðu</link> til að sjá myndræna framsetningu á afvötnunarnýmyndun og vatnsrofi.</para>
 </note>
 </section>
 <section id="fs-id891930" class="summary">
-<title>Section Summary</title>
+<title>Samantekt kafla</title>
+<para id="fs-id2334482">Prótein, kolvetni, kjarnsýrur og lípíð eru fjórir meginflokkar lífrænna stórsameinda – stórar sameindir sem eru nauðsynlegar fyrir líf og byggðar úr minni lífrænum sameindum. Stórsameindir samanstanda af stökum einingum sem vísindamenn kalla einingar og eru tengdar saman með samgildum tengjum til að mynda stærri fjölliður. Fjölliðan er meira en summa hluta sinna: hún öðlast nýja eiginleika og leiðir til osmósuþrýstings sem er mun lægri en sá sem myndast af innihaldsefnum hennar. Þetta er mikilvægur kostur við að viðhalda osmósuaðstæðum í frumum. Eining tengist annarri einingu með losun vatnssameindar, sem leiðir til myndunar samgilds tengis. Vísindamenn kalla þetta afvötnunar- eða þéttihvörf. Þegar fjölliður brotna niður í smærri einingar (einingar) nota þær eina vatnssameind fyrir hvert tengi sem er rofið með þessum hvörfum. Slík hvörf eru vatnsrofshvörf. Afvötnunar- og vatnsrofshvörf eru svipuð fyrir allar stórsameindir, en hvert eininga- og fjölliðuhvarf er sérstakt fyrir sinn flokk. Afvötnunarhvörf krefjast venjulega orkufjárfestingar fyrir myndun nýrra tengja, en vatnsrofshvörf losa venjulega orku með því að rjúfa tengi.</para>
 </section>
 <section id="fs-id1484046" class="multiple-choice">
-<title>Review Questions</title>
+<title>Spurningar til upprifjunar</title>
 <exercise id="fs-id1313020">
 <problem id="fs-id2590162">
-<para id="fs-id886306">Dehydration synthesis leads to formation of</para>
+<para id="fs-id886306">Afvötnunarnýmyndun leiðir til myndunar á</para>
 <list id="fs-id1238542" list-type="enumerated" number-style="lower-alpha">
-<item>monomers</item>
-<item>polymers</item>
-<item>water and polymers</item>
-<item>none of the above</item>
+<item>einingum</item>
+<item>fjölliðum</item>
+<item>vatni og fjölliðum</item>
+<item>engu af ofangreindu</item>
 </list>
 </problem>
 <solution id="fs-id2195778">
@@ -53,12 +54,12 @@
 </exercise>
 <exercise id="fs-id1342364">
 <problem id="fs-id1958165">
-<para id="fs-id2229443">During the breakdown of polymers, which of the following reactions takes place?</para>
+<para id="fs-id2229443">Við niðurbrot fjölliða, hvaða af eftirfarandi hvörfum á sér stað?</para>
 <list id="fs-id2571309" list-type="enumerated" number-style="lower-alpha">
-<item>hydrolysis</item>
-<item>dehydration</item>
-<item>condensation</item>
-<item>covalent bond</item>
+<item>vatnsrof</item>
+<item>afvötnun</item>
+<item>þétting</item>
+<item>samgilt tengi</item>
 </list>
 </problem>
 <solution id="fs-id1398346">
@@ -67,14 +68,14 @@
 </solution>
 </exercise>
 <exercise id="fs-idm71000699">
-<problem id="fs-idp81418426"><para id="fs-idm74380410">The following chemical reactants produce the ester ethyl ethanoate (C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>):</para>
+<problem id="fs-idp81418426"><para id="fs-idm74380410">Eftirfarandi efnahvarfefni mynda esterinn etýletanóat (C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>):</para>
 <para id="fs-idm34780410">C<sub>2</sub>H<sub>6</sub>O + CH<sub>3</sub>COOH</para>
-<para id="fs-idm34780411">What type of reaction occurs to make ethyl ethanoate?</para>
+<para id="fs-idm34780411">Hvers konar efnahvarf á sér stað til að mynda etýletanóat?</para>
 <list id="fs-idm67922751" list-type="enumerated" number-style="lower-alpha">
-<item>condensation</item>
-<item>hydrolysis</item>
-<item>combustion</item>
-<item>acid-base reaction</item>
+<item>þétting</item>
+<item>vatnsrof</item>
+<item>bruni</item>
+<item>sýru-basa hvarf</item>
 </list>
 </problem>
 <solution id="fs-idm40512354"><label/>
@@ -83,30 +84,50 @@
 </exercise>
 </section>
 <section id="fs-id2024298" class="critical-thinking">
-<title>Critical Thinking Questions</title>
+<title>Ígrundunarspurningar</title>
 <exercise id="fs-id1462931">
 <problem id="fs-id2300024">
-<para id="fs-id1635297">Why are biological macromolecules considered organic?</para></problem>
+<para id="fs-id1635297">Af hverju eru lífrænar stórsameindir taldar lífrænar?</para></problem>
 <solution id="fs-id1384512"><label/>
-<para id="fs-id2008744">Biological macromolecules are organic, meaning they contain carbon and are bound to hydrogen.</para></solution>
+<para id="fs-id2008744">Lífrænar stórsameindir eru lífrænar, sem þýðir að þær innihalda kolefni og eru bundnar vetni.</para></solution>
 </exercise>
 <exercise id="fs-id2590218">
 <problem id="fs-id1270040">
-<para id="fs-id1462641">What role do electrons play in dehydration synthesis and hydrolysis?</para></problem>
+<para id="fs-id1462641">Hvaða hlutverki gegna rafeindir í þéttitengingu og vatnsrofi?</para></problem>
 <solution id="fs-id1770003"><label/>
-<para id="fs-id1799174">In a dehydration synthesis reaction, the hydrogen of one monomer combines with the hydroxyl group of another monomer, releasing a molecule of water. This creates an opening in the outer shells of atoms in the monomers, which can share electrons and form covalent bonds.</para></solution>
+<para id="fs-id1799174">Í þéttitengingu sameinast vetni einnar einliðu við hýdroxýlhóp annarrar einliðu og losar þannig vatnssameind. Þetta skapar op í ytri rafeindahvelum frumeinda í einliðunum, sem geta deilt rafeindum og myndað samgild tengi.</para></solution>
 </exercise>
 <exercise id="fs-idm71000700">
-<problem id="fs-idp81418427"><para id="fs-idm74380411">Amino acids have the generic structure seen below, where R represents different carbon-based side chains.</para>
+<problem id="fs-idp81418427"><para id="fs-idm74380411">Amínósýrur hafa almenna byggingu eins og sést hér að neðan, þar sem R táknar mismunandi hliðarkeðjur sem byggja á kolefni.</para>
 <media id="fs-id19192121" alt="The generic structure of amino acids is shown. A nitrogen atom is single bonded to two hydrogen atoms and one carbon atoms. The carbon atom is single bonded to one hydrogen atom, one R atom, and one carbon atom. R represents different carbon-based side chains. The carbon atom is double bonded to one oxygen atom and single bonded to a hydroxide atom."><image mime-type="image/png" src="../../media/Figure_03_Asses_01.png" width="150"/></media>
-<para id="fs-idm74380412">Describe how the structure of amino acids allows them to be linked into long peptide chains to form proteins.</para>
+<para id="fs-idm74380412">Lýstu því hvernig bygging amínósýra gerir þeim kleift að tengjast saman í langar peptíðkeðjur til að mynda prótein.</para>
 </problem>
 <solution id="fs-idm40512355"><label/>
-<para id="fs-idm200102059">Amino acids can be linked into long chains through condensation reactions. One of the hydrogen atoms bonded to the nitrogen atom of an amino acid reacts with the –OH group attached to the terminal carbon on another amino acid. Since both ends of the molecule can participate in condensation reactions, peptide bonds can be made in both directions to create a long amino acid chain.</para>
+<para id="fs-idm200102059">Amínósýrur geta tengst saman í langar keðjur með þéttihvörfum. Eitt af vetnisatómum sem er bundið við köfnunarefnisatóm amínósýru hvarfast við –OH hópinn sem er tengdur við endastæða kolefnisatómið á annarri amínósýru. Þar sem báðir endar sameindarinnar geta tekið þátt í þéttihvörfum er hægt að mynda peptíðtengi í báðar áttir til að búa til langa amínósýrukeðju.</para>
 </solution>
 </exercise>
 </section>
 </content>
 <glossary>
+<definition id="fs-id1415749">
+<term>lífræn stórsameind (e. biological macromolecule)</term>
+<meaning id="fs-id1415749-meaning">stór sameind sem er nauðsynleg fyrir líf og er byggð úr smærri lífrænum sameindum</meaning>
+</definition>
+<definition id="fs-id1447611">
+<term>þéttitenging (e. dehydration synthesis)</term>
+<meaning id="fs-id1447611-meaning">(einnig, þétting) hvarf sem tengir saman einliðusameindir og losar vatnssameind fyrir hvert tengi sem myndast</meaning>
+</definition>
+<definition id="fs-id1708547">
+<term>vatnsrof (e. hydrolysis)</term>
+<meaning id="fs-id1708547-meaning">hvarf sem veldur niðurbroti stærri sameinda í smærri sameindir með því að nýta vatn</meaning>
+</definition>
+<definition id="fs-id1797970">
+<term>einliða (e. monomer)</term>
+<meaning id="fs-id1797970-meaning">minnsta eining stærri sameinda sem eru fjölliður</meaning>
+</definition>
+<definition id="fs-id2079181">
+<term>fjölliða (e. polymer)</term>
+<meaning id="fs-id2079181-meaning">keðja af einliðuleifum sem samgild tengi tengja saman; fjölliðun er ferlið við myndun fjölliðu úr einliðum með þéttingu</meaning>
+</definition>
 </glossary>
 </document>

@@ -11,34 +11,34 @@ Understand macromolecule synthesis
 Explain dehydration (or condensation) and hydrolysis reactions
 
 <!-- SEG:m66438:para:fs-id1724224 -->
-As you’ve learned, __biological macromolecules__ are large molecules, necessary for life, that are built from smaller organic molecules. There are four major biological macromolecule classes (carbohydrates, lipids, proteins, and nucleic acids). Each is an important cell component and performs a wide array of functions. Combined, these molecules make up the majority of a cell’s dry mass (recall that water makes up the majority of its complete mass). Biological macromolecules are organic, meaning they contain carbon and are bound to hydrogen, and may contain oxygen, nitrogen, and additional minor elements.
+As you’ve learned, [[term:biological macromolecules|term-00001]] are large molecules, necessary for life, that are built from smaller organic molecules. There are four major biological macromolecule classes (carbohydrates, lipids, proteins, and nucleic acids). Each is an important cell component and performs a wide array of functions. Combined, these molecules make up the majority of a cell’s dry mass (recall that water makes up the majority of its complete mass). Biological macromolecules are organic, meaning they contain carbon and are bound to hydrogen, and may contain oxygen, nitrogen, and additional minor elements.
 
 <!-- SEG:m66438:title:fs-id1266915-title -->
 Dehydration Synthesis
 
 <!-- SEG:m66438:para:fs-id1384510 -->
-Most macromolecules are made from single subunits, or building blocks, called __monomers__. The monomers combine with each other using covalent bonds to form larger molecules known as __polymers__. In doing so, monomers release water molecules as byproducts. This type of reaction is __dehydration synthesis__, which means “to put together while losing water.”
+Most macromolecules are made from single subunits, or building blocks, called [[term:monomers|term-00002]]. The monomers combine with each other using covalent bonds to form larger molecules known as [[term:polymers|term-00003]]. In doing so, monomers release water molecules as byproducts. This type of reaction is [[term:dehydration synthesis|term-00004]], which means “to put together while losing water.”
 
 <!-- SEG:m66438:caption:fig-ch03_01_01-caption -->
 In the dehydration synthesis reaction above, two glucose molecules link to form the disaccharide maltose. In the process, it forms a water molecule.
 
 <!-- SEG:m66438:para:fs-id1730720 -->
-In a dehydration synthesis reaction ([#fig-ch03_01_01]), the hydrogen of one monomer combines with the hydroxyl group of another monomer, releasing a water molecule. At the same time, the monomers share electrons and form covalent bonds. As additional monomers join, this chain of repeating monomers forms a polymer. Different monomer types can combine in many configurations, giving rise to a diverse group of macromolecules. Even one kind of monomer can combine in a variety of ways to form several different polymers. For example, glucose monomers are the constituents of starch, glycogen, and cellulose.
+In a dehydration synthesis reaction ([[xref:fig-ch03_01_01]]), the hydrogen of one monomer combines with the hydroxyl group of another monomer, releasing a water molecule. At the same time, the monomers share electrons and form covalent bonds. As additional monomers join, this chain of repeating monomers forms a polymer. Different monomer types can combine in many configurations, giving rise to a diverse group of macromolecules. Even one kind of monomer can combine in a variety of ways to form several different polymers. For example, glucose monomers are the constituents of starch, glycogen, and cellulose.
 
 <!-- SEG:m66438:title:fs-id1808810-title -->
 Hydrolysis
 
 <!-- SEG:m66438:para:fs-id1431430 -->
-Polymers break down into monomers during hydrolysis. A chemical reaction occurs when inserting a water molecule across the bond. Breaking a covalent bond with this water molecule in the compound achieves this ([#fig-ch03_01_02]). During these reactions, the polymer breaks into two components: one part gains a hydrogen atom (H+) and the other gains a hydroxyl molecule (OH–) from a split water molecule.
+Polymers break down into monomers during hydrolysis. A chemical reaction occurs when inserting a water molecule across the bond. Breaking a covalent bond with this water molecule in the compound achieves this ([[xref:fig-ch03_01_02]]). During these reactions, the polymer breaks into two components: one part gains a hydrogen atom (H+) and the other gains a hydroxyl molecule (OH–) from a split water molecule.
 
 <!-- SEG:m66438:caption:fig-ch03_01_02-caption -->
-In the hydrolysis reaction here, the disaccharide maltose breaks down to form two glucose monomers by adding a water molecule. Note that this reaction is the reverse of the synthesis reaction in [#fig-ch03_01_01].
+In the hydrolysis reaction here, the disaccharide maltose breaks down to form two glucose monomers by adding a water molecule. Note that this reaction is the reverse of the synthesis reaction in [[xref:fig-ch03_01_01]].
 
 <!-- SEG:m66438:para:fs-id2016502 -->
-Dehydration and __hydrolysis reactions__ are catalyzed, or “sped up,” by specific enzymes; dehydration reactions involve the formation of new bonds, requiring energy, while hydrolysis reactions break bonds and release energy. These reactions are similar for most macromolecules, but each monomer and polymer reaction is specific for its class. For example, catalytic enzymes in the digestive system hydrolyze or break down the food we ingest into smaller molecules. This allows cells in our body to easily absorb nutrients in the intestine. A specific enzyme breaks down each macromolecule. For instance, amylase, sucrase, lactase, or maltase break down carbohydrates. Enzymes called proteases, such as pepsin and peptidase, and hydrochloric acid break down proteins. Lipases break down lipids. These broken down macromolecules provide energy for cellular activities.
+Dehydration and [[term:hydrolysis reactions|term-00005]] are catalyzed, or “sped up,” by specific enzymes; dehydration reactions involve the formation of new bonds, requiring energy, while hydrolysis reactions break bonds and release energy. These reactions are similar for most macromolecules, but each monomer and polymer reaction is specific for its class. For example, catalytic enzymes in the digestive system hydrolyze or break down the food we ingest into smaller molecules. This allows cells in our body to easily absorb nutrients in the intestine. A specific enzyme breaks down each macromolecule. For instance, amylase, sucrase, lactase, or maltase break down carbohydrates. Enzymes called proteases, such as pepsin and peptidase, and hydrochloric acid break down proteins. Lipases break down lipids. These broken down macromolecules provide energy for cellular activities.
 
 <!-- SEG:m66438:para:fs-id1443321 -->
-Visit [this site](https://openstax.org/l/hydrolysis) to see visual representations of dehydration synthesis and hydrolysis.
+Visit [[link:this site|https://openstax.org/l/hydrolysis]] to see visual representations of dehydration synthesis and hydrolysis.
 
 <!-- SEG:m66438:title:fs-id891930-title -->
 Section Summary
@@ -52,23 +52,59 @@ Review Questions
 <!-- SEG:m66438:problem:fs-id886306 -->
 Dehydration synthesis leads to formation of
 
+<!-- SEG:m66438:item:fs-id1238542-item-1 -->
+monomers
+
+<!-- SEG:m66438:item:fs-id1238542-item-2 -->
+polymers
+
+<!-- SEG:m66438:item:fs-id1238542-item-3 -->
+water and polymers
+
+<!-- SEG:m66438:item:fs-id1238542-item-4 -->
+none of the above
+
 <!-- SEG:m66438:solution:fs-id1352597 -->
 C
 
 <!-- SEG:m66438:problem:fs-id2229443 -->
 During the breakdown of polymers, which of the following reactions takes place?
 
+<!-- SEG:m66438:item:fs-id2571309-item-1 -->
+hydrolysis
+
+<!-- SEG:m66438:item:fs-id2571309-item-2 -->
+dehydration
+
+<!-- SEG:m66438:item:fs-id2571309-item-3 -->
+condensation
+
+<!-- SEG:m66438:item:fs-id2571309-item-4 -->
+covalent bond
+
 <!-- SEG:m66438:solution:fs-id1570679 -->
 A
 
 <!-- SEG:m66438:problem:fs-idm74380410 -->
-The following chemical reactants produce the ester ethyl ethanoate (C~4~H~8~O~2~):
+The following chemical reactants produce the ester ethyl ethanoate (C[[sub:4]]H[[sub:8]]O[[sub:2]]):
 
 <!-- SEG:m66438:problem:fs-idm34780410 -->
-C~2~H~6~O + CH~3~COOH
+C[[sub:2]]H[[sub:6]]O + CH[[sub:3]]COOH
 
 <!-- SEG:m66438:problem:fs-idm34780411 -->
 What type of reaction occurs to make ethyl ethanoate?
+
+<!-- SEG:m66438:item:fs-idm67922751-item-1 -->
+condensation
+
+<!-- SEG:m66438:item:fs-idm67922751-item-2 -->
+hydrolysis
+
+<!-- SEG:m66438:item:fs-idm67922751-item-3 -->
+combustion
+
+<!-- SEG:m66438:item:fs-idm67922751-item-4 -->
+acid-base reaction
 
 <!-- SEG:m66438:solution:fs-idm200102058 -->
 A

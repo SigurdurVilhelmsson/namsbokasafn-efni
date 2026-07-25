@@ -339,6 +339,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-id2198400",
+          "segmentId": "m66442:para:fs-id2198400"
+        },
+        {
           "type": "section",
           "id": "fs-id1423194",
           "class": null,
@@ -504,11 +509,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id2198400",
-          "segmentId": "m66442:para:fs-id2198400"
         }
       ]
     },
@@ -618,6 +618,31 @@
                 "type": "para",
                 "id": "fs-id2279879",
                 "segmentId": "m66442:problem:fs-id2279879"
+              },
+              {
+                "type": "list",
+                "id": "fs-id2571408",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id2571408-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id2571408-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id2571408-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id2571408-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -640,6 +665,31 @@
                 "type": "para",
                 "id": "fs-id1443260",
                 "segmentId": "m66442:problem:fs-id1443260"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1318146",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id1318146-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id1318146-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id1318146-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-id1318146-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -662,6 +712,31 @@
                 "type": "para",
                 "id": "fs-idm74380419",
                 "segmentId": "m66442:problem:fs-idm74380419"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922758",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-idm67922758-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-idm67922758-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-idm67922758-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66442:item:fs-idm67922758-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -856,8 +931,11 @@
       "class": null,
       "alt": "The molecular structures of the twenty amino acids commonly found in proteins are given. These are divided into five categories: nonpolar aliphatic, polar uncharged, positively charged, negatively charged, and aromatic. Nonpolar aliphatic amino acids include glycine, alanine, valine, leucine, methionine, isoleucine, and proline. Polar uncharged amino acids include serine, threonine, cysteine, asparagine, and glutamine. Positively charged amino acids include lysine, arginine, and histidine. Negatively charged amino acids include aspartate and glutamate. Aromatic amino acids include phenylalanine, tyrosine, and tryptophan.  For example, in the amino acid glycine, the R group is a single hydrogen; but in alanine the R group is upper C upper H subscript 3 baseline.",
       "src": "../../media/Figure_03_04_02-fd30.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 4
 }

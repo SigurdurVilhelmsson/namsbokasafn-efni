@@ -1,0 +1,105 @@
+{
+  "totalEnSegments": 429,
+  "matched": 205,
+  "skipped": 195,
+  "unmatchedSegments": 29,
+  "unmatchedDocx": 11,
+  "highConfidence": 26,
+  "mediumConfidence": 169,
+  "lowConfidence": 10,
+  "unmatchedDocxBlocks": [
+    {
+      "index": 40,
+      "type": "figure-caption",
+      "text": "Mynd 3.6 Fimm og sex kolefna einsykrur eru í stöðugu flökti á milli þess að vera á línulegu- og hrin"
+    },
+    {
+      "index": 72,
+      "type": "figure-caption",
+      "text": "Mynd 3.12 Vatnsfælin fitan þekur feld dýra sem lifa í vatni og ám, eins og þessi otur.  Þannig helst"
+    },
+    {
+      "index": 142,
+      "type": "figure-caption",
+      "text": "Mynd 3.23 Hér sjást þær 20 amínósýrur sem finnast í próteinum, hver með sína hliðakeðju sem gefur þe"
+    },
+    {
+      "index": 147,
+      "type": "note-heading",
+      "text": "Lærdómshlekkur"
+    },
+    {
+      "index": 149,
+      "type": "note-heading",
+      "text": "Þróunartenging"
+    },
+    {
+      "index": 157,
+      "type": "figure-caption",
+      "text": "Mynd 3.25. Insúlín úr nautgripum er prótein myndað úr tveimur peptíðkeðjum.  A er 21 amínósýra að le"
+    },
+    {
+      "index": 159,
+      "type": "figure-caption",
+      "text": "Mynd 3.26 Vegna þessarar breytingar í röð amínósýra í keðjunni, myndar hemóglóbínsameindin langar þr"
+    },
+    {
+      "index": 160,
+      "type": "figure-caption",
+      "text": "Mynd 3.27 Hér er blóðsýni, stækkað 535x í ljóssmásjá.  Sigðukornin líta út eins og hálfmánar, en eðl"
+    },
+    {
+      "index": 162,
+      "type": "figure-caption",
+      "text": "Mynd 3.28 α-gormar og β-plötur eru annars stigs form sem verða til  þegar vetnistengi myndast á mill"
+    },
+    {
+      "index": 195,
+      "type": "note-heading",
+      "text": "Sjónræn tenging"
+    },
+    {
+      "index": 227,
+      "type": "note-heading",
+      "text": "Lærdómshlekkur"
+    }
+  ],
+  "perModule": {
+    "m66437": {
+      "section": "intro",
+      "title": "Introduction",
+      "totalSegments": 3,
+      "matched": 3
+    },
+    "m66438": {
+      "section": "3.1",
+      "title": "Synthesis of Biological Macromolecules",
+      "totalSegments": 43,
+      "matched": 13
+    },
+    "m66440": {
+      "section": "3.2",
+      "title": "Carbohydrates",
+      "totalSegments": 84,
+      "matched": 35
+    },
+    "m66441": {
+      "section": "3.3",
+      "title": "Lipids",
+      "totalSegments": 80,
+      "matched": 40
+    },
+    "m66442": {
+      "section": "3.4",
+      "title": "Proteins",
+      "totalSegments": 125,
+      "matched": 64
+    },
+    "m66443": {
+      "section": "3.5",
+      "title": "Nucleic Acids",
+      "totalSegments": 94,
+      "matched": 50
+    }
+  }
+}

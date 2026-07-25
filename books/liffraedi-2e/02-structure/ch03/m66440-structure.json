@@ -32,6 +32,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-id1262009",
+          "segmentId": "m66440:para:fs-id1262009"
+        },
+        {
           "type": "section",
           "id": "fs-id1462931",
           "class": null,
@@ -281,11 +286,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id1262009",
-          "segmentId": "m66440:para:fs-id1262009"
         }
       ]
     },
@@ -390,6 +390,31 @@
                 "type": "para",
                 "id": "fs-id2008744",
                 "segmentId": "m66440:problem:fs-id2008744"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1597195",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1597195-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1597195-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1597195-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1597195-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -412,6 +437,31 @@
                 "type": "para",
                 "id": "fs-id1699648",
                 "segmentId": "m66440:problem:fs-id1699648"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1770658",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1770658-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1770658-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1770658-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1770658-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -434,6 +484,31 @@
                 "type": "para",
                 "id": "fs-id2054430",
                 "segmentId": "m66440:problem:fs-id2054430"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1463019",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1463019-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1463019-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1463019-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1463019-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -456,6 +531,31 @@
                 "type": "para",
                 "id": "fs-id2024704",
                 "segmentId": "m66440:problem:fs-id2024704"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1596510",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1596510-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1596510-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1596510-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-id1596510-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -478,6 +578,31 @@
                 "type": "para",
                 "id": "fs-idm74380414",
                 "segmentId": "m66440:problem:fs-idm74380414"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922753",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-idm67922753-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-idm67922753-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-idm67922753-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66440:item:fs-idm67922753-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -649,8 +774,11 @@
       "class": null,
       "alt": "The molecular structures of the linear forms of glucose, galactose, and fructose are shown. Glucose and galactose are both aldoses with a carbonyl group (carbon double-bonded to oxygen) at one end of the molecule. A hydroxyl (OH) group is attached to each of the other residues. In glucose, the hydroxyl group attached to the third carbon is on the left side of the molecular structure and all other hydroxyl groups are on the right. In galactose, the hydroxyl groups attached to the third and fourth carbons are on the left, and the hydroxyl groups attached to the second, fifth and sixth carbon are on the right. Fructose is a ketose with C doubled bonded to O at the second carbon. All other carbons have hydroxyl groups associated with them. The hydroxyl group associated with the third carbon is on the left, and all the other hydroxyl groups are on the right.",
       "src": "../../media/Figure_03_02_02.png",
-      "mimeType": "image/png"
+      "mimeType": "image/png",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 2
 }

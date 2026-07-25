@@ -204,6 +204,10 @@
             {
               "cells": [
                 {
+                  "segmentId": null,
+                  "attributes": {}
+                },
+                {
                   "segmentId": "m66443:entry:auto-29",
                   "attributes": {}
                 },
@@ -403,6 +407,31 @@
                 "type": "para",
                 "id": "fs-id2016612",
                 "segmentId": "m66443:problem:fs-id2016612"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1597187",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id1597187-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id1597187-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id1597187-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id1597187-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -425,6 +454,31 @@
                 "type": "para",
                 "id": "fs-id1797963",
                 "segmentId": "m66443:problem:fs-id1797963"
+              },
+              {
+                "type": "list",
+                "id": "fs-id2168972",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id2168972-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id2168972-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id2168972-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-id2168972-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -447,6 +501,31 @@
                 "type": "para",
                 "id": "fs-idm74380419",
                 "segmentId": "m66443:problem:fs-idm74380419"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922758",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-idm67922758-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-idm67922758-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-idm67922758-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66443:item:fs-idm67922758-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -611,8 +690,11 @@
       "class": null,
       "alt": "Hydrogen bonding between thymine and adenine and between guanine and cytosine is shown. Thymine forms two hydrogen bonds with adenine, and guanine forms three hydrogen bonds with cytosine. The phosphate backbones of each strand are on the outside and run in opposite directions.",
       "src": "../../media/Figure_03_05_03-4351.png",
-      "mimeType": "image/png"
+      "mimeType": "image/png",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 5
 }
