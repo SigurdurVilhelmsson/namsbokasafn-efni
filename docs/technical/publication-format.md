@@ -69,7 +69,7 @@ efnafraedi/
     "originalUrl": "https://openstax.org/details/books/chemistry-2e",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "translator": "Sigurður E. Vilhelmsson",
+    "translator": "Erlendur (Miðeind)",
     "translationYear": 2025,
     "modifications": "Translated to Icelandic, adapted for Icelandic high school students"
   },
