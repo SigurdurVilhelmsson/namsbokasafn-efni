@@ -1,7 +1,22 @@
 # C2 — Playwright red on `main`: session handoff
 
 **Register item:** C2 / **I16-R14** in `docs/plans/2026-07-21-post-item17-followup-campaign.md` (P1 · correctness)
-**Status:** open. Red on `main` since **2026-07-12**.
+**Status:** ✅ **RESOLVED 2026-07-25** — see the C2 entry in the campaign register for the
+shipped outcome. This file is kept as the investigation record. **Two of its premises were
+wrong; do not reuse them:**
+
+- **§3b is a local artifact.** `books/__e2e-fixture__/03-faithful-translation/` is gitignored
+  (`.gitignore:116`), so the fixture's faithful file exists only on a box that has run the
+  suite before. In CI, **both** fixture modules resolve their baseline from `02-mt-output`.
+- **§3c solves a race that does not exist.** `ux-phase2.spec.js` writes to the real
+  `efnafraedi-2e`, not the fixture — so it never shared a row with `editor-workflow.spec.js`.
+  Its actual co-writer is `segment-editor.spec.js`, which pins `m68664:abstract:auto-2`.
+
+The delivered fix follows §4's recommendation (runtime discovery, uniqueness in the content)
+but screens candidates with the **real** `validateStructure` rather than assuming which
+segments are marker-free, and puts the regression guard in `npm test` rather than Playwright.
+
+**Original status when written:** open. Red on `main` since **2026-07-12**.
 **Severity:** test-integrity. Blocks a trustworthy E2E signal — not a user-facing defect.
 **Size:** small-to-medium. One session. Two spec files, no production code should change.
 
