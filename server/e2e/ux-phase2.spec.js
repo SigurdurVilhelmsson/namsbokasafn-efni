@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
+const { pickEditableSegment } = require('./helpers/segments');
 
 /**
  * Phase 2 UX audit tests — verify fixes from the March 2026 comprehensive audit.
@@ -85,30 +86,57 @@ test.describe('Phase 2 UX fixes', () => {
   });
 });
 
+/**
+ * This block writes to the real `efnafraedi-2e` (not the fixture book), as
+ * `segment-editor.spec.js` already does for the same module. That stays safe
+ * because the module's MT edit-lock marker is committed and `writeMtLock`
+ * no-ops when one exists, so a run leaves the git tree clean.
+ *
+ * C2: the segment id used to be the invented `m68664:para:test-persist`, which
+ * the SR-OOS-2 backstop correctly 404s. It is now discovered at run time; the
+ * per-run uniqueness that identifies "our" edit moved into the text.
+ */
+const M5_BOOK = 'efnafraedi-2e';
+const M5_CHAPTER = '1';
+const M5_MODULE = 'm68664';
+const M5_API = `/api/segment-editor/${M5_BOOK}/${M5_CHAPTER}/${M5_MODULE}`;
+
 test.describe('M5 revert bug regression', () => {
   test('saved edit persists after API reload', async ({ page }) => {
-    const uniqueText = `persist-test-${Date.now()}`;
     const editorId = 88010;
     await loginAs(page, 'editor', editorId);
 
+    const picked = await pickEditableSegment(page.request, {
+      book: M5_BOOK,
+      chapter: M5_CHAPTER,
+      moduleId: M5_MODULE,
+      suffix: ` [persist-test-${Date.now()}]`,
+      // Owned by segment-editor.spec.js's propagation tests, which run in a
+      // parallel worker against this same book and module.
+      exclude: ['m68664:abstract:auto-2'],
+    });
+
     // Save via API
-    const saveRes = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/edit', {
+    const saveRes = await page.request.post(`${M5_API}/edit`, {
       data: {
-        segmentId: 'm68664:para:test-persist',
-        newText: uniqueText,
-        editedContent: uniqueText,
-        originalContent: '',
+        segmentId: picked.segmentId,
+        editedContent: picked.editedContent,
+        originalContent: picked.originalContent,
         category: 'accuracy',
       },
     });
-    expect(saveRes.ok()).toBe(true);
+    const saveRaw = await saveRes.text();
+    expect(
+      saveRes.status(),
+      `POST ${M5_API}/edit on ${picked.segmentId} → ${saveRes.status()}: ${saveRaw}`
+    ).toBe(200);
 
     // Reload the module and verify edit is present in the edits object
-    const moduleRes = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664');
+    const moduleRes = await page.request.get(M5_API);
     expect(moduleRes.ok()).toBe(true);
     const moduleData = await moduleRes.json();
-    const segEdits = moduleData.edits['m68664:para:test-persist'] || [];
-    const myEdit = segEdits.find((e) => e.edited_content === uniqueText);
+    const segEdits = moduleData.edits[picked.segmentId] || [];
+    const myEdit = segEdits.find((e) => e.edited_content === picked.editedContent);
     expect(myEdit).toBeTruthy();
     expect(myEdit.status).toBe('pending');
 
