@@ -45,10 +45,7 @@ describe('buildAppendixIdMap error handling (R4-12)', () => {
   it('returns empty maps when the book has no appendices (ENOENT)', () => {
     // No fixture needed: this book slug genuinely does not exist on disk, so
     // buildModuleSections()'s readdirSync throws a real ENOENT.
-    const { idMap, moduleLetters } = buildAppendixIdMap(
-      '__r412-nonexistent-book__',
-      'mt-preview'
-    );
+    const { idMap, moduleLetters } = buildAppendixIdMap('__r412-nonexistent-book__', 'mt-preview');
     expect(idMap.size).toBe(0);
     expect(moduleLetters.size).toBe(0);
   });
@@ -67,9 +64,7 @@ describe('buildAppendixIdMap error handling (R4-12)', () => {
     });
 
     it('rethrows a corrupt-structure error (fail loud)', () => {
-      expect(() => buildAppendixIdMap(CORRUPT_BOOK, 'mt-preview')).toThrow(
-        /Unexpected token|JSON/
-      );
+      expect(() => buildAppendixIdMap(CORRUPT_BOOK, 'mt-preview')).toThrow(/Unexpected token|JSON/);
     });
   });
 });

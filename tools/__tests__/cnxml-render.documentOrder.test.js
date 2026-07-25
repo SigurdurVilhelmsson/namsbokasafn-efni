@@ -8,9 +8,14 @@ describe('renderChildrenInDocumentOrder — media-bearing list stays in order', 
       '<list id="L1" list-type="enumerated" number-style="arabic">' +
       '<item>step<media id="m1" alt="x"><image src="a.jpg"/></media></item>' +
       '</list>';
-    const html = renderChildrenInDocumentOrder(content, {}, {
-      excludeSections: true, sectionLevel: 2,
-    }).join('\n');
+    const html = renderChildrenInDocumentOrder(
+      content,
+      {},
+      {
+        excludeSections: true,
+        sectionLevel: 2,
+      }
+    ).join('\n');
     expect(html.indexOf('id="L1"')).toBeGreaterThan(html.indexOf('id="p1"'));
   });
 });

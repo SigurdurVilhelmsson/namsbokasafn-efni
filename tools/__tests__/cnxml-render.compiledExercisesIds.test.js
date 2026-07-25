@@ -15,7 +15,10 @@ describe('renderCompiledExercises wrapper ids (R5-4)', () => {
     _loadBookConfigForTest('liffraedi-2e');
     const html = renderCompiledExercises(
       11,
-      { 'multiple-choice': [mod('multiple-choice')], 'critical-thinking': [mod('critical-thinking')] },
+      {
+        'multiple-choice': [mod('multiple-choice')],
+        'critical-thinking': [mod('critical-thinking')],
+      },
       new Map(),
       {}
     );

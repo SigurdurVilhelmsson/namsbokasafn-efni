@@ -17,7 +17,10 @@ describe('renderList number-style', () => {
     expect(html).toMatch(/list-style-type:\s*upper-alpha/);
   });
   it('leaves a plain <ol> (decimal) for enumerated lists with no number-style', () => {
-    const html = renderList({ id: null, attributes: { 'list-type': 'enumerated' }, content: '<item>x</item>' }, {});
+    const html = renderList(
+      { id: null, attributes: { 'list-type': 'enumerated' }, content: '<item>x</item>' },
+      {}
+    );
     expect(html).not.toMatch(/list-style-type/);
     expect(html).toContain('<ol');
   });
