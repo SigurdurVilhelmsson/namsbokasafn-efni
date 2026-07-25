@@ -61,6 +61,58 @@ otherwise bypass.
 
 ---
 
+## 🌐 THIS REPOSITORY IS PUBLIC (since 2026-07-25)
+
+Assume anything committed is world-readable immediately. A pre-publication audit +
+remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
+`pre-publication-2026-07-25`.
+
+**Three licences, by path — do not conflate them:**
+
+| Path | Licence | File |
+|---|---|---|
+| `tools/`, `scripts/`, root config | **MIT** | root `LICENSE` |
+| `server/` incl. `greynir-sidecar/` — Ritstjóri | **AGPL-3.0** | `server/LICENSE` |
+| `books/` | **per-book Creative Commons** | `books/<slug>/book-config.json` is authoritative |
+
+- **Never make a blanket "all content is CC BY 4.0" claim.** Organic Chemistry and
+  College Physics are **CC BY-NC-SA 4.0** (no commercial, ShareAlike). That exact
+  over-grant was the audit's blocking finding.
+- The AGPL/MIT split mirrors OpenStax's own convention (their server-side systems are
+  AGPL-3.0, build tooling MIT).
+- **Known gap E-2:** `tools/api-translate.js:1003` has one optional `require()` into
+  `server/services/pipelineStatusService.js` — MIT tooling reaching AGPL code. Guarded
+  by try/catch; documented in both LICENSE and README. Sever it if you touch that file.
+- **Credit follows the METHOD:** the machine is the translator; people get *ritstjórn*
+  / *yfirlestur*. Only biology is human-translated ("Þýðing"). Never write
+  "Translated by \<person\>" for MT content — `books/*/metadata.json`,
+  `templates/frontmatter.yaml` and both READMEs follow this.
+- **`.claude/*.local.json` is gitignored at repo level** (`.gitignore:106`). Claude
+  Code writes credentials into permission-allowlist strings where they don't look
+  like secrets — this is exactly how the sister repo published two live Cloudflare
+  tokens for ~5 months. A global `~/.config/git/ignore` does **not** travel with a
+  clone; the repo-level rule is the only real protection.
+
+## CI — what actually gates, and how to read a red check
+
+CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
+
+- **⚠️ `npm run lint` ≠ the Lint job** — CI also runs `npm run format:check`
+  (prettier). **`npm test` ≠ the Tests job** — CI also runs Playwright E2E. Verify
+  against the workflow files before claiming a branch is green; asserting from a
+  subset is how a red `main` goes unnoticed.
+- **Duration is the diagnostic**: an infra/billing failure dies in ~3s *before*
+  `Current runner version:` appears. Minutes elapsed = a real result.
+- All five gating workflows (`lint`, `test`, `validate`, `security`, `docs-check`)
+  now have **`workflow_dispatch`** — re-verify from the Actions tab, never by
+  inventing a commit.
+- **Current state:** Lint ✅ · Security ✅ · unit ✅ (3368) · **e2e ❌ = C2 only**
+  (`editor-workflow.spec.js`, `ux-phase2.spec.js` — synthetic segment IDs 404'd by
+  the SR-OOS-2 backstop since 2026-07-12). Handoff:
+  `docs/plans/2026-07-25-c2-playwright-red-handoff.md`.
+
+---
+
 ## Notes for Code Reviewers
 
 This project was built iteratively with AI assistance. Known areas of concern:
