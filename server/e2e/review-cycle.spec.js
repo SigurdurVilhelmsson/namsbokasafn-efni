@@ -35,6 +35,8 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
   let editedContent;
   let editId;
   let reviewId;
+  let restoredVersion;
+  let snapshotVersion;
 
   test('editor saves a segment edit', async ({ page }) => {
     await loginAs(page, 'admin', EDITOR_ID);
@@ -177,6 +179,17 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     ).toBe(true);
     expect(restoreData.success).toBe(true);
     expect(restoreData.restoredVersion).toBe(target);
+    // Shared with §1d, which scopes its assertion to this run's restore.
+    // `restoredVersion` alone doesn't discriminate runs (getModuleVersions
+    // orders DESC, so `target` — the lowest version — is `1` on essentially
+    // every run against a reused DB). `snapshotVersion` is a per-module
+    // counter that strictly increases with every restore call across the
+    // DB's whole lifetime (contentVersionService.restoreVersion snapshots
+    // current content before restoring), so pinning both together is
+    // genuinely unique to this run's restore event.
+    restoredVersion = target;
+    snapshotVersion = restoreData.snapshotVersion;
+    expect(snapshotVersion).toBeGreaterThan(0);
 
     const reloadRes = await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}`);
     expect(reloadRes.ok()).toBe(true);
@@ -202,6 +215,20 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     const res = await page.request.get(`/api/activity/section/${BOOK}/${CHAPTER}/${MODULE}`);
     expect(res.ok()).toBe(true);
     const { activities } = await res.json();
-    expect(activities.some((a) => a.type === 'version_restored')).toBe(true);
+    // Scoped to THIS run's restore (not just "some row exists somewhere"):
+    // contentVersionService.restoreVersion logs both metadata.restoredVersion
+    // and metadata.snapshotVersion (server/services/contentVersionService.js),
+    // and activityLog.getBySection JSON.parses the stored metadata column, so
+    // both are available pre-parsed here. restoredVersion alone repeats across
+    // runs (see §1b); snapshotVersion is a strictly-increasing per-restore
+    // counter, so the pair together identifies exactly this run's restore.
+    expect(
+      activities.some(
+        (a) =>
+          a.type === 'version_restored' &&
+          a.metadata?.restoredVersion === restoredVersion &&
+          a.metadata?.snapshotVersion === snapshotVersion
+      )
+    ).toBe(true);
   });
 });

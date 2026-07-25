@@ -112,12 +112,25 @@ test.describe('§0.4a stored-XSS in a term source renders inert', () => {
 test.describe('§5a page-auth + console sweep', () => {
   test('§5a anon /admin redirects to login, no admin DOM painted', async ({ browser }) => {
     const context = await browser.newContext({ baseURL: 'http://localhost:3456' });
+
+    // Transport-level: requirePageAuth must 302 an anon GET /admin to /login
+    // BEFORE any admin markup is ever written to the response body — proves a
+    // flash is impossible (a client-side-only guard would instead 200 with
+    // admin.html and redirect from JS, which the assertions below would catch).
+    const resp = await context.request.get('/admin', { maxRedirects: 0 });
+    expect(resp.status()).toBe(302);
+    expect(resp.headers()['location']).toContain('/login');
+    const body = await resp.text();
+    // data-tab="users" is admin.html-only markup (server/views/admin.html) —
+    // absent from login.html and every other view.
+    expect(body).not.toContain('data-tab="users"');
+
+    // Browser-level: the anon user actually lands on /login.
     const anon = await context.newPage();
     await anon.goto('/admin');
     await anon.waitForLoadState('networkidle');
     expect(anon.url()).toContain('/login');
-    // admin-only controls never rendered
-    expect(await anon.locator('#register-btn, button.tab[data-tab="users"]').count()).toBe(0);
+
     await context.close();
   });
 

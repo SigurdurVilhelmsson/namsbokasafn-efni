@@ -115,17 +115,28 @@ test.describe('§0.3/§1e cross-book head-editor authorization', () => {
     expect(resp.status()).toBe(403);
   });
 
+  // Chapter is deliberately out-of-range (MAX_CHAPTERS = 99, server/constants.js)
+  // rather than `1`: on the publish routes (server/routes/publication.js:132,
+  // 187, 243) middleware order is requireAuth → requireHeadEditor('bookSlug') →
+  // validateChapterParams → handler, i.e. authz runs BEFORE chapter validation.
+  // So the cross-book head-editor below still gets its 403 from requireHeadEditor
+  // regardless of chapter value, while admin (§0.3c, which bypasses the book
+  // check) now gets a 400 from validateChapterParams and can never reach
+  // publishMtPreview/runPipeline as an e2e side effect. `1` was only hermetic
+  // while biology (liffraedi-2e) ch01 had no 02-mt-output; biology onboarding
+  // is active, so this keeps the test hermetic regardless of that content state.
   test('§0.3d head-editor publish on a non-owned book → 403', async ({ page }) => {
     await loginAs(page, 'head-editor');
-    const resp = await page.request.post(`/api/publication/${OTHER_BOOK}/1/mt-preview`);
+    const resp = await page.request.post(`/api/publication/${OTHER_BOOK}/999/mt-preview`);
     expect(resp.status()).toBe(403);
   });
 
   test('§0.3c admin publish is not blocked by book scope (not 403)', async ({ page }) => {
     await loginAs(page, 'admin');
-    const resp = await page.request.post(`/api/publication/${OTHER_BOOK}/1/mt-preview`);
-    // May 400 (chapter not ready) on missing content — must never be the
-    // book-scope 403 (admins bypass requireHeadEditor's book check).
+    const resp = await page.request.post(`/api/publication/${OTHER_BOOK}/999/mt-preview`);
+    // Out-of-range chapter (999) means admin hits validateChapterParams' 400
+    // before ever reaching publishMtPreview — must never be the book-scope 403
+    // (admins bypass requireHeadEditor's book check).
     expect(resp.status()).not.toBe(403);
   });
 
