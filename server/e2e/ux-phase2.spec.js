@@ -131,18 +131,28 @@ test.describe('M5 revert bug regression', () => {
       `POST ${M5_API}/edit on ${picked.segmentId} → ${saveRes.status()}: ${saveRaw}`
     ).toBe(200);
 
-    // Reload the module and verify edit is present in the edits object
+    // Reload the module — this is the actual regression under test (M5: does a
+    // saved edit survive an API reload?). Capture first, assert LAST.
     const moduleRes = await page.request.get(M5_API);
     expect(moduleRes.ok()).toBe(true);
     const moduleData = await moduleRes.json();
     const segEdits = moduleData.edits[picked.segmentId] || [];
     const myEdit = segEdits.find((e) => e.edited_content === picked.editedContent);
-    expect(myEdit).toBeTruthy();
-    expect(myEdit.status).toBe('pending');
 
-    // Cleanup: delete the test edit
+    // CLEAN UP BEFORE ASSERTING. This test writes into the PRODUCTION book, so a
+    // stranded pending edit would make that row un-editable and un-acceptable for
+    // every later spec and user (`canEdit=false`; `acceptBlockReason` →
+    // EDIT_EXISTS), and on a locally reused server it survives into the next run.
+    // Asserting first would skip cleanup on exactly the failure path that strands
+    // it; a `finally` would fix that but let a teardown error REPLACE the real
+    // assertion failure and destroy the diagnosis. Deleting first avoids both.
     if (myEdit) {
-      await page.request.delete(`/api/segment-editor/edit/${myEdit.id}`);
+      const del = await page.request.delete(`/api/segment-editor/edit/${myEdit.id}`);
+      // Asserted, not fire-and-forget (acceptance.spec.js:140 sets the precedent).
+      expect(del.status(), 'teardown DELETE must succeed').toBe(200);
     }
+
+    expect(myEdit, `no edit matching ${picked.editedContent} after reload`).toBeTruthy();
+    expect(myEdit.status).toBe('pending');
   });
 });

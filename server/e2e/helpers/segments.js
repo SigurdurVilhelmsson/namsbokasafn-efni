@@ -139,4 +139,8 @@ async function pickEditableSegment(request, options) {
   return chooseSegment(data.segments, { suffix, exclude });
 }
 
-module.exports = { chooseSegment, pickEditableSegment, isAppendSafe };
+// `isAppendSafe` is deliberately NOT exported. Exposed, it reads as a supported
+// pre-screen, and a future spec calling it directly would skip the first/last
+// and `exclude` guards that make a pick collision-safe — reintroducing the very
+// sibling-spec overlap the ownership table above exists to prevent.
+module.exports = { chooseSegment, pickEditableSegment };

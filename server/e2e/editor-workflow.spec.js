@@ -12,13 +12,22 @@ const { pickEditableSegment } = require('./helpers/segments');
  * Uses unique user IDs (88001, 88002) to avoid conflicts with other test suites.
  *
  * RUN-UNIQUENESS LIVES IN THE CONTENT, NOT THE SEGMENT ID (C2). This spec used
- * to invent `m68664:para:e2e-wf-<timestamp>` so an approved row from a previous
- * run could never collide on (book, module_id, segment_id, status, editor_id).
- * The SR-OOS-2 backstop then started resolving the id against the server-side
- * baseline, and an invented id became a hard 404 — red on `main` 2026-07-12 →
- * 2026-07-25. The id is now a REAL one discovered at run time; the timestamp
- * moved into the edited text, which preserves the original anti-collision
- * property (every assertion below matches on the text, not the id).
+ * to invent `m68664:para:e2e-wf-<timestamp>`. The SR-OOS-2 backstop then started
+ * resolving the id against the server-side baseline, and an invented id became a
+ * hard 404 — red on `main` 2026-07-12 → 2026-07-25. The id is now a REAL one
+ * discovered at run time, and the timestamp moved into the edited text.
+ *
+ * ⚠️ What the run-unique CONTENT is and is not for. The old header justified the
+ * invented id as avoiding "UNIQUE constraint violations on (book, module_id,
+ * segment_id, status, editor_id)". **That constraint no longer exists** —
+ * migration 039 dropped the table-level UNIQUE and replaced it with the partial
+ * `idx_segment_edits_one_pending ON (book, module_id, segment_id, editor_id)
+ * WHERE status = 'pending'`. A re-run against a REUSED database is therefore
+ * safe for a different reason than the old comment claimed: the leftover row is
+ * `approved`, so it falls outside the partial index and a fresh `pending` insert
+ * cannot collide with it. The suffix below is NOT load-bearing for DB integrity;
+ * it exists so the assertions in the later tests can identify THIS run's edit
+ * among any others on the same segment.
  */
 
 const BOOK = '__e2e-fixture__';

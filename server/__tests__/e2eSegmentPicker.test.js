@@ -15,6 +15,7 @@
  * route's backstop calls.
  */
 
+const fs = require('fs');
 const path = require('path');
 const segmentParser = require('../services/segmentParser');
 const segmentValidation = require('../public/js/segment-validation');
@@ -75,10 +76,22 @@ describe('chooseSegment — sibling-spec ownership on the shared fixture module'
     expect(picked.segmentId).not.toBe('m:title:0');
   });
 
-  it('never returns the last segment (claimed by acceptance.spec.js `.last()`)', () => {
-    const picked = chooseSegment(PLAIN, { suffix: ' [e2e-1]' });
+  it('refuses to fall through to the last segment even when it is the only one left', () => {
+    // Deliberately constructed so the guard is the ONLY thing standing between
+    // the picker and the last segment: everything between first and last is
+    // unusable. Asserting `not.toBe(last)` against a fixture with several valid
+    // middle candidates would pass with the guard deleted — it has to be the
+    // last segment or nothing.
+    const lastIsTheOnlyCandidate = [
+      seg('m:a:0', 'first', 'fyrsti'),
+      seg('m:none:1', 'untranslated', ''),
+      seg('m:none:2', 'also untranslated', ''),
+      seg('m:z:3', 'last', 'síðasti'),
+    ];
 
-    expect(picked.segmentId).not.toBe('m:para:4');
+    expect(() => chooseSegment(lastIsTheOnlyCandidate, { suffix: ' [e2e-1]' })).toThrow(
+      /no append-safe segment/i
+    );
   });
 
   it('honours an explicit exclude list', () => {
@@ -138,6 +151,28 @@ describe('the committed fixtures still offer a usable segment (rot detector)', (
     ['efnafraedi-2e', 1, 'm68664'],
   ];
 
+  /**
+   * Segment ids straight off disk, parsed from the committed EN segment file.
+   *
+   * Deliberately an INDEPENDENT path: asserting that the picked id is a member
+   * of the very array it was selected from is unconditionally true and would
+   * not notice a picker that synthesised ids — which is precisely the C2 bug.
+   */
+  function segmentIdsOnDisk(book, chapter, moduleId) {
+    const file = path.join(
+      __dirname,
+      '..',
+      '..',
+      'books',
+      book,
+      '02-for-mt',
+      `ch${String(chapter).padStart(2, '0')}`,
+      `${moduleId}-segments.en.md`
+    );
+    const markers = fs.readFileSync(file, 'utf8').match(/<!--\s*SEG:(.+?)\s*-->/g) || [];
+    return markers.map((m) => m.replace(/<!--\s*SEG:/, '').replace(/\s*-->$/, ''));
+  }
+
   for (const [book, chapter, moduleId] of TARGETS) {
     it(`${book}/ch${chapter}/${moduleId} yields an append-safe segment the route would accept`, () => {
       const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
@@ -147,9 +182,13 @@ describe('the committed fixtures still offer a usable segment (rot detector)', (
         exclude: ['m68664:abstract:auto-2'],
       });
 
-      // The picked id is really in the module — this is the exact lookup the
-      // backstop performs before it 404s.
-      expect(data.segments.some((s) => s.segmentId === picked.segmentId)).toBe(true);
+      // Independent-source membership: the id must exist in the committed
+      // fixture on disk, not merely in the array the picker was handed. This is
+      // what the route's backstop resolves before it 404s.
+      const onDisk = segmentIdsOnDisk(book, chapter, moduleId);
+      expect(onDisk.length).toBeGreaterThan(0);
+      expect(onDisk).toContain(picked.segmentId);
+
       expect(
         segmentValidation.validateStructure(picked.en, picked.originalContent, picked.editedContent)
           .blocked
@@ -157,33 +196,47 @@ describe('the committed fixtures still offer a usable segment (rot detector)', (
     });
   }
 
-  it('reserves the segment segment-editor.spec.js hardcodes', () => {
-    // segment-editor.spec.js:355 pins `m68664:abstract:auto-2` by literal for
-    // its propagation tests. The repaired specs exclude it so their pending
-    // edits can never perturb that suite's eligible/skipped counts.
-    const data = segmentParser.loadModuleForEditing('efnafraedi-2e', 1, 'm68664');
-
-    const picked = chooseSegment(data.segments, {
-      suffix: ' [rot-detector]',
-      exclude: ['m68664:abstract:auto-2'],
-    });
-
-    expect(picked.segmentId).not.toBe('m68664:abstract:auto-2');
-    // …and the literal it hardcodes must still exist, or that spec is the next
-    // one to go red the way C2 did.
-    expect(data.segments.some((s) => s.segmentId === 'm68664:abstract:auto-2')).toBe(true);
+  it('still contains the literal id segment-editor.spec.js hardcodes', () => {
+    // segment-editor.spec.js:355 pins `m68664:abstract:auto-2` by literal for its
+    // propagation tests. If the fixture ever loses that id, that spec is the next
+    // one to go red the way C2 did — and this is the gate that would say so.
+    expect(segmentIdsOnDisk('efnafraedi-2e', 1, 'm68664')).toContain('m68664:abstract:auto-2');
   });
 });
 
 describe('pickEditableSegment — a failed load must be diagnosable from CI logs alone', () => {
-  /** Stand-in for Playwright's APIRequestContext. */
-  const fakeRequest = (status, body) => ({
-    get: async () => ({
-      ok: () => status >= 200 && status < 300,
-      status: () => status,
-      text: async () => (typeof body === 'string' ? body : JSON.stringify(body)),
-      json: async () => body,
-    }),
+  /**
+   * Stand-in for Playwright's APIRequestContext. Records the URL it was asked
+   * for — without that, a mutation reordering the path segments would leave
+   * every vitest test green and surface only in the e2e job nobody watches.
+   */
+  const fakeRequest = (status, body) => {
+    const calls = [];
+    return {
+      calls,
+      get: async (url) => {
+        calls.push(url);
+        return {
+          ok: () => status >= 200 && status < 300,
+          status: () => status,
+          text: async () => (typeof body === 'string' ? body : JSON.stringify(body)),
+          json: async () => body,
+        };
+      },
+    };
+  };
+
+  it('requests the module at /api/segment-editor/:book/:chapter/:moduleId', async () => {
+    const request = fakeRequest(200, { segments: PLAIN });
+
+    await pickEditableSegment(request, {
+      book: '__e2e-fixture__',
+      chapter: '1',
+      moduleId: 'm68664',
+      suffix: ' [e2e-1]',
+    });
+
+    expect(request.calls).toEqual(['/api/segment-editor/__e2e-fixture__/1/m68664']);
   });
 
   it('throws with the status code and the response body when the module GET fails', async () => {
@@ -213,10 +266,6 @@ describe('pickEditableSegment — a failed load must be diagnosable from CI logs
   });
 });
 
-describe('helper location', () => {
-  it('lives beside the specs that consume it', () => {
-    expect(require.resolve('../e2e/helpers/segments')).toBe(
-      path.join(__dirname, '..', 'e2e', 'helpers', 'segments.js')
-    );
-  });
-});
+// (A "helper location" test asserting require.resolve() equals the same path
+// spelled with path.join was deleted: the module is already required at the top
+// of this file, so resolution cannot fail by the time such a test would run.)
