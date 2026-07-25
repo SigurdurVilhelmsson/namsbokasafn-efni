@@ -96,6 +96,15 @@ books/liffraedi-2e/01-source/media/
 .superpowers/
 .claude/workflows/
 
+# Personal Claude Code permissions — machine-local, may contain allowlisted
+# commands. These files have carried live API tokens inside permission strings
+# (namsbokasafn-vefur leaked two Cloudflare tokens this way, 2025-12-30), so
+# they must never be tracked. Repo-level rule on purpose: a global
+# ~/.config/git/ignore does not travel with a clone, so it protects neither
+# collaborators nor the production checkout.
+.claude/settings.local.json
+.claude/*.local.json
+
 # Python bytecode
 __pycache__/
 *.pyc
