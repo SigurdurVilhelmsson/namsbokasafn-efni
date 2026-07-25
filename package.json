@@ -64,7 +64,7 @@
     "url": "https://github.com/SigurdurVilhelmsson/namsbokasafn-efni"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "homepage": "https://namsbokasafn.is",
   "overrides": {
