@@ -307,7 +307,10 @@ Three licences apply, depending on where a file lives:
 Ritstjóri is AGPL-3.0 because it is normally operated as a network service: if
 you run a modified version and let users interact with it over a network, AGPL
 section 13 requires you to offer those users your modified source. The pipeline
-tooling is MIT so it can be freely reused by other language projects.
+tooling is MIT so it can be freely reused by other language projects. This split
+follows [OpenStax's own convention](https://github.com/openstax): its server-side
+and editorial systems (`openstax-cms`, `rex-web`, `poet`, `cnxml`) are AGPL-3.0,
+while its build and pipeline tools (`corgi`, `cookbook`) are MIT.
 
 The MIT grant does **not** extend to `server/`. If you take only `tools/` under
 MIT, note that `tools/api-translate.js` has one optional runtime `require()`
