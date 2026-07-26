@@ -8,9 +8,36 @@
   "liffraedi": {
     "label": "Líffræði (Biology)",
     "collections": [
-      { "ordabok": "LIFORD", "label": "Líffræðiorðasafn (10,000+ terms, ES cap applies)" },
-      { "ordabok": "LIFORD2", "label": "Líffræðiorðasafn 2 (þroskunarfræði o.fl.)" }
+      { "ordabok": "LIFORD", "label": "Líforðasafn (10,031 terms, ES cap applies)" },
+      { "ordabok": "LIFORD2", "label": "Líforðasafn 2 (þroskunarfræði o.fl., 620)" }
     ]
+  },
+  "liffraedi-extended": {
+    "label": "Líffræði + aðliggjandi orðasöfn (Biology + adjacent subjects)",
+    "_note": "For OpenStax Biology 2e, whose scope spans genetics, immunology, ecology and taxonomy. Counts verified 2026-07-26 from https://idord.arnastofnun.is/d/api/es/agg/dictionaries/ (82 collections total; the full list with names is at /d/api/dictionaries/?limit=1000). IMPORTANT: collections disagree with each other — 70 of 217 headwords shared by LIFORD and ERFDAFR (32%) have different Icelandic. Keep fkdictionary with every imported term and resolve precedence per domain; do NOT union them blindly.",
+    "collections": [
+      { "ordabok": "LIFORD", "label": "Líforðasafn (10,031)" },
+      { "ordabok": "LIFORD2", "label": "Líforðasafn 2 (620)" },
+      { "ordabok": "ERFDAFR", "label": "Erfðafræði / genetics (1,163) — uses RNA/DNA, not RKS/DKS" },
+      { "ordabok": "ONAEMI", "label": "Ónæmisfræði / immunology (943)" },
+      { "ordabok": "PODDUR", "label": "Pöddur / insects (797)" },
+      { "ordabok": "SJODYR", "label": "Sjávardýr / marine animals (985)" },
+      { "ordabok": "PLANTA", "label": "Nöfn háplöntuætta / higher-plant families (478)" },
+      { "ordabok": "RISAEDLUR", "label": "Risaeðlur / dinosaurs (331)" },
+      { "ordabok": "FARALDSFRAEDI", "label": "Faraldsfræði / epidemiology (269)" },
+      { "ordabok": "LYDHEILSA", "label": "Lýðheilsufræði / public health (244)" },
+      { "ordabok": "UMHVERFI", "label": "Umhverfisfræði / environmental science (32)" }
+    ],
+    "_deliberately_excluded": {
+      "LAEKN": "Læknisfræði / medicine — 33,593 terms. Relevant to the anatomy/physiology chapters but needs per-letter fetching (ES 10k cap) and would dominate any merge. Add deliberately, not by default.",
+      "FLORA": "Plöntuheiti / plant names — 11,532. Species names, not concept terminology.",
+      "PISCES": "Sjávarútvegsmál — 3,472. Fisheries industry, not biology.",
+      "FUGLAR": "Fuglaheiti / bird names — 2,747. Species names.",
+      "LYFJAFRLYFJASTOFNUN": "Lyfjafræði / pharmacology — 943. Add if the book covers pharmacology.",
+      "KRYDD": "Matarorð úr jurtaríkinu / plant-based foods — 724.",
+      "VIDUR": "Nytjaviðir / harvested wood — 314.",
+      "TANNL": "Tannorðasafn / dental — 829."
+    }
   },
   "edlisfraedi": {
     "label": "Eðlisfræði (Physics)",
