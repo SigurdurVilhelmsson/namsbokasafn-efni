@@ -1,5 +1,34 @@
 # Claude Code Instructions for namsbokasafn-efni
 
+## 📍 ONE SOURCE OF TRUTH — where each kind of fact lives
+
+Adopted 2026-07-26, after a closure audit found the work register had been built from *summaries of itself* and eight findings had silently evaporated. The first attempted fix declared a **second** source of truth and said "consult both" — that is the same failure one level up, and it produced a live disagreement **within one day**.
+
+**Six kinds of fact, one owner each. Every other file points; it never restates.**
+
+| Kind of fact | The ONE owner | Everyone else says |
+|---|---|---|
+| **Durable rule** — an instruction to obey (never restore `Strict`; check provenance before `--force`) | **this file** | `→ see CLAUDE.md § <name>` |
+| **Enforceable value** — a version, enum, role, licence code, count | the file the code reads (`.nvmrc`, `server/constants.js`, `schemas/`, `book-config.json`) + its test | `→ see <file>` — no number, no list |
+| **Open work** — is X next / blocked / shipped / deferred | **the active register** in `docs/plans/` (currently `2026-07-21-post-item17-followup-campaign.md`), specifically its ⏩ RESUME block | `→ active plan; read its RESUME block`. **No status verbs anywhere else.** |
+| **Design record** — why a decision was made | the spec/audit doc, **frozen and banner-dated** | cite as evidence, never as status |
+| **Historical evidence** — a review as written, an incident, a finished phase | the doc itself, **banner-frozen** | nothing — frozen files are cited, not synced |
+| **Session-recall hint** — pointers, and facts with no repo home | project memory | must carry **no repo `file:line`** and **no item status** |
+| **Published rendering** — the dashboard artifact | nothing; it is a **dated snapshot** | — |
+
+**The rule that replaces "consult both":** a frozen document is *evidence*, never status. **If a frozen doc disagrees with the register, the register wins** — the frozen one is dated, the register is live.
+
+**Two consequences worth internalising:**
+- **No prose anywhere holds a test count, a migration count, or a green/red CI verdict.** The number you need is whatever `npm test` just printed; the gate status is the Actions tab. Every such number found in the docs on 2026-07-26 was stale, one by 3×.
+- **If you notice document B is wrong, fix B.** Never log it as a to-do in document A — that creates a third copy which outlives the fix. (Found twice: a register entry pointing at an already-corrected memory line, by a line number that had since moved.)
+
+**Checkable, not aspirational** — one grep, two seconds, yes/no:
+```bash
+grep -nE '[a-z0-9_-]+\.(js|sh|md|json|yml):[0-9]+' <project-memory>/MEMORY.md   # must return nothing
+```
+A fact citing a repo `file:line` belongs in the repo. Memory carries pointers.
+
+
 ## ⚠️ MANDATORY: Read Documentation Before Pipeline Operations
 
 **Before performing ANY pipeline operation** (processing, publishing, assembling, syncing content), you MUST:
@@ -137,10 +166,7 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
   outage. ⚠️ If ever revisited: check-run names are the **lowercase job ids** (`Tests` is
   **two** checks, `test` + `e2e`), and requiring the path-filtered `Validate Status Files`
   or `check-docs` blocks PRs **forever** on the PRs where they don't report.
-- **Current state:** Lint ✅ · Security ✅ · unit ✅ (3368) · **e2e ❌ = C2 only**
-  (`editor-workflow.spec.js`, `ux-phase2.spec.js` — synthetic segment IDs 404'd by
-  the SR-OOS-2 backstop since 2026-07-12). Handoff:
-  `docs/plans/2026-07-25-c2-playwright-red-handoff.md`.
+- **Live gate status: the Actions tab. No document asserts green/red** — including this one. *(A `Current state: … e2e ❌` line lived here and was false for a day after C2 merged as #329.)*
 
 ---
 
@@ -150,7 +176,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: ~1168 Vitest unit tests + 137 Playwright E2E tests, all green as of 2026-06-12 (vitest workspace: tools parallel, server sequential). Remediation Units 0–5 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.
+- Test suite: Vitest (unit) + Playwright (E2E); vitest workspace runs tools in parallel, server sequentially. **No count is recorded here — run `npm test`.** Remediation Units 0–5 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.
 
 ## Purpose
 
@@ -319,11 +345,10 @@ All AI suggestions require human approval before:
 **Content → reader flow:** editor edits/approvals live only in the production
 server's `sessions.db` (gitignored). "Vista + Birta" renders HTML to
 `05-publication/` on the server's disk; `scripts/git-backup.sh` (cron, every
-2h) pushes `books/` content to `main`; a push touching
-`books/*/05-publication/**` auto-triggers the "Sync Content to Vefur" Action
-(`.github/workflows/sync-content.yml`), which publishes to namsbokasafn-vefur.
-Full picture: [docs/technical/architecture.md](docs/technical/architecture.md)
-§ Cross-Repository Content Flow.
+2h) pushes `books/` content to `main`. **⚠️ The last leg is MANUAL — see
+§ "Content delivery to readers" above.** The `sync-content.yml` Action that
+was designed to close this gap has never worked, so nothing publishes to
+namsbokasafn-vefur automatically.
 
 **Manual sync** (run in namsbokasafn-vefur, e.g. to publish before the 2h cron):
 ```bash
@@ -406,12 +431,12 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 - Structured logging via pino (`LOG_LEVEL` env var, JSON in production)
 - Production health check at `GET /api/health` (DB, migrations, books, auth)
 
-**Recent changes (2026-07-26, latest — CNXML validation-gate experiment → live biology content-loss fix → glossary sourcing):** **✅ Both PRs MERGED (#333 `0e9bdd77`, #332 `e8ded0e3`) · synced · built · ✅ DEPLOYED 2026-07-26 — the fix is LIVE for readers.** Local suite 3388 green before merge (the authoritative gate — no branch protection); all CI checks green on both PRs.
+**Recent changes (2026-07-26, latest — CNXML validation-gate experiment → live biology content-loss fix → glossary sourcing):** **✅ Both PRs MERGED (#333 `0e9bdd77`, #332 `e8ded0e3`) · synced · built · ✅ DEPLOYED 2026-07-26 — the fix is LIVE for readers.** Local suite green before merge (the authoritative gate — no branch protection); all CI checks green on both PRs.
 - **⚠️ HOW TO VERIFY A VEFUR DEPLOY — route status codes are MEANINGLESS.** The reader site is a client-rendered SPA with an any-path fallback: `/`, a real section, a deleted section and pure nonsense **all return `200` with the identical 2,940-byte shell**, and `WebFetch` sees only that shell. **Test the content file the client actually fetches — `/content/<book>/chapters/<NN>/<file>.html` — not the page URL.** Verified this way: `3-key-terms.html` **200, 16,397 bytes, 50 `<dt>` definitions** (the page did not exist before), `3-summary.html` **6,821 bytes** (was 112 chars of empty headings), `toc.json` lists 9 ch03 sections with **no duplicates** — so the **C9 title-rename duplication did NOT fire** (these were mt-preview→mt-preview renames, mirrored with `--delete`; old files survive only as `.backup.*`).
 - **⚠️ STILL OPEN — the two redirects were NOT added.** `/content/…/3-1-myndun-lifraenna-storsameinda.html` and `…/3-4-protein.html` both **404** live. Reader impact is a clean Icelandic 404 (`[sectionSlug]/+page.ts:56` throws `error(404, 'Kafli fannst ekki')`) — dead inbound links and lost SEO, not a broken UI. **These belong in the vefur server's nginx config, NOT in code:** `svelte.config.js` uses `@sveltejs/adapter-static` and there is no `src/hooks.server.*`, so a SvelteKit `redirect()` has nothing to run in. Same place as the `B-embed` `frame-src` CSP work. Both renames are *improvements*, not errors (Árnastofnun backs `prótín` 44× vs `prótein` 5×). The third rename was avoided entirely: `3-3-fitusyrur` was never published because the title was corrected first.
 - **#333 `0e9bdd77` (was `experiment/cnxml-schema-validation-gate`)** — self-contained under `experiments/cnxml-validation-gate/`; **merging it turned nothing on** — integration remains a separate approved task (FINDINGS §6, ~2.5–3 d for the gate, ~5–9 including the biology fixes needed before it can be enforced there) (nothing wired into the pipeline/server/CI; `lint`/`format:check` cover only `tools/`+`scripts/` and vitest only `*/__tests__/`, so CI is unaffected). **Verdict: jing + OpenStax's own RelaxNG is a viable fail-loud gate, ~0.7 s/chapter.** efnafraedi-2e is **schema-perfect: 149/149 modules, error-for-error identical to the OpenStax originals** (incl. the math- and table-heaviest chapters) — reinjection is not the fragile step it was feared to be. **⚠️ Three traps:** (1) **`jing -i` is MANDATORY** — without it the grammar doesn't compile at all (CNXML `table/@id` is `xsd:ID`, MathML 3's `anyElement` matches it untyped); it's OpenStax's own flag (`cnxml/jing.py:53`), and the cost is no duplicate-id checking (the gate script implements its own). (2) **jing ABORTS THE REST OF THE BATCH after the first `fatal:`** — a naive `jing schema.rng *.cnxml` is **fail-QUIET**; it actually hid 3 real defects here. (3) **Pristine OpenStax content does NOT validate clean** (660/1192 files — CNXML 0.7 forbids `@id` inside `<md:abstract>` yet their own generator stamps `para-00001` there) → allowlist, never "fix". **Schema validity ⊥ fidelity:** chemistry has 37 known discrepancies and **0** schema errors, so this complements `cnxml-fidelity-check.js`, never replaces it. Reports: `experiments/cnxml-validation-gate/{FINDINGS,BASELINE-REPORT,SETUP}.md`.
 - **#332 `e8ded0e3` (was `fix/liffraedi-ch03-mt-content-loss`, 12 commits)** — the gate found **live reader-facing content loss**: biology ch03 was publicly serving **55%** of its content (`3-summary` = 112 visible chars of empty headings, **no `3-key-terms` page at all**, 0 ch03 glossary terms). **⚠️ Root cause was NOT an MT failure — ch03 was a HUMAN docx translation** (`02-mt-output/*-provenance.json` → `"tool": "docx-import"`; `import-report.json` = 429 EN segments, **205 matched, 195 SKIPPED**). A blind `api-translate --force` would have overwritten the translator's work. **LESSON: segment counts tell you HOW MUCH, only `-provenance.json` tells you BY WHOM — check provenance before any `--force`.** Lead decision → machine-translate the whole book, editor edits the MT with his own translation as reference (preserved verbatim at `books/liffraedi-2e/reference-translations/ch03-human-docx/`). ch03 re-extracted (**+68 MC answer-option segments** — the `processExercise` fix #287 had shipped but was never re-extracted; the code was fine, the *data* was stale) → re-MT'd (850 ISK, 497/497 parity) → re-injected → re-rendered. `3-summary` 112→**5385** chars, `3-key-terms` **created** (50 definitions), book glossary 42→**92** terms; gate on ch03 **10 errors → 3** (the rest is the pre-existing `<figure>`-in-`<note>` inject bug). ⚠️ **Still only 13 of 259 biology modules are EXTRACTED** — "MT the whole book" means extracting ~246 first (~4.0M chars ≈ 40,000 ISK).
-- **Glossary sourcing (see `[[idordabanki-biology-seeding]]`):** fetched Íðorðabankinn biology (10,003 bilingual headwords) + genetics/immunology/chemistry etc. **Coverage 60% authoritative · 425 (18%) genuinely absent everywhere.** **⚠️ Íðorðabankinn is authoritative but NOT self-consistent** (`fosfórlípíð` vs `fosfólípíðlag`; `fjölpeðtíð` is *their* typo; **39% of multi-collection headwords disagree**) → adopt **per term with `fkdictionary` kept**, never bulk-import. Two editor markup sheets shipped: `exports/06-ch03-mt-review-liffraedi.csv` + `exports/07-idordabanki-candidates-liffraedi.csv`. **⚠️ Two blockers before any of this reaches the translator: (a)** nothing bridges the terminology DB → `books/<book>/glossary/glossary-unified.json` (which is what `api-translate`'s `loadGlossary` reads, `approvedOnly:true`); `merge-glossary.js` has 3 sources and Íðorðabankinn is not one. **(b)** `formatGlossary` (`tools/lib/malstadur-api.js:186`) still has **no empty-`targetWord` guard** — latent only because biology's terms are all `needs_review`; a blank IS side 400s the WHOLE request.
+- **Glossary sourcing (see `[[idordabanki-biology-seeding]]`):** fetched Íðorðabankinn biology (10,003 bilingual headwords) + genetics/immunology/chemistry etc. **Coverage 60% authoritative · 425 (18%) genuinely absent everywhere.** **⚠️ Íðorðabankinn is authoritative but NOT self-consistent** (`fosfórlípíð` vs `fosfólípíðlag`; `fjölpeðtíð` is *their* typo; **39% of multi-collection headwords disagree**) → adopt **per term with `fkdictionary` kept**, never bulk-import. Two editor markup sheets shipped: `exports/06-ch03-mt-review-liffraedi.csv` + `exports/07-idordabanki-candidates-liffraedi.csv`. **⚠️ Two blockers before any of this reaches the translator: (a)** the bridge **exists** (`server/scripts/export-terminology.js`) but **nothing runs it** → `books/<book>/glossary/glossary-unified.json` goes stale (register **C14** — do not write a second exporter) (which is what `api-translate`'s `loadGlossary` reads, `approvedOnly:true`); `merge-glossary.js` has 3 sources and Íðorðabankinn is not one. **(b)** `formatGlossary` (`tools/lib/malstadur-api.js:186`) still has **no empty-`targetWord` guard** — latent only because biology's terms are all `needs_review`; a blank IS side 400s the WHOLE request.
 - **⚠️ NEW cross-repo bug — campaign register C9 + vefur issue [#197](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur/issues/197), LEAD DEADLINE: before fall semester.** A Pass-1 review that corrects a section **title** publishes the section **TWICE**: the faithful overlay replaces per **filename**, but a corrected title **renames** the file (title→slug), `sync-content.js` copies faithful on top **without `--delete`**, and `generate-toc.js:499` readdir's the **destination** → two TOC entries (one reviewed/new-title, one stale/old-title still bannered). Never fired yet; **fires on the first real title correction**. The `Fitusýrur`→`Lípíð` fix dodged it by going through `02-mt-output` under a **lead-waived read-only exception** (`4e5be912`, annotated in `m66441-provenance.json` `manualCorrections` — `tool` untouched so `readProvenance` still resolves) — **not repeatable**.
 - **⚠️ Don't blanket-replace `Fitusýrur`:** ~28 occurrences in m66441 are **correct** (the EN genuinely says "fatty acid"); only 5 are wrong (EN says "lipid"). Body errors left for the editor pass, listed in the CSV row.
 
@@ -445,7 +470,7 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 - **MT producer hardening (#98):** `api-translate.js` now `normalizeSegMarkers()` un-glues markers the API ran onto the previous line before writing `02-mt-output`, and reports a per-module/summary count (`countInlineMarkers`) so the mangling is visible at the MT stage instead of three stages downstream. 62 module-files had the latent pattern; consumers tolerate it now, producer emits clean.
 - **Edit-again (#99):** a published (approved + applied) segment can now be revised in the editor via a "Breyta aftur" button. A new edit supersedes the old on the next "Vista + Birta"; the older version stays in history. Leans on existing supersede logic — **no reversal code**. This is the *forward-editing* complement to roadmap Unit 1 (`content-restore`, *backward* rollback); they're independent.
 - **Apply model (important for future work):** `loadModuleForEditing` reads `03-faithful-translation` as the baseline once it exists (else `02-mt-output`). So `applyApprovedEdits` rebuilds the faithful file from the *current published content* + newly-approved-unapplied edits — incremental re-applies preserve every other segment's edits. Edits are also one-way at apply for *unapprove* (`unapproveEdit` throws once `applied_at` is set); edit-again is the way to change published content.
-- **Content publish flow (#95):** `scripts/git-backup.sh` now also stages `books/*/translation-errors.json` (it was perpetually dirty on prod after inject), and a push to `main` touching `books/*/05-publication/**` auto-triggers the "Sync Content to Vefur" Action — so "Vista + Birta" reaches namsbokasafn.is via the 2h backup cron with no manual step. Full flow: [docs/technical/architecture.md](docs/technical/architecture.md) § Cross-Repository Content Flow.
+- **Content publish flow (#95):** `scripts/git-backup.sh` now also stages `books/*/translation-errors.json` (it was perpetually dirty on prod after inject), and a push to `main` touching `books/*/05-publication/**` was wired to trigger the "Sync Content to Vefur" Action. ⚠️ **That Action has never actually worked** (see § "Content delivery to readers") — the intended hands-off path was built but never activated, so the last leg is manual. *This bullet is a historical record of what #95 shipped, not a description of current behaviour.*
   - **Merge-driver for the manifest (2026-06-26):** because that manifest is committed on *both* the cron (prod) and dev, every deploy `git pull --rebase` used to conflict on it. `.gitattributes` now marks `books/*/translation-errors.json merge=ours` (it's a derived artifact — keep the current side, it regenerates on the next inject). The `ours` driver is **not** stored in the repo, so each clone needs it once: `git config merge.ours.driver true`. `scripts/deploy.sh` re-asserts it before each pull; **dev boxes that pull/merge manually must run it once too.**
 - **Known editorial-UX follow-ups (both since resolved — see Units 0–4 block above):** (a) the rebuild-when-faithful-file-deleted affordance landed as Unit 4.5 (`getApplyStatus` now reports `can_rebuild`); (b) `content-restore` (backward rollback) landed as Unit 1.
 
@@ -472,7 +497,7 @@ Three active tracks:
 
 2. **Editorial-throughput roadmap (drafted 2026-06-12, amended same day for the MTPE workflow, pending lead sign-off)** — [docs/plans/2026-06-12-editorial-throughput-roadmap.md](docs/plans/2026-06-12-editorial-throughput-roadmap.md). The successor plan: with the platform now safe/governed/reversible, the bottleneck is **Pass 1 throughput**. MTPE amendment: every segment already has an MT draft, so Unit 2 is *review-deduplication* (approved match outranks MT draft; fuzzy matching dropped permanently), Unit 3 gains term-decision mining (the glossary — not the TMX — primes Málstaður, so mining approved edits for term decisions is the real feedback loop), Unit 4 gains an untranslated-EN-residue detector. Production state driving the plan: 250 MT-preview pages vs **1 faithful module** project-wide; `tm/` **empty** in every book — the TM deliverable doesn't exist yet; glossary thriving at 1,117+617-approved chemistry terms. Units: **0** remediation manual QA (carried over) → **1** in-house TMX generation from the already-aligned `02-for-mt/` + `03-faithful-translation/` segment pairs (retires the never-used Matecat Align step) → **2** concordance search + exact-match repetition leverage in the segment editor (FTS5) → **3** live terminology QA in the save/submit path (wire the existing never-called `check-consistency`) → **4** Icelandic spell-check + number-consistency QA (engine decision pending) → **5** team operations (SLA aging, approve/reject notifications to editors, feedback→module routing) → **6** asset durability (nightly terminology export to git — current export is stale since 2026-03-09; `sessions.db` backup). Deliberately out of scope: more hardening, Pass 2 buildout, dashboard rewrites.
 
-3. **Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1168 Vitest + 137 Playwright tests (all green).
+3. **Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified by the full suite (`npm test` from the repo root).
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
 

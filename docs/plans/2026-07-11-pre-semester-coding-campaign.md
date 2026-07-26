@@ -1,3 +1,8 @@
+> ⛔ **SUPERSEDED 2026-07-21** by `docs/plans/2026-07-21-post-item17-followup-campaign.md`.
+> **Frozen historical record — do not edit status here.** Its Phase 5 and [LEAD] lane moved to the
+> successor's P3 and A-lane. Retained for the shipped-item narrative and for the definitions of the
+> register codes (`I14-R2`, `MTA-R8`, `osd-1`, `P1-R1`) that the successor cites.
+
 # Pre-Semester Coding Campaign — 2026-07-11
 
 **Constraints:** ~2 weeks until biology onboarding starts; ~5 weeks until semester start.

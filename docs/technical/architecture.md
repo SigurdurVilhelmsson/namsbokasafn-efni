@@ -1,5 +1,21 @@
 # System Architecture
 
+> 📁 **Deep reference, not authoritative — as of 2026-06-28.**
+> Runtime versions, role names, env vars, file permissions, status values and the
+> CSRF posture are owned by **CLAUDE.md** and by **the code** (`server/constants.js`,
+> `schemas/`, `.nvmrc`, `books/<slug>/book-config.json`). **Where this file disagrees
+> with those, they win.** Nothing here asserts current work status.
+>
+> A 2026-07-26 audit found several claims here that stated the opposite of the running
+> code; the two dangerous ones (the auth cookie's `SameSite`, and an invented fifth
+> role) are corrected in place and annotated. **Treat any uncorrected detail as
+> unverified** — this file's genuinely unique content is the Cross-Repository Content
+> Flow and the Data Durability & Recovery table.
+>
+> ⚠️ The Cross-Repository Content Flow section below describes the sync Action as
+> automatic. **It is not, and never has been** — see CLAUDE.md § "Content delivery to
+> readers". The final leg is manual.
+
 This document provides a technical overview of the namsbokasafn-efni translation pipeline system.
 
 ## Overview
@@ -338,13 +354,16 @@ other's record. The filename is unchanged on purpose — it must stay inside the
 ## Authentication & Authorization
 
 ### Roles
-| Role | Permissions |
-|------|-------------|
-| VIEWER | Read status, view content |
-| EDITOR | Edit translations |
-| REVIEWER | Approve translations |
-| HEAD_EDITOR | Publish content |
-| ADMIN | Full access |
+
+**Authoritative: `server/constants.js` (`ROLES`).** There are **four**, and this
+document is not the place to enumerate them.
+
+> ⚠️ **Corrected 2026-07-26.** This table previously listed a fifth role,
+> `REVIEWER`, which **does not exist anywhere in `server/`** — a `contributor`
+> role was merged into `editor` by migration 023 ("too granular for a ~5 person
+> team"), and `REVIEWER` appears to have been invented by this document.
+> `requireRole(ROLES.REVIEWER)` evaluates to `undefined`, so a guard written from
+> this table degrades instead of failing loud.
 
 ### Security
 - Microsoft Entra ID for authentication
@@ -357,14 +376,22 @@ other's record. The filename is unchanged on purpose — it must stay inside the
   matching role. `/login` and `/feedback` (public form) stay open.
 
 #### CSRF posture (deliberate)
-This app uses **no CSRF tokens by design**; the control is a `SameSite=strict`,
-`HttpOnly` session cookie (`auth_token`). Strict same-site means the browser
-never attaches the cookie to cross-site requests, so a forged request from
-another origin is unauthenticated and rejected. Helmet + a same-origin CORS
-allowlist (`namsbokasafn.is` subdomains) back this up. Front-end API calls go
-through `fetchJson`, which defaults `credentials: 'same-origin'`. **If the
-cookie's `SameSite` is ever loosened to `lax`/`none`, CSRF tokens become
-required** — revisit this decision before doing so. (Audit ref: F11.)
+This app uses **no CSRF tokens by design**; the control is a `SameSite=Lax`,
+`HttpOnly` session cookie (`auth_token`), plus the fact that **every mutating
+endpoint is a POST**. Lax withholds the cookie from cross-site POSTs and
+subresource loads — which is the CSRF-relevant half — while still allowing the
+top-level GET redirect back from Microsoft to carry it. Helmet + a same-origin
+CORS allowlist (`namsbokasafn.is` subdomains) back this up; front-end calls go
+through `fetchJson`, which defaults `credentials: 'same-origin'`.
+
+> ⚠️ **Corrected 2026-07-26. This section previously said `SameSite=strict` and
+> attached the rule "if it is ever loosened to Lax, CSRF tokens become required."
+> Both were wrong.** The cookie has been **Lax since 2026-07-01** — Strict broke
+> the Entra OAuth return and produced a login loop that locked clean browsers out
+> of production. **Do not restore `Strict`**, and do not treat Lax as a trigger
+> for CSRF-token work: the loosening already happened, deliberately, and was
+> dispositioned. Authoritative: `server/routes/auth.js` (the `sameSite` values)
+> and CLAUDE.md § auth. (Audit ref: F11.)
 
 ## Configuration
 

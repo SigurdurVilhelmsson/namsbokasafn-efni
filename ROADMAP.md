@@ -1,3 +1,7 @@
+> 📁 **Historical record — completed phases only.**
+> Live priorities live in the active plan under `docs/plans/`. **Nothing here asserts current
+> status**, and no status line here should be trusted or updated. See CLAUDE.md § *One source of truth*.
+
 # Translation Pipeline Roadmap
 
 ## Overview

@@ -344,20 +344,25 @@ See [LICENSE](LICENSE) for the full terms.
 
 Based on open textbooks from [OpenStax](https://openstax.org/), Rice University.
 
-**Credit follows the method, not the job title.** For most books the first draft
-is machine translation (Erlendur, Miðeind) which people then edit — so the
-machine is the translator, and the people are credited for **ritstjórn** and
-**yfirlestur**. Biology is the exception: it is human-translated. No reviewer is
-credited on chapters that have not actually been reviewed; chapters marked
-*forskoðun* (preview) are raw machine translation.
+**Credit follows the method, not the job title.** Every book's first draft is
+machine translation (Erlendur, Miðeind) which people then edit — so the machine
+is the translator, and the people are credited for **ritstjórn** and
+**yfirlestur**. No reviewer is credited on chapters that have not actually been
+reviewed; chapters marked *forskoðun* (preview) are raw machine translation.
 
 | Hlutverk | |
 |----------|---|
 | Verkefnastjóri og ritstjórn | Sigurður Einar Vilhelmsson |
 | Yfirlestur og málfar í efnafræði | Guðrún Ingibjörg Stefánsdóttir |
-| Þýðing og yfirlestur í líffræði | Þórhallur Halldórsson |
+| Yfirlestur og ritstjórn í líffræði | Þórhallur Halldórsson |
 | Vélþýðing | Erlendur ([Miðeind](https://mideind.is/)) |
 | Íðorð | Íðorðabankinn (Árnastofnun), Efnafræðifélag Íslands |
+
+*Biology chapter 3 was originally translated by hand. That translation covered
+205 of its 429 segments, so the book was re-translated by machine in July 2026
+and the human version is preserved verbatim as an editing reference
+(`books/liffraedi-2e/reference-translations/ch03-human-docx/`). The credit above
+reflects the method now in use.*
 
 **Chemistry 2e** — Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson.
 Icelandic edition: machine translation with human editorial review. CC BY 4.0.

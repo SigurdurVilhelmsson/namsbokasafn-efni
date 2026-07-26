@@ -1,3 +1,19 @@
+> ⛔ **FROZEN 2026-07-26 — do not edit.**
+>
+> This is the disposition of the 2026-07-11 review **as of `main` `9107ed1d`**. It is never updated.
+> Its forward jobs are §7's exclusion list for the next diff-scoped review, and the evidence behind
+> every row (`2026-07-26-closure-audit-evidence.md`).
+>
+> **Current status of anything here lives in the campaign register**
+> (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C10). **If this file disagrees with the
+> register, the register wins** — this file is dated, the register is live.
+>
+> **§1's disposition table is authoritative over every prose count in this file.**
+>
+> *Why frozen: this document was briefly declared a "second source of truth" alongside the register.
+> That is the same failure this audit exists to name, one level up — and it produced a real
+> disagreement within a day. One fact, one live home.*
+
 # Closure Audit — 2026-07-11 review findings × current `main`
 
 **Date:** 2026-07-26 · **Baseline:** `main` `9107ed1d` (audit branch `audit/closure-audit-2026-07-26`) · **Suite:** 3388 green
@@ -14,7 +30,7 @@
 
 ## 1. Headline
 
-**We are on target.** Of 128 dispositioned claims, **69 are closed** (66 `CLOSED` + 3 `CLOSED-BY-REFUTATION`) and every one survived three-skeptic refute-default. **All four High/Medium authorization findings are closed**; code batches A–E and G are 100% closed. The remaining open work is overwhelmingly *tracked*: 48 `OPEN-TRACKED` items against live register lines, concentrated in exactly two places the lead already knows about — **Batch 9 / item 22** (dependency + dead-code hygiene, 0% closed) and **Batch 3 / item 23** (documentation authority triage, 0% closed, half of it decision-gated on L7).
+**We are on target.** Of the dispositioned claims (**counts: see the table below, which is authoritative over every prose figure in this file**), **69 are closed** (66 `CLOSED` + 3 `CLOSED-BY-REFUTATION`) and every one survived three-skeptic refute-default. **All four High/Medium authorization findings are closed**; code batches A–E and G are 100% closed. The remaining open work is overwhelmingly *tracked*, against live register lines, concentrated in exactly two places the lead already knows about — **Batch 9 / item 22** (dependency + dead-code hygiene, 0% closed) and **Batch 3 / item 23** (documentation authority triage, 0% closed, half of it decision-gated on L7).
 
 **The clearest signal in the data:** every dimension whose gap was **code** closed or improved. Every dimension whose gap was **documentation** — joint batches 3 and 9, both **0% closed** — is exactly where it was on 2026-07-11. The campaign shipped code and did not ship docs. That is the single most actionable pattern in this ledger.
 
@@ -72,7 +88,7 @@ No contradiction with the sample. **One trap worth recording permanently:** a fu
 
 ### Synthesis corrections made to the fan-out's raw output
 
-Per the design's §9 risk register, I re-checked **every** `OPEN-UNTRACKED` against all four register sources myself before it reached the resurrect list. **Eight were downgraded to `OPEN-TRACKED`** — verifiers had missed a register item, or (in five cases) two verifiers dispositioned overlapping claims differently. See §8 for the full reconciliation. Raw fan-out output was 16 `OPEN-UNTRACKED`; the audited figure is **8**.
+Per the design's §9 risk register, I re-checked **every** `OPEN-UNTRACKED` against all four register sources myself before it reached the resurrect list. **Eight were downgraded to `OPEN-TRACKED`** — verifiers had missed a register item, or (in five cases) two verifiers dispositioned overlapping claims differently. See §8 for the full reconciliation. Raw fan-out output was 16 `OPEN-UNTRACKED`; the audited figure was **8**, and **7** after the blind replication withdrew `ed-w6b` (see §1's table, which is authoritative).
 
 ---
 
@@ -279,10 +295,12 @@ Nothing advances `tmCreated`: the six `advanceChapterStatus` call sites cover ex
 
 ### P2 — hardening
 
-**R3 · `ed-w6b` — raw service errors still reach a head-editor's screen via `alert()`.**
+~~**R3 · `ed-w6b`**~~ ❌ **WITHDRAWN 2026-07-26 — FALSE POSITIVE.** Two independent verifiers (2/2, high confidence) found the asserted defect **not present**: migration 039 removed the constraint that produced the raw message. **Do not implement.** Detail in the §1 table row and §2.4. *(The original recommendation text is preserved below, struck, only so the withdrawal is legible.)*
+
+~~
 *Original: real, head-editor-facing (the delivery half of Bug (a), which drove rec #3, ranked 3 of 6).*
 The specific reproduction is dead — migration 039's partial index removed the collision — but the mechanism the review named is untouched: `markForDiscussion` (`segmentEditorService.js:463-482`) has no try/catch, its route returns `{ error: err.message }` (`routes/segment-editor.js:804`), and the client does `alert(UI.common.errorPrefix + err.message)` (`public/js/segment-editor.js:1507`). Any future `SqliteError` in that function lands on a head-editor's screen as raw SQL. Notably the codebase *did* fix this per-path for the two designed refusals (`PENDING_EXISTS` → 409 with Icelandic text), which shows the treatment was applied case-by-case rather than generically.
-→ **Proposed:** P2 (C5/C6 neighbourhood). Cheap shape: map unexpected throws to a generic Icelandic message at the route boundary and keep `err.message` for `err.code`-bearing designed refusals.
+→ ~~**Proposed:** P2 (C5/C6 neighbourhood).~~ **Withdrawn — do not implement.**
 
 **R4 · `ed-w8` — the `blockedIssues` attention tile is a count derived from a capped row list.**
 *Original: n/a — a positive confirmation, now partly falsified.*
@@ -324,7 +342,7 @@ Three items are `OPEN-TRACKED` only because a **decision gate** nominally covers
 | # | Batch | Draws from | Closed | Status |
 |---|---|---|---|---:|
 | 1 | Book-scoped authorization sweep | Code Batch A + ed dim 1 / rec #2 | **100%** (5/5) | ✅ Shipped PR #268. Both High findings closed; upload route retired. *Residual outside the batch's named scope:* non-elevated `sections.js` status transitions (C5 · B1-F2) and `GET /jobs` reads (C5 · B1-F5 / #328). |
-| 2 | `discuss`/`rejected` states + dropped messages | ed §3 bug (a) / rec #3 + code 14, 24 | **80%** (4/5) | ✅ PR #270 + migration 039. Root cause removed at schema level. ⚠️ **`ed-w6b` open** — the raw-error *delivery path* survives its dead reproduction. |
+| 2 | `discuss`/`rejected` states + dropped messages | ed §3 bug (a) / rec #3 + code 14, 24 | **100%** (5/5) | ✅ PR #270 + migration 039. Root cause removed at schema level. *(Was 80% pending `ed-w6b`; that finding was **withdrawn as a false positive** on 2026-07-26, so the batch is complete.)* |
 | 3 | **Documentation authority triage** | ed §2 drift catalog + rec #1, #4 | **0%** (0/13) | ❌ **Untouched.** Not one of the four named files has been edited since the review; `master-pipeline.md` (2026-03-02), `review-protocol.md` (2026-01-18, **auto-triggers**), `terminology.md`, `update-status`. Item 23, P3, half decision-gated on L7. The review ranked this **rec #1 of 6**. |
 | 4 | Fail-loud sweep | Code Batch E (20,21,22,37) + ed rec #5 | **100%** (5/5) | ✅ PR #271. Stronger than prescribed — a static call-site tripwire now bans the idiom repo-wide. |
 | 5 | Apply, job-model & version-history integrity | Code Batches B+C (3,5,6,15,16,19) + ed dim 7 | **100%** (7/7) | ✅ PR #298 (item 12). ⚠️ See `code-ref-3` — a *refuted* sibling in this area reopened because item-20b widened the post-write window. |
@@ -421,6 +439,10 @@ CLOSED-BY-REFUTATION (3) — refutation re-confirmed against current code
   code-ref-2 (books.js import DB-registration)   [secondary leg drifted, core holds]
   code-ref-4 (pre-apply snapshot logging)
 
+WITHDRAWN (1) — asserted by this audit, then killed on blind re-verification
+  ed-w6b       (raw SQLite error via alert(); migration 039 removed the constraint.
+                Do NOT resurrect: 2/2 independent verifiers, high confidence.)
+
 NOT-A-DEFECT (2) — never a defect; do not re-report, do not treat as closed work
   ed-drift-3b  (review's own explicit MATCH — scheduleTmRegen agrees with docs)
   ed-qa-1g     (git-per-apply deliberately never built)
@@ -448,10 +470,10 @@ UNVERIFIABLE (prod-only):   ed-qa-5c
 
 ⚠️ **The 17 A4 rows are tracked but NOT verified.** Each carries a July PASS that no durable pin can re-run; two (`ed-qa-4a`, `ed-qa-4b`) are already known to have been scored too generously. "Tracked" here means *someone owns walking it*, not *it works*. Do not read this block as closed work.
 
-### Open and UNTRACKED — these MAY be re-reported, or better, resurrected from §3 (8)
+### Open and UNTRACKED — these MAY be re-reported, or better, resurrected from §3 (7)
 
 ```
-code-ref-3   ed-w6b   ed-drift-2b   ed-w8
+code-ref-3   ed-drift-2b   ed-w8
 ed-drift-1a  ed-drift-e  ed-drift-d  ed-w1
 ```
 
@@ -488,7 +510,7 @@ Per the design's §9, I re-checked every raw `OPEN-UNTRACKED` against all four r
 
 ### Coverage honesty
 
-- **Every one of the 128 claims has a row and a disposition.** No group returned empty. Independently re-enumerated by a completeness critic against all three source documents: 39 + 4 + 18 + 21 + 32 + 8 + 6 = 128, and the disposition counts reconcile to the same total.
+- **Every claim has a row and a disposition.** No group returned empty. A completeness critic independently re-enumerated the fan-out's 128 rows against all three source documents (39 + 4 + 18 + 21 + 32 + 8 + 6) and they reconciled. ⚠️ **The §1 table's 130 is the post-correction total** — it supersedes this paragraph's 128, which counts the pre-correction fan-out output (the replication added 2 rows). §1 wins.
 - **Thinnest coverage: §4 QA table.** **17** of its 32 rows are `OPEN-TRACKED` on A4 with *no durable pin*, so their original PASS/PARTIAL scores rest on a July session that cannot be re-run. Two are now known to have been **too generous** — §4a fails today (`my-work.html:1249` renders the raw `mNNNNN`) and §4b resolves against the app. Treat unpinned §4 PASSes as unverified, not as verified.
 - **Not dispositioned, by design:** the code review's own 18-row *"Cross-referenced (already tracked)"* table. The review states those are not among its 37 findings, so they are outside this audit's universe. One row deserved better and is recorded here instead: *"`analyticsService.js` opens its database connection eagerly at load time"* is **false on main** since `12dcdb7c` — see the register-drift note in §7.
 
