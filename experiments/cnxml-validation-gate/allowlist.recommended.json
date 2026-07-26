@@ -1,0 +1,26 @@
+{
+  "_comment": "Recommended allowlist: suppresses ONLY class-(c) schema noise — error classes empirically confirmed to occur identically in PRISTINE OpenStax sources (books/*/01-source/), i.e. defects in the schema or in upstream content, never introduced by our pipeline. Evidence: FINDINGS.md §2. Every rule states what it hides and what it could mask.",
+  "rules": [
+    {
+      "id": "c1-abstract-id",
+      "reason": "CNXML 0.7 binds abstract content to `common-attributes-noclass` (cnxml-defs.rng:933-945), which permits only xml:lang and data-platform-hidden — no @id. But OpenStax's own content generator stamps auto-generated ids (para-00001, list-00001) onto every <para>/<list>/<item> inside <md:abstract>. Affects 660 of 1192 pristine source files across all five books; identical count on both sides of every paired run. Nothing our pipeline does.",
+      "match": "/attribute \"id\" not allowed here; expected attribute \"data-platform-hidden\"/",
+      "scope": "all",
+      "risk": "Narrow by construction: the expected-attribute list begins with data-platform-hidden ONLY in the no-class/no-id context, which in practice is the abstract. A body element rejecting @id would list \"class\", \"data-platform-hidden\", \"id\" and would NOT be suppressed. Re-verify if OpenStax changes the abstract content model."
+    },
+    {
+      "id": "c2-data-platform-hidden-corequired",
+      "reason": "RELAX NG authoring bug on the poet-schema branch: cnxml-defs.rng:935-944 wraps TWO <attribute> elements in a single <optional>, which makes them CO-REQUIRED rather than independently optional. Any element carrying xml:lang without data-platform-hidden is therefore rejected. Present in pristine orverufraedi (m58781, <foreign xml:lang=\"ar\">). Absent on the master branch, which has no data-platform-hidden at all. Worth reporting upstream.",
+      "match": "missing required attribute \"data-platform-hidden\"",
+      "scope": "all",
+      "risk": "Hides a genuinely missing data-platform-hidden attribute — harmless, since that attribute is a platform hint we never author."
+    },
+    {
+      "id": "c3-legacy-physics-m42103",
+      "reason": "Upstream authoring defect in a legacy CNX physics module: <equation> in m42103 mixes literal text ('(a)At') with <m:math>/<sup>, which CNXML 0.7's equation content model disallows. Present in the pristine source; not something we introduced. Deliberately scoped to that one file rather than suppressing the message class globally.",
+      "match": "not allowed here; expected the element end-tag or text",
+      "scope": "edlisfraedi-2e/01-source/ch02/m42103.cnxml",
+      "risk": "Scoped to a single upstream file, so it cannot mask anything in our output. Drop this rule if that module is ever re-sourced."
+    }
+  ]
+}

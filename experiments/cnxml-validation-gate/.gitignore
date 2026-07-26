@@ -1,0 +1,6 @@
+# External OpenStax clones (AGPL-3.0) — NEVER vendored into this repo.
+# Cloned by SETUP.md instructions; schema files are used as validation data only.
+external/
+
+# Raw jing output captured during runs
+results/
