@@ -1,5 +1,5 @@
 <!-- SEG:m66441:title:auto-1 -->
-Fitusýrur
+Lípíð
 
 <!-- SEG:m66441:abstract:auto-2 -->
 Þegar þú hefur lokið við þennan kafla munt þú geta gert eftirfarandi:

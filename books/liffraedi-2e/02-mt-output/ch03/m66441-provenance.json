@@ -1,5 +1,16 @@
 {
   "schemaVersion": 1,
   "tool": "api-translate",
-  "generatedAt": "2026-07-25T19:28:25.110Z"
+  "generatedAt": "2026-07-25T19:28:25.110Z",
+  "manualCorrections": [
+    {
+      "date": "2026-07-26",
+      "segment": "m66441:title:auto-1",
+      "from": "Fitusýrur",
+      "to": "Lípíð",
+      "reason": "MT rendered EN 'Lipids' as 'Fitusýrur' (= fatty acids, a SUBSET of lipids). Árnastofnun LIFORD confirms lipid = lípíð, and the module's own glossary already said lípíð. Corrected before the first vefur sync because the section title drives the page slug: the live URL is 3-3-lipid and syncing uncorrected would have replaced a correct URL with a wrong one.",
+      "authorisedBy": "lead, 2026-07-26 — explicit waiver of the 02-mt-output READ-ONLY rule for this single segment",
+      "scope": "TITLE SEGMENT ONLY. The body text of this module also mistranslates 'lipid' as 'fitusýrur' in abstract-item-1, para:fs-id1318871, caption:fig-ch03_03_01-caption, and partially in para:fs-id2344871 and glossary-def:fs-id1429764-def. Those were left for the editorial review pass. Most other 'fitusýr' occurrences in this module are CORRECT (the EN genuinely says 'fatty acid') — do not blanket-replace."
+    }
+  ]
 }
