@@ -24,23 +24,34 @@
 
 ### Disposition counts
 
+> ### ⚠️ Revised 2026-07-26 by blind replication
+> A second, blind run of this identical audit under **Fable 5** was adjudicated against this one
+> (**3–3** on six disputed claims). **Seven corrections have been applied to this ledger** — including
+> the withdrawal of one finding as a false positive. Counts below are post-correction.
+> Full study: [`2026-07-26-closure-audit-model-comparison.md`](2026-07-26-closure-audit-model-comparison.md) ·
+> Run B verbatim: [`2026-07-26-closure-audit-runB-fable.md`](2026-07-26-closure-audit-runB-fable.md).
+>
+> **⚠️ Treat this ledger's line numbers as approximate anchors.** Adjudicators found a systematic
+> ~4-line citation drift in a minority of rows. Every *symbol* checked out; the numbers sometimes
+> lag. Re-locate by symbol, as this audit's own HARD RULE 1 requires.
+
 | Disposition | Count | Share |
 |---|---:|---:|
-| `CLOSED` | 66 | 52% |
+| `CLOSED` | 69 | 53% |
 | `CLOSED-BY-REFUTATION` | 3 | 2% |
-| `OPEN-TRACKED` | 48 | 37% |
-| **`OPEN-UNTRACKED`** | **8** | **6%** |
+| `OPEN-TRACKED` | 47 | 36% |
+| **`OPEN-UNTRACKED`** | **7** | **5%** |
 | `NOT-A-DEFECT` (claim was a MATCH / never built — §8) | 2 | 2% |
-| `UNVERIFIABLE` | 1 | 1% |
-| **Total dispositioned** | **128** | |
-| `UNRECOVERABLE` (never committed — §6) | **~10** | *not dispositionable* |
+| `UNVERIFIABLE` | 2 | 2% |
+| **Total dispositioned** | **130** | |
+| `UNRECOVERABLE` (never committed — §6) | **11** | *not dispositionable* |
 
 ### The OPEN-UNTRACKED list, ranked by original severity
 
 | # | id | Original severity | One line | Proposed tier |
 |---|---|---|---|---|
-| 1 | `code-ref-3` | **Medium, PLAUSIBLE** (integrity) | Faithful file is overwritten inside a DB transaction that can still roll back afterwards. The refutation that retired this in July has been **invalidated by later code** — item-20b inserted two `segment_acceptances` mutations *after* the file write, widening the post-write failure window. | **P1** |
-| 2 | `ed-w6b` | real, head-editor-facing (component of Bug (a)) | `markForDiscussion` still has no try/catch; its route relays `err.message` verbatim; the client `alert()`s it. The specific raw-SQL reproduction is dead (migration 039), but the **delivery mechanism that put raw SQL on a head-editor's screen is unchanged**. | **P2** |
+| 1 | `code-ref-3` | **Medium, PLAUSIBLE** (integrity) | Faithful file is overwritten inside a DB transaction that can still roll back afterwards, leaving disk advanced and the DB reverted — including a **lost `content_versions` snapshot**, so the pre-apply state never enters version history. Residue is file/DB divergence, **not corruption** (the atomic tmp+rename and `.bak` legs hold). ⚠️ **Narrative corrected 2026-07-26:** the refutation's leg (b) was **already false at the 2026-07-11 baseline** — `markApplied`/`markSuperseded` were post-write and in-transaction then too. Item-20b *widened* an existing window; it did not open one. Defect and priority unchanged; the "invalidated by later code" story was wrong. | **P1** |
+| ~~2~~ | ~~`ed-w6b`~~ | ❌ **WITHDRAWN 2026-07-26 — FALSE POSITIVE** | Two independent verifiers (2/2, high confidence) found the asserted defect **not present**: migration 039 removed the constraint that produced the raw message, so no `SqliteError` with that text can reach `markForDiscussion`'s catch-free path. The `alert()` plumbing exists, but a latent-robustness observation is not a finding. **Run A over-claimed here; the blind Fable run's absence of a row was correct.** | ~~P2~~ **dropped** |
 | 3 | `ed-drift-2b` | unrated (trailing clause of Headline drift 2) — **⚠️ escalate** | `tmCreated` is orphaned: nothing advances it. Verified consequence the review did not draw — `transitionStage` enforces sequential prerequisites, so **every DB-side `advanceChapterStatus(…, 'injection')` throws and is swallowed**. Not a cosmetic schema wart. | **P1** |
 | 4 | `ed-w8` | n/a (positive confirmation, now partly falsified) | `needsAttention.blockedIssues` is `getDiscussEdits(10).length` — a **count derived from a row list capped at 10**, so it saturates. The walkthrough's "no discrepancy" was an artefact of small fixture data. (`overdueCount`, a second quarter of this row, is `SUPERSEDED` — deliberately deleted by F28.) | **P2** |
 | 5 | `ed-drift-1a` | unrated (Headline drift 1a) | The read-side "workflow trap" fix (`dashboardReadModel`) is real shipped code documented **nowhere** — `grep dashboardReadModel` on `CLAUDE.md`/`README.md`/`server/README.md` returns 0. A new head-editor could re-propose a fix that already exists. | **P3** |
@@ -157,7 +168,7 @@ Evidence here is terse `file:line` as of `9107ed1d`. **The verbatim quoted code 
 | ed-w4 | headline (hybrid state) | `module_reviews` empty yet edits visible; `/reviews` stays submit-gated | Two read paths still structurally split | `dashboardReadModel.js:97` vs `segmentEditorService.js:659` | **OPEN-TRACKED** ⚠️ *downgraded, partial — see §8* | item 23 · A5 · L7 |
 | ed-w5 | n/a — positive | self-approval permitted, matching deliberate design | Design comment intact; no actor check added | `public/js/segment-editor.js:845` | **CLOSED** | — |
 | ed-w6a | real, reachable, head-editor-facing | no code path exits `discuss`/`rejected`; 008 UNIQUE makes re-discuss collide | **Three** exits now exist: supersede-on-save (both branches), manual `return-to-pending`, and a pending-only partial index | `migrations/039:74,102`; `segmentEditorService.js:138,175,536`; `routes/segment-editor.js:843` | **CLOSED** | — |
-| **ed-w6b** | real, head-editor-facing | 400 relays a raw SQLite constraint message to `alert()`; `markForDiscussion` has no try/catch | **Reproduction dead** (039 removed the collision) **but the delivery path is unchanged** — no try/catch, route relays `err.message`, client `alert()`s it | `segmentEditorService.js:463-482`; `routes/segment-editor.js:804`; `public/js/segment-editor.js:1507`; `ui-strings.js:16` | **OPEN-UNTRACKED** | — |
+| ed-w6b | real, head-editor-facing | 400 relays a raw SQLite constraint message to `alert()`; `markForDiscussion` has no try/catch | ❌ **CORRECTED 2026-07-26 — this run's `OPEN-UNTRACKED` was a FALSE POSITIVE.** Two independent verifiers (2/2, high) found the asserted defect **not present**: migration 039 rebuilt `segment_edits` and dropped the UNIQUE constraint that produced the message, so no such `SqliteError` can arise in `markForDiscussion`. The relay plumbing is real but delivers nothing — a latent-robustness note, not a finding. **The blind Fable run produced no row here and was right to.** | `migrations/039-segment-edit-exit-path.js`; plumbing (inert) at `segmentEditorService.js:463-482`, `routes/segment-editor.js:804`, `public/js/segment-editor.js:1507` | **CLOSED** | — |
 | ed-w7 | DRIFT (minor) | terminology report documented "on submit", fires on module open | Unchanged (duplicate of `ed-drift-f`) | `public/js/segment-editor.js:283,421-437` | **OPEN-TRACKED** ⚠️ *downgraded, see §8* | item 23 · Batch 3 |
 | **ed-w8** | n/a — positive | four `needsAttention` tile counts matched live JSON; feed correctly ordered/attributed | **Partly falsified.** `overdueCount` deleted (F28 → `SUPERSEDED` for that quarter). `blockedIssues = getDiscussEdits(10).length` — a **count from a capped row list**; saturates at 10 | `routes/status.js:297-299`; `segmentEditorService.js:1314-1323`; `views/my-work.html:1522-1523` | **OPEN-UNTRACKED** ⚠️ *flipped, 3/3 refutes* | — |
 | ed-w9 | finding within a working loop | UI "Export CSV" and the disk-writing JSON export are different paths; JSON export is CLI/cron-only with no wiring | Unchanged — `grep export-terminology scripts/ .github/` → 0 | `server/scripts/export-terminology.js:1-14,56`; `architecture.md:433` | **OPEN-TRACKED** | CLAUDE.md glossary blocker (a) ⚠️ *wording tension, see notes* |
@@ -192,7 +203,7 @@ All **17** `OPEN-TRACKED` rows here are tracked by **A4 · Manual QA §0–§5 w
 | ed-qa-0.3b | PASS | same-book apply as head-editor succeeds | **Unit pin only** — middleware mock asserting `next()`, not an apply. The only e2e that applies runs as `admin` | `__tests__/requireRole.test.js:56` | **OPEN-TRACKED** ⚠️ *flipped 2/3, then downgraded — see §8* | A4 §0–§5 walk |
 | ed-qa-0.3c | PASS | admin bypass reaches business logic (400, not 403) | e2e pin, hermetic (ch 999 → 400 before publish) | `e2e/rbac.spec.js:134` | **CLOSED** | — |
 | ed-qa-0.3d | PASS | cross-book publish as head-editor → 403 | e2e pin | `e2e/rbac.spec.js:128` | **CLOSED** | — |
-| ed-qa-0.reg | PASS | full editor→approve→apply→history→restore→edit-again→rebuild round trip | Chain pinned **through restore**; the **edit-again and rebuild legs have no e2e** (`grep apply-status server/e2e/` → 0) | `e2e/review-cycle.spec.js:31-234` | **OPEN-TRACKED** ⚠️ *flipped 2/3, then downgraded — see §8* | A4 §0–§5 walk |
+| ed-qa-0.reg | PASS | full editor→approve→apply→history→restore→edit-again→rebuild round trip | ✅ **CORRECTED 2026-07-26 (adjudicated 3–0 against this run's flip).** The round trip is genuinely covered; the flip converted a documentation gap into a phantom defect. Adjudicators also refuted two supporting claims: rebuild **is** integration-covered (`segmentEditorService.test.js:1084` deletes the faithful file, re-applies, asserts the file exists), and the edit-again path is `saveSegmentEdit`'s supersede logic, not the comment at `:400` this run cited | `e2e/review-cycle.spec.js:31-234`; `__tests__/segmentEditorService.test.js:1084` | **CLOSED** | — |
 | ed-qa-1b | PASS | restore reverts; fresh snapshot taken first | e2e pin incl. non-zero `snapshotVersion` | `e2e/review-cycle.spec.js:158,203` | **CLOSED** | — |
 | ed-qa-1d | PASS | `version_restored` logged with who/when | e2e pin scoped to this run's version pair | `e2e/review-cycle.spec.js:212` | **CLOSED** | — |
 | ed-qa-1e | PASS | cross-book restore → 403 | e2e pin | `e2e/rbac.spec.js:143` | **CLOSED** | — |
@@ -215,8 +226,10 @@ All **17** `OPEN-TRACKED` rows here are tracked by **A4 · Manual QA §0–§5 w
 | ed-qa-4e | PASS (informal) | no untranslated CAT jargon on editor screens | Irreducibly judgment; unchanged | `qa-checklist.md:104` | **OPEN-TRACKED** | A4 · runbook Phase 2 §10 |
 | ed-qa-5a | PASS | anon `/admin` → redirect, no flash | e2e pin asserts the 302 body carries no admin markup — a transport-level proof | `e2e/a4-coverage.spec.js:113` | **CLOSED** | — |
 | ed-qa-5b | PASS | state-changing request with no session → rejected | e2e pin (accepts 401/403) | `e2e/rbac.spec.js:151` | **CLOSED** | — |
-| ed-qa-5c | **PROD-ONLY** | boot with a deliberately broken legacy migration | Requires a destructive from-scratch DB rebuild on a throwaway box. ⚠️ Expected behaviour **changed** — PR #212 made this fail loud; score against shipped policy, not the 2026-06-10 wording | runbook Phase 3 §14 | **UNVERIFIABLE** | A4 · Phase 3 (1 of 3 prod-only) |
-| ed-qa-5d | PASS (by lived experience) | smoke test after housekeeping; suites explicitly NOT re-run | Server-starts + console-error sweep now pinned; "suites green" is a process gate only A4 discharges | `e2e/a4-coverage.spec.js:137` | **OPEN-TRACKED** | A4 · Phase 1 |
+| ed-qa-5c | **PROD-ONLY** *(label is wrong — see below)* | boot with a deliberately broken legacy migration | ⚠️ **CORRECTED 2026-07-26 (adjudicated 2–1, third vote `both-wrong`). The "PROD-ONLY / destructive" premise is FALSE and BOTH runs inherited it from the source review without checking.** `resolveDbPath()` honours `SESSIONS_DB_PATH`, `runAllMigrations` creates a fresh DB when the file is absent, and ~30 existing tests already do exactly this in `os.tmpdir()`. The runbook line both runs quoted says *"on a throwaway box / disposable DB copy — never prod data."* **§5c is walkable locally today.** The mechanism also exists and is unit-tested (`migrationRunner.js:88-106` + `failLoudOnMigrationErrors` at `:148`); what is outstanding is only the walk | `server/lib/dbPath.js`; `migrationRunner.js:27-30,88-106,148`; `__tests__/migrationIdempotency.test.js:23-44` | **OPEN-TRACKED** | A4 — ⚠️ **move off the prod-only list (3 → 2)** |
+| **ed-qa-U1** | UNDETERMINED | whether `GREYNIR_URL` is actually set in production | ⚠️ **ROW ADDED 2026-07-26** — surfaced by Run B's critic. Named in committed prose (editorial §2 ¶1; joint summary §4) so it is **recoverable, not unrecoverable**, but this run gave it no row and so left it out of every count and the exclusion list | editorial review `:43`; joint summary §4 | **UNVERIFIABLE** | A4 (prod config) |
+| **ed-qa-U2** | UNDETERMINED | whether a reader sees a correctly-assembled "mixed" chapter page when only some modules are promoted past mt-preview | ⚠️ **ROW ADDED 2026-07-26** — same origin. The assembly logic lives in **namsbokasafn-vefur**, so it is unverifiable from this repo by construction | editorial review `:43`; joint summary §4 | **UNVERIFIABLE** | step-4 vefur companion |
+| ed-qa-5d | PASS (by lived experience) | smoke test after housekeeping; suites explicitly NOT re-run | ✅ **CORRECTED 2026-07-26 (adjudicated 3–0).** This run labelled the row open while quoting only evidence of closure. `qa-checklist.md:117` already marks it **`✅ auto 2026-06-22`** (Vitest green, server boots, `/api/health` ok) — closed *before* the A4 buildout; the console sweep is supplementary, not the closer | `qa-checklist.md:117`; supplementary `e2e/a4-coverage.spec.js:137` | **CLOSED** | — |
 
 ### 2.6 `2026-07-11-editorial-workflow-review.md` §5 — practice benchmark (8 dimensions)
 
