@@ -138,6 +138,31 @@
                 "type": "para",
                 "id": "fs-id886306",
                 "segmentId": "m66438:problem:fs-id886306"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1238542",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id1238542-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id1238542-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id1238542-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id1238542-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -160,6 +185,31 @@
                 "type": "para",
                 "id": "fs-id2229443",
                 "segmentId": "m66438:problem:fs-id2229443"
+              },
+              {
+                "type": "list",
+                "id": "fs-id2571309",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id2571309-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id2571309-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id2571309-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-id2571309-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -192,6 +242,31 @@
                 "type": "para",
                 "id": "fs-idm34780411",
                 "segmentId": "m66438:problem:fs-idm34780411"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922751",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-idm67922751-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-idm67922751-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-idm67922751-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66438:item:fs-idm67922751-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -333,5 +408,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 1
 }

@@ -8,9 +8,39 @@
   "liffraedi": {
     "label": "Líffræði (Biology)",
     "collections": [
-      { "ordabok": "LIFORD", "label": "Líffræðiorðasafn (10,000+ terms, ES cap applies)" },
-      { "ordabok": "LIFORD2", "label": "Líffræðiorðasafn 2 (þroskunarfræði o.fl.)" }
+      { "ordabok": "LIFORD", "label": "Líforðasafn (10,031 terms, ES cap applies)" },
+      { "ordabok": "LIFORD2", "label": "Líforðasafn 2 (þroskunarfræði o.fl., 620)" }
     ]
+  },
+  "liffraedi-extended": {
+    "label": "Líffræði + aðliggjandi orðasöfn (Biology + adjacent subjects)",
+    "_note": "MEASURED 2026-07-26 against the 2262 OpenStax Biology 2e headwords, not guessed. Adding every adjacent collection to LIFORD raised authoritative coverage only 48% -> 54%: the marginal value is concentrated almost entirely in ERFDAFR and ONAEMI. Counts are from /d/api/es/agg/dictionaries/ (82 collections; names at /d/api/dictionaries/?limit=1000) — those are true totals, while /api/es/terms/ caps at 10,000 (ES result cap), which is why LIFORD needs per-letter fetching.",
+    "_warning": "⚠️ COLLECTIONS DISAGREE, AND MORE COLLECTIONS MEANS MORE CONFLICT. Of the 283 book headwords found in more than one collection, 111 (39%) have different Icelandic — e.g. antibiotic LIFORD='fúkalyf' vs ERFDAFR='sýklalyf'; antigen LIFORD='mótefnavaki' vs ERFDAFR/ONAEMI='vaki'; autoimmunity LIFORD='sjálfsnæmi' vs ONAEMI='sjálfsofnæmi'. Keep fkdictionary on every imported term and resolve precedence per domain. A blind union silently picks whichever loaded last.",
+    "collections": [
+      { "ordabok": "LIFORD", "label": "Líforðasafn (10,031) — 1167 hits, 887 of them unique to it" },
+      { "ordabok": "LIFORD2", "label": "Líforðasafn 2 (620)" },
+      { "ordabok": "ERFDAFR", "label": "Erfðafræði / genetics (1,163) — 271 hits, 45 unique. Uses RNA/DNA not RKS/DKS, and completes the 'Nth stigs bygging' structure series. Worth it." },
+      { "ordabok": "ONAEMI", "label": "Ónæmisfræði / immunology (943, 794 bilingual) — 109 hits, 24 unique. Worth it for the immunology chapters." },
+      { "ordabok": "FARALDSFRAEDI", "label": "Faraldsfræði / epidemiology (269) — 8 hits, 2 unique. Marginal, but tiny and free." },
+      { "ordabok": "LYDHEILSA", "label": "Lýðheilsufræði / public health (244, 202 bilingual) — 5 hits, 2 unique. Marginal." },
+      { "ordabok": "UMHVERFI", "label": "Umhverfisfræði / environmental science (32) — 1 hit. Kept only because it costs one request." }
+    ],
+    "_measured_zero_value": {
+      "PODDUR": "Pöddur / insects (797) — ⚠️ LATIN↔ICELANDIC ONLY (e.g. 'Vanessa atalanta' -> 'aðmíráll'). NO English side at all, so it yields 0 bilingual pairs and can never serve an EN->IS glossary. Verified by fetching.",
+      "RISAEDLUR": "Risaeðlur / dinosaurs (331) — ⚠️ same: Latin↔Icelandic only, 0 bilingual pairs.",
+      "SJODYR": "Sjávardýr (985, 838 bilingual) — fetched fine but contributed 0 authoritative hits against this book's headwords. Species names, not concept terminology.",
+      "PLANTA": "Nöfn háplöntuætta (478, 251 bilingual; 13-language incl. EN) — 0 authoritative hits. Family names, not concept terminology."
+    },
+    "_deliberately_not_fetched": {
+      "LAEKN": "Læknisfræði / medicine — 33,593. The one genuinely promising addition left, for the anatomy/physiology chapters. Needs per-letter fetching and would dominate a merge; add deliberately.",
+      "FLORA": "Plöntuheiti — 11,532. Species names; expect the same zero yield as SJODYR/PLANTA.",
+      "PISCES": "Sjávarútvegsmál — 3,472. Fisheries industry, not biology.",
+      "FUGLAR": "Fuglaheiti — 2,747. Species names; likely Latin-keyed like PODDUR.",
+      "LYFJAFRLYFJASTOFNUN": "Lyfjafræði / pharmacology — 943.",
+      "TANNL": "Tannorðasafn / dental — 829.",
+      "KRYDD": "Matarorð úr jurtaríkinu — 724.",
+      "VIDUR": "Nytjaviðir / harvested wood — 314."
+    }
   },
   "edlisfraedi": {
     "label": "Eðlisfræði (Physics)",

@@ -1,5 +1,8 @@
-<!-- SEG:m66437:title:auto-1 --> Inngangur
+<!-- SEG:m66437:title:auto-1 -->
+Inngangur
 
-<!-- SEG:m66437:caption:fig-ch03_00_01-caption --> Fæða eins og brauð, ávextir og ostar innihalda mikið af lífrænum stórsameindum
+<!-- SEG:m66437:caption:fig-ch03_00_01-caption -->
+Fæðutegundir eins og brauð, ávextir og ostur eru ríkulegar uppsprettur lífrænna stórsameinda. (heimild: breyting á verki eftir Bengt Nyman)
 
-<!-- SEG:m66437:para:fs-id1770003 --> Við fáum þá næringu sem líkaminn þarfnast til að lifa af úr matnum sem við borðum.  Mikið af þessum mikilvægu næringarefnum eru lífrænefnasambönd eða lífrænar stórsameindir, sem líkaminn verður að fá til að geta haldið sér á lífi.  Lífrænar stórsameindir eru myndaðar úr ólíkum, smáum sameindum (einliðum), sem raðast saman og mynda stórsameindir (fjölliður).  En hvaða sérstöku lífrænu stórsameindir þurfa lífverur?  Hvernig myndast þessi efni?  Hvaða hlutverki gegna þau? Í þessum kafla verður leitast við að svara þessum spurningum
+<!-- SEG:m66437:para:fs-id1770003 -->
+Fæða sér líkamanum fyrir þeim næringarefnum sem hann þarf til að lifa af. Mörg þessara mikilvægu næringarefna eru lífrænar stórsameindir, eða stórar sameindir, sem eru nauðsynlegar fyrir líf. Þessar stórsameindir (fjölliður) eru byggðar upp af mismunandi samsetningum smærri lífrænna sameinda (einliða). Hvaða sérstöku lífrænu stórsameindir þurfa lífverur? Hvernig myndast þessar sameindir? Hvaða hlutverki gegna þær? Við könnum þessar spurningar í þessum kafla.

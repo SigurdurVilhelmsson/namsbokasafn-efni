@@ -1,10 +1,46 @@
 {
   "terms": [
     {
+      "term": "alfa-gormabygging (α-gormur)",
+      "definition": "annars stigs bygging próteina sem myndast við að fella fjölpeptíð í gormlaga form með vetnistengjum sem koma á stöðugleika í byggingunni",
+      "chapter": 3,
+      "english": "alpha-helix structure (α-helix)"
+    },
+    {
+      "term": "amínósýra",
+      "definition": "eining próteins; hefur miðlægt kolefni eða alfa-kolefni sem amínóhópur, karboxýlhópur, vetni og R-hópur eða hliðarkeðja er fest við; R-hópurinn er mismunandi fyrir allar 20 algengu amínósýrurnar",
+      "chapter": 3,
+      "english": "amino acid"
+    },
+    {
+      "term": "annars stigs gerð",
+      "definition": "regluleg gerð sem prótín mynda með vetnistengjum innan sameindar milli súrefnisatóms einnar amínósýruleifar og vetnis sem er tengt við köfnunarefnisatóm annarrar amínósýruleifar",
+      "chapter": 3,
+      "english": "secondary structure"
+    },
+    {
+      "term": "beðmi",
+      "definition": "fjölsykra sem myndar frumuvegg plantna; veitir frumunni byggingarstuðning",
+      "chapter": 3,
+      "english": "cellulose"
+    },
+    {
+      "term": "beta-felling (β-felling)",
+      "definition": "annars stigs bygging í próteinum þar sem vetnistengi myndar „fellingar“ milli atóma á burðarás fjölpeptíðkeðjunnar",
+      "chapter": 3,
+      "english": "beta-pleated sheet (β-pleated)"
+    },
+    {
       "term": "burðarprótín",
       "definition": "himnuprótín sem flytur efni yfir frumuhimnuna með því að breyta eigin lögun",
       "chapter": 5,
       "english": "carrier protein"
+    },
+    {
+      "term": "deoxýríbókirnisýra (DNA)",
+      "definition": "tvöföld gormlaga sameind sem ber erfðaupplýsingar frumunnar",
+      "chapter": 3,
+      "english": "deoxyribonucleic acid (dna)"
     },
     {
       "term": "dæla",
@@ -13,10 +49,70 @@
       "english": "pump"
     },
     {
+      "term": "eðlissvipting",
+      "definition": "tap á lögun í próteini vegna breytinga á hitastigi, sýrustigi eða efnafræðilegri útsetningu",
+      "chapter": 3,
+      "english": "denaturation"
+    },
+    {
       "term": "einflytjari",
       "definition": "flytjari sem ber eina ákveðna jón eða sameind",
       "chapter": 5,
       "english": "uniporter"
+    },
+    {
+      "term": "einliða",
+      "definition": "minnsta eining stærri sameinda sem eru fjölliður",
+      "chapter": 3,
+      "english": "monomer"
+    },
+    {
+      "term": "einsykra",
+      "definition": "einföld eining eða einliða kolvetna",
+      "chapter": 3,
+      "english": "monosaccharide"
+    },
+    {
+      "term": "ensím",
+      "definition": "hvati í lífefnafræðilegu hvarfi sem er yfirleitt flókið eða samtengt prótín",
+      "chapter": 3,
+      "english": "enzyme"
+    },
+    {
+      "term": "fjórðastigsgerð",
+      "definition": "samtenging aðskilinna fjölpeptíðeininga í prótíni",
+      "chapter": 3,
+      "english": "quaternary structure"
+    },
+    {
+      "term": "fjölkirni",
+      "definition": "löng keðja af kirnum",
+      "chapter": 3,
+      "english": "polynucleotide"
+    },
+    {
+      "term": "fjölliða",
+      "definition": "keðja af einliðuleifum sem samgild tengi tengja saman; fjölliðun er ferlið við myndun fjölliðu úr einliðum með þéttingu",
+      "chapter": 3,
+      "english": "polymer"
+    },
+    {
+      "term": "fjölpeptíð",
+      "definition": "löng keðja amínósýra sem peptíðtengi tengja saman",
+      "chapter": 3,
+      "english": "polypeptide"
+    },
+    {
+      "term": "fjölsykra",
+      "definition": "löng keðja af einsykrum; getur verið greinótt eða ógreinótt",
+      "chapter": 3,
+      "english": "polysaccharide"
+    },
+    {
+      "term": "flutnings-RNA (tRNA)",
+      "definition": "RNA sem flytur virkjaðar amínósýrur á myndunarstað prótína á ríbósóminu",
+      "chapter": 3,
+      "english": "transfer rna (trna)"
     },
     {
       "term": "flutningsprótín",
@@ -37,6 +133,24 @@
       "english": "diffusion"
     },
     {
+      "term": "fosfódíestertengi",
+      "definition": "linkage samgilt efnatengi sem heldur saman fjölkirnakeðjum með fosfathópi sem tengir saman tvær pentósasykrur í nálægum kirnum",
+      "chapter": 3,
+      "english": "phosphodiester"
+    },
+    {
+      "term": "fosfólípíð",
+      "definition": "aðalefni himna; samanstendur af tveimur fitusýrum og fosfathópi sem er tengdur við glýserólburðarás",
+      "chapter": 3,
+      "english": "phospholipid"
+    },
+    {
+      "term": "frumgerð",
+      "definition": "línuleg röð amínósýra í prótíni",
+      "chapter": 3,
+      "english": "primary structure"
+    },
+    {
       "term": "frumudrykkja",
       "definition": "afbrigði innfrumunar sem flytur inn stórsameindir sem fruman þarfnast úr utanfrumuvökvanum",
       "chapter": 5,
@@ -55,6 +169,12 @@
       "english": "primary active transport"
     },
     {
+      "term": "fylgiprótein",
+      "definition": "(einnig, chaperonin) prótein sem hjálpar nýmynduðu próteini í fellingsferlinu",
+      "chapter": 3,
+      "english": "chaperone"
+    },
+    {
       "term": "gagnflytjari",
       "definition": "flytjari sem ber tvær jónir eða litlar sameindir í mismunandi áttir",
       "chapter": 5,
@@ -65,6 +185,12 @@
       "definition": "himnuprótín sem leyfir efni að fara í gegnum holan kjarna sinn yfir frumuhimnuna",
       "chapter": 5,
       "english": "channel protein"
+    },
+    {
+      "term": "gljúkógen",
+      "definition": "forðakolvetni í dýrum",
+      "chapter": 3,
+      "english": "glycogen"
     },
     {
       "term": "gljúkólípíð",
@@ -79,10 +205,22 @@
       "english": "glycoprotein"
     },
     {
+      "term": "gljúkósíðtengi",
+      "definition": "tengi sem myndast við afvötnun milli tveggja einsykra þar sem vatnssameind er fjarlægð",
+      "chapter": 3,
+      "english": "glycosidic bond"
+    },
+    {
       "term": "hjálparflutningur",
       "definition": "ferli þar sem efni hreyfist niður styrkfallanda (frá háum til lágum styrk) með hjálp samfelldra himnuprótína",
       "chapter": 5,
       "english": "facilitated transport"
+    },
+    {
+      "term": "hormón",
+      "definition": "efnaboðefni, yfirleitt prótín eða steri, sem innkirtlafrumur seyta og hefur það hlutverk að stjórna eða stýra tilteknum lífeðlisfræðilegum ferlum",
+      "chapter": 3,
+      "english": "hormone"
     },
     {
       "term": "hýpertónísk",
@@ -121,10 +259,64 @@
       "english": "caveolin"
     },
     {
+      "term": "kirni",
+      "definition": "einliða kjarnsýra; inniheldur pentósasykur, einn eða fleiri fosfathópa og niturbasa",
+      "chapter": 3,
+      "english": "nucleotide"
+    },
+    {
+      "term": "kítín",
+      "definition": "tegund kolvetnis sem myndar ytri stoðgrind allra liðdýra, þar á meðal krabbadýra og skordýra; það myndar einnig frumuveggi sveppa",
+      "chapter": 3,
+      "english": "chitin"
+    },
+    {
+      "term": "kjarnsýra",
+      "definition": "lífræn stórsameind sem ber erfðaupplýsingar frumunnar og leiðbeiningar um starfsemi hennar",
+      "chapter": 3,
+      "english": "nucleic acid"
+    },
+    {
       "term": "klatrín",
       "definition": "prótín sem þekur innra yfirborð frumuhimnunnar og aðstoðar við myndun sérhæfðra bygginga, eins og hjúpaðra gryfja, fyrir frumuát",
       "chapter": 5,
       "english": "clathrin"
+    },
+    {
+      "term": "kolvetni",
+      "definition": "lífræn stórsameind þar sem hlutfall kolefnis, vetnis og súrefnis er 1:2:1; kolvetni þjóna sem orkugjafar og byggingarefni í frumum og mynda ytri stoðgrind liðdýra",
+      "chapter": 3,
+      "english": "carbohydrate"
+    },
+    {
+      "term": "lífræn stórsameind",
+      "definition": "stór sameind sem er nauðsynleg fyrir líf og er byggð úr smærri lífrænum sameindum",
+      "chapter": 3,
+      "english": "biological macromolecule"
+    },
+    {
+      "term": "lípíð",
+      "definition": "risasameind sem er óskautuð og óleysanleg í vatni",
+      "chapter": 3,
+      "english": "lipid"
+    },
+    {
+      "term": "mettuð fitusýra",
+      "definition": "langkeðju kolvetni með eintengdum samgildum tengjum í kolefniskeðjunni; fjöldi vetnisatóma sem tengjast kolefnisgrindinni er hámarkaður",
+      "chapter": 3,
+      "english": "saturated fatty acid"
+    },
+    {
+      "term": "mjölvi",
+      "definition": "forðakolvetni í plöntum",
+      "chapter": 3,
+      "english": "starch"
+    },
+    {
+      "term": "omega-fita",
+      "definition": "tegund fjölómettaðrar fitu sem líkaminn þarfnast; þegar kolefnisatóm eru númeruð er omega-endi metýlendinn eða sá endi sem er lengst frá karboxýlendanum",
+      "chapter": 3,
+      "english": "omega fat"
     },
     {
       "term": "osmólarítet",
@@ -139,16 +331,46 @@
       "english": "osmosis"
     },
     {
+      "term": "ómettuð fitusýra",
+      "definition": "langkeðju kolvetni sem hefur eitt eða fleiri tvítengi í kolvetniskeðjunni",
+      "chapter": 3,
+      "english": "unsaturated fatty acid"
+    },
+    {
       "term": "óvirkur flutningur",
       "definition": "aðferð til að flytja efni í gegnum himnu sem krefst ekki orku",
       "chapter": 5,
       "english": "passive transport"
     },
     {
+      "term": "peptíðtengi",
+      "definition": "tengi sem myndast milli tveggja amínósýra í þéttihvarfi",
+      "chapter": 3,
+      "english": "peptide bond"
+    },
+    {
       "term": "pótósýtósa",
       "definition": "afbrigði frumudrykkju sem notar annað hjúpprótín (kaveólín) á umfrymisvegg frumuhimnunnar",
       "chapter": 5,
       "english": "potocytosis"
+    },
+    {
+      "term": "prótín",
+      "definition": "lífræn stórsameind sem samanstendur af einni eða fleiri amínósýrukeðjum",
+      "chapter": 3,
+      "english": "protein"
+    },
+    {
+      "term": "púrín",
+      "definition": "Gerð niturbasa í DNA og RNA; adenín og gúanín eru púrín",
+      "chapter": 3,
+      "english": "purine"
+    },
+    {
+      "term": "pýrimídín",
+      "definition": "gerð niturbasa í DNA og RNA; cýtósín, týmín og úrasíl eru pýrimídín",
+      "chapter": 3,
+      "english": "pyrimidine"
     },
     {
       "term": "rafefnastigull",
@@ -163,16 +385,40 @@
       "english": "electrogenic pump"
     },
     {
+      "term": "ríbósakjarnsýra (RNA)",
+      "definition": "einþátta sameind, oft með innri basapörun, sem tekur þátt í prótínmyndun",
+      "chapter": 3,
+      "english": "ribonucleic acid (rna)"
+    },
+    {
+      "term": "ríbósóm-RNA (rRNA)",
+      "definition": "RNA sem tryggir rétta röðun mRNA og ríbósóma við prótínmyndun og hvetur myndun peptíðtengis",
+      "chapter": 3,
+      "english": "ribosomal rna (rrna)"
+    },
+    {
       "term": "samflytjari",
       "definition": "flytjari sem ber tvær mismunandi jónir eða litlar sameindir, báðar í sömu átt",
       "chapter": 5,
       "english": "symporter"
     },
     {
+      "term": "sendi-RNA (mRNA)",
+      "definition": "RNA sem ber upplýsingar frá DNA til ríbósóma við prótínmyndun",
+      "chapter": 3,
+      "english": "messenger rna (mrna)"
+    },
+    {
       "term": "síðvirkur flutningur",
       "definition": "efnisflutningur sem er afleiðing frumvirks flutnings að rafefnastigli",
       "chapter": 5,
       "english": "secondary active transport"
+    },
+    {
+      "term": "steri",
+      "definition": "tegund lípíðs sem samanstendur af fjórum samrunnum kolvetnishringjum sem mynda slétta byggingu",
+      "chapter": 3,
+      "english": "steroid"
     },
     {
       "term": "styrkfallandi",
@@ -187,10 +433,28 @@
       "english": "tonicity"
     },
     {
+      "term": "transfita",
+      "definition": "fita sem myndast með tilbúinni vetnun olía, sem leiðir til annarrar uppröðunar tvítengja en í náttúrulegum lípíðum",
+      "chapter": 3,
+      "english": "trans fat"
+    },
+    {
       "term": "tvígæf",
       "definition": "sameind sem hefur bæði skautað eða hlaðið svæði og óskautað eða óhlaðið svæði sem getur haft víxlverkun við bæði vatnssækið og vatnsfælið umhverfi",
       "chapter": 5,
       "english": "amphiphilic"
+    },
+    {
+      "term": "tvísykra",
+      "definition": "tvær einsykrur sem tengdar eru saman með glýkósíðtengi",
+      "chapter": 3,
+      "english": "disaccharide"
+    },
+    {
+      "term": "umritun",
+      "definition": "ferli þar sem mótandi RNA myndast á DNA-sniðmáti",
+      "chapter": 3,
+      "english": "transcription"
     },
     {
       "term": "uppleyst efni",
@@ -223,10 +487,22 @@
       "english": "aquaporin"
     },
     {
+      "term": "vatnsrof",
+      "definition": "hvarf sem veldur niðurbroti stærri sameinda í smærri sameindir með því að nýta vatn",
+      "chapter": 3,
+      "english": "hydrolysis"
+    },
+    {
       "term": "vatnssækinn",
       "definition": "sameind sem getur tengst vatni; „vatnselskandi“",
       "chapter": 5,
       "english": "hydrophilic"
+    },
+    {
+      "term": "vax",
+      "definition": "lípíð sem samanstendur af langkeðju fitusýru sem er estruð við langkeðju alkóhól; þjónar sem verndarhúð á sumum fjöðrum, feldi vatnaspendýra og laufblöðum",
+      "chapter": 3,
+      "english": "wax"
     },
     {
       "term": "viðtakamiðluð innfrumun",
@@ -251,6 +527,30 @@
       "definition": "prótín á yfirborði frumuhimnunnar, annaðhvort á ytra eða innra borði hennar",
       "chapter": 5,
       "english": "peripheral protein"
+    },
+    {
+      "term": "þéttitenging",
+      "definition": "(einnig, þétting) hvarf sem tengir saman einliðusameindir og losar vatnssameind fyrir hvert tengi sem myndast",
+      "chapter": 3,
+      "english": "dehydration synthesis"
+    },
+    {
+      "term": "þriðja stigs gerð",
+      "definition": "þrívíddarlögun prótíns, þar með talin víxlverkun milli eininga í annars stigs gerð; mynduð úr víxlverkunum milli hliðarkeðja amínósýra",
+      "chapter": 3,
+      "english": "tertiary structure"
+    },
+    {
+      "term": "þríglýseríð (einnig, þríglýseríð)",
+      "definition": "fitusameind; samanstendur af þremur fitusýrum sem eru tengdar við glýserólsameind",
+      "chapter": 3,
+      "english": "triacylglycerol (also, triglyceride)"
+    },
+    {
+      "term": "þýðing",
+      "definition": "ferli þar sem RNA stýrir myndun prótíns",
+      "chapter": 3,
+      "english": "translation"
     }
   ]
 }

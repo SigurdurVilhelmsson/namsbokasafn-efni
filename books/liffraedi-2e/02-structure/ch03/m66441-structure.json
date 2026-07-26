@@ -48,66 +48,6 @@
       },
       "content": [
         {
-          "type": "section",
-          "id": "fs-id1596337",
-          "class": null,
-          "title": {
-            "segmentId": "m66441:title:fs-id1596337-title",
-            "text": "Trans Fats"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-id1236538",
-              "segmentId": "m66441:para:fs-id1236538"
-            },
-            {
-              "type": "para",
-              "id": "fs-id1447736",
-              "segmentId": "m66441:para:fs-id1447736"
-            }
-          ]
-        },
-        {
-          "type": "section",
-          "id": "fs-id2890621",
-          "class": null,
-          "title": {
-            "segmentId": "m66441:title:fs-id2890621-title",
-            "text": "Omega Fatty Acids"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-id1958165",
-              "segmentId": "m66441:para:fs-id1958165"
-            },
-            {
-              "type": "figure",
-              "id": "fig-ch03_03_06",
-              "caption": {
-                "segmentId": "m66441:caption:fig-ch03_03_06-caption"
-              },
-              "media": {
-                "id": "fs-id2927265",
-                "alt": "The molecular structures of alpha-linolenic acid, an omega-3 fatty acid is shown. Alpha-linolenic acid has three double bonds located eight, eleven, and fourteen residues from the acetyl group. It has a hooked shape.",
-                "src": "../../media/Figure_03_03_07-cb9e.jpg",
-                "mimeType": "image/jpg"
-              }
-            },
-            {
-              "type": "para",
-              "id": "fs-id1768637",
-              "segmentId": "m66441:para:fs-id1768637"
-            },
-            {
-              "type": "para",
-              "id": "fs-id1966110",
-              "segmentId": "m66441:para:fs-id1966110"
-            }
-          ]
-        },
-        {
           "type": "para",
           "id": "fs-id1671785",
           "segmentId": "m66441:para:fs-id1671785"
@@ -192,6 +132,66 @@
             "src": "../../media/Figure_03_03_05-ff6c.jpg",
             "mimeType": "image/jpg"
           }
+        },
+        {
+          "type": "section",
+          "id": "fs-id1596337",
+          "class": null,
+          "title": {
+            "segmentId": "m66441:title:fs-id1596337-title",
+            "text": "Trans Fats"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1236538",
+              "segmentId": "m66441:para:fs-id1236538"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1447736",
+              "segmentId": "m66441:para:fs-id1447736"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id2890621",
+          "class": null,
+          "title": {
+            "segmentId": "m66441:title:fs-id2890621-title",
+            "text": "Omega Fatty Acids"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1958165",
+              "segmentId": "m66441:para:fs-id1958165"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch03_03_06",
+              "caption": {
+                "segmentId": "m66441:caption:fig-ch03_03_06-caption"
+              },
+              "media": {
+                "id": "fs-id2927265",
+                "alt": "The molecular structures of alpha-linolenic acid, an omega-3 fatty acid is shown. Alpha-linolenic acid has three double bonds located eight, eleven, and fourteen residues from the acetyl group. It has a hooked shape.",
+                "src": "../../media/Figure_03_03_07-cb9e.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1768637",
+              "segmentId": "m66441:para:fs-id1768637"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1966110",
+              "segmentId": "m66441:para:fs-id1966110"
+            }
+          ]
         }
       ]
     },
@@ -362,6 +362,31 @@
                 "type": "para",
                 "id": "fs-id2474268",
                 "segmentId": "m66441:problem:fs-id2474268"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1894765",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1894765-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1894765-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1894765-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1894765-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -384,6 +409,31 @@
                 "type": "para",
                 "id": "fs-id2321958",
                 "segmentId": "m66441:problem:fs-id2321958"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1671687",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1671687-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1671687-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1671687-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-id1671687-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -406,6 +456,31 @@
                 "type": "para",
                 "id": "fs-idm74380416",
                 "segmentId": "m66441:problem:fs-idm74380416"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922755",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-idm67922755-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-idm67922755-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-idm67922755-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66441:item:fs-idm67922755-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -596,5 +671,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }
