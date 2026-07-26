@@ -6,7 +6,9 @@
 
 **What this document is for:** it is the finding-level disposition ledger the 2026-07-11 two-perspective review never got — it answers *"are we on target?"* with evidence at finding granularity, and it is the **exclusion list** that the planned diff-scoped review (step 4 of the approved sequence) consumes so it does not re-report already-dispositioned work.
 
-**This audit changed no code.** Resurrected findings are the lead's to triage.
+**This audit changed no code.** Resurrected findings are the lead's to triage — landed in the live campaign as **C10** (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
+
+> 📦 **Retention note — do not delete `2026-07-26-closure-audit-evidence.md` (688 KB) as cruft.** It is the *only* durable copy of the quoted code behind all 128 rows and of the 180 adversarial verdicts; the ledger's `file:line` citations are unauditable without it. Its size is the point: §6 records that the 2026-07-11 editorial review lost 11 real drift findings permanently by committing *counts* instead of *rows*, and this file is the correction. A future audit may supersede it; a cleanup pass should not.
 
 ---
 
@@ -176,6 +178,8 @@ Evidence here is terse `file:line` as of `9107ed1d`. **The verbatim quoted code 
 All **17** `OPEN-TRACKED` rows here are tracked by **A4 · Manual QA §0–§5 walk** (live campaign `:125`) and/or its E2E buildout (**PR-1b**, carve-outs at `:127`). A4 is an unsigned `[LEAD]` gate.
 
 ⚠️ **This is the audit's thinnest-covered group, and it is thin in a specific way.** These 17 rows carry a July **PASS** score that cannot be re-run — there is no durable pin behind them, so "it passed once" is the entire evidence base. Two are now known to have been *too generous*: **`ed-qa-4a` fails today** and **`ed-qa-4b` resolves against the app**. Treat the remaining PASS scores as unverified until A4 walks them.
+
+⚠️ **Read the Evidence column here differently from every other table.** Five rows — `ed-qa-2f`, `ed-qa-3e`, `ed-qa-3f`, `ed-qa-4e`, `ed-qa-5c` — cite a `qa-checklist.md` or runbook line, i.e. **the claim's own source, not the code state**. That is a consequence of what these rows are (process/visual/prod-only gates with no code to point at), not an oversight, and the bar is lower because all five are `OPEN-TRACKED` or `UNVERIFIABLE`. But **do not read those citations as verification** — they locate the claim, they do not discharge it.
 
 ⚠️ **Enumeration gap for the A4 walk:** `ed-qa-0.3b` and `ed-qa-0.reg` appear in **neither** A4 PR-1's delivered-tag list **nor** the runbook's hand-walk list. Both were flipped by skeptics (2/3) before being downgraded here. Patch the runbook's enumeration before walking, or they will be silently skipped.
 
