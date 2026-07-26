@@ -103,6 +103,15 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
   tokens for ~5 months. A global `~/.config/git/ignore` does **not** travel with a
   clone; the repo-level rule is the only real protection.
 
+## ⚠️ Content delivery to readers is MANUAL, and its automatic leg has never worked
+
+**`Sync Content to Vefur` (`.github/workflows/sync-content.yml`) has failed 34 of 34 runs since 2026-06-16 — zero successes.** `gh secret list` returns **no repository secrets at all**: `VEFUR_DEPLOY_TOKEN` was never created, so `actions/checkout` gets an empty string and dies at `Checkout vefur`. **This is first-time setup, not a rotation** — do not go looking for an expired credential.
+
+- **The working route is manual**, run from `../namsbokasafn-vefur`: `node scripts/sync-content.js --source ../namsbokasafn-efni` → build → deploy (`workflow_dispatch` on `deploy.yml`, or a `v*.*.*` tag — *CI does not deploy*).
+- **⚠️ A failed content push is INVISIBLE.** `scripts/git-backup.sh` detects it correctly (`set -euo pipefail` at `:26`) and writes `error` to `pipeline-output/backup-status.json` — **gitignored and read by nothing**, no `MAILTO` in `install-cron.sh`. The cron also never fetches before pushing (`:114` commit → `:121` push), so non-fast-forward rejection is *already* a live silent failure mode. Heartbeat pattern to copy: `server/index.js:300-313`.
+- **⚠️ `deploy.yml:50` runs `git reset --hard origin/main` ON PROD.** With the above, a silently-rejected cron push leaves reviewed translations only on prod's disk and the next deploy discards them.
+- **⚠️ VERIFYING A VEFUR DEPLOY — route status codes are MEANINGLESS.** The reader site is a client-rendered SPA with an any-path fallback: a real page, a deleted page and nonsense all return **200 with the same ~2,940-byte shell**, and WebFetch sees only that shell. **Test `/content/<book>/chapters/<NN>/<file>.html`, never the page URL.**
+
 ## CI — what actually gates, and how to read a red check
 
 CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
@@ -116,6 +125,18 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
 - All five gating workflows (`lint`, `test`, `validate`, `security`, `docs-check`)
   now have **`workflow_dispatch`** — re-verify from the Actions tab, never by
   inventing a commit.
+- **⚠️ `validate` is NOT push-to-main-only** (an earlier version of this file said so).
+  `validate.yml:13` has a **path-filtered `pull_request` trigger**, which is *worse* than
+  push-only: it appears in the required-status-checks picker looking safe, then never
+  reports on most PRs.
+- **Branch protection — decided 2026-07-26 (register C12): force-push + deletion blocking
+  ONLY.** **Required status checks are mechanically impossible here, not merely unwise**:
+  they gate *direct pushes* too, a prod-cron commit has no check runs, and there is no
+  bypass identity available (**1 collaborator, 0 deploy keys**). Measured: required checks
+  would have blocked **58 merged PRs / 522 commits** during the 2026-07-12→25 billing
+  outage. ⚠️ If ever revisited: check-run names are the **lowercase job ids** (`Tests` is
+  **two** checks, `test` + `e2e`), and requiring the path-filtered `Validate Status Files`
+  or `check-docs` blocks PRs **forever** on the PRs where they don't report.
 - **Current state:** Lint ✅ · Security ✅ · unit ✅ (3368) · **e2e ❌ = C2 only**
   (`editor-workflow.spec.js`, `ux-phase2.spec.js` — synthetic segment IDs 404'd by
   the SR-OOS-2 backstop since 2026-07-12). Handoff:
