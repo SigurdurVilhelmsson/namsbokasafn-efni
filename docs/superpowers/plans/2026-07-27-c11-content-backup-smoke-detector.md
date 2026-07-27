@@ -6,7 +6,9 @@
 
 **Architecture:** `scripts/git-backup.sh` writes a heartbeat file only on healthy runs, so *absence is the alarm* — the same inversion the off-box DB backup already uses. `GET /api/health` reads it through two new small server libs and flips to `degraded` when it goes stale. `scripts/deploy.sh` prints the health verdict it currently discards, which is the only routine surface where that alarm gets seen. Separately, `.github/workflows/deploy.yml` stops duplicating (and diverging from) `scripts/deploy.sh` and just calls it, which deletes its `git reset --hard origin/main`.
 
-**Tech Stack:** Bash (production cron + deploy scripts), Node 22 CommonJS (`server/`), Vitest workspace with three projects — `tools` (`tools/__tests__/**/*.test.js`), `server` (`server/__tests__/**/*.test.js`, sequential), `scripts` (`scripts/__tests__/**/*.test.mjs`).
+**Tech Stack:** Bash (production cron + deploy scripts), Node 22 CommonJS (`server/`), Vitest 4.
+
+⚠️ **`--project` does not work in this repo** (register `I16-R12`): vitest 4 no longer reads `vitest.workspace.js`, so `npx vitest run --project server …` fails with *"No projects matched the filter"*. Scope a run by **path** instead — `npx vitest run server/__tests__/…`. Discovery and `fileParallelism: false` come from the root `vitest.config.js`, so `npm test` from the repo root is unaffected and remains the authoritative gate. Do not reintroduce `--project` into any command in this plan.
 
 **Design doc:** [`docs/superpowers/specs/2026-07-27-c11-content-backup-smoke-detector-design.md`](../specs/2026-07-27-c11-content-backup-smoke-detector-design.md)
 
@@ -106,7 +108,7 @@ describe('computeBackupHeartbeatHealth', () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npx vitest run --project server server/__tests__/backupHeartbeatHealth.test.js`
+Run: `npx vitest run server/__tests__/backupHeartbeatHealth.test.js`
 Expected: FAIL — `Cannot find module '../lib/backupHeartbeatHealth'`
 
 - [ ] **Step 3: Write minimal implementation**
@@ -167,7 +169,7 @@ module.exports = { computeOffboxBackupHealth };
 
 - [ ] **Step 4: Run tests to verify they pass**
 
-Run: `npx vitest run --project server server/__tests__/backupHeartbeatHealth.test.js server/__tests__/healthOffboxBackup.test.js`
+Run: `npx vitest run server/__tests__/backupHeartbeatHealth.test.js server/__tests__/healthOffboxBackup.test.js`
 Expected: PASS — 4 new + 3 pre-existing. The pre-existing three passing is the point: the wrapper is behaviour-identical.
 
 - [ ] **Step 5: Mutation-check that the wrapper really delegates**
@@ -338,7 +340,7 @@ describe('readContentBackupHealth', () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npx vitest run --project server server/__tests__/contentBackupHealth.test.js`
+Run: `npx vitest run server/__tests__/contentBackupHealth.test.js`
 Expected: FAIL — `Cannot find module '../lib/contentBackupHealth'`
 
 - [ ] **Step 3: Write minimal implementation**
@@ -410,7 +412,7 @@ module.exports = { readContentBackupHealth, DEFAULT_STALE_HOURS };
 
 - [ ] **Step 4: Run tests to verify they pass**
 
-Run: `npx vitest run --project server server/__tests__/contentBackupHealth.test.js`
+Run: `npx vitest run server/__tests__/contentBackupHealth.test.js`
 Expected: PASS — 9 tests.
 
 - [ ] **Step 5: Mutation-check the malformed-file tolerance**
@@ -497,7 +499,7 @@ Expected: `status` is `"degraded"` and `content_backup` is `{"age_hours":null,"s
 
 - [ ] **Step 4: Run the full server suite**
 
-Run: `npx vitest run --project server`
+Run: `npx vitest run server/__tests__/`
 Expected: PASS, no regressions.
 
 - [ ] **Step 5: Commit**
@@ -613,7 +615,7 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
 
 - [ ] **Step 2: Run tests to verify they fail**
 
-Run: `npx vitest run --project scripts scripts/__tests__/git-backup.test.mjs`
+Run: `npx vitest run scripts/__tests__/git-backup.test.mjs`
 Expected: the two "writes the heartbeat" tests FAIL (`existsSync(...)` is `false`). The third passes already — it is a *preservation* pin, so it is expected to be green before and after; its value is proven by the mutation check in Step 5.
 
 - [ ] **Step 3: Write minimal implementation**
@@ -669,7 +671,7 @@ Do **not** add `write_heartbeat` to the three error paths (`:100-104` add failur
 
 - [ ] **Step 4: Run tests to verify they pass**
 
-Run: `npx vitest run --project scripts scripts/__tests__/git-backup.test.mjs`
+Run: `npx vitest run scripts/__tests__/git-backup.test.mjs`
 Expected: PASS — 4 pre-existing + 3 new.
 
 - [ ] **Step 5: Mutation-check the preservation pin**
@@ -749,7 +751,7 @@ Append to the `describe` block from Task 4:
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npx vitest run --project scripts scripts/__tests__/git-backup.test.mjs -t "ahead/behind"`
+Run: `npx vitest run scripts/__tests__/git-backup.test.mjs -t "ahead/behind"`
 Expected: FAIL — the message is the bare `git push failed`.
 
 - [ ] **Step 3: Write minimal implementation**
@@ -790,7 +792,7 @@ Notes for the implementer:
 
 - [ ] **Step 4: Run tests to verify they pass**
 
-Run: `npx vitest run --project scripts scripts/__tests__/git-backup.test.mjs`
+Run: `npx vitest run scripts/__tests__/git-backup.test.mjs`
 Expected: PASS — 8 tests. In particular the Task 4 test `leaves an existing heartbeat UNTOUCHED when the push fails` must still pass: its remote is unreachable, so the fetch fails and the plain message is used.
 
 - [ ] **Step 5: Mutation-check the fallback**
@@ -884,7 +886,7 @@ describe('production shell scripts parse', () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npx vitest run --project scripts scripts/__tests__/shell-syntax.test.mjs`
+Run: `npx vitest run scripts/__tests__/shell-syntax.test.mjs`
 Expected: the two `bash -n` cases PASS (both scripts are currently valid); `deploy.sh prints the health verdict` FAILS, because the `> /dev/null` form is still there.
 
 - [ ] **Step 3: Write minimal implementation**
@@ -923,7 +925,7 @@ exit 1
 
 - [ ] **Step 4: Run tests to verify they pass**
 
-Run: `npx vitest run --project scripts`
+Run: `npx vitest run scripts/__tests__/`
 Expected: PASS — the whole scripts project, including the Task 4/5 cases.
 
 - [ ] **Step 5: Verify the output shape by hand**
@@ -1041,7 +1043,7 @@ describe('deploy.yml delegates to the one deploy script (C11(c))', () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npx vitest run --project tools tools/__tests__/deployPathSingleSource.test.js`
+Run: `npx vitest run tools/__tests__/deployPathSingleSource.test.js`
 Expected: FAIL — four of the five cases fail (`git reset --hard`, no `deploy.sh` call, `systemctl` present, DB-backup duplication).
 
 - [ ] **Step 3: Write minimal implementation**
@@ -1110,7 +1112,7 @@ jobs:
 
 - [ ] **Step 4: Run tests to verify they pass**
 
-Run: `npx vitest run --project tools tools/__tests__/deployPathSingleSource.test.js`
+Run: `npx vitest run tools/__tests__/deployPathSingleSource.test.js`
 Expected: PASS — 5 tests.
 
 Also confirm the YAML still parses:
@@ -1246,7 +1248,7 @@ It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-co
 
 - [ ] **Step 5: Verify the docs gate**
 
-Run: `npm run validate && npx vitest run --project tools`
+Run: `npm run validate && npx vitest run tools/__tests__/`
 Expected: PASS. (`docs-check` in CI regenerates `docs/_generated/`; if it reports drift, run the generator it names and include the result in this commit.)
 
 - [ ] **Step 6: Commit**
