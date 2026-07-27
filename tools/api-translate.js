@@ -619,14 +619,22 @@ export { bookToDomain };
 /**
  * Load glossary from a book's glossary directory.
  * Returns API-formatted glossary object or null if unavailable.
+ *
+ * `options.onSkipped` is forwarded to formatGlossary and receives any entries
+ * dropped for having a blank English or Icelandic side (register C14), so the
+ * caller can report the loss instead of it being silent.
+ *
+ * @param {string} glossaryDir
+ * @param {string} domain
+ * @param {{onSkipped?: (dropped: Array<object>) => void}} [options]
  */
-export function loadGlossary(glossaryDir, domain) {
+export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
   const glossaryPath = path.join(glossaryDir, 'glossary-unified.json');
   if (!fs.existsSync(glossaryPath)) return null;
 
   try {
     const data = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
-    const glossary = formatGlossary(data.terms || [], { domain, approvedOnly: true });
+    const glossary = formatGlossary(data.terms || [], { domain, approvedOnly: true, onSkipped });
     if (glossary.terms.length === 0) return null;
     return glossary;
   } catch {
@@ -1060,9 +1068,20 @@ async function main() {
   let glossary = null;
   if (!args.noGlossary) {
     const domain = bookToDomain(args.book);
-    glossary = loadGlossary(path.join(BOOKS_DIR, 'glossary'), domain);
+    let skippedCount = 0;
+    glossary = loadGlossary(path.join(BOOKS_DIR, 'glossary'), domain, {
+      onSkipped: (dropped) => {
+        skippedCount = dropped.length;
+      },
+    });
     if (glossary) {
-      console.log(`Glossary: ${glossary.terms.length} approved ${glossary.domain} terms`);
+      // Surfacing the drop count at the MT stage is deliberate: the same
+      // reasoning as countInlineMarkers — a data defect must be visible where
+      // it happens, not inferred three stages downstream from bad output.
+      const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
+      console.log(
+        `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
+      );
     } else {
       console.log('Glossary: none available (continuing without)');
     }
