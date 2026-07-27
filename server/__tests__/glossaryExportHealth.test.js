@@ -5,14 +5,15 @@
  * pipeline-output/.last-glossary-export only when every book resolved
  * healthily, so staleness is the alarm.
  *
- * WHY THIS EXISTS: the export is invoked from scripts/git-backup.sh in a
- * deliberately CONTAINED way — a failure logs a WARN and lets the content
- * backup proceed, because terminology-DB health must not be able to abort
- * the backup. That containment means a persistent failure would otherwise
- * be invisible: a WARN in a gitignored log nobody reads, while the glossary
- * silently stayed frozen. Cron environments are the likely cause (no repo
- * cron script invoked `node` before this one). This check is where that
- * becomes visible — ./scripts/deploy.sh prints every not-ok check.
+ * WHY THIS EXISTS: the export is meant to run from scripts/git-backup.sh, and
+ * that invocation must be deliberately CONTAINED — a failure logs a WARN and
+ * lets the content backup proceed, because terminology-DB health must not be
+ * able to abort the backup. That containment means a persistent failure
+ * would otherwise be invisible: a WARN in a gitignored log nobody reads,
+ * while the glossary silently stayed frozen. Cron environments are the
+ * likely cause (no repo cron script invoked `node` before this one). This
+ * check is where that becomes visible — ./scripts/deploy.sh prints every
+ * not-ok check.
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
