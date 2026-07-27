@@ -65,6 +65,37 @@ describe('loadGlossary skip reporting', () => {
     const g = writeGlossary([{ english: 'ether', icelandic: '   ', status: 'approved' }]);
     expect(loadGlossary(g, 'chemistry')).toBeNull();
   });
+
+  it('still reports the drops when EVERY approved term was malformed', () => {
+    // The worst case: loadGlossary returns null, so the caller prints "none
+    // available". Without this the operator cannot tell a wholly corrupt
+    // glossary from having no glossary at all.
+    const g = writeGlossary([
+      { english: 'water', icelandic: '', status: 'approved' },
+      { english: 'ether', icelandic: '   ', status: 'approved' },
+    ]);
+    let dropped = null;
+    const glossary = loadGlossary(g, 'chemistry', { onSkipped: (d) => (dropped = d) });
+    expect(glossary).toBeNull();
+    expect(dropped).toHaveLength(2);
+  });
+
+  it('does not swallow a throwing onSkipped into a null glossary', () => {
+    // onSkipped is caller-supplied and must not run inside the catch-all that
+    // turns corrupt JSON into null, or the two failures become
+    // indistinguishable.
+    const g = writeGlossary([
+      { english: 'water', icelandic: 'vatn', status: 'approved' },
+      { english: 'ether', icelandic: '', status: 'approved' },
+    ]);
+    expect(() =>
+      loadGlossary(g, 'chemistry', {
+        onSkipped: () => {
+          throw new Error('callback blew up');
+        },
+      })
+    ).toThrow('callback blew up');
+  });
 });
 
 describe('transitive safety: filterGlossaryForText never sees a blank side', () => {
