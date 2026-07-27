@@ -1,18 +1,18 @@
 {
-  "generated": "2026-07-26T09:43:34.426Z",
+  "generated": "2026-07-27T15:39:11.740Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-07-26T09:43:34.426Z",
+      "generated": "2026-07-27T15:39:11.740Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 259,
         "totalChecked": 11,
         "skippedUntranslated": 248,
-        "perfect": 9,
-        "withDiscrepancies": 2,
-        "totalDiscrepancies": 9,
-        "unexplainedDiscrepancies": 9,
+        "perfect": 10,
+        "withDiscrepancies": 1,
+        "totalDiscrepancies": 1,
+        "unexplainedDiscrepancies": 1,
         "deferredLosses": 0,
         "benignArtifacts": 0,
         "green": false
@@ -23,24 +23,8 @@
           "chapter": "ch03",
           "discrepancies": [
             {
-              "tag": "sub",
-              "diff": 3,
-              "status": "unexplained"
-            },
-            {
               "tag": "term",
               "diff": 1,
-              "status": "unexplained"
-            }
-          ]
-        },
-        {
-          "moduleId": "m66375",
-          "chapter": "ch05",
-          "discrepancies": [
-            {
-              "tag": "sup",
-              "diff": 5,
               "status": "unexplained"
             }
           ]
