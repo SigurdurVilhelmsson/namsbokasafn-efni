@@ -29,6 +29,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 LOG_FILE="${PROJECT_ROOT}/pipeline-output/backup.log"
 STATUS_FILE="${PROJECT_ROOT}/pipeline-output/backup-status.json"
+HEARTBEAT_FILE="${PROJECT_ROOT}/pipeline-output/.last-content-backup"
 TIMESTAMP="$(date -u +%Y-%m-%d\ %H:%M)"
 
 # Ensure pipeline-output directory exists
@@ -48,6 +49,21 @@ write_status() {
   "message": "${message}"
 }
 EOF
+}
+
+# Heartbeat: written ONLY on a healthy terminal path — a successful push, or
+# a run that found nothing to commit. A run that failed to stage, commit or
+# push must leave it untouched.
+#
+# Why not just read backup-status.json? That file is written on EVERY
+# outcome, so once the cron stops entirely it keeps reading "success"
+# forever. Inverting the signal makes absence the alarm. `no_changes` counts
+# as healthy on purpose: a quiet weekend is a working cron, and an alarm that
+# cries wolf every weekend is not an alarm.
+#
+# Consumed by GET /api/health — see server/lib/contentBackupHealth.js.
+write_heartbeat() {
+  date -u +%Y-%m-%dT%H:%M:%SZ > "$HEARTBEAT_FILE"
 }
 
 cd "$PROJECT_ROOT"
@@ -107,6 +123,7 @@ fi
 if git diff --cached --quiet; then
   log "No changes to back up"
   write_status "no_changes" "Nothing to commit"
+  write_heartbeat
   exit 0
 fi
 
@@ -127,3 +144,4 @@ fi
 COMMIT_HASH="$(git rev-parse --short HEAD)"
 log "Backup complete: ${COMMIT_HASH} (auto-backup: ${TIMESTAMP})"
 write_status "success" "Pushed ${COMMIT_HASH}"
+write_heartbeat

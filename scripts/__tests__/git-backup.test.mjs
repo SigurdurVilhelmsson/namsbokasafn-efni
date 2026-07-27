@@ -8,6 +8,8 @@ import {
   copyFileSync,
   rmSync,
   existsSync,
+  statSync,
+  utimesSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -49,6 +51,10 @@ function readLog() {
 
 function readStatus() {
   return JSON.parse(readFileSync(path.join(work, 'pipeline-output', 'backup-status.json'), 'utf8'));
+}
+
+function heartbeatPath() {
+  return path.join(work, 'pipeline-output', '.last-content-backup');
 }
 
 // One committed file per pathspec family (matching the production shape) so
@@ -153,5 +159,49 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
     expect(readStatus().status).toBe('error');
     expect(readLog()).toMatch(/ERROR: git add failed for pathspec: /);
     expect(git(['rev-parse', 'HEAD']).trim()).toBe(headBefore);
+  });
+});
+
+describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
+  it('writes the heartbeat after a successful push', () => {
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":3}\n');
+
+    runBackup();
+
+    expect(readStatus().status).toBe('success');
+    expect(existsSync(heartbeatPath())).toBe(true);
+    expect(readFileSync(heartbeatPath(), 'utf8')).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/m);
+  });
+
+  it('writes the heartbeat when there was nothing to commit', () => {
+    // THE FALSE-ALARM GUARD. A quiet weekend is a HEALTHY cron, not a dead
+    // one. If the heartbeat tracked commits rather than healthy runs,
+    // /api/health would declare the content backup broken every time the
+    // editors took two days off — and the alarm would be ignored thereafter.
+    runBackup();
+
+    expect(readStatus().status).toBe('no_changes');
+    expect(existsSync(heartbeatPath())).toBe(true);
+  });
+
+  it('leaves an existing heartbeat UNTOUCHED when the push fails', () => {
+    // Pre-create with an old mtime. Without this the assertion would pass
+    // trivially, because on a failing run the file never existed at all.
+    mkdirSync(path.join(work, 'pipeline-output'), { recursive: true });
+    writeFileSync(heartbeatPath(), '2020-01-01T00:00:00Z\n');
+    const old = new Date('2020-01-01T00:00:00Z');
+    utimesSync(heartbeatPath(), old, old);
+    const beforeMs = statSync(heartbeatPath()).mtimeMs;
+
+    // Unreachable remote: the push fails, and so does the diagnostic fetch,
+    // which also exercises the "counts omitted" fallback.
+    git(['remote', 'set-url', 'origin', path.join(work, 'no-such-remote')]);
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":4}\n');
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(statSync(heartbeatPath()).mtimeMs).toBe(beforeMs);
   });
 });
