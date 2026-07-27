@@ -664,6 +664,24 @@ export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
   return glossary;
 }
 
+/**
+ * The operator-facing glossary line. Extracted from main() so the total-drop
+ * case is testable: a glossary whose every approved term was malformed loads
+ * as null, and without the count this line is identical to the one printed
+ * when there is no glossary file at all — the worst case rendered
+ * indistinguishable from the benign one.
+ *
+ * Surfacing the count at the MT stage is deliberate: the same reasoning as
+ * countInlineMarkers — a data defect must be visible where it happens, not
+ * inferred three stages downstream from bad output.
+ */
+export function glossaryStatusLine(glossary, skippedCount) {
+  const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
+  return glossary
+    ? `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
+    : `Glossary: none available${skipNote} (continuing without)`;
+}
+
 // ─── MT Edit-Lock ───────────────────────────────────────────────────
 
 /**
@@ -1096,21 +1114,7 @@ async function main() {
         skippedCount = dropped.length;
       },
     });
-    // Surfacing the drop count at the MT stage is deliberate: the same
-    // reasoning as countInlineMarkers — a data defect must be visible where
-    // it happens, not inferred three stages downstream from bad output.
-    const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
-    if (glossary) {
-      console.log(
-        `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
-      );
-    } else {
-      // The count belongs here TOO. A glossary whose every approved term was
-      // malformed loads as null, and without the count this line is identical
-      // to the one an operator sees with no glossary file at all — the worst
-      // case rendered indistinguishable from the benign one.
-      console.log(`Glossary: none available${skipNote} (continuing without)`);
-    }
+    console.log(glossaryStatusLine(glossary, skippedCount));
   }
 
   // Discover modules to translate

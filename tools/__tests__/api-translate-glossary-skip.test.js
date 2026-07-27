@@ -14,7 +14,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { loadGlossary, filterGlossaryForText } from '../api-translate.js';
+import { loadGlossary, filterGlossaryForText, glossaryStatusLine } from '../api-translate.js';
 import { formatGlossary } from '../lib/malstadur-api.js';
 
 let dir;
@@ -66,10 +66,11 @@ describe('loadGlossary skip reporting', () => {
     expect(loadGlossary(g, 'chemistry')).toBeNull();
   });
 
-  it('still reports the drops when EVERY approved term was malformed', () => {
-    // The worst case: loadGlossary returns null, so the caller prints "none
-    // available". Without this the operator cannot tell a wholly corrupt
-    // glossary from having no glossary at all.
+  it('PRESERVATION PIN: still reports the drops when EVERY approved term was malformed', () => {
+    // Passes before the fix too — formatGlossary fires onSkipped internally
+    // before loadGlossary reaches its empty-check. It is here so the
+    // restructure that moved the caller's onSkipped outside the try cannot
+    // silently lose the total-drop report while relocating that call site.
     const g = writeGlossary([
       { english: 'water', icelandic: '', status: 'approved' },
       { english: 'ether', icelandic: '   ', status: 'approved' },
@@ -111,5 +112,31 @@ describe('transitive safety: filterGlossaryForText never sees a blank side', () 
     );
     expect(() => filterGlossaryForText(g, 'water is wet')).not.toThrow();
     expect(filterGlossaryForText(g, 'water is wet').terms).toHaveLength(1);
+  });
+});
+
+describe('glossaryStatusLine', () => {
+  it('names the drop count even when the glossary loaded as null (total-drop case)', () => {
+    // The defect this fix exists for: an operator whose entire glossary is
+    // corrupt must not see the same line as one who simply has no glossary.
+    expect(glossaryStatusLine(null, 2)).toBe(
+      'Glossary: none available (2 malformed skipped) (continuing without)'
+    );
+  });
+
+  it('says nothing about drops when there were none', () => {
+    expect(glossaryStatusLine(null, 0)).toBe('Glossary: none available (continuing without)');
+  });
+
+  it('reports count alongside the term total when the glossary loaded', () => {
+    const g = { terms: [{ sourceWord: 'water', targetWord: 'vatn' }], domain: 'chemistry' };
+    expect(glossaryStatusLine(g, 3)).toBe(
+      'Glossary: 1 approved chemistry terms (3 malformed skipped)'
+    );
+  });
+
+  it('omits the note entirely when a loaded glossary dropped nothing', () => {
+    const g = { terms: [{ sourceWord: 'water', targetWord: 'vatn' }], domain: 'chemistry' };
+    expect(glossaryStatusLine(g, 0)).toBe('Glossary: 1 approved chemistry terms');
   });
 });
