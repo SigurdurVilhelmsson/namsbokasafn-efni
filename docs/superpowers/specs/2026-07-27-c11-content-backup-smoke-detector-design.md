@@ -68,33 +68,42 @@ If the fetch itself fails or times out (or `origin/main` does not resolve), the 
 
 **Gates nothing.** Pure diagnosis, in the log and status message.
 
-### 4.2 `write_status` JSON escaping
+### 4.2 `write_status` JSON escaping — considered and rejected
 
-`:44-50` interpolates `$message` into a JSON heredoc unescaped, so a git error containing `"` or `\` emits unparseable JSON. Harmless while nothing read the file; not harmless once §6 reads it. Escape backslash and double-quote and strip newlines before interpolation.
+`:44-50` interpolates `$message` into a JSON heredoc unescaped, so a message containing `"` or `\` would emit unparseable JSON. The original design escaped it. **Dropped during planning**, for two reasons:
+
+1. **No producer path can emit one.** Every `write_status` call site passes a fixed string or a hex commit hash — `Nothing to commit`, `Pushed a1b2c3d`, `git add failed for N pathspec(s)`, and §4.1's numeric ahead/behind. Raw git output never reaches the message. The defect is latent-only and has no reachable trigger, so no end-to-end test can exercise the fix.
+2. **The consumer is the right place, and it is testable.** §6 already tolerates a missing or unparseable status file in its own try/catch, and §9 tests that directly with a deliberately malformed file. That protects the health endpoint regardless of what the producer emits — including from hand-edits and partial writes, which escaping would not catch anyway.
+
+Adding untestable defensive code to satisfy an unreachable case contradicts the project's own lesson that pins must prove behaviour, not presence. Recorded here so it is not re-raised as an oversight.
 
 ### 4.3 Explicitly not done: rebase-before-push in the cron
 
 `merge.ours.driver` is registered by `deploy.sh:63`, **not** by the cron. An unattended `git pull --rebase` on the perpetually-dirty `books/*/translation-errors.json` would therefore convert a *visible* push failure into a *wedged mid-rebase repository* on production. Strictly worse than the status quo. The heartbeat makes the rejection visible; that is the fix.
 
-## 5. Unit 2 — Pure health helper
+## 5. Unit 2 — Two small modules, not one
 
-`server/lib/offboxBackupHealth.js` already contains this exact arithmetic. Rather than a second copy that can drift:
+`server/index.js` calls `app.listen()` at module load (`:384`), so importing it in a unit test starts a real server. That is why the existing `offbox_backup` wiring is untested-by-design — and it is a reason to put as little as possible inside the handler.
 
-- **New** `server/lib/backupHeartbeatHealth.js` exporting `computeBackupHeartbeatHealth({heartbeatMtimeMs, nowMs, staleHours}) → {age_hours, stale}`. Missing heartbeat (`null`) → `{age_hours: null, stale: true}`.
-- `server/lib/offboxBackupHealth.js` keeps its `computeOffboxBackupHealth` export as a thin delegating wrapper, so every existing import is unchanged and `server/__tests__/healthOffboxBackup.test.js` stays green as a behaviour pin on the shared maths.
+So the work splits in two, and the untested-by-design surface shrinks from a whole block to a single call:
+
+- **New** `server/lib/backupHeartbeatHealth.js` — `computeBackupHeartbeatHealth({heartbeatMtimeMs, nowMs, staleHours}) → {age_hours, stale}`. Pure arithmetic; missing heartbeat (`null`) → `{age_hours: null, stale: true}`. `server/lib/offboxBackupHealth.js` already contains this exact maths, so it keeps its `computeOffboxBackupHealth` export as a thin delegating wrapper: every existing import is unchanged and `healthOffboxBackup.test.js` stays green as a behaviour pin on the shared maths.
+- **New** `server/lib/contentBackupHealth.js` — `readContentBackupHealth({projectRoot, nowMs, staleHours}) → {age_hours, stale, last_status, message, ok}`. Owns the two filesystem reads, each in its own try/catch, and calls the pure helper. Fully unit-testable against a temp directory, including the malformed-status-file case that §4.2 relies on.
 
 ## 6. Unit 3 — Wire into `GET /api/health`
 
-In `server/index.js`, alongside the existing `checks.offbox_backup` block (`:293-313`), following its shape:
+In `server/index.js`, alongside the existing `checks.offbox_backup` block (`:293-313`), following its shape — one call, so nothing untestable accumulates in the handler:
 
 ```js
-// illustrative
-const health = computeBackupHeartbeatHealth({ heartbeatMtimeMs, nowMs: Date.now(), staleHours });
-checks.content_backup = { ...health, last_status, ok: !health.stale };
+checks.content_backup = readContentBackupHealth({
+  projectRoot: path.join(__dirname, '..'),
+  nowMs: Date.now(),
+  staleHours: Number(process.env.CONTENT_BACKUP_STALE_HOURS) || 6,
+});
 ```
 
 - `last_status` is the `status` field of `pipeline-output/backup-status.json` (`success` | `no_changes` | `error`), or `null` if that file is missing or unparseable; the file's `message` rides alongside it.
-- Heartbeat path resolved via `__dirname`, never `process.cwd()` (project durable rule — masked prod bugs #210/#213).
+- `projectRoot` derived from `__dirname`, never `process.cwd()` (project durable rule — masked prod bugs #210/#213).
 - Threshold `CONTENT_BACKUP_STALE_HOURS`, **default 6** — the cron is 2-hourly, so this is two missed cycles plus margin.
 - `ok` gates the endpoint's `allOk` exactly as `offbox_backup` does, so a stale content backup flips overall status to `degraded`.
 - `last_status` and `message` are read from `backup-status.json` in **their own try/catch**, best-effort, and **never gate `ok`**.
@@ -135,10 +144,13 @@ Extends the two existing harnesses; no new test infrastructure.
 
 1. **success** → `pipeline-output/.last-content-backup` exists and is fresh.
 2. **`no_changes`** → heartbeat still written. *(The false-alarm guard: a healthy cron with nothing to commit must not read as dead.)*
-3. **push failure** → **pre-create the heartbeat with an old mtime, then assert it is unchanged.** Pre-creating is essential: without it the assertion passes trivially because the file never existed. Also assert the status message carries the ahead/behind counts.
-4. **escaping** → a status message containing `"` produces parseable JSON.
+3. **push failure (unreachable remote)** → **pre-create the heartbeat with an old mtime, then assert it is unchanged.** Pre-creating is essential: without it the assertion passes trivially because the file never existed. Also covers §4.1's fallback — the diagnostic fetch fails too, so the counts are omitted and the exit code stays `1`.
+4. **push failure (non-fast-forward)** → a second clone pushes to the bare origin first, so the status message and log carry `local ahead 1, behind 1`.
+5. **syntax** → `bash -n` on both modified shell scripts, so a quoting mistake in `deploy.sh`'s new health-printing block fails the suite rather than the next deploy.
 
 **`server/__tests__/backupHeartbeatHealth.test.js`** — pure-helper cases for `computeBackupHeartbeatHealth` (missing → `stale: true`, fresh → `stale: false`, older than threshold → `stale: true`), mirroring `healthOffboxBackup.test.js`. That existing test is left untouched and now also pins the delegating wrapper.
+
+**`server/__tests__/contentBackupHealth.test.js`** — `readContentBackupHealth` against a temp directory: no heartbeat → `ok: false`; fresh heartbeat → `ok: true`; old heartbeat → `ok: false`; `last_status`/`message` surfaced from a valid status file; **malformed status file → `last_status: null` and `ok` still driven by the heartbeat, no throw**.
 
 **`tools/__tests__/`** — static pin that `.github/workflows/deploy.yml` contains no `git reset --hard` and does delegate to `scripts/deploy.sh`.
 
