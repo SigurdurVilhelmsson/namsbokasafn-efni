@@ -762,7 +762,7 @@ module.exports = { countApproved, sameTerms, shrinkVerdict, SHRINK_RATIO };
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run server/__tests__/glossaryExportDecision.test.js`
-Expected: PASS, 18 tests.
+Expected: PASS, 17 tests.
 
 - [ ] **Step 5: Commit**
 
