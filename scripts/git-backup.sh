@@ -21,6 +21,8 @@
 #
 # Logs to pipeline-output/backup.log (gitignored).
 # Writes status to pipeline-output/backup-status.json (gitignored).
+# Writes a heartbeat to pipeline-output/.last-content-backup on healthy runs
+# only (gitignored) — read by server/lib/contentBackupHealth.js.
 #
 
 set -euo pipefail

@@ -159,6 +159,7 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
     expect(readStatus().status).toBe('error');
     expect(readLog()).toMatch(/ERROR: git add failed for pathspec: /);
     expect(git(['rev-parse', 'HEAD']).trim()).toBe(headBefore);
+    expect(existsSync(heartbeatPath())).toBe(false);
   });
 });
 
@@ -203,5 +204,36 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     expect(result.status).toBe(1);
     expect(readStatus().status).toBe('error');
     expect(statSync(heartbeatPath()).mtimeMs).toBe(beforeMs);
+  });
+
+  it('does NOT write the heartbeat when the commit itself fails', () => {
+    // A failing pre-commit hook is a deterministic way to make `git commit`
+    // fail *after* staging succeeds — isolates the commit-failure branch
+    // from the add-failure branch above (which never reaches `git commit`
+    // at all).
+    writeFileSync(path.join(work, '.git', 'hooks', 'pre-commit'), '#!/bin/sh\nexit 1\n', {
+      mode: 0o755,
+    });
+    writeFileSync(path.join(work, 'books/prufubok/translation-errors.json'), '["dirty"]\n');
+
+    const headBefore = git(['rev-parse', 'HEAD']).trim();
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(readLog()).toMatch(/ERROR: git commit failed/);
+    expect(git(['rev-parse', 'HEAD']).trim()).toBe(headBefore);
+    expect(existsSync(heartbeatPath())).toBe(false);
+  });
+
+  it('does NOT write the heartbeat when PROJECT_ROOT is not a git repository', () => {
+    rmSync(path.join(work, '.git'), { recursive: true, force: true });
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(readLog()).toMatch(/ERROR: Not a git repository/);
+    expect(existsSync(heartbeatPath())).toBe(false);
   });
 });
