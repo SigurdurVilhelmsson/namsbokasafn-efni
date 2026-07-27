@@ -119,6 +119,19 @@ describe('formatGlossary blank-side guard', () => {
     expect(g.terms).toHaveLength(1);
   });
 
+  it('drops a term whose side is a non-string, rather than coercing it', () => {
+    // String({}) is '[object Object]' and String(['a']) is 'a' — both survive
+    // a trim check and would be sent to Málstaður as plausible-looking words.
+    // Blankness is not the only malformation; wrong type must drop too.
+    const g = formatGlossary([
+      ok('water', 'vatn'),
+      ok('ether', {}),
+      ok('acid', ['syra']),
+      ok(42, 'fjörutíu og tveir'),
+    ]);
+    expect(g.terms).toEqual([{ sourceWord: 'water', targetWord: 'vatn' }]);
+  });
+
   it('trims surviving entries on both sides', () => {
     const g = formatGlossary([ok('  water  ', '  vatn  ')]);
     expect(g.terms).toEqual([{ sourceWord: 'water', targetWord: 'vatn' }]);
@@ -198,12 +211,18 @@ Replace `tools/lib/malstadur-api.js:168-192` (the `// ─── Glossary Helpers
 /**
  * Convert project glossary terms to API glossary format.
  *
- * Entries with a blank side — empty, whitespace-only, or null/undefined on
- * either `english` or `icelandic` — are DROPPED rather than sent. Málstaður
- * rejects a glossary containing a blank word with a 400 that fails the WHOLE
- * request, so one malformed row would kill an entire paid translation chunk.
- * Dropping costs one term of MT priming; sending costs the batch. The count
- * is surfaced by `options.onSkipped` so the loss is visible, not silent.
+ * Malformed entries are DROPPED rather than sent: a blank side (empty or
+ * whitespace-only) or a non-string side on either `english` or `icelandic`.
+ * Málstaður rejects a glossary containing a blank word with a 400 that fails
+ * the WHOLE request, so one malformed row would kill an entire paid
+ * translation chunk. Dropping costs one term of MT priming; sending costs the
+ * batch. The count is surfaced by `options.onSkipped` so the loss is visible,
+ * not silent.
+ *
+ * The type check is not pedantry: `String({})` is '[object Object]' and
+ * `String(['a'])` is 'a', so a coercing guard would pass wrong-typed values
+ * through as plausible-looking words. This is a boundary function taking
+ * arbitrary arrays from two producers plus an audit harness.
  *
  * ⚠️ The returned object IS the outbound request body — filterGlossaryForText
  * spreads it and this module assigns it to `body.glossaries`. Do NOT add keys
@@ -225,8 +244,8 @@ function formatGlossary(terms, { domain = 'chemistry', approvedOnly = true, onSk
   const usable = [];
   const skipped = [];
   for (const t of filtered) {
-    const sourceWord = String(t.english ?? '').trim();
-    const targetWord = String(t.icelandic ?? '').trim();
+    const sourceWord = typeof t.english === 'string' ? t.english.trim() : '';
+    const targetWord = typeof t.icelandic === 'string' ? t.icelandic.trim() : '';
     if (!sourceWord || !targetWord) {
       skipped.push(t);
       continue;
@@ -857,6 +876,28 @@ describe('runGlossaryExport — writing', () => {
     expect(run({ exportFn: () => payload(approved(5)) })).toBe(0);
     expect(readExport('prufubok').terms).toHaveLength(5);
   });
+
+  it('ROUND TRIP: a second identical run writes nothing and leaves the bytes alone', () => {
+    // The synthetic write-if-changed test compares two in-memory payloads.
+    // This exercises the real path — write, JSON.parse back off disk, compare
+    // — because that is the run that must produce no commit. If the round
+    // trip perturbs key order or number formatting, the file is dirty every
+    // 2h and nobody finds out until prod has thousands of empty commits.
+    seedBook('prufubok');
+    const exportFn = () => payload(approved(5));
+    expect(run({ exportFn })).toBe(0);
+    const afterFirst = readFileSync(
+      path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json'),
+      'utf8'
+    );
+
+    expect(run({ exportFn })).toBe(0);
+    const afterSecond = readFileSync(
+      path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json'),
+      'utf8'
+    );
+    expect(afterSecond).toBe(afterFirst);
+  });
 });
 
 describe('runGlossaryExport — shrink guard', () => {
@@ -963,6 +1004,28 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
       },
     });
     expect(seen).toEqual(['bok-a']);
+  });
+
+  it('--book on a slug with no glossary directory fails instead of creating one', () => {
+    // The write path mkdirSync's recursively, so without this check a typo'd
+    // slug would CREATE books/<typo>/glossary/ and write an empty export
+    // there — and the shrink guard could not stop it, because a brand new
+    // path has no baseline to compare against. This is the same dev-box
+    // foot-gun the shrink guard exists to prevent, arriving through the one
+    // door the guard does not cover.
+    mkdirSync(path.join(root, 'books'), { recursive: true });
+    let called = false;
+    const code = run({
+      book: 'innslattarvilla',
+      exportFn: () => {
+        called = true;
+        return payload(approved(5));
+      },
+    });
+    expect(code).toBe(1);
+    expect(called).toBe(false);
+    expect(existsSync(path.join(root, 'books', 'innslattarvilla'))).toBe(false);
+    expect(heartbeatExists()).toBe(false);
   });
 });
 
@@ -1085,11 +1148,21 @@ function runGlossaryExport({
   log = console.log,
   logError = console.error,
 } = {}) {
-  // Only export books that already have a glossary directory (i.e. registered,
-  // glossary-bearing books) unless a specific book is named.
-  const books = book
-    ? [book]
-    : listBooks(booksDir).filter((b) => fs.existsSync(path.join(booksDir, b, 'glossary')));
+  // Only export books that already have a glossary directory — i.e. registered,
+  // glossary-bearing books.
+  //
+  // The named-book path is filtered TOO, not exempted: the write path below
+  // mkdirSync's recursively, so a typo'd slug would otherwise CREATE
+  // books/<typo>/glossary/ and write an empty export into it, with the shrink
+  // guard powerless because a brand new path has no baseline to compare
+  // against.
+  const hasGlossaryDir = (b) => fs.existsSync(path.join(booksDir, b, 'glossary'));
+  const books = book ? [book].filter(hasGlossaryDir) : listBooks(booksDir).filter(hasGlossaryDir);
+
+  if (book && books.length === 0) {
+    logError(`${book}: no glossary directory at ${path.join(booksDir, book, 'glossary')} — refusing`);
+    return 1;
+  }
 
   if (books.length === 0) {
     // Not vacuously healthy: an empty set means book discovery is broken.
@@ -1581,6 +1654,8 @@ Expected: PASS — all pre-existing tests plus the 3 new ones.
 
 - [ ] **Step 5: Mutation-check the containment**
 
+> 🔴 **THIS EDIT IS TEMPORARY AND MUST BE REVERTED IN THIS SAME STEP.** You are deliberately breaking the script to prove the test detects it. Do not commit the mutated file; do not move on until you have reverted it and re-run the suite green. If anything interrupts you mid-step, `git checkout -- scripts/git-backup.sh` and start the step over.
+
 The containment test must fail if the containment is removed. Temporarily change the guarded call in `scripts/git-backup.sh` to a bare invocation:
 
 ```bash
@@ -1758,9 +1833,11 @@ Run: `npm test` from the repo root. Expected: green, with ~60 tests added across
 
 - [ ] **Run the CI-equivalent checks**
 
-Run: `npm run lint && npm run format:check && npm run docs:check && npm run validate`
+Run: `npm run lint && npm run format:check && npm run docs:check`
 
 Expected: all green. Note `npm run lint` ≠ the Lint job (CI also runs `format:check`) and `npm test` ≠ the Tests job (CI also runs Playwright E2E) — verify against the workflow files before claiming the branch is green.
+
+(`npm run validate` is deliberately **not** listed: it validates chapter status files, and nothing in this branch touches `books/*/chapters/`. The check that matters here is the next one.)
 
 - [ ] **Confirm no book content was modified**
 
