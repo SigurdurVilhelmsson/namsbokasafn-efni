@@ -395,6 +395,21 @@ describe('non-sequential stages (tmCreated)', () => {
     ).toThrow(/linguisticReview must be complete first/);
   });
 
+  it('revert skips the non-sequential stage and undoes the real last step', () => {
+    // Otherwise revert is no longer the inverse of advance: `/advance` can
+    // never set a non-sequential stage (currentStage skips it), so a revert
+    // that lands on one both wastes the revert and is unrestorable.
+    // Legacy data makes this reachable — efnafraedi-2e ch03/ch04 carry
+    // `tmCreated: complete` from the Matecat era.
+    completeThroughReview();
+    service.transitionStage('efnafraedi-2e', 1, 'tmCreated', 'complete', 'user1', 'legacy');
+
+    const result = service.revertStage('efnafraedi-2e', 1, 'admin', 'undo the last step');
+
+    expect(result.revertedStage).toBe('linguisticReview');
+    expect(service.getChapterStage('efnafraedi-2e', 1).stages.tmCreated).toBe('complete');
+  });
+
   it('the real chain still gates: injection names linguisticReview, not tmCreated', () => {
     service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
     service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');

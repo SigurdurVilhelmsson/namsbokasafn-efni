@@ -48,6 +48,33 @@ const PIPELINE_STAGE_NAMES = PIPELINE_STAGES.map((s) => s.name);
 /** Stages with simple (one-to-one) directory sync. */
 const SIMPLE_STAGES = PIPELINE_STAGES.filter((s) => s.syncType === 'simple').map((s) => s.name);
 
+/**
+ * Stages that are REPORTED but do not participate in SEQUENCING (C10-R2).
+ *
+ * `tmCreated` is a side deliverable, not a gate: `tools/cnxml-inject.js` never
+ * reads `tm/`, so TM generation is not causally a prerequisite for injection.
+ * Nothing advances it either — the producer (`tmService` → `generate-tm.js
+ * --book <book>`) is book-level, debounced and fire-and-forget, so there is no
+ * per-chapter completion event, and a missing licence row makes the regen
+ * silently warn-only stale (I21-R2).
+ *
+ * There are TWO independent status read models — the DB one
+ * (`services/pipelineStatusService.js`) and the status.json one
+ * (`routes/status.js` `formatChapterStatus`/`getNextActions`) — and BOTH must
+ * skip these stages or they contradict each other: one would report a chapter
+ * fully published while the other still proposed "create the TM" as its next
+ * step, with progress permanently capped below 100%.
+ *
+ * These stages stay in PIPELINE_STAGES / STAGE_ORDER / the schema / status.json
+ * and remain explicitly settable. Only sequencing skips them.
+ */
+const NON_SEQUENTIAL_STAGES = ['tmCreated'];
+
+/** Stage names that DO form the sequential chain, in pipeline order. */
+const SEQUENTIAL_STAGE_NAMES = PIPELINE_STAGE_NAMES.filter(
+  (s) => !NON_SEQUENTIAL_STAGES.includes(s)
+);
+
 // ─── Tracks ──────────────────────────────────────────────────────────
 
 /** Valid translation tracks for inject/render pipeline. */
@@ -102,6 +129,8 @@ module.exports = {
   PIPELINE_STAGES,
   PIPELINE_STAGE_NAMES,
   SIMPLE_STAGES,
+  NON_SEQUENTIAL_STAGES,
+  SEQUENTIAL_STAGE_NAMES,
 
   // Tracks
   VALID_TRACKS,

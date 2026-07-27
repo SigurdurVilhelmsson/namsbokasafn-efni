@@ -68,7 +68,7 @@
         },
         "tmCreated": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Step 4: TM (TMX) generated in-house by tools/generate-tm.js. Reported, not sequenced — nothing gates on it (see NON_SEQUENTIAL_STAGES in server/services/pipelineStatusService.js)"
+          "description": "Step 4: TM (TMX) generated in-house by tools/generate-tm.js. Reported, not sequenced — nothing gates on it and nothing auto-advances it (see NON_SEQUENTIAL_STAGES in server/constants.js)"
         },
         "injection": {
           "$ref": "#/$defs/stageStatus",

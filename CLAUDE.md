@@ -319,7 +319,7 @@ npm run validate
 - `mtReady` - Step 1b: Segments protected for MT
 - `mtOutput` - Step 2: MT output received
 - `linguisticReview` - Step 3: Faithful translation reviewed
-- `tmCreated` - Step 4: TM (TMX) generated in-house by `generate-tm.js`. **Reported, not sequenced** — nothing gates on it and nothing auto-advances it (`tools/cnxml-inject.js` never reads `tm/`, and the producer is book-level + fire-and-forget). It is listed in `NON_SEQUENTIAL_STAGES` (`server/services/pipelineStatusService.js`); leaving it in the prerequisite chain silently blocked every DB-side advance past `linguisticReview`.
+- `tmCreated` - Step 4: TM (TMX) generated in-house by `generate-tm.js`. **Reported, not sequenced** — nothing gates on it and nothing auto-advances it (`tools/cnxml-inject.js` never reads `tm/`, and the producer is book-level + fire-and-forget). It is listed in `NON_SEQUENTIAL_STAGES` (`server/constants.js`), which **both** status read models consume — the DB one (`pipelineStatusService`) and the status.json one (`routes/status.js`). ⚠️ **There are two read models; a change to stage sequencing must land in both, or they silently disagree.** Leaving `tmCreated` in the prerequisite chain silently blocked every DB-side advance past `linguisticReview`.
 - `injection` - Step 5a: Translated CNXML produced
 - `rendering` - Step 5b: HTML produced
 - `publication` - Step 5c: Published to web

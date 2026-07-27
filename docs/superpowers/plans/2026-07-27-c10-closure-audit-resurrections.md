@@ -4,6 +4,12 @@
 **Evidence (frozen, do not edit):** `docs/audit/2026-07-26-closure-audit{,-evidence}.md`.
 **Branch:** `fix/c10-closure-audit-resurrections` · **Baseline:** `main a35a21a6`.
 
+> **🧊 DESIGN RECORD — frozen at authoring (2026-07-27), against `main a35a21a6`.** Every `file:line`
+> below is point-in-time evidence for a decision, not a live pointer; the branch itself shifted many
+> of them. **Live status for R1/R2/R4 lives in the register's §C10, not here** — and where this
+> document and the register disagree, the register wins. One row is struck through: the adversarial
+> review falsified it, and it is kept visible rather than quietly corrected.
+
 **Scope:** R1 (P1), R2 (P1), R4 (P2). Explicitly **out**: R3 (withdrawn false positive — do not
 implement), R5–R7 (homed in item 23), R8 (homed in A4 PR-1 carve-out (a)).
 
@@ -52,7 +58,7 @@ Deliberately unchanged (enumerated so the next reader need not re-audit):
 | Reader | Why unchanged |
 |---|---|
 | `pipelineStatusService.js:100-101` (`stages` object) | `stages.tmCreated` must stay in the API response. |
-| `:249-251` (`revertStage` reverse scan) | Explicit `tmCreated` transitions still work; a never-complete stage is simply never the revert target. |
+| ~~`:249-251` (`revertStage` reverse scan)~~ | **⚠️ This row was WRONG and the adversarial review caught it.** The premise "a never-complete stage is simply never the revert target" is falsified by real data: `books/efnafraedi-2e/chapters/ch03/status.json` and `ch04` carry a Matecat-era `tmCreated: {complete: true}`, and the branch's own test proves the stage is still completable. Leaving the scan alone made revert stop being the inverse of advance — `/advance` can never name a non-sequential stage, so a revert that landed on one was **unrestorable through the API**. `revertStage` now scans `SEQUENTIAL_STAGES`. |
 | `:391` (`syncStatusJsonCache`) | Keeps writing `tmCreated` into `status.json`; schema stays satisfied. |
 | `ALL_STAGES` / `transitionStage:137` validation | `'tmCreated'` remains a **valid** stage — callers that set it explicitly keep working. |
 | `constants.js:34-42` `PIPELINE_STAGES` | A different (filesystem-scan) read model. Out of scope. |

@@ -447,7 +447,46 @@ describe('apply transaction: DB work precedes the file write (C10-R1)', () => {
     );
   });
 
-  it('the retry after a failed apply converges: the same edits publish on the next run', () => {
+  it('pins the invariant directly: at the moment of the write, ALL DB work is already done', () => {
+    // The throw-based tests above only prove the LAST DB statement precedes the
+    // write. This observes the DB from inside the write itself, so re-appending
+    // ANY DB work below the write (the item-20b-shaped regression) goes red.
+    vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
+    saveAndApprove('m00001:para:fs-id001', 'Nýrri yfirferð.'); // a loser to supersede
+    accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+
+    const realSave = segmentParser.saveModuleSegments;
+    let atWriteTime = null;
+    vi.spyOn(segmentParser, 'saveModuleSegments').mockImplementation((...args) => {
+      atWriteTime = {
+        applied: db
+          .prepare(`SELECT COUNT(*) AS n FROM segment_edits WHERE applied_at IS NOT NULL`)
+          .get().n,
+        superseded: db
+          .prepare(`SELECT COUNT(*) AS n FROM segment_edits WHERE status = 'superseded'`)
+          .get().n,
+        acceptancesStamped: db
+          .prepare(`SELECT COUNT(*) AS n FROM segment_acceptances WHERE applied_at IS NOT NULL`)
+          .get().n,
+        versions: db.prepare(`SELECT COUNT(*) AS n FROM content_versions`).get().n,
+      };
+      return realSave(...args);
+    });
+
+    service.applyApprovedEdits(BOOK, 1, MODULE);
+
+    expect(atWriteTime).not.toBeNull();
+    expect(atWriteTime.applied).toBeGreaterThan(0); // step 5 ran before the write
+    expect(atWriteTime.superseded).toBeGreaterThan(0); // step 5 ran before the write
+    expect(atWriteTime.acceptancesStamped).toBeGreaterThan(0); // step 6 ran before the write
+    expect(atWriteTime.versions).toBeGreaterThan(0); // step 4b ran before the write
+  });
+
+  // NON-REGRESSION pin, not a defect pin: this passes against the pre-fix code
+  // too, and that is the point. The self-healing retry is the reason no
+  // file-side unwind was added, so it must be proven still intact.
+  it('[non-regression] the retry after a failed apply converges: the same edits publish next run', () => {
     vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
     saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
 

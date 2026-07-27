@@ -27,7 +27,7 @@ const STAGE_ORDER = [
   'publication',
 ];
 
-const { PUBLICATION_TRACKS } = require('../constants');
+const { PUBLICATION_TRACKS, NON_SEQUENTIAL_STAGES } = require('../constants');
 
 const VALID_STATUSES = ['not_started', 'in_progress', 'complete'];
 
@@ -40,24 +40,16 @@ const ALL_STAGES = [
 const BASE_STAGES = STAGE_ORDER.filter((s) => s !== 'publication');
 
 // Stages that are reported but do NOT participate in sequencing (C10-R2).
-//
-// `tmCreated` is a side deliverable, not a gate: `tools/cnxml-inject.js` never
-// reads `tm/`, so TM generation is not causally a prerequisite for injection.
-// Nothing advances the stage either — the TM producer (`tmService` →
-// `generate-tm.js --book <book>`) is book-level, debounced and fire-and-forget,
-// so there is no per-chapter completion event to hang an advance on, and a
-// missing licence row makes the regen silently warn-only stale (I21-R2).
-// Leaving it in the prerequisite chain made EVERY `advanceChapterStatus(…,
-// 'injection')` throw — swallowed at pipelineService.js:744-746 — so DB-side
-// chapter status silently never advanced past linguisticReview.
-//
-// It stays in STAGE_ORDER / ALL_STAGES / BASE_STAGES / the `stages` response /
-// status.json / the JSON schema: it remains a real, reportable, explicitly
-// settable stage. Only sequencing skips it.
-const NON_SEQUENTIAL_STAGES = new Set(['tmCreated']);
+// Defined once in ../constants — the status.json read model in routes/status.js
+// consumes the same list, so the two read models cannot disagree.
+// Leaving `tmCreated` in the prerequisite chain made EVERY
+// `advanceChapterStatus(…, 'injection')` throw — swallowed at
+// pipelineService.js:744-746 — so DB-side chapter status silently never
+// advanced past linguisticReview.
+const NON_SEQUENTIAL = new Set(NON_SEQUENTIAL_STAGES);
 
 // Stages that DO form the sequential chain, in order.
-const SEQUENTIAL_STAGES = BASE_STAGES.filter((s) => !NON_SEQUENTIAL_STAGES.has(s));
+const SEQUENTIAL_STAGES = BASE_STAGES.filter((s) => !NON_SEQUENTIAL.has(s));
 
 // --- DB connection ---
 
@@ -184,7 +176,7 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
           // gates (C10-R2). Note this also governs completing a non-sequential
           // stage itself: `tmCreated` still requires `linguisticReview`.
           let priorIdx = BASE_STAGES.indexOf(stage) - 1;
-          while (priorIdx >= 0 && NON_SEQUENTIAL_STAGES.has(BASE_STAGES[priorIdx])) {
+          while (priorIdx >= 0 && NON_SEQUENTIAL.has(BASE_STAGES[priorIdx])) {
             priorIdx--;
           }
           if (priorIdx >= 0) {
@@ -272,11 +264,17 @@ function revertStage(bookSlug, chapterNum, user, note) {
         }
       }
 
-      // If no publication sub-track found, check base stages in reverse
+      // If no publication sub-track found, check SEQUENTIAL stages in reverse.
+      // Non-sequential stages are skipped so revert stays the inverse of
+      // advance: `/advance` transitions whatever `currentStage` reports, which
+      // never names a non-sequential stage, so a revert landing on one would
+      // both waste the revert and be unrestorable through the API. Reachable
+      // with legacy data — efnafraedi-2e ch03/ch04 carry a Matecat-era
+      // `tmCreated: complete`.
       if (!latestStage) {
-        for (let i = BASE_STAGES.length - 1; i >= 0; i--) {
-          if (completedStages.includes(BASE_STAGES[i])) {
-            latestStage = BASE_STAGES[i];
+        for (let i = SEQUENTIAL_STAGES.length - 1; i >= 0; i--) {
+          if (completedStages.includes(SEQUENTIAL_STAGES[i])) {
+            latestStage = SEQUENTIAL_STAGES[i];
             break;
           }
         }
