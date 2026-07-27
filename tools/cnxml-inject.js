@@ -3589,10 +3589,12 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       const paraText = child.segmentId ? getSeg(child.segmentId) : '';
       // When the para holds nothing but figures — all 71 corpus occurrences —
       // the WHOLE segment is figure-derived, so inject nothing. The predicate
-      // reads the read-only 01-source DOM rather than comparing the leftover
-      // text against the caption segment: those are two independently editable
-      // translations, so an equality check would silently stop matching the
-      // first time an editor revises one of them.
+      // inspects `paraEl`, i.e. the DOM parsed from `originalCnxml`, which this
+      // tool loads from the READ-ONLY books/<book>/01-source/ copy (see the
+      // originalPath join in main()). It deliberately does NOT compare the
+      // leftover text against the caption segment: those are two independently
+      // editable translations, so an equality check would silently stop matching
+      // the first time an editor revises either one.
       const injectText = paraContainsOnlyFigures(paraEl)
         ? ''
         : paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
