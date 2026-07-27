@@ -269,7 +269,7 @@ function formatGlossary(terms, { domain = 'chemistry', approvedOnly = true, onSk
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run tools/__tests__/malstadur-glossary-guard.test.js`
-Expected: PASS, 14 tests.
+Expected: PASS, 15 tests.
 
 - [ ] **Step 5: Run the full suite and lint**
 
