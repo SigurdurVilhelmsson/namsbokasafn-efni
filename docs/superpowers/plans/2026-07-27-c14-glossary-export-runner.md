@@ -1292,7 +1292,7 @@ module.exports = { listBooks, runGlossaryExport };
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run server/__tests__/glossaryExportRun.test.js`
-Expected: PASS, 17 tests.
+Expected: PASS, 19 tests.
 
 - [ ] **Step 5: Verify the CLI still works and is non-destructive**
 
