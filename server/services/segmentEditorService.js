@@ -1024,37 +1024,30 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       log.error({ err: snapErr }, 'Content snapshot failed (non-fatal, continuing apply)');
     }
 
-    // 5. Write to 03-faithful-translation/
-    const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
+    // ---- ORDERING INVARIANT (C10-R1) -----------------------------------
+    // Every DATABASE mutation runs BEFORE the file write, so the file write is
+    // the LAST mutation in this transaction. The write is irreversible (atomic
+    // temp-file + rename) and SQLite cannot roll it back; there is deliberately
+    // no file-side unwind, because the apply path is self-healing — `applied_at`
+    // is the retry gate (step 4's `overlay` test), so a rollback leaves winners
+    // unapplied and the next apply re-writes byte-identical content. Ordering
+    // is what keeps the file and the DB from diverging: in particular the
+    // step-4b `content_versions` snapshot now commits or rolls back TOGETHER
+    // with the file's advance, instead of the pre-apply content vanishing from
+    // "Saga útgáfa" while the file had already moved on.
+    //
+    // Do NOT append DB work below the write (step 7) — that is exactly how the
+    // window was widened before (item 20b appended the acceptance lifecycle
+    // there). Anything new belongs above it.
+    // ---------------------------------------------------------------------
 
-    // 5b. Verify the file was actually written
-    if (!fs.existsSync(savedPath)) {
-      throw new Error(`Failed to write faithful file: ${savedPath}`);
-    }
-    const written = fs.readFileSync(savedPath, 'utf-8');
-    if (written.length === 0) {
-      throw new Error(`Faithful file written but empty: ${savedPath}`);
-    }
-    // Verify at least one NEWLY-APPLIED edit's content appears in the file.
-    // Sample only from newly-applied winners — an apply that overlays nothing
-    // (every winner already applied; the run just rewrote identical baseline
-    // content, or the file was restored out-of-band) has no content to look
-    // for, so skip the check rather than false-warn on a restored segment.
-    const sampleEdit = Object.values(approvedLookup).find((e) => e.applied_at === null);
-    const sampleText = sampleEdit?.edited_content || '';
-    if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
-      log.warn(
-        { segmentId: sampleEdit.segment_id },
-        'Sample edit content not found in faithful file — segment ID format may not match'
-      );
-    }
-
-    // 6. Mark winning edits as applied; mark losing approved edits as superseded.
+    // 5. Mark winning edits as applied; mark losing approved edits as superseded.
     // Only stamp winners not already applied — appliedCount reports what THIS
-    // apply newly published.
-    const winnerIds = Object.values(approvedLookup)
-      .filter((e) => e.applied_at === null)
-      .map((e) => e.id);
+    // apply newly published. `newlyApplied` is captured once, off the in-memory
+    // rows read in step 1, and reused by the post-write sample check below so
+    // that check cannot be perturbed by the UPDATEs running first.
+    const newlyApplied = Object.values(approvedLookup).filter((e) => e.applied_at === null);
+    const winnerIds = newlyApplied.map((e) => e.id);
     const appliedCount = winnerIds.length;
     const markApplied = conn.prepare(
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
@@ -1070,12 +1063,45 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       markSuperseded.run(id);
     }
 
-    // 7. Acceptance lifecycle (item 20b, spec §7): lapse attestations whose
-    // bytes this apply just changed, then stamp the surviving active ones as
-    // published. Same connection, same transaction — atomic with the file
-    // bookkeeping. `segments` is the exact array written to disk in step 5.
+    // 6. Acceptance lifecycle (item 20b, spec §7): lapse attestations whose
+    // bytes this apply is about to change, then stamp the surviving active ones
+    // as published. Same connection, same transaction — atomic with the file
+    // bookkeeping. Both are DB-only (`lapseDrifted` compares against the
+    // in-memory `segments` array, never re-reading disk), which is what makes
+    // running them before the write behaviour-preserving. `segments` is the
+    // exact array written to disk in step 7.
     const lapsedAcceptances = acceptanceService.lapseDrifted(book, moduleId, segments, conn);
     const acceptedCount = acceptanceService.stampApplied(book, moduleId, conn);
+
+    // 7. Write to 03-faithful-translation/ — the LAST mutation before COMMIT.
+    const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
+
+    // 7b. Verify the file was actually written. These are the only statements
+    // after the write, and they throw ONLY when the write itself failed — that
+    // is the invariant step 5/6 exist above the write to preserve.
+    if (!fs.existsSync(savedPath)) {
+      throw new Error(`Failed to write faithful file: ${savedPath}`);
+    }
+    const written = fs.readFileSync(savedPath, 'utf-8');
+    if (written.length === 0) {
+      // The one branch where the file DID change and the DB still rolls back to
+      // "nothing applied". Benign and convergent: the next apply rewrites the
+      // same content, and the prior content is in the timestamped `.bak`.
+      throw new Error(`Faithful file written but empty: ${savedPath}`);
+    }
+    // Verify at least one NEWLY-APPLIED edit's content appears in the file.
+    // Sample only from newly-applied winners — an apply that overlays nothing
+    // (every winner already applied; the run just rewrote identical baseline
+    // content, or the file was restored out-of-band) has no content to look
+    // for, so skip the check rather than false-warn on a restored segment.
+    const sampleEdit = newlyApplied[0];
+    const sampleText = sampleEdit?.edited_content || '';
+    if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
+      log.warn(
+        { segmentId: sampleEdit.segment_id },
+        'Sample edit content not found in faithful file — segment ID format may not match'
+      );
+    }
 
     return {
       appliedCount,
@@ -1323,6 +1349,18 @@ function getDiscussEdits(limit = 10) {
 }
 
 /**
+ * Count edits marked for discussion. A separate function on purpose: the
+ * dashboard's "til umræðu" stat used to be `getDiscussEdits(10).length`, which
+ * silently saturated at the page size (C10-R4). A count is not a page.
+ *
+ * @returns {number}
+ */
+function countDiscussEdits() {
+  const conn = getDb();
+  return conn.prepare(`SELECT COUNT(*) AS n FROM segment_edits WHERE status = 'discuss'`).get().n;
+}
+
+/**
  * Get per-module edit aggregation for a specific book, grouped by chapter.
  * Single DB query returns edit counts for every module that has any edits.
  *
@@ -1533,6 +1571,7 @@ module.exports = {
   getModuleStats,
   getGlobalEditStats,
   getDiscussEdits,
+  countDiscussEdits,
   // Review queue
   getReviewQueue,
   // Per-book aggregation

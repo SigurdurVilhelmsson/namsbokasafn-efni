@@ -388,3 +388,83 @@ describe('metrics redefinition: reviewed = approved ∪ accepted (spec §8)', ()
     expect(progress.summary.modulesComplete).toBe(0);
   });
 });
+
+// --- C10-R1: the file write is the LAST mutation in the apply transaction ---
+//
+// `applyTransaction` performs an irreversible file write inside a DB
+// transaction that can still roll back, and there is no file-side unwind. The
+// fix is ordering, not compensation: every DB mutation runs BEFORE the write,
+// so a throw in that work rolls back with the file still untouched. The
+// sharpest form of the old divergence was the step-4b `content_versions`
+// snapshot rolling back AFTER the file advanced — the pre-apply content then
+// never entered version history and was invisible to "Saga útgáfa".
+//
+// `acceptanceService.stampApplied` is the last DB mutation in the transaction
+// and is called via property lookup, so spying on it gives a deterministic
+// post-DB-work / pre-commit failure without touching production code.
+describe('apply transaction: DB work precedes the file write (C10-R1)', () => {
+  it('a throw in the post-DB work leaves the faithful file unwritten and version history clean', () => {
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
+    const faithfulPath = segmentParser.getModulePaths(BOOK, 1, MODULE).faithful;
+    expect(existsSync(faithfulPath)).toBe(false);
+
+    vi.spyOn(acceptance, 'stampApplied').mockImplementation(() => {
+      throw new Error('boom: post-write DB failure');
+    });
+
+    expect(() => service.applyApprovedEdits(BOOK, 1, MODULE)).toThrow(/boom/);
+
+    // File must not have advanced — no file/DB divergence.
+    expect(existsSync(faithfulPath)).toBe(false);
+    // DB rolled back: nothing applied, no orphan version rows.
+    expect(db.prepare(`SELECT COUNT(*) AS n FROM content_versions`).get().n).toBe(0);
+    expect(
+      db.prepare(`SELECT COUNT(*) AS n FROM segment_edits WHERE applied_at IS NOT NULL`).get().n
+    ).toBe(0);
+  });
+
+  it('a throw on a RE-apply leaves the previously published file byte-identical', () => {
+    vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+    saveAndApprove('m00001:para:fs-id001', 'Fyrsta yfirferð.');
+    const first = service.applyApprovedEdits(BOOK, 1, MODULE);
+    const publishedBytes = readFileSync(first.savedPath, 'utf-8');
+    const versionsAfterFirst = db.prepare(`SELECT COUNT(*) AS n FROM content_versions`).get().n;
+
+    // A second round of review, then a failure in the post-DB work.
+    saveAndApprove('m00001:para:fs-id002', 'Önnur yfirferð.');
+    vi.spyOn(acceptance, 'stampApplied').mockImplementation(() => {
+      throw new Error('boom: post-write DB failure');
+    });
+
+    expect(() => service.applyApprovedEdits(BOOK, 1, MODULE)).toThrow(/boom/);
+
+    // The published file is exactly what it was — the reader-visible artifact
+    // never advances without the DB advancing with it.
+    expect(readFileSync(first.savedPath, 'utf-8')).toBe(publishedBytes);
+    // And no pre-apply snapshot was stranded/lost: version history is unchanged.
+    expect(db.prepare(`SELECT COUNT(*) AS n FROM content_versions`).get().n).toBe(
+      versionsAfterFirst
+    );
+  });
+
+  it('the retry after a failed apply converges: the same edits publish on the next run', () => {
+    vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
+
+    const stampSpy = vi.spyOn(acceptance, 'stampApplied').mockImplementation(() => {
+      throw new Error('boom: post-write DB failure');
+    });
+    expect(() => service.applyApprovedEdits(BOOK, 1, MODULE)).toThrow(/boom/);
+
+    stampSpy.mockRestore();
+    const result = service.applyApprovedEdits(BOOK, 1, MODULE);
+
+    expect(result.appliedCount).toBe(1);
+    const segs = segmentParser.parseSegments(readFileSync(result.savedPath, 'utf-8'));
+    expect(segs.find((s) => s.segmentId === 'm00001:para:fs-id001').content).toBe(
+      'Yfirfarin efnisgrein.'
+    );
+    // The pre-apply baseline DID reach version history on the successful run.
+    expect(db.prepare(`SELECT COUNT(*) AS n FROM content_versions`).get().n).toBeGreaterThan(0);
+  });
+});

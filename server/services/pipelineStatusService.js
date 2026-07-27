@@ -39,6 +39,26 @@ const ALL_STAGES = [
 // Base stages (without 'publication')
 const BASE_STAGES = STAGE_ORDER.filter((s) => s !== 'publication');
 
+// Stages that are reported but do NOT participate in sequencing (C10-R2).
+//
+// `tmCreated` is a side deliverable, not a gate: `tools/cnxml-inject.js` never
+// reads `tm/`, so TM generation is not causally a prerequisite for injection.
+// Nothing advances the stage either — the TM producer (`tmService` →
+// `generate-tm.js --book <book>`) is book-level, debounced and fire-and-forget,
+// so there is no per-chapter completion event to hang an advance on, and a
+// missing licence row makes the regen silently warn-only stale (I21-R2).
+// Leaving it in the prerequisite chain made EVERY `advanceChapterStatus(…,
+// 'injection')` throw — swallowed at pipelineService.js:744-746 — so DB-side
+// chapter status silently never advanced past linguisticReview.
+//
+// It stays in STAGE_ORDER / ALL_STAGES / BASE_STAGES / the `stages` response /
+// status.json / the JSON schema: it remains a real, reportable, explicitly
+// settable stage. Only sequencing skips it.
+const NON_SEQUENTIAL_STAGES = new Set(['tmCreated']);
+
+// Stages that DO form the sequential chain, in order.
+const SEQUENTIAL_STAGES = BASE_STAGES.filter((s) => !NON_SEQUENTIAL_STAGES.has(s));
+
 // --- DB connection ---
 
 let _testDb = null;
@@ -107,9 +127,11 @@ function getChapterStage(bookSlug, chapterNum) {
       publication[track] = statusMap[`publication.${track}`] || 'not_started';
     }
 
-    // currentStage: first non-complete base stage, or 'publication' if all complete
+    // currentStage: first non-complete SEQUENTIAL stage, or 'publication' if all
+    // complete. Non-sequential stages are skipped — `tmCreated` is never
+    // advanced, so including it would pin currentStage there forever (C10-R2).
     let currentStage = 'publication';
-    for (const stage of BASE_STAGES) {
+    for (const stage of SEQUENTIAL_STAGES) {
       if (stages[stage] !== 'complete') {
         currentStage = stage;
         break;
@@ -157,10 +179,16 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
             throw new Error(`Cannot complete ${stage}: rendering must be complete first`);
           }
         } else {
-          // Base stage: prior stage must be complete
-          const idx = BASE_STAGES.indexOf(stage);
-          if (idx > 0) {
-            const priorStage = BASE_STAGES[idx - 1];
+          // Base stage: the nearest preceding SEQUENTIAL stage must be complete.
+          // Non-sequential stages are stepped over — they are reported, never
+          // gates (C10-R2). Note this also governs completing a non-sequential
+          // stage itself: `tmCreated` still requires `linguisticReview`.
+          let priorIdx = BASE_STAGES.indexOf(stage) - 1;
+          while (priorIdx >= 0 && NON_SEQUENTIAL_STAGES.has(BASE_STAGES[priorIdx])) {
+            priorIdx--;
+          }
+          if (priorIdx >= 0) {
+            const priorStage = BASE_STAGES[priorIdx];
             const priorRow = db
               .prepare(
                 'SELECT status FROM chapter_pipeline_status WHERE book_slug = ? AND chapter_num = ? AND stage = ?'

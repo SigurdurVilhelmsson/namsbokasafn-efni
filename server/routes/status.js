@@ -294,10 +294,11 @@ router.get('/dashboard', requireAuth, async (req, res) => {
 
     // Get edits marked for discussion (replaces blocked issues)
     try {
-      const discussEdits = segmentEditorService.getDiscussEdits(10);
-      dashboard.needsAttention.blockedIssues = discussEdits.length;
+      // The stat is a real COUNT; the items list below is a deliberate page of
+      // 5. Deriving the count from the paged list saturated it (C10-R4).
+      dashboard.needsAttention.blockedIssues = segmentEditorService.countDiscussEdits();
 
-      for (const edit of discussEdits.slice(0, 5)) {
+      for (const edit of segmentEditorService.getDiscussEdits(5)) {
         dashboard.needsAttention.items.push({
           type: 'blocked',
           description: edit.editor_note || `${edit.segment_id} til umræðu`,

@@ -311,3 +311,97 @@ describe('getStageHistory', () => {
     expect(history).toEqual([]);
   });
 });
+
+// --- C10-R2: `tmCreated` is a non-sequential (side-deliverable) stage -------
+//
+// Nothing advances `tmCreated` — the TM producer (`tmService` → `generate-tm.js
+// --book <book>`) is book-level, debounced and fire-and-forget — and injection
+// does not read `tm/` at all. It therefore must not sit in the sequential
+// prerequisite chain, where it silently blocked every DB-side advance past
+// linguisticReview (the throw is swallowed at pipelineService.js:744-746).
+describe('non-sequential stages (tmCreated)', () => {
+  const COMPLETE_THROUGH_REVIEW = ['extraction', 'mtReady', 'mtOutput', 'linguisticReview'];
+
+  function completeThroughReview() {
+    for (const stage of COMPLETE_THROUGH_REVIEW) {
+      service.transitionStage('efnafraedi-2e', 1, stage, 'complete', 'user1', 'done');
+    }
+  }
+
+  it('injection completes without tmCreated ever being completed', () => {
+    completeThroughReview();
+
+    expect(() =>
+      service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'injected')
+    ).not.toThrow();
+
+    const result = service.getChapterStage('efnafraedi-2e', 1);
+    expect(result.stages.injection).toBe('complete');
+    expect(result.stages.tmCreated).toBe('not_started');
+  });
+
+  it('rendering completes on top of injection with tmCreated still not_started', () => {
+    completeThroughReview();
+    service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'injected');
+    service.transitionStage('efnafraedi-2e', 1, 'rendering', 'complete', 'user1', 'rendered');
+
+    const result = service.getChapterStage('efnafraedi-2e', 1);
+    expect(result.stages.rendering).toBe('complete');
+    expect(result.stages.tmCreated).toBe('not_started');
+  });
+
+  it('currentStage skips tmCreated instead of pinning there forever', () => {
+    completeThroughReview();
+
+    const result = service.getChapterStage('efnafraedi-2e', 1);
+    expect(result.currentStage).toBe('injection');
+  });
+
+  it('currentStage reaches publication with every sequential stage complete', () => {
+    completeThroughReview();
+    service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'rendering', 'complete', 'user1', 'done');
+
+    const result = service.getChapterStage('efnafraedi-2e', 1);
+    expect(result.currentStage).toBe('publication');
+  });
+
+  it('still reports tmCreated in the stages object (it is a real, reportable stage)', () => {
+    const result = service.getChapterStage('efnafraedi-2e', 1);
+    expect(result.stages).toHaveProperty('tmCreated');
+  });
+
+  it('tmCreated remains a valid stage that can still be completed explicitly', () => {
+    completeThroughReview();
+    const result = service.transitionStage(
+      'efnafraedi-2e',
+      1,
+      'tmCreated',
+      'complete',
+      'user1',
+      'TMX generated'
+    );
+    expect(result).toEqual({ stage: 'tmCreated', status: 'complete' });
+    expect(service.getChapterStage('efnafraedi-2e', 1).stages.tmCreated).toBe('complete');
+  });
+
+  it('tmCreated still requires its own real prerequisite (linguisticReview)', () => {
+    service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'mtOutput', 'complete', 'user1', 'done');
+
+    expect(() =>
+      service.transitionStage('efnafraedi-2e', 1, 'tmCreated', 'complete', 'user1', 'x')
+    ).toThrow(/linguisticReview must be complete first/);
+  });
+
+  it('the real chain still gates: injection names linguisticReview, not tmCreated', () => {
+    service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'mtOutput', 'complete', 'user1', 'done');
+
+    expect(() =>
+      service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'x')
+    ).toThrow(/linguisticReview must be complete first/);
+  });
+});
