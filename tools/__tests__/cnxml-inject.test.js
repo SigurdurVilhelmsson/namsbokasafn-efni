@@ -1130,6 +1130,239 @@ describe('buildExerciseDom figure inside para', () => {
   });
 });
 
+// ─── C13: figure inside a para inside a note ──────────────────────
+// Regression tests for liffraedi-2e m66374/m66375/m66440/m66442/m66443 (6 live
+// occurrences; 71 in the corpus, all one shape). A <para> inside a <note> whose
+// only content is a CAPTIONED <figure>. Extraction hoists the figure into a
+// top-level structure entry AND flattens its <media> into the para segment as
+// [[MEDIA:N]] followed by the caption prose — so the whole para segment is
+// figure-derived. buildExampleDom/buildExerciseDom pre-scan their paras for
+// figures and drop that text; buildNoteDom did not, so the expanded <media> was
+// injected BEFORE the surviving DOM figure. The global deduplicateMedia keeps
+// the FIRST occurrence of a media id, so it then deleted the copy *inside* the
+// figure, leaving <figure><caption/></figure> — rejected by the OpenStax
+// RelaxNG schema ("element caption not allowed yet; expected ... media") and
+// rendered as an unlabelled orphan image + an image-less figure whose anchor
+// the preceding cross-reference points at.
+//
+// The precedent tests above use an UNCAPTIONED figure, which is exactly why they
+// never caught this: with no caption there is no prose left to duplicate.
+describe('buildNoteDom figure inside para (C13)', () => {
+  const CAPTION_IS = 'Glúkósi, galaktósi og frúktósi eru allir hexósar.';
+  const ALT = 'The linear forms of glucose, galactose, and fructose.';
+
+  const INLINE_MEDIA = [
+    {
+      placeholder: '[[MEDIA:1]]',
+      id: 'fs-id1319192',
+      alt: ALT,
+      src: '../../media/Figure_03_02_02.png',
+      mimeType: 'image/png',
+    },
+  ];
+
+  const segments = new Map([
+    ['m66440:para:fs-id2000117', `[[MEDIA:1]] ${CAPTION_IS}`],
+    ['m66440:para:fs-id2762822', 'Hvers konar sykrur eru þetta?'],
+    ['m66440:caption:fig-ch03_02_02-caption', CAPTION_IS],
+  ]);
+
+  // Production getSeg expands [[MEDIA:N]] via reverseInlineMarkup before the
+  // builders ever see it — a Map lookup alone would not reproduce the bug.
+  const getSeg = (id) => reverseInlineMarkup(segments.get(id) ?? '', {}, INLINE_MEDIA, []);
+
+  const ORIGINAL = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<note id="fs-id1385935" class="visual-connection">
+<para id="fs-id2000117">
+<figure id="fig-ch03_02_02"><media id="fs-id1319192" alt="${ALT}">
+<image mime-type="image/png" src="../../media/Figure_03_02_02.png" width="400"/>
+</media>
+<caption>Glucose, galactose, and fructose are all hexoses.</caption>
+</figure></para>
+<para id="fs-id2762822">What kind of sugars are these?</para>
+</note>
+</content>
+</document>`;
+
+  const element = {
+    type: 'note',
+    id: 'fs-id1385935',
+    class: 'visual-connection',
+    title: null,
+    content: [
+      { type: 'para', id: 'fs-id2000117', segmentId: 'm66440:para:fs-id2000117' },
+      { type: 'para', id: 'fs-id2762822', segmentId: 'm66440:para:fs-id2762822' },
+    ],
+  };
+
+  const makeCtx = (
+    figureCaptions = { 'fig-ch03_02_02': 'm66440:caption:fig-ch03_02_02-caption' }
+  ) => ({
+    figureCaptions,
+    figuresHandledInNotes: new Set(),
+    figuresHandledInContainers: new Set(),
+    inlineMedia: INLINE_MEDIA,
+    inlineTables: [],
+    imageMapping: new Map(),
+  });
+
+  const build = (ctx = makeCtx()) => buildNoteDom(element, getSeg, {}, ORIGINAL, ctx);
+
+  it('emits no bare <media> outside the figure', () => {
+    const outsideFigures = build().replace(/<figure[\s\S]*?<\/figure>/g, '');
+    expect(outsideFigures).not.toContain('<media');
+  });
+
+  it('puts the figure ahead of any media in document order', () => {
+    // deduplicateMedia keeps the FIRST occurrence of a media id, so an orphan
+    // copy emitted ahead of the figure is what causes the figure's own <media>
+    // to be the one deleted at document level.
+    const result = build();
+    expect(result.indexOf('<figure')).toBeLessThan(result.indexOf('<media'));
+  });
+
+  it('emits exactly one copy of the image', () => {
+    expect((build().match(/Figure_03_02_02\.png/g) || []).length).toBe(1);
+  });
+
+  it('does not duplicate the caption prose as para body text', () => {
+    const outsideFigures = build().replace(/<figure[\s\S]*?<\/figure>/g, '');
+    expect(outsideFigures).not.toContain(CAPTION_IS);
+  });
+
+  it('still translates the kept figure caption', () => {
+    expect(build()).toContain(`<caption>${CAPTION_IS}</caption>`);
+  });
+
+  it('leaves the note-sibling paras untouched', () => {
+    expect(build()).toContain('Hvers konar sykrur eru þetta?');
+  });
+
+  it('registers the figure so the standalone buildFigure copy is skipped', () => {
+    const ctx = makeCtx();
+    build(ctx);
+    expect(ctx.figuresHandledInNotes.has('fig-ch03_02_02')).toBe(true);
+  });
+
+  it('registers an UNCAPTIONED para figure too', () => {
+    // The caption loop only registered ids when ctx.figureCaptions had an entry,
+    // so a caption-less figure in a note para got a standalone duplicate as well.
+    const ctx = makeCtx({});
+    build(ctx);
+    expect(ctx.figuresHandledInNotes.has('fig-ch03_02_02')).toBe(true);
+  });
+
+  it('keeps a note para that has real prose alongside a figure', () => {
+    // No such shape exists in the corpus (all 71 are figure-only), but the
+    // branch must not swallow genuine para text if one ever appears.
+    const mixedOriginal = ORIGINAL.replace(
+      '<para id="fs-id2000117">\n<figure',
+      '<para id="fs-id2000117">Skoðaðu myndina.\n<figure'
+    );
+    const mixedSegments = new Map(segments);
+    mixedSegments.set('m66440:para:fs-id2000117', `Skoðaðu myndina. [[MEDIA:1]] ${CAPTION_IS}`);
+    const mixedGetSeg = (id) =>
+      reverseInlineMarkup(mixedSegments.get(id) ?? '', {}, INLINE_MEDIA, []);
+    const result = buildNoteDom(element, mixedGetSeg, {}, mixedOriginal, makeCtx());
+    expect(result).toContain('Skoðaðu myndina.');
+  });
+});
+
+// C13 end-to-end: the destruction only happens after buildCnxml's document-level
+// deduplicateMedia, so the unit tests above cannot see it. This one exercises the
+// whole production chain — hoisted figure structure entry included — and pins the
+// state the schema gate actually rejected.
+describe('buildCnxml: figure inside a para inside a note (C13 end-to-end)', () => {
+  const CAPTION_IS = 'Glúkósi, galaktósi og frúktósi eru allir hexósar.';
+  const ALT = 'The linear forms of glucose, galactose, and fructose.';
+
+  const makeResult = () => {
+    const structure = {
+      moduleId: 'm66440',
+      title: { segmentId: 'm66440:title:auto-1', text: 'Kolvetni' },
+      content: [
+        {
+          type: 'note',
+          id: 'fs-id1385935',
+          class: 'visual-connection',
+          title: null,
+          content: [
+            { type: 'para', id: 'fs-id2000117', segmentId: 'm66440:para:fs-id2000117' },
+            { type: 'para', id: 'fs-id2762822', segmentId: 'm66440:para:fs-id2762822' },
+          ],
+        },
+        // Extraction hoists the note's figure to a top-level entry.
+        {
+          type: 'figure',
+          id: 'fig-ch03_02_02',
+          caption: { segmentId: 'm66440:caption:fig-ch03_02_02-caption' },
+          media: {
+            id: 'fs-id1319192',
+            alt: ALT,
+            src: '../../media/Figure_03_02_02.png',
+            mimeType: 'image/png',
+          },
+        },
+      ],
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          id: 'fs-id1319192',
+          alt: ALT,
+          src: '../../media/Figure_03_02_02.png',
+          mimeType: 'image/png',
+        },
+      ],
+    };
+
+    const segments = new Map([
+      ['m66440:title:auto-1', 'Kolvetni'],
+      ['m66440:para:fs-id2000117', `[[MEDIA:1]] ${CAPTION_IS}`],
+      ['m66440:para:fs-id2762822', 'Hvers konar sykrur eru þetta?'],
+      ['m66440:caption:fig-ch03_02_02-caption', CAPTION_IS],
+    ]);
+
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Kolvetni</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Carbohydrates</md:title></metadata>
+<content>
+<note id="fs-id1385935" class="visual-connection">
+<para id="fs-id2000117">
+<figure id="fig-ch03_02_02"><media id="fs-id1319192" alt="${ALT}">
+<image mime-type="image/png" src="../../media/Figure_03_02_02.png" width="400"/>
+</media>
+<caption>Glucose, galactose, and fructose are all hexoses.</caption>
+</figure></para>
+<para id="fs-id2762822">What kind of sugars are these?</para>
+</note>
+</content>
+</document>`;
+
+    return buildCnxml(structure, segments, {}, originalCnxml, {}).cnxml;
+  };
+
+  it('leaves no <figure> holding a caption but no media', () => {
+    // The exact state jing rejected: "element caption not allowed yet;
+    // expected element code, label, media, subfigure, table or title".
+    expect(makeResult()).not.toMatch(/<figure[^>]*>\s*<caption>/);
+  });
+
+  it('keeps the image inside its figure after document-level media dedupe', () => {
+    expect(makeResult()).toMatch(/<figure[^>]*id="fig-ch03_02_02"[^>]*>\s*<media/);
+  });
+
+  it('emits the image exactly once in the whole document', () => {
+    expect((makeResult().match(/Figure_03_02_02\.png/g) || []).length).toBe(1);
+  });
+
+  it('does not emit a standalone duplicate of the hoisted figure', () => {
+    expect((makeResult().match(/<figure[^>]*id="fig-ch03_02_02"/g) || []).length).toBe(1);
+  });
+});
+
 // ─── A2: untranslated-EN residue detection ────────────────────────
 describe('buildCnxml EN-residue detection (A2)', () => {
   const enText = 'Describe the composition and properties of colloidal dispersions in water';
