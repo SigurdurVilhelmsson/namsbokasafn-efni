@@ -109,8 +109,23 @@ sudo systemctl restart ritstjorn
 # 7. Wait for the service to become healthy (up to 30 s)
 echo "Waiting for ritstjorn to become healthy..."
 for i in $(seq 1 30); do
-  if curl -sf http://localhost:3000/api/health > /dev/null 2>&1; then
+  if HEALTH_BODY="$(curl -sf http://localhost:3000/api/health 2>/dev/null)"; then
     echo "=== Deploy complete. Server healthy after ${i}s. ==="
+    # Print the verdict rather than discarding it. Nothing else polls
+    # /api/health — no monitor, no UI — so this is the only routine surface
+    # where a stale backup heartbeat (content, register C11(b); or off-box
+    # sessions.db) becomes visible to a human. It gates nothing: "degraded"
+    # is a legitimate post-deploy state, e.g. before the first backup cycle.
+    echo "$HEALTH_BODY" | node -e "
+      let d='';process.stdin.on('data',c=>d+=c);
+      process.stdin.on('end',()=>{
+        try{
+          const h=JSON.parse(d);
+          const bad=Object.entries(h.checks||{}).filter(([,c])=>!c.ok).map(([n])=>n);
+          console.log('Health: '+h.status+(bad.length?' — not ok: '+bad.join(', '):''));
+        }catch{console.log('Health: (unparseable response)')}
+      })
+    " || true
     exit 0
   fi
   sleep 1
