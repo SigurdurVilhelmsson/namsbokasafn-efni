@@ -138,8 +138,27 @@ fi
 
 # Push
 if ! git push origin main 2>&1 | tee -a "$LOG_FILE"; then
-  log "ERROR: git push failed"
-  write_status "error" "git push failed"
+  PUSH_MSG="git push failed"
+  # Read-only diagnosis, on the already-failed path only. It distinguishes
+  # "GitHub unreachable" from "non-fast-forward — production has diverged",
+  # which matters because this script deliberately never fetches before
+  # pushing: `merge.ours.driver` for the perpetually-dirty
+  # books/*/translation-errors.json is registered by deploy.sh, not by cron,
+  # so an unattended rebase here would turn a visible push failure into a
+  # repo wedged mid-rebase on production.
+  #
+  # `timeout` guards the likely case that the network is what failed. If the
+  # fetch fails for any reason the counts are simply omitted — a diagnostic
+  # must never turn one failure into a different one.
+  if timeout 30 git fetch --quiet origin main 2>/dev/null; then
+    AHEAD="$(git rev-list --count FETCH_HEAD..HEAD 2>/dev/null || true)"
+    BEHIND="$(git rev-list --count HEAD..FETCH_HEAD 2>/dev/null || true)"
+    if [ -n "$AHEAD" ] && [ -n "$BEHIND" ]; then
+      PUSH_MSG="git push failed (local ahead ${AHEAD}, behind ${BEHIND})"
+    fi
+  fi
+  log "ERROR: ${PUSH_MSG}"
+  write_status "error" "${PUSH_MSG}"
   exit 1
 fi
 

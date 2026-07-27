@@ -203,7 +203,32 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
 
     expect(result.status).toBe(1);
     expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toBe('git push failed');
     expect(statSync(heartbeatPath()).mtimeMs).toBe(beforeMs);
+  });
+
+  it('reports ahead/behind when the push is rejected as non-fast-forward', () => {
+    // Diverge the remote behind this checkout's back, exactly as a dev
+    // pushing to main would. The cron never fetches before pushing (see the
+    // script's comment for why a rebase there would be worse), so this is a
+    // live failure mode, not a hypothetical one.
+    const other = mkdtempSync(path.join(tmpdir(), 'gitbackup-other-'));
+    execFileSync('git', ['clone', '--quiet', bare, other]);
+    execFileSync('git', ['config', 'user.email', 'annar@example.is'], { cwd: other });
+    execFileSync('git', ['config', 'user.name', 'Annar'], { cwd: other });
+    writeFileSync(path.join(other, 'other.txt'), 'from elsewhere\n');
+    execFileSync('git', ['add', '-A'], { cwd: other });
+    execFileSync('git', ['commit', '--quiet', '-m', 'other side'], { cwd: other });
+    execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
+    rmSync(other, { recursive: true, force: true });
+
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":5}\n');
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().message).toMatch(/local ahead 1, behind 1/);
+    expect(readLog()).toMatch(/ERROR: git push failed \(local ahead 1, behind 1\)/);
   });
 
   it('does NOT write the heartbeat when the commit itself fails', () => {
