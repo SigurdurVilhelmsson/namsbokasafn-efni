@@ -471,22 +471,33 @@ Then replace `tools/api-translate.js:1059-1067` (the `// Load glossary` block in
         skippedCount = dropped.length;
       },
     });
-    // Surfacing the drop count at the MT stage is deliberate: the same
-    // reasoning as countInlineMarkers — a data defect must be visible where
-    // it happens, not inferred three stages downstream from bad output.
-    const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
-    if (glossary) {
-      console.log(
-        `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
-      );
-    } else {
-      // The count belongs here TOO. A glossary whose every approved term was
-      // malformed loads as null, and without the count this line is identical
-      // to the one an operator sees with no glossary file at all — the worst
-      // case rendered indistinguishable from the benign one.
-      console.log(`Glossary: none available${skipNote} (continuing without)`);
-    }
+    console.log(glossaryStatusLine(glossary, skippedCount));
   }
+```
+
+…where `glossaryStatusLine` is a new exported function beside `loadGlossary`:
+
+```js
+/**
+ * The operator-facing glossary line. Extracted from main() so the total-drop
+ * case is testable: a glossary whose every approved term was malformed loads
+ * as null, and without the count this line is identical to the one printed
+ * when there is no glossary file at all — the worst case rendered
+ * indistinguishable from the benign one.
+ *
+ * Surfacing the count at the MT stage is deliberate: the same reasoning as
+ * countInlineMarkers — a data defect must be visible where it happens, not
+ * inferred three stages downstream from bad output.
+ */
+export function glossaryStatusLine(glossary, skippedCount) {
+  const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
+  return glossary
+    ? `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
+    : `Glossary: none available${skipNote} (continuing without)`;
+}
+```
+
+⚠️ **The extraction is not cosmetic.** `main` is not exported, so a `console.log` edit inside it cannot be unit-tested — an Important finding must not be fixed by an untestable change. Note also that a test asserting `loadGlossary` reports drops in the total-drop case **passes without any fix** (`formatGlossary` fires `onSkipped` internally before `loadGlossary` reaches its empty-check), so such a test is a *preservation* pin, not a driver. `glossaryStatusLine` is where the real defect lives and where the driving test belongs.
 ```
 
 - [ ] **Step 4: Run the test to verify it passes**
