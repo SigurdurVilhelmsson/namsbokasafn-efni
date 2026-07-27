@@ -13,7 +13,15 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs';
+import {
+  mkdtempSync,
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  rmSync,
+  existsSync,
+  chmodSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'module';
@@ -156,6 +164,35 @@ describe('runGlossaryExport — shrink guard', () => {
     seedBook('prufubok', JSON.stringify(payload(approved(617))));
     expect(run({ exportFn: () => payload(approved(3)), force: true })).toBe(0);
     expect(readExport('prufubok').terms).toHaveLength(3);
+  });
+
+  it('does NOT treat an unreadable existing export as "no baseline"', () => {
+    // EACCES must never read as "nothing to lose". If it did, the shrink
+    // guard would stand down on precisely the file it exists to protect.
+    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+    const outPath = path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json');
+    chmodSync(outPath, 0o000);
+    try {
+      const code = run({ exportFn: () => payload(approved(3)) });
+      expect(code).toBe(1);
+      expect(heartbeatExists()).toBe(false);
+    } finally {
+      chmodSync(outPath, 0o644);
+    }
+  });
+
+  it('an unreadable book does not skip the books after it', () => {
+    seedBook('bok-a', JSON.stringify(payload(approved(10))));
+    seedBook('bok-b');
+    const aPath = path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json');
+    chmodSync(aPath, 0o000);
+    try {
+      const code = run({ exportFn: () => payload(approved(9)) });
+      expect(code).toBe(1);
+      expect(readExport('bok-b').terms).toHaveLength(9);
+    } finally {
+      chmodSync(aPath, 0o644);
+    }
   });
 });
 
