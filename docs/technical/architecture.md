@@ -456,8 +456,8 @@ which is which before relying on a recovery.
 | Asset | Lives in | Backed up by | Max data-loss window |
 |-------|----------|--------------|----------------------|
 | Faithful/localized content (`books/*/03-`, `04-`, `05-`) | git | `scripts/git-backup.sh` (cron, every 2h) | ~2h |
-| Translation memory (`books/*/tm/*.tmx`) | git | regenerated on apply (`tmService`), pushed by git-backup | ~2h |
-| Glossary export (`books/*/glossary/glossary-unified.json`) | git | `server/scripts/export-terminology.js` (cron) + git-backup | nightly + ~2h |
+| Translation memory (`books/*/tm/*.tmx`) | git | regenerated on apply (`tmService`); ⚠️ **NOT staged by git-backup** — reaches git only via a manual commit (register C3) | manual |
+| Glossary export (`books/*/glossary/glossary-unified.json`) | git | `scripts/git-backup.sh` invokes `server/scripts/export-terminology.js`, then stages `books/*/glossary/` | ~2h |
 | Terminology DB, segment edits, discussions, reviews, users, notifications | `pipeline-output/sessions.db` (gitignored) | `scripts/backup-db.sh` (cron) | backup interval (e.g. 6h) |
 | Concordance index (`tm_segments`) | `sessions.db` | rebuildable from faithful files via `server/scripts/backfill-concordance.js` | n/a (derived) |
 
@@ -469,11 +469,17 @@ Schedule it from cron (e.g. `0 */6 * * *`); confirm Linode disk snapshots as a
 second line of defense.
 
 **Glossary freshness (6.1):** the committed `glossary-unified.json` is the MT
-glossary `api-translate.js` sends to Málstaður. It is regenerated from the
-terminology DB by `server/scripts/export-terminology.js`; run it from cron so
-newly approved terms reach MT without a manual export. Derived assets
-(`tm_segments`, the TMX) can always be rebuilt from the faithful files in git,
-so only the **DB-only** rows above are truly irreplaceable.
+glossary `api-translate.js` sends to Málstaður. `scripts/git-backup.sh` regenerates
+it from the terminology DB via `server/scripts/export-terminology.js` and stages
+`books/*/glossary/` in the same run, so newly approved terms reach MT without a
+manual export (register C14 — before that, the script had no caller *and* no
+pathspec, so its output could not have left the server). The call is contained: a
+failure logs a WARN and the content backup proceeds, and staleness surfaces as
+`checks.glossary_export` in `GET /api/health`. ⚠️ The exporter is the **second**
+producer of that file — every committed copy was written by `tools/merge-glossary.js`
+— so it refuses to replace a much richer file unless `--force` is passed. Derived
+assets (`tm_segments`, the TMX) can always be rebuilt from the faithful files in
+git, so only the **DB-only** rows above are truly irreplaceable.
 
 ## Related Documentation
 
