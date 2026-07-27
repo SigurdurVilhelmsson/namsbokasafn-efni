@@ -315,6 +315,25 @@ app.get('/api/health', (req, res) => {
     checks.offbox_backup = { ok: false, error: err.message };
   }
 
+  // Check content-backup heartbeat (register C11(b)). scripts/git-backup.sh
+  // is the ONLY route by which reviewed translations reach GitHub, and its
+  // failures were previously invisible: it wrote `error` into a gitignored
+  // backup-status.json that nothing read, with no MAILTO on the cron. The
+  // heartbeat is written only on healthy runs, so staleness is the alarm.
+  try {
+    const { readContentBackupHealth, DEFAULT_STALE_HOURS } = require('./lib/contentBackupHealth');
+    checks.content_backup = readContentBackupHealth({
+      projectRoot: path.join(__dirname, '..'),
+      nowMs: Date.now(),
+      // The default lives in the lib, next to the comment explaining why it
+      // is 6 (two missed 2 h cycles + margin). Repeating the literal here
+      // would let the two drift apart silently.
+      staleHours: Number(process.env.CONTENT_BACKUP_STALE_HOURS) || DEFAULT_STALE_HOURS,
+    });
+  } catch (err) {
+    checks.content_backup = { ok: false, error: err.message };
+  }
+
   const allOk = Object.values(checks).every((c) => c.ok);
 
   res.json({

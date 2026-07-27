@@ -21,6 +21,20 @@ jobs:
           echo "Deploying commit ${{ github.sha }} to production"
           echo "Triggered by: ${{ github.actor }}"
 
+      # This workflow deliberately owns NO deploy logic of its own.
+      # scripts/deploy.sh is the single deploy path (register C11(c)): it
+      # backs up sessions.db first, pins Node to the same binary systemd
+      # uses (guarding the better-sqlite3 ABI break of 2026-05-10), stashes
+      # and RE-APPLIES local editorial changes rather than discarding them,
+      # restarts the real unit, and exits non-zero if the server never
+      # becomes healthy. An inline copy here previously drifted from all
+      # four of those and hard-reset production's working tree onto
+      # origin/main, discarding anything that existed only on prod's disk.
+      #
+      # NOTE: this workflow has never run. It needs DEPLOY_HOST, DEPLOY_USER
+      # and DEPLOY_SSH_KEY, and the repository currently has no secrets and
+      # no `production` environment. Deploys are run by hand:
+      #   ./scripts/deploy.sh
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
@@ -30,51 +44,9 @@ jobs:
           script_stop: true
           script: |
             set -euo pipefail
-            APP_DIR="${{ secrets.DEPLOY_APP_DIR || '/opt/namsbokasafn-efni' }}"
+            APP_DIR="${{ secrets.DEPLOY_APP_DIR || '/home/siggi/repos/namsbokasafn-efni' }}"
             cd "$APP_DIR"
-
-            echo "=== Step 1: Backup database ==="
-            DB_PATH="pipeline-output/sessions.db"
-            if [ -f "$DB_PATH" ]; then
-              BACKUP_DIR="pipeline-output/backups"
-              mkdir -p "$BACKUP_DIR"
-              TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-              cp "$DB_PATH" "$BACKUP_DIR/sessions-$TIMESTAMP.db"
-              echo "Backed up to $BACKUP_DIR/sessions-$TIMESTAMP.db"
-              # Keep last 30 backups
-              ls -1t "$BACKUP_DIR"/sessions-*.db 2>/dev/null | tail -n +31 | xargs -r rm
-            fi
-
-            echo "=== Step 2: Pull latest code ==="
-            git fetch origin main
-            git reset --hard origin/main
-
-            echo "=== Step 3: Install dependencies ==="
-            npm ci --omit=dev
-            cd server && npm ci --omit=dev && cd ..
-
-            echo "=== Step 4: Restart service ==="
-            sudo systemctl restart namsbokasafn-efni || true
-
-            echo "=== Step 5: Health check ==="
-            sleep 3
-            HEALTH=$(curl -sf http://localhost:3000/api/health || echo '{"status":"failed"}')
-            echo "Health: $HEALTH"
-
-            STATUS=$(echo "$HEALTH" | node -e "
-              let d='';process.stdin.on('data',c=>d+=c);
-              process.stdin.on('end',()=>{
-                try{console.log(JSON.parse(d).status)}
-                catch{console.log('parse-error')}
-              })
-            ")
-
-            if [ "$STATUS" != "ok" ] && [ "$STATUS" != "degraded" ]; then
-              echo "HEALTH CHECK FAILED — status: $STATUS"
-              exit 1
-            fi
-
-            echo "=== Deploy complete ==="
+            ./scripts/deploy.sh
 
       - name: Report status
         if: always()

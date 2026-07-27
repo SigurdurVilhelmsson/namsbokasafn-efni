@@ -8,6 +8,8 @@ import {
   copyFileSync,
   rmSync,
   existsSync,
+  statSync,
+  utimesSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -49,6 +51,10 @@ function readLog() {
 
 function readStatus() {
   return JSON.parse(readFileSync(path.join(work, 'pipeline-output', 'backup-status.json'), 'utf8'));
+}
+
+function heartbeatPath() {
+  return path.join(work, 'pipeline-output', '.last-content-backup');
 }
 
 // One committed file per pathspec family (matching the production shape) so
@@ -153,5 +159,158 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
     expect(readStatus().status).toBe('error');
     expect(readLog()).toMatch(/ERROR: git add failed for pathspec: /);
     expect(git(['rev-parse', 'HEAD']).trim()).toBe(headBefore);
+    expect(existsSync(heartbeatPath())).toBe(false);
+  });
+});
+
+describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
+  it('writes the heartbeat after a successful push', () => {
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":3}\n');
+
+    runBackup();
+
+    expect(readStatus().status).toBe('success');
+    expect(existsSync(heartbeatPath())).toBe(true);
+    expect(readFileSync(heartbeatPath(), 'utf8')).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/m);
+  });
+
+  it('writes the heartbeat when there was nothing to commit', () => {
+    // THE FALSE-ALARM GUARD. A quiet weekend is a HEALTHY cron, not a dead
+    // one. If the heartbeat tracked commits rather than healthy runs,
+    // /api/health would declare the content backup broken every time the
+    // editors took two days off — and the alarm would be ignored thereafter.
+    runBackup();
+
+    expect(readStatus().status).toBe('no_changes');
+    expect(existsSync(heartbeatPath())).toBe(true);
+  });
+
+  it('leaves an existing heartbeat UNTOUCHED when the push fails', () => {
+    // Pre-create with an old mtime. Without this the assertion would pass
+    // trivially, because on a failing run the file never existed at all.
+    mkdirSync(path.join(work, 'pipeline-output'), { recursive: true });
+    writeFileSync(heartbeatPath(), '2020-01-01T00:00:00Z\n');
+    const old = new Date('2020-01-01T00:00:00Z');
+    utimesSync(heartbeatPath(), old, old);
+    const beforeMs = statSync(heartbeatPath()).mtimeMs;
+
+    // Unreachable remote: the push fails, and so does the diagnostic fetch,
+    // which also exercises the "counts omitted" fallback.
+    git(['remote', 'set-url', 'origin', path.join(work, 'no-such-remote')]);
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":4}\n');
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toBe('git push failed');
+    expect(statSync(heartbeatPath()).mtimeMs).toBe(beforeMs);
+  });
+
+  it('reports ahead/behind when the push is rejected as non-fast-forward', () => {
+    // Diverge the remote behind this checkout's back, exactly as a dev
+    // pushing to main would. The cron never fetches before pushing (see the
+    // script's comment for why a rebase there would be worse), so this is a
+    // live failure mode, not a hypothetical one.
+    const other = mkdtempSync(path.join(tmpdir(), 'gitbackup-other-'));
+    execFileSync('git', ['clone', '--quiet', bare, other]);
+    execFileSync('git', ['config', 'user.email', 'annar@example.is'], { cwd: other });
+    execFileSync('git', ['config', 'user.name', 'Annar'], { cwd: other });
+    writeFileSync(path.join(other, 'other.txt'), 'from elsewhere\n');
+    execFileSync('git', ['add', '-A'], { cwd: other });
+    execFileSync('git', ['commit', '--quiet', '-m', 'other side'], { cwd: other });
+    execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
+    rmSync(other, { recursive: true, force: true });
+
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":5}\n');
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().message).toMatch(/local ahead 1, behind 1/);
+    expect(readLog()).toMatch(/ERROR: git push failed \(local ahead 1, behind 1\)/);
+  });
+
+  it('does NOT clear the alarm on a quiet run while a prior push is still unpushed', () => {
+    // THE FALSE-CLEAR PIN. Content changes are far sparser than the 2-hourly
+    // cron, so most runs take the nothing-to-commit path. Without the
+    // unpushed-backlog check, the sequence below refreshes the heartbeat two
+    // hours after a rejected push — before the 6 h threshold can ever fire —
+    // and /api/health reports the content backup healthy while reviewed
+    // translations sit only on production's disk. That non-fast-forward case
+    // is the register's primary detection target, not a corner case.
+
+    // 1. Diverge the remote, so this run's push is rejected and a local
+    //    auto-backup commit is left stranded.
+    const other = mkdtempSync(path.join(tmpdir(), 'gitbackup-other-'));
+    execFileSync('git', ['clone', '--quiet', bare, other]);
+    execFileSync('git', ['config', 'user.email', 'annar@example.is'], { cwd: other });
+    execFileSync('git', ['config', 'user.name', 'Annar'], { cwd: other });
+    writeFileSync(path.join(other, 'other.txt'), 'from elsewhere\n');
+    execFileSync('git', ['add', '-A'], { cwd: other });
+    execFileSync('git', ['commit', '--quiet', '-m', 'other side'], { cwd: other });
+    execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
+    rmSync(other, { recursive: true, force: true });
+
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":6}\n');
+    expect(runBackup(true).status).toBe(1);
+    expect(existsSync(heartbeatPath())).toBe(false);
+
+    // 2. The next cycle: nothing new to commit, but the stranded commit is
+    //    still unpushed. This must NOT read as healthy.
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(existsSync(heartbeatPath())).toBe(false);
+    expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toMatch(/unpushed backlog: 1 commit/);
+    expect(readLog()).toMatch(/ERROR: unpushed backlog: 1 commit/);
+  });
+
+  it('treats an undeterminable backlog as unhealthy, not as healthy', () => {
+    // If refs/remotes/origin/main is missing, the backlog count cannot be
+    // computed. The design's thesis is that absence is the alarm, so an
+    // indeterminate signal must fail loud rather than silently pass — the
+    // opposite choice would reintroduce the false-clear through the one path
+    // where the script cannot see what it is asserting.
+    git(['update-ref', '-d', 'refs/remotes/origin/main']);
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(existsSync(heartbeatPath())).toBe(false);
+    expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toMatch(/could not determine/i);
+  });
+
+  it('does NOT write the heartbeat when the commit itself fails', () => {
+    // A failing pre-commit hook is a deterministic way to make `git commit`
+    // fail *after* staging succeeds — isolates the commit-failure branch
+    // from the add-failure branch above (which never reaches `git commit`
+    // at all).
+    writeFileSync(path.join(work, '.git', 'hooks', 'pre-commit'), '#!/bin/sh\nexit 1\n', {
+      mode: 0o755,
+    });
+    writeFileSync(path.join(work, 'books/prufubok/translation-errors.json'), '["dirty"]\n');
+
+    const headBefore = git(['rev-parse', 'HEAD']).trim();
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(readLog()).toMatch(/ERROR: git commit failed/);
+    expect(git(['rev-parse', 'HEAD']).trim()).toBe(headBefore);
+    expect(existsSync(heartbeatPath())).toBe(false);
+  });
+
+  it('does NOT write the heartbeat when PROJECT_ROOT is not a git repository', () => {
+    rmSync(path.join(work, '.git'), { recursive: true, force: true });
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(readLog()).toMatch(/ERROR: Not a git repository/);
+    expect(existsSync(heartbeatPath())).toBe(false);
   });
 });
