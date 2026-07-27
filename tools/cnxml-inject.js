@@ -3604,7 +3604,14 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       // A figure-only para is exempt: there is no prose to lose, and its
       // whitespace-only text nodes are what we want removed.
       if (!onlyFigures && !paraText) continue;
-      const injectText = onlyFigures
+      // The path this branch replaced also consulted paraHasFlattenedList
+      // (audit #33): when extraction flattened a nested <list> into the para's
+      // segment, injecting that text alongside the preserved <list> emits the
+      // item content twice. Keep honouring it, or a para holding BOTH a figure
+      // and a flattened list would silently regress.
+      const skipParaText =
+        onlyFigures || paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
+      const injectText = skipParaText
         ? ''
         : paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
       const idsBefore = new Set(keptTableIds);

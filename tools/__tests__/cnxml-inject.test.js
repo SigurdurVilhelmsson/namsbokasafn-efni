@@ -1297,6 +1297,46 @@ describe('buildNoteDom figure inside para (C13)', () => {
     const result = buildNoteDom(element, emptyGetSeg, {}, mixedOriginal, makeCtx());
     expect(result).toContain('Look at the figure.');
   });
+
+  it('honours paraHasFlattenedList when the para also holds a figure', () => {
+    // The path this branch replaced consulted paraHasFlattenedList (audit #33)
+    // and injected nothing when extraction had flattened a nested <list> into
+    // the para's segment, leaving the list to the list handler. Skipping that
+    // check would emit the item text twice. No corpus case has this shape today
+    // (all 71 are figure-only), so this is a synthetic pin against divergence.
+    const listOriginal = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>T</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>T</md:title></metadata>
+<content>
+<note id="n-list" class="tip">
+<para id="p-list">Sjá formúluna
+<figure id="f-list"><media id="m-list" alt="A"><image mime-type="image/png" src="../../media/a.png"/></media><caption>Skýring</caption></figure>
+<list id="l-list" list-type="bulleted"><item id="i-list">Fyrsti liður</item></list>
+</para>
+</note>
+</content>
+</document>`;
+    const listElement = {
+      type: 'note',
+      id: 'n-list',
+      class: 'tip',
+      title: null,
+      content: [
+        { type: 'para', id: 'p-list', segmentId: 'seg:p-list' },
+        { type: 'list', id: 'l-list', items: [{ id: 'i-list', segmentId: 'seg:i-list' }] },
+      ],
+    };
+    // The segment carries the expanded media, an <m:math> (what
+    // paraHasFlattenedList keys on) and the flattened list item text.
+    const listGetSeg = (id) =>
+      id === 'seg:p-list'
+        ? '<media id="m-list" alt="A"><image mime-type="image/png" src="../../media/a.png"/></media> Sjá formúluna <m:math><m:mi>x</m:mi></m:math> Fyrsti liður'
+        : id === 'seg:i-list'
+          ? 'Fyrsti liður'
+          : '';
+    const result = buildNoteDom(listElement, listGetSeg, {}, listOriginal, makeCtx({}));
+    expect((result.match(/Fyrsti liður/g) || []).length).toBe(1);
+  });
 });
 
 // C13 end-to-end: the destruction only happens after buildCnxml's document-level
