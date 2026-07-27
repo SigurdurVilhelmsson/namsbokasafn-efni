@@ -1109,8 +1109,13 @@ Replace the whole of `server/scripts/export-terminology.js` with:
  * refreshed export reaches git for free". That was FALSE — git-backup.sh's
  * PATHSPECS had no books/*\/glossary/ entry — so even a scheduled run would
  * have written to production's disk and never reached the dev checkout where
- * api-translate.js actually primes MT. Both halves are now fixed:
- * scripts/git-backup.sh invokes this script and stages books/*\/glossary/.
+ * api-translate.js actually primes MT.
+ *
+ * ⚠️ So this script's output reaches a reader ONLY if scripts/git-backup.sh
+ * both invokes it AND stages books/*\/glossary/. Making this script correct is
+ * half the job; check that file for the other half. (Stated as the standing
+ * requirement rather than as "already done" on purpose — the sentence this
+ * replaces was a status claim that went stale and hid the gap for months.)
  *
  * SAFE TO RUN UNATTENDED because of two rules in lib/glossaryExportDecision.js:
  * write-if-changed (the `generated` stamp alone must not dirty the file every
@@ -1149,12 +1154,29 @@ function listBooks(booksDir = BOOKS_DIR) {
   }
 }
 
-/** Existing export, or null when absent OR unparseable (no baseline to protect). */
+/**
+ * Existing export, or null when there is genuinely no baseline to protect.
+ *
+ * ⚠️ Only ENOENT and a parse failure may return null. Every other read error —
+ * EACCES above all — MUST propagate. A null baseline tells shrinkVerdict there
+ * is nothing to lose, so it permits the write: swallowing a permissions fault
+ * here would stand the shrink guard down on exactly the file it exists to
+ * protect, overwrite it, and still write the heartbeat, leaving /api/health
+ * green. That is the catastrophe the guard was built for, arriving through the
+ * one door it was not watching.
+ */
 function readExisting(outPath) {
+  let raw;
   try {
-    return JSON.parse(fs.readFileSync(outPath, 'utf-8'));
+    raw = fs.readFileSync(outPath, 'utf-8');
+  } catch (err) {
+    if (err.code === 'ENOENT') return null; // no file yet — writing is correct
+    throw err; // caught per-book by the caller, counted as a failure
+  }
+  try {
+    return JSON.parse(raw);
   } catch {
-    return null;
+    return null; // corrupt file — no usable baseline, and replacing it is an improvement
   }
 }
 
