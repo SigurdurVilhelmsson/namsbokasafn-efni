@@ -3097,6 +3097,31 @@ function paraHasFlattenedList(child, paraEl, contentArray, paraText, doc) {
 }
 
 /**
+ * True iff a <para>'s source DOM content is nothing but <figure> elements —
+ * no prose, no other block children (whitespace and comments are ignored).
+ *
+ * Such a para's extracted segment is entirely figure-derived: the figure's
+ * <media> became a [[MEDIA:N]] placeholder and, when the figure is captioned,
+ * the caption prose was flattened in alongside it. Injecting any of it
+ * duplicates what the DOM figure already carries. (C13)
+ *
+ * @param {Element} paraElement - The <para> element from the original CNXML
+ * @returns {boolean} true when the para contains only figures
+ */
+function paraContainsOnlyFigures(paraElement) {
+  let sawFigure = false;
+  for (const node of Array.from(paraElement.childNodes)) {
+    if (node.nodeType === 1) {
+      if (node.localName !== 'figure') return false;
+      sawFigure = true;
+    } else if (node.nodeType === 3 && node.nodeValue && node.nodeValue.trim()) {
+      return false;
+    }
+  }
+  return sawFigure;
+}
+
+/**
  * Build an exercise element.
  */
 function buildExercise(element, getSeg, equations, originalCnxml) {
@@ -3530,7 +3555,61 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
   const replacedParaIds = new Set();
   const keptTableIds = new Set();
   const keptContainerTableIds = new Set();
+
+  // C13: detect paras that contain <figure> elements in the DOM. Extraction
+  // hoists such a figure into a top-level structure entry AND flattens its
+  // <media> into the para's segment as [[MEDIA:N]] — plus, when the figure is
+  // captioned, the caption prose. Injecting that text verbatim puts an orphan
+  // <media> ahead of the (block-preserved) figure, and buildCnxml's
+  // document-level deduplicateMedia keeps the FIRST occurrence of a media id,
+  // so it then deletes the figure's own copy — leaving <figure><caption/>, which
+  // the OpenStax RelaxNG schema rejects and which renders as an unlabelled image
+  // plus an image-less figure. Same pre-scan buildExampleDom/buildExerciseDom
+  // already do for <example>/<exercise>; <note> was the uncovered sibling.
+  const keptFigureIds = new Set();
+  const parasWithFigures = new Set();
   for (const child of element.content || []) {
+    if (child.type !== 'para' || !child.id) continue;
+    const paraEl = doc.getElementById(child.id);
+    if (!paraEl) continue;
+    const figures = paraEl.getElementsByTagName('figure');
+    if (figures.length === 0) continue;
+    parasWithFigures.add(child.id);
+    for (let i = 0; i < figures.length; i++) {
+      const figId = figures[i].getAttribute('id');
+      if (figId) keptFigureIds.add(figId);
+    }
+  }
+
+  for (const child of element.content || []) {
+    if (child.type === 'para' && child.id && parasWithFigures.has(child.id)) {
+      const paraEl = doc.getElementById(child.id);
+      // getSeg is still called for its side effects (residue accounting, missing
+      // segment stats) even when nothing is injected.
+      const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+      // When the para holds nothing but figures — all 71 corpus occurrences —
+      // the WHOLE segment is figure-derived, so inject nothing. The predicate
+      // reads the read-only 01-source DOM rather than comparing the leftover
+      // text against the caption segment: those are two independently editable
+      // translations, so an equality check would silently stop matching the
+      // first time an editor revises one of them.
+      const injectText = paraContainsOnlyFigures(paraEl)
+        ? ''
+        : paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+      const idsBefore = new Set(keptTableIds);
+      const expandedParaText = expandInlineTables(
+        injectText,
+        ctx,
+        getSeg,
+        originalCnxml,
+        keptTableIds
+      );
+      removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+      replaceParaContentDom(doc, paraEl, expandedParaText, '');
+      replacedParaIds.add(child.id);
+      continue;
+    }
+
     if (child.type === 'para' && child.id && child.segmentId) {
       const paraEl = doc.getElementById(child.id);
       if (!paraEl) continue;
@@ -3585,6 +3664,14 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
         ctx.figuresHandledInNotes.add(figId);
       }
     }
+  }
+
+  // C13: a figure kept inside a note para is already in the output DOM, so the
+  // hoisted standalone structure entry must not be emitted a second time. The
+  // caption loop above registers only CAPTIONED figures (its add() sits inside
+  // the captionSegId branch), which left an uncaptioned one duplicated.
+  if (ctx && ctx.figuresHandledInNotes) {
+    for (const figId of keptFigureIds) ctx.figuresHandledInNotes.add(figId);
   }
 
   // Keep + register non-inline tables that are direct children of the note (OC-B).
