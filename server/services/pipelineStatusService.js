@@ -27,7 +27,7 @@ const STAGE_ORDER = [
   'publication',
 ];
 
-const { PUBLICATION_TRACKS } = require('../constants');
+const { PUBLICATION_TRACKS, NON_SEQUENTIAL_STAGES } = require('../constants');
 
 const VALID_STATUSES = ['not_started', 'in_progress', 'complete'];
 
@@ -38,6 +38,18 @@ const ALL_STAGES = [
 
 // Base stages (without 'publication')
 const BASE_STAGES = STAGE_ORDER.filter((s) => s !== 'publication');
+
+// Stages that are reported but do NOT participate in sequencing (C10-R2).
+// Defined once in ../constants — the status.json read model in routes/status.js
+// consumes the same list, so the two read models cannot disagree.
+// Leaving `tmCreated` in the prerequisite chain made EVERY
+// `advanceChapterStatus(…, 'injection')` throw — swallowed at
+// pipelineService.js:744-746 — so DB-side chapter status silently never
+// advanced past linguisticReview.
+const NON_SEQUENTIAL = new Set(NON_SEQUENTIAL_STAGES);
+
+// Stages that DO form the sequential chain, in order.
+const SEQUENTIAL_STAGES = BASE_STAGES.filter((s) => !NON_SEQUENTIAL.has(s));
 
 // --- DB connection ---
 
@@ -107,9 +119,11 @@ function getChapterStage(bookSlug, chapterNum) {
       publication[track] = statusMap[`publication.${track}`] || 'not_started';
     }
 
-    // currentStage: first non-complete base stage, or 'publication' if all complete
+    // currentStage: first non-complete SEQUENTIAL stage, or 'publication' if all
+    // complete. Non-sequential stages are skipped — `tmCreated` is never
+    // advanced, so including it would pin currentStage there forever (C10-R2).
     let currentStage = 'publication';
-    for (const stage of BASE_STAGES) {
+    for (const stage of SEQUENTIAL_STAGES) {
       if (stages[stage] !== 'complete') {
         currentStage = stage;
         break;
@@ -157,10 +171,16 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
             throw new Error(`Cannot complete ${stage}: rendering must be complete first`);
           }
         } else {
-          // Base stage: prior stage must be complete
-          const idx = BASE_STAGES.indexOf(stage);
-          if (idx > 0) {
-            const priorStage = BASE_STAGES[idx - 1];
+          // Base stage: the nearest preceding SEQUENTIAL stage must be complete.
+          // Non-sequential stages are stepped over — they are reported, never
+          // gates (C10-R2). Note this also governs completing a non-sequential
+          // stage itself: `tmCreated` still requires `linguisticReview`.
+          let priorIdx = BASE_STAGES.indexOf(stage) - 1;
+          while (priorIdx >= 0 && NON_SEQUENTIAL.has(BASE_STAGES[priorIdx])) {
+            priorIdx--;
+          }
+          if (priorIdx >= 0) {
+            const priorStage = BASE_STAGES[priorIdx];
             const priorRow = db
               .prepare(
                 'SELECT status FROM chapter_pipeline_status WHERE book_slug = ? AND chapter_num = ? AND stage = ?'
@@ -244,11 +264,17 @@ function revertStage(bookSlug, chapterNum, user, note) {
         }
       }
 
-      // If no publication sub-track found, check base stages in reverse
+      // If no publication sub-track found, check SEQUENTIAL stages in reverse.
+      // Non-sequential stages are skipped so revert stays the inverse of
+      // advance: `/advance` transitions whatever `currentStage` reports, which
+      // never names a non-sequential stage, so a revert landing on one would
+      // both waste the revert and be unrestorable through the API. Reachable
+      // with legacy data — efnafraedi-2e ch03/ch04 carry a Matecat-era
+      // `tmCreated: complete`.
       if (!latestStage) {
-        for (let i = BASE_STAGES.length - 1; i >= 0; i--) {
-          if (completedStages.includes(BASE_STAGES[i])) {
-            latestStage = BASE_STAGES[i];
+        for (let i = SEQUENTIAL_STAGES.length - 1; i >= 0; i--) {
+          if (completedStages.includes(SEQUENTIAL_STAGES[i])) {
+            latestStage = SEQUENTIAL_STAGES[i];
             break;
           }
         }

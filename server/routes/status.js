@@ -29,7 +29,11 @@ const {
 } = require('../services/splitFileUtils');
 const { VALID_BOOKS } = require('../config');
 const userService = require('../services/userService');
-const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES, PUBLICATION_TRACKS } = require('../constants');
+const {
+  PIPELINE_STAGE_NAMES: PIPELINE_STAGES,
+  PUBLICATION_TRACKS,
+  NON_SEQUENTIAL_STAGES,
+} = require('../constants');
 const pipelineStatusService = require('../services/pipelineStatusService');
 const segmentParser = require('../services/segmentParser');
 const chapterLabel = require('../lib/chapterLabel');
@@ -294,10 +298,11 @@ router.get('/dashboard', requireAuth, async (req, res) => {
 
     // Get edits marked for discussion (replaces blocked issues)
     try {
-      const discussEdits = segmentEditorService.getDiscussEdits(10);
-      dashboard.needsAttention.blockedIssues = discussEdits.length;
+      // The stat is a real COUNT; the items list below is a deliberate page of
+      // 5. Deriving the count from the paged list saturated it (C10-R4).
+      dashboard.needsAttention.blockedIssues = segmentEditorService.countDiscussEdits();
 
-      for (const edit of discussEdits.slice(0, 5)) {
+      for (const edit of segmentEditorService.getDiscussEdits(5)) {
         dashboard.needsAttention.items.push({
           type: 'blocked',
           description: edit.editor_note || `${edit.segment_id} til umræðu`,
@@ -1531,18 +1536,27 @@ function formatChapterStatus(statusData) {
     return entry;
   });
 
-  // Calculate next stage
+  // Calculate next stage. Non-sequential stages are skipped: nothing advances
+  // them, so including one would pin nextStage there forever — and nextStage
+  // feeds the dashboard's assignment proposals (:196-203) and the meeting
+  // agenda's "Næsta skref" line (:851). Same list the DB read model uses
+  // (constants.NON_SEQUENTIAL_STAGES), so the two cannot disagree.
   let nextStage = null;
 
   for (let i = 0; i < stages.length; i++) {
+    if (NON_SEQUENTIAL_STAGES.includes(stages[i].stage)) continue;
     if (stages[i].status !== 'complete') {
       nextStage = stages[i].stage;
       break;
     }
   }
 
-  // Calculate progress percentage (exclude extraction — it's a setup step, not translation work)
-  const PROGRESS_STAGES = stages.filter((s) => s.stage !== 'extraction');
+  // Calculate progress percentage. Exclude extraction — it's a setup step, not
+  // translation work — and non-sequential stages, which would otherwise cap a
+  // fully published chapter below 100% forever.
+  const PROGRESS_STAGES = stages.filter(
+    (s) => s.stage !== 'extraction' && !NON_SEQUENTIAL_STAGES.includes(s.stage)
+  );
   const completedStages = PROGRESS_STAGES.filter((s) => s.complete).length;
   const progress = Math.round((completedStages / PROGRESS_STAGES.length) * 100);
 
@@ -1623,13 +1637,10 @@ function suggestNextActions(statusData, book) {
       action: 'Linguistic review (Pass 1) in segment editor',
       command: '/review-chapter',
     });
-  } else if (!isComplete('tmCreated')) {
-    actions.push({
-      stage: 'tmCreated',
-      action: 'Create TM via Matecat Align',
-      manual: true,
-      instructions: 'Run prepare-for-align, then upload to Matecat Align',
-    });
+    // No `tmCreated` branch: the stage is non-sequential (see
+    // constants.NON_SEQUENTIAL_STAGES) and nothing advances it, so this chain
+    // would have parked here forever telling editors to run Matecat Align — a
+    // tool this pipeline retired. TM regeneration is automatic (`tmService`).
   } else if (!isComplete('injection')) {
     actions.push({
       stage: 'injection',
