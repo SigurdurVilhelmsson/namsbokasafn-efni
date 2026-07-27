@@ -112,8 +112,19 @@ fi
 # better-sqlite3 built for a different NODE_MODULE_VERSION.
 export PATH="/usr/bin:$PATH"
 if command -v node > /dev/null 2>&1; then
-  if ! node "${PROJECT_ROOT}/server/scripts/export-terminology.js" >> "$LOG_FILE" 2>&1; then
-    log "WARN: glossary export failed — continuing with the content backup"
+  # ⚠️ `timeout` is not belt-and-braces. A HANG is the one failure the `if !`
+  # wrapper cannot catch — it tests the exit status of a process that never
+  # returns — and a hang blocks this script before write_heartbeat, which is
+  # precisely the outcome the containment exists to prevent, arriving through
+  # the one door the wrapper does not watch. The risk is concrete: this caller
+  # opens sessions.db as a SECOND process while the live editorial server holds
+  # it, so lock contention is a real possibility. There is also no flock here,
+  # so a hung export would let the next 2h tick start a second
+  # add/commit/push against the same working tree. 120s is far above the
+  # sub-second this normally takes, and far below the 2h cron period.
+  if ! timeout 120 node "${PROJECT_ROOT}/server/scripts/export-terminology.js" \
+       >> "$LOG_FILE" 2>&1; then
+    log "WARN: glossary export failed or timed out — continuing with the content backup"
   fi
 else
   log "WARN: node not found in cron PATH — glossary export skipped"

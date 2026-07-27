@@ -365,8 +365,14 @@ describe('git-backup.sh glossary export (register C14)', () => {
     );
     const { status } = runBackup();
     expect(status).toBe(0);
-    expect(git(['show', '--stat', '--name-only', 'HEAD'])).toMatch(
-      /books\/prufubok\/glossary\/glossary-unified\.json/
-    );
+    // ⚠️ Asserting the PATH alone is not enough, and neither is exit 0. The
+    // fixture already commits this path in beforeEach, and a run where the
+    // export never happened stages nothing, takes the `no_changes` branch,
+    // and still exits 0 — so a `--name-only` regex would match either way.
+    // These two assertions are what actually separate "ran before staging"
+    // from "never ran": `no_changes` never yields status `success`, and only
+    // a real export puts the fake's distinguishing value into the commit.
+    expect(readStatus().status).toBe('success');
+    expect(git(['show', 'HEAD:books/prufubok/glossary/glossary-unified.json'])).toMatch(/syra/);
   });
 });
