@@ -13,6 +13,7 @@ There are two layers:
 | `BACKUP_REMOTE` | `backup-db.sh`, `verify-db-backup.sh` | *(unset → off-box skipped)* | An `rclone` **crypt** remote path, e.g. `secret:namsbokasafn-db`. **Must end in `:` or `/`** — the script fails loud (`exit 5`) otherwise, because a missing separator munges the object name and silently breaks retention. |
 | `BACKUP_REMOTE_KEEP` | `backup-db.sh` | `30` | How many most-recent objects to keep off-box (older ones pruned). |
 | `OFFBOX_BACKUP_STALE_HOURS` | the server (`/api/health`) | `26` | Age past which `/api/health` flags the off-box backup `stale` (one missed 6 h cycle + margin). |
+| `CONTENT_BACKUP_STALE_HOURS` | the server (`/api/health`) | `6` | Age past which `/api/health` flags the **content** backup `stale` (two missed 2 h cycles + margin). |
 
 **The encryption passphrase is NOT an environment variable.** Encryption is the `rclone` crypt remote's job (client-side — plaintext never leaves the box). The passphrase lives in the rclone config (`rclone config`, or `RCLONE_CONFIG_<NAME>_PASSWORD`). There is deliberately no `BACKUP_ENCRYPTION_KEY` the scripts read.
 
@@ -41,7 +42,23 @@ The crypt passphrase is **not** on the cron line — it lives in the rclone conf
 
 ## Deploy sequencing (expected "degraded")
 
-`/api/health` reports `checks.offbox_backup = { age_hours, stale, ok }` and flips overall `status` to `"degraded"` when the backup is stale or absent. **Immediately after a fresh deploy this is expected** — there is no heartbeat until the first successful off-box upload. Run `BACKUP_REMOTE=secret: scripts/backup-db.sh` once (or wait for the first cron cycle) and `/api/health` returns to `"ok"`. (`"degraded"` does not block deploy: the deploy gate keys on HTTP 200, which `/api/health` always returns, and the deploy workflow whitelists both `"ok"` and `"degraded"`.)
+`/api/health` reports `checks.offbox_backup = { age_hours, stale, ok }` and flips overall `status` to `"degraded"` when the backup is stale or absent. **Immediately after a fresh deploy this is expected** — there is no heartbeat until the first successful off-box upload. Run `BACKUP_REMOTE=secret: scripts/backup-db.sh` once (or wait for the first cron cycle) and `/api/health` returns to `"ok"`. (`"degraded"` does not block deploy: `scripts/deploy.sh` keys on HTTP 200, which `/api/health` always returns while the server is up. It **prints** the status and the names of any not-ok checks rather than gating on them.)
+
+## The other cron: content backup (`git-backup.sh`)
+
+This document is about `sessions.db`. The 2-hourly `scripts/git-backup.sh` cron protects a different asset — the reviewed content under `books/` — by committing and pushing it to `main`. It is the **only** route by which reviewed translations leave the production box.
+
+It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-content-backup` is written **only on a healthy run**, and a run that found nothing to commit counts as healthy (a quiet weekend is a working cron). `/api/health` reports:
+
+```json
+"content_backup": { "age_hours": 2, "stale": false, "last_status": "success", "message": "Pushed a1b2c3d", "ok": true }
+```
+
+`last_status` and `message` come from `pipeline-output/backup-status.json` and are **detail only** — `ok` is driven by heartbeat freshness alone, so one transient failure self-heals within a cycle without alarming, while a persistent one goes stale.
+
+**Nothing polls `/api/health`.** `./scripts/deploy.sh` prints the status and the names of any not-ok checks at the end of every deploy; that is the routine surface. To check on demand: `curl -s http://localhost:3000/api/health`.
+
+⚠️ **The cron deliberately never fetches before pushing.** The `merge.ours.driver` for the perpetually-dirty `books/*/translation-errors.json` is registered by `deploy.sh`, not by cron, so an unattended `git pull --rebase` here would turn a visible push failure into a repository wedged mid-rebase on production. A rejected push instead fails loudly, logs `git push failed (local ahead N, behind M)`, and goes stale in `/api/health`; resolve it by hand on the box.
 
 ## Restore runbook
 
