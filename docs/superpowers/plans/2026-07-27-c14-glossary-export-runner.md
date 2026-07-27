@@ -426,14 +426,35 @@ export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
   const glossaryPath = path.join(glossaryDir, 'glossary-unified.json');
   if (!fs.existsSync(glossaryPath)) return null;
 
+  let dropped = null;
+  let glossary;
   try {
     const data = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
-    const glossary = formatGlossary(data.terms || [], { domain, approvedOnly: true, onSkipped });
-    if (glossary.terms.length === 0) return null;
-    return glossary;
+    // An inner callback that CANNOT throw, so the caller's callback never
+    // runs inside this catch-all. Handing `onSkipped` straight to
+    // formatGlossary would mean a throwing caller callback is swallowed and
+    // returned as `null` — indistinguishable from corrupt JSON, and a
+    // fail-loud violation.
+    glossary = formatGlossary(data.terms || [], {
+      domain,
+      approvedOnly: true,
+      onSkipped: (d) => {
+        dropped = d;
+      },
+    });
   } catch {
     return null;
   }
+
+  // BEFORE the empty-check, deliberately. When every approved term is
+  // malformed, terms.length is 0 and this function returns null — and the
+  // caller then prints "none available", the same message as having no
+  // glossary file at all. Reporting first is what keeps the worst case
+  // (a wholly corrupt glossary) from reading as the benign one.
+  if (dropped && typeof onSkipped === 'function') onSkipped(dropped);
+
+  if (glossary.terms.length === 0) return null;
+  return glossary;
 }
 ```
 
@@ -450,16 +471,20 @@ Then replace `tools/api-translate.js:1059-1067` (the `// Load glossary` block in
         skippedCount = dropped.length;
       },
     });
+    // Surfacing the drop count at the MT stage is deliberate: the same
+    // reasoning as countInlineMarkers — a data defect must be visible where
+    // it happens, not inferred three stages downstream from bad output.
+    const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
     if (glossary) {
-      // Surfacing the drop count at the MT stage is deliberate: the same
-      // reasoning as countInlineMarkers — a data defect must be visible where
-      // it happens, not inferred three stages downstream from bad output.
-      const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
       console.log(
         `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
       );
     } else {
-      console.log('Glossary: none available (continuing without)');
+      // The count belongs here TOO. A glossary whose every approved term was
+      // malformed loads as null, and without the count this line is identical
+      // to the one an operator sees with no glossary file at all — the worst
+      // case rendered indistinguishable from the benign one.
+      console.log(`Glossary: none available${skipNote} (continuing without)`);
     }
   }
 ```
