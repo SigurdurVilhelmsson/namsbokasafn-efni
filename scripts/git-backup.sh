@@ -54,18 +54,33 @@ EOF
 }
 
 # Heartbeat: written ONLY on a healthy terminal path — a successful push, or
-# a run that found nothing to commit. A run that failed to stage, commit or
-# push must leave it untouched.
+# a run that found nothing to commit AND nothing unpushed. A run that failed
+# to stage, commit or push must leave it untouched.
 #
 # Why not just read backup-status.json? That file is written on EVERY
 # outcome, so once the cron stops entirely it keeps reading "success"
 # forever. Inverting the signal makes absence the alarm. `no_changes` counts
-# as healthy on purpose: a quiet weekend is a working cron, and an alarm that
-# cries wolf every weekend is not an alarm.
+# as healthy ONLY when nothing is unpushed: a quiet weekend is a working
+# cron, and an alarm that cries wolf every weekend is not an alarm — but a
+# quiet run sitting on top of a rejected push is exactly the failure this
+# detector exists to catch, and it must not clear the alarm (see
+# unpushed_backlog below).
 #
 # Consumed by GET /api/health — see server/lib/contentBackupHealth.js.
 write_heartbeat() {
   date -u +%Y-%m-%dT%H:%M:%SZ > "$HEARTBEAT_FILE"
+}
+
+# How many commits exist here that origin/main does not have.
+#
+# `git push` updates refs/remotes/origin/main on success, so this is exact
+# and needs NO network: 0 means everything committed by this cron has landed,
+# and >0 means a previous run's push failed and its content is still only on
+# this box. Echoes the count, or the empty string if it cannot be determined
+# (no origin/main ref) — the caller treats indeterminate as unhealthy, since
+# a detector must not report healthy about something it cannot see.
+unpushed_backlog() {
+  git rev-list --count origin/main..HEAD 2>/dev/null || true
 }
 
 cd "$PROJECT_ROOT"
@@ -123,6 +138,21 @@ fi
 
 # Check if there's anything to commit
 if git diff --cached --quiet; then
+  # Nothing new — but "nothing new" is only healthy if everything already
+  # committed has actually reached origin. A run that quietly refreshed the
+  # heartbeat here would clear the alarm two hours after a rejected push,
+  # before the staleness threshold could ever fire.
+  BACKLOG="$(unpushed_backlog)"
+  if [ -z "$BACKLOG" ]; then
+    log "ERROR: could not determine unpushed backlog (no origin/main ref)"
+    write_status "error" "could not determine unpushed backlog"
+    exit 1
+  fi
+  if [ "$BACKLOG" -gt 0 ]; then
+    log "ERROR: unpushed backlog: ${BACKLOG} commit(s) not on origin/main"
+    write_status "error" "unpushed backlog: ${BACKLOG} commit(s)"
+    exit 1
+  fi
   log "No changes to back up"
   write_status "no_changes" "Nothing to commit"
   write_heartbeat

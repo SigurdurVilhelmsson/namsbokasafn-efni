@@ -44,13 +44,18 @@ Add `HEARTBEAT="${PROJECT_ROOT}/pipeline-output/.last-content-backup"` and a `wr
 
 | Script line | Outcome | Heartbeat | Rationale |
 |---|---|---|---|
-| `:110` | `no_changes` | **written** | The cron ran and was healthy; there was simply nothing to commit. A quiet weekend must not read as a dead cron. |
+| `:110` | `no_changes`, nothing unpushed | **written** | The cron ran and was healthy; there was simply nothing to commit. A quiet weekend must not read as a dead cron. |
+| `:110` | `no_changes`, backlog > 0 | **not written**, status `error` | ⚠️ **Amended during implementation — see below.** |
 | `:129` | `success` | written | Committed and pushed. |
 | `:103` | `git add` failed | not written | |
 | `:117` | `git commit` failed | not written | |
 | `:124` | `git push` failed | not written | The failure mode the item exists for. |
 
 The `no_changes` case is the single most likely way to ship a false-alarm generator, and gets a dedicated test (§8).
+
+> **⚠️ AMENDED 2026-07-27, during the branch review.** As first designed, this table made `no_changes` unconditionally healthy — **a false-clear that would have defeated the detector's primary purpose.** After a rejected push the local `auto-backup` commit remains, so the *next* cron run finds nothing new to commit, takes the `no_changes` path, and refreshes the heartbeat. Because content changes are far sparser than the 2-hourly cron, that quiet run is the *likely* next run, and it lands ~2 h after the failure — well before the 6 h staleness threshold could fire. The non-fast-forward case, which C11(b) names as *already* a live silent failure mode, would therefore essentially never have alarmed.
+>
+> The fix keeps both properties apart instead of conflating them: `no_changes` is healthy **only when `git rev-list --count origin/main..HEAD` is 0**. That check needs no network — a successful `git push` updates `refs/remotes/origin/main` — so it adds no failure mode of its own. An indeterminate count (no `origin/main` ref) is treated as **unhealthy**, on the same "absence is the alarm" logic the whole design rests on: a detector must not report healthy about something it cannot see. Pinned by two tests in `scripts/__tests__/git-backup.test.mjs`, the first mutation-checked.
 
 `pipeline-output/` is gitignored (`.gitignore:51`), matching the off-box heartbeat's location.
 
@@ -143,7 +148,7 @@ Extends the two existing harnesses; no new test infrastructure.
 **`scripts/__tests__/git-backup.test.mjs`** (fixture project root + bare origin, per the existing helper):
 
 1. **success** → `pipeline-output/.last-content-backup` exists and is fresh.
-2. **`no_changes`** → heartbeat still written. *(The false-alarm guard: a healthy cron with nothing to commit must not read as dead.)*
+2. **`no_changes` with an empty unpushed backlog** → heartbeat still written. *(The false-alarm guard: a healthy cron with nothing to commit must not read as dead.)* **`no_changes` with a backlog > 0 → `error`, no heartbeat** (see the amendment in §3).
 3. **push failure (unreachable remote)** → **pre-create the heartbeat with an old mtime, then assert it is unchanged.** Pre-creating is essential: without it the assertion passes trivially because the file never existed. Also covers §4.1's fallback — the diagnostic fetch fails too, so the counts are omitted and the exit code stays `1`.
 4. **push failure (non-fast-forward)** → a second clone pushes to the bare origin first, so the status message and log carry `local ahead 1, behind 1`.
 5. **syntax** → `bash -n` on both modified shell scripts, so a quoting mistake in `deploy.sh`'s new health-printing block fails the suite rather than the next deploy.
@@ -179,7 +184,7 @@ Fix the wrong document, never log it as a to-do in another (CLAUDE.md § *One so
 ## 12. Success criteria
 
 - A push failure on production leaves the heartbeat stale, and `GET /api/health` reports `status: "degraded"` with `checks.content_backup.ok === false` within 6 hours.
-- A healthy cron with nothing to commit keeps `content_backup.ok === true` indefinitely.
+- A healthy cron with nothing to commit — and nothing unpushed — keeps `content_backup.ok === true` indefinitely.
 - `./scripts/deploy.sh` prints the names of any not-ok health checks.
 - `git reset --hard origin/main` no longer appears in any deploy path, pinned by a mutation-checked test.
 - `npm test` green from the repo root.

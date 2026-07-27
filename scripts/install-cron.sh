@@ -11,8 +11,9 @@ DEPLOY_PATH="${DEPLOY_PATH:-/home/siggi/repos/namsbokasafn-efni}"
 cat <<EOF
 # === namsbokasafn backup jobs ===
 # Git backup: content files every 2 hours.
-# Writes pipeline-output/.last-content-backup on every healthy run (including
-# "nothing to commit"); /api/health reports checks.content_backup stale after
+# Writes pipeline-output/.last-content-backup on every healthy run ("nothing
+# to commit" counts, unless a prior push left commits unpushed — that fails
+# loud); /api/health reports checks.content_backup stale after
 # CONTENT_BACKUP_STALE_HOURS (default 6) and ./scripts/deploy.sh prints it.
 # See docs/technical/backup-and-restore.md.
 0 */2 * * * ${DEPLOY_PATH}/scripts/git-backup.sh

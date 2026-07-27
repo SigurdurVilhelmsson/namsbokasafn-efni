@@ -231,6 +231,58 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     expect(readLog()).toMatch(/ERROR: git push failed \(local ahead 1, behind 1\)/);
   });
 
+  it('does NOT clear the alarm on a quiet run while a prior push is still unpushed', () => {
+    // THE FALSE-CLEAR PIN. Content changes are far sparser than the 2-hourly
+    // cron, so most runs take the nothing-to-commit path. Without the
+    // unpushed-backlog check, the sequence below refreshes the heartbeat two
+    // hours after a rejected push — before the 6 h threshold can ever fire —
+    // and /api/health reports the content backup healthy while reviewed
+    // translations sit only on production's disk. That non-fast-forward case
+    // is the register's primary detection target, not a corner case.
+
+    // 1. Diverge the remote, so this run's push is rejected and a local
+    //    auto-backup commit is left stranded.
+    const other = mkdtempSync(path.join(tmpdir(), 'gitbackup-other-'));
+    execFileSync('git', ['clone', '--quiet', bare, other]);
+    execFileSync('git', ['config', 'user.email', 'annar@example.is'], { cwd: other });
+    execFileSync('git', ['config', 'user.name', 'Annar'], { cwd: other });
+    writeFileSync(path.join(other, 'other.txt'), 'from elsewhere\n');
+    execFileSync('git', ['add', '-A'], { cwd: other });
+    execFileSync('git', ['commit', '--quiet', '-m', 'other side'], { cwd: other });
+    execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
+    rmSync(other, { recursive: true, force: true });
+
+    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":6}\n');
+    expect(runBackup(true).status).toBe(1);
+    expect(existsSync(heartbeatPath())).toBe(false);
+
+    // 2. The next cycle: nothing new to commit, but the stranded commit is
+    //    still unpushed. This must NOT read as healthy.
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(existsSync(heartbeatPath())).toBe(false);
+    expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toMatch(/unpushed backlog: 1 commit/);
+    expect(readLog()).toMatch(/ERROR: unpushed backlog: 1 commit/);
+  });
+
+  it('treats an undeterminable backlog as unhealthy, not as healthy', () => {
+    // If refs/remotes/origin/main is missing, the backlog count cannot be
+    // computed. The design's thesis is that absence is the alarm, so an
+    // indeterminate signal must fail loud rather than silently pass — the
+    // opposite choice would reintroduce the false-clear through the one path
+    // where the script cannot see what it is asserting.
+    git(['update-ref', '-d', 'refs/remotes/origin/main']);
+
+    const result = runBackup(true);
+
+    expect(result.status).toBe(1);
+    expect(existsSync(heartbeatPath())).toBe(false);
+    expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toMatch(/could not determine/i);
+  });
+
   it('does NOT write the heartbeat when the commit itself fails', () => {
     // A failing pre-commit hook is a deterministic way to make `git commit`
     // fail *after* staging succeeds — isolates the commit-failure branch

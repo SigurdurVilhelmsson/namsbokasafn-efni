@@ -48,7 +48,7 @@ The crypt passphrase is **not** on the cron line — it lives in the rclone conf
 
 This document is about `sessions.db`. The 2-hourly `scripts/git-backup.sh` cron protects a different asset — the reviewed content under `books/` — by committing and pushing it to `main`. It is the **only** route by which reviewed translations leave the production box.
 
-It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-content-backup` is written **only on a healthy run**, and a run that found nothing to commit counts as healthy (a quiet weekend is a working cron). `/api/health` reports:
+It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-content-backup` is written **only on a healthy run**. A run that found nothing to commit counts as healthy **only if nothing is unpushed** — a quiet weekend is a working cron, but a quiet run sitting on top of a rejected push is precisely the failure this detector exists to catch, and it must not clear the alarm. The backlog check is `git rev-list --count origin/main..HEAD`, which needs no network (a successful push updates the remote-tracking ref). `/api/health` reports:
 
 ```json
 "content_backup": { "age_hours": 2, "stale": false, "last_status": "success", "message": "Pushed a1b2c3d", "ok": true }
