@@ -321,11 +321,14 @@ app.get('/api/health', (req, res) => {
   // backup-status.json that nothing read, with no MAILTO on the cron. The
   // heartbeat is written only on healthy runs, so staleness is the alarm.
   try {
-    const { readContentBackupHealth } = require('./lib/contentBackupHealth');
+    const { readContentBackupHealth, DEFAULT_STALE_HOURS } = require('./lib/contentBackupHealth');
     checks.content_backup = readContentBackupHealth({
       projectRoot: path.join(__dirname, '..'),
       nowMs: Date.now(),
-      staleHours: Number(process.env.CONTENT_BACKUP_STALE_HOURS) || 6,
+      // The default lives in the lib, next to the comment explaining why it
+      // is 6 (two missed 2 h cycles + margin). Repeating the literal here
+      // would let the two drift apart silently.
+      staleHours: Number(process.env.CONTENT_BACKUP_STALE_HOURS) || DEFAULT_STALE_HOURS,
     });
   } catch (err) {
     checks.content_backup = { ok: false, error: err.message };
