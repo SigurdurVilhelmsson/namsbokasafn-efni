@@ -161,6 +161,11 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
 **Pre:** check what Linode-level backups exist before building anything — this unit may shrink to documentation + one cron line.
 
 - [x] **6.1** Terminology export from the DB: `server/scripts/export-terminology.js` + `terminologyService.exportBookGlossary` write `glossary-unified.json` per book (subject-scoped, sibling translations as `alternatives`, fresh `generated` timestamp). `git-backup.sh` already stages `books/`, so exports reach git. Fixes the 2026-03-09-stale export. *(CSV emit + the cron schedule line are the remaining bits; JSON is what `api-translate.js` consumes.)*
+  - ⚠️ **Corrected 2026-07-27 (register C14):** the parenthetical above is FALSE and was
+    never true — `scripts/git-backup.sh`'s PATHSPECS had no `books/*/glossary/` entry, so
+    the export could not reach git at all. This sentence is why 6.1 was marked complete
+    while its output could not leave the production box; the cron invocation and the
+    pathspec both landed in C14. **The live record is the active register, not this line.**
 - [x] **6.2** `sessions.db` backup: **already exists** — `scripts/backup-db.sh` (WAL checkpoint → timestamped copy → keep 30). Restore procedure documented in architecture.md § Data Durability & Recovery. *(Confirm a cron entry + Linode snapshots on the box.)*
 - [x] **6.3** Recovery expectations documented in `architecture.md` § Data Durability & Recovery: a table of asset → store → backup → max data-loss window, distinguishing git-backed (content, TMX, glossary) from DB-only (edits, discussions, users, notifications) and derived/rebuildable (`tm_segments`).
 
