@@ -3595,7 +3595,16 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       // leftover text against the caption segment: those are two independently
       // editable translations, so an equality check would silently stop matching
       // the first time an editor revises either one.
-      const injectText = paraContainsOnlyFigures(paraEl)
+      const onlyFigures = paraContainsOnlyFigures(paraEl);
+      // Preserve the pre-C13 fail-safe: an untranslated para keeps its original
+      // (English) content rather than being blanked. Content loss is worse than
+      // EN residue, which the A2 residue gate already reports. Skipping here is
+      // byte-identical to the `if (!paraText) continue` the old path used, so
+      // the F4 fail-loud on an unexpanded inline-referenced table is unchanged.
+      // A figure-only para is exempt: there is no prose to lose, and its
+      // whitespace-only text nodes are what we want removed.
+      if (!onlyFigures && !paraText) continue;
+      const injectText = onlyFigures
         ? ''
         : paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
       const idsBefore = new Set(keptTableIds);

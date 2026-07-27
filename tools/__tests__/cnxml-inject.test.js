@@ -1269,6 +1269,34 @@ describe('buildNoteDom figure inside para (C13)', () => {
     const result = buildNoteDom(element, mixedGetSeg, {}, mixedOriginal, makeCtx());
     expect(result).toContain('Skoðaðu myndina.');
   });
+
+  it('strips the expanded media from a mixed-prose para (no orphan copy)', () => {
+    const mixedOriginal = ORIGINAL.replace(
+      '<para id="fs-id2000117">\n<figure',
+      '<para id="fs-id2000117">Skoðaðu myndina.\n<figure'
+    );
+    const mixedSegments = new Map(segments);
+    mixedSegments.set('m66440:para:fs-id2000117', `Skoðaðu myndina. [[MEDIA:1]] ${CAPTION_IS}`);
+    const mixedGetSeg = (id) =>
+      reverseInlineMarkup(mixedSegments.get(id) ?? '', {}, INLINE_MEDIA, []);
+    const result = buildNoteDom(element, mixedGetSeg, {}, mixedOriginal, makeCtx());
+    const outsideFigures = result.replace(/<figure[\s\S]*?<\/figure>/g, '');
+    expect(outsideFigures).not.toContain('<media');
+  });
+
+  it('leaves the source text of an UNTRANSLATED mixed-prose para in place', () => {
+    // The pre-C13 path did `if (!paraText) continue`, so a para with no
+    // translation kept its original English rather than being blanked. The new
+    // branch must preserve that fail-safe: content loss is worse than EN residue,
+    // which the A2 residue gate already reports.
+    const mixedOriginal = ORIGINAL.replace(
+      '<para id="fs-id2000117">\n<figure',
+      '<para id="fs-id2000117">Look at the figure.\n<figure'
+    );
+    const emptyGetSeg = (id) => (id === 'm66440:para:fs-id2000117' ? '' : (segments.get(id) ?? ''));
+    const result = buildNoteDom(element, emptyGetSeg, {}, mixedOriginal, makeCtx());
+    expect(result).toContain('Look at the figure.');
+  });
 });
 
 // C13 end-to-end: the destruction only happens after buildCnxml's document-level
