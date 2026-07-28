@@ -93,19 +93,28 @@ the same semantics as `git-backup.sh`'s `no_changes` healthy path).
 
 ### 4.2 Exporter — shrink guard
 
-Compares **approved** counts specifically, because `approvedOnly: true` (`api-translate.js:629`)
-is what actually primes MT.
+⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 1 — CRITICAL):** this
+section originally said the approved-count check "subsumes the empty-DB case of `0`". That is
+false, and it was the bug: `books/liffraedi-2e/glossary/glossary-unified.json` — the largest
+committed glossary in the repo — is 2262 terms, **all `needs_review`, 0 approved**. An
+approved-only check starts at `prevApproved === 0` for that book and can never fire, so an
+empty export would have been written and pushed. The guard now checks **both** the approved
+count (what primes MT — `approvedOnly: true`, `api-translate.js:629`) and the **total** term
+count regardless of status, refusing when either falls below the ratio. See
+`server/lib/glossaryExportDecision.js` and the register's C14 entry for the verified
+before/after against the real committed files.
 
-Refuse to write, for that book, when **all** of:
+Refuse to write, for that book, when **either** of the following holds:
 
-- an existing file is present and parseable, **and**
-- its approved count is `> 0`, **and**
-- the new export's approved count is `< 50%` of it (which subsumes the empty-DB case of `0`)
+- an existing file has approved count `> 0` **and** the new export's approved count is
+  `< 50%` of it, **or**
+- an existing file has total term count `> 0` (any status) **and** the new export's total
+  term count is `< 50%` of it
 
-…unless `--force` is passed. A refusal writes nothing and logs the two counts. Rationale for a
-ratio rather than a strict `>=`: legitimate shrinkage happens (a head editor un-approves;
-item-18 subject scoping tightens). 50% is deliberately loose — it targets catastrophe, not
-drift.
+…unless `--force` is passed. A refusal writes nothing and logs all four counts (both totals,
+both approved). Rationale for a ratio rather than a strict `>=`: legitimate shrinkage happens
+(a head editor un-approves; item-18 subject scoping tightens). 50% is deliberately loose — it
+targets catastrophe, not drift.
 
 **An unparseable or absent existing file is not a refusal** — there is no baseline to protect,
 so the export writes and logs that it established a new baseline. Refusing there would wedge
@@ -113,16 +122,26 @@ the exporter permanently on a corrupt file it is capable of replacing.
 
 `--dry-run` keeps its current meaning and additionally reports what the guard *would* do.
 
-**Exit-code contract** (`git-backup.sh` and the heartbeat both key off it): `0` only when every
-book resolved healthily; non-zero if **any** book was refused or threw. Books are processed
+**Exit-code contract** (`git-backup.sh` keys off it): `0` only when every requested book
+resolved healthily; non-zero if **any** book was refused or threw. Books are processed
 independently — one refusal must not skip the remaining books.
+
+⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 6): exit `0` is NOT
+equivalent to "the heartbeat was written".** The sentence originally here claimed they were
+exactly equivalent, immediately followed by "`--dry-run` never writes it" — `--dry-run` can
+return exit `0` (every book legitimately unchanged/would-write) while writing no heartbeat, so
+the two sentences contradicted each other. The real rule, restated in § 4.3 below and in
+`export-terminology.js`'s header: the heartbeat is written only on an **unfiltered** (no
+`--book`), **non-dry-run** pass with **zero failures**. A `--book <slug>` run or a `--dry-run`
+can each legitimately exit `0` while leaving the heartbeat untouched (a `--book` run says
+nothing about the health of the OTHER books — see the same review's finding 5).
 
 ### 4.3 Exporter — heartbeat
 
-Write `pipeline-output/.last-glossary-export` only when **every** book resolved healthily
-(written, or legitimately unchanged) — i.e. exactly when the exit code is `0`. A refusal or
-crash leaves it untouched — absence is the alarm, per the C11(b) doctrine
-(`git-backup.sh:56-72`). `--dry-run` never writes it.
+Write `pipeline-output/.last-glossary-export` only on an unfiltered (no `--book`), non-dry-run
+pass where **every** discovered book resolved healthily (written, or legitimately unchanged).
+A refusal, a crash, `--dry-run`, or a `--book <slug>` run all leave it untouched — absence is
+the alarm, per the C11(b) doctrine (`git-backup.sh:56-72`).
 
 **Discovering zero books is unhealthy**, not vacuously healthy: the exporter selects books by
 the presence of `books/<slug>/glossary/` (`export-terminology.js:49-51`), so an empty set means

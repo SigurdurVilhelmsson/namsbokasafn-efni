@@ -469,7 +469,9 @@ Schedule it from cron (e.g. `0 */6 * * *`); confirm Linode disk snapshots as a
 second line of defense.
 
 **Glossary freshness (6.1):** the committed `glossary-unified.json` is the MT
-glossary `api-translate.js` sends to Málstaður. `scripts/git-backup.sh` regenerates
+glossary `api-translate.js` sends to Málstaður — but that is not its only consumer;
+it also feeds the render path (`substituteMathLabels`), so a shrink here is
+reader-visible too (full consumer accounting: register C14). `scripts/git-backup.sh` regenerates
 it from the terminology DB via `server/scripts/export-terminology.js` and stages
 `books/*/glossary/` in the same run, so newly approved terms reach MT without a
 manual export (register C14 — before that, the script had no caller *and* no
