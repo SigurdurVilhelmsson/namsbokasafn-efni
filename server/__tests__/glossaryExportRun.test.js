@@ -51,6 +51,25 @@ const payload = (terms, generated = '2026-07-27T09:00:00.000Z') => ({
   terms,
 });
 
+/**
+ * `total` terms, `approvedCount` of them approved — the shape every real
+ * committed glossary actually has (efnafraedi-2e / lifraen-efnafraedi are
+ * both 1117 total / 617 approved). Mirrors glossaryExportDecision.test.js's
+ * `mixed()`. `approved(n)` above always has total === approved, so a message
+ * built from it can't distinguish "reports both counts" from "reports one
+ * count twice" — whole-branch adversarial review (2026-07-28), ROUND 4:
+ * verified that deleting the total-count pair from the refusal, dry-run and
+ * success messages left every then-existing test green, precisely because
+ * every fixture in this file was `approved()`-shaped. Use `mixed()` whenever
+ * a test needs to prove BOTH counts are actually reported.
+ */
+const mixed = (total, approvedCount) =>
+  Array.from({ length: total }, (_, i) => ({
+    english: `t${i}`,
+    icelandic: `i${i}`,
+    status: i < approvedCount ? 'approved' : 'needs_review',
+  }));
+
 /** Create books/<slug>/glossary/, optionally with an existing export. */
 function seedBook(slug, existing) {
   const dir = path.join(root, 'books', slug, 'glossary');
@@ -104,6 +123,22 @@ describe('runGlossaryExport — writing', () => {
     seedBook('prufubok', JSON.stringify(payload(approved(5))));
     expect(run({ exportFn: () => payload(approved(6)) })).toBe(0);
     expect(readExport('prufubok').terms).toHaveLength(6);
+  });
+
+  it('the "wrote terms" success message states BOTH the total and approved counts', () => {
+    // Whole-branch adversarial review (2026-07-28), ROUND 4, IMPORTANT: like
+    // the dry-run message above, this `log()` line had NO test at all before
+    // this round. mixed() holds total and approved independent so all four
+    // numbers in the pinned string are distinct, proving both pairs are
+    // really reported.
+    seedBook('prufubok', JSON.stringify(payload(mixed(1117, 617))));
+    const logs = [];
+    const code = run({ exportFn: () => payload(mixed(1000, 560)), log: (m) => logs.push(m) });
+    expect(code).toBe(0);
+    const outPath = path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json');
+    expect(logs.join('\n')).toBe(
+      `prufubok: wrote terms 1117 → 1000 (approved 617 → 560) → ${outPath}`
+    );
   });
 
   it('does NOT rewrite when only the generated stamp differs', () => {
@@ -162,12 +197,28 @@ describe('runGlossaryExport — shrink guard', () => {
     expect(after).toBe(before);
   });
 
-  it('logs both counts when it refuses', () => {
-    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+  it('states BOTH the total-term count and the approved-term count, not one pair reported twice', () => {
+    // Whole-branch adversarial review (2026-07-28), ROUND 4, IMPORTANT: this
+    // test used to be named "logs both counts when it refuses" and used
+    // approved(617) -> approved(3), where total === approved on BOTH sides
+    // by construction — so `toMatch(/617/)` and `toMatch(/3/)` were each
+    // satisfied by the SAME single pair of numbers, not by two distinct
+    // pairs. Verified: rewriting the source message to emit only the
+    // approved pair (dropping the total pair entirely) left the old
+    // assertions green. mixed() holds total and approved independent, so
+    // this pins the actual, exact message shape — both pairs, not a
+    // coincidental match.
+    seedBook('prufubok', JSON.stringify(payload(mixed(1117, 617))));
     const errors = [];
-    run({ exportFn: () => payload(approved(3)), logError: (m) => errors.push(m) });
-    expect(errors.join('\n')).toMatch(/617/);
-    expect(errors.join('\n')).toMatch(/3/);
+    run({
+      exportFn: () => payload(mixed(900, 300)),
+      logError: (m) => errors.push(m),
+    });
+    expect(errors.join('\n')).toBe(
+      'prufubok: REFUSING to write — terms would fall 1117 → 900 (approved 617 → 300). ' +
+        'The committed file may come from a different producer (tools/merge-glossary.js). ' +
+        'Investigate, then pass --force if the shrink is intended.'
+    );
   });
 
   it('--force overrides the refusal and writes', () => {
@@ -278,6 +329,110 @@ describe('runGlossaryExport — malformed exportFn payload', () => {
       'utf8'
     );
     expect(after).toBe(before);
+  });
+});
+
+describe('describeMalformedPayload branches, via the malformed-payload error message', () => {
+  // Whole-branch adversarial review (2026-07-28), ROUND 4, MINOR: verified
+  // that replacing describeMalformedPayload's whole body with `return '?'`
+  // left the pre-existing malformed-payload suite green — none of it pinned
+  // this function's actual output. It was also worse than the
+  // JSON.stringify it replaced: {terms: null} and {terms: {}} produced the
+  // IDENTICAL message (the classic `typeof null === 'object'` wart), and a
+  // renamed key (e.g. {glossary: [...]}) gave no hint what the payload
+  // actually contained — exactly the clue an operator needs to spot a
+  // refactor that renamed the field. These pin the DISTINCT fragment for
+  // each shape, including the array and primitive branches, which were
+  // never exercised at all before this round.
+  const cases = [
+    ['an array', [1, 2, 3], 'got an array, not an object with a terms property'],
+    ['a bare string', 'oops', 'got string'],
+    ['a bare number', 42, 'got number'],
+    [
+      'terms: null (no longer collides with terms: {})',
+      { terms: null },
+      "got an object whose 'terms' is null, not an array",
+    ],
+    [
+      'terms: {} — a non-array object (no longer collides with terms: null)',
+      { terms: {} },
+      "got an object whose 'terms' is object, not an array",
+    ],
+    [
+      "a renamed key (glossary instead of terms) reveals the payload's own keys",
+      { glossary: ['x'] },
+      "got an object with no 'terms' property (has keys [glossary])",
+    ],
+  ];
+
+  it.each(cases)('%s', (_label, badPayload, expectedFragment) => {
+    seedBook('bok-a');
+    const errors = [];
+    const code = run({
+      exportFn: () => badPayload,
+      logError: (m) => errors.push(m),
+    });
+    expect(code).toBe(1);
+    expect(errors.join('\n')).toContain(expectedFragment);
+  });
+});
+
+describe('runGlossaryExport — book parameter selects by `=== null`, not truthiness', () => {
+  // Whole-branch adversarial review (2026-07-28), ROUND 4, IMPORTANT: the
+  // consumer-side half of the same finding pinned in the `parseArgs`
+  // describe block above. parseArgs is not the only way to reach
+  // runGlossaryExport — it is called directly here in every test in this
+  // file, and could be called directly by a future caller that builds
+  // `options` itself — so the widen-to-"all books" hazard must be closed
+  // here too, independent of whatever parseArgs now rejects.
+  it('book: "" does not widen to every book — it is treated as one (missing) book, not "all books"', () => {
+    seedBook('bok-a');
+    seedBook('bok-b');
+    const seen = [];
+    const errors = [];
+    const code = run({
+      book: '',
+      exportFn: (slug) => {
+        seen.push(slug);
+        return payload(approved(1));
+      },
+      logError: (m) => errors.push(m),
+    });
+    expect(code).toBe(1);
+    expect(seen).toHaveLength(0); // neither bok-a nor bok-b was ever exported
+    expect(errors.join('\n')).toMatch(/no glossary directory/);
+  });
+
+  it('book: "   " (whitespace-only) does not widen to every book either', () => {
+    seedBook('bok-a');
+    seedBook('bok-b');
+    const seen = [];
+    const code = run({
+      book: '   ',
+      exportFn: (slug) => {
+        seen.push(slug);
+        return payload(approved(1));
+      },
+    });
+    expect(code).toBe(1);
+    expect(seen).toHaveLength(0);
+  });
+
+  it('book: null (the documented "all books" sentinel) still exports every book', () => {
+    // Companion positive case: proves the fix didn't also break the
+    // legitimate all-books path by, say, requiring truthiness AND null.
+    seedBook('bok-a');
+    seedBook('bok-b');
+    const seen = [];
+    const code = run({
+      book: null,
+      exportFn: (slug) => {
+        seen.push(slug);
+        return payload(approved(1));
+      },
+    });
+    expect(code).toBe(0);
+    expect(seen.sort()).toEqual(['bok-a', 'bok-b']);
   });
 });
 
@@ -463,7 +618,11 @@ describe('runGlossaryExport — dry run', () => {
     expect(heartbeatExists()).toBe(false);
   });
 
-  it('still reports what the shrink guard would do', () => {
+  it('still reports what the shrink guard would do (refusal fires even under --dry-run)', () => {
+    // NOTE: a catastrophic shrink hits the REFUSAL branch (logError) even
+    // with dryRun:true — the shrink-guard check runs before the dryRun
+    // check in runGlossaryExport, so this exercises the refusal message,
+    // not the "[dry-run] would write" message pinned below.
     seedBook('prufubok', JSON.stringify(payload(approved(617))));
     const errors = [];
     const code = run({
@@ -473,6 +632,27 @@ describe('runGlossaryExport — dry run', () => {
     });
     expect(code).toBe(1);
     expect(errors.join('\n')).toMatch(/617/);
+  });
+
+  it('the healthy "[dry-run] would write" message states BOTH the total and approved counts', () => {
+    // Whole-branch adversarial review (2026-07-28), ROUND 4, IMPORTANT: this
+    // message had NO test at all before this round — not even a `toMatch`.
+    // The sibling test above only exercises the REFUSAL message (logError);
+    // this is the actually-distinct `log()` line printed for a legitimate,
+    // non-refused change under --dry-run. mixed() holds total and approved
+    // independent so all four numbers in the pinned string are distinct,
+    // proving both pairs are really reported (not one pair twice).
+    seedBook('prufubok', JSON.stringify(payload(mixed(1117, 617))));
+    const logs = [];
+    const code = run({
+      exportFn: () => payload(mixed(1000, 560)),
+      dryRun: true,
+      log: (m) => logs.push(m),
+    });
+    expect(code).toBe(0);
+    expect(logs.join('\n')).toBe(
+      '[dry-run] prufubok: would write terms 1117 → 1000 (approved 617 → 560)'
+    );
   });
 });
 
@@ -517,6 +697,45 @@ describe('parseArgs', () => {
     expect(result.error).toBeTruthy();
     expect(result.book).toBe(null);
     expect(result.force).toBe(true);
+  });
+
+  // Whole-branch adversarial review (2026-07-28), ROUND 4, IMPORTANT: this is
+  // the THIRD recurrence of the same class of bug (finding 1 and the
+  // unrecognised-token fix above are the first two) — a value is checked for
+  // PRESENCE in one place and TRUTHINESS in another. Measured before this
+  // fix: `parseArgs(['--book', '', '--force'])` returned `book: '', force:
+  // true, error: null` — a clean parse — and `runGlossaryExport`'s `book ?
+  // [book] : listBooks(...)` then read that empty string as falsy and
+  // widened to every glossary-bearing book, with `--force` bypassing the
+  // shrink guard on all of them at once. These three pin the producer side
+  // (parseArgs itself); the sibling group in the "runGlossaryExport — book
+  // parameter" describe block below pins the consumer side. `--force` is
+  // placed BEFORE the bad `--book` token (matching the "does NOT silently
+  // fall back..." test above) so it is seen and recorded before the loop
+  // returns on the error — an unrecognised/erroring token still returns
+  // immediately, so anything AFTER it in argv is never reached (same
+  // property as the unrecognised-token tests below).
+  it('errors on an empty --book value instead of silently exporting every book', () => {
+    const result = parseArgs(['--force', '--book', '']);
+    expect(result.error).toBeTruthy();
+    expect(result.error).toMatch(/--book/);
+    expect(result.book).toBe(null);
+    expect(result.force).toBe(true);
+  });
+
+  it('errors on a whitespace-only --book value instead of silently exporting every book', () => {
+    const result = parseArgs(['--force', '--book', '   ']);
+    expect(result.error).toBeTruthy();
+    expect(result.book).toBe(null);
+    expect(result.force).toBe(true);
+  });
+
+  it('trims surrounding whitespace from an otherwise-valid --book value', () => {
+    // So `--book ' liffraedi-2e '` cannot become a slug carrying spaces that
+    // would never match a real books/<slug>/ directory.
+    const result = parseArgs(['--book', '  liffraedi-2e  ']);
+    expect(result.book).toBe('liffraedi-2e');
+    expect(result.error).toBe(null);
   });
 
   it("treats a following flag as --book's value — callers must not transpose", () => {

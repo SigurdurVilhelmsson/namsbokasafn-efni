@@ -106,14 +106,42 @@ function readExisting(outPath) {
  * circular reference, a BigInt) on exactly the kind of malformed value this
  * function exists to describe, which would propagate out of
  * runGlossaryExport uncaught — reinstating the abort-the-loop failure mode
- * the shape guard exists to prevent. This can't throw: every branch reads a
- * `typeof`, never serializes.
+ * the shape guard exists to prevent.
+ *
+ * ⚠️ Narrower guarantee than an earlier version of this comment claimed.
+ * "Can't throw" is true only in the sense that matters for the hazard above:
+ * no branch here SERIALIZES its argument, so a circular reference or a
+ * BigInt cannot throw here. But `'terms' in value`, `value.terms` and
+ * `Object.keys(value)` are still property reads, and a throwing getter on a
+ * sufficiently hostile object would throw at any of them — exactly like the
+ * `!Array.isArray(next.terms)` shape check one line above this function's
+ * call site, which does the same kind of read outside any try/catch. Both
+ * would abort the per-book loop the same way exportFn's own throw used to,
+ * before the round-3 fix. Deliberately left un-hardened rather than wrapping
+ * every read in a try: `next` only ever comes from
+ * terminologyService.exportBookGlossary (a plain object literal built by
+ * this codebase) or a test-injected fake — nothing in this codebase can
+ * hand it a throwing getter — so defending against one here would be
+ * complexity against a threat this call site cannot actually receive.
+ * Revisit if `exportFn` is ever allowed to be a third-party/untrusted value.
+ *
+ * Round 4 also fixed what this described: `{terms: null}` and `{terms: {}}`
+ * used to produce the IDENTICAL message ("an object whose 'terms' is
+ * object" — the classic `typeof null === 'object'` wart), and a renamed key
+ * (e.g. `{glossary: [...]}`) produced "...'terms' is undefined" with no
+ * hint what the payload DOES contain — exactly the information an operator
+ * needs to spot a refactor that renamed the field. `null` is now named
+ * explicitly, and every branch reports the payload's own keys.
  */
 function describeMalformedPayload(value) {
   if (value === null) return 'null';
   if (typeof value !== 'object') return typeof value;
   if (Array.isArray(value)) return 'an array, not an object with a terms property';
-  return `an object whose 'terms' is ${typeof value.terms}`;
+  const keys = Object.keys(value);
+  const shape = keys.length > 0 ? `keys [${keys.join(', ')}]` : 'no own keys';
+  if (!('terms' in value)) return `an object with no 'terms' property (has ${shape})`;
+  if (value.terms === null) return `an object whose 'terms' is null, not an array (has ${shape})`;
+  return `an object whose 'terms' is ${typeof value.terms}, not an array (has ${shape})`;
 }
 
 function writeHeartbeat(projectRoot) {
@@ -130,7 +158,10 @@ function writeHeartbeat(projectRoot) {
  * @param {(bookSlug: string) => string|null} [options.subjectFn] - injected in tests;
  *   defaults to terminologyService.getBookSubject. Returns null when the book has
  *   no `book_subject_mapping` row.
- * @param {string|null} [options.book] - a single book, else all glossary-bearing ones
+ * @param {string|null} [options.book] - a single book, or `null` for all
+ *   glossary-bearing ones. Selected by `=== null`, not truthiness — an empty
+ *   string is a (rejected) single-book request, never "all books" (register
+ *   C14, round 4).
  * @param {boolean} [options.force] - write even when the shrink guard objects
  * @param {boolean} [options.dryRun] - write neither export nor heartbeat
  * @returns {number} exit code: 0 iff every book resolved healthily
@@ -155,9 +186,20 @@ function runGlossaryExport({
   // guard powerless because a brand new path has no baseline to compare
   // against.
   const hasGlossaryDir = (b) => fs.existsSync(path.join(booksDir, b, 'glossary'));
-  const books = book ? [book].filter(hasGlossaryDir) : listBooks(booksDir).filter(hasGlossaryDir);
+  // Explicit `book === null`, never truthiness. `book: ''` is a real value,
+  // distinct from `book: null` — the whole-branch adversarial review's
+  // ROUND 4 finding: `'' ? [x] : listBooks(...)` took the ALL-BOOKS branch
+  // for an empty string, so `--book ''` combined with `--force` bypassed the
+  // shrink guard on every glossary-bearing book at once. parseArgs now
+  // refuses an empty/whitespace-only `--book` value before it ever reaches
+  // here (see parseArgs below), but this function must not depend on that —
+  // it is called directly by tests today and could be called directly by a
+  // future caller that builds `options` without going through parseArgs at
+  // all, so the guard belongs here too, not only at the CLI boundary.
+  const books =
+    book === null ? listBooks(booksDir).filter(hasGlossaryDir) : [book].filter(hasGlossaryDir);
 
-  if (book && books.length === 0) {
+  if (book !== null && books.length === 0) {
     logError(
       `${book}: no glossary directory at ${path.join(booksDir, book, 'glossary')} — refusing`
     );
@@ -335,11 +377,29 @@ function runGlossaryExport({
  * flag gets the same "here is the correct usage" information either way, and
  * a parse error silently downgrading to a help screen would blur exactly the
  * fail-loud/fail-open line this function exists to hold. Both orderings are
- * pinned in glossaryExportRun.test.js's `parseArgs` describe block: `--help`
- * BEFORE the bad token ("...even when --help appeared FIRST and was recorded
- * as seen" — `help` ends up `true` but `error` still wins in `main()`), and
- * `--help` AFTER the bad token ("...is never reached, so help stays false" —
- * the loop returns before ever setting `help`).
+ * pinned by dedicated tests in glossaryExportRun.test.js's `parseArgs`
+ * describe block — see that block for the exact cases, not this comment
+ * (a prior version of this paragraph quoted the test titles verbatim, which
+ * would silently orphan the cross-reference on a rename): one test has
+ * `--help` appearing before the bad token (`help` ends up `true`, but
+ * `error` still wins in `main()`), and a sibling has `--help` appearing
+ * after it (the loop returns before ever reaching `--help`, so `help` stays
+ * `false`).
+ *
+ * ⚠️ Whole-branch adversarial review (2026-07-28), ROUND 4, IMPORTANT: a
+ * `--book` value was checked for PRESENCE here (`!== undefined`) while
+ * `runGlossaryExport` selected books by TRUTHINESS (`book ? [book] :
+ * listBooks(...)`) — the same class of bug as finding 1 above, one level
+ * removed. `--book ''` and `--book '   '` both parsed successfully (a
+ * present, non-undefined value), then read as falsy by the consumer and
+ * silently widened to "every book" — with `--force` on the same command
+ * line bypassing the shrink guard on all of them. An empty or
+ * whitespace-only value is now a parse error here, AND `runGlossaryExport`
+ * itself now tests `book === null` explicitly rather than truthiness (see
+ * below), so neither half of the seam can silently disagree again. The
+ * accepted value is also trimmed, so `--book ' liffraedi-2e '` cannot
+ * become a slug carrying leading/trailing spaces that would never match a
+ * real `books/<slug>/` directory.
  *
  * @param {string[]} argv
  * @returns {{book: string|null, dryRun: boolean, force: boolean, help: boolean, error: string|null}}
@@ -351,9 +411,19 @@ function parseArgs(argv) {
   let help = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--book') {
-      const value = argv[i + 1];
-      if (value === undefined) {
+      const raw = argv[i + 1];
+      if (raw === undefined) {
         return { book: null, dryRun, force, help, error: '--book requires a value (a book slug)' };
+      }
+      const value = raw.trim();
+      if (value === '') {
+        return {
+          book: null,
+          dryRun,
+          force,
+          help,
+          error: `--book requires a non-empty value (a book slug) — got ${JSON.stringify(raw)}`,
+        };
       }
       book = value;
       i++;

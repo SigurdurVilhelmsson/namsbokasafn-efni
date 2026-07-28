@@ -1311,6 +1311,22 @@ if (require.main === module) {
 module.exports = { listBooks, runGlossaryExport };
 ```
 
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, round 4, register
+> C14).** The pseudocode above's refusal message reports only the approved-term
+> pair (`REFUSING to write — approved terms would fall ${prevApproved} →
+> ${nextApproved}`). The SHIPPED message — and the shipped dry-run and success
+> messages alongside it — report BOTH the total-term pair and the
+> approved-term pair (`terms would fall ${prevTotal} → ${nextTotal} (approved
+> ${prevApproved} → ${nextApproved})`), because an approved-only message is
+> structurally blind to a book like liffraedi-2e (0 approved terms
+> throughout): it would print "0 approved (0 approved)" and hide a 2262 → 0
+> destruction entirely. This is exactly the shape the total-term shrink clause
+> earlier in this same task exists to protect against — the pseudocode's
+> message just never caught up to it. This is a dated, append-only
+> implementation log, so the pseudocode above is left as originally written
+> per the append-only convention; read `server/scripts/export-terminology.js`
+> for the actual shipped message, not this code fence.
+
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run server/__tests__/glossaryExportRun.test.js`
