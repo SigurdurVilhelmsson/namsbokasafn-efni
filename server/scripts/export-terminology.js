@@ -100,6 +100,22 @@ function readExisting(outPath) {
   }
 }
 
+/**
+ * Describe why an exportFn return failed the shape guard, for the log line
+ * only. Deliberately NOT `JSON.stringify(next)`: that can itself throw (a
+ * circular reference, a BigInt) on exactly the kind of malformed value this
+ * function exists to describe, which would propagate out of
+ * runGlossaryExport uncaught — reinstating the abort-the-loop failure mode
+ * the shape guard exists to prevent. This can't throw: every branch reads a
+ * `typeof`, never serializes.
+ */
+function describeMalformedPayload(value) {
+  if (value === null) return 'null';
+  if (typeof value !== 'object') return typeof value;
+  if (Array.isArray(value)) return 'an array, not an object with a terms property';
+  return `an object whose 'terms' is ${typeof value.terms}`;
+}
+
 function writeHeartbeat(projectRoot) {
   const p = path.join(projectRoot, HEARTBEAT_REL);
   fs.mkdirSync(path.dirname(p), { recursive: true });
@@ -217,8 +233,7 @@ function runGlossaryExport({
     if (next === null || typeof next !== 'object' || !Array.isArray(next.terms)) {
       logError(
         `${b}: exportFn returned a malformed payload — expected an object with an ` +
-          `array 'terms' property, got ${next === null ? 'null' : JSON.stringify(next)} — ` +
-          `refusing to write`
+          `array 'terms' property, got ${describeMalformedPayload(next)} — refusing to write`
       );
       failures++;
       continue;
@@ -319,7 +334,12 @@ function runGlossaryExport({
  * error message already names every accepted spelling, so a lead who typos a
  * flag gets the same "here is the correct usage" information either way, and
  * a parse error silently downgrading to a help screen would blur exactly the
- * fail-loud/fail-open line this function exists to hold.
+ * fail-loud/fail-open line this function exists to hold. Both orderings are
+ * pinned in glossaryExportRun.test.js's `parseArgs` describe block: `--help`
+ * BEFORE the bad token ("...even when --help appeared FIRST and was recorded
+ * as seen" — `help` ends up `true` but `error` still wins in `main()`), and
+ * `--help` AFTER the bad token ("...is never reached, so help stays false" —
+ * the loop returns before ever setting `help`).
  *
  * @param {string[]} argv
  * @returns {{book: string|null, dryRun: boolean, force: boolean, help: boolean, error: string|null}}

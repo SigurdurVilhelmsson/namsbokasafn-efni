@@ -242,7 +242,12 @@ describe('runGlossaryExport — malformed exportFn payload', () => {
         logError: (m) => errors.push(m),
       });
       expect(code).toBe(1);
-      expect(seen).toEqual(['bok-a', 'bok-b']); // bok-a's failure does not stop bok-b
+      // Not toEqual(['bok-a', 'bok-b']): listBooks does no sort, so book
+      // discovery order is a readdirSync artifact, not a contract. The
+      // property being pinned is "bok-b ran too", not "bok-b ran second".
+      expect(seen).toHaveLength(2);
+      expect(seen).toContain('bok-a');
+      expect(seen).toContain('bok-b');
       expect(
         existsSync(path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json'))
       ).toBe(false);
@@ -588,12 +593,27 @@ describe('parseArgs', () => {
     // reachable — and main() still checks `error` before `help`, so the
     // process exits on the error message alone and never reaches the usage
     // screen. (The reverse order — a bad token BEFORE --help — is the
-    // simpler, untested-here case: the loop returns as soon as it hits the
-    // bad token, so --help is never reached at all and `help` stays at its
-    // false default.) Not a bug: the error message already names every
-    // accepted spelling.
+    // simpler case, pinned separately below: the loop returns as soon as it
+    // hits the bad token, so --help is never reached at all and `help`
+    // stays at its false default.) Not a bug: the error message already
+    // names every accepted spelling.
     const result = parseArgs(['--help', '--book=liffraedi-2e']);
     expect(result.error).toBeTruthy();
     expect(result.help).toBe(true);
+  });
+
+  it('an unrecognised token BEFORE --help means --help is never reached, so help stays false', () => {
+    // The companion case to the one above, added per whole-branch
+    // adversarial review round 3, 2026-07-28: the function's own docstring
+    // (export-terminology.js, above parseArgs) asserts this ordering too —
+    // "a `-h`/`--help` that appears LATER in argv is never reached" — but
+    // nothing pinned it before this test. The loop hits the unrecognised
+    // `--frobnicate` token first and returns immediately, so it never
+    // processes the `--help` that follows: `help` stays at its `false`
+    // default, unlike the FIRST-ordering case above where `help` does end
+    // up `true`.
+    const result = parseArgs(['--frobnicate', '--help']);
+    expect(result.error).toBeTruthy();
+    expect(result.help).toBe(false);
   });
 });
