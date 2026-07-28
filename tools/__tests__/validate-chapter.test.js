@@ -517,4 +517,26 @@ describe('formatResults', () => {
     const output = formatResults(failedResults, { json: false });
     expect(output).toContain('Validation FAILED');
   });
+
+  // C1d B4: the header line renders the internal -1 sentinel through
+  // chapterLabel.cliChapterArg, same as validateBeforePublish's spawn arg —
+  // never the raw integer (#321/#322 were this same leak class elsewhere).
+  it('renders "appendices" (not -1) in the header for the appendices chapter', () => {
+    const appendixResults = { ...sampleResults, chapter: -1, chapterDir: 'appendices' };
+    const output = formatResults(appendixResults, { json: false });
+    expect(output).toContain('Validating test-book chapter appendices (faithful)...');
+    expect(output).not.toMatch(/chapter -1\b/);
+  });
+
+  it('numeric chapter header is byte-identical to before the fix (no behaviour change)', () => {
+    const output = formatResults(sampleResults, { json: false });
+    expect(output).toContain('Validating test-book chapter 1 (faithful)...');
+  });
+
+  it('the JSON contract is unaffected by the header fix — results.chapter stays the raw integer -1', () => {
+    const appendixResults = { ...sampleResults, chapter: -1, chapterDir: 'appendices' };
+    const output = formatResults(appendixResults, { json: true });
+    const parsed = JSON.parse(output);
+    expect(parsed.chapter).toBe(-1);
+  });
 });

@@ -22,11 +22,15 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 import {
   detectMathMLNumberFormat,
   localizeNumbersInMathML,
   verifyLocalization,
 } from './lib/mathml-to-latex.js';
+
+const require = createRequire(import.meta.url);
+const { normalizeChapter, chapterDir, cliChapterArg } = require('../server/lib/chapterLabel');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,6 +40,12 @@ const __dirname = path.dirname(__filename);
 // ============================================================================
 
 const PROJECT_ROOT = path.join(__dirname, '..');
+
+// Publication output dirs are BARE (`<pubDir>/chapters/05`, `.../appendices`),
+// unlike the ch-prefixed source/structure dirs. chapterDir() gives the ch-form,
+// so the bare pub form needs its own builder. Do NOT unify the two — see
+// server/services/publicationService.js getPublicationStatus() for the same split.
+const pubChapterDirName = (ch) => (ch === -1 ? 'appendices' : String(ch).padStart(2, '0'));
 
 // Severity levels
 const SEVERITY = {
@@ -700,10 +710,16 @@ const VALIDATORS = {
     description: 'No pipeline placeholders leaked into HTML output',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -759,10 +775,16 @@ const VALIDATORS = {
     description: 'All images referenced in HTML output exist',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -784,7 +806,10 @@ const VALIDATORS = {
 
           // Check in publication directory (for absolute /content/... paths)
           if (src.startsWith('/content/')) {
-            const relativeSrc = src.replace(new RegExp(`^/content/${book}/chapters/\\d+/`), '');
+            const relativeSrc = src.replace(
+              new RegExp(`^/content/${book}/chapters/(?:\\d+|appendices)/`),
+              ''
+            );
             const imgPath = path.join(pubDir, relativeSrc);
             if (!fs.existsSync(imgPath)) {
               // Fallback: check source media directory
@@ -813,10 +838,16 @@ const VALIDATORS = {
     description: 'All rendered HTML files have substantial content',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -851,10 +882,16 @@ const VALIDATORS = {
     description: 'All equations rendered successfully (no MathJax errors)',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -895,10 +932,10 @@ const VALIDATORS = {
     description: 'Extraction manifests match current source files',
     check: async ({ book, chapter, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
+      const chapterDirName = chapterDir(chapter);
       const root = projectRoot || PROJECT_ROOT;
-      const structDir = path.join(root, 'books', book, '02-structure', `ch${chapterStr}`);
-      const sourceDir = path.join(root, 'books', book, '01-source', `ch${chapterStr}`);
+      const structDir = path.join(root, 'books', book, '02-structure', chapterDirName);
+      const sourceDir = path.join(root, 'books', book, '01-source', chapterDirName);
 
       if (!fs.existsSync(structDir)) return issues;
 
@@ -932,7 +969,7 @@ const VALIDATORS = {
           'books',
           book,
           '02-for-mt',
-          `ch${chapterStr}`,
+          chapterDirName,
           `${moduleId}-segments.en.md`
         );
         if (fs.existsSync(segPath)) {
@@ -983,9 +1020,12 @@ function parseArgs(args) {
     } else if (!arg.startsWith('-')) {
       if (!result.book) {
         result.book = arg;
-      } else if (!result.chapter) {
-        result.chapter = parseInt(arg, 10);
+      } else if (result.chapter === null) {
+        result.chapter = normalizeChapter(arg); // 'appendices'->-1, '5'->5, junk->null
       }
+    } else if (result.book && result.chapter === null && normalizeChapter(arg) === -1) {
+      // bare "-1" (appendices) after the book positional — starts with '-' but is a chapter, not a flag
+      result.chapter = -1;
     }
   }
 
@@ -1052,8 +1092,12 @@ async function validateChapter(options) {
   }
 
   // Build context
-  const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
-  const statusPath = path.join(root, 'books', book, 'chapters', chapterDir, 'status.json');
+  // Local is `chapterDirName` so it does not shadow the imported chapterDir()
+  // helper. The context/results KEY stays `chapterDir` — 11 validators
+  // destructure it, and results.chapterDir is part of the --json output that
+  // publicationService.validateBeforePublish parses.
+  const chapterDirName = chapterDir(chapter);
+  const statusPath = path.join(root, 'books', book, 'chapters', chapterDirName, 'status.json');
 
   let statusData = null;
   if (fs.existsSync(statusPath)) {
@@ -1068,7 +1112,7 @@ async function validateChapter(options) {
     book,
     chapter,
     track,
-    chapterDir,
+    chapterDir: chapterDirName,
     statusData,
     projectRoot: root,
   };
@@ -1077,7 +1121,7 @@ async function validateChapter(options) {
     book,
     chapter,
     track,
-    chapterDir,
+    chapterDir: chapterDirName,
     valid: true,
     checks: {},
     summary: {
@@ -1142,7 +1186,12 @@ function formatResults(results, options) {
 
   const lines = [];
 
-  lines.push(`Validating ${results.book} chapter ${results.chapter} (${results.track})...`);
+  // Display only — results.chapter itself stays the raw integer -1; this
+  // just renders it through the canonical converter so the header reads
+  // "appendices" instead of the internal sentinel (same leak class as #321/#322).
+  lines.push(
+    `Validating ${results.book} chapter ${cliChapterArg(results.chapter)} (${results.track})...`
+  );
   lines.push('');
 
   // Show each check result

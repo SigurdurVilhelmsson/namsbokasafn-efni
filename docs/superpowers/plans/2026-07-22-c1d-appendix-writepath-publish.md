@@ -12,20 +12,21 @@
 
 - **Canonical form (`server/lib/chapterLabel.js`):** `cliChapterArg(-1)→'appendices'`, `cliChapterArg(N)→String(N)`; `normalizeChapter('appendices'|'-1')→-1`, `normalizeChapter('0'|junk)→null`; `chapterDir(-1)→'appendices'`, `chapterDir(N)→'chNN'`.
 - **Two on-disk dir conventions (C1a durable rule):** `ch`-prefixed source/structure dirs (`01-source/chNN`, `02-structure/chNN`) → for appendices `01-source/appendices` etc.; BARE pub-output dirs (`<pubDir>/chapters/NN`) → for appendices `<pubDir>/chapters/appendices`. `chapterDir` gives the `ch`-form; the pub-form needs `chapter === -1 ? 'appendices' : padStart`.
+- **⚠️ AMENDED 2026-07-28 (pre-flight premise check) — `validateChapter:1055` is the DOMINANT dir site and was MISSING from this plan.** `validateChapter` builds `const chapterDir = \`ch${String(chapter).padStart(2,'0')}\`` (`:1055`) and passes it into `context` (`:1071`) and `results` (`:1080`); **12 validators destructure `chapterDir` from context** (`:84,:119,:192,:228,:287,:336,:394,:449,:487,:529,:620`) and build every `sourceDir`/`structureDir` from it. The original plan listed only `:706/:765/:819/:857` (bare pub) and `:900/:901/:935` (`ch`-prefixed) — with `:1055` unconverted the feature does **not** work: every source/structure check resolves `ch-1`, `results.valid` goes false, and `publishChapter` throws a 400 instead of a 500. It is also a **name collision** with the imported `chapterDir` helper (same shadow class as C1b's `:199`). **Rule: rename the local to `chapterDirName`; leave the context KEY `chapterDir` unchanged** so the 12 consumers need no edit.
 - **No behavior change for numeric chapters (0..99):** `cliChapterArg(N)=String(N)`, `chapterDir(N)=chNN`, `parseArgs` unchanged for integer/flag args; pin byte-identity with an assertion (C1b lesson).
 - **Fails-safe preserved:** this PR must NOT open a write path that bypasses `checkTrackReadiness`. faithful/localized still fail closed on empty dirs; mt-preview is the one newly-enabled write, and only when `02-mt-output/appendices` exists.
 - **`validate-chapter.js` is widely used** (all publish validation) — the dir-builder change touches numeric publishing; the full suite + numeric-chapter pins are the regression gate.
-- **Branch:** `fix/appendices-writepath-publish`. Base main `2a990e67` (after C1b #324). Independent of C1c.
+- **Branch:** `fix/appendices-writepath-publish`. ~~Base main `2a990e67` (after C1b #324)~~ — **actual base main `46b50c58`** (C1c #325, C13 #337, C14 #343 and the Dependabot batch landed in between; every premise below was re-verified against that tree on 2026-07-28). Independent of C1c.
 - **Commit trailer:** end every commit message with
-  `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>`.
+  `Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>`.
 
 ---
 
 ## File Structure
 
-- **Modify** `tools/validate-chapter.js` — `parseArgs` (`:959-991`) + dir-builders (bare pub `:706/:765/:819/:857`; `ch`-prefixed `:900/:901/:935`) + a `chapterLabel` import. *(Tasks 1, 2)*
+- **Modify** `tools/validate-chapter.js` — `parseArgs` (`:959-991`) + dir-builders (**context `:1055` ← the dominant site, added 2026-07-28**; bare pub `:706/:765/:819/:857`; `ch`-prefixed `:900/:901/:935`; **image-path regex `:791`, added 2026-07-28**) + a `chapterLabel` import. *(Tasks 1, 2)*
 - **Modify** `server/services/publicationService.js` — `validateBeforePublish` argv (`:129`). *(Task 3)*
-- **Test:** new `tools/__tests__/validateChapterAppendices.test.js` (parseArgs + dir resolution); extend a publicationService test (Task 3); a publish-route integration assertion (Task 4).
+- **Test:** new `tools/__tests__/validateChapterAppendices.test.js` (parseArgs + **behavioural** dir resolution through `validateChapter({projectRoot})`, reusing the temp-dir harness idiom already in `tools/__tests__/validate-chapter.test.js`); extend a publicationService test (Task 3); a publish-route integration assertion (Task 4).
 
 ---
 
@@ -98,12 +99,14 @@ Add the `createRequire` + `chapterLabel` import (Step 1). (`parseArgs` is alread
   } else if (result.chapter === null) {
     result.chapter = normalizeChapter(arg); // 'appendices'->-1, '5'->5, junk->null
   }
-} else if (result.book && result.chapter === null && normalizeChapter(arg) !== null) {
+} else if (result.book && result.chapter === null && normalizeChapter(arg) === -1) {
   // bare "-1" (appendices) after the book positional — starts with '-' but is a chapter, not a flag
-  result.chapter = normalizeChapter(arg);
+  result.chapter = -1;
 }
 ```
 (Use `result.chapter === null` — not `!result.chapter` — so a legitimate `0` or `-1` is not re-parsed.)
+
+**⚠️ AMENDED 2026-07-28:** the bare-negative branch is bound to **exactly `-1`**, not the plan's original `normalizeChapter(arg) !== null`. The looser form would silently swallow `-5`, `-99` etc. as chapter numbers; `chapterLabel`'s own contract says bounds are each caller's policy, and `-1` is the only negative this repo has. Add a test pinning that `parseArgs(['book','-5']).chapter` stays `null`.
 
 - [ ] **Step 5: Run test to verify it passes** — `npm test -- validateChapterAppendices` → PASS.
 
@@ -123,8 +126,25 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 ## Task 2: `validate-chapter.js` dir-builders (both conventions)
 
 **Files:**
-- Modify: `tools/validate-chapter.js` (bare pub dirs `:706/:765/:819/:857`; `ch`-prefixed `:900/:901/:935`)
+- Modify: `tools/validate-chapter.js` (**context builder `:1055`**; bare pub dirs `:706/:765/:819/:857`; `ch`-prefixed `:900/:901/:935`; **image-path regex `:791`**)
 - Test: extend `tools/__tests__/validateChapterAppendices.test.js`
+
+**⚠️ TWO SITES ADDED 2026-07-28 — see Global Constraints. Neither was in the original plan.**
+
+**(a) `:1055` — `validateChapter`'s context builder. This is the site that makes the feature work.** 12 validators read `chapterDir` off `context`; leaving it as `ch${padStart}` yields `ch-1` and a 400. Rename the LOCAL only:
+```js
+// before
+const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
+const statusPath = path.join(root, 'books', book, 'chapters', chapterDir, 'status.json');
+// after — local renamed to avoid shadowing the imported helper; context KEY unchanged
+const chapterDirName = chapterDir(chapter);
+const statusPath = path.join(root, 'books', book, 'chapters', chapterDirName, 'status.json');
+// ...and in BOTH the `context` object (:1071) and the `results` object (:1080):
+chapterDir: chapterDirName,
+```
+The `results.chapterDir` field is part of the tool's `--json` output that `validateBeforePublish` parses — it keeps the same key and, for numeric chapters, the same value.
+
+**(b) `:791` — `html-images-exist` image-path regex.** `new RegExp(\`^/content/${book}/chapters/\\\\d+/\`)` never matches `chapters/appendices/`, so an appendix page's `/content/…` image src is never reduced to its basename; `path.join(pubDir, relativeSrc)` then probes a path that cannot exist and the check falls through to the `01-source/media` fallback. Widen to `(?:\\d+|appendices)`. **Severity note:** this validator is `SEVERITY.WARNING` and `validateBeforePublish` spawns **without `--strict`**, so it can never set `valid:false` — it cannot block a publish. It is included because it sits inside the path C1d turns on, not because it gates.
 
 **Interfaces:**
 - Consumes: `chapterDir` (imported in Task 1). Adds a local `pubChapterDirName(chapter)` helper.
@@ -132,15 +152,20 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 
 - [ ] **Step 1: Write the failing test**
 
-The pub-dir and source-dir builders are inside check functions that take `{ book, chapter, track, projectRoot }`. Rather than invoke a full check, extract/assert the dir strings. Simplest: add a small **exported** pure helper for each convention and unit-test them, OR assert via a check run against real `books/efnafraedi-2e` appendix fixtures. Minimum viable pins:
+**⚠️ TEST APPROACH AMENDED 2026-07-28 — assert BEHAVIOURALLY, do not export `pubChapterDirName` just to pin it.** A static pin on a pure helper proves the helper exists; it does **not** prove the 12 `context.chapterDir` consumers resolve correctly, which is the whole risk here (and is exactly the "static pins prove presence not behavior" lesson in CLAUDE.md/memory).
+
+`tools/__tests__/validate-chapter.test.js` already carries the right idiom: a temp dir passed as `projectRoot`, with `setupBook`/`setupHtmlPub` writing a minimal book tree. Mirror it in the new file with appendix variants (`01-source/appendices`, `02-structure/appendices`, `<pubDir>/chapters/appendices`, `chapters/appendices/status.json`) and drive the real entry point:
+
 ```js
-// with the local helpers exported (or via a thin exported wrapper):
-expect(pubChapterDirName(-1)).toBe('appendices');
-expect(pubChapterDirName(5)).toBe('05');       // bare, not 'ch05'
-expect(chapterDir(-1)).toBe('appendices');      // ch-form for source/structure
-expect(chapterDir(5)).toBe('ch05');
+const results = await validateChapter({ book, chapter: -1, track: 'mt-preview', projectRoot: tmp });
+// positive: the dir-resolving checks actually PASS against the appendix tree
+expect(results.checks['is-segments-exist'].passed).toBe(true);
+// negative: no wrong-convention path leaks anywhere in the output
+expect(JSON.stringify(results)).not.toMatch(/ch-1|chappendices|chapters[\\/\\\\]-1/);
+// byte-identity pin for numeric chapters (the C1b lesson — pin, don't reason)
+expect((await validateChapter({ book, chapter: 5, ... })).chapterDir).toBe('ch05');
 ```
-If helpers aren't exported, write a check-level test that resolves `01-source/appendices` / `<pubDir>/chapters/appendices` for `chapter=-1` and `…/ch05` / `…/05` for `chapter=5`, asserting no `ch-1` / `chappendices` / `-1` appears.
+Keep the numeric-chapter pin for **both** conventions (`ch05` for source/structure, bare `05` for pub output) — the C1a regression risk is a well-meaning "DRY" refactor collapsing the bare pub dir onto `chapterDir()`. `server/__tests__/publicationAppendices.test.js` already pins the same pair on the server side; mirror its intent.
 
 - [ ] **Step 2: Run test to verify it fails**
 
@@ -275,7 +300,14 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 
 - [ ] **Step 1: Write the failing/verifying test**
 
-Assert that POST `…/appendices/mt-preview` for a book with `02-mt-output/appendices` present no longer fails at the validate step with the empty-stdout 500 (it reaches readiness/publish); and that `…/appendices/faithful` still fails closed with the **readiness** error (empty `03-faithful-translation/appendices`), NOT the validate-500. The key assertion is that the failure REASON changed from "validate 500" to either success (mt-preview) or "readiness" (faithful) — proving fail-closed is preserved while the structural block is gone.
+**⚠️ AMENDED 2026-07-28 — assert POSITIVELY. "The failure reason is no longer a 500" can pass vacuously while the feature is broken** (any new failure mode satisfies it). Required assertions:
+
+1. **`validateBeforePublish('efnafraedi-2e', -1, 'mt-preview')` resolves** with parseable results (pre-fix: rejects on empty stdout). Against the **real committed** `books/efnafraedi-2e/02-mt-output/appendices` (13 modules) — the same real-content idiom `server/__tests__/publicationAppendices.test.js` uses.
+2. **The dir-resolving checks PASS** for the appendix chapter — i.e. `is-segments-exist` (and the structure check) report `passed: true`, proving `context.chapterDir` resolved the real `appendices/` tree.
+3. **No wrong-convention path anywhere** in the returned errors/warnings: nothing matches `ch-1`, `chappendices`, or `chapters/-1`.
+4. **Fail-closed preserved:** `checkTrackReadiness('efnafraedi-2e', -1, 'faithful')` stays `ready: false` (no `03-faithful-translation/appendices` on disk), so `publishChapter` still throws *before* validation for that track.
+
+**⚠️ Do NOT assert `results.valid === true` globally** against real appendix content. The content-quality validators (`manifest-consistency` in particular) run against the real 2247-file `02-structure/appendices` tree for the first time here; a genuine source-hash or segment-count finding there is a **data** finding, not a tool bug. Pinning global validity would pin data, and would tempt a future silencing of a real validator. Log any such finding to the register instead.
 
 - [ ] **Step 2: Run test**
 
