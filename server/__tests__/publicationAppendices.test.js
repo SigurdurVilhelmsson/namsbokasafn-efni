@@ -388,8 +388,17 @@ describe('C1d Task 4: end-to-end publish-path assertions (mt-preview reaches pub
     // The validator reports an issue exactly when its two sides disagree, so
     // `passed` must equal "the observed sides agree". A `ch-1` build reads
     // NEITHER file (both dirs are absent) and so reports agreement-by-emptiness
-    // — red here as long as one observed side is non-empty, which the next
-    // assertion states explicitly rather than leaving implicit.
+    // (`passed: true`).
+    //
+    // ⚠️ That means this row discriminates a `ch-1` build only while EXACTLY ONE
+    // observed side is true — today `hasContent` is, `statusSaysComplete` is not
+    // (the stale appendices status.json is a logged [LEAD] data finding). Once
+    // that status-advance lands, both sides read true, correct code and a `ch-1`
+    // build both give `passed: true`, and this row goes quiet. That is deliberate:
+    // the strict form (`statusSaysComplete !== hasContent`) would just re-pin the
+    // data defect this test was rewritten to stop pinning. The guard below only
+    // rules out the both-false case; the permanent discriminator is the
+    // `chapterDir` assertion after it, which no data change can silence.
     expect(statusCheck.passed).toBe(statusSaysComplete === hasContent);
     expect(hasContent || statusSaysComplete).toBe(true);
     // Permanent, data-independent discriminator: statusPath is built from this
