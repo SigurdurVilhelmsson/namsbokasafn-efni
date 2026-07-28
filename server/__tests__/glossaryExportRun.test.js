@@ -5,11 +5,17 @@
  * sessions.db. What is under test is the contract scripts/git-backup.sh and
  * /api/health depend on:
  *
- *   exit 0  <=> every book resolved healthily  <=> heartbeat written
+ *   exit 0  <=>  every REQUESTED book resolved healthily
+ *   heartbeat written  <=>  exit 0  AND  unfiltered (no --book)  AND  !dryRun
  *
- * The heartbeat follows the C11(b) doctrine: written ONLY on a healthy run,
- * so absence is the alarm. A status file written on every outcome would read
- * "success" forever once the exporter stopped working.
+ * These are NOT the same condition — a `--book <slug>` run or a `--dry-run`
+ * can each legitimately exit 0 while leaving the heartbeat untouched
+ * (whole-branch adversarial review finding 5/6: an earlier version of this
+ * comment claimed a three-way equivalence, which a --book run breaks).
+ *
+ * The heartbeat follows the C11(b) doctrine: written ONLY on a healthy,
+ * unfiltered run, so absence is the alarm. A status file written on every
+ * outcome would read "success" forever once the exporter stopped working.
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
@@ -27,7 +33,7 @@ import path from 'node:path';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { runGlossaryExport } = require('../scripts/export-terminology');
+const { runGlossaryExport, parseArgs } = require('../scripts/export-terminology');
 
 let root;
 
@@ -68,6 +74,10 @@ function run(opts) {
   return runGlossaryExport({
     booksDir: path.join(root, 'books'),
     projectRoot: root,
+    // Every book has a subject by default so the pre-existing tests (which
+    // predate the subject-mapping guard) don't have to know about it; tests
+    // for the guard itself override subjectFn explicitly.
+    subjectFn: () => 'chemistry',
     log: () => {},
     logError: () => {},
     ...opts,
@@ -196,6 +206,65 @@ describe('runGlossaryExport — shrink guard', () => {
   });
 });
 
+describe('runGlossaryExport — book-subject-mapping guard', () => {
+  // Only migration 032 has ever inserted book_subject_mapping rows, once, for
+  // five hardcoded slugs. A book registered since then has no row, and
+  // exportBookGlossary's subject filter is a no-op when bookSubject is null —
+  // it would export every non-rejected translation across every subject. This
+  // guard refuses that instead of silently priming MT (and the render path)
+  // from a cross-subject corpus.
+  it('skips a book with no book_subject_mapping row, counts it as a failure, and writes nothing', () => {
+    seedBook('bok-a');
+    const code = run({
+      subjectFn: () => null,
+      exportFn: () => payload(approved(5)),
+    });
+    expect(code).toBe(1);
+    expect(existsSync(path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json'))).toBe(
+      false
+    );
+    expect(heartbeatExists()).toBe(false);
+  });
+
+  it('logs the book slug when refusing for lack of a subject mapping', () => {
+    seedBook('bok-a');
+    const errors = [];
+    run({
+      subjectFn: () => null,
+      exportFn: () => payload(approved(5)),
+      logError: (m) => errors.push(m),
+    });
+    expect(errors.join('\n')).toMatch(/bok-a/);
+    expect(errors.join('\n')).toMatch(/book_subject_mapping/);
+  });
+
+  it('still processes later books after skipping an unmapped one', () => {
+    seedBook('bok-a');
+    seedBook('bok-b');
+    const seen = [];
+    const code = run({
+      subjectFn: (slug) => (slug === 'bok-a' ? null : 'chemistry'),
+      exportFn: (slug) => {
+        seen.push(slug);
+        return payload(approved(9));
+      },
+    });
+    expect(code).toBe(1); // bok-a failed
+    expect(seen).toEqual(['bok-b']);
+    expect(readExport('bok-b').terms).toHaveLength(9);
+  });
+
+  it('a book WITH a subject mapping exports normally', () => {
+    seedBook('bok-a');
+    const code = run({
+      subjectFn: () => 'chemistry',
+      exportFn: () => payload(approved(5)),
+    });
+    expect(code).toBe(0);
+    expect(readExport('bok-a').terms).toHaveLength(5);
+  });
+});
+
 describe('runGlossaryExport — exit code and heartbeat contract', () => {
   it('writes the heartbeat on a fully healthy run', () => {
     seedBook('prufubok');
@@ -225,6 +294,18 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
       },
     });
     expect(code).toBe(1);
+    expect(heartbeatExists()).toBe(false);
+  });
+
+  it('does NOT write the heartbeat on a --book run, even when fully healthy', () => {
+    // The heartbeat is the GLOBAL "the exporter is healthy" signal read by
+    // GET /api/health. A single-book run resolving healthily says nothing
+    // about the other books, so it must not stamp the global heartbeat — a
+    // lead hand-running one book (e.g. investigating a broken cron) would
+    // otherwise flip /api/health green for six hours mid-investigation.
+    seedBook('bok-a');
+    const code = run({ book: 'bok-a', exportFn: () => payload(approved(5)) });
+    expect(code).toBe(0);
     expect(heartbeatExists()).toBe(false);
   });
 
@@ -317,5 +398,59 @@ describe('runGlossaryExport — dry run', () => {
     });
     expect(code).toBe(1);
     expect(errors.join('\n')).toMatch(/617/);
+  });
+});
+
+describe('parseArgs', () => {
+  it('parses --book with a value', () => {
+    expect(parseArgs(['--book', 'efnafraedi-2e'])).toEqual({
+      book: 'efnafraedi-2e',
+      dryRun: false,
+      force: false,
+      help: false,
+      error: null,
+    });
+  });
+
+  it('parses --dry-run and --force in any order, with no --book', () => {
+    expect(parseArgs(['--dry-run', '--force'])).toEqual({
+      book: null,
+      dryRun: true,
+      force: true,
+      help: false,
+      error: null,
+    });
+  });
+
+  it('recognizes -h and --help', () => {
+    expect(parseArgs(['-h']).help).toBe(true);
+    expect(parseArgs(['--help']).help).toBe(true);
+  });
+
+  it('errors when --book is the last argument (no value follows)', () => {
+    const result = parseArgs(['--force', '--book']);
+    expect(result.error).toMatch(/--book/);
+  });
+
+  it('does NOT silently fall back to "all books" when --book has no value', () => {
+    // Regression for the exact defect: `--force --book` (flags transposed,
+    // slug missing) used to leave `book` as `undefined`, and
+    // runGlossaryExport's `book = null` destructuring default treats an
+    // explicit undefined the same as an absent key — so the typo silently
+    // meant "force-write every glossary in the repo" instead of failing.
+    const result = parseArgs(['--force', '--book']);
+    expect(result.error).toBeTruthy();
+    expect(result.book).toBe(null);
+    expect(result.force).toBe(true);
+  });
+
+  it("does not consume a following flag as --book's value", () => {
+    // `--book --force` — the next token IS present, but as a parse-error
+    // case this still must not silently treat `--force` as the slug.
+    // (Documented current behaviour: a value is anything that follows,
+    // including another flag spelling — callers must not transpose.)
+    const result = parseArgs(['--book', '--force']);
+    expect(result.book).toBe('--force');
+    expect(result.error).toBe(null);
   });
 });

@@ -17,13 +17,24 @@
  * exportBookGlossary is deliberately subject-strict (item 18), so the new
  * export can legitimately be far smaller than the file it replaces —
  * chemistry could go from 617 approved terms to near zero, silently
- * degrading MT for weeks. The guard makes that a loud refusal instead.
+ * degrading MT quality for weeks. ⚠️ This file's blast radius is NOT
+ * MT-only, so a silent shrink is not only an MT-quality problem: approved
+ * terms are also substituted into published CNXML/HTML by
+ * tools/lib/math-label-substitute.js's buildGlossaryMap, consumed by
+ * cnxml-inject.js's substituteMathLabels — reader-visible (full consumer
+ * list: register C14). The guard makes a catastrophic shrink a loud refusal
+ * instead of a silent write.
  */
 
 /** Approved terms are what actually primes MT (api-translate loads approvedOnly). */
 function countApproved(data) {
   if (!data || !Array.isArray(data.terms)) return 0;
   return data.terms.filter((t) => t && t.status === 'approved').length;
+}
+
+/** Total terms, whatever their status — the only signal for a file with zero approved terms. */
+function countTerms(data) {
+  return data && Array.isArray(data.terms) ? data.terms.length : 0;
 }
 
 /**
@@ -47,14 +58,25 @@ function sameTerms(prev, next) {
 const SHRINK_RATIO = 0.5;
 
 /**
- * @returns {{refuse: boolean, prevApproved: number, nextApproved: number}}
+ * @returns {{refuse: boolean, prevApproved: number, nextApproved: number, prevTotal: number, nextTotal: number}}
  */
 function shrinkVerdict(prev, next) {
   const prevApproved = countApproved(prev);
   const nextApproved = countApproved(next);
-  // No baseline of approved terms to protect: nothing can be lost.
-  if (prevApproved === 0) return { refuse: false, prevApproved, nextApproved };
-  return { refuse: nextApproved < prevApproved * SHRINK_RATIO, prevApproved, nextApproved };
+  const prevTotal = countTerms(prev);
+  const nextTotal = countTerms(next);
+
+  // BOTH metrics, because approved-count alone is INERT for a file with zero
+  // approved terms — and books/liffraedi-2e/glossary/glossary-unified.json is
+  // exactly that: 2262 terms, all needs_review. That is the largest committed
+  // glossary in the repo and precisely the merge-glossary artifact this guard
+  // exists to protect from the producer swap. Measuring only the MT-priming
+  // subset let the guard be structurally disabled for it.
+  const refuse =
+    (prevApproved > 0 && nextApproved < prevApproved * SHRINK_RATIO) ||
+    (prevTotal > 0 && nextTotal < prevTotal * SHRINK_RATIO);
+
+  return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
 }
 
-module.exports = { countApproved, sameTerms, shrinkVerdict, SHRINK_RATIO };
+module.exports = { countApproved, countTerms, sameTerms, shrinkVerdict, SHRINK_RATIO };

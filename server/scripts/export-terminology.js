@@ -2,8 +2,15 @@
 
 /**
  * Export each book's glossary from the terminology DB to
- * books/<book>/glossary/glossary-unified.json — the file tools/api-translate.js
- * feeds to Málstaður as the MT glossary (Unit 6.1).
+ * books/<book>/glossary/glossary-unified.json.
+ *
+ * ⚠️ NOT an MT-only file: tools/api-translate.js's loadGlossary feeds it to
+ * Málstaður as the MT glossary (Unit 6.1), but tools/lib/math-label-substitute.js
+ * ALSO reads it (buildGlossaryMap → cnxml-inject.js's substituteMathLabels) to
+ * substitute approved terms into published CNXML/HTML — reader-visible — and
+ * tools/translate-chapter-titles.js reads it for chapter-title translation. A
+ * silent shrink here is not only an MT-quality regression. Full consumer
+ * accounting: register C14.
  *
  * WIRING (register C14, 2026-07-27). This script had ZERO callers, and its
  * previous header claimed "the 2h git-backup already stages books/, so the
@@ -18,14 +25,21 @@
  * requirement rather than as "already done" on purpose — the sentence this
  * replaces was a status claim that went stale and hid the gap for months.)
  *
- * SAFE TO RUN UNATTENDED because of two rules in lib/glossaryExportDecision.js:
- * write-if-changed (the `generated` stamp alone must not dirty the file every
- * 2h) and a shrink guard (the committed exports came from merge-glossary.js,
- * so this exporter SWAPS producers; a catastrophic drop in approved terms is
- * refused rather than committed).
+ * SAFE TO RUN UNATTENDED because of three rules in lib/glossaryExportDecision.js
+ * plus a book/subject guard here: write-if-changed (the `generated` stamp alone
+ * must not dirty the file every 2h); a shrink guard on BOTH approved-term and
+ * total-term counts (the committed exports came from merge-glossary.js, so this
+ * exporter SWAPS producers; a catastrophic drop is refused rather than
+ * committed — approved-only would miss a book like liffraedi-2e whose export
+ * has zero approved terms); and a book-subject-mapping guard (a book with no
+ * `book_subject_mapping` row would otherwise export an unscoped, all-subjects
+ * glossary — refused instead, counted as a failure).
  *
- * Exit code is the health contract: 0 only when every book resolved
- * healthily, which is also exactly when the heartbeat is written.
+ * Exit code 0 means every requested book resolved healthily (written, or
+ * legitimately unchanged) — it is NOT equivalent to "the heartbeat was
+ * written". The heartbeat is written only on an UNFILTERED (no --book),
+ * non-dry-run pass with zero failures: a `--book <slug>` run and a `--dry-run`
+ * can each legitimately return 0 while leaving the heartbeat untouched.
  *
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
@@ -36,7 +50,12 @@
 const fs = require('fs');
 const path = require('path');
 const terminologyService = require('../services/terminologyService');
-const { countApproved, sameTerms, shrinkVerdict } = require('../lib/glossaryExportDecision');
+const {
+  countApproved,
+  countTerms,
+  sameTerms,
+  shrinkVerdict,
+} = require('../lib/glossaryExportDecision');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -92,6 +111,9 @@ function writeHeartbeat(projectRoot) {
  * @param {string} [options.booksDir]
  * @param {string} [options.projectRoot]
  * @param {(bookSlug: string) => object} [options.exportFn] - injected in tests
+ * @param {(bookSlug: string) => string|null} [options.subjectFn] - injected in tests;
+ *   defaults to terminologyService.getBookSubject. Returns null when the book has
+ *   no `book_subject_mapping` row.
  * @param {string|null} [options.book] - a single book, else all glossary-bearing ones
  * @param {boolean} [options.force] - write even when the shrink guard objects
  * @param {boolean} [options.dryRun] - write neither export nor heartbeat
@@ -101,6 +123,7 @@ function runGlossaryExport({
   booksDir = BOOKS_DIR,
   projectRoot = PROJECT_ROOT,
   exportFn = terminologyService.exportBookGlossary,
+  subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
   dryRun = false,
@@ -138,6 +161,33 @@ function runGlossaryExport({
   let failures = 0;
 
   for (const b of books) {
+    // A book with no book_subject_mapping row makes exportBookGlossary's
+    // subject filter a no-op (terminologyService.js: `if (bookSubject && ...)
+    // continue` — no bookSubject means no filtering at all), so it would
+    // export EVERY non-rejected translation across every subject: the exact
+    // opposite of the "DELIBERATELY STRICT" (item 18) intent. Only migration
+    // 032 has ever inserted these rows, once, for five hardcoded slugs — a
+    // book registered since then has no row until a human adds one. Refuse
+    // loudly rather than silently prime MT (and the render path) from a
+    // cross-subject corpus.
+    let subject;
+    try {
+      subject = subjectFn(b);
+    } catch (err) {
+      logError(`${b}: could not resolve book subject — ${err.message}`);
+      failures++;
+      continue;
+    }
+    if (!subject) {
+      logError(
+        `${b}: no book_subject_mapping row — refusing to export an unscoped, ` +
+          `all-subjects glossary. Add a book_subject_mapping row for this book ` +
+          `(see migration 032) before exporting.`
+      );
+      failures++;
+      continue;
+    }
+
     const outDir = path.join(booksDir, b, 'glossary');
     const outPath = path.join(outDir, 'glossary-unified.json');
 
@@ -165,11 +215,17 @@ function runGlossaryExport({
     }
 
     const verdict = shrinkVerdict(prev, next);
+    // Always report BOTH counts — total and approved. A book like
+    // liffraedi-2e has 0 approved terms throughout, so an approved-only
+    // message would read "0 approved (0 approved)" and hide a 2262 -> 0
+    // destruction entirely; the lead is instructed to read these numbers
+    // before deciding whether to --force (register C14).
     if (verdict.refuse && !force) {
       logError(
-        `${b}: REFUSING to write — approved terms would fall ${verdict.prevApproved} → ` +
-          `${verdict.nextApproved}. The committed file may come from a different producer ` +
-          `(tools/merge-glossary.js). Investigate, then pass --force if the shrink is intended.`
+        `${b}: REFUSING to write — terms would fall ${verdict.prevTotal} → ${verdict.nextTotal} ` +
+          `(approved ${verdict.prevApproved} → ${verdict.nextApproved}). The committed file may ` +
+          `come from a different producer (tools/merge-glossary.js). Investigate, then pass ` +
+          `--force if the shrink is intended.`
       );
       failures++;
       continue;
@@ -177,8 +233,8 @@ function runGlossaryExport({
 
     if (dryRun) {
       log(
-        `[dry-run] ${b}: would write ${next.terms.length} terms ` +
-          `(${verdict.nextApproved} approved, was ${verdict.prevApproved})`
+        `[dry-run] ${b}: would write terms ${verdict.prevTotal} → ${countTerms(next)} ` +
+          `(approved ${verdict.prevApproved} → ${verdict.nextApproved})`
       );
       continue;
     }
@@ -186,38 +242,84 @@ function runGlossaryExport({
     fs.mkdirSync(outDir, { recursive: true });
     fs.writeFileSync(outPath, JSON.stringify(next, null, 2) + '\n', 'utf-8');
     log(
-      `${b}: wrote ${next.terms.length} terms (${verdict.nextApproved} approved, ` +
-        `was ${verdict.prevApproved}) → ${outPath}`
+      `${b}: wrote terms ${verdict.prevTotal} → ${countTerms(next)} ` +
+        `(approved ${verdict.prevApproved} → ${verdict.nextApproved}) → ${outPath}`
     );
   }
 
   if (failures > 0) return 1;
-  if (!dryRun) writeHeartbeat(projectRoot);
+  // Heartbeat is the GLOBAL "the exporter is healthy" signal /api/health
+  // reads — write it only for an unfiltered (no --book) run. A `--book
+  // <slug>` run resolving healthily says nothing about the OTHER books, so
+  // writing the global heartbeat here would let a lead hand-running one book
+  // (e.g. while investigating a broken cron) stamp six hours of false green
+  // on /api/health for everything else.
+  if (!dryRun && book === null) writeHeartbeat(projectRoot);
   return 0;
 }
 
-function main() {
-  const argv = process.argv.slice(2);
+/**
+ * Parse argv into options. Exported and pure (no process.exit) so the trap
+ * below is unit-testable without spawning a process.
+ *
+ * ⚠️ `--book` reading past the end of argv is not a cosmetic bug. The old
+ * inline parser did `book = argv[++i]`, which for a trailing/transposed
+ * `--book` (e.g. `--force --book`, flags swapped) sets `book` to `undefined`.
+ * `runGlossaryExport`'s destructuring default (`book = null`) then treats an
+ * explicit `undefined` exactly like a missing key, so `book` silently becomes
+ * `null` — "all books" — turning a typo into a `--force` write across every
+ * glossary in the repo. A missing value for a flag that requires one must be
+ * a loud parse error, never a silent fallback to the broadest scope.
+ *
+ * @param {string[]} argv
+ * @returns {{book: string|null, dryRun: boolean, force: boolean, help: boolean, error: string|null}}
+ */
+function parseArgs(argv) {
   let book = null;
   let dryRun = false;
   let force = false;
+  let help = false;
   for (let i = 0; i < argv.length; i++) {
-    if (argv[i] === '--book') book = argv[++i];
-    else if (argv[i] === '--dry-run') dryRun = true;
-    else if (argv[i] === '--force') force = true;
-    else if (argv[i] === '-h' || argv[i] === '--help') {
-      console.log(
-        'Usage: node server/scripts/export-terminology.js [--book <slug>] [--dry-run] [--force]'
-      );
-      process.exit(0);
+    if (argv[i] === '--book') {
+      const value = argv[i + 1];
+      if (value === undefined) {
+        return { book: null, dryRun, force, help, error: '--book requires a value (a book slug)' };
+      }
+      book = value;
+      i++;
+    } else if (argv[i] === '--dry-run') {
+      dryRun = true;
+    } else if (argv[i] === '--force') {
+      force = true;
+    } else if (argv[i] === '-h' || argv[i] === '--help') {
+      help = true;
     }
   }
+  return { book, dryRun, force, help, error: null };
+}
 
-  process.exit(runGlossaryExport({ book, dryRun, force }));
+function main() {
+  const parsed = parseArgs(process.argv.slice(2));
+
+  if (parsed.error) {
+    console.error(parsed.error);
+    process.exit(1);
+  }
+
+  if (parsed.help) {
+    console.log(
+      'Usage: node server/scripts/export-terminology.js [--book <slug>] [--dry-run] [--force]'
+    );
+    process.exit(0);
+  }
+
+  process.exit(
+    runGlossaryExport({ book: parsed.book, dryRun: parsed.dryRun, force: parsed.force })
+  );
 }
 
 if (require.main === module) {
   main();
 }
 
-module.exports = { listBooks, runGlossaryExport };
+module.exports = { listBooks, runGlossaryExport, parseArgs };

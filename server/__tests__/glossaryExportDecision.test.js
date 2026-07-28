@@ -14,7 +14,10 @@
  *    producers rather than refreshing. Migration 032 dropped the table
  *    merge-glossary still writes to, and exportBookGlossary is deliberately
  *    subject-strict, so chemistry could go from 617 approved terms to near
- *    zero silently. This turns that into a loud refusal.
+ *    zero silently. This turns that into a loud refusal. The guard checks
+ *    BOTH the approved-term count and the total-term count: approved-only
+ *    is inert for a file with zero approved terms — exactly the shape of
+ *    liffraedi-2e's committed 2262-term, all-needs_review export.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -23,6 +26,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const {
   countApproved,
+  countTerms,
   sameTerms,
   shrinkVerdict,
   SHRINK_RATIO,
@@ -33,6 +37,14 @@ const approved = (n) =>
     english: `t${i}`,
     icelandic: `i${i}`,
     status: 'approved',
+  }));
+
+/** All needs_review, i.e. zero approved — the liffraedi-2e shape. */
+const needsReview = (n) =>
+  Array.from({ length: n }, (_, i) => ({
+    english: `t${i}`,
+    icelandic: `i${i}`,
+    status: 'needs_review',
   }));
 
 const payload = (terms, generated = '2026-01-01T00:00:00.000Z') => ({
@@ -61,6 +73,28 @@ describe('countApproved', () => {
   it('returns 0 when terms is missing or not an array', () => {
     expect(countApproved({ terms: 'nope' })).toBe(0);
     expect(countApproved({})).toBe(0);
+  });
+});
+
+describe('countTerms', () => {
+  it('counts every term regardless of status', () => {
+    expect(
+      countTerms(
+        payload([
+          { english: 'a', icelandic: 'a', status: 'approved' },
+          { english: 'b', icelandic: 'b', status: 'needs_review' },
+        ])
+      )
+    ).toBe(2);
+  });
+
+  it('returns 0 for null', () => {
+    expect(countTerms(null)).toBe(0);
+  });
+
+  it('returns 0 when terms is missing or not an array', () => {
+    expect(countTerms({ terms: 'nope' })).toBe(0);
+    expect(countTerms({})).toBe(0);
   });
 });
 
@@ -102,10 +136,36 @@ describe('shrinkVerdict', () => {
     expect(shrinkVerdict(null, payload(approved(5))).refuse).toBe(false);
   });
 
-  it('does not refuse when the previous file had no approved terms', () => {
-    // liffraedi-2e today: 2262 terms, all needs_review.
-    const prev = payload([{ english: 'a', icelandic: 'a', status: 'needs_review' }]);
-    expect(shrinkVerdict(prev, payload([])).refuse).toBe(false);
+  it('REFUSES a catastrophic shrink even when the previous file had NO approved terms', () => {
+    // This used to be "does not refuse when the previous file had no approved
+    // terms" and asserted refuse:false — that pinned the exact bug finding 1
+    // found: liffraedi-2e's real committed file is 2262 terms, ALL
+    // needs_review (0 approved), so the approved-only metric was structurally
+    // inert for it and an empty export would have been written and pushed.
+    // The total-term metric must catch what the approved metric cannot.
+    const prev = payload(needsReview(2262));
+    const v = shrinkVerdict(prev, payload([]));
+    expect(v.refuse).toBe(true);
+    expect(v.prevTotal).toBe(2262);
+    expect(v.nextTotal).toBe(0);
+  });
+
+  it('does not refuse when there is genuinely nothing to protect (both baselines empty)', () => {
+    expect(shrinkVerdict(payload([]), payload([])).refuse).toBe(false);
+  });
+
+  it('REFUSES a catastrophic total-term shrink even with approved counts flat at zero', () => {
+    // 2262 -> 2000 needs_review terms, approved 0 -> 0 throughout: the
+    // approved metric alone would never fire; the total metric must.
+    const v = shrinkVerdict(payload(needsReview(2262)), payload(needsReview(2000)));
+    expect(v.refuse).toBe(false); // 2000 / 2262 > 0.5, legitimate drift
+  });
+
+  it('REFUSES the real liffraedi-2e-shaped catastrophic shrink (2262 -> 100, still 0 approved)', () => {
+    const v = shrinkVerdict(payload(needsReview(2262)), payload(needsReview(100)));
+    expect(v.refuse).toBe(true);
+    expect(v.prevTotal).toBe(2262);
+    expect(v.nextTotal).toBe(100);
   });
 
   it('does not refuse on growth', () => {
