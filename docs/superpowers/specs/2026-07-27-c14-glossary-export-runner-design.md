@@ -120,11 +120,43 @@ targets catastrophe, not drift.
 so the export writes and logs that it established a new baseline. Refusing there would wedge
 the exporter permanently on a corrupt file it is capable of replacing.
 
+⚠️ **Corrected 2026-07-28 (Task 4 per-task review finding, commit `5cdf3659`; predates the
+whole-branch review rounds below).** The paragraph above is true only of `ENOENT` (no file yet)
+and a JSON parse failure (corrupt file) — the two cases with genuinely no usable baseline. It
+does **not** extend to every read error: `readExisting` originally caught them all into `null`,
+which for a permissions fault (`EACCES`) means an *unreadable* existing glossary reads as "no
+baseline," the shrink guard stands down on exactly the file it exists to protect, chemistry's
+617 approved terms get overwritten, and the heartbeat is still written — `/api/health` stays
+green through a silent overwrite. Shipped `readExisting` (`server/scripts/export-terminology.js`)
+returns `null` only for `ENOENT` and a parse failure; every other error, `EACCES` above all,
+propagates and is caught per-book by the caller as a failure (counted, heartbeat withheld, later
+books unaffected). Verified by a `chmod 000` export holding 617 approved terms being left intact.
+
 `--dry-run` keeps its current meaning and additionally reports what the guard *would* do.
 
 **Exit-code contract** (`git-backup.sh` keys off it): `0` only when every requested book
 resolved healthily; non-zero if **any** book was refused or threw. Books are processed
 independently — one refusal must not skip the remaining books.
+
+⚠️ **Corrected 2026-07-28 (whole-branch adversarial reviews, rounds 1 and 3).** "Refused or
+threw" no longer covers every way a book can now fail — two more per-book failure modes were
+added alongside the shrink guard, both counted exactly like a refusal (logged, `failures++`,
+loop continues, heartbeat withheld, nothing written for that book): (1) **round 1, finding 2** —
+a book with no `book_subject_mapping` row would make `exportBookGlossary`'s subject filter a
+no-op and export an unscoped, all-subjects glossary, the opposite of item 18's deliberately
+strict intent; `runGlossaryExport` now resolves each book's subject via `subjectFn` (default
+`terminologyService.getBookSubject`) before exporting and refuses when it is `null`. This does
+**not** change the §5 rollout outcome for the three real books — migration 032 already seeds
+`book_subject_mapping` for `efnafraedi-2e`/`liffraedi-2e`/`lifraen-efnafraedi` — but it is a real
+gate for any book registered since. (2) **round 3** — a non-throwing but malformed `exportFn`
+return (no `.terms`, or `terms` not an array) used to reach `sameTerms`/`shrinkVerdict`
+unchecked; with no baseline (a book's first export) `shrinkVerdict.refuse` stays `false`
+regardless of shape, so a malformed payload was written to disk as-is — exit 0, zero errors,
+heartbeat green. `runGlossaryExport` now validates `next` immediately after the `exportFn` call
+(non-null object, `Array.isArray(next.terms)`) before any comparison or write, via a
+`describeMalformedPayload` helper for the message (built to name `null` distinctly and report the
+payload's own keys — see the shipped file's JSDoc for why it does not `JSON.stringify`). Read
+`server/scripts/export-terminology.js` for the four failure modes as they now stand.
 
 ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 6): exit `0` is NOT
 equivalent to "the heartbeat was written".** The sentence originally here claimed they were
@@ -144,10 +176,11 @@ A refusal, a crash, `--dry-run`, or a `--book <slug>` run all leave it untouched
 the alarm, per the C11(b) doctrine (`git-backup.sh:56-72`).
 
 **Discovering zero books is unhealthy**, not vacuously healthy: the exporter selects books by
-the presence of `books/<slug>/glossary/` (`export-terminology.js:49-51`), so an empty set means
-book discovery is broken, not that there is no work. It exits non-zero and withholds the
-heartbeat. Without this, a mis-resolved `BOOKS_DIR` would report healthy forever — the precise
-shape of failure this check exists to catch.
+the presence of `books/<slug>/glossary/` (the `hasGlossaryDir` filter, `export-terminology.js:188`,
+applied in the book-selection line at `:199-200`), so an empty set means book discovery is
+broken, not that there is no work. It exits non-zero and withholds the heartbeat. Without this,
+a mis-resolved `BOOKS_DIR` would report healthy forever — the precise shape of failure this
+check exists to catch.
 
 ### 4.4 Cron wiring — `scripts/git-backup.sh`
 
@@ -165,7 +198,40 @@ Add `'books/*/glossary/'` to `PATHSPECS` (`:108-118`).
 ⚠️ **Explicitly out of scope, per the register's standing warning:** no `git fetch` or rebase
 is added to the cron.
 
-### 4.5 `formatGlossary` — `tools/lib/malstadur-api.js:179`
+⚠️ **Corrected 2026-07-28 (Task 6 per-task review, commit `742c0c1e`; PATH scoping further
+corrected by addendum parked minor P3, commit `cad3363e`).** This whole subsection is §4.4's own
+subject — containment — described incompletely on two points, one of which matters more than
+wording:
+
+1. **No `timeout`, and this section's job is containment.** The two-bullet design above (`if !
+   node …; then log WARN; fi`) tests only an *exit status*. It does nothing for an export that
+   *never returns* — a hang blocks `git-backup.sh` before `write_heartbeat`, exactly the outcome
+   this section exists to prevent, through the one door the design as written does not watch. Not
+   hypothetical: this caller opens `sessions.db` as a **second** process while the live editorial
+   server holds it, and the script has no `flock`, so a hung export would let the next 2h tick
+   start a second `add`/`commit`/`push` against the same working tree. The shipped script wraps
+   the call in `timeout 120` — matching the existing `timeout 30 git fetch` guard already in the
+   same file — and logs `WARN: glossary export failed or timed out` on either exit path.
+   Mutation-verified: removing the containment (a bare `node …` call) turned 13 of 15 `scripts`
+   tests red, including every C11(b) content-backup heartbeat test, because an uncontained
+   failure under `set -euo pipefail` aborts the run before the heartbeat is written.
+2. **`export PATH=` is a permanent mutation, not a scoped one.** As written, the `export` stays in
+   effect for every later `git`/`date`/`timeout` call in the script, including the `git
+   commit`/`git push`/`git fetch` further down — none of which need `/usr/bin` prioritized and
+   none of which were exercised under it before this block existed. `deploy.sh` pins `PATH` as its
+   literal first executable line specifically because its *whole* script needs it; this script
+   does not, so the blanket `export` here left two use sites (`git`, elsewhere in the script, and
+   `node`, here) able to silently resolve under two different rules within one run. The shipped
+   script scopes `PATH="/usr/bin:$PATH"` as a **per-command prefix** instead, applied to **both**
+   the `command -v node` existence check and the `timeout 120 node …` invocation — not just the
+   invocation — so a cron `PATH` minimal enough to omit `/usr/bin` entirely cannot make the
+   existence check report a false "not found" while the (correctly scoped) invocation would in
+   fact have worked.
+
+Read `scripts/git-backup.sh` for the exact shipped form; do not rebuild from the two-bullet
+sketch above.
+
+### 4.5 `formatGlossary` — `tools/lib/malstadur-api.js:200`
 
 Trim-based emptiness on **both** sides (`(t.english ?? '').trim()`, `(t.icelandic ?? '').trim()`);
 drop entries failing either; emit trimmed values.
@@ -175,8 +241,8 @@ V13 it becomes the outbound request body verbatim, and the B1 probe established 
 bytes count toward the char budget that triggers truncation-retries. The skip count therefore
 travels by a **separate channel**: an optional `opts.onSkipped(droppedTerms)` callback.
 
-`loadGlossary` (`api-translate.js:623`) supplies an `onSkipped` that surfaces the count in the
-existing glossary line at `api-translate.js:1065`:
+`loadGlossary` (`api-translate.js:632`) supplies an `onSkipped` that surfaces the count in the
+existing glossary line at `api-translate.js:1117`:
 
 ```
 Glossary: 412 approved chemistry terms (2 malformed skipped)
@@ -185,6 +251,23 @@ Glossary: 412 approved chemistry terms (2 malformed skipped)
 This also fixes V16 transitively — a null-EN term can no longer reach
 `filterGlossaryForText:759`. "Fixed transitively" is exactly the kind of claim that rots, so
 it gets its own explicit test (§6).
+
+⚠️ **Corrected 2026-07-28 (documentation sweep, round 5 — spec/shipped drift).** Two points:
+
+1. **The emptiness check is not the `??` form above.** Shipped:
+   `typeof t.english === 'string' ? t.english.trim() : ''` (and the same for `t.icelandic`), not
+   `(t.english ?? '').trim()`. The difference is not cosmetic: `??` only substitutes on
+   `null`/`undefined`, so a non-string, non-nullish value (a number, say — DB rows are not
+   type-checked before reaching here) would reach `.trim()` and throw under the sketch above,
+   where the shipped `typeof` guard treats any non-string as blank and drops it — the safer
+   behaviour V16 depends on. Read `formatGlossary` (`tools/lib/malstadur-api.js`) for the exact
+   shipped guard rather than rebuilding from the `??` sketch.
+2. **A fourth consumer needed the same fix.** `tools/translate-chapter-titles.js` also calls
+   `formatGlossary` (`approvedOnly: false`) and used to log `allTerms.length` — the count
+   *before* the blank-side guard — so its "Glossary: N terms" line silently overstated what was
+   actually sent once the guard started dropping entries. Corrected alongside the exporter work
+   to log `glossaries[0].terms.length` (what the guard actually kept) instead, with a one-line
+   comment at the call site explaining why the two counts can diverge.
 
 ### 4.6 Health — `server/lib/glossaryExportHealth.js` + `server/index.js`
 
@@ -217,6 +300,15 @@ Resolve the project root from `__dirname`, never `process.cwd()` (the server run
 Per CLAUDE.md § *One source of truth*: fix each wrong document **in place**; never log a
 correction as a to-do in a second document.
 
+**Note (2026-07-28), not a correction:** this table was a plan, now executed and then some — the
+false wiring claim actually lived in five places, not the two implied above (`CLAUDE.md`, the
+memory topic file `idordabanki-biology-seeding.md` rather than `MEMORY.md` itself,
+`architecture.md`'s durability table *and* its freshness paragraph, the exporter's own header,
+and a fifth occurrence in `docs/plans/2026-06-12-editorial-throughput-roadmap.md:163` found after
+the first pass closed). All six rows above are done; none is left as an open task. Not rewritten,
+since this table's job was to state intent at design time, and it did so correctly enough to
+execute from.
+
 ## 5. Rollout, and the expected first-run outcome
 
 **State this plainly rather than discovering it on prod:** on the first cron run after deploy,
@@ -246,6 +338,15 @@ to not-ok. The `[LEAD]` follow-up below (`--dry-run` on prod, read the real coun
 decide per book whether to `--force` (accept the DB as authoritative) or to treat the
 shortfall as a data defect to repair first. **Do not `--force` before reading the numbers.**
 
+⚠️ **Re-checked 2026-07-28 against rounds 3 and 4 — still accurate, no further correction.** The
+round-1 book-subject-mapping guard (§4.2) does not change this section's three-book outcome:
+migration 032 seeds `book_subject_mapping` for exactly `efnafraedi-2e`, `liffraedi-2e`, and
+`lifraen-efnafraedi`, so `subjectFn` resolves for all three and the shrink guard is what actually
+fires first, as described above. Round 3's shape guard and round 4's `parseArgs`/message-format
+changes affect what gets *logged* on refusal, not *whether* these three books refuse — the
+flagless invocation `git-backup.sh` uses parses to the same `{book: null, dryRun: false, force:
+false}` before and after round 4. No change needed.
+
 ## 6. Testing strategy
 
 `formatGlossary` has no tests today (V4), so this is genuinely test-first rather than retrofit.
@@ -264,6 +365,29 @@ shortfall as a data defect to repair first. **Do not `--force` before reading th
 - **Static pin**: `books/*/glossary/` present in `git-backup.sh` `PATHSPECS`, matching **file
   bytes**; the export call is contained (does not abort the run). **Mutation-check** each
   static pin — assert *which* test goes red — since a static pin proves presence, not behaviour
+
+⚠️ **Corrected 2026-07-28 (whole-branch adversarial reviews, rounds 1, 3, and 4; git-backup
+upgrade noted in the plan's Task 6, commit `2acb4c69`).** Coverage this list does not show:
+
+- The **Exporter** bullet predates three more failure modes exercised in
+  `server/__tests__/glossaryExportRun.test.js`: the book-subject-mapping guard (resolves,
+  refuses on `null`, propagates a throwing `subjectFn`), the malformed-`exportFn`-payload shape
+  guard (`describeMalformedPayload`'s branches: `null`, non-object, array, missing `.terms`,
+  `.terms` `null`/non-array — each asserted for a distinct message, not just "some error"), and
+  book selection by `=== null` rather than truthiness (`book: ''` treated as one missing book,
+  never "all books").
+- A new `describe('parseArgs', ...)` suite is not listed at all: valid flag combinations, a
+  missing `--book` value, an empty/whitespace `--book` value (trimmed when valid), and — the
+  round-2 CRITICAL fix — **any** unrecognised token (not just a missing value) rejected by class,
+  with `--help`-appears-before-vs-after-the-bad-token both pinned for the documented
+  error-over-help precedence.
+- **Static pin, upgraded, not just extended:** the plan's Task 6 deliberately replaced this
+  bullet's "static byte-pin… matching file bytes" with **behavioural** tests instead —
+  `vitest.workspace.js`'s `scripts` project drives the real `git-backup.sh` as a subprocess in a
+  temp git repo, so containment is asserted by actually breaking it (mutation-verified: a bare
+  `node …` call turns 13 of 15 tests red) rather than by grepping for a string. `PATHSPECS`
+  membership is still confirmed, but as a side effect of a real commit landing the file, not a
+  standalone byte match.
 
 Authoritative gate: `npm test` from the repo root. Whole-branch adversarial review before the
 PR, per the campaign's standing process.
@@ -285,6 +409,16 @@ Per the standing "log every out-of-scope find" rule. These go to the register on
 4. **`docs/editorial/terminology.md:220`** still calls the CSV files "the authoritative source
    for approved terminology" — a claim the DB redesign superseded. Tracked in the closure audit
    as `ed-dim-8` (documentation corpus), not re-homed here.
+
+**Note (2026-07-28), not a correction:** the four items above are this design's own out-of-scope
+list, frozen as of 2026-07-27 per CLAUDE.md § *One source of truth* (a design record is evidence,
+not status) — all four are still accurate and still open. The four whole-branch review rounds
+that ran after this spec was written surfaced five more out-of-scope items (untested
+operator-facing messages in `export-terminology.js`/`git-backup.sh`) plus one excluded design
+item (a `glossaryExportHealth.js`/`contentBackupHealth.js` shared-factory refactor); those are
+**not** added here, since this section's job is a frozen record of what was known at design time,
+not a live list. Current status of all of it lives in the register's §C14, per the same rule that
+keeps this section from being edited to match.
 
 ## 8. Non-goals
 
