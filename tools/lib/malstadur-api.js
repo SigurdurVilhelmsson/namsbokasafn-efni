@@ -170,23 +170,57 @@ async function apiRequest(apiKey, method, endpoint, body = null) {
 /**
  * Convert project glossary terms to API glossary format.
  *
+ * Malformed entries are DROPPED rather than sent: a blank side (empty or
+ * whitespace-only) or a non-string side on either `english` or `icelandic`.
+ * Málstaður rejects a glossary containing a blank word with a 400 that fails
+ * the WHOLE request, so one malformed row would kill an entire paid
+ * translation chunk. Dropping costs one term of MT priming; sending costs the
+ * batch. The count is surfaced by `options.onSkipped` so the loss is visible,
+ * not silent.
+ *
+ * The type check is not pedantry: `String({})` is '[object Object]' and
+ * `String(['a'])` is 'a', so a coercing guard would pass wrong-typed values
+ * through as plausible-looking words. This is a boundary function taking
+ * arbitrary arrays from two producers plus an audit harness.
+ *
+ * ⚠️ The returned object IS the outbound request body — filterGlossaryForText
+ * spreads it and this module assigns it to `body.glossaries`. Do NOT add keys
+ * to it: they would be sent to a third party and count against the character
+ * budget whose overflow triggers a truncation-retry. Report out-of-band.
+ *
  * @param {Array<{english: string, icelandic: string, status?: string}>} terms
  * @param {object} [options]
  * @param {string} [options.domain='chemistry'] - Domain label for the glossary
  * @param {boolean} [options.approvedOnly=true] - Only include approved terms
- * @returns {object} API-formatted glossary object
+ * @param {(dropped: Array<object>) => void} [options.onSkipped] - Called once with
+ *   the dropped entries, when any were dropped. Reporting channel only.
+ * @returns {{domain: string, sourceLanguage: string, targetLanguage: string,
+ *   terms: Array<{sourceWord: string, targetWord: string}>}} API-formatted glossary
  */
-function formatGlossary(terms, { domain = 'chemistry', approvedOnly = true } = {}) {
+function formatGlossary(terms, { domain = 'chemistry', approvedOnly = true, onSkipped } = {}) {
   const filtered = approvedOnly ? terms.filter((t) => t.status === 'approved') : terms;
+
+  const usable = [];
+  const skipped = [];
+  for (const t of filtered) {
+    const sourceWord = typeof t.english === 'string' ? t.english.trim() : '';
+    const targetWord = typeof t.icelandic === 'string' ? t.icelandic.trim() : '';
+    if (!sourceWord || !targetWord) {
+      skipped.push(t);
+      continue;
+    }
+    usable.push({ sourceWord, targetWord });
+  }
+
+  if (skipped.length > 0 && typeof onSkipped === 'function') {
+    onSkipped(skipped);
+  }
 
   return {
     domain,
     sourceLanguage: 'en',
     targetLanguage: 'is',
-    terms: filtered.map((t) => ({
-      sourceWord: t.english,
-      targetWord: t.icelandic,
-    })),
+    terms: usable,
   };
 }
 

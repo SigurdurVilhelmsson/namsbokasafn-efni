@@ -334,6 +334,21 @@ app.get('/api/health', (req, res) => {
     checks.content_backup = { ok: false, error: err.message };
   }
 
+  // Check glossary-export heartbeat (register C14). The export is meant to run
+  // from scripts/git-backup.sh in a contained way — a failure must not abort
+  // the content backup — so this is the only place a persistently failing
+  // export becomes visible. ./scripts/deploy.sh prints every not-ok check.
+  try {
+    const { readGlossaryExportHealth, DEFAULT_STALE_HOURS } = require('./lib/glossaryExportHealth');
+    checks.glossary_export = readGlossaryExportHealth({
+      projectRoot: path.join(__dirname, '..'),
+      nowMs: Date.now(),
+      staleHours: Number(process.env.GLOSSARY_EXPORT_STALE_HOURS) || DEFAULT_STALE_HOURS,
+    });
+  } catch (err) {
+    checks.glossary_export = { ok: false, error: err.message };
+  }
+
   const allOk = Object.values(checks).every((c) => c.ok);
 
   res.json({

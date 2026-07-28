@@ -619,19 +619,67 @@ export { bookToDomain };
 /**
  * Load glossary from a book's glossary directory.
  * Returns API-formatted glossary object or null if unavailable.
+ *
+ * `options.onSkipped` receives any entries dropped for having a blank English
+ * or Icelandic side (register C14), so the caller can report the loss instead
+ * of it being silent. onSkipped fires even if this function returns null (the
+ * worst case: all approved terms were malformed).
+ *
+ * @param {string} glossaryDir
+ * @param {string} domain
+ * @param {{onSkipped?: (dropped: Array<object>) => void}} [options]
  */
-export function loadGlossary(glossaryDir, domain) {
+export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
   const glossaryPath = path.join(glossaryDir, 'glossary-unified.json');
   if (!fs.existsSync(glossaryPath)) return null;
 
+  let dropped = null;
+  let glossary;
   try {
     const data = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
-    const glossary = formatGlossary(data.terms || [], { domain, approvedOnly: true });
-    if (glossary.terms.length === 0) return null;
-    return glossary;
+    // An inner callback that CANNOT throw, so the caller's callback never
+    // runs inside this catch-all. Handing `onSkipped` straight to
+    // formatGlossary would mean a throwing caller callback is swallowed and
+    // returned as `null` — indistinguishable from corrupt JSON, and a
+    // fail-loud violation.
+    glossary = formatGlossary(data.terms || [], {
+      domain,
+      approvedOnly: true,
+      onSkipped: (d) => {
+        dropped = d;
+      },
+    });
   } catch {
     return null;
   }
+
+  // BEFORE the empty-check, deliberately. When every approved term is
+  // malformed, terms.length is 0 and this function returns null — and the
+  // caller then prints "none available", the same message as having no
+  // glossary file at all. Reporting first is what keeps the worst case
+  // (a wholly corrupt glossary) from reading as the benign one.
+  if (dropped && typeof onSkipped === 'function') onSkipped(dropped);
+
+  if (glossary.terms.length === 0) return null;
+  return glossary;
+}
+
+/**
+ * The operator-facing glossary line. Extracted from main() so the total-drop
+ * case is testable: a glossary whose every approved term was malformed loads
+ * as null, and without the count this line is identical to the one printed
+ * when there is no glossary file at all — the worst case rendered
+ * indistinguishable from the benign one.
+ *
+ * Surfacing the count at the MT stage is deliberate: the same reasoning as
+ * countInlineMarkers — a data defect must be visible where it happens, not
+ * inferred three stages downstream from bad output.
+ */
+export function glossaryStatusLine(glossary, skippedCount) {
+  const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
+  return glossary
+    ? `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
+    : `Glossary: none available${skipNote} (continuing without)`;
 }
 
 // ─── MT Edit-Lock ───────────────────────────────────────────────────
@@ -1060,12 +1108,13 @@ async function main() {
   let glossary = null;
   if (!args.noGlossary) {
     const domain = bookToDomain(args.book);
-    glossary = loadGlossary(path.join(BOOKS_DIR, 'glossary'), domain);
-    if (glossary) {
-      console.log(`Glossary: ${glossary.terms.length} approved ${glossary.domain} terms`);
-    } else {
-      console.log('Glossary: none available (continuing without)');
-    }
+    let skippedCount = 0;
+    glossary = loadGlossary(path.join(BOOKS_DIR, 'glossary'), domain, {
+      onSkipped: (dropped) => {
+        skippedCount = dropped.length;
+      },
+    });
+    console.log(glossaryStatusLine(glossary, skippedCount));
   }
 
   // Discover modules to translate

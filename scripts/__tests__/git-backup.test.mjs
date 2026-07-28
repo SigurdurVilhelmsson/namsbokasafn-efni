@@ -70,6 +70,7 @@ const FIXTURE_FILES = {
   'books/prufubok/translation-errors.json': '[]\n',
   'books/prufubok/residue-report.faithful.json': '[]\n',
   'books/prufubok/02-mt-output/ch01/m00001-segments.locked': 'locked\n',
+  'books/prufubok/glossary/glossary-unified.json': '{"terms":[]}\n',
 };
 
 beforeEach(() => {
@@ -312,5 +313,66 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     expect(readStatus().status).toBe('error');
     expect(readLog()).toMatch(/ERROR: Not a git repository/);
     expect(existsSync(heartbeatPath())).toBe(false);
+  });
+});
+
+describe('git-backup.sh glossary export (register C14)', () => {
+  it('stages a changed books/*/glossary/ file', () => {
+    // Without this pathspec the export writes to production's disk and never
+    // reaches the dev checkout where api-translate.js primes MT — which is
+    // why wiring the runner alone would have delivered nothing.
+    writeFileSync(
+      path.join(work, 'books/prufubok/glossary/glossary-unified.json'),
+      '{"terms":[{"english":"water","icelandic":"vatn","status":"approved"}]}\n'
+    );
+    const { status } = runBackup();
+    expect(status).toBe(0);
+    expect(readStatus().status).toBe('success');
+    expect(git(['show', '--stat', '--name-only', 'HEAD'])).toMatch(
+      /books\/prufubok\/glossary\/glossary-unified\.json/
+    );
+  });
+
+  it('a FAILING export does not abort the content backup', () => {
+    // The fixture has no server/scripts/export-terminology.js, so node exits
+    // non-zero. git-backup.sh is `set -euo pipefail` and its heartbeat is the
+    // C11(b) content-backup alarm — a terminology-DB problem must never be
+    // able to take that down. Containment is asserted behaviourally here, not
+    // as a text pin, because only running it proves the trap actually holds.
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":3}\n'
+    );
+    const { status } = runBackup();
+    expect(status).toBe(0);
+    expect(readStatus().status).toBe('success');
+    expect(existsSync(heartbeatPath())).toBe(true);
+    expect(readLog()).toMatch(/WARN: glossary export failed/);
+  });
+
+  it('invokes the exporter before staging, so a fresh export rides the same commit', () => {
+    // Stand in a fake exporter that writes the glossary file, proving the
+    // call happens BEFORE `git add` rather than after it.
+    mkdirSync(path.join(work, 'server', 'scripts'), { recursive: true });
+    writeFileSync(
+      path.join(work, 'server', 'scripts', 'export-terminology.js'),
+      [
+        "const fs = require('fs');",
+        "const path = require('path');",
+        "const p = path.join(__dirname, '..', '..', 'books', 'prufubok', 'glossary', 'glossary-unified.json');",
+        'fs.writeFileSync(p, JSON.stringify({ terms: [{ english: "acid", icelandic: "syra", status: "approved" }] }) + "\\n");',
+      ].join('\n')
+    );
+    const { status } = runBackup();
+    expect(status).toBe(0);
+    // ⚠️ Asserting the PATH alone is not enough, and neither is exit 0. The
+    // fixture already commits this path in beforeEach, and a run where the
+    // export never happened stages nothing, takes the `no_changes` branch,
+    // and still exits 0 — so a `--name-only` regex would match either way.
+    // These two assertions are what actually separate "ran before staging"
+    // from "never ran": `no_changes` never yields status `success`, and only
+    // a real export puts the fake's distinguishing value into the commit.
+    expect(readStatus().status).toBe('success');
+    expect(git(['show', 'HEAD:books/prufubok/glossary/glossary-unified.json'])).toMatch(/syra/);
   });
 });

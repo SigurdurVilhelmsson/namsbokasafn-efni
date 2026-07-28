@@ -1,0 +1,117 @@
+/**
+ * Decision logic for the unattended glossary export (register C14).
+ *
+ * Pure by design — no DB, no filesystem — so the two rules that make the
+ * export safe to run from cron can be tested without a sessions.db.
+ *
+ * WRITE-IF-CHANGED: exportBookGlossary stamps a fresh `generated` timestamp
+ * on every call (terminologyService.js:1581). Once books/*\/glossary/ is
+ * staged by scripts/git-backup.sh, that stamp alone would make the file
+ * dirty every 2h — ~4,380 timestamp-only commits a year — and git-backup's
+ * healthy "nothing to commit" path would never fire again.
+ *
+ * SHRINK GUARD: the committed glossary-unified.json files were produced by
+ * tools/merge-glossary.js, not by this exporter, so cron-ing it SWAPS
+ * PRODUCERS rather than refreshing. Migration 032 dropped the
+ * terminology_terms table merge-glossary still writes to, and
+ * exportBookGlossary is deliberately subject-strict (item 18), so the new
+ * export can legitimately be far smaller than the file it replaces —
+ * chemistry could go from 617 approved terms to near zero, silently
+ * degrading MT quality for weeks. ⚠️ This file's blast radius is NOT
+ * MT-only, so a silent shrink is not only an MT-quality problem: approved
+ * terms are also substituted into published CNXML/HTML by
+ * tools/lib/math-label-substitute.js's buildGlossaryMap, consumed by
+ * cnxml-inject.js's substituteMathLabels — reader-visible (full consumer
+ * list: register C14). The guard makes a catastrophic shrink a loud refusal
+ * instead of a silent write.
+ */
+
+/** Approved terms are what actually primes MT (api-translate loads approvedOnly). */
+function countApproved(data) {
+  if (!data || !Array.isArray(data.terms)) return 0;
+  return data.terms.filter((t) => t && t.status === 'approved').length;
+}
+
+/** Total terms, whatever their status — the only signal for a file with zero approved terms. */
+function countTerms(data) {
+  return data && Array.isArray(data.terms) ? data.terms.length : 0;
+}
+
+/**
+ * True when the two payloads carry identical term content, ignoring
+ * `generated`. A payload written by a different producer simply compares
+ * unequal, which is the correct outcome (the shrink guard then decides).
+ *
+ * ⚠️ ORDER-SENSITIVE (parked minor from the Task 3 per-task review, resolved
+ * 2026-07-28): this is a `JSON.stringify` comparison, so two payloads with
+ * the same terms in a different order compare unequal. `exportBookGlossary`
+ * orders by `h.english COLLATE NOCASE ASC`, which is stable across headwords
+ * — but it has NO secondary tiebreaker for multiple translations sharing one
+ * headword, so their relative order is whatever SQLite's join happens to
+ * produce, which is not guaranteed stable run-to-run.
+ *
+ * This is acceptable, not a latent bug, because of which way it can fail: an
+ * unstable tie order can only produce a false "different" (two runs with
+ * identical term VALUES compare unequal because a tied pair swapped
+ * position) — a spurious rewrite, at worst a spurious commit. It can never
+ * produce a false "same" (a silent non-write of content that actually
+ * changed): `JSON.stringify` equality requires both the values AND their
+ * order to match, so any real content change is still caught regardless of
+ * tie ordering. A spurious commit is cosmetic; a silently-skipped write is
+ * the failure mode this whole file exists to prevent. If this is ever
+ * observed to flap (the same DB state producing a different serialization
+ * across cron runs), that is the mechanism — add a secondary tiebreaker
+ * (e.g. translation id) to `exportBookGlossary`'s `ORDER BY`, not here.
+ */
+function sameTerms(prev, next) {
+  if (!prev || !Array.isArray(prev.terms)) return false;
+  if (!next || !Array.isArray(next.terms)) return false;
+  return JSON.stringify(prev.terms) === JSON.stringify(next.terms);
+}
+
+/**
+ * Deliberately loose: it targets catastrophe, not drift. Legitimate
+ * shrinkage happens — a head editor un-approves, or item-18 subject scoping
+ * tightens — and refusing on those would train people to pass --force.
+ */
+const SHRINK_RATIO = 0.5;
+
+/**
+ * @returns {{refuse: boolean, prevApproved: number, nextApproved: number, prevTotal: number, nextTotal: number}}
+ */
+function shrinkVerdict(prev, next) {
+  const prevApproved = countApproved(prev);
+  const nextApproved = countApproved(next);
+  const prevTotal = countTerms(prev);
+  const nextTotal = countTerms(next);
+
+  // BOTH metrics, because approved-count alone is INERT for a file with zero
+  // approved terms — and books/liffraedi-2e/glossary/glossary-unified.json is
+  // exactly that: 2262 terms, all needs_review. That is the largest committed
+  // glossary in the repo and precisely the merge-glossary artifact this guard
+  // exists to protect from the producer swap. Measuring only the MT-priming
+  // subset let the guard be structurally disabled for it.
+  //
+  // (Parked minor from the Task 3 per-task review, resolved 2026-07-28: an
+  // earlier version of this function had a standalone `if (prevApproved ===
+  // 0) return { refuse: false, ... }` early return, flagged then as
+  // "mathematically dead" — nextApproved is a count, so `< prevApproved *
+  // 0.5` is already false once prevApproved is 0. That flag was RIGHT about
+  // the code path and WRONG about the consequence: the defect wasn't the
+  // branch, it was the METRIC — measuring approved-only left the whole
+  // function structurally inert for a book like liffraedi-2e. The critical
+  // fix rebuilt this as the two-clause OR below; the standalone early return
+  // no longer exists. The `prevApproved > 0` and `prevTotal > 0` guards in
+  // each clause remain individually redundant in the same sense as before
+  // — a count can never be negative, so the inequality on their right is
+  // already false when the count on their left is 0 — but are kept
+  // deliberately, as the explicit statement of "nothing to protect," rather
+  // than relying on a reader to re-derive that from non-negativity.)
+  const refuse =
+    (prevApproved > 0 && nextApproved < prevApproved * SHRINK_RATIO) ||
+    (prevTotal > 0 && nextTotal < prevTotal * SHRINK_RATIO);
+
+  return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
+}
+
+module.exports = { countApproved, countTerms, sameTerms, shrinkVerdict, SHRINK_RATIO };
