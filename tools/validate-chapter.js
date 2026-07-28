@@ -22,11 +22,15 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 import {
   detectMathMLNumberFormat,
   localizeNumbersInMathML,
   verifyLocalization,
 } from './lib/mathml-to-latex.js';
+
+const require = createRequire(import.meta.url);
+const { normalizeChapter } = require('../server/lib/chapterLabel');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -983,9 +987,12 @@ function parseArgs(args) {
     } else if (!arg.startsWith('-')) {
       if (!result.book) {
         result.book = arg;
-      } else if (!result.chapter) {
-        result.chapter = parseInt(arg, 10);
+      } else if (result.chapter === null) {
+        result.chapter = normalizeChapter(arg); // 'appendices'->-1, '5'->5, junk->null
       }
+    } else if (result.book && result.chapter === null && normalizeChapter(arg) === -1) {
+      // bare "-1" (appendices) after the book positional — starts with '-' but is a chapter, not a flag
+      result.chapter = -1;
     }
   }
 
