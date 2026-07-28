@@ -184,52 +184,44 @@ check exists to catch.
 
 ### 4.4 Cron wiring — `scripts/git-backup.sh`
 
-A guarded export call **before** staging, following the file's own per-pathspec idiom at
-`:121-131` (log and continue; never take the run down):
+⚠️ **Corrected 2026-07-28 (documentation sweep, round 5; PATH scoping per Task 6 review, commit
+`742c0c1e`, further corrected by addendum parked minor P3, commit `cad3363e`; timeout per round 2).**
+The design below originally had no `timeout` and used a blanket `export PATH=`. Both mattered:
+a hang is the one failure the exit-status check cannot catch, and it blocks `git-backup.sh`
+before `write_heartbeat` — exactly the outcome this section's containment exists to prevent, not
+hypothetically: the exporter opens `sessions.db` as a **second** process against the live
+editorial server, there is no `flock`, and a hang would let the next 2h tick start a second
+`add`/`commit`/`push` against the same working tree. And `export PATH=` is a **permanent
+mutation** for the rest of the script — every later `git`/`date`/`timeout` call, including `git
+commit`/`git push`/`git fetch` further down, none of which need `/usr/bin` prioritized — whereas
+`deploy.sh` pins `PATH` on its literal first line because its *whole* script needs it. Corrected
+in place below to match the shipped file; mutation-verified: removing the containment (a bare
+`node …` call, no `timeout`) turns the `scripts` suite red, including every C11(b)
+content-backup heartbeat test, because an uncontained failure under `set -euo pipefail` aborts
+the run before the heartbeat is written.
 
-- `export PATH="/usr/bin:$PATH"` — the `deploy.sh:26` pin (V10)
-- `command -v node` check → absent: `log "WARN: node not found — glossary export skipped"`
-- non-zero exit → `log "WARN: glossary export failed — continuing"`
+A guarded export call **before** staging, following the file's own per-pathspec idiom at
+`:174-184` (log and continue; never take the run down):
+
+- `PATH="/usr/bin:$PATH"` is prefixed **per-command**, on both the `command -v node` existence
+  check and the export invocation below — not `export`ed — so a `PATH` minimal enough to omit
+  `/usr/bin` cannot make the existence check report a false "not found" while the (correctly
+  scoped) invocation would in fact have worked
+- `command -v node` check → absent: `log "WARN: node not found in cron PATH — glossary export skipped"`
+- the invocation is wrapped in `timeout 120` — 120s is far above the sub-second this normally
+  takes and far below the 2h cron period; not belt-and-braces, it is the only thing in this
+  design that catches a hang, which an `if ! …; then` exit-status check cannot
+- non-zero exit **or a timeout** → `log "WARN: glossary export failed or timed out — continuing with the content backup"`
 - **never** aborts the backup (V11): terminology-DB health must not be coupled to the content
   backup's heartbeat
 
-Add `'books/*/glossary/'` to `PATHSPECS` (`:108-118`).
+Add `'books/*/glossary/'` to `PATHSPECS` (`:160-171`, the glossary entry at `:167`).
 
 ⚠️ **Explicitly out of scope, per the register's standing warning:** no `git fetch` or rebase
 is added to the cron.
 
-⚠️ **Corrected 2026-07-28 (Task 6 per-task review, commit `742c0c1e`; PATH scoping further
-corrected by addendum parked minor P3, commit `cad3363e`).** This whole subsection is §4.4's own
-subject — containment — described incompletely on two points, one of which matters more than
-wording:
-
-1. **No `timeout`, and this section's job is containment.** The two-bullet design above (`if !
-   node …; then log WARN; fi`) tests only an *exit status*. It does nothing for an export that
-   *never returns* — a hang blocks `git-backup.sh` before `write_heartbeat`, exactly the outcome
-   this section exists to prevent, through the one door the design as written does not watch. Not
-   hypothetical: this caller opens `sessions.db` as a **second** process while the live editorial
-   server holds it, and the script has no `flock`, so a hung export would let the next 2h tick
-   start a second `add`/`commit`/`push` against the same working tree. The shipped script wraps
-   the call in `timeout 120` — matching the existing `timeout 30 git fetch` guard already in the
-   same file — and logs `WARN: glossary export failed or timed out` on either exit path.
-   Mutation-verified: removing the containment (a bare `node …` call) turned 13 of 15 `scripts`
-   tests red, including every C11(b) content-backup heartbeat test, because an uncontained
-   failure under `set -euo pipefail` aborts the run before the heartbeat is written.
-2. **`export PATH=` is a permanent mutation, not a scoped one.** As written, the `export` stays in
-   effect for every later `git`/`date`/`timeout` call in the script, including the `git
-   commit`/`git push`/`git fetch` further down — none of which need `/usr/bin` prioritized and
-   none of which were exercised under it before this block existed. `deploy.sh` pins `PATH` as its
-   literal first executable line specifically because its *whole* script needs it; this script
-   does not, so the blanket `export` here left two use sites (`git`, elsewhere in the script, and
-   `node`, here) able to silently resolve under two different rules within one run. The shipped
-   script scopes `PATH="/usr/bin:$PATH"` as a **per-command prefix** instead, applied to **both**
-   the `command -v node` existence check and the `timeout 120 node …` invocation — not just the
-   invocation — so a cron `PATH` minimal enough to omit `/usr/bin` entirely cannot make the
-   existence check report a false "not found" while the (correctly scoped) invocation would in
-   fact have worked.
-
-Read `scripts/git-backup.sh` for the exact shipped form; do not rebuild from the two-bullet
-sketch above.
+Read `scripts/git-backup.sh` for the exact shipped form if this section and the file ever
+disagree again — the file is authoritative.
 
 ### 4.5 `formatGlossary` — `tools/lib/malstadur-api.js:200`
 
@@ -259,9 +251,11 @@ it gets its own explicit test (§6).
    `(t.english ?? '').trim()`. The difference is not cosmetic: `??` only substitutes on
    `null`/`undefined`, so a non-string, non-nullish value (a number, say — DB rows are not
    type-checked before reaching here) would reach `.trim()` and throw under the sketch above,
-   where the shipped `typeof` guard treats any non-string as blank and drops it — the safer
-   behaviour V16 depends on. Read `formatGlossary` (`tools/lib/malstadur-api.js`) for the exact
-   shipped guard rather than rebuilding from the `??` sketch.
+   where the shipped `typeof` guard treats any non-string as blank and drops it instead. (V16's
+   own case — a null EN side — is caught by either form; the `typeof` guard's extra safety is for
+   non-string, non-nullish values, which V16 didn't cover.) Read `formatGlossary`
+   (`tools/lib/malstadur-api.js`) for the exact shipped guard rather than rebuilding from the `??`
+   sketch.
 2. **A fourth consumer needed the same fix.** `tools/translate-chapter-titles.js` also calls
    `formatGlossary` (`approvedOnly: false`) and used to log `allTerms.length` — the count
    *before* the blank-side guard — so its "Glossary: N terms" line silently overstated what was
@@ -385,7 +379,8 @@ upgrade noted in the plan's Task 6, commit `2acb4c69`).** Coverage this list doe
   bullet's "static byte-pin… matching file bytes" with **behavioural** tests instead —
   `vitest.workspace.js`'s `scripts` project drives the real `git-backup.sh` as a subprocess in a
   temp git repo, so containment is asserted by actually breaking it (mutation-verified: a bare
-  `node …` call turns 13 of 15 tests red) rather than by grepping for a string. `PATHSPECS`
+  `node …` call turns the `scripts` suite red, including every C11(b) heartbeat test) rather than
+  by grepping for a string. `PATHSPECS`
   membership is still confirmed, but as a side effect of a real commit landing the file, not a
   standalone byte match.
 
