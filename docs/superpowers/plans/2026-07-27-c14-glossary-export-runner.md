@@ -398,6 +398,14 @@ describe('transitive safety: filterGlossaryForText never sees a blank side', () 
 });
 ```
 
+> ⚠️ **Corrected 2026-07-28 (Task 2 per-task review findings, applied in `bab93076`/`002cd543`).**
+> The Step 3 implementation below was updated for these findings, but this Step 1 test fence was
+> not. The shipped `tools/__tests__/api-translate-glossary-skip.test.js` additionally imports
+> `glossaryStatusLine` and has: a preservation-pin test for the total-drop case, a test that
+> `onSkipped` throwing is not swallowed by the corrupt-JSON catch-all, and a whole new
+> `describe('glossaryStatusLine', ...)` block (4 tests) — the driving tests for the fix described
+> in Task 2's Step 3 correction below. Read the shipped file, not this fence.
+
 - [ ] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run tools/__tests__/api-translate-glossary-skip.test.js`
@@ -414,9 +422,10 @@ Replace `tools/api-translate.js:619-635` with:
  * Load glossary from a book's glossary directory.
  * Returns API-formatted glossary object or null if unavailable.
  *
- * `options.onSkipped` is forwarded to formatGlossary and receives any entries
- * dropped for having a blank English or Icelandic side (register C14), so the
- * caller can report the loss instead of it being silent.
+ * `options.onSkipped` receives any entries dropped for having a blank English
+ * or Icelandic side (register C14), so the caller can report the loss instead
+ * of it being silent. onSkipped fires even if this function returns null (the
+ * worst case: all approved terms were malformed).
  *
  * @param {string} glossaryDir
  * @param {string} domain
@@ -544,6 +553,16 @@ Task 1 guard prevents that reaching it; asserted rather than assumed."
   - `SHRINK_RATIO: number` (0.5)
 
   Task 4 consumes all four.
+
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 1 — CRITICAL).** This
+> Interfaces list is what Task 3 originally shipped; it is no longer the shape. The shrink
+> guard above measures **approved** terms only, which is structurally inert for a book like
+> `liffraedi-2e` (2262 terms, **0 approved**) — `prevApproved === 0` always made `refuse: false`,
+> so an empty export would have been written and pushed by the cron. The shipped module adds a
+> fifth export, `countTerms(data: object|null) => number` (total terms regardless of status),
+> and `shrinkVerdict` now returns `{refuse, prevApproved, nextApproved, prevTotal, nextTotal}`,
+> refusing when **either** ratio falls below `SHRINK_RATIO`. See the corrected Step 3 code block
+> below and `server/lib/glossaryExportDecision.js`, which is authoritative.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -687,6 +706,16 @@ describe('shrinkVerdict', () => {
 });
 ```
 
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial reviews, rounds 1 and 2).** This is the
+> test file as Task 3 originally wrote it — kept as a dated, append-only implementation log, not
+> rewritten. The shipped `server/__tests__/glossaryExportDecision.test.js` differs in two ways
+> this fence does not show: (1) a fourth `describe('countTerms', ...)` block for the export
+> added by the round-1 CRITICAL fix, and (2) `shrinkVerdict`'s fixtures were found (round 2) to
+> be degenerate — `approved(n)` above always has `total === approved`, so it cannot isolate the
+> approved-only clause from the total-term clause once both exist. The shipped file adds a
+> `mixed(total, approvedCount)` fixture shaped like the real committed glossaries (e.g.
+> 1117/617) and per-clause mutation-checked tests. Read the shipped file, not this fence.
+
 - [ ] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run server/__tests__/glossaryExportDecision.test.js`
@@ -695,6 +724,24 @@ Expected: FAIL — `Cannot find module '../lib/glossaryExportDecision'`.
 - [ ] **Step 3: Write the implementation**
 
 Create `server/lib/glossaryExportDecision.js`:
+
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 1 — CRITICAL; caught
+> stale a second time in the round-5 review, which a verifier wrongly refuted before this pass
+> confirmed and fixed it).** The code fence below originally shipped an approved-count-only
+> `shrinkVerdict`/`countApproved` pair, with a `prevApproved === 0` early return commented "no
+> baseline of approved terms to protect: nothing can be lost." That comment was itself the bug:
+> `books/liffraedi-2e/glossary/glossary-unified.json` — the largest committed glossary in the
+> repo — is 2262 terms, **all `needs_review`, 0 approved**, so the guard was structurally inert
+> for it and the 2-hourly cron would have blanked and pushed an 879 KB tracked artifact, then
+> self-concealed via `sameTerms` on every later run. Unlike this document's usual "leave the
+> stale fence, annotate after" convention, this fence is REPLACED in place rather than merely
+> annotated: it is the literal recipe this repo's plan → TDD workflow follows, so leaving the
+> buggy pseudocode readable and copy-pastable would let a future rebuild reintroduce the exact
+> defect. The block below now matches the shipped `server/lib/glossaryExportDecision.js`
+> verbatim (it also gained a `countTerms` export and `prevTotal`/`nextTotal` in `shrinkVerdict`'s
+> return, plus the round-4-addendum fix to `sameTerms`'s JSDoc about `JSON.stringify` order-
+> sensitivity) — read that file directly rather than trusting this transcription to stay in
+> sync.
 
 ```js
 /**
@@ -716,7 +763,13 @@ Create `server/lib/glossaryExportDecision.js`:
  * exportBookGlossary is deliberately subject-strict (item 18), so the new
  * export can legitimately be far smaller than the file it replaces —
  * chemistry could go from 617 approved terms to near zero, silently
- * degrading MT for weeks. The guard makes that a loud refusal instead.
+ * degrading MT quality for weeks. ⚠️ This file's blast radius is NOT
+ * MT-only, so a silent shrink is not only an MT-quality problem: approved
+ * terms are also substituted into published CNXML/HTML by
+ * tools/lib/math-label-substitute.js's buildGlossaryMap, consumed by
+ * cnxml-inject.js's substituteMathLabels — reader-visible (full consumer
+ * list: register C14). The guard makes a catastrophic shrink a loud refusal
+ * instead of a silent write.
  */
 
 /** Approved terms are what actually primes MT (api-translate loads approvedOnly). */
@@ -725,12 +778,36 @@ function countApproved(data) {
   return data.terms.filter((t) => t && t.status === 'approved').length;
 }
 
+/** Total terms, whatever their status — the only signal for a file with zero approved terms. */
+function countTerms(data) {
+  return data && Array.isArray(data.terms) ? data.terms.length : 0;
+}
+
 /**
  * True when the two payloads carry identical term content, ignoring
- * `generated`. Serialization order is stable because exportBookGlossary
- * orders by `h.english COLLATE NOCASE ASC` and builds each term from one
- * object literal; a payload written by a different producer simply compares
+ * `generated`. A payload written by a different producer simply compares
  * unequal, which is the correct outcome (the shrink guard then decides).
+ *
+ * ⚠️ ORDER-SENSITIVE (parked minor from the Task 3 per-task review, resolved
+ * 2026-07-28): this is a `JSON.stringify` comparison, so two payloads with
+ * the same terms in a different order compare unequal. `exportBookGlossary`
+ * orders by `h.english COLLATE NOCASE ASC`, which is stable across headwords
+ * — but it has NO secondary tiebreaker for multiple translations sharing one
+ * headword, so their relative order is whatever SQLite's join happens to
+ * produce, which is not guaranteed stable run-to-run.
+ *
+ * This is acceptable, not a latent bug, because of which way it can fail: an
+ * unstable tie order can only produce a false "different" (two runs with
+ * identical term VALUES compare unequal because a tied pair swapped
+ * position) — a spurious rewrite, at worst a spurious commit. It can never
+ * produce a false "same" (a silent non-write of content that actually
+ * changed): `JSON.stringify` equality requires both the values AND their
+ * order to match, so any real content change is still caught regardless of
+ * tie ordering. A spurious commit is cosmetic; a silently-skipped write is
+ * the failure mode this whole file exists to prevent. If this is ever
+ * observed to flap (the same DB state producing a different serialization
+ * across cron runs), that is the mechanism — add a secondary tiebreaker
+ * (e.g. translation id) to `exportBookGlossary`'s `ORDER BY`, not here.
  */
 function sameTerms(prev, next) {
   if (!prev || !Array.isArray(prev.terms)) return false;
@@ -746,17 +823,44 @@ function sameTerms(prev, next) {
 const SHRINK_RATIO = 0.5;
 
 /**
- * @returns {{refuse: boolean, prevApproved: number, nextApproved: number}}
+ * @returns {{refuse: boolean, prevApproved: number, nextApproved: number, prevTotal: number, nextTotal: number}}
  */
 function shrinkVerdict(prev, next) {
   const prevApproved = countApproved(prev);
   const nextApproved = countApproved(next);
-  // No baseline of approved terms to protect: nothing can be lost.
-  if (prevApproved === 0) return { refuse: false, prevApproved, nextApproved };
-  return { refuse: nextApproved < prevApproved * SHRINK_RATIO, prevApproved, nextApproved };
+  const prevTotal = countTerms(prev);
+  const nextTotal = countTerms(next);
+
+  // BOTH metrics, because approved-count alone is INERT for a file with zero
+  // approved terms — and books/liffraedi-2e/glossary/glossary-unified.json is
+  // exactly that: 2262 terms, all needs_review. That is the largest committed
+  // glossary in the repo and precisely the merge-glossary artifact this guard
+  // exists to protect from the producer swap. Measuring only the MT-priming
+  // subset let the guard be structurally disabled for it.
+  //
+  // (Parked minor from the Task 3 per-task review, resolved 2026-07-28: an
+  // earlier version of this function had a standalone `if (prevApproved ===
+  // 0) return { refuse: false, ... }` early return, flagged then as
+  // "mathematically dead" — nextApproved is a count, so `< prevApproved *
+  // 0.5` is already false once prevApproved is 0. That flag was RIGHT about
+  // the code path and WRONG about the consequence: the defect wasn't the
+  // branch, it was the METRIC — measuring approved-only left the whole
+  // function structurally inert for a book like liffraedi-2e. The critical
+  // fix rebuilt this as the two-clause OR below; the standalone early return
+  // no longer exists. The `prevApproved > 0` and `prevTotal > 0` guards in
+  // each clause remain individually redundant in the same sense as before
+  // — a count can never be negative, so the inequality on their right is
+  // already false when the count on their left is 0 — but are kept
+  // deliberately, as the explicit statement of "nothing to protect," rather
+  // than relying on a reader to re-derive that from non-negativity.)
+  const refuse =
+    (prevApproved > 0 && nextApproved < prevApproved * SHRINK_RATIO) ||
+    (prevTotal > 0 && nextTotal < prevTotal * SHRINK_RATIO);
+
+  return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
 }
 
-module.exports = { countApproved, sameTerms, shrinkVerdict, SHRINK_RATIO };
+module.exports = { countApproved, countTerms, sameTerms, shrinkVerdict, SHRINK_RATIO };
 ```
 
 - [ ] **Step 4: Run the test to verify it passes**
@@ -797,6 +901,23 @@ deliberately loose - catastrophe, not drift."
 - Consumes: `countApproved`, `sameTerms`, `shrinkVerdict` from Task 3.
 - Produces: `runGlossaryExport(options) => number` (an exit code), exported from `server/scripts/export-terminology.js` alongside the existing `listBooks`. Options: `{booksDir?, projectRoot?, exportFn?, book?, force?, dryRun?, log?, logError?}`. `exportFn(bookSlug) => payload` is injected so tests need no DB. Task 6 consumes the CLI entry point only.
 - **Heartbeat path produced for Task 5:** `pipeline-output/.last-glossary-export`, relative to `projectRoot`.
+
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial reviews, rounds 1–4).** This Interfaces
+> list, and the Step 1/Step 3 code fences below, are Task 4 as originally shipped — kept as a
+> dated, append-only implementation log rather than rewritten, per this document's convention.
+> Four review rounds since then added an entire additional guard and a parser this section does
+> not mention: `runGlossaryExport` gained a `subjectFn` option (default
+> `terminologyService.getBookSubject`) that refuses a book with no `book_subject_mapping` row
+> instead of exporting an unscoped, all-subjects glossary; a shape guard on `exportFn`'s return
+> (`describeMalformedPayload` for the message) that must run before any comparison or write; and
+> book selection changed from `book ? [book] : listBooks(...)` to an explicit `book === null`
+> check. A new exported `parseArgs(argv)` replaced `main`'s inline argv loop entirely — it
+> rejects any unrecognised token (not just a missing `--book` value) and rejects an empty or
+> whitespace-only `--book` value, closing a class of bug where the two halves of this seam
+> checked different predicates (presence vs. truthiness) and a mistyped or empty `--book`
+> silently widened scope to every glossary-bearing book, with `--force` still applying to all of
+> them. `server/scripts/export-terminology.js` is authoritative; read it directly rather than
+> this fence.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -1087,6 +1208,12 @@ describe('runGlossaryExport — dry run', () => {
 });
 ```
 
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial reviews, rounds 1–4).** This test file is
+> Task 4 as originally written; the shipped `server/__tests__/glossaryExportRun.test.js` added
+> five more `describe` blocks this fence does not show: malformed-`exportFn`-payload handling,
+> `describeMalformedPayload`'s branches, book selection by `=== null` vs. truthiness, the
+> book-subject-mapping guard, and `parseArgs`. Read the shipped file, not this fence.
+
 - [ ] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run server/__tests__/glossaryExportRun.test.js`
@@ -1311,21 +1438,55 @@ if (require.main === module) {
 module.exports = { listBooks, runGlossaryExport };
 ```
 
-> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, round 4, register
-> C14).** The pseudocode above's refusal message reports only the approved-term
-> pair (`REFUSING to write — approved terms would fall ${prevApproved} →
-> ${nextApproved}`). The SHIPPED message — and the shipped dry-run and success
-> messages alongside it — report BOTH the total-term pair and the
-> approved-term pair (`terms would fall ${prevTotal} → ${nextTotal} (approved
-> ${prevApproved} → ${nextApproved})`), because an approved-only message is
-> structurally blind to a book like liffraedi-2e (0 approved terms
-> throughout): it would print "0 approved (0 approved)" and hide a 2262 → 0
-> destruction entirely. This is exactly the shape the total-term shrink clause
-> earlier in this same task exists to protect against — the pseudocode's
-> message just never caught up to it. This is a dated, append-only
-> implementation log, so the pseudocode above is left as originally written
-> per the append-only convention; read `server/scripts/export-terminology.js`
-> for the actual shipped message, not this code fence.
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial reviews, rounds 1–4, register C14).** The
+> code fence above is Task 4 as originally written — a dated, append-only implementation log,
+> left as-is per this document's convention rather than rewritten. Four review rounds since then
+> found it diverges from `server/scripts/export-terminology.js` in more than the messages
+> (though the messages diverge too — see below). Read the shipped file; do not rebuild from this
+> fence. What changed, most consequential first:
+>
+> 1. **The shrink guard's messages were approved-count-only.** The refusal message above reports
+>    only `REFUSING to write — approved terms would fall ${prevApproved} → ${nextApproved}`. The
+>    SHIPPED refusal, dry-run, and success messages all report BOTH the total-term pair and the
+>    approved-term pair (`terms would fall ${prevTotal} → ${nextTotal} (approved ${prevApproved}
+>    → ${nextApproved})`), because an approved-only message is structurally blind to a book like
+>    `liffraedi-2e` (0 approved terms throughout): it would print "0 approved (0 approved)" and
+>    hide a 2262 → 0 destruction entirely — the same class of bug as Task 3's CRITICAL finding,
+>    just in the log line instead of the guard itself.
+> 2. **No book-subject-mapping guard.** A book with no `book_subject_mapping` row makes
+>    `exportBookGlossary`'s subject filter a no-op, so it would export every non-rejected
+>    translation across every subject — the opposite of item 18's "deliberately strict" intent.
+>    The shipped `runGlossaryExport` takes a `subjectFn` option (default
+>    `terminologyService.getBookSubject`), resolves each book's subject before exporting, and
+>    refuses (counted as a failure) when it is null.
+> 3. **No shape guard on `exportFn`'s return.** A malformed return (no `.terms`, or `terms` not
+>    an array) reaches `sameTerms`/`shrinkVerdict` unchecked above. Both tolerate a malformed
+>    argument, which is correct for `prev` (a corrupt *existing* file must not wedge the exporter)
+>    but wrong for `next`: with no baseline, `shrinkVerdict.refuse` stays `false` regardless of
+>    shape, so a malformed payload would be written to disk as-is — exit 0, zero errors, an empty
+>    glossary committed by the cron with the heartbeat green. The shipped file validates `next`
+>    immediately after the `exportFn` call (non-null object, `Array.isArray(next.terms)`) via a
+>    `describeMalformedPayload` helper for the message, before any comparison or write.
+> 4. **Book selection was truthiness, not presence.** The pseudocode above selects with
+>    `book ? [book] : listBooks(...)`. `--book ''` (empty string) is falsy, so it silently widened
+>    to every glossary-bearing book while `--force` on the same command line bypassed the shrink
+>    guard on all of them. The shipped file selects on an explicit `book === null` check instead.
+> 5. **No `parseArgs`, and `main`'s inline loop failed open.** The `if`/`else if` chain in `main`
+>    below has no final `else`, so any unrecognised token (`--book=<slug>`, a typo like `--books`,
+>    a bare positional) was silently discarded and `book` stayed at its `null` default — "every
+>    book" — while `--force` on the same line still applied. It also read `argv[++i]` past the end
+>    of `argv` for a trailing `--book`, again silently defaulting to `null`. The shipped file
+>    extracts a pure, exported `parseArgs(argv)` that rejects the whole CLASS of bad token, not
+>    just these instances, and rejects an empty/whitespace `--book` value (closing the same
+>    presence-vs-truthiness seam as point 4, one level up, since `parseArgs` originally checked
+>    `!== undefined` while `runGlossaryExport` checked truthiness).
+> 6. **The heartbeat was written on every non-dry-run pass.** Below, `if (!dryRun)
+>    writeHeartbeat(projectRoot)`. The heartbeat is the GLOBAL "the exporter is healthy" signal
+>    `/api/health` reads, so a `--book <slug>` run resolving healthily said nothing about the other
+>    books but stamped six hours of false green for all of them anyway. Shipped: `if (!dryRun &&
+>    book === null) writeHeartbeat(projectRoot)`.
+>
+> `module.exports` also gained `parseArgs` alongside `listBooks` and `runGlossaryExport`.
 
 - [ ] **Step 4: Run the test to verify it passes**
 
@@ -1370,6 +1531,17 @@ run would have delivered nothing. Task 6 fixes that half."
 **Interfaces:**
 - Consumes: the heartbeat path `pipeline-output/.last-glossary-export` produced by Task 4.
 - Produces: `readGlossaryExportHealth({projectRoot: string, nowMs: number, staleHours?: number}) => {age_hours: number|null, stale: boolean, ok: boolean}` and `DEFAULT_STALE_HOURS: number` (6), both CommonJS exports.
+
+> ⚠️ **Corrected 2026-07-28 (commit `a421c820`).** The three `js` fences in this task (the test's
+> docstring below, the implementation's docstring, and the `server/index.js` snippet in Step 5)
+> each said, in the present tense, that "`export-terminology.js` **is invoked by**
+> `scripts/git-backup.sh`" — true only once Task 6 lands, which had not happened yet when Task 5
+> was written. This is the same class of stale status claim this whole item was raised about (the
+> exporter's own header once claimed git-backup already staged `books/`, which hid the delivery
+> gap for months), just recurring inside the branch itself. Reworded to "is **meant to run**
+> from" / "that invocation must be CONTAINED" — a requirement true regardless of merge order —
+> rather than a done claim. Purely comment text; no behavior change. The three fences below are
+> left as originally written (append-only); the shipped files carry the reworded text.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -1726,6 +1898,20 @@ else
 fi
 ```
 
+> ⚠️ **Corrected 2026-07-28 (addendum parked minor P3, commit `cad3363e`).** The `export
+> PATH="/usr/bin:$PATH"` line above is a PERMANENT mutation for the rest of `git-backup.sh` — it
+> stays in effect for every later `git`/`date`/`timeout` call in the script, including the `git
+> commit`/`git push`/`git fetch` further down, none of which need `/usr/bin` prioritized and none
+> of which were exercised under it before this block existed. `deploy.sh` pins `PATH` as its
+> literal first executable line specifically because its whole script needs it; this script does
+> not, so the blanket `export` here left the two use sites (`git`, elsewhere in the script, and
+> `node`, here) able to silently resolve under two different rules within one run. The shipped
+> `scripts/git-backup.sh` scopes `PATH="/usr/bin:$PATH"` as a per-command prefix instead, applied
+> to BOTH the `command -v node` existence check and the `timeout 120 node ...` invocation — not
+> just the invocation — so a cron `PATH` minimal enough to omit `/usr/bin` entirely cannot make
+> the existence check report a false "not found" while the (correctly scoped) invocation would in
+> fact have worked. Read `scripts/git-backup.sh` for the exact form.
+
 Then add one entry to the `PATHSPECS` array (after `'books/*/chapters/'`):
 
 ```bash
@@ -1813,6 +1999,16 @@ In the 2026-07-26 "Glossary sourcing" bullet, replace the two-blocker sentence. 
 - **⚠️ Two blockers CLEARED by register C14 (2026-07-27).** (a) The bridge (`server/scripts/export-terminology.js`) had no caller **and no delivery path** — its own header wrongly claimed the 2h git-backup staged `books/`, which it did not. `scripts/git-backup.sh` now invokes it and stages `books/*/glossary/`; a failure is contained (WARN, backup proceeds) and surfaces as `checks.glossary_export` in `GET /api/health`. **⚠️ The exporter is the SECOND producer of `glossary-unified.json`** — every committed copy was written by `tools/merge-glossary.js`, whose own `--db` upsert targets the `terminology_terms` table migration 032 dropped. A shrink guard refuses to replace a much richer file unseen, so the first prod run is *expected* to refuse; `merge-glossary.js` still has 3 sources and Íðorðabankinn is not one. (b) `formatGlossary` now drops blank-sided entries and reports the count — a blank IS side used to 400 the WHOLE Málstaður request.
 ```
 
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 4 — the blast-radius
+> finding, commit `4a4a68c3`).** The block above is what Task 7 originally wrote; the LIVE
+> `CLAUDE.md` text has one more sentence inserted between blocker (a) and the "⚠️ The exporter is
+> the SECOND producer" sentence: **"⚠️ This file's blast radius is NOT MT-only** — it also feeds
+> the render path (approved terms are substituted into published CNXML/HTML via
+> `substituteMathLabels`), so a silent shrink is reader-visible, not just an MT-quality
+> regression; full consumer accounting lives in the active register's C14 entry, not restated
+> here." `CLAUDE.md` is a live document, corrected directly rather than through this plan; read it
+> for the current text.
+
 - [ ] **Step 2: Correct `docs/technical/architecture.md`**
 
 Replace the glossary row of the durability table at `:460`:
@@ -1844,6 +2040,15 @@ assets (`tm_segments`, the TMX) can always be rebuilt from the faithful files in
 git, so only the **DB-only** rows above are truly irreplaceable.
 ```
 
+> ⚠️ **Corrected 2026-07-28 (whole-branch adversarial review, finding 4 — the blast-radius
+> finding, commit `4a4a68c3`).** The paragraph above is what Task 7 originally wrote; the LIVE
+> `architecture.md` inserts a clause into its first sentence: "...is the MT glossary
+> `api-translate.js` sends to Málstaður **— but that is not its only consumer; it also feeds the
+> render path (`substituteMathLabels`), so a shrink here is reader-visible too (full consumer
+> accounting: register C14).**" The TM row and glossary row of the durability table above are
+> otherwise unchanged from what shipped and match the live file. `architecture.md` is a live
+> document, corrected directly rather than through this plan; read it for the current text.
+
 - [ ] **Step 3: Close C14 and amend C3 in the register**
 
 In `docs/plans/2026-07-21-post-item17-followup-campaign.md`, replace the **C14** entry with (filling the bracketed values from the actual PR):
@@ -1865,6 +2070,14 @@ Amend **C3** so it no longer claims both halves — replace its pathspec sentenc
 ```markdown
 `scripts/git-backup.sh` PATHSPECS stage **`books/*/tm/`** — the `books/*/glossary/` half **landed in C14 (2026-07-27)**, and `architecture.md`'s glossary row was corrected with it. What remains: `books/*/tm/` is still unstaged while `architecture.md:458` claimed it rides the cron (that row is now corrected to say so), so the TMX reaches git only by a manual commit.
 ```
+
+> ⚠️ **Note (2026-07-28), not a correction.** Both markdown fences above are what Task 7 wrote at
+> the time; per CLAUDE.md § *One source of truth* the register is a **live** document and every
+> whole-branch review round since (2 opened `6cb32f13`/`e8766aee` doc-only fixes; the register's
+> own C14 entry now also records an 8-finding round-1 pass and, as of this correction, a
+> five-round arc) edited it **directly**, not by replaying this fence. That is the intended
+> workflow, not drift — this fence is not "fixed" to match, since doing so would just create a
+> second stale copy the moment the register moves again. Read `docs/plans/2026-07-21-post-item17-followup-campaign.md` §C14/§C3 for the current text.
 
 Update the **⏩ RESUME** block: mark C14 done with its PR, note that `checks.glossary_export` reads not-ok until the first successful prod export, add the dry-run rider to the `[LEAD]` queue, and set the next `[CODE]` item to **C1d write-path publish**.
 
