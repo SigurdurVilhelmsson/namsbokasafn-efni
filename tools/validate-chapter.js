@@ -30,7 +30,7 @@ import {
 } from './lib/mathml-to-latex.js';
 
 const require = createRequire(import.meta.url);
-const { normalizeChapter, chapterDir } = require('../server/lib/chapterLabel');
+const { normalizeChapter, chapterDir, cliChapterArg } = require('../server/lib/chapterLabel');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1186,7 +1186,12 @@ function formatResults(results, options) {
 
   const lines = [];
 
-  lines.push(`Validating ${results.book} chapter ${results.chapter} (${results.track})...`);
+  // Display only — results.chapter itself stays the raw integer -1; this
+  // just renders it through the canonical converter so the header reads
+  // "appendices" instead of the internal sentinel (same leak class as #321/#322).
+  lines.push(
+    `Validating ${results.book} chapter ${cliChapterArg(results.chapter)} (${results.track})...`
+  );
   lines.push('');
 
   // Show each check result
