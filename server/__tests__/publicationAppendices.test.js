@@ -13,8 +13,34 @@
 import { describe, it, expect, vi, afterEach, beforeAll } from 'vitest';
 import { createRequire } from 'module';
 import { EventEmitter } from 'node:events';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
+
+const REPO_ROOT = fileURLToPath(new URL('../..', import.meta.url));
+const BOOK = 'efnafraedi-2e';
+
+/**
+ * Observe the tree the way checkTrackReadiness/files-exist do.
+ *
+ * Used to derive EXPECTATIONS from the current on-disk state instead of pinning
+ * it: appendix segment editing already works (C1a / item-14), so an approved
+ * appendix edit legitimately creates
+ * `03-faithful-translation/appendices/mNNNNN-segments.is.md`
+ * (segmentParser.getModulePaths) and the 2h git-backup cron commits it. A test
+ * that pinned that dir's ABSENCE would turn the authoritative local suite red on
+ * ordinary editorial use, with no code change — so assert that the code AGREES
+ * with the tree instead, which still catches wrong-convention resolution.
+ *
+ * @param {...string} relDirSegments - path segments under `books/`
+ * @returns {boolean} true if the dir exists and holds >=1 IS segment file
+ */
+function hasIsSegmentFiles(...relDirSegments) {
+  const dir = path.join(REPO_ROOT, 'books', ...relDirSegments);
+  return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => /^m\d+-segments\.is\.md$/.test(f));
+}
 
 // Spy on child_process.spawn BEFORE publicationService.js is first required
 // (below and in the describe block that follows). publicationService.js
@@ -76,6 +102,68 @@ describe('validateBeforePublish sends the CLI-safe chapter arg (C1d task 3)', ()
   });
 });
 
+/**
+ * Severity routing is CODE, not data: validateBeforePublish pushes a check's
+ * issues into `errors`/`warnings` only when the check's severity is 'error' /
+ * 'warning', so an INFO-severity finding can never block a publish.
+ *
+ * Asserted against a hand-built validate-chapter payload rather than the real
+ * tree, because the real tree currently has exactly ONE failing check for the
+ * appendices (the INFO status-match finding) — the moment that finding is
+ * resolved (the [LEAD] status-advance data op this branch logged as wanted),
+ * a real-tree version of this assertion would go silently vacuous.
+ *
+ * Must stay ABOVE the Task-4 block: that block's beforeAll calls
+ * spawnSpy.mockRestore(), which un-patches the spy permanently.
+ */
+describe('validateBeforePublish severity routing: INFO never reaches the publish gate', () => {
+  afterEach(() => {
+    spawnSpy.mockReset();
+  });
+
+  it('routes error/warning issues and drops info-severity issues', async () => {
+    spawnSpy.mockImplementation(() =>
+      makeFakeChild(
+        JSON.stringify({
+          valid: false,
+          checks: {
+            'files-exist': {
+              severity: 'error',
+              passed: false,
+              issues: [{ file: '/books/x/03-faithful-translation/appendices', message: 'ERR' }],
+            },
+            images: {
+              severity: 'warning',
+              passed: false,
+              issues: [{ file: 'm68859.html', message: 'WARN' }],
+            },
+            'status-match': {
+              severity: 'info',
+              passed: false,
+              issues: [
+                {
+                  file: 'status.json',
+                  message:
+                    "Files exist for mt-preview track, but status doesn't indicate completion",
+                },
+              ],
+            },
+          },
+          summary: { errors: 1, warnings: 1, info: 1, passed: 0 },
+        })
+      )
+    );
+
+    const result = await validateBeforePublish('efnafraedi-2e', -1, 'mt-preview');
+
+    expect(result.errors.map((e) => e.validator)).toEqual(['files-exist']);
+    expect(result.warnings.map((w) => w.validator)).toEqual(['images']);
+    expect([...result.errors, ...result.warnings].some((i) => i.validator === 'status-match')).toBe(
+      false
+    );
+  });
+});
+
 describe('publicationService resolves the appendices dir (not ch-1)', () => {
   const {
     checkMtPreviewReadiness,
@@ -132,6 +220,16 @@ describe('publicationService resolves the appendices dir (not ch-1)', () => {
  * validators now run against the real 2247-file 02-structure/appendices tree
  * for the first time, and a genuine data finding (there is one — see below)
  * is not a tool bug to be pinned away.
+ *
+ * ⚠️ And do not pin the CURRENT tree either (fix wave, 2026-07-28). Because
+ * this branch ENABLES appendix publishing, and appendix segment editing already
+ * works, ordinary legitimate use flips the state these tests read: a publish
+ * writes publication.mtPreview into chapters/appendices/status.json, and an
+ * applied appendix edit creates 03-faithful-translation/appendices/. Every
+ * assertion below therefore either states a property of the CODE, or OBSERVES
+ * the tree and asserts the code agrees with it. A pin that a legitimate data
+ * operation turns red is a defect here: `npm test` from the repo root is the
+ * merge gate (there is no branch protection).
  */
 describe('C1d Task 4: end-to-end publish-path assertions (mt-preview reaches publish; faithful stays gated)', () => {
   // The two describe blocks above installed a custom spawn mockImplementation
@@ -157,88 +255,156 @@ describe('C1d Task 4: end-to-end publish-path assertions (mt-preview reaches pub
     expect(typeof result.summary.passed).toBe('number');
   }, 15000);
 
-  it('assertion 2: the dir-resolving checks PASS for the appendix chapter, proving context.chapterDir resolved the real appendices/ tree', async () => {
+  it('assertion 2: the dir-resolving ERROR check passes for the appendix chapter, proving context.chapterDir resolved the real appendices/ tree', async () => {
     // Goes one level below validateBeforePublish (which only surfaces
     // errors/warnings, not the full per-check `passed` map) to the tool's own
     // validateChapter(), an ES module — dynamic import from this CJS test.
     const { validateChapter } = await import('../../tools/validate-chapter.js');
 
     const results = await validateChapter({
-      book: 'efnafraedi-2e',
+      book: BOOK,
       chapter: -1,
       track: 'mt-preview',
     });
 
     expect(results.chapterDir).toBe('appendices');
-    // files-exist reads 02-mt-output/<chapterDir>: only passes if the real
-    // 13-module appendices/ dir was found (pre-fix: nonexistent ch-1 → fails).
+    // files-exist reads 02-mt-output/<chapterDir> and PUSHES an issue when that
+    // dir is missing (validate-chapter.js:97-103) — it does not early-return —
+    // so `passed:true` can only mean the real appendices/ dir was found. Pre-fix
+    // it looked for the nonexistent `ch-1`. (02-mt-output is a READ-ONLY dir by
+    // project rule, so depending on its content is safe.)
     expect(results.checks['files-exist'].passed).toBe(true);
     expect(results.checks['files-exist'].issues).toHaveLength(0);
-    // manifest-consistency (the "structure" check) reads 02-structure/<chapterDir>
-    // — the real appendices/ manifests, 13 of them.
-    expect(results.checks['manifest-consistency'].passed).toBe(true);
+    // Unconditional, data-robust: the whole result carries `chapterDir` and every
+    // issue path, so a wrong-convention build shows up here whatever the content.
+    expect(JSON.stringify(results)).not.toMatch(/ch-1\b|chappendices|chapters[/\\]-1\b/);
+
+    // manifest-consistency is deliberately NOT asserted here. It early-returns
+    // when 02-structure/<chapterDir> is missing (validate-chapter.js:940) and
+    // `passed` is `issues.length === 0` — so `passed:true` is EXACTLY what the
+    // pre-fix `ch-1` build produces (verified: chapter 97 → passed:true,
+    // issues:[]). The assertion that used to live here proved nothing, and it
+    // doubled as a pin on real manifest data (a future appendices re-extraction
+    // changing a sourceHash or segmentCount would have turned it red).
+    // That validator's appendix resolution IS covered non-vacuously — by
+    // asserting its issues FIRE against a seeded temp tree — in
+    // tools/__tests__/validateChapterAppendices.test.js.
   });
 
-  it('assertion 3: no wrong-convention path leaks anywhere in the returned errors/warnings', async () => {
+  it('assertion 3: the faithful-track ERROR check agrees with the tree, and no wrong-convention path leaks into errors/warnings', async () => {
     // mt-preview has no wrong-dir errors to inspect (everything resolves and
-    // passes — see assertion 2), so `errors`/`warnings` would be `[]` and this
-    // would pass vacuously against an empty string. Use the faithful track
-    // instead: there is genuinely no books/efnafraedi-2e/03-faithful-translation/
-    // appendices/ on disk (assertion 4), so files-exist fires a real ERROR
-    // whose `file` field IS the resolved source dir path — a non-empty,
-    // path-bearing payload for the wrong-convention scan to actually scan.
-    const result = await validateBeforePublish('efnafraedi-2e', -1, 'faithful');
-    const serialized = JSON.stringify(result.errors);
+    // passes — see assertion 2), so a scan of ITS `errors`/`warnings` would run
+    // against `[]`. The faithful track is used instead because it is the track
+    // whose appendices dir is currently absent — but that absence is DATA, not a
+    // property of the code, so it is OBSERVED rather than assumed. Whichever
+    // state the tree is in, one of (a)/(b) below is the discriminator:
+    //   • dir absent (today)  → (b) pins the resolved path in the ERROR payload
+    //   • dir present (after an applied appendix edit) → (a) goes red on a
+    //     `ch-1` build, which would still report files-exist as failing
+    const faithfulReady = hasIsSegmentFiles(BOOK, '03-faithful-translation', 'appendices');
 
-    expect(result.errors.length).toBeGreaterThan(0);
-    expect(serialized).toContain('03-faithful-translation/appendices');
+    const result = await validateBeforePublish(BOOK, -1, 'faithful');
+    const filesExistErrors = result.errors.filter((e) => e.validator === 'files-exist');
+
+    // (a) files-exist fires iff the resolved dir holds no IS segment files.
+    expect(filesExistErrors.length > 0).toBe(!faithfulReady);
+
+    // (b) When it fires, its `file` field IS the resolved source dir — the only
+    //     non-empty, path-bearing payload the wrong-convention scan can scan.
+    //     Written as an equality (not an `if`) so it can never silently no-op.
+    expect(JSON.stringify(filesExistErrors).includes('03-faithful-translation/appendices')).toBe(
+      !faithfulReady
+    );
+
+    // (c) Whatever the tree holds, no wrong-convention path may appear.
+    const serialized = JSON.stringify([...result.errors, ...result.warnings]);
     expect(serialized).not.toMatch(/ch-1\b/);
     expect(serialized).not.toMatch(/chappendices/);
     expect(serialized).not.toMatch(/chapters[/\\]-1\b/);
   }, 15000);
 
-  it('assertion 4: fail-closed preserved — faithful readiness is still false for appendices (no 03-faithful-translation/appendices on disk)', () => {
+  it('assertion 4a: fail-closed is a property of the CODE — a missing faithful appendices dir is reported against the appendix convention', () => {
     // This is the constraint the whole task exists to protect: publish-path
     // support for mt-preview must not accidentally open a write path for a
-    // track that has no real content. publishChapter() calls
+    // track that has no source content. publishChapter() calls
     // checkTrackReadiness() BEFORE validateBeforePublish() and throws on
     // ready:false, so this stays a hard gate regardless of Tasks 1-3.
-    const result = checkTrackReadiness('efnafraedi-2e', -1, 'faithful');
+    //
+    // checkTrackReadiness resolves via a module-level BOOKS_DIR and takes no
+    // projectRoot, so the missing-dir branch is exercised through a book slug
+    // that cannot exist rather than a temp tree. That makes this assertion
+    // data-independent: no content operation on any real book can flip it.
+    const result = checkTrackReadiness('__c1d-nonexistent-book__', -1, 'faithful');
 
     expect(result.ready).toBe(false);
-    // This assertion is true both before and after C1d (there never was a
-    // faithful/appendices dir), so ready:false alone doesn't prove chapterDir
-    // resolved correctly here — it could pass because the tool is still
-    // looking at a nonexistent `ch-1`. Pinning the reason's path proves it
-    // reached (and correctly missed) the REAL appendices/ dir, not a
-    // coincidentally-also-missing wrong one.
+    // ready:false alone doesn't prove chapterDir resolved correctly — it would
+    // also be false for a nonexistent `ch-1`. Pinning the reason's path proves
+    // the appendix convention was used.
     expect(result.reason).toContain('03-faithful-translation/appendices');
+    expect(result.reason).not.toMatch(/ch-1\b|chappendices/);
   });
 
-  it('known real data finding (logged, not silenced): appendices status.json reports every stage incomplete while 13 modules are rendered — status-match fires INFO, not an error', async () => {
+  it('assertion 4b: faithful readiness for the real book agrees with the tree, and names the resolved appendices dir either way', () => {
+    // Gating on CONTENT (rather than on the chapter being appendices) is
+    // precisely the behaviour the C1 campaign exists to reach, so `ready` must
+    // track the tree — it must NOT be pinned to today's `false`.
+    const faithfulReady = hasIsSegmentFiles(BOOK, '03-faithful-translation', 'appendices');
+
+    const result = checkTrackReadiness(BOOK, -1, 'faithful');
+
+    expect(result.ready).toBe(faithfulReady);
+    // Either branch carries the resolved dir — `reason` when it gates,
+    // `sourceDir` when it is ready — so this discriminates in both states.
+    expect(result.ready ? result.sourceDir : result.reason).toContain(
+      '03-faithful-translation/appendices'
+    );
+  });
+
+  it('status-match reads chapters/appendices/status.json and its verdict agrees with what is actually on disk', async () => {
+    // The appendices status.json currently reports every stage incomplete while
+    // 13 modules are rendered — a real, logged [LEAD] data finding. It is NOT
+    // pinned here: publishing appendices/mt-preview through the route this
+    // branch enables writes `publication.mtPreview.complete` into that very
+    // file (publicationService.js:250) and the 2h git-backup cron commits it,
+    // so a pin on "still failing" would turn the authoritative local suite red
+    // on legitimate use. Observe both inputs the validator reads
+    // (validate-chapter.js:493-511) and assert the tool AGREES with them.
     const { validateChapter } = await import('../../tools/validate-chapter.js');
-    const results = await validateChapter({
-      book: 'efnafraedi-2e',
-      chapter: -1,
-      track: 'mt-preview',
-    });
+    const results = await validateChapter({ book: BOOK, chapter: -1, track: 'mt-preview' });
+
+    const statusPath = path.join(REPO_ROOT, 'books', BOOK, 'chapters', 'appendices', 'status.json');
+    const status = fs.existsSync(statusPath)
+      ? JSON.parse(fs.readFileSync(statusPath, 'utf-8')).status || {}
+      : {};
+    const statusSaysComplete = Boolean(
+      status.mtOutput?.complete || status.publication?.mtPreview?.complete
+    );
+    const mtDir = path.join(REPO_ROOT, 'books', BOOK, '02-mt-output', 'appendices');
+    const hasContent = fs.existsSync(mtDir) && fs.readdirSync(mtDir).some((f) => f.endsWith('.md'));
 
     const statusCheck = results.checks['status-match'];
+    // Severity is code, not data.
     expect(statusCheck.severity).toBe('info');
-    expect(statusCheck.passed).toBe(false);
-    expect(statusCheck.issues[0].message).toContain("doesn't indicate completion");
+    // The validator reports an issue exactly when its two sides disagree, so
+    // `passed` must equal "the observed sides agree". A `ch-1` build reads
+    // NEITHER file (both dirs are absent) and so reports agreement-by-emptiness
+    // — red here as long as one observed side is non-empty, which the next
+    // assertion states explicitly rather than leaving implicit.
+    expect(statusCheck.passed).toBe(statusSaysComplete === hasContent);
+    expect(hasContent || statusSaysComplete).toBe(true);
+    // Permanent, data-independent discriminator: statusPath is built from this
+    // same chapterDir value (validate-chapter.js:1099-1100).
+    expect(results.chapterDir).toBe('appendices');
 
-    // This does NOT assert results.valid globally (that would pin real data —
-    // a future genuine ERROR elsewhere in the tree should be free to flip
-    // this book's validity without breaking this test). It asserts the
-    // MECHANISM instead: severity routing is code, not data, and INFO-severity
-    // issues are provably excluded from validateBeforePublish's errors/warnings
-    // (see the source: it only pushes on `check.severity === 'error'` or
-    // `'warning'`), so this specific finding can never block a publish.
-    const published = await validateBeforePublish('efnafraedi-2e', -1, 'mt-preview');
-    const infoLeaked = [...published.errors, ...published.warnings].some((issue) =>
-      issue.message.includes("doesn't indicate completion")
-    );
-    expect(infoLeaked).toBe(false);
-  });
+    // End-to-end half of the severity-routing mechanism (the data-independent
+    // half lives in its own describe above, against a hand-built payload):
+    // while the INFO finding is open, it must be absent from the publish gate.
+    const published = await validateBeforePublish(BOOK, -1, 'mt-preview');
+    const infoValidators = Object.entries(results.checks)
+      .filter(([, check]) => check.severity === 'info')
+      .map(([name]) => name);
+    for (const issue of [...published.errors, ...published.warnings]) {
+      expect(infoValidators).not.toContain(issue.validator);
+    }
+  }, 15000);
 });
