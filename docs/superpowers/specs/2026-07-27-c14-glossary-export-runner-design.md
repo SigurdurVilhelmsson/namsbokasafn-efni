@@ -228,8 +228,18 @@ hold the merge-glossary files intact, withhold the heartbeat, and flip
 **That is the design working.** It converts an unknowable silent degradation into a visible,
 reversible stop, and it is the cheapest way to learn the real prod numbers.
 
-`liffraedi-2e` has 0 approved terms committed, so its guard cannot trigger; it will export
-whatever the DB holds.
+⚠️ **Corrected 2026-07-28 (second whole-branch adversarial review, finding 4 — IMPORTANT):** the
+sentence originally here — "`liffraedi-2e` has 0 approved terms committed, so its guard cannot
+trigger; it will export whatever the DB holds" — describes the approved-count-only guard this
+spec's own §4.2 correction already retracted. It is exactly the defect finding 1 (§4.2) fixed:
+`shrinkVerdict` now also compares total term counts, and `liffraedi-2e`'s committed export is
+2262 terms (all `needs_review`, 0 approved), so its guard refuses whenever the DB-scoped total
+lands below ~1131 (50% of 2262) — likely, given only 13 of biology's 259 modules are extracted.
+**So all three books most likely refuse on the first cron run after deploy, not only
+`efnafraedi-2e` and `lifraen-efnafraedi`** — same outcome as described above: nothing written,
+the merge-glossary files held intact, the heartbeat withheld, `checks.glossary_export` flipped
+to not-ok. The `[LEAD]` follow-up below (`--dry-run` on prod, read the real counts before
+`--force`) applies to `liffraedi-2e` exactly as it does to the other two.
 
 **`[LEAD]` follow-up after deploy:** run
 `node server/scripts/export-terminology.js --dry-run` on prod to read the real counts, then
