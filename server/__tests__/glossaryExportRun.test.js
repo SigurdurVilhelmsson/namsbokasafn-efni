@@ -491,4 +491,16 @@ describe('parseArgs', () => {
     expect(result.error).toMatch(/--dry-run/);
     expect(result.error).toMatch(/--force/);
   });
+
+  it('an unrecognised token wins over a later --help, even though --help was seen', () => {
+    // Pins a deliberate choice: parseArgs returns as soon as it hits the bad
+    // token, so a `--help` appearing AFTER it is still captured in the
+    // returned object (the loop already saw it) — but main() checks `error`
+    // before `help`, so the process exits on the error message alone and
+    // never reaches the usage screen. Not a bug: the error message already
+    // names every accepted spelling.
+    const result = parseArgs(['--help', '--book=liffraedi-2e']);
+    expect(result.error).toBeTruthy();
+    expect(result.help).toBe(true);
+  });
 });

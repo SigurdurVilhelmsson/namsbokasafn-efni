@@ -289,6 +289,14 @@ function runGlossaryExport({
  * spelling (`--book <slug>`, space-separated), everything else a loud error,
  * is the property this guards.
  *
+ * ⚠️ An unrecognised token returns immediately, so a `-h`/`--help` that
+ * appears LATER in argv is never reached and never overrides the error —
+ * `main()` checks `error` before `help`. Deliberate, not an oversight: the
+ * error message already names every accepted spelling, so a lead who typos a
+ * flag gets the same "here is the correct usage" information either way, and
+ * a parse error silently downgrading to a help screen would blur exactly the
+ * fail-loud/fail-open line this function exists to hold.
+ *
  * @param {string[]} argv
  * @returns {{book: string|null, dryRun: boolean, force: boolean, help: boolean, error: string|null}}
  */
