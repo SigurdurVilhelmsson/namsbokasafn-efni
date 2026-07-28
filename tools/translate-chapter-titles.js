@@ -116,7 +116,10 @@ if (fs.existsSync(glossaryPath)) {
         : [];
     const allTerms = [...fileTerms, ...inlineTerms];
     glossaries = [formatGlossary(allTerms, { domain: 'chemistry', approvedOnly: false })];
-    console.log(`\nGlossary: ${allTerms.length} terms (${glossaryPath})`);
+    // Print what is actually sent, not allTerms.length: formatGlossary's
+    // blank-side guard (register C14) drops entries with a blank/non-string
+    // English or Icelandic side, so the two counts can diverge.
+    console.log(`\nGlossary: ${glossaries[0].terms.length} terms (${glossaryPath})`);
   } catch {
     /* skip */
   }

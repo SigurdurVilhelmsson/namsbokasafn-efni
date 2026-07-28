@@ -206,6 +206,76 @@ describe('runGlossaryExport — shrink guard', () => {
   });
 });
 
+describe('runGlossaryExport — malformed exportFn payload', () => {
+  // Round 1 (register C14 follow-up 5, see glossaryExportDecision.test.js's
+  // "clause isolation" note) replaced direct `next.terms.length` reads with
+  // `countTerms(next)`, which is deliberately tolerant of a missing/malformed
+  // `terms` array. That tolerance is correct for `prev` — a corrupt EXISTING
+  // file must not wedge the exporter, see readExisting above — but wrong for
+  // `next`: shrinkVerdict.refuse stays false whenever there is no baseline to
+  // protect (`prev === null`, e.g. a book's first export), so a malformed
+  // exportFn return used to be written to disk as-is: exit 0, zero errors
+  // logged, glossary-unified.json reduced to a file with no terms at all.
+  // These pin the shape guard that turns that into a loud per-book failure
+  // instead (whole-branch adversarial review, round 3, 2026-07-28).
+  const malformedPayloads = [
+    ['no terms property at all', { generated: 'x', book: 'bok-a', stats: {} }],
+    [
+      'terms is a string, not an array',
+      { generated: 'x', book: 'bok-a', stats: {}, terms: 'not an array' },
+    ],
+    ['the whole payload is null', null],
+  ];
+
+  it.each(malformedPayloads)(
+    '%s: refuses, writes nothing, withholds the heartbeat, and still processes later books',
+    (_label, badPayload) => {
+      seedBook('bok-a');
+      seedBook('bok-b');
+      const errors = [];
+      const seen = [];
+      const code = run({
+        exportFn: (slug) => {
+          seen.push(slug);
+          return slug === 'bok-a' ? badPayload : payload(approved(9));
+        },
+        logError: (m) => errors.push(m),
+      });
+      expect(code).toBe(1);
+      expect(seen).toEqual(['bok-a', 'bok-b']); // bok-a's failure does not stop bok-b
+      expect(
+        existsSync(path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json'))
+      ).toBe(false);
+      expect(readExport('bok-b').terms).toHaveLength(9);
+      expect(heartbeatExists()).toBe(false);
+      expect(errors.join('\n')).toMatch(/bok-a/);
+    }
+  );
+
+  it('does not overwrite an existing export, and the error names the malformation (not just "shrink")', () => {
+    // With an existing baseline, the pre-existing shrink guard would ALSO
+    // refuse this payload (countApproved(next) === 0 < 5 * 0.5) — so a bare
+    // exit-code/no-write assertion here would pass even without the shape
+    // guard added in this round. Asserting the error text distinguishes
+    // "the new shape guard fired first" from "the old shrink guard happened
+    // to catch it too".
+    const before = JSON.stringify(payload(approved(5)));
+    seedBook('bok-a', before);
+    const errors = [];
+    const code = run({
+      exportFn: () => ({ generated: 'x', book: 'bok-a', stats: {} }),
+      logError: (m) => errors.push(m),
+    });
+    expect(code).toBe(1);
+    expect(errors.join('\n')).toMatch(/malformed/i);
+    const after = readFileSync(
+      path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json'),
+      'utf8'
+    );
+    expect(after).toBe(before);
+  });
+});
+
 describe('runGlossaryExport — book-subject-mapping guard', () => {
   // Only migration 032 has ever inserted book_subject_mapping rows, once, for
   // five hardcoded slugs. A book registered since then has no row, and
@@ -444,13 +514,21 @@ describe('parseArgs', () => {
     expect(result.force).toBe(true);
   });
 
-  it("does not consume a following flag as --book's value", () => {
-    // `--book --force` — the next token IS present, but as a parse-error
-    // case this still must not silently treat `--force` as the slug.
-    // (Documented current behaviour: a value is anything that follows,
-    // including another flag spelling — callers must not transpose.)
+  it("treats a following flag as --book's value — callers must not transpose", () => {
+    // `--book --force` (the intended `--force --book <slug>`, transposed).
+    // The next token IS present, so parseArgs takes it as the slug: this is
+    // NOT a guard against transposed flags, and no parse error is raised.
+    // The observable hazard: `--force` was never reached as its own token,
+    // so it stays at its default (false) — a caller who transposes these two
+    // flags silently loses --force AND gets a bogus book slug, with nothing
+    // in `error` to catch it. (Documented current behaviour: a value is
+    // anything that follows, including another flag spelling.) The sibling
+    // at "does NOT silently fall back..." above pins `force` for the reverse
+    // order (`--force --book`, where force IS seen before the trailing
+    // `--book` errors) — this test closes that asymmetry for this order.
     const result = parseArgs(['--book', '--force']);
     expect(result.book).toBe('--force');
+    expect(result.force).toBe(false);
     expect(result.error).toBe(null);
   });
 
@@ -486,19 +564,34 @@ describe('parseArgs', () => {
   });
 
   it('the error message on an unrecognised token names the accepted spellings', () => {
-    const result = parseArgs(['--books', 'liffraedi-2e']);
-    expect(result.error).toMatch(/--book/);
+    // The bad token here must NOT itself contain "--book" — the original
+    // version of this test used `--books`, which DOES contain that
+    // substring, so `toMatch(/--book/)` was satisfied by the echoed
+    // offending token alone and never actually exercised whether the usage
+    // text lists the accepted spelling (whole-branch adversarial review,
+    // round 3, 2026-07-28).
+    const result = parseArgs(['--frobnicate', 'liffraedi-2e']);
+    expect(result.error).toMatch(/--book <slug>/);
     expect(result.error).toMatch(/--dry-run/);
     expect(result.error).toMatch(/--force/);
   });
 
-  it('an unrecognised token wins over a later --help, even though --help was seen', () => {
-    // Pins a deliberate choice: parseArgs returns as soon as it hits the bad
-    // token, so a `--help` appearing AFTER it is still captured in the
-    // returned object (the loop already saw it) — but main() checks `error`
-    // before `help`, so the process exits on the error message alone and
-    // never reaches the usage screen. Not a bug: the error message already
-    // names every accepted spelling.
+  it('an unrecognised token still wins over --help, even when --help appeared FIRST and was recorded as seen', () => {
+    // Corrected 2026-07-28 (whole-branch adversarial review, round 3): this
+    // test used to be named "...wins over a LATER --help", but its argv has
+    // `--help` FIRST, not later — the name and the body disagreed. Fixed by
+    // rewriting the name/comment to match the argv, not by reordering the
+    // argv, because this ordering is the more informative case: `--help` is
+    // processed and recorded as seen (`help: true`) BEFORE the loop ever
+    // reaches the unrecognised `--book=liffraedi-2e` token and returns with
+    // `error` set. So `help` really was seen, not merely theoretically
+    // reachable — and main() still checks `error` before `help`, so the
+    // process exits on the error message alone and never reaches the usage
+    // screen. (The reverse order — a bad token BEFORE --help — is the
+    // simpler, untested-here case: the loop returns as soon as it hits the
+    // bad token, so --help is never reached at all and `help` stays at its
+    // false default.) Not a bug: the error message already names every
+    // accepted spelling.
     const result = parseArgs(['--help', '--book=liffraedi-2e']);
     expect(result.error).toBeTruthy();
     expect(result.help).toBe(true);

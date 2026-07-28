@@ -200,6 +200,30 @@ function runGlossaryExport({
       continue;
     }
 
+    // A non-throwing but malformed return (missing `.terms`, or `terms` not
+    // an array) must not reach sameTerms/shrinkVerdict. Those two are
+    // deliberately tolerant of a malformed argument — that tolerance is
+    // correct for `prev` (a corrupt *existing* file must not wedge the
+    // exporter forever, see readExisting above) but is the wrong behaviour
+    // for `next`: shrinkVerdict's `refuse` stays false whenever there is no
+    // baseline to compare against (`prev === null`, e.g. a book's first
+    // export), so a malformed `next` used to be written to disk exactly as
+    // received — exit 0, zero errors logged, and glossary-unified.json
+    // reduced to a file with no terms at all (whole-branch adversarial
+    // review, round 3, 2026-07-28 — this REPLACED an earlier crash at the log
+    // lines below with a silent bad write, which is worse). Validate the
+    // shape here, before any comparison or write, so a malformed exportFn
+    // return is a loud per-book failure instead.
+    if (next === null || typeof next !== 'object' || !Array.isArray(next.terms)) {
+      logError(
+        `${b}: exportFn returned a malformed payload — expected an object with an ` +
+          `array 'terms' property, got ${next === null ? 'null' : JSON.stringify(next)} — ` +
+          `refusing to write`
+      );
+      failures++;
+      continue;
+    }
+
     let prev;
     try {
       prev = readExisting(outPath);
