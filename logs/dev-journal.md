@@ -118,3 +118,42 @@ b99c2adc Merge pull request #310 from SigurdurVilhelmsson/fix/mta-r12-shown-equa
 
 ---
 
+
+## 2026-07-28 15:54 - C1d appendix write-path publish merged (#344); C1 batch code-complete
+
+**Branch:** main (clean, synced)
+**Modified:**
+ (clean — all work merged to main)
+
+**Recent commits:**
+229a08b7 docs: correct what C1d falsified, and stop three facts from drifting again
+8e1c877a Merge pull request #344 from SigurdurVilhelmsson/fix/appendices-writepath-publish
+07366aad docs(campaign): correct the C1d register entry against the finished branch
+
+**Why:** Appendix publish failed closed with an undiagnosable 500 — the validator's arg
+parser ate the `-1` chapter, printed usage to stderr, and the server parsed empty stdout.
+Fixed at all 8 dir-builders plus the arg parser and the spawn argv.
+
+Two things worth remembering over the feature itself:
+
+1. **The committed plan would have shipped a green suite with a broken feature.** It listed
+   seven dir-building sites and omitted the eighth — the one whose value 11 validators read
+   off a `context` object. Every test the plan specified would still have passed. The
+   register named that site; the spec written from it dropped it; the plan inherited the
+   gap. That is the closure audit's "summaries of itself" failure recurring in a document
+   written because of it. **Verify a committed plan's premises against the tree first.**
+2. **The whole-branch review found 2 Important defects the per-task reviews structurally
+   could not see** — the new tests pinned the current content tree while presenting as
+   tests of the gate, so *using the feature* (or the lead data-op the PR itself logged)
+   would have turned the merge gate red. Only visible in the join with work merged 3 PRs
+   earlier, which had already made appendix segment *editing* work.
+
+Post-merge: a 5-surface doc audit found 8 stale claims — CLAUDE.md still said appendix
+publish fails closed, its E-2 licence note claimed one guarded require when there were
+four in three classes (LICENSE now owns that enumeration), and a migration count in prose
+had drifted by 8. Memory compacted 20.5KB → 17.1KB by deleting what CLAUDE.md already owns.
+
+**Next:** C9 — prune-on-rename (must EMIT an old→new slug map, not just delete), delete the
+stale chem ch10 file, re-render the ch10 intro. Hard deadline: before the fall semester.
+
+---
