@@ -10,10 +10,71 @@
  *   `mNNNNN-segments.is.md` files (verified via `ls` before writing this test).
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { createRequire } from 'module';
+import { EventEmitter } from 'node:events';
 
 const require = createRequire(import.meta.url);
+
+// Spy on child_process.spawn BEFORE publicationService.js is first required
+// (below and in the describe block that follows). publicationService.js
+// destructures `const { spawn } = require('child_process');` at module-load
+// time — CJS require has no live bindings, so whatever `.spawn` holds at
+// THAT moment is what the module calls forever after. The spy must already
+// be installed the first time this file (and thus publicationService.js)
+// is loaded, or it will silently miss every call.
+const childProcess = require('child_process');
+const spawnSpy = vi.spyOn(childProcess, 'spawn');
+const { validateBeforePublish } = require('../services/publicationService');
+
+/**
+ * Build a fake child_process child that resolves validateBeforePublish's
+ * Promise with the given (already-JSON-stringified) validate-chapter.js
+ * `--json` stdout payload.
+ */
+function makeFakeChild(jsonStdout) {
+  const child = new EventEmitter();
+  child.stdout = new EventEmitter();
+  child.stderr = new EventEmitter();
+  queueMicrotask(() => {
+    child.stdout.emit('data', Buffer.from(jsonStdout));
+    child.emit('close', 0);
+  });
+  return child;
+}
+
+describe('validateBeforePublish sends the CLI-safe chapter arg (C1d task 3)', () => {
+  afterEach(() => {
+    spawnSpy.mockReset();
+  });
+
+  it('spawns validate-chapter.js with "appendices" (not "-1") in the chapter-arg slot for the appendices chapter', async () => {
+    spawnSpy.mockImplementation(() => makeFakeChild('{"valid":true,"checks":{},"summary":{}}'));
+
+    await validateBeforePublish('efnafraedi-2e', -1, 'mt-preview');
+
+    expect(spawnSpy).toHaveBeenCalledTimes(1);
+    const [command, args] = spawnSpy.mock.calls[0];
+    expect(command).toBe('node');
+    // args: [validate-chapter.js path, bookSlug, chapterArg, '--track', track, '--json']
+    // Assert the chapter arg's POSITION (index 2, right after the book slug),
+    // not just membership — a bare `.toContain('appendices')` would pass even
+    // if the value landed in the wrong slot.
+    expect(args[1]).toBe('efnafraedi-2e');
+    expect(args[2]).toBe('appendices');
+  });
+
+  it('spawns validate-chapter.js with "5" in the chapter-arg slot for a numeric chapter (no behaviour change)', async () => {
+    spawnSpy.mockImplementation(() => makeFakeChild('{"valid":true,"checks":{},"summary":{}}'));
+
+    await validateBeforePublish('efnafraedi-2e', 5, 'mt-preview');
+
+    expect(spawnSpy).toHaveBeenCalledTimes(1);
+    const [, args] = spawnSpy.mock.calls[0];
+    expect(args[1]).toBe('efnafraedi-2e');
+    expect(args[2]).toBe('5');
+  });
+});
 
 describe('publicationService resolves the appendices dir (not ch-1)', () => {
   const {

@@ -25,7 +25,7 @@ const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const TOOLS_DIR = path.join(__dirname, '..', '..', 'tools');
 
 const { PUBLICATION_TRACK_DIRS } = require('../constants');
-const { chapterDir } = require('../lib/chapterLabel');
+const { chapterDir, cliChapterArg } = require('../lib/chapterLabel');
 
 // Source directory for each track (maps to pipelineService.TRACK_SOURCE_DIR)
 const TRACK_SOURCE_DIRS = {
@@ -126,7 +126,7 @@ function validateBeforePublish(bookSlug, chapterNum, track) {
     const args = [
       path.join(TOOLS_DIR, 'validate-chapter.js'),
       bookSlug,
-      String(chapterNum),
+      cliChapterArg(chapterNum), // 'appendices' for -1, String(N) for numeric
       '--track',
       track,
       '--json',
