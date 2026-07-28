@@ -30,7 +30,7 @@ import {
 } from './lib/mathml-to-latex.js';
 
 const require = createRequire(import.meta.url);
-const { normalizeChapter } = require('../server/lib/chapterLabel');
+const { normalizeChapter, chapterDir } = require('../server/lib/chapterLabel');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,6 +40,12 @@ const __dirname = path.dirname(__filename);
 // ============================================================================
 
 const PROJECT_ROOT = path.join(__dirname, '..');
+
+// Publication output dirs are BARE (`<pubDir>/chapters/05`, `.../appendices`),
+// unlike the ch-prefixed source/structure dirs. chapterDir() gives the ch-form,
+// so the bare pub form needs its own builder. Do NOT unify the two — see
+// server/services/publicationService.js getPublicationStatus() for the same split.
+const pubChapterDirName = (ch) => (ch === -1 ? 'appendices' : String(ch).padStart(2, '0'));
 
 // Severity levels
 const SEVERITY = {
@@ -704,10 +710,16 @@ const VALIDATORS = {
     description: 'No pipeline placeholders leaked into HTML output',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -763,10 +775,16 @@ const VALIDATORS = {
     description: 'All images referenced in HTML output exist',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -788,7 +806,10 @@ const VALIDATORS = {
 
           // Check in publication directory (for absolute /content/... paths)
           if (src.startsWith('/content/')) {
-            const relativeSrc = src.replace(new RegExp(`^/content/${book}/chapters/\\d+/`), '');
+            const relativeSrc = src.replace(
+              new RegExp(`^/content/${book}/chapters/(?:\\d+|appendices)/`),
+              ''
+            );
             const imgPath = path.join(pubDir, relativeSrc);
             if (!fs.existsSync(imgPath)) {
               // Fallback: check source media directory
@@ -817,10 +838,16 @@ const VALIDATORS = {
     description: 'All rendered HTML files have substantial content',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -855,10 +882,16 @@ const VALIDATORS = {
     description: 'All equations rendered successfully (no MathJax errors)',
     check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
       const root = projectRoot || PROJECT_ROOT;
-      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
+      const pubDir = path.join(
+        root,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        pubChapterDirName(chapter)
+      );
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -899,10 +932,10 @@ const VALIDATORS = {
     description: 'Extraction manifests match current source files',
     check: async ({ book, chapter, projectRoot }) => {
       const issues = [];
-      const chapterStr = String(chapter).padStart(2, '0');
+      const chapterDirName = chapterDir(chapter);
       const root = projectRoot || PROJECT_ROOT;
-      const structDir = path.join(root, 'books', book, '02-structure', `ch${chapterStr}`);
-      const sourceDir = path.join(root, 'books', book, '01-source', `ch${chapterStr}`);
+      const structDir = path.join(root, 'books', book, '02-structure', chapterDirName);
+      const sourceDir = path.join(root, 'books', book, '01-source', chapterDirName);
 
       if (!fs.existsSync(structDir)) return issues;
 
@@ -936,7 +969,7 @@ const VALIDATORS = {
           'books',
           book,
           '02-for-mt',
-          `ch${chapterStr}`,
+          chapterDirName,
           `${moduleId}-segments.en.md`
         );
         if (fs.existsSync(segPath)) {
@@ -1059,8 +1092,12 @@ async function validateChapter(options) {
   }
 
   // Build context
-  const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
-  const statusPath = path.join(root, 'books', book, 'chapters', chapterDir, 'status.json');
+  // Local is `chapterDirName` so it does not shadow the imported chapterDir()
+  // helper. The context/results KEY stays `chapterDir` — 11 validators
+  // destructure it, and results.chapterDir is part of the --json output that
+  // publicationService.validateBeforePublish parses.
+  const chapterDirName = chapterDir(chapter);
+  const statusPath = path.join(root, 'books', book, 'chapters', chapterDirName, 'status.json');
 
   let statusData = null;
   if (fs.existsSync(statusPath)) {
@@ -1075,7 +1112,7 @@ async function validateChapter(options) {
     book,
     chapter,
     track,
-    chapterDir,
+    chapterDir: chapterDirName,
     statusData,
     projectRoot: root,
   };
@@ -1084,7 +1121,7 @@ async function validateChapter(options) {
     book,
     chapter,
     track,
-    chapterDir,
+    chapterDir: chapterDirName,
     valid: true,
     checks: {},
     summary: {
