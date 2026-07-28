@@ -47,6 +47,26 @@ const needsReview = (n) =>
     status: 'needs_review',
   }));
 
+/**
+ * `approvedCount` approved terms plus the remainder needs_review — the shape
+ * every real committed glossary actually has (efnafraedi-2e and
+ * lifraen-efnafraedi are both 1117 total / 617 approved). Whole-branch
+ * adversarial review (2026-07-28): the `approved()` and `needsReview()`
+ * fixtures above are both degenerate for `shrinkVerdict` — `approved(n)`
+ * always has `total === approved`, so its shrink ratio moves in lockstep on
+ * both clauses and can never isolate the approved-count clause; `needsReview`
+ * pins `approved` at 0 throughout, isolating the total clause but never the
+ * approved one. Without a fixture that varies them independently, deleting
+ * the approved clause from `shrinkVerdict` entirely still passes every test
+ * that used only `approved()`, because the total clause fires in lockstep.
+ */
+const mixed = (total, approvedCount) =>
+  Array.from({ length: total }, (_, i) => ({
+    english: `t${i}`,
+    icelandic: `i${i}`,
+    status: i < approvedCount ? 'approved' : 'needs_review',
+  }));
+
 const payload = (terms, generated = '2026-01-01T00:00:00.000Z') => ({
   generated,
   book: 'prufubok',
@@ -154,9 +174,17 @@ describe('shrinkVerdict', () => {
     expect(shrinkVerdict(payload([]), payload([])).refuse).toBe(false);
   });
 
-  it('REFUSES a catastrophic total-term shrink even with approved counts flat at zero', () => {
-    // 2262 -> 2000 needs_review terms, approved 0 -> 0 throughout: the
-    // approved metric alone would never fire; the total metric must.
+  it('permits ordinary total-term drift when approved counts are flat at zero', () => {
+    // Corrected 2026-07-28 (whole-branch adversarial review, MINOR): this
+    // test was misnamed "REFUSES a catastrophic total-term shrink..." while
+    // its body asserted refuse:false — the name claimed the opposite of what
+    // it checks. 2262 -> 2000 needs_review terms is a 12% shrink
+    // (2000/2262 ≈ 0.88), well above SHRINK_RATIO — ordinary drift, not the
+    // catastrophe the guard targets. This is the PERMIT-side boundary
+    // companion to 'REFUSES the real liffraedi-2e-shaped catastrophic
+    // shrink' below, which holds the same approved-flat-at-zero shape but on
+    // the refuse side. The genuinely-refusing case for a total-only collapse
+    // is exercised there and in the mixed-fixture isolator tests below.
     const v = shrinkVerdict(payload(needsReview(2262)), payload(needsReview(2000)));
     expect(v.refuse).toBe(false); // 2000 / 2262 > 0.5, legitimate drift
   });
@@ -195,6 +223,44 @@ describe('shrinkVerdict', () => {
 
   it('refuses just below the ratio boundary', () => {
     expect(shrinkVerdict(payload(approved(100)), payload(approved(49))).refuse).toBe(true);
+  });
+
+  describe('clause isolation (whole-branch adversarial review, 2026-07-28, IMPORTANT)', () => {
+    // Every fixture above the `mixed()` definition moves `total` and
+    // `approved` in lockstep (`approved()`: total === approved throughout)
+    // or pins `approved` at zero (`needsReview()`), so the compound
+    // condition's two clauses were never exercised independently — deleting
+    // the approved clause from `shrinkVerdict` left every pre-existing test
+    // green. These use `mixed()` (the real efnafraedi-2e/lifraen-efnafraedi
+    // shape, 1117 total / 617 approved) to hold one ratio on the permit side
+    // while the other crosses SHRINK_RATIO.
+
+    it('REFUSES on the approved-count clause alone (total ratio stays well above the boundary)', () => {
+      // 1117/617 -> 1100/300: total 1100/1117 ≈ 0.985 (nowhere near 0.5,
+      // clause 2 does not fire) but approved 300/617 ≈ 0.486 < 0.5 (clause 1
+      // fires). This must go red if the approved clause is removed.
+      const v = shrinkVerdict(payload(mixed(1117, 617)), payload(mixed(1100, 300)));
+      expect(v.refuse).toBe(true);
+      expect(v.prevApproved).toBe(617);
+      expect(v.nextApproved).toBe(300);
+      expect(v.prevTotal).toBe(1117);
+      expect(v.nextTotal).toBe(1100);
+    });
+
+    it('permits ordinary drift on both counts (mixed fixture, neither clause fires)', () => {
+      // 1117/617 -> 1000/560: total 1000/1117 ≈ 0.895, approved 560/617 ≈
+      // 0.908 — both comfortably above SHRINK_RATIO. The companion negative
+      // case: confirms the guard stays quiet on realistic day-to-day drift
+      // once both clauses are correctly wired, not just when one is broken.
+      const v = shrinkVerdict(payload(mixed(1117, 617)), payload(mixed(1000, 560)));
+      expect(v.refuse).toBe(false);
+    });
+
+    // The total-clause-alone isolator is 'REFUSES the real
+    // liffraedi-2e-shaped catastrophic shrink (2262 -> 100, still 0
+    // approved)' above: `needsReview()` pins prevApproved at 0, so the
+    // approved clause's `prevApproved > 0` guard can never fire there —
+    // deliberately not duplicated here per the sibling MINOR finding.
   });
 
   it('exposes the ratio as a named constant', () => {

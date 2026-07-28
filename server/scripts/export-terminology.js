@@ -271,6 +271,24 @@ function runGlossaryExport({
  * glossary in the repo. A missing value for a flag that requires one must be
  * a loud parse error, never a silent fallback to the broadest scope.
  *
+ * ⚠️ Whole-branch adversarial review (2026-07-28), CRITICAL: the same failure
+ * mode existed one level up. This function used to be an `if`/`else if` chain
+ * with no final `else`, so ANY unrecognised token — `--book=<slug>` (an
+ * accepted-looking spelling this script has never supported), a bare
+ * positional slug, or a typo like `--books` — was silently discarded and
+ * `book` stayed at its `null` default: "every book". `--force` is still
+ * honoured on that same command line, so the one moment a lead types a
+ * `--book`-bearing token (per the register's "decide per book whether to
+ * --force" instruction) is exactly the moment a misspelling silently widens
+ * scope to all of them, bypassing the shrink guard on every book at once.
+ * The fix rejects the CLASS, not the one instance already caught above: any
+ * token that isn't one of the four recognised spellings is now itself a loud
+ * parse error, naming the offending token and what is accepted. Deliberately
+ * NOT adding `--book=<slug>` support — that would accept one more spelling
+ * while leaving the next typo free to fail open the same way. One accepted
+ * spelling (`--book <slug>`, space-separated), everything else a loud error,
+ * is the property this guards.
+ *
  * @param {string[]} argv
  * @returns {{book: string|null, dryRun: boolean, force: boolean, help: boolean, error: string|null}}
  */
@@ -293,6 +311,17 @@ function parseArgs(argv) {
       force = true;
     } else if (argv[i] === '-h' || argv[i] === '--help') {
       help = true;
+    } else {
+      return {
+        book: null,
+        dryRun,
+        force,
+        help,
+        error:
+          `unrecognised argument '${argv[i]}' — accepted: --book <slug>, --dry-run, ` +
+          `--force, -h/--help (note: --book takes its value as the NEXT argument, not ` +
+          `--book=<slug>)`,
+      };
     }
   }
   return { book, dryRun, force, help, error: null };

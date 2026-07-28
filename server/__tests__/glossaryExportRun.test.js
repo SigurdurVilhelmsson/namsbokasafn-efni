@@ -453,4 +453,42 @@ describe('parseArgs', () => {
     expect(result.book).toBe('--force');
     expect(result.error).toBe(null);
   });
+
+  // Whole-branch adversarial review (2026-07-28), CRITICAL: the trailing
+  // `--book` case above closed ONE spelling. The `if`/`else if` chain had no
+  // final `else`, so ANY other unrecognised token — `--book=<slug>`, a bare
+  // positional slug, a typo'd flag — was silently discarded, leaving `book`
+  // at its `null` default with `error: null`: an apparently-successful
+  // "export every book" parse. `--force` on the same command line then
+  // bypasses the shrink guard for all of them. These three pin the class of
+  // fix (reject any unrecognised token), not just the one instance.
+
+  it('errors on --book=<slug> instead of silently exporting every book', () => {
+    // This script has never supported `=`-joined flags; a lead reasonably
+    // guessing at the syntax must get a loud error, not "all books".
+    const result = parseArgs(['--book=liffraedi-2e', '--force']);
+    expect(result.error).toBeTruthy();
+    expect(result.error).toMatch(/--book=liffraedi-2e/);
+    expect(result.book).not.toBe('liffraedi-2e');
+  });
+
+  it('errors on a bare positional slug instead of silently exporting every book', () => {
+    const result = parseArgs(['liffraedi-2e', '--force']);
+    expect(result.error).toBeTruthy();
+    expect(result.error).toMatch(/liffraedi-2e/);
+    expect(result.book).not.toBe('liffraedi-2e');
+  });
+
+  it('errors on a misspelled flag (--books) instead of silently exporting every book', () => {
+    const result = parseArgs(['--books', 'liffraedi-2e', '--force']);
+    expect(result.error).toBeTruthy();
+    expect(result.error).toMatch(/--books/);
+  });
+
+  it('the error message on an unrecognised token names the accepted spellings', () => {
+    const result = parseArgs(['--books', 'liffraedi-2e']);
+    expect(result.error).toMatch(/--book/);
+    expect(result.error).toMatch(/--dry-run/);
+    expect(result.error).toMatch(/--force/);
+  });
 });
