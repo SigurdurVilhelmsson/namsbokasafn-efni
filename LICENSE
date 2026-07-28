@@ -21,12 +21,28 @@ and the root configuration files listed above.
 **It does not cover `server/`** (which is AGPL-3.0 — see `server/LICENSE`) **or
 `books/`** (which is content under per-book Creative Commons terms — see below).
 
-> Note for downstream users taking only `tools/` under MIT:
-> `tools/api-translate.js` contains one optional runtime `require()` into
-> `server/services/pipelineStatusService.js`, guarded by a try/catch that warns
-> and continues if the module is absent. The pipeline runs correctly without
-> `server/`; only the convenience status update is skipped. That one call is the
-> sole code-level dependency from the MIT tooling into the AGPL server.
+> Note for downstream users taking only `tools/` (and `scripts/`) under MIT —
+> **corrected 2026-07-28; this note previously described a single dependency and
+> was out of date.** There are four references from the MIT tooling into
+> `server/`, in three classes. Only the first is optional:
+>
+> 1. **Optional, guarded.** `tools/api-translate.js` `require()`s
+>    `server/services/pipelineStatusService.js` inside a try/catch that warns and
+>    continues if the module is absent. Translation runs correctly without
+>    `server/`; only a convenience status update is skipped.
+> 2. **Required, unguarded — these tools will not load without `server/`.**
+>    `tools/validate-chapter.js` and `scripts/validate-status.js` import
+>    `server/lib/chapterLabel.js`, the project's canonical converter between the
+>    two on-disk spellings of the appendices chapter. This is deliberate: the
+>    repository's own rules require that conversion to happen only through that
+>    module, never reimplemented inline. Taking `tools/` alone therefore needs
+>    `server/lib/chapterLabel.js` (or an equivalent) alongside it.
+> 3. **Data path, not code.** `tools/validate-pipeline-consistency.js` resolves
+>    `server/data/` to read per-book JSON. It loads no AGPL code.
+>
+> This list is the authoritative enumeration — update it here when an edge is
+> added or removed, and re-derive rather than trusting it, searching for both a
+> literal `'../server/…'` and a computed `path.join(…, 'server', …)`.
 
 ```
 MIT License
