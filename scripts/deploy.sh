@@ -16,10 +16,18 @@ echo "=== Deploy: namsbokasafn-efni ==="
 # Why: /usr/bin/npm is a shell script whose shebang is `#!/usr/bin/env node`.
 # It picks up whichever `node` is first in PATH. If the interactive shell
 # has nvm with a newer Node active (e.g. Node 24), `/usr/bin/npm` runs
-# under that Node, and prebuild-install fetches a better-sqlite3 binary
-# built for the wrong NODE_MODULE_VERSION. systemd then runs the service
-# under `/usr/bin/node` (Node 20) and the binary fails to load with
+# under that Node, and better-sqlite3's install step resolves a binding for
+# the wrong NODE_MODULE_VERSION. systemd then runs the service under
+# `/usr/bin/node` and the binary fails to load with
 # "Module did not self-register".
+#
+# ⚠️ Corrected 2026-07-28 (better-sqlite3 12 → 13, PR #341): this used to say
+# "prebuild-install fetches a binary". v12 did download one from GitHub
+# releases at install time; v13 dropped prebuild-install and BUNDLES the
+# prebuilt binaries in its tarball (`prebuilds/linux-x64.node`), so there is
+# no install-time fetch to get wrong any more. The PATH pin still matters —
+# npm auto-runs node-gyp because the package ships a binding.gyp, and the
+# loaded binding must match the Node systemd will run.
 #
 # The fix is to prepend /usr/bin to PATH so `node` resolves to the same
 # binary systemd uses, regardless of nvm state in the calling shell.
@@ -97,9 +105,16 @@ echo "Installing dependencies (root)..."
 $SYSTEM_NPM ci --omit=dev --ignore-scripts
 
 echo "Installing server dependencies..."
-# No --ignore-scripts here: better-sqlite3's postinstall (prebuild-install)
-# fetches the native .node binary for the running Node. Skipping it leaves
-# node_modules without the SQLite binding and the server crashes on start.
+# No --ignore-scripts here: npm auto-runs node-gyp for better-sqlite3 (it
+# ships a binding.gyp), and that step is what leaves a loadable SQLite
+# binding in node_modules. Skipping it and the server crashes on start.
+#
+# ⚠️ Corrected 2026-07-28 (better-sqlite3 12 → 13, PR #341): this used to say
+# the postinstall "(prebuild-install) fetches the native .node binary". v13
+# bundles its prebuilt binaries in the tarball instead — nothing is fetched,
+# and the loaded binding is `prebuilds/linux-x64.node`, not `build/Release`.
+# The install step still needs python3 + make + g++ on this box (present:
+# Ubuntu 24.04, build-essential installed), so it must not be skipped.
 ( cd server && $SYSTEM_NPM ci --omit=dev )
 
 # 6. Restart the service
