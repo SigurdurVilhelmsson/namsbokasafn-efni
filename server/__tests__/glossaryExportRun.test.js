@@ -540,6 +540,13 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
   });
 
   it('processes remaining books after one is refused', () => {
+    // Parked minor from the Task 4 per-task review, resolved 2026-07-28: this
+    // test asserted the exit code and bok-b's content but not the heartbeat —
+    // the mechanism was covered only in ISOLATION, by the single-book-refusal
+    // test above. The combined case (one book refused, one succeeded) is
+    // exactly where a naive implementation might write the heartbeat because
+    // "something succeeded"; it must not, since the heartbeat is the GLOBAL
+    // "every requested book resolved healthily" signal.
     seedBook('bok-a', JSON.stringify(payload(approved(617))));
     seedBook('bok-b');
     const code = run({
@@ -547,6 +554,7 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
     });
     expect(code).toBe(1); // bok-a failed
     expect(readExport('bok-b').terms).toHaveLength(9); // bok-b still ran
+    expect(heartbeatExists()).toBe(false);
   });
 
   it('returns 1 and writes no heartbeat when NO books are discovered', () => {

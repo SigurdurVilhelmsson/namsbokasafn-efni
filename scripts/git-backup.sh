@@ -110,8 +110,22 @@ fi
 # PATH is pinned to /usr/bin exactly as scripts/deploy.sh does: cron has a
 # minimal environment, and an nvm-shadowed `node` would load a
 # better-sqlite3 built for a different NODE_MODULE_VERSION.
-export PATH="/usr/bin:$PATH"
-if command -v node > /dev/null 2>&1; then
+#
+# ⚠️ Parked minor from the Task 6 per-task review, resolved 2026-07-28:
+# scoped to a per-command PATH assignment instead of `export`. An exported
+# PATH is a PERMANENT mutation for the rest of THIS script — it would still
+# be in effect for every git/date/timeout call below, including the
+# `git commit`/`git push`/`git fetch` further down, none of which need
+# /usr/bin prioritized and none of which were exercised under it before this
+# glossary-export block existed. deploy.sh pins PATH as its first executable
+# line specifically because its whole script needs it; this script does not,
+# so exporting here left the two use sites (`git`, further down, and `node`,
+# here) able to silently drift onto two different resolution rules within
+# one run. Applied to BOTH the existence check and the invocation below —
+# not just the invocation — so a cron PATH minimal enough to omit /usr/bin
+# entirely cannot make the existence check report a false "not found" while
+# the (correctly /usr/bin-scoped) invocation would in fact have worked.
+if PATH="/usr/bin:$PATH" command -v node > /dev/null 2>&1; then
   # ⚠️ `timeout` is not belt-and-braces. A HANG is the one failure the `if !`
   # wrapper cannot catch — it tests the exit status of a process that never
   # returns — and a hang blocks this script before write_heartbeat, which is
@@ -122,7 +136,7 @@ if command -v node > /dev/null 2>&1; then
   # so a hung export would let the next 2h tick start a second
   # add/commit/push against the same working tree. 120s is far above the
   # sub-second this normally takes, and far below the 2h cron period.
-  if ! timeout 120 node "${PROJECT_ROOT}/server/scripts/export-terminology.js" \
+  if ! PATH="/usr/bin:$PATH" timeout 120 node "${PROJECT_ROOT}/server/scripts/export-terminology.js" \
        >> "$LOG_FILE" 2>&1; then
     log "WARN: glossary export failed or timed out — continuing with the content backup"
   fi
