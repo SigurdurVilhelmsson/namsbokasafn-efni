@@ -250,7 +250,7 @@ directories you may write to (→ § *File Permissions*, next) and the naming tr
 Three *legitimate* independent bare-dir builders exist, and **they must stay separate**.
 ⚠️ A **fourth site gets it wrong**: `terminologyService.importFromKeyTerms` builds a
 `ch`-prefixed **publication** path, so its chapter filter resolves to a directory that never
-exists (logged 2026-07-29 → active register, item 22). Neither commented nor test-pinned —
+exists (logged 2026-07-29 → active register §C16(b)). Neither commented nor test-pinned —
 assume more exist and check any publication-dir construction you touch.
 
 1. `publicationService.getPublicationStatus()`'s ternary
