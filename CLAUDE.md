@@ -4,14 +4,16 @@
 
 Adopted 2026-07-26, after a closure audit found the work register had been built from *summaries of itself* and eight findings had silently evaporated. The first attempted fix declared a **second** source of truth and said "consult both" — that is the same failure one level up, and it produced a live disagreement **within one day**.
 
-**Six kinds of fact, one owner each. Every other file points; it never restates.**
+**Every kind of fact has exactly ONE owner. Every other file points; it never restates.**
+*(This line used to say "Six kinds" while the table listed seven — a count in prose drifts even here.)*
 
 | Kind of fact | The ONE owner | Everyone else says |
 |---|---|---|
 | **Durable rule** — an instruction to obey (never restore `Strict`; check provenance before `--force`) | **this file** | `→ see CLAUDE.md § <name>` |
 | **Enforceable value** — a version, enum, role, licence code, count | the file the code reads (`.nvmrc`, `server/constants.js`, `schemas/`, `book-config.json`) + its test | `→ see <file>` — no number, no list |
 | **Open work** — is X next / blocked / shipped / deferred | **the active register** in `docs/plans/` (currently `2026-07-21-post-item17-followup-campaign.md`), specifically its ⏩ RESUME block | `→ active plan; read its RESUME block`. **No status verbs anywhere else.** |
-| **Design record** — why a decision was made | the spec/audit doc, **frozen and banner-dated** | cite as evidence, never as status |
+| **Design record** — why a decision was made, **owned by one item** | that item's spec/audit doc in `docs/superpowers/specs/`, **frozen and banner-dated** | cite as evidence, never as status |
+| **Design record** — a decision **no single item owns** (cited by several plans/specs) | `docs/decisions/`, append-only — write it with **`/decision-record`**, not the generic global `/decision` | cite by path; never restate |
 | **Historical evidence** — a review as written, an incident, a finished phase | the doc itself, **banner-frozen** | nothing — frozen files are cited, not synced |
 | **Session-recall hint** — pointers, and facts with no repo home | project memory | must carry **no repo `file:line`** and **no item status** |
 | **Published rendering** — the dashboard artifact | nothing; it is a **dated snapshot** | — |
@@ -27,7 +29,6 @@ Adopted 2026-07-26, after a closure audit found the work register had been built
 grep -nE '[a-z0-9_-]+\.(js|sh|md|json|yml):[0-9]+' <project-memory>/MEMORY.md   # must return nothing
 ```
 A fact citing a repo `file:line` belongs in the repo. Memory carries pointers.
-
 
 ## ⚠️ MANDATORY: Read Documentation Before Pipeline Operations
 
@@ -181,6 +182,19 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
 
 ---
 
+## Auth
+
+**⚠️ DURABLE — the `auth_token` cookie is `SameSite=Lax`. DO NOT restore `Strict`.**
+Strict is withheld on the cross-site-initiated redirect back from Microsoft, so
+`requirePageAuth()` bounced the just-logged-in user straight back to `/login` — a login loop.
+It surfaced only in "clean" browsers (Edge); a dev's Chrome holding a valid session masked it.
+Lax still blocks cross-site POST/subresource sends — the real CSRF control, since all mutating
+endpoints are POST — while letting the top-level GET OAuth return carry the cookie. Applies to
+**both** the set- and clear-cookie calls. There is a code comment saying so, and a regression
+guard at `server/__tests__/authCallbackCookie.test.js`.
+
+Book-scoped authorization goes through `requireHeadEditor` / `requireHeadEditorFor`.
+
 ## Notes for Code Reviewers
 
 This project was built iteratively with AI assistance. Known areas of concern:
@@ -213,41 +227,41 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
   - **Do not "upgrade to Node 24" as a runtime bump.** It is really an **npm 10 → npm 11 lockfile migration**: npm 11 drops optional `@emnapi/*` peer-dep entries, and the resulting `package-lock.json` breaks prod's `npm ci`. It also means a prod-runtime change plus a native ABI rebuild (cf. the 2026-05-10 ABI incident). Node 22 is supported through the 2026–27 school year. When a quiet window opens, **go 22 → 26 and skip 24** — the npm-11 work is identical either way, but 24's Active-LTS window closes in Oct 2026. `better-sqlite3@13` declares `>=22`, so the DB driver is not the constraint; the lockfile format is.
     - **⚠️ better-sqlite3 12 → 13 changed how the native binary arrives (PR #341, 2026-07-28).** v12 used `prebuild-install` to **download** a `.node` from GitHub releases at install time — a network dependency, and the path by which a wrong-ABI binary arrives (the 2026-05-10 incident). v13 **bundles** the prebuilds in its tarball (`prebuilds/linux-x64.node`), so nothing is fetched. npm still auto-runs node-gyp because the package ships a `binding.gyp`, so **prod needs python3 + make + g++** (present: Ubuntu 24.04, build-essential). Install is ~2 s; SQLite is *not* compiled from source. **⚠️ `npm view <pkg> scripts` reports the SOURCE REPO's manifest, not the shipped artifact — it shows an `install` script this package does not publish. `npm pack` and read the tarball before reasoning about install-time behaviour.**
   - Use `nvm use` (reads `.nvmrc`) before `npm install` if you might commit a lockfile.
-- **Pipeline tools:** Custom CLI scripts in `tools/`
-- **Server:** Express 5 editorial workflow server in `server/`, better-sqlite3 13, Helmet, JWT auth
-- **Content format:** CNXML → Markdown (intermediate) → HTML
-- **Testing:** Vitest (unit), Playwright (E2E)
-- **Dependencies:** See package.json. Note: the server's `xlsx` installs from the official SheetJS CDN tarball (`cdn.sheetjs.com`), not npm — npm's last SheetJS release (0.18.5) has unfixed advisories. `npm ci` therefore needs cdn.sheetjs.com reachable, and xlsx version bumps are manual (Dependabot can't follow URL dependencies).
+- **Content format:** CNXML → Markdown (intermediate) → HTML. Everything else — tools, server framework, test runners, dependency list — is in `package.json`; don't restate it here.
+- **Dependencies:** the server's `xlsx` installs from the official SheetJS CDN tarball (`cdn.sheetjs.com`), not npm — npm's last SheetJS release (0.18.5) has unfixed advisories. `npm ci` therefore needs cdn.sheetjs.com reachable, and xlsx version bumps are manual (Dependabot can't follow URL dependencies).
 - **Fresh-clone bootstrap:** the server builds its full SQLite schema from scratch on first start — `migrationRunner` creates `pipeline-output/sessions.db` and runs all migrations when the file is missing (fixed 2026-06-10; previously a fresh checkout silently skipped all migrations and write endpoints 500'd)
+
+**⚠️ DURABLE — resolve resource paths against something intrinsic, never `process.cwd()`.** Use `import.meta.url`/`__dirname` for files and `resolveDbPath()` for the DB. The server runs with **cwd=`server/`** (`cd server && npm start`), so a `books/`-relative path resolved against cwd silently points at the wrong tree — this shipped three times in `tools/lib` (`embed-mapping`, `book-rendering-config`, `parseArgs`; #213). Corollary: **run `npm test` from the repo root.**
+
+**⚠️ DURABLE — every clone must register the `ours` merge driver once: `git config merge.ours.driver true`.** `.gitattributes` marks `books/*/translation-errors.json merge=ours` because that derived manifest is committed on *both* the prod cron and dev, and every deploy `git pull --rebase` used to conflict on it. The driver is **not** stored in the repo. `scripts/deploy.sh` re-asserts it before each pull; **dev boxes that pull/merge manually must run it once too.**
 
 ## Directory Structure
 
-```
-books/{book}/
-├── 01-source/          # 🔒 READ ONLY - OpenStax CNXML originals
-├── 02-for-mt/          # EN segments for machine translation
-│   └── ch{NN}/         #   m{NNNNN}-segments.en.md
-├── 02-structure/       # Document structure from extraction
-│   └── ch{NN}/         #   m{NNNNN}-structure.json, -equations.json
-├── 02-mt-output/       # 🔒 READ ONLY - Raw IS segments from MT
-├── 03-faithful-translation/ # ✏️ Reviewed IS segments (per-module, written by applyApprovedEdits)
-├── 03-translated/      # Translated CNXML from injection
-│   └── {track}/ch{NN}/ #   m{NNNNN}.cnxml (track = mt-preview, faithful, localized)
-├── 04-localization/    # ✏️ Localization in progress
-├── 04-localized-content/ # ✏️ Pass 2 output (localized version)
-├── 05-publication/     # ✏️ Web-ready HTML
-│   ├── mt-preview/     #    MT versions for immediate use
-│   ├── faithful/       #    Human-reviewed versions
-│   └── localized/      #    Localized (adapted) versions
-├── for-align/          # (legacy) Matecat Align staging — retired, see generate-tm.js
-├── tm/                 # GENERATED by generate-tm.js from faithful segments; don't edit by hand
-├── glossary/           # Terminology files
-└── chapters/ch{NN}/    # Status tracking (status.json)
+The `books/{book}/` layout is self-describing — `ls books/<slug>/` shows it, and the stage
+names map 1:1 onto the pipeline table below. What `ls` **cannot** tell you is which
+directories you may write to (→ § *File Permissions*, next) and the naming trap below.
 
-tools/                  # CLI tools for pipeline processing
-server/                 # Web workflow interface
-docs/                   # Documentation (see below)
-```
+**⚠️ DURABLE — TWO on-disk chapter-dir conventions exist, and must not be conflated:**
+- **Source/structure/status dirs are `ch`-prefixed**: `chNN` / `appendices` — build them with
+  `chapterLabel.chapterDir()` (`server/lib/chapterLabel.js`, the canonical idiom).
+- **Publication-track OUTPUT dirs are BARE**: `NN` / `appendices` — `chapters/01`, **not**
+  `chapters/ch01`.
+
+Three independent bare-dir builders exist, and **they must stay separate**:
+
+1. `publicationService.getPublicationStatus()`'s ternary
+2. `tools/validate-chapter.js`'s module-local `pubChapterDirName()` — which sits in the same
+   file as `chapterDir()`, holding BOTH conventions side by side on purpose
+3. `cnxml-render.js` `formatChapterOutput` — which keys on the **string** `'appendices'`
+   rather than the `-1` sentinel. Different domain, same trap.
+
+**Do not unify (1) and (2)** — the comment directly above `pubChapterDirName` says so, and
+`server/__tests__/publicationAppendices.test.js` pins the behaviour. **⚠️ (3) is NOT pinned by
+any test and no comment guards it** (verified 2026-07-28: no test file references
+`formatChapterOutput`) — it is the one a refactor can silently break, so treat it with more
+caution than the other two, not less.
+
+Appendices are the `-1` chapter sentinel and carry **no section number**.
 
 ## File Permissions
 
@@ -285,15 +299,23 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 **⚠️ When you census the corpus for a structural shape, parse it — do not regex it, and state the counting unit.** Regex counts over `<para>`/`<figure>` nesting produced three wrong numbers in one C13 session (an over-generalised book attribution, a glob silently scoped to one book, and a miscount that included an empty `<caption>`). Use `@xmldom/xmldom` and a parent/ancestor predicate, and say whether you counted **per figure or per para** — for C13 the two differ (71 vs 70) and only per-figure matches the schema gate 1:1.
 
+**⚠️ DURABLE — `book-config.json` is MULTI-CONSUMER; a new non-render key must be excluded via `NON_RENDER_KEYS`.** The item-17 licence key leaked through `book-rendering-config.js` `mergeWithShared()`'s lossless passthrough into `getBookRenderConfig()`'s object and broke a golden `toEqual` migration oracle. Verifying "inert on the render path" must check the config-**object** shape and its tests, not just the rendered HTML — a `toEqual`-vs-golden is a shape pin, not only a `toMatchSnapshot`.
+
+**⚠️ DURABLE — the glossary export has a shrink guard, and its blast radius is NOT MT-only.** `glossary-unified.json` has **two** producers (`tools/merge-glossary.js` wrote every committed copy; `server/scripts/export-terminology.js` is the second), so a guard refuses to replace a much richer file unseen — **the first prod run is *expected* to refuse.** The two producers are not interchangeable: **`merge-glossary.js` still has 3 sources and Íðorðabankinn is not one of them**, and its own `--db` upsert targets the `terminology_terms` table that migration 032 dropped. The file also feeds the **render** path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a silent shrink is **reader-visible**, not merely an MT-quality regression.
+
+**⚠️ DURABLE — onboard a new book LICENCE-FIRST: TM auto-regen needs a per-book licence row.** A missing row is a loud 500 on `GET /api/tm/export` but a **SILENT, warn-only stale TM** on the fire-and-forget regen cron — the failure you won't notice.
+
+**⚠️ Schema validity ⊥ fidelity.** A RelaxNG gate complements `cnxml-fidelity-check.js`, never replaces it (chemistry has 37 known discrepancies and **0** schema errors). If you run the gate, read its traps first — `jing -i` is mandatory, and jing **aborts the rest of the batch** after the first `fatal:`, making a naive invocation fail-QUIET: `experiments/cnxml-validation-gate/FINDINGS.md`.
+
 See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) for full instructions.
 
 ## Commands
 
+`npm` scripts (`test`, `validate`, `server:dev`, `update-status`, …) are in `package.json` —
+read them there. Listed below are only the tool invocations whose **flags are not guessable**.
+
 | Command | Purpose |
 |---------|---------|
-| `npm test` | Run all Vitest unit tests |
-| `npm run validate` | Validate chapter status files |
-| `npm run server:dev` | Start editorial server (dev mode) |
 | `node tools/cnxml-extract.js <book> <chapter>` | Extract EN segments from CNXML |
 | `node tools/cnxml-inject.js <book> <chapter>` | Inject translations into CNXML |
 | `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
@@ -303,25 +325,11 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 | `node tools/generate-tm.js --book <book> [--chapter N] [--format tmx\|csv\|json]` | Generate TM (TMX default; CSV/JSON) from paired EN/faithful segments |
 | `node tools/export-corpus.js --book <book>` | Export aligned EN/MT/faithful/localized research corpus (JSONL+TSV, gitignored `books/{book}/corpus/`) |
 | `node tools/resolve-embeds.js --book <book>` | Resolve `<iframe>` embed `/l/` redirects → committed `embed-mapping.json` (networked; run at intake) |
-| `/pipeline-status` | Overview of all chapters |
-| `/chapter-status <book> <ch>` | Specific chapter progress |
-| `/review-chapter <book> <ch>` | Pass 1 linguistic review |
-| `/localize-chapter <book> <ch>` | Pass 2 localization |
-| `/check-terminology <book> <ch>` | Verify terminology |
 
-## Skills (Auto-loaded)
-
-| Skill | Triggers When |
-|-------|---------------|
-| `editorial-pass1` | Working on `03-faithful-translation/`, grammar review |
-| `localization` | Working on `04-localized-content/`, unit conversions |
-| `chemistry-reader-tags` | Working on `05-publication/`, tagging content |
-| `workflow-status` | Discussing chapter progress |
-| `repo-structure` | Creating or moving files |
-| `review-protocol` | Discussing reviews or approvals |
-| `activity-logging` | File operations requiring logging |
-
-Skills are in `.claude/skills/` and provide domain-specific guidance.
+Slash commands live in `.claude/commands/`; skills in `.claude/skills/` — both are listed to the
+session automatically with their own descriptions, so they are **not** enumerated here.
+⚠️ Several commands are switched **off** for this repo in `.claude/settings.local.json`
+(`skillOverrides`) — that file, not this one, says which are live.
 
 ## Status Updates
 
@@ -371,6 +379,23 @@ namsbokasafn-vefur automatically.
 node scripts/sync-content.js --source ../namsbokasafn-efni
 ```
 
+### ⚠️ Durable cross-repo rules
+
+- **Prune-on-rename MUST EMIT an old-slug → new-slug map — do not merely delete.** Vefur needs
+  that map to serve redirects for renamed sections, and since its PR #200 (overlay keys on
+  `data-module-id`, not filename) **the old filename no longer exists on its side to derive one
+  from**. The moment we prune is the only moment the old name is still known; a prune that just
+  unlinks destroys the information permanently and 404s every inbound link. Persist the map with
+  the rendered output so it survives across syncs.
+- **A sync conflict is WARN-ONLY and does NOT change `sync-content.js`'s exit code.** That is
+  deliberate on vefur's side — a duplicate is an *efni* content defect, and failing the sync would
+  block a deploy over something vefur cannot fix. **So a clean sync exit is NOT evidence that
+  there are no duplicates.** Read the output; the unresolved-conflict count is re-reported after
+  the run summary.
+- **Reader-visibility depends on whether vefur passes a value through or RECOMPUTES it** —
+  content-body labels are visible, a page `<title>` vefur re-derives is not. **Trace the consumer
+  before assigning severity.**
+
 ### Cross-repo sessions (sister repo: ../namsbokasafn-vefur)
 
 A single fix often spans both repos (content/render here + routing/slug/deploy there).
@@ -412,117 +437,44 @@ These are heuristics you apply with judgment, not hard gates.
 
 ## Inline Marker Format (Bracket Pattern)
 
-Extraction uses API-safe `[[type:content]]` bracket markers that achieve **100% Málstaður API survival**:
-
-| Marker | CNXML Element | Example |
-|--------|--------------|---------|
-| `[[i:text]]` | `<emphasis effect="italics">` | `[[i:solid]]` → `[[i:fast efni]]` |
-| `[[b:text]]` | `<emphasis effect="bold">` | `[[b:important]]` |
-| `[[sub:content]]` | `<sub>` | `H[[sub:2]]O` |
-| `[[sup:content]]` | `<sup>` | `Ca[[sup:2+]]` |
-| `[[link:text\|url]]` | `<link url="...">` | `[[link:click here\|http://example.com]]` |
-| `[[xref:id]]` | `<link target-id="..."/>` | `[[xref:CNX_Chem_05_02]]` |
-| `[[xref:text\|id]]` | `<link target-id="...">` | `[[xref:Figure 5.2\|CNX_Chem_05_02]]` |
-| `[[docref:doc#target]]` | `<link document="..." target-id="..."/>` | `[[docref:m68674#fs-id123]]` |
-| `[[term:text\|id]]` | `<term id="...">` | `[[term:mól\|term-00042]]` (no id → `[[term:text]]`; class recovered from sidecar by id) |
-| `[[fn:text\|id]]` | `<footnote id="...">` | `[[fn:Sjá viðauka A\|fs-idp2355696]]` (no id → `[[fn:text]]`) |
-| `[[u:text]]` | `<emphasis effect="underline">` | `[[u:undirstrikað]]` |
-| `[[em:text\|class]]` | `<emphasis class="...">` | `[[em:áhersla\|emphasis-one]]` — class rides in the marker |
-
-**Key insight:** The API translates content inside brackets while preserving the delimiters. Legacy `{{i}}...{{/i}}` paired markers had ~2.3% loss; bracket `[[i:text]]` has 0% loss. The same loss applied to the legacy `{{term}}...{{/term}}`/`{{fn}}...{{/fn}}`/`++text++` formats (still parsed for backward compat, below) — id-anchored `[[term:|id]]`/`[[fn:|id]]` and bracket `[[u:]]`/`[[em:|class]]` (2026-07, B4) close out the last lossy inline classes at 0% loss.
-
-Injection handles both bracket and legacy formats (backward compat) — `{{term}}text{{/term}}`, `{{fn}}text{{/fn}}`, and `++text++` are always parsed (never gated). Legacy markdown-style patterns (`*text*`, `~text~`, `^text^`, `__term__`) are skipped for API-translated segments via `hasApiMarkers` guard instead, since they'd false-match inside API-translated prose.
+Extraction uses API-safe `[[type:content]]` bracket markers (100% Málstaður API survival;
+the legacy paired `{{i}}…{{/i}}` / `++text++` forms had ~2.3% loss and are still parsed for
+backward compat). **The full marker table and the injection back-compat rules are in the
+`inline-markers` skill** (`.claude/skills/inline-markers/SKILL.md`), which loads on demand.
 
 ## Server Features (Post-Refocus)
 
-The server is an **editorial workflow platform**, not a pipeline orchestration tool. Pipeline operations (extract, translate, inject, render) are handled via CLI tools.
+The server is an **editorial workflow platform**, not a pipeline orchestration tool. Pipeline
+operations (extract, translate, inject, render) are handled via CLI tools. The feature list is
+derivable from `server/routes/` — read it there rather than trusting a copy here.
 
-**Core editorial features:**
-- Segment editor (Pass 1 linguistic review) with keyboard shortcuts, filtering, progress tracking
-- Localization editor (Pass 2) with category badges and guidelines panel
-- Terminology manager with cross-book support, definitions, CSV export
-- Editorial progress dashboard (per-chapter/module segment counts)
-- Live preview — in-process CNXML→HTML rendering via `renderService.js`
-- Content versioning — per-segment snapshots before each apply (rollback capability)
-- Structured logging via pino (`LOG_LEVEL` env var, JSON in production)
-- Production health check at `GET /api/health` (DB, migrations, books, auth)
+Production health check: `GET /api/health` (DB, migrations, books, auth, content-backup and
+glossary-export staleness). **Nothing polls it** — the routine surface is what `./scripts/deploy.sh`
+prints; otherwise `curl` it by hand.
 
-**Recent changes (2026-07-26, latest — CNXML validation-gate experiment → live biology content-loss fix → glossary sourcing):** **✅ Both PRs MERGED (#333 `0e9bdd77`, #332 `e8ded0e3`) · synced · built · ✅ DEPLOYED 2026-07-26 — the fix is LIVE for readers.** Local suite green before merge (the authoritative gate — no branch protection); all CI checks green on both PRs.
-- **⚠️ HOW TO VERIFY A VEFUR DEPLOY — route status codes are MEANINGLESS.** The reader site is a client-rendered SPA with an any-path fallback: `/`, a real section, a deleted section and pure nonsense **all return `200` with the identical 2,940-byte shell**, and `WebFetch` sees only that shell. **Test the content file the client actually fetches — `/content/<book>/chapters/<NN>/<file>.html` — not the page URL.** Verified this way: `3-key-terms.html` **200, 16,397 bytes, 50 `<dt>` definitions** (the page did not exist before), `3-summary.html` **6,821 bytes** (was 112 chars of empty headings), `toc.json` lists 9 ch03 sections with **no duplicates** — so the **C9 title-rename duplication did NOT fire** (these were mt-preview→mt-preview renames, mirrored with `--delete`; old files survive only as `.backup.*`).
-- **⚠️ STILL OPEN — the two redirects were NOT added.** `/content/…/3-1-myndun-lifraenna-storsameinda.html` and `…/3-4-protein.html` both **404** live. Reader impact is a clean Icelandic 404 (`[sectionSlug]/+page.ts:56` throws `error(404, 'Kafli fannst ekki')`) — dead inbound links and lost SEO, not a broken UI. **These belong in the vefur server's nginx config, NOT in code:** `svelte.config.js` uses `@sveltejs/adapter-static` and there is no `src/hooks.server.*`, so a SvelteKit `redirect()` has nothing to run in. Same place as the `B-embed` `frame-src` CSP work. Both renames are *improvements*, not errors (Árnastofnun backs `prótín` 44× vs `prótein` 5×). The third rename was avoided entirely: `3-3-fitusyrur` was never published because the title was corrected first.
-- **#333 `0e9bdd77` (was `experiment/cnxml-schema-validation-gate`)** — self-contained under `experiments/cnxml-validation-gate/`; **merging it turned nothing on** — integration remains a separate approved task (FINDINGS §6, ~2.5–3 d for the gate, ~5–9 including the biology fixes needed before it can be enforced there) (nothing wired into the pipeline/server/CI; `lint`/`format:check` cover only `tools/`+`scripts/` and vitest only `*/__tests__/`, so CI is unaffected). **Verdict: jing + OpenStax's own RelaxNG is a viable fail-loud gate, ~0.7 s/chapter.** efnafraedi-2e is **schema-perfect: 149/149 modules, error-for-error identical to the OpenStax originals** (incl. the math- and table-heaviest chapters) — reinjection is not the fragile step it was feared to be. **⚠️ Three traps:** (1) **`jing -i` is MANDATORY** — without it the grammar doesn't compile at all (CNXML `table/@id` is `xsd:ID`, MathML 3's `anyElement` matches it untyped); it's OpenStax's own flag (`cnxml/jing.py:53`), and the cost is no duplicate-id checking (the gate script implements its own). (2) **jing ABORTS THE REST OF THE BATCH after the first `fatal:`** — a naive `jing schema.rng *.cnxml` is **fail-QUIET**; it actually hid 3 real defects here. (3) **Pristine OpenStax content does NOT validate clean** (660/1192 files — CNXML 0.7 forbids `@id` inside `<md:abstract>` yet their own generator stamps `para-00001` there) → allowlist, never "fix". **Schema validity ⊥ fidelity:** chemistry has 37 known discrepancies and **0** schema errors, so this complements `cnxml-fidelity-check.js`, never replaces it. Reports: `experiments/cnxml-validation-gate/{FINDINGS,BASELINE-REPORT,SETUP}.md`.
-- **#332 `e8ded0e3` (was `fix/liffraedi-ch03-mt-content-loss`, 12 commits)** — the gate found **live reader-facing content loss**: biology ch03 was publicly serving **55%** of its content (`3-summary` = 112 visible chars of empty headings, **no `3-key-terms` page at all**, 0 ch03 glossary terms). **⚠️ Root cause was NOT an MT failure — ch03 was a HUMAN docx translation** (`02-mt-output/*-provenance.json` → `"tool": "docx-import"`; `import-report.json` = 429 EN segments, **205 matched, 195 SKIPPED**). A blind `api-translate --force` would have overwritten the translator's work. **LESSON: segment counts tell you HOW MUCH, only `-provenance.json` tells you BY WHOM — check provenance before any `--force`.** Lead decision → machine-translate the whole book, editor edits the MT with his own translation as reference (preserved verbatim at `books/liffraedi-2e/reference-translations/ch03-human-docx/`). ch03 re-extracted (**+68 MC answer-option segments** — the `processExercise` fix #287 had shipped but was never re-extracted; the code was fine, the *data* was stale) → re-MT'd (850 ISK, 497/497 parity) → re-injected → re-rendered. `3-summary` 112→**5385** chars, `3-key-terms` **created** (50 definitions), book glossary 42→**92** terms; gate on ch03 **10 errors → 3** (the rest is the pre-existing `<figure>`-in-`<note>` inject bug — **since fixed: register C13, PR #337, 2026-07-27; the gate is now 0 on all 11 biology modules.** This sentence is frozen evidence of what #332 shipped, not current status). ⚠️ **Still only 13 of 259 biology modules are EXTRACTED** — "MT the whole book" means extracting ~246 first (~4.0M chars ≈ 40,000 ISK).
-- **Glossary sourcing (see `[[idordabanki-biology-seeding]]`):** fetched Íðorðabankinn biology (10,003 bilingual headwords) + genetics/immunology/chemistry etc. **Coverage 60% authoritative · 425 (18%) genuinely absent everywhere.** **⚠️ Íðorðabankinn is authoritative but NOT self-consistent** (`fosfórlípíð` vs `fosfólípíðlag`; `fjölpeðtíð` is *their* typo; **39% of multi-collection headwords disagree**) → adopt **per term with `fkdictionary` kept**, never bulk-import. Two editor markup sheets shipped: `exports/06-ch03-mt-review-liffraedi.csv` + `exports/07-idordabanki-candidates-liffraedi.csv`. **⚠️ Two blockers CLEARED by register C14 (2026-07-27).** (a) The bridge (`server/scripts/export-terminology.js`) had no caller **and no delivery path** — its own header wrongly claimed the 2h git-backup staged `books/`, which it did not. `scripts/git-backup.sh` now invokes it and stages `books/*/glossary/`; a failure is contained (WARN, backup proceeds) and surfaces as `checks.glossary_export` in `GET /api/health`. **⚠️ This file's blast radius is NOT MT-only** — it also feeds the render path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a silent shrink is reader-visible, not just an MT-quality regression; full consumer accounting lives in the active register's C14 entry, not restated here. **⚠️ The exporter is the SECOND producer of `glossary-unified.json`** — every committed copy was written by `tools/merge-glossary.js`, whose own `--db` upsert targets the `terminology_terms` table migration 032 dropped. A shrink guard refuses to replace a much richer file unseen, so the first prod run is *expected* to refuse; `merge-glossary.js` still has 3 sources and Íðorðabankinn is not one. (b) `formatGlossary` now drops blank-sided entries and reports the count — a blank IS side used to 400 the WHOLE Málstaður request.
-- **⚠️ NEW cross-repo bug — campaign register C9 + vefur issue [#197](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur/issues/197), LEAD DEADLINE: before fall semester.** A Pass-1 review that corrects a section **title** publishes the section **TWICE**: the faithful overlay replaces per **filename**, but a corrected title **renames** the file (title→slug), `sync-content.js` copies faithful on top **without `--delete`**, and `generate-toc.js:499` readdir's the **destination** → two TOC entries (one reviewed/new-title, one stale/old-title still bannered). ⚠️ **"Never fired yet" was WRONG** — that was only ever true of the *faithful-overlay* route. It **has** been live in production since 2026-07-14 via a second route this description missed: a **stale render left in `mt-preview`**. chem ch10 publishes `m68770` as both `10-5-fast-astand-efnis.html` and `10-5-fastur-efnishamur.html`, both in the baseline, no overlay involved. The `Fitusýrur`→`Lípíð` fix dodged the overlay route by going through `02-mt-output` under a **lead-waived read-only exception** (`4e5be912`, annotated in `m66441-provenance.json` `manualCorrections` — `tool` untouched so `readProvenance` still resolves) — **not repeatable**. **Vefur side fixed 2026-07-27** (PR #200: overlay keys on `data-module-id`, not filename); vefur now *detects* the ch10 duplicate but **cannot repair it** — a sync warns and keeps both files, deliberately, since nothing authorises choosing between two `mt-preview` translations. **The remaining work is efni's: prune-on-rename in the render pipeline, delete the stale ch10 file, re-render the ch10 intro** (its nav still links the stale slug — which is precisely why no automatic tiebreak was possible). → active register §C9.
-  - **⚠️ DURABLE (cross-repo, from vefur 2026-07-27): prune-on-rename MUST EMIT an old-slug → new-slug map — do not merely delete.** Vefur needs that map to serve redirects for renamed sections, and after PR #200 **the old filename no longer exists on its side to derive one from**. The moment we prune is the only moment the old name is still known; a prune that just unlinks destroys the information permanently and 404s every inbound link. Persist the map with the rendered output so it survives across syncs.
-  - **⚠️ DURABLE: a sync conflict is WARN-ONLY and does NOT change `sync-content.js`'s exit code.** That is deliberate on vefur's side — a duplicate is an *efni content defect*, and failing the sync would block a deploy over something vefur cannot fix. **So a clean sync exit is NOT evidence that there are no duplicates.** Read the sync output; the unresolved-conflict count is re-reported after the run summary.
-- **⚠️ Don't blanket-replace `Fitusýrur`:** ~28 occurrences in m66441 are **correct** (the EN genuinely says "fatty acid"); only 5 are wrong (EN says "lipid"). Body errors left for the editor pass, listed in the CSV row.
+### Change history
 
-**Recent changes (2026-07-21, C1a appendices read-path, PR #323 MERGED):** First **[CODE]** item of the follow-up campaign. **C1 split into two PRs; PR-1 (read-path, register I14-R2/R3) MERGED as PR #323** (main `06605ab6`; **deploy still gated by A4** — do not deploy server units mid-QA). Adopts item-14's canonical `server/lib/chapterLabel.js` idiom at the read-path sites that rejected/skipped appendices: new helpers `chapterFromDir`/`compareChapters`; the 7 `status.js` disk-scan loops + `pipelineService.checkBookDownstreamWork` (+ its `checkExtractionImpact` path-builder) + `scripts/validate-status.js` (R3 scans); and `status.js /sections`, `books.js /faithful-count`, `publication.js`+`publicationService` (R2 validators/service). **Editing already worked** (item-14 `listChapters`+`validateBookChapter`) — PR-1 is read/report consistency, not enabling editing. 7 TDD tasks (subagent-driven), suite **3317 green**, whole-branch adversarial review (5 opus lenses → 3-vote refute-default) = **0 confirmed defects**. **⚠️ Durable rule (C1a): TWO appendix dir conventions must not be conflated** — md-style source dirs are `chNN`/`appendices` (use `chapterLabel.chapterDir()`); publication-track OUTPUT dirs are BARE `NN`/`appendices` (`chapters/01`, NOT `chapters/ch01` — `getPublicationStatus` keeps a bare ternary, guarded by a regression test). **Write-path — as of #323 this failed CLOSED:** the SHARED `validateChapterParams` let appendices reach the POST publish routes, but no write followed — `tools/validate-chapter.js`'s `parseArgs` dropped a bare `-1` as a flag, its dir-builders produced `ch-1`, and `publicationService.validateBeforePublish` sent a raw `String(-1)`. **Superseded 2026-07-28 by PR #344 (C1d): all three are fixed, and appendix mt-preview publish runs end to end** (faithful/localized stay `checkTrackReadiness`-gated, correctly, until content exists). Current appendix and C1-batch state → **active register §C1**; no status verbs here. **⚠️ DURABLE (C1d) — the bare pub-dir convention now has a SECOND `-1`→dir builder:** `tools/validate-chapter.js` carries a module-local `pubChapterDirName()` for the HTML-output validators' publication dirs, alongside `publicationService.getPublicationStatus()`'s ternary named in the C1a rule above; the file holds BOTH conventions side by side (`chapterDir()` for `ch`-prefixed source/structure/status dirs). **Do not unify them** — a comment at the helper says so, and a test fails if you try. *(A third bare builder, `cnxml-render.js` `formatChapterOutput`, keys on the STRING `'appendices'` rather than the `-1` sentinel — different domain, same trap.)* **New find logged:** `server/routes/tm.js:39` `GET /api/tm/export` rejects appendices though its lib is appendix-aware (item-21 route — follow-up). Design/plan: `docs/superpowers/{specs,plans}/2026-07-21-c1a-*`; SDD detail `.superpowers/sdd/progress.md`.
+**The dated `Recent changes` blocks that used to live here are archived, banner-frozen, at
+[docs/history/claude-md-changelog.md](docs/history/claude-md-changelog.md)** — 12 blocks,
+2026-03-24 → 2026-07-26. They were 46% of this always-loaded file.
 
-**Recent changes (2026-07-21, later — follow-up campaign + delivery + appendix fixes):** With item 17 shipped, the pre-semester campaign's Phases 0–4 are **COMPLETE**; the successor plan is **`docs/plans/2026-07-21-post-item17-followup-campaign.md`** (all deferred/emergent findings + Phase-5 backlog, ordered **blocking × severity**, each item tagged **[LEAD]** ops/data-op/decision vs **[CODE]** I-execute: **P0** delivery gates → **P1** correctness (C1 appendices-support · C2 Playwright-red · C3 corpus/TM durability · C4 nested-para residue) → **P2** hardening (C5 authz-2 · C6 MTA edges · C7 terminology governance · C8 pipeline) → **P3** polish). **Delivered:** items 12–21 deployed to ritstjórn via `./scripts/deploy.sh` + `node scripts/backfill-mt-locks.js --db` (P0-1, MT-lock active); vefur content synced+built+deployed (P0-2). **Appendix render fixes (found in the P0-2 spot-check):** **#321** — appendix examples/figures/equations were labelled `Dæmi appendices.N` because R4-3 fixed only the table loop; generalized `formatTableNumber`→`formatElementNumber` applied to all four numbered-element loops → per-letter labels (`Dæmi B1`, `Mynd E1`), **reader-facing**. **#322** — the appendix page `<title>` / `pageData.section` emitted `appendices.N`; **efni-internal** (vefur re-titles appendix pages from `pageData.title` and zeroes their section), fixed with `sectionNumber=''` for appendices. Both merged + re-rendered (main `7bfe6fa5`); **#321 still needs a vefur re-sync** to reach readers. **⚠️ Durable rule:** whether a leaked value is reader-visible depends on whether vefur passes it through (content-body labels → visible, #321) or **recomputes** it (page title → not, #322) — trace the consumer before assigning severity. Suite 3299 green.
-
-**Recent changes (2026-07-21):** **Item 17 — Licence metadata per product (PR #320, main `480fc651`) — PHASE 4 COMPLETE.** `books/<slug>/book-config.json` is now the **canonical** per-book licence datum: it gains a nested `licence:{code,obtained}` block, and `tools/lib/book-licences.cjs` `getBookLicence` **reads it** instead of an inline map (return contract `{licence, obtained}` **FROZEN** → the three byte-freeze consumers `export-corpus.js`/`generate-tm.js`/`server/routes/tm.js` are output-identical; the inline `BOOK_LICENCES` map is dropped). The 6 covered books' codes are pinned to provenance §1; `stjornufraedi`/`testbook` carry none and `getBookLicence` fails loud. **Cross-repo pin:** a `VEFUR_CONTRACT`-gated test asserts efni's codes agree with vefur `book.ts` `derivativeLicence` after normalising the `CC BY 4.0`↔`CC-BY-4.0` format gap (mutation-checked). **Containment:** new `tools/lib/licence-containment.cjs` encodes "no restrictive book in a permissive aggregate" — **NO caller yet** (preventive, for a future cross-book aggregate); the item-21 added-terms export is documented + test-locked **licence-neutral** (terms aren't copyrightable; provenance §6.1.a). **Footer part-(b) DROPPED** — vefur already owns the per-page/print licence footer (`BookAttribution.svelte`); efni emits none (lead decision). **⚠️ Durable render-config rule (I17-R6):** `book-config.json` is now MULTI-CONSUMER; the licence key leaked through `book-rendering-config.js` `mergeWithShared()`'s lossless passthrough into `getBookRenderConfig()`'s object (broke a golden `toEqual` "migration oracle") — fixed by excluding it via `NON_RENDER_KEYS`. Adding a non-render book-config key means excluding it there too; verifying "inert on render path" must check the config-OBJECT shape + its tests, not just rendered HTML (a `toEqual`-vs-golden is a shape pin, not only `toMatchSnapshot`). Whole-branch adversarial review (4 opus lenses) = SHIP_WITH_MINORS, all findings cleared. **Tools + one server comment + tests + docs — no data op, no re-render, no server behavior change (frozen contract); nothing to deploy.** Suite 3297 green.
-
-**Recent changes (2026-07-21):** **Item 21 PR-B — Árnastofnun added-terms seed (PR #319, main `cd7c26fe`).** New HEAD_EDITOR route `GET /api/terminology/added-terms/export?format=csv|json&subject=&book=` + a HE-only download control on `terminology.html`: exports the project's OWN approved Icelandic terms that are **not already in Íðorðabankinn**, as an Árnastofnun submission seed. Service `terminologyService.getAddedTerms()` (two-query: rights filter + a per-headword Íðorðabankinn-anchor lookup), pure serializers in `server/lib/arnastofnunSeed.js` (CSV formula-guarded for the external spreadsheet destination — a PR-B-local `csvSeedField`; the shared glossary `csvEscapeField` is untouched). **Rights model (lead 2026-07-21, I21-R4 — reverses PR-A's `openstax-mt` exclusion):** a scientific term is not source-owned, so the discriminator is whose *Icelandic* it is + `idordabanki_id IS NULL` (not already in Íðorðabankinn). `PROJECT_ORIGINATED_SOURCES = {manual, mined-postedit, chapter-glossary, openstax-mt, openstax-glossary}` (**openstax-mt IN**; resolves I21-R1). The three sources the lead confirmed are already in Íðorðabankinn (`idordabankinn`/`chemistry-association`/`chemistry-society-csv`) are excluded from the seed AND feed the `new-translation`/`new-alternative` classifier (I21-R5 — they carry a NULL `idordabanki_id`, so an id-only classifier would mislabel them; an advisor catch, test-pinned). No licence stamp (terms aren't copyrightable, spec §B6). Whole-branch adversarial review (4 opus lenses) found all 3 survivors were **test-pin gaps, not code bugs** — closed with mutation-verified pins and **0 code change**. **⚠️ I21-R7: the first real export is EMPTY until an editor re-reviews terms on prod (the dev DB has ~0 approved terms); the empty case is a valid header-only file.** Server + `terminology.html` only. **✅ DEPLOYED to ritstjórn 2026-07-21** as part of the items-12–21 batch (`./scripts/deploy.sh` + `node scripts/backfill-mt-locks.js --db` run on prod; MT edit-lock now active). Post-deploy riders still pending: run the I12-R3 sanity queries; tell ritstjórn about the F18-DROP/MTA-R1-RISE metric changes + the full first-open queue backlog; I21-R7 added-terms export reads empty until a prod term re-review. Suite 3271 green.
-
-**Recent changes (2026-07-20):** **Item 21 PR-A — TM multi-format export (PR #317, main `e70692a0`).** New CommonJS boundary lib `tools/lib/tm-export.cjs` holds the TM pairing+serialization, shared by the ESM CLI `generate-tm.js` and the CommonJS server route (the `.cjs`-shared-across-the-ESM/CJS-seam pattern — ESM imports CJS, CJS can't require ESM). `generate-tm.js` gains `--format tmx|csv|json` (tmx default — the `tmService` auto-regen cron spawns it flagless, so the tmx-default/`.tmx`-path contract is load-bearing, pinned end-to-end via a testable `runExport`). New `GET /api/tm/export` route (`requireAuth`, VALID_BOOKS/chapter guards, 404-on-empty) + a "Sækja þýðingaminni" download control on `books.html`. Per-book **licence stamping** on every TM export (TMX header `<prop type="licence">` + CSV column + JSON manifest) via `getBookLicence` (`tools/lib/book-licences.cjs`, fail-loud) — parity with the item-20 corpus export. **⚠️ Durable operational rule (I21-R2): a book needs a `book-licences.cjs` row before its TM auto-regen works — a missing row is a loud 500 on the route but a SILENT warn-only stale TM on the fire-and-forget cron; onboard new books licence-first.** PR-B (Árnastofnun added-terms seed) shipped 2026-07-21 as #319 — see the 2026-07-21 entry above. Merged alongside routine dependency maintenance (Dependabot #314 setup-node / #315 express-rate-limit / #316 lint-staged, all landmine-clear; #318 brace-expansion 5.0.6→5.0.7 high-sev ReDoS fix, both trees 0 vulns). Suite 3235 green; main `c69cd096`.
-
-**Recent changes (2026-07-11):** **server/ two-perspective review + provenance audit → remediation.** A findings-first review of `server/` (code + editorial-workflow) plus a product-provenance & durability audit shipped as reports (`docs/audit/2026-07-11-*.md`, PR #261 merged) — headline finding: cross-book authz holes in `routes/pipeline.js`/`routes/sections.js` that Unit-0 book-scoping never adopted. Remediation of the top-3 durability findings is planned in `docs/plans/2026-07-11-provenance-durability-remediation-plan.md` (3 PR-sized tracks): **Track A shipped (PR #262)** — off-box encrypted `sessions.db` backup + restore-test + `/api/health` staleness heartbeat. **⚠️ DEPLOY PREREQ (not yet done):** the off-box backup only activates once someone creates the Linode Object Storage bucket + rclone crypt remote and sets `BACKUP_REMOTE` in cron — see `docs/technical/backup-and-restore.md`; until then `/api/health` reports `"degraded"` (expected, deploy-gate-whitelisted). **Track B shipped (PR #264)** — the second `01-source` overwrite path (`check-source-updates.js update`) is deleted (read-only `check`/`status`/`diff` kept) and `tools/__tests__/source-write-guard.test.js` statically enforces that `download-source.js` stays the only CNXML writer into `01-source/` (any new tool referencing `01-source` fails the suite until a human classifies it read-vs-write). **Track C shipped (PR #266)** — per-module MT edit-lock: the server writes a `.locked` sibling marker next to a module's `02-mt-output` file on its **first saved segment edit**; `api-translate` then refuses that module **even with `--force`** (corrupt/indeterminate marker fails safe to locked); markers ride the git-backup cron and already-edited modules are backfilled (`scripts/backfill-mt-locks.js`, file signal + opt-in `--db`). **⚠️ DEPLOY STEPS (not yet done):** the lock protects production only after `./scripts/deploy.sh` AND a one-time `node scripts/backfill-mt-locks.js --db` on the prod box. **All three remediation tracks are now shipped (A #262 · B #264 · C #266)**; successor effort: `docs/plans/2026-07-11-pre-semester-coding-campaign.md`.
-
-**Recent changes (2026-07-01):** **auth-cookie SameSite fix (login loop).** The `auth_token` cookie was set with `SameSite=Strict` (routes/auth.js), which broke the Microsoft OAuth return: Strict is withheld on the cross-site-initiated redirect back from Microsoft to `/`, so `requirePageAuth()` bounced the just-logged-in user straight back to `/login` (a login loop). It surfaced in "clean" browsers like Edge; browsers already holding a valid session (e.g. a dev's Chrome) masked it. **Corrected to `SameSite=Lax`** on both the set- and clear-cookie calls — Lax still blocks cross-site POST/subresource sends (the real CSRF control; all mutating endpoints are POST) while letting the top-level GET OAuth return carry the cookie. Regression guard: `server/__tests__/authCallbackCookie.test.js`. **Do not restore `Strict`** (there's a code comment saying so). Server code → reaches prod only via `./scripts/deploy.sh`.
-
-**+ hardening arc the login fix uncovered (#209–#213, all merged + deployed).** Verifying #208 through CI (Actions credits returned ~2026-07-01) surfaced five latent bugs, each fixed with a regression test and CI-green-verified: **#209** regenerated stale `docs/_generated/` + added `log.error` to a swallowing catch (the instrument that then diagnosed #210); **#210** `termMiningService` hardcoded `pipeline-output/sessions.db` instead of using `resolveDbPath()`, so it ignored `SESSIONS_DB_PATH` (e2e 500, unreproducible locally); **#211** migrations 004/006 weren't idempotent on re-run — `CREATE INDEX IF NOT EXISTS` guards the index name, not its columns, and later migrations (022/032) dropped `github_id`/`term_id` — fixed with `server/lib/migrationSchema.createIndexIfColumnsExist`; **#212** the migration/seed path now **fails loud** (`failLoudOnMigrationErrors` → `index.js` boot + `e2e/seed-fixture.js` `exit(1)` on any migration error, fatal in all envs — made safe by #211's `migrationIdempotency.test` catching non-idempotency in CI pre-deploy); **#213** `tools/lib` (`embed-mapping`, `book-rendering-config`, `parseArgs`) resolved `books/` against `process.cwd()`, but the server runs with **cwd=`server/`** (`cd server && npm start`), so resolve via `import.meta.url` instead. **Durable rule: resolve resource paths against something intrinsic (`import.meta.url`/`__dirname` for files, `resolveDbPath()` for the DB), never `process.cwd()`; and run `npm test` from the repo root.** Full narrative in project memory `session-2026-07-01-hardening`; register finds d1/d2/e/f in [docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md](docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md).
-
-**Recent changes (2026-06-12, remediation Units 0–5 — PRs #102–#108, all merged):** worked through all six units of the June-2026 remediation roadmap — **the remediation roadmap is now code-complete**. Each unit shipped with tests; full suite green. Manual QA checklists §0–§5 still need a pass on a running server.
-- **Unit 0 — security hotfixes (#102):** preview path-traversal guard (`validateModule` + `VALID_TRACKS` on the live-preview route); render restore-on-failure (`cnxml-render.js` now restores each file's newest `.backup.*` instead of unlinking good prior versions); **book-scoped head-editor authz** — new `requireHeadEditor(bookParam)` / `requireHeadEditorFor(resolveBook)` middleware on approve/reject/discuss/unapprove/complete/apply/publish (a head-editor of one book can no longer act on another); terminology + page-data output escaping (`escapeHtml`, `escapeJsonForScript`).
-- **Unit 1 — content restore (#103):** `contentVersionService.restoreVersion` writes a chosen `content_versions` snapshot back as the faithful file (snapshots current content first, so restore is itself reversible), aligned to the current extraction; `POST …/restore/:version` (book-scoped, confirm-flagged) + a "Saga útgáfa" modal in the editor. Emits the previously-dead `version_restored` activity. **Decision:** no git-per-apply (redundant with the 2h git-backup cron).
-- **Unit 2 — localization review tier (#104):** migration 034 (`localization_pending_edits` + `book_settings`) + `localizationReviewService`. With per-book `enforce_localization_review` ON, Pass 2 edits go to a head-editor approve/reject queue before reaching `04-localized-content/`; OFF (default) keeps legacy direct-save. Four-eyes mirrors Pass 1 (head-editor-only approve, self-approval permitted).
-- **Unit 3 — assignment enforcement (#105):** migration 035 (`enforce_assignments` on `book_settings`). `userService.hasChapterAccess` flips from fail-open to **default-deny** when enforced (missing table → fail-closed 503); admin toggle on the assignments dashboard. Admin/head-editor bypass unchanged.
-- **Unit 4 — editor UX (#106):** **rebuild affordance** (`getApplyStatus` reports `faithful_exists`/`can_rebuild`; the apply button re-enables to rebuild a module whose faithful file went missing — closes the m68700 recovery gap); header de-jargon (human title leads, `mNNNNN` muted + head-editor-only); **optimistic-concurrency token** for segment saves (`baseEditId` → 409 on a concurrent cross-editor change, parity with localization); editor-facing label sweep (residual English "Render"/"Starting" → Icelandic).
-- **Unit 5 — defense & housekeeping (#108):** `requirePageAuth` on view routes (anon → `/login` with destination preserved; `/admin`=ADMIN, `/assignments`=HEAD_EDITOR); CSRF posture documented (SameSite on the auth cookie is the deliberate control) + logout-cookie/`fetchJson` consistency; legacy-migration try/catch (boot survives a throwing legacy migration); singleton DB handle in pipeline-status GET; `moduleLocks` self-prune; dead `gitService` deleted; **all tool-layer lows F7–F20 cleared** (EN-fallback gate on inject, URL-scheme sanitization, redirect caps, path containment, curl auth off argv, `.bak` before lossy rewrites, glossary `.terms[]` fix, status-advance only on failure-free chapters, `repairSegTags` ≥80% digit-overlap).
-- **Next:** walk the manual QA checklists §0–§5 on a running server, then start the **editorial-throughput roadmap** (see Current Priority). Shared infra added by these units: `requireHeadEditor`/`requireHeadEditorFor` middleware, `requirePageAuth`, the `book_settings` per-book toggle table (migrations 034–035), and `escapeJsonForScript`.
-
-**Recent changes (2026-06-12):** editorial-flow fixes surfaced by a real "Vista + Birta" failure on m68700, plus the content-publish flow:
-- **Segment-parser bug (#96):** `segmentParser.parseSegments` was line-based and dropped any segment whose text shared a line with the next `<!-- SEG: -->` marker (the MT API sometimes eats the newline before a marker). It's now marker-based like the injection parser. This was the root cause of an "incomplete injection → render not found" failure that the UI mislabelled as a render error. Apply failure labels are now phase-aware (inject vs render) and surface the real error.
-- **MT producer hardening (#98):** `api-translate.js` now `normalizeSegMarkers()` un-glues markers the API ran onto the previous line before writing `02-mt-output`, and reports a per-module/summary count (`countInlineMarkers`) so the mangling is visible at the MT stage instead of three stages downstream. 62 module-files had the latent pattern; consumers tolerate it now, producer emits clean.
-- **Edit-again (#99):** a published (approved + applied) segment can now be revised in the editor via a "Breyta aftur" button. A new edit supersedes the old on the next "Vista + Birta"; the older version stays in history. Leans on existing supersede logic — **no reversal code**. This is the *forward-editing* complement to roadmap Unit 1 (`content-restore`, *backward* rollback); they're independent.
-- **Apply model (important for future work):** `loadModuleForEditing` reads `03-faithful-translation` as the baseline once it exists (else `02-mt-output`). So `applyApprovedEdits` rebuilds the faithful file from the *current published content* + newly-approved-unapplied edits — incremental re-applies preserve every other segment's edits. Edits are also one-way at apply for *unapprove* (`unapproveEdit` throws once `applied_at` is set); edit-again is the way to change published content.
-- **Content publish flow (#95):** `scripts/git-backup.sh` now also stages `books/*/translation-errors.json` (it was perpetually dirty on prod after inject), and a push to `main` touching `books/*/05-publication/**` was wired to trigger the "Sync Content to Vefur" Action. ⚠️ **That Action has never actually worked** (see § "Content delivery to readers") — the intended hands-off path was built but never activated, so the last leg is manual. *This bullet is a historical record of what #95 shipped, not a description of current behaviour.*
-  - **Merge-driver for the manifest (2026-06-26):** because that manifest is committed on *both* the cron (prod) and dev, every deploy `git pull --rebase` used to conflict on it. `.gitattributes` now marks `books/*/translation-errors.json merge=ours` (it's a derived artifact — keep the current side, it regenerates on the next inject). The `ours` driver is **not** stored in the repo, so each clone needs it once: `git config merge.ours.driver true`. `scripts/deploy.sh` re-asserts it before each pull; **dev boxes that pull/merge manually must run it once too.**
-- **Known editorial-UX follow-ups (both since resolved — see Units 0–4 block above):** (a) the rebuild-when-faithful-file-deleted affordance landed as Unit 4.5 (`getApplyStatus` now reports `can_rebuild`); (b) `content-restore` (backward rollback) landed as Unit 1.
-
-**Recent changes (2026-06-10):** CI fully green for the first time (lint, test, e2e, audit, docs-check):
-- `@xmldom/xmldom` 0.9 `errorHandler`→`onError` migration in `tools/lib/cnxml-dom.js` (the old option threw at runtime and broke injection)
-- Fresh-database migration fix (see bootstrap note above) — repaired the e2e suite, red since 2026-02-28
-- Terminology e2e specs aligned with the migration-032 redesign (headwords + nested `translations[]`, translation-scoped approve/dispute)
-- Two production bugs fixed: `/library` threw an uncaught error on every load (dead `/api/images` call fired by bookSelector auto-change), and the duplicate book-registration 409 guard missed when `openstax_catalogue` was empty (`isBookRegistered()` added)
-- `xlsx` → SheetJS 0.20.3 CDN tarball + `qs` bump; `npm audit` clean
-- Known follow-up: `getRegisteredBook`/`listRegisteredBooks` INNER JOIN `openstax_catalogue`, hiding registered books without catalogue entries (consider LEFT JOIN)
-
-**Recent changes (2026-03-24):**
-- Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
-- All DB services use singleton connection pattern
-- Migrations use the unified `up(db)` pattern (034–035 added the `book_settings` per-book toggle table). **No count is recorded here — `ls server/migrations/`.** *(A hand-synced "35 as of 2026-06-12" lived here and had drifted by 8.)*
-- Frontend JS wrapped in IIFEs (encapsulated state)
-- Vitest workspace splits tools (parallel) from server (sequential) tests
+Per § *One source of truth*, that archive is **evidence, never status**: if it disagrees with the
+active register, **the register wins**. Every durable rule those blocks carried was lifted into
+this file before extraction — if you find one in the archive with no home here, that is a bug in
+this file, so fix it here.
 
 ## Current Priority
 
-Three active tracks:
+**Open work has exactly one owner: the active register in `docs/plans/`** (currently
+`2026-07-21-post-item17-followup-campaign.md`), specifically its ⏩ RESUME block. Read that.
 
-1. **Remediation roadmap — code-complete, manual QA outstanding** — [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md). **All units 0–5 are merged** (#102–#108, see Recent-changes block above). The only remaining work is **walking the manual QA checklists §0–§5 on a running server** (authz boundaries, on-disk render rollback, restore round-trip, enforcement 403/503, stored-XSS rendering, page-auth redirects, fetch/CSRF posture). Plan (2026-06-12): the lead runs this as part of a **combined major manual QA of namsbokasafn-efni + namsbokasafn-vefur** in the coming days. This does not technically block track 2, but server-touching roadmap units should not deploy mid-QA (see the roadmap's Unit 0 note). Source audit: [docs/audit/2026-06-10-security-quality-review.md](docs/audit/2026-06-10-security-quality-review.md); QA gates: [docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md).
+Per § *One source of truth*, this file carries **no status verbs and no counts** — not what is
+next, in flight, blocked, or shipped; not module/test/term totals. Every such number found here
+on 2026-07-26 was stale, one by 3×. Long-lived context lives in
+[ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md).
 
-2. **Editorial-throughput roadmap (drafted 2026-06-12, amended same day for the MTPE workflow, pending lead sign-off)** — [docs/plans/2026-06-12-editorial-throughput-roadmap.md](docs/plans/2026-06-12-editorial-throughput-roadmap.md). The successor plan: with the platform now safe/governed/reversible, the bottleneck is **Pass 1 throughput**. MTPE amendment: every segment already has an MT draft, so Unit 2 is *review-deduplication* (approved match outranks MT draft; fuzzy matching dropped permanently), Unit 3 gains term-decision mining (the glossary — not the TMX — primes Málstaður, so mining approved edits for term decisions is the real feedback loop), Unit 4 gains an untranslated-EN-residue detector. Production state driving the plan: 250 MT-preview pages vs **1 faithful module** project-wide; `tm/` **empty** in every book — the TM deliverable doesn't exist yet; glossary thriving at 1,117+617-approved chemistry terms. Units: **0** remediation manual QA (carried over) → **1** in-house TMX generation from the already-aligned `02-for-mt/` + `03-faithful-translation/` segment pairs (retires the never-used Matecat Align step) → **2** concordance search + exact-match repetition leverage in the segment editor (FTS5) → **3** live terminology QA in the save/submit path (wire the existing never-called `check-consistency`) → **4** Icelandic spell-check + number-consistency QA (engine decision pending) → **5** team operations (SLA aging, approve/reject notifications to editors, feedback→module routing) → **6** asset durability (nightly terminology export to git — current export is stale since 2026-03-09; `sessions.db` backup). Deliberately out of scope: more hardening, Pass 2 buildout, dashboard rewrites.
-
-3. **Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified by the full suite (`npm test` from the repo root).
-
-Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
-
-Duplicate figure fix (2026-03-30): figures nested inside `<para>` inside `<example>`/`<exercise>` are kept in-place instead of being stripped and duplicated. Covers `lifraen-efnafraedi` (10) and `edlisfraedi-2e` exercises (37).
-
-⚠️ **Corrected 2026-07-27 — this line used to claim the 2026-03-30 fix "follows the same pattern as `buildNoteDom`" and listed "liffraedi-2e notes (70)" among what it affects. Both halves were false, and together they are a large part of why the `<note>` gap went unnoticed for four months**: `buildNoteDom` had no such pattern to follow (it did captions only, never a per-para pre-scan), and those 70 biology note figures were the ones the fix did **not** cover — they are register C13, fixed 2026-07-27 in PR #337. The counts above are per **para**; counted per **figure** the note shape is 71. A reader who trusted this line would conclude notes were already handled. **Do not restate coverage claims here — cite the register.**
-
-See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
-
-**Phases 8-13:** All COMPLETE (2026-02-05 through 2026-02-16). See [ROADMAP.md](ROADMAP.md) for details.
+**⚠️ Do not restate pipeline-coverage claims here — cite the register.** A line in this section
+once claimed the 2026-03-30 duplicate-figure fix "follows the same pattern as `buildNoteDom`"
+and covered "liffraedi-2e notes (70)". **Both halves were false**, and together they are a large
+part of why the `<note>` gap went unnoticed for four months (it was register C13, fixed
+2026-07-27 in PR #337). A reader who trusted that line would have concluded notes were handled.
