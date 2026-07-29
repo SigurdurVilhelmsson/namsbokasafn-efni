@@ -328,8 +328,10 @@ read them there. Listed below are only the tool invocations whose **flags are no
 
 Slash commands live in `.claude/commands/`; skills in `.claude/skills/` — both are listed to the
 session automatically with their own descriptions, so they are **not** enumerated here.
-⚠️ Several commands are switched **off** for this repo in `.claude/settings.local.json`
-(`skillOverrides`) — that file, not this one, says which are live.
+⚠️ Several are switched **off** for this repo via `skillOverrides`, in **two** places:
+`.claude/settings.json` (checked in — the four skills that still document the retired
+pipeline; see the note beside the key, and register item 23) and `.claude/settings.local.json`
+(gitignored, machine-local). **Those files, not this one, say which are live.**
 
 ## Status Updates
 
