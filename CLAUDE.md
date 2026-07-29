@@ -309,6 +309,8 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 **⚠️ DURABLE — onboard a new book LICENCE-FIRST: TM auto-regen needs a per-book licence row.** A missing row is a loud 500 on `GET /api/tm/export` but a **SILENT, warn-only stale TM** on the fire-and-forget regen cron — the failure you won't notice.
 
+**⚠️ DURABLE — the `<!-- SEG:… -->` marker takes NO SPACE after the colon.** `segmentParser.parseSegments` matches `<!-- SEG:m001:para:fs-id1 -->`; the spaced form `<!-- SEG: m001:… -->` parses to **`[]`** — an empty segment list, not an error. Prose across this repo (including specs and register entries) writes it spaced for readability, so it is easy to copy the readable form into a test fixture or a tool and get a silent empty parse that looks like a matching bug. **Verify a fixture against the real parser before building on it.** Found 2026-07-29 while writing the C16 re-attach plan, where 10 fixtures had it wrong.
+
 **⚠️ Schema validity ⊥ fidelity.** A RelaxNG gate complements `cnxml-fidelity-check.js`, never replaces it (chemistry has 37 known discrepancies and **0** schema errors). If you run the gate, read its traps first — `jing -i` is mandatory, and jing **aborts the rest of the batch** after the first `fatal:`, making a naive invocation fail-QUIET: `experiments/cnxml-validation-gate/FINDINGS.md`.
 
 See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) for full instructions.
