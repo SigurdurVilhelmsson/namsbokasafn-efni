@@ -92,7 +92,8 @@ Pass 1 review is done via the **segment editor** at `/segment-editor`:
 
 ### Checking Process
 
-1. **First:** Check project glossary at `glossary/terminology-en-is.csv`
+1. **First:** Check the book's glossary at `books/{book}/glossary/` (per-book, not a single
+   project-wide CSV). The terminology manager in the editorial server is the live view of it.
 2. **Second:** Check `docs/editorial/terminology.md` for guidelines
 3. **Third:** Search [Íðorðabankinn](https://idord.arnastofnun.is/)
 4. **Fourth:** Check [Orðabanki HÍ](https://ordabanki.hi.is/)

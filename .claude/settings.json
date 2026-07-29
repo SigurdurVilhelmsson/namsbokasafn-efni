@@ -1,13 +1,6 @@
 {
   "project": "namsbokasafn-efni",
   "description": "Icelandic OpenStax textbook translations",
-  "_skillOverrides_note": "These four skills teach the RETIRED pipeline (files.json/Word Track Changes review; Matecat Align; protect-segments; 02-machine-translated//03-editing dirs that no longer exist). They were inert flat .md files until 2026-07-29, so the drift was harmless; making them loadable made it live. Content rewrite is register item 23 - remove each key here as its skill is fixed.",
-  "skillOverrides": {
-    "activity-logging": "off",
-    "repo-structure": "off",
-    "review-protocol": "off",
-    "workflow-status": "off"
-  },
   "permissions": {
     "allow_read": ["**/*"],
     "allow_write": [
@@ -15,7 +8,6 @@
       "books/**/03-faithful-translation/**",
       "books/**/04-localized-content/**",
       "books/**/05-publication/**",
-      "books/**/chapters/**/files.json",
       "logs/**",
       "glossary/**"
     ],

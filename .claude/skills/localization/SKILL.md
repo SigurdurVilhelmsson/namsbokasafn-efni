@@ -35,8 +35,15 @@ Create localized versions that:
 
 ## Output Locations
 
-- Localized .docx: `books/{book}/04-localized-content/docx/ch{NN}/`
-- Localization log: `books/{book}/04-localized-content/localization-logs/ch{NN}-log.md`
+Pass 2 output is **segment files, not .docx** — the pipeline is CNXML-based end to end:
+
+- Localized segments: `books/{book}/04-localized-content/ch{NN}/{moduleId}-segments.is.md`
+- Written by the **localization editor** (`/localization-editor`), not by hand. With per-book
+  `enforce_localization_review` ON, edits queue for head-editor approval before landing here.
+
+⚠️ Do not write `04-localized-content/docx/` or `localization-logs/` — neither exists. Record
+the rationale for each adaptation in the editor's own log field; the log-file convention below
+is a **template for that prose**, not a file to create on disk.
 
 ---
 
@@ -166,6 +173,8 @@ Create localized versions that:
 
 Types: Æfingadæmi, Dæmi, Samhengi, Athugasemd
 
-### Log Location
+### Where this log goes
 
-Save to: `books/{book}/04-localized-content/localization-logs/ch{NN}-log.md`
+**Not to a file.** Use the structure above as the shape of the rationale you record in the
+localization editor alongside the edits, so a reviewer sees what changed and why in the same
+place they approve it.
