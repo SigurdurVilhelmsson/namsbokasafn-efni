@@ -64,9 +64,10 @@ and the root configuration files listed above.
 >    - `tools/generate-index.js:146` → `server/data`
 >    - `tools/docx-import.js:201` → `server/data/${book}.json`
 >    - `scripts/generate-route-inventory.js:5` → `server/routes`, whose `.js`
->      files it reads as text to generate a docs inventory. It requires none of
->      them, so no AGPL code is loaded, but the generated inventory does
->      describe AGPL source.
+>      files it reads as text (`readdirSync` at `:19`) to generate a docs
+>      inventory. It requires none of them, so no AGPL code is loaded, and it
+>      cannot run at all without `server/routes` present. This is the one class 3
+>      entry that reads source rather than data.
 >
 >    Retired scripts under `tools/archived/` also write JSON into
 >    `server/data/`. They are not enumerated here: they are out of the pipeline,
@@ -100,6 +101,15 @@ and the root configuration files listed above.
 > And do not filter `node_modules` out of the results. An exclusion meant to
 > skip files *inside* `node_modules` also hides every edge that merely mentions
 > it, which is most of class 4.
+>
+> The shapes match many sites under `tools/__tests__/` and `scripts/__tests__/`
+> as well. Those are deliberately outside this list. Test files reach into
+> `server/` freely — for a temp database, a manifest, or the very services they
+> exercise — but they are not part of what the tooling needs in order to run,
+> which is what this note is about; a downstream user taking `tools/` and
+> `scripts/` to operate the pipeline does not run them. Listing only the thinnest
+> of them would be worse than listing none, because some are heavier than
+> anything above: a test may execute AGPL services directly.
 
 ```
 MIT License
