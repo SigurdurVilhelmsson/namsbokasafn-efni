@@ -22,23 +22,57 @@ and the root configuration files listed above.
 `books/`** (which is content under per-book Creative Commons terms — see below).
 
 > Note for downstream users taking only `tools/` (and `scripts/`) under MIT —
-> **corrected 2026-07-28; this note previously described a single dependency and
-> was out of date.** There are four references from the MIT tooling into
-> `server/`, in three classes. Only the first is optional:
+> parts of that tooling reach into `server/`, which is AGPL-3.0. This changes
+> nobody's rights either way; it is a combination caveat, recorded so that
+> anyone taking the MIT tooling on its own knows what it expects to find beside
+> it. The edges fall into four classes:
 >
-> 1. **Optional, guarded.** `tools/api-translate.js` `require()`s
->    `server/services/pipelineStatusService.js` inside a try/catch that warns and
->    continues if the module is absent. Translation runs correctly without
->    `server/`; only a convenience status update is skipped.
-> 2. **Required, unguarded — these tools will not load without `server/`.**
->    `tools/validate-chapter.js` and `scripts/validate-status.js` import
->    `server/lib/chapterLabel.js`, the project's canonical converter between the
->    two on-disk spellings of the appendices chapter. This is deliberate: the
->    repository's own rules require that conversion to happen only through that
->    module, never reimplemented inline. Taking `tools/` alone therefore needs
->    `server/lib/chapterLabel.js` (or an equivalent) alongside it.
-> 3. **Data path, not code.** `tools/validate-pipeline-consistency.js` resolves
->    `server/data/` to read per-book JSON. It loads no AGPL code.
+> 1. **Optional, guarded** — loads AGPL code inside a try/catch; the tool works
+>    without `server/`.
+>    - `tools/api-translate.js:1051` → `server/services/pipelineStatusService.js`
+>
+>    It warns and continues if the module is absent: translation runs correctly
+>    without `server/`, and only a convenience status update is skipped.
+> 2. **Required, unguarded** — loads AGPL code; the tool cannot load without
+>    `server/`.
+>    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
+>    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
+>    - `scripts/backfill-mt-locks.js:99` → `server/lib/dbPath.js`
+>    - `scripts/backfill-mt-locks.js:173` → `server/services/segmentParser.js`
+>      (for `chapterDir`, which `segmentParser` re-exports at `:463`)
+>    - `scripts/backfill-appendix-sections.js:198` → `server/lib/dbPath.js`
+>    - `scripts/backfill-appendix-sections.js:201` →
+>      `server/services/bookRegistration.js`
+>    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
+>    - `scripts/export-segment-edits.js` → `server/lib/chapterLabel.js`,
+>      `server/services/segmentParser.js`, `server/lib/dbPath.js`
+>    - `scripts/reattach-segment-edits.js` → `server/lib/chapterLabel.js`,
+>      `server/services/segmentParser.js`,
+>      `server/services/segmentEditorService.js`
+>
+>    The `chapterLabel` imports are deliberate: it is the project's canonical
+>    converter between the two on-disk spellings of the appendices chapter, and
+>    the repository's own rules require that conversion to happen only through
+>    that module, never reimplemented inline. Taking `tools/` alone therefore
+>    needs `server/lib/chapterLabel.js` (or an equivalent) alongside it.
+> 3. **Data path, not code** — resolves a path under `server/` to read JSON;
+>    loads no AGPL code.
+>    - `tools/validate-pipeline-consistency.js:27` → `server/data`
+>    - `tools/openstax-fetch.cjs:70` → `server/data/chemistry-2e.json`
+>    - `tools/check-source-updates.js:134` → `server/data/${book}.json`
+>    - `tools/translate-chapter-titles.js:46` → `server/data`
+>    - `tools/generate-index.js:146` → `server/data`
+> 4. **Package resolution, not code** — resolves a third-party package through
+>    `server/node_modules`; loads no AGPL code. The package in every case is
+>    `better-sqlite3`, which is itself MIT; it lives under `server/` because the
+>    repository root has no dependency on it.
+>    - `tools/lib/safeWrite.js:50` and `scripts/backfill-mt-locks.js:98` anchor
+>      a `createRequire` inside `server/`, then load the bare specifier.
+>    - `scripts/export-segment-edits.js:55` and
+>      `scripts/backfill-appendix-sections.js:199` join the
+>      `server/node_modules/better-sqlite3` path directly.
+>    - `tools/merge-glossary.js:495` tries that path and falls back to the bare
+>      specifier.
 >
 > This list is the authoritative enumeration — update it here when an edge is
 > added or removed, and re-derive rather than trusting it, searching for both a
