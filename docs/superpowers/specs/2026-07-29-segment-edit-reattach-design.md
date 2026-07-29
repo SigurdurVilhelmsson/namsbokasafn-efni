@@ -38,13 +38,21 @@ Every claim below was measured, not inherited. The design rests on these and on 
 
 ## 3. Scope
 
-**In scope.** Two one-shot scripts: an export that snapshots the editorial state before the
-break, and a re-attach that restores it after.
+**In scope.**
+- Two one-shot scripts: an export that snapshots the editorial state before the break, and a
+  re-attach that restores it after (§6–§9).
+- The **sequencing constraints** the migration must run under — preconditions (§4), host split
+  (§5), and publication regeneration including the slug map (§12). These are not code, but they
+  are decisions the plan must encode, and the slug map is a deliverable that exists only if it is
+  captured at one specific moment.
 
 **Out of scope, deliberately.**
 - Any change to `cnxml-extract.js`, `api-translate.js`, `cnxml-inject.js` or `cnxml-render.js`.
-- Removing the `!hasApiMarkers` back-compat from `cnxml-inject.js`. That is the *prize* for
-  completing the clean break, and it is a separate PR with its own review.
+- Removing the `!hasApiMarkers` back-compat from `cnxml-inject.js`, and the corpus tripwire that
+  should ship with it. That is the *prize* for completing the clean break and a separate PR with
+  its own review — see §13 for why it comes after, not with.
+- Fixing C9's prune-on-rename. §12.1 sidesteps it for this migration by regenerating from empty;
+  it does not repair the underlying render-pipeline defect.
 - English-text matching, fuzzy matching, or any heuristic that infers which segment an edit
   belongs to. See §7.
 - A reusable tool. These are one-shot migration scripts (lead decision, 2026-07-29).
@@ -256,3 +264,95 @@ non-vacuity traps recorded in project memory.
 **The other four books have no editorial work and no locks** (evidence #1), so their clean break
 needs no re-attach at all — only re-extract, re-MT, re-inject, re-render. Whether they are done
 in the same window as chemistry or separately is a scoping decision, not a design one.
+
+⚠️ **"All books" is smaller than it sounds, and that is the argument for doing this now.**
+Only chemistry is meaningfully extracted; the others are 10–40 modules of 159–342:
+
+| Book | Extracted | Source modules |
+|---|---|---|
+| `efnafraedi-2e` | 170 | ~149 *(count includes chapter-metadata and appendix files)* |
+| `lifraen-efnafraedi` | 40 | 342 |
+| `liffraedi-2e` | 13 | 259 |
+| `orverufraedi` | 12 | 159 |
+| `edlisfraedi-2e` | 10 | 283 |
+
+**The un-extracted majority needs nothing** — it will be extracted by today's code and is born on
+current markers. The legacy debt is bounded at the ~245 modules extracted today, not the
+~1,200-module corpus this becomes. That bound only grows.
+
+---
+
+## 12. Publication regeneration — sequencing and the slug map
+
+Re-MT re-translates section **titles**. Titles become slugs, slugs become output filenames. This
+interacts with an open defect and must be sequenced deliberately.
+
+### 12.1 Clear the publication tracks; do not render on top
+
+**C9's prune-on-rename is still unfixed on efni's side**, so a renamed section leaves its old
+rendered file in place. This is not hypothetical: `books/efnafraedi-2e/05-publication/mt-preview/chapters/10/`
+currently holds **both** `10-5-fast-astand-efnis.html` and `10-5-fastur-efnishamur.html` for the
+same module. Regenerating 335 published files on top of the existing tree would multiply that.
+
+**Therefore: delete each book's `05-publication/<track>/` before re-rendering it.** The
+regenerated tree is then authoritative by construction — every file present was produced by this
+run, and nothing survives from a previous naming.
+
+**This closes one of C9's three efni tasks as a side effect.** Vefur can *detect* the ch10
+duplicate but deliberately cannot repair it, because nothing authorises it to choose between two
+`mt-preview` translations. A wholesale regeneration never has to choose; it rebuilds only the
+current one, and the stale file is gone.
+
+### 12.2 ⚠️ Capture the old filenames FIRST — they are the slug map
+
+The durable cross-repo rule is that prune-on-rename **must emit an old-slug → new-slug map**:
+vefur needs it to serve redirects, and since its PR #200 the old filename no longer exists on its
+side to derive one from. **A clear-and-regenerate destroys those names permanently.**
+
+So, before deleting anything under `05-publication/`:
+
+```bash
+find books/*/05-publication -name '*.html' | sort > <artifact>/published-filenames-before.txt
+```
+
+After the re-render, the same command produces the "after" list. The pair **is** the slug map:
+names present before and absent after are renames or removals, and vefur's redirect work reads
+from it. This costs one command, and it is the only moment the old names exist.
+
+⚠️ The map is a *deliverable of this migration*, not a nice-to-have. Without it, every inbound
+link and search result pointing at a renamed section 404s with no way to reconstruct the target.
+
+### 12.3 Reader delivery stays manual and separate
+
+Re-rendering changes only efni's disk. Readers see nothing until the vefur sync runs, which is
+`[LEAD]` and manual. Two standing rules apply unchanged: a clean `sync-content.js` exit is **not**
+evidence there are no duplicates — read the output — and a deploy is verified by fetching
+`/content/<book>/chapters/<NN>/<file>.html`, never a page URL.
+
+---
+
+## 13. What the clean data unlocks — and what makes it stick
+
+The migration's purpose is not tidiness; it is to make a deletion safe.
+
+**Two distinct goals with different prerequisites:**
+
+| Goal | Needs clean data? |
+|---|---|
+| **Delete** the Markdown-era converters and the `hasApiMarkers` guard | **Yes.** Remove them while data still carries those markers and those modules inject wrongly. |
+| **Fix** C16(a)'s correctness bug | **No** — the guard could instead read `*-provenance.json` rather than sniffing translated text. |
+
+The second is an escape hatch, and taking it would leave retired code in `cnxml-inject.js`
+permanently. Clean data is what makes the first available, which is why this migration comes
+first and the code change is a separate PR.
+
+**⚠️ The deletion PR must also make clean *stay* clean.** Achieving a clean corpus once is not
+the same as keeping it: with the handling code gone, a future import carrying retired markers
+would produce silently wrong output. That PR should therefore ship a **corpus tripwire** — the
+same shape as `tools/__tests__/source-write-guard.test.js` — that fails the suite if any segment
+file under `02-for-mt/` or `02-mt-output/` contains a retired marker class. A static test turns
+"we cleaned it" into "it cannot regress unnoticed", and it is the guard that lets the ~300 lines
+go with confidence.
+
+**Sequence:** this migration → verify the corpus is clean → tripwire + deletion PR. Each step is
+verifiable before the next begins, and none of them is reversible by accident.
