@@ -4,11 +4,45 @@ These are one-time or superseded tools that are no longer needed in the active p
 
 ## Tools
 
-### clean-markdown.js
+### apply-chemistry-tags.py
+
+**Original Purpose:** Applied the "Chemistry Reader" `:::definition` / `:::practice-problem` / `:::key-concept` directives to Markdown, transforming OpenStax-style content into the tagged format an early Markdown-based reader consumed.
+
+**Why Archived:** That directive system **predates the CNXML pipeline** — it belongs to the early experiments in publishing from Markdown with custom tags. The pipeline now renders CNXML straight to semantic HTML (`cnxml-render.js`), styled by vefur's `/styles/content.css`; nothing produces or consumes `:::` directives. Archived 2026-07-29 along with the `chemistry-reader-tags` skill, the `tag-for-publication` command, and the `content-tagger` agent.
+
+⚠️ One consumer of the old format **survives in live server code**: `terminologyService.importFromKeyTerms` still parses `:::definition{term="…"}` out of `*-key-terms.md`, and is reachable via `POST /api/terminology/import/key-terms`. No such `.md` files exist any more, so the route imports nothing while reporting success — see the active register, item 22. Do not "restore" this tool to feed it.
+
+### clean-markdown.js — ⚠️ DELETED, not archived
 
 **Original Purpose:** Fixed artifacts produced by Pandoc when converting DOCX to Markdown (`\mspace`, orphan `:::` markers, escaped tildes, table border artifacts).
 
 **Why Archived:** The CNXML pipeline does not use Pandoc. CNXML source files have semantic structure that converts cleanly.
+
+⚠️ **This file is not in this directory.** It was removed outright in `89b86d22` *("retire old markdown pipeline, ~37,800 lines removed")*. Entry kept as a record of what existed; recover it from that commit's parent if ever needed.
+
+### gen-college-physics-json.js · gen-organic-chemistry-json.js
+
+**Original Purpose:** One-time scripts that generated `server/data/college-physics-2e.json` and `server/data/organic-chemistry.json`.
+
+**Why Archived:** One-shot scaffolding — their output is committed, and book registration is now handled by the server.
+
+### prepare-for-align.js
+
+**Original Purpose:** Prepared markdown files for **Matecat Align**, the external alignment step that once produced the translation memory.
+
+**Why Archived:** Matecat Align is retired. TM is generated in-house by `generate-tm.js` from the already-aligned `02-for-mt/` + `03-faithful-translation/` segment pairs.
+
+### protect-segments-for-mt.js · unprotect-segments.js
+
+**Original Purpose:** The legacy pipeline's steps 1b/2b — wrapped inline formatting in protective markers before MT and unwrapped them afterwards.
+
+**Why Archived:** Superseded by the `[[type:content]]` bracket markers, which survive the Málstaður API intact (the paired `{{i}}…{{/i}}` form they protected had ~2.3% loss). See the `inline-markers` skill.
+
+### translate-markdown.js
+
+**Original Purpose:** Translated a whole Markdown file EN→IS via the Málstaður API, splitting by level-2 headings.
+
+**Why Archived:** The pipeline translates **segments**, not documents — `api-translate.js` works from `02-for-mt/` and writes `02-mt-output/`, which is what keeps translations re-injectable into CNXML.
 
 ### compare-markers.js
 
