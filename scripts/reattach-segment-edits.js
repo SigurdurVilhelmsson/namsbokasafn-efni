@@ -145,6 +145,55 @@ export function formatReport(plan) {
   return lines.join('\n');
 }
 
+/**
+ * Write the plan's restorable edits as PENDING rows.
+ *
+ * Goes through saveSegmentEdit rather than a raw INSERT on purpose: that path
+ * carries the supersede and acceptance invariants a parallel INSERT would have
+ * to reimplement and then keep in sync. One real code path.
+ *
+ * @param {{plan: object, saveSegmentEdit: Function}} args
+ * @returns {{written: number, reverted: number}}
+ */
+export function applyReattach({ plan, saveSegmentEdit }) {
+  // This does NOT re-establish the MT edit-lock, and cannot: saveSegmentEdit's
+  // lock hook fires only when its own INSERT is the module's first-ever
+  // segment_edits row (priorCount === 1), and every module here still holds its
+  // pre-break rows. scripts/backfill-mt-locks.js's header documents that
+  // impossibility for exactly this row shape. The markers are re-established by
+  // a separate runbook step after this script: `node scripts/backfill-mt-locks.js --db`
+  // on the box whose sessions.db is authoritative.
+  //
+  // No outer transaction is opened. Per-row atomicity already comes from
+  // saveSegmentEdit's own transaction (supersede sweep + INSERT commit
+  // together), and run-level safety comes from repeatability: a re-run after a
+  // partial failure finds the pending row it already wrote and updates it in
+  // place, so it converges instead of duplicating. Wrapping the loop would
+  // need a second connection — segmentEditorService exposes no accessor for
+  // the one it uses — which would not cover these writes and could lock
+  // against them.
+  let written = 0;
+  let reverted = 0;
+  for (const item of plan.restore) {
+    const { row, newMt, editorNote } = item;
+    const res = saveSegmentEdit({
+      book: row.book,
+      chapter: row.chapter,
+      moduleId: row.module_id,
+      segmentId: row.segment_id,
+      originalContent: newMt,
+      editedContent: row.edited_content,
+      category: row.category,
+      editorNote,
+      editorId: row.editor_id,
+      editorUsername: row.editor_username,
+    });
+    if (res && res.reverted) reverted += 1;
+    else written += 1;
+  }
+  return { written, reverted };
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const argv = process.argv.slice(2);
   const i = argv.indexOf('--snapshot');
@@ -163,6 +212,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log('\nDRY RUN — nothing written. Re-run with --db to apply.');
     process.exit(plan.unmatched.length ? 1 : 0);
   }
-  console.log('\n--db given but the write path lands in Task 4.');
+  const { saveSegmentEdit } = require(
+    path.join(REPO_ROOT, 'server', 'services', 'segmentEditorService.js')
+  );
+  const res = applyReattach({ plan, saveSegmentEdit });
+  console.log(`\nWrote ${res.written} pending edits (${res.reverted} withdrew as identical).`);
   process.exit(plan.unmatched.length ? 1 : 0);
 }
