@@ -6,7 +6,13 @@ This document describes the streamlined 5-step translation workflow that replace
 
 The previous workflow had 12+ steps with multiple format conversions (DOCX → plain text → MT → XLIFF → Matecat → track changes → etc.). This was fragile, time-consuming, and error-prone.
 
-**Key insight:** Matecat Align works well with markdown pairs, eliminating the need for XLIFF generation.
+**Key insight:** extraction already aligns EN and IS by `<!-- SEG: -->` id, so TM needs neither
+XLIFF generation nor an external alignment tool — see Step 4.
+
+⚠️ **Historical note.** Sections below that discuss Matecat describe the *superseded* design.
+Matecat Align was retired 2026-06-13; the comparison tables are kept as a record of what the
+old 12-step workflow cost, **not** as instructions. Nothing in the live pipeline uploads to
+matecat.com.
 
 **Key change:** Linguistic review happens BEFORE TM creation, so the TM is human-verified quality from the start.
 
@@ -159,17 +165,16 @@ Use the segment editor at `/segment-editor` for module-by-module review:
 
 #### Option B: Manual Offline Editing
 
-For editing in VS Code or another text editor, first initialize the files:
+For editing in VS Code or another text editor.
 
-```bash
-# Initialize chapter for review (copies MT output to 03-faithful-translation)
-node tools/init-faithful-review.js --chapter 5 --verbose
+> ⚠️ **No initialization step is needed, and `init-faithful-review.js` is archived.**
+> This section used to begin by running it to copy MT output into
+> `03-faithful-translation/`. That is obsolete: `loadModuleForEditing` reads
+> `03-faithful-translation/` as the baseline **once it exists, and falls back to
+> `02-mt-output/` when it does not** — so pre-seeding buys nothing, and the tool now
+> lives in `tools/archived/` (running the old command fails with a missing module).
 
-# Force overwrite if needed
-node tools/init-faithful-review.js --chapter 5 --force
-```
-
-Then edit the segment files directly:
+Edit the segment files directly:
 1. Open `03-faithful-translation/ch05/m68724-segments.is.md` in your editor
 2. Review and edit for grammar, spelling, natural Icelandic phrasing, terminology
 3. Run inject + render when ready:
@@ -191,37 +196,40 @@ Then edit the segment files directly:
 
 ---
 
-### Step 4: TM Creation via Matecat Align
+### Step 4: TM Creation (in-house — no Matecat, no upload)
 
 **Goal:** Create human-verified Translation Memory from reviewed content.
 
-**Prepare files for Matecat Align:**
-```bash
-# From single file pair
-node tools/prepare-for-align.js \
-  --en books/efnafraedi-2e/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi-2e/03-faithful-translation/ch05/5-1.is.md \
-  --output-dir books/efnafraedi-2e/for-align/ch05
+> ⚠️ **Matecat Align was retired 2026-06-13.** `prepare-for-align.js` now lives in
+> `tools/archived/` and `books/*/for-align/` is dead staging. If you are reading an older
+> copy of this document that instructs you to upload markdown pairs to matecat.com,
+> **that step no longer exists** — nothing is uploaded and no external alignment is performed.
 
-# From directories with split parts
-node tools/prepare-for-align.js \
-  --en-dir books/efnafraedi-2e/02-for-mt/ch05/ \
-  --is-dir books/efnafraedi-2e/03-faithful-translation/ch05/ \
-  --section 5-1 \
-  --output-dir books/efnafraedi-2e/for-align/ch05
+TM is generated locally by pairing the already-aligned EN (`02-for-mt/`) and faithful IS
+(`03-faithful-translation/`) segments by their `<!-- SEG: -->` id. Alignment is a *property
+of the extraction*, so there is nothing to align by hand.
+
+```bash
+# Whole book (TMX is the default format)
+node tools/generate-tm.js --book efnafraedi-2e
+
+# One chapter, or another format
+node tools/generate-tm.js --book efnafraedi-2e --chapter 5
+node tools/generate-tm.js --book efnafraedi-2e --format csv    # tmx | csv | json
 ```
 
-**Output:** Clean markdown files ready for Matecat Align:
-- `for-align/ch05/5-1.en.clean.md`
-- `for-align/ch05/5-1.is.clean.md`
+**Output:** `books/{book}/tm/` — do not hand-edit; it is regenerated.
 
-**Matecat Align process:**
-1. Go to [Matecat Align](https://www.matecat.com/align/)
-2. Upload the EN and IS clean markdown files as a pair
-3. Review alignment (Matecat handles segmentation)
-4. Export TMX file
+**Also runs automatically:** `tmService` re-generates a book's TM after edits are applied.
+⚠️ That cron spawns `generate-tm.js` **flagless**, so the tmx-default contract is
+load-bearing — see CLAUDE.md before changing the default format.
 
-**Save to:** `tm/ch05/5-1.tmx` (human-verified TM)
+⚠️ **A book needs a per-book licence row before TM generation works.** Missing row = a loud
+500 on `GET /api/tm/export`, but a **silent, warn-only stale TM** on the fire-and-forget
+cron. Onboard books licence-first — → see CLAUDE.md § *Extract-Inject-Render Pipeline*.
+
+**Sequencing:** `tmCreated` is **reported, not sequenced** — nothing gates on it and nothing
+auto-advances it. It does not block injection.
 
 ---
 
@@ -359,13 +367,9 @@ books/efnafraedi-2e/
 ├── 03-translated/          # Translated CNXML (Step 5a output)
 │   └── ch05/
 │       └── m68724.cnxml             # Reconstructed translated CNXML
-├── for-align/              # Staging for Matecat Align
-│   └── ch05/
-│       ├── 5-1.en.clean.md
-│       └── 5-1.is.clean.md
-├── tm/                     # 🔒 READ ONLY - TMX from Matecat Align
-│   └── ch05/
-│       └── 5-1.tmx                  # Step 4 output (human-verified TM)
+├── for-align/              # ⚠️ DEAD — retired Matecat staging, safe to ignore
+├── tm/                     # GENERATED by generate-tm.js — don't hand-edit
+│       └── *.tmx                    # Step 4 output (human-verified pairs)
 ├── 04-localized-content/           # ✏️ Pass 2 output
 │   └── ch05/
 │       └── m68724-segments.is.md    # Localized translation
@@ -387,7 +391,7 @@ books/efnafraedi-2e/
 |------|---------|------|
 | `cnxml-extract.js` | CNXML → segmented EN markdown + structure JSON | 1 |
 | `api-translate.js` | Automated MT via Málstaður API (with glossary) | 2 |
-| `prepare-for-align.js` | Clean markdown for Matecat Align | 4 |
+| `generate-tm.js` | Pair EN/faithful segments → TMX (also CSV/JSON) | 4 |
 | `cnxml-inject.js` | Inject translations back into CNXML structure | 5a |
 | `cnxml-render.js` | Render translated CNXML to semantic HTML | 5b |
 
@@ -401,7 +405,9 @@ books/efnafraedi-2e/
 | Service | Purpose | Step |
 |---------|---------|------|
 | [Málstaður API](https://api.malstadur.is) | Icelandic MT (via `api-translate.js`) | 2 |
-| [Matecat Align](https://matecat.com/align/) | TM creation | 4 |
+
+*(Matecat Align was the only other external service; retired 2026-06-13. TM creation is now
+in-house — no content leaves the box for alignment.)*
 
 ### Deprecated
 | Tool | Why Deprecated |
@@ -431,9 +437,9 @@ books/efnafraedi-2e/
 - [ ] No localization changes (faithful to source)
 
 ### After Step 4 (TM Creation)
-- [ ] TMX file exported from Matecat Align
-- [ ] Spot-check segment alignment
-- [ ] TMX saved to `tm/` folder
+- [ ] `generate-tm.js` ran without warnings (a missing licence row warns and leaves a stale TM)
+- [ ] Spot-check a few segment pairs in the TMX
+- [ ] TMX present under `books/{book}/tm/` (generated — never hand-edited)
 
 ### After Step 5 (Publication)
 - [ ] Markdown renders correctly
@@ -477,12 +483,8 @@ node tools/api-translate.js --book efnafraedi-2e --chapter 5 --dry-run
 # Step 3 Option B: Manual editing — first initialize, then edit files
 # node tools/init-faithful-review.js --chapter 5 --verbose
 
-# Step 4: Prepare for Matecat Align
-node tools/prepare-for-align.js \
-  --en books/efnafraedi-2e/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi-2e/03-faithful-translation/ch05/5-1.is.md \
-  --output-dir books/efnafraedi-2e/for-align/ch05
-# Then upload to Matecat Align (manual)
+# Step 4: TM creation (in-house; TMX default, no upload)
+node tools/generate-tm.js --book efnafraedi-2e --chapter 5
 
 # Step 5a: Inject translations into CNXML
 node tools/cnxml-inject.js --chapter 5
@@ -502,6 +504,13 @@ curl -X POST http://localhost:3000/api/publication/efnafraedi-2e/5/mt-preview
 ## Legacy MT Workflow (Web UI)
 
 > These steps are only needed when using the malstadur.is **web UI** instead of `api-translate.js`. The API method (Step 2 above) does not require protection or unprotection.
+
+> ⚠️ **Everything from here to the end of "Step 2b" is RETIRED — kept as a record of the
+> manual malstadur.is web-UI route, not as instructions.** Translation now goes through
+> `api-translate.js` (Málstaður API) with `[[type:content]]` bracket markers, which survive
+> the API intact and need no protect/unprotect pass. **All three tools below moved to
+> `tools/archived/`** — the `node tools/…` paths shown are as they were then and will fail
+> today. Do not run them.
 
 ### Step 1b (Legacy): Protect & Split for Web UI
 
