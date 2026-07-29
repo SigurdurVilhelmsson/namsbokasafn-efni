@@ -55,19 +55,29 @@ and the root configuration files listed above.
 >    the repository's own rules require that conversion to happen only through
 >    that module, never reimplemented inline. Taking `tools/` alone therefore
 >    needs `server/lib/chapterLabel.js` (or an equivalent) alongside it.
-> 3. **Data path, not code** — resolves a path under `server/` to read JSON;
->    loads no AGPL code.
+> 3. **Data path, not code** — resolves a path under `server/` to read files
+>    from it; loads no AGPL code.
 >    - `tools/validate-pipeline-consistency.js:27` → `server/data`
 >    - `tools/openstax-fetch.cjs:70` → `server/data/chemistry-2e.json`
 >    - `tools/check-source-updates.js:134` → `server/data/${book}.json`
 >    - `tools/translate-chapter-titles.js:46` → `server/data`
 >    - `tools/generate-index.js:146` → `server/data`
+>    - `tools/docx-import.js:201` → `server/data/${book}.json`
+>    - `scripts/generate-route-inventory.js:5` → `server/routes`, whose `.js`
+>      files it reads as text to generate a docs inventory. It requires none of
+>      them, so no AGPL code is loaded, but the generated inventory does
+>      describe AGPL source.
+>
+>    Retired scripts under `tools/archived/` also write JSON into
+>    `server/data/`. They are not enumerated here: they are out of the pipeline,
+>    and they depend on the path rather than on anything in `server/`.
 > 4. **Package resolution, not code** — resolves a third-party package through
 >    `server/node_modules`; loads no AGPL code. The package in every case is
 >    `better-sqlite3`, which is itself MIT; it lives under `server/` because the
 >    repository root has no dependency on it.
->    - `tools/lib/safeWrite.js:50` and `scripts/backfill-mt-locks.js:98` anchor
->      a `createRequire` inside `server/`, then load the bare specifier.
+>    - `tools/lib/safeWrite.js:50`, `tools/migrate-pipeline-status.js:24` and
+>      `scripts/backfill-mt-locks.js:98` anchor a `createRequire` inside
+>      `server/`, then load the bare specifier.
 >    - `scripts/export-segment-edits.js:55` and
 >      `scripts/backfill-appendix-sections.js:199` join the
 >      `server/node_modules/better-sqlite3` path directly.
@@ -75,8 +85,21 @@ and the root configuration files listed above.
 >      specifier.
 >
 > This list is the authoritative enumeration — update it here when an edge is
-> added or removed, and re-derive rather than trusting it, searching for both a
-> literal `'../server/…'` and a computed `path.join(…, 'server', …)`.
+> added or removed, and re-derive rather than trusting it. Three search shapes
+> are needed, because none of them sees the others' matches:
+>
+> - a literal `'../server/…'`;
+> - a computed `path.join`/`path.resolve` over a separate `'server'` argument;
+> - any string literal *beginning* `'server/'` — a whole path
+>   (`'server/node_modules/…'`, `'server/data'`, `'server/routes'`) or the bare
+>   prefix `'server/'` used to anchor a `createRequire`. The first two shapes
+>   cannot match these: there is no `'server'` token to find and no `../`
+>   prefix. `tools/merge-glossary.js:495` and
+>   `scripts/backfill-mt-locks.js:98` are reachable only this way.
+>
+> And do not filter `node_modules` out of the results. An exclusion meant to
+> skip files *inside* `node_modules` also hides every edge that merely mentions
+> it, which is most of class 4.
 
 ```
 MIT License
