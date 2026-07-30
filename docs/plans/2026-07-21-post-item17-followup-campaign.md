@@ -320,6 +320,21 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
   - **(c) `server/routes/status.js:1264` reads `books/<book>/chapters/<ch>/files.json`** — the retired review model — behind an `existsSync` that is now permanently false (`find books -name files.json` → **0**). Dead branch in a live endpoint plus a phantom `filesData` field in the response contract. *Cosmetic: cannot produce a wrong answer, only a permanently absent one.* The matching `books/**/chapters/**/files.json` write-grant was removed from `.claude/settings.json` on 2026-07-29.
   - **(d) `books/*/for-align/`** — Matecat Align staging, 1 file, retired with the external alignment step. Cosmetic; confirm nothing reads it before removing.
   - **(e) ⚠️ `books/*/04-localization/` is a DOC/REALITY CONFLICT, not stray cruft — do not group it with (d).** CLAUDE.md lists it in **two** places as an active write path: § *Directory Structure* ("✏️ Localization in progress") and the § *File Permissions* table. On disk it holds **1 file**, while Pass 2 output goes to `04-localized-content/` — and `.claude/settings.json` grants write to `books/**/04-localized-content/**` but **not** to `04-localization/**`, so the permissions table and the enforced grant already disagree. Either the directory is a live working stage the settings file wrongly denies, or it is retired and CLAUDE.md documents a stage that no longer exists. **A wrong entry in a permissions table is higher-severity than a stray directory** — it is the kind of fact an agent obeys. Resolve the direction first, then fix whichever side is wrong (per § *One source of truth*: fix document B, do not log it as a to-do in A).
+  - **⚠️ CORRECTION 2026-07-30 — the markdown family is the EDITOR'S CURRENT TOOLBAR
+    VOCABULARY, not residue. The table below mislabels it "pre-API".** Verified in the code:
+    `server/public/js/segment-editor.js:972-977` binds the toolbar to `**` (Ctrl+B, *Feitletrað*),
+    `*` (Ctrl+I, *Skáletrað*), **`__` (Ctrl+T, *Hugtak* — a TERM marker, not bold)**, `++` (U),
+    `~` (subscript), `^` (superscript); `:2616` inserts a glossary term as `__term__`;
+    `tools/cnxml-inject.js:1484` maps `__x__` → `<term>` alongside `{{term}}…{{/term}}` and
+    `[[term:text|id]]` — **all three dialects are accepted**; and `:1770-1790` renders each in the
+    preview. **Consequence for C16(a), and it is the important one: the mixed-dialect state does
+    not decay — it REGENERATES.** Extraction emits `[[…]]`, the editor writes markdown, so the
+    first Ctrl+T after a re-MT puts markdown back into the faithful file. **A re-MT therefore does
+    NOT retire `hasApiMarkers`**; only changing what the editor writes, or what inject accepts,
+    would. Any future editor-facing tag redesign should be scoped together with (a) for that
+    reason. *(This also caused a real defect: the C16 re-attach rules classed the markdown family
+    as "úrelt snið" and would have told an editor their current formatting was obsolete on 6 of
+    the 7 toolbar buttons. Fixed and test-pinned in `scripts/lib/segment-edit-reattach-rules.js`.)*
   - **⚠️ WHAT MUST NOT BE REMOVED — and the marker families are NOT one thing.** Counted properly (an earlier draft of this entry conflated them into a single misleading "146 files"):
 
     | Family | Files | Status |
