@@ -335,6 +335,34 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
     reason. *(This also caused a real defect: the C16 re-attach rules classed the markdown family
     as "úrelt snið" and would have told an editor their current formatting was obsolete on 6 of
     the 7 toolbar buttons. Fixed and test-pinned in `scripts/lib/segment-edit-reattach-rules.js`.)*
+  - **📏 MEASURED 2026-07-30 — what a chemistry re-MT actually retires, per book AND per stage.**
+    This is the measurement the §13 deletion PR needs, and it splits the two curly families
+    cleanly. *(Counting unit: files containing ≥1 occurrence. EN = `02-for-mt/*-segments.en.md`,
+    IS = `02-mt-output/*-segments.is.md`.)*
+
+    | family | efnafraedi EN/IS | edlisfr. | liffr. | lifr-efna | orveru | live injected output |
+    |---|---|---|---|---|---|---|
+    | `{{i}}` `{{b}}` | **0 / 76** | 0 | 0 | 0 | 0 | **0** |
+    | `{{term}}` `{{fn}}` | 108 / 102 | 8 / 8 | 4 / 4 | 6 / 6 | 10 / 10 | 0 |
+
+    - **`{{i}}`/`{{b}}` — a chemistry re-MT retires it CORPUS-WIDE.** Its only home anywhere is
+      chemistry's *stale MT output* (76 files); chemistry's own EN has **zero**, and no other
+      book has any at any stage. Chemistry's IS is simply older than its EN — the EN was
+      re-extracted to brackets (130/170 carry `[[i:`/`[[b:`) and the MT never regenerated.
+      **This is the family `hasApiMarkers` gates**, so re-MT'ing chemistry removes the reason
+      the guard exists — exactly the "known exit" §C16 predicted. Verified it is not already
+      leaking: the only `03-translated` hits are three dated `.cnxml.backup.*` files from March,
+      not live output, so the back-compat is working rather than failing quietly.
+    - **`{{term}}`/`{{fn}}` — NOT retired by this migration, and the parsing must stay.** It is
+      redundant *in chemistry* afterwards (a fresh extract emits `[[term:text|id]]`,
+      `cnxml-extract.js:339`), but it is live in **28 EN + 28 IS files across the four books this
+      migration does not touch**. Deleting its parsing would break physics, biology, organic
+      chemistry and microbiology. It retires only when those books are re-extracted too.
+    - Consequence for the §13 deletion PR: **the `{{i}}`/`{{b}}` back-compat and the
+      `hasApiMarkers` guard become removable after the chemistry re-MT; the `{{term}}`/`{{fn}}`
+      path does not.** ⚠️ And per the correction above, removing `hasApiMarkers` is only safe if
+      the *markdown* converters it gates are also dealt with — the editor still writes markdown,
+      so that branch stays reachable regardless of what the re-MT cleans.
   - **⚠️ WHAT MUST NOT BE REMOVED — and the marker families are NOT one thing.** Counted properly (an earlier draft of this entry conflated them into a single misleading "146 files"):
 
     | Family | Files | Status |
