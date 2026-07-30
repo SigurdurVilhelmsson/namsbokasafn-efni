@@ -211,10 +211,19 @@ echo "${PIPESTATUS[0]}"     # bash: the script's exit code, not tee's
 | Exit | Meaning | Action |
 |---|---|---|
 | 0 | Everything matched and reconciled | Proceed. |
-| 1 | Unmatched rows exist | **Expected.** Proceed; you place those by hand below. |
+| 1 | Unmatched rows exist | **Expected** — *but see the warning below this table before you accept it.* Proceed; you place those by hand. |
+| 5 | The `--db` apply died part-way | **STOP.** The DB is in a mixed state. Read the `ABORTED after inserted=… updated=… withdrawn=…` line above the stack trace — that is how far it got. Re-running is safe (it converges on rows it already wrote), but diagnose the cause first. |
 | 2 | A module is absent from the new extraction | **STOP.** Re-extraction failed. Do not continue. ⚠️ **Exit 2 can hide an exit 4** — a missing module's rows go to `unmatched`, never to the restore list where collisions are counted, so once you fix the extraction the next dry run may surface a *new* fatal code. Expect to run it twice. |
 | 3 | The buckets did not reconcile | **STOP.** Rows are unaccounted for. |
 | 4 | One editor+segment key carries more than one restorable row | **STOP.** See below. |
+
+⚠️ **Exit 1 is NOT exclusively "unmatched rows".** It is also Node's code for any
+failure the table does not enumerate — a usage error, a missing or malformed snapshot file, an
+unreadable path. **Do not read 1 as "proceed" on the strength of the number alone: read the
+report.** A clean exit 1 prints the reconciliation line and an `--- UNMATCHED ---` block whose row
+count matches. Anything else — a stack trace, a usage message, no report at all — is a failure
+wearing the proceed code. *(The one case that used to be genuinely dangerous, a `--db` apply
+crashing part-way, now exits **5** instead; the row above.)*
 
 **Exit 4 — what it means and what to do.** Two rows in the snapshot resolve to the same
 `(book, module_id, segment_id, editor_id)`, which is the key `saveSegmentEdit` resolves a save
@@ -251,8 +260,11 @@ node scripts/reattach-segment-edits.js --snapshot <path> --db \
 - [ ] `Inserted` count from the report: ______ (this is the restored work)
 - [ ] `updated` count from the report: ______ — **expect 0 on a first run.** A non-zero
       `updated` means a pending row for that key was already present, so Step 4a did not cover it
-      and `original_content` kept its old baseline for those rows. Not silent loss, but note which
-      segments and tell the editor their diff view is against a stale draft.
+      and `original_content` kept its old baseline for those rows. Not silent loss. **The script
+      prints the affected keys under the ⚠️ block beneath the totals — you do not need to query
+      the DB.** Copy them here and tell the editor their diff view is against a stale draft:
+
+      ______________________________________________
 - [ ] Place any unmatched edits by hand, using the EN text in the report.
 
 *If the apply dies part-way it prints `ABORTED after inserted=… updated=… withdrawn=…` before the

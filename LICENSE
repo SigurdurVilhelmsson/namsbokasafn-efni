@@ -50,18 +50,24 @@ and the root configuration files listed above.
 >      `server/services/segmentEditorService.js`, both lazy — but `:35` already
 >      makes the file load-time)
 >
->    **(b) Only in a specific mode — the module imports fine without `server/`,
->    and its default mode runs without it:**
+>    **(b) At run time, not import time — the module imports fine without
+>    `server/`. Whether it also RUNS without it differs per entry, so each one
+>    says:**
 >    - `scripts/backfill-mt-locks.js:99` → `server/lib/dbPath.js` and `:173` →
 >      `server/services/segmentParser.js` (for `chapterDir`, which
 >      `segmentParser` re-exports at `:463`). Both sit inside `--db`-only
 >      branches (`if (USE_DB)` at `:93`, `if (dbRows)` at `:166`). The script's
 >      own comment gives the reason: the requires are lazy so that a problem
->      loading them can never break the default file-only signal. Run without
->      `--db`, it needs no `server/` at all.
+>      loading them can never break the default file-only signal. **Run without
+>      `--db`, this script needs no `server/` at all** — it is the only entry
+>      here with a working server-free mode.
 >    - `scripts/backfill-appendix-sections.js:198` → `server/lib/dbPath.js` and
 >      `:201` → `server/services/bookRegistration.js`, both inside
->      `runBackfill()` (`:197`). Importing the module does not reach `server/`.
+>      `runBackfill()` (`:197`). Importing the module does not reach `server/`,
+>      **but every way of running it does**: `runBackfill()` is the only entry
+>      point, `main()` (`:285`) calls it unconditionally, and the requires sit
+>      above every `--db`/dry-run branch. Only importing and never calling
+>      avoids `server/`.
 >
 >    The `chapterLabel` imports are deliberate: it is the project's canonical
 >    converter between the two on-disk spellings of the appendices chapter, and
