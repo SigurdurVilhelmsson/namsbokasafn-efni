@@ -110,6 +110,33 @@ describe('planReattach', () => {
   });
 });
 
+describe('planReattach — colliding keys must be visible in the DRY RUN', () => {
+  // The runbook runs the dry run first and the apply second. A dry run that
+  // reports success while the apply refuses is a rehearsal that lies, so the
+  // plan has to predict the refusal, not just the write path enforce it.
+  const colliding = () =>
+    snapshotWith([
+      edit({ id: 1, status: 'approved', edited_content: 'GÖMUL-SAMÞYKKT' }),
+      edit({ id: 2, status: 'pending', edited_content: 'NÝRRI-Í-BIÐ' }),
+    ]);
+
+  it('surfaces the colliding key on the plan', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný\n');
+    const plan = planReattach({ snapshot: colliding(), booksDir });
+    expect(plan.duplicateKeys).toEqual([
+      { key: 'testbook/m001/m001:para:fs-id1/u1', count: 2 },
+    ]);
+  });
+
+  it('still reconciles — a collision is metadata about the rows, not a lost bucket', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný\n');
+    const plan = planReattach({ snapshot: colliding(), booksDir });
+    expect(plan.reconciliation.ok).toBe(true);
+  });
+});
+
 describe('formatReport', () => {
   it('names every unmatched segment id — the report must FIRE, not merely omit a row', async () => {
     const { planReattach, formatReport } = await import('../reattach-segment-edits.js');
@@ -118,5 +145,20 @@ describe('formatReport', () => {
     const report = formatReport(plan);
     expect(report).toContain('m001:para:fs-id1');
     expect(report).toContain('English one');
+  });
+
+  it('reports a colliding key as FATAL, so the operator stops before the apply', async () => {
+    const { planReattach, formatReport } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný\n');
+    const plan = planReattach({
+      snapshot: snapshotWith([
+        edit({ id: 1, status: 'approved' }),
+        edit({ id: 2, status: 'pending' }),
+      ]),
+      booksDir,
+    });
+    const report = formatReport(plan);
+    expect(report).toContain('FATAL');
+    expect(report).toContain('testbook/m001/m001:para:fs-id1/u1');
   });
 });

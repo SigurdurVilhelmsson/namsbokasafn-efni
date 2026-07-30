@@ -23,6 +23,8 @@ import {
   detectRetiredMarkers,
   composeEditorNote,
   reconcile,
+  findDuplicateRestoreKeys,
+  decideExitCode,
 } from './lib/segment-edit-reattach-rules.js';
 
 const require = createRequire(import.meta.url);
@@ -105,6 +107,13 @@ export function planReattach({ snapshot, booksDir }) {
     });
   }
 
+  // Row-level metadata, deliberately NOT summed into reconcile() — the same
+  // treatment missingModules gets. A collision does not move rows between
+  // buckets: both rows really are restorable, and both really are in
+  // plan.restore. What is wrong is that they cannot BOTH be written. Adding
+  // them to the reconciliation arithmetic would double-count them.
+  plan.duplicateKeys = findDuplicateRestoreKeys(plan.restore.map((item) => item.row));
+
   plan.reconciliation = reconcile({
     total: snapshot.edits.length,
     restored: plan.restore.length,
@@ -141,6 +150,14 @@ export function formatReport(plan) {
       `FATAL: modules absent from the new extraction: ${plan.missingModules.join(', ')}`
     );
   }
+  if (plan.duplicateKeys?.length) {
+    lines.push(
+      '',
+      'FATAL: more than one restorable row on a single editor+segment key.',
+      'The apply will REFUSE. Decide which row wins in the snapshot, then re-run.'
+    );
+    for (const d of plan.duplicateKeys) lines.push(`  ${d.key}  (${d.count} rows)`);
+  }
   lines.push('', plan.reconciliation.message);
   return lines.join('\n');
 }
@@ -153,9 +170,32 @@ export function formatReport(plan) {
  * to reimplement and then keep in sync. One real code path.
  *
  * @param {{plan: object, saveSegmentEdit: Function}} args
- * @returns {{written: number, reverted: number}}
+ * @returns {{inserted: number, updated: number, reverted: number}}
  */
 export function applyReattach({ plan, saveSegmentEdit }) {
+  // Pre-flight, before a single write: two restorable rows on one
+  // saveSegmentEdit key would collapse into one row — the second call takes the
+  // UPDATE branch and overwrites the first row's text. Refuse the whole run.
+  //
+  // Re-derived here from plan.restore rather than read off plan.duplicateKeys:
+  // applyReattach is exported and must not depend on a caller having populated
+  // a field. Same pure function as planReattach uses, so the dry run's
+  // prediction and this enforcement cannot disagree.
+  //
+  // Refusing, not merging: which of the two rows should win is an editorial
+  // question, and this is a one-way migration over ~62 rows where a wrong
+  // silent answer costs an editor's work and a loud stop costs a minute.
+  const dupes = findDuplicateRestoreKeys(plan.restore.map((item) => item.row));
+  if (dupes.length) {
+    throw new Error(
+      `REFUSING TO WRITE — ${dupes.length} snapshot key(s) carry more than one restorable row:\n` +
+        dupes.map((d) => `  ${d.key}  (${d.count} rows)`).join('\n') +
+        `\nsaveSegmentEdit resolves a save by (book, module_id, segment_id, editor_id), so the` +
+        `\nsecond row would UPDATE the first and an editor's text would be lost silently —` +
+        `\nreconciliation counts plan buckets, not DB rows, so it would still report success.` +
+        `\nResolve which row wins in the snapshot, then re-run.`
+    );
+  }
   // This does NOT re-establish the MT edit-lock, and cannot: saveSegmentEdit's
   // lock hook fires only when its own INSERT is the module's first-ever
   // segment_edits row (priorCount === 1), and every module here still holds its
@@ -172,26 +212,45 @@ export function applyReattach({ plan, saveSegmentEdit }) {
   // need a second connection — segmentEditorService exposes no accessor for
   // the one it uses — which would not cover these writes and could lock
   // against them.
-  let written = 0;
-  let reverted = 0;
-  for (const item of plan.restore) {
-    const { row, newMt, editorNote } = item;
-    const res = saveSegmentEdit({
-      book: row.book,
-      chapter: row.chapter,
-      moduleId: row.module_id,
-      segmentId: row.segment_id,
-      originalContent: newMt,
-      editedContent: row.edited_content,
-      category: row.category,
-      editorNote,
-      editorId: row.editor_id,
-      editorUsername: row.editor_username,
-    });
-    if (res && res.reverted) reverted += 1;
-    else written += 1;
+  // Counted apart because they mean different things to an operator: `inserted`
+  // is restored work, `updated` means the row was already there — the normal
+  // shape of a re-run, and a surprise on a first run. A single "written" total
+  // reported a repeat as fresh work.
+  const tally = { inserted: 0, updated: 0, reverted: 0 };
+  try {
+    for (const item of plan.restore) {
+      const { row, newMt, editorNote } = item;
+      // originalContent MUST be the new MT (spec §7). On the INSERT branch it
+      // is. It is NOT on saveSegmentEdit's UPDATE branch, which never writes
+      // original_content — so this depends on no pending row existing for the
+      // key when the run starts. Runbook Step 4a is what guarantees that (it
+      // supersedes the pre-break rows first); the dependency lives there, not
+      // here. Running this script outside the runbook, against a DB that still
+      // holds pending rows for these keys, silently keeps the OLD MT.
+      const res = saveSegmentEdit({
+        book: row.book,
+        chapter: row.chapter,
+        moduleId: row.module_id,
+        segmentId: row.segment_id,
+        originalContent: newMt,
+        editedContent: row.edited_content,
+        category: row.category,
+        editorNote,
+        editorId: row.editor_id,
+        editorUsername: row.editor_username,
+      });
+      if (res && res.reverted) tally.reverted += 1;
+      else if (res && res.updated) tally.updated += 1;
+      else tally.inserted += 1;
+    }
+  } catch (err) {
+    // A mid-loop throw must not swallow the partial tally: without it the
+    // operator gets a stack trace and no idea how far the run got, mid-migration.
+    // Re-thrown unchanged otherwise — this is diagnostics, never recovery.
+    err.tally = { ...tally };
+    throw err;
   }
-  return { written, reverted };
+  return tally;
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
@@ -206,16 +265,34 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const plan = planReattach({ snapshot, booksDir: path.join(REPO_ROOT, 'books') });
   console.log(formatReport(plan));
 
-  if (plan.missingModules.length) process.exit(2);
-  if (!plan.reconciliation.ok) process.exit(3);
+  // A fatal code stops the run in BOTH modes: a dry run that reported success
+  // where the apply refuses would be a rehearsal that lies.
+  const code = decideExitCode(plan);
+  if (code === 2 || code === 3 || code === 4) process.exit(code);
   if (!argv.includes('--db')) {
     console.log('\nDRY RUN — nothing written. Re-run with --db to apply.');
-    process.exit(plan.unmatched.length ? 1 : 0);
+    process.exit(code);
   }
   const { saveSegmentEdit } = require(
     path.join(REPO_ROOT, 'server', 'services', 'segmentEditorService.js')
   );
-  const res = applyReattach({ plan, saveSegmentEdit });
-  console.log(`\nWrote ${res.written} pending edits (${res.reverted} withdrew as identical).`);
-  process.exit(plan.unmatched.length ? 1 : 0);
+  let res;
+  try {
+    res = applyReattach({ plan, saveSegmentEdit });
+  } catch (err) {
+    // Print the partial tally before dying: mid-migration, how far the run got
+    // is the first thing the operator needs.
+    if (err.tally) {
+      console.error(
+        `\nABORTED after inserted=${err.tally.inserted} updated=${err.tally.updated} ` +
+          `withdrawn=${err.tally.reverted}.`
+      );
+    }
+    throw err;
+  }
+  console.log(
+    `\nInserted ${res.inserted} pending edits · updated ${res.updated} already present · ` +
+      `${res.reverted} withdrew as identical.`
+  );
+  process.exit(code);
 }

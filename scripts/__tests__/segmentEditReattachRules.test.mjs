@@ -5,6 +5,8 @@ import {
   detectRetiredMarkers,
   composeEditorNote,
   reconcile,
+  findDuplicateRestoreKeys,
+  decideExitCode,
 } from '../lib/segment-edit-reattach-rules.js';
 
 describe('classifyByStatus', () => {
@@ -95,5 +97,89 @@ describe('reconcile', () => {
     const r = reconcile({ total: 10, restored: 6, converged: 0, skippedByStatus: 0, unmatched: 1 });
     expect(r.ok).toBe(false);
     expect(r.message).toContain('3');
+  });
+});
+
+describe('findDuplicateRestoreKeys', () => {
+  const row = (over) => ({
+    book: 'testbook',
+    module_id: 'm001',
+    segment_id: 'm001:para:fs-id1',
+    editor_id: 'u1',
+    ...over,
+  });
+
+  it('flags two restorable rows that share one editor+segment key', () => {
+    const dupes = findDuplicateRestoreKeys([row({ status: 'approved' }), row({ status: 'pending' })]);
+    expect(dupes).toHaveLength(1);
+  });
+
+  it('reports how many rows collided, so the operator knows the size of the problem', () => {
+    const dupes = findDuplicateRestoreKeys([row({}), row({}), row({})]);
+    expect(dupes[0].count).toBe(3);
+  });
+
+  it('names the colliding key, so the operator can find it in the snapshot', () => {
+    const dupes = findDuplicateRestoreKeys([row({}), row({})]);
+    expect(dupes[0].key).toBe('testbook/m001/m001:para:fs-id1/u1');
+  });
+
+  it('returns empty when every key is unique', () => {
+    const dupes = findDuplicateRestoreKeys([
+      row({ segment_id: 'm001:para:fs-id1' }),
+      row({ segment_id: 'm001:para:fs-id2' }),
+    ]);
+    expect(dupes).toEqual([]);
+  });
+
+  it('does NOT flag one segment edited by two different editors — the pending index keys on editor_id too, so those rows coexist', () => {
+    const dupes = findDuplicateRestoreKeys([row({ editor_id: 'u1' }), row({ editor_id: 'u2' })]);
+    expect(dupes).toEqual([]);
+  });
+
+  it('does NOT flag the same segment id under two different modules', () => {
+    const dupes = findDuplicateRestoreKeys([row({ module_id: 'm001' }), row({ module_id: 'm002' })]);
+    expect(dupes).toEqual([]);
+  });
+});
+
+describe('decideExitCode', () => {
+  // The runbook treats these as gates, not information ("two of them mean stop
+  // and one does not"), so the mapping is pinned here rather than traced.
+  const clean = {
+    missingModules: [],
+    duplicateKeys: [],
+    unmatched: [],
+    reconciliation: { ok: true },
+  };
+
+  it('exits 0 when everything matched and reconciled', () => {
+    expect(decideExitCode(clean)).toBe(0);
+  });
+
+  it('exits 1 for unmatched rows — expected, and the operator continues by hand', () => {
+    expect(decideExitCode({ ...clean, unmatched: [{}] })).toBe(1);
+  });
+
+  it('exits 2 when a module is absent from the new extraction', () => {
+    expect(decideExitCode({ ...clean, missingModules: ['m001'] })).toBe(2);
+  });
+
+  it('exits 3 when the buckets do not reconcile', () => {
+    expect(decideExitCode({ ...clean, reconciliation: { ok: false } })).toBe(3);
+  });
+
+  it('exits 4 when one key carries more than one restorable row', () => {
+    expect(decideExitCode({ ...clean, duplicateKeys: [{ key: 'k', count: 2 }] })).toBe(4);
+  });
+
+  it('reports a missing module ahead of a failed reconciliation — a missing module CAUSES the gap', () => {
+    expect(
+      decideExitCode({ ...clean, missingModules: ['m001'], reconciliation: { ok: false } })
+    ).toBe(2);
+  });
+
+  it('reports a colliding key ahead of unmatched rows — unmatched is survivable, a collision is not', () => {
+    expect(decideExitCode({ ...clean, duplicateKeys: [{ key: 'k', count: 2 }], unmatched: [{}] })).toBe(4);
   });
 });

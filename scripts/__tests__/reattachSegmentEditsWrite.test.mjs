@@ -105,3 +105,82 @@ describe('applyReattach', () => {
     expect(db.prepare('SELECT editor_note n FROM segment_edits').get().n).toContain('gamalt');
   });
 });
+
+// Two restorable rows on ONE saveSegmentEdit key. Realistic, not contrived:
+// the pending-uniqueness index is partial and the supersede sweep never
+// touches `approved`, so production can hold both, and RESTORABLE_STATUSES
+// admits both. Written blind, the second UPDATEs the first and an editor's
+// text is gone while the counter reports two writes.
+const collidingSnapshot = {
+  ...snapshot,
+  edits: [
+    { ...snapshot.edits[0], id: 1, status: 'approved', edited_content: 'GÖMUL-SAMÞYKKT' },
+    { ...snapshot.edits[0], id: 2, status: 'pending', edited_content: 'NÝRRI-Í-BIÐ' },
+  ],
+};
+
+describe('applyReattach — duplicate-key refusal', () => {
+  it('refuses rather than let one snapshot key overwrite itself', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    const plan = planReattach({ snapshot: collidingSnapshot, booksDir });
+    expect(() => applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit })).toThrow(
+      /m001:para:fs-id1/
+    );
+  });
+
+  it('writes NOTHING when it refuses — the check is pre-flight, not mid-loop', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    const plan = planReattach({ snapshot: collidingSnapshot, booksDir });
+    try {
+      applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
+    } catch {
+      /* expected — the assertion is about the DB, not the throw */
+    }
+    expect(db.prepare('SELECT COUNT(*) n FROM segment_edits').get().n).toBe(0);
+  });
+});
+
+describe('applyReattach — honest counts', () => {
+  it('counts a first run as inserted, not merely written', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    const res = applyReattach({
+      plan: planReattach({ snapshot, booksDir }),
+      saveSegmentEdit: service.saveSegmentEdit,
+    });
+    expect(res.inserted).toBe(1);
+  });
+
+  it('counts a re-run as updated, so a repeat is not reported as fresh work', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    const plan = planReattach({ snapshot, booksDir });
+    applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
+    const second = applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
+    expect(second).toMatchObject({ inserted: 0, updated: 1 });
+  });
+
+  it('attaches the partial tally to a mid-loop failure, so an aborted run is still diagnosable', async () => {
+    const { applyReattach } = await import('../reattach-segment-edits.js');
+    const item = (segmentId) => ({
+      row: { ...snapshot.edits[0], segment_id: segmentId },
+      newMt: 'ný vélþýðing',
+      flags: [],
+      editorNote: 'n',
+    });
+    let calls = 0;
+    const throwOnSecond = () => {
+      calls += 1;
+      if (calls === 2) throw new Error('CHECK constraint failed: category');
+      return { id: calls, updated: false };
+    };
+    let caught;
+    try {
+      applyReattach({
+        plan: { restore: [item('seg-a'), item('seg-b')] },
+        saveSegmentEdit: throwOnSecond,
+      });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught.tally).toEqual({ inserted: 1, updated: 0, reverted: 0 });
+  });
+});

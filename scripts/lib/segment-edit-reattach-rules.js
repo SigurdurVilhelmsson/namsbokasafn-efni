@@ -58,6 +58,65 @@ export function composeEditorNote({ flags = [], oldMt = '', editorNote = '', rev
 }
 
 /**
+ * The key saveSegmentEdit itself resolves a save against: its pending-row
+ * lookup and the partial UNIQUE index (`idx_segment_edits_one_pending`, on
+ * `WHERE status = 'pending'`) both key on these four columns. `editor_id` is
+ * part of it — two editors may each hold a pending row on one segment, and
+ * those rows do NOT collide.
+ */
+const restoreKey = (r) => `${r.book}/${r.module_id}/${r.segment_id}/${r.editor_id}`;
+
+/**
+ * Snapshot rows that would land on ONE saveSegmentEdit key.
+ *
+ * Two restorable rows can share a key: the pending-uniqueness index is
+ * partial, and saveSegmentEdit's supersede sweep never touches `approved`, so
+ * an approved row and a pending row coexist in production — and
+ * RESTORABLE_STATUSES admits both. Written blind, the first becomes a pending
+ * row and the second takes saveSegmentEdit's UPDATE branch and overwrites its
+ * text: an editor's work is destroyed, the counter still reports two writes,
+ * and reconcile() still passes because it counts plan buckets, not DB rows.
+ *
+ * Whether the snapshot actually holds such a pair is not knowable before the
+ * export runs, so this is detection, not repair. The caller refuses.
+ *
+ * @param {Array<{book: string, module_id: string, segment_id: string, editor_id: string}>} rows
+ * @returns {Array<{key: string, count: number}>} stable order, empty when clean
+ */
+export function findDuplicateRestoreKeys(rows) {
+  const counts = new Map();
+  for (const r of rows) {
+    const k = restoreKey(r);
+    counts.set(k, (counts.get(k) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([key, count]) => ({ key, count }));
+}
+
+/**
+ * The run's exit code. The runbook treats these as gates rather than
+ * information — "two of them mean stop and one does not" — so the mapping is
+ * pinned by tests here instead of being traced through the CLI, which cannot
+ * be exercised without the real books/ tree.
+ *
+ * Order is deliberate, most-causal first: a missing module CAUSES the
+ * reconciliation gap, so reporting 3 there would name the symptom. 1 is last
+ * because it is the one non-fatal outcome.
+ *
+ * @returns {0|1|2|3|4} 0 clean · 1 unmatched (expected, continue by hand)
+ *   · 2 module absent from the new extraction · 3 buckets did not reconcile
+ *   · 4 one key carries more than one restorable row
+ */
+export function decideExitCode(plan) {
+  if (plan.missingModules?.length) return 2;
+  if (plan.duplicateKeys?.length) return 4;
+  if (!plan.reconciliation?.ok) return 3;
+  if (plan.unmatched?.length) return 1;
+  return 0;
+}
+
+/**
  * Every snapshot row must land in exactly one bucket. An unexplained gap is
  * the one outcome that would let editorial work disappear quietly, so it is
  * a hard failure rather than a warning.
