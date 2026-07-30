@@ -144,8 +144,10 @@ describe('findDuplicateRestoreKeys', () => {
 });
 
 describe('decideExitCode', () => {
-  // The runbook treats these as gates, not information ("two of them mean stop
-  // and one does not"), so the mapping is pinned here rather than traced.
+  // The runbook treats these as gates, not information — an operator stops or
+  // proceeds on the number — so the mapping is pinned here rather than traced.
+  // No count of "how many are fatal" is quoted: the runbook owns that table and
+  // has already gained a code once since this comment was written.
   const clean = {
     missingModules: [],
     duplicateKeys: [],

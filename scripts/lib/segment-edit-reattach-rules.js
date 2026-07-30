@@ -96,13 +96,19 @@ export function findDuplicateRestoreKeys(rows) {
 
 /**
  * The run's exit code. The runbook treats these as gates rather than
- * information — "two of them mean stop and one does not" — so the mapping is
- * pinned by tests here instead of being traced through the CLI, which cannot
- * be exercised without the real books/ tree.
+ * information — an operator stops or proceeds on the number — so the mapping is
+ * pinned by tests here, and the CLI's consumption of it is pinned separately by
+ * scripts/__tests__/reattachSegmentEditsCli.test.mjs.
+ *
+ * ⚠️ Deliberately quotes NO count of how many codes are fatal. An earlier
+ * version restated the runbook's "two of them mean stop"; the runbook then
+ * gained a code and the quote was wrong in the file that defines them. Per the
+ * project's one-source-of-truth rule, the runbook owns the operator-facing
+ * table and this owns the mapping — neither restates the other.
  *
  * Order is deliberate, most-causal first: a missing module CAUSES the
  * reconciliation gap, so reporting 3 there would name the symptom. 1 is last
- * because it is the one non-fatal outcome.
+ * because it is the one non-fatal outcome here.
  *
  * @returns {0|1|2|3|4} 0 clean · 1 unmatched (expected, continue by hand)
  *   · 2 module absent from the new extraction · 3 buckets did not reconcile
