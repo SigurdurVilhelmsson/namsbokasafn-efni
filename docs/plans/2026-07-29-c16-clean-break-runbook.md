@@ -61,6 +61,10 @@ node scripts/export-segment-edits.js \
       `rejected` rows that never reached a faithful file. **The export is the authority and 62 is
       a floor, not a total.**
 - [ ] Snapshot copied off-box, and the copy opened to confirm it is not empty or truncated.
+- [ ] ⚠️ **More than one restorable row can share one editor+segment key** — an `approved` row and
+      a later `pending` row by the same editor coexist legitimately, and only one of them can be
+      restored. You do not need to look for these by hand: Step 4b's dry run exits **4** and names
+      each colliding key. This is the concrete form the "62 is a floor" warning takes.
 
 ⚠️ **The snapshot is the only complete record.** It holds the `rejected` and `superseded` rows
 that are deliberately never restored (spec §7). Step 4a mutates row statuses in prod; it must
@@ -124,7 +128,18 @@ find books/*/05-publication -name '*.html' | sort > /path/off-box/published-befo
 - [ ] `git pull` on prod. **No restart, no deploy** — content is read from disk per request, and
       a real deploy is A4-gated.
 
-### Step 4a — mark the pre-break rows superseded (BEFORE the dry run)
+### Step 4a — mark the pre-break rows superseded (BEFORE the apply)
+
+⚠️ **Run Step 4b's DRY RUN before this step.** The dry run opens no database — it reads only the
+snapshot and `books/efnafraedi-2e/02-mt-output/` — so it is safe to run first, and it is the only
+thing that can tell you whether the migration is going to abort. Three of its exit codes are
+fatal, and **4a is the one step in this runbook that is hard to undo** (see the warning at the end
+of this step). Clear the fatal codes first, then come back here.
+
+- [ ] Dry run completed, exit code recorded, and it was 0 or 1: ______
+
+*(4a is ordered before the apply, not before the dry run: what it fixes is which branch
+`saveSegmentEdit` takes when writing, and the dry run does not write.)*
 
 Prod still holds the pre-break `segment_edits` rows for these 4 modules. For any snapshot row
 whose status is `pending`, that pending row is still there, so `saveSegmentEdit` takes its
@@ -173,13 +188,25 @@ freshly-restored `pending` rows and empty the editor's queue. If you abort the m
 
 ### Step 4b — dry run, then apply
 
+Save the report, do not just read it. The script prints to stdout and writes no report file, so
+a redirect is the only record of which segments were flagged and which were unmatched — and you
+will want it during the review pass, after the terminal is gone.
+
 ```bash
-node scripts/reattach-segment-edits.js --snapshot <path>
+node scripts/reattach-segment-edits.js --snapshot <path> \
+  2>&1 | tee /path/off-box/c16-dryrun-report.txt
+```
+
+⚠️ **`tee` returns the exit code of `tee`, not of the script.** Read the code explicitly:
+
+```bash
+echo "${PIPESTATUS[0]}"     # bash: the script's exit code, not tee's
 ```
 
 - [ ] Read the report. Unmatched count: ______ (expect ≤ 6)
+- [ ] Exit code recorded: ______
 
-**Exit codes are a gate, not information. Two of them mean stop and one does not:**
+**Exit codes are a gate, not information. Three of them mean stop and one does not:**
 
 | Exit | Meaning | Action |
 |---|---|---|
@@ -187,17 +214,41 @@ node scripts/reattach-segment-edits.js --snapshot <path>
 | 1 | Unmatched rows exist | **Expected.** Proceed; you place those by hand below. |
 | 2 | A module is absent from the new extraction | **STOP.** Re-extraction failed. Do not continue. |
 | 3 | The buckets did not reconcile | **STOP.** Rows are unaccounted for. |
+| 4 | One editor+segment key carries more than one restorable row | **STOP.** See below. |
+
+**Exit 4 — what it means and what to do.** Two rows in the snapshot resolve to the same
+`(book, module_id, segment_id, editor_id)`, which is the key `saveSegmentEdit` resolves a save
+against. Production can legitimately hold both (the pending-uniqueness index is partial, and an
+`approved` row is never superseded by a later save), and both are restorable — but only one can be
+written: the second would UPDATE the first and one editor's text would be lost. **The apply
+refuses rather than pick**, because which revision supersedes which is an editorial judgement, not
+a mechanical one.
+
+The report names each colliding key. Decide which row wins, remove the other from the snapshot
+**copy** (never the off-box original), and re-run the dry run. ⚠️ **Do not re-run Step 4a** — it is
+unaffected by this, and re-running it after the apply empties the editor's queue.
+
+- [ ] Exit 4 not seen, or resolved and re-run clean: ______
 
 ⚠️ **Do not chain these commands with `&&`.** Exit 1 is the normal outcome, and **both** the
 dry run and the `--db` apply return it whenever anything is unmatched. Chained, the apply — or
 worse, the lock step in Step 5a — would silently never run.
 
 ```bash
-node scripts/reattach-segment-edits.js --snapshot <path> --db
+node scripts/reattach-segment-edits.js --snapshot <path> --db \
+  2>&1 | tee /path/off-box/c16-apply-report.txt
 ```
 
-- [ ] Restored count from the report: ______
+- [ ] `Inserted` count from the report: ______ (this is the restored work)
+- [ ] `updated` count from the report: ______ — **expect 0 on a first run.** A non-zero
+      `updated` means a pending row for that key was already present, so Step 4a did not cover it
+      and `original_content` kept its old baseline for those rows. Not silent loss, but note which
+      segments and tell the editor their diff view is against a stale draft.
 - [ ] Place any unmatched edits by hand, using the EN text in the report.
+
+*If the apply dies part-way it prints `ABORTED after inserted=… updated=… withdrawn=…` before the
+stack trace. Record that line: it is how far the run got. Re-running is safe — a second pass finds
+the rows it already wrote and converges on them.*
 
 ## Step 5 — finish
 
