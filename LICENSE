@@ -33,22 +33,35 @@ and the root configuration files listed above.
 >
 >    It warns and continues if the module is absent: translation runs correctly
 >    without `server/`, and only a convenience status update is skipped.
-> 2. **Required, unguarded** — loads AGPL code; the tool cannot load without
->    `server/`.
+> 2. **Required, unguarded** — loads AGPL code, with no try/catch to fall back
+>    on. Split by *when* it loads, because that is what decides whether the tool
+>    runs at all without `server/`.
+>
+>    **(a) At load time — the module cannot even be imported without `server/`:**
 >    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
 >    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
->    - `scripts/backfill-mt-locks.js:99` → `server/lib/dbPath.js`
->    - `scripts/backfill-mt-locks.js:173` → `server/services/segmentParser.js`
->      (for `chapterDir`, which `segmentParser` re-exports at `:463`)
->    - `scripts/backfill-appendix-sections.js:198` → `server/lib/dbPath.js`
->    - `scripts/backfill-appendix-sections.js:201` →
->      `server/services/bookRegistration.js`
 >    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
->    - `scripts/export-segment-edits.js` → `server/lib/chapterLabel.js`,
->      `server/services/segmentParser.js`, `server/lib/dbPath.js`
->    - `scripts/reattach-segment-edits.js` → `server/lib/chapterLabel.js`,
->      `server/services/segmentParser.js`,
->      `server/services/segmentEditorService.js`
+>    - `scripts/export-segment-edits.js:23` → `server/lib/chapterLabel.js`
+>      (also `:28` → `server/services/segmentParser.js` and `:119` →
+>      `server/lib/dbPath.js`, both lazy — but `:23` already makes the file
+>      load-time)
+>    - `scripts/reattach-segment-edits.js:35` → `server/lib/chapterLabel.js`
+>      (also `:46` → `server/services/segmentParser.js` and `:277` →
+>      `server/services/segmentEditorService.js`, both lazy — but `:35` already
+>      makes the file load-time)
+>
+>    **(b) Only in a specific mode — the module imports fine without `server/`,
+>    and its default mode runs without it:**
+>    - `scripts/backfill-mt-locks.js:99` → `server/lib/dbPath.js` and `:173` →
+>      `server/services/segmentParser.js` (for `chapterDir`, which
+>      `segmentParser` re-exports at `:463`). Both sit inside `--db`-only
+>      branches (`if (USE_DB)` at `:93`, `if (dbRows)` at `:166`). The script's
+>      own comment gives the reason: the requires are lazy so that a problem
+>      loading them can never break the default file-only signal. Run without
+>      `--db`, it needs no `server/` at all.
+>    - `scripts/backfill-appendix-sections.js:198` → `server/lib/dbPath.js` and
+>      `:201` → `server/services/bookRegistration.js`, both inside
+>      `runBackfill()` (`:197`). Importing the module does not reach `server/`.
 >
 >    The `chapterLabel` imports are deliberate: it is the project's canonical
 >    converter between the two on-disk spellings of the appendices chapter, and
@@ -62,7 +75,10 @@ and the root configuration files listed above.
 >    - `tools/check-source-updates.js:134` → `server/data/${book}.json`
 >    - `tools/translate-chapter-titles.js:46` → `server/data`
 >    - `tools/generate-index.js:146` → `server/data`
->    - `tools/docx-import.js:201` → `server/data/${book}.json`
+>    - `tools/docx-import.js:200-206` → a per-book JSON under `server/data`.
+>      Both real books are mapped by name (`liffraedi-2e` → `biology-2e.json`,
+>      `efnafraedi-2e` → `chemistry-2e.json`); `${bookSlug}.json` is only the
+>      fallback branch.
 >    - `scripts/generate-route-inventory.js:5` → `server/routes`, whose `.js`
 >      files it reads as text (`readdirSync` at `:19`) to generate a docs
 >      inventory. It requires none of them, so no AGPL code is loaded, and it
