@@ -238,7 +238,24 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
       **Remaining before the PR: Task 5's review (never ran) and the whole-branch adversarial
       review.** Per-task detail and the crash-recovery record are in the SDD ledger
       `.superpowers/sdd/2026-07-29-segment-edit-reattach/progress.md`.
-    - **⚠️ [LEAD] DECISION REQUIRED BEFORE THE MIGRATION RUNS — the snapshot's module scope.**
+    - **✅ APPROACH RESIZED 2026-07-30 — the default is now a HAND re-application, and the
+      [LEAD] scope question below is no longer fatal.** Lead checked prod's Ritstjóri: only the
+      **two ch03 modules** hold edits that exist solely in the database; the ch01 modules trace
+      to edited **docx files that are on hand**. Independently verified here: **all four
+      `03-faithful-translation` files are TRACKED IN GIT**, so the clean break's deletion cannot
+      destroy the applied edits at all — `git show <commit>:<path>` recovers them permanently.
+      At that size the automated re-attach is disproportionate: it buys about an hour of typing
+      and costs a write path into prod's `sessions.db`, while the expensive part — an editor
+      judging each edit against the NEW MT — is unchanged either way. **The runbook now leads
+      with the hand path (Step 4); the automated re-attach is Appendix A.** New helper
+      `scripts/render-segment-edits-md.js` turns the snapshot into the working document.
+      ⚠️ **Consequence for the scope question below: it stops being able to lose anything.**
+      The hand path never writes to `segment_edits`, so a module missed from `--modules` keeps
+      its rows in prod's DB and can be handled later — where the automated path would have
+      re-MT'd it, never exported it, and reported success. Still worth answering; no longer a
+      gate on starting.
+    - **⚠️ [LEAD] DECISION — the snapshot's module scope** *(open, but de-fanged by the resize
+      above; it blocks Appendix A, not the hand path)***.**
       Spec §5 derives `--modules` from the **faithful-file** signal (4 modules, the ones with
       applied edits on disk), but the clean break's blast radius is the **whole book**. A module
       edited in the DB whose edits never reached a faithful file is therefore outside
