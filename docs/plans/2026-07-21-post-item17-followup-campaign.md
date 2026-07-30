@@ -335,6 +335,31 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
     reason. *(This also caused a real defect: the C16 re-attach rules classed the markdown family
     as "úrelt snið" and would have told an editor their current formatting was obsolete on 6 of
     the 7 toolbar buttons. Fixed and test-pinned in `scripts/lib/segment-edit-reattach-rules.js`.)*
+  - **🔴 CONFIRMED LIVE READER-VISIBLE INSTANCE of (a), found 2026-07-30 — and the re-MT does
+    NOT fix it.** Until now §C16(a) was a census plus a predicted defect class. Here is an actual
+    one, in published output:
+    - `books/orverufraedi/02-mt-output/ch01/m58782-segments.is.md:197` is a fill-in-the-blank
+      exercise: `Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.`
+      It carries **no bracket marker**, so `hasApiMarkers` is false and the Markdown-era
+      converter at `tools/cnxml-inject.js:1484` fires. Its regex `__([^_]+)__` takes the last two
+      underscores of the first blank, the text ` og `, and the first two of the second blank, and
+      wraps them: published output reads
+      `______<dfn class="term"> og  (e.  and )</dfn>______`. A student sees the word "og" marked
+      as a glossary term with an empty English gloss.
+    - **Reach:** 2 modules (`orverufraedi` ch01 `m58782`, ch05 `m58805`), 2 published pages
+      (`1-fill-in-the-blank.html`, `5-fill-in-the-blank.html`). ⚠️ Chemistry's `__` hits are
+      **not** this defect — they are MathML `<mo>_____</mo>` blanks, protected during inject.
+      Verified individually; a regex census alone would have mis-scored them.
+    - **⚠️ Re-extraction + re-MT does NOT clear it.** The blanks come from the source CNXML, and
+      the segment will still carry no bracket markers afterwards, so the guard still resolves
+      false and the converter still fires. **This is a code defect, not stale data** — the
+      distinction §C16 draws between "dead code" and "partially-live legacy", now demonstrated.
+    - **It also fixes the fix direction for (a).** The converter cannot simply be deleted (the
+      editor's Ctrl+T writes `__term__`, so real term markers would stop converting) and cannot
+      be left (it mangles blanks). The resolution is to make the editor's term marker
+      unambiguous — id-anchored `[[term:text|id]]` rather than `__text__` — after which `:1481-1485`
+      can go entirely. **That is the same work as the planned editor-facing tag redesign, which
+      is why the two should be scoped together.**
   - **📏 MEASURED 2026-07-30 — what a chemistry re-MT actually retires, per book AND per stage.**
     This is the measurement the §13 deletion PR needs, and it splits the two curly families
     cleanly. *(Counting unit: files containing ≥1 occurrence. EN = `02-for-mt/*-segments.en.md`,
