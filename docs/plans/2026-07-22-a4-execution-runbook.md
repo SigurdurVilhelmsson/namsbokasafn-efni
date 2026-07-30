@@ -1,8 +1,163 @@
-# A4 execution runbook — how to walk the manual QA §0–§5 deploy gate
+# Lead execution runbook — what to do next, in order
 
-**Date:** 2026-07-22 · **For:** the lead (A4 is a [LEAD] item, L5) · **Gate:** A4 blocks deploying server-touching units.
-**Companion:** the automated coverage is defined in `docs/superpowers/specs/2026-07-22-a4-e2e-coverage-design.md` (E2E buildout, 2 PRs).
-**Row reference:** `docs/plans/2026-06-10-qa-checklist.md` (the 39-row §0–§5 table). Record pass/date in that table's result column as you go.
+**Date:** 2026-07-22, restructured 2026-07-30 · **For:** the lead, working without Claude.
+**Register:** [`2026-07-21-post-item17-followup-campaign.md`](2026-07-21-post-item17-followup-campaign.md) — the one owner of status.
+**Assessment:** [`2026-07-30-target-architecture-assessment.md`](2026-07-30-target-architecture-assessment.md) — why these tasks, in this order.
+
+> This file was the A4 deploy-gate runbook. A4 is now **Part 2**, unchanged, because it is a
+> *gate* rather than a task: it blocks deploying **server-touching** units. **Nothing in Part 1
+> touches `server/`, so none of it needs A4 first.**
+
+---
+
+# PART 1 — do these first (in this order)
+
+Each task states its cost, whether it writes anything, and what to record. **Tasks L1–L4 are all
+read-only or local**; the first thing that writes to production is L5.
+
+⏸️ **NOT now, by decision:**
+- **liffraedi-2e ch03 vefur sync — HELD 2026-07-30.** The book is queued for re-extraction and
+  re-MT; syncing now publishes a page the assessment records as known-bad and then immediately
+  re-renders it. It ships with the post-re-MT sync instead.
+- **The re-MT rehearsal — blocked on L3.** Do not run `api-translate --force` on any book until
+  the hand-repair triage is done. ⚠️ Also note `--output-dir` is parsed but never read, so a
+  "safe rehearsal into a scratch directory" silently overwrites the real `02-mt-output`.
+
+---
+
+## L1 — Merge the C16 tooling PR (~5 min · writes: git only)
+
+The branch is `feat/c16-segment-edit-reattach`. It touches **only `scripts/`, `docs/` and
+`LICENSE`** — zero `server/`, zero `books/` — so it needs no deploy, no A4, and no data op.
+
+```bash
+cd ~/dev/repos/namsbokasafn-efni
+git fetch origin                      # ⚠️ ALWAYS first — a stale ref has caused a 2 GiB remote reject here
+gh pr view --web                      # read the description, then merge in the UI
+# or: gh pr merge --squash --delete-branch
+```
+
+- [ ] Merged? PR number: ______
+- [ ] After merging: `git checkout main && git pull` — confirm `npm test` is green on main.
+
+**Record:** the PR number and whether `npm test` passed on `main` after the merge.
+
+---
+
+## L2 — Two read-only prod queries (~10 min · writes: NOTHING)
+
+These settle the one open **[LEAD] decision** blocking the migration's scope: does any module
+outside the four known ones hold editorial work? Read-only — safe to run any time.
+
+```bash
+# on prod, from the repo root
+DB=$(node -e "console.log(require('./server/lib/dbPath.js')())")
+ls -l "$DB"     # must already exist and be non-trivial. If not, STOP — wrong box.
+
+# (a) EVERY book and module with editorial work — NO book filter. This is the decision.
+sqlite3 "$DB" "SELECT book, module_id, status, count(*) AS n
+  FROM segment_edits GROUP BY book, module_id, status ORDER BY book, module_id;"
+
+# (b) chemistry detail, to compare against the runbook's four modules
+sqlite3 "$DB" "SELECT module_id, status, count(*) FROM segment_edits
+  WHERE book='efnafraedi-2e' GROUP BY module_id, status;"
+```
+
+⚠️ Never type a relative path at `sqlite3` — it **creates** a database rather than failing, so a
+wrong path silently operates on something that is not prod's DB.
+
+**Record:** paste both result tables verbatim. If (a) shows modules beyond
+`m68663, m68664, m68699, m68700`, that changes the migration's scope and I need to see it.
+
+---
+
+## L3 — Triage the hand repairs in `02-mt-output/` (~1h · writes: NOTHING)
+
+**This is the highest-value task on the list.** `02-mt-output/` is marked READ ONLY, but it holds
+hand corrections that exist in no faithful file — verified: commit `4e5be912` corrected
+`liffraedi-2e` m66441's title *Fitusýrur → Lípíð* and renamed the published page to
+`3-3-lipid.html`, **a live reader URL**. A `--force` re-MT reverts them silently.
+
+Its `manualCorrections` provenance block indexes **one** file, but 23 commits across the five
+books have fix/correct/repair subjects touching `02-mt-output` — so provenance under-reports and
+git is the real index.
+
+```bash
+cd ~/dev/repos/namsbokasafn-efni
+# 1. the full candidate list, per book (explicit paths — a books/*/ glob returns nothing here)
+for b in efnafraedi-2e liffraedi-2e edlisfraedi-2e lifraen-efnafraedi orverufraedi; do
+  echo "===== $b"; git log --oneline --no-merges -- "books/$b/02-mt-output/"
+done
+
+# 2. anything already self-declared
+grep -rl "manualCorrections" books/*/02-mt-output --include='*-provenance.json'
+
+# 3. for each commit that looks like a hand fix rather than an api-translate run:
+git show --stat <sha>
+git show <sha> -- 'books/*/02-mt-output/*-segments.is.md'
+```
+
+For each real hand repair, note: **book · module · what changed · did it rename a published
+file?** (a rename means a live reader URL is at stake).
+
+**Record:** the list. Even "I found none beyond `4e5be912`" is a useful, decision-changing answer.
+
+---
+
+## L4 — Glossary export dry-run on prod (~10 min · writes: NOTHING)
+
+Closes register item **C14 ②**. Read the real approved-term counts before deciding anything.
+
+```bash
+# on prod, repo root
+node server/scripts/export-terminology.js --dry-run
+```
+
+⚠️ **Do NOT pass `--force` yet.** The committed chemistry glossary holds 617 approved terms from
+a producer whose DB table no longer exists, and the export feeds the **render** path — a silent
+shrink is reader-visible. The first prod run is *expected* to refuse; that is the shrink guard
+working, not a bug.
+
+**Record:** the per-book approved-term counts it prints, and whether the guard refused.
+
+---
+
+## L5 — A2 off-box DB backup (larger · writes: infrastructure)
+
+The one item that is a **hard prerequisite** for the migration, and the only Part 1 task that
+changes production. Until it exists, **the git remote is the only off-box copy of editors'
+reviewed translations**, and `GET /api/health` correctly reports `degraded`.
+
+Shape (per the register): an object-storage bucket **in a different region**, `rclone crypt`
+remote, and `BACKUP_REMOTE` set in the backup cron.
+
+```bash
+# verification once configured, on prod:
+curl -s localhost:3000/api/health | python3 -m json.tool | grep -A3 offbox
+./scripts/deploy.sh --help   # deploy.sh prints the health verdict + any not-ok checks
+```
+
+- [ ] Bucket created, different region: ______
+- [ ] `rclone crypt` configured and a **restore tested** (not just a write) : ______
+- [ ] `BACKUP_REMOTE` in cron: ______
+
+**Record:** whether a restore was actually tested. A backup that has never been restored is not a
+backup, and this gate exists precisely because the migration makes the snapshot irreplaceable.
+
+---
+
+## If you have time left over
+
+- **The 2 nginx redirects** (register [LEAD] queue) — small, independent, no gate.
+- **C12 branch protection** — decided: force-push + deletion blocking **only**. Required status
+  checks are mechanically impossible here; do not enable them.
+
+---
+
+# PART 2 — A4 deploy gate (unchanged; run only before deploying server-touching units)
+
+**Nothing in Part 1 requires this.** A4 blocks deploying units that touch `server/`; the C16
+branch does not. Walk it when you next deploy server code.
 
 ## What this is
 
@@ -17,6 +172,7 @@ A4 = the manual QA §0–§5 walk plus 3 prod-only cases. This runbook runs it *
 > ⚠️ **Never touch `books/*/01-source/`** in any step below — those CNXML files are legally load-bearing (see CLAUDE.md). Break only *generated* files (`03-translated/`), and restore them.
 
 ---
+
 
 ## Phase 0 — Pre-flight (5 min)
 
@@ -81,3 +237,33 @@ A4 = the manual QA §0–§5 walk plus 3 prod-only cases. This runbook runs it *
 | 5 Sign-off | record + lift gate | 5 min |
 
 Before the buildout lands, Phase 1's 🟡 rows move into your hand-walk; that hand-walk is exactly what the two E2E PRs remove.
+
+---
+
+# PART 3 — what to send me when you are done
+
+Paste this back, filled in. Anything you skipped, say so — a skipped step recorded is fine, a
+skipped step assumed done is how a migration goes wrong.
+
+```
+L1 MERGE      PR #____ merged? ____   npm test on main after merge: pass / fail
+L2 PROD QUERY (a) every book+module with segment_edits — paste the table:
+              <paste>
+              (b) chemistry detail — paste the table:
+              <paste>
+L3 TRIAGE     hand repairs found in 02-mt-output (book · module · what changed · renamed a
+              published file?):
+              <list, or "none beyond 4e5be912">
+L4 GLOSSARY   per-book approved-term counts from --dry-run:
+              <paste>
+              did the shrink guard refuse? yes / no
+L5 BACKUP     bucket + region: ____   rclone crypt: ____   RESTORE TESTED: yes / no
+              /api/health offbox check now reads: ____
+SKIPPED       <anything above you did not do, and why>
+ANYTHING ODD  <errors, surprises, output that did not match what this runbook predicted>
+```
+
+**The two answers that most change what happens next** are L2(a) — whether any book holds
+editorial work outside the four known chemistry modules — and L3 — whether `02-mt-output` holds
+hand repairs beyond the one already found. Those two decide the migration's scope and its safety
+gate respectively; everything else is sequencing.
