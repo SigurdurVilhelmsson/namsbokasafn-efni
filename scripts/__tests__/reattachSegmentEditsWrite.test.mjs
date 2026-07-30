@@ -21,7 +21,8 @@ beforeEach(() => {
   fs.mkdirSync(mtDir, { recursive: true });
   fs.writeFileSync(
     path.join(mtDir, 'm001-segments.is.md'),
-    '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n'
+    '<!-- SEG:m001:para:fs-id0 -->\nönnur vélþýðing\n\n' +
+      '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n'
   );
   db = new Database(path.join(tmp, 'test.db'));
   createSegmentEditsSchema(db);
@@ -111,9 +112,16 @@ describe('applyReattach', () => {
 // touches `approved`, so production can hold both, and RESTORABLE_STATUSES
 // admits both. Written blind, the second UPDATEs the first and an editor's
 // text is gone while the counter reports two writes.
+// ⚠️ The CLEAN row is ordered FIRST on purpose, and the fixture is worthless
+// without it. With only the colliding pair, the colliding item is item 1, so a
+// per-item mid-loop refusal and a pre-flight refusal are indistinguishable —
+// measured: a mid-loop variant passed the entire suite. With a clean row ahead
+// of the pair, a mid-loop check INSERTs it and only then throws, leaving one row
+// in a one-way migration while telling the operator nothing was written.
 const collidingSnapshot = {
   ...snapshot,
   edits: [
+    { ...snapshot.edits[0], id: 3, segment_id: 'm001:para:fs-id0', edited_content: 'HREINN' },
     { ...snapshot.edits[0], id: 1, status: 'approved', edited_content: 'GÖMUL-SAMÞYKKT' },
     { ...snapshot.edits[0], id: 2, status: 'pending', edited_content: 'NÝRRI-Í-BIÐ' },
   ],
@@ -131,6 +139,10 @@ describe('applyReattach — duplicate-key refusal', () => {
   it('writes NOTHING when it refuses — the check is pre-flight, not mid-loop', async () => {
     const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
     const plan = planReattach({ snapshot: collidingSnapshot, booksDir });
+    // Non-vacuity: without this the test is also green when the planner
+    // produced nothing at all — e.g. the silent empty parse a spaced
+    // `<!-- SEG: … -->` marker causes (CLAUDE.md's documented trap).
+    expect(plan.restore).toHaveLength(3);
     try {
       applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
     } catch {
@@ -148,6 +160,19 @@ describe('applyReattach — honest counts', () => {
       saveSegmentEdit: service.saveSegmentEdit,
     });
     expect(res.inserted).toBe(1);
+  });
+
+  // The runbook tells the operator, on a non-zero `updated`, to note WHICH
+  // segments took the UPDATE branch and warn the editor their diff view is
+  // against a stale draft — those are exactly the rows where spec §7's
+  // "originalContent = the new MT" silently failed. Three integers cannot
+  // answer that, so the keys travel with the tally.
+  it('names the segments that took the UPDATE branch, not just how many', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    const plan = planReattach({ snapshot, booksDir });
+    applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
+    const second = applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
+    expect(second.updatedKeys).toEqual(['testbook/m001/m001:para:fs-id1/u1']);
   });
 
   it('counts a re-run as updated, so a repeat is not reported as fresh work', async () => {
@@ -181,6 +206,6 @@ describe('applyReattach — honest counts', () => {
     } catch (err) {
       caught = err;
     }
-    expect(caught.tally).toEqual({ inserted: 1, updated: 0, reverted: 0 });
+    expect(caught.tally).toEqual({ inserted: 1, updated: 0, reverted: 0, updatedKeys: [] });
   });
 });

@@ -216,7 +216,12 @@ export function applyReattach({ plan, saveSegmentEdit }) {
   // is restored work, `updated` means the row was already there — the normal
   // shape of a re-run, and a surprise on a first run. A single "written" total
   // reported a repeat as fresh work.
-  const tally = { inserted: 0, updated: 0, reverted: 0 };
+  // `updatedKeys` carries identity, not just a count: an UPDATE-branch write is
+  // exactly where spec §7's "originalContent = the new MT" silently fails, and
+  // the runbook has the operator warn those editors. A bare counter leaves them
+  // writing sqlite3 by hand, mid-migration, on the page that warns a mistyped
+  // sqlite3 path creates a database.
+  const tally = { inserted: 0, updated: 0, reverted: 0, updatedKeys: [] };
   try {
     for (const item of plan.restore) {
       const { row, newMt, editorNote } = item;
@@ -240,8 +245,10 @@ export function applyReattach({ plan, saveSegmentEdit }) {
         editorUsername: row.editor_username,
       });
       if (res && res.reverted) tally.reverted += 1;
-      else if (res && res.updated) tally.updated += 1;
-      else tally.inserted += 1;
+      else if (res && res.updated) {
+        tally.updated += 1;
+        tally.updatedKeys.push(`${row.book}/${row.module_id}/${row.segment_id}/${row.editor_id}`);
+      } else tally.inserted += 1;
     }
   } catch (err) {
     // A mid-loop throw must not swallow the partial tally: without it the
@@ -262,7 +269,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(1);
   }
   const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
-  const plan = planReattach({ snapshot, booksDir: path.join(REPO_ROOT, 'books') });
+  // Same seam, same name as scripts/backfill-mt-locks.js:57 — the sibling
+  // migration script — so the CLI's exit codes can be driven from a temp tree
+  // instead of the committed one. Production never sets it.
+  const booksDir = process.env.BOOKS_ROOT_OVERRIDE || path.join(REPO_ROOT, 'books');
+  const plan = planReattach({ snapshot, booksDir });
   console.log(formatReport(plan));
 
   // A fatal code stops the run in BOTH modes: a dry run that reported success
@@ -288,11 +299,26 @@ if (import.meta.url === `file://${process.argv[1]}`) {
           `withdrawn=${err.tally.reverted}.`
       );
     }
-    throw err;
+    console.error(err.stack || String(err));
+    // Exit 5, NOT a bare re-throw. An uncaught throw exits 1 — the same code
+    // decideExitCode gives the survivable "unmatched rows exist" outcome, which
+    // the runbook's gate table reads as "Expected. Proceed." A half-applied
+    // one-way migration must never wear the proceed code: the operator would
+    // restart the server and tell editors their work is back, with rows
+    // missing and the DB in a mixed state.
+    process.exit(5);
   }
   console.log(
     `\nInserted ${res.inserted} pending edits · updated ${res.updated} already present · ` +
       `${res.reverted} withdrew as identical.`
   );
+  if (res.updatedKeys.length) {
+    console.log(
+      '\n⚠️  These keys already had a pending row, so they took the UPDATE branch and',
+      '\n    KEPT their old original_content. Their diff view is against a stale draft —',
+      '\n    tell the editor. (Expected count on a first run: 0.)'
+    );
+    for (const k of res.updatedKeys) console.log(`      ${k}`);
+  }
   process.exit(code);
 }
