@@ -17,7 +17,7 @@ across `books/` — `books/__e2e-fixture__/` contains a file at the *same relati
 
 ---
 
-## Gate 0 — preconditions (all four, before anything else)
+## Gate 0 — preconditions (every box below, before anything else)
 
 **First, resolve the DB path.** Do this before any other command, and use `"$DB"` everywhere
 below. Never type a relative path at `sqlite3`: it **creates** a database rather than failing,
@@ -161,11 +161,14 @@ find books/*/05-publication -name '*.html' | sort > /path/off-box/published-befo
   > table — `node tools/api-translate.js --book <book> --chapter <ch>`, no `--force` — translates
   > **zero modules** and prints `Already done: 170`.
   >
-  > What makes this the worst failure in this document: the dry run then matches every snapshot
-  > id against the OLD text, so you get `restored=62, unmatched=0, reconciliation OK, exit 0` —
-  > a *better*-looking result than a correct migration, whose own stated expectation is
-  > `unmatched ≤ 6`. And `newMt` IS the old MT, so `originalContent` is the old baseline: the
-  > same spec §7 violation Step 4a exists to prevent, arriving with every gate green.
+  > What makes this the worst failure in this document is that **nothing downstream can tell
+  > you.** On the hand path you sit down with the Markdown, compare each edit against a "new"
+  > machine translation that is the *same text the editor already edited*, and conclude that
+  > every edit still applies — you re-apply them all, perfectly, to a book that was never
+  > re-translated. The clean break's entire purpose is unachieved and every step you ticked was
+  > done correctly. *(On Appendix A it is worse still: the dry run matches every snapshot id
+  > against the old text and reports `restored=62, unmatched=0, exit 0` — a better-looking
+  > result than a correct migration, whose own expectation is `unmatched ≤ 6`.)*
   >
   > **Gate it on bytes, not on the script's summary:**
   >
@@ -402,16 +405,19 @@ will want it during the review pass, after the terminal is gone.
 ```bash
 node scripts/reattach-segment-edits.js --snapshot <path> \
   2>&1 | tee /path/off-box/c16-dryrun-report.txt
+CODE=${PIPESTATUS[0]}; echo "exit=$CODE"
 ```
 
-⚠️ **`tee` returns the exit code of `tee`, not of the script.** Read the code explicitly:
-
-```bash
-echo "${PIPESTATUS[0]}"     # bash: the script's exit code, not tee's
-```
+⚠️ **Both lines, together, as one paste — that is not a style preference.** `tee` returns
+*its own* status, so `$?` is 0 even when the script exits 4. `${PIPESTATUS[0]}` recovers the
+real code, but it describes **only the pipeline that ran immediately before it**. Run anything
+in between — an `ls` or a `less` on the report you just wrote, which is the natural next
+instinct — and `PIPESTATUS` describes *that* command instead, printing 0 while a fatal exit 4
+goes unrecorded. Capturing into `$CODE` on the same line removes the window; refer to `$CODE`
+from then on.
 
 - [ ] Read the report. Unmatched count: ______ (expect ≤ 6)
-- [ ] Exit code recorded: ______
+- [ ] `exit=` value recorded: ______
 
 **Exit codes are a gate, not information. Three of them mean stop and one does not:**
 
@@ -462,7 +468,14 @@ worse, the lock step in Step 5a — would silently never run.
 ```bash
 node scripts/reattach-segment-edits.js --snapshot <path> --db \
   2>&1 | tee /path/off-box/c16-apply-report.txt
+CODE=${PIPESTATUS[0]}; echo "exit=$CODE"
 ```
+
+⚠️ **Same two-line rule as the dry run, and it matters more here:** `tee` masks the exit code,
+and the code this hides is **5** — the apply died part-way and the database is in a mixed
+state. Do not read the printed totals and move on; read `exit=`.
+
+- [ ] `exit=` value recorded: ______ (**5 ⇒ STOP**, see the table above)
 
 - [ ] `Inserted` count from the report: ______ (this is the restored work)
 - [ ] `updated` count from the report: ______ — **expect 0 on a first run.** A non-zero
