@@ -22,27 +22,116 @@ and the root configuration files listed above.
 `books/`** (which is content under per-book Creative Commons terms — see below).
 
 > Note for downstream users taking only `tools/` (and `scripts/`) under MIT —
-> **corrected 2026-07-28; this note previously described a single dependency and
-> was out of date.** There are four references from the MIT tooling into
-> `server/`, in three classes. Only the first is optional:
+> parts of that tooling reach into `server/`, which is AGPL-3.0. This changes
+> nobody's rights either way; it is a combination caveat, recorded so that
+> anyone taking the MIT tooling on its own knows what it expects to find beside
+> it. The edges fall into four classes:
 >
-> 1. **Optional, guarded.** `tools/api-translate.js` `require()`s
->    `server/services/pipelineStatusService.js` inside a try/catch that warns and
->    continues if the module is absent. Translation runs correctly without
->    `server/`; only a convenience status update is skipped.
-> 2. **Required, unguarded — these tools will not load without `server/`.**
->    `tools/validate-chapter.js` and `scripts/validate-status.js` import
->    `server/lib/chapterLabel.js`, the project's canonical converter between the
->    two on-disk spellings of the appendices chapter. This is deliberate: the
->    repository's own rules require that conversion to happen only through that
->    module, never reimplemented inline. Taking `tools/` alone therefore needs
->    `server/lib/chapterLabel.js` (or an equivalent) alongside it.
-> 3. **Data path, not code.** `tools/validate-pipeline-consistency.js` resolves
->    `server/data/` to read per-book JSON. It loads no AGPL code.
+> 1. **Optional, guarded** — loads AGPL code inside a try/catch; the tool works
+>    without `server/`.
+>    - `tools/api-translate.js:1051` → `server/services/pipelineStatusService.js`
+>
+>    It warns and continues if the module is absent: translation runs correctly
+>    without `server/`, and only a convenience status update is skipped.
+> 2. **Required, unguarded** — loads AGPL code, with no try/catch to fall back
+>    on. Split by *when* it loads, because that is what decides whether the tool
+>    runs at all without `server/`.
+>
+>    **(a) At load time — the module cannot even be imported without `server/`:**
+>    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
+>    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
+>    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
+>    - `scripts/export-segment-edits.js:23` → `server/lib/chapterLabel.js`
+>      (also `:28` → `server/services/segmentParser.js` and `:119` →
+>      `server/lib/dbPath.js`, both lazy — but `:23` already makes the file
+>      load-time)
+>    - `scripts/reattach-segment-edits.js:35` → `server/lib/chapterLabel.js`
+>      (also `:46` → `server/services/segmentParser.js` and `:277` →
+>      `server/services/segmentEditorService.js`, both lazy — but `:35` already
+>      makes the file load-time)
+>
+>    **(b) At run time, not import time — the module imports fine without
+>    `server/`. Whether it also RUNS without it differs per entry, so each one
+>    says:**
+>    - `scripts/backfill-mt-locks.js:99` → `server/lib/dbPath.js` and `:173` →
+>      `server/services/segmentParser.js` (for `chapterDir`, which
+>      `segmentParser` re-exports at `:463`). Both sit inside `--db`-only
+>      branches (`if (USE_DB)` at `:93`, `if (dbRows)` at `:166`). The script's
+>      own comment gives the reason: the requires are lazy so that a problem
+>      loading them can never break the default file-only signal. **Run without
+>      `--db`, this script needs no `server/` at all** — it is the only entry
+>      here with a working server-free mode.
+>    - `scripts/backfill-appendix-sections.js:198` → `server/lib/dbPath.js` and
+>      `:201` → `server/services/bookRegistration.js`, both inside
+>      `runBackfill()` (`:197`). Importing the module does not reach `server/`,
+>      **but every way of running it does**: `runBackfill()` is the only entry
+>      point, `main()` (`:285`) calls it unconditionally, and the requires sit
+>      above every `--db`/dry-run branch. Only importing and never calling
+>      avoids `server/`.
+>
+>    The `chapterLabel` imports are deliberate: it is the project's canonical
+>    converter between the two on-disk spellings of the appendices chapter, and
+>    the repository's own rules require that conversion to happen only through
+>    that module, never reimplemented inline. Taking `tools/` alone therefore
+>    needs `server/lib/chapterLabel.js` (or an equivalent) alongside it.
+> 3. **Data path, not code** — resolves a path under `server/` to read files
+>    from it; loads no AGPL code.
+>    - `tools/validate-pipeline-consistency.js:27` → `server/data`
+>    - `tools/openstax-fetch.cjs:70` → `server/data/chemistry-2e.json`
+>    - `tools/check-source-updates.js:134` → `server/data/${book}.json`
+>    - `tools/translate-chapter-titles.js:46` → `server/data`
+>    - `tools/generate-index.js:146` → `server/data`
+>    - `tools/docx-import.js:200-206` → a per-book JSON under `server/data`.
+>      Both real books are mapped by name (`liffraedi-2e` → `biology-2e.json`,
+>      `efnafraedi-2e` → `chemistry-2e.json`); `${bookSlug}.json` is only the
+>      fallback branch.
+>    - `scripts/generate-route-inventory.js:5` → `server/routes`, whose `.js`
+>      files it reads as text (`readdirSync` at `:19`) to generate a docs
+>      inventory. It requires none of them, so no AGPL code is loaded, and it
+>      cannot run at all without `server/routes` present. This is the one class 3
+>      entry that reads source rather than data.
+>
+>    Retired scripts under `tools/archived/` also write JSON into
+>    `server/data/`. They are not enumerated here: they are out of the pipeline,
+>    and they depend on the path rather than on anything in `server/`.
+> 4. **Package resolution, not code** — resolves a third-party package through
+>    `server/node_modules`; loads no AGPL code. The package in every case is
+>    `better-sqlite3`, which is itself MIT; it lives under `server/` because the
+>    repository root has no dependency on it.
+>    - `tools/lib/safeWrite.js:50`, `tools/migrate-pipeline-status.js:24` and
+>      `scripts/backfill-mt-locks.js:98` anchor a `createRequire` inside
+>      `server/`, then load the bare specifier.
+>    - `scripts/export-segment-edits.js:55` and
+>      `scripts/backfill-appendix-sections.js:199` join the
+>      `server/node_modules/better-sqlite3` path directly.
+>    - `tools/merge-glossary.js:495` tries that path and falls back to the bare
+>      specifier.
 >
 > This list is the authoritative enumeration — update it here when an edge is
-> added or removed, and re-derive rather than trusting it, searching for both a
-> literal `'../server/…'` and a computed `path.join(…, 'server', …)`.
+> added or removed, and re-derive rather than trusting it. Three search shapes
+> are needed, because none of them sees the others' matches:
+>
+> - a literal `'../server/…'`;
+> - a computed `path.join`/`path.resolve` over a separate `'server'` argument;
+> - any string literal *beginning* `'server/'` — a whole path
+>   (`'server/node_modules/…'`, `'server/data'`, `'server/routes'`) or the bare
+>   prefix `'server/'` used to anchor a `createRequire`. The first two shapes
+>   cannot match these: there is no `'server'` token to find and no `../`
+>   prefix. `tools/merge-glossary.js:495` and
+>   `scripts/backfill-mt-locks.js:98` are reachable only this way.
+>
+> And do not filter `node_modules` out of the results. An exclusion meant to
+> skip files *inside* `node_modules` also hides every edge that merely mentions
+> it, which is most of class 4.
+>
+> The shapes match many sites under `tools/__tests__/` and `scripts/__tests__/`
+> as well. Those are deliberately outside this list. Test files reach into
+> `server/` freely — for a temp database, a manifest, or the very services they
+> exercise — but they are not part of what the tooling needs in order to run,
+> which is what this note is about; a downstream user taking `tools/` and
+> `scripts/` to operate the pipeline does not run them. Listing only the thinnest
+> of them would be worse than listing none, because some are heavier than
+> anything above: a test may execute AGPL services directly.
 
 ```
 MIT License

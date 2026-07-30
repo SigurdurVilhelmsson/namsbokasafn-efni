@@ -12,11 +12,11 @@
 - **✅ C13 MERGED 2026-07-27 (PR #337, main `950717c0`)** — the `<figure>`-in-`<para>`-in-`<note>` inject defect. Schema gate on `liffraedi-2e` **6 errors → 0**; fidelity **9 → 1**; ch03+ch05 re-rendered (no filename change, so not a C9 rename). Detail in §C13, including **six follow-ups, two of them reader-visible** — the register's live record of them is §C13, not this block. ⚠️ **Reader delivery still pending: the vefur sync is [LEAD] and manual.**
 - **✅ C14 SHIPPED 2026-07-27** on `fix/c14-glossary-export-runner` ([PR #343](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/343), MERGED `b09ede00`) — the glossary bridge had no caller *and* no delivery path; both fixed, plus `formatGlossary`'s empty-`targetWord` guard. Detail in §C14, including the two-producer finding (every committed `glossary-unified.json` was written by `merge-glossary.js`, not this exporter) and 8 logged follow-ups. **`checks.glossary_export` will read not-ok until the first successful prod export — that is correct, not a regression, the same posture as `offbox_backup` today.**
 - **✅ C1d MERGED 2026-07-28 ([PR #344](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/344), main `8e1c877a`)** on `fix/appendices-writepath-publish` [deleted on merge] — appendix **mt-preview publish** works end to end; faithful/localized stay correctly readiness-gated until content exists. 4/4 task reviews spec ✅ + Approved, and the whole-branch adversarial review's **2 confirmed Important findings are fixed and re-reviewed** (see §C1 PR-4). **With C1d, the C1 appendices batch is CODE-COMPLETE** (only the U3b backlog item remains, and it has no UI caller). ⚠️ **The committed plan omitted the one site that makes the feature work** — see §C1 PR-4 for the full account; it is the closure audit's "summaries of itself" failure reproduced one level down. **No data-op, no re-render, no vefur sync. Deploy still gated by A4.** Detail → §C1 PR-4.
-- **🆕 C16 LOGGED 2026-07-29 — partially-live legacy from the Markdown/Matecat era, filed P1, NOT started.** Surfaced while retiring the `chemistry-reader-tags` skill (whose `:::` directive system predates the CNXML pipeline). The migration removed that era's *tools* but left **consumers of it on live code paths**. Headline: `cnxml-inject.js`'s `hasApiMarkers` guard infers a segment's era from its own translated text and, because ordinary prose carries no markers, **the Markdown-era converters are the path taken by 71.7% of segments (22,163 / 30,932)** — the *same defect class* C13's durable rule already banned. **It is live, not latent: all 9 affected modules have already been injected** (concentrated in chemistry ch01), which is the audit's starting set. ⚠️ **§C16 deliberately does NOT prescribe a fix** — the obvious per-module-provenance design rests on a premise the tree contradicts, and establishing which case holds is task one. **Scoping is a [LEAD] call; the census in §C16 is evidence, not authorisation, and is a sample rather than a survey.** → §C16.
+- **🆕 C16 LOGGED 2026-07-29 — partially-live legacy from the Markdown/Matecat era, filed P1. ⚠️ The AUDIT (artifacts a–e below) is NOT started; only the *migration tooling* for the segment-edit re-attach is built, and it is on an unmerged branch — see §C16.** Surfaced while retiring the `chemistry-reader-tags` skill (whose `:::` directive system predates the CNXML pipeline). The migration removed that era's *tools* but left **consumers of it on live code paths**. Headline: `cnxml-inject.js`'s `hasApiMarkers` guard infers a segment's era from its own translated text and, because ordinary prose carries no markers, **the Markdown-era converters are the path taken by 71.7% of segments (22,163 / 30,932)** — the *same defect class* C13's durable rule already banned. **It is live, not latent: all 9 affected modules have already been injected** (concentrated in chemistry ch01), which is the audit's starting set. ⚠️ **§C16 deliberately does NOT prescribe a fix** — the obvious per-module-provenance design rests on a premise the tree contradicts, and establishing which case holds is task one. **Scoping is a [LEAD] call; the census in §C16 is evidence, not authorisation, and is a sample rather than a survey.** → §C16.
 - **▶ NEXT [CODE]:** the **P2 batches** (C5 authz-2 · C6 MTA edges · C7 terminology governance · C8 pipeline) — **but C16 is P1 and now sits ahead of them if the lead greenlights it.** C9's three efni tasks remain ⏰ before fall semester.
 - **▶ C9 — the VEFUR half is DONE (PR [#200](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur/pull/200), 2026-07-27); an EFNI half is now ACTIONABLE HERE.** Vefur stopped keying the overlay on filename, so a reviewed title correction no longer publishes the section twice, and the silent second mode (a rename freezing a chapter's review state) is fixed too. **But vefur only DETECTS the live chem-ch10 duplicate — it cannot repair it**, because both files sit in `mt-preview` and nothing authorises choosing between them. Three efni tasks remain; see §C9. ⏰ **lead deadline: before fall semester.**
 - **✅ Dependabot batch cleared 2026-07-28 — all five merged.** #338 (express-rate-limit security patch), #339/#340/#342 (dev deps), and **#341 better-sqlite3 12 → 13**. ⚠️ **#341 was first held on a WRONG premise, recorded here because the error is instructive:** I read `npm view better-sqlite3@13 scripts`, which reports the *source repo's* manifest showing `install: node-gyp rebuild`, and concluded it compiles SQLite from source. The **published tarball** has no install script and BUNDLES 8 prebuilt binaries incl. `linux-x64.node`; measured install is ~2s and the loaded binding is `prebuilds/linux-x64.node`, not `build/Release`. **v13 is more robust than v12 here**, not less: v12's `prebuild-install` *downloaded* the binary at install time, which is the very path a wrong-ABI binary arrives by (the 2026-05-10 incident). What remains true is that npm auto-runs node-gyp (the package ships a `binding.gyp`), so the box needs python3 + make + g++ — **confirmed present** (Ubuntu 24.04.4 LTS, build-essential installed). `deploy.sh`'s two comments describing the `prebuild-install` fetch were corrected in the same pass. **Durable lesson: `npm view <pkg> scripts` is the source repo's manifest, NOT the shipped artifact — inspect the tarball (`npm pack`) before reasoning about install-time behaviour.**
-- **▶ [LEAD] queue:** **① publish the C13 fix** — `liffraedi-2e` ch03+ch05 are corrected and re-rendered on disk but readers still see the broken figures until `node scripts/sync-content.js --source ../namsbokasafn-efni` → build → deploy runs in vefur (6 section pages, **no filename changes**; ⚠️ a clean sync exit is *not* proof — the duplicate warning does not fail the run, so read the output) · **② C14 dry-run** — after deploying, run `node server/scripts/export-terminology.js --dry-run` on prod and read the real approved-term counts per book; only then decide per book whether to `--force` (the committed chemistry glossary holds 617 approved terms from a producer whose DB table no longer exists — **do not `--force` before reading the numbers**) · C11(a) sync-content deploy key *(deferred — manual sync works)* · C12 branch protection *(decided: force-push + deletion blocking only; apply when ready)* · the 2 nginx redirects · A2 off-box DB backup · A4 walk.
+- **▶ [LEAD] queue:** **① publish the C13 fix — ⏸️ HELD by lead decision 2026-07-30, do not sync.** `liffraedi-2e` ch03+ch05 are corrected and re-rendered on disk, but the whole book is now queued for re-extraction + re-MT (see [`2026-07-30-target-architecture-assessment.md`](2026-07-30-target-architecture-assessment.md)), and syncing now would publish a page the assessment records as known-bad and then immediately re-render it. **Deliver it with the post-re-MT sync instead.** *(Original scope, retained: `node scripts/sync-content.js --source ../namsbokasafn-efni` → build → deploy in vefur, 6 section pages, no filename changes; ⚠️ a clean sync exit is not proof — the duplicate warning does not fail the run.)* · **② C14 dry-run** — after deploying, run `node server/scripts/export-terminology.js --dry-run` on prod and read the real approved-term counts per book; only then decide per book whether to `--force` (the committed chemistry glossary holds 617 approved terms from a producer whose DB table no longer exists — **do not `--force` before reading the numbers**) · C11(a) sync-content deploy key *(deferred — manual sync works)* · C12 branch protection *(decided: force-push + deletion blocking only; apply when ready)* · the 2 nginx redirects · A2 off-box DB backup · A4 walk.
 - **⚠️ Corrections the audit made to THIS FILE's assumptions — do not re-inherit them:** C9 has **already fired in production** (chem ch10 has two "10.5" entries) · A4's prod-only list is **2, not 3** (§5c is locally walkable) · A4 rows **§0.reg and §5d are already CLOSED** · C10 R3 was **withdrawn as a false positive** · `Sync Content to Vefur` has **never worked** (34/34 failures; the secret was never created).
 
 ---
@@ -221,13 +221,87 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
   - **▶ Sub-project SPEC'd + PLANNED 2026-07-29 — the segment-edit re-attach.** Design:
     [`docs/superpowers/specs/2026-07-29-segment-edit-reattach-design.md`](../superpowers/specs/2026-07-29-segment-edit-reattach-design.md)
     · Plan: [`docs/superpowers/plans/2026-07-29-segment-edit-reattach.md`](../superpowers/plans/2026-07-29-segment-edit-reattach.md)
-    · Runbook is Task 5 of the plan. **Nothing implemented yet.** The measurement that shaped it:
+    · Runbook is Task 5 of the plan. The measurement that shaped it:
     editorial work is **4 modules / 62 applied segments**, and **56 of the 62 key on a CNXML
     source element id**, which comes from read-only `01-source` and cannot drift — so re-attach
     is exact-id matching with **no fallback**, not the English-matching engine the first framing
     assumed. ⚠️ **62 is a floor**: it counts applied edits visible on disk, and prod's DB may hold
     `pending`/`discuss` rows that never reached a faithful file. The export settles it — run it
     early, because a much larger number resizes the editor's review pass.
+    - **▶ IMPLEMENTED ON BRANCH `feat/c16-segment-edit-reattach`, NOT MERGED (2026-07-30).**
+      All 5 plan tasks are committed: `scripts/lib/segment-edit-reattach-rules.js` (pure rules),
+      `scripts/export-segment-edits.js`, `scripts/reattach-segment-edits.js`,
+      [`docs/plans/2026-07-29-c16-clean-break-runbook.md`](2026-07-29-c16-clean-break-runbook.md),
+      plus a full re-derivation of root `LICENSE`'s MIT→AGPL enumeration (18 edge files in 4
+      classes, where the document had claimed four *edges*). ⚠️ **This is the migration TOOLING
+      only — it touches no C16 artifact (a)–(e) below, and running it is still [LEAD]-gated.**
+      **Remaining before the PR: Task 5's review (never ran) and the whole-branch adversarial
+      review.** Per-task detail and the crash-recovery record are in the SDD ledger
+      `.superpowers/sdd/2026-07-29-segment-edit-reattach/progress.md`.
+    - **✅ APPROACH RESIZED 2026-07-30 — the default is now a HAND re-application, and the
+      [LEAD] scope question below is no longer fatal.** Lead checked prod's Ritstjóri: only the
+      **two ch03 modules** hold edits that exist solely in the database; the ch01 modules trace
+      to edited **docx files that are on hand**. Independently verified here: **all four
+      `03-faithful-translation` files are TRACKED IN GIT**, so the clean break's deletion cannot
+      destroy the applied edits at all — `git show <commit>:<path>` recovers them permanently.
+      At that size the automated re-attach is disproportionate: it buys about an hour of typing
+      and costs a write path into prod's `sessions.db`, while the expensive part — an editor
+      judging each edit against the NEW MT — is unchanged either way. **The runbook now leads
+      with the hand path (Step 4); the automated re-attach is Appendix A.** New helper
+      `scripts/render-segment-edits-md.js` turns the snapshot into the working document.
+      ⚠️ **Consequence for the scope question below: it stops being able to lose anything.**
+      The hand path never writes to `segment_edits`, so a module missed from `--modules` keeps
+      its rows in prod's DB and can be handled later — where the automated path would have
+      re-MT'd it, never exported it, and reported success. Still worth answering; no longer a
+      gate on starting.
+    - **⚠️ [LEAD] DECISION — the snapshot's module scope** *(open, but de-fanged by the resize
+      above; it blocks Appendix A, not the hand path)***.**
+      Spec §5 derives `--modules` from the **faithful-file** signal (4 modules, the ones with
+      applied edits on disk), but the clean break's blast radius is the **whole book**. A module
+      edited in the DB whose edits never reached a faithful file is therefore outside
+      `--modules`, gets re-MT'd like every other module, and its editorial work is never
+      exported and never restored — with `reconcile()` balancing perfectly, because it accounts
+      only for the rows the snapshot contained. This is the same "62 is a floor" warning read
+      from the other side. **Not fixed on the branch: changing what `--modules` is derived from
+      is a scoping decision, not a defect fix.** Surfaced by the whole-branch review, 2026-07-30.
+      - **The crux is a scope MISMATCH, not a miscount:** Step 3 re-MTs the **whole book**, but
+        the snapshot names **4 modules**. Any module outside those 4 holding `segment_edits`
+        rows has its MT replaced with nothing exported and nothing restored — and the run still
+        reports success, because `reconcile()` accounts only for rows the snapshot held.
+      - **⚠️ The `.locked` markers do NOT corroborate the 4 — checked 2026-07-30, and this is
+        the tempting shortcut to avoid.** It looks as though they should: `backfill-mt-locks.js`'s
+        `--db` signal is `SELECT DISTINCT book, chapter, module_id FROM segment_edits` with **no
+        status filter and no book filter**, which is exactly the oracle needed. But **all four
+        committed markers came from ONE dev commit, `06058a0e` (2026-07-11)** — the *file*
+        signal — and the authoritative `--db` run on **prod (2026-07-21, register P0-1)** added
+        **no marker to git at all**. So either prod's DB held nothing beyond those 4, or its
+        markers were never pushed; from the repo those are indistinguishable. The script's own
+        header warns precisely this: a dev box's `sessions.db` is not prod state. **Absence of
+        extra markers is not evidence of absence of extra edits.** (`lockModule` also skips a
+        module whose MT file is missing, so the marker set can under-report by construction.)
+      - **Settle it with one read-only query ON PROD**, not from the repo:
+        `SELECT module_id, status, count(*) FROM segment_edits WHERE book='efnafraedi-2e'
+        GROUP BY module_id, status;` Only the 4 → current scope is correct, closes with no code
+        change. More than 4 → `--modules` must cover every module with rows, because the re-MT
+        reaches all of them.
+      - **⚠️ Do NOT widen the snapshot without widening the clean break to match.** Exporting a
+        module that is not re-MT'd is not a safe middle ground: its MT is unchanged, so its rows
+        land in `restore` rather than `converged`, and Step 4a supersedes only the 4 named
+        modules — so those extra rows take `saveSegmentEdit`'s UPDATE branch and keep a stale
+        `original_content`. Snapshot scope and re-MT scope must be the SAME set.
+      - **Useful property if the DB-derived list is adopted:** every module in it has ≥1 row by
+        construction, so `export-segment-edits.js`'s zero-row refusal can never fire spuriously
+        — the guard degrades from a gate into a consistency check.
+    - ⚠️ **One defect the review caught, fixed on the branch — recorded because the SHAPE
+      recurs.** Two restorable snapshot rows can share the `(book, module_id, segment_id,
+      editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniqueness
+      index is partial and an `approved` row is never superseded by a later save. The second
+      write therefore took the UPDATE branch and **overwrote an editor's text while the
+      reconciliation gate reported success** — because that gate counts plan buckets, not DB
+      rows. Now refused (exit 4) in both dry-run and apply. *A reconciliation that counts its own
+      bookkeeping cannot see a loss that happens downstream of it* — and the four task tests were
+      structurally unable to see it, because a temp DB starts empty and never takes the UPDATE
+      branch. **A green suite was the expected result here, not evidence.**
   - **⚠️ [LEAD] gates before any of it runs** — **A2 off-box DB backup restore-tested** (after the
     re-MT the snapshot is the only copy of the editorial work outside a gitignored SQLite file on
     one host), editorial server stopped, backup cron paused. Spec §4.
@@ -246,6 +320,74 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
   - **(c) `server/routes/status.js:1264` reads `books/<book>/chapters/<ch>/files.json`** — the retired review model — behind an `existsSync` that is now permanently false (`find books -name files.json` → **0**). Dead branch in a live endpoint plus a phantom `filesData` field in the response contract. *Cosmetic: cannot produce a wrong answer, only a permanently absent one.* The matching `books/**/chapters/**/files.json` write-grant was removed from `.claude/settings.json` on 2026-07-29.
   - **(d) `books/*/for-align/`** — Matecat Align staging, 1 file, retired with the external alignment step. Cosmetic; confirm nothing reads it before removing.
   - **(e) ⚠️ `books/*/04-localization/` is a DOC/REALITY CONFLICT, not stray cruft — do not group it with (d).** CLAUDE.md lists it in **two** places as an active write path: § *Directory Structure* ("✏️ Localization in progress") and the § *File Permissions* table. On disk it holds **1 file**, while Pass 2 output goes to `04-localized-content/` — and `.claude/settings.json` grants write to `books/**/04-localized-content/**` but **not** to `04-localization/**`, so the permissions table and the enforced grant already disagree. Either the directory is a live working stage the settings file wrongly denies, or it is retired and CLAUDE.md documents a stage that no longer exists. **A wrong entry in a permissions table is higher-severity than a stray directory** — it is the kind of fact an agent obeys. Resolve the direction first, then fix whichever side is wrong (per § *One source of truth*: fix document B, do not log it as a to-do in A).
+  - **⚠️ CORRECTION 2026-07-30 — the markdown family is the EDITOR'S CURRENT TOOLBAR
+    VOCABULARY, not residue. The table below mislabels it "pre-API".** Verified in the code:
+    `server/public/js/segment-editor.js:972-977` binds the toolbar to `**` (Ctrl+B, *Feitletrað*),
+    `*` (Ctrl+I, *Skáletrað*), **`__` (Ctrl+T, *Hugtak* — a TERM marker, not bold)**, `++` (U),
+    `~` (subscript), `^` (superscript); `:2616` inserts a glossary term as `__term__`;
+    `tools/cnxml-inject.js:1484` maps `__x__` → `<term>` alongside `{{term}}…{{/term}}` and
+    `[[term:text|id]]` — **all three dialects are accepted**; and `:1770-1790` renders each in the
+    preview. **Consequence for C16(a), and it is the important one: the mixed-dialect state does
+    not decay — it REGENERATES.** Extraction emits `[[…]]`, the editor writes markdown, so the
+    first Ctrl+T after a re-MT puts markdown back into the faithful file. **A re-MT therefore does
+    NOT retire `hasApiMarkers`**; only changing what the editor writes, or what inject accepts,
+    would. Any future editor-facing tag redesign should be scoped together with (a) for that
+    reason. *(This also caused a real defect: the C16 re-attach rules classed the markdown family
+    as "úrelt snið" and would have told an editor their current formatting was obsolete on 6 of
+    the 7 toolbar buttons. Fixed and test-pinned in `scripts/lib/segment-edit-reattach-rules.js`.)*
+  - **🔴 CONFIRMED LIVE READER-VISIBLE INSTANCE of (a), found 2026-07-30 — and the re-MT does
+    NOT fix it.** Until now §C16(a) was a census plus a predicted defect class. Here is an actual
+    one, in published output:
+    - `books/orverufraedi/02-mt-output/ch01/m58782-segments.is.md:197` is a fill-in-the-blank
+      exercise: `Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.`
+      It carries **no bracket marker**, so `hasApiMarkers` is false and the Markdown-era
+      converter at `tools/cnxml-inject.js:1484` fires. Its regex `__([^_]+)__` takes the last two
+      underscores of the first blank, the text ` og `, and the first two of the second blank, and
+      wraps them: published output reads
+      `______<dfn class="term"> og  (e.  and )</dfn>______`. A student sees the word "og" marked
+      as a glossary term with an empty English gloss.
+    - **Reach:** 2 modules (`orverufraedi` ch01 `m58782`, ch05 `m58805`), 2 published pages
+      (`1-fill-in-the-blank.html`, `5-fill-in-the-blank.html`). ⚠️ Chemistry's `__` hits are
+      **not** this defect — they are MathML `<mo>_____</mo>` blanks, protected during inject.
+      Verified individually; a regex census alone would have mis-scored them.
+    - **⚠️ Re-extraction + re-MT does NOT clear it.** The blanks come from the source CNXML, and
+      the segment will still carry no bracket markers afterwards, so the guard still resolves
+      false and the converter still fires. **This is a code defect, not stale data** — the
+      distinction §C16 draws between "dead code" and "partially-live legacy", now demonstrated.
+    - **It also fixes the fix direction for (a).** The converter cannot simply be deleted (the
+      editor's Ctrl+T writes `__term__`, so real term markers would stop converting) and cannot
+      be left (it mangles blanks). The resolution is to make the editor's term marker
+      unambiguous — id-anchored `[[term:text|id]]` rather than `__text__` — after which `:1481-1485`
+      can go entirely. **That is the same work as the planned editor-facing tag redesign, which
+      is why the two should be scoped together.**
+  - **📏 MEASURED 2026-07-30 — what a chemistry re-MT actually retires, per book AND per stage.**
+    This is the measurement the §13 deletion PR needs, and it splits the two curly families
+    cleanly. *(Counting unit: files containing ≥1 occurrence. EN = `02-for-mt/*-segments.en.md`,
+    IS = `02-mt-output/*-segments.is.md`.)*
+
+    | family | efnafraedi EN/IS | edlisfr. | liffr. | lifr-efna | orveru | live injected output |
+    |---|---|---|---|---|---|---|
+    | `{{i}}` `{{b}}` | **0 / 76** | 0 | 0 | 0 | 0 | **0** |
+    | `{{term}}` `{{fn}}` | 108 / 102 | 8 / 8 | 4 / 4 | 6 / 6 | 10 / 10 | 0 |
+
+    - **`{{i}}`/`{{b}}` — a chemistry re-MT retires it CORPUS-WIDE.** Its only home anywhere is
+      chemistry's *stale MT output* (76 files); chemistry's own EN has **zero**, and no other
+      book has any at any stage. Chemistry's IS is simply older than its EN — the EN was
+      re-extracted to brackets (130/170 carry `[[i:`/`[[b:`) and the MT never regenerated.
+      **This is the family `hasApiMarkers` gates**, so re-MT'ing chemistry removes the reason
+      the guard exists — exactly the "known exit" §C16 predicted. Verified it is not already
+      leaking: the only `03-translated` hits are three dated `.cnxml.backup.*` files from March,
+      not live output, so the back-compat is working rather than failing quietly.
+    - **`{{term}}`/`{{fn}}` — NOT retired by this migration, and the parsing must stay.** It is
+      redundant *in chemistry* afterwards (a fresh extract emits `[[term:text|id]]`,
+      `cnxml-extract.js:339`), but it is live in **28 EN + 28 IS files across the four books this
+      migration does not touch**. Deleting its parsing would break physics, biology, organic
+      chemistry and microbiology. It retires only when those books are re-extracted too.
+    - Consequence for the §13 deletion PR: **the `{{i}}`/`{{b}}` back-compat and the
+      `hasApiMarkers` guard become removable after the chemistry re-MT; the `{{term}}`/`{{fn}}`
+      path does not.** ⚠️ And per the correction above, removing `hasApiMarkers` is only safe if
+      the *markdown* converters it gates are also dealt with — the editor still writes markdown,
+      so that branch stays reachable regardless of what the re-MT cleans.
   - **⚠️ WHAT MUST NOT BE REMOVED — and the marker families are NOT one thing.** Counted properly (an earlier draft of this entry conflated them into a single misleading "146 files"):
 
     | Family | Files | Status |
