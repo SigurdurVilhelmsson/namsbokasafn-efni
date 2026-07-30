@@ -3,7 +3,8 @@
 **Date:** 2026-07-29 · **For:** whoever executes the clean break, on the night it runs.
 **Spec:** [`docs/superpowers/specs/2026-07-29-segment-edit-reattach-design.md`](../superpowers/specs/2026-07-29-segment-edit-reattach-design.md)
 **Register item:** C16, in [`2026-07-21-post-item17-followup-campaign.md`](2026-07-21-post-item17-followup-campaign.md)
-**Scripts:** `scripts/export-segment-edits.js` · `scripts/reattach-segment-edits.js` · `scripts/backfill-mt-locks.js`
+**Scripts:** `scripts/export-segment-edits.js` · `scripts/render-segment-edits-md.js` · `scripts/backfill-mt-locks.js`
+*(`scripts/reattach-segment-edits.js` is the optional automated path — Appendix A.)*
 
 ⚠️ Steps are ordered. Do not reorder. Each gate is verifiable — verify it, do not assume it.
 
@@ -32,9 +33,13 @@ ls -l "$DB"      # must ALREADY exist and be non-trivial in size.
 ```
 
 - [ ] `$DB` resolved and confirmed to exist: ______________________
-- [ ] **Off-box DB backup (A2) exists AND a restore has been tested.** After the re-MT the
-      snapshot is the only representation of the editorial work outside a gitignored SQLite
-      file on one host. This is a hard gate, not a recommendation.
+- [ ] **Off-box DB backup (A2).** ⚠️ **This gate is HARD for Appendix A and STRONGLY ADVISED
+      for the default path — the difference is real, so do not carry the old wording over.**
+      Appendix A writes to prod's `segment_edits`, which makes the snapshot the only
+      representation of the editorial work outside a gitignored SQLite file on one host. The
+      default path never writes to the database, so the edits survive in the DB itself
+      *and* the snapshot *and* the Markdown *and* git history. Take the backup anyway — item 4
+      below is a minute's work — but it does not block the hand path.
 - [ ] **Editorial server stopped.** No concurrent `segment_edits` writes; no reader can see a
       half-written `02-mt-output`. Confirm the process is down, not merely idle.
 - [ ] **`git-backup.sh` cron paused on prod.** It commits `books/` every 2h while the file work
@@ -74,14 +79,26 @@ node scripts/export-segment-edits.js \
       `rejected` rows that never reached a faithful file. **The export is the authority and 62 is
       a floor, not a total.**
 - [ ] Snapshot copied off-box, and the copy opened to confirm it is not empty or truncated.
-- [ ] ⚠️ **More than one restorable row can share one editor+segment key** — an `approved` row and
-      a later `pending` row by the same editor coexist legitimately, and only one of them can be
-      restored. You do not need to look for these by hand: Step 4b's dry run exits **4** and names
-      each colliding key. This is the concrete form the "62 is a floor" warning takes.
+- [ ] **Render the working document for Step 4** (read-only; touches no DB and no book files):
 
-⚠️ **The snapshot is the only complete record.** It holds the `rejected` and `superseded` rows
-that are deliberately never restored (spec §7). Step 4a mutates row statuses in prod; it must
-not run until this snapshot exists and has been verified off-box.
+      node scripts/render-segment-edits-md.js \
+        --snapshot /path/off-box/c16-snapshot.json \
+        --out /path/off-box/c16-edits.md
+
+      This is what you re-apply from. It carries, per segment: the English, the machine
+      translation it replaced, the editor's text, the notes, and a ⚠️ flag on any edit whose
+      markup is in a retired format. Keep it off-box beside the snapshot.
+- [ ] Opened `c16-edits.md` and confirmed its header total matches the row count above: ______
+- [ ] ⚠️ **More than one row can share one editor+segment key** — an `approved` row and a later
+      `pending` row by the same editor coexist legitimately. On the hand path this is harmless
+      and visible: both appear in the Markdown under the same segment id, and you simply pick
+      the later one. *(It is Appendix A that has to refuse, because a script cannot choose.)*
+
+⚠️ **The snapshot is the complete record** — it holds the `rejected` and `superseded` rows that
+are deliberately never re-applied, which the Markdown marks ⛔. On the default path nothing
+mutates prod's rows, so the database remains a second complete copy. **If you take Appendix A
+instead, that stops being true**: its Step A1 rewrites row statuses, and it must not run until
+this snapshot exists and has been verified off-box.
 
 ## Step 2 — capture the slug map (dev, BEFORE clearing anything)
 
@@ -168,7 +185,26 @@ find books/*/05-publication -name '*.html' | sort > /path/off-box/published-befo
 
 - [ ] Commit and push.
 
-## Step 4 — re-attach (prod)
+## Step 4 — re-apply the edits (prod)
+
+**The default path is BY HAND, and that is a deliberate sizing decision.** At this scale —
+tens of edits over a handful of modules — the automated re-attach buys perhaps an hour of
+typing and costs a write path into production's `sessions.db`. The expensive part is
+unchanged either way: an editor still has to judge every edit against the **new** machine
+translation. The automated path restores rows into a review queue; it does not decide
+whether an edit still applies.
+
+**What this path does not do, which is the whole point:**
+
+- It **never writes to prod's `segment_edits`**. The edits stay in the database — so they
+  survive in *four* places (DB, JSON snapshot, Markdown, git history) where the automated
+  path leaves the snapshot as the only copy.
+- No supersede step, which was the one hard-to-undo action in the automated flow.
+- No exit-code gates, no duplicate-key refusal, no partial-apply state to diagnose at 9pm.
+
+→ **The automated path is Appendix A.** Reach for it only if Step 1's row count is large
+enough that hand work is impractical, and read the whole appendix before starting.
+
 
 - [ ] **Before pulling: confirm prod's working tree is clean.** Gate 0 paused the git-backup cron
       but did not flush it, so prod can be holding up to two hours of uncommitted `05-publication/`
@@ -189,17 +225,124 @@ find books/*/05-publication -name '*.html' | sort > /path/off-box/published-befo
 - [ ] `git pull` on prod. **No restart, no deploy** — content is read from disk per request, and
       a real deploy is A4-gated.
 
-### Step 4a — mark the pre-break rows superseded (BEFORE the apply)
+### Step 4a — re-apply the edits by hand
 
-⚠️ **Run Step 4b's DRY RUN before this step.** The dry run opens no database — it reads only the
+- [ ] Open the Markdown from Step 1 beside Ritstjóri. Work one module at a time; the
+      document is already grouped that way.
+- [ ] For each edit **not** marked ⛔: find the segment by its id, and compare the editor's
+      text against the **new** machine translation now in the editor.
+      - the new MT already says it → **skip**, and tick it as converged;
+      - the edit still applies → **re-apply** it;
+      - the edit applies but the surrounding text changed → **adapt** it.
+- [ ] Skip every edit marked **⛔ EKKI endurnýta** (rejected/superseded). Restoring one would
+      resurrect work a head editor turned down.
+- [ ] Fix any **⚠️ Úrelt snið** marker while you are already in that segment — the flagged
+      edits carry retired `{{i}}`/markdown markup that the current pipeline does not parse.
+- [ ] Tally: re-applied ______ · adapted ______ · skipped as already-correct ______ ·
+      skipped as ⛔ ______ . **The four must sum to the document's total.** That sum is this
+      path's equivalent of the automated run's reconciliation gate — it is the only thing
+      that catches a module you closed the tab on.
+
+### Step 4b — leave the old rows alone (deliberately)
+
+The pre-break `segment_edits` rows are still in prod's database, still pointing at text that
+no longer exists. **Leave them.** They are stale but harmless — nothing renders from them —
+and until the hand pass is verified they are your live fallback, alongside the snapshot, the
+Markdown and git history.
+
+- [ ] Do **not** run the Step A-1 supersede SQL from Appendix A. It exists only to make the
+      automated write path take the right branch, and there is no write path here.
+- [ ] Once the hand pass is confirmed complete and the editor is happy, the old rows may be
+      superseded to clear the queue — as ordinary editorial housekeeping, on a normal day,
+      not as part of this migration.
+## Step 5 — finish
+
+### Step 5a — re-establish the MT edit-locks (AFTER the re-MT)
+
+**This step, and only this step, restores the 4 `.locked` markers — and it is required on BOTH
+paths.** Nothing else can:
+`saveSegmentEdit`'s lock hook fires only when its own INSERT is the module's first-ever
+`segment_edits` row (`priorCount === 1`), and these modules still hold their pre-break rows, so
+the count can never be 1. `scripts/backfill-mt-locks.js`'s own header documents that
+impossibility for exactly this row shape. **On the default path this is doubly certain**: the
+pre-break rows are deliberately left in place (Step 4b), so `priorCount` is never 1 — the next
+edit an editor saves will NOT lock the module. Appendix A's supersede does not change it
+either; `priorCount` counts rows of every status.
+
+`--db` is **mandatory here, not optional.** Step 3 deleted the 4 faithful files, so the
+script's file signal finds nothing for chemistry; only the DB signal can see these modules.
+
+**Run this on prod** — the box whose `sessions.db` is authoritative. A dev box's local DB is not
+prod state, so running it there locks nothing that matters and must not be mistaken for having
+done this. The script is idempotent and safe to re-run in either mode.
+
+```bash
+node scripts/backfill-mt-locks.js --db
+find books -name '*.locked'
+```
+
+- [ ] Gate: the four chemistry paths are present in the output —
+      `books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.locked`, `…ch01/m68664…`,
+      `…ch03/m68699…`, `…ch03/m68700…`. **Fewer than four is the failure that matters**: an
+      unlocked module can be silently overwritten by a later `api-translate` run, destroying MT
+      output that now carries restored edits. A count above four is **not** an error — it means
+      prod's DB holds edits for a module that has no faithful file, which is the gap this
+      script exists to close, and those locks are correct. Check the names, not the number.
+
+### Step 5b — hand off and reopen
+
+- [ ] After the regeneration:
+      `find books/*/05-publication -name '*.html' | sort > published-after.txt`
+- [ ] Diff before/after — **that pair is the slug map**; hand it to the vefur redirect work.
+- [ ] Restart the editorial server.
+- [ ] Resume the `git-backup.sh` cron.
+- [ ] Tell the editor what actually happened on the path you took:
+      - **default (hand) path** — the edits were re-applied by hand against the new machine
+        draft and are in their normal state; the pre-break rows still sit in the queue and are
+        stale, and will be cleared as ordinary housekeeping.
+      - **Appendix A** — their work is back as **pending** and needs re-confirmation against
+        the new machine draft; segments flagged in `editor_note` also need a marker fix.
+- [ ] Reader delivery is separate and manual — vefur sync, then verify by fetching
+      `/content/<book>/chapters/<NN>/<file>.html`, **never** a page URL.
+
+## Afterwards
+
+Verify the corpus is clean, then the deletion PR (spec §13): remove the Markdown-era converters
+and the `hasApiMarkers` guard from `cnxml-inject.js`, **shipping a corpus tripwire with them** so
+clean stays clean.
+
+---
+
+# Appendix A — the automated re-attach (optional)
+
+**Do not start here.** Step 4's hand path is the default, and at this migration's measured size
+it is the right one. This appendix is for the case where Step 1's row count is large enough that
+hand re-application is impractical — a different book, or a scope that grew.
+
+**What taking this path changes, stated plainly:**
+
+- It **writes to prod's `segment_edits`**, so the snapshot becomes the only copy of the
+  pre-break state. Gate 0's off-box backup becomes a **hard** gate.
+- Step A-1 below **rewrites row statuses** and is the one action in this document that is hard to
+  undo.
+- It restores rows as `pending` into the editor's queue. **It does not decide whether an edit
+  still applies** — the editor still compares each one against the new machine translation. The
+  automation saves typing and bookkeeping, not judgement.
+
+It buys: a complete, mechanical transfer with a reconciliation gate, which is worth having when
+the volume is past what a person will reliably tick off by hand.
+
+### Step A-1 — mark the pre-break rows superseded (BEFORE the apply)
+
+⚠️ **Run Step A-2's DRY RUN before this step.** The dry run opens no database — it reads only the
 snapshot and `books/efnafraedi-2e/02-mt-output/` — so it is safe to run first, and it is the only
 thing that can tell you whether the migration is going to abort. Three of its exit codes are
-fatal, and **4a is the one step in this runbook that is hard to undo** (see the warning at the end
+fatal, and **Step A-1 is the one step in this document that is hard to undo** (see the warning at the end
 of this step). Clear the fatal codes first, then come back here.
 
 - [ ] Dry run completed, exit code recorded, and it was 0 or 1: ______
 
-*(4a is ordered before the apply, not before the dry run: what it fixes is which branch
+*(Step A-1 is ordered before the apply, not before the dry run: what it fixes is which branch
 `saveSegmentEdit` takes when writing, and the dry run does not write.)*
 
 Prod still holds the pre-break `segment_edits` rows for these 4 modules. For any snapshot row
@@ -245,12 +388,12 @@ sqlite3 "$DB" "UPDATE segment_edits SET status='superseded'
       unchanged**. An unchanged total proves the statement superseded rows rather than deleting
       them, and that it did not reach another book. If the total moved, STOP.
 
-⚠️ **Run 4a exactly once, and never after 4b.** Re-run afterwards it would supersede the
+⚠️ **Run Step A-1 exactly once, and never after Step A-2.** Re-run afterwards it would supersede the
 freshly-restored `pending` rows and empty the editor's queue. If you abort the migration between
-4a and 4b, prod's queue is already empty for these 4 modules — recover from the Gate 0
+A1 and A2, prod's queue is already empty for these 4 modules — recover from the Gate 0
 `VACUUM INTO` copy, which is why that gate is mandatory.
 
-### Step 4b — dry run, then apply
+### Step A-2 — dry run, then apply
 
 Save the report, do not just read it. The script prints to stdout and writes no report file, so
 a redirect is the only record of which segments were flagged and which were unmatched — and you
@@ -300,15 +443,15 @@ a mechanical one.
 The report names each colliding key. Decide which row wins, remove the other from the snapshot
 **copy** (never the off-box original), and re-run the dry run.
 
-**Where you return to depends on whether 4a has already run — and either way you do NOT re-run 4a:**
+**Where you return to depends on whether Step A-1 has already run — and either way you do NOT re-run it:**
 
 | You are | Do this |
 |---|---|
-| **Before 4a** (the normal case — you ran the dry run first, as Step 4a instructs) | Resolve the snapshot copy, re-run the dry run until it exits 0 or 1, then go to Step 4a. |
-| **After 4a** (you hit exit 4 on a later dry run, e.g. after fixing an exit 2) | Resolve the snapshot copy and re-run the dry run only. **4a is still valid and must not be repeated** — it superseded the pre-break rows once, which is all it needs to do, and it is idempotent in effect but *not* safe to repeat after the apply. The dry run writes nothing, so re-running it as often as you like costs nothing. |
+| **Before A-1** (the normal case — you ran the dry run first, as Step A-1 instructs) | Resolve the snapshot copy, re-run the dry run until it exits 0 or 1, then go to Step A-1. |
+| **After A-1** (you hit exit 4 on a later dry run, e.g. after fixing an exit 2) | Resolve the snapshot copy and re-run the dry run only. **Step A-1 is still valid and must not be repeated** — it superseded the pre-break rows once, which is all it needs to do, and it is idempotent in effect but *not* safe to repeat after the apply. The dry run writes nothing, so re-running it as often as you like costs nothing. |
 
-⚠️ **Editing the snapshot copy does not invalidate 4a.** 4a operates on prod's rows; the snapshot
-is a separate file. Nothing about resolving a collision changes what 4a did.
+⚠️ **Editing the snapshot copy does not invalidate A1.** Step A-1 operates on prod's rows; the snapshot
+is a separate file. Nothing about resolving a collision changes what Step A-1 did.
 
 - [ ] Exit 4 not seen, or resolved and re-run clean: ______
 
@@ -323,7 +466,7 @@ node scripts/reattach-segment-edits.js --snapshot <path> --db \
 
 - [ ] `Inserted` count from the report: ______ (this is the restored work)
 - [ ] `updated` count from the report: ______ — **expect 0 on a first run.** A non-zero
-      `updated` means a pending row for that key was already present, so Step 4a did not cover it
+      `updated` means a pending row for that key was already present, so Step A-1 did not cover it
       and `original_content` kept its old baseline for those rows. Not silent loss. **The script
       prints the affected keys under the ⚠️ block beneath the totals — you do not need to query
       the DB.** Copy them here and tell the editor their diff view is against a stale draft:
@@ -335,51 +478,3 @@ node scripts/reattach-segment-edits.js --snapshot <path> --db \
 stack trace. Record that line: it is how far the run got. Re-running is safe — a second pass finds
 the rows it already wrote and converges on them.*
 
-## Step 5 — finish
-
-### Step 5a — re-establish the MT edit-locks (AFTER the apply)
-
-**This step, and only this step, restores the 4 `.locked` markers.** The re-attach cannot:
-`saveSegmentEdit`'s lock hook fires only when its own INSERT is the module's first-ever
-`segment_edits` row (`priorCount === 1`), and these modules still hold their pre-break rows, so
-the count can never be 1. `scripts/backfill-mt-locks.js`'s own header documents that
-impossibility for exactly this row shape. Step 4a does not change it either — `priorCount`
-counts rows of every status.
-
-`--db` is **mandatory here, not optional.** Step 3 deleted the 4 faithful files, so the
-script's file signal finds nothing for chemistry; only the DB signal can see these modules.
-
-**Run this on prod** — the box whose `sessions.db` is authoritative. A dev box's local DB is not
-prod state, so running it there locks nothing that matters and must not be mistaken for having
-done this. The script is idempotent and safe to re-run in either mode.
-
-```bash
-node scripts/backfill-mt-locks.js --db
-find books -name '*.locked'
-```
-
-- [ ] Gate: the four chemistry paths are present in the output —
-      `books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.locked`, `…ch01/m68664…`,
-      `…ch03/m68699…`, `…ch03/m68700…`. **Fewer than four is the failure that matters**: an
-      unlocked module can be silently overwritten by a later `api-translate` run, destroying MT
-      output that now carries restored edits. A count above four is **not** an error — it means
-      prod's DB holds edits for a module that has no faithful file, which is the gap this
-      script exists to close, and those locks are correct. Check the names, not the number.
-
-### Step 5b — hand off and reopen
-
-- [ ] After the regeneration:
-      `find books/*/05-publication -name '*.html' | sort > published-after.txt`
-- [ ] Diff before/after — **that pair is the slug map**; hand it to the vefur redirect work.
-- [ ] Restart the editorial server.
-- [ ] Resume the `git-backup.sh` cron.
-- [ ] Tell the editor: their work is back as **pending** and needs re-confirmation against the
-      new machine draft; segments flagged in `editor_note` also need a marker fix.
-- [ ] Reader delivery is separate and manual — vefur sync, then verify by fetching
-      `/content/<book>/chapters/<NN>/<file>.html`, **never** a page URL.
-
-## Afterwards
-
-Verify the corpus is clean, then the deletion PR (spec §13): remove the Markdown-era converters
-and the `hasApiMarkers` guard from `cnxml-inject.js`, **shipping a corpus tripwire with them** so
-clean stays clean.
