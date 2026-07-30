@@ -238,6 +238,17 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
       **Remaining before the PR: Task 5's review (never ran) and the whole-branch adversarial
       review.** Per-task detail and the crash-recovery record are in the SDD ledger
       `.superpowers/sdd/2026-07-29-segment-edit-reattach/progress.md`.
+    - **⚠️ [LEAD] DECISION REQUIRED BEFORE THE MIGRATION RUNS — the snapshot's module scope.**
+      Spec §5 derives `--modules` from the **faithful-file** signal (4 modules, the ones with
+      applied edits on disk), but the clean break's blast radius is the **whole book**. A module
+      edited in the DB whose edits never reached a faithful file is therefore outside
+      `--modules`, gets re-MT'd like every other module, and its editorial work is never
+      exported and never restored — with `reconcile()` balancing perfectly, because it accounts
+      only for the rows the snapshot contained. This is the same "62 is a floor" warning read
+      from the other side. **Not fixed on the branch: changing what `--modules` is derived from
+      is a scoping decision, not a defect fix.** Settle it by querying prod —
+      `SELECT DISTINCT module_id FROM segment_edits WHERE book='efnafraedi-2e'` — and compare
+      against the 4. Surfaced by the whole-branch review, 2026-07-30.
     - ⚠️ **One defect the review caught, fixed on the branch — recorded because the SHAPE
       recurs.** Two restorable snapshot rows can share the `(book, module_id, segment_id,
       editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniqueness

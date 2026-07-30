@@ -56,6 +56,19 @@ node scripts/export-segment-edits.js \
 ```
 
 - [ ] Row count recorded here: ______
+- [ ] ⚠️ **The export REFUSES if any named module contributed zero rows**, naming them, and
+      writes no file. That is deliberate: a mistyped `--book` or `--modules` is otherwise
+      indistinguishable from a module with no edits, and every downstream gate would still
+      balance because they only ever account for rows the snapshot contained. **If it fires:**
+      check the spelling against the DB first —
+
+          sqlite3 "$DB" "SELECT module_id, count(*) FROM segment_edits
+            WHERE book='efnafraedi-2e' GROUP BY module_id;"
+
+      If a named module genuinely has no rows, that is a legitimate outcome: **drop that module
+      from `--modules` and re-run**, and record here which one and why: ______________________
+      *(Do not work around the refusal any other way — a short snapshot that exists is worse
+      than no snapshot, because it looks complete.)*
 - [ ] ⚠️ **If it is much larger than 62, stop and re-size the review pass.** 62 counts only
       *applied* edits visible on disk; the DB may additionally hold `pending`, `discuss` and
       `rejected` rows that never reached a faithful file. **The export is the authority and 62 is
@@ -107,8 +120,11 @@ find books/*/05-publication -name '*.html' | sort > /path/off-box/published-befo
   > Leave the `.bak` siblings in `ch01/` alone — nothing reads them, and they are your local
   > safety net on top of git history and the snapshot.
 
-- [ ] Clear the `.locked` markers for those 4 modules — **the irreversible step**, and only
-      after Gate 0 and Step 1 are both verified. Again, four literal paths:
+- [ ] Clear the `.locked` markers for those 4 modules — only after Gate 0 and Step 1 are both
+      verified. Again, four literal paths. *(These are tracked in git and Step 5a regenerates
+      them, so this is the most RECOVERABLE action in the step, not the point of no return —
+      an earlier draft of this runbook labelled it "the irreversible step", which pointed the
+      operator's caution at the wrong line. The unrecoverable one is the re-MT below.)*
 
       books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.locked
       books/efnafraedi-2e/02-mt-output/ch01/m68664-segments.locked
@@ -121,9 +137,54 @@ find books/*/05-publication -name '*.html' | sort > /path/off-box/published-befo
       `10-5-fastur-efnishamur.html` for one module). Name each book's path explicitly; do not
       `rm -rf books/*/05-publication`.
 - [ ] Re-extract → re-MT → re-inject → re-render.
+
+  > ⚠️ **THE RE-MT NEEDS `--force`, AND WITHOUT IT THE WHOLE MIGRATION SILENTLY ACHIEVES
+  > NOTHING WHILE LOOKING PERFECT.** `api-translate.js` skips any module whose `02-mt-output`
+  > file already exists. All 170 chemistry files exist, so the invocation in CLAUDE.md's command
+  > table — `node tools/api-translate.js --book <book> --chapter <ch>`, no `--force` — translates
+  > **zero modules** and prints `Already done: 170`.
+  >
+  > What makes this the worst failure in this document: the dry run then matches every snapshot
+  > id against the OLD text, so you get `restored=62, unmatched=0, reconciliation OK, exit 0` —
+  > a *better*-looking result than a correct migration, whose own stated expectation is
+  > `unmatched ≤ 6`. And `newMt` IS the old MT, so `originalContent` is the old baseline: the
+  > same spec §7 violation Step 4a exists to prevent, arriving with every gate green.
+  >
+  > **Gate it on bytes, not on the script's summary:**
+  >
+  >     md5sum books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.is.md   # BEFORE
+  >     # ... run the re-MT with --force ...
+  >     md5sum books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.is.md   # MUST differ
+  >
+  > - [ ] Re-MT run **with `--force`**, and the checksum of at least one of the 4 modules
+  >       CHANGED: ______
+  > - [ ] `Already done:` count from the re-MT output was **0**, not 170: ______
+  >
+  > This step also **overwrites `02-mt-output/`, which CLAUDE.md § File Permissions marks
+  > 🔒 READ ONLY.** That override is deliberate and is the whole point of the clean break — but
+  > it is the genuinely unrecoverable action here (the re-MT costs real ISK and the previous MT
+  > exists afterwards only in git history and your snapshot). Treat it with the caution the
+  > `.locked` deletion above does not need.
+
 - [ ] Commit and push.
 
 ## Step 4 — re-attach (prod)
+
+- [ ] **Before pulling: confirm prod's working tree is clean.** Gate 0 paused the git-backup cron
+      but did not flush it, so prod can be holding up to two hours of uncommitted `05-publication/`
+      output and applied editorial edits — and this pull carries a commit that deletes the whole
+      `05-publication/<track>/` tree plus four tracked faithful files.
+
+      git -C <prod repo> status --porcelain
+
+      - [ ] Output empty: ______
+      - [ ] **If NOT empty, commit and push it from prod FIRST** — run
+            `./scripts/git-backup.sh` (the cron's own script, which is why it is safe) and
+            re-check. ⚠️ **Do NOT reach for `git checkout -- books/` or
+            `git reset --hard`.** Those destroy prod's uncommitted rendered output and any
+            editorial file-writes since the last cron run, and per project memory the git
+            remote is the only off-box copy of editors' reviewed translations — "uncommitted"
+            here means "exists in exactly one place on earth".
 
 - [ ] `git pull` on prod. **No restart, no deploy** — content is read from disk per request, and
       a real deploy is A4-gated.
@@ -168,7 +229,10 @@ sqlite3 "$DB" "SELECT count(*) FROM segment_edits
     AND module_id IN ('m68663','m68664','m68699','m68700');"
 ```
 
-- [ ] Total rows before: ______
+- [ ] Total rows before: ______ — ⚠️ **must be greater than 0.** If it is 0 the book slug or the
+      module ids are wrong, and every gate below passes *vacuously*: "every row is now
+      superseded" is trivially true of no rows, and "the total is unchanged" is 0 = 0. A gate
+      that cannot fail is not a gate. Stop and fix the query before running the UPDATE.
 
 ```bash
 sqlite3 "$DB" "UPDATE segment_edits SET status='superseded'
