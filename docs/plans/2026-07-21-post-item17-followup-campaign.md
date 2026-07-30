@@ -246,9 +246,35 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
       exported and never restored — with `reconcile()` balancing perfectly, because it accounts
       only for the rows the snapshot contained. This is the same "62 is a floor" warning read
       from the other side. **Not fixed on the branch: changing what `--modules` is derived from
-      is a scoping decision, not a defect fix.** Settle it by querying prod —
-      `SELECT DISTINCT module_id FROM segment_edits WHERE book='efnafraedi-2e'` — and compare
-      against the 4. Surfaced by the whole-branch review, 2026-07-30.
+      is a scoping decision, not a defect fix.** Surfaced by the whole-branch review, 2026-07-30.
+      - **The crux is a scope MISMATCH, not a miscount:** Step 3 re-MTs the **whole book**, but
+        the snapshot names **4 modules**. Any module outside those 4 holding `segment_edits`
+        rows has its MT replaced with nothing exported and nothing restored — and the run still
+        reports success, because `reconcile()` accounts only for rows the snapshot held.
+      - **⚠️ The `.locked` markers do NOT corroborate the 4 — checked 2026-07-30, and this is
+        the tempting shortcut to avoid.** It looks as though they should: `backfill-mt-locks.js`'s
+        `--db` signal is `SELECT DISTINCT book, chapter, module_id FROM segment_edits` with **no
+        status filter and no book filter**, which is exactly the oracle needed. But **all four
+        committed markers came from ONE dev commit, `06058a0e` (2026-07-11)** — the *file*
+        signal — and the authoritative `--db` run on **prod (2026-07-21, register P0-1)** added
+        **no marker to git at all**. So either prod's DB held nothing beyond those 4, or its
+        markers were never pushed; from the repo those are indistinguishable. The script's own
+        header warns precisely this: a dev box's `sessions.db` is not prod state. **Absence of
+        extra markers is not evidence of absence of extra edits.** (`lockModule` also skips a
+        module whose MT file is missing, so the marker set can under-report by construction.)
+      - **Settle it with one read-only query ON PROD**, not from the repo:
+        `SELECT module_id, status, count(*) FROM segment_edits WHERE book='efnafraedi-2e'
+        GROUP BY module_id, status;` Only the 4 → current scope is correct, closes with no code
+        change. More than 4 → `--modules` must cover every module with rows, because the re-MT
+        reaches all of them.
+      - **⚠️ Do NOT widen the snapshot without widening the clean break to match.** Exporting a
+        module that is not re-MT'd is not a safe middle ground: its MT is unchanged, so its rows
+        land in `restore` rather than `converged`, and Step 4a supersedes only the 4 named
+        modules — so those extra rows take `saveSegmentEdit`'s UPDATE branch and keep a stale
+        `original_content`. Snapshot scope and re-MT scope must be the SAME set.
+      - **Useful property if the DB-derived list is adopted:** every module in it has ≥1 row by
+        construction, so `export-segment-edits.js`'s zero-row refusal can never fire spuriously
+        — the guard degrades from a gate into a consistency check.
     - ⚠️ **One defect the review caught, fixed on the branch — recorded because the SHAPE
       recurs.** Two restorable snapshot rows can share the `(book, module_id, segment_id,
       editor_id)` key that `saveSegmentEdit` resolves a save against: the pending-uniqueness
