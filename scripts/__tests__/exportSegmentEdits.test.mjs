@@ -46,6 +46,40 @@ beforeEach(() => {
 
 afterEach(() => fs.rmSync(tmp, { recursive: true, force: true }));
 
+// The snapshot is the ONLY record of the editorial work once Step 3 deletes the
+// faithful files. A module that contributes zero rows is indistinguishable from
+// a typo in --modules or --book, and every downstream gate still balances:
+// reconcile() accounts only for rows the snapshot contained. So the export must
+// refuse rather than write a quietly-short snapshot.
+describe('runExport — a module that matched nothing is a typo until proven otherwise', () => {
+  it('refuses when a requested module contributed no rows, and names it', async () => {
+    const { runExport } = await import('../export-segment-edits.js');
+    const out = path.join(tmp, 'snap.json');
+    expect(() =>
+      runExport({ book: 'testbook', modules: ['m001', 'm999'], out, dbPath, booksDir })
+    ).toThrow(/m999/);
+  });
+
+  it('refuses when the book slug matched nothing at all', async () => {
+    const { runExport } = await import('../export-segment-edits.js');
+    const out = path.join(tmp, 'snap.json');
+    expect(() =>
+      runExport({ book: 'efnafradi-2e', modules: ['m001'], out, dbPath, booksDir })
+    ).toThrow();
+  });
+
+  it('writes no snapshot file when it refuses — a short snapshot must not exist to be trusted', async () => {
+    const { runExport } = await import('../export-segment-edits.js');
+    const out = path.join(tmp, 'snap.json');
+    try {
+      runExport({ book: 'testbook', modules: ['m001', 'm999'], out, dbPath, booksDir });
+    } catch {
+      /* expected */
+    }
+    expect(fs.existsSync(out)).toBe(false);
+  });
+});
+
 describe('runExport', () => {
   it('exports EVERY row regardless of status', async () => {
     const { runExport } = await import('../export-segment-edits.js');

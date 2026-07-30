@@ -64,6 +64,27 @@ export function runExport({ book, modules, out, dbPath, booksDir }) {
     .all(book, ...modules);
   db.close();
 
+  // Refuse a snapshot that is quietly short. Once Step 3 deletes the faithful
+  // files this file is the ONLY record of the editorial work, and a module that
+  // matched nothing looks exactly like a mistyped --modules or --book: the run
+  // exits 0, prints a smaller row count, and every downstream gate still
+  // balances, because reconcile() accounts only for the rows the snapshot
+  // contained. The runbook's own numeric check is one-sided ("if it is much
+  // larger than 62, stop") and 62 is declared a floor, so no smaller number
+  // reads as wrong. A module with genuinely no edits is possible — but it is
+  // not distinguishable from a typo here, so the operator confirms it by
+  // dropping the module from --modules rather than by ignoring a silent gap.
+  const matched = new Set(rows.map((r) => r.module_id));
+  const empty = modules.filter((m) => !matched.has(m));
+  if (empty.length) {
+    throw new Error(
+      `REFUSING TO WRITE SNAPSHOT — no rows for book '${book}', module(s): ${empty.join(', ')}.\n` +
+        `This is the only record of the editorial work, and a mistyped --book or --modules is\n` +
+        `indistinguishable from a module that legitimately has no edits. Check the spelling\n` +
+        `against the DB; if a module really has none, drop it from --modules and re-run.`
+    );
+  }
+
   const cache = new Map();
   const contextFor = (row) => {
     const key = `${row.chapter}/${row.module_id}`;
