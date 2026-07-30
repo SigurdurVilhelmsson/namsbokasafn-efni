@@ -212,7 +212,7 @@ echo "${PIPESTATUS[0]}"     # bash: the script's exit code, not tee's
 |---|---|---|
 | 0 | Everything matched and reconciled | Proceed. |
 | 1 | Unmatched rows exist | **Expected.** Proceed; you place those by hand below. |
-| 2 | A module is absent from the new extraction | **STOP.** Re-extraction failed. Do not continue. |
+| 2 | A module is absent from the new extraction | **STOP.** Re-extraction failed. Do not continue. ⚠️ **Exit 2 can hide an exit 4** — a missing module's rows go to `unmatched`, never to the restore list where collisions are counted, so once you fix the extraction the next dry run may surface a *new* fatal code. Expect to run it twice. |
 | 3 | The buckets did not reconcile | **STOP.** Rows are unaccounted for. |
 | 4 | One editor+segment key carries more than one restorable row | **STOP.** See below. |
 
@@ -225,8 +225,17 @@ refuses rather than pick**, because which revision supersedes which is an editor
 a mechanical one.
 
 The report names each colliding key. Decide which row wins, remove the other from the snapshot
-**copy** (never the off-box original), and re-run the dry run. ⚠️ **Do not re-run Step 4a** — it is
-unaffected by this, and re-running it after the apply empties the editor's queue.
+**copy** (never the off-box original), and re-run the dry run.
+
+**Where you return to depends on whether 4a has already run — and either way you do NOT re-run 4a:**
+
+| You are | Do this |
+|---|---|
+| **Before 4a** (the normal case — you ran the dry run first, as Step 4a instructs) | Resolve the snapshot copy, re-run the dry run until it exits 0 or 1, then go to Step 4a. |
+| **After 4a** (you hit exit 4 on a later dry run, e.g. after fixing an exit 2) | Resolve the snapshot copy and re-run the dry run only. **4a is still valid and must not be repeated** — it superseded the pre-break rows once, which is all it needs to do, and it is idempotent in effect but *not* safe to repeat after the apply. The dry run writes nothing, so re-running it as often as you like costs nothing. |
+
+⚠️ **Editing the snapshot copy does not invalidate 4a.** 4a operates on prod's rows; the snapshot
+is a separate file. Nothing about resolving a collision changes what 4a did.
 
 - [ ] Exit 4 not seen, or resolved and re-run clean: ______
 
