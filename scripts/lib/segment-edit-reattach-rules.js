@@ -18,13 +18,28 @@ export function classifyByStatus(status) {
   return RESTORABLE_STATUSES.has(status) ? 'restore' : 'skip-status';
 }
 
+/**
+ * Marker families an editor must FIX while re-confirming a restored edit.
+ *
+ * ⚠️ The markdown family (`*x*`, `__x__`, `++x++`, `~x~`, `^x^`) is deliberately
+ * NOT here, and must not be re-added. It is the segment editor's **current
+ * toolbar vocabulary**, not retired residue:
+ *   - `server/public/js/segment-editor.js:972-977` binds Ctrl+B/I/T/U and the
+ *     sub/sup buttons to `**`, `*`, `__`, `++`, `~`, `^`;
+ *   - `:2616` inserts a glossary term as `__term__`;
+ *   - `tools/cnxml-inject.js:1484` maps `__x__` → `<term>`, alongside
+ *     `{{term}}…{{/term}}` and `[[term:text|id]]` — all three are accepted;
+ *   - `:1770-1790` renders every one of them in the editor preview.
+ * Flagging them told an editor that their own correct, current formatting was
+ * obsolete, on 6 of the 7 toolbar buttons. Measured before removal.
+ *
+ * What remains is genuinely legacy: nothing in the editor writes `{{i}}`/`{{b}}`
+ * today, and that family is the one gated behind `cnxml-inject.js`'s
+ * `hasApiMarkers` (register C16(a)).
+ */
 const MARKER_CLASSES = [
   ['curly-emphasis', /\{\{\/?[ib]\}\}/],
   ['curly-term-fn', /\{\{\/?(term|fn)\}\}/],
-  [
-    'markdown',
-    /(?<!\*)\*[^*\n]{1,60}\*(?!\*)|~[^~\n]{1,60}~|\^[^^\n]{1,60}\^|__[^_\n]{1,40}__|\+\+[^+\n]{1,40}\+\+/,
-  ],
 ];
 
 /**

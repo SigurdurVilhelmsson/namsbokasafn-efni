@@ -42,16 +42,34 @@ describe('detectRetiredMarkers', () => {
     expect(detectRetiredMarkers('{{term}}mól{{/term}}')).toEqual(['curly-term-fn']);
   });
 
-  it('finds markdown shapes', () => {
-    expect(detectRetiredMarkers('H~2~O')).toEqual(['markdown']);
+  // ⚠️ The markdown family is the segment editor's CURRENT toolbar vocabulary,
+  // not retired residue: segment-editor.js:972-977 binds Ctrl+B/I/T/U and the
+  // sub/sup buttons to **, *, __, ++, ~, ^, the glossary insert writes __term__
+  // (:2616), inject maps __x__ → <term> (cnxml-inject.js:1484) and the preview
+  // renders all of them (:1770-1790). Flagging them told an editor that their
+  // own correct, current formatting was obsolete — on 6 of the 7 toolbar
+  // buttons.
+  it("does not flag the editor toolbar's term marker — Ctrl+T writes exactly this", () => {
+    expect(detectRetiredMarkers('Staðaleining __lengdar__ í SI-kerfinu')).toEqual([]);
+  });
+
+  it('does not flag the toolbar italic, underline, subscript or superscript', () => {
+    expect(detectRetiredMarkers('*skáletrað* ++undirstrikað++ H~2~O 10^3^ m')).toEqual([]);
+  });
+
+  it('does not flag a glossary term insertion', () => {
+    expect(detectRetiredMarkers('orðið __efnafræði__ hér')).toEqual([]);
   });
 
   it('returns every class present, in stable order', () => {
-    expect(detectRetiredMarkers('{{i}}x{{/i}} {{fn}}y{{/fn}} ^z^')).toEqual([
+    expect(detectRetiredMarkers('{{i}}x{{/i}} {{fn}}y{{/fn}}')).toEqual([
       'curly-emphasis',
       'curly-term-fn',
-      'markdown',
     ]);
+  });
+
+  it('still flags curly emphasis when it sits beside current toolbar markup', () => {
+    expect(detectRetiredMarkers('{{i}}gamalt{{/i}} og __nýtt__')).toEqual(['curly-emphasis']);
   });
 
   it('does not flag current bracket markers', () => {
