@@ -14,6 +14,7 @@ import {
   buildMedia,
   stripTermMarkersToText,
   parseCliArgs,
+  getMathLabelResolver,
 } from '../cnxml-inject.js';
 import { extractInlineText } from '../cnxml-extract.js';
 
@@ -2267,5 +2268,31 @@ describe('parseCliArgs --allow-en-fallback (A2-a)', () => {
     expect(() => parseCliArgs(['--allow-en-fallback', '--verbose'])).toThrow('EXIT');
     errSpy.mockRestore();
     exitSpy.mockRestore();
+  });
+});
+
+describe('getMathLabelResolver — cache-miss warning (C18)', () => {
+  it('warns on first call (cache-miss), suppresses on repeat calls (cache-hit)', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    // C18: core cache-miss regression test. Calls same bookDir multiple times
+    // and verifies the warn gate works (warn once on cache-miss, suppress on hit).
+    // efnafraedi-2e has 13 genuine glossary competitions, so the report is non-null.
+    // Cache is module-level state: no other test in this file calls getMathLabelResolver.
+    const bookDir = 'books/efnafraedi-2e';
+
+    // First call → cache miss → warn
+    getMathLabelResolver(bookDir);
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+
+    // Second call, same bookDir → cache hit → no additional warn
+    getMathLabelResolver(bookDir);
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+
+    // Third call, same bookDir → cache hit → no additional warn
+    getMathLabelResolver(bookDir);
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+
+    warnSpy.mockRestore();
   });
 });

@@ -4515,4 +4515,5 @@ export {
   buildMediaElement,
   buildMedia,
   applyMathLabelSubstitution,
+  getMathLabelResolver,
 };
