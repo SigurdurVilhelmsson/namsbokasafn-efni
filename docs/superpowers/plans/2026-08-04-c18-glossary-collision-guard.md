@@ -620,8 +620,16 @@ node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1 2>&1 | head 
 Expected: the ⚠️ block appears **once**, naming 13 keys with **12 not covered**, listing 5 and `… 8 more`.
 
 ```bash
-node tools/cnxml-inject.js efnafraedi-2e 1 2>&1 | grep -c 'glossary (efnafraedi-2e)'
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 2>&1 | grep -c 'glossary (efnafraedi-2e)'
 ```
+⚠️ **Flags, not positionals.** `node tools/cnxml-inject.js efnafraedi-2e 1` exits 1 with
+`Error: --book is required` and never reaches the warning, so `grep -c` returns **0** — a
+false negative that reads exactly like the guard having regressed. (CLAUDE.md documented
+the positional form for three tools until 2026-08-04; corrected there.)
+⚠️ This command performs a **real inject** and regenerates `translation-errors.json` and
+`residue-report.mt-preview.json`. Revert that churn before committing —
+`git checkout -- books/efnafraedi-2e/{translation-errors.json,residue-report.mt-preview.json}`
+— it is not part of this change.
 Expected: **1** — not one per module. If this prints a number in the dozens, the warning
 is outside the cache-miss branch.
 
