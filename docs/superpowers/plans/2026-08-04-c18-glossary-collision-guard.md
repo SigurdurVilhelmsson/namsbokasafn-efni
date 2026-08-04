@@ -620,8 +620,16 @@ node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1 2>&1 | head 
 Expected: the ⚠️ block appears **once**, naming 13 keys with **12 not covered**, listing 5 and `… 8 more`.
 
 ```bash
-node tools/cnxml-inject.js efnafraedi-2e 1 2>&1 | grep -c 'glossary (efnafraedi-2e)'
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 2>&1 | grep -c 'glossary (efnafraedi-2e)'
 ```
+⚠️ **Flags, not positionals.** `node tools/cnxml-inject.js efnafraedi-2e 1` exits 1 with
+`Error: --book is required` and never reaches the warning, so `grep -c` returns **0** — a
+false negative that reads exactly like the guard having regressed. (CLAUDE.md documented
+the positional form for three tools until 2026-08-04; corrected there.)
+⚠️ This command performs a **real inject** and regenerates `translation-errors.json` and
+`residue-report.mt-preview.json`. Revert that churn before committing —
+`git checkout -- books/efnafraedi-2e/{translation-errors.json,residue-report.mt-preview.json}`
+— it is not part of this change.
 Expected: **1** — not one per module. If this prints a number in the dozens, the warning
 is outside the cache-miss branch.
 
@@ -1037,6 +1045,17 @@ and line 127 (the no-book-glossary branch) with:
 
 *(The inline branch previously printed `inlineTerms.length` — the input, not the output. Same defect `:119`'s own comment warns about, one branch over.)*
 
+> ⚠️ **SUPERSEDED 2026-08-04 by the final review's Fix 3 — the block above is NOT the shipped
+> code.** The whole-branch review found that design-spec §2 claimed the omission report was
+> wired at **both** `translate-chapter-titles.js` call sites while this branch left the
+> no-book-glossary one unwired. The shipped version passes `onOmitted`, captures
+> `omittedCount`, and appends `omitNote`, mirroring the book-glossary branch above it.
+> Behaviour on today's data is unchanged (one hardcoded inline term ⇒ count 0 ⇒ empty note);
+> the point is that the scope claim and the code now agree.
+>
+> Recorded rather than silently edited, per this repo's append-only convention for plan
+> documents. **Read the tree, not this block.**
+
 - [ ] **Step 4: Run tests, then verify against the real book**
 
 Run: `npm test`
@@ -1247,6 +1266,19 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 }
 ```
 
+⚠️ **CORRECTED post-merge (whole-branch review finding I3) — the `commaLists` shape above is
+last-write-wins and cannot be cleared by `--update-baseline`.** `findGlossaryCollisions` emits
+one `commaLists` entry per ROW, so a headword with two distinct comma-list values produces two
+findings; `buildBaseline`'s `commaLists[c.english] = c.value` (line above) keeps only the last,
+and `diffAgainstBaseline`'s `baseLists[c.english] !== c.value` then reports the other as new
+**forever** — the documented remedy cannot clear it. The shipped code instead makes
+`commaLists` a `Record<english, string[]>`: `buildBaseline` pushes each value onto a per-key
+array, and `diffAgainstBaseline` checks `!(baseLists[c.english] || []).includes(c.value)`.
+`buildBaseline` also ships as `export function buildBaseline`, not the module-local
+`function buildBaseline` shown above, so `tools/__tests__/glossaryCollisionBaseline.test.js`
+can pin the accumulation directly. Latent on today's tree either way — both committed
+baselines carry `"commaLists": {}` — so this needed no data migration.
+
 - [ ] **Step 2: Add the npm script**
 
 In `package.json`, add after the `validate` line:
@@ -1424,31 +1456,48 @@ describe('diffAgainstBaseline semantics', () => {
 - [ ] **Step 2: Run it**
 
 Run: `npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js`
-Expected: PASS — chemistry and organic clean against their baselines, biology clean with no baseline (0 findings), plus 6 semantics tests.
+Expected: PASS — chemistry and organic clean against their baselines, biology clean with no baseline (0 findings), plus 5 semantics tests. ⚠️ **CORRECTED post-merge (I3 fix wave):** this file also gained a third `describe` block (3 tests) pinning the `commaLists` baseline's array shape — 12 tests total, not 9. Don't let this line rot into a fourth stale count; if the file's shape changes again, fix the number here rather than leaving it.
 
 - [ ] **Step 3: Prove the fence actually bites (mutation check)**
 
 A fence that never fails is indistinguishable from no fence. Verify it fails on a real regression:
 
+⚠️ **This step mutates a REAL committed file in the working tree**, not a copy. That is
+unsafe if anything else touches `books/efnafraedi-2e/glossary/glossary-collisions-baseline.json`
+concurrently, or if the process dies between the mutate and restore steps — the `.bak` sibling
+does not by itself prove the original file made it back byte-for-byte. Copy the baseline
+**outside the repo** before mutating it, and assert `git diff --exit-code` on the baseline path
+after restore, rather than trusting the `mv` alone:
+
 ```bash
 node -e "
 const fs=require('fs');
+const os=require('os');
+const path=require('path');
 const p='books/efnafraedi-2e/glossary/glossary-collisions-baseline.json';
+const backup=path.join(os.tmpdir(), 'c18-baseline-backup.json');
+fs.copyFileSync(p, backup);
 const b=JSON.parse(fs.readFileSync(p));
 delete b.competitions['group'];
-fs.writeFileSync(p+'.bak', fs.readFileSync(p));
 fs.writeFileSync(p, JSON.stringify(b,null,2)+'\n');
 "
 npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js
 ```
 Expected: **FAIL**, naming `group` under `newCompetitions`.
 
-Restore:
+Restore, from the OUTSIDE-repo copy, then confirm the tree is clean rather than assuming the
+copy-back succeeded:
 ```bash
-mv books/efnafraedi-2e/glossary/glossary-collisions-baseline.json.bak books/efnafraedi-2e/glossary/glossary-collisions-baseline.json
+node -e "
+const fs=require('fs');
+const os=require('os');
+const path=require('path');
+fs.copyFileSync(path.join(os.tmpdir(), 'c18-baseline-backup.json'), 'books/efnafraedi-2e/glossary/glossary-collisions-baseline.json');
+"
+git diff --exit-code -- books/efnafraedi-2e/glossary/glossary-collisions-baseline.json
 npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js
 ```
-Expected: PASS.
+Expected: `git diff --exit-code` exits 0 (no diff) and the suite is PASS.
 
 - [ ] **Step 4: Full suite**
 
@@ -1486,13 +1535,29 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 - [ ] `npm test` from the repo root — green. **This is the authoritative gate.**
 - [ ] `npm run lint` **and** `npm run format:check` — both green (CI runs both; `npm run lint` alone is not the Lint job).
-- [ ] **Byte-neutrality proof.** Re-render one chemistry chapter and confirm zero diff:
+- [x] **Byte-neutrality proof — ✅ VERIFIED 2026-08-04.**
+
+  ⚠️ **This step originally re-rendered and checked `05-publication/`, which tests the
+  WRONG STAGE.** `substituteMathLabels` is called from `cnxml-inject.js`, not
+  `cnxml-render.js` — per `docs/workflow/simplified-workflow.md`, inject writes
+  `03-translated/` (Step 5a) and render writes `05-publication/` (Step 5b). A clean
+  render diff would have proved nothing about `buildGlossaryMap`.
+
+  The correct check, and its result:
   ```bash
-  git stash list  # ensure clean tree first
-  node tools/cnxml-render.js efnafraedi-2e 1
-  git status --short books/efnafraedi-2e/05-publication/
+  node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1
+  git status --short books/efnafraedi-2e/03-translated/     # → EMPTY ✅
   ```
-  Expected: **no modified files**. If anything changed, the render path is not byte-neutral and Task 2 is wrong.
+  `03-translated/` was **byte-identical** after re-injection. Fidelity summary unchanged
+  at 126 PERFECT / 23 with discrepancies (37 total), matching CLAUDE.md's documented
+  chemistry baseline.
+
+  ⚠️ Re-injection regenerates `translation-errors.json` and `residue-report.mt-preview.json`
+  (timestamps, plus a `tolerated` key the committed file predates). Revert that churn — it
+  is not part of this change:
+  ```bash
+  git checkout -- books/efnafraedi-2e/{translation-errors.json,residue-report.mt-preview.json}
+  ```
 - [ ] Whole-branch adversarial review (the item-17/-21 pattern) before opening the PR.
 - [ ] Update register §C18 with the outcome. **Edit §C18 in the register — do not edit the frozen spec**, per CLAUDE.md § *One source of truth*.
 

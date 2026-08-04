@@ -65,6 +65,7 @@ import {
   substituteMathLabels,
   reportMathLabels,
 } from './lib/math-label-substitute.js';
+import { formatCollisionReport } from './lib/glossary-collisions.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -4161,12 +4162,17 @@ function writeOutput(chapter, moduleId, cnxml, track) {
   return outputPath;
 }
 
-// WS4 item 5 — math-label substitution. Resolver (overlay + glossary) is per-book;
-// cache it so a whole-book inject run builds it once.
 const _mathLabelResolverCache = new Map();
 function getMathLabelResolver(bookDir) {
   if (!_mathLabelResolverCache.has(bookDir)) {
-    _mathLabelResolverCache.set(bookDir, loadMathLabelResolver(bookDir));
+    const resolver = loadMathLabelResolver(bookDir);
+    // C18: warn on cache-miss only — once per book per process. A whole-book
+    // inject touches ~90 modules, so per-module warning would print ~1,170
+    // lines and train the reader to ignore it. Noise fails the same way
+    // silence does.
+    const report = formatCollisionReport(path.basename(bookDir), resolver.collisions);
+    if (report) console.warn(report);
+    _mathLabelResolverCache.set(bookDir, resolver);
   }
   return _mathLabelResolverCache.get(bookDir);
 }
@@ -4509,4 +4515,5 @@ export {
   buildMediaElement,
   buildMedia,
   applyMathLabelSubstitution,
+  getMathLabelResolver,
 };

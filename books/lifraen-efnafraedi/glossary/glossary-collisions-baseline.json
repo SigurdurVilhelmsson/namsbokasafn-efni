@@ -1,0 +1,98 @@
+{
+  "_note": "Accepted term competitions (register C18). This file is a WORKLIST, not an approval. Every entry is an unresolved editorial decision (register C14 (2)) that row order is currently making on readers’ behalf. Shrink it by resolving terms in the terminology DB; do not grow it to silence the gate.",
+  "competitions": {
+    "aggregate": {
+      "candidates": [
+        "þyrpast saman",
+        "þyrping"
+      ],
+      "chosen": "þyrping"
+    },
+    "atom": {
+      "candidates": [
+        "atóm",
+        "frumeind"
+      ],
+      "chosen": "frumeind"
+    },
+    "body-centered cubic": {
+      "candidates": [
+        "miðjusetinn teningur",
+        "miðlæg teningslaga"
+      ],
+      "chosen": "miðlæg teningslaga"
+    },
+    "deposition": {
+      "candidates": [
+        "hélun",
+        "útfelling"
+      ],
+      "chosen": "útfelling"
+    },
+    "dilute": {
+      "candidates": [
+        "þunnur",
+        "þynna"
+      ],
+      "chosen": "þynna"
+    },
+    "emission": {
+      "candidates": [
+        "ljómun",
+        "útblástur"
+      ],
+      "chosen": "útblástur"
+    },
+    "excess": {
+      "candidates": [
+        "umfram-",
+        "umframmagn"
+      ],
+      "chosen": "umframmagn"
+    },
+    "face-centered cubic": {
+      "candidates": [
+        "hliðarsetinn teningur",
+        "hliðlæg teningslaga"
+      ],
+      "chosen": "hliðlæg teningslaga"
+    },
+    "group": {
+      "candidates": [
+        "flokkur",
+        "hópur"
+      ],
+      "chosen": "hópur"
+    },
+    "octahedral": {
+      "candidates": [
+        "áttflötungslaga",
+        "áttflötungur"
+      ],
+      "chosen": "áttflötungur"
+    },
+    "resonance": {
+      "candidates": [
+        "samhrif",
+        "vok",
+        "vok mynd"
+      ],
+      "chosen": "vok mynd"
+    },
+    "simple cubic": {
+      "candidates": [
+        "einfaldur teningur",
+        "einföld teningslaga"
+      ],
+      "chosen": "einföld teningslaga"
+    },
+    "tetrahedral": {
+      "candidates": [
+        "ferflötungslaga",
+        "ferflötungur"
+      ],
+      "chosen": "ferflötungur"
+    }
+  },
+  "commaLists": {}
+}

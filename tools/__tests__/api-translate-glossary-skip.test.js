@@ -99,6 +99,46 @@ describe('loadGlossary skip reporting', () => {
   });
 });
 
+describe('loadGlossary omitted reporting (C18)', () => {
+  it('reports the omitted count even when EVERY approved term was contested (report-before-empty-check)', () => {
+    // Both rows compete for the same headword, so formatGlossary omits both
+    // and glossary.terms.length is 0 — the exact condition under which
+    // loadGlossary's empty-check would return null. onOmitted must fire
+    // BEFORE that check, or an all-contested glossary prints the same "none
+    // available" line as a missing file, hiding the worst case behind the
+    // benign one.
+    const g = writeGlossary([
+      { english: 'atom', icelandic: 'atóm', status: 'approved' },
+      { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+    ]);
+    let omittedReport = null;
+    const glossary = loadGlossary(g, 'chemistry', {
+      onOmitted: (r) => (omittedReport = r),
+    });
+    expect(glossary).toBeNull();
+    expect(omittedReport).not.toBeNull();
+    expect(omittedReport.omitted).toHaveLength(2);
+  });
+
+  it('does not swallow a throwing onOmitted into a null glossary', () => {
+    // onOmitted is caller-supplied and must not run inside the catch-all that
+    // turns corrupt JSON into null, or a throwing callback becomes
+    // indistinguishable from corrupt JSON.
+    const g = writeGlossary([
+      { english: 'water', icelandic: 'vatn', status: 'approved' },
+      { english: 'atom', icelandic: 'atóm', status: 'approved' },
+      { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+    ]);
+    expect(() =>
+      loadGlossary(g, 'chemistry', {
+        onOmitted: () => {
+          throw new Error('omitted callback blew up');
+        },
+      })
+    ).toThrow('omitted callback blew up');
+  });
+});
+
 describe('transitive safety: filterGlossaryForText never sees a blank side', () => {
   it('does not throw on a glossary built from a null-English term', () => {
     // Before the Task 1 guard this threw TypeError: Cannot read properties
@@ -138,5 +178,30 @@ describe('glossaryStatusLine', () => {
   it('omits the note entirely when a loaded glossary dropped nothing', () => {
     const g = { terms: [{ sourceWord: 'water', targetWord: 'vatn' }], domain: 'chemistry' };
     expect(glossaryStatusLine(g, 0)).toBe('Glossary: 1 approved chemistry terms');
+  });
+});
+
+describe('glossaryStatusLine — omitted count (C18)', () => {
+  const g = { domain: 'chemistry', terms: [{ sourceWord: 'water', targetWord: 'vatn' }] };
+
+  it('reports omitted terms alongside skipped ones', () => {
+    expect(glossaryStatusLine(g, 0, 27)).toContain('27');
+  });
+
+  it('says nothing extra when nothing was omitted', () => {
+    expect(glossaryStatusLine(g, 0, 0)).toBe('Glossary: 1 approved chemistry terms');
+  });
+
+  it('reports both counts when both happened', () => {
+    const line = glossaryStatusLine(g, 3, 27);
+    expect(line).toContain('3');
+    expect(line).toContain('27');
+  });
+
+  // Same reasoning as the malformed-total case already documented in this
+  // file: when everything is omitted, glossary is null and the line must not
+  // read identically to "there is no glossary file".
+  it('still reports the omitted count when the glossary loaded as null', () => {
+    expect(glossaryStatusLine(null, 0, 27)).toContain('27');
   });
 });

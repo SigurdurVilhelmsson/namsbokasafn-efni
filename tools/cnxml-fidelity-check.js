@@ -30,6 +30,7 @@ import {
 import { loadAllowlist, classifyDiff } from './lib/fidelity-allowlist.js';
 import { loadMathLabelResolver, substituteMathLabels } from './lib/math-label-substitute.js';
 import { decodeEntities } from './lib/math-label-inventory.js';
+import { formatCollisionReport } from './lib/glossary-collisions.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -307,7 +308,13 @@ function main() {
   }
 
   const allowlist = loadAllowlist(BOOKS_DIR);
-  const { resolve: mathResolve } = loadMathLabelResolver(BOOKS_DIR);
+  // C18: already once-per-book by structure — this call sits before the
+  // per-chapter loop, so no cache is needed. It previously discarded the
+  // collision report, which made the tool whose job is reporting
+  // discrepancies silent about this one.
+  const { resolve: mathResolve, collisions: mathCollisions } = loadMathLabelResolver(BOOKS_DIR);
+  const collisionReport = formatCollisionReport(path.basename(BOOKS_DIR), mathCollisions);
+  if (collisionReport) console.warn(collisionReport);
 
   let totalDiscrepancies = 0;
   let unexplainedDiscrepancies = 0;

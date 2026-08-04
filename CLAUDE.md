@@ -322,11 +322,20 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 `npm` scripts (`test`, `validate`, `server:dev`, `update-status`, …) are in `package.json` —
 read them there. Listed below are only the tool invocations whose **flags are not guessable**.
 
+**⚠️ CORRECTED 2026-08-04 — the three CNXML tools take `--book`/`--chapter` FLAGS, not
+positionals.** This table documented `<book> <chapter>` positionally for all three and
+**every one of those forms fails**: `cnxml-extract` and `cnxml-inject` exit 1 with
+`Error: --book is required`, and `cnxml-render` dies with an unhandled `path` TypeError
+(a raw stack trace, not a usage message). Verified by running all three. `cnxml-extract`
+does declare one positional, but it is `input` — a file path — not the book slug.
+Ironic given this section's own promise to list "only the tool invocations whose flags
+are not guessable".
+
 | Command | Purpose |
 |---------|---------|
-| `node tools/cnxml-extract.js <book> <chapter>` | Extract EN segments from CNXML |
-| `node tools/cnxml-inject.js <book> <chapter>` | Inject translations into CNXML |
-| `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
+| `node tools/cnxml-extract.js --book <book> --chapter <N>` | Extract EN segments from CNXML |
+| `node tools/cnxml-inject.js --book <book> --chapter <N>` | Inject translations into CNXML |
+| `node tools/cnxml-render.js --book <book> --chapter <N>` | Render translated CNXML to HTML |
 | `node tools/api-translate.js --book <book> --chapter <ch>` | Translate segments via Málstaður API |
 | `node tools/api-translate.js --book <book> --dry-run` | Show translation plan + cost estimate |
 | `node tools/translate-chapter-titles.js <slug>` | Translate chapter titles via Málstaður API |

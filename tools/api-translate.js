@@ -627,13 +627,15 @@ export { bookToDomain };
  *
  * @param {string} glossaryDir
  * @param {string} domain
- * @param {{onSkipped?: (dropped: Array<object>) => void}} [options]
+ * @param {{onSkipped?: (dropped: Array<object>) => void,
+ *          onOmitted?: (report: {omitted: Array<object>, competitions: Array<object>, commaLists: Array<object>}) => void}} [options]
  */
-export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
+export function loadGlossary(glossaryDir, domain, { onSkipped, onOmitted } = {}) {
   const glossaryPath = path.join(glossaryDir, 'glossary-unified.json');
   if (!fs.existsSync(glossaryPath)) return null;
 
   let dropped = null;
+  let omittedReport = null;
   let glossary;
   try {
     const data = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
@@ -648,17 +650,26 @@ export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
       onSkipped: (d) => {
         dropped = d;
       },
+      // Same non-throwing inner-callback discipline as onSkipped above: a
+      // throwing caller callback handed straight to formatGlossary would be
+      // swallowed by this try/catch and returned as null, indistinguishable
+      // from corrupt JSON.
+      onOmitted: (r) => {
+        omittedReport = r;
+      },
     });
   } catch {
     return null;
   }
 
   // BEFORE the empty-check, deliberately. When every approved term is
-  // malformed, terms.length is 0 and this function returns null — and the
-  // caller then prints "none available", the same message as having no
-  // glossary file at all. Reporting first is what keeps the worst case
-  // (a wholly corrupt glossary) from reading as the benign one.
+  // malformed or omitted, terms.length is 0 and this function returns null —
+  // and the caller then prints "none available", the same message as having
+  // no glossary file at all. Reporting first is what keeps the worst case
+  // (a wholly corrupt or wholly contested glossary) from reading as the
+  // benign one.
   if (dropped && typeof onSkipped === 'function') onSkipped(dropped);
+  if (omittedReport && typeof onOmitted === 'function') onOmitted(omittedReport);
 
   if (glossary.terms.length === 0) return null;
   return glossary;
@@ -675,11 +686,17 @@ export function loadGlossary(glossaryDir, domain, { onSkipped } = {}) {
  * countInlineMarkers — a data defect must be visible where it happens, not
  * inferred three stages downstream from bad output.
  */
-export function glossaryStatusLine(glossary, skippedCount) {
-  const skipNote = skippedCount > 0 ? ` (${skippedCount} malformed skipped)` : '';
+export function glossaryStatusLine(glossary, skippedCount, omittedCount = 0) {
+  const notes = [];
+  if (skippedCount > 0) notes.push(`${skippedCount} malformed skipped`);
+  // C18: an omitted term is a term whose Icelandic side is contested. Naming
+  // it here rather than in a separate line keeps the MT stage's one status
+  // line the single place a glossary defect surfaces.
+  if (omittedCount > 0) notes.push(`${omittedCount} omitted — contested or comma-list`);
+  const note = notes.length > 0 ? ` (${notes.join(', ')})` : '';
   return glossary
-    ? `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${skipNote}`
-    : `Glossary: none available${skipNote} (continuing without)`;
+    ? `Glossary: ${glossary.terms.length} approved ${glossary.domain} terms${note}`
+    : `Glossary: none available${note} (continuing without)`;
 }
 
 // ─── MT Edit-Lock ───────────────────────────────────────────────────
@@ -1109,12 +1126,16 @@ async function main() {
   if (!args.noGlossary) {
     const domain = bookToDomain(args.book);
     let skippedCount = 0;
+    let omittedCount = 0;
     glossary = loadGlossary(path.join(BOOKS_DIR, 'glossary'), domain, {
       onSkipped: (dropped) => {
         skippedCount = dropped.length;
       },
+      onOmitted: (report) => {
+        omittedCount = report.omitted.length;
+      },
     });
-    console.log(glossaryStatusLine(glossary, skippedCount));
+    console.log(glossaryStatusLine(glossary, skippedCount, omittedCount));
   }
 
   // Discover modules to translate
