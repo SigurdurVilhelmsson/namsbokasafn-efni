@@ -183,6 +183,70 @@ describe('backup-db.sh off-box upload', () => {
   });
 });
 
+// The crontab that install-cron.sh prints is the ONLY place the off-box backup is
+// configured in production, and nothing else exercises it: a wrong value there fails
+// at 06:30 into a log nobody reads (there is no MAILTO), while an interactive run by
+// hand still succeeds. Both defects these tests pin were live — the template printed
+// `secret:namsbokasafn-db`, which backup-db.sh rejects with exit 5, and it carried no
+// PATH, so cron (PATH=/usr/bin:/bin by default) could not see rclone at
+// /usr/local/bin where the official installer puts it.
+describe('install-cron.sh template is executable as printed', () => {
+  const INSTALL_CRON = path.join(REPO, 'scripts', 'install-cron.sh');
+
+  function printedCrontab() {
+    return execFileSync('bash', [INSTALL_CRON], {
+      encoding: 'utf8',
+      env: { ...process.env, DEPLOY_PATH: '/srv/x' },
+    });
+  }
+
+  /** BACKUP_REMOTE values on real cron entries only — not the ones named in comments. */
+  function printedRemotes() {
+    return printedCrontab()
+      .split('\n')
+      .filter((line) => /^[\d*]/.test(line))
+      .flatMap((line) => [...line.matchAll(/BACKUP_REMOTE=(\S+)/g)].map((m) => m[1]));
+  }
+
+  it('prints at least one BACKUP_REMOTE cron entry', () => {
+    expect(printedRemotes().length).toBeGreaterThan(0);
+  });
+
+  // Deliberately runs the REAL guard rather than re-checking the ':'/'/' rule here.
+  // A test that re-implemented the guard would keep passing if the guard itself
+  // changed — the template would drift out from under it silently.
+  it('prints BACKUP_REMOTE values that backup-db.sh accepts (never exit 5)', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    makeTestDb(db);
+
+    for (const remote of printedRemotes()) {
+      let status = 0;
+      try {
+        execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
+          env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: remote },
+          cwd: work,
+          encoding: 'utf8',
+        });
+      } catch (e) {
+        status = e.status;
+      }
+      // 3 (no rclone) and 4 (remote not configured on this box) are both fine here —
+      // the assertion is specifically that the value is not malformed.
+      expect(status, `install-cron.sh printed BACKUP_REMOTE=${remote}`).not.toBe(5);
+    }
+    rmSync(work, { recursive: true, force: true });
+  });
+
+  it('sets a cron PATH that includes /usr/local/bin, where rclone installs', () => {
+    const pathLine = printedCrontab()
+      .split('\n')
+      .find((line) => /^PATH=/.test(line));
+    expect(pathLine).toBeDefined();
+    expect(pathLine).toContain('/usr/local/bin');
+  });
+});
+
 describe('verify-db-backup.sh', () => {
   const VERIFY = path.join(REPO, 'scripts', 'verify-db-backup.sh');
 
