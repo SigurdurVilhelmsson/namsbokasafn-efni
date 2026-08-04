@@ -1,4 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 import {
   parseSegments,
   annotateInlineTerms,
@@ -2272,27 +2275,67 @@ describe('parseCliArgs --allow-en-fallback (A2-a)', () => {
 });
 
 describe('getMathLabelResolver — cache-miss warning (C18)', () => {
-  it('warns on first call (cache-miss), suppresses on repeat calls (cache-hit)', () => {
+  it('warns on cache-miss per-bookDir, suppresses on cache-hit, warns on different bookDir', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-    // C18: core cache-miss regression test. Calls same bookDir multiple times
-    // and verifies the warn gate works (warn once on cache-miss, suppress on hit).
-    // efnafraedi-2e has 13 genuine glossary competitions, so the report is non-null.
-    // Cache is module-level state: no other test in this file calls getMathLabelResolver.
-    const bookDir = 'books/efnafraedi-2e';
+    // C18: regression test for cache-miss warning gate. Uses synthetic fixture
+    // directories to isolate the test from production glossary state and from
+    // the convention that all other cnxml-inject tests are pure in-memory.
+    // Creates minimal glossary with ONE known competition (two entries with
+    // same English term, different Icelandic, both approved).
+    const minimalGlossary = JSON.stringify({
+      terms: [
+        {
+          english: 'test-key',
+          icelandic: 'option-one',
+          status: 'approved',
+          source: 'test',
+        },
+        {
+          english: 'test-key',
+          icelandic: 'option-two',
+          status: 'approved',
+          source: 'test',
+        },
+      ],
+    });
 
-    // First call → cache miss → warn
-    getMathLabelResolver(bookDir);
-    expect(warnSpy).toHaveBeenCalledTimes(1);
+    // Create two temporary book directories with glossary fixtures.
+    // Synthetic dirs ensure: (a) unique keys per test run → cold-cache guaranteed
+    // (no pollution from production state), (b) test passes only if cache is
+    // keyed per-bookDir (a boolean cache would pass identically).
+    const tmpDir1 = fs.mkdtempSync(path.join(os.tmpdir(), 'c18-test-'));
+    const tmpDir2 = fs.mkdtempSync(path.join(os.tmpdir(), 'c18-test-'));
 
-    // Second call, same bookDir → cache hit → no additional warn
-    getMathLabelResolver(bookDir);
-    expect(warnSpy).toHaveBeenCalledTimes(1);
+    try {
+      // Set up glossary for both temp dirs
+      fs.mkdirSync(path.join(tmpDir1, 'glossary'), { recursive: true });
+      fs.mkdirSync(path.join(tmpDir2, 'glossary'), { recursive: true });
+      fs.writeFileSync(path.join(tmpDir1, 'glossary', 'glossary-unified.json'), minimalGlossary);
+      fs.writeFileSync(path.join(tmpDir2, 'glossary', 'glossary-unified.json'), minimalGlossary);
 
-    // Third call, same bookDir → cache hit → no additional warn
-    getMathLabelResolver(bookDir);
-    expect(warnSpy).toHaveBeenCalledTimes(1);
+      // First call with tmpDir1 → cache miss → warn
+      getMathLabelResolver(tmpDir1);
+      expect(warnSpy).toHaveBeenCalledTimes(1);
 
-    warnSpy.mockRestore();
+      // Second call, same tmpDir1 → cache hit → no additional warn
+      getMathLabelResolver(tmpDir1);
+      expect(warnSpy).toHaveBeenCalledTimes(1);
+
+      // Third call, same tmpDir1 → cache hit → no additional warn
+      getMathLabelResolver(tmpDir1);
+      expect(warnSpy).toHaveBeenCalledTimes(1);
+
+      // Call with different tmpDir2 → cache miss → warn again.
+      // This proves the cache is keyed per-bookDir, not a boolean.
+      getMathLabelResolver(tmpDir2);
+      expect(warnSpy).toHaveBeenCalledTimes(2);
+    } finally {
+      // Clean up temp dirs. Use force: true so cleanup runs even if an
+      // assertion fails (ensuring no orphaned tmpdir per test run).
+      fs.rmSync(tmpDir1, { recursive: true, force: true });
+      fs.rmSync(tmpDir2, { recursive: true, force: true });
+      warnSpy.mockRestore();
+    }
   });
 });
