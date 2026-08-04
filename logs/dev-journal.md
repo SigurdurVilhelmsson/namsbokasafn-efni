@@ -157,3 +157,37 @@ had drifted by 8. Memory compacted 20.5KB → 17.1KB by deleting what CLAUDE.md 
 stale chem ch10 file, re-render the ch10 intro. Hard deadline: before the fall semester.
 
 ---
+## 2026-08-04 22:37 - Off-box DB backup (register A2) activated and restore-tested
+
+**Branch:** docs/a2-deploy-backup-followup
+**Modified:**
+?? .codegraph/
+
+**Recent commits:**
+3fa47934 docs(CLAUDE): CLAUDE.md's /api/health enumeration omitted the off-box backup
+5b57a0a0 docs(register): log the deploy.sh local-only pre-deploy backup under A2
+edc9d8be Merge pull request #351 from SigurdurVilhelmsson/fix/a2-offbox-backup-runbook
+
+**Why:** A2 was a [LEAD] gate on the C16 clean break — after the re-MT the DB
+snapshot is the only copy of the editorial work outside a gitignored SQLite file
+on one host. Prod now uploads sessions.db every 6h, encrypted client-side, to
+Linode Object Storage in gb-lon-1 (server is de-fra-2), plus a new monthly
+restore test. Completion criterion was RESTORE VERIFY: PASS, not the cron line.
+
+The scripts were already correct; both defects were in the *runbook* —
+install-cron.sh printed a BACKUP_REMOTE the script rejects (exit 5), and the
+crontab had no PATH so cron couldn't see rclone at /usr/local/bin. Same shape:
+passes by hand, fails on a schedule. Fixed + pinned by tests (#351, merged).
+
+Scope: sessions.db ONLY. books/ content still leaves the box via git alone, so
+C3's two untracked TMX files are unaffected.
+
+**Next session:** merge #352 (docs only, MERGEABLE), then the register's stated
+next [CODE] item — C14 (2) the glossary export's producer/provenance guard,
+which is what stands between the export and being switched back on. Prod still
+carries the uncommitted #CONTAINED-2026-08-03# edit in scripts/git-backup.sh.
+
+**Watch:** first unattended backup cron fires 00:30 UTC; /api/health should show
+offbox_backup.age_hours <= 6. `degraded` is now glossary_export alone.
+
+---
