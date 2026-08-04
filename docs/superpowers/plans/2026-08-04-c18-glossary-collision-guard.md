@@ -1045,6 +1045,17 @@ and line 127 (the no-book-glossary branch) with:
 
 *(The inline branch previously printed `inlineTerms.length` — the input, not the output. Same defect `:119`'s own comment warns about, one branch over.)*
 
+> ⚠️ **SUPERSEDED 2026-08-04 by the final review's Fix 3 — the block above is NOT the shipped
+> code.** The whole-branch review found that design-spec §2 claimed the omission report was
+> wired at **both** `translate-chapter-titles.js` call sites while this branch left the
+> no-book-glossary one unwired. The shipped version passes `onOmitted`, captures
+> `omittedCount`, and appends `omitNote`, mirroring the book-glossary branch above it.
+> Behaviour on today's data is unchanged (one hardcoded inline term ⇒ count 0 ⇒ empty note);
+> the point is that the scope claim and the code now agree.
+>
+> Recorded rather than silently edited, per this repo's append-only convention for plan
+> documents. **Read the tree, not this block.**
+
 - [ ] **Step 4: Run tests, then verify against the real book**
 
 Run: `npm test`
