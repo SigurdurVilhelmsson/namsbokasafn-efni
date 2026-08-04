@@ -115,17 +115,29 @@ if (fs.existsSync(glossaryPath)) {
         ? bookTerms.terms
         : [];
     const allTerms = [...fileTerms, ...inlineTerms];
-    glossaries = [formatGlossary(allTerms, { domain: 'chemistry', approvedOnly: false })];
+    let omittedCount = 0;
+    glossaries = [
+      formatGlossary(allTerms, {
+        domain: 'chemistry',
+        approvedOnly: false,
+        onOmitted: (report) => {
+          omittedCount = report.omitted.length;
+        },
+      }),
+    ];
     // Print what is actually sent, not allTerms.length: formatGlossary's
     // blank-side guard (register C14) drops entries with a blank/non-string
-    // English or Icelandic side, so the two counts can diverge.
-    console.log(`\nGlossary: ${glossaries[0].terms.length} terms (${glossaryPath})`);
+    // English or Icelandic side, and its competing-term guard (register C18)
+    // drops contested headwords and comma-list values — so the counts diverge
+    // three ways.
+    const omitNote = omittedCount > 0 ? `, ${omittedCount} contested/list omitted` : '';
+    console.log(`\nGlossary: ${glossaries[0].terms.length} terms${omitNote} (${glossaryPath})`);
   } catch {
     /* skip */
   }
 } else {
   glossaries = [formatGlossary(inlineTerms, { domain: 'chemistry', approvedOnly: false })];
-  console.log(`\nGlossary: ${inlineTerms.length} inline terms (no book glossary found)`);
+  console.log(`\nGlossary: ${glossaries[0].terms.length} inline terms (no book glossary found)`);
 }
 
 console.log('Translating...\n');
