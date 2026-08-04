@@ -50,6 +50,7 @@
 | `test-malstadur-api` | Sends carefully crafted test strings to the Málstaður translation API and |
 | `translate-chapter-titles` | Translate chapter titles for a book via the Málstaður API. |
 | `validate-chapter` | Validate chapter structure and status |
+| `validate-glossary` | Gate on unresolved glossary term competitions (register C18). |
 | `validate-pipeline-consistency` | Pipeline Status Consistency Validator |
 | `verify-extraction-coverage` | Read-only pre-freeze extraction-coverage checkpoint (campaign item 6b). |
 | `verify-reextract-equivalence` | No description available |
@@ -64,6 +65,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*43 tools total (43 active, 0 deprecated)*
+*44 tools total (44 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
