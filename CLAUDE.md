@@ -467,9 +467,14 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 operations (extract, translate, inject, render) are handled via CLI tools. The feature list is
 derivable from `server/routes/` — read it there rather than trusting a copy here.
 
-Production health check: `GET /api/health` (DB, migrations, books, auth, content-backup and
-glossary-export staleness). **Nothing polls it** — the routine surface is what `./scripts/deploy.sh`
-prints; otherwise `curl` it by hand.
+Production health check: `GET /api/health` — DB, migrations, books, auth, and **three** staleness
+heartbeats: **off-box DB backup** (`OFFBOX_BACKUP_STALE_HOURS`, default 26), content backup
+(`CONTENT_BACKUP_STALE_HOURS`, default 6), glossary export. *(This line omitted the off-box one until
+2026-08-04 — re-derive the list from the handler rather than trusting any prose copy, this one
+included.)* **Nothing polls it** — the routine surface is what `./scripts/deploy.sh` prints;
+otherwise `curl` it by hand. ⚠️ **A `degraded` verdict names which check failed — read it before
+concluding anything**; `degraded` has meant `glossary_export` alone since the off-box backup went
+live 2026-08-04.
 
 ### Change history
 
