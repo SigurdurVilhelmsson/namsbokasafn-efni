@@ -10,12 +10,16 @@ There are two layers:
 
 | Var | Read by | Default | Meaning |
 |---|---|---|---|
-| `BACKUP_REMOTE` | `backup-db.sh`, `verify-db-backup.sh` | *(unset → off-box skipped)* | An `rclone` **crypt** remote path, e.g. `secret:namsbokasafn-db`. **Must end in `:` or `/`** — the script fails loud (`exit 5`) otherwise, because a missing separator munges the object name and silently breaks retention. |
+| `BACKUP_REMOTE` | `backup-db.sh`, `verify-db-backup.sh` | *(unset → off-box skipped)* | An `rclone` **crypt** remote path, e.g. `secret:`. **Must end in `:` or `/`** — the script fails loud (`exit 5`) otherwise, because a missing separator munges the object name and silently breaks retention. Since the crypt remote already points at the bucket, `secret:` *is* the bucket root; a subpath form must still carry the trailing slash (`secret:sub/`). |
 | `BACKUP_REMOTE_KEEP` | `backup-db.sh` | `30` | How many most-recent objects to keep off-box (older ones pruned). |
 | `OFFBOX_BACKUP_STALE_HOURS` | the server (`/api/health`) | `26` | Age past which `/api/health` flags the off-box backup `stale` (one missed 6 h cycle + margin). |
 | `CONTENT_BACKUP_STALE_HOURS` | the server (`/api/health`) | `6` | Age past which `/api/health` flags the **content** backup `stale` (two missed 2 h cycles + margin). |
 
 **The encryption passphrase is NOT an environment variable.** Encryption is the `rclone` crypt remote's job (client-side — plaintext never leaves the box). The passphrase lives in the rclone config (`rclone config`, or `RCLONE_CONFIG_<NAME>_PASSWORD`). There is deliberately no `BACKUP_ENCRYPTION_KEY` the scripts read.
+
+🔴 **The passphrase must be escrowed in the password manager BEFORE the first upload — this is a gate, not a reminder.** rclone stores it in `rclone.conf` *obscured*, which is reversible, not encrypted. So the config on the box can decrypt the backups — and if the box is lost, the passphrase is lost with it, making every off-box copy permanently unrecoverable in exactly the disaster they exist for. An off-box backup you cannot decrypt is not a backup.
+
+**Do not password-protect `rclone.conf` itself.** It would break unattended cron — and break it at 06:30 with nobody watching, since the interactive setup test would still pass. Protect it with file permissions (`chmod 600`) instead.
 
 ## One-time setup (Linode Object Storage)
 
@@ -32,11 +36,16 @@ There are two layers:
 `scripts/install-cron.sh` prints the recommended crontab. The backup line must carry `BACKUP_REMOTE` (else off-box upload is skipped and `/api/health` will — correctly — report the backup stale):
 
 ```cron
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # DB backup: local + encrypted off-box, every 6 hours
-30 */6 * * * BACKUP_REMOTE=secret:namsbokasafn-db <repo>/scripts/backup-db.sh
+30 */6 * * * BACKUP_REMOTE=secret: <repo>/scripts/backup-db.sh
 # Monthly restore-test: prove an off-box backup is actually recoverable
-0 4 1 * *   BACKUP_REMOTE=secret:namsbokasafn-db <repo>/scripts/verify-db-backup.sh
+0 4 1 * *   BACKUP_REMOTE=secret: <repo>/scripts/verify-db-backup.sh
 ```
+
+⚠️ **The `PATH=` line is load-bearing.** cron gives a user crontab `PATH=/usr/bin:/bin`, but rclone's official installer puts the binary in `/usr/local/bin`. Without the line, every cron run dies at `exit 3` ("rclone not installed") — while the same command run by hand succeeds, because a *login* shell does have `/usr/local/bin`. That asymmetry is what makes it dangerous: the setup test passes and the thing it tested never runs. There is no `MAILTO`, so the only signal is `/api/health` going stale.
+
+⚠️ **`BACKUP_REMOTE` must end in `:` or `/`.** `secret:namsbokasafn-db` — the value this document and `install-cron.sh` both printed until 2026-08-04 — is rejected by `backup-db.sh` with `exit 5`. Pinned by `scripts/__tests__/backup-db.test.mjs`, which feeds `install-cron.sh`'s printed value to the real guard rather than re-checking the rule.
 
 The crypt passphrase is **not** on the cron line — it lives in the rclone config that cron's environment inherits.
 
