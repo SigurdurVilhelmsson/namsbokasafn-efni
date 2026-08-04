@@ -64,20 +64,36 @@ export function diffAgainstBaseline(collisions, baseline) {
     }
   }
 
-  const newCommaLists = collisions.commaLists.filter((c) => baseLists[c.english] !== c.value);
+  // commaLists is per-ROW (findGlossaryCollisions emits one entry per row), so
+  // one headword can carry two distinct comma-list values at once — baseLists
+  // must therefore hold an array per key, not a single last-write-wins
+  // string, or --update-baseline can never clear the entry it doesn't keep.
+  const newCommaLists = collisions.commaLists.filter(
+    (c) => !(baseLists[c.english] || []).includes(c.value)
+  );
   const seen = new Set(collisions.competitions.map((c) => c.english));
   const resolved = Object.keys(baseComps).filter((k) => !seen.has(k));
 
   return { newCompetitions, changedChoices, newCommaLists, resolved };
 }
 
-function buildBaseline(collisions) {
+// Exported for the baseline-schema regression test (register C18, review
+// finding I3) — mirrors the other pure helpers in this file (loadBaseline,
+// diffAgainstBaseline) already being exported for the same reason.
+export function buildBaseline(collisions) {
   const competitions = {};
   for (const c of collisions.competitions) {
     competitions[c.english] = { candidates: c.candidates, chosen: c.chosen };
   }
+  // Array per headword, not last-write-wins: findGlossaryCollisions emits one
+  // entry per ROW, so a headword with two distinct comma-list values must
+  // keep both, or the one buildBaseline drops can never be cleared by
+  // --update-baseline (register C18, review finding I3).
   const commaLists = {};
-  for (const c of collisions.commaLists) commaLists[c.english] = c.value;
+  for (const c of collisions.commaLists) {
+    if (!commaLists[c.english]) commaLists[c.english] = [];
+    commaLists[c.english].push(c.value);
+  }
   return {
     _note:
       'Accepted term competitions (register C18). This file is a WORKLIST, not an approval. ' +

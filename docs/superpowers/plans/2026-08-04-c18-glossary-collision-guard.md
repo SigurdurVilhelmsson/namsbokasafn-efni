@@ -1255,6 +1255,19 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 }
 ```
 
+⚠️ **CORRECTED post-merge (whole-branch review finding I3) — the `commaLists` shape above is
+last-write-wins and cannot be cleared by `--update-baseline`.** `findGlossaryCollisions` emits
+one `commaLists` entry per ROW, so a headword with two distinct comma-list values produces two
+findings; `buildBaseline`'s `commaLists[c.english] = c.value` (line above) keeps only the last,
+and `diffAgainstBaseline`'s `baseLists[c.english] !== c.value` then reports the other as new
+**forever** — the documented remedy cannot clear it. The shipped code instead makes
+`commaLists` a `Record<english, string[]>`: `buildBaseline` pushes each value onto a per-key
+array, and `diffAgainstBaseline` checks `!(baseLists[c.english] || []).includes(c.value)`.
+`buildBaseline` also ships as `export function buildBaseline`, not the module-local
+`function buildBaseline` shown above, so `tools/__tests__/glossaryCollisionBaseline.test.js`
+can pin the accumulation directly. Latent on today's tree either way — both committed
+baselines carry `"commaLists": {}` — so this needed no data migration.
+
 - [ ] **Step 2: Add the npm script**
 
 In `package.json`, add after the `validate` line:
@@ -1432,31 +1445,48 @@ describe('diffAgainstBaseline semantics', () => {
 - [ ] **Step 2: Run it**
 
 Run: `npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js`
-Expected: PASS — chemistry and organic clean against their baselines, biology clean with no baseline (0 findings), plus 6 semantics tests.
+Expected: PASS — chemistry and organic clean against their baselines, biology clean with no baseline (0 findings), plus 5 semantics tests. ⚠️ **CORRECTED post-merge (I3 fix wave):** this file also gained a third `describe` block (3 tests) pinning the `commaLists` baseline's array shape — 12 tests total, not 9. Don't let this line rot into a fourth stale count; if the file's shape changes again, fix the number here rather than leaving it.
 
 - [ ] **Step 3: Prove the fence actually bites (mutation check)**
 
 A fence that never fails is indistinguishable from no fence. Verify it fails on a real regression:
 
+⚠️ **This step mutates a REAL committed file in the working tree**, not a copy. That is
+unsafe if anything else touches `books/efnafraedi-2e/glossary/glossary-collisions-baseline.json`
+concurrently, or if the process dies between the mutate and restore steps — the `.bak` sibling
+does not by itself prove the original file made it back byte-for-byte. Copy the baseline
+**outside the repo** before mutating it, and assert `git diff --exit-code` on the baseline path
+after restore, rather than trusting the `mv` alone:
+
 ```bash
 node -e "
 const fs=require('fs');
+const os=require('os');
+const path=require('path');
 const p='books/efnafraedi-2e/glossary/glossary-collisions-baseline.json';
+const backup=path.join(os.tmpdir(), 'c18-baseline-backup.json');
+fs.copyFileSync(p, backup);
 const b=JSON.parse(fs.readFileSync(p));
 delete b.competitions['group'];
-fs.writeFileSync(p+'.bak', fs.readFileSync(p));
 fs.writeFileSync(p, JSON.stringify(b,null,2)+'\n');
 "
 npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js
 ```
 Expected: **FAIL**, naming `group` under `newCompetitions`.
 
-Restore:
+Restore, from the OUTSIDE-repo copy, then confirm the tree is clean rather than assuming the
+copy-back succeeded:
 ```bash
-mv books/efnafraedi-2e/glossary/glossary-collisions-baseline.json.bak books/efnafraedi-2e/glossary/glossary-collisions-baseline.json
+node -e "
+const fs=require('fs');
+const os=require('os');
+const path=require('path');
+fs.copyFileSync(path.join(os.tmpdir(), 'c18-baseline-backup.json'), 'books/efnafraedi-2e/glossary/glossary-collisions-baseline.json');
+"
+git diff --exit-code -- books/efnafraedi-2e/glossary/glossary-collisions-baseline.json
 npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js
 ```
-Expected: PASS.
+Expected: `git diff --exit-code` exits 0 (no diff) and the suite is PASS.
 
 - [ ] **Step 4: Full suite**
 

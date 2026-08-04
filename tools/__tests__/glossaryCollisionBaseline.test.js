@@ -12,7 +12,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { findGlossaryCollisions } from '../lib/glossary-collisions.js';
-import { diffAgainstBaseline, loadBaseline, glossaryPath } from '../validate-glossary.js';
+import {
+  diffAgainstBaseline,
+  loadBaseline,
+  glossaryPath,
+  buildBaseline,
+} from '../validate-glossary.js';
 
 const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const BOOKS_DIR = path.join(REPO_ROOT, 'books');
@@ -88,5 +93,39 @@ describe('diffAgainstBaseline semantics', () => {
       commaLists: {},
     };
     expect(diffAgainstBaseline(collisions, baseline).resolved).toEqual(['group']);
+  });
+});
+
+describe('commaLists baseline shape — one headword can carry TWO distinct comma-list values (C18 I3)', () => {
+  // findGlossaryCollisions emits one commaLists entry per ROW, so a headword
+  // whose approved translations are two different comma-separated strings
+  // produces two findings. A last-write-wins baseline (a plain string per
+  // key) can only ever remember one of them, so --update-baseline could
+  // never clear the other — the gate would go permanently red with no
+  // documented remedy able to fix it.
+  const commaListCollisions = {
+    competitions: [],
+    commaLists: [
+      { english: 'anion', value: 'anjón, mínusjón', parts: ['anjón', 'mínusjón'] },
+      { english: 'anion', value: 'neijón, mótjón', parts: ['neijón', 'mótjón'] },
+    ],
+  };
+
+  it('buildBaseline keeps BOTH values for one headword, not last-write-wins', () => {
+    const baseline = buildBaseline(commaListCollisions);
+    expect(baseline.commaLists.anion).toEqual(['anjón, mínusjón', 'neijón, mótjón']);
+  });
+
+  it('a baseline built from the findings leaves the gate green — --update-baseline actually clears it', () => {
+    const baseline = buildBaseline(commaListCollisions);
+    expect(diffAgainstBaseline(commaListCollisions, baseline).newCommaLists).toEqual([]);
+  });
+
+  it('a baseline holding only ONE of the two values still flags the other as new', () => {
+    const baseline = { competitions: {}, commaLists: { anion: ['anjón, mínusjón'] } };
+    const d = diffAgainstBaseline(commaListCollisions, baseline);
+    expect(d.newCommaLists).toEqual([
+      { english: 'anion', value: 'neijón, mótjón', parts: ['neijón', 'mótjón'] },
+    ]);
   });
 });

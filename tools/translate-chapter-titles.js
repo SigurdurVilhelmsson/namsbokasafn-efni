@@ -120,6 +120,14 @@ if (fs.existsSync(glossaryPath)) {
       formatGlossary(allTerms, {
         domain: 'chemistry',
         approvedOnly: false,
+        // Must stay non-throwing: this call sits inside a bare try/catch
+        // with no wrapper (unlike api-translate.js's loadGlossary, which
+        // deliberately keeps the caller's callback OUTSIDE its own
+        // try/catch for exactly this reason — register C18, review finding
+        // I1). If this throws, `glossaries` stays at its `let glossaries =
+        // []` initial value (the assignment below never completes) — titles
+        // translate with NO glossary at all, silently (review finding M2).
+        // Inert today: the callback only assigns a local.
         onOmitted: (report) => {
           omittedCount = report.omitted.length;
         },
@@ -136,8 +144,24 @@ if (fs.existsSync(glossaryPath)) {
     /* skip */
   }
 } else {
-  glossaries = [formatGlossary(inlineTerms, { domain: 'chemistry', approvedOnly: false })];
-  console.log(`\nGlossary: ${glossaries[0].terms.length} inline terms (no book glossary found)`);
+  // Inert today: inlineTerms is a single hardcoded entry, so no competition
+  // is structurally possible here. Wired anyway for consistency with the
+  // book-glossary branch above and so this doesn't silently drift the day
+  // inlineTerms grows past one entry (spec §2 names both call sites).
+  let omittedCount = 0;
+  glossaries = [
+    formatGlossary(inlineTerms, {
+      domain: 'chemistry',
+      approvedOnly: false,
+      onOmitted: (report) => {
+        omittedCount = report.omitted.length;
+      },
+    }),
+  ];
+  const omitNote = omittedCount > 0 ? `, ${omittedCount} contested/list omitted` : '';
+  console.log(
+    `\nGlossary: ${glossaries[0].terms.length} inline terms${omitNote} (no book glossary found)`
+  );
 }
 
 console.log('Translating...\n');
