@@ -1494,13 +1494,29 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 
 - [ ] `npm test` from the repo root — green. **This is the authoritative gate.**
 - [ ] `npm run lint` **and** `npm run format:check` — both green (CI runs both; `npm run lint` alone is not the Lint job).
-- [ ] **Byte-neutrality proof.** Re-render one chemistry chapter and confirm zero diff:
+- [x] **Byte-neutrality proof — ✅ VERIFIED 2026-08-04.**
+
+  ⚠️ **This step originally re-rendered and checked `05-publication/`, which tests the
+  WRONG STAGE.** `substituteMathLabels` is called from `cnxml-inject.js`, not
+  `cnxml-render.js` — per `docs/workflow/simplified-workflow.md`, inject writes
+  `03-translated/` (Step 5a) and render writes `05-publication/` (Step 5b). A clean
+  render diff would have proved nothing about `buildGlossaryMap`.
+
+  The correct check, and its result:
   ```bash
-  git stash list  # ensure clean tree first
-  node tools/cnxml-render.js efnafraedi-2e 1
-  git status --short books/efnafraedi-2e/05-publication/
+  node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1
+  git status --short books/efnafraedi-2e/03-translated/     # → EMPTY ✅
   ```
-  Expected: **no modified files**. If anything changed, the render path is not byte-neutral and Task 2 is wrong.
+  `03-translated/` was **byte-identical** after re-injection. Fidelity summary unchanged
+  at 126 PERFECT / 23 with discrepancies (37 total), matching CLAUDE.md's documented
+  chemistry baseline.
+
+  ⚠️ Re-injection regenerates `translation-errors.json` and `residue-report.mt-preview.json`
+  (timestamps, plus a `tolerated` key the committed file predates). Revert that churn — it
+  is not part of this change:
+  ```bash
+  git checkout -- books/efnafraedi-2e/{translation-errors.json,residue-report.mt-preview.json}
+  ```
 - [ ] Whole-branch adversarial review (the item-17/-21 pattern) before opening the PR.
 - [ ] Update register §C18 with the outcome. **Edit §C18 in the register — do not edit the frozen spec**, per CLAUDE.md § *One source of truth*.
 
