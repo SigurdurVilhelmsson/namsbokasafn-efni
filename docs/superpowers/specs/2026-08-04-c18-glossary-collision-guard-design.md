@@ -9,8 +9,11 @@
 ## 1. What this is for
 
 Two approved Icelandic translations can compete for one English headword. The render
-path resolves that competition **silently, by database/array row order**; the MT path
-does not resolve it at all and sends both contradictory instructions to Málstaður.
+path would resolve that competition **silently, by row order**; the MT path does not
+resolve it at all and sends both contradictory instructions to Málstaður.
+
+**Measured, the MT path is the live defect and the render path is a latent trap** — the
+reverse of the register's emphasis. §1.1a has the numbers and what follows from them.
 
 This design makes the competition **visible** everywhere it occurs, and stops the MT
 path from acting on an unresolved one. It **does not decide** which term wins — that is
@@ -33,8 +36,8 @@ unit: distinct lowercased English keys**, not rows.
 its 13 are the same 13. `liffraedi-2e` has no approved terms — consistent with the
 register's "2262 terms, all needs_review".
 
-**Of chemistry's 13, twelve are NOT masked** by `math-label-map.json` (133 keys), so the
-glossary alone decides them:
+**Of chemistry's 13, twelve are not covered** by `math-label-map.json` (133 keys), so the
+glossary map alone would decide them if they were ever looked up:
 
 ```
 aggregate           → þyrpast saman | þyrping
@@ -51,8 +54,47 @@ simple cubic        → einfaldur teningur | einföld teningslaga
 tetrahedral         → ferflötungslaga | ferflötungur
 ```
 
-`atom` — the register's own worked example — is the **one** case the overlay currently
-masks.
+### 1.1a ⚠️ Measured severity — the register's framing is inverted, and this spec corrects it
+
+Register §C18 leads with the render path (*"database row order decides which Icelandic
+word readers see"*, *"for `atom` the reader currently gets whichever of frumeind / atóm
+happens to sort later"*). **Measured, that is not true today for any book.** Per CLAUDE.md's
+rule to trace the consumer before assigning severity:
+
+| Book | `.cnxml` scanned | math **label** tokens | resolved by | colliding keys that are a label token |
+|---|---:|---:|---|---:|
+| `efnafraedi-2e` | 149 | 133 | overlay 126, English 7 | **0** |
+| `lifraen-efnafraedi` | 342 | 11 | English 11 (no overlay file) | **0** |
+| `liffraedi-2e` | 259 | 10 | English 10 (no overlay file) | **0** |
+
+**Render-path exposure from these collisions is currently zero — in every book.** And
+*not* because the overlay protects it: `lifraen-efnafraedi` carries the same 13
+collisions with **no `math-label-map.json` at all** and is still zero. The reason is
+simpler and more durable: substitution only touches exact-match leaf `<m:mtext>`/`<m:mi>`
+labels, of which there are 133/11/10 — element symbols, units, short axis labels — and
+none of the 13 competing headwords is one. `atom` being in chemistry's overlay is a
+coincidence, not the protection.
+
+**The live damage is on the MT path.** `formatGlossary` sends the whole approved glossary
+to Málstaður irrespective of math labels, so **every chemistry `api-translate` run today
+sends 13 contradictory instructions** (`atom→frumeind` *and* `atom→atóm`). That is
+current, repeated, and affects all prose translation.
+
+**Consequences for this design, all of which it already reflects:**
+
+- The `formatGlossary` omission (§3.4) is the part that fixes live damage. It is not the
+  optional extra the register's ordering implies.
+- The render-path work (§3.2, §3.3) is a **trap-disarming** measure, correctly scoped as
+  reporting rather than a fix. It becomes load-bearing the moment a competing headword
+  *is* a math label — which no test, and nothing in the data, currently prevents.
+- Biology is where the render path actually gets dangerous: 3,817 competitions arrive
+  with its terminology, against a book with **no overlay file**.
+- This does **not** lower C18's priority. It relocates it. A silent, unreviewed,
+  self-contradicting instruction to the translation engine is a correctness defect on the
+  asset the whole project exists to produce.
+
+`atom` — the register's own worked example — is the one case chemistry's overlay covers,
+which is why it looked like the exposed case when reasoning from the code alone.
 
 ### 1.2 Two findings that correct the register's framing
 
@@ -83,12 +125,15 @@ requires a human either way, and the two need different humans' attention.
 
 1. A shared pure detector for term competitions and comma-list values.
 2. `buildGlossaryMap` reports competitions as data (render path).
-3. `cnxml-inject.js` warns once per book.
+3. `cnxml-inject.js` **and** `cnxml-fidelity-check.js` warn once per book.
 4. `formatGlossary` **omits** competing headwords and comma-list values from the MT
    glossary, and reports what it omitted.
-5. A standalone `tools/validate-glossary.js` + `npm run validate:glossary`, with a
+5. **The omission report is wired at every production call site** —
+   `api-translate.js` and both `translate-chapter-titles.js` calls — so the drop is never
+   silent (§3.4a).
+6. A standalone `tools/validate-glossary.js` + `npm run validate:glossary`, with a
    committed per-book baseline and an `--update-baseline` flag.
-6. A test fence over the committed glossaries that fails on any collision beyond the
+7. A test fence over the committed glossaries that fails on any collision beyond the
    baseline.
 
 **Explicitly out of scope**
@@ -167,14 +212,28 @@ change 12 chemistry terms in published output — a *different* arbitrary decisi
 a fix's clothing. **The rendered bytes this PR produces must be identical to the bytes
 produced before it.**
 
-### 3.3 Inject path — `tools/cnxml-inject.js`
+### 3.3 Inject path — `tools/cnxml-inject.js` **and** `tools/cnxml-fidelity-check.js`
 
-`getMathLabelResolver` (`:4167`) caches the resolver per `bookDir`. The warning is
-emitted **on cache-miss only** — once per book per process.
+**There are two consumers of `loadMathLabelResolver`, not one.** `cnxml-fidelity-check.js`
+imports it at `:31` and calls it at `:310`, then runs `substituteMathLabels` at `:155`.
+Under an earlier draft of this spec it would have built the same colliding map, performed
+the same substitution, and reported nothing — a fail-quiet path in the tool whose entire
+job is to report discrepancies.
 
-This is deliberate: a whole-book chemistry inject touches ~90 modules, so per-module
-warning would print ~1,080 lines and train the reader to ignore it. Once per book is a
-signal; 1,080 lines is noise that fails the same way silence does.
+The two differ in structure, and only one needs a cache:
+
+- **`cnxml-inject.js`** calls through `getMathLabelResolver` (`:4167`), which caches per
+  `bookDir`. The warning is emitted **on cache-miss only** — once per book per process.
+  This is deliberate: a whole-book chemistry inject touches ~90 modules, so per-module
+  warning would print ~1,170 lines and train the reader to ignore it. Once per book is a
+  signal; 1,170 lines is noise that fails the same way silence does.
+- **`cnxml-fidelity-check.js`** already calls `loadMathLabelResolver` **once in `main()`**
+  (`:310`), before the per-chapter loop, so it is once-per-book by structure and needs no
+  cache. It only has to stop discarding the report: `const { resolve: mathResolve } = …`
+  becomes `const { resolve: mathResolve, collisions } = …`, printed alongside its
+  existing discrepancy output.
+
+Both print the same block, from the same helper, so the two cannot drift:
 
 Format:
 
@@ -225,6 +284,28 @@ no new competitions — so relaxing `approvedOnly` does not balloon the omission
 path and two on the MT path. The detector lowercases for **both**. Over-reporting a
 competition is harmless; missing one is not. This gets a code comment — it is the kind
 of silent asymmetry this register exists to catch.
+
+#### 3.4a The callback must have a production caller
+
+A callback nobody passes is a fail-quiet path dressed as a guard. As well as adding
+`onOmitted` to `formatGlossary`, this PR **wires it at every production call site**,
+otherwise `api-translate.js` would silently drop 27 chemistry rows and print nothing:
+
+- **`tools/api-translate.js:645`** — mirrors the existing `dropped` local, and reports at
+  the same point, **before the empty-check**, for the reason its comment at `:655-659`
+  already gives: when every term is unusable, `terms.length` is 0 and the caller prints
+  "none available" — the same message as having no glossary file at all. Reporting first
+  is what keeps the worst case from reading as the benign one.
+- **`glossaryStatusLine` (`api-translate.js:673`)** gains the omitted count alongside
+  `skippedCount`. Its own doc comment states the principle this PR is applying: *"a data
+  defect must be visible where it happens, not inferred three stages downstream from bad
+  output."* Extending that line is strictly better than adding a parallel one.
+- **`tools/translate-chapter-titles.js:118,127`** — both calls, which pass
+  `approvedOnly: false`. Note `:119`'s existing comment already warns against printing
+  the input count rather than what is actually sent; the omission makes that gap wider,
+  so the printed count must come from the returned glossary.
+- `tools/test-malstadur-api.js:465` is a manual API probe, not a pipeline path — left
+  alone deliberately.
 
 **Reporting follows the existing `onSkipped` idiom**, including its hard-won constraint.
 `tools/api-translate.js:638-644` documents why the caller's callback is wrapped in a
@@ -304,8 +385,10 @@ TDD, red first.
 - **mutation check: `chosen` equals what `map.get(key)` actually returns.** Asserting
   them independently lets the report drift from reality and lie in a way no other
   assertion catches — the report would be confidently wrong, which is worse than silence.
-- byte-neutrality: for a colliding fixture, `map.get(key)` returns the same value it
-  returned before the change
+- byte-neutrality, stated as something a test can actually check: for a fixture whose
+  **first and last** qualifying entries differ, `map.get(key)` returns the **last**.
+  (Phrasing it as "the same value as before the change" is untestable — it collapses to
+  hardcoding the value, which asserts nothing beyond last-write-wins anyway.)
 
 **`tools/__tests__/malstadur-glossary-guard.test.js` (extend)**
 - a competing headword is omitted **entirely** — neither candidate sent
@@ -313,6 +396,14 @@ TDD, red first.
 - non-competing, non-comma terms are untouched
 - `onOmitted` fires with both categories
 - **a throwing `onOmitted` propagates** (the `api-translate.js` invariant)
+
+**`tools/__tests__/api-translate-glossary-skip.test.js` (extend) — the caller wiring**
+- `api-translate.js`'s glossary loader **reports omissions before the empty-check**: a
+  glossary whose every term is omitted still reports the count, rather than returning
+  `null` and printing the same "none available" line as a missing file
+- `glossaryStatusLine` includes the omitted count
+- `translate-chapter-titles.js` prints the count from the **returned** glossary, not from
+  its input array (the trap `:119`'s existing comment already names)
 
 **`tools/__tests__/glossaryCollisionBaseline.test.js` (new — the fence)**
 - every committed `books/*/glossary/glossary-unified.json` has no competition or
