@@ -13,6 +13,8 @@
  * console.log(result.text); // Icelandic translation
  */
 
+import { findGlossaryCollisions } from './glossary-collisions.js';
+
 // ─── Constants ──────────────────────────────────────────────────────
 
 const API_BASE = 'https://api.malstadur.is';
@@ -194,19 +196,41 @@ async function apiRequest(apiKey, method, endpoint, body = null) {
  * @param {boolean} [options.approvedOnly=true] - Only include approved terms
  * @param {(dropped: Array<object>) => void} [options.onSkipped] - Called once with
  *   the dropped entries, when any were dropped. Reporting channel only.
+ * @param {(report: {omitted: Array<{sourceWord: string, targetWord: string}>, competitions: Array<object>, commaLists: Array<object>}) => void} [options.onOmitted] - Called when
+ *   glossary terms are omitted due to competitions or comma-separated lists.
  * @returns {{domain: string, sourceLanguage: string, targetLanguage: string,
  *   terms: Array<{sourceWord: string, targetWord: string}>}} API-formatted glossary
  */
-function formatGlossary(terms, { domain = 'chemistry', approvedOnly = true, onSkipped } = {}) {
+function formatGlossary(
+  terms,
+  { domain = 'chemistry', approvedOnly = true, onSkipped, onOmitted } = {}
+) {
   const filtered = approvedOnly ? terms.filter((t) => t.status === 'approved') : terms;
+
+  // C18: an unresolved competition must not prime MT at all. Sending both
+  // atom→frumeind AND atom→atóm in one request is a contradiction the API
+  // resolves however it likes. Omitting BOTH candidates is deliberate —
+  // picking one here would be an unreviewed editorial decision.
+  //
+  // Detected over the POST-FILTER set, because callers disagree on
+  // approvedOnly (api-translate.js passes true, translate-chapter-titles.js
+  // passes false), so "what competes" depends on what is actually being sent.
+  const { competitions, commaLists } = findGlossaryCollisions(filtered, { approvedOnly: false });
+  const competingKeys = new Set(competitions.map((c) => c.english));
+  const listValues = new Set(commaLists.map((c) => c.value));
 
   const usable = [];
   const skipped = [];
+  const omitted = [];
   for (const t of filtered) {
     const sourceWord = typeof t.english === 'string' ? t.english.trim() : '';
     const targetWord = typeof t.icelandic === 'string' ? t.icelandic.trim() : '';
     if (!sourceWord || !targetWord) {
       skipped.push(t);
+      continue;
+    }
+    if (competingKeys.has(sourceWord.toLowerCase()) || listValues.has(targetWord)) {
+      omitted.push({ sourceWord, targetWord });
       continue;
     }
     usable.push({ sourceWord, targetWord });
@@ -215,7 +239,12 @@ function formatGlossary(terms, { domain = 'chemistry', approvedOnly = true, onSk
   if (skipped.length > 0 && typeof onSkipped === 'function') {
     onSkipped(skipped);
   }
+  if (omitted.length > 0 && typeof onOmitted === 'function') {
+    onOmitted({ omitted, competitions, commaLists });
+  }
 
+  // ⚠️ This object IS the outbound request body (see :242, body.glossaries).
+  // Never add a field here — reporting goes through the callbacks above.
   return {
     domain,
     sourceLanguage: 'en',

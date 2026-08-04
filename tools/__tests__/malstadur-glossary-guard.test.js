@@ -124,3 +124,81 @@ describe('formatGlossary blank-side guard', () => {
     expect(g.domain).toBe('biology');
   });
 });
+
+describe('formatGlossary competing-term guard (C18)', () => {
+  it('omits EVERY candidate of a competing headword, not just one', () => {
+    const g = formatGlossary([ok('water', 'vatn'), ok('atom', 'frumeind'), ok('atom', 'atóm')]);
+    expect(g.terms).toEqual([{ sourceWord: 'water', targetWord: 'vatn' }]);
+  });
+
+  it('omits a comma-separated value — it is a list, not a term', () => {
+    const g = formatGlossary([ok('water', 'vatn'), ok('anion', 'anjón, mínusjón, neijón')]);
+    expect(g.terms).toEqual([{ sourceWord: 'water', targetWord: 'vatn' }]);
+  });
+
+  it('leaves non-competing, non-list terms untouched', () => {
+    const g = formatGlossary([ok('water', 'vatn'), ok('ether', 'eter')]);
+    expect(g.terms).toHaveLength(2);
+  });
+
+  it('folds case when deciding a competition (Atom and atom are one headword)', () => {
+    const g = formatGlossary([ok('water', 'vatn'), ok('Atom', 'frumeind'), ok('atom', 'atóm')]);
+    expect(g.terms).toEqual([{ sourceWord: 'water', targetWord: 'vatn' }]);
+  });
+
+  it('detects over the POST-FILTER set: approvedOnly:true hides a proposed rival', () => {
+    const g = formatGlossary([
+      ok('water', 'vatn'),
+      { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+      { english: 'atom', icelandic: 'atóm', status: 'proposed' },
+    ]);
+    expect(g.terms).toContainEqual({ sourceWord: 'atom', targetWord: 'frumeind' });
+  });
+
+  it('…and approvedOnly:false exposes it', () => {
+    const g = formatGlossary(
+      [
+        { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+        { english: 'atom', icelandic: 'atóm', status: 'proposed' },
+      ],
+      { approvedOnly: false }
+    );
+    expect(g.terms).toEqual([]);
+  });
+
+  it('reports what it omitted via onOmitted', () => {
+    let report = null;
+    formatGlossary([ok('atom', 'frumeind'), ok('atom', 'atóm')], {
+      onOmitted: (r) => {
+        report = r;
+      },
+    });
+    expect(report.omitted).toHaveLength(2);
+    expect(report.competitions[0].english).toBe('atom');
+  });
+
+  it('does not fire onOmitted when nothing was omitted', () => {
+    let called = false;
+    formatGlossary([ok('water', 'vatn')], { onOmitted: () => (called = true) });
+    expect(called).toBe(false);
+  });
+
+  // Same invariant onSkipped carries: a swallowed reporting callback would
+  // reintroduce a fail-quiet path in the very change that removes one.
+  it('lets a throwing onOmitted propagate', () => {
+    expect(() =>
+      formatGlossary([ok('atom', 'frumeind'), ok('atom', 'atóm')], {
+        onOmitted: () => {
+          throw new Error('boom');
+        },
+      })
+    ).toThrow('boom');
+  });
+
+  // The returned object IS the outbound request body. Adding a field here
+  // ships data to a third party.
+  it('does not add any field to the wire shape', () => {
+    const g = formatGlossary([ok('atom', 'frumeind'), ok('atom', 'atóm')], { onOmitted: () => {} });
+    expect(Object.keys(g).sort()).toEqual(['domain', 'sourceLanguage', 'targetLanguage', 'terms']);
+  });
+});
