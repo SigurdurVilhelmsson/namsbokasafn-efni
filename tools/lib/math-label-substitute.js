@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { collectMathTokens, bucketToken, decodeEntities } from './math-label-inventory.js';
+import { findGlossaryCollisions } from './glossary-collisions.js';
 
 const FORBIDDEN_XML = /[<>&"']/;
 
@@ -10,7 +11,7 @@ const FORBIDDEN_XML = /[<>&"']/;
  * only approved terms with a non-empty Icelandic (the ~330 empty-Icelandic terms
  * must never substitute a blank).
  * @param {{terms?: Array<{english?:string,icelandic?:string,status?:string}>}} glossary
- * @returns {Map<string,string>}
+ * @returns {{map: Map<string,string>, collisions: {competitions: Array<object>, commaLists: Array<object>}}}
  */
 export function buildGlossaryMap(glossary) {
   const map = new Map();
@@ -21,7 +22,10 @@ export function buildGlossaryMap(glossary) {
     const is = (t.icelandic || '').trim();
     if (en && is) map.set(en, is);
   }
-  return map;
+  // C18: the Map above resolves competing translations by last-write-wins,
+  // silently. The behaviour is DELIBERATELY unchanged (this must not move a
+  // rendered byte); what changes is that the competition is now reported.
+  return { map, collisions: findGlossaryCollisions(terms, { approvedOnly: true }) };
 }
 
 /**
@@ -130,7 +134,7 @@ export function reportMathLabels(cnxml, resolve, { overlay = {} } = {}) {
  * <bookDir>/math-label-map.json and <bookDir>/glossary/glossary-unified.json;
  * missing files degrade to empty (pending → English).
  * @param {string} bookDir  e.g. "books/efnafraedi-2e"
- * @returns {{resolve:Function, overlay:Record<string,string>, glossaryMap:Map<string,string>}}
+ * @returns {{resolve:Function, overlay:Record<string,string>, glossaryMap:Map<string,string>, collisions:Object}}
  */
 export function loadMathLabelResolver(bookDir) {
   const overlayPath = path.join(bookDir, 'math-label-map.json');
@@ -141,6 +145,28 @@ export function loadMathLabelResolver(bookDir) {
   const glossary = fs.existsSync(glossaryPath)
     ? JSON.parse(fs.readFileSync(glossaryPath, 'utf8'))
     : { terms: [] };
-  const glossaryMap = buildGlossaryMap(glossary);
-  return { resolve: buildResolver({ overlay, glossaryMap }), overlay, glossaryMap };
+  const { map: glossaryMap, collisions } = buildGlossaryMap(glossary);
+
+  // buildGlossaryMap sees the glossary only. This is the first point that
+  // holds BOTH the glossary and the overlay, so it is where a competition can
+  // be told apart from one math-label-map.json overrides. Masking is computed
+  // with resolveLabel's own rules, not a plain overlay lookup, or the
+  // annotation would disagree with the resolution it describes.
+  // NOTE: the key is already lowercased by buildGlossaryMap, so this answers
+  // "would the overlay win for this key as stored" — an approximation that is
+  // for REPORTING only and never gates behaviour.
+  const annotated = {
+    ...collisions,
+    competitions: collisions.competitions.map((c) => ({
+      ...c,
+      masked: resolveLabel(c.english, { overlay, glossaryMap }).source.startsWith('overlay'),
+    })),
+  };
+
+  return {
+    resolve: buildResolver({ overlay, glossaryMap }),
+    overlay,
+    glossaryMap,
+    collisions: annotated,
+  };
 }

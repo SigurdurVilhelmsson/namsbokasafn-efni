@@ -17,10 +17,50 @@ describe('buildGlossaryMap', () => {
         { english: 'cell', icelandic: 'ker', status: 'pending' }, // not approved → dropped
       ],
     };
-    const m = buildGlossaryMap(g);
-    expect(m.get('rate')).toBe('hraði');
-    expect(m.has('sub')).toBe(false);
-    expect(m.has('cell')).toBe(false);
+    const { map } = buildGlossaryMap(g);
+    expect(map.get('rate')).toBe('hraði');
+    expect(map.has('sub')).toBe(false);
+    expect(map.has('cell')).toBe(false);
+  });
+
+  it('reports a competition instead of resolving it silently (C18)', () => {
+    const g = {
+      terms: [
+        { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+        { english: 'atom', icelandic: 'atóm', status: 'approved' },
+      ],
+    };
+    const { collisions } = buildGlossaryMap(g);
+    expect(collisions.competitions).toHaveLength(1);
+    expect(collisions.competitions[0].candidates).toEqual(['frumeind', 'atóm']);
+  });
+
+  // BYTE-NEUTRALITY. This PR must not change a single rendered byte, so the
+  // Map must keep resolving to the LAST qualifying entry exactly as before.
+  // Stated as "last wins" rather than "same as before the change" because the
+  // latter is untestable — it collapses to hardcoding the value.
+  it('still resolves to the LAST qualifying entry (byte-neutral)', () => {
+    const g = {
+      terms: [
+        { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+        { english: 'atom', icelandic: 'atóm', status: 'approved' },
+      ],
+    };
+    const { map } = buildGlossaryMap(g);
+    expect(map.get('atom')).toBe('atóm');
+  });
+
+  // The report must not be able to drift from the Map it describes. Asserting
+  // them independently would let a confidently-wrong report ship green.
+  it('chosen equals what the map actually returns', () => {
+    const g = {
+      terms: [
+        { english: 'group', icelandic: 'flokkur', status: 'approved' },
+        { english: 'group', icelandic: 'hópur', status: 'approved' },
+      ],
+    };
+    const { map, collisions } = buildGlossaryMap(g);
+    expect(collisions.competitions[0].chosen).toBe(map.get('group'));
   });
 });
 
