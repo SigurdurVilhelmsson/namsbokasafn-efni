@@ -188,7 +188,32 @@ for i in $(seq 1 30); do
             for(const [slug,o] of refusals){
               const stale=staleSet.has(slug);
               const tag=stale?'⚠ STALE':'⚠';
-              const advice=stale?' — unattended past the threshold; run --adopt '+slug+' to resolve':'';
+              // OUTCOME-SPECIFIC, and the command it prints must be one
+            // parseArgs actually ACCEPTS. The string this replaces was
+            // wrong three ways at once (whole-branch adversarial review,
+            // 2026-08-05): it fired for every refused-* outcome though
+            // --adopt resolves only refused-producer; refused-shrink
+            // needs --force and refused-no-mapping is fixed by NO FLAG
+            // AT ALL (a book_subject_mapping row); and the form it
+            // printed, 'run --adopt <slug>', exits 1 with 'unrecognised
+            // argument' — --adopt takes no value. The live instance is
+            // stjornufraedi, which sits at refused-no-mapping, so the
+            // only surface a human routinely reads would have sent them
+            // in a circle. Pinned by
+            // scripts/__tests__/deploy-health-readout.test.mjs, which
+            // round-trips the printed command through parseArgs itself
+            // so this can never drift from the parser again.
+            const EXPORTER='node server/scripts/export-terminology.js';
+            const remedy=(outcome,slug)=>{
+              if(outcome==='refused-producer')
+                return 'the committed file was written by another producer, so writing would SWAP producers; --adopt migrates it (--force may ALSO be needed if the adoption then trips the shrink gate) — run: '+EXPORTER+' --book '+slug+' --adopt';
+              if(outcome==='refused-shrink')
+                return 'this needs --force, NOT --adopt; read both term counts in the status file before deciding — run: '+EXPORTER+' --book '+slug+' --force';
+              if(outcome==='refused-no-mapping')
+                return 'NO flag fixes this: add a book_subject_mapping row for '+slug+' (see migration 032), after which it exports on the next tick';
+              return 'unrecognised refusal — read the status file on the box';
+            };
+            const advice=stale?' — unattended past the threshold; '+remedy(o.outcome,slug):'';
               console.log('  '+tag+' '+slug+': '+o.outcome+' ('+ageStr(o.since)+')'+advice);
             }
             for(const [slug,o] of errored){
