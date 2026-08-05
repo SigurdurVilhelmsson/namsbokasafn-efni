@@ -672,8 +672,13 @@ describe('runGlossaryExport — book-subject-mapping guard', () => {
 
 describe('runGlossaryExport — exit code and heartbeat contract', () => {
   it('writes the heartbeat on a fully healthy run', () => {
-    seedBook('prufubok');
+    // ⚠️ seedRefreshable, NOT seedBook. With a bare seed the run is a §C21
+    // refusal, which ALSO writes the heartbeat (decision D2) — so this passed
+    // while testing the opposite of its name. "Fully healthy" must mean a
+    // successful write, so the write is now asserted alongside the heartbeat.
+    seedRefreshable('prufubok');
     run({ exportFn: () => payload(approved(5)) });
+    expect(readExport('prufubok').terms).toHaveLength(5);
     expect(heartbeatExists()).toBe(true);
   });
 
@@ -814,11 +819,18 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
 
 describe('runGlossaryExport — dry run', () => {
   it('writes neither the export nor the heartbeat', () => {
-    seedBook('prufubok');
+    // ⚠️ seedRefreshable, NOT seedBook. With a bare seed this test passed
+    // WITHOUT EVER REACHING THE DRY-RUN BRANCH: the §C21 absent-baseline gate
+    // sits before `if (dryRun)`, so the run short-circuited at
+    // refused-absent-baseline and "no file was written" was true for a reason
+    // that has nothing to do with --dry-run. Caught by the C21 whole-branch
+    // review — the exact defect class this file exists to prevent.
+    seedRefreshable('prufubok');
+    const before = readExport('prufubok').terms.length;
     expect(run({ exportFn: () => payload(approved(5)), dryRun: true })).toBe(0);
-    expect(
-      existsSync(path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json'))
-    ).toBe(false);
+    // Reaching the dry-run branch is now ASSERTED, not assumed: the baseline
+    // is still on disk unchanged, so nothing was written over it.
+    expect(readExport('prufubok').terms).toHaveLength(before);
     expect(heartbeatExists()).toBe(false);
   });
 
@@ -1313,7 +1325,8 @@ describe('runGlossaryExport — status file', () => {
 });
 
 describe('runGlossaryExport — the EXACT outcome strings (C14 ② amendment D6)', () => {
-  // ⚠️ Until this block existed, the eight outcome strings were pinned by
+  // ⚠️ Until this block existed, the outcome strings (eight then, NINE since
+  // §C21 added refused-absent-baseline) were pinned by
   // NOTHING: every test asserted exit codes, bytes on disk or log text, so a
   // typo in an outcome name ('refused-shrink' -> 'refused-shrunk') would have
   // been completely invisible while /api/health quietly stopped recognising it

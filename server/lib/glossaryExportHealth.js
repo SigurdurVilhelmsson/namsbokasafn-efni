@@ -70,13 +70,19 @@
  * a deadline instead of a veto: quiet while it is fresh, an alarm once it has
  * gone unattended past DEFAULT_REFUSAL_STALE_DAYS.
  *
- * ⚠️ "EVERY BOOK THAT HAS ONE" IS THE WHOLE CAVEAT, AND IT BOUNDS D6. A book
- * with a `glossary/` directory but NO committed file has an `absent` baseline,
- * which makes BOTH export gates structurally inert — nothing to fingerprint,
- * nothing to compare — so that book is never refused, its write is ungated and
- * pushed, and D6 therefore never covers it. Do not read the paragraph above as
- * "every book is refused, therefore every book is covered." Which books sit in
- * which state → register §C14 ③.
+ * ⚠️ CORRECTED 2026-08-05 by register §C21 — ALL THREE CLAUSES OF THIS
+ * PARAGRAPH WERE FALSIFIED, and it is recorded rather than deleted because it
+ * is why the gate exists. It read: a book with a `glossary/` directory but NO
+ * committed file has an `absent` baseline, which makes BOTH export gates
+ * structurally inert, "so that book is never refused, its write is ungated and
+ * pushed, and D6 therefore never covers it."
+ *
+ * The premise still holds — an absent baseline leaves nothing to fingerprint
+ * and nothing to compare — but the exporter now REFUSES that state
+ * (`refused-absent-baseline`) unless --adopt, so: the book IS refused, there
+ * is NO write, and D6 DOES cover it, because findStaleRefusals below
+ * classifies on the `refused-` PREFIX and needs no enumeration to learn a new
+ * outcome. Which books sit in which state → register §C14 ③ and §C21.
  *
  * All filesystem access lives here rather than in the /api/health handler,
  * because server/index.js calls app.listen() at module load and so cannot be

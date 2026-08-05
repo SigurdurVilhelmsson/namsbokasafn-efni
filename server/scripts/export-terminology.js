@@ -25,8 +25,12 @@
  * requirement rather than as "already done" on purpose — the sentence this
  * replaces was a status claim that went stale and hid the gap for months.)
  *
- * SAFE TO RUN UNATTENDED because of FOUR rules — three in
- * lib/glossaryExportDecision.js, one here:
+ * SAFE TO RUN UNATTENDED because of FIVE rules — three in
+ * lib/glossaryExportDecision.js, TWO here (the subject-mapping refusal and,
+ * since register §C21, the absent-baseline refusal at the write path below).
+ * ⚠️ This count has now gone stale once; if you add a gate, it is this line
+ * and the refusal list further down that a prefix-keyed consumer will NOT
+ * remind you to update:
  *
  *   1. WRITE-IF-CHANGED — the `generated` stamp alone must not dirty the file
  *      every 2h (~4,380 timestamp-only commits a year).
@@ -38,6 +42,13 @@
  *      whose export has zero approved terms). Overridden by --force.
  *   4. BOOK/SUBJECT GUARD — a book with no `book_subject_mapping` row would
  *      export an unscoped, all-subjects glossary; refused instead.
+ *   5. ABSENT-BASELINE GATE (register §C21) — a book with a `glossary/`
+ *      directory and NO committed file is the one state in which rules 2 and 3
+ *      can say NOTHING: no producer to fingerprint, no term count to measure.
+ *      Its first write was therefore wholly ungated and the cron pushed it.
+ *      Refused until a human passes --adopt. ⚠️ Not a legacy state to tidy
+ *      away: createBookDirectories() scaffolds an empty `glossary/` for every
+ *      book registered through the admin route.
  *
  * ⚠️ RULES 2 AND 3 ARE NOT REDUNDANT, AND THEIR OVERRIDES ARE SEPARATE ON
  * PURPOSE. --adopt does not imply --force and --force does not imply --adopt:
@@ -53,7 +64,8 @@
  *
  * Exit code 0 means no book ERRORED. It does NOT mean every book was written:
  * a book that refuses for a correct reason (un-adopted producer swap, no
- * subject mapping, catastrophic shrink) is a healthy outcome and keeps the exit
+ * subject mapping, catastrophic shrink, un-adopted first export) is a healthy
+ * outcome and keeps the exit
  * code at 0. Only a genuine error — the exporter threw, or a malformed payload
  * — returns 1. Before 2026-08-05 a refusal counted as a failure, which let ONE
  * book's correct refusal mark the whole exporter unhealthy for every other book
@@ -93,7 +105,7 @@
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
  *   node server/scripts/export-terminology.js --dry-run
  *   node server/scripts/export-terminology.js --book <slug> --force   # accept a shrink
- *   node server/scripts/export-terminology.js --book <slug> --adopt   # accept a producer swap
+ *   node server/scripts/export-terminology.js --book <slug> --adopt   # accept a producer swap OR a first export
  *
  * ⚠️ BOTH OVERRIDE EXAMPLES ARE BOOK-SCOPED ON PURPOSE (corrected 2026-08-05).
  * They read `--force` / `--adopt` alone until then, which is the
@@ -152,8 +164,13 @@ function listBooks(booksDir = BOOKS_DIR) {
  * `null` for BOTH "no file" and "corrupt file", which made those two
  * indistinguishable to the caller — and a corrupt merge-glossary file was
  * therefore silently replaced by an export, the one remaining ungated path to
- * a producer swap (decision D5). "Absent" still means writing is correct;
- * "corrupt" now means refuse and wait for --adopt.
+ * a producer swap (decision D5).
+ *
+ * ⚠️ AMENDED by register §C21 (2026-08-05): this used to end "'Absent' still
+ * means writing is correct; 'corrupt' now means refuse and wait for --adopt."
+ * BOTH now mean refuse-and-wait-for---adopt. An absent baseline is the one
+ * state in which neither gate can say anything, so its first write was the
+ * only wholly ungated one the cron could push.
  *
  * @param {string} outPath
  * @returns {{kind: 'absent'}|{kind: 'corrupt'}|{kind: 'ok', payload: object}}
@@ -163,7 +180,9 @@ function readExisting(outPath) {
   try {
     raw = fs.readFileSync(outPath, 'utf-8');
   } catch (err) {
-    if (err.code === 'ENOENT') return { kind: 'absent' }; // no file yet — writing is correct
+    // §C21: 'absent' no longer implies a write is correct — see the caller,
+    // which refuses it unless --adopt. This branch only CLASSIFIES.
+    if (err.code === 'ENOENT') return { kind: 'absent' };
     throw err; // caught per-book by the caller, counted as an error
   }
   try {
@@ -879,7 +898,10 @@ function main() {
         '[--force] [--adopt]\n' +
         '  --force  accept a catastrophic shrink\n' +
         '  --adopt  accept a producer swap (migrate a book whose committed\n' +
-        '           glossary another program wrote, or replace an unreadable one)\n' +
+        '           glossary another program wrote, or replace an unreadable one),\n' +
+        "           OR authorise a book's FIRST export — a book with no committed\n" +
+        '           glossary has nothing to compare against, so both gates are\n' +
+        '           inert and that write is unreviewed by construction (§C21)\n' +
         '  Neither implies the other, and the 2h cron passes neither.\n' +
         '  Scope an override with --book: without it, --force/--adopt apply to\n' +
         '  EVERY glossary-bearing book at once. Adoption is a per-book decision.'
