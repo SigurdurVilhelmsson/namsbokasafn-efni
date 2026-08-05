@@ -128,6 +128,21 @@ function seedBook(slug, existing) {
   }
 }
 
+/**
+ * Seed a book that ALREADY holds a committed export, so a subsequent run is a
+ * routine refresh rather than a §C21 first write.
+ *
+ * Use this wherever a test needs a write to HAPPEN but is not about the
+ * absent-baseline gate. The one-term baseline is deliberately smaller than
+ * every export these tests produce, so the write is a growth: no shrink
+ * verdict fires. `payload()` carries no `producer` and its terms carry no
+ * `subjects`, so detectProducer returns 'unknown' on both sides and the
+ * producer gate stays quiet too — see the legacyTerms note above.
+ */
+function seedRefreshable(slug) {
+  seedBook(slug, JSON.stringify(payload(approved(1))));
+}
+
 function readExport(slug) {
   return JSON.parse(
     readFileSync(path.join(root, 'books', slug, 'glossary', 'glossary-unified.json'), 'utf8')
@@ -160,10 +175,82 @@ afterEach(() => {
   rmSync(root, { recursive: true, force: true });
 });
 
-describe('runGlossaryExport — writing', () => {
-  it('writes a first export when no file exists, and returns 0', () => {
+/**
+ * The absent-baseline gate (register §C21).
+ *
+ * A book with a `glossary/` directory and NO committed file makes readExisting
+ * return `{kind:'absent'}` → `prev === null` → `producerVerdict` has no previous
+ * producer to compare and `shrinkVerdict` has no baseline to measure. BOTH gates
+ * are structurally inert, so the bare 2-hourly cron used to write, commit and
+ * push a brand-new glossary unattended — reaching readers via
+ * `substituteMathLabels`. That is the third of the 2026-08-03 incident.
+ *
+ * The state is not exotic: `createBookDirectories()` scaffolds an empty
+ * `glossary/` for every book registered through the admin route, so ordinary
+ * onboarding manufactures it.
+ *
+ * A first write is therefore a DECISION, not a default: it requires `--adopt`,
+ * which the cron cannot reach.
+ */
+describe('runGlossaryExport — absent baseline (§C21)', () => {
+  const glossaryFile = (slug) =>
+    path.join(root, 'books', slug, 'glossary', 'glossary-unified.json');
+
+  it('refuses to write a first export when no committed file exists', () => {
     seedBook('prufubok');
-    const code = run({ exportFn: () => payload(approved(5)) });
+    run({ exportFn: () => payload(approved(5)) });
+    expect(existsSync(glossaryFile('prufubok'))).toBe(false);
+  });
+
+  it('records the refusal as refused-absent-baseline, so the D6 clock covers it', () => {
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(5)) });
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.prufubok.outcome).toBe('refused-absent-baseline');
+  });
+
+  it('exits 0 — a refusal is a correct outcome (D2), not an error', () => {
+    seedBook('prufubok');
+    expect(run({ exportFn: () => payload(approved(5)) })).toBe(0);
+  });
+
+  it('writes that first export when --adopt is passed', () => {
+    seedBook('prufubok');
+    expect(run({ exportFn: () => payload(approved(5)), adopt: true })).toBe(0);
+    expect(readExport('prufubok').terms).toHaveLength(5);
+  });
+
+  it('records an adopted first export as "adopted", not as a routine "wrote"', () => {
+    // Same rule the corrupt and producer paths already follow: reaching the
+    // write with a gate overridden is a one-off migration, and the record must
+    // not label it a routine refresh. Without this, the single most
+    // consequential write for a new book — its entirely unreviewed first one —
+    // is indistinguishable in the status file from a two-term refresh.
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(5)), adopt: true });
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.prufubok.outcome).toBe('adopted');
+  });
+
+  it('does not let --force stand in for --adopt (two risks, two acknowledgements)', () => {
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(5)), force: true });
+    expect(existsSync(glossaryFile('prufubok'))).toBe(false);
+  });
+});
+
+describe('runGlossaryExport — writing', () => {
+  it('writes a first export when --adopt is passed and no file exists, and returns 0', () => {
+    // ⚠️ This test used to read "writes a first export when no file exists" and
+    // asserted exactly the ungated write §C21 describes — a test pinning the
+    // defect. It now pins the gate instead; `adopt` is what changed, not the
+    // write path.
+    seedBook('prufubok');
+    const code = run({ exportFn: () => payload(approved(5)), adopt: true });
     expect(code).toBe(0);
     expect(readExport('prufubok').terms).toHaveLength(5);
   });
@@ -240,7 +327,7 @@ describe('runGlossaryExport — writing', () => {
     // — because that is the run that must produce no commit. If the round
     // trip perturbs key order or number formatting, the file is dirty every
     // 2h and nobody finds out until prod has thousands of empty commits.
-    seedBook('prufubok');
+    seedRefreshable('prufubok');
     const exportFn = () => payload(approved(5));
     expect(run({ exportFn })).toBe(0);
     const afterFirst = readFileSync(
@@ -322,7 +409,7 @@ describe('runGlossaryExport — shrink guard', () => {
 
   it('an unreadable book does not skip the books after it', () => {
     seedBook('bok-a', JSON.stringify(payload(approved(10))));
-    seedBook('bok-b');
+    seedRefreshable('bok-b');
     const aPath = path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json');
     chmodSync(aPath, 0o000);
     try {
@@ -360,7 +447,7 @@ describe('runGlossaryExport — malformed exportFn payload', () => {
     '%s: refuses, writes nothing, withholds the heartbeat, and still processes later books',
     (_label, badPayload) => {
       seedBook('bok-a');
-      seedBook('bok-b');
+      seedRefreshable('bok-b');
       const errors = [];
       const seen = [];
       const code = run({
@@ -554,7 +641,7 @@ describe('runGlossaryExport — book-subject-mapping guard', () => {
 
   it('still processes later books after skipping an unmapped one', () => {
     seedBook('bok-a');
-    seedBook('bok-b');
+    seedRefreshable('bok-b');
     const seen = [];
     const code = run({
       subjectFn: (slug) => (slug === 'bok-a' ? null : 'chemistry'),
@@ -573,7 +660,7 @@ describe('runGlossaryExport — book-subject-mapping guard', () => {
   });
 
   it('a book WITH a subject mapping exports normally', () => {
-    seedBook('bok-a');
+    seedRefreshable('bok-a');
     const code = run({
       subjectFn: () => 'chemistry',
       exportFn: () => payload(approved(5)),
@@ -657,7 +744,7 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
     // it.each above (bok-a malformed + bok-b written => heartbeat false) and
     // by 'does NOT write the heartbeat when the exporter threw'.
     seedBook('bok-a', JSON.stringify(payload(approved(617))));
-    seedBook('bok-b');
+    seedRefreshable('bok-b');
     const code = run({
       exportFn: (slug) => (slug === 'bok-a' ? payload(approved(3)) : payload(approved(9))),
     });
@@ -1105,7 +1192,7 @@ describe('runGlossaryExport — status file', () => {
   const readStatus = () => JSON.parse(readFileSync(statusPath(), 'utf8'));
 
   it('records a per-book outcome', () => {
-    seedBook('prufubok');
+    seedRefreshable('prufubok');
     run({ exportFn: () => payload(approved(10)) });
     expect(readStatus().books.prufubok.outcome).toBe('wrote');
     expect(readStatus().errors).toBe(0);
@@ -1199,7 +1286,7 @@ describe('runGlossaryExport — status file', () => {
   it.skipIf(process.getuid?.() === 0)(
     'an UNWRITABLE status file does not take down the heartbeat it reports on',
     () => {
-      seedBook('prufubok');
+      seedRefreshable('prufubok');
       mkdirSync(path.join(root, 'pipeline-output'), { recursive: true });
       writeFileSync(statusPath(), '{}');
       chmodSync(statusPath(), 0o000);
@@ -1239,7 +1326,7 @@ describe('runGlossaryExport — the EXACT outcome strings (C14 ② amendment D6)
     JSON.stringify({ generated: 'x', book: 'prufubok', stats: {}, terms: legacyTerms(1117) });
 
   it("'wrote' — a routine refresh", () => {
-    seedBook('prufubok');
+    seedRefreshable('prufubok');
     run({ exportFn: () => payload(approved(10)) });
     expect(outcomeOf('prufubok')).toBe('wrote');
   });
@@ -1395,7 +1482,7 @@ describe('runGlossaryExport — `since`: how long an outcome has persisted (D6)'
   });
 
   it('RESETS `since` when the outcome changes between runs', () => {
-    seedBook('prufubok');
+    seedRefreshable('prufubok');
     run({ exportFn: () => payload(approved(5)), nowMs: T1 });
     expect(readStatus().books.prufubok.outcome).toBe('wrote');
     expect(readStatus().books.prufubok.since).toBe(new Date(T1).toISOString());
@@ -1527,7 +1614,7 @@ describe('runGlossaryExport — `since`: how long an outcome has persisted (D6)'
     // inheriting the healthy run's timestamp — otherwise a book that exported
     // fine for months would look like it had been broken for months the
     // instant it first errored.
-    seedBook('prufubok');
+    seedRefreshable('prufubok');
     run({ exportFn: () => payload(approved(5)), nowMs: T1 });
     expect(readStatus().books.prufubok.outcome).toBe('wrote');
 
@@ -1568,7 +1655,7 @@ describe('runGlossaryExport — `since`: how long an outcome has persisted (D6)'
   it('tracks `since` per book independently', () => {
     // One book's outcome changing must not reset the other's clock.
     seedBook('stodug', JSON.stringify(payload(approved(617))));
-    seedBook('breytileg');
+    seedRefreshable('breytileg');
     run({
       exportFn: (slug) => (slug === 'stodug' ? payload(approved(3)) : payload(approved(5))),
       nowMs: T1,

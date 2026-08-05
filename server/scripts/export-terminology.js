@@ -293,8 +293,16 @@ function isUnresolved(outcome) {
  * returns `refuse:false` AND `shrinkVerdict`'s `prevTotal > 0` clause is
  * false: BOTH GATES ARE STRUCTURALLY INERT, and the bare cron writes, exits 0,
  * writes the heartbeat, and git-backup.sh commits and pushes it. That is the
- * `orverufraedi` third of the 2026-08-03 incident and this branch does not
- * change it. Register §C14 ③ carries the per-book positions.
+ * `orverufraedi` third of the 2026-08-03 incident.
+ *
+ * ✅ CLOSED 2026-08-05 (register §C21): that state is now `refused-absent-baseline`
+ * unless `--adopt` is passed, which the cron cannot reach. The paragraph above
+ * stays as the description of WHY the gate exists — it is the only state in
+ * which neither gate can say anything — and remains an accurate account of the
+ * mechanism. ⚠️ It is not a legacy state to be tidied away: `createBookDirectories()`
+ * scaffolds an empty `glossary/` for every book registered through the admin
+ * route, so ordinary onboarding keeps producing it. Register §C14 ③ carries
+ * the per-book positions.
  *
  * Carried forward under EITHER of two conditions:
  *
@@ -566,6 +574,38 @@ function runGlossaryExport({
       outcomes[b] = { outcome: 'refused-producer', detail: 'cannot read existing file' };
       continue;
     }
+    // §C21: an ABSENT baseline is the one state in which BOTH gates are
+    // structurally inert. There is no committed producer to fingerprint
+    // (producerVerdict gets prev === null and returns refuse:false) and no
+    // previous term count to measure (shrinkVerdict's prevTotal > 0 clause is
+    // false), so the write below used to be entirely ungated — and the bare
+    // 2-hourly cron commits and pushes it, reaching readers through
+    // substituteMathLabels. That is the orverufraedi third of the 2026-08-03
+    // incident.
+    //
+    // ⚠️ THIS IS NOT AN EXOTIC STATE. createBookDirectories()
+    // (server/services/bookRegistration.js) scaffolds an empty glossary/ for
+    // every book registered through the admin route, so ordinary onboarding
+    // manufactures it. Removing books/<slug>/glossary by hand fixes one
+    // occupancy, never the hole — which is why the gate lives here and not in
+    // a directory clean-up.
+    //
+    // A first write is therefore a DECISION, not a default. --adopt is the
+    // acknowledgement, and the cron — which invokes this script bare — cannot
+    // reach it. --force deliberately does NOT satisfy this: that flag answers
+    // "the shrink is intended", a different question about a different risk.
+    if (existing.kind === 'absent' && !adopt) {
+      logError(
+        `${b}: REFUSING to write — this book has no committed glossary, so there is ` +
+          `nothing to compare against and BOTH the producer and shrink gates are ` +
+          `inert. A first export is unreviewed by construction. Decide what this ` +
+          `book's glossary should be, then pass --adopt --book ${b} to write it. ` +
+          `Do NOT expect --force to work here: it answers a different question.`
+      );
+      outcomes[b] = { outcome: 'refused-absent-baseline' };
+      continue;
+    }
+
     const prev = existing.kind === 'ok' ? existing.payload : null;
 
     // Producer first, shrink second. A producer swap is categorical; a shrink
@@ -639,7 +679,18 @@ function runGlossaryExport({
     // single most consequential write this exporter can perform (replacing a
     // file whose contents nobody could read) under the label for its most
     // routine one.
-    outcomes[b] = { outcome: existing.kind === 'corrupt' || pv.refuse ? 'adopted' : 'wrote' };
+    //
+    // ⚠️ THE `absent` CLAUSE IS NOT REDUNDANT EITHER (§C21, and it is the same
+    // mistake as the `corrupt` one above). An absent baseline also leaves
+    // `prev` null, so `pv.refuse` is FALSE — without this clause a book's
+    // entirely unreviewed FIRST export, the one write nothing can measure,
+    // would be recorded under the label for its most routine one.
+    outcomes[b] = {
+      outcome:
+        existing.kind === 'corrupt' || existing.kind === 'absent' || pv.refuse
+          ? 'adopted'
+          : 'wrote',
+    };
   }
 
   // ⚠️ THE STATUS FILE AND THE HEARTBEAT DELIBERATELY SHARE ONE RULE —

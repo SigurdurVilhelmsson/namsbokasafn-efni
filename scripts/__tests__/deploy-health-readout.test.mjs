@@ -192,12 +192,36 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     expect(parsed.adopt).toBe(false); // must NOT quietly hand over both overrides
   });
 
+  it('a STALE refused-absent-baseline names --adopt and NOT --force', () => {
+    // Register §C21. This book has a glossary/ dir and no committed file, so
+    // BOTH gates are structurally inert and the first write is unreviewed by
+    // construction. --adopt is the acknowledgement; --force answers a
+    // different question (is the shrink intended) and must not be handed over
+    // as well — the same two-risks-two-acknowledgements rule the shrink test
+    // above pins from the other direction.
+    const out = runReadout(staleBody('orverufraedi', 'refused-absent-baseline', 8 * D));
+    expect(out).toMatch(/^ {2}⚠ STALE orverufraedi: refused-absent-baseline \(8\.0d\) — unattended/m);
+    expect(out).toMatch(/no committed glossary/);
+
+    const cmds = printedCommands(out);
+    expect(cmds).toHaveLength(1);
+    const parsed = parseArgs(cmds[0]);
+    expect(parsed.error).toBeNull();
+    expect(parsed.book).toBe('orverufraedi');
+    expect(parsed.adopt).toBe(true);
+    expect(parsed.force).toBe(false);
+  });
+
   it('a STALE refused-no-mapping promises NO command — no flag can fix it', () => {
-    // ⚠️ THE LIVE INSTANCE. stjornufraedi has a glossary/ dir and no
-    // book_subject_mapping row, so this is the state prod actually reaches —
-    // and the old advice sent the operator to `--adopt`, which
-    // export-terminology.js:412 has no override for at all. The remedy is a DB
-    // row (migration 032), so printing any command here would be a lie.
+    // ⚠️ CORRECTED 2026-08-05. This said "THE LIVE INSTANCE. stjornufraedi
+    // has a glossary/ dir and no book_subject_mapping row". It no longer
+    // does — the empty directory was removed on prod that day, so the book
+    // dropped out of the export loop entirely and reaches no outcome at all.
+    // The scenario is still worth pinning (any book with a dir and no mapping
+    // reaches it); only the claim that prod is sitting in it went stale.
+    // The remedy is a DB row (migration 032), so printing any command here
+    // would be a lie. ⚠️ Per §C21 the row alone is NOT sufficient either —
+    // the book then lands on refused-absent-baseline, which is the point.
     const out = runReadout(staleBody('stjornufraedi', 'refused-no-mapping', 10 * D));
     expect(out).toMatch(/^ {2}⚠ STALE stjornufraedi: refused-no-mapping \(10\.0d\) — unattended/m);
     expect(out).toMatch(/NO flag fixes this/);
