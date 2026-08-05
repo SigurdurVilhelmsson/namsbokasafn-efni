@@ -11,6 +11,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
+const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
 
 // Optional dependencies
 let csvParse = null;
@@ -1519,7 +1520,7 @@ function proposeMinedTerm(english, icelandic, pos, userId, username) {
  * per translation; sibling translations become `alternatives`.
  *
  * @param {string} bookSlug
- * @returns {{ generated, book, stats, terms: Array }}
+ * @returns {{ producer, generated, book, stats, terms: Array }}
  */
 function exportBookGlossary(bookSlug) {
   const db = getDb();
@@ -1578,7 +1579,26 @@ function exportBookGlossary(bookSlug) {
     }
   }
 
-  return { generated: new Date().toISOString(), book: bookSlug, stats, terms };
+  // `producer` is TOP-LEVEL on purpose: sameTerms compares only `.terms`
+  // (glossaryExportDecision.js), so the stamp cannot trigger a spurious
+  // rewrite every 2h. It makes producer detection exact for every book after
+  // its first adoption, and catches the REVERSE swap — re-running
+  // merge-glossary.js over an adopted book removes the stamp.
+  //
+  // It also closes a corner in detectProducer's shape inference
+  // (glossaryProducer.js): that function checks `payload.producer ===
+  // PRODUCER_EXPORT` FIRST, before ever looking at `terms`, so a stamped
+  // payload is never misread as 'unknown' — even for a book whose subject
+  // filter legitimately matches zero terms, where the shape-only fallback
+  // (an empty `terms` array) would otherwise be indistinguishable from a
+  // malformed payload.
+  return {
+    producer: PRODUCER_EXPORT,
+    generated: new Date().toISOString(),
+    book: bookSlug,
+    stats,
+    terms,
+  };
 }
 
 /**

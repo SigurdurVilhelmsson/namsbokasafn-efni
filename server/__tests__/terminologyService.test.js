@@ -1289,6 +1289,18 @@ describe('exportBookGlossary()', () => {
     const bond = out.terms.find((t) => t.english === 'bond');
     expect(bond.alternatives).toEqual([]);
   });
+
+  it('stamps its own output with the producer name', () => {
+    const data = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(data.producer).toBe('export-terminology');
+  });
+
+  it('the stamp is top-level, so it cannot dirty the write-if-changed comparison', () => {
+    const { sameTerms } = require('../lib/glossaryExportDecision');
+    const a = terminologyService.exportBookGlossary('efnafraedi-2e');
+    const b = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(sameTerms(a, b)).toBe(true);
+  });
 });
 
 // =====================
