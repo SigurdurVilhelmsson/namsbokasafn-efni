@@ -25,26 +25,50 @@
  * requirement rather than as "already done" on purpose — the sentence this
  * replaces was a status claim that went stale and hid the gap for months.)
  *
- * SAFE TO RUN UNATTENDED because of three rules in lib/glossaryExportDecision.js
- * plus a book/subject guard here: write-if-changed (the `generated` stamp alone
- * must not dirty the file every 2h); a shrink guard on BOTH approved-term and
- * total-term counts (the committed exports came from merge-glossary.js, so this
- * exporter SWAPS producers; a catastrophic drop is refused rather than
- * committed — approved-only would miss a book like liffraedi-2e whose export
- * has zero approved terms); and a book-subject-mapping guard (a book with no
- * `book_subject_mapping` row would otherwise export an unscoped, all-subjects
- * glossary — refused instead, counted as a failure).
+ * SAFE TO RUN UNATTENDED because of FOUR rules — three in
+ * lib/glossaryExportDecision.js, one here:
  *
- * Exit code 0 means every requested book resolved healthily (written, or
- * legitimately unchanged) — it is NOT equivalent to "the heartbeat was
- * written". The heartbeat is written only on an UNFILTERED (no --book),
- * non-dry-run pass with zero failures: a `--book <slug>` run and a `--dry-run`
- * can each legitimately return 0 while leaving the heartbeat untouched.
+ *   1. WRITE-IF-CHANGED — the `generated` stamp alone must not dirty the file
+ *      every 2h (~4,380 timestamp-only commits a year).
+ *   2. PRODUCER GATE — categorical, and evaluated FIRST. The committed files
+ *      were written by tools/merge-glossary.js, so writing over one SWAPS
+ *      PRODUCERS rather than refreshing. Refused until a human passes --adopt.
+ *   3. SHRINK GUARD — quantitative, on BOTH approved-term and total-term
+ *      counts (approved-only would be inert for a book like liffraedi-2e,
+ *      whose export has zero approved terms). Overridden by --force.
+ *   4. BOOK/SUBJECT GUARD — a book with no `book_subject_mapping` row would
+ *      export an unscoped, all-subjects glossary; refused instead.
+ *
+ * ⚠️ RULES 2 AND 3 ARE NOT REDUNDANT, AND THEIR OVERRIDES ARE SEPARATE ON
+ * PURPOSE. --adopt does not imply --force and --force does not imply --adopt:
+ * two distinct risks, two distinct acknowledgements. The 2026-08-03 production
+ * run is why rule 2 exists at all — a wholesale producer swap passed the shrink
+ * guard because chemistry fell only 36.5% (under the 0.5 halving threshold) and
+ * biology GREW, which a shrink ratio is structurally blind to.
+ *
+ * ⚠️ THE CRON PASSES NO FLAGS (scripts/git-backup.sh invokes this script bare),
+ * so neither --adopt nor --force is reachable unattended. That is the
+ * structural answer to "a guard that only gates the manual path is not a
+ * gate": the overrides exist only on a path where a human is typing.
+ *
+ * Exit code 0 means no book ERRORED. It does NOT mean every book was written:
+ * a book that refuses for a correct reason (un-adopted producer swap, no
+ * subject mapping, catastrophic shrink) is a healthy outcome and keeps the exit
+ * code at 0. Only a genuine error — the exporter threw, a malformed payload, an
+ * unreadable existing file — returns 1. Before 2026-08-05 a refusal counted as
+ * a failure, which let ONE book's correct refusal mark the whole exporter
+ * unhealthy for every other book (register C14 ②, decision D2).
+ *
+ * Exit code 0 is likewise NOT equivalent to "the heartbeat was written". The
+ * heartbeat is written only on an UNFILTERED (no --book), non-dry-run pass with
+ * zero errors: a `--book <slug>` run and a `--dry-run` can each legitimately
+ * return 0 while leaving the heartbeat untouched.
  *
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
  *   node server/scripts/export-terminology.js --dry-run
  *   node server/scripts/export-terminology.js --force      # accept a shrink
+ *   node server/scripts/export-terminology.js --adopt      # accept a producer swap
  */
 
 const fs = require('fs');
@@ -55,6 +79,7 @@ const {
   countTerms,
   sameTerms,
   shrinkVerdict,
+  producerVerdict,
 } = require('../lib/glossaryExportDecision');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -75,28 +100,38 @@ function listBooks(booksDir = BOOKS_DIR) {
 }
 
 /**
- * Existing export, or null when there is genuinely no baseline to protect.
+ * The existing export, classified: absent, corrupt, or parsed.
  *
- * ⚠️ Only ENOENT and a parse failure may return null. Every other read error —
- * EACCES above all — MUST propagate. A null baseline tells shrinkVerdict there
- * is nothing to lose, so it permits the write: swallowing a permissions fault
- * here would stand the shrink guard down on exactly the file it exists to
- * protect, overwrite it, and still write the heartbeat, leaving /api/health
- * green. That is the catastrophe the guard was built for, arriving through the
- * one door it was not watching.
+ * ⚠️ Only ENOENT and a parse failure may be reported as a kind. Every other
+ * read error — EACCES above all — MUST propagate. An absent baseline tells
+ * shrinkVerdict there is nothing to lose, so it permits the write: swallowing a
+ * permissions fault here would stand the shrink guard down on exactly the file
+ * it exists to protect, overwrite it, and still write the heartbeat, leaving
+ * /api/health green. That is the catastrophe the guard was built for, arriving
+ * through the one door it was not watching.
+ *
+ * ⚠️ RETURNS A DISCRIMINATED RESULT since C14 ② step 4. It used to return
+ * `null` for BOTH "no file" and "corrupt file", which made those two
+ * indistinguishable to the caller — and a corrupt merge-glossary file was
+ * therefore silently replaced by an export, the one remaining ungated path to
+ * a producer swap (decision D5). "Absent" still means writing is correct;
+ * "corrupt" now means refuse and wait for --adopt.
+ *
+ * @param {string} outPath
+ * @returns {{kind: 'absent'}|{kind: 'corrupt'}|{kind: 'ok', payload: object}}
  */
 function readExisting(outPath) {
   let raw;
   try {
     raw = fs.readFileSync(outPath, 'utf-8');
   } catch (err) {
-    if (err.code === 'ENOENT') return null; // no file yet — writing is correct
-    throw err; // caught per-book by the caller, counted as a failure
+    if (err.code === 'ENOENT') return { kind: 'absent' }; // no file yet — writing is correct
+    throw err; // caught per-book by the caller, counted as an error
   }
   try {
-    return JSON.parse(raw);
+    return { kind: 'ok', payload: JSON.parse(raw) };
   } catch {
-    return null; // corrupt file — no usable baseline, and replacing it is an improvement
+    return { kind: 'corrupt' };
   }
 }
 
@@ -163,8 +198,14 @@ function writeHeartbeat(projectRoot) {
  *   string is a (rejected) single-book request, never "all books" (register
  *   C14, round 4).
  * @param {boolean} [options.force] - write even when the shrink guard objects
+ * @param {boolean} [options.adopt] - write even when the PRODUCER gate objects,
+ *   i.e. migrate a book whose committed glossary another program wrote.
+ *   Deliberately independent of `force`: neither implies the other, because a
+ *   producer swap and a catastrophic shrink are different risks and each
+ *   deserves its own explicit acknowledgement.
  * @param {boolean} [options.dryRun] - write neither export nor heartbeat
- * @returns {number} exit code: 0 iff every book resolved healthily
+ * @returns {number} exit code: 0 unless some book ERRORED. A refusal is not an
+ *   error (decision D2) — see the header.
  */
 function runGlossaryExport({
   booksDir = BOOKS_DIR,
@@ -173,6 +214,7 @@ function runGlossaryExport({
   subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
+  adopt = false,
   dryRun = false,
   log = console.log,
   logError = console.error,
@@ -216,7 +258,18 @@ function runGlossaryExport({
     return 1;
   }
 
-  let failures = 0;
+  // Per-book outcome, not one counter. A book that refuses for a CORRECT
+  // reason (producer swap not yet adopted, no subject mapping, catastrophic
+  // shrink) must not suppress the health signal for every other book: on
+  // 2026-08-03 that is exactly why /api/health read glossary_export:
+  // ok=false across the run that wrote and pushed reader-visible content,
+  // and why nobody learned the first prod export had happened.
+  const outcomes = {};
+  let errors = 0;
+  const fail = (b, detail) => {
+    outcomes[b] = { outcome: 'error', detail };
+    errors++;
+  };
 
   for (const b of books) {
     // A book with no book_subject_mapping row makes exportBookGlossary's
@@ -233,7 +286,7 @@ function runGlossaryExport({
       subject = subjectFn(b);
     } catch (err) {
       logError(`${b}: could not resolve book subject — ${err.message}`);
-      failures++;
+      fail(b, `could not resolve book subject — ${err.message}`);
       continue;
     }
     if (!subject) {
@@ -242,7 +295,11 @@ function runGlossaryExport({
           `all-subjects glossary. Add a book_subject_mapping row for this book ` +
           `(see migration 032) before exporting.`
       );
-      failures++;
+      // A refusal, not an error: the exporter is working correctly and
+      // declining to do the wrong thing. Only a human adding the missing row
+      // can resolve it, and until then this book must not mark the whole run
+      // unhealthy (decision D2).
+      outcomes[b] = { outcome: 'refused-no-mapping' };
       continue;
     }
 
@@ -254,7 +311,7 @@ function runGlossaryExport({
       next = exportFn(b);
     } catch (err) {
       logError(`${b}: export failed — ${err.message}`);
-      failures++;
+      fail(b, `export failed — ${err.message}`);
       continue;
     }
 
@@ -277,21 +334,53 @@ function runGlossaryExport({
         `${b}: exportFn returned a malformed payload — expected an object with an ` +
           `array 'terms' property, got ${describeMalformedPayload(next)} — refusing to write`
       );
-      failures++;
+      fail(b, 'exportFn returned a malformed payload');
       continue;
     }
 
-    let prev;
+    let existing;
     try {
-      prev = readExisting(outPath);
+      existing = readExisting(outPath);
     } catch (err) {
       logError(`${b}: could not read existing export — ${err.message}`);
-      failures++;
+      fail(b, `could not read existing export — ${err.message}`);
+      continue;
+    }
+
+    // D5: unreadable means we cannot tell what we would destroy.
+    if (existing.kind === 'corrupt' && !adopt) {
+      logError(
+        `${b}: REFUSING to write — cannot read the existing file at ${outPath} ` +
+          `(unparseable JSON), so its producer cannot be established. ` +
+          `Investigate, then pass --adopt to replace it.`
+      );
+      outcomes[b] = { outcome: 'refused-producer', detail: 'cannot read existing file' };
+      continue;
+    }
+    const prev = existing.kind === 'ok' ? existing.payload : null;
+
+    // Producer first, shrink second. A producer swap is categorical; a shrink
+    // is quantitative. Reporting "1117 → 709, a 36.5% shrink" about a file
+    // another program wrote invites the operator to reason about two numbers
+    // that count different things.
+    const pv = producerVerdict(prev, next);
+    if (pv.refuse && !adopt) {
+      logError(
+        `${b}: REFUSING to write — the committed file was written by ` +
+          `${pv.prevProducer}, not by this exporter (${pv.nextProducer}). Writing would ` +
+          `SWAP PRODUCERS, not refresh. Review what this book's glossary should be, ` +
+          `then pass --adopt to migrate it.`
+      );
+      outcomes[b] = {
+        outcome: 'refused-producer',
+        detail: `committed file written by ${pv.prevProducer}`,
+      };
       continue;
     }
 
     if (sameTerms(prev, next)) {
       log(`${b}: unchanged (${countApproved(next)} approved) — not rewritten`);
+      outcomes[b] = { outcome: 'unchanged' };
       continue;
     }
 
@@ -308,7 +397,10 @@ function runGlossaryExport({
           `come from a different producer (tools/merge-glossary.js). Investigate, then pass ` +
           `--force if the shrink is intended.`
       );
-      failures++;
+      outcomes[b] = {
+        outcome: 'refused-shrink',
+        detail: `${verdict.prevTotal} → ${verdict.nextTotal}`,
+      };
       continue;
     }
 
@@ -317,6 +409,7 @@ function runGlossaryExport({
         `[dry-run] ${b}: would write terms ${verdict.prevTotal} → ${countTerms(next)} ` +
           `(approved ${verdict.prevApproved} → ${verdict.nextApproved})`
       );
+      outcomes[b] = { outcome: 'dry-run' };
       continue;
     }
 
@@ -326,9 +419,13 @@ function runGlossaryExport({
       `${b}: wrote terms ${verdict.prevTotal} → ${countTerms(next)} ` +
         `(approved ${verdict.prevApproved} → ${verdict.nextApproved}) → ${outPath}`
     );
+    // 'adopted' is reachable only via --adopt: pv.refuse is true here exactly
+    // when the gate objected and a human overrode it. A one-off migration is
+    // worth distinguishing from a routine refresh in the record Task 6 writes.
+    outcomes[b] = { outcome: pv.refuse ? 'adopted' : 'wrote' };
   }
 
-  if (failures > 0) return 1;
+  if (errors > 0) return 1;
   // Heartbeat is the GLOBAL "the exporter is healthy" signal /api/health
   // reads — write it only for an unfiltered (no --book) run. A `--book
   // <slug>` run resolving healthily says nothing about the OTHER books, so
@@ -401,19 +498,36 @@ function runGlossaryExport({
  * become a slug carrying leading/trailing spaces that would never match a
  * real `books/<slug>/` directory.
  *
+ * ⚠️ EVERY FLAG MUST APPEAR IN ALL FOUR RETURN SITES — the three early error
+ * returns as well as the healthy one. A flag omitted from one of them reads
+ * `undefined` there, and `runGlossaryExport`'s destructuring defaults turn an
+ * explicit `undefined` into the documented default, so the omission produces
+ * no error and no wrong value until a caller actually depends on the flag
+ * having been seen. That is the same fail-open shape as findings 1 and 3
+ * above, one field removed. Pinned by "reports adopt on EVERY return path" in
+ * glossaryExportRun.test.js.
+ *
  * @param {string[]} argv
- * @returns {{book: string|null, dryRun: boolean, force: boolean, help: boolean, error: string|null}}
+ * @returns {{book: string|null, dryRun: boolean, force: boolean, adopt: boolean, help: boolean, error: string|null}}
  */
 function parseArgs(argv) {
   let book = null;
   let dryRun = false;
   let force = false;
+  let adopt = false;
   let help = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--book') {
       const raw = argv[i + 1];
       if (raw === undefined) {
-        return { book: null, dryRun, force, help, error: '--book requires a value (a book slug)' };
+        return {
+          book: null,
+          dryRun,
+          force,
+          adopt,
+          help,
+          error: '--book requires a value (a book slug)',
+        };
       }
       const value = raw.trim();
       if (value === '') {
@@ -421,6 +535,7 @@ function parseArgs(argv) {
           book: null,
           dryRun,
           force,
+          adopt,
           help,
           error: `--book requires a non-empty value (a book slug) — got ${JSON.stringify(raw)}`,
         };
@@ -431,6 +546,8 @@ function parseArgs(argv) {
       dryRun = true;
     } else if (argv[i] === '--force') {
       force = true;
+    } else if (argv[i] === '--adopt') {
+      adopt = true;
     } else if (argv[i] === '-h' || argv[i] === '--help') {
       help = true;
     } else {
@@ -438,15 +555,16 @@ function parseArgs(argv) {
         book: null,
         dryRun,
         force,
+        adopt,
         help,
         error:
           `unrecognised argument '${argv[i]}' — accepted: --book <slug>, --dry-run, ` +
-          `--force, -h/--help (note: --book takes its value as the NEXT argument, not ` +
-          `--book=<slug>)`,
+          `--force, --adopt, -h/--help (note: --book takes its value as the NEXT ` +
+          `argument, not --book=<slug>)`,
       };
     }
   }
-  return { book, dryRun, force, help, error: null };
+  return { book, dryRun, force, adopt, help, error: null };
 }
 
 function main() {
@@ -459,13 +577,23 @@ function main() {
 
   if (parsed.help) {
     console.log(
-      'Usage: node server/scripts/export-terminology.js [--book <slug>] [--dry-run] [--force]'
+      'Usage: node server/scripts/export-terminology.js [--book <slug>] [--dry-run] ' +
+        '[--force] [--adopt]\n' +
+        '  --force  accept a catastrophic shrink\n' +
+        '  --adopt  accept a producer swap (migrate a book whose committed\n' +
+        '           glossary another program wrote, or replace an unreadable one)\n' +
+        '  Neither implies the other, and the 2h cron passes neither.'
     );
     process.exit(0);
   }
 
   process.exit(
-    runGlossaryExport({ book: parsed.book, dryRun: parsed.dryRun, force: parsed.force })
+    runGlossaryExport({
+      book: parsed.book,
+      dryRun: parsed.dryRun,
+      force: parsed.force,
+      adopt: parsed.adopt,
+    })
   );
 }
 

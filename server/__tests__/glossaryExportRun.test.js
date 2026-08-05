@@ -14,8 +14,29 @@
  * comment claimed a three-way equivalence, which a --book run breaks).
  *
  * The heartbeat follows the C11(b) doctrine: written ONLY on a healthy,
- * unfiltered run, so absence is the alarm. A status file written on every
- * outcome would read "success" forever once the exporter stopped working.
+ * unfiltered run, so absence is the alarm.
+ *
+ * ⚠️ AMENDED 2026-08-05 (C14 ② step 5). This paragraph used to end "A status
+ * file written on every outcome would read 'success' forever once the exporter
+ * stopped working" — an argument against having one at all. A status file DOES
+ * arrive in the next step, and that argument survives as a CONSTRAINT on it
+ * rather than as a veto: the HEARTBEAT remains the liveness alarm (absence is
+ * the alarm, exactly as above), and the status file carries per-book DETAIL
+ * only. Nothing may consult the status file to decide whether the exporter is
+ * alive — a file written on every outcome cannot answer that question, which
+ * is precisely why the heartbeat is not being replaced by it.
+ *
+ * ⚠️ "Healthy" NARROWED 2026-08-05 (decision D2): a book that REFUSES for a
+ * correct reason — an un-adopted producer swap, no subject mapping, a
+ * catastrophic shrink — is a correct outcome, not a failure. Refusals now exit
+ * 0 and keep the heartbeat; only a genuine ERROR (the exporter threw, the
+ * payload was malformed, the existing file was unreadable) exits 1 and
+ * withholds it. On 2026-08-03 the old all-or-nothing counter let ONE book's
+ * legitimate refusal hold /api/health at ok=false straight through the run
+ * that wrote and pushed reader-visible content for every other book — so the
+ * alarm was already ringing for the wrong reason when the real event happened,
+ * and nobody learned of it. Several tests below were revised for this; each
+ * carries the reason inline.
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
@@ -69,6 +90,30 @@ const mixed = (total, approvedCount) =>
     icelandic: `i${i}`,
     status: i < approvedCount ? 'approved' : 'needs_review',
   }));
+
+/**
+ * ⚠️ THE EXISTING FIXTURES CANNOT EXERCISE THE PRODUCER GATE. payload()/approved()
+ * build terms as {english, icelandic, status} — no `subjects`, no
+ * `category`/`chapter` — so detectProducer returns 'unknown' for BOTH prev and
+ * next, they compare equal, and the gate silently never fires. Any test that
+ * means to exercise the gate MUST use these.
+ */
+const legacyTerms = (n) =>
+  Array.from({ length: n }, (_, i) => ({
+    english: `t${i}`,
+    icelandic: `i${i}`,
+    status: 'approved',
+    category: 'other',
+    chapter: 1,
+  }));
+
+const exportPayload = (terms, generated = '2026-07-27T09:00:00.000Z') => ({
+  producer: 'export-terminology',
+  generated,
+  book: 'prufubok',
+  stats: {},
+  terms: terms.map((t) => ({ ...t, subjects: ['chemistry'] })),
+});
 
 /** Create books/<slug>/glossary/, optionally with an existing export. */
 function seedBook(slug, existing) {
@@ -153,12 +198,36 @@ describe('runGlossaryExport — writing', () => {
     expect(after).toBe(before);
   });
 
-  it('treats an unparseable existing file as no baseline and writes', () => {
-    // Refusing here would wedge the exporter forever on a corrupt file it is
-    // perfectly capable of replacing.
-    seedBook('prufubok', 'not json {{{');
-    expect(run({ exportFn: () => payload(approved(5)) })).toBe(0);
-    expect(readExport('prufubok').terms).toHaveLength(5);
+  // REVISED 2026-08-04 (C14 ② step 4, decision D5). This asserted the
+  // opposite: a corrupt file was replaced, on the reasoning that a corrupt
+  // file has no value so overwriting it is an improvement. That reasoning
+  // holds for the CONTENT and fails for the PRODUCER — an unreadable
+  // merge-glossary file was the one remaining path by which a producer swap
+  // could happen with no gate at all. We cannot tell what we would destroy,
+  // which is exactly when a human decides. Kept rather than deleted so the
+  // change is visible to the next reader.
+  it('refuses an unparseable existing file rather than replacing it (needs --adopt)', () => {
+    seedBook('prufubok', '{ not json');
+    const errors = [];
+    const code = run({
+      exportFn: () => payload(approved(10)),
+      logError: (m) => errors.push(m),
+    });
+    expect(code).toBe(0); // a refusal is not an error (D2)
+    expect(
+      readFileSync(
+        path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json'),
+        'utf8'
+      )
+    ).toBe('{ not json'); // untouched
+    expect(errors.join('\n')).toMatch(/cannot read the existing file/i);
+  });
+
+  it('--adopt replaces an unparseable existing file', () => {
+    seedBook('prufubok', '{ not json');
+    const code = run({ exportFn: () => payload(approved(10)), adopt: true });
+    expect(code).toBe(0);
+    expect(readExport('prufubok').terms).toHaveLength(10);
   });
 
   it('ROUND TRIP: a second identical run writes nothing and leaves the bytes alone', () => {
@@ -185,11 +254,16 @@ describe('runGlossaryExport — writing', () => {
 });
 
 describe('runGlossaryExport — shrink guard', () => {
-  it('refuses a catastrophic shrink, writes nothing, and returns 1', () => {
+  // REVISED 2026-08-05 (C14 ② step 5, decision D2): the exit code was 1 —
+  // a refusal was counted as a failure. It is now 0. The refusal itself is
+  // unchanged and still pinned below ("writes nothing"); what changed is only
+  // how the RUN reports it, because an all-or-nothing failure counter let one
+  // book's correct refusal suppress the health signal for every other book.
+  it('refuses a catastrophic shrink, writes nothing, and returns 0 (a refusal is not an error, D2)', () => {
     const before = JSON.stringify(payload(approved(617)));
     seedBook('prufubok', before);
     const code = run({ exportFn: () => payload(approved(3)) });
-    expect(code).toBe(1);
+    expect(code).toBe(0);
     const after = readFileSync(
       path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json'),
       'utf8'
@@ -443,17 +517,23 @@ describe('runGlossaryExport — book-subject-mapping guard', () => {
   // it would export every non-rejected translation across every subject. This
   // guard refuses that instead of silently priming MT (and the render path)
   // from a cross-subject corpus.
-  it('skips a book with no book_subject_mapping row, counts it as a failure, and writes nothing', () => {
+  // REVISED 2026-08-05 (C14 ② step 5, decision D2). Was "counts it as a
+  // failure": exit 1 and no heartbeat. A missing subject mapping is a book
+  // this exporter correctly declines to touch, not a broken exporter — the
+  // run is healthy, and the two assertions that matter (nothing written, the
+  // book named in the log) are unchanged. The heartbeat expectation INVERTED
+  // for the same reason as the sibling in the heartbeat-contract block below.
+  it('skips a book with no book_subject_mapping row, records it as refused-no-mapping, and writes nothing', () => {
     seedBook('bok-a');
     const code = run({
       subjectFn: () => null,
       exportFn: () => payload(approved(5)),
     });
-    expect(code).toBe(1);
+    expect(code).toBe(0);
     expect(existsSync(path.join(root, 'books', 'bok-a', 'glossary', 'glossary-unified.json'))).toBe(
       false
     );
-    expect(heartbeatExists()).toBe(false);
+    expect(heartbeatExists()).toBe(true);
   });
 
   it('logs the book slug when refusing for lack of a subject mapping', () => {
@@ -479,7 +559,11 @@ describe('runGlossaryExport — book-subject-mapping guard', () => {
         return payload(approved(9));
       },
     });
-    expect(code).toBe(1); // bok-a failed
+    // REVISED 2026-08-05 (C14 ② step 5, decision D2): was `toBe(1)` with the
+    // comment "bok-a failed". bok-a is REFUSED, not failed, so the run exits
+    // 0. The property this test actually exists to pin — the loop does not
+    // abort at the unmapped book — is untouched and is what `seen` asserts.
+    expect(code).toBe(0); // bok-a refused (not an error); bok-b succeeded
     expect(seen).toEqual(['bok-b']);
     expect(readExport('bok-b').terms).toHaveLength(9);
   });
@@ -510,10 +594,23 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
     expect(heartbeatExists()).toBe(true);
   });
 
-  it('does NOT write the heartbeat when a book was refused', () => {
+  // ⚠️ INVERTED 2026-08-05 (C14 ② step 5, decision D2). This asserted
+  // `toBe(false)` — a refused book withheld the global heartbeat. That is the
+  // defect being fixed, not a property being preserved: a refusal is a
+  // CORRECT outcome (the guard did its job), and treating it as a failure
+  // meant one book's correct refusal marked the exporter unhealthy for every
+  // other book. Measured in production on 2026-08-03: /api/health read
+  // glossary_export ok=false continuously — because liffraedi-2e was
+  // legitimately refusing — straight through the run that wrote and pushed
+  // new reader-visible glossaries for the other two books. The alarm was
+  // already ringing, for a reason nobody was acting on, at the moment the
+  // real event happened. Kept rather than deleted so the reversal is visible.
+  // Liveness is still pinned in the opposite direction by its sibling below:
+  // an ERROR does withhold the heartbeat.
+  it('DOES write the heartbeat when a book was refused — a refusal is a correct outcome (D2)', () => {
     seedBook('prufubok', JSON.stringify(payload(approved(617))));
     run({ exportFn: () => payload(approved(3)) });
-    expect(heartbeatExists()).toBe(false);
+    expect(heartbeatExists()).toBe(true);
   });
 
   it('does NOT write the heartbeat when the exporter threw', () => {
@@ -539,22 +636,30 @@ describe('runGlossaryExport — exit code and heartbeat contract', () => {
     expect(heartbeatExists()).toBe(false);
   });
 
-  it('processes remaining books after one is refused', () => {
+  it('processes remaining books after one is refused, and the run stays healthy', () => {
     // Parked minor from the Task 4 per-task review, resolved 2026-07-28: this
     // test asserted the exit code and bok-b's content but not the heartbeat —
     // the mechanism was covered only in ISOLATION, by the single-book-refusal
-    // test above. The combined case (one book refused, one succeeded) is
-    // exactly where a naive implementation might write the heartbeat because
-    // "something succeeded"; it must not, since the heartbeat is the GLOBAL
-    // "every requested book resolved healthily" signal.
+    // test above.
+    //
+    // REVISED 2026-08-05 (C14 ② step 5, decision D2). It used to read: "the
+    // combined case (one book refused, one succeeded) is exactly where a
+    // naive implementation might write the heartbeat because 'something
+    // succeeded'; it must not". Under D2 that is backwards for a REFUSAL —
+    // one book correctly declining says nothing bad about the exporter, so
+    // the heartbeat is now expected. The original property is NOT lost: it
+    // was really about a bad book not being papered over by a good one, and
+    // that is still pinned for genuine errors by the malformed-payload
+    // it.each above (bok-a malformed + bok-b written => heartbeat false) and
+    // by 'does NOT write the heartbeat when the exporter threw'.
     seedBook('bok-a', JSON.stringify(payload(approved(617))));
     seedBook('bok-b');
     const code = run({
       exportFn: (slug) => (slug === 'bok-a' ? payload(approved(3)) : payload(approved(9))),
     });
-    expect(code).toBe(1); // bok-a failed
+    expect(code).toBe(0); // bok-a refused (not an error)
     expect(readExport('bok-b').terms).toHaveLength(9); // bok-b still ran
-    expect(heartbeatExists()).toBe(false);
+    expect(heartbeatExists()).toBe(true);
   });
 
   it('returns 1 and writes no heartbeat when NO books are discovered', () => {
@@ -631,6 +736,11 @@ describe('runGlossaryExport — dry run', () => {
     // with dryRun:true — the shrink-guard check runs before the dryRun
     // check in runGlossaryExport, so this exercises the refusal message,
     // not the "[dry-run] would write" message pinned below.
+    //
+    // REVISED 2026-08-05 (C14 ② step 5, decision D2): was `toBe(1)`. The
+    // refusal still fires under --dry-run — which is the whole point of this
+    // test, and is what the message assertion pins — but a refusal is no
+    // longer an error, so the run exits 0.
     seedBook('prufubok', JSON.stringify(payload(approved(617))));
     const errors = [];
     const code = run({
@@ -638,7 +748,7 @@ describe('runGlossaryExport — dry run', () => {
       dryRun: true,
       logError: (m) => errors.push(m),
     });
-    expect(code).toBe(1);
+    expect(code).toBe(0);
     expect(errors.join('\n')).toMatch(/617/);
   });
 
@@ -670,6 +780,7 @@ describe('parseArgs', () => {
       book: 'efnafraedi-2e',
       dryRun: false,
       force: false,
+      adopt: false,
       help: false,
       error: null,
     });
@@ -680,6 +791,7 @@ describe('parseArgs', () => {
       book: null,
       dryRun: true,
       force: true,
+      adopt: false,
       help: false,
       error: null,
     });
@@ -842,5 +954,175 @@ describe('parseArgs', () => {
     const result = parseArgs(['--frobnicate', '--help']);
     expect(result.error).toBeTruthy();
     expect(result.help).toBe(false);
+  });
+});
+
+describe('runGlossaryExport — producer gate (C14 ② step 4)', () => {
+  const legacyFile = () =>
+    JSON.stringify({ generated: 'x', book: 'prufubok', stats: {}, terms: legacyTerms(1117) });
+
+  it('refuses to overwrite a merge-glossary file, writes nothing, and returns 0', () => {
+    seedBook('prufubok', legacyFile());
+    const errors = [];
+    const code = run({
+      exportFn: () => exportPayload(approved(709)),
+      logError: (m) => errors.push(m),
+    });
+    expect(code).toBe(0); // a refusal is correct, not an error (D2)
+    expect(readExport('prufubok').terms).toHaveLength(1117); // untouched
+    expect(errors.join('\n')).toMatch(/merge-glossary/);
+  });
+
+  it('the refusal message does NOT lead with a shrink ratio — the counts measure different things', () => {
+    // ⚠️ TWO deliberate strengthenings over the drafted version of this test,
+    // which used exportPayload(approved(709)) and asserted only /producer/i.
+    //
+    // 1. 709 does NOT trip the shrink gate (709 > 1117 * 0.5), so only ONE
+    //    gate could ever fire and the producer message would be emitted
+    //    whichever order the two gates ran in — the ordering this test exists
+    //    to pin would have gone untested. 100 trips BOTH.
+    // 2. /producer/i alone cannot tell the two messages apart: the SHRINK
+    //    refusal also says "may come from a different producer
+    //    (tools/merge-glossary.js)". The negative assertions are what
+    //    actually distinguish them.
+    seedBook('prufubok', legacyFile());
+    const errors = [];
+    run({ exportFn: () => exportPayload(approved(100)), logError: (m) => errors.push(m) });
+    expect(errors.join('\n')).toMatch(/producer/i);
+    expect(errors.join('\n')).not.toMatch(/would fall/); // the shrink message's wording
+    expect(errors.join('\n')).not.toMatch(/1117 → 100/); // no ratio between unlike counts
+  });
+
+  it('--adopt migrates the book and writes', () => {
+    seedBook('prufubok', legacyFile());
+    const code = run({ exportFn: () => exportPayload(approved(709)), adopt: true });
+    expect(code).toBe(0);
+    expect(readExport('prufubok').terms).toHaveLength(709);
+    expect(readExport('prufubok').producer).toBe('export-terminology');
+  });
+
+  it('--adopt does NOT bypass the shrink gate — two risks, two acknowledgements', () => {
+    // Same producer on both sides, so only the shrink gate can fire.
+    seedBook('prufubok', JSON.stringify(exportPayload(approved(1000))));
+    const code = run({ exportFn: () => exportPayload(approved(10)), adopt: true });
+    expect(code).toBe(0);
+    expect(readExport('prufubok').terms).toHaveLength(1000); // refused, untouched
+  });
+
+  it('--force does NOT bypass the producer gate either', () => {
+    seedBook('prufubok', legacyFile());
+    const code = run({ exportFn: () => exportPayload(approved(709)), force: true });
+    expect(code).toBe(0);
+    expect(readExport('prufubok').terms).toHaveLength(1117); // refused, untouched
+  });
+
+  it('an already-adopted book exports normally with no flags', () => {
+    seedBook('prufubok', JSON.stringify(exportPayload(approved(10))));
+    const code = run({ exportFn: () => exportPayload(approved(12)) });
+    expect(code).toBe(0);
+    expect(readExport('prufubok').terms).toHaveLength(12);
+  });
+
+  it('a PRE-STAMP export file vs a freshly stamped one with identical terms is UNCHANGED, not rewritten', () => {
+    // ⚠️ THE PATH EVERY ALREADY-ADOPTED BOOK TAKES ON THE FIRST CRON RUN AFTER
+    // THIS SHIPS. The committed file was written by an export that predates
+    // the top-level `producer` stamp (Task 3), so its terms carry `subjects`
+    // but the payload has no `producer` key; the fresh export has both. Both
+    // sides must still fingerprint as export-terminology — the stamp is a
+    // shortcut, the term shape is the fallback — or the gate would refuse
+    // every book at once. And sameTerms must still see them as equal, or
+    // every book would be rewritten and re-committed every 2h forever.
+    //
+    // Task 3 covered this at the unit level (detectProducer/producerVerdict);
+    // this is the runner-level version, where a wrong answer reaches git.
+    //
+    // The log assertion is load-bearing, not decoration: a REFUSAL would also
+    // leave the file untouched and also return 0, so exit-code-plus-bytes
+    // alone cannot tell "unchanged" from "refused-producer". Only the message
+    // distinguishes them.
+    const terms = approved(10);
+    // eslint-disable-next-line no-unused-vars
+    const { producer, ...preStamp } = exportPayload(terms, '2026-01-01T00:00:00.000Z');
+    const before = JSON.stringify(preStamp, null, 2) + '\n';
+    seedBook('prufubok', before);
+
+    const logs = [];
+    const errors = [];
+    const code = run({
+      exportFn: () => exportPayload(terms, '2026-08-05T09:00:00.000Z'),
+      log: (m) => logs.push(m),
+      logError: (m) => errors.push(m),
+    });
+
+    expect(code).toBe(0);
+    expect(errors.join('\n')).toBe(''); // the producer gate did NOT fire
+    expect(logs.join('\n')).toMatch(/unchanged/);
+    const after = readFileSync(
+      path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json'),
+      'utf8'
+    );
+    expect(after).toBe(before); // byte-identical: not rewritten, so no commit
+  });
+});
+
+describe('runGlossaryExport — refusals are not errors (D2)', () => {
+  it('writes the heartbeat across a run where every book refused', () => {
+    seedBook('prufubok', JSON.stringify({ terms: legacyTerms(100) }));
+    const code = run({ exportFn: () => exportPayload(approved(50)) });
+    expect(code).toBe(0);
+    // ⚠️ The untouched-file assertion is what makes this test mean anything.
+    // 50 is not < 100 * 0.5, so the SHRINK gate does not fire here — without
+    // this line the export would simply succeed and the heartbeat would be
+    // written for the ordinary reason, and the test would pass while proving
+    // nothing about refusals. Verified: it passed on the pre-gate code.
+    expect(readExport('prufubok').terms).toHaveLength(100); // refused, untouched
+    expect(heartbeatExists()).toBe(true);
+  });
+
+  it('still withholds the heartbeat when a book ERRORED', () => {
+    seedBook('prufubok');
+    const code = run({
+      exportFn: () => {
+        throw new Error('db is on fire');
+      },
+    });
+    expect(code).toBe(1);
+    expect(heartbeatExists()).toBe(false);
+  });
+});
+
+describe('parseArgs — --adopt', () => {
+  it('parses --adopt', () => {
+    expect(parseArgs(['--adopt']).adopt).toBe(true);
+  });
+
+  it('defaults adopt to false', () => {
+    expect(parseArgs([]).adopt).toBe(false);
+  });
+
+  it('--adopt does not swallow --book’s value and silently widen to every book', () => {
+    // The round-4 trap: a boolean flag positioned before --book must not leave
+    // book at its null default ("every book").
+    const r = parseArgs(['--adopt', '--book', 'efnafraedi-2e']);
+    expect(r.adopt).toBe(true);
+    expect(r.book).toBe('efnafraedi-2e');
+  });
+
+  it('--book with --adopt in the other order still binds the slug', () => {
+    const r = parseArgs(['--book', 'efnafraedi-2e', '--adopt']);
+    expect(r.book).toBe('efnafraedi-2e');
+    expect(r.adopt).toBe(true);
+  });
+
+  it('reports adopt on EVERY return path, including the early parse errors', () => {
+    // ⚠️ parseArgs has four return sites, three of them early error returns.
+    // A flag omitted from one of them reads `undefined` at the call site,
+    // which is not merely "not true": `runGlossaryExport`'s destructuring
+    // default turns an explicit undefined into the documented default, so the
+    // omission is invisible until someone relies on the value. Pin all four.
+    expect(parseArgs(['--adopt', '--book']).adopt).toBe(true); // --book with no value
+    expect(parseArgs(['--adopt', '--book', '']).adopt).toBe(true); // empty --book value
+    expect(parseArgs(['--adopt', '--frobnicate']).adopt).toBe(true); // unrecognised token
+    expect(parseArgs(['--adopt']).adopt).toBe(true); // the healthy path
   });
 });
