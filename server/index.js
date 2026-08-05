@@ -176,7 +176,10 @@ app.use(express.static(publicPath));
 // logged is close to what nginx measures rather than route time alone. A
 // rate-limited 429, which the old inline logger sat behind and so never
 // recorded, is now visible too. Static assets terminate above and are still
-// not logged, which keeps log volume where it was.
+// not logged, which keeps STATIC-ASSET volume where it was — but total volume
+// is strictly higher than before, by exactly the requests that used to be
+// rejected upstream of the old logger (429s, CORS rejections, failed body
+// parses). That is the point: those are the ones that vanished silently.
 app.use(
   createRequestTimer({
     logger: log,
