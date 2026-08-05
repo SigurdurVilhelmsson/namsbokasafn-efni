@@ -48,9 +48,32 @@ function createRequestTimer({
 }) {
   return function requestTimer(req, res, next) {
     const start = now();
-    // Captured at entry: a handler that throws can leave req in any state, and
-    // these two fields are the ones the log is useless without.
+
+    // ⚠️ CAPTURED AT ENTRY, and that is load-bearing. Express strips a
+    // router's mount prefix from req.url during dispatch and only restores it
+    // on the way out, so req.path read inside the close handler is the
+    // POST-STRIP value whenever the client aborts mid-dispatch. Measured on
+    // express 5.2.1: '/api/segment-editor/module/hang' at entry,
+    // '/module/hang' at close. index.js mounts 19 routers under /api/…, so
+    // reading it late would name no endpoint in exactly the aborted-request
+    // case this exists to diagnose.
     const { method, path } = req;
+
+    // ⚠️ The client can already be gone before we are reached. express.static
+    // is mounted above this and does an async fs.stat before calling next(),
+    // so 'close' can fire in that window — before res.once('close') below is
+    // attached. That listener then never fires while the watchdog still does,
+    // leaving a lone 'request still in flight' warning with no terminal
+    // partner: the precise signature this file documents as "the process died
+    // mid-request" (register C20). An observability feature that manufactures
+    // false instances of the incident class it detects is worse than none.
+    // Measured against the real stack before this guard: 30 of 200 aborting
+    // requests. Deliberately carries NO duration_ms — the request cannot be
+    // timed, and a fictitious 0 would drag p95 down.
+    if (res.closed) {
+      logger.info({ method, path, completed: false }, 'request closed before timing');
+      return next();
+    }
 
     // In-flight warning. A close-time-only design logs NOTHING if the process
     // dies mid-request — and register C20 (live, P1) is an uncaught archive
@@ -72,10 +95,13 @@ function createRequestTimer({
       const fields = {
         method,
         path,
-        // On an aborted response statusCode is still its 200 default, which
-        // nobody ever received. Reporting it would print a comforting fiction
-        // about a request that failed.
-        status: completed ? res.statusCode : null,
+        // Keyed on headersSent, NOT on `completed`. A response truncated
+        // mid-body did send a real status line, and collapsing it to null
+        // would make it byte-identical to a request that never answered at
+        // all — the one distinction this log exists to draw. When no headers
+        // went out, statusCode is still its 200 default, which nobody ever
+        // received; reporting that would be a comforting fiction.
+        status: res.headersSent ? res.statusCode : null,
         duration_ms,
         completed,
       };

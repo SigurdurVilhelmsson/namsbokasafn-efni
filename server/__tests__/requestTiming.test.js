@@ -39,18 +39,28 @@ function fakeReq({ method = 'GET', path = '/api/books' } = {}) {
   };
 }
 
-function fakeRes({ statusCode = 200 } = {}) {
+function fakeRes({ statusCode = 200, closed = false, headersSent = false } = {}) {
   const res = new EventEmitter();
   res.statusCode = statusCode;
   res.writableFinished = false;
+  // `closed` is true once the stream has closed. It defaulted to absent in the
+  // first version of this fixture, which made the already-closed-at-entry path
+  // structurally unreachable — the tests could not have caught the bug it
+  // guards, and passed vacuously.
+  res.closed = closed;
+  res.headersSent = headersSent;
   /** Normal completion: Node sets writableFinished before emitting close. */
   res.complete = () => {
     res.writableFinished = true;
+    res.headersSent = true;
+    res.closed = true;
     res.emit('close');
   };
   /** Client (nginx) gave up mid-handler: close only, writableFinished false. */
-  res.abort = () => {
+  res.abort = ({ afterHeaders = false } = {}) => {
     res.writableFinished = false;
+    res.headersSent = afterHeaders;
+    res.closed = true;
     res.emit('close');
   };
   return res;
@@ -189,6 +199,97 @@ describe('createRequestTimer', () => {
 
     expect(logger.warn).not.toHaveBeenCalled();
     expect(logger.calls('info')[0].fields).toMatchObject({ completed: false, duration_ms: 12 });
+  });
+
+  it('reports the status of a response aborted AFTER its headers went out', () => {
+    // A stream truncated mid-body did send a real status line. Collapsing it
+    // to null would make it byte-identical to a request that never answered
+    // at all, which is the one distinction this log exists to draw.
+    const logger = fakeLogger();
+    const timer = createRequestTimer({ logger, thresholdMs: 1000, now });
+    const res = fakeRes({ statusCode: 206 });
+
+    runRequest(timer, { req: fakeReq(), res, elapsedMs: 2000, clock });
+    res.abort({ afterHeaders: true });
+
+    expect(logger.calls('warn')[0].fields).toMatchObject({ status: 206, completed: false });
+  });
+
+  // ─── Already closed before the middleware is reached ───────────────────────
+  // express.static does an async fs.stat before calling next(), so a client
+  // that disconnects in that window makes res emit 'close' BEFORE this
+  // middleware attaches its listener. Measured against the real stack: 30 of
+  // 200 aborting requests.
+
+  it('logs a request whose response closed before the timer was reached', () => {
+    const logger = fakeLogger();
+    const timer = createRequestTimer({ logger, thresholdMs: 1000, now });
+
+    timer(fakeReq({ path: '/api/segment-editor' }), fakeRes({ closed: true }), () => {});
+
+    expect(logger.calls('info')).toEqual([
+      {
+        fields: { method: 'GET', path: '/api/segment-editor', completed: false },
+        message: 'request closed before timing',
+      },
+    ]);
+  });
+
+  it('reports no duration for such a request, rather than a fictitious zero', () => {
+    // It cannot be timed — the response was already gone. A 0 ms entry would
+    // silently drag p95 down, defeating the measurement C23 exists to enable.
+    const logger = fakeLogger();
+    const timer = createRequestTimer({ logger, thresholdMs: 1000, now });
+
+    timer(fakeReq(), fakeRes({ closed: true }), () => {});
+
+    expect(logger.calls('info')[0].fields).not.toHaveProperty('duration_ms');
+  });
+
+  it('arms no watchdog for an already-closed response', () => {
+    // The bug this pins: the watchdog fired while the never-attached 'close'
+    // listener stayed silent, so the operator saw a lone "still in flight"
+    // warning with no terminal partner — the exact signature this middleware
+    // documents as "the process died mid-request" (register C20).
+    const logger = fakeLogger();
+    const timer = createRequestTimer({ logger, thresholdMs: 1000, now });
+
+    timer(fakeReq(), fakeRes({ closed: true }), () => {});
+    vi.advanceTimersByTime(60_000);
+
+    expect(logger.warn).not.toHaveBeenCalled();
+  });
+
+  it('still calls next() for an already-closed response', () => {
+    const timer = createRequestTimer({ logger: fakeLogger(), thresholdMs: 1000, now });
+    const next = vi.fn();
+
+    timer(fakeReq(), fakeRes({ closed: true }), next);
+
+    expect(next).toHaveBeenCalledOnce();
+  });
+
+  // ─── Capture at entry ──────────────────────────────────────────────────────
+
+  it('logs the path as it was at entry, not as Express leaves it', () => {
+    // Measured on express 5.2.1: with a router mounted at /api/segment-editor,
+    // req.path is '/api/segment-editor/module/hang' at entry but '/module/hang'
+    // inside a close handler that fires during dispatch — Express strips the
+    // mount prefix from req.url and only restores it on the way out. Reading
+    // it late would log a path naming no endpoint, in precisely the aborted
+    // request C23 exists to diagnose.
+    const logger = fakeLogger();
+    const timer = createRequestTimer({ logger, thresholdMs: 1000, now });
+    const req = fakeReq({ path: '/api/segment-editor/module/hang' });
+    const res = fakeRes();
+
+    clock.value = 0;
+    timer(req, res, () => {});
+    req.path = '/module/hang'; // Express, mid-dispatch
+    clock.value = 5;
+    res.complete();
+
+    expect(logger.calls('info')[0].fields.path).toBe('/api/segment-editor/module/hang');
   });
 
   // ─── In-flight watchdog ────────────────────────────────────────────────────

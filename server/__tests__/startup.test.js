@@ -129,8 +129,18 @@ describe('Server startup smoke tests', () => {
     it('index.js does not repeat the threshold literal', () => {
       // The default lives in the middleware next to the comment explaining
       // why it is what it is. Repeating it here would let the two drift.
+      // Asserted as an ABSENCE, because the presence check it replaced could
+      // pass while a hardcoded number sat right beside it.
       expect(indexSource).toContain('DEFAULT_SLOW_REQUEST_MS');
-      expect(indexSource).toContain('SLOW_REQUEST_MS');
+      expect(indexSource).not.toMatch(/thresholdMs:\s*\d/);
+    });
+
+    it('index.js keeps the SLOW_REQUEST_MS operator override', () => {
+      // Asserted against process.env, not the bare name: 'SLOW_REQUEST_MS' is
+      // a substring of 'DEFAULT_SLOW_REQUEST_MS', so a toContain on it was
+      // vacuous — it could not fail while the line above passed, and dropping
+      // the override entirely went undetected.
+      expect(indexSource).toMatch(/process\.env\.SLOW_REQUEST_MS/);
     });
   });
 
