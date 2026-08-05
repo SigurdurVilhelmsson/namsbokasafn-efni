@@ -339,11 +339,22 @@ app.get('/api/health', (req, res) => {
   // the content backup — so this is the only place a persistently failing
   // export becomes visible. ./scripts/deploy.sh prints every not-ok check.
   try {
-    const { readGlossaryExportHealth, DEFAULT_STALE_HOURS } = require('./lib/glossaryExportHealth');
+    const {
+      readGlossaryExportHealth,
+      DEFAULT_STALE_HOURS,
+      DEFAULT_REFUSAL_STALE_DAYS,
+    } = require('./lib/glossaryExportHealth');
     checks.glossary_export = readGlossaryExportHealth({
       projectRoot: path.join(__dirname, '..'),
       nowMs: Date.now(),
       staleHours: Number(process.env.GLOSSARY_EXPORT_STALE_HOURS) || DEFAULT_STALE_HOURS,
+      // A book that has been REFUSING this long is no longer a guard doing its
+      // job, it is unattended work (decision D6). The refusal itself does not
+      // flip `ok` — only its age does. Defaults live in the lib, beside the
+      // comments explaining the numbers; repeating a literal here would let
+      // the two drift apart silently.
+      refusalStaleDays:
+        Number(process.env.GLOSSARY_REFUSAL_STALE_DAYS) || DEFAULT_REFUSAL_STALE_DAYS,
     });
   } catch (err) {
     checks.glossary_export = { ok: false, error: err.message };

@@ -129,8 +129,10 @@ for i in $(seq 1 30); do
     # Print the verdict rather than discarding it. Nothing else polls
     # /api/health — no monitor, no UI — so this is the only routine surface
     # where a stale backup heartbeat (content, register C11(b); or off-box
-    # sessions.db) becomes visible to a human. It gates nothing: "degraded"
-    # is a legitimate post-deploy state, e.g. before the first backup cycle.
+    # sessions.db) becomes visible to a human — and, below, where a glossary
+    # refusal (register C14) becomes visible too. It gates nothing:
+    # "degraded" is a legitimate post-deploy state, e.g. before the first
+    # backup cycle, and a glossary refusal must never fail a deploy.
     echo "$HEALTH_BODY" | node -e "
       let d='';process.stdin.on('data',c=>d+=c);
       process.stdin.on('end',()=>{
@@ -138,6 +140,88 @@ for i in $(seq 1 30); do
           const h=JSON.parse(d);
           const bad=Object.entries(h.checks||{}).filter(([,c])=>!c.ok).map(([n])=>n);
           console.log('Health: '+h.status+(bad.length?' — not ok: '+bad.join(', '):''));
+          // A glossary refusal keeps checks.glossary_export.ok TRUE (register
+          // C14, decision D2) — the guard working as intended, not a fault —
+          // so it would never appear in the 'not ok' line above. Nothing
+          // polls /api/health and this printout is the only routine surface,
+          // so print every refusal here regardless of ok, and flag the ones
+          // a human has not yet resolved (decision D6, stale_refusals).
+          //
+          // detail is deliberately UNAVAILABLE here: /api/health is
+          // unauthenticated and server/lib/glossaryExportHealth.js projects
+          // each book to {outcome, since} only, because detail can embed an
+          // absolute server filesystem path. Read
+          // pipeline-output/.glossary-export-status.json on the box for that.
+          const ge=h.checks&&h.checks.glossary_export;
+          const books=(ge&&typeof ge==='object'&&ge.books&&typeof ge.books==='object')?ge.books:{};
+          const staleSet=new Set(ge&&Array.isArray(ge.stale_refusals)?ge.stale_refusals:[]);
+          const refusals=Object.entries(books).filter(([,o])=>
+            o&&typeof o.outcome==='string'&&o.outcome.indexOf('refused-')===0);
+          // A book that ERRORED (not merely refused) is the quieter, worse
+          // case: it always flips ge.ok false (errors>0), but with zero
+          // refusals the block below used to print NOTHING at all — no ran,
+          // no slug — which is exactly the state 'ran' exists to make
+          // legible (fix round 1, finding 1). Gate on ge.ok===false too, not
+          // refusals.length alone, and list errored books explicitly.
+          const errored=Object.entries(books).filter(([,o])=>
+            o&&typeof o.outcome==='string'&&o.outcome==='error');
+          if(refusals.length||(ge&&ge.ok===false)){
+            // <1m: 'just now' (a same-run refusal/error must not print
+            // '0.0h', which reads as a broken field). <1h: minutes.
+            // <1d: hours. >=1d: days, so a week-old refusal stays readable.
+            const ageStr=(iso)=>{
+              const t=typeof iso==='string'?Date.parse(iso):NaN;
+              if(!isFinite(t))return 'unknown age';
+              const ms=Date.now()-t;
+              if(ms<60000)return 'just now';
+              if(ms<3600000)return Math.round(ms/60000)+'m';
+              if(ms<86400000)return (ms/3600000).toFixed(1)+'h';
+              return (ms/86400000).toFixed(1)+'d';
+            };
+            const ranLabel=(()=>{
+              const t=ge&&typeof ge.ran==='string'?Date.parse(ge.ran):NaN;
+              if(!isFinite(t))return '';
+              const a=ageStr(ge.ran);
+              return ' (ran '+(a==='just now'?a:a+' ago')+')';
+            })();
+            console.log('glossary export: '+(ge&&ge.ok?'ok':'not ok')+ranLabel);
+            for(const [slug,o] of refusals){
+              const stale=staleSet.has(slug);
+              const tag=stale?'⚠ STALE':'⚠';
+              // OUTCOME-SPECIFIC, and the command it prints must be one
+            // parseArgs actually ACCEPTS. The string this replaces was
+            // wrong three ways at once (whole-branch adversarial review,
+            // 2026-08-05): it fired for every refused-* outcome though
+            // --adopt resolves only refused-producer; refused-shrink
+            // needs --force and refused-no-mapping is fixed by NO FLAG
+            // AT ALL (a book_subject_mapping row); and the form it
+            // printed, 'run --adopt <slug>', exits 1 with 'unrecognised
+            // argument' — --adopt takes no value. The live instance is
+            // stjornufraedi, which sits at refused-no-mapping, so the
+            // only surface a human routinely reads would have sent them
+            // in a circle. Pinned by
+            // scripts/__tests__/deploy-health-readout.test.mjs, which
+            // round-trips the printed command through parseArgs itself
+            // so this can never drift from the parser again.
+            const EXPORTER='node server/scripts/export-terminology.js';
+            const remedy=(outcome,slug)=>{
+              if(outcome==='refused-producer')
+                return 'the committed file was written by another producer, so writing would SWAP producers; --adopt migrates it (--force may ALSO be needed if the adoption then trips the shrink gate) — run: '+EXPORTER+' --book '+slug+' --adopt';
+              if(outcome==='refused-shrink')
+                return 'this needs --force, NOT --adopt; read both term counts in the status file before deciding — run: '+EXPORTER+' --book '+slug+' --force';
+              if(outcome==='refused-no-mapping')
+                return 'NO flag fixes this: add a book_subject_mapping row for '+slug+' (see migration 032), after which it exports on the next tick';
+              return 'unrecognised refusal — read the status file on the box';
+            };
+            const advice=stale?' — unattended past the threshold; '+remedy(o.outcome,slug):'';
+              console.log('  '+tag+' '+slug+': '+o.outcome+' ('+ageStr(o.since)+')'+advice);
+            }
+            for(const [slug,o] of errored){
+              // An ERROR, not a refusal — --adopt does not fix this. detail
+              // stays unavailable here (see above); read the status file.
+              console.log('  ✗ '+slug+': error ('+ageStr(o.since)+') — NOT fixed by --adopt; see the status file on the box');
+            }
+          }
         }catch{console.log('Health: (unparseable response)')}
       })
     " || true

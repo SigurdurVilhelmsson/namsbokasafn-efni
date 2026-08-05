@@ -347,7 +347,7 @@ describe('git-backup.sh glossary export (register C14)', () => {
     expect(status).toBe(0);
     expect(readStatus().status).toBe('success');
     expect(existsSync(heartbeatPath())).toBe(true);
-    expect(readLog()).toMatch(/WARN: glossary export failed/);
+    expect(readLog()).toMatch(/WARN: glossary export ERRORED or timed out/);
   });
 
   it('invokes the exporter before staging, so a fresh export rides the same commit', () => {

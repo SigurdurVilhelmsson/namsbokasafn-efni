@@ -29,6 +29,7 @@ const {
   countTerms,
   sameTerms,
   shrinkVerdict,
+  producerVerdict,
   SHRINK_RATIO,
 } = require('../lib/glossaryExportDecision');
 
@@ -265,5 +266,36 @@ describe('shrinkVerdict', () => {
 
   it('exposes the ratio as a named constant', () => {
     expect(SHRINK_RATIO).toBe(0.5);
+  });
+});
+
+describe('producerVerdict', () => {
+  const legacy = { terms: [{ english: 'a', category: 'other', chapter: 1 }] };
+  const exported = { producer: 'export-terminology', terms: [{ english: 'a', subjects: [] }] };
+
+  it('refuses when the existing file was written by merge-glossary', () => {
+    const v = producerVerdict(legacy, exported);
+    expect(v.refuse).toBe(true);
+    expect(v.prevProducer).toBe('merge-glossary');
+    expect(v.nextProducer).toBe('export-terminology');
+  });
+
+  it('permits when both sides are the exporter', () => {
+    expect(producerVerdict(exported, exported).refuse).toBe(false);
+  });
+
+  it('permits when there is no existing file — nothing to protect', () => {
+    expect(producerVerdict(null, exported).refuse).toBe(false);
+  });
+
+  it('refuses an unknown existing shape rather than guessing', () => {
+    const v = producerVerdict({ terms: [{ english: 'a' }] }, exported);
+    expect(v.refuse).toBe(true);
+    expect(v.prevProducer).toBe('unknown');
+  });
+
+  it('refuses the REVERSE swap too — an adopted file about to be clobbered by merge output', () => {
+    const v = producerVerdict(exported, legacy);
+    expect(v.refuse).toBe(true);
   });
 });
