@@ -188,11 +188,18 @@ describe('readGlossaryExportHealth — a refusal that never resolves (D6)', () =
   // ok — a check permanently red for expected reasons gets tuned out, which is
   // how a live incident hid inside a steady ok=false on 2026-08-03. But all
   // three committed glossaries are merge-glossary today, so the first cron run
-  // after this ships refuses EVERY book, and under plain D2 that reads: exit 0,
-  // heartbeat written, /api/health ok, glossaries frozen — indefinitely, until
-  // a human runs --adopt per book. The only other evidence would be REFUSING
-  // lines in a gitignored log. A refusal is fine; a refusal that never resolves
-  // is the exact failure this register item was raised about.
+  // after this ships refuses every book THAT HAS ONE, and under plain D2 that
+  // reads: exit 0, heartbeat written, /api/health ok, glossaries frozen —
+  // indefinitely, until a human runs --adopt per book. The only other evidence
+  // would be REFUSING lines in a gitignored log. A refusal is fine; a refusal
+  // that never resolves is the exact failure this register item was raised about.
+  //
+  // ⚠️ "THAT HAS ONE" BOUNDS D6, and the unqualified form of this sentence was
+  // wrong here until 2026-08-05. A book with a `glossary/` directory but NO
+  // committed file has an `absent` baseline, which makes BOTH export gates
+  // structurally inert — so it is never refused, its write is ungated, and D6
+  // never covers it. Do not infer "every book is refused, therefore every book
+  // is covered". → register §C14 ③.
   it('defaults to a 7 day refusal threshold', () => {
     expect(DEFAULT_REFUSAL_STALE_DAYS).toBe(7);
   });

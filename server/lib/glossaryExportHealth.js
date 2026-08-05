@@ -63,12 +63,20 @@
  *
  * ⚠️ BUT A REFUSAL THAT NEVER RESOLVES IS NOT HEALTH (decision D6). Every
  * committed glossary is a merge-glossary file today, so the first cron run
- * after this ships refuses EVERY book — and under D2 alone that state is: exit
+ * after this ships refuses every book THAT HAS ONE — and under D2 alone that state is: exit
  * 0, heartbeat fresh, errors 0, /api/health ok, glossaries frozen
  * indefinitely, until a human runs --adopt per book. That is the exact failure
  * described three paragraphs up, wearing a green badge. So a refusal is given
  * a deadline instead of a veto: quiet while it is fresh, an alarm once it has
  * gone unattended past DEFAULT_REFUSAL_STALE_DAYS.
+ *
+ * ⚠️ "EVERY BOOK THAT HAS ONE" IS THE WHOLE CAVEAT, AND IT BOUNDS D6. A book
+ * with a `glossary/` directory but NO committed file has an `absent` baseline,
+ * which makes BOTH export gates structurally inert — nothing to fingerprint,
+ * nothing to compare — so that book is never refused, its write is ungated and
+ * pushed, and D6 therefore never covers it. Do not read the paragraph above as
+ * "every book is refused, therefore every book is covered." Which books sit in
+ * which state → register §C14 ③.
  *
  * All filesystem access lives here rather than in the /api/health handler,
  * because server/index.js calls app.listen() at module load and so cannot be
