@@ -8,7 +8,7 @@
  * so the test runs without a live server or DB connection.
  */
 
-import { writeFileSync, existsSync, unlinkSync } from 'fs';
+import { writeFileSync, existsSync, unlinkSync, readdirSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { PassThrough } from 'stream';
@@ -274,5 +274,168 @@ describe('GET /:bookId/download — appendices (C1c task 1)', () => {
       query: { chapter: '../../../etc/passwd', type: 'pub-mt-preview' },
     });
     expect(r.status).toBe(400);
+  });
+});
+
+/**
+ * GET /:bookId/download — the archive is actually produced (C19).
+ *
+ * The `invokeDownload` harness above settles on `Content-Disposition`, which
+ * `books.js` sets *two lines before* it constructs the archiver. That is
+ * correct for what those tests assert (zip **naming**), but it means they stay
+ * green while the route throws immediately afterwards — which is exactly how
+ * `archiver` 8's ESM-only, class-exporting API broke this route unnoticed:
+ * `require('archiver')` yields an object, so calling it threw
+ * `TypeError: archiver is not a function` on every request and the editor got
+ * a 500. See the campaign register §C19.
+ *
+ * So this block deliberately runs the handler to **completion**: it settles on
+ * the response stream ending (success) or on `res.json` (the route's own
+ * error path), then parses the returned bytes as a real ZIP. Asserting on the
+ * central directory rather than on byte length matters — an empty archive is
+ * still a structurally valid ZIP with `PK` magic bytes, so length alone would
+ * pass for the wrong reason a second time.
+ *
+ * Fixture: `orverufraedi` `pub-mt-preview` chapter 1 — the smallest publication
+ * chapter directory the route will actually serve (~120 KB across 10 committed
+ * files), so the test finishes fast. `efnafraedi-2e`'s ch `00` is smaller but
+ * the route rejects chapter 0. The expected entry list is derived from that
+ * directory at run time, so ordinary content churn cannot make this flaky.
+ */
+describe('GET /:bookId/download — produces a real ZIP (C19)', () => {
+  const router = require('../routes/books');
+  const downloadHandler = router.stack
+    .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
+    .route.stack.at(-1).handle;
+
+  const FIXTURE_BOOK = 'orverufraedi';
+  const FIXTURE_CHAPTER_DIR = '01';
+  const chapterPath = path.join(
+    __dirname,
+    '..',
+    '..',
+    'books',
+    FIXTURE_BOOK,
+    '05-publication',
+    'mt-preview',
+    'chapters',
+    FIXTURE_CHAPTER_DIR
+  );
+
+  /**
+   * Entry names from a ZIP's central directory, without a zip dependency.
+   *
+   * Walks the End Of Central Directory record back to the central directory
+   * and reads each record's file name. Throws if the buffer is not a ZIP,
+   * which is the failure we want to see when the archive was never produced.
+   *
+   * @param {Buffer} buf raw ZIP bytes
+   * @returns {string[]} archive-relative entry names
+   */
+  function zipEntryNames(buf) {
+    const EOCD_SIG = 0x06054b50;
+    const CD_SIG = 0x02014b50;
+    if (!buf || buf.length < 22) throw new Error(`not a ZIP: ${buf ? buf.length : 0} bytes`);
+
+    let eocd = -1;
+    for (let i = buf.length - 22; i >= 0; i--) {
+      if (buf.readUInt32LE(i) === EOCD_SIG) {
+        eocd = i;
+        break;
+      }
+    }
+    if (eocd === -1) throw new Error('not a ZIP: no End Of Central Directory record');
+
+    const count = buf.readUInt16LE(eocd + 10);
+    let p = buf.readUInt32LE(eocd + 16);
+    const names = [];
+    for (let n = 0; n < count; n++) {
+      if (buf.readUInt32LE(p) !== CD_SIG) throw new Error(`corrupt central directory at ${p}`);
+      const nameLen = buf.readUInt16LE(p + 28);
+      const extraLen = buf.readUInt16LE(p + 30);
+      const commentLen = buf.readUInt16LE(p + 32);
+      names.push(buf.subarray(p + 46, p + 46 + nameLen).toString('utf-8'));
+      p += 46 + nameLen + extraLen + commentLen;
+    }
+    return names;
+  }
+
+  /**
+   * Invoke the download handler and wait for the response to be fully written.
+   *
+   * Unlike `invokeDownload`, this settles on the *end* of the piped stream, so
+   * anything the handler throws after setting its headers is observable.
+   *
+   * @param {object} req express-like request
+   * @returns {Promise<{status:number, headers:object, body:object|null, zip:Buffer|null}>}
+   */
+  function invokeDownloadToCompletion(req) {
+    const res = new PassThrough();
+    const chunks = [];
+    const headers = {};
+
+    res.statusCode = 200;
+    res.status = function (c) {
+      this.statusCode = c;
+      return this;
+    };
+    res.headersSent = false;
+    res.setHeader = function (name, value) {
+      headers[name] = value;
+    };
+    res.on('data', (c) => chunks.push(c));
+
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const settle = (result) => {
+        if (settled) return;
+        settled = true;
+        resolve(result);
+      };
+
+      // Success: archiver piped the archive into res and ended it.
+      res.on('end', () =>
+        settle({ status: res.statusCode, headers, body: null, zip: Buffer.concat(chunks) })
+      );
+      // Failure: the route's own catch block reported the error as JSON.
+      res.json = function (body) {
+        res.headersSent = true;
+        settle({ status: res.statusCode, headers, body, zip: null });
+      };
+      res.on('error', (err) => {
+        if (!settled) reject(err);
+      });
+
+      Promise.resolve(downloadHandler(req, res)).catch((err) => {
+        if (!settled) reject(err);
+      });
+    });
+  }
+
+  it('streams a ZIP instead of failing with a 500', async () => {
+    const r = await invokeDownloadToCompletion({
+      params: { bookId: FIXTURE_BOOK },
+      query: { chapter: '1', type: 'pub-mt-preview' },
+    });
+
+    expect({ status: r.status, error: r.body?.message }).toEqual({
+      status: 200,
+      error: undefined,
+    });
+  });
+
+  it('writes one archive entry per .html file in the chapter directory', async () => {
+    const expected = readdirSync(chapterPath)
+      .filter((f) => f.endsWith('.html'))
+      .map((f) => path.join(FIXTURE_CHAPTER_DIR, f))
+      .sort();
+    expect(expected.length).toBeGreaterThan(0); // fixture sanity
+
+    const r = await invokeDownloadToCompletion({
+      params: { bookId: FIXTURE_BOOK },
+      query: { chapter: '1', type: 'pub-mt-preview' },
+    });
+
+    expect(zipEntryNames(r.zip).sort()).toEqual(expected);
   });
 });

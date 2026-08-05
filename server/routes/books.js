@@ -11,7 +11,10 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const archiver = require('archiver');
+// archiver 8 is ESM-only and exports classes, not a factory — `require('archiver')`
+// binds an object, so the pre-8 `archiver('zip', …)` call threw on every request
+// (register §C19). Node 22's require(ESM) support makes this named import work.
+const { ZipArchive } = require('archiver');
 const multer = require('multer');
 
 const log = require('../lib/logger');
@@ -454,7 +457,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
     res.setHeader('Content-Type', 'application/zip');
     res.setHeader('Content-Disposition', `attachment; filename="${zipName}"`);
 
-    const archive = archiver('zip', { zlib: { level: 9 } });
+    const archive = new ZipArchive({ zlib: { level: 9 } });
     archive.pipe(res);
 
     // Helper function to add files matching the expected extension from a directory
