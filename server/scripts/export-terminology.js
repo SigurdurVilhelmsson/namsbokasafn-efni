@@ -54,10 +54,23 @@
  * Exit code 0 means no book ERRORED. It does NOT mean every book was written:
  * a book that refuses for a correct reason (un-adopted producer swap, no
  * subject mapping, catastrophic shrink) is a healthy outcome and keeps the exit
- * code at 0. Only a genuine error — the exporter threw, a malformed payload, an
- * unreadable existing file — returns 1. Before 2026-08-05 a refusal counted as
- * a failure, which let ONE book's correct refusal mark the whole exporter
- * unhealthy for every other book (register C14 ②, decision D2).
+ * code at 0. Only a genuine error — the exporter threw, or a malformed payload
+ * — returns 1. Before 2026-08-05 a refusal counted as a failure, which let ONE
+ * book's correct refusal mark the whole exporter unhealthy for every other book
+ * (register C14 ②, decision D2).
+ *
+ * ⚠️ "AN UNREADABLE EXISTING FILE" USED TO APPEAR IN THAT EXIT-1 LIST AND IS
+ * TWO DIFFERENT OUTCOMES (deferred minor #3, corrected 2026-08-05). Split them
+ * when triaging, because the remedy differs:
+ *
+ *   COULD NOT BE READ AT ALL (EACCES, EIO, …) → readExisting RETHROWS →
+ *     `error`, exit 1, no heartbeat. A permissions/disk fault. Fix the box.
+ *   READ FINE, DID NOT PARSE (unparseable JSON) → `{kind:'corrupt'}` →
+ *     `refused-producer`, exit 0, heartbeat still written. The file is intact
+ *     enough to read and too damaged to identify; a human decides with --adopt.
+ *
+ * Only the first is a failure of this script's environment; the second is this
+ * script working correctly and declining to destroy something it cannot read.
  *
  * Exit code 0 is likewise NOT equivalent to "the heartbeat was written". The
  * heartbeat is written only on an UNFILTERED (no --book), non-dry-run pass with
@@ -79,8 +92,18 @@
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
  *   node server/scripts/export-terminology.js --dry-run
- *   node server/scripts/export-terminology.js --force      # accept a shrink
- *   node server/scripts/export-terminology.js --adopt      # accept a producer swap
+ *   node server/scripts/export-terminology.js --book <slug> --force   # accept a shrink
+ *   node server/scripts/export-terminology.js --book <slug> --adopt   # accept a producer swap
+ *
+ * ⚠️ BOTH OVERRIDE EXAMPLES ARE BOOK-SCOPED ON PURPOSE (corrected 2026-08-05).
+ * They read `--force` / `--adopt` alone until then, which is the
+ * OVERRIDE-EVERY-BOOK form: run bare against production's committed state,
+ * `--adopt` reproduces the 2026-08-03 incident's writes — the same books, the
+ * same numbers — in a single command. `--adopt` is still ALLOWED without
+ * `--book` (whether it should be is logged as a follow-up in register §C14 ③,
+ * deliberately not decided here), so the only thing standing between a
+ * copy-pasted example and a corpus-wide producer swap is which example is
+ * written down. Adoption is a per-book decision; type it one book at a time.
  */
 
 const fs = require('fs');
@@ -237,21 +260,74 @@ function readPreviousBookOutcomes(projectRoot) {
 }
 
 /**
+ * Is this outcome one a human still has to resolve?
+ *
+ * `error` and every `refused-*` are both "not successfully exported", and for
+ * the D6 clock that is the only distinction that matters — see `withSince`.
+ * Deliberately keyed on the `refused-` PREFIX rather than an enumerated list,
+ * matching `glossaryExportHealth.js`: a future refusal string is then covered
+ * here automatically, and one named outside the convention is caught by the
+ * existing "every refusal string starts with `refused-`" test rather than
+ * silently dropping out of the clock.
+ */
+function isUnresolved(outcome) {
+  return outcome === 'error' || (typeof outcome === 'string' && outcome.indexOf('refused-') === 0);
+}
+
+/**
  * Stamp each outcome with `since` — when its CURRENT outcome was FIRST seen.
  *
  * ⚠️ THIS IS WHAT MAKES A REFUSAL RESOLVABLE. Under decision D2 a refusal is a
  * correct outcome: it exits 0, writes the heartbeat, and reads ok on
  * /api/health. That is right — a check permanently red for expected reasons
  * gets tuned out, which is how a live incident hid inside a steady ok=false on
- * 2026-08-03. But every committed glossary is a merge-glossary file today, so
- * the first cron run after this ships refuses every book, and a refusal with
- * no age is indistinguishable from health forever. `since` is the difference
- * between "refused this morning" and "refused since June" (decision D6).
+ * 2026-08-03. But a refusal with no age is indistinguishable from health
+ * forever. `since` is the difference between "refused this morning" and
+ * "refused since June" (decision D6).
  *
- * Carried forward ONLY when the outcome string is identical. `detail` may
- * differ freely — a shrink refusal whose counts moved 1117→900 then 1117→890
- * is the same unresolved refusal, and restarting its clock on that would make
- * the threshold unreachable for any book whose numbers drift.
+ * ⚠️ CORRECTED 2026-08-05 — this used to say "every committed glossary is a
+ * merge-glossary file today, so the first cron run after this ships refuses
+ * EVERY book". That holds only for a book WITH a committed glossary file.
+ * A book that has a `glossary/` directory but no committed file makes
+ * readExisting return `{kind:'absent'}` → `prev === null` → `producerVerdict`
+ * returns `refuse:false` AND `shrinkVerdict`'s `prevTotal > 0` clause is
+ * false: BOTH GATES ARE STRUCTURALLY INERT, and the bare cron writes, exits 0,
+ * writes the heartbeat, and git-backup.sh commits and pushes it. That is the
+ * `orverufraedi` third of the 2026-08-03 incident and this branch does not
+ * change it. Register §C14 ③ carries the per-book positions.
+ *
+ * Carried forward under EITHER of two conditions:
+ *
+ *   (a) the outcome string is identical; or
+ *   (b) the previous and current outcomes are BOTH UNRESOLVED — `error` or any
+ *       `refused-*`.
+ *
+ * `detail` may differ freely in both cases — a shrink refusal whose counts
+ * moved 1117→900 then 1117→890 is the same unresolved refusal, and restarting
+ * its clock on that would make the threshold unreachable for any book whose
+ * numbers drift.
+ *
+ * ⚠️ (b) EXISTS BECAUSE A TRANSIENT ERROR USED TO RESET THE CLOCK, which
+ * silently disarmed D6 (whole-branch adversarial review, 2026-08-05; both
+ * reviewers found it independently, human-ruled fix). All five `fail()` sites
+ * record `outcome: 'error'`, so under (a) alone ONE erroring run in the middle
+ * of a refusal streak restarted the seven days. At the real 2-hourly cadence
+ * that is not a corner case: `git-backup.sh`'s own comment predicts the error
+ * class ("opens sessions.db as a SECOND process while the live editorial
+ * server holds it, so lock contention is a real possibility"), and ANY error
+ * recurring more often than weekly suppresses the alarm INDEFINITELY — a book
+ * refusing for months would never appear in `stale_refusals`, which is the
+ * only durable trace a refusal leaves.
+ *
+ * An error interlude now neither MANUFACTURES a streak nor RESETS one: the
+ * alarm's meaning becomes "not successfully exported since X", which is what
+ * it was always for. A book alternating error/refused is exactly as unattended
+ * as one refusing steadily, and should age at the same rate.
+ *
+ * ⚠️ A RESOLVED outcome (`wrote`, `adopted`, `unchanged`, `dry-run`) must
+ * still RESET the clock — that is the event the operator acted on, and
+ * carrying `since` through it would report a book as refusing since long
+ * before it was fixed.
  *
  * A previous entry with no usable `since` (missing, or not a string) restarts
  * the clock rather than propagating an undefined field into the new file.
@@ -264,7 +340,8 @@ function withSince(outcomes, previous, nowMs) {
     const carry =
       prev &&
       typeof prev === 'object' &&
-      prev.outcome === entry.outcome &&
+      (prev.outcome === entry.outcome ||
+        (isUnresolved(prev.outcome) && isUnresolved(entry.outcome))) &&
       typeof prev.since === 'string' &&
       prev.since !== '';
     stamped[slug] = { ...entry, since: carry ? prev.since : now };
@@ -468,11 +545,23 @@ function runGlossaryExport({
     }
 
     // D5: unreadable means we cannot tell what we would destroy.
+    //
+    // ⚠️ The message must say that --adopt here also stands the SHRINK gate
+    // down (deferred minor #2, whole-branch adversarial review 2026-08-05).
+    // That is structurally unavoidable rather than a bug — a shrink is
+    // measured against the previous term counts, and an unparseable file has
+    // none to measure — but an operator reading "pass --adopt" reasonably
+    // expects to have overridden ONE gate, as they would on the producer path
+    // below, where --force remains a separate second acknowledgement. On this
+    // path there is no second acknowledgement to give.
     if (existing.kind === 'corrupt' && !adopt) {
       logError(
         `${b}: REFUSING to write — cannot read the existing file at ${outPath} ` +
           `(unparseable JSON), so its producer cannot be established. ` +
-          `Investigate, then pass --adopt to replace it.`
+          `Investigate, then pass --adopt to replace it. NOTE: on this path --adopt ` +
+          `also bypasses the SHRINK check — an unreadable file provides no term ` +
+          `counts to measure against — so the replacement is unmeasured in both ` +
+          `respects. Keep a copy of the unreadable file first.`
       );
       outcomes[b] = { outcome: 'refused-producer', detail: 'cannot read existing file' };
       continue;
@@ -740,7 +829,9 @@ function main() {
         '  --force  accept a catastrophic shrink\n' +
         '  --adopt  accept a producer swap (migrate a book whose committed\n' +
         '           glossary another program wrote, or replace an unreadable one)\n' +
-        '  Neither implies the other, and the 2h cron passes neither.'
+        '  Neither implies the other, and the 2h cron passes neither.\n' +
+        '  Scope an override with --book: without it, --force/--adopt apply to\n' +
+        '  EVERY glossary-bearing book at once. Adoption is a per-book decision.'
     );
     process.exit(0);
   }

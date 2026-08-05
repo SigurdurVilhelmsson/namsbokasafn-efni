@@ -55,6 +55,10 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 const { runGlossaryExport, parseArgs } = require('../scripts/export-terminology');
+// Read back through the REAL health lib, not a re-implementation of its rules:
+// the `since` carry-forward only matters because /api/health turns it into a
+// stale-refusal alarm, and that is the end this file asserts against.
+const { readGlossaryExportHealth } = require('../lib/glossaryExportHealth');
 
 let root;
 
@@ -1398,6 +1402,144 @@ describe('runGlossaryExport — `since`: how long an outcome has persisted (D6)'
 
     run({ exportFn: () => payload(approved(5)), nowMs: T2 });
     expect(readStatus().books.prufubok.outcome).toBe('unchanged'); // outcome moved
+    expect(readStatus().books.prufubok.since).toBe(new Date(T2).toISOString());
+  });
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // UNRESOLVED-to-UNRESOLVED carry-forward (whole-branch adversarial review,
+  // 2026-08-05 — both reviewers found this independently; human-ruled fix).
+  //
+  // ⚠️ THE DEFECT: carrying `since` only on an IDENTICAL outcome string meant
+  // a single erroring run restarted a refusing book's seven-day clock. All
+  // five `fail()` sites yield `outcome: 'error'`, and at the real 2-hourly
+  // cadence one transient SQLITE_BUSY is not a corner case — git-backup.sh's
+  // own comment predicts it, because the export opens sessions.db as a SECOND
+  // process while the live editorial server holds it. ANY error class
+  // recurring more often than weekly suppressed D6 INDEFINITELY.
+  //
+  // THE RULE: carry when the previous and current outcomes are BOTH
+  // unresolved (`error` or any `refused-*`). An error interlude then neither
+  // MANUFACTURES a streak nor RESETS one, and the alarm means what it was
+  // always for — "not successfully exported since X".
+  // ═══════════════════════════════════════════════════════════════════════
+  const legacyFile = () =>
+    JSON.stringify({ generated: 'x', book: 'prufubok', stats: {}, terms: legacyTerms(1117) });
+
+  it('an ERROR INTERLUDE does not reset a refusal clock — and the day-8 alarm still fires', () => {
+    // The reviewers' scenario, at the real cadence: refusing since day 0, one
+    // SQLITE_BUSY on day 6, refusing again on day 8. Under the old
+    // identical-outcome-only rule the day-6 error reset `since` to day 6, so
+    // on day 8 the book was "2 days old" and findStaleRefusals returned []
+    // — the alarm never fired, for a book that had not exported in 8 days.
+    const DAY = 24 * 3600 * 1000;
+    const T_ERR = T1 + 6 * DAY;
+    const T_DAY8 = T1 + 8 * DAY;
+
+    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+    run({ exportFn: () => payload(approved(3)), nowMs: T1 });
+    const started = readStatus().books.prufubok.since;
+    expect(readStatus().books.prufubok.outcome).toBe('refused-shrink');
+    expect(started).toBe(new Date(T1).toISOString());
+
+    // Day 6 — a transient lock. Note the status file IS written on an error
+    // run (deliberately: that is when the per-book breakdown matters most),
+    // so this really does overwrite the entry rather than leaving it be.
+    expect(
+      run({
+        exportFn: () => {
+          throw new Error('SQLITE_BUSY: database is locked');
+        },
+        nowMs: T_ERR,
+      })
+    ).toBe(1);
+    expect(readStatus().books.prufubok.outcome).toBe('error');
+    expect(readStatus().books.prufubok.since).toBe(started); // clock NOT restarted
+
+    // Day 8 — back to refusing, and still "since day 0".
+    run({ exportFn: () => payload(approved(3)), nowMs: T_DAY8 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-shrink');
+    expect(readStatus().books.prufubok.since).toBe(started);
+
+    // ⚠️ THE CONSEQUENCE, asserted end-to-end rather than inferred from
+    // `since`. This is the assertion that would have caught the defect: it
+    // reads the same status file /api/health does, through the real health
+    // lib, and demands the alarm actually fire.
+    const health = readGlossaryExportHealth({ projectRoot: root, nowMs: T_DAY8 });
+    expect(health.stale_refusals).toContain('prufubok');
+  });
+
+  it('carries `since` across TWO DIFFERENT refusals — both are unresolved', () => {
+    // refused-producer -> refused-shrink. A book whose refusal REASON changes
+    // has still not been exported; restarting its clock would reward churn.
+    seedBook('prufubok', legacyFile());
+    run({ exportFn: () => exportPayload(approved(709)), nowMs: T1 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-producer');
+    const started = readStatus().books.prufubok.since;
+
+    // A merge-glossary-shaped payload now, so the producer gate passes and
+    // the SHRINK gate is what refuses instead.
+    run({ exportFn: () => payload(legacyTerms(3)), nowMs: T2 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-shrink'); // reason moved...
+    expect(readStatus().books.prufubok.since).toBe(started); // ...clock did not
+  });
+
+  it('carries `since` from refused-no-mapping to refused-producer — the real prod path', () => {
+    // stjornufraedi's actual trajectory: it refuses for want of a
+    // book_subject_mapping row, a human adds the row, and it then refuses on
+    // the producer gate instead. Two refusals, one unresolved book.
+    seedBook('prufubok', legacyFile());
+    run({ subjectFn: () => null, exportFn: () => exportPayload(approved(709)), nowMs: T1 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-no-mapping');
+    const started = readStatus().books.prufubok.since;
+
+    run({ exportFn: () => exportPayload(approved(709)), nowMs: T2 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-producer');
+    expect(readStatus().books.prufubok.since).toBe(started);
+  });
+
+  it('a RESOLVED outcome still RESETS the clock — refused -> wrote', () => {
+    // The other half of the rule, and the one a too-broad carry would break:
+    // `wrote` is the event the operator acted on. Reporting a book as
+    // "refusing since T1" after it exported cleanly at T2 would be a false
+    // alarm, which is worse than a late one.
+    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+    run({ exportFn: () => payload(approved(3)), nowMs: T1 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-shrink');
+
+    run({ exportFn: () => payload(approved(700)), nowMs: T2 });
+    expect(readStatus().books.prufubok.outcome).toBe('wrote');
+    expect(readStatus().books.prufubok.since).toBe(new Date(T2).toISOString());
+  });
+
+  it('an ADOPTED book resets the clock too — adoption is the remediation', () => {
+    seedBook('prufubok', legacyFile());
+    run({ exportFn: () => exportPayload(approved(709)), nowMs: T1 });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-producer');
+
+    run({ exportFn: () => exportPayload(approved(709)), adopt: true, nowMs: T2 });
+    expect(readStatus().books.prufubok.outcome).toBe('adopted');
+    expect(readStatus().books.prufubok.since).toBe(new Date(T2).toISOString());
+  });
+
+  it('an error does not MANUFACTURE a streak either — wrote -> error resets', () => {
+    // The carry is symmetric and must stay that way. `wrote` is resolved, so
+    // the first error after a healthy run starts a NEW clock rather than
+    // inheriting the healthy run's timestamp — otherwise a book that exported
+    // fine for months would look like it had been broken for months the
+    // instant it first errored.
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(5)), nowMs: T1 });
+    expect(readStatus().books.prufubok.outcome).toBe('wrote');
+
+    expect(
+      run({
+        exportFn: () => {
+          throw new Error('db is on fire');
+        },
+        nowMs: T2,
+      })
+    ).toBe(1);
+    expect(readStatus().books.prufubok.outcome).toBe('error');
     expect(readStatus().books.prufubok.since).toBe(new Date(T2).toISOString());
   });
 
