@@ -1091,6 +1091,275 @@ describe('runGlossaryExport — refusals are not errors (D2)', () => {
   });
 });
 
+describe('runGlossaryExport — status file', () => {
+  // ⚠️ NOT a liveness signal, and these tests must never be read as making it
+  // one. The heartbeat stays the alarm (absence is the alarm); this file
+  // carries per-book DETAIL only. It is deliberately written even on a run
+  // that ended in an error, because the breakdown matters most exactly then —
+  // which is also precisely why it cannot answer "is the exporter alive".
+  const statusPath = () => path.join(root, 'pipeline-output', '.glossary-export-status.json');
+  const readStatus = () => JSON.parse(readFileSync(statusPath(), 'utf8'));
+
+  it('records a per-book outcome', () => {
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(10)) });
+    expect(readStatus().books.prufubok.outcome).toBe('wrote');
+    expect(readStatus().errors).toBe(0);
+  });
+
+  it('is written even when a book errored — the breakdown matters most then', () => {
+    seedBook('prufubok');
+    run({
+      exportFn: () => {
+        throw new Error('boom');
+      },
+    });
+    expect(readStatus().books.prufubok.outcome).toBe('error');
+    expect(readStatus().errors).toBe(1);
+  });
+
+  // ⚠️ REPLACED the plan's 'marks a --book run as filtered' test (and the
+  // companion negative case) 2026-08-05, decision D6/(c) — a DECISION, not an
+  // omission, so the superseded plan text does not read as something that was
+  // simply missed. The plan had a filtered run write a status file carrying
+  // `filtered: true`; it now writes NO status file, and the field is deleted.
+  //
+  // WHY: `withSince` stamps only THIS run's books, so a filtered run wrote a
+  // single-book file, and the next unfiltered run found no previous entry for
+  // the other books and reset their stale-refusal clocks to now. That reset is
+  // CORRELATED with the alarm's firing window rather than random — a lead
+  // hand-runs `--book <slug> --adopt` precisely while working through
+  // adoption, i.e. exactly while the other books are still refusing and their
+  // clocks are running. Withholding makes the status file exactly parallel to
+  // the heartbeat: two whole-corpus artifacts, ONE rule, rather than two rules
+  // a future reader has to hold apart.
+  //
+  // Deliberately mirrors 'does NOT write the heartbeat on a --book run, even
+  // when fully healthy' above — same scenario, same shape, the other artifact.
+  it('does NOT write the status file on a --book run, even when fully healthy', () => {
+    seedBook('bok-a');
+    const code = run({ book: 'bok-a', exportFn: () => payload(approved(5)) });
+    expect(code).toBe(0);
+    expect(existsSync(statusPath())).toBe(false);
+  });
+
+  it('a --book run does not CLOBBER a status file an unfiltered run left', () => {
+    // The failure the withholding actually prevents. Without it the filtered
+    // run overwrites bok-b's entry out of existence, and the next unfiltered
+    // run restarts bok-b's stale-refusal clock — silently postponing the alarm
+    // for a book nobody touched.
+    seedBook('bok-a');
+    seedBook('bok-b', JSON.stringify(payload(approved(617))));
+    run({
+      exportFn: (slug) => (slug === 'bok-a' ? payload(approved(5)) : payload(approved(3))),
+      nowMs: 1_800_000_000_000,
+    });
+    const before = readFileSync(statusPath(), 'utf8');
+    expect(JSON.parse(before).books['bok-b'].outcome).toBe('refused-shrink');
+
+    run({ book: 'bok-a', exportFn: () => payload(approved(6)), nowMs: 1_900_000_000_000 });
+    expect(readFileSync(statusPath(), 'utf8')).toBe(before); // byte-identical
+  });
+
+  it('is NOT written on a dry run', () => {
+    seedBook('prufubok');
+    run({ dryRun: true, exportFn: () => payload(approved(10)) });
+    expect(existsSync(statusPath())).toBe(false);
+  });
+
+  it('stamps `ran` from the injected clock, not the wall clock', () => {
+    // The clock is injectable so the carry-forward tests below can control
+    // time. Pinning `ran` too keeps a stray `new Date()` from creeping back
+    // into the status path.
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(10)), nowMs: 1_800_000_000_000 });
+    expect(readStatus().ran).toBe(new Date(1_800_000_000_000).toISOString());
+  });
+});
+
+describe('runGlossaryExport — the EXACT outcome strings (C14 ② amendment D6)', () => {
+  // ⚠️ Until this block existed, the eight outcome strings were pinned by
+  // NOTHING: every test asserted exit codes, bytes on disk or log text, so a
+  // typo in an outcome name ('refused-shrink' -> 'refused-shrunk') would have
+  // been completely invisible while /api/health quietly stopped recognising it
+  // as a refusal. Assert the literal strings, never merely that a key exists.
+  const statusPath = () => path.join(root, 'pipeline-output', '.glossary-export-status.json');
+  const readStatus = () => JSON.parse(readFileSync(statusPath(), 'utf8'));
+  const outcomeOf = (slug) => readStatus().books[slug].outcome;
+
+  const legacyFile = () =>
+    JSON.stringify({ generated: 'x', book: 'prufubok', stats: {}, terms: legacyTerms(1117) });
+
+  it("'wrote' — a routine refresh", () => {
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(10)) });
+    expect(outcomeOf('prufubok')).toBe('wrote');
+  });
+
+  it("'unchanged' — same terms, not rewritten", () => {
+    seedBook('prufubok', JSON.stringify(payload(approved(5))));
+    run({ exportFn: () => payload(approved(5)) });
+    expect(outcomeOf('prufubok')).toBe('unchanged');
+  });
+
+  it("'adopted' — a producer swap a human authorised with --adopt", () => {
+    seedBook('prufubok', legacyFile());
+    run({ exportFn: () => exportPayload(approved(709)), adopt: true });
+    expect(outcomeOf('prufubok')).toBe('adopted');
+  });
+
+  it("'adopted' — an ADOPTED CORRUPT file is a migration too, not a routine write", () => {
+    // Task 4+5 review finding: this path recorded 'wrote'. readExisting
+    // returns {kind:'corrupt'}, so `prev` is null, so producerVerdict has
+    // nothing to compare and `pv.refuse` is false — and the outcome
+    // expression keyed on pv.refuse alone. Replacing an unreadable committed
+    // file is exactly the one-off migration 'adopted' exists to distinguish;
+    // recording it as 'wrote' hides the single most consequential class of
+    // write this exporter can perform inside the label for its most routine
+    // one.
+    seedBook('prufubok', '{ not json');
+    run({ exportFn: () => payload(approved(10)), adopt: true });
+    expect(outcomeOf('prufubok')).toBe('adopted');
+  });
+
+  it("'refused-producer' — an un-adopted producer swap", () => {
+    seedBook('prufubok', legacyFile());
+    run({ exportFn: () => exportPayload(approved(709)) });
+    expect(outcomeOf('prufubok')).toBe('refused-producer');
+  });
+
+  it("'refused-producer' — an unreadable existing file, whose producer cannot be established", () => {
+    seedBook('prufubok', '{ not json');
+    run({ exportFn: () => payload(approved(10)) });
+    expect(outcomeOf('prufubok')).toBe('refused-producer');
+    expect(readStatus().books.prufubok.detail).toBe('cannot read existing file');
+  });
+
+  it("'refused-shrink' — a catastrophic shrink", () => {
+    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+    run({ exportFn: () => payload(approved(3)) });
+    expect(outcomeOf('prufubok')).toBe('refused-shrink');
+  });
+
+  it("'refused-no-mapping' — no book_subject_mapping row", () => {
+    seedBook('prufubok');
+    run({ subjectFn: () => null, exportFn: () => payload(approved(5)) });
+    expect(outcomeOf('prufubok')).toBe('refused-no-mapping');
+  });
+
+  it("'error' — the exporter threw", () => {
+    seedBook('prufubok');
+    run({
+      exportFn: () => {
+        throw new Error('db is on fire');
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('error');
+  });
+
+  it('every refusal string starts with `refused-`, which is the prefix health filters on', () => {
+    // readGlossaryExportHealth classifies a refusal by the `refused-` prefix,
+    // not by an enumerated list. A future outcome named e.g. 'declined-x'
+    // would therefore be invisible to the stale-refusal check. This pins the
+    // naming convention that makes the prefix test sound.
+    seedBook('a', legacyFile());
+    seedBook('b', JSON.stringify(payload(approved(617))));
+    seedBook('c');
+    run({
+      subjectFn: (slug) => (slug === 'c' ? null : 'chemistry'),
+      exportFn: (slug) => (slug === 'a' ? exportPayload(approved(709)) : payload(approved(3))),
+    });
+    const books = readStatus().books;
+    expect(books.a.outcome).toBe('refused-producer');
+    expect(books.b.outcome).toBe('refused-shrink');
+    expect(books.c.outcome).toBe('refused-no-mapping');
+  });
+});
+
+describe('runGlossaryExport — `since`: how long an outcome has persisted (D6)', () => {
+  // WHY THIS EXISTS: under D2 a refusal exits 0, writes the heartbeat and
+  // reads ok on /api/health. Correct — a check permanently red for expected
+  // reasons gets tuned out. But all three committed glossaries are
+  // merge-glossary today, so the FIRST cron run after this ships refuses every
+  // book, and under plain D2 that steady state is indistinguishable from
+  // health, forever, until a human runs --adopt per book. `since` is what lets
+  // health tell "refused this morning" from "refused since June".
+  const statusPath = () => path.join(root, 'pipeline-output', '.glossary-export-status.json');
+  const readStatus = () => JSON.parse(readFileSync(statusPath(), 'utf8'));
+  const T1 = 1_800_000_000_000;
+  const T2 = T1 + 3 * 24 * 3600 * 1000; // three days later
+
+  it('carries `since` FORWARD when the outcome is unchanged across two runs', () => {
+    // The load-bearing case: a book that has been refusing for weeks must
+    // report the date it STARTED refusing, not the date of the latest run —
+    // otherwise every 2-hourly cron resets the clock and no refusal is ever
+    // old enough to trip the threshold, which would make the whole D6
+    // mechanism silently inert.
+    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+    run({ exportFn: () => payload(approved(3)), nowMs: T1 });
+    const first = readStatus().books.prufubok.since;
+    expect(first).toBe(new Date(T1).toISOString());
+
+    run({ exportFn: () => payload(approved(3)), nowMs: T2 });
+    const second = readStatus();
+    expect(second.books.prufubok.outcome).toBe('refused-shrink'); // same outcome
+    expect(second.ran).toBe(new Date(T2).toISOString()); // the run DID happen at T2
+    expect(second.books.prufubok.since).toBe(first); // ...but `since` did not move
+  });
+
+  it('RESETS `since` when the outcome changes between runs', () => {
+    seedBook('prufubok');
+    run({ exportFn: () => payload(approved(5)), nowMs: T1 });
+    expect(readStatus().books.prufubok.outcome).toBe('wrote');
+    expect(readStatus().books.prufubok.since).toBe(new Date(T1).toISOString());
+
+    run({ exportFn: () => payload(approved(5)), nowMs: T2 });
+    expect(readStatus().books.prufubok.outcome).toBe('unchanged'); // outcome moved
+    expect(readStatus().books.prufubok.since).toBe(new Date(T2).toISOString());
+  });
+
+  it('a MISSING previous status file does not throw, and `since` is now', () => {
+    seedBook('prufubok');
+    expect(run({ exportFn: () => payload(approved(5)), nowMs: T1 })).toBe(0);
+    expect(readStatus().books.prufubok.since).toBe(new Date(T1).toISOString());
+  });
+
+  it('a CORRUPT previous status file does not throw either — reporting cannot take down the run', () => {
+    seedBook('prufubok');
+    mkdirSync(path.join(root, 'pipeline-output'), { recursive: true });
+    writeFileSync(statusPath(), '{ not json');
+    expect(run({ exportFn: () => payload(approved(5)), nowMs: T1 })).toBe(0);
+    expect(readStatus().books.prufubok.since).toBe(new Date(T1).toISOString());
+  });
+
+  it('a previous status file with a non-object `books` does not throw', () => {
+    seedBook('prufubok');
+    mkdirSync(path.join(root, 'pipeline-output'), { recursive: true });
+    writeFileSync(statusPath(), JSON.stringify({ ran: 'x', books: 'not an object' }));
+    expect(run({ exportFn: () => payload(approved(5)), nowMs: T1 })).toBe(0);
+    expect(readStatus().books.prufubok.since).toBe(new Date(T1).toISOString());
+  });
+
+  it('tracks `since` per book independently', () => {
+    // One book's outcome changing must not reset the other's clock.
+    seedBook('stodug', JSON.stringify(payload(approved(617))));
+    seedBook('breytileg');
+    run({
+      exportFn: (slug) => (slug === 'stodug' ? payload(approved(3)) : payload(approved(5))),
+      nowMs: T1,
+    });
+    run({
+      exportFn: (slug) => (slug === 'stodug' ? payload(approved(3)) : payload(approved(5))),
+      nowMs: T2,
+    });
+    const books = readStatus().books;
+    expect(books.stodug.outcome).toBe('refused-shrink');
+    expect(books.stodug.since).toBe(new Date(T1).toISOString()); // still refusing since T1
+    expect(books.breytileg.outcome).toBe('unchanged'); // was 'wrote' at T1
+    expect(books.breytileg.since).toBe(new Date(T2).toISOString());
+  });
+});
+
 describe('parseArgs — --adopt', () => {
   it('parses --adopt', () => {
     expect(parseArgs(['--adopt']).adopt).toBe(true);

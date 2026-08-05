@@ -64,6 +64,18 @@
  * zero errors: a `--book <slug>` run and a `--dry-run` can each legitimately
  * return 0 while leaving the heartbeat untouched.
  *
+ * TWO ARTIFACTS, ONE FILTERING RULE (decision D6/(c), 2026-08-05):
+ *
+ *   pipeline-output/.last-glossary-export        liveness — !dryRun && no --book && errors === 0
+ *   pipeline-output/.glossary-export-status.json detail   — !dryRun && no --book
+ *
+ * Both are WHOLE-CORPUS, so a `--book <slug>` run writes NEITHER: a single-book
+ * run says nothing about the other books. They differ in exactly one clause —
+ * the status file is written even when a book errored, because that is when its
+ * per-book breakdown is most useful. Neither is a substitute for the other:
+ * see server/lib/glossaryExportHealth.js for why liveness must come from the
+ * heartbeat's absence and never from a file written on every outcome.
+ *
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
  *   node server/scripts/export-terminology.js --dry-run
@@ -87,6 +99,9 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
 
 /** Heartbeat consumed by GET /api/health — see server/lib/glossaryExportHealth.js. */
 const HEARTBEAT_REL = path.join('pipeline-output', '.last-glossary-export');
+
+/** Per-book breakdown consumed by GET /api/health and printed by scripts/deploy.sh. */
+const STATUS_REL = path.join('pipeline-output', '.glossary-export-status.json');
 
 function listBooks(booksDir = BOOKS_DIR) {
   try {
@@ -186,6 +201,96 @@ function writeHeartbeat(projectRoot) {
 }
 
 /**
+ * The PREVIOUS run's per-book outcomes, for `since` carry-forward. Returns
+ * `{}` for every failure mode — absent, unreadable, unparseable, or parseable
+ * but the wrong shape.
+ *
+ * ⚠️ MUST NOT THROW, for the same reason writeStatus must not: reporting is
+ * not allowed to take down the signal it reports on. A corrupt status file
+ * that wedged the exporter would convert a cosmetic problem (a lost `since`
+ * clock) into a total outage of the export itself.
+ *
+ * Degrading to `{}` costs only accuracy, and only in the safe direction: every
+ * book's `since` restarts at now, so a long-standing refusal has to age
+ * through the threshold again before health flags it. That is a delayed alarm,
+ * never a suppressed one.
+ *
+ * Since decision D6/(c) only UNFILTERED runs write this file, so what it holds
+ * is always whole-corpus. A book missing from it therefore means the book is
+ * new or was not discovered last run — never "last run happened to be
+ * filtered", which is the ambiguity that made the filtered-write design unsafe.
+ */
+function readPreviousBookOutcomes(projectRoot) {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(path.join(projectRoot, STATUS_REL), 'utf-8'));
+    return parsed && typeof parsed.books === 'object' && parsed.books !== null ? parsed.books : {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Stamp each outcome with `since` — when its CURRENT outcome was FIRST seen.
+ *
+ * ⚠️ THIS IS WHAT MAKES A REFUSAL RESOLVABLE. Under decision D2 a refusal is a
+ * correct outcome: it exits 0, writes the heartbeat, and reads ok on
+ * /api/health. That is right — a check permanently red for expected reasons
+ * gets tuned out, which is how a live incident hid inside a steady ok=false on
+ * 2026-08-03. But every committed glossary is a merge-glossary file today, so
+ * the first cron run after this ships refuses every book, and a refusal with
+ * no age is indistinguishable from health forever. `since` is the difference
+ * between "refused this morning" and "refused since June" (decision D6).
+ *
+ * Carried forward ONLY when the outcome string is identical. `detail` may
+ * differ freely — a shrink refusal whose counts moved 1117→900 then 1117→890
+ * is the same unresolved refusal, and restarting its clock on that would make
+ * the threshold unreachable for any book whose numbers drift.
+ *
+ * A previous entry with no usable `since` (missing, or not a string) restarts
+ * the clock rather than propagating an undefined field into the new file.
+ */
+function withSince(outcomes, previous, nowMs) {
+  const now = new Date(nowMs).toISOString();
+  const stamped = {};
+  for (const [slug, entry] of Object.entries(outcomes)) {
+    const prev = previous[slug];
+    const carry =
+      prev &&
+      typeof prev === 'object' &&
+      prev.outcome === entry.outcome &&
+      typeof prev.since === 'string' &&
+      prev.since !== '';
+    stamped[slug] = { ...entry, since: carry ? prev.since : now };
+  }
+  return stamped;
+}
+
+/**
+ * ⚠️ NOT a liveness signal. The heartbeat remains the alarm — absence is the
+ * alarm, per the C11(b) doctrine — precisely because a status file written on
+ * every outcome would read "success" forever once the exporter stopped
+ * running. This file carries DETAIL ONLY: which book got which outcome, and
+ * how long it has held it. It is written even on a run that ended in an error,
+ * because the breakdown is most valuable exactly then.
+ *
+ * ⚠️ Nothing may consult this file to decide whether the exporter is ALIVE.
+ * readGlossaryExportHealth reads it only for `errors`, `books` and the
+ * stale-refusal list; liveness comes from the heartbeat's mtime alone.
+ *
+ * ⚠️ WHOLE-CORPUS, like the heartbeat: written only on an UNFILTERED run. See
+ * the call site for why the two artifacts share that rule.
+ */
+function writeStatus(projectRoot, status) {
+  const p = path.join(projectRoot, STATUS_REL);
+  try {
+    fs.mkdirSync(path.dirname(p), { recursive: true });
+    fs.writeFileSync(p, JSON.stringify(status, null, 2) + '\n', 'utf-8');
+  } catch {
+    // Reporting must never take down the signal it reports on.
+  }
+}
+
+/**
  * @param {object} [options]
  * @param {string} [options.booksDir]
  * @param {string} [options.projectRoot]
@@ -204,6 +309,13 @@ function writeHeartbeat(projectRoot) {
  *   producer swap and a catastrophic shrink are different risks and each
  *   deserves its own explicit acknowledgement.
  * @param {boolean} [options.dryRun] - write neither export nor heartbeat
+ * @param {number} [options.nowMs] - injectable clock, used for the status
+ *   file's `ran` stamp and every `since`. Injectable because carry-forward is
+ *   a property ACROSS runs, so a test cannot exercise it without controlling
+ *   time. ⚠️ Nothing else in the status path may call Date.now()/new Date() —
+ *   a second, uninjected clock there would make `since` untestable again.
+ *   (writeHeartbeat still stamps its own wall clock: only its MTIME is ever
+ *   read, so its contents are informational and need no injection.)
  * @returns {number} exit code: 0 unless some book ERRORED. A refusal is not an
  *   error (decision D2) — see the header.
  */
@@ -216,6 +328,7 @@ function runGlossaryExport({
   force = false,
   adopt = false,
   dryRun = false,
+  nowMs = Date.now(),
   log = console.log,
   logError = console.error,
 } = {}) {
@@ -419,19 +532,57 @@ function runGlossaryExport({
       `${b}: wrote terms ${verdict.prevTotal} → ${countTerms(next)} ` +
         `(approved ${verdict.prevApproved} → ${verdict.nextApproved}) → ${outPath}`
     );
-    // 'adopted' is reachable only via --adopt: pv.refuse is true here exactly
-    // when the gate objected and a human overrode it. A one-off migration is
-    // worth distinguishing from a routine refresh in the record Task 6 writes.
-    outcomes[b] = { outcome: pv.refuse ? 'adopted' : 'wrote' };
+    // 'adopted' is reachable only via --adopt: reaching this line with either
+    // clause true means a gate objected and a human overrode it. A one-off
+    // migration is worth distinguishing from a routine refresh in the record.
+    //
+    // ⚠️ THE `corrupt` CLAUSE IS NOT REDUNDANT (Task 4+5 review finding). An
+    // unreadable existing file makes readExisting return {kind:'corrupt'}, so
+    // `prev` is null, so producerVerdict has no previous producer to compare
+    // and `pv.refuse` is FALSE — the pv-only expression therefore recorded the
+    // single most consequential write this exporter can perform (replacing a
+    // file whose contents nobody could read) under the label for its most
+    // routine one.
+    outcomes[b] = { outcome: existing.kind === 'corrupt' || pv.refuse ? 'adopted' : 'wrote' };
+  }
+
+  // ⚠️ THE STATUS FILE AND THE HEARTBEAT DELIBERATELY SHARE ONE RULE —
+  // `!dryRun && book === null` — and the two writes are kept adjacent so that
+  // is visible. BOTH are WHOLE-CORPUS artifacts, and both are meaningless
+  // when only one book ran: a `--book <slug>` run says nothing about the
+  // OTHER books. The heartbeat has always withheld for that reason (a lead
+  // hand-running one book while investigating must not stamp six hours of
+  // false green over everything else); a status file that a filtered run
+  // OVERWROTE would be the identical mistake in a different medium.
+  //
+  // ⚠️ Concretely, and this is why the rule is shared rather than merely
+  // similar: `withSince` stamps only THIS run's books, so a filtered run
+  // would write a single-book file, and the next unfiltered run would find no
+  // previous entry for the others and reset their stale-refusal clocks to
+  // now. That reset is not a rare edge case — it is CORRELATED with the
+  // alarm's firing window, because the moment a lead hand-runs `--book <slug>
+  // --adopt` is precisely while working through adoption, i.e. exactly while
+  // the other books are still refusing and their clocks are running.
+  // (Decision D6/(c), 2026-08-05. The plan text specified a `filtered: book
+  // !== null` field on a status file written for every non-dry-run pass; that
+  // was superseded, and the field DELETED rather than left permanently false,
+  // since a dead field implying filtered runs write is worse than no field.)
+  //
+  // ⚠️ ONE deliberate difference from the heartbeat, do not "unify" it away:
+  // this write is NOT gated on `errors === 0`. A run that ended in an error is
+  // exactly when an operator most needs to know WHICH book broke and which
+  // others were fine — hence its position BEFORE the error return below.
+  // Detail only; the heartbeat remains the liveness signal and is still
+  // withheld on an error.
+  if (!dryRun && book === null) {
+    writeStatus(projectRoot, {
+      ran: new Date(nowMs).toISOString(),
+      errors,
+      books: withSince(outcomes, readPreviousBookOutcomes(projectRoot), nowMs),
+    });
   }
 
   if (errors > 0) return 1;
-  // Heartbeat is the GLOBAL "the exporter is healthy" signal /api/health
-  // reads — write it only for an unfiltered (no --book) run. A `--book
-  // <slug>` run resolving healthily says nothing about the OTHER books, so
-  // writing the global heartbeat here would let a lead hand-running one book
-  // (e.g. while investigating a broken cron) stamp six hours of false green
-  // on /api/health for everything else.
   if (!dryRun && book === null) writeHeartbeat(projectRoot);
   return 0;
 }
