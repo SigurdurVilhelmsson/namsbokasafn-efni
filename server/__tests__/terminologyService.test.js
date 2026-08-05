@@ -1295,11 +1295,37 @@ describe('exportBookGlossary()', () => {
     expect(data.producer).toBe('export-terminology');
   });
 
-  it('the stamp is top-level, so it cannot dirty the write-if-changed comparison', () => {
+  it('a pre-stamp baseline (identical terms, no per-term producer key) still reads as unchanged', () => {
+    // NOT written as "call exportBookGlossary twice, compare with sameTerms":
+    // sameTerms only ever reads `.terms`, so two calls compare identically
+    // whether `producer` landed top-level (as intended) or was wrongly
+    // stamped onto EACH term (a bug) — a deterministic per-term stamp is the
+    // same across both calls either way, so that shape cannot tell "correct"
+    // apart from "broken but consistent". Instead this builds the pre-stamp
+    // side INDEPENDENTLY, by stripping any per-term `producer` key from a
+    // real export's terms — simulating the file committed before this stamp
+    // existed. That diverges from the freshly stamped export exactly when
+    // the stamp is (wrongly) per-term, which is what this test exists to
+    // catch: the real property under test is that the FIRST post-deploy
+    // cron run must not see a spurious diff and rewrite/re-commit every book.
+    // A non-empty terms array is required: with zero terms, stripping a
+    // per-term key from `[]` is still `[]`, so this would pass even under
+    // the per-term-stamp mutation — the same vacuity this test exists to
+    // avoid, one level down.
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['chemistry'],
+    });
     const { sameTerms } = require('../lib/glossaryExportDecision');
-    const a = terminologyService.exportBookGlossary('efnafraedi-2e');
-    const b = terminologyService.exportBookGlossary('efnafraedi-2e');
-    expect(sameTerms(a, b)).toBe(true);
+    const stamped = terminologyService.exportBookGlossary('efnafraedi-2e');
+    expect(stamped.terms.length).toBeGreaterThan(0);
+    const preStamp = {
+      ...stamped,
+      terms: stamped.terms.map(({ producer: _producer, ...rest }) => rest),
+    };
+    expect(sameTerms(preStamp, stamped)).toBe(true);
   });
 });
 
