@@ -157,26 +157,44 @@ for i in $(seq 1 30); do
           const staleSet=new Set(ge&&Array.isArray(ge.stale_refusals)?ge.stale_refusals:[]);
           const refusals=Object.entries(books).filter(([,o])=>
             o&&typeof o.outcome==='string'&&o.outcome.indexOf('refused-')===0);
-          if(refusals.length){
-            // Under a day: hours (a same-day refusal must not print '0.0d',
-            // which reads as a broken field rather than 'just now'). At or
-            // over a day: days, so a week-old refusal stays readable.
+          // A book that ERRORED (not merely refused) is the quieter, worse
+          // case: it always flips ge.ok false (errors>0), but with zero
+          // refusals the block below used to print NOTHING at all — no ran,
+          // no slug — which is exactly the state 'ran' exists to make
+          // legible (fix round 1, finding 1). Gate on ge.ok===false too, not
+          // refusals.length alone, and list errored books explicitly.
+          const errored=Object.entries(books).filter(([,o])=>
+            o&&typeof o.outcome==='string'&&o.outcome==='error');
+          if(refusals.length||(ge&&ge.ok===false)){
+            // <1m: 'just now' (a same-run refusal/error must not print
+            // '0.0h', which reads as a broken field). <1h: minutes.
+            // <1d: hours. >=1d: days, so a week-old refusal stays readable.
             const ageStr=(iso)=>{
               const t=typeof iso==='string'?Date.parse(iso):NaN;
               if(!isFinite(t))return 'unknown age';
               const ms=Date.now()-t;
-              return ms<86400000?(ms/3600000).toFixed(1)+'h':(ms/86400000).toFixed(1)+'d';
+              if(ms<60000)return 'just now';
+              if(ms<3600000)return Math.round(ms/60000)+'m';
+              if(ms<86400000)return (ms/3600000).toFixed(1)+'h';
+              return (ms/86400000).toFixed(1)+'d';
             };
-            const ranAge=(()=>{
+            const ranLabel=(()=>{
               const t=ge&&typeof ge.ran==='string'?Date.parse(ge.ran):NaN;
-              return isFinite(t)?' (ran '+((Date.now()-t)/3600000).toFixed(1)+'h ago)':'';
+              if(!isFinite(t))return '';
+              const a=ageStr(ge.ran);
+              return ' (ran '+(a==='just now'?a:a+' ago')+')';
             })();
-            console.log('glossary export: '+(ge.ok?'ok':'not ok')+ranAge);
+            console.log('glossary export: '+(ge&&ge.ok?'ok':'not ok')+ranLabel);
             for(const [slug,o] of refusals){
               const stale=staleSet.has(slug);
               const tag=stale?'⚠ STALE':'⚠';
               const advice=stale?' — unattended past the threshold; run --adopt '+slug+' to resolve':'';
               console.log('  '+tag+' '+slug+': '+o.outcome+' ('+ageStr(o.since)+')'+advice);
+            }
+            for(const [slug,o] of errored){
+              // An ERROR, not a refusal — --adopt does not fix this. detail
+              // stays unavailable here (see above); read the status file.
+              console.log('  ✗ '+slug+': error ('+ageStr(o.since)+') — NOT fixed by --adopt; see the status file on the box');
             }
           }
         }catch{console.log('Health: (unparseable response)')}

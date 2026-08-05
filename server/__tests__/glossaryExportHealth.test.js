@@ -349,6 +349,20 @@ describe('readGlossaryExportHealth — books are projected for GET /api/health (
       since: new Date(NOW).toISOString(),
     });
   });
+
+  it('fails CLOSED on a malformed (non-object) book entry — projects to null, not passed through', () => {
+    // Defense in depth (fix round 1, minor 3): unreachable from the current
+    // writer, but the projection's whole job is "nothing unvetted leaves
+    // this file", so a non-object entry must not be returned verbatim.
+    heartbeat(1);
+    status({
+      ran: 'x',
+      errors: 0,
+      books: { 'efnafraedi-2e': 'not an object, e.g. a hand-edited status file' },
+    });
+    const h = readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+    expect(h.books['efnafraedi-2e']).toBeNull();
+  });
 });
 
 describe('readGlossaryExportHealth — `ran` (Task 7 §C)', () => {
