@@ -165,23 +165,32 @@ Roles are managed in the local SQLite database:
 
 ## Dependencies
 
-Key production dependencies (see `package.json` for full list):
+**`server/package.json` is the single source of truth for versions — read it there.**
+This section used to hand-copy the version ranges; by 2026-08-05 **8 of the 11 were
+stale** (`archiver` still read `^7.0.1` three months after the v8 bump, `uuid` was a
+major behind), which is precisely the drift CLAUDE.md § *One source of truth* exists to
+prevent. What is recorded here instead is the part `package.json` cannot tell you —
+what each one is load-bearing **for**:
 
-```json
-{
-  "express": "^5.1.0",
-  "better-sqlite3": "^12.6.2",
-  "helmet": "^8.0.0",
-  "express-rate-limit": "^8.2.1",
-  "jsonwebtoken": "^9.0.2",
-  "nodemailer": "^8.0.0",
-  "multer": "^2.0.0",
-  "cookie-parser": "^1.4.6",
-  "dotenv": "^17.2.3",
-  "archiver": "^7.0.1",
-  "uuid": "^13.0.0"
-}
-```
+| Dependency | Load-bearing for |
+|---|---|
+| `express` | HTTP layer; routers under `routes/` |
+| `better-sqlite3` | the `sessions.db` store — synchronous driver, ships prebuilt binaries |
+| `helmet` · `express-rate-limit` | security headers and abuse limits on the public surface |
+| `jsonwebtoken` · `cookie-parser` | the Entra ID auth path and the `auth_token` cookie (⚠️ `SameSite=Lax` — see the root `CLAUDE.md`) |
+| `nodemailer` | editor notification mail |
+| `multer` | multipart upload endpoints |
+| `dotenv` | environment configuration |
+| `archiver` | the book/chapter ZIP download route (**v8 is ESM-only and exports classes, not a factory** — see register §C19) |
+| `uuid` | identifier generation |
+| `cors` | cross-origin policy for the API |
+| `csv-parse` | CSV ingest on the terminology/import paths |
+| `pino` · `pino-pretty` | structured logging (`lib/logger`) |
+| `xlsx` | ⚠️ installs from the **SheetJS CDN tarball**, not npm — `npm ci` needs `cdn.sheetjs.com` reachable, and bumps are manual (Dependabot cannot follow a URL dependency) |
+
+That table covers every entry in `dependencies` as of 2026-08-05. It is a map of
+*purpose*, which is stable; if you find it disagrees with `package.json`, **`package.json`
+wins** and this table is the bug.
 
 Dev dependencies: `@playwright/test` for E2E testing.
 
