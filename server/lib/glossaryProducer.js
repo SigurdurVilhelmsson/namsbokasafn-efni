@@ -1,0 +1,62 @@
+/**
+ * Which program wrote a glossary-unified.json payload (register C14 ② step 4).
+ *
+ * Pure by design — no filesystem, no DB — so the producer question can be
+ * asked of any payload, including one a test built.
+ *
+ * WHY THIS EXISTS. The shrink guard in glossaryExportDecision.js names the
+ * real threat correctly ("this exporter SWAPS producers rather than
+ * refreshing") and then measures term COUNTS, which is the one dimension on
+ * which the two producers are indistinguishable. On 2026-08-03 that let a
+ * wholesale producer swap through unattended: chemistry -36.5% passed under
+ * the 0.5 halving threshold, and biology GREW, which a shrink ratio is
+ * structurally blind to.
+ *
+ * THE FINGERPRINT IS MEASURED, NOT ASSUMED. Across all 3,496 terms in the
+ * three committed glossaries (2026-08-04): 3,496 carry `category` + `chapter`
+ * and 0 carry `subjects`. exportBookGlossary emits the exact complement —
+ * `subjects` always (possibly []), never `category`/`chapter`. Two disjoint
+ * shapes, no counter-example. glossaryProducer.test.js re-measures this
+ * against the real files rather than trusting this comment.
+ *
+ * ⚠️ A HYBRID IS `unknown`, DELIBERATELY. A payload carrying both fingerprints
+ * is a shape neither producer emits today, so it means something has changed
+ * that this detector does not model. `unknown` differs from the stamped
+ * `next`, so the call site refuses and waits for --adopt: when we cannot tell
+ * what we would destroy, a human decides. The cost of being wrong is one book
+ * skipped and reported; the cost of guessing is a silent overwrite.
+ */
+
+const PRODUCER_EXPORT = 'export-terminology';
+const PRODUCER_MERGE = 'merge-glossary';
+const PRODUCER_UNKNOWN = 'unknown';
+
+/** Presence, not truthiness: exportBookGlossary emits `subjects: []` for an untagged term. */
+const hasKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+
+/**
+ * @param {unknown} payload - a parsed glossary-unified.json, or an exportBookGlossary return
+ * @returns {'export-terminology'|'merge-glossary'|'unknown'}
+ */
+function detectProducer(payload) {
+  if (payload === null || typeof payload !== 'object' || Array.isArray(payload)) {
+    return PRODUCER_UNKNOWN;
+  }
+  if (payload.producer === PRODUCER_EXPORT) return PRODUCER_EXPORT;
+
+  const terms = payload.terms;
+  if (!Array.isArray(terms) || terms.length === 0) return PRODUCER_UNKNOWN;
+
+  const isTerm = (t) => t !== null && typeof t === 'object';
+  const subjects = terms.filter((t) => isTerm(t) && hasKey(t, 'subjects')).length;
+  const legacy = terms.filter(
+    (t) => isTerm(t) && (hasKey(t, 'category') || hasKey(t, 'chapter'))
+  ).length;
+
+  // Exclusive on purpose — see the hybrid note in the header.
+  if (subjects > 0 && legacy === 0) return PRODUCER_EXPORT;
+  if (legacy > 0 && subjects === 0) return PRODUCER_MERGE;
+  return PRODUCER_UNKNOWN;
+}
+
+module.exports = { detectProducer, PRODUCER_EXPORT, PRODUCER_MERGE, PRODUCER_UNKNOWN };
