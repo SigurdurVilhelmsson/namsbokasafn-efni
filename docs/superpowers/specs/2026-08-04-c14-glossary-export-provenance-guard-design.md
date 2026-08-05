@@ -451,3 +451,107 @@ is still per book, still `[LEAD]`, and still unmade.
 - [ ] `describeMalformedPayload`'s docblock distinguishes malformed-export from malformed-existing-file (§6.2)
 - [ ] Mutation-verified (§7.5)
 - [ ] Root `npm test` green; whole-branch adversarial review passed
+
+---
+
+## 11. ⚠️ AMENDMENTS MADE DURING EXECUTION — appended 2026-08-05
+
+**Everything above is the design as it stood on 2026-08-04 and is deliberately left
+unrewritten.** Implementation review found three holes the design did not anticipate. Each was
+decided while the branch was in flight, and each *changes* something §2–§7 asserts. A design
+record should show what was decided when — including that a third of the decisions in this
+document were forced by review rather than foreseen — so these are appended rather than
+folded silently into the body.
+
+**Read §2's table together with this section: D2 is amended by D6, and §3.5 is amended twice.**
+
+### 11.1 D6 — a refusal is tolerated, but not forever (human ruling, 2026-08-05)
+
+**Amends D2, does not replace it.** D2 said a refusal reports but never flips `ok`. That is
+still right as far as it goes, and its reasoning stands: a check permanently red for expected
+reasons gets tuned out, which is how a live incident hid inside `ok=false` on 2026-08-03.
+
+**What D2 missed is that the *opposite* failure is the day-one state of this very branch.**
+Every committed glossary is a `merge-glossary` file, so **the first cron run after this ships
+refuses every book**. Under plain D2 that is a permanent, *silent* steady state — `ok: true`
+forever, with the evidence only in a gitignored log — until a human runs `--adopt` per book.
+A refusal must not be allowed to become a permanent silent state.
+
+**D6:** the status file records **`since` per book** — when that book's *current* outcome was
+first observed, carried forward while the outcome is unchanged — and `/api/health` goes
+**not-ok** once any book has been refusing longer than **`GLOSSARY_REFUSAL_STALE_DAYS`
+(default 7)**. This reuses the repo's existing staleness doctrine rather than inventing a
+mechanism (`content_backup`, `offbox_backup`).
+
+⚠️ **`since` must carry forward across `detail` drift, and this is load-bearing.** A refused
+shrink's `detail` is `${prevTotal} → ${nextTotal}`, so for any book whose counts move, a
+comparison that included `detail` would reset the clock **every 2 h** and the 7-day alarm
+**would never fire**. The carry-forward compares `outcome` only. It is pinned by a test that
+was added specifically because the property survived a mutation undetected.
+
+### 11.2 Ruling (c) — a filtered run writes NO status file (2026-08-05)
+
+§3.5's first form had the status file written on every non-dry-run pass, tagged with a
+`filtered` field. **That is unsafe in a way that is correlated with the alarm's firing
+window.** `withSince` stamps only the books in *this* run, so a `--book <slug>` run overwrote
+the whole-corpus map; the next unfiltered run then found no previous entry for the untouched
+books and **reset their stale-refusal clocks to now**. The moment a lead hand-runs
+`--book <slug> --adopt` is *precisely* while working through adoption — i.e. exactly while the
+other books are still refusing and their clocks are running — so the reset lands
+preferentially on the runs that matter most.
+
+**Ruling:** the status file is written only on an **unfiltered, non-dry-run** pass, making it
+exactly parallel to the heartbeat — both whole-corpus signals, both withheld on a filtered
+run, **one rule instead of two**. The `filtered` field is **deleted**, not left permanently
+`false`: a dead field implying that filtered runs write is worse than no field at all.
+
+They still differ in exactly one clause, and it must not be "unified" away: the status file is
+**not** gated on `errors === 0`, because a run that ended in an error is when its per-book
+breakdown is most valuable. The heartbeat remains gated, because it is the liveness signal.
+
+**Accepted, documented cost:** after a `--book --adopt`, the status file shows that book's
+stale outcome for ≤2 h. Harmless — it can only *delay* an alarm, never manufacture one — and
+documented rather than engineered away.
+
+### 11.3 `GET /api/health` must project the per-book map (security, 2026-08-05)
+
+Not in the design at all; found by review. **`GET /api/health` is unauthenticated** on an
+internet-facing server, and this repository is public. §3.5 had it return the per-book map,
+and a book's **`detail` can embed `err.message` verbatim** — including absolute server
+filesystem paths (`EACCES … open '/srv/.../glossary-unified.json'`).
+
+**Amendment:** health projects each book down to **`{outcome, since}`** through an allowlist.
+Two properties of *where* that lives are deliberate:
+
+- It is in **`server/lib/glossaryExportHealth.js`, not in the route**, so a future second
+  caller of `readGlossaryExportHealth` gets the projection for free instead of re-leaking
+  `detail` by omission.
+- The projection **fails closed**: a malformed (non-object) entry projects to `null` rather
+  than being passed through. Unreachable today, but a fail-open branch inside the one function
+  whose purpose is "detail must never leave this file" would undermine it.
+
+`detail` remains available to an operator in the gitignored status file on the box.
+
+⚠️ **Related, and deliberately NOT fixed here — it needs its own decision.** The `/api/health`
+route's *own* catch branch (`{ok: false, error: err.message}`) can leak the same class of
+absolute path if a lib throws. It is a repo-wide pattern with precedent elsewhere in the same
+handler, so fixing it only here would be an inconsistent one-off. Logged in register §C14 ③.
+
+### 11.4 Consequences for §10's checklist
+
+§10 predates D6 and ruling (c). Two of its lines are now read as follows, and one item is
+added:
+
+- *"`/api/health` … reads `ok: true` with refusals present"* — still true, **but only until
+  `GLOSSARY_REFUSAL_STALE_DAYS`**; past that the check is deliberately not-ok (D6).
+- The plan's *"marks a `--book` run as filtered"* test is **superseded** by *"a `--book` run
+  does not write the status file"* — and the shipped test goes further than the ruling
+  required, asserting a filtered run does not **clobber** an existing file, since a
+  presence-only assertion would pass even if the run truncated it.
+- **Added:** `/api/health` exposes **no `detail`** for any book (§11.3).
+
+### 11.5 The boundary in §8 is unchanged and is the most important line in this document
+
+Shipping this does **not** make the export safe to switch back on. It makes switching it back
+on *a decision with a visible outcome*. Adoption is still per book, still `[LEAD]`, and still
+unmade; production still carries the uncommitted `#CONTAINED-2026-08-03#` edit.

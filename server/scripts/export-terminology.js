@@ -182,6 +182,13 @@ function readExisting(outPath) {
  * hint what the payload DOES contain — exactly the information an operator
  * needs to spot a refactor that renamed the field. `null` is now named
  * explicitly, and every branch reports the payload's own keys.
+ *
+ * ⚠️ THIS GUARD IS ABOUT A MALFORMED **EXPORT** (exportFn's return). A
+ * malformed **existing file** is a different path with a different outcome:
+ * readExisting reports `{kind:'corrupt'}` and the caller REFUSES, waiting for
+ * --adopt (register C14 ② step 4, decision D5), rather than erroring. The two
+ * guards look redundant and are not — one protects what we are about to
+ * write, the other protects what we are about to destroy.
  */
 function describeMalformedPayload(value) {
   if (value === null) return 'null';
