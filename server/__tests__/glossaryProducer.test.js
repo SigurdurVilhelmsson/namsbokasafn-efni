@@ -6,7 +6,7 @@
  * hand-authored fixtures. A fixture written from prose is how ten
  * `<!-- SEG: -->` fixtures acquired a shape the real parser returns [] for; a
  * hand-written "merge-glossary-shaped" object would pass while proving nothing
- * about the 3,496 rows actually on disk.
+ * about the 4,496 rows actually on disk.
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';

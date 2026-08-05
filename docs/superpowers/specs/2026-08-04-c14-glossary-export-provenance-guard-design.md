@@ -44,7 +44,7 @@ headwords.**
 | `efnafraedi-2e` | 1117 | **1117** | **0** | absent |
 | `liffraedi-2e` | 2262 | **2262** | **0** | absent |
 | `lifraen-efnafraedi` | 1117 | **1117** | **0** | absent |
-| **total** | **3496** | **3496 (100%)** | **0 (0%)** | — |
+| **total** | **4496** | **4496 (100%)** | **0 (0%)** | — |
 
 `exportBookGlossary` (`server/services/terminologyService.js:1562-1575`) emits the exact
 complement: `english, icelandic, pos, definitionEn, definitionIs, status, source,
@@ -52,7 +52,7 @@ complement: `english, icelandic, pos, definitionEn, definitionIs, status, source
 `stats.disputed` (`:1551`), which no committed file has.
 
 **This is a partition, not a heuristic.** Two independent signals agree, and neither has a
-single counter-example in 3,496 rows.
+single counter-example in 4,496 rows.
 
 > ⚠️ **Both facts were measured, not read off the code.** `tools/merge-glossary.js`'s
 > `writeJSON` (`:417-434`) passes `merged.terms` through verbatim, so the source of
@@ -359,7 +359,7 @@ Detection table across all four return cases, **plus the two that matter**:
 This is a direct application of this project's own most expensive lesson: a fixture written
 from prose is how ten `<!-- SEG: -->` fixtures acquired a shape the real parser returns `[]`
 for. A hand-written "merge-glossary-shaped" object would pass a test while proving nothing
-about the 3,496 rows actually on disk.
+about the 4,496 rows actually on disk.
 
 ### 7.2 Extended suites
 
@@ -439,7 +439,7 @@ is still per book, still `[LEAD]`, and still unmade.
 
 ## 10. Definition of done
 
-- [ ] §1.1's partition re-measured on the branch (§7.4) and still 3496/3496 · 0/3496
+- [ ] §1.1's partition re-measured on the branch (§7.4) and still 4496/4496 · 0/4496
 - [ ] `detectProducer` asserted against real committed files **and** real exporter output
 - [ ] Producer gate refuses all three committed books without `--adopt`
 - [ ] `--adopt` writes; `--adopt` alone does not bypass the shrink gate

@@ -76,7 +76,7 @@ Create `server/__tests__/glossaryProducer.test.js`:
  * hand-authored fixtures. A fixture written from prose is how ten
  * `<!-- SEG: -->` fixtures acquired a shape the real parser returns [] for; a
  * hand-written "merge-glossary-shaped" object would pass while proving nothing
- * about the 3,496 rows actually on disk.
+ * about the 4,496 rows actually on disk.
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
@@ -196,8 +196,8 @@ Create `server/lib/glossaryProducer.js`:
  * the 0.5 halving threshold, and biology GREW, which a shrink ratio is
  * structurally blind to.
  *
- * THE FINGERPRINT IS MEASURED, NOT ASSUMED. Across all 3,496 terms in the
- * three committed glossaries (2026-08-04): 3,496 carry `category` + `chapter`
+ * THE FINGERPRINT IS MEASURED, NOT ASSUMED. Across all 4,496 terms in the
+ * three committed glossaries (2026-08-04): 4,496 carry `category` + `chapter`
  * and 0 carry `subjects`. exportBookGlossary emits the exact complement —
  * `subjects` always (possibly []), never `category`/`chapter`. Two disjoint
  * shapes, no counter-example. glossaryProducer.test.js re-measures this
@@ -257,7 +257,7 @@ Expected: PASS, including the three real committed books.
 git add server/lib/glossaryProducer.js server/__tests__/glossaryProducer.test.js
 git commit -m "feat(c14): pure producer detector for glossary payloads
 
-Keys on a measured partition: all 3,496 committed terms carry
+Keys on a measured partition: all 4,496 committed terms carry
 category+chapter and none carry subjects, while exportBookGlossary emits
 the exact complement. Asserted against the real committed files, not
 fixtures.

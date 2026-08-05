@@ -12,12 +12,13 @@
  * the 0.5 halving threshold, and biology GREW, which a shrink ratio is
  * structurally blind to.
  *
- * THE FINGERPRINT IS MEASURED, NOT ASSUMED. Across all 3,496 terms in the
- * three committed glossaries (2026-08-04): 3,496 carry `category` + `chapter`
+ * THE FINGERPRINT IS MEASURED, NOT ASSUMED. Across all 4,496 terms in the
+ * three committed glossaries (2026-08-04): 4,496 carry `category` + `chapter`
  * and 0 carry `subjects`. exportBookGlossary emits the exact complement —
  * `subjects` always (possibly []), never `category`/`chapter`. Two disjoint
  * shapes, no counter-example. glossaryProducer.test.js re-measures this
- * against the real files rather than trusting this comment.
+ * against the real files rather than trusting this comment. (This figure was
+ * corrected from 3,496 on initial draft; re-derive rather than trust it.)
  *
  * ⚠️ A HYBRID IS `unknown`, DELIBERATELY. A payload carrying both fingerprints
  * is a shape neither producer emits today, so it means something has changed
