@@ -108,7 +108,10 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
       path.join(work, 'books/prufubok/03-faithful-translation/ch01/m00001-segments.is.md'),
       'faithful v2\n'
     );
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":2}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":2}\n'
+    );
 
     runBackup();
 
@@ -116,7 +119,10 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
     expect(git(['log', '-1', '--format=%s'])).toMatch(/^auto-backup: /);
     // pushed: bare origin's main equals local main
     const localHead = git(['rev-parse', 'main']).trim();
-    const remoteHead = execFileSync('git', ['rev-parse', 'main'], { cwd: bare, encoding: 'utf8' }).trim();
+    const remoteHead = execFileSync('git', ['rev-parse', 'main'], {
+      cwd: bare,
+      encoding: 'utf8',
+    }).trim();
     expect(remoteHead).toBe(localHead);
   });
 
@@ -166,13 +172,18 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
 
 describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
   it('writes the heartbeat after a successful push', () => {
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":3}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":3}\n'
+    );
 
     runBackup();
 
     expect(readStatus().status).toBe('success');
     expect(existsSync(heartbeatPath())).toBe(true);
-    expect(readFileSync(heartbeatPath(), 'utf8')).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/m);
+    expect(readFileSync(heartbeatPath(), 'utf8')).toMatch(
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/m
+    );
   });
 
   it('writes the heartbeat when there was nothing to commit', () => {
@@ -198,7 +209,10 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     // Unreachable remote: the push fails, and so does the diagnostic fetch,
     // which also exercises the "counts omitted" fallback.
     git(['remote', 'set-url', 'origin', path.join(work, 'no-such-remote')]);
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":4}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":4}\n'
+    );
 
     const result = runBackup(true);
 
@@ -223,7 +237,10 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
     rmSync(other, { recursive: true, force: true });
 
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":5}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":5}\n'
+    );
 
     const result = runBackup(true);
 
@@ -253,7 +270,10 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
     rmSync(other, { recursive: true, force: true });
 
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":6}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":6}\n'
+    );
     expect(runBackup(true).status).toBe(1);
     expect(existsSync(heartbeatPath())).toBe(false);
 
@@ -347,7 +367,7 @@ describe('git-backup.sh glossary export (register C14)', () => {
     expect(status).toBe(0);
     expect(readStatus().status).toBe('success');
     expect(existsSync(heartbeatPath())).toBe(true);
-    expect(readLog()).toMatch(/WARN: glossary export failed/);
+    expect(readLog()).toMatch(/WARN: glossary export ERRORED or timed out/);
   });
 
   it('invokes the exporter before staging, so a fresh export rides the same commit', () => {

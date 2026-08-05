@@ -28,6 +28,15 @@
  * status file". Both are now false: under decision D2 a REFUSAL keeps the
  * heartbeat (only an error withholds it), and the status file above exists.
  *
+ * ⚠️ AMENDED 2026-08-05 (Task 7, Controller Amendment §A) — `GET /api/health`
+ * is UNAUTHENTICATED (server/index.js, no auth middleware) on an
+ * internet-facing, PUBLIC-repository server. A book's `detail` string can
+ * embed `err.message` verbatim — including an absolute server filesystem
+ * path from an EACCES — so `detail` is stripped before it leaves this file.
+ * `readGlossaryExportHealth` projects every book to `{outcome, since}` only;
+ * see `projectBookForHealth` below. `detail` still lives in
+ * pipeline-output/.glossary-export-status.json (gitignored, on-box only).
+ *
  * WHY ANY OF THIS EXISTS: the export runs from scripts/git-backup.sh, the
  * 2-hourly cron, and that invocation must be CONTAINED — a failing export logs
  * a WARN and lets the content backup proceed, since terminology-DB health must
@@ -114,12 +123,59 @@ function findStaleRefusals(books, nowMs, refusalStaleDays) {
 }
 
 /**
+ * Project one book's status-file entry down to what is safe to expose over
+ * `GET /api/health` — UNAUTHENTICATED (server/index.js has no auth
+ * middleware on that route) on an internet-facing server, and this
+ * repository is PUBLIC. `detail` can embed `err.message` verbatim, e.g.
+ *
+ *   could not read existing export — EACCES: permission denied,
+ *   open '/srv/namsbokasafn-efni/books/.../glossary-unified.json'
+ *
+ * which leaks an absolute SERVER FILESYSTEM PATH to a public endpoint.
+ * `detail` MUST NOT leave this file — only `outcome` and `since` are
+ * public-safe. This lives here, not in the /api/health route, so that a
+ * future second caller of `readGlossaryExportHealth` gets the projection for
+ * free instead of re-leaking `detail` by omission. An operator who needs the
+ * detail reads pipeline-output/.glossary-export-status.json on the box
+ * directly — it is gitignored.
+ *
+ * Do not "restore" a passed-through `detail` here without re-reading this
+ * comment; that is exactly the mistake this function exists to prevent.
+ *
+ * @param {unknown} entry a raw books[slug] value from the status file — may
+ *   be null, a non-object, or missing fields; the status file is written by
+ *   a different process and this must not throw on any shape it finds.
+ */
+function projectBookForHealth(entry) {
+  if (!entry || typeof entry !== 'object') return entry;
+  return { outcome: entry.outcome, since: entry.since };
+}
+
+/** Apply {@link projectBookForHealth} across the whole per-book map. */
+function projectBooksForHealth(books) {
+  const projected = {};
+  for (const [slug, entry] of Object.entries(books)) {
+    projected[slug] = projectBookForHealth(entry);
+  }
+  return projected;
+}
+
+/**
  * @param {{projectRoot: string, nowMs: number, staleHours?: number,
  *   refusalStaleDays?: number}} p
  *   projectRoot — the repo root. Derive it from `__dirname`, never
  *   `process.cwd()`: the server runs with cwd=server/.
  * @returns {{age_hours: number|null, stale: boolean, errors: number,
- *   books: object, stale_refusals: string[], ok: boolean}}
+ *   ran: string|null, books: object, stale_refusals: string[], ok: boolean}}
+ *   `books` is `{[slug]: {outcome, since}}` — `detail` is deliberately not
+ *   included; see `projectBookForHealth`. `ran` is the status file's own
+ *   `ran` timestamp (ISO string), or null if the file is missing/unreadable.
+ *   It is distinct from `age_hours`: the status write happens BEFORE the
+ *   `errors > 0` early return in export-terminology.js while the heartbeat
+ *   write happens AFTER it, so a persistently-erroring exporter shows a
+ *   fresh `ran` next to a growing, stale `age_hours` — proof the cron is
+ *   running at all, just failing every time, which a frozen heartbeat alone
+ *   cannot distinguish from "cron stopped firing".
  */
 function readGlossaryExportHealth({
   projectRoot,
@@ -136,7 +192,7 @@ function readGlossaryExportHealth({
     /* missing heartbeat => stale, handled by the helper */
   }
 
-  let detail = { errors: 0, books: {} };
+  let detail = { errors: 0, books: {}, ran: null };
   try {
     const raw = fs.readFileSync(
       path.join(projectRoot, 'pipeline-output', '.glossary-export-status.json'),
@@ -146,6 +202,7 @@ function readGlossaryExportHealth({
     detail = {
       errors: Number(parsed.errors) || 0,
       books: parsed.books && typeof parsed.books === 'object' ? parsed.books : {},
+      ran: typeof parsed.ran === 'string' ? parsed.ran : null,
     };
   } catch {
     // No status file (or an unreadable one) — the heartbeat alone still
@@ -157,7 +214,9 @@ function readGlossaryExportHealth({
   const health = computeBackupHeartbeatHealth({ heartbeatMtimeMs, nowMs, staleHours });
   return {
     ...health,
-    ...detail,
+    errors: detail.errors,
+    ran: detail.ran,
+    books: projectBooksForHealth(detail.books),
     stale_refusals,
     ok: !health.stale && detail.errors === 0 && stale_refusals.length === 0,
   };

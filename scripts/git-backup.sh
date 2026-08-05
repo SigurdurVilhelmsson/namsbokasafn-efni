@@ -138,7 +138,7 @@ if PATH="/usr/bin:$PATH" command -v node > /dev/null 2>&1; then
   # sub-second this normally takes, and far below the 2h cron period.
   if ! PATH="/usr/bin:$PATH" timeout 120 node "${PROJECT_ROOT}/server/scripts/export-terminology.js" \
        >> "$LOG_FILE" 2>&1; then
-    log "WARN: glossary export failed or timed out — continuing with the content backup"
+    log "WARN: glossary export ERRORED or timed out — continuing with the content backup (a per-book refusal is NOT an error and does not reach here; see checks.glossary_export)"
   fi
 else
   log "WARN: node not found in cron PATH — glossary export skipped"

@@ -305,3 +305,83 @@ describe('readGlossaryExportHealth — a refusal that never resolves (D6)', () =
     expect(h.ok).toBe(false);
   });
 });
+
+describe('readGlossaryExportHealth — books are projected for GET /api/health (Task 7 §A, security)', () => {
+  // GET /api/health is UNAUTHENTICATED and internet-facing, and this repo is
+  // public. `detail` can embed `err.message` verbatim, including an absolute
+  // server filesystem path (e.g. an EACCES). It must never reach a caller of
+  // this function, even though the on-disk status file legitimately has one.
+  it('strips `detail` from every book, even though the status file on disk has one', () => {
+    heartbeat(1);
+    status({
+      ran: 'x',
+      errors: 0,
+      books: {
+        'efnafraedi-2e': {
+          outcome: 'refused-producer',
+          detail:
+            "EACCES: permission denied, open '/srv/namsbokasafn-efni/books/x/glossary-unified.json'",
+          since: new Date(NOW).toISOString(),
+        },
+      },
+    });
+    const h = readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+    expect(h.books['efnafraedi-2e'].outcome).toBe('refused-producer');
+    expect(h.books['efnafraedi-2e'].detail).toBeUndefined();
+  });
+
+  it('keeps `outcome` and `since` for a non-refusing book too', () => {
+    heartbeat(1);
+    status({
+      ran: 'x',
+      errors: 0,
+      books: {
+        'liffraedi-2e': {
+          outcome: 'wrote',
+          detail: 'anything',
+          since: new Date(NOW).toISOString(),
+        },
+      },
+    });
+    const h = readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+    expect(h.books['liffraedi-2e']).toEqual({
+      outcome: 'wrote',
+      since: new Date(NOW).toISOString(),
+    });
+  });
+});
+
+describe('readGlossaryExportHealth — `ran` (Task 7 §C)', () => {
+  it("surfaces the status file's `ran` timestamp verbatim", () => {
+    heartbeat(1);
+    const ranAt = new Date(NOW - 3 * H).toISOString();
+    status({ ran: ranAt, errors: 0, books: {} });
+    expect(readGlossaryExportHealth({ projectRoot: root, nowMs: NOW }).ran).toBe(ranAt);
+  });
+
+  it('is null when the status file is missing', () => {
+    heartbeat(1);
+    expect(readGlossaryExportHealth({ projectRoot: root, nowMs: NOW }).ran).toBeNull();
+  });
+
+  it('is null when `ran` is missing or not a string, without throwing', () => {
+    heartbeat(1);
+    status({ errors: 0, books: {} });
+    expect(readGlossaryExportHealth({ projectRoot: root, nowMs: NOW }).ran).toBeNull();
+  });
+
+  it('stays fresh across a run that errored, even though the heartbeat does not', () => {
+    // export-terminology.js writes the status file BEFORE the `errors > 0`
+    // early return, and the heartbeat only AFTER it — so a persistently
+    // erroring exporter shows a fresh `ran` beside a stale `age_hours`. That
+    // is the signal that distinguishes "still running, just failing" from
+    // "cron stopped firing", which a frozen heartbeat alone cannot.
+    heartbeat(40); // stale
+    const ranAt = new Date(NOW - 5 * 60 * 1000).toISOString(); // 5 min ago
+    status({ ran: ranAt, errors: 1, books: { x: { outcome: 'error', detail: 'boom' } } });
+    const h = readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+    expect(h.stale).toBe(true);
+    expect(h.ran).toBe(ranAt);
+    expect(h.ok).toBe(false);
+  });
+});

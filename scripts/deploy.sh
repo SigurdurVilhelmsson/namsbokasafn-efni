@@ -129,8 +129,10 @@ for i in $(seq 1 30); do
     # Print the verdict rather than discarding it. Nothing else polls
     # /api/health — no monitor, no UI — so this is the only routine surface
     # where a stale backup heartbeat (content, register C11(b); or off-box
-    # sessions.db) becomes visible to a human. It gates nothing: "degraded"
-    # is a legitimate post-deploy state, e.g. before the first backup cycle.
+    # sessions.db) becomes visible to a human — and, below, where a glossary
+    # refusal (register C14) becomes visible too. It gates nothing:
+    # "degraded" is a legitimate post-deploy state, e.g. before the first
+    # backup cycle, and a glossary refusal must never fail a deploy.
     echo "$HEALTH_BODY" | node -e "
       let d='';process.stdin.on('data',c=>d+=c);
       process.stdin.on('end',()=>{
@@ -138,6 +140,45 @@ for i in $(seq 1 30); do
           const h=JSON.parse(d);
           const bad=Object.entries(h.checks||{}).filter(([,c])=>!c.ok).map(([n])=>n);
           console.log('Health: '+h.status+(bad.length?' — not ok: '+bad.join(', '):''));
+          // A glossary refusal keeps checks.glossary_export.ok TRUE (register
+          // C14, decision D2) — the guard working as intended, not a fault —
+          // so it would never appear in the 'not ok' line above. Nothing
+          // polls /api/health and this printout is the only routine surface,
+          // so print every refusal here regardless of ok, and flag the ones
+          // a human has not yet resolved (decision D6, stale_refusals).
+          //
+          // detail is deliberately UNAVAILABLE here: /api/health is
+          // unauthenticated and server/lib/glossaryExportHealth.js projects
+          // each book to {outcome, since} only, because detail can embed an
+          // absolute server filesystem path. Read
+          // pipeline-output/.glossary-export-status.json on the box for that.
+          const ge=h.checks&&h.checks.glossary_export;
+          const books=(ge&&typeof ge==='object'&&ge.books&&typeof ge.books==='object')?ge.books:{};
+          const staleSet=new Set(ge&&Array.isArray(ge.stale_refusals)?ge.stale_refusals:[]);
+          const refusals=Object.entries(books).filter(([,o])=>
+            o&&typeof o.outcome==='string'&&o.outcome.indexOf('refused-')===0);
+          if(refusals.length){
+            // Under a day: hours (a same-day refusal must not print '0.0d',
+            // which reads as a broken field rather than 'just now'). At or
+            // over a day: days, so a week-old refusal stays readable.
+            const ageStr=(iso)=>{
+              const t=typeof iso==='string'?Date.parse(iso):NaN;
+              if(!isFinite(t))return 'unknown age';
+              const ms=Date.now()-t;
+              return ms<86400000?(ms/3600000).toFixed(1)+'h':(ms/86400000).toFixed(1)+'d';
+            };
+            const ranAge=(()=>{
+              const t=ge&&typeof ge.ran==='string'?Date.parse(ge.ran):NaN;
+              return isFinite(t)?' (ran '+((Date.now()-t)/3600000).toFixed(1)+'h ago)':'';
+            })();
+            console.log('glossary export: '+(ge.ok?'ok':'not ok')+ranAge);
+            for(const [slug,o] of refusals){
+              const stale=staleSet.has(slug);
+              const tag=stale?'⚠ STALE':'⚠';
+              const advice=stale?' — unattended past the threshold; run --adopt '+slug+' to resolve':'';
+              console.log('  '+tag+' '+slug+': '+o.outcome+' ('+ageStr(o.since)+')'+advice);
+            }
+          }
         }catch{console.log('Health: (unparseable response)')}
       })
     " || true
