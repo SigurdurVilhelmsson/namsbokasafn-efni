@@ -26,6 +26,8 @@
  * instead of a silent write.
  */
 
+const { detectProducer } = require('./glossaryProducer');
+
 /** Approved terms are what actually primes MT (api-translate loads approvedOnly). */
 function countApproved(data) {
   if (!data || !Array.isArray(data.terms)) return 0;
@@ -114,4 +116,34 @@ function shrinkVerdict(prev, next) {
   return { refuse, prevApproved, nextApproved, prevTotal, nextTotal };
 }
 
-module.exports = { countApproved, countTerms, sameTerms, shrinkVerdict, SHRINK_RATIO };
+/**
+ * Categorical companion to shrinkVerdict (register C14 ② step 4).
+ *
+ * Evaluated BEFORE the shrink gate at the call site. Reporting "1117 → 709, a
+ * 36.5% shrink" about a file another program wrote invites the operator to
+ * reason about two numbers that count different things.
+ *
+ * A corrupt existing file never reaches here — readExisting reports it as its
+ * own kind and the call site maps it straight to a refusal. "Is this
+ * parseable" and "who wrote it" stay separate questions, answered in separate
+ * places.
+ *
+ * @returns {{refuse: boolean, prevProducer: string, nextProducer: string}}
+ */
+function producerVerdict(prev, next) {
+  const nextProducer = detectProducer(next);
+  if (prev === null || prev === undefined) {
+    return { refuse: false, prevProducer: null, nextProducer };
+  }
+  const prevProducer = detectProducer(prev);
+  return { refuse: prevProducer !== nextProducer, prevProducer, nextProducer };
+}
+
+module.exports = {
+  countApproved,
+  countTerms,
+  sameTerms,
+  shrinkVerdict,
+  producerVerdict,
+  SHRINK_RATIO,
+};
