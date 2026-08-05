@@ -475,8 +475,11 @@ heartbeats: **off-box DB backup** (`OFFBOX_BACKUP_STALE_HOURS`, default 26), con
 2026-08-04 — re-derive the list from the handler rather than trusting any prose copy, this one
 included.)* **Nothing polls it** — the routine surface is what `./scripts/deploy.sh` prints;
 otherwise `curl` it by hand. ⚠️ **A `degraded` verdict names which check failed — read it before
-concluding anything**; `degraded` has meant `glossary_export` alone since the off-box backup went
-live 2026-08-04.
+concluding anything.** *(A clause here used to add "`degraded` has meant `glossary_export` alone
+since 2026-08-04" — that went stale on 2026-08-05 14:00Z, when the exporter's first cron tick
+under the C14 guard flipped `glossary_export` to `ok` and the whole payload to `status: ok`.
+**Do not carry a remembered verdict; read the live one** — which is exactly what the durable half
+of this bullet already told you to do.)*
 
 ### Change history
 
