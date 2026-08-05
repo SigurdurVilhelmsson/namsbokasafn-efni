@@ -215,3 +215,52 @@ f1c4e5a1 docs(register): record the C14 deploy — containment lifted, and why t
 **Verification lesson, 13 findings, one species:** every finding across 8 tasks, 2 blind whole-branch reviews and a fix wave was *a check that could not fail* — a number verified against a copy of itself, a test green under correct AND broken behaviour, a gate-order assertion that could not discriminate, a regression guard pinning a broken string, an enumeration asserting its own completeness while correcting a false claim. **None was found by running the suite.** All were found by mutating the code and watching what stayed green.
 
 ---
+
+## 2026-08-05 18:00 - C19 + C21 fixed, deployed and verified; C22/C23 logged from a live 504
+
+**Branch:** docs/c22-c23-ux-and-observability
+**Modified:**
+(register + memory + dashboard; code all merged)
+
+**Recent commits:**
+f8f0a496 docs(register): log C22 (download button unreachable) and C23 (no request timing)
+8fd82a83 Merge pull request #361 from SigurdurVilhelmsson/docs/c21-deployed
+c306c179 docs(register): C21 deployed 1046a09b — and demonstrated, not merely installed
+
+**Why:** Resumed the campaign on C19 (the only unblocked P1). It cascaded: C19's review
+found C20, the follow-up sweep found C21, and trying to prove C19 end-to-end found C22
+and C23. Six PRs merged (#356–#361), two fixes deployed and verified ON the box rather
+than inferred from deploy logs.
+
+**Picking up here — pick ONE:**
+1. **[CODE] C23 — request-duration logging.** Highest value of the three open code items:
+   right now a request that outruns nginx leaves *no* server-side trace, which is why a
+   live 504 this session could not be diagnosed at all. Four hypotheses were falsified by
+   measurement and are recorded in §C23 so nobody re-raises them. Adding timings makes the
+   one untested lead (terminology/concordance) testable instead of speculative.
+2. **[CODE] C22 — the download button can never appear.** `.complete` vs `.published`;
+   two-identifier fix plus deriving the type from `activeTrack`, and it should be pinned by
+   a test. Unblocks proving C19 end to end, which is currently impossible through the UI.
+3. **[CODE] C20 — the archive stream has no `error` listener.** Well-specified: a
+   deterministic reproducer (`chmod 000`) and a measured trap — the obvious one-line fix
+   turns the crash into a *hang*, 4/4.
+
+**[LEAD] and dated:** the per-book glossary adoption decisions (§C14 ②). D6 fires
+**~2026-08-12 14:00Z**. Current server numbers, not the older note: chemistry 1117→709 with
+*approved* rising 617→709; biology 2262→13561 (still "do not write"); **organic would produce
+ZERO terms** — which answers "decide what its glossary should be" more bluntly than the
+register did.
+
+**⚠️ Verification lessons this session, all the same species:** three separate checks passed
+for the wrong reason — the original download tests settled two lines before the crash, a
+probe settled before the error ever fired, and a CI wait-loop never looped (broken `awk`).
+Also: a reviewer's confident prose is **not** a measurement (a P1 register entry was nearly
+written from a subagent's summary; re-running it changed the content), and `ps -o %cpu` is a
+**lifetime average**, not instantaneous.
+
+**⚠️ Do not run a fan-out review in the shared working tree.** It produced a phantom failing
+test and a `UU` conflicted index mid-verification. Commit first and review the commit, or use
+worktree isolation — but note `/tmp` is a 1.5 GB tmpfs against a 4.7 GB tree, so worktrees
+there will ENOSPC.
+
+---
