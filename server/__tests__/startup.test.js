@@ -94,6 +94,56 @@ describe('Server startup smoke tests', () => {
     });
   });
 
+  describe('request-timing middleware is actually mounted (register C23)', () => {
+    // A middleware that is written but not mounted is register C22 verbatim:
+    // a feature gated on something that never happens, silent for months.
+    // index.js cannot be require()d in a unit test (config validation,
+    // migrations, DB), so the mount is pinned against its source — the same
+    // reason the route-existence checks above are static.
+
+    it('index.js imports createRequestTimer', () => {
+      expect(indexSource).toContain("require('./middleware/requestTiming')");
+      expect(indexSource).toContain('createRequestTimer');
+    });
+
+    it('index.js mounts the timer with app.use', () => {
+      expect(indexSource).toMatch(/app\.use\(\s*createRequestTimer\(/);
+    });
+
+    it('the timer is mounted before the first API route, or it times nothing', () => {
+      // Located by regex, not indexOf: prettier wraps the mount across lines.
+      const mountedAt = indexSource.search(/app\.use\(\s*createRequestTimer\(/);
+      const firstApiRoute = indexSource.indexOf("app.use('/api/");
+
+      expect(mountedAt).toBeGreaterThan(-1);
+      expect(firstApiRoute).toBeGreaterThan(-1);
+      expect(mountedAt).toBeLessThan(firstApiRoute);
+    });
+
+    it('the old entry-only request log is gone, not merely supplemented', () => {
+      // It logged that a request arrived and nothing about how long it took;
+      // keeping both would double prod log volume for no extra signal.
+      expect(indexSource).not.toContain('log.info({ method: req.method, path: req.path }');
+    });
+
+    it('index.js does not repeat the threshold literal', () => {
+      // The default lives in the middleware next to the comment explaining
+      // why it is what it is. Repeating it here would let the two drift.
+      // Asserted as an ABSENCE, because the presence check it replaced could
+      // pass while a hardcoded number sat right beside it.
+      expect(indexSource).toContain('DEFAULT_SLOW_REQUEST_MS');
+      expect(indexSource).not.toMatch(/thresholdMs:\s*\d/);
+    });
+
+    it('index.js keeps the SLOW_REQUEST_MS operator override', () => {
+      // Asserted against process.env, not the bare name: 'SLOW_REQUEST_MS' is
+      // a substring of 'DEFAULT_SLOW_REQUEST_MS', so a toContain on it was
+      // vacuous — it could not fail while the line above passed, and dropping
+      // the override entirely went undetected.
+      expect(indexSource).toMatch(/process\.env\.SLOW_REQUEST_MS/);
+    });
+  });
+
   describe('no dead imports in index.js', () => {
     it('does not import from routes/archived/', () => {
       expect(indexSource).not.toContain('routes/archived');

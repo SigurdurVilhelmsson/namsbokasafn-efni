@@ -57,6 +57,7 @@ const rateLimit = require('express-rate-limit');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const { requireAuth } = require('./middleware/requireAuth');
+const { createRequestTimer, DEFAULT_SLOW_REQUEST_MS } = require('./middleware/requestTiming');
 
 // Editorial workflow
 const segmentEditorRoutes = require('./routes/segment-editor');
@@ -169,6 +170,25 @@ const publicSubmitLimiter = rateLimit({
 const publicPath = path.join(__dirname, 'public');
 app.use(express.static(publicPath));
 
+// Request-duration logging (register C23) — mounted HERE, directly after
+// static, on purpose. Everything below it is inside the measured window:
+// cookie parsing, the rate limiter, CORS and body parsing, so the number
+// logged is close to what nginx measures rather than route time alone. A
+// rate-limited 429, which the old inline logger sat behind and so never
+// recorded, is now visible too. Static assets terminate above and are still
+// not logged, which keeps STATIC-ASSET volume where it was — but total volume
+// is strictly higher than before, by exactly the requests that used to be
+// rejected upstream of the old logger (429s, CORS rejections, failed body
+// parses). That is the point: those are the ones that vanished silently.
+app.use(
+  createRequestTimer({
+    logger: log,
+    // The default lives in the middleware, next to the comment explaining why
+    // it is what it is. Repeating the literal here would let the two drift.
+    thresholdMs: Number(process.env.SLOW_REQUEST_MS) || DEFAULT_SLOW_REQUEST_MS,
+  })
+);
+
 // Cookie parser must run before rate limiter so skip() can check auth cookies
 app.use(cookieParser());
 
@@ -215,12 +235,6 @@ app.use(
 );
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
-
-// Request logging
-app.use((req, res, next) => {
-  log.info({ method: req.method, path: req.path }, 'request');
-  next();
-});
 
 // ─── API Routes ─────────────────────────────────────────────────────────────
 
