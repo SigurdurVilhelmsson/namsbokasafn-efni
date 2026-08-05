@@ -1167,6 +1167,50 @@ describe('runGlossaryExport — status file', () => {
     expect(existsSync(statusPath())).toBe(false);
   });
 
+  // ⚠️ PINS writeStatus's try/catch, which was load-bearing and untested
+  // (fix round 2, finding I2 — verified: DELETING the catch left both suites
+  // 115/115 green). The design rule is "reporting must never take down the
+  // signal it reports on", and without the catch an unwritable DETAIL file
+  // becomes an uncaught EACCES that escapes runGlossaryExport — losing the
+  // exit code AND skipping writeHeartbeat, which runs after this write. The
+  // observable result would be /api/health reporting the exporter DEAD within
+  // 6 hours when in truth only its status file was unwritable: a reporting
+  // fault promoted into a liveness alarm, which is exactly backwards.
+  //
+  // The export itself must still land, too — that is the actual work, and it
+  // must not be hostage to the reporting file either.
+  //
+  // ⚠️ Constructed so it CANNOT pass vacuously: the status file is created and
+  // chmod'ed directly rather than by a prior run, so no heartbeat exists yet
+  // when the run starts. Asserting heartbeatExists() therefore proves this run
+  // wrote it. (A prior run would have left one, and the assertion would hold
+  // no matter what this run did.)
+  //
+  // ⚠️ chmod 000 does not restrict root, so this would pass vacuously as root.
+  // Skipped explicitly rather than silently. NOTE: the two pre-existing chmod
+  // tests in this file ('does NOT treat an unreadable existing export as "no
+  // baseline"' and 'an unreadable book does not skip the books after it') have
+  // NO such guard and would go vacuous as root — a pre-existing gap, not
+  // introduced here.
+  it.skipIf(process.getuid?.() === 0)(
+    'an UNWRITABLE status file does not take down the heartbeat it reports on',
+    () => {
+      seedBook('prufubok');
+      mkdirSync(path.join(root, 'pipeline-output'), { recursive: true });
+      writeFileSync(statusPath(), '{}');
+      chmodSync(statusPath(), 0o000);
+      try {
+        expect(heartbeatExists()).toBe(false); // precondition: nothing to inherit
+        const code = run({ exportFn: () => payload(approved(5)) });
+        expect(code).toBe(0);
+        expect(heartbeatExists()).toBe(true);
+        expect(readExport('prufubok').terms).toHaveLength(5); // the real work landed
+      } finally {
+        chmodSync(statusPath(), 0o644);
+      }
+    }
+  );
+
   it('stamps `ran` from the injected clock, not the wall clock', () => {
     // The clock is injectable so the carry-forward tests below can control
     // time. Pinning `ran` too keeps a stray `new Date()` from creeping back
@@ -1305,6 +1349,45 @@ describe('runGlossaryExport — `since`: how long an outcome has persisted (D6)'
     expect(second.books.prufubok.outcome).toBe('refused-shrink'); // same outcome
     expect(second.ran).toBe(new Date(T2).toISOString()); // the run DID happen at T2
     expect(second.books.prufubok.since).toBe(first); // ...but `since` did not move
+  });
+
+  // ⚠️ THE MOST LOAD-BEARING GAP IN THIS TASK, and it was pinned by nothing
+  // (fix round 2, finding I1 — verified: tightening the carry-forward test to
+  // `prev.outcome === entry.outcome && prev.detail === entry.detail` left both
+  // suites 115/115 green, because every other fixture holds `detail` constant
+  // and 'wrote'/'unchanged' carry no `detail` at all).
+  //
+  // WHY IT MATTERS: refused-shrink's detail is `${prevTotal} → ${nextTotal}`,
+  // rebuilt from the DB on every run. Any book whose counts move between runs
+  // — i.e. any book under active editing — would reset `since` every 2 hours
+  // under a detail-inclusive comparison, so no refusal could ever reach 7 days
+  // and the D6 alarm WOULD NEVER FIRE. That is the identical failure shape as
+  // Mutation 1 (silently inert D6), one clause over, and it would be invisible
+  // to every other test here.
+  //
+  // The carry-forward key is the outcome STRING alone: a shrink refusal whose
+  // counts drift 617→3 then 617→4 is the SAME unresolved refusal, and the
+  // clock must keep running through it.
+  it('carries `since` forward when the outcome holds but its `detail` DRIFTS', () => {
+    seedBook('prufubok', JSON.stringify(payload(approved(617))));
+    run({ exportFn: () => payload(approved(3)), nowMs: T1 });
+    const first = readStatus().books.prufubok;
+    expect(first.outcome).toBe('refused-shrink');
+    expect(first.since).toBe(new Date(T1).toISOString());
+
+    run({ exportFn: () => payload(approved(4)), nowMs: T2 });
+    const second = readStatus().books.prufubok;
+
+    expect(second.outcome).toBe('refused-shrink'); // outcome unchanged...
+    // ...but the detail really did move. Without this assertion the test could
+    // pass while exercising nothing — if both runs produced the same detail,
+    // a detail-inclusive comparison would carry `since` forward too and the
+    // mutation would survive.
+    expect(second.detail).not.toBe(first.detail);
+    expect(first.detail).toBe('617 → 3');
+    expect(second.detail).toBe('617 → 4');
+
+    expect(second.since).toBe(new Date(T1).toISOString()); // clock still running
   });
 
   it('RESETS `since` when the outcome changes between runs', () => {
