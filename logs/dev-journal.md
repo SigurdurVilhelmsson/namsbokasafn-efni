@@ -191,3 +191,27 @@ carries the uncommitted #CONTAINED-2026-08-03# edit in scripts/git-backup.sh.
 offbox_backup.age_hours <= 6. `degraded` is now glossary_export alone.
 
 ---
+
+## 2026-08-05 13:21 - C14 ② step 4 shipped: export provenance guard built, merged, deployed; containment lifted
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+7cd0347c Merge pull request #354 from SigurdurVilhelmsson/docs/c14-deploy-status
+f1c4e5a1 docs(register): record the C14 deploy — containment lifted, and why that is safe
+7c53336d Merge pull request #353 from SigurdurVilhelmsson/fix/c14-glossary-export-provenance
+
+**Why:** The 2026-08-03 unattended glossary write happened because the guard measured file SIZE (a producer swap is not a size change) and one exit code collapsed every book's outcome (so a legitimate refusal suppressed the health signal for all). Replaced with a measured producer fingerprint + self-identifying stamp, per-book outcomes, a 7-day refusal deadline (D6), and refusals printed in the deploy readout. **Shipped ≠ switched on:** the export now runs and refuses; no book has been adopted.
+
+**Picking up here — three things:**
+1. **[LEAD] confirm + close a gap.** `curl -s http://localhost:3000/api/health | jq '.checks.glossary_export'` — expect `ok:true` and four refusals once the 2h cron has ticked (`ran:null` still means it has never run). Then delete the empty `books/stjornufraedi/glossary/` on prod: it is the ONLY book in the absent-baseline hole, and adding its `book_subject_mapping` row — the obvious fix for its refusal — is exactly what would let the next tick write it ungated.
+2. **[LEAD] per-book adoption.** Chemistry ≈124 term decisions. Standing positions unchanged: biology *do not write*, organic *decide what its glossary should even be first*, chemistry *a conscious call on 408 terms*.
+3. **[CODE] C19** — `archiver@8` is ESM-only, so the book-download route throws on every call; the covering test settles two lines before the throw, so the suite stayed green. Small, unblocked, editor-facing.
+
+**⚠️ Deploy gotchas learned the hard way (now in [[deploy-infrastructure]]):** prod is `siggi@172.236.212.190:~/repos/namsbokasafn-efni` — in shell history, NOT `~/.ssh/config`. `deploy.sh` runs ON prod and is a TWO-STEP deploy from an agent session: over BatchMode SSH it pulls and installs, then aborts at `sudo systemctl restart` (no TTY), leaving the OLD code running. And a deploy over an uncommitted prod edit is a trap whose both outcomes are silent — capture, remove, deploy, re-apply BY HAND (the saved patch will not re-apply).
+
+**Verification lesson, 13 findings, one species:** every finding across 8 tasks, 2 blind whole-branch reviews and a fix wave was *a check that could not fail* — a number verified against a copy of itself, a test green under correct AND broken behaviour, a gate-order assertion that could not discriminate, a regression guard pinning a broken string, an enumeration asserting its own completeness while correcting a false claim. **None was found by running the suite.** All were found by mutating the code and watching what stayed green.
+
+---
