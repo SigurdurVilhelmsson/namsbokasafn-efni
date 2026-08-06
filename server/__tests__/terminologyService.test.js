@@ -1377,6 +1377,43 @@ describe('findTermsInSegments() — Unicode word boundary', () => {
   });
 });
 
+describe('findTermsInSegments() — deterministic ordering (C24 oracle prerequisite)', () => {
+  it('orders sibling translations of one headword by translation id', () => {
+    // Both approved, both same subject => the ranking comparator returns 0 for every
+    // comparison, so sorted[0] is raw SQL row order. Production is in exactly this
+    // state for 7,096 of 7,402 multi-translation headwords (spec §4.11).
+    const hwId = insertHeadword({ english: 'bond' });
+    const t2 = insertTranslation(hwId, { icelandic: 'efnatengi', status: 'approved' });
+    const t1 = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    addSubject(t2, 'chemistry');
+    addSubject(t1, 'chemistry');
+
+    const res = terminologyService.findTermsInSegments(
+      [{ segmentId: 's', enContent: 'The bond is strong.', isContent: 'Tengið er sterkt.' }],
+      'efnafraedi-2e'
+    );
+    // t2 was inserted first, so it has the lower id and must win under `t.id ASC`.
+    expect(t2).toBeLessThan(t1);
+    expect(res.s.matches[0].translations.map((t) => t.id)).toEqual([t2, t1]);
+    expect(res.s.matches[0].icelandic).toBe('efnatengi');
+  });
+
+  it('returns subject arrays in sorted order', () => {
+    const { trId } = insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['physics', 'biology', 'chemistry'],
+    });
+    expect(trId).toBeGreaterThan(0);
+    const res = terminologyService.findTermsInSegments(
+      [{ segmentId: 's', enContent: 'A molecule forms.', isContent: 'Sameind myndast.' }],
+      'efnafraedi-2e'
+    );
+    expect(res.s.matches[0].subjects).toEqual(['biology', 'chemistry', 'physics']);
+  });
+});
+
 // =====================
 // getBookSubject() / getTranslationReviewQueue() / getReviewQueueCounts() — item 19
 // =====================

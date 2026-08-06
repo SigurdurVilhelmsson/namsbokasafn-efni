@@ -1346,7 +1346,11 @@ function findTermsInSegments(segments, bookSlug = null) {
       LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
       WHERE t.status IN ('approved', 'proposed')
       GROUP BY h.id, t.id
-      ORDER BY LENGTH(h.english) DESC
+      -- C24: three levels must be deterministic or the golden oracle rests on
+      -- unspecified order. h.id breaks equal-length headword ties; t.id breaks
+      -- sibling translations, which share BOTH keys and whose ranking comparator
+      -- returns 0 whenever isPrimary and status match (spec §5.0).
+      ORDER BY LENGTH(h.english) DESC, h.id ASC, t.id ASC
     `
     )
     .all();
@@ -1363,7 +1367,10 @@ function findTermsInSegments(segments, bookSlug = null) {
       });
     }
     const inflections = row.inflections ? JSON.parse(row.inflections) : [];
-    const subjects = row.subjects ? row.subjects.split(',') : [];
+    // GROUP_CONCAT order is unspecified; sort in JS rather than with
+    // GROUP_CONCAT(... ORDER BY ...), which needs SQLite >= 3.44 and would couple
+    // the oracle to the bundled engine version.
+    const subjects = row.subjects ? row.subjects.split(',').sort() : [];
 
     termMap.get(row.headword_id).translations.push({
       id: row.translation_id,
