@@ -1,0 +1,1300 @@
+{
+ "m001:para:fs-id0001": {
+  "matches": [
+   {
+    "headwordId": 316,
+    "english": "atomic mass",
+    "icelandic": "atómmassi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 4,
+    "translations": [
+     {
+      "id": 326,
+      "icelandic": "atómmassi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "type": "missing",
+    "headwordId": 316,
+    "english": "atomic mass",
+    "expected": "atómmassi",
+    "message": "„atomic mass\" → „atómmassi\" fannst ekki"
+   }
+  ]
+ },
+ "m001:para:fs-id0002": {
+  "matches": [
+   {
+    "headwordId": 313,
+    "english": "melting point",
+    "icelandic": "bræðslumark",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 22,
+    "translations": [
+     {
+      "id": 323,
+      "icelandic": "bræðslumark",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 314,
+    "english": "melting",
+    "icelandic": "bráðnun",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 0,
+    "translations": [
+     {
+      "id": 324,
+      "icelandic": "bráðnun",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m001:para:fs-id0003": {
+  "matches": [
+   {
+    "headwordId": 315,
+    "english": "mass",
+    "icelandic": "massi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 0,
+    "translations": [
+     {
+      "id": 325,
+      "icelandic": "massi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "type": "missing",
+    "headwordId": 315,
+    "english": "mass",
+    "expected": "massi",
+    "message": "„mass\" → „massi\" fannst ekki"
+   }
+  ]
+ },
+ "m001:para:fs-id0004": {
+  "matches": [
+   {
+    "headwordId": 307,
+    "english": "catalyst",
+    "icelandic": "hvati",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 2,
+    "translations": [
+     {
+      "id": 313,
+      "icelandic": "hvati",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 314,
+      "icelandic": "efnahvati",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 14,
+    "english": "activation energy",
+    "icelandic": "virkjunarorka",
+    "subjects": [
+     "physics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 22,
+    "translations": [
+     {
+      "id": 14,
+      "icelandic": "virkjunarorka",
+      "subjects": [
+       "physics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m001:para:fs-id0005": {
+  "matches": [
+   {
+    "headwordId": 309,
+    "english": "cell",
+    "icelandic": "rafhlaða",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 4,
+    "translations": [
+     {
+      "id": 318,
+      "icelandic": "rafhlaða",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "type": "missing",
+    "headwordId": 309,
+    "english": "cell",
+    "expected": "rafhlaða",
+    "message": "„cell\" → „rafhlaða\" fannst ekki"
+   }
+  ]
+ },
+ "m001:para:fs-id0006": {
+  "matches": [
+   {
+    "headwordId": 302,
+    "english": "pH",
+    "icelandic": "sýrustig",
+    "subjects": [
+     "biology"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 12,
+    "translations": [
+     {
+      "id": 303,
+      "icelandic": "sýrustig",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     },
+     {
+      "id": 304,
+      "icelandic": "pH",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   },
+   {
+    "headwordId": 301,
+    "english": "W",
+    "icelandic": "vatt",
+    "subjects": [
+     "biology"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 26,
+    "translations": [
+     {
+      "id": 301,
+      "icelandic": "vatt",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     },
+     {
+      "id": 302,
+      "icelandic": "vött",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m001:para:fs-id0007": {
+  "matches": [
+   {
+    "headwordId": 310,
+    "english": "mole",
+    "icelandic": "mól",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 4,
+    "translations": [
+     {
+      "id": 319,
+      "icelandic": "mól",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m001:para:fs-id0008": {
+  "matches": [
+   {
+    "headwordId": 309,
+    "english": "cell",
+    "icelandic": "rafhlaða",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 35,
+    "translations": [
+     {
+      "id": 318,
+      "icelandic": "rafhlaða",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 306,
+    "english": "ATP",
+    "icelandic": "adenosínþrífosfat",
+    "subjects": [
+     "biology"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 0,
+    "translations": [
+     {
+      "id": 311,
+      "icelandic": "adenosínþrífosfat",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     },
+     {
+      "id": 312,
+      "icelandic": "þríyrki",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "type": "missing",
+    "headwordId": 309,
+    "english": "cell",
+    "expected": "rafhlaða",
+    "message": "„cell\" → „rafhlaða\" fannst ekki"
+   }
+  ]
+ },
+ "m001:para:fs-id0009": {
+  "matches": [],
+  "issues": []
+ },
+ "m001:para:fs-id0010": {
+  "matches": [],
+  "issues": []
+ },
+ "m002:para:fs-id0000": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 43,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 1,
+    "english": "absolute zero",
+    "icelandic": "alkul",
+    "subjects": [
+     "biology"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 1,
+      "icelandic": "alkul",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0001": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 48,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 8,
+    "english": "acid-base reaction",
+    "icelandic": "sýru-basa hvarf",
+    "subjects": [
+     "physics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 8,
+      "icelandic": "sýru-basa hvarf",
+      "subjects": [
+       "physics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0002": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 48,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 15,
+    "english": "virkjunarorka (Ea)",
+    "icelandic": "virkjunarorka (Ea)",
+    "subjects": [
+     "biology"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 15,
+      "icelandic": "virkjunarorka (Ea)",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0003": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 38,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 22,
+    "english": "adhesion",
+    "icelandic": "viðloðun",
+    "subjects": [
+     "physics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 22,
+      "icelandic": "viðloðun",
+      "subjects": [
+       "physics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0004": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 50,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 29,
+    "english": "alkaline earth metal",
+    "icelandic": "jarðalkalímálmur",
+    "subjects": [
+     "physics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 29,
+      "icelandic": "jarðalkalímálmur",
+      "subjects": [
+       "physics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0005": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 37,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 36,
+    "english": "analyte",
+    "icelandic": "greiningarefni",
+    "subjects": [
+     "physics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 36,
+      "icelandic": "greiningarefni",
+      "subjects": [
+       "physics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0006": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 46,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 43,
+    "english": "aqueous solution",
+    "icelandic": "vatnslausn",
+    "subjects": [
+     "mathematics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 43,
+      "icelandic": "vatnslausn",
+      "subjects": [
+       "mathematics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0007": {
+  "matches": [
+   {
+    "headwordId": 316,
+    "english": "atomic mass",
+    "icelandic": "atómmassi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 2,
+    "translations": [
+     {
+      "id": 326,
+      "icelandic": "atómmassi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 52,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": [
+   {
+    "type": "missing",
+    "headwordId": 316,
+    "english": "atomic mass",
+    "expected": "atómmassi",
+    "message": "„atomic mass\" → „atómmassi\" fannst ekki"
+   }
+  ]
+ },
+ "m002:para:fs-id0008": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 43,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 57,
+    "english": "atomic symbol",
+    "icelandic": "frumeindatákn",
+    "subjects": [
+     "mathematics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 57,
+      "icelandic": "frumeindatákn",
+      "subjects": [
+       "mathematics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0009": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 47,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 64,
+    "english": "balanced equation",
+    "icelandic": "Stillt jafna",
+    "subjects": [
+     "physics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 64,
+      "icelandic": "Stillt jafna",
+      "subjects": [
+       "physics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0010": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 36,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 71,
+    "english": "beaker",
+    "icelandic": "bikarglas",
+    "subjects": [
+     "mathematics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 71,
+      "icelandic": "bikarglas",
+      "subjects": [
+       "mathematics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0011": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 42,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 78,
+    "english": "biochemistry",
+    "icelandic": "lífefnafræði",
+    "subjects": [
+     "biology"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 78,
+      "icelandic": "lífefnafræði",
+      "subjects": [
+       "biology"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0012": {
+  "matches": [
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 46,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 85,
+    "english": "bomb calorimeter",
+    "icelandic": "sprengikaloríumælir",
+    "subjects": [
+     "mathematics"
+    ],
+    "status": "approved",
+    "isPrimary": false,
+    "isFallback": true,
+    "position": 2,
+    "translations": [
+     {
+      "id": 85,
+      "icelandic": "sprengikaloríumælir",
+      "subjects": [
+       "mathematics"
+      ],
+      "status": "approved",
+      "isPrimary": false,
+      "isFallback": true
+     }
+    ]
+   }
+  ],
+  "issues": []
+ },
+ "m002:para:fs-id0013": {
+  "matches": [
+   {
+    "headwordId": 92,
+    "english": "buffer",
+    "icelandic": "stuðpúði",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 2,
+    "translations": [
+     {
+      "id": 92,
+      "icelandic": "stuðpúði",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   },
+   {
+    "headwordId": 308,
+    "english": "bond",
+    "icelandic": "tengi",
+    "subjects": [
+     "chemistry"
+    ],
+    "status": "approved",
+    "isPrimary": true,
+    "isFallback": false,
+    "position": 36,
+    "translations": [
+     {
+      "id": 315,
+      "icelandic": "tengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     },
+     {
+      "id": 316,
+      "icelandic": "efnatengi",
+      "subjects": [
+       "chemistry"
+      ],
+      "status": "approved",
+      "isPrimary": true,
+      "isFallback": false
+     }
+    ]
+   }
+  ],
+  "issues": []
+ }
+}

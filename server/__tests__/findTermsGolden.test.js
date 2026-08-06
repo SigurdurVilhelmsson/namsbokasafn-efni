@@ -1,5 +1,10 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'fs';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { createTestDb } = require('../__tests__/helpers/terminologyTestDb');
+const terminologyService = require('../services/terminologyService');
 
 const terms = JSON.parse(
   readFileSync(new URL('./fixtures/c24-terms.json', import.meta.url), 'utf-8')
@@ -93,4 +98,78 @@ describe('c24 fixture realism', () => {
     const unmatchable = terms.headwords.filter((h) => !boundaryRegex(h.english).test(h.english));
     expect(unmatchable.map((h) => h.english)).toEqual([]);
   });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE MIGRATION ORACLE.
+//
+// c24-golden.json was captured from the UNMODIFIED matcher at commit c991e2b8 —
+// after the ORDER BY tie-breaks landed, and before any Aho-Corasick code existed.
+// That order is not incidental: capturing it after the swap would certify the new
+// implementation against itself, and there is no observable difference between a
+// correct golden and a worthless one.
+//
+// If this ever needs regenerating, do it from a checkout at the pre-swap commit —
+// never from HEAD. Regenerate with server/scripts/capture-c24-golden.js.
+//
+// `toEqual` against checked-in JSON, deliberately NOT `toMatchSnapshot`: `-u`
+// regenerates a snapshot silently, which is the same failure this file exists to
+// prevent.
+// ─────────────────────────────────────────────────────────────────────────────
+const golden = JSON.parse(
+  readFileSync(new URL('./fixtures/c24-golden.json', import.meta.url), 'utf-8')
+);
+
+function seedFixture(db) {
+  const insHw = db.prepare('INSERT INTO terminology_headwords (english, pos) VALUES (?, ?)');
+  const insTr = db.prepare(
+    `INSERT INTO terminology_translations
+       (headword_id, icelandic, inflections, source, status, proposed_by, proposed_by_name)
+     VALUES (?, ?, ?, 'fixture', ?, 'u1', 'Fixture')`
+  );
+  const insSubj = db.prepare(
+    'INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+  );
+  for (const hw of terms.headwords) {
+    const hwId = Number(insHw.run(hw.english, hw.pos).lastInsertRowid);
+    for (const tr of hw.translations) {
+      const trId = Number(
+        insTr.run(
+          hwId,
+          tr.icelandic,
+          tr.inflections ? JSON.stringify(tr.inflections) : null,
+          tr.status
+        ).lastInsertRowid
+      );
+      for (const s of tr.subjects) insSubj.run(trId, s);
+    }
+  }
+}
+
+describe('findTermsInSegments golden equality (C24 migration oracle)', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    terminologyService._setTestDb(db);
+    seedFixture(db);
+  });
+
+  it('the golden is not vacuous', () => {
+    // A golden of all-empty results would pass forever while proving nothing.
+    // Captured values were 40 matches / 5 issues across 24 segments.
+    const nMatches = Object.values(golden).reduce((n, r) => n + r.matches.length, 0);
+    const nIssues = Object.values(golden).reduce((n, r) => n + r.issues.length, 0);
+    expect(nMatches).toBeGreaterThan(0);
+    expect(nIssues).toBeGreaterThan(0);
+  });
+
+  // One `it` per segment so a diff names the failing case — the pattern at
+  // tools/__tests__/book-rendering-config.test.js.
+  for (const segmentId of Object.keys(golden)) {
+    it(`reproduces the pre-swap result for ${segmentId}`, () => {
+      const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+      expect(actual[segmentId]).toEqual(golden[segmentId]);
+    });
+  }
 });
