@@ -57,6 +57,18 @@ They are **not** re-measured here; they are re-proven by the RED phase of the im
 ⚠️ **Use the `chmod` row, not the unlink row.** Unlink-after-stat crashed 1 run in 6, so a fix
 "verified" against it looks green ~83% of the time on broken code.
 
+**✅ AMENDED 2026-08-06 — the reproducer is SIMPLER than the register's, and this was measured
+first-hand against the unfixed route before any plan was written.** §C20 describes chmod-ing the
+file *after* `.file()`. That timing is unnecessary: **`chmod 000` applied BEFORE the request
+reproduces deterministically**, because permission lives on the file's *content*, not its metadata —
+both `addFilesFromDir`'s `fs.statSync` and archiver's own stat succeed, and only the later `open`
+fails. Measured on `main` `027e338e`, real route handler, `orverufraedi` chapter 99, **3/3**:
+`exit=1`, uncaught `EACCES: permission denied, open …` *"Emitted 'error' event on ZipArchive
+instance"*. **Consequence: the test needs no mid-stream timing and no injectable seam at all.**
+
+**✅ And the "crashing child prints no JSON" warning in §4.4 is now MEASURED, not predicted** — the
+report line was empty in all 3 runs. The parent must key on the exit code.
+
 ### 1.2 The trap that defines the fix
 
 **The obvious one-line fix does not fix this; it converts a crash into a hang. Measured 4/4.**
