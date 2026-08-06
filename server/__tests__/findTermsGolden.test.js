@@ -64,10 +64,14 @@ describe('c24 fixture realism', () => {
   });
 
   it('has segments whose EN actually contains fixture headwords', () => {
-    const words = new Set(terms.headwords.map((h) => h.english.toLowerCase()));
-    const hit = segments.filter((s) =>
-      [...words].some((w) => s.enContent.toLowerCase().includes(w))
-    );
+    // Word-boundary matching, not plain substring — substring matching is the exact bug
+    // class this whole effort exists to catch. It isn't hypothetical here either: with a
+    // plain .includes() check, the headword `os` matched inside `glOSsary`, so the segment
+    // deliberately written to contain NO glossary term ("No glossary term appears in this
+    // sentence at all.") counted as a hit.
+    const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const patterns = terms.headwords.map((h) => new RegExp(`\\b${escapeRegex(h.english)}\\b`, 'i'));
+    const hit = segments.filter((s) => patterns.some((re) => re.test(s.enContent)));
     expect(hit.length).toBeGreaterThanOrEqual(10);
   });
 });

@@ -4267,6 +4267,50 @@
    ]
   },
   {
+   "english": "Hb",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "blóðrauði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "Hb",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "eV",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindarvolt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    },
+    {
+     "icelandic": "eV",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
    "english": "ATP",
    "pos": null,
    "translations": [

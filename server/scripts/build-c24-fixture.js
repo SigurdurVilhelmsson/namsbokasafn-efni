@@ -10,7 +10,7 @@
  *    and the ranking comparator returns 0 — so SQL row order decides. This is why the
  *    ORDER BY carries `t.id ASC`.
  *  - A 72-form inflection list. Production's measured maximum; the 4.16 mean hides it.
- *  - SHORT ABBREVIATION headwords (W, pH, os). Real collisions skew to 1-3 char
+ *  - SHORT ABBREVIATION headwords (W, pH, os, Hb, eV). Real collisions skew to 1-3 char
  *    abbreviations and prefixes, which also generate the most automaton hits per segment
  *    and sort LAST under LENGTH(english) DESC.
  *  - PROPOSED rows. Production has zero, so approved-beats-proposed is otherwise dead.
@@ -59,10 +59,17 @@ for (const r of rows.slice(0, 300)) {
 }
 
 // 2. Within-subject collisions (95.9% of the real shape) — abbreviation-flavoured.
+// Two short (<=2 char) headwords (Hb, eV) added on top of W/pH/os so the "short
+// abbreviation headwords" assertion has margin above its >=3 threshold instead of
+// sitting at exactly 3. Kept off 'chemistry' deliberately — the fallback-heavy ratio
+// assertion (chem/allTr < 0.15) already sits close to its threshold, and adding more
+// chemistry-subject translations would push it the wrong way.
 const withinSubject = [
   ['W', 'biology', ['vatt', 'vött']],
   ['pH', 'biology', ['sýrustig', 'pH']],
   ['os', 'biology', ['bein', 'munnur']],
+  ['Hb', 'biology', ['blóðrauði', 'Hb']],
+  ['eV', 'physics', ['rafeindarvolt', 'eV']],
   ['ATP', 'biology', ['adenosínþrífosfat', 'þríyrki']],
   ['catalyst', 'chemistry', ['hvati', 'efnahvati']],
   ['bond', 'chemistry', ['tengi', 'efnatengi']],
