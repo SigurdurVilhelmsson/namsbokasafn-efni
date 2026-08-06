@@ -453,6 +453,47 @@ Recorded here because several design claims turn on it and a proxy corpus had be
 character and a stray `U+00B8` cedilla in `icelandic`; 22 standalone `´ U+00B4` acute accents in
 `english`. Both smell like mojibake from an import.
 
+### 4.11 Translation-collision census — measured 2026-08-06
+
+Same read-only conditions as §4.10. Run to settle whether competing translations of one headword are
+separated by subject (the tier partition resolves them) or share one (row order decides). **They
+share one, overwhelmingly.**
+
+| | headwords |
+|---|---|
+| >1 in-scope translation | **7,402** |
+| …resolved by differing subject | **306** (4.1%) |
+| …**colliding WITHIN one subject** | **7,096** (95.9%) |
+
+Within-subject collisions per subject — **chemistry's 124 matches the register's "chemistry is 124
+decisions" exactly**, independently confirmed:
+
+| subject | colliding headwords | competing translations |
+|---|---|---|
+| biology | 3,555 | 7,372 |
+| mathematics | 2,237 | 4,564 |
+| physics | 1,399 | 2,946 |
+| **chemistry** | **124** | **253** |
+
+Distribution: 12,671 headwords have 1 translation, 6,502 have 2, 573 have 3, and a tail out to 13.
+
+**Approval provenance — four bulk stamps, no human ever approved a row individually.** Every one of
+the 28,903 rows carries `approved_by_name = "Íðorðabankinn"`, `source = "idordabankinn"`, and one of
+exactly four `approved_at` seconds on **2026-03-25**: chemistry 709 @ 16:18:23 · biology 13,561 @
+16:34:26 · physics 5,496 @ 16:40:02 · mathematics 9,137 @ 16:44:40. (`first_approved ==
+last_approved` per subject.) 20,774 of 28,903 carry an `idordabanki_id`.
+
+**Why this belongs in a C24 spec at all** — C24 changes none of it, but it raises the stakes on
+§5.0's `t.id ASC` from "tidy" to "the golden is otherwise built on arbitrary order for ~35% of all
+production headwords", and it dictates §5.1's fixture shape.
+
+⚠️ **A data-shape finding, logged for §C18 not fixed here.** Several rows hold *comma-separated
+alternatives inside one `icelandic` field* — `"án, ekki, -laus-"`, `"deoxýríbósakjarnsýra, DNA"`,
+`"gulbúsörvandi hormón, millifrumuörvandi hormón"`. `buildInflectionRegex` escapes the whole string
+literally, so such a translation **can never match running text** — it is dead for matching — and if
+it lands at `approvedTranslations[0]` the editor is shown „a-" → „án, ekki, -laus-" fannst ekki.
+Editor-facing nonsense produced by a data shape, not by the matcher. The swap reproduces it exactly.
+
 ---
 
 ## 5. Testing
@@ -468,10 +509,13 @@ character and a stray `U+00B8` cedilla in `icelandic`; 22 standalone `´ U+00B4`
    | **translations within a headword** | **share BOTH sort keys ⇒ completely unordered** | `, t.id ASC` |
    | subject lists | `GROUP_CONCAT(ts.subject)` is unordered | sort after `.split(',')` **in JS** |
 
-   ⚠️ **The translation level is the dangerous one, and it is not hypothetical.** The ranking sort
-   (`:1436-1442`) returns `0` when both `isPrimary` and both `status` match — and per §4.10 **all
-   28,903 production rows are `approved`**, so it returns `0` on essentially every comparison. The
-   sort is stable, so `sorted[0]` **is raw SQL row order**. That decides `matches[].icelandic`,
+   🔴 **The translation level is the dangerous one, and it is MEASURED, not hypothetical.** The
+   ranking sort (`:1436-1442`) returns `0` when both `isPrimary` and both `status` match — and per
+   §4.11, **7,096 of 7,402 multi-translation headwords (95.9%) collide WITHIN a single subject**, so
+   the tier partition cannot separate them, `isPrimary` is equal, and (per §4.10) every row is
+   `approved`. The comparator therefore returns `0` for **~35% of all headwords in production**
+   (7,096 / 20,272). The sort is stable, so `sorted[0]` **is raw SQL row order**. That decides
+   `matches[].icelandic`,
    the `translations[]` array order, `issues[].expected` and `issues[].message` — every one of which
    is captured in the golden. A SQLite or better-sqlite3 bump can then flake the oracle, and the
    natural response — "regenerate the golden" — destroys it silently. Same failure family the
@@ -535,6 +579,17 @@ which is exactly the register's "787 real EN↔IS pairs". That figure was always
    rows** — production has zero, so the `approved`-beats-`proposed` tiebreak is otherwise never
    exercised anywhere (§4.10 consequence 3).
 4. **Seed `book_subject_mapping`** (the helper covers chemistry and biology, `terminologyTestDb.js:80-84`).
+5. 🔴 **Include WITHIN-SUBJECT collisions — they are 95.9% of the real multi-translation population**
+   (§4.11). A fixture whose competing translations always differ by subject would exercise only the
+   4.1% case that the tier partition resolves cleanly, and would leave the ranking sort's
+   *all-comparisons-return-zero* path — the one that actually runs for ~35% of production headwords
+   — pinned by nothing. This is the single most important property of the fixture after the tier
+   skew, and it is why §5.0's `t.id ASC` exists.
+6. **Include a short abbreviation-shaped headword** (`W`, `pH`, `os`, `a-`). Real collisions are
+   disproportionately 1–3 character abbreviations, symbols and prefixes (§4.11), which are also the
+   headwords that generate the most AC hits per segment and sort *last* under
+   `LENGTH(h.english) DESC` — i.e. the ones most often dropped by `consumed`. Both behaviours
+   deserve a pin.
 
 **These are fixture-design decisions, not incidental setup — record them in the generator's header
 comment.** A future reader must be able to tell which properties of the golden are load-bearing and
@@ -655,6 +710,15 @@ warning.
 
 ## 8. Follow-ups to log (not to fix here)
 
+- 🔴 **§C18 / §C14 ② — the within-subject collision census is now measured** (§4.11): 7,096 of 7,402
+  multi-translation headwords collide inside one subject, so nothing but SQL row order chooses what
+  an editor sees for ~35% of production headwords. Per-book editorial cost: **chemistry 124**,
+  physics 1,399, mathematics 2,237, biology 3,555. Colliding terms skew heavily to abbreviations,
+  symbols and prefixes, including genuine homographs (`os` → *bein* | *munnur*). C24 preserves this
+  behaviour exactly; resolving it is the standing per-book work.
+- **Comma-separated alternatives inside a single `icelandic` field** (§4.11) — dead for matching, and
+  editor-facing when they surface as `expected` in a `fannst ekki` message. A data fix, not a code
+  fix.
 - **`mathematics` has 9,137 translations and no `book_subject_mapping` row** (§4.10), so every one is
   permanently `fallback` for every book. Probably intentional from the Íðorðabankinn bulk import, but
   it is a large silent population adjacent to §C14 ②'s unmade per-book adoption decisions.
