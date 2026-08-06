@@ -369,3 +369,155 @@ describe('an overlapped first occurrence is DROPPED, never re-sought later', () 
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// C24 PERFORMANCE PROPERTIES, asserted as COMPILE/BUILD COUNTS — wall-clock is
+// not assertable in CI. Nothing above this line fails if the perf fix is quietly
+// reverted; the golden only checks that MATCH OUTPUT stays byte-identical, and a
+// pre-swap-shaped implementation reproduces it too, just slowly.
+//
+// Two independent mechanisms were removed and each needs its own counter:
+//   1. The per-headword English regex (wholeWordRegex over `english`) — replaced
+//      by one Aho-Corasick automaton pass. Counted via `new RegExp()` calls.
+//   2. Eager inflection-regex construction (buildInflectionRegex per
+//      translation) — replaced by the lazy `isRegex` getter at
+//      terminologyService.js:1447-1460, which compiles only when a match is
+//      found AND an approved translation is actually tested against IS text.
+//      Also counted via `new RegExp()` calls — same counter, different code
+//      path; the two `toBeLessThan` assertions below are what separate them.
+// A THIRD mechanism — the automaton cache itself — compiles zero regexes even
+// when broken (rebuilt every call), so it needs its own, different counter
+// entirely: see the "built once" describe below.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock', () => {
+  it('compiles no per-headword English regex, and only the inflection regexes it executes', () => {
+    const NativeRegExp = global.RegExp;
+    let compiles = 0;
+    global.RegExp = new Proxy(NativeRegExp, {
+      construct(target, args) {
+        compiles++;
+        return new target(...args);
+      },
+    });
+    let actual;
+    try {
+      actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    } finally {
+      global.RegExp = NativeRegExp;
+    }
+
+    // Vacuousness guard for the count that follows: `segments`/`terms` are the
+    // same fixture the golden's own "not vacuous" test already pins at 40
+    // matches, so this is a cheap re-confirmation, not new coverage — but a
+    // near-zero compile count is meaningless without it.
+    const nMatches = Object.values(actual).reduce((n, r) => n + r.matches.length, 0);
+    expect(nMatches).toBeGreaterThan(0);
+
+    const headwordCount = terms.headwords.length;
+    const translationCount = terms.headwords.reduce((n, h) => n + h.translations.length, 0);
+
+    // BOTH sides must be asserted. The automaton removes the ~headwordCount English
+    // compiles; laziness removes the inflection compiles that are never executed. An
+    // assertion covering one side passes on a half-fix — which is exactly the
+    // caching-only outcome that makes saves fast and leaves page loads broken.
+    expect(compiles).toBeLessThan(headwordCount);
+    expect(compiles).toBeLessThan(translationCount);
+  });
+
+  it('the assertion above is CALIBRATED — the fixture is large enough to discriminate', () => {
+    // An uncalibrated threshold passes on a NO-fix. On this fixture the unmodified
+    // function compiled roughly headwordCount + translationCount regexes (325
+    // translation objects, 316 headwords); if the fixture ever shrinks below the
+    // threshold, the assertion silently stops discriminating.
+    const headwordCount = terms.headwords.length;
+    expect(headwordCount).toBeGreaterThan(300);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE AUTOMATON CACHE'S EXISTENCE, pinned directly — compile counts cannot see
+// this class of regression. An automaton rebuilt on every call compiles ZERO
+// extra regexes (buildTermAutomaton never touches RegExp at all; it feeds
+// keyword strings straight to Aho-Corasick), so the describe above passes even
+// if the caching in findTermsInSegments (services/terminologyService.js:1489-
+// 1500) is deleted outright. That is the exact failure a blind-pair review of
+// Task 7 found: mutating the rebuild condition to always rebuild passes the
+// whole 40/40 suite.
+//
+// INSTRUMENTATION CHOICE: `buildTermAutomaton` is destructured by
+// terminologyService.js at require time (`const { buildTermAutomaton } =
+// require('../lib/termAutomaton')`, terminologyService.js:15), so a `vi.spyOn`
+// on termAutomaton's exports object — taken AFTER terminologyService has
+// already loaded, as it has by line 7 of this file — patches a property
+// nothing reads; the destructured local binding already holds the original
+// function value and is immune to later patches on the exports object. This is
+// the same constraint documented at acceptanceApply.test.js:8-13 for
+// `advanceChapterStatus`, and there is no "one level down" property-lookup seam
+// here the way that file found for pipelineStatusService — buildTermAutomaton's
+// own internals (foldString, AhoCorasick) are themselves destructured, so
+// nothing along the chain is spyable via property lookup.
+//
+// The only seam that actually intercepts a destructured call is the module
+// boundary itself, via the real CJS `require.cache` (not a vi.mock/vi.doMock —
+// this file reaches server/ CJS code through `createRequire`, a genuine Node
+// module loader, not vite-node's ESM graph): swap termAutomaton's cached
+// exports for a counting wrapper around the SAME real implementation, force
+// terminologyService to re-evaluate via a fresh require so its destructuring
+// captures the wrapper, then restore both cache slots to the exact original
+// Module objects — never mutate an original Module's `.exports` in place. That
+// distinction matters here: this repo's `server` vitest project runs test files
+// sequentially in a shared worker (`fileParallelism: false` in
+// vitest.workspace.js), so a mutated-in-place original, left un-restored by an
+// early exit, would corrupt the module every later test file in this run sees.
+// Reassigning a substitute object and restoring the saved reference is exact
+// and needs no partial-undo bookkeeping.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('C24 automaton cache: built once per unchanged term set, not once per call', () => {
+  it('builds the automaton exactly once across 3 calls with an unchanged term set', () => {
+    const termAutomatonPath = require.resolve('../lib/termAutomaton');
+    const terminologyServicePath = require.resolve('../services/terminologyService');
+
+    const originalTermAutomatonModule = require.cache[termAutomatonPath];
+    const originalTerminologyServiceModule = require.cache[terminologyServicePath];
+    // Both are guaranteed present: this file's own top-level `require('../services/
+    // terminologyService')` (line 7) already pulled termAutomaton in transitively.
+    expect(originalTermAutomatonModule).toBeDefined();
+    expect(originalTerminologyServiceModule).toBeDefined();
+
+    const realExports = originalTermAutomatonModule.exports;
+    let buildCount = 0;
+    const wrappedExports = {
+      ...realExports,
+      buildTermAutomaton: (...args) => {
+        buildCount++;
+        return realExports.buildTermAutomaton(...args);
+      },
+    };
+
+    // Substitute Module objects, not in-place mutation — restore is then an
+    // exact reference swap.
+    require.cache[termAutomatonPath] = { ...originalTermAutomatonModule, exports: wrappedExports };
+    delete require.cache[terminologyServicePath];
+
+    try {
+      const freshService = require('../services/terminologyService');
+      freshService._setTestDb(db);
+
+      const r1 = freshService.findTermsInSegments(segments, 'efnafraedi-2e');
+      freshService.findTermsInSegments(segments, 'efnafraedi-2e');
+      freshService.findTermsInSegments(segments, 'efnafraedi-2e');
+
+      // Vacuousness guard: buildCount === 1 must mean "the automaton was built
+      // once and reused across 3 real calls that each found matches" — not "the
+      // fresh instance silently ran against an empty result set and it doesn't
+      // matter how many times a no-op ran."
+      const nMatches = Object.values(r1).reduce((n, r) => n + r.matches.length, 0);
+      expect(nMatches).toBeGreaterThan(0);
+
+      expect(buildCount).toBe(1);
+    } finally {
+      require.cache[termAutomatonPath] = originalTermAutomatonModule;
+      require.cache[terminologyServicePath] = originalTerminologyServiceModule;
+    }
+  });
+});
