@@ -85,3 +85,102 @@ describe('isWholeWordAt', () => {
     expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
   });
 });
+
+const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
+
+const build = (pairs) =>
+  buildTermAutomaton(pairs.map(([headwordId, english]) => ({ headwordId, english })));
+
+describe('findFirstOccurrences — THE INVARIANT', () => {
+  it('takes the EARLIEST WHOLE-WORD occurrence, filtering before reducing', () => {
+    // Three occurrences of "mass" (verified against the automaton: 0, 26, 37);
+    // the middle one is interior to "bitmasses".
+    // filter-then-earliest => 0.  last-wins (`>=`, or an unconditional set) => 37.
+    // ⚠️ This text does NOT distinguish earliest-then-filter: its earliest RAW hit is
+    // also 0, so it passes here. The NEXT test is the one that catches that reduction.
+    // The invariant is pinned by the two tests JOINTLY, never by this one alone.
+    const a = build([[1, 'mass']]);
+    const text = 'mass spectrometry uses bitmasses and mass units';
+    expect(findFirstOccurrences(a, text).get(1)).toEqual({ index: 0, length: 4 });
+  });
+
+  it('finds a later occurrence when the FIRST raw hit is not whole-word', () => {
+    const a = build([[1, 'mass']]);
+    const text = 'bitmasses contain mass';
+    expect(findFirstOccurrences(a, text).get(1)).toEqual({ index: 18, length: 4 });
+  });
+
+  it('reports nothing when every occurrence is interior', () => {
+    const a = build([[1, 'mass']]);
+    expect(findFirstOccurrences(a, 'bitmasses and bitmasses').has(1)).toBe(false);
+  });
+
+  it('returns overlapping terms independently — the tiler decides, not the automaton', () => {
+    const a = build([
+      [1, 'atomic mass'],
+      [2, 'mass'],
+    ]);
+    const found = findFirstOccurrences(a, 'The atomic mass unit is defined.');
+    expect(found.get(1)).toEqual({ index: 4, length: 11 });
+    expect(found.get(2)).toEqual({ index: 11, length: 4 });
+  });
+
+  it('is case-insensitive via folding, with offsets into the ORIGINAL string', () => {
+    const a = build([[1, 'mass']]);
+    const text = 'The MASS is large.';
+    expect(findFirstOccurrences(a, text).get(1)).toEqual({ index: 4, length: 4 });
+    expect(text.slice(4, 8)).toBe('MASS');
+  });
+
+  it('gives every headword sharing one english the SAME position', () => {
+    // UNIQUE(english, pos) permits this; production has zero today (spec §4.1.1),
+    // so this is a guard against a schema-permitted state, not observed behaviour.
+    const a = build([
+      [1, 'bond'],
+      [2, 'bond'],
+    ]);
+    const found = findFirstOccurrences(a, 'The bond is strong.');
+    expect(found.get(1)).toEqual({ index: 4, length: 4 });
+    expect(found.get(2)).toEqual({ index: 4, length: 4 });
+  });
+
+  it('matches Icelandic headwords case-insensitively', () => {
+    const a = build([[1, 'þungi']]);
+    expect(findFirstOccurrences(a, 'Þungi hlutarins.').get(1)).toEqual({ index: 0, length: 5 });
+  });
+});
+
+describe('buildTermAutomaton — degenerate input parity with wholeWordRegex', () => {
+  it('EXCLUDES falsy english, which would otherwise match zero-width everywhere', () => {
+    // wholeWordRegex maps falsy to /(?!)/ — matches nothing (terminologyService.js:1886).
+    // The automaton instead returns a zero-width hit at EVERY position.
+    const a = build([
+      [1, ''],
+      [2, 'acid'],
+    ]);
+    const found = findFirstOccurrences(a, 'an acid here');
+    expect(found.has(1)).toBe(false);
+    expect(found.get(2)).toEqual({ index: 3, length: 4 });
+  });
+
+  it('INCLUDES whitespace-only english, which today does match a lone space', () => {
+    // ' ' passes the !english guards at :278/:985/:1074; only :1116 trims, so it must
+    // NOT be dropped at build time the way falsy english is.
+    //
+    // ⚠️ The haystack MUST flank the space with non-word characters. A space between
+    // letters ('a b') is NOT a whole-word match — the \p{L} lookbehind fails on 'a' —
+    // so 'a b' asserts nothing here and makes this test fail. Verified against the real
+    // wholeWordRegex (terminologyService.js:1884): '( )' -> index 1, 'a b' -> no match.
+    const a = build([[1, ' ']]);
+    expect(findFirstOccurrences(a, '( )').get(1)).toEqual({ index: 1, length: 1 });
+  });
+
+  it('handles an empty haystack and an empty term list', () => {
+    expect(findFirstOccurrences(build([[1, 'acid']]), '').size).toBe(0);
+    expect(findFirstOccurrences(build([]), 'acid').size).toBe(0);
+  });
+
+  it('handles a term longer than the haystack', () => {
+    expect(findFirstOccurrences(build([[1, 'acid anhydride']]), 'acid').size).toBe(0);
+  });
+});
