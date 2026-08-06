@@ -587,7 +587,11 @@ function generateReport(results, usageStats) {
   const lines = [];
   const now = new Date().toISOString();
 
-  lines.push('# Málstaður API Marker Survival Report');
+  // ⚠️ The endpoint MUST appear in the report. Without it the title reads as a
+  // claim about "the Málstaður API" in general, and CLAUDE.md carried exactly
+  // that over-generalisation until 2026-08-06 — while /v1/grammar was measured
+  // to CORRUPT the same markers. A survival result is per-endpoint.
+  lines.push('# Málstaður API Marker Survival Report — `POST /v1/translate`');
   lines.push('');
   lines.push(`**Generated:** ${now}`);
   lines.push(`**API Base:** https://api.malstadur.is`);

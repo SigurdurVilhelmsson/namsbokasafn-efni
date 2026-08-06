@@ -458,10 +458,24 @@ These are heuristics you apply with judgment, not hard gates.
 
 ## Inline Marker Format (Bracket Pattern)
 
-Extraction uses API-safe `[[type:content]]` bracket markers (100% Málstaður API survival;
-the legacy paired `{{i}}…{{/i}}` / `++text++` forms had ~2.3% loss and are still parsed for
-backward compat). **The full marker table and the injection back-compat rules are in the
-`inline-markers` skill** (`.claude/skills/inline-markers/SKILL.md`), which loads on demand.
+Extraction uses API-safe `[[type:content]]` bracket markers (the legacy paired
+`{{i}}…{{/i}}` / `++text++` forms had ~2.3% loss and are still parsed for backward compat).
+**The full marker table and the injection back-compat rules are in the `inline-markers`
+skill** (`.claude/skills/inline-markers/SKILL.md`), which loads on demand.
+
+**⚠️ DURABLE — MARKER-SURVIVAL EVIDENCE IS PER-ENDPOINT. Never generalise it to "the API".**
+This line claimed "100% Málstaður API survival" until 2026-08-06. Every check behind that
+result exercises **`/v1/translate`**. Measured on **`/v1/grammar`**, the same markers are
+**corrupted**: `[[i:vatns]]` → `[[i: vatns]]` — the spaced form that parses to an **empty
+list, silently** (see the SEG-marker rule above; the bracket markers share the hazard) — and,
+in a *different* call, `[[xref:kafli|1]]` → `[[xref:kafli>1]]` while `[[i:]]` was untouched.
+The corruption is returned **as an accept-able `diffAnnotation`**, so "accept all" breaks the
+segment. **Any new endpoint, or a new model behind an existing one, must be re-tested before
+sending marker-bearing text through it** — Miðeind's commercial tools carry an LLM layer and
+the model behind them changes. **⚠️ And masking is not "mask everything":** `[[i:]]` wraps
+real prose that the grammar checker needs in order to judge agreement, so it needs
+unwrap-and-rewrap, while `[[xref:]]`/`[[link:]]`/`[[docref:]]` may be opaque tokens. Full
+record → [docs/decisions/2026-08-06-bin-licensing-corrected-and-malstadur-integration.md](docs/decisions/2026-08-06-bin-licensing-corrected-and-malstadur-integration.md).
 
 ## Server Features (Post-Refocus)
 

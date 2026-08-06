@@ -1,7 +1,12 @@
-# Málstaður API Marker Survival Report
+# Málstaður API Marker Survival Report — `POST /v1/translate`
 
 **Generated:** 2026-07-17T09:42:22.843Z
 **API Base:** https://api.malstadur.is
+
+> ⚠️ **SCOPE — added 2026-08-06, not part of the original run.** Every check below exercises
+> **`POST /v1/translate`** only. **This result does NOT transfer to other endpoints:**
+> `/v1/grammar` was measured to *corrupt* these markers (`[[i:vatns]]` → `[[i: vatns]]`, the
+> spaced form that parses to an empty list silently). → CLAUDE.md § *Inline Marker Format*.
 
 ## Summary
 
