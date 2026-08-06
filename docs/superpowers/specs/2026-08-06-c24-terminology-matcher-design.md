@@ -298,13 +298,38 @@ Rejected alternatives, and why (from the invalidation survey):
 **Second connection with `data_version`** remains available as a later optimisation if the
 fingerprint measures too costly, but is not in this design.
 
-⚠️ **Do not expect §3's 6.8 ms.** That figure is the register's *fully cached* AC measurement. This
-design deliberately re-reads and re-parses every row on every call — 28,903 rows including a
-`JSON.parse` per `inflections` blob — buying stale-proofness at a real cost. **The expected per-call
-figure is therefore higher and is unmeasured; measure it on `m68700` and report the number rather
-than shipping an estimate** (§7.2). If it proves unacceptable, the escalation path is caching the
-parsed rows too — which reintroduces the invalidation problem §4.6 exists to avoid, and is a
-decision to bring back to the lead, not to take silently.
+#### Measured cost, 2026-08-06 (20,073 keywords, 282 × ~800-char segments, dev box)
+
+| | measured |
+|---|---|
+| automaton build, cold | **~540 ms** |
+| automaton rebuild (every-approval path) | 286–373 ms |
+| **RSS per resident automaton** | **~85 MB** (87.8 MB random keys / 83.2 MB prefix-shared) |
+| RSS across 3 rebuilds | 180.8 → 181.2 → 181.3 MB — **stable, old automaton GC'd, no leak** |
+| scan, 282 segments (226 KB, 11,943 raw hits) | **133 ms** |
+| scan, 1 segment (save path) | ~0.5 ms |
+
+⚠️ **Do not expect §3's 6.8 ms.** That is the register's *fully cached* figure. The measured scan
+alone is **133 ms — 20× that** — and this design additionally re-reads and re-parses every row on
+every call (28,903 rows, a `JSON.parse` per `inflections` blob, plus the fingerprint hash over
+20,272 strings), none of which is yet measured. **Measure the true per-call total on `m68700` and
+report it** (§7.2). Still ~600× under the 77–100 s outage.
+
+🔴 **This measurement retires "no cache at all" as an option — and the reason is the event loop, not
+speed.** A ~540 ms build is *synchronous*; on prod's smaller box plausibly 1–1.5 s. Building per call
+would reintroduce **1–1.5 s of event-loop blocking per request, ~3 s per module open** — a smaller
+version of the exact outage C24 exists to end. Caching the automaton is therefore load-bearing for
+the *availability* property, not merely a latency optimisation. Cold build ~0.5 s also confirms
+§4.7's "under 1 s with lazy `isRegex`".
+
+⚠️ **~85 MB permanently resident is a real cost on a small Linode running everything**, and it is a
+different *shape* from the pre-fix 1,167 MB peak: that was transient-per-call, this is steady-state.
+A rebuild transiently holds two automata (~170 MB) before the old one is collected. **§7.2 must
+measure RSS on prod, not just latency.**
+
+If the per-call total proves unacceptable, the escalation path is caching the parsed rows too —
+which reintroduces the invalidation problem §4.6 exists to avoid, and is a decision to bring back to
+the lead, not to take silently.
 
 ### 4.7 Lazy `isRegex`
 
@@ -350,6 +375,33 @@ DB's 6 pure-ASCII Icelandic forms hide it entirely.
 Verified by `npm pack` and reading the tarball, **not** from `npm view` — per CLAUDE.md, `npm view
 <pkg> scripts` reports the *source repo's* manifest, not the shipped artifact. **Re-verify at
 install time.**
+
+#### ✅ Behaviour VERIFIED BY EXECUTION, 2026-08-06 (v1.5.2, Node v22.22.2)
+
+Reading a tarball establishes *what ships*, not *what it does*. Every assumption below was run in a
+scratchpad sandbox — repo untouched, nothing installed into `server/`.
+
+| assumption | verified |
+|---|---|
+| entry point | `require('@monyone/aho-corasick')` → `{ AhoCorasick, DynamicAhoCorasick }`; matcher is **`.matchInText(text)`** on the root export. `/fast` and `/greedy` subpaths exist and are **unused** |
+| return shape | `{begin, end, keyword}` — `begin` **inclusive**, `end` **EXCLUSIVE**, `end - begin === keyword.length` |
+| all occurrences | ✅ including proper-suffix overlaps: `['acid','amino acid','mass']` over `"amino acid and acid and bitmass mass"` returns all 5 hits, 0 extras — including the interior `mass@27` that the whole-word filter must reject |
+| indices | **UTF-16 code units**, matching JS string indices even next to astral characters (`'𝐀atom'` → `begin:2`, i.e. `indexOf`, not code-point index) |
+| CJS | ✅ requireable from `"type": "commonjs"` on Node 22; 1 package, 0 deps, 0 vulnerabilities |
+| duplicate keywords | **deduped**, not double-reported — so keyword → `[headwordIds]` gets exactly one position and fans out itself |
+| degenerate input | keyword longer than haystack, empty haystack, empty keyword list → all `[]`, nothing throws or hangs |
+
+`end` being exclusive maps directly onto the existing `matchEnd = matchStart + enMatch[0].length`
+convention (`:1426`) — **no off-by-one adjustment**, which was the most likely silent arithmetic
+error. **UTF-16 indexing means §4.5's code-point boundary guard is sufficient and no index-remapping
+layer is needed.**
+
+🔴 **M4 upgrades from defensive to MANDATORY.** An empty-string keyword matches **zero-width at every
+position**: `['']` over `'ab'` returns 3 hits at `{begin:0,end:0}`, `{1,1}`, `{2,2}`. It degrades
+rather than corrupts — real keywords still match correctly — but the flood is real. The insertion
+step **must** mirror `wholeWordRegex`'s `filter(Boolean)` (`:1878`). And whitespace-only keywords
+were confirmed to **work** (`[' ']` over `'a b  c'` → hits at 1, 3, 4), matching today's regex
+behaviour — so the two opposite answers of §4.8 are both empirically pinned.
 
 MIT into AGPL-3.0 is one-way compatible. It is **exactly one new lockfile entry** in `server/`, zero
 new advisory surface, and no interaction with the five existing `overrides`.
@@ -682,10 +734,12 @@ deployed code.
 0. `npm run docs:generate` after the route deletion, or `docs-check` goes red (§4.9).
 1. Root `npm test` green (run from the repo root — cwd matters).
 2. Local before/after on the real `m68700` (282 segments), reported as a measurement — **including
-   RSS before and after**. ~20,073 folded keywords in a JS trie is plausibly tens of MB resident,
-   rebuilt (old copy left to GC) on every terminology mutation, on a small Linode running everything.
-   The pre-fix peak was **1,167 MB** for one call; a number that big is not automatically fixed by
-   being fast. Report both time and memory or the claim is half-measured.
+   RSS before and after**. Expected from §4.6: ~85 MB resident for the automaton, ~133 ms scan, plus
+   an unmeasured row-read + fingerprint cost. **Report the true per-call total and the RSS, or the
+   claim is half-measured** — the pre-fix peak was 1,167 MB for one call, and a number that big is
+   not automatically fixed by being fast. ⚠️ **Take the RSS reading on PROD too**, not only on the
+   dev box: 85 MB steady-state is a different proposition on a Linode running nginx + node + SQLite
+   than on a workstation, and a rebuild transiently holds two automata.
 3. **Deploy, then read the journal:**
    `journalctl -u ritstjorn | grep '"msg":"request"'` must show `terminology-report` and `terms` in
    **milliseconds** after a real module open.
