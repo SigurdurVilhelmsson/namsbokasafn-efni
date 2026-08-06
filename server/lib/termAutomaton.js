@@ -64,14 +64,24 @@ function findFirstOccurrences(automaton, text) {
     const length = hit.end - hit.begin; // end is EXCLUSIVE (verified against v1.5.2)
     for (const headwordId of automaton.byKeyword.get(hit.keyword)) {
       const existing = first.get(headwordId);
-      // Strictly-less: EARLIEST wins.
-      // Hits arrive END-ascending. For a single keyword the length is constant, so
-      // that is also BEGIN-ascending — this guard is therefore INERT in the common
-      // case, and `<=` is an EQUIVALENT mutant, not the last-wins bug (measured).
-      // It IS load-bearing when one headwordId reaches TWO keywords: 'b' + 'a b c'
-      // over 'a b c' emits begin 2 before begin 0, and strictly-less recovers the 0.
-      // The real last-wins bug is `>=`, or an unconditional set: either answers 37
-      // instead of 0 on the invariant test above.
+      // Strictly-less: EARLIEST wins, and the reduction is INDEPENDENT OF THE ORDER
+      // matchInText emits hits in. That order is END-ascending, so begins can arrive
+      // out of order: keywords 'b' + 'a b c' over 'a b c' emit begin 2 BEFORE begin 0.
+      // Only strictly-less recovers the 0 — pinned by 'recovers the earliest span when
+      // one headword reaches two keywords'.
+      //
+      // ⚠️ Do NOT simplify to `if (existing === undefined)`. That is first-emitted-wins,
+      // not earliest, and it answers 2 instead of 0 on exactly that test.
+      // The last-wins bugs are `>=` and an unconditional set; both answer 37 instead
+      // of 0 on the invariant test above.
+      //
+      // `<=` agrees on every input the CURRENT wiring can produce (one english per
+      // headword => one keyword => constant length => begins ascending), but it is not
+      // unqualifiedly equivalent: on TIED begins the two differ — 'a' + 'a b' over
+      // 'a b' gives {0,1} under `<` and {0,3} under `<=`. Ties need one headword with
+      // two keywords, which this module's contract excludes. (Production's multi-FORM
+      // path — Icelandic inflections — sorts longest-first and would answer {0,3}; it
+      // keeps its regex and does not come through here.)
       if (existing === undefined || hit.begin < existing.index) {
         first.set(headwordId, { index: hit.begin, length });
       }

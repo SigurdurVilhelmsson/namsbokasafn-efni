@@ -148,17 +148,48 @@ describe('findFirstOccurrences — THE INVARIANT', () => {
     const a = build([[1, 'þungi']]);
     expect(findFirstOccurrences(a, 'Þungi hlutarins.').get(1)).toEqual({ index: 0, length: 5 });
   });
+
+  it('applies the boundary to the ORIGINAL text, never the folded copy', () => {
+    // GREEK SMALL LETTER IOTA (U+03B9) folds to U+0345, a COMBINING mark, and
+    // wordBoundary deliberately omits \p{M}. So a neighbour that is \p{L} in the
+    // original becomes a NON-word character once folded: checking the boundary
+    // against foldString(text) would match here, where production does not.
+    // Built from its numeric code point, never a literal — the premise is one exact
+    // code point, and this matches the String.fromCharCode convention used above.
+    const a = build([[1, 'atom']]);
+    const text = String.fromCharCode(0x03b9) + 'atom';
+    expect(findFirstOccurrences(a, text).has(1)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
+  });
+
+  it('recovers the earliest span when one headword reaches two keywords', () => {
+    // matchInText emits hits by END ascending, so 'b' (begin 2) arrives BEFORE
+    // 'a b c' (begin 0). Strictly-less is what recovers the 0 — this is the test
+    // that forbids simplifying the reduce to `if (existing === undefined)`.
+    const a = build([
+      [1, 'b'],
+      [1, 'a b c'],
+    ]);
+    expect(findFirstOccurrences(a, 'a b c').get(1)).toEqual({ index: 0, length: 5 });
+  });
 });
 
 describe('buildTermAutomaton — degenerate input parity with wholeWordRegex', () => {
   it('EXCLUDES falsy english, which would otherwise match zero-width everywhere', () => {
     // wholeWordRegex maps falsy to /(?!)/ — matches nothing (terminologyService.js:1886).
     // The automaton instead returns a zero-width hit at EVERY position.
+    //
+    // ⚠️ The haystack MUST contain a position flanked by two NON-word characters,
+    // hence the parens. In 'an acid here' every one of the 13 zero-width hits is
+    // rejected by the boundary filter anyway, so the term is dropped even without the
+    // build-time guard — the assertion then holds for the wrong reason and deleting
+    // `if (!english) continue` survives. In 'an acid (here)' the zero-width hits at 8
+    // and 14 DO pass the boundary, so the guard is what keeps headword 1 out.
     const a = build([
       [1, ''],
       [2, 'acid'],
     ]);
-    const found = findFirstOccurrences(a, 'an acid here');
+    const found = findFirstOccurrences(a, 'an acid (here)');
     expect(found.has(1)).toBe(false);
     expect(found.get(2)).toEqual({ index: 3, length: 4 });
   });
