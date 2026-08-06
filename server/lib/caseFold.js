@@ -12,6 +12,13 @@
  *     The overrides reconcile them. Verified exhaustively in caseFold.test.js.
  *
  * NEVER use toLocaleLowerCase: "I".toLocaleLowerCase("tr") is "ı" (U+0131).
+ *
+ * The output of foldChar/foldString is a MATCHING KEY, not display or storable text:
+ * canonicalisation picks the lowest code point in each /iu class, which is sometimes a
+ * combining mark or a symbol rather than an ordinary letter — e.g. σ folds to ς (final
+ * sigma), μ folds to µ (the micro sign), and ι folds to U+0345 (a combining mark). Never
+ * render or persist a folded string; only use it to locate a match, then read the
+ * original text at that position.
  */
 const OVERRIDE_PAIRS = require('./caseFold.data');
 

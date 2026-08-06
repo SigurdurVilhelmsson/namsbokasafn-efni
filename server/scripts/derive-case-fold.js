@@ -80,7 +80,19 @@ for (const [from] of overrides) {
 const lines = [...overrides]
   .sort((a, b) => a[0].codePointAt(0) - b[0].codePointAt(0))
   .map(([from, to]) => {
-    const u = (s) => `\\u${s.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}`;
+    // The plain-form escape below is exactly 4 hex digits. A code point above 0xFFFF
+    // needs a 5th hex digit, and JS does not error on the overflow — it silently
+    // reads only the first 4 digits as the escape and treats the 5th as a separate,
+    // literal character glued on afterward. So an astral code point emitted through
+    // the plain form corrupts silently rather than failing loudly. The braced form
+    // (with curly braces around the hex digits) has no digit-count limit and is
+    // required above the BMP; kept the familiar padded plain form at/below it so
+    // today's (all-BMP) output stays byte-identical.
+    const u = (s) => {
+      const cp = s.codePointAt(0);
+      const hex = cp.toString(16).toUpperCase();
+      return cp > 0xffff ? `\\u{${hex}}` : `\\u${hex.padStart(4, '0')}`;
+    };
     return `  ['${u(from)}', '${u(to)}'],`;
   });
 
