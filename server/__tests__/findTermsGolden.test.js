@@ -146,9 +146,11 @@ function seedFixture(db) {
   }
 }
 
-describe('findTermsInSegments golden equality (C24 migration oracle)', () => {
-  let db;
+// Module scope, not describe scope: the automaton-cache describes below point the
+// service at their own throwaway DBs and must restore this one afterwards.
+let db;
 
+describe('findTermsInSegments golden equality (C24 migration oracle)', () => {
   beforeAll(() => {
     db = createTestDb();
     terminologyService._setTestDb(db);
@@ -172,4 +174,81 @@ describe('findTermsInSegments golden equality (C24 migration oracle)', () => {
       expect(actual[segmentId]).toEqual(golden[segmentId]);
     });
   }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// The automaton cache (C24). It is the ONLY cached state, and its fingerprint is
+// computed from rows re-read on every call — so these tests assert that no
+// explicit invalidation is needed. `matches[0]` is never indexed before its
+// length is asserted: a mutant must fail as an ASSERTION, not as a TypeError.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('automaton cache stays consistent with the DB', () => {
+  it('picks up a headword added after the first call, with no explicit invalidation', () => {
+    const db2 = createTestDb();
+    terminologyService._setTestDb(db2);
+
+    const seg = [{ segmentId: 's', enContent: 'A catalyst works.', isContent: 'Hvati virkar.' }];
+    expect(terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches).toHaveLength(0);
+
+    const hw = db2
+      .prepare("INSERT INTO terminology_headwords (english, pos) VALUES ('catalyst', NULL)")
+      .run();
+    const tr = db2
+      .prepare(
+        `INSERT INTO terminology_translations
+           (headword_id, icelandic, source, status, proposed_by, proposed_by_name)
+         VALUES (?, 'hvati', 'fixture', 'approved', 'u1', 'F')`
+      )
+      .run(hw.lastInsertRowid);
+    db2
+      .prepare(
+        "INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, 'chemistry')"
+      )
+      .run(tr.lastInsertRowid);
+
+    const after = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e');
+    expect(after.s.matches).toHaveLength(1);
+    expect(after.s.matches[0].english).toBe('catalyst');
+
+    terminologyService._setTestDb(db);
+    db2.close();
+  });
+
+  it('reflects a headword RENAME, which a count-based fingerprint would miss', () => {
+    const db3 = createTestDb();
+    terminologyService._setTestDb(db3);
+    const seg = [{ segmentId: 's', enContent: 'An aton and an atom.', isContent: '' }];
+
+    const hw = db3
+      .prepare("INSERT INTO terminology_headwords (english, pos) VALUES ('atom', NULL)")
+      .run();
+    const tr = db3
+      .prepare(
+        `INSERT INTO terminology_translations
+           (headword_id, icelandic, source, status, proposed_by, proposed_by_name)
+         VALUES (?, 'frumeind', 'fixture', 'approved', 'u1', 'F')`
+      )
+      .run(hw.lastInsertRowid);
+    db3
+      .prepare(
+        "INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, 'chemistry')"
+      )
+      .run(tr.lastInsertRowid);
+
+    const before = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
+    expect(before).toHaveLength(1);
+    expect(before[0].english).toBe('atom');
+
+    // Same length, same row count — only the bytes change.
+    db3
+      .prepare("UPDATE terminology_headwords SET english='aton' WHERE id=?")
+      .run(hw.lastInsertRowid);
+
+    const renamed = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
+    expect(renamed).toHaveLength(1);
+    expect(renamed[0].english).toBe('aton');
+
+    terminologyService._setTestDb(db);
+    db3.close();
+  });
 });

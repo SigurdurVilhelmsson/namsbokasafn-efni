@@ -12,6 +12,7 @@ const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
 const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
+const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
 
 // Optional dependencies
 let csvParse = null;
@@ -1328,6 +1329,29 @@ function translationTier(subjects, bookSubject) {
  * @param {string|null} bookSlug - Book slug for domain priority
  * @returns {object} Map of segmentId → { matches, issues }
  */
+// C24: the ONLY cached state. It depends solely on the (headword_id, english)
+// pairs, and the fingerprint is computed from rows we re-read on every call — so
+// the DB stays authoritative and staleness is structurally impossible. No
+// invalidation hook to forget, no second connection, no test-mode special case.
+//
+// PRAGMA data_version cannot do this job: all 16 mutators write through the same
+// singleton connection, and data_version is "unchanged for commits made on the
+// same database connection".
+let _automatonCache = null; // { fingerprint: number, automaton }
+
+/** FNV-1a over id + english, in SQL row order. */
+function fingerprintHeadwords(pairs) {
+  let hash = 0x811c9dc5;
+  for (const [id, english] of pairs) {
+    const chunk = `${id} ${english}`;
+    for (let i = 0; i < chunk.length; i++) {
+      hash ^= chunk.charCodeAt(i);
+      hash = Math.imul(hash, 0x01000193) >>> 0;
+    }
+  }
+  return hash;
+}
+
 function findTermsInSegments(segments, bookSlug = null) {
   const db = getDb();
 
@@ -1357,14 +1381,17 @@ function findTermsInSegments(segments, bookSlug = null) {
 
   // Group translations by headword
   const termMap = new Map();
+  const headwordPairs = []; // distinct headwords in SQL order, for the fingerprint
   for (const row of headwords) {
     if (!termMap.has(row.headword_id)) {
+      // No per-headword regex any more — the automaton replaces ~20,073 compiles
+      // per call. `english` is still needed for match output and the fingerprint.
       termMap.set(row.headword_id, {
         headwordId: row.headword_id,
         english: row.english,
-        regex: wholeWordRegex([row.english]),
         translations: [],
       });
+      headwordPairs.push([row.headword_id, row.english]);
     }
     const inflections = row.inflections ? JSON.parse(row.inflections) : [];
     // GROUP_CONCAT order is unspecified; sort in JS rather than with
@@ -1372,16 +1399,34 @@ function findTermsInSegments(segments, bookSlug = null) {
     // the oracle to the bundled engine version.
     const subjects = row.subjects ? row.subjects.split(',').sort() : [];
 
-    termMap.get(row.headword_id).translations.push({
+    const translation = {
       id: row.translation_id,
       icelandic: row.icelandic,
       inflections,
       status: row.status,
       subjects,
       isPrimary: bookSubject ? subjects.includes(bookSubject) : false,
-      // Build regex for icelandic + all inflections
-      isRegex: buildInflectionRegex(row.icelandic, inflections),
+    };
+    // C24: LAZY. buildInflectionRegex is constructed 28,903 times per call and
+    // executed ~313 times. Because this function rebuilds translation objects on
+    // EVERY call, eager construction pays all 28,903 compiles per request — a
+    // correct automaton with an eager isRegex is not a fix at all.
+    // Non-enumerable so it cannot leak into any serialised output.
+    Object.defineProperty(translation, 'isRegex', {
+      configurable: true,
+      enumerable: false,
+      get() {
+        const regex = buildInflectionRegex(this.icelandic, this.inflections);
+        Object.defineProperty(this, 'isRegex', {
+          value: regex,
+          configurable: true,
+          enumerable: false,
+          writable: true,
+        });
+        return regex;
+      },
     });
+    termMap.get(row.headword_id).translations.push(translation);
   }
 
   // Item N → item 18: scope translations to the book's subject, but never hide
@@ -1408,6 +1453,20 @@ function findTermsInSegments(segments, bookSlug = null) {
     ...partitioned.filter((t) => !t.isFallback),
     ...partitioned.filter((t) => t.isFallback),
   ];
+
+  // Rebuild only when the headword set actually changed. Everything else —
+  // translations, inflections, subjects, statuses — is re-read every call.
+  const fingerprint = fingerprintHeadwords(headwordPairs);
+  if (!_automatonCache || _automatonCache.fingerprint !== fingerprint) {
+    _automatonCache = {
+      fingerprint,
+      automaton: buildTermAutomaton(
+        headwordPairs.map(([headwordId, english]) => ({ headwordId, english }))
+      ),
+    };
+  }
+  const automaton = _automatonCache.automaton;
+
   const result = {};
 
   for (const seg of segments) {
@@ -1424,13 +1483,18 @@ function findTermsInSegments(segments, bookSlug = null) {
     // so "melting point" claims its range before "melting" is checked.
     const consumed = []; // [{start, end}]
 
+    // One automaton pass per segment, reduced to the earliest whole-word
+    // occurrence per headword. The loop below is UNCHANGED: `terms` order is the
+    // homograph precedence policy and `consumed` claims spans in exactly that
+    // sequence.
+    const firstByHeadword = findFirstOccurrences(automaton, seg.enContent);
+
     for (const term of terms) {
-      term.regex.lastIndex = 0;
-      const enMatch = term.regex.exec(seg.enContent);
+      const enMatch = firstByHeadword.get(term.headwordId);
 
       if (enMatch) {
         const matchStart = enMatch.index;
-        const matchEnd = matchStart + enMatch[0].length;
+        const matchEnd = matchStart + enMatch.length;
 
         // Skip if this match overlaps with an already-consumed range
         const overlaps = consumed.some((r) => matchStart < r.end && matchEnd > r.start);
@@ -1457,7 +1521,7 @@ function findTermsInSegments(segments, bookSlug = null) {
           status: primary.status,
           isPrimary: primary.isPrimary,
           isFallback: term.isFallback,
-          position: enMatch.index,
+          position: matchStart,
           translations: sorted.map((t) => ({
             id: t.id,
             icelandic: t.icelandic,
