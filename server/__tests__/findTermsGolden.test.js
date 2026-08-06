@@ -376,18 +376,31 @@ describe('an overlapped first occurrence is DROPPED, never re-sought later', () 
 // reverted; the golden only checks that MATCH OUTPUT stays byte-identical, and a
 // pre-swap-shaped implementation reproduces it too, just slowly.
 //
-// Two independent mechanisms were removed and each needs its own counter:
+// Two independent mechanisms were removed, and both retire the SAME `new
+// RegExp()` counter, at different call sites:
 //   1. The per-headword English regex (wholeWordRegex over `english`) — replaced
-//      by one Aho-Corasick automaton pass. Counted via `new RegExp()` calls.
+//      by one Aho-Corasick automaton pass.
 //   2. Eager inflection-regex construction (buildInflectionRegex per
 //      translation) — replaced by the lazy `isRegex` getter at
 //      terminologyService.js:1447-1460, which compiles only when a match is
 //      found AND an approved translation is actually tested against IS text.
-//      Also counted via `new RegExp()` calls — same counter, different code
-//      path; the two `toBeLessThan` assertions below are what separate them.
 // A THIRD mechanism — the automaton cache itself — compiles zero regexes even
 // when broken (rebuilt every call), so it needs its own, different counter
 // entirely: see the "built once" describe below.
+//
+// ⚠️ The count below is asserted EXACT, not as `< headwordCount` / `<
+// translationCount`. An earlier version of this test used those two bounds,
+// on the theory that they cover independent axes. They do not: on this
+// fixture translationCount (326) > headwordCount (316), so the second bound
+// is strictly weaker than the first — there was only ever one binding
+// constraint. Worse, that one constraint has ~29x slack (compiles=11 vs.
+// threshold 316), which a whole-branch review demonstrated is wide enough to
+// hide a real partial regression: reintroducing eager inflection compilation
+// bounded by MATCHED headwords rather than the full corpus (adding
+// `term.translations.forEach((t) => t.isRegex)` after a match) still passes
+// golden equality (43/43) and produces 30 compiles — comfortably under both
+// loose bounds. A bound tied to match count doesn't work either (real=11,
+// mutant=30, both under 40 matches). Only an exact count catches it.
 // ─────────────────────────────────────────────────────────────────────────────
 describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock', () => {
   it('compiles no per-headword English regex, and only the inflection regexes it executes', () => {
@@ -413,22 +426,22 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
     const nMatches = Object.values(actual).reduce((n, r) => n + r.matches.length, 0);
     expect(nMatches).toBeGreaterThan(0);
 
-    const headwordCount = terms.headwords.length;
-    const translationCount = terms.headwords.reduce((n, h) => n + h.translations.length, 0);
-
-    // BOTH sides must be asserted. The automaton removes the ~headwordCount English
-    // compiles; laziness removes the inflection compiles that are never executed. An
-    // assertion covering one side passes on a half-fix — which is exactly the
-    // caching-only outcome that makes saves fast and leaves page loads broken.
-    expect(compiles).toBeLessThan(headwordCount);
-    expect(compiles).toBeLessThan(translationCount);
+    // EXACT, not a loose upper bound — see the block comment above this
+    // describe for why a bound doesn't discriminate a partial regression on
+    // this fixture. Exact is safe here because both the fixture and the golden
+    // it must still reproduce are committed and fixed: if this number ever
+    // changes, either the fixture moved (regenerate deliberately from a
+    // pre-swap checkout, alongside the golden) or laziness/the automaton
+    // regressed. It is not a magic number: measured directly from this
+    // fixture on the fixed implementation, same status as the golden JSON.
+    expect(compiles).toBe(11);
   });
 
   it('the assertion above is CALIBRATED — the fixture is large enough to discriminate', () => {
     // An uncalibrated threshold passes on a NO-fix. On this fixture the unmodified
-    // function compiled roughly headwordCount + translationCount regexes (325
-    // translation objects, 316 headwords); if the fixture ever shrinks below the
-    // threshold, the assertion silently stops discriminating.
+    // (pre-swap) function compiled 642 regexes against a fixed-code count of 11;
+    // if the fixture ever shrinks, that margin — and the exact-count assertion's
+    // ability to catch a partial regression — shrinks with it.
     const headwordCount = terms.headwords.length;
     expect(headwordCount).toBeGreaterThan(300);
   });
