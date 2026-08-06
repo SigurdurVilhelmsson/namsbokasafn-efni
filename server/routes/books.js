@@ -458,6 +458,23 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
     res.setHeader('Content-Disposition', `attachment; filename="${zipName}"`);
 
     const archive = new ZipArchive({ zlib: { level: 9 } });
+
+    // Settles on the FIRST failure of either stream; never resolves on success.
+    //
+    // Without an 'error' listener an archive error KILLS THE PROCESS: archiver's
+    // _modulePipe registers _onModuleError on the module BEFORE finalize()
+    // installs its reject listener, so _onModuleError's `this.emit('error', err)`
+    // throws out of emit and the catch below is never reached. Register §C20.
+    const failure = new Promise((resolve) => {
+      archive.on('error', (err) => resolve({ kind: 'archive', err }));
+      res.on('error', (err) => resolve({ kind: 'response', err }));
+      res.on('close', () => {
+        // `close` follows `finish` on EVERY successful download, so without the
+        // writableFinished guard this would abort a completed archive.
+        if (!res.writableFinished) resolve({ kind: 'disconnect' });
+      });
+    });
+
     archive.pipe(res);
 
     // Helper function to add files matching the expected extension from a directory
@@ -490,7 +507,34 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       }
     }
 
-    await archive.finalize();
+    // ⚠️ RACE, do not `await archive.finalize()` alone — that IS the hang.
+    // Measured 4/4 (register §C20): with an 'error' listener attached, the
+    // listener fires and then finalize() NEVER settles (still pending at 3s)
+    // and res is never ended, so the crash becomes an open download that never
+    // completes and never errors, leaking the handler promise and the Archiver.
+    const outcome = await Promise.race([
+      archive.finalize().then(
+        () => null,
+        (err) => ({ kind: 'finalize', err })
+      ),
+      failure,
+    ]);
+
+    if (outcome) {
+      if (outcome.kind === 'disconnect') {
+        archive.abort();
+      } else {
+        log.error(
+          { err: outcome.err, bookId, type, kind: outcome.kind },
+          'Download archive failed mid-stream'
+        );
+      }
+      // destroy(), NOT end(): the response is chunked (no Content-Length), so
+      // destroying leaves the framing unterminated and the browser reports a
+      // FAILED download. Ending cleanly would hand the editor a truncated .zip
+      // that opens and is silently missing files. Spec D1.
+      res.destroy();
+    }
   } catch (err) {
     log.error({ err }, 'Download error');
     if (!res.headersSent) {
