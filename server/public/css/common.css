@@ -50,7 +50,7 @@
   /* Text */
   --text-primary:   #e8e4df;
   --text-secondary: #9a958e;
-  --text-muted:     #6b665f;
+  --text-muted:     #8c8780;  /* WCAG AA: 4.5:1 on --bg-surface (was #6b665f, 2.83:1) */
 
   /* Accent — geothermal copper */
   --accent:         #c87941;
@@ -166,19 +166,19 @@
 
   --text-primary:   #2a2520;
   --text-secondary: #6b635a;
-  --text-muted:     #9a938a;
+  --text-muted:     #736c63;  /* WCAG AA: 4.5:1 on --bg-base (was #9a938a, 2.68:1) */
 
-  --accent:        #a85e2d;
+  --accent:        #a05625;  /* WCAG AA: 4.5:1 on --accent-subtle (was #a85e2d, 4.04:1) */
   --accent-hover:  #c87941;
   --accent-subtle: rgba(168,94,45,0.10);
 
-  --success:        #3d7a50;
+  --success:        #38754b;  /* WCAG AA: 4.5:1 on --success-subtle (was #3d7a50, 4.24:1) */
   --success-subtle: rgba(61,122,80,0.10);
-  --warning:        #9a7520;
+  --warning:        #85600b;  /* WCAG AA: 4.5:1 on --warning-subtle (was #9a7520, 3.36:1) */
   --warning-subtle: rgba(154,117,32,0.10);
   --error:          #943838;
   --error-subtle:   rgba(148,56,56,0.10);
-  --info:           #3d7590;
+  --info:           #346c87;  /* WCAG AA: 4.5:1 on --info-subtle (was #3d7590, 3.96:1) */
   --info-subtle:    rgba(61,117,144,0.10);
 
   /* Remap aliases for light mode */
@@ -229,19 +229,19 @@
 
     --text-primary:   #2a2520;
     --text-secondary: #6b635a;
-    --text-muted:     #9a938a;
+    --text-muted:     #736c63;  /* WCAG AA: 4.5:1 on --bg-base (was #9a938a, 2.68:1) */
 
-    --accent:        #a85e2d;
+    --accent:        #a05625;  /* WCAG AA: 4.5:1 on --accent-subtle (was #a85e2d, 4.04:1) */
     --accent-hover:  #c87941;
     --accent-subtle: rgba(168,94,45,0.10);
 
-    --success:        #3d7a50;
+    --success:        #38754b;  /* WCAG AA: 4.5:1 on --success-subtle (was #3d7a50, 4.24:1) */
     --success-subtle: rgba(61,122,80,0.10);
-    --warning:        #9a7520;
+    --warning:        #85600b;  /* WCAG AA: 4.5:1 on --warning-subtle (was #9a7520, 3.36:1) */
     --warning-subtle: rgba(154,117,32,0.10);
     --error:          #943838;
     --error-subtle:   rgba(148,56,56,0.10);
-    --info:           #3d7590;
+    --info:           #346c87;  /* WCAG AA: 4.5:1 on --info-subtle (was #3d7590, 3.96:1) */
     --info-subtle:    rgba(61,117,144,0.10);
 
     --primary:       var(--accent);
