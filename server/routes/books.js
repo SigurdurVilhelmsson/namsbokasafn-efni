@@ -461,10 +461,20 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     // Settles on the FIRST failure of either stream; never resolves on success.
     //
-    // Without an 'error' listener an archive error KILLS THE PROCESS: archiver's
-    // _modulePipe registers _onModuleError on the module BEFORE finalize()
-    // installs its reject listener, so _onModuleError's `this.emit('error', err)`
-    // throws out of emit and the catch below is never reached. Register §C20.
+    // Without an 'error' listener an archive error KILLS THE PROCESS. The error
+    // is emitted ON THE ARCHIVER, by `_moduleAppend`'s append callback
+    // (archiver/lib/core.js:179, reached from `_onQueueTask`) — an async stream
+    // callback, so it is already outside the try/catch below by the time it
+    // fires, and an unhandled 'error' event throws out of emit(). Measured
+    // stack for the chmod-000 reproducer: ZipArchive.emit <- core.js:179 <-
+    // ZipStream.handleStuff.
+    //
+    // ⚠️ NOT via _modulePipe/_onModuleError, which is what §C20 and an earlier
+    // version of this comment claimed: on this path `_onModuleError`
+    // (core.js:318, bound to `_module` at :234) never runs and `_module` emits
+    // no 'error' at all. That is
+    // also exactly why finalize() hangs — its promise settles only on
+    // `_module`'s 'end'/'error', neither of which ever arrives. Register §C20.
     const failure = new Promise((resolve) => {
       archive.on('error', (err) => resolve({ kind: 'archive', err }));
       res.on('error', (err) => resolve({ kind: 'response', err }));
@@ -553,8 +563,17 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       archive.abort();
       // destroy(), NOT end(): the response is chunked (no Content-Length), so
       // destroying leaves the framing unterminated and the browser reports a
-      // FAILED download. Ending cleanly would hand the editor a truncated .zip
-      // that opens and is silently missing files. Spec D1.
+      // FAILED download. Ending cleanly would make the HTTP transfer look
+      // successful, so the browser saves a file no zip reader will open. D1.
+      //
+      // ⚠️ The rationale here used to say a cleanly-ended response hands the
+      // editor a zip "that opens and is silently missing files". Measured
+      // false: a stream ended mid-archive has no end-of-central-directory
+      // record, so `unzip -t` reports "cannot find zipfile directory" and
+      // Python's zipfile raises BadZipFile. The DECISION (destroy, not end) is
+      // unchanged and is if anything better supported — a saved file that
+      // cannot be opened is still worse than a transfer the browser flags as
+      // failed, because only the latter tells the editor to retry.
       res.destroy();
     }
   } catch (err) {

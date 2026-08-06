@@ -242,8 +242,19 @@ therefore treat "no JSON" as a failure attributable to the exit code, not as an 
 missing field, or the pre-fix RED will be reported as the wrong defect.
 
 **T2 — client disconnect (in-process, safe).** Emit `close` on `res` before finish; assert the
-handler settles and `archive.abort()` ran. No error is emitted on this path, so it cannot take the
-worker down.
+handler settles **and that it took the failure branch** (`res.destroyed`). No error is emitted on
+this path, so it cannot take the worker down.
+
+> **✅ CORRECTED 2026-08-06 — this paragraph promised more than the test delivered, twice over.**
+> It said T2 asserts "`archive.abort()` ran". As implemented it asserted only that the handler
+> *settles*, which is **vacuous** (see §4.5 row 4), and after strengthening it asserts
+> `res.destroyed` — which is **still not** `abort()`, because `res.destroy()` runs on every failure
+> kind. **`archive.abort()` was pinned by nothing at all** until the adversarial review caught it.
+> ⚠️ And T2 *cannot* be the test that pins it: its `PassThrough` reports `destroyed=false` when it
+> emits `close`, where a real `http.ServerResponse` reports **`true` on both the success and the
+> abort path** — so the double is unfaithful on precisely the flag the handler branches on. The
+> abort assertion lives in the **real-socket tests** (`describe('… real sockets (C20)')`), which are
+> the only harness that can see it.
 
 **T3 — the happy path still works.** The existing C19 ZIP central-directory test must stay green
 unchanged; the race must not alter success behaviour.
@@ -287,9 +298,25 @@ every existing observer has settled on `end` with complete, correct bytes.
 **So "no test went red" meant the suite was blind, not that the code was inert** — and the
 disposition this section prescribed for that outcome (downgrade the comment to "defensive") would
 have written a false claim into the source. A fourth test was added instead: *"does not abort or
-destroy on a fully successful download"*, which spies `Archiver.prototype.abort` (note: `abort` is
-**not** on `ZipArchive.prototype` — spying there misses it) and asserts the success path never takes
+destroy on a fully successful download"*, which spies `Archiver.prototype.abort` (note: `abort` is an own property of
+`Archiver.prototype`, not `ZipArchive.prototype` — patch it there. ⚠️ An earlier draft added "spying
+on `ZipArchive.prototype` misses it"; that is **false**, assignment/`spyOn` there installs an own
+shadowing property that instance calls resolve to first) and asserts the success path never takes
 the failure branch. It is green on correct code and red under row 5.
+
+**✅ TWO MORE ROWS ADDED 2026-08-06 after the whole-branch adversarial review, which found three
+further mutations that left the entire suite green.** The table above was complete for the code as
+first written; it was not complete for the code as it should have been.
+
+| # | Mutation | Measured red | Only caught by |
+|---|---|---|---|
+| 6 | delete `archive.abort()` | both real-socket tests | the real-socket tests — `res.destroy()` runs on every failure kind, so `res.destroyed` cannot see it |
+| 7 | `!res.writableFinished` → `!res.destroyed` | real-socket disconnect test | the real-socket tests — a `PassThrough` reports `destroyed=false` at `close`, a real `ServerResponse` reports **`true` on both paths** |
+
+⚠️ **Row 7 is the structural lesson of the review: the test doubles were unfaithful on exactly the
+property the handler branches on.** Everything else about the `PassThrough` was faithful enough,
+which is why it went unnoticed. **When a double stands in for a platform object, check it against
+the real object on the specific property your code reads** — not in general.
 
 ⚠️ **Generalises beyond C20:** an unfalsifiable mutation row is not evidence that the mutated line is
 optional. Distinguish *"the change has no effect"* from *"no check can observe the effect"* by

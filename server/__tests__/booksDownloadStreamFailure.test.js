@@ -103,8 +103,13 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
     });
 
     // Pre-fix: exit 1 with an uncaught EACCES and NO report line at all.
-    expect(result.killed).toBe(false); // the hang: timeout would kill it
     expect(result.code).toBe(0);
+    // Backstop only. ⚠️ The hang does NOT present as a timeout here: measured
+    // 4/4, the error-listener-only mutation exits 0 in ~400ms printing nothing,
+    // because this harness has no listening socket holding the event loop open
+    // (production does, which is why it hangs there). What actually catches the
+    // hang is the REPORT line being absent, asserted below.
+    expect(result.killed).toBe(false);
 
     const line = result.stdout.split('\n').find((l) => l.startsWith('REPORT:'));
     expect(
@@ -112,10 +117,12 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
       `child printed no REPORT line; stdout=${JSON.stringify(result.stdout)}`
     ).toBeTruthy();
 
+    // ⚠️ The child hardcodes `settled: true`, so asserting it would be a
+    // tautology. The handler having settled is proven by the line EXISTING at
+    // all — the child only prints it from the handler promise's then/catch.
     const report = JSON.parse(line.slice('REPORT:'.length));
-    expect(report.settled).toBe(true);
     expect(report.destroyed).toBe(true); // fail visibly (spec D1)
-    expect(report.finished).toBe(false); // never ended cleanly with a truncated zip
+    expect(report.finished).toBe(false); // did not end cleanly on a failure
   }, 15000);
 
   it('aborts the archive and settles when the client disconnects', async () => {
@@ -149,7 +156,8 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
     // straight through from `new ZipArchive` to `addFilesFromDir` with no
     // await, so the listeners are already registered once handler() has
     // returned its promise. Deferring it would race finalize() and make the
-    // outcome depend on how long compressing 11 files happens to take.
+    // outcome depend on how long compressing the chapter happens to take
+    // (10 .html files; the dir also holds an `images/` subdir, which is skipped).
     res.emit('close');
 
     await expect(
@@ -190,9 +198,13 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
       .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
       .route.stack.at(-1).handle;
 
-    // `abort` lives on Archiver.prototype, one level above ZipArchive.prototype
-    // — spying on ZipArchive.prototype directly would silently miss it. Same
-    // CommonJS module instance the route uses (both resolve server/node_modules).
+    // `abort` lives on Archiver.prototype, one level above ZipArchive.prototype,
+    // so patch it there. ⚠️ An earlier version of this comment added "spying on
+    // ZipArchive.prototype would silently miss it" — that is FALSE: assigning
+    // to ZipArchive.prototype.abort installs an own property that SHADOWS the
+    // parent, and instance calls resolve to it first (verified). The prototype
+    // fact is true; the consequence drawn from it was not. Same CommonJS module
+    // instance the route uses (both resolve server/node_modules).
     const { ZipArchive } = require('archiver');
     const archiverProto = Object.getPrototypeOf(ZipArchive.prototype);
     const realAbort = archiverProto.abort;
