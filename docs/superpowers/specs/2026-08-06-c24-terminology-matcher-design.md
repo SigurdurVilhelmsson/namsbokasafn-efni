@@ -129,6 +129,32 @@ it doesn't overlap" — is an *improvement* that silently breaks byte-identity:
 it**: `server/__tests__/terminologyService.test.js:881` places the short term *first*, so the
 divergent ordering is untested. Hence §5.2.
 
+⚠️ **Reduce by "smallest `begin` wins", and filter to whole-word BEFORE reducing.** The
+implementation is a loop over hits maintaining a `Map`, where `<` vs `<=` is the difference between
+"earliest" and "last", and filtering after reducing silently yields a *different position* than
+filtering before. All three variants look correct and none of the existing pins distinguish them.
+Pinned by §5.5.
+
+### 4.1.1 Duplicate English headwords are a correctness invariant, not plumbing
+
+The automaton is keyed by **string**, but the schema is `UNIQUE(english, pos)`
+(`server/migrations/032-terminology-redesign.js:37`) — **not** unique on `english`. The same English
+string legitimately exists as **two headword rows** with different parts of speech, and the SQL
+groups by `h.id, t.id`, so both reach `terms` as independent entries.
+
+Today each has its own regex, each finds the **same** position; the first in `terms` order claims the
+span and the second is dropped by the overlap check. **Reproducing that requires mapping keyword →
+*list* of headword ids, all sharing one position.** A lookup keyed on the string alone would drop
+the siblings *before* the tiler ever sees them — a different result, arrived at earlier.
+
+This is a second reason the §5.0 tie-break matters: two rows with identical `english` have identical
+`LENGTH`, so `h.id ASC` is what makes which-one-wins deterministic.
+
+Measured in the committed corpus: 3,270 distinct English strings, **0 case-insensitive collisions**
+among them — but 1,102 strings appear in more than one book's glossary file. ⚠️ **Whether those land
+as one headword row or several is decided by `pos`, and prod's `terminology_headwords` is
+unmeasured** (§4.4). Treat duplicates as present.
+
 ### 4.2 The outer loop does not move
 
 `terms` is ordered in-scope-before-fallback (`:1400-1403`), and within each group by SQL's
@@ -376,13 +402,28 @@ half-fix** — precisely the ~45 s-save / ~64 s-load half-fix of §3.
 
 ### 5.4 Unicode fold sweep
 
-Exhaustive, not sampled: for every code point, `fold(a) === fold(b)` ⟺ `/^a$/iu.test(b)`. Plus the
-length-stability assertion (only U+0130 is special) and the `Final_Sigma` case (`"ΟΣ"`).
+Exhaustive over code points, **not** over pairs. The naive statement — `fold(a) === fold(b)` ⟺
+`/^a$/iu.test(b)` for all `a, b` — is O(n²) at 1.1 M² pairs and untestable; a test written that way
+times out and gets quietly downgraded to a sample, which is exactly what §4.4 is guarding against.
+
+**The tractable formulation:** for each code point `c`, build the small candidate set
+`{c, toLowerCase(c), toUpperCase(c), overrides(c)}` and assert `fold` agrees with `/iu` on every
+pair *within that set*. O(n), and it is what the survey actually ran to find the 92 disagreeing
+pairs.
+
+Plus the length-stability assertion (only U+0130 is special) and the `Final_Sigma` case (`"ΟΣ"`).
 
 ### 5.5 Regression pins from the audit
 
 - Forms `['mól','mól (m)']` against `mól (m)x` must **not** produce a `fannst ekki` issue (§4.7).
 - The `atomic mass` / `mass` divergence of §4.1 must produce the **current** single-match result.
+- **Three occurrences, middle one non-whole-word** — headword `mass` against
+  `"mass spectrometry uses bitmasses and mass units"`. Correct answer is **position 0**. This is the
+  pin that separates the three plausible reductions of §4.1: filter-then-earliest (correct, 0),
+  earliest-then-filter (picks the `bitmasses` interior hit, then rejects it, losing the match), and
+  last-wins (34). No existing test distinguishes them.
+- **Two headwords sharing one `english`** (differing `pos`) must both receive the same position, and
+  the tiler must award the span to the `terms`-order winner and drop the other — §4.1.1.
 - Existing pins must stay green — `:861`, `:881`, `:1058` (in-scope beats longer fallback **and**
   the missing-term issue survives), `:906`, `:965`, `:981`, `:1335-1378` (Icelandic boundary).
 
