@@ -8,6 +8,18 @@ const segments = JSON.parse(
   readFileSync(new URL('./fixtures/c24-segments.json', import.meta.url), 'utf-8')
 );
 
+// Mirrors production's `wholeWordRegex` (server/services/terminologyService.js) exactly —
+// \p{L}/\p{N} lookarounds, not \b, so this test cannot drift from the code it validates.
+// \b requires a word-character transition at BOTH edges, which is unsatisfiable for any
+// headword that starts or ends in punctuation (16 of 316 headwords end in ')', e.g.
+// "atomic mass unit (amu)" — a \b-anchored pattern fails to match all 16, even against
+// their own literal text, while every threshold in this file stays green). And \w is
+// ASCII-only, so it would silently fail to match Icelandic letters (þ æ ö ...) that
+// appear in the corpus's `english` field (e.g. "virkjunarorka (Ea)").
+const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const boundaryRegex = (text) =>
+  new RegExp(`(?<![\\p{L}\\p{N}_])${escapeRegex(text)}(?![\\p{L}\\p{N}_])`, 'iu');
+
 // The fixture is an ORACLE INPUT. If it loses these properties the golden keeps
 // passing while covering nothing. Each assertion names the production fact it
 // mirrors (spec §4.10 / §4.11).
@@ -69,9 +81,16 @@ describe('c24 fixture realism', () => {
     // plain .includes() check, the headword `os` matched inside `glOSsary`, so the segment
     // deliberately written to contain NO glossary term ("No glossary term appears in this
     // sentence at all.") counted as a hit.
-    const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const patterns = terms.headwords.map((h) => new RegExp(`\\b${escapeRegex(h.english)}\\b`, 'i'));
+    const patterns = terms.headwords.map((h) => boundaryRegex(h.english));
     const hit = segments.filter((s) => patterns.some((re) => re.test(s.enContent)));
     expect(hit.length).toBeGreaterThanOrEqual(10);
+  });
+
+  it('the realism check can actually see every headword, including parenthetical ones', () => {
+    // Guards against a boundary regex that silently cannot match punctuation-bounded
+    // headwords — 16 of them end in ')'. A \b-anchored pattern fails all 16 while
+    // every threshold in this file stays green.
+    const unmatchable = terms.headwords.filter((h) => !boundaryRegex(h.english).test(h.english));
+    expect(unmatchable.map((h) => h.english)).toEqual([]);
   });
 });
