@@ -296,3 +296,85 @@ post-correction; the web version accepts up to 5,000 words and 200 errors. Its l
    a lookup table misses exactly the chemistry compounds this glossary is made of.
 4. **A live BinPackage service** — rejected: ~218 MB resident for an inherently batch job, on a
    box already carrying an event-loop availability item.
+
+---
+
+# ADDENDUM — 2026-08-06 (evening): Miðeind answered the pricing questions
+
+**Status: the cost basis is RESOLVED.** The four questions in § *The LLM layer, and the line it
+moves* were put to Miðeind and answered by the lead. Recorded here as an append; nothing above is
+edited.
+
+## The answers, as given
+
+1. **The fixed subscription does NOT include API access.** API use is priced **per character** and
+   is not part of the subscription.
+2. **The group subscription is ISK 3,000 per seat**, covering fixed-price use of the **web
+   application**. API is billed per character **on top**.
+3. **One API key may be used by many editors.** As group admin the lead creates seats and API
+   keys; usage is billed per character to the group account.
+4. Moot — an API user needs the group account regardless, even for a single user (which is the
+   shape already in use for translations).
+
+## What this resolves, and what it retires
+
+**The subscription-versus-metered comparison was pricing a product this integration cannot use.**
+That framing is now withdrawn. There is no "subscription covers the API" branch to evaluate: the
+API is *always* metered, at the MT rate of **10 ISK / 1,000 characters**.
+
+Consequently:
+
+- **Q3 (is the 1,000,000/month pool shared with translation?) is MOOT.** That pool belongs to the
+  subscription's web-application usage. The API has no included allowance to share.
+- **Q4 (throttle or overflow into billing?) is MOOT as a quota question.** There is no cap to hit;
+  it simply bills. The fail-loud requirement still applies, but to **API errors**, not to quota
+  exhaustion.
+- **The ISK 18,000 / six-months arithmetic is retired** — it was subscription math against a
+  1M/month ceiling that does not exist for the API.
+- **⚠️ The one-key-many-editors question is answered YES, explicitly.** Our server calling a single
+  key on behalf of ~5 editors is the intended shape and breaches nothing. **No seat multiplication
+  applies to API use.** The ISK 3,000/seat cost attaches to web-app seats we are not buying for
+  the server.
+- **No new commercial arrangement is required.** The group account and key already exist and
+  already carry the translation spend; grammar is additional per-character usage on the same
+  account, same host, same `X-API-KEY` scheme.
+
+## The UX decision this unblocks
+
+**Metered ⇒ grammar is an explicit per-segment editor action.** The always-on panel is ruled out —
+not on policy but on billing: a live panel meters every keystroke-adjacent call. This confirms the
+direction the superseded record already argued for, now on a settled basis rather than a guess.
+
+## The real corpus, measured — the earlier figure was the wrong tree
+
+The record's 5.07M-character figure is `02-mt-output`. **A grammar sweep checks
+`03-faithful-translation`**, which is far smaller because most of it does not exist yet.
+
+Measured 2026-08-06, counting `*.is.md` files (the counting unit matters — see CLAUDE.md):
+
+| tree | files | characters | @ 10 ISK/1,000 |
+|---|---|---|---|
+| `03-faithful-translation`, `efnafraedi-2e` | 4 | 66,232 | **~662 ISK** |
+| `03-faithful-translation`, all other books | 0 | 0 | — |
+| `02-mt-output`, all books *(for contrast only)* | — | 4,789,577 | ~47,896 ISK |
+
+**Grammar-checking every faithful translation that exists today costs roughly ISK 662.** The
+budget question was never the obstacle; the obstacle was not knowing whether the API was metered
+at all.
+
+⚠️ Three caveats that keep this an estimate rather than a quote:
+- The metered payload is the **post-mask** text, which differs in length from the source.
+- `03-faithful-translation` grows as editing proceeds — this is a snapshot, not a ceiling.
+- Whether the API meters **codepoints or bytes** is still unverified; Icelandic UTF-8 inflates
+  ~15–20%. Per-segment batching makes this a rounding question rather than a budget one.
+
+## What is still blocking C25 — and it is not cost
+
+The marker-corruption finding stands and is unaffected by any of this: `/v1/grammar` returns
+`[[i:vatns]]` as `[[i: vatns]]`, the spaced form that parses to an **empty list, silently**, and it
+returns the corruption **as an accept-able `diffAnnotation`**. A mask/unmask layer that
+structurally validates and **fails closed per suggestion** is mandatory before any integration —
+and masking is not "mask everything", because `[[i:]]` wraps real prose the checker needs in order
+to judge agreement.
+
+**Cost is resolved. Marker safety is not.**

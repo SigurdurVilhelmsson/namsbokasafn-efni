@@ -1,0 +1,4583 @@
+{
+ "headwords": [
+  {
+   "english": "absolute zero",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "alkul",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "absorbtion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "gleypni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "accuracy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hittni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "achiral",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "óhendinn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "acid",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sýra",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "acid anhydride",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sýruanhýdríð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "acid dissociation constant",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sýrufasti",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "acid-base reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sýru-basa hvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "acidic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "súr",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "acidity",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sýrustig",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "actinide",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "aktiníð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "actinides",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "aktiníðar",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "activated complex",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virkjaður flóki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "activation energy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virkjunarorka",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "virkjunarorka (Ea)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virkjunarorka (Ea)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "activity",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virkni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "activity coefficient",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virknistuðull",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "activity series",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virkniröð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "actual yield",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "raunheimtur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "addition",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "álagning",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "addition funnel",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "dropatrekt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "adhesion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "viðloðun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "adiabatic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvarma",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "adsorb",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "aðsogast",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "aggregate",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þyrpast saman",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "aggregate",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þyrping",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "aggregation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þyrping",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "alkali metal",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "alkalímálmur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "alkaline earth metal",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jarðalkalímálmur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "allowed energy levels",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "leyfð orkuþrep",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "alloy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "melmi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "alpha particle (α particle)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "alfaeind (α-eind)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Amontons’s law",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "lögmál Amontons",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "amorphous solid",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "myndlaust fastefni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "amplitude",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "útslag",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "analyte",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "greiningarefni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "analytical chemistry",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnagreining",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "angular moment quantum number",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hliðarskammtatala",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "anion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "anjón",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "anode",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "anóða",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "antibonding",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "andbindandi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "approximation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "nálgun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "aqueous solution",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "vatnslausn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Arrhenius equation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Arrheniusar-jafna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atmosphere (atm)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "staðalloftþrýstingur (atm)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atom",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "atóm",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atom",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frumeind",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic mass",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "atómmassi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic mass unit",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "atómmassaeining",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic mass unit (amu)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "atómmassaeining (amu)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic model",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frumeindalíkan",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic number",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sætistala",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic number (Z)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sætistala (Z)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic orbital",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frumeindasvigrúm",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic radius",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "atómradíus",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic spectrum",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "litróf frumeindar",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic symbol",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frumeindatákn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "autoionization",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sjálfjónun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "autoionization constant of water",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "klofningsfasti vatns",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "average rate",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "meðalhraði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Avogadro's number",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tala Avogadros",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Avogadro’s law",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "lögmál Avogadros",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Tala Avogadros (NA)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Tala Avogadros (NA)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "balanced equation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Stillt jafna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "band theory",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "borðalíkan",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "barometer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "loftvog",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "base",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "basi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "base anhydride",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "basaanhýdríð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "basic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "basískur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "basicity",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "basastig",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "beaker",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bikarglas",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bent",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "beygður",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bidentate",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvítenntur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bimolecular reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvísameinda efnahvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "binary acid",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvíliða sýra",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "binary compound",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvíliða efnasamband",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "binding energy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bindiorka",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "biochemistry",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "lífefnafræði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "black body radiation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "svarthlutageislun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "block",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "blokk",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "body-centered cubic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "miðjusetinn teningur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "body-centered cubic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "miðlæg teningslaga",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "boiling point",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "suðumark",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "boiling point elevation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "suðumarkshækkun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bomb calorimeter",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sprengikaloríumælir",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bond",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnatengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bond energy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tengjaorka",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bond order",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tengigráða",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Boyle’s law",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "lögmál Boyles",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "brightness",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "ljósstyrkur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Buchner funnel",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Büchner trekt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "buffer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "stuðpúði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "buffer solution",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "stuðpúðalausn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Bunsen burner",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Bunsen brennari",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "buret",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "búretta",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "burette",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "búretta",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Büchner funnel",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Büchner trekt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "calorie (cal)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kalóría (cal)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "calorimeter",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kaloríumælir",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "calorimetry",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kaloríumæling",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "capillary force",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hárpípukraftur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "carbon dioxide",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "koldíoxíð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "carbon monoxide",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kolmónoxíð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "catalysis",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hvötun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "catalyst",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hvati",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cathode",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "katóða",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cathodic protection",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "katóðuvörn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "katjón",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cell potential",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kerspenna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Celsius (°C)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Selsíus (°C)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "centrifuge",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "skilvinda",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chalcogen",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kalkógen",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "change of state",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "fasaskipti",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "charge",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hleðsla",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Charles’s law",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "lögmál Charles",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical bond",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnatengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical change",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnabreyting",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical energy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnaorka",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical equation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnajafna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical equilibrium",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnajafnvægi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical formula",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnaformúla",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical properties",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnaeiginleikar",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical property",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnafræðilegur eiginleiki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnahvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical substance",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hreint efni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical symbol",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnatákn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemical thermodynamics",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnavarmafræði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemiluminescence",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hvarfljómun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chemistry",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnafræði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chiral center",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hendnimiðja",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chirality",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hendni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "chromatography",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "litskiljun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "coefficient",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "stuðull",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cohesion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samloðun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "collision theory",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "árekstrakenningin",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "colloid",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "svif",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "colloidal suspension",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sviflausn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "combustion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bruni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "combustion analysis",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "brunagreining",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "combustion reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "brunahvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "common ion effect",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samjónahrif",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "complete ionic equation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Heildarjónajafna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "complex",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "flóki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "complex bond",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "flókatengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "complex ion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "flókajón",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "compound",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "efnasamband",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "compressibility factor (Z)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samþjappanleikastuðull (Z)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "concentrated",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "óþynnt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "concentrated acid/base",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "megn sýra",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "concentrated base",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "megn basi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "concentration",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "styrkur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "condensation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þétting",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "conductivity",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafleiðni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "configurational diastereomer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "fjölhverfa",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "conformation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "stelling",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "conformer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "stellingarhverfa",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "conical flask",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "keiluflaska",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "conjugate acid",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samoka sýra",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "conjugate base",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samoka basi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "constitutional isomer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "byggingarhverfa",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "coordination compound",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "girðisamband",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "coordination number",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "girðitala",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "corrosion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tæring",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "covalent bond",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samgilt tengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "covalent compound",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "samgilt efnasamband",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "critical point",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "markpunktur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "critical pressure",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "markþrýstingur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "critical temperature",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "markhitastig",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cross section",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þverskurður",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "crucible",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "deigla",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "crucible tongs",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "deiglutöng",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "crystal",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kristall",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "crystalline solid",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kristalkennt fastefni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "rúmsentimetri (cm3 eða cc)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rúmsentimetri (cm3 eða cc)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "rúmmetri (m3)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rúmmetri (m3)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cuvette",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kúvetta",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Dalton’s atomic theory",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Atómkenning Daltons",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Dalton’s law of partial pressures",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "Daltons-lögmálið um hlutþrýsting",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "decomposition reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "niðurbrotsefnahvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "degree of unsaturation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "ómettunarstuðull",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "density",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "eðlismassi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "deposition",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hélun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "deposition",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "útfelling",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "desiccator",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þurrkaskur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "diamagnetic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "mótseglandi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "diastereomer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "víxlhverfa",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "diatomic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvíatóma",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "differential rate law",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "diffrað hraðalögmál",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "diffusion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sveim",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "diffusion rate",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sveimhraði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dilute",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þunnur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dilute",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þynna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dilute solution",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þunn lausn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dilution",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þynning",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dimensional analysis",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "einingagreining",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dipole",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvískaut",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dissociation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "klofnun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dissolved",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "uppleyst",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "distillation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "eiming",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "distillation bridge",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "eimbrú",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "distribution",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "dreifing",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "distribution of speeds",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hraðadreifing",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "doping",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "íbæting",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "double bond",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tvítengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "drying tube",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þurrkrör",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "ductile",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "teygjanlegur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "dynamic equilibrium",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kvikt jafnvægi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "effective nuclear charge",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "virk kjarnhleðsla",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "effusion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "útstreymi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electric charge",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hleðsla",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electric current",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "straumur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electric field",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafsvið",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrical circuit",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafrás",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrical resistance",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "viðnám",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrochemistry",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafefnafræði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrode",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "raftroð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrolysis",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafgreining",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrolyte",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafkleyfi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrolytic cell",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafker",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electromagnetic field",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafsegulsvið",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electromagnetic radiation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafsegulgeislun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electromagnetic wave",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafsegulbylgja",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electromotive force",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "íspenna",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeind",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron affinity",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafsækni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron configuration",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindaskipan",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron density",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindaþéttleiki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron donating group",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindaveitandi hópur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron donating group",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindaveitandi hópur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron microscope",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindasmásjá",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron pair",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindapar",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron releasing group",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindaveitandi hópur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electron withdrawing group",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindatogandi hópur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electronegativity",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafneikvæðni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electrophile",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafsækir",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "electroplating",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafhúðun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "element",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frumefni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "elemental analysis",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frumefnagreining",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "elementary reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "grunnskrefshvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "elementary step",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "grunnskref",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "elimination",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "brottnám",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "emission",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "ljómun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "emission",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "útblástur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "empirical formula",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "reynsluformúla",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "empirical formula mass",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "massi reynsluformúlu",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enantiomer",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "handhverfa",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "end point",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafngildispunktur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "endothermic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "innvermið",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "endothermic process",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "innvermið ferli",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "energy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "orka",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "energy density",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "orkuþéttleiki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "vermi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "vermi (H)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "vermi (H)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy change",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "vermibreyting",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "vermibreyting (ΔH)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "vermibreyting (ΔH)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy of combustion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "brunavermi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy of formation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "myndunarvermi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy of fusion",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bráðnunarvermi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy of sublimation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þurrgufunarvermi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enthalpy of vaporization",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "gufunarvermi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "entropy",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "óreiða",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "enzyme",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "ensím",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "equilibrium",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvægi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "equilibrium concentration",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvægisstyrkur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "equilibrium constant",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvægisfasti",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "jafnvægisfasti (K)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvægisfasti (K)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "equilibrium pressure",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvægisþrýstingur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "equilibrium vapor pressure",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafnvægisgufunarþrýstingur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "equivalence point",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "jafngildispunktur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Erlenmeyer flask",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "keiluflaska",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "exact number",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "nákvæm tala",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "excess",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "umfram-",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "excess",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "umframmagn",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "excess reactant",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "umframhvarfefni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "excited state",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "örvað ástand",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "exothermic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "útvermið",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "exothermic process",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "útvermið ferli",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "expansion work (pressure-volume work)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "þensluvinna (þrýstings-rúmmálsvinna)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "experiment",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tilraun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "extensive property",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "magnbundinn eiginleiki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "face-centered cubic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hliðarsetinn teningur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "face-centered cubic",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hliðlæg teningslaga",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "filter paper",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "síupappír",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "filtration",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "síun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "first law of thermodynamics",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "fyrsta lögmál varmafræðinnar",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "first order reaction",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "fyrsta stigs efnahvarf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "fission",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "kjarnaklofnun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "flame test",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "logapróf",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "fluorescence",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "flúrljómun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "formation constant",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "myndunarfasti",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "formula mass",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "formúlumassi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "fractional crystallization",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hlutkristöllun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "fractional distillation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hluteiming",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "mathematics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "fractional precipitation",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hlutfelling",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "freezing",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "storknun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "freezing point",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frostmark",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "freezing point depression",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "frostmarkslækkun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "frequency",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tíðni",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "frequency factor",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tíðnistuðull",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "tíðnistuðull (A)",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tíðnistuðull (A)",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "W",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "vatt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "vött",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "pH",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "sýrustig",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "pH",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "os",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bein",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "munnur",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "Hb",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "blóðrauði",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "Hb",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "eV",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "rafeindarvolt",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    },
+    {
+     "icelandic": "eV",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "physics"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "ATP",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "adenosínþrífosfat",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "þríyrki",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "catalyst",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "hvati",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    },
+    {
+     "icelandic": "efnahvati",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "bond",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "tengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    },
+    {
+     "icelandic": "efnatengi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "cell",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "fruma",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "biology"
+     ]
+    },
+    {
+     "icelandic": "rafhlaða",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "mole",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "mól",
+     "inflections": [
+      "mól (m)"
+     ],
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "inflection tail term",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "beygingarhali",
+     "inflections": [
+      "beygingarhali0",
+      "beygingarhali1",
+      "beygingarhali2",
+      "beygingarhali3",
+      "beygingarhali4",
+      "beygingarhali5",
+      "beygingarhali6",
+      "beygingarhali7",
+      "beygingarhali8",
+      "beygingarhali9",
+      "beygingarhali10",
+      "beygingarhali11",
+      "beygingarhali12",
+      "beygingarhali13",
+      "beygingarhali14",
+      "beygingarhali15",
+      "beygingarhali16",
+      "beygingarhali17",
+      "beygingarhali18",
+      "beygingarhali19",
+      "beygingarhali20",
+      "beygingarhali21",
+      "beygingarhali22",
+      "beygingarhali23",
+      "beygingarhali24",
+      "beygingarhali25",
+      "beygingarhali26",
+      "beygingarhali27",
+      "beygingarhali28",
+      "beygingarhali29",
+      "beygingarhali30",
+      "beygingarhali31",
+      "beygingarhali32",
+      "beygingarhali33",
+      "beygingarhali34",
+      "beygingarhali35",
+      "beygingarhali36",
+      "beygingarhali37",
+      "beygingarhali38",
+      "beygingarhali39",
+      "beygingarhali40",
+      "beygingarhali41",
+      "beygingarhali42",
+      "beygingarhali43",
+      "beygingarhali44",
+      "beygingarhali45",
+      "beygingarhali46",
+      "beygingarhali47",
+      "beygingarhali48",
+      "beygingarhali49",
+      "beygingarhali50",
+      "beygingarhali51",
+      "beygingarhali52",
+      "beygingarhali53",
+      "beygingarhali54",
+      "beygingarhali55",
+      "beygingarhali56",
+      "beygingarhali57",
+      "beygingarhali58",
+      "beygingarhali59",
+      "beygingarhali60",
+      "beygingarhali61",
+      "beygingarhali62",
+      "beygingarhali63",
+      "beygingarhali64",
+      "beygingarhali65",
+      "beygingarhali66",
+      "beygingarhali67",
+      "beygingarhali68",
+      "beygingarhali69",
+      "beygingarhali70",
+      "beygingarhali71"
+     ],
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "tentative term",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bráðabirgðaorð",
+     "inflections": null,
+     "status": "proposed",
+     "subjects": [
+      "chemistry"
+     ]
+    },
+    {
+     "icelandic": "staðfest orð",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "melting point",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bræðslumark",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "melting",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "bráðnun",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "mass",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "massi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  },
+  {
+   "english": "atomic mass",
+   "pos": null,
+   "translations": [
+    {
+     "icelandic": "atómmassi",
+     "inflections": null,
+     "status": "approved",
+     "subjects": [
+      "chemistry"
+     ]
+    }
+   ]
+  }
+ ]
+}

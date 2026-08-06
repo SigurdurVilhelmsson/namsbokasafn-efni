@@ -12,6 +12,7 @@ const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
 const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
+const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
 
 // Optional dependencies
 let csvParse = null;
@@ -1320,6 +1321,64 @@ function translationTier(subjects, bookSubject) {
   return 'fallback';
 }
 
+// C24: the ONLY cached state. It depends solely on the (headword_id, english)
+// pairs, and the fingerprint is computed from rows we re-read on every call — so
+// the DB stays authoritative: there is no invalidation hook to forget, no second
+// connection, no test-mode special case. Staleness therefore cannot arrive as a
+// missed notification; it would require a HASH COLLISION between two different
+// headword sets. (This comment used to claim staleness was "structurally
+// impossible" — that overstated it. See fingerprintHeadwords for exactly what the
+// encoding does and does not guarantee.)
+//
+// PRAGMA data_version cannot do this job: all 16 mutators write through the same
+// singleton connection, and data_version is "unchanged for commits made on the
+// same database connection".
+let _automatonCache = null; // { fingerprint: number, automaton }
+
+/**
+ * FNV-1a over the (id, english) pairs, in SQL row order.
+ *
+ * ⚠️ The NUL separators are load-bearing, and a SPACE is the WRONG delimiter.
+ * With no separator the concatenation is ambiguous: [[1,'a'],[2,'b']] and
+ * [[1,'a2 b']] both hash the stream "1 a2 b" and collide. A space closes that
+ * family but OPENS a worse one, because a space is legal INSIDE a headword —
+ * [[1,'a'],[2,'b']] and [[1,'a 2 b']] then both hash "1 a 2 b". 732 of the 1117
+ * committed chemistry headwords are multi-word ("melting point", "acid
+ * dissociation constant"), so a space would trade a rare collision family for the
+ * majority case.
+ *
+ * No headword observed so far contains a NUL (checked: the three committed
+ * `glossary-unified.json` exports and the local dev DB) — but nothing
+ * enforces that, and the live `terminology_headwords` table itself is
+ * runtime state in a gitignored DB, not something a grep of this repo can
+ * confirm. A NUL round-trips through better-sqlite3 into `terminology_
+ * headwords.english` intact ('a\0b' stores and reads back as codes
+ * 97,0,98), and upsertHeadword inserts `english` verbatim with no
+ * control-character stripping on any write path. The unambiguous-encoding,
+ * 2^-32-bound claim therefore holds by observation, not by construction —
+ * re-check it if the import surface ever changes.
+ *
+ * ⚠️ The 0x01000193 multiply is also load-bearing: replacing it with 1 degrades
+ * this to an order-blind XOR fold, under which the pure transposition
+ * 'atom' → 'atmo' would NOT invalidate the cache. Pinned by the transposition
+ * test in findTermsGolden.test.js.
+ */
+function fingerprintHeadwords(pairs) {
+  let hash = 0x811c9dc5;
+  for (const [id, english] of pairs) {
+    // `\0` here is the two-character JS escape (backslash, then '0'), which
+    // evaluates to a single U+0000 code unit — not a literal NUL byte in the
+    // source. That's what lets this line survive JSON/heredoc transport
+    // intact; replacing it with a raw NUL byte would be a regression.
+    const chunk = `${id}\0${english}\0`;
+    for (let i = 0; i < chunk.length; i++) {
+      hash ^= chunk.charCodeAt(i);
+      hash = Math.imul(hash, 0x01000193) >>> 0;
+    }
+  }
+  return hash;
+}
+
 /**
  * Find terminology matches in segments.
  * Uses inflection-aware matching and domain priority ranking.
@@ -1346,35 +1405,72 @@ function findTermsInSegments(segments, bookSlug = null) {
       LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
       WHERE t.status IN ('approved', 'proposed')
       GROUP BY h.id, t.id
-      ORDER BY LENGTH(h.english) DESC
+      -- C24: three levels must be deterministic or the golden oracle rests on
+      -- unspecified order. h.id breaks equal-length headword ties; t.id breaks
+      -- sibling translations, which share BOTH keys and whose ranking comparator
+      -- returns 0 whenever isPrimary and status match (spec §5.0).
+      ORDER BY LENGTH(h.english) DESC, h.id ASC, t.id ASC
     `
     )
     .all();
 
   // Group translations by headword
   const termMap = new Map();
+  const headwordPairs = []; // distinct headwords in SQL order, for the fingerprint
   for (const row of headwords) {
     if (!termMap.has(row.headword_id)) {
+      // No per-headword regex any more — the automaton replaces ~20,073 compiles
+      // per call. `english` is still needed for match output and the fingerprint.
       termMap.set(row.headword_id, {
         headwordId: row.headword_id,
         english: row.english,
-        regex: wholeWordRegex([row.english]),
         translations: [],
       });
+      headwordPairs.push([row.headword_id, row.english]);
     }
     const inflections = row.inflections ? JSON.parse(row.inflections) : [];
-    const subjects = row.subjects ? row.subjects.split(',') : [];
+    // GROUP_CONCAT order is unspecified; sort in JS rather than with
+    // GROUP_CONCAT(... ORDER BY ...), which needs SQLite >= 3.44 and would couple
+    // the oracle to the bundled engine version.
+    const subjects = row.subjects ? row.subjects.split(',').sort() : [];
 
-    termMap.get(row.headword_id).translations.push({
+    const translation = {
       id: row.translation_id,
       icelandic: row.icelandic,
       inflections,
       status: row.status,
       subjects,
       isPrimary: bookSubject ? subjects.includes(bookSubject) : false,
-      // Build regex for icelandic + all inflections
-      isRegex: buildInflectionRegex(row.icelandic, inflections),
+    };
+    // C24: LAZY. buildInflectionRegex is constructed 28,903 times per call and
+    // executed ~313 times. Because this function rebuilds translation objects on
+    // EVERY call, eager construction pays all 28,903 compiles per request — a
+    // correct automaton with an eager isRegex is not a fix at all.
+    // Non-enumerable so it cannot leak into any serialised output.
+    //
+    // ⚠️ Because it is non-enumerable, `{...translation}` SILENTLY DROPS isRegex,
+    // and the loss surfaces only at runtime as
+    // `TypeError: Cannot read properties of undefined (reading 'lastIndex')`
+    // at the IS-text check below. Nothing spreads a translation today — the
+    // partition spreads the TERM (`{...term}`), whose own properties are all
+    // enumerable. If you ever spread a translation, copy this descriptor across
+    // (or re-attach the accessor); do not convert it to a plain property, which
+    // would restore the eager-compile cost this lazy accessor exists to avoid.
+    Object.defineProperty(translation, 'isRegex', {
+      configurable: true,
+      enumerable: false,
+      get() {
+        const regex = buildInflectionRegex(this.icelandic, this.inflections);
+        Object.defineProperty(this, 'isRegex', {
+          value: regex,
+          configurable: true,
+          enumerable: false,
+          writable: true,
+        });
+        return regex;
+      },
     });
+    termMap.get(row.headword_id).translations.push(translation);
   }
 
   // Item N → item 18: scope translations to the book's subject, but never hide
@@ -1401,6 +1497,65 @@ function findTermsInSegments(segments, bookSlug = null) {
     ...partitioned.filter((t) => !t.isFallback),
     ...partitioned.filter((t) => t.isFallback),
   ];
+
+  // Rebuild only when the headword set actually changed. Everything else —
+  // translations, inflections, subjects, statuses — is re-read every call.
+  const fingerprint = fingerprintHeadwords(headwordPairs);
+  if (!_automatonCache || _automatonCache.fingerprint !== fingerprint) {
+    // ⚠️ Drop the old automaton BEFORE building the new one. The object literal
+    // below evaluates FULLY — buildTermAutomaton included — before the
+    // assignment happens, so without this line `_automatonCache` still points
+    // at the old trie for the whole build and two automata are live at once.
+    // Nulling first makes the old one collectible *during* the build.
+    //
+    // Safe because this function is fully synchronous — there is no `await`
+    // anywhere in findTermsInSegments, so no concurrent call can observe the
+    // null and rebuild against it. `_automatonCache` is also the only
+    // long-lived retainer: termAutomaton.js holds no module-level state, and
+    // findFirstOccurrences takes the automaton as a parameter without stashing
+    // it. If this function ever becomes async, this line turns into a
+    // correctness bug, not merely a memory optimisation.
+    //
+    // Why it matters: the trigger is ORDINARY EDITORIAL WORK. Any headword add,
+    // remove or rename (proposeMinedTerm, importFromKeyTerms, a glossary
+    // import) followed by a module open changes the fingerprint and rebuilds.
+    // A Node OOM kills the PROCESS, taking every editor down at once — a
+    // failure mode the pre-C24 path did not have. That path was slow; it was
+    // never fatal.
+    //
+    // MEASURED: RSS delta 264–269 MB per call at synthetic production scale
+    //   (20,073 headwords), load-insensitive across three conditions.
+    // NOT MEASURED: how much of that delta is the TRIE versus the per-call
+    //   28,903-row JS object reconstruction and the SQL result set. A separate
+    //   measurement attributed ~400–450 ms of warm latency to that
+    //   reconstruction, so its share is not small. Real production RSS is also
+    //   unmeasured: the synthetic headwords are random strings, which share
+    //   fewer prefixes than real terminology and so plausibly INFLATE the
+    //   trie's node count — the benchmark reads its own figure as an upper
+    //   bound and states it neither confirms nor refutes the spec projection.
+    // INFERRED: only the trie's share doubles transiently.
+    // => There is NO defensible before/after ceiling figure here. Do not derive
+    //    one from the 264–269 MB delta; it is not the trie's number.
+    //
+    // ⚠️ This CORRECTS design §4.6's "a rebuild transiently holds two automata
+    // (~170 MB)". That is 2 × an ~85 MB projection which no measurement has
+    // validated at production scale. The design doc is banner-frozen evidence,
+    // so the correction lives here in the live code rather than being synced
+    // back into it (CLAUDE.md § One source of truth).
+    //
+    // What this does NOT do: it makes the old trie COLLECTIBLE during the
+    // build; it does not guarantee V8 collects it. It lowers the ceiling — it
+    // does not eliminate the doubling.
+    _automatonCache = null;
+    _automatonCache = {
+      fingerprint,
+      automaton: buildTermAutomaton(
+        headwordPairs.map(([headwordId, english]) => ({ headwordId, english }))
+      ),
+    };
+  }
+  const automaton = _automatonCache.automaton;
+
   const result = {};
 
   for (const seg of segments) {
@@ -1417,13 +1572,18 @@ function findTermsInSegments(segments, bookSlug = null) {
     // so "melting point" claims its range before "melting" is checked.
     const consumed = []; // [{start, end}]
 
+    // One automaton pass per segment, reduced to the earliest whole-word
+    // occurrence per headword. The loop below is UNCHANGED: `terms` order is the
+    // homograph precedence policy and `consumed` claims spans in exactly that
+    // sequence.
+    const firstByHeadword = findFirstOccurrences(automaton, seg.enContent);
+
     for (const term of terms) {
-      term.regex.lastIndex = 0;
-      const enMatch = term.regex.exec(seg.enContent);
+      const enMatch = firstByHeadword.get(term.headwordId);
 
       if (enMatch) {
         const matchStart = enMatch.index;
-        const matchEnd = matchStart + enMatch[0].length;
+        const matchEnd = matchStart + enMatch.length;
 
         // Skip if this match overlaps with an already-consumed range
         const overlaps = consumed.some((r) => matchStart < r.end && matchEnd > r.start);
@@ -1450,7 +1610,7 @@ function findTermsInSegments(segments, bookSlug = null) {
           status: primary.status,
           isPrimary: primary.isPrimary,
           isFallback: term.isFallback,
-          position: enMatch.index,
+          position: matchStart,
           translations: sorted.map((t) => ({
             id: t.id,
             icelandic: t.icelandic,
