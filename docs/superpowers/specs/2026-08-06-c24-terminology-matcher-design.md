@@ -63,7 +63,7 @@ Everything else is preserved **byte-for-byte**: `translationTier`, the in-scope/
 | Not in this PR | Why it is adjacent | Where it goes |
 |---|---|---|
 | C7 terminology governance | governance *around* the term store, not the matcher | P2 batch, unchanged |
-| The vacuous `/terms` route test | `server/e2e/terminology-multibook.spec.js:61-74` accepts 404 **or** 500 as a pass | log to register |
+| The vacuous `/terms` route test | `server/e2e/terminology-multibook.spec.js:61-74` accepts 404 **or** 500 as a pass | log to register — ⚠️ but see §4.9: two *behavioural* tests **are** ported onto that route, by an explicit lead exception. Do not let the port drift into rewriting this one. |
 | Coverage for the two untested wrappers | `getSegmentTerminologyWarnings`, `getModuleTerminologyReport` | log to register |
 | C20 archive `error` listener · C22 button gate · C26 audit | separate items | unchanged |
 | Adding Icelandic inflections (BÍN) | `buildInflectionRegex` **is** this hot path; raising stored forms moves the correctness oracle while we rewrite the implementation beneath it | blocked until this lands |
@@ -398,13 +398,25 @@ also removes the handle.
 `server/routes/**` then diffs `docs/_generated/` after `npm run docs:generate`.** Regenerate it in
 the same PR or the gate goes red. Loud, but it is not in §7's checklist otherwise.
 
-⚠️ **What the deletion costs in coverage, stated honestly.** It removes two whole *tests*, not four
-assertions: `server/e2e/terminology.spec.js:746-772` ("detects missing translation") and `:774-799`
-("passes when translation present"). They create a term, approve it, and assert the `missing` issue
-appears / does not — driving `findTermsInSegments` through a real server and a real DB. They are the
-only **integration-level** exercise of the issue path. **The behaviours themselves are already
-unit-pinned** at `terminologyService.test.js:1129-1174`, so what is lost is the real-server path, not
-the behaviour. → decision recorded in §8.
+⚠️ **The deletion removes two whole *tests*, not four assertions** — `server/e2e/terminology.spec.js:746-772`
+("detects missing translation") and `:774-799` ("passes when translation present"). They create a
+term, approve it, and assert the `missing` issue appears / does not, driving `findTermsInSegments`
+through a real server and a real DB. They are the only **integration-level** exercise of the issue
+path. The behaviours themselves are already unit-pinned at `terminologyService.test.js:1129-1174`,
+so what is lost is the real-server path, not the behaviour.
+
+✅ **LEAD DECISION 2026-08-06 — PORT THEM to `GET …/terms`, in this PR.** This is a deliberate,
+narrow exception to the §2 scope fence, and the reason is specific: without it the PR is
+**net-negative on tests for the very function it rewrites**, at the moment of maximum risk.
+Preserving coverage we are deleting is not the same as adding coverage to a new surface.
+
+⚠️ **Porting is not transcription — the shapes differ.** The deleted tests use the legacy
+`content`/`sourceContent` branch (`terminology.js:1119-1132`), a synthetic single segment with
+`segmentId: 'single'`. `GET …/terms` takes a **whole module** off disk and returns `termMatches`.
+The ported tests must seed a term whose English actually occurs in a real fixture module's EN, and
+assert on that module's response. **They must not inherit the sibling's branchless
+`expect([404,500]).toContain(...)` idiom** (`terminology-multibook.spec.js:61-74`) — the failure mode
+this whole item exists to stop. A ported test that accepts a 500 has preserved nothing.
 
 ### 4.10 Production census — measured 2026-08-06
 
@@ -643,11 +655,6 @@ warning.
 
 ## 8. Follow-ups to log (not to fix here)
 
-- ⚖️ **DECISION PENDING — port the two deleted behavioural E2E tests to `GET …/terms`?** §4.9
-  quantifies the cost: the deletion removes the only *integration-level* exercise of the issue path,
-  though the behaviours stay unit-pinned. Porting them (~40 lines) preserves that coverage at the
-  moment of maximum risk, but `/terms` is an adjacent surface the lead fenced off. **Recommended:
-  port.** Not done unilaterally.
 - **`mathematics` has 9,137 translations and no `book_subject_mapping` row** (§4.10), so every one is
   permanently `fallback` for every book. Probably intentional from the Íðorðabankinn bulk import, but
   it is a large silent population adjacent to §C14 ②'s unmade per-book adoption decisions.
