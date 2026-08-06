@@ -201,7 +201,18 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: Vitest (unit) + Playwright (E2E); vitest workspace runs tools in parallel, server sequentially. **No count is recorded here — run `npm test`.** Remediation Units 0–5 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.
+- Test suite: Vitest (unit) + Playwright (E2E). **⚠️ CORRECTED 2026-08-06 — this line
+  used to say "vitest workspace runs tools in parallel, server sequentially". That is
+  false in both halves.** `vitest.workspace.js` **cannot load** under the installed
+  vitest (`SyntaxError: … does not provide an export named 'defineWorkspace'`), so
+  discovery falls to `vitest.config.js`, which sets **`fileParallelism: false`
+  globally** — *nothing* runs in parallel. `vitest.config.js:5`'s own docstring
+  ("Test discovery is handled by vitest.workspace.js") is wrong for the same reason.
+  Two consequences worth knowing: a test that mutates shared module state poisons
+  every **later** file in the run, and the suite is slower than the config claims.
+  **⚠️ And `npm test` is `vitest run` — it does NOT run Playwright.** E2E is
+  `server/`'s `test:e2e`, a **separate CI job**; a green `npm test` is never evidence
+  for an E2E change. **No count is recorded here — run `npm test`.** Remediation Units 0–5 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.
 
 ## Purpose
 
