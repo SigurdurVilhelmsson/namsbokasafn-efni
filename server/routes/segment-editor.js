@@ -435,8 +435,10 @@ router.post(
         description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
       });
 
-      // Live QA (non-blocking): terminology violations + mechanical checks
-      // (number slips, untranslated-EN residue). Advisory — never hard-blocks.
+      // Live QA. NOT non-blocking — the try/catch makes this non-FATAL, not
+      // non-blocking, and there is no await. It runs synchronously on every save.
+      // (Before C24 this cost ~45s; the mislabel is probably why it was never
+      // suspected.)
       let termWarnings = [];
       let qaFindings = [];
       if (!result.reverted && typeof editedContent === 'string' && editedContent) {

@@ -11,6 +11,13 @@ const { loginAs } = require('./helpers/auth');
  * - Multi-book support (chemistry + biology)
  */
 
+const TERMINOLOGY_API = '/api/terminology';
+
+/** Generate a unique string for test isolation (mirrors terminology.spec.js). */
+function uid() {
+  return `e2e-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+}
+
 // ─── Terminology lookup API ──────────────────────────────────
 
 test.describe('Terminology lookup', () => {
@@ -71,6 +78,90 @@ test.describe('Terminology lookup', () => {
       // Accept 404 or 500 if the module files are not on disk in CI
       expect([404, 500]).toContain(response.status());
     }
+  });
+
+  // Ported from terminology.spec.js when POST /check-consistency was deleted (C24).
+  // They were the only INTEGRATION-level exercise of the issue path; the behaviours
+  // stay unit-pinned at terminologyService.test.js:1129-1174, but this keeps a real
+  // server + real DB in the loop for the function C24 rewrites.
+  //
+  // Porting is not transcription — the deleted tests posted a synthetic single
+  // segment (segmentId: 'single') directly to the route. This route loads a real
+  // module off disk instead, so each test here seeds a headword whose English is a
+  // word that actually occurs (whole-word, case-folded) in m68664's real EN text —
+  // "toys" / "ancestors", both from the chapter's opening paragraph — and asserts
+  // on the resulting termMatches for THAT headword, not on the module's incidental
+  // pre-existing matches.
+  //
+  // NOTE these deliberately do NOT use the branchless expect([404,500]) idiom of
+  // the test above. A ported test that accepts a 500 has preserved nothing.
+  test('terms endpoint reports a missing approved translation', async ({ page }) => {
+    const tag = uid();
+    const createRes = await page.request.post(TERMINOLOGY_API, {
+      data: { english: 'toys', icelandic: `leikföng-${tag}` },
+    });
+    expect(createRes.status()).toBe(201);
+    const { term } = await createRes.json();
+    const approveRes = await page.request.post(
+      `${TERMINOLOGY_API}/translations/${term.translations[0].id}/approve`
+    );
+    expect(approveRes.ok()).toBe(true);
+
+    // The real faithful/MT Icelandic text for m68664 cannot contain our
+    // freshly-invented, tag-suffixed translation, so a 'missing' issue for this
+    // headword is guaranteed, not incidental.
+    const response = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/terms');
+    expect(response.status()).toBe(200);
+    const data = await response.json();
+    expect(data).toHaveProperty('termMatches');
+
+    const allIssues = Object.values(data.termMatches).flatMap((r) => r.issues);
+    const relevant = allIssues.find((i) => i.headwordId === term.id);
+    expect(relevant).toBeDefined();
+    expect(relevant.type).toBe('missing');
+    expect(relevant.english).toBe('toys');
+    expect(relevant.expected).toBe(`leikföng-${tag}`);
+    expect(relevant.message).toContain('fannst ekki');
+
+    // Every issue in the module must share this shape, not just ours.
+    for (const issue of allIssues) {
+      expect(issue.type).toBe('missing');
+      expect(typeof issue.english).toBe('string');
+      expect(typeof issue.expected).toBe('string');
+      expect(issue.message).toContain('fannst ekki');
+    }
+  });
+
+  test('terms endpoint returns well-formed matches for every segment', async ({ page }) => {
+    const tag = uid();
+    const createRes = await page.request.post(TERMINOLOGY_API, {
+      data: { english: 'ancestors', icelandic: `forfeður-${tag}` },
+    });
+    expect(createRes.status()).toBe(201);
+    const { term } = await createRes.json();
+    const approveRes = await page.request.post(
+      `${TERMINOLOGY_API}/translations/${term.translations[0].id}/approve`
+    );
+    expect(approveRes.ok()).toBe(true);
+
+    const response = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/terms');
+    expect(response.status()).toBe(200);
+    const data = await response.json();
+
+    const all = Object.values(data.termMatches).flatMap((r) => r.matches);
+    expect(all.length).toBeGreaterThan(0);
+    for (const m of all) {
+      expect(typeof m.headwordId).toBe('number');
+      expect(typeof m.english).toBe('string');
+      expect(typeof m.position).toBe('number');
+      expect(m.position).toBeGreaterThanOrEqual(0);
+      expect(Array.isArray(m.translations)).toBe(true);
+      expect(m.translations.length).toBeGreaterThan(0);
+    }
+    // The aggregate must include OUR seeded headword, not just whatever else
+    // happens to be in the module — otherwise this test could pass even if
+    // "ancestors" never matched at all.
+    expect(all.some((m) => m.headwordId === term.id)).toBe(true);
   });
 });
 

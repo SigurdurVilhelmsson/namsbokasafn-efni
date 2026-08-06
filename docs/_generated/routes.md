@@ -302,7 +302,6 @@
 | POST | `/import/excel` |
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
-| POST | `/check-consistency` |
 
 ## /tm
 

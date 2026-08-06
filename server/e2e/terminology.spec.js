@@ -633,40 +633,6 @@ test.describe('Term mining endpoints', () => {
   });
 });
 
-// ─── Block 8: Consistency check ─────────────────────────────────
-
-test.describe('Terminology consistency check', () => {
-  test.beforeEach(async ({ page }) => {
-    await loginAs(page, 'admin');
-    await page.goto('/editor');
-    await page.waitForLoadState('domcontentloaded');
-  });
-
-  test('valid content returns issues array', async ({ page }) => {
-    const res = await page.request.post(`${API}/check-consistency`, {
-      data: {
-        content: 'Sýrur og basar eru mikilvæg efnafræðileg hugtök.',
-        sourceContent: 'Acids and bases are important chemical concepts.',
-      },
-    });
-    expect(res.ok()).toBe(true);
-    const body = await res.json();
-    expect(body.success).toBe(true);
-    expect(body).toHaveProperty('issues');
-    expect(body).toHaveProperty('stats');
-    expect(typeof body.stats.termsChecked).toBe('number');
-  });
-
-  test('no content returns 400', async ({ page }) => {
-    const res = await page.request.post(`${API}/check-consistency`, {
-      data: {},
-    });
-    expect(res.status()).toBe(400);
-    const body = await res.json();
-    expect(body.error).toBeDefined();
-  });
-});
-
 // ─── Block 9: Term usage integration ──────────────────────────
 
 test.describe('Term usage integration', () => {
@@ -741,61 +707,6 @@ test.describe('Term usage integration', () => {
     const ids = terms.map((t) => t.id);
     expect(ids).toContain(approved.id);
     expect(ids).not.toContain(proposed.id);
-  });
-
-  test('consistency check detects missing translation', async ({ page }) => {
-    const tag = uid();
-
-    // Create and approve a term
-    const createRes = await page.request.post(API, {
-      data: { english: `catalyst-${tag}`, icelandic: `hvati-${tag}` },
-    });
-    const { term } = await createRes.json();
-    cleanupIds.push(term.id);
-    await page.request.post(`${API}/translations/${firstTranslation(term).id}/approve`);
-
-    // Check consistency: EN source contains the term, IS content does NOT
-    const checkRes = await page.request.post(`${API}/check-consistency`, {
-      data: {
-        sourceContent: `A catalyst-${tag} speeds up a reaction.`,
-        content: 'Efnahvarf hraðar án viðeigandi þýðingar.',
-      },
-    });
-    expect(checkRes.ok()).toBe(true);
-    const body = await checkRes.json();
-    expect(body.stats.termsChecked).toBeGreaterThan(0);
-    const relevant = body.issues.find(
-      (i) => i.english && i.english.toLowerCase() === `catalyst-${tag}`
-    );
-    expect(relevant).toBeDefined();
-    expect(relevant.type).toBe('missing');
-  });
-
-  test('consistency check passes when translation present', async ({ page }) => {
-    const tag = uid();
-
-    // Create and approve a term
-    const createRes = await page.request.post(API, {
-      data: { english: `enzyme-${tag}`, icelandic: `ensím-${tag}` },
-    });
-    const { term } = await createRes.json();
-    cleanupIds.push(term.id);
-    await page.request.post(`${API}/translations/${firstTranslation(term).id}/approve`);
-
-    // Check consistency: both EN and IS content contain the term/translation
-    const checkRes = await page.request.post(`${API}/check-consistency`, {
-      data: {
-        sourceContent: `The enzyme-${tag} catalyzes the reaction.`,
-        content: `Þetta ensím-${tag} hvatar efnahvarfið.`,
-      },
-    });
-    expect(checkRes.ok()).toBe(true);
-    const body = await checkRes.json();
-    expect(body.stats.termsChecked).toBeGreaterThan(0);
-    const relevant = body.issues.find(
-      (i) => i.english && i.english.toLowerCase() === `enzyme-${tag}`
-    );
-    expect(relevant).toBeUndefined();
   });
 
   test('stats reflect seeded terms', async ({ page }) => {
