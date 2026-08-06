@@ -163,6 +163,18 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
   subset is how a red `main` goes unnoticed.
 - **Duration is the diagnostic**: an infra/billing failure dies in ~3s *before*
   `Current runner version:` appears. Minutes elapsed = a real result.
+  **⚠️ That rule assumes a run OBJECT EXISTS — check that first, because a
+  GitHub-side Actions outage creates none at all, and there is nothing to time.**
+  Observed 2026-08-06 (githubstatus `Actions: major_outage`, incident opened
+  15:22Z): PR #365 and #366 got **zero** checks, and pushes to `main`
+  (`1b5662ec`, `9df1384d`) created **zero** runs — while a `workflow_dispatch`
+  at 20:38Z still went through. **The discriminator is `total_count` for the
+  head sha, not a run's duration:**
+  `gh api "repos/<owner>/<repo>/actions/runs?head_sha=$(git rev-parse HEAD)" --jq .total_count`
+  → `0` means *never scheduled* (platform or trigger), not *ran and failed*.
+  Confirm with `curl -s https://www.githubstatus.com/api/v2/components.json`
+  before hunting repo-side causes; "no checks reported" reads identically
+  whether the cause is an outage, a path filter, or a disabled workflow.
 - All five gating workflows (`lint`, `test`, `validate`, `security`, `docs-check`)
   now have **`workflow_dispatch`** — re-verify from the Actions tab, never by
   inventing a commit.
