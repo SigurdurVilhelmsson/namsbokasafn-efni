@@ -1,0 +1,3582 @@
+[
+  {
+    "role": "anon",
+    "route": "/",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2F",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/login",
+    "httpStatus": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/editor",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Feditor",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/editor?view=reviews",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Feditor%3Fview%3Dreviews",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/progress",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fprogress",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/terminology",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fterminology",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/localization",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flocalization",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/library",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flibrary",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/admin",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fadmin",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/assignments",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fassignments",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/profile",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fprofile",
+    "redirected": true,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/feedback",
+    "httpStatus": 200,
+    "finalUrl": "/feedback",
+    "redirected": false,
+    "title": "Ábendingar - Námsbókasafn",
+    "topbarTitle": "Ábendingar",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Ábendingar → /feedback",
+      "Innskrá → /login"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Endurgjöf / Feedback"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Innskrá",
+      "Senda endurgjöf"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema"
+    ],
+    "selects": [
+      "book"
+    ],
+    "visibleTextLen": 576,
+    "textSample": "Endurgjöf / Feedback Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur eða hefur tillögur að bætingum. Tegund athugasemdar Villa í þýðingu Villa í þýðingu eða merkingu Tæknilegt vandamál Tæknilegt vandamál eða birtingarvilla Tillaga að bætingu Tillaga um hvernig má bæta efnið Annað Annað sem þú vilt koma á framfæri Bók (valfrjálst) -- Veldu bók -- Eðlisfræði 2e E",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "anon",
+    "route": "/this-page-does-not-exist",
+    "httpStatus": 404,
+    "finalUrl": "/this-page-does-not-exist",
+    "redirected": false,
+    "title": "404 - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 82,
+    "textSample": "404 Síða finnst ekki Til baka á forsíðu FLÝTILEIÐIR Heim Ritill Orðasafn Framvinda",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "404 /this-page-does-not-exist"
+    ]
+  },
+  {
+    "role": "anon",
+    "route": "/my-work",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2F"
+  },
+  {
+    "role": "anon",
+    "route": "/segment-editor",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Feditor"
+  },
+  {
+    "role": "anon",
+    "route": "/status",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fprogress"
+  },
+  {
+    "role": "anon",
+    "route": "/reviews",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Feditor"
+  },
+  {
+    "role": "anon",
+    "route": "/review-queue",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Feditor"
+  },
+  {
+    "role": "anon",
+    "route": "/localization-editor",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flocalization"
+  },
+  {
+    "role": "anon",
+    "route": "/localization-review",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flocalization"
+  },
+  {
+    "role": "anon",
+    "route": "/books",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flibrary"
+  },
+  {
+    "role": "anon",
+    "route": "/books/efnafraedi",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flibrary%3Fbook%3Defnafraedi-2e"
+  },
+  {
+    "role": "anon",
+    "route": "/books/efnafraedi-2e",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flibrary%3Fbook%3Defnafraedi-2e"
+  },
+  {
+    "role": "anon",
+    "route": "/chapter",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flibrary"
+  },
+  {
+    "role": "anon",
+    "route": "/images",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Flibrary"
+  },
+  {
+    "role": "anon",
+    "route": "/admin/users",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fadmin%3Ftab%3Dusers"
+  },
+  {
+    "role": "anon",
+    "route": "/admin/books",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fadmin%3Ftab%3Dbooks"
+  },
+  {
+    "role": "anon",
+    "route": "/admin/feedback",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fadmin%3Ftab%3Dfeedback"
+  },
+  {
+    "role": "anon",
+    "route": "/analytics",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fadmin%3Ftab%3Danalytics"
+  },
+  {
+    "role": "anon",
+    "route": "/workflow",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2F"
+  },
+  {
+    "role": "anon",
+    "route": "/dashboard",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2F"
+  },
+  {
+    "role": "anon",
+    "route": "/pipeline",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2Fprogress"
+  },
+  {
+    "role": "anon",
+    "route": "/issues",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2F"
+  },
+  {
+    "role": "anon",
+    "route": "/for-teachers",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/login?redirect=%2F"
+  },
+  {
+    "role": "viewer",
+    "route": "/",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test viewer"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Test viewer Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/login",
+    "httpStatus": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/editor",
+    "httpStatus": 200,
+    "finalUrl": "/editor",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 148,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Veldu kafla...",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+      "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+      "Failed to load chapters: Error: Insufficient permissions\n    at fetchJson (http://localhost:3789/js/htmlUtils.js:49:17)\n    at async HTMLSelectElement.<anonymous> (http://localhost:3789/js/segment-editor.js:180:22)"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "403 /api/segment-editor/edlisfraedi-2e/chapters"
+    ]
+  },
+  {
+    "role": "viewer",
+    "route": "/editor?view=reviews",
+    "httpStatus": 200,
+    "finalUrl": "/editor?view=reviews",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 184,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Veldu kafla... Sýnir einingar sem bíða yfirlestrar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+      "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+      "Failed to load chapters: Error: Insufficient permissions\n    at fetchJson (http://localhost:3789/js/htmlUtils.js:49:17)\n    at async HTMLSelectElement.<anonymous> (http://localhost:3789/js/segment-editor.js:180:22)"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "403 /api/segment-editor/edlisfraedi-2e/chapters"
+    ]
+  },
+  {
+    "role": "viewer",
+    "route": "/progress",
+    "httpStatus": 200,
+    "finalUrl": "/progress",
+    "redirected": false,
+    "title": "Framvinda - Námsbókasafn",
+    "topbarTitle": "Framvinda",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [
+      "↻",
+      "Yfirlit",
+      "Kaflayfirlit",
+      "Tímalína"
+    ],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá",
+      "↻|Endurhlaða"
+    ],
+    "selects": [
+      "book-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði ↻ Yfirlit Kaflayfirlit Tímalína 0 / 10 EININGAR KLÁRAR 0 BÚTAR SAMÞYKKTIR 0 BÚTAR Í VINNSLU 0% HEILDARFRAMVINDA Kaflaframvinda K4 0/10 einingar 0%",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/terminology",
+    "httpStatus": 200,
+    "finalUrl": "/terminology",
+    "redirected": false,
+    "title": "Orðasafn - Námsbókasafn",
+    "topbarTitle": "Orðasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Engin niðurstöður"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Leita",
+      "Bæta við",
+      "Flytja út CSV",
+      "Flytja inn"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "Flytja út CSV|Flytja út síuð orð sem CSV"
+    ],
+    "selects": [
+      "filter-book",
+      "filter-subject",
+      "filter-status",
+      "filter-source"
+    ],
+    "visibleTextLen": 671,
+    "textSample": "Leita Bæta við Bók: Allar bækur Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Fag: Öll fög Efnafræði Líffræði Eðlisfræði Örverufræði Lífræn efnafræði Stærðfræði Almennt Staða: Allar stöður Samþykkt Í bið Til umræðu Þarf yfirlestur Hafnað Uppruni: Allir upprunar Íðorðabankinn Efnafræðifélag Íslands Efnafræðifélag Íslands OpenStax MT OpenStax orðasafn Kaflaorðasafn",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/localization",
+    "httpStatus": 200,
+    "finalUrl": "/localization",
+    "redirected": false,
+    "title": "Staðfærsla - Námsbókasafn",
+    "topbarTitle": "Staðfærsla",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til staðfærslu (Pass 2)"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Staðfærsluritill",
+      "Yfirlestur á staðfæringu",
+      "Leiðbeiningar\n            \n            ▼"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "ed-book-select",
+      "ed-chapter-select"
+    ],
+    "visibleTextLen": 329,
+    "textSample": "Staðfærsluritill Yfirlestur á staðfæringu Leiðbeiningar ▼ Velja einingu til staðfærslu (Pass 2) Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi. Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Veldu kafla...",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+      "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+      "Failed to load books: Error: Insufficient permissions\n    at fetchJson (http://localhost:3789/js/htmlUtils.js:49:17)\n    at async rvLoadBooks (http://localhost:3789/js/localization-editor.js:1723:18)\n    at async initPage (http://localhost:3789/js/localization-editor.js:2387:5)",
+      "Failed to load chapters: Error: Insufficient permissions\n    at fetchJson (http://localhost:3789/js/htmlUtils.js:49:17)\n    at async HTMLSelectElement.<anonymous> (http://localhost:3789/js/localization-editor.js:355:20)"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "403 /api/admin/books",
+      "403 /api/localization-editor/edlisfraedi-2e/chapters"
+    ]
+  },
+  {
+    "role": "viewer",
+    "route": "/library",
+    "httpStatus": 200,
+    "finalUrl": "/library",
+    "redirected": false,
+    "title": "Bókasafn - Námsbókasafn",
+    "topbarTitle": "Bókasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Skráðar bækur"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Bækur",
+      "Kafli"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 56,
+    "textSample": "Bækur Kafli Bækur Skráðar bækur Villa við að hlaða bókum",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+      "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+      "Failed to load books: Error: Insufficient permissions\n    at fetchJson (http://localhost:3789/js/htmlUtils.js:49:17)\n    at async loadBooks (http://localhost:3789/library:1642:22)"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "403 /api/admin/books"
+    ]
+  },
+  {
+    "role": "viewer",
+    "route": "/admin",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test viewer"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Test viewer Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/assignments",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test viewer"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Test viewer Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/profile",
+    "httpStatus": 200,
+    "finalUrl": "/profile",
+    "redirected": false,
+    "title": "Um mig - Námsbókasafn",
+    "topbarTitle": "Um mig",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Upplýsingar"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Vista breytingar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 163,
+    "textSample": "Upplýsingar Fullt nafn Netfang Netfang kemur frá Microsoft innskráningu og er ekki breytanlegt. Skóli Kennslugrein Stutt lýsing Hlutverk Áhorfandi Vista breytingar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/feedback",
+    "httpStatus": 200,
+    "finalUrl": "/feedback",
+    "redirected": false,
+    "title": "Ábendingar - Námsbókasafn",
+    "topbarTitle": "Ábendingar",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn",
+      "Endurgjöf / Feedback"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Senda endurgjöf"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book"
+    ],
+    "visibleTextLen": 576,
+    "textSample": "Endurgjöf / Feedback Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur eða hefur tillögur að bætingum. Tegund athugasemdar Villa í þýðingu Villa í þýðingu eða merkingu Tæknilegt vandamál Tæknilegt vandamál eða birtingarvilla Tillaga að bætingu Tillaga um hvernig má bæta efnið Annað Annað sem þú vilt koma á framfæri Bók (valfrjálst) -- Veldu bók -- Eðlisfræði 2e E",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "viewer",
+    "route": "/this-page-does-not-exist",
+    "httpStatus": 404,
+    "finalUrl": "/this-page-does-not-exist",
+    "redirected": false,
+    "title": "404 - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 82,
+    "textSample": "404 Síða finnst ekki Til baka á forsíðu FLÝTILEIÐIR Heim Ritill Orðasafn Framvinda",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "404 /this-page-does-not-exist"
+    ]
+  },
+  {
+    "role": "editor",
+    "route": "/",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test editor"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Test editor Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/login",
+    "httpStatus": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/editor",
+    "httpStatus": 200,
+    "finalUrl": "/editor",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 204,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/editor?view=reviews",
+    "httpStatus": 200,
+    "finalUrl": "/editor?view=reviews",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons Sýnir einingar sem bíða yfirlestrar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/progress",
+    "httpStatus": 200,
+    "finalUrl": "/progress",
+    "redirected": false,
+    "title": "Framvinda - Námsbókasafn",
+    "topbarTitle": "Framvinda",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [
+      "↻",
+      "Yfirlit",
+      "Kaflayfirlit",
+      "Tímalína"
+    ],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá",
+      "↻|Endurhlaða"
+    ],
+    "selects": [
+      "book-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði ↻ Yfirlit Kaflayfirlit Tímalína 0 / 10 EININGAR KLÁRAR 0 BÚTAR SAMÞYKKTIR 0 BÚTAR Í VINNSLU 0% HEILDARFRAMVINDA Kaflaframvinda K4 0/10 einingar 0%",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/terminology",
+    "httpStatus": 200,
+    "finalUrl": "/terminology",
+    "redirected": false,
+    "title": "Orðasafn - Námsbókasafn",
+    "topbarTitle": "Orðasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Engin niðurstöður"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Leita",
+      "Bæta við",
+      "Allt",
+      "Í bið (0)",
+      "Til umræðu (0)",
+      "Þarf yfirlestur (0)",
+      "‹",
+      "›",
+      "Flytja út CSV",
+      "Flytja inn"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "Flytja út CSV|Flytja út síuð orð sem CSV"
+    ],
+    "selects": [
+      "filter-book",
+      "filter-subject",
+      "filter-status",
+      "filter-source",
+      "queue-filter-source",
+      "queue-filter-subject"
+    ],
+    "visibleTextLen": 1060,
+    "textSample": "Leita Bæta við Bók: Allar bækur Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Fag: Öll fög Efnafræði Líffræði Eðlisfræði Örverufræði Lífræn efnafræði Stærðfræði Almennt Staða: Allar stöður Samþykkt Í bið Til umræðu Þarf yfirlestur Hafnað Uppruni: Allir upprunar Íðorðabankinn Efnafræðifélag Íslands Efnafræðifélag Íslands OpenStax MT OpenStax orðasafn Kaflaorðasafn",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/localization",
+    "httpStatus": 200,
+    "finalUrl": "/localization",
+    "redirected": false,
+    "title": "Staðfærsla - Námsbókasafn",
+    "topbarTitle": "Staðfærsla",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til staðfærslu (Pass 2)"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Staðfærsluritill",
+      "Yfirlestur á staðfæringu",
+      "Leiðbeiningar\n            \n            ▼"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "ed-book-select",
+      "ed-chapter-select"
+    ],
+    "visibleTextLen": 385,
+    "textSample": "Staðfærsluritill Yfirlestur á staðfæringu Leiðbeiningar ▼ Velja einingu til staðfærslu (Pass 2) Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi. Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/library",
+    "httpStatus": 200,
+    "finalUrl": "/library",
+    "redirected": false,
+    "title": "Bókasafn - Námsbókasafn",
+    "topbarTitle": "Bókasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Skráðar bækur"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Bækur",
+      "Kafli"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 313,
+    "textSample": "Bækur Kafli Bækur Skráðar bækur Efnafræði 2e Chemistry 2e 22 kaflar 0% lokið Líffræði 2e Biology 2e 48 kaflar 0% lokið Eðlisfræði 2e College Physics 2e 34 kaflar 0% lokið Lífræn efnafræði Organic Chemistry 31 kaflar 0% lokið Örverufræði Microbiology 26 kaflar 0% lokið Stjörnufræði Astronomy 2e 30 kaflar 0% lokið",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/admin",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test editor"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Test editor Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/assignments",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test editor"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Test editor Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/profile",
+    "httpStatus": 200,
+    "finalUrl": "/profile",
+    "redirected": false,
+    "title": "Um mig - Námsbókasafn",
+    "topbarTitle": "Um mig",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Upplýsingar"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Vista breytingar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 164,
+    "textSample": "Upplýsingar Fullt nafn Netfang Netfang kemur frá Microsoft innskráningu og er ekki breytanlegt. Skóli Kennslugrein Stutt lýsing Hlutverk Yfirlesari Vista breytingar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/feedback",
+    "httpStatus": 200,
+    "finalUrl": "/feedback",
+    "redirected": false,
+    "title": "Ábendingar - Námsbókasafn",
+    "topbarTitle": "Ábendingar",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Endurgjöf / Feedback"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Senda endurgjöf"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book"
+    ],
+    "visibleTextLen": 576,
+    "textSample": "Endurgjöf / Feedback Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur eða hefur tillögur að bætingum. Tegund athugasemdar Villa í þýðingu Villa í þýðingu eða merkingu Tæknilegt vandamál Tæknilegt vandamál eða birtingarvilla Tillaga að bætingu Tillaga um hvernig má bæta efnið Annað Annað sem þú vilt koma á framfæri Bók (valfrjálst) -- Veldu bók -- Eðlisfræði 2e E",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "editor",
+    "route": "/this-page-does-not-exist",
+    "httpStatus": 404,
+    "finalUrl": "/this-page-does-not-exist",
+    "redirected": false,
+    "title": "404 - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 82,
+    "textSample": "404 Síða finnst ekki Til baka á forsíðu FLÝTILEIÐIR Heim Ritill Orðasafn Framvinda",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "404 /this-page-does-not-exist"
+    ]
+  },
+  {
+    "role": "editor",
+    "route": "/my-work",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/segment-editor",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/editor"
+  },
+  {
+    "role": "editor",
+    "route": "/status",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/progress"
+  },
+  {
+    "role": "editor",
+    "route": "/reviews",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/editor"
+  },
+  {
+    "role": "editor",
+    "route": "/review-queue",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/editor"
+  },
+  {
+    "role": "editor",
+    "route": "/localization-editor",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/localization"
+  },
+  {
+    "role": "editor",
+    "route": "/localization-review",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/localization"
+  },
+  {
+    "role": "editor",
+    "route": "/books",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library"
+  },
+  {
+    "role": "editor",
+    "route": "/books/efnafraedi",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library?book=efnafraedi-2e"
+  },
+  {
+    "role": "editor",
+    "route": "/books/efnafraedi-2e",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library?book=efnafraedi-2e"
+  },
+  {
+    "role": "editor",
+    "route": "/chapter",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library"
+  },
+  {
+    "role": "editor",
+    "route": "/images",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library"
+  },
+  {
+    "role": "editor",
+    "route": "/admin/users",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/admin/books",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/admin/feedback",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/analytics",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/workflow",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/dashboard",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/pipeline",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/progress"
+  },
+  {
+    "role": "editor",
+    "route": "/issues",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "editor",
+    "route": "/for-teachers",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "new-editor",
+    "route": "/",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Nýr Kennari"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Nýr Kennari Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/login",
+    "httpStatus": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/editor",
+    "httpStatus": 200,
+    "finalUrl": "/editor",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 204,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/editor?view=reviews",
+    "httpStatus": 200,
+    "finalUrl": "/editor?view=reviews",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons Sýnir einingar sem bíða yfirlestrar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/progress",
+    "httpStatus": 200,
+    "finalUrl": "/progress",
+    "redirected": false,
+    "title": "Framvinda - Námsbókasafn",
+    "topbarTitle": "Framvinda",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [
+      "↻",
+      "Yfirlit",
+      "Kaflayfirlit",
+      "Tímalína"
+    ],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá",
+      "↻|Endurhlaða"
+    ],
+    "selects": [
+      "book-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði ↻ Yfirlit Kaflayfirlit Tímalína 0 / 10 EININGAR KLÁRAR 0 BÚTAR SAMÞYKKTIR 0 BÚTAR Í VINNSLU 0% HEILDARFRAMVINDA Kaflaframvinda K4 0/10 einingar 0%",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/terminology",
+    "httpStatus": 200,
+    "finalUrl": "/terminology",
+    "redirected": false,
+    "title": "Orðasafn - Námsbókasafn",
+    "topbarTitle": "Orðasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Engin niðurstöður"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Leita",
+      "Bæta við",
+      "Allt",
+      "Í bið (0)",
+      "Til umræðu (0)",
+      "Þarf yfirlestur (0)",
+      "‹",
+      "›",
+      "Flytja út CSV",
+      "Flytja inn"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "Flytja út CSV|Flytja út síuð orð sem CSV"
+    ],
+    "selects": [
+      "filter-book",
+      "filter-subject",
+      "filter-status",
+      "filter-source",
+      "queue-filter-source",
+      "queue-filter-subject"
+    ],
+    "visibleTextLen": 1060,
+    "textSample": "Leita Bæta við Bók: Allar bækur Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Fag: Öll fög Efnafræði Líffræði Eðlisfræði Örverufræði Lífræn efnafræði Stærðfræði Almennt Staða: Allar stöður Samþykkt Í bið Til umræðu Þarf yfirlestur Hafnað Uppruni: Allir upprunar Íðorðabankinn Efnafræðifélag Íslands Efnafræðifélag Íslands OpenStax MT OpenStax orðasafn Kaflaorðasafn",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/localization",
+    "httpStatus": 200,
+    "finalUrl": "/localization",
+    "redirected": false,
+    "title": "Staðfærsla - Námsbókasafn",
+    "topbarTitle": "Staðfærsla",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til staðfærslu (Pass 2)"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Staðfærsluritill",
+      "Yfirlestur á staðfæringu",
+      "Leiðbeiningar\n            \n            ▼"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "ed-book-select",
+      "ed-chapter-select"
+    ],
+    "visibleTextLen": 385,
+    "textSample": "Staðfærsluritill Yfirlestur á staðfæringu Leiðbeiningar ▼ Velja einingu til staðfærslu (Pass 2) Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi. Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/library",
+    "httpStatus": 200,
+    "finalUrl": "/library",
+    "redirected": false,
+    "title": "Bókasafn - Námsbókasafn",
+    "topbarTitle": "Bókasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Skráðar bækur"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Bækur",
+      "Kafli"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 313,
+    "textSample": "Bækur Kafli Bækur Skráðar bækur Efnafræði 2e Chemistry 2e 22 kaflar 0% lokið Líffræði 2e Biology 2e 48 kaflar 0% lokið Eðlisfræði 2e College Physics 2e 34 kaflar 0% lokið Lífræn efnafræði Organic Chemistry 31 kaflar 0% lokið Örverufræði Microbiology 26 kaflar 0% lokið Stjörnufræði Astronomy 2e 30 kaflar 0% lokið",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/admin",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Nýr Kennari"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Nýr Kennari Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/assignments",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Nýr Kennari"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 247,
+    "textSample": "Gott kvöld, Nýr Kennari Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Kláruð í vikunni 0 Bíður yfirlestrar 0 Orðatillögur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/profile",
+    "httpStatus": 200,
+    "finalUrl": "/profile",
+    "redirected": false,
+    "title": "Um mig - Námsbókasafn",
+    "topbarTitle": "Um mig",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Upplýsingar"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Vista breytingar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 164,
+    "textSample": "Upplýsingar Fullt nafn Netfang Netfang kemur frá Microsoft innskráningu og er ekki breytanlegt. Skóli Kennslugrein Stutt lýsing Hlutverk Yfirlesari Vista breytingar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/feedback",
+    "httpStatus": 200,
+    "finalUrl": "/feedback",
+    "redirected": false,
+    "title": "Ábendingar - Námsbókasafn",
+    "topbarTitle": "Ábendingar",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Endurgjöf / Feedback"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Senda endurgjöf"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book"
+    ],
+    "visibleTextLen": 576,
+    "textSample": "Endurgjöf / Feedback Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur eða hefur tillögur að bætingum. Tegund athugasemdar Villa í þýðingu Villa í þýðingu eða merkingu Tæknilegt vandamál Tæknilegt vandamál eða birtingarvilla Tillaga að bætingu Tillaga um hvernig má bæta efnið Annað Annað sem þú vilt koma á framfæri Bók (valfrjálst) -- Veldu bók -- Eðlisfræði 2e E",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "new-editor",
+    "route": "/this-page-does-not-exist",
+    "httpStatus": 404,
+    "finalUrl": "/this-page-does-not-exist",
+    "redirected": false,
+    "title": "404 - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 82,
+    "textSample": "404 Síða finnst ekki Til baka á forsíðu FLÝTILEIÐIR Heim Ritill Orðasafn Framvinda",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "404 /this-page-does-not-exist"
+    ]
+  },
+  {
+    "role": "head-editor",
+    "route": "/",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test head-editor"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit",
+      "Skoða",
+      "▼Sýna 19 fleiri atriði",
+      "Sjá allt"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "0\n          Samþykkt, bíður bi|Samþykktar breytingar sem á eftir að beita og birta (Vista + Birta)"
+    ],
+    "selects": [],
+    "visibleTextLen": 885,
+    "textSample": "Gott kvöld, Test head-editor Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Bíða þíns úrskurðar 0 Samþykkt, bíður birtingar 0 Þú kláraðir í vikunni STJÓRNUN & YFIRLIT Þarfnast skoðunar 0 LOKAÐ 24 ÓÚTHLUTAÐ 0 Í BIÐ 👤 Kafli 1 í vinnslu án úthlutunar efnafraedi-2e / Kafli 1 Sk",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/login",
+    "httpStatus": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/editor",
+    "httpStatus": 200,
+    "finalUrl": "/editor",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 204,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/editor?view=reviews",
+    "httpStatus": 200,
+    "finalUrl": "/editor?view=reviews",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons Sýnir einingar sem bíða yfirlestrar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/progress",
+    "httpStatus": 200,
+    "finalUrl": "/progress",
+    "redirected": false,
+    "title": "Framvinda - Námsbókasafn",
+    "topbarTitle": "Framvinda",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [
+      "↻",
+      "Yfirlit",
+      "Kaflayfirlit",
+      "Tímalína"
+    ],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá",
+      "↻|Endurhlaða"
+    ],
+    "selects": [
+      "book-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði ↻ Yfirlit Kaflayfirlit Tímalína 0 / 10 EININGAR KLÁRAR 0 BÚTAR SAMÞYKKTIR 0 BÚTAR Í VINNSLU 0% HEILDARFRAMVINDA Kaflaframvinda K4 0/10 einingar 0%",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/terminology",
+    "httpStatus": 200,
+    "finalUrl": "/terminology",
+    "redirected": false,
+    "title": "Orðasafn - Námsbókasafn",
+    "topbarTitle": "Orðasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Engin niðurstöður"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Leita",
+      "Bæta við",
+      "Náma úr samþykktum breytingum",
+      "Endurhlaða",
+      "Allt",
+      "Í bið (0)",
+      "Til umræðu (0)",
+      "Þarf yfirlestur (0)",
+      "‹",
+      "›",
+      "Flytja út CSV",
+      "Flytja inn",
+      "Viðbætt hugtök (CSV)",
+      "JSON"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "ⓘ|Endurteknar leiðréttingar þýðenda á vélþýðingu — mögulegar íðorðaákvarðanir",
+      "Flytja út CSV|Flytja út síuð orð sem CSV",
+      "Viðbætt hugtök (CSV)|Sækja viðbætt hugtök fyrir Árnastofnun (CSV)",
+      "JSON|Sækja viðbætt hugtök fyrir Árnastofnun (JSON)"
+    ],
+    "selects": [
+      "filter-book",
+      "filter-subject",
+      "filter-status",
+      "filter-source",
+      "queue-filter-source",
+      "queue-filter-subject"
+    ],
+    "visibleTextLen": 1186,
+    "textSample": "Leita Bæta við Bók: Allar bækur Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Fag: Öll fög Efnafræði Líffræði Eðlisfræði Örverufræði Lífræn efnafræði Stærðfræði Almennt Staða: Allar stöður Samþykkt Í bið Til umræðu Þarf yfirlestur Hafnað Uppruni: Allir upprunar Íðorðabankinn Efnafræðifélag Íslands Efnafræðifélag Íslands OpenStax MT OpenStax orðasafn Kaflaorðasafn",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/localization",
+    "httpStatus": 200,
+    "finalUrl": "/localization",
+    "redirected": false,
+    "title": "Staðfærsla - Námsbókasafn",
+    "topbarTitle": "Staðfærsla",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til staðfærslu (Pass 2)"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Staðfærsluritill",
+      "Yfirlestur á staðfæringu",
+      "Leiðbeiningar\n            \n            ▼"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "ed-book-select",
+      "ed-chapter-select"
+    ],
+    "visibleTextLen": 385,
+    "textSample": "Staðfærsluritill Yfirlestur á staðfæringu Leiðbeiningar ▼ Velja einingu til staðfærslu (Pass 2) Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi. Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/library",
+    "httpStatus": 200,
+    "finalUrl": "/library",
+    "redirected": false,
+    "title": "Bókasafn - Námsbókasafn",
+    "topbarTitle": "Bókasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Skráðar bækur"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Bækur",
+      "Kafli",
+      "Skrá nýja bók"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 327,
+    "textSample": "Bækur Kafli Bækur Skráðar bækur Skrá nýja bók Efnafræði 2e Chemistry 2e 22 kaflar 0% lokið Líffræði 2e Biology 2e 48 kaflar 0% lokið Eðlisfræði 2e College Physics 2e 34 kaflar 0% lokið Lífræn efnafræði Organic Chemistry 31 kaflar 0% lokið Örverufræði Microbiology 26 kaflar 0% lokið Stjörnufræði Astronomy 2e 30 kaflar 0% lokið",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/admin",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": true,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test head-editor"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit",
+      "Skoða",
+      "▼Sýna 19 fleiri atriði",
+      "Sjá allt"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "0\n          Samþykkt, bíður bi|Samþykktar breytingar sem á eftir að beita og birta (Vista + Birta)"
+    ],
+    "selects": [],
+    "visibleTextLen": 885,
+    "textSample": "Gott kvöld, Test head-editor Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Bíða þíns úrskurðar 0 Samþykkt, bíður birtingar 0 Þú kláraðir í vikunni STJÓRNUN & YFIRLIT Þarfnast skoðunar 0 LOKAÐ 24 ÓÚTHLUTAÐ 0 Í BIÐ 👤 Kafli 1 í vinnslu án úthlutunar efnafraedi-2e / Kafli 1 Sk",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/assignments",
+    "httpStatus": 200,
+    "finalUrl": "/assignments",
+    "redirected": false,
+    "title": "Úthlutanir - Námsbókasafn",
+    "topbarTitle": "Úthlutanir",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book-select"
+    ],
+    "visibleTextLen": 162,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði — ÚTHLUTAÐ — ÓÚTHLUTAÐ — YFIRLESARAR Villa: Insufficient permissions",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+      "Failed to load resource: the server responded with a status of 403 (Forbidden)"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "403 /api/admin/assignments/edlisfraedi-2e"
+    ]
+  },
+  {
+    "role": "head-editor",
+    "route": "/profile",
+    "httpStatus": 200,
+    "finalUrl": "/profile",
+    "redirected": false,
+    "title": "Um mig - Námsbókasafn",
+    "topbarTitle": "Um mig",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Upplýsingar"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Vista breytingar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [],
+    "visibleTextLen": 167,
+    "textSample": "Upplýsingar Fullt nafn Netfang Netfang kemur frá Microsoft innskráningu og er ekki breytanlegt. Skóli Kennslugrein Stutt lýsing Hlutverk Aðalritstjóri Vista breytingar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/feedback",
+    "httpStatus": 200,
+    "finalUrl": "/feedback",
+    "redirected": false,
+    "title": "Ábendingar - Námsbókasafn",
+    "topbarTitle": "Ábendingar",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Endurgjöf / Feedback"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Senda endurgjöf",
+      "Stjórnborð endurgjafar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "book"
+    ],
+    "visibleTextLen": 599,
+    "textSample": "Endurgjöf / Feedback Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur eða hefur tillögur að bætingum. Tegund athugasemdar Villa í þýðingu Villa í þýðingu eða merkingu Tæknilegt vandamál Tæknilegt vandamál eða birtingarvilla Tillaga að bætingu Tillaga um hvernig má bæta efnið Annað Annað sem þú vilt koma á framfæri Bók (valfrjálst) -- Veldu bók -- Eðlisfræði 2e E",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "head-editor",
+    "route": "/this-page-does-not-exist",
+    "httpStatus": 404,
+    "finalUrl": "/this-page-does-not-exist",
+    "redirected": false,
+    "title": "404 - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 82,
+    "textSample": "404 Síða finnst ekki Til baka á forsíðu FLÝTILEIÐIR Heim Ritill Orðasafn Framvinda",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "404 /this-page-does-not-exist"
+    ]
+  },
+  {
+    "role": "admin",
+    "route": "/",
+    "httpStatus": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Heim - Námsbókasafn",
+    "topbarTitle": "Heim",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Gott kvöld, Test admin"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Nákvæmt yfirlit",
+      "Skoða",
+      "▼Sýna 19 fleiri atriði",
+      "Sjá allt"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "0\n          Samþykkt, bíður bi|Samþykktar breytingar sem á eftir að beita og birta (Vista + Birta)"
+    ],
+    "selects": [
+      "role-preview-select"
+    ],
+    "visibleTextLen": 879,
+    "textSample": "Gott kvöld, Test admin Engin verkefni í dag – vel gert! Nákvæmt yfirlit NÚVERANDI VERKEFNI 🎉 Ekkert verkefni í dag! Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum. 0 Bíða þíns úrskurðar 0 Samþykkt, bíður birtingar 0 Þú kláraðir í vikunni STJÓRNUN & YFIRLIT Þarfnast skoðunar 0 LOKAÐ 24 ÓÚTHLUTAÐ 0 Í BIÐ 👤 Kafli 1 í vinnslu án úthlutunar efnafraedi-2e / Kafli 1 Skoða 👤",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/login",
+    "httpStatus": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Innskráning - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 299,
+    "textSample": "Námsbókasafn Ritstjórnarumhverfi fyrir OpenStax kennslubækur Skrá inn með Microsoft Skráðu þig inn með skólareikningnum þínum. Hlutverki þínu er úthlutað af stjórnanda. HLUTVERK Stjórnandi Kerfisstjóri Aðalritstjóri Yfirlestur og samþykki Yfirlesari Þýðingar og yfirlestur Áhorfandi Skoðunaraðgangur",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/editor",
+    "httpStatus": 200,
+    "finalUrl": "/editor",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "role-preview-select",
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 204,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/editor?view=reviews",
+    "httpStatus": 200,
+    "finalUrl": "/editor?view=reviews",
+    "redirected": false,
+    "title": "Ritill - Námsbókasafn",
+    "topbarTitle": "Ritill",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til að ritstýra"
+    ],
+    "buttons": [
+      "Ljóst"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "role-preview-select",
+      "book-select",
+      "chapter-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Velja einingu til að ritstýra Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons Sýnir einingar sem bíða yfirlestrar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/progress",
+    "httpStatus": 200,
+    "finalUrl": "/progress",
+    "redirected": false,
+    "title": "Framvinda - Námsbókasafn",
+    "topbarTitle": "Framvinda",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [
+      "↻",
+      "Yfirlit",
+      "Kaflayfirlit",
+      "Tímalína"
+    ],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá",
+      "↻|Endurhlaða"
+    ],
+    "selects": [
+      "role-preview-select",
+      "book-select"
+    ],
+    "visibleTextLen": 240,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði ↻ Yfirlit Kaflayfirlit Tímalína 0 / 10 EININGAR KLÁRAR 0 BÚTAR SAMÞYKKTIR 0 BÚTAR Í VINNSLU 0% HEILDARFRAMVINDA Kaflaframvinda K4 0/10 einingar 0%",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/terminology",
+    "httpStatus": 200,
+    "finalUrl": "/terminology",
+    "redirected": false,
+    "title": "Orðasafn - Námsbókasafn",
+    "topbarTitle": "Orðasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Engin niðurstöður"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Leita",
+      "Bæta við",
+      "Náma úr samþykktum breytingum",
+      "Endurhlaða",
+      "Allt",
+      "Í bið (0)",
+      "Til umræðu (0)",
+      "Þarf yfirlestur (0)",
+      "‹",
+      "›",
+      "Flytja út CSV",
+      "Flytja inn",
+      "Viðbætt hugtök (CSV)",
+      "JSON"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "ⓘ|Endurteknar leiðréttingar þýðenda á vélþýðingu — mögulegar íðorðaákvarðanir",
+      "Flytja út CSV|Flytja út síuð orð sem CSV",
+      "Viðbætt hugtök (CSV)|Sækja viðbætt hugtök fyrir Árnastofnun (CSV)",
+      "JSON|Sækja viðbætt hugtök fyrir Árnastofnun (JSON)"
+    ],
+    "selects": [
+      "role-preview-select",
+      "filter-book",
+      "filter-subject",
+      "filter-status",
+      "filter-source",
+      "queue-filter-source",
+      "queue-filter-subject"
+    ],
+    "visibleTextLen": 1186,
+    "textSample": "Leita Bæta við Bók: Allar bækur Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Fag: Öll fög Efnafræði Líffræði Eðlisfræði Örverufræði Lífræn efnafræði Stærðfræði Almennt Staða: Allar stöður Samþykkt Í bið Til umræðu Þarf yfirlestur Hafnað Uppruni: Allir upprunar Íðorðabankinn Efnafræðifélag Íslands Efnafræðifélag Íslands OpenStax MT OpenStax orðasafn Kaflaorðasafn",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/localization",
+    "httpStatus": 200,
+    "finalUrl": "/localization",
+    "redirected": false,
+    "title": "Staðfærsla - Námsbókasafn",
+    "topbarTitle": "Staðfærsla",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Velja einingu til staðfærslu (Pass 2)"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Staðfærsluritill",
+      "Yfirlestur á staðfæringu",
+      "Leiðbeiningar\n            \n            ▼"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "role-preview-select",
+      "ed-book-select",
+      "ed-chapter-select"
+    ],
+    "visibleTextLen": 385,
+    "textSample": "Staðfærsluritill Yfirlestur á staðfæringu Leiðbeiningar ▼ Velja einingu til staðfærslu (Pass 2) Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi. Bók Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Kafli Hleður kafla... Kafli 4 — Hreyfifræði: Kraftur og hreyfilögmál Newtons",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/library",
+    "httpStatus": 200,
+    "finalUrl": "/library",
+    "redirected": false,
+    "title": "Bókasafn - Námsbókasafn",
+    "topbarTitle": "Bókasafn",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Skráðar bækur"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Bækur",
+      "Kafli",
+      "Skrá nýja bók"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "role-preview-select"
+    ],
+    "visibleTextLen": 327,
+    "textSample": "Bækur Kafli Bækur Skráðar bækur Skrá nýja bók Efnafræði 2e Chemistry 2e 22 kaflar 0% lokið Líffræði 2e Biology 2e 48 kaflar 0% lokið Eðlisfræði 2e College Physics 2e 34 kaflar 0% lokið Lífræn efnafræði Organic Chemistry 31 kaflar 0% lokið Örverufræði Microbiology 26 kaflar 0% lokið Stjörnufræði Astronomy 2e 30 kaflar 0% lokið",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/admin",
+    "httpStatus": 200,
+    "finalUrl": "/admin",
+    "redirected": false,
+    "title": "Stjórnandi - Námsbókasafn",
+    "topbarTitle": "Stjórnandi",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Notendur",
+      "Bækur",
+      "Endurgjöf",
+      "Tölfræði",
+      "Bæta við",
+      "✎",
+      "✘",
+      "×",
+      "Hætta við",
+      "Vista"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá",
+      "✎|Breyta",
+      "✘|Gera óvirkan"
+    ],
+    "selects": [
+      "role-preview-select",
+      "users-role-filter"
+    ],
+    "visibleTextLen": 437,
+    "textSample": "Notendur Bækur Endurgjöf Tölfræði Öll hlutverk Kerfistjóri Aðalritstjóri Yfirlesari Lesandi Bæta við NOTANDI HLUTVERK BÆKUR STAÐA SÍÐAST INNSKRÁÐUR N Nýr Kennari nyr-kennari Yfirlesari 0 Virkur Aldrei ✎✘ T Test Viewer test-viewer Lesandi 0 Virkur Aldrei ✎✘ T Test Editor test-editor Yfirlesari 0 Virkur Aldrei ✎✘ T Test Head-Editor test-head-editor Aðalritstjóri 0 Virkur Aldrei ✎✘ T Test Admin test-",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/assignments",
+    "httpStatus": 200,
+    "finalUrl": "/assignments",
+    "redirected": false,
+    "title": "Úthlutanir - Námsbókasafn",
+    "topbarTitle": "Úthlutanir",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn"
+    ],
+    "buttons": [],
+    "tooltips": [
+      "|Skipta um þema",
+      "|Útskrá",
+      "Þvinga kaflaúthlutun|Þegar kveikt er á þessu fá yfirlesarar aðeins aðgang að köflum sem þeim hafa verið úthlutaðir (aðeins stjórnandi getur breytt)."
+    ],
+    "selects": [
+      "role-preview-select",
+      "book-select",
+      "?"
+    ],
+    "visibleTextLen": 309,
+    "textSample": "Veldu bók... Eðlisfræði 2e Efnafræði 2e Líffræði 2e Lífræn efnafræði Stjörnufræði Örverufræði Þvinga kaflaúthlutun 0 ÚTHLUTAÐ 1 ÓÚTHLUTAÐ 0 YFIRLESARAR KAFLI TITILL YFIRLESARI FRAMVINDA K4 Hreyfifræði: Kraftur og hreyfilögmál Newtons — Óúthlutað — Nýr Kennari Test Admin Test Editor Test Head-Editor 0% Opna →",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/profile",
+    "httpStatus": 200,
+    "finalUrl": "/profile",
+    "redirected": false,
+    "title": "Um mig - Námsbókasafn",
+    "topbarTitle": "Um mig",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Upplýsingar"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Vista breytingar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "role-preview-select"
+    ],
+    "visibleTextLen": 164,
+    "textSample": "Upplýsingar Fullt nafn Netfang Netfang kemur frá Microsoft innskráningu og er ekki breytanlegt. Skóli Kennslugrein Stutt lýsing Hlutverk Stjórnandi Vista breytingar",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/feedback",
+    "httpStatus": 200,
+    "finalUrl": "/feedback",
+    "redirected": false,
+    "title": "Ábendingar - Námsbókasafn",
+    "topbarTitle": "Ábendingar",
+    "navLinks": [
+      "Heim → /",
+      "Ritill → /editor",
+      "Framvinda → /progress",
+      "Orðasafn → /terminology",
+      "Yfirlestrar → /editor?view=reviews",
+      "Aðlögun → /localization",
+      "Stjórnandi → /admin",
+      "Bókasafn → /library",
+      "Úthlutanir → /assignments",
+      "Um mig → /profile",
+      "Ábendingar → /feedback"
+    ],
+    "navSections": [
+      "Yfirlestur",
+      "Stjórnun"
+    ],
+    "headings": [
+      "Námsbókasafn",
+      "Endurgjöf / Feedback"
+    ],
+    "buttons": [
+      "Ljóst",
+      "Senda endurgjöf",
+      "Stjórnborð endurgjafar"
+    ],
+    "tooltips": [
+      "Ljóst|Skipta um þema",
+      "|Útskrá"
+    ],
+    "selects": [
+      "role-preview-select",
+      "book"
+    ],
+    "visibleTextLen": 599,
+    "textSample": "Endurgjöf / Feedback Við þökkum endurgjöf frá notendum. Vinsamlegast láttu okkur vita ef þú finnur villur eða hefur tillögur að bætingum. Tegund athugasemdar Villa í þýðingu Villa í þýðingu eða merkingu Tæknilegt vandamál Tæknilegt vandamál eða birtingarvilla Tillaga að bætingu Tillaga um hvernig má bæta efnið Annað Annað sem þú vilt koma á framfæri Bók (valfrjálst) -- Veldu bók -- Eðlisfræði 2e E",
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": []
+  },
+  {
+    "role": "admin",
+    "route": "/this-page-does-not-exist",
+    "httpStatus": 404,
+    "finalUrl": "/this-page-does-not-exist",
+    "redirected": false,
+    "title": "404 - Námsbókasafn",
+    "topbarTitle": null,
+    "navLinks": [],
+    "navSections": [],
+    "headings": [],
+    "buttons": [],
+    "tooltips": [],
+    "selects": [],
+    "visibleTextLen": 82,
+    "textSample": "404 Síða finnst ekki Til baka á forsíðu FLÝTILEIÐIR Heim Ritill Orðasafn Framvinda",
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "pageErrors": [],
+    "badResponses": [
+      "404 /this-page-does-not-exist"
+    ]
+  },
+  {
+    "role": "admin",
+    "route": "/my-work",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "admin",
+    "route": "/segment-editor",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/editor"
+  },
+  {
+    "role": "admin",
+    "route": "/status",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/progress"
+  },
+  {
+    "role": "admin",
+    "route": "/reviews",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/editor"
+  },
+  {
+    "role": "admin",
+    "route": "/review-queue",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/editor"
+  },
+  {
+    "role": "admin",
+    "route": "/localization-editor",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/localization"
+  },
+  {
+    "role": "admin",
+    "route": "/localization-review",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/localization"
+  },
+  {
+    "role": "admin",
+    "route": "/books",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library"
+  },
+  {
+    "role": "admin",
+    "route": "/books/efnafraedi",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library?book=efnafraedi-2e"
+  },
+  {
+    "role": "admin",
+    "route": "/books/efnafraedi-2e",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library?book=efnafraedi-2e"
+  },
+  {
+    "role": "admin",
+    "route": "/chapter",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library"
+  },
+  {
+    "role": "admin",
+    "route": "/images",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/library"
+  },
+  {
+    "role": "admin",
+    "route": "/admin/users",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/admin?tab=users"
+  },
+  {
+    "role": "admin",
+    "route": "/admin/books",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/admin?tab=books"
+  },
+  {
+    "role": "admin",
+    "route": "/admin/feedback",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/admin?tab=feedback"
+  },
+  {
+    "role": "admin",
+    "route": "/analytics",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/admin?tab=analytics"
+  },
+  {
+    "role": "admin",
+    "route": "/workflow",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "admin",
+    "route": "/dashboard",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "admin",
+    "route": "/pipeline",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/progress"
+  },
+  {
+    "role": "admin",
+    "route": "/issues",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  },
+  {
+    "role": "admin",
+    "route": "/for-teachers",
+    "kind": "redirect",
+    "httpStatus": 200,
+    "finalUrl": "/"
+  }
+]
