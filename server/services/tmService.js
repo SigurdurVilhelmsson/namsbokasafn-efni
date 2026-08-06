@@ -9,8 +9,21 @@
  *   - fire-and-forget, so it can never break or slow the apply path (failures
  *     are logged, never thrown).
  *
- * The 2h git-backup cron already pushes books/, so a regenerated TMX reaches
- * git without any extra step.
+ * The 2h git-backup cron stages a `books/<slug>/tm/` pathspec, so a regenerated
+ * TMX reaches git without any extra step.
+ *
+ * ⚠️ That sentence was FALSE until 2026-08-06 (register C3). It read "the 2h
+ * git-backup cron already pushes books/", but git-backup.sh stages an explicit
+ * pathspec LIST and had no tm/ entry — so every TMX this service regenerated on
+ * production stayed on production's disk, and two real files sat untracked from
+ * June 2026. The pathspec now exists and is pinned by
+ * scripts/__tests__/git-backup.test.mjs. If you add another output directory,
+ * add its pathspec in the same commit rather than assuming books/ is swept.
+ *
+ * ⚠️ The glob is written <slug> above on purpose: its literal shell form ends
+ * with the two characters that CLOSE a block comment, so pasting it into a
+ * comment is a parse error — and because `npm run lint` covers only tools/ and
+ * scripts/, nothing catches that until every server test file fails to import.
  */
 const { spawn } = require('child_process');
 const path = require('path');

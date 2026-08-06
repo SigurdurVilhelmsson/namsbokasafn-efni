@@ -456,7 +456,7 @@ which is which before relying on a recovery.
 | Asset | Lives in | Backed up by | Max data-loss window |
 |-------|----------|--------------|----------------------|
 | Faithful/localized content (`books/*/03-`, `04-`, `05-`) | git | `scripts/git-backup.sh` (cron, every 2h) | ~2h |
-| Translation memory (`books/*/tm/*.tmx`) | git | regenerated on apply (`tmService`); ⚠️ **NOT staged by git-backup** — reaches git only via a manual commit (register C3) | manual |
+| Translation memory (`books/*/tm/*.tmx`) | git | regenerated on apply (`tmService`), then staged by `scripts/git-backup.sh` (cron, every 2h) — the `books/*/tm/` pathspec landed 2026-08-06, register C3 | ~2h |
 | Glossary export (`books/*/glossary/glossary-unified.json`) | git | `scripts/git-backup.sh` invokes `server/scripts/export-terminology.js`, then stages `books/*/glossary/` | ~2h |
 | Terminology DB, segment edits, discussions, reviews, users, notifications | `pipeline-output/sessions.db` (gitignored) | `scripts/backup-db.sh` (cron) | backup interval (e.g. 6h) |
 | Concordance index (`tm_segments`) | `sessions.db` | rebuildable from faithful files via `server/scripts/backfill-concordance.js` | n/a (derived) |

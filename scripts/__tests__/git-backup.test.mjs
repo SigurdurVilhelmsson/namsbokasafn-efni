@@ -71,6 +71,7 @@ const FIXTURE_FILES = {
   'books/prufubok/residue-report.faithful.json': '[]\n',
   'books/prufubok/02-mt-output/ch01/m00001-segments.locked': 'locked\n',
   'books/prufubok/glossary/glossary-unified.json': '{"terms":[]}\n',
+  'books/prufubok/tm/prufubok-2026-01-01.tmx': '<tmx version="1.4"/>\n',
 };
 
 beforeEach(() => {
@@ -108,7 +109,10 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
       path.join(work, 'books/prufubok/03-faithful-translation/ch01/m00001-segments.is.md'),
       'faithful v2\n'
     );
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":2}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":2}\n'
+    );
 
     runBackup();
 
@@ -116,7 +120,10 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
     expect(git(['log', '-1', '--format=%s'])).toMatch(/^auto-backup: /);
     // pushed: bare origin's main equals local main
     const localHead = git(['rev-parse', 'main']).trim();
-    const remoteHead = execFileSync('git', ['rev-parse', 'main'], { cwd: bare, encoding: 'utf8' }).trim();
+    const remoteHead = execFileSync('git', ['rev-parse', 'main'], {
+      cwd: bare,
+      encoding: 'utf8',
+    }).trim();
     expect(remoteHead).toBe(localHead);
   });
 
@@ -144,6 +151,64 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
     );
   });
 
+  it('C3: a newly generated TMX reaches the REMOTE, not just the local commit', () => {
+    // The TM is the last human-verified asset with no off-box copy: two real
+    // TMX files sat untracked on production from June 2026 because no pathspec
+    // staged books/*/tm/. Assert against the bare origin — a local commit that
+    // never pushes is exactly the failure this is about.
+    writeFileSync(path.join(work, 'books/prufubok/tm/prufubok-2026-06-16.tmx'), '<tmx>new</tmx>\n');
+
+    runBackup();
+
+    expect(readStatus().status).toBe('success');
+    expect(
+      execFileSync('git', ['show', 'main:books/prufubok/tm/prufubok-2026-06-16.tmx'], {
+        cwd: bare,
+        encoding: 'utf8',
+      })
+    ).toBe('<tmx>new</tmx>\n');
+  });
+
+  it('C3 guard: a gitignored dir matching a pathspec does not fail the whole run', () => {
+    // The E2E fixture book is COMMITTED while its test-written output dirs are
+    // gitignored (.gitignore "E2E fixture book" block), so those dirs match
+    // these globs on any box that has run E2E. Naming an ignored path
+    // explicitly makes `git add` exit 1 even though it stages everything else —
+    // which would log ERROR, abort the run and skip the C11(b) heartbeat.
+    // Deliberately ignore a dir matching a PRE-EXISTING pathspec, not the tm one
+    // this commit adds — otherwise the test passes vacuously whenever the tm
+    // pathspec is absent, and pins nothing. 05-publication is the real shape:
+    // it is one of the four fixture output dirs already in that ignore block.
+    writeFileSync(
+      path.join(work, '.gitignore'),
+      'pipeline-output/\nbooks/__e2e-fixture__/05-publication/\n'
+    );
+    mkdirSync(path.join(work, 'books/__e2e-fixture__/05-publication/faithful/ch01'), {
+      recursive: true,
+    });
+    writeFileSync(
+      path.join(work, 'books/__e2e-fixture__/05-publication/faithful/ch01/m00001.html'),
+      '<p>test output</p>\n'
+    );
+    git(['add', '.gitignore']);
+    git(['commit', '-q', '-m', 'ignore fixture outputs']);
+
+    // Dirty a real, non-ignored path so the run has something to commit.
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":9}\n'
+    );
+
+    runBackup();
+
+    expect(readStatus().status).toBe('success');
+    expect(readLog()).not.toMatch(/ERROR: git add failed/);
+    expect(readLog()).toMatch(
+      /INFO: skipped gitignored path: books\/__e2e-fixture__\/05-publication\//
+    );
+    expect(existsSync(heartbeatPath())).toBe(true);
+  });
+
   it('nothing dirty: status no_changes, exit 0', () => {
     runBackup();
     expect(readStatus().status).toBe('no_changes');
@@ -166,13 +231,18 @@ describe('git-backup.sh per-pattern staging (campaign item 4b)', () => {
 
 describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
   it('writes the heartbeat after a successful push', () => {
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":3}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":3}\n'
+    );
 
     runBackup();
 
     expect(readStatus().status).toBe('success');
     expect(existsSync(heartbeatPath())).toBe(true);
-    expect(readFileSync(heartbeatPath(), 'utf8')).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/m);
+    expect(readFileSync(heartbeatPath(), 'utf8')).toMatch(
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/m
+    );
   });
 
   it('writes the heartbeat when there was nothing to commit', () => {
@@ -198,7 +268,10 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     // Unreachable remote: the push fails, and so does the diagnostic fetch,
     // which also exercises the "counts omitted" fallback.
     git(['remote', 'set-url', 'origin', path.join(work, 'no-such-remote')]);
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":4}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":4}\n'
+    );
 
     const result = runBackup(true);
 
@@ -223,7 +296,10 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
     rmSync(other, { recursive: true, force: true });
 
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":5}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":5}\n'
+    );
 
     const result = runBackup(true);
 
@@ -253,7 +329,10 @@ describe('git-backup.sh content-backup heartbeat (register C11(b))', () => {
     execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
     rmSync(other, { recursive: true, force: true });
 
-    writeFileSync(path.join(work, 'books/prufubok/chapters/ch01/status.json'), '{"chapter":1,"x":6}\n');
+    writeFileSync(
+      path.join(work, 'books/prufubok/chapters/ch01/status.json'),
+      '{"chapter":1,"x":6}\n'
+    );
     expect(runBackup(true).status).toBe(1);
     expect(existsSync(heartbeatPath())).toBe(false);
 
