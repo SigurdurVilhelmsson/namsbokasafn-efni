@@ -50,13 +50,12 @@ describe('isWholeWordAt', () => {
 
   it('reproduces the pre-existing \\p{M} omission: matches mid-grapheme in decomposed text', () => {
     // Decomposed word: 'B' 'r' 'u' + COMBINING DIAERESIS (U+0308) + 'n' 'n'.
-    // Built from numeric code points via String.fromCharCode -- never a
-    // literal or \u-escaped combining character anywhere in this source
-    // file -- so there is nothing for a prettier/editor NFC pass to
-    // normalize; the source itself contains only ASCII digits. The
-    // normalize() check below still asserts the premise at runtime,
-    // belt-and-braces.
-    const decomposed = String.fromCharCode(0x42, 0x72, 0x75, 0x0308, 0x6e, 0x6e);
+    // The mark is built from its numeric code point via String.fromCharCode --
+    // never a literal or \u-escaped combining character anywhere in this
+    // source file -- so there is nothing for a prettier/editor NFC pass to
+    // normalize; the source itself contains only ASCII. The normalize() check
+    // below still asserts the premise at runtime, belt-and-braces.
+    const decomposed = 'Bru' + String.fromCharCode(0x0308) + 'nn';
     expect(decomposed.normalize('NFC')).not.toBe(decomposed);
     const begin = decomposed.indexOf('Bru');
     expect(begin).toBe(0); // "Bru" is a literal contiguous substring here -- the mark comes after
@@ -65,11 +64,12 @@ describe('isWholeWordAt', () => {
   });
 
   it('the same boundary correctly rejects in precomposed text (contrast case)', () => {
-    // Precomposed word: U+00FC is a single code point, so this string has
-    // no literal "Bru" substring at all. Checking the SAME 0..3 offsets
-    // (spanning "Bru" as code units) shows the boundary now correctly
-    // fails, because index 3 lands on 'n' -- an actual \p{L} -- not a mark.
-    const precomposed = String.fromCharCode(0x42, 0x72, 0xfc, 0x6e, 0x6e);
+    // Precomposed word: the u-with-diaeresis is a single code point (U+00FC),
+    // so this string has no literal "Bru" substring at all -- offsets 0..3
+    // span "Br" + that one letter, not "B" "r" "u". Checking those same 0..3
+    // offsets shows the boundary now correctly fails, because index 3 lands
+    // on 'n' -- an actual \p{L} -- not a combining mark.
+    const precomposed = 'Br' + String.fromCharCode(0xfc) + 'nn';
     expect(precomposed.normalize('NFC')).toBe(precomposed);
     expect(precomposed.indexOf('Bru')).toBe(-1); // confirms no literal "Bru" substring exists
     expect(isWholeWordAt(precomposed, 0, 3)).toBe(false);
