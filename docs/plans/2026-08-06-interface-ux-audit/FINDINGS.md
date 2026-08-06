@@ -107,19 +107,40 @@ work outstanding.
 | `/library`, `/localization` reachable by editors, no nav link | Orphaned pages. |
 | viewer's sidebar offers "Ritill" | 403 + raw "Insufficient permissions" in console. |
 
-### 6. The work teachers are best at is the work they cannot see
-**Cost: a decision, then small.** `layout.js:411`
+### 6. The localization nav gate does not implement the rule it exists to enforce
+**Cost: small.** `layout.js:411-415`
 
-> `// Localization editor — admin-only until Pass 2 workflow is verified`
+**The intended rule** (confirmed by the project lead, 2026-08-06): a chapter does not enter
+localization until its MT has been fully edited and reviewed, so *Aðlögun* should be
+visible only to a user who has been **assigned a fully-edited chapter for localization**.
+That is a pipeline-order gate and it is correct — Pass 2 cannot meaningfully precede
+Pass 1. An earlier draft of this audit misread it as a judgment about who is capable of
+localization work; that reading was wrong and is withdrawn.
 
-Pass 2 localization — unit conversions, Icelandic context, replacing culturally foreign
-examples — is precisely where a subject teacher's expertise is decisive, and precisely
-where linguistic training matters least. Pass 1 linguistic review is the opposite. The nav
-currently hides Pass 2 from editors and leads with Pass 1. The page gate is only
-`requirePageAuth()`, so the restriction is nav-only and provisional by its own comment.
+**What the code does instead:**
 
-Worth revisiting deliberately: if the goal is recruiting subject experts, the interface
-currently routes them to the task they are least equipped for.
+```js
+// Localization editor — admin-only until Pass 2 workflow is verified
+navLocalization.style.display = showAdmin ? '' : 'none';   // showAdmin = admin | head-editor
+```
+
+`#nav-localization` is referenced in exactly two places — its declaration and this line.
+There is **no assignment check and no chapter-stage check anywhere** controlling it. The
+gate is purely `role ∈ {admin, head-editor}`, and its own comment marks it as provisional.
+
+Consequences, all verified:
+- An `editor` **who has been assigned a chapter as localizer still sees no link**, because
+  eligibility is never consulted. They can only reach Pass 2 by being handed the URL.
+- Conversely an admin/head-editor sees the link regardless of whether any chapter is
+  eligible.
+- Nothing else blocks the assigned editor: `routes/localization-editor.js:87` already
+  admits `ROLES.EDITOR`, the page gate is only `requirePageAuth()`, and the walk confirmed
+  an `editor` loads `/localization` with no permission errors (a `viewer` gets 403s).
+
+The data needed already exists — `assignLocalizer()` and the `localizer` /
+`localizer_name` fields on `book_sections` (`bookRegistration.js:995`). So the fix is to
+gate the link on "this user is localizer on ≥1 eligible section" rather than on role,
+which would make the nav express the workflow rule instead of approximating it.
 
 ### 7. Vocabulary that presumes pipeline knowledge
 **Cost: string-only — mostly one file (`public/js/ui-strings.js`).**
