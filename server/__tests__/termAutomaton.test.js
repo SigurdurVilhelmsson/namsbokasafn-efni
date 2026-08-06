@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { isWholeWordAt } = require('../lib/wordBoundary');
+const { foldChar } = require('../lib/caseFold');
 
 describe('isWholeWordAt', () => {
   const at = (text, word) =>
@@ -158,6 +159,7 @@ describe('findFirstOccurrences — THE INVARIANT', () => {
     // code point, and this matches the String.fromCharCode convention used above.
     const a = build([[1, 'atom']]);
     const text = String.fromCharCode(0x03b9) + 'atom';
+    expect(foldChar('ι')).toBe('ͅ'); // pins the premise: folds to a COMBINING mark
     expect(findFirstOccurrences(a, text).has(1)).toBe(false);
     expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
   });
