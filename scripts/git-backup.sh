@@ -165,6 +165,7 @@ PATHSPECS=(
   'books/*/05-publication/'
   'books/*/chapters/'
   'books/*/glossary/'
+  'books/*/tm/'
   'books/*/translation-errors.json'
   'books/*/residue-report.*.json'
   'books/*/02-mt-output/*/*-segments.locked'
@@ -173,8 +174,27 @@ PATHSPECS=(
 ADD_FAILURES=0
 for pathspec in "${PATHSPECS[@]}"; do
   if compgen -G "$pathspec" > /dev/null; then
-    # shellcheck disable=SC2086 # the glob must expand into git's arguments
-    if ! git add -- $pathspec; then
+    # Drop matches git ignores before naming them. `git add` treats an
+    # EXPLICITLY NAMED ignored path as a hard error and exits 1 — even though it
+    # stages every other path in the same command — so one ignored match would
+    # log ERROR, abort the run and skip the C11(b) heartbeat, turning a test
+    # artifact into a false "content backup is broken" alarm. This is not
+    # hypothetical: the E2E fixture book is COMMITTED while its test-written
+    # output dirs are gitignored (.gitignore, "E2E fixture book" block), and
+    # those dirs match these globs on any box that has run E2E.
+    mapfile -t matches < <(compgen -G "$pathspec")
+    staged=()
+    for match in "${matches[@]}"; do
+      if git check-ignore -q "$match"; then
+        log "INFO: skipped gitignored path: $match"
+      else
+        staged+=("$match")
+      fi
+    done
+
+    if [ ${#staged[@]} -eq 0 ]; then
+      log "WARN: pathspec matched only gitignored paths (skipped): $pathspec"
+    elif ! git add -- "${staged[@]}"; then
       log "ERROR: git add failed for pathspec: $pathspec"
       ADD_FAILURES=$((ADD_FAILURES + 1))
     fi
