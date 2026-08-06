@@ -324,8 +324,13 @@ the *availability* property, not merely a latency optimisation. Cold build ~0.5 
 
 ⚠️ **~85 MB permanently resident is a real cost on a small Linode running everything**, and it is a
 different *shape* from the pre-fix 1,167 MB peak: that was transient-per-call, this is steady-state.
-A rebuild transiently holds two automata (~170 MB) before the old one is collected. **§7.2 must
-measure RSS on prod, not just latency.**
+A rebuild transiently holds two automata (~170 MB) before the old one is collected.
+
+⚖️ **LEAD DECISION 2026-08-06 — proceed as designed and MEASURE RSS on prod at §7.2**, rather than
+designing an eviction policy up front. An idle-eviction cache would trade a 540 ms synchronous
+rebuild for freed memory and add a second cache-lifecycle mechanism to a PR the register says must
+not expand. **If the prod reading says 85 MB is a large fraction of headroom, that is when to
+revisit — with a number.** This is a deliberate deferral, not an oversight; §7.2 is the checkpoint.
 
 If the per-call total proves unacceptable, the escalation path is caching the parsed rows too —
 which reintroduces the invalidation problem §4.6 exists to avoid, and is a decision to bring back to
