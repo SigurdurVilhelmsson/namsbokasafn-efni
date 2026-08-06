@@ -1321,29 +1321,44 @@ function translationTier(subjects, bookSubject) {
   return 'fallback';
 }
 
-/**
- * Find terminology matches in segments.
- * Uses inflection-aware matching and domain priority ranking.
- *
- * @param {Array<{segmentId, enContent, isContent}>} segments
- * @param {string|null} bookSlug - Book slug for domain priority
- * @returns {object} Map of segmentId → { matches, issues }
- */
 // C24: the ONLY cached state. It depends solely on the (headword_id, english)
 // pairs, and the fingerprint is computed from rows we re-read on every call — so
-// the DB stays authoritative and staleness is structurally impossible. No
-// invalidation hook to forget, no second connection, no test-mode special case.
+// the DB stays authoritative: there is no invalidation hook to forget, no second
+// connection, no test-mode special case. Staleness therefore cannot arrive as a
+// missed notification; it would require a HASH COLLISION between two different
+// headword sets. (This comment used to claim staleness was "structurally
+// impossible" — that overstated it. See fingerprintHeadwords for exactly what the
+// encoding does and does not guarantee.)
 //
 // PRAGMA data_version cannot do this job: all 16 mutators write through the same
 // singleton connection, and data_version is "unchanged for commits made on the
 // same database connection".
 let _automatonCache = null; // { fingerprint: number, automaton }
 
-/** FNV-1a over id + english, in SQL row order. */
+/**
+ * FNV-1a over the (id, english) pairs, in SQL row order.
+ *
+ * ⚠️ The NUL separators are load-bearing, and a SPACE is the WRONG delimiter.
+ * With no separator the concatenation is ambiguous: [[1,'a'],[2,'b']] and
+ * [[1,'a2 b']] both hash the stream "1 a2 b" and collide. A space closes that
+ * family but OPENS a worse one, because a space is legal INSIDE a headword —
+ * [[1,'a'],[2,'b']] and [[1,'a 2 b']] then both hash "1 a 2 b". 732 of the 1117
+ * committed chemistry headwords are multi-word ("melting point", "acid
+ * dissociation constant"), so a space would trade a rare collision family for the
+ * majority case.
+ *
+ * NUL cannot occur in a headword, so the encoding is unambiguous and the residual
+ * collision risk is the ordinary 2^-32 bound rather than a structural family.
+ *
+ * ⚠️ The 0x01000193 multiply is also load-bearing: replacing it with 1 degrades
+ * this to an order-blind XOR fold, under which the pure transposition
+ * 'atom' → 'atmo' would NOT invalidate the cache. Pinned by the transposition
+ * test in findTermsGolden.test.js.
+ */
 function fingerprintHeadwords(pairs) {
   let hash = 0x811c9dc5;
   for (const [id, english] of pairs) {
-    const chunk = `${id} ${english}`;
+    const chunk = `${id}\0${english}\0`;
     for (let i = 0; i < chunk.length; i++) {
       hash ^= chunk.charCodeAt(i);
       hash = Math.imul(hash, 0x01000193) >>> 0;
@@ -1352,6 +1367,14 @@ function fingerprintHeadwords(pairs) {
   return hash;
 }
 
+/**
+ * Find terminology matches in segments.
+ * Uses inflection-aware matching and domain priority ranking.
+ *
+ * @param {Array<{segmentId, enContent, isContent}>} segments
+ * @param {string|null} bookSlug - Book slug for domain priority
+ * @returns {object} Map of segmentId → { matches, issues }
+ */
 function findTermsInSegments(segments, bookSlug = null) {
   const db = getDb();
 
@@ -1412,6 +1435,15 @@ function findTermsInSegments(segments, bookSlug = null) {
     // EVERY call, eager construction pays all 28,903 compiles per request — a
     // correct automaton with an eager isRegex is not a fix at all.
     // Non-enumerable so it cannot leak into any serialised output.
+    //
+    // ⚠️ Because it is non-enumerable, `{...translation}` SILENTLY DROPS isRegex,
+    // and the loss surfaces only at runtime as
+    // `TypeError: Cannot read properties of undefined (reading 'lastIndex')`
+    // at the IS-text check below. Nothing spreads a translation today — the
+    // partition spreads the TERM (`{...term}`), whose own properties are all
+    // enumerable. If you ever spread a translation, copy this descriptor across
+    // (or re-attach the accessor); do not convert it to a plain property, which
+    // would restore the eager-compile cost this lazy accessor exists to avoid.
     Object.defineProperty(translation, 'isRegex', {
       configurable: true,
       enumerable: false,
