@@ -469,8 +469,17 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       archive.on('error', (err) => resolve({ kind: 'archive', err }));
       res.on('error', (err) => resolve({ kind: 'response', err }));
       res.on('close', () => {
-        // `close` follows `finish` on EVERY successful download, so without the
-        // writableFinished guard this would abort a completed archive.
+        // `close` follows `finish` on EVERY successful download and arrives
+        // while this handler is still awaiting the race below, so the guard is
+        // LOAD-BEARING, not defensive: measured 3/3, removing it makes a fully
+        // successful download resolve {kind:'disconnect'} and run abort() +
+        // destroy() against a completed response.
+        //
+        // ⚠️ That mutation turned nothing red across the entire server suite —
+        // the spurious abort lands after every observer has settled on `end`
+        // with complete bytes. `booksDownloadStreamFailure.test.js`'s
+        // "does not abort or destroy on a fully successful download" is the
+        // only check that can see it. Do not delete that test with this line.
         if (!res.writableFinished) resolve({ kind: 'disconnect' });
       });
     });

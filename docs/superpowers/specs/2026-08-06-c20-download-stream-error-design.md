@@ -220,12 +220,22 @@ against the unreadable fixture, then prints one JSON line. The parent asserts:
 | Assertion | Catches | Pre-fix |
 |---|---|---|
 | child exit code `0` | the crash | exit `1` (uncaught `EACCES`) |
-| `settled: true` within a **5 s** parent timeout | **the hang** | child never exits → parent kills → fail |
+| a `REPORT:` line is present at all | **the hang** | no line — see the correction below |
 | `destroyed: true` | D1 (fail visibly) | n/a |
 | `finished: false` | that we did not end cleanly and hand over a truncated zip | n/a |
 
-The middle two are what stop a fix that merely ends the crash from passing. 5 s is chosen against
-§1.2's measurement that `finalize()` was still pending at 3 s.
+The middle two are what stop a fix that merely ends the crash from passing.
+
+> **✅ CORRECTED 2026-08-06 during implementation — the hang row's predicted MECHANISM was wrong.**
+> This row read: *`settled: true` within a **5 s** parent timeout · **the hang** · child never exits
+> → parent kills → fail.* Measured against the error-listener-only mutation, **4/4: the child exits
+> `0` in ~400 ms, silently, printing nothing** — it is neither killed nor timed out. `finalize()`
+> genuinely never settles (so `report()` never runs, confirming §1.2), but in this harness nothing
+> holds the event loop open once the archive has errored, so node drains and exits cleanly. In
+> production the listening socket *is* holding it open, which is why the same defect presents there
+> as a request that hangs forever. **The assertion that actually catches the hang is therefore the
+> missing-`REPORT`-line check, not the parent timeout** — the check §4.4 below framed as a mere
+> diagnostic. The 5 s timeout is retained as a backstop, but it is not what fires.
 
 ⚠️ **A crashing child prints no JSON at all** — it dies before the report line. The parent must
 therefore treat "no JSON" as a failure attributable to the exit code, not as an assertion error on a
@@ -243,27 +253,48 @@ unchanged; the race must not alter success behaviour.
 Per this repo's standing lesson — *the dangerous check is the one that passes for the wrong reason* —
 each half of the fix is reverted independently and must turn **its own** assertion red:
 
-| Mutation | Must turn red | Must stay green |
-|---|---|---|
-| remove `archive.on('error')` | T1 exit code | T3 |
-| keep the listener, restore `await archive.finalize()` | T1 `settled` | T3 |
-| replace `res.destroy()` with `res.end()` | T1 `destroyed` / `finished` | T1 exit code, T3 |
-| remove the `res.on('close')` handler | T2 | T1, T3 |
-| remove the `writableFinished` guard | ⚠️ **expected T3 — but UNVERIFIED, see below** | — |
+**✅ ALL FIVE ROWS RUN 2026-08-06 during implementation. Results below are measured, not predicted.**
+Two rows falsified their prediction, and the second falsification changed the code.
 
-⚠️ **The last row is a prediction, not a measurement, and it may well be wrong.** On the happy path
-the ordering is: `finalize()` resolves → `res` finishes → `res` emits `close`. If `finalize()`
-therefore always wins the race, the late `close` resolution is discarded and removing the guard
-**breaks nothing** — making it defensive rather than load-bearing. Run the mutation and record the
-actual result:
+| # | Mutation | Predicted red | **Measured** | Green as required |
+|---|---|---|---|---|
+| 1 | remove `archive.on('error')` | T1 exit code | ✅ T1 exit code (`expected 1 to be +0`) | T2, T3 |
+| 2 | keep the listener, restore `await archive.finalize()` | T1 `settled`, via parent timeout | ⚠️ **T1 red on the missing `REPORT` line** — child exits `0` in ~400 ms, never killed (4/4). Prediction wrong on mechanism, right on outcome → §4.4 corrected | T3 |
+| 3 | replace `res.destroy()` with `res.end()` | T1 `destroyed`/`finished` | ✅ T1 **and** T2 red on `destroyed` | T1 exit code, T3 |
+| 4 | remove the `res.on('close')` handler | T2 | ✅ T2 red on `res.destroyed` — **and only because T2 was strengthened**; see below | T1, T3 |
+| 5 | remove the `writableFinished` guard | T3 (⚠️ unverified) | ⚠️ **nothing red across the whole 1852-test server suite — yet the guard IS load-bearing.** New test T4 added; row now red | T1, T2, T3 |
 
-- **If T3 goes red**, the guard is load-bearing and the prediction stood.
-- **If nothing goes red**, the guard is belt-and-braces against an ordering this design has not
-  demonstrated. Keep it — but comment it as defensive, and **correct this table**, because an
-  untriggerable mutation row is exactly the vacuous check §4.3 warns about, one level up.
+**Row 4 — the plan's T2 was vacuous and would have passed this mutation.** As specified, T2 asserted
+only that the handler *settles*, which it does on the happy path regardless. Under the mutation it
+settled in 264 ms and stayed green. T2 was strengthened with `expect(res.destroyed).toBe(true)` —
+`res.emit('close')` does not set `destroyed`; only the handler's own `res.destroy()` does — and the
+mutation then turned it red. **The strengthening is what earned the row.**
 
-Either outcome is a result. Recording "unverified" here rather than asserting the red is the point:
-the register's §C20 entry exists because a confident, unmeasured claim was caught before it shipped.
+**Row 5 — the prediction failed, but so would have BOTH of the dispositions this section offered.**
+The two branches written here were "T3 goes red ⇒ load-bearing" and "nothing goes red ⇒ defensive,
+comment it as such". Neither is what happened. Probing `outcome` directly, **3/3 each way**:
+
+| | `outcome` on a **fully successful** download |
+|---|---|
+| guard removed | `{"kind":"disconnect"}` — `archive.abort()` + `res.destroy()` run |
+| guard present | `null` |
+
+Measured happy-path order is `finish → close(writableFinished=true) → handler returns`, so `close`
+arrives **while the handler is still awaiting the race** — the guard is the only thing suppressing
+it. **The guard is load-bearing.** No test saw its removal because the spurious abort lands after
+every existing observer has settled on `end` with complete, correct bytes.
+
+**So "no test went red" meant the suite was blind, not that the code was inert** — and the
+disposition this section prescribed for that outcome (downgrade the comment to "defensive") would
+have written a false claim into the source. A fourth test was added instead: *"does not abort or
+destroy on a fully successful download"*, which spies `Archiver.prototype.abort` (note: `abort` is
+**not** on `ZipArchive.prototype` — spying there misses it) and asserts the success path never takes
+the failure branch. It is green on correct code and red under row 5.
+
+⚠️ **Generalises beyond C20:** an unfalsifiable mutation row is not evidence that the mutated line is
+optional. Distinguish *"the change has no effect"* from *"no check can observe the effect"* by
+probing the value directly before drawing either conclusion. Recording "unverified" here rather than
+asserting the red is what forced this measurement — the mechanism worked.
 
 ### 4.6 Not asserted
 

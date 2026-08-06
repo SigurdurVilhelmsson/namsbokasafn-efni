@@ -160,4 +160,63 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
     // the assertion that discriminates, and mutation row 4 is what earns it.
     expect(res.destroyed).toBe(true);
   }, 15000);
+
+  /**
+   * The `writableFinished` guard, made observable.
+   *
+   * `close` fires on EVERY successful download (measured order: finish ->
+   * close(writableFinished=true) -> handler returns), and it arrives while the
+   * handler is still awaiting the race. With the guard removed, `outcome`
+   * becomes {kind:'disconnect'} on a fully successful download — measured 3/3
+   * — so archive.abort() and res.destroy() run against a completed response.
+   *
+   * ⚠️ That mutation turned NOTHING red across the whole 1852-test server
+   * suite, because the spurious abort lands after the response has already
+   * finished with complete, correct bytes: every existing observer has settled
+   * on `end`/`finish` by then. So "no test went red" did NOT mean the guard was
+   * merely defensive — it meant the suite was blind to it. This test is the
+   * eye. It asserts the success path never takes the failure branch, via the
+   * one side effect that branch has and the happy path does not: abort().
+   */
+  it('does not abort or destroy on a fully successful download', async () => {
+    const router = require('../routes/books');
+    const handler = router.stack
+      .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
+      .route.stack.at(-1).handle;
+
+    // `abort` lives on Archiver.prototype, one level above ZipArchive.prototype
+    // — spying on ZipArchive.prototype directly would silently miss it. Same
+    // CommonJS module instance the route uses (both resolve server/node_modules).
+    const { ZipArchive } = require('archiver');
+    const archiverProto = Object.getPrototypeOf(ZipArchive.prototype);
+    const realAbort = archiverProto.abort;
+    let abortCalls = 0;
+    archiverProto.abort = function (...args) {
+      abortCalls += 1;
+      return realAbort.apply(this, args);
+    };
+
+    try {
+      const res = new PassThrough();
+      res.statusCode = 200;
+      res.status = function (c) {
+        this.statusCode = c;
+        return this;
+      };
+      res.headersSent = false;
+      res.setHeader = () => {};
+      res.json = () => {};
+      res.on('data', () => {});
+      res.on('error', () => {});
+
+      await handler(
+        { params: { bookId: FIXTURE_BOOK }, query: { chapter: '1', type: 'pub-mt-preview' } },
+        res
+      );
+
+      expect(abortCalls).toBe(0);
+    } finally {
+      archiverProto.abort = realAbort;
+    }
+  }, 15000);
 });
