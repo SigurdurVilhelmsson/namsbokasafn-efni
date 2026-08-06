@@ -4,6 +4,13 @@ const require = createRequire(import.meta.url);
 const { isWholeWordAt } = require('../lib/wordBoundary');
 const { foldChar } = require('../lib/caseFold');
 
+// The inline /(?<![\p{L}\p{N}_])…(?![\p{L}\p{N}_])/iu literals below are a
+// hand transcription of production's wholeWordRegex (terminologyService.js),
+// which builds its lookarounds with flags 'giu'. ⚠️ Transcribe the `i` — a
+// reference written /u is not production, and a reference that is not
+// production cannot falsify the predicate it is supposed to check. (`g` is
+// omitted deliberately: it makes .test() stateful via lastIndex, and it does
+// not affect the verdict.)
 describe('isWholeWordAt', () => {
   const at = (text, word) =>
     isWholeWordAt(text, text.indexOf(word), text.indexOf(word) + word.length);
@@ -25,13 +32,13 @@ describe('isWholeWordAt', () => {
     const text = '\u{1D400}atom';
     expect(isWholeWordAt(text, 2, 6)).toBe(false);
     // and the regex it replaces agrees:
-    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(false);
   });
 
   it('accepts after an astral character that is NOT a letter', () => {
     const text = '\u{1F600}atom'; // emoji, not \p{L}
     expect(isWholeWordAt(text, 2, 6)).toBe(true);
-    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(true);
   });
 
   it('steps by CODE POINT (forward) next to an astral character', () => {
@@ -40,13 +47,13 @@ describe('isWholeWordAt', () => {
     // the pair. codePointAt(end) must read the whole code point.
     const text = 'atom\u{1D400}';
     expect(isWholeWordAt(text, 0, 4)).toBe(false);
-    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(false);
   });
 
   it('accepts before an astral character that is NOT a letter (forward)', () => {
     const text = 'atom\u{1F600}';
     expect(isWholeWordAt(text, 0, 4)).toBe(true);
-    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(true);
   });
 
   it('reproduces the pre-existing \\p{M} omission: matches mid-grapheme in decomposed text', () => {
@@ -61,7 +68,7 @@ describe('isWholeWordAt', () => {
     const begin = decomposed.indexOf('Bru');
     expect(begin).toBe(0); // "Bru" is a literal contiguous substring here -- the mark comes after
     expect(isWholeWordAt(decomposed, begin, begin + 3)).toBe(true);
-    expect(/(?<![\p{L}\p{N}_])Bru(?![\p{L}\p{N}_])/u.test(decomposed)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])Bru(?![\p{L}\p{N}_])/iu.test(decomposed)).toBe(true);
   });
 
   it('the same boundary correctly rejects in precomposed text (contrast case)', () => {
@@ -74,7 +81,7 @@ describe('isWholeWordAt', () => {
     expect(precomposed.normalize('NFC')).toBe(precomposed);
     expect(precomposed.indexOf('Bru')).toBe(-1); // confirms no literal "Bru" substring exists
     expect(isWholeWordAt(precomposed, 0, 3)).toBe(false);
-    expect(/(?<![\p{L}\p{N}_])Bru(?![\p{L}\p{N}_])/u.test(precomposed)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])Bru(?![\p{L}\p{N}_])/iu.test(precomposed)).toBe(false);
   });
 
   it('does not crash when a lone low surrogate sits at the very start of text', () => {
@@ -83,7 +90,39 @@ describe('isWholeWordAt', () => {
     // throw `RangeError: Invalid code point NaN` instead of returning a value.
     const text = '\uDC00atom';
     expect(isWholeWordAt(text, 1, 5)).toBe(true);
-    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(true);
+  });
+
+  // ── U+0345: the one code point where the `i` flag is load-bearing ──────────
+  // U+0345 COMBINING GREEK YPOGEGRAMMENI case-folds to ι (a letter), so
+  // production's case-insensitive [\p{L}\p{N}_] admits it while a bare /u does
+  // not. Sweeping all 1,112,064 code points found EXACTLY ONE such divergence,
+  // so these two tests are the complete pin for this axis — and both flanks are
+  // affected, not just the leading one.
+  //
+  // Built with String.fromCharCode per this file's convention: no literal or
+  // \u-escaped combining character ever appears in this source, so there is
+  // nothing for a prettier/editor NFC pass to silently normalize away.
+  const YPOGEGRAMMENI = String.fromCharCode(0x0345);
+
+  it('treats U+0345 as a word character on the LEADING flank, as production does', () => {
+    const text = YPOGEGRAMMENI + 'atom';
+    // Premise: the flag sets genuinely disagree on this character.
+    expect(/[\p{L}\p{N}_]/u.test(YPOGEGRAMMENI)).toBe(false);
+    expect(/[\p{L}\p{N}_]/iu.test(YPOGEGRAMMENI)).toBe(true);
+    // Production finds NO whole-word match: U+0345 is a word char to it.
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(false);
+    // The predicate must agree. Drop the `i` from WORD_CHAR and this returns
+    // true — an OVER-MATCH production never emits.
+    expect(isWholeWordAt(text, 1, 5)).toBe(false);
+  });
+
+  it('treats U+0345 as a word character on the TRAILING flank, as production does', () => {
+    // Mirror of the above. ⚠️ This side matters independently: an early review
+    // of this defect reported the trailing flank as identical, and it is not.
+    const text = 'atom' + YPOGEGRAMMENI;
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(false);
+    expect(isWholeWordAt(text, 0, 4)).toBe(false);
   });
 });
 
@@ -150,25 +189,35 @@ describe('findFirstOccurrences — THE INVARIANT', () => {
     expect(findFirstOccurrences(a, 'Þungi hlutarins.').get(1)).toEqual({ index: 0, length: 5 });
   });
 
-  it('applies the boundary to the ORIGINAL text, never the folded copy', () => {
-    // GREEK SMALL LETTER IOTA (U+03B9) folds to U+0345, a COMBINING mark, and
-    // wordBoundary deliberately omits \p{M}. So a neighbour that is \p{L} in the
-    // original becomes a NON-word character once folded: checking the boundary
-    // against foldString(text) would match here, where production does not.
-    // Built from its numeric code point, never a literal — the premise is one exact
-    // code point, and this matches the String.fromCharCode convention used above.
+  it('rejects a match whose neighbour is a letter that case-folds to a combining mark', () => {
+    // GREEK SMALL LETTER IOTA (U+03B9) folds to U+0345, a COMBINING mark.
+    //
+    // ⚠️ RENAMED AND RE-SCOPED. This test was called "applies the boundary to the
+    // ORIGINAL text, never the folded copy", and under the old bare-/u WORD_CHAR
+    // it really did prove that: U+0345 was then a NON-word character, so running
+    // the boundary on foldString(text) would have matched where the original does
+    // not. WORD_CHAR now carries the `i` flag production has always had (flags
+    // 'giu' — see wordBoundary.js), which closes the class under case folding;
+    // foldString is length-stable; so isWholeWordAt now returns the SAME answer on
+    // the folded copy as on the original, for EVERY input. Fold-invariance is a
+    // theorem, not a coincidence — a sweep of all 1,112,064 code points found ZERO
+    // fixtures that could still tell the two apart. So the old name promised a
+    // discrimination no test can make, and keeping it would have left a
+    // vacuous-but-green guard behind.
+    //
+    // What survives is the OUTCOME guard below: an iota neighbour must block the
+    // match. The `i` flag it now depends on is pinned directly by the two U+0345
+    // tests in the isWholeWordAt block above.
+    //
+    // Fixtures are built from numeric code points, never literals, per this file's
+    // convention — nothing here for an NFC pass to silently mangle.
     const a = build([[1, 'atom']]);
     const text = String.fromCharCode(0x03b9) + 'atom';
     // Pins the premise this test's reasoning depends on: foldChar really does fold
-    // iota to a combining mark. Built from numeric code points, matching this
-    // file's convention, same as `text` above. That convention exists to protect a
-    // FIXTURE from silent NFC mangling (a literal would fail silently, still green,
-    // testing something else); here it protects an EXPECTED VALUE instead, where
-    // mangling would fail loudly — a different risk, but the convention still costs
-    // nothing to keep, so keep it.
+    // iota to a combining mark.
     expect(foldChar(String.fromCharCode(0x03b9))).toBe(String.fromCharCode(0x0345));
     expect(findFirstOccurrences(a, text).has(1)).toBe(false);
-    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(false);
   });
 
   it('recovers the earliest span when one headword reaches two keywords', () => {
