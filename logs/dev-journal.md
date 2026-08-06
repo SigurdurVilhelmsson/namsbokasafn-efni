@@ -264,3 +264,25 @@ worktree isolation — but note `/tmp` is a 1.5 GB tmpfs against a 4.7 GB tree, 
 there will ENOSPC.
 
 ---
+
+## 2026-08-06 22:14 - C20 is spec'd + planned and next; C3 shipped but its result is stranded on prod
+
+**Branch:** main
+**Modified:**
+ (clean)
+
+**Recent commits:**
+9dac3f49 docs: a dev push to main can strand prod's content backup — even a docs commit
+eea11fe3 docs(register): C3's code worked on prod, its push did not; C22 settled; C27+C28 logged
+f33934af docs(plan): C20 — implementation plan for the download-stream error fix
+
+**Why:** Session covered C3 end-to-end (merged #366, deployed; the 22:00 cron proved the
+pathspec by committing exactly the two June TMX files, then the push was REJECTED because
+docs commits from dev left prod behind — files still only on the box, one deploy releases
+them). C22 settled by querying prod: no publication.* rows exist at all, so the register's
+prescribed fix was a no-op that would have looked like a fix; logged the wider cause as C27
+(four dead editor controls) and C28 (health check reports ok while carrying the failure).
+C20 spec + 5-task plan written; reproducer simplified to chmod 000 BEFORE the request (3/3).
+⚠️ No CI on any of it — GitHub Actions was in a major_outage; local npm test was the gate.
+
+---
