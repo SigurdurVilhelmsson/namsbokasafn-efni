@@ -138,7 +138,9 @@ Pinned by §5.5.
 ### 4.1.1 Duplicate English headwords are a correctness invariant, not plumbing
 
 The automaton is keyed by **string**, but the schema is `UNIQUE(english, pos)`
-(`server/migrations/032-terminology-redesign.js:37`) — **not** unique on `english`. The same English
+(`server/migrations/032-terminology-redesign.js:38`) — **not** unique on `english`. (SQLite treats
+NULLs as distinct in a UNIQUE index, so even two NULL-`pos` rows are permitted; `upsertHeadword`'s
+explicit `pos IS NULL` handling at `:110` shows the code already knows this.) The same English
 string legitimately exists as **two headword rows** with different parts of speech, and the SQL
 groups by `h.id, t.id`, so both reach `terms` as independent entries.
 
@@ -251,6 +253,13 @@ citation.
 **This hazard is pre-existing and reproduced exactly. It is not introduced by the swap and is not
 fixed by it.** Changing it would be a behaviour change outside the narrow scope.
 
+⚠️ **The boundary check must step by CODE POINT, not code unit.** The lookbehind evaluates the
+preceding *code point*; a naive `text[begin - 1]` reads a lone low surrogate, which is never
+`\p{L}`, so `"𝐀atom"` would match under the new path but not the old. Not reachable in today's data
+(§4.10 measured zero astral code points), but the guard is one line — back up over a surrogate pair
+with `codePointAt` — and §5.2's generator alphabet must include astral characters or the class is
+untestable.
+
 **No astral code points exist anywhere** in headwords (3,270) or across 01-source (1,192 files /
 35.5 M chars), 02-for-mt, 02-mt-output, 03-faithful-translation or 05-publication. UTF-16 index
 arithmetic is safe on today's data.
@@ -299,12 +308,22 @@ decision to bring back to the lead, not to take silently.
 
 ### 4.7 Lazy `isRegex`
 
-`buildInflectionRegex` is constructed **28,903 times** and executed **~313 times**. ⚠️ **The 4.16
-mean hides a long tail: one production translation carries 72 inflection forms** (§4.10), i.e. a
-73-alternative regex. Size any per-regex reasoning against 73, not against 4. Build it lazily
-(memoised accessor on the translation object) or the AC cold build becomes a **6–11 s event-loop
-stall on every cache invalidation — i.e. on every terminology approval, an editor action.** With
-lazy construction the cold build is under 1 s.
+`buildInflectionRegex` is constructed **28,903 times** and executed **~313 times**.
+
+🔴 **Lazy construction is MANDATORY — it is load-bearing for the entire performance claim, not
+cold-path hygiene.** The register frames the eager cost as a stall "on every cache invalidation",
+but that assumes a design where the term set is cached. **This design deliberately re-reads and
+rebuilds the translation objects on every call (§4.6)**, and `buildInflectionRegex` sits in that
+per-call path at `:1376` — *not* in the cached automaton build. So without laziness the ~28,903
+compiles are paid **on every single request**, and the 6–11 s figure becomes a per-request stall.
+**A correct AC implementation with eager `isRegex` is not a fix at all.**
+
+⚠️ **The 4.16 mean hides a long tail: one production translation carries 72 inflection forms**
+(§4.10) — a 73-alternative regex. Size any per-regex reasoning against 73, not against 4.
+
+⚠️ **The memoised accessor lives on per-call-rebuilt objects**, so the ~313 regexes that *are*
+executed recompile every call. That is acceptable — but it is a real per-call cost and belongs in
+§4.6's accounting, not omitted from it.
 
 ⚠️ **Do not `Object.freeze` the cached term objects** — a memoised accessor must be able to write
 its cached value.
@@ -349,7 +368,15 @@ byte-identical.
 
 ⚠️ **Duplicate English headwords:** the automaton is keyed by *string*, but several headword ids may
 share one `english`. Map keyword → **list** of headword ids; a lookup keyed on the string alone
-would drop siblings.
+would drop siblings. Case-variant duplicates (`Atom` / `atom`) fold to one keyword and are handled by
+the same list.
+
+⚠️ **Empty and whitespace-only headwords must mirror `wholeWordRegex` exactly.** It maps falsy
+`english` to `/(?!)/` — matches nothing (`:1878-1879`) — so falsy keywords must be **excluded** from
+the automaton (an empty pattern would also loop forever in most AC outputs). But whitespace-only
+`english` currently **does** match a lone space: `' '` passes the `!english` guards at `:278`,
+`:985`, `:1074`, and only `:1116` trims. It must therefore be **included**. Two opposite answers, one
+line apart — do not collapse them into a single "skip blanks" check.
 
 ### 4.9 Deleting `POST /api/terminology/check-consistency`
 
@@ -362,8 +389,22 @@ It is also the **only** `findTermsInSegments` call site gated by `requireAuth` *
 unbounded, unvalidated `segments` array**. Any authenticated user, including `viewer`, can hand it
 an arbitrary segment list. Under today's cost that is a one-request server-outage handle.
 
-Deleting it takes the blast radius from 5 call sites to 4 and removes the handle. The 4 E2E
-assertions are removed with it.
+Deleting it removes **two** call expressions — `terminology.js:1107` (segments branch) and `:1122`
+(legacy `content`/`sourceContent` branch) — taking the blast radius from **5 expressions to 3**
+(`segment-editor.js:1000`, `terminologyService.js:1718`, `:1732`), or 4 calling functions to 3. It
+also removes the handle.
+
+⚠️ **`docs/_generated/routes.md:305` lists this route, and `docs-check.yml` path-triggers on
+`server/routes/**` then diffs `docs/_generated/` after `npm run docs:generate`.** Regenerate it in
+the same PR or the gate goes red. Loud, but it is not in §7's checklist otherwise.
+
+⚠️ **What the deletion costs in coverage, stated honestly.** It removes two whole *tests*, not four
+assertions: `server/e2e/terminology.spec.js:746-772` ("detects missing translation") and `:774-799`
+("passes when translation present"). They create a term, approve it, and assert the `missing` issue
+appears / does not — driving `findTermsInSegments` through a real server and a real DB. They are the
+only **integration-level** exercise of the issue path. **The behaviours themselves are already
+unit-pinned** at `terminologyService.test.js:1129-1174`, so what is lost is the real-server path, not
+the behaviour. → decision recorded in §8.
 
 ### 4.10 Production census — measured 2026-08-06
 
@@ -406,10 +447,29 @@ character and a stray `U+00B8` cedilla in `icelandic`; 22 standalone `´ U+00B4`
 
 ### 5.0 Commit order — the oracle must not be circular
 
-1. **Commit 1 — the SQL tie-break, alone.** `ORDER BY LENGTH(h.english) DESC` (`:1349`) has **no**
-   tie-break, so SQLite's arbitrary order among equal-length headwords changes match-array **order**
-   in 6–10 of 274 segments (membership and issues unaffected — measured). Add `, h.id ASC`.
-   `GROUP_CONCAT(ts.subject)` is unordered too and must not be hashed as a change signal.
+1. **Commit 1 — the ordering fix, alone.** Three levels are unspecified today and **all three land in
+   the golden**. Fixing only the first leaves the oracle resting on unspecified order.
+
+   | level | today | fix |
+   |---|---|---|
+   | headwords | `ORDER BY LENGTH(h.english) DESC` — no tie-break; arbitrary order among equal-length headwords shifts match-array order in 6–10 of 274 segments (measured) | `, h.id ASC` |
+   | **translations within a headword** | **share BOTH sort keys ⇒ completely unordered** | `, t.id ASC` |
+   | subject lists | `GROUP_CONCAT(ts.subject)` is unordered | sort after `.split(',')` **in JS** |
+
+   ⚠️ **The translation level is the dangerous one, and it is not hypothetical.** The ranking sort
+   (`:1436-1442`) returns `0` when both `isPrimary` and both `status` match — and per §4.10 **all
+   28,903 production rows are `approved`**, so it returns `0` on essentially every comparison. The
+   sort is stable, so `sorted[0]` **is raw SQL row order**. That decides `matches[].icelandic`,
+   the `translations[]` array order, `issues[].expected` and `issues[].message` — every one of which
+   is captured in the golden. A SQLite or better-sqlite3 bump can then flake the oracle, and the
+   natural response — "regenerate the golden" — destroys it silently. Same failure family the
+   register records for `toMatchSnapshot -u`.
+
+   Sort subjects **in JS after the split**, not with `GROUP_CONCAT(… ORDER BY …)`: the SQL form
+   needs SQLite ≥ 3.44 and would make the oracle depend on the bundled engine version, which is the
+   very coupling this commit exists to remove. *(Inert in production today — §4.10 measured exactly
+   one subject row per translation — but fixtures will have several, and the golden must not depend
+   on which order they come back in.)*
 2. **Commit 2 — capture the golden from the UNMODIFIED function.**
 3. **Commit 3+ — write AC.**
 
@@ -429,17 +489,44 @@ Fixture data is seeded from the committed `glossary-unified.json` corpus into th
 data is used.** The seed **generator is committed** alongside the fixture so the golden is
 reproducible rather than a one-off artifact whose provenance is lost.
 
-⚠️ **The fixture must reproduce prod's SKEW, not a balanced term set.** Per §4.10, a chemistry book
-sees ~709 in-scope against ~28,194 fallback translations. A fixture with, say, 50/50 tiering would
-leave the dominant production path — the fallback branch and its "surfaces but never issues" rule
-(`:1465`, `:1384-1387`) — almost untested while the golden passed. Build the fixture with a
-deliberately fallback-heavy subject distribution and state the ratio in the fixture generator.
+#### ⚠️ The corpus alone CANNOT produce a meaningful golden — measured, not suspected
 
-⚠️ **Verify the corpus actually supplies every field the function reads** before building on it —
-`english`, `icelandic`, `inflections`, `status`, and per-translation `subjects`, plus a
-`book_subject_mapping` row (the helper seeds chemistry and biology at `:80-84`). A fixture missing
-`subjects` would exercise the `bookSubject = null` branch only, and the tier/partition logic — the
-part most at risk — would go untested while the golden still passed.
+The committed `glossary-unified.json` files carry the `merge-glossary` shape:
+
+```
+english · icelandic · pos · definitionEn · definitionIs · status · source · alternatives · category · chapter · notes
+```
+
+**No `subjects` field. No `inflections` field. Zero of 4,496 terms have either.**
+
+Seeded naively, the consequences compound and every one of them is silent:
+
+| gap | consequence | what the golden would silently NOT cover |
+|---|---|---|
+| no `subjects` | every translation untagged ⇒ `translationTier` (`:1319`) always returns `in-scope` | the whole fallback partition (`:1388-1403`), `isPrimary`, the homograph guard — **the part §3 calls most at risk** |
+| no `inflections` | `buildInflectionRegex` only ever receives `[]` | the entire Icelandic path, incl. §4.7's `['mól','mól (m)']` counterexample |
+| `liffraedi-2e` is **100% `needs_review`** | `WHERE status IN ('approved','proposed')` filters it to **zero rows** | a biology golden case would be **fully vacuous** — it would pass on an empty result set |
+
+⚠️ **`efnafraedi-2e` is the only usable book**: `approved 617 + proposed 170 = 787` in-scope rows —
+which is exactly the register's "787 real EN↔IS pairs". That figure was always chemistry-only.
+
+#### The generator must therefore synthesize, explicitly and in committed code
+
+1. **Assign subjects deliberately, reproducing prod's skew.** Because the corpus supplies none, we
+   choose them — so choose them to match §4.10: a chemistry book sees ~709 in-scope against ~28,194
+   fallback. **State the ratio in the generator.** A balanced fixture would leave the dominant
+   production branch — fallback's "surfaces but never issues" rule (`:1465`, `:1384-1387`) — almost
+   untested while the golden passed.
+2. **Synthesize inflection lists**, including one translation carrying **72 forms** (§4.10's measured
+   maximum) so the tail is covered, and the `['mól','mól (m)']` shape of §4.7.
+3. **Reassign status** where needed so the in-scope filter is non-empty, and **include `proposed`
+   rows** — production has zero, so the `approved`-beats-`proposed` tiebreak is otherwise never
+   exercised anywhere (§4.10 consequence 3).
+4. **Seed `book_subject_mapping`** (the helper covers chemistry and biology, `terminologyTestDb.js:80-84`).
+
+**These are fixture-design decisions, not incidental setup — record them in the generator's header
+comment.** A future reader must be able to tell which properties of the golden are load-bearing and
+which are arbitrary.
 
 ⚠️ There is **no shared terminology-row seed helper** — `insertHeadword` /
 `insertTranslation` / `addSubject` are local to `terminologyService.test.js:37-109`. Extract or
@@ -456,11 +543,25 @@ rejected tokenise+hash approach failed 137 of 600 here.
 today** (the sole multi-segment test is on `buildModuleTerminologyReport`,
 `terminologyService.test.js:1176-1197`). The differential must use multi-segment inputs.
 
+⚠️ **The generator must EMBED headwords into segments, and its alphabet must be stated.** Purely
+random segments almost never contain a headword, so the differential would spend its budget
+comparing empty outputs against empty outputs — a vacuous pass at scale, which is the most
+convincing kind. It must deliberately plant headwords with **case variants, overlapping pairs,
+repeated occurrences, and boundary contexts**, and its alphabet must include **non-ASCII and astral
+characters** — an ASCII-only generator can never surface a fold bug (§4.4) or the surrogate boundary
+bug (§4.5).
+
 ### 5.3 Compile count, never wall-clock
 
 Spy on `RegExp` construction. **Assert both sides**: AC removes ~20,073 English compiles; laziness
 removes most of ~28,903 inflection compiles. **A count assertion covering only one side passes on a
 half-fix** — precisely the ~45 s-save / ~64 s-load half-fix of §3.
+
+🔴 **And an uncalibrated two-sided count passes on a NO-fix.** On a 10-headword fixture the
+*unmodified* function compiles ~20 regexes; any threshold loose enough to be robust is satisfied
+before and after. **Demonstrate the assertion RED against the unmodified function before accepting
+it** — §5.0's commit order makes this free, since the unmodified function is still on the branch —
+and size the fixture so eager and lazy differ decisively.
 
 ### 5.4 Unicode fold sweep
 
@@ -511,8 +612,13 @@ fallback would restore the 100 s block while the suite stayed green — no escap
 `npm test` green is necessary, not sufficient. §C21 and §C23 were both demonstrated on prod's own
 deployed code.
 
+0. `npm run docs:generate` after the route deletion, or `docs-check` goes red (§4.9).
 1. Root `npm test` green (run from the repo root — cwd matters).
-2. Local before/after on the real `m68700` (282 segments), reported as a measurement.
+2. Local before/after on the real `m68700` (282 segments), reported as a measurement — **including
+   RSS before and after**. ~20,073 folded keywords in a JS trie is plausibly tens of MB resident,
+   rebuilt (old copy left to GC) on every terminology mutation, on a small Linode running everything.
+   The pre-fix peak was **1,167 MB** for one call; a number that big is not automatically fixed by
+   being fast. Report both time and memory or the claim is half-measured.
 3. **Deploy, then read the journal:**
    `journalctl -u ritstjorn | grep '"msg":"request"'` must show `terminology-report` and `terms` in
    **milliseconds** after a real module open.
@@ -536,6 +642,15 @@ warning.
 ---
 
 ## 8. Follow-ups to log (not to fix here)
+
+- ⚖️ **DECISION PENDING — port the two deleted behavioural E2E tests to `GET …/terms`?** §4.9
+  quantifies the cost: the deletion removes the only *integration-level* exercise of the issue path,
+  though the behaviours stay unit-pinned. Porting them (~40 lines) preserves that coverage at the
+  moment of maximum risk, but `/terms` is an adjacent surface the lead fenced off. **Recommended:
+  port.** Not done unilaterally.
+- **`mathematics` has 9,137 translations and no `book_subject_mapping` row** (§4.10), so every one is
+  permanently `fallback` for every book. Probably intentional from the Íðorðabankinn bulk import, but
+  it is a large silent population adjacent to §C14 ②'s unmade per-book adoption decisions.
 
 - The vacuous `/terms` E2E test (`terminology-multibook.spec.js:61-74` and its sibling `:97-116`) —
   a branchless pass that accepts 404 or 500. The C19 lesson repeating.
