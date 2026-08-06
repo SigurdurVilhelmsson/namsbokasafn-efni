@@ -530,14 +530,27 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
     ]);
 
     if (outcome) {
-      if (outcome.kind === 'disconnect') {
-        archive.abort();
-      } else {
+      if (outcome.kind !== 'disconnect') {
         log.error(
           { err: outcome.err, bookId, type, kind: outcome.kind },
           'Download archive failed mid-stream'
         );
       }
+      // abort() on EVERY failure kind, not just disconnect. archiver does not
+      // stop its queue on an entry error — `_moduleAppend` does
+      // `this.emit('error', err); setImmediate(callback)` (core.js:178-180), so
+      // the remaining entries keep being read and deflated into a response we
+      // have already given up on. Measured on the error path with 40 files:
+      // at settle `queueIdle:false`, and 38 further `entry` events fired over
+      // the next 300 ms. `abort()` sets `_state.aborted`, which core.js:165's
+      // early return then uses to drain the queue without doing the work.
+      //
+      // ⚠️ It is wasted CPU/IO, NOT a file-descriptor leak — measured `fds:0`
+      // at settle, +300 ms and +2.3 s. The read streams open and close normally
+      // as the queue drains. A review finding claimed 20 retained fds surviving
+      // gc; that did not reproduce against a real http.Server. Fix the waste,
+      // do not repeat the leak claim.
+      archive.abort();
       // destroy(), NOT end(): the response is chunked (no Content-Length), so
       // destroying leaves the framing unterminated and the browser reports a
       // FAILED download. Ending cleanly would hand the editor a truncated .zip

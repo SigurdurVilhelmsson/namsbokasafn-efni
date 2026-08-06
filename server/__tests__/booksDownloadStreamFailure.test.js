@@ -10,6 +10,7 @@
  * run by node directly, not by Vitest.
  */
 import fs from 'node:fs';
+import http from 'node:http';
 import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { PassThrough } from 'node:stream';
@@ -41,6 +42,11 @@ const CHILD = path.join(__dirname, 'helpers', 'c20DownloadChild.cjs');
 // it registered never runs. The fixture is a directory this test creates, so
 // the worst residue is an untracked scratch dir — never a tracked file at 000.
 function makeUnreadableFixture() {
+  // Remove any residue from an interrupted earlier run BEFORE creating the
+  // fixture. The dir name (`99`) matches the whole-book download branch's
+  // `/^\d{2}$/` entry filter, so a stale mode-000 file left here would be
+  // enumerated by every later whole-book download of this book.
+  removeFixture();
   fs.mkdirSync(FIXTURE_DIR, { recursive: true });
   fs.writeFileSync(FIXTURE_FILE, '<html>c20 fixture</html>\n');
   fs.chmodSync(FIXTURE_FILE, 0o000);
@@ -219,4 +225,192 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
       archiverProto.abort = realAbort;
     }
   }, 15000);
+});
+
+/**
+ * Real `http.Server` + real sockets, driving the same route handler.
+ *
+ * ⚠️ WHY THIS EXISTS AND THE PassThrough TESTS ABOVE ARE NOT ENOUGH. A real
+ * `http.ServerResponse` has `destroyed === true` when `close` fires — on BOTH
+ * the success and the abort path (measured):
+ *
+ *     /abort   CLOSE destroyed=true writableFinished=false writableEnded=false
+ *     /success CLOSE destroyed=true writableFinished=true  writableEnded=true
+ *
+ * A PassThrough reports the opposite (`destroyed=false` when it emits `close`).
+ * So `writableFinished` is the only flag that discriminates the two cases on a
+ * real socket, and the one-word mutation `!res.writableFinished` →
+ * `!res.destroyed` passes the ENTIRE server suite while making the disconnect
+ * branch dead in production. Only a real socket can see that.
+ *
+ * These two tests also pin `archive.abort()` itself, which nothing above does:
+ * `res.destroy()` runs on every failure kind, so asserting `res.destroyed`
+ * cannot tell a working abort from a deleted one.
+ */
+describe('GET /:bookId/download — real sockets (C20)', () => {
+  const RS_CHAPTER = '98';
+  const RS_DIR = path.join(
+    REPO,
+    'books',
+    FIXTURE_BOOK,
+    '05-publication',
+    'mt-preview',
+    'chapters',
+    RS_CHAPTER
+  );
+
+  function makeRealSocketFixture({ unreadable }) {
+    fs.rmSync(RS_DIR, { recursive: true, force: true });
+    fs.mkdirSync(RS_DIR, { recursive: true });
+    // Big enough that the download is still streaming when the client vanishes,
+    // and that an abort has real remaining work to cancel.
+    for (let i = 0; i < 40; i += 1) {
+      fs.writeFileSync(
+        path.join(RS_DIR, `m${String(i).padStart(5, '0')}.html`),
+        `<html>${'x'.repeat(300000)}</html>`
+      );
+    }
+    if (unreadable) fs.chmodSync(path.join(RS_DIR, 'm00001.html'), 0o000);
+  }
+
+  function removeRealSocketFixture() {
+    try {
+      fs.chmodSync(path.join(RS_DIR, 'm00001.html'), 0o644);
+    } catch {
+      /* already gone */
+    }
+    fs.rmSync(RS_DIR, { recursive: true, force: true });
+  }
+
+  afterEach(removeRealSocketFixture);
+
+  /**
+   * Serves the real handler over a real socket and resolves once the handler
+   * has settled. `driveClient` receives the client request so a test can
+   * destroy it mid-stream.
+   */
+  async function withRealServer(driveClient) {
+    const router = require('../routes/books');
+    const handler = router.stack
+      .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
+      .route.stack.at(-1).handle;
+
+    const { ZipArchive } = require('archiver');
+    const archiverProto = Object.getPrototypeOf(ZipArchive.prototype);
+    const realAbort = archiverProto.abort;
+    let abortCalls = 0;
+    archiverProto.abort = function (...args) {
+      abortCalls += 1;
+      return realAbort.apply(this, args);
+    };
+
+    let settled = false;
+    let closeSeen = null;
+    const server = http.createServer((req, res) => {
+      // A raw ServerResponse has no Express .status()/.json(); the failure path
+      // does not use them, but shim them so an unexpected early return is a
+      // clear failure rather than a TypeError.
+      res.status = function (c) {
+        this.statusCode = c;
+        return this;
+      };
+      res.json = function (b) {
+        this.end(JSON.stringify(b));
+      };
+      res.on('close', () => {
+        closeSeen = { destroyed: res.destroyed, writableFinished: res.writableFinished };
+      });
+      Promise.resolve(
+        handler(
+          {
+            params: { bookId: FIXTURE_BOOK },
+            query: { chapter: RS_CHAPTER, type: 'pub-mt-preview' },
+          },
+          res
+        )
+      ).then(
+        () => {
+          settled = true;
+        },
+        () => {
+          settled = true;
+        }
+      );
+    });
+
+    try {
+      await new Promise((r) => server.listen(0, r));
+      await driveClient(server.address().port);
+      // Poll rather than sleep a fixed time: a hang must fail on the timeout,
+      // not be papered over by a generous wait.
+      const deadline = Date.now() + 6000;
+      while (!settled && Date.now() < deadline) {
+        await new Promise((r) => setTimeout(r, 25));
+      }
+      return { settled, abortCalls, closeSeen };
+    } finally {
+      archiverProto.abort = realAbort;
+      await new Promise((r) => server.close(r));
+    }
+  }
+
+  it('aborts the archive when a real client disconnects mid-download', async () => {
+    makeRealSocketFixture({ unreadable: false });
+
+    const result = await withRealServer(
+      (port) =>
+        new Promise((resolve) => {
+          const req = http.get({ port, path: '/download' }, (res) => {
+            res.once('data', () => {
+              req.destroy(); // the client goes away mid-stream
+              resolve();
+            });
+            res.on('error', () => {});
+          });
+          req.on('error', () => {});
+        })
+    );
+
+    expect(result.settled).toBe(true);
+    // ⚠️ This is the assertion the PassThrough tests cannot make. `res.destroy()`
+    // runs on every failure kind, so only abort() distinguishes a live
+    // client-disconnect branch from a deleted one.
+    expect(result.abortCalls).toBe(1);
+    // Records the flag values that make `writableFinished` the right guard.
+    expect(result.closeSeen).toEqual({ destroyed: true, writableFinished: false });
+  }, 20000);
+
+  it('aborts the archive when a real download hits an unreadable file', async () => {
+    makeRealSocketFixture({ unreadable: true });
+    if (fs.existsSync(path.join(RS_DIR, 'm00001.html'))) {
+      let readable = false;
+      try {
+        fs.readFileSync(path.join(RS_DIR, 'm00001.html'));
+        readable = true;
+      } catch {
+        /* expected: EACCES */
+      }
+      // Same root guard as above: chmod 000 is a no-op as root.
+      if (readable)
+        throw new Error('C20 fixture: cannot revoke read permission (running as root?)');
+    }
+
+    const result = await withRealServer(
+      (port) =>
+        new Promise((resolve) => {
+          const req = http.get({ port, path: '/download' }, (res) => {
+            res.on('data', () => {});
+            res.on('end', resolve);
+            res.on('error', resolve);
+          });
+          req.on('error', resolve);
+        })
+    );
+
+    expect(result.settled).toBe(true);
+    // archiver does NOT stop its queue on an entry error — without abort() it
+    // read and deflated 38 further entries into a response already destroyed
+    // (measured). abort() on every failure kind is what stops it.
+    expect(result.abortCalls).toBe(1);
+  }, 20000);
 });
