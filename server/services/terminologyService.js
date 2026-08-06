@@ -1502,6 +1502,51 @@ function findTermsInSegments(segments, bookSlug = null) {
   // translations, inflections, subjects, statuses — is re-read every call.
   const fingerprint = fingerprintHeadwords(headwordPairs);
   if (!_automatonCache || _automatonCache.fingerprint !== fingerprint) {
+    // ⚠️ Drop the old automaton BEFORE building the new one. The object literal
+    // below evaluates FULLY — buildTermAutomaton included — before the
+    // assignment happens, so without this line `_automatonCache` still points
+    // at the old trie for the whole build and two automata are live at once.
+    // Nulling first makes the old one collectible *during* the build.
+    //
+    // Safe because this function is fully synchronous — there is no `await`
+    // anywhere in findTermsInSegments, so no concurrent call can observe the
+    // null and rebuild against it. `_automatonCache` is also the only
+    // long-lived retainer: termAutomaton.js holds no module-level state, and
+    // findFirstOccurrences takes the automaton as a parameter without stashing
+    // it. If this function ever becomes async, this line turns into a
+    // correctness bug, not merely a memory optimisation.
+    //
+    // Why it matters: the trigger is ORDINARY EDITORIAL WORK. Any headword add,
+    // remove or rename (proposeMinedTerm, importFromKeyTerms, a glossary
+    // import) followed by a module open changes the fingerprint and rebuilds.
+    // A Node OOM kills the PROCESS, taking every editor down at once — a
+    // failure mode the pre-C24 path did not have. That path was slow; it was
+    // never fatal.
+    //
+    // MEASURED: RSS delta 264–269 MB per call at synthetic production scale
+    //   (20,073 headwords), load-insensitive across three conditions.
+    // NOT MEASURED: how much of that delta is the TRIE versus the per-call
+    //   28,903-row JS object reconstruction and the SQL result set. A separate
+    //   measurement attributed ~400–450 ms of warm latency to that
+    //   reconstruction, so its share is not small. Real production RSS is also
+    //   unmeasured: the synthetic headwords are random strings, which share
+    //   fewer prefixes than real terminology and so plausibly INFLATE the
+    //   trie's node count — the benchmark reads its own figure as an upper
+    //   bound and states it neither confirms nor refutes the spec projection.
+    // INFERRED: only the trie's share doubles transiently.
+    // => There is NO defensible before/after ceiling figure here. Do not derive
+    //    one from the 264–269 MB delta; it is not the trie's number.
+    //
+    // ⚠️ This CORRECTS design §4.6's "a rebuild transiently holds two automata
+    // (~170 MB)". That is 2 × an ~85 MB projection which no measurement has
+    // validated at production scale. The design doc is banner-frozen evidence,
+    // so the correction lives here in the live code rather than being synced
+    // back into it (CLAUDE.md § One source of truth).
+    //
+    // What this does NOT do: it makes the old trie COLLECTIBLE during the
+    // build; it does not guarantee V8 collects it. It lowers the ceiling — it
+    // does not eliminate the doubling.
+    _automatonCache = null;
     _automatonCache = {
       fingerprint,
       automaton: buildTermAutomaton(
