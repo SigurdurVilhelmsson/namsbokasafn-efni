@@ -124,6 +124,24 @@ describe('isWholeWordAt', () => {
     expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.test(text)).toBe(false);
     expect(isWholeWordAt(text, 0, 4)).toBe(false);
   });
+
+  it('does NOT step back over an UNPAIRED low surrogate — a real pair is required', () => {
+    // ⚠️ A low surrogate is not proof of a surrogate pair. Here an unpaired
+    // U+DC00 sits between 'a' and the match, so the code point immediately
+    // before 'atom' IS that lone surrogate — never \p{L} — and production
+    // matches at index 2. Stepping back unconditionally reads 'a' at index 0
+    // instead, a word char, and DROPS the term.
+    //
+    // ⚠️ This is an UNDER-match — the OPPOSITE direction from the two U+0345
+    // tests above, which over-match. The two bugs are independent and lived
+    // three lines apart in the same function; fixing either did not fix the
+    // other. The contrast case (a REAL pair, which MUST still step back) is
+    // the '\u{1D400}atom' test higher up, which expects false.
+    const text = 'a' + String.fromCharCode(0xdc00) + 'atom rest';
+    const m = /(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/iu.exec(text);
+    expect(m && m.index).toBe(2); // production's verdict
+    expect(isWholeWordAt(text, 2, 6)).toBe(true); // the predicate must agree
+  });
 });
 
 const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');

@@ -32,12 +32,29 @@ const WORD_CHAR = /[\p{L}\p{N}_]/iu;
 /** @param {number} begin inclusive @param {number} end exclusive */
 function isWholeWordAt(text, begin, end) {
   if (begin > 0) {
-    // Step back one CODE POINT: if text[begin-1] is a low surrogate, the code
-    // point starts at begin-2. Reading the lone surrogate would never match
-    // \p{L} and would wrongly pass the boundary.
+    // Step back one CODE POINT. ⚠️ A low surrogate at text[begin-1] means the
+    // code point starts at begin-2 ONLY IF that surrogate is the low half of a
+    // REAL pair — which is exactly the assumption the guard below used to make
+    // unconditionally, and it was wrong (see there). When it genuinely is a
+    // pair, reading only the lone low half would never match \p{L} and would
+    // wrongly pass the boundary; that is the case this step-back exists for.
     let i = begin - 1;
     const unit = text.charCodeAt(i);
-    if (unit >= 0xdc00 && unit <= 0xdfff && i > 0) i -= 1;
+    if (unit >= 0xdc00 && unit <= 0xdfff && i > 0) {
+      // ⚠️ Only step back for a REAL surrogate pair. A low surrogate is NOT
+      // proof of one: an UNPAIRED low surrogate can follow an ordinary
+      // character, and stepping back onto that character reads a code point
+      // that is not adjacent to the match at all. With 'a\uDC00atom', stepping
+      // to index 0 reads 'a' — a word char — so the boundary fails and the term
+      // is DROPPED, where production (flags 'giu') matches at index 2.
+      //
+      // That is an UNDER-match — the OPPOSITE direction from the missing-`i`
+      // bug that WORD_CHAR above documents, which over-matches. The two are
+      // independent: fixing either one does not fix the other. Both pinned in
+      // termAutomaton.test.js.
+      const prev = text.charCodeAt(i - 1);
+      if (prev >= 0xd800 && prev <= 0xdbff) i -= 1;
+    }
     if (WORD_CHAR.test(String.fromCodePoint(text.codePointAt(i)))) return false;
   }
   if (end < text.length) {

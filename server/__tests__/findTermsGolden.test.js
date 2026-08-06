@@ -257,6 +257,14 @@ describe('automaton cache stays consistent with the DB', () => {
       const renamed = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(renamed).toHaveLength(1);
       expect(renamed[0].english).toBe('aton');
+      // ⚠️ `position` is the load-bearing assertion, not `english` — same reason
+      // as the TRANSPOSITION test below, which already carries it. `match.english`
+      // is re-read from the DB row on every call, so it tracks the rename even
+      // when the automaton is stale; only `position` is automaton-derived. Here
+      // 'aton' sits at 3 and the pre-rename 'atom' at 15, so a cache that failed
+      // to rebuild answers 15. Without this line the test passes under an
+      // id-only-fingerprint mutant — it asserted nothing the automaton produced.
+      expect(renamed[0].position).toBe(3);
     } finally {
       terminologyService._setTestDb(db);
       db3.close();
