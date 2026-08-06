@@ -19,8 +19,8 @@ describe('isWholeWordAt', () => {
   it('rejects when preceded by an Icelandic letter', () => expect(at('þmass', 'mass')).toBe(false));
 
   it('steps by CODE POINT, not code unit, next to an astral character', () => {
-    // '𝐀' is two UTF-16 units. A naive text[begin-1] reads a lone low surrogate,
-    // which is never \p{L}, so the boundary would wrongly pass.
+    // U+1D400 is two UTF-16 units. A naive text[begin-1] reads a lone low
+    // surrogate, which is never \p{L}, so the boundary would wrongly pass.
     const text = '\u{1D400}atom';
     expect(isWholeWordAt(text, 2, 6)).toBe(false);
     // and the regex it replaces agrees:
@@ -30,6 +30,58 @@ describe('isWholeWordAt', () => {
   it('accepts after an astral character that is NOT a letter', () => {
     const text = '\u{1F600}atom'; // emoji, not \p{L}
     expect(isWholeWordAt(text, 2, 6)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
+  });
+
+  it('steps by CODE POINT (forward) next to an astral character', () => {
+    // Mirror of the backward case above: the astral character sits AFTER the
+    // match, so a naive text[end] would read only the high surrogate half of
+    // the pair. codePointAt(end) must read the whole code point.
+    const text = 'atom\u{1D400}';
+    expect(isWholeWordAt(text, 0, 4)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
+  });
+
+  it('accepts before an astral character that is NOT a letter (forward)', () => {
+    const text = 'atom\u{1F600}';
+    expect(isWholeWordAt(text, 0, 4)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
+  });
+
+  it('reproduces the pre-existing \\p{M} omission: matches mid-grapheme in decomposed text', () => {
+    // Decomposed word: 'B' 'r' 'u' + COMBINING DIAERESIS (U+0308) + 'n' 'n'.
+    // Built from numeric code points via String.fromCharCode -- never a
+    // literal or \u-escaped combining character anywhere in this source
+    // file -- so there is nothing for a prettier/editor NFC pass to
+    // normalize; the source itself contains only ASCII digits. The
+    // normalize() check below still asserts the premise at runtime,
+    // belt-and-braces.
+    const decomposed = String.fromCharCode(0x42, 0x72, 0x75, 0x0308, 0x6e, 0x6e);
+    expect(decomposed.normalize('NFC')).not.toBe(decomposed);
+    const begin = decomposed.indexOf('Bru');
+    expect(begin).toBe(0); // "Bru" is a literal contiguous substring here -- the mark comes after
+    expect(isWholeWordAt(decomposed, begin, begin + 3)).toBe(true);
+    expect(/(?<![\p{L}\p{N}_])Bru(?![\p{L}\p{N}_])/u.test(decomposed)).toBe(true);
+  });
+
+  it('the same boundary correctly rejects in precomposed text (contrast case)', () => {
+    // Precomposed word: U+00FC is a single code point, so this string has
+    // no literal "Bru" substring at all. Checking the SAME 0..3 offsets
+    // (spanning "Bru" as code units) shows the boundary now correctly
+    // fails, because index 3 lands on 'n' -- an actual \p{L} -- not a mark.
+    const precomposed = String.fromCharCode(0x42, 0x72, 0xfc, 0x6e, 0x6e);
+    expect(precomposed.normalize('NFC')).toBe(precomposed);
+    expect(precomposed.indexOf('Bru')).toBe(-1); // confirms no literal "Bru" substring exists
+    expect(isWholeWordAt(precomposed, 0, 3)).toBe(false);
+    expect(/(?<![\p{L}\p{N}_])Bru(?![\p{L}\p{N}_])/u.test(precomposed)).toBe(false);
+  });
+
+  it('does not crash when a lone low surrogate sits at the very start of text', () => {
+    // Guards wordBoundary.js's `&& i > 0` check: without it, stepping back
+    // from a lone low surrogate at index 0 would compute codePointAt(-1) and
+    // throw `RangeError: Invalid code point NaN` instead of returning a value.
+    const text = '\uDC00atom';
+    expect(isWholeWordAt(text, 1, 5)).toBe(true);
     expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(true);
   });
 });
