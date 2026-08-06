@@ -1378,6 +1378,23 @@ describe('findTermsInSegments() — Unicode word boundary', () => {
 });
 
 describe('findTermsInSegments() — deterministic ordering (C24 oracle prerequisite)', () => {
+  // The next two tests are CONTRACT PINS, NOT REGRESSION GUARDS: on the bundled
+  // SQLite engine both already pass without the `h.id ASC, t.id ASC` tie-breaks.
+  // NOT because `GROUP BY` forces a sort — EXPLAIN QUERY PLAN shows no separate
+  // B-tree step for grouping here, since the plan drives the join from a full
+  // scan of `t` and each t.id is visited (and its group closed) exactly once, so
+  // grouping falls out of the loop nesting for free. Sibling-translation order
+  // instead falls out of that scan's row order; subject order falls out of the
+  // `ts` autoindex seek order (PRIMARY KEY(translation_id, subject), ascending)
+  // used to satisfy the LEFT JOIN. Both verified directly (temporarily dropping
+  // the tie-breaks and re-running); PRAGMA reverse_unordered_selects toggled
+  // either way changes neither. That stability is an artifact of the current
+  // query plan, not a documented guarantee — a different WHERE clause shape or a
+  // planner that stops driving from `t` could break it, which is why the
+  // tie-breaks are explicit rather than relied upon. The THIRD test below is
+  // NOT a contract pin: it fails without `h.id ASC` (verified the same way) — it
+  // engineers h.id order and t.id order to disagree, which the scan's single
+  // t-order cannot satisfy for both at once.
   it('orders sibling translations of one headword by translation id', () => {
     // Both approved, both same subject => the ranking comparator returns 0 for every
     // comparison, so sorted[0] is raw SQL row order. Production is in exactly this
@@ -1411,6 +1428,34 @@ describe('findTermsInSegments() — deterministic ordering (C24 oracle prerequis
       'efnafraedi-2e'
     );
     expect(res.s.matches[0].subjects).toEqual(['biology', 'chemistry', 'physics']);
+  });
+
+  it('orders distinct headwords of equal length by headword id, even when translation id and text position disagree', () => {
+    // h1 ('aaaa') and h2 ('bbbb') tie on LENGTH(english) = 4, so only `h.id ASC`
+    // breaks the tie — `t.id ASC` alone is NOT enough. h2's translation is
+    // inserted FIRST (lower t.id) while h2 itself has the HIGHER headword id, so
+    // the two orderings disagree: sorting by t.id would put h2 before h1; sorting
+    // by h.id must put h1 before h2. termMap is a Map keyed on headword_id built
+    // in row order, so first-appearance order becomes matches[] order — the same
+    // order that decides consumed-span-claiming precedence between homographs
+    // (comment above `const terms =`). 'bbbb' is also placed EARLIER in the text
+    // than 'aaaa', to rule out match order being driven by text position rather
+    // than by h.id.
+    const h1 = insertHeadword({ english: 'aaaa' });
+    const h2 = insertHeadword({ english: 'bbbb' });
+    expect(h1).toBeLessThan(h2);
+    const tB = insertTranslation(h2, { icelandic: 'is-b', status: 'approved' });
+    const tA = insertTranslation(h1, { icelandic: 'is-a', status: 'approved' });
+    expect(tB).toBeLessThan(tA); // t.id order disagrees with h.id order
+
+    const res = terminologyService.findTermsInSegments([
+      {
+        segmentId: 's',
+        enContent: 'A bbbb and an aaaa appear here.',
+        isContent: 'is-b og is-a birtast hér.',
+      },
+    ]);
+    expect(res.s.matches.map((m) => m.headwordId)).toEqual([h1, h2]);
   });
 });
 
