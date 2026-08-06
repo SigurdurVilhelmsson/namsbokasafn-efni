@@ -1,7 +1,7 @@
 # Decision: adopt Málstaður's hosted `/v1/grammar`, delete the GreynirCorrect sidecar, and do NOT import BÍN inflections until three licence gates close
 
 - **Date:** 2026-08-06
-- **Status:** Accepted
+- **Status:** **Superseded IN PART by [`2026-08-06-bin-licensing-corrected-and-malstadur-integration.md`](2026-08-06-bin-licensing-corrected-and-malstadur-integration.md)** — three claims are withdrawn there: (1) that *"there is no directory in this repository where a BÍN-derived file can sit"* (wrong — a path can be scoped CC BY-SA itself); (2) the "three licence gates" framing; (3) the attribution wording *"clearly in the user interface"* (that is BinPackage's gloss, not SÁM's text, which says *"í afurðum sem byggðar eru á gögnum úr BÍN"* and cites §3(a)(1)(A)). **Everything else in this record stands** — the 55-repo survey, the GreynirCorrect head-to-head, the sidecar deletion, the marker-corruption measurements and the §C24 sequencing constraint.
 - **Context owners:** lead + pipeline
 - **Supersedes:** none
 - **Related:** `docs/plans/2026-07-21-post-item17-followup-campaign.md` (§C24, §C7),
