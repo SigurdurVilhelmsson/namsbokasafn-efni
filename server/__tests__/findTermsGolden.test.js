@@ -245,14 +245,14 @@ describe('automaton cache stays consistent with the DB', () => {
     terminologyService._setTestDb(db3);
     try {
       const seg = [{ segmentId: 's', enContent: 'An aton and an atom.', isContent: '' }];
-      seedOneHeadword(db3, 'atom', 'frumeind');
+      const hwId = seedOneHeadword(db3, 'atom', 'frumeind');
 
       const before = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(before).toHaveLength(1);
       expect(before[0].english).toBe('atom');
 
       // Same length, same row count — only the bytes change.
-      db3.prepare("UPDATE terminology_headwords SET english='aton' WHERE id=1").run();
+      db3.prepare(`UPDATE terminology_headwords SET english='aton' WHERE id=${hwId}`).run();
 
       const renamed = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(renamed).toHaveLength(1);
@@ -278,7 +278,7 @@ describe('automaton cache stays consistent with the DB', () => {
     try {
       //                                   atmo@3         atom@15
       const seg = [{ segmentId: 's', enContent: 'An atmo and an atom.', isContent: '' }];
-      seedOneHeadword(db4, 'atom', 'frumeind');
+      const hwId = seedOneHeadword(db4, 'atom', 'frumeind');
 
       const before = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(before).toHaveLength(1);
@@ -286,7 +286,7 @@ describe('automaton cache stays consistent with the DB', () => {
       expect(before[0].position).toBe(15);
 
       // Pure transposition: same characters, same length, same row count.
-      db4.prepare("UPDATE terminology_headwords SET english='atmo' WHERE id=1").run();
+      db4.prepare(`UPDATE terminology_headwords SET english='atmo' WHERE id=${hwId}`).run();
 
       const renamed = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(renamed).toHaveLength(1);
@@ -430,10 +430,13 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
     // describe for why a bound doesn't discriminate a partial regression on
     // this fixture. Exact is safe here because both the fixture and the golden
     // it must still reproduce are committed and fixed: if this number ever
-    // changes, either the fixture moved (regenerate deliberately from a
-    // pre-swap checkout, alongside the golden) or laziness/the automaton
-    // regressed. It is not a magic number: measured directly from this
-    // fixture on the fixed implementation, same status as the golden JSON.
+    // changes, either one of the fixtures moved (c24-terms.json or
+    // c24-segments.json — a terms edit changes what's compiled, a segments
+    // edit can change which headwords match and so what gets compiled lazily;
+    // regenerate deliberately from a pre-swap checkout, alongside the golden)
+    // or laziness/the automaton regressed. It is not a magic number: measured
+    // directly from this fixture on the fixed implementation, same status as
+    // the golden JSON.
     expect(compiles).toBe(11);
   });
 

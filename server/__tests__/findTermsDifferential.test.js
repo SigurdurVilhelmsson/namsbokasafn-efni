@@ -89,11 +89,28 @@ describe('AC vs regex differential (1000 fixtures)', () => {
       });
     }
     // Measured against this exact generator (fixed seed, so exactly reproducible):
-    // 552 real comparisons out of 2448 term-checks. 200 is a floor well clear of
-    // that — comfortably survives minor generator tweaks — while still catching
-    // the collapse to 0 that a future embedCount=0 (or similar) would cause.
-    // Verified: forcing embedCount = 0 above makes this assertion fail (see the
-    // fix-round report for the command and real output).
+    // 552 real comparisons out of 2448 term-checks. 200 is a floor clear of that
+    // baseline, and it does catch the collapse to 0 that a future embedCount=0
+    // (or similar) would cause. Verified: forcing embedCount = 0 above makes
+    // this assertion fail (see the fix-round report for the command and real
+    // output).
+    //
+    // ⚠️ Boundary: the guard is NOT monotone in degradation severity, so "200
+    // is a floor well clear of 552" must NOT be read as "survives minor
+    // generator tweaks" — this generator is one continuous PRNG stream, so an
+    // edit anywhere upstream reshuffles every rnd() call downstream of it, not
+    // only the embed step itself. Two measured examples, smaller drop first:
+    //   - Skipping the embed step on every other iteration (`const embedCount
+    //     = i % 2 === 0 ? Math.floor(rnd() * 4) : 0;`, a real ~39% coverage
+    //     loss) yields realComparisons = 338 — the assertion below still
+    //     PASSES. This one is MISSED.
+    //   - `Math.floor(rnd() * 4)` → `Math.floor(rnd() * 2)` (embedCount max
+    //     3 → 1, a real ~65% coverage loss) yields realComparisons = 194 —
+    //     the assertion below FAILS. This one IS caught, despite being a
+    //     one-character, superficially "smaller" tweak than the bullet above.
+    // Do not read a pass here as "embedding is healthy" or "the regression is
+    // small," only as "embedding did not collapse to zero" — and do not
+    // extrapolate from one tweak's outcome to another's without measuring it.
     expect(realComparisons).toBeGreaterThan(200);
     expect(mismatches.slice(0, 5)).toEqual([]);
     expect(mismatches).toHaveLength(0);

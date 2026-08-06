@@ -1347,8 +1347,16 @@ let _automatonCache = null; // { fingerprint: number, automaton }
  * dissociation constant"), so a space would trade a rare collision family for the
  * majority case.
  *
- * NUL cannot occur in a headword, so the encoding is unambiguous and the residual
- * collision risk is the ordinary 2^-32 bound rather than a structural family.
+ * No headword observed so far contains a NUL (checked: the three committed
+ * `glossary-unified.json` exports and the local dev DB) — but nothing
+ * enforces that, and the live `terminology_headwords` table itself is
+ * runtime state in a gitignored DB, not something a grep of this repo can
+ * confirm. A NUL round-trips through better-sqlite3 into `terminology_
+ * headwords.english` intact ('a\0b' stores and reads back as codes
+ * 97,0,98), and upsertHeadword inserts `english` verbatim with no
+ * control-character stripping on any write path. The unambiguous-encoding,
+ * 2^-32-bound claim therefore holds by observation, not by construction —
+ * re-check it if the import surface ever changes.
  *
  * ⚠️ The 0x01000193 multiply is also load-bearing: replacing it with 1 degrades
  * this to an order-blind XOR fold, under which the pure transposition
@@ -1358,6 +1366,10 @@ let _automatonCache = null; // { fingerprint: number, automaton }
 function fingerprintHeadwords(pairs) {
   let hash = 0x811c9dc5;
   for (const [id, english] of pairs) {
+    // `\0` here is the two-character JS escape (backslash, then '0'), which
+    // evaluates to a single U+0000 code unit — not a literal NUL byte in the
+    // source. That's what lets this line survive JSON/heredoc transport
+    // intact; replacing it with a raw NUL byte would be a regression.
     const chunk = `${id}\0${english}\0`;
     for (let i = 0; i < chunk.length; i++) {
       hash ^= chunk.charCodeAt(i);
