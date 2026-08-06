@@ -46,6 +46,13 @@ function randomCase(s) {
 describe('AC vs regex differential (1000 fixtures)', () => {
   it('agrees with the regex on every generated case', () => {
     const mismatches = [];
+    // Counts comparisons where the regex reference actually matched something —
+    // i.e. the embedding below is doing its job. Asserted below, INSIDE this same
+    // test, so the guard is structurally bound to the loop it certifies: if a
+    // future edit silently stops embedding (e.g. embedCount forced to 0), this
+    // count collapses to 0 and THIS test goes red, not a separate test that
+    // builds its own unrelated text and can't see the change.
+    let realComparisons = 0;
     for (let i = 0; i < 1000; i++) {
       const terms = Array.from({ length: 1 + Math.floor(rnd() * 4) }, () =>
         word(1 + Math.floor(rnd() * 8))
@@ -71,6 +78,7 @@ describe('AC vs regex differential (1000 fixtures)', () => {
 
       terms.forEach((english, idx) => {
         const expected = referenceFirst(english, text);
+        if (expected !== undefined) realComparisons++;
         const got = actual.get(idx + 1);
         const same =
           (expected === undefined && got === undefined) ||
@@ -80,12 +88,24 @@ describe('AC vs regex differential (1000 fixtures)', () => {
         }
       });
     }
+    // Measured against this exact generator (fixed seed, so exactly reproducible):
+    // 552 real comparisons out of 2448 term-checks. 200 is a floor well clear of
+    // that — comfortably survives minor generator tweaks — while still catching
+    // the collapse to 0 that a future embedCount=0 (or similar) would cause.
+    // Verified: forcing embedCount = 0 above makes this assertion fail (see the
+    // fix-round report for the command and real output).
+    expect(realComparisons).toBeGreaterThan(200);
     expect(mismatches.slice(0, 5)).toEqual([]);
     expect(mismatches).toHaveLength(0);
   });
 
-  it('the generator actually produces matches, or the run above proves nothing', () => {
-    // Guards against a silently vacuous differential.
+  it('sanity-checks the primitive helpers in isolation (word/pick/referenceFirst)', () => {
+    // This does NOT exercise the main test's embedding logic above — it builds
+    // its own unrelated text from the same primitives. It cannot detect the
+    // main loop silently failing to embed; that guard is the realComparisons
+    // assertion INSIDE the test above, which is structurally coupled to the
+    // actual embedding path. This test only confirms the primitives themselves
+    // are capable of producing a match, as a narrower, independent sanity check.
     seed = 20260806;
     let found = 0;
     for (let i = 0; i < 200; i++) {

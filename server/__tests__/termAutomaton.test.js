@@ -159,7 +159,14 @@ describe('findFirstOccurrences — THE INVARIANT', () => {
     // code point, and this matches the String.fromCharCode convention used above.
     const a = build([[1, 'atom']]);
     const text = String.fromCharCode(0x03b9) + 'atom';
-    expect(foldChar('ι')).toBe('ͅ'); // pins the premise: folds to a COMBINING mark
+    // Pins the premise this test's reasoning depends on: foldChar really does fold
+    // iota to a combining mark. Built from numeric code points, matching this
+    // file's convention, same as `text` above. That convention exists to protect a
+    // FIXTURE from silent NFC mangling (a literal would fail silently, still green,
+    // testing something else); here it protects an EXPECTED VALUE instead, where
+    // mangling would fail loudly — a different risk, but the convention still costs
+    // nothing to keep, so keep it.
+    expect(foldChar(String.fromCharCode(0x03b9))).toBe(String.fromCharCode(0x0345));
     expect(findFirstOccurrences(a, text).has(1)).toBe(false);
     expect(/(?<![\p{L}\p{N}_])atom(?![\p{L}\p{N}_])/u.test(text)).toBe(false);
   });
