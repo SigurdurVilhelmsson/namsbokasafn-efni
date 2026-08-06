@@ -12,12 +12,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFile } from 'node:child_process';
+import { PassThrough } from 'node:stream';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 
 // auth.js throws at load time if JWT_SECRET is unset.
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
 
+const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.join(__dirname, '..', '..');
 const FIXTURE_BOOK = 'orverufraedi'; // VALID_BOOKS excludes __e2e-fixture__
@@ -107,5 +110,54 @@ describe('GET /:bookId/download — mid-stream archive failure (C20)', () => {
     expect(report.settled).toBe(true);
     expect(report.destroyed).toBe(true); // fail visibly (spec D1)
     expect(report.finished).toBe(false); // never ended cleanly with a truncated zip
+  }, 15000);
+
+  it('aborts the archive and settles when the client disconnects', async () => {
+    const router = require('../routes/books');
+    const handler = router.stack
+      .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
+      .route.stack.at(-1).handle;
+
+    const res = new PassThrough();
+    res.statusCode = 200;
+    res.status = function (c) {
+      this.statusCode = c;
+      return this;
+    };
+    res.headersSent = false;
+    res.setHeader = () => {};
+    res.json = () => {};
+    res.on('data', () => {});
+    res.on('error', () => {});
+
+    // Chapter 1 is a real, readable publication dir — this test is about the
+    // client vanishing, not about a read failure.
+    const pending = handler(
+      { params: { bookId: FIXTURE_BOOK }, query: { chapter: '1', type: 'pub-mt-preview' } },
+      res
+    );
+
+    // The client goes away mid-download: `close` with writableFinished false.
+    //
+    // Emitted SYNCHRONOUSLY, not via setImmediate: the handler body runs
+    // straight through from `new ZipArchive` to `addFilesFromDir` with no
+    // await, so the listeners are already registered once handler() has
+    // returned its promise. Deferring it would race finalize() and make the
+    // outcome depend on how long compressing 11 files happens to take.
+    res.emit('close');
+
+    await expect(
+      Promise.race([
+        Promise.resolve(pending).then(() => 'settled'),
+        new Promise((r) => setTimeout(() => r('hung'), 5000)),
+      ])
+    ).resolves.toBe('settled');
+
+    // ⚠️ "settles" ALONE IS VACUOUS — the handler settles on the happy path
+    // too, so an assertion that stops there passes with the close handler
+    // deleted. `res.emit('close')` does not set `destroyed`; only the
+    // handler's own `res.destroy()` in the disconnect branch does. This is
+    // the assertion that discriminates, and mutation row 4 is what earns it.
+    expect(res.destroyed).toBe(true);
   }, 15000);
 });
