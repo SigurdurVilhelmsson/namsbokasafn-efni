@@ -150,10 +150,13 @@ the siblings *before* the tiler ever sees them — a different result, arrived a
 This is a second reason the §5.0 tie-break matters: two rows with identical `english` have identical
 `LENGTH`, so `h.id ASC` is what makes which-one-wins deterministic.
 
-Measured in the committed corpus: 3,270 distinct English strings, **0 case-insensitive collisions**
-among them — but 1,102 strings appear in more than one book's glossary file. ⚠️ **Whether those land
-as one headword row or several is decided by `pos`, and prod's `terminology_headwords` is
-unmeasured** (§4.4). Treat duplicates as present.
+**Measured on prod (§4.10): 20,272 headwords, 20,272 distinct `english` — ZERO duplicates.**
+
+So this is **defence, not a reproduction of observed behaviour**. Say so in the code comment. The
+schema permits the collision and `importGlossaryTerms` can create one tomorrow; the committed
+glossary corpus already carries 1,102 English strings appearing in more than one book's file. But no
+test can be justified as "matching production" here — the §5.5 pin is a *guard against a state prod
+does not currently occupy*.
 
 ### 4.2 The outer loop does not move
 
@@ -206,13 +209,29 @@ Contrary to common claims, these **agree** and need no entry: Kelvin U+212A↔k,
 unit; a length-stable fold makes folded offsets identical to original offsets, so no position
 mapping table is needed.
 
-⚠️ **Reachability is bounded, not settled.** Zero of the 92 pairs is reachable in the committed
-glossaries (3,270 distinct English headwords across 3 files). **That census is a proxy** — prod's
-`terminology_headwords` (~20,073) was *not* measured; a survey agent's attempt to read prod was
-blocked by the permission classifier and no production data was obtained. The corpus contains
-σ (530), μ (480), µ (197) and π (1,053), so a single new headword containing ς or µ would make it
-reachable. Direction of failure is **under-match** — a suggestion silently disappears, the §C18
-failure shape. Hence the exhaustive sweep in §5.4 rather than a spot check.
+**Reachability — MEASURED on prod, not proxied (§4.10).** The complete set of non-ASCII characters
+across all **20,272** English headwords is:
+
+```
+´ U+00B4 (22)   ö (8)   é (6)   ë (3)   ü (3)   ô (1)   ç (1)
+```
+
+Seven distinct characters. **No Greek, no Cyrillic, none of the 92 disagreeing pairs.** Reachability
+on the AC path today is **0 — measured, not inferred.**
+
+⚠️ **The override table is still load-bearing, and this is the reason to keep it rather than skip
+it.** The AC path folds `seg.enContent` — arbitrary English source text — against these headwords,
+and `importGlossaryTerms` can add Greek headwords at any time: the committed glossary corpus already
+carries `σ π Δ α β γ` in its `english` field (`"σ* bonding orbital"`, `"pi bond (π bond)"`). The
+moment a `σ` headword exists, a `ς` in text is one segment away, and `scf(ς) = σ` while
+`toLowerCase(ς) = ς`. Direction of failure is **under-match** — a suggestion silently disappears,
+the §C18 failure shape, with a green suite. Hence the exhaustive sweep in §5.4 rather than a spot
+check.
+
+**No NFD and no astral code points anywhere in the terminology tables** (`not_nfc_strings` = 0
+across headwords, translations and inflections). UTF-16 index arithmetic is safe there. ⚠️ This does
+**not** extend to segment text — `books/orverufraedi/01-source/ch10/m58835.cnxml` carries decomposed
+`ü` (§4.5).
 
 ### 4.5 Boundary semantics — preserved exactly, including a pre-existing flaw
 
@@ -280,7 +299,9 @@ decision to bring back to the lead, not to take silently.
 
 ### 4.7 Lazy `isRegex`
 
-`buildInflectionRegex` is constructed **28,903 times** and executed **~313 times**. Build it lazily
+`buildInflectionRegex` is constructed **28,903 times** and executed **~313 times**. ⚠️ **The 4.16
+mean hides a long tail: one production translation carries 72 inflection forms** (§4.10), i.e. a
+73-alternative regex. Size any per-regex reasoning against 73, not against 4. Build it lazily
 (memoised accessor on the translation object) or the AC cold build becomes a **6–11 s event-loop
 stall on every cache invalidation — i.e. on every terminology approval, an editor action.** With
 lazy construction the cold build is under 1 s.
@@ -344,6 +365,41 @@ an arbitrary segment list. Under today's cost that is a one-request server-outag
 Deleting it takes the blast radius from 5 call sites to 4 and removes the handle. The 4 E2E
 assertions are removed with it.
 
+### 4.10 Production census — measured 2026-08-06
+
+Read-only, with the owner's explicit per-request authorization; `readonly: true` at the connection,
+aggregate counts and a character inventory only, **no table dump and nothing copied off the box**.
+Recorded here because several design claims turn on it and a proxy corpus had been standing in.
+
+| | measured | note |
+|---|---|---|
+| `terminology_headwords` | **20,272** | distinct `english` also **20,272** ⇒ **zero duplicates** (§4.1.1) |
+| `terminology_translations` | **28,903** | **all `status='approved'`; zero `proposed`** |
+| headwords with an in-scope translation | **20,073** | matches the register exactly |
+| inflection forms | **120,340** | mean 4.16, **max 72 on one translation** |
+| `MAX(LENGTH(english))` | 54 | |
+| subject tags | biology 13,561 · mathematics 9,137 · physics 5,496 · **chemistry 709** | every translation has exactly **one**; **0 untagged** |
+| `book_subject_mapping` | chemistry, microbiology, biology, organic-chemistry, physics | **no `mathematics` book** |
+| non-NFC strings / astral code points | **0 / 0** | across all three tables |
+
+**Three consequences the design would otherwise have got wrong:**
+
+1. **The fallback path is the DOMINANT path in production, not an edge case.** For a chemistry book
+   (`bookSubject = 'chemistry'`) only **709 of 28,903** translations are in-scope; **~28,194 are
+   tier `fallback`**, and mathematics' 9,137 are permanently fallback for *every* book since no book
+   maps to it. A balanced fixture would exercise almost none of what prod runs. → §5.1.
+2. **`translations_with_no_subject` = 0**, so the "untagged ⇒ in-scope" branch of `translationTier`
+   (`:1319`) is **never taken in production**. It is pinned by unit tests only. Do not use "prod
+   never hits it" as licence to change it — but do not mistake a passing fixture for coverage of the
+   live shape either.
+3. **Zero `proposed` rows**, so the translation ranking's `approved`-beats-`proposed` tiebreak
+   (`:1439-1441`) is currently inert in production. The golden must still exercise it from fixtures;
+   it is one approval workflow away from mattering.
+
+**Two data-quality oddities, logged not fixed** (out of scope, §8): an isolated `U+0096` C1 control
+character and a stray `U+00B8` cedilla in `icelandic`; 22 standalone `´ U+00B4` acute accents in
+`english`. Both smell like mojibake from an import.
+
 ---
 
 ## 5. Testing
@@ -372,6 +428,12 @@ Fixture data is seeded from the committed `glossary-unified.json` corpus into th
 (`server/__tests__/helpers/terminologyTestDb.js:11`, injected via `_setTestDb`). **No production
 data is used.** The seed **generator is committed** alongside the fixture so the golden is
 reproducible rather than a one-off artifact whose provenance is lost.
+
+⚠️ **The fixture must reproduce prod's SKEW, not a balanced term set.** Per §4.10, a chemistry book
+sees ~709 in-scope against ~28,194 fallback translations. A fixture with, say, 50/50 tiering would
+leave the dominant production path — the fallback branch and its "surfaces but never issues" rule
+(`:1465`, `:1384-1387`) — almost untested while the golden passed. Build the fixture with a
+deliberately fallback-heavy subject distribution and state the ratio in the fixture generator.
 
 ⚠️ **Verify the corpus actually supplies every field the function reads** before building on it —
 `english`, `icelandic`, `inflections`, `status`, and per-translation `subjects`, plus a
@@ -485,6 +547,10 @@ warning.
 - `GET …/terms` and `…/terminology-report` are `requireRole(EDITOR)` with **no book scoping**; the
   report is head-editor-gated in the UI only.
 - The NFD boundary false-positive of §4.5 (pre-existing).
-- Inflection coverage is **4.16 forms per translation** against a full Icelandic paradigm of 8–16 —
-  a silent-miss surface. Blocked on this item; see
+- **Terminology data-quality oddities** (§4.10): an isolated `U+0096` C1 control character and a
+  stray `U+00B8` cedilla in `terminology_translations.icelandic`; 22 standalone `´ U+00B4` acute
+  accents in `terminology_headwords.english`. Import mojibake. Harmless to the matcher (they are
+  ordinary non-word characters to the boundary predicate), but they are wrong data.
+- Inflection coverage is **4.16 forms per translation** — measured max 72 — against a full Icelandic
+  paradigm of 8–16, a silent-miss surface. Blocked on this item; see
   [`docs/decisions/2026-08-06-mideind-toolchain-evaluation.md`](../../decisions/2026-08-06-mideind-toolchain-evaluation.md).
