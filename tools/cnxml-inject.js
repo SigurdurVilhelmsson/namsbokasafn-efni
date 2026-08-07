@@ -233,17 +233,38 @@ function parseSegments(content) {
  * @param {Map<string, string>} enSegments - Original English segments
  * @returns {{ segments: Map<string, string>, restoredCount: number }}
  */
+/**
+ * C16(a′) — the guarded legacy `__term__` pattern, SINGLE-SOURCED.
+ *
+ * A `__` that abuts more underscores is a fill-in-the-blank, not a term
+ * delimiter. Every matcher of the legacy dialect must carry these guards or it
+ * reads the prose BETWEEN two blanks as a term — which shipped
+ * `______<dfn class="term"> og  (e.  and )</dfn>______` to readers.
+ *
+ * ⚠️ It is single-sourced BECAUSE the first fix guarded two call sites, declared
+ * "both sites must carry the guard", and an adversarial review then found four
+ * more in this file alone — in a function that runs FIRST and mutates in place.
+ * Add a new legacy-term matcher by referencing these, not by writing `__` again.
+ * The guards are zero-width and non-capturing, so group numbering is unchanged.
+ */
+const LEGACY_TERM = String.raw`(?<!_)__([^_]+)__(?!_)`;
+const LEGACY_TERM_NC = String.raw`(?<!_)__[^_]+__(?!_)`;
+
 function restoreTermMarkers(isSegments, enSegments) {
   let restoredCount = 0;
   let strippedCount = 0;
 
   // Regex to find inline markers in order: __term__, **bold**, or {{b}}bold{{/b}}
   // Handles both legacy markdown bold and new API-safe bold markers.
-  const enMarkerPattern = /(__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\})/g;
+  const enMarkerPattern = new RegExp(
+    `(${LEGACY_TERM}|\\*\\*(.+?)\\*\\*|\\{\\{b\\}\\}(.+?)\\{\\{\\/b\\}\\})`,
+    'g'
+  );
   // In IS segments from the old web UI, all markers are **text** (MT converted __ to **)
   const isStarPattern = /\*\*(.+?)\*\*/g;
   // In IS segments from the API, terms stay as __text__ (API preserves them)
-  const isUnderscorePattern = /__([^_]+)__/g;
+  const isUnderscorePattern = new RegExp(LEGACY_TERM, 'g');
+  const legacyTermCount = new RegExp(LEGACY_TERM_NC, 'g');
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
@@ -258,9 +279,9 @@ function restoreTermMarkers(isSegments, enSegments) {
       const isHasNewTerms = isText.includes('{{term}}') || isText.includes('[[term:');
       if (isHasNewTerms) {
         // Both use new format: any __term__ in IS is API glossary overproduction
-        const legacyTerms = isText.match(/__[^_]+__/g);
+        const legacyTerms = isText.match(new RegExp(LEGACY_TERM_NC, 'g'));
         if (legacyTerms) {
-          const stripped = isText.replace(/__([^_]+)__/g, '$1');
+          const stripped = isText.replace(new RegExp(LEGACY_TERM, 'g'), '$1');
           strippedCount += legacyTerms.length;
           isSegments.set(segId, stripped);
         }
@@ -270,7 +291,7 @@ function restoreTermMarkers(isSegments, enSegments) {
     }
 
     // Count EN term markers (__text__)
-    const enTermCount = (enText.match(/__[^_]+__/g) || []).length;
+    const enTermCount = (enText.match(new RegExp(LEGACY_TERM_NC, 'g')) || []).length;
 
     // Parse EN markers to determine the type sequence
     const enTypes = [];
@@ -285,7 +306,8 @@ function restoreTermMarkers(isSegments, enSegments) {
     }
 
     // Check if IS has __text__ markers (API pipeline) or **text** markers (web UI pipeline)
-    const isTermCount = (isText.match(/__[^_]+__/g) || []).length;
+    legacyTermCount.lastIndex = 0;
+    const isTermCount = (isText.match(legacyTermCount) || []).length;
     const isStarCount = (isText.match(/\*\*(.+?)\*\*/g) || []).length;
 
     if (isTermCount > 0 && isTermCount > enTermCount) {
@@ -871,14 +893,21 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
   // (?:\|id)? still anchors the id split. MATH-alt first: the base class excludes
   // `[` so a nested marker is only reachable via the token alternatives.
   const TERM_TEXT = String.raw`(?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\[\]|])+?`;
+  // C16(a'): the `__term__` alternations carry the same (?<!_)/(?!_) guards as the
+  // converters in reverseInlineMarkup — a `__` abutting more underscores is a
+  // fill-in-the-blank, never a term marker. Without them this annotator read the
+  // prose BETWEEN two blanks as a term on both sides and emitted an orphaned
+  // `(e.  and )` into published output. Both sites must carry the guard: fixing
+  // only the converter left the gloss behind, with every test still green.
+  // The lookarounds are zero-width, so capture-group numbering is unchanged.
   // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}, [[term:text|id]]
   const enMarkerPattern = new RegExp(
-    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:(${TERM_TEXT})(?:\|[A-Za-z0-9_.:-]+)?\]\])`,
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|(?<!_)__([^_]+)__(?!_)|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:(${TERM_TEXT})(?:\|[A-Za-z0-9_.:-]+)?\]\])`,
     'g'
   );
   // IS: new {{term}}, legacy __term__, and B4 bracket [[term:text|id]] formats
   const isTermPattern = new RegExp(
-    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\[\[term:(${TERM_TEXT})(?:\|([A-Za-z0-9_.:-]+))?\]\])`,
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|(?<!_)__([^_]+)__(?!_)|\[\[term:(${TERM_TEXT})(?:\|([A-Za-z0-9_.:-]+))?\]\])`,
     'g'
   );
 
@@ -1480,9 +1509,23 @@ function reverseInlineMarkup(
   // API segments use {{term}} (already converted above); any remaining __text__
   // would be false positives from translated content.
   if (!hasApiMarkers) {
-    // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
-    result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
-    result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
+    // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers.
+    //
+    // C16(a'): the (?<!_) / (?!_) guards keep the delimiters from being part of a
+    // LONGER underscore run. Without them the regex matched ACROSS two
+    // fill-in-the-blank blanks — taking the last two underscores of the first
+    // blank, the connecting prose, and the first two of the second — and shipped
+    // `______<dfn class="term"> og  (e.  and )</dfn>______` to readers in three
+    // published pages. It also ate a legitimate __term__ standing next to a blank,
+    // because the blank's tail paired with the term's opening delimiter.
+    // A `__` that abuts more underscores is a blank, never a term marker.
+    // ⚠️ The ESCAPED dialect needs `\_`-aware guards, not `_`-aware ones. A bare
+    // (?!_) here is INERT: an escaped run is `\ _ \ _ \ _ \ _`, so the character
+    // following a `\_\_` delimiter is always a BACKSLASH and the lookahead can
+    // never fail — measured 0 of 36 escaped cases before this was corrected,
+    // while the code comment claimed a protection that did not exist.
+    result = result.replace(/(?<!\\?_)\\_\\_([^_]+)\\_\\_(?!\\?_)/g, '<term>$1</term>');
+    result = result.replace(/(?<!_)__([^_]+)__(?!_)/g, '<term>$1</term>');
   }
 
   // Restore MathML blocks after term wrapping
@@ -2030,16 +2073,20 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
           const enTermRaw = enSegments.get(item.termSegmentId);
           if (enTermRaw) {
             // Glossary pre-strips its paired term markers, then shares the tail.
+            // C16(a′): guarded like every other legacy-term matcher. Behaviour is
+            // unchanged today — 0 of 34,288 glossary segments contain an underscore
+            // run — but an unguarded sibling here is a trap for the next reader,
+            // who would have to re-derive that census to know it was safe.
             const enTerm = stripTermMarkersToText(
               enTermRaw
-                .replace(/__([^_]+)__/g, '$1')
+                .replace(new RegExp(LEGACY_TERM, 'g'), '$1')
                 .replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '$1'),
               equations,
               { trim: true }
             );
             // Strip any __term__ markers from IS text for comparison
             const isTermClean = annotatedTerm
-              .replace(/__([^_]+)__/g, '$1')
+              .replace(new RegExp(LEGACY_TERM, 'g'), '$1')
               .replace(/<term>([^<]*)<\/term>/g, '$1')
               .trim();
             if (isTermClean.toLowerCase() !== enTerm) {

@@ -5,6 +5,7 @@ import os from 'os';
 import {
   parseSegments,
   annotateInlineTerms,
+  restoreTermMarkers,
   assertNoMarkerResidue,
   reverseInlineMarkup,
   restoreMathMarkers,
@@ -375,6 +376,214 @@ describe('reverseInlineMarkup legacy marker backward compat', () => {
   it('should still convert legacy [footnote: text] to <footnote>', () => {
     const result = reverseInlineMarkup('Texti [footnote: athugasemd] hér', emptyEq);
     expect(result).toContain('<footnote>athugasemd</footnote>');
+  });
+});
+
+// ─── C16(a′): fill-in-the-blank runs must not be eaten by __term__ ──
+//
+// The legacy `__([^_]+)__` converter matched ACROSS two underscore blanks: it
+// took the last two underscores of the first blank, the connecting prose, and
+// the first two of the second, and wrapped the prose in <term>. Published output
+// read `______<dfn class="term"> og  (e.  and )</dfn>______` — a student saw the
+// word "og" ("and") marked up as a glossary term with an empty English gloss.
+//
+// Strings below are the VERBATIM segment text from the four affected production
+// segments (orverufraedi m58782 x2 / m58805, liffraedi-2e m66440), not fixtures
+// invented for the test. Re-derive with experiments/c16-legacy-audit/.
+describe("reverseInlineMarkup fill-in-the-blank underscores (C16 a')", () => {
+  const emptyEq = {};
+
+  it('does not wrap the prose between two blanks in a <term>', () => {
+    const result = reverseInlineMarkup(
+      'Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.',
+      emptyEq
+    );
+    expect(result).not.toContain('<term>');
+  });
+
+  it('leaves both blank runs intact at their original length', () => {
+    const result = reverseInlineMarkup(
+      'Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.',
+      emptyEq
+    );
+    expect(result).toBe(
+      'Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.'
+    );
+  });
+
+  it('does not wrap prose between blanks of unequal length', () => {
+    const result = reverseInlineMarkup(
+      'Í tvínefnakerfi inniheldur vísindaheiti lífveru ________ hennar og __________.',
+      emptyEq
+    );
+    expect(result).not.toContain('<term>');
+  });
+
+  it('does not wrap a lone space between two adjacent blanks', () => {
+    const result = reverseInlineMarkup(
+      'Þörungar með grænukorn með þremur eða fjórum himnum eru afleiðing af ________ ________.',
+      emptyEq
+    );
+    expect(result).not.toContain('<term>');
+  });
+
+  it('does not wrap prose between blanks in the biology exercise', () => {
+    const result = reverseInlineMarkup(
+      'Laktósi er tvísykra sem myndast við myndun ________ tengis milli glúkósa og ________.',
+      emptyEq
+    );
+    expect(result).not.toContain('<term>');
+  });
+
+  // Regression guards: the fix must not cost the converter its real job.
+  // 173 conversions across the corpus depend on this branch.
+
+  it('still converts a real __term__ that sits beside a blank run', () => {
+    const result = reverseInlineMarkup('Fylltu inn ________ fyrir __rúmmál__ hér', emptyEq);
+    expect(result).toContain('<term>rúmmál</term>');
+  });
+
+  it('still converts a real __term__ at the start of a segment', () => {
+    const result = reverseInlineMarkup('__Efni__ er skilgreint sem allt sem tekur rúm', emptyEq);
+    expect(result).toContain('<term>Efni</term>');
+  });
+
+  it('still converts two real __term__ markers in one segment', () => {
+    const result = reverseInlineMarkup('__Fyrra__ hugtak og __seinna__ hugtak', emptyEq);
+    expect(result).toContain('<term>Fyrra</term>');
+    expect(result).toContain('<term>seinna</term>');
+  });
+
+  // The MT-ESCAPED dialect (\_\_term\_\_) needs its own coverage, and the first
+  // cut of this fix did not have any. Its guards must test for `\_` as well as
+  // `_`: in an escaped run the character adjoining a delimiter is a BACKSLASH,
+  // so a bare (?!_) lookahead can never fire and is inert. Reachability is real —
+  // 10 corpus segments carry escaped runs with hasApiMarkers === false, incl.
+  // escaped fill-in-the-blanks like `(a) 612 g = \_\_\_\_\_\_\_\_ mg`.
+
+  it('does not wrap prose between two ESCAPED blank runs', () => {
+    const result = reverseInlineMarkup('Vatn er \\_\\_ og \\_\\_\\_\\_\\_\\_ er ekki.', emptyEq);
+    expect(result).not.toContain('<term>');
+  });
+
+  it('leaves an escaped fill-in-the-blank exercise untouched', () => {
+    // Verbatim from efnafraedi-2e ch01 m68683.
+    const input = '(a) 612 g = \\_\\_\\_\\_\\_\\_\\_\\_ mg';
+    expect(reverseInlineMarkup(input, emptyEq)).toBe(input);
+  });
+
+  it('still converts a real escaped \\_\\_term\\_\\_ marker', () => {
+    // Verbatim from efnafraedi-2e ch01 m68674.
+    const result = reverseInlineMarkup('Einn \\_\\_Lítri (L)\\_\\_ er rúmdesímetri', emptyEq);
+    expect(result).toContain('<term>Lítri (L)</term>');
+  });
+});
+
+// ─── C16(a′), second site: the EN-gloss annotator has the same regex ──
+//
+// Fixing reverseInlineMarkup alone left an ORPHANED gloss in published output —
+// `ríkjunum ________ og  (e.  and )________` — because annotateInlineTerms runs
+// earlier, on RAW segment text, and its own `__([^_]+)__` alternation read the
+// prose between two blanks as a term on BOTH the EN and IS sides. Unit tests and
+// a whole-corpus reverseInlineMarkup oracle were both green while this shipped:
+// they measured one function and the defect had two consumers.
+describe("annotateInlineTerms fill-in-the-blank underscores (C16 a')", () => {
+  it('does not annotate the prose between two blanks as a term', () => {
+    // Verbatim EN/IS pair from orverufraedi m58782:problem:fs-id1171359127221.
+    const en = new Map([
+      [
+        's1',
+        'Haeckel proposed adding the kingdoms ________ and ________ to his phylogenetic tree.',
+      ],
+    ]);
+    const is = new Map([
+      ['s1', 'Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.'],
+    ]);
+
+    const { annotatedCount } = annotateInlineTerms(is, en, {});
+
+    expect(annotatedCount).toBe(0);
+    expect(is.get('s1')).not.toContain('(e.');
+  });
+
+  it('leaves the IS segment byte-identical when only blanks are present', () => {
+    const original = 'Haeckel lagði til að bæta ríkjunum ________ og ________ við þróunartré sitt.';
+    const en = new Map([
+      [
+        's1',
+        'Haeckel proposed adding the kingdoms ________ and ________ to his phylogenetic tree.',
+      ],
+    ]);
+    const is = new Map([['s1', original]]);
+
+    annotateInlineTerms(is, en, {});
+
+    expect(is.get('s1')).toBe(original);
+  });
+
+  it('still annotates a real __term__ pair', () => {
+    const en = new Map([['s1', 'The __algae__ are protists.']]);
+    const is = new Map([['s1', 'Þessir __þörungar__ eru frumverur.']]);
+
+    const { annotatedCount } = annotateInlineTerms(is, en, {});
+
+    expect(annotatedCount).toBe(1);
+    expect(is.get('s1')).toContain('(e. algae)');
+  });
+});
+
+// ─── C16(a′), third site: restoreTermMarkers runs FIRST and mutates ───
+//
+// Found by adversarial review after the first fix claimed "both sites must carry
+// the guard" — there were more. restoreTermMarkers runs at cnxml-inject.js:4297,
+// BEFORE annotateInlineTerms (:4348), and MUTATES the segment map in place, so
+// the downstream guards cannot protect what it has already damaged.
+//
+// Zero corpus instances today (measured: 0 mutations over 247 real module pairs),
+// but the triggers are ordinary: one segment carrying both a blank run and a term
+// marker. "Glossary overproduction causing a count imbalance" is this function's
+// stated reason to exist, so the imbalance case is not exotic.
+describe("restoreTermMarkers fill-in-the-blank underscores (C16 a')", () => {
+  it('does not shorten blank runs when stripping API glossary overproduction', () => {
+    const isText = '________ afmarkast af [[term:frumuhimnu|t1]] og ________ að innan.';
+    const is = new Map([['s', isText]]);
+    const en = new Map([
+      ['s', '________ is bounded by [[term:cell membrane|t1]] and ________ inside.'],
+    ]);
+
+    restoreTermMarkers(is, en);
+
+    expect(is.get('s')).toBe(isText);
+  });
+
+  it('does not shorten a blank run when an imbalance triggers positional stripping', () => {
+    const isText = 'Fylltu inn ________ og ________ hér. Einnig __glósa__ frá API.';
+    const is = new Map([['s', isText]]);
+    const en = new Map([['s', 'Fill in ________ and ________ here. Also **note** from API.']]);
+
+    restoreTermMarkers(is, en);
+
+    expect(is.get('s')).toContain('________ og ________');
+  });
+
+  it('does not half-destroy a real term marker sitting beside blanks', () => {
+    const is = new Map([['s', 'Fylltu inn ________ og ________ hér. Einnig __glósa__ frá API.']]);
+    const en = new Map([['s', 'Fill in ________ and ________ here. Also **note** from API.']]);
+
+    restoreTermMarkers(is, en);
+
+    // The orphan `glósa__` was the observed damage — an unpaired delimiter left behind.
+    expect(is.get('s')).not.toMatch(/[^_]glósa__/);
+  });
+
+  it('still restores a legacy **bold** to __term__ from the EN marker order', () => {
+    const is = new Map([['s', 'Þetta er **hugtak** hér.']]);
+    const en = new Map([['s', 'This is __term__ here.']]);
+
+    const { restoredCount } = restoreTermMarkers(is, en);
+
+    expect(restoredCount).toBe(1);
+    expect(is.get('s')).toBe('Þetta er __hugtak__ hér.');
   });
 });
 

@@ -54,10 +54,20 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 | Constraint | Implication |
 |------------|-------------|
-| MT via Málstaður API | Automated; bracket `[[type:]]` markers survive at 100% |
+| MT via Málstaður API | Automated; bracket `[[type:]]` marker survival is **per-endpoint** — measured intact on `/v1/translate`, **corrupted on `/v1/grammar`**. See CLAUDE.md § *Inline Marker Format*. |
 | Matecat Align **retired** | TMX now generated in-house via `generate-tm.js` |
 | Content repo is read-only | All writes via GitHub PRs |
 | Small team | Simple over complex |
+
+<!-- Corrected 2026-08-07 (C16 audit, second pass — caught by its own adversarial review).
+     The MT row read "markers survive at 100%", an unqualified whole-API claim that CLAUDE.md
+     corrected to a PER-ENDPOINT one on 2026-08-06: /v1/grammar returns `[[i: vatns]]` (spaced,
+     which parses to an empty list SILENTLY) and `[[xref:kafli>1]]`. Re-test any new endpoint or
+     new model before sending marker-bearing text through it.
+     NOTE: this comment sits BELOW the table on purpose — placed between rows it TERMINATES the
+     GFM table and the following rows render as literal pipe text. That is exactly what the
+     first version of this correction did, in the same session that fixed the identical break
+     in README.md. -->
 
 ---
 
@@ -68,15 +78,25 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Component | File | Status |
 |-----------|------|--------|
 | Extract-Inject-Render pipeline | `tools/cnxml-extract.js`, `cnxml-inject.js`, `cnxml-render.js` | ✅ |
-| Segment protection for MT | `tools/protect-segments-for-mt.js`, `unprotect-segments.js` | ✅ |
-| OpenStax fetcher | `tools/openstax-fetch.js` | ✅ |
-| TM preparation | `tools/prepare-for-align.js` | ✅ |
+| Machine translation | `tools/api-translate.js` (Málstaður API) | ✅ |
+| TM generation | `tools/generate-tm.js` — in-house TMX | ✅ |
 | Express server | `server/index.js` | ✅ |
 | Pipeline API | `server/routes/pipeline.js` | ✅ |
-| Matecat integration | `server/services/matecat.js` | ✅ |
 
-**Active CLI Tools:**
-`cnxml-extract`, `cnxml-inject`, `cnxml-render`, `protect-segments-for-mt`, `unprotect-segments`, `openstax-fetch`, `prepare-for-align`, `validate-chapter`
+<!-- Corrected 2026-08-07 by the C16 audit (docs/audit/2026-08-07-c16-partially-live-legacy-audit.md).
+     Five rows were false: `protect-segments-for-mt`, `unprotect-segments` and `prepare-for-align`
+     are ARCHIVED (tools/archived/); and `server/services/matecat.js` does NOT EXIST — Matecat
+     was retired, as lines 42/58 of this same file already said.
+     CORRECTED AGAIN 2026-08-07 by the same review: this comment first said "`tools/openstax-
+     fetch.js` does NOT EXIST", which is true only of the EXTENSION and under-reported —
+     `tools/openstax-fetch.cjs` is a live 17 KB CLI (its own --help calls itself
+     openstax-fetch.js), and server/services/openstaxFetcher.js exists too. It also first
+     prescribed `ls tools/*.js`, which has the SAME blind spot and misses both .cjs tools.
+     Derive with `ls tools/*.{js,cjs}`. -->
+
+**Active CLI tools:** derive them — `ls tools/*.{js,cjs}` (anything under `tools/archived/` is retired).
+⚠️ **Keep the `.cjs`** — `openstax-fetch.cjs` and `generate-book-data.cjs` are live and a bare `*.js` glob hides them.
+Flags that are not guessable are tabulated in CLAUDE.md § *Commands*.
 
 **Old markdown pipeline (deleted 2026-02-16):**
 43 tools in `tools/_archived/` removed. All code preserved in git history. Key deleted tools: `pipeline-runner`, `cnxml-to-md`, `chapter-assembler`, `add-frontmatter`, `compile-chapter`, `split-for-erlendur`, `apply-equations`, `clean-markdown`, `docx-to-md`, `cnxml-to-xliff`, `create-bilingual-xliff`, `md-to-xliff`, `xliff-to-md`, `xliff-to-tmx`.
@@ -92,8 +112,15 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Image tracking | ✅ | `server/services/imageTracker.js` | 319 |
 | HTML wizard UI | ✅ | `server/views/workflow.html` | ✅ |
 
-**Server Routes (24 total):**
-`activity`, `admin`, `analytics`, `auth`, `books`, `feedback`, `images`, `issues`, `localization-editor`, `matecat`, `modules`, `my-work`, `notifications`, `pipeline`, `publication`, `reviews`, `sections`, `segment-editor`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
+**Server routes:** `ls server/routes/`. **Do not restate the list here** — CLAUDE.md
+§ *Server Features* says the feature list is derivable from that directory, and a copy drifts.
+
+<!-- Corrected 2026-08-07 by the C16 audit. The hand-maintained list that stood here claimed
+     "24 total" and was wrong in BOTH directions: it named 7 routes that do not exist
+     (`images`, `issues`, `matecat`, `modules`, `reviews`, `sync`, `workflow`) and omitted 3
+     that do (`pipeline-status`, `profile`, `tm`). `matecat` in particular contradicted lines
+     42/58 of this file, which already recorded Matecat as retired. -->
+
 
 > **Note:** `editor`, `process`, and `localization` routes were removed in the 2026-02-16 pipeline retirement. `meetings`, `deadlines`, `assignments`, `reports`, and `decisions` were removed as unused project management features (handled by Google Docs/GitHub Issues).
 
@@ -254,7 +281,7 @@ Features A, B, and D — backend + UI completed ahead of first full editorial wo
 | Feature | Backend | UI | Description |
 |---------|---------|-----|-------------|
 | A: Validation Gate | `validateBeforePublish()` in publicationService | Wired into `/api/publication` endpoints | Blocks publish if prerequisite stages incomplete |
-| B: TM Prep | `runPrepareTm()` in pipelineService, `POST /api/pipeline/prepare-tm` | "Undirbúa TM" button in `/chapter` with job polling | Prepare files for Matecat Align from chapter control panel |
+| B: TM Prep | `runPrepareTm()` in pipelineService, `POST /api/pipeline/prepare-tm` | "Undirbúa TM" button in `/chapter` with job polling | ⚠️ **Matecat Align was retired 2026-06-13** — this row describes the superseded design; TMX is generated in-house by `generate-tm.js`. Corrected 2026-08-07 (C16 audit, 2nd pass). |
 | D: Review Queue | `getReviewQueue()` in segmentEditorService, `GET /api/segment-editor/review-queue` | `/review-queue` page with SLA badges, edit counts, filters | Cross-chapter view of all pending reviews |
 
 Additional work:

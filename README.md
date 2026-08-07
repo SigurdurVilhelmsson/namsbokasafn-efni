@@ -97,8 +97,14 @@ Edit `.env`:
 | `SMTP_HOST` | No | SMTP server for email notifications |
 | `SMTP_PORT` | No | SMTP port (default: `587`) |
 | `SMTP_USER` / `SMTP_PASS` | No | SMTP credentials |
-| `MATECAT_API_KEY` | No | Matecat API key for TM creation |
 | `OPENSTAX_ARCHIVE_URL` | No | OpenStax archive URL (has default) |
+
+<!-- MATECAT_API_KEY was removed from the table above on 2026-08-07 (C16 audit): Matecat Align
+     was retired, TMX is generated in-house by tools/generate-tm.js, and nothing reads that
+     variable. NOTE: this comment sits BELOW the table on purpose — placed between rows, an
+     HTML comment plus a blank line terminates a GFM table, and the row after it rendered as
+     literal pipe text on the public README. Caught by the C16 adversarial review. -->
+
 
 ### 4. Run the workflow server
 
@@ -132,13 +138,20 @@ CNXML (OpenStax) → Extract segments → Machine translate → Human review →
 
 | Step | Tool | Input | Output |
 |------|------|-------|--------|
-| 1a | `cnxml-extract` | CNXML source | EN segments + document structure |
-| 1b | `protect-segments-for-mt` | EN segments | MT-safe segments |
-| 2 | malstadur.is (external) | MT-safe segments | Raw IS translation |
-| 3 | Web editor / manual | MT output | Reviewed faithful translation |
-| 4 | `prepare-for-align` + Matecat | EN + IS segments | Translation memory (TMX) |
+| 1 | `cnxml-extract` | CNXML source | EN segments + document structure |
+| 2 | `api-translate` (Málstaður API) | EN segments | Raw IS translation |
+| 3 | Web segment editor / manual | MT output | Reviewed faithful translation |
+| 4 | `generate-tm` | EN + reviewed IS segments | Translation memory (TMX), in-house |
 | 5a | `cnxml-inject` | Reviewed segments + structure | Translated CNXML |
 | 5b | `cnxml-render` | Translated CNXML | Publication-ready HTML |
+
+<!-- Corrected 2026-08-07 by the C16 audit (docs/audit/2026-08-07-c16-partially-live-legacy-audit.md).
+     Three rows described a retired pipeline: `protect-segments-for-mt` is ARCHIVED (bracket
+     markers made it unnecessary); machine translation goes through tools/api-translate.js, NOT a
+     manual upload to malstadur.is; and TMX is generated in-house by tools/generate-tm.js — the
+     `prepare-for-align` + Matecat Align step was retired. CLAUDE.md § Extract-Inject-Render is
+     the canonical table; keep this one in step with it. -->
+
 
 ### Two-pass editorial process
 
