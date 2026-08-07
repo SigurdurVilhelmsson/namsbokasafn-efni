@@ -94,4 +94,27 @@ describe('importConcepts', () => {
     );
     expect(r.byLang).toEqual({ en: 2, is: 1, la: 0 });
   });
+
+  it('dedupes a word that repeats its own head form as a synonym, instead of throwing on the UNIQUE constraint', () => {
+    const r = importConcepts(
+      db,
+      payload([{ id: 20, words: [w('IS', 'frumeind', { synonyms: 'frumeind' })] }])
+    );
+    expect(r.imported).toBe(1);
+    expect(
+      db.prepare("SELECT COUNT(*) n FROM concept_term WHERE lang='is' AND text='frumeind'").get().n
+    ).toBe(1);
+  });
+
+  it('re-importing the same idordabanki_id REPLACES stored terms rather than skipping them', () => {
+    importConcepts(db, payload([{ id: 30, words: [w('EN', 'atom'), w('IS', 'frumeind')] }]));
+    importConcepts(db, payload([{ id: 30, words: [w('EN', 'molecule'), w('IS', 'sameind')] }]));
+    const conceptId = db.prepare('SELECT id FROM concept WHERE idordabanki_id = 30').get().id;
+    const texts = db
+      .prepare('SELECT text FROM concept_term WHERE concept_id = ?')
+      .all(conceptId)
+      .map((row) => row.text)
+      .sort();
+    expect(texts).toEqual(['molecule', 'sameind']);
+  });
 });
