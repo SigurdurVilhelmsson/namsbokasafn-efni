@@ -73,6 +73,7 @@ function runAllMigrations() {
     require('../migrations/041-localization-pending-per-editor'),
     require('../migrations/042-content-versions-track'),
     require('../migrations/043-segment-acceptances'),
+    require('../migrations/044-remap-empty-subjects'),
   ];
 
   let applied = 0;

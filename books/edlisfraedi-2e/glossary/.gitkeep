@@ -1,0 +1,12 @@
+# Intentionally empty — see register §C14 ② "LEAD DECISIONS TAKEN 2026-08-07", decision 4.
+#
+# This directory's EXISTENCE is the behaviour. `hasGlossaryDir` in
+# server/scripts/export-terminology.js enumerates books by it, so without this file
+# edlisfraedi-2e is skipped SILENTLY: no refusal, no /api/health entry, no D6 clock —
+# despite physics carrying 5,496 tagged translations, the second-largest corpus.
+#
+# With it, the book reaches `refused-absent-baseline` (register §C21): a VISIBLE,
+# deadline-clocked refusal and no write. Adoption remains a separate, deliberate
+# `--adopt` decision that the cron cannot reach.
+#
+# Do not delete to "tidy up" — that silently removes the book from the export again.

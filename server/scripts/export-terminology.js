@@ -111,11 +111,30 @@
  * They read `--force` / `--adopt` alone until then, which is the
  * OVERRIDE-EVERY-BOOK form: run bare against production's committed state,
  * `--adopt` reproduces the 2026-08-03 incident's writes — the same books, the
- * same numbers — in a single command. `--adopt` is still ALLOWED without
- * `--book` (whether it should be is logged as a follow-up in register §C14 ③,
- * deliberately not decided here), so the only thing standing between a
- * copy-pasted example and a corpus-wide producer swap is which example is
- * written down. Adoption is a per-book decision; type it one book at a time.
+ * same numbers — in a single command.
+ *
+ * ✅ ENFORCED SINCE 2026-08-07 (register §C14 ② decision 5): parseArgs now
+ * REJECTS `--adopt` or `--force` without `--book`. The paragraph above ended
+ * "`--adopt` is still ALLOWED without `--book` … so the only thing standing
+ * between a copy-pasted example and a corpus-wide producer swap is which
+ * example is written down." Documentation is no longer the only thing standing
+ * there. ⚠️ Two things made that urgent rather than tidy:
+ *
+ *   - Migration 044 remapped `lifraen-efnafraedi` onto `chemistry`, and
+ *     exportBookGlossary filters on the book's subject and NOTHING ELSE — so
+ *     organic's payload became byte-equivalent to chemistry's and CLEARED the
+ *     shrink gate that had refused it with certainty at 1117 → 0. An unscoped
+ *     `--adopt` became destructive for a book it could not previously touch.
+ *   - The producer refusal below PRINTED the unscoped form as its remedy. The
+ *     absent-baseline refusal already printed `--adopt --book <slug>`; this one
+ *     did not. Same shape §C21(c) records for `stjornufraedi`: the remedy the
+ *     system prints is the trigger. Both now name the book.
+ *
+ * The guard is on the CLI surface only. runGlossaryExport still accepts an
+ * unscoped `adopt`/`force` in its options — see its header on why it must not
+ * depend on parseArgs — so a programmatic caller scoping by other means is
+ * unaffected, and every existing test that drives it directly still holds.
+ * Adoption is a per-book decision; type it one book at a time.
  */
 
 const fs = require('fs');
@@ -637,7 +656,7 @@ function runGlossaryExport({
         `${b}: REFUSING to write — the committed file was written by ` +
           `${pv.prevProducer}, not by this exporter (${pv.nextProducer}). Writing would ` +
           `SWAP PRODUCERS, not refresh. Review what this book's glossary should be, ` +
-          `then pass --adopt to migrate it.`
+          `then pass --adopt --book ${b} to migrate it.`
       );
       outcomes[b] = {
         outcome: 'refused-producer',
@@ -881,6 +900,43 @@ function parseArgs(argv) {
       };
     }
   }
+  // ── Override scoping (register §C14 ② decision 5) ────────────────────────
+  //
+  // `--adopt` and `--force` are per-book acknowledgements of a per-book risk,
+  // so an UNSCOPED one is a category error: it answers a question nobody asked
+  // about every other book in the tree. Against prod's committed state a bare
+  // `--adopt` reproduces the 2026-08-03 incident's writes — the same books and
+  // the same numbers — in a single command.
+  //
+  // This became sharper with migration 044. Remapping `lifraen-efnafraedi`
+  // onto `chemistry` makes its export payload byte-equivalent to chemistry's
+  // (exportBookGlossary filters on the book's subject and nothing else), which
+  // CLEARS the shrink gate that previously refused it with certainty at
+  // 1117 → 0. The unscoped command therefore became destructive for a book it
+  // could not touch before — and the producer refusal below used to print that
+  // exact unscoped command as its remedy.
+  //
+  // The guard lives here, on the CLI surface, and deliberately NOT in
+  // runGlossaryExport: that function documents (see its header) that it must
+  // not depend on parseArgs, and a programmatic caller scoping by other means
+  // is legitimate. The cron invokes the script bare, so it reaches neither
+  // override either way.
+  if (book === null && (adopt || force)) {
+    const passed = [adopt ? '--adopt' : null, force ? '--force' : null].filter(Boolean);
+    return {
+      book: null,
+      dryRun,
+      force,
+      adopt,
+      help,
+      error:
+        `${passed.join(' and ')} ${passed.length > 1 ? 'require' : 'requires'} --book <slug>. ` +
+        `An unscoped override applies to EVERY book with a glossary directory, which is ` +
+        `how the 2026-08-03 incident wrote and pushed two books in one command. ` +
+        `Name the book you have actually reviewed.`,
+    };
+  }
+
   return { book, dryRun, force, adopt, help, error: null };
 }
 
