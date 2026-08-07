@@ -23,7 +23,7 @@ The deliverable §C16 specifies is **a classification, not a delete list**:
 Section 5 is that classification.
 
 **Headline:** the audit found **one new reader-visible corruption**, **one new artifact more
-severe than (b)–(e)**, and **three corrections to §C16's own evidence** — including that
+severe than (b)–(e)** *(⚠️ **superseded — see §4.1: (f) was re-ranked WITH (b) after the claim that made it (a)-tier was retracted.** This headline was not updated with §4.1 and is corrected here rather than rewritten, because a headline outliving its own body is the failure this document was written about)*, and **six corrections to §C16's own evidence** *(this said "three" while §6 listed six)* — including that
 artifact (e)'s premise stopped being true on the day §C16 was written.
 
 ---
@@ -91,6 +91,17 @@ regardless of era, so removing the guard would not retire them.
 | `02-mt-output` (247 files, 6 books) | **30,647** | **22,004** | **71.8 %** | **168** |
 | `03-faithful-translation` (5 files, 2 books) | 371 | 254 | 68.5 % | 9 |
 | `04-localized-content` | 0 segment files | — | — | — |
+
+⚠️ **Two scoping caveats on that table, added 2026-08-07 after the review — the numbers are
+right but they do not COMPOSE with §2.6's, and one row is not reproducible from a clean clone.**
+① The `02-mt-output` row **includes `books/__e2e-fixture__`** (83 segments, 9 firings) while
+§2.6's "10 firing modules" **excludes** it — so 168 and 10 are counted over different
+populations; real content is **159** firings across 10 modules. ② The `03-faithful-translation`
+row counts `books/__e2e-fixture__/03-faithful-translation/`, which is **gitignored**
+(`.gitignore:124`) — a clean clone yields **4 files / 1 book / 360 / 243 / 67.5 %**. That row is
+therefore not reproducible from the committed tree, **which was the stated reason for committing
+the scripts.** Run B's 117 is unaffected. *(Stating the population is the same discipline as
+stating the counting unit, and this table did the second while neglecting the first.)*
 
 §C16's 71.7 % / 22,163 / 30,932 reproduce within drift. **But the 71.8 % is the register's most
 misleading figure, and correcting it is a finding**: it counts the branch being *taken*, not the
@@ -259,10 +270,29 @@ Current `CLAUDE.md` contains **no occurrence of `04-localization`** as a bare pa
 (`:234`) does too — both agreeing with the `.claude/settings.json` grant
 (`books/**/04-localized-content/**`). There is nothing to disagree.
 
-**It was true when written, and was fixed the same day.** `git log -S '04-localization' --
-CLAUDE.md` returns `9343827b` — *"docs(claude-md): archive the changelog, lift its 14 durable
-rules first"*, **dated 2026-07-29**, the day §C16 was logged. The Directory-Structure rewrite
-that made the section self-describing removed the wrong entry incidentally.
+🔴 **It was HALF true when written — and the half that was false is the half carrying (e)'s
+whole argument. Corrected 2026-08-07 after the adversarial review; the first version of this
+paragraph got it wrong and is recorded below because the mistake is the instructive part.**
+
+§C16(e) claimed CLAUDE.md named `04-localization` in **two** places: § Directory Structure
+**and the § File Permissions table**. Measured at `9343827b^`, that table read exactly
+`03-faithful-translation/`, `04-localized-content/`, `05-publication/` — **`04-localization`
+was never in it.** `git log -S '04-localization' -- CLAUDE.md` finds one occurrence ever, and
+the diff shows what `9343827b` actually removed: a single **tree-diagram** line,
+`├── 04-localization/    # ✏️ Localization in progress`.
+
+**So the permissions-table half never existed, and no commit ever fixed it** — which matters
+because that half is where (e) got its severity: *"a wrong entry in a permissions table is the
+kind of fact an agent obeys."* A stale line in a directory diagram is a much weaker claim.
+The doc-vs-grant disagreement (e) described was therefore **never real**: the table and
+`.claude/settings.json` have always agreed on `04-localized-content/`.
+
+> ⚠️ **This paragraph first read "It was true when written, and was fixed the same day."** That
+> is how the error was made: the *conclusion* was verified (no bare `04-localization` today)
+> and a *commit* was found that removed one — and the premise was inferred from them, without
+> checking **which of the two named places** had ever existed. **Confirming an outcome is not
+> confirming the claim that predicted it.** The wrong version was then carried into the
+> register, doubling it, before the review caught both.
 
 **(e) therefore collapses to (d)-class:** a stray directory holding one file,
 `books/efnafraedi-2e/04-localization/README.md`. **The doc/reality conflict is gone.**
@@ -372,6 +402,24 @@ live and enabled, but it only *displays*; it writes nothing and decides nothing.
 `ROADMAP.md:42` and `:58` **already say Matecat is retired** — so ROADMAP contradicts itself
 four lines apart.
 
+### 🔴 4.3a — the sweep above was INCOMPLETE, and the review found four more
+
+Recorded rather than silently appended, because the omission is the finding: the table above
+was presented as the drift, and one of the sites it missed is **a row in the table itself**.
+
+| File | What | Status |
+|---|---|---|
+| `ROADMAP.md` (§4.3 row 4) | "Prepare files for Matecat Align" | ✅ annotated 2026-08-07 — **it was tabulated above and then not fixed** |
+| root `.env.example:58-59` | `MATECAT_API_KEY=` / `MATECAT_API_URL=`, **uncommented** | ⬜ open — never enumerated anywhere; only `server/.env.example` was |
+| `server/README.md:110` | `MATECAT_API_KEY=your_api_key` | ⬜ open |
+| `server/README.md:57-75` | route table with **6 phantom routes** (`images`, `issues`, `matecat`, `modules`, `sync`, `workflow`) and the real **`tm`** missing | ⬜ open — **the same drift, and the same cause, as the ROADMAP list fixed above** |
+
+**The last row matters most: it is a second victim of artifact (i).** `generate-route-inventory.js`
+produces a correct list that nothing consumes, so **two** hand-maintained route tables drifted
+independently — §4.4 diagnosed the mechanism and this sweep then missed one of the two lists it
+explains. The `server/` ones are left for the scoped work: that is the **AGPL** tree with its own
+review surface, and expanding an already-reviewed branch into it is how unreviewed changes ship.
+
 ### 4.4 🆕 **(i) — the generated inventories are produced, committed, and surfaced NOWHERE**
 
 This is *why* the drift in §4.3 exists, so it belongs with it rather than as a footnote.
@@ -399,7 +447,7 @@ produces a wrong result (a stale hand list beside a fresh generated one), no tes
 | Era | Live consumers remaining |
 |---|---|
 | docx/Pandoc → Markdown + `:::` | `terminologyService.js:1255` (artifact **b**); `/intake-source` (**f**). Data: `liffraedi-2e/reference-translations/ch03-human-docx/` — deliberately preserved, not in the pipeline. |
-| Matecat → `generate-tm.js` | **No live server code** — `server/services/matecat.js` and `routes/matecat.js` do not exist. Remaining hits in `server/` are *comments recording the retirement* (`pipelineService.js:850`, `pipelineStatusService.js:272`, `routes/status.js:1642`), **three test files** (`pipelineStatus`, `books-routes`, `nonSequentialStages` — retirement comments and regression names), plus `.env.example`. ⚠️ *The three test files were missing from this row's first version — an enumeration that under-reported, which is the failure CLAUDE.md warns about in the very sentence telling you not to trust one.* Docs per 4.3; commands per **f**/**g**. |
+| Matecat → `generate-tm.js` | **No live server code** — `server/services/matecat.js` and `routes/matecat.js` do not exist. Remaining hits in `server/` are *comments recording the retirement* (`pipelineService.js:850`, `pipelineStatusService.js:272`, `routes/status.js:1642`), **three test files** (`pipelineStatus`, `books-routes`, `nonSequentialStages` — retirement comments and regression names), `.env.example`, **and `server/README.md`, which carries a live phantom-route table and a `MATECAT_API_KEY` line (→ §4.3a)**. ⚠️ *This row twice claimed the `server/` hits were "comments recording the retirement" and then named an incomplete set — first missing the tests, then missing `server/README.md`, which is not a comment at all but documentation asserting a route that does not exist. **Two successive enumerations, both under-reporting**, in a document that quotes CLAUDE.md's "do not trust any enumeration here".* Docs per 4.3/4.3a; commands per **f**/**g**. |
 | manual malstadur.is → API | `/intake-source` (**f**) only. `tools/lib/malstadur-api.js` is the *current* API client — not legacy. |
 | `files.json` → DB | `server/routes/status.js:1264` (artifact **c**) only. |
 
@@ -419,7 +467,7 @@ Per §C16: *fully dead → remove · partially live → decide · load-bearing b
 | **(e)** | `books/*/04-localization/` | 🟢 **FULLY DEAD → REMOVE** (downgraded) | Premise falsified; now (d)-class. One `README.md`. |
 | **(f)** 🆕 | `/intake-source` | 🔴 **PARTIALLY LIVE → DECIDE — rank with (b)** | Live, enabled, `Write`-permitted; instructs manual malstadur.is upload against a standing rule, and **writes the `files.json` that would revive (c)'s dead branch**. ⚠️ **Take (c) and (f) together** — fixing either alone leaves the other armed. *(Ranked at (a)'s tier in this doc's first pass, on a retracted claim — see §4.1.)* |
 | **(g)** 🆕 | `/pipeline-status` Matecat row | 🟢 **FULLY DEAD → REMOVE** | Display only. |
-| **(h)** 🆕 | ROADMAP / README / `.env.example` drift | 🟢 **FULLY DEAD → REMOVE** | §4.3. Fixed in place 2026-08-07 per § *One source of truth* — except `server/.env.example`, left for the scoped work. |
+| **(h)** 🆕 | ROADMAP / README / `.env.example` drift | 🟢 **FULLY DEAD → REMOVE** | §4.3 — **partially addressed 2026-08-07; four sites remain and are listed there.** ⚠️ *This cell first read "Fixed in place … except `server/.env.example`", which was false in two ways: three further sites were never enumerated, and one of them (`ROADMAP.md`'s Matecat-Align row) was **a row in this document's own §4.3 table**. An enumeration that omits an item it itself tabulates is the exact failure CLAUDE.md's "do not trust any enumeration here" rule exists for.* |
 | **(i)** 🆕 | generated inventories with no consumer | 🟡 **PARTIALLY LIVE → DECIDE** | §4.4. `docs/_generated/{tools,routes}.md` are correct, committed and read by nobody; README lacks the markers `update-readme-sections.js` needs, making it a permanent no-op. **This is the mechanism behind (h)** — fix it and the hand lists stop drifting. |
 | — | `stages` unconstrained by schema + validator | 🟡 **PARTIALLY LIVE → DECIDE** | §4.1, final para. A gap in the gate, not an active defect; nothing exploits it today. Listed unlettered because it is not era-legacy — it is an independent weakness the audit tripped over. |
 

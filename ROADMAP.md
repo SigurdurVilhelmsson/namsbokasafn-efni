@@ -55,16 +55,19 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Constraint | Implication |
 |------------|-------------|
 | MT via Málstaður API | Automated; bracket `[[type:]]` marker survival is **per-endpoint** — measured intact on `/v1/translate`, **corrupted on `/v1/grammar`**. See CLAUDE.md § *Inline Marker Format*. |
-
-<!-- Corrected 2026-08-07 (C16 audit, second pass — caught by its own adversarial review).
-     This row read "markers survive at 100%", an unqualified whole-API claim that CLAUDE.md
-     corrected to a PER-ENDPOINT one on 2026-08-06: /v1/grammar returns `[[i: vatns]]` (spaced,
-     which parses to an empty list SILENTLY) and `[[xref:kafli>1]]`. Re-test any new endpoint or
-     new model before sending marker-bearing text through it. -->
-
 | Matecat Align **retired** | TMX now generated in-house via `generate-tm.js` |
 | Content repo is read-only | All writes via GitHub PRs |
 | Small team | Simple over complex |
+
+<!-- Corrected 2026-08-07 (C16 audit, second pass — caught by its own adversarial review).
+     The MT row read "markers survive at 100%", an unqualified whole-API claim that CLAUDE.md
+     corrected to a PER-ENDPOINT one on 2026-08-06: /v1/grammar returns `[[i: vatns]]` (spaced,
+     which parses to an empty list SILENTLY) and `[[xref:kafli>1]]`. Re-test any new endpoint or
+     new model before sending marker-bearing text through it.
+     NOTE: this comment sits BELOW the table on purpose — placed between rows it TERMINATES the
+     GFM table and the following rows render as literal pipe text. That is exactly what the
+     first version of this correction did, in the same session that fixed the identical break
+     in README.md. -->
 
 ---
 
@@ -82,11 +85,17 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 <!-- Corrected 2026-08-07 by the C16 audit (docs/audit/2026-08-07-c16-partially-live-legacy-audit.md).
      Five rows were false: `protect-segments-for-mt`, `unprotect-segments` and `prepare-for-align`
-     are ARCHIVED (tools/archived/); `tools/openstax-fetch.js` does NOT EXIST; and
-     `server/services/matecat.js` does NOT EXIST — Matecat was retired, as lines 42/58 of this
-     same file already said. Do not re-add a hand-maintained tool list here: `ls tools/*.js`. -->
+     are ARCHIVED (tools/archived/); and `server/services/matecat.js` does NOT EXIST — Matecat
+     was retired, as lines 42/58 of this same file already said.
+     CORRECTED AGAIN 2026-08-07 by the same review: this comment first said "`tools/openstax-
+     fetch.js` does NOT EXIST", which is true only of the EXTENSION and under-reported —
+     `tools/openstax-fetch.cjs` is a live 17 KB CLI (its own --help calls itself
+     openstax-fetch.js), and server/services/openstaxFetcher.js exists too. It also first
+     prescribed `ls tools/*.js`, which has the SAME blind spot and misses both .cjs tools.
+     Derive with `ls tools/*.{js,cjs}`. -->
 
-**Active CLI tools:** derive them — `ls tools/*.js` (anything under `tools/archived/` is retired).
+**Active CLI tools:** derive them — `ls tools/*.{js,cjs}` (anything under `tools/archived/` is retired).
+⚠️ **Keep the `.cjs`** — `openstax-fetch.cjs` and `generate-book-data.cjs` are live and a bare `*.js` glob hides them.
 Flags that are not guessable are tabulated in CLAUDE.md § *Commands*.
 
 **Old markdown pipeline (deleted 2026-02-16):**
@@ -272,7 +281,7 @@ Features A, B, and D — backend + UI completed ahead of first full editorial wo
 | Feature | Backend | UI | Description |
 |---------|---------|-----|-------------|
 | A: Validation Gate | `validateBeforePublish()` in publicationService | Wired into `/api/publication` endpoints | Blocks publish if prerequisite stages incomplete |
-| B: TM Prep | `runPrepareTm()` in pipelineService, `POST /api/pipeline/prepare-tm` | "Undirbúa TM" button in `/chapter` with job polling | Prepare files for Matecat Align from chapter control panel |
+| B: TM Prep | `runPrepareTm()` in pipelineService, `POST /api/pipeline/prepare-tm` | "Undirbúa TM" button in `/chapter` with job polling | ⚠️ **Matecat Align was retired 2026-06-13** — this row describes the superseded design; TMX is generated in-house by `generate-tm.js`. Corrected 2026-08-07 (C16 audit, 2nd pass). |
 | D: Review Queue | `getReviewQueue()` in segmentEditorService, `GET /api/segment-editor/review-queue` | `/review-queue` page with SLA badges, edit counts, filters | Cross-chapter view of all pending reviews |
 
 Additional work:

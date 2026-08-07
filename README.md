@@ -97,10 +97,14 @@ Edit `.env`:
 | `SMTP_HOST` | No | SMTP server for email notifications |
 | `SMTP_PORT` | No | SMTP port (default: `587`) |
 | `SMTP_USER` / `SMTP_PASS` | No | SMTP credentials |
-<!-- MATECAT_API_KEY removed 2026-08-07 (C16 audit): Matecat Align was retired, TMX is generated
-     in-house by tools/generate-tm.js, and no code reads that variable. -->
-
 | `OPENSTAX_ARCHIVE_URL` | No | OpenStax archive URL (has default) |
+
+<!-- MATECAT_API_KEY was removed from the table above on 2026-08-07 (C16 audit): Matecat Align
+     was retired, TMX is generated in-house by tools/generate-tm.js, and nothing reads that
+     variable. NOTE: this comment sits BELOW the table on purpose — placed between rows, an
+     HTML comment plus a blank line terminates a GFM table, and the row after it rendered as
+     literal pipe text on the public README. Caught by the C16 adversarial review. -->
+
 
 ### 4. Run the workflow server
 
