@@ -54,7 +54,14 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 | Constraint | Implication |
 |------------|-------------|
-| MT via Málstaður API | Automated; bracket `[[type:]]` markers survive at 100% |
+| MT via Málstaður API | Automated; bracket `[[type:]]` marker survival is **per-endpoint** — measured intact on `/v1/translate`, **corrupted on `/v1/grammar`**. See CLAUDE.md § *Inline Marker Format*. |
+
+<!-- Corrected 2026-08-07 (C16 audit, second pass — caught by its own adversarial review).
+     This row read "markers survive at 100%", an unqualified whole-API claim that CLAUDE.md
+     corrected to a PER-ENDPOINT one on 2026-08-06: /v1/grammar returns `[[i: vatns]]` (spaced,
+     which parses to an empty list SILENTLY) and `[[xref:kafli>1]]`. Re-test any new endpoint or
+     new model before sending marker-bearing text through it. -->
+
 | Matecat Align **retired** | TMX now generated in-house via `generate-tm.js` |
 | Content repo is read-only | All writes via GitHub PRs |
 | Small team | Simple over complex |

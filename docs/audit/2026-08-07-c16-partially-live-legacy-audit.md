@@ -140,13 +140,20 @@ readers; the `orverufraedi` pages have no such hold recorded. **Confirm per book
 `/content/<book>/chapters/<NN>/<file>.html`** — never the page URL (SPA fallback 200s
 everything).
 
-> **✅ FIXED 2026-08-07, same day, commit `8954d77c` — 3 of the 4 repaired in published HTML.**
-> Recorded here because this document is frozen at the *measurement*: the numbers above describe
-> the tree at `main ed9c554e`, before the fix. **`orverufraedi ch05/m58805` is NOT repaired** —
-> it cannot be injected at all, on a pre-existing and unrelated defect (empty `[[b:]]` from the
-> API dropping an English plural marker Icelandic has no use for). **Status lives in §C16, not
-> here.** The fix needed **two** sites, not one — `annotateInlineTerms` carries the same regex
-> and left an orphaned `(e.  and )` gloss after the converter was fixed, with every test green.
+> **📌 A fix followed, same day (`8954d77c` …). This document is frozen at the MEASUREMENT** —
+> everything above describes the tree at `main ed9c554e`, *before* it. **Do not read the note
+> below as current status: §C16 owns that, and it is the only place that tracks it.**
+>
+> *As at 2026-08-07:* three of the four instances were repaired in published HTML; the
+> `orverufraedi ch05/m58805` one was not, being blocked by an unrelated pre-existing defect
+> (an empty `[[b:]]`, from the API dropping an English plural marker Icelandic has no use for).
+> The fix also needed **more sites than it first claimed** — `annotateInlineTerms` carried the
+> same regex and left an orphaned `(e.  and )` gloss with every test green, and an adversarial
+> review then found `restoreTermMarkers` holding it in six more places, running *first*.
+>
+> ⚠️ *Phrased in the past tense deliberately: an earlier draft of this note said m58805 **"is
+> NOT repaired"**, a present-tense status verb that would silently rot the day C29 resolves —
+> in a document whose own banner forbids exactly that.*
 
 **⚠️ §C16's finding that re-extraction does NOT clear this is confirmed by construction:** the
 blanks originate in `01-source` CNXML and the segment still carries no bracket marker
@@ -204,7 +211,12 @@ whether any produced wrong markup is task one") is vindicated exactly.
 
 ### (b) `terminologyService.importFromKeyTerms` — **CONFIRMED, both defects**
 
-- `:::definition{term="…"}` Markdown files repo-wide: **0**. `*key-terms*.html`: **27**.
+- **`*-key-terms.md` files the parser could consume: 0.** `*key-terms*.html`: **27**.
+  ⚠️ *This line first said "`:::definition{term="…"}` Markdown files **repo-wide**: 0", which is
+  false as worded — `git grep -l ':::definition{term=' -- '*.md'` returns **4**: two archived
+  docs, `logs/activity-log.md`, and this register itself. All are prose ABOUT the retired
+  syntax, none is input. **The load-bearing claim is about consumable inputs; say that, not
+  "repo-wide".***
   The parser at `server/services/terminologyService.js:1255` can never match. Returns
   `{success: true, added: 0}` — total failure shaped like a clean no-op.
 - The second, independent defect is confirmed on disk: `:1221` builds
@@ -221,10 +233,15 @@ contract carries a phantom `filesData`. Cannot produce a wrong answer, only a pe
 absent one.
 
 **🆕 Related, not in §C16:** the retired `books/<book>/chapters/<ch>/` tree that `files.json`
-lived in **still exists in 4 books** (`efnafraedi-2e` 23 dirs, plus `orverufraedi`,
-`liffraedi-2e`, `testbook`) and holds **26 live `status.json` files** — which
-`scripts/validate-status.js` reads. So the directory is *not* retired; only `files.json` is.
-Do not remove the tree.
+lived in **still exists and is live** — `scripts/validate-status.js` reads its `status.json`
+files. So the directory is *not* retired; only `files.json` is. **Do not remove the tree.**
+
+⚠️ **Counting unit, stated because this document's own README lectures about it and this line
+first got it wrong twice.** **Tracked in git: 24 `status.json` across 3 books**
+(`git ls-files 'books/*/chapters/**/status.json' | wc -l`). On disk it is **26 across 4** — the
+extra book is `books/testbook/`, which is **gitignored and was never tracked**, so it is not a
+property of the repository. And `efnafraedi-2e` has **22 chapter directories**; the "23" first
+written here counted `chapters/` itself, from a bare `find -type d`.
 
 ### (d) `books/*/for-align/` — **CONFIRMED, cosmetic**
 
@@ -308,13 +325,32 @@ wearing a measurement's clothes.*
 **Revised rank: with (b), not with (a).** It is reachable and wrong on current data, but its
 write does not corrupt the status model — which is what the (a)-tier claim rested on.
 
-**🆕 A separate, genuine finding fell out of the retracted test, and it stands on its own:**
-`schemas/chapter-status.schema.json` declares **no `properties` and no `additionalProperties`
-under `stages`**, and `scripts/validate-status.js` implements **no `additionalProperties`
-check at all** (`grep` → no match). **Stage names in `status.json` are entirely
-unconstrained** — a real `status.json` with its `stages` block replaced by four nonexistent
-names reports `Results: 1/1 files valid`. Nothing currently exploits this; it is a gap in the
-gate, not an active defect, and it is **not** caused by `/intake-source`.
+**🆕 A separate, genuine finding fell out of the retracted test — but its MECHANISM was wrong
+too, and the correction inverts the fix.**
+
+**The observed effect is real and reproduced** (control/treatment): take a real, passing
+`status.json`, replace its stage block with four names that do not exist, and
+`scripts/validate-status.js` reports **`Results: 1/1 files valid`**.
+
+**The cause I first gave was false.** This section originally read: *"`chapter-status.schema.json`
+declares no `properties` and no `additionalProperties` under `stages`."* Measured:
+
+- **There is no `stages` key at all** — in the schema or in `status.json`. The block is **`status`**.
+- `properties.status` declares **`additionalProperties: false`** *and* names all **8** canonical
+  stages (`extraction` … `publication`).
+
+**The schema is correct and always was.** The gap is **solely** that the hand-rolled
+`validate-status.js` implements no `additionalProperties` check (`grep` → no match), so it
+ignores what the schema declares.
+
+> ⚠️ **How the error was made, because the shape recurs and this document made it twice.** The
+> probe asked for `schema.properties.stages`, got `undefined`, and `undefined` was read as
+> *unconstrained*. It was really *not-a-key*. **A probe that returns nothing because it asked
+> the wrong question is not evidence of absence** — the same confusion as §1's truncation
+> artifact, where identical strings meant *no observer*, not *no effect*.
+
+**Consequence: the fix is inverted.** Nothing needs changing in `schemas/`; the validator needs
+an `additionalProperties` check. Nothing currently exploits the gap.
 
 ### 4.2 (g) `/pipeline-status` — cosmetic
 
@@ -363,7 +399,7 @@ produces a wrong result (a stale hand list beside a fresh generated one), no tes
 | Era | Live consumers remaining |
 |---|---|
 | docx/Pandoc → Markdown + `:::` | `terminologyService.js:1255` (artifact **b**); `/intake-source` (**f**). Data: `liffraedi-2e/reference-translations/ch03-human-docx/` — deliberately preserved, not in the pipeline. |
-| Matecat → `generate-tm.js` | **No live server code** — `server/services/matecat.js` and `routes/matecat.js` do not exist. Remaining hits in `server/` are *comments recording the retirement* (`pipelineService.js:850`, `pipelineStatusService.js:272`, `routes/status.js:1642`) plus `.env.example`. Docs per 4.3; commands per **f**/**g**. |
+| Matecat → `generate-tm.js` | **No live server code** — `server/services/matecat.js` and `routes/matecat.js` do not exist. Remaining hits in `server/` are *comments recording the retirement* (`pipelineService.js:850`, `pipelineStatusService.js:272`, `routes/status.js:1642`), **three test files** (`pipelineStatus`, `books-routes`, `nonSequentialStages` — retirement comments and regression names), plus `.env.example`. ⚠️ *The three test files were missing from this row's first version — an enumeration that under-reported, which is the failure CLAUDE.md warns about in the very sentence telling you not to trust one.* Docs per 4.3; commands per **f**/**g**. |
 | manual malstadur.is → API | `/intake-source` (**f**) only. `tools/lib/malstadur-api.js` is the *current* API client — not legacy. |
 | `files.json` → DB | `server/routes/status.js:1264` (artifact **c**) only. |
 
@@ -397,7 +433,7 @@ one of the fix. **This audit does not settle it and does not design the fix.**
 
 ---
 
-## 6. Corrections this audit makes to §C16's own evidence
+## 6. Corrections this audit makes to §C16's own evidence — **six**
 
 Per CLAUDE.md — *if you notice document B is wrong, fix B; never log it as a to-do in
 document A*. Recorded here as **evidence**; §C16 was edited directly.
