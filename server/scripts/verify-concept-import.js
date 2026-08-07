@@ -17,7 +17,12 @@ const DOMAINS = new Set([
 ]);
 
 /**
- * Icelandic term → the domain whose sense it names.
+ * Icelandic term → a TAG naming which sense that term denotes.
+ *
+ * ⚠️ The tag is a SENSE LABEL, not a lookup against `concept.domain`. It is
+ * only ever compared tag-to-tag, to tell two senses apart. Nothing here is
+ * matched against a concept's domain column — see the check below for why
+ * that distinction is load-bearing.
  *
  * PROVENANCE — these are not fixtures invented for a test. They are the
  * production measurement recorded in the docstring of
@@ -28,9 +33,9 @@ const DOMAINS = new Set([
  * model exists, so they are what a verification pass must pin.
  *
  * ⚠️ `flokkur` is deliberately NOT listed. It is the ordinary Icelandic word
- * for the taxonomic rank *class*, so a `flokkur → mathematics` row would fire
- * on biology concepts that are entirely correct. An oracle row is only safe
- * when the term names one domain's sense and no other; adding one requires
+ * for the taxonomic rank *class*, so tagging it `mathematics` would make any
+ * biology concept that legitimately carries it look contaminated. A row is
+ * only safe when the term denotes one sense and no other; adding one requires
  * that measurement, not a guess.
  */
 const MEASURED_SENSE_DOMAINS = Object.freeze({
@@ -41,6 +46,21 @@ const MEASURED_SENSE_DOMAINS = Object.freeze({
 function verifyConceptImport(db) {
   const checks = [];
   const add = (name, ok, detail) => checks.push({ name, ok, detail });
+
+  // ⚠️ FIRST, because every other check counts bad things and asserts the count
+  // is zero — which an EMPTY model satisfies trivially. Without this, a run that
+  // imported nothing at all reports ok:true on all four, and the caller that
+  // gates on `ok` cannot tell "verified" from "there was nothing to verify".
+  //
+  // This is reachable in practice and silently: `runImport` on an empty or
+  // wrong directory finds no `raw-*.json`, returns [], writes no rows, and
+  // every downstream check passes. Task 6's report DOES compute yield (its
+  // per-collection `imported` counts and ZERO YIELD flag) but only PRINTS it;
+  // this function is what callers GATE on. The thing that measured emptiness
+  // could not stop a release, and the thing that stops a release could not
+  // measure it — so the measurement belongs here too.
+  const conceptCount = db.prepare('SELECT COUNT(*) n FROM concept').get().n;
+  add('model-is-non-empty', conceptCount > 0, `${conceptCount} concepts imported`);
 
   const noIs = db
     .prepare(
@@ -72,10 +92,21 @@ function verifyConceptImport(db) {
   //
   // A "sense" is not representable in this schema — there is no column that
   // says which sense a term belongs to. So general sense separation is NOT
-  // verified and cannot be. What IS verified: every Icelandic term whose
-  // domain was MEASURED on production sits on a concept of that measured
-  // domain. That is a spot-check over known homographs, not a universal
-  // detector, and it is only as wide as MEASURED_SENSE_DOMAINS above.
+  // verified and cannot be. What IS verified: no SINGLE concept carries two
+  // terms that were measured as denoting DIFFERENT senses.
+  //
+  // ⚠️ This rule is deliberately INTRA-CONCEPT and never reads
+  // `concept.domain`. An earlier version compared each oracle term against
+  // that column and was WRONG: `domain` is derived from COLLECTION_DOMAIN, so
+  // it records WHICH COLLECTION AN ENTRY CAME FROM, not which sense a term
+  // denotes. `fruma` correctly appears in both LIFORD (biology) and LAEKN
+  // (anatomy-physiology, 33,593 medical terms for exactly these chapters), and
+  // the old rule turned RED on that entirely correct import. Comparing tags
+  // only to each other, within one concept, makes that false-fire structurally
+  // impossible rather than merely unlikely.
+  //
+  // Coverage is therefore one oracle PAIR wide, not one row per term: the gate
+  // fires only when two differently-tagged terms land on the SAME concept.
   //
   // Why this shape rather than a structural rule. A *cross-entry merge* — two
   // Íðorðabankinn entries collapsing onto one concept — is unreachable by
@@ -93,55 +124,51 @@ function verifyConceptImport(db) {
   // head plus one rank-2 synonym. Only external knowledge of what the terms
   // MEAN separates them, which is why the oracle above must be external.
   const oracleTerms = Object.keys(MEASURED_SENSE_DOMAINS);
-  if (oracleTerms.length === 0) {
-    // Fail loud. An empty oracle makes this check vacuous, and a check that
-    // cannot fail is not a check — it would report ok:true forever.
+  const senseTags = new Set(Object.values(MEASURED_SENSE_DOMAINS));
+  if (oracleTerms.length < 2 || senseTags.size < 2) {
+    // Fail loud. The rule fires only on two DIFFERENTLY-tagged terms meeting on
+    // one concept, so fewer than two distinct tags makes it inert — and a check
+    // that cannot fail is not a check. It would report ok:true forever.
     throw new Error(
-      'MEASURED_SENSE_DOMAINS is empty — homographs-separated would pass vacuously. ' +
-        'Restore the measured terms rather than shipping an inert gate.'
+      'MEASURED_SENSE_DOMAINS needs at least two terms carrying at least two ' +
+        'distinct sense tags — homographs-separated cannot fire otherwise, and ' +
+        'would pass vacuously. Restore the measured terms rather than shipping ' +
+        'an inert gate.'
     );
   }
-  const misplaced = db
-    .prepare(
-      `SELECT c.id AS conceptId, c.domain AS domain, t.text AS text
-         FROM concept_term t JOIN concept c ON c.id = t.concept_id
-        WHERE t.lang='is' AND t.text IN (${oracleTerms.map(() => '?').join(',')})`
-    )
-    .all(...oracleTerms)
-    .filter((r) => MEASURED_SENSE_DOMAINS[r.text] !== r.domain);
 
-  // DIAGNOSTIC ONLY — deliberately NOT gated. An Icelandic term that heads a
-  // concept in one domain while appearing as a synonym in another is a
-  // plausible contamination signal, but a term legitimately shared across two
-  // fields (a biochemistry head in EFNAFR, a synonym in LIFORD) produces the
-  // same pattern. It has never been measured at corpus scale, so gating on it
-  // could fail the real 20-collection import for something that is not a
-  // defect. Reported so it can be measured first, gated only if it proves out.
-  const crossDomainOverlap = db
+  // `lang='is'` matters: an oracle string colliding with a Latin term must not
+  // count. UNIQUE(concept_id, lang, text) already rules out the same term
+  // appearing twice on one concept, so every row here is a distinct term.
+  const byConcept = new Map();
+  for (const r of db
     .prepare(
-      `SELECT COUNT(*) n FROM (
-         SELECT DISTINCT head.text
-           FROM concept_term head
-           JOIN concept hc ON hc.id = head.concept_id
-           JOIN concept_term syn ON syn.text = head.text AND syn.lang='is' AND syn.rank >= 2
-           JOIN concept sc ON sc.id = syn.concept_id
-          WHERE head.lang='is' AND head.rank = 1 AND sc.domain <> hc.domain)`
+      `SELECT concept_id AS conceptId, text
+         FROM concept_term
+        WHERE lang='is' AND text IN (${oracleTerms.map(() => '?').join(',')})`
     )
-    .get().n;
+    .all(...oracleTerms)) {
+    if (!byConcept.has(r.conceptId)) byConcept.set(r.conceptId, []);
+    byConcept.get(r.conceptId).push(r.text);
+  }
+
+  const contaminated = [];
+  for (const [conceptId, texts] of byConcept) {
+    const tags = new Set(texts.map((t) => MEASURED_SENSE_DOMAINS[t]));
+    if (tags.size > 1) {
+      contaminated.push(
+        `concept ${conceptId} carries ${texts
+          .map((t) => `'${t}' (${MEASURED_SENSE_DOMAINS[t]})`)
+          .join(' + ')}`
+      );
+    }
+  }
 
   add(
     'homographs-separated',
-    misplaced.length === 0,
-    `${misplaced.length} measured terms on a foreign-domain concept` +
-      (misplaced.length
-        ? ` (${misplaced
-            .map(
-              (r) =>
-                `'${r.text}' on concept ${r.conceptId} (${r.domain}), measured ${MEASURED_SENSE_DOMAINS[r.text]}`
-            )
-            .join('; ')})`
-        : '') +
-      `; ${crossDomainOverlap} cross-domain head/synonym overlaps (diagnostic, not gated)`
+    contaminated.length === 0,
+    `${contaminated.length} concepts carrying terms of two measured senses` +
+      (contaminated.length ? ` (${contaminated.join('; ')})` : '')
   );
 
   const unknown = db
