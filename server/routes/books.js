@@ -458,6 +458,42 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
     res.setHeader('Content-Disposition', `attachment; filename="${zipName}"`);
 
     const archive = new ZipArchive({ zlib: { level: 9 } });
+
+    // Settles on the FIRST failure of either stream; never resolves on success.
+    //
+    // Without an 'error' listener an archive error KILLS THE PROCESS. The error
+    // is emitted ON THE ARCHIVER, by `_moduleAppend`'s append callback
+    // (archiver/lib/core.js:179, reached from `_onQueueTask`) — an async stream
+    // callback, so it is already outside the try/catch below by the time it
+    // fires, and an unhandled 'error' event throws out of emit(). Measured
+    // stack for the chmod-000 reproducer: ZipArchive.emit <- core.js:179 <-
+    // ZipStream.handleStuff.
+    //
+    // ⚠️ NOT via _modulePipe/_onModuleError, which is what §C20 and an earlier
+    // version of this comment claimed: on this path `_onModuleError`
+    // (core.js:318, bound to `_module` at :234) never runs and `_module` emits
+    // no 'error' at all. That is
+    // also exactly why finalize() hangs — its promise settles only on
+    // `_module`'s 'end'/'error', neither of which ever arrives. Register §C20.
+    const failure = new Promise((resolve) => {
+      archive.on('error', (err) => resolve({ kind: 'archive', err }));
+      res.on('error', (err) => resolve({ kind: 'response', err }));
+      res.on('close', () => {
+        // `close` follows `finish` on EVERY successful download and arrives
+        // while this handler is still awaiting the race below, so the guard is
+        // LOAD-BEARING, not defensive: measured 3/3, removing it makes a fully
+        // successful download resolve {kind:'disconnect'} and run abort() +
+        // destroy() against a completed response.
+        //
+        // ⚠️ That mutation turned nothing red across the entire server suite —
+        // the spurious abort lands after every observer has settled on `end`
+        // with complete bytes. `booksDownloadStreamFailure.test.js`'s
+        // "does not abort or destroy on a fully successful download" is the
+        // only check that can see it. Do not delete that test with this line.
+        if (!res.writableFinished) resolve({ kind: 'disconnect' });
+      });
+    });
+
     archive.pipe(res);
 
     // Helper function to add files matching the expected extension from a directory
@@ -490,7 +526,56 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       }
     }
 
-    await archive.finalize();
+    // ⚠️ RACE, do not `await archive.finalize()` alone — that IS the hang.
+    // Measured 4/4 (register §C20): with an 'error' listener attached, the
+    // listener fires and then finalize() NEVER settles (still pending at 3s)
+    // and res is never ended, so the crash becomes an open download that never
+    // completes and never errors, leaking the handler promise and the Archiver.
+    const outcome = await Promise.race([
+      archive.finalize().then(
+        () => null,
+        (err) => ({ kind: 'finalize', err })
+      ),
+      failure,
+    ]);
+
+    if (outcome) {
+      if (outcome.kind !== 'disconnect') {
+        log.error(
+          { err: outcome.err, bookId, type, kind: outcome.kind },
+          'Download archive failed mid-stream'
+        );
+      }
+      // abort() on EVERY failure kind, not just disconnect. archiver does not
+      // stop its queue on an entry error — `_moduleAppend` does
+      // `this.emit('error', err); setImmediate(callback)` (core.js:178-180), so
+      // the remaining entries keep being read and deflated into a response we
+      // have already given up on. Measured on the error path with 40 files:
+      // at settle `queueIdle:false`, and 38 further `entry` events fired over
+      // the next 300 ms. `abort()` sets `_state.aborted`, which core.js:165's
+      // early return then uses to drain the queue without doing the work.
+      //
+      // ⚠️ It is wasted CPU/IO, NOT a file-descriptor leak — measured `fds:0`
+      // at settle, +300 ms and +2.3 s. The read streams open and close normally
+      // as the queue drains. A review finding claimed 20 retained fds surviving
+      // gc; that did not reproduce against a real http.Server. Fix the waste,
+      // do not repeat the leak claim.
+      archive.abort();
+      // destroy(), NOT end(): the response is chunked (no Content-Length), so
+      // destroying leaves the framing unterminated and the browser reports a
+      // FAILED download. Ending cleanly would make the HTTP transfer look
+      // successful, so the browser saves a file no zip reader will open. D1.
+      //
+      // ⚠️ The rationale here used to say a cleanly-ended response hands the
+      // editor a zip "that opens and is silently missing files". Measured
+      // false: a stream ended mid-archive has no end-of-central-directory
+      // record, so `unzip -t` reports "cannot find zipfile directory" and
+      // Python's zipfile raises BadZipFile. The DECISION (destroy, not end) is
+      // unchanged and is if anything better supported — a saved file that
+      // cannot be opened is still worse than a transfer the browser flags as
+      // failed, because only the latter tells the editor to retry.
+      res.destroy();
+    }
   } catch (err) {
     log.error({ err }, 'Download error');
     if (!res.headersSent) {
