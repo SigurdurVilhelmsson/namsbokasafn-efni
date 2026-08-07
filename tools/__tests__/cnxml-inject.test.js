@@ -5,6 +5,7 @@ import os from 'os';
 import {
   parseSegments,
   annotateInlineTerms,
+  restoreTermMarkers,
   assertNoMarkerResidue,
   reverseInlineMarkup,
   restoreMathMarkers,
@@ -528,6 +529,61 @@ describe("annotateInlineTerms fill-in-the-blank underscores (C16 a')", () => {
 
     expect(annotatedCount).toBe(1);
     expect(is.get('s1')).toContain('(e. algae)');
+  });
+});
+
+// ─── C16(a′), third site: restoreTermMarkers runs FIRST and mutates ───
+//
+// Found by adversarial review after the first fix claimed "both sites must carry
+// the guard" — there were more. restoreTermMarkers runs at cnxml-inject.js:4297,
+// BEFORE annotateInlineTerms (:4348), and MUTATES the segment map in place, so
+// the downstream guards cannot protect what it has already damaged.
+//
+// Zero corpus instances today (measured: 0 mutations over 247 real module pairs),
+// but the triggers are ordinary: one segment carrying both a blank run and a term
+// marker. "Glossary overproduction causing a count imbalance" is this function's
+// stated reason to exist, so the imbalance case is not exotic.
+describe("restoreTermMarkers fill-in-the-blank underscores (C16 a')", () => {
+  it('does not shorten blank runs when stripping API glossary overproduction', () => {
+    const isText = '________ afmarkast af [[term:frumuhimnu|t1]] og ________ að innan.';
+    const is = new Map([['s', isText]]);
+    const en = new Map([
+      ['s', '________ is bounded by [[term:cell membrane|t1]] and ________ inside.'],
+    ]);
+
+    restoreTermMarkers(is, en);
+
+    expect(is.get('s')).toBe(isText);
+  });
+
+  it('does not shorten a blank run when an imbalance triggers positional stripping', () => {
+    const isText = 'Fylltu inn ________ og ________ hér. Einnig __glósa__ frá API.';
+    const is = new Map([['s', isText]]);
+    const en = new Map([['s', 'Fill in ________ and ________ here. Also **note** from API.']]);
+
+    restoreTermMarkers(is, en);
+
+    expect(is.get('s')).toContain('________ og ________');
+  });
+
+  it('does not half-destroy a real term marker sitting beside blanks', () => {
+    const is = new Map([['s', 'Fylltu inn ________ og ________ hér. Einnig __glósa__ frá API.']]);
+    const en = new Map([['s', 'Fill in ________ and ________ here. Also **note** from API.']]);
+
+    restoreTermMarkers(is, en);
+
+    // The orphan `glósa__` was the observed damage — an unpaired delimiter left behind.
+    expect(is.get('s')).not.toMatch(/[^_]glósa__/);
+  });
+
+  it('still restores a legacy **bold** to __term__ from the EN marker order', () => {
+    const is = new Map([['s', 'Þetta er **hugtak** hér.']]);
+    const en = new Map([['s', 'This is __term__ here.']]);
+
+    const { restoredCount } = restoreTermMarkers(is, en);
+
+    expect(restoredCount).toBe(1);
+    expect(is.get('s')).toBe('Þetta er __hugtak__ hér.');
   });
 });
 
