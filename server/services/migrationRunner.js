@@ -74,6 +74,7 @@ function runAllMigrations() {
     require('../migrations/042-content-versions-track'),
     require('../migrations/043-segment-acceptances'),
     require('../migrations/044-remap-empty-subjects'),
+    require('../migrations/045-concept-model'),
   ];
 
   let applied = 0;
