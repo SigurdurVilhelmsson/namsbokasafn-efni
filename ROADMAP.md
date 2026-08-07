@@ -68,15 +68,19 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Component | File | Status |
 |-----------|------|--------|
 | Extract-Inject-Render pipeline | `tools/cnxml-extract.js`, `cnxml-inject.js`, `cnxml-render.js` | ✅ |
-| Segment protection for MT | `tools/protect-segments-for-mt.js`, `unprotect-segments.js` | ✅ |
-| OpenStax fetcher | `tools/openstax-fetch.js` | ✅ |
-| TM preparation | `tools/prepare-for-align.js` | ✅ |
+| Machine translation | `tools/api-translate.js` (Málstaður API) | ✅ |
+| TM generation | `tools/generate-tm.js` — in-house TMX | ✅ |
 | Express server | `server/index.js` | ✅ |
 | Pipeline API | `server/routes/pipeline.js` | ✅ |
-| Matecat integration | `server/services/matecat.js` | ✅ |
 
-**Active CLI Tools:**
-`cnxml-extract`, `cnxml-inject`, `cnxml-render`, `protect-segments-for-mt`, `unprotect-segments`, `openstax-fetch`, `prepare-for-align`, `validate-chapter`
+<!-- Corrected 2026-08-07 by the C16 audit (docs/audit/2026-08-07-c16-partially-live-legacy-audit.md).
+     Five rows were false: `protect-segments-for-mt`, `unprotect-segments` and `prepare-for-align`
+     are ARCHIVED (tools/archived/); `tools/openstax-fetch.js` does NOT EXIST; and
+     `server/services/matecat.js` does NOT EXIST — Matecat was retired, as lines 42/58 of this
+     same file already said. Do not re-add a hand-maintained tool list here: `ls tools/*.js`. -->
+
+**Active CLI tools:** derive them — `ls tools/*.js` (anything under `tools/archived/` is retired).
+Flags that are not guessable are tabulated in CLAUDE.md § *Commands*.
 
 **Old markdown pipeline (deleted 2026-02-16):**
 43 tools in `tools/_archived/` removed. All code preserved in git history. Key deleted tools: `pipeline-runner`, `cnxml-to-md`, `chapter-assembler`, `add-frontmatter`, `compile-chapter`, `split-for-erlendur`, `apply-equations`, `clean-markdown`, `docx-to-md`, `cnxml-to-xliff`, `create-bilingual-xliff`, `md-to-xliff`, `xliff-to-md`, `xliff-to-tmx`.
@@ -92,8 +96,15 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Image tracking | ✅ | `server/services/imageTracker.js` | 319 |
 | HTML wizard UI | ✅ | `server/views/workflow.html` | ✅ |
 
-**Server Routes (24 total):**
-`activity`, `admin`, `analytics`, `auth`, `books`, `feedback`, `images`, `issues`, `localization-editor`, `matecat`, `modules`, `my-work`, `notifications`, `pipeline`, `publication`, `reviews`, `sections`, `segment-editor`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
+**Server routes:** `ls server/routes/`. **Do not restate the list here** — CLAUDE.md
+§ *Server Features* says the feature list is derivable from that directory, and a copy drifts.
+
+<!-- Corrected 2026-08-07 by the C16 audit. The hand-maintained list that stood here claimed
+     "24 total" and was wrong in BOTH directions: it named 7 routes that do not exist
+     (`images`, `issues`, `matecat`, `modules`, `reviews`, `sync`, `workflow`) and omitted 3
+     that do (`pipeline-status`, `profile`, `tm`). `matecat` in particular contradicted lines
+     42/58 of this file, which already recorded Matecat as retired. -->
+
 
 > **Note:** `editor`, `process`, and `localization` routes were removed in the 2026-02-16 pipeline retirement. `meetings`, `deadlines`, `assignments`, `reports`, and `decisions` were removed as unused project management features (handled by Google Docs/GitHub Issues).
 
