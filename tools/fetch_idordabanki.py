@@ -144,12 +144,29 @@ def _fetch_paginated(ordabok, delay, ord_filter=None, label=None):
     return entries, total
 
 
-def fetch_collection(ordabok, delay=REQUEST_DELAY):
-    """Fetch all entries from a single Íðorðabankinn collection, paginating.
+def _fetch_collection_entries(ordabok, delay=REQUEST_DELAY):
+    """Fetch every entry in a collection, deduplicated, bypassing the ES 10,000 cap.
 
-    If the collection exceeds the Elasticsearch 10,000 result cap,
-    automatically switches to per-letter fetching using the ord=X* filter
-    to retrieve the full dataset.
+    Probes the total with a single request. If the collection fits inside the
+    Elasticsearch result window, fetches it with standard offset pagination.
+    Otherwise switches to per-letter fetching (the ord=X* filter, over
+    LETTER_PREFIXES) and deduplicates by entry id — the ord filter matches
+    both the EN and IS sides, so the same entry can surface under more than
+    one letter prefix.
+
+    Shared by fetch_collection (which returns these same raw entries and a
+    total for its callers; bilingual EN/IS pair extraction happens later, in
+    extract_bilingual_pair, not here) and fetch_collection_raw (which keeps
+    every entry verbatim) so the cap-bypass logic — the part that is easy to
+    get wrong and expensive to get wrong silently — exists in exactly one
+    place. A collection over the cap fetched via plain pagination truncates
+    at 10,000 with no error; this is what fetch_collection_raw did before
+    this fix (see the docstring below).
+
+    Returns (entries, total): `total` is the single-window probe total when
+    the collection is under the cap, or len(entries) — the true deduplicated
+    count — when the per-letter path was used (the probe total is itself
+    capped at 10,000 in that case and cannot be trusted).
     """
     print(f"Fetching collection {ordabok}...")
 
@@ -197,15 +214,38 @@ def fetch_collection(ordabok, delay=REQUEST_DELAY):
     return entries, len(entries)
 
 
+def fetch_collection(ordabok, delay=REQUEST_DELAY):
+    """Fetch all entries from a single Íðorðabankinn collection, paginating.
+
+    If the collection exceeds the Elasticsearch 10,000 result cap,
+    automatically switches to per-letter fetching using the ord=X* filter
+    to retrieve the full dataset. See _fetch_collection_entries.
+    """
+    return _fetch_collection_entries(ordabok, delay)
+
+
 def fetch_collection_raw(ordabok, delay=REQUEST_DELAY):
     """Fetch every entry from a collection VERBATIM, with no EN/IS filtering.
 
-    Unlike fetch_collection, this discards nothing. Entries with no English side
-    (PODDUR, RISAEDLUR are Latin<->Icelandic) are retained: the textbooks carry
-    Latin binomials, so a Latin term can supply an Icelandic name no EN->IS
-    lookup can reach. Transformation happens in JS, where it is testable.
+    No bilingual-pair extraction happens here or in fetch_collection — that
+    step (extract_bilingual_pair, which discards any entry lacking an EN or
+    IS side) lives downstream, in mode_fetch. This function returns every
+    entry from _fetch_collection_entries as-is, so entries with no English
+    side (PODDUR, RISAEDLUR are Latin<->Icelandic) are retained: the
+    textbooks carry Latin binomials, so a Latin term can supply an Icelandic
+    name no EN->IS lookup can reach. Transformation happens in JS, where it
+    is testable.
+
+    ⚠️ Until this fix, this function called _fetch_paginated directly and
+    silently truncated at the Elasticsearch 10,000-result window for any
+    collection over the cap — LAEKN (33,593 true entries) came back as
+    exactly 10,000, a ~70% silent loss, and the collection's own
+    metadata.total probe agreed with the truncated count because both are
+    capped identically, so the obvious check could not catch it. It now
+    shares fetch_collection's per-letter cap-bypass (_fetch_collection_entries)
+    and genuinely discards nothing at fetch time.
     """
-    entries, _ = _fetch_paginated(ordabok, delay)
+    entries, _ = _fetch_collection_entries(ordabok, delay)
     return entries
 
 
