@@ -871,14 +871,21 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
   // (?:\|id)? still anchors the id split. MATH-alt first: the base class excludes
   // `[` so a nested marker is only reachable via the token alternatives.
   const TERM_TEXT = String.raw`(?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\[\]|])+?`;
+  // C16(a'): the `__term__` alternations carry the same (?<!_)/(?!_) guards as the
+  // converters in reverseInlineMarkup — a `__` abutting more underscores is a
+  // fill-in-the-blank, never a term marker. Without them this annotator read the
+  // prose BETWEEN two blanks as a term on both sides and emitted an orphaned
+  // `(e.  and )` into published output. Both sites must carry the guard: fixing
+  // only the converter left the gloss behind, with every test still green.
+  // The lookarounds are zero-width, so capture-group numbering is unchanged.
   // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}, [[term:text|id]]
   const enMarkerPattern = new RegExp(
-    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:(${TERM_TEXT})(?:\|[A-Za-z0-9_.:-]+)?\]\])`,
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|(?<!_)__([^_]+)__(?!_)|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:(${TERM_TEXT})(?:\|[A-Za-z0-9_.:-]+)?\]\])`,
     'g'
   );
   // IS: new {{term}}, legacy __term__, and B4 bracket [[term:text|id]] formats
   const isTermPattern = new RegExp(
-    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\[\[term:(${TERM_TEXT})(?:\|([A-Za-z0-9_.:-]+))?\]\])`,
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|(?<!_)__([^_]+)__(?!_)|\[\[term:(${TERM_TEXT})(?:\|([A-Za-z0-9_.:-]+))?\]\])`,
     'g'
   );
 
@@ -1480,9 +1487,18 @@ function reverseInlineMarkup(
   // API segments use {{term}} (already converted above); any remaining __text__
   // would be false positives from translated content.
   if (!hasApiMarkers) {
-    // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
-    result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
-    result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
+    // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers.
+    //
+    // C16(a'): the (?<!_) / (?!_) guards keep the delimiters from being part of a
+    // LONGER underscore run. Without them the regex matched ACROSS two
+    // fill-in-the-blank blanks — taking the last two underscores of the first
+    // blank, the connecting prose, and the first two of the second — and shipped
+    // `______<dfn class="term"> og  (e.  and )</dfn>______` to readers in three
+    // published pages. It also ate a legitimate __term__ standing next to a blank,
+    // because the blank's tail paired with the term's opening delimiter.
+    // A `__` that abuts more underscores is a blank, never a term marker.
+    result = result.replace(/(?<!_)\\_\\_([^_]+)\\_\\_(?!_)/g, '<term>$1</term>');
+    result = result.replace(/(?<!_)__([^_]+)__(?!_)/g, '<term>$1</term>');
   }
 
   // Restore MathML blocks after term wrapping
