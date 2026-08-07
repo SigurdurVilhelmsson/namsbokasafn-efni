@@ -1,18 +1,18 @@
 {
-  "generated": "2026-08-07T09:02:20.892Z",
+  "generated": "2026-08-07T10:47:49.072Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-08-07T09:02:20.892Z",
+      "generated": "2026-08-07T10:47:49.072Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 159,
         "totalChecked": 10,
         "skippedUntranslated": 149,
-        "perfect": 2,
-        "withDiscrepancies": 8,
-        "totalDiscrepancies": 31,
-        "unexplainedDiscrepancies": 31,
+        "perfect": 3,
+        "withDiscrepancies": 7,
+        "totalDiscrepancies": 27,
+        "unexplainedDiscrepancies": 27,
         "deferredLosses": 0,
         "benignArtifacts": 0,
         "green": false
@@ -24,7 +24,7 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -3,
+              "diff": -2,
               "status": "unexplained"
             },
             {
@@ -61,7 +61,7 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -5,
+              "diff": -4,
               "status": "unexplained"
             }
           ]
@@ -72,7 +72,7 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -3,
+              "diff": -2,
               "status": "unexplained"
             },
             {
@@ -88,7 +88,7 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -2,
+              "diff": -1,
               "status": "unexplained"
             }
           ]
@@ -99,7 +99,7 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": 3,
+              "diff": 4,
               "status": "unexplained"
             },
             {
@@ -121,17 +121,6 @@
             {
               "tag": "term",
               "diff": 1,
-              "status": "unexplained"
-            }
-          ]
-        },
-        {
-          "moduleId": "m58806",
-          "chapter": "ch05",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
               "status": "unexplained"
             }
           ]
