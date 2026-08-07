@@ -197,6 +197,18 @@ def fetch_collection(ordabok, delay=REQUEST_DELAY):
     return entries, len(entries)
 
 
+def fetch_collection_raw(ordabok, delay=REQUEST_DELAY):
+    """Fetch every entry from a collection VERBATIM, with no EN/IS filtering.
+
+    Unlike fetch_collection, this discards nothing. Entries with no English side
+    (PODDUR, RISAEDLUR are Latin<->Icelandic) are retained: the textbooks carry
+    Latin binomials, so a Latin term can supply an Icelandic name no EN->IS
+    lookup can reach. Transformation happens in JS, where it is testable.
+    """
+    entries, _ = _fetch_paginated(ordabok, delay)
+    return entries
+
+
 def get_word_by_lang(entry, lang):
     """Extract the word object for a given language from an entry's words array.
 
@@ -1015,8 +1027,9 @@ def main():
         epilog=__doc__,
     )
     parser.add_argument(
-        "--mode", required=True, choices=["fetch", "compare", "import"],
-        help="Operation mode: fetch (download), compare (diff against CSV), import (load to DB)",
+        "--mode", required=True, choices=["fetch", "fetch-raw", "compare", "import"],
+        help="Operation mode: fetch (download), fetch-raw (download verbatim, no EN/IS "
+             "filtering), compare (diff against CSV), import (load to DB)",
     )
     parser.add_argument(
         "--subject",
@@ -1063,9 +1076,27 @@ def main():
     if args.mode == "import" and not args.source:
         parser.error("--source is required for import mode")
 
+    if args.mode == "fetch-raw" and not args.output:
+        parser.error("--output is required for fetch-raw mode")
+
     # Dispatch
     if args.mode == "fetch":
         mode_fetch(args)
+    elif args.mode == "fetch-raw":
+        if not args.ordabok:
+            print("--ordabok is required for fetch-raw mode", file=sys.stderr)
+            sys.exit(1)
+        entries = fetch_collection_raw(args.ordabok, args.delay)
+        output_dir = Path(args.output)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "collection": args.ordabok,
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "entries": entries,
+        }
+        with open(output_dir / f"raw-{args.ordabok}.json", "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        print(f"Wrote {len(entries)} verbatim entries for {args.ordabok}")
     elif args.mode == "compare":
         mode_compare(args)
     elif args.mode == "import":

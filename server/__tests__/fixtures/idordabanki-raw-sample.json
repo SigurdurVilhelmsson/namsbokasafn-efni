@@ -1,0 +1,830 @@
+{
+  "collection": "GEIMVISINDI",
+  "fetched_at": "2026-08-07T17:22:30.573002+00:00",
+  "entries": [
+    {
+      "id": 914478,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-15T16:05:50",
+      "words": [
+        {
+          "id": 2370642,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "alþjóðlegi geimmarkaðurinn",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "markaður fyrir geimtengda þjónustu ",
+          "example": "",
+          "explanation": "",
+          "rownum": 15883
+        },
+        {
+          "id": 2370643,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "the global space market",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 465753
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-15T16:05:50"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914550,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-16T12:07:26",
+      "words": [
+        {
+          "id": 2370774,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "Ábyrgðarsamningurinn",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "milliríkjasamningur á vegum Sameinuðu Þjóðanna frá 1971 um ábyrgð ríkja á skaða sem hlutir í geimnum kunna að valda",
+          "example": "",
+          "explanation": "",
+          "rownum": 34681
+        },
+        {
+          "id": 2370775,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "Convention on International liability for Damage Caused by Space Objects",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 86319
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-16T12:07:26"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914371,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-10T13:02:16",
+      "words": [
+        {
+          "id": 2370434,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "áfyllingar/tæmingarprófun",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "prófun á eldsneytisdælubúnaði <ref idTerm=913755>eldflaugar</ref>",
+          "example": "",
+          "explanation": "",
+          "rownum": 34923
+        },
+        {
+          "id": 2370435,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "fuel/defuel tests",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 161694
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-10T13:02:16"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914404,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-10T15:17:37",
+      "words": [
+        {
+          "id": 2370498,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "áheyrnaraðild",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "leyfi til að vera viðstaddur fundi án þess að mega taka til máls en hugsanlega taka þátt í vinnuhópum (um ríki)",
+          "example": "",
+          "explanation": "",
+          "rownum": 35029
+        },
+        {
+          "id": 2370499,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "observer status",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 320902
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-14T11:18:11"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914547,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-16T10:36:33",
+      "words": [
+        {
+          "id": 2370768,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "Björgunarsamningurinn",
+          "synonyms": "samningur um björgun geimfara, framsal geimfara og skil á hlutum sem skotið hefur verið út í himingeiminn (Hugtakasafnið)",
+          "abbreviation": "",
+          "domain": "",
+          "definition": "milliríkjasamningur um björgun <ref idTerm=914067>geimfara</ref>, framsal <ref idTerm=914085>geimfara</ref> og skil á hlutum sem skotið hefur verið út í himingeiminn  ",
+          "example": "",
+          "explanation": "",
+          "rownum": 50675
+        },
+        {
+          "id": 2370769,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "Agreement on the Rescue of Astronauts, the Return of Astronauts and the Return of Objects Launched into Outer Space",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 10708
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-16T10:37:25"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914481,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-15T16:10:50",
+      "words": [
+        {
+          "id": 2370648,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "braut",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "ferill sem farartæki ferðast um",
+          "example": "",
+          "explanation": "",
+          "rownum": 59033
+        },
+        {
+          "id": 2370649,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "course, trajectory",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 88838
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-15T16:10:50"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914409,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-10T15:40:55",
+      "words": [
+        {
+          "id": 2370508,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "brautarfar",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "ómannað <ref idTerm=914085>geimfar</ref> sem ferðast um á sporbraut reikistjörnu eða annars hnattar",
+          "example": "",
+          "explanation": "",
+          "rownum": 59057
+        },
+        {
+          "id": 2370509,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "orbiter",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 326391
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-14T11:32:29"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914391,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-10T14:05:45",
+      "words": [
+        {
+          "id": 2370472,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "burðarflaug",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "<ref idTerm=913755>eldflaug</ref> sem ber farm",
+          "example": "",
+          "explanation": "",
+          "rownum": 64292
+        },
+        {
+          "id": 2370473,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "launch vehicle",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 256410
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-14T14:37:13"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914367,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-10T12:36:49",
+      "words": [
+        {
+          "id": 2370426,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "EGNOS-kerfið",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "evrópskt, víðfeðmt <ref idTerm=914366>leiðréttingarkerfi</ref> fyrir leiðsögu sem eykur nákvæmni þeirra leiðsögukerfa sem byggja á tímamælingum frá gervihnöttum",
+          "example": "",
+          "explanation": "",
+          "rownum": 115748
+        },
+        {
+          "id": 2370427,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "European Geostationary Navigation Overlay Service",
+          "synonyms": null,
+          "abbreviation": "EGNOS",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 131242
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-10T12:37:24"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914429,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-11T09:58:10",
+      "words": [
+        {
+          "id": 2370548,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "einþrepaflaug",
+          "synonyms": "einþrepageimfar, SSTO-flaug",
+          "abbreviation": "",
+          "domain": "",
+          "definition": "<ref idTerm=914085>geimfar</ref> sem kemst á sporbraut án hjálparbúnaðar",
+          "example": "",
+          "explanation": "",
+          "rownum": 118849
+        },
+        {
+          "id": 2370549,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "Single-stage-to-orbit",
+          "synonyms": null,
+          "abbreviation": "SSTO",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 409251
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-11T09:58:10"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 913755,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-03-31T19:26:06",
+      "words": [
+        {
+          "id": 2369121,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "rocket",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "A missile, spacecraft, aircraft or other vehicle that obtains thrust from a rocket engine.",
+          "example": "",
+          "explanation": "",
+          "rownum": 382478
+        },
+        {
+          "id": 2369122,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "eldflaug",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "geimferðafræði",
+          "definition": "sívalningslaga loftfar knúið með hreyfli sem kemur  á loft <ref idTerm=914085>geimfari</ref> eða farmi á leið út í geim",
+          "example": "Eldflaugin var fyrsti manngerði hluturinn til að fara út fyrir andrúmsloft jarðar og út í geim. Það var svo hinn 4. október árið 1957 sem Sovétmenn sendu gervihnöttinn Spútnik 1 á sporbaug um jörðu. Gervihnettinum var þá skotið á loft með eldflaug.",
+          "explanation": "",
+          "rownum": 119787
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-11T06:42:25"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": [
+        {
+          "id": 6845,
+          "pictureurl": "http://https://pixabay.com/photos/rocket-launch-rocket-take-off-nasa-67643/",
+          "fkterm": 913755
+        }
+      ]
+    },
+    {
+      "id": 914425,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-11T07:19:20",
+      "words": [
+        {
+          "id": 2370539,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "eldflaugafræði",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "fræði sem snúa að <ref idTerm=914423>eldflaugatækni</ref>",
+          "example": "",
+          "explanation": "",
+          "rownum": 119790
+        },
+        {
+          "id": 2370540,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "rocketry",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 382491
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-14T13:03:35"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 913847,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-04-06T14:53:26",
+      "words": [
+        {
+          "id": 2369264,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimbúningur",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "geimferðafræði",
+          "definition": "útbúnaður sem <ref idTerm=914067>geimfari</ref> klæðist til að lifa og starfa utan verndarhjúps <ref idTerm=914085>geimfars</ref>",
+          "example": "",
+          "explanation": "",
+          "rownum": 170064
+        },
+        {
+          "id": 2369265,
+          "fklanguage": "DE",
+          "lexcatnames": "kk",
+          "word": "Raumanzug",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 368133
+        },
+        {
+          "id": 2369266,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "space suit",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 427656
+        }
+      ],
+      "changes": null,
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914454,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-11T12:40:27",
+      "words": [
+        {
+          "id": 2370595,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimferðamál",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 170089
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-11T12:40:27"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914362,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-09T14:59:51",
+      "words": [
+        {
+          "id": 2370418,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimflaug",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 170104
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-09T14:59:51"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914497,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-16T07:08:26",
+      "words": [
+        {
+          "id": 2370680,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimloftefni",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "loftefni sem finnst í geimnum",
+          "example": "",
+          "explanation": "",
+          "rownum": 170151
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-16T07:08:26"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914501,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-16T07:59:47",
+      "words": [
+        {
+          "id": 2370688,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimrannsóknarstofnun",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "stofnun sem hefur það hlutverk að halda utan um \r\n<ref idTerm=914440>geimrannsóknir</ref>",
+          "example": "",
+          "explanation": "",
+          "rownum": 170161
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-16T07:59:47"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914460,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-11T13:09:51",
+      "words": [
+        {
+          "id": 2370606,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimrannsóknarstöð",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "<ref idTerm=914348>mannvirki í geimnum</ref> sem svífur um sporbaug jarðar og getur hýst <ref idTerm=914067>geimfara</ref> sem fást við rannsóknir.",
+          "example": "",
+          "explanation": "Aðeins er um að ræða tvö slík fyrirbæri,  hina sovésku MIR og bandarísku Skylab",
+          "rownum": 170162
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-11T13:24:38"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 914502,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-09-16T08:03:41",
+      "words": [
+        {
+          "id": 2370689,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "geimrannsóknartæki",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "tæki sem nýtist til rannsókna á geimnum",
+          "example": "",
+          "explanation": "",
+          "rownum": 170163
+        }
+      ],
+      "changes": [
+        {
+          "changetype": 8,
+          "changedate": "2020-09-16T08:03:41"
+        }
+      ],
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    },
+    {
+      "id": 913758,
+      "fkdictionary": "GEIMVISINDI",
+      "category": "",
+      "subcategory": "",
+      "registerdate": "2020-03-31T21:59:01",
+      "words": [
+        {
+          "id": 2369127,
+          "fklanguage": "IS",
+          "lexcatnames": null,
+          "word": "tungllending",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "geimferðafræði",
+          "definition": "lending <ref idTerm=913757>tunglfars</ref> á tunglinu",
+          "example": "Markmiðið að lenda mönnum á tunglið náðist þann 20. júlí 1969 þegar þeir Neil Armstrong og Buzz Aldrin stigu fyrstir manna fæti á tunglið í leiðangri Apollo 11. Í kjölfarið fylgdu fimm aðrar tungllendingar, hin seinasta árið 1972.",
+          "explanation": "",
+          "rownum": 478631
+        },
+        {
+          "id": 2369128,
+          "fklanguage": "DE",
+          "lexcatnames": "kv",
+          "word": "Mo&#817;ndlandung",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 298676
+        },
+        {
+          "id": 2369129,
+          "fklanguage": "EN",
+          "lexcatnames": null,
+          "word": "moonlanding",
+          "synonyms": null,
+          "abbreviation": "",
+          "domain": "",
+          "definition": "",
+          "example": "",
+          "explanation": "",
+          "rownum": 300344
+        }
+      ],
+      "changes": null,
+      "related": null,
+      "compterms": null,
+      "pictures": null
+    }
+  ]
+}
