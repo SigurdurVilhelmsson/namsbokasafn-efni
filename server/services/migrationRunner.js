@@ -75,6 +75,7 @@ function runAllMigrations() {
     require('../migrations/043-segment-acceptances'),
     require('../migrations/044-remap-empty-subjects'),
     require('../migrations/045-concept-model'),
+    require('../migrations/046-seed-domain-priority'),
   ];
 
   let applied = 0;
