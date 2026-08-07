@@ -1497,7 +1497,12 @@ function reverseInlineMarkup(
     // published pages. It also ate a legitimate __term__ standing next to a blank,
     // because the blank's tail paired with the term's opening delimiter.
     // A `__` that abuts more underscores is a blank, never a term marker.
-    result = result.replace(/(?<!_)\\_\\_([^_]+)\\_\\_(?!_)/g, '<term>$1</term>');
+    // ⚠️ The ESCAPED dialect needs `\_`-aware guards, not `_`-aware ones. A bare
+    // (?!_) here is INERT: an escaped run is `\ _ \ _ \ _ \ _`, so the character
+    // following a `\_\_` delimiter is always a BACKSLASH and the lookahead can
+    // never fail — measured 0 of 36 escaped cases before this was corrected,
+    // while the code comment claimed a protection that did not exist.
+    result = result.replace(/(?<!\\?_)\\_\\_([^_]+)\\_\\_(?!\\?_)/g, '<term>$1</term>');
     result = result.replace(/(?<!_)__([^_]+)__(?!_)/g, '<term>$1</term>');
   }
 

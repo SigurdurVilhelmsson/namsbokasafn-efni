@@ -452,6 +452,30 @@ describe("reverseInlineMarkup fill-in-the-blank underscores (C16 a')", () => {
     expect(result).toContain('<term>Fyrra</term>');
     expect(result).toContain('<term>seinna</term>');
   });
+
+  // The MT-ESCAPED dialect (\_\_term\_\_) needs its own coverage, and the first
+  // cut of this fix did not have any. Its guards must test for `\_` as well as
+  // `_`: in an escaped run the character adjoining a delimiter is a BACKSLASH,
+  // so a bare (?!_) lookahead can never fire and is inert. Reachability is real —
+  // 10 corpus segments carry escaped runs with hasApiMarkers === false, incl.
+  // escaped fill-in-the-blanks like `(a) 612 g = \_\_\_\_\_\_\_\_ mg`.
+
+  it('does not wrap prose between two ESCAPED blank runs', () => {
+    const result = reverseInlineMarkup('Vatn er \\_\\_ og \\_\\_\\_\\_\\_\\_ er ekki.', emptyEq);
+    expect(result).not.toContain('<term>');
+  });
+
+  it('leaves an escaped fill-in-the-blank exercise untouched', () => {
+    // Verbatim from efnafraedi-2e ch01 m68683.
+    const input = '(a) 612 g = \\_\\_\\_\\_\\_\\_\\_\\_ mg';
+    expect(reverseInlineMarkup(input, emptyEq)).toBe(input);
+  });
+
+  it('still converts a real escaped \\_\\_term\\_\\_ marker', () => {
+    // Verbatim from efnafraedi-2e ch01 m68674.
+    const result = reverseInlineMarkup('Einn \\_\\_Lítri (L)\\_\\_ er rúmdesímetri', emptyEq);
+    expect(result).toContain('<term>Lítri (L)</term>');
+  });
 });
 
 // ─── C16(a′), second site: the EN-gloss annotator has the same regex ──
