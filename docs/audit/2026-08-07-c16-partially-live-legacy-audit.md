@@ -140,6 +140,14 @@ readers; the `orverufraedi` pages have no such hold recorded. **Confirm per book
 `/content/<book>/chapters/<NN>/<file>.html`** — never the page URL (SPA fallback 200s
 everything).
 
+> **✅ FIXED 2026-08-07, same day, commit `8954d77c` — 3 of the 4 repaired in published HTML.**
+> Recorded here because this document is frozen at the *measurement*: the numbers above describe
+> the tree at `main ed9c554e`, before the fix. **`orverufraedi ch05/m58805` is NOT repaired** —
+> it cannot be injected at all, on a pre-existing and unrelated defect (empty `[[b:]]` from the
+> API dropping an English plural marker Icelandic has no use for). **Status lives in §C16, not
+> here.** The fix needed **two** sites, not one — `annotateInlineTerms` carries the same regex
+> and left an orphaned `(e.  and )` gloss after the converter was fixed, with every test green.
+
 **⚠️ §C16's finding that re-extraction does NOT clear this is confirmed by construction:** the
 blanks originate in `01-source` CNXML and the segment still carries no bracket marker
 afterwards, so the guard still resolves false and the converter still fires. Code defect, not
