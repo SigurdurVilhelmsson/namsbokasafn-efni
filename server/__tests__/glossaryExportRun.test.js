@@ -889,15 +889,53 @@ describe('parseArgs', () => {
     });
   });
 
-  it('parses --dry-run and --force in any order, with no --book', () => {
-    expect(parseArgs(['--dry-run', '--force'])).toEqual({
+  it('parses --dry-run with no --book', () => {
+    expect(parseArgs(['--dry-run'])).toEqual({
       book: null,
       dryRun: true,
-      force: true,
+      force: false,
       adopt: false,
       help: false,
       error: null,
     });
+  });
+
+  // ── Override scoping (register §C14 ② decision 5, 2026-08-07) ────────────
+  //
+  // Bare `--adopt` / `--force` are the act-on-EVERY-book forms. Against prod's
+  // committed state a bare `--adopt` reproduces the 2026-08-03 incident's
+  // writes — same books, same numbers — in one command, and migration 044
+  // WIDENED that blast radius: remapping lifraen-efnafraedi onto `chemistry`
+  // makes its export payload byte-equivalent to chemistry's, which clears the
+  // shrink gate it used to fail with certainty (1117 → 0). The system also
+  // PRINTS the unscoped form in its own producer-refusal remedy. Requiring
+  // `--book` is what keeps a copy-paste from becoming a corpus-wide swap.
+  it('rejects --adopt without --book', () => {
+    expect(parseArgs(['--adopt']).error).toMatch(/--adopt.*--book/s);
+  });
+
+  it('rejects --force without --book', () => {
+    expect(parseArgs(['--force']).error).toMatch(/--force.*--book/s);
+  });
+
+  it('rejects --adopt without --book even when --dry-run is present', () => {
+    expect(parseArgs(['--dry-run', '--adopt']).error).toBeTruthy();
+  });
+
+  it('names both overrides when both are passed unscoped', () => {
+    expect(parseArgs(['--adopt', '--force']).error).toMatch(/--adopt.*--force|--force.*--adopt/s);
+  });
+
+  it('accepts --adopt when scoped with --book', () => {
+    expect(parseArgs(['--book', 'efnafraedi-2e', '--adopt']).error).toBeNull();
+  });
+
+  it('accepts --force when scoped with --book', () => {
+    expect(parseArgs(['--book', 'efnafraedi-2e', '--force']).error).toBeNull();
+  });
+
+  it('returns a null book when an override is rejected, so no wide run can proceed', () => {
+    expect(parseArgs(['--adopt']).book).toBeNull();
   });
 
   it('recognizes -h and --help', () => {
@@ -1094,6 +1132,20 @@ describe('runGlossaryExport — producer gate (C14 ② step 4)', () => {
     expect(errors.join('\n')).toMatch(/producer/i);
     expect(errors.join('\n')).not.toMatch(/would fall/); // the shrink message's wording
     expect(errors.join('\n')).not.toMatch(/1117 → 100/); // no ratio between unlike counts
+  });
+
+  // Register §C14 ② decision 5. The absent-baseline refusal already prints
+  // `--adopt --book <slug>`; this one printed a bare `--adopt`, i.e. the
+  // act-on-EVERY-book form. That is the same shape §C21(c) recorded for
+  // `stjornufraedi`: THE REMEDY THE SYSTEM PRINTS IS THE TRIGGER. It matters
+  // more since migration 044 — remapping lifraen-efnafraedi onto `chemistry`
+  // cleared the shrink gate that used to refuse it with certainty, so the
+  // unscoped command the message invited became destructive for that book.
+  it('the producer refusal names --book in its remedy, not a bare --adopt', () => {
+    seedBook('prufubok', legacyFile());
+    const errors = [];
+    run({ exportFn: () => exportPayload(approved(709)), logError: (m) => errors.push(m) });
+    expect(errors.join('\n')).toMatch(/--adopt --book prufubok/);
   });
 
   it('--adopt migrates the book and writes', () => {

@@ -13,19 +13,33 @@
  * responsible for all of chemistry, and microbiology's terminology sits in the
  * biology collection.
  *
- * FIXTURE NOTE: this builds `registered_books` + `book_subject_mapping`
- * directly rather than running the whole migration chain. Those two tables are
- * the entire surface 044 touches, and their shapes here are copied from
- * migration 032. A fresh DB has NO registered books (they are created at
- * runtime), so running the real chain would leave nothing to remap and the
- * tests would pass vacuously.
+ * FIXTURE NOTE — CORRECTED 2026-08-07 after review measured it. This builds
+ * `registered_books` + `book_subject_mapping` directly rather than running the
+ * whole migration chain, because those two tables are the entire surface 044
+ * touches and the columns omitted here cannot affect a two-pair UPDATE.
+ *
+ * ⚠️ The original note justified it with a claim that is FALSE: "a fresh DB has
+ * no registered books, so the real chain would leave nothing to remap and the
+ * tests would pass vacuously." Measured: migration 029 registers
+ * `lifraen-efnafraedi` and `edlisfraedi-2e`, 032 seeds their mappings, and 044
+ * does remap organic on a real chain. `orverufraedi` is absent from a fresh
+ * chain for an unrelated pre-existing reason (019 inserts it without
+ * `registered_by`, which 003 declares NOT NULL, and INSERT OR IGNORE swallows
+ * the violation — logged to the register, not fixed here). The shapes below are
+ * from 003 (`registered_books`, reduced) and 032 (`book_subject_mapping`), not
+ * both from 032 as the original note said.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 const migration044 = require('../migrations/044-remap-empty-subjects');
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 let db;
 
@@ -125,6 +139,24 @@ describe('migration 044 remap-empty-subjects', () => {
 
   it('does not throw on a database with no registered books', () => {
     expect(() => migration044.up(db)).not.toThrow();
+  });
+
+  // ⚠️ startup.test.js pins the wiring with toContain('../migrations/044-'),
+  // which a COMMENTED-OUT require satisfies — and migrationIdempotency.test.js
+  // asserts only `errors: []`, which a migration that never runs also
+  // satisfies. Neither can tell "registered" from "present in the file".
+  // Sibling precedent: migration043.test.js:70-76.
+  it('is registered in migrationRunner, by its full module path', () => {
+    const src = readFileSync(join(__dirname, '..', 'services', 'migrationRunner.js'), 'utf-8');
+    expect(src).toContain("require('../migrations/044-remap-empty-subjects')");
+  });
+
+  it('is registered AFTER 032, which creates the table it updates', () => {
+    // 044 before 032 throws "no such table: book_subject_mapping".
+    const src = readFileSync(join(__dirname, '..', 'services', 'migrationRunner.js'), 'utf-8');
+    expect(src.indexOf('032-terminology-redesign')).toBeLessThan(
+      src.indexOf('044-remap-empty-subjects')
+    );
   });
 
   it('does not respect a later manual override — it is a one-shot correction', () => {
