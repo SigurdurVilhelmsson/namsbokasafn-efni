@@ -1509,7 +1509,7 @@ Measured 2026-08-08: step 1 applies 47 migrations, 0 errors; step 2 exits 0 with
 ⚠️ **`--db <path>` — the value is the NEXT argument, never `--db=<path>`.** B0's finding 5 is the same parser shape in the *export*; this script's parser was fixed.
 ⚠️ **Never point `--db` at `server/pipeline-output/sessions.db`.** B1 writes nothing to a real database.
 
-⚠️ **The scratch DB has concept tables but no `registered_books` rows** — the import creates the schema, not the books. The script registers the six books and seeds their priorities from `BOOK_DOMAIN_PRIORITY` itself, so the gate does not depend on §C35's fresh-clone registration gap.
+⚠️ **The scratch DB has concept tables but none of the six books the gates need** — the import creates the schema, not the books. *(This line read "no `registered_books` rows" until 2026-08-08, contradicting the measured "TWO rows" two paragraphs above; the two rows are `edlisfraedi-2e` and `lifraen-efnafraedi`, and neither is a book any gate resolves against.)* The script registers the six books and seeds their priorities from `BOOK_DOMAIN_PRIORITY` itself, so the gate does not depend on §C35's fresh-clone registration gap.
 
 - [ ] **Step 1: Write the gate script**
 
@@ -1939,8 +1939,23 @@ module.exports = { main, parseArgs };
 
 - [ ] **Step 2: Run it for both books**
 
-Run:
+⚠️ **CORRECTED 2026-08-08 — the bench REQUIRES a scratch DB that `verify-resolve-gates.js`
+has already run against. Task 9's script is what registers the six books.** Measured on a
+freshly rebuilt scratch DB: `buildScope(db, 'liffraedi-2e', 0)` returns
+`{"unscoped":"unregistered"}`, because the import creates the concept schema and the
+migrations register only `edlisfraedi-2e` and `lifraen-efnafraedi` (§C35). The bench then
+exits 2 with `error: liffraedi-2e is unregistered` and measures nothing. `seedBooks` lives
+in `verify-resolve-gates.js` and is **not exported**, so Task 9's script is the only path
+to a benchable DB — do not hand-roll the registration (that is §C35's own mechanism, and
+this plan has already been bitten by it twice).
+
+This dependency was **invisible until the scratch DB was lost**: Task 9's run had already
+seeded it, so the bench would have succeeded and the ordering would have shipped
+undocumented.
+
+Run (gate script first, then both benches):
 ```bash
+node server/scripts/verify-resolve-gates.js --db /tmp/claude-1000/b1-scratch.db   # seeds the books
 node server/scripts/bench-resolve.js --db /tmp/claude-1000/b1-scratch.db --book liffraedi-2e
 node server/scripts/bench-resolve.js --db /tmp/claude-1000/b1-scratch.db --book efnafraedi-2e
 ```
