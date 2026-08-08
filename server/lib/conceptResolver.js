@@ -81,4 +81,76 @@ function buildScope(db, bookSlug, chapter = 0) {
   };
 }
 
-module.exports = { buildScope };
+/**
+ * Walk merged_into to the surviving concept.
+ *
+ * ⚠️ Import NEVER writes merged_into (parent spec decision 1), so a cycle means
+ * editorial corruption. It must terminate and it must be visible — on a cycle we
+ * stop at the LAST UNVISITED concept and report, rather than looping or throwing.
+ *
+ * Resolving THROUGH merged_into is what makes an editorial merge take effect with
+ * no data migration: preference rows still naming the absorbed concept keep working.
+ */
+function followMerge(stmt, startId) {
+  const seen = new Set([startId]);
+  let id = startId;
+  for (;;) {
+    const row = stmt.get(id);
+    const next = row ? row.merged_into : null;
+    if (next == null) return { id, cycle: false };
+    if (seen.has(next)) return { id, cycle: true };
+    seen.add(next);
+    id = next;
+  }
+}
+
+/**
+ * Find every concept having an 'en' term equal to `english`, resolved through
+ * merged_into, with its Icelandic terms in rank order.
+ *
+ * ⚠️ Matching is EXACT and BINARY. Normalisation is the caller's job — C24's
+ * automaton folds case and Unicode upstream and yields a canonical headword. A
+ * COLLATE NOCASE comparison cannot use idx_concept_term_lookup and would
+ * full-scan on every one of biology's 47,568 lookups.
+ *
+ * @returns {{candidates: Array<{conceptId:number, domain:string,
+ *            isTerms: Array<{termId:number, text:string, rank:number}>}>,
+ *           integrity: string[]}}
+ */
+function lookupCandidates(db, english) {
+  const hits = db
+    .prepare(
+      `SELECT DISTINCT c.id AS concept_id
+         FROM concept_term t
+         JOIN concept c ON c.id = t.concept_id
+        WHERE t.lang = 'en' AND t.text = ?`
+    )
+    .all(english);
+
+  const mergeStmt = db.prepare('SELECT merged_into FROM concept WHERE id = ?');
+  const conceptStmt = db.prepare('SELECT id, domain FROM concept WHERE id = ?');
+  const termsStmt = db.prepare(
+    `SELECT id AS term_id, text, rank
+       FROM concept_term
+      WHERE concept_id = ? AND lang = 'is'
+      ORDER BY rank ASC, id ASC`
+  );
+
+  const integrity = [];
+  const byId = new Map(); // de-duplicates two hits that merge into one survivor
+  for (const h of hits) {
+    const { id, cycle } = followMerge(mergeStmt, h.concept_id);
+    if (cycle && !integrity.includes('merge-cycle')) integrity.push('merge-cycle');
+    if (byId.has(id)) continue;
+    const c = conceptStmt.get(id);
+    if (!c) continue;
+    byId.set(id, {
+      conceptId: c.id,
+      domain: c.domain,
+      isTerms: termsStmt.all(id).map((r) => ({ termId: r.term_id, text: r.text, rank: r.rank })),
+    });
+  }
+  return { candidates: [...byId.values()], integrity };
+}
+
+module.exports = { buildScope, lookupCandidates };
