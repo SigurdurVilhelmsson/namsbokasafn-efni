@@ -1200,7 +1200,17 @@ resolves the same candidates in both orders and expects one answer."
 
 **Interfaces:**
 - Consumes: everything above.
-- Produces: `resolve(db, scope, english)` → `Resolution`. **This is what B3 and B4 call.**
+- Produces: ~~`resolve(db, scope, english)`~~ → **SHIPPED AS `resolve(scope, english)`** → `Resolution`. **This is what B3 and B4 call.**
+
+  ⚠️ **AMENDED 2026-08-08 — the arity changed after both whole-branch reviewers independently
+  objected to it, so take the signature from here, not from the code snippets further down this
+  file** (those are left as the instructions actually given, and still show the three-argument
+  form). The `db` argument was used for nothing except being validated against the connection the
+  scope already carried — a parameter whose only purpose is to be checked against another
+  parameter is a hazard the API invents and then defends. The scope carries its own connection and
+  its own prepared statements, so the wrong-connection state is now unrepresentable rather than
+  guarded. **B1 being inert is what made this cheap**; once B3 and B4 call it, changing the arity
+  is a consumer-wide refactor.
 
 - [ ] **Step 1: Write the failing tests**
 
