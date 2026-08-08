@@ -999,22 +999,20 @@ describe('parseArgs', () => {
     expect(result.error).toBe(null);
   });
 
-  it("treats a following flag as --book's value — callers must not transpose", () => {
+  it('refuses --book followed by a flag, even when transposed', () => {
     // `--book --force` (the intended `--force --book <slug>`, transposed).
-    // The next token IS present, so parseArgs takes it as the slug: this is
-    // NOT a guard against transposed flags, and no parse error is raised.
-    // The observable hazard: `--force` was never reached as its own token,
-    // so it stays at its default (false) — a caller who transposes these two
-    // flags silently loses --force AND gets a bogus book slug, with nothing
-    // in `error` to catch it. (Documented current behaviour: a value is
-    // anything that follows, including another flag spelling.) The sibling
-    // at "does NOT silently fall back..." above pins `force` for the reverse
-    // order (`--force --book`, where force IS seen before the trailing
-    // `--book` errors) — this test closes that asymmetry for this order.
+    // Before B0 finding 5, parseArgs would accept the flag as the slug value,
+    // so `--force` was never reached and stayed at its default (false) — a
+    // caller who transposes silently loses --force AND gets a bogus slug.
+    // Now the parser rejects it with an error. The sibling test
+    // "does NOT silently fall back..." above pins the reverse order
+    // (`--force --book`, where force IS seen before the trailing `--book`
+    // errors) — this test pins the asymmetry AFTER the fix, where both orders
+    // now correctly error.
     const result = parseArgs(['--book', '--force']);
-    expect(result.book).toBe('--force');
-    expect(result.force).toBe(false);
-    expect(result.error).toBe(null);
+    expect(result.error).toBeTruthy();
+    expect(result.book).toBe(null);
+    expect(result.error).toMatch(/next argument is the flag/);
   });
 
   // Whole-branch adversarial review (2026-07-28), CRITICAL: the trailing
@@ -1095,6 +1093,32 @@ describe('parseArgs', () => {
     const result = parseArgs(['--frobnicate', '--help']);
     expect(result.error).toBeTruthy();
     expect(result.help).toBe(false);
+  });
+
+  describe('parseArgs does not swallow the next flag as a value', () => {
+    it.each([['--dry-run'], ['--force'], ['--adopt'], ['--help']])(
+      'refuses --book followed by %s',
+      (flag) => {
+        const r = parseArgs(['--book', flag]);
+        expect(r.book).toBeNull();
+        expect(r.error).toMatch(/next argument is the flag/);
+      }
+    );
+
+    it('names the flag it refused, so the message is actionable', () => {
+      expect(parseArgs(['--book', '--adopt']).error).toContain('"--adopt"');
+    });
+
+    it('still accepts a legitimate slug', () => {
+      expect(parseArgs(['--book', 'efnafraedi-2e'])).toMatchObject({
+        book: 'efnafraedi-2e',
+        error: null,
+      });
+    });
+
+    it('allows a real path-like value beginning with -- via the ./ escape', () => {
+      expect(parseArgs(['--book', './--odd'])).toMatchObject({ book: './--odd', error: null });
+    });
   });
 });
 

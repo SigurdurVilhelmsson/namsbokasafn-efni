@@ -865,6 +865,23 @@ function parseArgs(argv) {
           error: '--book requires a value (a book slug)',
         };
       }
+      // ⚠️ Do not swallow the NEXT FLAG as a value (B0 deferred finding 5).
+      // `--book --adopt` used to set book='--adopt' and leave adopt FALSE, so
+      // the run refused with a message naming a book nobody typed. Modelled on
+      // run-concept-import.js's parseImportArgs, which returns an error string
+      // for anything it does not recognise rather than dropping it silently.
+      if (String(raw).startsWith('--')) {
+        return {
+          book: null,
+          dryRun,
+          force,
+          adopt,
+          help,
+          error:
+            `--book requires a value, but the next argument is the flag ${JSON.stringify(raw)}. ` +
+            `If you really mean a slug beginning with '--', write it as './${raw}'.`,
+        };
+      }
       const value = raw.trim();
       if (value === '') {
         return {
