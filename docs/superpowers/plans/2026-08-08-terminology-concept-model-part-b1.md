@@ -13,7 +13,8 @@
 
 ## Global Constraints
 
-- **B1 is INERT.** No consumer is modified. No table is dropped. Nothing writes to any table. `git diff --stat` must show only new files plus the two DRY edits named in Task 1.
+- **B1 is INERT.** No consumer is modified. No table is dropped. `git diff --stat` must show only new files plus the **one** DRY edit named in Task 1 (`server/__tests__/migrationsRealTree.test.js`).
+- **"Writes nothing" means nothing OUTSIDE a throwaway database.** Production, `server/pipeline-output/sessions.db`, and every file under `books/` are strictly read-only for B1. Tests write to their own temp-file DB (Task 1's helper), and Task 9's gate script writes `registered_books` + `book_domain_priority` rows **into the scratch corpus DB it is pointed at** — that DB is disposable scratch, created by an explicit `--db /tmp/...` argument, and seeding it is the only way the gate can run at all. **A write to any database not created by the test or named on the command line is a spec violation.**
 - **Do NOT regenerate `server/__tests__/fixtures/c24-golden.json`.** Its header: re-running the capture from HEAD "would certify the new implementation against itself and destroy the oracle."
 - **Do NOT modify `server/services/terminologyService.js`.** It is past 2,000 lines; B3/B4 wire it up.
 - **Do NOT modify the frozen parent spec** `docs/superpowers/specs/2026-08-07-terminology-concept-model-design.md`. It is evidence; the B1 spec and register §C36 are the live correction.
