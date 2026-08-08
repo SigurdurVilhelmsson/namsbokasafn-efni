@@ -52,3 +52,93 @@ describe('buildScope — D3, an unscoped book names WHICH fault', () => {
     db.close();
   });
 });
+
+/** Seed one concept with one Icelandic term; return {conceptId, termId}. */
+function seedConcept(db, { domain = 'physics', en = 'force', is = 'kraftur', rank = 1 } = {}) {
+  const c = db.prepare("INSERT INTO concept (domain, collection) VALUES (?, 'TEST')").run(domain);
+  const conceptId = Number(c.lastInsertRowid);
+  db.prepare(
+    "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', ?, 1, 'test')"
+  ).run(conceptId, en);
+  const t = db
+    .prepare(
+      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, ?, 'test')"
+    )
+    .run(conceptId, is, rank);
+  return { conceptId, termId: Number(t.lastInsertRowid) };
+}
+
+describe('buildScope — the preference merge', () => {
+  it('a chapter row OVERRIDES a book-default row for the same concept', () => {
+    const { db } = freshMigratedDb();
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const { conceptId } = seedConcept(db);
+    const alt = db
+      .prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', 'afl', 2, 'test')"
+      )
+      .run(conceptId);
+    const bookTermId = db
+      .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND text = 'kraftur'")
+      .get(conceptId).id;
+    const chapTermId = Number(alt.lastInsertRowid);
+
+    const ins = db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, ?, ?, ?)'
+    );
+    ins.run(bookId, 0, conceptId, bookTermId);
+    ins.run(bookId, 3, conceptId, chapTermId);
+
+    const scope = buildScope(db, 'edlisfraedi-2e', 3);
+    expect(scope.preference.get(conceptId)).toEqual({ termId: chapTermId, tier: 'chapter' });
+    db.close();
+  });
+
+  it('falls back to the book default when the chapter has no row', () => {
+    const { db } = freshMigratedDb();
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const { conceptId, termId } = seedConcept(db);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, 0, ?, ?)'
+    ).run(bookId, conceptId, termId);
+
+    const scope = buildScope(db, 'edlisfraedi-2e', 3);
+    expect(scope.preference.get(conceptId)).toEqual({ termId, tier: 'book' });
+    db.close();
+  });
+
+  it('ignores a DIFFERENT chapter’s override', () => {
+    const { db } = freshMigratedDb();
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const { conceptId, termId } = seedConcept(db);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, 7, ?, ?)'
+    ).run(bookId, conceptId, termId);
+
+    expect(buildScope(db, 'edlisfraedi-2e', 3).preference.size).toBe(0);
+    db.close();
+  });
+
+  it('handles the appendices sentinel (-1) like any other chapter', () => {
+    const { db } = freshMigratedDb();
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const { conceptId, termId } = seedConcept(db);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, -1, ?, ?)'
+    ).run(bookId, conceptId, termId);
+
+    expect(buildScope(db, 'edlisfraedi-2e', -1).preference.get(conceptId)).toEqual({
+      termId,
+      tier: 'chapter',
+    });
+    db.close();
+  });
+});

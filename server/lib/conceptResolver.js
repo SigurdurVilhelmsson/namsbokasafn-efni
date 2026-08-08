@@ -17,6 +17,39 @@
  */
 
 /**
+ * Merge a book's preference rows for one chapter: chapter rows win over the
+ * chapter-0 default.
+ *
+ * ⚠️ `tier` is CARRIED, not discarded. Parent spec §7.2 requires the editor panel
+ * to say which rule fired — "chapter override / book default / head form of
+ * domain X" — and this is the only place that still knows.
+ *
+ * ⚠️ `chapter` is NOT NULL with 0 as the book-default sentinel: in SQLite NULLs do
+ * not compare equal inside a primary key, so a nullable chapter would permit two
+ * conflicting "book defaults" for one concept. -1 is the appendices sentinel.
+ */
+function buildPreferenceMap(db, bookId, chapter) {
+  const rows = db
+    .prepare(
+      `SELECT concept_id, term_id, chapter
+         FROM book_concept_preference
+        WHERE book_id = ? AND chapter IN (0, ?)`
+    )
+    .all(bookId, chapter);
+
+  const preference = new Map();
+  for (const r of rows) {
+    const tier = r.chapter === 0 ? 'book' : 'chapter';
+    // A chapter row always wins; a book row only fills an empty slot. Order of
+    // rows from SQLite is not relied on.
+    if (tier === 'chapter' || !preference.has(r.concept_id)) {
+      preference.set(r.concept_id, { termId: r.term_id, tier });
+    }
+  }
+  return preference;
+}
+
+/**
  * Build the per-(book, chapter) scope.
  *
  * ⚠️ Returns WHICH fault, not a boolean (spec D3). 'unregistered' and
@@ -43,7 +76,7 @@ function buildScope(db, bookSlug, chapter = 0) {
     bookId: book.id,
     chapter,
     positionOf: new Map(prio.map((r) => [r.domain, r.position])),
-    preference: new Map(),
+    preference: buildPreferenceMap(db, book.id, chapter),
     unscoped: false,
   };
 }
