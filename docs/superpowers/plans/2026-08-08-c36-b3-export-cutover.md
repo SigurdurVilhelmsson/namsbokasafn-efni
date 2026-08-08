@@ -856,36 +856,63 @@ empty-census throw, and the domain fingerprint."
 
 This is the evidence for D6 — that B3 moves nothing — and it is the most important test in the plan. Append to `server/__tests__/glossaryExportBookSet.test.js`:
 
+⚠️ **`runGlossaryExport` returns an exit code, not the outcome map** — it writes per-book outcomes to `<projectRoot>/pipeline-output/.glossary-export-status.json`. This is the observation pattern the existing tests use (`glossaryExportRun.test.js`: a temp `projectRoot`, then read the status file). The real `booksDir` is what makes it a real-tree pin.
+
 ```js
-describe('B3 changes no book outcome (register §C36 D6)', () => {
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
+
+describe('B3 changes no book outcome (spec D6)', () => {
+  /**
+   * The payload only has to be STAMPED RESOLVED — that is all the producer gate
+   * reads. The builder's own correctness is Task 4's business, and using a stub
+   * here keeps this pin independent of it: if Task 4 regresses, this test still
+   * answers the question it was written to answer.
+   */
+  const resolvedStub = (slug) => ({
+    producer: 'export-terminology-resolved',
+    generated: 'x',
+    book: slug,
+    stats: {},
+    terms: [
+      { english: 'atom', icelandic: 'frumeind', status: 'approved', domain: 'chemistry' },
+    ],
+  });
+
   it('every glossary-bearing book still refuses, for the same reason as before', () => {
-    const outcomes = {};
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'b3-pin-'));
     const code = runGlossaryExport({
-      // A stub standing in for the resolved builder: what matters here is that
-      // the payload is stamped RESOLVED, because that is what the producer gate
-      // sees. The builder's own correctness is Task 4's business.
-      exportFn: (slug) => ({
-        producer: 'export-terminology-resolved',
-        generated: 'x',
-        book: slug,
-        stats: {},
-        terms: [{ english: 'atom', icelandic: 'frumeind', status: 'approved', domain: 'chemistry' }],
-      }),
+      booksDir: BOOKS_DIR, // the REAL tree — this file's existing constant
+      projectRoot: root,
+      exportFn: resolvedStub,
+      // A truthy subject, so the run reaches the producer/absent gates rather
+      // than stopping at refused-no-mapping. The real subjectFn needs a DB.
       subjectFn: () => 'chemistry',
-      dryRun: true,
       log: () => {},
       logError: () => {},
     });
 
-    expect(code).toBe(0); // refusals are not errors (decision D2 of C14)
-    // Three merge-glossary books refuse on producer; edlisfraedi-2e has no
-    // committed file and refuses on absent baseline.
-    void outcomes;
+    // A refusal is a correct outcome, not an error (C14 decision D2).
+    expect(code).toBe(0);
+
+    const status = JSON.parse(
+      fs.readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    const outcomeOf = (slug) => status.books[slug] && status.books[slug].outcome;
+
+    expect(outcomeOf('efnafraedi-2e')).toBe('refused-producer');
+    expect(outcomeOf('liffraedi-2e')).toBe('refused-producer');
+    expect(outcomeOf('lifraen-efnafraedi')).toBe('refused-producer');
+    // No committed glossary — §C21's gate, live on this book since 2026-08-08.
+    expect(outcomeOf('edlisfraedi-2e')).toBe('refused-absent-baseline');
+
+    fs.rmSync(root, { recursive: true, force: true });
   });
 });
 ```
 
-⚠️ **`runGlossaryExport` returns an exit code, not the outcome map** — it writes outcomes to the status file. Read the existing tests in `glossaryExportRun.test.js` to see how they observe per-book outcomes (they capture `logError` output or read the written status file) and follow that pattern instead of the `outcomes` placeholder above. **Assert the four outcomes explicitly**: `efnafraedi-2e`, `liffraedi-2e`, `lifraen-efnafraedi` → `refused-producer`; `edlisfraedi-2e` → `refused-absent-baseline`.
+⚠️ **`BOOKS_DIR` and `runGlossaryExport` must be in this file's imports** — check what it already imports and add only what is missing.
 
 - [ ] **Step 2: Run to verify it fails or passes for the right reason**
 
