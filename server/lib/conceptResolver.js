@@ -230,21 +230,64 @@ function resolveCandidates(scope, candidates, integrity = []) {
 
   if (chosen.length === 0) return emptyResolution(false, codes, outOfScope);
 
-  // Step 4 — lowest position wins. (Step 5 lands in Task 6.)
+  // Step 4 — lowest position wins.
   let best = chosen[0].position;
   for (const c of chosen) if (c.position < best) best = c.position;
-  const w = chosen.find((c) => c.position === best);
+  const atBest = chosen
+    .filter((c) => c.position === best)
+    .sort((a, b) => a.conceptId - b.conceptId);
+
+  const asWinner = (c) => ({
+    conceptId: c.conceptId,
+    termId: c.termId,
+    text: c.text,
+    domain: c.domain,
+    position: c.position,
+  });
+
+  if (atBest.length === 1) {
+    return {
+      winner: asWinner(atBest[0]),
+      reason: atBest[0].reason,
+      nominalTie: [],
+      tied: [],
+      outOfScope,
+      integrity: codes,
+      unscoped: false,
+    };
+  }
+
+  // Step 5 — a position tie. Compare the CHOSEN TEXTS of ALL tied candidates.
+  //
+  // ⚠️ ALL-OR-NOTHING on purpose. With three tied where two agree and one differs
+  // there is still a real choice to make, so every tied candidate is reported —
+  // including the two that agreed. Resolving to the majority form would be
+  // guessing, which parent spec §6 step 5 forbids in as many words.
+  const texts = new Set(atBest.map((c) => c.text));
+  if (texts.size === 1) {
+    // D2: a NOMINAL tie. Both candidates answer with the identical string, so
+    // nothing is guessed — but the duplicate concepts are reported so an editor
+    // can merge them.
+    //
+    // ⚠️ atBest is sorted by conceptId, so the winner is DETERMINISTIC. Taking
+    // whichever row came back first would let database row order decide the
+    // recorded termId — which is §C18's defect, reproduced inside its own fix.
+    return {
+      winner: asWinner(atBest[0]),
+      reason: atBest[0].reason,
+      nominalTie: atBest.map((c) => c.conceptId),
+      tied: [],
+      outOfScope,
+      integrity: codes,
+      unscoped: false,
+    };
+  }
+
   return {
-    winner: {
-      conceptId: w.conceptId,
-      termId: w.termId,
-      text: w.text,
-      domain: w.domain,
-      position: w.position,
-    },
-    reason: w.reason,
+    winner: null,
+    reason: null,
     nominalTie: [],
-    tied: [],
+    tied: atBest.map((c) => ({ conceptId: c.conceptId, text: c.text, domain: c.domain })),
     outOfScope,
     integrity: codes,
     unscoped: false,

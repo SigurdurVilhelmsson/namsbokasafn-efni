@@ -147,3 +147,73 @@ describe('resolveCandidates — the three empty states are distinguishable', () 
     expect(miss.unscoped).not.toBe(bad.unscoped);
   });
 });
+
+describe('resolveCandidates — D2, ties', () => {
+  it('a REAL tie reports every tied candidate and returns no winner', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(40, 'biology', [['fukalyf', 1, 400]]),
+      cand(41, 'biology', [['syklalyf', 1, 410]]),
+    ]);
+    expect(r.winner).toBeNull();
+    // ⚠️ The tie must be REPORTED, not merely "nothing came back" — an empty
+    // return is also what a lookup miss produces (spec §10).
+    expect(r.tied).toHaveLength(2);
+    expect(r.tied.map((t) => t.text).sort()).toEqual(['fukalyf', 'syklalyf']);
+  });
+
+  it('a NOMINAL tie resolves to the agreed form AND reports the tie', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(50, 'biology', [['frasog', 1, 500]]),
+      cand(51, 'biology', [['frasog', 1, 510]]),
+    ]);
+    expect(r.winner.text).toBe('frasog');
+    expect(r.nominalTie.sort()).toEqual([50, 51]);
+    expect(r.tied).toEqual([]);
+  });
+
+  it('the nominal-tie winner is DETERMINISTIC — lowest conceptId, never row order', () => {
+    const forward = resolveCandidates(chemScope(), [
+      cand(50, 'biology', [['frasog', 1, 500]]),
+      cand(51, 'biology', [['frasog', 1, 510]]),
+    ]);
+    const reversed = resolveCandidates(chemScope(), [
+      cand(51, 'biology', [['frasog', 1, 510]]),
+      cand(50, 'biology', [['frasog', 1, 500]]),
+    ]);
+    expect(forward.winner).toEqual(reversed.winner);
+    expect(forward.winner.termId).toBe(500);
+  });
+
+  it('three tied where two agree and one differs is a REAL tie, all three reported', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(60, 'biology', [['a', 1, 600]]),
+      cand(61, 'biology', [['a', 1, 610]]),
+      cand(62, 'biology', [['b', 1, 620]]),
+    ]);
+    expect(r.winner).toBeNull();
+    expect(r.tied).toHaveLength(3);
+  });
+
+  it('a tie at position 3 is NOT a tie when something resolved at position 1', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(10, 'chemistry', [['efni', 1, 100]]),
+      cand(40, 'biology', [['fukalyf', 1, 400]]),
+      cand(41, 'biology', [['syklalyf', 1, 410]]),
+    ]);
+    expect(r.winner.conceptId).toBe(10);
+    expect(r.tied).toEqual([]);
+  });
+
+  it('a preference BREAKS a real tie — that is what preference is for', () => {
+    const pref = new Map([[41, { termId: 410, tier: 'book' }]]);
+    const r = resolveCandidates(chemScope(pref), [
+      cand(40, 'biology', [['fukalyf', 1, 400]]),
+      cand(41, 'biology', [['syklalyf', 1, 410]]),
+    ]);
+    // Both still tie on POSITION; the preference changed 41's text, not its rank.
+    // They still disagree, so this stays a real tie — preference selects WITHIN a
+    // concept, never BETWEEN concepts. Pinning the distinction on purpose.
+    expect(r.winner).toBeNull();
+    expect(r.tied).toHaveLength(2);
+  });
+});
