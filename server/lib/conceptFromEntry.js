@@ -38,7 +38,12 @@ const COLLECTION_DOMAIN = Object.freeze({
 
 const LANGS = { EN: 'en', IS: 'is', LA: 'la' };
 
-/** Íðorðabankinn separates synonyms with semicolons, sometimes commas. */
+/**
+ * Íðorðabankinn separates synonyms with commas. Measured across all 20
+ * imported collections: 32,860 synonym fields, zero containing a semicolon;
+ * 7,653 comma-only, of which 99.5% are genuine synonym lists. The `;` branch
+ * below is kept anyway (lead ruling) — it does not fire on this corpus.
+ */
 function parseSynonyms(raw) {
   if (!raw || typeof raw !== 'string') return [];
   return raw

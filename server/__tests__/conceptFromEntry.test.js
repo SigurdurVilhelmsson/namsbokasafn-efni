@@ -97,6 +97,35 @@ describe('conceptFromEntry', () => {
     expect(Object.keys(COLLECTION_DOMAIN)).toHaveLength(20);
   });
 
+  it('pins the full COLLECTION_DOMAIN map — a swap between two valid domains must fail this test', () => {
+    // Hand-checked against the spec, all 20 confirmed 1:1 correct. Transcribed
+    // verbatim, not "corrected" — this is regression protection, not a spec
+    // re-derivation. The length + membership checks above pass on a domain
+    // swap (e.g. EDLISFR: physics -> astronomy); only a full-map pin catches it.
+    expect(COLLECTION_DOMAIN).toEqual({
+      EFNAFR: 'chemistry',
+      LIFORD: 'biology',
+      LIFORD2: 'biology',
+      ERFDAFR: 'biology',
+      ONAEMI: 'biology',
+      LYFJAFRLYFJASTOFNUN: 'biology',
+      FARALDSFRAEDI: 'biology',
+      LYDHEILSA: 'biology',
+      FUGLAR: 'biology',
+      PODDUR: 'biology',
+      EDLISFR: 'physics',
+      STJARNA: 'astronomy',
+      GEIMVISINDI: 'astronomy',
+      LAEKN: 'anatomy-physiology',
+      TANNL: 'anatomy-physiology',
+      STAERDFRAEDI: 'mathematics',
+      TOLFR: 'mathematics',
+      LAND: 'earth-science',
+      JARDFRAEDI2: 'earth-science',
+      JARDEDLISFRAEDI: 'earth-science',
+    });
+  });
+
   it('uses only the seven approved domains', () => {
     const allowed = new Set([
       'biology',

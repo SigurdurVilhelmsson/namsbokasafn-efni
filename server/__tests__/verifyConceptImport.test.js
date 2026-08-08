@@ -91,6 +91,10 @@ describe('verifyConceptImport', () => {
       collection: 'LAEKN',
       entries: [{ id: 900001, words: [w('EN', 'cell'), w('IS', 'fruma')] }],
     });
+    // Without this, a future edit that collapsed both imports onto one
+    // concept id would keep the check green while no longer being the
+    // false-fire state this test exists to pin.
+    expect(db.prepare('SELECT COUNT(*) AS n FROM concept').get().n).toBe(2);
     expect(check(verifyConceptImport(db), 'homographs-separated').ok).toBe(true);
   });
 
