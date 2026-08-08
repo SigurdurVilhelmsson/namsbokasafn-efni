@@ -19,30 +19,9 @@
 import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const Database = require('better-sqlite3');
 const { BOOK_DOMAIN_PRIORITY, DOMAIN_SET } = require('../lib/domains');
-
-function freshDb() {
-  const p = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'fresh-clone-')), 'sessions.db');
-  const db = new Database(p);
-  const dir = path.join(__dirname, '..', 'migrations');
-  const files = fs
-    .readdirSync(dir)
-    .filter((f) => /^\d{3}-.*\.js$/.test(f))
-    .sort(); // zero-padded, so lexical order IS migration order
-  const errors = [];
-  for (const f of files) {
-    try {
-      require(path.join(dir, f)).up(db);
-    } catch (e) {
-      errors.push(`${f}: ${e.message}`);
-    }
-  }
-  return { db, errors, applied: files.length };
-}
+const freshMigratedDb = require('./helpers/freshMigratedDb');
+const freshDb = freshMigratedDb; // same shape: { db, errors, applied }
 
 describe('the migration set applies cleanly to an empty database', () => {
   it('reports no errors', () => {
