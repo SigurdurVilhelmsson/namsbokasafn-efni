@@ -305,6 +305,15 @@ distinct ids"* — which is not proof of impossibility, but it does tell a revie
 guard is pinning a live case or a latent one. **A guard whose triggering population is unknown
 is untested by definition.**
 
+✅ **MEASURED 2026-08-08 (gate 5) — the population is 0, so the guard IS a deliberate
+latent-case pin, and this spec now says so in as many words** (which is what the §8 gate-5
+outcome asked for). Over the real 70,187-concept corpus, concepts with an `en` term and no
+`is` term: **0**. Two consequences the gate text called for, both now settled: gates 1 and 2
+are **independent of this guard** and can be read as standalone results, and §6's filter is
+pinned by construction in the pure test suite rather than by any corpus case. Reproduced on
+an independently rebuilt corpus after the original scratch DB was lost. Evidence:
+[test-results/b1-resolve-gates-2026-08.md](../../../test-results/b1-resolve-gates-2026-08.md).
+
 ⚠️ Related, and deferred to B2 rather than guarded here: **re-importing a collection
 cascade-deletes every editor term preference** (`import-concepts.js:32` clears
 `concept_term` and re-inserts with new autoincrement ids;

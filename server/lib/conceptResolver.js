@@ -50,11 +50,47 @@ function buildPreferenceMap(db, bookId, chapter) {
 }
 
 /**
+ * The four statements `lookupCandidates` needs, prepared once.
+ *
+ * ⚠️ Spec §5 — "In B1 it is a prepared statement held on the scope." These are
+ * hoisted onto the Scope by buildScope, NOT prepared per call. Gate 4 measured
+ * the difference on the real corpus: preparing per call cost 190,275 prepares
+ * for biology's 47,568 resolves, 4.2x the wall time and 21.7x the resident
+ * memory (762.8 MB of churn against 35.2 MB). 1.5 GB RSS does not survive the
+ * production Linode.
+ *
+ * ⚠️ A statement is bound to the CONNECTION that prepared it — see resolve()'s
+ * guard.
+ */
+function prepareLookupStatements(db) {
+  return {
+    hits: db.prepare(
+      `SELECT DISTINCT c.id AS concept_id
+         FROM concept_term t
+         JOIN concept c ON c.id = t.concept_id
+        WHERE t.lang = 'en' AND t.text = ?`
+    ),
+    merge: db.prepare('SELECT merged_into FROM concept WHERE id = ?'),
+    concept: db.prepare('SELECT id, domain FROM concept WHERE id = ?'),
+    terms: db.prepare(
+      `SELECT id AS term_id, text, rank
+         FROM concept_term
+        WHERE concept_id = ? AND lang = 'is'
+        ORDER BY rank ASC, id ASC`
+    ),
+  };
+}
+
+/**
  * Build the per-(book, chapter) scope.
  *
  * ⚠️ Returns WHICH fault, not a boolean (spec D3). 'unregistered' and
  * 'no-priorities' have different remedies — the admin route vs a migration — and
  * collapsing them repeats one level down the very failure D3 exists to prevent.
+ *
+ * ⚠️ The scope carries `db` and `stmts`. `resolveCandidates` reads NEITHER — it
+ * stays pure, which conceptResolverResolve.test.js pins by importing no database
+ * at all. Only resolve()/lookupCandidates touch them.
  *
  * @param {import('better-sqlite3').Database} db
  * @param {string} bookSlug
@@ -77,6 +113,8 @@ function buildScope(db, bookSlug, chapter = 0) {
     chapter,
     positionOf: new Map(prio.map((r) => [r.domain, r.position])),
     preference: buildPreferenceMap(db, book.id, chapter),
+    db,
+    stmts: prepareLookupStatements(db),
     unscoped: false,
   };
 }
@@ -113,28 +151,24 @@ function followMerge(stmt, startId) {
  * COLLATE NOCASE comparison cannot use idx_concept_term_lookup and would
  * full-scan on every one of biology's 47,568 lookups.
  *
+ * @param {import('better-sqlite3').Database} db
+ * @param {string} english
+ * @param {object} [stmts] from `scope.stmts`. Omitted, this prepares its own —
+ *   correct but ~4x slower per call, so the hot path (resolve()) always passes
+ *   them. Kept optional so lookupCandidates stays directly callable.
  * @returns {{candidates: Array<{conceptId:number, domain:string,
  *            isTerms: Array<{termId:number, text:string, rank:number}>}>,
  *           integrity: string[]}}
  */
-function lookupCandidates(db, english) {
-  const hits = db
-    .prepare(
-      `SELECT DISTINCT c.id AS concept_id
-         FROM concept_term t
-         JOIN concept c ON c.id = t.concept_id
-        WHERE t.lang = 'en' AND t.text = ?`
-    )
-    .all(english);
+function lookupCandidates(db, english, stmts) {
+  const {
+    hits: hitsStmt,
+    merge: mergeStmt,
+    concept: conceptStmt,
+    terms: termsStmt,
+  } = stmts || prepareLookupStatements(db);
 
-  const mergeStmt = db.prepare('SELECT merged_into FROM concept WHERE id = ?');
-  const conceptStmt = db.prepare('SELECT id, domain FROM concept WHERE id = ?');
-  const termsStmt = db.prepare(
-    `SELECT id AS term_id, text, rank
-       FROM concept_term
-      WHERE concept_id = ? AND lang = 'is'
-      ORDER BY rank ASC, id ASC`
-  );
+  const hits = hitsStmt.all(english);
 
   const integrity = [];
   const byId = new Map(); // de-duplicates two hits that merge into one survivor
@@ -307,7 +341,17 @@ function resolveCandidates(scope, candidates, integrity = []) {
  */
 function resolve(db, scope, english) {
   if (scope.unscoped) return resolveCandidates(scope, [], []);
-  const { candidates, integrity } = lookupCandidates(db, english);
+  // ⚠️ FAIL LOUD, do not fall back. scope.stmts are bound to the connection that
+  // prepared them, so running them while the caller believes it is querying `db`
+  // would silently answer from the WRONG DATABASE. Preparing fresh statements
+  // instead would hide the caller's mistake at 4x the cost.
+  if (scope.db && scope.db !== db) {
+    throw new Error(
+      'resolve(): scope was built from a different database connection — ' +
+        'rebuild the scope with buildScope(db, …) for the connection you are querying'
+    );
+  }
+  const { candidates, integrity } = lookupCandidates(db, english, scope.stmts);
   return resolveCandidates(scope, candidates, integrity);
 }
 
