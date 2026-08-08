@@ -139,8 +139,15 @@ payload; no collection yielded zero.
 
 Traced rather than guessed: PR #371 (`c656a0e0`) and `75e4b430` ("bring edlisfraedi-2e into
 the glossary export loop") added `books/edlisfraedi-2e/glossary/.gitkeep`, which reached prod
-at 10:27:49; the 12:00:01Z tick was the first to see it. **This is the 2026-08-07 lead
-decision — *physics gets a `glossary/` dir but no adoption* — executing as designed.**
+at 10:27:49. **This is the 2026-08-07 lead decision — *physics gets a `glossary/` dir but no
+adoption* — executing as designed.**
+
+⚠️ **That the 12:00:01Z tick was the FIRST to see it is a measurement, not mtime arithmetic.**
+`since` is `withSince`-carried: it advances only when a book's outcome *changes*, and is
+otherwise held across ticks — the property the register relies on to make D6's deadline real
+rather than sliding. So `since: 2026-08-08T12:00:01.290Z` **is** the first-observation stamp
+for this outcome; the 10:00Z tick ran before the directory existed, and the four ticks since
+(14:00 / 16:00 / 18:00 / 20:00) did not move it. The mtime corroborates; it is not the evidence.
 
 Two things follow that the register did not yet record:
 
