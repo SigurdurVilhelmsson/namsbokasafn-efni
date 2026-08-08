@@ -114,8 +114,24 @@ describe('mutation controls', () => {
   });
 
   it('CANDIDATE ORDER does NOT matter — the one input that must not change the answer', () => {
+    // A tie at the WINNING position is required here. With a single, unique
+    // position winner (an earlier version of this test had only `a` vs `b`,
+    // chemistry vs biology, never tied) `atBest` never holds more than one
+    // element and `.sort((a, b) => a.conceptId - b.conceptId)` is never
+    // reached — a mutant that deletes that sort left the old version of this
+    // test green. Two chemistry candidates share the winning position (1)
+    // and the same head-form text ('efna'), forcing the nominal-tie path
+    // (and its sort) to run; biology (position 3) still always loses,
+    // preserving the original clear-winner contrast.
     const a = cand(10, 'chemistry', [['efna', 1, 100]]);
+    const c = cand(11, 'chemistry', [['efna', 1, 110]]);
     const b = cand(30, 'biology', [['lif', 1, 300]]);
-    expect(resolveCandidates(scope(), [a, b])).toEqual(resolveCandidates(scope(), [b, a]));
+    const forward = resolveCandidates(scope(), [a, c, b]);
+    const reversed = resolveCandidates(scope(), [b, c, a]);
+    expect(forward).toEqual(reversed);
+    // Pin the tie-path shape directly too — toEqual alone would also pass if
+    // both sides independently short-circuited to the same wrong answer.
+    expect(forward.winner.conceptId).toBe(10);
+    expect(forward.nominalTie).toEqual([10, 11]);
   });
 });
