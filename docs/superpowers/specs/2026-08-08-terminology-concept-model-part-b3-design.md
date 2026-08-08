@@ -174,6 +174,38 @@ step — is a subsequent, deliberate `--adopt --book efnafraedi-2e`.
 This is the posture Part A, B0 and B1 all shipped in, and it keeps a reader-visible change out
 of a PR whose correctness is argued from code.
 
+### D7 — `glossaryCollisionBaseline` is RETIRED, not re-pointed — and it retires per book, at adoption
+
+The collision baseline is **not** re-pointed at the tie population. Competition and ties are
+different questions with different owners: a collision is *two Icelandic strings already
+committed under one English key*, which the resolved format cannot represent; a tie is *two
+concepts at one priority position*, which `resolve()` reports and B4's editor surface acts on.
+Aiming an old fence at a new field would produce a test that looks like continuity and asserts
+something nobody designed.
+
+⚠️ **B0's note said this test "goes green-but-vacuous" under the resolved export. Measured
+2026-08-08, that is true of ONE of its two `describe`s, and not yet.**
+
+- `describe('diffAgainstBaseline semantics')` builds its own collision objects in-file and
+  touches no committed glossary. **It is unaffected by B3 and by adoption, permanently.** It
+  does not retire.
+- `describe('committed glossaries have no competitions beyond their baseline')` sweeps
+  `it.each(booksWithGlossaries)` over **committed files**. Its subject disappears **per book,
+  at the moment that book adopts** — not at B3. At B3's merge all four committed payloads are
+  still merge-glossary files carrying real collisions, so retiring anything then would delete
+  live protection before the condition for retiring it exists.
+
+**The retirement is therefore built in B3 and takes effect on its own**: the sweep skips any
+payload whose `producer` is `export-terminology-resolved` — a format in which a collision is
+unrepresentable — and keeps sweeping every book that has not adopted.
+
+⚠️ **And the non-vacuity guard must be strengthened in the same change, or the retirement
+becomes the bug.** Today's guard asserts only `booksWithGlossaries.length > 0`; once skipping
+exists, every book could be skipped and that assertion would still pass. It must assert that
+**at least one book was actually swept**, so a fully-adopted corpus fails loudly rather than
+reporting green over an empty sweep. That is this test's own cited principle — *absence of a
+baseline is not approval*, the C11(b) lesson — applied to the mechanism that retires it.
+
 ---
 
 ## 3. Architecture
@@ -360,9 +392,8 @@ Measured by B0: `findGlossaryCollisions` needs **≥2 Icelandic values per Engli
 resolved export emits **one entry per English string**. Its `toEqual` will pass while its
 subject has ceased to exist.
 
-**B3 must dispose of this explicitly** — either re-point it at the tie population, which is
-where competition now lives, or retire it with the reasoning recorded in the register. Leaving
-a test that passes because its subject is gone is the failure this repo catalogues most often.
+**Decided (lead, 2026-08-08): RETIRE it, do not re-point it — see D7 below, which also corrects
+when the retirement is due.**
 
 ---
 
