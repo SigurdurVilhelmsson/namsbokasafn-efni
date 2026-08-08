@@ -1479,14 +1479,33 @@ and conceptResolver.js was restored to a clean diff afterwards."
 - Consumes: `buildScope`, `resolve` from Task 7; `run-concept-import.js` from B0.
 - Produces: a recorded measurement file. Nothing consumes it in code.
 
-**Prerequisite — build the scratch corpus DB first (this is a data op, not a test):**
+**Prerequisite — build the scratch corpus DB first (this is a data op, not a test).**
+
+⚠️ **CORRECTED 2026-08-08, after this plan's own command FAILED.** `run-concept-import.js` does
+**not** create the schema — it assumes the concept tables exist and dies with
+`import failed: no such table: concept` against an empty file. It is **two steps**:
 
 ```bash
+# 1. build the schema by running the REAL migrations (reuses Task 1's helper), then place it
+node -e "
+const fs=require('fs');
+const freshMigratedDb=require('./server/__tests__/helpers/freshMigratedDb');
+const {db, errors, applied, path:p}=freshMigratedDb();
+console.log('applied', applied, 'errors', errors.length);
+db.close();
+fs.copyFileSync(p, '/tmp/claude-1000/b1-scratch.db');
+"
+# 2. import the corpus into it
 node server/scripts/run-concept-import.js \
   --dir ~/idordabanki-raw-2026-08-07/ \
   --db /tmp/claude-1000/b1-scratch.db
 ```
-Expected: exit 0, ~70,187 concepts / 192,189 terms in ~4 s.
+Measured 2026-08-08: step 1 applies 47 migrations, 0 errors; step 2 exits 0 with
+**70,187 concepts / 192,189 terms** — matching the register's recorded yield exactly.
+
+⚠️ **After step 1 the scratch DB has only TWO `registered_books` rows and EIGHT
+`book_domain_priority` rows** (measured) — `lifraen-efnafraedi` and `edlisfraedi-2e`, which get
+3 and 5 priority rows. That is §C35 on a fresh tree, and it is why `seedBooks` below exists.
 ⚠️ **`--db <path>` — the value is the NEXT argument, never `--db=<path>`.** B0's finding 5 is the same parser shape in the *export*; this script's parser was fixed.
 ⚠️ **Never point `--db` at `server/pipeline-output/sessions.db`.** B1 writes nothing to a real database.
 
@@ -1533,19 +1552,26 @@ function parseArgs(argv) {
   return db ? { db } : { error: '--db is required' };
 }
 
-/** Register the six books and seed their priorities INTO THE SCRATCH DB. */
+/**
+ * Register the six books and seed their priorities INTO THE SCRATCH DB.
+ *
+ * ⚠️ CORRECTED 2026-08-08. This function previously hand-rolled `registered_books`
+ * with a nullable `title_is` and inserted only `(slug, registered_by)`. Both are
+ * wrong now that the scratch DB is built by the REAL migrations: the table already
+ * exists so `CREATE TABLE IF NOT EXISTS` is a silent no-op, and migration 003's
+ * real `title_is NOT NULL` then rejects the insert. Do NOT re-create the table —
+ * migrations own it. Supply all THREE NOT NULL no-default columns: slug, title_is,
+ * registered_by. This is the same defect Task 2 hit, recurring.
+ */
 function seedBooks(db) {
-  db.exec(`CREATE TABLE IF NOT EXISTS registered_books (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE NOT NULL,
-    title_is TEXT, status TEXT DEFAULT 'active', registered_by TEXT)`);
   const insBook = db.prepare(
-    "INSERT OR IGNORE INTO registered_books (slug, registered_by) VALUES (?, 'gate')"
+    "INSERT OR IGNORE INTO registered_books (slug, title_is, registered_by) VALUES (?, ?, 'gate')"
   );
   const insPrio = db.prepare(
     'INSERT OR REPLACE INTO book_domain_priority (book_id, domain, position) VALUES (?, ?, ?)'
   );
   for (const [slug, domains] of Object.entries(BOOK_DOMAIN_PRIORITY)) {
-    insBook.run(slug);
+    insBook.run(slug, slug); // title_is is NOT NULL; the slug is fine and stays traceable
     const { id } = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
     domains.forEach((d, i) => insPrio.run(id, d, i + 1));
   }
