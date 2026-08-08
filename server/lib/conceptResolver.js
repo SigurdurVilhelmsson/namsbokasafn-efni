@@ -153,4 +153,102 @@ function lookupCandidates(db, english) {
   return { candidates: [...byId.values()], integrity };
 }
 
-module.exports = { buildScope, lookupCandidates };
+/** The rank-1 Icelandic head form, or null. isTerms is already rank-sorted. */
+function headForm(candidate) {
+  return candidate.isTerms.length > 0 ? candidate.isTerms[0] : null;
+}
+
+function emptyResolution(unscoped, integrity, outOfScope) {
+  return {
+    winner: null,
+    reason: null,
+    nominalTie: [],
+    tied: [],
+    outOfScope,
+    integrity,
+    unscoped,
+  };
+}
+
+/**
+ * Resolve candidates against a scope. PURE — no database, no I/O, no ambient state.
+ *
+ * ⚠️ THE FILTER ON STEP 3 IS LOAD-BEARING AND IS NOT IN THE PARENT SPEC.
+ * §6 orders it "choose each candidate's term (3) -> lowest position wins (4)",
+ * which reads correctly until a chosen term is undefined. Chemistry is position 1
+ * for efnafraedi-2e, so a chemistry concept with no Icelandic head form would win
+ * the position race and then resolve to NOTHING, while biology's perfectly good
+ * word sat at position 3 and was never consulted. Term-less candidates must be
+ * dropped BETWEEN steps 3 and 4.
+ *
+ * @param {object} scope from buildScope
+ * @param {Array} candidates from lookupCandidates
+ * @param {string[]} [integrity] codes carried in from lookupCandidates
+ */
+function resolveCandidates(scope, candidates, integrity = []) {
+  const codes = [...integrity];
+  if (scope.unscoped) return emptyResolution(scope.unscoped, codes, []);
+
+  // Step 2 — partition. D1: out-of-scope survives as a soft badged tier.
+  const inScope = [];
+  const outOfScope = [];
+  for (const c of candidates) {
+    if (scope.positionOf.has(c.domain)) {
+      inScope.push(c);
+    } else {
+      const head = headForm(c);
+      // A term-less candidate has nothing to suggest either.
+      if (head) outOfScope.push({ conceptId: c.conceptId, text: head.text, domain: c.domain });
+    }
+  }
+
+  // Step 3 — choose each in-scope candidate's term, then DROP the term-less ones.
+  const chosen = [];
+  for (const c of inScope) {
+    const pref = scope.preference.get(c.conceptId);
+    let term = null;
+    let reason = null;
+    if (pref) {
+      term = c.isTerms.find((t) => t.termId === pref.termId) || null;
+      if (term) reason = pref.tier === 'chapter' ? 'chapter-preference' : 'book-preference';
+      else if (!codes.includes('orphan-preference')) codes.push('orphan-preference');
+    }
+    if (!term) {
+      term = headForm(c);
+      if (term) reason = 'head-form';
+    }
+    if (!term) continue; // ← the filter, between steps 3 and 4
+    chosen.push({
+      conceptId: c.conceptId,
+      termId: term.termId,
+      text: term.text,
+      domain: c.domain,
+      position: scope.positionOf.get(c.domain),
+      reason,
+    });
+  }
+
+  if (chosen.length === 0) return emptyResolution(false, codes, outOfScope);
+
+  // Step 4 — lowest position wins. (Step 5 lands in Task 6.)
+  let best = chosen[0].position;
+  for (const c of chosen) if (c.position < best) best = c.position;
+  const w = chosen.find((c) => c.position === best);
+  return {
+    winner: {
+      conceptId: w.conceptId,
+      termId: w.termId,
+      text: w.text,
+      domain: w.domain,
+      position: w.position,
+    },
+    reason: w.reason,
+    nominalTie: [],
+    tied: [],
+    outOfScope,
+    integrity: codes,
+    unscoped: false,
+  };
+}
+
+module.exports = { buildScope, lookupCandidates, resolveCandidates };
