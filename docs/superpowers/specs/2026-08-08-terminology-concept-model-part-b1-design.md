@@ -115,11 +115,27 @@ omits the `NOT NULL registered_by` column that migration `003` declares, so its 
 or `stjornufraedi` at all. Parent spec §10 calls "a book silently scoped to nothing" the exact
 failure the design exists to remove.
 
-**Decision: `buildScope` returns `{ unscoped: true }`** rather than an empty scope. A miss and a
-misconfiguration must never look alike. Callers decide: the **export refuses** (matching today's
-`refused-no-mapping` posture, surfaced in `/api/health` and printed by `deploy.sh`); the
+**Decision: `buildScope` returns an explicit unscoped result** rather than an empty scope. A miss
+and a misconfiguration must never look alike. Callers decide: the **export refuses** (matching
+today's `refused-no-mapping` posture, surfaced in `/api/health` and printed by `deploy.sh`); the
 **editor degrades** to badged out-of-scope suggestions rather than throwing, so a config gap in
 an un-onboarded book does not 500 a read-only panel.
+
+⚠️ **And it names WHICH misconfiguration — two distinct faults reach this state and they have
+different remedies.** `buildScope` must first resolve the slug against `registered_books`, so:
+
+```js
+{ unscoped: 'unregistered' }    // no registered_books row for this slug
+{ unscoped: 'no-priorities' }   // registered, but zero book_domain_priority rows
+```
+
+- **`unregistered`** is §C35: the book was never registered, so *nothing* about it works and the
+  remedy is the admin route (after which migrations 046/047 seed its rows on the next boot).
+- **`no-priorities`** is a registered book that migration 046's frozen `PRIORITIES` map does not
+  name — the remedy is a migration, not an admin action.
+
+Collapsing them would repeat, one level down, exactly the failure D3 exists to prevent: this
+spec insists a tie be told apart from a miss, and must hold itself to the same rule.
 
 ---
 
@@ -130,7 +146,7 @@ a pure module, data in, data out, no singleton connection:
 
 ```
 server/lib/conceptResolver.js
-  ├─ buildScope(db, bookSlug, chapter)  → Scope | { unscoped: true }
+  ├─ buildScope(db, bookSlug, chapter)  → Scope | { unscoped: 'unregistered' | 'no-priorities' }
   └─ resolve(scope, englishString)      → Resolution
 ```
 
@@ -160,7 +176,7 @@ resources through ambient state.
   positionOf: Map<domain, position>,          // from book_domain_priority
   preference: Map<conceptId, {termId, tier}>, // chapter override merged over book default
                                               // tier: 'chapter' | 'book'
-  unscoped: false
+  unscoped: false                             // else 'unregistered' | 'no-priorities'  (D3)
 }
 ```
 
@@ -187,7 +203,7 @@ One shape; every outcome is nameable and no two are confusable:
   tied:       [{ conceptId, text, domain }, …],    // real tie — winner is null
   outOfScope: [{ conceptId, text, domain }, …],    // D1 — badged, never enforced
   integrity:  [],                                  // 0..n of 'merge-cycle' | 'orphan-preference'
-  unscoped:   false
+  unscoped:   false                                // else 'unregistered' | 'no-priorities'  (D3)
 }
 ```
 
@@ -209,7 +225,8 @@ Read the states apart:
 | `winner` set, `nominalTie` populated | D2 — two concepts agree; offer a merge |
 | `winner: null`, `tied` populated | real tie — report, never guess |
 | `winner: null`, everything empty | genuine miss |
-| `unscoped: true` | misconfigured book |
+| `unscoped: 'unregistered'` | book absent from `registered_books` — fix via the admin route |
+| `unscoped: 'no-priorities'` | registered, but migration 046's map does not name it — fix via a migration |
 
 **Three different things must never share one empty result** — parent spec §10 states it for
 ties, and this repo's standing lesson generalises it: an absence tells you whether you observed,
@@ -221,11 +238,14 @@ never whether the thing is there.
 
 ```
 buildScope(db, 'efnafraedi-2e', 3)
+   ├─ SELECT id FROM registered_books WHERE slug = ?
+   │     └─ no row → return { unscoped: 'unregistered' }     (D3, §C35)
    ├─ SELECT domain, position FROM book_domain_priority WHERE book_id = ?
-   │     └─ 0 rows → return { unscoped: true }              (D3)
-   └─ SELECT concept_id, term_id FROM book_concept_preference
+   │     └─ 0 rows → return { unscoped: 'no-priorities' }    (D3)
+   └─ SELECT concept_id, term_id, chapter FROM book_concept_preference
         WHERE book_id = ? AND chapter IN (0, 3)
-              chapter-3 rows overwrite chapter-0 rows        → preference
+              chapter-3 rows overwrite chapter-0 rows;
+              the winning row's chapter becomes `tier`       → preference
 
 resolve(scope, 'cell')
    1. candidates ← concepts having an 'en' term matching the string,
@@ -264,7 +284,8 @@ migration.
 
 | Condition | Outcome | Why it is not an empty result |
 |---|---|---|
-| Book has no priority rows | `{ unscoped: true }` from `buildScope` | D3 — export refuses, editor degrades |
+| Book absent from `registered_books` | `{ unscoped: 'unregistered' }` from `buildScope` | D3 — §C35; remedy is the admin route |
+| Book registered, 0 priority rows | `{ unscoped: 'no-priorities' }` from `buildScope` | D3 — remedy is a migration, not an admin action |
 | `merged_into` cycle (A→B→A, or self) | Follow with a visited set; stop at the last unvisited concept, push `'merge-cycle'` onto `integrity` | Import never writes `merged_into`, so a cycle is editorial corruption. Must terminate; must be visible |
 | Preference `term_id` belongs to a different concept | Ignore it, use the head form, push `'orphan-preference'` onto `integrity` | A wrong preference must not silently become the answer, nor break the panel |
 | In-scope concept with an `en` term but **no** `is` term | Drop from candidates **between steps 3 and 4** | See below |
@@ -277,6 +298,12 @@ chemistry concept with no Icelandic head form would **win the position race and 
 nothing** — while `biology`'s perfectly good word sat at position 3, never consulted. Filtering
 must happen *between* steps 3 and 4. The parent spec's numbered list cannot show this, because
 the failure only appears once you ask what an empty term does to the ordering.
+
+⚠️ **Whether this case is OBSERVABLE is a measurement, and gate 5 takes it.** B0's finding 4 is
+the model: it quantified its hazard as *"Latent: the measured corpus has 0 nulls and 70,187
+distinct ids"* — which is not proof of impossibility, but it does tell a reviewer whether the
+guard is pinning a live case or a latent one. **A guard whose triggering population is unknown
+is untested by definition.**
 
 ⚠️ Related, and deferred to B2 rather than guarded here: **re-importing a collection
 cascade-deletes every editor term preference** (`import-concepts.js:32` clears
@@ -337,20 +364,43 @@ that directory is lost.
    This is the measurable form of "unblocks chemistry."
    ⚠️ **Capture this before Part C drops the old tables**, or the gate becomes unmeasurable.
 2. **The tie census reproduces**: `efnafraedi-2e` → **2,001 outright / 126 nominal / 310 real**.
-   A different number is **a finding to explain, not a constant to update**.
+   A different number is **a finding to explain, not a constant to update** — which only holds
+   if the method is reproduced too, so it is part of the assertion, not a footnote:
+   - **restricted to English strings that actually appear in that book's `01-source`** (complete,
+     per the parent spec's own trap warning), **not** to the whole corpus; and
+   - **a tie counted only in the best available domain** per §6 step 4 — a tie at position 3 is
+     not a tie if anything resolved at position 1.
+
+   ⚠️ Without both restrictions recorded, the first run differs **for methodology reasons** and a
+   session is spent explaining a phantom finding.
 3. **Biology's scope is the size the register measured** — **47,568** distinct English terms for
    `liffraedi-2e`, driven by `anatomy-physiology` at position 2.
 4. **Performance is recorded, not asserted against a guessed number.** One `buildScope` plus a
-   full sweep over biology's 47,568 terms, timed with `bench-c24.js`'s harness — which reports
-   **RSS as well as latency**, because ~85 MB resident is a real cost on a small Linode and a
-   claim reporting only time is half-measured. **B1 publishes the measurement; B4's threshold is
-   set from it, not before it.**
+   full sweep over biology's 47,568 terms. **B1 publishes the measurement; B4's threshold is set
+   from it, not before it.**
+
+   ⚠️ **`bench-c24.js` CANNOT be reused for this.** It takes `<book> <chapter> <moduleId>` and
+   calls `findTermsInSegments` — the matcher, which B1 does not touch, against production book
+   data B1 has no path to. **B1 adds its own `server/scripts/bench-resolve.js`**, against the
+   scratch DB, reporting **RSS as well as latency** in bench-c24's output shape: ~85 MB resident
+   for the automaton is a real cost on a small Linode, and a claim reporting only time is
+   half-measured. Reusing bench-c24's *shape* is the point; reusing the *script* is not possible.
+
+5. **The term-less-candidate population is COUNTED, not assumed.** Report, over the scratch
+   corpus, how many concepts have an `en` term and **no** `is` term, and how many of those are
+   in scope for `efnafraedi-2e` / `liffraedi-2e`. Two outcomes, both useful and each changing
+   what §6's guard means:
+   - **0** → the guard is a deliberate latent-case pin, and the spec says so in as many words.
+   - **non-zero** → the case is live, gate 1's chemistry assertions may already depend on the
+     guard, and the tie census in gate 2 shifts with it. **Re-derive gate 1 and 2 knowing this,
+     rather than reading them as independent results.**
 
 ### Controls — so a clean result means something
 
 - A book whose priorities are set but match nothing must return `unscoped: false` with an empty
-  `winner`, **distinguishable from the unscoped book**. Without this control, D3 is untested:
-  a passing suite would look identical either way.
+  `winner`, **distinguishable from both unscoped causes**. Without this control, D3 is untested:
+  a passing suite would look identical either way. Three cases, three distinct results —
+  registered-with-priorities-but-no-match, `'no-priorities'`, and `'unregistered'`.
 - The tie census must be re-run **with `rank` collapsed**, and the numbers must change. If they
   do not, the census is not measuring what it claims.
 
