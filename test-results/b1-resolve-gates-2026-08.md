@@ -505,9 +505,9 @@ efnafraedi-2e: 19749 distinct scoped English terms
 on the larger book** (9,743.9 ms against 6,609.9 ms) while RSS nearly doubles. A second
 pass over identical data getting slower is GC pressure, not measurement noise.
 
-**Cause, isolated by measurement rather than inferred.** `db.prepare` was wrapped with a
-memoiser so `conceptResolver.js` ran byte-identical in both arms and the only variable was
-prepare-once vs prepare-per-call:
+**Cause, isolated by measurement rather than inferred.** The original isolation wrapped
+`db.prepare` with a memoiser so `conceptResolver.js` ran byte-identical in both arms and the
+only variable was prepare-once vs prepare-per-call:
 
 | Book | Arm | Prepares | Time | Per resolve | RSS delta |
 |---|---|---|---|---|---|
@@ -518,6 +518,35 @@ prepare-once vs prepare-per-call:
 
 **Control: winner counts were identical in both arms** (44,861 and 18,398) — the change is
 to cost, not behaviour.
+
+> ⚠️ **Those four rows came from a throwaway script in a scratch directory, which a
+> whole-branch reviewer correctly called out: a number in a results file that nobody can
+> re-run is an assertion, not a measurement.** The comparison is now committed as
+> `server/scripts/bench-prepare-arms.js` and gives, on the same corpus:
+>
+> ```
+> $ node server/scripts/bench-prepare-arms.js --db <seeded scratch> --book liffraedi-2e
+> compile-per-call  liffraedi-2e: 6046.7 ms for 47568 resolves (0.127 ms each), 44861 winners,
+>                   190279 prepares, rss delta 737.4 MB
+> compile-once      liffraedi-2e: 2589.1 ms for 47568 resolves (0.054 ms each), 44861 winners,
+>                   7 prepares, rss delta 5.2 MB
+> control: both arms agree on 44861 winners — the difference is cost, not behaviour
+> speedup 2.3x · resident memory 141.3x less · prepares 190279 -> 7
+> ```
+>
+> **The ratios differ from the scratch run's 4.2× / 21.7×, and the reason is the isolation
+> method, not instability.** The committed script drives two *shipped* call shapes —
+> `lookupCandidates(db, en)` with no statements versus `resolve(scope, en)` — rather than
+> monkey-patching `prepare`, and it measures each arm's RSS delta from its own fresh
+> process baseline. The prepare counts (190,279 → 7) and the direction and order of
+> magnitude are stable across both methods; treat the exact multiplier as method-dependent.
+>
+> ⚠️ **The obvious way to write that script is wrong and fails QUIETLY.** Re-using the
+> memoiser approach after the fix measures nothing at all — the statements are hoisted
+> before either arm starts, so both arms compile 7 statements and the script reports a
+> **1.0× speedup while its winner-count control passes**. Observed while writing it. A
+> control that checks the two arms *agree* cannot notice that neither arm does the thing
+> under test.
 
 **After (Task 11, statements hoisted onto the scope):**
 
@@ -607,6 +636,14 @@ database copies (the tracked script was never mutated):
 | Insert a `chemistry @1` concept answering `pH` (destroys the fallback) | `gate1: 'pH' resolved via chemistry @1, expected biology @3 — THE FALLBACK IS GONE`, **exit 1** |
 | Delete the `anatomy-physiology` domain's English terms | `gate3: liffraedi-2e measured 15878, register recorded 47568`, **exit 1** |
 | Rank-reversal control (does the census depend on rank at all?) | numbers move: nominal −7, real +7 — the census **is** rank-sensitive |
+
+**Two further assertions were added after the whole-branch blind review**, both closing gaps
+where a wrong answer printed and exited 0:
+
+| Gap | Now |
+|---|---|
+| Gate 1 asserted `(domain, position)` but not the **word**. A reviewer planted a rank-0 term on pH's concept and got `pH  biology @3 -> RANGT-ORÐ`, exit 0 | asserts the `(domain, position, text)` triple — the resolved word is what a reader sees |
+| Gate 2's census was **print-only**: a 22% degraded census exited 0, the same defect finding 3 fixed one gate over | compared at **zero tolerance against our own measurement** (1,999/120/299), not against the register — §C36's figure is evidence whose method was never recorded, while this pipeline reproduces exactly on every run |
 
 **Idempotency re-verified after adding the rank control**, and measured on the right
 property: two consecutive full runs leave row counts, a `SUM(rank*id)` signature over

@@ -59,13 +59,23 @@ function buildPreferenceMap(db, bookId, chapter) {
  * memory (762.8 MB of churn against 35.2 MB). 1.5 GB RSS does not survive the
  * production Linode.
  *
- * ⚠️ A statement is bound to the CONNECTION that prepared it — see resolve()'s
- * guard.
+ * ⚠️ A statement is bound to the CONNECTION that prepared it, so the bundle
+ * CARRIES that connection and `lookupCandidates` checks it. An earlier version
+ * guarded this in `resolve()` only, which left the hazard wide open one level
+ * down: `lookupCandidates(dbB, 'force', scopeA.stmts)` answered from connection A
+ * without complaint — the verbatim failure the guard existed to prevent.
  */
 function prepareLookupStatements(db) {
   return {
+    db,
+    // ⚠️ No DISTINCT. It was provably dead — `concept_term` has
+    // UNIQUE(concept_id, lang, text), so one English string cannot produce two
+    // rows for the same concept — and it was not free: EXPLAIN QUERY PLAN showed
+    // `USE TEMP B-TREE FOR DISTINCT` on every call, at 47,568 calls per book.
+    // De-duplication that IS load-bearing happens on `byId` below, after
+    // merged_into resolution, where two distinct concepts really can converge.
     hits: db.prepare(
-      `SELECT DISTINCT c.id AS concept_id
+      `SELECT c.id AS concept_id
          FROM concept_term t
          JOIN concept c ON c.id = t.concept_id
         WHERE t.lang = 'en' AND t.text = ?`
@@ -161,6 +171,16 @@ function followMerge(stmt, startId) {
  *           integrity: string[]}}
  */
 function lookupCandidates(db, english, stmts) {
+  // ⚠️ FAIL LOUD, do not fall back. Supplied statements are bound to the
+  // connection that prepared them; running them while the caller believes it is
+  // querying `db` would silently answer from the WRONG DATABASE. Preparing fresh
+  // ones instead would hide the caller's mistake at ~4x the cost.
+  if (stmts && stmts.db !== db) {
+    throw new Error(
+      'lookupCandidates(): the supplied statements belong to a different database ' +
+        'connection — rebuild the scope with buildScope(db, …) for the connection you are querying'
+    );
+  }
   const {
     hits: hitsStmt,
     merge: mergeStmt,
@@ -177,7 +197,15 @@ function lookupCandidates(db, english, stmts) {
     if (cycle && !integrity.includes('merge-cycle')) integrity.push('merge-cycle');
     if (byId.has(id)) continue;
     const c = conceptStmt.get(id);
-    if (!c) continue;
+    // ⚠️ A merged_into pointer to a row that does not exist. Unreachable while
+    // foreign keys are on — and better-sqlite3 is compiled with
+    // SQLITE_DEFAULT_FOREIGN_KEYS=1, so they are on for every connection in this
+    // project — but a candidate vanishing SILENTLY is exactly the failure this
+    // resolver exists to end. Report it rather than dropping it quietly.
+    if (!c) {
+      if (!integrity.includes('dangling-merge')) integrity.push('dangling-merge');
+      continue;
+    }
     byId.set(id, {
       conceptId: c.id,
       domain: c.domain,
@@ -335,23 +363,20 @@ function resolveCandidates(scope, candidates, integrity = []) {
  * turns every lookup into three extra queries — which is how §C24 happened: a
  * correct per-item function called in a loop over tens of thousands of items.
  *
- * @param {import('better-sqlite3').Database} db
- * @param {object} scope from buildScope
+ * ⚠️ TAKES NO `db`. It used to be `resolve(db, scope, english)`, and the `db` was
+ * used for NOTHING except checking it matched the one the scope already carried.
+ * A parameter whose only purpose is to be validated against another parameter is
+ * a hazard the API invents and then defends: the wrong-connection state is now
+ * UNREPRESENTABLE rather than guarded. Both reviewers of the whole branch reached
+ * this independently, and B1 is inert, so this was the cheapest moment it would
+ * ever be — after B3 and B4 it is a consumer-wide refactor.
+ *
+ * @param {object} scope from buildScope — carries its own connection
  * @param {string} english EXACT, already-normalised English string
  */
-function resolve(db, scope, english) {
+function resolve(scope, english) {
   if (scope.unscoped) return resolveCandidates(scope, [], []);
-  // ⚠️ FAIL LOUD, do not fall back. scope.stmts are bound to the connection that
-  // prepared them, so running them while the caller believes it is querying `db`
-  // would silently answer from the WRONG DATABASE. Preparing fresh statements
-  // instead would hide the caller's mistake at 4x the cost.
-  if (scope.db && scope.db !== db) {
-    throw new Error(
-      'resolve(): scope was built from a different database connection — ' +
-        'rebuild the scope with buildScope(db, …) for the connection you are querying'
-    );
-  }
-  const { candidates, integrity } = lookupCandidates(db, english, scope.stmts);
+  const { candidates, integrity } = lookupCandidates(scope.db, english, scope.stmts);
   return resolveCandidates(scope, candidates, integrity);
 }
 

@@ -48,9 +48,9 @@ describe('prepared statements are hoisted onto the scope (spec §5)', () => {
 
     // Count only AFTER the scope exists: buildScope is allowed to prepare, once.
     const prepares = countPrepares(db);
-    resolve(db, scope, 'force');
-    resolve(db, scope, 'force');
-    resolve(db, scope, 'force');
+    resolve(scope, 'force');
+    resolve(scope, 'force');
+    resolve(scope, 'force');
 
     expect(prepares()).toBe(0);
     db.close();
@@ -80,17 +80,26 @@ describe('prepared statements are hoisted onto the scope (spec §5)', () => {
     db.close();
   });
 
-  it('resolve() FAILS LOUD when the scope came from a different connection', () => {
-    // Statements are bound to the connection that prepared them. Running
-    // scope-A's statements against connection B would silently query the WRONG
-    // DATABASE and return a confidently wrong answer — the failure mode this
-    // project keeps paying for. It must throw instead.
+  it('lookupCandidates FAILS LOUD when the statements belong to another connection', () => {
+    // Statements are bound to the connection that prepared them. Running scope-A's
+    // statements against connection B would silently query the WRONG DATABASE and
+    // return a confidently wrong answer — the failure mode this project keeps
+    // paying for. It must throw instead.
+    //
+    // ⚠️ THE GUARD LIVES HERE, NOT ON resolve(), AND THAT IS THE POINT. It was on
+    // resolve() first, which left the hazard wide open one level down — a whole-branch
+    // reviewer measured `lookupCandidates(dbB, 'force', scopeA.stmts)` answering from
+    // connection A without complaint, the verbatim failure the guard was written to
+    // prevent. resolve() cannot express the mismatch at all any more: it takes no `db`,
+    // so there is nothing to disagree with the scope.
     const a = freshMigratedDb().db;
     const b = freshMigratedDb().db;
     addConcept(a, 'physics', 'force', 'kraftur');
     const scopeFromA = buildScope(a, 'edlisfraedi-2e', 1);
 
-    expect(() => resolve(b, scopeFromA, 'force')).toThrow(/different database connection/);
+    expect(() => lookupCandidates(b, 'force', scopeFromA.stmts)).toThrow(
+      /different database connection/
+    );
     a.close();
     b.close();
   });

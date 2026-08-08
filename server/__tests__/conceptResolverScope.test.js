@@ -158,12 +158,16 @@ describe('buildScope — the preference merge', () => {
     const ins = db.prepare(
       'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, ?, ?, ?)'
     );
-    // Insertion order matters, and is deliberate: measured directly against this
-    // schema, `SELECT ... WHERE chapter IN (0, -1)` returns the chapter=-1 row
-    // BEFORE the chapter=0 row even though -1 is inserted first here — so a merge
-    // loop that unconditionally overwrote on every row would let the book-default
-    // row (processed second) clobber the appendices override. This is the test
-    // that pins buildPreferenceMap's `!preference.has()` guard.
+    // ⚠️ INDEX order, NOT insertion order — this comment claimed the latter until
+    // 2026-08-08, and the sentence it made was internally incoherent ("returns -1
+    // first even though -1 is inserted first"). Measured with EXPLAIN QUERY PLAN:
+    // `SELECT ... WHERE chapter IN (0, -1)` scans the primary key
+    // (book_id, chapter, concept_id) ASCENDING, so the chapter=-1 row comes back
+    // before the chapter=0 row regardless of the order they were written in. A
+    // merge loop that overwrote unconditionally would therefore let the
+    // book-default row, processed second, clobber the appendices override. This is
+    // the test that pins buildPreferenceMap's `!preference.has()` guard — and it
+    // would pin it just as well with these two inserts swapped.
     ins.run(bookId, -1, conceptId, appendixTermId);
     ins.run(bookId, 0, conceptId, bookTermId);
 

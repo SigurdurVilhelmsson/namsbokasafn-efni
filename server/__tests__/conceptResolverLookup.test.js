@@ -147,7 +147,7 @@ describe('resolve — the public entry point', () => {
     const { db } = freshMigratedDb();
     addConcept(db, 'physics', 'force', [['kraftur', 1]]);
     const scope = buildScope(db, 'edlisfraedi-2e', 1);
-    const r = resolve(db, scope, 'force');
+    const r = resolve(scope, 'force');
     expect(r.winner.text).toBe('kraftur');
     expect(r.reason).toBe('head-form');
     db.close();
@@ -157,14 +157,14 @@ describe('resolve — the public entry point', () => {
     const { db } = freshMigratedDb();
     const { conceptId: a } = addConcept(db, 'physics', 'loopy', [['lykkja', 1]]);
     db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(a, a);
-    const r = resolve(db, buildScope(db, 'edlisfraedi-2e', 1), 'loopy');
+    const r = resolve(buildScope(db, 'edlisfraedi-2e', 1), 'loopy');
     expect(r.integrity).toContain('merge-cycle');
     db.close();
   });
 
   it('short-circuits on an unscoped scope without querying', () => {
     const { db } = freshMigratedDb();
-    const r = resolve(db, { unscoped: 'unregistered' }, 'force');
+    const r = resolve({ unscoped: 'unregistered' }, 'force');
     expect(r.unscoped).toBe('unregistered');
     db.close();
   });
@@ -180,6 +180,9 @@ describe('resolve — the public entry point', () => {
         throw new Error('resolve() queried the database for an unscoped scope');
       },
     };
-    expect(() => resolve(poisonedDb, { unscoped: 'unregistered' }, 'force')).not.toThrow();
+    // The poisoned connection now rides ON the scope, because resolve() no longer
+    // takes a `db` of its own. The property under test is unchanged: reaching
+    // lookupCandidates at all would call .prepare and throw.
+    expect(() => resolve({ unscoped: 'unregistered', db: poisonedDb }, 'force')).not.toThrow();
   });
 });

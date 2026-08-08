@@ -71,7 +71,7 @@ function main(argv = process.argv.slice(2)) {
   for (const label of ['cold', 'warm']) {
     const s = process.hrtime.bigint();
     let hits = 0;
-    for (const en of strings) if (resolve(db, scope, en).winner) hits++;
+    for (const en of strings) if (resolve(scope, en).winner) hits++;
     const ms = Number(process.hrtime.bigint() - s) / 1e6;
     console.log(
       `  ${label}: ${ms.toFixed(1)} ms for ${strings.length} resolves ` +
@@ -81,7 +81,7 @@ function main(argv = process.argv.slice(2)) {
   }
 
   const s1 = process.hrtime.bigint();
-  resolve(db, scope, strings[0]);
+  resolve(scope, strings[0]);
   console.log(`  single resolve: ${(Number(process.hrtime.bigint() - s1) / 1e6).toFixed(3)} ms`);
   console.log(`  rss delta: ${mb(process.memoryUsage().rss - rss0)}`);
 

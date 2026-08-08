@@ -246,15 +246,25 @@ describe('resolveCandidates — D2, ties', () => {
     expect(r.tied).toEqual([]);
   });
 
-  it('a preference BREAKS a real tie — that is what preference is for', () => {
+  it('a preference does NOT break a real tie — it selects within a concept, never between', () => {
     const pref = new Map([[41, { termId: 410, tier: 'book' }]]);
     const r = resolveCandidates(chemScope(pref), [
       cand(40, 'biology', [['fukalyf', 1, 400]]),
       cand(41, 'biology', [['syklalyf', 1, 410]]),
     ]);
-    // Both still tie on POSITION; the preference changed 41's text, not its rank.
-    // They still disagree, so this stays a real tie — preference selects WITHIN a
-    // concept, never BETWEEN concepts. Pinning the distinction on purpose.
+    // ⚠️ RENAMED 2026-08-08. This was called 'a preference BREAKS a real tie — that
+    // is what preference is for', which asserts the OPPOSITE of what the assertions
+    // below prove: the tie STAYS real. Two independent whole-branch reviewers flagged
+    // it. Its old comment was wrong too — it said "the preference changed 41's text,
+    // not its rank", but concept 41 has exactly ONE is-term and the preference names
+    // that same termId, so the lookup is a no-op for this fixture. Mutation proof:
+    // disabling preference lookup entirely leaves this test GREEN.
+    //
+    // What it DOES pin, and what the name now says: preference chooses among a single
+    // concept's terms; it never arbitrates between two competing concepts. Both still
+    // tie on position and still disagree on text, so the tie is real and is reported.
+    // The preference/reason coverage lives in the book-preference nominal-tie test,
+    // which IS mutation-confirmed to depend on the preference applying.
     expect(r.winner).toBeNull();
     expect(r.tied).toEqual([
       { conceptId: 40, text: 'fukalyf', domain: 'biology' },

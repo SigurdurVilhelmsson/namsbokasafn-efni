@@ -372,6 +372,16 @@ that directory is lost.
    `nitrogen` via `physics` — each asserted with the domain and position it resolved through.
    This is the measurable form of "unblocks chemistry."
    ⚠️ **Capture this before Part C drops the old tables**, or the gate becomes unmeasurable.
+
+   ⚠️ **AMENDED 2026-08-08 — `bond` resolves via `physics @2`, not `biology`.** Measured on the
+   real corpus: `pH → biology @3 (sýrustig)` · **`bond → physics @2 (tengi)`** ·
+   `carbon dioxide → biology @3 (koltvíoxíð)` · `nitrogen → physics @2 (nitur)`. **The property
+   this gate exists for is untouched** — physics @2 is still past chemistry @1, so all four are
+   genuine fallback cases and chemistry is unblocked. Only the specific domain predicted above
+   was wrong. It is amended here rather than left standing because the first results file called
+   the run "PASS, matches expectation", which made a wrong prediction read as a confirmation.
+   The gate now asserts the `(domain, position, text)` triple, so the next divergence cannot be
+   absorbed silently.
 2. **The tie census reproduces**: `efnafraedi-2e` → **2,001 outright / 126 nominal / 310 real**.
    A different number is **a finding to explain, not a constant to update** — which only holds
    if the method is reproduced too, so it is part of the assertion, not a footnote:

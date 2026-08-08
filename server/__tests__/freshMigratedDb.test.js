@@ -41,9 +41,19 @@ describe('freshMigratedDb', () => {
   });
 
   it('CONTROL: the hand-copied terminologyTestDb has none of them', () => {
-    const names = tableNames(createTestDb());
-    expect(names.has('concept')).toBe(false);
-    expect(names.has('book_domain_priority')).toBe(false);
+    const db = createTestDb();
+    const names = tableNames(db);
+    // All FOUR concept tables, not the two this asserted until 2026-08-08 — a control
+    // that checks half the set can pass while the other half leaks in.
+    for (const t of [
+      'concept',
+      'concept_term',
+      'book_domain_priority',
+      'book_concept_preference',
+    ]) {
+      expect(names.has(t)).toBe(false);
+    }
+    db.close(); // the other tests in this file close theirs; this one did not
   });
 
   it('has foreign keys ON, so ON DELETE CASCADE is live', () => {

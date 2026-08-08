@@ -139,15 +139,19 @@ function main(argv = process.argv.slice(2)) {
   // The fallback claim survives — physics @2 is still past chemistry @1, which is the
   // property that unblocks chemistry — but the spec's specific prediction is wrong, and
   // the results file previously called this "matches expectation" without saying so.
+  // ⚠️ THE TEXT IS PINNED TOO. Asserting only (domain, position) still let the gate
+  // print a wrong ANSWER and exit 0 — measured by a whole-branch reviewer, who planted a
+  // rank-0 term on pH's concept and got `pH  biology @3 -> RANGT-ORÐ` with exit 0. The
+  // resolved word is the thing a reader actually sees, so it is part of the assertion.
   const GATE1_EXPECTED = {
-    pH: ['biology', 3],
-    bond: ['physics', 2], // spec §8.1 said biology; measured physics — see above
-    'carbon dioxide': ['biology', 3],
-    nitrogen: ['physics', 2],
+    pH: ['biology', 3, 'sýrustig'],
+    bond: ['physics', 2, 'tengi'], // spec §8.1 said biology; measured physics — see above
+    'carbon dioxide': ['biology', 3, 'koltvíoxíð'],
+    nitrogen: ['physics', 2, 'nitur'],
   };
   console.log('── Gate 1: chemistry fallback ──');
-  for (const [en, [wantDomain, wantPosition]] of Object.entries(GATE1_EXPECTED)) {
-    const r = resolve(db, chemScope, en);
+  for (const [en, [wantDomain, wantPosition, wantText]] of Object.entries(GATE1_EXPECTED)) {
+    const r = resolve(chemScope, en);
     const via = r.winner
       ? `${r.winner.domain} @${r.winner.position} -> ${r.winner.text}`
       : 'UNRESOLVED';
@@ -162,6 +166,9 @@ function main(argv = process.argv.slice(2)) {
           `expected ${wantDomain} @${wantPosition}` +
           (r.winner.position === 1 ? ' — THE FALLBACK IS GONE' : '')
       );
+    }
+    if (r.winner.text !== wantText) {
+      failures.push(`gate1: '${en}' resolved to '${r.winner.text}', expected '${wantText}'`);
     }
   }
 
@@ -199,7 +206,7 @@ function main(argv = process.argv.slice(2)) {
   const census = (strings) => {
     const c = { outright: 0, nominal: 0, real: 0, outOfScopeOnly: 0 };
     for (const en of strings) {
-      const r = resolve(db, chemScope, en);
+      const r = resolve(chemScope, en);
       if (r.tied.length) c.real++;
       else if (r.nominalTie.length) c.nominal++;
       else if (r.winner) c.outright++;
@@ -213,6 +220,21 @@ function main(argv = process.argv.slice(2)) {
   console.log(`  outright ${g2.outright} · nominal ${g2.nominal} · real ${g2.real}`);
   console.log(`  out-of-scope only (D1, resolves to nothing in THIS book): ${g2.outOfScopeOnly}`);
   console.log('  register recorded: outright 2001 · nominal 126 · real 310');
+
+  // ⚠️ THE CENSUS IS NOW COMPARED, at ZERO tolerance, and NOT against the register.
+  // Printing a number beside a target without comparing them is the exact defect finding 3
+  // fixed one gate over, and a reviewer measured it still live here: a 22% degraded census
+  // exited 0. The comparison is against OUR OWN measurement, because §C36's figure is
+  // evidence whose method was never recorded — a constant to explain, not to gate on —
+  // whereas this pipeline reproduces 1,999/120/299 exactly on every run, including across a
+  // full corpus rebuild. Zero tolerance is therefore honest: any drift is a real change in
+  // the corpus, the extractor or the resolver, and should be looked at.
+  const GATE2_MEASURED = { outright: 1999, nominal: 120, real: 299 };
+  for (const k of ['outright', 'nominal', 'real']) {
+    if (g2[k] !== GATE2_MEASURED[k]) {
+      failures.push(`gate2: ${k} measured ${g2[k]}, previously measured ${GATE2_MEASURED[k]}`);
+    }
+  }
 
   // ── Gate 2 control: the census must be RANK-SENSITIVE (spec §8 Controls) ──
   //
@@ -298,7 +320,7 @@ function main(argv = process.argv.slice(2)) {
   if (unreg.unscoped === noPrio.unscoped)
     failures.push('control: the two unscoped causes are indistinguishable');
 
-  const miss = resolve(db, chemScope, 'zzz-not-a-term-zzz');
+  const miss = resolve(chemScope, 'zzz-not-a-term-zzz');
   console.log(`  a genuine miss -> winner ${miss.winner} · unscoped ${miss.unscoped}`);
   if (miss.unscoped !== false) failures.push('control: a miss reported an unscoped cause');
 
@@ -351,10 +373,27 @@ function main(argv = process.argv.slice(2)) {
  * 1,933 resolutions, HIGHER than the bigram version's (n=80,037) 1,398/67/176 =
  * 1,641. Deleting the layer beat shipping it.
  *
- * Tokenising once and emitting OVERLAPPING adjacent pairs — one variable changed,
- * same token grammar, same files — yields 2,008/120/300 against §C36's recorded
- * 2,001/126/310. Within ~1% on three counts produced by three different branches
- * of resolveCandidates, so this is not a shared-limit artifact.
+ * Tokenising once and emitting OVERLAPPING adjacent pairs — same unigram grammar,
+ * same files — yields **1,999/120/299 over 118,749 strings**, against §C36's
+ * recorded 2,001/126/310. Within ~1% on three counts produced by three different
+ * branches of resolveCandidates, so this is not a shared-limit artifact.
+ *
+ * ⚠️ TWO CORRECTIONS TO WHAT THIS COMMENT USED TO SAY, both caught by the
+ * whole-branch review, both the branch's own recurring failure committed by the
+ * person fixing it:
+ *   - it cited **2,008/120/300**, which is the REVIEWER's independent
+ *     implementation, not this one. This code has never printed that. Two
+ *     implementations converging within 9 resolutions is the good news here — but
+ *     a number you did not measure does not belong in your own docstring.
+ *   - it claimed "same token grammar". Not exact, though NOT for the reason a
+ *     first correction of this comment guessed — measured on samples rather than
+ *     reasoned about, twice, because the first re-derivation was also wrong.
+ *     One-character second words survive ("sodium a bit" still yields
+ *     "sodium a"). What changed is HYPHENS: the old ` [a-z]+` could match a
+ *     PREFIX of a hyphenated word and then resume mid-word, so
+ *     "carbon di-oxide here" produced the fragments `carbon di` and
+ *     `oxide here`. Whole tokens are used here, giving `di-oxide` and
+ *     `di-oxide here` and no fragments. Strictly fewer invented terms.
  */
 function collectSourceEnglish(slug) {
   const path = require('path');
