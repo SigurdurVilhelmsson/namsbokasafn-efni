@@ -141,4 +141,50 @@ describe('buildScope — the preference merge', () => {
     });
     db.close();
   });
+
+  it('an appendices (-1) override survives a book default inserted after it', () => {
+    const { db } = freshMigratedDb();
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const { conceptId, termId: appendixTermId } = seedConcept(db);
+    const alt = db
+      .prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', 'afl', 2, 'test')"
+      )
+      .run(conceptId);
+    const bookTermId = Number(alt.lastInsertRowid);
+
+    const ins = db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, ?, ?, ?)'
+    );
+    // Insertion order matters, and is deliberate: measured directly against this
+    // schema, `SELECT ... WHERE chapter IN (0, -1)` returns the chapter=-1 row
+    // BEFORE the chapter=0 row even though -1 is inserted first here — so a merge
+    // loop that unconditionally overwrote on every row would let the book-default
+    // row (processed second) clobber the appendices override. This is the test
+    // that pins buildPreferenceMap's `!preference.has()` guard.
+    ins.run(bookId, -1, conceptId, appendixTermId);
+    ins.run(bookId, 0, conceptId, bookTermId);
+
+    const scope = buildScope(db, 'edlisfraedi-2e', -1);
+    expect(scope.preference.get(conceptId)).toEqual({ termId: appendixTermId, tier: 'chapter' });
+    db.close();
+  });
+
+  it('a preference row belonging to a DIFFERENT book does not leak into this book’s scope', () => {
+    const { db } = freshMigratedDb();
+    // lifraen-efnafraedi is the OTHER book a fresh migrated DB registers (§C35) —
+    // no new registered_books insert needed.
+    const otherBookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'lifraen-efnafraedi'")
+      .get().id;
+    const { conceptId, termId } = seedConcept(db);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, 0, ?, ?)'
+    ).run(otherBookId, conceptId, termId);
+
+    expect(buildScope(db, 'edlisfraedi-2e', 3).preference.size).toBe(0);
+    db.close();
+  });
 });
