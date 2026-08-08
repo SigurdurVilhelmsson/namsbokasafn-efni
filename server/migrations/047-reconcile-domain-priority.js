@@ -12,8 +12,16 @@
  * Deleting the book's rows before re-inserting fixes that and stays idempotent.
  *
  * ⚠️ 046 IS SHIPPED AND IS NOT EDITED — migrations are append-only. It still
- * runs first on every boot; 047 runs after it and wins. The priority map now
- * has one owner in server/lib/domains.js (finding 5).
+ * runs first on every boot; 047 runs after it and wins.
+ *
+ * ⚠️ 047 owns the map FOR THE BOOKS IT NAMES. It iterates
+ * Object.entries(BOOK_DOMAIN_PRIORITY), so a book DELETED from that map is not
+ * cleared here — 046 re-seeds it on the next boot from its own frozen PRIORITIES
+ * and these rows survive, describing a book the map no longer mentions. Absence
+ * from the map means "not managed here", not "remove its rows". Closing that
+ * properly is a Part B design item (a guard against removal-while-registered);
+ * a blanket clear would leave a registered book scoped to nothing, which is the
+ * bug spec §10 exists to prevent.
  *
  * ⚠️ MEASURED 2026-08-08: nothing writes book_domain_priority except migration
  * 046 and tests — no route, no service, no admin control. The every-boot

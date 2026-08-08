@@ -125,21 +125,41 @@ describe('importConcepts', () => {
 // surviving term a fresh AUTOINCREMENT id, breaking every editor preference for
 // that collection — with no count in the returned stats.
 //
-// ⚠️ Parameterised over PRAGMA foreign_keys ON *and* OFF, deliberately. The
-// register states the mechanism as a cascade delete; that is only true under
-// ON. The pragma is per-connection, defaults off, is not stored in the file,
-// and server/services/terminologyService.js opens `new Database(DB_PATH)` with
-// no pragma call — so production runs with it OFF, where the preference row is
-// NOT deleted: it survives pointing at a term id that no longer exists. Quieter
-// than the cascade, and worse. Testing only ON would validate a configuration
-// this project does not deploy.
-describe.each([['ON'], ['OFF']])(
+// ⚠️ Parameterised over the connection DEFAULT and over an explicit ON and OFF,
+// deliberately — the point is that the behaviour must not depend on the pragma.
+//
+// `default` is the case production actually runs: every connection in this
+// project is a bare `new Database(path)` with no pragma call. It is NOT the
+// same as "SQLite's default" — better-sqlite3 is compiled with
+// SQLITE_DEFAULT_FOREIGN_KEYS=1 (node_modules/better-sqlite3/deps/defines.gypi),
+// so a bare connection reports foreign_keys = 1 and ON DELETE CASCADE fires.
+// Register §C36 finding 1 describes the mechanism as a cascade delete, and that
+// is correct.
+//
+// ⚠️ An earlier version of this comment asserted the opposite, on a measurement
+// taken with the system `sqlite3` CLI — a different build, stock defaults, which
+// reports 0. Right property, wrong instrument. The OFF row is kept because the
+// import must not depend on the pragma being what we think it is, which is
+// exactly the assumption that failed here.
+describe('the connection default this project actually runs', () => {
+  it('has foreign keys ON — better-sqlite3 is built with SQLITE_DEFAULT_FOREIGN_KEYS=1', () => {
+    // Pinned as a fact, not assumed. Every connection in this project is a bare
+    // `new Database(path)`; if a future better-sqlite3 build drops that compile
+    // flag, ON DELETE CASCADE silently stops firing everywhere and this goes red
+    // rather than the change passing unnoticed.
+    const bare = new Database(':memory:');
+    expect(bare.pragma('foreign_keys', { simple: true })).toBe(1);
+    bare.close();
+  });
+});
+
+describe.each([['default'], ['ON'], ['OFF']])(
   're-import keeps editor preferences intact (foreign_keys = %s)',
   (fk) => {
     const entry = { id: 991, words: [w('EN', 'atom'), w('IS', 'frumeind', { synonyms: 'atóm' })] };
 
     function seedPreference() {
-      db.pragma(`foreign_keys = ${fk}`);
+      if (fk !== 'default') db.pragma(`foreign_keys = ${fk}`);
       importConcepts(db, payload([entry]));
       db.prepare('INSERT INTO registered_books (id, slug) VALUES (1, ?)').run('efnafraedi-2e');
       const conceptId = db.prepare('SELECT id FROM concept').get().id;

@@ -17,6 +17,19 @@
  * append-only. Migration 047 is the live owner of the priority map and reads
  * BOOK_DOMAIN_PRIORITY from here; 046 still runs first on every boot and 047
  * runs after it.
+ *
+ * ⚠️ "ONE OWNER" IS TRUE OF DOMAIN VALUES, AND ONLY PARTLY TRUE OF BOOK KEYS.
+ * 046 keeps its own frozen PRIORITIES and does not export it, and 047 iterates
+ * only the books named HERE. So ADDING a book, or reordering one, is owned by
+ * this file — but DELETING one is not: 046 re-seeds it on the next boot and 047
+ * never clears it, leaving rows this file no longer describes. Measured
+ * 2026-08-08 over a fresh clone: removing `edlisfraedi-2e` or
+ * `lifraen-efnafraedi` is entirely silent; removing `orverufraedi` happens to
+ * turn migrationsRealTree.test.js red, but only incidentally — that pin exists
+ * for §C35 and evaporates when §C35 is fixed. **Do not delete a book from this
+ * map expecting its rows to go.** Logged for Part B; the right shape is a guard
+ * against removal-while-registered, not a blanket clear (which would leave a
+ * registered book scoped to nothing — the exact bug spec §10 exists to prevent).
  */
 
 /** The seven domains. Spec §5. */

@@ -34,10 +34,19 @@ function importConcepts(db, payload) {
   const countPrefs = db.prepare(
     'SELECT COUNT(*) AS c FROM book_concept_preference WHERE term_id = ?'
   );
-  // ⚠️ Explicit, NOT left to ON DELETE CASCADE. `PRAGMA foreign_keys` is
-  // per-connection, defaults off, is not stored in the file, and no production
-  // connection sets it — so the cascade does not fire there and the preference
-  // row would survive pointing at a term that no longer exists.
+  // Explicit, NOT left to ON DELETE CASCADE — for two reasons that hold
+  // regardless of the pragma:
+  //   1. `preferencesDropped` must be counted BEFORE the row goes, and a
+  //      cascade gives you no count.
+  //   2. The behaviour must not depend on `PRAGMA foreign_keys`, which is
+  //      per-connection and not stored in the file.
+  // ⚠️ For the record, since an earlier draft of this comment had it backwards:
+  // better-sqlite3 is compiled with SQLITE_DEFAULT_FOREIGN_KEYS=1
+  // (node_modules/better-sqlite3/deps/defines.gypi), so a bare `new Database()`
+  // here — including production's — reports foreign_keys = 1 and the cascade
+  // DOES fire. Stock SQLite defaults it off; the system `sqlite3` CLI is a
+  // different build and reports 0, which is how the wrong conclusion was
+  // reached. Measure the pragma with better-sqlite3, not with the CLI.
   const delPrefs = db.prepare('DELETE FROM book_concept_preference WHERE term_id = ?');
 
   // Upsert on the natural key, so a term that is still present upstream KEEPS

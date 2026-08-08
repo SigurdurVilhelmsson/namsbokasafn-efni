@@ -52,10 +52,15 @@ out of scope — see *Non-goals*).
 - `vitest.config.js` sets **`fileParallelism: false`**, so nothing runs in parallel and a test
   that mutates shared module state can affect later files. **Prefer building fixtures in-process
   over mutating `process.env`.**
-- **`PRAGMA foreign_keys` is OFF on every production connection.** It is per-connection, defaults
-  off, is not stored in the file, and `server/services/terminologyService.js:100` opens
-  `new Database(DB_PATH)` with no pragma call. Any test whose subject is a foreign-key behaviour
-  must state which configuration it exercises — see Task 2.
+- **`PRAGMA foreign_keys` is ON on every connection in this project — but not for the reason you
+  would guess, so measure it with the right client.** It is per-connection and not stored in the
+  file, and stock SQLite defaults it **off**; the system `sqlite3` CLI reports `0`. But
+  `better-sqlite3` is compiled with `SQLITE_DEFAULT_FOREIGN_KEYS=1`
+  (`server/node_modules/better-sqlite3/deps/defines.gypi:14`), so a bare `new Database(path)` —
+  which is every connection here, production included — reports `1` and `ON DELETE CASCADE`
+  fires. **Never measure this pragma with the CLI**; that is how an earlier draft of this very
+  plan asserted the opposite. Any test whose subject is a foreign-key behaviour must say which
+  configuration it exercises, and should include the connection *default*.
 
 ## Non-goals
 
@@ -322,24 +327,38 @@ Register finding 1: `server/scripts/import-concepts.js:32` prepares
 every surviving term a **new id**, and every editor preference for that collection breaks —
 with no count and no warning in the returned stats.
 
-**⚠️ CORRECTED 2026-08-08 — the register states the mechanism as a cascade delete, and that is
-NOT what happens in production.** `PRAGMA foreign_keys` is per-connection, defaults **off**, is
-not stored in the file, and `server/services/terminologyService.js:100` opens
-`new Database(DB_PATH)` with no pragma call. **Measured, re-importing an identical payload:**
+**The register's description — a cascade delete — is CORRECT.** Measured on the pre-fix importer,
+re-importing an identical payload:
 
-| `PRAGMA foreign_keys` | term id before → after | preference rows surviving | dangling |
-|---|---|---|---|
-| `ON` | 3 → 6 | 0 — cascaded away | 0 |
-| `OFF` — **the deployed configuration** | 3 → 6 | **1** | **1** |
+| `PRAGMA foreign_keys` | effective | term id before → after | preference rows surviving | dangling |
+|---|---|---|---|---|
+| **connection default — what production runs** | **1** | 3 → 6 | **0** — cascaded away | 0 |
+| explicit `ON` | 1 | 3 → 6 | 0 — cascaded away | 0 |
+| explicit `OFF` | 0 | 3 → 6 | 1 | **1** |
 
-With foreign keys off the preference row is **not** deleted: it survives pointing at `term_id=3`,
-a row that no longer exists, while the term itself now lives at id 6. That is quieter than the
-cascade and worse — the preference still *looks* set in the table and silently resolves to
-nothing. (`AUTOINCREMENT` never reuses an id, so it stays dangling rather than rebinding to an
-unrelated term. That is the one mercy here, and it is a property of the schema, not of the code.)
+Every connection in this project is a bare `new Database(path)` with no pragma call
+(`server/services/terminologyService.js:100` among others). That is **not** SQLite's stock
+default: `better-sqlite3` is compiled with `SQLITE_DEFAULT_FOREIGN_KEYS=1`
+(`server/node_modules/better-sqlite3/deps/defines.gypi:14`), so a bare connection reports
+`foreign_keys = 1` and the cascade fires.
 
-The fix is the same under both configurations, and the test must exercise **both** — a harness
-that enables foreign keys tests a configuration production does not run.
+**⚠️ AN EARLIER VERSION OF THIS SECTION ASSERTED THE OPPOSITE, under a `CORRECTED 2026-08-08`
+banner, and it was wrong.** The measurement behind it queried production with the **system
+`sqlite3` CLI** (3.46.1 — a different build, stock defaults, reports 0) rather than with
+`better-sqlite3`. Right property, wrong instrument: the CLI is a faithful stand-in for SQLite on
+everything except the compiled default, which was the exact property the claim turned on. Caught
+by the blind-pair review, where Fable found `defines.gypi:14` and Opus measured `foreign_keys = 1`
+but mis-attributed it to migration 022's explicit pragma — right number, wrong mechanism, which
+let it certify the false comment as accurate.
+
+**Two things follow, and neither is "trust the cascade":**
+- The preference delete stays **explicit**, because `preferencesDropped` must be counted *before*
+  the row goes and a cascade yields no count — and because the behaviour must not depend on a
+  pragma, which is precisely the assumption that failed here.
+- The test stays parameterised, over `default` / `ON` / `OFF`, with `default` being the case
+  production runs. A separate test **pins `foreign_keys = 1` on a bare connection as a fact**, so
+  a future better-sqlite3 build that drops the flag goes red rather than silently invalidating
+  every cascade in the schema.
 
 The fix is not "upsert instead of delete", because that alone leaks terms that vanished
 upstream. It is: **upsert what is present, prune only what actually disappeared, and account
@@ -371,12 +390,12 @@ has no `title` column.
 ```js
 // ── register §C36 finding 1 ──────────────────────────────────────────────────
 //
-// ⚠️ Parameterised over PRAGMA foreign_keys ON *and* OFF, deliberately.
-// Production runs with it OFF (per-connection, defaults off, not stored in the
-// file; terminologyService.js:100 opens `new Database(DB_PATH)` with no pragma).
-// Under ON the broken preference CASCADES away; under OFF it SURVIVES pointing
-// at a term id that no longer exists. Testing only ON would validate a
-// configuration this project does not deploy.
+// ⚠️ Parameterised over the connection DEFAULT and over an explicit ON and OFF:
+// the point is that the behaviour must not depend on the pragma. `default` is
+// the case production runs — every connection here is a bare `new Database(path)`
+// — and it is NOT SQLite's stock default: better-sqlite3 is compiled with
+// SQLITE_DEFAULT_FOREIGN_KEYS=1 (deps/defines.gypi:14), so a bare connection
+// reports foreign_keys = 1 and the cascade fires, exactly as the register says.
 describe.each([['ON'], ['OFF']])(
   're-import keeps editor preferences intact (foreign_keys = %s)',
   (fk) => {
@@ -468,9 +487,10 @@ In `server/scripts/import-concepts.js`, replace the `clearTerms` statement at `:
   const countPrefs = db.prepare(
     'SELECT COUNT(*) AS c FROM book_concept_preference WHERE term_id = ?'
   );
-  // ⚠️ Explicit, NOT left to ON DELETE CASCADE. foreign_keys is per-connection,
-  // defaults off, and production never turns it on — so the cascade does not
-  // fire there and the row would survive pointing at a deleted term.
+  // Explicit, NOT left to ON DELETE CASCADE — for two reasons independent of
+  // the pragma: preferencesDropped must be counted BEFORE the row goes (a
+  // cascade gives no count), and the behaviour must not depend on a
+  // per-connection setting.
   const delPrefs = db.prepare('DELETE FROM book_concept_preference WHERE term_id = ?');
 ```
 
@@ -525,10 +545,8 @@ it records what it kept and then prunes only the rest:
       if (existing) {
         for (const row of listTerms.all(conceptId)) {
           if (keep.has(`${row.lang} ${row.text}`)) continue;
-          // Count BEFORE deleting, and delete the preference EXPLICITLY. Relying
-          // on ON DELETE CASCADE would be correct only under
-          // PRAGMA foreign_keys = ON, which no production connection sets — the
-          // row would otherwise survive pointing at a term that no longer exists.
+          // Count BEFORE deleting — a cascade yields no count — and delete
+          // explicitly so the result does not depend on the pragma.
           stats.preferencesDropped += countPrefs.get(row.id).c;
           delPrefs.run(row.id);
           delTerm.run(row.id);

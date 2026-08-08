@@ -193,6 +193,15 @@ function parseVerifyArgs(argv) {
       if (raw === undefined) return { db, help, error: '--db requires a value' };
       if (String(raw).trim() === '')
         return { db, help, error: `--db requires a non-empty value — got ${JSON.stringify(raw)}` };
+      // Do not swallow the next flag as a value — see run-concept-import.js.
+      if (String(raw).startsWith('--'))
+        return {
+          db,
+          help,
+          error:
+            `--db requires a value, but the next argument is the flag ${JSON.stringify(raw)}. ` +
+            `If you really mean a path beginning with '--', write it as './${raw}'.`,
+        };
       db = raw.trim();
       i++;
     } else if (a === '-h' || a === '--help') {
@@ -234,7 +243,15 @@ function main(argv = process.argv.slice(2)) {
   }
   const Database = require('better-sqlite3');
   const resolveDbPath = require('../lib/dbPath');
-  const db = new Database(args.db || resolveDbPath(), { readonly: true });
+  // An unopenable --db is an ENVIRONMENT failure and exits 2, like a usage
+  // error. Exit 1 is reserved for "ran, and a check failed".
+  let db;
+  try {
+    db = new Database(args.db || resolveDbPath(), { readonly: true });
+  } catch (e) {
+    console.error(`error: cannot open database ${args.db || resolveDbPath()} — ${e.message}`);
+    return 2;
+  }
   try {
     const { ok, checks } = verifyConceptImport(db);
     const concepts = db.prepare('SELECT COUNT(*) c FROM concept').get().c;

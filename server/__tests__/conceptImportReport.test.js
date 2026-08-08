@@ -141,3 +141,49 @@ describe('runImport', () => {
     expect(db.prepare('SELECT COUNT(*) n FROM concept_term').get().n).toBe(totalTerms);
   });
 });
+
+// ── register §C36 finding 1's counters, made operator-visible ────────────────
+//
+// import-concepts.js counts updatedTerms / prunedTerms / preferencesDropped and
+// its own comment promises a dropped preference "is counted and reported, not
+// silently lost". It was counted and RETURNED, never reported — the report
+// printed only imported/terms/byLang/skippedNoIcelandic.
+describe('formatImportReport surfaces the prune accounting', () => {
+  const base = {
+    collection: 'EFNAFR',
+    entries: 1,
+    imported: 1,
+    skippedNoIcelandic: 0,
+    terms: 3,
+    updatedTerms: 0,
+    prunedTerms: 0,
+    preferencesDropped: 0,
+    byLang: { en: 1, is: 2, la: 0 },
+  };
+
+  it('names a dropped editor preference on the collection that caused it', () => {
+    const out = formatImportReport([{ ...base, prunedTerms: 1, preferencesDropped: 2 }]);
+    expect(out).toMatch(/2 EDITOR PREFERENCE\(S\) DROPPED/);
+  });
+
+  it('reports the totals line, including terms updated in place', () => {
+    const out = formatImportReport([{ ...base, updatedTerms: 3, prunedTerms: 1 }]);
+    expect(out).toMatch(
+      /3 term\(s\) updated in place · 1 pruned · 0 editor preference\(s\) dropped/
+    );
+  });
+
+  it('distinguishes a real import from a no-op refresh, which `terms` cannot', () => {
+    const fresh = formatImportReport([{ ...base, updatedTerms: 0 }]);
+    const noop = formatImportReport([{ ...base, updatedTerms: 3 }]);
+    expect(fresh).toMatch(/0 term\(s\) updated in place/);
+    expect(noop).toMatch(/3 term\(s\) updated in place/);
+    // both report the same `terms` total — which is exactly why it is not enough
+    expect(fresh).toMatch(/3 terms/);
+    expect(noop).toMatch(/3 terms/);
+  });
+
+  it('says nothing about preferences when none were dropped', () => {
+    expect(formatImportReport([base])).not.toMatch(/EDITOR PREFERENCE/);
+  });
+});
