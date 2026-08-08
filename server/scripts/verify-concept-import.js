@@ -6,15 +6,10 @@
  * Read-only: this script opens no transaction and writes no row. It is safe to
  * run against a live database.
  */
-const DOMAINS = new Set([
-  'biology',
-  'chemistry',
-  'physics',
-  'astronomy',
-  'anatomy-physiology',
-  'mathematics',
-  'earth-science',
-]);
+// ⚠️ Not a local copy any more. The seven domains had three independent
+// definitions until 2026-08-08 (register §C36 finding 5) — all measured clean,
+// with nothing keeping them clean. server/lib/domains.js is the one owner.
+const { DOMAIN_SET: DOMAINS } = require('../lib/domains');
 
 /**
  * Icelandic term → a TAG naming which sense that term denotes.
@@ -185,4 +180,95 @@ function verifyConceptImport(db) {
   return { ok: checks.every((c) => c.ok), checks };
 }
 
-module.exports = { verifyConceptImport, DOMAINS };
+/**
+ * ⚠️ Deliberately NOT tools/lib/parseArgs.js — see run-concept-import.js's note.
+ */
+function parseVerifyArgs(argv) {
+  let db = null;
+  let help = false;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--db') {
+      const raw = argv[i + 1];
+      if (raw === undefined) return { db, help, error: '--db requires a value' };
+      if (String(raw).trim() === '')
+        return { db, help, error: `--db requires a non-empty value — got ${JSON.stringify(raw)}` };
+      // Do not swallow the next flag as a value — see run-concept-import.js.
+      if (String(raw).startsWith('--'))
+        return {
+          db,
+          help,
+          error:
+            `--db requires a value, but the next argument is the flag ${JSON.stringify(raw)}. ` +
+            `If you really mean a path beginning with '--', write it as './${raw}'.`,
+        };
+      db = raw.trim();
+      i++;
+    } else if (a === '-h' || a === '--help') {
+      help = true;
+    } else {
+      return {
+        db,
+        help,
+        error: `unrecognised argument '${a}' — accepted: --db <path>, -h/--help`,
+      };
+    }
+  }
+  return { db, help, error: null };
+}
+
+const VERIFY_USAGE = `Usage: node server/scripts/verify-concept-import.js [--db <path>]
+
+Read-only. Opens no transaction and writes no row; safe against a live database.
+
+  --db <path>   SQLite database (default: SESSIONS_DB_PATH, else
+                pipeline-output/sessions.db)
+  -h, --help    this message
+
+Exit codes: 0 all checks passed  ·  1 a check failed  ·  2 usage error`;
+
+/**
+ * @param {string[]} argv
+ * @returns {number} process exit code — returned, not thrown, so it is testable
+ */
+function main(argv = process.argv.slice(2)) {
+  const args = parseVerifyArgs(argv);
+  if (args.help) {
+    console.log(VERIFY_USAGE);
+    return 0;
+  }
+  if (args.error) {
+    console.error(`error: ${args.error}\n\n${VERIFY_USAGE}`);
+    return 2;
+  }
+  const Database = require('better-sqlite3');
+  const resolveDbPath = require('../lib/dbPath');
+  // An unopenable --db is an ENVIRONMENT failure and exits 2, like a usage
+  // error. Exit 1 is reserved for "ran, and a check failed".
+  let db;
+  try {
+    db = new Database(args.db || resolveDbPath(), { readonly: true });
+  } catch (e) {
+    console.error(`error: cannot open database ${args.db || resolveDbPath()} — ${e.message}`);
+    return 2;
+  }
+  try {
+    const { ok, checks } = verifyConceptImport(db);
+    const concepts = db.prepare('SELECT COUNT(*) c FROM concept').get().c;
+    const terms = db.prepare('SELECT COUNT(*) c FROM concept_term').get().c;
+    // The yield is printed BESIDE the verdict deliberately: every check counts
+    // bad things and asserts the count is 0, so all of them pass trivially on an
+    // empty database.
+    console.log(`VERIFY: ${ok ? 'PASS' : 'FAIL'}   [yield: ${concepts} concepts, ${terms} terms]`);
+    for (const c of checks) console.log(`  ${c.ok ? '✓' : '✗'} ${c.name} — ${c.detail}`);
+    return ok ? 0 : 1;
+  } finally {
+    db.close();
+  }
+}
+
+if (require.main === module) {
+  process.exitCode = main();
+}
+
+module.exports = { verifyConceptImport, DOMAINS, parseVerifyArgs, main };

@@ -59,6 +59,12 @@ describe('migration 046 domain priority seed', () => {
     expect(order('edlisfraedi-2e')[0]).toBe('physics');
   });
 
+  // ⚠️ This fixture seeds registered_books with exactly the slugs PRIORITIES
+  // contains, so the fixture IS the map and this assertion cannot detect the bug
+  // it names (register §C36 finding 3). It is kept because it still pins 046's
+  // ordering behaviour, which is real. The assertion that can actually see the
+  // bug builds a database by running every migration over an empty file and
+  // lives in migrationsRealTree.test.js.
   it('gives every registered book a priority list — a book scoped to nothing is the bug', () => {
     const books = db
       .prepare('SELECT slug FROM registered_books')

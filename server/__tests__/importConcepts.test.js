@@ -118,3 +118,108 @@ describe('importConcepts', () => {
     expect(texts).toEqual(['molecule', 'sameind']);
   });
 });
+
+// ── register §C36 finding 1 ──────────────────────────────────────────────────
+//
+// Re-importing a collection to pick up an Árnastofnun update used to give every
+// surviving term a fresh AUTOINCREMENT id, breaking every editor preference for
+// that collection — with no count in the returned stats.
+//
+// ⚠️ Parameterised over the connection DEFAULT and over an explicit ON and OFF,
+// deliberately — the point is that the behaviour must not depend on the pragma.
+//
+// `default` is the case production actually runs: every connection in this
+// project is a bare `new Database(path)` with no pragma call. It is NOT the
+// same as "SQLite's default" — better-sqlite3 is compiled with
+// SQLITE_DEFAULT_FOREIGN_KEYS=1 (node_modules/better-sqlite3/deps/defines.gypi),
+// so a bare connection reports foreign_keys = 1 and ON DELETE CASCADE fires.
+// Register §C36 finding 1 describes the mechanism as a cascade delete, and that
+// is correct.
+//
+// ⚠️ An earlier version of this comment asserted the opposite, on a measurement
+// taken with the system `sqlite3` CLI — a different build, stock defaults, which
+// reports 0. Right property, wrong instrument. The OFF row is kept because the
+// import must not depend on the pragma being what we think it is, which is
+// exactly the assumption that failed here.
+describe('the connection default this project actually runs', () => {
+  it('has foreign keys ON — better-sqlite3 is built with SQLITE_DEFAULT_FOREIGN_KEYS=1', () => {
+    // Pinned as a fact, not assumed. Every connection in this project is a bare
+    // `new Database(path)`; if a future better-sqlite3 build drops that compile
+    // flag, ON DELETE CASCADE silently stops firing everywhere and this goes red
+    // rather than the change passing unnoticed.
+    const bare = new Database(':memory:');
+    expect(bare.pragma('foreign_keys', { simple: true })).toBe(1);
+    bare.close();
+  });
+});
+
+describe.each([['default'], ['ON'], ['OFF']])(
+  're-import keeps editor preferences intact (foreign_keys = %s)',
+  (fk) => {
+    const entry = { id: 991, words: [w('EN', 'atom'), w('IS', 'frumeind', { synonyms: 'atóm' })] };
+
+    function seedPreference() {
+      if (fk !== 'default') db.pragma(`foreign_keys = ${fk}`);
+      importConcepts(db, payload([entry]));
+      db.prepare('INSERT INTO registered_books (id, slug) VALUES (1, ?)').run('efnafraedi-2e');
+      const conceptId = db.prepare('SELECT id FROM concept').get().id;
+      const termId = db
+        .prepare("SELECT id FROM concept_term WHERE lang='is' AND text='atóm'")
+        .get().id;
+      db.prepare(
+        `INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id)
+         VALUES (1, 0, ?, ?)`
+      ).run(conceptId, termId);
+      return { conceptId, termId };
+    }
+
+    const danglingCount = () =>
+      db
+        .prepare('SELECT term_id FROM book_concept_preference')
+        .all()
+        .filter((p) => !db.prepare('SELECT 1 FROM concept_term WHERE id = ?').get(p.term_id))
+        .length;
+
+    it('leaves the preference pointing at a term that still exists', () => {
+      const { termId } = seedPreference();
+      const stats = importConcepts(db, payload([entry]));
+
+      expect(db.prepare('SELECT COUNT(*) c FROM book_concept_preference').get().c).toBe(1);
+      expect(db.prepare('SELECT term_id FROM book_concept_preference').get().term_id).toBe(termId);
+      expect(danglingCount()).toBe(0);
+      expect(stats.preferencesDropped).toBe(0);
+      expect(stats.prunedTerms).toBe(0);
+    });
+
+    it('keeps every term id stable across an identical re-import', () => {
+      seedPreference();
+      const before = db.prepare('SELECT id, lang, text FROM concept_term ORDER BY id').all();
+      importConcepts(db, payload([entry]));
+      const after = db.prepare('SELECT id, lang, text FROM concept_term ORDER BY id').all();
+      expect(after).toEqual(before);
+    });
+
+    it('prunes a term WITHDRAWN upstream, and reports the preference it cost', () => {
+      seedPreference();
+      // Árnastofnun drops the synonym: 'atóm' is genuinely gone.
+      const stats = importConcepts(
+        db,
+        payload([{ id: 991, words: [w('EN', 'atom'), w('IS', 'frumeind')] }])
+      );
+
+      expect(stats.prunedTerms).toBe(1);
+      expect(stats.preferencesDropped).toBe(1);
+      // Asserted under BOTH pragmas: under OFF nothing removes this for you, so
+      // the import must delete it explicitly rather than trust a cascade that
+      // never fires in production.
+      expect(db.prepare('SELECT COUNT(*) c FROM book_concept_preference').get().c).toBe(0);
+      expect(danglingCount()).toBe(0);
+    });
+
+    it('counts an unchanged term as updated, not as newly inserted', () => {
+      seedPreference();
+      const stats = importConcepts(db, payload([entry]));
+      expect(stats.updatedTerms).toBe(3); // atom, frumeind, atóm
+    });
+  }
+);

@@ -29,9 +29,34 @@ function importConcepts(db, payload) {
     `INSERT INTO concept (domain, idordabanki_id, collection, definition_en, definition_is)
      VALUES (?,?,?,?,?)`
   );
-  const clearTerms = db.prepare('DELETE FROM concept_term WHERE concept_id = ?');
+  const listTerms = db.prepare('SELECT id, lang, text FROM concept_term WHERE concept_id = ?');
+  const delTerm = db.prepare('DELETE FROM concept_term WHERE id = ?');
+  const countPrefs = db.prepare(
+    'SELECT COUNT(*) AS c FROM book_concept_preference WHERE term_id = ?'
+  );
+  // Explicit, NOT left to ON DELETE CASCADE — for two reasons that hold
+  // regardless of the pragma:
+  //   1. `preferencesDropped` must be counted BEFORE the row goes, and a
+  //      cascade gives you no count.
+  //   2. The behaviour must not depend on `PRAGMA foreign_keys`, which is
+  //      per-connection and not stored in the file.
+  // ⚠️ For the record, since an earlier draft of this comment had it backwards:
+  // better-sqlite3 is compiled with SQLITE_DEFAULT_FOREIGN_KEYS=1
+  // (node_modules/better-sqlite3/deps/defines.gypi), so a bare `new Database()`
+  // here — including production's — reports foreign_keys = 1 and the cascade
+  // DOES fire. Stock SQLite defaults it off; the system `sqlite3` CLI is a
+  // different build and reports 0, which is how the wrong conclusion was
+  // reached. Measure the pragma with better-sqlite3, not with the CLI.
+  const delPrefs = db.prepare('DELETE FROM book_concept_preference WHERE term_id = ?');
+
+  // Upsert on the natural key, so a term that is still present upstream KEEPS
+  // ITS ID. The previous DELETE-then-INSERT gave every surviving term a fresh
+  // AUTOINCREMENT id, which broke every editor preference for the collection on
+  // an ordinary refresh. (Register §C36 finding 1.)
   const insTerm = db.prepare(
-    `INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,?)`
+    `INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,?)
+     ON CONFLICT(concept_id, lang, text)
+     DO UPDATE SET rank = excluded.rank, source = excluded.source`
   );
 
   const stats = {
@@ -40,6 +65,9 @@ function importConcepts(db, payload) {
     imported: 0,
     skippedNoIcelandic: 0,
     terms: 0,
+    updatedTerms: 0,
+    prunedTerms: 0,
+    preferencesDropped: 0,
     byLang: { en: 0, is: 0, la: 0 },
   };
 
@@ -64,16 +92,36 @@ function importConcepts(db, payload) {
             concept.definitionIs
           ).lastInsertRowid;
 
-      if (existing) clearTerms.run(conceptId);
+      // Captured BEFORE the upsert loop: afterwards an upsert cannot tell you
+      // whether it inserted or updated — both report changes: 1.
+      const priorKeys = existing
+        ? new Set(listTerms.all(conceptId).map((r) => `${r.lang} ${r.text}`))
+        : new Set();
 
       const seen = new Set();
+      const keep = new Set();
       for (const t of terms) {
         const key = `${t.lang} ${t.text}`;
         if (seen.has(key)) continue; // the API can repeat a form as its own synonym
         seen.add(key);
+        if (priorKeys.has(key)) stats.updatedTerms++;
         insTerm.run(conceptId, t.lang, t.text, t.rank, t.source);
+        keep.add(key);
         stats.terms++;
         stats.byLang[t.lang]++;
+      }
+
+      // Prune ONLY what actually disappeared upstream. A preference pointing at
+      // a term Árnastofnun has WITHDRAWN should still go — but it is counted
+      // and reported, not silently lost.
+      if (existing) {
+        for (const row of listTerms.all(conceptId)) {
+          if (keep.has(`${row.lang} ${row.text}`)) continue;
+          stats.preferencesDropped += countPrefs.get(row.id).c; // count BEFORE deleting
+          delPrefs.run(row.id);
+          delTerm.run(row.id);
+          stats.prunedTerms++;
+        }
       }
       stats.imported++;
     }

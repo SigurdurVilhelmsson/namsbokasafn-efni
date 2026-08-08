@@ -12,6 +12,8 @@
  * and synonyms into sibling rows and bulk-stamping them all `approved`.
  */
 
+const { DOMAIN_SET } = require('./domains');
+
 /** Collection → OUR domain. Árnastofnun's collection is provenance only. */
 const COLLECTION_DOMAIN = Object.freeze({
   EFNAFR: 'chemistry',
@@ -53,6 +55,16 @@ function parseSynonyms(raw) {
 }
 
 function conceptFromEntry(entry, { collection, domain }) {
+  // Fail loud. A typo'd domain is otherwise invisible: it yields a fallback
+  // level that matches nothing, so the book scopes to less than it should and
+  // every check stays green. (Register §C36 finding 5.)
+  if (!DOMAIN_SET.has(domain)) {
+    throw new Error(
+      `Unknown domain '${domain}' for collection '${collection}' — ` +
+        `must be one of: ${[...DOMAIN_SET].join(', ')}`
+    );
+  }
+
   const terms = [];
   for (const w of entry.words || []) {
     const lang = LANGS[String(w.fklanguage || '').toUpperCase()];
