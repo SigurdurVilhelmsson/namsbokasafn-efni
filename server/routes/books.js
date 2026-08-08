@@ -19,6 +19,8 @@ const multer = require('multer');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
+// Used for the optional-auth read in GET /list — see the comment there.
+const { verifyToken } = require('../services/auth');
 const {
   requireEditor,
   requireAdmin,
@@ -99,11 +101,29 @@ router.param('book', (req, res, next, book) => {
  * No auth required — book names are not sensitive and this is used on public pages (e.g., feedback).
  */
 router.get('/list', (req, res) => {
-  res.json({
-    books: VALID_BOOKS.map((slug) => ({ slug, label: BOOK_LABELS[slug] || slug })).sort((a, b) =>
-      a.label.localeCompare(b.label, 'is')
-    ),
-  });
+  const books = VALID_BOOKS.map((slug) => ({ slug, label: BOOK_LABELS[slug] || slug })).sort(
+    (a, b) => a.label.localeCompare(b.label, 'is')
+  );
+
+  // Optional auth by design: this endpoint stays public because the anonymous
+  // feedback form populates a book dropdown from it. But when the request does
+  // carry a session, hoist the user's own books to the front — bookSelector
+  // falls back to books[0], so a plain alphabetical list opened every page on
+  // Eðlisfræði regardless of who logged in, and a head-editor scoped to one
+  // book landed on /assignments with a book they cannot read (403 on load).
+  // Array#sort is stable, so alphabetical order survives within each group.
+  let scoped = [];
+  try {
+    const decoded = req.cookies?.auth_token ? verifyToken(req.cookies.auth_token) : null;
+    if (decoded && Array.isArray(decoded.books)) scoped = decoded.books;
+  } catch {
+    /* unreadable token — fall through to the plain alphabetical list */
+  }
+  if (scoped.length) {
+    books.sort((a, b) => (scoped.includes(b.slug) ? 1 : 0) - (scoped.includes(a.slug) ? 1 : 0));
+  }
+
+  res.json({ books });
 });
 
 // Load book data
