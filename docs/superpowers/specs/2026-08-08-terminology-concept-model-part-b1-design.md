@@ -382,6 +382,25 @@ that directory is lost.
 
    ⚠️ Without both restrictions recorded, the first run differs **for methodology reasons** and a
    session is spent explaining a phantom finding.
+
+   ⚠️ **AMENDED 2026-08-08 — the gate reads `02-for-mt`, NOT `01-source`, and that is a
+   deliberate deviation from the line above.** It is recorded here rather than quietly
+   normalised, because the first run recorded it the wrong way round: the brief's *code*
+   read `02-for-mt` while its *label* said `01-source`, and Task 9 corrected the **label**
+   and filed it as fixing a brief defect — turning a real spec deviation into an apparent
+   correction. **Ruling: keep `02-for-mt`.** It holds the extracted EN segments — the exact
+   text `filterGlossaryForText` filters the MT glossary against, and the text B3 and B4 will
+   actually run the resolver over. `01-source` is raw CNXML (149 `.cnxml` against 249 `.md`),
+   so censusing it would count markup this resolver never sees. Script and spec now agree.
+
+   ⚠️ **AND THE EXTRACTION GRAMMAR IS PART OF THE METHOD — this is the trap the paragraph
+   above warns about, sprung.** The first run's harvester matched two-word terms
+   **non-overlappingly**, so whether `carbon dioxide` was seen depended on its byte offset,
+   and it measured **1,398/67/176** — a 30–46% shortfall that was written up as a register
+   discrepancy. With overlapping adjacent pairs and nothing else changed: **1,999/120/299**,
+   within ~1% of the figure above. **A census's tokenisation is a load-bearing part of its
+   method, not an implementation detail.** Evidence:
+   [test-results/b1-resolve-gates-2026-08.md](../../../test-results/b1-resolve-gates-2026-08.md).
 3. **Biology's scope is the size the register measured** — **47,568** distinct English terms for
    `liffraedi-2e`, driven by `anatomy-physiology` at position 2.
 4. **Performance is recorded, not asserted against a guessed number.** One `buildScope` plus a
@@ -412,6 +431,17 @@ that directory is lost.
   registered-with-priorities-but-no-match, `'no-priorities'`, and `'unregistered'`.
 - The tie census must be re-run **with `rank` collapsed**, and the numbers must change. If they
   do not, the census is not measuring what it claims.
+
+  ⚠️ **AMENDED 2026-08-08 — THIS CONTROL AS WRITTEN IS VOID ON THIS CORPUS, and obeying it
+  literally produces a FALSE ACCUSATION.** `conceptFromEntry.js:74-76` assigns `rank` in array
+  order and `import-concepts.js:108` inserts in that same order, so autoincrement `id` rises in
+  lockstep with `rank` — making `ORDER BY rank ASC, id ASC` identical to `ORDER BY id ASC`.
+  Measured: of **17,356** concepts with two or more Icelandic terms, collapsing rank moves the
+  head form in **zero**. The census is unchanged, and the inference rule above would then
+  condemn a census that is in fact correct. **Use the form that can actually move the head
+  form — REVERSE rank within each concept** — which does move it (nominal −7, real +7). The
+  gate script runs the reversal inside a rolled-back transaction so the scratch corpus stays
+  idempotent. **A control must be shown capable of firing before its silence is evidence.**
 
 ⚠️ **Two values clipped by the same limit agree, and their agreement proves nothing.** Where a
 census number comes back suspiciously round, treat it as the signature of a limit until shown

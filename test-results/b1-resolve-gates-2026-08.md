@@ -108,6 +108,16 @@ script whose sole purpose is precise measurement. Fixed the printed label to say
 `02-for-mt`, matching the actual code; the extraction logic itself is unchanged from
 the brief.
 
+> ⚠️ **RE-CLASSIFIED 2026-08-08 (review finding 7): this was not a brief defect, it was a
+> SPEC DEVIATION, and calling it "cosmetic" filed it under the wrong heading.** Spec §8.2
+> mandates `01-source`. The brief's code read `02-for-mt` and its label said `01-source`;
+> changing the **label** made the script self-consistent while moving it *further* from the
+> spec, and recorded a deviation as a correction. The deviation is now ruled on and recorded
+> in the spec itself: **`02-for-mt` is kept deliberately**, because it holds the extracted EN
+> segments the resolver will actually run over, whereas `01-source` is raw CNXML (149 `.cnxml`
+> against 249 `.md`). Script and spec agree again — but the right fix was to amend the spec,
+> not to relabel the script and move on.
+
 ### Defect 3 (found during Step 3's spot-check, informational, zero impact)
 
 Step 3 asks to confirm no marker debris survives, spot-checking for `SEG`, `xref`,
@@ -237,7 +247,7 @@ about the brief's inline snippets).
 
 ## Per-gate assessment
 
-### Gate 1 — chemistry fallback: **PASS, matches expectation**
+### Gate 1 — chemistry fallback: **PASS on the property — but the gate could not see it, and the spec predicted one term wrong**
 
 All four named terms (`pH`, `bond`, `carbon dioxide`, `nitrogen`) resolve with a
 winner. `pH` and `carbon dioxide` resolve via `biology @3`; `bond` and `nitrogen`
@@ -247,32 +257,121 @@ what the fallback is for (chemistry's strict scope discards 19,057 of 19,766
 production translations; these four are among the discarded set the fallback
 recovers).
 
-### Gate 2 — tie census: **DOES NOT MATCH the register's 2,001/126/310 — methodology difference, not a resolver bug**
+> ⚠️ **This heading used to read "PASS, matches expectation". Two corrections, 2026-08-08.**
+>
+> **(a) The gate could not detect loss of the property it is named for.** It asserted only
+> `if (!r.winner)`. Inserting a `chemistry`-domain concept answering `pH` printed
+> `pH  chemistry @1 -> …` — the fallback destroyed — and the gate still **exited 0**. That
+> is naming trap #7 on this branch: a gate called "chemistry **fallback**" that stays green
+> with the fallback gone. It now asserts the `(domain, position)` **pair** spec §8.1
+> requires. Verified red: the same mutation now produces
+> `gate1: 'pH' resolved via chemistry @1, expected biology @3 — THE FALLBACK IS GONE`,
+> exit 1.
+>
+> **(b) The spec's specific prediction is wrong for `bond`, and "matches expectation" hid
+> it.** Spec §8.1 predicts `pH`, `bond` and `carbon dioxide` all resolve via **`biology`**.
+> Measured, `bond` resolves via **`physics @2`**. The *fallback* claim survives untouched —
+> physics @2 is still past chemistry @1, which is the property that unblocks chemistry —
+> but the prediction is not what happened, and recording it as "matches expectation" made a
+> spec error look like a confirmation.
 
-Measured: **outright 1,398 · nominal 67 · real 176** (of 80,037 candidate strings
-considered, 249 files read). The register's number (§C36: 2,001/126/310, summing to
-2,437 positive outcomes) was never recorded with its extraction method, so this run is
-a reconstruction, not a replay, exactly as the brief warned.
+### Gate 2 — tie census: **CLOSED 2026-08-08. The divergence was OUR extractor, and the register reproduces to within ~1%**
 
-**Most likely explanation:** the two runs considered different *sets* of candidate
-strings. This run's `collectSourceEnglish` harvests every regex-matched
-word/word-pair from cleaned `02-for-mt` text — a broad, noisy net (80,037 distinct
-strings) of which only ~2.1% (1,641) match any concept term at all; the remaining
-~78,396 are ordinary prose (articles, connectives, non-terminology words) that were
-never going to resolve. If §C36's original method instead iterated over a narrower,
-already-terminology-filtered set (e.g. strings already known to be glossary/dictionary
-candidates, or output of `filterGlossaryForText`) rather than a raw regex sweep, a
-*smaller* candidate set could plausibly produce *more* matches, exactly the pattern
-seen here (2,437 matches from an unknown-but-presumably-smaller N vs. 1,641 matches
-from this run's 80,037). This is offered as the likeliest cause, not a confirmed one —
-per the task instructions, **neither number was edited**; both are recorded here as a
-finding to investigate, not resolved.
+> ⚠️ **This section replaces an earlier one that recorded the divergence as an open
+> finding with an unconfirmed cause.** The conclusion it reached — *methodology
+> difference, not a resolver bug* — was right. Its stated reason was wrong, and the
+> divergence was closeable rather than merely explainable. Superseded text is preserved
+> in git history (commit `63a9ae09`); the numbers it recorded are all restated below, so
+> nothing is lost by not reading it.
 
-The *proportions* are roughly consistent regardless of method: nominal ties are the
-smallest bucket and real ties are ~2.5–3× nominal ties in both this run (67 vs 176,
-ratio 2.6) and the register (126 vs 310, ratio 2.5) — mild circumstantial support that
-the resolver's tie-detection logic itself is not the source of the discrepancy, only
-the input set is.
+**First measurement: outright 1,398 · nominal 67 · real 176** (80,037 candidate strings,
+249 files). Against §C36's **2,001 / 126 / 310** that is a 30–46% shortfall per bucket.
+
+**The mechanism, found by the Task 9 review.** `collectSourceEnglish` harvested with a
+single regex, `/[A-Za-z][A-Za-z-]+(?: [a-z]+)?/g`, whose two-word alternative matches
+**non-overlappingly**. Whether a bigram is ever seen therefore depends on its byte offset:
+
+```
+"The carbon dioxide molecule is stable."  ->  'The carbon', 'dioxide molecule'   ← term LOST
+"a carbon dioxide molecule"               ->  'carbon dioxide', 'molecule'       ← term seen
+```
+
+and consuming the following word into a bigram **also prevents that word being emitted as
+a unigram at all**. The net was not merely noisy — it was **destructive**.
+
+**Primary evidence, needing no reference to the register.** Unigrams alone score *higher*
+than the shipped bigram version:
+
+| Arm | Strings | outright · nominal · real | Total |
+|---|---|---|---|
+| A — as shipped (offset-locked bigrams) | 80,037 | 1,398 · 67 · 176 | 1,641 |
+| C — unigrams only, bigram layer deleted | 22,100 | 1,558 · 90 · 285 | 1,933 |
+
+**Deleting the bigram layer beat shipping it.** That establishes lossiness on its own.
+
+**Corroboration — one variable changed** (overlapping adjacent pairs; same token grammar,
+same files, same resolver, same DB):
+
+| Arm | Strings | outright · nominal · real |
+|---|---|---|
+| B — reviewer's overlapping extractor | 163,474 | 2,008 · 120 · 300 |
+| **D — the shipped fix (this script, now)** | **118,749** | **1,999 · 120 · 299** |
+| §C36 recorded | — | 2,001 · 126 · 310 |
+
+Arm D is within **0.1% / 4.8% / 3.5%** of the register, against a 30–46% shortfall before.
+Arms B and D are *independent implementations* — they differ on what counts as adjacency
+(D requires exactly one space in the source, which is why its N is 27% smaller) — and they
+land within 9 resolutions of each other. Two different nets converging on the same census
+is a stronger signal than either alone.
+
+**Two guards on the claim, both worth keeping:**
+- This shows §C36's figure **reproduces to within ~1% under a single-variable correction**.
+  It does **not** show §C36 used overlapping bigrams; its method remains unrecorded.
+- CLAUDE.md warns that two agreeing numbers can be an artifact of a shared limit. Not
+  applicable: outright, nominal and real are three *independent* counts produced by three
+  different branches of `resolveCandidates`, and all three converge simultaneously. A
+  clipping limit does not do that.
+
+**Why the original stated cause was backwards.** It hypothesised that §C36 used a
+*narrower, pre-filtered* set, reasoning that a smaller candidate set could yield more
+matches. The measured cause is the opposite: **our net was lossy**, not theirs narrow. The
+retention asymmetry the first pass never computed cuts against the subset hypothesis too —
+outright retained 70% (1,398/2,001), nominal 53% (67/126), real 57% (176/310); a subset
+would shrink the buckets roughly proportionally, and these do not. This is the branch's
+**right-conclusion / wrong-stated-reason** pattern, 4th instance.
+
+**Correction to a second figure.** The first pass reported that "only ~2.1% (1,641) match
+any concept term at all" and that the remaining ~78,396 "were never going to resolve".
+1,641 is the count that **resolved**, which is not the same thing: **2,309 strings (2.88%)
+match at least one `lang='en'` concept term**. The 668-string gap is exactly the **D1
+out-of-scope population**, confirmed positively rather than by elimination (668 of 668 have
+a non-empty `outOfScope`). The script now reports that population as its own line — under
+the corrected extractor it is **1,168** — because D1 makes `outOfScope` a first-class part
+of `Resolution`, and a census that never printed it was hiding the very tier D1 exists for.
+
+#### Control: the census is RANK-SENSITIVE (spec §8 Controls)
+
+Spec §8 requires the census be re-run "with `rank` collapsed, and the numbers **must
+change**." **That control is void on this corpus, and running it naively produces a false
+accusation.** `conceptFromEntry.js:74-76` assigns rank in array order and
+`import-concepts.js:108` inserts in that order, so autoincrement `id` rises in lockstep
+with `rank` and `ORDER BY rank ASC, id ASC` is identical to `ORDER BY id ASC`. Measured: of
+**17,356** concepts with 2+ Icelandic terms, collapsing rank moves the head form in **0**.
+
+The control is therefore run in the form that *can* move the head form — **reversing** rank
+within each concept — and it does:
+
+```
+              outright 1999 · nominal 120 · real 299
+CONTROL:      outright 1999 · nominal 113 · real 306      (nominal −7, real +7)
+```
+
+It runs inside a transaction that is always rolled back, so the scratch DB stays
+idempotent: after two consecutive full runs the data is unchanged (row counts, a
+`SUM(rank*id)` signature over Icelandic terms, and a text-length signature all identical)
+and the two runs' stdout is byte-identical. ⚠️ **Do not measure that with `md5sum` on the
+`.db` file** — a rolled-back transaction still bumps SQLite's header change counter, so the
+file bytes differ while the data does not.
 
 ### Gate 3 — scope sizes: **EXACT MATCH**
 
@@ -286,6 +385,18 @@ file-corpus reconstruction involved), so an exact match here is expected and is 
 meaningful corroboration that the scratch DB's import and this task's `seedBooks`
 seeding reproduce the same registered scope the register's number was measured
 against.
+
+> ⚠️ **The "✅ EXACT MATCH" above was, until 2026-08-08, a human reading two adjacent
+> lines.** The gate printed its measurement and, on the very next line, a hardcoded
+> `register recorded:` target — and **never compared them**. Demonstrated by deleting the
+> `anatomy-physiology` domain's English terms: `liffraedi-2e` collapsed by a third,
+> printed directly above the number it missed, and the script **exited 0**. It now compares
+> against the recorded constants and fails on mismatch; verified red at
+> `gate3: liffraedi-2e measured 15878, register recorded 47568`, exit 1.
+>
+> Gate 5 deliberately does **not** get the same treatment: spec §8.5 frames it as a
+> measurement with "two outcomes, both useful", so it has no target to miss. Gate 3 named
+> an explicit target, which is what made not comparing a defect rather than a design choice.
 
 ### Gate 5 — term-less-candidate population: **0 — the §6 filter is a LATENT-case pin**
 
@@ -346,9 +457,16 @@ concepts · 192,189 terms · `registered_books` 2 rows · `book_domain_priority`
 47,568/19,749, 0 term-less, all four Gate 1 fallbacks, exit 0.
 
 This was not planned; the crash bought it. It matters for **Gate 2**: the divergence from
-the register's 2,001/126/310 survives a full corpus rebuild unchanged, so it cannot be
-non-determinism in the import or the resolver. That is positive evidence for the
-methodology diagnosis, which until now rested on reasoning alone.
+the register's 2,001/126/310 survived a full corpus rebuild unchanged, so it was never
+non-determinism in the import or the resolver.
+
+⚠️ **Narrowed 2026-08-08 — this paragraph originally added "that is positive evidence for
+the methodology diagnosis", and it is not.** Ruling out non-determinism says nothing about
+*which* methodology differed, and the cause first recorded turned out to be backwards (see
+Gate 2 below: our extractor was lossy, not the register's set narrow). What the
+reproduction establishes is exactly one thing — the census is deterministic across a full
+corpus rebuild — which is what made the single-variable extractor comparison meaningful
+when it was run.
 
 ---
 
@@ -441,20 +559,87 @@ Three cautions on using it:
 
 ---
 
+## Verbatim output after the review fix wave (2026-08-08)
+
+Run on a pristine copy of the independently rebuilt corpus:
+
+```
+$ node server/scripts/verify-resolve-gates.js --db /tmp/claude-1000/b1-final.db
+── Gate 1: chemistry fallback ──
+  pH               biology @3 -> sýrustig
+  bond             physics @2 -> tengi
+  carbon dioxide   biology @3 -> koltvíoxíð
+  nitrogen         physics @2 -> nitur
+
+── Gate 2: tie census (efnafraedi-2e) ──
+  method: strings from books/efnafraedi-2e/02-for-mt, exact binary match
+          overlapping bigrams (see collectSourceEnglish trap 4)
+  files read: 249
+  strings considered: 118749
+  outright 1999 · nominal 120 · real 299
+  out-of-scope only (D1, resolves to nothing in THIS book): 1168
+  register recorded: outright 2001 · nominal 126 · real 310
+  CONTROL, rank reversed: outright 1999 · nominal 113 · real 306
+
+── Gate 3: scoped corpus size ──
+  liffraedi-2e       47568 distinct English terms (register: 47568)
+  efnafraedi-2e      19749 distinct English terms (register: 19749)
+
+── Gate 5: term-less candidates ──
+  concepts with an EN term and NO IS term: 0
+  -> the §6 filter is a LATENT-case pin. Say so in the spec.
+
+── Controls ──
+  unregistered -> unregistered · registered-no-priorities -> no-priorities
+  a genuine miss -> winner null · unscoped false
+
+ALL GATES REPORTED. Record the numbers in test-results/.
+EXIT=0
+```
+
+### Every gate that now asserts was shown able to FAIL
+
+An assertion never seen red is an untested assertion. Both new ones were forced, on scratch
+database copies (the tracked script was never mutated):
+
+| Forced condition | Result |
+|---|---|
+| Insert a `chemistry @1` concept answering `pH` (destroys the fallback) | `gate1: 'pH' resolved via chemistry @1, expected biology @3 — THE FALLBACK IS GONE`, **exit 1** |
+| Delete the `anatomy-physiology` domain's English terms | `gate3: liffraedi-2e measured 15878, register recorded 47568`, **exit 1** |
+| Rank-reversal control (does the census depend on rank at all?) | numbers move: nominal −7, real +7 — the census **is** rank-sensitive |
+
+**Idempotency re-verified after adding the rank control**, and measured on the right
+property: two consecutive full runs leave row counts, a `SUM(rank*id)` signature over
+Icelandic terms and a text-length signature all identical, with byte-identical stdout.
+⚠️ `md5sum` on the `.db` file is the WRONG instrument here — a rolled-back transaction
+still bumps SQLite's header change counter, so the file differs while the data does not.
+
+---
+
 ## Summary
 
 | Gate | Result |
 |---|---|
-| 1 — chemistry fallback | ✅ PASS — all four terms resolve |
-| 2 — tie census | ⚠️ DIFFERS from register (1,398/67/176 vs 2,001/126/310) — methodology difference, flagged as a finding, not corrected |
-| 3 — scope sizes | ✅ EXACT MATCH (47,568 / 19,749) |
+| 1 — chemistry fallback | ✅ PASS — all four resolve via a fallback domain. Gate now asserts the (domain, position) pair; spec §8.1's `bond → biology` prediction is wrong (measured `physics @2`) |
+| 2 — tie census | ✅ **CLOSED** — 1,999/120/299 against the register's 2,001/126/310 (~1%). The 1,398/67/176 shortfall was our own non-overlapping-bigram extractor, now fixed |
+| 2 — control | ✅ Census is rank-SENSITIVE (reversal moves it: nominal −7, real +7). The spec's *collapse* form is void on this corpus — rank rises in lockstep with autoincrement id |
+| 3 — scope sizes | ✅ EXACT MATCH (47,568 / 19,749), and the gate now actually compares against those constants |
 | 4 — performance | ✅ MEASURED, no threshold asserted — 0.044 ms/resolve, ~84 MB RSS (dev box). Found and fixed a spec §5 deviation on the way: 3.2× faster, 39× less memory |
 | 5 — term-less candidates | ✅ 0 — confirms the §6 filter is currently a latent-case pin |
 | Reproducibility | ✅ All of 1/2/3/5 reproduced exactly on an independently rebuilt corpus |
 | Controls | ✅ PASS — unscoped causes distinguishable, a miss ≠ unscoped |
 | Mutation controls (Task 8) | ✅ All 4 reddened exactly their named test |
 
-Script exit code: **0** (all in-script assertions — Gate 1's resolution requirement and
-the two controls — passed; Gate 2's divergence from the register does not fail the
-script, by design, since the brief treats it as a finding to record, not a pass/fail
-condition).
+Script exit code: **0**. What that now covers, after the review fix wave — the list matters,
+because the earlier version of this line described a script with far less discriminating
+power than the sentence implied:
+
+- **Gate 1** — each term's `(domain, position)` pair, so destroying the fallback exits 1
+- **Gate 2** — the rank-sensitivity control (the census must depend on rank at all)
+- **Gate 3** — measured scope sizes against the register's constants
+- **Controls** — the two unscoped causes stay distinguishable; a genuine miss is not unscoped
+
+Still **reported rather than asserted**, deliberately: Gate 2's census counts (the register's
+figure is evidence, not a constant to gate on), Gate 4's latency and RSS (B4 sets the budget
+from the measurement, not before it), and Gate 5's population (spec §8.5 frames it as a
+measurement with two useful outcomes, so it has no target to miss).

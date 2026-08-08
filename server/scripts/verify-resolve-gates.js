@@ -39,8 +39,9 @@ function parseArgs(argv) {
  *
  * ⚠️ TASK 9 DEFECT FOUND AND FIXED (2026-08-08): the brief's original
  * `INSERT OR IGNORE INTO registered_books (slug, registered_by) VALUES (?, 'gate')`
- * omits `title_is`. The REAL schema (created by the 47 migrations, not by the
- * `CREATE TABLE IF NOT EXISTS` below, which is a no-op against this DB) declares
+ * omits `title_is`. The REAL schema — created by the 47 migrations, which is now the
+ * ONLY way this table can come into existence here (review finding 5 deleted the
+ * `CREATE TABLE IF NOT EXISTS` that used to stand below and contradict it) — declares
  * `title_is TEXT NOT NULL` with no default. SQLite's `OR IGNORE` conflict
  * resolution SILENTLY SWALLOWS a NOT NULL violation — no exception, no row
  * inserted. The very next line does
@@ -57,9 +58,23 @@ function parseArgs(argv) {
  * such, so a real Icelandic title would be misleading, not more correct).
  */
 function seedBooks(db) {
-  db.exec(`CREATE TABLE IF NOT EXISTS registered_books (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE NOT NULL,
-    title_is TEXT, status TEXT DEFAULT 'active', registered_by TEXT)`);
+  // ⚠️ REVIEW FINDING 5 (2026-08-08) — a `CREATE TABLE IF NOT EXISTS registered_books`
+  // used to stand here, and only half the Defect-1 fix had landed: the ledger said
+  // "do not re-create the table" but the statement survived. Its shape declared
+  // `title_is TEXT` / `registered_by TEXT` — NULLABLE — against migration 003's real
+  // `NOT NULL`. It was inert only because the table already exists; against a database
+  // lacking it, it would have created the divergent shape and Defect 1's guard would
+  // have silently vanished (a row inserted with title_is NULL). A script whose purpose
+  // is precise measurement must not carry a false schema claim, so it is deleted and
+  // its absence is now LOUD.
+  if (
+    !db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?").get('registered_books')
+  ) {
+    throw new Error(
+      'registered_books is missing — build the scratch DB with the real migrations first ' +
+        "(see the plan's Task 9 prerequisite); this script must never invent the schema"
+    );
+  }
   const insBook = db.prepare(
     "INSERT OR IGNORE INTO registered_books (slug, title_is, registered_by) VALUES (?, ?, 'gate')"
   );
@@ -112,14 +127,42 @@ function main(argv = process.argv.slice(2)) {
     console.error(`GATE 1 FAIL: efnafraedi-2e is ${chemScope.unscoped}`);
     return 1;
   }
+  // ⚠️ REVIEW FINDING 2 (2026-08-08) — this gate used to assert only `if (!r.winner)`,
+  // which CANNOT SEE THE PROPERTY THE GATE IS NAMED FOR. Demonstrated: inserting a
+  // chemistry-domain concept answering 'pH' printed `chemistry @1 -> …`, destroying the
+  // fallback, and the gate still exited 0. Naming trap #7 on this branch. It now asserts
+  // the (domain, position) PAIR spec §8.1 requires — "each asserted with the domain and
+  // position it resolved through".
+  //
+  // ⚠️ SPEC DIVERGENCE, RECORDED RATHER THAN PAPERED OVER: spec §8.1 predicts pH, bond
+  // and carbon dioxide all resolve via BIOLOGY. Measured, `bond` resolves via PHYSICS @2.
+  // The fallback claim survives — physics @2 is still past chemistry @1, which is the
+  // property that unblocks chemistry — but the spec's specific prediction is wrong, and
+  // the results file previously called this "matches expectation" without saying so.
+  const GATE1_EXPECTED = {
+    pH: ['biology', 3],
+    bond: ['physics', 2], // spec §8.1 said biology; measured physics — see above
+    'carbon dioxide': ['biology', 3],
+    nitrogen: ['physics', 2],
+  };
   console.log('── Gate 1: chemistry fallback ──');
-  for (const en of ['pH', 'bond', 'carbon dioxide', 'nitrogen']) {
+  for (const [en, [wantDomain, wantPosition]] of Object.entries(GATE1_EXPECTED)) {
     const r = resolve(db, chemScope, en);
     const via = r.winner
       ? `${r.winner.domain} @${r.winner.position} -> ${r.winner.text}`
       : 'UNRESOLVED';
     console.log(`  ${en.padEnd(16)} ${via}`);
-    if (!r.winner) failures.push(`gate1: '${en}' did not resolve`);
+    if (!r.winner) {
+      failures.push(`gate1: '${en}' did not resolve`);
+      continue;
+    }
+    if (r.winner.domain !== wantDomain || r.winner.position !== wantPosition) {
+      failures.push(
+        `gate1: '${en}' resolved via ${r.winner.domain} @${r.winner.position}, ` +
+          `expected ${wantDomain} @${wantPosition}` +
+          (r.winner.position === 1 ? ' — THE FALLBACK IS GONE' : '')
+      );
+    }
   }
 
   // ── Gate 2: the tie census ───────────────────────────────────────────────
@@ -133,34 +176,92 @@ function main(argv = process.argv.slice(2)) {
   // A different number is a FINDING TO EXPLAIN, not a constant to update — but
   // only if the method is the same, so the script prints it.
   console.log('\n── Gate 2: tie census (efnafraedi-2e) ──');
-  // ⚠️ TASK 9 DEFECT #2 (minor): the brief's own printed label here said
-  // "books/efnafraedi-2e/01-source", but collectSourceEnglish() below reads
-  // 02-for-mt (the extracted EN segments), not 01-source (raw CNXML). Fixed
-  // the label to match what the code actually does, rather than leave a
-  // self-contradicting method claim in a script whose whole purpose is
-  // precise measurement.
+  // ⚠️ TASK 9 DEFECT #2, AND REVIEW FINDING 7 ON TOP OF IT. The brief's printed label
+  // said "01-source" while its code read `02-for-mt`; Task 9 changed the LABEL to match
+  // the code and booked it as fixing a brief defect — but spec §8.2 mandates `01-source`,
+  // so a real deviation from the frozen spec was filed as a correction.
+  //
+  // ⚠️ RULED 2026-08-08: KEEP `02-for-mt`, and amend the SPEC rather than the script.
+  // 02-for-mt holds the extracted EN segments — the exact text the MT glossary is
+  // filtered against by filterGlossaryForText, and the text B3/B4 will actually run the
+  // resolver over. 01-source is raw CNXML (149 .cnxml against 249 .md), so harvesting it
+  // would census markup this resolver never sees. The spec now records this deviation
+  // and its reason; script and spec agree again.
   console.log('  method: strings from books/efnafraedi-2e/02-for-mt, exact binary match');
+  console.log('          overlapping bigrams (see collectSourceEnglish trap 4)');
   const sourceStrings = collectSourceEnglish('efnafraedi-2e');
-  let outright = 0;
-  let nominal = 0;
-  let real = 0;
-  for (const en of sourceStrings) {
-    const r = resolve(db, chemScope, en);
-    if (r.tied.length) real++;
-    else if (r.nominalTie.length) nominal++;
-    else if (r.winner) outright++;
-  }
+
+  // ⚠️ REVIEW FINDING 6: `outOfScope`-only strings were invisible. A string that matches
+  // a concept term but resolves to nothing because every candidate is out of scope is
+  // NOT the same as a string that matches nothing at all — D1 makes it a first-class,
+  // soft-badged part of Resolution, and conflating the two produced a wrong "% that match
+  // any concept term" figure in the results file.
+  const census = (strings) => {
+    const c = { outright: 0, nominal: 0, real: 0, outOfScopeOnly: 0 };
+    for (const en of strings) {
+      const r = resolve(db, chemScope, en);
+      if (r.tied.length) c.real++;
+      else if (r.nominalTie.length) c.nominal++;
+      else if (r.winner) c.outright++;
+      else if (r.outOfScope.length) c.outOfScopeOnly++;
+    }
+    return c;
+  };
+
+  const g2 = census(sourceStrings);
   console.log(`  strings considered: ${sourceStrings.length}`);
-  console.log(`  outright ${outright} · nominal ${nominal} · real ${real}`);
+  console.log(`  outright ${g2.outright} · nominal ${g2.nominal} · real ${g2.real}`);
+  console.log(`  out-of-scope only (D1, resolves to nothing in THIS book): ${g2.outOfScopeOnly}`);
   console.log('  register recorded: outright 2001 · nominal 126 · real 310');
 
-  // ── Gate 3: scope sizes ──────────────────────────────────────────────────
-  console.log('\n── Gate 3: scoped corpus size ──');
-  for (const slug of ['liffraedi-2e', 'efnafraedi-2e']) {
-    const n = scopedEnglish(db, slug).length;
-    console.log(`  ${slug.padEnd(18)} ${n} distinct English terms`);
+  // ── Gate 2 control: the census must be RANK-SENSITIVE (spec §8 Controls) ──
+  //
+  // ⚠️ REVIEW FINDING 4 — the spec mandates "re-run with `rank` collapsed, and the
+  // numbers MUST change. If they do not, the census is not measuring what it claims."
+  // THAT CONTROL IS VOID ON THIS CORPUS, and running it naively produces a FALSE
+  // ACCUSATION: conceptFromEntry.js assigns rank in array order and import-concepts.js
+  // inserts in that same order, so autoincrement `id` rises in lockstep with `rank` and
+  // `ORDER BY rank ASC, id ASC` is identical to `ORDER BY id ASC`. Measured: of 17,356
+  // concepts with 2+ Icelandic terms, collapsing rank moves the head form in ZERO.
+  //
+  // So the control is run in the form that CAN move it — REVERSING rank within each
+  // concept — inside a transaction that is always rolled back, which keeps the scratch
+  // DB idempotent (two full runs still diff to nothing).
+  db.exec('BEGIN');
+  db.exec(
+    `UPDATE concept_term SET rank =
+       (SELECT MAX(t2.rank) + MIN(t2.rank) FROM concept_term t2
+         WHERE t2.concept_id = concept_term.concept_id AND t2.lang = 'is') - rank
+      WHERE lang = 'is'`
+  );
+  const reversed = census(sourceStrings);
+  db.exec('ROLLBACK');
+  console.log(
+    `  CONTROL, rank reversed: outright ${reversed.outright} · ` +
+      `nominal ${reversed.nominal} · real ${reversed.real}`
+  );
+  const rankMoved =
+    reversed.outright !== g2.outright ||
+    reversed.nominal !== g2.nominal ||
+    reversed.real !== g2.real;
+  if (!rankMoved) {
+    failures.push('control: the census is NOT rank-sensitive — it is not measuring what it claims');
   }
-  console.log('  register recorded: liffraedi-2e 47568 · efnafraedi-2e 19749');
+
+  // ── Gate 3: scope sizes ──────────────────────────────────────────────────
+  // ⚠️ REVIEW FINDING 3 (2026-08-08) — this gate printed its measurement and, on the
+  // very next line, a hardcoded target, AND NEVER COMPARED THEM. Demonstrated: deleting
+  // 18,489 anatomy-physiology EN terms collapsed liffraedi-2e from 47,568 to 32,479
+  // (−32%), printed directly above the number it missed, exit 0. Unlike gate 5 — which
+  // spec §8.5 frames as a measurement with "two outcomes, both useful" — this gate names
+  // an explicit target, so failing to compare is a defect, not a design choice.
+  const GATE3_EXPECTED = { 'liffraedi-2e': 47568, 'efnafraedi-2e': 19749 };
+  console.log('\n── Gate 3: scoped corpus size ──');
+  for (const [slug, want] of Object.entries(GATE3_EXPECTED)) {
+    const n = scopedEnglish(db, slug).length;
+    console.log(`  ${slug.padEnd(18)} ${n} distinct English terms (register: ${want})`);
+    if (n !== want) failures.push(`gate3: ${slug} measured ${n}, register recorded ${want}`);
+  }
 
   // ── Gate 5: the term-less-candidate population ───────────────────────────
   //
@@ -235,6 +336,25 @@ function main(argv = process.argv.slice(2)) {
  *
  * ⚠️ §C36 did NOT record how it extracted its strings, so this is a
  * reconstruction rather than a replay. That is why the caller prints the method.
+ *
+ * ⚠️⚠️ TRAP 4, THE EXPENSIVE ONE — REVIEW FINDING 1 (2026-08-08). This function
+ * used to harvest with a single `/[A-Za-z][A-Za-z-]+(?: [a-z]+)?/g`, whose
+ * two-word alternative matches NON-OVERLAPPINGLY. Whether a bigram is seen then
+ * depends on its BYTE OFFSET:
+ *
+ *   "The carbon dioxide molecule"  -> 'The carbon', 'dioxide molecule'  ← term LOST
+ *   "a carbon dioxide molecule"    -> 'carbon dioxide', 'molecule'      ← term seen
+ *
+ * and consuming the following word into a bigram ALSO prevents that word ever
+ * being emitted as a unigram. The net was DESTRUCTIVE, and the proof needs no
+ * reference to the register: unigrams alone (n=22,100) scored 1,558/90/285 =
+ * 1,933 resolutions, HIGHER than the bigram version's (n=80,037) 1,398/67/176 =
+ * 1,641. Deleting the layer beat shipping it.
+ *
+ * Tokenising once and emitting OVERLAPPING adjacent pairs — one variable changed,
+ * same token grammar, same files — yields 2,008/120/300 against §C36's recorded
+ * 2,001/126/310. Within ~1% on three counts produced by three different branches
+ * of resolveCandidates, so this is not a shared-limit artifact.
  */
 function collectSourceEnglish(slug) {
   const path = require('path');
@@ -259,7 +379,23 @@ function collectSourceEnglish(slug) {
         .replace(/<!--[\s\S]*?-->/g, ' ') // trap 2: SEG markers
         .replace(/\[\[[a-z]+:/g, ' ') // trap 3: marker OPEN, prose kept
         .replace(/\]\]/g, ' ');
-      for (const m of text.matchAll(/[A-Za-z][A-Za-z-]+(?: [a-z]+)?/g)) words.add(m[0]);
+      // Tokenise ONCE, then emit every unigram AND every adjacent pair. The token
+      // grammar is unchanged from the offset-locked version it replaces — a
+      // unigram is `[A-Za-z][A-Za-z-]+` (2+ chars) and a bigram's second word is
+      // `[a-z]+` (1+, lowercase) — so the only variable that moved is overlap.
+      const toks = [...text.matchAll(/[A-Za-z][A-Za-z-]*/g)];
+      for (let i = 0; i < toks.length; i++) {
+        const [word] = toks[i];
+        if (word.length >= 2) words.add(word);
+        const next = toks[i + 1];
+        if (!next || word.length < 2 || !/^[a-z]+$/.test(next[0])) continue;
+        // Adjacent means separated by exactly one space in the SOURCE — not merely
+        // consecutive in the token list, which would join across newlines and
+        // punctuation and invent terms the book does not contain.
+        if (next.index === toks[i].index + word.length + 1 && text[next.index - 1] === ' ') {
+          words.add(`${word} ${next[0]}`);
+        }
+      }
     }
   };
   walk(root);
