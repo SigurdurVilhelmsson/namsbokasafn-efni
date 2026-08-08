@@ -236,7 +236,12 @@ const { buildScope } = require('../lib/conceptResolver');
 
 /** A registered book with no priority rows — the 'no-priorities' case. */
 function registerBare(db, slug) {
-  db.prepare("INSERT INTO registered_books (slug, registered_by) VALUES (?, 'test')").run(slug);
+  // ⚠️ registered_books has THREE NOT NULL, no-default columns: slug, title_is,
+  // registered_by (migration 003). Supply all three. This is the same class of
+  // bug as §C35, where migration 019 registers two books WITHOUT registered_by
+  // and its INSERT OR IGNORE silently discards them — which is why only
+  // lifraen-efnafraedi and edlisfraedi-2e exist on a fresh migrated DB.
+  db.prepare("INSERT INTO registered_books (slug, title_is, registered_by) VALUES (?, ?, 'test')").run(slug, slug);
   const { id } = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
   db.prepare('DELETE FROM book_domain_priority WHERE book_id = ?').run(id);
   return id;
