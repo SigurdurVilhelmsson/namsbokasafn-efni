@@ -262,3 +262,43 @@ describe('resolveCandidates — D2, ties', () => {
     ]);
   });
 });
+
+describe('resolveCandidates — integrity codes', () => {
+  it('a preference naming a term of ANOTHER concept falls back to the head form and reports', () => {
+    const pref = new Map([[10, { termId: 999, tier: 'book' }]]); // 999 belongs to nobody here
+    const r = resolveCandidates(chemScope(pref), [cand(10, 'chemistry', [['efni', 1, 100]])]);
+    expect(r.winner.text).toBe('efni');
+    expect(r.reason).toBe('head-form');
+    expect(r.integrity).toContain('orphan-preference');
+  });
+
+  it('integrity is an ARRAY, so a merge-cycle and an orphan-preference coexist', () => {
+    const pref = new Map([[10, { termId: 999, tier: 'book' }]]);
+    const r = resolveCandidates(
+      chemScope(pref),
+      [cand(10, 'chemistry', [['efni', 1, 100]])],
+      ['merge-cycle']
+    );
+    expect(r.integrity.sort()).toEqual(['merge-cycle', 'orphan-preference']);
+  });
+
+  it('CONTROL: a clean resolution reports an EMPTY integrity array', () => {
+    const r = resolveCandidates(chemScope(), [cand(10, 'chemistry', [['efni', 1, 100]])]);
+    expect(r.integrity).toEqual([]);
+  });
+
+  it("de-dup guard: TWO orphaned preferences report 'orphan-preference' only ONCE", () => {
+    // Symmetric to lookupCandidates' merge-cycle de-dup: two DIFFERENT in-scope
+    // candidates each carry a preference naming a term that belongs to neither.
+    // `toEqual`, not `toContain` — a duplicate push would still pass `toContain`.
+    const pref = new Map([
+      [10, { termId: 999, tier: 'book' }],
+      [20, { termId: 998, tier: 'book' }],
+    ]);
+    const r = resolveCandidates(chemScope(pref), [
+      cand(10, 'chemistry', [['efni', 1, 100]]),
+      cand(20, 'physics', [['kraftur', 1, 200]]),
+    ]);
+    expect(r.integrity).toEqual(['orphan-preference']);
+  });
+});

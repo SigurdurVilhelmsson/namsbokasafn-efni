@@ -108,6 +108,21 @@ describe('lookupCandidates', () => {
     db.close();
   });
 
+  it("de-dup guard: TWO hits that each cycle report 'merge-cycle' only ONCE", () => {
+    // Closes Task 4's open item: no prior scenario had two hits both resolving
+    // through a cycle for the same english string, so `!integrity.includes(…)`
+    // was unpinned — and every existing assertion used `toContain`, which
+    // can't see a duplicate. `toEqual` here can.
+    const { db } = freshMigratedDb();
+    const { conceptId: a } = addConcept(db, 'biology', 'dup', [['a', 1]]);
+    const { conceptId: b } = addConcept(db, 'physics', 'dup', [['b', 1]]);
+    db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(a, a);
+    db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(b, b);
+    const { integrity } = lookupCandidates(db, 'dup');
+    expect(integrity).toEqual(['merge-cycle']);
+    db.close();
+  });
+
   it("isTerms carries the real concept_term row id, which is the join key buildScope's preference map is matched against", () => {
     const { db } = freshMigratedDb();
     const { conceptId } = addConcept(db, 'biology', 'gene', [['gen', 1]]);
@@ -122,5 +137,49 @@ describe('lookupCandidates', () => {
     const { candidates } = lookupCandidates(db, 'gene');
     expect(candidates[0].isTerms[0].termId).toBe(independentTermId);
     db.close();
+  });
+});
+
+describe('resolve — the public entry point', () => {
+  const { buildScope, resolve } = require('../lib/conceptResolver');
+
+  it('resolves end to end against a real database', () => {
+    const { db } = freshMigratedDb();
+    addConcept(db, 'physics', 'force', [['kraftur', 1]]);
+    const scope = buildScope(db, 'edlisfraedi-2e', 1);
+    const r = resolve(db, scope, 'force');
+    expect(r.winner.text).toBe('kraftur');
+    expect(r.reason).toBe('head-form');
+    db.close();
+  });
+
+  it('carries lookupCandidates’ integrity codes into the resolution', () => {
+    const { db } = freshMigratedDb();
+    const { conceptId: a } = addConcept(db, 'physics', 'loopy', [['lykkja', 1]]);
+    db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(a, a);
+    const r = resolve(db, buildScope(db, 'edlisfraedi-2e', 1), 'loopy');
+    expect(r.integrity).toContain('merge-cycle');
+    db.close();
+  });
+
+  it('short-circuits on an unscoped scope without querying', () => {
+    const { db } = freshMigratedDb();
+    const r = resolve(db, { unscoped: 'unregistered' }, 'force');
+    expect(r.unscoped).toBe('unregistered');
+    db.close();
+  });
+
+  it("the unscoped short-circuit genuinely skips the query — the return VALUE alone can't prove it", () => {
+    // The test above only asserts r.unscoped, and resolveCandidates ALSO checks
+    // scope.unscoped first — so a mutant that deletes resolve's own short-circuit
+    // produces the identical return value (verified by mutation: it survives the
+    // test above). A `db` that throws on the first query is the only way to prove
+    // resolve() itself never reaches lookupCandidates for an unscoped scope.
+    const poisonedDb = {
+      prepare() {
+        throw new Error('resolve() queried the database for an unscoped scope');
+      },
+    };
+    expect(() => resolve(poisonedDb, { unscoped: 'unregistered' }, 'force')).not.toThrow();
   });
 });

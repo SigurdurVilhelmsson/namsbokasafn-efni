@@ -294,4 +294,21 @@ function resolveCandidates(scope, candidates, integrity = []) {
   };
 }
 
-module.exports = { buildScope, lookupCandidates, resolveCandidates };
+/**
+ * The public entry point. B3 (glossary export) and B4 (editor) call this.
+ *
+ * ⚠️ Build the scope ONCE per (book, chapter) and reuse it. Building it per string
+ * turns every lookup into three extra queries — which is how §C24 happened: a
+ * correct per-item function called in a loop over tens of thousands of items.
+ *
+ * @param {import('better-sqlite3').Database} db
+ * @param {object} scope from buildScope
+ * @param {string} english EXACT, already-normalised English string
+ */
+function resolve(db, scope, english) {
+  if (scope.unscoped) return resolveCandidates(scope, [], []);
+  const { candidates, integrity } = lookupCandidates(db, english);
+  return resolveCandidates(scope, candidates, integrity);
+}
+
+module.exports = { buildScope, lookupCandidates, resolveCandidates, resolve };
