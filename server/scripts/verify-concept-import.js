@@ -180,4 +180,78 @@ function verifyConceptImport(db) {
   return { ok: checks.every((c) => c.ok), checks };
 }
 
-module.exports = { verifyConceptImport, DOMAINS };
+/**
+ * ⚠️ Deliberately NOT tools/lib/parseArgs.js — see run-concept-import.js's note.
+ */
+function parseVerifyArgs(argv) {
+  let db = null;
+  let help = false;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--db') {
+      const raw = argv[i + 1];
+      if (raw === undefined) return { db, help, error: '--db requires a value' };
+      if (String(raw).trim() === '')
+        return { db, help, error: `--db requires a non-empty value — got ${JSON.stringify(raw)}` };
+      db = raw.trim();
+      i++;
+    } else if (a === '-h' || a === '--help') {
+      help = true;
+    } else {
+      return {
+        db,
+        help,
+        error: `unrecognised argument '${a}' — accepted: --db <path>, -h/--help`,
+      };
+    }
+  }
+  return { db, help, error: null };
+}
+
+const VERIFY_USAGE = `Usage: node server/scripts/verify-concept-import.js [--db <path>]
+
+Read-only. Opens no transaction and writes no row; safe against a live database.
+
+  --db <path>   SQLite database (default: SESSIONS_DB_PATH, else
+                pipeline-output/sessions.db)
+  -h, --help    this message
+
+Exit codes: 0 all checks passed  ·  1 a check failed  ·  2 usage error`;
+
+/**
+ * @param {string[]} argv
+ * @returns {number} process exit code — returned, not thrown, so it is testable
+ */
+function main(argv = process.argv.slice(2)) {
+  const args = parseVerifyArgs(argv);
+  if (args.help) {
+    console.log(VERIFY_USAGE);
+    return 0;
+  }
+  if (args.error) {
+    console.error(`error: ${args.error}\n\n${VERIFY_USAGE}`);
+    return 2;
+  }
+  const Database = require('better-sqlite3');
+  const resolveDbPath = require('../lib/dbPath');
+  const db = new Database(args.db || resolveDbPath(), { readonly: true });
+  try {
+    const { ok, checks } = verifyConceptImport(db);
+    const concepts = db.prepare('SELECT COUNT(*) c FROM concept').get().c;
+    const terms = db.prepare('SELECT COUNT(*) c FROM concept_term').get().c;
+    // The yield is printed BESIDE the verdict deliberately: every check counts
+    // bad things and asserts the count is 0, so all of them pass trivially on an
+    // empty database.
+    console.log(`VERIFY: ${ok ? 'PASS' : 'FAIL'}   [yield: ${concepts} concepts, ${terms} terms]`);
+    for (const c of checks) console.log(`  ${c.ok ? '✓' : '✗'} ${c.name} — ${c.detail}`);
+    return ok ? 0 : 1;
+  } finally {
+    db.close();
+  }
+}
+
+if (require.main === module) {
+  process.exitCode = main();
+}
+
+module.exports = { verifyConceptImport, DOMAINS, parseVerifyArgs, main };
