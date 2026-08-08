@@ -1096,7 +1096,7 @@ describe('parseArgs', () => {
   });
 
   describe('parseArgs does not swallow the next flag as a value', () => {
-    it.each([['--dry-run'], ['--force'], ['--adopt'], ['--help']])(
+    it.each([['--dry-run'], ['--force'], ['--adopt'], ['--help'], ['-h']])(
       'refuses --book followed by %s',
       (flag) => {
         const r = parseArgs(['--book', flag]);
@@ -1117,6 +1117,51 @@ describe('parseArgs', () => {
     });
 
     it('allows a real path-like value beginning with -- via the ./ escape', () => {
+      expect(parseArgs(['--book', './--odd'])).toMatchObject({ book: './--odd', error: null });
+    });
+
+    // ── Task 1 review findings (both confirmed by the controller) ──────────
+    //
+    // The brief's Step 3 snippet tested `raw.startsWith('--')` — the
+    // UNTRIMMED value, and only the long-form `--` spelling. Both narrownesses
+    // let the exact defect this task exists to close back in, for two
+    // real spellings the brief's own test list didn't cover.
+
+    it('Finding 1 (Important): refuses the short flag spelling -h, which this same function recognises', () => {
+      // startsWith('--') is false for '-h', so the pre-fix guard fell through
+      // to `value = raw.trim()` -> book='-h', help left false, error null —
+      // the run then goes looking for books/-h/glossary.
+      const r = parseArgs(['--book', '-h']);
+      expect(r.book).toBeNull();
+      expect(r.error).toMatch(/next argument is the flag/);
+      expect(r.help).toBe(false);
+    });
+
+    it('Finding 2 (Minor): refuses a whitespace-padded flag-like value, not just an exact one', () => {
+      // '--book " --adopt"' (leading space) fails startsWith('--') on the
+      // untrimmed raw, then trim() turns it into '--adopt' and it slips
+      // through as the book slug -- reproducing the exact pre-fix behaviour
+      // for the flag that authorises overwriting a committed glossary.
+      const r = parseArgs(['--book', ' --adopt']);
+      expect(r.book).toBeNull();
+      expect(r.error).toMatch(/next argument is the flag/);
+      expect(r.adopt).toBe(false);
+    });
+
+    it('generalises the escape-hatch wording from -- to -, since any leading dash is now rejected', () => {
+      expect(parseArgs(['--book', '-h']).error).toMatch(/beginning with '-'/);
+    });
+
+    // ── Regression guards: the generalised check must not disturb these ────
+
+    it('regression: --book "   " (whitespace-only) is still refused as empty, not as a flag', () => {
+      const r = parseArgs(['--book', '   ']);
+      expect(r.book).toBeNull();
+      expect(r.error).toMatch(/non-empty value/);
+      expect(r.error).not.toMatch(/next argument is the flag/);
+    });
+
+    it('regression: the ./ escape hatch still parses a real leading-dash slug', () => {
       expect(parseArgs(['--book', './--odd'])).toMatchObject({ book: './--odd', error: null });
     });
   });

@@ -870,7 +870,22 @@ function parseArgs(argv) {
       // the run refused with a message naming a book nobody typed. Modelled on
       // run-concept-import.js's parseImportArgs, which returns an error string
       // for anything it does not recognise rather than dropping it silently.
-      if (String(raw).startsWith('--')) {
+      //
+      // ⚠️ AMENDED (Task 1 review) — the original guard tested `raw.startsWith
+      // ('--')`, per the brief's own snippet. Two real inputs slipped through:
+      // `-h` (this same function's own short flag spelling, three lines below
+      // — it does not start with `--`) and a whitespace-padded flag such as
+      // `' --adopt'` (fails `startsWith('--')` on the untrimmed `raw`, then
+      // `trim()` turns it back into `'--adopt'` and it slips through as the
+      // book slug — the exact defect this task exists to close, for a padded
+      // token). The guard now runs on the TRIMMED value and rejects ANY
+      // leading `-`, not just `--`. No book slug legitimately starts with
+      // `-`, so this is a strict superset of the original check for every
+      // real input — a deliberate, authorised deviation from the brief's
+      // literal snippet; the brief's own intent ("do not swallow the next
+      // flag as a value") is what governs.
+      const value = raw.trim();
+      if (value.startsWith('-')) {
         return {
           book: null,
           dryRun,
@@ -879,10 +894,9 @@ function parseArgs(argv) {
           help,
           error:
             `--book requires a value, but the next argument is the flag ${JSON.stringify(raw)}. ` +
-            `If you really mean a slug beginning with '--', write it as './${raw}'.`,
+            `If you really mean a slug beginning with '-', write it as './${value}'.`,
         };
       }
-      const value = raw.trim();
       if (value === '') {
         return {
           book: null,
