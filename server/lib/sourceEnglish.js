@@ -31,7 +31,7 @@
  * into `carbon di` / `oxide here` — matching on `[A-Za-z][A-Za-z-]*` tokens
  * instead gives `di-oxide` and `di-oxide here`, with no invented fragments.
  *
- * Three traps, each measured in this tree, each of which silently inflates or
+ * Four traps, each measured in this tree, each of which silently inflates or
  * empties the census rather than erroring:
  *
  * 1. `02-for-mt` holds hundreds of `<name>.md.backup.<timestamp>` files beside
@@ -47,6 +47,11 @@
  *    bracket markers whose TYPE names would likewise be counted. Strip the
  *    marker syntax but KEEP the inner prose — `[[i:hydrogen]]` really does
  *    mean the word hydrogen appears in the text.
+ *
+ * 4. Overlapping bigrams — THE EXPENSIVE ONE. See "THE TOKENISATION IS PART
+ *    OF THE METHOD" above: get the overlap wrong and the census silently
+ *    drops 30-46%, misread for a while as a register discrepancy rather than
+ *    a bug in this function.
  *
  * Quiet by design: it reports `filesRead` and lets the CALLER decide what an
  * empty census means. buildResolvedGlossary throws; verify-resolve-gates.js

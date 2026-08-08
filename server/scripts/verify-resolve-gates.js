@@ -22,7 +22,17 @@ function collectSourceEnglish(slug) {
   if (filesRead === 0) {
     // ⚠️ An empty result must be LOUD. A census over 0 files reports "0 ties"
     // and looks like a clean pass — an absence is not an answer.
-    console.error(`  ⚠️ read 0 .md files under ${root} — gate 2 is meaningless`);
+    //
+    // The lib reports filesRead: 0 identically whether the root is missing or
+    // merely empty of .md files — correct for the lib, which is quiet by
+    // design. This wrapper must still tell the two apart: "does not exist"
+    // means the book was never extracted; "read 0 .md files" means it was
+    // extracted into an empty tree. Different faults, different remedies.
+    if (!fs.existsSync(root)) {
+      console.error(`  ⚠️ ${root} does not exist — gate 2 cannot run for ${slug}`);
+    } else {
+      console.error(`  ⚠️ read 0 .md files under ${root} — gate 2 is meaningless`);
+    }
     return [];
   }
   console.log(`  files read: ${filesRead}`);
