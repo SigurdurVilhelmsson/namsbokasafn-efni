@@ -118,3 +118,88 @@ describe('importConcepts', () => {
     expect(texts).toEqual(['molecule', 'sameind']);
   });
 });
+
+// ── register §C36 finding 1 ──────────────────────────────────────────────────
+//
+// Re-importing a collection to pick up an Árnastofnun update used to give every
+// surviving term a fresh AUTOINCREMENT id, breaking every editor preference for
+// that collection — with no count in the returned stats.
+//
+// ⚠️ Parameterised over PRAGMA foreign_keys ON *and* OFF, deliberately. The
+// register states the mechanism as a cascade delete; that is only true under
+// ON. The pragma is per-connection, defaults off, is not stored in the file,
+// and server/services/terminologyService.js opens `new Database(DB_PATH)` with
+// no pragma call — so production runs with it OFF, where the preference row is
+// NOT deleted: it survives pointing at a term id that no longer exists. Quieter
+// than the cascade, and worse. Testing only ON would validate a configuration
+// this project does not deploy.
+describe.each([['ON'], ['OFF']])(
+  're-import keeps editor preferences intact (foreign_keys = %s)',
+  (fk) => {
+    const entry = { id: 991, words: [w('EN', 'atom'), w('IS', 'frumeind', { synonyms: 'atóm' })] };
+
+    function seedPreference() {
+      db.pragma(`foreign_keys = ${fk}`);
+      importConcepts(db, payload([entry]));
+      db.prepare('INSERT INTO registered_books (id, slug) VALUES (1, ?)').run('efnafraedi-2e');
+      const conceptId = db.prepare('SELECT id FROM concept').get().id;
+      const termId = db
+        .prepare("SELECT id FROM concept_term WHERE lang='is' AND text='atóm'")
+        .get().id;
+      db.prepare(
+        `INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id)
+         VALUES (1, 0, ?, ?)`
+      ).run(conceptId, termId);
+      return { conceptId, termId };
+    }
+
+    const danglingCount = () =>
+      db
+        .prepare('SELECT term_id FROM book_concept_preference')
+        .all()
+        .filter((p) => !db.prepare('SELECT 1 FROM concept_term WHERE id = ?').get(p.term_id))
+        .length;
+
+    it('leaves the preference pointing at a term that still exists', () => {
+      const { termId } = seedPreference();
+      const stats = importConcepts(db, payload([entry]));
+
+      expect(db.prepare('SELECT COUNT(*) c FROM book_concept_preference').get().c).toBe(1);
+      expect(db.prepare('SELECT term_id FROM book_concept_preference').get().term_id).toBe(termId);
+      expect(danglingCount()).toBe(0);
+      expect(stats.preferencesDropped).toBe(0);
+      expect(stats.prunedTerms).toBe(0);
+    });
+
+    it('keeps every term id stable across an identical re-import', () => {
+      seedPreference();
+      const before = db.prepare('SELECT id, lang, text FROM concept_term ORDER BY id').all();
+      importConcepts(db, payload([entry]));
+      const after = db.prepare('SELECT id, lang, text FROM concept_term ORDER BY id').all();
+      expect(after).toEqual(before);
+    });
+
+    it('prunes a term WITHDRAWN upstream, and reports the preference it cost', () => {
+      seedPreference();
+      // Árnastofnun drops the synonym: 'atóm' is genuinely gone.
+      const stats = importConcepts(
+        db,
+        payload([{ id: 991, words: [w('EN', 'atom'), w('IS', 'frumeind')] }])
+      );
+
+      expect(stats.prunedTerms).toBe(1);
+      expect(stats.preferencesDropped).toBe(1);
+      // Asserted under BOTH pragmas: under OFF nothing removes this for you, so
+      // the import must delete it explicitly rather than trust a cascade that
+      // never fires in production.
+      expect(db.prepare('SELECT COUNT(*) c FROM book_concept_preference').get().c).toBe(0);
+      expect(danglingCount()).toBe(0);
+    });
+
+    it('counts an unchanged term as updated, not as newly inserted', () => {
+      seedPreference();
+      const stats = importConcepts(db, payload([entry]));
+      expect(stats.updatedTerms).toBe(3); // atom, frumeind, atóm
+    });
+  }
+);
