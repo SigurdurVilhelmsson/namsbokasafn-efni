@@ -993,6 +993,10 @@ committed byte; chemistry is unblocked, not adopted."
 **Interfaces:**
 - Consumes: the producer string `'export-terminology-resolved'` (Task 3). ⚠️ `tools/` is MIT and `server/` is AGPL — **do not import from `server/`.** Declare the string locally with a comment naming `server/lib/glossaryProducer.js` as its source of truth.
 
+**⚠️ RULED by the lead at pre-flight, 2026-08-08 — duplicate the string, and PIN THE DRIFT.** The duplication is deliberate: importing would add an unguarded MIT→AGPL edge of exactly the kind CLAUDE.md gap E-2 says to re-derive rather than accumulate, and would put root `LICENSE`'s enumeration in this PR's scope. **A reviewer flagging the duplication is not wrong to raise it — this ruling is the answer, and Step 3b is why the duplication is safe.**
+
+The pin reads `server/lib/glossaryProducer.js` **as text** and asserts the literal matches. Reading a file is not importing it — no `require`, no `import`, no runtime dependency — so the pin closes the drift without creating the edge it exists to avoid.
+
 ⚠️ **Read D7 before starting.** The vacuity is *per book, at adoption* — not now. At this point in the plan all four committed payloads are still merge-glossary files with real collisions, so the sweep is fully live and must stay that way.
 
 - [ ] **Step 1: Write the failing tests**
@@ -1070,10 +1074,35 @@ Change the per-book sweep from `it.each(booksWithGlossaries)` to `it.each(sweptB
 
 ⚠️ `isSweepable` is exported for the unit tests above. If the project's lint rules forbid exporting from a test file, move `isSweepable` into `tools/validate-glossary.js` beside `loadBaseline`/`buildBaseline` and import it in both places.
 
+- [ ] **Step 3b: Pin the duplication against drift**
+
+Add to the same test file:
+
+```js
+describe('the duplicated producer string cannot drift', () => {
+  it('matches server/lib/glossaryProducer.js, which owns it', () => {
+    // ⚠️ READ AS TEXT, never import: tools/ is MIT and server/ is AGPL, and an
+    // import here would add exactly the edge CLAUDE.md gap E-2 says not to
+    // accumulate. Reading a file creates no runtime dependency, so this closes
+    // the drift without creating the coupling it exists to avoid.
+    //
+    // Without this, a rename on the server side would leave tools/ silently
+    // sweeping resolved payloads again — green, and wrong.
+    const src = fs.readFileSync(
+      path.join(REPO_ROOT, 'server', 'lib', 'glossaryProducer.js'),
+      'utf8'
+    );
+    expect(src).toContain(`const PRODUCER_RESOLVED = '${PRODUCER_RESOLVED}';`);
+  });
+});
+```
+
 - [ ] **Step 4: Run the tests**
 
 Run: `npx vitest run tools/__tests__/glossaryCollisionBaseline.test.js`
 Expected: PASS. `sweptBooks` must still contain **all four** books today — none has adopted.
+
+⚠️ Force the drift pin red once too: change the local `PRODUCER_RESOLVED` to `'export-terminology-resolved-x'` and confirm the new test fails. Revert.
 
 - [ ] **Step 5: Force the guard red**
 
