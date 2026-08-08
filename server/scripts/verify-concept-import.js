@@ -6,15 +6,10 @@
  * Read-only: this script opens no transaction and writes no row. It is safe to
  * run against a live database.
  */
-const DOMAINS = new Set([
-  'biology',
-  'chemistry',
-  'physics',
-  'astronomy',
-  'anatomy-physiology',
-  'mathematics',
-  'earth-science',
-]);
+// ⚠️ Not a local copy any more. The seven domains had three independent
+// definitions until 2026-08-08 (register §C36 finding 5) — all measured clean,
+// with nothing keeping them clean. server/lib/domains.js is the one owner.
+const { DOMAIN_SET: DOMAINS } = require('../lib/domains');
 
 /**
  * Icelandic term → a TAG naming which sense that term denotes.
