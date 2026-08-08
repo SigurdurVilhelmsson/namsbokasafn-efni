@@ -5,6 +5,11 @@ const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { lookupCandidates } = require('../lib/conceptResolver');
 
+/**
+ * @returns {{conceptId:number, termIds:number[]}} termIds parallels the
+ * `isTerms` array passed in, so callers can assert lookupCandidates' output
+ * against the REAL row ids the DB assigned — never hardcoded ones.
+ */
 function addConcept(db, domain, en, isTerms) {
   const conceptId = Number(
     db.prepare("INSERT INTO concept (domain, collection) VALUES (?, 'TEST')").run(domain)
@@ -13,18 +18,22 @@ function addConcept(db, domain, en, isTerms) {
   db.prepare(
     "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', ?, 1, 'test')"
   ).run(conceptId, en);
-  for (const [text, rank] of isTerms) {
-    db.prepare(
-      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, ?, 'test')"
-    ).run(conceptId, text, rank);
-  }
-  return conceptId;
+  const termIds = isTerms.map(([text, rank]) =>
+    Number(
+      db
+        .prepare(
+          "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, ?, 'test')"
+        )
+        .run(conceptId, text, rank).lastInsertRowid
+    )
+  );
+  return { conceptId, termIds };
 }
 
 describe('lookupCandidates', () => {
   it('returns one candidate per matching concept, is-terms sorted by rank', () => {
     const { db } = freshMigratedDb();
-    addConcept(db, 'biology', 'cell', [
+    const { termIds } = addConcept(db, 'biology', 'cell', [
       ['fruma', 1],
       ['sella', 2],
     ]);
@@ -32,6 +41,11 @@ describe('lookupCandidates', () => {
     expect(candidates).toHaveLength(1);
     expect(candidates[0].domain).toBe('biology');
     expect(candidates[0].isTerms.map((t) => t.text)).toEqual(['fruma', 'sella']);
+    // termIds is in the same [fruma, sella] / rank-ascending order as isTerms
+    // was seeded, so this pins BOTH the join-key values AND their order —
+    // real DB-assigned ids, not hardcoded, so it can't pass by coincidence.
+    expect(candidates[0].isTerms.map((t) => t.termId)).toEqual(termIds);
+    expect(candidates[0].isTerms.map((t) => t.rank)).toEqual([1, 2]);
     expect(integrity).toEqual([]);
     db.close();
   });
@@ -46,8 +60,8 @@ describe('lookupCandidates', () => {
 
   it('follows merged_into to the surviving concept', () => {
     const { db } = freshMigratedDb();
-    const absorbed = addConcept(db, 'biology', 'antibiotic', [['fukalyf', 1]]);
-    const survivor = addConcept(db, 'biology', 'antibiotic-x', [['syklalyf', 1]]);
+    const { conceptId: absorbed } = addConcept(db, 'biology', 'antibiotic', [['fukalyf', 1]]);
+    const { conceptId: survivor } = addConcept(db, 'biology', 'antibiotic-x', [['syklalyf', 1]]);
     db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(survivor, absorbed);
 
     const { candidates } = lookupCandidates(db, 'antibiotic');
@@ -59,7 +73,7 @@ describe('lookupCandidates', () => {
 
   it('terminates on a self-merge and reports merge-cycle', () => {
     const { db } = freshMigratedDb();
-    const a = addConcept(db, 'biology', 'loopy', [['lykkja', 1]]);
+    const { conceptId: a } = addConcept(db, 'biology', 'loopy', [['lykkja', 1]]);
     db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(a, a);
     const { candidates, integrity } = lookupCandidates(db, 'loopy');
     expect(integrity).toContain('merge-cycle');
@@ -69,8 +83,8 @@ describe('lookupCandidates', () => {
 
   it('terminates on an A->B->A cycle, stopping at the last unvisited concept', () => {
     const { db } = freshMigratedDb();
-    const a = addConcept(db, 'biology', 'ping', [['a', 1]]);
-    const b = addConcept(db, 'biology', 'pong', [['b', 1]]);
+    const { conceptId: a } = addConcept(db, 'biology', 'ping', [['a', 1]]);
+    const { conceptId: b } = addConcept(db, 'biology', 'pong', [['b', 1]]);
     db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(b, a);
     db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(a, b);
     const { candidates, integrity } = lookupCandidates(db, 'ping');
@@ -81,8 +95,8 @@ describe('lookupCandidates', () => {
 
   it('de-duplicates when two matching concepts merge into the same survivor', () => {
     const { db } = freshMigratedDb();
-    const survivor = addConcept(db, 'biology', 'dna', [['DKS', 1]]);
-    const x = addConcept(db, 'biology', 'dna', [['x', 1]]);
+    const { conceptId: survivor } = addConcept(db, 'biology', 'dna', [['DKS', 1]]);
+    const { conceptId: x } = addConcept(db, 'biology', 'dna', [['x', 1]]);
     db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(survivor, x);
     expect(lookupCandidates(db, 'dna').candidates).toHaveLength(1);
     db.close();
@@ -91,6 +105,22 @@ describe('lookupCandidates', () => {
   it('returns nothing for an unknown string', () => {
     const { db } = freshMigratedDb();
     expect(lookupCandidates(db, 'nothing-here').candidates).toEqual([]);
+    db.close();
+  });
+
+  it("isTerms carries the real concept_term row id, which is the join key buildScope's preference map is matched against", () => {
+    const { db } = freshMigratedDb();
+    const { conceptId } = addConcept(db, 'biology', 'gene', [['gen', 1]]);
+    // Independent of both addConcept's lastInsertRowid AND lookupCandidates'
+    // own SELECT — a fresh query against the table, so this can't pass by
+    // reading back the same expression the implementation (or the seeding
+    // helper) already trusts.
+    const independentTermId = db
+      .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND lang = 'is' AND text = 'gen'")
+      .get(conceptId).id;
+
+    const { candidates } = lookupCandidates(db, 'gene');
+    expect(candidates[0].isTerms[0].termId).toBe(independentTermId);
     db.close();
   });
 });
