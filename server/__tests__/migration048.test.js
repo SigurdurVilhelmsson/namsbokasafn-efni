@@ -366,6 +366,63 @@ describe('migration 048 — book_term_preference', () => {
   });
 
   /**
+   * ⚠️ THE FIFTH CAUSE — A SHAPE FAULT, NOT A ROW FAULT, WHICH IS WHY THE
+   * NARROWER GUARD MISSED IT (re-review, 2026-08-09).
+   *
+   * The header claimed "the handler catches everything, not FK alone" while the
+   * `try` wrapped only `expand.run()`. A `book_concept_preference` that exists
+   * but is not 045's shape throws in `db.prepare()` — BEFORE a single row is
+   * read, and before the transaction is ever entered. Measured on the old code:
+   * `SQLITE_ERROR: no such column: p.term_id`, **uncaught, zero warnings** — the
+   * exact boot wedge the header exists to prevent, with no diagnostic at all.
+   *
+   * The guard was WIDENED to make the sentence true (`up()` is now nothing but a
+   * never-throw shell around `migrate()`), rather than the sentence narrowed to
+   * match the guard. A boot wedge is the worst failure class here:
+   * migrationRunner → failLoudOnMigrationErrors → exit(1), on every start.
+   *
+   * ⚠️ This fixture's table is missing `term_id` entirely, so the failure lands
+   * in `prepare()` — the path a transaction rollback cannot help with, because
+   * there is no transaction yet. The old table must survive because nothing was
+   * ever attempted.
+   */
+  it('a MALFORMED source table is REPORTED, not thrown — the failure is in prepare(), before any transaction', () => {
+    const { db } = freshMigratedDb();
+    // 045's shape minus `term_id`. Legal SQL, wrong schema.
+    db.exec(`
+      CREATE TABLE book_concept_preference (
+        book_id INTEGER NOT NULL, chapter INTEGER NOT NULL,
+        concept_id INTEGER NOT NULL,
+        PRIMARY KEY (book_id, chapter, concept_id));
+    `);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id) VALUES (1,0,1)'
+    ).run();
+
+    const { messages, threw } = upCapturingWarnings(db);
+
+    // ① Did not throw — the assertion the server's boot depends on.
+    expect(threw).toBeNull();
+    // ② Said so, and named the actual SQLite error rather than a generic one.
+    const msg = messages.find((m) => /MIGRATION COULD NOT COMPLETE/.test(m));
+    expect(msg).toBeDefined();
+    expect(msg).toMatch(/no such column/i);
+    // ③ Nothing was touched. Here that is NOT the transaction rollback — the
+    // failure happens before any transaction exists — so this is a genuinely
+    // different mechanism from the dangling-term_id case above, and worth its
+    // own assertion rather than assuming the other test covers it.
+    expect(
+      db
+        .prepare(
+          "SELECT 1 FROM sqlite_master WHERE type='table' AND name='book_concept_preference'"
+        )
+        .get()
+    ).toBeDefined();
+    expect(db.prepare('SELECT COUNT(*) AS c FROM book_concept_preference').get().c).toBe(1);
+    db.close();
+  });
+
+  /**
    * ⚠️ THE ACCOUNTING CHECK MUST BE SILENT ON EVERY HEALTHY SHAPE — and this is
    * the control that matters most, because the version of this check in the
    * review brief (`before === expanded + noEnglish + collisions`) FIRES ON THIS
