@@ -73,21 +73,21 @@ describe('Server startup smoke tests', () => {
         .filter((f) => f.endsWith('.js'))
         .sort();
 
-      // 47 as of migration 047-reconcile-domain-priority (bumped from 46).
-      expect(files.length).toBe(47);
+      // 48 as of migration 048-book-term-preference (bumped from 47).
+      expect(files.length).toBe(48);
 
-      // Verify sequential numbering 001-047
-      for (let i = 1; i <= 47; i++) {
+      // Verify sequential numbering 001-048
+      for (let i = 1; i <= 48; i++) {
         const prefix = String(i).padStart(3, '0');
         const match = files.find((f) => f.startsWith(prefix));
         expect(match).toBeTruthy();
       }
     });
 
-    it('migrationRunner references all 47 migrations', () => {
+    it('migrationRunner references all 48 migrations', () => {
       const source = readFileSync(join(serverDir, 'services', 'migrationRunner.js'), 'utf-8');
 
-      for (let i = 1; i <= 47; i++) {
+      for (let i = 1; i <= 48; i++) {
         const prefix = String(i).padStart(3, '0');
         expect(source).toContain(`'../migrations/${prefix}-`);
       }
