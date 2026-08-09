@@ -486,6 +486,41 @@ describe('resolveCandidates — the preference override (§C38)', () => {
     expect(r.reason).toBe('book-preference');
   });
 
+  // ⚠️ THE CLAIM "EVERY EXISTING REPORT SURVIVES; ONLY THE ANSWER CHANGES" WAS
+  // PROSE, NOT A PIN — measured 2026-08-09 in review: blanking the successful
+  // override's return to `outOfScope: [], integrity: [], unscoped: true` left
+  // 109/109 green across all 7 covering files. `unscoped: true` is the damning
+  // one — a consumer-visible state change no test could see. Only `nominalTie`
+  // and `alsoInScope` were asserted; the other three pass-through fields were
+  // unpinned.
+  //
+  // This compares a WITH-preference run against a WITHOUT-preference run on the
+  // same candidates, so it pins the invariant itself rather than three literals.
+  // The fixture is built so both `outOfScope` and `integrity` are NON-EMPTY:
+  // two empty arrays agree, and their agreement would prove nothing.
+  it('EVERY PASS-THROUGH FIELD SURVIVES the override — only the answer changes', () => {
+    const cands = [
+      cand(1, 'physics', [['nákvæmni', 1, 10]]),
+      cand(2, 'biology', [['hittni', 1, 20]]),
+      cand(3, 'mathematics', [['stæ', 1, 30]]), // out of scope → non-empty outOfScope
+    ];
+    const run = (pref) => resolveCandidates(chemScope(pref), cands, ['merge-cycle'], 'accuracy');
+    const without = run(new Map());
+    const with_ = run(new Map([['accuracy', { termId: 20, tier: 'book' }]]));
+
+    // The override really did fire — without this the comparison below is vacuous.
+    expect(without.winner.text).toBe('nákvæmni');
+    expect(with_.winner.text).toBe('hittni');
+
+    // ⚠️ Non-emptiness first, for the same reason: identical empties agree.
+    expect(without.outOfScope.length).toBeGreaterThan(0);
+    expect(without.integrity.length).toBeGreaterThan(0);
+
+    expect(with_.outOfScope).toEqual(without.outOfScope);
+    expect(with_.integrity).toEqual(without.integrity);
+    expect(with_.unscoped).toEqual(without.unscoped);
+  });
+
   it('a nominalTie is PRESERVED when the override fires — it reports concepts to merge', () => {
     // ⚠️ THE MEASURED REASON THE OVERRIDE RUNS AFTER THE WALK. A short-circuit
     // that returned the preferred term immediately skips step 5 entirely, and
@@ -547,6 +582,28 @@ describe('resolveCandidates — the three preference faults (D4)', () => {
       return resolveCandidates(s, two, [], 'accuracy').integrity;
     };
     expect(mk(() => ({ term_id: 999, concept_id: 77 }))).not.toEqual(mk(() => undefined));
+  });
+
+  // ⚠️ FAIL LOUD, DO NOT GUESS. A `scope.stmts && scope.stmts.termById &&`
+  // guard used to stand here, and it degraded to the WRONG remedy: a scope with
+  // no statements silently reported `preference-term-missing` — "delete this
+  // stale row" — for a row whose term exists and is merely misfiled. That is the
+  // exact conflation the three-code split exists to end, reintroduced by the
+  // defensive check meant to be harmless. Unreachable in production
+  // (`buildScope` always sets `stmts`), so this is an API-contract guard.
+  it('a scope with no stmts THROWS on this path rather than guessing a remedy', () => {
+    const scope = chemScope(new Map([['accuracy', { termId: 999, tier: 'book' }]]));
+    expect(scope.stmts).toBeUndefined();
+    expect(() => resolveCandidates(scope, two, [], 'accuracy')).toThrow(/stmts\.termById/);
+  });
+
+  // ⚠️ CONTROL: the throw is scoped to the fault path only. The same
+  // stmts-less scope resolves perfectly well when the preference IS honourable
+  // — a guard that fired on every resolution would be a performance and API
+  // regression, not a safety net.
+  it('CONTROL: the same stmts-less scope resolves fine when the preference is honourable', () => {
+    const scope = chemScope(new Map([['accuracy', { termId: 20, tier: 'book' }]]));
+    expect(resolveCandidates(scope, two, [], 'accuracy').winner.text).toBe('hittni');
   });
 
   it('preference-out-of-scope: the term is on a concept outside the domain chain', () => {

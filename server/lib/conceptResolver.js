@@ -351,8 +351,19 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
   // vanished, so `hittni [biology @3]` was invisible behind `nákvæmni [physics @2]`.
   //
   // Built from `chosen` — after term selection and after the term-less filter —
-  // so every entry is a real, offerable answer. Excludes anything already
-  // reported as winner, in `tied`, or in `nominalTie`.
+  // so every entry is a real, offerable answer.
+  //
+  // ⚠️ IT EXCLUDES EXACTLY WHAT ITS CALLER PASSES, AND THE CALLERS DISAGREE.
+  // This comment used to promise it "excludes anything already reported as
+  // winner, in `tied`, or in `nominalTie`" — true of the three position-walk
+  // returns, FALSE on the override path (step 6), which passes only
+  // `{winner.conceptId}`. There, a `nominalTie` member appears in BOTH
+  // `nominalTie` and `alsoInScope`. That is deliberate — the editor chose a
+  // third term, so the duplicate pair is still a real, offerable answer AND
+  // still a merge candidate — and it is pinned by
+  // conceptResolverResolve.test.js's 'a nominalTie is PRESERVED when the
+  // override fires'. ⚠️ B4c's panel must therefore DE-DUPE across the two lists
+  // or it will double-list a merge candidate.
   const alsoFrom = (reportedIds) =>
     chosen
       .filter((c) => !reportedIds.has(c.conceptId))
@@ -397,16 +408,44 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
     const owner = candidates.find((c) => c.isTerms.some((t) => t.termId === pref.termId));
 
     // ⚠️ THE FAULT PATHS PUSH ONTO `codes` AND THEN `return result` UNCHANGED —
-    // no spread, unlike the success path below. That is not an oversight and it
-    // is not safe by accident: it works ONLY because `result.integrity` IS this
-    // same `codes` array, so the push is already visible through the object
-    // being returned. A refactor that copies the array into the result
-    // (`integrity: [...codes]`) would drop EVERY fault code silently, with the
-    // three D4 tests still asserting a `winner` that never changed. Keep the
-    // alias, or spread these two returns as well.
+    // no spread, unlike the success path below. It works only because
+    // `result.integrity` IS this same `codes` array, so the push is already
+    // visible through the object being returned.
+    //
+    // ⚠️ CORRECTED 2026-08-09, SAME DAY, BY MEASUREMENT. This comment first
+    // claimed a refactor to `integrity: [...codes]` "would drop EVERY fault code
+    // silently, with the three D4 tests still asserting a `winner` that never
+    // changed". THAT IS FALSE, and commit 269e94ce asserted it too. Applying
+    // exactly that refactor at all three `integrity: codes` sites turns
+    // **10 tests RED across 3 files** — every D4 case, all three
+    // `integrity codes` cases, the mutation-file owner-breadth case and
+    // conceptResolverScope's §C39 case — because each of them asserts
+    // `r.integrity` BEFORE it asserts a winner, and a `[...codes]` copy is
+    // snapshotted at object-construction time, i.e. before these pushes run.
+    //
+    // So: the alias is load-bearing, but it is NOT unguarded. Keep it for
+    // clarity, or copy the array — but if you copy it, spread these two returns
+    // too (`return { ...result, integrity: [...codes] }`) AFTER the push. The
+    // suite will tell you either way; it is not blind here.
     if (!owner) {
       // Two faults, two remedies: delete a stale row vs. re-file a misfiled one.
-      const exists = scope.stmts && scope.stmts.termById && scope.stmts.termById.get(pref.termId);
+      //
+      // ⚠️ FAIL LOUD rather than guess. A `scope.stmts && scope.stmts.termById &&`
+      // guard stood here and DEGRADED TO THE WRONG REMEDY: a scope built without
+      // statements reported `preference-term-missing` — "delete this stale row" —
+      // for a row whose term exists and is merely misfiled. That is the exact
+      // conflation the three-code split exists to end, reintroduced by the
+      // defensive check meant to be harmless. `buildScope` always sets `stmts`,
+      // so this is unreachable in production and is an API-contract guard.
+      if (!scope.stmts || !scope.stmts.termById) {
+        throw new Error(
+          'resolveCandidates(): a preference names a term no candidate carries, but the scope ' +
+            'has no `stmts.termById` to tell preference-term-missing from ' +
+            'preference-not-a-candidate — build the scope with buildScope(db, …) rather than ' +
+            'by hand, or stub `stmts.termById` if you are testing this path'
+        );
+      }
+      const exists = scope.stmts.termById.get(pref.termId);
       codes.push(exists ? 'preference-not-a-candidate' : 'preference-term-missing');
       return result;
     }
@@ -436,6 +475,12 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
       // Duplicate concepts to MERGE — true regardless of which term the book
       // uses, so this report is carried through untouched.
       nominalTie: result.nominalTie,
+      // ⚠️ ONLY the winner is excluded here — NOT the nominalTie members, unlike
+      // the three position-walk returns above. A nominal-tie pair the editor
+      // chose against is still an offerable answer, so it belongs in
+      // `alsoInScope`; it is also still a duplicate to merge, so it stays in
+      // `nominalTie`. It appears in BOTH lists on purpose. See alsoFrom's
+      // docstring — B4c's panel must de-dupe across the two.
       alsoInScope: alsoFrom(new Set([winner.conceptId])),
     };
   };
