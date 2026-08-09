@@ -396,6 +396,14 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
     // exactly the concepts most likely to be broken.
     const owner = candidates.find((c) => c.isTerms.some((t) => t.termId === pref.termId));
 
+    // ⚠️ THE FAULT PATHS PUSH ONTO `codes` AND THEN `return result` UNCHANGED —
+    // no spread, unlike the success path below. That is not an oversight and it
+    // is not safe by accident: it works ONLY because `result.integrity` IS this
+    // same `codes` array, so the push is already visible through the object
+    // being returned. A refactor that copies the array into the result
+    // (`integrity: [...codes]`) would drop EVERY fault code silently, with the
+    // three D4 tests still asserting a `winner` that never changed. Keep the
+    // alias, or spread these two returns as well.
     if (!owner) {
       // Two faults, two remedies: delete a stale row vs. re-file a misfiled one.
       const exists = scope.stmts && scope.stmts.termById && scope.stmts.termById.get(pref.termId);
