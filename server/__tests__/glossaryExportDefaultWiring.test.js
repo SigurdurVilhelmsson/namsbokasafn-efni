@@ -100,12 +100,20 @@ describe('runGlossaryExport default exportFn wiring (Task 5, Important 2)', () =
 
       expect(code).toBe(1);
       const joined = errors.join('\n');
-      // The resolved builder's failure mode: an open against a non-existent
-      // file. This is NOT what the old builder (terminologyService.getDb(),
-      // read-write, creates the file) would have produced, and it is NOT a
-      // `refused-*` outcome — either of those would mean this test failed to
-      // discriminate the change it exists to guard.
+      // The resolved builder's failure mode: a readonly open against a
+      // non-existent file. THIS line is what discriminates — under a reverted
+      // default the old builder never produces SQLITE_CANTOPEN.
       expect(joined).toMatch(/SQLITE_CANTOPEN|unable to open database file/i);
+
+      // ⚠️ CORRECTED 2026-08-09 (whole-branch adversarial review). This
+      // assertion used to be justified as "NOT what the old builder
+      // (terminologyService.getDb(), read-write, creates the file) would have
+      // produced". That rationale is FALSE: as this file's own header explains,
+      // terminologyService freezes DB_PATH at module load and cannot see an env
+      // var set in a test body, so under a reverted default that path is never
+      // touched and this assertion passes identically. It is kept as a cheap
+      // statement of the readonly contract — a readonly open must not create
+      // the file — and NOT as the discriminator. The line above is that.
       expect(fs.existsSync(missingDbPath)).toBe(false);
 
       const status = JSON.parse(

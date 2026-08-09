@@ -101,11 +101,26 @@ term is stamped `approved` (D2); nothing here exercises a term that *isn't*.
 ⚠️ **Biology's small yield is the D1 consequence stated up front, not a defect.** Its census
 is 13,788 strings from **13** `.md` files under `books/liffraedi-2e/02-for-mt` — independently
 counted with `find … -name '*.md' | wc -l`, matching `collectSourceEnglish`'s own `filesRead`.
-Chemistry's `filesRead` (249) was checked the same way and also matches exactly, and its
-tracked directory carries 0 `.md.backup.*` files today (84 non-`.md` tracked files there are
-`.json` sidecars, not backups) — the exclusion trap exists but is not currently live for this
-book. `lifraen-efnafraedi` (40 files) and `edlisfraedi-2e` (10 files) were spot-checked the
-same way and agree.
+Chemistry's `filesRead` (249) was checked the same way and also matches exactly.
+`lifraen-efnafraedi` (40 files) and `edlisfraedi-2e` (10 files) were spot-checked the same way
+and agree.
+
+⚠️ **CORRECTED 2026-08-09 — the `.md.backup.*` exclusion is MAXIMALLY LIVE, and the sentence
+this replaces said the opposite.** It read: *"its tracked directory carries 0 `.md.backup.*`
+files today … the exclusion trap exists but is not currently live for this book."* That is true
+of the **tracked view** and irrelevant: `collectSourceEnglish` reads the **disk**, and those
+files are gitignored (`.gitignore:20`). Measured just now with `find`:
+
+| tree | `.md` on disk | `.md.backup.*` on disk |
+|---|---:|---:|
+| `books/efnafraedi-2e/02-for-mt` | 249 | **3,092** |
+| `books/liffraedi-2e/02-for-mt` | 13 | 7 |
+| microbiology | — | 4 |
+
+So `endsWith('.md')` was doing real work on 3,103 files **during this very measurement** — the
+249/13/40/10 counts above hold *because of* it. The old wording invited exactly the
+`includes('.md')` "improvement" that `sourceEnglish.js` warns against, which would have folded
+3,092 stale backup files into chemistry's census.
 
 ⚠️ **Biology's committed file is 2,262 terms against this new payload's 763 — a 66% shrink**
 (measured directly from `books/liffraedi-2e/glossary/glossary-unified.json`: 2,262 terms,
@@ -495,6 +510,37 @@ nobody will ship.** Use §4 for the adoption-relevant diff; this section's 78 an
 does row order matter to a payload we're retiring," not "how much does adoption change."
 
 ---
+
+## Census noise: what the emitted keys look like at the short end
+
+⚠️ Added 2026-08-09 after the whole-branch adversarial review observed that §4.5's **1,711** is
+this document's most quotable number and nothing measured what fraction of it is census noise.
+
+D1 emits every 2+ character token and every adjacent pair, and D2 stamps **every** resolved
+winner `approved` — correctly, per those decisions. The product, measured on chemistry's payload:
+
+| | count |
+|---|---:|
+| emitted terms | 2,119 |
+| English key ≤3 characters | **167** |
+| …of those, all-lowercase | **71** |
+| …of those, ≤2 characters | 17 (`at`, `cd`, `di`, `ft`, `ic`, `in`, `is`, `kg`, `lb`, `lm`, `ln`, `nm`, `no`, `oz`, `pr`, `py`, `tg`) |
+
+**The population is not uniformly noise, and that is the point.** `amu → atómmassaeining`,
+`atm → loftþyngd`, `cal → kaloría`, `cd → kandela`, `cos → kósínus` are exactly what a chemistry
+textbook wants. `at → marsnákaætt` (a snake family), `is → lófalægur`, `in → tomma`,
+`bug → villa`, `box → kassi` are not.
+
+⚠️ **Both consumers act on these.** `filterGlossaryForText` (`tools/api-translate.js`) is a bare
+`lowerText.includes(sourceWord.toLowerCase())` — a **substring** test — so a two-letter key like
+`is` matches essentially every MT chunk. On the render side `resolveLabel` case-folds only
+`^[A-Za-z][a-z]{2,}$`, so a ≤2-character label is looked up verbatim and a 3+-character word is
+lowercased; `<mi>in</mi>` and `<mtext>set</mtext>` both substitute.
+
+**Not established here, and deliberately not fixed in this branch:** which of the 71 are wrong
+for a given book. That is an editorial judgement and an adoption-time decision — a code-side
+minimum-length or stopword floor is a choice to be **taken**, not inherited by default. What
+this section establishes is the size of the population that choice applies to.
 
 ## What this run does NOT establish
 

@@ -119,7 +119,8 @@ describe('the resolved export is a distinct producer', () => {
     // through to `unknown`, not to PRODUCER_EXPORT). It cannot be made to
     // fail on a removed branch without duplicating 'detects the stamp'.
     // The load-bearing check is the second assertion: the new branch was
-    // inserted directly above the PRODUCER_EXPORT check in detectProducer,
+    // inserted directly BELOW the PRODUCER_EXPORT check in detectProducer
+    // (:47 vs :68 — an earlier version of this comment said "above"),
     // and this pins that the insertion did not break detection of the old,
     // unrelated 'export-terminology' stamp.
     expect(detectProducer(resolved)).not.toBe(PRODUCER_EXPORT);
