@@ -355,14 +355,34 @@ describe('resolveCandidates — alsoInScope', () => {
     expect(r.alsoInScope).toEqual([]);
   });
 
+  // ⚠️ conceptId 50 carries the LOWEST position (2) but the HIGHEST conceptId —
+  // position and conceptId deliberately disagree, so a sort that dropped the
+  // position key (conceptId-only: [2, 5, 50]) would produce a DIFFERENT order
+  // than the real one ([50, 2, 5]) and this test would catch it. The earlier
+  // fixture had its lowest-position candidate also carry the lowest conceptId,
+  // so a conceptId-only sort coincidentally matched — this one cannot.
   it('is ordered by position then conceptId — deterministic', () => {
     const r = resolveCandidates(chemScope(), [
       cand(1, 'chemistry', [['w', 1, 10]]),
-      cand(9, 'biology', [['x', 1, 20]]),
-      cand(3, 'biology', [['y', 1, 30]]),
-      cand(2, 'physics', [['z', 1, 40]]),
+      cand(50, 'physics', [['z', 1, 40]]), // position 2, conceptId HIGH
+      cand(2, 'biology', [['x', 1, 20]]), // position 3, conceptId low
+      cand(5, 'biology', [['y', 1, 30]]), // position 3, conceptId mid
     ]);
-    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([2, 3, 9]);
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([50, 2, 5]);
+  });
+
+  // ⚠️ A term-less in-scope candidate is dropped by the step-3 filter BEFORE it
+  // ever reaches `chosen` (parent spec §6's ordering defect). alsoInScope must be
+  // built from `chosen`, never from `inScope` or the raw candidates — an
+  // implementation that read `inScope` here would let this candidate leak
+  // through with `termId`/`text` both `undefined`, since it never picked a term.
+  it('excludes a term-less in-scope candidate — it never became a chosen answer', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(1, 'chemistry', [['efni', 1, 10]]),
+      cand(2, 'physics', []), // en term exists, no 'is' term — dropped at step 3
+    ]);
+    expect(r.winner.conceptId).toBe(1);
+    expect(r.alsoInScope).toEqual([]);
   });
 
   it('is [] when there is nothing to report — the shape is TOTAL', () => {
