@@ -191,4 +191,42 @@ describe('buildScope — the preference merge', () => {
     expect(buildScope(db, 'edlisfraedi-2e', 3).preference.size).toBe(0);
     db.close();
   });
+
+  // §C39 — CHARACTERIZATION, not an endorsement. buildPreferenceMap keys on the
+  // RAW book_concept_preference.concept_id while lookupCandidates reports the
+  // post-followMerge SURVIVOR id, so a preference on a concept that was later
+  // merged away is silently ignored: no promotion, and NO integrity code.
+  // conceptResolver.js said the reverse until 2026-08-09.
+  //
+  // ⚠️ Task 6 changes this outcome to `preference-not-a-candidate`. When it
+  // does, UPDATE this test — do not delete it. The point is that the skew is
+  // visible.
+  it('§C39: a preference naming a merged-away concept is not found by the scope', () => {
+    const { db } = freshMigratedDb();
+    // lifraen-efnafraedi is the pre-registered book whose priority list includes
+    // both biology and physics (§C35), so it plays the "chemistry book" role.
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'lifraen-efnafraedi'")
+      .get().id;
+    const { conceptId: absorbed, termId } = seedConcept(db, {
+      domain: 'biology',
+      en: 'accuracy',
+      is: 'hittni',
+    });
+    const { conceptId: survivor } = seedConcept(db, {
+      domain: 'physics',
+      en: 'accuracy',
+      is: 'nákvæmni',
+    });
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?, 0, ?, ?)'
+    ).run(bookId, absorbed, termId);
+    db.prepare('UPDATE concept SET merged_into = ? WHERE id = ?').run(survivor, absorbed);
+
+    const scope = buildScope(db, 'lifraen-efnafraedi', 0);
+    // The map holds the ABSORBED id; every candidate reports the SURVIVOR's.
+    expect(scope.preference.has(absorbed)).toBe(true);
+    expect(scope.preference.has(survivor)).toBe(false);
+    db.close();
+  });
 });

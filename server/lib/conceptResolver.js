@@ -136,8 +136,15 @@ function buildScope(db, bookSlug, chapter = 0) {
  * editorial corruption. It must terminate and it must be visible — on a cycle we
  * stop at the LAST UNVISITED concept and report, rather than looping or throwing.
  *
- * Resolving THROUGH merged_into is what makes an editorial merge take effect with
- * no data migration: preference rows still naming the absorbed concept keep working.
+ * ⚠️ CORRECTED 2026-08-09 (register §C39). This comment used to claim: "Resolving
+ * THROUGH merged_into is what makes an editorial merge take effect with no data
+ * migration: preference rows still naming the absorbed concept keep working."
+ * THEY DO NOT. buildPreferenceMap keys its map on the RAW preference row's
+ * concept_id; lookupCandidates reports the post-followMerge SURVIVOR id. The
+ * lookup therefore misses, the `if (pref)` branch never runs, and NO integrity
+ * code fires — a silent swallow. Pinned by conceptResolverScope.test.js's §C39
+ * case. B4a's re-key onto the English string defuses this (it surfaces as
+ * `preference-not-a-candidate`); Part C's merge tooling still has to face it.
  */
 function followMerge(stmt, startId) {
   const seen = new Set([startId]);
