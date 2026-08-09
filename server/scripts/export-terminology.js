@@ -147,6 +147,7 @@ const {
   shrinkVerdict,
   producerVerdict,
 } = require('../lib/glossaryExportDecision');
+const { createResolvedExportFn } = require('../lib/resolvedGlossary');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -449,10 +450,19 @@ function writeStatus(projectRoot, status) {
  * @returns {number} exit code: 0 unless some book ERRORED. A refusal is not an
  *   error (decision D2) — see the header.
  */
+/**
+ * ⚠️ B3: `exportFn` now defaults to the RESOLVED builder, not
+ * terminologyService.exportBookGlossary — which is dead from here and is
+ * deleted by Part C along with the tables it reads.
+ *
+ * A default parameter is evaluated only when the argument is `undefined`, so a
+ * caller that injects its own exportFn still opens NO database. That preserves
+ * the posture the lazy singleton gave, without the singleton.
+ */
 function runGlossaryExport({
   booksDir = BOOKS_DIR,
   projectRoot = PROJECT_ROOT,
-  exportFn = terminologyService.exportBookGlossary,
+  exportFn = createResolvedExportFn(),
   subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
@@ -991,7 +1001,12 @@ function main() {
         '           inert and that write is unreviewed by construction (§C21)\n' +
         '  Neither implies the other, and the 2h cron passes neither.\n' +
         '  Scope an override with --book: without it, --force/--adopt apply to\n' +
-        '  EVERY glossary-bearing book at once. Adoption is a per-book decision.'
+        '  EVERY glossary-bearing book at once. Adoption is a per-book decision.\n' +
+        '  NOTE: since B3 this exporter emits a RESOLVED VIEW of the concept model\n' +
+        '  (producer "export-terminology-resolved"), not a subject-filtered dump.\n' +
+        '  A book whose committed glossary came from any other producer therefore\n' +
+        '  refuses until --adopt --book <slug>. That is deliberate: adoption is a\n' +
+        '  per-book decision with reader-visible consequences.\n'
     );
     process.exit(0);
   }
