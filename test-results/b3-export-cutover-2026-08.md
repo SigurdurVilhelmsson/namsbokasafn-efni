@@ -185,8 +185,10 @@ already carries all four, all `approved`. **Against the baseline adoption actual
 none of these four is an addition.** Adoption *changes* `pH` (`pH` → `sýrustig`), `carbon
 dioxide` (`koldíoxíð` → `koltvíoxíð`) and `bond` (`efnatengi` → `tengi`), and leaves `nitrogen`
 byte-identical. The fallback mechanism these four were chosen to demonstrate is real and does
-real work — §4 below counts 1,686 keys with no committed counterpart at all under any status —
-but these four specific terms demonstrate the *mechanism*, not a net addition. A claim that
+real work — §4.5 below counts how many of the new payload's keys have no committed counterpart
+at all: **1,618** under any committed status, or **1,711** against committed-approved-only (the
+consumer-relevant baseline) — but these four specific terms demonstrate the *mechanism*, not a
+net addition. A claim that
 this is "the measured content of 'B3 unblocks chemistry'" does not survive the swap to the
 baseline an adoption decision actually needs.
 
@@ -303,14 +305,31 @@ byte.
 
 ### 4.5 The fallback's other side
 
-Not every consequence of adoption is a loss: **1,686 of the new payload's 2,108 lower-cased
-keys have no counterpart at all in the committed file** (under any non-empty status) — real
-terms the fallback resolves that nothing in the committed file, approved or proposed,
-currently answers (350 only-in-committed + 22 differ + 400 same = 772 committed keys; the
-remaining 1,686 of the new payload's 2,108 are new). The four terms in §3 were chosen to
-illustrate that mechanism and turned out to be the wrong witnesses for "addition" specifically
-(all four already existed, approved, in the committed file) — but the mechanism itself is not
-a fiction, and 1,686 is its measured size.
+Not every consequence of adoption is a loss. Two baselines answer "how many of the new
+payload's 2,108 lower-cased keys have no committed counterpart at all" — the same shape as the
+78/22/8 split in §7.1 and the 22/8 split in §4.1: two honest numbers from two stated methods,
+neither one "the" answer, reported side by side rather than picked-and-hidden.
+
+| baseline | method | shared with new | new-only |
+|---|---|---:|---:|
+| any committed status | committed file's 1,117 raw terms collapse to 1,102 distinct lower-cased keys (all three statuses); intersect against the new payload's 2,108 | 490 | **1,618** |
+| committed **approved** only | committed file's 617 `approved` rows collapse to 602 distinct lower-cased keys (§2, §4.1); intersect against the new payload's 2,108 | 397 | **1,711** |
+
+Check: 2,108 − 490 = 1,618; 2,108 − 397 = 1,711.
+
+**1,711 is the consumer-relevant number.** Both live consumers of `glossary-unified.json` —
+`buildGlossaryMap` (render) and `formatGlossary` (MT priming) — filter to `status === 'approved'`
+before reading anything from the file (§4.1). A key whose only committed counterpart is
+`proposed` or `needs_review` is, to either consumer, indistinguishable from a key with no
+committed counterpart at all — the identical `approved`-filter fact §4.1 already used to say "8,
+not 22, is what a reader sees today" applies here. 1,618 is the stricter, any-status figure;
+1,711 is what "new to a reader" actually means.
+
+Both are real counts of real terms the fallback resolves that the committed file, under the
+stated baseline, does not answer. The four terms in §3 were chosen to illustrate that mechanism and
+turned out to be the wrong witnesses for "addition" specifically (all four already existed,
+approved, in the committed file) — but the mechanism itself is not a fiction, and 1,618 / 1,711
+are its measured size, by baseline.
 
 ---
 
