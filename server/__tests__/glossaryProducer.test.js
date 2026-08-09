@@ -113,21 +113,37 @@ describe('the resolved export is a distinct producer', () => {
   });
 
   it('is not confused with the old export', () => {
-    expect(PRODUCER_RESOLVED).not.toBe(PRODUCER_EXPORT);
+    // Through detectProducer, not constant inequality — constant inequality
+    // alone is trivially true when PRODUCER_RESOLVED is undefined, so it
+    // would pass even if the new branch were removed. This must fail if the
+    // new branch is removed.
+    expect(detectProducer(resolved)).not.toBe(PRODUCER_EXPORT);
     expect(detectProducer({ producer: 'export-terminology', terms: [] })).toBe(PRODUCER_EXPORT);
   });
 
-  it('an UNSTAMPED resolved payload is unknown, so it fails closed', () => {
+  // This guards the "don't teach shape inference about `domain`" constraint,
+  // not the new PRODUCER_RESOLVED branch itself — it passes with or without
+  // that branch, because an unstamped, `domain`-only payload already fell
+  // through to `unknown` before this task existed. Kept anyway: it pins the
+  // brief's explicit prohibition against widening the subjects/legacy
+  // fingerprint filters to also recognize `domain`.
+  it('an UNSTAMPED payload with only a `domain` field is unknown — shape inference must not learn `domain`', () => {
     // eslint-disable-next-line no-unused-vars
     const { producer, ...unstamped } = resolved;
     expect(detectProducer(unstamped)).toBe(PRODUCER_UNKNOWN);
   });
 
-  it('a resolved term carries `domain` and none of the other fingerprints', () => {
-    const t = resolved.terms[0];
-    expect(t).toHaveProperty('domain');
-    expect(t).not.toHaveProperty('subjects');
-    expect(t).not.toHaveProperty('category');
-    expect(t).not.toHaveProperty('chapter');
+  // Pins the masking property this branch inherits from PRODUCER_EXPORT: a
+  // matching top-level stamp short-circuits before any term is read, so a
+  // stamped-but-contradictory payload is trusted, not refused — the one case
+  // the header's "A HYBRID IS unknown, DELIBERATELY" note does NOT cover.
+  // Exists so a future change to this precedence is a deliberate decision,
+  // not an accident.
+  it('a resolved stamp is trusted over a contradictory term shape — inherited from PRODUCER_EXPORT, pinned so a change is deliberate', () => {
+    const stampedButLegacyShaped = {
+      producer: 'export-terminology-resolved',
+      terms: [{ english: 'atom', icelandic: 'frumeind', category: 'chemistry', chapter: 3 }],
+    };
+    expect(detectProducer(stampedButLegacyShaped)).toBe(PRODUCER_RESOLVED);
   });
 });

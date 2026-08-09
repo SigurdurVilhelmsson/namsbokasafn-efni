@@ -38,7 +38,7 @@ const hasKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 
 /**
  * @param {unknown} payload - a parsed glossary-unified.json, or an exportBookGlossary return
- * @returns {'export-terminology'|'merge-glossary'|'unknown'}
+ * @returns {'export-terminology'|'export-terminology-resolved'|'merge-glossary'|'unknown'}
  */
 function detectProducer(payload) {
   if (payload === null || typeof payload !== 'object' || Array.isArray(payload)) {
@@ -53,9 +53,18 @@ function detectProducer(payload) {
   // failure class C14 and C21 exist to prevent, arriving through the door they
   // left open.
   //
-  // Shape inference below stays exhaustive: a resolved term carries `domain`,
-  // never `subjects`/`category`/`chapter`, so an UNSTAMPED resolved payload
-  // falls through to `unknown` and refuses. Fail-closed, per the hybrid rule.
+  // A matching top-level stamp short-circuits BEFORE any term is read — this
+  // branch inherits that property from the pre-existing PRODUCER_EXPORT branch
+  // above (not something introduced here). So a payload stamped
+  // 'export-terminology-resolved' whose terms are legacy- or hybrid-shaped is
+  // trusted as PRODUCER_RESOLVED rather than refused as `unknown`: an accepted,
+  // pinned trade-off (see glossaryProducer.test.js — "a resolved stamp is
+  // trusted over a contradictory term shape"), not a bug to fix here.
+  //
+  // Shape inference below IS exhaustive, but only on the UNSTAMPED path: a
+  // resolved term carries `domain`, never `subjects`/`category`/`chapter`, so
+  // an unstamped resolved payload falls through to `unknown` and refuses.
+  // Fail-closed, per the hybrid rule — for the unstamped case only.
   if (payload.producer === PRODUCER_RESOLVED) return PRODUCER_RESOLVED;
 
   const terms = payload.terms;
