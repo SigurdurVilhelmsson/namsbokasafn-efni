@@ -20,19 +20,29 @@
  * Merge a book's preference rows for one chapter: chapter rows win over the
  * chapter-0 default.
  *
+ * ⚠️ KEYED ON THE ENGLISH STRING, LOWERCASED (B4a, register §C38). It was keyed
+ * on concept_id until 2026-08-09, which could not express what an editor means:
+ * one concept carries many English strings, so a row set while looking at one
+ * string silently moved all the others.
+ *
+ * ⚠️ THE LOWERCASING IS NOT OPTIONAL AND MUST MATCH THE LOOKUP. The column is
+ * COLLATE NOCASE so SQLite folds case, but a JS Map does not — key it with the
+ * raw text and `preference.get('accuracy')` misses a row stored as 'Accuracy'.
+ * The row would be stored and never found: silent, and the exact failure class
+ * this slice exists to end. resolveCandidates lowercases its lookup to match.
+ *
  * ⚠️ `tier` is CARRIED, not discarded. Parent spec §7.2 requires the editor panel
- * to say which rule fired — "chapter override / book default / head form of
- * domain X" — and this is the only place that still knows.
+ * to say which rule fired, and this is the only place that still knows.
  *
  * ⚠️ `chapter` is NOT NULL with 0 as the book-default sentinel: in SQLite NULLs do
  * not compare equal inside a primary key, so a nullable chapter would permit two
- * conflicting "book defaults" for one concept. -1 is the appendices sentinel.
+ * conflicting "book defaults" for one string. -1 is the appendices sentinel.
  */
 function buildPreferenceMap(db, bookId, chapter) {
   const rows = db
     .prepare(
-      `SELECT concept_id, term_id, chapter
-         FROM book_concept_preference
+      `SELECT english, term_id, chapter
+         FROM book_term_preference
         WHERE book_id = ? AND chapter IN (0, ?)`
     )
     .all(bookId, chapter);
@@ -40,10 +50,11 @@ function buildPreferenceMap(db, bookId, chapter) {
   const preference = new Map();
   for (const r of rows) {
     const tier = r.chapter === 0 ? 'book' : 'chapter';
+    const key = r.english.toLowerCase();
     // A chapter row always wins; a book row only fills an empty slot. Order of
     // rows from SQLite is not relied on.
-    if (tier === 'chapter' || !preference.has(r.concept_id)) {
-      preference.set(r.concept_id, { termId: r.term_id, tier });
+    if (tier === 'chapter' || !preference.has(key)) {
+      preference.set(key, { termId: r.term_id, tier });
     }
   }
   return preference;

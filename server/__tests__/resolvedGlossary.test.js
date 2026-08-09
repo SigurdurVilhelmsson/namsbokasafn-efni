@@ -11,15 +11,20 @@
  * registered_by (migration 003) — the same trap conceptResolverScope.test.js's
  * `registerBare` comment documents. Supply all three.
  *
- * ⚠️ B4a (§C36) IN PROGRESS — this whole `buildResolvedGlossary` describe block
- * is expected RED until Task 3 lands. `buildScope` (server/lib/conceptResolver.js)
- * calls `buildPreferenceMap`, which is UNCONDITIONAL and still queries the
- * dropped `book_concept_preference` table on every call — not only the two
- * cases below that set a preference. Re-pointing this file's own INSERTs at
- * `book_term_preference` (done, Task 2b) cannot fix that; it is forward
- * compatibility so Task 3 does not have to touch this file too. Task 3
- * ("re-key buildPreferenceMap onto English") must add this file's suite going
- * green to its own completion criteria.
+ * ⚠️ B4a (§C36) — `buildScope` (server/lib/conceptResolver.js) calls
+ * `buildPreferenceMap`, which Task 3 re-keyed onto `book_term_preference.english`
+ * (from the dropped `book_concept_preference.concept_id`). This file's own
+ * `INSERT`s were already pointed at `book_term_preference` in Task 2b, ahead of
+ * that re-key landing, so no further edit was needed here once Task 3 shipped.
+ *
+ * ⚠️ TWO tests below are RED between Task 3 and Task 6, BY CONSTRUCTION —
+ * not a regression, and not fixable from this file. `buildPreferenceMap` now
+ * keys on the lowercased English string, but `resolveCandidates`
+ * (server/lib/conceptResolver.js) still does `scope.preference.get(c.conceptId)`
+ * — a NUMBER — so the string-keyed map never hits and `reason:
+ * 'book-preference'` is unreachable until Task 6 re-points that lookup onto
+ * the English string too. See the two tests themselves for which. The other
+ * 12 in this block, and both in `createResolvedExportFn`, are green.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
@@ -96,6 +101,10 @@ describe('buildResolvedGlossary', () => {
     expect(t).not.toHaveProperty('chapter');
   });
 
+  // ⚠️ RED between Task 3 and Task 6 — see the file banner above.
+  // resolveCandidates still looks preference up by concept id; the map is now
+  // keyed by english string, so the lookup misses and this falls back to
+  // head-form. Task 6 closes it.
   it('honours an editor book-preference over the head form', () => {
     const cid = concept('chemistry', 'atom', ['frumeind', 'atóm']);
     const termId = db
@@ -110,6 +119,9 @@ describe('buildResolvedGlossary', () => {
     });
   });
 
+  // ⚠️ RED between Task 3 and Task 6 — see the file banner above. Same cause:
+  // resolveCandidates keys the preference lookup by concept id, not by the
+  // english string buildPreferenceMap now stores it under.
   it('resolves the BOOK-DEFAULT (chapter 0) preference, never a chapter-level one — pins the `0` in buildScope(db, bookSlug, 0)', () => {
     const cid = concept('chemistry', 'bond', ['tengi', 'efnatengi', 'samtengi']);
     const bookTermId = db
