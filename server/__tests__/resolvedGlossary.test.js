@@ -11,11 +11,14 @@
  * registered_by (migration 003) — the same trap conceptResolverScope.test.js's
  * `registerBare` comment documents. Supply all three.
  */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { buildResolvedGlossary } = require('../lib/resolvedGlossary');
+const { buildResolvedGlossary, createResolvedExportFn } = require('../lib/resolvedGlossary');
 
 let db;
 
@@ -179,5 +182,43 @@ describe('buildResolvedGlossary', () => {
     expect(() =>
       buildResolvedGlossary(db, 'bare', { census: { strings: ['atom'], filesRead: 1, root: '/x' } })
     ).toThrow(/no-priorities/);
+  });
+});
+
+/**
+ * Task 5 review, Important 1: the DB open used to happen EAGERLY, inside
+ * `createResolvedExportFn` itself. Because that factory is called from a
+ * DEFAULT PARAMETER (`exportFn = createResolvedExportFn()` in
+ * export-terminology.js), an eager open throws before runGlossaryExport's
+ * body — and its per-book try/catch — ever runs. These two tests pin the fix:
+ * the factory call itself must never throw, and the DB open must be deferred
+ * to the returned closure's first invocation.
+ */
+describe('createResolvedExportFn', () => {
+  let missingDbPath;
+  let tmpDir;
+
+  beforeEach(() => {
+    // A directory that exists, holding a filename that does not — the shape
+    // the review measured (`new Database('/tmp/missing.db', {readonly:true})`
+    // → SQLITE_CANTOPEN; readonly mode does not create the file).
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'resolved-glossary-missing-db-'));
+    missingDbPath = path.join(tmpDir, 'sessions.db');
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  it('constructing the factory against a non-existent DB path does not throw — the open is deferred', () => {
+    expect(() => createResolvedExportFn(missingDbPath)).not.toThrow();
+    // And no file was created by merely constructing the factory: readonly
+    // mode never creates the file, and this call should not even have tried.
+    expect(fs.existsSync(missingDbPath)).toBe(false);
+  });
+
+  it("the returned function throws on its FIRST call against a non-existent DB path — that's the whole point", () => {
+    const exportFn = createResolvedExportFn(missingDbPath);
+    expect(() => exportFn('bk')).toThrow(/SQLITE_CANTOPEN|unable to open database file/i);
   });
 });

@@ -525,15 +525,25 @@ function runGlossaryExport({
   };
 
   for (const b of books) {
-    // A book with no book_subject_mapping row makes exportBookGlossary's
-    // subject filter a no-op (terminologyService.js: `if (bookSubject && ...)
-    // continue` — no bookSubject means no filtering at all), so it would
-    // export EVERY non-rejected translation across every subject: the exact
-    // opposite of the "DELIBERATELY STRICT" (item 18) intent. Only migration
-    // 032 has ever inserted these rows, once, for five hardcoded slugs — a
-    // book registered since then has no row until a human adds one. Refuse
-    // loudly rather than silently prime MT (and the render path) from a
-    // cross-subject corpus.
+    // ⚠️ CORRECTED (Task 5 review, Important 3): this comment used to justify
+    // the gate entirely in terms of the RETIRED builder — "a book with no
+    // book_subject_mapping row makes exportBookGlossary's subject filter a
+    // no-op … so it would export EVERY non-rejected translation across every
+    // subject". exportBookGlossary is no longer on this path.
+    // buildResolvedGlossary never reads book_subject_mapping at all — it
+    // scopes by book_domain_priority (chapter 0), so an unscoped book's
+    // payload breadth no longer depends on this row in any way.
+    //
+    // The gate is KEPT anyway, and stays fail-safe: it no longer protects
+    // against an unscoped-subject payload, but it still refuses a book that
+    // was never triaged into the subject-mapping table (only migration 032
+    // has ever inserted these rows, once, for five hardcoded slugs — a book
+    // registered since then has no row until a human adds one), which is a
+    // reasonable proxy for "this book has not been reviewed for export" even
+    // under the new builder. Retiring it belongs to the later phase that
+    // drops book_subject_mapping and the rest of the old tables, not to this
+    // one — until then it costs nothing to keep and loosening it is a
+    // separate, deliberate decision.
     let subject;
     try {
       subject = subjectFn(b);

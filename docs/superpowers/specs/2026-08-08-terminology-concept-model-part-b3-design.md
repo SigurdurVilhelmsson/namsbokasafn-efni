@@ -386,6 +386,21 @@ expected to fail:
   decorative — §C20 measured a load-bearing line whose deletion turned nothing red.
 - Removing the new stamp from `detectProducer` must turn the regression pin red.
 
+  ⚠️ **AMENDED 2026-08-09 (Task 5 review, Important 5) — MEASURED: it does not.** With the
+  `if (payload.producer === PRODUCER_RESOLVED)` branch removed, `detectProducer` falls through
+  to shape inference; the regression pin's stub carries `english,icelandic,status,domain` terms —
+  no `subjects`, no `category`/`chapter` — so `subjects === 0 && legacy === 0` → `unknown`.
+  `unknown` still differs from the committed `merge-glossary` stamp, so `producerVerdict` still
+  refuses and the pin still reads `refused-producer`. **Green.** The underlying property IS
+  pinned — by Task 3's own `PRODUCER_RESOLVED` tests, which construct the stamped and unstamped
+  cases directly — so nothing is unguarded; what was wrong is this bullet's claim about what
+  *this* pin controls for. **The regression pin's real, load-bearing control is the GATE axis,
+  not the stamp axis**: if `producerVerdict` itself stopped refusing, the 1-term stub would fall
+  through to `refused-shrink` against the committed 1117/2262 terms, and all three
+  `refused-producer` assertions would flip red. Recorded here rather than silently swapped for a
+  control that does fire, per this repo's standing rule that a control which cannot fail is worse
+  than no control — it is counted as evidence.
+
 ### ⚠️ `glossaryCollisionBaseline.test.js` goes green-but-VACUOUS
 
 Measured by B0: `findGlossaryCollisions` needs **≥2 Icelandic values per English key**, and the

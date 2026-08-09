@@ -121,14 +121,35 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
  *
  * Used as a DEFAULT PARAMETER, so it is evaluated only when no exportFn was
  * injected — a test that supplies its own opens no database at all.
+ *
+ * ⚠️ THE OPEN IS LAZY ON PURPOSE (whole-branch adversarial review, Task 5,
+ * Important 1). Default parameters are evaluated during destructuring —
+ * *before* runGlossaryExport's body, its `books.length === 0` guard, and its
+ * per-book `try { next = exportFn(b) } catch { … }` — and `main()` wraps none
+ * of it in a try/catch. An eager `new Database(...)` here therefore throws
+ * OUTSIDE every safety net this file has: on a box with a missing/unreadable
+ * sessions.db (a fresh clone, a moved SESSIONS_DB_PATH, a permissions fault)
+ * the process would crash with a raw stack trace, writing NEITHER the status
+ * file nor the heartbeat — worse than pre-B3, where the old builder called
+ * getDb() *inside itself* and produced four structured per-book `error`
+ * outcomes plus a written status file. Deferring the `new Database(...)`
+ * call to the returned closure's FIRST invocation moves the throw inside the
+ * per-book try/catch, so a missing DB becomes one book's `error` outcome —
+ * with the status file and every other book's outcome intact — exactly like
+ * every other exportFn failure mode this file already handles.
  */
 function createResolvedExportFn(dbPath) {
-  const Database = require('better-sqlite3');
-  const resolveDbPath = require('./dbPath');
-  // ⚠️ resolveDbPath(), never process.cwd() (CLAUDE.md, durable): the cron runs
-  // this from the repo root and systemd runs the server from server/.
-  const db = new Database(dbPath || resolveDbPath(), { readonly: true });
-  return (slug) => buildResolvedGlossary(db, slug);
+  let db = null;
+  return (slug) => {
+    if (!db) {
+      const Database = require('better-sqlite3');
+      const resolveDbPath = require('./dbPath');
+      // ⚠️ resolveDbPath(), never process.cwd() (CLAUDE.md, durable): the cron
+      // runs this from the repo root and systemd runs the server from server/.
+      db = new Database(dbPath || resolveDbPath(), { readonly: true });
+    }
+    return buildResolvedGlossary(db, slug);
+  };
 }
 
 module.exports = { buildResolvedGlossary, createResolvedExportFn };
