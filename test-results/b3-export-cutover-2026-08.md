@@ -213,7 +213,7 @@ NOT establish").
 
 | # | key | status filter | collapse rule | result |
 |---:|---|---|---|---:|
-| 22 | lower-cased English | none (`needs_review` rows excluded — their Icelandic is empty, so there is nothing to compare) | last-write-wins | **22 differ** |
+| 22 | lower-cased English | `needs_review` excluded (empty Icelandic) | last-write-wins | **22 differ** |
 | 8 | lower-cased English | `approved` only | last-write-wins | **8 differ** |
 | 205 | lower-cased English | `approved` only | membership (present in committed, absent from new) | **205 dropped** |
 
@@ -228,8 +228,17 @@ are `proposed`**.
 `tools/lib/math-label-substitute.js`'s `buildGlossaryMap` (`if (t.status !== 'approved')
 continue;` — the render path: approved terms are substituted into published math) and
 `tools/lib/malstadur-api.js`'s `formatGlossary` (`approvedOnly = true` by default, which
-`tools/api-translate.js` takes as-is — the MT-priming path). The other 14 are `proposed` and
-inert in both paths today; adoption activates them with a different word than the dormant one.
+`tools/api-translate.js` also passes explicitly — the MT-priming path). The other 14 are
+`proposed` and inert in both paths today; adoption activates them with a different word than the
+dormant one.
+
+⚠️ **Applying §7.1's own control to this section's primary number, not only to the 78: clean.**
+The committed file has **14 lower-cased English keys carrying ≥2 raw rows** (`atom`,
+`resonance` ×3, `group`, and 11 others) — exactly the last-write-wins shape §7.1 convicts the 78
+of riding on. Checked directly against the committed file's raw rows (grouped by lower-cased
+English, count ≥ 2): **none of the 22 differing keys, and none of the 8 `approved` differing
+keys, is one of them — 0 of 22 and 0 of 8 sit on a multi-row committed key.** The 22/8 are not an
+artifact of row order the way the 78 are.
 
 ### 4.2 Why the fallback lands where it does: 593 concepts
 
@@ -245,8 +254,8 @@ inert in both paths today; adoption activates them with a different word than th
 
 Chemistry is the smallest domain by an order of magnitude, and for five of the 22 changed
 terms — `bond`, `accuracy`, `precision`, `hydrocarbon`, `plasma` — **there is no chemistry
-concept at all** (checked directly: each has concepts only under
-physics/biology/mathematics, never chemistry). For this book, the subject fallback the
+concept at all** (checked directly: each has concepts under physics/biology/mathematics,
+never chemistry). For this book, the subject fallback the
 resolver falls back to (`chemistry@1, physics@2, biology@3` — B1's scope) is the **primary**
 mechanism for these terms, not a safety net triggered occasionally.
 
@@ -295,19 +304,28 @@ unresolved-English to resolved-Icelandic under adoption is a gain, not a changed
 those in would overcount (`reducing agent`, `proposed` old, spuriously reads as "changed" in all
 three trees otherwise).
 
-So the render-side delta of adoption is **~2 labels / ~8 occurrences**, against a net *increase*
-in coverage (24 vs 2 resolvable labels in `05-publication`). ⚠️ **This bounds the render half
-only.** `glossary-unified.json` has a second `approved`-filtered consumer —
-`formatGlossary`/`api-translate.js`'s MT-priming glossary — where all 205 dropped terms are in
-play regardless of whether they ever appear in math. Nothing above measures that half; it
-degrades the terminology primed into *future* translations without changing a single published
-byte.
+**Current published exposure of the 205-term dropout is 0.** The table's dropped-term and
+changed-term hit columns are both **0/0 in `03-translated` and 0/0 in `05-publication`** — the
+~2 labels / ~8 occurrences aggregate hits that occur only in `01-source`, and probing further
+confirms `reaction` and `carbon dioxide` are **entirely absent** as leaf math labels from both
+downstream trees, not merely unresolvable. `01-source` is read-only OpenStax English CNXML, so a
+label there reaches a reader only after extract → MT → inject → render: **~2 labels / ~8
+occurrences is an upper bound that becomes live only once the affected modules are
+re-rendered**, and the counterpart net *increase* in coverage (24 vs 2 resolvable labels in
+`05-publication`) is contingent in the same way. This is the register's own C18 precedent (line
+731: render-path exposure "currently 0 in all three books," with the self-criticism "I assigned
+severity from the code path without checking whether the data ever traverses it"). ⚠️ **And this
+bounds the render half only, live or latent.** `glossary-unified.json` has a second
+`approved`-filtered consumer — `formatGlossary`/`api-translate.js`'s MT-priming glossary — where
+all 205 dropped terms are in play regardless of whether they ever appear in math. Nothing above
+measures that half; it degrades the terminology primed into *future* translations without
+changing a single published byte.
 
 ### 4.5 The fallback's other side
 
 Not every consequence of adoption is a loss. Two baselines answer "how many of the new
 payload's 2,108 lower-cased keys have no committed counterpart at all" — the same shape as the
-78/22/8 split in §7.1 and the 22/8 split in §4.1: two honest numbers from two stated methods,
+78-vs-0 split in §7.1 and the 22/8 split in §4.1: two honest numbers from two stated methods,
 neither one "the" answer, reported side by side rather than picked-and-hidden.
 
 | baseline | method | shared with new | new-only |
@@ -387,7 +405,7 @@ Built both ways against the same snapshot: old via `terminologyService.exportBoo
 new via `buildResolvedGlossary`. **This diff cannot be reconstructed once Part C deletes the
 old path** — kept here as the record the brief asked for. ⚠️ **It is secondary, not primary**:
 the old exporter's fresh output is a payload nobody will ever ship (chemistry refuses under it
-today, `refused-producer`, §6 below). §4 above, against the *committed* file, is the comparison
+today, `refused-producer`, §6 above). §4 above, against the *committed* file, is the comparison
 an adoption decision needs; read this section as the historical record §4 supersedes for that
 purpose, qualified in §7.1 below.
 
