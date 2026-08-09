@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { buildScope, lookupCandidates } = require('../lib/conceptResolver');
+const { buildScope, lookupCandidates, resolve } = require('../lib/conceptResolver');
 
 /** A registered book with no priority rows — the 'no-priorities' case. */
 function registerBare(db, slug) {
@@ -237,9 +237,15 @@ describe('buildScope — the preference merge', () => {
   //     `preference-not-a-candidate`)": not that the hazard is gone, but that
   //     the `if (pref)` branch now RUNS, so the failure stops being silent.
   //
-  // ⚠️ Task 6 makes resolveCandidates report `preference-not-a-candidate` for
-  // this exact case. When it does, UPDATE this test again — do not delete it.
-  it('§C39: a preference on a merged-away concept is now FOUND by english, but names a termId no candidate carries', () => {
+  // ⚠️ UPDATED AGAIN 2026-08-09 BY TASK 6 — not deleted, per task-1-brief.md.
+  // Task 6's override closes the silence: the skew still exists (the preference
+  // names a term hanging off the ABSORBED concept, and lookupCandidates only
+  // ever returns the SURVIVOR), but it now surfaces as
+  // `preference-not-a-candidate` on `resolve()`'s integrity array instead of
+  // being swallowed with no code at all. The final assertion below is the new
+  // half. Part C's merge tooling still has to face the underlying skew — this
+  // test characterizes it, it does not endorse it.
+  it('§C39: a preference on a merged-away concept is FOUND by english, names a termId no candidate carries, and now REPORTS it', () => {
     const { db } = freshMigratedDb();
     // lifraen-efnafraedi is the pre-registered book whose priority list includes
     // both biology and physics (§C35), so it plays the "chemistry book" role.
@@ -272,6 +278,15 @@ describe('buildScope — the preference merge', () => {
     expect(candidates).toHaveLength(1);
     expect(candidates[0].conceptId).toBe(survivor);
     expect(candidates[0].isTerms.map((t) => t.termId)).not.toContain(termId);
+
+    // ⚠️ THE END OF THE SILENCE (B4a Task 6). The concept_term row for 'hittni'
+    // still exists — only its concept was merged away — so `termById` finds it
+    // and the fault is the MISFILED one, not the missing one. The resolution is
+    // otherwise exactly what it would be with no preference row at all.
+    const r = resolve(scope, 'accuracy');
+    expect(r.integrity).toContain('preference-not-a-candidate');
+    expect(r.winner).toMatchObject({ text: 'nákvæmni', conceptId: survivor });
+    expect(r.reason).toBe('head-form');
     db.close();
   });
 

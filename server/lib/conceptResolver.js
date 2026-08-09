@@ -114,9 +114,14 @@ function prepareLookupStatements(db) {
  * 'no-priorities' have different remedies — the admin route vs a migration — and
  * collapsing them repeats one level down the very failure D3 exists to prevent.
  *
- * ⚠️ The scope carries `db` and `stmts`. `resolveCandidates` reads NEITHER — it
- * stays pure, which conceptResolverResolve.test.js pins by importing no database
- * at all. Only resolve()/lookupCandidates touch them.
+ * ⚠️ The scope carries `db` and `stmts`. ⚠️ CORRECTED 2026-08-09 (B4a) — this
+ * used to say "`resolveCandidates` reads NEITHER", which stopped being true the
+ * moment step 6 landed. The narrower truth: `resolveCandidates` never touches
+ * `scope.db`, and it reads exactly ONE statement, `scope.stmts.termById`, on the
+ * preference-FAULT path alone (a preference row exists and no candidate carries
+ * its term). conceptResolverResolve.test.js still imports no database at all —
+ * it stubs that single statement — and a resolution that succeeds still issues
+ * no query, so §C24's hoisting rationale is untouched.
  *
  * @param {import('better-sqlite3').Database} db
  * @param {string} bookSlug
@@ -257,7 +262,8 @@ function emptyResolution(unscoped, integrity, outOfScope) {
 }
 
 /**
- * Resolve candidates against a scope. PURE — no database, no I/O, no ambient state.
+ * Resolve candidates against a scope. NO I/O and no ambient state; the one
+ * database read it does make is stated in full below.
  *
  * ⚠️ THE FILTER ON STEP 3 IS LOAD-BEARING AND IS NOT IN THE PARENT SPEC.
  * §6 orders it "choose each candidate's term (3) -> lowest position wins (4)",
@@ -267,11 +273,24 @@ function emptyResolution(unscoped, integrity, outOfScope) {
  * word sat at position 3 and was never consulted. Term-less candidates must be
  * dropped BETWEEN steps 3 and 4.
  *
+ * ⚠️ NEARLY PURE, and the exception is narrow enough to state exactly (B4a).
+ * Steps 2-5 read nothing but their arguments. Step 6's fault path — reached only
+ * when a preference row exists AND no candidate carries its term — reads ONE
+ * prepared statement, `scope.stmts.termById`, to tell `preference-term-missing`
+ * (a stale row to delete) from `preference-not-a-candidate` (a misfiled row to
+ * re-file). It never touches `scope.db`, it never runs on the hot path, and
+ * conceptResolverResolve.test.js still imports no database at all — it stubs
+ * that single statement. The §C24 hoisting rationale is untouched: no query is
+ * added to a resolution that succeeds.
+ *
  * @param {object} scope from buildScope
  * @param {Array} candidates from lookupCandidates
  * @param {string[]} [integrity] codes carried in from lookupCandidates
+ * @param {string|null} [english] the string being resolved. OPTIONAL so this
+ *   function stays callable without a preference model; omitted, `scope.preference`
+ *   is never consulted and the position walk is the whole answer.
  */
-function resolveCandidates(scope, candidates, integrity = []) {
+function resolveCandidates(scope, candidates, integrity = [], english = null) {
   const codes = [...integrity];
   if (scope.unscoped) return emptyResolution(scope.unscoped, codes, []);
 
@@ -289,20 +308,16 @@ function resolveCandidates(scope, candidates, integrity = []) {
   }
 
   // Step 3 — choose each in-scope candidate's term, then DROP the term-less ones.
+  //
+  // ⚠️ THE HEAD FORM, ALWAYS. The preference used to be applied HERE, per
+  // candidate, keyed on concept id; B4a moved it out to step 6 (see
+  // `applyPreference`). One consequence is easy to miss and is pinned by
+  // 'TIE DETECTION READS HEAD FORMS, never preferred terms': the step-4/5 tie
+  // comparison now compares head forms only, so a preference can never make two
+  // concepts *look* nominally tied.
   const chosen = [];
   for (const c of inScope) {
-    const pref = scope.preference.get(c.conceptId);
-    let term = null;
-    let reason = null;
-    if (pref) {
-      term = c.isTerms.find((t) => t.termId === pref.termId) || null;
-      if (term) reason = pref.tier === 'chapter' ? 'chapter-preference' : 'book-preference';
-      else if (!codes.includes('orphan-preference')) codes.push('orphan-preference');
-    }
-    if (!term) {
-      term = headForm(c);
-      if (term) reason = 'head-form';
-    }
+    const term = headForm(c);
     if (!term) continue; // ← the filter, between steps 3 and 4
     chosen.push({
       conceptId: c.conceptId,
@@ -310,7 +325,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
       text: term.text,
       domain: c.domain,
       position: scope.positionOf.get(c.domain),
-      reason,
+      reason: 'head-form',
     });
   }
 
@@ -350,8 +365,75 @@ function resolveCandidates(scope, candidates, integrity = []) {
         position: c.position,
       }));
 
-  if (atBest.length === 1) {
+  // Step 6 — B4a/D3, THE OVERRIDE. §C38: chemistry resolved BOTH `accuracy` and
+  // `precision` to `nákvæmni` because its chain is 1.chemistry → 2.physics →
+  // 3.biology, chemistry has no `accuracy` concept, physics@2 decided, and
+  // biology's `hittni` at position 3 was never consulted. An editor had no way
+  // to say "for this book, `accuracy` means `hittni`".
+  //
+  // ⚠️ APPLIED AFTER THE POSITION WALK, NEVER INSTEAD OF IT. A short-circuit
+  // that returned the preferred term immediately skips step 5, and that was
+  // MEASURED to destroy the nominal-tie merge hint when tie members straddle
+  // the preference: nominalTie [1, 2] became []. Every existing report survives
+  // here; only the answer changes.
+  //
+  // Determinism needs no sort: the primary key permits one preference per
+  // (book, chapter, english), and a term_id belongs to exactly one concept, so
+  // at most one candidate can carry it.
+  const applyPreference = (result) => {
+    if (english == null) return result;
+    // ⚠️ LOWERCASED, matching buildPreferenceMap. The column is COLLATE NOCASE
+    // so SQLite folds case, but a JS Map does not — key one way and look up the
+    // other and the row is stored and never found, silently.
+    const pref = scope.preference.get(english.toLowerCase());
+    if (!pref) return result;
+
+    // ⚠️ Search ALL candidates, in-scope AND out. The `outOfScope` OUTPUT is
+    // lossy in two independent ways — it carries only the head form's `text`
+    // and no termId, and step 2 drops term-less concepts before recording them
+    // (pinned by 'a term-less out-of-scope concept is not listed as a
+    // suggestion either') — so a check written against it stays silent for
+    // exactly the concepts most likely to be broken.
+    const owner = candidates.find((c) => c.isTerms.some((t) => t.termId === pref.termId));
+
+    if (!owner) {
+      // Two faults, two remedies: delete a stale row vs. re-file a misfiled one.
+      const exists = scope.stmts && scope.stmts.termById && scope.stmts.termById.get(pref.termId);
+      codes.push(exists ? 'preference-not-a-candidate' : 'preference-term-missing');
+      return result;
+    }
+    if (!scope.positionOf.has(owner.domain)) {
+      // D1: in-scope only. Ignoring it is CORRECT; ignoring it silently is not.
+      codes.push('preference-out-of-scope');
+      return result;
+    }
+
+    const term = owner.isTerms.find((t) => t.termId === pref.termId);
+    const winner = {
+      conceptId: owner.conceptId,
+      termId: term.termId,
+      text: term.text,
+      domain: owner.domain,
+      position: scope.positionOf.get(owner.domain),
+    };
     return {
+      ...result,
+      winner,
+      reason: pref.tier === 'chapter' ? 'chapter-preference' : 'book-preference',
+      // ⚠️ A real tie the editor has ANSWERED is no longer a tie — but its
+      // members are still real, offerable, in-scope answers and MUST stay
+      // visible. Clearing `tied` without re-homing them makes them vanish from
+      // BOTH lists: D3's own invisibility, re-created inside D3.
+      tied: [],
+      // Duplicate concepts to MERGE — true regardless of which term the book
+      // uses, so this report is carried through untouched.
+      nominalTie: result.nominalTie,
+      alsoInScope: alsoFrom(new Set([winner.conceptId])),
+    };
+  };
+
+  if (atBest.length === 1) {
+    return applyPreference({
       winner: asWinner(atBest[0]),
       reason: atBest[0].reason,
       nominalTie: [],
@@ -360,7 +442,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
       integrity: codes,
       unscoped: false,
       alsoInScope: alsoFrom(new Set([atBest[0].conceptId])),
-    };
+    });
   }
 
   // Step 5 — a position tie. Compare the CHOSEN TEXTS of ALL tied candidates.
@@ -378,7 +460,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
     // ⚠️ atBest is sorted by conceptId, so the winner is DETERMINISTIC. Taking
     // whichever row came back first would let database row order decide the
     // recorded termId — which is §C18's defect, reproduced inside its own fix.
-    return {
+    return applyPreference({
       winner: asWinner(atBest[0]),
       reason: atBest[0].reason,
       nominalTie: atBest.map((c) => c.conceptId),
@@ -387,10 +469,10 @@ function resolveCandidates(scope, candidates, integrity = []) {
       integrity: codes,
       unscoped: false,
       alsoInScope: alsoFrom(new Set(atBest.map((c) => c.conceptId))),
-    };
+    });
   }
 
-  return {
+  return applyPreference({
     winner: null,
     reason: null,
     nominalTie: [],
@@ -399,7 +481,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
     integrity: codes,
     unscoped: false,
     alsoInScope: alsoFrom(new Set(atBest.map((c) => c.conceptId))),
-  };
+  });
 }
 
 /**
@@ -421,9 +503,12 @@ function resolveCandidates(scope, candidates, integrity = []) {
  * @param {string} english EXACT, already-normalised English string
  */
 function resolve(scope, english) {
+  // ⚠️ THREE arguments on purpose. An unscoped book has no preference map to
+  // consult — passing `english` here would ask `scope.preference.get()` of a
+  // scope that has no `preference` at all.
   if (scope.unscoped) return resolveCandidates(scope, [], []);
   const { candidates, integrity } = lookupCandidates(scope.db, english, scope.stmts);
-  return resolveCandidates(scope, candidates, integrity);
+  return resolveCandidates(scope, candidates, integrity, english);
 }
 
 module.exports = {

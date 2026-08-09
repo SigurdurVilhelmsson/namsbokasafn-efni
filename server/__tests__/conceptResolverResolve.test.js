@@ -1,7 +1,12 @@
 // server/__tests__/conceptResolverResolve.test.js
 /**
- * resolveCandidates is PURE: a literal Scope and a literal candidate array, no
- * database anywhere in this file. That is the point of the split.
+ * A literal Scope and a literal candidate array — NO DATABASE ANYWHERE IN THIS
+ * FILE. That is the point of the split, and it is still true after B4a.
+ *
+ * ⚠️ B4a narrowed the claim by exactly one statement. `resolveCandidates` reads
+ * `scope.stmts.termById` on the preference-FAULT path alone, to tell a stale row
+ * from a misfiled one. The fault cases below stub that ONE `.get()` on a plain
+ * object literal; nothing here opens, migrates or imports a connection.
  */
 import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
@@ -45,27 +50,62 @@ describe('resolveCandidates — term choice', () => {
     expect(r.reason).toBe('head-form');
   });
 
+  // ⚠️ RE-KEYED 2026-08-09 (B4a, §C38). These fixtures used to be
+  // `new Map([[10, …]])` — the numeric conceptId — which meant this file never
+  // exercised buildPreferenceMap's key at all and stayed green for the wrong
+  // reason. A preference is keyed on the LOWERCASED ENGLISH STRING now, so it
+  // is no longer per-candidate: every candidate in one resolution shares the
+  // same string, and `english` must be passed as the 4th argument or the
+  // override never runs.
   it('a book preference beats the head form, and says so', () => {
-    const pref = new Map([[10, { termId: 101, tier: 'book' }]]);
-    const r = resolveCandidates(chemScope(pref), [
-      cand(10, 'chemistry', [
-        ['fruma', 1, 100],
-        ['sella', 2, 101],
-      ]),
-    ]);
+    const pref = new Map([['cell', { termId: 101, tier: 'book' }]]);
+    const r = resolveCandidates(
+      chemScope(pref),
+      [
+        cand(10, 'chemistry', [
+          ['fruma', 1, 100],
+          ['sella', 2, 101],
+        ]),
+      ],
+      [],
+      'cell'
+    );
     expect(r.winner.text).toBe('sella');
     expect(r.reason).toBe('book-preference');
   });
 
   it('a chapter preference reports chapter-preference', () => {
-    const pref = new Map([[10, { termId: 101, tier: 'chapter' }]]);
+    const pref = new Map([['cell', { termId: 101, tier: 'chapter' }]]);
+    const r = resolveCandidates(
+      chemScope(pref),
+      [
+        cand(10, 'chemistry', [
+          ['fruma', 1, 100],
+          ['sella', 2, 101],
+        ]),
+      ],
+      [],
+      'cell'
+    );
+    expect(r.reason).toBe('chapter-preference');
+  });
+
+  // ⚠️ CONTROL for the whole re-key: `english` is OPTIONAL so resolveCandidates
+  // stays pure and every existing call site keeps working. A caller that does
+  // not name the string gets the position walk and nothing else — the
+  // preference map is not consulted, because there is no string to consult it
+  // with. Without this, a mutant that defaulted `english` to something truthy
+  // would go unnoticed.
+  it('omitting `english` leaves the preference map unread', () => {
+    const pref = new Map([['cell', { termId: 101, tier: 'book' }]]);
     const r = resolveCandidates(chemScope(pref), [
       cand(10, 'chemistry', [
         ['fruma', 1, 100],
         ['sella', 2, 101],
       ]),
     ]);
-    expect(r.reason).toBe('chapter-preference');
+    expect(r.winner.text).toBe('fruma');
+    expect(r.reason).toBe('head-form');
   });
 });
 
@@ -185,23 +225,43 @@ describe('resolveCandidates — D2, ties', () => {
     expect(r.tied).toEqual([]);
   });
 
-  it("a NOMINAL tie winner's reason tracks how THAT candidate resolved — a preference, not a hardcoded value", () => {
-    // Concept 70 resolves via a book preference to 'nytt' (not its rank-1
-    // head form, 'gamalt'); concept 71 resolves via its own head form to
-    // the same string 'nytt'. Nominally tied, but for two different reasons
-    // — proving `reason` is read off the winning candidate, not a constant.
-    const pref = new Map([[70, { termId: 701, tier: 'book' }]]);
-    const r = resolveCandidates(chemScope(pref), [
-      cand(70, 'biology', [
-        ['gamalt', 1, 700],
-        ['nytt', 2, 701],
-      ]),
-      cand(71, 'biology', [['nytt', 1, 710]]),
-    ]);
+  it('TIE DETECTION READS HEAD FORMS, never preferred terms — the override runs AFTER', () => {
+    // ⚠️ REWRITTEN 2026-08-09 (B4a, §C38). HISTORY, kept on purpose: this was
+    // "a NOMINAL tie winner's reason tracks how THAT candidate resolved — a
+    // preference, not a hardcoded value", and it asserted `nominalTie` was
+    // [70, 71]. That was true while step 3 applied the preference PER
+    // CANDIDATE, which made 70 contribute 'nytt' to the tie comparison and so
+    // agree with 71. B4a moves the preference out of step 3 entirely: the
+    // position walk now always compares HEAD forms, so 70 contributes
+    // 'gamalt' and this fixture is a REAL tie ('gamalt' vs 'nytt'), which the
+    // override then answers.
+    //
+    // The same fixture therefore now pins the design claim at the centre of
+    // this task — "AFTER the position walk, never instead of it" — which
+    // nothing else in the suite pins from this direction. A mutant that moved
+    // the preference back into step 3 would produce nominalTie [70, 71] and
+    // turn this red.
+    const pref = new Map([['renewal', { termId: 701, tier: 'book' }]]);
+    const r = resolveCandidates(
+      chemScope(pref),
+      [
+        cand(70, 'biology', [
+          ['gamalt', 1, 700],
+          ['nytt', 2, 701],
+        ]),
+        cand(71, 'biology', [['nytt', 1, 710]]),
+      ],
+      [],
+      'renewal'
+    );
     expect(r.winner.text).toBe('nytt');
     expect(r.winner.conceptId).toBe(70);
     expect(r.reason).toBe('book-preference');
-    expect(r.nominalTie.sort()).toEqual([70, 71]);
+    // A REAL tie on head forms — NOT a nominal one. The override answered it,
+    // so `tied` is cleared and 71 is re-homed rather than lost.
+    expect(r.nominalTie).toEqual([]);
+    expect(r.tied).toEqual([]);
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([71]);
   });
 
   it('the nominal-tie winner is DETERMINISTIC — lowest conceptId, never row order', () => {
@@ -247,70 +307,306 @@ describe('resolveCandidates — D2, ties', () => {
     expect(r.tied).toEqual([]);
   });
 
-  it('a preference does NOT break a real tie — it selects within a concept, never between', () => {
-    const pref = new Map([[41, { termId: 410, tier: 'book' }]]);
-    const r = resolveCandidates(chemScope(pref), [
-      cand(40, 'biology', [['fukalyf', 1, 400]]),
-      cand(41, 'biology', [['syklalyf', 1, 410]]),
-    ]);
-    // ⚠️ RENAMED 2026-08-08. This was called 'a preference BREAKS a real tie — that
-    // is what preference is for', which asserts the OPPOSITE of what the assertions
-    // below prove: the tie STAYS real. Two independent whole-branch reviewers flagged
-    // it. Its old comment was wrong too — it said "the preference changed 41's text,
-    // not its rank", but concept 41 has exactly ONE is-term and the preference names
-    // that same termId, so the lookup is a no-op for this fixture. Mutation proof:
-    // disabling preference lookup entirely leaves this test GREEN.
+  it('a preference DOES break a real tie — B4a, and this is the third name of this test', () => {
+    // ⚠️ HISTORY, kept on purpose — a silent rename erases why the first one
+    // happened. Written as "a preference BREAKS a real tie — that is what
+    // preference is for"; renamed 2026-08-08 to "does NOT break a real tie —
+    // it selects within a concept, never between", which was correct for the
+    // concept-keyed model (a preference named a concept, so it could only
+    // choose among that one concept's terms and never arbitrate between two
+    // competing concepts); inverted again 2026-08-09 by B4a, where a
+    // preference names ONE TERM on one concept and IS the answer — §C38's
+    // whole point, since chemistry's `accuracy` must be able to reach
+    // biology's `hittni` at position 3.
     //
-    // What it DOES pin, and what the name now says: preference chooses among a single
-    // concept's terms; it never arbitrates between two competing concepts. Both still
-    // tie on position and still disagree on text, so the tie is real and is reported.
-    // The preference/reason coverage lives in the book-preference nominal-tie test,
-    // which IS mutation-confirmed to depend on the preference applying.
-    expect(r.winner).toBeNull();
-    expect(r.tied).toEqual([
-      { conceptId: 40, text: 'fukalyf', domain: 'biology' },
-      { conceptId: 41, text: 'syklalyf', domain: 'biology' },
-    ]);
+    // The 2026-08-08 comment also recorded that the old fixture was a no-op
+    // (concept 41 had exactly one is-term and the preference named it, so
+    // disabling preference lookup left the test green). That is no longer
+    // true: the preference now moves the answer from "no winner" to concept
+    // 41, so this fixture is mutation-load-bearing on its own.
+    //
+    // The tied members are not lost — they move to alsoInScope (asserted below).
+    const pref = new Map([['bond', { termId: 410, tier: 'book' }]]);
+    const r = resolveCandidates(
+      chemScope(pref),
+      [cand(41, 'physics', [['tengi', 1, 410]]), cand(42, 'physics', [['bindi', 1, 420]])],
+      [],
+      'bond'
+    );
+    expect(r.winner.text).toBe('tengi');
+    expect(r.reason).toBe('book-preference');
+    expect(r.tied).toEqual([]);
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([42]);
   });
 });
 
 describe('resolveCandidates — integrity codes', () => {
+  // ⚠️ REWRITTEN 2026-08-09 (B4a). `orphan-preference` is RETIRED — one code
+  // for three faults with three different remedies (delete a stale row · fix a
+  // misfiled one · add a domain to the book's chain) undercut the diagnostic
+  // purpose it was logged for. The three replacements are asserted in the D4
+  // block below; these cases keep their original ARRAY-shape intent.
+  //
+  // `stmts.termById` is stubbed, not mocked away: the term row EXISTS (so this
+  // is `preference-not-a-candidate`, a misfiled row) but no candidate for this
+  // English string carries it.
+  const withRealTermRow = (pref) => {
+    const s = chemScope(pref);
+    s.stmts = { termById: { get: () => ({ term_id: 999, concept_id: 77 }) } };
+    return s;
+  };
+
   it('a preference naming a term of ANOTHER concept falls back to the head form and reports', () => {
-    const pref = new Map([[10, { termId: 999, tier: 'book' }]]); // 999 belongs to nobody here
-    const r = resolveCandidates(chemScope(pref), [cand(10, 'chemistry', [['efni', 1, 100]])]);
+    const pref = new Map([['matter', { termId: 999, tier: 'book' }]]); // 999 is on concept 77
+    const r = resolveCandidates(
+      withRealTermRow(pref),
+      [cand(10, 'chemistry', [['efni', 1, 100]])],
+      [],
+      'matter'
+    );
     expect(r.winner.text).toBe('efni');
+    // ⚠️ The SECOND half is what a naive implementation gets wrong: reporting
+    // the fault is not enough, the resolution must otherwise be the
+    // UNPREFERRED one — same winner AND same reason as if no row existed.
     expect(r.reason).toBe('head-form');
-    expect(r.integrity).toContain('orphan-preference');
+    expect(r.integrity).toContain('preference-not-a-candidate');
   });
 
-  it('integrity is an ARRAY, so a merge-cycle and an orphan-preference coexist', () => {
-    const pref = new Map([[10, { termId: 999, tier: 'book' }]]);
+  it('integrity is an ARRAY, so a merge-cycle and a preference fault coexist', () => {
+    const pref = new Map([['matter', { termId: 999, tier: 'book' }]]);
     const r = resolveCandidates(
-      chemScope(pref),
+      withRealTermRow(pref),
       [cand(10, 'chemistry', [['efni', 1, 100]])],
-      ['merge-cycle']
+      ['merge-cycle'],
+      'matter'
     );
-    expect(r.integrity.sort()).toEqual(['merge-cycle', 'orphan-preference']);
+    expect(r.integrity.sort()).toEqual(['merge-cycle', 'preference-not-a-candidate']);
   });
 
   it('CONTROL: a clean resolution reports an EMPTY integrity array', () => {
-    const r = resolveCandidates(chemScope(), [cand(10, 'chemistry', [['efni', 1, 100]])]);
+    const r = resolveCandidates(
+      chemScope(),
+      [cand(10, 'chemistry', [['efni', 1, 100]])],
+      [],
+      'matter'
+    );
     expect(r.integrity).toEqual([]);
   });
 
-  it("de-dup guard: TWO orphaned preferences report 'orphan-preference' only ONCE", () => {
-    // Symmetric to lookupCandidates' merge-cycle de-dup: two DIFFERENT in-scope
-    // candidates each carry a preference naming a term that belongs to neither.
+  it('AT MOST ONE preference fault per resolution — one English string, one row', () => {
+    // ⚠️ REPLACES the old "de-dup guard: TWO orphaned preferences report
+    // 'orphan-preference' only ONCE". Under the concept key a resolution could
+    // carry one preference PER CANDIDATE, so a `codes.includes()` guard was
+    // load-bearing against a double push. Under the English key that is
+    // STRUCTURAL: a resolution names exactly one string, which selects at most
+    // one row, so the push is unconditional and cannot repeat — even with two
+    // in-scope candidates, neither of which carries the term.
+    //
     // `toEqual`, not `toContain` — a duplicate push would still pass `toContain`.
-    const pref = new Map([
-      [10, { termId: 999, tier: 'book' }],
-      [20, { termId: 998, tier: 'book' }],
-    ]);
-    const r = resolveCandidates(chemScope(pref), [
-      cand(10, 'chemistry', [['efni', 1, 100]]),
-      cand(20, 'physics', [['kraftur', 1, 200]]),
-    ]);
-    expect(r.integrity).toEqual(['orphan-preference']);
+    const pref = new Map([['matter', { termId: 999, tier: 'book' }]]);
+    const r = resolveCandidates(
+      withRealTermRow(pref),
+      [cand(10, 'chemistry', [['efni', 1, 100]]), cand(20, 'physics', [['kraftur', 1, 200]])],
+      [],
+      'matter'
+    );
+    expect(r.integrity).toEqual(['preference-not-a-candidate']);
+  });
+});
+
+describe('resolveCandidates — the preference override (§C38)', () => {
+  // §C38's exact defect: chemistry resolved BOTH `accuracy` and `precision` to
+  // `nákvæmni`, collapsing the pair a measurements chapter exists to
+  // distinguish. Chemistry's chain is 1.chemistry → 2.physics → 3.biology and
+  // chemistry has no `accuracy` concept, so physics@2 decided and biology's
+  // `hittni` at position 3 was never consulted.
+  const acc = (pref) =>
+    resolveCandidates(
+      chemScope(pref),
+      [cand(1, 'physics', [['nákvæmni', 1, 10]]), cand(2, 'biology', [['hittni', 1, 20]])],
+      [],
+      'accuracy'
+    );
+
+  it('THE ANCHOR — a preferred term on a losing in-scope concept wins', () => {
+    const r = acc(new Map([['accuracy', { termId: 20, tier: 'book' }]]));
+    expect(r.winner).toMatchObject({ text: 'hittni', domain: 'biology', position: 3 });
+    expect(r.reason).toBe('book-preference');
+  });
+
+  // ⚠️ THE CONTROL THE ANCHOR IS WORTHLESS WITHOUT. A change that broke
+  // position ordering generally would PASS the anchor and FAIL this — an
+  // anchor alone proves only that some code ran.
+  it('THE CONTROL — position still decides when there is no preference', () => {
+    const r = acc(new Map());
+    expect(r.winner).toMatchObject({ text: 'nákvæmni', domain: 'physics', position: 2 });
+    expect(r.reason).toBe('head-form');
+  });
+
+  it('the displaced position-winner moves to alsoInScope, not out of sight', () => {
+    const r = acc(new Map([['accuracy', { termId: 20, tier: 'book' }]]));
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([1]);
+  });
+
+  it('a chapter-tier preference reports chapter-preference through the override', () => {
+    const r = acc(new Map([['accuracy', { termId: 20, tier: 'chapter' }]]));
+    expect(r.winner.text).toBe('hittni');
+    expect(r.reason).toBe('chapter-preference');
+  });
+
+  // ⚠️ THE REGRESSION TEST FOR THE DEFECT THAT CAUSED THE SPEC REWRITE. Under
+  // the concept key, preferring a term for 'accuracy' moved every OTHER English
+  // string on that concept too. No other test in the suite would catch its
+  // return: the fixture is identical, only the string being resolved differs.
+  it('THE LEAK CONTROL — a preference for one English string does not move another', () => {
+    const pref = new Map([['accuracy', { termId: 20, tier: 'book' }]]);
+    const other = resolveCandidates(
+      chemScope(pref),
+      [cand(1, 'physics', [['nákvæmni', 1, 10]]), cand(2, 'biology', [['hittni', 1, 20]])],
+      [],
+      'exactness'
+    );
+    expect(other.winner).toMatchObject({ text: 'nákvæmni', domain: 'physics' });
+    expect(other.reason).toBe('head-form');
+  });
+
+  // ⚠️ THE COLLATION CONTRACT, and the second half of conceptResolverScope's
+  // "found in any case" test. book_term_preference.english is COLLATE NOCASE
+  // so SQLite folds case on the column, and buildPreferenceMap keys its Map on
+  // the LOWERCASED string — but a JS Map does not fold anything, so the LOOKUP
+  // must lowercase too or the row is stored and never found, silently.
+  it('THE COLLATION CONTRACT — the lookup lowercases, matching buildPreferenceMap', () => {
+    const r = resolveCandidates(
+      chemScope(new Map([['accuracy', { termId: 20, tier: 'book' }]])),
+      [cand(1, 'physics', [['nákvæmni', 1, 10]]), cand(2, 'biology', [['hittni', 1, 20]])],
+      [],
+      'Accuracy'
+    );
+    expect(r.winner.text).toBe('hittni');
+    expect(r.reason).toBe('book-preference');
+  });
+
+  it('a nominalTie is PRESERVED when the override fires — it reports concepts to merge', () => {
+    // ⚠️ THE MEASURED REASON THE OVERRIDE RUNS AFTER THE WALK. A short-circuit
+    // that returned the preferred term immediately skips step 5 entirely, and
+    // that was measured to destroy this merge hint when the tie members
+    // straddle the preference: nominalTie went [1, 2] → []. A duplicate pair of
+    // concepts is worth merging regardless of which term the book uses.
+    const r = resolveCandidates(
+      chemScope(new Map([['x', { termId: 30, tier: 'book' }]])),
+      [
+        cand(1, 'physics', [['sama', 1, 10]]),
+        cand(2, 'physics', [['sama', 1, 20]]),
+        cand(3, 'biology', [['annad', 1, 30]]),
+      ],
+      [],
+      'x'
+    );
+    expect(r.winner.text).toBe('annad');
+    expect(r.nominalTie.sort()).toEqual([1, 2]);
+    // Both tie members are still offerable answers the editor chose against.
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([1, 2]);
+  });
+});
+
+describe('resolveCandidates — the three preference faults (D4)', () => {
+  // ⚠️ THREE CODES, THREE REMEDIES. `orphan-preference` named all three at
+  // once: delete a stale row · re-file a misfiled one · add a domain to the
+  // book's priority chain. Each case asserts BOTH halves — the code is
+  // reported AND the resolution is otherwise the unpreferred one. The second
+  // half is what a naive implementation gets wrong.
+  const two = [cand(1, 'physics', [['nákvæmni', 1, 10]]), cand(2, 'biology', [['hittni', 1, 20]])];
+  const unpreferred = { text: 'nákvæmni', domain: 'physics' };
+
+  it('preference-not-a-candidate: the term is real but not on any candidate here', () => {
+    const scope = chemScope(new Map([['accuracy', { termId: 999, tier: 'book' }]]));
+    scope.stmts = { termById: { get: () => ({ term_id: 999, concept_id: 77 }) } };
+    const r = resolveCandidates(scope, two, [], 'accuracy');
+    expect(r.integrity).toContain('preference-not-a-candidate');
+    expect(r.winner).toMatchObject(unpreferred);
+    expect(r.reason).toBe('head-form');
+  });
+
+  it('preference-term-missing: the term row is gone', () => {
+    const scope = chemScope(new Map([['accuracy', { termId: 999, tier: 'book' }]]));
+    scope.stmts = { termById: { get: () => undefined } };
+    const r = resolveCandidates(scope, two, [], 'accuracy');
+    expect(r.integrity).toContain('preference-term-missing');
+    expect(r.winner).toMatchObject(unpreferred);
+    expect(r.reason).toBe('head-form');
+  });
+
+  // ⚠️ CONTROL on the two above: the SAME missing owner produces DIFFERENT
+  // codes depending only on whether the term row exists. Without this, an
+  // implementation that hardcoded either code would pass one of the two tests
+  // and the pair would look like coverage.
+  it('CONTROL: missing-row and misfiled-row are DISTINGUISHABLE, not one code', () => {
+    const mk = (get) => {
+      const s = chemScope(new Map([['accuracy', { termId: 999, tier: 'book' }]]));
+      s.stmts = { termById: { get } };
+      return resolveCandidates(s, two, [], 'accuracy').integrity;
+    };
+    expect(mk(() => ({ term_id: 999, concept_id: 77 }))).not.toEqual(mk(() => undefined));
+  });
+
+  it('preference-out-of-scope: the term is on a concept outside the domain chain', () => {
+    const withMath = [...two, cand(3, 'mathematics', [['stæ', 1, 30]])];
+    const r = resolveCandidates(
+      chemScope(new Map([['accuracy', { termId: 30, tier: 'book' }]])),
+      withMath,
+      [],
+      'accuracy'
+    );
+    expect(r.integrity).toContain('preference-out-of-scope');
+    expect(r.winner).toMatchObject(unpreferred);
+    expect(r.reason).toBe('head-form');
+  });
+
+  // ⚠️ THE ONE A NAIVE IMPLEMENTATION MISSES, and the reason the owner search
+  // runs over ALL candidates rather than over the `outOfScope` OUTPUT. That
+  // output is lossy in two independent ways, both present in this fixture:
+  //   ① it carries only the HEAD FORM's `text` and no termId at all, so a
+  //      preferred term that is not the head form (concept 3's rank-2 'stærð')
+  //      is unrecoverable from it;
+  //   ② step 2 DROPS term-less candidates before recording them (pinned by
+  //      'a term-less out-of-scope concept is not listed as a suggestion
+  //      either'), so concept 4 never appears in it at all.
+  //
+  // ⚠️ DEVIATION FROM THE BRIEF, recorded on purpose. The brief's fixture for
+  // this case set `withEmpty[2].isTerms = [{text:'stæ', rank:1, termId:30}]`,
+  // which is byte-identical to what `cand(3,'mathematics',[['stæ',1,30]])`
+  // already builds — a no-op that made the test a duplicate of the one above.
+  // A literally term-less owner is UNREACHABLE (empty isTerms cannot carry the
+  // preferred termId), so this pins the reachable form of the same hazard.
+  it('preference-out-of-scope fires for a term the outOfScope output cannot express', () => {
+    const withLossy = [
+      ...two,
+      cand(3, 'mathematics', [
+        ['stæ', 1, 30],
+        ['stærð', 2, 31], // ← the preferred term, NOT the head form
+      ]),
+      cand(4, 'mathematics', []), // ← term-less: dropped from outOfScope entirely
+    ];
+    const r = resolveCandidates(
+      chemScope(new Map([['accuracy', { termId: 31, tier: 'book' }]])),
+      withLossy,
+      [],
+      'accuracy'
+    );
+    expect(r.outOfScope).toEqual([{ conceptId: 3, text: 'stæ', domain: 'mathematics' }]);
+    expect(r.integrity).toContain('preference-out-of-scope');
+    expect(r.winner).toMatchObject(unpreferred);
+  });
+
+  it('CONTROL: a preference on an IN-scope concept reports no fault at all', () => {
+    const r = resolveCandidates(
+      chemScope(new Map([['accuracy', { termId: 20, tier: 'book' }]])),
+      two,
+      [],
+      'accuracy'
+    );
+    expect(r.integrity).toEqual([]);
+    expect(r.winner.text).toBe('hittni');
   });
 });
 

@@ -17,14 +17,14 @@
  * `INSERT`s were already pointed at `book_term_preference` in Task 2b, ahead of
  * that re-key landing, so no further edit was needed here once Task 3 shipped.
  *
- * ⚠️ TWO tests below are RED between Task 3 and Task 6, BY CONSTRUCTION —
- * not a regression, and not fixable from this file. `buildPreferenceMap` now
- * keys on the lowercased English string, but `resolveCandidates`
- * (server/lib/conceptResolver.js) still does `scope.preference.get(c.conceptId)`
- * — a NUMBER — so the string-keyed map never hits and `reason:
- * 'book-preference'` is unreachable until Task 6 re-points that lookup onto
- * the English string too. See the two tests themselves for which. The other
- * 12 in this block, and both in `createResolvedExportFn`, are green.
+ * ⚠️ RESOLVED 2026-08-09 BY TASK 6. This banner used to warn that two tests
+ * below were RED by construction between Task 3 and Task 6: `buildPreferenceMap`
+ * keyed on the lowercased English string while `resolveCandidates` still did
+ * `scope.preference.get(c.conceptId)` — a NUMBER — so the string-keyed map never
+ * hit and `reason: 'book-preference'` was unreachable. Task 6's step-6 override
+ * re-points that lookup onto the English string. The whole file is green; the
+ * history is kept because a "known red" window that nobody records is
+ * indistinguishable from a regression the next time one appears.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
@@ -101,10 +101,8 @@ describe('buildResolvedGlossary', () => {
     expect(t).not.toHaveProperty('chapter');
   });
 
-  // ⚠️ RED between Task 3 and Task 6 — see the file banner above.
-  // resolveCandidates still looks preference up by concept id; the map is now
-  // keyed by english string, so the lookup misses and this falls back to
-  // head-form. Task 6 closes it.
+  // ⚠️ Was RED between Task 3 and Task 6 (see the file banner). Green since
+  // Task 6's override; this is one of that task's two completion criteria.
   it('honours an editor book-preference over the head form', () => {
     const cid = concept('chemistry', 'atom', ['frumeind', 'atóm']);
     const termId = db
@@ -119,9 +117,8 @@ describe('buildResolvedGlossary', () => {
     });
   });
 
-  // ⚠️ RED between Task 3 and Task 6 — see the file banner above. Same cause:
-  // resolveCandidates keys the preference lookup by concept id, not by the
-  // english string buildPreferenceMap now stores it under.
+  // ⚠️ Was RED between Task 3 and Task 6 (see the file banner). Green since
+  // Task 6's override; this is the second of that task's completion criteria.
   it('resolves the BOOK-DEFAULT (chapter 0) preference, never a chapter-level one — pins the `0` in buildScope(db, bookSlug, 0)', () => {
     const cid = concept('chemistry', 'bond', ['tengi', 'efnatengi', 'samtengi']);
     const bookTermId = db
