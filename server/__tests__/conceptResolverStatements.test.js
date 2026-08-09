@@ -3,7 +3,12 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { buildScope, lookupCandidates, resolve } = require('../lib/conceptResolver');
+const {
+  buildScope,
+  lookupCandidates,
+  resolve,
+  prepareLookupStatements,
+} = require('../lib/conceptResolver');
 
 /**
  * Spec §5: "Step 1 is the single query resolve() cannot hoist — it depends on
@@ -40,6 +45,25 @@ function addConcept(db, domain, en, is) {
   return conceptId;
 }
 
+/** A fresh DB with one concept for testing — returns both db and a termId to query. */
+function seedOneConcept() {
+  const { db } = freshMigratedDb();
+  const conceptId = Number(
+    db.prepare("INSERT INTO concept (domain, collection) VALUES ('test', 'TEST')").run()
+      .lastInsertRowid
+  );
+  const enTermResult = db
+    .prepare(
+      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', 'test', 1, 'test')"
+    )
+    .run(conceptId);
+  const termId = Number(enTermResult.lastInsertRowid);
+  db.prepare(
+    "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', 'próf', 1, 'test')"
+  ).run(conceptId);
+  return { db, termId };
+}
+
 describe('prepared statements are hoisted onto the scope (spec §5)', () => {
   it('resolve() prepares NOTHING — every statement it needs is already on the scope', () => {
     const { db } = freshMigratedDb();
@@ -56,16 +80,16 @@ describe('prepared statements are hoisted onto the scope (spec §5)', () => {
     db.close();
   });
 
-  // ⚠️ Named for what it ASSERTS (exactly 7), not for the weaker property it
+  // ⚠️ Named for what it ASSERTS (exactly 8), not for the weaker property it
   // implies (boundedness). Six tests on this branch were found claiming more in
   // their name than their assertions proved; an exact count deserves an exact name.
-  it('buildScope prepares EXACTLY 7 statements — the 7 distinct SQL strings gate 4 measured', () => {
+  it('buildScope prepares EXACTLY 8 statements — the 8 distinct SQL strings gate 4 measured', () => {
     const { db } = freshMigratedDb();
     const prepares = countPrepares(db);
     buildScope(db, 'edlisfraedi-2e', 1);
-    // 3 for the scope itself (book, priorities, preferences) + 4 hoisted for
-    // lookupCandidates = the 7 distinct SQL strings gate 4 measured.
-    expect(prepares()).toBe(7);
+    // 3 for the scope itself (book, priorities, preferences) + 5 hoisted for
+    // lookupCandidates/termById = the 8 distinct SQL strings gate 4 measured.
+    expect(prepares()).toBe(8);
     db.close();
   });
 
@@ -102,5 +126,13 @@ describe('prepared statements are hoisted onto the scope (spec §5)', () => {
     );
     a.close();
     b.close();
+  });
+
+  it('termById finds an existing term and returns undefined for a deleted one', () => {
+    const { db, termId } = seedOneConcept();
+    const { termById } = prepareLookupStatements(db);
+    expect(termById.get(termId)).toMatchObject({ term_id: termId });
+    expect(termById.get(termId + 99999)).toBeUndefined();
+    db.close();
   });
 });

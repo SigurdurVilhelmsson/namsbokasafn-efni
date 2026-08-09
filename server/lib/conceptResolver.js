@@ -61,7 +61,7 @@ function buildPreferenceMap(db, bookId, chapter) {
 }
 
 /**
- * The four statements `lookupCandidates` needs, prepared once.
+ * The five statements `lookupCandidates` and Term B4a lookup need, prepared once.
  *
  * ⚠️ Spec §5 — "In B1 it is a prepared statement held on the scope." These are
  * hoisted onto the Scope by buildScope, NOT prepared per call. Gate 4 measured
@@ -99,6 +99,11 @@ function prepareLookupStatements(db) {
         WHERE concept_id = ? AND lang = 'is'
         ORDER BY rank ASC, id ASC`
     ),
+    // B4a: distinguishes `preference-term-missing` (this returns undefined) from
+    // `preference-not-a-candidate` (it returns a row, but no candidate for this
+    // English string carries it). One code for both would name two faults with
+    // different remedies — the gap D4 exists to close.
+    termById: db.prepare('SELECT id AS term_id, concept_id FROM concept_term WHERE id = ?'),
   };
 }
 
@@ -398,4 +403,10 @@ function resolve(scope, english) {
   return resolveCandidates(scope, candidates, integrity);
 }
 
-module.exports = { buildScope, lookupCandidates, resolveCandidates, resolve };
+module.exports = {
+  buildScope,
+  lookupCandidates,
+  resolveCandidates,
+  resolve,
+  prepareLookupStatements,
+};
