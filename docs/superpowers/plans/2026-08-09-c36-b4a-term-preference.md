@@ -32,6 +32,8 @@
 | `server/lib/conceptResolver.js` | `buildPreferenceMap` re-key · `prepareLookupStatements` gains `termById` · `resolveCandidates` override + `alsoInScope` · docstring correction | **Modify** |
 | `server/scripts/export-terminology.js` | Carry integrity counts into the per-book log line and `outcomes[b]` | **Modify** |
 | `server/__tests__/migration048.test.js` | Migration shape, collation, expansion accounting, idempotence | **Create** |
+| `server/scripts/import-concepts.js` | Re-point the preference COUNT + prune at the new table (Task 2b) | **Modify** |
+| `server/__tests__/importConcepts.test.js` · `migration045.test.js` · `resolvedGlossary.test.js` · `freshMigratedDb.test.js` | Consumers of the dropped table (Task 2b) | **Modify** |
 | `server/__tests__/conceptResolverScope.test.js` | Preference-map tests re-keyed on English; collation contract | **Modify** |
 | `server/__tests__/conceptResolverResolve.test.js` | Override behaviour, `alsoInScope`, three codes, §2.2 leak control | **Modify** |
 | `server/__tests__/conceptResolverIntegrity.test.js` | Four whole-object `toEqual` shape pins | **Modify** |
@@ -336,7 +338,7 @@ Write `seedConceptWithTwoEnglish(db)` alongside `seedBookAndTerm`. **⚠️ The 
 - [ ] **Step 6: Run, then commit**
 
 Run: `npx vitest run server/__tests__/migration048.test.js` → PASS (7 tests).
-Run: `npm test` from the repo root → confirm nothing else broke. **Expect `conceptResolverScope.test.js` and any other file inserting into `book_concept_preference` to FAIL here** — that is correct; Task 3 fixes them. Note the failing file list; you will check it shrinks to zero by Task 6.
+Run: `npm test` from the repo root → confirm nothing else broke. **Expect FIVE files to fail here** — every consumer of the dropped table: `importConcepts`, `migration045`, `resolvedGlossary`, `freshMigratedDb` (all owned by **Task 2b**) and `conceptResolverScope` (owned by **Task 3**). ⚠️ **`server/scripts/import-concepts.js` is also broken at this commit** — production code, red for exactly one task. Record the failing file list; Task 2b step 5 checks it shrinks to one.
 
 ```bash
 git add server/migrations/048-book-term-preference.js server/__tests__/migration048.test.js
@@ -354,6 +356,97 @@ deliberately left case-sensitive.
 The expansion of any pre-existing rows is logged, not silent: one concept row
 becoming N English rows materialises the reach being removed, as rows a
 reviewer can delete. 0 rows on production.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
+```
+
+---
+
+## Task 2b: Follow the drop through every consumer
+
+**⚠️ ADDED 2026-08-09 by the pre-flight scan, after the plan was written.** Task 2 drops
+`book_concept_preference`, and the original plan named only `conceptResolverScope.test.js` as
+collateral. **It missed production code.** `db.prepare()` against a missing table throws
+immediately, so the concept importer — the tool that populates production — would crash on
+`require`. Traced by grepping the table's *droppers*, not its readers.
+
+**Files:**
+- Modify: `server/scripts/import-concepts.js:35`, `:50`
+- Modify: `server/__tests__/importConcepts.test.js`, `migration045.test.js`, `resolvedGlossary.test.js`, `freshMigratedDb.test.js`
+
+**Interfaces:**
+- Consumes: `book_term_preference` (Task 2).
+- Produces: no signature changes. The importer's `preferencesDropped` count keeps its meaning.
+
+- [ ] **Step 1: Confirm the breakage before fixing it**
+
+Run: `npx vitest run server/__tests__/importConcepts.test.js`
+Expected: **FAIL** with `no such table: book_concept_preference`. **If it passes, stop** — Task 2's
+migration did not run in this test's DB path, and the whole premise of this task is wrong.
+
+- [ ] **Step 2: Re-point the importer**
+
+Two statements in `server/scripts/import-concepts.js`. The prune keys on `term_id`, and
+`book_term_preference` keeps that column and its `ON DELETE CASCADE`, so this is a table rename
+and nothing more:
+
+```js
+    'SELECT COUNT(*) AS c FROM book_term_preference WHERE term_id = ?'
+```
+```js
+  const delPrefs = db.prepare('DELETE FROM book_term_preference WHERE term_id = ?');
+```
+
+⚠️ **Keep the explicit DELETE. Do not lean on the cascade.** The comment above it says why, and
+it is a B0 decision: a cascade yields no count for `preferencesDropped`, and the behaviour must
+not depend on `PRAGMA foreign_keys`, which is per-connection and not stored in the file.
+
+- [ ] **Step 3: Re-point the four test files**
+
+- **`importConcepts.test.js`** — ⚠️ **its "re-import keeps editor preferences intact" case is a
+  B0 pin, parameterised over `foreign_keys` default / ON / OFF.** Change the table name and the
+  insert's columns (`concept_id` → `english`); **keep the parameterisation and the test name.**
+  It is the pin proving preferences survive a re-import, and B4a must not weaken it.
+- **`migration045.test.js`** — 045 is shipped and unedited, but the table it created is now
+  dropped by 048 on the same `freshMigratedDb`. Assert 045's *other* tables as before, and change
+  any `book_concept_preference` assertion to state the post-048 truth: **045 creates it, 048
+  replaces it.** Do not delete the coverage.
+- **`resolvedGlossary.test.js`** — its preference cases insert on `concept_id`. Re-point them to
+  `book_term_preference` with the English string. ⚠️ **The case at `:103` — "resolves the
+  BOOK-DEFAULT (chapter 0) preference, never a chapter-level one" — is what pins the hardcoded
+  `0` in `buildScope(db, bookSlug, 0)`, which spec §6.3 relies on. Keep it.**
+- **`freshMigratedDb.test.js:35,52`** — expected-table lists. Replace
+  `'book_concept_preference'` with `'book_term_preference'`.
+
+- [ ] **Step 4: Run the affected suites**
+
+Run: `npx vitest run server/__tests__/importConcepts.test.js server/__tests__/migration045.test.js server/__tests__/resolvedGlossary.test.js server/__tests__/freshMigratedDb.test.js`
+Expected: PASS.
+
+- [ ] **Step 5: Run the full suite and confirm the failure set shrank to one file**
+
+Run: `npm test` from the repo root.
+Expected: the only remaining failures are in `conceptResolverScope.test.js`, which Task 3 owns.
+**Any other red file is a consumer this task still missed** — find it before moving on.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add server/scripts/import-concepts.js server/__tests__/
+git commit -m "fix(B4a): follow the table drop through every consumer
+
+Migration 048 drops book_concept_preference, and import-concepts.js prepares
+two statements against it — a COUNT and the explicit prune. db.prepare() on a
+missing table throws on require, so the tool that populates production would
+have crashed. The plan named only conceptResolverScope.test.js as collateral;
+this was found by grepping the table's droppers rather than its readers.
+
+The prune keys on term_id, which book_term_preference keeps, so the importer
+change is a rename. The explicit DELETE stays — a cascade yields no count for
+preferencesDropped and must not depend on PRAGMA foreign_keys (B0).
+
+importConcepts.test.js's 're-import keeps editor preferences intact' keeps its
+name and its foreign_keys default/ON/OFF parameterisation.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
 ```
