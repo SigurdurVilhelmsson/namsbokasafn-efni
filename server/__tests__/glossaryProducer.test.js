@@ -112,11 +112,16 @@ describe('the resolved export is a distinct producer', () => {
     expect(detectProducer(resolved)).toBe(PRODUCER_RESOLVED);
   });
 
-  it('is not confused with the old export', () => {
-    // Through detectProducer, not constant inequality — constant inequality
-    // alone is trivially true when PRODUCER_RESOLVED is undefined, so it
-    // would pass even if the new branch were removed. This must fail if the
-    // new branch is removed.
+  it('inserting the resolved branch did not break old-export detection', () => {
+    // The first assertion is deliberately non-discriminating: it holds with
+    // or without the PRODUCER_RESOLVED branch, because an unstamped or
+    // unrecognised payload also fails to be PRODUCER_EXPORT (it falls
+    // through to `unknown`, not to PRODUCER_EXPORT). It cannot be made to
+    // fail on a removed branch without duplicating 'detects the stamp'.
+    // The load-bearing check is the second assertion: the new branch was
+    // inserted directly above the PRODUCER_EXPORT check in detectProducer,
+    // and this pins that the insertion did not break detection of the old,
+    // unrelated 'export-terminology' stamp.
     expect(detectProducer(resolved)).not.toBe(PRODUCER_EXPORT);
     expect(detectProducer({ producer: 'export-terminology', terms: [] })).toBe(PRODUCER_EXPORT);
   });
