@@ -55,7 +55,11 @@ const { BOOK_DOMAIN_PRIORITY } = require('../lib/domains');
 // The MODULE, not only its two functions: gate 5b runs this one and the
 // branch-point one side by side, so it needs both as objects.
 const resolveModule = require('../lib/conceptResolver');
-const { buildScope, resolve } = resolveModule;
+// ⚠️ `nocaseKey` comes from the RESOLVER, never re-implemented here — it is
+// SQLite's ASCII-only NOCASE fold, which `toLowerCase()` is not. Gate 4 groups
+// census strings by exactly the key `book_term_preference`'s PRIMARY KEY
+// collides on, so the two must be the same function.
+const { buildScope, resolve, nocaseKey } = resolveModule;
 const { collectSourceEnglish } = require('../lib/sourceEnglish');
 const { buildResolvedGlossary } = require('../lib/resolvedGlossary');
 // ⚠️ A TEST HELPER ON PURPOSE. `freshMigratedDb` is the ONE place that builds a
@@ -657,12 +661,21 @@ function gate4(db, bookId, payload) {
   for (const [conceptId, entries] of byConcept) {
     // ⚠️ CASE VARIANTS ARE NOT A LEAK. The census carries atom/Atom/ATOM as
     // three strings, `book_term_preference.english` is COLLATE NOCASE and
-    // `buildPreferenceMap` lowercases its key, so preferring 'Atom' moving
-    // 'atom' is §5.1's documented collation contract working correctly. A pair
-    // that differs only by case would produce a FALSE FAILURE here.
+    // `buildPreferenceMap` folds its key the same way, so preferring 'Atom'
+    // moving 'atom' is §5.1's documented collation contract working correctly.
+    // A pair that differs only by case would produce a FALSE FAILURE here.
+    //
+    // ⚠️ FOLDED WITH THE RESOLVER'S OWN `nocaseKey`, NOT `toLowerCase()`
+    // (whole-branch review, 2026-08-09). They are DIFFERENT folds: NOCASE is
+    // ASCII-only, `toLowerCase()` is Unicode-aware. `toLowerCase()` here would
+    // treat `Ångström`/`ångström` as one string and skip a concept that SQLite
+    // keeps as two genuinely distinct preference keys — i.e. quietly drop a
+    // qualifying candidate from the gate. Chemistry's census has 0 non-ASCII
+    // strings, so this is inert today; it is aligned so the two folds cannot
+    // drift apart later.
     const distinct = new Map();
     for (const e of entries)
-      if (!distinct.has(e.english.toLowerCase())) distinct.set(e.english.toLowerCase(), e);
+      if (!distinct.has(nocaseKey(e.english))) distinct.set(nocaseKey(e.english), e);
     if (distinct.size < 2) continue;
     // The concept needs a SECOND Icelandic term, or a preference cannot move
     // anything and the gate would be vacuous in the other direction.
@@ -676,14 +689,26 @@ function gate4(db, bookId, payload) {
   );
 
   if (candidates.length === 0) {
-    // ⚠️ NOT a pass. An absence is not an answer.
+    // ⚠️ NOT a pass — AND NOT AN EXIT-0 EITHER (whole-branch review, 2026-08-09,
+    // found by both reviewers). This returned `{ ok: true }`, so the script
+    // exited 0 while printing a loud "GATE 4 DID NOT RUN … it is not a pass".
+    // The prose is for a human; the EXIT CODE is the only thing an automated
+    // caller reads, and it could not tell "gate 4 passed" from "gate 4 could not
+    // be constructed". Gate 1 already gets this right — an un-runnable
+    // comparison is a hard FAIL there, for the same reason — so gate 4 now
+    // matches it exactly: verdict FAIL, measured string prefixed `NOT RUN:`.
+    //
+    // This gate is the regression test for the defect that forced the whole
+    // spec to be rewritten. Silently downgrading it to "fine" is the one
+    // outcome that must not be possible.
     record(
       'GATE 4 (the leak is closed)',
-      'NOT RUN',
-      'no concept in chemistry’s census answers two case-distinct English strings while ' +
-        'carrying a second Icelandic term, so the multi-string case cannot be constructed here'
+      'FAIL',
+      'NOT RUN: no concept in chemistry’s census answers two case-distinct English strings ' +
+        'while carrying a second Icelandic term, so the multi-string case cannot be constructed ' +
+        'here. This is not a pass — the corpus could not supply the subject.'
     );
-    return { ok: true, ran: false };
+    return { ok: false, ran: false };
   }
 
   // ⚠️ EVERY QUALIFYING CONCEPT, not just the first (review, 2026-08-09). This

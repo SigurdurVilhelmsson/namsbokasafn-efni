@@ -445,6 +445,114 @@ describe('runGlossaryExport — D5: integrity report reaches an operator, never 
   });
 });
 
+/**
+ * ⚠️ THE D5 CHANNEL WAS PINNED ON BOTH SIDES WITH A STUB IN THE MIDDLE
+ * (whole-branch review, 2026-08-09). Every test in the block above injects
+ * `integrity: {...}` as a LITERAL from a hand-written `exportFn`, and
+ * resolvedGlossary.test.js asserts `out.integrity` but never reaches
+ * `export-terminology.js`. So both halves were green while nothing measured
+ * that a code produced by the RESOLVER survives the whole way to an operator.
+ * That is this repo's named failure mode — two checks that pass for the right
+ * reason individually and leave the join untested.
+ *
+ * This test removes the stub: a real migrated database, a real preference
+ * fault, the real `buildResolvedGlossary` as `exportFn`, and the assertion is
+ * on `runGlossaryExport`'s own operator-facing output.
+ *
+ * ⚠️ The fault is `preference-not-a-candidate` — a real `concept_term` row on
+ * the WRONG concept — chosen because it needs no `foreign_keys = OFF` trickery:
+ * `book_term_preference.term_id` REFERENCES `concept_term(id)`, and this fixture
+ * satisfies that constraint honestly.
+ */
+describe('runGlossaryExport — D5 END TO END: a resolver fault reaches the operator, no stub', () => {
+  const require2 = createRequire(import.meta.url);
+  const freshMigratedDb = require2('./helpers/freshMigratedDb');
+  const { buildResolvedGlossary } = require2('../lib/resolvedGlossary');
+
+  /** A book whose 'atom' preference names a term belonging to another concept. */
+  function realDbWithPreferenceFault({ withPreference }) {
+    const { db } = freshMigratedDb();
+    db.prepare(
+      "INSERT INTO registered_books (slug, title_is, registered_by) VALUES ('prufubok', 'Prufubók', 'test')"
+    ).run();
+    const bookId = db.prepare("SELECT id FROM registered_books WHERE slug = 'prufubok'").get().id;
+    db.prepare(
+      "INSERT INTO book_domain_priority (book_id, domain, position) VALUES (?, 'chemistry', 1)"
+    ).run(bookId);
+
+    const mk = (en, is) => {
+      const cid = db
+        .prepare("INSERT INTO concept (domain, collection) VALUES ('chemistry', 'TEST')")
+        .run().lastInsertRowid;
+      db.prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', ?, 1, 'test')"
+      ).run(cid, en);
+      return Number(
+        db
+          .prepare(
+            "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, 1, 'test')"
+          )
+          .run(cid, is).lastInsertRowid
+      );
+    };
+    mk('atom', 'frumeind');
+    const otherTermId = mk('bond', 'tengi'); // a REAL term row — on the wrong concept
+
+    if (withPreference) {
+      db.prepare(
+        'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, ?, ?)'
+      ).run(bookId, 'atom', otherTermId);
+    }
+    return db;
+  }
+
+  const realExportFn = (db) => (slug) =>
+    buildResolvedGlossary(db, slug, { census: { strings: ['atom'], filesRead: 1, root: '/fake' } });
+
+  it('a preference fault from resolve() reaches the log line and outcomes[b] — real resolver, real DB', () => {
+    const db = realDbWithPreferenceFault({ withPreference: true });
+    // No committed file -> refused-absent-baseline (§C21), which is the state
+    // every production book is in right now, and it reports via logError.
+    seedBook('prufubok');
+    const errors = [];
+    const code = run({ exportFn: realExportFn(db), logError: (m) => errors.push(m) });
+
+    expect(code).toBe(0);
+    // THE JOIN: this string was produced by conceptResolver.resolve(), counted
+    // by buildResolvedGlossary, and formatted by export-terminology.js.
+    expect(errors.join('\n')).toContain(
+      'integrity faults (census strings): {"preference-not-a-candidate":1}'
+    );
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.prufubok.integrity).toEqual({ 'preference-not-a-candidate': 1 });
+    db.close();
+  });
+
+  // ⚠️ THE CONTROL. Without it, a run that reported this note for ANY payload —
+  // or a fixture that was broken for some unrelated reason — would look like a
+  // pass. Same database, same census, same book: only the preference row is
+  // gone, and the note must vanish with it.
+  it('CONTROL: the identical run with NO preference row reports no integrity note at all', () => {
+    const db = realDbWithPreferenceFault({ withPreference: false });
+    seedBook('prufubok');
+    const errors = [];
+    const code = run({ exportFn: realExportFn(db), logError: (m) => errors.push(m) });
+
+    expect(code).toBe(0);
+    expect(errors.join('\n')).not.toContain('integrity faults');
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    // Still the same refusal — so the run really did happen and really did
+    // reach the same code path as the test above.
+    expect(status.books.prufubok.outcome).toBe('refused-absent-baseline');
+    expect(status.books.prufubok).not.toHaveProperty('integrity');
+    db.close();
+  });
+});
+
 describe('runGlossaryExport — shrink guard', () => {
   // REVISED 2026-08-05 (C14 ② step 5, decision D2): the exit code was 1 —
   // a refusal was counted as a failure. It is now 0. The refusal itself is

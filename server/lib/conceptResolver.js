@@ -17,19 +17,55 @@
  */
 
 /**
+ * Fold one English string to the key `book_term_preference`'s PRIMARY KEY
+ * actually collides on.
+ *
+ * ⚠️ ASCII-ONLY, AND THAT IS THE WHOLE POINT — `String.prototype.toLowerCase()`
+ * IS NOT SQLite's `NOCASE` (whole-branch review, 2026-08-09). NOCASE folds the
+ * 26 ASCII letters and NOTHING ELSE, so `Ångström` and `ångström` are two
+ * DISTINCT primary keys and SQLite stores both rows happily. `toLowerCase()` is
+ * Unicode-aware and collapses them onto ONE Map key, where
+ * `!preference.has(key)` then lets SQL ROW ORDER decide which of two real
+ * editorial answers survives — register §C18's defect (a database row order
+ * deciding an editorial answer) reproduced inside the fix for it, and measured:
+ * 2 rows in, `scope.preference.size === 1`, and the survivor answers for a
+ * string it never named.
+ *
+ * ⚠️ Migration 048's collision detector CANNOT flag this. It groups by SQL
+ * `COLLATE NOCASE` (048-book-term-preference.js, `findCollisionGroups`) and
+ * says in as many words that it does so to avoid reimplementing SQLite's
+ * ASCII-only fold in JS — which is exactly what this file must therefore get
+ * right. **Keep this function and that query in agreement.**
+ *
+ * ⚠️ A `CHECK (english IS ASCII)` on the column was considered and REJECTED:
+ * `Ångström`, `Émile`, `Ω` are legitimate English-side headwords, chemistry's
+ * measured 0 non-ASCII strings is a fact about ONE book's census, and a
+ * migration-level refusal would turn a latent key skew into a hard write
+ * failure for books nobody has censused. Folding correctly costs one regex.
+ *
+ * @param {string} s
+ * @returns {string} `s` with A–Z lowered and every other code point untouched
+ */
+function nocaseKey(s) {
+  return s.replace(/[A-Z]/g, (c) => c.toLowerCase());
+}
+
+/**
  * Merge a book's preference rows for one chapter: chapter rows win over the
  * chapter-0 default.
  *
- * ⚠️ KEYED ON THE ENGLISH STRING, LOWERCASED (B4a, register §C38). It was keyed
+ * ⚠️ KEYED ON THE ENGLISH STRING, CASE-FOLDED (B4a, register §C38). It was keyed
  * on concept_id until 2026-08-09, which could not express what an editor means:
  * one concept carries many English strings, so a row set while looking at one
  * string silently moved all the others.
  *
- * ⚠️ THE LOWERCASING IS NOT OPTIONAL AND MUST MATCH THE LOOKUP. The column is
- * COLLATE NOCASE so SQLite folds case, but a JS Map does not — key it with the
- * raw text and `preference.get('accuracy')` misses a row stored as 'Accuracy'.
- * The row would be stored and never found: silent, and the exact failure class
- * this slice exists to end. resolveCandidates lowercases its lookup to match.
+ * ⚠️ THE FOLD IS NOT OPTIONAL AND MUST MATCH THE LOOKUP — and it must be
+ * `nocaseKey`, not `toLowerCase()`; see that function for why the difference is
+ * load-bearing. The column is COLLATE NOCASE so SQLite folds case, but a JS Map
+ * does not — key it with the raw text and `preference.get('accuracy')` misses a
+ * row stored as 'Accuracy'. The row would be stored and never found: silent, and
+ * the exact failure class this slice exists to end. resolveCandidates folds its
+ * lookup the same way to match.
  *
  * ⚠️ `tier` is CARRIED, not discarded. Parent spec §7.2 requires the editor panel
  * to say which rule fired, and this is the only place that still knows.
@@ -50,7 +86,7 @@ function buildPreferenceMap(db, bookId, chapter) {
   const preference = new Map();
   for (const r of rows) {
     const tier = r.chapter === 0 ? 'book' : 'chapter';
-    const key = r.english.toLowerCase();
+    const key = nocaseKey(r.english);
     // A chapter row always wins; a book row only fills an empty slot. Order of
     // rows from SQLite is not relied on.
     if (tier === 'chapter' || !preference.has(key)) {
@@ -157,15 +193,28 @@ function buildScope(db, bookSlug, chapter = 0) {
  * editorial corruption. It must terminate and it must be visible — on a cycle we
  * stop at the LAST UNVISITED concept and report, rather than looping or throwing.
  *
- * ⚠️ CORRECTED 2026-08-09 (register §C39). This comment used to claim: "Resolving
- * THROUGH merged_into is what makes an editorial merge take effect with no data
- * migration: preference rows still naming the absorbed concept keep working."
- * THEY DO NOT. buildPreferenceMap keys its map on the RAW preference row's
- * concept_id; lookupCandidates reports the post-followMerge SURVIVOR id. The
- * lookup therefore misses, the `if (pref)` branch never runs, and NO integrity
- * code fires — a silent swallow. Pinned by conceptResolverScope.test.js's §C39
- * case. B4a's re-key onto the English string defuses this (it surfaces as
- * `preference-not-a-candidate`); Part C's merge tooling still has to face it.
+ * ⚠️ CORRECTED 2026-08-09 (register §C39), then CORRECTED AGAIN THE SAME DAY —
+ * the first correction was written against the pre-B4a code and this branch
+ * falsified its present tense before it was committed (whole-branch review).
+ *
+ * ① The ORIGINAL claim, still false: "Resolving THROUGH merged_into is what
+ *    makes an editorial merge take effect with no data migration: preference
+ *    rows still naming the absorbed concept keep working." THEY DO NOT.
+ * ② The FIRST correction's diagnosis, true UNTIL B4a and stated here in the
+ *    past tense because it is now history: buildPreferenceMap KEYED its map on
+ *    the RAW preference row's `concept_id` while lookupCandidates reports the
+ *    post-followMerge SURVIVOR id, so the map lookup itself MISSED, the
+ *    `if (pref)` branch never ran, and NO integrity code fired — a silent
+ *    swallow.
+ * ③ WHERE IT STANDS ON THIS BRANCH: buildPreferenceMap keys on the case-folded
+ *    ENGLISH STRING (B4a Task 3), which the absorbed and surviving concepts
+ *    share, so the map lookup now HITS. The skew did not disappear, it MOVED
+ *    from key-space to term-space: the preferred `term_id` hangs off the
+ *    ABSORBED concept and lookupCandidates returns only the SURVIVOR, so
+ *    `owner` is not found one step later. That is no longer silent — it
+ *    surfaces as `preference-not-a-candidate`. Pinned by
+ *    conceptResolverScope.test.js's §C39 case, whose comment carries the same
+ *    three-stage history. Part C's merge tooling still has to face the skew.
  */
 function followMerge(stmt, startId) {
   const seen = new Set([startId]);
@@ -329,23 +378,11 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
     });
   }
 
-  if (chosen.length === 0) return emptyResolution(false, codes, outOfScope);
-
-  // Step 4 — lowest position wins.
-  let best = chosen[0].position;
-  for (const c of chosen) if (c.position < best) best = c.position;
-  const atBest = chosen
-    .filter((c) => c.position === best)
-    .sort((a, b) => a.conceptId - b.conceptId);
-
-  const asWinner = (c) => ({
-    conceptId: c.conceptId,
-    termId: c.termId,
-    text: c.text,
-    domain: c.domain,
-    position: c.position,
-  });
-
+  // ⚠️ `alsoFrom` and `applyPreference` are DEFINED HERE, ABOVE THE EMPTY-CHOSEN
+  // RETURN, and the order is load-bearing. They are `const` arrow functions, so
+  // calling one before its initialiser is a TDZ ReferenceError, not a hoisted
+  // call — and the empty-chosen return below MUST call `applyPreference`.
+  //
   // B4a/D3 — the in-scope answers that LOST. §C38's hiding-factor ②: resolve()
   // reported outOfScope but a lower-position IN-SCOPE concept that lost the race
   // vanished, so `hittni [biology @3]` was invisible behind `nákvæmni [physics @2]`.
@@ -388,15 +425,21 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
   // the preference: nominalTie [1, 2] became []. Every existing report survives
   // here; only the answer changes.
   //
+  // ⚠️ FOUR CALL SITES, NOT THREE. The three position-walk returns below, PLUS
+  // the empty-chosen return above them — see the comment there. A fault must be
+  // reported even when the walk produced nothing to override.
+  //
   // Determinism needs no sort: the primary key permits one preference per
   // (book, chapter, english), and a term_id belongs to exactly one concept, so
   // at most one candidate can carry it.
   const applyPreference = (result) => {
     if (english == null) return result;
-    // ⚠️ LOWERCASED, matching buildPreferenceMap. The column is COLLATE NOCASE
-    // so SQLite folds case, but a JS Map does not — key one way and look up the
-    // other and the row is stored and never found, silently.
-    const pref = scope.preference.get(english.toLowerCase());
+    // ⚠️ FOLDED WITH `nocaseKey`, matching buildPreferenceMap — NOT with
+    // `toLowerCase()`, which is a DIFFERENT fold (Unicode vs SQLite's ASCII-only
+    // NOCASE; see nocaseKey's docstring). The column is COLLATE NOCASE so SQLite
+    // folds case, but a JS Map does not — key one way and look up the other and
+    // the row is stored and never found, silently.
+    const pref = scope.preference.get(nocaseKey(english));
     if (!pref) return result;
 
     // ⚠️ Search ALL candidates, in-scope AND out. The `outOfScope` OUTPUT is
@@ -485,6 +528,52 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
     };
   };
 
+  // ⚠️ THE EMPTY-CHOSEN RETURN GOES THROUGH `applyPreference` TOO, AND FOR A
+  // WHOLE MONTH OF THIS BRANCH IT DID NOT (whole-branch review, 2026-08-09 —
+  // found independently by both reviewers, and probed).
+  //
+  // A bare `return emptyResolution(...)` here skipped step 6 entirely, so ALL
+  // THREE D4 fault codes were SILENT whenever the position walk yielded no
+  // in-scope term-bearing candidate — `integrity: []` where a code was owed.
+  // Two states reach it, and both are ordinary rather than exotic:
+  //   ① a preference naming a term on an OUT-OF-SCOPE concept, on a string with
+  //      no in-scope candidates. This is the LIKELIEST out-of-scope state,
+  //      because D4's own documented remedy — re-order `book_domain_priority` —
+  //      strands rows in exactly this shape.
+  //   ② a preference row whose English string matches no concept at all
+  //      (`candidates` is []). Reachable after the B4c editor slice, because
+  //      `import-concepts.js`'s prune keys on the ICELANDIC `term_id`: the row
+  //      survives the prune while the string stops matching.
+  // Every D4 fixture in the suite happened to include an in-scope candidate, so
+  // the whole set was green — this repo's named failure mode, a test double
+  // faithful except on the property the code branches on.
+  //
+  // ⚠️ ONLY THE FAULT ARMS ARE REACHABLE HERE, AND THAT IS A PROOF, NOT A HOPE.
+  // An in-scope owner carries the preferred term, so its `isTerms` is non-empty,
+  // so `headForm` is truthy, so step 3 put it in `chosen` — contradicting
+  // `chosen.length === 0`. `applyPreference` can therefore push a code on this
+  // path but can never promote a winner.
+  //
+  // ⚠️ `emptyResolution` puts `codes` on `.integrity` BY REFERENCE, which is
+  // what makes the fault arms' bare `return result` visible to the caller. Do
+  // not "tidy" that into a copy without reading applyPreference's own warning.
+  if (chosen.length === 0) return applyPreference(emptyResolution(false, codes, outOfScope));
+
+  // Step 4 — lowest position wins.
+  let best = chosen[0].position;
+  for (const c of chosen) if (c.position < best) best = c.position;
+  const atBest = chosen
+    .filter((c) => c.position === best)
+    .sort((a, b) => a.conceptId - b.conceptId);
+
+  const asWinner = (c) => ({
+    conceptId: c.conceptId,
+    termId: c.termId,
+    text: c.text,
+    domain: c.domain,
+    position: c.position,
+  });
+
   if (atBest.length === 1) {
     return applyPreference({
       winner: asWinner(atBest[0]),
@@ -570,4 +659,9 @@ module.exports = {
   resolveCandidates,
   resolve,
   prepareLookupStatements,
+  // ⚠️ EXPORTED so nobody re-implements the fold. Anything that keys on the
+  // same string as `book_term_preference.english` must use THIS, not
+  // `toLowerCase()` — see its docstring. Current consumer besides this file:
+  // server/scripts/verify-b4a-gates.js (gate 4's case-variant grouping).
+  nocaseKey,
 };

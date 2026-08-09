@@ -278,4 +278,172 @@ describe('migration 048 — book_term_preference', () => {
     expect(collisionMsg).toMatch(/cell/i);
     db.close();
   });
+
+  // ── whole-branch review 2026-08-09 — the fourth cause, and the accounting ──
+
+  /** The pre-048 table, hand-built. ⚠️ It carries NO foreign keys of its own —
+   * which is the whole reason a dangling `term_id` can sit in it. */
+  const OLD_DDL = `
+    CREATE TABLE book_concept_preference (
+      book_id INTEGER NOT NULL, chapter INTEGER NOT NULL,
+      concept_id INTEGER NOT NULL, term_id INTEGER NOT NULL,
+      PRIMARY KEY (book_id, chapter, concept_id));`;
+
+  /** Run up() capturing console.warn. ⚠️ Read the calls BEFORE mockRestore() —
+   * Vitest's mockRestore() clears recorded history (see the comments above). */
+  function upCapturingWarnings(db) {
+    const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    let threw = null;
+    try {
+      require('../migrations/048-book-term-preference').up(db);
+    } catch (e) {
+      threw = e;
+    }
+    const messages = spy.mock.calls.map((c) => c.join(' '));
+    spy.mockRestore();
+    return { messages, threw };
+  }
+
+  /**
+   * ⚠️ THE FOURTH CAUSE. `INSERT OR IGNORE` does **NOT** suppress a FOREIGN KEY
+   * violation — `ON CONFLICT` covers NOT NULL / UNIQUE / PRIMARY KEY / CHECK
+   * only. Measured directly with better-sqlite3 (never the `sqlite3` CLI, which
+   * reports foreign_keys OFF and would invert the whole reading — CLAUDE.md,
+   * durable): `SQLITE_CONSTRAINT_FOREIGNKEY: FOREIGN KEY constraint failed`.
+   *
+   * So a `book_concept_preference` row whose `term_id` no longer names a live
+   * `concept_term` aborts `expand.run()` → migrationRunner collects it →
+   * `failLoudOnMigrationErrors` calls exit(1) → **the server never boots
+   * again**. The file's own header says NEVER THROW; it enumerated three causes
+   * and this was a fourth.
+   *
+   * ⚠️ NO `pragma('foreign_keys = OFF')` IS NEEDED TO BUILD THE FIXTURE, and
+   * that is the point: the hand-built OLD table enforces nothing, so a dangling
+   * term_id is simply insertable. The violation fires on the INSERT INTO the
+   * NEW table, which does have the reference. (045's ON DELETE CASCADE does not
+   * preclude the state either — it is this repo's own test-fixture idiom and
+   * the system sqlite3 CLI's default.)
+   */
+  it('a dangling term_id is REPORTED, not thrown — a throw here would stop the server booting', () => {
+    const { db } = freshMigratedDb();
+    db.exec(OLD_DDL);
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const conceptId = db
+      .prepare("INSERT INTO concept (domain, collection) VALUES ('physics', 'TEST')")
+      .run().lastInsertRowid;
+    db.prepare(
+      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', 'accuracy', 1, 'test')"
+    ).run(conceptId);
+    // term_id 999999 names no concept_term row at all.
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?,0,?,999999)'
+    ).run(bookId, conceptId);
+
+    const { messages, threw } = upCapturingWarnings(db);
+
+    // ① It did not throw. This is the assertion the server's boot depends on.
+    expect(threw).toBeNull();
+    // ② It said so, and named the cause and the remedy query.
+    const msg = messages.find((m) => /MIGRATION COULD NOT COMPLETE/.test(m));
+    expect(msg).toBeDefined();
+    expect(msg).toMatch(/FOREIGN KEY/i);
+    // ③ ⚠️ NOTHING WAS LOST. The DROP is inside the transaction, so the
+    // rollback leaves the old table AND its row in place to re-attempt from.
+    // Without this, "did not throw" would be satisfied by silently eating the
+    // editor's preferences — the worse of the two failures.
+    expect(
+      db
+        .prepare(
+          "SELECT 1 FROM sqlite_master WHERE type='table' AND name='book_concept_preference'"
+        )
+        .get()
+    ).toBeDefined();
+    expect(db.prepare('SELECT COUNT(*) AS c FROM book_concept_preference').get().c).toBe(1);
+    expect(db.prepare('SELECT COUNT(*) AS c FROM book_term_preference').get().c).toBe(0);
+    db.close();
+  });
+
+  /**
+   * ⚠️ THE ACCOUNTING CHECK MUST BE SILENT ON EVERY HEALTHY SHAPE — and this is
+   * the control that matters most, because the version of this check in the
+   * review brief (`before === expanded + noEnglish + collisions`) FIRES ON THIS
+   * FILE'S OWN PASSING FIXTURE. `before` counts SOURCE rows and `expanded`
+   * counts DESTINATION rows: one concept with two English terms is before=1,
+   * expanded=2. A permanent false warning on the migration's own test is worse
+   * than no check, so the identity was re-expressed in source-row units
+   * (survived + noEnglish + lost) before it shipped.
+   */
+  it('CONTROL: the accounting is SILENT on the two-English-term expansion (before=1, expanded=2)', () => {
+    const { db } = freshMigratedDb();
+    db.exec(OLD_DDL);
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    const { conceptId, termId } = seedConceptWithTwoEnglish(db);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?,0,?,?)'
+    ).run(bookId, conceptId, termId);
+
+    const { messages } = upCapturingWarnings(db);
+
+    // The expansion really happened — without this the silence below is vacuous.
+    expect(db.prepare('SELECT COUNT(*) AS c FROM book_term_preference').get().c).toBe(2);
+    expect(messages.join('\n')).toContain('1 row(s): 2 expanded');
+    expect(messages.filter((m) => /ACCOUNTING FAILED|UNEXPLAINED LOSS/.test(m))).toEqual([]);
+    db.close();
+  });
+
+  /**
+   * ⚠️ AND IT MUST STILL FIRE WHEN THE THREE CATEGORIES GENUINELY DO NOT ADD UP
+   * — otherwise the control above is satisfied by a check that never speaks.
+   *
+   * The reachable shape: the OLD table never constrained `term_id` to lie on
+   * `concept_id`, so a preference row can name ANOTHER concept's term. Here a
+   * second row's concept has no English term (→ counted as `noEnglish`) while
+   * its `term_id` is the first row's, which IS written to the new table (→ also
+   * counted as `survived`). One source row, two buckets: 2 rows in, 3 accounted
+   * for. The three logged categories therefore do not explain the data, and the
+   * migration says so instead of printing a calm, complete-looking line.
+   */
+  it('the accounting FIRES when the categories double-count — a fifth cause cannot hide', () => {
+    const { db } = freshMigratedDb();
+    db.exec(OLD_DDL);
+    const bookId = db
+      .prepare("SELECT id FROM registered_books WHERE slug = 'edlisfraedi-2e'")
+      .get().id;
+    // Concept X: a real English headword and the Icelandic term an editor chose.
+    const x = db
+      .prepare("INSERT INTO concept (domain, collection) VALUES ('physics', 'TEST')")
+      .run().lastInsertRowid;
+    db.prepare(
+      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', 'accuracy', 1, 'test')"
+    ).run(x);
+    const xTerm = db
+      .prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', 'nákvæmni', 1, 'test')"
+      )
+      .run(x).lastInsertRowid;
+    // Concept Y: NO English term — and a preference row pointing at X's term.
+    const y = db
+      .prepare("INSERT INTO concept (domain, collection) VALUES ('biology', 'TEST')")
+      .run().lastInsertRowid;
+    const ins = db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (?,0,?,?)'
+    );
+    ins.run(bookId, x, xTerm);
+    ins.run(bookId, y, xTerm);
+
+    const { messages, threw } = upCapturingWarnings(db);
+
+    expect(threw).toBeNull(); // reported, never thrown — the header's posture
+    const acc = messages.find((m) => /ACCOUNTING FAILED/.test(m));
+    expect(acc).toBeDefined();
+    // Names the real numbers, so the next reader does not have to re-derive them.
+    expect(acc).toContain('2 source row(s)');
+    expect(acc).toContain('survived=2');
+    expect(acc).toContain('noEnglish=1');
+    db.close();
+  });
 });

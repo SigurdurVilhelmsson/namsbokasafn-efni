@@ -304,6 +304,80 @@ describe('buildScope — the preference merge', () => {
     db.close();
   });
 
+  // ⚠️ JS `toLowerCase()` IS NOT SQLite `NOCASE` — found by both whole-branch
+  // reviewers, 2026-08-09. NOCASE folds the 26 ASCII letters and NOTHING else,
+  // so `Ångström` and `ångström` are two DISTINCT primary keys and SQLite
+  // stores both rows. A `toLowerCase()` Map key collapses them onto ONE slot,
+  // where `!preference.has(key)` lets SQL ROW ORDER decide which of two real
+  // editorial answers survives — register §C18's defect reproduced inside the
+  // very fix for it. Migration 048's collision detector CANNOT flag it: it
+  // groups by SQL `COLLATE NOCASE` and says so explicitly.
+  //
+  // Latent today (chemistry's census is 118,749 strings with 0 non-ASCII) but
+  // the B4c editor slice writes these rows, so it lands on this. Pinned on the
+  // COUNT and on both answers, not just the size: a fold that kept two keys but
+  // mixed up which term each carries would pass a size-only assertion.
+  it('two rows differing only by NON-ASCII case are TWO keys — nocaseKey, not toLowerCase', () => {
+    const { db, bookId } = registerChemistryWithConcepts();
+    const { conceptId } = seedConcept(db, {
+      domain: 'chemistry',
+      en: 'angstrom',
+      is: 'ångstrom-eining',
+    });
+    const upperTermId = Number(
+      db
+        .prepare(
+          "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', 'stór', 2, 'test')"
+        )
+        .run(conceptId).lastInsertRowid
+    );
+    const lowerTermId = Number(
+      db
+        .prepare(
+          "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', 'lítill', 3, 'test')"
+        )
+        .run(conceptId).lastInsertRowid
+    );
+
+    // ⚠️ THE PRECONDITION IS ITSELF THE FIRST HALF OF THE CLAIM. If NOCASE
+    // folded these two the second INSERT would raise a PRIMARY KEY violation
+    // and there would be no skew to test — so this insert succeeding IS the
+    // measurement that SQLite kept them apart.
+    const ins = db.prepare(
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, ?, ?)'
+    );
+    ins.run(bookId, 'Ångström', upperTermId);
+    ins.run(bookId, 'ångström', lowerTermId);
+    expect(
+      db.prepare('SELECT COUNT(*) AS n FROM book_term_preference WHERE book_id = ?').get(bookId).n
+    ).toBe(2);
+
+    const scope = buildScope(db, 'efnafraedi-2e', 0);
+    // TWO keys out, because two rows went in. `toLowerCase()` yields 1.
+    expect(scope.preference.size).toBe(2);
+    // And each key answers with ITS OWN row — not whichever came back first.
+    expect(scope.preference.get('Ångström')).toEqual({ termId: upperTermId, tier: 'book' });
+    expect(scope.preference.get('ångström')).toEqual({ termId: lowerTermId, tier: 'book' });
+    db.close();
+  });
+
+  // ⚠️ THE CONTROL for the test above: ASCII case IS still folded, on both
+  // sides. A fold that stopped lowercasing altogether would pass the non-ASCII
+  // test and silently break every ordinary 'Accuracy'/'accuracy' row — which is
+  // what the two tests either side of this one measure end to end.
+  it('CONTROL: ASCII case is STILL folded — Ångström is a special case, not a retreat', () => {
+    const { db, bookId, termId } = registerChemistryWithConcepts();
+    db.prepare(
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, ?, ?)'
+    ).run(bookId, 'ACCURACY', termId);
+    const scope = buildScope(db, 'efnafraedi-2e', 0);
+    expect(scope.preference.size).toBe(1);
+    expect(scope.preference.get('accuracy')).toEqual({ termId, tier: 'book' });
+    // And the lookup side folds identically — resolve() finds it from any case.
+    expect(resolve(scope, 'accuracy').reason).toBe('book-preference');
+    db.close();
+  });
+
   // ⚠️ THE CONTROL. If someone "helpfully" folds case in concept_term lookup too,
   // the test above still passes while every resolution in the corpus changes
   // which candidates it finds.

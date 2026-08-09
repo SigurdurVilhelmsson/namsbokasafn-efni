@@ -667,6 +667,108 @@ describe('resolveCandidates — the three preference faults (D4)', () => {
   });
 });
 
+/**
+ * ⚠️ THE HOLE BOTH WHOLE-BRANCH REVIEWERS FOUND INDEPENDENTLY (2026-08-09).
+ *
+ * `resolveCandidates` returned `emptyResolution(...)` BEFORE `applyPreference`
+ * ran whenever the position walk yielded zero in-scope term-bearing candidates,
+ * so ALL THREE D4 codes were silent on that path — `integrity: []` where a code
+ * was owed. Every D4 fixture in the block above happens to carry an in-scope
+ * candidate (`two`), which is why the whole set stayed green: a test double
+ * faithful except on the property the code branches on.
+ *
+ * The spec worked hard to make `preference-out-of-scope` DETECTABLE — the owner
+ * search runs over ALL candidates rather than the lossy `outOfScope` output —
+ * and then placed the check behind a return that skipped it.
+ *
+ * ⚠️ ONLY THE FAULT ARMS ARE REACHABLE HERE, so these tests can never be
+ * "fixed" by promoting a winner: an in-scope owner carries the preferred term,
+ * so it has a head form, so step 3 put it in `chosen` — contradicting the
+ * premise of the whole block.
+ */
+describe('resolveCandidates — D4 faults survive an EMPTY position walk', () => {
+  // No in-scope candidate anywhere: mathematics is not in chemScope's chain, so
+  // `chosen` is empty and the resolution has no winner to override.
+  const mathOnly = [
+    cand(3, 'mathematics', [
+      ['stæ', 1, 30],
+      ['stærð', 2, 31],
+    ]),
+  ];
+
+  // ⚠️ THE LIKELIEST OUT-OF-SCOPE STATE, not an exotic one: D4's own documented
+  // remedy for `preference-out-of-scope` is to re-order `book_domain_priority`,
+  // and doing that strands rows in exactly this shape — the preferred concept
+  // drops out of the chain, and if it was the only concept carrying the string,
+  // nothing in-scope is left behind it.
+  it('preference-out-of-scope STILL fires when nothing in scope was chosen', () => {
+    const r = resolveCandidates(
+      chemScope(new Map([['accuracy', { termId: 31, tier: 'book' }]])),
+      mathOnly,
+      [],
+      'accuracy'
+    );
+    expect(r.integrity).toEqual(['preference-out-of-scope']);
+    // The resolution is otherwise exactly the empty one — the fault is
+    // REPORTED, never honoured. D1: out-of-scope stays a soft badged tier.
+    expect(r.winner).toBeNull();
+    expect(r.reason).toBeNull();
+    expect(r.outOfScope).toEqual([{ conceptId: 3, text: 'stæ', domain: 'mathematics' }]);
+    expect(r.alsoInScope).toEqual([]);
+  });
+
+  // ⚠️ THE CONTROL THAT PROVED THE CODE EXISTED AND ONLY THIS PATH MISSED IT.
+  // Same preference, same out-of-scope owner — one in-scope candidate added. If
+  // this ever diverges from the test above, the fault is path-dependent again.
+  it('CONTROL: the same fixture PLUS one in-scope candidate reports the same code', () => {
+    const r = resolveCandidates(
+      chemScope(new Map([['accuracy', { termId: 31, tier: 'book' }]])),
+      [...mathOnly, cand(1, 'physics', [['nákvæmni', 1, 10]])],
+      [],
+      'accuracy'
+    );
+    expect(r.integrity).toEqual(['preference-out-of-scope']);
+    expect(r.winner).toMatchObject({ text: 'nákvæmni', domain: 'physics' });
+  });
+
+  // ⚠️ REACHABLE AFTER THE B4c EDITOR SLICE, and by a route that leaves no
+  // other trace: `import-concepts.js`'s prune keys on the ICELANDIC `term_id`,
+  // so a `book_term_preference` row SURVIVES the prune while the English string
+  // it names stops matching any concept. `candidates` is then literally [].
+  //
+  // The term row still exists (that is what the prune preserved), so the honest
+  // code is the MISFILED one — re-file the row — not the stale one.
+  it('preference-not-a-candidate fires when the string matches NO concept at all', () => {
+    const scope = chemScope(new Map([['accuracy', { termId: 999, tier: 'book' }]]));
+    scope.stmts = { termById: { get: () => ({ term_id: 999, concept_id: 77 }) } };
+    const r = resolveCandidates(scope, [], [], 'accuracy');
+    expect(r.integrity).toEqual(['preference-not-a-candidate']);
+    expect(r.winner).toBeNull();
+    expect(r.outOfScope).toEqual([]);
+  });
+
+  // ⚠️ CONTROL on the case above — the SAME empty candidate list produces a
+  // DIFFERENT code depending only on whether the term row survives. Without
+  // this pair, an implementation that hardcoded either code on the empty path
+  // would pass one test and the two would look like coverage.
+  it('preference-term-missing fires on the same empty walk when the term row is gone', () => {
+    const scope = chemScope(new Map([['accuracy', { termId: 999, tier: 'book' }]]));
+    scope.stmts = { termById: { get: () => undefined } };
+    const r = resolveCandidates(scope, [], [], 'accuracy');
+    expect(r.integrity).toEqual(['preference-term-missing']);
+    expect(r.winner).toBeNull();
+  });
+
+  // ⚠️ CONTROL: the empty walk is still SILENT when there is nothing to report.
+  // Without this, an implementation that pushed a code unconditionally on the
+  // empty path would pass all four tests above.
+  it('CONTROL: an empty walk with NO preference row reports nothing', () => {
+    const r = resolveCandidates(chemScope(), mathOnly, [], 'accuracy');
+    expect(r.integrity).toEqual([]);
+    expect(r.winner).toBeNull();
+  });
+});
+
 describe('resolveCandidates — alsoInScope', () => {
   it('reports an in-scope concept that lost the position race', () => {
     const r = resolveCandidates(chemScope(), [

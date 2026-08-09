@@ -43,11 +43,46 @@
  *
  * ⚠️ Idempotent: migrationRunner calls up() on every server start.
  *
- * ⚠️ NEVER THROW HERE. migrationRunner runs up() unconditionally on every
- * server start; a migration that throws on a box holding a no-English-term or
- * cross-concept-collision row would wedge that server permanently. Reporting
- * loudly (console.warn, one line per finding) is the correct posture — refusal
- * is not, because there is no operator present to un-refuse it.
+ * ⚠️ NEVER THROW HERE, FOR ANY REASON. migrationRunner runs up() unconditionally
+ * on every server start and `failLoudOnMigrationErrors` turns a collected error
+ * into `exit(1)`, so a migration that throws wedges that box permanently — it
+ * will not boot again until a human edits the database. Reporting loudly
+ * (console.warn, one line per finding) is the correct posture; refusal is not,
+ * because there is no operator present to un-refuse it.
+ *
+ * ⚠️ THE CAUSE LIST BELOW IS **NOT EXHAUSTIVE**, and presenting it as if it were
+ * is what let a fourth cause through unnoticed (whole-branch review, 2026-08-09).
+ * An earlier version of this header enumerated three causes and stopped, which
+ * reads as a closed set. The causes known TODAY are:
+ *   ① a concept with no English concept_term (category 2 below);
+ *   ② a cross-concept NOCASE collision (category 3 below);
+ *   ③ an ordinary SQLite error on the DDL;
+ *   ④ ⚠️ **A FOREIGN KEY VIOLATION ON THE EXPANSION INSERT.** `INSERT OR IGNORE`
+ *      does **NOT** suppress this — SQLite's `ON CONFLICT` clause covers
+ *      NOT NULL / UNIQUE / PRIMARY KEY / CHECK **only**, never FOREIGN KEY.
+ *      Measured directly with better-sqlite3: an `INSERT OR IGNORE … SELECT`
+ *      feeding a dangling child row raises `SQLITE_CONSTRAINT_FOREIGNKEY:
+ *      FOREIGN KEY constraint failed`. A `book_concept_preference` row whose
+ *      `term_id` no longer names a live `concept_term` therefore aborts
+ *      `expand.run()`.
+ *      ⚠️ 045's `ON DELETE CASCADE` does NOT preclude that row. A dangling row
+ *      arises whenever foreign keys were OFF when the parent was deleted, and
+ *      that is (a) this repo's own established test-fixture idiom
+ *      (`resolvedGlossary.test.js`, `conceptResolverIntegrity.test.js` both
+ *      `pragma('foreign_keys = OFF')` to plant exactly this) and (b) **the
+ *      system `sqlite3` CLI's default** — CLAUDE.md flags that CLI as a trap in
+ *      the other direction, and an operator deleting a `concept_term` row with
+ *      it leaves the dangling row behind with no warning at all.
+ * Because the list is open, the handler below catches **everything**, not FK
+ * alone, and the accounting check exists so that a FIFTH cause cannot hide by
+ * construction.
+ *
+ * ⚠️ ON A CAUGHT FAILURE THE OLD TABLE IS LEFT IN PLACE, DELIBERATELY. The
+ * `DROP TABLE` lives INSIDE `db.transaction(...)`, so a throw rolls the whole
+ * unit back and `book_concept_preference` survives with its rows intact. The
+ * migration then re-attempts on every subsequent boot and re-reports until an
+ * operator fixes the data — which is the intended behaviour, not a leak: the
+ * alternative is losing an editor's preferences to a data fault nobody saw.
  */
 module.exports = {
   name: '048-book-term-preference',
@@ -119,11 +154,50 @@ module.exports = {
         JOIN concept_term t ON t.concept_id = p.concept_id AND t.lang = 'en'
     `);
 
+    // ⚠️ THE ACCOUNTING, IN **SOURCE-ROW** UNITS. `before` counts rows in
+    // book_concept_preference; `expanded` (res.changes) counts rows written to
+    // book_term_preference — DIFFERENT UNITS, because one source row expands
+    // into one destination row PER English term. The obvious identity
+    // `before === expanded + noEnglish + collisionLosses` is therefore WRONG and
+    // fires on this migration's own passing test (migration048.test.js's
+    // "expands one concept row into one row per English term": before=1,
+    // expanded=2). A permanent false warning on the file's own fixture is worse
+    // than no check, so the unit is normalised to source rows here.
+    //
+    // ⚠️ MEASURED FROM THE DESTINATION, NOT COMPUTED BY SUBTRACTION. `survived`
+    // and `lost` are two independent queries against book_term_preference AFTER
+    // the insert; deriving either from the other would make the identity true by
+    // construction and prove nothing. A source row "survived" iff its own answer
+    // — its (book_id, chapter, term_id) — is present in the new table.
+    const countSurvived = db.prepare(`
+      SELECT COUNT(*) AS c
+        FROM book_concept_preference p
+       WHERE EXISTS (
+         SELECT 1 FROM book_term_preference b
+          WHERE b.book_id = p.book_id AND b.chapter = p.chapter AND b.term_id = p.term_id
+       )
+    `);
+
+    // Source rows that HAD an English term to expand through and still left no
+    // answer behind. Expected to be exactly the cross-concept collision losers;
+    // anything else here is a cause nobody has named yet.
+    const findLost = db.prepare(`
+      SELECT p.book_id, p.chapter, p.concept_id, p.term_id
+        FROM book_concept_preference p
+       WHERE EXISTS (
+         SELECT 1 FROM concept_term t WHERE t.concept_id = p.concept_id AND t.lang = 'en'
+       )
+       AND NOT EXISTS (
+         SELECT 1 FROM book_term_preference b
+          WHERE b.book_id = p.book_id AND b.chapter = p.chapter AND b.term_id = p.term_id
+       )
+    `);
+
     const run = db.transaction(() => {
       const before = db.prepare('SELECT COUNT(*) AS c FROM book_concept_preference').get().c;
       if (before === 0) {
         db.exec('DROP TABLE book_concept_preference');
-        return { before, expanded: 0, noEnglish: [], collisions: [] };
+        return { before, expanded: 0, noEnglish: [], collisions: [], survived: 0, lost: [] };
       }
 
       const noEnglish = findNoEnglish.all();
@@ -135,10 +209,43 @@ module.exports = {
       }));
 
       const res = expand.run();
+      // ⚠️ BOTH MEASUREMENTS HAPPEN HERE, BEFORE THE DROP. book_concept_preference
+      // is the left-hand side of both queries and does not exist after the next
+      // line, so moving either of them out of this transaction silently turns the
+      // whole accounting into "no such table".
+      const survived = countSurvived.get().c;
+      const lost = findLost.all();
       db.exec('DROP TABLE book_concept_preference');
-      return { before, expanded: res.changes, noEnglish, collisions };
+      return { before, expanded: res.changes, noEnglish, collisions, survived, lost };
     });
-    const { before, expanded, noEnglish, collisions } = run();
+
+    // ⚠️ NEVER THROW — see the header's fourth cause. `expand.run()` raises
+    // SQLITE_CONSTRAINT_FOREIGNKEY on a dangling `term_id` (INSERT OR IGNORE does
+    // not suppress a foreign-key violation), which would reach migrationRunner,
+    // reach failLoudOnMigrationErrors, and stop the server booting — every boot,
+    // for good. CATCH EVERYTHING, not FK alone: the cause list is open.
+    //
+    // The rollback is what makes reporting safe rather than lossy: DROP TABLE is
+    // inside the transaction above, so book_concept_preference and its rows
+    // survive untouched and the next boot re-attempts.
+    let outcome;
+    try {
+      outcome = run();
+    } catch (err) {
+      console.warn(
+        `[048] MIGRATION COULD NOT COMPLETE — ${err.code || err.name}: ${err.message}. ` +
+          'book_concept_preference has been LEFT IN PLACE with its rows intact (the DROP was ' +
+          'rolled back with the rest of the transaction) and book_term_preference is empty or ' +
+          'partial; NOTHING was lost. This migration will re-attempt on the next server start. ' +
+          'The known cause is a book_concept_preference row whose term_id no longer names a live ' +
+          'concept_term row — INSERT OR IGNORE does NOT suppress a FOREIGN KEY violation. Find ' +
+          'it with: SELECT p.* FROM book_concept_preference p LEFT JOIN concept_term t ON ' +
+          't.id = p.term_id WHERE t.id IS NULL; then delete or re-point those rows. ' +
+          'NOT THROWN ON PURPOSE: throwing here would stop this server booting at all.'
+      );
+      return;
+    }
+    const { before, expanded, noEnglish, collisions, survived, lost } = outcome;
 
     if (before === 0) return;
 
@@ -170,6 +277,56 @@ module.exports = {
           `INSERT OR IGNORE kept only one, chosen by SQL enumeration order, not by any ` +
           `editorial signal. Contending rows: ${desc}. Review and re-set the losing ` +
           `book_term_preference row(s) by hand.`
+      );
+    }
+
+    // ── THE ACCOUNTING (whole-branch review, 2026-08-09) ─────────────────────
+    //
+    // ⚠️ THE POINT IS THAT A CAUSE NOBODY HAS NAMED CANNOT HIDE. Three logged
+    // categories are only trustworthy if they add up; without this, a fifth way
+    // for a preference to vanish would produce a perfectly calm three-count log
+    // line and no other trace. Every source row must land in exactly one of:
+    //   · survived        — its answer is present in book_term_preference
+    //   · noEnglish       — its concept had no English term to expand through
+    //   · lost            — it had one and still left nothing behind
+    // and `lost` must, in turn, be fully explained by the collisions detected
+    // BEFORE the insert. Both halves are reported, never thrown.
+    const accounted = survived + noEnglish.length + lost.length;
+    if (accounted !== before) {
+      console.warn(
+        `[048] ACCOUNTING FAILED — ${before} source row(s) in book_concept_preference, but ` +
+          `survived=${survived} + noEnglish=${noEnglish.length} + lost=${lost.length} = ` +
+          `${accounted}. These three are meant to partition the source rows, so a mismatch ` +
+          `means a row was counted twice or not at all — i.e. this migration's three reported ` +
+          `categories do NOT explain what happened to the data. Do not treat the counts above ` +
+          `as complete. (Counting unit: SOURCE rows. 'expanded' is a DESTINATION-row count and ` +
+          `is deliberately not part of this identity — one source row expands into one row per ` +
+          `English term.)`
+      );
+    }
+
+    // A lost row that no detected collision group named is the fifth cause the
+    // check above exists to expose — reported with the rows themselves, because
+    // a bare count would send the next reader looking in the wrong place.
+    const collided = new Set(
+      collisions.flatMap((c) => c.members.map((m) => `${c.book_id}|${c.chapter}|${m.concept_id}`))
+    );
+    const unexplained = lost.filter(
+      (r) => !collided.has(`${r.book_id}|${r.chapter}|${r.concept_id}`)
+    );
+    if (unexplained.length) {
+      console.warn(
+        `[048] UNEXPLAINED LOSS — ${unexplained.length} preference row(s) had an English term ` +
+          `to expand through, left NO row in book_term_preference, and were not named by any ` +
+          `detected cross-concept collision. This is a cause not in this migration's list; ` +
+          `investigate before trusting the counts above. Rows: ` +
+          unexplained
+            .map(
+              (r) =>
+                `book_id=${r.book_id} chapter=${r.chapter} concept_id=${r.concept_id} ` +
+                `term_id=${r.term_id}`
+            )
+            .join('; ')
       );
     }
   },
