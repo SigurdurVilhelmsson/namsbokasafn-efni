@@ -40,8 +40,27 @@
  *   3. SHRINK GUARD — quantitative, on BOTH approved-term and total-term
  *      counts (approved-only would be inert for a book like liffraedi-2e,
  *      whose export has zero approved terms). Overridden by --force.
- *   4. BOOK/SUBJECT GUARD — a book with no `book_subject_mapping` row would
- *      export an unscoped, all-subjects glossary; refused instead.
+ *   4. BOOK/SUBJECT GUARD — a book with no `book_subject_mapping` row is
+ *      refused (`refused-no-mapping`).
+ *      ⚠️ CORRECTED 2026-08-09: this used to say such a book "would export an
+ *      unscoped, all-subjects glossary". That was true of the RETIRED builder.
+ *      buildResolvedGlossary never reads `book_subject_mapping` at all — it
+ *      scopes by `book_domain_priority` (chapter 0) — so the payload's breadth
+ *      no longer depends on that row. The gate is KEPT, fail-safe, as a "this
+ *      book was never triaged" proxy; see the full note at its call site.
+ *   ⚠️ TWO MORE REFUSALS WERE ADDED 2026-08-09, UPSTREAM OF THESE FIVE, and
+ *      this is the line the header above warns will not remind you: the
+ *      builder can now decline to produce a payload at all, and the caller
+ *      records that as a refusal rather than an error.
+ *        `refused-empty-census` — the book has no extracted source text.
+ *        `refused-unscoped`     — no registered_books row, or no
+ *                                 book_domain_priority rows (the detail says
+ *                                 which; the remedies differ).
+ *      Both were errors until the whole-branch adversarial review found that
+ *      an error returns 1 BEFORE writeHeartbeat, so ONE un-extracted book
+ *      withheld the heartbeat for the whole corpus — the coupling decision D2
+ *      removed from the refusal channel, reappearing in the error channel.
+ *
  *   5. ABSENT-BASELINE GATE (register §C21) — a book with a `glossary/`
  *      directory and NO committed file is the one state in which rules 2 and 3
  *      can say NOTHING: no producer to fingerprint, no term count to measure.
@@ -64,8 +83,8 @@
  *
  * Exit code 0 means no book ERRORED. It does NOT mean every book was written:
  * a book that refuses for a correct reason (un-adopted producer swap, no
- * subject mapping, catastrophic shrink, un-adopted first export) is a healthy
- * outcome and keeps the exit
+ * subject mapping, catastrophic shrink, un-adopted first export, an EMPTY
+ * CENSUS, or an UNSCOPED book) is a healthy outcome and keeps the exit
  * code at 0. Only a genuine error — the exporter threw, or a malformed payload
  * — returns 1. Before 2026-08-05 a refusal counted as a failure, which let ONE
  * book's correct refusal mark the whole exporter unhealthy for every other book
@@ -121,7 +140,7 @@
  * there. ⚠️ Two things made that urgent rather than tidy:
  *
  *   - Migration 044 remapped `lifraen-efnafraedi` onto `chemistry`, and
- *     exportBookGlossary filters on the book's subject and NOTHING ELSE — so
+ *     exportBookGlossary filtered on the book's subject and NOTHING ELSE — so
  *     organic's payload became byte-equivalent to chemistry's and CLEARED the
  *     shrink gate that had refused it with certainty at 1117 → 0. An unscoped
  *     `--adopt` became destructive for a book it could not previously touch.
@@ -147,6 +166,7 @@ const {
   shrinkVerdict,
   producerVerdict,
 } = require('../lib/glossaryExportDecision');
+const { createResolvedExportFn } = require('../lib/resolvedGlossary');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -204,11 +224,30 @@ function readExisting(outPath) {
     if (err.code === 'ENOENT') return { kind: 'absent' };
     throw err; // caught per-book by the caller, counted as an error
   }
+  let parsed;
   try {
-    return { kind: 'ok', payload: JSON.parse(raw) };
+    parsed = JSON.parse(raw);
   } catch {
     return { kind: 'corrupt' };
   }
+  // ⚠️ A file holding the four bytes `null` PARSES, and `null` is the exact
+  // sentinel `producerVerdict` uses for "no previous producer" — so it landed
+  // in the one state that means "no baseline" WITHOUT passing the §C21 absent
+  // gate, which keys on `kind === 'absent'`. Measured 2026-08-09 (whole-branch
+  // adversarial review): producerVerdict.refuse=false, sameTerms=false,
+  // shrinkVerdict.refuse=false — all three gates stood down and the 2-hourly
+  // cron WROTE, unattended. It was the counter-example to this project's
+  // durable claim that "there is no longer any state in which an unattended
+  // glossary write is ungated".
+  //
+  // `null` was the only value that slipped: [], numbers and strings all parse
+  // non-null, so `prev !== null`, so detectProducer returns `unknown`, differs
+  // from the committed producer, and the producer gate refuses. The defect was
+  // a type collision — two layers using `null` to mean two different things —
+  // not a missing check. Classifying it as `corrupt` routes it to the gate
+  // that already exists for "we cannot tell what we would destroy".
+  if (parsed === null || typeof parsed !== 'object') return { kind: 'corrupt' };
+  return { kind: 'ok', payload: parsed };
 }
 
 /**
@@ -229,7 +268,11 @@ function readExisting(outPath) {
  * call site, which does the same kind of read outside any try/catch. Both
  * would abort the per-book loop the same way exportFn's own throw used to,
  * before the round-3 fix. Deliberately left un-hardened rather than wrapping
- * every read in a try: `next` only ever comes from
+ * every read in a try. ⚠️ CORRECTED 2026-08-09 — `next` no longer comes from
+ * terminologyService.exportBookGlossary at all (see the exportFn default); it
+ * comes from buildResolvedGlossary, which is also a plain object literal built
+ * by this codebase, so the conclusion below survives its premise changing.
+ * Historically: `next` only ever came from
  * terminologyService.exportBookGlossary (a plain object literal built by
  * this codebase) or a test-injected fake — nothing in this codebase can
  * hand it a throwing getter — so defending against one here would be
@@ -449,10 +492,19 @@ function writeStatus(projectRoot, status) {
  * @returns {number} exit code: 0 unless some book ERRORED. A refusal is not an
  *   error (decision D2) — see the header.
  */
+/**
+ * ⚠️ B3: `exportFn` now defaults to the RESOLVED builder, not
+ * terminologyService.exportBookGlossary — which is dead from here and is
+ * deleted by Part C along with the tables it reads.
+ *
+ * A default parameter is evaluated only when the argument is `undefined`, so a
+ * caller that injects its own exportFn still opens NO database. That preserves
+ * the posture the lazy singleton gave, without the singleton.
+ */
 function runGlossaryExport({
   booksDir = BOOKS_DIR,
   projectRoot = PROJECT_ROOT,
-  exportFn = terminologyService.exportBookGlossary,
+  exportFn = createResolvedExportFn(),
   subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
@@ -515,15 +567,25 @@ function runGlossaryExport({
   };
 
   for (const b of books) {
-    // A book with no book_subject_mapping row makes exportBookGlossary's
-    // subject filter a no-op (terminologyService.js: `if (bookSubject && ...)
-    // continue` — no bookSubject means no filtering at all), so it would
-    // export EVERY non-rejected translation across every subject: the exact
-    // opposite of the "DELIBERATELY STRICT" (item 18) intent. Only migration
-    // 032 has ever inserted these rows, once, for five hardcoded slugs — a
-    // book registered since then has no row until a human adds one. Refuse
-    // loudly rather than silently prime MT (and the render path) from a
-    // cross-subject corpus.
+    // ⚠️ CORRECTED (Task 5 review, Important 3): this comment used to justify
+    // the gate entirely in terms of the RETIRED builder — "a book with no
+    // book_subject_mapping row makes exportBookGlossary's subject filter a
+    // no-op … so it would export EVERY non-rejected translation across every
+    // subject". exportBookGlossary is no longer on this path.
+    // buildResolvedGlossary never reads book_subject_mapping at all — it
+    // scopes by book_domain_priority (chapter 0), so an unscoped book's
+    // payload breadth no longer depends on this row in any way.
+    //
+    // The gate is KEPT anyway, and stays fail-safe: it no longer protects
+    // against an unscoped-subject payload, but it still refuses a book that
+    // was never triaged into the subject-mapping table (only migration 032
+    // has ever inserted these rows, once, for five hardcoded slugs — a book
+    // registered since then has no row until a human adds one), which is a
+    // reasonable proxy for "this book has not been reviewed for export" even
+    // under the new builder. Retiring it belongs to the later phase that
+    // drops book_subject_mapping and the rest of the old tables, not to this
+    // one — until then it costs nothing to keep and loosening it is a
+    // separate, deliberate decision.
     let subject;
     try {
       subject = subjectFn(b);
@@ -553,6 +615,41 @@ function runGlossaryExport({
     try {
       next = exportFn(b);
     } catch (err) {
+      // ⚠️ An UN-EXTRACTED book is a refusal, not an error — the same class as
+      // `refused-no-mapping` above: this book has not been prepared for export,
+      // only a human can prepare it, and until then it must not mark the whole
+      // run unhealthy (decision D2).
+      //
+      // The distinction is load-bearing, not cosmetic. `fail()` increments
+      // `errors`, and `errors > 0` returns 1 BEFORE writeHeartbeat below — so
+      // one book nobody extracted withheld the heartbeat and made
+      // checks.glossary_export not-ok for EVERY book. That is precisely the
+      // coupling this function's header removed from the refusal channel,
+      // reappearing in the error channel. Found by the whole-branch adversarial
+      // review, 2026-08-09; `stjornufraedi` (0 .md files) is one
+      // book_subject_mapping row away from it.
+      //
+      // No enumeration is needed downstream: `isUnresolved` and
+      // glossaryExportHealth both classify on the `refused-` PREFIX, so the D6
+      // clock and the stale-refusal list pick this up unchanged.
+      if (err && err.code === 'EMPTY_CENSUS') {
+        logError(`${b}: ${err.message}`);
+        outcomes[b] = { outcome: 'refused-empty-census' };
+        continue;
+      }
+      // Same class, reached by following this exporter's OWN advice: the
+      // refused-no-mapping message tells the operator to add a
+      // book_subject_mapping row, and doing so moves the book past that gate
+      // onto the unscoped throw. As an error it withheld the heartbeat for the
+      // whole corpus until a migration shipped (review B, 2026-08-09).
+      // The detail carries WHICH fault, because the two have different
+      // remedies — admin route for 'unregistered', a migration for
+      // 'no-priorities' — and collapsing them is what B1's D3 forbids.
+      if (err && err.code === 'UNSCOPED') {
+        logError(`${b}: ${err.message}`);
+        outcomes[b] = { outcome: 'refused-unscoped', detail: `unscoped: ${err.unscoped}` };
+        continue;
+      }
       logError(`${b}: export failed — ${err.message}`);
       fail(b, `export failed — ${err.message}`);
       continue;
@@ -865,7 +962,38 @@ function parseArgs(argv) {
           error: '--book requires a value (a book slug)',
         };
       }
+      // ⚠️ Do not swallow the NEXT FLAG as a value (B0 deferred finding 5).
+      // `--book --adopt` used to set book='--adopt' and leave adopt FALSE, so
+      // the run refused with a message naming a book nobody typed. Modelled on
+      // run-concept-import.js's parseImportArgs, which returns an error string
+      // for anything it does not recognise rather than dropping it silently.
+      //
+      // ⚠️ AMENDED (Task 1 review) — the original guard tested `raw.startsWith
+      // ('--')`, per the brief's own snippet. Two real inputs slipped through:
+      // `-h` (this same function's own short flag spelling, three lines below
+      // — it does not start with `--`) and a whitespace-padded flag such as
+      // `' --adopt'` (fails `startsWith('--')` on the untrimmed `raw`, then
+      // `trim()` turns it back into `'--adopt'` and it slips through as the
+      // book slug — the exact defect this task exists to close, for a padded
+      // token). The guard now runs on the TRIMMED value and rejects ANY
+      // leading `-`, not just `--`. No book slug legitimately starts with
+      // `-`, so this is a strict superset of the original check for every
+      // real input — a deliberate, authorised deviation from the brief's
+      // literal snippet; the brief's own intent ("do not swallow the next
+      // flag as a value") is what governs.
       const value = raw.trim();
+      if (value.startsWith('-')) {
+        return {
+          book: null,
+          dryRun,
+          force,
+          adopt,
+          help,
+          error:
+            `--book requires a value, but the next argument is the flag ${JSON.stringify(raw)}. ` +
+            `If you really mean a slug beginning with '-', write it as './${value}'.`,
+        };
+      }
       if (value === '') {
         return {
           book: null,
@@ -909,8 +1037,13 @@ function parseArgs(argv) {
   // the same numbers — in a single command.
   //
   // This became sharper with migration 044. Remapping `lifraen-efnafraedi`
-  // onto `chemistry` makes its export payload byte-equivalent to chemistry's
-  // (exportBookGlossary filters on the book's subject and nothing else), which
+  // onto `chemistry` MADE its export payload byte-equivalent to chemistry's
+  // (the retired exportBookGlossary filtered on the book's subject and nothing
+  // else — ⚠️ no longer true of what this script builds: since 2026-08-09 the
+  // resolved builder scopes by book_domain_priority, and organic and chemistry
+  // have different priority chains AND different censuses, so the
+  // byte-equivalence is gone. The guard below remains right for its other
+  // reasons; only this justification expired), which
   // CLEARS the shrink gate that previously refused it with certainty at
   // 1117 → 0. The unscoped command therefore became destructive for a book it
   // could not touch before — and the producer refusal below used to print that
@@ -960,7 +1093,12 @@ function main() {
         '           inert and that write is unreviewed by construction (§C21)\n' +
         '  Neither implies the other, and the 2h cron passes neither.\n' +
         '  Scope an override with --book: without it, --force/--adopt apply to\n' +
-        '  EVERY glossary-bearing book at once. Adoption is a per-book decision.'
+        '  EVERY glossary-bearing book at once. Adoption is a per-book decision.\n' +
+        '  NOTE: since B3 this exporter emits a RESOLVED VIEW of the concept model\n' +
+        '  (producer "export-terminology-resolved"), not a subject-filtered dump.\n' +
+        '  A book whose committed glossary came from any other producer therefore\n' +
+        '  refuses until --adopt --book <slug>. That is deliberate: adoption is a\n' +
+        '  per-book decision with reader-visible consequences.\n'
     );
     process.exit(0);
   }

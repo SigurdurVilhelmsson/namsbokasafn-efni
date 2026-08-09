@@ -135,7 +135,9 @@ if PATH="/usr/bin:$PATH" command -v node > /dev/null 2>&1; then
   # it, so lock contention is a real possibility. There is also no flock here,
   # so a hung export would let the next 2h tick start a second
   # add/commit/push against the same working tree. 120s is far above the
-  # sub-second this normally takes, and far below the 2h cron period.
+  # ~2.3s a four-book run takes on this branch (measured 2026-08-09: 2,264 ms,
+  # 136 MB RSS; it was sub-second before the resolved cut-over), and far below
+  # the 2h cron period.
   if ! PATH="/usr/bin:$PATH" timeout 120 node "${PROJECT_ROOT}/server/scripts/export-terminology.js" \
        >> "$LOG_FILE" 2>&1; then
     log "WARN: glossary export ERRORED or timed out — continuing with the content backup (a per-book refusal is NOT an error and does not reach here; see checks.glossary_export)"

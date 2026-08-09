@@ -19,6 +19,7 @@ const {
   detectProducer,
   PRODUCER_EXPORT,
   PRODUCER_MERGE,
+  PRODUCER_RESOLVED,
   PRODUCER_UNKNOWN,
 } = require('../lib/glossaryProducer');
 
@@ -98,5 +99,57 @@ describe('detectProducer — unknown', () => {
     ['terms with neither fingerprint', { terms: [{ english: 'a', icelandic: 'b' }] }],
   ])('%s is unknown', (_label, value) => {
     expect(detectProducer(value)).toBe(PRODUCER_UNKNOWN);
+  });
+});
+
+describe('the resolved export is a distinct producer', () => {
+  const resolved = {
+    producer: 'export-terminology-resolved',
+    terms: [{ english: 'pH', icelandic: 'sýrustig', status: 'approved', domain: 'biology' }],
+  };
+
+  it('detects the stamp', () => {
+    expect(detectProducer(resolved)).toBe(PRODUCER_RESOLVED);
+  });
+
+  it('inserting the resolved branch did not break old-export detection', () => {
+    // The first assertion is deliberately non-discriminating: it holds with
+    // or without the PRODUCER_RESOLVED branch, because an unstamped or
+    // unrecognised payload also fails to be PRODUCER_EXPORT (it falls
+    // through to `unknown`, not to PRODUCER_EXPORT). It cannot be made to
+    // fail on a removed branch without duplicating 'detects the stamp'.
+    // The load-bearing check is the second assertion: the new branch was
+    // inserted directly BELOW the PRODUCER_EXPORT check in detectProducer
+    // (:47 vs :68 — an earlier version of this comment said "above"),
+    // and this pins that the insertion did not break detection of the old,
+    // unrelated 'export-terminology' stamp.
+    expect(detectProducer(resolved)).not.toBe(PRODUCER_EXPORT);
+    expect(detectProducer({ producer: 'export-terminology', terms: [] })).toBe(PRODUCER_EXPORT);
+  });
+
+  // This guards the "don't teach shape inference about `domain`" constraint,
+  // not the new PRODUCER_RESOLVED branch itself — it passes with or without
+  // that branch, because an unstamped, `domain`-only payload already fell
+  // through to `unknown` before this task existed. Kept anyway: it pins the
+  // brief's explicit prohibition against widening the subjects/legacy
+  // fingerprint filters to also recognize `domain`.
+  it('an UNSTAMPED payload with only a `domain` field is unknown — shape inference must not learn `domain`', () => {
+    // eslint-disable-next-line no-unused-vars
+    const { producer, ...unstamped } = resolved;
+    expect(detectProducer(unstamped)).toBe(PRODUCER_UNKNOWN);
+  });
+
+  // Pins the masking property this branch inherits from PRODUCER_EXPORT: a
+  // matching top-level stamp short-circuits before any term is read, so a
+  // stamped-but-contradictory payload is trusted, not refused — the one case
+  // the header's "A HYBRID IS unknown, DELIBERATELY" note does NOT cover.
+  // Exists so a future change to this precedence is a deliberate decision,
+  // not an accident.
+  it('a resolved stamp is trusted over a contradictory term shape — inherited from PRODUCER_EXPORT, pinned so a change is deliberate', () => {
+    const stampedButLegacyShaped = {
+      producer: 'export-terminology-resolved',
+      terms: [{ english: 'atom', icelandic: 'frumeind', category: 'chemistry', chapter: 3 }],
+    };
+    expect(detectProducer(stampedButLegacyShaped)).toBe(PRODUCER_RESOLVED);
   });
 });

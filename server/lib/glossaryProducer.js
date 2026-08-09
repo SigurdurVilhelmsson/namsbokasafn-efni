@@ -30,6 +30,7 @@
 
 const PRODUCER_EXPORT = 'export-terminology';
 const PRODUCER_MERGE = 'merge-glossary';
+const PRODUCER_RESOLVED = 'export-terminology-resolved';
 const PRODUCER_UNKNOWN = 'unknown';
 
 /** Presence, not truthiness: exportBookGlossary emits `subjects: []` for an untagged term. */
@@ -37,13 +38,34 @@ const hasKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 
 /**
  * @param {unknown} payload - a parsed glossary-unified.json, or an exportBookGlossary return
- * @returns {'export-terminology'|'merge-glossary'|'unknown'}
+ * @returns {'export-terminology'|'export-terminology-resolved'|'merge-glossary'|'unknown'}
  */
 function detectProducer(payload) {
   if (payload === null || typeof payload !== 'object' || Array.isArray(payload)) {
     return PRODUCER_UNKNOWN;
   }
   if (payload.producer === PRODUCER_EXPORT) return PRODUCER_EXPORT;
+
+  // B3: the resolved view is a DIFFERENT producer, deliberately. Its payload is
+  // a subject-filtered dump's replacement, not its refresh — and detectProducer
+  // short-circuits on the stamp BEFORE reading `terms`, so without its own
+  // constant the reshape would pass the producer gate unnoticed. That is the
+  // failure class C14 and C21 exist to prevent, arriving through the door they
+  // left open.
+  //
+  // A matching top-level stamp short-circuits BEFORE any term is read — this
+  // branch inherits that property from the pre-existing PRODUCER_EXPORT branch
+  // above (not something introduced here). So a payload stamped
+  // 'export-terminology-resolved' whose terms are legacy- or hybrid-shaped is
+  // trusted as PRODUCER_RESOLVED rather than refused as `unknown`: an accepted,
+  // pinned trade-off (see glossaryProducer.test.js — "a resolved stamp is
+  // trusted over a contradictory term shape"), not a bug to fix here.
+  //
+  // Shape inference below IS exhaustive, but only on the UNSTAMPED path: a
+  // resolved term carries `domain`, never `subjects`/`category`/`chapter`, so
+  // an unstamped resolved payload falls through to `unknown` and refuses.
+  // Fail-closed, per the hybrid rule — for the unstamped case only.
+  if (payload.producer === PRODUCER_RESOLVED) return PRODUCER_RESOLVED;
 
   const terms = payload.terms;
   if (!Array.isArray(terms) || terms.length === 0) return PRODUCER_UNKNOWN;
@@ -60,4 +82,10 @@ function detectProducer(payload) {
   return PRODUCER_UNKNOWN;
 }
 
-module.exports = { detectProducer, PRODUCER_EXPORT, PRODUCER_MERGE, PRODUCER_UNKNOWN };
+module.exports = {
+  detectProducer,
+  PRODUCER_EXPORT,
+  PRODUCER_MERGE,
+  PRODUCER_RESOLVED,
+  PRODUCER_UNKNOWN,
+};

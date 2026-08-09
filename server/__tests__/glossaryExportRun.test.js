@@ -999,22 +999,20 @@ describe('parseArgs', () => {
     expect(result.error).toBe(null);
   });
 
-  it("treats a following flag as --book's value — callers must not transpose", () => {
+  it('refuses --book followed by a flag, even when transposed', () => {
     // `--book --force` (the intended `--force --book <slug>`, transposed).
-    // The next token IS present, so parseArgs takes it as the slug: this is
-    // NOT a guard against transposed flags, and no parse error is raised.
-    // The observable hazard: `--force` was never reached as its own token,
-    // so it stays at its default (false) — a caller who transposes these two
-    // flags silently loses --force AND gets a bogus book slug, with nothing
-    // in `error` to catch it. (Documented current behaviour: a value is
-    // anything that follows, including another flag spelling.) The sibling
-    // at "does NOT silently fall back..." above pins `force` for the reverse
-    // order (`--force --book`, where force IS seen before the trailing
-    // `--book` errors) — this test closes that asymmetry for this order.
+    // Before B0 finding 5, parseArgs would accept the flag as the slug value,
+    // so `--force` was never reached and stayed at its default (false) — a
+    // caller who transposes silently loses --force AND gets a bogus slug.
+    // Now the parser rejects it with an error. The sibling test
+    // "does NOT silently fall back..." above pins the reverse order
+    // (`--force --book`, where force IS seen before the trailing `--book`
+    // errors) — this test pins the asymmetry AFTER the fix, where both orders
+    // now correctly error.
     const result = parseArgs(['--book', '--force']);
-    expect(result.book).toBe('--force');
-    expect(result.force).toBe(false);
-    expect(result.error).toBe(null);
+    expect(result.error).toBeTruthy();
+    expect(result.book).toBe(null);
+    expect(result.error).toMatch(/next argument is the flag/);
   });
 
   // Whole-branch adversarial review (2026-07-28), CRITICAL: the trailing
@@ -1095,6 +1093,77 @@ describe('parseArgs', () => {
     const result = parseArgs(['--frobnicate', '--help']);
     expect(result.error).toBeTruthy();
     expect(result.help).toBe(false);
+  });
+
+  describe('parseArgs does not swallow the next flag as a value', () => {
+    it.each([['--dry-run'], ['--force'], ['--adopt'], ['--help'], ['-h']])(
+      'refuses --book followed by %s',
+      (flag) => {
+        const r = parseArgs(['--book', flag]);
+        expect(r.book).toBeNull();
+        expect(r.error).toMatch(/next argument is the flag/);
+      }
+    );
+
+    it('names the flag it refused, so the message is actionable', () => {
+      expect(parseArgs(['--book', '--adopt']).error).toContain('"--adopt"');
+    });
+
+    it('still accepts a legitimate slug', () => {
+      expect(parseArgs(['--book', 'efnafraedi-2e'])).toMatchObject({
+        book: 'efnafraedi-2e',
+        error: null,
+      });
+    });
+
+    it('allows a real path-like value beginning with -- via the ./ escape', () => {
+      expect(parseArgs(['--book', './--odd'])).toMatchObject({ book: './--odd', error: null });
+    });
+
+    // ── Task 1 review findings (both confirmed by the controller) ──────────
+    //
+    // The brief's Step 3 snippet tested `raw.startsWith('--')` — the
+    // UNTRIMMED value, and only the long-form `--` spelling. Both narrownesses
+    // let the exact defect this task exists to close back in, for two
+    // real spellings the brief's own test list didn't cover.
+
+    it('Finding 1 (Important): refuses the short flag spelling -h, which this same function recognises', () => {
+      // startsWith('--') is false for '-h', so the pre-fix guard fell through
+      // to `value = raw.trim()` -> book='-h', help left false, error null —
+      // the run then goes looking for books/-h/glossary.
+      const r = parseArgs(['--book', '-h']);
+      expect(r.book).toBeNull();
+      expect(r.error).toMatch(/next argument is the flag/);
+      expect(r.help).toBe(false);
+    });
+
+    it('Finding 2 (Minor): refuses a whitespace-padded flag-like value, not just an exact one', () => {
+      // '--book " --adopt"' (leading space) fails startsWith('--') on the
+      // untrimmed raw, then trim() turns it into '--adopt' and it slips
+      // through as the book slug -- reproducing the exact pre-fix behaviour
+      // for the flag that authorises overwriting a committed glossary.
+      const r = parseArgs(['--book', ' --adopt']);
+      expect(r.book).toBeNull();
+      expect(r.error).toMatch(/next argument is the flag/);
+      expect(r.adopt).toBe(false);
+    });
+
+    it('generalises the escape-hatch wording from -- to -, since any leading dash is now rejected', () => {
+      expect(parseArgs(['--book', '-h']).error).toMatch(/beginning with '-'/);
+    });
+
+    // ── Regression guards: the generalised check must not disturb these ────
+
+    it('regression: --book "   " (whitespace-only) is still refused as empty, not as a flag', () => {
+      const r = parseArgs(['--book', '   ']);
+      expect(r.book).toBeNull();
+      expect(r.error).toMatch(/non-empty value/);
+      expect(r.error).not.toMatch(/next argument is the flag/);
+    });
+
+    it('regression: the ./ escape hatch still parses a real leading-dash slug', () => {
+      expect(parseArgs(['--book', './--odd'])).toMatchObject({ book: './--odd', error: null });
+    });
   });
 });
 
@@ -1420,6 +1489,88 @@ describe('runGlossaryExport — the EXACT outcome strings (C14 ② amendment D6)
     seedBook('prufubok', '{ not json');
     run({ exportFn: () => payload(approved(10)), adopt: true });
     expect(outcomeOf('prufubok')).toBe('adopted');
+  });
+
+  it("'refused-empty-census' — an un-extracted book is REFUSED, not an error", () => {
+    // Whole-branch adversarial review, 2026-08-09. An empty census threw, the
+    // caller counted it as an error, and `errors > 0` returns 1 BEFORE
+    // writeHeartbeat — so one book nobody extracted made checks.glossary_export
+    // not-ok for EVERY book. That is the coupling decision D2 removed from the
+    // refusal channel, reappearing in the error channel; this file says so in
+    // its own words above ("A book that refuses for a CORRECT reason must not
+    // suppress the health signal for every other book").
+    //
+    // `stjornufraedi` has 0 .md files under 02-for-mt and is one
+    // book_subject_mapping row away from exactly this state.
+    seedBook('prufubok', legacyFile());
+    const err = new Error('prufubok: census is empty (0 .md file(s)) — extract the book first.');
+    err.code = 'EMPTY_CENSUS';
+    const code = run({
+      exportFn: () => {
+        throw err;
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('refused-empty-census');
+    // A refusal is a correct outcome (D2): exit 0, and the heartbeat is written
+    // so the rest of the corpus keeps its health signal.
+    expect(code).toBe(0);
+    expect(heartbeatExists()).toBe(true);
+  });
+
+  it("'refused-unscoped' — a book with no priority rows is REFUSED, and names which fault", () => {
+    // Whole-branch adversarial review B, 2026-08-09: the SAME channel as
+    // refused-empty-census, reached by following this exporter's own advice.
+    // `refused-no-mapping` tells the operator to add a book_subject_mapping
+    // row; doing so moves the book past that gate and onto the unscoped throw,
+    // which was an error — withholding the heartbeat and degrading
+    // checks.glossary_export for the whole corpus until a migration ships.
+    // The remedy the system printed made things worse.
+    //
+    // The two unscoped faults have DIFFERENT remedies (admin route vs a
+    // migration), so the detail must name which — collapsing them is what
+    // B1's D3 exists to prevent.
+    seedBook('prufubok', legacyFile());
+    const err = new Error('prufubok: the book is unscoped (no-priorities).');
+    err.code = 'UNSCOPED';
+    err.unscoped = 'no-priorities';
+    const code = run({
+      exportFn: () => {
+        throw err;
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('refused-unscoped');
+    expect(readStatus().books.prufubok.detail).toContain('no-priorities');
+    expect(code).toBe(0);
+    expect(heartbeatExists()).toBe(true);
+  });
+
+  it("'error' — a genuine export failure is still an error, not a refusal", () => {
+    // The control for the test above: only EMPTY_CENSUS is reclassified.
+    seedBook('prufubok', legacyFile());
+    const code = run({
+      exportFn: () => {
+        throw new Error('something actually broke');
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('error');
+    expect(code).toBe(1);
+  });
+
+  it("'refused-producer' — a committed file holding JSON literal `null` is UNREADABLE, not absent", () => {
+    // Whole-branch adversarial review, 2026-08-09. `readExisting` parsed this
+    // to {kind:'ok', payload:null}, and null is the exact sentinel
+    // producerVerdict uses for "no previous producer" — so the §C21 absent gate
+    // did not fire (kind is not 'absent'), producerVerdict.refuse was false,
+    // sameTerms was false and shrinkVerdict.refuse was false. All three gates
+    // stood down and the 2-hourly cron WROTE, unattended.
+    //
+    // ⚠️ It was a counter-example to this project's durable claim that "there
+    // is no longer any state in which an unattended glossary write is ungated".
+    // Only `null` slipped through: [], numbers and strings all parse non-null,
+    // detect as `unknown`, and refuse against a committed producer.
+    seedBook('prufubok', 'null');
+    run({ exportFn: () => payload(approved(10)) });
+    expect(outcomeOf('prufubok')).toBe('refused-producer');
   });
 
   it("'refused-producer' — an un-adopted producer swap", () => {

@@ -14,6 +14,30 @@ const fs = require('fs');
 const Database = require('better-sqlite3');
 const { BOOK_DOMAIN_PRIORITY } = require('../lib/domains');
 const { buildScope, resolve } = require('../lib/conceptResolver');
+const { collectSourceEnglish: collectSourceEnglishRaw } = require('../lib/sourceEnglish');
+
+/** Gate-script wrapper: keeps this script's own loud reporting behaviour. */
+function collectSourceEnglish(slug) {
+  const { strings, filesRead, root } = collectSourceEnglishRaw(slug);
+  if (filesRead === 0) {
+    // ⚠️ An empty result must be LOUD. A census over 0 files reports "0 ties"
+    // and looks like a clean pass — an absence is not an answer.
+    //
+    // The lib reports filesRead: 0 identically whether the root is missing or
+    // merely empty of .md files — correct for the lib, which is quiet by
+    // design. This wrapper must still tell the two apart: "does not exist"
+    // means the book was never extracted; "read 0 .md files" means it was
+    // extracted into an empty tree. Different faults, different remedies.
+    if (!fs.existsSync(root)) {
+      console.error(`  ⚠️ ${root} does not exist — gate 2 cannot run for ${slug}`);
+    } else {
+      console.error(`  ⚠️ read 0 .md files under ${root} — gate 2 is meaningless`);
+    }
+    return [];
+  }
+  console.log(`  files read: ${filesRead}`);
+  return strings;
+}
 
 function parseArgs(argv) {
   let db = null;
@@ -332,120 +356,6 @@ function main(argv = process.argv.slice(2)) {
   }
   console.log('\nALL GATES REPORTED. Record the numbers in test-results/.');
   return 0;
-}
-
-/**
- * Distinct English strings appearing in a book's extracted EN segments —
- * books/<slug>/02-for-mt/**\/*.md, the text the MT glossary is actually filtered
- * against by filterGlossaryForText.
- *
- * ⚠️ THREE TRAPS, each measured in this tree on 2026-08-08, each of which
- * silently inflates or empties the census rather than erroring:
- *
- * 1. `02-for-mt` holds ~700 `<name>.md.backup.<timestamp>` files beside its 249
- *    real `.md` files. `endsWith('.md')` correctly excludes them BECAUSE they end
- *    in the timestamp. Do NOT "improve" this to `includes('.md')` — that pulls in
- *    every stale backup and counts months-old text as current source.
- *
- * 2. Every file is dense with `<!-- SEG:mNNNNN:type:id -->` markers. A bare word
- *    regex harvests `SEG`, `title`, `abstract-item` and friends as English terms.
- *    Strip the comments first.
- *
- * 3. Segment text carries `[[i:…]]`, `[[link:…]]`, `[[xref:…]]`, `[[docref:…]]`
- *    bracket markers whose TYPE names would likewise be counted. Strip the
- *    marker syntax but KEEP the inner prose — `[[i:hydrogen]]` really does mean
- *    the word hydrogen appears in the text.
- *
- * ⚠️ §C36 did NOT record how it extracted its strings, so this is a
- * reconstruction rather than a replay. That is why the caller prints the method.
- *
- * ⚠️⚠️ TRAP 4, THE EXPENSIVE ONE — REVIEW FINDING 1 (2026-08-08). This function
- * used to harvest with a single `/[A-Za-z][A-Za-z-]+(?: [a-z]+)?/g`, whose
- * two-word alternative matches NON-OVERLAPPINGLY. Whether a bigram is seen then
- * depends on its BYTE OFFSET:
- *
- *   "The carbon dioxide molecule"  -> 'The carbon', 'dioxide molecule'  ← term LOST
- *   "a carbon dioxide molecule"    -> 'carbon dioxide', 'molecule'      ← term seen
- *
- * and consuming the following word into a bigram ALSO prevents that word ever
- * being emitted as a unigram. The net was DESTRUCTIVE, and the proof needs no
- * reference to the register: unigrams alone (n=22,100) scored 1,558/90/285 =
- * 1,933 resolutions, HIGHER than the bigram version's (n=80,037) 1,398/67/176 =
- * 1,641. Deleting the layer beat shipping it.
- *
- * Tokenising once and emitting OVERLAPPING adjacent pairs — same unigram grammar,
- * same files — yields **1,999/120/299 over 118,749 strings**, against §C36's
- * recorded 2,001/126/310. Within ~1% on three counts produced by three different
- * branches of resolveCandidates, so this is not a shared-limit artifact.
- *
- * ⚠️ TWO CORRECTIONS TO WHAT THIS COMMENT USED TO SAY, both caught by the
- * whole-branch review, both the branch's own recurring failure committed by the
- * person fixing it:
- *   - it cited **2,008/120/300**, which is the REVIEWER's independent
- *     implementation, not this one. This code has never printed that. Two
- *     implementations converging within 9 resolutions is the good news here — but
- *     a number you did not measure does not belong in your own docstring.
- *   - it claimed "same token grammar". Not exact, though NOT for the reason a
- *     first correction of this comment guessed — measured on samples rather than
- *     reasoned about, twice, because the first re-derivation was also wrong.
- *     One-character second words survive ("sodium a bit" still yields
- *     "sodium a"). What changed is HYPHENS: the old ` [a-z]+` could match a
- *     PREFIX of a hyphenated word and then resume mid-word, so
- *     "carbon di-oxide here" produced the fragments `carbon di` and
- *     `oxide here`. Whole tokens are used here, giving `di-oxide` and
- *     `di-oxide here` and no fragments. Strictly fewer invented terms.
- */
-function collectSourceEnglish(slug) {
-  const path = require('path');
-  const root = path.join(__dirname, '..', '..', 'books', slug, '02-for-mt');
-  if (!fs.existsSync(root)) {
-    console.error(`  ⚠️ ${root} does not exist — gate 2 cannot run for ${slug}`);
-    return [];
-  }
-  const words = new Set();
-  let filesRead = 0;
-  const walk = (dir) => {
-    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-      const p = path.join(dir, e.name);
-      if (e.isDirectory()) {
-        walk(p);
-        continue;
-      }
-      if (!e.name.endsWith('.md')) continue; // excludes .md.backup.<timestamp>
-      filesRead++;
-      const text = fs
-        .readFileSync(p, 'utf8')
-        .replace(/<!--[\s\S]*?-->/g, ' ') // trap 2: SEG markers
-        .replace(/\[\[[a-z]+:/g, ' ') // trap 3: marker OPEN, prose kept
-        .replace(/\]\]/g, ' ');
-      // Tokenise ONCE, then emit every unigram AND every adjacent pair. The token
-      // grammar is unchanged from the offset-locked version it replaces — a
-      // unigram is `[A-Za-z][A-Za-z-]+` (2+ chars) and a bigram's second word is
-      // `[a-z]+` (1+, lowercase) — so the only variable that moved is overlap.
-      const toks = [...text.matchAll(/[A-Za-z][A-Za-z-]*/g)];
-      for (let i = 0; i < toks.length; i++) {
-        const [word] = toks[i];
-        if (word.length >= 2) words.add(word);
-        const next = toks[i + 1];
-        if (!next || word.length < 2 || !/^[a-z]+$/.test(next[0])) continue;
-        // Adjacent means separated by exactly one space in the SOURCE — not merely
-        // consecutive in the token list, which would join across newlines and
-        // punctuation and invent terms the book does not contain.
-        if (next.index === toks[i].index + word.length + 1 && text[next.index - 1] === ' ') {
-          words.add(`${word} ${next[0]}`);
-        }
-      }
-    }
-  };
-  walk(root);
-  // ⚠️ An empty result must be LOUD. A census over 0 files reports "0 ties" and
-  // looks like a clean pass — an absence is not an answer.
-  if (filesRead === 0) {
-    console.error(`  ⚠️ read 0 .md files under ${root} — gate 2 is meaningless`);
-    return [];
-  }
-  console.log(`  files read: ${filesRead}`);
-  return [...words];
 }
 
 if (require.main === module) process.exitCode = main();
