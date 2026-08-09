@@ -49,6 +49,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const { createHash } = require('crypto');
 
 const { BOOK_DOMAIN_PRIORITY } = require('../lib/domains');
 // The MODULE, not only its two functions: gate 5b runs this one and the
@@ -109,7 +110,7 @@ const BENCH_TOLERANCE = 3.0;
  * process, the same database, interleaved rounds — so box noise is largely
  * cancelled and a real per-resolve cost cannot hide behind it. Spread measured
  * by 5b's OWN rounds, across every run recorded in
- * test-results/b4a-term-preference-2026-08.md: **0.67× – 1.28× per round,
+ * test-results/b4a-term-preference-2026-08.md: **0.67× – 1.33× per round,
  * medians 0.80× – 1.09×** — the FULL set, including the least flattering run,
  * because a tolerance justified by a chosen subset is not justified at all.
  * 1.5× therefore sits about three spread-widths above centre: tight enough to
@@ -685,57 +686,76 @@ function gate4(db, bookId, payload) {
     return { ok: true, ran: false };
   }
 
-  const pick = candidates[0];
-  const [A, B] = pick.entries;
-  const preferred = pick.terms[1]; // rank 2 — a real alternative on the same concept
-  console.log(
-    `  subject: concept #${pick.conceptId} carries '${A.english}' and '${B.english}' ` +
-      `(and ${pick.entries.length - 2} more), Icelandic terms ${pick.terms.map((t) => t.text).join(' / ')}`
-  );
-
+  // ⚠️ EVERY QUALIFYING CONCEPT, not just the first (review, 2026-08-09). This
+  // exercised `candidates[0]` alone while the other 14 sat free, and the whole
+  // point of measuring on a corpus rather than a fixture is that the corpus
+  // supplies cases nobody chose. Each is cheap — a buildScope is ~1 ms.
+  //
+  // ⚠️ And EVERY OTHER STRING on the concept is checked, not merely the second:
+  // the leak's claim is that a preference reaches exactly the string named in
+  // it, so a concept carrying four census strings must hold the other three.
   const bad = [];
-  const beforeScope = buildScope(db, BOOK, 0);
-  const beforeA = winnerOf(resolve(beforeScope, A.english));
-  const beforeB = winnerOf(resolve(beforeScope, B.english));
-  console.log(
-    `  before: '${A.english}' -> ${beforeA && beforeA.text} · '${B.english}' -> ${beforeB && beforeB.text}`
-  );
+  let exercised = 0;
+  let siblingsChecked = 0;
+  for (const pick of candidates) {
+    const [A, ...others] = pick.entries;
+    const preferred = pick.terms[1]; // rank 2 — a real alternative on the same concept
 
-  db.prepare(
-    'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, ?, ?)'
-  ).run(bookId, A.english, preferred.id);
+    const beforeScope = buildScope(db, BOOK, 0);
+    const beforeA = winnerOf(resolve(beforeScope, A.english));
+    const before = others.map((o) => winnerOf(resolve(beforeScope, o.english)));
 
-  const afterScope = buildScope(db, BOOK, 0);
-  const afterAR = resolve(afterScope, A.english);
-  const afterA = winnerOf(afterAR);
-  const afterB = winnerOf(resolve(afterScope, B.english));
-  console.log(
-    `  after preferring '${A.english}' -> term #${preferred.id} '${preferred.text}': ` +
-      `'${A.english}' -> ${afterA && afterA.text} (reason=${afterAR.reason}) · '${B.english}' -> ${afterB && afterB.text}`
-  );
+    db.prepare(
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, ?, ?)'
+    ).run(bookId, A.english, preferred.id);
 
-  // ⚠️ "A MOVED" IS THE CONTROL FOR "B DID NOT". A preference that silently
-  // never fired would leave B unchanged too, and that pass would mean nothing.
-  if (!afterA || afterA.text !== preferred.text) {
-    bad.push(`the preference did not fire — '${A.english}' resolved to ${afterA && afterA.text}`);
-  }
-  if (afterAR.reason !== 'book-preference') {
-    bad.push(`'${A.english}' reason ${afterAR.reason}, expected book-preference`);
-  }
-  // THE GATE: the OTHER English string on the same concept must not move — the
-  // whole winner object, not merely its text.
-  if (JSON.stringify(afterB) !== JSON.stringify(beforeB)) {
-    bad.push(
-      `THE LEAK IS OPEN — '${B.english}' moved from ${JSON.stringify(beforeB)} to ${JSON.stringify(afterB)}`
+    const afterScope = buildScope(db, BOOK, 0);
+    const afterAR = resolve(afterScope, A.english);
+    const afterA = winnerOf(afterAR);
+    const after = others.map((o) => winnerOf(resolve(afterScope, o.english)));
+
+    const moved = others
+      .map((o, i) => ({ o, i }))
+      .filter(({ i }) => JSON.stringify(after[i]) !== JSON.stringify(before[i]));
+
+    console.log(
+      `  #${String(pick.conceptId).padStart(6)} '${A.english}' -> '${preferred.text}' ` +
+        `(was '${beforeA && beforeA.text}', reason=${afterAR.reason}) · ` +
+        `${others.length} sibling string(s) held: ${others.length - moved.length}/${others.length}` +
+        (moved.length ? ` ← LEAKED: ${moved.map((m) => `'${m.o.english}'`).join(', ')}` : '')
     );
-  }
 
-  db.prepare(
-    'DELETE FROM book_term_preference WHERE book_id = ? AND chapter = 0 AND english = ?'
-  ).run(bookId, A.english);
-  const restoredA = winnerOf(resolve(buildScope(db, BOOK, 0), A.english));
-  if (JSON.stringify(restoredA) !== JSON.stringify(beforeA)) {
-    bad.push(`control failed — '${A.english}' did not return to ${JSON.stringify(beforeA)}`);
+    // ⚠️ "A MOVED" IS THE CONTROL FOR "THE SIBLINGS DID NOT". A preference that
+    // silently never fired would leave them unchanged too, and that pass would
+    // mean nothing.
+    if (!afterA || afterA.text !== preferred.text) {
+      bad.push(
+        `#${pick.conceptId}: the preference did not fire — '${A.english}' resolved to ${afterA && afterA.text}`
+      );
+    }
+    if (afterAR.reason !== 'book-preference') {
+      bad.push(
+        `#${pick.conceptId}: '${A.english}' reason ${afterAR.reason}, expected book-preference`
+      );
+    }
+    for (const m of moved) {
+      bad.push(
+        `THE LEAK IS OPEN — #${pick.conceptId}: '${m.o.english}' moved from ` +
+          `${JSON.stringify(before[m.i])} to ${JSON.stringify(after[m.i])}`
+      );
+    }
+
+    db.prepare(
+      'DELETE FROM book_term_preference WHERE book_id = ? AND chapter = 0 AND english = ?'
+    ).run(bookId, A.english);
+    const restoredA = winnerOf(resolve(buildScope(db, BOOK, 0), A.english));
+    if (JSON.stringify(restoredA) !== JSON.stringify(beforeA)) {
+      bad.push(
+        `#${pick.conceptId}: control failed — '${A.english}' did not return to ${JSON.stringify(beforeA)}`
+      );
+    }
+    exercised++;
+    siblingsChecked += others.length;
   }
 
   record(
@@ -743,8 +763,9 @@ function gate4(db, bookId, payload) {
     bad.length ? 'FAIL' : 'PASS',
     bad.length
       ? bad.join('; ')
-      : `concept #${pick.conceptId}: '${A.english}' -> '${preferred.text}' (book-preference) while ` +
-          `'${B.english}' stayed '${beforeB.text}' [${beforeB.domain} @${beforeB.position}]`
+      : `${exercised}/${candidates.length} qualifying concepts exercised: the preferred string ` +
+          `moved to its rank-2 term (book-preference) in every one, and all ${siblingsChecked} ` +
+          `sibling English string(s) held their whole winner object`
   );
   return { ok: bad.length === 0, ran: true };
 }
@@ -761,9 +782,29 @@ function gate4(db, bookId, payload) {
  * tell "the override costs 43%" from "the box was busy"; interleaving can.
  *
  * ⚠️ IT IS ALSO A CORRECTNESS CONTROL, and a free one: with zero preference rows
- * prev and next must find the SAME number of winners over biology's 47,568-term
- * scope — a second, larger book than gate 1's chemistry, and a hard failure if
- * they disagree.
+ * prev and next must resolve biology's 47,568-term scope to THE SAME ANSWERS —
+ * a second, larger book than gate 1's chemistry, and a hard failure if they
+ * disagree.
+ *
+ * ⚠️ IDENTITY, NOT CARDINALITY, AND THE DIFFERENCE IS THE WHOLE POINT (review,
+ * 2026-08-09). This compared `winners` — a COUNT — and the evidence doc claimed
+ * it proved "the resolver's answers are unchanged". It did not: a keying
+ * regression that flips WHICH concept wins for N strings leaves the count at
+ * 44,861 and passes. Gate 1 covers chemistry only, so nothing else would have
+ * caught it. Both are kept — the count is the readable headline, the SHA-1
+ * digest over every winner's `termId` in a fixed string order is the assertion —
+ * because a digest alone says "different" without saying "how many".
+ *
+ * ⚠️ THE DIGEST MUST INCLUDE THE MISSES. A winner-only digest cannot tell a
+ * string that resolved to term 7 from a string that resolved to nothing followed
+ * by one that resolved to 7; `-` is written for every miss so position is
+ * preserved.
+ *
+ * ⚠️ COUNTERBALANCED, not merely interleaved (same review). `prev` ran first in
+ * every round, which systematically favours whichever arm runs second (page
+ * cache, JIT warm-up) — and the arm being defended was the second one. The order
+ * now ALTERNATES by round, so the bias cancels across rounds instead of
+ * accumulating in the direction of the claim.
  */
 function benchAB(db, baseDir) {
   const prevMod = require(path.join(baseDir, 'conceptResolver.js'));
@@ -780,22 +821,36 @@ function benchAB(db, baseDir) {
 
   const time = (mod) => {
     const scope = mod.buildScope(db, BENCH_BOOK, 0);
+    const hash = createHash('sha1');
     const t = process.hrtime.bigint();
     let winners = 0;
-    for (const s of strings) if (mod.resolve(scope, s).winner) winners++;
-    return { ms: Number(process.hrtime.bigint() - t) / 1e6, winners };
+    for (const s of strings) {
+      const w = mod.resolve(scope, s).winner;
+      if (w) winners++;
+      hash.update(w ? `${w.termId}\n` : '-\n');
+    }
+    return { ms: Number(process.hrtime.bigint() - t) / 1e6, winners, digest: hash.digest('hex') };
   };
 
   const rounds = [];
   withBaseSchema(db, () => {
     for (let i = 0; i < 3; i++) {
-      const p = time(prevMod);
-      const n = time(resolveModule);
-      rounds.push({ prev: p, next: n, ratio: n.ms / p.ms });
+      // Counterbalanced: prev-first on even rounds, next-first on odd ones.
+      const prevFirst = i % 2 === 0;
+      const first = time(prevFirst ? prevMod : resolveModule);
+      const second = time(prevFirst ? resolveModule : prevMod);
+      const p = prevFirst ? first : second;
+      const n = prevFirst ? second : first;
+      rounds.push({ prev: p, next: n, ratio: n.ms / p.ms, prevFirst });
       console.log(
-        `    round ${i + 1}: prev ${(p.ms / strings.length).toFixed(3)} ms/resolve (${p.winners} winners) · ` +
+        `    round ${i + 1} (${prevFirst ? 'prev first' : 'next first'}): ` +
+          `prev ${(p.ms / strings.length).toFixed(3)} ms/resolve (${p.winners} winners) · ` +
           `next ${(n.ms / strings.length).toFixed(3)} ms/resolve (${n.winners} winners) · ` +
           `ratio ${(n.ms / p.ms).toFixed(2)}×`
+      );
+      console.log(
+        `      winner-identity digest: prev ${p.digest.slice(0, 16)} · next ${n.digest.slice(0, 16)}` +
+          ` -> ${p.digest === n.digest ? 'IDENTICAL' : 'DIFFERENT'}`
       );
     }
   });
@@ -805,6 +860,9 @@ function benchAB(db, baseDir) {
     rounds,
     median: ratios[1],
     winnersAgree: rounds.every((r) => r.prev.winners === r.next.winners),
+    // THE assertion: same answers, not merely the same number of them.
+    identityAgree: rounds.every((r) => r.prev.digest === r.next.digest),
+    digest: rounds[0].next.digest,
     winners: rounds[0].next.winners,
   };
 }
@@ -865,10 +923,19 @@ function gate5(dbPath, db, baseDir) {
       ab = benchAB(db, baseDir);
       console.log(
         `    median ratio ${ab.median.toFixed(2)}× over ${fmt(ab.strings)} resolves · ` +
-          `winners agree: ${ab.winnersAgree} (${fmt(ab.winners)})`
+          `winners agree: ${ab.winnersAgree} (${fmt(ab.winners)}) · ` +
+          `winner IDENTITY agrees: ${ab.identityAgree} (sha1 ${ab.digest.slice(0, 16)}…)`
       );
       if (!ab.winnersAgree) {
-        bad.push('prev and next disagree on the winner count with zero preference rows');
+        bad.push('prev and next disagree on the winner COUNT with zero preference rows');
+      }
+      // ⚠️ The one that catches a keying regression. A flip in WHICH concept
+      // wins leaves the count untouched, and gate 1 sees only chemistry.
+      if (!ab.identityAgree) {
+        bad.push(
+          'prev and next resolve biology to DIFFERENT ANSWERS with zero preference rows — ' +
+            'the winner-identity digests differ, so which concept wins has moved'
+        );
       }
       if (ab.median > AB_TOLERANCE) {
         bad.push(
@@ -893,7 +960,8 @@ function gate5(dbPath, db, baseDir) {
           // whole gate set exists to refuse.
           (ab
             ? `5b: prev-vs-next median ${ab.median.toFixed(2)}× on the same box, ` +
-              `${fmt(ab.winners)} winners on both`
+              `${fmt(ab.winners)} winners on both AND identical winner-identity digests ` +
+              `(sha1 ${ab.digest.slice(0, 16)}…)`
             : '5b NOT RUN (no branch-point libraries) — 5a stands alone, which is the weaker claim') +
           ` — DEV BOX, a regression check against itself, never a production budget`
   );

@@ -100,9 +100,20 @@ unrunnable or meaningless:
   (1,999 / 113 / 306) as it must;
 - term-less candidates **0**; both unscoped causes still distinguishable.
 
-**So the reconstruction reproduces every figure B1 and B2 measured on the real corpus.** That
-does not make it production's database — caveat 1 stands — but it does mean the corpus the
-gates below ran against is not a different corpus in any respect anyone has yet measured.
+⚠️ **Be precise about what each half of that anchors to — the two are not equally strong.**
+
+- **Production-anchored: the population only.** 70,187 concepts / 192,189 terms are B2's
+  measurement of production's own database, so reproducing them says this rebuild landed the
+  same corpus production holds.
+- **A determinism replay: everything else.** B1's scope sizes, census and fallback terms were
+  themselves measured on a **local scratch database built from this same raw fetch**
+  (`b1-resolve-gates-2026-08.md:8-11`), not on production. Reproducing them therefore shows
+  the import → scope → resolve pipeline is **deterministic over identical input** — valuable,
+  and not the same claim as "matches production".
+
+**So the reconstruction is bounded against the corpus, and only its population is bounded
+against production.** Caveat 1 stands: the gates below ran against a corpus that is not a
+different corpus in any respect yet measured, which is weaker than "production's database".
 
 ---
 
@@ -114,8 +125,8 @@ gates below ran against is not a different corpus in any respect anyone has yet 
 | 2 — zero-preference control   | **PASS** | 0 `book_term_preference` rows · 0 expanded by 048 · old table dropped                                                                       |
 | 1 — export unchanged          | **PASS** | `JSON.stringify(prev.terms) === JSON.stringify(next.terms)` over **2,119** terms; `stats` identical; census 1,999 / 120 / 299               |
 | 3 — §C38 closes               | **PASS** | `nákvæmni [physics @2]` → `hittni [biology @3]` (`book-preference`), and `nákvæmni` returns on delete; §C38 ② also measured at the baseline |
-| 4 — the leak is closed        | **PASS** | concept #1246: `'Hz' → 'rið'` while `'hertz'` stayed `'herts' [physics @2]`                                                                 |
-| 5 — no performance regression | **PASS** | 5a cold 0.048 ms/resolve vs B1's 0.044 (1.09×, tolerance 3×) · **5b prev-vs-next median 1.09× on the same box**, 44,861 winners on both     |
+| 4 — the leak is closed        | **PASS** | **15/15** qualifying concepts: the preferred string moved, and all 15 sibling English strings held their whole winner object                |
+| 5 — no performance regression | **PASS** | 5a cold 0.067 ms/resolve vs B1's 0.044 (1.52×, tol 3×) · **5b median 1.07×**, 44,861 winners AND identical winner-identity digests          |
 
 Root suite: **297 files / 4305 tests, all passing** (`npm test` from the repo root, 222 s).
 
@@ -162,8 +173,15 @@ avoid. So the extracted `conceptResolver.js` is checked positively for the pre-B
 reads `book_concept_preference` and knows nothing of `book_term_preference`), and `--base
 <ref>` names the remedy. **Measured control:** `node server/scripts/verify-b4a-gates.js
 --base HEAD` → gate 1 `FAIL`, exit 1, message _"HEAD is NOT a pre-B4a commit … Pass --base
-&lt;pre-B4a-ref&gt; (the branch point was bf680c3d)"_, with the other gates unaffected. A gate
-that cannot be made to fail has not been shown to work.
+&lt;pre-B4a-ref&gt; (the branch point was bf680c3d)"_. A gate that cannot be made to fail has
+not been shown to work.
+
+⚠️ **That control has a SECOND effect, which is not "the other gates are unaffected"** (this
+line said so until review round 2): the branch-point libraries are shared with gate 5b, so
+`--base HEAD` also degrades **5b to `NOT RUN` inside a gate-5 `PASS`**. Gate 5 says so in
+words rather than printing `median n/a` — "5b NOT RUN (no branch-point libraries) — 5a stands
+alone, which is the weaker claim" — because a PASS resting silently on 5a alone is precisely
+the vacuous pass this gate set exists to refuse. Gates 2, 3 and 4 are genuinely unaffected.
 
 |                         |                         prev (`bf680c3d`) | next (this branch) |
 | ----------------------- | ----------------------------------------: | -----------------: |
@@ -251,19 +269,45 @@ Selection, over the concepts that answered chemistry's census:
 - The second Icelandic term is required so the preference can actually move something;
   otherwise the gate would be vacuous in the other direction.
 
-Subject: **concept #1246** (physics), carrying the English `Hz` and `hertz`, Icelandic
-`herts` (r1) / `rið` (r2).
+⚠️ **ALL 15 ARE EXERCISED, not just the first** (review round 2 — this ran `candidates[0]`
+alone while the other 14 sat free, and the whole point of measuring on a corpus rather than a
+fixture is that the corpus supplies cases nobody chose). For each concept the gate prefers its
+first census string → its rank-2 Icelandic term, then checks **every other** census string on
+that concept, comparing the whole winner object. Verbatim:
 
-|                                            | `'Hz'`                                | `'hertz'`               |
-| ------------------------------------------ | ------------------------------------- | ----------------------- |
-| before                                     | `herts`                               | `herts`                 |
-| after preferring `'Hz'` → term #3147 `rið` | **`rið`** (`reason: book-preference`) | **`herts`** — unchanged |
-| after deleting the row                     | `herts`                               | `herts`                 |
+```
+  concepts answering ≥2 case-distinct census strings AND carrying ≥2 Icelandic terms: 15
+  #  1246 'Hz' -> 'rið' (was 'herts', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  1744 'cal' -> 'varmaeining' (was 'kaloría', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  1831 'fissile' -> 'kjarnkleyfur' (was 'kleyfur', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  1850 'Cu' -> 'eir' (was 'kopar', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2226 'log' -> 'lygri?' (was 'logri', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2275 'Mg' -> 'magnín' (was 'magnesín', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2419 'minus' -> 'mínusmerki' (was 'mínus', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2495 'Na' -> 'natur' (was 'natrín', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2514 'ln' -> 'náttúrlegur lygri?' (was 'náttúrlegur logri', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2547 'Ni' -> 'nikull' (was 'nikkel', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  2696 'plus' -> 'jákvætt formerki' (was 'plús', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  4018 'in' -> 'þumlungur' (was 'tomma', reason=book-preference) · 1 sibling string(s) held: 1/1
+  #  4424 'tungsten' -> 'þungsteinn' (was 'wolfram', reason=book-preference) · 1 sibling string(s) held: 1/1
+  # 50118 'cane sugar' -> 'reyrsykur' (was 'súkrósi', reason=book-preference) · 1 sibling string(s) held: 1/1
+  # 52931 'kcal' -> '(stór) hitaeining' (was 'kílókaloría', reason=book-preference) · 1 sibling string(s) held: 1/1
 
-⚠️ **"A moved" is the control for "B did not."** A preference that silently never fired would
-also leave `hertz` unchanged, and that pass would prove nothing — so the gate asserts `Hz`
-moved _and_ that `reason === 'book-preference'`, and compares `hertz`'s **whole winner
-object** (`conceptId`, `termId`, `text`, `domain`, `position`), not just its text.
+PASS  GATE 4 (the leak is closed) — 15/15 qualifying concepts exercised: the preferred string
+moved to its rank-2 term (book-preference) in every one, and all 15 sibling English string(s)
+held their whole winner object
+```
+
+The pairs are the interesting part: `Hz`/`hertz`, `cal`/`calorie`, `Cu`/`copper`,
+`Na`/`sodium`, `in`/`inch` — symbol-and-word pairs on one concept are exactly the shape a
+concept-keyed preference would have broken, and chemistry's census is full of them.
+
+⚠️ **"A moved" is the control for "the siblings did not."** A preference that silently never
+fired would leave them unchanged too, and that pass would prove nothing — so the gate asserts
+the preferred string moved _and_ `reason === 'book-preference'`, and compares each sibling's
+**whole winner object** (`conceptId`, `termId`, `text`, `domain`, `position`), not just its
+text. Each concept is then restored (row deleted, scope rebuilt, answer back to baseline)
+before the next.
 
 ### Gate 5 — no performance regression
 
@@ -271,46 +315,90 @@ object** (`conceptId`, `termId`, `text`, `domain`, `position`), not just its tex
 liffraedi-2e`, 47,568 scoped English terms (the final verification run):
 
 ```
-  buildScope: 0.6 ms
-  cold: 2300.4 ms for 47568 resolves (0.048 ms each), 44861 winners, rss 89.7 MB
-  warm: 3375.0 ms for 47568 resolves (0.071 ms each), 44861 winners, rss 89.6 MB
-  single resolve: 0.100 ms · rss delta: 39.6 MB
+  buildScope: 1.2 ms
+  cold: 3182.6 ms for 47568 resolves (0.067 ms each), 44861 winners, rss 85.3 MB
+  warm: 2237.2 ms for 47568 resolves (0.047 ms each), 44861 winners, rss 85.2 MB
+  single resolve: 0.070 ms · rss delta: 35.4 MB
 ```
 
-Cold **0.048 ms/resolve** against B1's recorded **0.044** = 1.09×. ⚠️ **A DEV-BOX FIGURE — a
+Cold **0.067 ms/resolve** against B1's recorded **0.044** = 1.52×. ⚠️ **A DEV-BOX FIGURE — a
 regression check against itself, never a production budget.** The production question belongs
 to B4b, where biology's 47,568-term scope bites.
 
 **5b, the discriminating comparison — and the reason 5a is readable at all.** 5a compares
 today's cold figure against one recorded on _another day_, and this box does not repeat
-itself. **Across the seven runs of this gate, 5a's cold ratio spanned 1.09× – 1.64×** (1.43,
-1.64, 1.25, 1.57, 1.25, 1.57, 1.09) while the code was provably not slower — so the
-branch-point resolver and the current one were run **interleaved, in one process, against one
-database**. The final run:
+itself. **Across the nine clean runs of this gate, 5a's cold ratio spanned 1.09× – 1.64×**
+(1.43, 1.64, 1.25, 1.57, 1.25, 1.57, 1.09, 1.09, 1.52) while the code was provably not slower
+— so the branch-point resolver and the current one were run **in one process, against one
+database, with the order alternating**. The final run:
 
-| round | prev (`bf680c3d`) | next (this branch) | ratio |
-| ----- | ----------------: | -----------------: | ----: |
-| 1     |  0.050 ms/resolve |   0.064 ms/resolve | 1.28× |
-| 2     |             0.054 |              0.059 | 1.09× |
-| 3     |             0.097 |              0.070 | 0.73× |
+| round | order      | prev (`bf680c3d`) | next (this branch) | ratio | winner digest |
+| ----- | ---------- | ----------------: | -----------------: | ----: | ------------- |
+| 1     | prev first |  0.064 ms/resolve |   0.069 ms/resolve | 1.07× | IDENTICAL     |
+| 2     | next first |             0.052 |              0.051 | 0.98× | IDENTICAL     |
+| 3     | prev first |             0.051 |              0.063 | 1.24× | IDENTICAL     |
 
-**Median 1.09× over 47,568 resolves.** ⚠️ **The full set of 5b medians, including the least
+**Median 1.07× over 47,568 resolves.** ⚠️ **The full set of 5b medians, including the least
 flattering, because a claim justified by a chosen subset is not justified:** 0.95×, 0.80×,
-0.93×, 0.98×, 1.09× — centred just under parity, with next faster in most rounds. **Next is
+0.93×, 0.98×, 1.09×, 0.85×, 1.07× (per-round 0.67× – 1.33×) — centred at parity. **Next is
 not slower.** The cross-day metric (5a) carries roughly a factor of box noise; the same-box
 A/B does not.
 
-⚠️ **5b is also a free correctness control at a second, larger book:** with zero preference
-rows, prev and next find **the same 44,861 winners** over biology's 47,568-term scope. Gate 1
-proves the chemistry payload is unchanged; this proves the resolver's answers are unchanged
-on a book gate 1 never touches. A disagreement here is a hard failure.
+⚠️ **COUNTERBALANCED as of review round 2, not merely interleaved.** `prev` previously ran
+first in every round, which systematically favours whichever arm runs second (page cache, JIT
+warm-up) — and the arm being defended _was_ the second one. The order now alternates by round
+(prev-first, next-first, prev-first), so the bias cancels across rounds instead of accumulating
+in the direction of the claim. The medians did not move materially, which is consistent with
+noise dominating the effect either way rather than with the bias having been load-bearing.
+
+⚠️ **The mutation run's timings are deliberately excluded from the spread above.** Its `next`
+arm carried an extra per-iteration branch, so it is not a measurement of the shipped code; it
+is reported below purely as a red/green demonstration.
+
+⚠️ **5b is also a correctness control at a second, larger book — and it measures ANSWER
+IDENTITY, not just how many answers there were.** With zero preference rows, prev and next
+resolve biology's 47,568-term scope to **the same 44,861 winners** _and_ to the **same SHA-1
+digest over every winner's `termId`** (`731e76c440c92105…`, misses written as `-` so position
+is preserved). Gate 1 proves the chemistry payload is unchanged; this proves the resolver's
+**answers** are unchanged on a book gate 1 never touches. A disagreement in either is a hard
+failure.
+
+> ⚠️ **This gate measured CARDINALITY until review round 2, while this document claimed
+> IDENTITY — the exact shape of error this repo's register is a monument to.** A keying
+> regression that flips _which_ concept wins for N biology strings leaves the count at 44,861,
+> and gate 1 sees only chemistry, so nothing would have caught it. The fix was to strengthen
+> the measurement rather than soften the sentence.
+>
+> **Mutation-verified, verbatim.** One winner's `termId` was flipped in the `next` arm only
+> (`idx === 5000`), and the gate went red:
+>
+> ```
+>     round 1 (prev first): prev 0.090 ms/resolve (44861 winners) · next 0.081 ms/resolve (44861 winners) · ratio 0.90×
+>       winner-identity digest: prev 731e76c440c92105 · next a4b2f1211ffde99f -> DIFFERENT
+>     round 2 (next first): prev 0.064 ms/resolve (44861 winners) · next 0.094 ms/resolve (44861 winners) · ratio 1.46×
+>       winner-identity digest: prev 731e76c440c92105 · next a4b2f1211ffde99f -> DIFFERENT
+>     round 3 (prev first): prev 0.049 ms/resolve (44861 winners) · next 0.050 ms/resolve (44861 winners) · ratio 1.03×
+>       winner-identity digest: prev 731e76c440c92105 · next a4b2f1211ffde99f -> DIFFERENT
+>     median ratio 1.03× over 47,568 resolves · winners agree: true (44,861) · winner IDENTITY agrees: false (sha1 a4b2f1211ffde99f…)
+>
+> FAIL  GATE 5 (performance) — prev and next resolve biology to DIFFERENT ANSWERS with zero
+> preference rows — the winner-identity digests differ, so which concept wins has moved
+> ```
+>
+> Exit code **1**. ⚠️ **Read the same line twice: `winners agree: true (44,861)` while
+> `winner IDENTITY agrees: false`.** The old check passed on this mutation. The mutation was
+> then reverted and the script restored from a pre-mutation copy; the committed file carries
+> no trace of it (`prettier --check` and `eslint` clean, final run PASS).
+>
+> The digest is also stable at `731e76c440c92105` across independent corpus rebuilds, which is
+> a small extra piece of determinism evidence nobody asked for.
 
 ⚠️ **Tolerances, set from measurement and stated so they do not look moved after the fact.**
 5a gates at **3×** — deliberately coarse, because a 2× threshold would eventually fail
 spuriously on a busy box (measured spread 1.09–1.64× with the code unchanged) and a gate that
 cries wolf gets ignored; 3× still catches the shape that matters, since a per-resolve database
 round trip is orders of magnitude, not tens of percent. **5b gates at 1.5×**, which is tight
-because it compares like with like: observed per-round 0.67× – 1.28×, medians 0.80× – 1.09×,
+because it compares like with like: observed per-round 0.67× – 1.33×, medians 0.80× – 1.09×,
 so the threshold sits about three spread-widths above centre.
 
 ---
@@ -322,10 +410,16 @@ so the threshold sits about three spread-widths above centre.
   evidence.
 - **Migration 048's expansion was not measured on production data** — see gate 2. On this
   database the 0 is structural, not a measurement of production's rows.
-- **Gate 4 RAN** and is reported above. It was the gate most at risk of being marked
-  `NOT RUN`: had no concept answered two case-distinct census strings while carrying a second
-  Icelandic term, the script would print `NOT RUN` with that reason and **not** a pass. 15
-  such concepts exist, so the case was real and the gate is not vacuous.
+- **Gate 4 RAN**, over **all 15** qualifying concepts, and is reported above. It was the gate
+  most at risk of being marked `NOT RUN`: had no concept answered two case-distinct census
+  strings while carrying a second Icelandic term, the script would print `NOT RUN` with that
+  reason and **not** a pass.
+- **Chapter-tier preferences were not exercised on the corpus.** Every gate here writes
+  `chapter = 0` (the book default), because `buildResolvedGlossary` is book-scoped by design.
+  The chapter tier and its precedence over the book tier are covered by the unit suite only.
+- **`preference-out-of-scope`, `preference-term-missing` and `preference-not-a-candidate` were
+  not provoked on the corpus.** The three fault codes are unit-pinned (D4); no corpus-scale
+  measurement of them is claimed.
 - **§C38's hiding factors ① and ③ were NOT closed here** — ① (`alternatives` built from the
   winning concept only) is deliberately out of B4a's scope per spec §2.4/R5, and ③ (Árnastofnun
   conflating `accuracy`/`precision` on concept #6524) is upstream data, not code. Gate 3
