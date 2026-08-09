@@ -44,6 +44,8 @@ from the migrations' own seed. The `book_domain_priority` rows are `INSERT OR RE
 # from the repo root, on the dev box
 node server/scripts/verify-b4a-gates.js                       # the whole gate, one command
 node server/scripts/verify-b4a-gates.js --corpus <other-dir>  # if the raw fetch has moved
+node server/scripts/verify-b4a-gates.js --base bf680c3d       # REQUIRED once B4a has merged
+node server/scripts/verify-b4a-gates.js --base HEAD           # the control: gate 1 must FAIL
 npm test                                                      # root suite, authoritative
 ```
 
@@ -106,14 +108,14 @@ gates below ran against is not a different corpus in any respect anyone has yet 
 
 ## Results
 
-| gate                          | verdict  | measured                                                                                                                                |
-| ----------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| fidelity control              | **PASS** | `verify-resolve-gates.js` exit 0 (see above)                                                                                            |
-| 2 — zero-preference control   | **PASS** | 0 `book_term_preference` rows · 0 expanded by 048 · old table dropped                                                                   |
-| 1 — export unchanged          | **PASS** | `JSON.stringify(prev.terms) === JSON.stringify(next.terms)` over **2,119** terms; `stats` identical; census 1,999 / 120 / 299           |
-| 3 — §C38 closes               | **PASS** | `nákvæmni [physics @2]` → `hittni [biology @3]` (`book-preference`), and `nákvæmni` returns on delete                                   |
-| 4 — the leak is closed        | **PASS** | concept #1246: `'Hz' → 'rið'` while `'hertz'` stayed `'herts' [physics @2]`                                                             |
-| 5 — no performance regression | **PASS** | 5a cold 0.069 ms/resolve vs B1's 0.044 (1.57×, tolerance 3×) · **5b prev-vs-next median 0.93× on the same box**, 44,861 winners on both |
+| gate                          | verdict  | measured                                                                                                                                    |
+| ----------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| fidelity control              | **PASS** | `verify-resolve-gates.js` exit 0 (see above)                                                                                                |
+| 2 — zero-preference control   | **PASS** | 0 `book_term_preference` rows · 0 expanded by 048 · old table dropped                                                                       |
+| 1 — export unchanged          | **PASS** | `JSON.stringify(prev.terms) === JSON.stringify(next.terms)` over **2,119** terms; `stats` identical; census 1,999 / 120 / 299               |
+| 3 — §C38 closes               | **PASS** | `nákvæmni [physics @2]` → `hittni [biology @3]` (`book-preference`), and `nákvæmni` returns on delete; §C38 ② also measured at the baseline |
+| 4 — the leak is closed        | **PASS** | concept #1246: `'Hz' → 'rið'` while `'hertz'` stayed `'herts' [physics @2]`                                                                 |
+| 5 — no performance regression | **PASS** | 5a cold 0.048 ms/resolve vs B1's 0.044 (1.09×, tolerance 3×) · **5b prev-vs-next median 1.09× on the same box**, 44,861 winners on both     |
 
 Root suite: **297 files / 4305 tests, all passing** (`npm test` from the repo root, 222 s).
 
@@ -151,6 +153,17 @@ again afterwards.
 
 **The same census object is passed to both builds**, so the only variable is the code:
 118,749 strings from 249 `.md` files under `books/efnafraedi-2e/02-for-mt`.
+
+⚠️ **The base ref is VERIFIED pre-B4a, not trusted — and that guard has its own control.**
+The default `git merge-base main HEAD` is correct only while this branch is unmerged; the
+moment B4a lands it resolves to a **post**-B4a commit and the extraction would silently
+produce today's code as "prev", turning gate 1 back into the self-comparison it exists to
+avoid. So the extracted `conceptResolver.js` is checked positively for the pre-B4a shape (it
+reads `book_concept_preference` and knows nothing of `book_term_preference`), and `--base
+<ref>` names the remedy. **Measured control:** `node server/scripts/verify-b4a-gates.js
+--base HEAD` → gate 1 `FAIL`, exit 1, message _"HEAD is NOT a pre-B4a commit … Pass --base
+&lt;pre-B4a-ref&gt; (the branch point was bf680c3d)"_, with the other gates unaffected. A gate
+that cannot be made to fail has not been shown to work.
 
 |                         |                         prev (`bf680c3d`) | next (this branch) |
 | ----------------------- | ----------------------------------------: | -----------------: |
@@ -201,6 +214,24 @@ exactly):
 An editor can now say "for this book, `accuracy` means `hittni`" — the sentence §C38 records
 as impossible under `book_concept_preference`.
 
+**§C38 named THREE hiding factors, and this gate measures two of them. Which two matters, so
+they are named rather than summarised as "§C38 closes":**
+
+- **② the losing in-scope answers were invisible — CLOSED, and measured at the baseline,
+  before any preference exists.** `resolve(scope, 'accuracy').alsoInScope` now reports
+  `hittni [biology @3] · nákvæmni [biology @3] · hittni [biology @3]` while `nákvæmni
+[physics @2]` wins. §C38 records that a lower-position in-scope concept losing the race
+  "vanishes silently", which is what made the wrong answer undetectable; it does not vanish
+  any more. **Asserted, not merely printed** — a measurement printed beside a claim and never
+  compared is the defect `verify-resolve-gates.js` had to fix twice.
+- **The override itself — CLOSED**, as measured above.
+- **① `alternatives` is still built from the winning concept only — NOT closed, by design.**
+  Spec §2.4 ① and R5 say so explicitly: B4a does not fix it, and B4c's panel must read
+  `alsoInScope` rather than `alternatives`.
+- **③ Árnastofnun's own data conflates the pair — NOT closable here.** Concept #6524 carries
+  both English strings with `nákvæmni` r1 / `hittni` r2, visible in the table above. That is
+  upstream data, not code.
+
 ### Gate 4 — the leak is closed (the most valuable gate in the set)
 
 This is the regression test for the defect that forced the whole spec to be rewritten: a
@@ -237,34 +268,37 @@ object** (`conceptId`, `termId`, `text`, `domain`, `position`), not just its tex
 ### Gate 5 — no performance regression
 
 **5a, the mandated comparison** — `server/scripts/bench-resolve.js --db <scratch> --book
-liffraedi-2e`, 47,568 scoped English terms:
+liffraedi-2e`, 47,568 scoped English terms (the final verification run):
 
 ```
-  buildScope: 1.0 ms
-  cold: 3276.2 ms for 47568 resolves (0.069 ms each), 44861 winners, rss 85.2 MB
-  warm: 2089.0 ms for 47568 resolves (0.044 ms each), 44861 winners, rss 85.9 MB
-  single resolve: 0.079 ms · rss delta: 35.9 MB
+  buildScope: 0.6 ms
+  cold: 2300.4 ms for 47568 resolves (0.048 ms each), 44861 winners, rss 89.7 MB
+  warm: 3375.0 ms for 47568 resolves (0.071 ms each), 44861 winners, rss 89.6 MB
+  single resolve: 0.100 ms · rss delta: 39.6 MB
 ```
 
-Cold **0.069 ms/resolve** against B1's recorded **0.044** = 1.57×. ⚠️ **A DEV-BOX FIGURE — a
+Cold **0.048 ms/resolve** against B1's recorded **0.044** = 1.09×. ⚠️ **A DEV-BOX FIGURE — a
 regression check against itself, never a production budget.** The production question belongs
 to B4b, where biology's 47,568-term scope bites.
 
 **5b, the discriminating comparison — and the reason 5a is readable at all.** 5a compares
 today's cold figure against one recorded on _another day_, and this box does not repeat
-itself: three runs of this gate measured **1.43×, 1.64× and 1.57×** against B1's 0.044 while
-the code was provably not slower. So the branch-point resolver and the current one were run
-**interleaved, in one process, against one database**:
+itself. **Across the seven runs of this gate, 5a's cold ratio spanned 1.09× – 1.64×** (1.43,
+1.64, 1.25, 1.57, 1.25, 1.57, 1.09) while the code was provably not slower — so the
+branch-point resolver and the current one were run **interleaved, in one process, against one
+database**. The final run:
 
 | round | prev (`bf680c3d`) | next (this branch) | ratio |
 | ----- | ----------------: | -----------------: | ----: |
-| 1     |  0.059 ms/resolve |   0.049 ms/resolve | 0.82× |
-| 2     |             0.067 |              0.063 | 0.93× |
-| 3     |             0.064 |              0.073 | 1.13× |
+| 1     |  0.050 ms/resolve |   0.064 ms/resolve | 1.28× |
+| 2     |             0.054 |              0.059 | 1.09× |
+| 3     |             0.097 |              0.070 | 0.73× |
 
-**Median 0.93× over 47,568 resolves** — next is _not_ slower; the medians across three whole
-gate runs were 0.95×, 0.80× and 0.93×, with next faster in most rounds. The cross-day metric
-carries ±60% of box noise and the same-box A/B does not.
+**Median 1.09× over 47,568 resolves.** ⚠️ **The full set of 5b medians, including the least
+flattering, because a claim justified by a chosen subset is not justified:** 0.95×, 0.80×,
+0.93×, 0.98×, 1.09× — centred just under parity, with next faster in most rounds. **Next is
+not slower.** The cross-day metric (5a) carries roughly a factor of box noise; the same-box
+A/B does not.
 
 ⚠️ **5b is also a free correctness control at a second, larger book:** with zero preference
 rows, prev and next find **the same 44,861 winners** over biology's 47,568-term scope. Gate 1
@@ -273,10 +307,11 @@ on a book gate 1 never touches. A disagreement here is a hard failure.
 
 ⚠️ **Tolerances, set from measurement and stated so they do not look moved after the fact.**
 5a gates at **3×** — deliberately coarse, because a 2× threshold would eventually fail
-spuriously on a busy box (measured spread 1.43–1.64× with the code unchanged) and a gate that
+spuriously on a busy box (measured spread 1.09–1.64× with the code unchanged) and a gate that
 cries wolf gets ignored; 3× still catches the shape that matters, since a per-resolve database
 round trip is orders of magnitude, not tens of percent. **5b gates at 1.5×**, which is tight
-because it compares like with like.
+because it compares like with like: observed per-round 0.67× – 1.28×, medians 0.80× – 1.09×,
+so the threshold sits about three spread-widths above centre.
 
 ---
 
@@ -291,6 +326,10 @@ because it compares like with like.
   `NOT RUN`: had no concept answered two case-distinct census strings while carrying a second
   Icelandic term, the script would print `NOT RUN` with that reason and **not** a pass. 15
   such concepts exist, so the case was real and the gate is not vacuous.
+- **§C38's hiding factors ① and ③ were NOT closed here** — ① (`alternatives` built from the
+  winning concept only) is deliberately out of B4a's scope per spec §2.4/R5, and ③ (Árnastofnun
+  conflating `accuracy`/`precision` on concept #6524) is upstream data, not code. Gate 3
+  measures ② and the override; the doc says which, rather than claiming "§C38 closes" flatly.
 - **The E2E suite did not run.** `npm test` is `vitest run` and does not include Playwright;
   B4a touches no route, view or editor pathway, so no E2E evidence is claimed here.
 - **No `--adopt` and no glossary write.** B4a cannot create a preference row (that is B4c),

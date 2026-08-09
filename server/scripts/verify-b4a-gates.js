@@ -5,7 +5,7 @@
  *
  * ONE COMMAND, re-runnable by anyone holding the raw fetch:
  *
- *   node server/scripts/verify-b4a-gates.js [--corpus ~/idordabanki-raw-2026-08-07]
+ *   node server/scripts/verify-b4a-gates.js [--corpus ~/idordabanki-raw-2026-08-07] [--base <ref>]
  *
  * It builds its OWN scratch database — every migration against an empty file,
  * then the 20-collection Íðorðabankinn import — and deletes it on exit. It never
@@ -90,11 +90,13 @@ const RECORDED = {
  * width is set from measurement, not taste, and the measurement is recorded here
  * so it does not look like a goalpost moved after the fact.
  *
- * Gate 5a compares today's cold figure against one recorded on ANOTHER DAY. Two
- * consecutive runs of this script measured **1.43×** and **1.64×** against B1's
- * 0.044 — while gate 5b, interleaving the two code versions in one process
- * minutes later, put them at **0.95×**. So the cross-day metric carries ±60% of
- * box noise and a 2× threshold would eventually fail spuriously; a gate that
+ * Gate 5a compares today's cold figure against one recorded on ANOTHER DAY. The
+ * seven runs recorded in test-results/b4a-term-preference-2026-08.md span
+ * **1.09× to 1.64×** against B1's 0.044 — while gate 5b, interleaving the two
+ * code versions in one process, put their medians at **0.80× – 1.09×** over the
+ * same runs, i.e. no regression at all. So the cross-day metric carries most of a
+ * factor of box noise on a machine where the code is provably not slower, and a
+ * 2× threshold would eventually fail spuriously; a gate that
  * cries wolf gets ignored, which is worse than a coarse one. 3× still catches
  * the failure shape that matters (a per-resolve database round trip is orders of
  * magnitude, not tens of percent), and **5b is the discriminating half** — it is
@@ -105,8 +107,17 @@ const BENCH_TOLERANCE = 3.0;
 /**
  * ⚠️ TIGHTER, because gate 5b compares like with like — the same box, the same
  * process, the same database, interleaved rounds — so box noise is largely
- * cancelled and a real per-resolve cost cannot hide behind it. Measured spread
- * on the first run: 0.73× – 1.02×.
+ * cancelled and a real per-resolve cost cannot hide behind it. Spread measured
+ * by 5b's OWN rounds, across every run recorded in
+ * test-results/b4a-term-preference-2026-08.md: **0.67× – 1.28× per round,
+ * medians 0.80× – 1.09×** — the FULL set, including the least flattering run,
+ * because a tolerance justified by a chosen subset is not justified at all.
+ * 1.5× therefore sits about three spread-widths above centre: tight enough to
+ * catch a real per-resolve cost, loose enough not to cry wolf.
+ *
+ * (An earlier version of this comment cited 0.73×–1.02× from a scratch A/B
+ * script that was never committed — a number no reader could reproduce from this
+ * repository. Cite what the artifact prints.)
  */
 const AB_TOLERANCE = 1.5;
 
@@ -115,6 +126,9 @@ const USAGE = `Usage: node server/scripts/verify-b4a-gates.js [--corpus <dir>]
   --corpus <dir>   directory of raw-<COLLECTION>.json files from the Íðorðabankinn
                    fetch (default: ${DEFAULT_CORPUS}). READ ONLY — it is a
                    rate-limited ~1.5 h asset and this script never writes to it.
+  --base <ref>     the PRE-B4a commit gate 1 compares against (default:
+                   \`git merge-base main HEAD\`, which stops being pre-B4a once
+                   this branch merges — the branch point was bf680c3d).
   -h, --help       this message
 
 Builds a throwaway migrated + imported database in the system temp directory and
@@ -127,20 +141,24 @@ removes it on exit. Never opens pipeline-output/sessions.db.`;
  */
 function parseArgs(argv) {
   let corpus = DEFAULT_CORPUS;
+  let base = null;
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
-    if (a === '--corpus') {
+    if (a === '--corpus' || a === '--base') {
       if (i + 1 >= argv.length || argv[i + 1].startsWith('--')) {
-        return { error: '--corpus needs a directory as the next argument' };
+        return { error: `${a} needs a value as the next argument` };
       }
-      corpus = argv[++i].trim();
+      if (a === '--corpus') corpus = argv[++i].trim();
+      else base = argv[++i].trim();
     } else if (a === '-h' || a === '--help') {
       return { help: true };
     } else {
-      return { error: `unrecognised argument '${a}' — accepted: --corpus <dir>, -h/--help` };
+      return {
+        error: `unrecognised argument '${a}' — accepted: --corpus <dir>, --base <ref>, -h/--help`,
+      };
     }
   }
-  return { corpus };
+  return { corpus, base };
 }
 
 /* ─────────────────────────── reporting ─────────────────────────── */
@@ -249,10 +267,20 @@ function runScript(rel, args) {
  * else, and none of them requires better-sqlite3 (the `new Database` call lives
  * in createResolvedExportFn, which this gate never uses). So the extraction
  * needs no node_modules and no worktree.
+ *
+ * ⚠️ THE REF IS VERIFIED TO BE PRE-B4a, NOT TRUSTED. The default —
+ * `git merge-base main HEAD` — is correct only while this branch is unmerged.
+ * The moment B4a lands, the same command resolves to a POST-B4a commit and the
+ * extraction would silently produce today's code as "prev", turning gate 1 back
+ * into the self-comparison it exists to avoid. The key-shape check downstream
+ * happens to catch it, but it reports "payload gained []", which sends the next
+ * reader hunting entirely the wrong thing. So the extracted resolver is checked
+ * POSITIVELY for the pre-B4a shape — it reads `book_concept_preference` and
+ * knows nothing of `book_term_preference` — and the remedy names `--base`.
  */
 function extractBaseLibs(baseRef) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'b4a-base-'));
   if (!baseRef) throw new Error('no branch point — `git merge-base main HEAD` did not resolve');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'b4a-base-'));
   for (const f of [
     'resolvedGlossary.js',
     'conceptResolver.js',
@@ -268,6 +296,15 @@ function extractBaseLibs(baseRef) {
       throw new Error(`git show ${baseRef}:server/lib/${f} failed — ${(r.stderr || '').trim()}`);
     }
     fs.writeFileSync(path.join(dir, f), r.stdout);
+  }
+  const resolver = fs.readFileSync(path.join(dir, 'conceptResolver.js'), 'utf8');
+  if (!resolver.includes('book_concept_preference') || resolver.includes('book_term_preference')) {
+    fs.rmSync(dir, { recursive: true, force: true });
+    throw new Error(
+      `${baseRef} is NOT a pre-B4a commit — its conceptResolver.js already knows ` +
+        'book_term_preference, so extracting it would compare this branch against itself. ' +
+        'Pass --base <pre-B4a-ref> (the branch point was bf680c3d).'
+    );
   }
   return dir;
 }
@@ -501,12 +538,33 @@ function gate3(db, bookId) {
 
   const bad = [];
   const baselineScope = buildScope(db, BOOK, 0);
-  const baseline = winnerOf(resolve(baselineScope, 'accuracy'));
+  const baselineR = resolve(baselineScope, 'accuracy');
+  const baseline = winnerOf(baselineR);
   console.log(
     `  baseline: accuracy -> ${baseline ? `${baseline.text} [${baseline.domain} @${baseline.position}]` : 'UNRESOLVED'}`
   );
   if (!baseline || baseline.text !== 'nákvæmni') {
     bad.push(`baseline is not §C38's defect — expected nákvæmni, got ${baseline && baseline.text}`);
+  }
+
+  // §C38 HIDING FACTOR ②, measured at the baseline — BEFORE any preference
+  // exists. §C38 records that "a lower-position in-scope concept that loses the
+  // race vanishes silently", which is why `hittni [biology @3]` was invisible
+  // behind `nákvæmni [physics @2]` and why the wrong answer was undetectable.
+  // `alsoInScope` (Task 5) is supposed to have ended that, so the corpus must
+  // now show hittni among the losers with NO editorial intervention at all.
+  // ⚠️ ASSERTED, not merely printed — printing a measurement beside a claim and
+  // never comparing them is the defect verify-resolve-gates.js had to fix twice.
+  console.log(
+    `  alsoInScope at the baseline (§C38 ②): ` +
+      (baselineR.alsoInScope.map((a) => `${a.text} [${a.domain} @${a.position}]`).join(' · ') ||
+        'NOTHING')
+  );
+  if (!baselineR.alsoInScope.some((a) => a.text === 'hittni' && a.domain === 'biology')) {
+    bad.push(
+      '§C38 ② is still open — the losing in-scope answer hittni [biology @3] is not reported ' +
+        'in alsoInScope, so an editor still cannot see the choice they are being denied'
+    );
   }
 
   // The biology concept whose HEAD FORM is hittni — the answer §C38 says an
@@ -830,9 +888,14 @@ function gate5(dbPath, db, baseDir) {
       ? bad.join('; ')
       : `5a: cold ${cold.toFixed(3)} ms/resolve vs B1's recorded ${RECORDED.msPerResolveCold} ` +
           `(${ratio.toFixed(2)}×, tolerance ${BENCH_TOLERANCE}×), warm ${warm === null ? 'n/a' : warm.toFixed(3)} · ` +
-          `5b: prev-vs-next median ${ab ? ab.median.toFixed(2) : 'n/a'}× on the same box, ` +
-          `${ab ? fmt(ab.winners) : 'n/a'} winners on both — DEV BOX, a regression check against ` +
-          `itself, never a production budget`
+          // ⚠️ SAY "NOT RUN", never "n/a". 5b is the discriminating half, and a
+          // PASS that silently rests on 5a alone is the vacuous-pass shape this
+          // whole gate set exists to refuse.
+          (ab
+            ? `5b: prev-vs-next median ${ab.median.toFixed(2)}× on the same box, ` +
+              `${fmt(ab.winners)} winners on both`
+            : '5b NOT RUN (no branch-point libraries) — 5a stands alone, which is the weaker claim') +
+          ` — DEV BOX, a regression check against itself, never a production budget`
   );
   return bad.length === 0;
 }
@@ -918,12 +981,17 @@ function main(argv = process.argv.slice(2)) {
   const ok = [];
   ok.push(gate2(db, built.warnings));
 
-  const mb = spawnSync('git', ['merge-base', 'main', 'HEAD'], {
-    cwd: REPO_ROOT,
-    encoding: 'utf8',
-  });
-  const base = mb.status === 0 ? mb.stdout.trim() : null;
-  console.log(`\n  branch point (git merge-base main HEAD): ${base || 'UNRESOLVED'}`);
+  let base = args.base;
+  if (!base) {
+    const mb = spawnSync('git', ['merge-base', 'main', 'HEAD'], {
+      cwd: REPO_ROOT,
+      encoding: 'utf8',
+    });
+    base = mb.status === 0 ? mb.stdout.trim() : null;
+  }
+  console.log(
+    `\n  gate 1 base ref: ${base || 'UNRESOLVED'}${args.base ? ' (--base)' : ' (git merge-base main HEAD)'}`
+  );
 
   // Extracted ONCE and shared by gates 1 and 5b — both need the pre-B4a code.
   let baseDir = null;
