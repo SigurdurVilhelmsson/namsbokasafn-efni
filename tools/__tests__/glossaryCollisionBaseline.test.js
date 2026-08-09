@@ -28,12 +28,34 @@ const booksWithGlossaries = fs
   .map((d) => d.name)
   .filter((slug) => fs.existsSync(glossaryPath(path.join(BOOKS_DIR, slug))));
 
+/**
+ * The resolved export (server/lib/glossaryProducer.js PRODUCER_RESOLVED — the
+ * string is duplicated rather than imported because tools/ is MIT and server/
+ * is AGPL; see root LICENSE).
+ */
+const PRODUCER_RESOLVED = 'export-terminology-resolved';
+
+/** A payload worth sweeping: one in which a collision can exist at all. */
+export function isSweepable(glossary) {
+  return !(glossary && glossary.producer === PRODUCER_RESOLVED);
+}
+
+const sweptBooks = booksWithGlossaries.filter((slug) =>
+  isSweepable(JSON.parse(fs.readFileSync(glossaryPath(path.join(BOOKS_DIR, slug)), 'utf8')))
+);
+
 describe('committed glossaries have no competitions beyond their baseline', () => {
-  it('finds at least one book with a glossary (the sweep is not vacuous)', () => {
-    expect(booksWithGlossaries.length).toBeGreaterThan(0);
+  // ⚠️ D7: once skipping exists, "some book has a glossary file" no longer
+  // implies "some book was swept" — every book could be skipped and this would
+  // still pass. Assert what actually happened, or the retirement becomes the
+  // bug. This test's own header states the principle: absence of a baseline is
+  // not approval (the C11(b) lesson — a shipped detector that had never run
+  // went unnoticed for 13 days).
+  it('actually sweeps at least one book (the sweep is not vacuous)', () => {
+    expect(sweptBooks.length).toBeGreaterThan(0);
   });
 
-  it.each(booksWithGlossaries)('%s', (slug) => {
+  it.each(sweptBooks)('%s', (slug) => {
     const bookDir = path.join(BOOKS_DIR, slug);
     const glossary = JSON.parse(fs.readFileSync(glossaryPath(bookDir), 'utf8'));
     const collisions = findGlossaryCollisions(glossary.terms || [], { approvedOnly: true });
@@ -127,5 +149,41 @@ describe('commaLists baseline shape — one headword can carry TWO distinct comm
     expect(d.newCommaLists).toEqual([
       { english: 'anion', value: 'neijón, mótjón', parts: ['neijón', 'mótjón'] },
     ]);
+  });
+});
+
+describe('D7 — the sweep retires per book, at adoption', () => {
+  const RESOLVED = 'export-terminology-resolved';
+
+  it('skips a resolved payload, in which a collision is unrepresentable', () => {
+    // One entry per English string: findGlossaryCollisions needs >=2 Icelandic
+    // values per key, so it can never find one here. Sweeping it would be a
+    // test that passes because its subject is gone.
+    expect(isSweepable({ producer: RESOLVED, terms: [] })).toBe(false);
+  });
+
+  it('still sweeps a merge-glossary payload', () => {
+    expect(isSweepable({ terms: [{ english: 'atom', category: 'x', chapter: 1 }] })).toBe(true);
+  });
+
+  it('still sweeps an old-export payload', () => {
+    expect(isSweepable({ producer: 'export-terminology', terms: [{ subjects: [] }] })).toBe(true);
+  });
+});
+
+describe('the duplicated producer string cannot drift', () => {
+  it('matches server/lib/glossaryProducer.js, which owns it', () => {
+    // ⚠️ READ AS TEXT, never import: tools/ is MIT and server/ is AGPL, and an
+    // import here would add exactly the edge CLAUDE.md gap E-2 says not to
+    // accumulate. Reading a file creates no runtime dependency, so this closes
+    // the drift without creating the coupling it exists to avoid.
+    //
+    // Without this, a rename on the server side would leave tools/ silently
+    // sweeping resolved payloads again — green, and wrong.
+    const src = fs.readFileSync(
+      path.join(REPO_ROOT, 'server', 'lib', 'glossaryProducer.js'),
+      'utf8'
+    );
+    expect(src).toContain(`const PRODUCER_RESOLVED = '${PRODUCER_RESOLVED}';`);
   });
 });
