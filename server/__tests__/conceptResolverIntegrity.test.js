@@ -143,6 +143,7 @@ describe('the tie branches carry EVERY field through, not just the tie itself', 
       outOfScope: expectedOutOfScope,
       integrity: ['merge-cycle'],
       unscoped: false,
+      alsoInScope: [],
     });
   });
 
@@ -159,6 +160,7 @@ describe('the tie branches carry EVERY field through, not just the tie itself', 
       outOfScope: expectedOutOfScope,
       integrity: ['merge-cycle'],
       unscoped: false,
+      alsoInScope: [],
     });
   });
 
@@ -171,6 +173,7 @@ describe('the tie branches carry EVERY field through, not just the tie itself', 
       outOfScope: expectedOutOfScope,
       integrity: ['merge-cycle'],
       unscoped: false,
+      alsoInScope: [],
     });
   });
 
@@ -183,6 +186,7 @@ describe('the tie branches carry EVERY field through, not just the tie itself', 
       outOfScope: [],
       integrity: ['merge-cycle'],
       unscoped: 'unregistered',
+      alsoInScope: [],
     });
   });
 });

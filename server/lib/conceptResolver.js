@@ -252,6 +252,7 @@ function emptyResolution(unscoped, integrity, outOfScope) {
     outOfScope,
     integrity,
     unscoped,
+    alsoInScope: [],
   };
 }
 
@@ -330,6 +331,25 @@ function resolveCandidates(scope, candidates, integrity = []) {
     position: c.position,
   });
 
+  // B4a/D3 — the in-scope answers that LOST. §C38's hiding-factor ②: resolve()
+  // reported outOfScope but a lower-position IN-SCOPE concept that lost the race
+  // vanished, so `hittni [biology @3]` was invisible behind `nákvæmni [physics @2]`.
+  //
+  // Built from `chosen` — after term selection and after the term-less filter —
+  // so every entry is a real, offerable answer. Excludes anything already
+  // reported as winner, in `tied`, or in `nominalTie`.
+  const alsoFrom = (reportedIds) =>
+    chosen
+      .filter((c) => !reportedIds.has(c.conceptId))
+      .sort((a, b) => a.position - b.position || a.conceptId - b.conceptId)
+      .map((c) => ({
+        conceptId: c.conceptId,
+        termId: c.termId,
+        text: c.text,
+        domain: c.domain,
+        position: c.position,
+      }));
+
   if (atBest.length === 1) {
     return {
       winner: asWinner(atBest[0]),
@@ -339,6 +359,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
       outOfScope,
       integrity: codes,
       unscoped: false,
+      alsoInScope: alsoFrom(new Set([atBest[0].conceptId])),
     };
   }
 
@@ -365,6 +386,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
       outOfScope,
       integrity: codes,
       unscoped: false,
+      alsoInScope: alsoFrom(new Set(atBest.map((c) => c.conceptId))),
     };
   }
 
@@ -376,6 +398,7 @@ function resolveCandidates(scope, candidates, integrity = []) {
     outOfScope,
     integrity: codes,
     unscoped: false,
+    alsoInScope: alsoFrom(new Set(atBest.map((c) => c.conceptId))),
   };
 }
 

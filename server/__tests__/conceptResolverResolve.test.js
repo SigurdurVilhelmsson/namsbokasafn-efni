@@ -132,6 +132,7 @@ describe('resolveCandidates — the three empty states are distinguishable', () 
       outOfScope: [],
       integrity: [],
       unscoped: false,
+      alsoInScope: [],
     });
   });
 
@@ -310,5 +311,62 @@ describe('resolveCandidates — integrity codes', () => {
       cand(20, 'physics', [['kraftur', 1, 200]]),
     ]);
     expect(r.integrity).toEqual(['orphan-preference']);
+  });
+});
+
+describe('resolveCandidates — alsoInScope', () => {
+  it('reports an in-scope concept that lost the position race', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(1, 'physics', [['nákvæmni', 1, 10]]),
+      cand(2, 'biology', [['hittni', 1, 20]]),
+    ]);
+    expect(r.winner.text).toBe('nákvæmni');
+    expect(r.alsoInScope).toEqual([
+      { conceptId: 2, termId: 20, text: 'hittni', domain: 'biology', position: 3 },
+    ]);
+  });
+
+  // ⚠️ termId is here because B4c CANNOT WRITE A PREFERENCE WITHOUT IT. Dropping
+  // it would force the panel to re-derive term ids from display text.
+  it('carries termId, which is what a write path needs', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(1, 'chemistry', [['a', 1, 10]]),
+      cand(2, 'physics', [['b', 1, 20]]),
+    ]);
+    expect(r.alsoInScope[0].termId).toBe(20);
+  });
+
+  it('excludes tied members — they are already reported in `tied`', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(1, 'physics', [['ein', 1, 10]]),
+      cand(2, 'physics', [['tvo', 1, 20]]),
+      cand(3, 'biology', [['thrju', 1, 30]]),
+    ]);
+    expect(r.tied.map((t) => t.conceptId).sort()).toEqual([1, 2]);
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([3]);
+  });
+
+  it('excludes nominalTie members — identical text is noise, not an alternative', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(1, 'physics', [['sama', 1, 10]]),
+      cand(2, 'physics', [['sama', 1, 20]]),
+    ]);
+    expect(r.nominalTie.sort()).toEqual([1, 2]);
+    expect(r.alsoInScope).toEqual([]);
+  });
+
+  it('is ordered by position then conceptId — deterministic', () => {
+    const r = resolveCandidates(chemScope(), [
+      cand(1, 'chemistry', [['w', 1, 10]]),
+      cand(9, 'biology', [['x', 1, 20]]),
+      cand(3, 'biology', [['y', 1, 30]]),
+      cand(2, 'physics', [['z', 1, 40]]),
+    ]);
+    expect(r.alsoInScope.map((a) => a.conceptId)).toEqual([2, 3, 9]);
+  });
+
+  it('is [] when there is nothing to report — the shape is TOTAL', () => {
+    expect(resolveCandidates(chemScope(), []).alsoInScope).toEqual([]);
+    expect(resolveCandidates({ unscoped: 'unregistered' }, []).alsoInScope).toEqual([]);
   });
 });
