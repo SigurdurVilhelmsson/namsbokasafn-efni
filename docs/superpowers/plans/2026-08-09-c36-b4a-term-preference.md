@@ -550,6 +550,21 @@ function buildPreferenceMap(db, bookId, chapter) {
 Run: `npx vitest run server/__tests__/conceptResolverScope.test.js`
 Expected: PASS. **`conceptResolverResolve.test.js` still fails** — its scopes key on concept id and `resolveCandidates` still reads them that way. Task 6 fixes it.
 
+⚠️ **CORRECTED 2026-08-09 — THIS TASK OWNS FOUR RED FILES, NOT ONE.** The plan originally named
+only `conceptResolverScope.test.js`. Measured after Tasks 2/2b: `buildScope` calls
+`buildPreferenceMap` **unconditionally**, so every consumer of `buildScope` fails while that
+function still queries the dropped table — including tests that touch no preference at all
+(12 of 14 in `resolvedGlossary.test.js`, e.g. *"emits the head form by default"* and *"sorts
+terms by english"*).
+
+**Task 3 is complete only when all four go green:**
+`conceptResolverLookup.test.js` · `conceptResolverScope.test.js` ·
+`conceptResolverStatements.test.js` · `resolvedGlossary.test.js`
+
+Task 2b already re-pointed `resolvedGlossary.test.js`'s own `INSERT`s to `book_term_preference`,
+so it should need no further edit — but **verify that rather than assume it**, and if it needs
+one, it is yours.
+
 - [ ] **Step 5: Mutation-verify the lowercasing**
 
 Delete `.toLowerCase()` from the `key` assignment. Run the scope suite: the collation test **must** go red. Restore it.
