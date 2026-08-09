@@ -23,6 +23,7 @@ const Database = require('better-sqlite3');
 const { parseImportArgs, main: importMain } = require('../scripts/run-concept-import');
 const { parseVerifyArgs, main: verifyMain } = require('../scripts/verify-concept-import');
 const migration045 = require('../migrations/045-concept-model');
+const migration048 = require('../migrations/048-book-term-preference');
 
 describe('parseImportArgs fails loud', () => {
   it('accepts the documented flags', () => {
@@ -135,6 +136,9 @@ function tmpDb() {
   const db = new Database(p);
   db.exec('CREATE TABLE registered_books (id INTEGER PRIMARY KEY, slug TEXT NOT NULL UNIQUE);');
   migration045.up(db);
+  // importMain() runs importConcepts (B4a), which now queries
+  // book_term_preference — only present once 048 has run after 045.
+  migration048.up(db);
   db.close();
   return p;
 }

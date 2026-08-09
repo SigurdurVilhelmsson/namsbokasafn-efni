@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 const migration045 = require('../migrations/045-concept-model');
+const migration048 = require('../migrations/048-book-term-preference');
 const { importConcepts } = require('../scripts/import-concepts');
 
 let db;
@@ -11,6 +12,13 @@ beforeEach(() => {
   db = new Database(':memory:');
   db.exec('CREATE TABLE registered_books (id INTEGER PRIMARY KEY, slug TEXT NOT NULL UNIQUE);');
   migration045.up(db);
+  // 045 creates book_concept_preference; 048 immediately replaces it with
+  // book_term_preference (a no-op expansion here, since nothing has been
+  // inserted yet). Running both, in order, is what makes this schema match a
+  // real migrated DB — running 045 alone (as this file did before B4a) leaves
+  // book_concept_preference standing and certifies a table production no
+  // longer has.
+  migration048.up(db);
 });
 afterEach(() => db.close());
 
@@ -162,20 +170,19 @@ describe.each([['default'], ['ON'], ['OFF']])(
       if (fk !== 'default') db.pragma(`foreign_keys = ${fk}`);
       importConcepts(db, payload([entry]));
       db.prepare('INSERT INTO registered_books (id, slug) VALUES (1, ?)').run('efnafraedi-2e');
-      const conceptId = db.prepare('SELECT id FROM concept').get().id;
       const termId = db
         .prepare("SELECT id FROM concept_term WHERE lang='is' AND text='atóm'")
         .get().id;
       db.prepare(
-        `INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id)
-         VALUES (1, 0, ?, ?)`
-      ).run(conceptId, termId);
-      return { conceptId, termId };
+        `INSERT INTO book_term_preference (book_id, chapter, english, term_id)
+         VALUES (1, 0, 'atom', ?)`
+      ).run(termId);
+      return { termId };
     }
 
     const danglingCount = () =>
       db
-        .prepare('SELECT term_id FROM book_concept_preference')
+        .prepare('SELECT term_id FROM book_term_preference')
         .all()
         .filter((p) => !db.prepare('SELECT 1 FROM concept_term WHERE id = ?').get(p.term_id))
         .length;
@@ -184,8 +191,8 @@ describe.each([['default'], ['ON'], ['OFF']])(
       const { termId } = seedPreference();
       const stats = importConcepts(db, payload([entry]));
 
-      expect(db.prepare('SELECT COUNT(*) c FROM book_concept_preference').get().c).toBe(1);
-      expect(db.prepare('SELECT term_id FROM book_concept_preference').get().term_id).toBe(termId);
+      expect(db.prepare('SELECT COUNT(*) c FROM book_term_preference').get().c).toBe(1);
+      expect(db.prepare('SELECT term_id FROM book_term_preference').get().term_id).toBe(termId);
       expect(danglingCount()).toBe(0);
       expect(stats.preferencesDropped).toBe(0);
       expect(stats.prunedTerms).toBe(0);
@@ -212,7 +219,7 @@ describe.each([['default'], ['ON'], ['OFF']])(
       // Asserted under BOTH pragmas: under OFF nothing removes this for you, so
       // the import must delete it explicitly rather than trust a cascade that
       // never fires in production.
-      expect(db.prepare('SELECT COUNT(*) c FROM book_concept_preference').get().c).toBe(0);
+      expect(db.prepare('SELECT COUNT(*) c FROM book_term_preference').get().c).toBe(0);
       expect(danglingCount()).toBe(0);
     });
 

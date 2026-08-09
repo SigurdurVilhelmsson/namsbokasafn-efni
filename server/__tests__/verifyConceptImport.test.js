@@ -3,6 +3,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 const migration045 = require('../migrations/045-concept-model');
+const migration048 = require('../migrations/048-book-term-preference');
 const { importConcepts } = require('../scripts/import-concepts');
 const { verifyConceptImport } = require('../scripts/verify-concept-import');
 
@@ -11,6 +12,9 @@ beforeEach(() => {
   db = new Database(':memory:');
   db.exec('CREATE TABLE registered_books (id INTEGER PRIMARY KEY, slug TEXT NOT NULL UNIQUE);');
   migration045.up(db);
+  // importConcepts (B4a) now queries book_term_preference, which only exists
+  // once 048 has run after 045 — see importConcepts.test.js for the same note.
+  migration048.up(db);
 });
 afterEach(() => db.close());
 

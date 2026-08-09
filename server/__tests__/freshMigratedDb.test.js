@@ -29,12 +29,7 @@ describe('freshMigratedDb', () => {
   it('creates all four concept-model tables', () => {
     const { db } = freshMigratedDb();
     const names = tableNames(db);
-    for (const t of [
-      'concept',
-      'concept_term',
-      'book_concept_preference',
-      'book_domain_priority',
-    ]) {
+    for (const t of ['concept', 'concept_term', 'book_term_preference', 'book_domain_priority']) {
       expect(names.has(t)).toBe(true);
     }
     db.close();
@@ -45,12 +40,7 @@ describe('freshMigratedDb', () => {
     const names = tableNames(db);
     // All FOUR concept tables, not the two this asserted until 2026-08-08 — a control
     // that checks half the set can pass while the other half leaks in.
-    for (const t of [
-      'concept',
-      'concept_term',
-      'book_domain_priority',
-      'book_concept_preference',
-    ]) {
+    for (const t of ['concept', 'concept_term', 'book_domain_priority', 'book_term_preference']) {
       expect(names.has(t)).toBe(false);
     }
     db.close(); // the other tests in this file close theirs; this one did not

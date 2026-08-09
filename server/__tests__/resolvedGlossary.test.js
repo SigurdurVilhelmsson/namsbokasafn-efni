@@ -10,6 +10,16 @@
  * ⚠️ registered_books has THREE NOT NULL, no-default columns: slug, title_is,
  * registered_by (migration 003) — the same trap conceptResolverScope.test.js's
  * `registerBare` comment documents. Supply all three.
+ *
+ * ⚠️ B4a (§C36) IN PROGRESS — this whole `buildResolvedGlossary` describe block
+ * is expected RED until Task 3 lands. `buildScope` (server/lib/conceptResolver.js)
+ * calls `buildPreferenceMap`, which is UNCONDITIONAL and still queries the
+ * dropped `book_concept_preference` table on every call — not only the two
+ * cases below that set a preference. Re-pointing this file's own INSERTs at
+ * `book_term_preference` (done, Task 2b) cannot fix that; it is forward
+ * compatibility so Task 3 does not have to touch this file too. Task 3
+ * ("re-key buildPreferenceMap onto English") must add this file's suite going
+ * green to its own completion criteria.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
@@ -92,8 +102,8 @@ describe('buildResolvedGlossary', () => {
       .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND text = 'atóm'")
       .get(cid).id;
     db.prepare(
-      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 0, ?, ?)'
-    ).run(cid, termId);
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 0, ?, ?)'
+    ).run('atom', termId);
     expect(build(['atom']).terms[0]).toMatchObject({
       icelandic: 'atóm',
       reason: 'book-preference',
@@ -112,11 +122,11 @@ describe('buildResolvedGlossary', () => {
     // SAME concept picks a different term. buildResolvedGlossary must ignore
     // the chapter-1 row entirely — glossary-unified.json is one file per book.
     db.prepare(
-      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 0, ?, ?)'
-    ).run(cid, bookTermId);
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 0, ?, ?)'
+    ).run('bond', bookTermId);
     db.prepare(
-      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 1, ?, ?)'
-    ).run(cid, chapterTermId);
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 1, ?, ?)'
+    ).run('bond', chapterTermId);
     const t = build(['bond']).terms[0];
     expect(t.icelandic).toBe('efnatengi');
     expect(t.reason).toBe('book-preference');

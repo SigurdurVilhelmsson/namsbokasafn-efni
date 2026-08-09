@@ -31,9 +31,7 @@ function importConcepts(db, payload) {
   );
   const listTerms = db.prepare('SELECT id, lang, text FROM concept_term WHERE concept_id = ?');
   const delTerm = db.prepare('DELETE FROM concept_term WHERE id = ?');
-  const countPrefs = db.prepare(
-    'SELECT COUNT(*) AS c FROM book_concept_preference WHERE term_id = ?'
-  );
+  const countPrefs = db.prepare('SELECT COUNT(*) AS c FROM book_term_preference WHERE term_id = ?');
   // Explicit, NOT left to ON DELETE CASCADE — for two reasons that hold
   // regardless of the pragma:
   //   1. `preferencesDropped` must be counted BEFORE the row goes, and a
@@ -47,7 +45,7 @@ function importConcepts(db, payload) {
   // DOES fire. Stock SQLite defaults it off; the system `sqlite3` CLI is a
   // different build and reports 0, which is how the wrong conclusion was
   // reached. Measure the pragma with better-sqlite3, not with the CLI.
-  const delPrefs = db.prepare('DELETE FROM book_concept_preference WHERE term_id = ?');
+  const delPrefs = db.prepare('DELETE FROM book_term_preference WHERE term_id = ?');
 
   // Upsert on the natural key, so a term that is still present upstream KEEPS
   // ITS ID. The previous DELETE-then-INSERT gave every surviving term a fresh
