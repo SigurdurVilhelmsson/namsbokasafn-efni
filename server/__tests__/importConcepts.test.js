@@ -1,24 +1,21 @@
 // server/__tests__/importConcepts.test.js
+//
+// ⚠️ Schema comes from freshMigratedDb() — every real migration, not a
+// hand-enumerated 045-then-048. Whole-branch review (round 2) flagged the
+// prior hand-enumeration as the SAME "green-but-lying" failure this task
+// exists to fix, one level down: it would silently miss a future migration
+// touching concept_term, registered_books, or book_term_preference unless
+// someone remembered to add another `require`+`.up(db)` line by hand.
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const Database = require('better-sqlite3');
-const migration045 = require('../migrations/045-concept-model');
-const migration048 = require('../migrations/048-book-term-preference');
+const Database = require('better-sqlite3'); // only for the bare-connection pragma check below
+const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { importConcepts } = require('../scripts/import-concepts');
 
 let db;
 beforeEach(() => {
-  db = new Database(':memory:');
-  db.exec('CREATE TABLE registered_books (id INTEGER PRIMARY KEY, slug TEXT NOT NULL UNIQUE);');
-  migration045.up(db);
-  // 045 creates book_concept_preference; 048 immediately replaces it with
-  // book_term_preference (a no-op expansion here, since nothing has been
-  // inserted yet). Running both, in order, is what makes this schema match a
-  // real migrated DB — running 045 alone (as this file did before B4a) leaves
-  // book_concept_preference standing and certifies a table production no
-  // longer has.
-  migration048.up(db);
+  ({ db } = freshMigratedDb());
 });
 afterEach(() => db.close());
 
@@ -169,7 +166,11 @@ describe.each([['default'], ['ON'], ['OFF']])(
     function seedPreference() {
       if (fk !== 'default') db.pragma(`foreign_keys = ${fk}`);
       importConcepts(db, payload([entry]));
-      db.prepare('INSERT INTO registered_books (id, slug) VALUES (1, ?)').run('efnafraedi-2e');
+      // title_is/registered_by are real NOT NULL columns (migration 003) —
+      // absent from the old hand-rolled schema, which only ever declared id+slug.
+      db.prepare(
+        "INSERT INTO registered_books (id, slug, title_is, registered_by) VALUES (1, ?, 'Test Book', 'test')"
+      ).run('efnafraedi-2e');
       const termId = db
         .prepare("SELECT id FROM concept_term WHERE lang='is' AND text='atóm'")
         .get().id;

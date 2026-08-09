@@ -6,9 +6,9 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 const require = createRequire(import.meta.url);
 const { formatImportReport, runImport } = require('../scripts/run-concept-import');
-const Database = require('better-sqlite3');
-const migration045 = require('../migrations/045-concept-model');
-const migration048 = require('../migrations/048-book-term-preference');
+// Schema comes from freshMigratedDb() — every real migration, not a
+// hand-enumerated 045-then-048. See importConcepts.test.js's header for why.
+const freshMigratedDb = require('./helpers/freshMigratedDb');
 // Same singleton `fs` module object run-concept-import.js itself required —
 // spying on it here patches the exact function it calls.
 const nodeFs = require('fs');
@@ -60,12 +60,7 @@ describe('runImport', () => {
   let dir;
 
   beforeEach(() => {
-    db = new Database(':memory:');
-    db.exec('CREATE TABLE registered_books (id INTEGER PRIMARY KEY, slug TEXT NOT NULL UNIQUE);');
-    migration045.up(db);
-    // runImport() -> importConcepts (B4a) now queries book_term_preference,
-    // which only exists once 048 has run after 045.
-    migration048.up(db);
+    ({ db } = freshMigratedDb());
 
     dir = mkdtempSync(join(tmpdir(), 'concept-import-test-'));
     // Written PODDUR-before-EFNAFR on purpose: creation order is the REVERSE of

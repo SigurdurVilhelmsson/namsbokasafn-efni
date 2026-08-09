@@ -1,20 +1,17 @@
+// ⚠️ Schema comes from freshMigratedDb() — every real migration, not a
+// hand-enumerated 045-then-048. See importConcepts.test.js's header for why:
+// hand-enumeration is the "green-but-lying" failure this task exists to fix,
+// recurring one level down (whole-branch review, round 2).
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const Database = require('better-sqlite3');
-const migration045 = require('../migrations/045-concept-model');
-const migration048 = require('../migrations/048-book-term-preference');
+const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { importConcepts } = require('../scripts/import-concepts');
 const { verifyConceptImport } = require('../scripts/verify-concept-import');
 
 let db;
 beforeEach(() => {
-  db = new Database(':memory:');
-  db.exec('CREATE TABLE registered_books (id INTEGER PRIMARY KEY, slug TEXT NOT NULL UNIQUE);');
-  migration045.up(db);
-  // importConcepts (B4a) now queries book_term_preference, which only exists
-  // once 048 has run after 045 — see importConcepts.test.js for the same note.
-  migration048.up(db);
+  ({ db } = freshMigratedDb());
 });
 afterEach(() => db.close());
 

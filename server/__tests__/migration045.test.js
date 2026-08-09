@@ -12,6 +12,20 @@
 // read them as describing production. For the live schema, see
 // `book_term_preference`'s coverage in migration048.test.js and
 // importConcepts.test.js.
+//
+// ⚠️ THIS FILE DOES NOT USE freshMigratedDb() — deliberately, unlike
+// importConcepts.test.js/conceptImportCli.test.js/conceptImportReport.test.js/
+// verifyConceptImport.test.js (whole-branch review, round 2). Those four hand-
+// enumerated "045 then 048" as a stand-in for the full migration chain, which
+// was the review's Important finding — a future migration touching
+// concept_term/registered_books/book_term_preference could silently go
+// unnoticed. This file's isolation is different in kind, not degree: it is
+// testing 045 BY ITSELF (down to re-invoking `migration045.up(db)` a second
+// time to check idempotency), so running the real chain would run 048 too —
+// which drops book_concept_preference outright and would break the two cases
+// this file exists to pin. If a future migration needs covering here, add its
+// own `.up(db)` call explicitly, in order, with a comment saying why — do not
+// reach for freshMigratedDb() and do not delete the isolation.
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
