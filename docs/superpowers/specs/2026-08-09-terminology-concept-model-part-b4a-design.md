@@ -261,11 +261,38 @@ terms from it are substituted into published CNXML by `tools/lib/math-label-subs
 CREATE TABLE IF NOT EXISTS book_term_preference (
   book_id  INTEGER NOT NULL REFERENCES registered_books(id) ON DELETE CASCADE,
   chapter  INTEGER NOT NULL,              -- 0 = book default · 1..n · -1 = appendices
-  english  TEXT    NOT NULL,              -- EXACT, as resolve() receives it
+  english  TEXT    NOT NULL COLLATE NOCASE,   -- see § 5.1
   term_id  INTEGER NOT NULL REFERENCES concept_term(id) ON DELETE CASCADE,
   PRIMARY KEY (book_id, chapter, english)
 );
 ```
+
+### 5.1 ⚠️ `english` is CASE-INSENSITIVE, and the asymmetry is deliberate
+
+**Measured 2026-08-09.** `collectSourceEnglish` does **no lowercasing** — it adds each token as
+it appears (`sourceEnglish.js:91`) — so the census carries `atom`, `Atom` and `ATOM` as three
+distinct strings. This is the case-driven collapse B3's evidence records (2,119 raw keys → 2,108
+after case folding). Meanwhile candidate lookup is
+`WHERE t.lang = 'en' AND t.text = ?` (`conceptResolver.js:81`) against a column with no
+`COLLATE`, so it is **case-sensitive**.
+
+**The preference is therefore `COLLATE NOCASE` and candidate lookup is not.** One editor row
+covers every capitalisation of the string, which is what an editor means; B4a deliberately does
+**not** touch `concept_term`'s collation, which would change which candidates every resolution
+finds — far outside this slice.
+
+**The contract, both sides:**
+- `buildPreferenceMap` **lowercases its Map keys**; `resolveCandidates` **lowercases the lookup**.
+  A JS `Map` is case-sensitive, so the SQL collation alone is not enough — the two must agree or
+  the row is stored and never found.
+- Callers still pass `english` exactly as `resolve()`'s JSDoc requires; the lowering is internal
+  to the preference lookup and changes no candidate.
+
+⚠️ **A consequence to expect, not to treat as a bug:** a preference may be held for a case
+variant that finds no candidates (e.g. `Atom` where only `atom` is a stored term). That surfaces
+as `preference-not-a-candidate` — D4's code doing its job — rather than as silence. **A
+preference keyed one way and looked up the other is the exact failure mode this spec exists to
+eliminate**, so the pin in §8 is not optional.
 
 `chapter` keeps 045's `NOT NULL` + `0` sentinel and the comment that explains it: SQLite NULLs
 do not compare equal inside a primary key, so a nullable chapter would permit two conflicting
@@ -334,8 +361,14 @@ if (pref) {
 }
 ```
 
-- **`tied` is cleared** when the override fires: a real tie that an editor has answered is no
-  longer a tie. That *is* the answer.
+- **`tied` is cleared and its members MOVE INTO `alsoInScope`** when the override fires. A real
+  tie an editor has answered is no longer a tie — but the concepts that were tied are still real,
+  in-scope, offerable answers the editor has just chosen against, and they must remain visible.
+  ⚠️ **Clearing `tied` without re-homing them would make them vanish from both lists** — the
+  exact invisibility D3 exists to end, re-created inside D3's own slice. §6.4's exclusion rule is
+  written against the **post-override** `tied`, which is empty here, so the move is what the rule
+  already implies; it is stated because leaving it implicit is how the first draft lost the
+  nominal-tie path.
 - **`nominalTie` is preserved**: it reports duplicate *concepts* to merge, which is true
   independently of which term the book uses.
 - **`preference-term-missing`** is distinguished from `preference-not-a-candidate` by one extra
@@ -431,7 +464,7 @@ the rewrite**, and no other test in the suite would catch its return.
 |---|---|
 | Preferred term on a losing in-scope concept | It wins; the position-winner moves to `alsoInScope` |
 | Preferred term on the concept that already won | Same winner, `reason` becomes `book-preference` |
-| Preference fires while there was a real `tied` | Winner set, **`tied` cleared** |
+| Preference fires while there was a real `tied` | Winner set, **`tied` cleared, and every former tied member present in `alsoInScope`** — assert both halves; the second is the one an implementation drops |
 | Preference fires while there was a `nominalTie` | Winner set, **`nominalTie` preserved** ⚠️ the case the first draft's design destroyed |
 | Chapter preference vs book preference, same string | Chapter wins *(unit-scope only — §6.3)* |
 | No preference at all | Winner, reason, `tied`, `nominalTie`, `outOfScope` all unchanged |
@@ -469,8 +502,16 @@ count one. A bare integer that means neither is worse than none.
 
 At minimum, each must turn a test red: dropping the `preference-out-of-scope` check; searching
 only in-scope candidates for the preferred term; clearing `nominalTie` along with `tied`;
-building `alsoInScope` from `inScope` rather than `chosen`; omitting `termId` from
-`alsoInScope`.
+clearing `tied` **without** re-homing its members into `alsoInScope`; building `alsoInScope` from
+`inScope` rather than `chosen`; omitting `termId` from `alsoInScope`; **lowercasing on one side
+of the preference lookup and not the other** (§5.1 — the row stores and never matches).
+
+### §5.1 — the collation contract, both directions
+
+- A preference written as `Accuracy` is honoured when resolving `accuracy`, and vice versa.
+- ⚠️ **The control:** the same test must confirm candidate lookup is *still* case-sensitive —
+  `concept_term.text` is untouched by B4a. A change that "helpfully" folded case there would pass
+  the preference test and silently alter which candidates every resolution in the corpus finds.
 
 ---
 
