@@ -184,6 +184,33 @@ describe('buildResolvedGlossary', () => {
     expect(build(['atom']).producer).toBe('export-terminology-resolved');
   });
 
+  // D5 (§C36 B4a spec): a preference whose term_id no longer exists in
+  // concept_term. FK is ON by default here (better-sqlite3 compile flag,
+  // CLAUDE.md durable) and CASCADEs on delete, so the only way to reach a
+  // genuinely dangling row is to turn FK off before the INSERT — same
+  // pattern as conceptResolverIntegrity.test.js's dangling-merge fixture.
+  it('counts integrity codes per census string, and does NOT put them in the payload', () => {
+    concept('chemistry', 'atom', ['frumeind', 'atóm']);
+    db.pragma('foreign_keys = OFF');
+    db.prepare(
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 0, ?, ?)'
+    ).run('atom', 999999);
+
+    const out = build(['atom']);
+
+    // The preference cannot be honoured, so resolution falls back to the head
+    // form — `terms` comes out BYTE-IDENTICAL to a book with no preference
+    // row at all. That is D5's whole point: the one condition this report
+    // exists to surface is exactly the condition `sameTerms` cannot see.
+    expect(out.terms[0]).toMatchObject({ icelandic: 'frumeind', reason: 'head-form' });
+    expect(out.integrity).toEqual({ 'preference-term-missing': 1 });
+    // ⚠️ The payload must NOT gain a key: sameTerms ignores everything but
+    // `terms`, so a payload-borne report is skipped by write-if-changed
+    // exactly when it matters. It also keeps B4a's export byte-comparison
+    // meaningful (§9 of the design spec).
+    expect(out.stats).not.toHaveProperty('integrity');
+  });
+
   it('throws on an empty census rather than returning an empty payload', () => {
     expect(() => build([])).toThrow(/census is empty/i);
   });

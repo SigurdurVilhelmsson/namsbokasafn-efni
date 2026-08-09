@@ -171,6 +171,23 @@ const { createResolvedExportFn } = require('../lib/resolvedGlossary');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 
+/**
+ * D5 (§C36 B4a spec): fields `buildResolvedGlossary` returns for THIS
+ * SCRIPT's own reporting — never for the reader-facing file. Same idiom as
+ * `NON_RENDER_KEYS` in tools/lib/book-rendering-config.js (CLAUDE.md,
+ * durable): name the exclusion explicitly, at the one call site that
+ * actually serializes to disk, rather than trust a mental list.
+ *
+ * ⚠️ THIS IS LOAD-BEARING, NOT COSMETIC. `next` (exportFn's return value) is
+ * otherwise written to disk VERBATIM below — `JSON.stringify(next, …)` — so
+ * without this, `integrity` would leak into glossary-unified.json on the
+ * very next write following a preference fault. `sameTerms` cannot catch
+ * that leak (it reads only `.terms`), and a payload gaining a stray
+ * top-level key is exactly the class of drift §9's corpus gate exists to
+ * catch — do not rely on that gate alone; strip it here too.
+ */
+const NON_PAYLOAD_KEYS = new Set(['integrity']);
+
 /** Heartbeat consumed by GET /api/health — see server/lib/glossaryExportHealth.js. */
 const HEARTBEAT_REL = path.join('pipeline-output', '.last-glossary-export');
 
@@ -561,8 +578,16 @@ function runGlossaryExport({
   // and why nobody learned the first prod export had happened.
   const outcomes = {};
   let errors = 0;
-  const fail = (b, detail) => {
-    outcomes[b] = { outcome: 'error', detail };
+  // `extra` is `{}` at the two call sites reached BEFORE `next` exists
+  // (subject resolution, exportFn itself throwing) — `integrityField` is not
+  // yet in scope there. The one `fail()` call reached AFTER a valid `next`
+  // (the readExisting catch below) passes it explicitly, D5, §C36 B4a spec:
+  // an unreadable existing file is a genuine environment error, unrelated to
+  // `next`'s content, but the integrity report is already in hand by then
+  // and there is no reason to withhold it just because this particular
+  // outcome is 'error' rather than a refusal.
+  const fail = (b, detail, extra = {}) => {
+    outcomes[b] = { outcome: 'error', detail, ...extra };
     errors++;
   };
 
@@ -678,12 +703,39 @@ function runGlossaryExport({
       continue;
     }
 
+    // D5 (§C36 B4a spec): a preference that cannot be honoured leaves
+    // `next.terms` byte-identical to a book with no preference row at all —
+    // by construction, the resolver falls back to the head form — so a
+    // payload-borne report of that fault would be invisible to `sameTerms`
+    // below and NEVER reach disk. Route it here instead: the per-book log
+    // line and outcomes[b], neither of which depends on the write.
+    //
+    // ⚠️ THE LABEL SAYS "integrity", NOT "preference" — DELIBERATE, and a
+    // deviation from the brief's literal wording (which said "preference
+    // faults"). `next.integrity` is `resolvedGlossary.js`'s accumulation of
+    // EVERY code `conceptResolver.js`'s resolve() can carry, and two of the
+    // five — `merge-cycle`, `dangling-merge` — come from lookupCandidates and
+    // have NOTHING to do with a preference row. Calling those "preference
+    // faults" would send an operator hunting for a book_term_preference row
+    // that was never the cause; a mislabelled number is worse than none, the
+    // same lesson the counting-unit warning below is about.
+    //
+    // ⚠️ THE UNIT IS CENSUS STRINGS, NOT ROWS. resolveCandidates de-duplicates
+    // each code once per resolution, so a count is "census strings whose
+    // resolution reported this code" — one broken row hit by twelve English
+    // strings counts twelve, and twelve broken rows on one string count one.
+    // A bare integer that means neither is worse than none.
+    const integrityNote = Object.keys(next.integrity || {}).length
+      ? ` · integrity faults (census strings): ${JSON.stringify(next.integrity)}`
+      : '';
+    const integrityField = integrityNote ? { integrity: next.integrity } : {};
+
     let existing;
     try {
       existing = readExisting(outPath);
     } catch (err) {
-      logError(`${b}: could not read existing export — ${err.message}`);
-      fail(b, `could not read existing export — ${err.message}`);
+      logError(`${b}: could not read existing export — ${err.message}${integrityNote}`);
+      fail(b, `could not read existing export — ${err.message}`, integrityField);
       continue;
     }
 
@@ -704,9 +756,13 @@ function runGlossaryExport({
           `Investigate, then pass --adopt to replace it. NOTE: on this path --adopt ` +
           `also bypasses the SHRINK check — an unreadable file provides no term ` +
           `counts to measure against — so the replacement is unmeasured in both ` +
-          `respects. Keep a copy of the unreadable file first.`
+          `respects. Keep a copy of the unreadable file first.${integrityNote}`
       );
-      outcomes[b] = { outcome: 'refused-producer', detail: 'cannot read existing file' };
+      outcomes[b] = {
+        outcome: 'refused-producer',
+        detail: 'cannot read existing file',
+        ...integrityField,
+      };
       continue;
     }
     // §C21: an ABSENT baseline is the one state in which BOTH gates are
@@ -735,9 +791,9 @@ function runGlossaryExport({
           `nothing to compare against and BOTH the producer and shrink gates are ` +
           `inert. A first export is unreviewed by construction. Decide what this ` +
           `book's glossary should be, then pass --adopt --book ${b} to write it. ` +
-          `Do NOT expect --force to work here: it answers a different question.`
+          `Do NOT expect --force to work here: it answers a different question.${integrityNote}`
       );
-      outcomes[b] = { outcome: 'refused-absent-baseline' };
+      outcomes[b] = { outcome: 'refused-absent-baseline', ...integrityField };
       continue;
     }
 
@@ -753,18 +809,19 @@ function runGlossaryExport({
         `${b}: REFUSING to write — the committed file was written by ` +
           `${pv.prevProducer}, not by this exporter (${pv.nextProducer}). Writing would ` +
           `SWAP PRODUCERS, not refresh. Review what this book's glossary should be, ` +
-          `then pass --adopt --book ${b} to migrate it.`
+          `then pass --adopt --book ${b} to migrate it.${integrityNote}`
       );
       outcomes[b] = {
         outcome: 'refused-producer',
         detail: `committed file written by ${pv.prevProducer}`,
+        ...integrityField,
       };
       continue;
     }
 
     if (sameTerms(prev, next)) {
-      log(`${b}: unchanged (${countApproved(next)} approved) — not rewritten`);
-      outcomes[b] = { outcome: 'unchanged' };
+      log(`${b}: unchanged (${countApproved(next)} approved) — not rewritten${integrityNote}`);
+      outcomes[b] = { outcome: 'unchanged', ...integrityField };
       continue;
     }
 
@@ -779,11 +836,12 @@ function runGlossaryExport({
         `${b}: REFUSING to write — terms would fall ${verdict.prevTotal} → ${verdict.nextTotal} ` +
           `(approved ${verdict.prevApproved} → ${verdict.nextApproved}). The committed file may ` +
           `come from a different producer (tools/merge-glossary.js). Investigate, then pass ` +
-          `--force if the shrink is intended.`
+          `--force if the shrink is intended.${integrityNote}`
       );
       outcomes[b] = {
         outcome: 'refused-shrink',
         detail: `${verdict.prevTotal} → ${verdict.nextTotal}`,
+        ...integrityField,
       };
       continue;
     }
@@ -791,17 +849,23 @@ function runGlossaryExport({
     if (dryRun) {
       log(
         `[dry-run] ${b}: would write terms ${verdict.prevTotal} → ${countTerms(next)} ` +
-          `(approved ${verdict.prevApproved} → ${verdict.nextApproved})`
+          `(approved ${verdict.prevApproved} → ${verdict.nextApproved})${integrityNote}`
       );
-      outcomes[b] = { outcome: 'dry-run' };
+      outcomes[b] = { outcome: 'dry-run', ...integrityField };
       continue;
     }
 
     fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(outPath, JSON.stringify(next, null, 2) + '\n', 'utf-8');
+    // ⚠️ NOT `next` directly — see NON_PAYLOAD_KEYS above. `next.integrity`
+    // already did its job (integrityNote/integrityField, above); the
+    // reader-facing file must not carry it.
+    const toPersist = Object.fromEntries(
+      Object.entries(next).filter(([k]) => !NON_PAYLOAD_KEYS.has(k))
+    );
+    fs.writeFileSync(outPath, JSON.stringify(toPersist, null, 2) + '\n', 'utf-8');
     log(
       `${b}: wrote terms ${verdict.prevTotal} → ${countTerms(next)} ` +
-        `(approved ${verdict.prevApproved} → ${verdict.nextApproved}) → ${outPath}`
+        `(approved ${verdict.prevApproved} → ${verdict.nextApproved}) → ${outPath}${integrityNote}`
     );
     // 'adopted' is reachable only via --adopt: reaching this line with either
     // clause true means a gate objected and a human overrode it. A one-off
@@ -825,6 +889,7 @@ function runGlossaryExport({
         existing.kind === 'corrupt' || existing.kind === 'absent' || pv.refuse
           ? 'adopted'
           : 'wrote',
+      ...integrityField,
     };
   }
 

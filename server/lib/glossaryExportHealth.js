@@ -164,10 +164,11 @@ function projectBookForHealth(entry) {
   // Fail CLOSED, not merely toward-quiet: a non-object entry has nothing
   // safe to project, so this returns null rather than passing an unknown
   // shape through verbatim. Unreachable today — the exporter always writes
-  // {outcome, since[, detail]} objects — but this function's whole reason
-  // to exist is "detail must never leave this file", and a fail-open branch
-  // inside it would undermine that even though nothing currently exercises
-  // it. Do not "simplify" this back to `return entry`.
+  // {outcome, since[, detail][, integrity]} objects (D5, §C36 B4a spec added
+  // `integrity`) — but this function's whole reason to exist is "extra
+  // fields must never leave this file", and a fail-open branch inside it
+  // would undermine that even though nothing currently exercises it. Do not
+  // "simplify" this back to `return entry`.
   if (!entry || typeof entry !== 'object') return null;
   return { outcome: entry.outcome, since: entry.since };
 }

@@ -344,6 +344,107 @@ describe('runGlossaryExport — writing', () => {
   });
 });
 
+/**
+ * D5 (§C36 B4a spec). `buildResolvedGlossary` reports
+ * a preference that cannot be honoured via a top-level `integrity` field on
+ * its return value — read here as `next.integrity`. That field must reach an
+ * operator (the log line, outcomes[b] in the status file) and must NEVER
+ * reach the persisted export: `next` is otherwise written to disk VERBATIM
+ * (`fs.writeFileSync(outPath, JSON.stringify(next, ...))`), so without an
+ * explicit strip at that one call site, `integrity` would leak into
+ * glossary-unified.json on the very first write following a preference fault
+ * — exactly the "producer-fingerprint adjacent" risk this slice was warned
+ * about. These tests measure the write, not just the return value.
+ */
+describe('runGlossaryExport — D5: integrity report reaches an operator, never the payload', () => {
+  it('does not add `integrity` to the persisted export, but logs it and records it in outcomes[b]', () => {
+    seedRefreshable('prufubok');
+    const logs = [];
+    const code = run({
+      exportFn: () => ({ ...payload(approved(2)), integrity: { 'preference-term-missing': 3 } }),
+      log: (m) => logs.push(m),
+    });
+    expect(code).toBe(0);
+
+    // The write itself: the payload gains no key.
+    const written = readExport('prufubok');
+    expect(written).not.toHaveProperty('integrity');
+    expect(written.terms).toHaveLength(2);
+
+    // The per-book log line: names the counting unit, not a bare integer.
+    expect(logs.join('\n')).toContain(
+      'integrity faults (census strings): {"preference-term-missing":3}'
+    );
+
+    // outcomes[b] in the status file.
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.prufubok.integrity).toEqual({ 'preference-term-missing': 3 });
+  });
+
+  it('omits `integrity` from outcomes[b] entirely when there is nothing to report', () => {
+    seedRefreshable('prufubok');
+    run({ exportFn: () => payload(approved(2)) });
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.prufubok).not.toHaveProperty('integrity');
+  });
+
+  it('reports integrity faults on a REFUSAL path too — today all four production books refuse before ever reaching a write', () => {
+    // No baseline at all -> refused-absent-baseline (§C21), the state most of
+    // production is in right now. The report must still surface here, or an
+    // operator watching only the books that currently refuse would never see
+    // it.
+    seedBook('prufubok');
+    const errors = [];
+    const code = run({
+      exportFn: () => ({ ...payload(approved(2)), integrity: { 'preference-out-of-scope': 1 } }),
+      logError: (m) => errors.push(m),
+    });
+    expect(code).toBe(0);
+    expect(errors.join('\n')).toContain(
+      'integrity faults (census strings): {"preference-out-of-scope":1}'
+    );
+    const status = JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.prufubok.outcome).toBe('refused-absent-baseline');
+    expect(status.books.prufubok.integrity).toEqual({ 'preference-out-of-scope': 1 });
+  });
+
+  // Pins the `extra` parameter threaded through `fail()`: of the four
+  // `fail()` call sites, this is the only one reached AFTER `next` (and so
+  // `integrityNote`/`integrityField`) exists — an EACCES on the EXISTING
+  // file is a genuine environment error, unrelated to `next`'s content, but
+  // the report is already in hand by then and there is no reason to
+  // withhold it just because this outcome is 'error' rather than a refusal.
+  it('reports integrity faults on the readExisting-throws ERROR path too', () => {
+    seedBook('prufubok', JSON.stringify(payload(approved(1))));
+    const outPath = path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json');
+    chmodSync(outPath, 0o000);
+    const errors = [];
+    try {
+      const code = run({
+        exportFn: () => ({ ...payload(approved(2)), integrity: { 'dangling-merge': 2 } }),
+        logError: (m) => errors.push(m),
+      });
+      expect(code).toBe(1);
+      expect(errors.join('\n')).toContain(
+        'integrity faults (census strings): {"dangling-merge":2}'
+      );
+      const status = JSON.parse(
+        readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+      );
+      expect(status.books.prufubok.outcome).toBe('error');
+      expect(status.books.prufubok.integrity).toEqual({ 'dangling-merge': 2 });
+    } finally {
+      chmodSync(outPath, 0o644);
+    }
+  });
+});
+
 describe('runGlossaryExport — shrink guard', () => {
   // REVISED 2026-08-05 (C14 ② step 5, decision D2): the exit code was 1 —
   // a refusal was counted as a failure. It is now 0. The refusal itself is

@@ -22,7 +22,11 @@ const { PRODUCER_RESOLVED } = require('./glossaryProducer');
  * @param {import('better-sqlite3').Database} db an OPEN connection
  * @param {string} bookSlug
  * @param {{census?: {strings: string[], filesRead: number, root: string}, booksDir?: string}} [opts]
- * @returns {{producer, generated, book, stats, terms: Array}}
+ * @returns {{producer, generated, book, stats, integrity: Object<string, number>, terms: Array}}
+ *   ⚠️ `integrity` is CALLER-ONLY (D5, §C36 B4a spec): export-terminology.js
+ *   reads it for its per-book log line and outcomes[b], then strips it
+ *   before the payload is written to disk (its NON_PAYLOAD_KEYS). It is not
+ *   part of glossary-unified.json's shape.
  * @throws when the book is unscoped, or its census is empty
  */
 function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
@@ -87,9 +91,17 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
     censusStrings: source.strings.length,
   };
   const terms = [];
+  // D5 (§C36 B4a spec): a top-level SIBLING of `stats`, never inside it and
+  // never inside `terms` — see the return statement below for why. Counting
+  // unit is CENSUS STRINGS, not rows: `resolveCandidates` de-duplicates each
+  // code once per resolution (the `!codes.includes(...)` guards), so a code
+  // hit by twelve English strings counts twelve, and twelve broken rows that
+  // all land on one string count one.
+  const integrity = {};
 
   for (const english of source.strings) {
     const r = resolve(scope, english);
+    for (const code of r.integrity) integrity[code] = (integrity[code] || 0) + 1;
 
     if (!r.winner) {
       if (r.tied.length) stats.ties++;
@@ -129,6 +141,13 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
     generated: new Date().toISOString(),
     book: bookSlug,
     stats,
+    // ⚠️ D5: NOT inside `stats`, and not part of the persisted payload shape
+    // export-terminology.js writes to disk — see createResolvedExportFn's
+    // caller for why. This return value is consumed directly by
+    // export-terminology.js (`next.integrity`), which reports it via the
+    // per-book log line and outcomes[b] instead, channels that do not depend
+    // on `sameTerms`/the write-if-changed guard.
+    integrity,
     terms,
   };
 }
