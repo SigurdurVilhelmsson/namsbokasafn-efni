@@ -805,6 +805,28 @@ The core of the slice.
 - Consumes: `scope.preference` (Task 3), `scope.stmts.termById` (Task 4), `alsoInScope` (Task 5).
 - Produces: `resolveCandidates(scope, candidates, integrity = [], english = null)`. `resolve(scope, english)` passes `english` through. New integrity codes: `preference-term-missing`, `preference-out-of-scope`, `preference-not-a-candidate`. `orphan-preference` is **retired**.
 
+> ### ⚠️ ADDED 2026-08-09 AFTER TASK 3 — two things this task inherits, both measured
+>
+> **① `conceptResolverResolve.test.js` is currently GREEN FOR THE WRONG REASON, and this task
+> owns it.** Every `preference` fixture in that file is a literal `new Map([[10, {...}]])` keyed
+> on the same **numeric** `conceptId` used in its `cand(10, …)` helper — so the file never passes
+> through `buildScope`/`buildPreferenceMap` and **never exercises Task 3's re-key at all**. It
+> passes today only because `resolveCandidates` still reads by concept id. **Seven tests carry
+> such fixtures — lines 48-58, 60-69, 187-204, 249-273, 277-283, 285-293, 300-313.**
+>
+> ⚠️ **It is NOT a mechanical key rename.** Under the re-key, a preference is no longer
+> *per-candidate*: **all candidates in one resolution share the same English string**, so the
+> per-candidate `.get(c.conceptId)` loop must become **one lookup keyed on the English string,
+> checked against each candidate's `isTerms`** — which is exactly the `english` parameter and the
+> step-6 override this task's Step 4 introduces. Budget for a structural rewrite of those seven
+> fixtures, not an edit.
+>
+> **② Two tests in `resolvedGlossary.test.js` are RED going into this task, and this task is what
+> turns them green** — *"honours an editor book-preference over the head form"* and *"resolves the
+> BOOK-DEFAULT (chapter 0) preference…"*. They are red because of the key-type mismatch above,
+> which Task 3 correctly did not reach into. **They are this task's completion criteria**: when
+> Step 5 runs, the root suite must return to fully green.
+
 - [ ] **Step 1: Rewrite the tests whose premise B4a inverts**
 
 ⚠️ **`conceptResolverResolve.test.js:249` is named *"a preference does NOT break a real tie — it selects within a concept, never between"*, and its comment records that it was renamed on 2026-08-08 from "a preference BREAKS a real tie". B4a inverts it again.** Rewrite it deliberately and keep the history in the comment — a second silent rename erases the record of why the first happened:
