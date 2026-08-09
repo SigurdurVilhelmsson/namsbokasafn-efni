@@ -19,6 +19,7 @@ const {
   detectProducer,
   PRODUCER_EXPORT,
   PRODUCER_MERGE,
+  PRODUCER_RESOLVED,
   PRODUCER_UNKNOWN,
 } = require('../lib/glossaryProducer');
 
@@ -98,5 +99,35 @@ describe('detectProducer — unknown', () => {
     ['terms with neither fingerprint', { terms: [{ english: 'a', icelandic: 'b' }] }],
   ])('%s is unknown', (_label, value) => {
     expect(detectProducer(value)).toBe(PRODUCER_UNKNOWN);
+  });
+});
+
+describe('the resolved export is a distinct producer', () => {
+  const resolved = {
+    producer: 'export-terminology-resolved',
+    terms: [{ english: 'pH', icelandic: 'sýrustig', status: 'approved', domain: 'biology' }],
+  };
+
+  it('detects the stamp', () => {
+    expect(detectProducer(resolved)).toBe(PRODUCER_RESOLVED);
+  });
+
+  it('is not confused with the old export', () => {
+    expect(PRODUCER_RESOLVED).not.toBe(PRODUCER_EXPORT);
+    expect(detectProducer({ producer: 'export-terminology', terms: [] })).toBe(PRODUCER_EXPORT);
+  });
+
+  it('an UNSTAMPED resolved payload is unknown, so it fails closed', () => {
+    // eslint-disable-next-line no-unused-vars
+    const { producer, ...unstamped } = resolved;
+    expect(detectProducer(unstamped)).toBe(PRODUCER_UNKNOWN);
+  });
+
+  it('a resolved term carries `domain` and none of the other fingerprints', () => {
+    const t = resolved.terms[0];
+    expect(t).toHaveProperty('domain');
+    expect(t).not.toHaveProperty('subjects');
+    expect(t).not.toHaveProperty('category');
+    expect(t).not.toHaveProperty('chapter');
   });
 });

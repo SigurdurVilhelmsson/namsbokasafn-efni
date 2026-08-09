@@ -30,6 +30,7 @@
 
 const PRODUCER_EXPORT = 'export-terminology';
 const PRODUCER_MERGE = 'merge-glossary';
+const PRODUCER_RESOLVED = 'export-terminology-resolved';
 const PRODUCER_UNKNOWN = 'unknown';
 
 /** Presence, not truthiness: exportBookGlossary emits `subjects: []` for an untagged term. */
@@ -44,6 +45,18 @@ function detectProducer(payload) {
     return PRODUCER_UNKNOWN;
   }
   if (payload.producer === PRODUCER_EXPORT) return PRODUCER_EXPORT;
+
+  // B3: the resolved view is a DIFFERENT producer, deliberately. Its payload is
+  // a subject-filtered dump's replacement, not its refresh — and detectProducer
+  // short-circuits on the stamp BEFORE reading `terms`, so without its own
+  // constant the reshape would pass the producer gate unnoticed. That is the
+  // failure class C14 and C21 exist to prevent, arriving through the door they
+  // left open.
+  //
+  // Shape inference below stays exhaustive: a resolved term carries `domain`,
+  // never `subjects`/`category`/`chapter`, so an UNSTAMPED resolved payload
+  // falls through to `unknown` and refuses. Fail-closed, per the hybrid rule.
+  if (payload.producer === PRODUCER_RESOLVED) return PRODUCER_RESOLVED;
 
   const terms = payload.terms;
   if (!Array.isArray(terms) || terms.length === 0) return PRODUCER_UNKNOWN;
@@ -60,4 +73,10 @@ function detectProducer(payload) {
   return PRODUCER_UNKNOWN;
 }
 
-module.exports = { detectProducer, PRODUCER_EXPORT, PRODUCER_MERGE, PRODUCER_UNKNOWN };
+module.exports = {
+  detectProducer,
+  PRODUCER_EXPORT,
+  PRODUCER_MERGE,
+  PRODUCER_RESOLVED,
+  PRODUCER_UNKNOWN,
+};
