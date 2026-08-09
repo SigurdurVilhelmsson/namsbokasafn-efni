@@ -199,6 +199,37 @@ something nobody designed.
 payload whose `producer` is `export-terminology-resolved` — a format in which a collision is
 unrepresentable — and keeps sweeping every book that has not adopted.
 
+> ⚠️ **CORRECTED 2026-08-09 by the whole-branch adversarial review — the paragraph above states
+> a FALSE premise, and the code built from it removed a live fence.**
+>
+> `findGlossaryCollisions` returns **two** populations: `competitions` (≥2 Icelandic values under
+> one English key) **and** `commaLists` (one Icelandic value that is itself a comma-separated
+> list). "A format in which a collision is unrepresentable" is true of the **first** and **false
+> of the second** — the resolved export represents a comma-list perfectly well.
+>
+> Measured on production's corpus: **160** `lang='is'` terms contain a comma, **all at rank 1**,
+> so all reachable as a head form. `liffraedi-2e` already resolves
+> `missing → "skemmdar, horfnar og viðgerðar tennur"` and `edlisfraedi-2e` resolves
+> `response → "svar,svörun"`. Both are named adoption candidates.
+>
+> Had this shipped as written: after `--adopt --book liffraedi-2e`, `buildGlossaryMap` maps that
+> comma list into a published `<mtext>` — it applies no comma filter, it only *reports* — with
+> the §C18 fence no longer sweeping the book and nothing going red. (`formatGlossary` **does**
+> drop comma values on the MT side, so the render path was the unprotected one, which is the
+> reader-visible one.)
+>
+> **What B3 actually ships:** every book is still swept; only the `newCompetitions` /
+> `changedChoices` assertions retire for a resolved payload, while `newCommaLists` is asserted
+> for all of them. The predicate is named `sweepsCompetitions` so the halves cannot be conflated
+> again, and `collisionAssertions` is extracted so the retirement is testable — the real sweep is
+> data-driven over committed files, none of which is resolved-producer today, so nothing else
+> could distinguish "we skip the competition half" from "we stopped looking".
+>
+> ⚠️ The fixture that let this through was `isSweepable({ producer: RESOLVED, terms: [] })` —
+> and the predicate never read `terms`, so an empty array could not distinguish "a resolved
+> payload has no collisions" from "we stopped looking". A test whose fixture cannot express the
+> failure it names is not a test of that failure.
+
 ⚠️ **And the non-vacuity guard must be strengthened in the same change, or the retirement
 becomes the bug.** Today's guard asserts only `booksWithGlossaries.length > 0`; once skipping
 exists, every book could be skipped and that assertion would still pass. It must assert that

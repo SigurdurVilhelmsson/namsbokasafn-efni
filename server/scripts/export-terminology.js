@@ -205,11 +205,30 @@ function readExisting(outPath) {
     if (err.code === 'ENOENT') return { kind: 'absent' };
     throw err; // caught per-book by the caller, counted as an error
   }
+  let parsed;
   try {
-    return { kind: 'ok', payload: JSON.parse(raw) };
+    parsed = JSON.parse(raw);
   } catch {
     return { kind: 'corrupt' };
   }
+  // ⚠️ A file holding the four bytes `null` PARSES, and `null` is the exact
+  // sentinel `producerVerdict` uses for "no previous producer" — so it landed
+  // in the one state that means "no baseline" WITHOUT passing the §C21 absent
+  // gate, which keys on `kind === 'absent'`. Measured 2026-08-09 (whole-branch
+  // adversarial review): producerVerdict.refuse=false, sameTerms=false,
+  // shrinkVerdict.refuse=false — all three gates stood down and the 2-hourly
+  // cron WROTE, unattended. It was the counter-example to this project's
+  // durable claim that "there is no longer any state in which an unattended
+  // glossary write is ungated".
+  //
+  // `null` was the only value that slipped: [], numbers and strings all parse
+  // non-null, so `prev !== null`, so detectProducer returns `unknown`, differs
+  // from the committed producer, and the producer gate refuses. The defect was
+  // a type collision — two layers using `null` to mean two different things —
+  // not a missing check. Classifying it as `corrupt` routes it to the gate
+  // that already exists for "we cannot tell what we would destroy".
+  if (parsed === null || typeof parsed !== 'object') return { kind: 'corrupt' };
+  return { kind: 'ok', payload: parsed };
 }
 
 /**
@@ -573,6 +592,41 @@ function runGlossaryExport({
     try {
       next = exportFn(b);
     } catch (err) {
+      // ⚠️ An UN-EXTRACTED book is a refusal, not an error — the same class as
+      // `refused-no-mapping` above: this book has not been prepared for export,
+      // only a human can prepare it, and until then it must not mark the whole
+      // run unhealthy (decision D2).
+      //
+      // The distinction is load-bearing, not cosmetic. `fail()` increments
+      // `errors`, and `errors > 0` returns 1 BEFORE writeHeartbeat below — so
+      // one book nobody extracted withheld the heartbeat and made
+      // checks.glossary_export not-ok for EVERY book. That is precisely the
+      // coupling this function's header removed from the refusal channel,
+      // reappearing in the error channel. Found by the whole-branch adversarial
+      // review, 2026-08-09; `stjornufraedi` (0 .md files) is one
+      // book_subject_mapping row away from it.
+      //
+      // No enumeration is needed downstream: `isUnresolved` and
+      // glossaryExportHealth both classify on the `refused-` PREFIX, so the D6
+      // clock and the stale-refusal list pick this up unchanged.
+      if (err && err.code === 'EMPTY_CENSUS') {
+        logError(`${b}: ${err.message}`);
+        outcomes[b] = { outcome: 'refused-empty-census' };
+        continue;
+      }
+      // Same class, reached by following this exporter's OWN advice: the
+      // refused-no-mapping message tells the operator to add a
+      // book_subject_mapping row, and doing so moves the book past that gate
+      // onto the unscoped throw. As an error it withheld the heartbeat for the
+      // whole corpus until a migration shipped (review B, 2026-08-09).
+      // The detail carries WHICH fault, because the two have different
+      // remedies — admin route for 'unregistered', a migration for
+      // 'no-priorities' — and collapsing them is what B1's D3 forbids.
+      if (err && err.code === 'UNSCOPED') {
+        logError(`${b}: ${err.message}`);
+        outcomes[b] = { outcome: 'refused-unscoped', detail: `unscoped: ${err.unscoped}` };
+        continue;
+      }
       logError(`${b}: export failed — ${err.message}`);
       fail(b, `export failed — ${err.message}`);
       continue;

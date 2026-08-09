@@ -1491,6 +1491,88 @@ describe('runGlossaryExport — the EXACT outcome strings (C14 ② amendment D6)
     expect(outcomeOf('prufubok')).toBe('adopted');
   });
 
+  it("'refused-empty-census' — an un-extracted book is REFUSED, not an error", () => {
+    // Whole-branch adversarial review, 2026-08-09. An empty census threw, the
+    // caller counted it as an error, and `errors > 0` returns 1 BEFORE
+    // writeHeartbeat — so one book nobody extracted made checks.glossary_export
+    // not-ok for EVERY book. That is the coupling decision D2 removed from the
+    // refusal channel, reappearing in the error channel; this file says so in
+    // its own words above ("A book that refuses for a CORRECT reason must not
+    // suppress the health signal for every other book").
+    //
+    // `stjornufraedi` has 0 .md files under 02-for-mt and is one
+    // book_subject_mapping row away from exactly this state.
+    seedBook('prufubok', legacyFile());
+    const err = new Error('prufubok: census is empty (0 .md file(s)) — extract the book first.');
+    err.code = 'EMPTY_CENSUS';
+    const code = run({
+      exportFn: () => {
+        throw err;
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('refused-empty-census');
+    // A refusal is a correct outcome (D2): exit 0, and the heartbeat is written
+    // so the rest of the corpus keeps its health signal.
+    expect(code).toBe(0);
+    expect(heartbeatExists()).toBe(true);
+  });
+
+  it("'refused-unscoped' — a book with no priority rows is REFUSED, and names which fault", () => {
+    // Whole-branch adversarial review B, 2026-08-09: the SAME channel as
+    // refused-empty-census, reached by following this exporter's own advice.
+    // `refused-no-mapping` tells the operator to add a book_subject_mapping
+    // row; doing so moves the book past that gate and onto the unscoped throw,
+    // which was an error — withholding the heartbeat and degrading
+    // checks.glossary_export for the whole corpus until a migration ships.
+    // The remedy the system printed made things worse.
+    //
+    // The two unscoped faults have DIFFERENT remedies (admin route vs a
+    // migration), so the detail must name which — collapsing them is what
+    // B1's D3 exists to prevent.
+    seedBook('prufubok', legacyFile());
+    const err = new Error('prufubok: the book is unscoped (no-priorities).');
+    err.code = 'UNSCOPED';
+    err.unscoped = 'no-priorities';
+    const code = run({
+      exportFn: () => {
+        throw err;
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('refused-unscoped');
+    expect(readStatus().books.prufubok.detail).toContain('no-priorities');
+    expect(code).toBe(0);
+    expect(heartbeatExists()).toBe(true);
+  });
+
+  it("'error' — a genuine export failure is still an error, not a refusal", () => {
+    // The control for the test above: only EMPTY_CENSUS is reclassified.
+    seedBook('prufubok', legacyFile());
+    const code = run({
+      exportFn: () => {
+        throw new Error('something actually broke');
+      },
+    });
+    expect(outcomeOf('prufubok')).toBe('error');
+    expect(code).toBe(1);
+  });
+
+  it("'refused-producer' — a committed file holding JSON literal `null` is UNREADABLE, not absent", () => {
+    // Whole-branch adversarial review, 2026-08-09. `readExisting` parsed this
+    // to {kind:'ok', payload:null}, and null is the exact sentinel
+    // producerVerdict uses for "no previous producer" — so the §C21 absent gate
+    // did not fire (kind is not 'absent'), producerVerdict.refuse was false,
+    // sameTerms was false and shrinkVerdict.refuse was false. All three gates
+    // stood down and the 2-hourly cron WROTE, unattended.
+    //
+    // ⚠️ It was a counter-example to this project's durable claim that "there
+    // is no longer any state in which an unattended glossary write is ungated".
+    // Only `null` slipped through: [], numbers and strings all parse non-null,
+    // detect as `unknown`, and refuse against a committed producer.
+    seedBook('prufubok', 'null');
+    run({ exportFn: () => payload(approved(10)) });
+    expect(outcomeOf('prufubok')).toBe('refused-producer');
+  });
+
   it("'refused-producer' — an un-adopted producer swap", () => {
     seedBook('prufubok', legacyFile());
     run({ exportFn: () => exportPayload(approved(709)) });

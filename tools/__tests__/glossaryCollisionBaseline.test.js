@@ -35,13 +35,57 @@ const booksWithGlossaries = fs
  */
 const PRODUCER_RESOLVED = 'export-terminology-resolved';
 
-/** A payload worth sweeping: one in which a collision can exist at all. */
-export function isSweepable(glossary) {
+/**
+ * Can this payload's producer represent a COMPETITION — two or more Icelandic
+ * values under one English key? The resolved export emits one entry per English
+ * string, so it cannot.
+ *
+ * ⚠️ CORRECTED 2026-08-09 by the whole-branch adversarial review. This was
+ * `isSweepable`, and it skipped the whole sweep. That was wrong, because
+ * `findGlossaryCollisions` returns TWO populations — `competitions` AND
+ * `commaLists` (one Icelandic value that is itself a comma-separated list) —
+ * and the resolved format represents a comma-list perfectly well. Measured on
+ * production's corpus: 160 `lang='is'` terms contain a comma, ALL at rank 1, so
+ * all reachable as a head form; `liffraedi-2e` already resolves
+ * `missing → "skemmdar, horfnar og viðgerðar tennur"` and `edlisfraedi-2e`
+ * resolves `response → "svar,svörun"`.
+ *
+ * Left as it was, adopting either book would have published a comma-list into a
+ * `<mtext>` via `buildGlossaryMap` — which applies no comma filter, it only
+ * *reports* — with the C18 fence no longer sweeping that book and nothing going
+ * red. (`formatGlossary` does drop comma values on the MT side, so the render
+ * path was the unprotected one, which is the reader-visible one.)
+ *
+ * The name now says which half retires.
+ */
+export function sweepsCompetitions(glossary) {
   return !(glossary && glossary.producer === PRODUCER_RESOLVED);
 }
 
-const sweptBooks = booksWithGlossaries.filter((slug) =>
-  isSweepable(JSON.parse(fs.readFileSync(glossaryPath(path.join(BOOKS_DIR, slug)), 'utf8')))
+/**
+ * Which assertions a payload earns. Extracted so the retirement is testable:
+ * the real sweep is data-driven over committed files, and no committed file is
+ * resolved-producer today, so nothing else could distinguish "we skip the
+ * competition half" from "we stopped looking entirely".
+ */
+export function collisionAssertions(glossary, d) {
+  const actual = { newCommaLists: d.newCommaLists.map((c) => c.english) };
+  const expected = { newCommaLists: [] };
+  if (sweepsCompetitions(glossary)) {
+    actual.newCompetitions = d.newCompetitions.map((c) => c.english);
+    actual.changedChoices = d.changedChoices.map((c) => c.english);
+    expected.newCompetitions = [];
+    expected.changedChoices = [];
+  }
+  return { actual, expected };
+}
+
+const readGlossary = (slug) =>
+  JSON.parse(fs.readFileSync(glossaryPath(path.join(BOOKS_DIR, slug)), 'utf8'));
+
+/** Books whose committed payload can still carry a competition. */
+const competitionSweptBooks = booksWithGlossaries.filter((slug) =>
+  sweepsCompetitions(readGlossary(slug))
 );
 
 describe('committed glossaries have no competitions beyond their baseline', () => {
@@ -51,24 +95,52 @@ describe('committed glossaries have no competitions beyond their baseline', () =
   // bug. This test's own header states the principle: absence of a baseline is
   // not approval (the C11(b) lesson — a shipped detector that had never run
   // went unnoticed for 13 days).
-  it('actually sweeps at least one book (the sweep is not vacuous)', () => {
-    expect(sweptBooks.length).toBeGreaterThan(0);
+  it('actually sweeps at least one book for competitions (the sweep is not vacuous)', () => {
+    expect(competitionSweptBooks.length).toBeGreaterThan(0);
   });
 
-  it.each(sweptBooks)('%s', (slug) => {
+  // ⚠️ EVERY book is swept, including resolved-producer ones — only the
+  // competition half of the assertion retires. See sweepsCompetitions.
+  it.each(booksWithGlossaries)('%s', (slug) => {
     const bookDir = path.join(BOOKS_DIR, slug);
-    const glossary = JSON.parse(fs.readFileSync(glossaryPath(bookDir), 'utf8'));
+    const glossary = readGlossary(slug);
     const collisions = findGlossaryCollisions(glossary.terms || [], { approvedOnly: true });
     const d = diffAgainstBaseline(collisions, loadBaseline(bookDir));
+    const { actual, expected } = collisionAssertions(glossary, d);
 
-    expect(
-      {
-        newCompetitions: d.newCompetitions.map((c) => c.english),
-        changedChoices: d.changedChoices.map((c) => c.english),
-        newCommaLists: d.newCommaLists.map((c) => c.english),
-      },
-      `Run: npm run validate:glossary -- --book ${slug}`
-    ).toEqual({ newCompetitions: [], changedChoices: [], newCommaLists: [] });
+    expect(actual, `Run: npm run validate:glossary -- --book ${slug}`).toEqual(expected);
+  });
+});
+
+describe('D7 retires only the competition half of the sweep', () => {
+  const d = {
+    newCompetitions: [{ english: 'atom' }],
+    changedChoices: [{ english: 'bond' }],
+    newCommaLists: [{ english: 'missing' }],
+  };
+
+  it('a resolved payload is STILL swept for comma lists', () => {
+    // The format cannot represent a competition, but it represents a comma-list
+    // fine — `liffraedi-2e` resolves `missing` to a three-item comma list today.
+    const { actual, expected } = collisionAssertions({ producer: PRODUCER_RESOLVED }, d);
+    expect(actual.newCommaLists).toEqual(['missing']);
+    expect(expected.newCommaLists).toEqual([]);
+  });
+
+  it('a resolved payload is NOT swept for competitions or changed choices', () => {
+    const { actual, expected } = collisionAssertions({ producer: PRODUCER_RESOLVED }, d);
+    expect(actual).not.toHaveProperty('newCompetitions');
+    expect(expected).not.toHaveProperty('newCompetitions');
+    expect(actual).not.toHaveProperty('changedChoices');
+  });
+
+  it('a merge-glossary payload is swept for all three', () => {
+    const { actual } = collisionAssertions({ terms: [{ category: 'x', chapter: 1 }] }, d);
+    expect(actual).toEqual({
+      newCommaLists: ['missing'],
+      newCompetitions: ['atom'],
+      changedChoices: ['bond'],
+    });
   });
 });
 
@@ -152,22 +224,45 @@ describe('commaLists baseline shape — one headword can carry TWO distinct comm
   });
 });
 
-describe('D7 — the sweep retires per book, at adoption', () => {
+describe('D7 — the COMPETITION half retires per book, at adoption', () => {
   const RESOLVED = 'export-terminology-resolved';
 
-  it('skips a resolved payload, in which a collision is unrepresentable', () => {
-    // One entry per English string: findGlossaryCollisions needs >=2 Icelandic
-    // values per key, so it can never find one here. Sweeping it would be a
-    // test that passes because its subject is gone.
-    expect(isSweepable({ producer: RESOLVED, terms: [] })).toBe(false);
+  it('a resolved payload cannot carry a competition', () => {
+    // One entry per English string, so findGlossaryCollisions can never find
+    // >=2 Icelandic values for one key. ⚠️ This is true of COMPETITIONS ONLY —
+    // the same payload can still carry a comma-list, which is why the sweep
+    // itself no longer skips it. See sweepsCompetitions and the describe above.
+    expect(sweepsCompetitions({ producer: RESOLVED, terms: [] })).toBe(false);
   });
 
-  it('still sweeps a merge-glossary payload', () => {
-    expect(isSweepable({ terms: [{ english: 'atom', category: 'x', chapter: 1 }] })).toBe(true);
+  it('a resolved payload CAN carry a comma-list, measured on the real corpus', () => {
+    // Not hypothetical: production holds 160 `lang='is'` terms containing a
+    // comma, all at rank 1, and liffraedi-2e resolves `missing` to exactly this
+    // three-item list today. findGlossaryCollisions finds it in a payload the
+    // old predicate would have skipped entirely.
+    const resolved = [
+      {
+        english: 'missing',
+        icelandic: 'skemmdar, horfnar og viðgerðar tennur',
+        status: 'approved',
+        domain: 'biology',
+      },
+    ];
+    const c = findGlossaryCollisions(resolved, { approvedOnly: true });
+    expect(c.competitions).toHaveLength(0);
+    expect(c.commaLists).toHaveLength(1);
   });
 
-  it('still sweeps an old-export payload', () => {
-    expect(isSweepable({ producer: 'export-terminology', terms: [{ subjects: [] }] })).toBe(true);
+  it('still sweeps a merge-glossary payload for competitions', () => {
+    expect(sweepsCompetitions({ terms: [{ english: 'atom', category: 'x', chapter: 1 }] })).toBe(
+      true
+    );
+  });
+
+  it('still sweeps an old-export payload for competitions', () => {
+    expect(sweepsCompetitions({ producer: 'export-terminology', terms: [{ subjects: [] }] })).toBe(
+      true
+    );
   });
 });
 

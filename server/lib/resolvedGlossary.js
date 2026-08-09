@@ -35,12 +35,25 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
     // 'unregistered' -> add the book via the admin route.
     // 'no-priorities' -> the book is registered but absent from migration 046's
     // frozen map, which needs a migration.
-    throw new Error(
+    const err = new Error(
       `${bookSlug}: cannot build a resolved glossary — the book is unscoped (${scope.unscoped}). ` +
         (scope.unscoped === 'unregistered'
           ? 'It has no registered_books row; register it through the admin route.'
           : 'It is registered but has no book_domain_priority rows; that needs a migration.')
     );
+    // ⚠️ TAGGED, like the empty census below, so the caller records a REFUSAL
+    // rather than an error. Review B, 2026-08-09: `refused-no-mapping` tells an
+    // operator to add a book_subject_mapping row, and doing so moves the book
+    // past that gate onto THIS throw — which, counted as an error, withheld the
+    // heartbeat and degraded checks.glossary_export for the whole corpus until
+    // a migration shipped. The remedy the system printed made things worse.
+    //
+    // `unscoped` rides along because the two faults have DIFFERENT remedies
+    // (admin route vs migration) and collapsing them is what B1's D3 exists to
+    // prevent.
+    err.code = 'UNSCOPED';
+    err.unscoped = scope.unscoped;
+    throw err;
   }
 
   const source = census || collectSourceEnglish(bookSlug, booksDir ? { booksDir } : undefined);
@@ -50,10 +63,19 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
   // a valid-shaped 0-term payload and read like a legitimate export. That is
   // B0's zero-yield lesson; an unextracted book is an environment fact.
   if (!source.strings.length) {
-    throw new Error(
+    const err = new Error(
       `${bookSlug}: census is empty (${source.filesRead} .md file(s) under ${source.root}) — ` +
         `refusing to build a glossary from no source text. Extract the book first.`
     );
+    // ⚠️ TAGGED so the CALLER can tell this apart from a genuine failure. An
+    // un-extracted book is an environment fact about one book, not a broken
+    // exporter — and the caller counts a plain throw as an error, which returns
+    // 1 before the heartbeat is written, making checks.glossary_export not-ok
+    // for EVERY book. Classifying it as `refused-empty-census` there keeps the
+    // corpus-wide signal intact while still clocking this book under D6.
+    // (Whole-branch adversarial review, 2026-08-09.)
+    err.code = 'EMPTY_CENSUS';
+    throw err;
   }
 
   const stats = {
