@@ -57,8 +57,8 @@ beforeEach(seed);
 describe('buildResolvedGlossary', () => {
   it('emits the head form by default, with reason', () => {
     concept('chemistry', 'atom', ['frumeind', 'atóm']);
-    const t = build(['atom']).terms[0];
-    expect(t).toMatchObject({
+    const out = build(['atom']);
+    expect(out.terms[0]).toMatchObject({
       english: 'atom',
       icelandic: 'frumeind',
       status: 'approved',
@@ -66,6 +66,7 @@ describe('buildResolvedGlossary', () => {
       domain: 'chemistry',
       position: 1,
     });
+    expect(out.stats).toMatchObject({ total: 1, approved: 1, censusStrings: 1 });
   });
 
   it("carries the concept's other Icelandic terms as alternatives, in rank order", () => {
@@ -94,6 +95,28 @@ describe('buildResolvedGlossary', () => {
       icelandic: 'atóm',
       reason: 'book-preference',
     });
+  });
+
+  it('resolves the BOOK-DEFAULT (chapter 0) preference, never a chapter-level one — pins the `0` in buildScope(db, bookSlug, 0)', () => {
+    const cid = concept('chemistry', 'bond', ['tengi', 'efnatengi', 'samtengi']);
+    const bookTermId = db
+      .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND text = 'efnatengi'")
+      .get(cid).id;
+    const chapterTermId = db
+      .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND text = 'samtengi'")
+      .get(cid).id;
+    // Book default (chapter 0) picks 'efnatengi'; a chapter-1 override for the
+    // SAME concept picks a different term. buildResolvedGlossary must ignore
+    // the chapter-1 row entirely — glossary-unified.json is one file per book.
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 0, ?, ?)'
+    ).run(cid, bookTermId);
+    db.prepare(
+      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 1, ?, ?)'
+    ).run(cid, chapterTermId);
+    const t = build(['bond']).terms[0];
+    expect(t.icelandic).toBe('efnatengi');
+    expect(t.reason).toBe('book-preference');
   });
 
   it('applies the subject FALLBACK — this is what unblocks chemistry', () => {
@@ -129,7 +152,9 @@ describe('buildResolvedGlossary', () => {
   it('sorts terms by english', () => {
     concept('chemistry', 'zinc', ['sink']);
     concept('chemistry', 'acid', ['sýra']);
-    expect(build(['zinc', 'acid']).terms.map((t) => t.english)).toEqual(['acid', 'zinc']);
+    const out = build(['zinc', 'acid']);
+    expect(out.terms.map((t) => t.english)).toEqual(['acid', 'zinc']);
+    expect(out.stats).toMatchObject({ total: 2, approved: 2, censusStrings: 2 });
   });
 
   it('stamps the resolved producer', () => {
