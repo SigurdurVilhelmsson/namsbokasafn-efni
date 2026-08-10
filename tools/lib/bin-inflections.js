@@ -15,8 +15,8 @@
  * https://bin.arnastofnun.is — CC BY-SA 4.0. Forms are SELECTED and SUBSETTED
  * (the base form is removed), i.e. modified.
  */
-const fs = require('fs');
-const readline = require('readline');
+import fs from 'fs';
+import readline from 'readline';
 
 /**
  * Load SHsnid.csv into `lemma.toLowerCase() → Set<form>`.
@@ -57,4 +57,4 @@ async function loadBinData(csvPath) {
   return map;
 }
 
-module.exports = { loadBinData };
+export { loadBinData };

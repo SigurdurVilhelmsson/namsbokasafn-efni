@@ -2,10 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-const { loadBinData } = require('../lib/bin-inflections.cjs');
+import { loadBinData } from '../lib/bin-inflections.js';
 
 let dir;
 const write = (name, body) => {
