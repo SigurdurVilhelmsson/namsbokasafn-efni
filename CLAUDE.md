@@ -434,7 +434,7 @@ tool's `parseArgs` spec** (or its `--help`, which is generated from the same pla
 it from prose, from another tool, or from what the flag would sensibly be called. `--dry-run` is
 real on the CNXML/MT tools; most other "safety" flags you might reach for are not.
 
-**⚠️ DURABLE — SOME COMMITTED SOURCE AND DOC FILES CONTAIN RAW NUL BYTES, AND PLAIN `grep`
+**⚠️ DURABLE — COMMITTED SOURCE AND DOC FILES IN THIS REPO CONTAIN RAW NUL BYTES, AND PLAIN `grep`
 REPORTS *NOTHING* FOR STRINGS THEY DEMONSTRABLY CONTAIN. Use `grep -a` for every census.**
 GNU grep classifies a file holding a NUL as binary and suppresses its matches; with `-n` it
 prints no lines and **exits 1** — indistinguishable from "not present". Measured 2026-08-10:
@@ -451,8 +451,8 @@ grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
 ```
 ⚠️ **`-P` is load-bearing and `$'\0'` is NOT a substitute** — as a grep pattern it is the
 **empty string**, which matches *every* file and returns a clean, plausible, wholly wrong
-list. Verified: the `-P` form agrees exactly with an independent byte-count census in Python
-(6 source/doc files, 2026-08-10); the `$'\0'` form named files that contain no NUL at all.
+list. Verified 2026-08-10: the `-P` form agrees exactly with an independent byte-count census
+in Python; the `$'\0'` form named files that contain no NUL at all.
 `books/` is excluded on purpose — thousands of images legitimately hold NULs and would bury
 the six that matter.
 Sources are legitimate (a NUL separator in a hash input is deliberate and load-bearing at

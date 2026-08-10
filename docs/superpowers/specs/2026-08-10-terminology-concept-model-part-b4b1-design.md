@@ -94,7 +94,11 @@ So after the cut-over, an editorial write goes into a table nothing reads. Two b
 | **D1-c** | **B4b-1 ships with a read-side bridge**: when a concept lookup misses, fall back to the old tables for that English string. | Preserves editor writes with no new write path. | A second live read path — exactly the "two sources of truth" shape this project keeps paying for. **Not recommended.** |
 | **D1-d** | **B4b-1 ships behind an env flag**, defaulting to the old path, flipped per-book after B4c. | Reversible; measurable in prod. | A prod escape hatch, which the standing feedback rule *robustness over expedience* argues against. |
 
-**Recommendation: D1-a, with the loudness made real** — a startup warning and a `/api/health` line while no concept writer exists. It keeps the ruled order, it is honest about the gap, and it makes the gap visible to the one person who can schedule B4c. **This is the lead's call, not the implementer's.**
+**Recommendation: D1-a — but its cost must be stated honestly, because the obvious mitigation does not reach the people who lose the work.**
+
+The natural "make it loud" is a startup warning plus an `/api/health` line. **⚠️ That is loud to the OPERATOR and silent to the EDITOR.** CLAUDE.md § Server Features records that **nothing polls `/api/health`** — the routine surface is what `./scripts/deploy.sh` prints. So the warning reaches whoever runs a deploy, while the editors whose terminology decisions stop being representable are told **nothing at all**, and the standing feedback rule *robustness over expedience* reads on that just as it reads on D1-d's flag.
+
+**So the honest framing for the lead is:** between B4b-1 and B4c the terminology editor is a **write-only UI**, and under D1-a *nobody using it will be told*. If that is unacceptable, the mitigation has to be an editor-facing one — which is a UI change, which is B4c, which is D1-b. **The choice is therefore genuinely between "accept a silent window" and "re-order the slices", and no amount of operator-side logging collapses it.** **This is the lead's call, not the implementer's.**
 
 ### D1 has an unmeasured input, and it is cheap to get
 
@@ -130,6 +134,10 @@ So a B4b-1 that lands **before** the population op moves the matcher from *66.39
 
 **Therefore the 71.18% BÍN miss rate is an ACCEPTANCE STATEMENT about an already-exercised code path, not a design problem.** No machinery.
 
+**⚠️ BUT BE PRECISE ABOUT WHAT "ALREADY EXERCISED" COVERS — §5 AND §7.1 ARE THE SAME FACT READ IN OPPOSITE DIRECTIONS, AND ONLY ONE READING IS SAFE.** The base-form path's coverage comes from the **Unicode word-boundary block specifically**, and from nothing else. The stripped-fixture experiment in §7.1 proves that the base-form path *runs*; it proves **nothing whatever** about the paradigm path, and in fact demonstrates the opposite — **no committed test anywhere discriminates paradigm-backed matching from base-form matching.** Strip every inflection and the suite is still green.
+
+So the honest statement is two-part: **the degradation needs no new code, and the thing it degrades *from* is unpinned.** B4b-1 must not inherit that. **§7 gate 7** closes it.
+
 ⚠️ **Three qualifications, all measured, none of which change that conclusion:**
 
 1. **`resolve()` cannot supply inflections.** **[measured-here]** its Icelandic-term query selects only `id`, `text`, `rank`. Reaching `concept_term.inflections` at all **is new code in B4b-1** — a column added to one `SELECT`, but it must be written deliberately, and it must not be routed through `resolve()`'s pure path (§6.3).
@@ -162,6 +170,20 @@ Two hard constraints:
 - **`concept_term.id` preserves the 1:1 id ↔ English-string contract** that `termAutomaton` documents and relies on. **`concept.id` breaks it silently in three places** — one concept carries many English strings. **[measured-here]**
 
 **D4: the automaton key and the emitted `headwordId` are `concept_term.id` of the `lang='en'` row.** Numeric, 1:1 with the keyword, no client change.
+
+**⚠️ D4.2 — ONE ENTRY PER DISTINCT ENGLISH STRING, NOT ONE PER ROW. The homograph choice belongs to `resolve()`, not to the span tiler.**
+
+**[measured-here], by reading the two functions rather than assuming:** `buildTermAutomaton` accumulates `byKeyword: Map<string, number[]>` and `findFirstOccurrences` iterates `for (const headwordId of automaton.byKeyword.get(hit.keyword))` — so several ids sharing one keyword do **not** silently collapse. Each gets its own first-occurrence entry. Good.
+
+**But that is where the safety ends**, and §7.5 item 5 says the population is a fifth of the corpus: **11,553 of 61,042 EN strings (18.9%, GLOBAL rate) are carried by more than one concept**. Feed one id per *row* into the automaton and two ids match **the same span**; `findTermsInSegments`'s `consumed` tiler then drops the loser, because identical spans overlap. **Which one survives is decided by the order `terms` happens to be in** — a database row order deciding an editorial answer, which is §C18's defect verbatim.
+
+**Resolving a homograph is precisely what `resolve()` exists to do** (domain priority → book preference → head form). So:
+
+- the automaton is built over **distinct EN strings**, one entry each;
+- the id carried is the **lowest `concept_term.id` for that string**, purely as a stable numeric handle;
+- the winning concept is chosen by `resolve(scope, english)`, **after** the match, not by the tiler.
+
+This also preserves the module's own stated contract — *"one english per headword ⇒ one keyword ⇒ constant length ⇒ begins ascending"* — which is what makes the `<` vs `<=` reduction in `findFirstOccurrences` unambiguous. **⚠️ `concept.id` would break that premise directly** (one concept, many English strings ⇒ one id, many keywords ⇒ tied begins become reachable and the two operators diverge). That is a third and sharper reason to reject `concept.id`, independent of the 1:1 argument above.
 
 ### 6.2 One thing that must change, and it is outside `npm test`
 
@@ -249,6 +271,8 @@ Built on `scratchCorpus.buildCorpusDb()` (**[measured-here]** 3.0–4.8 s record
 | **4** | **the three folds (D4.1) agree across all 61,042 EN strings** | a planted `Ångström`/`ångström` pair, which must be **detected** |
 | **5** | **the fingerprint tracks the automaton's source** — mutate a `concept_term` EN row in a **cold child process** and require the automaton to change | a mutation to a table the automaton does not read, which must **not** invalidate |
 | **6** | **`[vantar]` never reaches a match or an issue** (D7) | the 201 known concepts, which must all be filtered |
+| **7** | 🔴 **the paradigm path is actually reached** — a segment whose Icelandic uses a **declined** form that base-form matching must **MISS** and a stored paradigm must **CATCH** | the same segment with the paradigm removed, which must report `missing`. **This is the discrimination §7.1 proves the whole committed suite lacks.** |
+| **8** | **one automaton entry per distinct EN string** (D4.2), and a homograph's winner comes from `resolve()`, not from arrival order | one of the 11,553 multi-concept strings, re-run with the `terms` order **reversed** — the emitted winner must not move |
 
 ⚠️ **Gate 5 must use cold child processes via `SESSIONS_DB_PATH`** — b4b0's recorded hazard (b): an in-process re-call against a warm cache re-reads nothing and byte-identity holds whatever the run did. **[measured-here]** `SESSIONS_DB_PATH` works today with zero code change, because `resolveDbPath()` reads it at call time; `verify-b4b0-gates.js` already uses exactly that route and its comment says why.
 
