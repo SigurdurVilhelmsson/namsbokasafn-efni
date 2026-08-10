@@ -2,7 +2,8 @@
  * THE INERTNESS PROOF for §C36 B4b-0a.
  *
  * The golden was captured from the UNMODIFIED Python before this port existed
- * (see tools/capture-bin-golden.py in the capture commit). It stores a SHA-256
+ * (see tools/capture-bin-golden.py at commit 8072a58f — THE PRODUCER IS DELETED,
+ * so that sha is the only surviving copy of it). It stores a SHA-256
  * per word, never the forms — the values are BÍN-derived CC BY-SA and this repo
  * is public.
  *
@@ -88,7 +89,7 @@ describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
           `  expected ${CSV_SHA256}\n  actual   ${actual}\n` +
           `This is a DATA SWAP, not a port regression — do not "fix" the code to match. ` +
           `Either restore the original CSV, or re-capture the golden from the Python at the ` +
-          `capture commit (git log for tools/capture-bin-golden.py) and record the new checksum here.`
+          `capture commit 8072a58f (git show 8072a58f -- tools/capture-bin-golden.py) and record the new checksum here.`
       );
     }
   }, 120000);
