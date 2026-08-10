@@ -378,3 +378,42 @@ and masking is not "mask everything", because `[[i:]]` wraps real prose the chec
 to judge agreement.
 
 **Cost is resolved. Marker safety is not.**
+
+---
+
+## ⚠️ AMENDMENT — 2026-08-10: the route-bound clause is NOT in SÁM's terms
+
+*Appended, not edited in place (append-only record). The body above stands as written on 2026-08-06; this is the correction.*
+
+**The section headed *"🔴 The clause that matters most, and that nothing else had: the grant is route-bound"* quotes, as *"Verbatim from SÁM's terms"*, a sentence that is not in them.** The lead supplied the full text of *Skilmálar um notkun gagna úr Beygingarlýsingu íslensks nútímamáls* on 2026-08-10. Checked clause by clause:
+
+| claim in the body above | in the terms |
+|---|---|
+| máltæknigögn distributed under **CC BY-SA 4.0** | ✅ |
+| SÁM holds the IP rights | ✅ |
+| no warranty / no liability | ✅ (not previously recorded) |
+| credit required **in products built on BÍN data**, exact string, cites §3(a)(1)(A) | ✅ verbatim |
+| modifications must be declared, cites §3(a)(1)(B) | ✅ verbatim |
+| *"Notast skal við vefhlekkinn https://bin.arnastofnun.is"* | ✅ verbatim |
+| 🔴 *"leyfisskilmálar gilda **aðeins** um gögn sem sótt eru á vefsetrið …/gogn/mimisbrunnur/. Öll afritun BÍN-vefsíðunnar er bönnuð án leyfis"* | ❌ **ABSENT** |
+| SÁM direct paradigm-publishers to **BÍN-kjarninn** and its API | ❌ **ABSENT** |
+
+**The terms are plain CC BY-SA 4.0 plus two obligations — credit, and declare modifications — with a warranty disclaimer and a link requirement. There is no acquisition-route restriction.**
+
+### What this retracts
+
+- 🔴 **The prohibition on `django/api/nidurhal/?file=…` is WITHDRAWN.** Its stated basis was the route-bound clause. **Measured 2026-08-10:** `HEAD` returns `200`, `Content-Disposition: attachment`, `Content-Length: 35655687` for `KRISTINsnid.csv.zip`, with **no acceptance step of any kind** — no checkbox, no form, no interstitial. `KRISTINsnid.csv.zip` was obtained at that exact byte count under §C36 B4b-0.
+- **The "gated download is a click-through the downloader accepts, which binds regardless of Share" reasoning falls with it** — there is no gate. This also removes the asymmetry the body draws between the direct download and the PyPI route: if acquisition route does not bind, the **open question about whether the grant travels through PyPI loses its premise** and should be re-reasoned, not inherited.
+- Any downstream text making acquisition an operator-only step — including §4 of [`2026-08-10-terminology-concept-model-part-b4b0-design.md`](../superpowers/specs/2026-08-10-terminology-concept-model-part-b4b0-design.md), which did — is corrected there.
+
+### What is UNAFFECTED, and it is the part that binds
+
+- 🔴 **ShareAlike, and therefore the export hazard, is untouched and is now the strongest surviving constraint.** BÍN-derived forms must not enter `glossary-unified.json`: that file is committed, world-readable, and published under per-book **CC BY**, while BÍN is **CC BY-SA**. Neither existing gate would catch it — the producer gate fingerprints term *shape*, the shrink guard measures *size*, and a new key on a growing payload trips neither. ⚠️ **The body flags this for `exportBookGlossary()` only; §C36 B3 shipped a SECOND exporter (`buildResolvedGlossary`) after this record was written, and the hazard applies there too.**
+- **Credit and modification-declaration obligations stand**, both confirmed verbatim. Storing forms in the gitignored `sessions.db` is fine; `tools/data/` is gitignored at `.gitignore:56`. **No BÍN bytes may be committed, test fixtures included.**
+- **The data-quality findings are untouched** — they were never licence-dependent.
+
+### The lesson, which is this project's own rule applied to its own decision record
+
+A 🔴 prohibition, a spec section, and an operator hand-off all rested on **one sentence nobody re-checked against the source**. CLAUDE.md § *One source of truth* already says a frozen document is *evidence, never status*, and its E-2 bullet already says to **re-derive an enumeration rather than inherit it**. Both applied here and neither was performed — the quote was carried forward three times because it was marked verbatim. **"Verbatim" is a claim about a past reading, not a measurement.** → [[engineering-lessons]]
+
+⚠️ **This amendment does not prove the sentence exists nowhere on bin.arnastofnun.is** — only that it is absent from the terms page the record cites and that no acceptance step gates the download. `bin.arnastofnun.is` is a client-rendered SPA returning an identical ~3.6 KB shell for every path, so no further server-side check is possible from here. If it is later found on the download page, that is a *route note*, not a licence term, and the CC BY-SA grant on the data still governs.
