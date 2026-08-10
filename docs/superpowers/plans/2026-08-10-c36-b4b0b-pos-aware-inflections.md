@@ -573,9 +573,11 @@ const { loadBinEntries, formatInflectionsJson } = require('../lib/binInflections
 Run: `npx vitest run server/__tests__/binInflectionsGolden.test.js`
 Expected: PASS on a box holding `tools/data/SHsnid.csv`; **SKIP** where it is absent. A skip is not a pass — say which one you got.
 
-- [ ] **Step 3: Prove the gate can still fail**
+- [ ] **Step 3: Record the falsifiability evidence — do NOT sabotage the source**
 
-A gate that cannot fail is not a gate, and this one just changed subject. Temporarily change `formatInflectionsJson`'s separator from `', '` to `','`, re-run, and confirm mass mismatches. Then revert and confirm `git diff server/lib/binInflections.js` is **empty** — a break-and-revert proof leaks if the revert is partial, which is the specific hazard B4b-0a recorded.
+The union-equivalence claim was **empirically verified before this plan was written**: a standalone pos-aware prototype reproduced all 23,995 hashes with 0 mismatches, 7,285 hits / 16,710 misses. That measurement is what makes this a real check, and it needed no source mutation.
+
+⚠️ **Do not add a break-and-revert proof here.** B4b-0a's own record names the hazard — a partial revert leaks the sabotage into the branch — and `formatInflectionsJson` is depended on by passing tests in two other files. The falsification pressure this test needs already exists in three independent places: the committed hashes came from a **different implementation in a different language**, the `hits`/`misses` controls reject an all-null run, and the `beforeAll` checksum rejects a swapped CSV. Note in the commit message which of these you observed.
 
 - [ ] **Step 4: Commit**
 
@@ -600,7 +602,9 @@ regression lands in. Observed failing via the separator, then reverted clean."
 
 **Interfaces:**
 - Consumes: nothing from Tasks 1–3 yet.
-- Produces: `parseArgs(argv)` (unchanged shape: `{db, binData, execute, limit, force, help}`) and `candidateSql({force, limit}) → string`, replacing `selectSql`.
+- Produces: `parseArgs(argv)` (shape `{db, binData, execute, limit, force, report, help}` — `--report <path>` is new, see Task 5) and `candidateSql({force}) → string`, replacing `selectSql`.
+
+⚠️ **`--limit` CHANGES UNIT AND LEAVES SQL.** In B4b-0a it was `LIMIT n` on the row query. Here that would **split a string's rows across the boundary** — the in-run bucket arithmetic would still balance, because it only counts the rows it fetched, while the *database* ends up with one row of `zsolo` populated and another not. That is not a tripwire failure; it is a silently inconsistent corpus, and no gate in this plan would see it. So `--limit N` now means **at most N distinct strings**, applied after grouping, and `candidateSql` emits no `LIMIT` clause at all. The candidate set is ~74k rows — trivial to fetch whole.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -608,6 +612,29 @@ In `server/__tests__/binInflectionsCli.test.js`, keep every existing `parseArgs`
 
 ```js
 const { parseArgs, candidateSql } = require('../scripts/fetch-bin-inflections');
+
+describe('parseArgs — the B4b-0b additions', () => {
+  it('accepts --report as a path', () => {
+    expect(parseArgs(['--report', '/tmp/r.json']).report).toBe('/tmp/r.json');
+  });
+
+  it('accepts --report=path too', () => {
+    expect(parseArgs(['--report=/tmp/r.json']).report).toBe('/tmp/r.json');
+  });
+
+  it('refuses --report with no value, like every other value flag', () => {
+    expect(() => parseArgs(['--report', '--execute'])).toThrow(/expects a value/i);
+  });
+
+  it('defaults report to null', () => {
+    expect(parseArgs([]).report).toBeNull();
+  });
+
+  // --limit's UNIT changed in B4b-0b; its parsing strictness must not.
+  it('still rejects a non-integer --limit', () => {
+    expect(() => parseArgs(['--limit', '3.7'])).toThrow(/--limit expects an integer/);
+  });
+});
 
 describe('candidateSql', () => {
   it('targets concept_term, not the old terminology tables', () => {
@@ -632,12 +659,11 @@ describe('candidateSql', () => {
     expect(candidateSql({ force: false, limit: 0 })).toMatch(/NOT LIKE '% %'/);
   });
 
-  it('emits no LIMIT clause when limit is 0', () => {
-    expect(candidateSql({ force: false, limit: 0 })).not.toMatch(/LIMIT/);
-  });
-
-  it('emits a LIMIT clause when limit is set', () => {
-    expect(candidateSql({ force: false, limit: 50 })).toMatch(/LIMIT 50/);
+  // ⚠️ --limit bounds STRINGS in main(), never rows in SQL. A row-level LIMIT
+  // splits a string's rows across the boundary and leaves the corpus half
+  // populated for that string, which the bucket tripwire cannot see.
+  it('never emits a LIMIT clause — the bound is applied per string in main()', () => {
+    expect(candidateSql({ force: false })).not.toMatch(/LIMIT/);
   });
 });
 ```
@@ -647,7 +673,23 @@ describe('candidateSql', () => {
 Run: `npx vitest run server/__tests__/binInflectionsCli.test.js`
 Expected: FAIL — `candidateSql is not a function`.
 
-- [ ] **Step 3: Implement `candidateSql`**
+- [ ] **Step 3: Implement `candidateSql` and add `--report` to `parseArgs`**
+
+In `parseArgs`, add `report: null` to the defaults object and `'--report'` to `VALUE_FLAGS`, then an `else if (a === '--report') out.report = v;` branch beside `--db`/`--bin-data`. Add the flag to `USAGE`:
+
+```
+  --report <path>    write the FULL rescue/refusal lists as JSON (stdout truncates
+                     at 50 each). ⚠️ Do not commit the file — it carries BÍN ids.
+```
+
+Also correct `USAGE`'s `--limit` line — its unit changed:
+
+```
+  --limit <n>        process at most n DISTINCT STRINGS (0 = all). Whole strings
+                     only, so a limited run never half-populates one. Smoke test:
+                     its yield ratios are not the corpus's.
+```
+
 
 Replace `selectSql` in `server/scripts/fetch-bin-inflections.js`:
 
@@ -661,10 +703,13 @@ Replace `selectSql` in `server/scripts/fetch-bin-inflections.js`:
  * STRING and its result is written to every row of that string. Every count this
  * script prints therefore has to say which unit it is in.
  *
- * ⚠️ --limit BOUNDS ROWS, NOT STRINGS, so a limited run may hold only part of a
- * string's rows. That is fine for a smoke run and wrong for a yield measurement.
+ * ⚠️ NO SQL `LIMIT`. `--limit` bounds distinct STRINGS and is applied in main()
+ * after grouping. A row-level LIMIT would split a string's rows across the
+ * boundary, populating some and not others — the in-run partition would still
+ * balance, because it counts only the rows it fetched, so the inconsistency
+ * would be invisible to every check here.
  */
-function candidateSql({ force, limit }) {
+function candidateSql({ force }) {
   const where = [
     "ct.lang = 'is'",
     force ? '1=1' : 'ct.inflections IS NULL',
@@ -870,8 +915,55 @@ describe('fetch-bin-inflections main()', () => {
 
   // B0's rule: a zero-yield run is REFUSED, not printed. The dev DB has no
   // concept model at all, so a bare run would otherwise report a clean 0.
-  it('REFUSES a run with no candidates rather than reporting a clean zero', async () => {
+  it('REFUSES a run with no candidates AND nothing populated', async () => {
     await expect(run()).rejects.toThrow(/no candidate/i);
+  });
+
+  // ⚠️ THE OTHER HALF OF THAT RULE, AND THE ONE THAT IS EASY TO GET WRONG.
+  // A fully-populated corpus also yields zero candidates — that is D5's no-op,
+  // not an empty database. alreadyPopulatedBefore is the discriminator. Without
+  // this test, gate 5 goes red on a correct implementation.
+  it('does NOT refuse when there are no candidates because everything is populated', async () => {
+    seedTerm(db, 'zsolo');
+    await run(['--execute']);
+    const rep = await run(['--execute']);
+    expect(rep.rows.written).toBe(0);
+    expect(rep.rows.alreadyPopulatedBefore).toBe(1);
+  });
+
+  // ⚠️ --limit takes WHOLE strings. The failure it prevents is a string with one
+  // row populated and another not — invisible to the bucket tripwire, which
+  // counts only the rows the run fetched.
+  it('--limit never half-populates a string', async () => {
+    seedTerm(db, 'zsolo', 'chemistry');
+    seedTerm(db, 'zsolo', 'biology');
+    seedTerm(db, 'zflat');
+    const rep = await run(['--execute', '--limit', '1']);
+    const populated = db
+      .prepare("SELECT COUNT(*) c FROM concept_term WHERE text='zsolo' AND inflections IS NOT NULL")
+      .get().c;
+    expect([0, 2]).toContain(populated); // all of the string's rows, or none
+    expect(rep.strings.total).toBe(1);
+    expect(rep.rows.total).toBe(populated === 2 ? 2 : 1);
+  });
+
+  it('--report writes the full lists to a file', async () => {
+    seedTerm(db, 'zafl');
+    seedTerm(db, 'zsolo');
+    const out = path.join(os.tmpdir(), `rep-${Math.random().toString(36).slice(2)}.json`);
+    await run(['--report', out]);
+    const j = JSON.parse(fs.readFileSync(out, 'utf-8'));
+    expect(j.refusals.find((r) => r.text === 'zafl').entries).toHaveLength(2);
+  });
+
+  // 🔴 §C41 / D6: the report may carry BÍN ids and word classes; it must never
+  // carry forms. A committed paradigm is the licence breach neither export gate
+  // would catch.
+  it('the report carries no BÍN forms', async () => {
+    seedTerm(db, 'zhverfa');
+    const out = path.join(os.tmpdir(), `rep-${Math.random().toString(36).slice(2)}.json`);
+    await run(['--report', out]);
+    expect(fs.readFileSync(out, 'utf-8')).not.toContain('zhverfu');
   });
 });
 ```
@@ -930,14 +1022,40 @@ async function main(argv) {
   // a database with no concept model — so the commonest mistake produces zero
   // candidates, and a printed "0 found" is indistinguishable from "BÍN lacks
   // these words". Refusing turns that from a misleading success into a diagnosis.
+  //
+  // ⚠️ BUT "NOTHING TO DO" AND "NOTHING THERE" ARE DIFFERENT FACTS, AND D5 IS
+  // BUILT ON TELLING THEM APART. A second --execute run over a fully-populated
+  // corpus ALSO returns zero candidate rows — that is the idempotent no-op the
+  // gate exists to demonstrate, not an error. `alreadyPopulatedBefore` is the
+  // discriminator, and it is already measured above.
   if (rows.length === 0) {
-    db.close();
-    throw new Error(
-      `no candidate rows in ${args.db}: concept_term has no single-word lang='is' row with ` +
-        `inflections IS NULL. ${alreadyPopulatedBefore} row(s) are already populated. ` +
-        'If this is a dev box, the concept model is probably empty — rebuild a scratch ' +
-        'corpus with run-concept-import.js rather than pointing this at sessions.db.'
+    if (alreadyPopulatedBefore === 0) {
+      db.close();
+      throw new Error(
+        `no candidate rows in ${args.db}, and NO row is populated either: concept_term has no ` +
+          "single-word lang='is' row at all. If this is a dev box, the concept model is empty — " +
+          'rebuild a scratch corpus with run-concept-import.js rather than pointing this at ' +
+          'sessions.db.'
+      );
+    }
+    console.log(
+      `\nNo candidates: all ${alreadyPopulatedBefore} populated row(s) already have inflections. ` +
+        'This is the D5 no-op, not an empty database — the two are distinguished by that count.'
     );
+    db.close();
+    return {
+      strings: {
+        total: 0, unambiguous: 0, rescuedNominal: 0, refusedAmbiguous: 0,
+        refusedNoNoun: 0, baseFormOnly: 0, notInBin: 0,
+      },
+      rows: {
+        total: 0, written: 0, refused: 0, baseFormOnly: 0, notInBin: 0,
+        multiWordSkipped, alreadyPopulatedBefore,
+        alreadyPopulatedAfter: alreadyPopulatedBefore,
+      },
+      refusals: [],
+      rescues: [],
+    };
   }
 
   // ONE lookup per distinct lowercased STRING; the write fans out to its rows.
@@ -946,6 +1064,24 @@ async function main(argv) {
     const key = r.text.toLowerCase().trim();
     if (!byString.has(key)) byString.set(key, []);
     byString.get(key).push(r);
+  }
+
+  // ⚠️ --limit BOUNDS STRINGS, AND IT TAKES WHOLE STRINGS. Dropping the tail of
+  // the map keeps every row of every string it keeps, so a limited run leaves no
+  // string half-populated. `rowStats.total` is then recomputed from the kept
+  // groups — otherwise the row partition is measured against a total that
+  // includes rows the run never considered, and the tripwire fires spuriously.
+  let candidateRowCount = rows.length;
+  if (args.limit && byString.size > args.limit) {
+    const keep = [...byString.keys()].slice(0, args.limit);
+    const limited = new Map(keep.map((k) => [k, byString.get(k)]));
+    byString.clear();
+    for (const [k, v] of limited) byString.set(k, v);
+    candidateRowCount = [...byString.values()].reduce((a, g) => a + g.length, 0);
+    console.log(
+      `  --limit ${args.limit}: ${byString.size} string(s) / ${candidateRowCount} row(s) of ` +
+        `${rows.length}. ⚠️ A LIMITED RUN IS A SMOKE TEST — its yield ratios are not the corpus's.`
+    );
   }
 
   console.log(`Loading BÍN data from ${args.binData}...`);
@@ -964,7 +1100,7 @@ async function main(argv) {
     notInBin: 0,
   };
   const rowStats = {
-    total: rows.length,
+    total: candidateRowCount, // ⚠️ the KEPT rows, not rows.length — see --limit above
     written: 0,
     refused: 0,
     baseFormOnly: 0,
@@ -1077,14 +1213,32 @@ async function main(argv) {
           r.discarded.map((d) => `${d.wordClass}#${d.binId}`).join(' ')
       );
     }
-    if (rescues.length > 50) console.log(`  … ${rescues.length - 50} more (full list in the return value)`);
+    if (rescues.length > 50) console.log(`  … ${rescues.length - 50} more — pass --report to get them all`);
   }
   if (refusals.length) {
     console.log(`\n--- D4 refusals (${refusals.length}) ---`);
     for (const r of refusals.slice(0, 50)) {
       console.log(`  ${r.text}: ${r.entries.map((e) => `${e.wordClass}#${e.binId}`).join(' ')}`);
     }
-    if (refusals.length > 50) console.log(`  … ${refusals.length - 50} more (full list in the return value)`);
+    if (refusals.length > 50) console.log(`  … ${refusals.length - 50} more — pass --report to get them all`);
+  }
+
+  // ⚠️ THE TRUNCATION IS WHY --report EXISTS. A real run produces ~906 refusals
+  // and ~403 rescues; stdout shows 50 of each. D4.2 is a deliberate exception to
+  // the never-guess rule and is defensible ONLY because its discards are
+  // discoverable after the fact — a promise that "the full list is in the return
+  // value" is empty when the caller is a shell. --report is how an operator
+  // actually gets it.
+  //
+  // ⚠️ NEVER COMMIT THIS FILE. It carries BÍN ids and word classes; it carries no
+  // paradigms, and it must not start to (§C41: BÍN is CC BY-SA, this repo public).
+  if (args.report) {
+    fs.writeFileSync(
+      args.report,
+      JSON.stringify({ strings, rows: rowStats, rescues, refusals }, null, 2),
+      'utf-8'
+    );
+    console.log(`\n  full rescue/refusal lists → ${args.report} (do NOT commit: BÍN-derived ids)`);
   }
 
   db.close();
@@ -1222,14 +1376,33 @@ gate 2  THE CONTROL, and it is what makes gate 1 mean anything: a run that
         strings.unambiguous > 0, and pick one unambiguous term and show its
         paradigm is non-empty.
 
-gate 3  INERTNESS. Seed the C24 fixture (server/__tests__/fixtures/c24-terms.json,
-        c24-segments.json) into the OLD terminology tables the way
-        findTermsGolden.test.js's seedFixture does, capture
-        findTermsInSegments(segments, 'efnafraedi-2e'), run the population, and
-        capture again. The two must be deeply equal.
-        ⚠️ ASSERT THE CAPTURE IS NON-EMPTY FIRST — matches > 0 and issues > 0.
-        Without that, an unseeded database gives two identical empty results and
-        the gate passes for the wrong reason.
+gate 3  INERTNESS — ⚠️ THE GATE WITH THREE INDEPENDENT WAYS TO PASS FOR THE
+        WRONG REASON. Read all three before writing it; each was measured, not
+        guessed.
+
+        (a) TWO DATABASES. The obvious shape — seed the old tables into
+        createTestDb()'s in-memory DB and populate concept_term in the scratch
+        corpus DB — compares a matcher reading database A against a write to
+        database B. It cannot fail. Use ONE database: the scratch corpus DB is
+        built by the real migrations, so it already has 032's terminology tables
+        (empty) alongside 045's concept tables. Seed the C24 fixture into ITS old
+        tables and populate ITS concept_term.
+
+        (b) A WARM AUTOMATON CACHE. terminologyService._automatonCache
+        invalidates on an FNV-1a fingerprint over terminology_headwords (id,
+        english) — which B4b-0b never touches. So an in-process second call
+        returns the CACHED automaton without re-reading anything, and
+        "byte-identical" holds trivially. Take both captures in CHILD PROCESSES,
+        which start cold. Use runScript()'s spawnSync shape, with
+        SESSIONS_DB_PATH=<scratch> in the environment — terminologyService
+        resolves DB_PATH via resolveDbPath() at module load, so the child needs
+        no injection at all and exercises the production path.
+
+        (c) AN EMPTY CAPTURE. Assert the BEFORE capture is non-empty — matches >
+        0 AND issues > 0, the same control findTermsGolden.test.js's "the golden
+        is not vacuous" test uses — before comparing anything.
+
+        Then: capture → run the population with --execute → capture → deep-equal.
 
 gate 4  🔴 THE LICENCE CONTROL (D6). Build the resolved glossary payload for
         efnafraedi-2e before and after the population and assert NO term object
@@ -1247,9 +1420,26 @@ gate 5  D5 idempotency. Re-run with --execute; assert rows.written === 0 and tha
 Run: `node server/scripts/verify-b4b0-gates.js`
 Expected: every gate PASS, exit 0. Record the wall time and the measured bucket table.
 
-- [ ] **Step 3: Prove at least one gate can fail**
+- [ ] **Step 3: Prove the gates can fail — at the DATA level, with no source mutation**
 
-Temporarily invert `chooseEntry`'s rescue condition to `nouns.length >= 1` (so it picks a noun even when several exist) and re-run. Gate 1 must go red on `afl`. Revert, and confirm `git diff server/lib/binInflections.js` is **empty** before continuing.
+⚠️ **Do not sabotage `chooseEntry`.** A break-and-revert proof leaks if the revert is partial (B4b-0a's recorded hazard), and here it would also be measuring the wrong thing: what needs proving is that **the gate detects the corpus state it exists to catch**, not that a broken function breaks.
+
+Add a `--self-test` mode to the gate script that, on a **throwaway copy of the scratch DB**, plants the exact defective states and asserts each gate goes red:
+
+```
+plant  UPDATE concept_term SET inflections = '["<any form>"]' WHERE text = 'afl'
+       → gate 1 must FAIL: an ambiguous string was written.
+
+plant  a paradigm for `hverfa` that CONTAINS 'horfinn'
+       → gate 1b must FAIL: that is precisely the contamination D4.2 rescues from,
+         and 1b asserts by identity rather than by count for this reason.
+
+plant  UPDATE concept_term SET inflections = NULL   (everything)
+       → gate 2 must FAIL: the control catches a run that refused everything,
+         which would otherwise let gate 1 pass perfectly.
+```
+
+Record which gates you observed failing. A gate never seen red is an untested assertion.
 
 - [ ] **Step 4: Commit**
 
@@ -1290,7 +1480,7 @@ In `docs/plans/2026-07-21-post-item17-followup-campaign.md`, under §C36's B4b b
 
 The new finding to log (measured this session, out of B4b-0b's scope):
 
-> **🆕 §C43 (NEW, P1, 2026-08-10) — `resolve()` RETURNS THE PLACEHOLDER STRING `[vantar]` AS A WINNING TRANSLATION, WITH NO INTEGRITY FAULT.** 201 concepts hold `[vantar]` ("missing") as their Icelandic term, and for all 201 it is the **only** Icelandic term, so it is the head form. Measured on the rebuilt corpus: `resolve(scope,'abembryonic pole')` returns `{text:'[vantar]', reason:'head-form', integrity:[]}` — no existing fault code sees it. **Not currently in any committed artifact**, because every book's `glossary-unified.json` still carries the merge-glossary fingerprint and the producer gate refuses the resolved exporter; **it becomes reader- and MT-visible the moment a book is `--adopt`ed.** So it is a **blocker for the first adopt**, not for B4b-0b. ⚠️ It also shows the integrity codes test *structure* (ties, scope, missing terms) and not *content*: a well-formed term that is not a word passes every one — the same shape as [[concept-priority-overrules-consensus]], where a wrong-but-well-formed translation is invisible to every mechanical gate.
+> **🆕 §C43 (NEW, P1, 2026-08-10) — `resolve()` RETURNS THE PLACEHOLDER STRING `[vantar]` AS A WINNING TRANSLATION, WITH NO INTEGRITY FAULT.** 201 concepts hold `[vantar]` ("missing") as their Icelandic term, and for all 201 it is the **only** Icelandic term, so it is the head form. Measured on the rebuilt corpus: `resolve(scope,'abembryonic pole')` returns `{text:'[vantar]', reason:'head-form', integrity:[]}` — no existing fault code sees it. **Measured: no committed artifact carries it** — `git grep '\[vantar\]' -- 'books/*'` returns nothing, and all three committed `glossary-unified.json` files carry the merge-glossary fingerprint (no `producer` stamp). ⚠️ **Why they are not being replaced is NOT re-measured here** — the register's 2026-08-05 §C14 ③ entry records the resolved exporter as refused for all in-loop books, and that is a **five-day-old record cited as the reason, not a measurement of today's gate.** §C21's own history is a chain of "this state was gated" claims falsified one at a time, so treat the absence as the measured fact and the explanation as inference. Either way **it becomes reader- and MT-visible the moment a book is `--adopt`ed.** So it is a **blocker for the first adopt**, not for B4b-0b. ⚠️ It also shows the integrity codes test *structure* (ties, scope, missing terms) and not *content*: a well-formed term that is not a word passes every one — the same shape as [[concept-priority-overrules-consensus]], where a wrong-but-well-formed translation is invisible to every mechanical gate.
 
 - [ ] **Step 3: Commit**
 
