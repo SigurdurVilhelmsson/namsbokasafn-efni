@@ -1866,6 +1866,27 @@ describe('findTermsInSegments() — concept model (B4b-1)', () => {
     expect(r.s1.matches[0]).toMatchObject({ english: 'eigenvalue', isFallback: true });
   });
 
+  // Fix round 1, item 1d — an unregistered book (buildScope's {unscoped:
+  // 'unregistered'}) matches NOTHING: fail-closed, per the ruling that
+  // claiming everything is in-scope with no domain priorities to rank against
+  // would be a lie. The POSITIVE CONTROL — the identical segment against a
+  // REGISTERED book — is in this same test, so it cannot pass against a
+  // matcher that emits zero matches for every input.
+  it('an unregistered book matches nothing; the SAME term matches a registered book', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const seg = [{ segmentId: 's1', enContent: 'An atom is small.', isContent: '' }];
+
+    const unregistered = terminologyService.findTermsInSegments(seg, 'not-a-real-book-slug');
+    expect(unregistered.s1.matches).toEqual([]);
+
+    // Positive control: the matcher is not broken outright.
+    const registered = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e');
+    expect(registered.s1.matches).toHaveLength(1);
+    expect(registered.s1.matches[0].english).toBe('atom');
+  });
+
   // D7 / §C43.
   it('never emits a match whose winner is the [vantar] placeholder', () => {
     const c = addConceptIn(cdb, 'chemistry');

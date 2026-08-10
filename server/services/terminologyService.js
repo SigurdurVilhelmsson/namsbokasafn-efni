@@ -11,6 +11,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
+const log = require('../lib/logger');
 const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
 const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
 const { buildScope, resolve } = require('../lib/conceptResolver');
@@ -1329,14 +1330,18 @@ function translationTier(subjects, bookSubject) {
   return 'fallback';
 }
 
-// C24: the ONLY cached state. It depends solely on the (headword_id, english)
-// pairs, and the fingerprint is computed from rows we re-read on every call — so
-// the DB stays authoritative: there is no invalidation hook to forget, no second
-// connection, no test-mode special case. Staleness therefore cannot arrive as a
-// missed notification; it would require a HASH COLLISION between two different
-// headword sets. (This comment used to claim staleness was "structurally
-// impossible" — that overstated it. See fingerprintHeadwords for exactly what the
-// encoding does and does not guarantee.)
+// C24: the ONLY cached state. It depends solely on the DISTINCT
+// concept_term(lang='en') strings (one entry per string, not per row — see
+// conceptMatcher.loadEnglishEntries), and the fingerprint is computed from
+// rows we re-read on every call — so the DB stays authoritative: there is no
+// invalidation hook to forget, no second connection, no test-mode special
+// case. Staleness therefore cannot arrive as a missed notification; it would
+// require a HASH COLLISION between two different English-string sets. (This
+// comment used to claim staleness was "structurally impossible" — that
+// overstated it. ⚠️ CORRECTED 2026-08-10 (§C36 B4b-1 fix round 1): it also
+// used to point at `fingerprintHeadwords`, deleted this task — see
+// conceptMatcher.fingerprintEntries for exactly what the encoding does and
+// does not guarantee.)
 //
 // PRAGMA data_version cannot do this job: all 16 mutators write through the same
 // singleton connection, and data_version is "unchanged for commits made on the
@@ -1376,9 +1381,17 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
   const db = getDb();
   const chapterNum = normalizeChapterArg(chapter);
 
-  // ⚠️ An unregistered book yields {unscoped}. resolve() handles it and returns
-  // no winner, so every term becomes a non-issue match — the same posture as
-  // today's null bookSubject, which made every translation tier 'in-scope'.
+  // ⚠️ AN UNSCOPED BOOK MATCHES NOTHING, and that is fail-CLOSED on purpose:
+  // resolve() returns no winner AND an empty outOfScope (emptyResolution is
+  // called with [] for the unscoped branch), so the isFallback guard below
+  // drops every hit.
+  //
+  // ⚠️ THIS DIFFERS FROM THE OLD MODEL, where a null bookSubject made
+  // translationTier return 'in-scope' for everything and every term matched.
+  // Measured 2026-08-10; the comment that stood here asserted the opposite.
+  // Reachable in production for a book absent from domains.js's
+  // BOOK_DOMAIN_PRIORITY map (migrations 046/047 seed only from that map), so
+  // it is LOGGED rather than left to look like "this book has no terminology".
   const scope = bookSlug ? buildScope(db, bookSlug, chapterNum) : { unscoped: 'unregistered' };
   // eslint-disable-next-line no-unused-vars -- Task 5 (the IS-side check) consumes this
   const paradigmStmt = prepareParadigmStatement(db);
@@ -1423,6 +1436,7 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
   };
 
   const result = {};
+  let unscopedHits = 0; // §item-1c: accumulated across the call, logged once — never per segment
   for (const seg of segments) {
     const matches = [];
     const issues = [];
@@ -1432,6 +1446,7 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
     }
 
     const firstByHeadword = findFirstOccurrences(automaton, seg.enContent);
+    if (scope.unscoped) unscopedHits += firstByHeadword.size;
 
     // ⚠️ RESOLVE FIRST, THEN ORDER, THEN TILE — and the order of those three is
     // the whole behaviour. Under the old model the tier was known from the SQL
@@ -1481,6 +1496,15 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         isPrimary: Boolean(winner),
         isFallback: hit.isFallback,
         position: start,
+        // ⚠️ A FALLBACK ENTRY HAS `id: undefined`, DROPPED BY JSON.stringify —
+        // NOT PRESENT AS `null`. `hit.res.outOfScope` entries are shaped
+        // {conceptId, text, domain} (conceptResolver.resolveCandidates, step 2);
+        // they carry no termId, unlike `winner`/`alsoInScope`, which do. This
+        // differs from the old model, where every translation row always
+        // carried a real translation id. Measured 2026-08-10 — no current
+        // client reads translations[].id, so this is left as-is rather than
+        // fabricated; a future consumer needing a stable fallback handle
+        // should read this comment rather than rediscover the gap.
         translations: (winner ? [winner, ...alts] : hit.res.outOfScope).map((t) => ({
           id: t.termId,
           icelandic: t.text,
@@ -1492,6 +1516,12 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       });
     }
     result[seg.segmentId] = { matches, issues };
+  }
+  if (scope.unscoped && unscopedHits > 0) {
+    log.warn(
+      { bookSlug, reason: scope.unscoped, hits: unscopedHits },
+      'terminology: book has no domain scope; matcher emitted 0 matches'
+    );
   }
   return result;
 }
