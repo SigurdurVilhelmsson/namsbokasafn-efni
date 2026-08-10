@@ -77,6 +77,7 @@ function runAllMigrations() {
     require('../migrations/045-concept-model'),
     require('../migrations/046-seed-domain-priority'),
     require('../migrations/047-reconcile-domain-priority'),
+    require('../migrations/048-book-term-preference'),
   ];
 
   let applied = 0;

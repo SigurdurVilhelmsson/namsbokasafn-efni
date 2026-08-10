@@ -71,13 +71,22 @@ function registerCleanup() {
   });
 }
 
-function freshMigratedDb() {
+/**
+ * @param {string} [migrationsDir] ⚠️ FOR THIS HELPER'S OWN TEST ONLY, and the
+ *   default is the real directory. It exists so the throw-on-failure behaviour
+ *   below can be pinned with a deliberately-broken migration in a temp dir,
+ *   rather than by writing a stray `NNN-*.js` into `server/migrations/` — where
+ *   a crashed test would leave it behind and break every later run, and where
+ *   migrations are append-only by project rule. NO production or test caller
+ *   passes it; do not use it to hand-pick a subset of migrations.
+ */
+function freshMigratedDb(migrationsDir) {
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fresh-clone-'));
   tempRoots.push(tempRoot);
   registerCleanup();
   const dbPath = path.join(tempRoot, 'sessions.db');
   const db = new Database(dbPath);
-  const dir = path.join(__dirname, '..', '..', 'migrations');
+  const dir = migrationsDir || path.join(__dirname, '..', '..', 'migrations');
   const files = fs
     .readdirSync(dir)
     .filter((f) => /^\d{3}-.*\.js$/.test(f))
@@ -89,6 +98,31 @@ function freshMigratedDb() {
     } catch (e) {
       errors.push(`${f}: ${e.message}`);
     }
+  }
+  // ⚠️ THROWS ON A FAILED MIGRATION — added by the whole-branch review,
+  // 2026-08-09. Almost every caller destructures `{ db }` and DISCARDS `errors`
+  // (conceptResolverScope.test.js, migration048.test.js, importConcepts.test.js
+  // and a dozen more), so a migration that silently failed produced a database
+  // with a MISSING TABLE and surfaced, several assertions later, as a baffling
+  // downstream failure that names neither the migration nor the table. A
+  // reviewer hit exactly that: one non-reproducible 9-test failure across 2
+  // files that would not re-trigger in 12 re-runs.
+  //
+  // ⚠️ FIXED HERE, NOT AT EVERY CALL SITE. One edit, and it covers call sites
+  // nobody has written yet — the alternative was ~30 `expect(errors).toEqual([])`
+  // lines, each of which a future test can forget.
+  //
+  // `errors` is STILL RETURNED, unchanged, for compatibility: verify-b4a-gates.js
+  // checks `built.errors.length` itself and freshMigratedDb.test.js asserts the
+  // shape. Those checks are now unreachable-but-harmless, and they document the
+  // contract at their own call sites.
+  if (errors.length) {
+    throw new Error(
+      `freshMigratedDb(): ${errors.length} of ${files.length} migration(s) FAILED, so this ` +
+        'database has an incomplete schema. Failing here rather than handing back a broken ' +
+        'connection — a discarded `errors` array is how this surfaces as an unrelated ' +
+        `assertion much later. Failures:\n  ${errors.join('\n  ')}`
+    );
   }
   return { db, errors, applied: files.length, path: dbPath };
 }

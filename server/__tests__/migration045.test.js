@@ -1,4 +1,31 @@
 // server/__tests__/migration045.test.js
+//
+// ⚠️ This file tests migration 045 IN ISOLATION — beforeEach runs only
+// `migration045.up(db)`, never 048. That is deliberate: it is the only way to
+// pin what 045 itself does. But 045's `book_concept_preference` does NOT
+// survive into a real migrated database: migration 048 runs immediately
+// after it and replaces it with `book_term_preference`, keyed on the English
+// string instead of `concept_id` (register §C36 B4a, §C38). The two
+// `book_concept_preference` cases below ("allows one preference per book,
+// chapter and concept" / "allows a chapter override alongside the book
+// default") are true of 045 in isolation and stay for that reason — do not
+// read them as describing production. For the live schema, see
+// `book_term_preference`'s coverage in migration048.test.js and
+// importConcepts.test.js.
+//
+// ⚠️ THIS FILE DOES NOT USE freshMigratedDb() — deliberately, unlike
+// importConcepts.test.js/conceptImportCli.test.js/conceptImportReport.test.js/
+// verifyConceptImport.test.js (whole-branch review, round 2). Those four hand-
+// enumerated "045 then 048" as a stand-in for the full migration chain, which
+// was the review's Important finding — a future migration touching
+// concept_term/registered_books/book_term_preference could silently go
+// unnoticed. This file's isolation is different in kind, not degree: it is
+// testing 045 BY ITSELF (down to re-invoking `migration045.up(db)` a second
+// time to check idempotency), so running the real chain would run 048 too —
+// which drops book_concept_preference outright and would break the two cases
+// this file exists to pin. If a future migration needs covering here, add its
+// own `.up(db)` call explicitly, in order, with a comment saying why — do not
+// reach for freshMigratedDb() and do not delete the isolation.
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
@@ -82,6 +109,9 @@ describe('migration 045 concept model', () => {
     expect(db.prepare('SELECT COUNT(*) n FROM concept_term').get().n).toBe(0);
   });
 
+  // 045 creates book_concept_preference; 048 replaces it with
+  // book_term_preference before any real boot reaches production code. True
+  // of 045 in isolation only — see the file-header note above.
   it('allows one preference per book, chapter and concept', () => {
     const c = insertConcept();
     const t = db

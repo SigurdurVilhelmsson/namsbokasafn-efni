@@ -69,6 +69,8 @@ describe('mutation controls', () => {
     expect(bioFirst.winner.domain).toBe('biology');
   });
 
+  // ⚠️ RE-KEYED 2026-08-09 (B4a): the preference map is keyed on the LOWERCASED
+  // ENGLISH STRING, not the conceptId, and `english` is the 4th argument.
   it('PREFERENCE TIER matters: the same termId reports a different reason', () => {
     const c = [
       cand(10, 'chemistry', [
@@ -76,10 +78,17 @@ describe('mutation controls', () => {
         ['b', 2, 101],
       ]),
     ];
-    const asBook = resolveCandidates(scope(new Map([[10, { termId: 101, tier: 'book' }]])), c);
+    const asBook = resolveCandidates(
+      scope(new Map([['thing', { termId: 101, tier: 'book' }]])),
+      c,
+      [],
+      'thing'
+    );
     const asChapter = resolveCandidates(
-      scope(new Map([[10, { termId: 101, tier: 'chapter' }]])),
-      c
+      scope(new Map([['thing', { termId: 101, tier: 'chapter' }]])),
+      c,
+      [],
+      'thing'
     );
     expect(asBook.reason).toBe('book-preference');
     expect(asChapter.reason).toBe('chapter-preference');
@@ -133,5 +142,105 @@ describe('mutation controls', () => {
     // both sides independently short-circuited to the same wrong answer.
     expect(forward.winner.conceptId).toBe(10);
     expect(forward.nominalTie).toEqual([10, 11]);
+  });
+});
+
+/**
+ * B4a / §C38 — the override's own mutation table. Each case names the exact line
+ * of `applyPreference` it kills, and each was CONFIRMED red by breaking that
+ * line and re-running this file (see task-6-report.md for the verbatim output).
+ * A mutation table asserted in prose is not a measurement.
+ */
+describe('mutation controls — the preference override', () => {
+  const accCands = [
+    cand(1, 'physics', [['nákvæmni', 1, 10]]),
+    cand(2, 'biology', [['hittni', 1, 20]]),
+  ];
+
+  // MUTATION: `return result` unchanged when a preference is found.
+  it('THE OVERRIDE ITSELF matters: adding a preference row moves the winner', () => {
+    const without = resolveCandidates(scope(), accCands, [], 'accuracy');
+    const with_ = resolveCandidates(
+      scope(new Map([['accuracy', { termId: 20, tier: 'book' }]])),
+      accCands,
+      [],
+      'accuracy'
+    );
+    expect(without.winner.text).toBe('nákvæmni');
+    expect(with_.winner.text).toBe('hittni');
+    expect(without.winner.text).not.toBe(with_.winner.text);
+  });
+
+  // MUTATION: drop `.toLowerCase()` from the map lookup. The Map is keyed
+  // lowercase by buildPreferenceMap; a raw-string lookup finds nothing.
+  it('CASE FOLDING matters: the same row is found under any casing of the string', () => {
+    const pref = new Map([['accuracy', { termId: 20, tier: 'book' }]]);
+    const lower = resolveCandidates(scope(pref), accCands, [], 'accuracy');
+    const mixed = resolveCandidates(scope(pref), accCands, [], 'Accuracy');
+    expect(mixed.winner.text).toBe('hittni');
+    expect(mixed.winner).toEqual(lower.winner);
+  });
+
+  // MUTATION: search only `inScope` for the owner. The out-of-scope concept is
+  // then never found, and the fault reported is the WRONG one — which reads as
+  // "we noticed something" while naming the wrong remedy.
+  it('THE OWNER SEARCH BREADTH matters: an out-of-scope owner is FOUND, and named as such', () => {
+    const withMath = [...accCands, cand(3, 'mathematics', [['stæ', 1, 30]])];
+    const s = scope(new Map([['accuracy', { termId: 30, tier: 'book' }]]));
+    // stmts present and answering "the row exists", so an inScope-only search
+    // would report `preference-not-a-candidate` — plausible, and wrong.
+    s.stmts = { termById: { get: () => ({ term_id: 30, concept_id: 3 }) } };
+    const r = resolveCandidates(s, withMath, [], 'accuracy');
+    expect(r.integrity).toEqual(['preference-out-of-scope']);
+  });
+
+  // MUTATION: clear `nominalTie` along with `tied`.
+  it('NOMINAL-TIE PASSTHROUGH matters: the merge hint survives an override', () => {
+    const cands = [
+      cand(1, 'physics', [['sama', 1, 10]]),
+      cand(2, 'physics', [['sama', 1, 20]]),
+      cand(3, 'biology', [['annad', 1, 30]]),
+    ];
+    const without = resolveCandidates(scope(), cands, [], 'x');
+    const with_ = resolveCandidates(
+      scope(new Map([['x', { termId: 30, tier: 'book' }]])),
+      cands,
+      [],
+      'x'
+    );
+    // The override changes the ANSWER and nothing else about the report.
+    expect(without.nominalTie).toEqual([1, 2]);
+    expect(with_.nominalTie).toEqual([1, 2]);
+    expect(with_.winner.text).toBe('annad');
+  });
+
+  // MUTATION: clear `tied` without re-homing to `alsoInScope`. The members
+  // would then appear in NEITHER list — D3's own invisibility, inside D3.
+  it('RE-HOMING matters: an answered tie’s members move, they do not evaporate', () => {
+    const cands = [
+      cand(41, 'physics', [['tengi', 1, 410]]),
+      cand(42, 'physics', [['bindi', 1, 420]]),
+    ];
+    const asTie = resolveCandidates(scope(), cands, [], 'bond');
+    const answered = resolveCandidates(
+      scope(new Map([['bond', { termId: 410, tier: 'book' }]])),
+      cands,
+      [],
+      'bond'
+    );
+    expect(asTie.tied.map((t) => t.conceptId)).toEqual([41, 42]);
+    expect(answered.tied).toEqual([]);
+    // ⚠️ THE HALF THAT CATCHES THE MUTANT. Every concept reported before the
+    // override is still reported after it, in one list or the other.
+    const before = new Set([
+      ...asTie.tied.map((t) => t.conceptId),
+      ...asTie.alsoInScope.map((a) => a.conceptId),
+    ]);
+    const after = new Set([
+      answered.winner.conceptId,
+      ...answered.tied.map((t) => t.conceptId),
+      ...answered.alsoInScope.map((a) => a.conceptId),
+    ]);
+    expect([...after].sort()).toEqual([...before].sort());
   });
 });

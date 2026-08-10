@@ -10,6 +10,21 @@
  * ⚠️ registered_books has THREE NOT NULL, no-default columns: slug, title_is,
  * registered_by (migration 003) — the same trap conceptResolverScope.test.js's
  * `registerBare` comment documents. Supply all three.
+ *
+ * ⚠️ B4a (§C36) — `buildScope` (server/lib/conceptResolver.js) calls
+ * `buildPreferenceMap`, which Task 3 re-keyed onto `book_term_preference.english`
+ * (from the dropped `book_concept_preference.concept_id`). This file's own
+ * `INSERT`s were already pointed at `book_term_preference` in Task 2b, ahead of
+ * that re-key landing, so no further edit was needed here once Task 3 shipped.
+ *
+ * ⚠️ RESOLVED 2026-08-09 BY TASK 6. This banner used to warn that two tests
+ * below were RED by construction between Task 3 and Task 6: `buildPreferenceMap`
+ * keyed on the lowercased English string while `resolveCandidates` still did
+ * `scope.preference.get(c.conceptId)` — a NUMBER — so the string-keyed map never
+ * hit and `reason: 'book-preference'` was unreachable. Task 6's step-6 override
+ * re-points that lookup onto the English string. The whole file is green; the
+ * history is kept because a "known red" window that nobody records is
+ * indistinguishable from a regression the next time one appears.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
@@ -86,20 +101,24 @@ describe('buildResolvedGlossary', () => {
     expect(t).not.toHaveProperty('chapter');
   });
 
+  // ⚠️ Was RED between Task 3 and Task 6 (see the file banner). Green since
+  // Task 6's override; this is one of that task's two completion criteria.
   it('honours an editor book-preference over the head form', () => {
     const cid = concept('chemistry', 'atom', ['frumeind', 'atóm']);
     const termId = db
       .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND text = 'atóm'")
       .get(cid).id;
     db.prepare(
-      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 0, ?, ?)'
-    ).run(cid, termId);
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 0, ?, ?)'
+    ).run('atom', termId);
     expect(build(['atom']).terms[0]).toMatchObject({
       icelandic: 'atóm',
       reason: 'book-preference',
     });
   });
 
+  // ⚠️ Was RED between Task 3 and Task 6 (see the file banner). Green since
+  // Task 6's override; this is the second of that task's completion criteria.
   it('resolves the BOOK-DEFAULT (chapter 0) preference, never a chapter-level one — pins the `0` in buildScope(db, bookSlug, 0)', () => {
     const cid = concept('chemistry', 'bond', ['tengi', 'efnatengi', 'samtengi']);
     const bookTermId = db
@@ -112,11 +131,11 @@ describe('buildResolvedGlossary', () => {
     // SAME concept picks a different term. buildResolvedGlossary must ignore
     // the chapter-1 row entirely — glossary-unified.json is one file per book.
     db.prepare(
-      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 0, ?, ?)'
-    ).run(cid, bookTermId);
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 0, ?, ?)'
+    ).run('bond', bookTermId);
     db.prepare(
-      'INSERT INTO book_concept_preference (book_id, chapter, concept_id, term_id) VALUES (1, 1, ?, ?)'
-    ).run(cid, chapterTermId);
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 1, ?, ?)'
+    ).run('bond', chapterTermId);
     const t = build(['bond']).terms[0];
     expect(t.icelandic).toBe('efnatengi');
     expect(t.reason).toBe('book-preference');
@@ -163,6 +182,33 @@ describe('buildResolvedGlossary', () => {
   it('stamps the resolved producer', () => {
     concept('chemistry', 'atom', ['frumeind']);
     expect(build(['atom']).producer).toBe('export-terminology-resolved');
+  });
+
+  // D5 (§C36 B4a spec): a preference whose term_id no longer exists in
+  // concept_term. FK is ON by default here (better-sqlite3 compile flag,
+  // CLAUDE.md durable) and CASCADEs on delete, so the only way to reach a
+  // genuinely dangling row is to turn FK off before the INSERT — same
+  // pattern as conceptResolverIntegrity.test.js's dangling-merge fixture.
+  it('counts integrity codes per census string, and does NOT put them in the payload', () => {
+    concept('chemistry', 'atom', ['frumeind', 'atóm']);
+    db.pragma('foreign_keys = OFF');
+    db.prepare(
+      'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (1, 0, ?, ?)'
+    ).run('atom', 999999);
+
+    const out = build(['atom']);
+
+    // The preference cannot be honoured, so resolution falls back to the head
+    // form — `terms` comes out BYTE-IDENTICAL to a book with no preference
+    // row at all. That is D5's whole point: the one condition this report
+    // exists to surface is exactly the condition `sameTerms` cannot see.
+    expect(out.terms[0]).toMatchObject({ icelandic: 'frumeind', reason: 'head-form' });
+    expect(out.integrity).toEqual({ 'preference-term-missing': 1 });
+    // ⚠️ The payload must NOT gain a key: sameTerms ignores everything but
+    // `terms`, so a payload-borne report is skipped by write-if-changed
+    // exactly when it matters. It also keeps B4a's export byte-comparison
+    // meaningful (§9 of the design spec).
+    expect(out.stats).not.toHaveProperty('integrity');
   });
 
   it('throws on an empty census rather than returning an empty payload', () => {
