@@ -161,6 +161,17 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
   (prettier). **`npm test` ≠ the Tests job** — CI also runs Playwright E2E. Verify
   against the workflow files before claiming a branch is green; asserting from a
   subset is how a red `main` goes unnoticed.
+- **🔴 DURABLE — NOTHING UNDER `server/` IS LINTED BY CI.** Root `lint` is
+  **`eslint tools/ scripts/`** and `format:check` is **`prettier --check
+  'tools/**/*.js' 'scripts/**/*.js'`** — and the Lint workflow runs exactly those
+  two. `server/` is in neither, and **no other workflow lints it**. It is still
+  checked locally, because `lint-staged`'s pre-commit hook *does* cover
+  `server/**/*.js` — which is precisely why the gap is invisible: a server-only
+  lint break is caught on your machine and passes CI. **A green Lint job says
+  nothing about `server/`.** ⚠️ **Do not widen `lint` without measuring first** —
+  `server/` has never been linted in CI, so the first run may surface a large
+  backlog, and that is its own item. Found 2026-08-10, when §C36 B4b-0a moved a
+  script from `tools/` to `server/` and silently left the Lint job's scope.
 - **Duration is the diagnostic**: an infra/billing failure dies in ~3s *before*
   `Current runner version:` appears. Minutes elapsed = a real result.
   **⚠️ That rule assumes a run OBJECT EXISTS — check that first, because a
@@ -250,7 +261,30 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
   - **Do not "upgrade to Node 24" as a runtime bump.** It is really an **npm 10 → npm 11 lockfile migration**: npm 11 drops optional `@emnapi/*` peer-dep entries, and the resulting `package-lock.json` breaks prod's `npm ci`. It also means a prod-runtime change plus a native ABI rebuild (cf. the 2026-05-10 ABI incident). Node 22 is supported through the 2026–27 school year. When a quiet window opens, **go 22 → 26 and skip 24** — the npm-11 work is identical either way, but 24's Active-LTS window closes in Oct 2026. `better-sqlite3@13` declares `>=22`, so the DB driver is not the constraint; the lockfile format is.
     - **⚠️ better-sqlite3 12 → 13 changed how the native binary arrives (PR #341, 2026-07-28).** v12 used `prebuild-install` to **download** a `.node` from GitHub releases at install time — a network dependency, and the path by which a wrong-ABI binary arrives (the 2026-05-10 incident). v13 **bundles** the prebuilds in its tarball (`prebuilds/linux-x64.node`), so nothing is fetched. npm still auto-runs node-gyp because the package ships a `binding.gyp`, so **prod needs python3 + make + g++** (present: Ubuntu 24.04, build-essential). Install is ~2 s; SQLite is *not* compiled from source. **⚠️ `npm view <pkg> scripts` reports the SOURCE REPO's manifest, not the shipped artifact — it shows an `install` script this package does not publish. `npm pack` and read the tarball before reasoning about install-time behaviour.**
     - **⚠️ DURABLE — `PRAGMA foreign_keys` is ON here, and the `sqlite3` CLI will tell you it is OFF.** better-sqlite3 is compiled with **`SQLITE_DEFAULT_FOREIGN_KEYS=1`** (`server/node_modules/better-sqlite3/deps/defines.gypi`), so every bare `new Database(path)` in this project — **including production's** — reports `1`, and **every `ON DELETE CASCADE` across all migrations is live**. That is *not* SQLite's stock default: the pragma is per-connection, is not stored in the file, defaults **off** in stock builds, and the system `sqlite3` CLI is a stock build that returns `0`. **Never measure this pragma with the CLI** — measure it with better-sqlite3, on a bare connection. Reaching the wrong conclusion here inverts your reading of every cascade in the schema; it happened on 2026-08-08 and produced a banner-dated "correction" of a register entry that was right all along. Pinned by a test in `server/__tests__/importConcepts.test.js`, so a future build dropping the flag goes red.
+    - **⚠️ DURABLE — `INSERT OR IGNORE` DOES NOT SUPPRESS FOREIGN-KEY VIOLATIONS, and inside a migration that is a BOOT WEDGE.** `ON CONFLICT` covers NOT NULL / UNIQUE / CHECK **only**; an FK violation still throws. `migrationRunner` calls every migration's `up()` on **every server start** and `failLoudOnMigrationErrors` `exit(1)`s on a collected error — so one bad row means **the server never boots again**, not a one-off failure. Measured 2026-08-09 during §C36 B4a, where a whole-branch reviewer had reasoned from the `ON DELETE CASCADE` declaration that a dangling row could not exist and filed the migration as *verified sound*. **That premise fails whenever foreign keys were off** — which is both this repo's own test-fixture idiom (`pragma('foreign_keys = OFF')` to plant a row) **and the stock `sqlite3` CLI's default**, per the bullet above. **Consequences:** a migration must never throw — report and leave the prior state — and the guard belongs around the whole **unit**, not the interesting **line**: 048's first guard wrapped its `INSERT` while a malformed source table still wedged the boot from `db.prepare`, uncaught, with 0 warnings. `server/migrations/048-book-term-preference.js` is the worked example (`up()` is nothing but the never-throw boundary).
   - Use `nvm use` (reads `.nvmrc`) before `npm install` if you might commit a lockfile.
+- **⚠️ DURABLE — TWO MODULE SYSTEMS, AND TESTS ARE A THIRD SHAPE.** Root
+  `package.json` is **`"type": "module"`** (so `tools/` and `scripts/` are ESM);
+  `server/package.json` is **`"type": "commonjs"`**. A `tools/*.js` using
+  `require`/`module.exports` **cannot load**. ⚠️ `tools/lib/*.cjs` exists for ONE
+  reason — those modules are consumed by **both** trees, so they must load from
+  ESM *and* CommonJS; do not reach for `.cjs` for anything tools-only.
+  ⚠️ **Test files are neither: Vitest CANNOT be `require`d** — it throws
+  `Vitest cannot be imported in a CommonJS module using require()`. Every
+  `server/__tests__/*.test.js` uses `import` for vitest and node builtins plus
+  `createRequire(import.meta.url)` for the server's own modules. Copy the header
+  from `server/__tests__/importConcepts.test.js`.
+- **⚠️ DURABLE — `better-sqlite3` IS INSTALLED ONLY IN `server/node_modules`.** It
+  is **not** a root dependency, so a `tools/` script cannot resolve it and
+  `node -e "require('better-sqlite3')"` fails from the repo root. Node resolves
+  from the **file's** location, so a script under `server/` works from any cwd.
+  ⚠️ `tools/merge-glossary.js` works around this with
+  `require(path.resolve('server/node_modules/…'))` — **cwd-relative, which the rule
+  above forbids; do not copy it.** ⚠️ And do not reach for `node:sqlite`: it is
+  experimental in Node 22, prod and dev run different minors, and **it has no
+  `db.transaction()` helper**, so swapping to it silently changes a write's
+  atomicity. **A script that reads or writes `sessions.db` belongs in `server/`,
+  beside `import-concepts.js` — placement is what makes all of this a non-issue.**
 - **Content format:** CNXML → Markdown (intermediate) → HTML. Everything else — tools, server framework, test runners, dependency list — is in `package.json`; don't restate it here.
 - **Dependencies:** the server's `xlsx` installs from the official SheetJS CDN tarball (`cdn.sheetjs.com`), not npm — npm's last SheetJS release (0.18.5) has unfixed advisories. `npm ci` therefore needs cdn.sheetjs.com reachable, and xlsx version bumps are manual (Dependabot can't follow URL dependencies).
 - **⚠️ DURABLE — npm advisories: TWO trees, and NEVER `npm audit fix`.** `server/` is the prod,
