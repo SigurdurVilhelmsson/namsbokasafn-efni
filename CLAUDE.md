@@ -434,6 +434,31 @@ tool's `parseArgs` spec** (or its `--help`, which is generated from the same pla
 it from prose, from another tool, or from what the flag would sensibly be called. `--dry-run` is
 real on the CNXML/MT tools; most other "safety" flags you might reach for are not.
 
+**⚠️ DURABLE — SOME COMMITTED SOURCE AND DOC FILES CONTAIN RAW NUL BYTES, AND PLAIN `grep`
+REPORTS *NOTHING* FOR STRINGS THEY DEMONSTRABLY CONTAIN. Use `grep -a` for every census.**
+GNU grep classifies a file holding a NUL as binary and suppresses its matches; with `-n` it
+prints no lines and **exits 1** — indistinguishable from "not present". Measured 2026-08-10:
+`grep -n proposeMinedTerm server/services/termMiningService.js` → *exit 1, no output*, while
+`grep -an` → `210: … terminologyService.proposeMinedTerm(`. **This is a new mechanism for an
+old failure class and it evades the usual heuristic: no filter was chosen — the file itself
+causes the blindness**, so "an absence you manufactured with a filter" does not catch it, and
+neither does re-running the same grep. It bites **docs too**, not just code: two campaign plan
+files under `docs/superpowers/plans/` hold NULs, so a `grep` over `docs/` skips them entirely.
+**Do not trust any enumeration here — re-derive it**, as with the MIT→AGPL edges above:
+```bash
+grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
+     --include='*.sh' --include='*.py' server/ tools/ scripts/ docs/
+```
+⚠️ **`-P` is load-bearing and `$'\0'` is NOT a substitute** — as a grep pattern it is the
+**empty string**, which matches *every* file and returns a clean, plausible, wholly wrong
+list. Verified: the `-P` form agrees exactly with an independent byte-count census in Python
+(6 source/doc files, 2026-08-10); the `$'\0'` form named files that contain no NUL at all.
+`books/` is excluded on purpose — thousands of images legitimately hold NULs and would bury
+the six that matter.
+Sources are legitimate (a NUL separator in a hash input is deliberate and load-bearing at
+`terminologyService.js`'s `fingerprintHeadwords`, whose comment warns that a *raw* NUL byte
+there would be a regression) — so the fix is `-a` at the search, not stripping the bytes.
+
 Slash commands live in `.claude/commands/`; skills in `.claude/skills/` — both are listed to the
 session automatically with their own descriptions, so they are **not** enumerated here.
 ⚠️ Several commands are switched **off** for this repo in `.claude/settings.local.json`
