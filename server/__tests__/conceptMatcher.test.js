@@ -121,8 +121,8 @@ describe('paradigmFor() — the "no paradigm" path is the COMMON one', () => {
     expect(paradigmFor(stmt, Number(t))).toEqual([]);
   });
 
-  it.each([['[]'], ['{}'], ['123'], ['not json']])('returns [] for %p', (bad) => {
-    const t = addTerm(addConcept(), 'is', `z${bad.length}`);
+  it.each([['[]'], ['{}'], ['123'], ['not json']])('returns [] for %p', (bad, i) => {
+    const t = addTerm(addConcept(), 'is', `z${i}`);
     db.prepare('UPDATE concept_term SET inflections = ? WHERE id = ?').run(bad, t);
     expect(paradigmFor(stmt, Number(t))).toEqual([]);
   });

@@ -104,10 +104,16 @@ function prepareParadigmStatement(db) {
  * multi-word rows the producer skips permanently). The register's ruling is
  * explicit: degrade to base-form matching rather than report a fault.
  *
- * ⚠️ NEVER THROW. `'[]'` is truthy and parses to [] harmlessly, but the
- * four-byte string `'null'` is truthy, parses to a non-iterable, and
- * `[text, ...null]` throws TypeError inside a request. The B4b-0b producer
- * writes only non-empty JSON arrays; this guards a future writer.
+ * ⚠️ NEVER THROWS ON A STORED VALUE. `'[]'` is truthy and parses to [] harmlessly,
+ * but the four-byte string `'null'` is truthy, parses to a non-iterable, and
+ * `[text, ...null]` throws TypeError inside a request. The B4b-0b producer writes
+ * only non-empty JSON arrays; this guards a future writer.
+ *
+ * ⚠️ The `try` deliberately does NOT cover `stmt.get()`. A type-confused `termId`
+ * is a CALLER bug — better-sqlite3 throws for an object or a boolean — and it is
+ * left loud on purpose: swallowing it would hide the mistake at its only visible
+ * moment, and would also mask get-time DB faults (locked, IO error) as "this term
+ * has no paradigm". Missing table/column already fails at prepare() time.
  */
 function paradigmFor(stmt, termId) {
   const row = stmt.get(termId);
