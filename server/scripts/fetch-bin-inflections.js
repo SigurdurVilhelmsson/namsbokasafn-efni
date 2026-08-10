@@ -20,12 +20,6 @@ const path = require('path');
 const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/binInflections');
 const resolveDbPath = require('../lib/dbPath');
 
-// ⚠️ __dirname, never process.cwd() (CLAUDE.md, durable). The server runs with
-// cwd=server/ and the cron from the repo root; a cwd-relative default silently
-// points at a different tree.
-//
-// ⚠️ AND NOT server/lib/dbPath.js. tools/ is MIT and server/ is AGPL-3.0; root
-// LICENSE enumerates the deliberate edges and this must not become another one.
 // ⚠️ resolveDbPath(), never process.cwd() (CLAUDE.md, durable) — the server runs
 // with cwd=server/ and the cron from the repo root. Now that this script lives in
 // server/, the canonical resolver is available and IS the right answer; the earlier
