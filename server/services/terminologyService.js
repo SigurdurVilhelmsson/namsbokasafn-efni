@@ -1392,7 +1392,14 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
   // Reachable in production for a book absent from domains.js's
   // BOOK_DOMAIN_PRIORITY map (migrations 046/047 seed only from that map), so
   // it is LOGGED rather than left to look like "this book has no terminology".
-  const scope = bookSlug ? buildScope(db, bookSlug, chapterNum) : { unscoped: 'unregistered' };
+  //
+  // ⚠️ Fix round 2, Minor 1 — 'no-book-slug' is a DISTINCT reason from
+  // buildScope's own 'unregistered'/'no-priorities'. A caller that omitted
+  // bookSlug entirely is not the same fault as a caller naming a real but
+  // unregistered/unpriority'd book; conceptResolver.js:149-152 states exactly
+  // this rationale for keeping THOSE two distinct, and collapsing a third
+  // case into 'unregistered' here would repeat it one level up.
+  const scope = bookSlug ? buildScope(db, bookSlug, chapterNum) : { unscoped: 'no-book-slug' };
   // eslint-disable-next-line no-unused-vars -- Task 5 (the IS-side check) consumes this
   const paradigmStmt = prepareParadigmStatement(db);
 
@@ -1462,8 +1469,33 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       // word. It must never reach an editor. This does NOT close §C43.
       if (res.winner && res.winner.text === PLACEHOLDER_TEXT) continue;
       const isFallback = !res.winner;
-      if (isFallback && res.outOfScope.length === 0) continue; // nothing to offer
-      hits.push({ headwordId, english, occ, res, isFallback });
+      // ⚠️ §C43 / D7 (fix round 2, Finding 1) — the guard above only covers the
+      // WINNER. On a fallback match winner is null, and outOfScope/alsoInScope
+      // are built from headForm() (conceptResolver.js:353-356, :404-414),
+      // which for the 201 placeholder-only concepts IS '[vantar]'. Filtering
+      // here is what makes "never reaches an editor" true for BOTH paths — a
+      // fallback match's suggestion (outOfScope) and an in-scope match's
+      // alternative sibling (alsoInScope). The isFallback guard immediately
+      // below then drops a hit left with nothing to offer, exactly as it
+      // already did for a genuinely empty outOfScope. Deliberately NOT
+      // promoting an alsoInScope alternative to winner when the winner IS the
+      // placeholder — dropping the whole match there can suppress a real
+      // answer at a lower position; that tradeoff is out of remit here.
+      const offerable = res.outOfScope.filter((t) => t.text !== PLACEHOLDER_TEXT);
+      const alts = (res.alsoInScope || []).filter((t) => t.text !== PLACEHOLDER_TEXT);
+      if (isFallback && offerable.length === 0) continue; // nothing to offer
+      // ⚠️ Finding 2 (fix round 2) — conceptResolver.js:124-129's `hits`
+      // statement has NO ORDER BY, so `outOfScope` — unlike every other list
+      // the resolver returns (`atBest` sorts by conceptId; `alsoFrom` sorts by
+      // position, conceptId) — inherits raw SQL row order. `outOfScope` was
+      // designed as a report, not an answer; this function is the first
+      // caller to read `outOfScope[0]` as one. Sorting here, AFTER the
+      // placeholder filter so the two compose, is what keeps a fallback
+      // answer deterministic instead of reproducing §C18's row-order defect
+      // inside the model built to end it. Do not add ORDER BY to
+      // conceptResolver for this — out of scope for this file's fix.
+      offerable.sort((a, b) => a.conceptId - b.conceptId);
+      hits.push({ headwordId, english, occ, res, isFallback, offerable, alts });
     }
 
     hits.sort(
@@ -1481,31 +1513,34 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       consumed.push({ start, end });
 
       const winner = hit.res.winner;
-      const alts = hit.res.alsoInScope || [];
-      // ⚠️ `status` HAS NO COUNTERPART in the concept model — concept_term has
-      // no status column and lifecycle is written and read nowhere. The corpus
-      // is Árnastofnun's, imported by an operator, so every term is the
-      // equivalent of 'approved'. Emitted as a constant to keep the response
-      // shape stable for the existing client; do not read it as provenance.
+      const alts = hit.alts; // already placeholder-filtered above
+      // ⚠️ `status` is a constant, not a lifecycle readout. Emitted to keep
+      // the response shape stable for the existing client, which renders it
+      // as an approval badge
+      // (segment-editor.js:2467-2470): every term now shows ✓, which IS
+      // truthful under the concept model, since there is no proposed tier —
+      // the corpus is Árnastofnun's, imported by an operator, and
+      // concept_term has no status column at all.
       matches.push({
         headwordId: hit.headwordId,
         english: hit.english,
-        icelandic: winner ? winner.text : (hit.res.outOfScope[0] || {}).text || null,
+        icelandic: winner ? winner.text : (hit.offerable[0] || {}).text || null,
         subjects: winner ? [winner.domain] : [],
         status: 'approved',
         isPrimary: Boolean(winner),
         isFallback: hit.isFallback,
         position: start,
         // ⚠️ A FALLBACK ENTRY HAS `id: undefined`, DROPPED BY JSON.stringify —
-        // NOT PRESENT AS `null`. `hit.res.outOfScope` entries are shaped
-        // {conceptId, text, domain} (conceptResolver.resolveCandidates, step 2);
-        // they carry no termId, unlike `winner`/`alsoInScope`, which do. This
-        // differs from the old model, where every translation row always
-        // carried a real translation id. Measured 2026-08-10 — no current
-        // client reads translations[].id, so this is left as-is rather than
-        // fabricated; a future consumer needing a stable fallback handle
-        // should read this comment rather than rediscover the gap.
-        translations: (winner ? [winner, ...alts] : hit.res.outOfScope).map((t) => ({
+        // NOT PRESENT AS `null`. `hit.offerable`/`hit.res.outOfScope` entries
+        // are shaped {conceptId, text, domain} (conceptResolver.
+        // resolveCandidates, step 2); they carry no termId, unlike
+        // `winner`/`alsoInScope`, which do. This differs from the old model,
+        // where every translation row always carried a real translation id.
+        // Measured 2026-08-10 — no current client reads translations[].id, so
+        // this is left as-is rather than fabricated; a future consumer
+        // needing a stable fallback handle should read this comment rather
+        // than rediscover the gap.
+        translations: (winner ? [winner, ...alts] : hit.offerable).map((t) => ({
           id: t.termId,
           icelandic: t.text,
           subjects: t.domain ? [t.domain] : [],

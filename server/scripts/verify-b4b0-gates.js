@@ -514,7 +514,32 @@ function main(argv = process.argv.slice(2)) {
       ok.push(record('GATE 2 (the positive control)', g2.ok ? 'PASS' : 'FAIL', g2.measured));
 
       // ── Gate 3: inertness ─────────────────────────────────────────────────
+      //
+      // ⚠️⚠️ STALE SINCE §C36 B4b-1 (fix round 2, Finding 3, 2026-08-10) — THIS
+      // GATE NO LONGER EXERCISES THE MATCHER, AND ITS "PASS" IS NOT MATCHER
+      // EVIDENCE. `findTermsInSegments` was cut over to the concept model: it
+      // reads `concept_term` exclusively and never touches
+      // `terminology_headwords`/`terminology_translations` at all. `seedC24()`
+      // above still seeds the OLD tables and `matcherOutput()` still spawns a
+      // child to compare them byte-for-byte — but with the matcher no longer
+      // depending on those tables, EITHER (a) the scope is unregistered/
+      // unpriority'd and both captures are empty (which g3bad's own
+      // `nMatches === 0` check would then correctly fail on), or (b) matches
+      // come from `concept_term`, which this gate never writes to, so
+      // `matcherBefore`/`matcherAfter` are trivially byte-identical regardless
+      // of what the population did to the old tables. A PASS here proves only
+      // that the OLD-table digest (oldInflectionsDigest, still load-bearing —
+      // that half is untouched) is unchanged; it proves nothing about the
+      // matcher any more. Do not repair this gate here — Task 7
+      // (verify-b4b1-gates.js) owns building its concept-model replacement.
       console.log('\n══ Gate 3 — the matcher is INERT across the population ══');
+      console.log(
+        '  ⚠️⚠️ STALE SINCE B4b-1 (2026-08-10): findTermsInSegments now reads ONLY concept_term.\n' +
+          '     This gate still seeds/compares the OLD tables — its "matcher identical" half is a\n' +
+          '     TAUTOLOGY now (the matcher never depended on what this gate populates), not\n' +
+          '     evidence of inertness. Only the old-table digest below still means anything.\n' +
+          '     Task 7 owns the concept-model replacement; do not read a PASS here as matcher proof.'
+      );
       console.log(
         '  ⚠️ THREE WAYS THIS COULD PASS FOR THE WRONG REASON, all closed deliberately:\n' +
           '     (a) two databases — a write to B cannot move a matcher reading A. ONE DB here:\n' +
@@ -529,7 +554,11 @@ function main(argv = process.argv.slice(2)) {
           '     Planting a form that OCCURS in a fixture segment cleared an issue (7→6), so it\n' +
           '     is not vacuous — but planting one occurring NOWHERE, on 324 old-table rows, left\n' +
           '     the output byte-identical. A D1 violation is caught by the matcher only if a\n' +
-          '     written form lands in these 24 segments. Hence the digest, complete regardless.'
+          '     written form lands in these 24 segments. Hence the digest, complete regardless.\n' +
+          '     ⚠️ AND THAT WHOLE PARAGRAPH IS NOW MOOT TOO (B4b-1): the matcher does not read the\n' +
+          '     old tables at all any more, so there is no "written form landing in a segment" for\n' +
+          '     it to catch — the digest is the ONLY thing left in this gate that still measures\n' +
+          '     anything about the population.'
       );
       const matcherAfter = matcherOutput(built.path);
       const identical = JSON.stringify(matcherBefore) === JSON.stringify(matcherAfter);

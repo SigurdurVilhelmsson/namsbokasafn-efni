@@ -1899,6 +1899,59 @@ describe('findTermsInSegments() — concept model (B4b-1)', () => {
     expect(r.s1.matches).toEqual([]);
   });
 
+  // Fix round 2, Finding 1 — the guard above only covers the WINNER. A
+  // fallback match's `outOfScope` suggestion is built from headForm(), which
+  // for a placeholder-only concept IS '[vantar]' — so the previous test
+  // (which plants an IN-SCOPE concept and asserts toEqual([])) is vacuous
+  // against this path: it would pass against any matcher that has gone
+  // silent altogether. The POSITIVE CONTROL is in this SAME test — a second,
+  // non-placeholder out-of-scope term in the same segment — so it cannot.
+  it('a fallback match whose only Icelandic term is [vantar] produces no match, and a real fallback term in the same segment still does', () => {
+    const placeholderOnly = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, placeholderOnly, 'en', 'nullcline');
+    addTermIn(cdb, placeholderOnly, 'is', '[vantar]');
+
+    const realFallback = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, realFallback, 'en', 'manifold');
+    addTermIn(cdb, realFallback, 'is', 'margbreytni');
+
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'A nullcline and a manifold.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    // The placeholder-only term is silent; the real fallback term still surfaces.
+    expect(r.s1.matches.map((m) => m.english)).toEqual(['manifold']);
+    expect(r.s1.matches[0]).toMatchObject({ isFallback: true, icelandic: 'margbreytni' });
+  });
+
+  // Fix round 2, Finding 2 — conceptResolver's `hits` query has no ORDER BY,
+  // so `outOfScope` inherits raw SQL row order (empirically: the EN
+  // concept_term ROW insertion order, not conceptId order) unless this
+  // function imposes one. Genuinely discriminating: `higherConcept` is
+  // created SECOND (so it has the HIGHER conceptId) but its EN term ROW is
+  // inserted FIRST — verified directly against the schema to put it ahead in
+  // raw SQL order. Sorted by conceptId, `lowerConcept` (created first) must
+  // win; unsorted, `higherConcept` would (confirmed by temporarily removing
+  // the sort during development — this test then asserted 'haerra', not
+  // 'laegra').
+  it('a fallback with two out-of-scope candidates picks the LOWER conceptId, not SQL row order', () => {
+    const lowerConcept = addConceptIn(cdb, 'mathematics'); // created first -> lower conceptId
+    const higherConcept = addConceptIn(cdb, 'astronomy'); // created second -> higher conceptId
+
+    // Insert the HIGHER concept's EN term row FIRST, the LOWER concept's SECOND.
+    addTermIn(cdb, higherConcept, 'en', 'sharedFallbackTerm');
+    addTermIn(cdb, lowerConcept, 'en', 'sharedFallbackTerm');
+    addTermIn(cdb, lowerConcept, 'is', 'laegra');
+    addTermIn(cdb, higherConcept, 'is', 'haerra');
+
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'A sharedFallbackTerm here.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.matches[0].icelandic).toBe('laegra'); // lower conceptId, sorted — not 'haerra'
+  });
+
   it('returns empty for a segment with no EN content, without querying', () => {
     const r = terminologyService.findTermsInSegments(
       [{ segmentId: 's1', enContent: '', isContent: 'x' }],
