@@ -26,6 +26,30 @@ B4b-1 cuts `findTermsInSegments` over from the old terminology tables to `resolv
 
 **This repo already holds the discipline and the warning**: `capture-c24-golden.js` says a golden *"MUST be run against the UNMODIFIED matcher … Re-running it after the swap would certify the new implementation against itself and destroy the oracle. There is no observable difference between a correct golden and a worthless one."* Same rule here — **capture before the port exists.**
 
+##### The word list — ⚠️ it must be the FULL candidate set, not the inflected one
+
+**Use `SELECT DISTINCT icelandic FROM terminology_translations` (~20k), not the 7,278 that already carry inflections.** The 7,278 are exactly the words the Python **already resolved**, so a golden built on them exercises only the success path and is blind to the three places a port silently diverges:
+
+- **not-found in BÍN** — must return `None`, not `[]`
+- **the multi-word skip** (`NOT LIKE '% %'`) — absent from the 7,278 by construction, since the filter excluded them from ever being written
+- **found, but the only form equals the base form** — `get_inflections:94` returns `None`, not an empty list, and that distinction is easy to lose in a rewrite
+
+A golden that covers only successes would pass while the port broke all three.
+
+##### 🔴 The golden's VALUES are BÍN-derived, so it cannot be committed
+
+Storing them in the gitignored `sessions.db` is fine (D6); **committing them to a public repo is not.** Two options, and the spec picks one rather than leaving it open:
+
+**→ Commit a per-word SHA-256 of the JSON value** (plus `null` for not-found, kept distinct from `[]`). It is fully discriminating for a differential test, it contains **no BÍN bytes**, it is small, and it makes the golden reviewable in a diff. The word list itself is **our own terminology and is committable**.
+
+##### ⚠️ B4b-0a DELETES THE PYTHON, WHICH DESTROYS THE ORACLE'S PRODUCER
+
+Once the port lands and `fetch_bin_inflections.py` is gone, **the golden can never be re-derived** — the same trap `capture-c24-golden.js` names, in a form nothing else here would flag. Therefore:
+
+1. **The capture script and the golden are committed in their OWN commit, BEFORE the port commit**, so the capture is identifiable by sha in `git log`.
+2. The capture script names the commit it was run at, as `capture-c24-golden.js` does.
+3. **The Python script is deleted in B4b-0a's final commit, not its first** — so the whole port is developed against a producer still in the tree, and `git show <capture-sha>` recovers it afterwards.
+
 #### B4b-0b — the logic change
 
 Pos-aware (D3), targeting `concept_term` (D1), applying D4 and D4.2. **One behavioural diff, reviewable on its own**, against a port already known not to have moved anything.
@@ -172,6 +196,8 @@ The write is guarded `WHERE inflections IS NULL`, so the op never clobbers a lat
 Adding an inflections column to the payload would publish CC BY-SA data under CC BY 4.0 **via the unforced 2-hourly cron**, and it would be invisible to **both** existing gates — the producer gate fingerprints the term shape, the shrink guard measures size, and neither would flag a new key on a growing payload. The licensing record already flags this for `exportBookGlossary()`; **B3 shipped a second exporter after that record was written**, so it applies to `buildResolvedGlossary` too.
 
 `buildResolvedGlossary`'s `terms` statement selects `id, text, rank` and must keep doing so.
+
+✅ **Checked 2026-08-10, because "it selects three columns today" is a claim about today.** The one path that reads whole `concept_term` rows into the payload is `alternatives`, and it is clean in **two independent ways**: `prepareLookupStatements.terms` is an explicit `SELECT id AS term_id, text, rank` — **not `SELECT *`**, so a newly-populated column cannot arrive by widening — and `resolvedGlossary.js:113` maps it to `t.text` alone. **Both would have to change for inflections to leak.** ⚠️ A future `SELECT *` there is the specific edit that breaks D6, and it would look like a harmless simplification.
 
 **⚠️ The rule is ANY COMMITTED ARTIFACT, not one filename — re-derived 2026-08-10, because naming a single path is how an enumeration goes stale** (CLAUDE.md's E-2 lesson). Tracked classes under `books/`:
 
@@ -339,7 +365,8 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 
 1. ✅ **`tools/data/KRISTINsnid.csv` — OBTAINED 2026-08-10**, 35,655,687 bytes zipped (byte count matched `Content-Length`), 450 MB / 7,425,931 lines extracted. Gitignored at `.gitignore:56`. **No BÍN bytes are committed, and none may be** — including in test fixtures (§6).
 2. ✅ **The 15-field layout is confirmed against the real file** — D7, which this spec originally declined to state. There is **no header row**.
-3. ⬜ A locally rebuilt concept corpus in a scratch DB (§6). The raw source is present at `~/idordabanki-raw-2026-08-07/`. **Still open.**
+3. ⬜ A locally rebuilt concept corpus in a scratch DB (§6). The raw source is present at `~/idordabanki-raw-2026-08-07/`. **Still open — but it gates B4b-0b ONLY.** B4b-0a's golden is a pure `(SHsnid, word)` capture that touches no concept model at all, so **the port can start immediately.**
+5. ✅ **`tools/data/SHsnid.csv` — OBTAINED 2026-08-10**, 33,652,916 bytes zipped / 377 MB extracted, same 7,425,931 lines. Needed for B4b-0a's oracle, and — per D2 as corrected — it is the file **both** PRs actually use.
 4. ✅ **The decision record's dated amendment for §4's licence correction — APPENDED 2026-08-10** (append-only; the 2026-08-06 body is not edited). Logged in the register as **§C41**.
 
 ---
