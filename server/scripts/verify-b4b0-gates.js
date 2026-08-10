@@ -216,6 +216,36 @@ function keysDeep(v, acc = new Set()) {
   return acc;
 }
 
+/**
+ * A digest of `terminology_translations.inflections` — the D1 half of gate 3.
+ *
+ * ⚠️ THIS EXISTS BECAUSE THE MATCHER COMPARISON ALONE HAS A MEASURED HOLE, and
+ * the hole is exactly this project's commonest error: a measurement generalised
+ * one step past its coverage.
+ *
+ * Probed 2026-08-10, both directions, on a seeded scratch DB:
+ *  - Planting an inflection that OCCURS in a fixture segment's Icelandic text
+ *    cleared a `missing` issue (7 → 6). So the matcher genuinely does read this
+ *    column, and the comparison is NOT vacuous.
+ *  - But planting `["gervibeyging"]` on 324 old-table rows — a form occurring
+ *    nowhere in the 24 fixture segments — left the matcher output BYTE-IDENTICAL.
+ *
+ * So a D1 violation (the run writing to the old table instead of concept_term)
+ * is caught by the matcher comparison ONLY IF a written form happens to appear in
+ * those 24 segments. This digest closes that gap completely and cheaply: the
+ * column is asserted unchanged whatever the forms are.
+ */
+function oldInflectionsDigest(db) {
+  const rows = db.prepare('SELECT id, inflections FROM terminology_translations ORDER BY id').all();
+  const h = crypto.createHash('sha256');
+  let nonNull = 0;
+  for (const r of rows) {
+    if (r.inflections !== null) nonNull++;
+    h.update(`${r.id} ${r.inflections === null ? '' : r.inflections} `);
+  }
+  return { digest: h.digest('hex').slice(0, 16), nonNull, rows: rows.length };
+}
+
 function isOf(db, text) {
   return db
     .prepare("SELECT id, text, inflections FROM concept_term WHERE lang='is' AND LOWER(text)=?")
@@ -312,6 +342,10 @@ function main(argv = process.argv.slice(2)) {
   const nMatches = Object.values(matcherBefore).reduce((n, r) => n + r.matches.length, 0);
   const nIssues = Object.values(matcherBefore).reduce((n, r) => n + r.issues.length, 0);
   console.log(`  matcher before: ${nMatches} matches / ${nIssues} issues`);
+  const oldTableBefore = oldInflectionsDigest(db);
+  console.log(
+    `  old-table inflections digest: ${oldTableBefore.digest} (${oldTableBefore.nonNull} non-null)`
+  );
 
   const census = collectSourceEnglish(BOOK);
   const glossaryBefore = buildResolvedGlossary(db, BOOK, { census });
@@ -448,24 +482,44 @@ function main(argv = process.argv.slice(2)) {
           '     (c) an empty capture — two identical empty results compare equal. Asserted\n' +
           '         non-empty first, below.'
       );
+      console.log(
+        '  ⚠️ AND A FOURTH, MEASURED 2026-08-10: the matcher comparison ALONE has a hole.\n' +
+          '     Planting a form that OCCURS in a fixture segment cleared an issue (7→6), so it\n' +
+          '     is not vacuous — but planting one occurring NOWHERE, on 324 old-table rows, left\n' +
+          '     the output byte-identical. A D1 violation is caught by the matcher only if a\n' +
+          '     written form lands in these 24 segments. Hence the digest, complete regardless.'
+      );
       const matcherAfter = matcherOutput(built.path);
       const identical = JSON.stringify(matcherBefore) === JSON.stringify(matcherAfter);
+      const oldTableAfter = oldInflectionsDigest(db);
       console.log(
         `  before: ${nMatches} matches / ${nIssues} issues · identical after: ${identical}`
+      );
+      console.log(
+        `  old-table digest: ${oldTableBefore.digest} → ${oldTableAfter.digest} ` +
+          `(${oldTableBefore.nonNull} → ${oldTableAfter.nonNull} non-null of ${oldTableAfter.rows})`
       );
       const g3bad = [];
       if (nMatches === 0)
         g3bad.push('the BEFORE capture has 0 matches — the comparison is vacuous');
       if (nIssues === 0) g3bad.push('the BEFORE capture has 0 issues — the comparison is vacuous');
       if (!identical) g3bad.push('matcher output CHANGED across the population');
+      if (oldTableAfter.digest !== oldTableBefore.digest) {
+        g3bad.push(
+          'D1 VIOLATION: terminology_translations.inflections changed ' +
+            `(${oldTableBefore.digest} -> ${oldTableAfter.digest}) — the run wrote to the OLD table`
+        );
+      }
       ok.push(
         record(
-          'GATE 3 (matcher inertness)',
+          'GATE 3 (matcher inertness + D1)',
           g3bad.length ? 'FAIL' : 'PASS',
           g3bad.length
             ? g3bad.join('; ')
-            : `${nMatches} matches / ${nIssues} issues, byte-identical across the population, ` +
-                'both captures taken in COLD child processes'
+            : `${nMatches} matches / ${nIssues} issues byte-identical (COLD child processes), AND ` +
+                `the old table's inflections column unchanged (digest ${oldTableAfter.digest}, ` +
+                `${oldTableAfter.nonNull}/${oldTableAfter.rows} non-null) — the complete D1 check ` +
+                'the matcher comparison alone is not'
         )
       );
 

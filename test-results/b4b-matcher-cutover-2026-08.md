@@ -522,12 +522,25 @@ So the golden now asserts something **stronger** than before — that the new pa
 | 1 D4 refuses | `afl` unwritten across 5 rows, named with 2 entries (kk+hk) |
 | 1b D4.2 rescues | `hverfa` → kvk 12 forms · `vinna` → kvk 5 forms · **0 participles** |
 | 2 **the control** | 25,810 rows written over 13,896 unambiguous + 403 rescued |
-| 3 matcher inertness | 40 matches / 7 issues, byte-identical, **cold child processes** |
+| 3 matcher inertness **+ D1** | 40 matches / 7 issues byte-identical (**cold child processes**), AND the old table's `inflections` digest unchanged (`f3136cbf1bb8cddb`, 2/326 non-null) |
 | 4 🔴 D6 licence | 2,119 terms, 0 inflection-shaped keys, 0 of 200 sampled forms present |
 | 5 D5 idempotency | 0 written, 25,810 → 25,810 populated |
 | self-test | 3 planted defects, **all detected** |
 
 ⚠️ **Gate 2 is what makes gate 1 mean anything.** A run that refused *everything* would pass gate 1 perfectly.
+
+### ⚠️ B6.1 A FOURTH way gate 3 could have passed for the wrong reason — found by self-review, after it was already green
+
+The matcher comparison **alone** does not settle D1. Probed both directions on a seeded scratch DB:
+
+| probe | result |
+|---|---|
+| plant an inflection that **occurs** in a fixture segment's Icelandic text | a `missing` issue **cleared, 7 → 6** — so the matcher genuinely does read this column, and the comparison is **not vacuous** |
+| plant `["gervibeyging"]` — a form occurring **nowhere** in the 24 segments — on **324** old-table rows | matcher output **BYTE-IDENTICAL** |
+
+So a D1 violation — the run writing to `terminology_translations` instead of `concept_term` — is caught by the matcher comparison **only if a written form happens to appear in those 24 fixture segments.** That is this project's commonest error in miniature: *a measurement generalised one step past its coverage*, and "byte-identical, therefore inert" reads as complete when it is conditional.
+
+**Closed by adding a digest of `terminology_translations.inflections` across the population**, asserted unchanged whatever the forms are. Both halves are now reported. ⚠️ **Note the first probe was itself too weak and would have "confirmed" vacuity** — it planted a form that could not match anything, so its null result said nothing about the matcher. The second probe is what made either result meaningful.
 
 ⚠️ **Gate 3 had three independent ways to pass for the wrong reason**, each closed deliberately: **(a)** two databases — a write to B cannot move a matcher reading A, so one DB is used, the scratch corpus carrying 032's tables beside 045's; **(b)** a **warm automaton cache** — it fingerprints `terminology_headwords`, which B4b-0b never touches, so an in-process re-call re-reads *nothing* and byte-identity would hold whatever the population did, hence cold child processes via `SESSIONS_DB_PATH`; **(c)** an empty capture, hence the non-empty assertion first. Gate 4 carries the same non-empty control for the same reason.
 
