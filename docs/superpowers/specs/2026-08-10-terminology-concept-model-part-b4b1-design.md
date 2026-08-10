@@ -100,11 +100,22 @@ The natural "make it loud" is a startup warning plus an `/api/health` line. **�
 
 **So the honest framing for the lead is:** between B4b-1 and B4c the terminology editor is a **write-only UI**, and under D1-a *nobody using it will be told*. If that is unacceptable, the mitigation has to be an editor-facing one — which is a UI change, which is B4c, which is D1-b. **The choice is therefore genuinely between "accept a silent window" and "re-order the slices", and no amount of operator-side logging collapses it.** **This is the lead's call, not the implementer's.**
 
-### D1 has an unmeasured input, and it is cheap to get
+### ✅ D1's missing input is now MEASURED, and it NARROWS D1 rather than widening it
 
-**[measured-here — the absence itself]** No measurement anywhere compares the old `terminology_translations.icelandic` strings against `concept_term(lang='is')`. The recorded *"0 lost at cut-over"* covers the **English key only**.
+**[measured-here, on production, read-only, 2026-08-10]** → [`test-results/b4b1-icelandic-side-sizing-2026-08.md`](../../../test-results/b4b1-icelandic-side-sizing-2026-08.md). All controls passed, including the EN side independently reproducing 20,272/20,272 = 100.00% and a **reverse control at 32.15%**, which is what makes the join meaningful rather than vacuous.
 
-**The Icelandic side has never been sized.** That is the number that says how much editorial work Branch A silently discards. It is a read-only query against prod. **§8 makes it a precondition.**
+**The Icelandic side is 99.98% expressible.** Of 28,903 distinct approved `(english, icelandic)` pairs, **28,898** can be expressed by some concept that carries both strings. **Five pairs (0.02%) cannot**, and all five have their Icelandic present in the corpus under a *different* concept — **zero approved Icelandic strings are absent from the corpus entirely.**
+
+**So D1 is NOT about losing existing editorial vocabulary. It is about the WRITE PATH — the inability to record NEW decisions.** That is a materially smaller claim than §3's Branch A first suggested, and the recommendation below is re-weighed accordingly.
+
+⚠️ **THE FIRST PASS OF THIS MEASUREMENT SAID 5.60% WAS "GENUINELY LOST EDITORIAL VOCABULARY", AND IT WAS WRONG.** The old model packs **multiple Icelandic synonyms into ONE `icelandic` field, comma-separated** (1,647 of 28,903 rows contain a comma); `concept_term` stores each as its own row, so the composite string is absent **by construction**. Split on commas and **every** synonym of all 1,613 is expressible — category "partially expressible" is **empty**. **The counts were internally consistent and every control passed; only reading the VALUES exposed it** (`Gibbs free energy → "fríorka Gibbs, frjálsorka Gibbs, Gibbs frjálsorka"`). **A join key is a format assumption, and a count cannot tell you the key is malformed.**
+
+🔴 **Two things this does NOT settle, and B4b-1 must not read it as if it did:**
+
+- **EXPRESSIBLE ≠ SELECTED.** The query asks only whether a concept carries both strings. It does **not** ask whether `resolve()` would **return** that Icelandic — the resolver picks by domain priority → preference → head form and may return a different synonym of the same concept. **That agreement rate is unmeasured and it is what sets the editor-visible change.** It is **gate 3's** job, not a precondition's.
+- **EXPRESSIBLE ≠ MIGRATED.** No bridge exists, and no migration backfills one.
+
+⚠️ **And any future bridge must tokenise `terminology_translations.icelandic` on commas.** Nothing in the tree does today, so a naïve consumer reproduces this exact false negative.
 
 ---
 
@@ -122,7 +133,9 @@ So a B4b-1 that lands **before** the population op moves the matcher from *66.39
 - **D2-a** — population op **is a precondition** of B4b-1. No regression window.
 - **D2-b** — B4b-1 lands first; the window is accepted and stated in the PR. **[inferred]** the window's cost is bounded and reversible, since the op is idempotent and can run any time.
 
-**Recommendation: D2-a.** The op is a 3-second-to-schedule data run on B2's precedent, the deploy is already done, and it removes an acceptance criterion rather than adding one.
+**✅ RULED 2026-08-10 (lead): D2-a — the BÍN population op is a PRECONDITION of B4b-1.** The op is schedulable now on B2's precedent (B4b-0b is merged and deployed), it is idempotent, and making it a precondition removes an acceptance criterion rather than adding one. **§8 carries it as precondition 3.**
+
+⚠️ **Two consequences worth stating so the ruling is not read as bigger than it is.** ① It does **not** make the paradigm path *tested* — see §7.1; gate 7 is still owed. ② Even after a full run, **[inherited-prod]** roughly 70% of Icelandic `concept_term` rows still carry no paradigm (the 71.18% BÍN miss, plus 18,299 multi-word rows the producer skips by SQL and which are **permanently** base-form-only). **D2-a removes the 100%-base-form window; it does not make base-form matching a corner case.**
 
 ---
 
@@ -294,9 +307,9 @@ The measurement plan:
 
 ## 8. Preconditions
 
-1. 🔴 **D1 is answered by the lead.** Nothing is implementable until it is — the options differ in slice *order*, not only in code.
-2. 🔴 **The Icelandic-side sizing is measured** (§3): compare old `terminology_translations.icelandic` against `concept_term(lang='is')` on prod, read-only. It is D1's missing input.
-3. **D2 is answered** — population op before or after.
+1. 🔴 **D1 is answered by the lead.** Nothing is implementable until it is — the options differ in slice *order*, not only in code. **Its missing input is now supplied (§3): 99.98% expressible, so D1 is about the write path alone.**
+2. ✅ **The Icelandic-side sizing is MEASURED** — 2026-08-10, read-only on prod → [`test-results/b4b1-icelandic-side-sizing-2026-08.md`](../../../test-results/b4b1-icelandic-side-sizing-2026-08.md).
+3. ✅ **D2 is RULED: D2-a — the BÍN population op runs FIRST.** It is a [LEAD] data op on B2's precedent and gates B4b-1's start.
 4. ⬜ A locally rebuilt scratch concept corpus. Available: `~/idordabanki-raw-2026-08-07/` (76 MB, verified present), rebuild 3.0–4.8 s.
 5. ✅ `server/__tests__/helpers/freshMigratedDb.js` exists and produces all four concept tables.
 
