@@ -319,6 +319,10 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 
 **Decision: port it.** `server/scripts/fetch-bin-inflections.js` + `server/lib/binInflections.js` replace the Python script, which is deleted; tests are Vitest under `server/__tests__/`, so they run in `npm test` and in CI's `test` job with no new surface. Rejected: *add pytest* (a new toolchain gating merges for one script) and *corpus-gate only* (the register's own warning — corpus-only properties are what the unit suite silently stops covering).
 
+⚠️ `vitest.config.js` sets `fileParallelism: false` globally, so these run
+sequentially with everything else; the golden's ~30–90 s CSV stream is additive
+to total suite time, not hidden by parallelism.
+
 ⚠️ **Two things the port must carry across, both easy to lose:**
 - **`--execute` opt-in, dry-run default.** The Python script's one genuinely good safety property.
 - **Streaming, not `readFileSync`.** The CSV is **450 MB / 7,425,931 lines**. Node's default string cap and the memory cost both make a whole-file read wrong here; the Python version used `csv.reader` over a file handle. Read it line by line and build only the index.
