@@ -1004,6 +1004,18 @@ const WORDS = path.join(__dirname, 'fixtures', 'bin-golden-words.txt');
 const HASHES = path.join(__dirname, 'fixtures', 'bin-golden-hashes.json');
 const haveCsv = fs.existsSync(CSV);
 
+/**
+ * ⚠️ THE CSV'S IDENTITY, PINNED. Task 1's review (finding 2) found that the
+ * golden's PRODUCER is pinned by commit sha but its INPUT was pinned nowhere:
+ * `tools/data/` is wholly gitignored, so `SHsnid.csv.sha256sum` exists on disk
+ * and in no commit. Once Task 7 deletes the Python the golden is permanent, and
+ * a later CSV swap — a redownload, or the KRISTINsnid switch the spec defers as
+ * D2 — would produce mismatches INDISTINGUISHABLE from a port regression.
+ *
+ * A checksum is not BÍN content, so committing it is licence-safe.
+ */
+const CSV_SHA256 = '9c10d70d73c03168f05f152616b8cafa6e4275e7db8701338f5f3c48a45b7ab6';
+
 describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
   it('reproduces the Python byte-for-byte on every word', async () => {
     const golden = JSON.parse(fs.readFileSync(HASHES, 'utf-8'));
@@ -1034,6 +1046,22 @@ describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
     expect(mismatches.slice(0, 10)).toEqual([]);
     expect(mismatches).toHaveLength(0);
   }, 300000);
+
+  // ⚠️ RUNS BEFORE the comparison, and FAILS rather than skips. If the CSV has
+  // changed, every mismatch below is uninterpretable — the whole point is to say
+  // WHICH of the two possible causes it is. (Task 1 review, finding 2.)
+  it('is reading the same SHsnid.csv the golden was captured from', () => {
+    const actual = crypto.createHash('sha256').update(fs.readFileSync(CSV)).digest('hex');
+    if (actual !== CSV_SHA256) {
+      throw new Error(
+        `tools/data/SHsnid.csv has CHANGED since the golden was captured.\n` +
+          `  expected ${CSV_SHA256}\n  actual   ${actual}\n` +
+          `This is a DATA SWAP, not a port regression — do not "fix" the code to match. ` +
+          `Either restore the original CSV, or re-capture the golden from the Python at the ` +
+          `capture commit (git log for tools/capture-bin-golden.py) and record the new checksum here.`
+      );
+    }
+  }, 120000);
 
   it('distinguishes null from an empty list in the golden itself', () => {
     const golden = JSON.parse(fs.readFileSync(HASHES, 'utf-8'));

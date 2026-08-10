@@ -347,6 +347,7 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 | 3 | **inertness:** `findTermsInSegments` output is byte-identical before and after the run |
 | 4 | **the licence control:** the glossary export payload gains **no** inflections key (D6) |
 | 5 | re-run writes 0 rows, and the before/after non-null counts prove it (D5) |
+| 6 | **the CSV is the one the run was designed against** — SHA-256 asserted before anything else, so a data swap reports as a data swap rather than as a code regression. ⚠️ Doubly relevant here: D2 defers a possible switch to `KRISTINsnid.csv`, whose **form column is index 9, not 4** — silently reading the wrong column is exactly the zero-yield trap §5's input guard exists to catch. |
 
 ⚠️ **Gate 2 is what makes gate 1 mean anything.** A run that refused *everything* would pass gate 1 perfectly.
 
