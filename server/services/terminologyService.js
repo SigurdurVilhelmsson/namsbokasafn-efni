@@ -1380,6 +1380,27 @@ function fingerprintHeadwords(pairs) {
 }
 
 /**
+ * Normalise a caller-supplied chapter for conceptResolver.buildScope.
+ *
+ * ⚠️ THE CAST IS NOT THE POINT — SQLite already does it correctly. `book_term_
+ * preference.chapter` is INTEGER, so `chapter IN (0, ?)` bound with '3' returns
+ * the same rows as 3 (column affinity, measured 2026-08-10). The hazard is the
+ * SENTINEL WORD: 'appendices', null and undefined all return the chapter-0
+ * book-default rows with NO throw, silently dropping every appendices-scoped
+ * override. So this guard REJECTS rather than coerces.
+ *
+ * 0 = book default, -1 = appendices (chapterLabel's sentinel).
+ */
+function normalizeChapterArg(chapter) {
+  if (chapter === undefined) return 0;
+  if (typeof chapter === 'number' && Number.isInteger(chapter)) return chapter;
+  if (typeof chapter === 'string' && /^-?\d+$/.test(chapter)) return Number(chapter);
+  throw new TypeError(
+    `chapter must be an integer (0 = book default, -1 = appendices), got ${JSON.stringify(chapter)}`
+  );
+}
+
+/**
  * Find terminology matches in segments.
  * Uses inflection-aware matching and domain priority ranking.
  *
@@ -1387,8 +1408,9 @@ function fingerprintHeadwords(pairs) {
  * @param {string|null} bookSlug - Book slug for domain priority
  * @returns {object} Map of segmentId → { matches, issues }
  */
-function findTermsInSegments(segments, bookSlug = null) {
+function findTermsInSegments(segments, bookSlug = null, chapter) {
   const db = getDb();
+  const chapterNum = normalizeChapterArg(chapter); // eslint-disable-line no-unused-vars -- Task 4 consumes it
 
   // Get book's primary subject
   const bookSubject = bookSlug ? getBookSubjectBySlug(db, bookSlug) : null;
@@ -1874,8 +1896,14 @@ function getAddedTerms(options = {}) {
  * @param {string} [segmentId]
  * @returns {Array<{type, headwordId, english, expected, message}>}
  */
-function checkSegmentConsistency(enContent, isContent, bookSlug = null, segmentId = 'seg') {
-  const res = findTermsInSegments([{ segmentId, enContent, isContent }], bookSlug);
+function checkSegmentConsistency(
+  enContent,
+  isContent,
+  bookSlug = null,
+  segmentId = 'seg',
+  chapter
+) {
+  const res = findTermsInSegments([{ segmentId, enContent, isContent }], bookSlug, chapter);
   return res[segmentId]?.issues || [];
 }
 
@@ -1888,8 +1916,8 @@ function checkSegmentConsistency(enContent, isContent, bookSlug = null, segmentI
  * @param {string|null} bookSlug
  * @returns {Array<{headwordId, english, expected, count, segments: string[]}>}
  */
-function buildModuleTerminologyReport(segments, bookSlug = null) {
-  const res = findTermsInSegments(segments, bookSlug);
+function buildModuleTerminologyReport(segments, bookSlug = null, chapter) {
+  const res = findTermsInSegments(segments, bookSlug, chapter);
   const byTerm = new Map();
   for (const [segId, { issues }] of Object.entries(res)) {
     for (const issue of issues) {
@@ -2113,6 +2141,7 @@ module.exports = {
 
   // Query
   getStats,
+  normalizeChapterArg,
   findTermsInSegments,
   translationTier,
   checkSegmentConsistency,

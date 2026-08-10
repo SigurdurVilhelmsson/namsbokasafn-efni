@@ -1744,3 +1744,25 @@ describe('batchApproveTranslations()', () => {
     );
   });
 });
+
+describe('normalizeChapterArg() — the sentinel WORD is the hazard, not the string type', () => {
+  it('defaults an omitted chapter to 0, the book-default sentinel', () => {
+    expect(terminologyService.normalizeChapterArg(undefined)).toBe(0);
+  });
+  it('accepts -1, the appendices sentinel', () => {
+    expect(terminologyService.normalizeChapterArg(-1)).toBe(-1);
+  });
+  it('accepts an integer-like string, because req params and argv are strings', () => {
+    expect(terminologyService.normalizeChapterArg('3')).toBe(3);
+  });
+  // THE CONTROL: each of these silently returns book-default rows if passed
+  // through to buildPreferenceMap's `chapter IN (0, ?)`. They must throw.
+  it.each([['appendices'], [null], [Number.NaN], [3.5], ['ch03']])(
+    'throws on %p rather than silently answering from the book default',
+    (bad) => {
+      expect(() => terminologyService.normalizeChapterArg(bad)).toThrow(
+        /chapter must be an integer/
+      );
+    }
+  );
+});
