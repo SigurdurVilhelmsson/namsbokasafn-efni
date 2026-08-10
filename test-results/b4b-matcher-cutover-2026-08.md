@@ -36,7 +36,7 @@ A third question emerged and is answered here too: **what EN coverage does the c
 
 **This section first concluded: *"They are a project-authored asset with no upstream to re-fetch from. Losing them is irreversible; a re-import cannot restore them."* That is wrong, and it was wrong in the direction that inflates the value of preserving them.**
 
-The inflections are **BÍN-derived and fully regenerable**. `tools/fetch_bin_inflections.py` is the bulk producer — `:175` `UPDATE terminology_translations SET inflections = ? WHERE id = ?`, encoding `json.dumps(forms, ensure_ascii=False)` at `:187`. Its input is `SHsnid.csv` from Beygingarlýsing íslensks nútímamáls, placed at the gitignored `tools/data/`.
+The inflections are **BÍN-derived and fully regenerable**. `tools/fetch_bin_inflections.py` **was** the bulk producer at the time of this measurement (2026-08-10) — `:175` `UPDATE terminology_translations SET inflections = ? WHERE id = ?`, encoding `json.dumps(forms, ensure_ascii=False)` at `:187`. ⚠️ **It has since been ported and deleted, same day, under §C36 B4b-0a**: the producer is now `server/scripts/fetch-bin-inflections.js` + `server/lib/binInflections.js`, pinned behaviour-identical by a differential golden. Line numbers above are into a file that no longer exists in the tree — recover it with `git show 8072a58f:tools/fetch_bin_inflections.py` if you need to read it. Its input is `SHsnid.csv` from Beygingarlýsing íslensks nútímamáls, placed at the gitignored `tools/data/`.
 
 **How the error happened, because the mechanism generalises:** the search that produced it was `grep -rn "inflections" server/ tools/ --include=*.js`. The producer is **Python**, so `--include=*.js` made it structurally invisible — and the grep returned a clean, plausible answer built entirely from the editor-facing propose path (`server/routes/terminology.js:543` → `server/services/terminologyService.js:346`), which is a real but **secondary** writer. *An absence is not an answer* — and a filter you chose is one of the ways an absence gets manufactured. Found by a subagent asked to trace the origin independently, not by the grep, and not by review of its conclusion.
 
@@ -72,7 +72,7 @@ Measured on prod with a gender diagnostic — masculine `-inn` and neuter `-ið`
 
 From [docs/decisions/2026-08-06-bin-licensing-corrected-and-malstadur-integration.md](../docs/decisions/2026-08-06-bin-licensing-corrected-and-malstadur-integration.md) — cited, not restated:
 
-- **The grant is route-bound.** Only `https://bin.arnastofnun.is/gogn/mimisbrunnur/` is covered. 🔴 The convenience URL `django/api/nidurhal/?file=SHsnid.csv.zip` returns 200 and is **outside the grant — do not use it.**
+- ⚠️ **WITHDRAWN 2026-08-10 — this said "the grant is route-bound" and marked `django/api/nidurhal/` 🔴 out-of-grant.** The lead supplied SÁM's full *Skilmálar*: **that clause is not in them.** The terms are plain CC BY-SA 4.0 plus two obligations — credit, and declare modifications. Measured: the endpoint returns `200`, `Content-Disposition: attachment`, **no acceptance step of any kind**. Recorded as register **§C41**, with a dated amendment appended to the decision record. **This entry is retained rather than deleted because the withdrawal is the finding.**
 - **`KRISTINsnid.csv` (15 fields, partly prescriptive) is the better-matched source** for a textbook glossary than `SHsnid.csv` (6 fields, purely descriptive), and the script currently parses SHsnid. `Storasnid_ritm.csv` deliberately carries **misspellings** and must never be used.
 - **`sessions.db` is gitignored, so storing BÍN-derived forms in `concept_term.inflections` needs no licence change.** 🔴 **But the export payload is a different matter:** adding an inflections column to the glossary export would publish CC BY-SA data under CC BY 4.0 via the unforced 2-hourly cron — invisible to both the producer gate and the shrink guard. **B4b-1 must not put inflections in the payload.**
 - Credit BÍN in Ritstjóri and state that the forms are generated.
@@ -269,6 +269,142 @@ This document quotes inflected forms derived from BÍN.
 
 **The forms are modified**: selected, subsetted per lemma, and (in the values quoted from production) unioned across BÍN entries by the defect described in §2.4. Required by CC BY-SA 4.0 §3(a)(1)(A) and §3(a)(1)(B), per SÁM's terms.
 
-⚠️ **Use `better-sqlite3`, never the `sqlite3` CLI**, per CLAUDE.md — this project's builds differ from stock on `PRAGMA foreign_keys`, and the CLI reports the wrong answer.
+---
 
-⚠️ The correlated `NOT EXISTS … COLLATE NOCASE` subqueries in `b4b-measure2.js` are slow on the Linode (minutes). The in-memory-set method in `b4b-control.js` answers the same question in seconds and is the one to prefer.
+## 9. Recovering the golden's producer (I-3, wb-review-A, 2026-08-10)
+
+§C36 B4b-0a deletes both `tools/fetch_bin_inflections.py` and `tools/capture-bin-golden.py`
+in its final commit, so `server/__tests__/fixtures/bin-golden-hashes.json` can never be
+re-derived from a live tree again — only from git history. Two defects made the documented
+recovery path not actually work, found by wb-review-A and fixed here rather than in place:
+
+1. **The recovered capture script's fixture paths point into a tree the fixtures left.**
+   `git show 8072a58f:tools/capture-bin-golden.py` (note the **colon**, not `-- <path>` — the
+   latter prints a commit header and a diff, not the file) returns a script whose `WORDS`/`OUT`
+   constants are `tools/__tests__/fixtures/...`. `738d0d36` (`R100`) moved those fixtures to
+   `server/__tests__/fixtures/` **before** the capture script was written against them, so the
+   committed copy was already stale on arrival. The dangerous failure mode is a **half-fix**:
+   repairing only `WORDS` still writes `OUT` to a fresh file in the wrong tree — the real golden
+   stays untouched, the gate keeps reporting the same mismatches, and since only `tools/data/` is
+   gitignored (not `tools/__tests__/`), the stray file looks like an ordinary untracked artefact
+   rather than an error.
+2. **The docstring itself has two stale facts**, both harmless to a reader who cross-checks but
+   worth not repeating: it says *"MUST be run BEFORE `tools/fetch-bin-inflections.js` exists"* —
+   a path that never existed at any commit, the real port lives at
+   `server/scripts/fetch-bin-inflections.js` — and *"Captured at commit:
+   6193e1a4fbe58faf5f8ebc719bb27bd0e89e10f3"*, which is the **plan-authoring** commit, one
+   commit before the capture actually ran. The test, this document and the register all name the
+   capture commit as **`8072a58f`** (`test(B4b-0a): capture the differential golden from the
+   UNMODIFIED Python`, 2026-08-10 08:30:17 +0000) — that is the sha to cite and the sha this
+   corrected copy records.
+
+Neither the git history nor `docs/superpowers/plans/2026-08-10-c36-b4b0a-port-bin-inflections.md`
+is edited to fix this — the former cannot be, the latter's embedded Task-1 code block **has**
+been corrected in place (it is a live planning doc, not frozen evidence) but a plan is still one
+more hop away from "just run it." This section is the actual lifeline: a complete, corrected,
+pasteable copy of the capture script, frozen as text so recovery never again depends on
+archaeology plus a patch.
+
+**To use it:** the Python it imports is *also* deleted. Recover both at the capture commit,
+run this script, then discard the recovered files — do not re-commit them.
+
+```bash
+git show 8072a58f:tools/fetch_bin_inflections.py > tools/fetch_bin_inflections.py
+git show 8072a58f:tools/capture-bin-golden.py > /tmp/capture-bin-golden-original.py  # for diffing only, not run
+# Paste the corrected script below to tools/capture-bin-golden.py, then:
+python3 tools/capture-bin-golden.py
+# Then discard both recovered files — they must not be re-committed:
+git checkout -- tools/fetch_bin_inflections.py 2>/dev/null || rm -f tools/fetch_bin_inflections.py
+rm -f tools/capture-bin-golden.py /tmp/capture-bin-golden-original.py
+```
+
+```python
+# tools/capture-bin-golden.py
+"""
+Captures the B4b-0a differential golden from the UNMODIFIED Python implementation.
+
+⚠️ MUST be run BEFORE server/scripts/fetch-bin-inflections.js exists. Re-running it after
+the port would certify the new implementation against itself and destroy the
+oracle — there is no observable difference between a correct golden and a
+worthless one. (Same rule as server/scripts/capture-c24-golden.js.)
+
+⚠️ Stores SHA-256 HASHES, never the forms themselves: the values are BÍN-derived
+(CC BY-SA) and this repository is public. A hash is fully discriminating for a
+differential test and carries no BÍN bytes.
+
+`null` means the Python returned None. That is DISTINCT from a hash of "[]" and
+the distinction is load-bearing — see the port's getInflections.
+
+Run: python3 tools/capture-bin-golden.py
+Captured at commit: 8072a58ffa8b06894029f5f145b523bd651ce9c1
+"""
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+from fetch_bin_inflections import load_bin_data, get_inflections  # noqa: E402
+
+# ⚠️ HERE is tools/. The fixtures live under server/__tests__/fixtures/, NOT
+# tools/__tests__/fixtures/ — R100 (738d0d36) moved them there, before this
+# script was ever written against them.
+CSV = HERE / "data" / "SHsnid.csv"
+WORDS = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-words.txt"
+OUT = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-hashes.json"
+
+if not CSV.exists():
+    sys.exit(f"REFUSING: {CSV} not found. Download SHsnid.csv first.")
+
+inflection_map = load_bin_data(CSV)
+words = [w for w in WORDS.read_text(encoding="utf-8").split("\n") if w != ""]
+print(f"words: {len(words)}")
+
+golden = {}
+found = missing = 0
+for w in words:
+    forms = get_inflections(inflection_map, w)
+    if forms is None:
+        golden[w] = None
+        missing += 1
+    else:
+        payload = json.dumps(forms, ensure_ascii=False)
+        golden[w] = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+        found += 1
+
+OUT.write_text(json.dumps(golden, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
+               encoding="utf-8")
+print(f"  found: {found}\n  not in BÍN (null): {missing}")
+
+# A golden with no misses would never exercise the None path; one with no hits
+# proves nothing at all. Both are worthless in different directions.
+if found == 0 or missing == 0:
+    sys.exit("REFUSING: a golden with zero hits or zero misses proves nothing.")
+```
+
+After running, record the new `CSV_SHA256` in
+`server/__tests__/binInflectionsGolden.test.js` (the CSV you ran it against, freshly hashed)
+and commit the regenerated `bin-golden-words.txt`/`bin-golden-hashes.json` alongside it. This
+recovery procedure is only needed if the golden must be re-captured against a **different**
+`SHsnid.csv` (a redownload, or the KRISTINsnid switch spec §D2 defers) — the existing golden
+does not need re-capture just because the Python is gone.
+
+
+---
+
+## 9. The capture script, frozen — the golden's recovery path
+
+⚠️ **`tools/capture-bin-golden.py` was DELETED with the Python it imports** (§C36 B4b-0a, Task 7). `git show 8072a58f:tools/capture-bin-golden.py` recovers it — **note the colon; `git show <sha> -- <path>` prints a diff, not a runnable file.**
+
+⚠️ **The recovered copy will NOT run as-is.** Its fixture constants point at `tools/__tests__/fixtures/`, and commit `738d0d36` moved both fixtures to `server/__tests__/fixtures/`. The dangerous variant is the half-fix: repairing only `WORDS` leaves `OUT` writing a fresh golden into a tree **no test reads**, so the gate keeps reporting the same mismatches while an operator believes they have re-captured it. Found by whole-branch review A (I-3).
+
+**The corrected constants — the only lines that need changing:**
+
+```python
+CSV   = HERE / "data" / "SHsnid.csv"                                    # unchanged
+WORDS = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-words.txt"
+OUT   = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-hashes.json"
+```
+
+🔴 **Re-capturing is a LAST RESORT and destroys the oracle's independence.** The golden's whole value is that it was taken from an implementation written before the port existed. Re-capturing from anything else certifies the new code against itself — `capture-c24-golden.js` states the rule and the reason: *"there is no observable difference between a correct golden and a worthless one."* **If the gate fails, the first question is whether `tools/data/SHsnid.csv` still matches `CSV_SHA256`** (`9c10d70d73c03168f05f152616b8cafa6e4275e7db8701338f5f3c48a45b7ab6`). A data swap and a port regression look identical in the mismatch output; only that hash tells them apart.

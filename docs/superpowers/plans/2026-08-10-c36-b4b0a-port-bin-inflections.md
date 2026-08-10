@@ -132,9 +132,15 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from fetch_bin_inflections import load_bin_data, get_inflections  # noqa: E402
 
+# ⚠️ HERE is tools/. The fixtures live under server/__tests__/fixtures/, NOT
+# tools/__tests__/fixtures/ — R100 (738d0d36) moved them there. A half-fixed
+# version of this script (only WORDS repaired) would write OUT to a fresh file
+# in the wrong tree: the real golden stays untouched, the gate keeps reporting
+# the same mismatches, and since only tools/data/ is gitignored the stray file
+# looks like an untracked artefact rather than an error. (I-3, wb-review-A.)
 CSV = HERE / "data" / "SHsnid.csv"
-WORDS = HERE / "__tests__" / "fixtures" / "bin-golden-words.txt"
-OUT = HERE / "__tests__" / "fixtures" / "bin-golden-hashes.json"
+WORDS = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-words.txt"
+OUT = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-hashes.json"
 
 if not CSV.exists():
     sys.exit(f"REFUSING: {CSV} not found. Download SHsnid.csv first.")
