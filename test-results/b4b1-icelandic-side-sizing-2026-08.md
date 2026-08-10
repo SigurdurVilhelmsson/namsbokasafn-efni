@@ -66,6 +66,26 @@ There are **zero `proposed` rows on production.** So the matcher's `WHERE t.stat
 
 ---
 
+## 3b. 🔴 THE WRITE PATH HAS NEVER BEEN USED BY AN EDITOR. Every row is one bulk import.
+
+**[measured]** All 28,903 `terminology_translations` rows share one provenance and one 26-minute window:
+
+| Column | Value | Rows |
+|---|---|---:|
+| `source` | `"idordabankinn"` | **28,903** (100%) |
+| `approved_by` | `"idordabankinn-import"` | **28,903** (100%) |
+| `created_at` | `2026-03-25 16:18:23` → `16:44:40` — **one day, 26 minutes** | 28,903 |
+| `approved_at` | identical range | 28,903 |
+| `updated_at` | `2026-03-25 16:18:23` → `17:38:19` — **still one day** | 28,903 |
+
+**Zero rows are attributable to an editor.** Not one propose, not one approve, not one edit — in the ~4.5 months since. Combined with §3's finding that `status` has only the value `approved`, the picture is unambiguous: **the terminology table is a read-only artifact of a single Íðorðabankinn import, and the 16 authenticated write endpoints have no measured traffic at all.**
+
+⚠️ **State this at the right strength.** It is *"no surviving row was written by an editor"*, not *"no editor ever tried"* — a created-then-deleted row would leave no trace here, and `updated_at` running an hour past `created_at` shows the import itself did a second pass. But nothing suggests editorial use, and two independent columns agree.
+
+**This is what makes D1 decidable.** §3's "the editor's decision becomes unrepresentable" describes a real code-level gap on a path that **production has never exercised**. The cost of D1-a is therefore a window on an unused door.
+
+---
+
 ## 4. What this settles, and what it explicitly does NOT
 
 **Settles (D1's input):** the cut-over does **not** discard existing editorial vocabulary. 99.98% of it is expressible in the concept model, and the 0.02% that is not is a *linking* disagreement, not missing words. **D1 is therefore about the WRITE PATH — the inability to record NEW decisions — and not about losing old ones.**

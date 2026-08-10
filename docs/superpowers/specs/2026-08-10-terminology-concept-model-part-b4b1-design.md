@@ -94,7 +94,15 @@ So after the cut-over, an editorial write goes into a table nothing reads. Two b
 | **D1-c** | **B4b-1 ships with a read-side bridge**: when a concept lookup misses, fall back to the old tables for that English string. | Preserves editor writes with no new write path. | A second live read path — exactly the "two sources of truth" shape this project keeps paying for. **Not recommended.** |
 | **D1-d** | **B4b-1 ships behind an env flag**, defaulting to the old path, flipped per-book after B4c. | Reversible; measurable in prod. | A prod escape hatch, which the standing feedback rule *robustness over expedience* argues against. |
 
-**Recommendation: D1-a — but its cost must be stated honestly, because the obvious mitigation does not reach the people who lose the work.**
+### 🔴 AND THE DECIDING MEASUREMENT: the write path has NEVER been used by an editor
+
+**[measured-here, prod, read-only]** All 28,903 `terminology_translations` rows carry `source = "idordabankinn"` and `approved_by = "idordabankinn-import"`, and every `created_at` falls inside a **single 26-minute window on 2026-03-25**. **Zero rows are attributable to an editor** — no propose, no approve, no edit, in the ~4.5 months since. §3's `status` finding agrees independently: the only value present is `approved`.
+
+⚠️ **At the right strength:** this is *"no surviving row was written by an editor"*, not *"no editor ever tried"*. But two independent columns agree and nothing suggests editorial use.
+
+**So the whole of §3 describes a real code-level gap on a path production has never exercised.** D1's cost is a window on an unused door — which is what makes D1-a the answer rather than merely the cheapest option.
+
+**Recommendation: D1-a — and with the traffic measurement above, this is now a weak-consequence decision rather than a trade-off. Its cost must still be stated honestly, because the obvious mitigation does not reach the people who would, in principle, lose the work.**
 
 The natural "make it loud" is a startup warning plus an `/api/health` line. **⚠️ That is loud to the OPERATOR and silent to the EDITOR.** CLAUDE.md § Server Features records that **nothing polls `/api/health`** — the routine surface is what `./scripts/deploy.sh` prints. So the warning reaches whoever runs a deploy, while the editors whose terminology decisions stop being representable are told **nothing at all**, and the standing feedback rule *robustness over expedience* reads on that just as it reads on D1-d's flag.
 
