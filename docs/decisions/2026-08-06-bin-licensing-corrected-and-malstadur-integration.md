@@ -417,3 +417,30 @@ to judge agreement.
 A 🔴 prohibition, a spec section, and an operator hand-off all rested on **one sentence nobody re-checked against the source**. CLAUDE.md § *One source of truth* already says a frozen document is *evidence, never status*, and its E-2 bullet already says to **re-derive an enumeration rather than inherit it**. Both applied here and neither was performed — the quote was carried forward three times because it was marked verbatim. **"Verbatim" is a claim about a past reading, not a measurement.** → [[engineering-lessons]]
 
 ⚠️ **This amendment does not prove the sentence exists nowhere on bin.arnastofnun.is** — only that it is absent from the terms page the record cites and that no acceptance step gates the download. `bin.arnastofnun.is` is a client-rendered SPA returning an identical ~3.6 KB shell for every path, so no further server-side check is possible from here. If it is later found on the download page, that is a *route note*, not a licence term, and the CC BY-SA grant on the data still governs.
+
+---
+
+## ⚠️ AMENDMENT — 2026-08-10 (later): `tools/fetch_bin_inflections.py`, one of the three named attribution sites, is deleted
+
+*Appended, not edited in place. The `Related:` line above still names
+`tools/fetch_bin_inflections.py` — it is not corrected there, because this record does not sync;
+it is corrected here.*
+
+§C36 B4b-0a ports `tools/fetch_bin_inflections.py` to Node and deletes it (recoverable at
+`git show 8072a58f:tools/fetch_bin_inflections.py`). This record's § *Attribution, from the
+primary source* establishes an **obligation** — credit BÍN in products built on its data, declare
+modifications — not a fixed file list, so the obligation itself is unaffected by which file
+happens to carry the tool. What changed with the deletion:
+
+- **The required credit text now also appears in the port's `--help` output**
+  (`server/scripts/fetch-bin-inflections.js`'s `USAGE`), not only in a header comment nobody sees
+  at runtime — closing the gap wb-review-A's M-1 finding identified (the Python's `--help` printed
+  its module docstring, including the licence block, as an `argparse` epilog; a naive port dropped
+  that and kept the credit comment-only).
+- **The obligations this record establishes — credit BÍN, declare modifications — attach to
+  whichever file does the writing.** They now attach to `server/scripts/fetch-bin-inflections.js`
+  + `server/lib/binInflections.js`, not to the deleted Python. Nothing in the reasoning above
+  depended on the producer being Python; it depended on the producer writing BÍN-derived data,
+  which is unchanged.
+- **`sessions.db` is still gitignored**, so the "no licence change needed under the default shape"
+  conclusion (§ *Consequences*, above) still holds for the port exactly as it held for the Python.
