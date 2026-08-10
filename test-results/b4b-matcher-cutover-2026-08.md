@@ -173,13 +173,101 @@ The controls discriminate, so the 100% is the corpus, not the method. (Folded EN
 
 ---
 
-## 6. Reproducing these numbers
+## 6. KRISTINsnid coverage — measured against the real file, 2026-08-10
 
-Three read-only scripts, run as `ssh <prod> 'cd ~/repos/namsbokasafn-efni/server && node -' < <script>`:
+Obtained under §C36 B4b-0 (see §2.5 as amended). **The question this answers: does switching SHsnid → KRISTINsnid cost coverage?** KRISTINsnid is *prescriptive* — it takes positions on variant validity — so it could plausibly hold fewer lemmas than the descriptive SHsnid the current values were built from. Checked against the **7,278 Icelandic strings that carry inflections on production today**:
 
-- **`b4b-measure.js`** — Q1 inflection population, Q2 automaton sizing + per-book scopes + domain-set grouping, resolution volume, case-fold census.
-- **`b4b-measure2.js`** — Q5 inflection joinability and conflict count, Q6 EN coverage delta. ⚠️ Its final section (Q7, "do the old-only headwords carry editorial work") **timed out at 120 s** and produced no result. That is not a gap: Q6 measured the old-only set as **empty**, so Q7 was computing properties of nothing. Recorded rather than silently dropped.
+| | count | |
+|---|---|---|
+| currently-inflected strings | 7,278 | |
+| present as a KRISTINsnid lemma | **7,277 (100.0%)** | ✅ **no coverage regression** |
+| … resolving to **exactly one** BÍN entry | 6,591 (**90.6%**) | usable under D4 |
+| … resolving to **more than one** | 686 (**9.4%**) | D4 refuses |
+| absent from KRISTINsnid | 1 (0.0%) | |
+
+⚠️ **THE AMBIGUITY RATE ON OUR TERMS IS 9.4%, NOT THE CORPUS-WIDE 2.12%** recorded in the spec's §2.2.2 — technical vocabulary is **4.4× more homograph-prone** than BÍN's average lemma. **Presence and ambiguity are different questions and only one of them generalises from the corpus figure.** A spec asserting the safe rule "is cheap" on 2.12% is quoting the wrong number.
+
+Breaking down the 686, to test whether a *nominal* restriction (prefer the sole noun entry) rescues them:
+
+| | count | |
+|---|---|---|
+| exactly **one noun** entry (`kk`/`kvk`/`hk`) | 208 (30.3%) | rescuable — **this is where `hverfa` and `vinna` sit** |
+| **more than one** noun entry | 472 (68.8%) | irreducibly ambiguous — **`afl` (kk + hk) is here** |
+| **no** noun entry | 6 (0.9%) | genuine adjective/verb headwords (e.g. `afturkræfur`) |
+
+So a nominal rule would recover **208 strings — 2.9% of the total — and they are the worst-contaminated ones**, because noun/verb collisions are exactly the shape that drags in a whole conjugation (`hverfa` 72 forms, `vinna` 50). It leaves 472 untouched. **It is a heuristic, not a derivation** — a glossary headword is *usually* a noun, and the 6 no-noun cases prove "usually" is not "always". Whether to adopt it is a lead decision, recorded in the spec.
+
+### 6.1 The control
+
+All five known chemistry coinages return **0 rows** in KRISTINsnid:
+
+```
+kjarnsækir 0 · oxósýra 0 · pniktógen 0 · mólarleysni 0 · kúvetta 0
+```
+
+**Absence is therefore detectable here, not merely unobserved** — which is what makes the 100%-present figure above mean something rather than being the output of a lookup that matches everything.
+
+---
+
+## 7. Reproducing these numbers
+
+Read-only scripts, all committed to `server/scripts/`. They were **taken** by piping to stdin (`ssh <prod> 'cd …/server && node -' < <script>`) before they lived in the repo; now that they are files, run them **as files**:
+
+```bash
+ssh <prod> 'cd ~/repos/namsbokasafn-efni && node server/scripts/b4b-measure.js'
+```
+
+⚠️ **Their `require` of `dbPath` was `./lib/dbPath` when they ran from stdin and is now `../lib/dbPath`.** Those are not interchangeable: from stdin `require` resolves against **cwd**, from a file against the **file**. Piping one of these to `node -` again would now fail to resolve. This is CLAUDE.md's *resolve against something intrinsic* rule showing up in a two-line script.
+
+- **`b4b-measure.js`** — §2.1 inflection population, §3 automaton sizing + per-book scopes + domain-set grouping, §5 resolution volume, §5 case-fold census.
+- **`b4b-measure2.js`** — §2.3 inflection joinability and conflict count, §4 EN coverage delta. ⚠️ Its final section (Q7, "do the old-only headwords carry editorial work") **timed out at 120 s** and produced no result. That is not a gap: §4 measured the old-only set as **empty**, so Q7 was computing properties of nothing. Recorded rather than silently dropped.
 - **`b4b-control.js`** — §4.1's control, by in-memory sets rather than SQL.
+- **`b4b-shape.js`** — §2.1's JSON contract (all 9,715 parse to arrays of non-empty strings; max 72 forms).
+- **`b4b-contamination.js`** — §2.4's contamination floor and its adjective control, plus the `pos` availability census.
+
+§2.2.1's source-level confirmation and §6's coverage figures were taken with `awk` over `tools/data/KRISTINsnid.csv` (gitignored; **not committed, and must not be**). Recorded verbatim so they can be re-run:
+
+```bash
+# §2.2.1 — which BÍN entries share a lemma, and how many forms they union to
+for w in afl hverfa vinna; do
+  awk -F';' -v W="$w" '$1==W {k=$2";"$3; if(!(k in s)){s[k]=1; print "  id "$2" "$3" ("$4")"}}' KRISTINsnid.csv
+  awk -F';' -v W="$w" '$1==W{print $10}' KRISTINsnid.csv | sort -u | wc -l
+done
+
+# §2.2.2 — corpus-wide lemma ambiguity
+awk -F';' '{k=tolower($1); if(!(k";"$2 in s)){s[k";"$2]=1; n[k]++;
+  wc[k]=(wc[k]==""?$3:(index(wc[k],$3)?wc[k]:wc[k]","$3))}} END{
+  for(l in n){tot++; if(n[l]>1){multi++; if(split(wc[l],a,",")>1) multiwc++}}
+  print tot, multi, multiwc}' KRISTINsnid.csv
+
+# §6 — coverage, against the prod string list (regenerate it with the SELECT in §7.1)
+awk -F';' 'NR==FNR{want[tolower($0)]=1;n++;next}
+  {l=tolower($1); if(l in want){k=l";"$2; if(!(k in seen)){seen[k]=1; ids[l]++;
+   if($3=="kk"||$3=="kvk"||$3=="hk") nouns[l]++}}}
+  END{for(w in want){if(w in ids){present++; if(ids[w]==1)uniq++; else multi++}}
+  print n, present, uniq, multi}' inflected-strings.txt KRISTINsnid.csv
+```
+
+### 7.1 The prod string list
+
+```sql
+SELECT DISTINCT icelandic FROM terminology_translations
+ WHERE inflections IS NOT NULL AND inflections <> '' AND inflections <> '[]';
+```
+
+⚠️ **Use `better-sqlite3`, never the `sqlite3` CLI**, per CLAUDE.md — this project's builds differ from stock on `PRAGMA foreign_keys`, and the CLI reports the wrong answer.
+
+⚠️ The correlated `NOT EXISTS … COLLATE NOCASE` subqueries in `b4b-measure2.js` are slow on the Linode (minutes). The in-memory-set method in `b4b-control.js` answers the same question in seconds and is the one to prefer.
+
+---
+
+## 8. Attribution
+
+This document quotes inflected forms derived from BÍN.
+
+> **Beygingarlýsing íslensks nútímamáls.** Stofnun Árna Magnússonar í íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir. — <https://bin.arnastofnun.is>
+
+**The forms are modified**: selected, subsetted per lemma, and (in the values quoted from production) unioned across BÍN entries by the defect described in §2.4. Required by CC BY-SA 4.0 §3(a)(1)(A) and §3(a)(1)(B), per SÁM's terms.
 
 ⚠️ **Use `better-sqlite3`, never the `sqlite3` CLI**, per CLAUDE.md — this project's builds differ from stock on `PRAGMA foreign_keys`, and the CLI reports the wrong answer.
 

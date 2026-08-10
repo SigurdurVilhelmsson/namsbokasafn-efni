@@ -96,9 +96,36 @@ When one Icelandic string maps to **more than one** BÍN entry:
 
 The resolver already holds this doctrine in as many words — *"resolving to the majority form would be guessing"*. This is the same rule at the data layer.
 
-**Consequence to accept up front:** the ambiguous strings end with `inflections IS NULL`, so B4b-1's `missing` check matches their base form only. **That is strictly better than today**, where those strings match a *contaminated* paradigm — a base-form match is a true subset of a correct paradigm, whereas a merged one contains forms that are simply not this word's.
+**The rule is REFUSE ON >1 ENTRY, not on >1 word class.** The word-class split is what makes contamination *visible*, but two same-class entries sharing a lemma are still two different words, and picking between them is still guessing.
 
-**The rule is REFUSE ON >1 ENTRY, not on >1 word class.** The word-class split is what makes contamination *visible* (0.93%), but two same-class entries sharing a lemma are still two different words, and picking between them is still guessing. Measured cost of the stricter line: **2.12% versus 0.93%** — 1.2 percentage points to avoid a whole class of invisible error. ⚠️ **Deferred refinement, not taken here:** where several entries yield *identical* form sets there is nothing to choose between, so the union is provably a no-op and could be accepted. That recovers at most a fraction of the 2.12%; it is complexity for a bounded gain and is not worth it before the yield of a plain run is known.
+### D4.1 — ⚠️ TWO CORRECTIONS, 2026-08-10, BOTH FROM MEASUREMENT AGAINST THE REAL FILE
+
+**① The cost is 9.4%, not 2.12%.** §2.2.2's corpus-wide ambiguity figure does **not** transfer. Measured against the **7,278 Icelandic strings that carry inflections on production today**: 7,277 (100.0%) are present in KRISTINsnid — **so D2 costs no coverage** — but only **6,591 (90.6%) resolve to exactly one BÍN entry**, and **686 (9.4%) do not**. Technical vocabulary is **4.4× more homograph-prone than BÍN's average lemma**. *Presence and ambiguity are different questions, and only one of them generalises from a corpus figure.*
+
+**② "Strictly better than today" was FALSE and is withdrawn.** This decision claimed that leaving an ambiguous string at `inflections IS NULL` is strictly better than a contaminated paradigm, because a base-form match is a subset of a correct one. **That reasons about the accept and ignores the reject, and the two errors point in opposite directions:**
+
+| | contaminated paradigm | `inflections IS NULL` |
+|---|---|---|
+| error mode | **false PASS** — accepts a form belonging to the *other* lemma | **false FAIL** — warns whenever the editor declined the word at all |
+| frequency | rare | **common** — Icelandic declines heavily |
+
+**So D4 trades a rare wrong accept for frequent wrong warnings**, and noise is what trains editors to ignore a check. It is still the right trade — a warning an editor can dismiss beats a silent wrong answer, and it is the only option that never guesses — but it is a **trade**, not a free win, and 686 terms pay it.
+
+### D4.2 — ⬜ OPEN, LEAD DECISION: the nominal rescue
+
+When a string maps to several BÍN entries of which **exactly one is a noun** (`kk`/`kvk`/`hk`), prefer that entry rather than refusing.
+
+| of the 686 ambiguous | count | |
+|---|---|---|
+| exactly one noun entry | **208 (30.3%)** | rescued — **`hverfa` and `vinna` are here** |
+| more than one noun entry | 472 (68.8%) | still refused — **`afl` (kk + hk) is here** |
+| no noun entry | 6 (0.9%) | still refused — genuine adjective headwords, e.g. `afturkræfur` |
+
+**For:** it recovers exactly the worst-contaminated cases, because a noun/verb collision is the shape that drags in a whole conjugation — `hverfa` 72 forms, `vinna` 50. It fires only when there is exactly one noun, so it never picks *between* nouns. Net refusal 9.4% → 6.6%.
+
+**Against:** it is a **heuristic, not a derivation**. "A glossary headword denotes a concept, therefore a noun" is usually true and **the 6 no-noun cases prove it is not always true** — and where a genuine adjective headword also has a noun homograph, the rule silently picks the noun. That population is **unmeasurable without `pos`**, which is populated on 2 rows of 20,272. This spec's own D4 forbids guessing; adopting D4.2 is a deliberate exception on domain grounds, and must be recorded as one rather than folded in quietly.
+
+⚠️ **Deferred either way:** where several entries yield *identical* form sets there is nothing to choose between, so the union is provably a no-op and could be accepted. Bounded gain, extra complexity; not worth it before a plain run's yield is known.
 
 ### D5 — One-way fill, and idempotency is MEASURED not inferred
 
@@ -111,6 +138,20 @@ The write is guarded `WHERE inflections IS NULL`, so the op never clobbers a lat
 Adding an inflections column to the payload would publish CC BY-SA data under CC BY 4.0 **via the unforced 2-hourly cron**, and it would be invisible to **both** existing gates — the producer gate fingerprints the term shape, the shrink guard measures size, and neither would flag a new key on a growing payload. The licensing record already flags this for `exportBookGlossary()`; **B3 shipped a second exporter after that record was written**, so it applies to `buildResolvedGlossary` too.
 
 `buildResolvedGlossary`'s `terms` statement selects `id, text, rank` and must keep doing so.
+
+**⚠️ The rule is ANY COMMITTED ARTIFACT, not one filename — re-derived 2026-08-10, because naming a single path is how an enumeration goes stale** (CLAUDE.md's E-2 lesson). Tracked classes under `books/`:
+
+| class | files | could it carry inflections? |
+|---|---|---|
+| `01-source/` | 11,125 | no — READ-ONLY OpenStax CNXML |
+| `05-publication/` | 2,985 | ⚠️ **yes in principle** — approved terms are substituted into published HTML by `substituteMathLabels` |
+| `03-translated/` | 2,300 | ⚠️ same path, upstream |
+| `glossary/` | 11 | 🔴 **the direct hazard** — D6's subject |
+| `02-*`, `media/`, `chapters/`, `book-config.json` | — | no |
+
+✅ **`git grep -l 'inflections' -- 'books/*'` returns nothing: no committed artifact carries them today.** And `tm/` and `corpus/` are **absent from the tracked set entirely** — consistent with §C3's finding that no TMX has ever reached git — so they are not a current exposure, *and would become one if TM ever starts being committed*.
+
+**The structural reason the risk stays narrow: inflections are read to TEST presence and are never written anywhere.** The `missing` check asks "does a known form appear in the editor's text?" and emits only a boolean. Any change that makes an inflected form *travel* — into a payload, a TMX, a rendered page — is the thing D6 forbids, whatever file it lands in.
 
 ### D7 — ✅ The layout is CONFIRMED AGAINST THE REAL FILE, and it has NO header row
 
@@ -191,7 +232,19 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 
 ## 6. Testing and gates
 
-**Unit** — a synthetic KRISTINsnid fixture (no BÍN bytes committed; ⚠️ the fixture must be *invented* Icelandic-shaped rows, never real BÍN lines, because committing BÍN-derived bytes is the one thing the licence analysis forbids by default):
+### 6.0 ⬜ OPEN, BLOCKING THE PLAN: there is no Python test runner
+
+⚠️ **The unit tests below are specified against a harness that does not exist.** `fetch_bin_inflections.py` is Python; this repo's suite is **Vitest + Playwright**. Measured 2026-08-10: no `pytest.ini`, `pyproject.toml`, `setup.cfg`, `tox.ini` or `conftest.py`; the only `test_*.py` files in the tree are **vendored third-party code** under `experiments/cnxml-validation-gate/external/`; and **no workflow under `.github/workflows/` mentions Python or pytest at all**.
+
+This matters beyond tidiness: the campaign's authoritative gate is **root `npm test`**, and a green `npm test` would say **nothing** about this script. Three ways out, to be decided before the plan is written:
+
+| option | cost |
+|---|---|
+| **add pytest** | a new CI surface and a new job in `test.yml`; Python now gates merges |
+| **port the script to Node** | the biggest diff, but it lands inside `npm test` — the gate this campaign actually runs — and removes the repo's only Python-in-the-pipeline |
+| **corpus gate only** | smallest; the unit cases below become §6's gates, and the spec must say plainly that the script has no unit coverage |
+
+**Unit** *(contingent on 6.0)* — a synthetic KRISTINsnid fixture (no BÍN bytes committed; ⚠️ the fixture must be *invented* Icelandic-shaped rows, never real BÍN lines, because committing BÍN-derived bytes is the one thing the licence analysis forbids by default):
 
 - a single-entry lemma resolves to its own paradigm
 - **a two-entry lemma is refused and named — never unioned, never picked** (D4's anchor; the `afl` case)
@@ -220,7 +273,8 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 - **No compounder:** BÍN lacks this project's chemistry coinages (*kjarnsækir, oxósýra, pniktógen, mólarleysni, kúvetta*). A prior measurement against 756 project glossary terms resolved 488 (65%) via BinPackage **with** its compounder; a raw CSV lookup without one will do worse. **The yield of this run is therefore unpredicted and must be reported, not assumed.**
 - **Multi-word terms** are skipped entirely; `concept_term` holds many.
 - **BinPackage** is the designated route for *publishing* paradigms per SÁM, and is not evaluated here.
-- **Coverage question B4b-1 must answer:** what fraction of *matched* terms end up with a paradigm. A low figure makes the `missing` check noisier than today's, and that is a B4b-1 acceptance input, not a B4b-0 one.
+- **Coverage question B4b-1 must answer:** what fraction of *matched* terms end up with a paradigm. A low figure makes the `missing` check noisier than today's, and that is a B4b-1 acceptance input, not a B4b-0 one. **D4.1 ② is the sharper version of this question** — the noise is not hypothetical, it is 686 terms at minimum.
+- **⚠️ B4b-1 INHERITS A SEMANTIC NARROWING NOBODY HAS NAMED.** The old `missing` check tests **every** approved translation — `approvedTranslations.some((t) => t.isRegex.test(seg.isContent))`, so a segment passes if the editor used *any* approved Icelandic word for that headword. **The concept model returns ONE winner.** So B4b-1's check will demand *the resolved term specifically*, and a segment using a legitimate synonym — a rank-2 `concept_term` the resolver did not pick — starts failing. That is arguably the *correct* behaviour for a book that has chosen its term, and it is exactly what §C36 exists to enable. **But it is a behaviour change in issue detection that no gate currently names, and it lands on editors as new warnings on text they already reviewed.** It belongs in B4b-1's acceptance criteria; `resolve()`'s `alsoInScope` already carries the material for a softer "you used a known alternative" tier.
 
 ---
 
@@ -230,3 +284,15 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 2. ✅ **The 15-field layout is confirmed against the real file** — D7, which this spec originally declined to state. There is **no header row**.
 3. ⬜ A locally rebuilt concept corpus in a scratch DB (§6). The raw source is present at `~/idordabanki-raw-2026-08-07/`. **Still open.**
 4. ✅ **The decision record's dated amendment for §4's licence correction — APPENDED 2026-08-10** (append-only; the 2026-08-06 body is not edited). Logged in the register as **§C41**.
+
+---
+
+## 9. Attribution
+
+This spec quotes inflected forms derived from BÍN, and the work it specifies builds on BÍN data.
+
+> **Beygingarlýsing íslensks nútímamáls.** Stofnun Árna Magnússonar í íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir. — <https://bin.arnastofnun.is>
+
+**The forms are modified**: selected per lemma, subsetted (the base form is excluded), and — in the production values quoted in §2.2 — unioned across BÍN entries by the defect this spec exists to end. Required by CC BY-SA 4.0 §3(a)(1)(A) and §3(a)(1)(B) per SÁM's terms; see §4.1.
+
+⚠️ **The same obligation lands on Ritstjóri** the moment B4b-0 writes: it becomes a *product built on BÍN data*, and the credit plus a statement that the forms are generated must be visible there. **That is an implementation task, not a footnote** — it is not currently in §5.

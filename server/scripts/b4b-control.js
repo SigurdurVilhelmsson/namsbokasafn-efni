@@ -6,7 +6,7 @@
  * corpus.
  */
 const Database = require('better-sqlite3');
-const resolveDbPath = require('./lib/dbPath');
+const resolveDbPath = require('../lib/dbPath');
 const db = new Database(resolveDbPath(), { readonly: true });
 const line = (s) => console.log(s);
 
