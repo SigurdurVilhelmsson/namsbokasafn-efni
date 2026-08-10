@@ -6,7 +6,7 @@
 
 **Architecture:** Split the script in two. `tools/lib/bin-inflections.js` holds the three **pure** functions (CSV load, lookup, JSON encode) — pure because the golden captures exactly those, with no database. `tools/fetch-bin-inflections.js` is the CLI shell: argument parsing, SQL, reporting. The golden is captured from the **unmodified Python first**, in its own commit, and the Python is deleted **last**.
 
-**Tech Stack:** Node 22 (`.nvmrc`), CommonJS (`tools/` convention), `better-sqlite3`, Vitest. Python 3 is needed for Task 1 only.
+**Tech Stack:** Node 22 (`.nvmrc`), **ESM** (root `package.json` is `"type": "module"`), **`node:sqlite`** (built in; see Global Constraints), Vitest. Python 3 is needed for Task 1 only.
 
 **Spec:** [`docs/superpowers/specs/2026-08-10-terminology-concept-model-part-b4b0-design.md`](../specs/2026-08-10-terminology-concept-model-part-b4b0-design.md) §1.1a. **Read it before starting.**
 
@@ -18,6 +18,8 @@
 - **Resolve paths against `__dirname`, never `process.cwd()`** (CLAUDE.md, durable).
 - **Do NOT use `tools/lib/parseArgs.js`.** It **silently drops unknown flags** (CLAUDE.md, durable); Python's `argparse` exits **2** on them. Using it would be a behaviour regression.
 - **Stream the CSV.** `SHsnid.csv` is **377 MB / 7,425,931 lines**. `readFileSync` is wrong.
+- 🔴 **ESM, NOT CommonJS.** Root `package.json` is `"type": "module"`, so a `tools/*.js` file using `require`/`module.exports` **cannot load**. Use `import`/`export`, and `fileURLToPath(import.meta.url)` where `__dirname` is needed. ⚠️ **Do NOT use a `.cjs` extension**: `tools/lib/*.cjs` exists solely to bridge to `server/`, which is CommonJS — and this module is forbidden a `server/` consumer by the MIT/AGPL rule above. Match `tools/lib/book-rendering-config.js`, which is ESM `.js`.
+- 🔴 **SQLite is `node:sqlite`, NOT `better-sqlite3`** *(lead decision, 2026-08-10)*. better-sqlite3 is installed **only** in `server/node_modules` and is not a root dependency, so a `tools/` script cannot resolve it. `node:sqlite` is built into Node 22.22.2 (verified: exports `DatabaseSync`, `StatementSync`), needs no dependency and no reach into the AGPL tree. ⚠️ It is **experimental** and prints an `ExperimentalWarning` on stderr — expected, not a failure. ⚠️ **It has no `db.transaction()` helper**; use explicit `BEGIN`/`COMMIT`/`ROLLBACK`.
 - Run `npm test` from the **repo root**.
 - Commit messages end with: `Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>`
 
@@ -228,11 +230,11 @@ EOF
 
 ```javascript
 // tools/__tests__/bin-inflections.test.js
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const { describe, it, expect, beforeAll, afterAll } = require('vitest');
-const { loadBinData } = require('../lib/bin-inflections');
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { loadBinData } from '../lib/bin-inflections.js';
 
 let dir;
 const write = (name, body) => {
@@ -316,8 +318,8 @@ Expected: FAIL — `Cannot find module '../lib/bin-inflections'`
  * https://bin.arnastofnun.is — CC BY-SA 4.0. Forms are SELECTED and SUBSETTED
  * (the base form is removed), i.e. modified.
  */
-const fs = require('fs');
-const readline = require('readline');
+import fs from 'fs';
+import readline from 'readline';
 
 /**
  * Load SHsnid.csv into `lemma.toLowerCase() → Set<form>`.
@@ -358,7 +360,7 @@ async function loadBinData(csvPath) {
   return map;
 }
 
-module.exports = { loadBinData };
+export { loadBinData };
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
@@ -405,7 +407,7 @@ EOF
 Append to `tools/__tests__/bin-inflections.test.js`:
 
 ```javascript
-const { getInflections } = require('../lib/bin-inflections');
+import { getInflections } from '../lib/bin-inflections.js';
 
 describe('getInflections', () => {
   const map = new Map([
@@ -484,7 +486,7 @@ function getInflections(map, word) {
   return result.length > 0 ? result : null;
 }
 
-module.exports = { loadBinData, getInflections };
+export { loadBinData, getInflections };
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
@@ -531,7 +533,7 @@ EOF
 Append to `tools/__tests__/bin-inflections.test.js`:
 
 ```javascript
-const { formatInflectionsJson } = require('../lib/bin-inflections');
+import { formatInflectionsJson } from '../lib/bin-inflections.js';
 
 describe('formatInflectionsJson', () => {
   // ⚠️ THE WHOLE POINT: json.dumps separates with ", " and JSON.stringify with ",".
@@ -594,7 +596,7 @@ function formatInflectionsJson(forms) {
   return '[' + forms.map((f) => JSON.stringify(f)).join(', ') + ']';
 }
 
-module.exports = { loadBinData, getInflections, formatInflectionsJson };
+export { loadBinData, getInflections, formatInflectionsJson };
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
@@ -638,14 +640,14 @@ EOF
   - `selectSql({force: boolean, limit: number}) → string`
   - `main(argv) → Promise<void>`
 
-⚠️ `better-sqlite3` is `require`d **inside `main()`**, not at module top level, so the test file can import `parseArgs`/`selectSql` without opening any database. Keep it that way.
+⚠️ `node:sqlite` is imported **dynamically inside `main()`**, not at module top level, so the test file can import `parseArgs`/`selectSql` without touching SQLite or triggering the experimental warning. Keep it that way.
 
 - [ ] **Step 1: Write the failing tests**
 
 ```javascript
 // tools/__tests__/bin-inflections-cli.test.js
-const { describe, it, expect } = require('vitest');
-const { parseArgs, selectSql } = require('../fetch-bin-inflections');
+import { describe, it, expect } from 'vitest';
+import { parseArgs, selectSql } from '../fetch-bin-inflections.js';
 
 describe('parseArgs', () => {
   it('defaults to dry-run', () => {
@@ -735,9 +737,12 @@ Expected: FAIL — `Cannot find module '../fetch-bin-inflections'`
  * https://bin.arnastofnun.is — CC BY-SA 4.0; the forms are modified (selected
  * and subsetted).
  */
-const fs = require('fs');
-const path = require('path');
-const { loadBinData, getInflections, formatInflectionsJson } = require('./lib/bin-inflections');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { loadBinData, getInflections, formatInflectionsJson } from './lib/bin-inflections.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ⚠️ __dirname, never process.cwd() (CLAUDE.md, durable). The server runs with
 // cwd=server/ and the cron from the repo root; a cwd-relative default silently
@@ -831,16 +836,28 @@ async function main(argv) {
   const map = await loadBinData(args.binData);
   console.log(`  Loaded inflection records for ${map.size.toLocaleString()} lemmas`);
 
-  const Database = require('better-sqlite3');
-  const db = new Database(args.db);
+  // ⚠️ node:sqlite, NOT better-sqlite3 (lead decision, 2026-08-10). better-sqlite3
+  // is installed ONLY in server/node_modules and is not a root dependency, so a
+  // tools/ script cannot resolve it. `tools/merge-glossary.js:495` works around
+  // that with require(path.resolve('server/node_modules/...')) — CWD-RELATIVE,
+  // which CLAUDE.md's durable rule forbids. node:sqlite needs no dependency and
+  // no cross-tree reach. It is EXPERIMENTAL in Node 22 and prints a warning.
+  const { DatabaseSync } = await import('node:sqlite');
+  const db = new DatabaseSync(args.db);
   const rows = db.prepare(selectSql(args)).all();
   console.log(`\nFound ${rows.length} translations to process`);
   if (!args.execute) console.log('*** DRY RUN — add --execute to write to database ***\n');
 
   const update = db.prepare('UPDATE terminology_translations SET inflections = ? WHERE id = ?');
   const stats = { processed: 0, found: 0, notFound: 0 };
-  const apply = db.transaction((list) => {
-    for (const [i, row] of list.entries()) {
+  // ⚠️ node:sqlite HAS NO db.transaction() HELPER — better-sqlite3 does, and the
+  // plan's first draft used it. Python's sqlite3 opened an implicit transaction
+  // and wrote only at db.commit(), so ALL-OR-NOTHING is the behaviour to
+  // preserve; explicit BEGIN/COMMIT is how you get it here. Only opened under
+  // --execute, so a dry run touches no transaction state at all.
+  if (args.execute) db.exec('BEGIN');
+  try {
+    for (const [i, row] of rows.entries()) {
       const forms = getInflections(map, row.icelandic);
       stats.processed++;
       if (forms) {
@@ -852,8 +869,11 @@ async function main(argv) {
         if (i < 20) console.log(`  – ${row.icelandic} (${row.english}): not in BÍN`);
       }
     }
-  });
-  apply(rows);
+    if (args.execute) db.exec('COMMIT');
+  } catch (err) {
+    if (args.execute) db.exec('ROLLBACK');
+    throw err;
+  }
 
   console.log(args.execute ? `\n✓ Changes committed to ${args.db}` : '\n*** DRY RUN — no changes written ***');
   db.close();
@@ -869,9 +889,10 @@ async function main(argv) {
   }
 }
 
-module.exports = { parseArgs, selectSql, main };
+export { parseArgs, selectSql, main };
 
-if (require.main === module) {
+// ESM equivalent of `require.main === module`.
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) {
   main(process.argv.slice(2)).catch((err) => {
     console.error(err);
     process.exit(1);
@@ -888,7 +909,7 @@ Expected: PASS, 11 tests.
 
 ```bash
 node -e "
-const D=require('better-sqlite3'); const db=new D('/tmp/b4b0a-check.db');
+const {DatabaseSync}=await import('node:sqlite'); const db=new DatabaseSync('/tmp/b4b0a-check.db');
 db.exec(\`CREATE TABLE terminology_headwords (id INTEGER PRIMARY KEY, english TEXT, pos TEXT);
 CREATE TABLE terminology_translations (id INTEGER PRIMARY KEY, headword_id INTEGER, icelandic TEXT, inflections TEXT);
 INSERT INTO terminology_headwords (id,english) VALUES (1,'power');
@@ -896,7 +917,7 @@ INSERT INTO terminology_translations (id,headword_id,icelandic) VALUES (1,1,'afl
 db.close();"
 node tools/fetch-bin-inflections.js --db /tmp/b4b0a-check.db
 node -e "
-const D=require('better-sqlite3'); const db=new D('/tmp/b4b0a-check.db',{readonly:true});
+const {DatabaseSync}=await import('node:sqlite'); const db=new DatabaseSync('/tmp/b4b0a-check.db');
 const r=db.prepare('SELECT inflections FROM terminology_translations WHERE id=1').get();
 console.log('after DRY RUN, inflections =', r.inflections);
 if (r.inflections !== null) { console.error('FAIL: dry run wrote to the database'); process.exit(1); }
@@ -956,11 +977,14 @@ EOF
  * gate is only meaningful on a box that has the CSV. Re-download it from
  * https://bin.arnastofnun.is/gogn/mimisbrunnur/ before trusting a green run here.
  */
-const fs = require('fs');
-const path = require('path');
-const crypto = require('crypto');
-const { describe, it, expect } = require('vitest');
-const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/bin-inflections');
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+import { fileURLToPath } from 'url';
+import { describe, it, expect } from 'vitest';
+import { loadBinData, getInflections, formatInflectionsJson } from '../lib/bin-inflections.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const CSV = path.join(__dirname, '..', 'data', 'SHsnid.csv');
 const WORDS = path.join(__dirname, 'fixtures', 'bin-golden-words.txt');
