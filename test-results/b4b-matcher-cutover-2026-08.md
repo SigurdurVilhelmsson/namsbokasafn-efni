@@ -671,7 +671,18 @@ Before crediting a compounder: some misses might be missing only because the cor
 
 §6.0 rejected Python on the grounds that *"no workflow runs Python at all"*. That is true of **CI**, and it was the right call for a one-file script. It is not the whole picture for a service:
 
-**`server/greynir-sidecar/` already is a Python sidecar** — `app.py` (Flask) + `requirements.txt` (`reynir-correct`, `flask`, `gunicorn`) — with `server/services/greynirEngine.js` as its Node client, wired into `segmentEditorService` and gated by `GREYNIR_URL`. So BinPackage would be a **second consumer of an existing pattern**, not a new toolchain.
+⚠️ **CORRECTED 2026-08-10 — THE FIRST VERSION OF THIS SECTION INFERRED A CAPABILITY FROM THE PRESENCE OF FILES.** It said: *"`server/greynir-sidecar/` already is a Python sidecar … so BinPackage would be a second consumer of an existing pattern, not a new toolchain."* That was assembled from `app.py` + `requirements.txt` + a Node client + a `GREYNIR_URL` gate — every one of which exists. **Measured on production rather than inferred: `GREYNIR_URL` is not set, and no gunicorn/flask/`app.py` process is running.** The directory is on the box only because it is in the git checkout.
+
+**Register §C25 had already recorded this independently** — *"built, merged, never executed once"* — and its standing recommendation is to **delete** it. The claim was made without reading a register entry that contradicted it.
+
+| | |
+|---|---|
+| ✅ **survives** | the integration was **designed once**: a Flask service, a Node client, an env-var gate, an editor call site. The *shape* is known and need not be re-invented. |
+| ❌ **does not survive** | "reusing a proven pattern". This would be **standing a Python service up in production for the first time.** |
+
+🔗 **§C25 AND §C44 ARE COUPLED, AND NEITHER ENTRY SAID SO.** §C25 proposes deleting the sidecar; §C44 cites it as precedent. **Delete it and §C44 loses its only precedent; adopt §C44 and §C25's deletion is the wrong call.** They must be decided together.
+
+⚠️ **The lesson is the one this file keeps recording, in a new costume: presence of code is not evidence of a running system.** A directory, a dependency file, a client module and a config gate are four artifacts that together *look* exactly like a working integration and are equally consistent with one that has never started.
 
 ⚠️ **UNVERIFIED, and it is the fact that most changes the estimate:** GreynirCorrect is built on BinPackage, so `islenska` may already be installed in that environment transitively. **Run `pip show islenska` there before anyone sizes the work** — do not infer it from the dependency graph, which is exactly the shape of claim this campaign keeps having to withdraw.
 
