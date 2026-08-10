@@ -87,4 +87,43 @@ function loadEnglishEntries(db) {
   return { entries, englishById, fingerprint: fingerprintEntries(entries) };
 }
 
-module.exports = { loadEnglishEntries, fingerprintEntries, PLACEHOLDER_TEXT };
+/**
+ * Hoisted per scope, not prepared per call — B1 gate 4 measured preparing
+ * per call at 4.2x the wall time and 21.7x the resident memory.
+ */
+function prepareParadigmStatement(db) {
+  return db.prepare('SELECT inflections FROM concept_term WHERE id = ?');
+}
+
+/**
+ * The stored BÍN paradigm for one Icelandic term, or [].
+ *
+ * ⚠️ [] IS THE CORRECT DEGRADATION, NOT A FAILURE. buildInflectionRegex(text, [])
+ * yields a correct base-form word-boundary regex, and ~70% of Icelandic rows
+ * have no paradigm (71.18% of strings are absent from BÍN, plus 18,299
+ * multi-word rows the producer skips permanently). The register's ruling is
+ * explicit: degrade to base-form matching rather than report a fault.
+ *
+ * ⚠️ NEVER THROW. `'[]'` is truthy and parses to [] harmlessly, but the
+ * four-byte string `'null'` is truthy, parses to a non-iterable, and
+ * `[text, ...null]` throws TypeError inside a request. The B4b-0b producer
+ * writes only non-empty JSON arrays; this guards a future writer.
+ */
+function paradigmFor(stmt, termId) {
+  const row = stmt.get(termId);
+  if (!row || !row.inflections) return [];
+  try {
+    const parsed = JSON.parse(row.inflections);
+    return Array.isArray(parsed) ? parsed.filter((f) => typeof f === 'string' && f) : [];
+  } catch {
+    return [];
+  }
+}
+
+module.exports = {
+  loadEnglishEntries,
+  fingerprintEntries,
+  prepareParadigmStatement,
+  paradigmFor,
+  PLACEHOLDER_TEXT,
+};

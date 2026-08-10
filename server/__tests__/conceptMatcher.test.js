@@ -3,7 +3,12 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { loadEnglishEntries, fingerprintEntries } = require('../lib/conceptMatcher');
+const {
+  loadEnglishEntries,
+  fingerprintEntries,
+  prepareParadigmStatement,
+  paradigmFor,
+} = require('../lib/conceptMatcher');
 
 let db;
 beforeEach(() => {
@@ -85,5 +90,44 @@ describe('fingerprintEntries() — it must track what the AUTOMATON is built fro
     expect(fingerprintEntries([E(1, 'a'), E(2, 'b')])).toBe(
       fingerprintEntries([E(1, 'a'), E(2, 'b')])
     );
+  });
+});
+
+describe('paradigmFor() — the "no paradigm" path is the COMMON one', () => {
+  let stmt;
+  beforeEach(() => {
+    stmt = prepareParadigmStatement(db);
+  });
+
+  it('returns [] when inflections is NULL — ~70% of Icelandic rows', () => {
+    const t = addTerm(addConcept(), 'is', 'kúvetta');
+    expect(paradigmFor(stmt, Number(t))).toEqual([]);
+  });
+
+  it('returns the stored forms when present', () => {
+    const t = addTerm(addConcept(), 'is', 'x');
+    db.prepare('UPDATE concept_term SET inflections = ? WHERE id = ?').run('["xs","xi"]', t);
+    expect(paradigmFor(stmt, Number(t))).toEqual(['xs', 'xi']);
+  });
+
+  // THE VALUE THAT ACTUALLY BREAKS THE IDIOM. '[]' is safe (truthy, parses to
+  // []); the four-byte string 'null' is truthy, parses to a non-iterable, and
+  // [text, ...null] throws TypeError. The B4b-0b producer never writes it —
+  // this guards a FUTURE writer.
+  it('returns [] for the literal string "null" instead of throwing', () => {
+    const t = addTerm(addConcept(), 'is', 'y');
+    db.prepare('UPDATE concept_term SET inflections = ? WHERE id = ?').run('null', t);
+    expect(() => paradigmFor(stmt, Number(t))).not.toThrow();
+    expect(paradigmFor(stmt, Number(t))).toEqual([]);
+  });
+
+  it.each([['[]'], ['{}'], ['123'], ['not json']])('returns [] for %p', (bad) => {
+    const t = addTerm(addConcept(), 'is', `z${bad.length}`);
+    db.prepare('UPDATE concept_term SET inflections = ? WHERE id = ?').run(bad, t);
+    expect(paradigmFor(stmt, Number(t))).toEqual([]);
+  });
+
+  it('returns [] for an unknown term id rather than throwing', () => {
+    expect(paradigmFor(stmt, 999999)).toEqual([]);
   });
 });
