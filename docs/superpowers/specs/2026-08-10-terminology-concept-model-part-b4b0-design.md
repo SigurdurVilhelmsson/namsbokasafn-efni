@@ -14,9 +14,12 @@ B4b-1 cuts `findTermsInSegments` over from the old terminology tables to `resolv
 
 ### 1.1 What B4b-0 changes
 
-1. `tools/fetch_bin_inflections.py` becomes **pos-aware** and **targets `concept_term`** instead of `terminology_translations`.
-2. It parses **`KRISTINsnid.csv`** instead of `SHsnid.csv`.
-3. A data op writes ~`concept_term.inflections` for the Icelandic terms BÍN can resolve unambiguously.
+1. **`tools/fetch_bin_inflections.py` is PORTED TO NODE** as `tools/fetch-bin-inflections.js`, and the Python script is **deleted** *(lead, 2026-08-10 — see §6.0)*. This is not incidental tidying: it is what puts the script inside root `npm test`, the campaign's authoritative gate.
+2. The port is **pos-aware** — it retains BÍN's `Auðkenni` and `Orðflokkur` (D3) — and **targets `concept_term`** instead of `terminology_translations` (D1).
+3. It parses **`KRISTINsnid.csv`** instead of `SHsnid.csv` (D2).
+4. A data op writes `concept_term.inflections` for the Icelandic terms BÍN resolves unambiguously, plus those rescued by the **nominal rule** (D4.2, adopted).
+
+⚠️ **The port is the largest part of this diff and it is a REWRITE, not a transliteration** — the lookup changes from "union by lowercased lemma" to "group by BÍN id, then apply D4/D4.2", which is the whole point of the slice. Porting first and changing the logic second would be two diffs where the second is the only one worth reviewing; they land together, and the Python script's behaviour is preserved nowhere.
 
 ### 1.2 Non-goals
 
@@ -111,9 +114,13 @@ The resolver already holds this doctrine in as many words — *"resolving to the
 
 **So D4 trades a rare wrong accept for frequent wrong warnings**, and noise is what trains editors to ignore a check. It is still the right trade — a warning an editor can dismiss beats a silent wrong answer, and it is the only option that never guesses — but it is a **trade**, not a free win, and 686 terms pay it.
 
-### D4.2 — ⬜ OPEN, LEAD DECISION: the nominal rescue
+### D4.2 — ✅ ADOPTED *(lead, 2026-08-10)*: the nominal rescue
 
 When a string maps to several BÍN entries of which **exactly one is a noun** (`kk`/`kvk`/`hk`), prefer that entry rather than refusing.
+
+⚠️ **This is a DELIBERATE, RECORDED EXCEPTION to D4's never-guess rule, taken on domain grounds — not a refinement of it.** D4 forbids picking between candidates; D4.2 picks. It is defensible because the discriminator is *categorical rather than arbitrary* — "a glossary headword denotes a concept, and a concept is a noun" is a statement about this corpus, where a first-id or largest-paradigm tie-break would be a statement about nothing. **The rule fires ONLY when exactly one noun exists, so it never picks between nouns**, which is the case where the domain argument would run out.
+
+**Its failure mode must be logged, not just tolerated:** the run reports every string it rescues this way, with the entries it discarded, so a wrong pick is discoverable after the fact rather than silent. That is the price of the exception.
 
 | of the 686 ambiguous | count | |
 |---|---|---|
@@ -210,13 +217,13 @@ The terms are plain **CC BY-SA 4.0 plus two obligations** — credit, and declar
 
 ## 5. The script
 
-`tools/fetch_bin_inflections.py`, rewritten:
+`tools/fetch_bin_inflections.py` → **`tools/fetch-bin-inflections.js`** (§6.0); the Python script is deleted.
 
-| stage | today | B4b-0 |
+| stage | today (Python) | B4b-0 (Node) |
 |---|---|---|
-| load | `inflection_map[lemma.lower()].add(form)` — fields 0, 4 | `entries[bin_id] = {lemma, word_class, forms}` — retains id + word class |
+| load | `inflection_map[lemma.lower()].add(form)` — fields 0, 4, whole file | `entries[bin_id] = {lemma, wordClass, forms}` — retains id + word class, **streamed line by line** (450 MB) |
 | select | `terminology_translations` where `inflections IS NULL AND icelandic NOT LIKE '% %'` | `concept_term` where `lang='is' AND inflections IS NULL` |
-| lookup | `map.get(word.lower())` → union | index `lemma.lower() → [bin_id…]`; **exactly one** id → its paradigm; **more than one** → refuse + report |
+| lookup | `map.get(word.lower())` → **union** | index `lemma.lower() → [bin_id…]` → **exactly one** id → its paradigm · **several, exactly one a noun** → that entry (D4.2, logged) · **otherwise** → refuse + report |
 | write | `UPDATE terminology_translations …` | `UPDATE concept_term SET inflections = ? WHERE id = ?` |
 | input file | `tools/data/SHsnid.csv` — 6 fields | `tools/data/KRISTINsnid.csv` — 15 fields (D2) |
 | input guard | none — a wrong file parses to nothing and reports 0 found | **refuse** unless field count is 15 and field 2 holds a known word class (D7) |
@@ -226,38 +233,44 @@ The terms are plain **CC BY-SA 4.0 plus two obligations** — credit, and declar
 
 Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of skipped multi-word strings is **reported** rather than silently dropped — `concept_term` holds far more multi-word Icelandic strings than the old model did, so the skip is a much larger and more interesting number here.
 
-**Reported counts, all of them:** candidates · resolved-unambiguous · **refused-ambiguous (with names)** · not-in-BÍN · multi-word-skipped · already-populated · written. Every candidate must land in exactly one bucket, with an **UNEXPLAINED tripwire** if the buckets do not partition — 048's discipline, for the same reason.
+**Reported counts, all of them:** candidates · resolved-unambiguous · **rescued-nominal (with the discarded entries named — D4.2)** · **refused-ambiguous (with names)** · not-in-BÍN · multi-word-skipped · already-populated · written. Every candidate must land in exactly one bucket, with an **UNEXPLAINED tripwire** if the buckets do not partition — 048's discipline, for the same reason.
+
+**Expected shape of a first full run**, from §6's measurements — stated so a wildly different result is a finding rather than a shrug. Against the 7,278 strings that carry inflections today: ~6,591 unambiguous, ~208 rescued-nominal, ~478 refused, ~1 not-in-BÍN. ⚠️ **The run's real candidate set is `concept_term`'s 70,103 Icelandic strings, not those 7,278, so its absolute totals are UNPREDICTED** — the *ratios* are the check, and the yield on the other ~63,000 is exactly the unknown §7 flags.
 
 ---
 
 ## 6. Testing and gates
 
-### 6.0 ⬜ OPEN, BLOCKING THE PLAN: there is no Python test runner
+### 6.0 ✅ RESOLVED *(lead, 2026-08-10)*: PORT TO NODE
 
-⚠️ **The unit tests below are specified against a harness that does not exist.** `fetch_bin_inflections.py` is Python; this repo's suite is **Vitest + Playwright**. Measured 2026-08-10: no `pytest.ini`, `pyproject.toml`, `setup.cfg`, `tox.ini` or `conftest.py`; the only `test_*.py` files in the tree are **vendored third-party code** under `experiments/cnxml-validation-gate/external/`; and **no workflow under `.github/workflows/` mentions Python or pytest at all**.
+⚠️ **The unit tests below were first specified against a harness that does not exist.** `fetch_bin_inflections.py` is Python; this repo's suite is **Vitest + Playwright**. Measured 2026-08-10: no `pytest.ini`, `pyproject.toml`, `setup.cfg`, `tox.ini` or `conftest.py`; the only `test_*.py` files in the tree are **vendored third-party code** under `experiments/cnxml-validation-gate/external/`; and **no workflow under `.github/workflows/` mentions Python or pytest at all**. A green `npm test` — the campaign's authoritative gate — would have said **nothing** about this script.
 
-This matters beyond tidiness: the campaign's authoritative gate is **root `npm test`**, and a green `npm test` would say **nothing** about this script. Three ways out, to be decided before the plan is written:
+**Decision: port it.** `tools/fetch-bin-inflections.js` replaces the Python script, which is deleted; tests are Vitest under `server/__tests__/`, so they run in `npm test` and in CI's `test` job with no new surface. Rejected: *add pytest* (a new toolchain gating merges for one script) and *corpus-gate only* (the register's own warning — corpus-only properties are what the unit suite silently stops covering).
 
-| option | cost |
-|---|---|
-| **add pytest** | a new CI surface and a new job in `test.yml`; Python now gates merges |
-| **port the script to Node** | the biggest diff, but it lands inside `npm test` — the gate this campaign actually runs — and removes the repo's only Python-in-the-pipeline |
-| **corpus gate only** | smallest; the unit cases below become §6's gates, and the spec must say plainly that the script has no unit coverage |
+⚠️ **Two things the port must carry across, both easy to lose:**
+- **`--execute` opt-in, dry-run default.** The Python script's one genuinely good safety property.
+- **Streaming, not `readFileSync`.** The CSV is **450 MB / 7,425,931 lines**. Node's default string cap and the memory cost both make a whole-file read wrong here; the Python version used `csv.reader` over a file handle. Read it line by line and build only the index.
 
-**Unit** *(contingent on 6.0)* — a synthetic KRISTINsnid fixture (no BÍN bytes committed; ⚠️ the fixture must be *invented* Icelandic-shaped rows, never real BÍN lines, because committing BÍN-derived bytes is the one thing the licence analysis forbids by default):
+**Unit** — a synthetic KRISTINsnid fixture (no BÍN bytes committed; ⚠️ the fixture must be *invented* Icelandic-shaped rows, never real BÍN lines, because committing BÍN-derived bytes is the one thing the licence analysis forbids by default):
 
 - a single-entry lemma resolves to its own paradigm
-- **a two-entry lemma is refused and named — never unioned, never picked** (D4's anchor; the `afl` case)
-- an absent header column refuses with the columns it found (D7)
+- **a lemma with two entries of the SAME word class is refused and named — never unioned, never picked** (D4's anchor; the `afl` case, kk + hk)
+- **a lemma with several entries of which exactly one is a noun resolves to that noun, and the discarded entries are logged** (D4.2's anchor; the `hverfa` case, kvk + so + so)
+- **a lemma with no noun entry is refused** (D4.2 must not fire on `afturkræfur`)
+- ⚠️ **the base form is excluded from the stored paradigm** — the property that made §2.2.1's `n − 1` arithmetic legible, and which a rewrite can silently drop
+- **a 6-field SHsnid row is refused, not parsed** (D7's input guard; the zero-yield trap)
 - `--execute` absent writes nothing
 - re-run is a measured no-op; a non-null value is never clobbered (D5)
 - the bucket partition holds, and the tripwire fires when it is broken
+
+⚠️ **No test may assert a total that equals a fixture's row count** — that passes for the wrong reason the moment the fixture changes. Assert the *identity* of what was written.
 
 **Corpus gate** — `server/scripts/verify-b4b0-gates.js`, against a **scratch DB rebuilt from `~/idordabanki-raw-2026-08-07/`** via `run-concept-import.js --db <scratch>`. ⚠️ **Never `pipeline-output/sessions.db`, never prod.** The local dev DB cannot host this gate: it holds 6 terminology rows and no concept model at all.
 
 | gate | asserts |
 |---|---|
-| 1 | `hverfa`, `vinna`, `afl` — contaminated under the old lookup — are **refused**, not written, and named |
+| 1 | **`afl`** — two noun entries (kk + hk) — is **refused**, not written, and named |
+| 1b | **`hverfa` and `vinna` are RESCUED by D4.2** and written with the **kvk noun's paradigm only** — asserted by *identity*: the stored forms must contain none of the verb participles (`horfinn`, `horfið`, `unninn`, `unnið`) that contaminate them today. ⚠️ **This gate did not exist until D4.2 was adopted, and the table asserted the opposite** — that all three were refused. A gate written against a superseded decision passes or fails for reasons unconnected to the code. |
 | 2 | **the control:** an unambiguous term IS written, with a paradigm containing no foreign-gender form |
 | 3 | **inertness:** `findTermsInSegments` output is byte-identical before and after the run |
 | 4 | **the licence control:** the glossary export payload gains **no** inflections key (D6) |
