@@ -51,8 +51,19 @@ describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
   // precondition belongs in beforeAll — it genuinely runs first, it FAILS the
   // whole describe block rather than being one test result among several, and a
   // swapped CSV now costs a hash of the CSV, not a full replay against it.
-  beforeAll(() => {
-    const actual = crypto.createHash('sha256').update(fs.readFileSync(CSV)).digest('hex');
+  //
+  // ⚠️ STREAMED, not readFileSync (M-5). Hashing a 377 MB file by reading it whole
+  // spikes ~377 MB of RSS to produce 32 bytes — and it would contradict the very
+  // module under test, whose loader streams for exactly this reason. Constant
+  // memory here, same digest.
+  beforeAll(async () => {
+    const actual = await new Promise((resolve, reject) => {
+      const h = crypto.createHash('sha256');
+      fs.createReadStream(CSV)
+        .on('error', reject)
+        .on('data', (c) => h.update(c))
+        .on('end', () => resolve(h.digest('hex')));
+    });
     if (actual !== CSV_SHA256) {
       throw new Error(
         `tools/data/SHsnid.csv has CHANGED since the golden was captured.\n` +
