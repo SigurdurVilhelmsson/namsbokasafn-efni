@@ -83,7 +83,7 @@ So after the cut-over, an editorial write goes into a table nothing reads. Two b
 
 **⚠️ A refinement the adversarial pass forced, and it matters for how B4c must be designed:** the primary editor-facing create path `POST /api/terminology` **requires `english`** (400 without it) and treats `icelandic` as *optional* — the activity log literally writes `' (placeholder)'` when it is absent. So it is false that "the editor only contributes the Icelandic side". Editors mint English headwords too, which is exactly what makes Branch B reachable by ordinary use.
 
-**The one mitigation that exists is out-of-band:** `server/scripts/import-concepts.js` is a shipped, operator-runnable writer of `concept`/`concept_term`. Nothing *in the running server* can write the model.
+**⚠️ SAY THIS AT EXACTLY THE RIGHT WIDTH, because the narrow claim is true and the broad one is false.** What is measured is **no writer reachable from an authenticated request** — that is D1's whole subject. It is **not** "nothing can write the model": **two shipped, operator-runnable CLI writers exist**, `server/scripts/import-concepts.js` (`concept`/`concept_term`) and, after B4b-0b, `server/scripts/fetch-bin-inflections.js --execute` (`concept_term.inflections`). ⚠️ **The second is the one D2-a's precondition invokes**, so by the time B4b-1 is implemented the model will have been written by an operator — which does not weaken D1-a and *does* mean a later reader must not take §3 as "the model is unwritable."
 
 ### D1 — the options, for the lead
 
