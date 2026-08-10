@@ -710,6 +710,30 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
   }
   const automaton = _automatonCache.automaton;
 
+  // ⚠️ MEMOISE resolve() ACROSS THE WHOLE CALL, keyed on the English string.
+  // Without this, resolve() runs once per (segment × hit) and each call is a DB
+  // lookup through lookupCandidates. The golden fixture's ~40 matches make that
+  // look free; a real module has hundreds of segments, and C24 exists because
+  // this function took the server down for ~3 minutes per call at production
+  // scale. The scope is fixed for the whole invocation, so one English string
+  // has one answer.
+  //
+  // SOUND, and verified rather than assumed: nothing in conceptResolver assigns
+  // to `scope` or mutates `scope.preference`/`scope.positionOf` (grepped; the
+  // control finds 18 reads, so the search is live), and this function is fully
+  // synchronous, so no concurrent write can land mid-call. ⚠️ If this function
+  // ever becomes async, this cache — like the automaton one below — turns into
+  // a correctness bug.
+  const resolved = new Map();
+  const resolveOnce = (english) => {
+    let r = resolved.get(english);
+    if (r === undefined) {
+      r = resolve(scope, english);
+      resolved.set(english, r);
+    }
+    return r;
+  };
+
   const result = {};
   for (const seg of segments) {
     const matches = [];
@@ -730,7 +754,7 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
     const hits = [];
     for (const [headwordId, occ] of firstByHeadword) {
       const english = englishById.get(headwordId);
-      const res = resolve(scope, english);
+      const res = resolveOnce(english);
       // §C43 / D7: the placeholder is a well-formed head form that is not a
       // word. It must never reach an editor. This does NOT close §C43.
       if (res.winner && res.winner.text === PLACEHOLDER_TEXT) continue;
@@ -1115,12 +1139,14 @@ file."
 | Gate | Measures | Its control, which must FAIL |
 |---|---|---|
 | 2 | every old headword resolves to a `concept_term` EN row | the reverse direction, which must **not** be 100% (it is ~32%) |
-| 3 | **`missing`-issue volume, old vs new, over the same real segments** — §5.1's unmeasured magnitude | a run with the IS side blanked, which must report **more** issues |
+| 3 | **`missing`-issue volume, old vs new, at FIXTURE SCALE** — §5.1's unmeasured magnitude | a run with the IS side blanked, which must report **more** issues |
 | 4 | the three folds agree over all 61,042 EN strings (`concept_term` binary · `foldString` · `nocaseKey`) | a planted `Ångström`/`ångström` pair, which must be **detected** |
 | 5 | the fingerprint tracks the automaton's source: mutate a `concept_term` EN row in a **cold child process** and require the automaton to change | a mutation to a table the automaton does not read, which must **not** invalidate |
 | 6 | `[vantar]` reaches no match and no issue | the 201 known concepts, all filtered |
 | 7 | **the paradigm path is reached**: a declined form base-form matching must MISS and a paradigm must CATCH | the same segment with the paradigm removed, which must report `missing` |
 | 8 | one automaton entry per distinct EN string; a homograph's winner comes from `resolve()` | one of the 11,553 multi-concept strings re-run with `hits` order reversed — the winner must not move |
+
+🔴 **Gate 3 RUNS AT FIXTURE SCALE, AND ITS LABEL MUST SAY SO.** A production-scale old-arm does not exist locally: the concept import writes nothing to `terminology_headwords` and the dev DB holds 6. The available old-arm is `verify-b4b0-gates.js:131-160`'s `seedC24(db)`, which seeds the 316-headword c24 fixture into the scratch DB's old tables against the real migrated schema. **`record()` the gate as `GATE 3 (fixture scale, 316 headwords)`** — unlabelled it reads as corpus-scale and would quietly answer at 1/64th of it, which is the exact "say what a number covers in the same breath as the number" failure this plan is written to avoid. **If a corpus-scale figure is ever wanted, it is a read-only prod query, not this gate.**
 
 ⚠️ **Gate 5 must use cold child processes via `SESSIONS_DB_PATH`.** B4b-0b's recorded hazard: an in-process re-call against a warm cache re-reads nothing and byte-identity holds whatever the run did. `resolveDbPath()` reads the env var at call time, so a child needs no injection and exercises the production path.
 
@@ -1183,9 +1209,11 @@ global.gc();
 console.log('trie heapUsed delta MB:', ((process.memoryUsage().heapUsed - before) / 1e6).toFixed(1));
 ```
 
-- [ ] **Step 2: Budget on the BIOLOGY scope**
+- [ ] **Step 2: Budget on the BIOLOGY scope, and measure SEGMENT COUNT as its own arm**
 
 47,568 in-scope distinct EN strings, **not** chemistry's 19,749. Re-measure the reference figure on the same box in the same run — B1's 0.044 ms/resolve is a **dev-box, cross-day** number.
+
+⚠️ **Two independent axes, and only one of them is the term count.** The old matcher's cost scaled with terms; the new one also calls `resolve()` per distinct English hit, so **segment count is a second multiplier**. Task 4's memoisation is what bounds it — one resolve per distinct string per call, not per (segment × hit). **Measure a many-segment module explicitly** and report the two arms separately, or a term-count-only benchmark will look fine while a 300-segment module is the case that hurts.
 
 - [ ] **Step 3: Say which scale every number came from**
 
