@@ -102,7 +102,17 @@ So after the cut-over, an editorial write goes into a table nothing reads. Two b
 
 **So the whole of §3 describes a real code-level gap on a path production has never exercised.** D1's cost is a window on an unused door — which is what makes D1-a the answer rather than merely the cheapest option.
 
-**Recommendation: D1-a — and with the traffic measurement above, this is now a weak-consequence decision rather than a trade-off. Its cost must still be stated honestly, because the obvious mitigation does not reach the people who would, in principle, lose the work.**
+### ✅ D1 IS RULED 2026-08-10 (lead): **D1-a — proceed as scoped.**
+
+B4b-1 ships with the write-path gap open; **B4c restores it.** The ruling rests on two measurements, not on cost: no existing editorial vocabulary is lost (99.98% expressible), and the write path has **zero measured traffic** since the model was populated.
+
+**⚠️ What the ruling does NOT license, stated so a later session does not read it as broader than it is:**
+
+- It is **not** a finding that the write-path gap is acceptable *in general* — it is acceptable **because production has never used that path**. If editorial terminology work starts before B4c, the premise expires. **The claim is dated and re-measurable** (`source` / `approved_by` / `created_at` on `terminology_translations`).
+- **The gap is logged, not mitigated.** Per the ruling, B4b-1 does **not** build an operator-only alarm: CLAUDE.md records that nothing polls `/api/health`, so a warning there would reach whoever runs a deploy and **not** the editors. Building it would buy the appearance of a safeguard rather than one. **The register and the PR carry the gap; §C42 and B4c own the fix.**
+- **§C42's guard still stands and is still insufficient as written** — see §2.5. Part C must not drop the old tables, *and* that is not the same as protecting the behaviour.
+
+**Recommendation as written before the ruling, retained:** D1-a — and with the traffic measurement, this is a weak-consequence decision rather than a trade-off. Its cost must still be stated honestly, because the obvious mitigation does not reach the people who would, in principle, lose the work.
 
 The natural "make it loud" is a startup warning plus an `/api/health` line. **⚠️ That is loud to the OPERATOR and silent to the EDITOR.** CLAUDE.md § Server Features records that **nothing polls `/api/health`** — the routine surface is what `./scripts/deploy.sh` prints. So the warning reaches whoever runs a deploy, while the editors whose terminology decisions stop being representable are told **nothing at all**, and the standing feedback rule *robustness over expedience* reads on that just as it reads on D1-d's flag.
 
