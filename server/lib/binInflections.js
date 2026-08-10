@@ -58,4 +58,30 @@ async function loadBinData(csvPath) {
   return map;
 }
 
-module.exports = { loadBinData };
+/**
+ * All inflected forms of `word`, base form excluded.
+ *
+ * ⚠️ RETURNS `null`, NEVER `[]` — in BOTH the not-found case and the
+ * only-the-base-form case. Python returns None in both (`:91`, `:95`) and the
+ * CLI branches on truthiness, so an empty array would silently become a written
+ * `"[]"` where the Python wrote nothing at all.
+ *
+ * ⚠️ SORTED BY CODE POINT, matching Python's `sorted()`. A default JS
+ * `Array.prototype.sort()` compares UTF-16 code units, which equals code-point
+ * order for the BMP — and every Icelandic character is BMP. DO NOT use
+ * `localeCompare`: under Icelandic collation `ö` sorts after `z`, which would
+ * reorder ~every paradigm containing an accented character and break the golden.
+ *
+ * @param {Map<string, Set<string>>} map from loadBinData
+ * @param {string} word
+ * @returns {string[]|null}
+ */
+function getInflections(map, word) {
+  const key = word.toLowerCase().trim(); // Python: `word.lower().strip()`
+  const forms = map.get(key);
+  if (!forms || forms.size === 0) return null;
+  const result = [...forms].filter((f) => f.toLowerCase() !== key).sort();
+  return result.length > 0 ? result : null;
+}
+
+module.exports = { loadBinData, getInflections };

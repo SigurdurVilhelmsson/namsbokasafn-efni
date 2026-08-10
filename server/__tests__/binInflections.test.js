@@ -8,7 +8,7 @@ import os from 'os';
 import path from 'path';
 
 const require = createRequire(import.meta.url);
-const { loadBinData } = require('../lib/binInflections');
+const { loadBinData, getInflections } = require('../lib/binInflections');
 
 let dir;
 const write = (name, body) => {
@@ -62,5 +62,45 @@ describe('loadBinData', () => {
     const p = write('f.csv', 'zafl;9001;kk;alm;zafli;X');
     const map = await loadBinData(p);
     expect([...map.get('afl')]).toEqual(['afli']);
+  });
+});
+
+describe('getInflections', () => {
+  const map = new Map([
+    ['afl', new Set(['afl', 'afli', 'afls', 'öfl', 'Afl'])],
+    ['bara', new Set(['bara'])],
+  ]);
+
+  it('returns the forms with the base form removed', () => {
+    expect(getInflections(map, 'afl')).toEqual(['afli', 'afls', 'öfl']);
+  });
+
+  it('matches case-insensitively on the lookup key', () => {
+    expect(getInflections(map, 'AFL')).toEqual(['afli', 'afls', 'öfl']);
+  });
+
+  it('removes every case variant of the base form, not just the exact one', () => {
+    // Python: `f.lower() != key` — so 'Afl' is dropped alongside 'afl'.
+    expect(getInflections(map, 'afl')).not.toContain('Afl');
+  });
+
+  // ⚠️ null, NOT []. Both callers branch on it.
+  it('returns null for a word BÍN does not have', () => {
+    expect(getInflections(map, 'kjarnsækir')).toBeNull();
+  });
+
+  it('returns null when the only form IS the base form', () => {
+    expect(getInflections(map, 'bara')).toBeNull();
+  });
+
+  it('trims the incoming word', () => {
+    expect(getInflections(map, '  afl  ')).toEqual(['afli', 'afls', 'öfl']);
+  });
+
+  // ⚠️ CODE-POINT ORDER, matching Python's sorted(). localeCompare would put
+  // 'öfl' before 'z' under Icelandic collation; code-point order does not.
+  it('sorts by code point, NOT by locale', () => {
+    const m = new Map([['x', new Set(['zzz', 'öfl', 'afli'])]]);
+    expect(getInflections(m, 'x')).toEqual(['afli', 'zzz', 'öfl']);
   });
 });
