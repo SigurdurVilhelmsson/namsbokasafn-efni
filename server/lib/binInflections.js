@@ -1,22 +1,23 @@
 /**
- * BÍN inflection lookup — the pure half of tools/fetch-bin-inflections.js.
+ * BÍN inflection lookup — the pure half of server/scripts/fetch-bin-inflections.js.
  *
  * ⚠️ PORTED FROM tools/fetch_bin_inflections.py AND DELIBERATELY BEHAVIOUR-
  * IDENTICAL TO IT (register §C36 B4b-0a). Every quirk below is the Python's
- * quirk and is pinned by tools/__tests__/bin-inflections-golden.test.js, whose
+ * quirk and is pinned by server/__tests__/binInflectionsGolden.test.js, whose
  * oracle was captured from the Python before this file existed. If you are
  * tempted to "clean up" something here, that is B4b-0b's job, not this file's.
  *
- * ⚠️ NO `require` OF ANYTHING UNDER server/. tools/ is MIT, server/ is AGPL-3.0,
- * and root LICENSE enumerates the (deliberate) edges between them. Do not add one.
+ * ⚠️ Lives in server/ (AGPL-3.0), alongside import-concepts.js and the rest of the
+ * concept-model data ops. An earlier draft put it in tools/ (MIT), which forced a
+ * .cjs bridge and put better-sqlite3 out of reach; re-homed 2026-08-10.
  *
  * BÍN data: Beygingarlýsing íslensks nútímamáls. Stofnun Árna Magnússonar í
  * íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir.
  * https://bin.arnastofnun.is — CC BY-SA 4.0. Forms are SELECTED and SUBSETTED
  * (the base form is removed), i.e. modified.
  */
-import fs from 'fs';
-import readline from 'readline';
+const fs = require('fs');
+const readline = require('readline');
 
 /**
  * Load SHsnid.csv into `lemma.toLowerCase() → Set<form>`.
@@ -57,4 +58,4 @@ async function loadBinData(csvPath) {
   return map;
 }
 
-export { loadBinData };
+module.exports = { loadBinData };

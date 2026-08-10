@@ -1,8 +1,14 @@
+// ⚠️ The HYBRID shape every server/__tests__ file uses: `import` for vitest and
+// node builtins (Vitest cannot be require()d at all), `createRequire` for the
+// server's own CommonJS modules. Matches importConcepts.test.js:9-14.
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { createRequire } from 'module';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { loadBinData } from '../lib/bin-inflections.js';
+
+const require = createRequire(import.meta.url);
+const { loadBinData } = require('../lib/binInflections');
 
 let dir;
 const write = (name, body) => {

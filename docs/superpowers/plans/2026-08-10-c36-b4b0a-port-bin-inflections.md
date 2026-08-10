@@ -4,9 +4,9 @@
 
 **Goal:** Replace `tools/fetch_bin_inflections.py` with a behaviour-identical Node CLI, so the script lands inside root `npm test` — the campaign's authoritative gate — with its inertness *measured* by a differential golden rather than asserted.
 
-**Architecture:** Split the script in two. `tools/lib/bin-inflections.js` holds the three **pure** functions (CSV load, lookup, JSON encode) — pure because the golden captures exactly those, with no database. `tools/fetch-bin-inflections.js` is the CLI shell: argument parsing, SQL, reporting. The golden is captured from the **unmodified Python first**, in its own commit, and the Python is deleted **last**.
+**Architecture:** Split the script in two. `server/lib/binInflections.js` holds the three **pure** functions (CSV load, lookup, JSON encode) — pure because the golden captures exactly those, with no database. `server/scripts/fetch-bin-inflections.js` is the CLI shell: argument parsing, SQL, reporting. The golden is captured from the **unmodified Python first**, in its own commit, and the Python is deleted **last**.
 
-**Tech Stack:** Node 22 (`.nvmrc`), **ESM** (root `package.json` is `"type": "module"`), **`node:sqlite`** (built in; see Global Constraints), Vitest. Python 3 is needed for Task 1 only.
+**Tech Stack:** Node 22 (`.nvmrc`), **CommonJS** (`server/package.json` is `"type": "commonjs"`), `better-sqlite3` (resolves natively in `server/`), Vitest. Python 3 is needed for Task 1 only.
 
 **Spec:** [`docs/superpowers/specs/2026-08-10-terminology-concept-model-part-b4b0-design.md`](../specs/2026-08-10-terminology-concept-model-part-b4b0-design.md) §1.1a. **Read it before starting.**
 
@@ -14,12 +14,12 @@
 
 - **This PR changes NO behaviour.** Same input file (`tools/data/SHsnid.csv`), same target table (`terminology_translations`), same union-by-lowercased-lemma lookup, same `--execute` opt-in. Every logic change belongs to B4b-0b.
 - **🔴 NEVER commit BÍN bytes.** `tools/data/` is gitignored (`.gitignore:56`). The golden stores **SHA-256 hashes**, never inflected forms. This repo is public.
-- **🔴 `tools/` is MIT, `server/` is AGPL-3.0.** Do **not** import anything from `server/` — that would add a third MIT→AGPL edge requiring an update to root `LICENSE`. In particular **do not use `server/lib/dbPath.js`**.
+- **🔴 THIS CODE LIVES IN `server/`, NOT `tools/`** *(lead decision, 2026-08-10)*. Every comparable data op already does: `import-concepts.js` (B4b-0b's direct sibling), `export-terminology.js`, `capture-c24-golden.js`, `verify-b4a-gates.js`, `bench-*.js`. ⚠️ **This relicenses the file MIT → AGPL-3.0** (root `LICENSE`: `tools/` is MIT, `server/` is AGPL) — deliberate, and the lead's call as copyright holder. It also means `server/lib/dbPath.js` is now available and **is** the right way to resolve the DB path.
 - **Resolve paths against `__dirname`, never `process.cwd()`** (CLAUDE.md, durable).
-- **Do NOT use `tools/lib/parseArgs.js`.** It **silently drops unknown flags** (CLAUDE.md, durable); Python's `argparse` exits **2** on them. Using it would be a behaviour regression.
+- **Do NOT use `tools/lib/parseArgs.js`** (or any parseArgs helper). It **silently drops unknown flags** (CLAUDE.md, durable); Python's `argparse` exits **2** on them. Using it would be a behaviour regression.
 - **Stream the CSV.** `SHsnid.csv` is **377 MB / 7,425,931 lines**. `readFileSync` is wrong.
-- 🔴 **ESM, NOT CommonJS.** Root `package.json` is `"type": "module"`, so a `tools/*.js` file using `require`/`module.exports` **cannot load**. Use `import`/`export`, and `fileURLToPath(import.meta.url)` where `__dirname` is needed. ⚠️ **Do NOT use a `.cjs` extension**: `tools/lib/*.cjs` exists solely to bridge to `server/`, which is CommonJS — and this module is forbidden a `server/` consumer by the MIT/AGPL rule above. Match `tools/lib/book-rendering-config.js`, which is ESM `.js`.
-- 🔴 **SQLite is `node:sqlite`, NOT `better-sqlite3`** *(lead decision, 2026-08-10)*. better-sqlite3 is installed **only** in `server/node_modules` and is not a root dependency, so a `tools/` script cannot resolve it. `node:sqlite` is built into Node 22.22.2 (verified: exports `DatabaseSync`, `StatementSync`), needs no dependency and no reach into the AGPL tree. ⚠️ It is **experimental** and prints an `ExperimentalWarning` on stderr — expected, not a failure. ⚠️ **It has no `db.transaction()` helper**; use explicit `BEGIN`/`COMMIT`/`ROLLBACK`.
+- **CommonJS for SOURCE, hybrid for TESTS.** `server/package.json` is `"type": "commonjs"`, so source files use `require`/`module.exports` and a plain `__dirname` — match `server/lib/conceptResolver.js`. ⚠️ **Test files are different and this trips people:** Vitest **cannot be `require`d at all** (it throws `Vitest cannot be imported in a CommonJS module using require()`), so every `server/__tests__/*.test.js` uses `import` for vitest and node builtins plus `createRequire(import.meta.url)` for the server's own modules. Copy `importConcepts.test.js:9-14`.
+- **SQLite is `better-sqlite3`**, which resolves natively inside `server/`. ⚠️ Do **not** reach for `node:sqlite`: it is experimental in Node 22, and prod runs **v22.23.1** against dev's **v22.22.2**. The `server/` placement makes it unnecessary.
 - Run `npm test` from the **repo root**.
 - Commit messages end with: `Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>`
 
@@ -53,14 +53,16 @@ Read `tools/fetch_bin_inflections.py` once before Task 2. The contract, verbatim
 ## File Structure
 
 **Create:**
-- `tools/capture-bin-golden.py` — Task 1. Imports the **unmodified** Python and hashes its output. Deleted in Task 7.
-- `tools/__tests__/fixtures/bin-golden-words.txt` — the word list. **Our own terminology; committable.**
-- `tools/__tests__/fixtures/bin-golden-hashes.json` — `{word: sha256|null}`. **No BÍN bytes.**
-- `tools/lib/bin-inflections.js` — the three pure functions.
-- `tools/fetch-bin-inflections.js` — the CLI.
-- `tools/__tests__/bin-inflections.test.js` — unit tests for the pure functions.
-- `tools/__tests__/bin-inflections-golden.test.js` — the differential gate.
-- `tools/__tests__/bin-inflections-cli.test.js` — CLI/SQL tests.
+- `tools/capture-bin-golden.py` — Task 1 ✅ done. Imports the **unmodified** Python and hashes its output. Deleted in Task 7. Stays in `tools/` because the Python it imports does.
+- `server/__tests__/fixtures/bin-golden-words.txt` — the word list. **Our own terminology; committable.**
+- `server/__tests__/fixtures/bin-golden-hashes.json` — `{word: sha256|null}`. **No BÍN bytes.**
+- `server/lib/binInflections.js` — the three pure functions.
+- `server/scripts/fetch-bin-inflections.js` — the CLI.
+- `server/__tests__/binInflections.test.js` — unit tests for the pure functions.
+- `server/__tests__/binInflectionsGolden.test.js` — the differential gate.
+- `server/__tests__/binInflectionsCli.test.js` — CLI/SQL tests.
+
+⚠️ **`tools/data/SHsnid.csv` stays put** — `.gitignore:56` ignores `tools/data/` by name and the licence note lives there. A `server/` script resolves it via `__dirname`; it is a DATA path, not a code dependency.
 
 **Delete (Task 7, last):**
 - `tools/fetch_bin_inflections.py`
@@ -74,8 +76,8 @@ Read `tools/fetch_bin_inflections.py` once before Task 2. The contract, verbatim
 
 **Files:**
 - Create: `tools/capture-bin-golden.py`
-- Create: `tools/__tests__/fixtures/bin-golden-words.txt`
-- Create: `tools/__tests__/fixtures/bin-golden-hashes.json`
+- Create: `server/__tests__/fixtures/bin-golden-words.txt`
+- Create: `server/__tests__/fixtures/bin-golden-hashes.json`
 
 **Interfaces:**
 - Consumes: `tools/fetch_bin_inflections.py`'s `load_bin_data(path)` and `get_inflections(map, word)`; `tools/data/SHsnid.csv`.
@@ -91,8 +93,8 @@ const D=require(\"better-sqlite3\");const p=require(\"./lib/dbPath\");
 const db=new D(p(),{readonly:true});
 for(const r of db.prepare(\"SELECT DISTINCT icelandic FROM terminology_translations WHERE icelandic IS NOT NULL ORDER BY icelandic\").all())
   console.log(r.icelandic);
-db.close();"' > tools/__tests__/fixtures/bin-golden-words.txt
-wc -l tools/__tests__/fixtures/bin-golden-words.txt
+db.close();"' > server/__tests__/fixtures/bin-golden-words.txt
+wc -l server/__tests__/fixtures/bin-golden-words.txt
 ```
 
 Expected: ~20,000 lines. **Read-only; nothing is written to production.**
@@ -106,7 +108,7 @@ Expected: ~20,000 lines. **Read-only; nothing is written to production.**
 """
 Captures the B4b-0a differential golden from the UNMODIFIED Python implementation.
 
-⚠️ MUST be run BEFORE tools/fetch-bin-inflections.js exists. Re-running it after
+⚠️ MUST be run BEFORE server/scripts/fetch-bin-inflections.js exists. Re-running it after
 the port would certify the new implementation against itself and destroy the
 oracle — there is no observable difference between a correct golden and a
 worthless one. (Same rule as tools/../server/scripts/capture-c24-golden.js.)
@@ -172,10 +174,10 @@ Expected: prints `words: ~20000`, then a non-zero `found` **and** a non-zero `no
 - [ ] **Step 4: Verify no BÍN forms leaked into the golden**
 
 ```bash
-grep -c '"[0-9a-f]\{64\}"' tools/__tests__/fixtures/bin-golden-hashes.json
+grep -c '"[0-9a-f]\{64\}"' server/__tests__/fixtures/bin-golden-hashes.json
 python3 -c "
 import json,re
-g=json.load(open('tools/__tests__/fixtures/bin-golden-hashes.json'))
+g=json.load(open('server/__tests__/fixtures/bin-golden-hashes.json'))
 bad=[k for k,v in g.items() if v is not None and not re.fullmatch(r'[0-9a-f]{64}',v)]
 print('non-hash values:',len(bad))
 assert not bad, bad[:5]
@@ -190,7 +192,7 @@ Expected: `non-hash values: 0` and `OK`. **This is the licence gate: a value tha
 Put the current `git rev-parse HEAD` into the docstring's `Captured at commit:` line, then:
 
 ```bash
-git add tools/capture-bin-golden.py tools/__tests__/fixtures/bin-golden-words.txt tools/__tests__/fixtures/bin-golden-hashes.json
+git add tools/capture-bin-golden.py server/__tests__/fixtures/bin-golden-words.txt server/__tests__/fixtures/bin-golden-hashes.json
 git commit -m "$(cat <<'EOF'
 test(B4b-0a): capture the differential golden from the UNMODIFIED Python
 
@@ -220,8 +222,8 @@ EOF
 ### Task 2: `loadBinData` — the streaming CSV loader
 
 **Files:**
-- Create: `tools/lib/bin-inflections.js`
-- Create: `tools/__tests__/bin-inflections.test.js`
+- Create: `server/lib/binInflections.js`
+- Create: `server/__tests__/binInflections.test.js`
 
 **Interfaces:**
 - Produces: `loadBinData(csvPath) → Promise<Map<string, Set<string>>>`, keyed on `lemma.toLowerCase()`. Tasks 3 and 6 consume it.
@@ -229,12 +231,19 @@ EOF
 - [ ] **Step 1: Write the failing tests**
 
 ```javascript
-// tools/__tests__/bin-inflections.test.js
+// server/__tests__/binInflections.test.js
+// ⚠️ The HYBRID shape every server/__tests__ file uses: `import` for vitest and
+// node builtins — **Vitest CANNOT be require()d at all**, it throws — and
+// `createRequire` for the server's own CommonJS modules. Matches
+// importConcepts.test.js:9-14.
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { createRequire } from 'module';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { loadBinData } from '../lib/bin-inflections.js';
+
+const require = createRequire(import.meta.url);
+const { loadBinData } = require('../lib/binInflections');
 
 let dir;
 const write = (name, body) => {
@@ -294,19 +303,19 @@ describe('loadBinData', () => {
 
 - [ ] **Step 2: Run the tests to verify they fail**
 
-Run: `npx vitest run tools/__tests__/bin-inflections.test.js`
+Run: `npx vitest run server/__tests__/binInflections.test.js`
 Expected: FAIL — `Cannot find module '../lib/bin-inflections'`
 
 - [ ] **Step 3: Implement `loadBinData`**
 
 ```javascript
-// tools/lib/bin-inflections.js
+// server/lib/binInflections.js
 /**
- * BÍN inflection lookup — the pure half of tools/fetch-bin-inflections.js.
+ * BÍN inflection lookup — the pure half of server/scripts/fetch-bin-inflections.js.
  *
  * ⚠️ PORTED FROM tools/fetch_bin_inflections.py AND DELIBERATELY BEHAVIOUR-
  * IDENTICAL TO IT (register §C36 B4b-0a). Every quirk below is the Python's
- * quirk and is pinned by tools/__tests__/bin-inflections-golden.test.js, whose
+ * quirk and is pinned by server/__tests__/binInflectionsGolden.test.js, whose
  * oracle was captured from the Python before this file existed. If you are
  * tempted to "clean up" something here, that is B4b-0b's job, not this file's.
  *
@@ -318,8 +327,8 @@ Expected: FAIL — `Cannot find module '../lib/bin-inflections'`
  * https://bin.arnastofnun.is — CC BY-SA 4.0. Forms are SELECTED and SUBSETTED
  * (the base form is removed), i.e. modified.
  */
-import fs from 'fs';
-import readline from 'readline';
+const fs = require('fs');
+const readline = require('readline');
 
 /**
  * Load SHsnid.csv into `lemma.toLowerCase() → Set<form>`.
@@ -360,18 +369,18 @@ async function loadBinData(csvPath) {
   return map;
 }
 
-export { loadBinData };
+module.exports = { loadBinData };
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
 
-Run: `npx vitest run tools/__tests__/bin-inflections.test.js`
+Run: `npx vitest run server/__tests__/binInflections.test.js`
 Expected: PASS, 6 tests.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add tools/lib/bin-inflections.js tools/__tests__/bin-inflections.test.js
+git add server/lib/binInflections.js server/__tests__/binInflections.test.js
 git commit -m "$(cat <<'EOF'
 feat(B4b-0a): loadBinData — the streaming CSV loader, guards included
 
@@ -395,8 +404,8 @@ EOF
 ### Task 3: `getInflections` — the lookup
 
 **Files:**
-- Modify: `tools/lib/bin-inflections.js`
-- Modify: `tools/__tests__/bin-inflections.test.js`
+- Modify: `server/lib/binInflections.js`
+- Modify: `server/__tests__/binInflections.test.js`
 
 **Interfaces:**
 - Consumes: `loadBinData`'s `Map<string, Set<string>>`.
@@ -404,10 +413,10 @@ EOF
 
 - [ ] **Step 1: Write the failing tests**
 
-Append to `tools/__tests__/bin-inflections.test.js`:
+Append to `server/__tests__/binInflections.test.js`:
 
 ```javascript
-import { getInflections } from '../lib/bin-inflections.js';
+const { getInflections } = require('../lib/binInflections');
 
 describe('getInflections', () => {
   const map = new Map([
@@ -452,12 +461,12 @@ describe('getInflections', () => {
 
 - [ ] **Step 2: Run the tests to verify they fail**
 
-Run: `npx vitest run tools/__tests__/bin-inflections.test.js -t getInflections`
+Run: `npx vitest run server/__tests__/binInflections.test.js -t getInflections`
 Expected: FAIL — `getInflections is not a function`
 
 - [ ] **Step 3: Implement `getInflections`**
 
-Add to `tools/lib/bin-inflections.js`, and extend the export.
+Add to `server/lib/binInflections.js`, and extend the export.
 
 ```javascript
 /**
@@ -486,18 +495,18 @@ function getInflections(map, word) {
   return result.length > 0 ? result : null;
 }
 
-export { loadBinData, getInflections };
+module.exports = { loadBinData, getInflections };
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
 
-Run: `npx vitest run tools/__tests__/bin-inflections.test.js`
+Run: `npx vitest run server/__tests__/binInflections.test.js`
 Expected: PASS, 13 tests.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add tools/lib/bin-inflections.js tools/__tests__/bin-inflections.test.js
+git add server/lib/binInflections.js server/__tests__/binInflections.test.js
 git commit -m "$(cat <<'EOF'
 feat(B4b-0a): getInflections — null-not-empty, and code-point sort
 
@@ -522,18 +531,18 @@ EOF
 ### Task 4: `formatInflectionsJson` — Python-compatible encoding
 
 **Files:**
-- Modify: `tools/lib/bin-inflections.js`
-- Modify: `tools/__tests__/bin-inflections.test.js`
+- Modify: `server/lib/binInflections.js`
+- Modify: `server/__tests__/binInflections.test.js`
 
 **Interfaces:**
 - Produces: `formatInflectionsJson(forms) → string`. Tasks 5 and 6 consume it.
 
 - [ ] **Step 1: Write the failing tests**
 
-Append to `tools/__tests__/bin-inflections.test.js`:
+Append to `server/__tests__/binInflections.test.js`:
 
 ```javascript
-import { formatInflectionsJson } from '../lib/bin-inflections.js';
+const { formatInflectionsJson } = require('../lib/binInflections');
 
 describe('formatInflectionsJson', () => {
   // ⚠️ THE WHOLE POINT: json.dumps separates with ", " and JSON.stringify with ",".
@@ -568,12 +577,12 @@ describe('formatInflectionsJson', () => {
 
 - [ ] **Step 2: Run the tests to verify they fail**
 
-Run: `npx vitest run tools/__tests__/bin-inflections.test.js -t formatInflectionsJson`
+Run: `npx vitest run server/__tests__/binInflections.test.js -t formatInflectionsJson`
 Expected: FAIL — `formatInflectionsJson is not a function`
 
 - [ ] **Step 3: Implement it**
 
-Add to `tools/lib/bin-inflections.js` and extend the export.
+Add to `server/lib/binInflections.js` and extend the export.
 
 ```javascript
 /**
@@ -596,18 +605,18 @@ function formatInflectionsJson(forms) {
   return '[' + forms.map((f) => JSON.stringify(f)).join(', ') + ']';
 }
 
-export { loadBinData, getInflections, formatInflectionsJson };
+module.exports = { loadBinData, getInflections, formatInflectionsJson };
 ```
 
 - [ ] **Step 4: Run the tests to verify they pass**
 
-Run: `npx vitest run tools/__tests__/bin-inflections.test.js`
+Run: `npx vitest run server/__tests__/binInflections.test.js`
 Expected: PASS, 19 tests.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add tools/lib/bin-inflections.js tools/__tests__/bin-inflections.test.js
+git add server/lib/binInflections.js server/__tests__/binInflections.test.js
 git commit -m "$(cat <<'EOF'
 feat(B4b-0a): formatInflectionsJson — json.dumps uses ", ", JSON.stringify does not
 
@@ -630,24 +639,31 @@ EOF
 ### Task 5: The CLI
 
 **Files:**
-- Create: `tools/fetch-bin-inflections.js`
-- Create: `tools/__tests__/bin-inflections-cli.test.js`
+- Create: `server/scripts/fetch-bin-inflections.js`
+- Create: `server/__tests__/binInflectionsCli.test.js`
 
 **Interfaces:**
-- Consumes: `loadBinData(csvPath)`, `getInflections(map, word)`, `formatInflectionsJson(forms)` from `tools/lib/bin-inflections.js`.
+- Consumes: `loadBinData(csvPath)`, `getInflections(map, word)`, `formatInflectionsJson(forms)` from `server/lib/binInflections.js`.
 - Produces, all exported for test:
   - `parseArgs(argv) → {db: string, binData: string, execute: boolean, limit: number, force: boolean, help?: boolean}` — **throws** on an unknown flag or a missing value.
   - `selectSql({force: boolean, limit: number}) → string`
   - `main(argv) → Promise<void>`
 
-⚠️ `node:sqlite` is imported **dynamically inside `main()`**, not at module top level, so the test file can import `parseArgs`/`selectSql` without touching SQLite or triggering the experimental warning. Keep it that way.
+⚠️ `better-sqlite3` is `require`d **inside `main()`**, not at module top level, so the test file can import `parseArgs`/`selectSql` without opening a database. Keep it that way.
 
 - [ ] **Step 1: Write the failing tests**
 
 ```javascript
-// tools/__tests__/bin-inflections-cli.test.js
+// server/__tests__/binInflectionsCli.test.js
+// ⚠️ The HYBRID shape every server/__tests__ file uses: `import` for vitest and
+// node builtins — **Vitest CANNOT be require()d at all**, it throws — and
+// `createRequire` for the server's own CommonJS modules. Matches
+// importConcepts.test.js:9-14.
 import { describe, it, expect } from 'vitest';
-import { parseArgs, selectSql } from '../fetch-bin-inflections.js';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { parseArgs, selectSql } = require('../scripts/fetch-bin-inflections');
 
 describe('parseArgs', () => {
   it('defaults to dry-run', () => {
@@ -713,13 +729,13 @@ describe('selectSql', () => {
 
 - [ ] **Step 2: Run the tests to verify they fail**
 
-Run: `npx vitest run tools/__tests__/bin-inflections-cli.test.js`
+Run: `npx vitest run server/__tests__/binInflectionsCli.test.js`
 Expected: FAIL — `Cannot find module '../fetch-bin-inflections'`
 
 - [ ] **Step 3: Implement the CLI**
 
 ```javascript
-// tools/fetch-bin-inflections.js
+// server/scripts/fetch-bin-inflections.js
 /**
  * Populate terminology_translations.inflections from BÍN.
  *
@@ -728,21 +744,19 @@ Expected: FAIL — `Cannot find module '../fetch-bin-inflections'`
  * default. The pos-aware rewrite and the move to concept_term are B4b-0b.
  *
  * Usage:
- *   node tools/fetch-bin-inflections.js                    # dry run
- *   node tools/fetch-bin-inflections.js --execute
- *   node tools/fetch-bin-inflections.js --execute --limit 50
+ *   node server/scripts/fetch-bin-inflections.js                    # dry run
+ *   node server/scripts/fetch-bin-inflections.js --execute
+ *   node server/scripts/fetch-bin-inflections.js --execute --limit 50
  *
  * BÍN data: Beygingarlýsing íslensks nútímamáls. Stofnun Árna Magnússonar í
  * íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir.
  * https://bin.arnastofnun.is — CC BY-SA 4.0; the forms are modified (selected
  * and subsetted).
  */
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { loadBinData, getInflections, formatInflectionsJson } from './lib/bin-inflections.js';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const fs = require('fs');
+const path = require('path');
+const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/binInflections');
+const resolveDbPath = require('../lib/dbPath');
 
 // ⚠️ __dirname, never process.cwd() (CLAUDE.md, durable). The server runs with
 // cwd=server/ and the cron from the repo root; a cwd-relative default silently
@@ -750,14 +764,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 //
 // ⚠️ AND NOT server/lib/dbPath.js. tools/ is MIT and server/ is AGPL-3.0; root
 // LICENSE enumerates the deliberate edges and this must not become another one.
-const REPO_ROOT = path.resolve(__dirname, '..');
-const DEFAULT_DB = path.join(REPO_ROOT, 'pipeline-output', 'sessions.db');
-const DEFAULT_BIN = path.join(__dirname, 'data', 'SHsnid.csv');
+// ⚠️ resolveDbPath(), never process.cwd() (CLAUDE.md, durable) — the server runs
+// with cwd=server/ and the cron from the repo root. Now that this script lives in
+// server/, the canonical resolver is available and IS the right answer; the earlier
+// tools/ placement is what made a hand-rolled path necessary.
+const DEFAULT_DB = resolveDbPath();
+// ⚠️ tools/data/ is where the licensed BÍN drop lives (.gitignore:56 names it).
+// A DATA path, resolved against __dirname — not a code dependency on tools/.
+const DEFAULT_BIN = path.join(__dirname, '..', '..', 'tools', 'data', 'SHsnid.csv');
 
-const USAGE = `Usage: node tools/fetch-bin-inflections.js [--db <path>] [--bin-data <path>]
+const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>] [--bin-data <path>]
                                           [--execute] [--limit <n>] [--force]
 
-  --db <path>        SQLite database (default: ${DEFAULT_DB})
+  --db <path>        SQLite database (default: resolveDbPath())
   --bin-data <path>  SHsnid.csv (default: ${DEFAULT_BIN})
   --execute          actually write. WITHOUT THIS NOTHING IS WRITTEN.
   --limit <n>        process at most n translations (0 = all)
@@ -836,28 +855,22 @@ async function main(argv) {
   const map = await loadBinData(args.binData);
   console.log(`  Loaded inflection records for ${map.size.toLocaleString()} lemmas`);
 
-  // ⚠️ node:sqlite, NOT better-sqlite3 (lead decision, 2026-08-10). better-sqlite3
-  // is installed ONLY in server/node_modules and is not a root dependency, so a
-  // tools/ script cannot resolve it. `tools/merge-glossary.js:495` works around
-  // that with require(path.resolve('server/node_modules/...')) — CWD-RELATIVE,
-  // which CLAUDE.md's durable rule forbids. node:sqlite needs no dependency and
-  // no cross-tree reach. It is EXPERIMENTAL in Node 22 and prints a warning.
-  const { DatabaseSync } = await import('node:sqlite');
-  const db = new DatabaseSync(args.db);
+  // ⚠️ Required INSIDE main(), not at module top level, so the test file can
+  // import parseArgs/selectSql without opening a database.
+  const Database = require('better-sqlite3');
+  const db = new Database(args.db);
   const rows = db.prepare(selectSql(args)).all();
   console.log(`\nFound ${rows.length} translations to process`);
   if (!args.execute) console.log('*** DRY RUN — add --execute to write to database ***\n');
 
   const update = db.prepare('UPDATE terminology_translations SET inflections = ? WHERE id = ?');
   const stats = { processed: 0, found: 0, notFound: 0 };
-  // ⚠️ node:sqlite HAS NO db.transaction() HELPER — better-sqlite3 does, and the
-  // plan's first draft used it. Python's sqlite3 opened an implicit transaction
-  // and wrote only at db.commit(), so ALL-OR-NOTHING is the behaviour to
-  // preserve; explicit BEGIN/COMMIT is how you get it here. Only opened under
-  // --execute, so a dry run touches no transaction state at all.
-  if (args.execute) db.exec('BEGIN');
-  try {
-    for (const [i, row] of rows.entries()) {
+  // ⚠️ ALL-OR-NOTHING, matching Python: sqlite3 opened an implicit transaction and
+  // wrote only at db.commit(). better-sqlite3's db.transaction() gives that
+  // directly. (node:sqlite has no such helper — one reason server/ placement is
+  // simpler than the tools/ workaround it replaces.)
+  const apply = db.transaction((list) => {
+    for (const [i, row] of list.entries()) {
       const forms = getInflections(map, row.icelandic);
       stats.processed++;
       if (forms) {
@@ -869,11 +882,8 @@ async function main(argv) {
         if (i < 20) console.log(`  – ${row.icelandic} (${row.english}): not in BÍN`);
       }
     }
-    if (args.execute) db.exec('COMMIT');
-  } catch (err) {
-    if (args.execute) db.exec('ROLLBACK');
-    throw err;
-  }
+  });
+  apply(rows);
 
   console.log(args.execute ? `\n✓ Changes committed to ${args.db}` : '\n*** DRY RUN — no changes written ***');
   db.close();
@@ -889,10 +899,9 @@ async function main(argv) {
   }
 }
 
-export { parseArgs, selectSql, main };
+module.exports = { parseArgs, selectSql, main };
 
-// ESM equivalent of `require.main === module`.
-if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) {
+if (require.main === module) {
   main(process.argv.slice(2)).catch((err) => {
     console.error(err);
     process.exit(1);
@@ -902,26 +911,26 @@ if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToP
 
 - [ ] **Step 4: Run the tests to verify they pass**
 
-Run: `npx vitest run tools/__tests__/bin-inflections-cli.test.js`
+Run: `npx vitest run server/__tests__/binInflectionsCli.test.js`
 Expected: PASS, 11 tests.
 
 - [ ] **Step 5: Verify the dry-run default against a throwaway database**
 
 ```bash
-node -e "
-const {DatabaseSync}=await import('node:sqlite'); const db=new DatabaseSync('/tmp/b4b0a-check.db');
+(cd server && node -e "
+const D=require('better-sqlite3'); const db=new D('/tmp/b4b0a-check.db');
 db.exec(\`CREATE TABLE terminology_headwords (id INTEGER PRIMARY KEY, english TEXT, pos TEXT);
 CREATE TABLE terminology_translations (id INTEGER PRIMARY KEY, headword_id INTEGER, icelandic TEXT, inflections TEXT);
 INSERT INTO terminology_headwords (id,english) VALUES (1,'power');
 INSERT INTO terminology_translations (id,headword_id,icelandic) VALUES (1,1,'afl');\`);
-db.close();"
-node tools/fetch-bin-inflections.js --db /tmp/b4b0a-check.db
-node -e "
-const {DatabaseSync}=await import('node:sqlite'); const db=new DatabaseSync('/tmp/b4b0a-check.db');
+db.close();")
+node server/scripts/fetch-bin-inflections.js --db /tmp/b4b0a-check.db
+(cd server && node -e "
+const D=require('better-sqlite3'); const db=new D('/tmp/b4b0a-check.db');
 const r=db.prepare('SELECT inflections FROM terminology_translations WHERE id=1').get();
 console.log('after DRY RUN, inflections =', r.inflections);
 if (r.inflections !== null) { console.error('FAIL: dry run wrote to the database'); process.exit(1); }
-console.log('OK — dry run wrote nothing');"
+console.log('OK — dry run wrote nothing');")
 ```
 
 Expected: reports `1 translations to process`, a `✓ afl (power): N forms` line, and then **`OK — dry run wrote nothing`**. ⚠️ **If it writes, stop** — the single most important safety property has regressed.
@@ -930,7 +939,7 @@ Expected: reports `1 translations to process`, a `✓ afl (power): N forms` line
 
 ```bash
 rm -f /tmp/b4b0a-check.db
-git add tools/fetch-bin-inflections.js tools/__tests__/bin-inflections-cli.test.js
+git add server/scripts/fetch-bin-inflections.js server/__tests__/binInflectionsCli.test.js
 git commit -m "$(cat <<'EOF'
 feat(B4b-0a): the CLI — strict args, dry-run default, no server/ import
 
@@ -955,7 +964,7 @@ EOF
 ### Task 6: The differential gate
 
 **Files:**
-- Create: `tools/__tests__/bin-inflections-golden.test.js`
+- Create: `server/__tests__/binInflectionsGolden.test.js`
 
 **Interfaces:**
 - Consumes: `bin-golden-words.txt`, `bin-golden-hashes.json` (Task 1); `loadBinData`, `getInflections`, `formatInflectionsJson`.
@@ -963,7 +972,7 @@ EOF
 - [ ] **Step 1: Write the differential test**
 
 ```javascript
-// tools/__tests__/bin-inflections-golden.test.js
+// server/__tests__/binInflectionsGolden.test.js
 /**
  * THE INERTNESS PROOF for §C36 B4b-0a.
  *
@@ -977,16 +986,20 @@ EOF
  * gate is only meaningful on a box that has the CSV. Re-download it from
  * https://bin.arnastofnun.is/gogn/mimisbrunnur/ before trusting a green run here.
  */
+// ⚠️ The HYBRID shape every server/__tests__ file uses: `import` for vitest and
+// node builtins — **Vitest CANNOT be require()d at all**, it throws — and
+// `createRequire` for the server's own CommonJS modules. Matches
+// importConcepts.test.js:9-14.
+import { describe, it, expect } from 'vitest';
+import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { fileURLToPath } from 'url';
-import { describe, it, expect } from 'vitest';
-import { loadBinData, getInflections, formatInflectionsJson } from '../lib/bin-inflections.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/binInflections');
 
-const CSV = path.join(__dirname, '..', 'data', 'SHsnid.csv');
+const CSV = path.join(__dirname, '..', '..', 'tools', 'data', 'SHsnid.csv');
 const WORDS = path.join(__dirname, 'fixtures', 'bin-golden-words.txt');
 const HASHES = path.join(__dirname, 'fixtures', 'bin-golden-hashes.json');
 const haveCsv = fs.existsSync(CSV);
@@ -1044,7 +1057,7 @@ it('records whether the differential gate actually ran', () => {
 
 - [ ] **Step 2: Run the differential gate**
 
-Run: `npx vitest run tools/__tests__/bin-inflections-golden.test.js`
+Run: `npx vitest run server/__tests__/binInflectionsGolden.test.js`
 
 Expected on a box with the CSV: **PASS**, taking ~30–90 s (it streams 377 MB).
 
@@ -1054,7 +1067,7 @@ Expected on a box with the CSV: **PASS**, taking ~30–90 s (it streams 377 MB).
 
 A gate that cannot fail is not a gate. Temporarily change `formatInflectionsJson`'s `join(', ')` to `join(',')`:
 
-Run: `npx vitest run tools/__tests__/bin-inflections-golden.test.js`
+Run: `npx vitest run server/__tests__/binInflectionsGolden.test.js`
 Expected: **FAIL**, with thousands of mismatches.
 
 **Then revert the change** and re-run to confirm PASS.
@@ -1062,7 +1075,7 @@ Expected: **FAIL**, with thousands of mismatches.
 - [ ] **Step 4: Commit**
 
 ```bash
-git add tools/__tests__/bin-inflections-golden.test.js
+git add server/__tests__/binInflectionsGolden.test.js
 git commit -m "$(cat <<'EOF'
 test(B4b-0a): the differential gate — the port is inert, measured
 
@@ -1116,12 +1129,12 @@ git rm tools/fetch_bin_inflections.py tools/capture-bin-golden.py
 
 - [ ] **Step 3: Correct the spec's test-location claim**
 
-The spec's §6.0 says *"tests are Vitest under `server/__tests__/`"*. **That is wrong** — this is a `tools/` script, and `tools/__tests__/` is the established home (it already holds ~30 test files). Replace that clause with exactly:
+✅ **The spec's §6.0 was RIGHT and needs no correction** — it says *"tests are Vitest under `server/__tests__/`"*, and after the 2026-08-10 re-homing that is exactly where they are.
+
+⚠️ **This step previously instructed the opposite**, on the reasoning that "this is a `tools/` script." That reasoning was the plan's own placement error, and the spec's instinct was correct. **Add only this note to §6.0:**
 
 ```markdown
-tests are Vitest under `tools/__tests__/` — the established home for `tools/`
-scripts — so they run in `npm test` and in CI's `test` job with no new surface.
-⚠️ `vitest.config.js` sets `fileParallelism: false` globally, so they run
+⚠️ `vitest.config.js` sets `fileParallelism: false` globally, so these run
 sequentially with everything else; the golden's ~30–90 s CSV stream is additive
 to total suite time, not hidden by parallelism.
 ```
@@ -1154,8 +1167,8 @@ capture commit recovers it.
 The port is now covered by root npm test, which is the entire point of B4b-0a —
 before this, the campaign's authoritative gate said nothing about this script.
 
-Also corrects the spec, which placed the tests under server/__tests__/; this is a
-tools/ script and tools/__tests__/ is the established home.
+The spec needed no correction on test location: it said server/__tests__/ all along,
+and the plan's tools/ placement was the error.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
 EOF
@@ -1167,7 +1180,7 @@ EOF
 Add this as a new sub-bullet under §C36's B4b-0 entry, filling in the two shas. **Follow the register's own rules — no test counts, no green/red verdict; the Actions tab owns gate status and `npm test` owns the number.**
 
 ```markdown
-      - **✅ B4b-0a IS IMPLEMENTED — the port is inert, and that is MEASURED.** `tools/fetch_bin_inflections.py` → `tools/fetch-bin-inflections.js` + `tools/lib/bin-inflections.js`; the Python is deleted. **The differential golden was captured from the UNMODIFIED Python at `<CAPTURE-SHA>`, before any Node existed** — `git show <CAPTURE-SHA>` is the only surviving copy of the producer, since B4b-0a deletes it. Golden stores **SHA-256 per word, never forms** (BÍN is CC BY-SA and this repo is public); `null` is kept distinct from a hash of `"[]"`, which the Python never emits. ⚠️ **The gate SKIPS when `tools/data/SHsnid.csv` is absent** — it is gitignored, so **CI never runs it**; a green CI is not evidence the port is inert, and the run says so out loud. ⚠️ **Two Python behaviours a rewrite loses silently, both now pinned:** `json.dumps` separates with `", "` where `JSON.stringify` uses `","` (production rows are the spaced form, so a naive port rewrites every byte while still parsing), and `sorted()` is **code-point** order — a later "improvement" to `localeCompare` puts `ö` after `z` under Icelandic collation and breaks every accented paradigm. ⚠️ **The golden covers the happy path ONLY:** `loadBinData`'s four guards (short row, empty lemma, empty form, stray whitespace) match **zero** rows in the real CSV, so unit tests are their only cover. **▶ NEXT IS B4b-0b**, which still needs the scratch-DB corpus rebuild.
+      - **✅ B4b-0a IS IMPLEMENTED — the port is inert, and that is MEASURED.** `tools/fetch_bin_inflections.py` → `server/scripts/fetch-bin-inflections.js` + `server/lib/binInflections.js`; the Python is deleted. **The differential golden was captured from the UNMODIFIED Python at `<CAPTURE-SHA>`, before any Node existed** — `git show <CAPTURE-SHA>` is the only surviving copy of the producer, since B4b-0a deletes it. Golden stores **SHA-256 per word, never forms** (BÍN is CC BY-SA and this repo is public); `null` is kept distinct from a hash of `"[]"`, which the Python never emits. ⚠️ **The gate SKIPS when `tools/data/SHsnid.csv` is absent** — it is gitignored, so **CI never runs it**; a green CI is not evidence the port is inert, and the run says so out loud. ⚠️ **Two Python behaviours a rewrite loses silently, both now pinned:** `json.dumps` separates with `", "` where `JSON.stringify` uses `","` (production rows are the spaced form, so a naive port rewrites every byte while still parsing), and `sorted()` is **code-point** order — a later "improvement" to `localeCompare` puts `ö` after `z` under Icelandic collation and breaks every accented paradigm. ⚠️ **The golden covers the happy path ONLY:** `loadBinData`'s four guards (short row, empty lemma, empty form, stray whitespace) match **zero** rows in the real CSV, so unit tests are their only cover. **▶ NEXT IS B4b-0b**, which still needs the scratch-DB corpus rebuild.
 ```
 
 ```bash
