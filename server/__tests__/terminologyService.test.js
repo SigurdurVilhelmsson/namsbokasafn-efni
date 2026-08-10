@@ -12,6 +12,23 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const terminologyService = require('../services/terminologyService');
 const { createTestDb } = require('./helpers/terminologyTestDb');
+const freshMigratedDb = require('./helpers/freshMigratedDb');
+const { seedBooks } = require('../scripts/lib/scratchCorpus');
+
+function addConceptIn(db, domain) {
+  return Number(db.prepare('INSERT INTO concept (domain) VALUES (?)').run(domain).lastInsertRowid);
+}
+// ⚠️ `source` is TEXT NOT NULL (migration 045:45). Nothing outside the importer
+// reads it, so a fixture literal is safe — but omitting it fails every insert.
+function addTermIn(db, conceptId, lang, text, rank = 1) {
+  return Number(
+    db
+      .prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,'test')"
+      )
+      .run(conceptId, lang, text, rank).lastInsertRowid
+  );
+}
 
 let db;
 
@@ -1765,4 +1782,107 @@ describe('normalizeChapterArg() — the sentinel WORD is the hazard, not the str
       );
     }
   );
+});
+
+// ⚠️ THIS BLOCK MUST STAY LAST IN THE FILE (with Task 5's, which follows it).
+// Its afterEach calls _setTestDb(null), and the file-level injection is
+// established ONCE in beforeAll — so a null mid-file unsets it for every later
+// block, and getDb() then opens the REAL sessions.db (terminologyService.js:93).
+describe('findTermsInSegments() — concept model (B4b-1)', () => {
+  let cdb;
+  beforeEach(() => {
+    ({ db: cdb } = freshMigratedDb());
+    seedBooks(cdb); // server/scripts/lib/scratchCorpus.js — registers the 6 books + priorities
+    terminologyService._setTestDb(cdb);
+  });
+  afterEach(() => {
+    terminologyService._setTestDb(null);
+    cdb && cdb.close();
+  });
+
+  it('matches an English term and emits the resolved Icelandic', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'An atom is small.', isContent: 'Frumeind er lítil.' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.matches[0]).toMatchObject({
+      english: 'atom',
+      icelandic: 'frumeind',
+      isFallback: false,
+    });
+    expect(r.s1.matches[0].position).toBe(3);
+  });
+
+  // THE OVERLAP TILER — the property that must survive the cut-over.
+  it('a longer term claims its span and the shorter overlapping one is dropped', () => {
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'melting point');
+    addTermIn(cdb, a, 'is', 'bræðslumark');
+    const b = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, b, 'en', 'melting');
+    addTermIn(cdb, b, 'is', 'bráðnun');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'The melting point is high.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches.map((m) => m.english)).toEqual(['melting point']);
+  });
+
+  // D4.2 — the same English string on two concepts is ONE match, and which
+  // one wins comes from resolve(), not from row order.
+  it('emits ONE match for an English string carried by two concepts', () => {
+    const chem = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, chem, 'en', 'nucleus');
+    addTermIn(cdb, chem, 'is', 'kjarni');
+    const bio = addConceptIn(cdb, 'biology');
+    addTermIn(cdb, bio, 'en', 'nucleus');
+    addTermIn(cdb, bio, 'is', 'frumukjarni');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'The nucleus.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.matches[0].icelandic).toBe('kjarni'); // chemistry book -> chemistry domain
+  });
+
+  // Item-18 semantics: a foreign-domain-only term still MATCHES, badged.
+  // ⚠️ `mathematics` is the right domain to test with, and not an arbitrary
+  // one: efnafraedi-2e's chain is ['chemistry','physics','biology'], and
+  // domains.js says in as many words that mathematics is "deliberately absent
+  // from the chemistry books ... out of scope on purpose, not by oversight".
+  // A made-up domain would also be out of scope, but would not prove the rule.
+  it('an out-of-scope concept still matches, flagged isFallback', () => {
+    const c = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, c, 'en', 'eigenvalue');
+    addTermIn(cdb, c, 'is', 'eigingildi');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'An eigenvalue.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches[0]).toMatchObject({ english: 'eigenvalue', isFallback: true });
+  });
+
+  // D7 / §C43.
+  it('never emits a match whose winner is the [vantar] placeholder', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'abembryonic pole');
+    addTermIn(cdb, c, 'is', '[vantar]');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'The abembryonic pole.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toEqual([]);
+  });
+
+  it('returns empty for a segment with no EN content, without querying', () => {
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: '', isContent: 'x' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1).toEqual({ matches: [], issues: [] });
+  });
 });
