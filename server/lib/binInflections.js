@@ -162,6 +162,51 @@ async function loadBinEntries(csvPath, candidateLemmas) {
 }
 
 /**
+ * Narrow a lemma's entries to those whose BÍN lemma matches `text` EXACTLY,
+ * when any do. Returns the full list otherwise.
+ *
+ * 🔴 WITHOUT THIS, CASE FOLDING MANUFACTURES AMBIGUITY AND D4.2 THEN WRITES A
+ * PROPER NAME'S PARADIGM ONTO A COMMON WORD. `loadBinEntries` keys on the
+ * lowercased lemma — it must, because a corpus term and its BÍN lemma routinely
+ * differ in case — but BÍN holds capitalised proper nouns as SEPARATE LEMMAS
+ * that are different strings entirely:
+ *
+ *   gulur  (lo, "yellow")     +  Gulur  (kk, an animal name)   -> folded to one key
+ *   tær    (lo, "clear")      +  Tær    (kvk, a name)
+ *   vatn   (hk, "water")      +  Vatn   (hk, a place name)
+ *
+ * chooseEntry then sees two contenders for a string that maps to exactly one.
+ * For `gulur` and `tær` D4.2 finds "exactly one noun" — the NAME — and rescues
+ * to it, writing the name's paradigm onto the adjective and REPORTING IT AS A
+ * SUCCESS. For `vatn` the two entries are both nouns, so it is refused and the
+ * coverage is lost. **Both failures are invisible in the report**, which is why
+ * this is a correctness fix and not a tuning knob.
+ *
+ * Measured on the rebuilt corpus: 53,705 of 53,719 candidate groups have a
+ * single original spelling, so the exact-case key is available for essentially
+ * all of them; 1,252 of those are not already lowercase.
+ *
+ * ⚠️ DELIBERATELY NOT DONE IN THE INDEX. Keying `loadBinEntries` on the exact
+ * lemma would break the differential golden, whose oracle unions per LOWERCASED
+ * lemma — and would lose the ability to look a capitalised corpus term up
+ * against a lowercase BÍN lemma. The case decision belongs where the term's own
+ * spelling is known, which is here.
+ *
+ * ⚠️ FALLS BACK TO THE WHOLE LIST when nothing matches exactly (e.g. a corpus
+ * term written `AFL`). That preserves the lookup and leaves D4 to refuse if the
+ * result is genuinely ambiguous — never guessing is the safe direction.
+ *
+ * @param {Array<{lemma:string}>} entries
+ * @param {string|null} text the corpus term's own spelling, or null if unknown
+ * @returns {Array}
+ */
+function preferExactCase(entries, text) {
+  if (!text) return entries;
+  const exact = entries.filter((e) => e.lemma === text.trim());
+  return exact.length > 0 ? exact : entries;
+}
+
+/**
  * Pick the BÍN entry a string should take its paradigm from — or refuse.
  *
  * D4: an ambiguous string is REPORTED, never unioned and never guessed. A
@@ -259,6 +304,7 @@ module.exports = {
   WORD_CLASSES,
   NOUN_CLASSES,
   loadBinEntries,
+  preferExactCase,
   chooseEntry,
   inflectionsFor,
   formatInflectionsJson,

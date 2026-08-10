@@ -31,6 +31,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   loadBinEntries,
+  preferExactCase,
   chooseEntry,
   inflectionsFor,
   formatInflectionsJson,
@@ -124,9 +125,22 @@ function parseArgs(argv) {
         // signed-integer literal — this also rejects '', whitespace-only, '3.7'
         // and '0x10'/'1e3', all of which Number() would coerce to a number that
         // is not what the operator typed.
-        if (!/^-?\d+$/.test(v)) {
+        // ⚠️ NON-NEGATIVE, and the `-?` this replaces was not harmless. Array
+        // .slice(0, -1) drops the LAST element, so `--limit -1000` kept 52,719
+        // of 53,719 strings and wrote them at full strength while every log line
+        // read as a bounded smoke test; `--limit -N` with N >= the corpus size
+        // produced an EMPTY keep-set and threw "refusing an empty candidate
+        // set", telling the operator their corpus is empty when the fault is
+        // their flag. Both reproduced by the whole-branch review.
+        // ⚠️ It also changed meaning silently across the port: the predecessor
+        // put the value in SQL, where `LIMIT -1` means NO limit.
+        if (!/^\d+$/.test(v)) {
           throw new Error(
-            `--limit expects an integer, got ${v === '' ? 'an empty string' : `'${v}'`}`
+            `--limit expects a non-negative integer, got ${v === '' ? 'an empty string' : `'${v}'`}` +
+              (/^-\d+$/.test(v)
+                ? ' — a negative limit would silently keep all but the last |n| strings, ' +
+                  'reported as a bounded run'
+                : '')
           );
         }
         out.limit = Number(v);
@@ -261,11 +275,21 @@ async function main(argv) {
   }
 
   // ONE lookup per distinct lowercased STRING; the write fans out to its rows.
+  //
+  // ⚠️ THE GROUP ALSO REMEMBERS THE ROWS' OWN SPELLING, which preferExactCase
+  // needs: BÍN holds capitalised proper nouns as separate lemmas that fold onto
+  // the same key (`gulur` the adjective + `Gulur` an animal name), and without
+  // the original case D4.2 rescues to the NAME. Measured: 53,705 of 53,719
+  // groups have a single spelling, so the key is available almost everywhere;
+  // the 14 that disagree get `null` and fall back to case-insensitive, where D4
+  // refuses if the result is ambiguous.
   const byString = new Map();
   for (const r of rows) {
     const key = r.text.toLowerCase().trim();
-    if (!byString.has(key)) byString.set(key, []);
-    byString.get(key).push(r);
+    let g = byString.get(key);
+    if (!g) byString.set(key, (g = { rows: [], spellings: new Set() }));
+    g.rows.push(r);
+    g.spellings.add(r.text.trim());
   }
 
   // ⚠️ --limit BOUNDS STRINGS AND TAKES WHOLE ONES. Dropping the tail of the map
@@ -279,7 +303,7 @@ async function main(argv) {
     const limited = new Map(keep.map((k) => [k, byString.get(k)]));
     byString.clear();
     for (const [k, v] of limited) byString.set(k, v);
-    candidateRowCount = [...byString.values()].reduce((a, g) => a + g.length, 0);
+    candidateRowCount = [...byString.values()].reduce((a, g) => a + g.rows.length, 0);
     console.log(
       `  --limit ${args.limit}: ${byString.size} string(s) / ${candidateRowCount} row(s) of ` +
         `${rows.length}. ⚠️ A LIMITED RUN IS A SMOKE TEST — its ratios are not the corpus's.`
@@ -319,16 +343,21 @@ async function main(argv) {
   const brief = (e) => ({ binId: e.binId, wordClass: e.wordClass });
 
   for (const [key, group] of byString) {
-    const entries = byLemma.get(key);
-    if (!entries || entries.length === 0) {
+    const all = byLemma.get(key);
+    if (!all || all.length === 0) {
       strings.notInBin++;
-      rowStats.notInBin += group.length;
+      rowStats.notInBin += group.rows.length;
       continue;
     }
+    // 🔴 Exact-case first — see preferExactCase. Only when every row of the
+    // group agrees on a spelling; otherwise there is no single right answer and
+    // D4 is left to refuse.
+    const spelling = group.spellings.size === 1 ? [...group.spellings][0] : null;
+    const entries = preferExactCase(all, spelling);
     const { entry, outcome, discarded } = chooseEntry(entries);
     if (!entry) {
       strings[outcome === 'refused-no-noun' ? 'refusedNoNoun' : 'refusedAmbiguous']++;
-      rowStats.refused += group.length;
+      rowStats.refused += group.rows.length;
       refusals.push({ text: key, outcome, entries: entries.map(brief) });
       continue;
     }
@@ -338,14 +367,14 @@ async function main(argv) {
       // form distinguishable from its base. The predecessor returned null for
       // both, which made the distinction unrecoverable downstream.
       strings.baseFormOnly++;
-      rowStats.baseFormOnly += group.length;
+      rowStats.baseFormOnly += group.rows.length;
       continue;
     }
     strings[outcome === 'rescued-nominal' ? 'rescuedNominal' : 'unambiguous']++;
     if (outcome === 'rescued-nominal') {
       rescues.push({ text: key, chosen: brief(entry), discarded: discarded.map(brief) });
     }
-    plan.push({ ids: group.map((r) => r.id), json: formatInflectionsJson(forms) });
+    plan.push({ ids: group.rows.map((r) => r.id), json: formatInflectionsJson(forms) });
   }
 
   const resolvedRows = plan.reduce((a, p) => a + p.ids.length, 0);

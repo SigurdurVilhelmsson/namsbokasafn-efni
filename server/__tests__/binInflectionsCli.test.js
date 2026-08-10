@@ -11,6 +11,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { parseArgs, candidateSql, main } = require('../scripts/fetch-bin-inflections');
+const { preferExactCase, chooseEntry } = require('../lib/binInflections');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 
 describe('parseArgs', () => {
@@ -54,7 +55,7 @@ describe('parseArgs', () => {
       ['1e3', 'scientific notation — Number() coerces it to 1000'],
       ['0x10', 'hex — Number() coerces it to 16'],
     ])('--limit %j (%s)', (v) => {
-      expect(() => parseArgs(['--limit', v])).toThrow(/--limit expects an integer/);
+      expect(() => parseArgs(['--limit', v])).toThrow(/--limit expects a non-negative integer/);
     });
 
     it('still accepts a plain integer', () => {
@@ -79,7 +80,7 @@ describe('parseArgs', () => {
     });
 
     it('still validates the value on the = form', () => {
-      expect(() => parseArgs(['--limit=abc'])).toThrow(/--limit expects an integer/);
+      expect(() => parseArgs(['--limit=abc'])).toThrow(/--limit expects a non-negative integer/);
     });
 
     it('does not resolve an abbreviated flag (deliberate non-support, coordinator finding C)', () => {
@@ -112,7 +113,62 @@ describe('parseArgs — the B4b-0b additions', () => {
   // strictness must not. That strictness is B4b-0a's reviewed fix for a NaN
   // limit silently dropping the bound and processing every row.
   it('still rejects a non-integer --limit', () => {
-    expect(() => parseArgs(['--limit', '3.7'])).toThrow(/--limit expects an integer/);
+    expect(() => parseArgs(['--limit', '3.7'])).toThrow(/--limit expects a non-negative integer/);
+  });
+
+  // ⚠️ A NEGATIVE --limit IS THE SAME DEFECT CLASS THE PARSER EXISTS TO PREVENT.
+  // slice(0, -1) drops the LAST element, so `--limit -1000` kept 52,719 of
+  // 53,719 strings and wrote them at full strength while logging as a bounded
+  // smoke test. Found by the whole-branch review, reproduced end to end.
+  it.each([['-1'], ['-1000']])('REFUSES a negative --limit (%s)', (v) => {
+    expect(() => parseArgs(['--limit', v])).toThrow(/non-negative/);
+  });
+
+  it('explains WHY a negative limit is refused, not just that it is', () => {
+    expect(() => parseArgs(['--limit', '-1'])).toThrow(/all but the last/);
+  });
+
+  it('still accepts 0 (meaning: no bound)', () => {
+    expect(parseArgs(['--limit', '0']).limit).toBe(0);
+  });
+});
+
+// 🔴 The case-fold defect: BÍN holds capitalised proper nouns as SEPARATE
+// lemmas that fold onto the same lowercased key.
+describe('preferExactCase — D4.2 must not rescue to a proper name', () => {
+  const adj = { binId: '1', lemma: 'gulur', wordClass: 'lo', forms: new Set(['gult']) };
+  const name = { binId: '2', lemma: 'Gulur', wordClass: 'kk', forms: new Set(['Guls']) };
+
+  it('narrows to the entry whose lemma matches the term exactly', () => {
+    expect(preferExactCase([adj, name], 'gulur')).toEqual([adj]);
+  });
+
+  it('narrows to the capitalised entry when the term itself is capitalised', () => {
+    expect(preferExactCase([adj, name], 'Gulur')).toEqual([name]);
+  });
+
+  // ⚠️ WITHOUT THE NARROWING, chooseEntry sees "exactly one noun" — the NAME —
+  // and D4.2 rescues to it, writing the name's paradigm onto the adjective and
+  // reporting a SUCCESS. This assertion is the whole point of the function.
+  it('turns a manufactured D4.2 rescue back into an unambiguous match', () => {
+    expect(chooseEntry([adj, name]).outcome).toBe('rescued-nominal');
+    expect(chooseEntry(preferExactCase([adj, name], 'gulur')).outcome).toBe('unambiguous');
+  });
+
+  // The other direction: a fold can also cost coverage outright.
+  it('recovers a term the fold would have refused as ambiguous', () => {
+    const water = { binId: '3', lemma: 'vatn', wordClass: 'hk', forms: new Set(['vatns']) };
+    const place = { binId: '4', lemma: 'Vatn', wordClass: 'hk', forms: new Set(['Vatns']) };
+    expect(chooseEntry([water, place]).outcome).toBe('refused-ambiguous');
+    expect(chooseEntry(preferExactCase([water, place], 'vatn')).outcome).toBe('unambiguous');
+  });
+
+  it('falls back to the whole list when nothing matches exactly', () => {
+    expect(preferExactCase([adj, name], 'GULUR')).toHaveLength(2);
+  });
+
+  it('falls back to the whole list when the spelling is unknown', () => {
+    expect(preferExactCase([adj, name], null)).toHaveLength(2);
   });
 });
 
