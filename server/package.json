@@ -21,7 +21,7 @@
   "dependencies": {
     "@monyone/aho-corasick": "1.5.2",
     "archiver": "^8.0.0",
-    "better-sqlite3": "^13.0.2",
+    "better-sqlite3": "^13.0.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csv-parse": "^7.0.1",
