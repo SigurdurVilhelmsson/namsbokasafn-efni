@@ -18,7 +18,7 @@ B4b-1 cuts `findTermsInSegments` over from the old terminology tables to `resolv
 
 #### B4b-0a — the port, behaviour-preserving
 
-`tools/fetch_bin_inflections.py` → **`tools/fetch-bin-inflections.js`**; the Python is deleted. **Nothing else changes**: still `SHsnid.csv`, still `terminology_translations`, still the union-by-lowercased-lemma lookup, still `--execute` opt-in.
+`tools/fetch_bin_inflections.py` → **`server/scripts/fetch-bin-inflections.js`** (+ `server/lib/binInflections.js` for the pure half); the Python is deleted. **Nothing else changes**: still `SHsnid.csv`, still `terminology_translations`, still the union-by-lowercased-lemma lookup, still `--execute` opt-in.
 
 **Inert in production by construction** — it is a CLI tool nothing invokes, with a dry-run default.
 
@@ -287,7 +287,7 @@ The terms are plain **CC BY-SA 4.0 plus two obligations** — credit, and declar
 
 ## 5. The script
 
-`tools/fetch_bin_inflections.py` → **`tools/fetch-bin-inflections.js`** (§6.0); the Python script is deleted.
+`tools/fetch_bin_inflections.py` → **`server/scripts/fetch-bin-inflections.js`** + **`server/lib/binInflections.js`** (§6.0); the Python script is deleted.
 
 | stage | today (Python) | B4b-0 (Node) |
 |---|---|---|
@@ -313,9 +313,11 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 
 ### 6.0 ✅ RESOLVED *(lead, 2026-08-10)*: PORT TO NODE
 
+⚠️ **AMENDED SAME DAY — THE CODE LIVES IN `server/`, NOT `tools/`.** This section, and §1.1's first draft, put the port in `tools/`, preserving the Python's directory. That was wrong and it cost two bogus decisions before anyone noticed: a `.cjs` bridge (because root `package.json` is `"type": "module"`) and `node:sqlite` (because `better-sqlite3` is installed **only** in `server/node_modules`). **Both were symptoms of one wrong choice** — a script that reads and writes the server's database belongs beside `import-concepts.js`, which is B4b-0b's direct sibling. In `server/` the package is CommonJS, `better-sqlite3` resolves, and `server/lib/dbPath.js` is available rather than off-limits. ⚠️ **Deliberate consequence: the file is AGPL-3.0, not MIT** (root `LICENSE`). *Behaviour-preserving is about behaviour, not about directory.* → [[engineering-lessons]]
+
 ⚠️ **The unit tests below were first specified against a harness that does not exist.** `fetch_bin_inflections.py` is Python; this repo's suite is **Vitest + Playwright**. Measured 2026-08-10: no `pytest.ini`, `pyproject.toml`, `setup.cfg`, `tox.ini` or `conftest.py`; the only `test_*.py` files in the tree are **vendored third-party code** under `experiments/cnxml-validation-gate/external/`; and **no workflow under `.github/workflows/` mentions Python or pytest at all**. A green `npm test` — the campaign's authoritative gate — would have said **nothing** about this script.
 
-**Decision: port it.** `tools/fetch-bin-inflections.js` replaces the Python script, which is deleted; tests are Vitest under `server/__tests__/`, so they run in `npm test` and in CI's `test` job with no new surface. Rejected: *add pytest* (a new toolchain gating merges for one script) and *corpus-gate only* (the register's own warning — corpus-only properties are what the unit suite silently stops covering).
+**Decision: port it.** `server/scripts/fetch-bin-inflections.js` + `server/lib/binInflections.js` replace the Python script, which is deleted; tests are Vitest under `server/__tests__/`, so they run in `npm test` and in CI's `test` job with no new surface. Rejected: *add pytest* (a new toolchain gating merges for one script) and *corpus-gate only* (the register's own warning — corpus-only properties are what the unit suite silently stops covering).
 
 ⚠️ **Two things the port must carry across, both easy to lose:**
 - **`--execute` opt-in, dry-run default.** The Python script's one genuinely good safety property.
