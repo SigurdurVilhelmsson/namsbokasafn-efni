@@ -565,14 +565,19 @@ Found while censusing the candidate set; **outside B4b-0b's scope** and logged r
 **201 `concept_term` rows hold the literal string `[vantar]`** ("missing") as their Icelandic term, and for **all 201** it is that concept's *only* Icelandic term — so it is the head form. Measured on the rebuilt corpus, with a biology-scoped book:
 
 ```
-resolve(scope, 'abembryonic pole')  → { text: '[vantar]', reason: 'head-form', integrity: [] }
-resolve(scope, 'apical epidermal cap') → { text: '[vantar]', reason: 'head-form', integrity: [] }
+resolve(scope, 'abembryonic pole')
+  → { winner: { conceptId: 55551, termId: 153727, text: '[vantar]',
+                domain: 'biology', position: 1 },
+      reason: 'head-form', integrity: [], alsoInScope: [], … }
 ```
+
+⚠️ **`text` IS NESTED IN `winner`; THERE IS NO TOP-LEVEL `text`.** *(An earlier version of this block wrote `{ text: '[vantar]', reason: …, integrity: [] }` as if it were the whole return value. Measured: `r.text` is `undefined`; the real top-level shape is `winner · reason · nominalTie · tied · outOfScope · integrity · unscoped · alsoInScope`.)* **This is not pedantry — it is the shape a fix gets written against.** A guard written from the recorded shape (`if (res.text === '[vantar]')`) is permanently `undefined`, never fires, and every test written from the same wrong shape passes. The register corrected this exact error class for B4a two days earlier.
 
 **No integrity fault fires.** The codes test *structure* — ties, scope, term-less concepts — and this is structurally perfect: one concept, one term, rank 1.
 
 **Measured, and stated separately from what is inferred:**
-- ✅ **Measured:** `git grep '[vantar]' -- 'books/*'` returns nothing; all three committed `glossary-unified.json` files carry no `producer` stamp, i.e. the merge-glossary fingerprint.
+- ✅ **Measured:** `git grep -F '[vantar]' -- 'books/*'` returns **0** lines; all three committed `glossary-unified.json` files carry no `producer` stamp, i.e. the merge-glossary fingerprint.
+  - ⚠️ **`-F` IS LOAD-BEARING, AND THIS BLOCK ORIGINALLY OMITTED IT.** Without it, `[vantar]` is a POSIX **bracket expression** matching any one of `v a n t r`, and the command returns **1,591,128** lines — measured, both ways. **The conclusion was right and the cited method could not have produced it.** Anyone re-verifying §C43 before the first `--adopt` would either read that as "the placeholder already ships throughout `books/`", inverting the finding, or discard the whole ✅ Measured half as unreliable. *An unquoted metacharacter turns a null result into its opposite, and both readings look like evidence.*
 - ⚠️ **Inferred, from a five-day-old record:** the register's 2026-08-05 §C14 ③ entry says the resolved exporter is refused for all in-loop books. That is cited as the *reason* for the absence, not re-measured today. §C21's own history is a chain of "this state was gated" claims falsified one at a time.
 
 **Either way it becomes reader- and MT-visible the moment a book is `--adopt`ed**, so it is a blocker for the first adopt. It also generalises: **a well-formed term that is not a word passes every mechanical gate** — the same shape as `concept-priority-overrules-consensus`, where a wrong-but-well-formed translation is invisible to all of them.
@@ -583,3 +588,87 @@ resolve(scope, 'apical epidermal cap') → { text: '[vantar]', reason: 'head-for
 - **Spec §9's closing obligation** — the moment this writes, Ritstjóri becomes *a product built on BÍN data*, so the SÁM credit plus a statement that the forms are generated must be **visible in the editor UI**. It is not in §5 and it is not in this PR: it belongs with **B4c**, the first slice with an editor surface. A licence obligation, not a nicety.
 - **D2 / KRISTINsnid** — still a separable follow-up worth ~1.57% of forms, and still blocked on confirming the prescriptive-marker vocabulary against BÍN's documentation rather than inferring it.
 - **The production run is a separate [LEAD] data op**, on B2's precedent. This PR ships code, gates and evidence; nothing has been written to production's `sessions.db`.
+
+---
+
+## B11. §C44 — sizing the compounder
+
+**Measured 2026-08-10** on the same scratch corpus as §B. Reproduce: the three scratchpad scripts are throwaway; the method is stated below in full so it can be rebuilt rather than recovered.
+
+⚠️ **NO BÍN FORMS BELOW.** Lemma *strings* the corpus already contains, and counts.
+
+### B11.1 The 71.18% is four populations, and only one is a word
+
+| population | strings |
+|---|---|
+| plain single words | **34,940** |
+| **combining forms** — an affix stored as a term (`-aðgerð`, `-berandi`, `-a`) | **2,182** |
+| other non-alphabetic — digits, parentheses, slashes | 1,115 |
+| `[vantar]` placeholder (→ §C43) | 1 |
+
+🔴 **668 of the 2,182 combining forms (30.6%) have a body that is already in BÍN.** `-brjóst` is `brjóst` with a marker glued on. **No compounder is involved: this is the corpus storing an affix marker inside the term string**, the same class of defect as §C43. It is also the cheapest thing on this page to fix.
+
+### B11.2 Do the plain words look like compounds? — with the control that makes it mean something
+
+Proxy for BinPackage's rule (Icelandic compounds are head-final, so an unknown compound inherits its **last** constituent's paradigm): does the string end in a known BÍN lemma of ≥4 characters, leaving a prefix of ≥2?
+
+| test | real strings (of 34,940) | **gibberish control** |
+|---|---|---|
+| LOOSE — tail is a known BÍN lemma | 28,125 (**80.5%**) | 142 (**0.4%**) |
+| STRICT — tail **and** prefix both known (prefix may shed a linking `-s-`) | 11,324 (**32.4%**) | 3 (**0.0%**) |
+
+⚠️ **The control is the whole reason these numbers are admissible.** It is length-matched, generated from the Icelandic alphabet with a seeded PRNG. Without it, "80% end in a real word" is equally consistent with *"BÍN contains so many short lemmas that anything matches"* — an absence of that alternative is not evidence against it. At 0.4% and 0.0%, it is.
+
+### B11.3 Translated into coverage, after applying **our own** D4/D4.2 to the head
+
+A head we would refuse buys nothing, so the head is judged by the same rules the run uses.
+
+| | strings | % of all 53,719 candidates |
+|---|---|---|
+| **today** | 14,299 | **26.6%** |
+| + STRICT decomposition | 23,498 | **43.7%** |
+| + LOOSE decomposition | 37,151 | **69.2%** |
+
+### B11.4 ⚠️ Both figures are UPPER bounds on what a compounder *specifically* buys
+
+The sample splits show why, and this is the caveat that must travel with the numbers:
+
+```
+bikarinn = bik + arinn        ← both parts are real words, and the analysis is WRONG:
+                                 `bikarinn` is a DEFINITE FORM ("the beaker"), not a compound
+```
+
+Definite forms and accidental splits both pass the strict test. **Neither proxy isolates true compounds.** A real figure means running BinPackage itself over the 34,940 strings — which is the actual next measurement, not a bigger version of this one.
+
+✅ **The spec's five named coinages behave exactly as it predicted**, which is a control on the method rather than a result:
+
+| coinage | loose | strict |
+|---|---|---|
+| `kjarnsækir` | `kjarn` + `sækir` | — |
+| `oxósýra` | `oxó` + `sýra` | — |
+| `mólarleysni` | `mólar` + `leysni` | — |
+| `pniktógen` | **NONE** | **NONE** |
+| `kúvetta` | **NONE** | **NONE** |
+
+The two that resolve to nothing are the two loanwords. A compounder cannot reach them, and nothing morphological will.
+
+### B11.5 ✅ The cheap alternative was tested FIRST, and it failed
+
+Before crediting a compounder: some misses might be missing only because the corpus stores the term **inflected** (`bikarinn`), which BÍN holds as a *form* even though it is not a *lemma*. If that were most of the gap, indexing forms as well as lemmas would fix it with **no new dependency** — `loadBinEntries` already streams past every form.
+
+| | strings | control |
+|---|---|---|
+| missing as a lemma but present as an inflected form | 1,670 of 34,940 (4.8%) | 24 of 30,725 (**0.08%**) |
+| … whose owning lemma D4/D4.2 would accept | 1,589 = **2.96% of all candidates** | — |
+
+**The cheap win is not there.** Worth recording as a negative result: it is the first thing anyone will propose, and it costs 3%.
+
+### B11.6 The toolchain objection is weaker than spec §6.0 assumed
+
+§6.0 rejected Python on the grounds that *"no workflow runs Python at all"*. That is true of **CI**, and it was the right call for a one-file script. It is not the whole picture for a service:
+
+**`server/greynir-sidecar/` already is a Python sidecar** — `app.py` (Flask) + `requirements.txt` (`reynir-correct`, `flask`, `gunicorn`) — with `server/services/greynirEngine.js` as its Node client, wired into `segmentEditorService` and gated by `GREYNIR_URL`. So BinPackage would be a **second consumer of an existing pattern**, not a new toolchain.
+
+⚠️ **UNVERIFIED, and it is the fact that most changes the estimate:** GreynirCorrect is built on BinPackage, so `islenska` may already be installed in that environment transitively. **Run `pip show islenska` there before anyone sizes the work** — do not infer it from the dependency graph, which is exactly the shape of claim this campaign keeps having to withdraw.
+
+🔴 **§C41 is unaffected and becomes more load-bearing, not less.** A compounder *generates* BÍN-derived forms rather than looking them up, so there would be more of them; the prohibition on their reaching `glossary-unified.json` stands unchanged. BinPackage's own licence needs checking separately from BÍN's — Miðeind's repositories are not uniformly licensed.
