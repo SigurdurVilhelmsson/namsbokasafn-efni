@@ -16,7 +16,7 @@
 // node builtins — **Vitest CANNOT be require()d at all**, it throws — and
 // `createRequire` for the server's own CommonJS modules. Matches
 // importConcepts.test.js:9-14.
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
@@ -43,6 +43,30 @@ const haveCsv = fs.existsSync(CSV);
 const CSV_SHA256 = '9c10d70d73c03168f05f152616b8cafa6e4275e7db8701338f5f3c48a45b7ab6';
 
 describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
+  // ⚠️ A `beforeAll`, NOT an `it` — I-2 (wb-review-A, 2026-08-10). This used to be
+  // a separate `it` declared AFTER the 300s comparison below, so its own comment
+  // ("RUNS BEFORE the comparison") was false: on a swapped CSV, an operator hit a
+  // 300-second run, then up to 23,995 mismatches that read exactly like a port
+  // regression, and only THEN the check that explains which of the two it is. A
+  // precondition belongs in beforeAll — it genuinely runs first, it FAILS the
+  // whole describe block rather than being one test result among several, and a
+  // swapped CSV now costs a hash of the CSV, not a full replay against it.
+  beforeAll(() => {
+    const actual = crypto.createHash('sha256').update(fs.readFileSync(CSV)).digest('hex');
+    if (actual !== CSV_SHA256) {
+      throw new Error(
+        `tools/data/SHsnid.csv has CHANGED since the golden was captured.\n` +
+          `  expected ${CSV_SHA256}\n  actual   ${actual}\n` +
+          `This is a DATA SWAP, not a port regression — do not "fix" the code to match. ` +
+          `Either restore the original CSV, or re-capture the golden from the Python at the ` +
+          `capture commit 8072a58f (git show 8072a58f:tools/capture-bin-golden.py — note the ` +
+          `colon, not "-- ": the latter prints a diff, not the file) and record the new ` +
+          `checksum here. A corrected, runnable copy of that script is frozen in ` +
+          `test-results/b4b-matcher-cutover-2026-08.md.`
+      );
+    }
+  }, 120000);
+
   it('reproduces the Python byte-for-byte on every word', async () => {
     const golden = JSON.parse(fs.readFileSync(HASHES, 'utf-8'));
     const words = fs
@@ -77,22 +101,6 @@ describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
     expect(mismatches.slice(0, 10)).toEqual([]);
     expect(mismatches).toHaveLength(0);
   }, 300000);
-
-  // ⚠️ RUNS BEFORE the comparison, and FAILS rather than skips. If the CSV has
-  // changed, every mismatch below is uninterpretable — the whole point is to say
-  // WHICH of the two possible causes it is. (Task 1 review, finding 2.)
-  it('is reading the same SHsnid.csv the golden was captured from', () => {
-    const actual = crypto.createHash('sha256').update(fs.readFileSync(CSV)).digest('hex');
-    if (actual !== CSV_SHA256) {
-      throw new Error(
-        `tools/data/SHsnid.csv has CHANGED since the golden was captured.\n` +
-          `  expected ${CSV_SHA256}\n  actual   ${actual}\n` +
-          `This is a DATA SWAP, not a port regression — do not "fix" the code to match. ` +
-          `Either restore the original CSV, or re-capture the golden from the Python at the ` +
-          `capture commit 8072a58f (git show 8072a58f -- tools/capture-bin-golden.py) and record the new checksum here.`
-      );
-    }
-  }, 120000);
 
   it('distinguishes null from an empty list in the golden itself', () => {
     const golden = JSON.parse(fs.readFileSync(HASHES, 'utf-8'));

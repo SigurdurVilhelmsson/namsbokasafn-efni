@@ -14,6 +14,10 @@
  * íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir.
  * https://bin.arnastofnun.is — CC BY-SA 4.0; the forms are modified (selected
  * and subsetted).
+ *
+ * (M-1) The same credit is repeated in `--help` output (`USAGE` below) — SÁM's
+ * terms require crediting "in products built on BÍN data" and this header
+ * comment is never seen at runtime.
  */
 const fs = require('fs');
 const path = require('path');
@@ -36,7 +40,12 @@ const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>]
   --bin-data <path>  SHsnid.csv (default: ${DEFAULT_BIN})
   --execute          actually write. WITHOUT THIS NOTHING IS WRITTEN.
   --limit <n>        process at most n translations (0 = all)
-  --force            re-fetch even for rows that already have inflections`;
+  --force            re-fetch even for rows that already have inflections
+
+BÍN data: Beygingarlýsing íslensks nútímamáls. Stofnun Árna Magnússonar í
+íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir.
+https://bin.arnastofnun.is — CC BY-SA 4.0. The forms this tool writes are
+GENERATED from that data (selected and subsetted per lemma), not verbatim.`;
 
 /**
  * ⚠️ HAND-ROLLED, AND NOT tools/lib/parseArgs.js — DELIBERATELY.
@@ -44,26 +53,63 @@ const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>]
  * misremembered flag becomes a no-op and the tool runs at full strength with its
  * defaults. Python's argparse exits on an unknown flag, so silently dropping
  * would be a behaviour change in the one direction that matters.
+ *
+ * ⚠️ DELIBERATE DEVIATION FROM argparse: NO PREFIX-ABBREVIATION SUPPORT.
+ * argparse resolves an unambiguous prefix (`--lim` → `--limit`) by default. This
+ * parser does not, on purpose: an abbreviation's resolution is only as stable as
+ * the current flag set — adding a future `--limit-rows` would silently change
+ * what `--lim` means for anyone whose muscle memory or scripts used it. Strictness
+ * is the entire reason this parser exists instead of a shared helper; accepting
+ * abbreviations would reintroduce the ambiguity that same reasoning rejects
+ * elsewhere in this file. (wb-review-A, coordinator finding, 2026-08-10.)
  */
 function parseArgs(argv) {
   const out = { db: DEFAULT_DB, binData: DEFAULT_BIN, execute: false, limit: 0, force: false };
+  const VALUE_FLAGS = new Set(['--db', '--bin-data', '--limit']);
   for (let i = 0; i < argv.length; i++) {
-    const a = argv[i];
-    const takesValue = a === '--db' || a === '--bin-data' || a === '--limit';
+    const raw = argv[i];
+    // ⚠️ Support `--flag=value`, not only `--flag value` — argparse accepts both
+    // and a runbook or muscle memory using `=` should not silently break (I-1
+    // coordinator finding). Only unpacked for flags that actually TAKE a value:
+    // splitting on `=` universally would let `--execute=false` still enable
+    // --execute, which is worse than not supporting `=` at all.
+    const eq = raw.indexOf('=');
+    const flagPart = eq !== -1 ? raw.slice(0, eq) : raw;
+    const takesValue = VALUE_FLAGS.has(flagPart);
     if (takesValue) {
-      const v = argv[i + 1];
-      // Do not swallow the next flag as a value (B0's finding in the siblings).
-      if (v === undefined || v.startsWith('--')) {
-        throw new Error(`${a} expects a value, got ${v === undefined ? 'nothing' : `'${v}'`}`);
+      const a = flagPart;
+      let v;
+      if (eq !== -1) {
+        v = raw.slice(eq + 1);
+      } else {
+        v = argv[i + 1];
+        // Do not swallow the next flag as a value (B0's finding in the siblings).
+        if (v === undefined || v.startsWith('--')) {
+          throw new Error(`${a} expects a value, got ${v === undefined ? 'nothing' : `'${v}'`}`);
+        }
+        i++;
       }
       if (a === '--db') out.db = v;
       else if (a === '--bin-data') out.binData = v;
-      else out.limit = Number(v);
-      i++;
-    } else if (a === '--execute') out.execute = true;
-    else if (a === '--force') out.force = true;
-    else if (a === '-h' || a === '--help') out.help = true;
-    else throw new Error(`unrecognised argument '${a}'\n\n${USAGE}`);
+      else {
+        // ⚠️ I-1: Number('abc') is NaN, which is FALSY, so an invalid --limit
+        // used to silently drop the LIMIT clause entirely and the run processed
+        // EVERY row instead of refusing. Python's argparse(type=int) exits 2
+        // before the CSV is even opened. Reject anything that is not a plain
+        // signed-integer literal — this also rejects '', whitespace-only, '3.7'
+        // and '0x10'/'1e3', all of which Number() would coerce to a number that
+        // is not what the operator typed.
+        if (!/^-?\d+$/.test(v)) {
+          throw new Error(
+            `--limit expects an integer, got ${v === '' ? 'an empty string' : `'${v}'`}`
+          );
+        }
+        out.limit = Number(v);
+      }
+    } else if (raw === '--execute') out.execute = true;
+    else if (raw === '--force') out.force = true;
+    else if (raw === '-h' || raw === '--help') out.help = true;
+    else throw new Error(`unrecognised argument '${raw}'\n\n${USAGE}`);
   }
   return out;
 }

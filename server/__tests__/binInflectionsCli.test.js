@@ -38,6 +38,53 @@ describe('parseArgs', () => {
   it('refuses a flag as the value of another flag', () => {
     expect(() => parseArgs(['--db', '--execute'])).toThrow(/expects a value/i);
   });
+
+  // ⚠️ I-1 — Number('abc') is NaN, which is FALSY, so an un-guarded --limit
+  // silently dropped the LIMIT clause and the run processed EVERY row instead
+  // of refusing. Python's argparse(type=int) exits 2 on all of these.
+  describe('rejects a non-integer --limit rather than silently dropping the bound', () => {
+    it.each([
+      ['abc', 'not numeric at all'],
+      ['3.7', 'a float — SQLite would only catch this after the 377 MB load'],
+      ['', "an empty string — Number('') is 0, a falsy-but-valid-looking limit"],
+      ['1e3', 'scientific notation — Number() coerces it to 1000'],
+      ['0x10', 'hex — Number() coerces it to 16'],
+    ])('--limit %j (%s)', (v) => {
+      expect(() => parseArgs(['--limit', v])).toThrow(/--limit expects an integer/);
+    });
+
+    it('still accepts a plain integer', () => {
+      expect(parseArgs(['--limit', '50']).limit).toBe(50);
+    });
+  });
+
+  // ⚠️ Coordinator finding B — argparse accepts `--flag=value`; the hand-rolled
+  // parser originally only accepted `--flag value` (two argv elements), which
+  // silently breaks any runbook or muscle memory using the `=` form.
+  describe('accepts --flag=value for every value-taking flag', () => {
+    it('--db=value', () => {
+      expect(parseArgs(['--db=/tmp/x.db']).db).toBe('/tmp/x.db');
+    });
+
+    it('--bin-data=value', () => {
+      expect(parseArgs(['--bin-data=/tmp/y.csv']).binData).toBe('/tmp/y.csv');
+    });
+
+    it('--limit=value', () => {
+      expect(parseArgs(['--limit=50']).limit).toBe(50);
+    });
+
+    it('still validates the value on the = form', () => {
+      expect(() => parseArgs(['--limit=abc'])).toThrow(/--limit expects an integer/);
+    });
+
+    it('does not resolve an abbreviated flag (deliberate non-support, coordinator finding C)', () => {
+      // argparse would resolve --lim to --limit when unambiguous; this parser
+      // treats it as an unrecognised flag on purpose (see the comment in
+      // fetch-bin-inflections.js's parseArgs).
+      expect(() => parseArgs(['--lim', '50'])).toThrow(/unrecognised/i);
+    });
+  });
 });
 
 describe('selectSql', () => {
