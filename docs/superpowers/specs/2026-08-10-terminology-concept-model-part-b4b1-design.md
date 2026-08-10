@@ -325,7 +325,7 @@ The measurement plan:
 
 ## 8. Preconditions
 
-1. 🔴 **D1 is answered by the lead.** Nothing is implementable until it is — the options differ in slice *order*, not only in code. **Its missing input is now supplied (§3): 99.98% expressible, so D1 is about the write path alone.**
+1. ✅ **D1 is RULED: D1-a — proceed as scoped**, write-path gap open, B4c restores it. Its missing input was supplied first (§3): 99.98% expressible, and the write path has zero measured traffic. ⚠️ **The premise is dated** — re-measure `source`/`approved_by`/`created_at` on `terminology_translations` if this design is picked up after editorial terminology work has begun.
 2. ✅ **The Icelandic-side sizing is MEASURED** — 2026-08-10, read-only on prod → [`test-results/b4b1-icelandic-side-sizing-2026-08.md`](../../../test-results/b4b1-icelandic-side-sizing-2026-08.md).
 3. ✅ **D2 is RULED: D2-a — the BÍN population op runs FIRST.** It is a [LEAD] data op on B2's precedent and gates B4b-1's start.
 4. ⬜ A locally rebuilt scratch concept corpus. Available: `~/idordabanki-raw-2026-08-07/` (76 MB, verified present), rebuild 3.0–4.8 s.
