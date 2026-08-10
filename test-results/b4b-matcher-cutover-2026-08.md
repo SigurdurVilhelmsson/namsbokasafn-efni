@@ -408,3 +408,165 @@ OUT   = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-hashes.j
 ```
 
 🔴 **Re-capturing is a LAST RESORT and destroys the oracle's independence.** The golden's whole value is that it was taken from an implementation written before the port existed. Re-capturing from anything else certifies the new code against itself — `capture-c24-golden.js` states the rule and the reason: *"there is no observable difference between a correct golden and a worthless one."* **If the gate fails, the first question is whether `tools/data/SHsnid.csv` still matches `CSV_SHA256`** (`9c10d70d73c03168f05f152616b8cafa6e4275e7db8701338f5f3c48a45b7ab6`). A data swap and a port regression look identical in the mismatch output; only that hash tells them apart.
+
+---
+
+# §C36 B4b-0b — pos-aware BÍN inflections onto `concept_term`
+
+**Measured 2026-08-10** · appended, not edited into the B4b-0a sections above · reproduce with `node server/scripts/verify-b4b0-gates.js --self-test`
+
+⚠️ **NO BÍN FORMS APPEAR ANYWHERE BELOW.** Strings, BÍN ids and word classes only. §C41's ShareAlike constraint has no evidence-file exemption, and this repo is public.
+
+## B1. The instrument — a reconstruction, and what makes it admissible
+
+The local dev DB holds 6 terminology rows and no concept model, so it cannot host any of this. Every figure here is measured on a **scratch database** built by `server/scripts/lib/scratchCorpus.js`: every real migration against an empty file, then the 20-collection Íðorðabankinn import from `~/idordabanki-raw-2026-08-07/`. Import wall time **3.0 s**.
+
+| control | measured | recorded (§C36 B2) |
+|---|---|---|
+| `concept` | **70,187** | 70,187 |
+| `concept_term` | **192,189** | 192,189 |
+| `verify-resolve-gates.js` on this DB | **exit 0** | B1's scope sizes + census reproduce |
+
+⚠️ **A reconstruction's numbers are ambiguous until it is shown to be the right corpus** — a divergence could be the code or could be the rebuild. Those three rows are what convert caveat 1 from a disclaimer into a measurement, and the gate **stops** rather than continuing if the first two do not match.
+
+## B2. The candidate set — ⚠️ STATE THE UNIT
+
+`concept_term` is keyed `(concept_id, lang, text)`, so **one Icelandic string owns many rows**.
+
+| | value |
+|---|---|
+| `lang='is'` rows | 92,303 |
+| … `inflections IS NULL` | 92,303 (**the column had never been written**) |
+| … single-word — **candidate ROWS** | **74,004** |
+| … distinct lowercased — **candidate STRINGS** | **53,719** |
+| rows per string | **1.378** |
+| multi-word rows skipped | 18,299 |
+
+**The lookup is per string; the write is per row.** The gap moves every headline figure by a third — the same run is a **25.87%** hit rate per string and **33.50%** per row. A report that does not name its unit cannot be compared against anything, which is why the script prints both and asserts the bucket partition in both.
+
+## B3. The measured bucket shape
+
+| bucket | strings (of 53,719) | rows (of 74,004) |
+|---|---|---|
+| unambiguous | 13,896 (25.87%) | 24,792 (33.50%) |
+| rescued-nominal (D4.2) | 403 (0.75%) | 1,018 (1.38%) |
+| refused-ambiguous | 862 (1.60%) | 2,350 (3.18%) combined |
+| refused-no-noun | 44 (0.08%) | ″ |
+| base-form-only | 276 (0.51%) | 505 (0.68%) |
+| **not in BÍN** | **38,238 (71.18%)** | **45,339 (61.27%)** |
+| **rows written** | — | **25,810 (34.88%)** |
+
+✅ **Cross-checked against an independent implementation.** A standalone prototype, written before the script existed, produced **every one of these figures exactly**. Two different pieces of code over the same corpus agreeing is a stronger statement than either alone — though note it is a statement about *this corpus*, not about production's.
+
+### 🔴 B3.1 The headline is the YIELD, and it is low — this is a B4b-1 input, not a defect
+
+**71.18% of candidate strings are not in BÍN at all.** A full run writes a paradigm for **14,299 of 53,719 strings (26.6%)**.
+
+Spec §7 predicted worse than the 65% a prior measurement got *with* BinPackage's compounder; a raw CSV lookup without one does worse, and it did. **This is measured coverage, not a bug to chase.** What it means downstream: **B4b-1's `missing` check will have no paradigm for roughly three of four terms** and must degrade to base-form matching for them rather than reporting a fault. That belongs in B4b-1's acceptance criteria, and it sharpens D4.1 ②'s point — the false-FAIL population is not 686 terms, it is most of the corpus.
+
+### B3.2 Two independent confirmations of the rule set
+
+Neither was used to derive the rules; both are corpora the rules were not fitted to.
+
+① **The three worked cases reproduce exactly**, and the two rescues are asserted **by identity** — not by count, since a length check passes on the wrong paradigm of the right size:
+
+| string | BÍN entries | outcome | verb participles in the stored value |
+|---|---|---|---|
+| `afl` | kk + hk (two nouns) | **REFUSED**, named | — (nothing written) |
+| `hverfa` | kvk + so + so | **RESCUED** to kvk, 12 forms | **0** |
+| `vinna` | kvk + so | **RESCUED** to kvk, 5 forms | **0** |
+
+② **D4.2's rescue share among ambiguous strings is 403 / 1,309 = 30.8%** here, against **208 / 686 = 30.3%** measured on the old model. Different populations, same ratio.
+
+### ⚠️ B3.3 A consequence D4.2 does not state
+
+D4.2's noun test fires **only on ambiguity**, so an *unambiguous* non-noun is written, not refused. Of the 13,896 unambiguous strings: **1,401 resolve to an adjective (`lo`), 335 to a verb (`so`)**, plus a handful of adverbs and pronouns. That is D4 behaving as written — one entry is not a guess — but the corpus will therefore carry verb conjugations for any headword that is unambiguously a verb. **That is not the §2.2 contamination and must not be mistaken for it during review.**
+
+## B4. The input guard — measured inert before it was written
+
+| | measured over the whole file |
+|---|---|
+| `SHsnid.csv` rows | 7,425,931 — **all exactly 6 fields, zero variance** |
+| distinct field-2 values | **16**: `lo kvk kk hk so ao rt fn fs to uh st pfn gr afn nhm` |
+| rows failing the field-count half | **0** |
+| rows failing the word-class half | **0** |
+| `KRISTINsnid.csv` fields | **15** |
+
+⚠️ **The spec specified this guard backwards** — §5's table and §6's bullet both said *"refuse unless field count is 15"*, written before D2 was demoted to a follow-up three subsections above them. Implemented literally, the guard refuses the only file the script reads. Both were corrected in the spec on 2026-08-10 before any code was written.
+
+⚠️ **And the trap inverts with the guard.** Handing KRISTINsnid to a 6-field parser is **not** the zero-yield case §5 was written about: a lower-bound check (`>= 5`) passes, then reads KRISTINsnid's field 4 — a **numeric code** — and writes numbers as inflections. **Corrupt yield reads as data; zero yield at least looks wrong.** Hence positive identification, and hence refuse-never-skip.
+
+## B5. Union-equivalence — why the differential golden kept a subject
+
+B4b-0b deletes the union lookup the B4b-0a golden was written against. Left pointed at it, that file would have been **green forever over code nothing calls**.
+
+Verified before the plan was written, on a standalone prototype: the pos-aware index, **unioned back per lemma** and passed through the Python's base-form filter and code-point sort, reproduces the committed hashes exactly.
+
+| | value |
+|---|---|
+| golden words | 23,995 |
+| hits / misses | 7,285 / 16,710 |
+| **mismatches** | **0** |
+
+So the golden now asserts something **stronger** than before — that the new parser reads the same `(lemma, form)` pairs the Python did — against the same oracle, captured from an implementation in a different language written before any of this existed. ⚠️ **The union in that test is the oracle's adapter and must never be copied into the script**: production calls `chooseEntry()`, which refuses or rescues.
+
+## B6. The gate
+
+`node server/scripts/verify-b4b0-gates.js --self-test` — **all checks PASS, exit 0.**
+
+| gate | measured |
+|---|---|
+| 0 input identity | `SHsnid.csv` matches the recorded sha256 |
+| setup | 70,187 / 192,189 — §C36 B2 exactly |
+| fidelity control | `verify-resolve-gates.js` exit 0 on this DB |
+| 1 D4 refuses | `afl` unwritten across 5 rows, named with 2 entries (kk+hk) |
+| 1b D4.2 rescues | `hverfa` → kvk 12 forms · `vinna` → kvk 5 forms · **0 participles** |
+| 2 **the control** | 25,810 rows written over 13,896 unambiguous + 403 rescued |
+| 3 matcher inertness | 40 matches / 7 issues, byte-identical, **cold child processes** |
+| 4 🔴 D6 licence | 2,119 terms, 0 inflection-shaped keys, 0 of 200 sampled forms present |
+| 5 D5 idempotency | 0 written, 25,810 → 25,810 populated |
+| self-test | 3 planted defects, **all detected** |
+
+⚠️ **Gate 2 is what makes gate 1 mean anything.** A run that refused *everything* would pass gate 1 perfectly.
+
+⚠️ **Gate 3 had three independent ways to pass for the wrong reason**, each closed deliberately: **(a)** two databases — a write to B cannot move a matcher reading A, so one DB is used, the scratch corpus carrying 032's tables beside 045's; **(b)** a **warm automaton cache** — it fingerprints `terminology_headwords`, which B4b-0b never touches, so an in-process re-call re-reads *nothing* and byte-identity would hold whatever the population did, hence cold child processes via `SESSIONS_DB_PATH`; **(c)** an empty capture, hence the non-empty assertion first. Gate 4 carries the same non-empty control for the same reason.
+
+⚠️ **The self-test plants defects in the DATA, on a copy — it does not sabotage the source.** A break-and-revert leaks if the revert is partial (B4b-0a's own recorded hazard), and the property worth proving is that a gate **detects the corpus state it exists to catch**, not that a broken function breaks.
+
+## B7. D5 idempotency, and a distinction the gate makes deliberately
+
+A re-run over the populated corpus wrote **0 rows** with `already populated 25,810 → 25,810` — and it did so with a **non-empty candidate set** (48,194 rows / 39,420 strings still unresolvable), which is a stronger demonstration than the empty-candidate path.
+
+⚠️ **"Nothing to do" and "nothing there" are different facts, and the script must not collapse them.** A fully-populated corpus yields zero candidates, and so does a database with no concept model at all. The first is D5's no-op; the second is B0's zero-yield error. `alreadyPopulatedBefore` is the discriminator — without it a *correct* implementation fails its own gate, because `--db` defaults to `resolveDbPath()`, which on a dev box points at a database with no concept model.
+
+## B8. A defect found during implementation, not by any test
+
+`--force` drops `inflections IS NULL` from the candidate query. The first implementation left that clause in the **UPDATE**, so `--force` selected every row, wrote none, and reported `written: 0` beside a full candidate count — *a flag parsed but never read*, the shape CLAUDE.md names as durable.
+
+**Nothing else here would have caught it:** the row partition balances in that state, because 0 written is a legal outcome. Fixed, and pinned by a test that asserts `--force` actually overwrites.
+
+## B9. 🆕 §C43 — `resolve()` returns the placeholder `[vantar]` as a winning translation
+
+Found while censusing the candidate set; **outside B4b-0b's scope** and logged rather than fixed.
+
+**201 `concept_term` rows hold the literal string `[vantar]`** ("missing") as their Icelandic term, and for **all 201** it is that concept's *only* Icelandic term — so it is the head form. Measured on the rebuilt corpus, with a biology-scoped book:
+
+```
+resolve(scope, 'abembryonic pole')  → { text: '[vantar]', reason: 'head-form', integrity: [] }
+resolve(scope, 'apical epidermal cap') → { text: '[vantar]', reason: 'head-form', integrity: [] }
+```
+
+**No integrity fault fires.** The codes test *structure* — ties, scope, term-less concepts — and this is structurally perfect: one concept, one term, rank 1.
+
+**Measured, and stated separately from what is inferred:**
+- ✅ **Measured:** `git grep '[vantar]' -- 'books/*'` returns nothing; all three committed `glossary-unified.json` files carry no `producer` stamp, i.e. the merge-glossary fingerprint.
+- ⚠️ **Inferred, from a five-day-old record:** the register's 2026-08-05 §C14 ③ entry says the resolved exporter is refused for all in-loop books. That is cited as the *reason* for the absence, not re-measured today. §C21's own history is a chain of "this state was gated" claims falsified one at a time.
+
+**Either way it becomes reader- and MT-visible the moment a book is `--adopt`ed**, so it is a blocker for the first adopt. It also generalises: **a well-formed term that is not a word passes every mechanical gate** — the same shape as `concept-priority-overrules-consensus`, where a wrong-but-well-formed translation is invisible to all of them.
+
+## B10. Open, logged, not addressed here
+
+- **§C42** — the propose route still writes `terminology_translations.inflections`, so an editor's inflection between now and Part C never reaches the concept model and nothing goes red. **Part C must not drop the old tables while this is open.**
+- **Spec §9's closing obligation** — the moment this writes, Ritstjóri becomes *a product built on BÍN data*, so the SÁM credit plus a statement that the forms are generated must be **visible in the editor UI**. It is not in §5 and it is not in this PR: it belongs with **B4c**, the first slice with an editor surface. A licence obligation, not a nicety.
+- **D2 / KRISTINsnid** — still a separable follow-up worth ~1.57% of forms, and still blocked on confirming the prescriptive-marker vocabulary against BÍN's documentation rather than inferring it.
+- **The production run is a separate [LEAD] data op**, on B2's precedent. This PR ships code, gates and evidence; nothing has been written to production's `sessions.db`.
