@@ -408,3 +408,331 @@ OUT   = HERE.parent / "server" / "__tests__" / "fixtures" / "bin-golden-hashes.j
 ```
 
 🔴 **Re-capturing is a LAST RESORT and destroys the oracle's independence.** The golden's whole value is that it was taken from an implementation written before the port existed. Re-capturing from anything else certifies the new code against itself — `capture-c24-golden.js` states the rule and the reason: *"there is no observable difference between a correct golden and a worthless one."* **If the gate fails, the first question is whether `tools/data/SHsnid.csv` still matches `CSV_SHA256`** (`9c10d70d73c03168f05f152616b8cafa6e4275e7db8701338f5f3c48a45b7ab6`). A data swap and a port regression look identical in the mismatch output; only that hash tells them apart.
+
+---
+
+# §C36 B4b-0b — pos-aware BÍN inflections onto `concept_term`
+
+**Measured 2026-08-10** · appended, not edited into the B4b-0a sections above · reproduce with `node server/scripts/verify-b4b0-gates.js --self-test`
+
+⚠️ **NO BÍN FORMS APPEAR ANYWHERE BELOW.** Strings, BÍN ids and word classes only. §C41's ShareAlike constraint has no evidence-file exemption, and this repo is public.
+
+## B1. The instrument — a reconstruction, and what makes it admissible
+
+The local dev DB holds 6 terminology rows and no concept model, so it cannot host any of this. Every figure here is measured on a **scratch database** built by `server/scripts/lib/scratchCorpus.js`: every real migration against an empty file, then the 20-collection Íðorðabankinn import from `~/idordabanki-raw-2026-08-07/`. Import wall time **3.0 s**.
+
+| control | measured | recorded (§C36 B2) |
+|---|---|---|
+| `concept` | **70,187** | 70,187 |
+| `concept_term` | **192,189** | 192,189 |
+| `verify-resolve-gates.js` on this DB | **exit 0** | B1's scope sizes + census reproduce |
+
+⚠️ **A reconstruction's numbers are ambiguous until it is shown to be the right corpus** — a divergence could be the code or could be the rebuild. Those three rows are what convert caveat 1 from a disclaimer into a measurement, and the gate **stops** rather than continuing if the first two do not match.
+
+## B2. The candidate set — ⚠️ STATE THE UNIT
+
+`concept_term` is keyed `(concept_id, lang, text)`, so **one Icelandic string owns many rows**.
+
+| | value |
+|---|---|
+| `lang='is'` rows | 92,303 |
+| … `inflections IS NULL` | 92,303 (**the column had never been written**) |
+| … single-word — **candidate ROWS** | **74,004** |
+| … distinct lowercased — **candidate STRINGS** | **53,719** |
+| rows per string | **1.378** |
+| multi-word rows skipped | 18,299 |
+
+**The lookup is per string; the write is per row.** The gap moves every headline figure by a third — the same run is a **25.87%** hit rate per string and **33.50%** per row. A report that does not name its unit cannot be compared against anything, which is why the script prints both and asserts the bucket partition in both.
+
+## B3. The measured bucket shape
+
+⚠️ **THESE ARE THE POST-REVIEW NUMBERS.** The whole-branch review found a case-folding defect (§B12) whose fix moved five of the six buckets. Both sets are shown, because the *delta* is the measurement of what the defect was costing.
+
+| bucket | strings (of 53,719) | rows (of 74,004) | ⚠️ before the §B12 fix |
+|---|---|---|---|
+| unambiguous | **14,556 (27.10%)** | 26,254 | 13,896 (25.87%) |
+| rescued-nominal (D4.2) | **463 (0.86%)** | 1,474 | 403 |
+| refused-ambiguous | **140 (0.26%)** | — | **862** |
+| refused-no-noun | **46 (0.09%)** | — | 44 |
+| base-form-only | 276 (0.51%) | 505 | 276 |
+| **not in BÍN** | **38,238 (71.18%)** | 45,339 (61.27%) | 38,238 |
+| **rows written** | — | **27,728 (37.47%)** | 25,810 (34.88%) |
+
+🔴 **REFUSALS FELL 906 → 186. About 80% of every refusal this design was producing was MANUFACTURED BY CASE FOLDING, not by real ambiguity** — `vatn` was refused only because BÍN separately holds the place name `Vatn`. That is far larger than the review estimated, and it is the strongest argument that §B12 is a correctness fix rather than a tidy-up.
+
+✅ **Cross-checked against an independent implementation** — at the time it was written. A standalone prototype, written before the script existed, reproduced the *pre-fix* column exactly. Two different pieces of code over the same corpus agreeing is a stronger statement than either alone. ⚠️ **It also means the prototype shared the case-fold defect**, which is worth recording: agreement between two implementations of the same wrong idea is not a correctness check. It confirms the arithmetic, never the premise.
+
+### 🔴 B3.1 The headline is the YIELD, and it is low — this is a B4b-1 input, not a defect
+
+**71.18% of candidate strings are not in BÍN at all.** A full run writes a paradigm for **14,299 of 53,719 strings (26.6%)**.
+
+Spec §7 predicted worse than the 65% a prior measurement got *with* BinPackage's compounder; a raw CSV lookup without one does worse, and it did. **This is measured coverage, not a bug to chase.** What it means downstream: **B4b-1's `missing` check will have no paradigm for roughly three of four terms** and must degrade to base-form matching for them rather than reporting a fault. That belongs in B4b-1's acceptance criteria, and it sharpens D4.1 ②'s point — the false-FAIL population is not 686 terms, it is most of the corpus.
+
+### B3.2 Two independent confirmations of the rule set
+
+Neither was used to derive the rules; both are corpora the rules were not fitted to.
+
+① **The three worked cases reproduce exactly**, and the two rescues are asserted **by identity** — not by count, since a length check passes on the wrong paradigm of the right size:
+
+| string | BÍN entries | outcome | verb participles in the stored value |
+|---|---|---|---|
+| `afl` | kk + hk (two nouns) | **REFUSED**, named | — (nothing written) |
+| `hverfa` | kvk + so + so | **RESCUED** to kvk, 12 forms | **0** |
+| `vinna` | kvk + so | **RESCUED** to kvk, 5 forms | **0** |
+
+② **D4.2's rescue share among ambiguous strings is 403 / 1,309 = 30.8%** here, against **208 / 686 = 30.3%** measured on the old model. Different populations, same ratio.
+
+### ⚠️ B3.3 A consequence D4.2 does not state
+
+D4.2's noun test fires **only on ambiguity**, so an *unambiguous* non-noun is written, not refused. Of the 13,896 unambiguous strings: **1,401 resolve to an adjective (`lo`), 335 to a verb (`so`)**, plus a handful of adverbs and pronouns. That is D4 behaving as written — one entry is not a guess — but the corpus will therefore carry verb conjugations for any headword that is unambiguously a verb. **That is not the §2.2 contamination and must not be mistaken for it during review.**
+
+## B4. The input guard — measured inert before it was written
+
+| | measured over the whole file |
+|---|---|
+| `SHsnid.csv` rows | 7,425,931 — **all exactly 6 fields, zero variance** |
+| distinct field-2 values | **16**: `lo kvk kk hk so ao rt fn fs to uh st pfn gr afn nhm` |
+| rows failing the field-count half | **0** |
+| rows failing the word-class half | **0** |
+| `KRISTINsnid.csv` fields | **15** |
+
+⚠️ **The spec specified this guard backwards** — §5's table and §6's bullet both said *"refuse unless field count is 15"*, written before D2 was demoted to a follow-up three subsections above them. Implemented literally, the guard refuses the only file the script reads. Both were corrected in the spec on 2026-08-10 before any code was written.
+
+⚠️ **And the trap inverts with the guard.** Handing KRISTINsnid to a 6-field parser is **not** the zero-yield case §5 was written about: a lower-bound check (`>= 5`) passes, then reads KRISTINsnid's field 4 — a **numeric code** — and writes numbers as inflections. **Corrupt yield reads as data; zero yield at least looks wrong.** Hence positive identification, and hence refuse-never-skip.
+
+## B5. Union-equivalence — why the differential golden kept a subject
+
+B4b-0b deletes the union lookup the B4b-0a golden was written against. Left pointed at it, that file would have been **green forever over code nothing calls**.
+
+Verified before the plan was written, on a standalone prototype: the pos-aware index, **unioned back per lemma** and passed through the Python's base-form filter and code-point sort, reproduces the committed hashes exactly.
+
+| | value |
+|---|---|
+| golden words | 23,995 |
+| hits / misses | 7,285 / 16,710 |
+| **mismatches** | **0** |
+
+So the golden now asserts something **stronger** than before — that the new parser reads the same `(lemma, form)` pairs the Python did — against the same oracle, captured from an implementation in a different language written before any of this existed. ⚠️ **The union in that test is the oracle's adapter and must never be copied into the script**: production calls `chooseEntry()`, which refuses or rescues.
+
+## B6. The gate
+
+`node server/scripts/verify-b4b0-gates.js --self-test` — **all checks PASS, exit 0.**
+
+| gate | measured |
+|---|---|
+| 0 input identity | `SHsnid.csv` matches the recorded sha256 |
+| setup | 70,187 / 192,189 — §C36 B2 exactly |
+| fidelity control | `verify-resolve-gates.js` exit 0 on this DB |
+| 1 D4 refuses | `afl` unwritten across 5 rows, named with 2 entries (kk+hk) |
+| 1b D4.2 rescues | `hverfa` → kvk 12 forms · `vinna` → kvk 5 forms · **0 participles** |
+| 2 **the control** | 25,810 rows written over 13,896 unambiguous + 403 rescued |
+| 3 matcher inertness **+ D1** | 40 matches / 7 issues byte-identical (**cold child processes**), AND the old table's `inflections` digest unchanged (`f3136cbf1bb8cddb`, 2/326 non-null) |
+| 4 🔴 D6 licence | 2,119 terms, 0 inflection-shaped keys, 0 of 200 sampled forms present |
+| 5 D5 idempotency | 0 written, 25,810 → 25,810 populated |
+| self-test | 3 planted defects, **all detected** |
+
+⚠️ **Gate 2 is what makes gate 1 mean anything.** A run that refused *everything* would pass gate 1 perfectly.
+
+### ⚠️ B6.1 A FOURTH way gate 3 could have passed for the wrong reason — found by self-review, after it was already green
+
+The matcher comparison **alone** does not settle D1. Probed both directions on a seeded scratch DB:
+
+| probe | result |
+|---|---|
+| plant an inflection that **occurs** in a fixture segment's Icelandic text | a `missing` issue **cleared, 7 → 6** — so the matcher genuinely does read this column, and the comparison is **not vacuous** |
+| plant `["gervibeyging"]` — a form occurring **nowhere** in the 24 segments — on **324** old-table rows | matcher output **BYTE-IDENTICAL** |
+
+So a D1 violation — the run writing to `terminology_translations` instead of `concept_term` — is caught by the matcher comparison **only if a written form happens to appear in those 24 fixture segments.** That is this project's commonest error in miniature: *a measurement generalised one step past its coverage*, and "byte-identical, therefore inert" reads as complete when it is conditional.
+
+**Closed by adding a digest of `terminology_translations.inflections` across the population**, asserted unchanged whatever the forms are. Both halves are now reported. ⚠️ **Note the first probe was itself too weak and would have "confirmed" vacuity** — it planted a form that could not match anything, so its null result said nothing about the matcher. The second probe is what made either result meaningful.
+
+⚠️ **Gate 3 had three independent ways to pass for the wrong reason**, each closed deliberately: **(a)** two databases — a write to B cannot move a matcher reading A, so one DB is used, the scratch corpus carrying 032's tables beside 045's; **(b)** a **warm automaton cache** — it fingerprints `terminology_headwords`, which B4b-0b never touches, so an in-process re-call re-reads *nothing* and byte-identity would hold whatever the population did, hence cold child processes via `SESSIONS_DB_PATH`; **(c)** an empty capture, hence the non-empty assertion first. Gate 4 carries the same non-empty control for the same reason.
+
+⚠️ **The self-test plants defects in the DATA, on a copy — it does not sabotage the source.** A break-and-revert leaks if the revert is partial (B4b-0a's own recorded hazard), and the property worth proving is that a gate **detects the corpus state it exists to catch**, not that a broken function breaks.
+
+## B7. D5 idempotency, and a distinction the gate makes deliberately
+
+A re-run over the populated corpus wrote **0 rows** with `already populated 25,810 → 25,810` — and it did so with a **non-empty candidate set** (48,194 rows / 39,420 strings still unresolvable), which is a stronger demonstration than the empty-candidate path.
+
+⚠️ **"Nothing to do" and "nothing there" are different facts, and the script must not collapse them.** A fully-populated corpus yields zero candidates, and so does a database with no concept model at all. The first is D5's no-op; the second is B0's zero-yield error. `alreadyPopulatedBefore` is the discriminator — without it a *correct* implementation fails its own gate, because `--db` defaults to `resolveDbPath()`, which on a dev box points at a database with no concept model.
+
+## B8. A defect found during implementation, not by any test
+
+`--force` drops `inflections IS NULL` from the candidate query. The first implementation left that clause in the **UPDATE**, so `--force` selected every row, wrote none, and reported `written: 0` beside a full candidate count — *a flag parsed but never read*, the shape CLAUDE.md names as durable.
+
+**Nothing else here would have caught it:** the row partition balances in that state, because 0 written is a legal outcome. Fixed, and pinned by a test that asserts `--force` actually overwrites.
+
+## B9. 🆕 §C43 — `resolve()` returns the placeholder `[vantar]` as a winning translation
+
+Found while censusing the candidate set; **outside B4b-0b's scope** and logged rather than fixed.
+
+**201 `concept_term` rows hold the literal string `[vantar]`** ("missing") as their Icelandic term, and for **all 201** it is that concept's *only* Icelandic term — so it is the head form. Measured on the rebuilt corpus, with a biology-scoped book:
+
+```
+resolve(scope, 'abembryonic pole')
+  → { winner: { conceptId: 55551, termId: 153727, text: '[vantar]',
+                domain: 'biology', position: 1 },
+      reason: 'head-form', integrity: [], alsoInScope: [], … }
+```
+
+⚠️ **`text` IS NESTED IN `winner`; THERE IS NO TOP-LEVEL `text`.** *(An earlier version of this block wrote `{ text: '[vantar]', reason: …, integrity: [] }` as if it were the whole return value. Measured: `r.text` is `undefined`; the real top-level shape is `winner · reason · nominalTie · tied · outOfScope · integrity · unscoped · alsoInScope`.)* **This is not pedantry — it is the shape a fix gets written against.** A guard written from the recorded shape (`if (res.text === '[vantar]')`) is permanently `undefined`, never fires, and every test written from the same wrong shape passes. The register corrected this exact error class for B4a two days earlier.
+
+**No integrity fault fires.** The codes test *structure* — ties, scope, term-less concepts — and this is structurally perfect: one concept, one term, rank 1.
+
+**Measured, and stated separately from what is inferred:**
+- ✅ **Measured:** `git grep -F '[vantar]' -- 'books/*'` returns **0** lines; all three committed `glossary-unified.json` files carry no `producer` stamp, i.e. the merge-glossary fingerprint.
+  - ⚠️ **`-F` IS LOAD-BEARING, AND THIS BLOCK ORIGINALLY OMITTED IT.** Without it, `[vantar]` is a POSIX **bracket expression** matching any one of `v a n t r`, and the command returns **1,591,128** lines — measured, both ways. **The conclusion was right and the cited method could not have produced it.** Anyone re-verifying §C43 before the first `--adopt` would either read that as "the placeholder already ships throughout `books/`", inverting the finding, or discard the whole ✅ Measured half as unreliable. *An unquoted metacharacter turns a null result into its opposite, and both readings look like evidence.*
+- ⚠️ **Inferred, from a five-day-old record:** the register's 2026-08-05 §C14 ③ entry says the resolved exporter is refused for all in-loop books. That is cited as the *reason* for the absence, not re-measured today. §C21's own history is a chain of "this state was gated" claims falsified one at a time.
+
+**Either way it becomes reader- and MT-visible the moment a book is `--adopt`ed**, so it is a blocker for the first adopt. It also generalises: **a well-formed term that is not a word passes every mechanical gate** — the same shape as `concept-priority-overrules-consensus`, where a wrong-but-well-formed translation is invisible to all of them.
+
+## B10. Open, logged, not addressed here
+
+- **§C42** — the propose route still writes `terminology_translations.inflections`, so an editor's inflection between now and Part C never reaches the concept model and nothing goes red. **Part C must not drop the old tables while this is open.**
+- **Spec §9's closing obligation** — the moment this writes, Ritstjóri becomes *a product built on BÍN data*, so the SÁM credit plus a statement that the forms are generated must be **visible in the editor UI**. It is not in §5 and it is not in this PR: it belongs with **B4c**, the first slice with an editor surface. A licence obligation, not a nicety.
+- **D2 / KRISTINsnid** — still a separable follow-up worth ~1.57% of forms, and still blocked on confirming the prescriptive-marker vocabulary against BÍN's documentation rather than inferring it.
+- **The production run is a separate [LEAD] data op**, on B2's precedent. This PR ships code, gates and evidence; nothing has been written to production's `sessions.db`.
+
+---
+
+## B11. §C44 — sizing the compounder
+
+**Measured 2026-08-10** on the same scratch corpus as §B. Reproduce: the three scratchpad scripts are throwaway; the method is stated below in full so it can be rebuilt rather than recovered.
+
+⚠️ **NO BÍN FORMS BELOW.** Lemma *strings* the corpus already contains, and counts.
+
+### B11.1 The 71.18% is four populations, and only one is a word
+
+| population | strings |
+|---|---|
+| plain single words | **34,940** |
+| **combining forms** — an affix stored as a term (`-aðgerð`, `-berandi`, `-a`) | **2,182** |
+| other non-alphabetic — digits, parentheses, slashes | 1,115 |
+| `[vantar]` placeholder (→ §C43) | 1 |
+
+🔴 **668 of the 2,182 combining forms (30.6%) have a body that is already in BÍN.** `-brjóst` is `brjóst` with a marker glued on. **No compounder is involved: this is the corpus storing an affix marker inside the term string**, the same class of defect as §C43. It is also the cheapest thing on this page to fix.
+
+### B11.2 Do the plain words look like compounds? — with the control that makes it mean something
+
+Proxy for BinPackage's rule (Icelandic compounds are head-final, so an unknown compound inherits its **last** constituent's paradigm): does the string end in a known BÍN lemma of ≥4 characters, leaving a prefix of ≥2?
+
+| test | real strings (of 34,940) | **gibberish control** |
+|---|---|---|
+| LOOSE — tail is a known BÍN lemma | 28,125 (**80.5%**) | 142 (**0.4%**) |
+| STRICT — tail **and** prefix both known (prefix may shed a linking `-s-`) | 11,324 (**32.4%**) | 3 (**0.0%**) |
+
+⚠️ **The control is the whole reason these numbers are admissible.** It is length-matched, generated from the Icelandic alphabet with a seeded PRNG. Without it, "80% end in a real word" is equally consistent with *"BÍN contains so many short lemmas that anything matches"* — an absence of that alternative is not evidence against it. At 0.4% and 0.0%, it is.
+
+### B11.3 Translated into coverage, after applying **our own** D4/D4.2 to the head
+
+A head we would refuse buys nothing, so the head is judged by the same rules the run uses.
+
+| | strings | % of all 53,719 candidates |
+|---|---|---|
+| **today** | 15,019 | **28.0%** |
+| + STRICT decomposition | 24,218 | **45.1%** |
+| + LOOSE decomposition | 37,871 | **70.5%** |
+
+### B11.4 ⚠️ Both figures are UPPER bounds on what a compounder *specifically* buys
+
+The sample splits show why, and this is the caveat that must travel with the numbers:
+
+```
+bikarinn = bik + arinn        ← both parts are real words, and the analysis is WRONG:
+                                 `bikarinn` is a DEFINITE FORM ("the beaker"), not a compound
+```
+
+Definite forms and accidental splits both pass the strict test. **Neither proxy isolates true compounds.** A real figure means running BinPackage itself over the 34,940 strings — which is the actual next measurement, not a bigger version of this one.
+
+✅ **The spec's five named coinages behave exactly as it predicted**, which is a control on the method rather than a result:
+
+| coinage | loose | strict |
+|---|---|---|
+| `kjarnsækir` | `kjarn` + `sækir` | — |
+| `oxósýra` | `oxó` + `sýra` | — |
+| `mólarleysni` | `mólar` + `leysni` | — |
+| `pniktógen` | **NONE** | **NONE** |
+| `kúvetta` | **NONE** | **NONE** |
+
+The two that resolve to nothing are the two loanwords. A compounder cannot reach them, and nothing morphological will.
+
+### B11.5 ✅ The cheap alternative was tested FIRST, and it failed
+
+Before crediting a compounder: some misses might be missing only because the corpus stores the term **inflected** (`bikarinn`), which BÍN holds as a *form* even though it is not a *lemma*. If that were most of the gap, indexing forms as well as lemmas would fix it with **no new dependency** — `loadBinEntries` already streams past every form.
+
+| | strings | control |
+|---|---|---|
+| missing as a lemma but present as an inflected form | 1,670 of 34,940 (4.8%) | 24 of 30,725 (**0.08%**) |
+| … whose owning lemma D4/D4.2 would accept | 1,589 = **2.96% of all candidates** | — |
+
+**The cheap win is not there.** Worth recording as a negative result: it is the first thing anyone will propose, and it costs 3%.
+
+### B11.6 The toolchain objection is weaker than spec §6.0 assumed
+
+§6.0 rejected Python on the grounds that *"no workflow runs Python at all"*. That is true of **CI**, and it was the right call for a one-file script. It is not the whole picture for a service:
+
+**`server/greynir-sidecar/` already is a Python sidecar** — `app.py` (Flask) + `requirements.txt` (`reynir-correct`, `flask`, `gunicorn`) — with `server/services/greynirEngine.js` as its Node client, wired into `segmentEditorService` and gated by `GREYNIR_URL`. So BinPackage would be a **second consumer of an existing pattern**, not a new toolchain.
+
+⚠️ **UNVERIFIED, and it is the fact that most changes the estimate:** GreynirCorrect is built on BinPackage, so `islenska` may already be installed in that environment transitively. **Run `pip show islenska` there before anyone sizes the work** — do not infer it from the dependency graph, which is exactly the shape of claim this campaign keeps having to withdraw.
+
+🔴 **§C41 is unaffected and becomes more load-bearing, not less.** A compounder *generates* BÍN-derived forms rather than looking them up, so there would be more of them; the prohibition on their reaching `glossary-unified.json` stands unchanged. BinPackage's own licence needs checking separately from BÍN's — Miðeind's repositories are not uniformly licensed.
+
+---
+
+## B12. The whole-branch adversarial review — 20 filed, 12 confirmed, 8 refuted
+
+Five independent lenses over the branch diff, each finding then handed to an adversarial verifier told to **refute it by default**. Recorded because three of the twelve are defects the branch's own gates were structurally unable to see.
+
+### B12.1 🔴 Case folding manufactured 80% of all refusals — and D4.2 rescued to proper names
+
+`loadBinEntries` keys on the lowercased lemma, so BÍN's **capitalised proper nouns** — which are *different lemmas, different strings* — folded onto the same key as the common word:
+
+| corpus term | folded with | what happened |
+|---|---|---|
+| `gulur` (lo, "yellow") | `Gulur` (kk, an animal name) | D4.2 found "exactly one noun" — **the name** — rescued to it, and wrote the **name's paradigm onto the adjective, reported as a success** |
+| `tær` (lo, "clear") | `Tær` (kvk, a name) | same |
+| `vatn` (hk, "water") | `Vatn` (hk, a place name) | two nouns → **refused**, coverage lost outright |
+
+Both failure directions were **invisible in the report**: one is logged as a successful rescue, the other as a legitimate D4 refusal.
+
+**Fixed with `preferExactCase`**, applied at *selection* time rather than in the index — the index must stay lowercased or the differential golden breaks and a capitalised corpus term can no longer find a lowercase BÍN lemma.
+
+**Measured effect, which is much larger than the review estimated:**
+
+| | before | after |
+|---|---|---|
+| refused-ambiguous | 862 | **140** |
+| refused-no-noun | 44 | 46 |
+| **total refusals** | **906** | **186** |
+| rows written | 25,810 | **27,728** |
+
+**~80% of every refusal this design produced was an artefact of case folding, not real ambiguity.**
+
+### B12.2 The self-test never invoked a gate, and one case was a tautology
+
+The `--self-test` added earlier in this branch planted a defect and then evaluated a **hand-written predicate written beside the plant** — never the gate. Two consequences the reviewer demonstrated:
+
+- Delete gate 1's assertion and it reports **PASS** on a D4 violation, while the self-test still prints `DETECTED`. **The instrument built to prove the gates are not blind could not observe a blind gate.**
+- Its GATE 2 case planted *"nothing is populated"* and asserted *"nothing is populated"* — true on every input, including a corpus where the population had never run.
+
+**This is the failure the whole script exists to catch, committed inside the mechanism written to catch it.** Fixed by extracting gates 1/1b/2 into `checkGate*(db, report)` functions that `main()` and `--self-test` both call, so a weakened assertion fails in both.
+
+### B12.3 Gate 4's value check tested the wrong property — twice
+
+- **v1** sampled `LIMIT 200` **rows**, flat-mapped them to thousands of **forms**, silently dropped everything ≤6 characters, and reported *"0 of 200 sampled forms"* — a number describing none of that. The wrong figure was copied into this file.
+- **v2** fixed the unit and compared every written form against every payload string value. It **failed, with 61 hits — all false positives**: `afstæði` is an inflected form of one word *and* a legitimate Icelandic term in its own right, so it appears in the payload as a **term text**.
+
+**String coincidence is not leakage.** v3 tests *provenance and shape* instead: every term object's key set must be exactly the expected eight (so a leak under **any** new key name fails, not just `/inflect/i`), no stored paradigm appears verbatim, and every `alternatives` entry must be a real `concept_term` text.
+
+### B12.4 The rest
+
+- **`--limit` accepted a negative integer.** `slice(0, -1000)` drops the *last* 1,000, so `--limit -1000 --execute` would have written 52,719 strings at full strength while logging as a bounded smoke test; with |n| ≥ corpus size it instead threw *"refusing an empty candidate set"*, telling the operator their corpus is empty when the fault is their flag. It also changed meaning silently across the port — the predecessor put the value in SQL, where `LIMIT -1` means *no limit*. Now refused, with the reason in the message.
+- **Gate 3's stated rationale was false.** It claimed a second in-process call returns a cached automaton "without re-reading the database". Only the *trie* is cached; `terminologyService`'s own comment says translations and inflections are re-read every call. The child process is kept (it exercises the production path) but is now correctly described as belt-and-braces — `oldInflectionsDigest` is the load-bearing half.
+- **`keysDeep`'s docstring claimed it scanned values.** It collects keys. A reviewer reading it would conclude the value half was covered and skip the only check that does it.
+- **Three documentation defects**, all corrected: the register's precondition checklist still read *"⬜ no implementation plan yet"* eight lines below the bullet recording it as discharged; §C43 cited `git grep '[vantar]'`, where the brackets are a POSIX **bracket expression** returning **1,591,128** lines rather than none (the conclusion was right, the method could not have produced it); and §C43 documented `resolve()`'s return as `{text:…}` when the field is `winner.text`, so a fix written from the record would be permanently `undefined`.
+
+### B12.5 What this says about the gates
+
+The branch shipped with 6 gates, a fidelity control and a self-test, all green — and **three of the twelve confirmed findings were in that apparatus itself**. Every one is the same shape: *a check that passes for the wrong reason*. The gates caught no defect in the code they were written for; an adversarial read of the gates caught three in the gates.
+
+⚠️ **The corollary for B4b-1: a green gate suite is evidence about the code, and no evidence at all about the suite.**

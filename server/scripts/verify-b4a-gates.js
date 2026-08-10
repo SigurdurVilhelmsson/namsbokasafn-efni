@@ -51,7 +51,6 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { createHash } = require('crypto');
 
-const { BOOK_DOMAIN_PRIORITY } = require('../lib/domains');
 // The MODULE, not only its two functions: gate 5b runs this one and the
 // branch-point one side by side, so it needs both as objects.
 const resolveModule = require('../lib/conceptResolver');
@@ -62,13 +61,12 @@ const resolveModule = require('../lib/conceptResolver');
 const { buildScope, resolve, nocaseKey } = resolveModule;
 const { collectSourceEnglish } = require('../lib/sourceEnglish');
 const { buildResolvedGlossary } = require('../lib/resolvedGlossary');
-// ⚠️ A TEST HELPER ON PURPOSE. `freshMigratedDb` is the ONE place that builds a
-// schema by running the real migrations in order; verify-resolve-gates.js's
-// review finding 5 deleted a hand-written `CREATE TABLE` from that script for
-// exactly this reason — "this script must never invent the schema". Importing
-// the helper keeps one owner rather than making this a second hand-copied DDL.
-const freshMigratedDb = require('../__tests__/helpers/freshMigratedDb');
-const { runImport, formatImportReport } = require('./run-concept-import');
+// ⚠️ THE CORPUS BUILDER MOVED to ./lib/scratchCorpus.js (§C36 B4b-0b), because
+// B4b-0b's gate is its second caller and B4b-1's will be the third. It carries
+// its own comments — including why it uses the freshMigratedDb TEST helper
+// rather than inventing a schema, and why migration 048's SILENCE is what gate 2
+// measures. Read them there before changing anything here.
+const { buildCorpusDb, seedBooks } = require('./lib/scratchCorpus');
 
 const REPO_ROOT = path.join(__dirname, '..', '..');
 const DEFAULT_CORPUS = path.join(os.homedir(), 'idordabanki-raw-2026-08-07');
@@ -176,80 +174,6 @@ function record(id, verdict, measured) {
 const fmt = (n) => n.toLocaleString('en-US');
 
 /* ─────────────────────────── setup ─────────────────────────── */
-
-/**
- * Register the six books and seed their priorities INTO THE SCRATCH DATABASE.
- *
- * ⚠️ `title_is` IS NOT OPTIONAL, and omitting it fails SILENTLY. Migration 003
- * declares `title_is TEXT NOT NULL` with no default, and SQLite's `OR IGNORE`
- * conflict resolution swallows a NOT NULL violation: no exception, no row. That
- * is register §C35's defect — the same one that leaves `efnafraedi-2e`
- * unregistered on any locally-migrated database — and it is why caveat 2 exists.
- * `registered_by = 'gate'` marks these rows as synthetic; the slug stands in for
- * a title deliberately, since inventing an Icelandic one would be misleading.
- */
-function seedBooks(db) {
-  if (
-    !db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?").get('registered_books')
-  ) {
-    throw new Error('registered_books is missing — the migrations did not run');
-  }
-  const insBook = db.prepare(
-    "INSERT OR IGNORE INTO registered_books (slug, title_is, registered_by) VALUES (?, ?, 'gate')"
-  );
-  const insPrio = db.prepare(
-    'INSERT OR REPLACE INTO book_domain_priority (book_id, domain, position) VALUES (?, ?, ?)'
-  );
-  const registered = [];
-  for (const [slug, domains] of Object.entries(BOOK_DOMAIN_PRIORITY)) {
-    const before = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
-    insBook.run(slug, slug);
-    const row = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
-    if (!row) {
-      throw new Error(
-        `${slug} could not be registered — INSERT OR IGNORE swallowed it (§C35 shape). ` +
-          'Check registered_books’ NOT NULL columns.'
-      );
-    }
-    domains.forEach((d, i) => insPrio.run(row.id, d, i + 1));
-    registered.push(`${slug}${before ? ' (already registered)' : ' (registered by this script)'}`);
-  }
-  console.log('  ' + registered.join('\n  '));
-}
-
-/**
- * Build the scratch corpus, capturing anything migration 048 warns about.
- *
- * ⚠️ The capture is gate 2's positive observation. 048 logs `[048] …` ONLY when
- * `book_concept_preference` held rows; silence is therefore the measurement that
- * nothing was expanded, dropped or collided. Reading the row count afterwards
- * cannot tell you that — the table is gone by then, by design.
- */
-function buildCorpusDb(corpusDir) {
-  const warnings = [];
-  const realWarn = console.warn;
-  console.warn = (...a) => {
-    warnings.push(a.join(' '));
-    realWarn(...a);
-  };
-  let built;
-  try {
-    built = freshMigratedDb();
-  } finally {
-    console.warn = realWarn;
-  }
-  if (built.errors.length) {
-    throw new Error(`migrations failed:\n  ${built.errors.join('\n  ')}`);
-  }
-  console.log(`  migrations applied: ${built.applied}, errors: 0`);
-  console.log(`  scratch database:   ${built.path}`);
-
-  const t0 = Date.now();
-  const stats = runImport(built.db, corpusDir);
-  console.log(formatImportReport(stats));
-  console.log(`  import wall time: ${((Date.now() - t0) / 1000).toFixed(1)} s`);
-  return { ...built, warnings };
-}
 
 /** Run a sibling script as a child process and return `{ status, stdout }`. */
 function runScript(rel, args) {

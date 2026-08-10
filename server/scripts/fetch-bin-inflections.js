@@ -1,14 +1,22 @@
 /**
- * Populate terminology_translations.inflections from BÍN.
+ * Populate concept_term.inflections from BÍN — pos-aware (§C36 B4b-0b).
  *
- * ⚠️ A BEHAVIOUR-IDENTICAL PORT of tools/fetch_bin_inflections.py (§C36 B4b-0a).
- * It changes nothing: same input file, same table, same lookup, same dry-run
- * default. The pos-aware rewrite and the move to concept_term are B4b-0b.
+ * ⚠️ THE OLD MODEL IS NOT READ, NOT COPIED AND NOT MIGRATED (spec D1). Part C
+ * deletes terminology_translations; routing this data through it would be work
+ * performed on a corpse. Migration 045 declared concept_term.inflections and
+ * nothing has ever written it.
+ *
+ * ⚠️ TWO COUNTING UNITS, AND EVERY NUMBER THIS PRINTS SAYS WHICH IT IS IN.
+ * concept_term is keyed (concept_id, lang, text), so ONE Icelandic string owns
+ * MANY rows — measured 74,004 candidate rows over 53,719 distinct strings, 1.378
+ * each. The BÍN lookup happens once per STRING; the write fans out to its ROWS.
+ * The same run is a 25.87% hit rate per string and 33.50% per row, so a report
+ * that does not name its unit cannot be compared against anything.
  *
  * Usage:
- *   node server/scripts/fetch-bin-inflections.js                    # dry run
- *   node server/scripts/fetch-bin-inflections.js --execute
- *   node server/scripts/fetch-bin-inflections.js --execute --limit 50
+ *   node server/scripts/fetch-bin-inflections.js --db <scratch>            # dry run
+ *   node server/scripts/fetch-bin-inflections.js --db <scratch> --execute
+ *   node server/scripts/fetch-bin-inflections.js --db <scratch> --execute --limit 50
  *
  * BÍN data: Beygingarlýsing íslensks nútímamáls. Stofnun Árna Magnússonar í
  * íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir.
@@ -21,7 +29,13 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/binInflections');
+const {
+  loadBinEntries,
+  preferExactCase,
+  chooseEntry,
+  inflectionsFor,
+  formatInflectionsJson,
+} = require('../lib/binInflections');
 const resolveDbPath = require('../lib/dbPath');
 
 // ⚠️ resolveDbPath(), never process.cwd() (CLAUDE.md, durable) — the server runs
@@ -34,13 +48,17 @@ const DEFAULT_DB = resolveDbPath();
 const DEFAULT_BIN = path.join(__dirname, '..', '..', 'tools', 'data', 'SHsnid.csv');
 
 const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>] [--bin-data <path>]
-                                          [--execute] [--limit <n>] [--force]
+                             [--execute] [--limit <n>] [--force] [--report <path>]
 
   --db <path>        SQLite database (default: resolveDbPath())
-  --bin-data <path>  SHsnid.csv (default: ${DEFAULT_BIN})
+  --bin-data <path>  SHsnid.csv, 6 fields (default: ${DEFAULT_BIN})
   --execute          actually write. WITHOUT THIS NOTHING IS WRITTEN.
-  --limit <n>        process at most n translations (0 = all)
+  --limit <n>        process at most n DISTINCT STRINGS (0 = all). Whole strings
+                     only, so a limited run never half-populates one. It is a
+                     smoke test: its yield ratios are not the corpus's.
   --force            re-fetch even for rows that already have inflections
+  --report <path>    write the FULL rescue/refusal lists as JSON; stdout shows 50
+                     of each. Do NOT commit the file — it carries BÍN ids.
 
 BÍN data: Beygingarlýsing íslensks nútímamáls. Stofnun Árna Magnússonar í
 íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir.
@@ -64,8 +82,15 @@ GENERATED from that data (selected and subsetted per lemma), not verbatim.`;
  * elsewhere in this file. (wb-review-A, coordinator finding, 2026-08-10.)
  */
 function parseArgs(argv) {
-  const out = { db: DEFAULT_DB, binData: DEFAULT_BIN, execute: false, limit: 0, force: false };
-  const VALUE_FLAGS = new Set(['--db', '--bin-data', '--limit']);
+  const out = {
+    db: DEFAULT_DB,
+    binData: DEFAULT_BIN,
+    execute: false,
+    limit: 0,
+    force: false,
+    report: null,
+  };
+  const VALUE_FLAGS = new Set(['--db', '--bin-data', '--limit', '--report']);
   for (let i = 0; i < argv.length; i++) {
     const raw = argv[i];
     // ⚠️ Support `--flag=value`, not only `--flag value` — argparse accepts both
@@ -91,6 +116,7 @@ function parseArgs(argv) {
       }
       if (a === '--db') out.db = v;
       else if (a === '--bin-data') out.binData = v;
+      else if (a === '--report') out.report = v;
       else {
         // ⚠️ I-1: Number('abc') is NaN, which is FALSY, so an invalid --limit
         // used to silently drop the LIMIT clause entirely and the run processed
@@ -99,9 +125,22 @@ function parseArgs(argv) {
         // signed-integer literal — this also rejects '', whitespace-only, '3.7'
         // and '0x10'/'1e3', all of which Number() would coerce to a number that
         // is not what the operator typed.
-        if (!/^-?\d+$/.test(v)) {
+        // ⚠️ NON-NEGATIVE, and the `-?` this replaces was not harmless. Array
+        // .slice(0, -1) drops the LAST element, so `--limit -1000` kept 52,719
+        // of 53,719 strings and wrote them at full strength while every log line
+        // read as a bounded smoke test; `--limit -N` with N >= the corpus size
+        // produced an EMPTY keep-set and threw "refusing an empty candidate
+        // set", telling the operator their corpus is empty when the fault is
+        // their flag. Both reproduced by the whole-branch review.
+        // ⚠️ It also changed meaning silently across the port: the predecessor
+        // put the value in SQL, where `LIMIT -1` means NO limit.
+        if (!/^\d+$/.test(v)) {
           throw new Error(
-            `--limit expects an integer, got ${v === '' ? 'an empty string' : `'${v}'`}`
+            `--limit expects a non-negative integer, got ${v === '' ? 'an empty string' : `'${v}'`}` +
+              (/^-\d+$/.test(v)
+                ? ' — a negative limit would silently keep all but the last |n| strings, ' +
+                  'reported as a bounded run'
+                : '')
           );
         }
         out.limit = Number(v);
@@ -114,20 +153,32 @@ function parseArgs(argv) {
   return out;
 }
 
-/** The Python's SELECT, assembled the same way. */
-function selectSql({ force, limit }) {
+/**
+ * The candidate set: single-word Icelandic terms on the concept model.
+ *
+ * ⚠️ THIS RETURNS ROWS, AND ONE STRING OWNS MANY. main() groups them by
+ * lowercased text and looks each string up ONCE.
+ *
+ * ⚠️ NO SQL `LIMIT`. `--limit` bounds distinct STRINGS and is applied in main()
+ * after grouping. A row-level LIMIT would split a string's rows across the
+ * boundary, populating some and not others — and the in-run partition would
+ * still balance, because it counts only the rows it fetched, so the resulting
+ * inconsistency would be invisible to every check here. The candidate set is
+ * ~74k rows; fetching it whole costs nothing.
+ */
+function candidateSql({ force }) {
   const where = [
-    force ? '1=1' : 't.inflections IS NULL',
-    "t.icelandic NOT LIKE '% %'", // BÍN handles single words
-    't.icelandic IS NOT NULL',
+    "ct.lang = 'is'",
+    force ? '1=1' : 'ct.inflections IS NULL',
+    "ct.text NOT LIKE '% %'", // BÍN handles single words
+    'ct.text IS NOT NULL',
   ].join(' AND ');
   return `
-        SELECT t.id, t.icelandic, t.headword_id, h.english
-        FROM terminology_translations t
-        JOIN terminology_headwords h ON h.id = t.headword_id
+        SELECT ct.id, ct.text, c.domain
+        FROM concept_term ct
+        JOIN concept c ON c.id = ct.concept_id
         WHERE ${where}
-        ORDER BY t.id
-        ${limit ? `LIMIT ${limit}` : ''}`;
+        ORDER BY ct.id`;
 }
 
 async function main(argv) {
@@ -147,63 +198,317 @@ async function main(argv) {
     console.error(`Error: BÍN data file not found: ${args.binData}`);
     console.error('\nTo use this tool:');
     console.error('  1. Visit https://bin.arnastofnun.is/gogn/mimisbrunnur/');
-    console.error('  2. Accept the CC BY-SA 4.0 license');
+    console.error('  2. Accept the CC BY-SA 4.0 licence');
     console.error('  3. Download SHsnid.csv');
     console.error(`  4. Place it at: ${DEFAULT_BIN}`);
     process.exit(1);
   }
 
-  console.log(`Loading BÍN data from ${args.binData}...`);
-  const map = await loadBinData(args.binData);
-  console.log(`  Loaded inflection records for ${map.size.toLocaleString()} lemmas`);
-
   // ⚠️ Required INSIDE main(), not at module top level, so the test file can
-  // import parseArgs/selectSql without opening a database.
+  // import parseArgs/candidateSql without opening a database.
   const Database = require('better-sqlite3');
   const db = new Database(args.db);
-  const rows = db.prepare(selectSql(args)).all();
-  console.log(`\nFound ${rows.length} translations to process`);
+
+  const rows = db.prepare(candidateSql(args)).all();
+  const multiWordSkipped = db
+    .prepare(
+      "SELECT COUNT(*) c FROM concept_term WHERE lang='is' AND text LIKE '% %'" +
+        (args.force ? '' : ' AND inflections IS NULL')
+    )
+    .get().c;
+  const countPopulated = () =>
+    db
+      .prepare("SELECT COUNT(*) c FROM concept_term WHERE lang='is' AND inflections IS NOT NULL")
+      .get().c;
+  const alreadyPopulatedBefore = countPopulated();
+
+  const emptyReport = () => ({
+    strings: {
+      total: 0,
+      unambiguous: 0,
+      rescuedNominal: 0,
+      refusedAmbiguous: 0,
+      refusedNoNoun: 0,
+      baseFormOnly: 0,
+      notInBin: 0,
+    },
+    rows: {
+      total: 0,
+      written: 0,
+      refused: 0,
+      baseFormOnly: 0,
+      notInBin: 0,
+      multiWordSkipped,
+      alreadyPopulatedBefore,
+      alreadyPopulatedAfter: alreadyPopulatedBefore,
+    },
+    refusals: [],
+    rescues: [],
+  });
+
+  // ⚠️ ZERO YIELD IS REFUSED, NOT PRINTED (B0's rule, run-concept-import.js's
+  // docstring). The DEFAULT --db is resolveDbPath(), which on a dev box points at
+  // a database holding no concept model at all — so the commonest mistake yields
+  // zero candidates, and a printed "0 found" is indistinguishable from "BÍN does
+  // not have these words".
+  //
+  // ⚠️ BUT "NOTHING TO DO" AND "NOTHING THERE" ARE DIFFERENT FACTS, AND D5 IS
+  // BUILT ON TELLING THEM APART. A second --execute run over a fully-populated
+  // corpus ALSO returns zero candidates — that is the idempotent no-op the gate
+  // exists to demonstrate. `alreadyPopulatedBefore`, measured above, is the
+  // discriminator; without it a correct implementation fails its own gate.
+  if (rows.length === 0) {
+    db.close();
+    if (alreadyPopulatedBefore === 0) {
+      throw new Error(
+        `no candidate rows in ${args.db}, and NO row is populated either: concept_term holds no ` +
+          "single-word lang='is' row at all. If this is a dev box, the concept model is empty — " +
+          'rebuild a scratch corpus with run-concept-import.js rather than pointing this at ' +
+          'sessions.db.'
+      );
+    }
+    console.log(
+      `\nNo candidates: all ${alreadyPopulatedBefore} populated row(s) already have inflections. ` +
+        'That is the D5 no-op, not an empty database — the count above is what distinguishes them.'
+    );
+    return emptyReport();
+  }
+
+  // ONE lookup per distinct lowercased STRING; the write fans out to its rows.
+  //
+  // ⚠️ THE GROUP ALSO REMEMBERS THE ROWS' OWN SPELLING, which preferExactCase
+  // needs: BÍN holds capitalised proper nouns as separate lemmas that fold onto
+  // the same key (`gulur` the adjective + `Gulur` an animal name), and without
+  // the original case D4.2 rescues to the NAME. Measured: 53,705 of 53,719
+  // groups have a single spelling, so the key is available almost everywhere;
+  // the 14 that disagree get `null` and fall back to case-insensitive, where D4
+  // refuses if the result is ambiguous.
+  const byString = new Map();
+  for (const r of rows) {
+    const key = r.text.toLowerCase().trim();
+    let g = byString.get(key);
+    if (!g) byString.set(key, (g = { rows: [], spellings: new Set() }));
+    g.rows.push(r);
+    g.spellings.add(r.text.trim());
+  }
+
+  // ⚠️ --limit BOUNDS STRINGS AND TAKES WHOLE ONES. Dropping the tail of the map
+  // keeps every row of every string it keeps, so a limited run never leaves a
+  // string half-populated. rowStats.total is then the KEPT rows — measuring the
+  // row partition against rows the run never considered would fire the tripwire
+  // spuriously.
+  let candidateRowCount = rows.length;
+  if (args.limit && byString.size > args.limit) {
+    const keep = [...byString.keys()].slice(0, args.limit);
+    const limited = new Map(keep.map((k) => [k, byString.get(k)]));
+    byString.clear();
+    for (const [k, v] of limited) byString.set(k, v);
+    candidateRowCount = [...byString.values()].reduce((a, g) => a + g.rows.length, 0);
+    console.log(
+      `  --limit ${args.limit}: ${byString.size} string(s) / ${candidateRowCount} row(s) of ` +
+        `${rows.length}. ⚠️ A LIMITED RUN IS A SMOKE TEST — its ratios are not the corpus's.`
+    );
+  }
+
+  console.log(`Loading BÍN data from ${args.binData}...`);
+  const byLemma = await loadBinEntries(args.binData, new Set(byString.keys()));
+  console.log(
+    `  ${byLemma.size.toLocaleString()} of ${byString.size.toLocaleString()} candidate string(s) are in BÍN`
+  );
+  console.log(`\n${candidateRowCount} candidate row(s) over ${byString.size} distinct string(s)`);
   if (!args.execute) console.log('*** DRY RUN — add --execute to write to database ***\n');
 
-  const update = db.prepare('UPDATE terminology_translations SET inflections = ? WHERE id = ?');
-  const stats = { processed: 0, found: 0, notFound: 0 };
-  // ⚠️ ALL-OR-NOTHING, matching Python: sqlite3 opened an implicit transaction and
-  // wrote only at db.commit(). better-sqlite3's db.transaction() gives that
-  // directly. (node:sqlite has no such helper — one reason server/ placement is
-  // simpler than the tools/ workaround it replaces.)
-  const apply = db.transaction((list) => {
-    for (const [i, row] of list.entries()) {
-      const forms = getInflections(map, row.icelandic);
-      stats.processed++;
-      if (forms) {
-        stats.found++;
-        if (args.execute) update.run(formatInflectionsJson(forms), row.id);
-        if (i < 20) console.log(`  ✓ ${row.icelandic} (${row.english}): ${forms.length} forms`);
-      } else {
-        stats.notFound++;
-        if (i < 20) console.log(`  – ${row.icelandic} (${row.english}): not in BÍN`);
-      }
-    }
-  });
-  apply(rows);
+  const strings = {
+    total: byString.size,
+    unambiguous: 0,
+    rescuedNominal: 0,
+    refusedAmbiguous: 0,
+    refusedNoNoun: 0,
+    baseFormOnly: 0,
+    notInBin: 0,
+  };
+  const rowStats = {
+    total: candidateRowCount,
+    written: 0,
+    refused: 0,
+    baseFormOnly: 0,
+    notInBin: 0,
+    multiWordSkipped,
+    alreadyPopulatedBefore,
+    alreadyPopulatedAfter: alreadyPopulatedBefore,
+  };
+  const refusals = [];
+  const rescues = [];
+  const plan = [];
+  const brief = (e) => ({ binId: e.binId, wordClass: e.wordClass });
 
+  for (const [key, group] of byString) {
+    const all = byLemma.get(key);
+    if (!all || all.length === 0) {
+      strings.notInBin++;
+      rowStats.notInBin += group.rows.length;
+      continue;
+    }
+    // 🔴 Exact-case first — see preferExactCase. Only when every row of the
+    // group agrees on a spelling; otherwise there is no single right answer and
+    // D4 is left to refuse.
+    const spelling = group.spellings.size === 1 ? [...group.spellings][0] : null;
+    const entries = preferExactCase(all, spelling);
+    const { entry, outcome, discarded } = chooseEntry(entries);
+    if (!entry) {
+      strings[outcome === 'refused-no-noun' ? 'refusedNoNoun' : 'refusedAmbiguous']++;
+      rowStats.refused += group.rows.length;
+      refusals.push({ text: key, outcome, entries: entries.map(brief) });
+      continue;
+    }
+    const forms = inflectionsFor(entry, key);
+    if (forms === null) {
+      // ⚠️ NOT the same fact as "not in BÍN". BÍN holds this word and it has no
+      // form distinguishable from its base. The predecessor returned null for
+      // both, which made the distinction unrecoverable downstream.
+      strings.baseFormOnly++;
+      rowStats.baseFormOnly += group.rows.length;
+      continue;
+    }
+    strings[outcome === 'rescued-nominal' ? 'rescuedNominal' : 'unambiguous']++;
+    if (outcome === 'rescued-nominal') {
+      rescues.push({ text: key, chosen: brief(entry), discarded: discarded.map(brief) });
+    }
+    plan.push({ ids: group.rows.map((r) => r.id), json: formatInflectionsJson(forms) });
+  }
+
+  const resolvedRows = plan.reduce((a, p) => a + p.ids.length, 0);
+  if (args.execute) {
+    // ⚠️ THE `IS NULL` GUARD IS REPEATED HERE, NOT ONLY IN candidateSql — D5's
+    // one-way fill must hold even if something populated the row between the
+    // SELECT and this UPDATE.
+    //
+    // ⚠️ AND IT MUST BE DROPPED UNDER --force, OR THE FLAG IS A SILENT NO-OP.
+    // --force removes `inflections IS NULL` from the candidate query; leaving it
+    // in the UPDATE would select every row, write none of them, and report
+    // `written: 0` with a full candidate count — the "flag parsed but never
+    // read" shape CLAUDE.md names as durable. Caught while implementing, not by
+    // a test: the row partition still balanced, because 0 written is a legal
+    // outcome for the dry-run path.
+    const update = db.prepare(
+      args.force
+        ? 'UPDATE concept_term SET inflections = ? WHERE id = ?'
+        : 'UPDATE concept_term SET inflections = ? WHERE id = ? AND inflections IS NULL'
+    );
+    if (args.force) {
+      console.log(
+        '  ⚠️ --force: the IS NULL guard is OFF, so an existing paradigm WILL be overwritten.'
+      );
+    }
+    // ⚠️ ALL-OR-NOTHING, matching the Python: sqlite3 opened an implicit
+    // transaction and wrote only at commit(). better-sqlite3's db.transaction()
+    // gives that directly (node:sqlite has no such helper — one reason server/
+    // placement is simpler than the tools/ workaround it replaced).
+    const apply = db.transaction((list) => {
+      for (const p of list) {
+        for (const id of p.ids) rowStats.written += update.run(p.json, id).changes;
+      }
+    });
+    apply(plan);
+    rowStats.alreadyPopulatedAfter = countPopulated();
+  }
+
+  // ⚠️ THE TRIPWIRE, IN BOTH UNITS — they fail differently. A string mis-bucketed
+  // breaks the string partition; a row written twice or skipped breaks only the
+  // row partition. 048's discipline: an unexplained remainder is louder than a
+  // plausible total.
+  const sSum =
+    strings.unambiguous +
+    strings.rescuedNominal +
+    strings.refusedAmbiguous +
+    strings.refusedNoNoun +
+    strings.baseFormOnly +
+    strings.notInBin;
+  const rSum = resolvedRows + rowStats.refused + rowStats.baseFormOnly + rowStats.notInBin;
+  const unexplained = [];
+  if (sSum !== strings.total)
+    unexplained.push(`strings: ${sSum} bucketed vs ${strings.total} total`);
+  if (rSum !== rowStats.total)
+    unexplained.push(`rows: ${rSum} bucketed vs ${rowStats.total} total`);
+  if (args.execute && rowStats.written !== resolvedRows) {
+    unexplained.push(`rows: ${rowStats.written} written vs ${resolvedRows} resolved`);
+  }
+
+  const pctS = (n) => `${((n / strings.total) * 100).toFixed(2)}%`;
+  const pctR = (n) => `${((n / rowStats.total) * 100).toFixed(2)}%`;
+  console.log('\n--- Inflection summary ---');
+  console.log('  ⚠️ TWO UNITS: one Icelandic string owns many concept_term rows.');
+  console.log(`  strings ${strings.total} · rows ${rowStats.total}`);
+  console.log(
+    `  unambiguous       ${strings.unambiguous} (${pctS(strings.unambiguous)} of strings)`
+  );
+  console.log(`  rescued-nominal   ${strings.rescuedNominal} (${pctS(strings.rescuedNominal)})`);
+  console.log(
+    `  refused-ambiguous ${strings.refusedAmbiguous} (${pctS(strings.refusedAmbiguous)})`
+  );
+  console.log(`  refused-no-noun   ${strings.refusedNoNoun} (${pctS(strings.refusedNoNoun)})`);
+  console.log(`  base-form-only    ${strings.baseFormOnly} (${pctS(strings.baseFormOnly)})`);
+  console.log(`  not in BÍN        ${strings.notInBin} (${pctS(strings.notInBin)})`);
+  console.log(`  rows written      ${rowStats.written} (${pctR(rowStats.written)} of rows)`);
+  console.log(`  multi-word rows skipped  ${multiWordSkipped}`);
+  console.log(
+    `  already populated (rows) ${alreadyPopulatedBefore} → ${rowStats.alreadyPopulatedAfter}`
+  );
+
+  if (unexplained.length) {
+    console.error(`\n🔴 UNEXPLAINED: ${unexplained.join(' · ')}`);
+    db.close();
+    throw new Error(`bucket partition broken — ${unexplained.join(' · ')}`);
+  }
   console.log(
     args.execute ? `\n✓ Changes committed to ${args.db}` : '\n*** DRY RUN — no changes written ***'
   );
-  db.close();
 
-  const rate = stats.processed ? (stats.found / stats.processed) * 100 : 0;
-  console.log('\n--- Inflection Summary ---');
-  console.log(`  Processed: ${stats.processed}`);
-  console.log(`  Found in BÍN: ${stats.found}`);
-  console.log(`  Not in BÍN: ${stats.notFound}`);
-  console.log(`  Hit rate: ${rate.toFixed(1)}%`);
-  if (!args.execute && stats.found) {
-    console.log(`\n  Add --execute to apply ${stats.found} inflection updates`);
+  // ⚠️ EVERY RESCUE AND REFUSAL IS NAMED. D4.2 is a deliberate exception to D4's
+  // never-guess rule and is defensible ONLY while a wrong pick stays discoverable
+  // after the fact.
+  if (rescues.length) {
+    console.log(`\n--- D4.2 nominal rescues (${rescues.length}) ---`);
+    for (const r of rescues.slice(0, 50)) {
+      console.log(
+        `  ${r.text}: chose ${r.chosen.wordClass}#${r.chosen.binId}, discarded ` +
+          r.discarded.map((d) => `${d.wordClass}#${d.binId}`).join(' ')
+      );
+    }
+    if (rescues.length > 50) {
+      console.log(`  … ${rescues.length - 50} more — pass --report to get them all`);
+    }
   }
+  if (refusals.length) {
+    console.log(`\n--- D4 refusals (${refusals.length}) ---`);
+    for (const r of refusals.slice(0, 50)) {
+      console.log(`  ${r.text}: ${r.entries.map((e) => `${e.wordClass}#${e.binId}`).join(' ')}`);
+    }
+    if (refusals.length > 50) {
+      console.log(`  … ${refusals.length - 50} more — pass --report to get them all`);
+    }
+  }
+
+  // ⚠️ THE TRUNCATION ABOVE IS WHY --report EXISTS. A real run makes ~906
+  // refusals and ~403 rescues; stdout shows 50 of each, and "the full list is in
+  // the return value" promises nothing to a shell caller.
+  //
+  // ⚠️ NEVER COMMIT THE FILE. It carries BÍN ids and word classes; it carries no
+  // forms, and it must not start to (§C41: BÍN is CC BY-SA, this repo is public).
+  if (args.report) {
+    fs.writeFileSync(
+      args.report,
+      JSON.stringify({ strings, rows: rowStats, rescues, refusals }, null, 2),
+      'utf-8'
+    );
+    console.log(`\n  full rescue/refusal lists → ${args.report} (do NOT commit: BÍN-derived ids)`);
+  }
+
+  db.close();
+  return { strings, rows: rowStats, refusals, rescues };
 }
 
-module.exports = { parseArgs, selectSql, main };
+module.exports = { parseArgs, candidateSql, main };
 
 if (require.main === module) {
   main(process.argv.slice(2)).catch((err) => {
