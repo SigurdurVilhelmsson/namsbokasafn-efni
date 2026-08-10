@@ -22,11 +22,16 @@ beforeAll(() => {
 });
 afterAll(() => fs.rmSync(dir, { recursive: true, force: true }));
 
+// ⚠️ EVERY ROW BELOW IS INVENTED. `zafl` is not an Icelandic word and the ids
+// (9001/9002) and tags (X/Y) are not BÍN's. This matters: the repo is PUBLIC and
+// BÍN is CC BY-SA 4.0, so committing real BÍN lines — even two — breaks §C41's
+// "no BÍN bytes, test fixtures included". An earlier version of this file used
+// two verbatim SHsnid.csv rows; caught by the whole-branch hygiene review.
 describe('loadBinData', () => {
   it('groups forms by lowercased lemma', async () => {
     const p = write('a.csv', 'Zafl;9001;kk;alm;zafli;X\nzafl;9002;hk;alm;zaflið;Y\n');
     const map = await loadBinData(p);
-    expect([...map.get('afl')].sort()).toEqual(['afli', 'aflið']);
+    expect([...map.get('zafl')].sort()).toEqual(['zafli', 'zaflið']);
   });
 
   // GUARD — unexercised by the real file (0 such rows measured 2026-08-10),
@@ -34,34 +39,37 @@ describe('loadBinData', () => {
   it('skips rows with fewer than 5 fields', async () => {
     const p = write('b.csv', 'zafl;9001;kk;alm\nzafl;9001;kk;alm;zafli;X\n');
     const map = await loadBinData(p);
-    expect([...map.get('afl')]).toEqual(['afli']);
+    expect([...map.get('zafl')]).toEqual(['zafli']);
   });
 
   // GUARD — Python: `if lemma and form`.
   it('skips rows whose lemma or form is empty', async () => {
-    const p = write('c.csv', ';9001;kk;alm;zafli;X\nzafl;9001;kk;alm;;X\nzafl;9001;kk;alm;zafls;X\n');
+    const p = write(
+      'c.csv',
+      ';9001;kk;alm;zafli;X\nzafl;9001;kk;alm;;X\nzafl;9001;kk;alm;zafls;X\n'
+    );
     const map = await loadBinData(p);
-    expect([...map.get('afl')]).toEqual(['afls']);
+    expect([...map.get('zafl')]).toEqual(['zafls']);
   });
 
   // GUARD — Python: `.strip()` on both.
   it('trims whitespace around lemma and form', async () => {
     const p = write('d.csv', '  zafl  ;9001;kk;alm;  zafli  ;X\n');
     const map = await loadBinData(p);
-    expect([...map.get('afl')]).toEqual(['afli']);
+    expect([...map.get('zafl')]).toEqual(['zafli']);
   });
 
   // Python stores a SET, so duplicates collapse.
   it('deduplicates identical forms', async () => {
     const p = write('e.csv', 'zafl;9001;kk;alm;zafli;X\nzafl;9002;hk;alm;zafli;Y\n');
     const map = await loadBinData(p);
-    expect([...map.get('afl')]).toEqual(['afli']);
+    expect([...map.get('zafl')]).toEqual(['zafli']);
   });
 
   it('tolerates a missing trailing newline', async () => {
     const p = write('f.csv', 'zafl;9001;kk;alm;zafli;X');
     const map = await loadBinData(p);
-    expect([...map.get('afl')]).toEqual(['afli']);
+    expect([...map.get('zafl')]).toEqual(['zafli']);
   });
 });
 

@@ -224,6 +224,10 @@ zafl;9001;kvk;alm;1;;;;V;zafl;NFET;1;;;
 zafl;9001;kvk;alm;1;;;;V;zaflin;NFETgr;1;;;
 ```
 
+⚠️ **Those two rows are INVENTED** — `zafl` is not a word and the id is not BÍN's. They illustrate the shape only. Quoting two real lines here is what the hygiene review caught: the repo is public and BÍN is CC BY-SA, so §C41's "no BÍN bytes" has no test-fixture or documentation exemption.
+
+
+
 **⚠️ Since D2 was demoted, `SHsnid.csv` is the file in use — 6 fields, no header, and it carries the same id and word class:**
 
 | idx | SHsnid (in use) | KRISTINsnid (follow-up) |
