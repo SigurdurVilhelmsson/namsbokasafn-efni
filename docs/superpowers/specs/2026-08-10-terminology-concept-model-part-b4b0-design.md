@@ -12,14 +12,25 @@ B4b-1 cuts `findTermsInSegments` over from the old terminology tables to `resolv
 
 **B4b-0 populates it, from BÍN, with a lookup that does not merge homographs.**
 
-### 1.1 What B4b-0 changes
+### 1.1 What B4b-0 changes — TWO PRs, port first and INERT *(lead, 2026-08-10)*
 
-1. **`tools/fetch_bin_inflections.py` is PORTED TO NODE** as `tools/fetch-bin-inflections.js`, and the Python script is **deleted** *(lead, 2026-08-10 — see §6.0)*. This is not incidental tidying: it is what puts the script inside root `npm test`, the campaign's authoritative gate.
-2. The port is **pos-aware** — it retains BÍN's `Auðkenni` and `Orðflokkur` (D3) — and **targets `concept_term`** instead of `terminology_translations` (D1).
-3. It parses **`KRISTINsnid.csv`** instead of `SHsnid.csv` (D2).
-4. A data op writes `concept_term.inflections` for the Icelandic terms BÍN resolves unambiguously, plus those rescued by the **nominal rule** (D4.2, adopted).
+**An earlier draft of this section landed the port and the logic change together**, arguing that splitting them "would produce one diff worth reviewing and one that isn't." **The lead ruled otherwise, and the ruling is the stronger one:** an inert port is the only version whose review question has a *checkable answer* — *did behaviour change?* — and the paragraph below shows that answer can be made a measurement rather than an assertion.
 
-⚠️ **The port is the largest part of this diff and it is a REWRITE, not a transliteration** — the lookup changes from "union by lowercased lemma" to "group by BÍN id, then apply D4/D4.2", which is the whole point of the slice. Porting first and changing the logic second would be two diffs where the second is the only one worth reviewing; they land together, and the Python script's behaviour is preserved nowhere.
+#### B4b-0a — the port, behaviour-preserving
+
+`tools/fetch_bin_inflections.py` → **`tools/fetch-bin-inflections.js`**; the Python is deleted. **Nothing else changes**: still `SHsnid.csv`, still `terminology_translations`, still the union-by-lowercased-lemma lookup, still `--execute` opt-in.
+
+**Inert in production by construction** — it is a CLI tool nothing invokes, with a dry-run default.
+
+⚠️ **Inertness is PROVEN BY A DIFFERENTIAL GOLDEN, not asserted.** `get_inflections` is a **pure function of (SHsnid, word)**, so its output can be captured over a fixed word list **without a database**. Capture from the **unmodified Python**, then require the Node port to reproduce it byte-identically.
+
+**This repo already holds the discipline and the warning**: `capture-c24-golden.js` says a golden *"MUST be run against the UNMODIFIED matcher … Re-running it after the swap would certify the new implementation against itself and destroy the oracle. There is no observable difference between a correct golden and a worthless one."* Same rule here — **capture before the port exists.**
+
+#### B4b-0b — the logic change
+
+Pos-aware (D3), targeting `concept_term` (D1), applying D4 and D4.2. **One behavioural diff, reviewable on its own**, against a port already known not to have moved anything.
+
+⚠️ **B4b-0b does NOT require KRISTINsnid** — see D2 as corrected. `SHsnid.csv` already carries the BÍN id and word class, which is everything D3 and D4 need.
 
 ### 1.2 Non-goals
 
@@ -65,7 +76,7 @@ The diagnosis above was reached from *ending patterns in the stored values*. Wit
 | … with **more than one** BÍN entry | 7,371 (**2.12%**) |
 | … with more than one **distinct word class** | 3,220 (**0.93%**) |
 
-So D4's refuse-rather-than-guess rule costs on the order of **2% of candidate strings** — and that figure is consistent, from an entirely independent direction, with the 1.28% contamination floor measured on our own terms. **The safe rule is cheap here; that is a measurement, not a hope.**
+⚠️ **DO NOT READ THIS AS D4'S COST — see D4.1.** This section originally concluded *"the safe rule is cheap here; that is a measurement, not a hope"*, reasoning that ~2% was consistent with the 1.28% contamination floor. **Two measurements agreeing is not two measurements confirming each other when both describe the corpus and the question is about our subset.** On the strings we actually hold the refusal rate is **9.4%**, 4.4× this figure. The number above is retained because it is correct *about BÍN* and because the error is instructive: **a corpus statistic is not a statistic about your sample of it.**
 
 ### 2.3 That inverts the build-or-copy decision
 
@@ -79,9 +90,25 @@ The contamination **cannot be repaired in place**: a stored value is a union wit
 
 The old `terminology_translations.inflections` is **not read, not copied, and not migrated**. Part C deletes that table; routing this data through it would be work performed on a corpse.
 
-### D2 — `KRISTINsnid.csv`, not `SHsnid.csv` *(lead, 2026-08-10)*
+### D2 — ⚠️ CORRECTED 2026-08-10 AGAINST BOTH FILES: THE SWITCH ALONE IS A NO-OP, AND IT IS NOT A PRECONDITION
 
-Per the licensing decision record: SHsnid (6 fields) is purely **lýsandi** — it records every attested variant without judging any. KRISTINsnid (15 fields) is partly **vísandi** — it takes a position on the validity of variants. **A textbook glossary wants the standard form, not every attested variant.**
+**As first written**, D2 read: *"KRISTINsnid (15 fields) is partly vísandi — it takes a position on the validity of variants … A textbook glossary wants the standard form, not every attested variant."* That reasoning came from the licensing decision record and **was never checked against the files**. Both are now on disk. Measured:
+
+| | SHsnid | KRISTINsnid |
+|---|---|---|
+| lines | 7,425,931 | **7,425,931 — identical** |
+| `(lemma, id, form)` triples | — | **0 mismatches in 200,000 rows** |
+| forms for `afl` | 17 | **the same 17** |
+
+**KRISTINsnid does not remove variants. It ANNOTATES them.** Same rows, nine extra columns. So switching files and reading only the form column produces **byte-identical output** — the switch, on its own, buys nothing at all.
+
+**Two corrections follow, and the second is the one that changes the plan:**
+
+**① The prescriptive value is real but small, and lives in fields 5 and 12.** They carry markers — `VILLA` (error), `URE`, `GAM`, `FORN` (obsolete/old/archaic), `SJALD` (rare), `SKALD`, `FORM`, `STAD`, `NID`. Corpus-wide **5.80%** of rows carry one; **on our own terms, 3,113 of 198,512 forms — 1.57%**. ⚠️ **The marker vocabulary must be confirmed against BÍN's own documentation before any filter is written.** The glosses above are inferred from transparent Icelandic abbreviations, and BÍN's docs are unreachable from here (SPA). **Do not encode a filter list from a guess** — that is D4's doctrine applied to metadata.
+
+**② `SHsnid.csv` ALREADY CARRIES THE BÍN ID AND WORD CLASS** — fields 1 and 2, exactly as KRISTINsnid does. **So the pos-aware fix, which is the entire point of B4b-0, needs no file switch.** The Python simply discarded those columns.
+
+**Therefore D2 is DEMOTED from a precondition to a separable follow-up**: B4b-0a and B4b-0b both stay on `SHsnid.csv`, and adopting KRISTINsnid + a marker filter becomes its own small change, worth ~1.57% of forms, once the vocabulary is confirmed. ⚠️ **A switch to KRISTINsnid also moves the form column from index 4 to index 9** — which is precisely the silent zero-yield trap §5's input guard exists to catch.
 
 ⚠️ `Storasnid_ritm.csv` deliberately carries **misspellings, typos and older orthography**. It must never be used here. It is spell-checker material.
 
@@ -170,6 +197,23 @@ This decision was originally written as *"the parser is header-driven and refuse
 zafl;9001;kvk;alm;1;;;;V;zafl;NFET;1;;;
 zafl;9001;kvk;alm;1;;;;V;zaflin;NFETgr;1;;;
 ```
+
+**⚠️ Since D2 was demoted, `SHsnid.csv` is the file in use — 6 fields, no header, and it carries the same id and word class:**
+
+| idx | SHsnid (in use) | KRISTINsnid (follow-up) |
+|---|---|---|
+| 0 | lemma | lemma |
+| 1 | **BÍN id** | **BÍN id** |
+| 2 | **word class** | **word class** |
+| 3 | register | register |
+| **4** | **inflected form** | (a numeric code) |
+| 5 | grammatical tag | prescriptive marker |
+| **9** | — | **inflected form** |
+| 12 | — | second prescriptive marker |
+
+⚠️ **The form column moves 4 → 9 between the two files. That single fact is the whole reason §5's input guard exists.**
+
+KRISTINsnid's own layout, for the follow-up:
 
 | idx | content | used for |
 |---|---|---|
