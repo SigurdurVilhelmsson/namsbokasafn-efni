@@ -177,7 +177,11 @@ The terms are plain **CC BY-SA 4.0 plus two obligations** — credit, and declar
 | select | `terminology_translations` where `inflections IS NULL AND icelandic NOT LIKE '% %'` | `concept_term` where `lang='is' AND inflections IS NULL` |
 | lookup | `map.get(word.lower())` → union | index `lemma.lower() → [bin_id…]`; **exactly one** id → its paradigm; **more than one** → refuse + report |
 | write | `UPDATE terminology_translations …` | `UPDATE concept_term SET inflections = ? WHERE id = ?` |
-| default | writes unless `--dry-run` absent… (`--execute` opt-in) | **`--execute` opt-in retained** — dry-run stays the default |
+| input file | `tools/data/SHsnid.csv` — 6 fields | `tools/data/KRISTINsnid.csv` — 15 fields (D2) |
+| input guard | none — a wrong file parses to nothing and reports 0 found | **refuse** unless field count is 15 and field 2 holds a known word class (D7) |
+| default | **`--execute` opt-in; dry-run is the default** | unchanged — the one thing worth keeping as-is |
+
+⚠️ **The input guard is not defensive padding.** Today, handing the script the wrong CSV produces a clean run reporting "0 found" — indistinguishable from "BÍN does not have these words." A 6-field SHsnid file fed to a 15-field parser reads field 9 as out-of-range and silently matches nothing. **A zero-yield run must be refused, not printed** — that is B0's lesson, already recorded in `run-concept-import.js`'s own docstring.
 
 Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of skipped multi-word strings is **reported** rather than silently dropped — `concept_term` holds far more multi-word Icelandic strings than the old model did, so the skip is a much larger and more interesting number here.
 
@@ -225,4 +229,4 @@ Multi-word terms: today's `NOT LIKE '% %'` filter is retained, and the count of 
 1. ✅ **`tools/data/KRISTINsnid.csv` — OBTAINED 2026-08-10**, 35,655,687 bytes zipped (byte count matched `Content-Length`), 450 MB / 7,425,931 lines extracted. Gitignored at `.gitignore:56`. **No BÍN bytes are committed, and none may be** — including in test fixtures (§6).
 2. ✅ **The 15-field layout is confirmed against the real file** — D7, which this spec originally declined to state. There is **no header row**.
 3. ⬜ A locally rebuilt concept corpus in a scratch DB (§6). The raw source is present at `~/idordabanki-raw-2026-08-07/`. **Still open.**
-4. ⬜ The decision record's dated amendment for §4's licence correction. **Still open.**
+4. ✅ **The decision record's dated amendment for §4's licence correction — APPENDED 2026-08-10** (append-only; the 2026-08-06 body is not edited). Logged in the register as **§C41**.
