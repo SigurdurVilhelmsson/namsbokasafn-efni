@@ -1,5 +1,7 @@
 /**
- * THE INERTNESS PROOF for §C36 B4b-0a.
+ * THE CSV-FIDELITY PROOF. Was §C36 B4b-0a's inertness proof; B4b-0b re-pointed
+ * it at the pos-aware loader, where it asserts something stronger — see the
+ * comment above the comparison test.
  *
  * The golden was captured from the UNMODIFIED Python before this port existed
  * (see tools/capture-bin-golden.py at commit 8072a58f — THE PRODUCER IS DELETED,
@@ -23,7 +25,7 @@ import path from 'path';
 import crypto from 'crypto';
 
 const require = createRequire(import.meta.url);
-const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/binInflections');
+const { loadBinEntries, formatInflectionsJson } = require('../lib/binInflections');
 
 const CSV = path.join(__dirname, '..', '..', 'tools', 'data', 'SHsnid.csv');
 const WORDS = path.join(__dirname, 'fixtures', 'bin-golden-words.txt');
@@ -42,7 +44,7 @@ const haveCsv = fs.existsSync(CSV);
  */
 const CSV_SHA256 = '9c10d70d73c03168f05f152616b8cafa6e4275e7db8701338f5f3c48a45b7ab6';
 
-describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
+describe.skipIf(!haveCsv)('BÍN differential golden (captured from the Python at B4b-0a)', () => {
   // ⚠️ A `beforeAll`, NOT an `it` — I-2 (wb-review-A, 2026-08-10). This used to be
   // a separate `it` declared AFTER the 300s comparison below, so its own comment
   // ("RUNS BEFORE the comparison") was false: on a swapped CSV, an operator hit a
@@ -78,23 +80,52 @@ describe.skipIf(!haveCsv)('B4b-0a differential golden', () => {
     }
   }, 120000);
 
-  it('reproduces the Python byte-for-byte on every word', async () => {
+  // ⚠️ THE CLAIM CHANGED WITH B4b-0b, AND IT GOT STRONGER — read this before
+  // "simplifying" the union below.
+  //
+  // B4b-0a asserted "the Node port equals the Python". The union lookup that
+  // claim was about is GONE: B4b-0b groups per BÍN entry, because the union was
+  // the defect. Left pointed at the old functions this file would have been
+  // green forever over code nothing calls — a check with no subject.
+  //
+  // What is asserted now: the POS-AWARE loader, unioned back per lemma, reads
+  // exactly the (lemma, form) pairs the Python read. That is a strictly stronger
+  // statement than the old one — it covers the layer a CSV-parsing regression
+  // actually lands in — against the SAME oracle, captured from the unmodified
+  // Python before any Node existed. Verified 0/23,995 before the port was
+  // written.
+  //
+  // ⚠️ THE UNION HERE IS THE ORACLE'S ADAPTER, NOT WHAT PRODUCTION DOES.
+  // Production calls chooseEntry(), which refuses an ambiguous string or rescues
+  // a sole noun. Unioning is the only transform that makes the two designs
+  // comparable at all, and copying it into the script would restore the defect.
+  it('reads the same (lemma, form) pairs as the Python — per-lemma union', async () => {
     const golden = JSON.parse(fs.readFileSync(HASHES, 'utf-8'));
     const words = fs
       .readFileSync(WORDS, 'utf-8')
       .split('\n')
       .filter((w) => w !== '');
-    const map = await loadBinData(CSV);
+    const candidates = new Set(words.map((w) => w.toLowerCase().trim()));
+    const byLemma = await loadBinEntries(CSV, candidates);
 
     const mismatches = [];
     let hits = 0;
     let misses = 0;
     for (const w of words) {
-      const forms = getInflections(map, w);
-      const actual =
-        forms === null
-          ? null
-          : crypto.createHash('sha256').update(formatInflectionsJson(forms), 'utf-8').digest('hex');
+      const key = w.toLowerCase().trim();
+      const entries = byLemma.get(key);
+      let actual = null;
+      if (entries) {
+        const union = new Set();
+        for (const e of entries) for (const f of e.forms) union.add(f);
+        const forms = [...union].filter((f) => f.toLowerCase() !== key).sort();
+        if (forms.length > 0) {
+          actual = crypto
+            .createHash('sha256')
+            .update(formatInflectionsJson(forms), 'utf-8')
+            .digest('hex');
+        }
+      }
       if (actual === null) misses++;
       else hits++;
       if (actual !== golden[w]) {
