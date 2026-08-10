@@ -84,4 +84,24 @@ function getInflections(map, word) {
   return result.length > 0 ? result : null;
 }
 
-module.exports = { loadBinData, getInflections };
+/**
+ * Encode exactly as Python's `json.dumps(forms, ensure_ascii=False)` does.
+ *
+ * ⚠️ THE SEPARATOR IS `", "`, NOT `","`. Python's json.dumps defaults to
+ * `separators=(', ', ': ')`; JSON.stringify emits no space. Production rows are
+ * in the spaced form — e.g. ["afla", "aflana", "aflanna", ...] — so a plain
+ * JSON.stringify here would change the bytes of every value the script has ever
+ * written, while still parsing identically. That is precisely the class of
+ * difference the differential golden exists to catch.
+ *
+ * Per-item JSON.stringify already matches ensure_ascii=False: it emits non-ASCII
+ * raw and escapes `"` and `\` the same way Python does.
+ *
+ * @param {string[]} forms
+ * @returns {string}
+ */
+function formatInflectionsJson(forms) {
+  return '[' + forms.map((f) => JSON.stringify(f)).join(', ') + ']';
+}
+
+module.exports = { loadBinData, getInflections, formatInflectionsJson };

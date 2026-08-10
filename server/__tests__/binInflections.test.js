@@ -8,7 +8,7 @@ import os from 'os';
 import path from 'path';
 
 const require = createRequire(import.meta.url);
-const { loadBinData, getInflections } = require('../lib/binInflections');
+const { loadBinData, getInflections, formatInflectionsJson } = require('../lib/binInflections');
 
 let dir;
 const write = (name, body) => {
@@ -102,5 +102,35 @@ describe('getInflections', () => {
   it('sorts by code point, NOT by locale', () => {
     const m = new Map([['x', new Set(['zzz', 'öfl', 'afli'])]]);
     expect(getInflections(m, 'x')).toEqual(['afli', 'zzz', 'öfl']);
+  });
+});
+
+describe('formatInflectionsJson', () => {
+  // ⚠️ THE WHOLE POINT: json.dumps separates with ", " and JSON.stringify with ",".
+  // Production rows confirm the spaced form, e.g. ["afla", "aflana", ...].
+  it('separates items with a comma AND a space, like json.dumps', () => {
+    expect(formatInflectionsJson(['a', 'b'])).toBe('["a", "b"]');
+  });
+
+  it('does NOT produce JSON.stringify output', () => {
+    expect(formatInflectionsJson(['a', 'b'])).not.toBe(JSON.stringify(['a', 'b']));
+  });
+
+  // ensure_ascii=False -> raw characters, not \uXXXX escapes.
+  it('emits non-ASCII raw', () => {
+    expect(formatInflectionsJson(['öfl', 'aflið'])).toBe('["öfl", "aflið"]');
+  });
+
+  it('escapes quotes and backslashes as JSON requires', () => {
+    expect(formatInflectionsJson(['a"b', 'c\\d'])).toBe('["a\\"b", "c\\\\d"]');
+  });
+
+  it('round-trips through JSON.parse', () => {
+    const forms = ['öfl', 'a"b'];
+    expect(JSON.parse(formatInflectionsJson(forms))).toEqual(forms);
+  });
+
+  it('renders a single item without a separator', () => {
+    expect(formatInflectionsJson(['a'])).toBe('["a"]');
   });
 });
