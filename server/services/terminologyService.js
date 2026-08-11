@@ -1523,7 +1523,28 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       // §C43 / D7: the placeholder is a well-formed head form that is not a
       // word. It must never reach an editor. This does NOT close §C43.
       if (res.winner && res.winner.text === PLACEHOLDER_TEXT) continue;
-      const isFallback = !res.winner;
+      // 🔴 THREE STATES, NOT TWO — whole-branch review, 2026-08-11.
+      // `resolve()` returns `winner: null` for THREE different reasons and this
+      // line used to read `const isFallback = !res.winner`, unioning them:
+      //   ① no in-scope candidate at all   — the OLD isFallback, and its only meaning
+      //   ② an in-scope POSITION TIE       — two of the book's OWN domain's concepts
+      //                                      answer at the same priority with different
+      //                                      Icelandic head forms, so the resolver
+      //                                      refuses to guess (conceptResolver.js:616-625)
+      //   ③ an unregistered book           — fail-closed, ruled, warn-logged
+      // Under the union, ② was served by the ① path: with nothing offerable the
+      // match was DROPPED at :1541, and with an out-of-scope candidate present
+      // the panel was handed `outOfScope[0]` — a term from a domain NOT in this
+      // book's chain — with `subjects: []`, while the book's own tied answers
+      // appeared nowhere in the payload. Measured over the real corpus, per book:
+      // 437/914 (efnafraedi-2e), 2,334/373 (liffraedi-2e, orverufraedi),
+      // 1,224/308 (edlisfraedi-2e), 1,185/275 (stjornufraedi) English strings
+      // dropped / mis-answered. `tied` was read NOWHERE in this file.
+      //
+      // A tie is IN SCOPE. It is not a fallback and must not tile like one.
+      const tiedTerms = (res.tied || []).filter((t) => t.text !== PLACEHOLDER_TEXT);
+      const isTied = !res.winner && tiedTerms.length > 0;
+      const isFallback = !res.winner && !isTied;
       // ⚠️ §C43 / D7 (fix round 2, Finding 1) — the guard above only covers the
       // WINNER. On a fallback match winner is null, and outOfScope/alsoInScope
       // are built from headForm() (conceptResolver.js:353-356, :404-414),
@@ -1550,7 +1571,19 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       // inside the model built to end it. Do not add ORDER BY to
       // conceptResolver for this — out of scope for this file's fix.
       offerable.sort((a, b) => a.conceptId - b.conceptId);
-      hits.push({ headwordId, english, occ, res, isFallback, offerable, alts });
+      // ⚠️ RECOVER THE termIds THE RESOLVER DROPS. `tied` entries are
+      // {conceptId, text, domain} — `asWinner` carries a termId, the tie list
+      // does not. Two consumers here need it: the paradigm lookup in the
+      // Icelandic-side check (`paradigmFor(stmt, undefined)` would reach
+      // better-sqlite3 with an undefined binding and THROW, i.e. a 500 on the
+      // editor's /terms request), and `translations[].id`, which every other
+      // in-scope answer carries. `isTermsFor` is already memoised per concept,
+      // so this costs one statement per distinct tied concept per call.
+      const tied = tiedTerms.map((t) => ({
+        ...t,
+        termId: (isTermsFor(t.conceptId).find((s) => s.text === t.text) || {}).termId,
+      }));
+      hits.push({ headwordId, english, occ, res, isFallback, isTied, tied, offerable, alts });
     }
 
     hits.sort(
@@ -1579,11 +1612,28 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       matches.push({
         headwordId: hit.headwordId,
         english: hit.english,
-        icelandic: winner ? winner.text : (hit.offerable[0] || {}).text || null,
-        subjects: winner ? [winner.domain] : [],
+        // ⚠️ `icelandic: null` ON A TIE IS THE HONEST ANSWER, and it is safe on
+        // both client paths — verified 2026-08-11 by reading them: the term
+        // popup renders `termInfo.translations[]` and never `match.icelandic`
+        // (public/js/segment-editor.js:2463-2482), and `highlightTermsInHtml`
+        // reads only `m.english` (public/js/term-highlight.js:42-50). Inventing
+        // a value here would be the guessing conceptResolver §6 step 5 forbids.
+        icelandic: winner ? winner.text : hit.isTied ? null : (hit.offerable[0] || {}).text || null,
+        // A tie's domains are REAL and in this book's chain — unlike a fallback,
+        // whose `subjects: []` is what hid that its answer came from outside the
+        // chain. Deduped: two tied concepts usually share the same domain.
+        subjects: winner
+          ? [winner.domain]
+          : hit.isTied
+            ? [...new Set(hit.tied.map((t) => t.domain).filter(Boolean))]
+            : [],
         status: 'approved',
         isPrimary: Boolean(winner),
         isFallback: hit.isFallback,
+        // NEW (2026-08-11): the book's own domain offers >1 equally-ranked
+        // answer and the resolver declined to pick. B4c's preference UI is what
+        // resolves it permanently; until then the panel shows the choice.
+        isTied: hit.isTied,
         position: start,
         // ⚠️ A FALLBACK ENTRY HAS `id: undefined`, DROPPED BY JSON.stringify —
         // NOT PRESENT AS `null`. `hit.offerable`/`hit.res.outOfScope` entries
@@ -1595,31 +1645,43 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         // this is left as-is rather than fabricated; a future consumer
         // needing a stable fallback handle should read this comment rather
         // than rediscover the gap.
-        translations: (winner ? [winner, ...alts] : hit.offerable).map((t) => ({
-          id: t.termId,
-          icelandic: t.text,
-          subjects: t.domain ? [t.domain] : [],
-          status: 'approved',
-          isPrimary: winner ? t.termId === winner.termId : false,
-          isFallback: hit.isFallback,
-        })),
+        translations: (winner ? [winner, ...alts] : hit.isTied ? hit.tied : hit.offerable).map(
+          (t) => ({
+            id: t.termId,
+            icelandic: t.text,
+            subjects: t.domain ? [t.domain] : [],
+            status: 'approved',
+            isPrimary: winner ? t.termId === winner.termId : false,
+            isFallback: hit.isFallback,
+          })
+        ),
       });
 
-      // ⚠️ THREE INDEPENDENT CHECKS, NOT FOUR. This comment used to claim four
-      // "gates" — not fallback, IS content present, a winner exists, and the EN
-      // span was actually claimed — but `hit.isFallback` (:1526) IS `!res.winner`
-      // by construction, and nothing mutates `res` between there and here. So
-      // `hit.isFallback ||` and `!winner` are the SAME predicate written twice,
-      // not two independent ones; no fixture can ever make them disagree. Kept
-      // both anyway, deliberately: `hit.isFallback` reads as "not a fallback
-      // match" at the call site, which is clearer than re-deriving it from
-      // `!winner`. The real checks are: IS content present, a winner exists —
-      // plus the EN span having been claimed, which is structural here (we are
-      // inside the tiler) rather than a runtime condition at all.
-      if (hit.isFallback || !seg.isContent || !winner) continue;
+      // ⚠️ `isFallback` AND `!winner` ARE NO LONGER THE SAME PREDICATE — 2026-08-11.
+      // This comment used to explain, at length, that they were: that
+      // `isFallback = !res.winner` made them one test written twice, and that no
+      // fixture could make them disagree. That was true and is now FALSE — a TIE
+      // has no winner and is NOT a fallback, which is the whole point of the
+      // three-state split at :1526. A fixture that makes them disagree is
+      // exactly what the tie tests below assert.
+      //
+      // The checks now: the span was claimed (structural — we are inside the
+      // tiler), the segment has Icelandic content to check against, and the hit
+      // is not a fallback (a fallback has no in-scope answer, so there is
+      // nothing to be consistent WITH). A tie DOES have in-scope answers — more
+      // than one — so it flows through, into its own arm below.
+      if (hit.isFallback || !seg.isContent) continue;
 
       const matchesForm = (term) => {
-        const re = buildInflectionRegex(term.text, paradigmFor(paradigmStmt, term.termId));
+        // ⚠️ `term.termId == null` is REACHABLE, not defensive noise: a tied
+        // candidate's termId is recovered by text lookup at :1553 and can come
+        // back undefined if the resolver's chosen text is not among the
+        // concept's own Icelandic terms. `paradigmStmt.get(undefined)` throws in
+        // better-sqlite3 — a 500 on the editor's /terms request — so the empty
+        // paradigm (surface form only) is the degradation, matching what ~70% of
+        // this corpus's Icelandic terms get anyway for want of a BÍN entry.
+        const paradigm = term.termId == null ? [] : paradigmFor(paradigmStmt, term.termId);
+        const re = buildInflectionRegex(term.text, paradigm);
         // Insurance, not correction: wholeWordRegex always returns a fresh
         // RegExp per call today, so lastIndex is already 0 on arrival and this
         // is presently a no-op. It becomes load-bearing the moment anyone
@@ -1628,6 +1690,34 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         re.lastIndex = 0;
         return re.test(seg.isContent);
       };
+
+      // ── THE TIE ARM ────────────────────────────────────────────────────────
+      // Any of the equally-ranked answers is correct usage, so the check is
+      // "did the editor use ONE of them", not "did they use THE one" — there is
+      // no THE one, which is why the resolver returned a tie.
+      //
+      // ⚠️ THIS RESTORES A CHECK THE CUT-OVER SILENTLY REMOVED, it does not add
+      // a new one. Under the old model these strings had a single winner and got
+      // an ordinary missing/alternative issue; the union at :1526 sent them down
+      // the fallback path, where `hit.isFallback` skipped the Icelandic-side
+      // check entirely. QA went quiet on exactly the terms with a real choice.
+      if (hit.isTied) {
+        if (hit.tied.some(matchesForm)) continue;
+        const options = hit.tied.map((t) => t.text);
+        issues.push({
+          type: 'missing',
+          headwordId: hit.headwordId,
+          english: hit.english,
+          // `expected` stays a single string so every existing consumer keeps
+          // working; `options` carries the full truth for the ones that can use
+          // it. hit.tied is ordered by the resolver's conceptId sort, so this is
+          // deterministic rather than row-order dependent (§C18).
+          expected: options[0],
+          options,
+          message: `„${hit.english}“ → ${options.map((o) => `„${o}“`).join(' eða ')} fannst ekki`,
+        });
+        continue;
+      }
 
       if (matchesForm(winner)) continue;
 
