@@ -183,8 +183,13 @@ describe('the C24 fixture is actually seeded into the concept model', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ⚠️ SKIPPED PENDING A CONTROLLER RULING — §C36 B4b-1, Task 6. DO NOT DELETE,
-// DO NOT REGENERATE THE GOLDEN, DO NOT WEAKEN THIS UNTIL IT PASSES.
+// ⚠️ THE C24 GOLDEN IS NO LONGER AN ORACLE FOR ORDER — §C36 B4b-1, Task 6.
+// DO NOT REGENERATE IT, and do not "fix" the three named exclusions below by
+// re-mapping domains (see the rejected mapping at the end of this banner).
+//
+// Ruled 2026-08-11: pin the order-INSENSITIVE span SET over the 21 segments
+// that reproduce, exclude the 3 that do not BY NAME with their reasons, and
+// assert the exclusion list itself. The block below implements exactly that.
 //
 // The brief expected `{english, position}` — span and order — to survive the
 // cut-over even though ids and winner selection could not. MEASURED, it does not
@@ -237,23 +242,77 @@ describe('the C24 fixture is actually seeded into the concept model', () => {
 // itself. capture-c24-golden.js's own header forbids it and its refusal guard
 // measures magnitude, not provenance, so it would NOT stop you.
 // ─────────────────────────────────────────────────────────────────────────────
-describe.skip('findTermsInSegments span-and-order pin (C24 golden) — SEE BANNER, AWAITING RULING', () => {
-  it('the golden is not vacuous', () => {
-    // A golden of all-empty results would pass forever while proving nothing.
-    // Captured values were 40 matches / 5 issues across 24 segments.
-    const nMatches = Object.values(golden).reduce((n, r) => n + r.matches.length, 0);
-    const nIssues = Object.values(golden).reduce((n, r) => n + r.issues.length, 0);
-    expect(nMatches).toBeGreaterThan(0);
-    expect(nIssues).toBeGreaterThan(0);
+//
+// ⚠️ ORDER IS DELIBERATELY NOT PINNED. The assertion below is an ORDER-INSENSITIVE
+// SPAN SET. Pre-swap match order encodes the single-subject tier partition — a
+// model that no longer exists — so asserting it would pin the OLD WORLD in place
+// and turn every future correct change red. What survives, and is worth pinning,
+// is the automaton + overlap tiler: WHICH spans get claimed.
+//
+// ⚠️ THE THREE EXCLUSIONS ARE NAMED, NOT BLANKET-SKIPPED, and each carries its
+// measured reason as the map's value so an exclusion cannot be added later
+// without writing down why. Two meta-assertions enforce that: the map must have
+// exactly three entries (a future divergence cannot be silenced by adding a
+// fourth key) and every key must exist in the golden (a typo'd key would
+// silently exclude nothing while looking like it excluded something).
+const KNOWN_CHANGED = {
+  'm001:para:fs-id0001':
+    'atomic mass -> atomic mass unit: atomic mass is chemistry+mathematics, atomic mass unit is physics; both now in scope, so longest wins',
+  'm002:para:fs-id0007': 'same mechanism as fs-id0001 (atomic mass unit (amu), physics)',
+  'm002:para:fs-id0012':
+    'bomb calorimeter (mathematics -> out of chain -> fallback) vs calorimeter (biology -> in scope): the shorter in-scope term now claims the span. Item 18 working as written; flagged for a design decision, see register',
+};
+
+/** Order-insensitive: sorted "english@position" keys. */
+const spanSet = (matches) => matches.map((m) => `${m.english}@${m.position}`).sort();
+
+const ASSERTED = Object.keys(golden).filter((id) => !(id in KNOWN_CHANGED));
+
+describe('findTermsInSegments claims the C24 golden SPAN SETS (21 of 24 segments)', () => {
+  it('KNOWN_CHANGED names exactly the three measured divergences, each with a reason', () => {
+    // ⚠️ EXACTLY THREE. Without this, a future divergence can be made to
+    // disappear by adding a fourth key, and the suite would go green on a real
+    // regression.
+    expect(Object.keys(KNOWN_CHANGED)).toHaveLength(3);
+    for (const [id, why] of Object.entries(KNOWN_CHANGED)) {
+      // A key that is not in the golden excludes NOTHING while reading as an
+      // exclusion — a typo would be invisible without this.
+      expect(Object.keys(golden)).toContain(id);
+      // A reason must actually be a reason. 'x' or '' must not satisfy the map's
+      // contract, which is the only thing forcing a future exclusion to be
+      // justified in writing.
+      expect(why.trim().length).toBeGreaterThan(30);
+    }
+  });
+
+  it('the asserted set is 21 segments carrying 35 matches on BOTH sides — never ∅ == ∅', () => {
+    // ⚠️ THE VACUOUSNESS GUARD FOR EVERY PER-SEGMENT ASSERTION BELOW, and it
+    // measures BOTH SIDES on purpose. Two of the 21 segments legitimately have an
+    // EMPTY golden set (they were written to contain no glossary term at all), so
+    // for those two a per-segment set comparison is satisfiable by an all-empty
+    // matcher. The golden-side counts alone cannot see that — they are a property
+    // of checked-in JSON and pass no matter what the matcher does. The ACTUAL-side
+    // sum is what makes this a guard rather than a restatement of the fixture.
+    //
+    // ⚠️ CAUGHT BY MEASUREMENT, NOT BY REVIEW: the first version of this test
+    // asserted only the golden side while its comment claimed "an all-empty
+    // matcher cannot produce 35 matches". Mutating the tiler to emit nothing left
+    // this test GREEN — it was the 19 non-empty per-segment assertions that went
+    // red. The comment described a guard the code did not implement.
+    expect(ASSERTED).toHaveLength(21);
+    expect(ASSERTED.reduce((n, id) => n + golden[id].matches.length, 0)).toBe(35);
+    expect(ASSERTED.filter((id) => golden[id].matches.length > 0)).toHaveLength(19);
+
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    expect(ASSERTED.reduce((n, id) => n + actual[id].matches.length, 0)).toBe(35);
   });
 
   // One `it` per segment so a diff names the failing case — the pattern at
   // tools/__tests__/book-rendering-config.test.js.
-  for (const segmentId of Object.keys(golden)) {
-    it(`claims the same spans, in the same order, as the C24 golden for ${segmentId}`, () => {
+  for (const segmentId of ASSERTED) {
+    it(`claims the same span SET as the C24 golden for ${segmentId}`, () => {
       const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
-      const shape = (m) => ({ english: m.english, position: m.position });
-      expect(actual[segmentId].matches.map(shape)).toEqual(golden[segmentId].matches.map(shape));
+      expect(spanSet(actual[segmentId].matches)).toEqual(spanSet(golden[segmentId].matches));
     });
   }
 });
