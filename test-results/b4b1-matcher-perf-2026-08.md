@@ -7,8 +7,8 @@ reproduces every one of them.
 **Code measured:** `aeccd33f` (branch `spec/c36-b4b1-matcher-cutover`), plus this task's
 own rewrite of `server/scripts/bench-c24.js`.
 
-**How it was run.** Six runs on the dev box as the script gained its arms — four biology,
-one chemistry, one final end-to-end check of the committed script (Node v22.22.2, 12 cores,
+**How it was run.** Eight runs on the dev box as the script gained its arms and then its
+fix round — six biology, one chemistry, one final end-to-end check of the committed script (Node v22.22.2, 12 cores,
 9.9 GB RAM, load average 1.2–2.4 — **not an idle box**; see _Timing variance_ below). Wall
 times below are ranges across those runs; **every count and every memory figure was
 identical in all of them**. Each run
@@ -69,35 +69,57 @@ node --expose-gc server/scripts/bench-c24.js --book efnafraedi-2e \
 process lifetime.** It is a `_automatonCache` singleton keyed on a corpus fingerprint. The
 heap figure was identical to within 0.1 MB across every independent corpus rebuild.
 
-**Three independent observations of the same structure agree to 0.4%**, which is a stronger
+**Three independent observations of the same structure agree to 0.1%**, which is a stronger
 claim than the single delta: arm 1 reports **+177.1 MB**; the scaling table's 61,042 row
-reports **+176.4 MB** through a separate build of a separately-assembled entry list; and
-dropping the reference returns heapUsed to **14.0 MB** against an 11–14 MB pre-arm
+reports **+177.0 MB** through a separate build of a separately-assembled entry list; and
+dropping the reference returns heapUsed to **14.1 MB** against an 11–14 MB pre-arm
 baseline — i.e. all of it was the automaton and none of it leaked.
 
 RSS agreed with heapUsed on **this** arm (+186 MB vs +177 MB, ~5%) because it is the
 process's _first_ large allocation. That agreement does not generalise — see below.
 
-### Linear in entry count (evenly **strided** samples, not prefixes)
+### Growth in entry count (evenly **spaced** samples, not prefixes)
 
 `loadEnglishEntries` returns `LENGTH(text) DESC`, so a prefix would be the longest strings
-and would overstate. These are every _k_-th entry:
+and would overstate. These sample every _n_-th position across the whole list:
 
 | Entries | heapUsed  | per 1,000 entries | RSS delta, same build |
 | ------- | --------- | ----------------- | --------------------- |
-| 10,000  | +26.8 MB  | 2.68 MB           | **+8.7 MB**           |
-| 20,000  | +50.6 MB  | 2.53 MB           | **+35.2 MB**          |
-| 40,000  | +110.2 MB | 2.76 MB           | **+87.6 MB**          |
-| 61,042  | +176.4 MB | 2.89 MB           | **+81.3 MB**          |
+| 10,000  | +28.5 MB  | 2.85 MB           | **+9.3 MB**           |
+| 20,000  | +57.8 MB  | 2.89 MB           | **+39.3 MB**          |
+| 40,000  | +124.3 MB | 3.11 MB           | **+86.7 MB**          |
+| 61,042  | +177.0 MB | 2.90 MB           | **+80.9 MB**          |
 
-**≈2.5–2.9 MB per 1,000 distinct English strings**, near-linear across a 6× range. A corpus
-that doubles roughly doubles this.
+**Byte-identical across two runs**, so every row below is deterministic, not noise.
+
+**End to end it is linear to within 2%:** 6.1× the entries (10,000 → 61,042) costs 6.2× the
+heap, and extrapolating the 10,000-entry row to the full corpus predicts 174 MB against 177
+measured. **Per-1,000 is NOT monotone, and the deviation reproduces exactly**: 2.85 → 2.89
+→ **3.11** → 2.90. The 40,000-entry point costs ~7% more per entry than the full corpus and
+does so identically on both runs. **No mechanism is offered here — it was not
+investigated**, and the obvious guess (less trie prefix-sharing in a sparser sample) is
+contradicted by the 10,000-entry row, which is sparser still and cheaper per entry.
+
+**For capacity planning, use ~2.9 MB per 1,000 distinct English strings with a ±10% band**,
+and prefer the end-to-end ratio over any single row.
+
+⚠️ **SUPERSEDED 2026-08-11 (fix round 1) — the first version of this table read 2.68 /
+2.53 / 2.76 / 2.89 and was captioned "evenly strided samples, not prefixes". It was
+stride-then-truncate**: `filter(i % stride === 0).slice(0, n)`, whose integer stride
+collapses to 1 at n = 40,000, making that row **a prefix of the 40,000 longest strings** —
+dropping the entire 34.5% short tail, i.e. the exact construction the caption disavowed. It
+was correct for 2 of 4 rows, and the bad row read _lower_ than the full set, so the table
+looked orderly. The old numbers are kept here because the record of what was overclaimed is
+worth more than a clean-looking table: they did not falsify linearity, they failed to
+establish it, because the sampling bias and prefix-sharing were confounded and the spread
+was the same order as the bias. **The headline 177 MB was never affected — it is the whole
+set, unsampled.**
 
 ### 🔴 The RSS column above IS the evidence for using `heapUsed`
 
 Four automata are built and dropped in one process. `heapUsed` reports each one's real
 size; the RSS delta collapses — the process already grew and does not hand the pages back.
-At 61,042 entries **RSS reports +81 MB for a structure that measurably costs +176 MB — a
+At 61,042 entries **RSS reports +81 MB for a structure that measurably costs +177 MB — a
 2.2× understatement**, and at 10,000 entries it is 3.1×. This is exactly the shape
 `bench-prepare-arms.js` computes its `resident memory Nx less` ratio from, and it is why
 that ratio should not be read as a memory measurement. Demonstrated here rather than
@@ -110,12 +132,16 @@ what makes the automaton cache structurally unable to go stale.
 
 | Measurement                                       | Value            | Scale                      |
 | ------------------------------------------------- | ---------------- | -------------------------- |
-| `loadEnglishEntries` re-read, best of 3, warm     | **119 – 130 ms** | 61,042 distinct EN strings |
+| `loadEnglishEntries` re-read, best of 3, warm     | **119 – 134 ms** | 61,042 distinct EN strings |
 | `buildScope`                                      | 1.1 – 1.4 ms     | one book's chain           |
 | Short-lived heap allocated and discarded per call | ~6.6 MB          | same                       |
 
 **This floor is paid whether the call carries 1 segment or 878**, and it is the reason the
-one-segment save path is not cheap (arm 3).
+one-segment save path is not cheap (arm 3). ⚠️ The floor is a wall-clock figure and moves
+with load like every other one here: five runs gave 119–134 ms, and one run taken while a
+full `npm test` was executing gave **281 ms**. The subtraction in arm 4's latency paragraph
+uses ~125 ms against warm times measured **in the same runs**, so the two are consistent;
+do not pair a floor from one run with a warm time from another.
 
 ## Arm 2 — the `resolve()` reference, RE-MEASURED on this box in this run
 
@@ -187,9 +213,21 @@ exactly what the call would cost with a per-segment memo — i.e. Task 4's memo 
 
 **`resolve()` calls == distinct English strings hit, at every point of both curves, exactly.**
 Not once does the count track Σhits. At the largest point an un-memoised call would make
-**9,856** resolve calls; the shipped code makes **1,281** — **7.69× fewer**, and the
-saving _grows_ with segment count (3.72× → 7.69×) because distinct vocabulary saturates
-while hits keep accumulating.
+**9,856** resolve calls; the shipped code makes **1,281** — **7.69× fewer**.
+
+**How the saving moves with segment count is text- and order-dependent, and must not be
+read as a law.** It rose 3.72× → 7.69× across biology's 6.4× segment range **with modules
+added largest-first**, which makes vocabulary-per-segment decline _by construction_
+(`DEFAULT_MODULES` is ordered largest-first and the curve takes prefixes of it). Chemistry's
+narrower 1.3× range shows a slight **decline** over the same measurement: 5.40× → 5.27× →
+5.17×. Both curves are printed above; neither generalises to the other.
+
+⚠️ **SUPERSEDED 2026-08-11 (fix round 1).** This claimed the saving _grows_ "because
+distinct vocabulary saturates while hits keep accumulating" — a Heaps'-law mechanism that
+is sound in principle but generalised from one curve while the other, two rows above in
+this same document, trends the other way, and while the curve's own construction supplies a
+competing explanation. **The memo verdict does not rest on this and is unaffected**: it
+rests on the 8/8 exact equality of calls to distinct strings hit.
 
 Controls, so the verdict is not an artefact of a counter that never bound:
 
@@ -203,8 +241,20 @@ Controls, so the verdict is not an artefact of a counter that never bound:
 - Both counts are derived from real text, and the vacuousness guard prints how many
   segments carry EN and IS content (878/878 and 368/368).
 
-**Consequence for latency:** because resolve calls saturate, warm time grows **sub-linearly
-in segments** — 6.4× the segments (137 → 878) costs ~2.2–2.9× the time.
+**Consequence for latency, stated without a mechanism:** warm time is consistent with a
+**fixed ~125 ms floor plus a term linear in segments**. Subtracting the independently
+measured floor (arm 1c, 119–130 ms) from the best warm times leaves ~95 ms at 137 segments
+and ~500 ms at 878 — **6.4× the segments for 5.3× the variable time, i.e. essentially
+linear** — and a two-point fit puts the intercept at ~145 ms, within noise of the measured
+floor. **The memo's contribution to latency was NOT separated from the floor in this run.**
+
+⚠️ **SUPERSEDED 2026-08-11 (fix round 1).** This paragraph read: _"because resolve calls
+saturate, warm time grows sub-linearly in segments — 6.4× the segments costs ~2.2–2.9× the
+time."_ The observation is right and the "because" was unmeasured. The floor alone produces
+sub-linearity: adding the memo's saving back at this run's ~0.05 ms/resolve gives ~280 ms
+and ~1,055 ms, **still sub-linear**, so an un-memoised matcher would show the same shape and
+the memo cannot be what produces it. The memo's real, measured benefit is the **call-count**
+bound above, not this curve's shape.
 
 ## The regex-compile bound (§C48 asked Task 8 to see this number)
 
@@ -250,7 +300,7 @@ call, not `matchesForm` alone.)
 
 The box carried other load (load average 1.2–2.4). Wall times move ±30–50% between runs;
 the 878-segment warm point ranged 625–976 ms. **Counts, memory and the memo verdict were
-bit-identical across all six runs** — only latency is noisy. Treat every wall-clock figure
+bit-identical across all runs** — only latency is noisy. Treat every wall-clock figure
 here as an order of magnitude on a _busy dev box_, and every count as exact.
 
 ## Observations that are not performance, logged because the numbers surfaced them

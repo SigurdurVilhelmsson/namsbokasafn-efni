@@ -320,10 +320,29 @@ function main(argv = process.argv.slice(2)) {
   // collapses toward zero from the second build onward — the process has already
   // grown, and it does not give the pages back. That is precisely the shape
   // bench-prepare-arms.js computes its ratio from.
-  console.log('  scaling (evenly strided samples of the same entries, each built alone):');
+  //
+  // ⚠️ THE SAMPLER IS `Math.round(i * len / n)`, AND THE OBVIOUS FORM IS WRONG IN
+  // A WAY THAT HIDES INSIDE A CORRECT-LOOKING CAPTION. This loop first read
+  // `filter((_, i) => i % Math.floor(len / n) === 0).slice(0, n)` — stride, THEN
+  // truncate. At n = 40,000 the integer stride collapses to 1, so the filter is
+  // a no-op and `.slice()` keeps the first 40,000 of a `LENGTH(text) DESC` list:
+  // a PREFIX OF THE 40,000 LONGEST STRINGS, dropping the entire 34.5% short
+  // tail — the exact construction the caption disavows and the comment warns
+  // against. It was right for 2 of 4 rows and the row it was wrong for read
+  // *lower* than the full set, so nothing looked out of place. Found by review,
+  // 2026-08-11. Sampling every n without truncating removes the failure mode
+  // rather than the symptom.
+  console.log('  scaling (evenly spaced samples of the same entries, each built alone):');
   for (const n of [10000, 20000, 40000, entries.length]) {
-    const stride = Math.max(1, Math.floor(entries.length / n));
-    const sample = entries.filter((_, i) => i % stride === 0).slice(0, n);
+    const sample = Array.from(
+      { length: n },
+      (_, i) => entries[Math.round((i * entries.length) / n)]
+    );
+    // A duplicate index would make `n entries` a lie and quietly shrink the
+    // structure being weighed. Cheap, so it is asserted rather than reasoned about.
+    if (new Set(sample).size !== n) {
+      throw new Error(`sampler produced ${new Set(sample).size} distinct entries for n=${n}`);
+    }
     const h0 = heap();
     const r0 = process.memoryUsage().rss;
     let built = buildTermAutomaton(sample);
