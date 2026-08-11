@@ -139,3 +139,12 @@ books/*/corpus/
 
 # B1 glossary probe output (paid run artifacts; regenerate via docs/audit/b1-glossary-probe.mjs)
 docs/audit/probe-out/
+
+# E2E lock residue. `*.locked` files are LEGITIMATELY TRACKED for real books
+# (efnafraedi-2e, liffraedi-2e — a lock is part of that content's state), so this
+# is deliberately scoped to the throwaway fixture and must NOT be widened.
+# Playwright's editor specs acquire module locks and a run that is interrupted —
+# or a webServer killed to free port 3456 — leaves them behind, at which point
+# any `git add -A` commits test residue into 02-mt-output/, a READ-ONLY tree.
+# Observed 2026-08-11: exactly that, caught in the commit's own file list.
+books/__e2e-fixture__/**/*.locked
