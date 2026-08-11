@@ -661,7 +661,13 @@ module.exports = {
   prepareLookupStatements,
   // ⚠️ EXPORTED so nobody re-implements the fold. Anything that keys on the
   // same string as `book_term_preference.english` must use THIS, not
-  // `toLowerCase()` — see its docstring. Current consumer besides this file:
-  // server/scripts/verify-b4a-gates.js (gate 4's case-variant grouping).
+  // `toLowerCase()` — see its docstring. Current consumers besides this file:
+  // server/scripts/verify-b4a-gates.js (gate 4's case-variant grouping) and
+  // server/scripts/verify-b4b1-gates.js (gate 4's three-fold census).
+  // ⚠️ THE SECOND ONE IS WHY THIS EXPORT EARNS ITS KEEP: it shipped 2026-08-11
+  // with a PRIVATE copy of the fold, which made a gate whose own docstring
+  // forbids making nocaseKey Unicode-aware unable to observe that change at all
+  // — it would have gone on reporting 0 disagreements, green. Add new consumers
+  // to this list; a stale list is how the next one re-implements it.
   nocaseKey,
 };

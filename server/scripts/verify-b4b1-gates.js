@@ -54,6 +54,15 @@ const Database = require('better-sqlite3');
 const { buildCorpusDb, seedBooks } = require('./lib/scratchCorpus');
 const { foldString } = require('../lib/caseFold');
 const { PLACEHOLDER_TEXT } = require('../lib/conceptMatcher');
+// ⚠️ `nocaseKey` COMES FROM THE RESOLVER, NEVER RE-IMPLEMENTED HERE. This file
+// held a private `s.replace(/[A-Z]/g, …)` copy until 2026-08-11, which made
+// gate 4 police a function it could not observe: someone making the REAL
+// nocaseKey Unicode-aware — the exact change gate 4's docstring forbids, because
+// it re-opens §C18 — would change production behaviour while this gate went on
+// measuring its own ASCII copy and reporting 0 disagreements, green. Same rule
+// as the self-test's: call the thing under test, do not re-implement it.
+// verify-b4a-gates.js imports it for the same reason and says so.
+const { nocaseKey } = require('../lib/conceptResolver');
 
 const SERVER_DIR = path.join(__dirname, '..');
 const FIXTURES = path.join(SERVER_DIR, '__tests__', 'fixtures');
@@ -265,12 +274,19 @@ function childAutomaton(dbPath) {
 /**
  * Scratch directories this run created, removed by finish().
  *
- * ⚠️ `freshMigratedDb()` builds each database inside its own `/tmp/fresh-clone-*`
- * directory and never removes it. 1,338 of them were already on this box when
- * this script was written, so the leak is PRE-EXISTING and shared with every
- * caller of that helper (including verify-b4b0-gates.js, whose header claims it
- * "deletes it on exit"). Logged to the register rather than fixed here — but this
- * script cleans up after ITSELF, so it does not add two more per run.
+ * ⚠️ THIS IS BELT-AND-BRACES, NOT A LEAK FIX, AND THE COMMENT THAT STOOD HERE WAS
+ * WRONG. It claimed `freshMigratedDb()` "never removes" its temp dir and that
+ * verify-b4b0-gates.js's "deletes it on exit" header was therefore stale. Both
+ * claims are FALSE: the helper registers a `process.on('exit')` hook over its
+ * `tempRoots` AND an age-based `sweepStale()` for dirs older than an hour, and its
+ * own comment records that the exit hook works under plain `node` (how this script
+ * runs) and not under vitest's worker threads. b4b0's header is accurate.
+ *
+ * ⚠️ THE 1,338 DIRS I COUNTED WERE STALE ONES AWAITING THAT SWEEP, and the later
+ * 1,338 → 227 drop I attributed to "something else on the box" was `sweepStale()`
+ * doing its job. Removing this tracking would change nothing observable — kept
+ * only because it frees the ~40 MB corpus copy at finish() rather than at process
+ * exit, and `rmSync(force: true)` twice is harmless.
  */
 const scratchDirs = [];
 function trackScratch(dbFile) {
@@ -310,7 +326,33 @@ function stringsDeep(v, acc = []) {
   return acc;
 }
 
-const nocaseKey = (s) => s.replace(/[A-Z]/g, (c) => c.toLowerCase());
+/**
+ * How many distinct terms carry a C0 control character. REPORTED, not asserted.
+ *
+ * ⚠️ THIS NUMBER IS WHY THE SIGNATURE BELOW USES NO SEPARATOR AT ALL. Three
+ * separator choices were tried and every one is wrong on this corpus:
+ *   · `join('')`  — NOT INJECTIVE: {'ab','c'} and {'a','bc'} both sign "abc", so
+ *     a fold-group and a nocase-group that partition differently but concatenate
+ *     identically CANCEL in the symmetric difference, masking a D4.1
+ *     disagreement as a PASS in the one gate §C47 governs.
+ *   · `join(' ')` — also not injective HERE: a space is legal inside a term, so
+ *     {'A','wave x'} and {'A wave','x'} both sign "A wave x". (Same reason
+ *     conceptMatcher.fingerprintEntries rejects a space for its own separator.)
+ *   · `join('\u0001')` — what this file shipped with on 2026-08-11, as a RAW
+ *     control byte, and it is not safe either: **15 EN and 24 IS terms in this
+ *     corpus CONTAIN U+0001**. They are Íðorðabankinn's lost italic variable —
+ *     `<i>\u0001</i>-adic` is "p-adic" with the letter gone — so the "no term can
+ *     contain it" premise is simply false here.
+ *
+ * `JSON.stringify` of the sorted array is injective for ANY array of strings,
+ * because it escapes the quote and the backslash. It needs no premise about
+ * corpus content, which is the point: the previous three all did, and the third
+ * was believed until it was asserted and immediately went red.
+ */
+function countControlChars(texts) {
+  const CONTROL = /[\u0000-\u001f]/;
+  return texts.filter((t) => CONTROL.test(t)).length;
+}
 
 /**
  * The three identities over one language's distinct strings.
@@ -336,7 +378,7 @@ function foldCensus(db, lang) {
     return m;
   };
   const signature = (m) =>
-    new Set([...m.values()].filter((v) => v.length > 1).map((v) => [...v].sort().join('')));
+    new Set([...m.values()].filter((v) => v.length > 1).map((v) => JSON.stringify([...v].sort())));
   const foldGroups = group(foldString);
   const nocGroups = group(nocaseKey);
   const fSig = signature(foldGroups);
@@ -347,11 +389,14 @@ function foldCensus(db, lang) {
   ];
   const merged = [...foldGroups.values()].filter((v) => v.length > 1);
   return {
+    // Reported, not asserted: the signature is injective by construction now, so
+    // a control character in a term is a CORPUS observation rather than a hazard.
+    controlChars: countControlChars(texts),
     distinct: texts.length,
     groups: merged.length,
     merged: merged.reduce((n, v) => n + v.length, 0),
     disagree: disagree.length,
-    disagreeSamples: disagree.slice(0, 5).map((x) => x.split('').join(' / ')),
+    disagreeSamples: disagree.slice(0, 5).map((x) => JSON.parse(x).join(' / ')),
     samples: merged.slice(0, 5).map((v) => v.join(',')),
     toLowerDiffers: texts.filter((t) => nocaseKey(t) !== t.toLowerCase()).length,
   };
@@ -498,7 +543,11 @@ function checkGate4(dbPath, log = () => {}) {
           `${c.disagree} fold-identity disagreement(s) [pinned ${pin.disagree}]`
       );
       log(`     merge samples: ${c.samples.join(' · ')}`);
-      log(`     toLowerCase() != ASCII-only fold: ${c.toLowerDiffers} string(s)`);
+      log(
+        `     toLowerCase() != ASCII-only fold: ${c.toLowerDiffers} string(s) · ` +
+          `terms carrying a C0 control char: ${c.controlChars} (reported — the signature is ` +
+          'injective by construction, so this is a corpus fact, not a hazard)'
+      );
       if (c.disagree) log(`     🔴 DISAGREEMENTS: ${c.disagreeSamples.join(' · ')}`);
     }
     log(
@@ -629,19 +678,32 @@ function checkGate5(dbPath, log = () => {}) {
 function checkGate6(dbPath, log = () => {}) {
   const db = openRead(dbPath);
   let vantar;
-  let placeholderIsPresent;
+  let probe;
+  let chain;
   try {
     vantar = db
       .prepare(
         "SELECT COUNT(*) c FROM (SELECT concept_id FROM concept_term WHERE lang='is' AND text = ? GROUP BY concept_id)"
       )
       .get(PLACEHOLDER_TEXT).c;
-    // The positive observation: the placeholder concept's EN string IS in the
-    // corpus, so it IS an automaton keyword. Without this, "no match" could just
-    // mean "no such term".
-    placeholderIsPresent = db
-      .prepare("SELECT COUNT(*) c FROM concept_term WHERE lang='en' AND text = ?")
-      .get(G6.placeholder).c;
+    // The placeholder concept behind the probe string, with its domain.
+    probe = db
+      .prepare(
+        `SELECT c.id, c.domain FROM concept c
+           JOIN concept_term t ON t.concept_id = c.id
+          WHERE t.lang='en' AND t.text = ?`
+      )
+      .get(G6.placeholder);
+    // ⚠️ THE CHAIN IS READ FROM THE DATABASE, not from domains.js's constant —
+    // buildScope reads these rows, so this is the scope the matcher actually uses.
+    chain = db
+      .prepare(
+        `SELECT d.domain FROM book_domain_priority d
+           JOIN registered_books b ON b.id = d.book_id
+          WHERE b.slug = ? ORDER BY d.position`
+      )
+      .all(BOOK)
+      .map((r) => r.domain);
   } finally {
     db.close();
   }
@@ -661,24 +723,65 @@ function checkGate6(dbPath, log = () => {}) {
   const controlMatch = seg.matches.filter((m) => m.english === G6.control);
   const leaked = stringsDeep(seg).filter((s) => s === PLACEHOLDER_TEXT);
 
+  // ── ARM 2: the counterfactual, run rather than inferred ────────────────────
+  // ⚠️ WITHOUT THIS ARM THE GATE CANNOT TELL "D7 FILTERED IT" FROM "IT WAS NEVER
+  // IN SCOPE". The filter at terminologyService.js:1525 fires only for an
+  // IN-SCOPE winner, and :1539-1540 strip placeholders from outOfScope/alts too,
+  // so both causes look identical in the payload: zero matches. The `acid
+  // anhydride` control proves the SEGMENT is not empty; it does NOT prove this
+  // concept would otherwise have matched — it is a chemistry term at chain
+  // position 1 and does not even share the placeholder's tier. Concretely:
+  // dropping `biology` from domains.js's efnafraedi-2e chain used to leave this
+  // gate PASSING VACUOUSLY, and gate 1 cannot catch that (it pins counts, and
+  // the chain lives in code). So: give the SAME concept a real Icelandic term on
+  // a copy and require the match to appear.
+  const REAL = 'raunheiti';
+  const arm2 = withCopy(dbPath, 'g6-real', (db, copy) => {
+    const changed = db
+      .prepare("UPDATE concept_term SET text = ? WHERE lang='is' AND text = ? AND concept_id = ?")
+      .run(REAL, PLACEHOLDER_TEXT, probe ? probe.id : -1).changes;
+    return { changed, out: childMatcher(copy, segments) };
+  });
+  const arm2Seg = arm2.out['g6:probe'] || { matches: [] };
+  const arm2Match = arm2Seg.matches.filter((m) => m.english === G6.placeholder);
+
+  log(`  placeholder concepts: ${vantar} · book chain (from the DB): ${chain.join(' > ')}`);
   log(
-    `  placeholder concepts: ${vantar} · "${G6.placeholder}" EN rows in corpus: ${placeholderIsPresent}`
+    `  "${G6.placeholder}" → concept ${probe ? probe.id : '(absent)'} ` +
+      `domain "${probe ? probe.domain : '-'}" · in chain: ${probe ? chain.includes(probe.domain) : false}`
   );
   log(`  matches: ${english.length ? english.join(', ') : '(none)'}`);
-  log(`  control "${G6.control}" matched: ${controlMatch.length} ⇐ THE POSITIVE CONTROL`);
+  log(`  control "${G6.control}" matched: ${controlMatch.length} ⇐ the segment is not empty`);
   log(`  placeholder matches: ${placeholderMatch.length} · issues: ${placeholderIssue.length}`);
   log(`  "${PLACEHOLDER_TEXT}" anywhere in the payload: ${leaked.length}`);
+  log(
+    `  ARM 2 — same concept given a real IS term ("${REAL}", ${arm2.changed} row): ` +
+      `${arm2Match.length} match(es) ⇐ THE COUNTERFACTUAL`
+  );
 
   const bad = [];
   if (vantar !== VANTAR_CONCEPTS)
     bad.push(`${vantar} placeholder concepts, pinned ${VANTAR_CONCEPTS}`);
-  if (placeholderIsPresent === 0)
-    bad.push(`"${G6.placeholder}" is not in the corpus — the probe cannot test anything`);
+  if (!probe) bad.push(`"${G6.placeholder}" is not in the corpus — the probe cannot test anything`);
+  else if (!chain.includes(probe.domain)) {
+    bad.push(
+      `"${G6.placeholder}" is domain "${probe.domain}", which is NOT in ${BOOK}'s chain ` +
+        `(${chain.join(' > ')}) — it would be filtered as OUT OF SCOPE, not by D7, and this gate ` +
+        'would pass without exercising the placeholder filter at all'
+    );
+  }
   if (controlMatch.length === 0)
     bad.push(
       `THE POSITIVE CONTROL FAILED: "${G6.control}" produced no match, so "no placeholder match" ` +
         'is vacuous — this segment matches nothing at all'
     );
+  if (arm2.changed === 0) bad.push('ARM 2 updated no row — the counterfactual did not run');
+  if (arm2Match.length === 0) {
+    bad.push(
+      `THE COUNTERFACTUAL FAILED: with a real Icelandic term the same concept STILL produced no ` +
+        'match, so the zero above is not attributable to the D7 filter'
+    );
+  }
   if (placeholderMatch.length)
     bad.push(`the placeholder concept produced ${placeholderMatch.length} match(es)`);
   if (placeholderIssue.length)
@@ -689,9 +792,10 @@ function checkGate6(dbPath, log = () => {}) {
     ok: bad.length === 0,
     measured: bad.length
       ? bad.join('; ')
-      : `${vantar} placeholder concepts; "${G6.placeholder}" is a real automaton keyword yet yields ` +
-        `0 matches and 0 issues, while "${G6.control}" in the SAME segment matches — so the absence ` +
-        `is the D7 filter, not an empty probe. "${PLACEHOLDER_TEXT}" appears nowhere in the payload`,
+      : `${vantar} placeholder concepts. "${G6.placeholder}" is domain "${probe.domain}", IN ` +
+        `${BOOK}'s chain (${chain.join(' > ')}), and the SAME concept given a real Icelandic term ` +
+        `DOES match — so its 0 matches / 0 issues here is the D7 filter, measured rather than ` +
+        `inferred. "${PLACEHOLDER_TEXT}" appears nowhere in the payload`,
   };
 }
 
@@ -944,6 +1048,14 @@ function checkGate8(dbPath, log = () => {}) {
  *     implausible (`bomb calorimeter` → mathematics, `absolute zero` → biology).
  *     More terms in scope ⇒ more Icelandic-side checks ⇒ more issues. §C48
  *     measured the rise as 5 → 22 for that reason.
+ *
+ * ⚠️ THE BRIEF'S CONTROL FOR THIS GATE IS DELIBERATELY ABSENT, and that is a
+ * stated delta rather than an oversight. It specified "a run with the IS side
+ * blanked, which must report MORE issues". A control exists to prove an
+ * ASSERTION can fail; this gate asserts nothing, so a control here would
+ * manufacture the appearance of rigour over a number the entry above explains
+ * is not corpus truth. The same reasoning is why --self-test has no gate 3 case.
+ * If gate 3 is ever made assertive, its control must come back with it.
  *
  * So both numbers are PRINTED, with their provenance, and NOTHING is asserted.
  * Manufacturing a threshold over synthesised tags would produce a confident
@@ -1272,7 +1384,10 @@ function selfTest(dbPath) {
     console.log(
       `  ${rightReason ? '✅' : '🔴'} ${c.gate}: planted "${c.what}" (${changed} row(s)) → ` +
         (rightReason
-          ? `the gate FAILED on "${c.expect}" as required — ${verdict.measured.slice(0, 200)}`
+          ? // ⚠️ 320, not 200: gate 4's plant trips five pinned counts before its
+            // disagreement SAMPLE, and the samples are the whole point of a gate
+            // §C47 requires to REPORT. At 200 the sample was cut off entirely.
+            `the gate FAILED on "${c.expect}" as required — ${verdict.measured.slice(0, 320)}`
           : wentRed
             ? `THE GATE FAILED FOR THE WRONG REASON — expected a failure naming "${c.expect}", got: ${verdict.measured.slice(0, 200)}`
             : 'THE GATE STILL PASSED — it is blind to this')
@@ -1317,4 +1432,17 @@ if (require.main === module) {
   }
 }
 
-module.exports = { main, parseArgs };
+// ⚠️ THE GATES ARE EXPORTED so a can-it-fail proof can invoke the REAL function
+// against a doctored database, rather than re-deriving its logic — the same rule
+// --self-test follows internally.
+module.exports = {
+  main,
+  parseArgs,
+  checkGate1,
+  checkGate2,
+  checkGate4,
+  checkGate5,
+  checkGate6,
+  checkGate7,
+  checkGate8,
+};
