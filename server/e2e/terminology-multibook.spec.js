@@ -11,13 +11,6 @@ const { loginAs } = require('./helpers/auth');
  * - Multi-book support (chemistry + biology)
  */
 
-const TERMINOLOGY_API = '/api/terminology';
-
-/** Generate a unique string for test isolation (mirrors terminology.spec.js). */
-function uid() {
-  return `e2e-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
-}
-
 // ─── Terminology lookup API ──────────────────────────────────
 
 test.describe('Terminology lookup', () => {
@@ -87,47 +80,50 @@ test.describe('Terminology lookup', () => {
   //
   // Porting is not transcription — the deleted tests posted a synthetic single
   // segment (segmentId: 'single') directly to the route. This route loads a real
-  // module off disk instead, so each test here seeds a headword whose English is a
+  // module off disk instead, so each test targets a headword whose English is a
   // word that actually occurs (whole-word, case-folded) in m68664's real EN text —
   // "toys" / "ancestors", both from the chapter's opening paragraph — and asserts
   // on the resulting termMatches for THAT headword, not on the module's incidental
   // pre-existing matches.
   //
+  // ⚠️ CHANGED (§C36 B4b-1 Task 9): these two headwords are seeded directly into
+  // concept/concept_term by seed-fixture.js, NOT via POST /api/terminology as this
+  // file originally did. D1-a (docs/superpowers/specs/2026-08-10-terminology-
+  // concept-model-part-b4b1-design.md §3) means the concept model has no write
+  // path until B4c — POST /api/terminology writes the OLD terminology_headwords/
+  // terminology_translations tables, which findTermsInSegments no longer reads at
+  // all, so seeding through it can never again make a term matchable here. The
+  // POST + approve calls this file used to make are gone as dead scaffolding, not
+  // hidden behind a weaker assertion — see seed-fixture.js for what's seeded and
+  // why. Both tests still exercise the /terms route's real issue path and match
+  // shape end-to-end over HTTP, which was always their purpose.
+  //
   // NOTE these deliberately do NOT use the branchless expect([404,500]) idiom of
   // the test above. A ported test that accepts a 500 has preserved nothing.
   test('terms endpoint reports a missing approved translation', async ({ page }) => {
-    const tag = uid();
-    const createRes = await page.request.post(TERMINOLOGY_API, {
-      data: { english: 'toys', icelandic: `leikföng-${tag}` },
-    });
-    expect(createRes.status()).toBe(201);
-    const { term } = await createRes.json();
-    const approveRes = await page.request.post(
-      `${TERMINOLOGY_API}/translations/${term.translations[0].id}/approve`
-    );
-    expect(approveRes.ok()).toBe(true);
-
-    // The real faithful/MT Icelandic text for m68664 cannot contain our
-    // freshly-invented, tag-suffixed translation, so a 'missing' issue for this
-    // headword is guaranteed, not incidental.
+    // The real faithful/MT Icelandic text for m68664 cannot contain
+    // seed-fixture.js's '-e2e-seed'-suffixed translation, so a 'missing' issue
+    // for this headword is guaranteed, not incidental.
     const response = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/terms');
     expect(response.status()).toBe(200);
     const data = await response.json();
     expect(data).toHaveProperty('termMatches');
 
-    // Compare on english, not id: the matcher's headwordId is now a
-    // concept_term.id and POST /api/terminology's term.id is a
-    // terminology_headwords.id — two disjoint id spaces since the B4b-1
-    // matcher cut-over. english is stable across both endpoints.
+    // Compare on english, not id: the matcher's headwordId is a
+    // concept_term.id (see seed-fixture.js) that only this spec's own seed
+    // controls — there is no separate write-path response to compare it
+    // against any more since the change above.
     const allIssues = Object.values(data.termMatches).flatMap((r) => r.issues);
     const relevant = allIssues.find((i) => i.english === 'toys');
     expect(relevant).toBeDefined();
     expect(relevant.type).toBe('missing');
     expect(relevant.english).toBe('toys');
-    expect(relevant.expected).toBe(`leikföng-${tag}`);
+    expect(relevant.expected).toBe('leikföng-e2e-seed');
     expect(relevant.message).toContain('fannst ekki');
 
-    // Every issue in the module must share this shape, not just ours.
+    // Every issue in the module must share this shape, not just ours. Holds
+    // because seed-fixture.js's concept model carries only these two
+    // headwords — nothing else in the module can match at all.
     for (const issue of allIssues) {
       expect(issue.type).toBe('missing');
       expect(typeof issue.english).toBe('string');
@@ -137,17 +133,6 @@ test.describe('Terminology lookup', () => {
   });
 
   test('terms endpoint returns well-formed matches for every segment', async ({ page }) => {
-    const tag = uid();
-    const createRes = await page.request.post(TERMINOLOGY_API, {
-      data: { english: 'ancestors', icelandic: `forfeður-${tag}` },
-    });
-    expect(createRes.status()).toBe(201);
-    const { term } = await createRes.json();
-    const approveRes = await page.request.post(
-      `${TERMINOLOGY_API}/translations/${term.translations[0].id}/approve`
-    );
-    expect(approveRes.ok()).toBe(true);
-
     const response = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/terms');
     expect(response.status()).toBe(200);
     const data = await response.json();
@@ -162,11 +147,11 @@ test.describe('Terminology lookup', () => {
       expect(Array.isArray(m.translations)).toBe(true);
       expect(m.translations.length).toBeGreaterThan(0);
     }
-    // The aggregate must include OUR seeded headword, not just whatever else
-    // happens to be in the module — otherwise this test could pass even if
-    // "ancestors" never matched at all. Compared on english, not id: the
-    // matcher's headwordId is a concept_term.id, disjoint from term.id's
-    // terminology_headwords.id since the B4b-1 matcher cut-over.
+    // The aggregate must include seed-fixture.js's 'ancestors' headword, not
+    // just whatever else happens to be in the module — otherwise this test
+    // could pass even if "ancestors" never matched at all. Compared on
+    // english, not id: the matcher's headwordId is a concept_term.id (see
+    // seed-fixture.js), which only this spec's own seed controls.
     expect(all.some((m) => m.english === 'ancestors')).toBe(true);
   });
 });
