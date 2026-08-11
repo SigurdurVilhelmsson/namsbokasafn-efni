@@ -6,6 +6,8 @@
  * cut-over that can be unit-tested without its DB singleton.
  */
 
+const { isWholeWordAt } = require('./wordBoundary');
+
 /** §C43: 201 concepts carry this as their ONLY Icelandic term, so it is their
  *  head form and resolve() returns it as a winner with integrity: []. It must
  *  never reach an editor. Filtering here does NOT close §C43. */
@@ -188,6 +190,70 @@ function isFunctionWordSurface(surface) {
 }
 
 /**
+ * Is this English entry a token that is NOT TRANSLATED between languages?
+ *
+ * ⚠️ A DIFFERENT QUESTION FROM `isSymbolShaped`, AND THE TWO MUST NOT BE MERGED.
+ * `isSymbolShaped` answers "may this match at all", and is case-sensitive because
+ * that is what stops `in` reaching indium. This one answers "must this be
+ * TRANSLATED", and it is deliberately wider: it also admits any SINGLE character,
+ * because a lone letter in running text is a variable or a unit — `m` is metre,
+ * `s` is second, `b` is a coefficient — and those are as language-invariant as
+ * `O`, whatever their case.
+ *
+ * Widening is safe here in a way it would NOT be on the matching side, and the
+ * reason is structural: this predicate only ever gates an exemption that ALSO
+ * requires the Icelandic to already contain the same token. It can suppress a
+ * false alarm; it cannot hide a real omission.
+ *
+ * Measured on `efnafraedi-2e 3:m68700`: the capitalised class (`H` `C` `O` `Cl`
+ * `Na` …) fell to ZERO under `isSymbolShaped` alone, leaving 43 lowercase
+ * single-letter issues — the same defect in lower case.
+ *
+ * @param {string} text
+ * @returns {boolean}
+ */
+function isUntranslatedToken(text) {
+  return typeof text === 'string' && (text.length === 1 || isSymbolShaped(text));
+}
+
+/**
+ * Does `text` contain `symbol` as a whole word, in exactly that case?
+ *
+ * ⚠️ WHY THIS EXISTS: a chemical symbol is LANGUAGE-INVARIANT. The Icelandic for
+ * `O` is `O`, not `súrefni` — the name exists, but running text writes the
+ * symbol. The Icelandic-side QA check asks "does the translation contain the
+ * Icelandic term", which for a symbol demands a translation that must never
+ * happen, and then reports a `missing` that is simply false.
+ *
+ * Measured in the §C50 re-measurement (2026-08-11), on real module content:
+ * after §C52 the top offenders in `efnafraedi-2e 3:m68700` were `H` (48 issues),
+ * `C` (36), `O` (31), then `Cl` `Na` `Al` `Ca` `Cu` `Au` — **all matched
+ * CORRECTLY**, all producing false `missing`s. 76 of that module's 572 non-tie
+ * issues were single letters.
+ *
+ * ⚠️ CASE-SENSITIVE, and that is the safety property. `isWholeWordAt`'s class is
+ * case-insensitive by design (see its docstring — the `i` is load-bearing for a
+ * single Unicode code point), but the TOKEN comparison here is exact: `O` is
+ * oxygen, `o` is not. This runs only for entries `isSymbolShaped` already
+ * accepted, so it can never exempt ordinary vocabulary — an editor who leaves an
+ * English word untranslated still fails QA, which is pinned by a control test.
+ *
+ * @param {string} text - the Icelandic content
+ * @param {string} symbol - the English symbol, e.g. 'O', 'Cl', 'pH'
+ * @returns {boolean}
+ */
+function containsSymbolToken(text, symbol) {
+  if (typeof text !== 'string' || typeof symbol !== 'string' || !symbol) return false;
+  let from = 0;
+  for (;;) {
+    const at = text.indexOf(symbol, from);
+    if (at === -1) return false;
+    if (isWholeWordAt(text, at, at + symbol.length)) return true;
+    from = at + 1;
+  }
+}
+
+/**
  * Does the match at `index` begin a sentence?
  *
  * ⚠️ THIS EXISTS TO SETTLE A REAL CONFLICT BETWEEN THE TWO RULES ABOVE, and
@@ -360,4 +426,6 @@ module.exports = {
   isSymbolShaped,
   isFunctionWordSurface,
   isSentenceInitial,
+  containsSymbolToken,
+  isUntranslatedToken,
 };

@@ -23,6 +23,8 @@ const {
   isSymbolShaped,
   isFunctionWordSurface,
   isSentenceInitial,
+  containsSymbolToken,
+  isUntranslatedToken,
 } = require('../lib/conceptMatcher');
 
 // Optional dependencies
@@ -1747,6 +1749,25 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         re.lastIndex = 0;
         return re.test(seg.isContent);
       };
+
+      // ── A SYMBOL IS LANGUAGE-INVARIANT ─────────────────────────────────────
+      // The Icelandic for `O` is `O`. The name („súrefni“) exists, but running
+      // text writes the symbol — so demanding the NAME reports a `missing` that
+      // is simply false, on a match that was CORRECT.
+      //
+      // Measured in the §C50 re-measurement (2026-08-11) on real module content:
+      // after §C52 the top offenders in efnafraedi-2e 3:m68700 were `H` (48),
+      // `C` (36), `O` (31), then Cl Na Al Ca Cu Au — 76 of that module's 572
+      // non-tie issues were single letters. Not a matching defect: the QA check
+      // was applying a translation test to a token that must never be translated.
+      //
+      // ⚠️ Placed BEFORE the tie arm on purpose — a symbol can tie too, and the
+      // exemption is about the token's nature, not about how many candidates the
+      // resolver found. ⚠️ And it is gated on `isSymbolShaped`, so it can never
+      // reach ordinary vocabulary: an editor who leaves an English word
+      // untranslated still fails QA, which a control test pins.
+      if (isUntranslatedToken(hit.english) && containsSymbolToken(seg.isContent, hit.english))
+        continue;
 
       // ── THE TIE ARM ────────────────────────────────────────────────────────
       // Any of the equally-ranked answers is correct usage, so the check is
