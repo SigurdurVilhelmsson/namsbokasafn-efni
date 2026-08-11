@@ -20,6 +20,9 @@ const {
   prepareParadigmStatement,
   paradigmFor,
   PLACEHOLDER_TEXT,
+  isSymbolShaped,
+  isFunctionWordSurface,
+  isSentenceInitial,
 } = require('../lib/conceptMatcher');
 
 // Optional dependencies
@@ -1526,6 +1529,53 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
     const hits = [];
     for (const [headwordId, occ] of firstByHeadword) {
       const english = englishById.get(headwordId);
+      // 🔴 A SYMBOL MATCHES ITS OWN SPELLING ONLY — measured on PRODUCTION
+      // 2026-08-11, hours after the cut-over deployed. The automaton folds case,
+      // which is right for ordinary vocabulary (sentence-initial "Atom" must
+      // still find the entry "atom") and catastrophic for the element symbols and
+      // acronyms Árnastofnun stores as English terms: folded, `As` `At` `Be` `In`
+      // `No` `A` `OR` `ALL` match the commonest English words there are. One
+      // ordinary sentence containing no chemistry produced ELEVEN matches and
+      // SEVEN issues on prod — noise an editor would see on every segment, which
+      // buries the real terminology feedback the panel exists to give.
+      //
+      // ⚠️ A REGRESSION, MEASURED, not a pre-existing condition: `as`/`at`/`be`/
+      // `in`/`no`/`a`/`is`/`all` are ABSENT from the old terminology_headwords on
+      // the same box and PRESENT in concept_term. Distinct EN strings of ≤3 chars
+      // went 132 → 668 at the cut-over.
+      //
+      // The rule is deliberately NARROW — short AND carrying a capital — so it
+      // cannot touch ordinary words: 'ion' still folds (no capital), 'ELISA'
+      // still folds (too long to collide with English), 'pH' and 'DNA' still
+      // match their own spelling. It follows the principle this project already
+      // learned from BÍN's capitalised proper nouns: prefer an exact-case match
+      // wherever a term's own spelling is known.
+      //
+      // ⚠️ KNOWN RESIDUALS, stated rather than implied. (a) A sentence-initial
+      // "In practice…" still matches `In`; distinguishing that needs sentence
+      // segmentation, which is not worth it here. (b) findFirstOccurrences
+      // returns only the FIRST occurrence per headword, so a text containing "as"
+      // before "As" loses the real symbol match. (c) All-lowercase collisions
+      // ('and', 'is', 'one', plus the affix fragments 'a-', 'aq.', '-ia') are a
+      // DIFFERENT problem this rule does not touch — corpus hygiene, logged.
+      const surface = seg.enContent.slice(occ.index, occ.index + occ.length);
+      const exactSymbol = isSymbolShaped(english) && surface === english;
+      if (isSymbolShaped(english) && !exactSymbol) continue;
+      // ⚠️ AND THE SYMBOL RULE ALONE IS NOT ENOUGH — measured, not assumed. With
+      // only the rule above, the same production sentence still returned `in` →
+      // tomma, `at` → marsnákaætt, `no` → blóð-, `is` → lófalægur and `and` → og,
+      // because the corpus ALSO carries these as lowercase terms (`in` is the
+      // abbreviation for *inch*). Keyed on the SURFACE so `NO` in full caps still
+      // reaches nitric oxide.
+      // ⚠️ THE TWO RULES CONFLICT ON `As` `At` `In` `No` `Be`, AND POSITION IS THE
+      // TIE-BREAK. `As` is both arsenic's correct symbol and a capitalised
+      // function word; refusing it outright would cost a CHEMISTRY textbook its
+      // chemistry, and allowing it outright puts arsenic on every sentence that
+      // opens with "As". So an exact-case symbol survives MID-SENTENCE and is
+      // refused at a sentence start, where the word reading dominates.
+      if (isFunctionWordSurface(surface)) {
+        if (!exactSymbol || isSentenceInitial(seg.enContent, occ.index)) continue;
+      }
       const res = resolveOnce(english);
       // §C43 / D7: the placeholder is a well-formed head form that is not a
       // word. It must never reach an editor. This does NOT close §C43.

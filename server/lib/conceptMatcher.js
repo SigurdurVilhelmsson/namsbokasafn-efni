@@ -12,6 +12,214 @@
 const PLACEHOLDER_TEXT = '[vantar]';
 
 /**
+ * Is this English entry a SYMBOL — an element symbol or short acronym whose own
+ * capitalisation is the only thing separating it from an ordinary English word?
+ *
+ * Short AND carrying an uppercase letter. `As` `At` `Be` `In` `No` `A` `OR`
+ * `ALL` qualify; `ion` does not (no capital, so it is ordinary vocabulary),
+ * `ELISA` does not (long enough that its folded form collides with nothing).
+ *
+ * ⚠️ EXPORTED SO NOBODY RE-IMPLEMENTS IT. This repo has the scar: gate 4 shipped
+ * with a PRIVATE copy of `nocaseKey` and therefore policed a function it could
+ * not observe. A second copy of this predicate would let the matcher and its
+ * gate disagree about what a symbol is, silently.
+ *
+ * ⚠️ The ≤3 boundary is a judgement, not a measurement: at ≤3 the folded forms
+ * are common English words (as, at, be, in, no, a, or, all), and by 4+ they are
+ * not. Widening it would start costing real matches on lowercase-written
+ * acronyms; narrowing it would let `ALL` and `OR` back through.
+ *
+ * @param {string} text - an English concept_term text
+ * @returns {boolean}
+ */
+function isSymbolShaped(text) {
+  return typeof text === 'string' && text.length <= 3 && /[A-Z]/.test(text);
+}
+
+/**
+ * English CLOSED-CLASS function words, which must never be reported as
+ * terminology however the corpus spells them.
+ *
+ * ⚠️ THE SECOND HALF OF THE SAME PRODUCTION FINDING, and `isSymbolShaped` alone
+ * does not cover it — measured. After the symbol rule, the same ordinary
+ * sentence still produced `in` → tomma, `at` → marsnákaætt, `no` → blóð-,
+ * `is` → lófalægur and `and` → og, because Árnastofnun also carries these as
+ * LOWERCASE terms. `in` really is the abbreviation for *inch*; this is a
+ * legitimate term colliding with a function word, NOT corpus junk, which is why
+ * the fix belongs in the matcher and not in the import.
+ *
+ * ⚠️ CLOSED-CLASS ONLY, and that boundary is the whole safety argument: articles,
+ * prepositions, conjunctions, pronouns, auxiliaries and a few determiners. No
+ * content word appears here. A content word that is also noisy — `point`,
+ * `practice`, `same` — is a judgement about THAT term's usefulness and belongs to
+ * the editors, not to a hardcoded list in the matcher.
+ */
+const EN_FUNCTION_WORDS = new Set([
+  'a',
+  'an',
+  'the',
+  'and',
+  'or',
+  'but',
+  'nor',
+  'so',
+  'yet',
+  'if',
+  'than',
+  'then',
+  'because',
+  'of',
+  'to',
+  'in',
+  'on',
+  'at',
+  'by',
+  'for',
+  'from',
+  'with',
+  'as',
+  'into',
+  'onto',
+  'over',
+  'under',
+  'about',
+  'between',
+  'through',
+  'during',
+  'per',
+  'via',
+  'is',
+  'are',
+  'was',
+  'were',
+  'be',
+  'been',
+  'being',
+  'am',
+  'do',
+  'does',
+  'did',
+  'has',
+  'have',
+  'had',
+  'can',
+  'could',
+  'may',
+  'might',
+  'must',
+  'shall',
+  'should',
+  'will',
+  'would',
+  'i',
+  'it',
+  'its',
+  'he',
+  'she',
+  'they',
+  'them',
+  'we',
+  'us',
+  'you',
+  'this',
+  'that',
+  'these',
+  'those',
+  'there',
+  'here',
+  'which',
+  'who',
+  'whom',
+  'whose',
+  'what',
+  'when',
+  'where',
+  'while',
+  'how',
+  'why',
+  'no',
+  'not',
+  'all',
+  'any',
+  'both',
+  'each',
+  'few',
+  'more',
+  'most',
+  'other',
+  'some',
+  'such',
+  'only',
+  'own',
+  'same',
+  'too',
+  'very',
+  'one',
+  'two',
+  'up',
+  'out',
+  'off',
+  'down',
+  'again',
+  'further',
+  'once',
+]);
+
+/**
+ * Should this SURFACE form — the text as it appears in the English content, not
+ * the corpus entry — be refused as a terminology match?
+ *
+ * ⚠️ IT KEYS ON THE SURFACE, NOT THE ENTRY, AND THAT IS LOAD-BEARING. `NO`
+ * written in full caps is nitric oxide and must still match; `no` and `No` are
+ * the English word. So a fully-uppercase surface of two or more characters is
+ * exempt, and everything else that folds to a function word is refused.
+ *
+ * ⚠️ Single characters get no exemption: a sentence-initial `A` is the article
+ * far more often than it is the ampere, and `A` is unreachable as a symbol in
+ * running prose anyway.
+ *
+ * @param {string} surface - the matched text exactly as it appears in the source
+ * @returns {boolean}
+ */
+function isFunctionWordSurface(surface) {
+  if (typeof surface !== 'string' || !EN_FUNCTION_WORDS.has(surface.toLowerCase())) return false;
+  const shoutedSymbol = surface.length >= 2 && surface === surface.toUpperCase();
+  return !shoutedSymbol;
+}
+
+/**
+ * Does the match at `index` begin a sentence?
+ *
+ * ⚠️ THIS EXISTS TO SETTLE A REAL CONFLICT BETWEEN THE TWO RULES ABOVE, and
+ * without it the fix costs a chemistry textbook its chemistry. `As` is both the
+ * correct symbol for arsenic and the capitalised form of a function word, so the
+ * function-word rule alone refuses arsenic written exactly as a chemist writes
+ * it. Position separates them: mid-sentence `As` is overwhelmingly the symbol,
+ * sentence-initial `As` is overwhelmingly the word. Same for `In` `At` `No` `Be`.
+ *
+ * Looks BACKWARD over whitespace only — start of text, terminal punctuation, or
+ * a closing tag (the content is HTML-ish) means sentence-initial.
+ *
+ * ⚠️ Deliberately crude. It cannot tell "Fig. 3" from an end of sentence, and it
+ * does not need to: the consequence of a wrong answer here is one advisory
+ * highlight appearing or not appearing, and both directions are recoverable by
+ * the editor. Anything more would be sentence segmentation, which is a different
+ * project.
+ *
+ * @param {string} text
+ * @param {number} index - start offset of the match within `text`
+ * @returns {boolean}
+ */
+function isSentenceInitial(text, index) {
+  for (let i = index - 1; i >= 0; i--) {
+    const ch = text[i];
+    if (ch === ' ' || ch === '\t' || ch === '\n' || ch === '\r') continue;
+    return ch === '.' || ch === '!' || ch === '?' || ch === ':' || ch === ';' || ch === '>';
+  }
+  return true; // nothing but whitespace before it
+}
+
+/**
  * FNV-1a over the (id, english) pairs, in SQL row order.
  *
  * ⚠️ MOVED HERE FROM terminologyService.fingerprintHeadwords, AND THE MOVE IS
@@ -149,4 +357,7 @@ module.exports = {
   prepareParadigmStatement,
   paradigmFor,
   PLACEHOLDER_TEXT,
+  isSymbolShaped,
+  isFunctionWordSurface,
+  isSentenceInitial,
 };
