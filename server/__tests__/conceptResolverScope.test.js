@@ -29,12 +29,19 @@ function registerBare(db, slug) {
  */
 function registerChemistryWithConcepts() {
   const { db } = freshMigratedDb();
+  // ⚠️ `OR IGNORE` since 2026-08-11: migration 049 registers efnafraedi-2e on
+  // every fresh migrate (§C51), so a bare INSERT now raises UNIQUE constraint
+  // failed. The row's origin does not matter to this fixture — it wants the id.
   db.prepare(
-    "INSERT INTO registered_books (slug, title_is, registered_by) VALUES ('efnafraedi-2e', 'Efnafræði', 'test')"
+    "INSERT OR IGNORE INTO registered_books (slug, title_is, registered_by) VALUES ('efnafraedi-2e', 'Efnafræði', 'test')"
   ).run();
   const bookId = db
     .prepare("SELECT id FROM registered_books WHERE slug = 'efnafraedi-2e'")
     .get().id;
+  // 049 also seeds this book's real chain via 047, so clear it first: this
+  // fixture asserts against a single deliberate domain, and inheriting
+  // chemistry > physics > biology would silently change what it measures.
+  db.prepare('DELETE FROM book_domain_priority WHERE book_id = ?').run(bookId);
   db.prepare('INSERT INTO book_domain_priority (book_id, domain, position) VALUES (?, ?, 1)').run(
     bookId,
     'chemistry'
