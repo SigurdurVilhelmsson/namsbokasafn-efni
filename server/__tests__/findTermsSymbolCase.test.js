@@ -163,6 +163,48 @@ describe('an English function word is never terminology, however the corpus spel
   });
 });
 
+describe('a symbol is language-invariant — the QA check must not demand a translation', () => {
+  // §C50 re-measurement, 2026-08-11: after §C52 the top offenders in chemistry
+  // were `H` (48 issues), `C` (36), `O` (31), then Cl Na Al Ca Cu Au. Those are
+  // matched CORRECTLY — the exact-case rule working — and then produce a FALSE
+  // `missing`, because the check asks whether the Icelandic contains „súrefni“
+  // when the Icelandic correctly writes „O“. A chemical symbol is not translated.
+  it('🔴 raises no issue when the Icelandic keeps the SYMBOL rather than the name', () => {
+    addPair('chemistry', 'O', 'súrefni');
+    const res = run('The O atom bonds here.', 'Frumeindin O tengist hér.');
+    expect(res.s.issues).toEqual([]);
+  });
+
+  it('still raises a missing issue when the Icelandic has NEITHER symbol nor name', () => {
+    // The exemption must not become a blanket amnesty for symbols.
+    addPair('chemistry', 'O', 'súrefni');
+    const res = run('The O atom bonds here.', 'Þessi tenging verður hér.');
+    expect(res.s.issues).toHaveLength(1);
+    expect(res.s.issues[0].type).toBe('missing');
+  });
+
+  it('CONTROL: the Icelandic NAME still satisfies the check on its own', () => {
+    addPair('chemistry', 'O', 'súrefni');
+    expect(run('The O atom bonds here.', 'Súrefni tengist hér.').s.issues).toEqual([]);
+  });
+
+  it('🔴 CONTROL: a NON-symbol term gets no exemption — untranslated English must still fail', () => {
+    // The whole risk of this fix: if the exemption leaked past symbols, an
+    // editor who left an English word untranslated would pass QA silently.
+    addPair('chemistry', 'atom', 'frumeind');
+    const res = run('The atom bonds here.', 'Þessi atom tengist hér.');
+    expect(res.s.issues).toHaveLength(1);
+    expect(res.s.issues[0].type).toBe('missing');
+  });
+
+  it('CONTROL: the symbol must appear as a WHOLE WORD in the Icelandic', () => {
+    // "Oxford" contains an O; it is not the symbol.
+    addPair('chemistry', 'O', 'súrefni');
+    const res = run('The O atom bonds here.', 'Oxford-aðferðin er notuð hér.');
+    expect(res.s.issues).toHaveLength(1);
+  });
+});
+
 describe('ordinary vocabulary is untouched — the rule is narrow by construction', () => {
   it('a sentence-initial "Atom" still matches the entry "atom"', () => {
     addPair('chemistry', 'atom', 'frumeind');

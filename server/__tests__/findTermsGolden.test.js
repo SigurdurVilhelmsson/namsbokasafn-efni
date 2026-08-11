@@ -358,19 +358,24 @@ describe('findTermsInSegments claims the C24 golden SPAN SETS (21 of 24 segments
     // ⚠️ THE SPAN-SET PIN COVERS `matches` AND NOTHING ELSE. The retired
     // per-segment `toEqual` also covered `issues`; replacing it left the
     // fixture's entire issue surface unasserted, which matters because the
-    // cut-over MOVED it: 5 issues pre-swap, 22 now. More terms in scope means
-    // more Icelandic-side checks actually run.
+    // cut-over MOVED it: 5 issues pre-swap, 22 after B4a, 21 now.
     //
     // ⚠️ POST-B4a VALUES, NOT THE GOLDEN'S — same caveat as POST_B4A_SPANS
     // above. This is a drift pin, not an oracle.
     //
-    // The type split is asserted, not just the total: it is what proves the
-    // fixture reaches the `alternative` tier at all (D5, Task 5). A total-only
-    // assertion is satisfied by 22 issues of any kind.
+    // ⚠️ 22 → 21 ON 2026-08-11, and the ONE that left is the point of the change,
+    // not collateral: the symbol exemption. A chemical symbol is
+    // language-invariant, so demanding the Icelandic NAME when the Icelandic
+    // correctly writes the SYMBOL reported a `missing` that was false — on a
+    // match that was correct. `missing` 7 → 6; `alternative` UNCHANGED at 15,
+    // which is the discriminating fact: the exemption reaches exactly the tier it
+    // was aimed at and nothing else. Measured, not assumed — the split was
+    // discovered by letting each assertion fail in turn rather than by reasoning
+    // about which one "should" have moved.
     const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
     const issues = Object.values(actual).flatMap((r) => r.issues);
-    expect(issues).toHaveLength(22);
-    expect(issues.filter((i) => i.type === 'missing')).toHaveLength(7);
+    expect(issues).toHaveLength(21);
+    expect(issues.filter((i) => i.type === 'missing')).toHaveLength(6);
     expect(issues.filter((i) => i.type === 'alternative')).toHaveLength(15);
     // For contrast, and so the move is visible in the file rather than only in
     // the register: the pre-swap golden carried 5.
@@ -664,6 +669,14 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
     // siblings, tried only after the winner's own form failed), = 56, stable
     // across repeated runs.
     //
+    // ⚠️ 56 → 54 ON 2026-08-11, and DOWN is the expected direction. The symbol
+    // exemption returns BEFORE `matchesForm` is reached for a symbol whose token
+    // the Icelandic already carries, so that hit compiles neither its winner
+    // regex nor its candidate ones — 2 fewer compiles alongside the 1 fewer
+    // issue in the pin above. The two deltas are consistent, which is itself the
+    // check: a drop in compiles with NO drop in issues would mean the exemption
+    // was skipping work it should have done.
+    //
     // ⚠️ WHAT THIS TEST IS FOR SURVIVED THE RISE. C24 exists because compiles
     // scaled with CORPUS SIZE (642 on this fixture pre-swap, ~28,903 in
     // production). 56 scales with MATCH COUNT: neither loadEnglishEntries nor
@@ -671,7 +684,7 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
     // per-translation compile remains. A regression that reintroduced one
     // would land far above 56 on a 304-string fixture — which is exactly what
     // the calibration test below still guards.
-    expect(compiles).toBe(56);
+    expect(compiles).toBe(54);
   });
 
   it('the assertion above is CALIBRATED — the fixture is large enough to discriminate', () => {
