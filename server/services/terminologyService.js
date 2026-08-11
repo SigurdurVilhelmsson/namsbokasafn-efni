@@ -18,7 +18,6 @@ const { buildScope, resolve } = require('../lib/conceptResolver');
 const {
   loadEnglishEntries,
   prepareParadigmStatement,
-  // eslint-disable-next-line no-unused-vars -- Task 5 (the IS-side check) consumes this
   paradigmFor,
   PLACEHOLDER_TEXT,
 } = require('../lib/conceptMatcher');
@@ -1400,7 +1399,6 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
   // this rationale for keeping THOSE two distinct, and collapsing a third
   // case into 'unregistered' here would repeat it one level up.
   const scope = bookSlug ? buildScope(db, bookSlug, chapterNum) : { unscoped: 'no-book-slug' };
-  // eslint-disable-next-line no-unused-vars -- Task 5 (the IS-side check) consumes this
   const paradigmStmt = prepareParadigmStatement(db);
 
   // ⚠️ ONE GLOBAL AUTOMATON, exactly as before. The old term SQL was unfiltered
@@ -1440,6 +1438,52 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       resolved.set(english, r);
     }
     return r;
+  };
+
+  // ⚠️ D5 COVERS TWO POPULATIONS, AND alsoInScope EXPRESSES ONLY ONE.
+  // Cross-concept — two different concepts carry the same English string and
+  // one loses the domain-priority walk — is what alsoInScope reports
+  // (measured 2026-08-10 on the real corpus: 11,553/61,042 EN strings, 18.9%).
+  // INTRA-concept — one concept with two ranked Icelandic terms — is what D5's
+  // prose actually describes ("the OLD check passed if the editor used ANY
+  // approved translation"), is the direct analogue of the old
+  // headword→many-approved-translations shape, and is the LARGER population
+  // (17,356/70,187 concepts, 24.7%, same measurement). alsoFrom()
+  // (conceptResolver.js) builds from `chosen`, one head-form entry per
+  // concept, then excludes the winner's own conceptId — so a concept's own
+  // rank-2+ sibling can never appear there. This query is the only way to
+  // reach it, and conceptResolver.js is NOT touched: its alsoInScope contract
+  // is depended on elsewhere (verify-b4a-gates.js gate 3's cross-concept
+  // assertion) exactly as-is.
+  //
+  // ⚠️ BOUNDED TO THE ISSUE PATH ON PURPOSE, not the hit path. It runs only
+  // after matchesForm(winner) has already failed AND alts did not answer —
+  // i.e. only when an issue is actually about to be emitted, which is rare
+  // relative to the number of hits. A per-HIT query here would repeat §C24,
+  // which took the server down for ~3 minutes per call at production scale
+  // (see the `resolved` memo's comment above). Memoised per conceptId for the
+  // whole call, same pattern as `resolved`.
+  //
+  // ⚠️ THE MEMO KEY IS conceptId ALONE, WHILE THE STATEMENT ALSO BINDS
+  // winnerTermId. Safe only because the scope — and therefore resolve()'s
+  // answer for a given English string — is fixed for the whole invocation
+  // (the same soundness argument as `resolveOnce` above), so one conceptId
+  // can win with only ONE termId across this entire call; a second lookup for
+  // the same conceptId is guaranteed to pass the identical winnerTermId, and
+  // the cached rows are correct regardless.
+  const siblingStmt = db.prepare(
+    `SELECT id AS termId, text FROM concept_term
+      WHERE concept_id = ? AND lang = 'is' AND id != ?
+      ORDER BY rank, id`
+  );
+  const siblingsOf = new Map();
+  const siblingsFor = (conceptId, winnerTermId) => {
+    let s = siblingsOf.get(conceptId);
+    if (s === undefined) {
+      s = siblingStmt.all(conceptId, winnerTermId);
+      siblingsOf.set(conceptId, s);
+    }
+    return s;
   };
 
   const result = {};
@@ -1549,6 +1593,46 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
           isFallback: hit.isFallback,
         })),
       });
+
+      // ⚠️ FOUR GATES, and every prior estimate of this check's rate got the
+      // unit wrong by ignoring them: not fallback, IS content present, a
+      // winner exists, and the EN span was actually claimed (we are inside the
+      // tiler, so that one is already true).
+      if (hit.isFallback || !seg.isContent || !winner) continue;
+
+      const matchesForm = (term) => {
+        const re = buildInflectionRegex(term.text, paradigmFor(paradigmStmt, term.termId));
+        re.lastIndex = 0; // the regex carries /g; without this alternate calls lie
+        return re.test(seg.isContent);
+      };
+
+      if (matchesForm(winner)) continue;
+
+      // D5: the resolver returns ONE winner, so a legitimate synonym would
+      // start failing. Say "you used a known alternative" instead of "missing".
+      // `alts` is the CROSS-concept population (alsoInScope); siblingsFor is
+      // the INTRA-concept population (this concept's own lower-rank terms) —
+      // see the siblingsFor comment above for why both are needed.
+      const used =
+        alts.find(matchesForm) || siblingsFor(winner.conceptId, winner.termId).find(matchesForm);
+      issues.push(
+        used
+          ? {
+              type: 'alternative',
+              headwordId: hit.headwordId,
+              english: hit.english,
+              expected: winner.text,
+              used: used.text,
+              message: `„${hit.english}" → „${winner.text}" (notað: „${used.text}")`,
+            }
+          : {
+              type: 'missing',
+              headwordId: hit.headwordId,
+              english: hit.english,
+              expected: winner.text,
+              message: `„${hit.english}" → „${winner.text}" fannst ekki`,
+            }
+      );
     }
     result[seg.segmentId] = { matches, issues };
   }
@@ -1961,7 +2045,6 @@ function wholeWordRegex(forms) {
 /**
  * Build a regex that matches the base Icelandic form or any inflected form.
  */
-// eslint-disable-next-line no-unused-vars -- Task 5 (the IS-side check) consumes this
 function buildInflectionRegex(icelandic, inflections) {
   return wholeWordRegex([icelandic, ...inflections]);
 }

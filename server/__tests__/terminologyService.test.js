@@ -1784,10 +1784,11 @@ describe('normalizeChapterArg() — the sentinel WORD is the hazard, not the str
   );
 });
 
-// ⚠️ THIS BLOCK MUST STAY LAST IN THE FILE (with Task 5's, which follows it).
-// Its afterEach calls _setTestDb(null), and the file-level injection is
-// established ONCE in beforeAll — so a null mid-file unsets it for every later
-// block, and getDb() then opens the REAL sessions.db (terminologyService.js:93).
+// ⚠️ THIS BLOCK AND THE "IS-side check" BLOCK BELOW IT MUST STAY LAST IN THE
+// FILE, in that order. Both blocks' afterEach calls _setTestDb(null), and the
+// file-level injection is established ONCE in beforeAll — so a null mid-file
+// unsets it for every later block, and getDb() then opens the REAL
+// sessions.db (terminologyService.js:93).
 describe('findTermsInSegments() — concept model (B4b-1)', () => {
   let cdb;
   beforeEach(() => {
@@ -1958,5 +1959,169 @@ describe('findTermsInSegments() — concept model (B4b-1)', () => {
       'efnafraedi-2e'
     );
     expect(r.s1).toEqual({ matches: [], issues: [] });
+  });
+});
+
+// ⚠️ THIS BLOCK MUST STAY LAST IN THE FILE — see the comment on the block
+// above it, which this one shares the hazard with.
+describe('findTermsInSegments() — the IS-side check (B4b-1)', () => {
+  let cdb;
+  beforeEach(() => {
+    ({ db: cdb } = freshMigratedDb());
+    seedBooks(cdb);
+    terminologyService._setTestDb(cdb);
+  });
+  afterEach(() => {
+    terminologyService._setTestDb(null);
+    cdb && cdb.close();
+  });
+
+  const seg = (en, is) => [{ segmentId: 's1', enContent: en, isContent: is }];
+
+  it('no issue when the resolved term appears in the Icelandic', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const r = terminologyService.findTermsInSegments(seg('An atom.', 'Frumeind.'), 'efnafraedi-2e');
+    expect(r.s1.issues).toEqual([]);
+  });
+
+  it('reports missing when it does not', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Eitthvað annað.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues).toHaveLength(1);
+    expect(r.s1.issues[0]).toMatchObject({
+      type: 'missing',
+      english: 'atom',
+      expected: 'frumeind',
+    });
+  });
+
+  // D5 — the semantic narrowing, softened.
+  it('reports `alternative`, not `missing`, when the editor used a rank-2 sibling', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind', 1);
+    addTermIn(cdb, c, 'is', 'atóm', 2);
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Atóm er lítið.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({
+      type: 'alternative',
+      expected: 'frumeind',
+      used: 'atóm',
+    });
+  });
+
+  // THE CONTROL for the test above: the sibling is still present, but the
+  // editor's Icelandic matches NEITHER term. Proves the intra-concept lookup
+  // finds a genuine textual match rather than "any concept with ≥2 terms
+  // reports alternative" regardless of content.
+  it('the intra-concept sibling still reports missing when neither term matches', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind', 1);
+    addTermIn(cdb, c, 'is', 'atóm', 2);
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Eitthvað annað.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({ type: 'missing', expected: 'frumeind' });
+  });
+
+  // D5, the CROSS-concept arm — the OTHER population alternative must cover.
+  // Two different concepts carry the same English string; the higher-priority
+  // domain wins (efnafraedi-2e's chain is chemistry@1, physics@2 — same chain
+  // the item-18 fallback test above relies on), but the loser's head term is
+  // still a real, offerable answer via alsoInScope — the same mechanism
+  // verify-b4a-gates.js gate 3 exercises on the real corpus.
+  it('reports `alternative` when the editor used a losing CROSS-concept synonym', () => {
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'atom');
+    addTermIn(cdb, a, 'is', 'frumeind');
+    const b = addConceptIn(cdb, 'physics');
+    addTermIn(cdb, b, 'en', 'atom');
+    addTermIn(cdb, b, 'is', 'atóm');
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Atóm er lítið.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({
+      type: 'alternative',
+      expected: 'frumeind',
+      used: 'atóm',
+    });
+  });
+
+  // THE CONTROL for the test above: same two concepts, but the editor's
+  // Icelandic matches neither — proves the cross-concept arm also requires a
+  // real textual match, not just the existence of a losing candidate.
+  it('the cross-concept synonym still reports missing when neither term matches', () => {
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'atom');
+    addTermIn(cdb, a, 'is', 'frumeind');
+    const b = addConceptIn(cdb, 'physics');
+    addTermIn(cdb, b, 'en', 'atom');
+    addTermIn(cdb, b, 'is', 'atóm');
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Eitthvað annað.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({ type: 'missing', expected: 'frumeind' });
+  });
+
+  // THE PARADIGM PATH. This is the discrimination the C24 golden provably
+  // lacks: strip every inflection from that fixture and it is byte-identical.
+  it('a DECLINED form matches when a paradigm is stored', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'acid');
+    const t = addTermIn(cdb, c, 'is', 'sýra');
+    cdb
+      .prepare('UPDATE concept_term SET inflections = ? WHERE id = ?')
+      .run('["sýru","sýrunni"]', t);
+    const r = terminologyService.findTermsInSegments(
+      seg('An acid.', 'Í sýrunni.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues).toEqual([]);
+  });
+
+  // THE CONTROL for the test above. Same segment, no paradigm -> reported.
+  it('the same declined form is reported missing WITHOUT a paradigm', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'acid');
+    addTermIn(cdb, c, 'is', 'sýra');
+    const r = terminologyService.findTermsInSegments(
+      seg('An acid.', 'Í sýrunni.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({ type: 'missing' });
+  });
+
+  it('a fallback term never produces an issue — QA must not demand another domain’s term', () => {
+    const c = addConceptIn(cdb, 'literature');
+    addTermIn(cdb, c, 'en', 'metaphor');
+    addTermIn(cdb, c, 'is', 'myndlíking');
+    const r = terminologyService.findTermsInSegments(
+      seg('A metaphor.', 'Ekkert.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.issues).toEqual([]);
+  });
+
+  it('no issue when there is no Icelandic content to check', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    expect(
+      terminologyService.findTermsInSegments(seg('An atom.', ''), 'efnafraedi-2e').s1.issues
+    ).toEqual([]);
   });
 });
