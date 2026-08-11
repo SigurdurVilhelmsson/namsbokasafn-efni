@@ -477,6 +477,33 @@ byte there would be a regression) — so the fix is `-a` at the search, not stri
 branch that added this rule **deleted** that function, moving it here. A durable rule whose
 own citation had already rotted, in the always-loaded file that forbids exactly that.)*
 
+**⚠️ AND THE RULE ABOVE DOES NOT COVER THE OTHER CONTROL BYTES — `U+0001` FAILS THE OPPOSITE
+WAY, AND `grep -a` IS NO DEFENCE (§C49, amendment measured 2026-08-11).** A NUL makes grep
+**silent**; a `U+0001` makes grep's **output lie**. Measured on a two-line probe:
+
+| file holds | `grep -n needle` | what you read |
+|---|---|---|
+| `alpha<NUL>bravo needle` | *nothing*, **exit 1** | "not present" — the search lied |
+| `alpha<U+0001>bravo needle` | matches, **exit 0** | `alphabravo needle` — **the OUTPUT lied** |
+
+The byte is not stripped and not flagged; it simply **does not render**, so `alpha^Abravo`
+reads as one word `alphabravo` and a `join('\x01')` reads as `join('')`. **`-a` changes
+nothing** — grep was never blind here, *you* are. **Both a reviewer and the controller misread
+exactly that on §C36 B4b-1, and filed a finding against code that was correct.** Only `cat -A`,
+`od -c` or `hexdump -C` reveal it.
+
+**To find them, census TRACKED files — a `--include` sweep is drowned by `node_modules`
+and `.venv`** (20 hits, 15 of them vendored, when measured that way):
+```bash
+git ls-files -z | xargs -0 grep -lUP '[\x01-\x08\x0b\x0c\x0e-\x1f]' | grep -v '^books/'
+```
+⚠️ **Expect PNGs in the result and do not "fix" them** — screenshots under `docs/` are
+legitimate binaries, the same carve-out `books/` gets above. ⚠️ **And do not strip the bytes
+you find in source**: a raw NUL *and* a raw `U+0001` are deliberate and load-bearing in
+`verify-b4b0-gates.js`'s hash input, where the second is the sentinel for a NULL column.
+**Do not trust this enumeration either — re-derive it**; it was four non-image files the day
+it was written.
+
 Slash commands live in `.claude/commands/`; skills in `.claude/skills/` — both are listed to the
 session automatically with their own descriptions, so they are **not** enumerated here.
 ⚠️ Several commands are switched **off** for this repo in `.claude/settings.local.json`
