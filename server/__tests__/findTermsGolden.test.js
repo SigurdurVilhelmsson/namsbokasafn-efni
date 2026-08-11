@@ -720,10 +720,17 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
 // terminologyService to re-evaluate via a fresh require so its destructuring
 // captures the wrapper, then restore both cache slots to the exact original
 // Module objects — never mutate an original Module's `.exports` in place. That
-// distinction matters here: this repo's `server` vitest project runs test files
-// sequentially in a shared worker (`fileParallelism: false` in
-// vitest.workspace.js), so a mutated-in-place original, left un-restored by an
-// early exit, would corrupt the module every later test file in this run sees.
+// distinction matters here: this repo runs test files sequentially in a shared
+// worker (`fileParallelism: false` in **`vitest.config.js`**), so a
+// mutated-in-place original, left un-restored by an early exit, would corrupt
+// the module every later test file in this run sees.
+// ⚠️ This said `vitest.workspace.js` until 2026-08-11. That file CANNOT LOAD
+// under the installed vitest (`SyntaxError: … does not provide an export named
+// 'defineWorkspace'`), so discovery falls through to `vitest.config.js`, which
+// is where the setting actually lives — CLAUDE.md § Notes for Code Reviewers
+// records this. The safety measure below was always real; only the citation was
+// wrong, and a reader who checked it would have found a broken file and might
+// have concluded the sequential-execution premise no longer held.
 // Reassigning a substitute object and restoring the saved reference is exact
 // and needs no partial-undo bookkeeping.
 // ─────────────────────────────────────────────────────────────────────────────

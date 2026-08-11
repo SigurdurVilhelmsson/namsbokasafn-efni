@@ -456,8 +456,11 @@ in Python; the `$'\0'` form named files that contain no NUL at all.
 `books/` is excluded on purpose — thousands of images legitimately hold NULs and would bury
 the six that matter.
 Sources are legitimate (a NUL separator in a hash input is deliberate and load-bearing at
-`terminologyService.js`'s `fingerprintHeadwords`, whose comment warns that a *raw* NUL byte
-there would be a regression) — so the fix is `-a` at the search, not stripping the bytes.
+`server/lib/conceptMatcher.js`'s `fingerprintEntries`, whose comment warns that a *raw* NUL
+byte there would be a regression) — so the fix is `-a` at the search, not stripping the bytes.
+*(This cited `terminologyService.js`'s `fingerprintHeadwords` until 2026-08-11 — the same
+branch that added this rule **deleted** that function, moving it here. A durable rule whose
+own citation had already rotted, in the always-loaded file that forbids exactly that.)*
 
 Slash commands live in `.claude/commands/`; skills in `.claude/skills/` — both are listed to the
 session automatically with their own descriptions, so they are **not** enumerated here.

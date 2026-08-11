@@ -70,6 +70,23 @@ function fingerprintEntries(entries) {
 function loadEnglishEntries(db) {
   const rows = db
     .prepare(
+      // ⚠️ THE ORDER BY IS FOR FINGERPRINT STABILITY ONLY — it is NOT the
+      // longest-first match precedence it looks like, and no test pins it on
+      // purpose (both whole-branch reviewers re-derived this independently,
+      // 2026-08-11). The old matcher's ORDER BY LENGTH DESC *was* load-bearing;
+      // the cut-over moved that job to `findTermsInSegments`'s own `hits.sort`,
+      // a TOTAL order (tier, english.length desc, headwordId — and headwordId is
+      // unique, so it never ties). `buildTermAutomaton` builds an
+      // order-insensitive Map, and `findFirstOccurrences` reduces per headword
+      // independently, so row order cannot reach the output.
+      //
+      // What it does protect: `fingerprintEntries` is order-SENSITIVE by
+      // construction (that is its point), so if SQLite's GROUP BY output order
+      // ever shifted between versions the fingerprint would move for a corpus
+      // that had not changed. Cost of that: ONE spurious automaton rebuild
+      // (~177 MB, measured) — never a wrong answer. A test pinning this SQL
+      // text would enshrine a vestige and teach the next reader that entry order
+      // is load-bearing downstream, which is now false.
       `SELECT MIN(id) AS id, text
          FROM concept_term
         WHERE lang = 'en'

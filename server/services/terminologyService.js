@@ -1374,6 +1374,13 @@ function normalizeChapterArg(chapter) {
  *
  * @param {Array<{segmentId, enContent, isContent}>} segments
  * @param {string|null} bookSlug - Book slug for domain priority
+ * @param {number|string} [chapter] - Chapter scope for book_term_preference.
+ *   Omitted/undefined → 0, the book default. -1 → appendices (chapterLabel's
+ *   sentinel). A numeric string is accepted. ⚠️ The sentinel WORD 'appendices'
+ *   THROWS — see normalizeChapterArg, which rejects rather than coerces so a
+ *   caller cannot silently read book-default rows while believing it scoped to
+ *   appendices. Unreachable from the shipped routes: validateBookChapter always
+ *   yields an integer.
  * @returns {object} Map of segmentId → { matches, issues }
  */
 function findTermsInSegments(segments, bookSlug = null, chapter) {
@@ -1982,7 +1989,13 @@ function getAddedTerms(options = {}) {
  * @param {string} isContent
  * @param {string|null} bookSlug
  * @param {string} [segmentId]
- * @returns {Array<{type, headwordId, english, expected, message}>}
+ * @param {number|string} [chapter] - Chapter scope; same contract as
+ *   findTermsInSegments (undefined → 0 book default, -1 → appendices, the
+ *   sentinel word 'appendices' throws). ⚠️ It follows `segmentId`, so a caller
+ *   passing four arguments is NOT scoping by chapter.
+ * @returns {Array<{type, headwordId, english, expected, message, options?}>}
+ *   `options` is present only on a position-tie `missing` issue, where several
+ *   equally-ranked Icelandic answers are all acceptable.
  */
 function checkSegmentConsistency(
   enContent,
@@ -2002,6 +2015,9 @@ function checkSegmentConsistency(
  *
  * @param {Array<{segmentId, enContent, isContent}>} segments
  * @param {string|null} bookSlug
+ * @param {number|string} [chapter] - Chapter scope; same contract as
+ *   findTermsInSegments (undefined → 0 book default, -1 → appendices, the
+ *   sentinel word 'appendices' throws).
  * @returns {Array<{headwordId, english, expected, count, segments: string[]}>}
  */
 function buildModuleTerminologyReport(segments, bookSlug = null, chapter) {
