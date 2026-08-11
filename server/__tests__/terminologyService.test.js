@@ -2076,6 +2076,61 @@ describe('findTermsInSegments() — the IS-side check (B4b-1)', () => {
     expect(r.s1.issues[0]).toMatchObject({ type: 'missing', expected: 'frumeind' });
   });
 
+  // ⚠️ THE ORDER-INDEPENDENCE REGRESSION TEST (fix round 1, whole-branch
+  // review). A concept may carry MORE THAN ONE English string
+  // (`UNIQUE(concept_id, lang, text)` is per string, not one-per-concept), and
+  // `book_term_preference` is keyed on the ENGLISH STRING — so a preference on
+  // 'atom' but not 'atomic particle' gives the SAME concept two different
+  // winner termIds within one call, depending on which English string is being
+  // resolved. An earlier version cached this concept's sibling terms keyed on
+  // conceptId ALONE while excluding the winner in SQL — so whichever hit
+  // reached that concept FIRST decided what was cached for every LATER hit on
+  // the same concept, regardless of that later hit's own winner. Segment order
+  // is incidental to an editor; it must never decide the answer (§C18).
+  //
+  // The 'pref' segment exists ONLY to populate the concept's cache from a
+  // DIFFERENT English string's winner (atóm, via the preference) before the
+  // 'other' segment is ever resolved — this is what the old code got wrong.
+  // 'other' itself carries no preference, so its own winner is the ordinary
+  // head form (frumeind), and its Icelandic ('Atóm er lítið.') genuinely uses
+  // the sibling term — so the correct answer for 'other' is `alternative`,
+  // `used: 'atóm'`, in EVERY segment order.
+  it('the intra-concept lookup is independent of segment order, even under a book preference', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'en', 'atomic particle');
+    addTermIn(cdb, c, 'is', 'frumeind', 1);
+    const atomTermId = addTermIn(cdb, c, 'is', 'atóm', 2);
+
+    const bookId = cdb
+      .prepare("SELECT id FROM registered_books WHERE slug = 'efnafraedi-2e'")
+      .get().id;
+    cdb
+      .prepare(
+        "INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, 'atom', ?)"
+      )
+      .run(bookId, atomTermId);
+
+    const prefSeg = { segmentId: 'pref', enContent: 'An atom.', isContent: 'Ekkert hér.' };
+    const otherSeg = {
+      segmentId: 'other',
+      enContent: 'An atomic particle.',
+      isContent: 'Atóm er lítið.',
+    };
+
+    const prefFirst = terminologyService.findTermsInSegments([prefSeg, otherSeg], 'efnafraedi-2e');
+    const otherFirst = terminologyService.findTermsInSegments([otherSeg, prefSeg], 'efnafraedi-2e');
+
+    // THE ASSERTION: 'other' must answer identically regardless of which
+    // segment was resolved first within the call.
+    expect(prefFirst.other.issues).toEqual(otherFirst.other.issues);
+    expect(otherFirst.other.issues[0]).toMatchObject({
+      type: 'alternative',
+      expected: 'frumeind',
+      used: 'atóm',
+    });
+  });
+
   // THE PARADIGM PATH. This is the discrimination the C24 golden provably
   // lacks: strip every inflection from that fixture and it is byte-identical.
   it('a DECLINED form matches when a paradigm is stored', () => {

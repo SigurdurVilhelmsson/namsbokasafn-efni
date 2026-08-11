@@ -1464,24 +1464,35 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
   // (see the `resolved` memo's comment above). Memoised per conceptId for the
   // whole call, same pattern as `resolved`.
   //
-  // ⚠️ THE MEMO KEY IS conceptId ALONE, WHILE THE STATEMENT ALSO BINDS
-  // winnerTermId. Safe only because the scope — and therefore resolve()'s
-  // answer for a given English string — is fixed for the whole invocation
-  // (the same soundness argument as `resolveOnce` above), so one conceptId
-  // can win with only ONE termId across this entire call; a second lookup for
-  // the same conceptId is guaranteed to pass the identical winnerTermId, and
-  // the cached rows are correct regardless.
+  // ⚠️ THE MEMO CACHES THE CONCEPT'S FULL IS TERM LIST, WINNER-INDEPENDENT ON
+  // PURPOSE. An earlier version bound the winner into the SQL (`id != ?`) while
+  // keying the memo on conceptId alone, and asserted that one concept can only
+  // win with one termId per call. THAT IS FALSE: a concept may carry several
+  // English strings (UNIQUE is per (concept_id, lang, text), migration 045:48),
+  // book_term_preference is keyed on the ENGLISH STRING (migration 048:109-115),
+  // and applyPreference (conceptResolver.js:501-508) sets winner.termId to an
+  // ARBITRARY term of the concept — not necessarily its head form. So a
+  // preference on one of a concept's English strings and not another produces
+  // two different winner termIds for one conceptId in one call. The first hit's
+  // winner was then frozen into the SQL exclusion and reused for every later
+  // hit on the same conceptId, making SEGMENT ORDER decide whether the editor
+  // saw `alternative` or `missing` — §C18 reproduced one level up, inside the
+  // fix round that had just corrected an instance of it for `outOfScope`.
+  // Measured 2026-08-11 (whole-branch review, fix round 1) by swapping segment
+  // order alone with everything else held constant. Excluding the winner in JS
+  // instead removes the winner from the cache key entirely: the cached rows no
+  // longer depend on which hit populated them first, so order cannot matter.
   const siblingStmt = db.prepare(
     `SELECT id AS termId, text FROM concept_term
-      WHERE concept_id = ? AND lang = 'is' AND id != ?
+      WHERE concept_id = ? AND lang = 'is'
       ORDER BY rank, id`
   );
-  const siblingsOf = new Map();
-  const siblingsFor = (conceptId, winnerTermId) => {
-    let s = siblingsOf.get(conceptId);
+  const isTermsOf = new Map();
+  const isTermsFor = (conceptId) => {
+    let s = isTermsOf.get(conceptId);
     if (s === undefined) {
-      s = siblingStmt.all(conceptId, winnerTermId);
-      siblingsOf.set(conceptId, s);
+      s = siblingStmt.all(conceptId);
+      isTermsOf.set(conceptId, s);
     }
     return s;
   };
@@ -1594,15 +1605,27 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         })),
       });
 
-      // ⚠️ FOUR GATES, and every prior estimate of this check's rate got the
-      // unit wrong by ignoring them: not fallback, IS content present, a
-      // winner exists, and the EN span was actually claimed (we are inside the
-      // tiler, so that one is already true).
+      // ⚠️ THREE INDEPENDENT CHECKS, NOT FOUR. This comment used to claim four
+      // "gates" — not fallback, IS content present, a winner exists, and the EN
+      // span was actually claimed — but `hit.isFallback` (:1526) IS `!res.winner`
+      // by construction, and nothing mutates `res` between there and here. So
+      // `hit.isFallback ||` and `!winner` are the SAME predicate written twice,
+      // not two independent ones; no fixture can ever make them disagree. Kept
+      // both anyway, deliberately: `hit.isFallback` reads as "not a fallback
+      // match" at the call site, which is clearer than re-deriving it from
+      // `!winner`. The real checks are: IS content present, a winner exists —
+      // plus the EN span having been claimed, which is structural here (we are
+      // inside the tiler) rather than a runtime condition at all.
       if (hit.isFallback || !seg.isContent || !winner) continue;
 
       const matchesForm = (term) => {
         const re = buildInflectionRegex(term.text, paradigmFor(paradigmStmt, term.termId));
-        re.lastIndex = 0; // the regex carries /g; without this alternate calls lie
+        // Insurance, not correction: wholeWordRegex always returns a fresh
+        // RegExp per call today, so lastIndex is already 0 on arrival and this
+        // is presently a no-op. It becomes load-bearing the moment anyone
+        // memoises buildInflectionRegex per termId — a stateful /g regex lies
+        // on alternate .test() calls otherwise.
+        re.lastIndex = 0;
         return re.test(seg.isContent);
       };
 
@@ -1610,11 +1633,13 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
 
       // D5: the resolver returns ONE winner, so a legitimate synonym would
       // start failing. Say "you used a known alternative" instead of "missing".
-      // `alts` is the CROSS-concept population (alsoInScope); siblingsFor is
-      // the INTRA-concept population (this concept's own lower-rank terms) —
-      // see the siblingsFor comment above for why both are needed.
+      // `alts` is the CROSS-concept population (alsoInScope); isTermsFor is the
+      // INTRA-concept population (this concept's own OTHER Icelandic terms,
+      // winner excluded here in JS — see the isTermsFor comment above for why
+      // that exclusion cannot live in the SQL/memo instead).
       const used =
-        alts.find(matchesForm) || siblingsFor(winner.conceptId, winner.termId).find(matchesForm);
+        alts.find(matchesForm) ||
+        isTermsFor(winner.conceptId).find((t) => t.termId !== winner.termId && matchesForm(t));
       issues.push(
         used
           ? {
@@ -1623,14 +1648,14 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
               english: hit.english,
               expected: winner.text,
               used: used.text,
-              message: `„${hit.english}" → „${winner.text}" (notað: „${used.text}")`,
+              message: `„${hit.english}“ → „${winner.text}“ (notað: „${used.text}“)`,
             }
           : {
               type: 'missing',
               headwordId: hit.headwordId,
               english: hit.english,
               expected: winner.text,
-              message: `„${hit.english}" → „${winner.text}" fannst ekki`,
+              message: `„${hit.english}“ → „${winner.text}“ fannst ekki`,
             }
       );
     }
