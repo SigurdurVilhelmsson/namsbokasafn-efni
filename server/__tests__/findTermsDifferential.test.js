@@ -53,6 +53,16 @@ function randomCase(s) {
   return [...s].map((c) => (rnd() < 0.5 ? c.toUpperCase() : c.toLowerCase())).join('');
 }
 
+// ⚠️ These test findFirstOccurrences directly and are UNAFFECTED by B4b-1.
+// Their passing is not evidence the cut-over worked.
+//
+// Verified rather than assumed (§C36 B4b-1 Task 6): this file makes ZERO calls
+// into findTermsInSegments, builds no database, and requires only
+// ../lib/termAutomaton. The cut-over replaced the matcher's DATA SOURCE — the
+// old terminology tables for `concept`/`concept_term` — and left the automaton
+// primitive these fixtures exercise untouched. A green run here says the
+// Aho-Corasick implementation still agrees with the reference regex; it says
+// nothing at all about scoping, tiering, resolution or the tiler above it.
 describe('AC vs regex differential (1000 fixtures)', () => {
   it('agrees with the regex on every generated case', () => {
     const mismatches = [];
