@@ -135,10 +135,13 @@ describe('c24 fixture shape (does NOT exercise the matcher)', () => {
   });
 });
 
-// ⚠️ c24-golden.json is a PRE-SWAP capture and is no longer asserted against —
-// see the banner on the skipped describe below for what it now measures, why it
-// may not be regenerated, and what is awaiting a ruling. Loaded here because
-// that block still reads it. (This position used to hold the oracle's own
+// ⚠️ c24-golden.json is a PRE-SWAP capture. It IS still asserted against, but
+// only for the property that survived B4b-1: order-INSENSITIVE span SETS, over
+// 21 of its 24 segments. The other 3 are excluded by name in `KNOWN_CHANGED`
+// below, with their measured reasons and their own post-B4a span pins. Nothing
+// in this file is skipped. See the banner above that block for the measurement,
+// why the golden may not be regenerated, and the mapping that would reproduce it
+// byte-for-byte and was rejected. (This position used to hold the oracle's own
 // rationale; it is not restated, per § One source of truth — the banner owns it.)
 const golden = JSON.parse(
   readFileSync(new URL('./fixtures/c24-golden.json', import.meta.url), 'utf-8')
@@ -315,6 +318,64 @@ describe('findTermsInSegments claims the C24 golden SPAN SETS (21 of 24 segments
       expect(spanSet(actual[segmentId].matches)).toEqual(spanSet(golden[segmentId].matches));
     });
   }
+
+  // ⚠️ THE THREE EXCLUDED SEGMENTS ARE PINNED TOO — TO THEIR MEASURED POST-B4a
+  // SPANS, WHICH ARE **NOT** THE GOLDEN'S. Excluding them from the golden
+  // comparison is not the same as leaving them uncovered: without this, a future
+  // span change in exactly these three is invisible, because `KNOWN_CHANGED`
+  // removes them from ASSERTED and the seed control's total-of-40 only catches a
+  // change in COUNT. A span change that preserves the count would pass silently
+  // — including in m002:para:fs-id0012, the segment carrying the pending design
+  // decision, which is the last one that should be able to move unnoticed.
+  //
+  // ⚠️ These values were captured from the POST-cut-over matcher, so they are
+  // NOT an oracle in the sense the golden is — they cannot certify that B4b-1
+  // was correct, only that it has not drifted since 2026-08-11. That is exactly
+  // why they live here, visibly separate from the golden comparison above,
+  // rather than being written into c24-golden.json (which may not be
+  // regenerated — see the banner).
+  const POST_B4A_SPANS = {
+    'm001:para:fs-id0001': ['atomic mass unit@4'],
+    'm002:para:fs-id0007': ['atomic mass unit (amu)@2', 'bond@52'],
+    'm002:para:fs-id0012': ['bond@46', 'calorimeter@7'],
+  };
+
+  it('the three excluded segments hold their measured post-B4a spans (NOT the golden’s)', () => {
+    // Same keys as KNOWN_CHANGED, so an exclusion cannot be added without also
+    // recording what the excluded segment now does.
+    expect(Object.keys(POST_B4A_SPANS).sort()).toEqual(Object.keys(KNOWN_CHANGED).sort());
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    for (const [segmentId, spans] of Object.entries(POST_B4A_SPANS)) {
+      expect(spanSet(actual[segmentId].matches)).toEqual([...spans].sort());
+      // The point of the exclusion, asserted rather than assumed: these really
+      // do differ from the golden. If one ever stops differing, the exclusion is
+      // obsolete and should be moved back into ASSERTED.
+      expect(spanSet(actual[segmentId].matches)).not.toEqual(spanSet(golden[segmentId].matches));
+    }
+  });
+
+  it('pins the fixture’s post-B4a ISSUE counts, which the span assertion cannot see', () => {
+    // ⚠️ THE SPAN-SET PIN COVERS `matches` AND NOTHING ELSE. The retired
+    // per-segment `toEqual` also covered `issues`; replacing it left the
+    // fixture's entire issue surface unasserted, which matters because the
+    // cut-over MOVED it: 5 issues pre-swap, 22 now. More terms in scope means
+    // more Icelandic-side checks actually run.
+    //
+    // ⚠️ POST-B4a VALUES, NOT THE GOLDEN'S — same caveat as POST_B4A_SPANS
+    // above. This is a drift pin, not an oracle.
+    //
+    // The type split is asserted, not just the total: it is what proves the
+    // fixture reaches the `alternative` tier at all (D5, Task 5). A total-only
+    // assertion is satisfied by 22 issues of any kind.
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    const issues = Object.values(actual).flatMap((r) => r.issues);
+    expect(issues).toHaveLength(22);
+    expect(issues.filter((i) => i.type === 'missing')).toHaveLength(7);
+    expect(issues.filter((i) => i.type === 'alternative')).toHaveLength(15);
+    // For contrast, and so the move is visible in the file rather than only in
+    // the register: the pre-swap golden carried 5.
+    expect(Object.values(golden).reduce((n, r) => n + r.issues.length, 0)).toBe(5);
+  });
 });
 
 /**
@@ -615,9 +676,14 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
 
   it('the assertion above is CALIBRATED — the fixture is large enough to discriminate', () => {
     // An uncalibrated threshold passes on a NO-fix. On this fixture the unmodified
-    // (pre-swap) function compiled 642 regexes against a fixed-code count of 11;
-    // if the fixture ever shrinks, that margin — and the exact-count assertion's
-    // ability to catch a partial regression — shrinks with it.
+    // (pre-swap) function compiled 642 regexes against a fixed-code count of
+    // 56 — so the margin this reasons about is 642 : 56, roughly 11x. (It said
+    // "642 against 11" until 2026-08-11: 11 was the PRE-CUT-OVER fixed count,
+    // and it survived here for one round after the assertion 20 lines up was
+    // re-derived to 56. The one comment whose whole job is to justify the exact
+    // count was the last place holding the old one.) If the fixture ever
+    // shrinks, that margin — and the exact-count assertion's ability to catch a
+    // partial regression — shrinks with it.
     const headwordCount = terms.headwords.length;
     expect(headwordCount).toBeGreaterThan(300);
   });

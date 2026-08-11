@@ -980,7 +980,15 @@ describe('exportBookGlossary()', () => {
 // Translations) and every one of them relies on that single injection. A null
 // here would point all five at the developer's real editorial database, with
 // no test going red to say so.
-describe('findTermsInSegments() — Unicode word boundary + ordering (ported, B4b-1)', () => {
+// ⚠️ THE DESCRIBE NAME IS DELIBERATELY BROADER THAN "Unicode + ordering", which
+// is what it said until 2026-08-11 — by then it also held the translations[]
+// shape, the non-overlapping-spans case, buildModuleTerminologyReport and
+// checkSegmentConsistency, none of which that name describes. What these share
+// is the FIXTURE, not the subject: one migrated DB, seeded books, concept rows
+// cleared between tests. Keep that the grouping rule; if you add a test that
+// needs a different fixture, start a new block rather than widening this name
+// again.
+describe('terminology QA over the concept model — ported + new (B4b-1)', () => {
   let cdb;
   const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
 
@@ -1273,6 +1281,123 @@ describe('findTermsInSegments() — Unicode word boundary + ordering (ported, B4
     // assertion above is this absence's positive control: the report is
     // demonstrably non-empty and demonstrably discriminating.
     expect(report.find((r) => r.english === 'atom')).toBeUndefined();
+  });
+
+  // ── item 18, END-TO-END: a fallback match never becomes a QA issue ──
+  //
+  // Added in fix round 1 after review flagged the deleted `surfaces a fallback
+  // match when the only translation is another subject — no issues` as the last
+  // test of this rule.
+  //
+  // ⚠️ THE REVIEW'S PREMISE WAS "nothing exercises the `hit.isFallback` arm,
+  // because every surviving fallback test uses isContent: ''". THAT IS FALSE,
+  // AND IT WAS MEASURED RATHER THAN ARGUED: `a fallback term never produces an
+  // issue — QA must not demand another domain's term`, ~90 lines below, passes
+  // `isContent: 'Ekkert.'` — non-empty, and not containing 'myndlíking' — so it
+  // reaches the guard and IS stopped by the isFallback term. Mutating the code
+  // to give out-of-scope concepts a winner turns that test red too. The arm was
+  // covered. Do not repeat the premise; check `isContent` before believing it.
+  //
+  // ⚠️ WHAT THIS TEST ADDS, THEN, IS THE DISCRIMINATION — not the coverage. The
+  // surviving test asserts a fallback match produces no issue, in a segment
+  // where NOTHING could produce one. It cannot tell "fallbacks are exempt" from
+  // "the issue path is dead". This test puts an in-scope term and a fallback
+  // term in ONE segment, with the Icelandic missing BOTH translations, so the
+  // in-scope term's issue is the control for the fallback term's silence.
+  //
+  // ⚠️ SEVERITY STATED HONESTLY: `hit.isFallback` is `!winner` by construction
+  // today, so dropping that term is currently a behavioural no-op and a naive
+  // mutation does NOT go red. The exposure is a FUTURE change in which resolve()
+  // returns a winner for an out-of-scope concept — plausible, since the fallback
+  // path already builds an offerable suggestion. Verified by mutating exactly
+  // that (winner falls back to offerable[0], isFallback term dropped): this test
+  // goes red.
+  it('a fallback match emits NO issue even when the Icelandic lacks its term, while an in-scope one does', () => {
+    // THE DISCRIMINATION IS INSIDE ONE SEGMENT: two terms, identical treatment
+    // on the Icelandic side (neither translation is present), opposite outcomes
+    // — decided ONLY by scope. That is item 18's editorial rule stated exactly:
+    // an editor is answerable for their own book's domains and not for others'.
+    const inScope = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, inScope, 'en', 'acid');
+    addTermIn(cdb, inScope, 'is', 'sýra');
+    // mathematics is out of efnafraedi-2e's chain, per domains.js.
+    const outOfScope = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, outOfScope, 'en', 'eigenvalue');
+    addTermIn(cdb, outOfScope, 'is', 'eigingildi');
+
+    // Non-empty Icelandic containing NEITHER translation — so the issue path is
+    // reached for both, rather than short-circuiting on `!seg.isContent`.
+    const r = terminologyService.findTermsInSegments(
+      seg('An acid and an eigenvalue.', 'Eitthvað allt annað hér.'),
+      'efnafraedi-2e'
+    );
+
+    // Both matched, one of each tier: the control for everything below.
+    expect(r.s.matches).toHaveLength(2);
+    expect(r.s.matches.find((m) => m.english === 'eigenvalue').isFallback).toBe(true);
+    expect(r.s.matches.find((m) => m.english === 'acid').isFallback).toBe(false);
+
+    // THE ASSERTION: exactly one issue, and it is the IN-SCOPE term's. The
+    // fallback term is silent despite being in identical shape on the IS side.
+    expect(r.s.issues).toHaveLength(1);
+    expect(r.s.issues[0]).toMatchObject({ english: 'acid', expected: 'sýra' });
+  });
+
+  // ── checkSegmentConsistency(): 2 of the 4 deleted tests, ported ──
+  //
+  // ⚠️ THIS FUNCTION IS LIVE PRODUCTION CODE — exported by terminologyService
+  // and called from segmentEditorService — and Ruling 1's blanket deletion of
+  // its block left it with ZERO tests. Ruling 1's stated rationale was "blocks
+  // pinning semantics the concept model removes (proposed/approved gating)", and
+  // only ONE of the four deleted tests actually did that. These two pinned
+  // something the model change does not touch: that the function works at all,
+  // in both directions.
+  //
+  // Not ported, deliberately, and the reasoning is in the report:
+  //   * `does not flag proposed-only terms` — PURE proposed/approved gating.
+  //     `concept_term` has no status column; there is nothing to port it to.
+  //   * `foreign-only term produces no issue ... (item 18)` — NOT gating-
+  //     dependent, but its property is exactly what the item-18 test directly
+  //     above now pins, and checkSegmentConsistency is a three-line delegation
+  //     to findTermsInSegments. Porting it here would duplicate that coverage
+  //     without adding a failure mode the two tests below do not already have:
+  //     between them they prove the wrapper propagates issues in BOTH
+  //     directions, which is the only thing the wrapper itself can get wrong.
+  it('checkSegmentConsistency flags a segment whose Icelandic omits the resolved term', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'molecule');
+    addTermIn(cdb, c, 'is', 'sameind');
+    const issues = terminologyService.checkSegmentConsistency(
+      'A molecule is small.',
+      'Eitthvað er lítið.',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(1);
+    expect(issues[0]).toMatchObject({ english: 'molecule', expected: 'sameind' });
+  });
+
+  it('checkSegmentConsistency passes when the resolved term IS present', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'molecule');
+    addTermIn(cdb, c, 'is', 'sameind');
+    // POSITIVE CONTROL, in this same test: the identical segment with the
+    // Icelandic term ABSENT must still flag. Without it, `toHaveLength(0)`
+    // passes against a wrapper that returns [] unconditionally — which is the
+    // whole failure mode this pair exists to catch.
+    expect(
+      terminologyService.checkSegmentConsistency(
+        'A molecule is small.',
+        'Eitthvað er lítið.',
+        'efnafraedi-2e'
+      )
+    ).toHaveLength(1);
+    expect(
+      terminologyService.checkSegmentConsistency(
+        'A molecule is small.',
+        'Sameind er lítil.',
+        'efnafraedi-2e'
+      )
+    ).toHaveLength(0);
   });
 });
 

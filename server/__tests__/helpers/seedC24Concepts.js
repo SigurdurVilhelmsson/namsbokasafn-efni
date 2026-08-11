@@ -28,9 +28,9 @@
  * efnafraedi-2e's priority chain would restore the old single-subject partition
  * and make the golden's spans match byte-for-byte. That is a mapping chosen to
  * make an oracle pass, not a mapping that describes the fixture — it would
- * certify the cut-over against a fiction. See the SKIPPED golden-equality block
- * in findTermsGolden.test.js for the resulting diff, which is a real finding
- * about what B4b-1 changed.
+ * certify the cut-over against a fiction. See the span-set block in
+ * findTermsGolden.test.js (and the banner above it) for the resulting diff,
+ * which is a real finding about what B4b-1 changed.
  *
  * ── ONE CONCEPT PER (HEADWORD, SUBJECT) ──
  *
