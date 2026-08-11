@@ -11,8 +11,16 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
+const log = require('../lib/logger');
 const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
 const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
+const { buildScope, resolve } = require('../lib/conceptResolver');
+const {
+  loadEnglishEntries,
+  prepareParadigmStatement,
+  paradigmFor,
+  PLACEHOLDER_TEXT,
+} = require('../lib/conceptMatcher');
 
 // Optional dependencies
 let csvParse = null;
@@ -1321,14 +1329,18 @@ function translationTier(subjects, bookSubject) {
   return 'fallback';
 }
 
-// C24: the ONLY cached state. It depends solely on the (headword_id, english)
-// pairs, and the fingerprint is computed from rows we re-read on every call — so
-// the DB stays authoritative: there is no invalidation hook to forget, no second
-// connection, no test-mode special case. Staleness therefore cannot arrive as a
-// missed notification; it would require a HASH COLLISION between two different
-// headword sets. (This comment used to claim staleness was "structurally
-// impossible" — that overstated it. See fingerprintHeadwords for exactly what the
-// encoding does and does not guarantee.)
+// C24: the ONLY cached state. It depends solely on the DISTINCT
+// concept_term(lang='en') strings (one entry per string, not per row — see
+// conceptMatcher.loadEnglishEntries), and the fingerprint is computed from
+// rows we re-read on every call — so the DB stays authoritative: there is no
+// invalidation hook to forget, no second connection, no test-mode special
+// case. Staleness therefore cannot arrive as a missed notification; it would
+// require a HASH COLLISION between two different English-string sets. (This
+// comment used to claim staleness was "structurally impossible" — that
+// overstated it. ⚠️ CORRECTED 2026-08-10 (§C36 B4b-1 fix round 1): it also
+// used to point at `fingerprintHeadwords`, deleted this task — see
+// conceptMatcher.fingerprintEntries for exactly what the encoding does and
+// does not guarantee.)
 //
 // PRAGMA data_version cannot do this job: all 16 mutators write through the same
 // singleton connection, and data_version is "unchanged for commits made on the
@@ -1336,47 +1348,24 @@ function translationTier(subjects, bookSubject) {
 let _automatonCache = null; // { fingerprint: number, automaton }
 
 /**
- * FNV-1a over the (id, english) pairs, in SQL row order.
+ * Normalise a caller-supplied chapter for conceptResolver.buildScope.
  *
- * ⚠️ The NUL separators are load-bearing, and a SPACE is the WRONG delimiter.
- * With no separator the concatenation is ambiguous: [[1,'a'],[2,'b']] and
- * [[1,'a2 b']] both hash the stream "1 a2 b" and collide. A space closes that
- * family but OPENS a worse one, because a space is legal INSIDE a headword —
- * [[1,'a'],[2,'b']] and [[1,'a 2 b']] then both hash "1 a 2 b". 732 of the 1117
- * committed chemistry headwords are multi-word ("melting point", "acid
- * dissociation constant"), so a space would trade a rare collision family for the
- * majority case.
+ * ⚠️ THE CAST IS NOT THE POINT — SQLite already does it correctly. `book_term_
+ * preference.chapter` is INTEGER, so `chapter IN (0, ?)` bound with '3' returns
+ * the same rows as 3 (column affinity, measured 2026-08-10). The hazard is the
+ * SENTINEL WORD: 'appendices', null and undefined all return the chapter-0
+ * book-default rows with NO throw, silently dropping every appendices-scoped
+ * override. So this guard REJECTS rather than coerces.
  *
- * No headword observed so far contains a NUL (checked: the three committed
- * `glossary-unified.json` exports and the local dev DB) — but nothing
- * enforces that, and the live `terminology_headwords` table itself is
- * runtime state in a gitignored DB, not something a grep of this repo can
- * confirm. A NUL round-trips through better-sqlite3 into `terminology_
- * headwords.english` intact ('a\0b' stores and reads back as codes
- * 97,0,98), and upsertHeadword inserts `english` verbatim with no
- * control-character stripping on any write path. The unambiguous-encoding,
- * 2^-32-bound claim therefore holds by observation, not by construction —
- * re-check it if the import surface ever changes.
- *
- * ⚠️ The 0x01000193 multiply is also load-bearing: replacing it with 1 degrades
- * this to an order-blind XOR fold, under which the pure transposition
- * 'atom' → 'atmo' would NOT invalidate the cache. Pinned by the transposition
- * test in findTermsGolden.test.js.
+ * 0 = book default, -1 = appendices (chapterLabel's sentinel).
  */
-function fingerprintHeadwords(pairs) {
-  let hash = 0x811c9dc5;
-  for (const [id, english] of pairs) {
-    // `\0` here is the two-character JS escape (backslash, then '0'), which
-    // evaluates to a single U+0000 code unit — not a literal NUL byte in the
-    // source. That's what lets this line survive JSON/heredoc transport
-    // intact; replacing it with a raw NUL byte would be a regression.
-    const chunk = `${id}\0${english}\0`;
-    for (let i = 0; i < chunk.length; i++) {
-      hash ^= chunk.charCodeAt(i);
-      hash = Math.imul(hash, 0x01000193) >>> 0;
-    }
-  }
-  return hash;
+function normalizeChapterArg(chapter) {
+  if (chapter === undefined) return 0;
+  if (typeof chapter === 'number' && Number.isInteger(chapter)) return chapter;
+  if (typeof chapter === 'string' && /^-?\d+$/.test(chapter)) return Number(chapter);
+  throw new TypeError(
+    `chapter must be an integer (0 = book default, -1 = appendices), got ${JSON.stringify(chapter)}`
+  );
 }
 
 /**
@@ -1385,268 +1374,396 @@ function fingerprintHeadwords(pairs) {
  *
  * @param {Array<{segmentId, enContent, isContent}>} segments
  * @param {string|null} bookSlug - Book slug for domain priority
+ * @param {number|string} [chapter] - Chapter scope for book_term_preference.
+ *   Omitted/undefined → 0, the book default. -1 → appendices (chapterLabel's
+ *   sentinel). A numeric string is accepted. ⚠️ The sentinel WORD 'appendices'
+ *   THROWS — see normalizeChapterArg, which rejects rather than coerces so a
+ *   caller cannot silently read book-default rows while believing it scoped to
+ *   appendices. Unreachable from the shipped routes: validateBookChapter always
+ *   yields an integer.
  * @returns {object} Map of segmentId → { matches, issues }
  */
-function findTermsInSegments(segments, bookSlug = null) {
+function findTermsInSegments(segments, bookSlug = null, chapter) {
   const db = getDb();
+  const chapterNum = normalizeChapterArg(chapter);
 
-  // Get book's primary subject
-  const bookSubject = bookSlug ? getBookSubjectBySlug(db, bookSlug) : null;
+  // ⚠️ AN UNSCOPED BOOK MATCHES NOTHING, and that is fail-CLOSED on purpose:
+  // resolve() returns no winner AND an empty outOfScope (emptyResolution is
+  // called with [] for the unscoped branch), so the isFallback guard below
+  // drops every hit.
+  //
+  // ⚠️ THIS DIFFERS FROM THE OLD MODEL, where a null bookSubject made
+  // translationTier return 'in-scope' for everything and every term matched.
+  // Measured 2026-08-10; the comment that stood here asserted the opposite.
+  // Reachable in production for a book absent from domains.js's
+  // BOOK_DOMAIN_PRIORITY map (migrations 046/047 seed only from that map), so
+  // it is LOGGED rather than left to look like "this book has no terminology".
+  //
+  // ⚠️ Fix round 2, Minor 1 — 'no-book-slug' is a DISTINCT reason from
+  // buildScope's own 'unregistered'/'no-priorities'. A caller that omitted
+  // bookSlug entirely is not the same fault as a caller naming a real but
+  // unregistered/unpriority'd book; conceptResolver.js:149-152 states exactly
+  // this rationale for keeping THOSE two distinct, and collapsing a third
+  // case into 'unregistered' here would repeat it one level up.
+  const scope = bookSlug ? buildScope(db, bookSlug, chapterNum) : { unscoped: 'no-book-slug' };
+  const paradigmStmt = prepareParadigmStatement(db);
 
-  // Load all headwords with approved/proposed translations
-  const headwords = db
-    .prepare(
-      `
-      SELECT h.id as headword_id, h.english,
-             t.id as translation_id, t.icelandic, t.inflections, t.status,
-             GROUP_CONCAT(ts.subject) as subjects
-      FROM terminology_headwords h
-      JOIN terminology_translations t ON t.headword_id = h.id
-      LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
-      WHERE t.status IN ('approved', 'proposed')
-      GROUP BY h.id, t.id
-      -- C24: three levels must be deterministic or the golden oracle rests on
-      -- unspecified order. h.id breaks equal-length headword ties; t.id breaks
-      -- sibling translations, which share BOTH keys and whose ranking comparator
-      -- returns 0 whenever isPrimary and status match (spec §5.0).
-      ORDER BY LENGTH(h.english) DESC, h.id ASC, t.id ASC
-    `
-    )
-    .all();
-
-  // Group translations by headword
-  const termMap = new Map();
-  const headwordPairs = []; // distinct headwords in SQL order, for the fingerprint
-  for (const row of headwords) {
-    if (!termMap.has(row.headword_id)) {
-      // No per-headword regex any more — the automaton replaces ~20,073 compiles
-      // per call. `english` is still needed for match output and the fingerprint.
-      termMap.set(row.headword_id, {
-        headwordId: row.headword_id,
-        english: row.english,
-        translations: [],
-      });
-      headwordPairs.push([row.headword_id, row.english]);
-    }
-    const inflections = row.inflections ? JSON.parse(row.inflections) : [];
-    // GROUP_CONCAT order is unspecified; sort in JS rather than with
-    // GROUP_CONCAT(... ORDER BY ...), which needs SQLite >= 3.44 and would couple
-    // the oracle to the bundled engine version.
-    const subjects = row.subjects ? row.subjects.split(',').sort() : [];
-
-    const translation = {
-      id: row.translation_id,
-      icelandic: row.icelandic,
-      inflections,
-      status: row.status,
-      subjects,
-      isPrimary: bookSubject ? subjects.includes(bookSubject) : false,
-    };
-    // C24: LAZY. buildInflectionRegex is constructed 28,903 times per call and
-    // executed ~313 times. Because this function rebuilds translation objects on
-    // EVERY call, eager construction pays all 28,903 compiles per request — a
-    // correct automaton with an eager isRegex is not a fix at all.
-    // Non-enumerable so it cannot leak into any serialised output.
-    //
-    // ⚠️ Because it is non-enumerable, `{...translation}` SILENTLY DROPS isRegex,
-    // and the loss surfaces only at runtime as
-    // `TypeError: Cannot read properties of undefined (reading 'lastIndex')`
-    // at the IS-text check below. Nothing spreads a translation today — the
-    // partition spreads the TERM (`{...term}`), whose own properties are all
-    // enumerable. If you ever spread a translation, copy this descriptor across
-    // (or re-attach the accessor); do not convert it to a plain property, which
-    // would restore the eager-compile cost this lazy accessor exists to avoid.
-    Object.defineProperty(translation, 'isRegex', {
-      configurable: true,
-      enumerable: false,
-      get() {
-        const regex = buildInflectionRegex(this.icelandic, this.inflections);
-        Object.defineProperty(this, 'isRegex', {
-          value: regex,
-          configurable: true,
-          enumerable: false,
-          writable: true,
-        });
-        return regex;
-      },
-    });
-    termMap.get(row.headword_id).translations.push(translation);
-  }
-
-  // Item N → item 18: scope translations to the book's subject, but never hide
-  // a headword entirely. A headword with at least one in-scope translation
-  // (tier 'primary'/'in-scope') behaves exactly as before — foreign-subject
-  // siblings stay hidden (homograph guard). A headword whose translations are
-  // ALL foreign-subject becomes a FALLBACK term: it still matches (suggestion
-  // surfaces, badged via isFallback) but never produces missing-term issues —
-  // QA must not demand another subject's translation. Every headword has ≥1
-  // translation (SQL inner join), so the partition is total.
-  const partitioned = Array.from(termMap.values()).map((term) => {
-    const inScope = term.translations.filter(
-      (t) => translationTier(t.subjects, bookSubject) !== 'fallback'
-    );
-    return inScope.length > 0
-      ? { ...term, translations: inScope, isFallback: false }
-      : { ...term, isFallback: true };
-  });
-  // In-scope terms claim their spans before any fallback term is considered:
-  // the book's own subject always wins an overlap (a fallback may only fill
-  // spans no in-scope term claimed). Within each group the SQL longest-first
-  // order is preserved, so "melting point" still beats "melting".
-  const terms = [
-    ...partitioned.filter((t) => !t.isFallback),
-    ...partitioned.filter((t) => t.isFallback),
-  ];
-
-  // Rebuild only when the headword set actually changed. Everything else —
-  // translations, inflections, subjects, statuses — is re-read every call.
-  const fingerprint = fingerprintHeadwords(headwordPairs);
+  // ⚠️ ONE GLOBAL AUTOMATON, exactly as before. The old term SQL was unfiltered
+  // too and all scoping happened after; keeping that means the single-slot
+  // cache still works and NO scope-keyed cache is needed. Per-book scoping is
+  // resolve()'s job.
+  const { entries, englishById, fingerprint } = loadEnglishEntries(db);
   if (!_automatonCache || _automatonCache.fingerprint !== fingerprint) {
-    // ⚠️ Drop the old automaton BEFORE building the new one. The object literal
-    // below evaluates FULLY — buildTermAutomaton included — before the
-    // assignment happens, so without this line `_automatonCache` still points
-    // at the old trie for the whole build and two automata are live at once.
-    // Nulling first makes the old one collectible *during* the build.
-    //
-    // Safe because this function is fully synchronous — there is no `await`
-    // anywhere in findTermsInSegments, so no concurrent call can observe the
-    // null and rebuild against it. `_automatonCache` is also the only
-    // long-lived retainer: termAutomaton.js holds no module-level state, and
-    // findFirstOccurrences takes the automaton as a parameter without stashing
-    // it. If this function ever becomes async, this line turns into a
-    // correctness bug, not merely a memory optimisation.
-    //
-    // Why it matters: the trigger is ORDINARY EDITORIAL WORK. Any headword add,
-    // remove or rename (proposeMinedTerm, importFromKeyTerms, a glossary
-    // import) followed by a module open changes the fingerprint and rebuilds.
-    // A Node OOM kills the PROCESS, taking every editor down at once — a
-    // failure mode the pre-C24 path did not have. That path was slow; it was
-    // never fatal.
-    //
-    // MEASURED: RSS delta 264–269 MB per call at synthetic production scale
-    //   (20,073 headwords), load-insensitive across three conditions.
-    // NOT MEASURED: how much of that delta is the TRIE versus the per-call
-    //   28,903-row JS object reconstruction and the SQL result set. A separate
-    //   measurement attributed ~400–450 ms of warm latency to that
-    //   reconstruction, so its share is not small. Real production RSS is also
-    //   unmeasured: the synthetic headwords are random strings, which share
-    //   fewer prefixes than real terminology and so plausibly INFLATE the
-    //   trie's node count — the benchmark reads its own figure as an upper
-    //   bound and states it neither confirms nor refutes the spec projection.
-    // INFERRED: only the trie's share doubles transiently.
-    // => There is NO defensible before/after ceiling figure here. Do not derive
-    //    one from the 264–269 MB delta; it is not the trie's number.
-    //
-    // ⚠️ This CORRECTS design §4.6's "a rebuild transiently holds two automata
-    // (~170 MB)". That is 2 × an ~85 MB projection which no measurement has
-    // validated at production scale. The design doc is banner-frozen evidence,
-    // so the correction lives here in the live code rather than being synced
-    // back into it (CLAUDE.md § One source of truth).
-    //
-    // What this does NOT do: it makes the old trie COLLECTIBLE during the
-    // build; it does not guarantee V8 collects it. It lowers the ceiling — it
-    // does not eliminate the doubling.
+    // Drop the old automaton BEFORE building the new one: the object literal
+    // evaluates fully before the assignment, so without this two automata are
+    // live at once. Safe because this function is fully synchronous — if it
+    // ever becomes async this is a correctness bug, not an optimisation.
     _automatonCache = null;
-    _automatonCache = {
-      fingerprint,
-      automaton: buildTermAutomaton(
-        headwordPairs.map(([headwordId, english]) => ({ headwordId, english }))
-      ),
-    };
+    _automatonCache = { fingerprint, automaton: buildTermAutomaton(entries) };
   }
   const automaton = _automatonCache.automaton;
 
-  const result = {};
+  // ⚠️ MEMOISE resolve() ACROSS THE WHOLE CALL, keyed on the English string.
+  // Without this, resolve() runs once per (segment × hit) and each call is a DB
+  // lookup through lookupCandidates. The golden fixture's ~40 matches make that
+  // look free; a real module has hundreds of segments, and C24 exists because
+  // this function took the server down for ~3 minutes per call at production
+  // scale. The scope is fixed for the whole invocation, so one English string
+  // has one answer.
+  //
+  // SOUND, and verified rather than assumed: nothing in conceptResolver assigns
+  // to `scope` or mutates `scope.preference`/`scope.positionOf` (grepped; the
+  // control finds 18 reads, so the search is live), and this function is fully
+  // synchronous, so no concurrent write can land mid-call. ⚠️ If this function
+  // ever becomes async, this cache — like the automaton one below — turns into
+  // a correctness bug.
+  const resolved = new Map();
+  const resolveOnce = (english) => {
+    let r = resolved.get(english);
+    if (r === undefined) {
+      r = resolve(scope, english);
+      resolved.set(english, r);
+    }
+    return r;
+  };
 
+  // ⚠️ D5 COVERS TWO POPULATIONS, AND alsoInScope EXPRESSES ONLY ONE.
+  // Cross-concept — two different concepts carry the same English string and
+  // one loses the domain-priority walk — is what alsoInScope reports
+  // (measured 2026-08-10 on the real corpus: 11,553/61,042 EN strings, 18.9%).
+  // INTRA-concept — one concept with two ranked Icelandic terms — is what D5's
+  // prose actually describes ("the OLD check passed if the editor used ANY
+  // approved translation"), is the direct analogue of the old
+  // headword→many-approved-translations shape, and is the LARGER population
+  // (17,356/70,187 concepts, 24.7%, same measurement). alsoFrom()
+  // (conceptResolver.js) builds from `chosen`, one head-form entry per
+  // concept, then excludes the winner's own conceptId — so a concept's own
+  // rank-2+ sibling can never appear there. This query is the only way to
+  // reach it, and conceptResolver.js is NOT touched: its alsoInScope contract
+  // is depended on elsewhere (verify-b4a-gates.js gate 3's cross-concept
+  // assertion) exactly as-is.
+  //
+  // ⚠️ BOUNDED TO THE ISSUE PATH ON PURPOSE, not the hit path. It runs only
+  // after matchesForm(winner) has already failed AND alts did not answer —
+  // i.e. only when an issue is actually about to be emitted, which is rare
+  // relative to the number of hits. A per-HIT query here would repeat §C24,
+  // which took the server down for ~3 minutes per call at production scale
+  // (see the `resolved` memo's comment above). Memoised per conceptId for the
+  // whole call, same pattern as `resolved`.
+  //
+  // ⚠️ THE MEMO CACHES THE CONCEPT'S FULL IS TERM LIST, WINNER-INDEPENDENT ON
+  // PURPOSE. An earlier version bound the winner into the SQL (`id != ?`) while
+  // keying the memo on conceptId alone, and asserted that one concept can only
+  // win with one termId per call. THAT IS FALSE: a concept may carry several
+  // English strings (UNIQUE is per (concept_id, lang, text), migration 045:48),
+  // book_term_preference is keyed on the ENGLISH STRING (migration 048:109-115),
+  // and applyPreference (conceptResolver.js:501-508) sets winner.termId to an
+  // ARBITRARY term of the concept — not necessarily its head form. So a
+  // preference on one of a concept's English strings and not another produces
+  // two different winner termIds for one conceptId in one call. The first hit's
+  // winner was then frozen into the SQL exclusion and reused for every later
+  // hit on the same conceptId, making SEGMENT ORDER decide whether the editor
+  // saw `alternative` or `missing` — §C18 reproduced one level up, inside the
+  // fix round that had just corrected an instance of it for `outOfScope`.
+  // Measured 2026-08-11 (whole-branch review, fix round 1) by swapping segment
+  // order alone with everything else held constant. Excluding the winner in JS
+  // instead removes the winner from the cache key entirely: the cached rows no
+  // longer depend on which hit populated them first, so order cannot matter.
+  const siblingStmt = db.prepare(
+    `SELECT id AS termId, text FROM concept_term
+      WHERE concept_id = ? AND lang = 'is'
+      ORDER BY rank, id`
+  );
+  const isTermsOf = new Map();
+  const isTermsFor = (conceptId) => {
+    let s = isTermsOf.get(conceptId);
+    if (s === undefined) {
+      s = siblingStmt.all(conceptId);
+      isTermsOf.set(conceptId, s);
+    }
+    return s;
+  };
+
+  const result = {};
+  let unscopedHits = 0; // §item-1c: accumulated across the call, logged once — never per segment
   for (const seg of segments) {
     const matches = [];
     const issues = [];
-
     if (!seg.enContent) {
       result[seg.segmentId] = { matches, issues };
       continue;
     }
 
-    // Track consumed character ranges so shorter terms that overlap with
-    // longer already-matched terms are skipped. Terms are sorted longest-first,
-    // so "melting point" claims its range before "melting" is checked.
-    const consumed = []; // [{start, end}]
-
-    // One automaton pass per segment, reduced to the earliest whole-word
-    // occurrence per headword. The loop below is UNCHANGED: `terms` order is the
-    // homograph precedence policy and `consumed` claims spans in exactly that
-    // sequence.
     const firstByHeadword = findFirstOccurrences(automaton, seg.enContent);
+    if (scope.unscoped) unscopedHits += firstByHeadword.size;
 
-    for (const term of terms) {
-      const enMatch = firstByHeadword.get(term.headwordId);
-
-      if (enMatch) {
-        const matchStart = enMatch.index;
-        const matchEnd = matchStart + enMatch.length;
-
-        // Skip if this match overlaps with an already-consumed range
-        const overlaps = consumed.some((r) => matchStart < r.end && matchEnd > r.start);
-        if (overlaps) continue;
-
-        // Claim this range
-        consumed.push({ start: matchStart, end: matchEnd });
-
-        // Find best translation (primary domain first)
-        const sorted = [...term.translations].sort((a, b) => {
-          if (a.isPrimary && !b.isPrimary) return -1;
-          if (!a.isPrimary && b.isPrimary) return 1;
-          if (a.status === 'approved' && b.status !== 'approved') return -1;
-          if (a.status !== 'approved' && b.status === 'approved') return 1;
-          return 0;
-        });
-
-        const primary = sorted[0];
-        matches.push({
-          headwordId: term.headwordId,
-          english: term.english,
-          icelandic: primary.icelandic,
-          subjects: primary.subjects,
-          status: primary.status,
-          isPrimary: primary.isPrimary,
-          isFallback: term.isFallback,
-          position: matchStart,
-          translations: sorted.map((t) => ({
-            id: t.id,
-            icelandic: t.icelandic,
-            subjects: t.subjects,
-            status: t.status,
-            isPrimary: t.isPrimary,
-            isFallback: term.isFallback,
-          })),
-        });
-
-        // Check if any approved translation appears in IS text
-        if (!term.isFallback && seg.isContent) {
-          const approvedTranslations = term.translations.filter((t) => t.status === 'approved');
-          if (approvedTranslations.length > 0) {
-            const anyFound = approvedTranslations.some((t) => {
-              t.isRegex.lastIndex = 0;
-              return t.isRegex.test(seg.isContent);
-            });
-
-            if (!anyFound) {
-              issues.push({
-                type: 'missing',
-                headwordId: term.headwordId,
-                english: term.english,
-                expected: approvedTranslations[0].icelandic,
-                message: `„${term.english}" → „${approvedTranslations[0].icelandic}" fannst ekki`,
-              });
-            }
-          }
-        }
-      }
+    // ⚠️ RESOLVE FIRST, THEN ORDER, THEN TILE — and the order of those three is
+    // the whole behaviour. Under the old model the tier was known from the SQL
+    // row, so `terms` could be pre-partitioned; here the tier is only known
+    // after resolve(). Tiling before resolving would let a fallback term claim
+    // a span an in-scope term wanted, inverting item 18's rule that the book's
+    // own domain always wins an overlap.
+    const hits = [];
+    for (const [headwordId, occ] of firstByHeadword) {
+      const english = englishById.get(headwordId);
+      const res = resolveOnce(english);
+      // §C43 / D7: the placeholder is a well-formed head form that is not a
+      // word. It must never reach an editor. This does NOT close §C43.
+      if (res.winner && res.winner.text === PLACEHOLDER_TEXT) continue;
+      // 🔴 THREE STATES, NOT TWO — whole-branch review, 2026-08-11.
+      // `resolve()` returns `winner: null` for THREE different reasons and this
+      // line used to read `const isFallback = !res.winner`, unioning them:
+      //   ① no in-scope candidate at all   — the OLD isFallback, and its only meaning
+      //   ② an in-scope POSITION TIE       — two of the book's OWN domain's concepts
+      //                                      answer at the same priority with different
+      //                                      Icelandic head forms, so the resolver
+      //                                      refuses to guess (conceptResolver.js:616-625)
+      //   ③ an unregistered book           — fail-closed, ruled, warn-logged
+      // Under the union, ② was served by the ① path: with nothing offerable the
+      // match was DROPPED at :1541, and with an out-of-scope candidate present
+      // the panel was handed `outOfScope[0]` — a term from a domain NOT in this
+      // book's chain — with `subjects: []`, while the book's own tied answers
+      // appeared nowhere in the payload. Measured over the real corpus, per book:
+      // 437/914 (efnafraedi-2e), 2,334/373 (liffraedi-2e, orverufraedi),
+      // 1,224/308 (edlisfraedi-2e), 1,185/275 (stjornufraedi) English strings
+      // dropped / mis-answered. `tied` was read NOWHERE in this file.
+      //
+      // A tie is IN SCOPE. It is not a fallback and must not tile like one.
+      const tiedTerms = (res.tied || []).filter((t) => t.text !== PLACEHOLDER_TEXT);
+      const isTied = !res.winner && tiedTerms.length > 0;
+      const isFallback = !res.winner && !isTied;
+      // ⚠️ §C43 / D7 (fix round 2, Finding 1) — the guard above only covers the
+      // WINNER. On a fallback match winner is null, and outOfScope/alsoInScope
+      // are built from headForm() (conceptResolver.js:353-356, :404-414),
+      // which for the 201 placeholder-only concepts IS '[vantar]'. Filtering
+      // here is what makes "never reaches an editor" true for BOTH paths — a
+      // fallback match's suggestion (outOfScope) and an in-scope match's
+      // alternative sibling (alsoInScope). The isFallback guard immediately
+      // below then drops a hit left with nothing to offer, exactly as it
+      // already did for a genuinely empty outOfScope. Deliberately NOT
+      // promoting an alsoInScope alternative to winner when the winner IS the
+      // placeholder — dropping the whole match there can suppress a real
+      // answer at a lower position; that tradeoff is out of remit here.
+      const offerable = res.outOfScope.filter((t) => t.text !== PLACEHOLDER_TEXT);
+      const alts = (res.alsoInScope || []).filter((t) => t.text !== PLACEHOLDER_TEXT);
+      if (isFallback && offerable.length === 0) continue; // nothing to offer
+      // ⚠️ Finding 2 (fix round 2) — conceptResolver.js:124-129's `hits`
+      // statement has NO ORDER BY, so `outOfScope` — unlike every other list
+      // the resolver returns (`atBest` sorts by conceptId; `alsoFrom` sorts by
+      // position, conceptId) — inherits raw SQL row order. `outOfScope` was
+      // designed as a report, not an answer; this function is the first
+      // caller to read `outOfScope[0]` as one. Sorting here, AFTER the
+      // placeholder filter so the two compose, is what keeps a fallback
+      // answer deterministic instead of reproducing §C18's row-order defect
+      // inside the model built to end it. Do not add ORDER BY to
+      // conceptResolver for this — out of scope for this file's fix.
+      offerable.sort((a, b) => a.conceptId - b.conceptId);
+      // ⚠️ RECOVER THE termIds THE RESOLVER DROPS. `tied` entries are
+      // {conceptId, text, domain} — `asWinner` carries a termId, the tie list
+      // does not. Two consumers here need it: the paradigm lookup in the
+      // Icelandic-side check (`paradigmFor(stmt, undefined)` would reach
+      // better-sqlite3 with an undefined binding and THROW, i.e. a 500 on the
+      // editor's /terms request), and `translations[].id`, which every other
+      // in-scope answer carries. `isTermsFor` is already memoised per concept,
+      // so this costs one statement per distinct tied concept per call.
+      const tied = tiedTerms.map((t) => ({
+        ...t,
+        termId: (isTermsFor(t.conceptId).find((s) => s.text === t.text) || {}).termId,
+      }));
+      hits.push({ headwordId, english, occ, res, isFallback, isTied, tied, offerable, alts });
     }
 
+    hits.sort(
+      (a, b) =>
+        Number(a.isFallback) - Number(b.isFallback) || // in-scope claims spans first
+        b.english.length - a.english.length || // "melting point" before "melting"
+        a.headwordId - b.headwordId // deterministic; the golden rests on it
+    );
+
+    const consumed = [];
+    for (const hit of hits) {
+      const start = hit.occ.index;
+      const end = start + hit.occ.length;
+      if (consumed.some((r) => start < r.end && end > r.start)) continue;
+      consumed.push({ start, end });
+
+      const winner = hit.res.winner;
+      const alts = hit.alts; // already placeholder-filtered above
+      // ⚠️ `status` is a constant, not a lifecycle readout. Emitted to keep
+      // the response shape stable for the existing client, which renders it
+      // as an approval badge
+      // (segment-editor.js:2467-2470): every term now shows ✓, which IS
+      // truthful under the concept model, since there is no proposed tier —
+      // the corpus is Árnastofnun's, imported by an operator, and
+      // concept_term has no status column at all.
+      matches.push({
+        headwordId: hit.headwordId,
+        english: hit.english,
+        // ⚠️ `icelandic: null` ON A TIE IS THE HONEST ANSWER, and it is safe on
+        // both client paths — verified 2026-08-11 by reading them: the term
+        // popup renders `termInfo.translations[]` and never `match.icelandic`
+        // (public/js/segment-editor.js:2463-2482), and `highlightTermsInHtml`
+        // reads only `m.english` (public/js/term-highlight.js:42-50). Inventing
+        // a value here would be the guessing conceptResolver §6 step 5 forbids.
+        icelandic: winner ? winner.text : hit.isTied ? null : (hit.offerable[0] || {}).text || null,
+        // A tie's domains are REAL and in this book's chain — unlike a fallback,
+        // whose `subjects: []` is what hid that its answer came from outside the
+        // chain. Deduped: two tied concepts usually share the same domain.
+        subjects: winner
+          ? [winner.domain]
+          : hit.isTied
+            ? [...new Set(hit.tied.map((t) => t.domain).filter(Boolean))]
+            : [],
+        status: 'approved',
+        isPrimary: Boolean(winner),
+        isFallback: hit.isFallback,
+        // NEW (2026-08-11): the book's own domain offers >1 equally-ranked
+        // answer and the resolver declined to pick. B4c's preference UI is what
+        // resolves it permanently; until then the panel shows the choice.
+        isTied: hit.isTied,
+        position: start,
+        // ⚠️ A FALLBACK ENTRY HAS `id: undefined`, DROPPED BY JSON.stringify —
+        // NOT PRESENT AS `null`. `hit.offerable`/`hit.res.outOfScope` entries
+        // are shaped {conceptId, text, domain} (conceptResolver.
+        // resolveCandidates, step 2); they carry no termId, unlike
+        // `winner`/`alsoInScope`, which do. This differs from the old model,
+        // where every translation row always carried a real translation id.
+        // Measured 2026-08-10 — no current client reads translations[].id, so
+        // this is left as-is rather than fabricated; a future consumer
+        // needing a stable fallback handle should read this comment rather
+        // than rediscover the gap.
+        translations: (winner ? [winner, ...alts] : hit.isTied ? hit.tied : hit.offerable).map(
+          (t) => ({
+            id: t.termId,
+            icelandic: t.text,
+            subjects: t.domain ? [t.domain] : [],
+            status: 'approved',
+            isPrimary: winner ? t.termId === winner.termId : false,
+            isFallback: hit.isFallback,
+          })
+        ),
+      });
+
+      // ⚠️ `isFallback` AND `!winner` ARE NO LONGER THE SAME PREDICATE — 2026-08-11.
+      // This comment used to explain, at length, that they were: that
+      // `isFallback = !res.winner` made them one test written twice, and that no
+      // fixture could make them disagree. That was true and is now FALSE — a TIE
+      // has no winner and is NOT a fallback, which is the whole point of the
+      // three-state split at :1526. A fixture that makes them disagree is
+      // exactly what the tie tests below assert.
+      //
+      // The checks now: the span was claimed (structural — we are inside the
+      // tiler), the segment has Icelandic content to check against, and the hit
+      // is not a fallback (a fallback has no in-scope answer, so there is
+      // nothing to be consistent WITH). A tie DOES have in-scope answers — more
+      // than one — so it flows through, into its own arm below.
+      if (hit.isFallback || !seg.isContent) continue;
+
+      const matchesForm = (term) => {
+        // ⚠️ `term.termId == null` is REACHABLE, not defensive noise: a tied
+        // candidate's termId is recovered by text lookup at :1553 and can come
+        // back undefined if the resolver's chosen text is not among the
+        // concept's own Icelandic terms. `paradigmStmt.get(undefined)` throws in
+        // better-sqlite3 — a 500 on the editor's /terms request — so the empty
+        // paradigm (surface form only) is the degradation, matching what ~70% of
+        // this corpus's Icelandic terms get anyway for want of a BÍN entry.
+        const paradigm = term.termId == null ? [] : paradigmFor(paradigmStmt, term.termId);
+        const re = buildInflectionRegex(term.text, paradigm);
+        // Insurance, not correction: wholeWordRegex always returns a fresh
+        // RegExp per call today, so lastIndex is already 0 on arrival and this
+        // is presently a no-op. It becomes load-bearing the moment anyone
+        // memoises buildInflectionRegex per termId — a stateful /g regex lies
+        // on alternate .test() calls otherwise.
+        re.lastIndex = 0;
+        return re.test(seg.isContent);
+      };
+
+      // ── THE TIE ARM ────────────────────────────────────────────────────────
+      // Any of the equally-ranked answers is correct usage, so the check is
+      // "did the editor use ONE of them", not "did they use THE one" — there is
+      // no THE one, which is why the resolver returned a tie.
+      //
+      // ⚠️ THIS RESTORES A CHECK THE CUT-OVER SILENTLY REMOVED, it does not add
+      // a new one. Under the old model these strings had a single winner and got
+      // an ordinary missing/alternative issue; the union at :1526 sent them down
+      // the fallback path, where `hit.isFallback` skipped the Icelandic-side
+      // check entirely. QA went quiet on exactly the terms with a real choice.
+      if (hit.isTied) {
+        if (hit.tied.some(matchesForm)) continue;
+        const options = hit.tied.map((t) => t.text);
+        issues.push({
+          type: 'missing',
+          headwordId: hit.headwordId,
+          english: hit.english,
+          // `expected` stays a single string so every existing consumer keeps
+          // working; `options` carries the full truth for the ones that can use
+          // it. hit.tied is ordered by the resolver's conceptId sort, so this is
+          // deterministic rather than row-order dependent (§C18).
+          expected: options[0],
+          options,
+          message: `„${hit.english}“ → ${options.map((o) => `„${o}“`).join(' eða ')} fannst ekki`,
+        });
+        continue;
+      }
+
+      if (matchesForm(winner)) continue;
+
+      // D5: the resolver returns ONE winner, so a legitimate synonym would
+      // start failing. Say "you used a known alternative" instead of "missing".
+      // `alts` is the CROSS-concept population (alsoInScope); isTermsFor is the
+      // INTRA-concept population (this concept's own OTHER Icelandic terms,
+      // winner excluded here in JS — see the isTermsFor comment above for why
+      // that exclusion cannot live in the SQL/memo instead).
+      const used =
+        alts.find(matchesForm) ||
+        isTermsFor(winner.conceptId).find((t) => t.termId !== winner.termId && matchesForm(t));
+      issues.push(
+        used
+          ? {
+              type: 'alternative',
+              headwordId: hit.headwordId,
+              english: hit.english,
+              expected: winner.text,
+              used: used.text,
+              message: `„${hit.english}“ → „${winner.text}“ (notað: „${used.text}“)`,
+            }
+          : {
+              type: 'missing',
+              headwordId: hit.headwordId,
+              english: hit.english,
+              expected: winner.text,
+              message: `„${hit.english}“ → „${winner.text}“ fannst ekki`,
+            }
+      );
+    }
     result[seg.segmentId] = { matches, issues };
   }
-
+  if (scope.unscoped && unscopedHits > 0) {
+    log.warn(
+      { bookSlug, reason: scope.unscoped, hits: unscopedHits },
+      'terminology: book has no domain scope; matcher emitted 0 matches'
+    );
+  }
   return result;
 }
 
@@ -1872,10 +1989,22 @@ function getAddedTerms(options = {}) {
  * @param {string} isContent
  * @param {string|null} bookSlug
  * @param {string} [segmentId]
- * @returns {Array<{type, headwordId, english, expected, message}>}
+ * @param {number|string} [chapter] - Chapter scope; same contract as
+ *   findTermsInSegments (undefined → 0 book default, -1 → appendices, the
+ *   sentinel word 'appendices' throws). ⚠️ It follows `segmentId`, so a caller
+ *   passing four arguments is NOT scoping by chapter.
+ * @returns {Array<{type, headwordId, english, expected, message, options?}>}
+ *   `options` is present only on a position-tie `missing` issue, where several
+ *   equally-ranked Icelandic answers are all acceptable.
  */
-function checkSegmentConsistency(enContent, isContent, bookSlug = null, segmentId = 'seg') {
-  const res = findTermsInSegments([{ segmentId, enContent, isContent }], bookSlug);
+function checkSegmentConsistency(
+  enContent,
+  isContent,
+  bookSlug = null,
+  segmentId = 'seg',
+  chapter
+) {
+  const res = findTermsInSegments([{ segmentId, enContent, isContent }], bookSlug, chapter);
   return res[segmentId]?.issues || [];
 }
 
@@ -1886,10 +2015,13 @@ function checkSegmentConsistency(enContent, isContent, bookSlug = null, segmentI
  *
  * @param {Array<{segmentId, enContent, isContent}>} segments
  * @param {string|null} bookSlug
+ * @param {number|string} [chapter] - Chapter scope; same contract as
+ *   findTermsInSegments (undefined → 0 book default, -1 → appendices, the
+ *   sentinel word 'appendices' throws).
  * @returns {Array<{headwordId, english, expected, count, segments: string[]}>}
  */
-function buildModuleTerminologyReport(segments, bookSlug = null) {
-  const res = findTermsInSegments(segments, bookSlug);
+function buildModuleTerminologyReport(segments, bookSlug = null, chapter) {
+  const res = findTermsInSegments(segments, bookSlug, chapter);
   const byTerm = new Map();
   for (const [segId, { issues }] of Object.entries(res)) {
     for (const issue of issues) {
@@ -2113,6 +2245,7 @@ module.exports = {
 
   // Query
   getStats,
+  normalizeChapterArg,
   findTermsInSegments,
   translationTier,
   checkSegmentConsistency,

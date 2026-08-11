@@ -999,7 +999,11 @@ router.get(
       }));
 
       // Pass book slug for domain-priority ranking
-      const termMatches = terminology.findTermsInSegments(segments, req.params.book);
+      const termMatches = terminology.findTermsInSegments(
+        segments,
+        req.params.book,
+        req.chapterNum
+      );
 
       res.json({
         moduleId: req.params.moduleId,

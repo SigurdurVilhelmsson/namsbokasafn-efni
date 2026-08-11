@@ -12,6 +12,23 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const terminologyService = require('../services/terminologyService');
 const { createTestDb } = require('./helpers/terminologyTestDb');
+const freshMigratedDb = require('./helpers/freshMigratedDb');
+const { seedBooks } = require('../scripts/lib/scratchCorpus');
+
+function addConceptIn(db, domain) {
+  return Number(db.prepare('INSERT INTO concept (domain) VALUES (?)').run(domain).lastInsertRowid);
+}
+// ⚠️ `source` is TEXT NOT NULL (migration 045:45). Nothing outside the importer
+// reads it, so a fixture literal is safe — but omitting it fails every insert.
+function addTermIn(db, conceptId, lang, text, rank = 1) {
+  return Number(
+    db
+      .prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?,?,?,?,'test')"
+      )
+      .run(conceptId, lang, text, rank).lastInsertRowid
+  );
+}
 
 let db;
 
@@ -599,19 +616,26 @@ describe('rejectTranslation()', () => {
     expect(row.status).toBe('proposed');
   });
 
-  it('rejected translations vanish from lookupTerm and findTermsInSegments', () => {
+  // ⚠️ §C36 B4b-1 — THE MATCHER HALF OF THIS TEST IS DELETED, THE CRUD HALF
+  // KEPT. It used to assert that a rejected translation vanished from BOTH
+  // lookupTerm and findTermsInSegments. `lookupTerm` still reads the old
+  // tables, so that half is real coverage and stays. The matcher no longer
+  // reads them at all — and `concept_term` has NO status column, so "rejected"
+  // has no counterpart to port to. Asserting `matches` is empty here would have
+  // passed for the wrong reason: not because rejection hid the term, but
+  // because the concept tables were empty. That is the green-forever class this
+  // task exists to remove.
+  it('rejected translations vanish from lookupTerm', () => {
     const { trId } = insertFullTerm({
       english: 'molecule',
       icelandic: 'sameind',
       status: 'approved',
     });
+    // POSITIVE CONTROL: the term is findable BEFORE the rejection, so the
+    // absence below cannot be satisfied by a lookupTerm that finds nothing.
+    expect(terminologyService.lookupTerm('molecule')).toHaveLength(1);
     terminologyService.rejectTranslation(trId, 'u', 'U', '');
     expect(terminologyService.lookupTerm('molecule')).toHaveLength(0);
-    const res = terminologyService.findTermsInSegments([
-      { segmentId: 's1', enContent: 'a molecule here', isContent: 'texti' },
-    ]);
-    expect(res.s1.matches).toHaveLength(0);
-    expect(res.s1.issues).toHaveLength(0);
   });
 });
 
@@ -758,330 +782,6 @@ describe('headword format (via getHeadword)', () => {
 });
 
 // =====================
-// findTermsInSegments()
-// =====================
-describe('findTermsInSegments()', () => {
-  it('finds approved term in EN source text', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-
-    const segments = [
-      {
-        segmentId: 'seg1',
-        enContent: 'A molecule is made of atoms',
-        isContent: 'Sameind er gerð úr frumeinddum',
-      },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    expect(result.seg1.matches).toHaveLength(1);
-    expect(result.seg1.matches[0].english).toBe('molecule');
-  });
-
-  it('reports missing issue when IS translation not found', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-
-    const segments = [
-      { segmentId: 'seg1', enContent: 'A molecule is here', isContent: 'Frumeind er hér' },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    expect(result.seg1.issues).toHaveLength(1);
-    expect(result.seg1.issues[0].type).toBe('missing');
-    expect(result.seg1.issues[0].expected).toBe('sameind');
-  });
-
-  it('no issues when approved term IS found in IS text', () => {
-    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
-
-    const segments = [
-      { segmentId: 'seg1', enContent: 'An atom is small', isContent: 'Frumeind er lítil' },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    expect(result.seg1.matches).toHaveLength(1);
-    expect(result.seg1.issues).toHaveLength(0);
-  });
-
-  it('matches inflected forms in IS text (no missing issue)', () => {
-    insertFullTerm({
-      english: 'reversible',
-      icelandic: 'afturkræfur',
-      status: 'approved',
-      inflections: JSON.stringify(['afturkræfan', 'afturkræfa', 'afturkræfum']),
-    });
-
-    const segments = [
-      {
-        segmentId: 'seg1',
-        enContent: 'This is a reversible reaction',
-        isContent: 'Þetta er afturkræfa efnahvörf',
-      },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    expect(result.seg1.matches).toHaveLength(1);
-    // Inflected form "afturkræfa" should match — no missing issue
-    expect(result.seg1.issues).toHaveLength(0);
-  });
-
-  it('includes all translations in match info', () => {
-    const hwId = insertHeadword({ english: 'cell' });
-    const tr1 = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
-    const tr2 = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
-    addSubject(tr1, 'chemistry');
-    addSubject(tr2, 'biology');
-
-    const segments = [
-      { segmentId: 'seg1', enContent: 'A cell contains', isContent: 'Fruma inniheldur' },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    expect(result.seg1.matches).toHaveLength(1);
-    expect(result.seg1.matches[0].translations).toHaveLength(2);
-    // No missing issue because "fruma" (one of the approved translations) is present
-    expect(result.seg1.issues).toHaveLength(0);
-  });
-
-  it('ranks primary translation by book domain', () => {
-    const hwId = insertHeadword({ english: 'cell' });
-    const tr1 = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
-    const tr2 = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
-    addSubject(tr1, 'chemistry');
-    addSubject(tr2, 'biology');
-
-    const segments = [
-      { segmentId: 'seg1', enContent: 'A cell contains', isContent: 'Fruma inniheldur' },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments, 'liffraedi-2e');
-    expect(result.seg1.matches[0].icelandic).toBe('fruma');
-    expect(result.seg1.matches[0].isPrimary).toBe(true);
-  });
-
-  it('longer term takes priority over shorter substring (melting point vs melting)', () => {
-    insertFullTerm({ english: 'melting', icelandic: 'bráðnun', status: 'approved' });
-    insertFullTerm({ english: 'melting point', icelandic: 'bræðslumark', status: 'approved' });
-
-    const segments = [
-      {
-        segmentId: 'seg1',
-        enContent: 'The melting point of iron is high',
-        isContent: 'Bræðslumark járns er hátt',
-      },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    // Should match "melting point" (longer), NOT "melting" (substring)
-    expect(result.seg1.matches).toHaveLength(1);
-    expect(result.seg1.matches[0].english).toBe('melting point');
-    // "bræðslumark" is in the IS text — no missing issue
-    expect(result.seg1.issues).toHaveLength(0);
-  });
-
-  it('matches both terms when they appear independently (not overlapping)', () => {
-    insertFullTerm({ english: 'melting', icelandic: 'bráðnun', status: 'approved' });
-    insertFullTerm({ english: 'melting point', icelandic: 'bræðslumark', status: 'approved' });
-
-    const segments = [
-      {
-        segmentId: 'seg1',
-        enContent: 'Melting occurs at the melting point',
-        isContent: 'Bráðnun á sér stað við bræðslumark',
-      },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    // "melting point" matches at position 25, "melting" at position 0 — no overlap
-    expect(result.seg1.matches).toHaveLength(2);
-    expect(result.seg1.issues).toHaveLength(0);
-  });
-});
-
-// =====================
-// findTermsInSegments() — subject scoping (item N)
-// =====================
-describe('findTermsInSegments() — subject scoping', () => {
-  const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
-
-  it('surfaces a fallback match when the only translation is another subject — no issues', () => {
-    // Item 18: "mole" with only a biology translation surfaces in a chemistry
-    // book as a BADGED fallback suggestion (isFallback) — but never as a QA
-    // issue: a chemistry editor is not warned for skipping a biology term.
-    const hw = insertHeadword({ english: 'mole' });
-    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
-    addSubject(tr, 'biology');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('one mole of carbon', 'eitt kolefnismagn'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].isFallback).toBe(true);
-    expect(result.s.matches[0].icelandic).toBe('moldvarpa');
-    expect(result.s.matches[0].isPrimary).toBe(false);
-    expect(result.s.matches[0].translations[0].isFallback).toBe(true);
-    // The IS text does NOT contain 'moldvarpa' — an in-scope term would issue here.
-    expect(result.s.issues).toHaveLength(0);
-  });
-
-  it('keeps an in-subject translation', () => {
-    const hw = insertHeadword({ english: 'acid' });
-    const tr = insertTranslation(hw, { icelandic: 'sýra', status: 'approved' });
-    addSubject(tr, 'chemistry');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('an acid reacts', 'sýra hvarfast'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].icelandic).toBe('sýra');
-  });
-
-  it('keeps a general-tagged translation', () => {
-    const hw = insertHeadword({ english: 'energy' });
-    const tr = insertTranslation(hw, { icelandic: 'orka', status: 'approved' });
-    addSubject(tr, 'general');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('energy flows', 'orka flæðir'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].icelandic).toBe('orka');
-  });
-
-  it('keeps an untagged translation (no subjects)', () => {
-    const hw = insertHeadword({ english: 'thing' });
-    insertTranslation(hw, { icelandic: 'hlutur', status: 'approved' }); // no addSubject
-
-    const result = terminologyService.findTermsInSegments(
-      seg('a thing here', 'hlutur hér'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].icelandic).toBe('hlutur');
-  });
-
-  it('homograph: keeps only the in-subject sense in primary + dropdown', () => {
-    const hw = insertHeadword({ english: 'mole' });
-    const chem = insertTranslation(hw, { icelandic: 'mól', status: 'approved' });
-    const bio = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
-    addSubject(chem, 'chemistry');
-    addSubject(bio, 'biology');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('one mole of', 'eitt mól af'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].translations).toHaveLength(1);
-    expect(result.s.matches[0].icelandic).toBe('mól');
-  });
-
-  it('missing-term issue uses only the in-subject approved translation', () => {
-    // chem 'mól' + bio 'moldvarpa'; IS contains the biology homograph but not 'mól'.
-    // Before scoping: anyFound is true (moldvarpa present) → no issue (wrong).
-    // After scoping: only 'mól' counts → it's absent → one issue expecting 'mól'.
-    const hw = insertHeadword({ english: 'mole' });
-    const chem = insertTranslation(hw, { icelandic: 'mól', status: 'approved' });
-    const bio = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
-    addSubject(chem, 'chemistry');
-    addSubject(bio, 'biology');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('one mole of', 'ein moldvarpa grefur'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.issues).toHaveLength(1);
-    expect(result.s.issues[0].expected).toBe('mól');
-  });
-
-  it('no book subject (unmapped) → no filtering, all senses kept', () => {
-    const hw = insertHeadword({ english: 'mole' });
-    const chem = insertTranslation(hw, { icelandic: 'mól', status: 'approved' });
-    const bio = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
-    addSubject(chem, 'chemistry');
-    addSubject(bio, 'biology');
-
-    const result = terminologyService.findTermsInSegments(seg('one mole of', 'eitt mól af'));
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].translations).toHaveLength(2);
-  });
-
-  it('fallback match prefers the approved foreign translation over a proposed one', () => {
-    const hw = insertHeadword({ english: 'mole' });
-    // Proposed inserted FIRST so DB order alone would rank it first.
-    const trProposed = insertTranslation(hw, { icelandic: 'jarðvarpa', status: 'proposed' });
-    const trApproved = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
-    addSubject(trProposed, 'biology');
-    addSubject(trApproved, 'biology');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('one mole of carbon', 'eitt kolefnismagn'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches[0].icelandic).toBe('moldvarpa');
-    expect(result.s.matches[0].translations.map((t) => t.icelandic)).toEqual([
-      'moldvarpa',
-      'jarðvarpa',
-    ]);
-  });
-
-  it('fallback with only proposed translations still surfaces, marked proposed', () => {
-    const hw = insertHeadword({ english: 'mole' });
-    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'proposed' });
-    addSubject(tr, 'biology');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('one mole of carbon', 'eitt kolefnismagn'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].isFallback).toBe(true);
-    expect(result.s.matches[0].status).toBe('proposed');
-    expect(result.s.issues).toHaveLength(0);
-  });
-
-  it('normal (in-scope) matches carry isFallback: false at both levels', () => {
-    const hw = insertHeadword({ english: 'acid' });
-    const tr = insertTranslation(hw, { icelandic: 'sýra', status: 'approved' });
-    addSubject(tr, 'chemistry');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('an acid reacts', 'sýra hvarfast'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches[0].isFallback).toBe(false);
-    expect(result.s.matches[0].translations[0].isFallback).toBe(false);
-  });
-
-  it('a longer fallback term never shadows an overlapping in-scope term (in-scope wins)', () => {
-    // chemistry book: in-scope 'electron' (approved 'rafeind') overlaps
-    // biology-only 'electron transport chain'. The in-scope term must claim
-    // the span — its match AND its missing-term issue must both survive.
-    const hwShort = insertHeadword({ english: 'electron' });
-    const trShort = insertTranslation(hwShort, { icelandic: 'rafeind', status: 'approved' });
-    addSubject(trShort, 'chemistry');
-    const hwLong = insertHeadword({ english: 'electron transport chain' });
-    const trLong = insertTranslation(hwLong, {
-      icelandic: 'rafeindaflutningskeðja',
-      status: 'approved',
-    });
-    addSubject(trLong, 'biology');
-
-    const result = terminologyService.findTermsInSegments(
-      seg('the electron transport chain moves', 'eitthvað flyst'),
-      'efnafraedi-2e'
-    );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.matches[0].english).toBe('electron');
-    expect(result.s.matches[0].isFallback).toBe(false);
-    expect(result.s.issues).toHaveLength(1);
-    expect(result.s.issues[0].expected).toBe('rafeind');
-  });
-});
-
-// =====================
 // importGlossaryTerms()
 // =====================
 describe('importGlossaryTerms()', () => {
@@ -1120,79 +820,6 @@ describe('importGlossaryTerms()', () => {
     expect(result.enriched).toBe(1);
     const terms = terminologyService.searchTerms('molecule');
     expect(terms.terms[0].translations[0].definitionIs).toBe('Hópur frumeinda');
-  });
-});
-
-// =====================
-// Live terminology QA (Unit 3)
-// =====================
-describe('checkSegmentConsistency()', () => {
-  it('flags a segment whose IS omits an approved term translation', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    const issues = terminologyService.checkSegmentConsistency(
-      'A molecule is small.',
-      'Eitthvað er lítið.',
-      'efnafraedi-2e'
-    );
-    expect(issues).toHaveLength(1);
-    expect(issues[0].english).toBe('molecule');
-    expect(issues[0].expected).toBe('sameind');
-  });
-
-  it('passes when the approved translation is present', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    const issues = terminologyService.checkSegmentConsistency(
-      'A molecule is small.',
-      'Sameind er lítil.',
-      'efnafraedi-2e'
-    );
-    expect(issues).toHaveLength(0);
-  });
-
-  it('does not flag proposed-only terms (no approved translation)', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'proposed' });
-    const issues = terminologyService.checkSegmentConsistency(
-      'A molecule is small.',
-      'Eitthvað er lítið.',
-      'efnafraedi-2e'
-    );
-    expect(issues).toHaveLength(0);
-  });
-
-  it('foreign-only term produces no issue even though it matches as fallback (item 18)', () => {
-    const hw = insertHeadword({ english: 'mole' });
-    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
-    addSubject(tr, 'biology');
-
-    const issues = terminologyService.checkSegmentConsistency(
-      'one mole of carbon',
-      'eitt kolefnismagn',
-      'efnafraedi-2e'
-    );
-    expect(issues).toHaveLength(0);
-  });
-});
-
-describe('buildModuleTerminologyReport()', () => {
-  it('aggregates violations across segments by term', () => {
-    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
-    const report = terminologyService.buildModuleTerminologyReport(
-      [
-        {
-          segmentId: 's1',
-          enContent: 'A molecule and an atom.',
-          isContent: 'Eitthvað og frumeind.',
-        },
-        { segmentId: 's2', enContent: 'Another molecule.', isContent: 'Annað eitthvað.' },
-      ],
-      'efnafraedi-2e'
-    );
-    const mol = report.find((r) => r.english === 'molecule');
-    expect(mol.count).toBe(2);
-    expect(mol.segments.sort()).toEqual(['s1', 's2']);
-    // "atom" is correctly translated in s1 → not reported
-    expect(report.find((r) => r.english === 'atom')).toBeUndefined();
   });
 });
 
@@ -1330,132 +957,447 @@ describe('exportBookGlossary()', () => {
 });
 
 // =====================
-// findTermsInSegments() — Unicode word boundary (Icelandic special letters)
+// findTermsInSegments() — blocks PORTED onto the concept model (§C36 B4b-1)
 // =====================
-describe('findTermsInSegments() — Unicode word boundary', () => {
+//
+// These blocks stood here before the cut-over against `createTestDb()`'s copy of
+// the six OLD terminology tables. Their PROPERTIES survive the model change —
+// Unicode word-boundary matching on the Icelandic side, and deterministic match
+// ordering — so they are ported rather than deleted. The blocks whose properties
+// did NOT survive (subject scoping via `book_subject_mapping`, and
+// checkSegmentConsistency's proposed/approved gating) are deleted instead:
+// `concept_term` has no status column, so there is nothing to port them to.
+//
+// ⚠️⚠️ THIS BLOCK'S afterAll RESTORES THE FILE-LEVEL HANDLE — `_setTestDb(db)`,
+// NEVER `_setTestDb(null)`. THE HAZARD REVERSES FOR A MID-FILE BLOCK, and
+// copying the end-of-file idiom by pattern-match here is silently destructive.
+// The file establishes its injection ONCE, in `beforeAll`. `getDb()`
+// (terminologyService.js:93-103) returns `_testDb` if set and OTHERWISE OPENS
+// THE REAL sessions.db at resolveDbPath(). The two concept-model blocks at the
+// END of this file may safely null it — nothing runs after them — but FIVE
+// blocks run after this one (getBookSubject, getTranslationReviewQueue,
+// getReviewQueueCounts, approveTranslation-with-subjects, batchApprove-
+// Translations) and every one of them relies on that single injection. A null
+// here would point all five at the developer's real editorial database, with
+// no test going red to say so.
+// ⚠️ THE DESCRIBE NAME IS DELIBERATELY BROADER THAN "Unicode + ordering", which
+// is what it said until 2026-08-11 — by then it also held the translations[]
+// shape, the non-overlapping-spans case, buildModuleTerminologyReport and
+// checkSegmentConsistency, none of which that name describes. What these share
+// is the FIXTURE, not the subject: one migrated DB, seeded books, concept rows
+// cleared between tests. Keep that the grouping rule; if you add a test that
+// needs a different fixture, start a new block rather than widening this name
+// again.
+describe('terminology QA over the concept model — ported + new (B4b-1)', () => {
+  let cdb;
   const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
 
+  beforeAll(() => {
+    ({ db: cdb } = freshMigratedDb());
+    const realLog = console.log;
+    console.log = () => {}; // seedBooks narrates to stdout; not this suite's output
+    try {
+      seedBooks(cdb);
+    } finally {
+      console.log = realLog;
+    }
+    terminologyService._setTestDb(cdb);
+  });
+
+  afterAll(() => {
+    terminologyService._setTestDb(db); // ⚠️ NOT null — see the banner above.
+    cdb && cdb.close();
+  });
+
+  // One migrated DB for the whole block, cleared between tests, rather than a
+  // freshMigratedDb() per test: each call materialises a ~22 MB database in
+  // /tmp (see the helper's own cleanup comment), and this block has enough
+  // tests for that to matter.
+  beforeEach(() => {
+    cdb.exec('DELETE FROM concept_term');
+    cdb.exec('DELETE FROM concept');
+    cdb.exec('DELETE FROM book_term_preference');
+  });
+
+  // ── Unicode word boundary on the ICELANDIC side ──
+  //
+  // ⚠️ EVERY "no issue" TEST BELOW ASSERTS `isFallback: false` IN THE SAME TEST,
+  // and that is the positive control, not decoration. `issues: []` is an absence
+  // assertion with TWO uninteresting ways to pass: the matcher found nothing at
+  // all, or it found a FALLBACK match — and a fallback match never emits an
+  // issue by design. Only an in-scope match with a winner actually runs the
+  // Icelandic-side check these tests exist to exercise.
+
   it('no missing-term issue when an Icelandic-initial term is present, capitalized', () => {
-    // "þungi" starts with þ → ASCII \b fails; the term IS present (sentence start)
-    insertFullTerm({ english: 'mass', icelandic: 'þungi', status: 'approved' });
-    const result = terminologyService.findTermsInSegments(
-      seg('The mass of the object', 'Þungi hlutarins er mikill')
+    // "þungi" starts with þ → an ASCII \b fails here; the term IS present.
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'mass');
+    addTermIn(cdb, c, 'is', 'þungi');
+    const r = terminologyService.findTermsInSegments(
+      seg('The mass of the object', 'Þungi hlutarins er mikill'),
+      'efnafraedi-2e'
     );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.issues).toHaveLength(0);
+    expect(r.s.matches).toHaveLength(1);
+    expect(r.s.matches[0].isFallback).toBe(false);
+    expect(r.s.issues).toEqual([]);
   });
 
   it('no missing-term issue when an Icelandic-initial term is present, lowercase', () => {
-    insertFullTerm({ english: 'mass', icelandic: 'þungi', status: 'approved' });
-    const result = terminologyService.findTermsInSegments(
-      seg('a small mass here', 'það er lítill þungi hér')
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'mass');
+    addTermIn(cdb, c, 'is', 'þungi');
+    const r = terminologyService.findTermsInSegments(
+      seg('a small mass here', 'það er lítill þungi hér'),
+      'efnafraedi-2e'
     );
-    expect(result.s.issues).toHaveLength(0);
+    expect(r.s.matches[0].isFallback).toBe(false);
+    expect(r.s.issues).toEqual([]);
   });
 
-  it('handles other Icelandic-initial forms (öl, ólífa)', () => {
-    insertFullTerm({ english: 'ale', icelandic: 'öl', status: 'approved' });
-    const result = terminologyService.findTermsInSegments(seg('good ale', 'Öl er gott'));
-    expect(result.s.issues).toHaveLength(0);
+  it('handles other Icelandic-initial forms (öl)', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'ale');
+    addTermIn(cdb, c, 'is', 'öl');
+    const r = terminologyService.findTermsInSegments(
+      seg('good ale', 'Öl er gott'),
+      'efnafraedi-2e'
+    );
+    expect(r.s.matches[0].isFallback).toBe(false);
+    expect(r.s.issues).toEqual([]);
   });
 
   it('still flags a genuinely absent term (no substring false-positive)', () => {
-    // term "mól" present only inside "mólekúl" → should still be reported missing
-    insertFullTerm({ english: 'mole', icelandic: 'mól', status: 'approved' });
-    const result = terminologyService.findTermsInSegments(
-      seg('one mole', 'ein mólekúl hér') // no standalone "mól"
+    // 'mól' occurs only INSIDE 'mólekúl' → still missing.
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'mole');
+    addTermIn(cdb, c, 'is', 'mól');
+    const r = terminologyService.findTermsInSegments(
+      seg('one mole', 'ein mólekúl hér'),
+      'efnafraedi-2e'
     );
-    expect(result.s.matches).toHaveLength(1);
-    expect(result.s.issues).toHaveLength(1);
-    expect(result.s.issues[0].type).toBe('missing');
+    expect(r.s.matches).toHaveLength(1);
+    expect(r.s.issues).toHaveLength(1);
+    expect(r.s.issues[0].type).toBe('missing');
   });
 
   it('ASCII term still matches case-insensitively (regression guard)', () => {
-    insertFullTerm({ english: 'acid', icelandic: 'sýra', status: 'approved' });
-    const result = terminologyService.findTermsInSegments(seg('an acid', 'Sýra og basi'));
-    expect(result.s.issues).toHaveLength(0);
-  });
-});
-
-describe('findTermsInSegments() — deterministic ordering (C24 oracle prerequisite)', () => {
-  // The next two tests are CONTRACT PINS, NOT REGRESSION GUARDS: on the bundled
-  // SQLite engine both already pass without the `h.id ASC, t.id ASC` tie-breaks.
-  // NOT because `GROUP BY` forces a sort — EXPLAIN QUERY PLAN shows no separate
-  // B-tree step for grouping here, since the plan drives the join from a full
-  // scan of `t` and each t.id is visited (and its group closed) exactly once, so
-  // grouping falls out of the loop nesting for free. Sibling-translation order
-  // instead falls out of that scan's row order; subject order falls out of the
-  // `ts` autoindex seek order (PRIMARY KEY(translation_id, subject), ascending)
-  // used to satisfy the LEFT JOIN. Both verified directly (temporarily dropping
-  // the tie-breaks and re-running); PRAGMA reverse_unordered_selects toggled
-  // either way changes neither. That stability is an artifact of the current
-  // query plan, not a documented guarantee — a different WHERE clause shape or a
-  // planner that stops driving from `t` could break it, which is why the
-  // tie-breaks are explicit rather than relied upon. The THIRD test below is
-  // NOT a contract pin: it fails without `h.id ASC` (verified the same way) — it
-  // engineers h.id order and t.id order to disagree, which the scan's single
-  // t-order cannot satisfy for both at once.
-  it('orders sibling translations of one headword by translation id', () => {
-    // Both approved, both same subject => the ranking comparator returns 0 for every
-    // comparison, so sorted[0] is raw SQL row order. Production is in exactly this
-    // state for 7,096 of 7,402 multi-translation headwords (spec §4.11).
-    const hwId = insertHeadword({ english: 'bond' });
-    const t2 = insertTranslation(hwId, { icelandic: 'efnatengi', status: 'approved' });
-    const t1 = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
-    addSubject(t2, 'chemistry');
-    addSubject(t1, 'chemistry');
-
-    const res = terminologyService.findTermsInSegments(
-      [{ segmentId: 's', enContent: 'The bond is strong.', isContent: 'Tengið er sterkt.' }],
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'acid');
+    addTermIn(cdb, c, 'is', 'sýra');
+    const r = terminologyService.findTermsInSegments(
+      seg('an acid', 'Sýra og basi'),
       'efnafraedi-2e'
     );
-    // t2 was inserted first, so it has the lower id and must win under `t.id ASC`.
-    expect(t2).toBeLessThan(t1);
-    expect(res.s.matches[0].translations.map((t) => t.id)).toEqual([t2, t1]);
-    expect(res.s.matches[0].icelandic).toBe('efnatengi');
+    expect(r.s.matches[0].isFallback).toBe(false);
+    expect(r.s.issues).toEqual([]);
   });
 
-  it('returns subject arrays in sorted order', () => {
-    const { trId } = insertFullTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
+  // ── Deterministic ordering ──
+  //
+  // ⚠️ ONE OF THE THREE ORIGINAL ORDERING TESTS HAS NO PORT, AND ITS PROPERTY IS
+  // GONE, NOT MOVED. `returns subject arrays in sorted order` seeded one
+  // translation with three subjects and asserted they came back sorted. Under
+  // the concept model a concept has exactly ONE `domain`, and the matcher emits
+  // `subjects: [winner.domain]` — a one-element array cannot be mis-sorted, so
+  // there is no ordering left to pin. The SHAPE it depended on is pinned instead
+  // by the `translations[]` block below. `orders sibling translations of one
+  // headword by translation id` is likewise absorbed there: siblings now arrive
+  // as `[winner, ...alsoInScope]`, which conceptResolver sorts by (position,
+  // conceptId), not by row id.
+
+  it('orders equal-length matches by headwordId, not by position in the text', () => {
+    // 'aaaa' and 'bbbb' tie on length, so ONLY the `a.headwordId - b.headwordId`
+    // tie-break in `hits.sort` decides. Since B4b-1 `headwordId` is
+    // MIN(concept_term.id) for the English string (conceptMatcher.
+    // loadEnglishEntries), so seeding 'aaaa' FIRST gives it the lower id.
+    // 'bbbb' is placed EARLIER IN THE TEXT — that is the discrimination: without
+    // the id tie-break, match order would follow text position and answer
+    // ['bbbb', 'aaaa'].
+    const cA = addConceptIn(cdb, 'chemistry');
+    const idA = addTermIn(cdb, cA, 'en', 'aaaa');
+    addTermIn(cdb, cA, 'is', 'is-a');
+    const cB = addConceptIn(cdb, 'chemistry');
+    const idB = addTermIn(cdb, cB, 'en', 'bbbb');
+    addTermIn(cdb, cB, 'is', 'is-b');
+    expect(idA).toBeLessThan(idB); // the premise the assertion rests on
+
+    const r = terminologyService.findTermsInSegments(
+      seg('A bbbb and an aaaa appear here.', 'is-b og is-a birtast hér.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s.matches.map((m) => m.english)).toEqual(['aaaa', 'bbbb']);
+    expect(r.s.matches.map((m) => m.headwordId)).toEqual([idA, idB]);
+    // Positive control that position really does disagree with the answer:
+    // 'bbbb' is at 2 and 'aaaa' at 14, so a position-ordered matcher would have
+    // returned the reverse.
+    expect(r.s.matches.map((m) => m.position)).toEqual([14, 2]);
+  });
+
+  // ── translations[]: the response shape the segment editor renders ──
+  //
+  // ⚠️ THE BRIEF'S EXPLICIT CONTRACT — "same keys as today, so no client
+  // changes" — WAS PINNED BY NO TEST until this one. Task 4's reviewer flagged
+  // it independently.
+
+  it('emits translations[] with the documented keys, winner first', () => {
+    // ⚠️ A TWO-ENTRY translations[] REQUIRES TWO IN-SCOPE CONCEPTS SHARING THE
+    // ENGLISH STRING. `translations` is `[winner, ...alsoInScope]`, and
+    // conceptResolver's alsoFrom() builds one head form per OTHER concept —
+    // a concept's own rank-2 sibling is reached only on the ISSUE path, never
+    // here. Seeding one concept with two Icelandic terms yields length 1.
+    const chem = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, chem, 'en', 'cell');
+    const chemTerm = addTermIn(cdb, chem, 'is', 'rafhlaða');
+    const bio = addConceptIn(cdb, 'biology'); // efnafraedi-2e position 3 → in scope
+    addTermIn(cdb, bio, 'en', 'cell');
+    addTermIn(cdb, bio, 'is', 'fruma');
+
+    const r = terminologyService.findTermsInSegments(
+      seg('A cell contains', 'Rafhlaða inniheldur'),
+      'efnafraedi-2e'
+    );
+    expect(r.s.matches).toHaveLength(1);
+    const m = r.s.matches[0];
+    // The match level. `isPrimary` is asserted here deliberately: it was the one
+    // property of the deleted `ranks primary translation by book domain` test
+    // that no surviving concept-model test covered.
+    expect(m).toMatchObject({
+      english: 'cell',
+      icelandic: 'rafhlaða', // chemistry@1 beats biology@3
+      subjects: ['chemistry'],
       status: 'approved',
-      subjects: ['physics', 'biology', 'chemistry'],
+      isPrimary: true,
+      isFallback: false,
     });
-    expect(trId).toBeGreaterThan(0);
-    const res = terminologyService.findTermsInSegments(
-      [{ segmentId: 's', enContent: 'A molecule forms.', isContent: 'Sameind myndast.' }],
-      'efnafraedi-2e'
-    );
-    expect(res.s.matches[0].subjects).toEqual(['biology', 'chemistry', 'physics']);
+
+    expect(m.translations).toHaveLength(2);
+    expect(Object.keys(m.translations[0]).sort()).toEqual([
+      'icelandic',
+      'id',
+      'isFallback',
+      'isPrimary',
+      'status',
+      'subjects',
+    ]);
+    expect(m.translations[0]).toEqual({
+      id: chemTerm,
+      icelandic: 'rafhlaða',
+      subjects: ['chemistry'],
+      status: 'approved',
+      isPrimary: true,
+      isFallback: false,
+    });
+    expect(m.translations[1]).toMatchObject({
+      icelandic: 'fruma',
+      subjects: ['biology'],
+      isPrimary: false,
+      isFallback: false,
+    });
+    expect(typeof m.translations[1].id).toBe('number');
   });
 
-  it('orders distinct headwords of equal length by headword id, even when translation id and text position disagree', () => {
-    // h1 ('aaaa') and h2 ('bbbb') tie on LENGTH(english) = 4, so only `h.id ASC`
-    // breaks the tie — `t.id ASC` alone is NOT enough. h2's translation is
-    // inserted FIRST (lower t.id) while h2 itself has the HIGHER headword id, so
-    // the two orderings disagree: sorting by t.id would put h2 before h1; sorting
-    // by h.id must put h1 before h2. termMap is a Map keyed on headword_id built
-    // in row order, so first-appearance order becomes matches[] order — the same
-    // order that decides consumed-span-claiming precedence between homographs
-    // (comment above `const terms =`). 'bbbb' is also placed EARLIER in the text
-    // than 'aaaa', to rule out match order being driven by text position rather
-    // than by h.id.
-    const h1 = insertHeadword({ english: 'aaaa' });
-    const h2 = insertHeadword({ english: 'bbbb' });
-    expect(h1).toBeLessThan(h2);
-    const tB = insertTranslation(h2, { icelandic: 'is-b', status: 'approved' });
-    const tA = insertTranslation(h1, { icelandic: 'is-a', status: 'approved' });
-    expect(tB).toBeLessThan(tA); // t.id order disagrees with h.id order
+  it('a FALLBACK translations[] entry carries NO id, while an in-scope one does', () => {
+    // ⚠️ THE KNOWN ASYMMETRY, asserted deliberately rather than left implicit.
+    // `outOfScope` entries are {conceptId, text, domain} — conceptResolver
+    // gives them no termId — so `id: t.termId` is `undefined` and JSON.stringify
+    // DROPS the key entirely. `toEqual` treats an undefined property as absent,
+    // which is exactly why this is asserted with toBeUndefined() instead.
+    //
+    // THE POSITIVE CONTROL IS IN THIS SAME TEST: an in-scope term in the SAME
+    // segment, whose id must be a number. Without it, an assertion that
+    // `id` is undefined passes against a matcher that returns nothing at all.
+    const chem = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, chem, 'en', 'cell');
+    addTermIn(cdb, chem, 'is', 'rafhlaða');
+    // mathematics is out of efnafraedi-2e's chain — domains.js says so in as
+    // many words ("out of scope on purpose, not by oversight").
+    const maths = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, maths, 'en', 'eigenvalue');
+    addTermIn(cdb, maths, 'is', 'eigingildi');
 
-    const res = terminologyService.findTermsInSegments([
-      {
-        segmentId: 's',
-        enContent: 'A bbbb and an aaaa appear here.',
-        isContent: 'is-b og is-a birtast hér.',
-      },
+    const r = terminologyService.findTermsInSegments(
+      seg('A cell and an eigenvalue.', ''),
+      'efnafraedi-2e'
+    );
+    const inScope = r.s.matches.find((m) => m.english === 'cell');
+    const fallback = r.s.matches.find((m) => m.english === 'eigenvalue');
+    expect(fallback.isFallback).toBe(true);
+    expect(fallback.translations[0].id).toBeUndefined();
+    // CONTROL: the in-scope entry in the same response DOES carry a real id.
+    expect(inScope.isFallback).toBe(false);
+    expect(typeof inScope.translations[0].id).toBe('number');
+  });
+
+  it('matches both terms when they appear independently (not overlapping)', () => {
+    // The complement of the overlap-tiler test: 'melting' first occurs at 0 and
+    // 'melting point' at 22, so neither claim consumes the other's span and BOTH
+    // survive. Ordering is longest-first, so the longer term leads.
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'melting');
+    addTermIn(cdb, a, 'is', 'bráðnun');
+    const b = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, b, 'en', 'melting point');
+    addTermIn(cdb, b, 'is', 'bræðslumark');
+
+    const r = terminologyService.findTermsInSegments(
+      seg('Melting occurs at the melting point', 'Bráðnun á sér stað við bræðslumark'),
+      'efnafraedi-2e'
+    );
+    expect(r.s.matches.map((m) => ({ english: m.english, position: m.position }))).toEqual([
+      { english: 'melting point', position: 22 },
+      { english: 'melting', position: 0 },
     ]);
-    expect(res.s.matches.map((m) => m.headwordId)).toEqual([h1, h2]);
+    // Both Icelandic terms are present, so neither issues. The two matches above
+    // are the control that makes this absence mean something.
+    expect(r.s.issues).toEqual([]);
+  });
+
+  it('aggregates violations across segments by term (buildModuleTerminologyReport)', () => {
+    // The submit gate an editor actually hits. It is a thin aggregation over
+    // findTermsInSegments, so it goes red the moment the matcher stops issuing.
+    const mol = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, mol, 'en', 'molecule');
+    addTermIn(cdb, mol, 'is', 'sameind');
+    const atom = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, atom, 'en', 'atom');
+    addTermIn(cdb, atom, 'is', 'frumeind');
+
+    const report = terminologyService.buildModuleTerminologyReport(
+      [
+        {
+          segmentId: 's1',
+          enContent: 'A molecule and an atom.',
+          isContent: 'Eitthvað og frumeind.',
+        },
+        { segmentId: 's2', enContent: 'Another molecule.', isContent: 'Annað eitthvað.' },
+      ],
+      'efnafraedi-2e'
+    );
+    const molecule = report.find((r) => r.english === 'molecule');
+    expect(molecule.count).toBe(2);
+    expect(molecule.segments.sort()).toEqual(['s1', 's2']);
+    expect(molecule.expected).toBe('sameind');
+    // 'atom' is correctly translated in s1 → not reported. The two-count
+    // assertion above is this absence's positive control: the report is
+    // demonstrably non-empty and demonstrably discriminating.
+    expect(report.find((r) => r.english === 'atom')).toBeUndefined();
+  });
+
+  // ── item 18, END-TO-END: a fallback match never becomes a QA issue ──
+  //
+  // Added in fix round 1 after review flagged the deleted `surfaces a fallback
+  // match when the only translation is another subject — no issues` as the last
+  // test of this rule.
+  //
+  // ⚠️ THE REVIEW'S PREMISE WAS "nothing exercises the `hit.isFallback` arm,
+  // because every surviving fallback test uses isContent: ''". THAT IS FALSE,
+  // AND IT WAS MEASURED RATHER THAN ARGUED: `a fallback term never produces an
+  // issue — QA must not demand another domain's term`, ~90 lines below, passes
+  // `isContent: 'Ekkert.'` — non-empty, and not containing 'myndlíking' — so it
+  // reaches the guard and IS stopped by the isFallback term. Mutating the code
+  // to give out-of-scope concepts a winner turns that test red too. The arm was
+  // covered. Do not repeat the premise; check `isContent` before believing it.
+  //
+  // ⚠️ WHAT THIS TEST ADDS, THEN, IS THE DISCRIMINATION — not the coverage. The
+  // surviving test asserts a fallback match produces no issue, in a segment
+  // where NOTHING could produce one. It cannot tell "fallbacks are exempt" from
+  // "the issue path is dead". This test puts an in-scope term and a fallback
+  // term in ONE segment, with the Icelandic missing BOTH translations, so the
+  // in-scope term's issue is the control for the fallback term's silence.
+  //
+  // ⚠️ SEVERITY STATED HONESTLY: `hit.isFallback` is `!winner` by construction
+  // today, so dropping that term is currently a behavioural no-op and a naive
+  // mutation does NOT go red. The exposure is a FUTURE change in which resolve()
+  // returns a winner for an out-of-scope concept — plausible, since the fallback
+  // path already builds an offerable suggestion. Verified by mutating exactly
+  // that (winner falls back to offerable[0], isFallback term dropped): this test
+  // goes red.
+  it('a fallback match emits NO issue even when the Icelandic lacks its term, while an in-scope one does', () => {
+    // THE DISCRIMINATION IS INSIDE ONE SEGMENT: two terms, identical treatment
+    // on the Icelandic side (neither translation is present), opposite outcomes
+    // — decided ONLY by scope. That is item 18's editorial rule stated exactly:
+    // an editor is answerable for their own book's domains and not for others'.
+    const inScope = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, inScope, 'en', 'acid');
+    addTermIn(cdb, inScope, 'is', 'sýra');
+    // mathematics is out of efnafraedi-2e's chain, per domains.js.
+    const outOfScope = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, outOfScope, 'en', 'eigenvalue');
+    addTermIn(cdb, outOfScope, 'is', 'eigingildi');
+
+    // Non-empty Icelandic containing NEITHER translation — so the issue path is
+    // reached for both, rather than short-circuiting on `!seg.isContent`.
+    const r = terminologyService.findTermsInSegments(
+      seg('An acid and an eigenvalue.', 'Eitthvað allt annað hér.'),
+      'efnafraedi-2e'
+    );
+
+    // Both matched, one of each tier: the control for everything below.
+    expect(r.s.matches).toHaveLength(2);
+    expect(r.s.matches.find((m) => m.english === 'eigenvalue').isFallback).toBe(true);
+    expect(r.s.matches.find((m) => m.english === 'acid').isFallback).toBe(false);
+
+    // THE ASSERTION: exactly one issue, and it is the IN-SCOPE term's. The
+    // fallback term is silent despite being in identical shape on the IS side.
+    expect(r.s.issues).toHaveLength(1);
+    expect(r.s.issues[0]).toMatchObject({ english: 'acid', expected: 'sýra' });
+  });
+
+  // ── checkSegmentConsistency(): 2 of the 4 deleted tests, ported ──
+  //
+  // ⚠️ THIS FUNCTION IS LIVE PRODUCTION CODE — exported by terminologyService
+  // and called from segmentEditorService — and Ruling 1's blanket deletion of
+  // its block left it with ZERO tests. Ruling 1's stated rationale was "blocks
+  // pinning semantics the concept model removes (proposed/approved gating)", and
+  // only ONE of the four deleted tests actually did that. These two pinned
+  // something the model change does not touch: that the function works at all,
+  // in both directions.
+  //
+  // Not ported, deliberately, and the reasoning is in the report:
+  //   * `does not flag proposed-only terms` — PURE proposed/approved gating.
+  //     `concept_term` has no status column; there is nothing to port it to.
+  //   * `foreign-only term produces no issue ... (item 18)` — NOT gating-
+  //     dependent, but its property is exactly what the item-18 test directly
+  //     above now pins, and checkSegmentConsistency is a three-line delegation
+  //     to findTermsInSegments. Porting it here would duplicate that coverage
+  //     without adding a failure mode the two tests below do not already have:
+  //     between them they prove the wrapper propagates issues in BOTH
+  //     directions, which is the only thing the wrapper itself can get wrong.
+  it('checkSegmentConsistency flags a segment whose Icelandic omits the resolved term', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'molecule');
+    addTermIn(cdb, c, 'is', 'sameind');
+    const issues = terminologyService.checkSegmentConsistency(
+      'A molecule is small.',
+      'Eitthvað er lítið.',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(1);
+    expect(issues[0]).toMatchObject({ english: 'molecule', expected: 'sameind' });
+  });
+
+  it('checkSegmentConsistency passes when the resolved term IS present', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'molecule');
+    addTermIn(cdb, c, 'is', 'sameind');
+    // POSITIVE CONTROL, in this same test: the identical segment with the
+    // Icelandic term ABSENT must still flag. Without it, `toHaveLength(0)`
+    // passes against a wrapper that returns [] unconditionally — which is the
+    // whole failure mode this pair exists to catch.
+    expect(
+      terminologyService.checkSegmentConsistency(
+        'A molecule is small.',
+        'Eitthvað er lítið.',
+        'efnafraedi-2e'
+      )
+    ).toHaveLength(1);
+    expect(
+      terminologyService.checkSegmentConsistency(
+        'A molecule is small.',
+        'Sameind er lítil.',
+        'efnafraedi-2e'
+      )
+    ).toHaveLength(0);
   });
 });
 
@@ -1742,5 +1684,424 @@ describe('batchApproveTranslations()', () => {
     expect(() => terminologyService.batchApproveTranslations(tooMany, 'u', 'U')).toThrow(
       'Too many ids (max 200)'
     );
+  });
+});
+
+describe('normalizeChapterArg() — the sentinel WORD is the hazard, not the string type', () => {
+  it('defaults an omitted chapter to 0, the book-default sentinel', () => {
+    expect(terminologyService.normalizeChapterArg(undefined)).toBe(0);
+  });
+  it('accepts -1, the appendices sentinel', () => {
+    expect(terminologyService.normalizeChapterArg(-1)).toBe(-1);
+  });
+  it('accepts an integer-like string, because req params and argv are strings', () => {
+    expect(terminologyService.normalizeChapterArg('3')).toBe(3);
+  });
+  // THE CONTROL: each of these silently returns book-default rows if passed
+  // through to buildPreferenceMap's `chapter IN (0, ?)`. They must throw.
+  it.each([['appendices'], [null], [Number.NaN], [3.5], ['ch03']])(
+    'throws on %p rather than silently answering from the book default',
+    (bad) => {
+      expect(() => terminologyService.normalizeChapterArg(bad)).toThrow(
+        /chapter must be an integer/
+      );
+    }
+  );
+});
+
+// ⚠️ THIS BLOCK AND THE "IS-side check" BLOCK BELOW IT MUST STAY LAST IN THE
+// FILE, in that order. Both blocks' afterEach calls _setTestDb(null), and the
+// file-level injection is established ONCE in beforeAll — so a null mid-file
+// unsets it for every later block, and getDb() then opens the REAL
+// sessions.db (terminologyService.js:93).
+describe('findTermsInSegments() — concept model (B4b-1)', () => {
+  let cdb;
+  beforeEach(() => {
+    ({ db: cdb } = freshMigratedDb());
+    seedBooks(cdb); // server/scripts/lib/scratchCorpus.js — registers the 6 books + priorities
+    terminologyService._setTestDb(cdb);
+  });
+  afterEach(() => {
+    terminologyService._setTestDb(null);
+    cdb && cdb.close();
+  });
+
+  it('matches an English term and emits the resolved Icelandic', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'An atom is small.', isContent: 'Frumeind er lítil.' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.matches[0]).toMatchObject({
+      english: 'atom',
+      icelandic: 'frumeind',
+      isFallback: false,
+    });
+    expect(r.s1.matches[0].position).toBe(3);
+  });
+
+  // THE OVERLAP TILER — the property that must survive the cut-over.
+  it('a longer term claims its span and the shorter overlapping one is dropped', () => {
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'melting point');
+    addTermIn(cdb, a, 'is', 'bræðslumark');
+    const b = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, b, 'en', 'melting');
+    addTermIn(cdb, b, 'is', 'bráðnun');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'The melting point is high.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches.map((m) => m.english)).toEqual(['melting point']);
+  });
+
+  // D4.2 — the same English string on two concepts is ONE match, and which
+  // one wins comes from resolve(), not from row order.
+  it('emits ONE match for an English string carried by two concepts', () => {
+    const chem = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, chem, 'en', 'nucleus');
+    addTermIn(cdb, chem, 'is', 'kjarni');
+    const bio = addConceptIn(cdb, 'biology');
+    addTermIn(cdb, bio, 'en', 'nucleus');
+    addTermIn(cdb, bio, 'is', 'frumukjarni');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'The nucleus.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.matches[0].icelandic).toBe('kjarni'); // chemistry book -> chemistry domain
+  });
+
+  // Item-18 semantics: a foreign-domain-only term still MATCHES, badged.
+  // ⚠️ `mathematics` is the right domain to test with, and not an arbitrary
+  // one: efnafraedi-2e's chain is ['chemistry','physics','biology'], and
+  // domains.js says in as many words that mathematics is "deliberately absent
+  // from the chemistry books ... out of scope on purpose, not by oversight".
+  // A made-up domain would also be out of scope, but would not prove the rule.
+  it('an out-of-scope concept still matches, flagged isFallback', () => {
+    const c = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, c, 'en', 'eigenvalue');
+    addTermIn(cdb, c, 'is', 'eigingildi');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'An eigenvalue.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches[0]).toMatchObject({ english: 'eigenvalue', isFallback: true });
+  });
+
+  // Fix round 1, item 1d — an unregistered book (buildScope's {unscoped:
+  // 'unregistered'}) matches NOTHING: fail-closed, per the ruling that
+  // claiming everything is in-scope with no domain priorities to rank against
+  // would be a lie. The POSITIVE CONTROL — the identical segment against a
+  // REGISTERED book — is in this same test, so it cannot pass against a
+  // matcher that emits zero matches for every input.
+  it('an unregistered book matches nothing; the SAME term matches a registered book', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const seg = [{ segmentId: 's1', enContent: 'An atom is small.', isContent: '' }];
+
+    const unregistered = terminologyService.findTermsInSegments(seg, 'not-a-real-book-slug');
+    expect(unregistered.s1.matches).toEqual([]);
+
+    // Positive control: the matcher is not broken outright.
+    const registered = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e');
+    expect(registered.s1.matches).toHaveLength(1);
+    expect(registered.s1.matches[0].english).toBe('atom');
+  });
+
+  // D7 / §C43.
+  it('never emits a match whose winner is the [vantar] placeholder', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'abembryonic pole');
+    addTermIn(cdb, c, 'is', '[vantar]');
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'The abembryonic pole.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toEqual([]);
+  });
+
+  // Fix round 2, Finding 1 — the guard above only covers the WINNER. A
+  // fallback match's `outOfScope` suggestion is built from headForm(), which
+  // for a placeholder-only concept IS '[vantar]' — so the previous test
+  // (which plants an IN-SCOPE concept and asserts toEqual([])) is vacuous
+  // against this path: it would pass against any matcher that has gone
+  // silent altogether. The POSITIVE CONTROL is in this SAME test — a second,
+  // non-placeholder out-of-scope term in the same segment — so it cannot.
+  it('a fallback match whose only Icelandic term is [vantar] produces no match, and a real fallback term in the same segment still does', () => {
+    const placeholderOnly = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, placeholderOnly, 'en', 'nullcline');
+    addTermIn(cdb, placeholderOnly, 'is', '[vantar]');
+
+    const realFallback = addConceptIn(cdb, 'mathematics');
+    addTermIn(cdb, realFallback, 'en', 'manifold');
+    addTermIn(cdb, realFallback, 'is', 'margbreytni');
+
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'A nullcline and a manifold.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    // The placeholder-only term is silent; the real fallback term still surfaces.
+    expect(r.s1.matches.map((m) => m.english)).toEqual(['manifold']);
+    expect(r.s1.matches[0]).toMatchObject({ isFallback: true, icelandic: 'margbreytni' });
+  });
+
+  // Fix round 2, Finding 2 — conceptResolver's `hits` query has no ORDER BY,
+  // so `outOfScope` inherits raw SQL row order (empirically: the EN
+  // concept_term ROW insertion order, not conceptId order) unless this
+  // function imposes one. Genuinely discriminating: `higherConcept` is
+  // created SECOND (so it has the HIGHER conceptId) but its EN term ROW is
+  // inserted FIRST — verified directly against the schema to put it ahead in
+  // raw SQL order. Sorted by conceptId, `lowerConcept` (created first) must
+  // win; unsorted, `higherConcept` would (confirmed by temporarily removing
+  // the sort during development — this test then asserted 'haerra', not
+  // 'laegra').
+  it('a fallback with two out-of-scope candidates picks the LOWER conceptId, not SQL row order', () => {
+    const lowerConcept = addConceptIn(cdb, 'mathematics'); // created first -> lower conceptId
+    const higherConcept = addConceptIn(cdb, 'astronomy'); // created second -> higher conceptId
+
+    // Insert the HIGHER concept's EN term row FIRST, the LOWER concept's SECOND.
+    addTermIn(cdb, higherConcept, 'en', 'sharedFallbackTerm');
+    addTermIn(cdb, lowerConcept, 'en', 'sharedFallbackTerm');
+    addTermIn(cdb, lowerConcept, 'is', 'laegra');
+    addTermIn(cdb, higherConcept, 'is', 'haerra');
+
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: 'A sharedFallbackTerm here.', isContent: '' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.matches[0].icelandic).toBe('laegra'); // lower conceptId, sorted — not 'haerra'
+  });
+
+  it('returns empty for a segment with no EN content, without querying', () => {
+    const r = terminologyService.findTermsInSegments(
+      [{ segmentId: 's1', enContent: '', isContent: 'x' }],
+      'efnafraedi-2e'
+    );
+    expect(r.s1).toEqual({ matches: [], issues: [] });
+  });
+});
+
+// ⚠️ THIS BLOCK MUST STAY LAST IN THE FILE — see the comment on the block
+// above it, which this one shares the hazard with.
+describe('findTermsInSegments() — the IS-side check (B4b-1)', () => {
+  let cdb;
+  beforeEach(() => {
+    ({ db: cdb } = freshMigratedDb());
+    seedBooks(cdb);
+    terminologyService._setTestDb(cdb);
+  });
+  afterEach(() => {
+    terminologyService._setTestDb(null);
+    cdb && cdb.close();
+  });
+
+  const seg = (en, is) => [{ segmentId: 's1', enContent: en, isContent: is }];
+
+  it('no issue when the resolved term appears in the Icelandic', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const r = terminologyService.findTermsInSegments(seg('An atom.', 'Frumeind.'), 'efnafraedi-2e');
+    expect(r.s1.issues).toEqual([]);
+  });
+
+  it('reports missing when it does not', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Eitthvað annað.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues).toHaveLength(1);
+    expect(r.s1.issues[0]).toMatchObject({
+      type: 'missing',
+      english: 'atom',
+      expected: 'frumeind',
+    });
+  });
+
+  // D5 — the semantic narrowing, softened.
+  it('reports `alternative`, not `missing`, when the editor used a rank-2 sibling', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind', 1);
+    addTermIn(cdb, c, 'is', 'atóm', 2);
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Atóm er lítið.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({
+      type: 'alternative',
+      expected: 'frumeind',
+      used: 'atóm',
+    });
+  });
+
+  // THE CONTROL for the test above: the sibling is still present, but the
+  // editor's Icelandic matches NEITHER term. Proves the intra-concept lookup
+  // finds a genuine textual match rather than "any concept with ≥2 terms
+  // reports alternative" regardless of content.
+  it('the intra-concept sibling still reports missing when neither term matches', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind', 1);
+    addTermIn(cdb, c, 'is', 'atóm', 2);
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Eitthvað annað.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({ type: 'missing', expected: 'frumeind' });
+  });
+
+  // D5, the CROSS-concept arm — the OTHER population alternative must cover.
+  // Two different concepts carry the same English string; the higher-priority
+  // domain wins (efnafraedi-2e's chain is chemistry@1, physics@2 — same chain
+  // the item-18 fallback test above relies on), but the loser's head term is
+  // still a real, offerable answer via alsoInScope — the same mechanism
+  // verify-b4a-gates.js gate 3 exercises on the real corpus.
+  it('reports `alternative` when the editor used a losing CROSS-concept synonym', () => {
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'atom');
+    addTermIn(cdb, a, 'is', 'frumeind');
+    const b = addConceptIn(cdb, 'physics');
+    addTermIn(cdb, b, 'en', 'atom');
+    addTermIn(cdb, b, 'is', 'atóm');
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Atóm er lítið.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({
+      type: 'alternative',
+      expected: 'frumeind',
+      used: 'atóm',
+    });
+  });
+
+  // THE CONTROL for the test above: same two concepts, but the editor's
+  // Icelandic matches neither — proves the cross-concept arm also requires a
+  // real textual match, not just the existence of a losing candidate.
+  it('the cross-concept synonym still reports missing when neither term matches', () => {
+    const a = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, a, 'en', 'atom');
+    addTermIn(cdb, a, 'is', 'frumeind');
+    const b = addConceptIn(cdb, 'physics');
+    addTermIn(cdb, b, 'en', 'atom');
+    addTermIn(cdb, b, 'is', 'atóm');
+    const r = terminologyService.findTermsInSegments(
+      seg('An atom.', 'Eitthvað annað.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({ type: 'missing', expected: 'frumeind' });
+  });
+
+  // ⚠️ THE ORDER-INDEPENDENCE REGRESSION TEST (fix round 1, whole-branch
+  // review). A concept may carry MORE THAN ONE English string
+  // (`UNIQUE(concept_id, lang, text)` is per string, not one-per-concept), and
+  // `book_term_preference` is keyed on the ENGLISH STRING — so a preference on
+  // 'atom' but not 'atomic particle' gives the SAME concept two different
+  // winner termIds within one call, depending on which English string is being
+  // resolved. An earlier version cached this concept's sibling terms keyed on
+  // conceptId ALONE while excluding the winner in SQL — so whichever hit
+  // reached that concept FIRST decided what was cached for every LATER hit on
+  // the same concept, regardless of that later hit's own winner. Segment order
+  // is incidental to an editor; it must never decide the answer (§C18).
+  //
+  // The 'pref' segment exists ONLY to populate the concept's cache from a
+  // DIFFERENT English string's winner (atóm, via the preference) before the
+  // 'other' segment is ever resolved — this is what the old code got wrong.
+  // 'other' itself carries no preference, so its own winner is the ordinary
+  // head form (frumeind), and its Icelandic ('Atóm er lítið.') genuinely uses
+  // the sibling term — so the correct answer for 'other' is `alternative`,
+  // `used: 'atóm'`, in EVERY segment order.
+  it('the intra-concept lookup is independent of segment order, even under a book preference', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'en', 'atomic particle');
+    addTermIn(cdb, c, 'is', 'frumeind', 1);
+    const atomTermId = addTermIn(cdb, c, 'is', 'atóm', 2);
+
+    const bookId = cdb
+      .prepare("SELECT id FROM registered_books WHERE slug = 'efnafraedi-2e'")
+      .get().id;
+    cdb
+      .prepare(
+        "INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, 'atom', ?)"
+      )
+      .run(bookId, atomTermId);
+
+    const prefSeg = { segmentId: 'pref', enContent: 'An atom.', isContent: 'Ekkert hér.' };
+    const otherSeg = {
+      segmentId: 'other',
+      enContent: 'An atomic particle.',
+      isContent: 'Atóm er lítið.',
+    };
+
+    const prefFirst = terminologyService.findTermsInSegments([prefSeg, otherSeg], 'efnafraedi-2e');
+    const otherFirst = terminologyService.findTermsInSegments([otherSeg, prefSeg], 'efnafraedi-2e');
+
+    // THE ASSERTION: 'other' must answer identically regardless of which
+    // segment was resolved first within the call.
+    expect(prefFirst.other.issues).toEqual(otherFirst.other.issues);
+    expect(otherFirst.other.issues[0]).toMatchObject({
+      type: 'alternative',
+      expected: 'frumeind',
+      used: 'atóm',
+    });
+  });
+
+  // THE PARADIGM PATH. This is the discrimination the C24 golden provably
+  // lacks: strip every inflection from that fixture and it is byte-identical.
+  it('a DECLINED form matches when a paradigm is stored', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'acid');
+    const t = addTermIn(cdb, c, 'is', 'sýra');
+    cdb
+      .prepare('UPDATE concept_term SET inflections = ? WHERE id = ?')
+      .run('["sýru","sýrunni"]', t);
+    const r = terminologyService.findTermsInSegments(
+      seg('An acid.', 'Í sýrunni.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues).toEqual([]);
+  });
+
+  // THE CONTROL for the test above. Same segment, no paradigm -> reported.
+  it('the same declined form is reported missing WITHOUT a paradigm', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'acid');
+    addTermIn(cdb, c, 'is', 'sýra');
+    const r = terminologyService.findTermsInSegments(
+      seg('An acid.', 'Í sýrunni.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.issues[0]).toMatchObject({ type: 'missing' });
+  });
+
+  it('a fallback term never produces an issue — QA must not demand another domain’s term', () => {
+    const c = addConceptIn(cdb, 'literature');
+    addTermIn(cdb, c, 'en', 'metaphor');
+    addTermIn(cdb, c, 'is', 'myndlíking');
+    const r = terminologyService.findTermsInSegments(
+      seg('A metaphor.', 'Ekkert.'),
+      'efnafraedi-2e'
+    );
+    expect(r.s1.matches).toHaveLength(1);
+    expect(r.s1.issues).toEqual([]);
+  });
+
+  it('no issue when there is no Icelandic content to check', () => {
+    const c = addConceptIn(cdb, 'chemistry');
+    addTermIn(cdb, c, 'en', 'atom');
+    addTermIn(cdb, c, 'is', 'frumeind');
+    expect(
+      terminologyService.findTermsInSegments(seg('An atom.', ''), 'efnafraedi-2e').s1.issues
+    ).toEqual([]);
   });
 });

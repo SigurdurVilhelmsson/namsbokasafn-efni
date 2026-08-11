@@ -292,7 +292,13 @@ function getSegmentTerminologyWarnings(book, chapter, moduleId, segmentId, edite
     return [];
   }
   if (!enContent) return [];
-  return terminologyService.checkSegmentConsistency(enContent, editedContent, book, segmentId);
+  return terminologyService.checkSegmentConsistency(
+    enContent,
+    editedContent,
+    book,
+    segmentId,
+    chapter
+  );
 }
 
 /**
@@ -341,7 +347,7 @@ async function getModuleSpellFindings(book, chapter, moduleId) {
  */
 function getModuleTerminologyReport(book, chapter, moduleId) {
   const segments = buildEffectiveSegments(book, chapter, moduleId);
-  const violations = terminologyService.buildModuleTerminologyReport(segments, book);
+  const violations = terminologyService.buildModuleTerminologyReport(segments, book, chapter);
   return { violations, checkedSegments: segments.length };
 }
 

@@ -1385,10 +1385,28 @@
       // Live terminology QA (non-blocking): warn if the edit contradicts an
       // approved term. Advisory only — the save already succeeded.
       if (saveResult && Array.isArray(saveResult.termWarnings) && saveResult.termWarnings.length) {
+        // ⚠️ THE SERVER'S OWN `message`, NOT A RECONSTRUCTION — whole-branch
+        // review, 2026-08-11. This used to rebuild the text from `english` and
+        // `expected` and append a hardcoded "fannst ekki í þýðingunni", which is
+        // a FALSE STATEMENT for the `alternative` tier: there the editor DID use
+        // a known Icelandic term, just a different approved one, and the server
+        // already says so — „atom“ → „frumeind“ (notað: „atóm“). On the pinned
+        // C24 fixture `alternative` is 15 of 22 issues, i.e. the MAJORITY tier,
+        // and this toast fires on EVERY save.
+        //
+        // The server writes an accurate message per type (terminologyService.js,
+        // the issues.push at the end of findTermsInSegments): missing says
+        // "fannst ekki", alternative names what was used instead, and a position
+        // tie lists every equally-ranked option. Rendering `w.message` keeps
+        // this client correct for a type it has never heard of — which is what
+        // the previous version got wrong, since B4b-1 introduced exactly that.
+        //
+        // The `??` arm is for a server old enough not to send `message`; it
+        // reproduces the previous wording rather than inventing a third one.
         const names = saveResult.termWarnings
-          .map((w) => `„${w.english}“ → „${w.expected}“`)
+          .map((w) => w.message || `„${w.english}“ → „${w.expected}“ fannst ekki í þýðingunni`)
           .join(', ');
-        saveRetry.showToast(`Hugtakaviðvörun: ${names} fannst ekki í þýðingunni`, 'warn');
+        saveRetry.showToast(`Hugtakaviðvörun: ${names}`, 'warn');
       }
       // Mechanical QA findings (number slips, untranslated-EN residue) — advisory.
       if (saveResult && Array.isArray(saveResult.qaFindings) && saveResult.qaFindings.length) {

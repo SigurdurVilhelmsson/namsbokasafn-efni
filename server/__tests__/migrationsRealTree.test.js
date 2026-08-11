@@ -48,7 +48,7 @@ describe('a fresh clone, built by the migrations themselves', () => {
     db.close();
   });
 
-  it('records which mapped books a fresh clone does NOT register', () => {
+  it('registers EVERY mapped book — a fresh clone leaves none behind', () => {
     const { db } = freshDb();
     const slugs = new Set(
       db
@@ -58,15 +58,30 @@ describe('a fresh clone, built by the migrations themselves', () => {
     );
     const absent = Object.keys(BOOK_DOMAIN_PRIORITY).filter((s) => !slugs.has(s));
 
-    // ⚠️ NOT an assertion that this is correct — it is NOT. §C35:
-    // 019-register-new-books.js omits the NOT NULL registered_by column that 003
-    // declares, and INSERT OR IGNORE silently discards its two rows, while 029
-    // supplies it and succeeds; efnafraedi-2e and stjornufraedi are registered
-    // by no migration at all. Pinned so that FIXING §C35 turns this red and
-    // forces the list to be updated deliberately, rather than the improvement
-    // passing unnoticed. If this fails, read the diff before touching the list.
-    expect(absent.sort()).toEqual(
-      ['efnafraedi-2e', 'liffraedi-2e', 'orverufraedi', 'stjornufraedi'].sort()
+    // ⚠️ THIS ASSERTION INVERTED ON 2026-08-11, AND THE INVERSION IS THE POINT.
+    // It used to pin `absent` EQUAL to ['efnafraedi-2e','liffraedi-2e',
+    // 'orverufraedi','stjornufraedi'] — deliberately recording a state its own
+    // comment said was NOT correct, so that fixing §C35 would turn it red and
+    // force a considered update rather than letting the improvement pass
+    // unnoticed. Migration 049 is that fix, so the handshake is now collected:
+    // the pin becomes `[]` and stays a live detector instead of a memorial.
+    //
+    // §C35 was TWO defects: 019-register-new-books.js omits the NOT NULL
+    // `registered_by` that 003 declares (INSERT OR IGNORE swallows the
+    // violation, so its two rows silently vanished), and efnafraedi-2e +
+    // stjornufraedi were registered by no migration at all. 019 is NOT edited —
+    // migrations are append-only; 049 supersedes it.
+    //
+    // ⚠️ WHY THIS MATTERS MORE THAN IT LOOKS (§C51): since §C36 B4b-1 the
+    // matcher is fail-CLOSED, so an unregistered book matches NOTHING. A fresh
+    // install or a rebuild-from-migrations disaster recovery would have served
+    // an empty terminology panel for four of six books, silently.
+    expect(absent).toEqual([]);
+    // Presence asserted directly too, not only via the absent-list shape: a
+    // future migration that dropped a registration while also dropping the book
+    // from BOOK_DOMAIN_PRIORITY would leave `absent` empty and say nothing.
+    expect([...slugs].filter((s) => BOOK_DOMAIN_PRIORITY[s]).sort()).toEqual(
+      Object.keys(BOOK_DOMAIN_PRIORITY).sort()
     );
     db.close();
   });

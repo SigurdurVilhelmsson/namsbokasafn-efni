@@ -67,29 +67,39 @@ describe('Server startup smoke tests', () => {
   });
 
   describe('migration file inventory', () => {
-    it('all 47 migration files exist on disk', () => {
-      const migrationsDir = join(serverDir, 'migrations');
-      const files = readdirSync(migrationsDir)
+    // ⚠️ THE COUNT IS DERIVED, NOT HARDCODED — changed 2026-08-11 with migration
+    // 049. It used to assert `files.length).toBe(48)` under a test NAMED "all 47
+    // migration files exist on disk": the name and the assertion had already
+    // drifted apart by one, which is CLAUDE.md § One source of truth's warning
+    // about counts in prose, inside a test. A hardcoded total also fails on
+    // every new migration while proving nothing a derived check cannot.
+    //
+    // The properties actually worth pinning are: numbering is DENSE (no gaps, no
+    // duplicate prefixes), and the directory is non-empty by a wide margin so a
+    // broken read cannot pass vacuously.
+    it('migration files are densely numbered from 001, with no gaps or duplicates', () => {
+      const files = readdirSync(join(serverDir, 'migrations'))
         .filter((f) => f.endsWith('.js'))
         .sort();
 
-      // 48 as of migration 048-book-term-preference (bumped from 47).
-      expect(files.length).toBe(48);
-
-      // Verify sequential numbering 001-048
-      for (let i = 1; i <= 48; i++) {
-        const prefix = String(i).padStart(3, '0');
-        const match = files.find((f) => f.startsWith(prefix));
-        expect(match).toBeTruthy();
-      }
+      const numbers = files.map((f) => Number(f.slice(0, 3)));
+      expect(numbers.length).toBeGreaterThan(40); // control: not an empty read
+      expect(new Set(numbers).size).toBe(numbers.length); // no duplicate prefixes
+      expect(numbers).toEqual(Array.from({ length: numbers.length }, (_, i) => i + 1));
     });
 
-    it('migrationRunner references all 48 migrations', () => {
+    // ⚠️ Kept as a SECOND, independent expression of the coverage property that
+    // migrationRunnerCoverage.test.js owns — this one walks the numeric range and
+    // that one compares the two sets. Two shapes, one fact, on purpose: this is
+    // the check that would catch a gap in the runner's list even if a file were
+    // also missing from disk.
+    it('migrationRunner references every migration on disk', () => {
       const source = readFileSync(join(serverDir, 'services', 'migrationRunner.js'), 'utf-8');
+      const files = readdirSync(join(serverDir, 'migrations')).filter((f) => f.endsWith('.js'));
 
-      for (let i = 1; i <= 48; i++) {
-        const prefix = String(i).padStart(3, '0');
-        expect(source).toContain(`'../migrations/${prefix}-`);
+      expect(files.length).toBeGreaterThan(40); // control
+      for (const f of files) {
+        expect(source).toContain(`'../migrations/${f.replace(/\.js$/, '')}'`);
       }
     });
   });

@@ -78,6 +78,7 @@ function runAllMigrations() {
     require('../migrations/046-seed-domain-priority'),
     require('../migrations/047-reconcile-domain-priority'),
     require('../migrations/048-book-term-preference'),
+    require('../migrations/049-register-remaining-books'),
   ];
 
   let applied = 0;

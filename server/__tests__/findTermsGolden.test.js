@@ -3,8 +3,31 @@ import { readFileSync } from 'fs';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { createTestDb } = require('../__tests__/helpers/terminologyTestDb');
+const freshMigratedDb = require('../__tests__/helpers/freshMigratedDb');
+const { seedBooks } = require('../scripts/lib/scratchCorpus');
+const { seedC24Concepts, assertSeeded } = require('../__tests__/helpers/seedC24Concepts');
 const terminologyService = require('../services/terminologyService');
+
+// ⚠️ §C36 B4b-1 — THIS FILE NO LONGER USES createTestDb(). That helper is a
+// hand-maintained copy of migration 032's six OLD terminology tables and has no
+// `concept`, `concept_term`, `book_domain_priority` or `registered_books`, so
+// every call into findTermsInSegments died with `no such table:
+// book_domain_priority`. Each throwaway DB below is a freshMigratedDb() — the
+// real schema, every migration — seeded with seedBooks() for the domain
+// priorities and, where the fixture is needed, seedC24Concepts().
+
+/** A migrated DB with the six books + their domain priorities, and nothing else. */
+function conceptDb() {
+  const { db: fresh } = freshMigratedDb();
+  const realLog = console.log;
+  console.log = () => {}; // seedBooks narrates to stdout; it is not this suite's output
+  try {
+    seedBooks(fresh);
+  } finally {
+    console.log = realLog;
+  }
+  return fresh;
+}
 
 const terms = JSON.parse(
   readFileSync(new URL('./fixtures/c24-terms.json', import.meta.url), 'utf-8')
@@ -28,9 +51,21 @@ const boundaryRegex = (text) =>
 // The fixture is an ORACLE INPUT. If it loses these properties the golden keeps
 // passing while covering nothing. Each assertion names the production fact it
 // mirrors (spec §4.10 / §4.11).
-describe('c24 fixture realism', () => {
+// ⚠️ These assert the checked-in fixture's SHAPE. They call no service and are
+// green regardless of what the matcher does. They are not matcher coverage.
+describe('c24 fixture shape (does NOT exercise the matcher)', () => {
   const allTr = terms.headwords.flatMap((h) => h.translations);
 
+  // ⚠️ §C36 B4b-1 — THE ASSERTION STILL HOLDS; ITS STATED RATIONALE NO LONGER
+  // DOES, and no assertion here can see that. "Fallback-heavy for a chemistry
+  // book" was true when the tier came from `book_subject_mapping`, a SINGLE
+  // subject: everything not tagged `chemistry` was fallback. efnafraedi-2e's
+  // `book_domain_priority` chain is ['chemistry','physics','biology'], so 244 of
+  // the fixture's 326 translations are now IN SCOPE and only the 82 mathematics
+  // ones fall back — the opposite of fallback-heavy. The production figures
+  // cited (709 vs ~28194) were measured under single-subject scoping too. This
+  // test survives only because it measures the CHEMISTRY SHARE, which the model
+  // change does not move. Same class as the migration044 annotation.
   it('is fallback-heavy for a chemistry book, as production is (709 vs ~28194)', () => {
     const chem = allTr.filter((t) => t.subjects.includes('chemistry')).length;
     expect(chem / allTr.length).toBeLessThan(0.15);
@@ -100,101 +135,277 @@ describe('c24 fixture realism', () => {
   });
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// THE MIGRATION ORACLE.
-//
-// c24-golden.json was captured from the UNMODIFIED matcher at commit c991e2b8 —
-// after the ORDER BY tie-breaks landed, and before any Aho-Corasick code existed.
-// That order is not incidental: capturing it after the swap would certify the new
-// implementation against itself, and there is no observable difference between a
-// correct golden and a worthless one.
-//
-// If this ever needs regenerating, do it from a checkout at the pre-swap commit —
-// never from HEAD. Regenerate with server/scripts/capture-c24-golden.js.
-//
-// `toEqual` against checked-in JSON, deliberately NOT `toMatchSnapshot`: `-u`
-// regenerates a snapshot silently, which is the same failure this file exists to
-// prevent.
-// ─────────────────────────────────────────────────────────────────────────────
+// ⚠️ c24-golden.json is a PRE-SWAP capture. It IS still asserted against, but
+// only for the property that survived B4b-1: order-INSENSITIVE span SETS, over
+// 21 of its 24 segments. The other 3 are excluded by name in `KNOWN_CHANGED`
+// below, with their measured reasons and their own post-B4a span pins. Nothing
+// in this file is skipped. See the banner above that block for the measurement,
+// why the golden may not be regenerated, and the mapping that would reproduce it
+// byte-for-byte and was rejected. (This position used to hold the oracle's own
+// rationale; it is not restated, per § One source of truth — the banner owns it.)
 const golden = JSON.parse(
   readFileSync(new URL('./fixtures/c24-golden.json', import.meta.url), 'utf-8')
 );
 
-function seedFixture(db) {
-  const insHw = db.prepare('INSERT INTO terminology_headwords (english, pos) VALUES (?, ?)');
-  const insTr = db.prepare(
-    `INSERT INTO terminology_translations
-       (headword_id, icelandic, inflections, source, status, proposed_by, proposed_by_name)
-     VALUES (?, ?, ?, 'fixture', ?, 'u1', 'Fixture')`
-  );
-  const insSubj = db.prepare(
-    'INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
-  );
-  for (const hw of terms.headwords) {
-    const hwId = Number(insHw.run(hw.english, hw.pos).lastInsertRowid);
-    for (const tr of hw.translations) {
-      const trId = Number(
-        insTr.run(
-          hwId,
-          tr.icelandic,
-          tr.inflections ? JSON.stringify(tr.inflections) : null,
-          tr.status
-        ).lastInsertRowid
-      );
-      for (const s of tr.subjects) insSubj.run(trId, s);
-    }
-  }
-}
-
 // Module scope, not describe scope: the automaton-cache describes below point the
-// service at their own throwaway DBs and must restore this one afterwards.
+// service at their own throwaway DBs and must restore THIS one afterwards.
 let db;
 
-describe('findTermsInSegments golden equality (C24 migration oracle)', () => {
-  beforeAll(() => {
-    db = createTestDb();
-    terminologyService._setTestDb(db);
-    seedFixture(db);
+beforeAll(() => {
+  db = conceptDb();
+  seedC24Concepts(db);
+  terminologyService._setTestDb(db);
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE SEED CONTROL. Everything fixture-driven below rests on the concept tables
+// actually holding the C24 corpus; an empty seed makes every span assertion
+// compare [] to [] and pass forever.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('the C24 fixture is actually seeded into the concept model', () => {
+  it('seeds one concept per (headword, subject) and one automaton entry per distinct English string', () => {
+    const { concepts, distinctEnglish } = assertSeeded(db);
+    // 316 headwords, of which exactly one ('cell') spans two subjects -> 317.
+    expect(concepts).toBe(317);
+    // 304, not 316: twelve headwords share an English string with another
+    // headword (the fixture's within-subject collisions). This is the number the
+    // automaton is BUILT from — loadEnglishEntries groups by text — so it is the
+    // count that silently collapses if the group-by-subject logic is wrong.
+    expect(distinctEnglish).toBe(304);
+    expect(db.prepare("SELECT COUNT(*) AS n FROM concept_term WHERE lang='is'").get().n).toBe(326);
   });
 
-  it('the golden is not vacuous', () => {
-    // A golden of all-empty results would pass forever while proving nothing.
-    // Captured values were 40 matches / 5 issues across 24 segments.
-    const nMatches = Object.values(golden).reduce((n, r) => n + r.matches.length, 0);
-    const nIssues = Object.values(golden).reduce((n, r) => n + r.issues.length, 0);
-    expect(nMatches).toBeGreaterThan(0);
-    expect(nIssues).toBeGreaterThan(0);
+  it('a NAMED golden segment yields a non-zero match count against the seed', () => {
+    // Named, not "some segment": a partially-applied seed satisfies "at least one
+    // segment matches something" while leaving most of the corpus absent.
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    expect(actual['m002:para:fs-id0000'].matches.length).toBeGreaterThan(0);
+    const total = Object.values(actual).reduce((n, r) => n + r.matches.length, 0);
+    expect(total).toBe(40);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ⚠️ THE C24 GOLDEN IS NO LONGER AN ORACLE FOR ORDER — §C36 B4b-1, Task 6.
+// DO NOT REGENERATE IT, and do not "fix" the three named exclusions below by
+// re-mapping domains (see the rejected mapping at the end of this banner).
+//
+// Ruled 2026-08-11: pin the order-INSENSITIVE span SET over the 21 segments
+// that reproduce, exclude the 3 that do not BY NAME with their reasons, and
+// assert the exclusion list itself. The block below implements exactly that.
+//
+// The brief expected `{english, position}` — span and order — to survive the
+// cut-over even though ids and winner selection could not. MEASURED, it does not
+// survive intact, and the cause is single and fully explained:
+//
+//   The tier partition the tiler sorts on changed. Before B4b-1 the tier came
+//   from `book_subject_mapping` via getBookSubjectBySlug — ONE subject. For
+//   efnafraedi-2e that was 'chemistry', so every physics/biology/mathematics
+//   term was FALLBACK. After B4b-1 it comes from `book_domain_priority`, whose
+//   chain for efnafraedi-2e is ['chemistry','physics','biology'] — so physics
+//   and biology are promoted to IN SCOPE and only mathematics falls back.
+//   `hits.sort` orders in-scope before fallback, so a different partition means
+//   a different claim order.
+//
+// Measured over all 24 golden segments (identity subject->domain mapping; see
+// helpers/seedC24Concepts.js for why any other mapping would be a fabrication):
+//   * TOTAL MATCH COUNT IS UNCHANGED: 40 before, 40 after.
+//   * 21 of 24 segments claim exactly the same SPAN SET.
+//   * 12 of 24 segments differ in match ORDER only, e.g.
+//       m002:para:fs-id0000  golden ["bond@43","absolute zero@2"]
+//                            actual ["absolute zero@2","bond@43"]
+//     'bond' is chemistry and used to be the only in-scope term, so it led;
+//     'absolute zero' is biology, now in-scope, and is longer.
+//   * 3 of 24 segments claim DIFFERENT SPANS:
+//       m001:para:fs-id0001  "atomic mass@4"  -> "atomic mass unit@4"
+//       m002:para:fs-id0007  "atomic mass@2"  -> "atomic mass unit (amu)@2"
+//         ('atomic mass' is tagged chemistry AND mathematics; 'atomic mass
+//          unit' is physics. Old: chemistry claimed the short span first.
+//          New: both in scope, longest-first wins. Arguably an IMPROVEMENT.)
+//       m002:para:fs-id0012  "bomb calorimeter@2" -> "calorimeter@7"
+//         ('bomb calorimeter' is tagged mathematics -> out of chain -> fallback;
+//          'calorimeter' is biology -> in scope. The shorter in-scope term now
+//          claims the span. Arguably a REGRESSION, and it is item 18's rule
+//          working as written: the book's own domains always win an overlap.)
+//
+// ⚠️ Two of the three span diffs hang on chemically implausible fixture tags
+// ('bomb calorimeter' -> mathematics), so THE DIFF IS PARTLY A SYNTHESIS
+// ARTIFACT — but THE MECHANISM IS REAL and will fire in production wherever an
+// out-of-chain multiword term overlaps a shorter in-chain one.
+//
+// A mapping that reproduces the golden byte-for-byte EXISTS (send physics and
+// biology to domains outside efnafraedi-2e's chain) and was REJECTED: it is a
+// mapping chosen to make an oracle pass, and it would certify the cut-over
+// against a fiction.
+//
+// The original oracle rationale still stands and is why nothing here may be
+// regenerated: c24-golden.json was captured from the UNMODIFIED matcher at
+// commit c991e2b8, after the ORDER BY tie-breaks and before any Aho-Corasick
+// code existed. Re-capturing post-swap certifies the new implementation against
+// itself. capture-c24-golden.js's own header forbids it and its refusal guard
+// measures magnitude, not provenance, so it would NOT stop you.
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// ⚠️ ORDER IS DELIBERATELY NOT PINNED. The assertion below is an ORDER-INSENSITIVE
+// SPAN SET. Pre-swap match order encodes the single-subject tier partition — a
+// model that no longer exists — so asserting it would pin the OLD WORLD in place
+// and turn every future correct change red. What survives, and is worth pinning,
+// is the automaton + overlap tiler: WHICH spans get claimed.
+//
+// ⚠️ THE THREE EXCLUSIONS ARE NAMED, NOT BLANKET-SKIPPED, and each carries its
+// measured reason as the map's value so an exclusion cannot be added later
+// without writing down why. Two meta-assertions enforce that: the map must have
+// exactly three entries (a future divergence cannot be silenced by adding a
+// fourth key) and every key must exist in the golden (a typo'd key would
+// silently exclude nothing while looking like it excluded something).
+const KNOWN_CHANGED = {
+  'm001:para:fs-id0001':
+    'atomic mass -> atomic mass unit: atomic mass is chemistry+mathematics, atomic mass unit is physics; both now in scope, so longest wins',
+  'm002:para:fs-id0007': 'same mechanism as fs-id0001 (atomic mass unit (amu), physics)',
+  'm002:para:fs-id0012':
+    'bomb calorimeter (mathematics -> out of chain -> fallback) vs calorimeter (biology -> in scope): the shorter in-scope term now claims the span. Item 18 working as written; flagged for a design decision, see register',
+};
+
+/** Order-insensitive: sorted "english@position" keys. */
+const spanSet = (matches) => matches.map((m) => `${m.english}@${m.position}`).sort();
+
+const ASSERTED = Object.keys(golden).filter((id) => !(id in KNOWN_CHANGED));
+
+describe('findTermsInSegments claims the C24 golden SPAN SETS (21 of 24 segments)', () => {
+  it('KNOWN_CHANGED names exactly the three measured divergences, each with a reason', () => {
+    // ⚠️ EXACTLY THREE. Without this, a future divergence can be made to
+    // disappear by adding a fourth key, and the suite would go green on a real
+    // regression.
+    expect(Object.keys(KNOWN_CHANGED)).toHaveLength(3);
+    for (const [id, why] of Object.entries(KNOWN_CHANGED)) {
+      // A key that is not in the golden excludes NOTHING while reading as an
+      // exclusion — a typo would be invisible without this.
+      expect(Object.keys(golden)).toContain(id);
+      // A reason must actually be a reason. 'x' or '' must not satisfy the map's
+      // contract, which is the only thing forcing a future exclusion to be
+      // justified in writing.
+      expect(why.trim().length).toBeGreaterThan(30);
+    }
+  });
+
+  it('the asserted set is 21 segments carrying 35 matches on BOTH sides — never ∅ == ∅', () => {
+    // ⚠️ THE VACUOUSNESS GUARD FOR EVERY PER-SEGMENT ASSERTION BELOW, and it
+    // measures BOTH SIDES on purpose. Two of the 21 segments legitimately have an
+    // EMPTY golden set (they were written to contain no glossary term at all), so
+    // for those two a per-segment set comparison is satisfiable by an all-empty
+    // matcher. The golden-side counts alone cannot see that — they are a property
+    // of checked-in JSON and pass no matter what the matcher does. The ACTUAL-side
+    // sum is what makes this a guard rather than a restatement of the fixture.
+    //
+    // ⚠️ CAUGHT BY MEASUREMENT, NOT BY REVIEW: the first version of this test
+    // asserted only the golden side while its comment claimed "an all-empty
+    // matcher cannot produce 35 matches". Mutating the tiler to emit nothing left
+    // this test GREEN — it was the 19 non-empty per-segment assertions that went
+    // red. The comment described a guard the code did not implement.
+    expect(ASSERTED).toHaveLength(21);
+    expect(ASSERTED.reduce((n, id) => n + golden[id].matches.length, 0)).toBe(35);
+    expect(ASSERTED.filter((id) => golden[id].matches.length > 0)).toHaveLength(19);
+
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    expect(ASSERTED.reduce((n, id) => n + actual[id].matches.length, 0)).toBe(35);
   });
 
   // One `it` per segment so a diff names the failing case — the pattern at
   // tools/__tests__/book-rendering-config.test.js.
-  for (const segmentId of Object.keys(golden)) {
-    it(`reproduces the pre-swap result for ${segmentId}`, () => {
+  for (const segmentId of ASSERTED) {
+    it(`claims the same span SET as the C24 golden for ${segmentId}`, () => {
       const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
-      expect(actual[segmentId]).toEqual(golden[segmentId]);
+      expect(spanSet(actual[segmentId].matches)).toEqual(spanSet(golden[segmentId].matches));
     });
   }
+
+  // ⚠️ THE THREE EXCLUDED SEGMENTS ARE PINNED TOO — TO THEIR MEASURED POST-B4a
+  // SPANS, WHICH ARE **NOT** THE GOLDEN'S. Excluding them from the golden
+  // comparison is not the same as leaving them uncovered: without this, a future
+  // span change in exactly these three is invisible, because `KNOWN_CHANGED`
+  // removes them from ASSERTED and the seed control's total-of-40 only catches a
+  // change in COUNT. A span change that preserves the count would pass silently
+  // — including in m002:para:fs-id0012, the segment carrying the pending design
+  // decision, which is the last one that should be able to move unnoticed.
+  //
+  // ⚠️ These values were captured from the POST-cut-over matcher, so they are
+  // NOT an oracle in the sense the golden is — they cannot certify that B4b-1
+  // was correct, only that it has not drifted since 2026-08-11. That is exactly
+  // why they live here, visibly separate from the golden comparison above,
+  // rather than being written into c24-golden.json (which may not be
+  // regenerated — see the banner).
+  const POST_B4A_SPANS = {
+    'm001:para:fs-id0001': ['atomic mass unit@4'],
+    'm002:para:fs-id0007': ['atomic mass unit (amu)@2', 'bond@52'],
+    'm002:para:fs-id0012': ['bond@46', 'calorimeter@7'],
+  };
+
+  it('the three excluded segments hold their measured post-B4a spans (NOT the golden’s)', () => {
+    // Same keys as KNOWN_CHANGED, so an exclusion cannot be added without also
+    // recording what the excluded segment now does.
+    expect(Object.keys(POST_B4A_SPANS).sort()).toEqual(Object.keys(KNOWN_CHANGED).sort());
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    for (const [segmentId, spans] of Object.entries(POST_B4A_SPANS)) {
+      expect(spanSet(actual[segmentId].matches)).toEqual([...spans].sort());
+      // The point of the exclusion, asserted rather than assumed: these really
+      // do differ from the golden. If one ever stops differing, the exclusion is
+      // obsolete and should be moved back into ASSERTED.
+      expect(spanSet(actual[segmentId].matches)).not.toEqual(spanSet(golden[segmentId].matches));
+    }
+  });
+
+  it('pins the fixture’s post-B4a ISSUE counts, which the span assertion cannot see', () => {
+    // ⚠️ THE SPAN-SET PIN COVERS `matches` AND NOTHING ELSE. The retired
+    // per-segment `toEqual` also covered `issues`; replacing it left the
+    // fixture's entire issue surface unasserted, which matters because the
+    // cut-over MOVED it: 5 issues pre-swap, 22 now. More terms in scope means
+    // more Icelandic-side checks actually run.
+    //
+    // ⚠️ POST-B4a VALUES, NOT THE GOLDEN'S — same caveat as POST_B4A_SPANS
+    // above. This is a drift pin, not an oracle.
+    //
+    // The type split is asserted, not just the total: it is what proves the
+    // fixture reaches the `alternative` tier at all (D5, Task 5). A total-only
+    // assertion is satisfied by 22 issues of any kind.
+    const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
+    const issues = Object.values(actual).flatMap((r) => r.issues);
+    expect(issues).toHaveLength(22);
+    expect(issues.filter((i) => i.type === 'missing')).toHaveLength(7);
+    expect(issues.filter((i) => i.type === 'alternative')).toHaveLength(15);
+    // For contrast, and so the move is visible in the file rather than only in
+    // the register: the pre-swap golden carried 5.
+    expect(Object.values(golden).reduce((n, r) => n + r.issues.length, 0)).toBe(5);
+  });
 });
 
 /**
- * Seed one headword with one translation tagged to one subject.
- * @returns {number} the new headword id
+ * Seed one concept in one domain, with one English and one Icelandic term.
+ *
+ * ⚠️ Returns the EN `concept_term.id`, NOT a concept id. That is what
+ * `loadEnglishEntries` uses as the automaton's `headwordId` — via MIN(id) per
+ * distinct English string — and what `match.headwordId` therefore carries. The
+ * callers below use it to UPDATE the English text in place, so it must be the
+ * term row.
+ *
+ * @returns {number} the new EN concept_term id
  */
-function seedOneHeadword(target, english, icelandic, subject = 'chemistry') {
-  const hw = target
-    .prepare('INSERT INTO terminology_headwords (english, pos) VALUES (?, NULL)')
-    .run(english);
-  const tr = target
-    .prepare(
-      `INSERT INTO terminology_translations
-         (headword_id, icelandic, source, status, proposed_by, proposed_by_name)
-       VALUES (?, ?, 'fixture', 'approved', 'u1', 'F')`
-    )
-    .run(hw.lastInsertRowid, icelandic);
+function seedOneConcept(target, english, icelandic, domain = 'chemistry') {
+  const conceptId = Number(
+    target.prepare('INSERT INTO concept (domain) VALUES (?)').run(domain).lastInsertRowid
+  );
+  const enId = Number(
+    target
+      .prepare(
+        "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', ?, 1, 'fixture')"
+      )
+      .run(conceptId, english).lastInsertRowid
+  );
   target
-    .prepare('INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)')
-    .run(tr.lastInsertRowid, subject);
-  return Number(hw.lastInsertRowid);
+    .prepare(
+      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, 1, 'fixture')"
+    )
+    .run(conceptId, icelandic);
+  return enId;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -205,7 +416,7 @@ function seedOneHeadword(target, english, icelandic, subject = 'chemistry') {
 // ─────────────────────────────────────────────────────────────────────────────
 describe('automaton cache stays consistent with the DB', () => {
   it('picks up a headword added after the first call, with no explicit invalidation', () => {
-    const db2 = createTestDb();
+    const db2 = conceptDb();
     terminologyService._setTestDb(db2);
     try {
       const seg = [{ segmentId: 's', enContent: 'A catalyst works.', isContent: 'Hvati virkar.' }];
@@ -213,21 +424,7 @@ describe('automaton cache stays consistent with the DB', () => {
         0
       );
 
-      const hw = db2
-        .prepare("INSERT INTO terminology_headwords (english, pos) VALUES ('catalyst', NULL)")
-        .run();
-      const tr = db2
-        .prepare(
-          `INSERT INTO terminology_translations
-             (headword_id, icelandic, source, status, proposed_by, proposed_by_name)
-           VALUES (?, 'hvati', 'fixture', 'approved', 'u1', 'F')`
-        )
-        .run(hw.lastInsertRowid);
-      db2
-        .prepare(
-          "INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, 'chemistry')"
-        )
-        .run(tr.lastInsertRowid);
+      seedOneConcept(db2, 'catalyst', 'hvati');
 
       const after = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e');
       expect(after.s.matches).toHaveLength(1);
@@ -241,18 +438,18 @@ describe('automaton cache stays consistent with the DB', () => {
   });
 
   it('reflects a headword RENAME, which a count-based fingerprint would miss', () => {
-    const db3 = createTestDb();
+    const db3 = conceptDb();
     terminologyService._setTestDb(db3);
     try {
       const seg = [{ segmentId: 's', enContent: 'An aton and an atom.', isContent: '' }];
-      const hwId = seedOneHeadword(db3, 'atom', 'frumeind');
+      const hwId = seedOneConcept(db3, 'atom', 'frumeind');
 
       const before = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(before).toHaveLength(1);
       expect(before[0].english).toBe('atom');
 
       // Same length, same row count — only the bytes change.
-      db3.prepare(`UPDATE terminology_headwords SET english='aton' WHERE id=${hwId}`).run();
+      db3.prepare(`UPDATE concept_term SET text='aton' WHERE id=${hwId}`).run();
 
       const renamed = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(renamed).toHaveLength(1);
@@ -272,21 +469,24 @@ describe('automaton cache stays consistent with the DB', () => {
   });
 
   it('reflects a pure TRANSPOSITION rename, which an order-blind hash would miss', () => {
-    // Guards the FNV multiply. Degrading 0x01000193 to 1 turns the hash into an
-    // order-blind XOR fold: 'atom' and 'atmo' share a character multiset, so they
-    // hash identically and the cache is never rebuilt. The existing atom→aton test
-    // CANNOT catch that (those differ by a character, so the XOR differs too).
+    // Guards the FNV multiply — since B4b-1 that is
+    // conceptMatcher.fingerprintEntries, not the deleted
+    // terminologyService.fingerprintHeadwords. Degrading 0x01000193 to 1 turns the
+    // hash into an order-blind XOR fold: 'atom' and 'atmo' share a character
+    // multiset, so they hash identically and the cache is never rebuilt. The
+    // existing atom→aton test CANNOT catch that (those differ by a character, so
+    // the XOR differs too).
     //
     // ⚠️ `position` is the load-bearing assertion, not `english`. `match.english`
     // is read from the DB row on every call, so it tracks the rename even when the
     // automaton is stale; only `position` is automaton-derived. A stale automaton
     // still holding 'atom' answers 15 where a rebuilt one answers 3.
-    const db4 = createTestDb();
+    const db4 = conceptDb();
     terminologyService._setTestDb(db4);
     try {
       //                                   atmo@3         atom@15
       const seg = [{ segmentId: 's', enContent: 'An atmo and an atom.', isContent: '' }];
-      const hwId = seedOneHeadword(db4, 'atom', 'frumeind');
+      const hwId = seedOneConcept(db4, 'atom', 'frumeind');
 
       const before = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(before).toHaveLength(1);
@@ -294,7 +494,7 @@ describe('automaton cache stays consistent with the DB', () => {
       expect(before[0].position).toBe(15);
 
       // Pure transposition: same characters, same length, same row count.
-      db4.prepare(`UPDATE terminology_headwords SET english='atmo' WHERE id=${hwId}`).run();
+      db4.prepare(`UPDATE concept_term SET text='atmo' WHERE id=${hwId}`).run();
 
       const renamed = terminologyService.findTermsInSegments(seg, 'efnafraedi-2e').s.matches;
       expect(renamed).toHaveLength(1);
@@ -325,11 +525,11 @@ describe('automaton cache stays consistent with the DB', () => {
 // ─────────────────────────────────────────────────────────────────────────────
 describe('an overlapped first occurrence is DROPPED, never re-sought later', () => {
   it('drops the nested short term even though it recurs unoverlapped (longest-first)', () => {
-    const dbT = createTestDb();
+    const dbT = conceptDb();
     terminologyService._setTestDb(dbT);
     try {
-      seedOneHeadword(dbT, 'acid rain', 'súrt regn');
-      seedOneHeadword(dbT, 'acid', 'sýra');
+      seedOneConcept(dbT, 'acid rain', 'súrt regn');
+      seedOneConcept(dbT, 'acid', 'sýra');
 
       //                             acid rain@0        acid@21
       const seg = [
@@ -350,14 +550,25 @@ describe('an overlapped first occurrence is DROPPED, never re-sought later', () 
   });
 
   it('holds when the tier partition INVERTS length order (short in-scope beats long fallback)', () => {
-    // The case that makes the class observable at all: `terms` is in-scope-first,
+    // The case that makes the class observable at all: `hits` is in-scope-first,
     // NOT longest-first, so a short in-scope term claims its span before a longer
     // fallback term is considered. The long term is then dropped despite recurring.
-    const dbT = createTestDb();
+    //
+    // ⚠️ §C36 B4b-1 — THE FALLBACK DOMAIN IS `mathematics`, NOT `biology`, AND THE
+    // CHANGE IS LOAD-BEARING. Under the old single-subject scoping any domain that
+    // was not the book's own subject was fallback, so 'biology' inverted the tiers
+    // for a chemistry book. efnafraedi-2e's `book_domain_priority` chain is
+    // ['chemistry','physics','biology'], so biology is now IN SCOPE — with it, both
+    // terms are in scope, longest-first wins, 'acid rain' claims the span and this
+    // test asserts the opposite of what it means to. `mathematics` is the right
+    // choice for the same documented reason it is elsewhere in this branch:
+    // domains.js says in as many words that it is "deliberately absent from the
+    // chemistry books ... out of scope on purpose, not by oversight".
+    const dbT = conceptDb();
     terminologyService._setTestDb(dbT);
     try {
-      seedOneHeadword(dbT, 'acid rain', 'súrt regn', 'biology'); // fallback for a chemistry book
-      seedOneHeadword(dbT, 'acid', 'sýra', 'chemistry'); // in-scope → ordered first
+      seedOneConcept(dbT, 'acid rain', 'súrt regn', 'mathematics'); // out of chain → fallback
+      seedOneConcept(dbT, 'acid', 'sýra', 'chemistry'); // in-scope → ordered first
 
       //                             acid@0 / acid rain@0        acid rain@21
       const seg = [
@@ -389,9 +600,11 @@ describe('an overlapped first occurrence is DROPPED, never re-sought later', () 
 //   1. The per-headword English regex (wholeWordRegex over `english`) — replaced
 //      by one Aho-Corasick automaton pass.
 //   2. Eager inflection-regex construction (buildInflectionRegex per
-//      translation) — replaced by the lazy `isRegex` getter at
-//      terminologyService.js:1447-1460, which compiles only when a match is
-//      found AND an approved translation is actually tested against IS text.
+//      translation) — since B4b-1 this is `matchesForm` inside
+//      findTermsInSegments, which compiles only for a match that HAS a winner
+//      and a segment that HAS Icelandic content. (It replaced the lazy
+//      `isRegex` getter, which the cut-over deleted along with the per-call
+//      translation-object reconstruction that getter was memoising onto.)
 // A THIRD mechanism — the automaton cache itself — compiles zero regexes even
 // when broken (rebuilt every call), so it needs its own, different counter
 // entirely: see the "built once" describe below.
@@ -436,23 +649,41 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
 
     // EXACT, not a loose upper bound — see the block comment above this
     // describe for why a bound doesn't discriminate a partial regression on
-    // this fixture. Exact is safe here because both the fixture and the golden
-    // it must still reproduce are committed and fixed: if this number ever
-    // changes, either one of the fixtures moved (c24-terms.json or
-    // c24-segments.json — a terms edit changes what's compiled, a segments
-    // edit can change which headwords match and so what gets compiled lazily;
-    // regenerate deliberately from a pre-swap checkout, alongside the golden)
-    // or laziness/the automaton regressed. It is not a magic number: measured
-    // directly from this fixture on the fixed implementation, same status as
-    // the golden JSON.
-    expect(compiles).toBe(11);
+    // this fixture. Exact is safe here because the fixture is committed and
+    // fixed: if this number ever changes, either c24-terms.json /
+    // c24-segments.json moved, or the automaton regressed.
+    //
+    // ⚠️ §C36 B4b-1 — RE-DERIVED POST-CUT-OVER. This asserted 11 and now
+    // asserts 56, and the number was RE-MEASURED, not adjusted until green.
+    // 11 was the old lazy `isRegex` accessor, which memoised one regex per
+    // translation OBJECT per call; the cut-over deleted it. Compilation now
+    // happens inside `matchesForm` (terminologyService.findTermsInSegments),
+    // which builds a fresh regex per CALL. Measured breakdown on this fixture:
+    // 37 winner checks (one per in-scope match in a segment that has Icelandic
+    // content) + 19 issue-path candidate checks (`alts` and the intra-concept
+    // siblings, tried only after the winner's own form failed), = 56, stable
+    // across repeated runs.
+    //
+    // ⚠️ WHAT THIS TEST IS FOR SURVIVED THE RISE. C24 exists because compiles
+    // scaled with CORPUS SIZE (642 on this fixture pre-swap, ~28,903 in
+    // production). 56 scales with MATCH COUNT: neither loadEnglishEntries nor
+    // buildTermAutomaton constructs a RegExp at all, so no per-headword or
+    // per-translation compile remains. A regression that reintroduced one
+    // would land far above 56 on a 304-string fixture — which is exactly what
+    // the calibration test below still guards.
+    expect(compiles).toBe(56);
   });
 
   it('the assertion above is CALIBRATED — the fixture is large enough to discriminate', () => {
     // An uncalibrated threshold passes on a NO-fix. On this fixture the unmodified
-    // (pre-swap) function compiled 642 regexes against a fixed-code count of 11;
-    // if the fixture ever shrinks, that margin — and the exact-count assertion's
-    // ability to catch a partial regression — shrinks with it.
+    // (pre-swap) function compiled 642 regexes against a fixed-code count of
+    // 56 — so the margin this reasons about is 642 : 56, roughly 11x. (It said
+    // "642 against 11" until 2026-08-11: 11 was the PRE-CUT-OVER fixed count,
+    // and it survived here for one round after the assertion 20 lines up was
+    // re-derived to 56. The one comment whose whole job is to justify the exact
+    // count was the last place holding the old one.) If the fixture ever
+    // shrinks, that margin — and the exact-count assertion's ability to catch a
+    // partial regression — shrinks with it.
     const headwordCount = terms.headwords.length;
     expect(headwordCount).toBeGreaterThan(300);
   });
@@ -489,10 +720,17 @@ describe('C24 performance properties, asserted as COMPILE COUNTS not wall-clock'
 // terminologyService to re-evaluate via a fresh require so its destructuring
 // captures the wrapper, then restore both cache slots to the exact original
 // Module objects — never mutate an original Module's `.exports` in place. That
-// distinction matters here: this repo's `server` vitest project runs test files
-// sequentially in a shared worker (`fileParallelism: false` in
-// vitest.workspace.js), so a mutated-in-place original, left un-restored by an
-// early exit, would corrupt the module every later test file in this run sees.
+// distinction matters here: this repo runs test files sequentially in a shared
+// worker (`fileParallelism: false` in **`vitest.config.js`**), so a
+// mutated-in-place original, left un-restored by an early exit, would corrupt
+// the module every later test file in this run sees.
+// ⚠️ This said `vitest.workspace.js` until 2026-08-11. That file CANNOT LOAD
+// under the installed vitest (`SyntaxError: … does not provide an export named
+// 'defineWorkspace'`), so discovery falls through to `vitest.config.js`, which
+// is where the setting actually lives — CLAUDE.md § Notes for Code Reviewers
+// records this. The safety measure below was always real; only the citation was
+// wrong, and a reader who checked it would have found a broken file and might
+// have concluded the sequential-execution premise no longer held.
 // Reassigning a substitute object and restoring the saved reference is exact
 // and needs no partial-undo bookkeeping.
 // ─────────────────────────────────────────────────────────────────────────────

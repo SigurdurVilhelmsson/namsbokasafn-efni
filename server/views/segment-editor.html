@@ -859,6 +859,24 @@
       color: var(--text-muted);
     }
 
+    /* ⚠️ ADDED 2026-08-11 (§C36 B4b-1 deploy-readiness audit). The client
+       interpolates `issue.type` straight into this class list
+       (segment-editor.js:785), and `alternative` — introduced by B4b-1's D5
+       softer tier — matched NO rule, so it fell back to bare `.term-issue`:
+       no background, no border, and the ambient text colour rather than
+       `--text-muted`. The result was backwards. `alternative` means the editor
+       used a DIFFERENT APPROVED Icelandic term — the mildest thing this panel
+       reports — yet it rendered more prominently than `missing`, which is
+       deliberately greyed out. It is also the MAJORITY tier: 15 of 22 issues on
+       the pinned C24 fixture.
+       Quieter than `missing` on purpose: dashed, so the two are distinguishable
+       at a glance without either shouting. */
+    .term-issue.alternative {
+      background: transparent;
+      border-left: 3px dashed var(--text-muted);
+      color: var(--text-muted);
+    }
+
     .term-issue-icon { flex-shrink: 0; }
 
     /* --- Repetition (exact-match) hint --- */

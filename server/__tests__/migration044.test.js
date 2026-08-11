@@ -93,6 +93,19 @@ beforeEach(() => {
 
 afterEach(() => db.close());
 
+// ⚠️ HALF OF MIGRATION 044'S STATED RATIONALE IS NOW FALSE, and no assertion
+// here can see it: findTermsInSegments no longer resolves tiers through
+// book_subject_mapping — it uses book_domain_priority, which is seeded from
+// hardcoded maps in server/lib/domains.js. These tests still correctly pin the
+// migration's own behaviour; they no longer pin the matcher's.
+//
+// Verified rather than assumed (§C36 B4b-1 Task 6): this file makes ZERO calls
+// into findTermsInSegments — it drives migration044.up() against an in-memory
+// schema and reads book_subject_mapping back out. So it stayed green through
+// the entire cut-over, which is precisely why the annotation is needed: a green
+// run here reads as "book subject mapping is correct for the matcher" and is
+// no longer that claim. `getBookSubject`/`lookupTerm`/`exportBookGlossary` do
+// still read book_subject_mapping, so the migration itself is not dead code.
 describe('migration 044 remap-empty-subjects', () => {
   it('remaps lifraen-efnafraedi to chemistry', () => {
     seedPost032(db);

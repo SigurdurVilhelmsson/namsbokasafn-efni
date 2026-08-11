@@ -168,16 +168,26 @@ describe.each([['default'], ['ON'], ['OFF']])(
       importConcepts(db, payload([entry]));
       // title_is/registered_by are real NOT NULL columns (migration 003) —
       // absent from the old hand-rolled schema, which only ever declared id+slug.
+      // ⚠️ NEITHER THE id NOR THE slug MAY BE ASSUMED FREE since 2026-08-11.
+      // This inserted `id = 1` with slug efnafraedi-2e and then wrote the
+      // preference against a literal `book_id = 1`. Migration 049 (§C51) now
+      // registers all six books on any fresh migrate, so id 1 belongs to another
+      // book AND the slug already exists — two UNIQUE collisions in one row.
+      // Insert-or-ignore by slug and read the id back: what this fixture needs is
+      // a book to hang a preference on, not a particular id.
       db.prepare(
-        "INSERT INTO registered_books (id, slug, title_is, registered_by) VALUES (1, ?, 'Test Book', 'test')"
+        "INSERT OR IGNORE INTO registered_books (slug, title_is, registered_by) VALUES (?, 'Test Book', 'test')"
       ).run('efnafraedi-2e');
+      const bookId = db
+        .prepare("SELECT id FROM registered_books WHERE slug = 'efnafraedi-2e'")
+        .get().id;
       const termId = db
         .prepare("SELECT id FROM concept_term WHERE lang='is' AND text='atóm'")
         .get().id;
       db.prepare(
         `INSERT INTO book_term_preference (book_id, chapter, english, term_id)
-         VALUES (1, 0, 'atom', ?)`
-      ).run(termId);
+         VALUES (?, 0, 'atom', ?)`
+      ).run(bookId, termId);
       return { termId };
     }
 

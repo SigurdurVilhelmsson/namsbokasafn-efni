@@ -33,8 +33,11 @@
  * would pass gate 1 perfectly — `afl` would be unwritten, exactly as required.
  * Only the positive control distinguishes "refuses correctly" from "refuses".
  *
- * ⚠️ GATE 3 HAD THREE INDEPENDENT WAYS TO PASS FOR THE WRONG REASON, and each is
- * closed deliberately — see its comment before changing anything there.
+ * ⚠️ GATE 3 WAS HALF-RETIRED 2026-08-11 (§C36 B4b-1 Task 7). Its matcher-identity
+ * half became a TAUTOLOGY when B4b-1 cut findTermsInSegments over to the concept
+ * model, and it is GONE rather than left green. What remains — the old-table
+ * inflections digest — is the half that still measures D1, and it now has a
+ * --self-test case, which it never had. See the gate for the full rationale.
  *
  * Exit codes: 0 every gate passed · 1 a gate failed · 2 usage or environment.
  */
@@ -169,55 +172,6 @@ function seedC24(db) {
 }
 
 /**
- * Run findTermsInSegments IN A CHILD PROCESS against `dbPath`.
- *
- * ⚠️ THE ORIGINAL RATIONALE FOR THIS WAS FALSE, AND THE CORRECTION MATTERS FOR
- * B4b-1. It read: "a second in-process call returns the CACHED automaton without
- * re-reading the database at all, so byte-identity would hold no matter what the
- * population did." Only the TRIE is cached, on an FNV-1a fingerprint over
- * terminology_headwords (id, english). terminologyService's own comment above
- * fingerprintHeadwords says the rest — "translations, inflections, subjects,
- * statuses — is re-read every call". So an in-process second call WOULD observe
- * a change to terminology_translations.inflections, which is the only change
- * gate 3 could ever detect.
- *
- * The child process is KEPT, for two reasons that are true: it exercises the
- * production path (DB_PATH via resolveDbPath() at module load, no test
- * injection), and it removes any dependence on cache internals that B4b-1 is
- * about to rewrite. But it is belt-and-braces, NOT the load-bearing part —
- * that is oldInflectionsDigest(). Leaving the false version standing would tell
- * B4b-1's author the matcher does not re-read the DB per call, which is wrong
- * and is exactly the kind of claim this campaign keeps having to withdraw.
- * (Whole-branch review, 2026-08-10.)
- *
- * ⚠️ SESSIONS_DB_PATH rather than _setTestDb: terminologyService resolves
- * DB_PATH via resolveDbPath() at module load, so the child needs no injection
- * and exercises the production path.
- */
-function matcherOutput(dbPath) {
-  const r = spawnSync(
-    process.execPath,
-    [
-      '-e',
-      `const fs=require('fs');const path=require('path');
-       const svc=require(path.join(${JSON.stringify(path.join(__dirname, '..'))},'services','terminologyService'));
-       const segs=JSON.parse(fs.readFileSync(${JSON.stringify(path.join(FIXTURES, 'c24-segments.json'))},'utf-8'));
-       process.stdout.write(JSON.stringify(svc.findTermsInSegments(segs,${JSON.stringify(BOOK)})));`,
-    ],
-    {
-      cwd: path.join(__dirname, '..'),
-      encoding: 'utf8',
-      maxBuffer: 64 * 1024 * 1024,
-      env: { ...process.env, SESSIONS_DB_PATH: dbPath },
-    }
-  );
-  if (r.status !== 0) {
-    throw new Error(`matcher child failed (${r.status}): ${(r.stderr || '').trim().slice(0, 600)}`);
-  }
-  return JSON.parse(r.stdout);
-}
-
-/**
  * Every object KEY anywhere in a payload — NOT its values.
  *
  * ⚠️ The name and an earlier docstring ("every string value anywhere") both
@@ -272,6 +226,57 @@ function oldInflectionsDigest(db) {
     h.update(`${r.id} ${r.inflections === null ? '' : r.inflections} `);
   }
   return { digest: h.digest('hex').slice(0, 16), nonNull, rows: rows.length };
+}
+
+/**
+ * GATE 3, the surviving half — D1: the BÍN population must not write the OLD table.
+ *
+ * ⚠️ HALF OF THIS GATE WAS RETIRED, NOT REPAIRED, AND THAT WAS A DELIBERATE CALL
+ * (§C36 B4b-1 Task 7, 2026-08-11). It used to ALSO compare findTermsInSegments
+ * output byte-for-byte across the population. B4b-1 cut that function over to the
+ * concept model — it reads `concept_term` exclusively and never touches
+ * `terminology_headwords`/`terminology_translations` — so the comparison became a
+ * TAUTOLOGY: the gate seeds the OLD tables, and the matcher no longer depends on
+ * what it seeds, making the two captures trivially identical whatever the
+ * population did. Rebuilding it against the concept model would duplicate
+ * verify-b4b1-gates.js gates 5 and 7, which measure that properly. A tautology
+ * left running is worse than no gate: it reports PASS and reads as evidence.
+ *
+ * ⚠️ THE DIGEST IS THE COMPLETE D1 CHECK, and it always was the load-bearing
+ * half. Measured 2026-08-10: planting `["gervibeyging"]` on 324 old-table rows —
+ * a form occurring in none of the 24 fixture segments — left the matcher output
+ * BYTE-IDENTICAL, so the retired half could only ever catch a violation whose
+ * written form happened to land in those segments. The digest asserts the column
+ * unchanged whatever the forms are.
+ *
+ * @param {import('better-sqlite3').Database} db
+ * @param {{digest:string, nonNull:number, rows:number}} before pre-population capture
+ */
+function checkGate3(db, before, log = () => {}) {
+  const after = oldInflectionsDigest(db);
+  log(
+    `  old-table digest: ${before.digest} → ${after.digest} ` +
+      `(${before.nonNull} → ${after.nonNull} non-null of ${after.rows})`
+  );
+  const bad = [];
+  // ⚠️ Non-vacuity: a digest over ZERO rows is stable for the wrong reason.
+  if (after.rows === 0) {
+    bad.push('the old table holds 0 rows — the digest is vacuous, seedC24 did not run');
+  }
+  if (after.digest !== before.digest) {
+    bad.push(
+      'D1 VIOLATION: terminology_translations.inflections changed ' +
+        `(${before.digest} -> ${after.digest}) — the run wrote to the OLD table`
+    );
+  }
+  return {
+    ok: bad.length === 0,
+    measured: bad.length
+      ? bad.join('; ')
+      : `the old table's inflections column is unchanged across the population ` +
+        `(digest ${after.digest}, ${after.nonNull}/${after.rows} non-null) — the complete D1 ` +
+        'check, and the only half of this gate that still measures anything',
+  };
 }
 
 function isOf(db, text) {
@@ -467,10 +472,6 @@ function main(argv = process.argv.slice(2)) {
   console.log('\n── Pre-population captures (gates 3 and 4) ──');
   const nHeadwords = seedC24(db);
   console.log(`  C24 fixture seeded into the OLD tables: ${nHeadwords} headwords`);
-  const matcherBefore = matcherOutput(built.path);
-  const nMatches = Object.values(matcherBefore).reduce((n, r) => n + r.matches.length, 0);
-  const nIssues = Object.values(matcherBefore).reduce((n, r) => n + r.issues.length, 0);
-  console.log(`  matcher before: ${nMatches} matches / ${nIssues} issues`);
   const oldTableBefore = oldInflectionsDigest(db);
   console.log(
     `  old-table inflections digest: ${oldTableBefore.digest} (${oldTableBefore.nonNull} non-null)`
@@ -513,55 +514,21 @@ function main(argv = process.argv.slice(2)) {
       const g2 = checkGate2(db, report, console.log);
       ok.push(record('GATE 2 (the positive control)', g2.ok ? 'PASS' : 'FAIL', g2.measured));
 
-      // ── Gate 3: inertness ─────────────────────────────────────────────────
-      console.log('\n══ Gate 3 — the matcher is INERT across the population ══');
+      // ── Gate 3: D1 — the population does not write the OLD tables ──────────
+      console.log('\n══ Gate 3 — D1: the population does NOT write the old tables ══');
       console.log(
-        '  ⚠️ THREE WAYS THIS COULD PASS FOR THE WRONG REASON, all closed deliberately:\n' +
-          '     (a) two databases — a write to B cannot move a matcher reading A. ONE DB here:\n' +
-          '         the scratch corpus carries 032’s tables and 045’s side by side.\n' +
-          '     (b) a warm automaton cache — it fingerprints terminology_headwords, which this\n' +
-          '         never touches, so an in-process re-call re-reads NOTHING. Child processes.\n' +
-          '     (c) an empty capture — two identical empty results compare equal. Asserted\n' +
-          '         non-empty first, below.'
+        '  ⚠️ HALF-RETIRED 2026-08-11 (B4b-1 Task 7). This gate used to also compare\n' +
+          '     findTermsInSegments output across the population. That half is DELETED, not\n' +
+          '     left green: the matcher now reads concept_term exclusively, so comparing it\n' +
+          '     either side of a write to the OLD tables was a tautology. The digest below is\n' +
+          '     what still measures D1 — and it is the half that was always load-bearing.'
       );
-      console.log(
-        '  ⚠️ AND A FOURTH, MEASURED 2026-08-10: the matcher comparison ALONE has a hole.\n' +
-          '     Planting a form that OCCURS in a fixture segment cleared an issue (7→6), so it\n' +
-          '     is not vacuous — but planting one occurring NOWHERE, on 324 old-table rows, left\n' +
-          '     the output byte-identical. A D1 violation is caught by the matcher only if a\n' +
-          '     written form lands in these 24 segments. Hence the digest, complete regardless.'
-      );
-      const matcherAfter = matcherOutput(built.path);
-      const identical = JSON.stringify(matcherBefore) === JSON.stringify(matcherAfter);
-      const oldTableAfter = oldInflectionsDigest(db);
-      console.log(
-        `  before: ${nMatches} matches / ${nIssues} issues · identical after: ${identical}`
-      );
-      console.log(
-        `  old-table digest: ${oldTableBefore.digest} → ${oldTableAfter.digest} ` +
-          `(${oldTableBefore.nonNull} → ${oldTableAfter.nonNull} non-null of ${oldTableAfter.rows})`
-      );
-      const g3bad = [];
-      if (nMatches === 0)
-        g3bad.push('the BEFORE capture has 0 matches — the comparison is vacuous');
-      if (nIssues === 0) g3bad.push('the BEFORE capture has 0 issues — the comparison is vacuous');
-      if (!identical) g3bad.push('matcher output CHANGED across the population');
-      if (oldTableAfter.digest !== oldTableBefore.digest) {
-        g3bad.push(
-          'D1 VIOLATION: terminology_translations.inflections changed ' +
-            `(${oldTableBefore.digest} -> ${oldTableAfter.digest}) — the run wrote to the OLD table`
-        );
-      }
+      const g3 = checkGate3(db, oldTableBefore, console.log);
       ok.push(
         record(
-          'GATE 3 (matcher inertness + D1)',
-          g3bad.length ? 'FAIL' : 'PASS',
-          g3bad.length
-            ? g3bad.join('; ')
-            : `${nMatches} matches / ${nIssues} issues byte-identical (COLD child processes), AND ` +
-                `the old table's inflections column unchanged (digest ${oldTableAfter.digest}, ` +
-                `${oldTableAfter.nonNull}/${oldTableAfter.rows} non-null) — the complete D1 check ` +
-                'the matcher comparison alone is not'
+          'GATE 3 (D1: the population does not write the old tables)',
+          g3.ok ? 'PASS' : 'FAIL',
+          g3.measured
         )
       );
 
@@ -705,7 +672,8 @@ function main(argv = process.argv.slice(2)) {
             )
           );
 
-          if (args.selfTest) return selfTest(built.path, report).then(() => finish());
+          if (args.selfTest)
+            return selfTest(built.path, report, oldTableBefore).then(() => finish());
           return finish();
         }
       );
@@ -726,7 +694,7 @@ function main(argv = process.argv.slice(2)) {
  *
  * Each case plants a defect on a COPY of the populated scratch DB.
  */
-function selfTest(dbPath, report) {
+function selfTest(dbPath, report, oldTableBefore) {
   console.log('\n══ SELF-TEST — plant each defect, assert THE GATE ITSELF goes red ══');
   console.log(
     '  ⚠️ THIS CALLS THE REAL GATE FUNCTIONS. The first version evaluated a\n' +
@@ -771,6 +739,20 @@ function selfTest(dbPath, report) {
       plant: (d) =>
         d.prepare("UPDATE concept_term SET inflections = NULL WHERE lang='is'").run().changes,
       check: checkGate2,
+    },
+    {
+      // ⚠️ THIS CASE DID NOT EXIST BEFORE 2026-08-11. Gate 3 shipped, was later
+      // found half-tautological, and had NEVER been seen red — relabelling it
+      // without a failing control would have left exactly that gap in place.
+      gate: 'GATE 3',
+      what: 'terminology_translations.inflections is written (a D1 violation)',
+      plant: (d) =>
+        d
+          .prepare(
+            'UPDATE terminology_translations SET inflections = \'["gervibeyging"]\' WHERE id IN (SELECT id FROM terminology_translations LIMIT 5)'
+          )
+          .run().changes,
+      check: (d) => checkGate3(d, oldTableBefore, () => {}),
     },
   ];
   let allOk = true;
