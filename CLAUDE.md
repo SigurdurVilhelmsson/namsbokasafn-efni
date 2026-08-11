@@ -303,6 +303,21 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
     it still moves). Both were live in the same incident: an override pinned the *parent* package
     while the vulnerable one sat underneath it, and the parent's caret range already permitted the
     fix. **Read the ranges out of `package-lock.json` — no version belongs in this file.**
+    - 🔴 **AND `>=X` FAILS THE OTHER WAY TOO — MEASURED, and this is the dangerous direction.
+      npm resolves an override to the HIGHEST matching version, so a bare `>=` CROSSES MAJORS
+      SILENTLY.** Applying a prescribed `">=3.3.17"` for nanoid and regenerating produced
+      **`nanoid@6.0.1`** in the lockfile — three majors up. postcss declares `^3.3.16` and does
+      `require('nanoid/non-secure')`, while nanoid ≥5 is ESM-only. **Use `^` unless a major jump
+      is intended and verified.**
+    - 🔴 **AND IT WOULD NOT HAVE CRASHED, WHICH IS WHAT MAKES IT DANGEROUS.** Node ≥22.12 supports
+      `require(esm)`, so the mis-resolution is silent on this runtime and would surface only on an
+      older box. **`npm audit` reported `found 0 vulnerabilities` on that tree** — the gate the
+      override existed to turn green went green while the tree was wrong. `npm ls <pkg>` caught it
+      (`invalid: nanoid@3.3.16 … ">=3.3.17"`, exit `ELSPROBLEMS`). **A green `audit` is not
+      evidence an override resolved sanely — pair it with `npm ls <pkg>` every time.**
+      *(Measured 2026-08-08 on `fix/c37-nanoid-audit-override`, a branch whose own approach `main`
+      then superseded by overriding `postcss` instead. The lesson was rescued here on 2026-08-11
+      before that branch was deleted — it existed nowhere else.)*
   - **⚠️ `npm audit` in one tree ≠ the Security Audit job.** `security.yml` is four steps — `npm ci`
     (root), `npm ci` (`server/`), then `npm audit --audit-level=high` in each. A failing log names
     only the tree it died in. Re-derive in both, and remember `--audit-level=high` hides everything
