@@ -68,16 +68,16 @@ test.describe('Terminology lookup', () => {
   test('term matches for chemistry module returns valid shape', async ({ page }) => {
     const response = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664/terms');
 
-    // The endpoint may return 200 with results, or 404/500 if module
-    // data is not available in the test environment
-    if (response.ok()) {
-      const data = await response.json();
-      expect(data).toHaveProperty('moduleId', 'm68664');
-      expect(data).toHaveProperty('termMatches');
-    } else {
-      // Accept 404 or 500 if the module files are not on disk in CI
-      expect([404, 500]).toContain(response.status());
-    }
+    // m68664 is committed content and is on disk in every environment this
+    // suite runs in (the tests below hit the same endpoint and assert 200
+    // unconditionally) — a non-2xx here means the /terms route itself broke,
+    // not that fixture data is missing. Accepting 500 would make this test
+    // green exactly when the matcher cut-over breaks the route outright.
+    expect(response.ok()).toBe(true);
+
+    const data = await response.json();
+    expect(data).toHaveProperty('moduleId', 'm68664');
+    expect(data).toHaveProperty('termMatches');
   });
 
   // Ported from terminology.spec.js when POST /check-consistency was deleted (C24).
@@ -115,8 +115,12 @@ test.describe('Terminology lookup', () => {
     const data = await response.json();
     expect(data).toHaveProperty('termMatches');
 
+    // Compare on english, not id: the matcher's headwordId is now a
+    // concept_term.id and POST /api/terminology's term.id is a
+    // terminology_headwords.id — two disjoint id spaces since the B4b-1
+    // matcher cut-over. english is stable across both endpoints.
     const allIssues = Object.values(data.termMatches).flatMap((r) => r.issues);
-    const relevant = allIssues.find((i) => i.headwordId === term.id);
+    const relevant = allIssues.find((i) => i.english === 'toys');
     expect(relevant).toBeDefined();
     expect(relevant.type).toBe('missing');
     expect(relevant.english).toBe('toys');
@@ -160,8 +164,10 @@ test.describe('Terminology lookup', () => {
     }
     // The aggregate must include OUR seeded headword, not just whatever else
     // happens to be in the module — otherwise this test could pass even if
-    // "ancestors" never matched at all.
-    expect(all.some((m) => m.headwordId === term.id)).toBe(true);
+    // "ancestors" never matched at all. Compared on english, not id: the
+    // matcher's headwordId is a concept_term.id, disjoint from term.id's
+    // terminology_headwords.id since the B4b-1 matcher cut-over.
+    expect(all.some((m) => m.english === 'ancestors')).toBe(true);
   });
 });
 
