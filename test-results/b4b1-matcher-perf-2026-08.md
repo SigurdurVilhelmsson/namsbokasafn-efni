@@ -216,9 +216,14 @@ Not once does the count track Σhits. At the largest point an un-memoised call w
 **9,856** resolve calls; the shipped code makes **1,281** — **7.69× fewer**.
 
 **How the saving moves with segment count is text- and order-dependent, and must not be
-read as a law.** It rose 3.72× → 7.69× across biology's 6.4× segment range **with modules
-added largest-first**, which makes vocabulary-per-segment decline _by construction_
-(`DEFAULT_MODULES` is ordered largest-first and the curve takes prefixes of it). Chemistry's
+read as a law.** It rose 3.72× → 7.69× across biology's 6.4× segment range, with modules
+added **largest-first _within each chapter_** — `DEFAULT_MODULES` is descending inside ch03
+and inside ch05 but interleaved between them (chapter pattern 3333 5555 33 5), so it is
+**not globally sorted by size**: 137, 106, 104, 92, **128**, 87, 86, 77, 55, 3, 3. At the
+curve's actual sampling points the steps add **137 / 106 / 196 / 378 / 61** segments —
+_increasing_ at two of the four. **Whether that ordering contributes to the trend is a
+candidate confound, not a measured one**, and the decline it would describe is ordinary
+vocabulary saturation, which this run did not separate from it either. Chemistry's
 narrower 1.3× range shows a slight **decline** over the same measurement: 5.40× → 5.27× →
 5.17×. Both curves are printed above; neither generalises to the other.
 
@@ -226,7 +231,18 @@ narrower 1.3× range shows a slight **decline** over the same measurement: 5.40�
 distinct vocabulary saturates while hits keep accumulating" — a Heaps'-law mechanism that
 is sound in principle but generalised from one curve while the other, two rows above in
 this same document, trends the other way, and while the curve's own construction supplies a
-competing explanation. **The memo verdict does not rest on this and is unaffected**: it
+competing explanation.
+
+⚠️ **SUPERSEDED AGAIN 2026-08-11 (fix round 2), and the second wording was wrong in the
+same way as the first.** Round 1 replaced it with _"modules added largest-first, which makes
+vocabulary-per-segment decline **by construction**"_. Both halves fail against the module
+list: the order is **not** globally largest-first (position 5 is 128 segments against 104
+and 92 before it), and "by construction" does not hold where the curve samples, since two
+of its four steps add MORE segments than the step before. The mechanism that clause was
+reaching for is **ordinary vocabulary saturation — the very thing the paragraph had just
+disavowed as unmeasured**, renamed rather than measured. **The conclusion it was offered in
+support of is untouched**: "text- and order-dependent, not a law" rests on chemistry's
+printed decline, and no number moved in either round. **The memo verdict does not rest on this and is unaffected**: it
 rests on the 8/8 exact equality of calls to distinct strings hit.
 
 Controls, so the verdict is not an artefact of a counter that never bound:

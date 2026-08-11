@@ -70,10 +70,21 @@ const RECORDED = { concepts: 70187, terms: 192189 };
 const DEFAULT_BOOK = 'liffraedi-2e';
 
 /**
- * Real modules on disk, largest first. The segment-axis curve concatenates
- * PREFIXES of this list, so every point is real extracted text and no segment is
- * ever duplicated to reach a size. `liffraedi-2e` ch03+ch05 are the only
- * biology modules extracted locally; 878 segments is the whole of them.
+ * Real modules on disk. The segment-axis curve concatenates PREFIXES of this
+ * list, so every point is real extracted text and no segment is ever duplicated
+ * to reach a size. `liffraedi-2e` ch03+ch05 are the only biology modules
+ * extracted locally; 878 segments is the whole of them.
+ *
+ * ⚠️ THE ORDER IS NOT GLOBALLY LARGEST-FIRST, and a comment here said it was
+ * until 2026-08-11. Measured segment counts in list order:
+ *   137, 106, 104, 92, 128, 87, 86, 77, 55, 3, 3
+ * — position 5 (`5:m66374`, 128) exceeds positions 3 and 4. The list is
+ * descending WITHIN each chapter and interleaved BETWEEN them (chapter pattern
+ * 3333 5555 33 5), which cannot be globally sorted except by coincidence.
+ * It matters because a reader reasoning about the segment-axis curve's trend
+ * will reach for "each step adds a smaller module" — and at `DEFAULT_CURVE`'s
+ * actual sampling points the steps add 137, 106, 196, 378, 61 segments,
+ * INCREASING at two of four.
  */
 const DEFAULT_MODULES = [
   '3:m66442',
@@ -113,8 +124,9 @@ function usage(msg) {
                      skips seeding, and arm 2 then fails its unscoped control.
   --book <slug>      the book whose domain chain scopes resolve() (default:
                      ${DEFAULT_BOOK} — biology, the widest chain).
-  --modules <list>   comma-separated ch:moduleId, largest first
-                     (default: the 11 extracted liffraedi-2e modules).
+  --modules <list>   comma-separated ch:moduleId; the curve takes prefixes
+                     (default: the 11 extracted liffraedi-2e modules, which are
+                     NOT globally largest-first — see DEFAULT_MODULES).
   --curve <list>     comma-separated module counts for the segment axis
                      (default: ${DEFAULT_CURVE.join(',')}).
   -h, --help         this message`
