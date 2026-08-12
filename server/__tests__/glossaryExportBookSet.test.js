@@ -162,16 +162,70 @@ describe('B3 changes no book outcome (spec D6)', () => {
     );
     const outcomeOf = (slug) => status.books[slug] && status.books[slug].outcome;
 
-    expect(outcomeOf('efnafraedi-2e')).toBe('refused-producer');
-    expect(outcomeOf('liffraedi-2e')).toBe('refused-producer');
-    expect(outcomeOf('lifraen-efnafraedi')).toBe('refused-producer');
-    // No committed glossary — §C21's gate, live on this book since 2026-08-08.
-    expect(outcomeOf('edlisfraedi-2e')).toBe('refused-absent-baseline');
+    // ⚠️ AMENDED 2026-08-12 after §C62's adoption reached `main`. The invariant
+    // this test's NAME states — every glossary-bearing book still refuses — is
+    // unchanged and still asserted below. What moved is WHICH GATE refuses, and
+    // it moved because the committed producer legitimately changed:
+    //
+    //   - efnafraedi-2e, liffraedi-2e and edlisfraedi-2e were adopted to
+    //     `export-terminology-resolved`, the same producer `resolvedStub`
+    //     emits, so the producer gate is now correctly SATISFIED for them and
+    //     the next gate in line — the shrink guard — catches the stub instead.
+    //   - lifraen-efnafraedi was NOT adopted, so it is still merge-glossary and
+    //     still stops at the producer gate.
+    //   - edlisfraedi-2e no longer has an absent baseline: the cron committed
+    //     its first glossary-unified.json in `120352b0`.
+    //
+    // Asserting the exact outcome per book is the point: a book quietly moving
+    // from refused to WRITTEN is what this guard exists to catch, and every
+    // value below is a refusal.
+    const outcomes = {
+      'efnafraedi-2e': 'refused-shrink',
+      'liffraedi-2e': 'refused-shrink',
+      'edlisfraedi-2e': 'refused-shrink',
+      'lifraen-efnafraedi': 'refused-producer',
+    };
+    for (const [slug, expected] of Object.entries(outcomes)) {
+      expect(`${slug}=${outcomeOf(slug)}`).toBe(`${slug}=${expected}`);
+    }
+    // The property that actually matters, stated independently of which gate
+    // fired: NO book was written. This survives a further adoption changing any
+    // reason above, and fails loudly if one ever becomes a write.
+    for (const slug of Object.keys(outcomes)) {
+      expect(outcomeOf(slug)).toMatch(/^refused-/);
+    }
+  });
 
-    // The real books/ tree must be untouched — this run wrote only into the
-    // tmpdir copy, never into the repo.
-    expect(
-      fs.existsSync(path.join(BOOKS_DIR, 'edlisfraedi-2e', 'glossary', 'glossary-unified.json'))
-    ).toBe(false);
+  it('writes nothing into the real books/ tree', () => {
+    // ⚠️ REWRITTEN 2026-08-12. This was `expect(existsSync(edlisfraedi-2e/
+    // glossary-unified.json)).toBe(false)` — a leak check implemented as an
+    // ABSENCE, which silently stopped being a leak check the moment the cron
+    // committed that file legitimately (`120352b0`). An absence-based guard
+    // decays into a tautology as soon as the thing legitimately exists.
+    // Snapshot every real glossary file's bytes, run the export against a
+    // tmpdir copy, and assert the real tree is byte-identical afterwards.
+    const realFiles = booksInExportLoop()
+      .map((slug) => path.join(BOOKS_DIR, slug, 'glossary', 'glossary-unified.json'))
+      .filter((f) => fs.existsSync(f));
+    expect(realFiles.length).toBeGreaterThan(0); // control: nothing to protect ⇒ vacuous
+
+    const before = realFiles.map((f) => [f, fs.readFileSync(f)]);
+
+    root = fs.mkdtempSync(path.join(os.tmpdir(), 'b3-leak-'));
+    const tmpBooksDir = path.join(root, 'books');
+    copyRealBooksInto(tmpBooksDir);
+    runGlossaryExport({
+      booksDir: tmpBooksDir,
+      projectRoot: root,
+      exportFn: resolvedStub,
+      subjectFn: () => 'chemistry',
+      log: () => {},
+      logError: () => {},
+    });
+
+    const modified = before
+      .filter(([f, bytes]) => !fs.readFileSync(f).equals(bytes))
+      .map(([f]) => path.relative(BOOKS_DIR, f));
+    expect(modified).toEqual([]);
   });
 });
