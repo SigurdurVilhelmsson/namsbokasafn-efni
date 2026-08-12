@@ -385,6 +385,66 @@ node tools/cnxml-render.js --book <book> --chapter <n>
 - [ ] Both succeed
 - [ ] `npm run fidelity:render` compared against the Gate C baseline
 
+## ✅ Step 5 — RESULTS, executed 2026-08-12 (data commit `c17bb7cf`)
+
+**16 modules, 0 failures. API usage 250,993 chars ≈ 2,510 ISK** (chem 89,282 / physics 161,711)
+against a ~3,213 ISK post-extract estimate. *(The gap is real and instructive: the estimate counts
+whole-file characters, the API bills translated text only — so `--force --dry-run` over-states.)*
+
+### 🔒 The pre-registered prediction — **CONFIRMED on both halves**
+
+| | predicted | measured |
+|---|---|---|
+| `bracketMarkerDelta` per module | `{}` for all 16 | **0 / 16 non-zero** ✅ |
+| `[[MATH:` counts EN↔IS | match per module | **572 / 572, 0 mismatched** ✅ |
+
+▶ **The decision rule fixed in advance therefore returns: marker survival holds at ~250K chars on
+`/v1/translate` in August; the manual tail is ~0 and the full run needs no per-module worklist
+budget.** ⚠️ **This is the one number the register said the pilot existed to produce**, and it is
+now measured rather than estimated.
+⚠️ **Scope it honestly:** this is evidence about `/v1/translate` at this scale on this date — per
+CLAUDE.md's durable rule, marker-survival evidence is **per-endpoint and rots when the model
+changes**. It is not evidence about `/v1/grammar`, which corrupts these markers.
+
+### Legacy elimination — both dialects, both sides
+
+| | EN | IS |
+|---|---|---|
+| `{{i}} {{b}} {{term}} {{fn}}` | 128 → **0** | 160 → **0** |
+| `++text++` (underline) | 5 → **0** | 5 → **0** |
+| `[[u:]]` (its bracket form) | 0 → **5** | 0 → **5** |
+| malformed `[[type: ` | 4 → **0** | 4 → **0** |
+| raw XML residue | 0 | 0 |
+
+`m42137`'s `{"i":+1}` — the pilot's one genuine same-vintage anomaly — **is gone**; it was a
+stale-MT artefact after all.
+
+### ✅ Content RECOVERED, not merely migrated
+
+**`edlisfraedi-2e` ch04 goes 623 → 639 equations, all 16 in `m42076` (53 → 69)** — 67 unique
+`[[MATH:` indices, no duplicates. Cause attributed (P5): the **OC-E list-nested block
+equation/media** fixes, which post-date that module's March 2026 extract. 🔴 **The currently
+published physics ch04 is missing those 16 equations.**
+
+### 🔴 M6 — FIVE PUBLISHED PAGES RENAMED. This is the pilot's most consequential result.
+
+Map: [`books/_slug-maps/2026-08-12-c56-pilot-renames.json`](../../books/_slug-maps/2026-08-12-c56-pilot-renames.json).
+All five are **section** pages, which are title-slugged; the re-MT simply chose different Icelandic
+titles. Compiled pages (summary / key-terms / exercises / answer-key) have fixed names and did not
+move — the same asymmetry Gate A found.
+
+**Rate: 5 of 14 section pages = 35%.** ⚠️ **Do not extrapolate that percentage to the corpus as if
+it were stable** — it is 14 pages on two chapters, and title volatility depends on the source
+title. But it is emphatically **not** ~0, and a whole-corpus re-MT therefore carries a **large C9
+redirect obligation** that must be priced into the full-run decision alongside the ISK.
+
+### M5, and what did NOT change
+
+- **Chemistry ch20: identical to its pre-run baseline** — the same single `shape-drift em 93→94`. **No worse** ✅
+- **Physics ch04: 0 findings, check 3 still inert** (no baseline file). ▶ **Capture physics's baseline NOW** — the render is clean, which is the precondition the tool's docstring requires.
+- **Inject warnings, both PRE-EXISTING and neither caused by this run** *(checked, not assumed)*: physics has **15 unmapped math labels** across 7 modules (`net`, `app`, `tot`, `floor`, …) — it has **no glossary at all**; chemistry reports **76 exact untranslated-EN residues, all in `m68662`**, which is **not a pilot module** — no ch20 module appears in the residue report at all.
+- **`attrMismatches` (M4's real check): none reported** on either book — the `{{term}}` → `[[term:…|id]]` attachment, 84% of the payload, came through clean.
+
 ## Step 5 — evaluate
 
 - [ ] All **C2b** criteria (M1–M7) evaluated and recorded — **including failures**
