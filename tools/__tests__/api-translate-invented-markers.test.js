@@ -131,13 +131,23 @@ describe('unwrapInventedMarkers — the known-type set is the whole safety argum
   // letting the unwrap eat it. Read in Node, never grep — committed files in
   // this repo hold raw NUL bytes (grep goes silent) and raw U+0001 (grep's
   // output lies).
+  /** Marker types the editor client's highlight regexes declare. */
+  const declaredTypes = (src) =>
+    new Set([...src.matchAll(/\\\[\\\[([A-Za-z][A-Za-z0-9_]*)/g)].map((m) => m[1]));
+
   it('knows every atomic marker type the editor client enumerates', () => {
     const src = fs.readFileSync(path.join(REPO, 'server/public/js/marker-highlight.js'), 'utf8');
-    const declared = new Set(
-      [...src.matchAll(/\\\[\\\[([A-Za-z][A-Za-z0-9_]*)/g)].map((m) => m[1])
-    );
+    const declared = declaredTypes(src);
     expect(declared.size).toBeGreaterThan(0); // control: the scan must find some
     for (const t of declared) expect(KNOWN_BRACKET_TYPES.has(t)).toBe(true);
+  });
+
+  it('would FAIL if the client declared a type we do not know', () => {
+    // Sensitivity, not coverage: the guard above has never had its failure path
+    // fire, and a check whose red branch is unexercised is the dangerous kind.
+    const declared = declaredTypes(String.raw`html.replace(/\[\[FOO:\d+\]\]/g, atom)`);
+    expect(declared).toEqual(new Set(['FOO']));
+    expect(KNOWN_BRACKET_TYPES.has('FOO')).toBe(false);
   });
 });
 
@@ -163,6 +173,21 @@ describe('unwrapInventedMarkers — a literal "[" abutting a real marker', () =>
     const { text, unwrapped } = unwrapInventedMarkers('mælt [[[sameind|Sameindin]], g] hér');
     expect(text).toBe('mælt [Sameindin, g] hér');
     expect(unwrapped).toEqual([{ type: 'sameind', inner: 'Sameindin' }]);
+  });
+
+  // The mirror of the `[` case. These MUST be tests rather than a corpus scan:
+  // the scan reports "byte-identical", which is also what a function that
+  // silently FAILS to unwrap produces. A missed unwrap is invisible there.
+  it.each([
+    ['A [[efnatengi]]] B', 'A efnatengi] B'],
+    ['[styrkur [[efnatengi]]] mól', '[styrkur efnatengi] mól'],
+    ['A [[sameind|x]]] B', 'A x] B'],
+    ['[[[sameind|Sameindin]]]', '[Sameindin]'],
+    ['[HCl] og [[efnatengi]] hér', '[HCl] og efnatengi hér'],
+  ])('still unwraps in %s despite a literal "]"', (input, expected) => {
+    const { text, unwrapped } = unwrapInventedMarkers(input);
+    expect(text).toBe(expected);
+    expect(unwrapped).toHaveLength(1);
   });
 });
 

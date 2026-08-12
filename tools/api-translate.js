@@ -1045,6 +1045,9 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
       // skips a repair is exactly how a fix half-ships.
       unwrap = unwrapInventedMarkers(output);
       output = unwrap.text;
+      // REPLACES rather than appends, deliberately: the retry discards the
+      // first response entirely, so the main path's unwraps describe text that
+      // no longer exists. Concatenating would over-report.
       unwrapped = unwrap.unwrapped;
       reattach = reattachIds(output, segments);
       output = reattach.text;
