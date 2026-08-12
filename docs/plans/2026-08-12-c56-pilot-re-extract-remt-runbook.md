@@ -191,6 +191,39 @@ The often-quoted "only 4" is **locked *and* faithful-reviewed** — `03-faithful
 
 ⚠️ **Biology sends NO glossary terms** (2,262 entries, all `needs_review` → zero approved → loads as nothing, → §C62). **That is deliberate for this run: it is the control against which a post-Íðorðabankinn re-MT is measured.**
 
+## 🧪 PILOT COMPLETED TO ALL FIVE BOOKS — `lifraen-efnafraedi` + `orverufraedi`, added 2026-08-12 on [LEAD] direction
+
+*"That completes the sample books available on the website. Those are the books lined up after
+chemistry and biology, along with physics, so running them in the pilot is prudent."*
+
+| chapter | files | legacy EN/IS | published | est. | why this one |
+|---|---|---|---|---|---|
+| **`orverufraedi` ch05** | 8 | **540 / 546** | 12 | ~993 ISK | **The heaviest legacy load in the entire pilot.** ch01 is excluded — it holds the book's only hand repair (`e251c134`). |
+| **`lifraen-efnafraedi` ch03** | 10 | 78 / 76 | **13** | ~758 ISK | The book's **only published** chapter and its most substantive; enables M5/M6 at all. |
+| **`lifraen-efnafraedi` ch12** | 1 | 0 / 0 | 0 | ~182 ISK | 🔒 Carries the **`lb`/`rb` imbalance** Appendix B records as untested. Cheap probe. ⚠️ **Exercises-only** — its single file *is* `exercises-segments`. |
+
+- ✅ **Gate A clear for all three — and it required correcting Gate A's own method.** `0c2bd270` is flagged by the "`02-for-mt` did not move" discriminator but is **a legitimate MT run, not a hand repair**: it wrote **31 provenance files** and its message records the spend (443,565 chars ≈ 4,436 ISK). ▶ **The discriminator also fires on a real MT run over an UNCHANGED English file** — provenance rewriting is what separates them. `lifraen-efnafraedi` therefore has **no** hand repairs.
+- ✅ **Gate B clear**: neither book has a single `.locked` module.
+- ⚠️ **Glossary state differs**: `lifraen-efnafraedi` loads **590 approved chemistry terms** from its own (unadopted, merge-glossary vintage) file; **`orverufraedi` has no glossary file at all.** Neither was in §C62's adopted three.
+
+### 🔒 PRE-REGISTERED — and this is the first pilot prediction that can genuinely fail
+
+🔴 **THESE FOUR DELTAS ARE SAME-VINTAGE, WHICH MAKES THEM UNLIKE EVERY EARLIER PILOT DELTA.**
+`m00035` `{"b":-1}` · `m58802` `{"b":-2}` · `m58803` `{"b":-1}` · `m58804` `{"i":+4}` — **all four
+have EN and IS written on the same day (2026-03-23)**, so the vintage-mismatch explanation that
+accounted for physics and chemistry **does not apply**. ▶ **They are genuine marker losses/gains
+from the March MT run — the "~2.3% loss class" the register originally described, found for real.**
+
+**The prediction: after re-MT, all four go to `{}`.** That tests whether the API's marker fidelity
+has improved since March. ⚠️ **A non-zero outcome here would be the pilot's first real failure, and
+it is the informative one** — it would mean the loss class is live at current model quality and
+must be budgeted for corpus-wide.
+
+**Also pre-registered:** ① legacy `{{}}` **618 EN / 622 IS → 0 / 0** *(note the Icelandic side
+currently carries **more** than the English — same-vintage, unexplained)*; ② **`lb`/`rb` stays
+2/3** on both sides, per §C53 §2.4's claim that it is a source asymmetry transcribed 1:1 — the
+baseline already shows EN and IS agreeing at 2/3, so the re-extract is the actual test.
+
 ## Gate C (criteria, revised 2026-08-12 for the LEAD amendment) — **PRE-MT is free and loops; POST-MT costs money and runs once**
 
 **The split is the point.** Everything in the first table is re-checkable at zero cost, so it is a
