@@ -459,6 +459,27 @@ redirect obligation** that must be priced into the full-run decision alongside t
   diagnosis — an empty baseline is **worse than none**, because it looks captured while leaving the
   drift check inert.)*
 - **Inject warnings, both PRE-EXISTING and neither caused by this run** *(checked, not assumed)*: physics has **15 unmapped math labels** across 7 modules (`net`, `app`, `tot`, `floor`, …) — it has **no glossary at all**; chemistry reports **76 exact untranslated-EN residues, all in `m68662`**, which is **not a pilot module** — no ch20 module appears in the residue report at all.
+
+### ⚠️ The two halves are NOT comparable on translation quality — the glossary inputs differed completely
+
+**Chemistry sent 590 terms; physics sent zero.** Any cross-book quality judgement from this pilot is
+confounded, and the physics unmapped-math-labels above are the same absence surfacing downstream.
+Full account → register **§C62** (supply gap) and **§C63** (what `approved` means). Three things
+that change how the pilot's MT output should be read, recorded here because they are *inputs to this
+run*, not general background:
+
+- **Chemistry's glossary was generated 2026-03-09 — five months before the pilot**, by
+  `tools/merge-glossary.js` (fingerprint `category`+`chapter`, **no `producer` stamp**). Nothing
+  from the concept model or the 2026-08-07 Íðorðabankinn fetch reached it.
+- **Only 11 of the 590 terms (1.9%) came from Íðorðabankinn** — the one source that can serve MT at
+  all, since the "proper" glossaries are compiled *from* reviewed output and so cannot precede it.
+- ✅ **Per-chunk narrowing already works and needs no per-chapter curation:**
+  `filterGlossaryForText` cut 590 terms / 33.3 KB to **mean 43 terms (~2 KB), max 88, min 3** across
+  ch20's six modules.
+
+📌 **One clean incidental result:** `atom` is *contested* in that glossary, so **both** candidates
+were omitted and the MT got **no guidance** — and it produced **`atóm*` 296 / `frumeind*` 0** across
+ch20, correctly inflected. Evidence about the model's own preference, not a terminology ruling.
 - **`attrMismatches` (M4's real check): none reported** on either book — the `{{term}}` → `[[term:…|id]]` attachment, 84% of the payload, came through clean.
 
 ## Step 5 — evaluate
