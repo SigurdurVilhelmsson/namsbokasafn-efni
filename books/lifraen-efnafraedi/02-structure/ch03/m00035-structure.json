@@ -451,7 +451,10 @@
       "class": null,
       "alt": "The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left.",
       "src": "../../media/OChem_03_04_016.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -459,8 +462,11 @@
       "class": null,
       "alt": "The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain.",
       "src": "../../media/OChem_03_04_018.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 4
 }

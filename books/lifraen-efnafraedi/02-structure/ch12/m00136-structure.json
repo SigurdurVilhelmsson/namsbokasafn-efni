@@ -1,0 +1,188 @@
+{
+  "moduleId": "m00136",
+  "title": {
+    "segmentId": "m00136:title:auto-1",
+    "text": "Interpreting Mass Spectra"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "cd973fdf-3dee-40ac-aec2-76d92d6234c2"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00136:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00136:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00136:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00136:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "The mass spectrum of 2,2-dimethylpropane. The m / z ratios are 29, 41, and 57 for three tall peaks noted with arrows.",
+        "src": "../../media/OChem_12_02_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00136:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00136:para:para-00005"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00136:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00136:para:para-00007"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00136:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": "The 2,2-dimethylpropane cation reacts to produce a tertiary butyl cation with a m / z ratio of 57 and a methyl radical.",
+        "src": "../../media/OChem_12_02_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00136:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00136:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": "The mass spectrum of hexane. The m / z ratios are 29, 43, and 57 for three tall peaks noted with arrows. The molecular ion peak is at 86.",
+        "src": "../../media/OChem_12_02_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00136:para:para-00010"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00136:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": "A flowchart of fragmentation of hexane. The base peak is a pentane cation at m / z 57. M / z ratios and relative abundances of other fragments are mentioned.",
+        "src": "../../media/OChem_12_02_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00136:para:para-00011"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00136:example-title:exam-00001-title",
+        "text": "Strategy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00136:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00136:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00136:para:para-00014",
+          "title": {
+            "segmentId": "m00136:para-title:para-00014-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00136:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": "The mass spectra of two unlabeled samples A and B.",
+        "src": "../../media/OChem_12_02_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00136:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 2
+}

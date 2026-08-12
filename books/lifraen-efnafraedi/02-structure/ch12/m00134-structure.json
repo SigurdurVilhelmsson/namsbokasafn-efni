@@ -1,0 +1,117 @@
+{
+  "moduleId": "m00134",
+  "title": {
+    "segmentId": "m00134:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "9dba890b-2259-4ec4-8eca-251074e8fa93"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00134:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "A cup of coffee on a saucer in a tray of coffee beans.",
+        "src": "../../media/OChem_12_00_Coffee.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00134:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00134:para:para-00002"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "class": "unnumbered unstyled",
+      "summary": "",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00134:entry:auto-5",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00134:entry:auto-6",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00134:entry:auto-7",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00134:entry:auto-8",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00134:entry:auto-9",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00134:entry:auto-10",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00134:entry:auto-11",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00134:entry:auto-12",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 0
+}

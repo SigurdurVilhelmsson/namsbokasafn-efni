@@ -15,6 +15,17 @@
       "segmentId": "m00034:para:para-00001"
     },
     {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": "The molecular structures and ball and stick models of methane, a methyl group, methyl alcohol, and methylamine. Grey, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.",
+        "src": "../../media/OChem_03_03_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
       "type": "table",
       "id": "table-00001",
       "summary": " ",
@@ -214,17 +225,6 @@
       ]
     },
     {
-      "type": "figure",
-      "id": "fig-00001",
-      "class": "unnumbered scaled-down",
-      "caption": null,
-      "media": {
-        "alt": "The molecular structures and ball and stick models of methane, a methyl group, methyl alcohol, and methylamine. Grey, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.",
-        "src": "../../media/OChem_03_03_001.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
       "type": "para",
       "id": "para-00002",
       "segmentId": "m00034:para:para-00002"
@@ -339,5 +339,5 @@
       ]
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 3
 }

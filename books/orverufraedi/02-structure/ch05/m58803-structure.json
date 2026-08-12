@@ -133,6 +133,19 @@
               "type": "para",
               "id": "fs-id1172101781861",
               "segmentId": "m58803:para:fs-id1172101781861"
+            },
+            {
+              "type": "list",
+              "id": "fs-id1172099702711",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58803:item:fs-id1172099702711-item-1"
+                }
+              ]
             }
           ]
         },
@@ -141,7 +154,21 @@
           "id": "fs-id1172101929649",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1167661338831",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58803:item:fs-id1167661338831-item-1"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -226,7 +253,21 @@
           "id": "fs-id1172101785902",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1167661316641",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58803:item:fs-id1167661316641-item-1"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "note",
@@ -334,6 +375,31 @@
                 "type": "para",
                 "id": "fs-id1172099683690",
                 "segmentId": "m58803:problem:fs-id1172099683690"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172097148244",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172097148244-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172097148244-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172097148244-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172097148244-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -356,6 +422,31 @@
                 "type": "para",
                 "id": "fs-id1172097149332",
                 "segmentId": "m58803:problem:fs-id1172097149332"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172099577180",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172099577180-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172099577180-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172099577180-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172099577180-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -378,6 +469,31 @@
                 "type": "para",
                 "id": "fs-id1172099721213",
                 "segmentId": "m58803:problem:fs-id1172099721213"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172102028488",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172102028488-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172102028488-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172102028488-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58803:item:fs-id1172102028488-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -499,5 +615,5 @@
       ]
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 2
 }

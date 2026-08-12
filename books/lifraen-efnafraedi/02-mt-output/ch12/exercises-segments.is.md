@@ -1,5 +1,5 @@
 <!-- SEG:12-02-OC-P01:stem:347309-b0 -->
-Kynhormónið testósterón inniheldur aðeins C, H og O og hefur massann 288,2089 amu, eins og ákvarðað var með massagreiningu með mikilli upplausn. Hver er líkleg sameindaformúla testósteróns?
+Kynhormónið testósterón inniheldur aðeins C, H og O og hefur massann 288,2089 amu, eins og ákvarðað var með hárri upplausn massarófsmælingar. Hver er líkleg sameindaformúla testósteróns?
 
 <!-- SEG:12-02-OC-P01:sol:347309-b0 -->
 C[[sub:19]]H[[sub:28]]O[[sub:2]]
@@ -23,10 +23,10 @@ Massaróf fyrir dæmi 12-2.
 2-hexen
 
 <!-- SEG:12-03-OC-P03:stimulus:b0 -->
-Hver er massi hlaðinna brota sem myndast í eftirfarandi klofningsferlum?
+Hver er massi hlaðinna brota sem myndast í eftirfarandi klofnunarferlum?
 
 <!-- SEG:12-03-OC-P03:stem:337546-b0 -->
-Alfa-klofningur 2-pentanóns (CH[[sub:3]]COCH[[sub:2]]CH[[sub:2]]CH[[sub:3]])
+Alfa-klofnun 2-pentanóns (CH[[sub:3]]COCH[[sub:2]]CH[[sub:2]]CH[[sub:3]])
 
 <!-- SEG:12-03-OC-P03:sol:337546-b0 -->
 43, 71
@@ -44,7 +44,7 @@ McLafferty-umröðun 4-metýl-2-pentanóns [[lb:]]CH[[sub:3]]COCH[[sub:2]]CH(CH[
 58
 
 <!-- SEG:12-03-OC-P03:stem:337549-b0 -->
-Alfa-klofningur tríetýlamíns [[lb:]](CH[[sub:3]]CH[[sub:2]])[[sub:3]]N[[rb:]]
+Alfa-klofnun tríetýlamíns [[lb:]](CH[[sub:3]]CH[[sub:2]])[[sub:3]]N[[rb:]]
 
 <!-- SEG:12-03-OC-P03:sol:337549-b0 -->
 86
@@ -56,7 +56,7 @@ Teldu upp massa forverajónarinnar og nokkurra brota sem þú gætir búist við
 [[MEDIA:0]]
 
 <!-- SEG:12-03-OC-P04:sol:628144-b0 -->
-102 (M[[sup:+]]), 84 (vötnun), 87 (alfa-klofningur), 59 (alfa-klofningur)
+102 (M[[sup:+]]), 84 (vötnun), 87 (alfa-klofnun), 59 (alfa-klofnun)
 
 <!-- SEG:12-05-OC-P05:stem:341865-b0 -->
 Hvort hefur meiri orku, innrauð geislun með [[i:λ]] = 1,0 × 10[[sup:–6]] m eða röntgengeisli með [[i:λ]] = 3,0 × 10[[sup:–9]] m? Geislun með [[i:ν]] = 4,0 × 10[[sup:9]] Hz eða með [[i:λ]] = 9,0 × 10[[sup:–6]] m?
@@ -224,7 +224,7 @@ Nikótín er díamínóefnasamband einangrað úr þurrkuðum tóbakslaufum. Nik
 Hormónið kortisón inniheldur C, H og O og sýnir sameindajón við M[[sup:+]] = 360,1937 með hárri upplausn massarófsgreiningar. Hver er sameindaformúla kortisóns? (Ómettunarstuðull fyrir kortisón er 8.)
 
 <!-- SEG:12-99-OC-AP08:stimulus:b0 -->
-Það er sérstaklega auðvelt að bera kennsl á halógenuð efnasambönd út frá massarófum þeirra þar sem bæði klór og bróm koma náttúrulega fyrir sem efnablöndur tveggja algengra samsæta. Munum að klór kemur fyrir sem [[sup:35]]Cl (75,8%) og [[sup:37]]Cl (24,2%); og bróm kemur fyrir sem [[sup:79]]Br (50,7%) og [[sup:81]]Br (49,3%). Við hvaða massa koma sameindajónirnar fram fyrir eftirfarandi formúlur? Hver eru hlutfallsleg prósentuhlutfall hverrar sameindajónar?
+Það er sérstaklega auðvelt að bera kennsl á halógenuð efnasambönd út frá massarófum þeirra þar sem bæði klór og bróm koma náttúrulega fyrir sem efnablöndur tveggja algengra samsæta. Munum að klór kemur fyrir sem [[sup:35]]Cl (75,8%) og [[sup:37]]Cl (24,2%); og bróm kemur fyrir sem [[sup:79]]Br (50,7%) og [[sup:81]]Br (49,3%). Við hvaða massa koma sameindajónirnar fram fyrir eftirfarandi formúlur? Hver er hlutfallsleg prósenta hverrar sameindajónar?
 
 <!-- SEG:12-99-OC-AP08:stem:337620-b0 -->
 Brómmetan, CH[[sub:3]]Br
@@ -233,7 +233,7 @@ Brómmetan, CH[[sub:3]]Br
 1-klórhexan, C[[sub:6]]H[[sub:13]]Cl
 
 <!-- SEG:12-99-OC-AP09:stem:341853-b0 -->
-Með því að þekkja náttúrulega algengi minniháttar samsæta er hægt að reikna út hlutfallslega hæð M[[sup:+]] og M + 1 toppanna. Ef [[sup:13]]C hefur náttúrulegt algengi upp á 1,10%, hver er þá hlutfallsleg hæð M[[sup:+]] og M + 1 toppanna í massarófi bensens, C[[sub:6]]H[[sub:6]]?
+Með því að þekkja náttúrulega algengi minniháttar samsæta er hægt að reikna út hlutfallslega hæð M[[sup:+]] og M + 1 toppa. Ef [[sup:13]]C hefur náttúrulegt algengi upp á 1,10%, hver er þá hlutfallsleg hæð M[[sup:+]] og M + 1 toppa í massarófi bensens, C[[sub:6]]H[[sub:6]]?
 
 <!-- SEG:12-99-OC-AP10:stimulus:b0 -->
 Leggið til byggingar fyrir efnasambönd sem passa við eftirfarandi gögn:
@@ -245,7 +245,7 @@ Keton með M[[sup:+]] = 86 og brot við [[i:m/z]] = 71 og [[i:m/z]] = 43
 Alkóhól með M[[sup:+]] = 88 og brot við [[i:m/z]] = 73, [[i:m/z]] = 70 og [[i:m/z]] = 59
 
 <!-- SEG:12-99-OC-AP11:stem:356700-b0 -->
-2-metýlpentan (C[[sub:6]]H[[sub:14]]) hefur massarófið sem sýnt er. Hvaða toppur táknar M[[sup:+]]? Hver er basatoppurinn? Leggið til byggingar fyrir brotajónir með [[i:m/z]] = 71, 57, 43 og 29. Af hverju hefur basatoppurinn þann massa sem hann hefur?
+2-metýlpentan (C[[sub:6]]H[[sub:14]]) hefur massarófið sem sýnt er. Hvaða toppur táknar M[[sup:+]]? Hver er basitindurinn? Leggið til byggingar fyrir brotajónir með [[i:m/z]] = 71, 57, 43 og 29. Af hverju hefur basitindurinn þann massa sem hann hefur?
 
 <!-- SEG:12-99-OC-AP11:stem:356700-b1 -->
 [[MEDIA:0]]
@@ -254,7 +254,7 @@ Alkóhól með M[[sup:+]] = 88 og brot við [[i:m/z]] = 73, [[i:m/z]] = 70 og [[
 Gerum ráð fyrir að þú sért á rannsóknarstofu að framkvæma hvataða vetnun sýklóhexens yfir í sýklóhexan. Hvernig gætirðu notað massagreini til að ákvarða hvenær efnahvarfinu er lokið?
 
 <!-- SEG:12-99-OC-AP13:stimulus:b0 -->
-Hvaða brotum gætir þú búist við í massarófum eftirfarandi efnasambanda?
+Hvaða brota mættir þú búast við í massarófum eftirfarandi efnasambanda?
 
 <!-- SEG:12-99-OC-AP13:stem:352785-b0 -->
 [[MEDIA:0]]
@@ -266,13 +266,13 @@ Hvaða brotum gætir þú búist við í massarófum eftirfarandi efnasambanda?
 [[MEDIA:0]]
 
 <!-- SEG:12-99-OC-AP14:stem:337639-b0 -->
-Hvernig gætir þú notað IR-litrófsgreiningu til að greina á milli hverfanna þriggja, 1-bútýns, 1,3-bútadíens og 2-bútýns?
+Hvernig gætirðu notað IR-litrófsgreiningu til að greina á milli hverfanna þriggja, 1-bútýns, 1,3-bútadíens og 2-bútýns?
 
 <!-- SEG:12-99-OC-AP15:stem:337641-b0 -->
-Myndir þú búast við að tvær handhverfur eins og ([[i:R]])-2-brómbútan og ([[i:S]])-2-brómbútan hefðu eins eða ólík IR-róf? Útskýrðu.
+Mundirðu búast við því að tvær handhverfur eins og ([[i:R]])-2-brómbútan og ([[i:S]])-2-brómbútan hefðu eins eða ólík IR-róf? Skýrðu svarið.
 
 <!-- SEG:12-99-OC-AP16:stem:337643-b0 -->
-Myndir þú búast við að tvær víxlhverfur eins og [[i:meso]]-2,3-díbrómbútan og (2[[i:R]],3[[i:R]])-díbrómbútan hefðu eins eða ólík IR-róf? Útskýrðu.
+Mundirðu búast við því að tvær víxlhverfur eins og [[i:meso]]-2,3-díbrómbútan og (2[[i:R]],3[[i:R]])-díbrómbútan hefðu eins eða ólík IR-róf? Skýrðu svarið.
 
 <!-- SEG:12-99-OC-AP17:stimulus:b0 -->
 Leggið til byggingar fyrir efnasambönd sem uppfylla eftirfarandi lýsingar:
@@ -290,7 +290,7 @@ C[[sub:4]]H[[sub:8]]O, með sterka IR-gleypni við 1715 cm[[sup:–1]]
 C[[sub:8]]H[[sub:10]], með IR-gleypni við 1600 og 1500 cm[[sup:–1]]
 
 <!-- SEG:12-99-OC-AP18:stimulus:b0 -->
-Hvernig gætir þú notað innrauða litrófsgreiningu til að greina á milli eftirfarandi hverfupara?
+Hvernig gætirðu notað innrauða litrófsgreiningu til að greina á milli eftirfarandi hverfupara?
 
 <!-- SEG:12-99-OC-AP18:stem:341856-b0 -->
 HC[[MEDIA:0]]CCH[[sub:2]]NH[[sub:2]] og CH[[sub:3]]CH[[sub:2]]C[[MEDIA:1]]N
@@ -308,7 +308,7 @@ Tvö innrauð róf eru sýnd. Annað er róf sýklóhexans og hitt er róf sýkl
 [[MEDIA:0]]
 
 <!-- SEG:12-99-OC-AP20:stimulus:b0 -->
-Við hvaða áætluðu stöður gætu eftirfarandi efnasambönd sýnt IR-gleypni (hunsið gleypni alkana)?
+Við hvaða áætluðu stöður gætu eftirfarandi efnasambönd sýnt IR-gleypni (hunsið alkana-gleypni)?
 
 <!-- SEG:12-99-OC-AP20:stem:447733-b0 -->
 [[MEDIA:0]]
@@ -338,7 +338,7 @@ Hvernig myndir þú nota innrauða litrófsgreiningu til að greina á milli eft
 [[MEDIA:0]]
 
 <!-- SEG:12-99-OC-AP22:stimulus:b0 -->
-Við hvaða áætluðu stöður gætu eftirfarandi efnasambönd sýnt IR-gleypni?
+Við hvaða staðsetningar um það bil gætu eftirfarandi efnasambönd sýnt IR-gleypni?
 
 <!-- SEG:12-99-OC-AP22:stem:352810-b0 -->
 [[MEDIA:0]]
@@ -359,16 +359,16 @@ Við hvaða áætluðu stöður gætu eftirfarandi efnasambönd sýnt IR-gleypni
 [[MEDIA:0]]
 
 <!-- SEG:12-99-OC-AP23:stem:337689-b0 -->
-Gerðu ráð fyrir að þú sért að framkvæma vötnun 1-metýlsýklóhexanóls til að fá 1-metýlsýklóhexen. Hvernig gætir þú notað innrauða litrófsgreiningu til að ákvarða hvenær efnahvarfinu er lokið?
+Gerðu ráð fyrir að þú sért að framkvæma vötnun á 1-metýlsýklóhexanóli til að fá 1-metýlsýklóhexen. Hvernig gætir þú notað innrauða litrófsgreiningu til að ákvarða hvenær efnahvarfinu er lokið?
 
 <!-- SEG:12-99-OC-AP24:stem:337691-b0 -->
-Gerðu ráð fyrir að þú sért að framkvæma basa-hvataða afbrómun 3-bróm-3-metýlpentans (kafli 11.7) til að fá alkena. Hvernig gætir þú notað IR-litrófsgreiningu til að segja til um hvaða af þremur mögulegum brottnámsmyndefnum myndast, ef [[i:E/Z]] hverfur eru meðtaldar?
+Gerðu ráð fyrir að þú sért að framkvæma basa-hvataða brómvetniseyðingu á 3-bróm-3-metýlpentani (kafli 11.7) til að fá alkena. Hvernig gætir þú notað IR-litrófsgreiningu til að segja til um hvaða af þremur mögulegum brottnámsmyndefnum myndast, ef [[i:E/Z]] hverfur eru meðtaldar?
 
 <!-- SEG:12-99-OC-AP25:stem:337693-b0 -->
 Hvort er sterkara, C[[MEDIA:0]]O efnatengið í ester (1735 cm[[sup:–1]]) eða C[[MEDIA:1]]O efnatengið í mettuðu ketóni (1715 cm[[sup:–1]])? Útskýrðu.
 
 <!-- SEG:12-99-OC-AP26:stem:337695-b0 -->
-Karvón er ómettað ketón sem veldur myntulykt. Ef karvón hefur M[[sup:+]] = 150 í massarófi sínu og inniheldur þrjú tvítengi og einn hring, hver er sameindaformúla þess?
+Karvón er ómettað ketón sem gefur grænmintu lykt sína. Ef karvón hefur M[[sup:+]] = 150 í massarófi sínu og inniheldur þrjú tvítengi og einn hring, hver er sameindaformúla þess?
 
 <!-- SEG:12-99-OC-AP27:stem:346221-b0 -->
 Karvón (dæmi 12-39) hefur sterka innrauða gleypni við 1690 cm[[sup:–1]]. Hvers konar ketón inniheldur karvón?
@@ -412,7 +412,7 @@ Grignard-hvarfefni (alkýlmagnesíumhalíð) gangast undir almennt og mjög gagn
 <!-- SEG:12-99-OC-AP32:stem:352253-b1 -->
 [[MEDIA:0]]
 
-<!-- SEG:12-99-OC-AP33:stem:352255-b0 -->
+<!-- SEG:12-99-OC-AP33:stem:352253-b0 -->
 Ketón gangast undir afoxun þegar þau eru meðhöndluð með natríumbórhýdríði, NaBH[[sub:4]]. Hver er bygging efnasambandsins sem myndast við efnahvarf 2-bútanóns með NaBH[[sub:4]] ef það hefur IR-gleypni við 3400 cm[[sup:–1]] og M[[sup:+]] = 74 í massarófinu?
 
 <!-- SEG:12-99-OC-AP33:stem:352255-b1 -->
@@ -422,19 +422,19 @@ Ketón gangast undir afoxun þegar þau eru meðhöndluð með natríumbórhýdr
 Nítríl, R–C[[MEDIA:0]]N, gangast undir vatnsrof þegar þau eru hituð með vatnslausn af sýru. Hver er bygging efnasambandsins sem myndast við vatnsrof própannítríls, CH[[sub:3]]CH[[sub:2]]C[[MEDIA:1]]N, ef það hefur IR-gleypni frá 2500–3100 cm[[sup:–1]] og við 1710 cm[[sup:–1]], og hefur M[[sup:+]] = 74?
 
 <!-- SEG:12-99-OC-AP35:stem:356714-b0 -->
-Innrautt róf efnasambandsins með eftirfarandi massarófi hefur ekkert marktækt gleypni yfir 3000 cm[[sup:–1]]. Það er áberandi toppur nálægt 1740 cm[[sup:–1]] og annar sterkur toppur nálægt 1200 cm[[sup:–1]]. Leggðu til byggingu.
+Í innrauða rófi efnasambandsins með eftirfarandi massarófi er ekkert marktækt gleypni yfir 3000 cm[[sup:–1]]. Það er áberandi toppur nálægt 1740 cm[[sup:–1]] og annar sterkur toppur nálægt 1200 cm[[sup:–1]]. Leggðu til byggingu.
 
 <!-- SEG:12-99-OC-AP35:stem:356714-b1 -->
 [[MEDIA:0]]
 
 <!-- SEG:12-99-OC-AP36:stem:356716-b0 -->
-Innrautt róf efnasambandsins með eftirfarandi massarófi hefur meðalsterkan topp við um 1650 cm[[sup:–1]]. Það er einnig C–H sveiflutindur utan plans nálægt 880 cm[[sup:–1]]. Leggðu til byggingu.
+Í innrauða rófi efnasambandsins með eftirfarandi massarófi er meðalsterkur toppur við um 1650 cm[[sup:–1]]. Það er einnig C–H sveiflutindur utan plans nálægt 880 cm[[sup:–1]]. Leggðu til byggingu.
 
 <!-- SEG:12-99-OC-AP36:stem:356716-b1 -->
 [[MEDIA:0]]
 
 <!-- SEG:12-99-OC-AP37:stem:356718-b0 -->
-Innrautt róf efnasambandsins með eftirfarandi massarófi hefur sterka gleypni við 1584, 1478 og 1446 cm[[sup:–1]]. Leggðu til byggingu.
+Í innrauða rófi efnasambandsins með eftirfarandi massarófi er sterk gleypni við 1584, 1478 og 1446 cm[[sup:–1]]. Leggðu til byggingu.
 
 <!-- SEG:12-99-OC-AP37:stem:356718-b1 -->
 [[MEDIA:0]]

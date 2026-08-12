@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mi>v</m:mi><m:mo>=</m:mo><m:msqrt><m:mrow><m:mn>2</m:mn><m:mrow><m:mi>E</m:mi><m:mtext>/</m:mtext><m:mi>m</m:mi></m:mrow></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{v=\\sqrt{{2{E\\text{/}m}}}}"
+  }
+}

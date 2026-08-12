@@ -127,7 +127,25 @@
           "id": "fs-id1172099603565",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1167663628235",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58806:item:fs-id1167663628235-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58806:item:fs-id1167663628235-item-2"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "note",
@@ -211,6 +229,31 @@
                 "type": "para",
                 "id": "fs-id1172102140683",
                 "segmentId": "m58806:problem:fs-id1172102140683"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172099418312",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172099418312-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172099418312-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172099418312-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172099418312-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -233,6 +276,31 @@
                 "type": "para",
                 "id": "fs-id1172102006981",
                 "segmentId": "m58806:problem:fs-id1172102006981"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172101812762",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172101812762-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172101812762-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172101812762-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172101812762-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -255,6 +323,31 @@
                 "type": "para",
                 "id": "fs-id1172101789111",
                 "segmentId": "m58806:problem:fs-id1172101789111"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172102129509",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172102129509-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172102129509-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172102129509-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58806:item:fs-id1172102129509-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -296,5 +389,5 @@
       ]
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 5
 }

@@ -1,0 +1,62 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{R}}_{2}\\text{C&#x2550;}{{\\text{CH}}}_{2}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>≡C–H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{≡C–H}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>≡C–H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{≡C–H}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext>≡C–H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{≡C–H}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mover accent=\"true\"><m:mi>v</m:mi><m:mo>˜</m:mo></m:mover></m:math>",
+    "latex": "v˜"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mtext>≡C–H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{≡C–H}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  }
+}

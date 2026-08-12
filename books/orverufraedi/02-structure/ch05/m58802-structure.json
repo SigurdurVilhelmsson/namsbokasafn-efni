@@ -77,6 +77,19 @@
           "type": "para",
           "id": "fs-id1172102053638",
           "segmentId": "m58802:para:fs-id1172102053638"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1172102068275",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172102068275-item-1"
+            }
+          ]
         }
       ]
     },
@@ -191,7 +204,21 @@
           "id": "fs-id1172099724606",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1167661291972",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58802:item:fs-id1167661291972-item-1"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -204,6 +231,67 @@
         "text": "Taxonomy of Protists"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172099883921",
+          "segmentId": "m58802:para:fs-id1172099883921"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_taxon",
+          "caption": {
+            "segmentId": "m58802:caption:OSC_Microbio_05_01_taxon-caption"
+          },
+          "media": {
+            "id": "fs-id1172102062880",
+            "alt": "A branching tree diagram with common eukaryotic ancestor at the base. This leads to 5 branches. The top branch branches are classified as Excavata which is divided into 3 groups: diplomonads, parabasalids, and euglenozoans. The next branch splits into 2 branches: alveolates, and stramenopiles. The alveolates are divided into dinoflagellates, apicomplexans and ciliates. The stramenopiles are divided into diatoms, golden algae, brown algae and oomyces. All the alveotate and stramenopile groups are labeled Chromalveolata. The next branch divides into cercozoans, forams and radiolarians. These are all labeled rhizaria. The next branch divides into the red algae, chlorophytes (green algae), charophytes (green algae) and land plant. Thesea re all labeldd archaeplastidia. The next branch splits into 2. The top branch divides into slime molds, gymnamoebas and entamoebas. These are all labeled amoebozoa. The bottom branch divides into nucleariids, fungi, choanoflagellates, and animals. These are all labeled opisthokonta.",
+            "src": "../../media/OSC_Microbio_05_01_taxon.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_groups1",
+          "caption": null,
+          "media": {
+            "id": "fs-id1172101731446",
+            "alt": "Table titled: the eukaryote supergroups and some example species. There are 5 columns in the table: supergroup, subgroup, distinguishing features, examples and clinical notes. Supergroup Exacavata is divided into 3 subgroups: fornicate, parabasalids, euglenozoans. Fornicata have the following distinguishing features: form cysts, pair of equal nuclei, no mitochondria, often parasitic, four free flagella. An example is giardia lamblia which causes giardiasis. Parabasalids have the following distinguishing features: no mitochondria, four free flagella, one attached flagellum, no cysts, parasitic or symbiotic, basal bodies, kinetoplastids. An example is Trichomonas which causes trichomoniasis. Euglenozoans have the following distinguishing features: photosynthetic or heterotrophic, flagella. Examples include: Euglena which does not cause disease, Trypanosoma which causes African sleeping sickness and Chagas disease, Leishmanial which causes leishmaniasis. The supergroup Chromalveolata is divided into 4 subgroups: dinoflagellates, apicomplexans, ciliates, and oomyctes/peronosporomycetes. Dinoflagellates have the following distinguishing features: cellulose theca and two dissimilar flagella. Examples include Gonyaulax which causes red tides, Alexandrium which causes paralytic shellfish poisoning, and Pfiesteria which causes harmful algal blooms. Apicomplexans have the following distinguishing features: intracellular parasite and apical organelles. Examples include Plasmodium which causes malaria, Cryptosporidium which causes cryptosporidiosis, Theileria (Babesia) which causes babeiosis, and Toxoplasma which causes Tosoplasmosis. Ciliates have the characteristic of cilia. Examples include Balantidium which causes Balantidiasis. Paramecium and Stentor which do not cause diseas. Oomycetes / peronosporomycetes have the following distinguishing features: water molds, generally diploid, cellulose cell wall. An example is Phytophthora which causes diseases in crops.",
+            "src": "../../media/OSC_Microbio_05_01_groups1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_groups2",
+          "caption": null,
+          "media": {
+            "id": "fs-id1172101853421",
+            "alt": "Table titled: the eukaryote supergroups and some example species. There are 5 columns in the table: supergroup, subgroup, distinguishing features, examples and clinical notes. The supergroup Rhizaria is divided into 3 subroups: Foraminifera, Radiolaria, and Cerozoa. Foraminifer have the following distinguishing features: amoeboid, thereadlike pseudopodia, calclium carbonate shells. An example is Astrolonche which does not cause disease. Radiolaria have the following distinguishing features: amoeboid, threadlike pseudopodia, silica shells. An example is Actinomma which does not cause disease. Cerozoa have the following distinguishing features: amoeboid, threadlike pseudopodia, complex shells, parasitic forms. Examples include Spongospora subterranean which causes powdery scab (potato disease) and Plasmodiophora brassicae which causes cabbage clubroot. Supergroup Archaeplastida is divided into 2 groups: red algae and Chlorophytes. Red algae have the following distinguishing features: chlorophyll a, phycoerythrin, phycocyanin, flodean starch, agar in cell walls. Examples include Gelidium and Gracilaria which are sources of agar. Chlorophytes have the following distinguishing features: chlorphyll a, chlorophyll b, cellulose cell walls, starch storage. Examples include Acetabularia and Ulva which do not cause disease. Supergroup Amoebozoa is divided into 2 subgroups: slime molds and entamoebas. Slime molds have plasmodial and cellular forms. An example is Dictyostelium which does not cause disease. Entamoebas have the following distinguishing features: trophozoites and form cysts. Examples include Entamoeba which causes Amoebiasis, Naegleria which causes Primary amoebic meningoencephalitis, and Acanthamoeba which causes Keratitis, and granulomatous ameoebic encephalitis. Supergroup Opisthokonta is divided into subroups fungin and animals. Fungi have the following distinguishing features: chitin cell walls, unicellular or multicellular, often hyphae. Examples include Zygomyctes which cause zygomycosis, Asomycetes which cause Candidiasis, Basidiomycetes which cause Cryptococcosis, and Microsporidia which causes microsporidiosis. Animals have the following distinguishing features: multicellular heterotrophs with no cell walls. Examples include Nematoda which cause Trichonosis, hookworm and pinworm infections, Termatoda which causes Schistosomiais, and Cestoda which causes tapeworm infection.",
+            "src": "../../media/OSC_Microbio_05_01_groups2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172101754429",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1167661256856",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58802:item:fs-id1167661256856-item-1"
+                }
+              ]
+            }
+          ]
+        },
         {
           "type": "section",
           "id": "fs-id1172101906894",
@@ -475,53 +563,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id1172099883921",
-          "segmentId": "m58802:para:fs-id1172099883921"
-        },
-        {
-          "type": "figure",
-          "id": "OSC_Microbio_05_01_taxon",
-          "caption": {
-            "segmentId": "m58802:caption:OSC_Microbio_05_01_taxon-caption"
-          },
-          "media": {
-            "id": "fs-id1172102062880",
-            "alt": "A branching tree diagram with common eukaryotic ancestor at the base. This leads to 5 branches. The top branch branches are classified as Excavata which is divided into 3 groups: diplomonads, parabasalids, and euglenozoans. The next branch splits into 2 branches: alveolates, and stramenopiles. The alveolates are divided into dinoflagellates, apicomplexans and ciliates. The stramenopiles are divided into diatoms, golden algae, brown algae and oomyces. All the alveotate and stramenopile groups are labeled Chromalveolata. The next branch divides into cercozoans, forams and radiolarians. These are all labeled rhizaria. The next branch divides into the red algae, chlorophytes (green algae), charophytes (green algae) and land plant. Thesea re all labeldd archaeplastidia. The next branch splits into 2. The top branch divides into slime molds, gymnamoebas and entamoebas. These are all labeled amoebozoa. The bottom branch divides into nucleariids, fungi, choanoflagellates, and animals. These are all labeled opisthokonta.",
-            "src": "../../media/OSC_Microbio_05_01_taxon.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "figure",
-          "id": "OSC_Microbio_05_01_groups1",
-          "caption": null,
-          "media": {
-            "id": "fs-id1172101731446",
-            "alt": "Table titled: the eukaryote supergroups and some example species. There are 5 columns in the table: supergroup, subgroup, distinguishing features, examples and clinical notes. Supergroup Exacavata is divided into 3 subgroups: fornicate, parabasalids, euglenozoans. Fornicata have the following distinguishing features: form cysts, pair of equal nuclei, no mitochondria, often parasitic, four free flagella. An example is giardia lamblia which causes giardiasis. Parabasalids have the following distinguishing features: no mitochondria, four free flagella, one attached flagellum, no cysts, parasitic or symbiotic, basal bodies, kinetoplastids. An example is Trichomonas which causes trichomoniasis. Euglenozoans have the following distinguishing features: photosynthetic or heterotrophic, flagella. Examples include: Euglena which does not cause disease, Trypanosoma which causes African sleeping sickness and Chagas disease, Leishmanial which causes leishmaniasis. The supergroup Chromalveolata is divided into 4 subgroups: dinoflagellates, apicomplexans, ciliates, and oomyctes/peronosporomycetes. Dinoflagellates have the following distinguishing features: cellulose theca and two dissimilar flagella. Examples include Gonyaulax which causes red tides, Alexandrium which causes paralytic shellfish poisoning, and Pfiesteria which causes harmful algal blooms. Apicomplexans have the following distinguishing features: intracellular parasite and apical organelles. Examples include Plasmodium which causes malaria, Cryptosporidium which causes cryptosporidiosis, Theileria (Babesia) which causes babeiosis, and Toxoplasma which causes Tosoplasmosis. Ciliates have the characteristic of cilia. Examples include Balantidium which causes Balantidiasis. Paramecium and Stentor which do not cause diseas. Oomycetes / peronosporomycetes have the following distinguishing features: water molds, generally diploid, cellulose cell wall. An example is Phytophthora which causes diseases in crops.",
-            "src": "../../media/OSC_Microbio_05_01_groups1.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "figure",
-          "id": "OSC_Microbio_05_01_groups2",
-          "caption": null,
-          "media": {
-            "id": "fs-id1172101853421",
-            "alt": "Table titled: the eukaryote supergroups and some example species. There are 5 columns in the table: supergroup, subgroup, distinguishing features, examples and clinical notes. The supergroup Rhizaria is divided into 3 subroups: Foraminifera, Radiolaria, and Cerozoa. Foraminifer have the following distinguishing features: amoeboid, thereadlike pseudopodia, calclium carbonate shells. An example is Astrolonche which does not cause disease. Radiolaria have the following distinguishing features: amoeboid, threadlike pseudopodia, silica shells. An example is Actinomma which does not cause disease. Cerozoa have the following distinguishing features: amoeboid, threadlike pseudopodia, complex shells, parasitic forms. Examples include Spongospora subterranean which causes powdery scab (potato disease) and Plasmodiophora brassicae which causes cabbage clubroot. Supergroup Archaeplastida is divided into 2 groups: red algae and Chlorophytes. Red algae have the following distinguishing features: chlorophyll a, phycoerythrin, phycocyanin, flodean starch, agar in cell walls. Examples include Gelidium and Gracilaria which are sources of agar. Chlorophytes have the following distinguishing features: chlorphyll a, chlorophyll b, cellulose cell walls, starch storage. Examples include Acetabularia and Ulva which do not cause disease. Supergroup Amoebozoa is divided into 2 subgroups: slime molds and entamoebas. Slime molds have plasmodial and cellular forms. An example is Dictyostelium which does not cause disease. Entamoebas have the following distinguishing features: trophozoites and form cysts. Examples include Entamoeba which causes Amoebiasis, Naegleria which causes Primary amoebic meningoencephalitis, and Acanthamoeba which causes Keratitis, and granulomatous ameoebic encephalitis. Supergroup Opisthokonta is divided into subroups fungin and animals. Fungi have the following distinguishing features: chitin cell walls, unicellular or multicellular, often hyphae. Examples include Zygomyctes which cause zygomycosis, Asomycetes which cause Candidiasis, Basidiomycetes which cause Cryptococcosis, and Microsporidia which causes microsporidiosis. Animals have the following distinguishing features: multicellular heterotrophs with no cell walls. Examples include Nematoda which cause Trichonosis, hookworm and pinworm infections, Termatoda which causes Schistosomiais, and Cestoda which causes tapeworm infection.",
-            "src": "../../media/OSC_Microbio_05_01_groups2.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "note",
-          "id": "fs-id1172101754429",
-          "class": "microbiology check-your-understanding",
-          "title": null,
-          "content": []
         }
       ]
     },
@@ -583,6 +624,31 @@
                 "type": "para",
                 "id": "fs-id1172101672071",
                 "segmentId": "m58802:problem:fs-id1172101672071"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172101763371",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101763371-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101763371-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101763371-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101763371-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -605,6 +671,31 @@
                 "type": "para",
                 "id": "fs-id1172099767258",
                 "segmentId": "m58802:problem:fs-id1172099767258"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172099664424",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172099664424-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172099664424-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172099664424-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172099664424-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -746,6 +837,31 @@
                 "type": "para",
                 "id": "fs-id1172101775767",
                 "segmentId": "m58802:problem:fs-id1172101775767"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1172101761944",
+                "listType": "enumerated",
+                "numberStyle": "upper-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101761944-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101761944-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101761944-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m58802:item:fs-id1172101761944-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -795,5 +911,5 @@
       ]
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 1
 }

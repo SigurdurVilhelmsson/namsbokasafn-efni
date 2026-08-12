@@ -2,19 +2,19 @@
 Virknihópar
 
 <!-- SEG:m00032:para:para-00001 -->
-Þeir byggingarþættir sem gera kleift að flokka efnasambönd í fjölskyldur eru kallaðir [[i:virknihópar]]. {{term}}Virknihópur{{/term}} er hópur frumeinda innan sameindar sem hefur einkennandi efnafræðilega hegðun. Efnafræðilega hegðar tiltekinn virknihópur sér á nánast sama hátt í hverri sameind sem hann er hluti af. Berðu til dæmis saman etýlen, plöntuhormón sem veldur því að ávextir þroskast, og menten, mun flóknari sameind sem finnst í piparmyntuolíu. Bæði efnin innihalda kolefnis-kolefnis tvítengi sem virknihóp og því hvarfast bæði við Br[[sub:2]] á sama hátt og mynda afurð þar sem Br-frumeind hefur bæst við hvort kolefni tvítengisins ([[xref:fig-00001]]). Þetta dæmi er dæmigert: [[i:efnafræði hverrar lífrænnar sameindar, óháð stærð og flækjustigi, ræðst af þeim virknihópum sem hún inniheldur.]]
+Þeir byggingarþættir sem gera kleift að flokka efnasambönd í fjölskyldur eru kallaðir [[i:virknihópar]]. [[term:Virknihópur|term-00001]] er hópur atóma innan sameindar sem hefur einkennandi efnafræðilega hegðun. Efnafræðilega hegðar tiltekinn virknihópur sér á nánast sama hátt í hverri sameind sem hann er hluti af. Berum til dæmis saman eten, plöntuhormón sem veldur því að ávextir þroskast, og menten, mun flóknari sameind sem finnst í piparmyntuolíu. Bæði efnin innihalda kolefnis-kolefnis tvítengi sem virknihóp og því hvarfast bæði við Br[[sub:2]] á sama hátt og gefa myndefni þar sem Br-atóm hefur bæst við hvort kolefnisatómið í tvítenginu ([[xref:fig-00001]]). Þetta dæmi er dæmigert: [[i:efnafræði hverrar lífrænnar sameindar, óháð stærð og flækjustigi, ræðst af þeim virknihópum sem hún inniheldur.]]
 
 <!-- SEG:m00032:caption:fig-00001-caption -->
-[[b:Efnahvörf etýlens og mentens við]] bróm. Í báðum sameindum hefur kolefnis-kolefnis tvítengið sem virknihópur svipað skautunarmynstur, þannig að báðar sameindirnar hvarfast við Br[[sub:2]] á sama hátt. Stærð og flækjustig sameindanna skipta ekki máli.
+[[b:Efnahvörf etens og mentens við]] bróm. Í báðum sameindum hefur kolefnis-kolefnis tvítengið sem virknihópur svipað skautunarmynstur, þannig að báðar sameindirnar hvarfast við Br[[sub:2]] á sama hátt. Stærð og flækjustig sameindanna skipta ekki máli.
 
 <!-- SEG:m00032:para:para-00002 -->
-Skoðaðu [[xref:table-00001]], sem sýnir marga af algengustu virknihópunum og gefur einföld dæmi um hvar þeir koma fyrir. Sumir virknihópar hafa aðeins kolefnis-kolefnis tví- eða þrítengi; aðrir hafa halógenfrumeindir; og enn aðrir innihalda súrefni, nitur eða brennistein. Mikið af þeirri efnafræði sem þú munt læra er efnafræði þessara virknihópa.
+Skoðaðu [[xref:table-00001]], sem sýnir marga af algengustu virknihópunum og gefur einföld dæmi um tilvist þeirra. Sumir virknihópar hafa aðeins kolefnis-kolefnis tví- eða þrítengi; aðrir hafa halógenatóm; og enn aðrir innihalda súrefni, nitur eða brennistein. Mikið af þeirri efnafræði sem þú munt læra er efnafræði þessara virknihópa.
 
 <!-- SEG:m00032:title:sect-00001-title -->
 Virknihópar með kolefnis-kolefnis fjöltengi
 
 <!-- SEG:m00032:para:para-00003 -->
-Alkenar, alkýnar og arenar (arómatísk efnasambönd) innihalda öll kolefnis-kolefnis fjöltengi. [[i:Alkenar]] hafa tvítengi, [[i:alkýnar]] hafa þrítengi og [[i:arenar]] hafa tvítengi og eintengi á víxl í sexliða hring kolefnisfrumeinda. Þeir líta ólíkt út, en vegna byggingarlíkinda sinna hafa þeir einnig efnafræðileg líkindi.
+Alkenar, alkýnar og arenar (arómatísk efnasambönd) innihalda öll kolefnis-kolefnis fjöltengi. [[i:Alkenar]] hafa tvítengi, [[i:alkýnar]] hafa þrítengi og [[i:arenar]] hafa víxl tví- og eintengi í sex atóma kolefnishring. Þeir líta ólíkt út, en vegna byggingarlíkinda sinna hafa þeir einnig efnafræðileg líkindi.
 
 <!-- SEG:m00032:entry:auto-7 -->
 Nafn
@@ -176,7 +176,7 @@ Keton
 -[[i:on]]
 
 <!-- SEG:m00032:entry:auto-60 -->
-Karboxýlsýra
+Karbónsýra
 
 <!-- SEG:m00032:entry:auto-61 -->
 -[[i:sýra]]
@@ -206,25 +206,25 @@ Sýruklóríð
 [[i:-óýlklóríð]]
 
 <!-- SEG:m00032:entry:auto-70 -->
-Karboxýlsýruanhýdríð
+Karbónsýruanhýdríð
 
 <!-- SEG:m00032:entry:auto-71 -->
--[[i:sýruanhýdríð]]
+-[[i:anhýdríð]]
 
 <!-- SEG:m00032:para:para-00005 -->
-*Gengið er út frá því að efnatengin, sem ekki er tilgreint hvar tengjast, séu tengd við kolefnis- eða vetnisfrumeindir í restinni af sameindinni.
+*Gengið er út frá því að efnatengin sem ekki er tilgreint hvernig tengjast séu tengd við kolefnis- eða vetnisatóm í restinni af sameindinni.
 
 <!-- SEG:m00032:title:sect-00002-title -->
-Virknihópar með kolefni sem er eintengt við rafeindaneikvæða frumeind
+Virknihópar með kolefni sem er eintengt við rafeindadrægt atóm
 
 <!-- SEG:m00032:para:para-00006 -->
-Alkílhalið (halóalkanar), alkóhól, eterar, alkílfosföt, amín, þíól, súlfíð og tvísúlfíð hafa öll kolefnisfrumeind sem er eintengd við rafeindaneikvæða frumeind — halógen, súrefni, nitur eða brennistein. {{term}}Alkílhalið{{/term}} hafa kolefnisfrumeind sem er tengd við halógen (–X), {{term}}alkóhól{{/term}} hafa kolefnisfrumeind sem er tengd við súrefni hýdroxýlhóps (–OH), {{term}}eterar{{/term}} hafa tvær kolefnisfrumeindir sem eru tengdar við sama súrefnið, lífræn fosföt hafa kolefnisfrumeind sem er tengd við súrefni fosfathóps (–OPO[[sub:3]][[sup:2−]]), {{term}}amín{{/term}} hafa kolefnisfrumeind sem er tengd við nitur, {{term}}þíól{{/term}} hafa kolefnisfrumeind sem er tengd við brennistein –SH-hóps, {{term}}súlfíð{{/term}} hafa tvær kolefnisfrumeindir sem eru tengdar við sama brennisteininn og {{term}}tvísúlfíð{{/term}} hafa kolefnisfrumeindir sem eru tengdar við tvo brennisteina sem eru samtengdir. Í öllum tilvikum eru efnatengin skautuð, þar sem kolefnisfrumeindin ber jákvæða hlutahleðslu ([[i:δ]]+) og rafeindaneikvæða frumeindin ber neikvæða hlutahleðslu ([[i:δ]]–).
+Alkílhalið (halóalkanar), alkóhól, eterar, alkílfosföt, amín, þíól, súlfíð og tvísúlfíð hafa öll kolefnisatóm sem er eintengt við rafeindadrægt atóm – halógen, súrefni, nitur eða brennistein. [[term:Alkílhalið|term-00005]] hafa kolefnisatóm sem er tengt við halógen (–X), [[term:alkóhól|term-00006]] hafa kolefnisatóm sem er tengt við súrefni hýdroxýlhóps (–OH), [[term:eterar|term-00007]] hafa tvö kolefnisatóm sem eru tengd við sama súrefnið, lífræn fosföt hafa kolefnisatóm sem er tengt við súrefni fosfathóps (–OPO[[sub:3]][[sup:2−]]), [[term:amín|term-00008]] hafa kolefnisatóm sem er tengt við nitur, [[term:þíól|term-00009]] hafa kolefnisatóm sem er tengt við brennistein –SH-hóps, [[term:súlfíð|term-00010]] hafa tvö kolefnisatóm sem eru tengd við sama brennisteininn og [[term:tvísúlfíð|term-00011]] hafa kolefnisatóm sem eru tengd við tvo brennisteina sem eru samtengdir. Í öllum tilvikum eru efnatengin skautuð, þar sem kolefnisatómið ber hluthleðslu ([[i:δ]]+) og rafeindadræga atómið ber neikvæða hluthleðslu ([[i:δ]]–).
 
 <!-- SEG:m00032:title:sect-00003-title -->
 Virknihópar með kolefnis-súrefnis tvítengi (karbónýlhópar)
 
 <!-- SEG:m00032:para:para-00007 -->
-{{term}}Karbónýlhópurinn{{/term}}[[i:,]] [[MATH:6]] (borið fram kar-bó-[[b:níl]]) er sameiginlegur mörgum af þeim flokkum sem taldir eru upp í [[xref:table-00001]]. Karbónýlhópar eru til staðar í meirihluta lífrænna efnasambanda og í nánast öllum líffræðilegum sameindum. Þessi efnasambönd hegða sér því á svipaðan hátt að mörgu leyti en eru ólík eftir því hvaða aðrar frumeindir eru tengdar við kolefni karbónýlhópsins. {{term}}Aldehýð{{/term}} hafa að minnsta kosti eitt vetni tengt við [[MATH:7]], {{term}}ketón{{/term}} hafa tvö kolefni tengd við [[MATH:8]], {{term}}karboxýlsýrur{{/term}} hafa –OH-hóp tengdan við [[MATH:9]], {{term}}esterar{{/term}} hafa eter-líkt súrefni tengt við [[MATH:10]], {{term}}þíóesterar{{/term}} hafa súlfíð-líkan brennistein tengdan við [[MATH:11]], {{term}}amíð{{/term}} hafa amín-líkt nitur tengt við [[MATH:12]], {{term}}sýruklóríð{{/term}} hafa klór tengt við [[MATH:13]] og svo framvegis. Í öllum þessum virknihópum ber karbónýlkolefnisfrumeindin jákvæða hlutahleðslu ([[i:δ]]+) og súrefnið ber neikvæða hlutahleðslu ([[i:δ]]–).
+[[term:Karbónýlhópurinn|term-00012]][[i:,]] [[MATH:6]] (borið fram kar-bó-[[b:nýl]]) er sameiginlegur mörgum af þeim flokkum sem taldir eru upp í [[xref:table-00001]]. Karbónýlhópar eru til staðar í meirihluta lífrænna efnasambanda og í nánast öllum líffræðilegum sameindum. Þessi efnasambönd hegða sér því á svipaðan hátt að mörgu leyti en eru mismunandi eftir því hvaða önnur atóm eru tengd við karbónýlhópskolefnið. [[term:Aldehýð|term-00013]] hafa að minnsta kosti eitt vetni tengt við [[MATH:7]], [[term:ketón|term-00014]] hafa tvö kolefni tengd við [[MATH:8]], [[term:karbónsýrur|term-00015]] hafa –OH-hóp tengdan við [[MATH:9]], [[term:esterar|term-00016]] hafa eterlíkt súrefni tengt við [[MATH:10]], [[term:þíóesterar|term-00017]] hafa súlfíðlíkan brennistein tengdan við [[MATH:11]], [[term:amíð|term-00018]] hafa amínlíkt nitur tengt við [[MATH:12]], [[term:sýruklóríð|term-00019]] hafa klór tengdan við [[MATH:13]] og svo framvegis. Í öllum þessum virknihópum ber karbónýlkolefnisatómið jákvæða hluthleðslu ([[i:δ]]+) og súrefnið ber neikvæða hluthleðslu ([[i:δ]]–).
 
 <!-- SEG:m00032:title:sect-00004-title -->
 Dæmi

@@ -8,7 +8,7 @@ In earlier times, when relatively few pure organic chemicals were known, new com
 As the science of organic chemistry slowly grew in the 19th century, so too did the number of known compounds and the need for a systematic method of naming them. The system of naming (nomenclature) we’ll use in this book is that devised by the International Union of Pure and Applied Chemistry (IUPAC, usually spoken as [[b:eye]]-you-pac).
 
 <!-- SEG:m00035:para:para-00003 -->
-A chemical name typically has four parts in the IUPAC system: parent, prefix, locant, and suffix. The [[b:parent]] name identifies the main part of the molecule and tells how many carbon atoms are in that part. [[b:Prefixes]] identify the various {{term}}substituent{{/term}} groups attached to the parent. [[b:Locants]] give the positions of the attached substituents. And the [[b:suffix]] identifies the primary functional group attached to the parent.
+A chemical name typically has four parts in the IUPAC system: parent, prefix, locant, and suffix. The [[b:parent]] name identifies the main part of the molecule and tells how many carbon atoms are in that part. [[b:Prefixes]] identify the various [[term:substituent|term-00001]] groups attached to the parent. [[b:Locants]] give the positions of the attached substituents. And the [[b:suffix]] identifies the primary functional group attached to the parent.
 
 <!-- SEG:m00035:para:para-00004 -->
 As we cover new functional groups in later chapters, the applicable IUPAC rules of nomenclature will be given. In addition, at the back of this book gives an overall view of organic nomenclature and shows how compounds that contain more than one functional group are named. (If preferred, you can study that appendix now.) For the present, let’s see how to name branched-chain alkanes and learn some general rules that are applicable to all compounds.
@@ -98,7 +98,7 @@ Draw the structure of 3-isopropyl-2-methylhexane.
 This is the reverse of [[xref:exam-00001]] and uses a reverse strategy. Look at the parent name (hexane), and draw its carbon structure.
 
 <!-- SEG:m00035:para:para-00035 -->
-{=C–C–C–C–C–C [[b:Hexane]]=}
+[[em:C–C–C–C–C–C [[b:Hexane]]|centered-text]]
 
 <!-- SEG:m00035:para:para-00036 -->
 Next, find the substituents (3-isopropyl and 2-methyl), and place them on the proper carbons.

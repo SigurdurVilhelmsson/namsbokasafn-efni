@@ -1,0 +1,16 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mover accent=\"true\"><m:mi>v</m:mi><m:mo>˜</m:mo></m:mover></m:math>",
+    "latex": "v˜"
+  },
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:mtext>Wavenumber:</m:mtext><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mover accent=\"true\"><m:mi>v</m:mi><m:mo>˜</m:mo></m:mover><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>λ</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>cm</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{Wavenumber:}\\, \\, \\, v˜\\, ({{\\text{cm}}}^{{-1}})=\\frac{1}{{λ\\, (\\text{cm})}}}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math><m:mrow><m:mstyle mathvariant=\"bold\"><m:mtext style=\"color: #E00087\">IR spectrum</m:mtext><m:mo style=\"color: #E00087\">→</m:mo><m:mtext style=\"color: #007A49\">What molecular motions?</m:mtext><m:mo style=\"color: #007A49\">→</m:mo><m:mtext style=\"color: #0078A3\">What functional groups?</m:mtext></m:mstyle></m:mrow></m:math>",
+    "latex": "{\\text{IR spectrum}→\\text{What molecular motions?}→\\text{What functional groups?}}",
+    "isBlock": true
+  }
+}

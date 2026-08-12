@@ -1,0 +1,72 @@
+{
+  "moduleId": "m00140",
+  "title": {
+    "segmentId": "m00140:title:auto-1",
+    "text": "Infrared Spectroscopy"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f12d9aa5-4cc8-4895-b166-2d753c942604"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00140:para:para-00001"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00140:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00140:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "A partial electromagnetic spectrum extending from ultraviolet through visible light and infrared to microwave radiation, where ultraviolet is higher in energy and microwave is lower.",
+        "src": "../../media/OChem_12_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00140:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": "A ball and stick model of four structures showing the bending (in-plane and out-of-plane) and stretching (symmetric and antisymmetric) of bonds. Gray and white spheres represent carbon and hydrogen, respectively.",
+        "src": "../../media/OChem_12_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00140:para:para-00004"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00140:para:para-00005"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002",
+      "class": "unnumbered"
+    }
+  ],
+  "sectionOrder": 6
+}

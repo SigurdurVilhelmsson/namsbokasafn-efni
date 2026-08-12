@@ -103,6 +103,11 @@
       "segmentId": "m00038:para:para-00007"
     },
     {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00038:para:para-00008"
+    },
+    {
       "type": "table",
       "id": "table-00001",
       "summary": " ",
@@ -283,11 +288,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "para-00008",
-      "segmentId": "m00038:para:para-00008"
     },
     {
       "type": "figure",
@@ -1003,8 +1003,11 @@
       "class": null,
       "alt": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.",
       "src": "../../media/OChem_03_07_007.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 7
 }
