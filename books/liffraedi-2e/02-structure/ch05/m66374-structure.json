@@ -76,6 +76,29 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-id2051346",
+          "segmentId": "m66374:para:fs-id2051346"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_02_02",
+          "caption": {
+            "segmentId": "m66374:caption:fig-ch05_02_02-caption"
+          },
+          "media": {
+            "id": "fs-id873679",
+            "alt": "The left part of this illustration shows a substance on one side of a membrane only, in the extracellular fluid. The middle part shows that, after some time, some of the substance has diffused across the plasma membrane, from the extracellular fluid and into the cytoplasm. The right part shows that, after more time, an equal amount of the substance is on each side of the membrane.",
+            "src": "../../media/Figure_05_02_02-9936.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id846110",
+          "segmentId": "m66374:para:fs-id846110"
+        },
+        {
           "type": "section",
           "id": "fs-id1443544",
           "class": null,
@@ -132,29 +155,6 @@
               "segmentId": "m66374:para:fs-id1768863"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id2051346",
-          "segmentId": "m66374:para:fs-id2051346"
-        },
-        {
-          "type": "figure",
-          "id": "fig-ch05_02_02",
-          "caption": {
-            "segmentId": "m66374:caption:fig-ch05_02_02-caption"
-          },
-          "media": {
-            "id": "fs-id873679",
-            "alt": "The left part of this illustration shows a substance on one side of a membrane only, in the extracellular fluid. The middle part shows that, after some time, some of the substance has diffused across the plasma membrane, from the extracellular fluid and into the cytoplasm. The right part shows that, after more time, an equal amount of the substance is on each side of the membrane.",
-            "src": "../../media/Figure_05_02_02-9936.jpg",
-            "mimeType": "image/jpg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-id846110",
-          "segmentId": "m66374:para:fs-id846110"
         }
       ]
     },
@@ -167,6 +167,16 @@
         "text": "Facilitated transport"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-id1772383",
+          "segmentId": "m66374:para:fs-id1772383"
+        },
+        {
+          "type": "para",
+          "id": "eip-id1169464282436",
+          "segmentId": "m66374:para:eip-id1169464282436"
+        },
         {
           "type": "section",
           "id": "fs-id1778201",
@@ -239,16 +249,6 @@
               "segmentId": "m66374:para:fs-id1704998"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id1772383",
-          "segmentId": "m66374:para:fs-id1772383"
-        },
-        {
-          "type": "para",
-          "id": "eip-id1169464282436",
-          "segmentId": "m66374:para:eip-id1169464282436"
         }
       ]
     },
@@ -261,6 +261,11 @@
         "text": "Osmosis"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-id1538230",
+          "segmentId": "m66374:para:fs-id1538230"
+        },
         {
           "type": "section",
           "id": "fs-id1355559",
@@ -299,11 +304,6 @@
               "segmentId": "m66374:para:fs-id1778807"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id1538230",
-          "segmentId": "m66374:para:fs-id1538230"
         }
       ]
     },
@@ -316,6 +316,11 @@
         "text": "Tonicity"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-id1385884",
+          "segmentId": "m66374:para:fs-id1385884"
+        },
         {
           "type": "section",
           "id": "fs-id1437221",
@@ -407,11 +412,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id1385884",
-          "segmentId": "m66374:para:fs-id1385884"
         }
       ]
     },
@@ -572,6 +572,31 @@
                 "type": "para",
                 "id": "fs-id1731572",
                 "segmentId": "m66374:problem:fs-id1731572"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1630954",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1630954-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1630954-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1630954-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1630954-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -594,6 +619,31 @@
                 "type": "para",
                 "id": "fs-id1768946",
                 "segmentId": "m66374:problem:fs-id1768946"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1962149",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1962149-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1962149-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1962149-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1962149-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -616,6 +666,31 @@
                 "type": "para",
                 "id": "fs-id1684704",
                 "segmentId": "m66374:problem:fs-id1684704"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1236812",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1236812-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1236812-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1236812-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-id1236812-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -638,6 +713,31 @@
                 "type": "para",
                 "id": "fs-idm74380432",
                 "segmentId": "m66374:problem:fs-idm74380432"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922771",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-idm67922771-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-idm67922771-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-idm67922771-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66374:item:fs-idm67922771-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -888,8 +988,11 @@
       "class": null,
       "alt": "The left part shows bloated red blood cells, lysed, bathed in a hypotonic solution. The middle part shows healthy red blood cells bathed in an isotonic solution, and the right part of this illustration shows shriveled red blood cells bathed in a hypertonic solution.",
       "src": "../../media/Figure_05_02_07.png",
-      "mimeType": "image/png"
+      "mimeType": "image/png",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 2
 }

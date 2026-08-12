@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m66373",
-  "extractedAt": "2026-03-23T17:19:02.647Z",
+  "extractedAt": "2026-08-12T15:34:46.415Z",
   "sourceHash": "bbf02c6bbb488c9a",
-  "segmentCount": 87,
+  "segmentCount": 103,
   "segmentIds": [
     "m66373:title:auto-1",
     "m66373:abstract:auto-2",
@@ -62,12 +62,28 @@
     "m66373:para:fs-id1806528",
     "m66373:title:fs-id1511648-title",
     "m66373:problem:fs-id1384518",
+    "m66373:item:fs-id1463137-item-1",
+    "m66373:item:fs-id1463137-item-2",
+    "m66373:item:fs-id1463137-item-3",
+    "m66373:item:fs-id1463137-item-4",
     "m66373:solution:fs-id1631652",
     "m66373:problem:fs-id1450228",
+    "m66373:item:fs-id1439064-item-1",
+    "m66373:item:fs-id1439064-item-2",
+    "m66373:item:fs-id1439064-item-3",
+    "m66373:item:fs-id1439064-item-4",
     "m66373:solution:fs-id1768681",
     "m66373:problem:fs-id1461234",
+    "m66373:item:fs-id1631084-item-1",
+    "m66373:item:fs-id1631084-item-2",
+    "m66373:item:fs-id1631084-item-3",
+    "m66373:item:fs-id1631084-item-4",
     "m66373:solution:fs-id1912495",
     "m66373:problem:fs-idm74380428",
+    "m66373:item:fs-idm67922767-item-1",
+    "m66373:item:fs-idm67922767-item-2",
+    "m66373:item:fs-idm67922767-item-3",
+    "m66373:item:fs-idm67922767-item-4",
     "m66373:solution:fs-idm200102077",
     "m66373:title:fs-id1626493-title",
     "m66373:problem:fs-id1809118",
@@ -104,17 +120,17 @@
     "exercise": 7,
     "note": 3,
     "equation": 0,
-    "list": 0,
+    "list": 4,
     "media": 0,
     "glossary": 8
   },
   "elementIds": {
     "figure": [
+      "fig-ch05_01_01",
       "fig-ch05_01_02",
       "fig-ch05_01_03",
       "fig-ch05_01_04",
-      "fig-ch05_01_05",
-      "fig-ch05_01_01"
+      "fig-ch05_01_05"
     ],
     "table": [
       "tab-ch05_01_01"

@@ -2,7 +2,7 @@
 Newton’s Third Law of Motion: Symmetry in Forces
 
 <!-- SEG:m42074:para:import-auto-id2355102 -->
-Baseball relief pitcher Mariano Rivera was so highly regarded that during his retirement year, opposing teams conducted farewell presentations when he played at their stadiums. The Minnesota Twins offered a unique gift: A chair made of broken bats. Any pitch can break a bat, but with Rivera's signature pitch—known as a cutter—the ball and the bat frequently came together at a point that shattered the hardwood. Typically, we think of a baseball or softball hitter exerting a force on the incoming ball, and baseball analysts focus on the resulting "exit velocity" as a key statistic. But the force of the ball can do its own damage. This is exactly what happens whenever one body exerts a force on another—the first also experiences a force (equal in magnitude and opposite in direction). Numerous common experiences, such as stubbing a toe or pushing off the floor during a jump, confirm this. It is precisely stated in {{term}}Newton’s third law of motion{{/term}}.
+Baseball relief pitcher Mariano Rivera was so highly regarded that during his retirement year, opposing teams conducted farewell presentations when he played at their stadiums. The Minnesota Twins offered a unique gift: A chair made of broken bats. Any pitch can break a bat, but with Rivera's signature pitch—known as a cutter—the ball and the bat frequently came together at a point that shattered the hardwood. Typically, we think of a baseball or softball hitter exerting a force on the incoming ball, and baseball analysts focus on the resulting "exit velocity" as a key statistic. But the force of the ball can do its own damage. This is exactly what happens whenever one body exerts a force on another—the first also experiences a force (equal in magnitude and opposite in direction). Numerous common experiences, such as stubbing a toe or pushing off the floor during a jump, confirm this. It is precisely stated in [[term:Newton’s third law of motion|import-auto-id1260844]].
 
 <!-- SEG:m42074:note-title:fs-id2688761-title -->
 Newton’s Third Law of Motion
@@ -20,13 +20,16 @@ We can readily see Newton’s third law at work by taking a look at how people m
 When the swimmer exerts a force [[MATH:6]] on the wall, she accelerates in the direction opposite to that of her push. This means the net external force on her is in the direction opposite to [[MATH:7]]. This opposition occurs because, in accordance with Newton’s third law of motion, the wall exerts a force [[MATH:8]] on her, equal in magnitude but in the direction opposite to the one she exerts on it. The line around the swimmer indicates the system of interest. Note that [[MATH:9]] does not act on this system (the swimmer) and, thus, does not cancel [[MATH:10]]. Thus the free-body diagram shows only [[MATH:11]], [[MATH:12]], the gravitational force, and [[MATH:13]], the buoyant force of the water supporting the swimmer’s weight. The vertical forces [[MATH:14]] and [[MATH:15]] cancel since there is no vertical motion.
 
 <!-- SEG:m42074:para:import-auto-id1772663 -->
-Other examples of Newton’s third law are easy to find. As a professor walks in front of a whiteboard, she exerts a force backward on the floor. The floor exerts a reaction force forward on the professor that causes her to accelerate forward. Similarly, a car accelerates because the ground pushes forward on the drive wheels in reaction to the drive wheels pushing backward on the ground. You can see evidence of the wheels pushing backward when tires spin on a gravel road and throw rocks backward. In another example, rockets move forward by expelling gas backward at high velocity. This means the rocket exerts a large backward force on the gas in the rocket combustion chamber, and the gas therefore exerts a large reaction force forward on the rocket. This reaction force is called {{term}}thrust{{/term}}. It is a common misconception that rockets propel themselves by pushing on the ground or on the air behind them. They actually work better in a vacuum, where they can more readily expel the exhaust gases. Helicopters similarly create lift by pushing air down, thereby experiencing an upward reaction force. Birds and airplanes also fly by exerting force on air in a direction opposite to that of whatever force they need. For example, the wings of a bird force air downward and backward in order to get lift and move forward. An octopus propels itself in the water by ejecting water through a funnel from its body, similar to a jet ski. Boxers and other martial arts fighters experience reaction forces when they punch, sometimes breaking their hand by hitting an opponent’s body.
+Other examples of Newton’s third law are easy to find. As a professor walks in front of a whiteboard, she exerts a force backward on the floor. The floor exerts a reaction force forward on the professor that causes her to accelerate forward. Similarly, a car accelerates because the ground pushes forward on the drive wheels in reaction to the drive wheels pushing backward on the ground. You can see evidence of the wheels pushing backward when tires spin on a gravel road and throw rocks backward. In another example, rockets move forward by expelling gas backward at high velocity. This means the rocket exerts a large backward force on the gas in the rocket combustion chamber, and the gas therefore exerts a large reaction force forward on the rocket. This reaction force is called [[term:thrust|import-auto-id1295864]]. It is a common misconception that rockets propel themselves by pushing on the ground or on the air behind them. They actually work better in a vacuum, where they can more readily expel the exhaust gases. Helicopters similarly create lift by pushing air down, thereby experiencing an upward reaction force. Birds and airplanes also fly by exerting force on air in a direction opposite to that of whatever force they need. For example, the wings of a bird force air downward and backward in order to get lift and move forward. An octopus propels itself in the water by ejecting water through a funnel from its body, similar to a jet ski. Boxers and other martial arts fighters experience reaction forces when they punch, sometimes breaking their hand by hitting an opponent’s body.
 
 <!-- SEG:m42074:example-title:fs-id2355307-title -->
-Strategy
+Getting Up To Speed: Choosing the Correct System
 
 <!-- SEG:m42074:para:import-auto-id1645990 -->
 A physics professor pushes a cart of demonstration equipment to a lecture hall, as seen in [[xref:import-auto-id2324690]]. Her mass is 65.0 kg, the cart’s is 12.0 kg, and the equipment’s is 7.0 kg. Calculate the acceleration produced when the professor exerts a backward force of 150 N on the floor. All forces opposing the motion, such as friction on the cart’s wheels and air resistance, total 24.0 N.
+
+<!-- SEG:m42074:para-title:fs-id2687234-title -->
+Strategy
 
 <!-- SEG:m42074:para:import-auto-id1769338 -->
 Since they accelerate as a unit, we define the system to be the professor, cart, and equipment. This is System 1 in [[xref:import-auto-id2324690]]. The professor pushes backward with a force [[MATH:16]] of 150 N. According to Newton’s third law, the floor exerts a forward reaction force [[MATH:17]] of 150 N on System 1. Because all motion is horizontal, we can assume there is no net force in the vertical direction. The problem is therefore one-dimensional along the horizontal direction. As noted, [[MATH:18]] opposes the motion and is thus in the opposite direction of [[MATH:19]]. Note that we do not include the forces [[MATH:20]] or [[MATH:21]] because these are internal forces, and we do not include [[MATH:22]] because it acts on the floor, not on the system. There are no other significant forces acting on System 1. If the net external force can be found from all this information, we can use Newton’s second law to find the acceleration as requested. See the free-body diagram in the figure.
@@ -68,10 +71,13 @@ None of the forces between components of System 1, such as between the professor
 A professor pushes a cart of demonstration equipment. The lengths of the arrows are proportional to the magnitudes of the forces (except for [[MATH:29]], since it is too small to draw to scale). Different questions are asked in each example; thus, the system of interest must be defined differently for each. System 1 is appropriate for this example, since it asks for the acceleration of the entire group of objects. Only [[MATH:30]] and [[MATH:31]] are external forces acting on System 1 along the line of motion. All other forces either cancel or act on the outside world. System 2 is chosen for [[xref:fs-id2092526]] so that [[MATH:32]] will be an external force and enter into Newton’s second law. Note that the free-body diagrams, which allow us to apply Newton’s second law, vary with the system chosen.
 
 <!-- SEG:m42074:example-title:fs-id2092526-title -->
-Strategy
+Force on the Cart—Choosing a New System
 
 <!-- SEG:m42074:para:import-auto-id1572504 -->
 Calculate the force the professor exerts on the cart in [[xref:import-auto-id2324690]] using data from the previous example if needed.
+
+<!-- SEG:m42074:para-title:import-auto-id2423425-title -->
+Strategy
 
 <!-- SEG:m42074:para:import-auto-id1745150 -->
 If we now define the system of interest to be the cart plus equipment (System 2 in [[xref:import-auto-id2324690]]), then the net external force on System 2 is the force the professor exerts on the cart minus friction. The force she exerts on the cart, [[MATH:33]], is an external force acting on System 2. [[MATH:34]] was internal to System 1, but it is external to System 2 and will enter Newton’s second law for System 2.
@@ -166,11 +172,35 @@ What object or objects commonly exert forces on the following objects in motion?
 <!-- SEG:m42074:problem:fs-id1496936 -->
 A ball with a mass of 0.25 kg hits a gym ceiling with a force of 78.0 N. What is the net force on the ball?
 
+<!-- SEG:m42074:item:fs-id1394705-item-1 -->
+2.50 N downward
+
+<!-- SEG:m42074:item:fs-id1394705-item-2 -->
+75.5 N downward
+
+<!-- SEG:m42074:item:fs-id1394705-item-3 -->
+78.0 N downward
+
+<!-- SEG:m42074:item:fs-id1394705-item-4 -->
+80.5 N downward
+
 <!-- SEG:m42074:solution:fs-id1399283 -->
 (a)
 
 <!-- SEG:m42074:problem:fs-id1457612 -->
 Which of the following is true?
+
+<!-- SEG:m42074:item:fs-id1643114-item-1 -->
+Earth exerts a force due to gravity on your body, and your body exerts a smaller force on the Earth, because your mass is smaller than the mass of the Earth.
+
+<!-- SEG:m42074:item:fs-id1643114-item-2 -->
+The Moon orbits the Earth because the Earth exerts a force on the Moon and the Moon exerts a force equal in magnitude and direction on the Earth.
+
+<!-- SEG:m42074:item:fs-id1643114-item-3 -->
+A rocket taking off exerts a force on the Earth equal to the force the Earth exerts on the rocket.
+
+<!-- SEG:m42074:item:fs-id1643114-item-4 -->
+An airplane cruising at a constant speed is not affected by gravity.
 
 <!-- SEG:m42074:solution:fs-id1682532 -->
 (c)
@@ -192,6 +222,18 @@ In the diagram, [[i:F]][[sub:g]] represents the force due to gravity on the ball
 
 <!-- SEG:m42074:problem:fs-id1347158 -->
 A force is applied to accelerate an object on a smooth icy surface. When the force stops, which of the following will be true? (Assume zero friction.)
+
+<!-- SEG:m42074:item:fs-id1819267-item-1 -->
+The object’s acceleration becomes zero.
+
+<!-- SEG:m42074:item:fs-id1819267-item-2 -->
+The object’s speed becomes zero.
+
+<!-- SEG:m42074:item:fs-id1819267-item-3 -->
+The object’s acceleration continues to increase at a constant rate.
+
+<!-- SEG:m42074:item:fs-id1819267-item-4 -->
+The object accelerates, but in the opposite direction.
 
 <!-- SEG:m42074:solution:fs-id1276418 -->
 (a)
@@ -226,6 +268,18 @@ At 10 s, the parachutist is falling to Earth at 8.4 m/s.
 <!-- SEG:m42074:problem:fs-id1691134 -->
 A flight attendant pushes a cart down the aisle of a plane in flight. In determining the acceleration of the cart relative to the plane, which factor do you not need to consider?
 
+<!-- SEG:m42074:item:fs-id1643026-item-1 -->
+The friction of the cart’s wheels.
+
+<!-- SEG:m42074:item:fs-id1643026-item-2 -->
+The force with which the flight attendant’s feet push on the floor.
+
+<!-- SEG:m42074:item:fs-id1643026-item-3 -->
+The velocity of the plane.
+
+<!-- SEG:m42074:item:fs-id1643026-item-4 -->
+The mass of the items in the cart.
+
 <!-- SEG:m42074:solution:fs-id1804042 -->
 (c)
 
@@ -237,6 +291,18 @@ The system includes the gardener and the wheelbarrow with its contents. The foll
 
 <!-- SEG:m42074:problem:fs-id1340680 -->
 Two water-skiers, with masses of 48 kg and 61 kg, are preparing to be towed behind the same boat. When the boat accelerates, the rope the skiers hold onto accelerates with it and exerts a net force of 290 N on the skiers. At what rate will the skiers accelerate?
+
+<!-- SEG:m42074:item:fs-id1121626-item-1 -->
+10.8 m/s[[sup:2]]
+
+<!-- SEG:m42074:item:fs-id1121626-item-2 -->
+2.7 m/s[[sup:2]]
+
+<!-- SEG:m42074:item:fs-id1121626-item-3 -->
+6.0 m/s[[sup:2]] and 4.8 m/s[[sup:2]]
+
+<!-- SEG:m42074:item:fs-id1121626-item-4 -->
+5.3 m/s[[sup:2]]
 
 <!-- SEG:m42074:solution:fs-id1416057 -->
 (b)
@@ -266,10 +332,10 @@ The pair accelerates forward at 1.28 m/s[[sup:2]].
 Section Summary
 
 <!-- SEG:m42074:item:fs-id2332580-item-1 -->
-{{term}}Newton’s third law of motion{{/term}} represents a basic symmetry in nature. It states: Whenever one body exerts a force on a second body, the first body experiences a force that is equal in magnitude and opposite in direction to the force that the first body exerts.
+[[term:Newton’s third law of motion|term-00001]] represents a basic symmetry in nature. It states: Whenever one body exerts a force on a second body, the first body experiences a force that is equal in magnitude and opposite in direction to the force that the first body exerts.
 
 <!-- SEG:m42074:item:fs-id2332580-item-2 -->
-A {{term}}thrust{{/term}} is a reaction force that pushes a body forward in response to a backward force. Rockets, airplanes, and cars are pushed forward by a thrust reaction force.
+A [[term:thrust|term-00002]] is a reaction force that pushes a body forward in response to a backward force. Rockets, airplanes, and cars are pushed forward by a thrust reaction force.
 
 <!-- SEG:m42074:title:fs-id1460367-title -->
 Conceptual Questions

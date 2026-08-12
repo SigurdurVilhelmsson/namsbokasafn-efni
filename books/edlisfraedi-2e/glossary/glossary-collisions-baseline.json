@@ -1,0 +1,17 @@
+{
+  "_note": "Accepted term competitions (register C18). This file is a WORKLIST, not an approval. Every entry is an unresolved editorial decision (register C14 (2)) that row order is currently making on readers’ behalf. Shrink it by resolving terms in the terminology DB; do not grow it to silence the gate.",
+  "competitions": {
+    "in": {
+      "candidates": [
+        "indín",
+        "tomma"
+      ],
+      "chosen": "tomma"
+    }
+  },
+  "commaLists": {
+    "response": [
+      "svar,svörun"
+    ]
+  }
+}

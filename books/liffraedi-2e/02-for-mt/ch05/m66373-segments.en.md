@@ -26,10 +26,10 @@ Fluid Mosaic Model
 Phospholipids
 
 <!-- SEG:m66373:para:fs-id1807984 -->
-The membrane's main fabric comprises amphiphilic, phospholipid molecules. The {{term}}hydrophilic{{/term}} or “water-loving” areas of these molecules (which look like a collection of balls in an artist’s rendition of the model) ([[xref:fig-ch05_01_01]]) are in contact with the aqueous fluid both inside and outside the cell. {{term}}Hydrophobic{{/term}}, or water-hating molecules, tend to be non-polar. They interact with other non-polar molecules in chemical reactions, but generally do not interact with polar molecules. When placed in water, hydrophobic molecules tend to form a ball or cluster. The phospholipids' hydrophilic regions form hydrogen bonds with water and other polar molecules on both the cell's exterior and interior. Thus, the membrane surfaces that face the cell's interior and exterior are hydrophilic. In contrast, the cell membrane's interior is hydrophobic and will not interact with water. Therefore, phospholipids form an excellent two-layer cell membrane that separates fluid within the cell from the fluid outside the cell.
+The membrane's main fabric comprises amphiphilic, phospholipid molecules. The [[term:hydrophilic|term-00004]] or “water-loving” areas of these molecules (which look like a collection of balls in an artist’s rendition of the model) ([[xref:fig-ch05_01_01]]) are in contact with the aqueous fluid both inside and outside the cell. [[term:Hydrophobic|term-00005]], or water-hating molecules, tend to be non-polar. They interact with other non-polar molecules in chemical reactions, but generally do not interact with polar molecules. When placed in water, hydrophobic molecules tend to form a ball or cluster. The phospholipids' hydrophilic regions form hydrogen bonds with water and other polar molecules on both the cell's exterior and interior. Thus, the membrane surfaces that face the cell's interior and exterior are hydrophilic. In contrast, the cell membrane's interior is hydrophobic and will not interact with water. Therefore, phospholipids form an excellent two-layer cell membrane that separates fluid within the cell from the fluid outside the cell.
 
 <!-- SEG:m66373:para:fs-id1696367 -->
-A phospholipid molecule ([[xref:fig-ch05_01_02]]) consists of a three-carbon glycerol backbone with two fatty acid molecules attached to carbons 1 and 2, and a phosphate-containing group attached to the third carbon. This arrangement gives the overall molecule a head area (the phosphate-containing group), which has a polar character or negative charge, and a tail area (the fatty acids), which has no charge. The head can form hydrogen bonds, but the tail cannot. Scientists call a molecule with a positively or negatively charged area and an uncharged, or non-polar, area {{term}}amphiphilic{{/term}} or “dual-loving.”
+A phospholipid molecule ([[xref:fig-ch05_01_02]]) consists of a three-carbon glycerol backbone with two fatty acid molecules attached to carbons 1 and 2, and a phosphate-containing group attached to the third carbon. This arrangement gives the overall molecule a head area (the phosphate-containing group), which has a polar character or negative charge, and a tail area (the fatty acids), which has no charge. The head can form hydrogen bonds, but the tail cannot. Scientists call a molecule with a positively or negatively charged area and an uncharged, or non-polar, area [[term:amphiphilic|term-00006]] or “dual-loving.”
 
 <!-- SEG:m66373:caption:fig-ch05_01_02-caption -->
 A hydrophilic head and two hydrophobic tails comprise this phospholipid molecule. The hydrophilic head group consists of a phosphate-containing group attached to a glycerol molecule. The hydrophobic tails, each containing either a saturated or an unsaturated fatty acid, are long hydrocarbon chains.
@@ -44,13 +44,13 @@ In an aqueous solution, phospholipids usually arrange themselves with their pola
 Proteins
 
 <!-- SEG:m66373:para:fs-id1786880 -->
-Proteins comprise the plasma membranes' second major component. {{term}}Integral proteins{{/term}}, or integrins, as their name suggests, integrate completely into the membrane structure, and their hydrophobic membrane-spanning regions interact with the phospholipid bilayer's hydrophobic region ([[xref:fig-ch05_01_01]]). Single-pass integral membrane proteins usually have a hydrophobic transmembrane segment that consists of 20–25 amino acids. Some span only part of the membrane—associating with a single layer—while others stretch from one side to the other, and are exposed on either side. Up to 12 single protein segments comprise some complex proteins, which are extensively folded and embedded in the membrane ([[xref:fig-ch05_01_04]]). This protein type has a hydrophilic region or regions, and one or several mildly hydrophobic regions. This arrangement of protein regions orients the protein alongside the phospholipids, with the protein's hydrophobic region adjacent to the phospholipids' tails and the protein's hydrophilic region or regions protruding from the membrane and in contact with the cytosol or extracellular fluid.
+Proteins comprise the plasma membranes' second major component. [[term:Integral proteins|term-00007]], or integrins, as their name suggests, integrate completely into the membrane structure, and their hydrophobic membrane-spanning regions interact with the phospholipid bilayer's hydrophobic region ([[xref:fig-ch05_01_01]]). Single-pass integral membrane proteins usually have a hydrophobic transmembrane segment that consists of 20–25 amino acids. Some span only part of the membrane—associating with a single layer—while others stretch from one side to the other, and are exposed on either side. Up to 12 single protein segments comprise some complex proteins, which are extensively folded and embedded in the membrane ([[xref:fig-ch05_01_04]]). This protein type has a hydrophilic region or regions, and one or several mildly hydrophobic regions. This arrangement of protein regions orients the protein alongside the phospholipids, with the protein's hydrophobic region adjacent to the phospholipids' tails and the protein's hydrophilic region or regions protruding from the membrane and in contact with the cytosol or extracellular fluid.
 
 <!-- SEG:m66373:caption:fig-ch05_01_04-caption -->
 Integral membrane proteins may have one or more alpha-helices that span the membrane (examples 1 and 2), or they may have beta-sheets that span the membrane (example 3). (credit: “Foobar”/Wikimedia Commons)
 
 <!-- SEG:m66373:para:fs-id1780876 -->
-{{term}}Peripheral proteins{{/term}} are on the membranes' exterior and interior surfaces, attached either to integral proteins or to phospholipids. Peripheral proteins, along with integral proteins, may serve as enzymes, as structural attachments for the cytoskeleton's fibers, or as part of the cell’s recognition sites. Scientists sometimes refer to these as “cell-specific” proteins. The body recognizes its own proteins and attacks foreign proteins associated with invasive pathogens.
+[[term:Peripheral proteins|term-00008]] are on the membranes' exterior and interior surfaces, attached either to integral proteins or to phospholipids. Peripheral proteins, along with integral proteins, may serve as enzymes, as structural attachments for the cytoskeleton's fibers, or as part of the cell’s recognition sites. Scientists sometimes refer to these as “cell-specific” proteins. The body recognizes its own proteins and attacks foreign proteins associated with invasive pathogens.
 
 <!-- SEG:m66373:title:fs-id1443175-title -->
 Carbohydrates
@@ -77,13 +77,13 @@ HIV binds to the CD4 receptor, a glycoprotein on T cell surfaces. (credit: modif
 Scientists identified the plasma membrane in the 1890s, and its chemical components in 1915. The principal components they identified were lipids and proteins. In 1935, Hugh Davson and James Danielli proposed the plasma membrane's structure. This was the first model that others in the scientific community widely accepted. It was based on the plasma membrane's “railroad track” appearance in early electron micrographs. Davson and Danielli theorized that the plasma membrane's structure resembles a sandwich. They made the analogy of proteins to bread, and lipids to the filling. In the 1950s, advances in microscopy, notably transmission electron microscopy (TEM), allowed researchers to see that the plasma membrane's core consisted of a double, rather than a single, layer. In 1972, S.J. Singer and Garth L. Nicolson proposed a new model that provides microscopic observations and better explains plasma membrane function.
 
 <!-- SEG:m66373:para:fs-id1511371 -->
-The explanation, the {{term}}fluid mosaic model{{/term}}, has evolved somewhat over time, but it still best accounts for plasma membrane structure and function as we now understand them. The fluid mosaic model describes the plasma membrane structure as a mosaic of components—including phospholipids, cholesterol, proteins, and carbohydrates—that gives the membrane a fluid character. Plasma membranes range from 5 to 10 nm in thickness. For comparison, human red blood cells, visible via light microscopy, are approximately 8 µm wide, or approximately 1,000 times wider than a plasma membrane. The membrane does look a bit like a sandwich ([[xref:fig-ch05_01_01]]).
+The explanation, the [[term:fluid mosaic model|term-00001]], has evolved somewhat over time, but it still best accounts for plasma membrane structure and function as we now understand them. The fluid mosaic model describes the plasma membrane structure as a mosaic of components—including phospholipids, cholesterol, proteins, and carbohydrates—that gives the membrane a fluid character. Plasma membranes range from 5 to 10 nm in thickness. For comparison, human red blood cells, visible via light microscopy, are approximately 8 µm wide, or approximately 1,000 times wider than a plasma membrane. The membrane does look a bit like a sandwich ([[xref:fig-ch05_01_01]]).
 
 <!-- SEG:m66373:caption:fig-ch05_01_01-caption -->
 The plasma membrane fluid mosaic model describes the plasma membrane as a fluid combination of phospholipids, cholesterol, and proteins. Carbohydrates attached to lipids (glycolipids) and to proteins (glycoproteins) extend from the membrane's outward-facing surface. Credit: Rao, A., Ryan, K., Fletcher, S., Hawkins, A. and Tag, A. Department of Biology, Texas A&amp;M University.
 
 <!-- SEG:m66373:para:fs-id1444105 -->
-A plasma membrane's principal components are lipids (phospholipids and cholesterol), proteins, and carbohydrates attached to some of the lipids and proteins. A phospholipid is a molecule consisting of glycerol, two fatty acids, and a phosphate-linked head group. Cholesterol, another lipid comprised of four fused carbon rings, is situated alongside the phospholipids in the membrane's core. The protein, lipid, and carbohydrate proportions in the plasma membrane vary with cell type, but for a typical human cell, protein accounts for about 50 percent of the composition by mass, lipids (of all types) account for about 40 percent, and carbohydrates comprise the remaining 10 percent. However, protein and lipid concentration varies with different cell membranes. For example, myelin, an outgrowth of specialized cells' membrane that insulates the peripheral nerves' axons, contains only 18 percent protein and 76 percent lipid. The mitochondrial inner membrane contains 76 percent protein and only 24 percent lipid. The plasma membrane of human red blood cells is 30 percent lipid. Carbohydrates are present only on the plasma membrane's exterior surface and are attached to proteins, forming {{term}}glycoproteins{{/term}}, or attached to lipids, forming {{term}}glycolipids{{/term}}.
+A plasma membrane's principal components are lipids (phospholipids and cholesterol), proteins, and carbohydrates attached to some of the lipids and proteins. A phospholipid is a molecule consisting of glycerol, two fatty acids, and a phosphate-linked head group. Cholesterol, another lipid comprised of four fused carbon rings, is situated alongside the phospholipids in the membrane's core. The protein, lipid, and carbohydrate proportions in the plasma membrane vary with cell type, but for a typical human cell, protein accounts for about 50 percent of the composition by mass, lipids (of all types) account for about 40 percent, and carbohydrates comprise the remaining 10 percent. However, protein and lipid concentration varies with different cell membranes. For example, myelin, an outgrowth of specialized cells' membrane that insulates the peripheral nerves' axons, contains only 18 percent protein and 76 percent lipid. The mitochondrial inner membrane contains 76 percent protein and only 24 percent lipid. The plasma membrane of human red blood cells is 30 percent lipid. Carbohydrates are present only on the plasma membrane's exterior surface and are attached to proteins, forming [[term:glycoproteins|term-00002]], or attached to lipids, forming [[term:glycolipids|term-00003]].
 
 <!-- SEG:m66373:title:fs-id1772017-title -->
 Membrane Fluidity
@@ -169,11 +169,35 @@ Review Questions
 <!-- SEG:m66373:problem:fs-id1384518 -->
 Which plasma membrane component can be either found on its surface or embedded in the membrane structure?
 
+<!-- SEG:m66373:item:fs-id1463137-item-1 -->
+protein
+
+<!-- SEG:m66373:item:fs-id1463137-item-2 -->
+cholesterol
+
+<!-- SEG:m66373:item:fs-id1463137-item-3 -->
+carbohydrate
+
+<!-- SEG:m66373:item:fs-id1463137-item-4 -->
+phospholipid
+
 <!-- SEG:m66373:solution:fs-id1631652 -->
 A
 
 <!-- SEG:m66373:problem:fs-id1450228 -->
 Which characteristic of a phospholipid contributes to the fluidity of the membrane?
+
+<!-- SEG:m66373:item:fs-id1439064-item-1 -->
+its head
+
+<!-- SEG:m66373:item:fs-id1439064-item-2 -->
+cholesterol
+
+<!-- SEG:m66373:item:fs-id1439064-item-3 -->
+a saturated fatty acid tail
+
+<!-- SEG:m66373:item:fs-id1439064-item-4 -->
+double bonds in the fatty acid tail
 
 <!-- SEG:m66373:solution:fs-id1768681 -->
 D
@@ -181,11 +205,35 @@ D
 <!-- SEG:m66373:problem:fs-id1461234 -->
 What is the primary function of carbohydrates attached to the exterior of cell membranes?
 
+<!-- SEG:m66373:item:fs-id1631084-item-1 -->
+identification of the cell
+
+<!-- SEG:m66373:item:fs-id1631084-item-2 -->
+flexibility of the membrane
+
+<!-- SEG:m66373:item:fs-id1631084-item-3 -->
+strengthening the membrane
+
+<!-- SEG:m66373:item:fs-id1631084-item-4 -->
+channels through membrane
+
 <!-- SEG:m66373:solution:fs-id1912495 -->
 A
 
 <!-- SEG:m66373:problem:fs-idm74380428 -->
 A scientist compares the plasma membrane composition of an animal from the Mediterranean coast with one from the Mojave Desert. Which hypothesis is most likely to be correct?
+
+<!-- SEG:m66373:item:fs-idm67922767-item-1 -->
+The cells from the Mediterranean coast animal will have more fluid plasma membranes.
+
+<!-- SEG:m66373:item:fs-idm67922767-item-2 -->
+The cells from the Mojave Desert animal will have a higher cholesterol concentration in the plasma membranes.
+
+<!-- SEG:m66373:item:fs-idm67922767-item-3 -->
+The cells’ plasma membranes will be indistinguishable.
+
+<!-- SEG:m66373:item:fs-idm67922767-item-4 -->
+The cells from the Mediterranean coast animal will have a higher glycoprotein content, while the cells from the Mojave Desert animal will have a higher lipoprotein content.
 
 <!-- SEG:m66373:solution:fs-idm200102077 -->
 B

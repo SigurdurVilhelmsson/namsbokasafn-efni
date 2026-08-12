@@ -2,19 +2,19 @@
 Newton’s Second Law of Motion: Concept of a System
 
 <!-- SEG:m42073:para:import-auto-id2055489 -->
-{{term}}Newton’s second law of motion{{/term}} is closely related to Newton’s first law of motion. It mathematically states the cause and effect relationship between force and changes in motion. Newton’s second law of motion is more quantitative and is used extensively to calculate what happens in situations involving a force. Before we can write down Newton’s second law as a simple equation giving the exact relationship of force, mass, and acceleration, we need to sharpen some ideas that have already been mentioned.
+[[term:Newton’s second law of motion|import-auto-id765465]] is closely related to Newton’s first law of motion. It mathematically states the cause and effect relationship between force and changes in motion. Newton’s second law of motion is more quantitative and is used extensively to calculate what happens in situations involving a force. Before we can write down Newton’s second law as a simple equation giving the exact relationship of force, mass, and acceleration, we need to sharpen some ideas that have already been mentioned.
 
 <!-- SEG:m42073:para:import-auto-id2673470 -->
-First, what do we mean by a change in motion? The answer is that a change in motion is equivalent to a change in velocity. A change in velocity means, by definition, that there is an {{term}}acceleration{{/term}}. Newton’s first law says that a net external force causes a change in motion; thus, we see that a [[i:net external force causes acceleration]].
+First, what do we mean by a change in motion? The answer is that a change in motion is equivalent to a change in velocity. A change in velocity means, by definition, that there is an [[term:acceleration|import-auto-id3190786]]. Newton’s first law says that a net external force causes a change in motion; thus, we see that a [[i:net external force causes acceleration]].
 
 <!-- SEG:m42073:para:import-auto-id3033116 -->
-Another question immediately arises. What do we mean by an external force? An intuitive notion of external is correct—an {{term}}external force{{/term}} acts from outside the {{term}}system{{/term}} (object or collection of objects) of interest. For example, in [[xref:import-auto-id1993910]](a) the system of interest is the wagon plus the child in it. The two forces exerted by the other children are external forces. An internal force acts between elements of the system. Again looking at [[xref:import-auto-id1993910]](a), the force the child in the wagon exerts to hang onto the wagon is an internal force between elements of the system of interest. Only external forces affect the motion of a system, according to Newton’s first law. (The internal forces actually cancel, as we shall see in the next section.) [[i:You must define the boundaries of the system before you can determine which forces are external]]. Sometimes the system is obvious, whereas other times identifying the boundaries of a system is more subtle. The concept of a system is fundamental to many areas of physics, as is the correct application of Newton’s laws. This concept will be revisited many times on our journey through physics.
+Another question immediately arises. What do we mean by an external force? An intuitive notion of external is correct—an [[term:external force|import-auto-id3026856]] acts from outside the [[term:system|term-00001]] (object or collection of objects) of interest. For example, in [[xref:import-auto-id1993910]](a) the system of interest is the wagon plus the child in it. The two forces exerted by the other children are external forces. An internal force acts between elements of the system. Again looking at [[xref:import-auto-id1993910]](a), the force the child in the wagon exerts to hang onto the wagon is an internal force between elements of the system of interest. Only external forces affect the motion of a system, according to Newton’s first law. (The internal forces actually cancel, as we shall see in the next section.) [[i:You must define the boundaries of the system before you can determine which forces are external]]. Sometimes the system is obvious, whereas other times identifying the boundaries of a system is more subtle. The concept of a system is fundamental to many areas of physics, as is the correct application of Newton’s laws. This concept will be revisited many times on our journey through physics.
 
 <!-- SEG:m42073:caption:import-auto-id1993910-caption -->
 Different forces exerted on the same mass produce different accelerations. (a) Two children push a wagon with a child in it. Arrows representing all external forces are shown. The system of interest is the wagon and its rider. The weight [[MATH:1]] of the system and the support of the ground [[MATH:2]] are also shown for completeness and are assumed to cancel. The vector [[MATH:3]] represents the friction acting on the wagon, and it acts to the left, opposing the motion of the wagon. (b) All of the external forces acting on the system add together to produce a net force, [[MATH:4]]. The free-body diagram shows all of the forces acting on the system of interest. The dot represents the center of mass of the system. Each force vector extends from this dot. Because there are two forces acting to the right, we draw the vectors collinearly. (c) A larger net external force produces a larger acceleration ([[MATH:5]]) when an adult pushes the child.
 
 <!-- SEG:m42073:para:import-auto-id2653491 -->
-Now, it seems reasonable that acceleration should be directly proportional to and in the same direction as the net (total) external force acting on a system. This assumption has been verified experimentally and is illustrated in [[xref:import-auto-id1993910]]. In part (a), a smaller force causes a smaller acceleration than the larger force illustrated in part (c). For completeness, the vertical forces are also shown; they are assumed to cancel since there is no acceleration in the vertical direction. The vertical forces are the weight [[MATH:6]] and the support of the ground [[MATH:7]], and the horizontal force [[MATH:8]] represents the force of friction. These will be discussed in more detail in later sections. For now, we will define {{term}}friction{{/term}} as a force that opposes the motion past each other of objects that are touching. [[xref:import-auto-id1993910]](b) shows how vectors representing the external forces add together to produce a net force, [[MATH:9]].
+Now, it seems reasonable that acceleration should be directly proportional to and in the same direction as the net (total) external force acting on a system. This assumption has been verified experimentally and is illustrated in [[xref:import-auto-id1993910]]. In part (a), a smaller force causes a smaller acceleration than the larger force illustrated in part (c). For completeness, the vertical forces are also shown; they are assumed to cancel since there is no acceleration in the vertical direction. The vertical forces are the weight [[MATH:6]] and the support of the ground [[MATH:7]], and the horizontal force [[MATH:8]] represents the force of friction. These will be discussed in more detail in later sections. For now, we will define [[term:friction|import-auto-id2639388]] as a force that opposes the motion past each other of objects that are touching. [[xref:import-auto-id1993910]](b) shows how vectors representing the external forces add together to produce a net force, [[MATH:9]].
 
 <!-- SEG:m42073:para:import-auto-id3203046 -->
 To obtain an equation for Newton’s second law, we first write the relationship of acceleration and net external force as the proportionality
@@ -23,7 +23,7 @@ To obtain an equation for Newton’s second law, we first write the relationship
 [[MATH:10]]
 
 <!-- SEG:m42073:para:import-auto-id1946082 -->
-where the symbol [[MATH:11]] means “proportional to,” and [[MATH:12]] is the {{term}}net external force{{/term}}. (The net external force is the vector sum of all external forces and can be determined graphically, using the head-to-tail method, or analytically, using components. The techniques are the same as for the addition of other vectors, and are covered in [[docref:Two-Dimensional Kinematics|m42104]].) This proportionality states what we have said in words—[[i:acceleration is directly proportional to the net external force]]. Once the system of interest is chosen, it is important to identify the external forces and ignore the internal ones. It is a tremendous simplification not to have to consider the numerous internal forces acting between objects within the system, such as muscular forces within the child’s body, let alone the myriad of forces between atoms in the objects, but by doing so, we can easily solve some very complex problems with only minimal error due to our simplification
+where the symbol [[MATH:11]] means “proportional to,” and [[MATH:12]] is the [[term:net external force|import-auto-id1890102]]. (The net external force is the vector sum of all external forces and can be determined graphically, using the head-to-tail method, or analytically, using components. The techniques are the same as for the addition of other vectors, and are covered in [[docref:Two-Dimensional Kinematics|m42104]].) This proportionality states what we have said in words—[[i:acceleration is directly proportional to the net external force]]. Once the system of interest is chosen, it is important to identify the external forces and ignore the internal ones. It is a tremendous simplification not to have to consider the numerous internal forces acting between objects within the system, such as muscular forces within the child’s body, let alone the myriad of forces between atoms in the objects, but by doing so, we can easily solve some very complex problems with only minimal error due to our simplification
 
 <!-- SEG:m42073:para:import-auto-id2616884 -->
 Now, it also seems reasonable that acceleration should be inversely proportional to the mass of the system. In other words, the larger the mass (the inertia), the smaller the acceleration produced by a given force. And indeed, as illustrated in [[xref:import-auto-id1375143]], the same net external force applied to a car produces a much smaller acceleration than when applied to a basketball. The proportionality is written as
@@ -86,7 +86,7 @@ Apply Newton’s second law to determine the weight of an object.
 Units of Force
 
 <!-- SEG:m42073:para:import-auto-id1435794 -->
-[[MATH:18]] is used to define the units of force in terms of the three basic units for mass, length, and time. The SI unit of force is called the {{term}}newton{{/term}} (abbreviated N) and is the force needed to accelerate a 1-kg system at the rate of [[MATH:19]]. That is, since [[MATH:20]],
+[[MATH:18]] is used to define the units of force in terms of the three basic units for mass, length, and time. The SI unit of force is called the [[term:newton|import-auto-id2929123]] (abbreviated N) and is the force needed to accelerate a 1-kg system at the rate of [[MATH:19]]. That is, since [[MATH:20]],
 
 <!-- SEG:m42073:para:import-auto-id1922372 -->
 [[MATH:21]]
@@ -200,7 +200,19 @@ The same rocket sled drawn in [[xref:fs-id2992955]] is decelerated at a rate of 
 What is the deceleration of the rocket sled if it comes to rest in 1.1 s from a speed of 1000 km/h? (Such deceleration caused one test subject to black out and have temporary blindness.)
 
 <!-- SEG:m42073:problem:import-auto-id1487915 -->
-Suppose two children push horizontally, but in exactly opposite directions, on a third child in a wagon. The first child exerts a force of 75.0 N, the second a force of 90.0 N, friction is 12.0 N, and the mass of the third child plus wagon is 23.0 kg. What is the system of interest if the acceleration of the child in the wagon is to be calculated? Draw a free-body diagram, including all forces acting on the system. Calculate the acceleration. What would the acceleration be if friction were 15.0 N?
+Suppose two children push horizontally, but in exactly opposite directions, on a third child in a wagon. The first child exerts a force of 75.0 N, the second a force of 90.0 N, friction is 12.0 N, and the mass of the third child plus wagon is 23.0 kg.
+
+<!-- SEG:m42073:item:eip-idm1160497856-item-1 -->
+What is the system of interest if the acceleration of the child in the wagon is to be calculated?
+
+<!-- SEG:m42073:item:eip-idm1160497856-item-2 -->
+Draw a free-body diagram, including all forces acting on the system.
+
+<!-- SEG:m42073:item:eip-idm1160497856-item-3 -->
+Calculate the acceleration.
+
+<!-- SEG:m42073:item:eip-idm1160497856-item-4 -->
+What would the acceleration be if friction were 15.0 N?
 
 <!-- SEG:m42073:solution:para-00002 -->
 (a) The system is the child in the wagon plus the wagon.
@@ -239,7 +251,7 @@ The weight of an astronaut plus their space suit on the Moon is only 250 N. How 
 Suppose the mass of a fully loaded module in which astronauts take off from the Moon is 10,000 kg. The thrust of its engines is 30,000 N. (a) Calculate its the magnitude of acceleration in a vertical takeoff from the Moon. (b) Could it lift off from Earth? If not, why not? If it could, calculate the magnitude of its acceleration.
 
 <!-- SEG:m42073:para:import-auto-id2598176 -->
-When an object is dropped, it accelerates toward the center of Earth. Newton’s second law states that a net force on an object is responsible for its acceleration. If air resistance is negligible, the net force on a falling object is the gravitational force, commonly called its {{term}}weight{{/term}} [[MATH:45]]. Weight can be denoted as a vector [[MATH:46]] because it has a direction; [[i:down]] is, by definition, the direction of gravity, and hence weight is a downward force. The magnitude of weight is denoted as [[MATH:47]][[i:. ]] Galileo was instrumental in showing that, in the absence of air resistance, all objects fall with the same acceleration [[MATH:48]]. Using Galileo’s result and Newton’s second law, we can derive an equation for weight.
+When an object is dropped, it accelerates toward the center of Earth. Newton’s second law states that a net force on an object is responsible for its acceleration. If air resistance is negligible, the net force on a falling object is the gravitational force, commonly called its [[term:weight|import-auto-id3064229]] [[MATH:45]]. Weight can be denoted as a vector [[MATH:46]] because it has a direction; [[i:down]] is, by definition, the direction of gravity, and hence weight is a downward force. The magnitude of weight is denoted as [[MATH:47]][[i:. ]] Galileo was instrumental in showing that, in the absence of air resistance, all objects fall with the same acceleration [[MATH:48]]. Using Galileo’s result and Newton’s second law, we can derive an equation for weight.
 
 <!-- SEG:m42073:para:import-auto-id2578076 -->
 Consider an object with mass [[MATH:49]] falling downward toward Earth. It experiences only the downward force of gravity, which has magnitude [[MATH:50]]. Newton’s second law states that the magnitude of the net external force on an object is [[MATH:51]].
@@ -263,7 +275,7 @@ Since [[MATH:56]] on Earth, the weight of a 1.0 kg object on Earth is 9.8 N, as 
 Recall that when writing the second law equations, the components of the weight, [[MATH:58]] , can take positive, negative, or zero values, depending on orientation of the coordinate system. Be sure to take this into consideration when solving problems with weight.
 
 <!-- SEG:m42073:para:import-auto-id3123052 -->
-When the net external force on an object is its weight, we say that it is in {{term}}free-fall{{/term}}. That is, the only force acting on the object is the force of gravity. In the real world, when objects fall downward toward Earth, they are never truly in free-fall because there is always some upward force from the air acting on the object.
+When the net external force on an object is its weight, we say that it is in [[term:free-fall|import-auto-id1999571]]. That is, the only force acting on the object is the force of gravity. In the real world, when objects fall downward toward Earth, they are never truly in free-fall because there is always some upward force from the air acting on the object.
 
 <!-- SEG:m42073:para:import-auto-id1616012 -->
 The acceleration due to gravity [[MATH:59]] varies slightly over the surface of Earth, so that the weight of an object depends on location and is not an intrinsic property of the object. Weight varies dramatically if one leaves Earth’s surface. On the Moon, for example, the acceleration due to gravity is only [[MATH:60]]. A 1.0-kg mass thus has a weight of 9.8 N on Earth and only about 1.7 N on the Moon.
@@ -290,10 +302,13 @@ Take-Home Experiment: Mass and Weight
 What do bathroom scales measure? When you stand on a bathroom scale, what happens to the scale? It depresses slightly. The scale contains springs that compress in proportion to your weight—similar to rubber bands expanding when pulled. The springs provide a measure of your weight (for an object which is not accelerating). This is a force in newtons (or pounds). In most countries, the measurement is divided by 9.80 to give a reading in mass units of kilograms. The scale measures weight but is calibrated to provide information about mass. While standing on a bathroom scale, push down on a table next to you. What happens to the reading? Why? Would your scale measure the same “mass” on Earth as on the Moon?
 
 <!-- SEG:m42073:example-title:fs-id1916412-title -->
-Strategy
+What Acceleration Can a Person Produce when Pushing a Lawn Mower?
 
 <!-- SEG:m42073:para:import-auto-id3253302 -->
 Suppose that the net external force (push minus friction) exerted on a lawn mower is 51 N (about 11 lb) parallel to the ground. The mass of the mower is 24 kg. What is its acceleration?
+
+<!-- SEG:m42073:para-title:import-auto-id2672219-title -->
+Strategy
 
 <!-- SEG:m42073:para:import-auto-id3069019 -->
 Since [[MATH:65]] and [[MATH:66]] are given, the acceleration can be calculated directly from Newton’s second law as stated in [[MATH:67]].
@@ -323,10 +338,13 @@ The direction of the acceleration is the same direction as that of the net force
 The net force on a lawn mower is 51 N to the right. At what rate does the lawn mower accelerate to the right?
 
 <!-- SEG:m42073:example-title:fs-id2654781-title -->
-Strategy
+What Rocket Thrust Accelerates This Sled?
 
 <!-- SEG:m42073:para:import-auto-id2674385 -->
 Prior to space flights carrying astronauts, rocket sleds were used to test aircraft, missile equipment, and physiological effects on human subjects at high speeds. They consisted of a platform that was mounted on one or two rails and propelled by several rockets. Calculate the magnitude of force exerted by each rocket, called its thrust [[MATH:73]], for the four-rocket propulsion system shown in [[xref:fs-id2407992]]. The sled’s initial acceleration is [[MATH:74]] the mass of the system is 2100 kg, and the force of friction opposing the motion is known to be 650 N.
+
+<!-- SEG:m42073:para-title:import-auto-id1996045-title -->
+Strategy
 
 <!-- SEG:m42073:para:import-auto-id2647939 -->
 Although there are forces acting vertically and horizontally, we assume the vertical forces cancel since there is no vertical acceleration. This leaves us with only horizontal forces and a simpler one-dimensional problem. Directions are indicated with plus or minus signs, with right taken as the positive direction. See the free-body diagram in the figure.

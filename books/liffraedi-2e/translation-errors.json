@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-07T09:02:22.112Z",
+  "generated": "2026-08-12T15:42:47.170Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-08-07T09:02:22.112Z",
+      "generated": "2026-08-12T15:42:47.170Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 259,

@@ -52,7 +52,7 @@
       "id": "fs-id2383966",
       "title": {
         "segmentId": "m42132:example-title:fs-id2383966-title",
-        "text": "Strategy"
+        "text": "Drag Force on a Barge"
       },
       "content": [
         {
@@ -64,6 +64,14 @@
           "type": "para",
           "id": "import-auto-id1436125",
           "segmentId": "m42132:para:import-auto-id1436125"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id3233982",
+          "title": {
+            "segmentId": "m42132:para-title:import-auto-id3233982-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -233,13 +241,21 @@
       "id": "fs-id1348788",
       "title": {
         "segmentId": "m42132:example-title:fs-id1348788-title",
-        "text": "Strategy"
+        "text": "Different Tensions at Different Angles"
       },
       "content": [
         {
           "type": "para",
           "id": "import-auto-id1941219",
           "segmentId": "m42132:para:import-auto-id1941219"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2391059",
+          "title": {
+            "segmentId": "m42132:para-title:import-auto-id2391059-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -451,13 +467,21 @@
       "id": "fs-id2654282",
       "title": {
         "segmentId": "m42132:example-title:fs-id2654282-title",
-        "text": "Strategy"
+        "text": "What Does the Bathroom Scale Read in an Elevator?"
       },
       "content": [
         {
           "type": "para",
           "id": "import-auto-id3127757",
           "segmentId": "m42132:para:import-auto-id3127757"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id3175384",
+          "title": {
+            "segmentId": "m42132:para-title:import-auto-id3175384-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -912,6 +936,31 @@
                 "type": "para",
                 "id": "fs-id1450804",
                 "segmentId": "m42132:problem:fs-id1450804"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1444278",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42132:item:fs-id1444278-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42132:item:fs-id1444278-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42132:item:fs-id1444278-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42132:item:fs-id1444278-item-4"
+                  }
+                ]
               }
             ]
           },

@@ -1,0 +1,24 @@
+{
+  "_note": "Render-stage shape baseline. Capture ONLY from a clean render — a baseline taken from output containing a render bug blesses the bug. Regenerate after intentional render changes (e.g. after the C2 equation-dedup fix re-renders).",
+  "track": "mt-preview",
+  "chapters": {
+    "4": {
+      "figure": 53,
+      "img": 57,
+      "table": 1,
+      "ul": 12,
+      "ol": 21,
+      "li": 125,
+      "em": 112,
+      "strong": 41,
+      "aside.example": 10,
+      "aside.note": 17,
+      "div.eoc-exercise": 141,
+      "div.equation": 105,
+      "mjx-container": 546,
+      "span.math-inline": 441,
+      "span.mathjax-display": 105,
+      "a[href]": 87
+    }
+  }
+}

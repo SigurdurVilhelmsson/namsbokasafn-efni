@@ -11,7 +11,7 @@ Describe the structure and properties of an amine
 Describe the structure and properties of an amide
 
 <!-- SEG:m68849:para:fs-idp88512176 -->
-{{term}}Amines{{/term}} are molecules that contain carbon-nitrogen bonds. The nitrogen atom in an amine has a lone pair of electrons and three bonds to other atoms, either carbon or hydrogen. Various nomenclatures are used to derive names for amines, but all involve the class-identifying suffix [[i:–ine]] as illustrated here for a few simple examples:
+[[term:Amines|term-00001]] are molecules that contain carbon-nitrogen bonds. The nitrogen atom in an amine has a lone pair of electrons and three bonds to other atoms, either carbon or hydrogen. Various nomenclatures are used to derive names for amines, but all involve the class-identifying suffix [[i:–ine]] as illustrated here for a few simple examples:
 
 <!-- SEG:m68849:para:fs-idp59347936 -->
 In some amines, the nitrogen atom replaces a carbon atom in an aromatic hydrocarbon. Pyridine ([[xref:CNX_Chem_20_04_pyridine_img]]) is one such heterocyclic amine. A heterocyclic compound contains atoms of two or more different elements in its ring structure.
@@ -65,7 +65,7 @@ In these diagrams, as is common in representing structures of large organic comp
 Poppies can be used in the production of opium, a plant latex that contains morphine from which other opiates, such as heroin, can be synthesized. (credit: Karen Roe)
 
 <!-- SEG:m68849:para:fs-idp60237616 -->
-{{term}}Amides{{/term}} are molecules that contain nitrogen atoms connected to the carbon atom of a carbonyl group. Like amines, various nomenclature rules may be used to name amides, but all include use of the class-specific suffix [[i:-amide]]:
+[[term:Amides|term-00002]] are molecules that contain nitrogen atoms connected to the carbon atom of a carbonyl group. Like amines, various nomenclature rules may be used to name amides, but all include use of the class-specific suffix [[i:-amide]]:
 
 <!-- SEG:m68849:para:fs-idp95037440 -->
 Amides can be produced when carboxylic acids react with amines or ammonia in a process called amidation. A water molecule is eliminated from the reaction, and the amide is formed from the remaining pieces of the carboxylic acid and the amine (note the similarity to formation of an ester from a carboxylic acid and an alcohol discussed in the previous section):
@@ -164,7 +164,7 @@ Ethylammonium chloride is added to a solution of sodium hydroxide.
 Identify any carbon atoms that change hybridization and the change in hybridization during the reactions in [[docref:m68846#fs-idp49893888]].
 
 <!-- SEG:m68849:solution:fs-idm24647664 -->
-CH[[sub:3]]++C++H = ++C++HCH[[sub:3]]([[i:sp]][[sup:2]]) + Cl [[MATH:3]] CH[[sub:3]]++C++H(Cl)H(Cl)CH[[sub:3]]([[i:sp]][[sup:3]]); 2++C++[[sub:6]]H[[sub:6]]([[i:sp]][[sup:2]]) + 15O[[sub:2]] [[MATH:4]] 12++C++O[[sub:2]]([[i:sp]]) + 6H[[sub:2]]O
+CH[[sub:3]][[u:C]]H = [[u:C]]HCH[[sub:3]]([[i:sp]][[sup:2]]) + Cl [[MATH:3]] CH[[sub:3]][[u:C]]H(Cl)H(Cl)CH[[sub:3]]([[i:sp]][[sup:3]]); 2[[u:C]][[sub:6]]H[[sub:6]]([[i:sp]][[sup:2]]) + 15O[[sub:2]] [[MATH:4]] 12[[u:C]]O[[sub:2]]([[i:sp]]) + 6H[[sub:2]]O
 
 <!-- SEG:m68849:problem:fs-idp95116688 -->
 Identify any carbon atoms that change hybridization and the change in hybridization during the reactions in [[docref:m68847#fs-idm1615328]].

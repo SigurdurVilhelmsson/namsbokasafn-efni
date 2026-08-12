@@ -1,0 +1,27 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:mtext>Wavelength</m:mtext><m:mo>×</m:mo><m:mtext>Frequency</m:mtext><m:mo>=</m:mo><m:mtext>Speed</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{Wavelength}\\times \\text{Frequency}=\\text{Speed}}",
+    "isBlock": true
+  },
+  "eq-00002": {
+    "mathml": "<m:math><m:mrow><m:mi>&#x03BB;</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy='false'>(</m:mo><m:mtext>m</m:mtext><m:mo stretchy='false'>)</m:mo><m:mo>&#x00D7;</m:mo><m:mi>&#x03BD;</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy='false'>(</m:mo><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>&#x2212;</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy='false'>)</m:mo><m:mo>=</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy='false'>(</m:mo><m:mtext>m/s</m:mtext><m:mo stretchy='false'>)</m:mo></m:mrow></m:math>",
+    "latex": "{&#x03BB;\\, (\\text{m})&#x00D7;&#x03BD;\\, ({\\text{s}}^{{&#x2212;1}})=c\\, (\\text{m/s})}",
+    "isBlock": true
+  },
+  "eq-00003": {
+    "mathml": "<m:math><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>v</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mi>v</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>c</m:mi><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{λ=\\frac{c}{v}\\, \\, \\text{or}\\, \\, v=\\frac{c}{λ}}",
+    "isBlock": true
+  },
+  "eq-00004": {
+    "mathml": "<m:math><m:mrow><m:mi>ε</m:mi><m:mo>=</m:mo><m:mi>h</m:mi><m:mi>v</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{ε=hv=\\frac{{hc}}{λ}}",
+    "isBlock": true
+  },
+  "eq-00005": {
+    "mathml": "<m:math><m:mrow><m:mi>E</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:msub><m:mi>N</m:mi><m:mi>A</m:mi></m:msub><m:mi>h</m:mi><m:mi>c</m:mi></m:mrow><m:mi>λ</m:mi></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>1.20</m:mn><m:mo>×</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>4</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>kJ/mol</m:mtext></m:mrow><m:mrow><m:mi>λ</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>m</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>2.86</m:mn><m:mo>×</m:mo><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>5</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>kcal/mol</m:mtext></m:mrow><m:mrow><m:mi>λ</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>m</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{E=\\frac{{{N}_{A}hc}}{λ}=\\frac{{1.20\\times {{10}}^{{-4}}\\, \\text{kJ/mol}}}{{λ\\, (\\text{m})}}\\, \\, \\text{or}\\, \\, \\frac{{2.86\\times {{10}}^{{-5}}\\, \\text{kcal/mol}}}{{λ\\, (\\text{m})}}}",
+    "isBlock": true
+  }
+}

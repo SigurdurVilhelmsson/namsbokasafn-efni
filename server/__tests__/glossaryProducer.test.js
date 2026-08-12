@@ -1,12 +1,20 @@
 /**
  * Producer detection for the unattended glossary export (register C14 ② step 4).
  *
- * The legacy fingerprint is asserted against the REAL committed glossaries and
- * the export fingerprint against REAL exportBookGlossary output shape — not
+ * Every fingerprint is asserted against the REAL committed glossaries, and the
+ * export fingerprint against REAL exportBookGlossary output shape — not
  * hand-authored fixtures. A fixture written from prose is how ten
  * `<!-- SEG: -->` fixtures acquired a shape the real parser returns [] for; a
  * hand-written "merge-glossary-shaped" object would pass while proving nothing
- * about the 4,496 rows actually on disk.
+ * about the rows actually on disk.
+ *
+ * ⚠️ AMENDED 2026-08-12 (§C71). This header said "the LEGACY fingerprint is
+ * asserted against the real committed glossaries … the 4,496 rows actually on
+ * disk". Both halves aged out with §C62's adoption: the corpus is now MIXED
+ * (three books resolved, one still merge-glossary), so the resolved
+ * fingerprint is measured here too — and the row count is deliberately gone,
+ * because a total in prose is exactly what CLAUDE.md § One source of truth
+ * forbids. Count them from the files if you need the number.
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
@@ -44,7 +52,19 @@ describe('detectProducer — stamp', () => {
   });
 });
 
-describe('detectProducer — legacy fingerprint, against the REAL committed files', () => {
+describe('fingerprints, against the REAL committed files', () => {
+  // ⚠️ AMENDED 2026-08-12. These two assertions used to read "EVERY committed
+  // file is merge-glossary" with the merge fingerprint. §C62's adoption made
+  // that false by design: three books were deliberately adopted to
+  // `export-terminology-resolved` (it requires --adopt, which the cron cannot
+  // reach, so a human did it). The corpus is now legitimately MIXED.
+  //
+  // The measurement is what mattered and it is preserved: the fingerprint claim
+  // in glossaryProducer.js's header is still checked against real bytes rather
+  // than trusted as prose. What changed is that each file is now checked
+  // against ITS OWN producer's fingerprint, with an explicit failure for a
+  // producer this test does not model — so adding a fourth producer, or a file
+  // drifting to `unknown`, goes red instead of quietly finding nothing to do.
   const files = committedGlossaries();
 
   it('found at least one committed glossary to assert against', () => {
@@ -52,23 +72,71 @@ describe('detectProducer — legacy fingerprint, against the REAL committed file
   });
 
   it.each(files.map((f) => [f.slug, f.file]))(
-    '%s: the committed file is detected as merge-glossary',
-    (_slug, file) => {
-      const payload = JSON.parse(readFileSync(file, 'utf8'));
-      expect(detectProducer(payload)).toBe(PRODUCER_MERGE);
+    '%s: is detected as a KNOWN producer, never `unknown`',
+    (slug, file) => {
+      // `unknown` is the dangerous state: it means the detector no longer
+      // models what is on disk, and §C21 showed a payload can reach it in ways
+      // nobody predicted (four bytes of `null` parsed and walked past all three
+      // gates). Naming the slug in the assertion makes a failure legible.
+      const detected = detectProducer(JSON.parse(readFileSync(file, 'utf8')));
+      expect(`${slug}=${detected}`).not.toBe(`${slug}=${PRODUCER_UNKNOWN}`);
     }
   );
 
   it.each(files.map((f) => [f.slug, f.file]))(
-    '%s: the partition holds — every term has category+chapter, none has subjects',
-    (_slug, file) => {
-      const terms = JSON.parse(readFileSync(file, 'utf8')).terms;
-      const withCategory = terms.filter((t) => 'category' in t && 'chapter' in t).length;
-      const withSubjects = terms.filter((t) => 'subjects' in t).length;
-      expect(withCategory).toBe(terms.length);
-      expect(withSubjects).toBe(0);
+    '%s: its term shape matches the fingerprint of the producer detected for it',
+    (slug, file) => {
+      const payload = JSON.parse(readFileSync(file, 'utf8'));
+      const detected = detectProducer(payload);
+      const terms = payload.terms;
+      const count = (key) => terms.filter((t) => t && typeof t === 'object' && key in t).length;
+      const shape = {
+        legacy: terms.filter((t) => t && 'category' in t && 'chapter' in t).length,
+        subjects: count('subjects'),
+        domain: count('domain'),
+      };
+
+      if (detected === PRODUCER_MERGE) {
+        // The original measurement, unchanged, for the books still on it.
+        expect(`${slug} legacy`).toBe(
+          `${slug} ${shape.legacy === terms.length ? 'legacy' : 'MIXED'}`
+        );
+        expect(shape.subjects).toBe(0);
+      } else if (detected === PRODUCER_RESOLVED) {
+        // The resolved fingerprint, now pinned against real bytes for the first
+        // time. This is load-bearing beyond bookkeeping: detectProducer's
+        // UNSTAMPED path falls through to `unknown` unless the shape is exactly
+        // this, so an export that stopped emitting `domain` would only be
+        // caught here.
+        expect(`${slug} domain`).toBe(
+          `${slug} ${shape.domain === terms.length ? 'domain' : 'MISSING'}`
+        );
+        expect(shape.subjects).toBe(0);
+        expect(shape.legacy).toBe(0);
+      } else {
+        throw new Error(
+          `${slug}: detected producer '${detected}' has no fingerprint assertion in this test. ` +
+            `A new producer must be modelled here deliberately, not silently skipped.`
+        );
+      }
     }
   );
+
+  it('the three fingerprints are still DISJOINT across the whole corpus', () => {
+    // CLAUDE.md states this as a durable rule; detectProducer's shape inference
+    // depends on it, and a hybrid is deliberately `unknown`. Measured, not assumed.
+    const hybrids = [];
+    for (const { slug, file } of files) {
+      for (const t of JSON.parse(readFileSync(file, 'utf8')).terms) {
+        if (!t || typeof t !== 'object') continue;
+        const marks = ['category' in t || 'chapter' in t, 'subjects' in t, 'domain' in t].filter(
+          Boolean
+        ).length;
+        if (marks > 1) hybrids.push(`${slug}:${t.english}`);
+      }
+    }
+    expect(hybrids).toEqual([]);
+  });
 });
 
 describe('detectProducer — export fingerprint on a pre-stamp payload', () => {

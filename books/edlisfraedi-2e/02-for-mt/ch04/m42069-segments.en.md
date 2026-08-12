@@ -2,13 +2,13 @@
 Development of Force Concept
 
 <!-- SEG:m42069:para:import-auto-id2380148 -->
-{{term}}Dynamics{{/term}} is the study of the forces that cause objects and systems to move. To understand this, we need a working definition of force. Our intuitive definition of {{term}}force{{/term}}—that is, a push or a pull—is a good place to start. We know that a push or pull has both magnitude and direction (therefore, it is a vector quantity) and can vary considerably in each regard. For example, a cannon exerts a strong force on a cannonball that is launched into the air. In contrast, Earth exerts only a tiny downward pull on a flea. Our everyday experiences also give us a good idea of how multiple forces add. If two people push in different directions on a third person, as illustrated in [[xref:import-auto-id2379809]], we might expect the total force to be in the direction shown. Since force is a vector, it adds just like other vectors, as illustrated in [[xref:import-auto-id2379809]](a) for two ice skaters. Forces, like other vectors, are represented by arrows and can be added using the familiar head-to-tail method or by trigonometric methods. These ideas were developed in [[docref:Two-Dimensional Kinematics|m42104]].
+[[term:Dynamics|import-auto-id2134480]] is the study of the forces that cause objects and systems to move. To understand this, we need a working definition of force. Our intuitive definition of [[term:force|import-auto-id2712510]]—that is, a push or a pull—is a good place to start. We know that a push or pull has both magnitude and direction (therefore, it is a vector quantity) and can vary considerably in each regard. For example, a cannon exerts a strong force on a cannonball that is launched into the air. In contrast, Earth exerts only a tiny downward pull on a flea. Our everyday experiences also give us a good idea of how multiple forces add. If two people push in different directions on a third person, as illustrated in [[xref:import-auto-id2379809]], we might expect the total force to be in the direction shown. Since force is a vector, it adds just like other vectors, as illustrated in [[xref:import-auto-id2379809]](a) for two ice skaters. Forces, like other vectors, are represented by arrows and can be added using the familiar head-to-tail method or by trigonometric methods. These ideas were developed in [[docref:Two-Dimensional Kinematics|m42104]].
 
 <!-- SEG:m42069:caption:import-auto-id2379809-caption -->
 Part (a) shows an overhead view of two ice skaters pushing on a third. Forces are vectors and add like other vectors, so the total force on the third skater is in the direction shown. In part (b), we see a free-body diagram representing the forces acting on the third skater.
 
 <!-- SEG:m42069:para:import-auto-id1374790 -->
-[[xref:import-auto-id2379809]](b) is our first example of a {{term}}free-body diagram{{/term}}, which is a technique used to illustrate all the {{term}}external forces{{/term}} acting on a body. The body is represented by a single isolated point (or free body), and only those forces acting [[i:on]] the body from the outside (external forces) are shown. (These forces are the only ones shown, because only external forces acting on the body affect its motion. We can ignore any internal forces within the body.) Free-body diagrams are very useful in analyzing forces acting on a system and are employed extensively in the study and application of Newton’s laws of motion.
+[[xref:import-auto-id2379809]](b) is our first example of a [[term:free-body diagram|import-auto-id1590568]], which is a technique used to illustrate all the [[term:external forces|import-auto-id1608860]] acting on a body. The body is represented by a single isolated point (or free body), and only those forces acting [[i:on]] the body from the outside (external forces) are shown. (These forces are the only ones shown, because only external forces acting on the body affect its motion. We can ignore any internal forces within the body.) Free-body diagrams are very useful in analyzing forces acting on a system and are employed extensively in the study and application of Newton’s laws of motion.
 
 <!-- SEG:m42069:para:import-auto-id1905924 -->
 A more quantitative definition of force can be based on some standard force, just as distance is measured in units relative to a standard distance. One possibility is to stretch a spring a certain fixed distance, as illustrated in [[xref:import-auto-id2608835]], and use the force it exerts to pull itself back to its relaxed shape—called a [[i:restoring force]]—as a standard. The magnitude of all other forces can be stated as multiples of this standard unit of force. Many other possibilities exist for standard forces. (One that we will encounter in [[docref:Magnetism|m42366]] is the magnetic force between two wires carrying electric current.) Some alternative definitions of force will be given later in this chapter.
@@ -43,6 +43,24 @@ The figure above represents a racetrack with semicircular sections connected by 
 <!-- SEG:m42069:problem:fs-id1621869 -->
 The position of the six dots on the Car Y track on the right are as follows:
 
+<!-- SEG:m42069:item:fs-id945957-item-1 -->
+The first dot on the left center of the track is at the same position as it is on the Car X track.
+
+<!-- SEG:m42069:item:fs-id945957-item-2 -->
+The second dot is just slight to the right of the Car X dot (less than a dash) past three perpendicular hash marks moving to the right.
+
+<!-- SEG:m42069:item:fs-id945957-item-3 -->
+The third dot is about one and two-thirds perpendicular hash marks to the right of the center top perpendicular has mark.
+
+<!-- SEG:m42069:item:fs-id945957-item-4 -->
+The fourth dot is in the same position as the Car X figure (one perpendicular hash mark above the center right perpendicular hash mark).
+
+<!-- SEG:m42069:item:fs-id945957-item-5 -->
+The fifth dot is about one and two-third perpendicular hash marks to the right of the center bottom perpendicular hash mark.
+
+<!-- SEG:m42069:item:fs-id945957-item-6 -->
+The sixth dot is in the same position as the Car Y dot (one and two third perpendicular hash marks to the left of the center bottom hash mark).
+
 <!-- SEG:m42069:problem:fs-id1666680 -->
 (b)
 
@@ -73,6 +91,18 @@ Substituting [[MATH:7]] into the displacement equation in part (b) ii gives [[MA
 <!-- SEG:m42069:problem:fs-id1013993 -->
 Which of the following is an example of a body exerting a force on itself?
 
+<!-- SEG:m42069:item:fs-id1444546-item-1 -->
+a person standing up from a seated position
+
+<!-- SEG:m42069:item:fs-id1444546-item-2 -->
+a car accelerating while driving
+
+<!-- SEG:m42069:item:fs-id1444546-item-3 -->
+both of the above
+
+<!-- SEG:m42069:item:fs-id1444546-item-4 -->
+none of the above
+
 <!-- SEG:m42069:solution:fs-id1747826 -->
 (d)
 
@@ -85,6 +115,18 @@ A body cannot exert a force on itself. The hawk may accelerate as a result of se
 <!-- SEG:m42069:problem:fs-id1659034 -->
 What causes the force that moves a boat forward when someone rows it?
 
+<!-- SEG:m42069:item:fs-id1433548-item-1 -->
+The force is caused by the rower’s arms.
+
+<!-- SEG:m42069:item:fs-id1433548-item-2 -->
+The force is caused by an interaction between the oars and gravity.
+
+<!-- SEG:m42069:item:fs-id1433548-item-3 -->
+The force is caused by an interaction between the oars and the water the boat is traveling in.
+
+<!-- SEG:m42069:item:fs-id1433548-item-4 -->
+The force is caused by friction.
+
 <!-- SEG:m42069:solution:fs-id1595043 -->
 (c)
 
@@ -92,13 +134,13 @@ What causes the force that moves a boat forward when someone rows it?
 Section Summary
 
 <!-- SEG:m42069:item:eip-id2655312-item-1 -->
-{{term}}Dynamics{{/term}} is the study of how forces affect the motion of objects.
+[[term:Dynamics|term-00001]] is the study of how forces affect the motion of objects.
 
 <!-- SEG:m42069:item:eip-id2655312-item-2 -->
-{{term}}Force{{/term}} is a push or pull that can be defined in terms of various standards, and it is a vector having both magnitude and direction.
+[[term:Force|term-00002]] is a push or pull that can be defined in terms of various standards, and it is a vector having both magnitude and direction.
 
 <!-- SEG:m42069:item:eip-id2655312-item-3 -->
-{{term}}External forces{{/term}} are any outside forces that act on a body. A {{term}}free-body diagram{{/term}} is a drawing of all external forces acting on a body.
+[[term:External forces|term-00003]] are any outside forces that act on a body. A [[term:free-body diagram|term-00004]] is a drawing of all external forces acting on a body.
 
 <!-- SEG:m42069:title:fs-id1477045-title -->
 Conceptual Questions

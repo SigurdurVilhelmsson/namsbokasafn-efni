@@ -31,6 +31,55 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-id2004550",
+          "segmentId": "m66375:para:fs-id2004550"
+        },
+        {
+          "type": "note",
+          "id": "fs-id2054981",
+          "class": "visual-connection",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2054441",
+              "segmentId": "m66375:para:fs-id2054441"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2287381",
+              "segmentId": "m66375:para:fs-id2287381"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_03_01",
+          "caption": {
+            "segmentId": "m66375:caption:fig-ch05_03_01-caption"
+          },
+          "media": {
+            "id": "fs-id2187880",
+            "alt": "This illustration shows a membrane bilayer with a potassium channel embedded in it. The cytoplasm has a high concentration of potassium associated with a negatively charged molecule. The extracellular fluid has a high concentration of sodium associated with chlorine ions.",
+            "src": "../../media/Figure_05_03_01-d7da.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fs-idm491659440",
+          "caption": {
+            "segmentId": "m66375:caption:fs-idm491659440-caption"
+          },
+          "media": {
+            "id": "fs-idm702493232",
+            "alt": "This illustration shows a membrane bilayer with a potassium channel called a proton pump embedded in it. Hydrogen ions flow out of the cell through a proton pump, then back into the cell as part of the sucrose-proton cotransporter. Sucrose flows with the protons from the lower concentration outside the cell to the higher concentration inside the cell, which is against the concentration gradient.",
+            "src": "../../media/gradient.png",
+            "mimeType": "image/png"
+          }
+        },
+        {
           "type": "section",
           "id": "fs-id1772052",
           "class": null,
@@ -79,55 +128,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id2004550",
-          "segmentId": "m66375:para:fs-id2004550"
-        },
-        {
-          "type": "note",
-          "id": "fs-id2054981",
-          "class": "visual-connection",
-          "title": null,
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-id2054441",
-              "segmentId": "m66375:para:fs-id2054441"
-            },
-            {
-              "type": "para",
-              "id": "fs-id2287381",
-              "segmentId": "m66375:para:fs-id2287381"
-            }
-          ]
-        },
-        {
-          "type": "figure",
-          "id": "fig-ch05_03_01",
-          "caption": {
-            "segmentId": "m66375:caption:fig-ch05_03_01-caption"
-          },
-          "media": {
-            "id": "fs-id2187880",
-            "alt": "This illustration shows a membrane bilayer with a potassium channel embedded in it. The cytoplasm has a high concentration of potassium associated with a negatively charged molecule. The extracellular fluid has a high concentration of sodium associated with chlorine ions.",
-            "src": "../../media/Figure_05_03_01-d7da.jpg",
-            "mimeType": "image/jpg"
-          }
-        },
-        {
-          "type": "figure",
-          "id": "fs-idm491659440",
-          "caption": {
-            "segmentId": "m66375:caption:fs-idm491659440-caption"
-          },
-          "media": {
-            "id": "fs-idm702493232",
-            "alt": "This illustration shows a membrane bilayer with a potassium channel called a proton pump embedded in it. Hydrogen ions flow out of the cell through a proton pump, then back into the cell as part of the sucrose-proton cotransporter. Sucrose flows with the protons from the lower concentration outside the cell to the higher concentration inside the cell, which is against the concentration gradient.",
-            "src": "../../media/gradient.png",
-            "mimeType": "image/png"
-          }
         }
       ]
     },
@@ -352,6 +352,31 @@
                 "type": "para",
                 "id": "fs-id1443544",
                 "segmentId": "m66375:problem:fs-id1443544"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1798638",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1798638-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1798638-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1798638-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1798638-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -374,6 +399,31 @@
                 "type": "para",
                 "id": "fs-id1988922",
                 "segmentId": "m66375:problem:fs-id1988922"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1999972",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1999972-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1999972-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1999972-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id1999972-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -396,6 +446,31 @@
                 "type": "para",
                 "id": "fs-id1760590",
                 "segmentId": "m66375:problem:fs-id1760590"
+              },
+              {
+                "type": "list",
+                "id": "fs-id2197534",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id2197534-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id2197534-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id2197534-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66375:item:fs-id2197534-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -586,7 +661,10 @@
       "class": null,
       "alt": "This illustration shows a membrane bilayer with a potassium channel embedded in it. The cytoplasm has a high concentration of potassium associated with a negatively charged molecule. The extracellular fluid has a high concentration of sodium associated with chlorine ions.",
       "src": "../../media/Figure_05_03_01-d7da.jpg",
-      "mimeType": "image/jpg"
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -594,8 +672,11 @@
       "class": null,
       "alt": "This illustration shows a membrane bilayer with two integral membrane proteins embedded in it. The first, a sodium-potassium pump, uses energy from A T P hydrolysis to pump three sodium ions out of the cell for every two potassium ions it pumps into the cell. The result is a high concentration of sodium outside the cell and a high concentration of potassium inside the cell. There is also a low concentration of glucose outside the cell, and a high concentration inside. A sodium-amino acid co-transporter simultaneously transports sodium and the glucose into the cell. Text within the image reads as follows: Primary Active Transport: the sodium potassium pump moves sodium ions using the energy of ATP hydrolysis to establish a concentration gradient of sodium ions. Secondary active transport: Sodium ions moving with the concentration gradient established by the sodium potassium pump drives the transport of glucose against its concentration gradient.",
       "src": "../../media/Figure_05_03_04-851f.png",
-      "mimeType": "image/jpg"
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 3
 }

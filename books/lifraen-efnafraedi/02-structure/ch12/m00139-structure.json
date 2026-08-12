@@ -1,0 +1,189 @@
+{
+  "moduleId": "m00139",
+  "title": {
+    "segmentId": "m00139:title:auto-1",
+    "text": "Spectroscopy and the Electromagnetic Spectrum"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2b33a658-02c1-411f-b3f1-0445ab696985"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00139:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00139:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00139:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "A representation of the wavelengths, frequencies, and energies of radiation types from gamma radiation (highest frequency) to radio waves (lowest frequency). Other types of radiation are between these extremes.",
+        "src": "../../media/OChem_12_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00139:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00139:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": "A representation of a typical waveform including indications of how wavelength and amplitude are measured along a wave, as well as specific measurements for violet light and I R radiation.",
+        "src": "../../media/OChem_12_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00139:para:para-00004"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00002",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00003",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00139:para:para-00005"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00004",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00139:para:para-00006"
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00139:para:para-00007"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00005",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00139:para:para-00008"
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00139:para:para-00009"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00139:caption:fig-00003-caption"
+      },
+      "media": {
+        "alt": "An infrared spectrum of ethanol, showing significant absorption between wavenumbers 3500 and 3100, and just below wavenumber 3000. Other significant absorption spikes also appear.",
+        "src": "../../media/OChem_12_05_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00010",
+      "segmentId": "m00139:para:para-00010"
+    },
+    {
+      "type": "para",
+      "id": "para-00011",
+      "segmentId": "m00139:para:para-00011"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00139:example-title:exam-00001-title",
+        "text": "Strategy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00139:para:para-00012"
+        },
+        {
+          "type": "para",
+          "id": "para-00013",
+          "segmentId": "m00139:para:para-00013"
+        },
+        {
+          "type": "para",
+          "id": "para-00014",
+          "segmentId": "m00139:para:para-00014",
+          "title": {
+            "segmentId": "m00139:para-title:para-00014-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00139:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": 5
+}

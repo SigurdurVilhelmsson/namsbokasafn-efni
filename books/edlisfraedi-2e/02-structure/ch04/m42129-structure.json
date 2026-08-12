@@ -86,7 +86,10 @@
       "id": "concept-trailer-newtons-laws",
       "class": null,
       "alt": "OpenStax Concept Trailer for Newton's Laws",
-      "src": ""
+      "src": "",
+      "embedSrc": "https://www.youtube.com/embed/lCxxH8nQtZQ",
+      "width": "560",
+      "height": "315"
     }
   ],
   "inlineMedia": [
@@ -96,7 +99,10 @@
       "class": null,
       "alt": "OpenStax Concept Trailer for Newton's Laws",
       "src": "",
-      "mimeType": null
+      "mimeType": null,
+      "embedSrc": "https://www.youtube.com/embed/lCxxH8nQtZQ",
+      "width": "560",
+      "height": "315"
     }
   ],
   "sectionOrder": 0

@@ -95,13 +95,21 @@
       "id": "fs-id2355307",
       "title": {
         "segmentId": "m42074:example-title:fs-id2355307-title",
-        "text": "Strategy"
+        "text": "Getting Up To Speed: Choosing the Correct System"
       },
       "content": [
         {
           "type": "para",
           "id": "import-auto-id1645990",
           "segmentId": "m42074:para:import-auto-id1645990"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2687234",
+          "title": {
+            "segmentId": "m42074:para-title:fs-id2687234-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -205,13 +213,21 @@
       "id": "fs-id2092526",
       "title": {
         "segmentId": "m42074:example-title:fs-id2092526-title",
-        "text": "Strategy"
+        "text": "Force on the Cart—Choosing a New System"
       },
       "content": [
         {
           "type": "para",
           "id": "import-auto-id1572504",
           "segmentId": "m42074:para:import-auto-id1572504"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2423425",
+          "title": {
+            "segmentId": "m42074:para-title:import-auto-id2423425-title",
+            "text": "Strategy"
+          }
         },
         {
           "type": "para",
@@ -414,6 +430,31 @@
                 "type": "para",
                 "id": "fs-id1496936",
                 "segmentId": "m42074:problem:fs-id1496936"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1394705",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1394705-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1394705-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1394705-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1394705-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -436,6 +477,31 @@
                 "type": "para",
                 "id": "fs-id1457612",
                 "segmentId": "m42074:problem:fs-id1457612"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1643114",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643114-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643114-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643114-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643114-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -518,6 +584,31 @@
                 "type": "para",
                 "id": "fs-id1347158",
                 "segmentId": "m42074:problem:fs-id1347158"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1819267",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1819267-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1819267-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1819267-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1819267-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -597,6 +688,31 @@
                 "type": "para",
                 "id": "fs-id1691134",
                 "segmentId": "m42074:problem:fs-id1691134"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1643026",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643026-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643026-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643026-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1643026-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -641,6 +757,31 @@
                 "type": "para",
                 "id": "fs-id1340680",
                 "segmentId": "m42074:problem:fs-id1340680"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1121626",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1121626-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1121626-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1121626-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42074:item:fs-id1121626-item-4"
+                  }
+                ]
               }
             ]
           },

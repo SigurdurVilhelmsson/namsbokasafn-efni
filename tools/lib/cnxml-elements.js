@@ -761,6 +761,17 @@ export function processInlineContent(content, context) {
   // e.g., </emphasis>T*) → </emphasis>T)
   result = result.replace(/(<\/emphasis>[^*<]{0,10})\*(\))/g, '$1$2');
 
+  // §C61: drop self-closing <emphasis .../> BEFORE the pairing loop below. It carries no
+  // content, so it renders to nothing. This must happen first because EMPHASIS_RE's `[^>]*`
+  // matches the trailing `/` and would read the tag as an OPENING one — the same shape §C58
+  // fixed one stage earlier in cnxml-extract.js. Two distinct failures follow from that, and
+  // which one you get depends on what comes next: with a later `</emphasis>` and no
+  // intervening `<emphasis`, it mis-pairs and swallows the text between them; with nothing
+  // pairable, the raw tag leaks verbatim into published HTML (measured 2026-08-12 in
+  // edlisfraedi-2e m42075). Stripping here fixes both, and leaves EMPHASIS_RE seeing only
+  // genuine pairs.
+  result = result.replace(/<emphasis\b[^>]*\/>/g, '');
+
   // Convert emphasis — innermost-first so nested emphasis pairs correctly. Order-independent
   // attribute read; effect-less <emphasis> defaults to italics; class="emphasis-one" keeps its
   // class (styled by vefur CSS). Innermost regex: inner body forbids nested <emphasis> so only

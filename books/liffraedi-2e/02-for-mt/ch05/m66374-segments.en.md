@@ -14,10 +14,10 @@ Understand the osmosis and diffusion processes
 Define tonicity and its relevance to passive transport
 
 <!-- SEG:m66374:para:fs-id2054981 -->
-Plasma membranes must allow certain substances to enter and leave a cell, and prevent some harmful materials from entering and some essential materials from leaving. In other words, plasma membranes are {{term}}selectively permeable{{/term}} (semipermeable)—they allow some substances to pass through, but not others. If they were to lose this selectivity, the cell would no longer be able to sustain itself, and it would be destroyed. Some cells require larger amounts of specific substances. They must have a way of obtaining these materials from extracellular fluids. This may happen passively, as certain materials move back and forth, or the cell may have special mechanisms that facilitate transport. Some materials are so important to a cell that it spends some of its energy, hydrolyzing adenosine triphosphate (ATP), to obtain these materials. Red blood cells use some of their energy doing just that. Most cells spend the majority of their energy to maintain an imbalance of sodium and potassium ions between the cell's interior and exterior, as well as on protein synthesis.
+Plasma membranes must allow certain substances to enter and leave a cell, and prevent some harmful materials from entering and some essential materials from leaving. In other words, plasma membranes are [[term:selectively permeable|term-00001]] (semipermeable)—they allow some substances to pass through, but not others. If they were to lose this selectivity, the cell would no longer be able to sustain itself, and it would be destroyed. Some cells require larger amounts of specific substances. They must have a way of obtaining these materials from extracellular fluids. This may happen passively, as certain materials move back and forth, or the cell may have special mechanisms that facilitate transport. Some materials are so important to a cell that it spends some of its energy, hydrolyzing adenosine triphosphate (ATP), to obtain these materials. Red blood cells use some of their energy doing just that. Most cells spend the majority of their energy to maintain an imbalance of sodium and potassium ions between the cell's interior and exterior, as well as on protein synthesis.
 
 <!-- SEG:m66374:para:fs-id1464026 -->
-The most direct forms of membrane transport are passive. {{term}}Passive transport{{/term}} is a naturally occurring phenomenon and does not require the cell to exert any of its energy to accomplish the movement. In passive transport, substances move from an area of higher concentration to an area of lower concentration. A physical space in which there is a single substance concentration range has a {{term}}concentration gradient{{/term}}.
+The most direct forms of membrane transport are passive. [[term:Passive transport|term-00002]] is a naturally occurring phenomenon and does not require the cell to exert any of its energy to accomplish the movement. In passive transport, substances move from an area of higher concentration to an area of lower concentration. A physical space in which there is a single substance concentration range has a [[term:concentration gradient|term-00003]].
 
 <!-- SEG:m66374:title:fs-id1309562-title -->
 Selective Permeability
@@ -65,10 +65,10 @@ Surface area and plasma membrane thickness: Increased surface area increases the
 Distance travelled: The greater the distance that a substance must travel, the slower the diffusion rate. This places an upper limitation on cell size. A large, spherical cell will die because nutrients or waste cannot reach or leave the cell's center, respectively. Therefore, cells must either be small in size, as in the case of many prokaryotes, or be flattened, as with many single-celled eukaryotes.
 
 <!-- SEG:m66374:para:fs-id1768863 -->
-A variation of diffusion is the process of filtration. In filtration, material moves according to its concentration gradient through a membrane. Sometimes pressure enhances the diffusion rate, causing the substances to filter more rapidly. This occurs in the kidney, where blood pressure forces large amounts of water and accompanying dissolved substances, or {{term}}solutes{{/term}}, out of the blood and into the renal tubules. The diffusion rate in this instance is almost totally dependent on pressure. One of the effects of high blood pressure is the appearance of protein in the urine, which abnormally high pressure "squeezes through".
+A variation of diffusion is the process of filtration. In filtration, material moves according to its concentration gradient through a membrane. Sometimes pressure enhances the diffusion rate, causing the substances to filter more rapidly. This occurs in the kidney, where blood pressure forces large amounts of water and accompanying dissolved substances, or [[term:solutes|term-00005]], out of the blood and into the renal tubules. The diffusion rate in this instance is almost totally dependent on pressure. One of the effects of high blood pressure is the appearance of protein in the urine, which abnormally high pressure "squeezes through".
 
 <!-- SEG:m66374:para:fs-id2051346 -->
-{{term}}Diffusion{{/term}} is a passive process of transport. A single substance moves from a high concentration to a low concentration area until the concentration is equal across a space. You are familiar with diffusion of substances through the air. For example, think about someone opening a bottle of ammonia in a room filled with people. The ammonia gas is at its highest concentration in the bottle. Its lowest concentration is at the room's edges. The ammonia vapor will diffuse, or spread away, from the bottle, and gradually, increasingly more people will smell the ammonia as it spreads. Materials move within the cell’s cytosol by diffusion, and certain materials move through the plasma membrane by diffusion ([[xref:fig-ch05_02_02]]). Diffusion expends no energy. On the contrary, concentration gradients are a form of potential energy, which dissipates as the gradient is eliminated.
+[[term:Diffusion|term-00004]] is a passive process of transport. A single substance moves from a high concentration to a low concentration area until the concentration is equal across a space. You are familiar with diffusion of substances through the air. For example, think about someone opening a bottle of ammonia in a room filled with people. The ammonia gas is at its highest concentration in the bottle. Its lowest concentration is at the room's edges. The ammonia vapor will diffuse, or spread away, from the bottle, and gradually, increasingly more people will smell the ammonia as it spreads. Materials move within the cell’s cytosol by diffusion, and certain materials move through the plasma membrane by diffusion ([[xref:fig-ch05_02_02]]). Diffusion expends no energy. On the contrary, concentration gradients are a form of potential energy, which dissipates as the gradient is eliminated.
 
 <!-- SEG:m66374:caption:fig-ch05_02_02-caption -->
 Diffusion through a permeable membrane moves a substance from a high concentration area (extracellular fluid, in this case) down its concentration gradient (into the cytoplasm). (credit: modification of work by Mariana Ruiz Villareal)
@@ -83,7 +83,7 @@ Facilitated transport
 Channels
 
 <!-- SEG:m66374:para:fs-id1805576 -->
-The integral proteins involved in facilitated transport are {{term}}transport proteins{{/term}}, and they function as either channels for the material or carriers. In both cases, they are transmembrane proteins. Channels are specific for the transported substance. {{term}}Channel proteins{{/term}} have hydrophilic domains exposed to the intracellular and extracellular fluids. In addition, they have a hydrophilic channel through their core that provides a hydrated opening through the membrane layers ([[xref:fig-ch05_02_03]]). Passage through the channel allows polar compounds to avoid the plasma membrane's nonpolar central layer that would otherwise slow or prevent their entry into the cell. {{term}}Aquaporins{{/term}} are channel proteins that allow water to pass through the membrane at a very high rate.
+The integral proteins involved in facilitated transport are [[term:transport proteins|term-00007]], and they function as either channels for the material or carriers. In both cases, they are transmembrane proteins. Channels are specific for the transported substance. [[term:Channel proteins|term-00008]] have hydrophilic domains exposed to the intracellular and extracellular fluids. In addition, they have a hydrophilic channel through their core that provides a hydrated opening through the membrane layers ([[xref:fig-ch05_02_03]]). Passage through the channel allows polar compounds to avoid the plasma membrane's nonpolar central layer that would otherwise slow or prevent their entry into the cell. [[term:Aquaporins|term-00009]] are channel proteins that allow water to pass through the membrane at a very high rate.
 
 <!-- SEG:m66374:caption:fig-ch05_02_03-caption -->
 Ion Channel Proteins. Ion channel proteins are gated. When they are closed, no ions can pass through them. However, when a channel opens, select ions diffuse through the channel. Channel proteins are highly specific, letting only a specific ion or subset of ions pass. Credit: Rao, A., Ryan, K., Tag, A. and Fletcher, S. Department of Biology, Texas A&amp;M University.
@@ -95,7 +95,7 @@ Channel proteins are either open at all times or they are “gated,” which con
 Carrier Proteins
 
 <!-- SEG:m66374:para:fs-id1507066 -->
-Another type of protein embedded in the plasma membrane is a {{term}}carrier protein{{/term}}. This aptly named protein binds a substance and, thus triggers a change of its own shape, moving the bound molecule from the cell's outside to its interior ([[xref:fig-ch05_02_04]]); depending on the gradient, the material may move in the opposite direction. Carrier proteins are typically specific for a single substance. This selectivity adds to the plasma membrane's overall selectivity. Scientists poorly understand the exact mechanism for the change of shape. Proteins can change shape when their hydrogen bonds are affected, but this may not fully explain this mechanism. Each carrier protein is specific to one substance, and there are a finite number of these proteins in any membrane. This can cause problems in transporting enough material for the cell to function properly. When all of the proteins are bound to their ligands, they are saturated and the rate of transport is at its maximum. Increasing the concentration gradient at this point will not result in an increased transport rate.
+Another type of protein embedded in the plasma membrane is a [[term:carrier protein|term-00010]]. This aptly named protein binds a substance and, thus triggers a change of its own shape, moving the bound molecule from the cell's outside to its interior ([[xref:fig-ch05_02_04]]); depending on the gradient, the material may move in the opposite direction. Carrier proteins are typically specific for a single substance. This selectivity adds to the plasma membrane's overall selectivity. Scientists poorly understand the exact mechanism for the change of shape. Proteins can change shape when their hydrogen bonds are affected, but this may not fully explain this mechanism. Each carrier protein is specific to one substance, and there are a finite number of these proteins in any membrane. This can cause problems in transporting enough material for the cell to function properly. When all of the proteins are bound to their ligands, they are saturated and the rate of transport is at its maximum. Increasing the concentration gradient at this point will not result in an increased transport rate.
 
 <!-- SEG:m66374:caption:fig-ch05_02_04-caption -->
 Some substances are able to move down their concentration gradient across the plasma membrane with the aid of carrier proteins. Carrier proteins change shape as they move molecules across the membrane. Credit: Rao, A., Tag, A. and Fletcher, S. Department of Biology, Texas A&amp;M University.
@@ -107,7 +107,7 @@ An example of this process occurs in the kidney. In one part, the kidney filters
 Channel and carrier proteins transport material at different rates. Channel proteins transport much more quickly than carrier proteins. Channel proteins facilitate diffusion at a rate of tens of millions of molecules per second; whereas, carrier proteins work at a rate of a thousand to a million molecules per second.
 
 <!-- SEG:m66374:para:fs-id1772383 -->
-In {{term}}facilitated transport{{/term}}, or facilitated diffusion, materials diffuse across the plasma membrane with the help of membrane proteins. A concentration gradient exists that would allow these materials to diffuse into the cell without expending cellular energy. However, these materials are polar molecule ions that the cell membrane's hydrophobic parts repel. Facilitated transport proteins shield these materials from the membrane's repulsive force, allowing them to diffuse into the cell.
+In [[term:facilitated transport|term-00006]], or facilitated diffusion, materials diffuse across the plasma membrane with the help of membrane proteins. A concentration gradient exists that would allow these materials to diffuse into the cell without expending cellular energy. However, these materials are polar molecule ions that the cell membrane's hydrophobic parts repel. Facilitated transport proteins shield these materials from the membrane's repulsive force, allowing them to diffuse into the cell.
 
 <!-- SEG:m66374:para:eip-id1169464282436 -->
 The transported material first attaches to protein or glycoprotein receptors on the plasma membrane's exterior surface. This allows removal of material from the extracellular fluid that the cell needs. The substances then pass to specific integral proteins that facilitate their passage. Some of these integral proteins are collections of beta-pleated sheets that form a pore or channel through the phospholipid bilayer. Others are carrier proteins which bind with the substance and aid its diffusion through the membrane.
@@ -119,7 +119,7 @@ Osmosis
 Mechanism
 
 <!-- SEG:m66374:para:fs-id1443145 -->
-Osmosis is a special case of diffusion. Water, like other substances, moves from an area of high concentration of free water molecules to one of low free water molecule concentration. An obvious question is what makes water move at all? Imagine a beaker with a semipermeable membrane separating the two sides or halves ([[xref:fig-ch05_02_05]]). On both sides of the membrane the water level is the same, but there are different dissolved substance concentrations, or {{term}}solute{{/term}}, that cannot cross the membrane (otherwise the solute crossing the membrane would balance concentrations on each side). If the solution's volume on both sides of the membrane is the same, but the solute's concentrations are different, then there are different amounts of water, the solvent, on either side of the membrane.
+Osmosis is a special case of diffusion. Water, like other substances, moves from an area of high concentration of free water molecules to one of low free water molecule concentration. An obvious question is what makes water move at all? Imagine a beaker with a semipermeable membrane separating the two sides or halves ([[xref:fig-ch05_02_05]]). On both sides of the membrane the water level is the same, but there are different dissolved substance concentrations, or [[term:solute|term-00011]], that cannot cross the membrane (otherwise the solute crossing the membrane would balance concentrations on each side). If the solution's volume on both sides of the membrane is the same, but the solute's concentrations are different, then there are different amounts of water, the solvent, on either side of the membrane.
 
 <!-- SEG:m66374:caption:fig-ch05_02_05-caption -->
 In osmosis, water always moves from an area of higher water concentration to one of lower concentration. In the diagram, the solute cannot pass through the selectively permeable membrane, but the water can.
@@ -140,19 +140,19 @@ Tonicity
 Hypotonic Solutions
 
 <!-- SEG:m66374:para:fs-id2026434 -->
-Scientists use three terms—hypotonic, isotonic, and hypertonic—to relate the cell's osmolarity to the extracellular fluid's osmolarity that contains the cells. In a {{term}}hypotonic{{/term}} situation, the extracellular fluid has lower osmolarity than the fluid inside the cell, and water enters the cell. (In living systems, the point of reference is always the cytoplasm, so the prefix [[i:hypo]]- means that the extracellular fluid has a lower solute concentration, or a lower osmolarity, than the cell cytoplasm.) It also means that the extracellular fluid has a higher water concentration in the solution than does the cell. In this situation, water will follow its concentration gradient and enter the cell.
+Scientists use three terms—hypotonic, isotonic, and hypertonic—to relate the cell's osmolarity to the extracellular fluid's osmolarity that contains the cells. In a [[term:hypotonic|term-00014]] situation, the extracellular fluid has lower osmolarity than the fluid inside the cell, and water enters the cell. (In living systems, the point of reference is always the cytoplasm, so the prefix [[i:hypo]]- means that the extracellular fluid has a lower solute concentration, or a lower osmolarity, than the cell cytoplasm.) It also means that the extracellular fluid has a higher water concentration in the solution than does the cell. In this situation, water will follow its concentration gradient and enter the cell.
 
 <!-- SEG:m66374:title:fs-id1341136-title -->
 Hypertonic Solutions
 
 <!-- SEG:m66374:para:fs-id1694814 -->
-As for a {{term}}hypertonic{{/term}} solution, the prefix [[i:hyper]]- refers to the extracellular fluid having a higher osmolarity than the cell’s cytoplasm; therefore, the fluid contains less water than the cell does. Because the cell has a relatively higher water concentration, water will leave the cell.
+As for a [[term:hypertonic|term-00015]] solution, the prefix [[i:hyper]]- refers to the extracellular fluid having a higher osmolarity than the cell’s cytoplasm; therefore, the fluid contains less water than the cell does. Because the cell has a relatively higher water concentration, water will leave the cell.
 
 <!-- SEG:m66374:title:fs-id2072799-title -->
 Isotonic Solutions
 
 <!-- SEG:m66374:para:fs-id1804577 -->
-In an {{term}}isotonic{{/term}} solution, the extracellular fluid has the same osmolarity as the cell. If the cell's osmolarity matches that of the extracellular fluid, there will be no net movement of water into or out of the cell, although water will still move in and out. Blood cells and plant cells in hypertonic, isotonic, and hypotonic solutions take on characteristic appearances ([[xref:fig-ch05_02_06]]).
+In an [[term:isotonic|term-00016]] solution, the extracellular fluid has the same osmolarity as the cell. If the cell's osmolarity matches that of the extracellular fluid, there will be no net movement of water into or out of the cell, although water will still move in and out. Blood cells and plant cells in hypertonic, isotonic, and hypotonic solutions take on characteristic appearances ([[xref:fig-ch05_02_06]]).
 
 <!-- SEG:m66374:para:fs-id1723475 -->
 [[MEDIA:1]] Three different scenarios involving red blood cells (RBC) are shown. Left: A RBC placed in a hypotonic solution, where the concentration of solutes in the surrounding fluid is lower than those in the cell, will cause water to rush into the RBC and lead to lysis of the cell. Middle: there is no net water movement into or out of the cell as the concentration of the solutes inside the cell equal or is isotonic to that of the surrounding fluid. Right: a RBC placed in a hypertonic solution, where the concentration of solutes in the surrounding fluid is greater than that in the cell will cause water to rush out of the cell and into the surrounding fluid. This will cause the RBC to shrivel. Credit: Tag, A., Rao, A., Hawkins, A and Fletcher, S. Department of Biology, Texas A&amp;M University.
@@ -167,7 +167,7 @@ Three different scenarios involving red blood cells (RBC) are shown. Left: A RBC
 For a video illustrating the diffusion process in solutions, visit this [[link:site|https://openstax.org/l/dispersion]].
 
 <!-- SEG:m66374:para:fs-id1385884 -->
-{{term}}Tonicity{{/term}} describes how an extracellular solution can change a cell's volume by affecting osmosis. A solution's tonicity often directly correlates with the solution's osmolarity. {{term}}Osmolarity{{/term}} describes the solution's total solute concentration. A solution with low osmolarity has a greater number of water molecules relative to the number of solute particles. A solution with high osmolarity has fewer water molecules with respect to solute particles. In a situation in which a membrane permeable to water, though not to the solute separates two different osmolarities, water will move from the membrane's side with lower osmolarity (and more water) to the side with higher osmolarity (and less water). This effect makes sense if you remember that the solute cannot move across the membrane, and thus the only component in the system that can move—the water—moves along its own concentration gradient. An important distinction that concerns living systems is that osmolarity measures the number of particles (which may be molecules) in a solution. Therefore, a solution that is cloudy with cells may have a lower osmolarity than a solution that is clear, if the second solution contains more dissolved molecules than there are cells.
+[[term:Tonicity|term-00012]] describes how an extracellular solution can change a cell's volume by affecting osmosis. A solution's tonicity often directly correlates with the solution's osmolarity. [[term:Osmolarity|term-00013]] describes the solution's total solute concentration. A solution with low osmolarity has a greater number of water molecules relative to the number of solute particles. A solution with high osmolarity has fewer water molecules with respect to solute particles. In a situation in which a membrane permeable to water, though not to the solute separates two different osmolarities, water will move from the membrane's side with lower osmolarity (and more water) to the side with higher osmolarity (and less water). This effect makes sense if you remember that the solute cannot move across the membrane, and thus the only component in the system that can move—the water—moves along its own concentration gradient. An important distinction that concerns living systems is that osmolarity measures the number of particles (which may be molecules) in a solution. Therefore, a solution that is cloudy with cells may have a lower osmolarity than a solution that is clear, if the second solution contains more dissolved molecules than there are cells.
 
 <!-- SEG:m66374:title:fs-id1809183-title -->
 Tonicity in Living Systems
@@ -182,7 +182,7 @@ A red blood cell will burst, or lyse, when it swells beyond the plasma membrane�
 In contrast, when excessive water amounts leave a red blood cell, the cell shrinks, or crenates. This has the effect of concentrating the solutes left in the cell, making the cytosol denser and interfering with diffusion within the cell. The cell’s ability to function will be compromised and may also result in the cell's death.
 
 <!-- SEG:m66374:para:fs-id1778350 -->
-Various living things have ways of controlling the effects of osmosis—a mechanism we call osmoregulation. Some organisms, such as plants, fungi, bacteria, and some protists, have cell walls that surround the plasma membrane and prevent cell lysis in a hypotonic solution. The plasma membrane can only expand to the cell wall's limit, so the cell will not lyse. The cytoplasm in plants is always slightly hypertonic to the cellular environment, and water will always enter a cell if water is available. This water inflow produces turgor pressure, which stiffens the plant's cell walls ([[xref:fig-ch05_02_07]]). In nonwoody plants, turgor pressure supports the plant. Conversely, if you do not water the plant, the extracellular fluid will become hypertonic, causing water to leave the cell. In this condition, the cell does not shrink because the cell wall is not flexible. However, the cell membrane detaches from the wall and constricts the cytoplasm. We call this {{term}}plasmolysis{{/term}}. Plants lose turgor pressure in this condition and wilt ([[xref:fig-ch05_02_08]]).
+Various living things have ways of controlling the effects of osmosis—a mechanism we call osmoregulation. Some organisms, such as plants, fungi, bacteria, and some protists, have cell walls that surround the plasma membrane and prevent cell lysis in a hypotonic solution. The plasma membrane can only expand to the cell wall's limit, so the cell will not lyse. The cytoplasm in plants is always slightly hypertonic to the cellular environment, and water will always enter a cell if water is available. This water inflow produces turgor pressure, which stiffens the plant's cell walls ([[xref:fig-ch05_02_07]]). In nonwoody plants, turgor pressure supports the plant. Conversely, if you do not water the plant, the extracellular fluid will become hypertonic, causing water to leave the cell. In this condition, the cell does not shrink because the cell wall is not flexible. However, the cell membrane detaches from the wall and constricts the cytoplasm. We call this [[term:plasmolysis|term-00017]]. Plants lose turgor pressure in this condition and wilt ([[xref:fig-ch05_02_08]]).
 
 <!-- SEG:m66374:caption:fig-ch05_02_07-caption -->
 The turgor pressure within a plant cell depends on the solution's tonicity in which it is bathed. (credit: modification of work by Mariana Ruiz Villareal)
@@ -226,11 +226,35 @@ Review Questions
 <!-- SEG:m66374:problem:fs-id1731572 -->
 Water moves via osmosis _________.
 
+<!-- SEG:m66374:item:fs-id1630954-item-1 -->
+throughout the cytoplasm
+
+<!-- SEG:m66374:item:fs-id1630954-item-2 -->
+from an area with a high concentration of other solutes to a lower one
+
+<!-- SEG:m66374:item:fs-id1630954-item-3 -->
+from an area with a high concentration of water to one of lower concentration
+
+<!-- SEG:m66374:item:fs-id1630954-item-4 -->
+from an area with a low concentration of water to higher concentration
+
 <!-- SEG:m66374:solution:fs-id2318249 -->
 C
 
 <!-- SEG:m66374:problem:fs-id1768946 -->
 The principal force driving movement in diffusion is the __________.
+
+<!-- SEG:m66374:item:fs-id1962149-item-1 -->
+temperature
+
+<!-- SEG:m66374:item:fs-id1962149-item-2 -->
+particle size
+
+<!-- SEG:m66374:item:fs-id1962149-item-3 -->
+concentration gradient
+
+<!-- SEG:m66374:item:fs-id1962149-item-4 -->
+membrane surface area
 
 <!-- SEG:m66374:solution:fs-id2025284 -->
 C
@@ -238,11 +262,35 @@ C
 <!-- SEG:m66374:problem:fs-id1684704 -->
 What problem is faced by organisms that live in fresh water?
 
+<!-- SEG:m66374:item:fs-id1236812-item-1 -->
+Their bodies tend to take in too much water.
+
+<!-- SEG:m66374:item:fs-id1236812-item-2 -->
+They have no way of controlling their tonicity.
+
+<!-- SEG:m66374:item:fs-id1236812-item-3 -->
+Only salt water poses problems for animals that live in it.
+
+<!-- SEG:m66374:item:fs-id1236812-item-4 -->
+Their bodies tend to lose too much water to their environment.
+
 <!-- SEG:m66374:solution:fs-id1432538 -->
 A
 
 <!-- SEG:m66374:problem:fs-idm74380432 -->
 In which situation would passive transport [[b:not]] use a transport protein for entry into a cell?
+
+<!-- SEG:m66374:item:fs-idm67922771-item-1 -->
+water flowing into a hypertonic environment
+
+<!-- SEG:m66374:item:fs-idm67922771-item-2 -->
+glucose being absorbed from the blood
+
+<!-- SEG:m66374:item:fs-idm67922771-item-3 -->
+an ion flowing into a nerve cell to create an electrical potential
+
+<!-- SEG:m66374:item:fs-idm67922771-item-4 -->
+oxygen moving into a cell after oxygen deprivation
 
 <!-- SEG:m66374:solution:fs-idm200102081 -->
 D

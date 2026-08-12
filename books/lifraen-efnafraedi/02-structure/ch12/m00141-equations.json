@@ -1,0 +1,62 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>≡C–H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{≡C–H}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡N}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>≡C</m:mtext><m:mo>–</m:mo><m:mtext>H</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{≡C}–\\text{H}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡N}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C≡C}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;O}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;N}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C&#x2550;C}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>OH</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{H}}_{2}\\text{C&#x2550;}{{\\text{CHCH}}}_{2}\\text{OH}}"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "report": [
+    {
+      "mod": "m00033",
+      "run": 1,
+      "textSha": "daee6ee5a5d4",
+      "invented": 9,
+      "types": [
+        "sameind",
+        "efnasamband",
+        "lífrænn",
+        "hverfa",
+        "efnatengi",
+        "nitur"
+      ],
+      "mismatches": 0,
+      "bracketDelta": {}
+    },
+    {
+      "mod": "m00033",
+      "run": 2,
+      "textSha": "c95f81546c6f",
+      "invented": 9,
+      "types": [
+        "sameind",
+        "efnasamband",
+        "lífrænn",
+        "hverfa",
+        "efnatengi",
+        "nitur"
+      ],
+      "mismatches": 0,
+      "bracketDelta": {}
+    },
+    {
+      "mod": "m00033",
+      "run": 3,
+      "textSha": "f474e09b5cd1",
+      "invented": 9,
+      "types": [
+        "sameind",
+        "efnasamband",
+        "lífrænn",
+        "hverfa",
+        "efnatengi",
+        "nitur"
+      ],
+      "mismatches": 0,
+      "bracketDelta": {}
+    },
+    {
+      "mod": "m00034",
+      "run": 1,
+      "textSha": "f0a9342c8040",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "bracketDelta": {}
+    }
+  ],
+  "usage": {
+    "totalChars": 22033,
+    "totalCost": 220.33,
+    "requestCount": 4,
+    "failedCount": 0,
+    "startTime": 1786557284098,
+    "elapsedMs": 102574,
+    "estimatedISK": 220.33
+  }
+}

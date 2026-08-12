@@ -2,7 +2,7 @@
 Extended Topic: The Four Basic Forces—An Introduction
 
 <!-- SEG:m42137:para:import-auto-id1910048 -->
-One of the most remarkable simplifications in physics is that only four distinct forces account for all known phenomena. In fact, nearly all of the forces we experience directly are due to only one basic force, called the electromagnetic force. (The gravitational force is the only force we experience directly that is not electromagnetic.) This is a tremendous simplification of the myriad of [[i:apparently]] different forces we can list, only a few of which were discussed in the previous section. As we will see, the basic forces are all thought to act through the exchange of microscopic carrier particles, and the characteristics of the basic forces are determined by the types of particles exchanged. Action at a distance, such as the gravitational force of Earth on the Moon, is explained by the existence of a {{term}}force field{{/term}} rather than by “physical contact.”
+One of the most remarkable simplifications in physics is that only four distinct forces account for all known phenomena. In fact, nearly all of the forces we experience directly are due to only one basic force, called the electromagnetic force. (The gravitational force is the only force we experience directly that is not electromagnetic.) This is a tremendous simplification of the myriad of [[i:apparently]] different forces we can list, only a few of which were discussed in the previous section. As we will see, the basic forces are all thought to act through the exchange of microscopic carrier particles, and the characteristics of the basic forces are determined by the types of particles exchanged. Action at a distance, such as the gravitational force of Earth on the Moon, is explained by the existence of a [[term:force field|import-auto-id2990636]] rather than by “physical contact.”
 
 <!-- SEG:m42137:para:import-auto-id1447177 -->
 The [[i:four basic forces]] are the gravitational force, the electromagnetic force, the weak nuclear force, and the strong nuclear force. Their properties are summarized in [[xref:import-auto-id1588108]]. Since the weak and strong nuclear forces act over an extremely short range, the size of a nucleus or less, we do not experience them directly, although they are crucial to the very structure of matter. These forces determine which nuclei are stable and which decay, and they are the basis of the release of energy in certain nuclear reactions. Nuclear forces determine not only the stability of nuclei, but also the relative abundance of elements in nature. The properties of the nucleus of an atom determine the number of electrons it has and, thus, indirectly determine the chemistry of the atom. More will be said of all of these topics in later chapters.
@@ -119,7 +119,7 @@ Understand the four basic forces that underlie the processes in nature.
 Action at a Distance: Concept of a Field
 
 <!-- SEG:m42137:para:import-auto-id3402339 -->
-All forces act at a distance. This is obvious for the gravitational force. Earth and the Moon, for example, interact without coming into contact. It is also true for all other forces. Friction, for example, is an electromagnetic force between atoms that may not actually touch. What is it that carries forces between objects? One way to answer this question is to imagine that a {{term}}force field{{/term}} surrounds whatever object creates the force. A second object (often called a [[i:test object]]) placed in this field will experience a force that is a function of location and other variables. The field itself is the “thing” that carries the force from one object to another. The field is defined so as to be a characteristic of the object creating it; the field does not depend on the test object placed in it. Earth’s gravitational field, for example, is a function of the mass of Earth and the distance from its center, independent of the presence of other masses. The concept of a field is useful because equations can be written for force fields surrounding objects (for gravity, this yields [[MATH:11]] at Earth’s surface), and motions can be calculated from these equations. (See [[xref:import-auto-id1577565]].)
+All forces act at a distance. This is obvious for the gravitational force. Earth and the Moon, for example, interact without coming into contact. It is also true for all other forces. Friction, for example, is an electromagnetic force between atoms that may not actually touch. What is it that carries forces between objects? One way to answer this question is to imagine that a [[term:force field|import-auto-id3093199]] surrounds whatever object creates the force. A second object (often called a [[i:test object]]) placed in this field will experience a force that is a function of location and other variables. The field itself is the “thing” that carries the force from one object to another. The field is defined so as to be a characteristic of the object creating it; the field does not depend on the test object placed in it. Earth’s gravitational field, for example, is a function of the mass of Earth and the distance from its center, independent of the presence of other masses. The concept of a field is useful because equations can be written for force fields surrounding objects (for gravity, this yields [[MATH:11]] at Earth’s surface), and motions can be calculated from these equations. (See [[xref:import-auto-id1577565]].)
 
 <!-- SEG:m42137:caption:import-auto-id1577565-caption -->
 The electric force field between a positively charged particle and a negatively charged particle. When a positive test charge is placed in the field, the charge will experience a force in the direction of the force field lines.
@@ -137,7 +137,7 @@ The field concept has been applied very successfully; we can calculate motions a
 The exchange of masses resulting in repulsive forces. (a) The person throwing the basketball exerts a force [[MATH:12]] on it toward the other person and feels a reaction force [[MATH:13]] away from the second person. (b) The person catching the basketball exerts a force [[MATH:14]] on it to stop the ball and feels a reaction force [[MATH:15]] away from the first person. (c) The analogous exchange of a meson between a proton and a neutron carries the strong nuclear forces [[MATH:16]] and [[MATH:17]] between them. An attractive force can also be exerted by the exchange of a mass—if person 2 pulled the basketball away from the first person as he tried to retain it, then the force between them would be attractive.
 
 <!-- SEG:m42137:para:import-auto-id2578623 -->
-This idea of particle exchange deepens rather than contradicts field concepts. It is more satisfying philosophically to think of something physical actually moving between objects acting at a distance. [[xref:import-auto-id1588108]] lists the exchange or {{term}}carrier particles{{/term}}, both observed and proposed, that carry the four forces. But the real fruit of the particle-exchange proposal is that searches for Yukawa’s proposed particle found it [[i:and]] a number of others that were completely unexpected, stimulating yet more research. All of this research eventually led to the proposal of quarks as the underlying substructure of matter, which is a basic tenet of GUTs. If successful, these theories will explain not only forces, but also the structure of matter itself. Yet physics is an experimental science, so the test of these theories must lie in the domain of the real world. As of this writing, scientists at the CERN laboratory in Switzerland are starting to test these theories using the world’s largest particle accelerator: the Large Hadron Collider. This accelerator (27 km in circumference) allows two high-energy proton beams, traveling in opposite directions, to collide. An energy of 14 trillion electron volts will be available. It is anticipated that some new particles, possibly force carrier particles, will be found. (See [[xref:import-auto-id2658974]].) One of the force carriers of high interest that researchers hope to detect is the Higgs boson. The observation of its properties might tell us why different particles have different masses.
+This idea of particle exchange deepens rather than contradicts field concepts. It is more satisfying philosophically to think of something physical actually moving between objects acting at a distance. [[xref:import-auto-id1588108]] lists the exchange or [[term:carrier particles|import-auto-id1561662]], both observed and proposed, that carry the four forces. But the real fruit of the particle-exchange proposal is that searches for Yukawa’s proposed particle found it [[i:and]] a number of others that were completely unexpected, stimulating yet more research. All of this research eventually led to the proposal of quarks as the underlying substructure of matter, which is a basic tenet of GUTs. If successful, these theories will explain not only forces, but also the structure of matter itself. Yet physics is an experimental science, so the test of these theories must lie in the domain of the real world. As of this writing, scientists at the CERN laboratory in Switzerland are starting to test these theories using the world’s largest particle accelerator: the Large Hadron Collider. This accelerator (27 km in circumference) allows two high-energy proton beams, traveling in opposite directions, to collide. An energy of 14 trillion electron volts will be available. It is anticipated that some new particles, possibly force carrier particles, will be found. (See [[xref:import-auto-id2658974]].) One of the force carriers of high interest that researchers hope to detect is the Higgs boson. The observation of its properties might tell us why different particles have different masses.
 
 <!-- SEG:m42137:caption:import-auto-id2658974-caption -->
 The world’s largest particle accelerator spans the border between Switzerland and France. Two beams, traveling in opposite directions close to the speed of light, collide in a tube similar to the central tube shown here. External magnets determine the beam’s path. Special detectors will analyze particles created in these collisions. Questions as broad as what is the origin of mass and what was matter like the first few seconds of our universe will be explored. This accelerator began preliminary operation in 2008. (credit: Frank Hommes)
@@ -166,6 +166,18 @@ Test Prep for AP Courses
 <!-- SEG:m42137:problem:fs-id1681985 -->
 Which phenomenon correctly describes the direction and magnitude of normal forces?
 
+<!-- SEG:m42137:item:fs-id1310333-item-1 -->
+electromagnetic attraction
+
+<!-- SEG:m42137:item:fs-id1310333-item-2 -->
+electromagnetic repulsion
+
+<!-- SEG:m42137:item:fs-id1310333-item-3 -->
+gravitational attraction
+
+<!-- SEG:m42137:item:fs-id1310333-item-4 -->
+gravitational repulsion
+
 <!-- SEG:m42137:solution:fs-id1653114 -->
 (b)
 
@@ -178,6 +190,18 @@ This outcome is due to electromagnetic repulsion between the electrons in atoms.
 <!-- SEG:m42137:problem:fs-id1263485 -->
 Which of the basic forces best explains tension in a rope being pulled between two people? Is the acting force causing attraction or repulsion in this instance?
 
+<!-- SEG:m42137:item:fs-id1262926-item-1 -->
+gravity; attraction
+
+<!-- SEG:m42137:item:fs-id1262926-item-2 -->
+electromagnetic; attraction
+
+<!-- SEG:m42137:item:fs-id1262926-item-3 -->
+weak and strong nuclear; attraction
+
+<!-- SEG:m42137:item:fs-id1262926-item-4 -->
+weak and strong nuclear; repulsion
+
 <!-- SEG:m42137:solution:fs-id1675802 -->
 (b)
 
@@ -189,6 +213,18 @@ The outer layers of electrons in the atoms of both an object and the surface wit
 
 <!-- SEG:m42137:problem:fs-id1475089 -->
 The gravitational force is the weakest of the four basic forces. In which case can the electromagnetic, strong, and weak forces be ignored because the gravitational force is so strongly dominant?
+
+<!-- SEG:m42137:item:fs-id1445696-item-1 -->
+a person jumping on a trampoline
+
+<!-- SEG:m42137:item:fs-id1445696-item-2 -->
+a rocket blasting off from Earth
+
+<!-- SEG:m42137:item:fs-id1445696-item-3 -->
+a log rolling down a hill
+
+<!-- SEG:m42137:item:fs-id1445696-item-4 -->
+all of the above
 
 <!-- SEG:m42137:solution:fs-id1653022 -->
 (d)

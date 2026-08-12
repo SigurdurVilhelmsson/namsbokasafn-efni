@@ -140,6 +140,31 @@
                 "type": "para",
                 "id": "fs-id1681906",
                 "segmentId": "m42076:problem:fs-id1681906"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1650867",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1650867-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1650867-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1650867-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1650867-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -162,6 +187,31 @@
                 "type": "para",
                 "id": "fs-id1687824",
                 "segmentId": "m42076:problem:fs-id1687824"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1639217",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1639217-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1639217-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1639217-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1639217-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -184,6 +234,31 @@
                 "type": "para",
                 "id": "fs-id1658020",
                 "segmentId": "m42076:problem:fs-id1658020"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1660968",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1660968-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1660968-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1660968-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1660968-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -324,6 +399,31 @@
           },
           "solution": {
             "content": [
+              {
+                "type": "list",
+                "id": "fs-id1746594",
+                "listType": "enumerated",
+                "numberStyle": "arabic",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1746594-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1746594-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1746594-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1746594-item-4"
+                  }
+                ]
+              },
               {
                 "type": "para",
                 "id": "import-auto-id2378459",
@@ -519,6 +619,31 @@
           "solution": {
             "content": [
               {
+                "type": "list",
+                "id": "fs-id1394979",
+                "listType": "enumerated",
+                "numberStyle": "arabic",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1394979-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1394979-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1394979-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42076:item:fs-id1394979-item-4"
+                  }
+                ]
+              },
+              {
                 "type": "para",
                 "id": "import-auto-id1272211",
                 "segmentId": "m42076:solution:import-auto-id1272211"
@@ -637,6 +762,30 @@
           "solution": null
         }
       ]
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "import-auto-id1382796",
+      "class": null,
+      "alt": "Two forces are acting on an object of mass m: F, shown by an arrow pointing upward, and its weight w, shown by an arrow pointing downward. Acceleration a is represented by a vector arrow pointing upward. The figure depicts the forces acting on a high jumper.",
+      "src": "../../media/Figure_04_06_03.jpg",
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "import-auto-id2335592",
+      "class": null,
+      "alt": "A horizontal dotted line with two vectors extending downward from the mid-point of the dotted line, both at angles of fifteen degrees. A third vector points straight downward from the intersection of the first two angles, bisecting them; it is perpendicular to the dotted line.",
+      "src": "../../media/Figure_04_06_06.jpg",
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
   "sectionOrder": 6

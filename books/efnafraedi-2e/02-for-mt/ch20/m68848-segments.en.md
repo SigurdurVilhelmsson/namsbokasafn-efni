@@ -14,7 +14,7 @@ Another class of organic molecules contains a carbon atom connected to an oxygen
 Aldehydes and Ketones
 
 <!-- SEG:m68848:para:fs-idp50721744 -->
-Both {{term}}aldehydes{{/term}} and {{term}}ketones{{/term}} contain a {{term}}carbonyl group{{/term}}, a functional group with a carbon-oxygen double bond. The names for aldehyde and ketone compounds are derived using similar nomenclature rules as for alkanes and alcohols, and include the class-identifying suffixes [[i:-al]] and [[i:-one]], respectively:
+Both [[term:aldehydes|term-00001]] and [[term:ketones|term-00002]] contain a [[term:carbonyl group|term-00003]], a functional group with a carbon-oxygen double bond. The names for aldehyde and ketone compounds are derived using similar nomenclature rules as for alkanes and alcohols, and include the class-identifying suffixes [[i:-al]] and [[i:-one]], respectively:
 
 <!-- SEG:m68848:para:fs-idp87077168 -->
 In an aldehyde, the carbonyl group is bonded to at least one hydrogen atom. In a ketone, the carbonyl group is bonded to two carbon atoms:
@@ -92,7 +92,7 @@ The odor of vinegar is caused by the presence of acetic acid, a carboxylic acid,
 Esters are responsible for the odors associated with various plants and their fruits.
 
 <!-- SEG:m68848:para:fs-idp44521216 -->
-Both {{term}}carboxylic acids{{/term}} and {{term}}esters{{/term}} contain a carbonyl group with a second oxygen atom bonded to the carbon atom in the carbonyl group by a single bond. In a carboxylic acid, the second oxygen atom also bonds to a hydrogen atom. In an ester, the second oxygen atom bonds to another carbon atom. The names for carboxylic acids and esters include prefixes that denote the lengths of the carbon chains in the molecules and are derived following nomenclature rules similar to those for inorganic acids and salts (see these examples):
+Both [[term:carboxylic acids|term-00004]] and [[term:esters|term-00005]] contain a carbonyl group with a second oxygen atom bonded to the carbon atom in the carbonyl group by a single bond. In a carboxylic acid, the second oxygen atom also bonds to a hydrogen atom. In an ester, the second oxygen atom bonds to another carbon atom. The names for carboxylic acids and esters include prefixes that denote the lengths of the carbon chains in the molecules and are derived following nomenclature rules similar to those for inorganic acids and salts (see these examples):
 
 <!-- SEG:m68848:para:fs-idp7408 -->
 The functional groups for an acid and for an ester are shown in red in these formulas.

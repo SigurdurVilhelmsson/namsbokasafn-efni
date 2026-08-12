@@ -1,0 +1,11 @@
+{
+  "track": "mt-preview",
+  "generatedBy": "cnxml-inject.js",
+  "summary": {
+    "modulesWithResidue": 0,
+    "exactResidues": 0,
+    "ratioWarnings": 0,
+    "toleratedResidues": 0
+  },
+  "modules": {}
+}

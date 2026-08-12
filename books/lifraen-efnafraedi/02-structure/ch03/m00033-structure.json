@@ -768,8 +768,11 @@
       "class": null,
       "alt": "The formation of two isomers with the formula C2H7N from three individual components. The components used are 2 carbon, 7 hydrogen, and 1 nitrogen.",
       "src": "../../media/OChem_03_02_006.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 2
 }

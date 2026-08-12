@@ -319,8 +319,14 @@ function discoverChapters(bookDir) {
 export function readChapterFromDisk(bookDir, chapter, track) {
   const chDir = formatChapterDir(chapter);
   const cnxmlDir = path.join(bookDir, '03-translated', track, chDir);
-  // 05-publication uses numeric chapter dirs (chapters/14), not ch14
-  const numericCh = chapter === 'appendices' ? 'appendices' : String(chapter);
+  // 05-publication uses numeric chapter dirs (chapters/14), not ch14 — and they are
+  // ZERO-PADDED (chapters/04). CHAPTER_OPTION parses --chapter to a NUMBER, so both
+  // `--chapter 4` and `--chapter 04` arrive here as 4; without padStart this read 0
+  // HTML files for every single-digit chapter and the tool reported "Total findings:
+  // 0", which is indistinguishable from a clean chapter. Measured 2026-08-12:
+  // chemistry publishes ch00-ch21 but its committed baseline held only 10-21.
+  // See CLAUDE.md § "TWO on-disk chapter-dir conventions".
+  const numericCh = chapter === 'appendices' ? 'appendices' : String(chapter).padStart(2, '0');
   const htmlDir = path.join(bookDir, '05-publication', track, 'chapters', numericCh);
 
   const cnxml = fs.existsSync(cnxmlDir)

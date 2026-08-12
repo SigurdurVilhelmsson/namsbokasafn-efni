@@ -23,7 +23,7 @@ Step 1. As usual, it is first necessary to identify the physical principles invo
 (a) A sketch of Tarzan hanging from a vine. (b) Arrows are used to represent all forces. [[MATH:1]] is the tension in the vine above Tarzan, [[MATH:2]] is the force he exerts on the vine, and [[MATH:3]] is his weight. All other forces, such as the nudge of a breeze, are assumed negligible. (c) Suppose we are given the ape man’s mass and asked to find the tension in the vine. We then define the system of interest as shown and draw a free-body diagram. [[MATH:4]] is no longer shown, because it is not a force acting on the system of interest; rather, [[MATH:5]] acts on the outside world. (d) Showing only the arrows, the head-to-tail method of addition is used. It is apparent that [[MATH:6]], if Tarzan is stationary.
 
 <!-- SEG:m42076:para:eip-id1164942318757 -->
-Step 2. Identify what needs to be determined and what is known or can be inferred from the problem as stated. That is, make a list of knowns and unknowns. [[i:Then carefully determine the system of interest]]. This decision is a crucial step, since Newton’s second law involves only external forces. Once the system of interest has been identified, it becomes possible to determine which forces are external and which are internal, a necessary step to employ Newton’s second law. (See [[xref:import-auto-id1669409]](c).) Newton’s third law may be used to identify whether forces are exerted between components of a system (internal) or between the system and something outside (external). As illustrated earlier in this chapter, the system of interest depends on what question we need to answer. This choice becomes easier with practice, eventually developing into an almost unconscious process. Skill in clearly defining systems will be beneficial in later chapters as well. [[BR]][[BR]]A diagram showing the system of interest and all of the external forces is called a {{term}}free-body diagram{{/term}}. Only forces are shown on free-body diagrams, not acceleration or velocity. We have drawn several of these in worked examples. [[xref:import-auto-id1669409]](c) shows a free-body diagram for the system of interest. Note that no internal forces are shown in a free-body diagram.
+Step 2. Identify what needs to be determined and what is known or can be inferred from the problem as stated. That is, make a list of knowns and unknowns. [[i:Then carefully determine the system of interest]]. This decision is a crucial step, since Newton’s second law involves only external forces. Once the system of interest has been identified, it becomes possible to determine which forces are external and which are internal, a necessary step to employ Newton’s second law. (See [[xref:import-auto-id1669409]](c).) Newton’s third law may be used to identify whether forces are exerted between components of a system (internal) or between the system and something outside (external). As illustrated earlier in this chapter, the system of interest depends on what question we need to answer. This choice becomes easier with practice, eventually developing into an almost unconscious process. Skill in clearly defining systems will be beneficial in later chapters as well. [[BR]][[BR]]A diagram showing the system of interest and all of the external forces is called a [[term:free-body diagram|import-auto-id1606094]]. Only forces are shown on free-body diagrams, not acceleration or velocity. We have drawn several of these in worked examples. [[xref:import-auto-id1669409]](c) shows a free-body diagram for the system of interest. Note that no internal forces are shown in a free-body diagram.
 
 <!-- SEG:m42076:para:eip-id1164949480434 -->
 Step 3. Once a free-body diagram is drawn, [[i:Newton’s second law can be applied to solve the problem]]. This is done in [[xref:import-auto-id1669409]](d) for a particular situation. In general, once external forces are clearly identified in free-body diagrams, it should be a straightforward task to put them into equation form and solve for the unknown, as done in all previous examples. If the problem is one-dimensional—that is, if all forces are parallel—then they add like scalars. If the problem is two-dimensional, then it must be broken down into a pair of one-dimensional problems. This is done by projecting the force vectors onto a set of axes chosen for convenience. As seen in previous examples, the choice of axes can simplify the problem. For example, when an incline is involved, a set of axes with one axis parallel to the incline and one perpendicular to it is most convenient. It is almost always convenient to make one axis parallel to the direction of motion, if this is known.
@@ -55,17 +55,53 @@ Test Prep for AP Courses
 <!-- SEG:m42076:problem:fs-id1681906 -->
 A toboggan with two riders has a total mass of 85.0 kg. A third person is pushing with a force of 42.5 N in the direction of motion on a toboggan moving on a sloped surface at the top of a hill that has a downward angle of 15°. The force of friction on the toboggan is 31.0 N. Which statement describes an accurate free-body diagram to represent the situation?
 
+<!-- SEG:m42076:item:fs-id1650867-item-1 -->
+An arrow of magnitude 10.5 N points down the slope of the hill.
+
+<!-- SEG:m42076:item:fs-id1650867-item-2 -->
+An arrow of magnitude 833 N points straight down.
+
+<!-- SEG:m42076:item:fs-id1650867-item-3 -->
+An arrow of magnitude 833 N points perpendicular to the slope of the hill.
+
+<!-- SEG:m42076:item:fs-id1650867-item-4 -->
+An arrow of magnitude 73.5 N points down the slope of the hill.
+
 <!-- SEG:m42076:solution:fs-id1435421 -->
 (b)
 
 <!-- SEG:m42076:problem:fs-id1687824 -->
 A mass of 2.0 kg is suspended from the ceiling of an elevator by a rope. What is the tension in the rope when the elevator (i) accelerates upward at 1.5 m/s[[sup:2]]? (ii) accelerates downward at 1.5 m/s[[sup:2]]?
 
+<!-- SEG:m42076:item:fs-id1639217-item-1 -->
+(i) 22.6 N; (ii) 16.6 N
+
+<!-- SEG:m42076:item:fs-id1639217-item-2 -->
+Because the mass is hanging from the elevator itself, the tension in the rope will not change in either case.
+
+<!-- SEG:m42076:item:fs-id1639217-item-3 -->
+(i) 22.6 N; (ii) 19.6 N
+
+<!-- SEG:m42076:item:fs-id1639217-item-4 -->
+(i) 16.6 N; (ii) 19.6 N
+
 <!-- SEG:m42076:solution:fs-id2158762 -->
 (a)
 
 <!-- SEG:m42076:problem:fs-id1658020 -->
 Which statement is true about drawing free-body diagrams?
+
+<!-- SEG:m42076:item:fs-id1660968-item-1 -->
+Drawing a free-body diagram should be the last step in solving a problem about forces.
+
+<!-- SEG:m42076:item:fs-id1660968-item-2 -->
+Drawing a free-body diagram helps you compare forces quantitatively.
+
+<!-- SEG:m42076:item:fs-id1660968-item-3 -->
+The forces in a free-body diagram should always balance.
+
+<!-- SEG:m42076:item:fs-id1660968-item-4 -->
+Drawing a free-body diagram can help you determine the net force.
 
 <!-- SEG:m42076:solution:fs-id946017 -->
 (d)
@@ -112,44 +148,56 @@ The wheels of a midsize car exert a force of 2100 N backward on the road to acce
 <!-- SEG:m42076:problem:import-auto-id2127634 -->
 Calculate the force a 70.0-kg high jumper must exert on the ground to produce an upward acceleration 4.00 times the acceleration due to gravity. Explicitly show how you follow the steps in the Problem-Solving Strategy for Newton’s laws of motion.
 
+<!-- SEG:m42076:item:fs-id1746594-item-1 -->
+Use Newton’s laws of motion. [[MEDIA:1]]
+
+<!-- SEG:m42076:item:fs-id1746594-item-2 -->
+Given : [[MATH:19]][[MATH:20]], Find: [[MATH:21]].
+
+<!-- SEG:m42076:item:fs-id1746594-item-3 -->
+[[MATH:22]][[MATH:23]][[MATH:24]] so that [[MATH:25]]. [[MATH:26]][[MATH:27]]. The force exerted by the high-jumper is actually down on the ground, but [[MATH:28]] is up from the ground and makes him jump.
+
+<!-- SEG:m42076:item:fs-id1746594-item-4 -->
+This result is reasonable, since it is quite possible for a person to exert a force of the magnitude of [[MATH:29]].
+
 <!-- SEG:m42076:solution:import-auto-id2378459 -->
-Find: [[MATH:19]].
+Find: [[MATH:30]].
 
 <!-- SEG:m42076:solution:import-auto-id2033223 -->
-[[MATH:20]][[MATH:21]]. The force exerted by the high-jumper is actually down on the ground, but [[MATH:22]] is up from the ground and makes him jump.
+[[MATH:31]][[MATH:32]]. The force exerted by the high-jumper is actually down on the ground, but [[MATH:33]] is up from the ground and makes him jump.
 
 <!-- SEG:m42076:problem:import-auto-id2337831 -->
 When landing after a spectacular somersault, a 40.0-kg gymnast decelerates by pushing straight down on the mat. Calculate the force she must exert if her deceleration is 7.00 times the acceleration due to gravity. Explicitly show how you follow the steps in the Problem-Solving Strategy for Newton’s laws of motion.
 
 <!-- SEG:m42076:problem:import-auto-id2310982 -->
-A freight train consists of two [[MATH:23]] engines and 45 cars with average masses of [[MATH:24]] . (a) What force must each engine exert backward on the track to accelerate the train at a rate of [[MATH:25]] if the force of friction is [[MATH:26]], assuming the engines exert identical forces? This is not a large frictional force for such a massive system. Rolling friction for trains is small, and consequently trains are very energy-efficient transportation systems. (b) What is the force in the coupling between the 37th and 38th cars (this is the force each exerts on the other), assuming all cars have the same mass and that friction is evenly distributed among all of the cars and engines?
+A freight train consists of two [[MATH:34]] engines and 45 cars with average masses of [[MATH:35]] . (a) What force must each engine exert backward on the track to accelerate the train at a rate of [[MATH:36]] if the force of friction is [[MATH:37]], assuming the engines exert identical forces? This is not a large frictional force for such a massive system. Rolling friction for trains is small, and consequently trains are very energy-efficient transportation systems. (b) What is the force in the coupling between the 37th and 38th cars (this is the force each exerts on the other), assuming all cars have the same mass and that friction is evenly distributed among all of the cars and engines?
 
 <!-- SEG:m42076:solution:import-auto-id953713 -->
-(a) [[MATH:27]]
+(a) [[MATH:38]]
 
 <!-- SEG:m42076:solution:import-auto-id1550695 -->
-(b) [[MATH:28]]
+(b) [[MATH:39]]
 
 <!-- SEG:m42076:problem:import-auto-id2096990 -->
-Commercial airplanes are sometimes pushed out of the passenger loading area by a tractor. (a) An 1800-kg tractor exerts a force of [[MATH:29]] backward on the pavement, and the system experiences forces resisting motion that total 2400 N. If the acceleration is [[MATH:30]], what is the mass of the airplane? (b) Calculate the force exerted by the tractor on the airplane, assuming 2200 N of the friction is experienced by the airplane. (c) Draw two sketches showing the systems of interest used to solve each part, including the free-body diagrams for each.
+Commercial airplanes are sometimes pushed out of the passenger loading area by a tractor. (a) An 1800-kg tractor exerts a force of [[MATH:40]] backward on the pavement, and the system experiences forces resisting motion that total 2400 N. If the acceleration is [[MATH:41]], what is the mass of the airplane? (b) Calculate the force exerted by the tractor on the airplane, assuming 2200 N of the friction is experienced by the airplane. (c) Draw two sketches showing the systems of interest used to solve each part, including the free-body diagrams for each.
 
 <!-- SEG:m42076:problem:import-auto-id1458235 -->
-A 1100-kg car pulls a boat on a trailer. (a) What total force resists the motion of the car, boat, and trailer, if the car exerts a 1900-N force on the road and produces an acceleration of [[MATH:31]]? The mass of the boat plus trailer is 700 kg. (b) What is the force in the hitch between the car and the trailer if 80% of the resisting forces are experienced by the boat and trailer?
+A 1100-kg car pulls a boat on a trailer. (a) What total force resists the motion of the car, boat, and trailer, if the car exerts a 1900-N force on the road and produces an acceleration of [[MATH:42]]? The mass of the boat plus trailer is 700 kg. (b) What is the force in the hitch between the car and the trailer if 80% of the resisting forces are experienced by the boat and trailer?
 
 <!-- SEG:m42076:solution:import-auto-id1559426 -->
-(a) [[MATH:32]]
+(a) [[MATH:43]]
 
 <!-- SEG:m42076:solution:import-auto-id1309096 -->
-(b) [[MATH:33]]
+(b) [[MATH:44]]
 
 <!-- SEG:m42076:problem:import-auto-id2189594 -->
-(a) Find the magnitudes of the forces [[MATH:34]] and [[MATH:35]] that add to give the total force [[MATH:36]] shown in [[xref:import-auto-id2639094]]. This may be done either graphically or by using trigonometry. (b) Show graphically that the same total force is obtained independent of the order of addition of [[MATH:37]] and [[MATH:38]]. (c) Find the direction and magnitude of some other pair of vectors that add to give [[MATH:39]]. Draw these to scale on the same drawing used in part (b) or a similar picture.
+(a) Find the magnitudes of the forces [[MATH:45]] and [[MATH:46]] that add to give the total force [[MATH:47]] shown in [[xref:import-auto-id2639094]]. This may be done either graphically or by using trigonometry. (b) Show graphically that the same total force is obtained independent of the order of addition of [[MATH:48]] and [[MATH:49]]. (c) Find the direction and magnitude of some other pair of vectors that add to give [[MATH:50]]. Draw these to scale on the same drawing used in part (b) or a similar picture.
 
 <!-- SEG:m42076:problem:import-auto-id2840346 -->
-Two children pull a third child on a snow saucer sled exerting forces [[MATH:40]] and [[MATH:41]] as shown from above in [[xref:import-auto-id1789737]]. Find the acceleration of the 49.00-kg sled and child system. Note that the direction of the frictional force is unspecified; it will be in the opposite direction of the sum of [[MATH:42]] and [[MATH:43]].
+Two children pull a third child on a snow saucer sled exerting forces [[MATH:51]] and [[MATH:52]] as shown from above in [[xref:import-auto-id1789737]]. Find the acceleration of the 49.00-kg sled and child system. Note that the direction of the frictional force is unspecified; it will be in the opposite direction of the sum of [[MATH:53]] and [[MATH:54]].
 
 <!-- SEG:m42076:solution:eip-id2093803 -->
-[[MATH:44]], [[MATH:45]] north of east
+[[MATH:55]], [[MATH:56]] north of east
 
 <!-- SEG:m42076:caption:import-auto-id1789737-caption -->
 An overhead view of the horizontal forces acting on a child’s snow saucer sled.
@@ -160,11 +208,23 @@ Suppose your car was mired deeply in the mud and you wanted to use the method il
 <!-- SEG:m42076:problem:import-auto-id1323508 -->
 What force is exerted on the tooth in [[xref:import-auto-id1569692]] if the tension in the wire is 25.0 N? Note that the force applied to the tooth is smaller than the tension in the wire, but this is necessitated by practical considerations of how force can be applied in the mouth. Explicitly show how you follow steps in the Problem-Solving Strategy for Newton’s laws of motion.
 
+<!-- SEG:m42076:item:fs-id1394979-item-1 -->
+Use Newton’s laws since we are looking for forces.
+
+<!-- SEG:m42076:item:fs-id1394979-item-2 -->
+Draw a free-body diagram: [[MEDIA:2]]
+
+<!-- SEG:m42076:item:fs-id1394979-item-3 -->
+The tension is given as [[MATH:57]] Find [[MATH:58]] Using Newton’s laws gives: [[MATH:59]] so that applied force is due to the [[i:y]]-components of the two tensions: [[MATH:60]] The [[i:x]]-components of the tension cancel. [[MATH:61]].
+
+<!-- SEG:m42076:item:fs-id1394979-item-4 -->
+This seems reasonable, since the applied tensions should be greater than the force applied to the tooth.
+
 <!-- SEG:m42076:solution:import-auto-id1272211 -->
-The [[i:x]]-components of the tension cancel. [[MATH:46]].
+The [[i:x]]-components of the tension cancel. [[MATH:62]].
 
 <!-- SEG:m42076:caption:import-auto-id1569692-caption -->
-Braces are used to apply forces to teeth to realign them. Shown in this figure are the tensions applied by the wire to the protruding tooth. The total force applied to the tooth by the wire, [[MATH:47]], points straight toward the back of the mouth.
+Braces are used to apply forces to teeth to realign them. Shown in this figure are the tensions applied by the wire to the protruding tooth. The total force applied to the tooth by the wire, [[MATH:63]], points straight toward the back of the mouth.
 
 <!-- SEG:m42076:problem:import-auto-id1687201 -->
 [[xref:import-auto-id1655793]] shows Superhero and Trusty Sidekick hanging motionless from a rope. Superhero’s mass is 90.0 kg, while Trusty Sidekick’s is 55.0 kg, and the mass of the rope is negligible. (a) Draw a free-body diagram of the situation showing all forces acting on Superhero, Trusty Sidekick, and the rope. (b) Find the tension in the rope above Superhero. (c) Find the tension in the rope between Superhero and Trusty Sidekick. Indicate on your free-body diagram the system of interest used to solve each part.
@@ -173,7 +233,7 @@ Braces are used to apply forces to teeth to realign them. Shown in this figure a
 Superhero and Trusty Sidekick hang motionless on a rope as they try to figure out what to do next. Will the tension be the same everywhere in the rope?
 
 <!-- SEG:m42076:problem:import-auto-id1776191 -->
-A nurse pushes a cart by exerting a force on the handle at a downward angle [[MATH:48]] below the horizontal. The loaded cart has a mass of 28.0 kg, and the force of friction is 60.0 N. (a) Draw a free-body diagram for the system of interest. (b) What force must the nurse exert to move at a constant velocity?
+A nurse pushes a cart by exerting a force on the handle at a downward angle [[MATH:64]] below the horizontal. The loaded cart has a mass of 28.0 kg, and the force of friction is 60.0 N. (a) Draw a free-body diagram for the system of interest. (b) What force must the nurse exert to move at a constant velocity?
 
 <!-- SEG:m42076:problem:import-auto-id2335706 -->
 Construct Your Own Problem Consider the tension in an elevator cable during the time the elevator starts from rest and accelerates its load upward to some cruising velocity. Taking the elevator and its load to be the system of interest, draw a free-body diagram. Then calculate the tension in the cable. Among the things to consider are the mass of the elevator and its load, the final velocity, and the time taken to reach that velocity.
@@ -182,7 +242,7 @@ Construct Your Own Problem Consider the tension in an elevator cable during the 
 Construct Your Own Problem Consider two people pushing a toboggan with four children on it up a snow-covered slope. Construct a problem in which you calculate the acceleration of the toboggan and its load. Include a free-body diagram of the appropriate system of interest as the basis for your analysis. Show vector forces and their components and explain the choice of coordinates. Among the things to be considered are the forces exerted by those pushing, the angle of the slope, and the masses of the toboggan and children.
 
 <!-- SEG:m42076:problem:import-auto-id1742367 -->
-Unreasonable Results (a) Repeat [[xref:fs-id1673888]], but assume an acceleration of [[MATH:49]] is produced. (b) What is unreasonable about the result? (c) Which premise is unreasonable, and why is it unreasonable?
+Unreasonable Results (a) Repeat [[xref:fs-id1673888]], but assume an acceleration of [[MATH:65]] is produced. (b) What is unreasonable about the result? (c) Which premise is unreasonable, and why is it unreasonable?
 
 <!-- SEG:m42076:problem:import-auto-id2297687 -->
-Unreasonable Results (a) What is the initial acceleration of a rocket that has a mass of [[MATH:50]] at takeoff, the engines of which produce a thrust of [[MATH:51]]? Do not neglect gravity. (b) What is unreasonable about the result? (This result has been unintentionally achieved by several real rockets.) (c) Which premise is unreasonable, or which premises are inconsistent? (You may find it useful to compare this problem to the rocket problem earlier in this section.)
+Unreasonable Results (a) What is the initial acceleration of a rocket that has a mass of [[MATH:66]] at takeoff, the engines of which produce a thrust of [[MATH:67]]? Do not neglect gravity. (b) What is unreasonable about the result? (This result has been unintentionally achieved by several real rockets.) (c) Which premise is unreasonable, or which premises are inconsistent? (You may find it useful to compare this problem to the rocket problem earlier in this section.)

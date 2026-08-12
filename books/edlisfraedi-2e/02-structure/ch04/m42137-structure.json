@@ -49,6 +49,21 @@
       "segmentId": "m42137:para:import-auto-id1447177"
     },
     {
+      "type": "note",
+      "id": "fs-id3025368",
+      "title": {
+        "segmentId": "m42137:note-title:fs-id3025368-title",
+        "text": "Concept Connections: The Four Basic Forces"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id3061928",
+          "segmentId": "m42137:para:import-auto-id3061928"
+        }
+      ]
+    },
+    {
       "type": "table",
       "id": "import-auto-id1588108",
       "summary": "A table listing the properties of four basic forces. The table has five columns indicating the type of force, its approximate relative strength, its range, whether it is attractive or repulsive, and the carrier particle(s).",
@@ -172,21 +187,6 @@
               "attributes": {}
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "note",
-      "id": "fs-id3025368",
-      "title": {
-        "segmentId": "m42137:note-title:fs-id3025368-title",
-        "text": "Concept Connections: The Four Basic Forces"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "import-auto-id3061928",
-          "segmentId": "m42137:para:import-auto-id3061928"
         }
       ]
     },
@@ -369,6 +369,31 @@
                 "type": "para",
                 "id": "fs-id1681985",
                 "segmentId": "m42137:problem:fs-id1681985"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1310333",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1310333-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1310333-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1310333-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1310333-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -413,6 +438,31 @@
                 "type": "para",
                 "id": "fs-id1263485",
                 "segmentId": "m42137:problem:fs-id1263485"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1262926",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1262926-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1262926-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1262926-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1262926-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -457,6 +507,31 @@
                 "type": "para",
                 "id": "fs-id1475089",
                 "segmentId": "m42137:problem:fs-id1475089"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1445696",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1445696-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1445696-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1445696-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42137:item:fs-id1445696-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -722,7 +797,10 @@
       "class": null,
       "alt": "The figure is a plot of x as a function of F. The curve starts at a high value of x just to the right of the x axis and decreases in both value and slope, tending asymptotically to the F axis. Under the graph it is noted that x is proportional to 1 over F.",
       "src": "../../media/OSX_CP2e_Figure_04_08Sol_CTQ01c.jpg",
-      "mimeType": "image/jpg"
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
   "sectionOrder": 8
