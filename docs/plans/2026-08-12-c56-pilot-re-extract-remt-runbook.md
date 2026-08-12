@@ -95,7 +95,24 @@ The often-quoted "only 4" is **locked *and* faithful-reviewed** — `03-faithful
 
 ✅ **Locks are enforced absolutely and beat `--force`.** `mtRunDecision` (`tools/api-translate.js`) returns `'locked-skip'` **before** it considers `force`, with the comment *"absolute: editing has begun, never clobber"*. This is a real mechanism, not a convention.
 
-## Gate C — acceptance criteria · **NEW, and the point of a pilot**
+## Gate C — acceptance criteria · ⏳ **BASELINE CAPTURED 2026-08-12; criteria await lead sign-off**
+
+> **Baseline, measured with the real `countBracketMarkers`/`bracketMarkerDelta` (not a reimplementation):**
+>
+> | metric | `efnafraedi-2e` ch20 | `edlisfraedi-2e` ch04 | total |
+> |---|---|---|---|
+> | modules | 6 | 10 | **16** |
+> | legacy `{{…}}` markers | 80 | 80 | **160** |
+> | malformed `[[type: ` (IS / EN) | 0 / 0 | 4 / 4 | **4 / 4** |
+> | modules with non-zero EN→IS marker delta | 2 | 1 | **3** |
+>
+> **The marker deltas are the live ~2.3%-loss class and make a good improvement target:**
+> `m68845` `{"i":-3}` · **`m68849` `{"i":-12,"link":-1,"xref":-8,"docref":-3}` — 24 markers lost** · `m42137` `{"i":+1}` (a *gained* marker).
+>
+> 🔴 **C3's PREDICTION IS FALSIFIED IN ADVANCE — DO NOT RUN THE PILOT AGAINST IT.** The four malformed markers in `m42075` are present in **`02-for-mt` (English) as well**, and §C58 identifies the cause as an **extraction** bug (`<emphasis effect="bold"/>` read as an opening tag). **The extractor is unchanged, so a re-extract reproduces them.**
+> ▶ **Revised: fix §C58 first, then the prediction becomes "`m42075`'s four malformed markers are gone, and no `[[b:` swallows a sibling marker" — which is then a genuine test of the fix.**
+
+## Gate C (criteria, as originally written)
 
 **Write these down before running, so the pilot can fail.** A pilot with no falsifiable prediction is a rehearsal.
 
