@@ -1,0 +1,23 @@
+{
+  "generatedBy": "§C56 pilot re-extract + re-MT, 2026-08-12",
+  "contract": "C9 — vefur needs old→new to serve redirects; since vefur PR #200 the old filename no longer exists on its side to derive one from.",
+  "cause": "Re-MT produced different Icelandic section titles; section pages are title-slugged, so the slug changed. Compiled pages (summary/key-terms/exercises/answer-key) have fixed names and are unaffected.",
+  "scope": "efnafraedi-2e ch20 + edlisfraedi-2e ch04 only",
+  "renames": [
+    { "book": "edlisfraedi-2e", "chapter": "04", "track": "mt-preview",
+      "old": "4-1-throun-krafthugtaksins.html",
+      "new": "4-1-throun-kraftshugtaksins.html" },
+    { "book": "edlisfraedi-2e", "chapter": "04", "track": "mt-preview",
+      "old": "4-5-thverkraftur-spenna-og-onnur-daemi-um-krafta.html",
+      "new": "4-5-thverkraftur-togkraftur-og-onnur-daemi-um-krafta.html" },
+    { "book": "edlisfraedi-2e", "chapter": "04", "track": "mt-preview",
+      "old": "4-6-lausn-vandamala.html",
+      "new": "4-6-lausnaradferdir-vid-urlausn-verkefna.html" },
+    { "book": "edlisfraedi-2e", "chapter": "04", "track": "mt-preview",
+      "old": "4-8-itarefni-inngangur-ad-grunnkroftunum-fjorum.html",
+      "new": "4-8-itarefni-grunnkraftarnir-fjorir-inngangur.html" },
+    { "book": "efnafraedi-2e", "chapter": "20", "track": "mt-preview",
+      "old": "20-3-aldehyd-ketonar-karboxylsyrur-og-estrar.html",
+      "new": "20-3-aldehyd-keton-karboxylsyrur-og-estrar.html" }
+  ]
+}

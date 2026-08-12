@@ -17,16 +17,16 @@ Describe the reactions characteristic of saturated and unsaturated hydrocarbons
 Identify structural and geometric isomers of hydrocarbons
 
 <!-- SEG:m68846:para:fs-idp41557488 -->
-The largest database {{fn}}This is the Beilstein database, now available through the Reaxys site (www.elsevier.com/online-tools/reaxys).{{/fn}} of organic compounds lists about 10 million substances, which include compounds originating from living organisms and those synthesized by chemists. The number of potential organic compounds has been estimated {{fn}}Peplow, Mark. “Organic Synthesis: The Robo-Chemist,” [[i:Nature]] 512 (2014): 20–2.{{/fn}} at 10[[sup:60]]—an astronomically high number. The existence of so many organic molecules is a consequence of the ability of carbon atoms to form up to four strong bonds to other carbon atoms, resulting in chains and rings of many different sizes, shapes, and complexities.
+The largest database [[fn:This is the Beilstein database, now available through the Reaxys site (www.elsevier.com/online-tools/reaxys).|fs-idp69619904]] of organic compounds lists about 10 million substances, which include compounds originating from living organisms and those synthesized by chemists. The number of potential organic compounds has been estimated [[fn:Peplow, Mark. “Organic Synthesis: The Robo-Chemist,” [[i:Nature]] 512 (2014): 20–2.|fs-idp41278192]] at 10[[sup:60]]—an astronomically high number. The existence of so many organic molecules is a consequence of the ability of carbon atoms to form up to four strong bonds to other carbon atoms, resulting in chains and rings of many different sizes, shapes, and complexities.
 
 <!-- SEG:m68846:para:fs-idp68083216 -->
-The simplest {{term}}organic compounds{{/term}} contain only the elements carbon and hydrogen, and are called hydrocarbons. Even though they are composed of only two types of atoms, there is a wide variety of hydrocarbons because they may consist of varying lengths of chains, branched chains, and rings of carbon atoms, or combinations of these structures. In addition, hydrocarbons may differ in the types of carbon-carbon bonds present in their molecules. Many hydrocarbons are found in plants, animals, and their fossils; other hydrocarbons have been prepared in the laboratory. We use hydrocarbons every day, mainly as fuels, such as natural gas, acetylene, propane, butane, and the principal components of gasoline, diesel fuel, and heating oil. The familiar plastics polyethylene, polypropylene, and polystyrene are also hydrocarbons. We can distinguish several types of hydrocarbons by differences in the bonding between carbon atoms. This leads to differences in geometries and in the hybridization of the carbon orbitals.
+The simplest [[term:organic compounds|term-00001]] contain only the elements carbon and hydrogen, and are called hydrocarbons. Even though they are composed of only two types of atoms, there is a wide variety of hydrocarbons because they may consist of varying lengths of chains, branched chains, and rings of carbon atoms, or combinations of these structures. In addition, hydrocarbons may differ in the types of carbon-carbon bonds present in their molecules. Many hydrocarbons are found in plants, animals, and their fossils; other hydrocarbons have been prepared in the laboratory. We use hydrocarbons every day, mainly as fuels, such as natural gas, acetylene, propane, butane, and the principal components of gasoline, diesel fuel, and heating oil. The familiar plastics polyethylene, polypropylene, and polystyrene are also hydrocarbons. We can distinguish several types of hydrocarbons by differences in the bonding between carbon atoms. This leads to differences in geometries and in the hybridization of the carbon orbitals.
 
 <!-- SEG:m68846:title:fs-idp53924736-title -->
 Alkanes
 
 <!-- SEG:m68846:para:fs-idp68413472 -->
-{{term}}Alkanes{{/term}}, or {{term}}saturated hydrocarbons{{/term}}, contain only single covalent bonds between carbon atoms. Each of the carbon atoms in an alkane has [[i:sp]][[sup:3]] hybrid orbitals and is bonded to four other atoms, each of which is either carbon or hydrogen. The Lewis structures and models of methane, ethane, and pentane are illustrated in [[xref:CNX_Chem_20_01_alkanes]]. Carbon chains are usually drawn as straight lines in Lewis structures, but one has to remember that Lewis structures are not intended to indicate the geometry of molecules. Notice that the carbon atoms in the structural models (the ball-and-stick and space-filling models) of the pentane molecule do not lie in a straight line. Because of the [[i:sp]][[sup:3]] hybridization, the bond angles in carbon chains are close to 109.5°, giving such chains in an alkane a zigzag shape.
+[[term:Alkanes|term-00002]], or [[term:saturated hydrocarbons|term-00003]], contain only single covalent bonds between carbon atoms. Each of the carbon atoms in an alkane has [[i:sp]][[sup:3]] hybrid orbitals and is bonded to four other atoms, each of which is either carbon or hydrogen. The Lewis structures and models of methane, ethane, and pentane are illustrated in [[xref:CNX_Chem_20_01_alkanes]]. Carbon chains are usually drawn as straight lines in Lewis structures, but one has to remember that Lewis structures are not intended to indicate the geometry of molecules. Notice that the carbon atoms in the structural models (the ball-and-stick and space-filling models) of the pentane molecule do not lie in a straight line. Because of the [[i:sp]][[sup:3]] hybridization, the bond angles in carbon chains are close to 109.5°, giving such chains in an alkane a zigzag shape.
 
 <!-- SEG:m68846:para:fs-idp72306672 -->
 The structures of alkanes and other organic molecules may also be represented in a less detailed manner by condensed structural formulas (or simply, [[i:condensed formulas]]). Instead of the usual format for chemical formulas in which each element symbol appears just once, a condensed formula is written to suggest the bonding in the molecule. These formulas have the appearance of a Lewis structure from which most or all of the bond symbols have been removed. Condensed structural formulas for ethane and pentane are shown at the bottom of [[xref:CNX_Chem_20_01_alkanes]], and several additional examples are provided in the exercises at the end of this chapter.
@@ -35,7 +35,7 @@ The structures of alkanes and other organic molecules may also be represented in
 Pictured are the Lewis structures, ball-and-stick models, and space-filling models for molecules of methane, ethane, and pentane.
 
 <!-- SEG:m68846:para:fs-idp81678112 -->
-A common method used by organic chemists to simplify the drawings of larger molecules is to use a {{term}}skeletal structure{{/term}} (also called a line-angle structure). In this type of structure, carbon atoms are not symbolized with a C, but represented by each end of a line or bend in a line. Hydrogen atoms are not drawn if they are attached to a carbon. Other atoms besides carbon and hydrogen are represented by their elemental symbols. [[xref:CNX_Chem_20_01_LineStruct1]] shows three different ways to draw the same structure.
+A common method used by organic chemists to simplify the drawings of larger molecules is to use a [[term:skeletal structure|term-00004]] (also called a line-angle structure). In this type of structure, carbon atoms are not symbolized with a C, but represented by each end of a line or bend in a line. Hydrogen atoms are not drawn if they are attached to a carbon. Other atoms besides carbon and hydrogen are represented by their elemental symbols. [[xref:CNX_Chem_20_01_LineStruct1]] shows three different ways to draw the same structure.
 
 <!-- SEG:m68846:caption:CNX_Chem_20_01_LineStruct1-caption -->
 The same structure can be represented three different ways: an expanded formula, a condensed formula, and a skeletal structure.
@@ -95,7 +95,7 @@ C[[sub:9]]H[[sub:20]]
 All alkanes are composed of carbon and hydrogen atoms, and have similar bonds, structures, and formulas; noncyclic alkanes all have a formula of C[[sub:n]]H[[sub:2n+2]]. The number of carbon atoms present in an alkane has no limit. Greater numbers of atoms in the molecules will lead to stronger intermolecular attractions (dispersion forces) and correspondingly different physical properties of the molecules. Properties such as melting point and boiling point ([[xref:fs-idp53743808]]) usually change smoothly and predictably as the number of carbon and hydrogen atoms in the molecules change.
 
 <!-- SEG:m68846:entry:auto-33 -->
-Properties of Some Alkanes {{fn}}Physical properties for C[[sub:4]]H[[sub:10]] and heavier molecules are those of the [[i:normal isomer]], [[i:n]]-butane, [[i:n]]-pentane, etc.{{/fn}}
+Properties of Some Alkanes [[fn:Physical properties for C[[sub:4]]H[[sub:10]] and heavier molecules are those of the [[i:normal isomer]], [[i:n]]-butane, [[i:n]]-pentane, etc.|fs-idp41358128]]
 
 <!-- SEG:m68846:entry:auto-34 -->
 Alkane
@@ -110,7 +110,7 @@ Melting Point (°C)
 Boiling Point (°C)
 
 <!-- SEG:m68846:entry:auto-38 -->
-Phase at STP {{fn}}STP indicates a temperature of 0 °C and a pressure of 1 atm.{{/fn}}
+Phase at STP [[fn:STP indicates a temperature of 0 °C and a pressure of 1 atm.|fs-idp74205008]]
 
 <!-- SEG:m68846:entry:auto-39 -->
 Number of Structural Isomers
@@ -347,13 +347,13 @@ These three representations of the structure of n-butane are not isomers because
 The Basics of Organic Nomenclature: Naming Alkanes
 
 <!-- SEG:m68846:para:fs-idp41465856 -->
-The International Union of Pure and Applied Chemistry ({{term}}IUPAC{{/term}}) has devised a system of nomenclature that begins with the names of the alkanes and can be adjusted from there to account for more complicated structures. The nomenclature for alkanes is based on two rules:
+The International Union of Pure and Applied Chemistry ([[term:IUPAC|term-00005]]) has devised a system of nomenclature that begins with the names of the alkanes and can be adjusted from there to account for more complicated structures. The nomenclature for alkanes is based on two rules:
 
 <!-- SEG:m68846:item:fs-idp9620576-item-1 -->
 To name an alkane, first identify the longest chain of carbon atoms in its structure. A two-carbon chain is called ethane; a three-carbon chain, propane; and a four-carbon chain, butane. Longer chains are named as follows: pentane (five-carbon chain), hexane (6), heptane (7), octane (8), nonane (9), and decane (10). These prefixes can be seen in the names of the alkanes described in [[xref:fs-idp53743808]].
 
 <!-- SEG:m68846:item:fs-idp9620576-item-2 -->
-Add prefixes to the name of the longest chain to indicate the positions and names of {{term}}substituents{{/term}}. Substituents are branches or functional groups that replace hydrogen atoms on a chain. The position of a substituent or branch is identified by the number of the carbon atom it is bonded to in the chain. We number the carbon atoms in the chain by counting from the end of the chain nearest the substituents. Multiple substituents are named individually and placed in alphabetical order at the front of the name.
+Add prefixes to the name of the longest chain to indicate the positions and names of [[term:substituents|term-00006]]. Substituents are branches or functional groups that replace hydrogen atoms on a chain. The position of a substituent or branch is identified by the number of the carbon atom it is bonded to in the chain. We number the carbon atoms in the chain by counting from the end of the chain nearest the substituents. Multiple substituents are named individually and placed in alphabetical order at the front of the name.
 
 <!-- SEG:m68846:para:fs-idp51843168 -->
 When more than one substituent is present, either on the same carbon atom or on different carbon atoms, the substituents are listed alphabetically. Because the carbon atom numbering begins at the end closest to a substituent, the longest chain of carbon atoms is numbered in such a way as to produce the lowest number for the substituents. The ending [[i:-o]] replaces [[i:-ide]] at the end of the name of an electronegative substituent (in ionic compounds, the negatively charged ion ends with [[i:-ide]] like chloride; in organic compounds, such atoms are treated as substituents and the [[i:-o]] ending is used). The number of substituents of the same type is indicated by the prefixes [[i:di-]] (two), [[i:tri-]] (three), [[i:tetra-]] (four), and so on (for example, [[i:difluoro-]] indicates two fluoride substituents).
@@ -386,7 +386,7 @@ Answer:
 3,3-dibromo-2-iodopentane
 
 <!-- SEG:m68846:para:fs-idp43562000 -->
-We call a substituent that contains one less hydrogen than the corresponding alkane an alkyl group. The name of an {{term}}alkyl group{{/term}} is obtained by dropping the suffix [[i:-ane]] of the alkane name and adding [[i:-yl]]:
+We call a substituent that contains one less hydrogen than the corresponding alkane an alkyl group. The name of an [[term:alkyl group|term-00007]] is obtained by dropping the suffix [[i:-ane]] of the alkane name and adding [[i:-yl]]:
 
 <!-- SEG:m68846:para:fs-idp53101632 -->
 The open bonds in the methyl and ethyl groups indicate that these alkyl groups are bonded to another atom.
@@ -440,10 +440,10 @@ Alkanes burn in the presence of oxygen, a highly exothermic oxidation-reduction 
 In a column for the fractional distillation of crude oil, oil heated to about 425 °C in the furnace vaporizes when it enters the base of the tower. The vapors rise through bubble caps in a series of trays in the tower. As the vapors gradually cool, fractions of higher, then of lower, boiling points condense to liquids and are drawn off. (credit left: modification of work by Luigi Chiesa)
 
 <!-- SEG:m68846:para:fs-idp66127008 -->
-In a {{term}}substitution reaction{{/term}}, another typical reaction of alkanes, one or more of the alkane’s hydrogen atoms is replaced with a different atom or group of atoms. No carbon-carbon bonds are broken in these reactions, and the hybridization of the carbon atoms does not change. For example, the reaction between ethane and molecular chlorine depicted here is a substitution reaction:
+In a [[term:substitution reaction|term-00008]], another typical reaction of alkanes, one or more of the alkane’s hydrogen atoms is replaced with a different atom or group of atoms. No carbon-carbon bonds are broken in these reactions, and the hybridization of the carbon atoms does not change. For example, the reaction between ethane and molecular chlorine depicted here is a substitution reaction:
 
 <!-- SEG:m68846:para:fs-idp5852528 -->
-The C–Cl portion of the chloroethane molecule is an example of a {{term}}functional group{{/term}}, the part or moiety of a molecule that imparts a specific chemical reactivity. The types of functional groups present in an organic molecule are major determinants of its chemical properties and are used as a means of classifying organic compounds as detailed in the remaining sections of this chapter.
+The C–Cl portion of the chloroethane molecule is an example of a [[term:functional group|term-00009]], the part or moiety of a molecule that imparts a specific chemical reactivity. The types of functional groups present in an organic molecule are major determinants of its chemical properties and are used as a means of classifying organic compounds as detailed in the remaining sections of this chapter.
 
 <!-- SEG:m68846:para:fs-idp35377664 -->
 Want more practice naming alkanes? Watch this brief [[link:video tutorial|http://openstax.org/l/16alkanes]] to review the nomenclature process.
@@ -467,7 +467,7 @@ Carbon atoms are free to rotate around a single bond but not around a double bon
 These molecular models show the structural and geometric isomers of butene.
 
 <!-- SEG:m68846:para:fs-idp51580832 -->
-Alkenes are much more reactive than alkanes because the [[MATH:2]] moiety is a reactive functional group. A π bond, being a weaker bond, is disrupted much more easily than a σ bond. Thus, alkenes undergo a characteristic reaction in which the π bond is broken and replaced by two σ bonds. This reaction is called an {{term}}addition reaction{{/term}}. The hybridization of the carbon atoms in the double bond in an alkene changes from [[i:sp]][[sup:2]] to [[i:sp]][[sup:3]] during an addition reaction. For example, halogens add to the double bond in an alkene instead of replacing hydrogen, as occurs in an alkane:
+Alkenes are much more reactive than alkanes because the [[MATH:2]] moiety is a reactive functional group. A π bond, being a weaker bond, is disrupted much more easily than a σ bond. Thus, alkenes undergo a characteristic reaction in which the π bond is broken and replaced by two σ bonds. This reaction is called an [[term:addition reaction|term-00011]]. The hybridization of the carbon atoms in the double bond in an alkene changes from [[i:sp]][[sup:2]] to [[i:sp]][[sup:3]] during an addition reaction. For example, halogens add to the double bond in an alkene instead of replacing hydrogen, as occurs in an alkane:
 
 <!-- SEG:m68846:example-title:fs-idp73227696-title -->
 Alkene Reactivity and Naming
@@ -500,7 +500,7 @@ Answer:
 reactant: cis-3-hexene product: 3,4-dichlorohexane
 
 <!-- SEG:m68846:para:fs-idp37633872 -->
-Organic compounds that contain one or more double or triple bonds between carbon atoms are described as unsaturated. You have likely heard of unsaturated fats. These are complex organic molecules with long chains of carbon atoms, which contain at least one double bond between carbon atoms. Unsaturated hydrocarbon molecules that contain one or more double bonds are called {{term}}alkenes{{/term}}. Carbon atoms linked by a double bond are bound together by two bonds, one σ bond and one π bond. Double and triple bonds give rise to a different geometry around the carbon atom that participates in them, leading to important differences in molecular shape and properties. The differing geometries are responsible for the different properties of unsaturated versus saturated fats.
+Organic compounds that contain one or more double or triple bonds between carbon atoms are described as unsaturated. You have likely heard of unsaturated fats. These are complex organic molecules with long chains of carbon atoms, which contain at least one double bond between carbon atoms. Unsaturated hydrocarbon molecules that contain one or more double bonds are called [[term:alkenes|term-00010]]. Carbon atoms linked by a double bond are bound together by two bonds, one σ bond and one π bond. Double and triple bonds give rise to a different geometry around the carbon atom that participates in them, leading to important differences in molecular shape and properties. The differing geometries are responsible for the different properties of unsaturated versus saturated fats.
 
 <!-- SEG:m68846:para:fs-idp5664736 -->
 Ethene, C[[sub:2]]H[[sub:4]], is the simplest alkene. Each carbon atom in ethene, commonly called ethylene, has a trigonal planar structure. The second member of the series is propene (propylene) ([[xref:CNX_Chem_20_01_Propene1]]); the butene isomers follow in the series. Four carbon atoms in the chain of butene allows for the formation of isomers based on the position of the double bond, as well as a new form of isomerism.
@@ -539,7 +539,7 @@ The name of an alkene is derived from the name of the alkane with the same numbe
 Alkynes
 
 <!-- SEG:m68846:para:fs-idp37965376 -->
-Hydrocarbon molecules with one or more triple bonds are called {{term}}alkynes{{/term}}; they make up another series of unsaturated hydrocarbons. Two carbon atoms joined by a triple bond are bound together by one σ bond and two π bonds. The [[i:sp]]-hybridized carbons involved in the triple bond have bond angles of 180°, giving these types of bonds a linear, rod-like shape.
+Hydrocarbon molecules with one or more triple bonds are called [[term:alkynes|term-00012]]; they make up another series of unsaturated hydrocarbons. Two carbon atoms joined by a triple bond are bound together by one σ bond and two π bonds. The [[i:sp]]-hybridized carbons involved in the triple bond have bond angles of 180°, giving these types of bonds a linear, rod-like shape.
 
 <!-- SEG:m68846:para:fs-idp40078048 -->
 The simplest member of the alkyne series is ethyne, C[[sub:2]]H[[sub:2]], commonly called acetylene. The Lewis structure for ethyne, a linear molecule, is:
@@ -584,7 +584,7 @@ Acetylene and the other alkynes also burn readily. An acetylene torch takes adva
 Aromatic Hydrocarbons
 
 <!-- SEG:m68846:para:fs-idp68051312 -->
-Benzene, C[[sub:6]]H[[sub:6]], is the simplest member of a large family of hydrocarbons, called {{term}}aromatic hydrocarbons{{/term}}. These compounds contain ring structures and exhibit bonding that must be described using the resonance hybrid concept of valence bond theory or the delocalization concept of molecular orbital theory. (To review these concepts, refer to the earlier chapters on chemical bonding). The resonance structures for benzene, C[[sub:6]]H[[sub:6]], are:
+Benzene, C[[sub:6]]H[[sub:6]], is the simplest member of a large family of hydrocarbons, called [[term:aromatic hydrocarbons|term-00013]]. These compounds contain ring structures and exhibit bonding that must be described using the resonance hybrid concept of valence bond theory or the delocalization concept of molecular orbital theory. (To review these concepts, refer to the earlier chapters on chemical bonding). The resonance structures for benzene, C[[sub:6]]H[[sub:6]], are:
 
 <!-- SEG:m68846:para:fs-idp10659184 -->
 Valence bond theory describes the benzene molecule and other planar aromatic hydrocarbon molecules as hexagonal rings of [[i:sp]][[sup:2]]-hybridized carbon atoms with the unhybridized [[i:p]] orbital of each carbon atom perpendicular to the plane of the ring. Three valence electrons in the [[i:sp]][[sup:2]] hybrid orbitals of each carbon atom and the valence electron of each hydrogen atom form the framework of σ bonds in the benzene molecule. The fourth valence electron of each carbon atom is shared with an adjacent carbon atom in their unhybridized [[i:p]] orbitals to yield the π bonds. Benzene does not, however, exhibit the characteristics typical of an alkene. Each of the six bonds between its carbon atoms is equivalent and exhibits properties that are intermediate between those of a C–C single bond and a [[MATH:5]] double bond. To represent this unique bonding, structural formulas for benzene and its derivatives are typically drawn with single bonds between the carbon atoms and a circle within the ring as shown in [[xref:CNX_Chem_20_01_benzene]].

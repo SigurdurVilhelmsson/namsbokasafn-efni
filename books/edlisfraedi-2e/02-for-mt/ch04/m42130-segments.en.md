@@ -2,7 +2,7 @@
 Newton’s First Law of Motion: Inertia
 
 <!-- SEG:m42130:para:import-auto-id2654505 -->
-Experience suggests that an object at rest will remain at rest if left alone, and that an object in motion tends to slow down and stop unless some effort is made to keep it moving. What {{term}}Newton’s first law of motion{{/term}} states, however, is the following:
+Experience suggests that an object at rest will remain at rest if left alone, and that an object in motion tends to slow down and stop unless some effort is made to keep it moving. What [[term:Newton’s first law of motion|import-auto-id1777407]] states, however, is the following:
 
 <!-- SEG:m42130:note-title:fs-id2690663-title -->
 Newton’s First Law of Motion
@@ -14,7 +14,7 @@ A body at rest remains at rest, or, if in motion, remains in motion at a constan
 Note the repeated use of the verb “remains.” We can think of this law as preserving the status quo of motion.
 
 <!-- SEG:m42130:para:import-auto-id1904217 -->
-Rather than contradicting our experience, {{term}}Newton’s first law of motion{{/term}} states that there must be a [[i:cause]] (which is a net external force) [[i:for there to be any change in velocity (either a change in magnitude or direction)]]. We will define [[i:net external force]] in the next section. An object sliding across a table or floor slows down due to the net force of friction acting on the object. If friction disappeared, would the object still slow down?
+Rather than contradicting our experience, [[term:Newton’s first law of motion|term-00001]] states that there must be a [[i:cause]] (which is a net external force) [[i:for there to be any change in velocity (either a change in magnitude or direction)]]. We will define [[i:net external force]] in the next section. An object sliding across a table or floor slows down due to the net force of friction acting on the object. If friction disappeared, would the object still slow down?
 
 <!-- SEG:m42130:para:import-auto-id1416969 -->
 The idea of cause and effect is crucial in accurately describing what happens in various situations. For example, consider what happens to an object sliding along a rough horizontal surface. The object quickly grinds to a halt. If we spray the surface with talcum powder to make the surface smoother, the object slides farther. If we make the surface even smoother by rubbing lubricating oil on it, the object slides farther yet. Extrapolating to a frictionless surface, we can imagine the object sliding in a straight line indefinitely. Friction is thus the [[i:cause]] of the slowing (consistent with Newton’s first law). The object would not slow down at all if friction were completely eliminated. Consider an air hockey table. When the air is turned off, the puck slides only a short distance before friction slows it to a stop. However, when the air is turned on, it creates a nearly frictionless surface, and the puck glides long distances without slowing down. Additionally, if we know enough about the friction, we can accurately predict how quickly the object will slow down. Friction is an external force.
@@ -44,19 +44,19 @@ Understand Newton's first law of motion.
 Mass
 
 <!-- SEG:m42130:para:import-auto-id2712510 -->
-The property of a body to remain at rest or to remain in motion with constant velocity is called {{term}}inertia{{/term}}. Newton’s first law is often called the {{term}}law of inertia{{/term}}. As we know from experience, some objects have more inertia than others. It is obviously more difficult to change the motion of a large boulder than that of a basketball, for example. The inertia of an object is measured by its {{term}}mass{{/term}}. Roughly speaking, mass is a measure of the amount of “stuff” (or matter) in something. The quantity or amount of matter in an object is determined by the numbers of atoms and molecules of various types it contains. Unlike weight, mass does not vary with location. The mass of an object is the same on Earth, in orbit, or on the surface of the Moon. In practice, it is very difficult to count and identify all of the atoms and molecules in an object, so masses are not often determined in this manner. Operationally, the masses of objects are determined by comparison with the standard kilogram.
+The property of a body to remain at rest or to remain in motion with constant velocity is called [[term:inertia|import-auto-id2134480]]. Newton’s first law is often called the [[term:law of inertia|import-auto-id1408275]]. As we know from experience, some objects have more inertia than others. It is obviously more difficult to change the motion of a large boulder than that of a basketball, for example. The inertia of an object is measured by its [[term:mass|import-auto-id1500464]]. Roughly speaking, mass is a measure of the amount of “stuff” (or matter) in something. The quantity or amount of matter in an object is determined by the numbers of atoms and molecules of various types it contains. Unlike weight, mass does not vary with location. The mass of an object is the same on Earth, in orbit, or on the surface of the Moon. In practice, it is very difficult to count and identify all of the atoms and molecules in an object, so masses are not often determined in this manner. Operationally, the masses of objects are determined by comparison with the standard kilogram.
 
 <!-- SEG:m42130:title:fs-id1651376-title -->
 Section Summary
 
 <!-- SEG:m42130:item:fs-id2410016-item-1 -->
-{{term}}Newton’s first law of motion{{/term}} states that a body at rest remains at rest, or, if in motion, remains in motion at a constant velocity unless acted on by a net external force. This is also known as the {{term}}law of inertia{{/term}}.
+[[term:Newton’s first law of motion|term-00002]] states that a body at rest remains at rest, or, if in motion, remains in motion at a constant velocity unless acted on by a net external force. This is also known as the [[term:law of inertia|term-00003]].
 
 <!-- SEG:m42130:item:fs-id2410016-item-2 -->
-{{term}}Inertia{{/term}} is the tendency of an object to remain at rest or remain in motion. Inertia is related to an object’s mass.
+[[term:Inertia|term-00004]] is the tendency of an object to remain at rest or remain in motion. Inertia is related to an object’s mass.
 
 <!-- SEG:m42130:item:fs-id2410016-item-3 -->
-{{term}}Mass{{/term}} is the quantity of matter in a substance.
+[[term:Mass|term-00005]] is the quantity of matter in a substance.
 
 <!-- SEG:m42130:title:fs-id2668844-title -->
 Conceptual Questions

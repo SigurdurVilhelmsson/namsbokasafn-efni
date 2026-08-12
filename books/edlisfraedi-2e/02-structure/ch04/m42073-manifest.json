@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m42073",
-  "extractedAt": "2026-03-23T18:00:50.167Z",
+  "extractedAt": "2026-08-12T13:43:10.795Z",
   "sourceHash": "c19c7900338f6142",
-  "segmentCount": 144,
+  "segmentCount": 150,
   "segmentIds": [
     "m42073:title:auto-1",
     "m42073:para:import-auto-id2055489",
@@ -73,6 +73,10 @@
     "m42073:solution:eip-id2592019",
     "m42073:problem:import-auto-id1575610",
     "m42073:problem:import-auto-id1487915",
+    "m42073:item:eip-idm1160497856-item-1",
+    "m42073:item:eip-idm1160497856-item-2",
+    "m42073:item:eip-idm1160497856-item-3",
+    "m42073:item:eip-idm1160497856-item-4",
     "m42073:solution:para-00002",
     "m42073:solution:para-00003",
     "m42073:solution:para-00004",
@@ -104,6 +108,7 @@
     "m42073:para:import-auto-id3415541",
     "m42073:example-title:fs-id1916412-title",
     "m42073:para:import-auto-id3253302",
+    "m42073:para-title:import-auto-id2672219-title",
     "m42073:para:import-auto-id3069019",
     "m42073:para-title:import-auto-id1824721-title",
     "m42073:para:import-auto-id2671037",
@@ -115,6 +120,7 @@
     "m42073:caption:fs-id2602810-caption",
     "m42073:example-title:fs-id2654781-title",
     "m42073:para:import-auto-id2674385",
+    "m42073:para-title:import-auto-id1996045-title",
     "m42073:para:import-auto-id2647939",
     "m42073:para-title:import-auto-id1870895-title",
     "m42073:para:import-auto-id3165015",
@@ -272,15 +278,15 @@
     "eip-id1171442332762"
   ],
   "elementCounts": {
-    "para": 102,
+    "para": 104,
     "section": 6,
     "figure": 7,
     "table": 0,
     "example": 2,
     "exercise": 24,
     "note": 4,
-    "equation": 13,
-    "list": 2,
+    "equation": 12,
+    "list": 3,
     "media": 0,
     "glossary": 7
   },
@@ -288,11 +294,11 @@
     "figure": [
       "import-auto-id1993910",
       "import-auto-id1375143",
+      "fs-id2602810",
+      "fs-id2407992",
       "fs-id2992955",
       "fs-id1870792",
-      "fs-id1926895",
-      "fs-id2602810",
-      "fs-id2407992"
+      "fs-id1926895"
     ],
     "table": [],
     "example": [
@@ -335,7 +341,6 @@
       "eip-id1450972",
       "eip-id1969451",
       "eip-id2390555",
-      "eip-id1171442332762",
       "eip-id1171443383293",
       "eip-id2603472",
       "eip-id2420800",

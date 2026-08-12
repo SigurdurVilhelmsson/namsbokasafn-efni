@@ -5,13 +5,16 @@ Further Applications of Newton’s Laws of Motion
 There are many interesting applications of Newton’s laws of motion, a few more of which are presented in this section. These serve also to illustrate some further subtleties of physics and to help build problem-solving skills.
 
 <!-- SEG:m42132:example-title:fs-id2383966-title -->
-Strategy
+Drag Force on a Barge
 
 <!-- SEG:m42132:para:import-auto-id1517248 -->
 Suppose two tugboats push on a barge at different angles, as shown in [[xref:import-auto-id1221020]]. The first tugboat exerts a force of [[MATH:1]] in the [[i:x]]-direction, and the second tugboat exerts a force of [[MATH:2]] in the [[i:y]]-direction.
 
 <!-- SEG:m42132:para:import-auto-id1436125 -->
 If the mass of the barge is [[MATH:3]] and its acceleration is observed to be [[MATH:4]] in the direction shown, what is the drag force of the water on the barge resisting the motion? (Note: drag force is a frictional force exerted by fluids, such as air or water. The drag force opposes the motion of the object.)
+
+<!-- SEG:m42132:para-title:import-auto-id3233982-title -->
+Strategy
 
 <!-- SEG:m42132:para:import-auto-id1969804 -->
 The directions and magnitudes of acceleration and the applied forces are given in [[xref:import-auto-id1221020]][[b:(a)]]. We will define the total force of the tugboats on the barge as [[MATH:5]] so that:
@@ -83,10 +86,13 @@ The numbers used in this example are reasonable for a moderately large barge. It
 In the earlier example of a tightrope walker we noted that the tensions in wires supporting a mass were equal only because the angles on either side were equal. Consider the following example, where the angles are not equal; slightly more trigonometry is involved.
 
 <!-- SEG:m42132:example-title:fs-id1348788-title -->
-Strategy
+Different Tensions at Different Angles
 
 <!-- SEG:m42132:para:import-auto-id1941219 -->
 Consider the traffic light (mass 15.0 kg) suspended from two wires as shown in [[xref:import-auto-id3051538]]. Find the tension in each wire, neglecting the masses of the wires.
+
+<!-- SEG:m42132:para-title:import-auto-id2391059-title -->
+Strategy
 
 <!-- SEG:m42132:para:import-auto-id2659888 -->
 The system of interest is the traffic light, and its free-body diagram is shown in [[xref:import-auto-id3051538]](c). The three forces involved are not parallel, and so they must be projected onto a coordinate system. The most convenient coordinate system has one axis vertical and one horizontal, and the vector projections on it are shown in part (d) of the figure. There are two unknowns in this problem ([[MATH:34]] and [[MATH:35]]), so two equations are needed to find them. These two equations come from applying Newton’s second law along the vertical and horizontal axes, noting that the net external force is zero along each axis because acceleration is zero.
@@ -176,10 +182,13 @@ A traffic light is suspended from two wires. (b) Some of the forces involved. (c
 The bathroom scale is an excellent example of a normal force acting on a body. It provides a quantitative reading of how much it must push upward to support the weight of an object. But can you predict what you would see on the dial of a bathroom scale if you stood on it during an elevator ride? Will you see a value greater than your weight when the elevator starts up? What about when the elevator moves upward at a constant speed: will the scale still read more than your weight at rest? Consider the following example.
 
 <!-- SEG:m42132:example-title:fs-id2654282-title -->
-Strategy
+What Does the Bathroom Scale Read in an Elevator?
 
 <!-- SEG:m42132:para:import-auto-id3127757 -->
 [[xref:import-auto-id347645]] shows a 75.0-kg man (weight of about 165 lb) standing on a bathroom scale in an elevator. Calculate the scale reading: (a) if the elevator accelerates upward at a rate of [[MATH:60]], and (b) if the elevator moves upward at a constant speed of 1 m/s.
+
+<!-- SEG:m42132:para-title:import-auto-id3175384-title -->
+Strategy
 
 <!-- SEG:m42132:para:import-auto-id2401336 -->
 If the scale is accurate, its reading will equal [[MATH:61]], the magnitude of the force the person exerts downward on it. [[xref:import-auto-id347645]](a) shows the numerous forces acting on the elevator, scale, and person. It makes this one-dimensional problem look much more formidable than if the person is chosen to be the system of interest and a free-body diagram is drawn as in [[xref:import-auto-id347645]](b). Analysis of the free-body diagram using Newton’s laws can produce answers to both parts (a) and (b) of this example, as well as some other questions that might arise. The only forces acting on the person are his weight [[MATH:62]] and the upward force of the scale [[MATH:63]]. According to Newton’s third law [[MATH:64]] and [[MATH:65]] are equal in magnitude and opposite in direction, so that we need to find [[MATH:66]] in order to find what the scale reads. We can do this, as usual, by applying Newton’s second law,
@@ -384,6 +393,18 @@ The boulder will accelerate at 0.09 m/s[[sup:2]].
 
 <!-- SEG:m42132:problem:fs-id1450804 -->
 The figure shows the forces exerted on a block that is sliding on a horizontal surface: the gravitational force of 40 N, the 40 N normal force exerted by the surface, and a frictional force exerted to the left. The coefficient of friction between the block and the surface is 0.20. The acceleration of the block is most nearly
+
+<!-- SEG:m42132:item:fs-id1444278-item-1 -->
+1.0 m/s[[sup:2]] to the right
+
+<!-- SEG:m42132:item:fs-id1444278-item-2 -->
+1.0 m/s[[sup:2]] to the left
+
+<!-- SEG:m42132:item:fs-id1444278-item-3 -->
+2.0 m/s[[sup:2]] to the right
+
+<!-- SEG:m42132:item:fs-id1444278-item-4 -->
+2.0 m/s[[sup:2]] to the left
 
 <!-- SEG:m42132:solution:fs-id1433602 -->
 (d)

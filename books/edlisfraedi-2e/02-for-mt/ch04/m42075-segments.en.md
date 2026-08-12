@@ -32,13 +32,13 @@ Use trigonometric identities to resolve weight into components.
 Normal Force
 
 <!-- SEG:m42075:para:import-auto-id2600263 -->
-{{term}}Weight{{/term}} (also called force of gravity) is a pervasive force that acts at all times and must be counteracted to keep an object from falling. You definitely notice that you must support the weight of a heavy object by pushing up on it when you hold it stationary, as illustrated in [[xref:import-auto-id2672874]](a). But how do inanimate objects like a table support the weight of a mass placed on them, such as shown in [[xref:import-auto-id2672874]](b)? When the bag of dog food is placed on the table, the table actually sags slightly under the load. This would be noticeable if the load were placed on a card table, but even rigid objects deform when a force is applied to them. Unless the object is deformed beyond its limit, it will exert a restoring force much like a deformed spring (or trampoline or diving board). The greater the deformation, the greater the restoring force. So when the load is placed on the table, the table sags until the restoring force becomes as large as the weight of the load. At this point the net external force on the load is zero. That is the situation when the load is stationary on the table. The table sags quickly, and the sag is slight so we do not notice it. But it is similar to the sagging of a trampoline when you climb onto it.
+[[term:Weight|import-auto-id1910210]] (also called force of gravity) is a pervasive force that acts at all times and must be counteracted to keep an object from falling. You definitely notice that you must support the weight of a heavy object by pushing up on it when you hold it stationary, as illustrated in [[xref:import-auto-id2672874]](a). But how do inanimate objects like a table support the weight of a mass placed on them, such as shown in [[xref:import-auto-id2672874]](b)? When the bag of dog food is placed on the table, the table actually sags slightly under the load. This would be noticeable if the load were placed on a card table, but even rigid objects deform when a force is applied to them. Unless the object is deformed beyond its limit, it will exert a restoring force much like a deformed spring (or trampoline or diving board). The greater the deformation, the greater the restoring force. So when the load is placed on the table, the table sags until the restoring force becomes as large as the weight of the load. At this point the net external force on the load is zero. That is the situation when the load is stationary on the table. The table sags quickly, and the sag is slight so we do not notice it. But it is similar to the sagging of a trampoline when you climb onto it.
 
 <!-- SEG:m42075:caption:import-auto-id2672874-caption -->
 (a) The person holding the bag of dog food must supply an upward force [[MATH:1]] equal in magnitude and opposite in direction to the weight of the food [[MATH:2]]. (b) The card table sags when the dog food is placed on it, much like a stiff trampoline. Elastic restoring forces in the table grow as it sags until they supply a force [[MATH:3]] equal in magnitude and opposite in direction to the weight of the load.
 
 <!-- SEG:m42075:para:import-auto-id2659946 -->
-We must conclude that whatever supports a load, be it animate or not, must supply an upward force equal to the weight of the load, as we assumed in a few of the previous examples. If the force supporting a load is perpendicular to the surface of contact between the load and its support, this force is defined to be a {{term}}normal force{{/term}}[[b: and here is given the symbol [[MATH:4]]. (This is not the unit for force N.) The word normal]] means perpendicular to a surface. The normal force can be less than the object’s weight if the object is sliding along an incline, as you will see in the next example. The normal force can even be larger than the object’s weight, for example when you jump up or, as we shall see, for a car moving on a banked curve.
+We must conclude that whatever supports a load, be it animate or not, must supply an upward force equal to the weight of the load, as we assumed in a few of the previous examples. If the force supporting a load is perpendicular to the surface of contact between the load and its support, this force is defined to be a [[term:normal force|import-auto-id1254224]] and here is given the symbol [[MATH:4]]. (This is not the unit for force N.) The word [[i:normal]] means perpendicular to a surface. The normal force can be less than the object’s weight if the object is sliding along an incline, as you will see in the next example. The normal force can even be larger than the object’s weight, for example when you jump up or, as we shall see, for a car moving on a banked curve.
 
 <!-- SEG:m42075:note-title:fs-id2016495-title -->
 Common Misconception: Normal Force (N) vs. Newton (N)
@@ -47,10 +47,13 @@ Common Misconception: Normal Force (N) vs. Newton (N)
 In this section we have introduced the quantity normal force, which is represented by the variable [[MATH:5]]. This should not be confused with the symbol for the newton, which is also represented by the letter N. These symbols are particularly important to distinguish because the units of a normal force ([[MATH:6]]) happen to be newtons (N). For example, the normal force [[MATH:7]] that the floor exerts on a chair might be [[MATH:8]]. One important difference is that normal force is a vector, while the newton is simply a unit. Be careful not to confuse these letters in your calculations! You will encounter more similarities among variables and units as you proceed in physics. Another example of this is the quantity work ([[MATH:9]]) and the unit watts (W).
 
 <!-- SEG:m42075:example-title:fs-id2627411-title -->
-Strategy
+Weight on an Incline, a Two-Dimensional Problem
 
 <!-- SEG:m42075:para:import-auto-id1326647 -->
 Consider the skier on a slope shown in [[xref:import-auto-id2149297]]. Her mass including equipment is 60.0 kg. (a) What is her acceleration if friction is negligible? (b) What is her acceleration if friction is known to be 45.0 N? (c) The normal force, [[MATH:10]], is found from Newton’s second law perpendicular to the slope. Since [[MATH:11]], the equation becomes [[MATH:12]] and [[MATH:13]].
+
+<!-- SEG:m42075:para-title:import-auto-id1385124-title -->
+Strategy
 
 <!-- SEG:m42075:para:import-auto-id2715233 -->
 This is a two-dimensional problem, since the forces on the skier (the system of interest) are not parallel. The approach we have used in two-dimensional kinematics also works very well here. Choose a convenient coordinate system and project the vectors onto its axes, creating [[i:two]] connected [[i:one]]-dimensional problems to solve. The most convenient coordinate system for motion on an incline is one that has one coordinate parallel to the slope and one perpendicular to the slope. (Remember that motions along mutually perpendicular axes are independent.) We use the symbols [[MATH:14]] and [[MATH:15]] to represent perpendicular and parallel, respectively. This choice of axes simplifies this type of problem, because there is no motion perpendicular to the slope and because friction is always parallel to the surface between two objects. The only external forces acting on the system are the skier’s weight, friction, and the support of the slope, respectively labeled [[MATH:16]], [[MATH:17]], and [[MATH:18]] in [[xref:import-auto-id2149297]]. [[MATH:19]] is always perpendicular to the slope, and [[MATH:20]] is parallel to it. But [[MATH:21]] is not in the direction of either axis, and so the first step we take is to project it into components along the chosen axes, defining [[MATH:22]] to be the component of weight parallel to the slope and [[MATH:23]] the component of weight perpendicular to the slope. Once this is done, we can consider the two separate problems of forces parallel to the slope and forces perpendicular to the slope.
@@ -116,7 +119,7 @@ Since motion and friction are parallel to the slope, it is most convenient to pr
 Resolving Weight into Components
 
 <!-- SEG:m42075:para:import-auto-id2003648 -->
-When an object rests on an incline that makes an angle [[MATH:47]] with the horizontal, the force of gravity acting on the object is divided into two components: a force acting perpendicular to the plane, [[MATH:48]][[b:,]][[b: and a force acting parallel to the plane, [[MATH:49]]. The perpendicular force of weight, [[MATH:50]],]] is typically equal in magnitude and opposite in direction to the normal force, [[MATH:51]]. The force acting parallel to the plane, [[MATH:52]], causes the object to accelerate down the incline. The force of friction, [[MATH:53]], opposes the motion of the object, so it acts upward along the plane.
+When an object rests on an incline that makes an angle [[MATH:47]] with the horizontal, the force of gravity acting on the object is divided into two components: a force acting perpendicular to the plane, [[MATH:48]][[b:,]] and a force acting parallel to the plane, [[MATH:49]]. The perpendicular force of weight, [[MATH:50]][[b:,]] is typically equal in magnitude and opposite in direction to the normal force, [[MATH:51]]. The force acting parallel to the plane, [[MATH:52]], causes the object to accelerate down the incline. The force of friction, [[MATH:53]], opposes the motion of the object, so it acts upward along the plane.
 
 <!-- SEG:m42075:para:import-auto-id2356442 -->
 It is important to be careful when resolving the weight of the object into components. If the angle of the incline is at an angle [[MATH:54]] to the horizontal, then the magnitudes of the weight components are
@@ -152,7 +155,7 @@ To investigate how a force parallel to an inclined plane changes, find a rubber 
 Tension
 
 <!-- SEG:m42075:para:import-auto-id1434349 -->
-A {{term}}tension{{/term}}[[b: is a force along the length of a medium, especially a force carried by a flexible medium, such as a rope or cable. The word “tension” ]]comes from a Latin word meaning “to stretch.” Not coincidentally, the flexible cords that carry muscle forces to other parts of the body are called [[i:tendons]]. Any flexible connector, such as a string, rope, chain, wire, or cable, can exert pulls only parallel to its length; thus, a force carried by a flexible connector is a tension with direction parallel to the connector. It is important to understand that tension is a pull in a connector. In contrast, consider the phrase: “You can’t push a rope.” The tension force pulls outward along the two ends of a rope.
+A [[term:tension|import-auto-id1608257]] is a force along the length of a medium, especially a force carried by a flexible medium, such as a rope or cable. The word “tension[[i:” ]]comes from a Latin word meaning “to stretch.” Not coincidentally, the flexible cords that carry muscle forces to other parts of the body are called [[i:tendons]]. Any flexible connector, such as a string, rope, chain, wire, or cable, can exert pulls only parallel to its length; thus, a force carried by a flexible connector is a tension with direction parallel to the connector. It is important to understand that tension is a pull in a connector. In contrast, consider the phrase: “You can’t push a rope.” The tension force pulls outward along the two ends of a rope.
 
 <!-- SEG:m42075:para:import-auto-id2684116 -->
 Consider a person holding a mass on a rope as shown in [[xref:import-auto-id2715102]].
@@ -188,10 +191,13 @@ Flexible connectors are often used to transmit forces around corners, such as in
 (a) Tendons in the finger carry force [[MATH:71]] from the muscles to other parts of the finger, usually changing the force’s direction, but not its magnitude (the tendons are relatively friction free). (b) The brake cable on a bicycle carries the tension [[MATH:72]] from the handlebars to the brake mechanism. Again, the direction but not the magnitude of [[MATH:73]] is changed.
 
 <!-- SEG:m42075:example-title:fs-id986136-title -->
-Strategy
+What Is the Tension in a Tightrope?
 
 <!-- SEG:m42075:para:import-auto-id2129598 -->
 Calculate the tension in the wire supporting the 70.0-kg tightrope walker shown in [[xref:import-auto-id2091042]].
+
+<!-- SEG:m42075:para-title:import-auto-id2685996-title -->
+Strategy
 
 <!-- SEG:m42075:para:import-auto-id2847194 -->
 As you can see in the figure, the wire is not perfectly horizontal (it cannot be!), but is bent under the person’s weight. Thus, the tension on either side of the person has an upward component that can support his weight. As usual, forces are vectors represented pictorially by arrows having the same directions as the forces and lengths proportional to their magnitudes. The system is the tightrope walker, and the only external forces acting on him are his weight [[MATH:74]] and the two tensions [[MATH:75]] (left tension) and [[MATH:76]] (right tension), as illustrated. It is reasonable to neglect the weight of the wire itself. The net external force is zero since the system is stationary. A little trigonometry can now be used to find the tensions. One conclusion is possible at the outset—we can see from part (b) of the figure that the magnitudes of the tensions [[MATH:77]] and [[MATH:78]] must be equal. This is because there is no horizontal acceleration in the rope, and the only forces acting to the left and right are [[MATH:79]] and [[MATH:80]]. Thus, the magnitude of those forces must be equal so that they cancel each other out.
@@ -308,7 +314,7 @@ Unless an infinite tension is exerted, any flexible connector—such as the chai
 Extended Topic: Real Forces and Inertial Frames
 
 <!-- SEG:m42075:para:import-auto-id2654173 -->
-There is another distinction among forces in addition to the types already mentioned. Some forces are real, whereas others are not. [[i:Real forces]][[b: are those that have some physical origin, such as the gravitational pull. Contrastingly, fictitious forces ]]are those that arise simply because an observer is in an accelerating frame of reference, such as one that rotates (like a merry-go-round) or undergoes linear acceleration (like a car slowing down). For example, if a satellite is heading due north above Earth’s northern hemisphere, then to an observer on Earth it will appear to experience a force to the west that has no physical origin. Of course, what is happening here is that Earth is rotating toward the east and moves east under the satellite. In Earth’s frame this looks like a westward force on the satellite, or it can be interpreted as a violation of Newton’s first law (the law of inertia). An {{term}}inertial frame of reference{{/term}} is one in which all forces are real and, equivalently, one in which Newton’s laws have the simple forms given in this chapter.
+There is another distinction among forces in addition to the types already mentioned. Some forces are real, whereas others are not. [[i:Real forces]] are those that have some physical origin, such as the gravitational pull. Contrastingly, [[i:fictitious forces ]]are those that arise simply because an observer is in an accelerating frame of reference, such as one that rotates (like a merry-go-round) or undergoes linear acceleration (like a car slowing down). For example, if a satellite is heading due north above Earth’s northern hemisphere, then to an observer on Earth it will appear to experience a force to the west that has no physical origin. Of course, what is happening here is that Earth is rotating toward the east and moves east under the satellite. In Earth’s frame this looks like a westward force on the satellite, or it can be interpreted as a violation of Newton’s first law (the law of inertia). An [[term:inertial frame of reference|import-auto-id2695882]] is one in which all forces are real and, equivalently, one in which Newton’s laws have the simple forms given in this chapter.
 
 <!-- SEG:m42075:para:import-auto-id1549841 -->
 Earth’s rotation is slow enough that Earth is nearly an inertial frame. You ordinarily must perform precise experiments to observe fictitious forces and the slight departures from Newton’s laws, such as the effect just described. On the large scale, such as for the rotation of weather systems and ocean currents, the effects can be easily observed.
@@ -324,6 +330,18 @@ Test Prep for AP Courses
 
 <!-- SEG:m42075:problem:fs-id1367318 -->
 An archer shoots an arrow straight up with a force of 24.5 N. The arrow has a mass of 0.4 kg. What is the force of gravity on the arrow?
+
+<!-- SEG:m42075:item:fs-id1619294-item-1 -->
+9.8 m/s[[sup:2]]
+
+<!-- SEG:m42075:item:fs-id1619294-item-2 -->
+9.8 N
+
+<!-- SEG:m42075:item:fs-id1619294-item-3 -->
+61.25 N
+
+<!-- SEG:m42075:item:fs-id1619294-item-4 -->
+3.9 N
 
 <!-- SEG:m42075:solution:fs-id1458732 -->
 (d)
@@ -370,11 +388,35 @@ The Earth exerts a force due to gravity on the child and the wagon. The normal f
 <!-- SEG:m42075:problem:fs-id1471482 -->
 Two teams are engaging in a tug–of-war. The rope suddenly snaps. Which statement is true about the forces involved?
 
+<!-- SEG:m42075:item:fs-id1471487-item-1 -->
+The forces exerted by the two teams are no longer equal; the teams will accelerate in opposite directions as a result.
+
+<!-- SEG:m42075:item:fs-id1471487-item-2 -->
+The forces exerted by the players are no longer balanced by the force of tension in the rope; the teams will accelerate in opposite directions as a result.
+
+<!-- SEG:m42075:item:fs-id1471487-item-3 -->
+The force of gravity balances the forces exerted by the players; the teams will fall as a result
+
+<!-- SEG:m42075:item:fs-id1471487-item-4 -->
+The force of tension in the rope is transferred to the players; the teams will accelerate in opposite directions as a result.
+
 <!-- SEG:m42075:solution:fs-id1640122 -->
 (b)
 
 <!-- SEG:m42075:problem:fs-id1891368 -->
 The following free-body diagram represents a toboggan on a hill. What acceleration would you expect, and why?
+
+<!-- SEG:m42075:item:fs-id2173996-item-1 -->
+Acceleration down the hill; the force due to being pushed, together with the downhill component of gravity, overcomes the opposing force of friction.
+
+<!-- SEG:m42075:item:fs-id2173996-item-2 -->
+Acceleration down the hill; friction is less than the opposing component of force due to gravity.
+
+<!-- SEG:m42075:item:fs-id2173996-item-3 -->
+No movement; friction is greater than the force due to being pushed.
+
+<!-- SEG:m42075:item:fs-id2173996-item-4 -->
+No movement; friction is greater than the sum of the downhill forces.
 
 <!-- SEG:m42075:solution:fs-id1606579 -->
 (a)

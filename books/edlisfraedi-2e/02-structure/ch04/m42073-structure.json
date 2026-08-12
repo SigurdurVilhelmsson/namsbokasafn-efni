@@ -104,19 +104,6 @@
       "segmentId": "m42073:para:import-auto-id2616884"
     },
     {
-      "type": "figure",
-      "id": "import-auto-id1375143",
-      "caption": {
-        "segmentId": "m42073:caption:import-auto-id1375143-caption"
-      },
-      "media": {
-        "id": "import-auto-id1475015",
-        "alt": "(a) A basketball player pushes the ball with the force shown by a vector F toward the right and an acceleration a-one represented by an arrow toward the right. M sub one is the mass of the ball. (b) The same basketball player is pushing a car with the same force, represented by the vector F towards the right, resulting in an acceleration shown by a vector a toward the right. The mass of the car is m sub two. The acceleration in the second case, a sub two, is represented by a shorter arrow than in the first case, a sub one.",
-        "src": "../../media/Figure_04_03_02.jpg",
-        "mimeType": "image/jpg"
-      }
-    },
-    {
       "type": "para",
       "id": "import-auto-id2602248",
       "segmentId": "m42073:para:import-auto-id2602248"
@@ -129,6 +116,19 @@
       "type": "para",
       "id": "import-auto-id3451972",
       "segmentId": "m42073:para:import-auto-id3451972"
+    },
+    {
+      "type": "figure",
+      "id": "import-auto-id1375143",
+      "caption": {
+        "segmentId": "m42073:caption:import-auto-id1375143-caption"
+      },
+      "media": {
+        "id": "import-auto-id1475015",
+        "alt": "(a) A basketball player pushes the ball with the force shown by a vector F toward the right and an acceleration a-one represented by an arrow toward the right. M sub one is the mass of the ball. (b) The same basketball player is pushing a car with the same force, represented by the vector F towards the right, resulting in an acceleration shown by a vector a toward the right. The mass of the car is m sub two. The acceleration in the second case, a sub two, is represented by a shorter arrow than in the first case, a sub one.",
+        "src": "../../media/Figure_04_03_02.jpg",
+        "mimeType": "image/jpg"
+      }
     },
     {
       "type": "para",
@@ -225,6 +225,361 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "import-auto-id2598176",
+          "segmentId": "m42073:para:import-auto-id2598176"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2578076",
+          "segmentId": "m42073:para:import-auto-id2578076"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2447030",
+          "segmentId": "m42073:para:import-auto-id2447030"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1276219",
+          "title": {
+            "segmentId": "m42073:note-title:fs-id1276219-title",
+            "text": "Weight"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-id2294530",
+              "segmentId": "m42073:para:eip-id2294530"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1864261",
+              "segmentId": "m42073:para:import-auto-id1864261"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1324396",
+              "segmentId": "m42073:para:import-auto-id1324396"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2588455",
+              "segmentId": "m42073:para:import-auto-id2588455"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id3123052",
+          "segmentId": "m42073:para:import-auto-id3123052"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1616012",
+          "segmentId": "m42073:para:import-auto-id1616012"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2956346",
+          "segmentId": "m42073:para:import-auto-id2956346"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1816128",
+          "segmentId": "m42073:para:import-auto-id1816128"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1570965",
+          "title": {
+            "segmentId": "m42073:note-title:fs-id1570965-title",
+            "text": "Common Misconceptions: Mass vs. Weight"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "import-auto-id3228448",
+              "segmentId": "m42073:para:import-auto-id3228448"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1548723",
+              "segmentId": "m42073:para:import-auto-id1548723"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id3245519",
+          "title": {
+            "segmentId": "m42073:note-title:fs-id3245519-title",
+            "text": "Take-Home Experiment: Mass and Weight"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "import-auto-id3415541",
+              "segmentId": "m42073:para:import-auto-id3415541"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-id1916412",
+          "title": {
+            "segmentId": "m42073:example-title:fs-id1916412-title",
+            "text": "What Acceleration Can a Person Produce when Pushing a Lawn Mower?"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "import-auto-id3253302",
+              "segmentId": "m42073:para:import-auto-id3253302"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2672219",
+              "title": {
+                "segmentId": "m42073:para-title:import-auto-id2672219-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id3069019",
+              "segmentId": "m42073:para:import-auto-id3069019"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1824721",
+              "title": {
+                "segmentId": "m42073:para-title:import-auto-id1824721-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2671037",
+              "segmentId": "m42073:para:import-auto-id2671037"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id3062396",
+              "segmentId": "m42073:para:import-auto-id3062396"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2668511",
+              "segmentId": "m42073:para:import-auto-id2668511"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2962769",
+              "segmentId": "m42073:para:import-auto-id2962769"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2611930",
+              "title": {
+                "segmentId": "m42073:para-title:import-auto-id2611930-title",
+                "text": "Discussion"
+              }
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2441532",
+              "segmentId": "m42073:para:import-auto-id2441532"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id1171443383293"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id2603472"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fs-id2602810",
+          "caption": {
+            "segmentId": "m42073:caption:fs-id2602810-caption"
+          },
+          "media": {
+            "id": "fs-id2621355",
+            "alt": "A man pushing a lawnmower to the right. A red vector above the lawnmower is pointing to the right and labeled F sub net.",
+            "src": "../../media/Figure 04_03_03.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-id2654781",
+          "title": {
+            "segmentId": "m42073:example-title:fs-id2654781-title",
+            "text": "What Rocket Thrust Accelerates This Sled?"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "import-auto-id2674385",
+              "segmentId": "m42073:para:import-auto-id2674385"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1996045",
+              "title": {
+                "segmentId": "m42073:para-title:import-auto-id1996045-title",
+                "text": "Strategy"
+              }
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2647939",
+              "segmentId": "m42073:para:import-auto-id2647939"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1870895",
+              "title": {
+                "segmentId": "m42073:para-title:import-auto-id1870895-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id3165015",
+              "segmentId": "m42073:para:import-auto-id3165015"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2584825",
+              "segmentId": "m42073:para:import-auto-id2584825"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1921274",
+              "segmentId": "m42073:para:import-auto-id1921274"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id3105004",
+              "segmentId": "m42073:para:import-auto-id3105004"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2403188",
+              "segmentId": "m42073:para:import-auto-id2403188"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1080769",
+              "segmentId": "m42073:para:import-auto-id1080769"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id3035885",
+              "segmentId": "m42073:para:import-auto-id3035885"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2668553",
+              "segmentId": "m42073:para:import-auto-id2668553"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1569357",
+              "segmentId": "m42073:para:import-auto-id1569357"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2953750",
+              "segmentId": "m42073:para:import-auto-id2953750"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1405340",
+              "segmentId": "m42073:para:import-auto-id1405340"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2640331",
+              "segmentId": "m42073:para:import-auto-id2640331"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1405095",
+              "segmentId": "m42073:para:import-auto-id1405095"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1934651",
+              "segmentId": "m42073:para:import-auto-id1934651"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id3042856",
+              "title": {
+                "segmentId": "m42073:para-title:import-auto-id3042856-title",
+                "text": "Discussion"
+              }
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2053300",
+              "segmentId": "m42073:para:import-auto-id2053300"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2415381",
+              "segmentId": "m42073:para:import-auto-id2415381"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id2420800"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id1522873"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id1858333"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id1948969"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id2054706"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id1631559"
+            },
+            {
+              "type": "equation",
+              "id": "eip-id1171442277241"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fs-id2407992",
+          "caption": {
+            "segmentId": "m42073:caption:fs-id2407992-caption"
+          },
+          "media": {
+            "id": "fs-id2968477",
+            "alt": "A sled is shown with four rockets, each producing the same thrust, represented by equal length arrows labeled as vector T pushing the sled toward the right. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled. A free-body diagram is also shown for the situation. Four arrows of equal length representing vector T point toward the right, a vector f represented by a smaller arrow points left, vector N is an arrow pointing upward, and the weight W is an arrow of equal length pointing downward.",
+            "src": "../../media/Figure_04_03_04.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
           "type": "section",
           "id": "fs-id2691902",
           "class": "section-summary",
@@ -273,10 +628,6 @@
                   "segmentId": "m42073:item:import-auto-id1917983"
                 }
               ]
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1171442332762"
             }
           ]
         },
@@ -617,6 +968,31 @@
                     "type": "para",
                     "id": "import-auto-id1487915",
                     "segmentId": "m42073:problem:import-auto-id1487915"
+                  },
+                  {
+                    "type": "list",
+                    "id": "eip-idm1160497856",
+                    "listType": "enumerated",
+                    "numberStyle": "lower-alpha",
+                    "bulletStyle": null,
+                    "items": [
+                      {
+                        "id": null,
+                        "segmentId": "m42073:item:eip-idm1160497856-item-1"
+                      },
+                      {
+                        "id": null,
+                        "segmentId": "m42073:item:eip-idm1160497856-item-2"
+                      },
+                      {
+                        "id": null,
+                        "segmentId": "m42073:item:eip-idm1160497856-item-3"
+                      },
+                      {
+                        "id": null,
+                        "segmentId": "m42073:item:eip-idm1160497856-item-4"
+                      }
+                    ]
                   }
                 ]
               },
@@ -748,345 +1124,6 @@
               "solution": null
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id2598176",
-          "segmentId": "m42073:para:import-auto-id2598176"
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id2578076",
-          "segmentId": "m42073:para:import-auto-id2578076"
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id2447030",
-          "segmentId": "m42073:para:import-auto-id2447030"
-        },
-        {
-          "type": "note",
-          "id": "fs-id1276219",
-          "title": {
-            "segmentId": "m42073:note-title:fs-id1276219-title",
-            "text": "Weight"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "eip-id2294530",
-              "segmentId": "m42073:para:eip-id2294530"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1864261",
-              "segmentId": "m42073:para:import-auto-id1864261"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1324396",
-              "segmentId": "m42073:para:import-auto-id1324396"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2588455",
-              "segmentId": "m42073:para:import-auto-id2588455"
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id3123052",
-          "segmentId": "m42073:para:import-auto-id3123052"
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id1616012",
-          "segmentId": "m42073:para:import-auto-id1616012"
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id2956346",
-          "segmentId": "m42073:para:import-auto-id2956346"
-        },
-        {
-          "type": "para",
-          "id": "import-auto-id1816128",
-          "segmentId": "m42073:para:import-auto-id1816128"
-        },
-        {
-          "type": "note",
-          "id": "fs-id1570965",
-          "title": {
-            "segmentId": "m42073:note-title:fs-id1570965-title",
-            "text": "Common Misconceptions: Mass vs. Weight"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "import-auto-id3228448",
-              "segmentId": "m42073:para:import-auto-id3228448"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1548723",
-              "segmentId": "m42073:para:import-auto-id1548723"
-            }
-          ]
-        },
-        {
-          "type": "note",
-          "id": "fs-id3245519",
-          "title": {
-            "segmentId": "m42073:note-title:fs-id3245519-title",
-            "text": "Take-Home Experiment: Mass and Weight"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "import-auto-id3415541",
-              "segmentId": "m42073:para:import-auto-id3415541"
-            }
-          ]
-        },
-        {
-          "type": "example",
-          "id": "fs-id1916412",
-          "title": {
-            "segmentId": "m42073:example-title:fs-id1916412-title",
-            "text": "Strategy"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "import-auto-id3253302",
-              "segmentId": "m42073:para:import-auto-id3253302"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id3069019",
-              "segmentId": "m42073:para:import-auto-id3069019"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1824721",
-              "title": {
-                "segmentId": "m42073:para-title:import-auto-id1824721-title",
-                "text": "Solution"
-              }
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2671037",
-              "segmentId": "m42073:para:import-auto-id2671037"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id3062396",
-              "segmentId": "m42073:para:import-auto-id3062396"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2668511",
-              "segmentId": "m42073:para:import-auto-id2668511"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2962769",
-              "segmentId": "m42073:para:import-auto-id2962769"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2611930",
-              "title": {
-                "segmentId": "m42073:para-title:import-auto-id2611930-title",
-                "text": "Discussion"
-              }
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2441532",
-              "segmentId": "m42073:para:import-auto-id2441532"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1171443383293"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id2603472"
-            }
-          ]
-        },
-        {
-          "type": "figure",
-          "id": "fs-id2602810",
-          "caption": {
-            "segmentId": "m42073:caption:fs-id2602810-caption"
-          },
-          "media": {
-            "id": "fs-id2621355",
-            "alt": "A man pushing a lawnmower to the right. A red vector above the lawnmower is pointing to the right and labeled F sub net.",
-            "src": "../../media/Figure 04_03_03.jpg",
-            "mimeType": "image/jpg"
-          }
-        },
-        {
-          "type": "example",
-          "id": "fs-id2654781",
-          "title": {
-            "segmentId": "m42073:example-title:fs-id2654781-title",
-            "text": "Strategy"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "import-auto-id2674385",
-              "segmentId": "m42073:para:import-auto-id2674385"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2647939",
-              "segmentId": "m42073:para:import-auto-id2647939"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1870895",
-              "title": {
-                "segmentId": "m42073:para-title:import-auto-id1870895-title",
-                "text": "Solution"
-              }
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id3165015",
-              "segmentId": "m42073:para:import-auto-id3165015"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2584825",
-              "segmentId": "m42073:para:import-auto-id2584825"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1921274",
-              "segmentId": "m42073:para:import-auto-id1921274"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id3105004",
-              "segmentId": "m42073:para:import-auto-id3105004"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2403188",
-              "segmentId": "m42073:para:import-auto-id2403188"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1080769",
-              "segmentId": "m42073:para:import-auto-id1080769"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id3035885",
-              "segmentId": "m42073:para:import-auto-id3035885"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2668553",
-              "segmentId": "m42073:para:import-auto-id2668553"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1569357",
-              "segmentId": "m42073:para:import-auto-id1569357"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2953750",
-              "segmentId": "m42073:para:import-auto-id2953750"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1405340",
-              "segmentId": "m42073:para:import-auto-id1405340"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2640331",
-              "segmentId": "m42073:para:import-auto-id2640331"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1405095",
-              "segmentId": "m42073:para:import-auto-id1405095"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id1934651",
-              "segmentId": "m42073:para:import-auto-id1934651"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id3042856",
-              "title": {
-                "segmentId": "m42073:para-title:import-auto-id3042856-title",
-                "text": "Discussion"
-              }
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2053300",
-              "segmentId": "m42073:para:import-auto-id2053300"
-            },
-            {
-              "type": "para",
-              "id": "import-auto-id2415381",
-              "segmentId": "m42073:para:import-auto-id2415381"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id2420800"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1522873"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1858333"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1948969"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id2054706"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1631559"
-            },
-            {
-              "type": "equation",
-              "id": "eip-id1171442277241"
-            }
-          ]
-        },
-        {
-          "type": "figure",
-          "id": "fs-id2407992",
-          "caption": {
-            "segmentId": "m42073:caption:fs-id2407992-caption"
-          },
-          "media": {
-            "id": "fs-id2968477",
-            "alt": "A sled is shown with four rockets, each producing the same thrust, represented by equal length arrows labeled as vector T pushing the sled toward the right. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled. A free-body diagram is also shown for the situation. Four arrows of equal length representing vector T point toward the right, a vector f represented by a smaller arrow points left, vector N is an arrow pointing upward, and the weight W is an arrow of equal length pointing downward.",
-            "src": "../../media/Figure_04_03_04.jpg",
-            "mimeType": "image/jpg"
-          }
         }
       ]
     }
@@ -1138,7 +1175,10 @@
       "class": null,
       "alt": "An object represented as a dot labeled m is shown at the center. One force represented by an arrow labeled as vector F sub 2 acts toward the right. Another force represented by an arrow labeled as vector F sub 1 having a slightly shorter length in comparison with F sub 2 acts on the object pointing left. A friction force represented by an arrow labeled as vector f having a small length acts on the object toward the left. Weight, represented by an arrow labeled as vector W, acts on the object downward, and normal force, represented by an arrow labeled as vector N, acts upward, having the same length as W.",
       "src": "../../media/Figure_04_03_06.jpg",
-      "mimeType": "image/jpg"
+      "mimeType": "image/jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
   "sectionOrder": 3

@@ -103,13 +103,21 @@
           "id": "fs-id2627411",
           "title": {
             "segmentId": "m42075:example-title:fs-id2627411-title",
-            "text": "Strategy"
+            "text": "Weight on an Incline, a Two-Dimensional Problem"
           },
           "content": [
             {
               "type": "para",
               "id": "import-auto-id1326647",
               "segmentId": "m42075:para:import-auto-id1326647"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1385124",
+              "title": {
+                "segmentId": "m42075:para-title:import-auto-id1385124-title",
+                "text": "Strategy"
+              }
             },
             {
               "type": "para",
@@ -437,13 +445,21 @@
           "id": "fs-id986136",
           "title": {
             "segmentId": "m42075:example-title:fs-id986136-title",
-            "text": "Strategy"
+            "text": "What Is the Tension in a Tightrope?"
           },
           "content": [
             {
               "type": "para",
               "id": "import-auto-id2129598",
               "segmentId": "m42075:para:import-auto-id2129598"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2685996",
+              "title": {
+                "segmentId": "m42075:para-title:import-auto-id2685996-title",
+                "text": "Strategy"
+              }
             },
             {
               "type": "para",
@@ -794,6 +810,31 @@
                 "type": "para",
                 "id": "fs-id1367318",
                 "segmentId": "m42075:problem:fs-id1367318"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1619294",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1619294-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1619294-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1619294-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1619294-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -905,6 +946,31 @@
                 "type": "para",
                 "id": "fs-id1471482",
                 "segmentId": "m42075:problem:fs-id1471482"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1471487",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1471487-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1471487-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1471487-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id1471487-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -927,6 +993,31 @@
                 "type": "para",
                 "id": "fs-id1891368",
                 "segmentId": "m42075:problem:fs-id1891368"
+              },
+              {
+                "type": "list",
+                "id": "fs-id2173996",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id2173996-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id2173996-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id2173996-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m42075:item:fs-id2173996-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -1105,22 +1196,6 @@
               "segmentId": "m42075:item:fs-id1597329-item-5"
             }
           ]
-        },
-        {
-          "type": "equation",
-          "id": "eip-id1331551"
-        },
-        {
-          "type": "equation",
-          "id": "eip-id2419526"
-        },
-        {
-          "type": "equation",
-          "id": "eip-id1949783"
-        },
-        {
-          "type": "equation",
-          "id": "eip-id1166246"
         }
       ]
     },

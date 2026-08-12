@@ -2,34 +2,37 @@
 Þriðja lögmál Newtons um hreyfingu: Samhverfa í kröftum
 
 <!-- SEG:m42074:para:import-auto-id2355102 -->
-Kastari í hafnabolta, Mariano Rivera, var svo mikils metinn að á síðasta ári hans á ferlinum héldu mótherjaliðin kveðjuathafnir þegar hann spilaði á leikvöngum þeirra. Minnesota Twins færðu honum einstaka gjöf: Stól gerðan úr brotnum kylfum. Hvaða kast sem er getur brotið kylfu, en með einkenniskasti Rivera – þekktu sem „cutter“ – rákust boltinn og kylfan oft saman á punkti sem mölbraut harðviðinn. Yfirleitt hugsum við um hafnabolta- eða mjúkboltaslagara sem beitir krafti á boltann sem kemur á móti og hafnaboltasérfræðingar einblína á „úthraðann“ sem verður til sem lykiltölfræði. En kraftur boltans getur valdið sínum eigin skaða. Þetta er nákvæmlega það sem gerist þegar einn hlutur beitir krafti á annan – sá fyrri verður einnig fyrir krafti (jafnstórum að stærð og gagnstæðum að stefnu). Fjölmargar algengar upplifanir, eins og að reka tána í eða spyrna sér frá gólfinu í stökki, staðfesta þetta. Þetta er nákvæmlega tekið fram í {{term}}þriðja lögmáli Newtons um hreyfingu{{/term}}.
+Kastari hafnaboltaliðsins Mariano Rivera var svo mikils metinn að á síðasta keppnisári hans héldu mótherjaliðin kveðjukynningar þegar hann spilaði á leikvöngum þeirra. Minnesota Twins færðu honum einstaka gjöf: Stól gerðan úr brotnum kylfum. Hvaða kast sem er getur brotið kylfu, en með einkenniskasti Rivera – þekktu sem „cutter“ – komu boltinn og kylfan oft saman á punkti sem mölbraut harðviðinn. Yfirleitt hugsum við um hafnabolta- eða mjúkboltaslagara sem beitir krafti á boltann sem kemur á móti og hafnaboltasérfræðingar einbeita sér að „hraða boltans frá kylfu“ sem lykiltölfræði. En kraftur boltans getur valdið sínum eigin skaða. Þetta er nákvæmlega það sem gerist þegar einn hlutur beitir krafti á annan – sá fyrri verður einnig fyrir krafti (jafnstórum og í gagnstæða átt). Fjölmargar algengar upplifanir, eins og að reka tána í eða spyrna sér frá gólfinu í stökki, staðfesta þetta. Þetta er nákvæmlega tekið fram í [[term:þriðja lögmáli Newtons um hreyfingu|import-auto-id1260844]].
 
 <!-- SEG:m42074:note-title:fs-id2688761-title -->
 Þriðja lögmál Newtons um hreyfingu
 
 <!-- SEG:m42074:para:import-auto-id2639627 -->
-Þegar einn hlutur beitir krafti á annan hlut verður fyrri hluturinn fyrir krafti sem er jafnstór að stærð og gagnstæður að stefnu þeim krafti sem hann beitir.
+Þegar einn hlutur beitir krafti á annan hlut verður sá fyrri fyrir krafti sem er jafnstór og í gagnstæða átt við þann kraft sem hann beitir.
 
 <!-- SEG:m42074:para:import-auto-id1460190 -->
-Þetta lögmál táknar ákveðna [[i:samhverfu í náttúrunni]]: Kraftar koma alltaf fyrir í pörum og einn hlutur getur ekki beitt krafti á annan án þess að verða sjálfur fyrir krafti. Við vísum stundum lauslega til þessa lögmáls sem „átak-gagntak“, þar sem krafturinn sem beitt er er átakið og krafturinn sem verður fyrir í kjölfarið er gagntakið. Þriðja lögmál Newtons hefur hagnýtt gildi við að greina uppruna krafta og skilja hvaða kraftar eru ytri kerfi.
+Þetta lögmál táknar ákveðna [[i:samhverfu í náttúrunni]]: Kraftar koma alltaf fyrir í pörum og einn hlutur getur ekki beitt krafti á annan án þess að verða sjálfur fyrir krafti. Við vísum stundum lauslega til þessa lögmáls sem „átak-gagnátak“, þar sem krafturinn sem beitt er er átakið og krafturinn sem verður fyrir í kjölfarið er gagnátakið. Þriðja lögmál Newtons hefur hagnýtt gildi við að greina uppruna krafta og skilja hvaða kraftar eru ytri fyrir kerfi.
 
 <!-- SEG:m42074:para:import-auto-id2301470 -->
-Við getum auðveldlega séð þriðja lögmál Newtons að verki með því að skoða hvernig fólk hreyfir sig úr stað. Ímyndum okkur sundmann sem spyrnir sér frá sundlaugarbakkanum, eins og sýnt er á [[xref:import-auto-id2338100]]. Hún spyrnir á móti laugarveggnum með fótunum og hraðar sér í [[i:gagnstæða]] átt við spyrnuna. Veggurinn hefur beitt jafnstórum og gagnstæðum krafti til baka á sundmanninn. Þú gætir haldið að tveir jafnstórir og gagnstæðir kraftar myndu núllast út, en þeir gera það ekki [[i:vegna þess að þeir verka á mismunandi kerfi]]. Í þessu tilfelli eru tvö kerfi sem við gætum rannsakað: sundmaðurinn eða veggurinn. Ef við veljum sundmanninn sem kerfið sem við höfum áhuga á, eins og á myndinni, þá er [[MATH:1]] ytri kraftur á þetta kerfi og hefur áhrif á hreyfingu þess. Sundmaðurinn hreyfist í stefnu [[MATH:2]]. Aftur á móti verkar krafturinn [[MATH:3]] á vegginn en ekki á kerfið sem við höfum áhuga á. Þannig hefur [[MATH:4]] ekki bein áhrif á hreyfingu kerfisins og núllar ekki út [[MATH:5]]. Taktu eftir að sundmaðurinn spyrnir í gagnstæða átt við þá sem hún vill hreyfast í. Gagntakið við spyrnu hennar er því í þá átt sem óskað er.
+Við getum auðveldlega séð þriðja lögmál Newtons að verki með því að skoða hvernig fólk hreyfir sig. Ímyndum okkur sundmann sem spyrnir sér frá sundlaugarbakkanum, eins og sýnt er á [[xref:import-auto-id2338100]]. Hún spyrnir á móti laugarveggnum með fótunum og fær hröðun í [[i:gagnstæða]] átt við spyrnuna. Veggurinn hefur beitt jafnstórum og gagnstæðum krafti á sundmanninn. Þú gætir haldið að tveir jafnstórir og gagnstæðir kraftar myndu núllast út, en þeir gera það ekki [[i:vegna þess að þeir verka á mismunandi kerfi]]. Í þessu tilfelli eru tvö kerfi sem við gætum rannsakað: sundmaðurinn eða veggurinn. Ef við veljum sundmanninn sem kerfið sem vekur áhuga, eins og á myndinni, þá er [[MATH:1]] ytri kraftur á þetta kerfi og hefur áhrif á hreyfingu þess. Sundmaðurinn hreyfist í átt að [[MATH:2]]. Aftur á móti verkar krafturinn [[MATH:3]] á vegginn en ekki á kerfið sem vekur áhuga okkar. Þannig hefur [[MATH:4]] ekki bein áhrif á hreyfingu kerfisins og núllar ekki út [[MATH:5]]. Taktu eftir að sundmaðurinn spyrnir í gagnstæða átt við þá átt sem hún vill hreyfast í. Gagnátakið við spyrnu hennar er því í þá átt sem óskað er.
 
 <!-- SEG:m42074:caption:import-auto-id2338100-caption -->
-Þegar sundmaðurinn beitir kraftinum [[MATH:6]] á vegginn hraðar hún sér í gagnstæða átt við spyrnuna. Þetta þýðir að heildarytrikrafturinn á hana er í gagnstæða átt við [[MATH:7]]. Þessi andstaða á sér stað vegna þess að, í samræmi við þriðja lögmál Newtons um hreyfingu, beitir veggurinn kraftinum [[MATH:8]] á hana, jafnstórum að stærð en í gagnstæða átt við þann sem hún beitir á hann. Línan í kringum sundmanninn gefur til kynna kerfið sem er til skoðunar. Taktu eftir að [[MATH:9]] verkar ekki á þetta kerfi (sundmanninn) og núllar því ekki út [[MATH:10]]. Þannig sýnir kraftamyndin aðeins [[MATH:11]], [[MATH:12]], þyngdarkraftinn, og [[MATH:13]], flotkraft vatnsins sem heldur uppi þyngd sundmannsins. Lóðréttu kraftarnir [[MATH:14]] og [[MATH:15]] núllast út þar sem engin lóðrétt hreyfing er.
+Þegar sundmaðurinn beitir kraftinum [[MATH:6]] á vegginn fær hún hröðun í gagnstæða átt við spyrnuna. Þetta þýðir að heildarytrikrafturinn á hana er í gagnstæða átt við [[MATH:7]]. Þessi andstaða á sér stað vegna þess að í samræmi við þriðja lögmál Newtons um hreyfingu beitir veggurinn kraftinum [[MATH:8]] á hana, jafnstórum en í gagnstæða átt við þann sem hún beitir á hann. Línan í kringum sundmanninn gefur til kynna kerfið sem vekur áhuga. Taktu eftir að [[MATH:9]] verkar ekki á þetta kerfi (sundmanninn) og núllar því ekki út [[MATH:10]]. Þannig sýnir kraftamyndin aðeins [[MATH:11]], [[MATH:12]], þyngdarkraftinn, og [[MATH:13]], uppdrifskraft vatnsins sem heldur uppi þyngd sundmannsins. Lóðréttu kraftarnir [[MATH:14]] og [[MATH:15]] núllast út þar sem engin lóðrétt hreyfing er.
 
 <!-- SEG:m42074:para:import-auto-id1772663 -->
-Auðvelt er að finna önnur dæmi um þriðja lögmál Newtons. Þegar prófessor gengur fyrir framan töflu beitir hún krafti aftur á bak á gólfið. Gólfið beitir gagntakskrafti áfram á prófessorinn sem veldur því að hún hraðar sér áfram. Á svipaðan hátt hraðar bíll sér vegna þess að jörðin ýtir áfram á drifhjólin sem gagntak við því að drifhjólin ýta aftur á bak á jörðina. Þú getur séð merki þess að hjólin ýti aftur á bak þegar dekk spóla á malarvegi og kasta möl aftur á bak. Í öðru dæmi hreyfast eldflaugar áfram með því að þeyta gasi aftur á bak á miklum hraða. Þetta þýðir að eldflaugin beitir stórum krafti aftur á bak á gasið í brunahólfi eldflaugarinnar og gasið beitir því stórum gagntakskrafti áfram á eldflaugina. Þessi gagntakskraftur er kallaður {{term}}þrýstikraftur{{/term}}. Það er algengur misskilningur að eldflaugar knýi sig áfram með því að ýta á jörðina eða loftið fyrir aftan sig. Þær virka í raun betur í lofttómi, þar sem þær geta auðveldar losað sig við útblásturslofttegundirnar. Þyrlur skapa á svipaðan hátt lyftikraft með því að ýta lofti niður og verða þannig fyrir gagntakskrafti upp á við. Fuglar og flugvélar fljúga einnig með því að beita krafti á loft í gagnstæða átt við þann kraft sem þau þurfa. Til dæmis beita vængir fugls krafti á loft niður og aftur á bak til að fá lyftikraft og hreyfast áfram. Kolkrabbi knýr sig áfram í vatni með því að sprauta vatni í gegnum trekt úr líkama sínum, svipað og sæþota. Hnefaleikakappar og aðrir bardagalistakappar verða fyrir gagntakskröftum þegar þeir slá, og brjóta stundum höndina á sér við að slá í líkama andstæðings.
+Auðvelt er að finna önnur dæmi um þriðja lögmál Newtons. Þegar prófessor gengur fyrir framan töflu beitir hún krafti aftur á bak á gólfið. Gólfið beitir gagnkrafti fram á við á prófessorinn sem veldur því að hún fær hröðun fram á við. Á svipaðan hátt fær bíll hröðun vegna þess að jörðin ýtir fram á við á drifhjólin sem gagnátak við það að drifhjólin ýta aftur á bak á jörðina. Þú getur séð merki þess að hjólin ýti aftur á bak þegar dekk spóla á malarvegi og kasta steinum aftur á bak. Í öðru dæmi hreyfast eldflaugar áfram með því að þeyta gasi aftur á bak á miklum hraða. Þetta þýðir að eldflaugin beitir stórum krafti aftur á bak á gasið í brunahólfi eldflaugarinnar og gasið beitir því stórum gagnkrafti fram á við á eldflaugina. Þessi gagnkraftur er kallaður [[term:þrýstikraftur|import-auto-id1295864]]. Það er algengur misskilningur að eldflaugar knýi sig áfram með því að ýta á jörðina eða loftið fyrir aftan sig. Þær virka í raun betur í lofttómi, þar sem þær geta auðveldara losað sig við útblásturslofttegundirnar. Þyrlur skapa á svipaðan hátt lyftikraft með því að ýta lofti niður og verða þannig fyrir uppdrifskrafti sem gagnátaki. Fuglar og flugvélar fljúga einnig með því að beita krafti á loft í gagnstæða átt við þann kraft sem þau þurfa. Til dæmis þrýsta vængir fugls lofti niður og aftur á bak til að fá lyftikraft og hreyfast áfram. Kolkrabbi knýr sig áfram í vatni með því að sprauta vatni í gegnum trekt úr líkama sínum, svipað og sæþota. Hnefaleikakappar og aðrir bardagaíþróttamenn verða fyrir gagnkröftum þegar þeir slá, og brjóta stundum höndina á sér við að slá í líkama andstæðings.
 
 <!-- SEG:m42074:example-title:fs-id2355307-title -->
-Lausnarleið
+Að ná upp hraða: Að velja rétt kerfi
 
 <!-- SEG:m42074:para:import-auto-id1645990 -->
 Eðlisfræðiprófessor ýtir kerru með sýnikennslutækjum að fyrirlestrasal, eins og sést á [[xref:import-auto-id2324690]]. Massi hennar er 65,0 kg, massi kerrunnar er 12,0 kg og massi tækjanna er 7,0 kg. Reiknaðu hröðunina sem myndast þegar prófessorinn beitir 150 N krafti aftur á bak á gólfið. Allir kraftar sem vinna gegn hreyfingunni, svo sem núningur á hjólum kerrunnar og loftmótstaða, eru samtals 24,0 N.
 
+<!-- SEG:m42074:para-title:fs-id2687234-title -->
+Aðferð
+
 <!-- SEG:m42074:para:import-auto-id1769338 -->
-Þar sem þau hröðunast sem ein heild skilgreinum við kerfið sem prófessorinn, vagninn og búnaðinn. Þetta er kerfi 1 í [[xref:import-auto-id2324690]]. Prófessorinn ýtir aftur á bak með kraftinum [[MATH:16]] sem er 150 N. Samkvæmt þriðja lögmáli Newtons beitir gólfið framvirkandi andkrafti [[MATH:17]] sem er 150 N á kerfi 1. Þar sem öll hreyfing er lárétt getum við gert ráð fyrir að enginn heildarkraftur sé í lóðrétta stefnu. Vandamálið er því einvítt eftir lárétta ásnum. Eins og fram hefur komið vinnur [[MATH:18]] gegn hreyfingunni og er því í gagnstæða átt við [[MATH:19]]. Athugið að við tökum ekki með kraftana [[MATH:20]] eða [[MATH:21]] því þeir eru innri kraftar og við tökum ekki með [[MATH:22]] því hann verkar á gólfið, ekki á kerfið. Engir aðrir marktækir kraftar verka á kerfi 1. Ef hægt er að finna ytri heildarkraftinn út frá öllum þessum upplýsingum getum við notað annað lögmál Newtons til að finna hröðunina eins og beðið var um. Sjá kraftamyndina á myndinni.
+Þar sem þau hröðunast sem ein heild skilgreinum við kerfið sem kennarann, vagninn og búnaðinn. Þetta er kerfi 1 í [[xref:import-auto-id2324690]]. Kennarinn ýtir aftur á bak með kraftinum [[MATH:16]] sem er 150 N. Samkvæmt þriðja lögmáli Newtons beitir gólfið framvirkum andkrafti [[MATH:17]] sem er 150 N á kerfi 1. Þar sem öll hreyfing er lárétt getum við gert ráð fyrir að enginn heildarkraftur sé í lóðrétta stefnu. Vandamálið er því einvítt eftir lárétta ásnum. Eins og fram kemur er [[MATH:18]] á móti hreyfingunni og er því í gagnstæða átt við [[MATH:19]]. Athugið að við tökum ekki með kraftana [[MATH:20]] eða [[MATH:21]] því þetta eru innri kraftar og við tökum ekki með [[MATH:22]] því hann verkar á gólfið, ekki á kerfið. Engir aðrir marktækir kraftar verka á kerfi 1. Ef hægt er að finna ytri heildarkraftinn út frá öllum þessum upplýsingum getum við notað annað lögmál Newtons til að finna hröðunina eins og beðið er um. Sjá skýringarmynd krafta á myndinni.
 
 <!-- SEG:m42074:para-title:import-auto-id1333658-title -->
 Lausn
@@ -62,19 +65,22 @@ Massi kerfis 1 er
 Umræða
 
 <!-- SEG:m42074:para:import-auto-id2396019 -->
-Enginn af kröftunum milli íhluta kerfis 1, eins og milli handa prófessorsins og vagnsins, leggur til ytri heildarkraftsins því þeir eru innri í kerfi 1. Önnur leið til að líta á þetta er að taka eftir því að kraftar milli íhluta kerfis núllast út því þeir eru jafnstórir en í gagnstæða stefnu. Til dæmis veldur krafturinn sem prófessorinn beitir á vagninn jafnstórum og gagnstæðum krafti til baka á hana. Í þessu tilviki verka báðir kraftar á sama kerfið og núllast því út. Þannig núllast innri kraftar (milli íhluta kerfis) út. Það var lykilatriði að velja kerfi 1 til að leysa þetta vandamál.
+Enginn af kröftunum milli íhluta kerfis 1, eins og milli handa kennarans og vagnsins, stuðlar að ytri heildarkraftinum því þeir eru innri kraftar í kerfi 1. Önnur leið til að líta á þetta er að taka eftir því að kraftar milli íhluta kerfis núllast út því þeir eru jafnstórir en í gagnstæða átt. Til dæmis veldur krafturinn sem kennarinn beitir á vagninn jafnstórum og gagnstæðum krafti aftur á hana. Í þessu tilfelli verka báðir kraftar á sama kerfið og núllast því út. Þannig núllast innri kraftar (milli íhluta kerfis) út. Það var lykilatriði að velja kerfi 1 til að leysa þetta dæmi.
 
 <!-- SEG:m42074:caption:import-auto-id2324690-caption -->
-Prófessor ýtir á vagn með sýnikennslutækjum. Lengd örvanna er í réttu hlutfalli við stærð kraftanna (nema fyrir [[MATH:29]], þar sem hann er of lítill til að teikna í réttum skala). Mismunandi spurningum er svarað í hverju dæmi; því verður að skilgreina kerfið sem er til skoðunar á mismunandi hátt fyrir hvert þeirra. Kerfi 1 hentar fyrir þetta dæmi, þar sem spurt er um hröðun alls hóps hlutanna. Aðeins [[MATH:30]] og [[MATH:31]] eru ytri kraftar sem verka á kerfi 1 eftir hreyfilínunni. Allir aðrir kraftar núllast annaðhvort út eða verka á umheiminn. Kerfi 2 er valið fyrir [[xref:fs-id2092526]] svo að [[MATH:32]] verði ytri kraftur og komi inn í annað lögmál Newtons. Athugið að kraftamyndirnar, sem gera okkur kleift að beita öðru lögmáli Newtons, breytast með völdu kerfi.
+Kennari ýtir á vagn með sýnikennslubúnaði. Lengd örvanna er í réttu hlutfalli við stærð kraftanna (nema fyrir [[MATH:29]], þar sem hann er of lítill til að teikna í réttum skala). Mismunandi spurningar eru spurðar í hverju dæmi; því verður að skilgreina kerfið sem um ræðir á mismunandi hátt fyrir hvert þeirra. Kerfi 1 hentar fyrir þetta dæmi, þar sem spurt er um hröðun alls hópsins af hlutum. Aðeins [[MATH:30]] og [[MATH:31]] eru ytri kraftar sem verka á kerfi 1 eftir hreyfingarásnum. Allir aðrir kraftar núllast annaðhvort út eða verka á umheiminn. Kerfi 2 er valið fyrir [[xref:fs-id2092526]] svo að [[MATH:32]] verði ytri kraftur og komi inn í annað lögmál Newtons. Athugið að skýringarmyndir krafta, sem gera okkur kleift að beita öðru lögmáli Newtons, eru breytilegar eftir því hvaða kerfi er valið.
 
 <!-- SEG:m42074:example-title:fs-id2092526-title -->
-Aðferð
+Kraftur á vagninn – Val á nýju kerfi
 
 <!-- SEG:m42074:para:import-auto-id1572504 -->
-Reiknaðu kraftinn sem prófessorinn beitir á vagninn í [[xref:import-auto-id2324690]] og notaðu gögn úr fyrra dæmi ef þörf krefur.
+Reiknaðu kraftinn sem kennarinn beitir á vagninn í [[xref:import-auto-id2324690]] og notaðu gögn úr fyrra dæmi ef þörf krefur.
+
+<!-- SEG:m42074:para-title:import-auto-id2423425-title -->
+Aðferð
 
 <!-- SEG:m42074:para:import-auto-id1745150 -->
-Ef við skilgreinum nú kerfið sem er til skoðunar sem vagninn ásamt búnaði (kerfi 2 í [[xref:import-auto-id2324690]]), þá er ytri heildarkrafturinn á kerfi 2 sá kraftur sem prófessorinn beitir á vagninn að frádregnum núningi. Krafturinn sem hún beitir á vagninn, [[MATH:33]], er ytri kraftur sem verkar á kerfi 2. [[MATH:34]] var innri kraftur í kerfi 1, en hann er ytri kraftur í kerfi 2 og mun koma inn í annað lögmál Newtons fyrir kerfi 2.
+Ef við skilgreinum nú kerfið sem um ræðir sem vagninn ásamt búnaði (kerfi 2 í [[xref:import-auto-id2324690]]), þá er ytri heildarkrafturinn á kerfi 2 sá kraftur sem kennarinn beitir á vagninn að frádregnum núningi. Krafturinn sem hún beitir á vagninn, [[MATH:33]], er ytri kraftur sem verkar á kerfi 2. [[MATH:34]] var innri kraftur í kerfi 1, en hann er ytri kraftur í kerfi 2 og mun koma inn í annað lögmál Newtons fyrir kerfi 2.
 
 <!-- SEG:m42074:para-title:import-auto-id2682081-title -->
 Lausn
@@ -113,7 +119,7 @@ Gildið á [[MATH:40]] er gefið, svo við verðum að reikna heildarkraftinn [[
 [[MATH:46]]
 
 <!-- SEG:m42074:para:import-auto-id860562 -->
-Nú getum við fundið kraftinn sem við leituðum að:
+Nú getum við fundið kraftinn sem við leitum að:
 
 <!-- SEG:m42074:para:import-auto-id1518876 -->
 [[MATH:47]]
@@ -131,7 +137,7 @@ Umræða
 Val á kerfi er mikilvægt greiningarskref bæði við lausn verkefna og til að skilja eðlisfræði aðstæðna til hlítar (sem er ekki endilega það sama).
 
 <!-- SEG:m42074:note-title:eip-984-title -->
-Þyngdarkraftstilraun
+Tilraunastofa um þyngdarkraft
 
 <!-- SEG:m42074:para:eip-id2455257 -->
 Sjáðu fyrir þér þyngdarkraftinn sem tveir hlutir beita hvor á annan. Breyttu eiginleikum hlutanna til að sjá hvernig það breytir þyngdarkraftinum.
@@ -140,7 +146,7 @@ Sjáðu fyrir þér þyngdarkraftinn sem tveir hlutir beita hvor á annan. Breyt
 Námstakmarkmið
 
 <!-- SEG:m42074:para:para-00001 -->
-Í lok þessa kafla munt þú geta:
+Í lok þessa kafla muntu geta:
 
 <!-- SEG:m42074:item:list-00001-item-1 -->
 Skilið þriðja lögmál Newtons um hreyfingu.
@@ -158,13 +164,25 @@ Hvaða hlutur eða hlutir beita venjulega kröftum á eftirfarandi hluti á hrey
 (a) Fótboltamaður, þyngdarkraftur, loft og núningur beita venjulega kröftum á fótbolta sem er sparkað í.
 
 <!-- SEG:m42074:solution:fs-id1097242 -->
-(b) Þyngdarkraftur og vatnið í kring beita venjulega kröftum á höfrung sem stekkur. (Höfrungurinn hreyfir vöðva sína til að beita krafti á vatnið. Vatnið beitir jafnstórum krafti á höfrunginn, sem veldur hreyfingu höfrungsins.)
+(b) Þyngdarkraftur og vatnið í kring beita venjulega kröftum á höfrung sem stekkur. (Höfrungurinn hreyfir vöðva sína til að beita krafti á vatnið. Vatnið beitir jafnstórum krafti á höfrunginn sem veldur hreyfingu höfrungsins.)
 
 <!-- SEG:m42074:solution:fs-id1593948 -->
 (c) Þyngdarkraftur og loft beita kröftum á fallhlífarstökkvara sem svífur til jarðar.
 
 <!-- SEG:m42074:problem:fs-id1496936 -->
-Bolti með massann 0,25 kg skellur á lofti íþróttasalar með krafti sem nemur 78,0 N. Hver er heildarkrafturinn á boltann?
+Bolti með massann 0,25 kg skellur á lofti íþróttasalar með kraftinum 78,0 N. Hver er heildarkrafturinn á boltann?
+
+<!-- SEG:m42074:item:fs-id1394705-item-1 -->
+2,50 N niður á við
+
+<!-- SEG:m42074:item:fs-id1394705-item-2 -->
+75,5 N niður á við
+
+<!-- SEG:m42074:item:fs-id1394705-item-3 -->
+78,0 N niður á við
+
+<!-- SEG:m42074:item:fs-id1394705-item-4 -->
+80,5 N niður á við
 
 <!-- SEG:m42074:solution:fs-id1399283 -->
 (a)
@@ -172,38 +190,62 @@ Bolti með massann 0,25 kg skellur á lofti íþróttasalar með krafti sem nemu
 <!-- SEG:m42074:problem:fs-id1457612 -->
 Hvað af eftirfarandi er satt?
 
+<!-- SEG:m42074:item:fs-id1643114-item-1 -->
+Jörðin beitir þyngdarkrafti á líkama þinn og líkami þinn beitir minni krafti á jörðina, því massi þinn er minni en massi jarðar.
+
+<!-- SEG:m42074:item:fs-id1643114-item-2 -->
+Tunglið er á sporbaug um jörðina vegna þess að jörðin beitir krafti á tunglið og tunglið beitir jafnstórum krafti í sömu stefnu á jörðina.
+
+<!-- SEG:m42074:item:fs-id1643114-item-3 -->
+Eldflaug í flugtaki beitir jörðina jafnstórum krafti og jörðin beitir eldflauginni.
+
+<!-- SEG:m42074:item:fs-id1643114-item-4 -->
+Flugvél sem flýgur á jöfnum hraða verður ekki fyrir áhrifum af þyngdarkrafti.
+
 <!-- SEG:m42074:solution:fs-id1682532 -->
 (c)
 
 <!-- SEG:m42074:problem:fs-id1459519 -->
-Kyrrstæður skautari A ýtir kyrrstæðum skautara B, sem fær þá hröðunina 5,0 m/s[[sup:2]]. Skautari A hreyfist ekki. Þar sem kraftar verka í átaks- og gagntakspörum, útskýrðu hvers vegna skautari A hreyfðist ekki?
+Kyrrstæður skautari A ýtir kyrrstæðum skautara B, sem fær þá hröðunina 5,0 m/s[[sup:2]]. Skautari A hreyfist ekki. Þar sem kraftar verka í aðgerðar-viðbragðspörum, útskýrðu hvers vegna skautari A hreyfðist ekki?
 
 <!-- SEG:m42074:solution:fs-id1659424 -->
-Við getum útskýrt þetta á einfaldastan hátt með því að skilgreina eitt kerfi sem skautara A og ísinn. Skautari B er utan þessa kerfis. Þegar skautari A beitir krafti á skautara B, beitir skautari B jafnstórum krafti í gagnstæða átt. Fyrir vikið hraða kerfin tvö frá hvoru öðru. Skautari A beitir krafti á ísinn með því að grafa skautana sína niður og ísinn beitir jafnstórum krafti til baka, en þar sem þessir kraftar eru innri kraftar kerfisins verður engin afstæð hreyfing. Skautari A hreyfist ekki miðað við ísinn.
+Við getum útskýrt þetta á einfaldastan hátt með því að skilgreina eitt kerfi sem skautara A og ísinn. Skautari B er utan þessa kerfis. Þegar skautari A beitir krafti á skautara B, beitir skautari B jafnstórum krafti en í gagnstæða stefnu. Fyrir vikið hraða kerfin tvö frá hvoru öðru. Skautari A beitir krafti á ísinn með því að grafa skautana sína niður og ísinn beitir jafnstórum krafti til baka, en þar sem þessir kraftar eru innri kraftar kerfisins verður engin afstæð hreyfing. Skautari A hreyfist ekki miðað við ísinn.
 
 <!-- SEG:m42074:problem:fs-id1418754 -->
-Straumur í á beitir 9,0 N krafti á blöðru sem flýtur í ánni. Vindur beitir 13,0 N krafti á blöðruna í gagnstæða átt. Teiknaðu kraftamynd til að sýna kraftana sem verka á blöðruna. Notaðu kraftamyndina til að spá fyrir um áhrifin á blöðruna.
+Straumur í á beitir kraftinum 9,0 N á blöðru sem flýtur í ánni. Vindur beitir kraftinum 13,0 N á blöðruna í gagnstæða stefnu. Teiknaðu kraftamynd til að sýna kraftana sem verka á blöðruna. Notaðu kraftamyndina til að spá fyrir um áhrifin á blöðruna.
 
 <!-- SEG:m42074:solution:fs-id1456192 -->
-Myndin samanstendur af svörtum punkti í miðjunni og tveimur litlum rauðum örvum sem vísa upp (Fb) og niður (Fg) og tveimur löngum rauðum örvum sem vísa til hægri (Fc = 9,0 N) og vinstri (Fw = 13,0 N).
+Myndin samanstendur af svörtum punkti í miðjunni og tveimur stuttum rauðum örvum sem vísa upp (F_upp) og niður (F_þ) og tveimur löngum rauðum örvum sem vísa til hægri (F_str = 9,0 N) og vinstri (F_v=13,0 N).
 
 <!-- SEG:m42074:solution:fs-id1681985 -->
-Á myndinni táknar [[i:F]][[sub:g]] þyngdarkraftinn á blöðruna og [[i:F[[sub:b]]]] táknar flotkraftinn. Þessir tveir kraftar eru jafnstórir og í gagnstæðar áttir. [[i:F]][[sub:c]] táknar kraft straumsins. [[i:F]][[sub:w]] táknar kraft vindsins. Heildarkrafturinn á blöðruna verður [[MATH:49]] N og blaðran mun hraða í þá átt sem vindurinn blæs.
+Á myndinni táknar [[i:F]][[sub:þ]] þyngdarkraftinn á blöðruna og [[i:F[[sub:upp]]]] táknar uppdrifskraftinn. Þessir tveir kraftar eru jafnstórir og í gagnstæðar stefnur. [[i:F]][[sub:str]] táknar straumkraftinn. [[i:F]][[sub:v]] táknar vindkraftinn. Heildarkrafturinn á blöðruna verður [[MATH:49]] N og blaðran mun hraða í þá átt sem vindurinn blæs.
 
 <!-- SEG:m42074:problem:fs-id1347158 -->
-Krafti er beitt til að hraða hlut á sléttu, ísuðu yfirborði. Þegar krafturinn hættir að verka, hvað af eftirfarandi verður satt? (Gefðu þér að núningur sé enginn.)
+Krafti er beitt til að hraða hlut á sléttu ísuðu yfirborði. Þegar krafturinn hættir að verka, hvað af eftirfarandi verður satt? (Gefðu þér að núningur sé enginn.)
+
+<!-- SEG:m42074:item:fs-id1819267-item-1 -->
+Hröðun hlutarins verður núll.
+
+<!-- SEG:m42074:item:fs-id1819267-item-2 -->
+Hraði hlutarins verður núll.
+
+<!-- SEG:m42074:item:fs-id1819267-item-3 -->
+Hröðun hlutarins heldur áfram að aukast með jöfnum hraða.
+
+<!-- SEG:m42074:item:fs-id1819267-item-4 -->
+Hluturinn hraðar, en í gagnstæða stefnu.
 
 <!-- SEG:m42074:solution:fs-id1276418 -->
 (a)
 
 <!-- SEG:m42074:problem:fs-id1911733 -->
-Fall fallhlífarstökkvara til jarðar ræðst af tveimur gagnstæðum kröftum. Þyngdarkraftur upp á 539 N verkar á fallhlífarstökkvarann. Eftir 2 sekúndur opnar hún fallhlífina og verður fyrir loftmótstöðu upp á 615 N. Á hvaða hraða fellur fallhlífarstökkvarinn eftir 10 sekúndur?
+Fall fallhlífarstökkvara til jarðar ræðst af tveimur andstæðum kröftum. Þyngdarkraftur upp á 539 N verkar á fallhlífarstökkvarann. Eftir 2 sekúndur opnar hún fallhlífina og verður fyrir loftmótstöðu upp á 615 N. Á hvaða hraða fellur fallhlífarstökkvarinn eftir 10 sekúndur?
 
 <!-- SEG:m42074:solution:fs-id1820006 -->
-Þar sem [[MATH:50]] hefur fallhlífarstökkvarinn massann [[MATH:51]].
+Þar sem [[MATH:50]] er massi fallhlífarstökkvarans [[MATH:51]].
 
 <!-- SEG:m42074:solution:fs-id1356337 -->
-Fyrstu 2 sekúndurnar hraðar fallhlífarstökkvarinn með 9,8 m/s[[sup:2]].
+Fyrstu 2 sekúndurnar er hröðun fallhlífarstökkvarans 9,8 m/s[[sup:2]].
 
 <!-- SEG:m42074:solution:fs-id1400037 -->
 [[MATH:52]]
@@ -212,7 +254,7 @@ Fyrstu 2 sekúndurnar hraðar fallhlífarstökkvarinn með 9,8 m/s[[sup:2]].
 Hraði hennar eftir 2 sekúndur er 19,6 m/s.
 
 <!-- SEG:m42074:solution:fs-id1056493 -->
-Frá 2 s til 10 s er heildarkrafturinn á fallhlífarstökkvarann 539 N – 615 N, eða 76 N upp á við.
+Frá 2 sekúndum til 10 sekúndna er heildarkrafturinn á fallhlífarstökkvarann 539 N – 615 N, eða 76 N upp á við.
 
 <!-- SEG:m42074:solution:fs-id1819797 -->
 [[MATH:53]]
@@ -224,25 +266,49 @@ Frá 2 s til 10 s er heildarkrafturinn á fallhlífarstökkvarann 539 N – 615 
 Eftir 10 sekúndur fellur fallhlífarstökkvarinn til jarðar á 8,4 m/s.
 
 <!-- SEG:m42074:problem:fs-id1691134 -->
-Flugfreyja ýtir vagni niður ganginn í flugvél á flugi. Við ákvörðun á hröðun vagnsins miðað við flugvélina, hvaða þátt þarft þú ekki að taka tillit til?
+Flugfreyja ýtir kerru niður ganginn í flugvél á flugi. Hvaða þátt þarftu ekki að taka tillit til þegar þú ákvarðar hröðun kerrunnar miðað við flugvélina?
+
+<!-- SEG:m42074:item:fs-id1643026-item-1 -->
+Núningskraft hjóla kerrunnar.
+
+<!-- SEG:m42074:item:fs-id1643026-item-2 -->
+Kraftinn sem fætur flugfreyjunnar beita á gólfið.
+
+<!-- SEG:m42074:item:fs-id1643026-item-3 -->
+Hraða flugvélarinnar.
+
+<!-- SEG:m42074:item:fs-id1643026-item-4 -->
+Massa hlutanna í kerrunni.
 
 <!-- SEG:m42074:solution:fs-id1804042 -->
 (c)
 
 <!-- SEG:m42074:problem:fs-id1621954 -->
-Garðyrkjumaður er að fara með hjólbörur fullar af mold niður brekku. Skilgreindu kerfið sem þú myndir greina og skráðu alla krafta sem þú þyrftir að taka með til að reikna út hröðun hjólbörunnar.
+Garðyrkjumaður er að fara með hjólbörur fullar af jarðvegi niður brekku. Skilgreindu kerfið sem þú myndir greina og teldu upp alla krafta sem þú þyrftir að taka með til að reikna út hröðun hjólbaranna.
 
 <!-- SEG:m42074:solution:fs-id1499526 -->
-Kerfið inniheldur garðyrkjumanninn og hjólbörurnar með innihaldi. Eftirfarandi krafta er mikilvægt að taka með: þyngd hjólbörunnar, þyngd garðyrkjumannsins, þverkraft fyrir hjólböruna og garðyrkjumanninn, kraftinn sem garðyrkjumaðurinn beitir á jörðina og jafnstóran kraft sem jörðin beitir til baka á garðyrkjumanninn, og allan núning í hjólum hjólbörunnar.
+Kerfið inniheldur garðyrkjumanninn og hjólbörurnar með innihaldi þeirra. Eftirfarandi krafta er mikilvægt að taka með: þyngd hjólbaranna, þyngd garðyrkjumannsins, þverkraft fyrir hjólbörurnar og garðyrkjumanninn, kraftinn sem garðyrkjumaðurinn beitir á jörðina og jafnstóran kraft sem jörðin beitir til baka á garðyrkjumanninn, og allan núning í hjólum hjólbaranna.
 
 <!-- SEG:m42074:problem:fs-id1340680 -->
-Tveir vatnaskíðamenn, með massa 48 kg og 61 kg, eru að búa sig undir að vera dregnir á eftir sama bátnum. Þegar báturinn hraðar sér, hraðar línan sem skíðamennirnir halda í sér með honum og beitir heildarkrafti upp á 290 N á skíðamennina. Með hvaða hraða munu skíðamennirnir hraða sér?
+Tveir vatnaskíðamenn, með massa 48 kg og 61 kg, búa sig undir að vera dregnir á eftir sama bátnum. Þegar báturinn hraðar sér, hraðar línan sem skíðamennirnir halda í sér með honum og beitir heildarkrafti upp á 290 N á skíðamennina. Hver verður hröðun skíðamannanna?
+
+<!-- SEG:m42074:item:fs-id1121626-item-1 -->
+10,8 m/s[[sup:2]]
+
+<!-- SEG:m42074:item:fs-id1121626-item-2 -->
+2,7 m/s[[sup:2]]
+
+<!-- SEG:m42074:item:fs-id1121626-item-3 -->
+6,0 m/s[[sup:2]] og 4,8 m/s[[sup:2]]
+
+<!-- SEG:m42074:item:fs-id1121626-item-4 -->
+5,3 m/s[[sup:2]]
 
 <!-- SEG:m42074:solution:fs-id1416057 -->
 (b)
 
 <!-- SEG:m42074:problem:fs-id1362034 -->
-Listskautakona hefur massa 40 kg og massi dansfélaga hennar er 50 kg. Hún spyrnir sér frá ísnum með krafti 120 N, sem veldur því að hún og félagi hennar hreyfast áfram. Reiknaðu hröðun parsins. Gerðu ráð fyrir að allir kraftar sem vinna gegn hreyfingunni, svo sem núningur og loftmótstaða, séu samtals 5,0 N.
+Listskautakona hefur massann 40 kg og massi dansfélaga hennar er 50 kg. Hún spyrnir sér frá ísnum með krafti upp á 120 N, sem veldur því að hún og félagi hennar hreyfast áfram. Reiknaðu hröðun parsins. Gerðu ráð fyrir að allir kraftar sem vinna gegn hreyfingunni, svo sem núningur og loftmótstaða, séu samtals 5,0 N.
 
 <!-- SEG:m42074:solution:fs-id1261748 -->
 Kerfið sem verður fyrir hröðun eru listskautararnir tveir saman.
@@ -266,55 +332,55 @@ Parið hraðar sér áfram um 1,28 m/s[[sup:2]].
 Samantekt kafla
 
 <!-- SEG:m42074:item:fs-id2332580-item-1 -->
-{{term}}Þriðja lögmál Newtons um hreyfingu{{/term}} táknar grundvallarsamhverfu í náttúrunni. Það segir: Alltaf þegar einn hlutur beitir krafti á annan hlut, verður fyrri hluturinn fyrir krafti sem er jafnstór og í gagnstæða átt við kraftinn sem fyrri hluturinn beitir.
+[[term:Þriðja lögmál Newtons um hreyfingu|term-00001]] táknar grundvallarsamhverfu í náttúrunni. Það segir: Alltaf þegar einn hlutur beitir krafti á annan hlut, verður fyrri hluturinn fyrir krafti sem er jafnstór og í gagnstæða stefnu við kraftinn sem fyrri hluturinn beitir.
 
 <!-- SEG:m42074:item:fs-id2332580-item-2 -->
-{{term}}Þrýstikraftur{{/term}} er viðbragðskraftur sem ýtir hlut áfram sem svar við krafti aftur á bak. Eldflaugum, flugvélum og bílum er ýtt áfram með viðbragðsþrýstikrafti.
+[[term:Þrýstikraftur|term-00002]] er gagntakskraftur sem ýtir hlut áfram til að bregðast við krafti aftur á bak. Eldflaugum, flugvélum og bílum er ýtt áfram með þrýstikrafti.
 
 <!-- SEG:m42074:title:fs-id1460367-title -->
-Hugmyndafræðilegar spurningar
+Huglægar spurningar
 
 <!-- SEG:m42074:problem:import-auto-id2689558 -->
-Þegar þú ferð í loftið í þotu finnurðu fyrir því að þrýstast aftur í sætið. Útskýrðu hvers vegna þú hreyfist aftur á bak í sætinu – er raunverulega kraftur sem verkar aftur á bak á þig? (Sömu rök útskýra hálshnykkjáverka, þar sem höfðinu er að því er virðist kastað aftur á bak.)
+Þegar þú ferð í loftið í þotu finnurðu fyrir því að þrýstast aftur í sætið. Útskýrðu hvers vegna þú hreyfist aftur á bak í sætinu – er raunverulega kraftur sem verkar aftur á bak á þig? (Sömu rök skýra hálshnykk, þar sem höfuðið virðist kastast aftur á bak.)
 
 <!-- SEG:m42074:problem:import-auto-id2674155 -->
 Tæki sem hefur verið notað síðan á fimmta áratugnum til að mæla bakslag eða hrökk líkamans vegna hjartsláttar er „ballistocardiograph“ (hjartsláttarrit). Hvaða eðlisfræðilögmál eiga við hér til að mæla kraft hjartasamdráttar? Hvernig gætum við smíðað slíkt tæki?
 
 <!-- SEG:m42074:problem:import-auto-id861584 -->
-Lýstu aðstæðum þar sem eitt kerfi beitir krafti á annað og verður þar af leiðandi fyrir krafti sem er jafnstór og í gagnstæða átt. Hvaða hreyfilögmál Newtons eiga við?
+Lýstu aðstæðum þar sem eitt kerfi beitir krafti á annað og verður þar af leiðandi fyrir krafti sem er jafnstór og í gagnstæða stefnu. Hvaða lögmál Newtons um hreyfingu eiga við?
 
 <!-- SEG:m42074:problem:import-auto-id2631801 -->
-Af hverju hrökkur venjulegur riffill (slær aftur á bak) þegar skotið er úr honum? Hlaup hrökklausra riffla er opið í báða enda. Lýstu því hvernig þriðja lögmál Newtons á við þegar skotið er úr slíkum riffli. Er óhætt að standa nálægt fyrir aftan hann þegar skotið er?
+Af hverju fær venjulegur riffill bakslag þegar skotið er úr honum? Hlaup bakslagslauss riffils er opið í báða enda. Lýstu því hvernig þriðja lögmál Newtons á við þegar skotið er úr slíkum riffli. Er óhætt að standa nálægt fyrir aftan hann þegar skotið er?
 
 <!-- SEG:m42074:problem:import-auto-id1919111 -->
-Línumaður í amerískum fótbolta rökstyður að það sé tilgangslaust að reyna að ýta harðar en andstæðingurinn, því sama hversu fast hann ýtir mun hann verða fyrir jafnstórum og gagnstæðum krafti frá hinum leikmanninum. Notaðu lögmál Newtons og teiknaðu kraftamynd af viðeigandi kerfi til að útskýra hvernig hann getur samt ýtt harðar en andstæðingurinn ef hann er nógu sterkur.
+Línumaður í amerískum fótbolta telur tilgangslaust að reyna að ýta á móti andstæðingnum þar sem hann mun alltaf verða fyrir jafnstórum og gagnstæðum krafti frá hinum leikmanninum, sama hversu fast hann ýtir. Notaðu lögmál Newtons og teiknaðu kraftamynd af viðeigandi kerfi til að útskýra hvernig hann getur samt ýtt andstæðingnum frá sér ef hann er nógu sterkur.
 
 <!-- SEG:m42074:problem:import-auto-id2159238 -->
-Þriðja lögmál Newtons um hreyfingu segir okkur að kraftar koma alltaf fyrir í pörum af jafnstórum og gagnstæðum stærðum. Útskýrðu hvernig valið á „athugunarkerfinu“ hefur áhrif á hvort slíkt kraftapar núllist út.
+Þriðja lögmál Newtons um hreyfingu segir okkur að kraftar koma alltaf fyrir í pörum sem eru jafnstór og gagnstæð. Útskýrðu hvernig valið á „athugunarkerfinu“ hefur áhrif á það hvort slíkt kraftapar núllist út.
 
 <!-- SEG:m42074:title:fs-id1008305-title -->
-Reikningsdæmi
+Dæmi
 
 <!-- SEG:m42074:problem:import-auto-id1281048 -->
-Hvaða ytri heildarkraftur verkar á 1100 kg stórskotagagnskot sem skotið er úr herskipi ef skotinu er hraðað um [[MATH:59]]? Hver er stærð kraftsins sem stórskotagagnskotið beitir á skipið?
+Hver er heildarytri krafturinn sem verkar á 1100 kg stórskotagagn sem skotið er úr herskipi ef gagnið fær hröðunina [[MATH:59]]? Hver er stærð kraftsins sem stórskotagagnið beitir skipið?
 
 <!-- SEG:m42074:solution:import-auto-id1487580 -->
-Kraftur á skot: [[MATH:60]]
+Kraftur á gagnið: [[MATH:60]]
 
 <!-- SEG:m42074:solution:import-auto-id2297403 -->
-Kraftur beittur á skip = [[MATH:61]], samkvæmt þriðja lögmáli Newtons
+Kraftur sem verkar á skipið = [[MATH:61]], samkvæmt þriðja lögmáli Newtons
 
 <!-- SEG:m42074:problem:import-auto-id1771007 -->
-Andstæðingur er að ýta ruðningsleikmanni aftur á bak með krafti 800 N. Massi leikmannsins sem er að tapa ásamt búnaði er 90,0 kg og hann hraðar sér um [[MATH:62]] aftur á bak. (a) Hver er núningskrafturinn milli fóta leikmannsins sem er að tapa og grassins? (b) Hvaða krafti beitir leikmaðurinn sem er að vinna á jörðina til að hreyfa sig áfram ef massi hans ásamt búnaði er 110 kg? (c) Teiknaðu skissu af aðstæðunum sem sýnir athugunarkerfið sem notað er til að leysa hvern hluta. Fyrir þessar aðstæður, teiknaðu kraftamynd og skrifaðu jöfnu heildarkraftsins.
+Andstæðingur ýtir ruðningsleikmanni aftur á bak með 800 N krafti. Massi leikmannsins sem er að tapa, ásamt búnaði, er 90,0 kg og hann fær hröðunina [[MATH:62]] aftur á bak. (a) Hver er núningskrafturinn milli fóta leikmannsins sem er að tapa og grassins? (b) Hvaða krafti beitir leikmaðurinn sem er að vinna á jörðina til að komast áfram ef massi hans ásamt búnaði er 110 kg? (c) Teiknaðu skissu af aðstæðunum sem sýnir athugunarkerfið sem notað var til að leysa hvorn hluta. Teiknaðu kraftamynd fyrir þessar aðstæður og skrifaðu jöfnu heildarkraftsins.
 
 <!-- SEG:m42074:glossary-term:import-auto-id1046121-term -->
 Þriðja lögmál Newtons um hreyfingu
 
 <!-- SEG:m42074:glossary-def:import-auto-id1046121-def -->
-alltaf þegar einn hlutur beitir krafti á annan hlut, verður fyrri hluturinn fyrir krafti sem er jafnstór og í gagnstæða átt við kraftinn sem fyrri hluturinn beitir
+þegar hlutur beitir krafti á annan hlut, verkar jafnframt á fyrri hlutinn kraftur sem er jafnstór og í gagnstæða stefnu við kraftinn sem fyrri hluturinn beitir
 
 <!-- SEG:m42074:glossary-term:import-auto-id1552615-term -->
 þrýstikraftur
 
 <!-- SEG:m42074:glossary-def:import-auto-id1552615-def -->
-viðbragðskraftur sem ýtir hlut áfram sem svar við krafti aftur á bak; eldflaugum, flugvélum og bílum er ýtt áfram með viðbragðsþrýstikrafti
+gagnkraftur sem þrýstir hlut áfram sem svar við krafti sem verkar aftur á bak; eldflaugum, flugvélum og bílum er þrýst áfram með þrýstikrafti
