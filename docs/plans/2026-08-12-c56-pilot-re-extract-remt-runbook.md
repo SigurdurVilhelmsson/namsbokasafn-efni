@@ -95,42 +95,85 @@ The often-quoted "only 4" is **locked *and* faithful-reviewed** — `03-faithful
 
 ✅ **Locks are enforced absolutely and beat `--force`.** `mtRunDecision` (`tools/api-translate.js`) returns `'locked-skip'` **before** it considers `force`, with the comment *"absolute: editing has begun, never clobber"*. This is a real mechanism, not a convention.
 
-## Gate C — acceptance criteria · ⏳ **BASELINE CAPTURED 2026-08-12; criteria await lead sign-off**
+## Gate C — acceptance criteria · ✅ **BASELINE + FREE PRE-MT RUN EXECUTED 2026-08-12; criteria below await lead sign-off**
 
-> **Baseline, measured with the real `countBracketMarkers`/`bracketMarkerDelta` (not a reimplementation):**
+> ✅ **DONE — evidence: [`docs/audit/2026-08-12-c56-gate-c-baseline.md`](../audit/2026-08-12-c56-gate-c-baseline.md), frozen. Do not restate its tables here.**
 >
-> | metric | `efnafraedi-2e` ch20 | `edlisfraedi-2e` ch04 | total |
-> |---|---|---|---|
-> | modules | 6 | 10 | **16** |
-> | legacy `{{…}}` markers | 80 | 80 | **160** |
-> | malformed `[[type: ` (IS / EN) | 0 / 0 | 4 / 4 | **4 / 4** |
-> | modules with non-zero EN→IS marker delta | 2 | 1 | **3** |
+> **The free half of the pilot has already run.** Per the LEAD amendment (re-extraction costs
+> nothing), both chapters were re-extracted in place, measured, and the tree restored — clean
+> before and after, no ISK spent. **The English side came back completely clean on the first
+> extract:** legacy `128 → 0`, malformed `4 → 0`, raw `<emphasis` residue `0`, and `+5` `[[i:]]`
+> markers restored by the §C58 fix. **The step-③ fix-and-re-extract loop terminates immediately;
+> §C58 was the fix it was waiting for.**
 >
-> **The marker deltas are the live ~2.3%-loss class and make a good improvement target:**
-> `m68845` `{"i":-3}` · **`m68849` `{"i":-12,"link":-1,"xref":-8,"docref":-3}` — 24 markers lost** · `m42137` `{"i":+1}` (a *gained* marker).
+> **Three corrections to the figures this gate was originally written with:**
+> - **Legacy markers are 288, not 160.** The 160 was the **Icelandic side only**; the English side
+>   carries a further **128**. The mixed vintage is stale on *both* sides.
+> - **The marker deltas are VINTAGE MISMATCH, not the ~2.3%-loss class.** `m68845`/`m68849` had
+>   their English re-extracted 2026-07-07 against Icelandic from March. A re-MT eliminates these by
+>   construction. `m42137`'s `{"i":+1}` is the pilot's only genuine same-vintage anomaly — and the
+>   tempting §C58 explanation for it was **tested and falsified** (that module has zero
+>   self-closing `<emphasis/>`).
+> - **`{{b}}` does not occur anywhere in the pilot and `{{i}}` only in ch20's Icelandic.** 84% of
+>   the legacy load is `{{term}}`. A clean pass here is **not** evidence about `{{b}}`.
 >
-> 🔴 **C3's PREDICTION IS FALSIFIED IN ADVANCE — DO NOT RUN THE PILOT AGAINST IT.** The four malformed markers in `m42075` are present in **`02-for-mt` (English) as well**, and §C58 identifies the cause as an **extraction** bug (`<emphasis effect="bold"/>` read as an opening tag). **The extractor is unchanged, so a re-extract reproduces them.**
-> ▶ **Revised: fix §C58 first, then the prediction becomes "`m42075`'s four malformed markers are gone, and no `[[b:` swallows a sibling marker" — which is then a genuine test of the fix.**
+> 🔴 **C3 IS CONSUMED, AND NO HONEST SUBSTITUTE EXISTS — the pilot's paid half now has no
+> falsifiable pre-registered prediction.** C3 was answerable for free, and the answer is yes
+> (`m42075`'s four malformed markers are gone; the `[[i:normal]]` §C58 had destroyed is restored).
+> **A thing checkable for free is a gate, not an experiment.** Both candidate replacements were
+> rejected as dishonest — "deltas go to `{}`" is a tautology, "`m42137`'s `+1` survives" decides
+> nothing. **By this runbook's own standard — *"a pilot with no falsifiable prediction is a
+> rehearsal"* — the paid half is now a rehearsal.** Whether that rehearsal is worth its ISK is
+> **[LEAD]**, and the audit deliberately does not decide it.
 
-## Gate C (criteria, as originally written)
+## Gate C (criteria, revised 2026-08-12 for the LEAD amendment) — **PRE-MT is free and loops; POST-MT costs money and runs once**
 
-**Write these down before running, so the pilot can fail.** A pilot with no falsifiable prediction is a rehearsal.
+**The split is the point.** Everything in the first table is re-checkable at zero cost, so it is a
+**gate to pass before spending** — fail it, fix in code, re-extract, check again. Everything in the
+second table can only be measured after the money is spent.
 
-- [ ] **C1.** Baseline captured for every criterion below, on the pilot chapters, **before** anything is regenerated.
-- [ ] **C2.** Criteria agreed:
+- [x] **C1.** Baseline captured on the pilot chapters before anything was regenerated — **and
+      re-verified after restore**, confirming the committed state was returned intact.
+- [ ] **C2.** Criteria agreed **[LEAD]**.
 
-| # | Criterion | How measured |
-|---|---|---|
-| 1 | **zero** `{{i}} {{b}} {{term}} {{fn}}` in regenerated output | `grep -aoE '\{\{/?(i\|b\|term\|fn)\}\}'` — baseline is non-zero, see Appendix A |
-| 2 | **zero** malformed `[[type: ` markers | `grep -rao '\[\[[a-zA-Z]\+: '` |
-| 3 | per-type marker counts preserved EN→IS | **`bracketMarkerDelta`** from `tools/api-translate.js` — already live and tested; **do not write a new checker** |
-| 4 | inject + render succeed | tool exit codes |
-| 5 | `fidelity:render` no worse than baseline | `npm run fidelity:render` |
-| 6 | every published-file rename accounted for | slug map from predecessor Step 2 (C9 contract) |
-| 7 | cost within estimate | `--dry-run` vs actual |
+### C2a — PRE-MT gate (free · loop until clean · measured on `02-for-mt`)
 
-🔴 **C3 — the falsifiable prediction that makes this an experiment.** `edlisfraedi-2e` ch04 `m42075` carries **4 of §C53's 5 malformed markers**. §C53's design assumes a re-MT regenerates them away. **If they survive, §C53's allowlist decision changes** — and a surviving defect is more informative than a clean pass.
-- [ ] Prediction recorded before the run: *"m42075's four `[[b: ` markers are gone afterwards."*
+| # | Criterion | How measured | 2026-08-12 result |
+|---|---|---|---|
+| P1 | **zero** `{{i}} {{b}} {{term}} {{fn}}` on the **EN** side | `grep -aoE '\{\{/?(i\|b\|term\|fn)\}\}'` | ✅ `128 → 0` |
+| P2 | **zero** malformed `[[type: ` on the **EN** side | `grep -ao '\[\[[A-Za-z]\+: '` | ✅ `4 → 0` |
+| P3 | **zero** raw `<emphasis`/XML residue leaking into segments | `grep -ao '<emphasis'` on `02-for-mt` | ✅ `0`, with a positive control |
+| P4 | extract emits no unexpected new files | `git status --porcelain` for `??` | ✅ none |
+| P5 | EN diff reviewed, and its **cause attributed** | `git diff` vs extractor commit log | ⚠️ see below |
+
+⚠️ **P5 is the one that is not uniform, and the criteria must not pretend otherwise.** The two
+chapters differ by **16 extractor commits**: `efnafraedi-2e` ch20 was last extracted 2026-07-07/13
+(§C58 is the only change since; diff ≈ 42 lines, and it is **almost all `{{term}}` migration**,
+not §C58), while `edlisfraedi-2e` ch04 dates from **2026-03-23** and its ~405-line diff is
+dominated by months of intended extractor fixes that have never been re-extracted anywhere.
+**Review ch20 line-by-line; review ch04 by cause, against the extractor log.** Demanding a
+line-by-line read of ch04 would make P5 unpassable and is not what the amendment asks for.
+
+### C2b — POST-MT acceptance (paid · one shot · measured after Step 3)
+
+| # | Criterion | How measured | baseline |
+|---|---|---|---|
+| M1 | **zero** legacy `{{…}}` on the **IS** side | as P1, on `02-mt-output` | **160** |
+| M2 | **zero** malformed `[[type: ` on the **IS** side | as P2, on `02-mt-output` | **4** |
+| M3 | per-type marker counts preserved EN→IS | **`bracketMarkerDelta`** from `tools/api-translate.js` — already live and tested; **do not write a new checker** | see frozen audit |
+| M4 | inject + render succeed | tool exit codes | — |
+| M5 | `fidelity:render` no worse than baseline | `npm run fidelity:render` | **not captured — see below** |
+| M6 | every published-file rename accounted for | slug map from predecessor Step 2 (C9 contract) | — |
+| M7 | cost within estimate | `--dry-run` vs actual | — |
+
+⚠️ **M3 must be read against the vintage correction.** Pre-migration deltas are *expected* to be
+non-zero for vintage-mismatched modules and mean nothing. **The criterion is that deltas are zero
+once both sides are regenerated at one vintage** — anything non-zero *then* is the real signal.
+
+🔴 **M5 HAS NO BASELINE AND IS NOT YET PASSABLE.** `npm run fidelity:render` was **not** run before
+the tree was restored, so there is no pre-migration figure to compare against. **Capture it during
+Gate D, before Step 2**, or drop M5 from the criteria — do not evaluate it against a number
+invented after the fact.
 
 ## Gate D — standing safety gates · **delegated to the predecessor**
 
@@ -164,7 +207,12 @@ node tools/cnxml-extract.js --book edlisfraedi-2e --chapter 4
 ⚠️ **These are FLAGS, not positionals** — `--book`/`--chapter`. The positional form fails.
 ✅ **`01-source` is not a blocker**: extraction *reads* source and writes `02-for-mt`/`02-structure`. The no-redownload rule governs *replacing* source, not reading it.
 
-- [ ] Diff of `02-for-mt` reviewed — **expect segment-boundary changes** (measured on one module previously: 51 insertions / 108 deletions)
+- [ ] Diff of `02-for-mt` reviewed — **expect segment-boundary changes** (measured on one module previously: 51 insertions / 108 deletions; measured across the whole pilot 2026-08-12: **366 insertions / 81 deletions over 13 of 16 EN files**, plus 1,594 / 803 in the structure sidecars)
+- [ ] **C2a re-evaluated (P1–P5). If any fails: fix in CODE, re-extract, and check again — this loop is free and may run as many times as needed. Do NOT proceed to Step 3 until C2a is clean.**
+
+✅ **Executed 2026-08-12 and C2a passed on the first extract** (frozen audit). A repeat run is expected to reproduce it — `m68847` came back byte-identical, so the extractor is deterministic over unchanged input.
+
+⚠️ **Hand-fixing `02-mt-output` is NOT part of this loop.** The amendment's ordering is explicit: systematic fixes go into code first, and the reviewed tail comes *after*, never instead. Anything fixed by hand must be recorded machine-readably (`manualCorrections`) — Gate A's whole finding is what happens when it is not.
 
 ## Step 3 — re-MT
 
@@ -188,8 +236,9 @@ node tools/cnxml-render.js --book <book> --chapter <n>
 
 ## Step 5 — evaluate
 
-- [ ] All seven Gate C criteria evaluated and recorded — **including failures**
-- [ ] **C3's prediction resolved**: did `m42075`'s four malformed markers survive? ______
+- [ ] All **C2b** criteria (M1–M7) evaluated and recorded — **including failures**
+- [ ] **C2a re-confirmed post-run** — the EN side is regenerated by Step 2 and should still be clean
+- [ ] ~~C3's prediction resolved~~ — **consumed pre-MT on 2026-08-12; `m42075`'s four malformed markers are gone and `[[i:normal]]` is restored.** There is no remaining pre-registered prediction for the paid half; record that honestly rather than substituting one after the fact.
 - [ ] Result written to §C56 in the register
 
 ## Step 6 — decide
@@ -212,8 +261,16 @@ Selected **2026-08-12** on three criteria: contains the thing being eliminated, 
 
 | Chapter | Modules | Legacy markers | `.locked` | Repair-shaped commits | Why |
 |---|---|---|---|---|---|
-| **`efnafraedi-2e` ch20** | 6 | **80** | none | 2 | Chemistry is 72% of the eventual bill — pilot where the money is. Lowest repair exposure of any chemistry chapter. |
-| **`edlisfraedi-2e` ch04** | 10 | **80** | none | 1 | 🔴 Holds **4 of §C53's 5 malformed markers** (`m42075`), making Gate C3 falsifiable. |
+| **`efnafraedi-2e` ch20** | 6 | **80 IS + 50 EN** | none | 2 | Chemistry is 72% of the eventual bill — pilot where the money is. Lowest repair exposure of any chemistry chapter. |
+| **`edlisfraedi-2e` ch04** | 10 | **80 IS + 78 EN** | none | 1 | 🔴 Holds **4 of §C53's 5 malformed markers** (`m42075`), making Gate C3 falsifiable. |
+
+⚠️ **CORRECTED 2026-08-12 — the "80 each" in this table was the ICELANDIC side only.** The English
+side carries a further 128, so the pilot's legacy load is **288 halves, not 160**. Broken down:
+**`{{term}}` is 84% of it, and `{{b}}` does not occur at all** — the per-type table (and the
+halves-vs-pairs unit it is counted in) lives in the frozen Gate C audit; do not restate it here.
+🔴 **C3 is no longer falsifiable — it was answered for free pre-MT.** The reason this table gives
+for choosing ch04 has therefore been spent; the chapter is still the right choice, but for
+evidence already collected rather than evidence still to come.
 
 **Pilot total: 16 modules** — `efnafraedi-2e` ch20 (`chapter-metadata`, `m68845`–`m68849`) and `edlisfraedi-2e` ch04 (`chapter-metadata`, `m42069`, `m42073`, `m42074`, **`m42075`**, `m42076`, `m42129`, `m42130`, `m42132`, `m42137`). All counts measured 2026-08-12; **an earlier draft of this table said ch04 held 1 module — it holds 10**, and the number came from an inference rather than a measurement.
 
@@ -226,5 +283,8 @@ Selected **2026-08-12** on three criteria: contains the thing being eliminated, 
 
 - **Nothing about the four protected modules.** They are excluded by design; their hand re-application is a separate, later step.
 - **Nothing about books not in the pilot.** `lifraen-efnafraedi` and `orverufraedi` are untouched.
-- **Nothing about `{{term}}`/`{{fn}}` in the four non-chemistry books** unless the pilot chapters happen to carry them — check before claiming corpus-wide elimination.
+- **Nothing about `{{term}}`/`{{fn}}` in the four non-chemistry books** unless the pilot chapters happen to carry them — check before claiming corpus-wide elimination. *(Measured 2026-08-12: they do carry them, heavily — `{{term}}` is 84% of the pilot's legacy load.)*
+- 🔴 **Nothing about `{{b}}` elimination, and almost nothing about `{{i}}`.** `{{b}}` occurs **zero** times anywhere in the pilot and `{{i}}` only on `efnafraedi-2e` ch20's Icelandic side (**30 halves / 15 pairs**). **A clean pass cannot be read as evidence that the `{{i}}`/`{{b}}` problem §C16 describes is solved** — the pilot mostly demonstrates `{{term}}` migration.
+- **Nothing about §C58 from the chemistry half.** `efnafraedi-2e` ch20's source holds only 3 self-closing `<emphasis/>` tags and produced no malformed markers; **all §C58 evidence here comes from `edlisfraedi-2e` `m42075`.** The other 93 self-closing tags across the corpus are untested.
+- **Nothing about `fidelity:render`** — no pre-migration baseline was captured (see C2b M5).
 - **Nothing about the `lb`/`rb` imbalance.** §C53 §2.4 predicts it **survives** any re-extract, being a source-content asymmetry transcribed 1:1. `lifraen-efnafraedi` ch12 is not in the pilot; that prediction stays untested here.
