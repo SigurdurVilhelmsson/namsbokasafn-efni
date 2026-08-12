@@ -193,11 +193,18 @@ absolutely (`mtRunDecision` returns `locked-skip` first), and Gate B confirmed t
 
 Run **[`2026-07-29-c16-clean-break-runbook.md`](2026-07-29-c16-clean-break-runbook.md) Gate 0 verbatim**, substituting the pilot's book scope. Do not paraphrase it here — it carries traps that matter, notably that `sqlite3` **creates** a database rather than failing on a wrong path (measured: an empty path exits 0 and writes a 4096-byte backup-shaped file containing nothing).
 
-- [ ] `$DB` resolved via `node -e "console.log(require('./server/lib/dbPath.js')())"` and confirmed to exist at a non-trivial size
-- [ ] Off-box DB backup taken
-- [ ] **Editorial server stopped** — confirm the process is down, not merely idle
-- [ ] **`git-backup.sh` cron paused on prod** — it commits `books/` every 2h and would commit a half-migrated tree
-- [ ] `VACUUM INTO` snapshot taken, destination size sanity-checked
+### ▶ EXECUTION LOG — 2026-08-12, on [LEAD] instruction "run full Gate D"
+
+- [x] **`$DB` resolved and confirmed.** Prod `~/repos/namsbokasafn-efni/pipeline-output/sessions.db`, **53,710,848 bytes**. *(Dev's is a different 17 MB DB — the editorial state is prod's.)* Prod reachable, on `main @ 1634867a`, **working tree clean, 0 ahead / 0 behind origin**.
+- [x] **Prod health recorded before touching anything:** `status: ok` — db ok (5 users), migrations 49, 6 books, `offbox_backup` 1 h, `content_backup` 2 h `no_changes`, `glossary_export` ok with 4 standing refusals and no stale ones.
+- [x] **Off-box DB backup taken.** `pipeline-output/backups/sessions.2026-08-12-133203.db`, **53,710,848 bytes — byte-identical to `$DB`**, off-box upload OK. *(Size checked against `$DB` precisely because Gate 0 warns a 4096-byte result means you backed up nothing.)*
+- [x] **`git-backup.sh` cron paused on prod.** Line prefixed `#C56-PILOT-PAUSED#`; original saved to `~/crontab.pre-c56-pilot.bak` (35 lines). ⚠️ **`backup-db.sh` deliberately left RUNNING** — only the content-commit job is paused.
+  - 🔴 **UNPAUSE IS MANDATORY AND NOTHING WILL REMIND YOU.** Nothing polls `/api/health`, so a forgotten pause is a silent loss of content backup: `crontab ~/crontab.pre-c56-pilot.bak`.
+- [ ] 🔴 **Editorial server stopped — BLOCKED, REQUIRES THE LEAD.** `ritstjorn.service` is `active (running)` with 2 node processes, and **`sudo` on prod requires a password**, which an agent session has no TTY for (measured: `sudo -n` → *"a password is required"*). ▶ **Run:** `ssh siggi@172.236.212.190 -t 'sudo systemctl stop ritstjorn && systemctl is-active ritstjorn'`
+- [ ] `VACUUM INTO` snapshot taken, destination size sanity-checked — **deliberately deferred until the server is down**, per Gate 0's "fresh copy taken with the server stopped"
+
+✅ **Gate B's central claim re-verified against prod, with a positive control.** The control lists all 8 modules holding `segment_edits` (m68700 96 · m68664 45 · m66443 12 · m68667 4 · m68663 2 · m68699 2 · chapter-metadata 1 · m68674 1). **No pilot module carries editorial state.**
+⚠️ **One row initially matched the pilot filter and had to be resolved:** `efnafraedi-2e / chapter-metadata`. It is **`chapter = 5`**, `segment_id = chapter:title:ch05` (*Varmefnafræði → Varmaefnafræði*, approved 2026-06-24) — **ch05's, not ch20's.** It is the same edit §C57 tracks. **The pilot is clear**, but see the finding below: `chapter-metadata` is the one `module_id` that repeats across chapters, and that ambiguity is real elsewhere.
 - [ ] **Slug map captured** (predecessor Step 2) **before** anything is cleared — C9 needs old→new to serve redirects, and the old filename ceases to exist the moment we prune. ⚠️ **This is live for the pilot**: both chapters are already published (chem ch20 **10** files, physics ch04 **16**), so a re-render can rename pages.
 - [x] ✅ **`fidelity:render` baseline captured 2026-08-12 per [LEAD] instruction** — chem ch20 **1 finding** (`shape-drift`, bucket `em`, 93→94), physics ch04 **0 findings but only 3 of 4 checks ran**. ⚠️ **Do not run `npm run fidelity:render`** — it is hardcoded `--book efnafraedi-2e` and silently skips the physics half. Use the tool directly:
 
