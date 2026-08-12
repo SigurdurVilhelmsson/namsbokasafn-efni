@@ -237,6 +237,10 @@ Not `01-source` (CNXML, no markers), not `05-publication` (HTML).
 
 **Allowlist granularity: `(file, segmentId, rule)`.** Allowlisting by file alone would mask a *new* violation in a file that already has one — and `lifraen-efnafraedi` ch12 `exercises` is exactly such a file. Six known violations (§2.3, §2.4) are grandfathered in explicitly, making the debt countable rather than invisible.
 
+⏰ **THE ALLOWLIST MAY NOT BE NEEDED AT ALL — SEQUENCING, added 2026-08-12 after §C56 was logged.** Five of the six known violations (§2.3) are **migration-vintage artefacts in `02-mt-output`**, and §C56's whole-corpus re-extract + re-MT **regenerates exactly those files**. **The order therefore matters more than the mechanism:** ① ship the **save-gate** half of this spec first — it is independent of corpus state and protects editing that continues through the migration; ② run §C56; ③ **then** baseline the corpus check against the regenerated corpus. **If it comes back clean, build no allowlist.** Building it first buys a grandfathering list for defects the migration deletes, and its own staleness report would flag every entry on the first run afterwards.
+
+⚠️ **The sixth violation (§2.4's `lb`/`rb` imbalance) is expected to SURVIVE the migration**, because it is a source-content asymmetry faithfully transcribed by a 1:1 escaper — a re-extract reproduces it. **So the allowlist is not certain to be empty; it is likely to shrink from six to one.** Design it, do not necessarily populate it.
+
 **The allowlist reports its own staleness:** an entry matching no current violation is reported, not silently ignored. Without that, the allowlist only grows, and a fixed defect leaves an entry that would mask its recurrence.
 
 ### 6.1 CI wiring — `test.yml`, and NOT `validate.yml`
@@ -303,6 +307,7 @@ Each is logged in its own place; none belongs in this diff.
 - **Documenting `rb`, `lb`, `TABLE`** in the `inline-markers` skill table — a docs fix.
 - **The CI lint scope** — → register **§C55**. Measured as two lines; unrelated to markers.
 - **§C54 acceptable-forms** — the sibling spec.
+- **§C56 the whole-corpus re-extract + re-MT** — a [LEAD] spend decision and a data op. **This spec does not depend on it and must not wait for it**; only the *allowlist* step does (§6).
 - **Amending CLAUDE.md's per-endpoint marker-survival rule** to add the per-vintage axis (§2.3). Always-loaded file; a durable-rule change belongs to the lead, per the §C49 precedent.
 
 ## 9. Open questions
