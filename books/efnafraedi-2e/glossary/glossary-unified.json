@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T15:55:20.873Z",
+  "generated": "2026-08-12T20:57:26.097Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 2119,
-    "approved": 2119,
+    "total": 2039,
+    "approved": 2039,
     "ties": 299,
     "nominalTies": 120,
-    "outOfScopeOnly": 1168,
+    "outOfScopeOnly": 1200,
     "censusStrings": 118749
   },
   "terms": [
@@ -46,16 +46,6 @@
       ]
     },
     {
-      "english": "Ac",
-      "icelandic": "aktín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 74,
-      "alternatives": []
-    },
-    {
       "english": "Ag",
       "icelandic": "silfur",
       "status": "approved",
@@ -73,16 +63,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 172,
-      "alternatives": []
-    },
-    {
-      "english": "Am",
-      "icelandic": "ameríkín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 111,
       "alternatives": []
     },
     {
@@ -150,26 +130,6 @@
       "alternatives": []
     },
     {
-      "english": "Ba",
-      "icelandic": "barín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 216,
-      "alternatives": []
-    },
-    {
-      "english": "Be",
-      "icelandic": "beryllín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 240,
-      "alternatives": []
-    },
-    {
       "english": "Bi",
       "icelandic": "bismút",
       "status": "approved",
@@ -222,46 +182,6 @@
       "alternatives": []
     },
     {
-      "english": "Ca",
-      "icelandic": "kalsín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1746,
-      "alternatives": []
-    },
-    {
-      "english": "Cd",
-      "icelandic": "kadmín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1740,
-      "alternatives": []
-    },
-    {
-      "english": "Ce",
-      "icelandic": "serín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3187,
-      "alternatives": []
-    },
-    {
-      "english": "Cf",
-      "icelandic": "kalífornín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1741,
-      "alternatives": []
-    },
-    {
       "english": "Cl",
       "icelandic": "klór",
       "status": "approved",
@@ -269,16 +189,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1838,
-      "alternatives": []
-    },
-    {
-      "english": "Cm",
-      "icelandic": "kúrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1925,
       "alternatives": []
     },
     {
@@ -299,16 +209,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1899,
-      "alternatives": []
-    },
-    {
-      "english": "Cs",
-      "icelandic": "sesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3188,
       "alternatives": []
     },
     {
@@ -356,16 +256,6 @@
       ]
     },
     {
-      "english": "Es",
-      "icelandic": "einsteinín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 587,
-      "alternatives": []
-    },
-    {
       "english": "FM",
       "icelandic": "tíðnimótun",
       "status": "approved",
@@ -383,36 +273,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1714,
-      "alternatives": []
-    },
-    {
-      "english": "Fr",
-      "icelandic": "fransín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 835,
-      "alternatives": []
-    },
-    {
-      "english": "Ga",
-      "icelandic": "gallín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 924,
-      "alternatives": []
-    },
-    {
-      "english": "Gd",
-      "icelandic": "gadolín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 907,
       "alternatives": []
     },
     {
@@ -448,26 +308,6 @@
       "alternatives": []
     },
     {
-      "english": "He",
-      "icelandic": "helín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1226,
-      "alternatives": []
-    },
-    {
-      "english": "Hf",
-      "icelandic": "hafnín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1122,
-      "alternatives": []
-    },
-    {
       "english": "Hg",
       "icelandic": "kvikasilfur",
       "status": "approved",
@@ -500,26 +340,6 @@
       "alternatives": []
     },
     {
-      "english": "In",
-      "icelandic": "indín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1565,
-      "alternatives": []
-    },
-    {
-      "english": "Ir",
-      "icelandic": "iridín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1598,
-      "alternatives": []
-    },
-    {
       "english": "Kr",
       "icelandic": "krypton",
       "status": "approved",
@@ -540,36 +360,6 @@
       "alternatives": []
     },
     {
-      "english": "Li",
-      "icelandic": "litín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2085,
-      "alternatives": []
-    },
-    {
-      "english": "Lr",
-      "icelandic": "lárensín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2020,
-      "alternatives": []
-    },
-    {
-      "english": "Lu",
-      "icelandic": "lútesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2253,
-      "alternatives": []
-    },
-    {
       "english": "MRT",
       "icelandic": "meðaldvalartími",
       "status": "approved",
@@ -579,28 +369,6 @@
       "conceptId": 56925,
       "alternatives": [
         "MRT"
-      ]
-    },
-    {
-      "english": "Md",
-      "icelandic": "mendelefín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2350,
-      "alternatives": []
-    },
-    {
-      "english": "Mg",
-      "icelandic": "magnesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2275,
-      "alternatives": [
-        "magnín"
       ]
     },
     {
@@ -621,28 +389,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 2431,
-      "alternatives": []
-    },
-    {
-      "english": "Na",
-      "icelandic": "natrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2495,
-      "alternatives": [
-        "natur"
-      ]
-    },
-    {
-      "english": "Nb",
-      "icelandic": "níóbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2549,
       "alternatives": []
     },
     {
@@ -668,16 +414,6 @@
       ]
     },
     {
-      "english": "No",
-      "icelandic": "nóbelín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2556,
-      "alternatives": []
-    },
-    {
       "english": "Np",
       "icelandic": "neptún",
       "status": "approved",
@@ -695,16 +431,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 926,
-      "alternatives": []
-    },
-    {
-      "english": "Os",
-      "icelandic": "osmín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2629,
       "alternatives": []
     },
     {
@@ -750,16 +476,6 @@
       "alternatives": []
     },
     {
-      "english": "Pd",
-      "icelandic": "palladín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2688,
-      "alternatives": []
-    },
-    {
       "english": "Po",
       "icelandic": "pólon",
       "status": "approved",
@@ -797,26 +513,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 2699,
-      "alternatives": []
-    },
-    {
-      "english": "Ra",
-      "icelandic": "radín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2724,
-      "alternatives": []
-    },
-    {
-      "english": "Rb",
-      "icelandic": "rúbidín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2944,
       "alternatives": []
     },
     {
@@ -882,16 +578,6 @@
       "alternatives": []
     },
     {
-      "english": "Sc",
-      "icelandic": "skandín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3310,
-      "alternatives": []
-    },
-    {
       "english": "Se",
       "icelandic": "selen",
       "status": "approved",
@@ -932,16 +618,6 @@
       "alternatives": []
     },
     {
-      "english": "Sr",
-      "icelandic": "strontín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3760,
-      "alternatives": []
-    },
-    {
       "english": "Sv",
       "icelandic": "sívert",
       "status": "approved",
@@ -959,26 +635,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 3278,
-      "alternatives": []
-    },
-    {
-      "english": "Tb",
-      "icelandic": "terbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3971,
-      "alternatives": []
-    },
-    {
-      "english": "Tc",
-      "icelandic": "teknetín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3953,
       "alternatives": []
     },
     {
@@ -1004,16 +660,6 @@
       ]
     },
     {
-      "english": "Th",
-      "icelandic": "þórín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4492,
-      "alternatives": []
-    },
-    {
       "english": "Ti",
       "icelandic": "títan",
       "status": "approved",
@@ -1021,16 +667,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 4012,
-      "alternatives": []
-    },
-    {
-      "english": "Tl",
-      "icelandic": "þallín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4454,
       "alternatives": []
     },
     {
@@ -1370,16 +1006,6 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 4636,
-      "alternatives": []
-    },
-    {
-      "english": "actinium",
-      "icelandic": "aktín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 74,
       "alternatives": []
     },
     {
@@ -1924,16 +1550,6 @@
       "domain": "biology",
       "position": 3,
       "conceptId": 47382,
-      "alternatives": []
-    },
-    {
-      "english": "americium",
-      "icelandic": "ameríkín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 111,
       "alternatives": []
     },
     {
@@ -2933,16 +2549,6 @@
       "alternatives": []
     },
     {
-      "english": "barium",
-      "icelandic": "barín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 216,
-      "alternatives": []
-    },
-    {
       "english": "bark",
       "icelandic": "börkur",
       "status": "approved",
@@ -3183,16 +2789,6 @@
       "alternatives": [
         "bensól"
       ]
-    },
-    {
-      "english": "beryllium",
-      "icelandic": "beryllín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 240,
-      "alternatives": []
     },
     {
       "english": "beta decay",
@@ -3944,16 +3540,6 @@
       "alternatives": []
     },
     {
-      "english": "cadmium",
-      "icelandic": "kadmín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1740,
-      "alternatives": []
-    },
-    {
       "english": "cal",
       "icelandic": "kaloría",
       "status": "approved",
@@ -3965,16 +3551,6 @@
         "varmaeining",
         "verma"
       ]
-    },
-    {
-      "english": "calcium",
-      "icelandic": "kalsín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1746,
-      "alternatives": []
     },
     {
       "english": "calculate",
@@ -4032,16 +3608,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1950,
-      "alternatives": []
-    },
-    {
-      "english": "californium",
-      "icelandic": "kalífornín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1741,
       "alternatives": []
     },
     {
@@ -4468,26 +4034,6 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5072,
-      "alternatives": []
-    },
-    {
-      "english": "cerium",
-      "icelandic": "serín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3187,
-      "alternatives": []
-    },
-    {
-      "english": "cesium",
-      "icelandic": "sesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3188,
       "alternatives": []
     },
     {
@@ -6100,16 +5646,6 @@
       "alternatives": []
     },
     {
-      "english": "curium",
-      "icelandic": "kúrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1925,
-      "alternatives": []
-    },
-    {
       "english": "current density",
       "icelandic": "straumþéttleiki",
       "status": "approved",
@@ -7386,16 +6922,6 @@
       "alternatives": []
     },
     {
-      "english": "dysprosium",
-      "icelandic": "dysprósín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 476,
-      "alternatives": []
-    },
-    {
       "english": "eV",
       "icelandic": "rafeindarvolt",
       "status": "approved",
@@ -7475,16 +7001,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 4209,
-      "alternatives": []
-    },
-    {
-      "english": "einsteinium",
-      "icelandic": "einsteinín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 587,
       "alternatives": []
     },
     {
@@ -8419,16 +7935,6 @@
       "alternatives": []
     },
     {
-      "english": "europium",
-      "icelandic": "evrópín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 621,
-      "alternatives": []
-    },
-    {
       "english": "eutrophication",
       "icelandic": "ofauðgun",
       "status": "approved",
@@ -9282,16 +8788,6 @@
       "alternatives": []
     },
     {
-      "english": "francium",
-      "icelandic": "fransín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 835,
-      "alternatives": []
-    },
-    {
       "english": "free energy",
       "icelandic": "frjáls orka",
       "status": "approved",
@@ -9521,16 +9017,6 @@
       "alternatives": []
     },
     {
-      "english": "gadolinium",
-      "icelandic": "gadolín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 907,
-      "alternatives": []
-    },
-    {
       "english": "gain",
       "icelandic": "mögnunarstuðull",
       "status": "approved",
@@ -9573,16 +9059,6 @@
       "alternatives": [
         "vetrarbraut"
       ]
-    },
-    {
-      "english": "gallium",
-      "icelandic": "gallín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 924,
-      "alternatives": []
     },
     {
       "english": "gallon",
@@ -10091,16 +9567,6 @@
       "alternatives": []
     },
     {
-      "english": "hafnium",
-      "icelandic": "hafnín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1122,
-      "alternatives": []
-    },
-    {
       "english": "hair",
       "icelandic": "hár",
       "status": "approved",
@@ -10304,16 +9770,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1541,
-      "alternatives": []
-    },
-    {
-      "english": "helium",
-      "icelandic": "helín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1226,
       "alternatives": []
     },
     {
@@ -10940,16 +10396,6 @@
       "alternatives": [
         "efnaviti"
       ]
-    },
-    {
-      "english": "indium",
-      "icelandic": "indín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1565,
-      "alternatives": []
     },
     {
       "english": "induce",
@@ -11598,16 +11044,6 @@
       "alternatives": []
     },
     {
-      "english": "iridium",
-      "icelandic": "iridín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1598,
-      "alternatives": []
-    },
-    {
       "english": "iron",
       "icelandic": "járn",
       "status": "approved",
@@ -12095,16 +11531,6 @@
       ]
     },
     {
-      "english": "lawrencium",
-      "icelandic": "lárensín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2020,
-      "alternatives": []
-    },
-    {
       "english": "laxative",
       "icelandic": "hægðalyf",
       "status": "approved",
@@ -12400,16 +11826,6 @@
       "alternatives": []
     },
     {
-      "english": "lithium",
-      "icelandic": "litín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2085,
-      "alternatives": []
-    },
-    {
       "english": "litmus",
       "icelandic": "lakkmúslitur",
       "status": "approved",
@@ -12608,16 +12024,6 @@
       "alternatives": []
     },
     {
-      "english": "lutetium",
-      "icelandic": "lútesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2253,
-      "alternatives": []
-    },
-    {
       "english": "lymph",
       "icelandic": "vessi",
       "status": "approved",
@@ -12699,18 +12105,6 @@
       "position": 2,
       "conceptId": 1942,
       "alternatives": []
-    },
-    {
-      "english": "magnesium",
-      "icelandic": "magnesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2275,
-      "alternatives": [
-        "magnín"
-      ]
     },
     {
       "english": "magnet",
@@ -13178,16 +12572,6 @@
       "alternatives": [
         "geymsla"
       ]
-    },
-    {
-      "english": "mendelevium",
-      "icelandic": "mendelefín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2350,
-      "alternatives": []
     },
     {
       "english": "meniscus",
@@ -14194,16 +13578,6 @@
       ]
     },
     {
-      "english": "niobium",
-      "icelandic": "níóbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2549,
-      "alternatives": []
-    },
-    {
       "english": "nitric acid",
       "icelandic": "saltpéturssýra",
       "status": "approved",
@@ -14268,16 +13642,6 @@
       "alternatives": [
         "blóðs-"
       ]
-    },
-    {
-      "english": "nobelium",
-      "icelandic": "nóbelín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2556,
-      "alternatives": []
     },
     {
       "english": "noble gas",
@@ -15036,16 +14400,6 @@
       "alternatives": []
     },
     {
-      "english": "osmium",
-      "icelandic": "osmín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2629,
-      "alternatives": []
-    },
-    {
       "english": "osmosis",
       "icelandic": "himnuflæði",
       "status": "approved",
@@ -15256,16 +14610,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 4284,
-      "alternatives": []
-    },
-    {
-      "english": "palladium",
-      "icelandic": "palladín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2688,
       "alternatives": []
     },
     {
@@ -16300,16 +15644,6 @@
       ]
     },
     {
-      "english": "potassium",
-      "icelandic": "kalín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1742,
-      "alternatives": []
-    },
-    {
       "english": "potent",
       "icelandic": "virkur",
       "status": "approved",
@@ -16775,16 +16109,6 @@
       "alternatives": [
         "framrás"
       ]
-    },
-    {
-      "english": "promethium",
-      "icelandic": "prómetín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2716,
-      "alternatives": []
     },
     {
       "english": "prone",
@@ -17394,16 +16718,6 @@
       "alternatives": [
         "geislasamsæta"
       ]
-    },
-    {
-      "english": "radium",
-      "icelandic": "radín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2724,
-      "alternatives": []
     },
     {
       "english": "radius",
@@ -18128,26 +17442,6 @@
       ]
     },
     {
-      "english": "rhenium",
-      "icelandic": "renín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2882,
-      "alternatives": []
-    },
-    {
-      "english": "rhodium",
-      "icelandic": "ródín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2930,
-      "alternatives": []
-    },
-    {
       "english": "rib",
       "icelandic": "rif",
       "status": "approved",
@@ -18344,16 +17638,6 @@
       "alternatives": []
     },
     {
-      "english": "rubidium",
-      "icelandic": "rúbidín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2944,
-      "alternatives": []
-    },
-    {
       "english": "ruby",
       "icelandic": "roðasteinn",
       "status": "approved",
@@ -18520,16 +17804,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 3311,
-      "alternatives": []
-    },
-    {
-      "english": "scandium",
-      "icelandic": "skandín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3310,
       "alternatives": []
     },
     {
@@ -19210,18 +18484,6 @@
       "position": 2,
       "conceptId": 4498,
       "alternatives": []
-    },
-    {
-      "english": "sodium",
-      "icelandic": "natrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2495,
-      "alternatives": [
-        "natur"
-      ]
     },
     {
       "english": "soil",
@@ -20066,16 +19328,6 @@
       ]
     },
     {
-      "english": "strontium",
-      "icelandic": "strontín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3760,
-      "alternatives": []
-    },
-    {
       "english": "structural formula",
       "icelandic": "byggingarformúla",
       "status": "approved",
@@ -20723,16 +19975,6 @@
       "alternatives": []
     },
     {
-      "english": "technetium",
-      "icelandic": "teknetín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3953,
-      "alternatives": []
-    },
-    {
       "english": "technique",
       "icelandic": "tækni",
       "status": "approved",
@@ -20815,16 +20057,6 @@
       "alternatives": []
     },
     {
-      "english": "terbium",
-      "icelandic": "terbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3971,
-      "alternatives": []
-    },
-    {
       "english": "terms",
       "icelandic": "tíðir",
       "status": "approved",
@@ -20886,16 +20118,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 3936,
-      "alternatives": []
-    },
-    {
-      "english": "thallium",
-      "icelandic": "þallín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4454,
       "alternatives": []
     },
     {
@@ -21045,16 +20267,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 1261,
-      "alternatives": []
-    },
-    {
-      "english": "thorium",
-      "icelandic": "þórín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4492,
       "alternatives": []
     },
     {
@@ -21976,16 +21188,6 @@
       "alternatives": []
     },
     {
-      "english": "vanadium",
-      "icelandic": "vanadín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4234,
-      "alternatives": []
-    },
-    {
       "english": "vapor",
       "icelandic": "gufa",
       "status": "approved",
@@ -22684,16 +21886,6 @@
         "guluforði",
         "rauða"
       ]
-    },
-    {
-      "english": "yttrium",
-      "icelandic": "yttrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4449,
-      "alternatives": []
     },
     {
       "english": "zero-order kinetics",

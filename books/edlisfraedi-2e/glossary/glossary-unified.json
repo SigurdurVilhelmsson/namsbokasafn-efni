@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T20:00:01.580Z",
+  "generated": "2026-08-12T22:00:01.437Z",
   "book": "edlisfraedi-2e",
   "stats": {
-    "total": 461,
-    "approved": 461,
+    "total": 457,
+    "approved": 457,
     "ties": 149,
     "nominalTies": 21,
-    "outOfScopeOnly": 134,
+    "outOfScopeOnly": 136,
     "censusStrings": 12137
   },
   "terms": [
@@ -32,36 +32,6 @@
       "alternatives": []
     },
     {
-      "english": "Be",
-      "icelandic": "beryllín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 240,
-      "alternatives": []
-    },
-    {
-      "english": "He",
-      "icelandic": "helín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 1226,
-      "alternatives": []
-    },
-    {
-      "english": "In",
-      "icelandic": "indín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 1565,
-      "alternatives": []
-    },
-    {
       "english": "Jupiter",
       "icelandic": "Júpíter",
       "status": "approved",
@@ -69,16 +39,6 @@
       "domain": "astronomy",
       "position": 2,
       "conceptId": 67548,
-      "alternatives": []
-    },
-    {
-      "english": "No",
-      "icelandic": "nóbelín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 2556,
       "alternatives": []
     },
     {

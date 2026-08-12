@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T19:57:21.121Z",
+  "generated": "2026-08-12T21:02:53.902Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 851,
-    "approved": 851,
-    "ties": 167,
+    "total": 840,
+    "approved": 840,
+    "ties": 166,
     "nominalTies": 72,
-    "outOfScopeOnly": 448,
+    "outOfScopeOnly": 455,
     "censusStrings": 24179
   },
   "terms": [
@@ -196,26 +196,6 @@
       "alternatives": []
     },
     {
-      "english": "In",
-      "icelandic": "indín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 1565,
-      "alternatives": []
-    },
-    {
-      "english": "Li",
-      "icelandic": "litín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2085,
-      "alternatives": []
-    },
-    {
       "english": "MW",
       "icelandic": "miðbylgja",
       "status": "approved",
@@ -226,18 +206,6 @@
       "alternatives": []
     },
     {
-      "english": "Mg",
-      "icelandic": "magnesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2275,
-      "alternatives": [
-        "magnín"
-      ]
-    },
-    {
       "english": "NMR",
       "icelandic": "kjarnsegulherma",
       "status": "approved",
@@ -245,28 +213,6 @@
       "domain": "physics",
       "position": 3,
       "conceptId": 1822,
-      "alternatives": []
-    },
-    {
-      "english": "Na",
-      "icelandic": "natrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2495,
-      "alternatives": [
-        "natur"
-      ]
-    },
-    {
-      "english": "No",
-      "icelandic": "nóbelín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2556,
       "alternatives": []
     },
     {
@@ -300,16 +246,6 @@
       "domain": "biology",
       "position": 2,
       "conceptId": 52721,
-      "alternatives": []
-    },
-    {
-      "english": "Pd",
-      "icelandic": "palladín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2688,
       "alternatives": []
     },
     {
@@ -5055,16 +4991,6 @@
       "alternatives": []
     },
     {
-      "english": "lithium",
-      "icelandic": "litín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2085,
-      "alternatives": []
-    },
-    {
       "english": "localized",
       "icelandic": "staðbundinn",
       "status": "approved",
@@ -5113,18 +5039,6 @@
       "position": 2,
       "conceptId": 53577,
       "alternatives": []
-    },
-    {
-      "english": "magnesium",
-      "icelandic": "magnesín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2275,
-      "alternatives": [
-        "magnín"
-      ]
     },
     {
       "english": "magnetic field",
@@ -6140,16 +6054,6 @@
       ]
     },
     {
-      "english": "palladium",
-      "icelandic": "palladín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2688,
-      "alternatives": []
-    },
-    {
       "english": "palmitic acid",
       "icelandic": "palmitínsýra",
       "status": "approved",
@@ -6575,16 +6479,6 @@
       "alternatives": [
         "frumhæfing"
       ]
-    },
-    {
-      "english": "potassium",
-      "icelandic": "kalín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 1742,
-      "alternatives": []
     },
     {
       "english": "potent",
@@ -7742,18 +7636,6 @@
       "position": 2,
       "conceptId": 6000,
       "alternatives": []
-    },
-    {
-      "english": "sodium",
-      "icelandic": "natrín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 3,
-      "conceptId": 2495,
-      "alternatives": [
-        "natur"
-      ]
     },
     {
       "english": "sole",
