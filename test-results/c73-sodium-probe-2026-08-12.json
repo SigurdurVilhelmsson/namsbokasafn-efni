@@ -1,0 +1,37 @@
+{
+  "results": {
+    "sodium": {
+      "bare": "Rafeindirnar sem myndast fara í gegnum ytri rafrásina að neikvæða rafskautinu. Þrátt fyrir að jákvæðu natríumjónirnar færist í átt að þessu neikvæða rafskauti myndast ekki málmkennt natríum vegna þess að það er of erfitt að afoxa natríumjónir við þær aðstæður sem notaðar eru. (Munið að málmkennt natríum er nógu virkt til að hvarfast við vatn og myndi því, jafnvel þótt það myndaðist, strax hvarfast við vatn og mynda natríumjónir aftur.) Þess í stað taka vatnssameindir upp rafeindir frá rafskautinu og afoxast til að mynda vetnisgas og hýdroxíðjónir:",
+      "withG": "Rafeindirnar sem myndast fara í gegnum ytri rafrásina að neikvæða rafskautinu. Þrátt fyrir að jákvæðu natríumjónirnar færist í átt að þessu neikvæða rafskauti myndast ekki málmkennt natrín því það er of erfitt að afoxa natríumjónir við þau skilyrði sem notuð eru. (Munið að málmkennt natrín er nógu virkt til að hvarfast við vatn og myndi því, jafnvel þótt það myndaðist, hvarfast strax við vatn og mynda natríumjónir aftur.) Þess í stað taka vatnssameindir upp rafeindir frá rafskautinu og gangast undir afoxun til að mynda vetnisgas og hýdroxíðjónir:",
+      "supplied": [
+        {
+          "sourceWord": "sodium",
+          "targetWord": "natrín"
+        }
+      ]
+    },
+    "magnesium": {
+      "bare": "Magnesíum er hinn málmurinn sem er einangraður í miklu magni með rafgreiningu. Sjór, sem inniheldur um það bil 0,5% magnesíumklóríð, er aðaluppspretta magnesíums. Með því að bæta kalsíumhýdroxíði út í sjó fellur magnesíumhýdroxíð út. Ef saltsýru er bætt við magnesíumhýdroxíð og vatnslausnin sem myndast er síðan látin gufa upp verður hreint magnesíumklóríð eftir. Við rafgreiningu á bráðnu magnesíumklóríði myndast fljótandi magnesíum og klórgas:",
+      "withG": "Magnesín er hinn málmurinn sem er einangraður í miklu magni með rafgreiningu. Sjór, sem inniheldur um það bil 0,5% magnesínklóríð, er meiri uppspretta magnesíns. Álagning kalsínhýdroxíðs í sjó veldur því að magnesínhýdroxíð myndar botnfall. Álagning saltsýru í magnesínhýdroxíð, og síðan uppgufun á vatnslausninni sem verður til, skilur eftir hreint magnesínklóríð. Rafgreining á bráðnu magnesínklóríði myndar magnesín sem vökva og klór sem gas:",
+      "supplied": [
+        {
+          "sourceWord": "calcium",
+          "targetWord": "kalsín"
+        },
+        {
+          "sourceWord": "magnesium",
+          "targetWord": "magnesín"
+        }
+      ]
+    }
+  },
+  "usage": {
+    "totalChars": 2118,
+    "totalCost": 21.18,
+    "requestCount": 4,
+    "failedCount": 0,
+    "startTime": 1786567956568,
+    "elapsedMs": 27207,
+    "estimatedISK": 21.18
+  }
+}
