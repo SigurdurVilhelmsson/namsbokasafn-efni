@@ -277,8 +277,8 @@ function extractInlineText(
   text = text.replace(/<sub>([\s\S]*?)<\/sub>/g, (match, inner) => {
     if (inner.includes('<')) {
       let c = inner
-        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[i:$1]]')
-        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[b:$1]]');
+        .replace(/<emphasis\s+effect="italics"[^>]*(?<!\/)>([\s\S]*?)<\/emphasis>/g, '[[i:$1]]')
+        .replace(/<emphasis\s+effect="bold"[^>]*(?<!\/)>([\s\S]*?)<\/emphasis>/g, '[[b:$1]]');
       c = stripTags(c).trim();
       return `[[sub:${c}]]`;
     }
@@ -287,8 +287,8 @@ function extractInlineText(
   text = text.replace(/<sup>([\s\S]*?)<\/sup>/g, (match, inner) => {
     if (inner.includes('<')) {
       let c = inner
-        .replace(/<emphasis\s+effect="italics"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[i:$1]]')
-        .replace(/<emphasis\s+effect="bold"[^>]*>([\s\S]*?)<\/emphasis>/g, '[[b:$1]]');
+        .replace(/<emphasis\s+effect="italics"[^>]*(?<!\/)>([\s\S]*?)<\/emphasis>/g, '[[i:$1]]')
+        .replace(/<emphasis\s+effect="bold"[^>]*(?<!\/)>([\s\S]*?)<\/emphasis>/g, '[[b:$1]]');
       c = stripTags(c).trim();
       return `[[sup:${c}]]`;
     }
@@ -299,7 +299,7 @@ function extractInlineText(
   // [[sup:]]/[[sub:]] pattern that has ~0% API loss rate.
   // Backward compat: injection also handles legacy {{i}}...{{/i}} format.
   text = text.replace(
-    /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
+    /<emphasis\s+effect="([^"]*)"[^>]*(?<!\/)>([\s\S]*?)<\/emphasis>/g,
     (match, effect, inner) => {
       if (effect === 'italics') return `[[i:${inner}]]`;
       if (effect === 'bold') return `[[b:${inner}]]`;
@@ -310,7 +310,7 @@ function extractInlineText(
   // Handle emphasis with class= but no effect= (e.g., <emphasis class="emphasis-one">)
   // B4/RC3: [[em:text|class]] carries the class in the marker (API-survivable);
   // sidecar collection is kept unchanged as the legacy-content fallback.
-  text = text.replace(/<emphasis([^>]*)>([\s\S]*?)<\/emphasis>/g, (match, attrs, inner) => {
+  text = text.replace(/<emphasis([^>]*)(?<!\/)>([\s\S]*?)<\/emphasis>/g, (match, attrs, inner) => {
     const parsedAttrs = parseAttributes(attrs);
     if (parsedAttrs.class) {
       collectedEmphasisAttrs.push({ class: parsedAttrs.class });
