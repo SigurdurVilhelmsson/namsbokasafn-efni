@@ -1,12 +1,20 @@
 /**
  * Producer detection for the unattended glossary export (register C14 ② step 4).
  *
- * The legacy fingerprint is asserted against the REAL committed glossaries and
- * the export fingerprint against REAL exportBookGlossary output shape — not
+ * Every fingerprint is asserted against the REAL committed glossaries, and the
+ * export fingerprint against REAL exportBookGlossary output shape — not
  * hand-authored fixtures. A fixture written from prose is how ten
  * `<!-- SEG: -->` fixtures acquired a shape the real parser returns [] for; a
  * hand-written "merge-glossary-shaped" object would pass while proving nothing
- * about the 4,496 rows actually on disk.
+ * about the rows actually on disk.
+ *
+ * ⚠️ AMENDED 2026-08-12 (§C71). This header said "the LEGACY fingerprint is
+ * asserted against the real committed glossaries … the 4,496 rows actually on
+ * disk". Both halves aged out with §C62's adoption: the corpus is now MIXED
+ * (three books resolved, one still merge-glossary), so the resolved
+ * fingerprint is measured here too — and the row count is deliberately gone,
+ * because a total in prose is exactly what CLAUDE.md § One source of truth
+ * forbids. Count them from the files if you need the number.
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
