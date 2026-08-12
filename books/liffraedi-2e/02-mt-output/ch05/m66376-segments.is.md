@@ -2,16 +2,16 @@
 Magnflutningur
 
 <!-- SEG:m66376:abstract:auto-2 -->
-Þegar þú hefur lokið við þennan kafla muntu geta gert eftirfarandi:
+Í lok þessa kafla muntu geta gert eftirfarandi:
 
 <!-- SEG:m66376:abstract-item:abstract-item-1 -->
-Lýst innfrumun, þar á meðal frumuáti, frumuþurrkun og viðtakamiðlaðri innfrumun
+Lýst innfrumun, þar á meðal frumuáti, frumudrykkju og viðtakamiðlaðri innfrumun
 
 <!-- SEG:m66376:abstract-item:abstract-item-2 -->
 Skilið ferli útfrumunar
 
 <!-- SEG:m66376:para:fs-id1467282 -->
-Auk þess að flytja litlar jónir og sameindir í gegnum frumuhimnuna þurfa frumur einnig að fjarlægja og taka inn stærri sameindir og agnir (sjá [[xref:tab-ch05_04_01]] fyrir dæmi). Sumar frumur geta jafnvel gleypt heilar einfruma örverur. Þú gætir hafa getið þér þess til að þegar fruma tekur upp og losar stórar agnir þarf hún orku. Stór ögn getur hins vegar ekki komist í gegnum himnuna, jafnvel með orku sem fruman leggur til.
+Auk þess að flytja litlar jónir og sameindir í gegnum himnuna þurfa frumur einnig að fjarlægja og taka inn stærri sameindir og agnir (sjá [[xref:tab-ch05_04_01]] fyrir dæmi). Sumar frumur geta jafnvel gleypt heilar einfruma örverur. Þú gætir hafa getið þér þess til að þegar fruma tekur upp og losar stórar agnir þarf hún orku. Stór ögn getur hins vegar ekki farið í gegnum himnuna, jafnvel með orku sem fruman útvegar.
 
 <!-- SEG:m66376:title:fs-id1967798-title -->
 Innfrumun
@@ -23,52 +23,52 @@ Frumuát
 Frumuát (ástand „frumuáts“) er ferlið þar sem fruma tekur inn stórar agnir, svo sem aðrar frumur eða tiltölulega stórar agnir. Til dæmis, þegar örverur ráðast inn í mannslíkamann, mun tegund hvítra blóðkorna, daufkyrningur, fjarlægja innrásarherinn með þessu ferli, umkringja og gleypa örveruna, sem daufkyrningurinn eyðir síðan ([[xref:fig-ch05_04_01]]).
 
 <!-- SEG:m66376:caption:fig-ch05_04_01-caption -->
-Við frumuát umlykur frumuhimnan ögnina og gleypir hana. (Heimild: breyting á verki eftir Mariana Ruiz Villareal)
+Í frumuáti umlykur frumuhimnan ögnina og gleypir hana. (heimild: breyting á verki eftir Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:para:fs-id1458045 -->
-Við undirbúning frumuáts verður hluti af innra yfirborði plasmahimnunnar húðaður með próteininu {{term}}klatríni{{/term}}, sem gefur þessum hluta himnunnar stöðugleika. Húðaði hluti himnunnar teygir sig síðan frá líkama frumunnar og umlykur ögnina og lokar hana að lokum inni. Þegar bólan sem inniheldur ögnina er komin inn í frumuna losnar klatrínið frá himnunni og bólan rennur saman við leysibólu til að brjóta niður efnið í nýmyndaða hólfinu (innbólu). Þegar aðgengileg næringarefni hafa verið dregin úr niðurbroti innihalds bólunnar rennur nýmyndaða innbólan saman við plasmahimnuna og losar innihald sitt út í utanfrumuvökvann. Innbóluhimnan verður aftur hluti af plasmahimnunni.
+Við undirbúning frumuáts verður hluti af innra yfirborði frymishimnunnar húðaður með próteininu [[term:klatríni|term-00002]], sem kemur stöðugleika á þennan hluta himnunnar. Húðaði hluti himnunnar teygir sig síðan frá líkama frumunnar og umlykur ögnina og lokar hana að lokum inni. Þegar bólan sem inniheldur ögnina er lokuð inni í frumunni losnar klatrínið frá himnunni og bólan rennur saman við leysibólu til að brjóta niður efnið í nýmyndaða hólfinu (innbólu). Þegar aðgengileg næringarefni úr niðurbroti innihalds bólunnar hafa verið dregin út, rennur nýmyndaða innbólan saman við frymishimnuna og losar innihald sitt út í utanfrumuvökvann. Innbóluhimnan verður aftur hluti af frymishimnunni.
 
 <!-- SEG:m66376:title:fs-id1434270-title -->
-Frumuþurrkun
+Frumudrykkja
 
 <!-- SEG:m66376:para:fs-id2337777 -->
-Afbrigði af innfrumun er {{term}}frumuþurrkun{{/term}}. Þetta þýðir bókstaflega „frumudrykkja“. Þetta var uppgötvað af Warren Lewis árið 1929, en þessi bandaríski fósturfræðingur og frumulíffræðingur lýsti ferli þar sem hann gerði ráð fyrir að fruman væri markvisst að taka inn utanfrumuvökva. Í raun er þetta ferli sem tekur inn sameindir, þar á meðal vatn, sem fruman þarfnast úr utanfrumuvökvanum. Frumuþurrkun leiðir til mun minni bólu en frumuát og bólan þarf ekki að renna saman við leysibólu ([[xref:fig-ch05_04_02]]).
+Afbrigði af innfrumun er [[term:frumudrykkja|term-00003]]. Þetta þýðir bókstaflega „frumudrykkja“. Þetta var uppgötvað af Warren Lewis árið 1929, en þessi bandaríski fósturfræðingur og frumulíffræðingur lýsti ferli þar sem hann gerði ráð fyrir að fruman væri markvisst að taka inn utanfrumuvökva. Í raun er þetta ferli sem tekur inn sameindir, þar á meðal vatn, sem fruman þarfnast úr utanfrumuvökvanum. Frumudrykkja leiðir til mun minni bólu en frumuát og bólan þarf ekki að renna saman við leysibólu ([[xref:fig-ch05_04_02]]).
 
 <!-- SEG:m66376:caption:fig-ch05_04_02-caption -->
-Við frumuþurrkun myndar frumuhimnan innhverfingu, umlykur lítið magn af vökva og klípur sig af. (Heimild: breyting á verki eftir Mariana Ruiz Villareal)
+Í frumudrykkju innhverfist frumuhimnan, umlykur lítið rúmmál af vökva og klemmist af. (heimild: breyting á verki eftir Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:para:fs-id1511146 -->
-Afbrigði af frumuþurrkun er {{term}}potocytosis{{/term}}. Þetta ferli notar húðunarprótein, {{term}}kaveólín{{/term}}, á umfrymis-hlið plasmahimnunnar, sem gegnir svipuðu hlutverki og klatrín. Holrúmin í plasmahimnunni sem mynda bólurnar hafa himnuviðtaka og lípíðfleka auk kaveólíns. Bólurnar eða blöðrurnar sem myndast í kaveólum (eintala kaveóla) eru minni en þær sem myndast við frumuþurrkun. Potocytosis flytur litlar sameindir inn í frumuna og flytur þær í gegnum frumuna til losunar hinum megin, ferli sem við köllum gegnumfrumun. Í sumum tilfellum afhenda kaveólur farm sinn til himnubundinna frumulíffæra eins og frymisnetsins.
+Afbrigði af frumudrykkju er [[term:potocytosis|term-00004]]. Þetta ferli notar húðunarprótein, [[term:kaveólín|term-00005]], á umfrymis-hlið frymishimnunnar, sem gegnir svipuðu hlutverki og klatrín. Holrúmin í frymishimnunni sem mynda bólurnar hafa himnuviðtaka og lípíðfleka auk kaveólíns. Bólurnar eða blöðrurnar sem myndast í kaveólum (eintala kaveóla) eru minni en þær sem myndast við frumudrykkju. Potocytosis flytur litlar sameindir inn í frumuna og flytur þær í gegnum frumuna til losunar hinum megin, ferli sem við köllum gegnumfrumun. Í sumum tilfellum afhenda kaveólurnar farm sinn til himnukenndra frumulíffæra eins og frymisnetsins.
 
 <!-- SEG:m66376:title:fs-id2059707-title -->
 Viðtakamiðluð innfrumun
 
 <!-- SEG:m66376:para:fs-id2163521 -->
-Markvisst afbrigði af innfrumun notar viðtakaprótein í plasmahimnunni sem hafa sérstaka bindisækni fyrir ákveðin efni ([[xref:fig-ch05_04_03]]).
+Markvisst afbrigði af innfrumun notar viðtakaprótein í frymishimnunni sem hafa sérstaka bindisækni fyrir ákveðin efni ([[xref:fig-ch05_04_03]]).
 
 <!-- SEG:m66376:caption:fig-ch05_04_03-caption -->
-Við viðtakamiðlaða innfrumun miðar upptaka efna í frumunni að einni tegund efnis sem binst við viðtakann á ytra yfirborði frumuhimnunnar. (Heimild: breyting á verki eftir Mariana Ruiz Villareal)
+Í viðtakamiðlaðri innfrumun miðar upptaka efna í frumunni að einni tegund efnis sem binst við viðtakann á ytra yfirborði frumuhimnunnar. (heimild: breyting á verki eftir Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:para:fs-id1912639 -->
-Við {{term}}viðtakamiðlaða innfrumun{{/term}}, eins og við frumuát, festist klatrín við umfrymis-hlið plasmahimnunnar. Ef upptaka efnasambands er háð viðtakamiðlaðri innfrumun og ferlið er óvirkt, verður efnið ekki fjarlægt úr vefjavökva eða blóði. Þess í stað verður það eftir í þessum vökvum og styrkur þess eykst. Bilun í viðtakamiðlaðri innfrumun veldur sumum sjúkdómum í mönnum. Til dæmis fjarlægir viðtakamiðluð innfrumun lágþéttni lípóprótein eða LDL (eða „vonda kólesterólið“) úr blóðinu. Í erfðasjúkdómnum ættgengri kólesterólhækkun eru LDL-viðtakarnir gallaðir eða vantar alveg. Fólk með þetta ástand hefur lífshættulegt magn kólesteróls í blóði sínu, því frumur þeirra geta ekki hreinsað LDL-agnir.
+Í [[term:viðtakamiðlaðri innfrumun|term-00006]], eins og í frumuáti, festist klatrín við umfrymis-hlið frymishimnunnar. Ef upptaka efnasambands er háð viðtakamiðlaðri innfrumun og ferlið er óvirkt, verður efnið ekki fjarlægt úr vefjavökva eða blóði. Þess í stað verður það eftir í þeim vökvum og styrkur þess eykst. Bilun í viðtakamiðlaðri innfrumun veldur sumum sjúkdómum í mönnum. Til dæmis fjarlægir viðtakamiðluð innfrumun lágþéttni lípóprótein eða LDL (eða „slæmt“ kólesteról) úr blóðinu. Í erfðasjúkdómnum ættgengri kólesterólhækkun eru LDL-viðtakarnir gallaðir eða vantar alveg. Fólk með þetta ástand hefur lífshættulegt magn af kólesteróli í blóði sínu, vegna þess að frumur þeirra geta ekki hreinsað LDL-agnir.
 
 <!-- SEG:m66376:para:fs-id2074680 -->
-Þrátt fyrir að viðtakamiðluð innfrumun sé hönnuð til að flytja ákveðin efni sem venjulega eru í utanfrumuvökvanum inn í frumuna, geta önnur efni komist inn í frumuna á sama stað. Inflúensuveirur, barnaveiki og kólerueitur hafa öll staði sem krosshvarfast við venjulega viðtakabindistaði og komast þannig inn í frumur.
+Þrátt fyrir að viðtakamiðluð innfrumun sé hönnuð til að koma tilteknum efnum sem venjulega eru í utanfrumuvökvanum inn í frumuna, geta önnur efni komist inn í frumuna á sama stað. Inflúensuveirur, barnaveiki og kólerueitur hafa öll staði sem víxlverka við venjulega viðtakabindistaði og komast þannig inn í frumur.
 
 <!-- SEG:m66376:para:fs-id2292278 -->
-Sjáðu viðtakamiðlaða innfrumun í verki og smelltu á mismunandi [[link:hluta|https://openstax.org/l/endocytosis]] til að sjá nákvæma hreyfimynd.
+Sjáðu viðtakamiðlaða innfrumun í verki og smelltu á mismunandi [[link:hluta|https://openstax.org/l/endocytosis]] til að sjá markvissa hreyfimynd.
 
 <!-- SEG:m66376:para:fs-id1416306 -->
-{{term}}Innfrumun{{/term}} er tegund virks flutnings sem flytur agnir, svo sem stórar sameindir, frumuhluta og jafnvel heilar frumur, inn í frumu. Til eru mismunandi afbrigði af innfrumun, en öll eiga þau eitt sameiginlegt einkenni: plasmahimna frumunnar myndar innhverfingu og myndar vasa utan um markögnina. Vasinn klípur sig af, sem leiðir til þess að ögnin er innilokuð í nýmyndaðri innanfrumubólu sem mynduð er úr plasmahimnunni.
+[[term:Innfrumun|term-00001]] er tegund virks flutnings sem flytur agnir, svo sem stórar sameindir, hluta frumna og jafnvel heilar frumur, inn í frumu. Það eru mismunandi afbrigði af innfrumun, en öll eiga það sameiginlegt að frymishimna frumunnar innhverfist og myndar vasa utan um markögnina. Vasinn klemmist af, sem leiðir til þess að ögnin er innilokuð í nýstofnaðri innanfrumubólu sem myndast úr frymishimnunni.
 
 <!-- SEG:m66376:title:fs-id1836379-title -->
 Útfrumun
 
 <!-- SEG:m66376:para:fs-id841051 -->
-Andstætt ferli við að flytja efni inn í frumu er {{term}}útfrumun{{/term}}. Útfrumun er andstæðan við þau ferli sem við höfum rætt hér að ofan að því leyti að tilgangur hennar er að losa efni úr frumunni út í utanfrumuvökvann. Úrgangsefni er umlukið himnu og rennur saman við innra borð frumuhimnunnar. Þessi samruni opnar himnuna að utanverðu og úrgangsefnið losnar út í utanfrumurýmið ([[xref:fig-ch05_04_04]]). Önnur dæmi um frumur sem losa sameindir með útfrumun eru seyti á prótínum í utanfrumuefni og seyti taugaboðefna út í taugamótamæri úr taugamótabólum.
+Andstæðan við það að flytja efni inn í frumu er ferli sem kallast útfrumun. [[term:Útfrumun|term-00007]] er andstæða þeirra ferla sem við höfum rætt hér að ofan að því leyti að tilgangur hennar er að losa efni úr frumunni út í utanfrumuvökvann. Úrgangsefni er umlukið himnu og rennur saman við innra borð frumuhimnunnar. Þessi samruni opnar himnuhjúpinn utan á frumunni og úrgangsefnið losnar út í utanfrumurýmið ([[xref:fig-ch05_04_04]]). Önnur dæmi um frumur sem losa sameindir með útfrumun eru meðal annars losun á prótínum utanfrumuefnis og losun taugaboðefna út í taugamótamót með taugamótabólum.
 
 <!-- SEG:m66376:caption:fig-ch05_04_04-caption -->
-Við útfrumun renna bólur sem innihalda efni saman við frumuhimnuna. Innihaldið losnar síðan út fyrir frumuna. (heimild: breytt útgáfa af verki eftir Mariana Ruiz Villareal)
+Við útfrumun renna bólur sem innihalda efni saman við frumuhimnuna. Innihaldið losnar síðan út fyrir frumuna. (heimild: breyting á verki eftir Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:entry:auto-25 -->
 Flutningsaðferðir, orkuþörf og gerðir efna sem eru flutt
@@ -101,7 +101,7 @@ Osmósa
 Vatn
 
 <!-- SEG:m66376:entry:auto-35 -->
-Stutt flæði/flutningur
+Stoðflutningur/stoðflæði
 
 <!-- SEG:m66376:entry:auto-36 -->
 Óvirk
@@ -119,7 +119,7 @@ Virk
 Natríum, kalíum, kalsíum
 
 <!-- SEG:m66376:entry:auto-41 -->
-Annars stigs virkur flutningur
+Síðvirkur flutningur
 
 <!-- SEG:m66376:entry:auto-42 -->
 Virk
@@ -137,7 +137,7 @@ Virk
 Stórar stórsameindir, heilar frumur eða frumuhlutar
 
 <!-- SEG:m66376:entry:auto-47 -->
-Frumudrykkja og frumudrykkja með kaveólíni
+Frumudrykkja og holuát
 
 <!-- SEG:m66376:entry:auto-48 -->
 Virk
@@ -146,7 +146,7 @@ Virk
 Litlar sameindir (vökvar/vatn)
 
 <!-- SEG:m66376:entry:auto-50 -->
-Viðtakamiðluð innfrumun
+Viðtakaháð innfrumun
 
 <!-- SEG:m66376:entry:auto-51 -->
 Virk
@@ -158,7 +158,7 @@ Mikið magn stórsameinda
 Samantekt kafla
 
 <!-- SEG:m66376:para:fs-id1479267 -->
-Virkur flutningur krefst beinnar notkunar á ATP til að knýja flutninginn. Í ferli sem vísindamenn kalla frumuát geta aðrar frumur gleypt stórar agnir, svo sem stórsameindir, frumuhluta eða heilar frumur. Við frumuát myndar hluti himnunnar innhverfingu og flæðir utan um ögnina, klemmist að lokum af og skilur ögnina eftir alveg umlukta af himnu úr frumuhimnunni. Fruman brýtur niður innihald bólunnar og agnirnar eru annaðhvort notaðar sem fæða eða þeim er eytt. Frumudrykkja er svipað ferli í minni mæli. Frumuhimnan myndar innhverfingu og klemmist af, sem myndar litla bólu af vökva utan úr frumunni. Frumudrykkja flytur inn efni sem fruman þarfnast úr utanfrumuvökvanum. Fruman losar sig við úrgang á svipaðan en andstæðan hátt. Hún ýtir himnubundinni bólgrind að frumuhimnunni, sem gerir bólgrindinni kleift að renna saman við himnuna og verða hluti af himnubyggingunni og losa innihald sitt út fyrir frumuna.
+Aðferðir við virkan flutning krefjast beinnar notkunar á ATP til að knýja flutninginn. Í ferli sem vísindamenn kalla frumuát geta aðrar frumur gleypt stórar agnir, svo sem stórsameindir, frumuhluta eða heilar frumur. Við frumuát myndast innhverfa í hluta himnunnar sem flæðir utan um ögnina, klemmist að lokum af og skilur ögnina eftir alveg umlukta af hjúpi úr frumuhimnunni. Fruman brýtur niður innihald bólunnar og agnirnar eru annaðhvort notaðar sem fæða eða þeim er fargað. Frumudrykkja er svipað ferli í minni mæli. Frumuhimnan myndar innhverfu og klemmist af, sem myndar lítinn hjúp af vökva utan úr frumunni. Frumudrykkja flytur inn efni sem fruman þarfnast úr utanfrumuvökvanum. Fruman losar sig við úrgang á svipaðan en öfugan hátt. Hún ýtir himnubundinni bólunni að frumuhimnunni, sem gerir bólunni kleift að renna saman við himnuna og verða hluti af himnugerðinni og losa innihald sitt út fyrir frumuna.
 
 <!-- SEG:m66376:title:fs-id1302123-title -->
 Spurningar til upprifjunar
@@ -166,35 +166,107 @@ Spurningar til upprifjunar
 <!-- SEG:m66376:problem:fs-id1255097 -->
 Hvað verður um himnu bólunnar eftir útfrumun?
 
+<!-- SEG:m66376:item:fs-id1712549-item-1 -->
+Hún yfirgefur frumuna.
+
+<!-- SEG:m66376:item:fs-id1712549-item-2 -->
+Hún er tekin í sundur af frumunni.
+
+<!-- SEG:m66376:item:fs-id1712549-item-3 -->
+Hún rennur saman við frumuhimnuna og verður hluti af henni.
+
+<!-- SEG:m66376:item:fs-id1712549-item-4 -->
+Hún er notuð aftur í annarri útfrumun.
+
 <!-- SEG:m66376:solution:fs-id2197192 -->
 C
 
 <!-- SEG:m66376:problem:fs-id1981380 -->
 Hvaða flutningskerfi getur flutt heilar frumur inn í frumu?
 
+<!-- SEG:m66376:item:fs-id1896127-item-1 -->
+frumudrykkja
+
+<!-- SEG:m66376:item:fs-id1896127-item-2 -->
+frumuát
+
+<!-- SEG:m66376:item:fs-id1896127-item-3 -->
+stoðflutningur
+
+<!-- SEG:m66376:item:fs-id1896127-item-4 -->
+frumvirkur flutningur
+
 <!-- SEG:m66376:solution:fs-id1439092 -->
 B
 
 <!-- SEG:m66376:problem:fs-id2215844 -->
-Á hvaða mikilvæga hátt er viðtakamiðluð innfrumun frábrugðin frumuáti?
+Á hvaða mikilvæga hátt er viðtakaháð innfrumun frábrugðin frumuáti?
+
+<!-- SEG:m66376:item:fs-id1481792-item-1 -->
+Hún flytur aðeins lítið magn af vökva.
+
+<!-- SEG:m66376:item:fs-id1481792-item-2 -->
+Hún felur ekki í sér að himna klemmist af.
+
+<!-- SEG:m66376:item:fs-id1481792-item-3 -->
+Hún flytur aðeins inn tiltekið markefni.
+
+<!-- SEG:m66376:item:fs-id1481792-item-4 -->
+Hún flytur efni inn í frumuna, en frumuát fjarlægir efni.
 
 <!-- SEG:m66376:solution:fs-id2000022 -->
 C
 
 <!-- SEG:m66376:problem:fs-idm74380435 -->
-Margar veirur komast inn í hýsilfrumur með viðtakamiðlaðri innfrumun. Hver er kosturinn við þessa aðferð?
+Margar veirur komast inn í hýsilfrumur með viðtakaháðri innfrumun. Hver er kosturinn við þessa aðferð?
+
+<!-- SEG:m66376:item:fs-idm67922774-item-1 -->
+Veiran fer beint inn í umfrymi frumunnar.
+
+<!-- SEG:m66376:item:fs-idm67922774-item-2 -->
+Veiran er varin gegn því að hvít blóðkorn þekki hana.
+
+<!-- SEG:m66376:item:fs-idm67922774-item-3 -->
+Veiran fer aðeins inn í sína markhýsilfrumugerð.
+
+<!-- SEG:m66376:item:fs-idm67922774-item-4 -->
+Veiran getur sprautað erfðaefni sínu beint inn í kjarna frumunnar.
 
 <!-- SEG:m66376:solution:fs-idm200102084 -->
 C
 
 <!-- SEG:m66376:problem:fs-idm74380436 -->
-Hvaða af eftirfarandi frumulíffærum reiðir sig á útfrumun til að ljúka starfi sínu?
+Hvaða af eftirfarandi frumulíffærum reiðir sig á útfrymun til að ljúka starfi sínu?
+
+<!-- SEG:m66376:item:fs-idm67922775-item-1 -->
+Golgi-kerfi
+
+<!-- SEG:m66376:item:fs-idm67922775-item-2 -->
+Safabóla
+
+<!-- SEG:m66376:item:fs-idm67922775-item-3 -->
+Hvatberar
+
+<!-- SEG:m66376:item:fs-idm67922775-item-4 -->
+Frymisnet
 
 <!-- SEG:m66376:solution:fs-idm200102085 -->
 A
 
 <!-- SEG:m66376:problem:fs-idm74380437 -->
-Ímyndaðu þér frumu sem getur framkvæmt útfrumun, en aðeins lágmarks innfrumun. Hvað myndi gerast við frumuna?
+Ímyndaðu þér frumu sem getur framkvæmt útfrymun en aðeins lágmarks innfrymun. Hvað myndi gerast við frumuna?
+
+<!-- SEG:m66376:item:fs-idm67922776-item-1 -->
+Fruman myndi seyta öllum innanfrumupróteinum sínum.
+
+<!-- SEG:m66376:item:fs-idm67922776-item-2 -->
+Frumuhimnan myndi stækka með tímanum.
+
+<!-- SEG:m66376:item:fs-idm67922776-item-3 -->
+Fruman myndi hætta að tjá innfelld viðtakaprótein í frumuhimnu sinni.
+
+<!-- SEG:m66376:item:fs-idm67922776-item-4 -->
+Fruman myndi rofna.
 
 <!-- SEG:m66376:solution:fs-idm200102086 -->
 B
@@ -203,55 +275,55 @@ B
 Ígrundunarspurningar
 
 <!-- SEG:m66376:problem:fs-id1787601 -->
-Af hverju er mikilvægt að það séu mismunandi gerðir prótína í frumuhimnum fyrir flutning efna inn og út úr frumu?
+Hvers vegna er mikilvægt að það séu mismunandi gerðir próteina í frumuhimnum fyrir flutning efna inn og út úr frumu?
 
 <!-- SEG:m66376:solution:fs-id1768554 -->
-Prótínin gera frumunni kleift að velja hvaða efnasamband er flutt, sem uppfyllir þarfir frumunnar og kemur ekki með neitt annað inn.
+Próteinin gera frumu kleift að velja hvaða efnasamband verður flutt, til að mæta þörfum frumunnar og koma ekki með neitt annað inn.
 
 <!-- SEG:m66376:problem:fs-id1760853 -->
-Af hverju eiga jónir erfitt með að komast í gegnum frumuhimnur þrátt fyrir smæð sína?
+Hvers vegna eiga jónir erfitt með að komast í gegnum frumuhimnur þrátt fyrir smæð sína?
 
 <!-- SEG:m66376:solution:fs-id1805576 -->
-Jónir eru hlaðnar og þar af leiðandi vatnssæknar og geta ekki tengst fituhluta himnunnar. Jónir verða að vera fluttar með burðarprótínum eða jónagöngum.
+Jónir eru hlaðnar og þar af leiðandi vatnssæknar og geta ekki tengst fituhluta himnunnar. Jónir verða að vera fluttar með burðarpróteinum eða jónagöngum.
 
 <!-- SEG:m66376:glossary-term:fs-id1769825-term -->
 kaveólín
 
 <!-- SEG:m66376:glossary-def:fs-id1769825-def -->
-prótín sem þekur umfrymis-hlið frumuhimnunnar og tekur þátt í upptöku vökva með frumudrykkju með kaveólíni
+prótein sem þekur umfrymis-hlið frumuhimnunnar og tekur þátt í vökvaupptökuferlinu með frumdrykkju
 
 <!-- SEG:m66376:glossary-term:fs-id1704998-term -->
 klatrín
 
 <!-- SEG:m66376:glossary-def:fs-id1704998-def -->
-prótín sem þekur innra yfirborð frumuhimnunnar og aðstoðar við myndun sérhæfðra bygginga, eins og hjúpaðra gryfja, fyrir frumuát
+prótein sem þekur innra yfirborð frumuhimnunnar og aðstoðar við að mynda sérhæfðar byggingar, eins og hjúpaðar dældir, fyrir frumuát
 
 <!-- SEG:m66376:glossary-term:fs-id1412466-term -->
-innfrumun
+innfrymun
 
 <!-- SEG:m66376:glossary-def:fs-id1412466-def -->
-tegund virks flutnings sem flytur efni, þar með talið vökva og agnir, inn í frumu
+gerð virks flutnings sem flytur efni, þar á meðal vökva og agnir, inn í frumu
 
 <!-- SEG:m66376:glossary-term:fs-id1439064-term -->
-útfrumun
+útfrymun
 
 <!-- SEG:m66376:glossary-def:fs-id1439064-def -->
-ferli þar sem efni í miklu magni er losað út úr frumu
+ferli þar sem efni er losað í stórum skömmtum út úr frumu
 
 <!-- SEG:m66376:glossary-term:fs-id1760012-term -->
 frumudrykkja
 
 <!-- SEG:m66376:glossary-def:fs-id1760012-def -->
-afbrigði innfrumunar sem flytur inn stórsameindir sem fruman þarfnast úr utanfrumuvökvanum
+afbrigði af innfrymun sem flytur inn stórsameindir sem fruman þarfnast úr utanfrumuvökvanum
 
 <!-- SEG:m66376:glossary-term:fs-id1442893-term -->
 pótósýtósa
 
 <!-- SEG:m66376:glossary-def:fs-id1442893-def -->
-afbrigði frumudrykkju sem notar annað hjúpprótín (kaveólín) á umfrymisvegg frumuhimnunnar
+afbrigði af frumudrykkju sem notar annað hjúpprótein (kaveólín) á umfrymis-hlið frumuhimnunnar
 
 <!-- SEG:m66376:glossary-term:fs-id1631447-term -->
-viðtakamiðluð innfrumun
+viðtakamiðluð innfrymun
 
 <!-- SEG:m66376:glossary-def:fs-id1631447-def -->
-afbrigði innfrumunar sem felur í sér notkun sérstakra bindiprótína í frumuhimnunni fyrir tilteknar sameindir eða agnir, og klatrínhúðaðar dældir sem verða að klatrínhúðuðum bólum
+afbrigði af innfrymun sem felur í sér notkun sérstakra bindipróteina í frumuhimnunni fyrir sérstakar sameindir eða agnir, og klatrínhjúpaðar dældir sem verða að klatrínhjúpuðum bólum

@@ -11,7 +11,7 @@ Understand how electrochemical gradients affect ions
 Distinguish between primary active transport and secondary active transport
 
 <!-- SEG:m66375:para:fs-id2074680 -->
-{{term}}Active transport{{/term}} mechanisms require the cell’s energy, usually in the form of adenosine triphosphate (ATP). If a substance must move into the cell against its concentration gradient—that is, if the substance's concentration inside the cell is greater than its concentration in the extracellular fluid (and vice versa)—the cell must use energy to move the substance. Some active transport mechanisms move small-molecular weight materials, such as ions, through the membrane. Other mechanisms transport much larger molecules.
+[[term:Active transport|term-00001]] mechanisms require the cell’s energy, usually in the form of adenosine triphosphate (ATP). If a substance must move into the cell against its concentration gradient—that is, if the substance's concentration inside the cell is greater than its concentration in the extracellular fluid (and vice versa)—the cell must use energy to move the substance. Some active transport mechanisms move small-molecular weight materials, such as ions, through the membrane. Other mechanisms transport much larger molecules.
 
 <!-- SEG:m66375:title:fs-id1318973-title -->
 Electrochemical Gradient
@@ -20,22 +20,22 @@ Electrochemical Gradient
 Moving Against a Gradient
 
 <!-- SEG:m66375:para:fs-id1594022 -->
-To move substances against a concentration or electrochemical gradient, the cell must use energy. This energy comes from ATP generated through the cell’s metabolism. Active transport mechanisms, or {{term}}pumps{{/term}}, work against electrochemical gradients. Small substances constantly pass through plasma membranes. Active transport maintains concentrations of ions and other substances that living cells require in the face of these passive movements. A cell may spend much of its metabolic energy supply maintaining these processes. (A red blood cell uses most of its metabolic energy to maintain the imbalance between exterior and interior sodium and potassium levels that the cell requires.) Because active transport mechanisms depend on a cell’s metabolism for energy, they are sensitive to many metabolic poisons that interfere with the ATP supply.
+To move substances against a concentration or electrochemical gradient, the cell must use energy. This energy comes from ATP generated through the cell’s metabolism. Active transport mechanisms, or [[term:pumps|term-00003]], work against electrochemical gradients. Small substances constantly pass through plasma membranes. Active transport maintains concentrations of ions and other substances that living cells require in the face of these passive movements. A cell may spend much of its metabolic energy supply maintaining these processes. (A red blood cell uses most of its metabolic energy to maintain the imbalance between exterior and interior sodium and potassium levels that the cell requires.) Because active transport mechanisms depend on a cell’s metabolism for energy, they are sensitive to many metabolic poisons that interfere with the ATP supply.
 
 <!-- SEG:m66375:para:fs-id1368350 -->
-Two mechanisms exist for transporting small-molecular weight material and small molecules. {{term}}Primary active transport{{/term}} moves ions across a membrane and creates a difference in charge across that membrane, which is directly dependent on ATP. {{term}}Secondary active transport{{/term}} does not directly require ATP: instead, it is the movement of material due to the electrochemical gradient established by primary active transport ([[xref:fig-ch05_03_03]]).
+Two mechanisms exist for transporting small-molecular weight material and small molecules. [[term:Primary active transport|term-00004]] moves ions across a membrane and creates a difference in charge across that membrane, which is directly dependent on ATP. [[term:Secondary active transport|term-00005]] does not directly require ATP: instead, it is the movement of material due to the electrochemical gradient established by primary active transport ([[xref:fig-ch05_03_03]]).
 
 <!-- SEG:m66375:title:fs-id1569987-title -->
 Carrier Proteins for Active Transport
 
 <!-- SEG:m66375:para:fs-id1778201 -->
-An important membrane adaptation for active transport is the presence of specific carrier proteins or pumps to facilitate movement: there are three protein types or {{term}}transporters{{/term}} ([[xref:fig-ch05_03_02]]). A {{term}}uniporter{{/term}} carries one specific ion or molecule. A {{term}}symporter{{/term}} carries two different ions or molecules, both in the same direction. An {{term}}antiporter{{/term}} also carries two different ions or molecules, but in different directions. All of these transporters can also transport small, uncharged organic molecules like glucose. These three types of carrier proteins are also in facilitated diffusion, but they do not require ATP to work in that process. Some examples of pumps for active transport are Na[[sup:+]]-K[[sup:+]] ATPase, which carries sodium and potassium ions, and H[[sup:+]]-K[[sup:+]] ATPase, which carries hydrogen and potassium ions. Both of these are antiporter carrier proteins. Two other carrier proteins are Ca[[sup:2+]] ATPase and H[[sup:+]] ATPase, which carry only calcium and only hydrogen ions, respectively. Both are pumps.
+An important membrane adaptation for active transport is the presence of specific carrier proteins or pumps to facilitate movement: there are three protein types or [[term:transporters|term-00006]] ([[xref:fig-ch05_03_02]]). A [[term:uniporter|term-00007]] carries one specific ion or molecule. A [[term:symporter|term-00008]] carries two different ions or molecules, both in the same direction. An [[term:antiporter|term-00009]] also carries two different ions or molecules, but in different directions. All of these transporters can also transport small, uncharged organic molecules like glucose. These three types of carrier proteins are also in facilitated diffusion, but they do not require ATP to work in that process. Some examples of pumps for active transport are Na[[sup:+]]-K[[sup:+]] ATPase, which carries sodium and potassium ions, and H[[sup:+]]-K[[sup:+]] ATPase, which carries hydrogen and potassium ions. Both of these are antiporter carrier proteins. Two other carrier proteins are Ca[[sup:2+]] ATPase and H[[sup:+]] ATPase, which carry only calcium and only hydrogen ions, respectively. Both are pumps.
 
 <!-- SEG:m66375:caption:fig-ch05_03_02-caption -->
 A uniporter carries one molecule or ion. A symporter carries two different molecules or ions, both in the same direction. An antiporter also carries two different molecules or ions, but in different directions. (credit: modification of work by “Lupask”/Wikimedia Commons)
 
 <!-- SEG:m66375:para:fs-id2004550 -->
-We have discussed simple concentration gradients—a substance's differential concentrations across a space or a membrane—but in living systems, gradients are more complex. Because ions move into and out of cells and because cells contain proteins that do not move across the membrane and are mostly negatively charged, there is also an electrical gradient, a difference of charge, across the plasma membrane. The interior of living cells is electrically negative with respect to the extracellular fluid in which they are bathed, and at the same time, cells have higher concentrations of potassium (K[[sup:+]]) and lower concentrations of sodium (Na[[sup:+]]) than the extracellular fluid. Thus in a living cell, the concentration gradient of Na[[sup:+]] tends to drive it into the cell, and its electrical gradient (a positive ion) also drives it inward to the negatively charged interior. However, the situation is more complex for other elements such as potassium. The electrical gradient of K[[sup:+]], a positive ion, also drives it into the cell, but the concentration gradient of K[[sup:+]] drives K[[sup:+]] [[i:out]] of the cell ([[xref:fig-ch05_03_01]]). We call the combined concentration gradient and electrical charge that affects an ion its {{term}}electrochemical gradient{{/term}}.
+We have discussed simple concentration gradients—a substance's differential concentrations across a space or a membrane—but in living systems, gradients are more complex. Because ions move into and out of cells and because cells contain proteins that do not move across the membrane and are mostly negatively charged, there is also an electrical gradient, a difference of charge, across the plasma membrane. The interior of living cells is electrically negative with respect to the extracellular fluid in which they are bathed, and at the same time, cells have higher concentrations of potassium (K[[sup:+]]) and lower concentrations of sodium (Na[[sup:+]]) than the extracellular fluid. Thus in a living cell, the concentration gradient of Na[[sup:+]] tends to drive it into the cell, and its electrical gradient (a positive ion) also drives it inward to the negatively charged interior. However, the situation is more complex for other elements such as potassium. The electrical gradient of K[[sup:+]], a positive ion, also drives it into the cell, but the concentration gradient of K[[sup:+]] drives K[[sup:+]] [[i:out]] of the cell ([[xref:fig-ch05_03_01]]). We call the combined concentration gradient and electrical charge that affects an ion its [[term:electrochemical gradient|term-00002]].
 
 <!-- SEG:m66375:para:fs-id2054441 -->
 [[MEDIA:1]] Electrochemical gradients arise from the combined effects of concentration gradients and electrical gradients. Na[[sup:+]] ions are at higher concentration outside the cell, and K[[sup:+]] ions are at higher concentration inside of the cell, and yet the inside of the cell has negative net charge compared to the other side of the membrane. This is due to the presence of K[[sup:+]] binding proteins and other negatively charged molecules. The difference in electrical charges attracts the positively charged Na ions toward the inside of the cell, the electrical gradient, while the K ions tend to flow through K channels toward the outside of the cell due to the concentration difference, the concentration gradient. Structures labeled A represent proteins. (credit: “Synaptitude”/Wikimedia Commons)
@@ -80,7 +80,7 @@ With the phosphate group removed and potassium ions attached, the carrier protei
 The carrier protein, in its new configuration, has a decreased affinity for potassium, and the two ions moves into the cytoplasm. The protein now has a higher affinity for sodium ions, and the process starts again.
 
 <!-- SEG:m66375:para:fs-id2019240 -->
-Several things have happened as a result of this process. At this point, there are more sodium ions outside the cell than inside and more potassium ions inside than out. For every three sodium ions that move out, two potassium ions move in. This results in the interior being slightly more negative relative to the exterior. This difference in charge is important in creating the conditions necessary for the secondary process. The sodium-potassium pump is, therefore, an {{term}}electrogenic pump{{/term}} (a pump that creates a charge imbalance), creating an electrical imbalance across the membrane and contributing to the membrane potential.
+Several things have happened as a result of this process. At this point, there are more sodium ions outside the cell than inside and more potassium ions inside than out. For every three sodium ions that move out, two potassium ions move in. This results in the interior being slightly more negative relative to the exterior. This difference in charge is important in creating the conditions necessary for the secondary process. The sodium-potassium pump is, therefore, an [[term:electrogenic pump|term-00010]] (a pump that creates a charge imbalance), creating an electrical imbalance across the membrane and contributing to the membrane potential.
 
 <!-- SEG:m66375:para:fs-id1876210 -->
 Watch this [[link:video|https://openstax.org/l/Na_K_ATPase]] to see an active transport simulation in a sodium-potassium ATPase.
@@ -127,17 +127,53 @@ Review Questions
 <!-- SEG:m66375:problem:fs-id1443544 -->
 Active transport must function continuously because __________.
 
+<!-- SEG:m66375:item:fs-id1798638-item-1 -->
+plasma membranes wear out
+
+<!-- SEG:m66375:item:fs-id1798638-item-2 -->
+not all membranes are amphiphilic
+
+<!-- SEG:m66375:item:fs-id1798638-item-3 -->
+facilitated transport opposes active transport
+
+<!-- SEG:m66375:item:fs-id1798638-item-4 -->
+diffusion is constantly moving solutes in opposite directions
+
 <!-- SEG:m66375:solution:fs-id1438253 -->
 D
 
 <!-- SEG:m66375:problem:fs-id1988922 -->
 How does the sodium-potassium pump make the interior of the cell negatively charged?
 
+<!-- SEG:m66375:item:fs-id1999972-item-1 -->
+by expelling anions
+
+<!-- SEG:m66375:item:fs-id1999972-item-2 -->
+by pulling in anions
+
+<!-- SEG:m66375:item:fs-id1999972-item-3 -->
+by expelling more cations than are taken in
+
+<!-- SEG:m66375:item:fs-id1999972-item-4 -->
+by taking in and expelling an equal number of cations
+
 <!-- SEG:m66375:solution:fs-id1967746 -->
 C
 
 <!-- SEG:m66375:problem:fs-id1760590 -->
 What is the combination of an electrical gradient and a concentration gradient called?
+
+<!-- SEG:m66375:item:fs-id2197534-item-1 -->
+potential gradient
+
+<!-- SEG:m66375:item:fs-id2197534-item-2 -->
+electrical potential
+
+<!-- SEG:m66375:item:fs-id2197534-item-3 -->
+concentration potential
+
+<!-- SEG:m66375:item:fs-id2197534-item-4 -->
+electrochemical gradient
 
 <!-- SEG:m66375:solution:fs-id1244071 -->
 D

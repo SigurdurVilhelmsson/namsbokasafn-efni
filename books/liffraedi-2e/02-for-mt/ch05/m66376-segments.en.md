@@ -26,19 +26,19 @@ Phagocytosis (the condition of “cell eating”) is the process by which a cell
 In phagocytosis, the cell membrane surrounds the particle and engulfs it. (credit: modification of work by Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:para:fs-id1458045 -->
-In preparation for phagocytosis, a portion of the plasma membrane's inward-facing surface becomes coated with the protein {{term}}clathrin{{/term}}, which stabilizes this membrane's section. The membrane's coated portion then extends from the cell's body and surrounds the particle, eventually enclosing it. Once the vesicle containing the particle is enclosed within the cell, the clathrin disengages from the membrane and the vesicle merges with a lysosome for breaking down the material in the newly formed compartment (endosome). When accessible nutrients from the vesicular contents' degradation have been extracted, the newly formed endosome merges with the plasma membrane and releases its contents into the extracellular fluid. The endosomal membrane again becomes part of the plasma membrane.
+In preparation for phagocytosis, a portion of the plasma membrane's inward-facing surface becomes coated with the protein [[term:clathrin|term-00002]], which stabilizes this membrane's section. The membrane's coated portion then extends from the cell's body and surrounds the particle, eventually enclosing it. Once the vesicle containing the particle is enclosed within the cell, the clathrin disengages from the membrane and the vesicle merges with a lysosome for breaking down the material in the newly formed compartment (endosome). When accessible nutrients from the vesicular contents' degradation have been extracted, the newly formed endosome merges with the plasma membrane and releases its contents into the extracellular fluid. The endosomal membrane again becomes part of the plasma membrane.
 
 <!-- SEG:m66376:title:fs-id1434270-title -->
 Pinocytosis
 
 <!-- SEG:m66376:para:fs-id2337777 -->
-A variation of endocytosis is {{term}}pinocytosis{{/term}}. This literally means “cell drinking”. Discovered by Warren Lewis in 1929, this American embryologist and cell biologist described a process whereby he assumed that the cell was purposefully taking in extracellular fluid. In reality, this is a process that takes in molecules, including water, which the cell needs from the extracellular fluid. Pinocytosis results in a much smaller vesicle than does phagocytosis, and the vesicle does not need to merge with a lysosome ([[xref:fig-ch05_04_02]]).
+A variation of endocytosis is [[term:pinocytosis|term-00003]]. This literally means “cell drinking”. Discovered by Warren Lewis in 1929, this American embryologist and cell biologist described a process whereby he assumed that the cell was purposefully taking in extracellular fluid. In reality, this is a process that takes in molecules, including water, which the cell needs from the extracellular fluid. Pinocytosis results in a much smaller vesicle than does phagocytosis, and the vesicle does not need to merge with a lysosome ([[xref:fig-ch05_04_02]]).
 
 <!-- SEG:m66376:caption:fig-ch05_04_02-caption -->
 In pinocytosis, the cell membrane invaginates, surrounds a small volume of fluid, and pinches off. (credit: modification of work by Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:para:fs-id1511146 -->
-A variation of pinocytosis is {{term}}potocytosis{{/term}}. This process uses a coating protein, {{term}}caveolin{{/term}}, on the plasma membrane's cytoplasmic side, which performs a similar function to clathrin. The cavities in the plasma membrane that form the vacuoles have membrane receptors and lipid rafts in addition to caveolin. The vacuoles or vesicles formed in caveolae (singular caveola) are smaller than those in pinocytosis. Potocytosis brings small molecules into the cell and transports them through the cell for their release on the other side, a process we call transcytosis. In some cases, the caveolae deliver their cargo to membranous organelles like the ER.
+A variation of pinocytosis is [[term:potocytosis|term-00004]]. This process uses a coating protein, [[term:caveolin|term-00005]], on the plasma membrane's cytoplasmic side, which performs a similar function to clathrin. The cavities in the plasma membrane that form the vacuoles have membrane receptors and lipid rafts in addition to caveolin. The vacuoles or vesicles formed in caveolae (singular caveola) are smaller than those in pinocytosis. Potocytosis brings small molecules into the cell and transports them through the cell for their release on the other side, a process we call transcytosis. In some cases, the caveolae deliver their cargo to membranous organelles like the ER.
 
 <!-- SEG:m66376:title:fs-id2059707-title -->
 Receptor-mediated Endocytosis
@@ -50,7 +50,7 @@ A targeted variation of endocytosis employs receptor proteins in the plasma memb
 In receptor-mediated endocytosis, the cell's uptake of substances targets a single type of substance that binds to the receptor on the cell membrane's external surface. (credit: modification of work by Mariana Ruiz Villareal)
 
 <!-- SEG:m66376:para:fs-id1912639 -->
-In {{term}}receptor-mediated endocytosis{{/term}}, as in phagocytosis, clathrin attaches to the plasma membrane's cytoplasmic side. If a compound's uptake is dependent on receptor-mediated endocytosis and the process is ineffective, the material will not be removed from the tissue fluids or blood. Instead, it will stay in those fluids and increase in concentration. The failure of receptor-mediated endocytosis causes some human diseases. For example, receptor mediated endocytosis removes low density lipoprotein or LDL (or "bad" cholesterol) from the blood. In the human genetic disease familial hypercholesterolemia, the LDL receptors are defective or missing entirely. People with this condition have life-threatening levels of cholesterol in their blood, because their cells cannot clear LDL particles.
+In [[term:receptor-mediated endocytosis|term-00006]], as in phagocytosis, clathrin attaches to the plasma membrane's cytoplasmic side. If a compound's uptake is dependent on receptor-mediated endocytosis and the process is ineffective, the material will not be removed from the tissue fluids or blood. Instead, it will stay in those fluids and increase in concentration. The failure of receptor-mediated endocytosis causes some human diseases. For example, receptor mediated endocytosis removes low density lipoprotein or LDL (or "bad" cholesterol) from the blood. In the human genetic disease familial hypercholesterolemia, the LDL receptors are defective or missing entirely. People with this condition have life-threatening levels of cholesterol in their blood, because their cells cannot clear LDL particles.
 
 <!-- SEG:m66376:para:fs-id2074680 -->
 Although receptor-mediated endocytosis is designed to bring specific substances that are normally in the extracellular fluid into the cell, other substances may gain entry into the cell at the same site. Flu viruses, diphtheria, and cholera toxin all have sites that cross-react with normal receptor-binding sites and gain entry into cells.
@@ -59,13 +59,13 @@ Although receptor-mediated endocytosis is designed to bring specific substances 
 See receptor-mediated endocytosis in action, and click on different [[link:parts|https://openstax.org/l/endocytosis]] for a focused animation.
 
 <!-- SEG:m66376:para:fs-id1416306 -->
-{{term}}Endocytosis{{/term}} is a type of active transport that moves particles, such as large molecules, parts of cells, and even whole cells, into a cell. There are different endocytosis variations, but all share a common characteristic: the cell's plasma membrane invaginates, forming a pocket around the target particle. The pocket pinches off, resulting in the particle containing itself in a newly created intracellular vesicle formed from the plasma membrane.
+[[term:Endocytosis|term-00001]] is a type of active transport that moves particles, such as large molecules, parts of cells, and even whole cells, into a cell. There are different endocytosis variations, but all share a common characteristic: the cell's plasma membrane invaginates, forming a pocket around the target particle. The pocket pinches off, resulting in the particle containing itself in a newly created intracellular vesicle formed from the plasma membrane.
 
 <!-- SEG:m66376:title:fs-id1836379-title -->
 Exocytosis
 
 <!-- SEG:m66376:para:fs-id841051 -->
-The reverse process of moving material into a cell is the process of exocytosis. {{term}}Exocytosis{{/term}} is the opposite of the processes we discussed above in that its purpose is to expel material from the cell into the extracellular fluid. Waste material is enveloped in a membrane and fuses with the plasma membrane's interior. This fusion opens the membranous envelope on the cell's exterior, and the waste material expels into the extracellular space ([[xref:fig-ch05_04_04]]). Other examples of cells releasing molecules via exocytosis include extracellular matrix protein secretion and neurotransmitter secretion into the synaptic cleft by synaptic vesicles.
+The reverse process of moving material into a cell is the process of exocytosis. [[term:Exocytosis|term-00007]] is the opposite of the processes we discussed above in that its purpose is to expel material from the cell into the extracellular fluid. Waste material is enveloped in a membrane and fuses with the plasma membrane's interior. This fusion opens the membranous envelope on the cell's exterior, and the waste material expels into the extracellular space ([[xref:fig-ch05_04_04]]). Other examples of cells releasing molecules via exocytosis include extracellular matrix protein secretion and neurotransmitter secretion into the synaptic cleft by synaptic vesicles.
 
 <!-- SEG:m66376:caption:fig-ch05_04_04-caption -->
 In exocytosis, vesicles containing substances fuse with the plasma membrane. The contents then release to the cell's exterior. (credit: modification of work by Mariana Ruiz Villareal)
@@ -166,11 +166,35 @@ Review Questions
 <!-- SEG:m66376:problem:fs-id1255097 -->
 What happens to the membrane of a vesicle after exocytosis?
 
+<!-- SEG:m66376:item:fs-id1712549-item-1 -->
+It leaves the cell.
+
+<!-- SEG:m66376:item:fs-id1712549-item-2 -->
+It is disassembled by the cell.
+
+<!-- SEG:m66376:item:fs-id1712549-item-3 -->
+It fuses with and becomes part of the plasma membrane.
+
+<!-- SEG:m66376:item:fs-id1712549-item-4 -->
+It is used again in another exocytosis event.
+
 <!-- SEG:m66376:solution:fs-id2197192 -->
 C
 
 <!-- SEG:m66376:problem:fs-id1981380 -->
 Which transport mechanism can bring whole cells into a cell?
+
+<!-- SEG:m66376:item:fs-id1896127-item-1 -->
+pinocytosis
+
+<!-- SEG:m66376:item:fs-id1896127-item-2 -->
+phagocytosis
+
+<!-- SEG:m66376:item:fs-id1896127-item-3 -->
+facilitated transport
+
+<!-- SEG:m66376:item:fs-id1896127-item-4 -->
+primary active transport
 
 <!-- SEG:m66376:solution:fs-id1439092 -->
 B
@@ -178,11 +202,35 @@ B
 <!-- SEG:m66376:problem:fs-id2215844 -->
 In what important way does receptor-mediated endocytosis differ from phagocytosis?
 
+<!-- SEG:m66376:item:fs-id1481792-item-1 -->
+It transports only small amounts of fluid.
+
+<!-- SEG:m66376:item:fs-id1481792-item-2 -->
+It does not involve the pinching off of membrane.
+
+<!-- SEG:m66376:item:fs-id1481792-item-3 -->
+It brings in only a specifically targeted substance.
+
+<!-- SEG:m66376:item:fs-id1481792-item-4 -->
+It brings substances into the cell, while phagocytosis removes substances.
+
 <!-- SEG:m66376:solution:fs-id2000022 -->
 C
 
 <!-- SEG:m66376:problem:fs-idm74380435 -->
 Many viruses enter host cells through receptor-mediated endocytosis. What is an advantage of this entry strategy?
+
+<!-- SEG:m66376:item:fs-idm67922774-item-1 -->
+The virus directly enters the cytoplasm of the cell.
+
+<!-- SEG:m66376:item:fs-idm67922774-item-2 -->
+The virus is protected from recognition by white blood cells.
+
+<!-- SEG:m66376:item:fs-idm67922774-item-3 -->
+The virus only enters its target host cell type.
+
+<!-- SEG:m66376:item:fs-idm67922774-item-4 -->
+The virus can directly inject its genome into the cell’s nucleus.
 
 <!-- SEG:m66376:solution:fs-idm200102084 -->
 C
@@ -190,11 +238,35 @@ C
 <!-- SEG:m66376:problem:fs-idm74380436 -->
 Which of the following organelles relies on exocytosis to complete its function?
 
+<!-- SEG:m66376:item:fs-idm67922775-item-1 -->
+Golgi apparatus
+
+<!-- SEG:m66376:item:fs-idm67922775-item-2 -->
+vacuole
+
+<!-- SEG:m66376:item:fs-idm67922775-item-3 -->
+mitochondria
+
+<!-- SEG:m66376:item:fs-idm67922775-item-4 -->
+endoplasmic reticulum
+
 <!-- SEG:m66376:solution:fs-idm200102085 -->
 A
 
 <!-- SEG:m66376:problem:fs-idm74380437 -->
 Imagine a cell can perform exocytosis, but only minimal endocytosis. What would happen to the cell?
+
+<!-- SEG:m66376:item:fs-idm67922776-item-1 -->
+The cell would secrete all its intracellular proteins.
+
+<!-- SEG:m66376:item:fs-idm67922776-item-2 -->
+The plasma membrane would increase in size over time.
+
+<!-- SEG:m66376:item:fs-idm67922776-item-3 -->
+The cell would stop expressing integral receptor proteins in its plasma membrane.
+
+<!-- SEG:m66376:item:fs-idm67922776-item-4 -->
+The cell would lyse.
 
 <!-- SEG:m66376:solution:fs-idm200102086 -->
 B

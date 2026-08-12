@@ -37,6 +37,34 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-id2188439",
+          "segmentId": "m66373:para:fs-id2188439"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1511371",
+          "segmentId": "m66373:para:fs-id1511371"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_01_01",
+          "caption": {
+            "segmentId": "m66373:caption:fig-ch05_01_01-caption"
+          },
+          "media": {
+            "id": "fs-id1786872",
+            "alt": "This illustration shows a phospholipid bilayer with proteins and cholesterol embedded in it. Integral membrane proteins span the entire membrane. Protein channels are integral membrane proteins with a central pore through which molecules can pass. Peripheral proteins are associated with the phospholipid head groups on one side of the membrane only. A glycoprotein is shown with the protein portion of the molecule embedded in the membrane and the carbohydrate portion jutting out from the membrane. A glycolipid is also shown with the lipid portion embedded in the membrane and the carbohydrate portion jutting out of the membrane.",
+            "src": "../../media/Figure_05_01_01-52bf.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1444105",
+          "segmentId": "m66373:para:fs-id1444105"
+        },
+        {
           "type": "section",
           "id": "fs-id1964600",
           "class": null,
@@ -176,34 +204,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-id2188439",
-          "segmentId": "m66373:para:fs-id2188439"
-        },
-        {
-          "type": "para",
-          "id": "fs-id1511371",
-          "segmentId": "m66373:para:fs-id1511371"
-        },
-        {
-          "type": "figure",
-          "id": "fig-ch05_01_01",
-          "caption": {
-            "segmentId": "m66373:caption:fig-ch05_01_01-caption"
-          },
-          "media": {
-            "id": "fs-id1786872",
-            "alt": "This illustration shows a phospholipid bilayer with proteins and cholesterol embedded in it. Integral membrane proteins span the entire membrane. Protein channels are integral membrane proteins with a central pore through which molecules can pass. Peripheral proteins are associated with the phospholipid head groups on one side of the membrane only. A glycoprotein is shown with the protein portion of the molecule embedded in the membrane and the carbohydrate portion jutting out from the membrane. A glycolipid is also shown with the lipid portion embedded in the membrane and the carbohydrate portion jutting out of the membrane.",
-            "src": "../../media/Figure_05_01_01-52bf.jpg",
-            "mimeType": "image/jpg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-id1444105",
-          "segmentId": "m66373:para:fs-id1444105"
         }
       ]
     },
@@ -408,6 +408,31 @@
                 "type": "para",
                 "id": "fs-id1384518",
                 "segmentId": "m66373:problem:fs-id1384518"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1463137",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1463137-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1463137-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1463137-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1463137-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -430,6 +455,31 @@
                 "type": "para",
                 "id": "fs-id1450228",
                 "segmentId": "m66373:problem:fs-id1450228"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1439064",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1439064-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1439064-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1439064-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1439064-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -452,6 +502,31 @@
                 "type": "para",
                 "id": "fs-id1461234",
                 "segmentId": "m66373:problem:fs-id1461234"
+              },
+              {
+                "type": "list",
+                "id": "fs-id1631084",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1631084-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1631084-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1631084-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-id1631084-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -474,6 +549,31 @@
                 "type": "para",
                 "id": "fs-idm74380428",
                 "segmentId": "m66373:problem:fs-idm74380428"
+              },
+              {
+                "type": "list",
+                "id": "fs-idm67922767",
+                "listType": "enumerated",
+                "numberStyle": "lower-alpha",
+                "bulletStyle": null,
+                "items": [
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-idm67922767-item-1"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-idm67922767-item-2"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-idm67922767-item-3"
+                  },
+                  {
+                    "id": null,
+                    "segmentId": "m66373:item:fs-idm67922767-item-4"
+                  }
+                ]
               }
             ]
           },
@@ -628,5 +728,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 1
 }
