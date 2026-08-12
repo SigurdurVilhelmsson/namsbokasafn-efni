@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "mod": "chapter-metadata",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "delta": {}
+    },
+    {
+      "mod": "m68845",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "delta": {}
+    },
+    {
+      "mod": "m68846",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "delta": {}
+    },
+    {
+      "mod": "m68847",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "delta": {}
+    },
+    {
+      "mod": "m68848",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "delta": {}
+    },
+    {
+      "mod": "m68849",
+      "invented": 0,
+      "types": [],
+      "mismatches": 0,
+      "delta": {}
+    }
+  ],
+  "total": 0,
+  "usage": {
+    "totalChars": 89282,
+    "totalCost": 892.82,
+    "requestCount": 8,
+    "failedCount": 0,
+    "startTime": 1786562399845,
+    "elapsedMs": 178677,
+    "estimatedISK": 892.82
+  }
+}

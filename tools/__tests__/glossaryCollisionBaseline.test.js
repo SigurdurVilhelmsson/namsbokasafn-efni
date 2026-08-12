@@ -36,37 +36,51 @@ const booksWithGlossaries = fs
 const PRODUCER_RESOLVED = 'export-terminology-resolved';
 
 /**
- * Can this payload's producer represent a COMPETITION — two or more Icelandic
- * values under one English key? The resolved export emits one entry per English
- * string, so it cannot.
+ * Should this payload be swept for COMPETITIONS — two or more Icelandic values
+ * under one English key? **Yes, always.** The name is kept because callers read
+ * it, but it no longer discriminates.
  *
- * ⚠️ CORRECTED 2026-08-09 by the whole-branch adversarial review. This was
- * `isSweepable`, and it skipped the whole sweep. That was wrong, because
- * `findGlossaryCollisions` returns TWO populations — `competitions` AND
- * `commaLists` (one Icelandic value that is itself a comma-separated list) —
- * and the resolved format represents a comma-list perfectly well. Measured on
- * production's corpus: 160 `lang='is'` terms contain a comma, ALL at rank 1, so
- * all reachable as a head form; `liffraedi-2e` already resolves
- * `missing → "skemmdar, horfnar og viðgerðar tennur"` and `edlisfraedi-2e`
- * resolves `response → "svar,svörun"`.
- *
- * Left as it was, adopting either book would have published a comma-list into a
+ * ⚠️ HISTORY, because both corrections matter and the second reverses the first.
+ * 2026-08-09, a whole-branch review renamed this from `isSweepable`, which had
+ * skipped the WHOLE sweep for resolved payloads: `findGlossaryCollisions`
+ * returns two populations, and the resolved format represents a **comma-list**
+ * perfectly well (`liffraedi-2e` resolves `missing → "skemmdar, horfnar og
+ * viðgerðar tennur"`; `edlisfraedi-2e` resolves `response → "svar,svörun"`).
+ * Left unfixed, adopting either book would have published a comma-list into an
  * `<mtext>` via `buildGlossaryMap` — which applies no comma filter, it only
- * *reports* — with the C18 fence no longer sweeping that book and nothing going
- * red. (`formatGlossary` does drop comma values on the MT side, so the render
- * path was the unprotected one, which is the reader-visible one.)
+ * *reports* — with nothing going red. That correction stands.
  *
- * The name now says which half retires.
+ * What it got WRONG was retiring the competition half instead, on the premise
+ * below.
+ *
+ * 🔴 THE RETIREMENT IS WITHDRAWN — 2026-08-12, §C71. It rested on "the resolved
+ * export emits one entry per English string, so it cannot carry a competition."
+ * **That premise is false, measured on all four committed payloads:** 17 real
+ * competitions live in resolved files right now — efnafraedi-2e **11**
+ * (`am → víddarmótun | ameríkín`, `at → astat | marsnákaætt`,
+ * `cd → kadmín | kandela`, …), lifraen-efnafraedi 3, liffraedi-2e 2,
+ * edlisfraedi-2e 1.
+ *
+ * ⚠️ AND THE COST OF BELIEVING IT WAS TOTAL, NOT PARTIAL. Organic's adoption
+ * made the LAST book resolved, so the competition sweep went inert
+ * **corpus-wide** — every book skipped, nothing red. The "not vacuous" guard
+ * below is what caught it, for the exact reason its own comment gives: a
+ * shipped detector that had never run went unnoticed for 13 days.
+ *
+ * ▶ Sweep every payload. If a producer is ever genuinely incapable of
+ * expressing a competition, prove it by measuring that producer's committed
+ * files, not by reasoning from its intended shape.
  */
 export function sweepsCompetitions(glossary) {
-  return !(glossary && glossary.producer === PRODUCER_RESOLVED);
+  return Boolean(glossary);
 }
 
 /**
- * Which assertions a payload earns. Extracted so the retirement is testable:
- * the real sweep is data-driven over committed files, and no committed file is
- * resolved-producer today, so nothing else could distinguish "we skip the
- * competition half" from "we stopped looking entirely".
+ * Which assertions a payload earns. Kept as a seam even though nothing retires
+ * any more: it is where a future, MEASURED retirement would go, and it is what
+ * let the withdrawn one be tested at all.
+ * ⚠️ This said "no committed file is resolved-producer today" — as of
+ * 2026-08-12 ALL FOUR are.
  */
 export function collisionAssertions(glossary, d) {
   const actual = { newCommaLists: d.newCommaLists.map((c) => c.english) };
@@ -83,7 +97,9 @@ export function collisionAssertions(glossary, d) {
 const readGlossary = (slug) =>
   JSON.parse(fs.readFileSync(glossaryPath(path.join(BOOKS_DIR, slug)), 'utf8'));
 
-/** Books whose committed payload can still carry a competition. */
+/** Every book with a glossary — retained as a named binding because the
+ *  "not vacuous" assertion below reads it, and that assertion is what caught
+ *  the corpus-wide inert sweep. */
 const competitionSweptBooks = booksWithGlossaries.filter((slug) =>
   sweepsCompetitions(readGlossary(slug))
 );
@@ -99,8 +115,8 @@ describe('committed glossaries have no competitions beyond their baseline', () =
     expect(competitionSweptBooks.length).toBeGreaterThan(0);
   });
 
-  // ⚠️ EVERY book is swept, including resolved-producer ones — only the
-  // competition half of the assertion retires. See sweepsCompetitions.
+  // ⚠️ EVERY book is swept for BOTH populations. Nothing retires — see
+  // sweepsCompetitions for why the 2026-08-09 retirement was withdrawn.
   it.each(booksWithGlossaries)('%s', (slug) => {
     const bookDir = path.join(BOOKS_DIR, slug);
     const glossary = readGlossary(slug);
@@ -112,26 +128,39 @@ describe('committed glossaries have no competitions beyond their baseline', () =
   });
 });
 
-describe('D7 retires only the competition half of the sweep', () => {
+describe('D7s retirement is WITHDRAWN — every payload is swept', () => {
   const d = {
     newCompetitions: [{ english: 'atom' }],
     changedChoices: [{ english: 'bond' }],
     newCommaLists: [{ english: 'missing' }],
   };
 
-  it('a resolved payload is STILL swept for comma lists', () => {
-    // The format cannot represent a competition, but it represents a comma-list
-    // fine — `liffraedi-2e` resolves `missing` to a three-item comma list today.
+  it('a resolved payload is swept for comma lists', () => {
     const { actual, expected } = collisionAssertions({ producer: PRODUCER_RESOLVED }, d);
     expect(actual.newCommaLists).toEqual(['missing']);
     expect(expected.newCommaLists).toEqual([]);
   });
 
-  it('a resolved payload is NOT swept for competitions or changed choices', () => {
+  it('a resolved payload IS swept for competitions and changed choices', () => {
+    // ⚠️ INVERTED 2026-08-12 (§C71). This asserted the opposite, on the premise
+    // that the resolved format "cannot represent a competition". Measured false:
+    // 17 competitions live in resolved payloads today.
     const { actual, expected } = collisionAssertions({ producer: PRODUCER_RESOLVED }, d);
-    expect(actual).not.toHaveProperty('newCompetitions');
-    expect(expected).not.toHaveProperty('newCompetitions');
-    expect(actual).not.toHaveProperty('changedChoices');
+    expect(actual.newCompetitions).toEqual(['atom']);
+    expect(expected.newCompetitions).toEqual([]);
+    expect(actual.changedChoices).toEqual(['bond']);
+  });
+
+  it('the committed resolved payloads really do carry competitions', () => {
+    // The measurement that withdrew the retirement, kept as a live check rather
+    // than a claim in a comment: if this ever returns 0, re-examine whether the
+    // retirement could be reinstated — do not assume it from the format.
+    const withCompetitions = booksWithGlossaries.filter(
+      (slug) =>
+        findGlossaryCollisions(readGlossary(slug).terms || [], { approvedOnly: true }).competitions
+          .length > 0
+    );
+    expect(withCompetitions.length).toBeGreaterThan(0);
   });
 
   it('a merge-glossary payload is swept for all three', () => {
@@ -224,15 +253,25 @@ describe('commaLists baseline shape — one headword can carry TWO distinct comm
   });
 });
 
-describe('D7 — the COMPETITION half retires per book, at adoption', () => {
+describe('D7 — the retirement is withdrawn; every payload is swept', () => {
   const RESOLVED = 'export-terminology-resolved';
 
-  it('a resolved payload cannot carry a competition', () => {
-    // One entry per English string, so findGlossaryCollisions can never find
-    // >=2 Icelandic values for one key. ⚠️ This is true of COMPETITIONS ONLY —
-    // the same payload can still carry a comma-list, which is why the sweep
-    // itself no longer skips it. See sweepsCompetitions and the describe above.
-    expect(sweepsCompetitions({ producer: RESOLVED, terms: [] })).toBe(false);
+  it('a resolved payload IS swept — it can and does carry competitions', () => {
+    // ⚠️ INVERTED 2026-08-12 (§C71). This read "a resolved payload cannot carry
+    // a competition", reasoning that one entry per English string makes >=2
+    // Icelandic values for one key impossible. The committed files disagree:
+    // efnafraedi-2e alone holds 11, including `at → astat | marsnákaætt`, whose
+    // row-order winner reaches 21 leaf math labels.
+    expect(sweepsCompetitions({ producer: RESOLVED, terms: [] })).toBe(true);
+  });
+
+  it('a resolved payload really can hold two Icelandic values for one key', () => {
+    // The counter-example to the retired premise, in its own right.
+    const resolved = [
+      { english: 'at', icelandic: 'astat', status: 'approved', domain: 'chemistry' },
+      { english: 'at', icelandic: 'marsnákaætt', status: 'approved', domain: 'biology' },
+    ];
+    expect(findGlossaryCollisions(resolved, { approvedOnly: true }).competitions).toHaveLength(1);
   });
 
   it('a resolved payload CAN carry a comma-list, measured on the real corpus', () => {

@@ -1,97 +1,82 @@
 {
   "_note": "Accepted term competitions (register C18). This file is a WORKLIST, not an approval. Every entry is an unresolved editorial decision (register C14 (2)) that row order is currently making on readers’ behalf. Shrink it by resolving terms in the terminology DB; do not grow it to silence the gate.",
   "competitions": {
-    "aggregate": {
+    "am": {
       "candidates": [
-        "þyrpast saman",
-        "þyrping"
+        "víddarmótun",
+        "ameríkín"
       ],
-      "chosen": "þyrping"
+      "chosen": "ameríkín"
     },
-    "atom": {
+    "at": {
       "candidates": [
-        "atóm",
-        "frumeind"
+        "astat",
+        "marsnákaætt"
       ],
-      "chosen": "frumeind"
+      "chosen": "marsnákaætt"
     },
-    "body-centered cubic": {
+    "cd": {
       "candidates": [
-        "miðjusetinn teningur",
-        "miðlæg teningslaga"
+        "kadmín",
+        "kandela"
       ],
-      "chosen": "miðlæg teningslaga"
+      "chosen": "kandela"
     },
-    "deposition": {
+    "er": {
       "candidates": [
-        "hélun",
-        "útfelling"
+        "frymisnet",
+        "erbín"
       ],
-      "chosen": "útfelling"
+      "chosen": "erbín"
     },
-    "dilute": {
+    "ir": {
       "candidates": [
-        "þunnur",
-        "þynna"
+        "innrauður",
+        "iridín"
       ],
-      "chosen": "þynna"
+      "chosen": "iridín"
     },
-    "emission": {
+    "in": {
       "candidates": [
-        "ljómun",
-        "útblástur"
+        "indín",
+        "tomma"
       ],
-      "chosen": "útblástur"
+      "chosen": "tomma"
     },
-    "excess": {
+    "no": {
       "candidates": [
-        "umfram-",
-        "umframmagn"
+        "nóbelín",
+        "blóð-"
       ],
-      "chosen": "umframmagn"
+      "chosen": "blóð-"
     },
-    "face-centered cubic": {
+    "os": {
       "candidates": [
-        "hliðarsetinn teningur",
-        "hliðlæg teningslaga"
+        "gamli stíll",
+        "osmín"
       ],
-      "chosen": "hliðlæg teningslaga"
+      "chosen": "osmín"
     },
-    "group": {
+    "pd": {
       "candidates": [
-        "flokkur",
-        "hópur"
+        "lyfhrif",
+        "palladín"
       ],
-      "chosen": "hópur"
+      "chosen": "palladín"
     },
-    "octahedral": {
+    "pr": {
       "candidates": [
-        "áttflötungslaga",
-        "áttflötungur"
+        "praseódým",
+        "áður"
       ],
-      "chosen": "áttflötungur"
+      "chosen": "áður"
     },
-    "resonance": {
+    "si": {
       "candidates": [
-        "samhrif",
-        "vok",
-        "vok mynd"
+        "alþjóðlega einingakerfið",
+        "kísill"
       ],
-      "chosen": "vok mynd"
-    },
-    "simple cubic": {
-      "candidates": [
-        "einfaldur teningur",
-        "einföld teningslaga"
-      ],
-      "chosen": "einföld teningslaga"
-    },
-    "tetrahedral": {
-      "candidates": [
-        "ferflötungslaga",
-        "ferflötungur"
-      ],
-      "chosen": "ferflötungur"
+      "chosen": "kísill"
     }
   },
   "commaLists": {}
