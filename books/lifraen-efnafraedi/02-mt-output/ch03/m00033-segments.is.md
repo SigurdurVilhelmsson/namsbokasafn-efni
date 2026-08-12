@@ -83,10 +83,10 @@ Byggingarhverfur eru ekki bundnar við alkana – þær koma víða fyrir í lí
 Hægt er að teikna tiltekinn alkana á marga vegu. Til dæmis er hægt að tákna ógreinótta, fjögurra kolefnisatóma alkanann sem kallast bútan með hvaða byggingu sem sýnd er á [[xref:fig-00005]]. Þessar byggingar gefa ekki til kynna neina sérstaka þrívíddarlögun fyrir bútan; þær gefa aðeins til kynna tengingarnar milli atóma. Í reynd, eins og fram kom í , teikna efnafræðingar sjaldan öll efnatengi í sameind og vísa venjulega til bútans með þjappaðri byggingu, CH[[sub:3]]CH[[sub:2]]CH[[sub:2]]CH[[sub:3]] eða CH[[sub:3]](CH[[sub:2]])[[sub:2]]CH[[sub:3]]. Enn einfaldar er hægt að tákna bútan sem [[i:n]]-C[[sub:4]]H[[sub:10]], þar sem [[i:n]] táknar [[i:normal]] (ógreint) bútan.
 
 <!-- SEG:m00033:caption:fig-00005-caption -->
-[[b:Nokkrar framsetningar á bútani, C[[sub:4]]H[[sub:10]].]] [[sameind|Sameindin]] er sú sama óháð því hvernig hún er teiknuð. Þessar byggingar gefa aðeins til kynna að bútan hafi samfellda keðju fjögurra kolefnisatóma; þær gefa ekki til kynna neina sérstaka rúmfræði.
+[[b:Nokkrar framsetningar á bútani, C[[sub:4]]H[[sub:10]].]] Sameindin er sú sama óháð því hvernig hún er teiknuð. Þessar byggingar gefa aðeins til kynna að bútan hafi samfellda keðju fjögurra kolefnisatóma; þær gefa ekki til kynna neina sérstaka rúmfræði.
 
 <!-- SEG:m00033:para:para-00008 -->
-Ógreinóttir alkanar eru nefndir eftir fjölda kolefnisatóma sem þeir innihalda, eins og sýnt er í [[xref:table-00002]]. Að undanskildum fyrstu fjórum [[efnasamband|efnasamböndunum]] — metani, etani, própani og bútani — en nöfn þeirra eiga sér sögulegar rætur, eru alkanar nefndir eftir grískum tölum. Viðskeytinu -[[i:an]] er bætt við enda hvers nafns til að gefa til kynna að [[sameind|sameindin]] sem um ræðir sé alkani. Þannig er [[i:pent]]an fimm kolefnisatoma alkani, [[i:hex]]an er sex kolefnisatoma alkani og svo framvegis. Við munum brátt sjá að þessi alkanaheiti mynda grunninn að nafngiftum allra annarra [[lífrænn|lífrænna]] [[efnasamband|efnasambanda]], svo það ætti að leggja að minnsta kosti þau tíu fyrstu á minnið.
+Ógreinóttir alkanar eru nefndir eftir fjölda kolefnisatóma sem þeir innihalda, eins og sýnt er í [[xref:table-00002]]. Að undanskildum fyrstu fjórum efnasamböndunum — metani, etani, própani og bútani — en nöfn þeirra eiga sér sögulegar rætur, eru alkanar nefndir eftir grískum tölum. Viðskeytinu -[[i:an]] er bætt við enda hvers nafns til að gefa til kynna að sameindin sem um ræðir sé alkani. Þannig er [[i:pent]]an fimm kolefnisatoma alkani, [[i:hex]]an er sex kolefnisatoma alkani og svo framvegis. Við munum brátt sjá að þessi alkanaheiti mynda grunninn að nafngiftum allra annarra lífrænna efnasambanda, svo það ætti að leggja að minnsta kosti þau tíu fyrstu á minnið.
 
 <!-- SEG:m00033:entry:auto-31 -->
 Fjöldi kolefnisatóma ([[i:n]])
@@ -245,16 +245,16 @@ C[[sub:8]]H[[sub:18]]
 Leiðarvísir
 
 <!-- SEG:m00033:para:para-00009 -->
-Leggið til byggingar fyrir tvær [[hverfa|hverfur]] með formúluna C[[sub:2]]H[[sub:7]]N.
+Leggið til byggingar fyrir tvær hverfur með formúluna C[[sub:2]]H[[sub:7]]N.
 
 <!-- SEG:m00033:para:para-00010 -->
-Við vitum að kolefni myndar fjögur [[efnatengi]], [[nitur]] myndar þrjú og vetni myndar eitt. Skrifið fyrst niður kolefnisatómin og notið síðan prófanir og innsæi til að púsla hlutunum saman.
+Við vitum að kolefni myndar fjögur efnatengi, nitur myndar þrjú og vetni myndar eitt. Skrifið fyrst niður kolefnisatómin og notið síðan prófanir og innsæi til að púsla hlutunum saman.
 
 <!-- SEG:m00033:para-title:para-00011-title -->
 Lausn
 
 <!-- SEG:m00033:para:para-00011 -->
-Það eru tvær [[hverfa|hverfubyggingar]]. Önnur hefur tenginguna C–C–N og hin hefur tenginguna C–N–C. [[MEDIA:1]]
+Það eru tvær hverfubyggingar. Önnur hefur tenginguna C–C–N og hin hefur tenginguna C–N–C. [[MEDIA:1]]
 
 <!-- SEG:m00033:title:sect-00001-title -->
 Dæmi
