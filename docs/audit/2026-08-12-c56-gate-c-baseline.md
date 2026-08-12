@@ -272,6 +272,64 @@ this document deliberately does not make it. The relevant input is that the pre-
 first try is the single strongest signal the pilot was designed to look for, and it was obtained
 without spending anything.
 
+## 5b. AMENDMENT, same day — the `fidelity:render` baseline, captured on [LEAD] instruction
+
+§4 recorded that M5 had no pre-migration baseline. **It has one now, and capturing it surfaced two
+criteria defects and one trap.** Both runs are read-only (the tool writes only under
+`--update-baseline`, which was **not** used); tree verified clean afterwards.
+
+| chapter | findings | which checks actually ran |
+|---|---|---|
+| `efnafraedi-2e` ch20 | **1** — `{"type":"shape-drift","bucket":"em","expected":93,"actual":94,"delta":1}` | all four (1, 1b, 2, 3) |
+| `edlisfraedi-2e` ch04 | **0** | ⚠️ **only three — check 3 was INERT** |
+
+🔴 **Physics's `0` is not the same evidence as chemistry's `1`, and must never be quoted as if it
+were.** `checkChapter` guards the sensitive shape-drift detector behind `if (baseline)`, and
+**`edlisfraedi-2e` has no `render-fidelity-baseline.json`** — only `efnafraedi-2e` does. So physics
+was measured by the three baseline-free checks (control chars, raw-CNXML leak, cross-stage `>=`)
+and **not** by the one that detects drift. Chemistry's single finding is the positive control that
+proves check 3 fires when a baseline exists.
+
+⚠️ **AND THE OBVIOUS FIX IS A TRAP: DO NOT RUN `--update-baseline` ON PHYSICS BEFORE THE
+MIGRATION.** The tool's own docstring says a baseline *"must be captured from a CLEAN render …
+never from output known to contain a render bug, or it blesses the bug."* **`edlisfraedi-2e` ch04's
+published output is exactly such a case** — it is rendered from the §C58-corrupted Icelandic, whose
+four malformed `[[b: ` markers this document shows reaching the IS side. Baselining it now would
+freeze the corruption as "expected", and the post-migration clean render would then report as a
+**regression**. **Physics's baseline must be captured AFTER the migration, from the fixed render.**
+
+⚠️ **Chemistry's pre-existing `em +1` drift is unexplained and is now on the record**, so that a
+post-migration `em` change is not mistaken for new. §C58 restores `[[i:]]` markers, which render to
+`<em>`, so the `em` bucket is precisely the one this migration is expected to move.
+
+### 🔴 M7 IS NOT PASSABLE AS WRITTEN — the cost check cannot price the operation it exists to price
+
+Criterion M7 is *"cost within estimate: `--dry-run` vs actual"*, and Step 1 runs a bare
+`--dry-run`. **Measured: that reports `Estimated cost: ~0 ISK` for both pilot chapters**, because
+every module is already translated and lands in *Already done*. **The re-MT needs `--force`, and
+the estimate needs `--force --dry-run`:**
+
+| chapter | bare `--dry-run` | `--force --dry-run` |
+|---|---|---|
+| `efnafraedi-2e` ch20 | `0 ISK` (6 already done) | 114,661 chars ≈ **1,147 ISK** |
+| `edlisfraedi-2e` ch04 | `0 ISK` (10 already done) | 196,119 chars ≈ **1,961 ISK** |
+| **pilot total** | **`0 ISK` — a wrong answer that looks like an answer** | **≈ 3,108 ISK** |
+
+⚠️ **≈3,108 ISK is ~6% of the ~49,300 ISK whole-corpus figure, and it is measured against the
+COMMITTED (pre-re-extract) English.** Bracket markers add characters, so the actual bill will be
+somewhat higher — the number is an order of magnitude, not a quote, exactly as §C56 warns of its
+own estimate.
+
+⚠️ **Note the two halves are lopsided the other way round from the corpus totals:** physics ch04
+costs **1.7× chemistry ch20** here, even though `edlisfraedi-2e` is ~4% of the eventual bill against
+chemistry's 72%.
+
+### ⚠️ One more asymmetry, not a defect but it shapes what the pilot demonstrates
+
+`efnafraedi-2e` translates with **590 approved chemistry glossary terms**; `edlisfraedi-2e` reports
+**`Glossary: none available (continuing without)`**. The two halves therefore exercise different
+MT configurations, and **no glossary-substitution behaviour is tested by the physics half at all.**
+
 ## 5. What this does NOT establish
 
 - **Nothing about the other three books, or the other 229 extracted modules.** The 111 self-closing

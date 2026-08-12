@@ -162,18 +162,32 @@ line-by-line read of ch04 would make P5 unpassable and is not what the amendment
 | M2 | **zero** malformed `[[type: ` on the **IS** side | as P2, on `02-mt-output` | **4** |
 | M3 | per-type marker counts preserved EN→IS | **`bracketMarkerDelta`** from `tools/api-translate.js` — already live and tested; **do not write a new checker** | see frozen audit |
 | M4 | inject + render succeed | tool exit codes | — |
-| M5 | `fidelity:render` no worse than baseline | `npm run fidelity:render` | **not captured — see below** |
-| M6 | every published-file rename accounted for | slug map from predecessor Step 2 (C9 contract) | — |
-| M7 | cost within estimate | `--dry-run` vs actual | — |
+| M5 | `fidelity:render` no worse than baseline | ⚠️ **NOT `npm run fidelity:render`** — that script is hardcoded `--book efnafraedi-2e` and would silently skip the physics half. Run the tool directly, per book + chapter. | chem ch20 **1 finding**; physics ch04 **0, but only 3 of 4 checks ran** |
+| M6 | every published-file rename accounted for | slug map from predecessor Step 2 (C9 contract) | both chapters **are** published (10 + 16 files) — the C9 obligation is live |
+| M7 | cost within estimate | ⚠️ **`--force --dry-run`, not `--dry-run`** — see below | ≈ **3,108 ISK** (chem 1,147 + physics 1,961) |
 
 ⚠️ **M3 must be read against the vintage correction.** Pre-migration deltas are *expected* to be
 non-zero for vintage-mismatched modules and mean nothing. **The criterion is that deltas are zero
 once both sides are regenerated at one vintage** — anything non-zero *then* is the real signal.
 
-🔴 **M5 HAS NO BASELINE AND IS NOT YET PASSABLE.** `npm run fidelity:render` was **not** run before
-the tree was restored, so there is no pre-migration figure to compare against. **Capture it during
-Gate D, before Step 2**, or drop M5 from the criteria — do not evaluate it against a number
-invented after the fact.
+✅ **M5's baseline IS captured (2026-08-12, [LEAD] instruction) — and capturing it broke M5, M7 and Step 3.** Details in the frozen Gate C audit; the operative consequences:
+
+🔴 **M5 — physics's `0 findings` is NOT a clean bill, and the obvious fix would BLESS THE BUG.**
+`checkChapter` guards its sensitive shape-drift detector behind `if (baseline)`, and
+**`edlisfraedi-2e` has no `render-fidelity-baseline.json`** — only chemistry does. So physics ran
+the three baseline-free checks and **not** the drift detector. ⚠️ **Do NOT `--update-baseline`
+physics before the migration:** the tool's own docstring forbids baselining a render known to
+contain a bug, and physics ch04's published HTML is rendered from the §C58-corrupted Icelandic.
+▶ **Capture physics's baseline AFTER the migration, from the clean render.** ⚠️ And note
+chemistry's pre-existing drift is in the **`em`** bucket — the exact bucket §C58's restored
+`[[i:]]` markers will move, so do not read a post-migration `em` change as new.
+
+🔴 **M7 — the bare `--dry-run` in Step 1 reports `~0 ISK`, which is a WRONG ANSWER THAT LOOKS LIKE AN ANSWER.** Every pilot module is already translated, so it lands in *Already done* and is priced at zero. **The re-MT requires `--force`, and so does its estimate.**
+
+🔴 **AND STEP 3 AS WRITTEN IS A NO-OP.** Its commands omit `--force`, so they would report
+`Already done: 6` / `Already done: 10`, translate nothing, spend nothing, and **exit successfully** —
+a green run that did not run. **Corrected in Step 3 below.** ⚠️ Locks still beat `--force`
+absolutely (`mtRunDecision` returns `locked-skip` first), and Gate B confirmed the pilot has none.
 
 ## Gate D — standing safety gates · **delegated to the predecessor**
 
@@ -184,18 +198,54 @@ Run **[`2026-07-29-c16-clean-break-runbook.md`](2026-07-29-c16-clean-break-runbo
 - [ ] **Editorial server stopped** — confirm the process is down, not merely idle
 - [ ] **`git-backup.sh` cron paused on prod** — it commits `books/` every 2h and would commit a half-migrated tree
 - [ ] `VACUUM INTO` snapshot taken, destination size sanity-checked
-- [ ] **Slug map captured** (predecessor Step 2) **before** anything is cleared — C9 needs old→new to serve redirects, and the old filename ceases to exist the moment we prune
+- [ ] **Slug map captured** (predecessor Step 2) **before** anything is cleared — C9 needs old→new to serve redirects, and the old filename ceases to exist the moment we prune. ⚠️ **This is live for the pilot**: both chapters are already published (chem ch20 **10** files, physics ch04 **16**), so a re-render can rename pages.
+- [x] ✅ **`fidelity:render` baseline captured 2026-08-12 per [LEAD] instruction** — chem ch20 **1 finding** (`shape-drift`, bucket `em`, 93→94), physics ch04 **0 findings but only 3 of 4 checks ran**. ⚠️ **Do not run `npm run fidelity:render`** — it is hardcoded `--book efnafraedi-2e` and silently skips the physics half. Use the tool directly:
+
+```bash
+node tools/cnxml-render-fidelity-check.js --book efnafraedi-2e  --chapter 20
+node tools/cnxml-render-fidelity-check.js --book edlisfraedi-2e --chapter 4
+```
+
+⚠️ **Do NOT pass `--update-baseline` before the migration** — physics has no baseline file, and creating one from its §C58-corrupted published render would bless the bug and turn the post-migration fix into a reported regression. **Physics's baseline is captured AFTER, from the clean render.**
+
+### ⚠️ Gate D scoping — an open [LEAD] question, deliberately not answered here
+
+Gate D is inherited verbatim from a runbook written for an **all-at-once night run over chemistry
+with locked modules in scope**. **The pilot's risk profile is different in a way Gate B measured:
+it contains no `.locked` module and no `segment_edits` row**, and extract/MT/inject/render touch
+`books/` only — not `sessions.db`. **So which of the DB/server/cron steps the pilot actually needs
+is a real question, not a formality.** Two things point opposite ways, and the lead should rule:
+
+- **Arguing for the full gate:** the prod `git-backup.sh` cron commits `books/` every 2h and would
+  happily commit a half-migrated tree; and the off-box DB backup is cheap insurance regardless.
+- **Arguing for a reduced gate:** if the pilot runs on **dev** and its output is held unpushed
+  until reviewed, prod is never in a half-migrated state and the DB is never touched at all —
+  in which case stopping the editorial server buys nothing.
+
+⚠️ **Do not resolve this by reasoning alone — the predecessor's Gate 0 carries traps that matter
+(notably that `sqlite3` CREATES a database rather than failing on a wrong path).** If in doubt,
+run it in full; it is cheap relative to 3,108 ISK.
 
 ## Step 1 — cost check
 
+🔴 **`--force` IS LOAD-BEARING IN THE ESTIMATE, NOT JUST IN THE RUN.** Every pilot module is already
+translated, so a bare `--dry-run` classifies all 16 as *Already done* and prints
+**`Estimated cost: ~0 ISK`** — measured 2026-08-12, on both chapters. That is a wrong answer in the
+shape of a right one, and it prices the operation at zero.
+
 ```bash
-node tools/api-translate.js --book efnafraedi-2e --dry-run
-node tools/api-translate.js --book edlisfraedi-2e --dry-run
+node tools/api-translate.js --book efnafraedi-2e  --chapter 20 --force --dry-run
+node tools/api-translate.js --book edlisfraedi-2e --chapter 4  --force --dry-run
 ```
+
+✅ **`--dry-run` is genuinely offline** — verified by reading the code: the dry-run block prints and
+`process.exit`s **before** the translate loop is reached. `--force --dry-run` costs nothing to run.
 
 ⚠️ **`tools/lib/parseArgs.js` silently drops unknown flags** — a misremembered flag is a no-op, not an error. Confirm any flag you use appears in that tool's `--help` before relying on it. **There is no `--output-dir`.**
 
-- [ ] Pilot cost recorded: ______________ ISK *(whole-corpus estimate for context: ~4.93M chars ≈ ~49,300 ISK, 72% chemistry — not a `--dry-run` figure)*
+- [x] Pilot cost recorded **2026-08-12: ≈ 3,108 ISK** — `efnafraedi-2e` ch20 114,661 chars ≈ **1,147**, `edlisfraedi-2e` ch04 196,119 chars ≈ **1,961**. *(~6% of the ~4.93M-char / ~49,300 ISK whole-corpus estimate, 72% of which is chemistry.)*
+- [ ] ⚠️ **Re-run the estimate AFTER Step 2.** The figure above is measured against the **committed, pre-re-extract** English; bracket markers add characters, so the real bill is somewhat higher. Treat 3,108 as an order of magnitude, not a quote.
+- [ ] ⚠️ Note the halves are lopsided **opposite** to the corpus totals — physics costs **1.7×** chemistry here, though `edlisfraedi-2e` is ~4% of the eventual bill against chemistry's 72%.
 
 ## Step 2 — re-extract the pilot chapters
 
@@ -216,13 +266,24 @@ node tools/cnxml-extract.js --book edlisfraedi-2e --chapter 4
 
 ## Step 3 — re-MT
 
+🔴 **CORRECTED 2026-08-12 — `--force` IS REQUIRED, AND WITHOUT IT THIS STEP IS A SILENT NO-OP.**
+The commands originally written here omitted it. Measured: all 16 modules classify as *Already
+done*, so the tool translates nothing, spends nothing, and **exits 0** — a green step that did not
+run, followed by Step 4 injecting the unchanged old translations.
+
 ```bash
-node tools/api-translate.js --book efnafraedi-2e  --chapter 20
-node tools/api-translate.js --book edlisfraedi-2e --chapter 4
+node tools/api-translate.js --book efnafraedi-2e  --chapter 20 --force
+node tools/api-translate.js --book edlisfraedi-2e --chapter 4  --force
 ```
 
+⚠️ **`--force` does NOT override locks.** `mtRunDecision` returns `'locked-skip'` **before** it
+considers `force` (*"absolute: editing has begun, never clobber"*). Gate B confirmed the pilot
+contains none, so `--force` here is bounded to re-translating already-machine-translated text.
+
+- [ ] **This is the step that spends money — ≈3,108 ISK, and it is the first irreversible action in the runbook.** Everything before it is free and restorable.
 - [ ] Any `.locked` module reported as `locked-skip` — **expected to be none in the pilot**
 - [ ] Marker delta reported by `bracketMarkerDelta` reviewed per module
+- [ ] ⚠️ **Read deltas against the vintage correction** — both sides are now one vintage, so **any** non-zero delta is real signal, unlike the pre-migration baseline
 
 ## Step 4 — inject + render
 
