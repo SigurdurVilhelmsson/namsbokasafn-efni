@@ -126,6 +126,38 @@ The often-quoted "only 4" is **locked *and* faithful-reviewed** — `03-faithful
 > rehearsal"* — the paid half is now a rehearsal.** Whether that rehearsal is worth its ISK is
 > **[LEAD]**, and the audit deliberately does not decide it.
 
+## 🔒 PRE-REGISTERED PREDICTION — recorded 2026-08-12 **BEFORE** the paid step, and the earlier "no prediction exists" is WITHDRAWN
+
+> **A blind adversarial review refuted the reasoning behind that claim, and it was right.** The audit
+> argued that "all deltas go to `{}`" is a tautology because both sides regenerate at one vintage.
+> **That confuses eliminating the current *cause* with eliminating the *possibility*.** The
+> instrument's own docstring defines a negative delta as the ~2.3%-loss class and a positive one as
+> spurious API duplication — **both same-run, same-vintage phenomena** — and the pilot's own data
+> holds the existence proof: **`m42137`'s `{"i":+1}` arose on a same-vintage pair.** A non-zero
+> outcome is therefore demonstrably possible, which is exactly what makes it a prediction.
+>
+> **It also licenses the decision the register said the pilot exists to make.** The amendment left
+> *"how big is the manual tail"* as the thing to measure, and the vintage correction disqualified
+> the three flagged modules as evidence — **leaving the tail unsized with no other source.** The
+> post-MT delta *rate* × ~229 remaining modules **is** that worklist budget.
+>
+> ### The prediction
+> **For all 16 pilot modules, the same-run `bracketMarkerDelta` (fresh EN in → API IS out) is `{}`
+> for every counted type; and per-module `[[MATH:` counts match EN↔IS.**
+>
+> ⚠️ **The MATH half is measured SEPARATELY and is not optional** — `BRACKET_MARKER_TYPES` contains
+> **no `MATH`**, so `bracketMarkerDelta` is structurally blind to a dropped or duplicated
+> `[[MATH:N]]`, and the pilot English carries **556** of them. Pre-run baseline: **EN 556 / IS 556,
+> 0 mismatched modules.**
+>
+> ### Decision rule, fixed in advance
+> - **`{}` everywhere and MATH matched** → marker survival holds at ~310K chars in August; the
+>   manual tail is ~0 and the full run needs no per-module worklist budget.
+> - **Any non-zero** → that rate × ~229 modules is the tail estimate, **and endpoint marker
+>   survival must be re-measured before committing ~49,300 ISK.** CLAUDE.md's durable rule is that
+>   marker-survival evidence is per-endpoint and rots when the model behind it changes; the last
+>   `/v1/translate` run was **2026-07-13**, so August survival at this scale is genuinely unmeasured.
+
 ## Gate C (criteria, revised 2026-08-12 for the LEAD amendment) — **PRE-MT is free and loops; POST-MT costs money and runs once**
 
 **The split is the point.** Everything in the first table is re-checkable at zero cost, so it is a
@@ -140,11 +172,31 @@ second table can only be measured after the money is spent.
 
 | # | Criterion | How measured | 2026-08-12 result |
 |---|---|---|---|
-| P1 | **zero** `{{i}} {{b}} {{term}} {{fn}}` on the **EN** side | `grep -aoE '\{\{/?(i\|b\|term\|fn)\}\}'` | ✅ `128 → 0` |
+| P1 | **zero** legacy markers on the **EN** side — ⚠️ **BOTH dialects** | `\{\{/?(i\|b\|term\|fn)\}\}` **and** `\+\+[^+]+\+\+` | `{{}}` ✅ `128 → 0`; **`++` was NEVER MEASURED — baseline 5** |
 | P2 | **zero** malformed `[[type: ` on the **EN** side | `grep -ao '\[\[[A-Za-z]\+: '` | ✅ `4 → 0` |
-| P3 | **zero** raw `<emphasis`/XML residue leaking into segments | `grep -ao '<emphasis'` on `02-for-mt` | ✅ `0`, with a positive control |
-| P4 | extract emits no unexpected new files | `git status --porcelain` for `??` | ✅ none |
+| P3 | **zero** raw XML residue leaking into segments | ⚠️ **widened past `<emphasis`** to `<(emphasis\|term\|link\|note\|para\|entry\|row)\b` — the old form gated the last war, not the class | baseline `0` both sides |
+| P4 | extract emits no unexpected new files | 🔴 **NOT `git status --porcelain`** — see below | ⚠️ **the earlier ✅ was FALSE** |
 | P5 | EN diff reviewed, and its **cause attributed** | `git diff` vs extractor commit log | ⚠️ see below |
+
+🔴 **P4's instrument was BLIND, and what it was meant to catch had already happened.** `git status
+--porcelain` cannot see gitignored files, and **`.gitignore:20` is `*.backup.*`** — exactly what
+`tools/lib/safeWrite.js` writes on every overwrite. The 2026-08-12 "free run" reported
+`??` = none while creating **67** backup files (14 in `02-for-mt`, 53 in `02-structure`), and
+`git check-ignore -v` names the rule. **A clean `git status` is not an empty tree.** ▶ Use:
+```bash
+find books/<book>/02-for-mt/<ch> books/<book>/02-structure/<ch> -name '*.backup.*' | wc -l
+```
+⚠️ **Consequence for P1/P2/M1/M2: state the file glob.** A *recursive* grep now counts the
+pre-migration content preserved inside those backups and fails spuriously; an **exact-suffix glob**
+(`*-segments.en.md`) excludes them. *(The 2026-08-12 measurements used exact suffixes and are
+therefore uncontaminated — verified, not assumed.)*
+
+🔴 **P1 MISSED AN ENTIRE LEGACY DIALECT THAT IS IN THE PILOT.** The `{{}}` regex cannot see
+**`++text++`**, the legacy *underline* form. Measured: **5 in `efnafraedi-2e` ch20's English and 5
+in its Icelandic** (`m68849`, from 5 × `<emphasis effect="underline">C</emphasis>` in source);
+physics has none. The current extractor emits `[[u:…]]`, and pilot EN holds **0** `[[u:` — so
+`++` → `[[u:]]` is a real conversion this migration performs **and the gate could not see it
+either way.** "Zero legacy" as previously stated was true **only of the `{{}}` dialect**.
 
 ⚠️ **P5 is the one that is not uniform, and the criteria must not pretend otherwise.** The two
 chapters differ by **16 extractor commits**: `efnafraedi-2e` ch20 was last extracted 2026-07-07/13
@@ -160,15 +212,46 @@ line-by-line read of ch04 would make P5 unpassable and is not what the amendment
 |---|---|---|---|
 | M1 | **zero** legacy `{{…}}` on the **IS** side | as P1, on `02-mt-output` | **160** |
 | M2 | **zero** malformed `[[type: ` on the **IS** side | as P2, on `02-mt-output` | **4** |
-| M3 | per-type marker counts preserved EN→IS | **`bracketMarkerDelta`** from `tools/api-translate.js` — already live and tested; **do not write a new checker** | see frozen audit |
-| M4 | inject + render succeed | tool exit codes | — |
+| M3 | per-type marker counts preserved EN→IS | **`bracketMarkerDelta`** — 🔴 **PLUS a separate `[[MATH:` count**, see below | delta 3/16 non-zero; **MATH 556/556, 0 mismatched** |
+| M4 | inject + render succeed | 🔴 **exit code is NOT sufficient** — see below | — |
 | M5 | `fidelity:render` no worse than baseline | ⚠️ **NOT `npm run fidelity:render`** — that script is hardcoded `--book efnafraedi-2e` and would silently skip the physics half. Run the tool directly, per book + chapter. | chem ch20 **1 finding**; physics ch04 **0, but only 3 of 4 checks ran** |
-| M6 | every published-file rename accounted for | slug map from predecessor Step 2 (C9 contract) | both chapters **are** published (10 + 16 files) — the C9 obligation is live |
+| M6 | every published-file rename accounted for | slug map from predecessor Step 2 (C9 contract) | ⚠️ **9 + 15 = 24 `.html` files** — corrected below |
 | M7 | cost within estimate | ⚠️ **`--force --dry-run`, not `--dry-run`** — see below | ≈ **3,108 ISK** (chem 1,147 + physics 1,961) |
 
 ⚠️ **M3 must be read against the vintage correction.** Pre-migration deltas are *expected* to be
 non-zero for vintage-mismatched modules and mean nothing. **The criterion is that deltas are zero
 once both sides are regenerated at one vintage** — anything non-zero *then* is the real signal.
+
+🔴 **M3's instrument CANNOT FAIL for three real corruption classes — verified by executing it.**
+`BRACKET_MARKER_TYPES` (`tools/api-translate.js`) contains **no `MATH`**, and the count keys on
+*openers only*. Consequences, each measured by calling `bracketMarkerDelta` directly:
+a duplicated `[[MATH:1]]` → `{}` · `[[xref:kafli|1]]` → `[[xref:kafli>1]]` → `{}` ·
+the spaced `[[i: ` form → `{}`. **The middle one is the exact corruption CLAUDE.md records
+Málstaður `/v1/grammar` producing, returned as an *acceptable* `diffAnnotation`.**
+▶ **So M3 is paired with a separate per-module `[[MATH:` count** (556 in the pilot English), and a
+count-preserving *payload* corruption is **out of scope for this pilot** — say so rather than
+letting a `{}` read as "markers are fine".
+
+🔴 **M4 — the migration's own signature failure mode exits 0.** `cnxml-inject.js` computes
+`complete` from four conditions, and **`attrMismatches` — "term/footnote ids NOT attached" — is
+deliberately excluded and only printed.** This migration is *named* for `{{term}}` →
+`[[term:text|id]]`, and `{{term}}` is **84% of the pilot's legacy load**. ▶ **Read the inject
+output for `attrMismatches`; do not accept the exit code alone.**
+
+⚠️ **M6 — the "10 + 16 files" recorded earlier was WRONG: it counted the `images/` directory as a
+file** (`ls | wc -l` on a directory containing an `images/` subdir). The real figures are **9 and
+15 `.html` files = 24**, which is what the slug-map instrument (`find -name '*.html'`) actually
+censuses — so the baseline now reconciles with the tool instead of being permanently 2 off.
+✅ **Slug map captured 2026-08-12** to `published-BEFORE-all.txt` (**335** html files across all
+books) and `published-BEFORE-pilot.txt` (**24**), with dev verified level with prod's content
+commit first — 0 changed files under `books/` against prod's `1634867a`.
+
+🔴 **M7 COMPARES AN ESTIMATE TO AN ESTIMATE FROM THE SAME FUNCTION, so it cannot fail.** The live
+run's "actual" is `usage.estimatedISK`, computed by the same `estimateIsk(chars)` the dry run uses;
+**no billed figure ever enters.** *(Two values from one instrument agreeing proves nothing — this
+project's own recorded lesson.)* ▶ Either state a tolerance and compare **character counts**
+(which are real measurements), or accept M7 as bookkeeping and stop calling it a check. **The true
+cost is only knowable from the Málstaður invoice.**
 
 ✅ **M5's baseline IS captured (2026-08-12, [LEAD] instruction) — and capturing it broke M5, M7 and Step 3.** Details in the frozen Gate C audit; the operative consequences:
 
