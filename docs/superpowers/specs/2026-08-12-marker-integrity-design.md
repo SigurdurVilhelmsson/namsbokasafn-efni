@@ -75,14 +75,27 @@ All five are in `02-mt-output`, none in `03-faithful-translation`. **[inferred]*
 
 ⚠️ **This adds a second axis to CLAUDE.md's warning that marker-survival evidence is per-ENDPOINT: it is also per-VINTAGE.** The recorded survival evidence postdates this content and never covered it.
 
-### 2.4 `lb` / `rb` are bracket escapes, and their pairing found a third producer — extraction
+### 2.4 `lb` / `rb` are literal-bracket escapes — CONFIRMED from code, and the attribution corrected
 
-**[inferred]** from instances, and the reading is unambiguous: `[[lb:]](CH[[sub:3]])[[sub:2]]CH[[rb:]][[sub:2]]CuLi` is `[(CH₃)₂CH]₂CuLi`, lithium diisopropylcuprate. So **`lb` = literal `[`, `rb` = literal `]`**, escapes that exist because a raw square bracket collides with the `[[…]]` syntax. Content is always empty.
-⚠️ **The emitting code was not located, so the NAME is a reading, not a documented fact.**
+**[measured-here] — the emitting code was located, so this is no longer an inference.** `tools/lib/exercise-html.js:44`:
 
-**[measured-here]:** corpus counts are **38 `rb` / 37 `lb`**, and the imbalance is real — `lifraen-efnafraedi` ch12 `exercises` has `lb=2 rb=3`, rendering a stray `]` (`2,4 × 10[[sup:6]] kJ/mól[[rb:]]`). **It is present in `02-for-mt` (ENGLISH) as well as `02-mt-output`**, so **[inferred]** the producer is **extraction** — a third producer, distinct from §2.3's.
+```js
+return text.replace(/[[\]]/g, (c) => (c === '[' ? '[[lb:]]' : '[[rb:]]'));
+```
 
-**Three producers are now measured — MT, extraction, and the editor — and the editor is the only one with zero offences.** A guard placed only at save would cover the one path that has never yet gone wrong. This is the whole argument for §6.
+**`lb` = literal `[`, `rb` = literal `]`.** Its docstring gives the reason: a literal `[` immediately before an inline tag (`"[<i>α</i>]"`) collided with the marker it produced (`"[[[i:α]]]"`) and broke re-parsing — a corpus find, item 9 T7.
+
+⚠️ **They are produced by the EXERCISE converter, not by `cnxml-extract.js`** — whose construction list is `MATH MEDIA SPACE TABLE b docref em fn i link sub sup term u xref` and contains no `lb`/`rb`. That is why the imbalance below sits in an `exercises-segments` file and why only the chemistry books carry these markers at all.
+
+**[measured-here]:** corpus counts are **38 `rb` / 37 `lb`**, and the imbalance is real — `lifraen-efnafraedi` ch12 `exercises` has `lb=2 rb=3`, rendering a stray `]` (`2,4 × 10[[sup:6]] kJ/mól[[rb:]]`). It is present in `02-for-mt` (ENGLISH) as well as `02-mt-output`.
+
+🔴 **ATTRIBUTION CORRECTED, and the correction matters for the rule's tier.** An earlier reading of this session — recorded in register §C53 ⑨ — called the imbalance a defect from a *third producer, extraction*. **The escaper is 1:1**: every `[` becomes `[[lb:]]` and every `]` becomes `[[rb:]]`, with no state and no pairing logic. An unmatched `[[rb:]]` therefore means **the SOURCE text carries an unmatched `]`**, faithfully transcribed. **This is a source-content asymmetry, not pipeline corruption.**
+
+**Consequence: rule 4 is correctly a `warn` and `block` would have been wrong** — the segment is not damaged, and no editor action can or should "fix" a bracket the source never balanced.
+
+**So the producer count stands at two, not three: MT (§2.3) and the editor (zero offences to date).** The argument for §6 is unchanged and if anything stronger — a save-only guard covers the one path that has never yet gone wrong, and the corpus check is what surfaces asymmetries that no save can introduce.
+
+⚠️ **A THIRD AXIS ON MARKER-SURVIVAL EVIDENCE — per-marker-SHAPE — and it is a standing, unresolved caution written into the code.** `exercise-html.js`'s docstring: *"the content-bearing `[[i:...]]` family's proven ~100% Málstaður survival does NOT transfer for free to the empty-body `[[lb:]]`/`[[rb:]]` shape, which is new and API-unverified … **Probe survival before the first real MT run that can hit these markers.**"* Combined with §2.3, marker-survival evidence is now known to be per-**endpoint**, per-**vintage** and per-**shape**. **Out of scope here; noted so it is not rediscovered.**
 
 ### 2.5 The consumer count in the validator's own docstring is wrong
 
@@ -96,6 +109,18 @@ server/e2e/helpers/segments.js
 ```
 
 **`propagationService` matters:** propagation applies one editor's change to *other* segments, so marker rules will automatically govern propagated edits. That is the desired behaviour, but it is a blast radius nobody had stated. **Correct the docstring as part of this work.**
+
+### 2.6 Three partial implementations already exist — reuse, do not duplicate
+
+**[measured-here].** Every one of these is live and none covers the whole job:
+
+| Existing | Where | Covers | Does not cover |
+|---|---|---|---|
+| `countBracketMarkers` / `bracketMarkerDelta` / `formatBracketDelta` | `tools/api-translate.js`, live at `:1047-1048`, tested by `tools/__tests__/api-translate-bracket-count.test.js` | **rule 2** — per-type prefix counts, explicitly *"robust to nesting (`[[i:[[sub:x]]]]`)"* | iterates a **fixed list** so no unknown-type detection; counts `[[type:` **with a colon** so it misses `[[BR]]`/`[[SPACE]]`; no shape, termination or pairing rules |
+| non-empty `[[lb:…]]`/`[[rb:…]]` body check | `tools/lib/exercise-html.js:236,243` | "MT moved text into an escape marker" | only these two types, only in the exercise converter |
+| named per-marker rules | `segment-validation.js` | deletion of `MATH` `MEDIA` `BR` `SPACE` + the non-bracket dialect | everything in §1.1 |
+
+⚠️ **The first row is the important one: rule 2 already exists, and the nesting insight this design derived independently was already written down there.** Two implementations would be exactly the drift this project keeps getting burned by. See §5.1 for how that is resolved.
 
 ## 3. The taxonomy
 
@@ -181,12 +206,33 @@ New `server/public/js/marker-integrity.js`, following the UMD pattern already us
 
 The editor page gains a 13th `<script src>`, loaded **before** `segment-validation.js`.
 
+### 5.1 SHARE THE DATA, NOT THE CODE — lead decision, 2026-08-12
+
+§2.6 establishes that rule 2 already exists in `tools/api-translate.js`. The fork was whether to share the implementation or only the taxonomy. **Ruled: share the data.**
+
+**One owner: `tools/lib/marker-types.json`** — type → tier, plus a flag for the colon-less types (`BR`, `SPACE`). It lives under `tools/` (MIT) so that every consumer reads it in the permitted direction; a `server/`-owned file would force `tools/` to reach into `server/`, which is CLAUDE.md's known gap E-2.
+
+| Consumer | How it reads the taxonomy |
+|---|---|
+| `tools/api-translate.js` | ⚠️ its `BRACKET_MARKER_TYPES` array is **replaced by a derivation from this file**. Leaving it in place would make three copies, not two. |
+| `server/scripts/check-marker-integrity.js` | `require()` |
+| `server/public/js/marker-integrity.js` (Node side) | `require()` |
+| the same module in the **browser** | an express static mapping serves the JSON — **no copy, no build step** |
+
+**The counting logic is duplicated deliberately**: it is one regex per side, and forcing a browser-servable shared `.cjs` introduces more novelty than it removes. **The duplication is made safe by a cross-implementation consistency test** (§7.6) rather than by hoping.
+
+**What must never be duplicated is the type list and the tier assignment** — those are facts, and facts are what drift here.
+
 ## 6. The corpus check
 
 `server/scripts/check-marker-integrity.js`, beside `verify-b4b1-gates.js`.
 
 **Trees scanned:** `02-for-mt` · `02-mt-output` · `03-faithful-translation` · `04-localized-content`.
 Not `01-source` (CNXML, no markers), not `05-publication` (HTML).
+
+⚠️ **Exclude `*.bak`.** The project's backup convention is `{filename}.{YYYY-MM-DD-HHMM}.bak`, and `04-localized-content` currently holds **only** a `README.md` and seven June backups — scanning them would report defects in files nobody reads. `eslint.config.js` already ignores `*.bak`; follow it.
+
+**`04-localized-content` is empty of markers today and is included deliberately** — localization has not started, and per the lead (2026-08-12) it will carry **the same markers as the faithful text**, Icelandic-localized. Including it now means the gate is in place before the first localized file lands, rather than after.
 **Including the ENGLISH `02-for-mt` is deliberate** — it is the only reason §2.4's defect was distinguishable from an MT one.
 
 **Allowlist granularity: `(file, segmentId, rule)`.** Allowlisting by file alone would mask a *new* violation in a file that already has one — and `lifraen-efnafraedi` ch12 `exercises` is exactly such a file. Six known violations (§2.3, §2.4) are grandfathered in explicitly, making the debt countable rather than invisible.
@@ -243,6 +289,12 @@ The known defects become fixtures, being the only inputs known to occur in pract
 
 A Playwright spec that types a space into a marker and asserts the save is refused with the right message. Every other test here checks a property of the code; this one checks what an editor actually does.
 
+### 7.6 Cross-implementation consistency — what makes §5.1's duplication safe
+
+One test feeds a shared fixture to **both** `countBracketMarkers` (`tools/`) and the new scanner (`server/`) and asserts **identical counts for every shared type**. Duplicated logic is acceptable only because this test exists; without it, §5.1 is a drift generator rather than a decision.
+
+⚠️ It must also assert both read the **same** `marker-types.json`, or the test passes while the two sides disagree about which types exist.
+
 ## 8. Explicitly out of scope
 
 Each is logged in its own place; none belongs in this diff.
@@ -255,9 +307,16 @@ Each is logged in its own place; none belongs in this diff.
 
 ## 9. Open questions
 
-1. **`lb`/`rb` naming is inferred** (§2.4). Reading the emitting code would confirm it. Does not block: the tier assignment rests on the rendered behaviour, which is unambiguous, not on the name.
-2. **Does `04-localized-content` carry markers at all?** Not measured this session; the scan simply includes it. If empty, the tree is a no-op rather than a defect.
-3. **Rule 4 covers `lb`/`rb` only.** Whether any other marker type has a pairing invariant was not investigated.
+**Both questions this spec opened on 2026-08-12 are now CLOSED, and the answers are folded into §2.4 and §6:**
+
+- ~~Is the `lb`/`rb` naming right?~~ **Confirmed from `tools/lib/exercise-html.js:44`** — literal-bracket escapes. The tier assignment never depended on the name, but the attribution did, and it was wrong (§2.4).
+- ~~Does `04-localized-content` carry markers?~~ **Not today** (README + `.bak` only), **and yes in future** — per the lead it will carry the faithful text's markers, Icelandic-localized. Included deliberately (§6).
+
+**What remains open:**
+
+1. **Rule 4 covers `lb`/`rb` only.** Whether any other marker type has a pairing invariant was not investigated. **[inferred]** none does — every other type is self-delimiting — but that is reasoning, not a measurement.
+2. **The per-marker-SHAPE survival caution (§2.4) is unresolved and is not this spec's to resolve.** `exercise-html.js` asks for a survival probe before the first real MT run that can hit `[[lb:]]`/`[[rb:]]`. Whether that probe has ever run was not established. **Out of scope; needs its own register entry if it has not.**
+3. **`BRACKET_MARKER_TYPES` in `tools/api-translate.js` must be re-pointed at the shared file** (§5.1). Straightforward, but it is a change to the MT path, which is not otherwise touched by this work — the plan should sequence it deliberately.
 
 ## 10. Risks
 
