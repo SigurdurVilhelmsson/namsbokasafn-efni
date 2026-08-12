@@ -1,14 +1,14 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T15:55:21.371Z",
+  "generated": "2026-08-12T20:00:01.580Z",
   "book": "edlisfraedi-2e",
   "stats": {
-    "total": 458,
-    "approved": 458,
-    "ties": 150,
+    "total": 461,
+    "approved": 461,
+    "ties": 149,
     "nominalTies": 21,
     "outOfScopeOnly": 134,
-    "censusStrings": 11922
+    "censusStrings": 12137
   },
   "terms": [
     {
@@ -1947,6 +1947,16 @@
       "alternatives": []
     },
     {
+      "english": "gravitational attraction",
+      "icelandic": "aðdráttarafl",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 8,
+      "alternatives": []
+    },
+    {
       "english": "gravitational field",
       "icelandic": "þyngdarsvið",
       "status": "approved",
@@ -2292,6 +2302,16 @@
       "alternatives": []
     },
     {
+      "english": "interaction",
+      "icelandic": "víxlverkun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4397,
+      "alternatives": []
+    },
+    {
       "english": "interest",
       "icelandic": "vextir",
       "status": "approved",
@@ -2611,6 +2631,18 @@
       "position": 4,
       "conceptId": 9682,
       "alternatives": []
+    },
+    {
+      "english": "log",
+      "icelandic": "logri",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2226,
+      "alternatives": [
+        "lygri?"
+      ]
     },
     {
       "english": "logic",

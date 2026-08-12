@@ -1,14 +1,14 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T15:55:21.872Z",
+  "generated": "2026-08-12T20:00:03.557Z",
   "book": "liffraedi-2e",
   "stats": {
-    "total": 763,
-    "approved": 763,
+    "total": 771,
+    "approved": 771,
     "ties": 190,
-    "nominalTies": 124,
-    "outOfScopeOnly": 209,
-    "censusStrings": 13788
+    "nominalTies": 126,
+    "outOfScopeOnly": 210,
+    "censusStrings": 13951
   },
   "terms": [
     {
@@ -78,6 +78,19 @@
       "position": 1,
       "conceptId": 51904,
       "alternatives": []
+    },
+    {
+      "english": "Golgi apparatus",
+      "icelandic": "frymisflétta",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 1,
+      "conceptId": 46307,
+      "alternatives": [
+        "golgiflétta",
+        "golgikerfi"
+      ]
     },
     {
       "english": "HIV",
@@ -582,6 +595,16 @@
       "domain": "biology",
       "position": 1,
       "conceptId": 55732,
+      "alternatives": []
+    },
+    {
+      "english": "apparatus",
+      "icelandic": "tækjabúnaður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "anatomy-physiology",
+      "position": 2,
+      "conceptId": 16449,
       "alternatives": []
     },
     {
@@ -2231,6 +2254,16 @@
       "alternatives": []
     },
     {
+      "english": "deprivation",
+      "icelandic": "skortur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 1,
+      "conceptId": 56355,
+      "alternatives": []
+    },
+    {
       "english": "derived",
       "icelandic": "afleiddur",
       "status": "approved",
@@ -2689,6 +2722,16 @@
       "alternatives": [
         "innhverfing"
       ]
+    },
+    {
+      "english": "endoplasmic reticulum",
+      "icelandic": "frymisnet",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 1,
+      "conceptId": 50618,
+      "alternatives": []
     },
     {
       "english": "energy",
@@ -3805,6 +3848,18 @@
       ]
     },
     {
+      "english": "host cell",
+      "icelandic": "hýsilfruma",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 1,
+      "conceptId": 5632,
+      "alternatives": [
+        "hýsill"
+      ]
+    },
+    {
       "english": "hydrate",
       "icelandic": "hýdrat",
       "status": "approved",
@@ -4181,6 +4236,20 @@
       "position": 2,
       "conceptId": 34890,
       "alternatives": []
+    },
+    {
+      "english": "inject",
+      "icelandic": "dæla í",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "anatomy-physiology",
+      "position": 2,
+      "conceptId": 26410,
+      "alternatives": [
+        "dæla inn",
+        "sprauta inn",
+        "sprauta í"
+      ]
     },
     {
       "english": "injection",
@@ -5339,6 +5408,18 @@
       "alternatives": [
         "strengur",
         "æð"
+      ]
+    },
+    {
+      "english": "nerve cell",
+      "icelandic": "taugungur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 1,
+      "conceptId": 49984,
+      "alternatives": [
+        "taugafruma"
       ]
     },
     {
@@ -6652,6 +6733,18 @@
       "position": 1,
       "conceptId": 6527,
       "alternatives": []
+    },
+    {
+      "english": "reticulum",
+      "icelandic": "keppur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 1,
+      "conceptId": 51844,
+      "alternatives": [
+        "fagrikeppur"
+      ]
     },
     {
       "english": "reversible",
