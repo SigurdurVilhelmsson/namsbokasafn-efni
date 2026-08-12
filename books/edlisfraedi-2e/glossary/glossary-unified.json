@@ -1,0 +1,5027 @@
+{
+  "producer": "export-terminology-resolved",
+  "generated": "2026-08-12T15:55:21.371Z",
+  "book": "edlisfraedi-2e",
+  "stats": {
+    "total": 458,
+    "approved": 458,
+    "ties": 150,
+    "nominalTies": 21,
+    "outOfScopeOnly": 134,
+    "censusStrings": 11922
+  },
+  "terms": [
+    {
+      "english": "As",
+      "icelandic": "arsen",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 140,
+      "alternatives": []
+    },
+    {
+      "english": "At",
+      "icelandic": "astat",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 141,
+      "alternatives": []
+    },
+    {
+      "english": "Be",
+      "icelandic": "beryllín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 240,
+      "alternatives": []
+    },
+    {
+      "english": "He",
+      "icelandic": "helín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1226,
+      "alternatives": []
+    },
+    {
+      "english": "In",
+      "icelandic": "indín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1565,
+      "alternatives": []
+    },
+    {
+      "english": "Jupiter",
+      "icelandic": "Júpíter",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67548,
+      "alternatives": []
+    },
+    {
+      "english": "No",
+      "icelandic": "nóbelín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2556,
+      "alternatives": []
+    },
+    {
+      "english": "Principia",
+      "icelandic": "Stærðfræðilögmál",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 68657,
+      "alternatives": []
+    },
+    {
+      "english": "SI",
+      "icelandic": "alþjóðlega einingakerfið",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 110,
+      "alternatives": []
+    },
+    {
+      "english": "absolute",
+      "icelandic": "al-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 75,
+      "alternatives": [
+        "alger",
+        "algildur",
+        "altækur"
+      ]
+    },
+    {
+      "english": "abundance",
+      "icelandic": "hlutmergð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1369,
+      "alternatives": [
+        "fjöldahlutfall",
+        "hlutfallslegur fjöldi"
+      ]
+    },
+    {
+      "english": "acceleration",
+      "icelandic": "hröðun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1487,
+      "alternatives": []
+    },
+    {
+      "english": "accelerator",
+      "icelandic": "hraðall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1433,
+      "alternatives": []
+    },
+    {
+      "english": "act",
+      "icelandic": "verka",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66049,
+      "alternatives": []
+    },
+    {
+      "english": "addition",
+      "icelandic": "samlagning",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3060,
+      "alternatives": []
+    },
+    {
+      "english": "air",
+      "icelandic": "loft",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44393,
+      "alternatives": [
+        "andrúmsloft"
+      ]
+    },
+    {
+      "english": "air resistance",
+      "icelandic": "loftmótstaða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2215,
+      "alternatives": []
+    },
+    {
+      "english": "aircraft",
+      "icelandic": "loftfar",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 9556,
+      "alternatives": []
+    },
+    {
+      "english": "algebra",
+      "icelandic": "algebra",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 82,
+      "alternatives": []
+    },
+    {
+      "english": "alternative",
+      "icelandic": "tilvik Fredholms",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65412,
+      "alternatives": []
+    },
+    {
+      "english": "analytical",
+      "icelandic": "greinandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43783,
+      "alternatives": []
+    },
+    {
+      "english": "angle",
+      "icelandic": "horn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1408,
+      "alternatives": []
+    },
+    {
+      "english": "apparent",
+      "icelandic": "sýndar-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3907,
+      "alternatives": []
+    },
+    {
+      "english": "applied",
+      "icelandic": "heimfærður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61243,
+      "alternatives": []
+    },
+    {
+      "english": "approach",
+      "icelandic": "nálgast",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63072,
+      "alternatives": []
+    },
+    {
+      "english": "approximation",
+      "icelandic": "nálgun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2506,
+      "alternatives": []
+    },
+    {
+      "english": "assume",
+      "icelandic": "gera ráð fyrir",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1011,
+      "alternatives": [
+        "ganga út frá",
+        "gefa sér",
+        "setja sem svo"
+      ]
+    },
+    {
+      "english": "assumption",
+      "icelandic": "forsenda",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 812,
+      "alternatives": [
+        "frumhæfing",
+        "tekin forsenda"
+      ]
+    },
+    {
+      "english": "astronaut",
+      "icelandic": "geimfari",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 956,
+      "alternatives": []
+    },
+    {
+      "english": "astronomical",
+      "icelandic": "stjarnfræðilegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3686,
+      "alternatives": [
+        "stjarnfræði-",
+        "stjörnu-",
+        "stjörnufræði-",
+        "stjörnufræðilegur"
+      ]
+    },
+    {
+      "english": "atom",
+      "icelandic": "atóm",
+      "status": "approved",
+      "reason": "book-preference",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 859,
+      "alternatives": [
+        "frumeind"
+      ]
+    },
+    {
+      "english": "attraction",
+      "icelandic": "aðdráttarafl",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 7,
+      "alternatives": [
+        "aðdráttarkraftur"
+      ]
+    },
+    {
+      "english": "axis",
+      "icelandic": "ás",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 183,
+      "alternatives": [
+        "möndull"
+      ]
+    },
+    {
+      "english": "balance",
+      "icelandic": "vog",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4400,
+      "alternatives": []
+    },
+    {
+      "english": "balanced",
+      "icelandic": "í jafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1599,
+      "alternatives": [
+        "jafnvægur"
+      ]
+    },
+    {
+      "english": "ball",
+      "icelandic": "kúla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62169,
+      "alternatives": [
+        "hnöttur",
+        "knöttur"
+      ]
+    },
+    {
+      "english": "barrel",
+      "icelandic": "fat",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 655,
+      "alternatives": []
+    },
+    {
+      "english": "basic",
+      "icelandic": "basískur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 220,
+      "alternatives": [
+        "lútkenndur"
+      ]
+    },
+    {
+      "english": "basis",
+      "icelandic": "grunnur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1105,
+      "alternatives": []
+    },
+    {
+      "english": "bent",
+      "icelandic": "beygður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 5,
+      "conceptId": 4659,
+      "alternatives": []
+    },
+    {
+      "english": "beta",
+      "icelandic": "beta",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 66849,
+      "alternatives": []
+    },
+    {
+      "english": "beta decay",
+      "icelandic": "betasundrun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 245,
+      "alternatives": [
+        "betahrörnun"
+      ]
+    },
+    {
+      "english": "between",
+      "icelandic": "milli",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62924,
+      "alternatives": [
+        "á milli"
+      ]
+    },
+    {
+      "english": "billion",
+      "icelandic": "milljarður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67947,
+      "alternatives": []
+    },
+    {
+      "english": "bit",
+      "icelandic": "biti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 259,
+      "alternatives": []
+    },
+    {
+      "english": "black hole",
+      "icelandic": "svarthol",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3854,
+      "alternatives": []
+    },
+    {
+      "english": "block",
+      "icelandic": "bálkur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 222,
+      "alternatives": []
+    },
+    {
+      "english": "boson",
+      "icelandic": "bóseind",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 304,
+      "alternatives": [
+        "jafnskiptaeind"
+      ]
+    },
+    {
+      "english": "bottom",
+      "icelandic": "blíða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 274,
+      "alternatives": [
+        "botntala"
+      ]
+    },
+    {
+      "english": "boulder",
+      "icelandic": "bjarg",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43292,
+      "alternatives": []
+    },
+    {
+      "english": "box",
+      "icelandic": "kassi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1750,
+      "alternatives": []
+    },
+    {
+      "english": "breadth",
+      "icelandic": "breidd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59565,
+      "alternatives": []
+    },
+    {
+      "english": "bridge",
+      "icelandic": "brú",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59643,
+      "alternatives": []
+    },
+    {
+      "english": "cable",
+      "icelandic": "kapall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1748,
+      "alternatives": [
+        "leiðsla",
+        "strengur"
+      ]
+    },
+    {
+      "english": "calculate",
+      "icelandic": "reikna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2866,
+      "alternatives": [
+        "reikna út"
+      ]
+    },
+    {
+      "english": "calculus",
+      "icelandic": "örsmæðareikningur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4614,
+      "alternatives": [
+        "deilda- og heildareikningur",
+        "diffur- og tegurreikningur",
+        "reiknivísi"
+      ]
+    },
+    {
+      "english": "carrier",
+      "icelandic": "rafberi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2737,
+      "alternatives": []
+    },
+    {
+      "english": "case",
+      "icelandic": "tilfelli",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65397,
+      "alternatives": [
+        "tilvik"
+      ]
+    },
+    {
+      "english": "center",
+      "icelandic": "miðja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2380,
+      "alternatives": [
+        "miðdepill",
+        "miðpunktur"
+      ]
+    },
+    {
+      "english": "central",
+      "icelandic": "mið-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62880,
+      "alternatives": [
+        "miðju-",
+        "miðpunkts-"
+      ]
+    },
+    {
+      "english": "certain",
+      "icelandic": "viss",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66190,
+      "alternatives": [
+        "öruggur"
+      ]
+    },
+    {
+      "english": "characteristic curve",
+      "icelandic": "kenniferill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62056,
+      "alternatives": []
+    },
+    {
+      "english": "chemistry",
+      "icelandic": "efnafræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 511,
+      "alternatives": []
+    },
+    {
+      "english": "classical mechanics",
+      "icelandic": "hefðbundin aflfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1195,
+      "alternatives": [
+        "sígild aflfræði"
+      ]
+    },
+    {
+      "english": "classical physics",
+      "icelandic": "hefðbundin eðlisfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1196,
+      "alternatives": [
+        "klassísk eðlisfræði",
+        "sígild eðlisfræði"
+      ]
+    },
+    {
+      "english": "coefficient",
+      "icelandic": "stuðull",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3762,
+      "alternatives": [
+        "tala"
+      ]
+    },
+    {
+      "english": "collision",
+      "icelandic": "árekstur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 179,
+      "alternatives": []
+    },
+    {
+      "english": "color",
+      "icelandic": "litur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2105,
+      "alternatives": []
+    },
+    {
+      "english": "combination",
+      "icelandic": "samantekt",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3006,
+      "alternatives": [
+        "samtak",
+        "samtekt"
+      ]
+    },
+    {
+      "english": "combustion",
+      "icelandic": "bruni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 363,
+      "alternatives": [
+        "brennsla"
+      ]
+    },
+    {
+      "english": "comes",
+      "icelandic": "fylgistjarna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67135,
+      "alternatives": []
+    },
+    {
+      "english": "comparison",
+      "icelandic": "samanburður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64064,
+      "alternatives": []
+    },
+    {
+      "english": "complement",
+      "icelandic": "fyllimengi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 889,
+      "alternatives": []
+    },
+    {
+      "english": "completeness",
+      "icelandic": "fullkomleiki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60729,
+      "alternatives": []
+    },
+    {
+      "english": "complexity",
+      "icelandic": "flækja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60524,
+      "alternatives": [
+        "flækjustig"
+      ]
+    },
+    {
+      "english": "concept",
+      "icelandic": "hugtak",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61640,
+      "alternatives": []
+    },
+    {
+      "english": "conclusion",
+      "icelandic": "niðurstaða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2541,
+      "alternatives": [
+        "ályktun"
+      ]
+    },
+    {
+      "english": "condition",
+      "icelandic": "skilyrði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3346,
+      "alternatives": []
+    },
+    {
+      "english": "connected",
+      "icelandic": "samhangandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3046,
+      "alternatives": [
+        "samanhangandi"
+      ]
+    },
+    {
+      "english": "connection",
+      "icelandic": "samband",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3009,
+      "alternatives": [
+        "tenging"
+      ]
+    },
+    {
+      "english": "consequence",
+      "icelandic": "afleiðing",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59113,
+      "alternatives": []
+    },
+    {
+      "english": "consistent",
+      "icelandic": "sjálfkvæmur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3251,
+      "alternatives": []
+    },
+    {
+      "english": "construct",
+      "icelandic": "byggja upp",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59689,
+      "alternatives": [
+        "búa til",
+        "draga",
+        "smíða"
+      ]
+    },
+    {
+      "english": "content",
+      "icelandic": "innihald",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61811,
+      "alternatives": [
+        "Jordan-innihald"
+      ]
+    },
+    {
+      "english": "contraction",
+      "icelandic": "samdráttur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3016,
+      "alternatives": []
+    },
+    {
+      "english": "contrast",
+      "icelandic": "birtuskil",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 66863,
+      "alternatives": []
+    },
+    {
+      "english": "coordinate",
+      "icelandic": "hnit",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1384,
+      "alternatives": []
+    },
+    {
+      "english": "coordinate system",
+      "icelandic": "hnitakerfi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1386,
+      "alternatives": []
+    },
+    {
+      "english": "corresponding",
+      "icelandic": "samsvarandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64300,
+      "alternatives": []
+    },
+    {
+      "english": "counterclockwise",
+      "icelandic": "andsælis",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59312,
+      "alternatives": [
+        "rangsælis"
+      ]
+    },
+    {
+      "english": "coupling",
+      "icelandic": "tenging",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3963,
+      "alternatives": [
+        "tengi",
+        "tengsl"
+      ]
+    },
+    {
+      "english": "curve",
+      "icelandic": "ferill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 670,
+      "alternatives": []
+    },
+    {
+      "english": "curved",
+      "icelandic": "boginn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 286,
+      "alternatives": [
+        "sveigður"
+      ]
+    },
+    {
+      "english": "cut",
+      "icelandic": "snið",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64727,
+      "alternatives": []
+    },
+    {
+      "english": "dash",
+      "icelandic": "merki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2355,
+      "alternatives": [
+        "strik"
+      ]
+    },
+    {
+      "english": "data",
+      "icelandic": "gögn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1119,
+      "alternatives": []
+    },
+    {
+      "english": "decay",
+      "icelandic": "sundrun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3835,
+      "alternatives": [
+        "hrörnun"
+      ]
+    },
+    {
+      "english": "decision",
+      "icelandic": "ákvörðun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59388,
+      "alternatives": []
+    },
+    {
+      "english": "define",
+      "icelandic": "skilgreina",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64559,
+      "alternatives": [
+        "skýrgreina"
+      ]
+    },
+    {
+      "english": "definition",
+      "icelandic": "skilgreining",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3341,
+      "alternatives": []
+    },
+    {
+      "english": "deformation",
+      "icelandic": "bjögun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 262,
+      "alternatives": [
+        "aflögun"
+      ]
+    },
+    {
+      "english": "demonstration",
+      "icelandic": "sönnun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65266,
+      "alternatives": []
+    },
+    {
+      "english": "density",
+      "icelandic": "þéttleiki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4478,
+      "alternatives": [
+        "þéttni"
+      ]
+    },
+    {
+      "english": "derive",
+      "icelandic": "leiða út",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2028,
+      "alternatives": []
+    },
+    {
+      "english": "detect",
+      "icelandic": "nema",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2529,
+      "alternatives": [
+        "greina",
+        "mæla",
+        "skynja"
+      ]
+    },
+    {
+      "english": "detector",
+      "icelandic": "nemi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2531,
+      "alternatives": [
+        "skynjari"
+      ]
+    },
+    {
+      "english": "determinant",
+      "icelandic": "ákveða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 169,
+      "alternatives": []
+    },
+    {
+      "english": "development",
+      "icelandic": "þróun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4520,
+      "alternatives": []
+    },
+    {
+      "english": "device",
+      "icelandic": "tæki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4108,
+      "alternatives": [
+        "tól"
+      ]
+    },
+    {
+      "english": "diagonal",
+      "icelandic": "hornalína",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1412,
+      "alternatives": []
+    },
+    {
+      "english": "diagram",
+      "icelandic": "skýringarmynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3422,
+      "alternatives": [
+        "línurit"
+      ]
+    },
+    {
+      "english": "difference",
+      "icelandic": "mismunur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2412,
+      "alternatives": [
+        "munur"
+      ]
+    },
+    {
+      "english": "direction",
+      "icelandic": "stefna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3642,
+      "alternatives": [
+        "átt"
+      ]
+    },
+    {
+      "english": "discovery",
+      "icelandic": "uppgötvun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 45217,
+      "alternatives": [
+        "fundur"
+      ]
+    },
+    {
+      "english": "distance",
+      "icelandic": "fjarlægð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 725,
+      "alternatives": []
+    },
+    {
+      "english": "dominant",
+      "icelandic": "gnæfur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60939,
+      "alternatives": []
+    },
+    {
+      "english": "drag",
+      "icelandic": "dragi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 459,
+      "alternatives": [
+        "dragakraftur"
+      ]
+    },
+    {
+      "english": "drifting",
+      "icelandic": "fok",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43616,
+      "alternatives": [
+        "vindrof"
+      ]
+    },
+    {
+      "english": "dynamics",
+      "icelandic": "hreyfifræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1458,
+      "alternatives": [
+        "hreyfilögmál"
+      ]
+    },
+    {
+      "english": "effect",
+      "icelandic": "hrif",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1466,
+      "alternatives": []
+    },
+    {
+      "english": "electric",
+      "icelandic": "raf-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2734,
+      "alternatives": []
+    },
+    {
+      "english": "electric current",
+      "icelandic": "rafstraumur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2799,
+      "alternatives": []
+    },
+    {
+      "english": "electricity",
+      "icelandic": "rafmagn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2778,
+      "alternatives": []
+    },
+    {
+      "english": "electromagnetism",
+      "icelandic": "rafsegulfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2786,
+      "alternatives": []
+    },
+    {
+      "english": "electron",
+      "icelandic": "rafeind",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2741,
+      "alternatives": []
+    },
+    {
+      "english": "elementary",
+      "icelandic": "einfaldur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59967,
+      "alternatives": [
+        "grunnstæður"
+      ]
+    },
+    {
+      "english": "end",
+      "icelandic": "endi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60190,
+      "alternatives": []
+    },
+    {
+      "english": "energy",
+      "icelandic": "orka",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2612,
+      "alternatives": []
+    },
+    {
+      "english": "engine",
+      "icelandic": "varmavél",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4262,
+      "alternatives": []
+    },
+    {
+      "english": "entire",
+      "icelandic": "heill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61214,
+      "alternatives": []
+    },
+    {
+      "english": "equate",
+      "icelandic": "setja jafnt",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64360,
+      "alternatives": []
+    },
+    {
+      "english": "equation",
+      "icelandic": "jafna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1636,
+      "alternatives": [
+        "líking"
+      ]
+    },
+    {
+      "english": "equilateral",
+      "icelandic": "jafnhliða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1656,
+      "alternatives": []
+    },
+    {
+      "english": "equilateral triangle",
+      "icelandic": "jafnhliða þríhyrningur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61955,
+      "alternatives": []
+    },
+    {
+      "english": "equivalent",
+      "icelandic": "jafngildi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1646,
+      "alternatives": []
+    },
+    {
+      "english": "era",
+      "icelandic": "öld",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 45515,
+      "alternatives": []
+    },
+    {
+      "english": "error",
+      "icelandic": "skekkja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3331,
+      "alternatives": [
+        "óvissa"
+      ]
+    },
+    {
+      "english": "evolution",
+      "icelandic": "framvinda",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60631,
+      "alternatives": [
+        "tilhneiging"
+      ]
+    },
+    {
+      "english": "example",
+      "icelandic": "dæmi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59839,
+      "alternatives": [
+        "sýnidæmi"
+      ]
+    },
+    {
+      "english": "except for",
+      "icelandic": "burtséð frá",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59685,
+      "alternatives": []
+    },
+    {
+      "english": "exchange",
+      "icelandic": "skipti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3357,
+      "alternatives": []
+    },
+    {
+      "english": "exist",
+      "icelandic": "vera til",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66047,
+      "alternatives": []
+    },
+    {
+      "english": "existence",
+      "icelandic": "tilvist",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65416,
+      "alternatives": []
+    },
+    {
+      "english": "experimental",
+      "icelandic": "tilrauna-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3982,
+      "alternatives": [
+        "tilraunalegur"
+      ]
+    },
+    {
+      "english": "exploration",
+      "icelandic": "könnun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1967,
+      "alternatives": []
+    },
+    {
+      "english": "expression",
+      "icelandic": "stærðtákn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3802,
+      "alternatives": [
+        "stæða"
+      ]
+    },
+    {
+      "english": "extend",
+      "icelandic": "útvíkka",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65920,
+      "alternatives": [
+        "framlengja"
+      ]
+    },
+    {
+      "english": "external",
+      "icelandic": "ytri",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4443,
+      "alternatives": []
+    },
+    {
+      "english": "extreme",
+      "icelandic": "útliður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65900,
+      "alternatives": []
+    },
+    {
+      "english": "fall",
+      "icelandic": "fall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 631,
+      "alternatives": []
+    },
+    {
+      "english": "field",
+      "icelandic": "svið",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3879,
+      "alternatives": []
+    },
+    {
+      "english": "final",
+      "icelandic": "loka-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62531,
+      "alternatives": []
+    },
+    {
+      "english": "fixed",
+      "icelandic": "kyrr",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62247,
+      "alternatives": [
+        "fasta-",
+        "fastur",
+        "kyrra-",
+        "kyrrðar-"
+      ]
+    },
+    {
+      "english": "flat",
+      "icelandic": "flatspegill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67078,
+      "alternatives": []
+    },
+    {
+      "english": "foot",
+      "icelandic": "fet",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 696,
+      "alternatives": []
+    },
+    {
+      "english": "force",
+      "icelandic": "kraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1877,
+      "alternatives": []
+    },
+    {
+      "english": "formation",
+      "icelandic": "myndun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2458,
+      "alternatives": [
+        "syrpa"
+      ]
+    },
+    {
+      "english": "foundation",
+      "icelandic": "undirstaða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65788,
+      "alternatives": []
+    },
+    {
+      "english": "fraction",
+      "icelandic": "brot",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 350,
+      "alternatives": []
+    },
+    {
+      "english": "frame",
+      "icelandic": "rammi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63758,
+      "alternatives": []
+    },
+    {
+      "english": "free",
+      "icelandic": "frjáls",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60650,
+      "alternatives": []
+    },
+    {
+      "english": "free fall",
+      "icelandic": "frjálst fall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 845,
+      "alternatives": []
+    },
+    {
+      "english": "front",
+      "icelandic": "skil",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44917,
+      "alternatives": []
+    },
+    {
+      "english": "fuel",
+      "icelandic": "eldsneyti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 601,
+      "alternatives": [
+        "orkugjafi"
+      ]
+    },
+    {
+      "english": "full",
+      "icelandic": "fullur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60747,
+      "alternatives": []
+    },
+    {
+      "english": "function",
+      "icelandic": "fall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 630,
+      "alternatives": []
+    },
+    {
+      "english": "fundamental",
+      "icelandic": "undirstöðu-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4155,
+      "alternatives": [
+        "frum-",
+        "grundvallar-",
+        "grunn-",
+        "stofn-",
+        "ör-"
+      ]
+    },
+    {
+      "english": "fundamental particle",
+      "icelandic": "öreind",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4605,
+      "alternatives": []
+    },
+    {
+      "english": "funnel",
+      "icelandic": "trekt",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 5,
+      "conceptId": 5137,
+      "alternatives": []
+    },
+    {
+      "english": "galaxy",
+      "icelandic": "stjörnuþoka",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3712,
+      "alternatives": [
+        "vetrarbraut"
+      ]
+    },
+    {
+      "english": "gap",
+      "icelandic": "geil",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 954,
+      "alternatives": []
+    },
+    {
+      "english": "gas",
+      "icelandic": "gas",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 937,
+      "alternatives": [
+        "lofttegund"
+      ]
+    },
+    {
+      "english": "general relativity",
+      "icelandic": "almenna afstæðiskenningin",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 66742,
+      "alternatives": []
+    },
+    {
+      "english": "generally",
+      "icelandic": "almennt",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59230,
+      "alternatives": [
+        "að jafnaði"
+      ]
+    },
+    {
+      "english": "gold",
+      "icelandic": "gull",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1116,
+      "alternatives": []
+    },
+    {
+      "english": "gravel",
+      "icelandic": "möl",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44587,
+      "alternatives": [
+        "malarsandur"
+      ]
+    },
+    {
+      "english": "gravitational",
+      "icelandic": "þyngdar-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4566,
+      "alternatives": []
+    },
+    {
+      "english": "gravitational field",
+      "icelandic": "þyngdarsvið",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4583,
+      "alternatives": []
+    },
+    {
+      "english": "gravitational force",
+      "icelandic": "þyngdarkraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4574,
+      "alternatives": []
+    },
+    {
+      "english": "gravitational pull",
+      "icelandic": "þyngdartog",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 9960,
+      "alternatives": []
+    },
+    {
+      "english": "gravitational wave",
+      "icelandic": "þyngdarsviðsbylgja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4584,
+      "alternatives": [
+        "þyngdarbylgja"
+      ]
+    },
+    {
+      "english": "gravity",
+      "icelandic": "þyngd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4565,
+      "alternatives": []
+    },
+    {
+      "english": "greater",
+      "icelandic": "stærri",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65166,
+      "alternatives": []
+    },
+    {
+      "english": "handle",
+      "icelandic": "handfang",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61076,
+      "alternatives": []
+    },
+    {
+      "english": "hat",
+      "icelandic": "þak",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66375,
+      "alternatives": []
+    },
+    {
+      "english": "head",
+      "icelandic": "höfuð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67461,
+      "alternatives": []
+    },
+    {
+      "english": "height",
+      "icelandic": "hæð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1541,
+      "alternatives": []
+    },
+    {
+      "english": "high",
+      "icelandic": "hæð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43986,
+      "alternatives": []
+    },
+    {
+      "english": "hole",
+      "icelandic": "hola",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1401,
+      "alternatives": [
+        "holeind"
+      ]
+    },
+    {
+      "english": "horizontal",
+      "icelandic": "láréttur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2021,
+      "alternatives": []
+    },
+    {
+      "english": "household",
+      "icelandic": "heimili",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43865,
+      "alternatives": []
+    },
+    {
+      "english": "ice",
+      "icelandic": "ís",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1618,
+      "alternatives": []
+    },
+    {
+      "english": "identical",
+      "icelandic": "samur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64316,
+      "alternatives": [
+        "aljafn",
+        "alsamur"
+      ]
+    },
+    {
+      "english": "identify",
+      "icelandic": "samsama",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64253,
+      "alternatives": []
+    },
+    {
+      "english": "image",
+      "icelandic": "mynd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2443,
+      "alternatives": []
+    },
+    {
+      "english": "imply",
+      "icelandic": "leiða af sér",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62354,
+      "alternatives": [
+        "hafa í för með sér",
+        "leiða til"
+      ]
+    },
+    {
+      "english": "in",
+      "icelandic": "tomma",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4018,
+      "alternatives": [
+        "þumlungur"
+      ]
+    },
+    {
+      "english": "inclined plane",
+      "icelandic": "skáborð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3327,
+      "alternatives": []
+    },
+    {
+      "english": "inclusion",
+      "icelandic": "hlutvera",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61455,
+      "alternatives": [
+        "hlutmengisvensl"
+      ]
+    },
+    {
+      "english": "inconsistent",
+      "icelandic": "ósamkvæmur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63548,
+      "alternatives": [
+        "ósamrýmanlegur"
+      ]
+    },
+    {
+      "english": "increase",
+      "icelandic": "stíga",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65000,
+      "alternatives": [
+        "hækka",
+        "vaxa"
+      ]
+    },
+    {
+      "english": "independent",
+      "icelandic": "óháður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2653,
+      "alternatives": []
+    },
+    {
+      "english": "inertia",
+      "icelandic": "tregða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4034,
+      "alternatives": []
+    },
+    {
+      "english": "inertial frame",
+      "icelandic": "tregðukerfi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4036,
+      "alternatives": []
+    },
+    {
+      "english": "infinite",
+      "icelandic": "óendanlegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2647,
+      "alternatives": []
+    },
+    {
+      "english": "information",
+      "icelandic": "upplýsingar",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65834,
+      "alternatives": []
+    },
+    {
+      "english": "initial",
+      "icelandic": "upphafs-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4159,
+      "alternatives": [
+        "byrjunar-"
+      ]
+    },
+    {
+      "english": "inside",
+      "icelandic": "innmengi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61815,
+      "alternatives": [
+        "iður",
+        "innri kjarni",
+        "opinn kjarni"
+      ]
+    },
+    {
+      "english": "interact",
+      "icelandic": "víxlverka",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4396,
+      "alternatives": []
+    },
+    {
+      "english": "interest",
+      "icelandic": "vextir",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66063,
+      "alternatives": []
+    },
+    {
+      "english": "internal",
+      "icelandic": "innri",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1581,
+      "alternatives": []
+    },
+    {
+      "english": "intrinsic",
+      "icelandic": "eigin-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 534,
+      "alternatives": []
+    },
+    {
+      "english": "intrinsic property",
+      "icelandic": "innri eiginleiki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61833,
+      "alternatives": []
+    },
+    {
+      "english": "intuition",
+      "icelandic": "innsæi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61864,
+      "alternatives": [
+        "skjótsæi",
+        "snarskyggni"
+      ]
+    },
+    {
+      "english": "isolated",
+      "icelandic": "einangraður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 553,
+      "alternatives": []
+    },
+    {
+      "english": "item",
+      "icelandic": "eining",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 69749,
+      "alternatives": [
+        "stak"
+      ]
+    },
+    {
+      "english": "jet",
+      "icelandic": "buna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 377,
+      "alternatives": [
+        "strókur"
+      ]
+    },
+    {
+      "english": "joint",
+      "icelandic": "bergbrestur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 9625,
+      "alternatives": []
+    },
+    {
+      "english": "jump",
+      "icelandic": "stökk",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3817,
+      "alternatives": []
+    },
+    {
+      "english": "key",
+      "icelandic": "sandrif",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44848,
+      "alternatives": []
+    },
+    {
+      "english": "kg",
+      "icelandic": "kílógramm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1786,
+      "alternatives": []
+    },
+    {
+      "english": "kilogram",
+      "icelandic": "kílógramm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1786,
+      "alternatives": []
+    },
+    {
+      "english": "kinematics",
+      "icelandic": "gangfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 932,
+      "alternatives": []
+    },
+    {
+      "english": "laboratory",
+      "icelandic": "rannsóknarstofa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2827,
+      "alternatives": [
+        "tilraunastofa",
+        "vinnustofa"
+      ]
+    },
+    {
+      "english": "language",
+      "icelandic": "tölvumál",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4124,
+      "alternatives": []
+    },
+    {
+      "english": "large scale",
+      "icelandic": "stór mælikvarði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 45053,
+      "alternatives": []
+    },
+    {
+      "english": "laser",
+      "icelandic": "ljósleysir",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2179,
+      "alternatives": [
+        "leysir",
+        "ljörvi"
+      ]
+    },
+    {
+      "english": "lateral",
+      "icelandic": "hliðar-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1301,
+      "alternatives": []
+    },
+    {
+      "english": "law",
+      "icelandic": "lögmál",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2268,
+      "alternatives": [
+        "regla"
+      ]
+    },
+    {
+      "english": "lb",
+      "icelandic": "pund",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2718,
+      "alternatives": []
+    },
+    {
+      "english": "length",
+      "icelandic": "lengd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2053,
+      "alternatives": []
+    },
+    {
+      "english": "less",
+      "icelandic": "minni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62937,
+      "alternatives": [
+        "smærri"
+      ]
+    },
+    {
+      "english": "lift",
+      "icelandic": "lyftikraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2255,
+      "alternatives": []
+    },
+    {
+      "english": "light",
+      "icelandic": "ljós",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2147,
+      "alternatives": []
+    },
+    {
+      "english": "linear",
+      "icelandic": "línulegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2136,
+      "alternatives": [
+        "línu-"
+      ]
+    },
+    {
+      "english": "linear acceleration",
+      "icelandic": "línuhröðun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2132,
+      "alternatives": []
+    },
+    {
+      "english": "link",
+      "icelandic": "tengja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3968,
+      "alternatives": []
+    },
+    {
+      "english": "load",
+      "icelandic": "álag",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 173,
+      "alternatives": [
+        "áraun"
+      ]
+    },
+    {
+      "english": "loading",
+      "icelandic": "ferging",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 9682,
+      "alternatives": []
+    },
+    {
+      "english": "logic",
+      "icelandic": "rökfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2985,
+      "alternatives": []
+    },
+    {
+      "english": "logical",
+      "icelandic": "rökfræðilegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64037,
+      "alternatives": [
+        "rök-",
+        "röklegur",
+        "rökrænn"
+      ]
+    },
+    {
+      "english": "low",
+      "icelandic": "lægð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44431,
+      "alternatives": []
+    },
+    {
+      "english": "macroscopic",
+      "icelandic": "stórsær",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3731,
+      "alternatives": []
+    },
+    {
+      "english": "magnetic field",
+      "icelandic": "segulsvið",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3162,
+      "alternatives": []
+    },
+    {
+      "english": "mass",
+      "icelandic": "massi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2312,
+      "alternatives": [
+        "efnismagn"
+      ]
+    },
+    {
+      "english": "mathematical",
+      "icelandic": "stærðfræðilegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3801,
+      "alternatives": [
+        "stærðfræði-"
+      ]
+    },
+    {
+      "english": "matter",
+      "icelandic": "efni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 526,
+      "alternatives": []
+    },
+    {
+      "english": "measure",
+      "icelandic": "mál",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2314,
+      "alternatives": []
+    },
+    {
+      "english": "measurement",
+      "icelandic": "mæling",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2471,
+      "alternatives": []
+    },
+    {
+      "english": "mechanics",
+      "icelandic": "aflfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 40,
+      "alternatives": []
+    },
+    {
+      "english": "mechanism",
+      "icelandic": "hvarfgangur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 5,
+      "conceptId": 4819,
+      "alternatives": []
+    },
+    {
+      "english": "meson",
+      "icelandic": "miðeind",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2375,
+      "alternatives": []
+    },
+    {
+      "english": "method",
+      "icelandic": "aðferð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 15,
+      "alternatives": []
+    },
+    {
+      "english": "microscopic",
+      "icelandic": "smásær",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3461,
+      "alternatives": []
+    },
+    {
+      "english": "minimal",
+      "icelandic": "lág-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62301,
+      "alternatives": [
+        "óminnkanlegur",
+        "ósmækkanlegur"
+      ]
+    },
+    {
+      "english": "minus",
+      "icelandic": "mínus",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2419,
+      "alternatives": [
+        "mínusmerki",
+        "neikvætt formerki"
+      ]
+    },
+    {
+      "english": "missile",
+      "icelandic": "skeyti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3337,
+      "alternatives": [
+        "flugskeyti"
+      ]
+    },
+    {
+      "english": "mistake",
+      "icelandic": "villa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66123,
+      "alternatives": [
+        "mistök"
+      ]
+    },
+    {
+      "english": "modern physics",
+      "icelandic": "nútíma eðlisfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2568,
+      "alternatives": [
+        "eðlisfræði nútímans"
+      ]
+    },
+    {
+      "english": "motion",
+      "icelandic": "hreyfing",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1462,
+      "alternatives": []
+    },
+    {
+      "english": "move",
+      "icelandic": "leikur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62379,
+      "alternatives": []
+    },
+    {
+      "english": "much greater",
+      "icelandic": "miklu stærri",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62923,
+      "alternatives": []
+    },
+    {
+      "english": "much less",
+      "icelandic": "miklu minni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62922,
+      "alternatives": []
+    },
+    {
+      "english": "multiple",
+      "icelandic": "heilfeldi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1207,
+      "alternatives": [
+        "heilt margfeldi",
+        "margfeldi"
+      ]
+    },
+    {
+      "english": "natural",
+      "icelandic": "náttúrlegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63105,
+      "alternatives": [
+        "aðallegur",
+        "eðlilegur",
+        "kór-",
+        "sjálfgefinn",
+        "viðtekinn"
+      ]
+    },
+    {
+      "english": "nature",
+      "icelandic": "náttúra",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2511,
+      "alternatives": [
+        "eðli"
+      ]
+    },
+    {
+      "english": "necessary",
+      "icelandic": "nauðsynlegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63062,
+      "alternatives": []
+    },
+    {
+      "english": "negative",
+      "icelandic": "neikvæður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2523,
+      "alternatives": [
+        "frádrægur",
+        "mínus-"
+      ]
+    },
+    {
+      "english": "neglect",
+      "icelandic": "sleppa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3441,
+      "alternatives": []
+    },
+    {
+      "english": "negligible",
+      "icelandic": "hverfandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1514,
+      "alternatives": [
+        "sem má sleppa"
+      ]
+    },
+    {
+      "english": "net",
+      "icelandic": "alhæfð runa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59199,
+      "alternatives": [
+        "net",
+        "nót"
+      ]
+    },
+    {
+      "english": "network",
+      "icelandic": "net",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2539,
+      "alternatives": []
+    },
+    {
+      "english": "neutron",
+      "icelandic": "nifteind",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2542,
+      "alternatives": []
+    },
+    {
+      "english": "neutron star",
+      "icelandic": "nifteindastjarna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2545,
+      "alternatives": []
+    },
+    {
+      "english": "newton",
+      "icelandic": "njúton",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2550,
+      "alternatives": []
+    },
+    {
+      "english": "normal",
+      "icelandic": "þverill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4551,
+      "alternatives": [
+        "þverlína"
+      ]
+    },
+    {
+      "english": "normal force",
+      "icelandic": "þverkraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4552,
+      "alternatives": []
+    },
+    {
+      "english": "northern hemisphere",
+      "icelandic": "nyrðra hálfhvel",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63261,
+      "alternatives": [
+        "norðurhvel"
+      ]
+    },
+    {
+      "english": "nuclear",
+      "icelandic": "kjarna-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1792,
+      "alternatives": []
+    },
+    {
+      "english": "nuclear decay",
+      "icelandic": "kjarnahrörnun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1797,
+      "alternatives": [
+        "kjarnasundrun"
+      ]
+    },
+    {
+      "english": "nuclear force",
+      "icelandic": "kjarnakraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1801,
+      "alternatives": []
+    },
+    {
+      "english": "nucleus",
+      "icelandic": "atómkjarni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 148,
+      "alternatives": [
+        "frumeindarkjarni",
+        "kjarni"
+      ]
+    },
+    {
+      "english": "object",
+      "icelandic": "hlutur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1373,
+      "alternatives": []
+    },
+    {
+      "english": "observation",
+      "icelandic": "athugun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 144,
+      "alternatives": [
+        "mæling"
+      ]
+    },
+    {
+      "english": "observer",
+      "icelandic": "athugandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 143,
+      "alternatives": []
+    },
+    {
+      "english": "oil",
+      "icelandic": "olía",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2609,
+      "alternatives": []
+    },
+    {
+      "english": "one",
+      "icelandic": "einingarstak",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60055,
+      "alternatives": [
+        "margföldunarhlutleysa"
+      ]
+    },
+    {
+      "english": "one-dimensional",
+      "icelandic": "einvíður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 595,
+      "alternatives": []
+    },
+    {
+      "english": "onto",
+      "icelandic": "átækur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59443,
+      "alternatives": []
+    },
+    {
+      "english": "open",
+      "icelandic": "opinn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63343,
+      "alternatives": []
+    },
+    {
+      "english": "operation",
+      "icelandic": "aðgerð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 22,
+      "alternatives": []
+    },
+    {
+      "english": "opposite",
+      "icelandic": "mótlægur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62996,
+      "alternatives": [
+        "andstæður",
+        "gagnstæður",
+        "mótstæður",
+        "öfugur",
+        "öndverður"
+      ]
+    },
+    {
+      "english": "opposite direction",
+      "icelandic": "gagnstæð stefna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60840,
+      "alternatives": [
+        "gagnstæð átt"
+      ]
+    },
+    {
+      "english": "opposition",
+      "icelandic": "gagnstaða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 917,
+      "alternatives": []
+    },
+    {
+      "english": "optical",
+      "icelandic": "ljósfræðilegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2163,
+      "alternatives": [
+        "ljós-",
+        "ljósfræði-",
+        "ljóstækni-"
+      ]
+    },
+    {
+      "english": "orbit",
+      "icelandic": "braut",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 306,
+      "alternatives": []
+    },
+    {
+      "english": "ordinary",
+      "icelandic": "venjulegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66036,
+      "alternatives": []
+    },
+    {
+      "english": "origin",
+      "icelandic": "upphafspunktur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4160,
+      "alternatives": [
+        "hnitmiðja"
+      ]
+    },
+    {
+      "english": "outcome",
+      "icelandic": "útkoma",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65897,
+      "alternatives": [
+        "niðurstaða"
+      ]
+    },
+    {
+      "english": "outward",
+      "icelandic": "innstæður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61860,
+      "alternatives": [
+        "innri"
+      ]
+    },
+    {
+      "english": "pair",
+      "icelandic": "raðtvennd",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63735,
+      "alternatives": [
+        "röðuð tvennd"
+      ]
+    },
+    {
+      "english": "parallel",
+      "icelandic": "samsíða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3096,
+      "alternatives": []
+    },
+    {
+      "english": "part",
+      "icelandic": "partur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63662,
+      "alternatives": []
+    },
+    {
+      "english": "particle accelerator",
+      "icelandic": "eindahraðall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 557,
+      "alternatives": []
+    },
+    {
+      "english": "pattern",
+      "icelandic": "mynstur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44574,
+      "alternatives": []
+    },
+    {
+      "english": "pencil",
+      "icelandic": "vöndur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66262,
+      "alternatives": [
+        "hneppi"
+      ]
+    },
+    {
+      "english": "perspective",
+      "icelandic": "sjónhorf",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3275,
+      "alternatives": []
+    },
+    {
+      "english": "physical",
+      "icelandic": "eðlisfræði-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 494,
+      "alternatives": [
+        "eðlis-",
+        "eðlisfræðilegur"
+      ]
+    },
+    {
+      "english": "physics",
+      "icelandic": "eðlisfræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 491,
+      "alternatives": []
+    },
+    {
+      "english": "pitch",
+      "icelandic": "tónhæð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4028,
+      "alternatives": []
+    },
+    {
+      "english": "place",
+      "icelandic": "sæti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3918,
+      "alternatives": []
+    },
+    {
+      "english": "plane",
+      "icelandic": "slétta",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3444,
+      "alternatives": [
+        "plan?",
+        "sléttur flötur"
+      ]
+    },
+    {
+      "english": "platform",
+      "icelandic": "flati",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43584,
+      "alternatives": []
+    },
+    {
+      "english": "play",
+      "icelandic": "viðureign",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66088,
+      "alternatives": []
+    },
+    {
+      "english": "player",
+      "icelandic": "leikmaður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62376,
+      "alternatives": [
+        "keppandi"
+      ]
+    },
+    {
+      "english": "plus",
+      "icelandic": "plús",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2696,
+      "alternatives": [
+        "jákvætt formerki",
+        "plúsmerki"
+      ]
+    },
+    {
+      "english": "polarization",
+      "icelandic": "skautun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3322,
+      "alternatives": [
+        "pólun"
+      ]
+    },
+    {
+      "english": "pond",
+      "icelandic": "tjörn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 45166,
+      "alternatives": []
+    },
+    {
+      "english": "positive",
+      "icelandic": "jákvæður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1713,
+      "alternatives": [
+        "plús-",
+        "viðlægur"
+      ]
+    },
+    {
+      "english": "pound",
+      "icelandic": "pund",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2718,
+      "alternatives": []
+    },
+    {
+      "english": "preceding",
+      "icelandic": "forgöngu-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67106,
+      "alternatives": []
+    },
+    {
+      "english": "precision",
+      "icelandic": "nákvæmni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2501,
+      "alternatives": []
+    },
+    {
+      "english": "prediction",
+      "icelandic": "forsögn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 821,
+      "alternatives": [
+        "spá"
+      ]
+    },
+    {
+      "english": "premise",
+      "icelandic": "forsenda",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 813,
+      "alternatives": []
+    },
+    {
+      "english": "principle",
+      "icelandic": "lögmál",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2267,
+      "alternatives": [
+        "regla"
+      ]
+    },
+    {
+      "english": "problem",
+      "icelandic": "dæmi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 482,
+      "alternatives": [
+        "vandi",
+        "verkefni",
+        "þraut"
+      ]
+    },
+    {
+      "english": "procedure",
+      "icelandic": "stefja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3641,
+      "alternatives": []
+    },
+    {
+      "english": "process",
+      "icelandic": "ferli",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 675,
+      "alternatives": [
+        "hvarf",
+        "hvörf"
+      ]
+    },
+    {
+      "english": "property",
+      "icelandic": "eiginleiki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59938,
+      "alternatives": []
+    },
+    {
+      "english": "proportion",
+      "icelandic": "hlutfallajafna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61392,
+      "alternatives": []
+    },
+    {
+      "english": "proportional to",
+      "icelandic": "í réttu hlutfalli við",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1601,
+      "alternatives": [
+        "í beinu hlutfalli við"
+      ]
+    },
+    {
+      "english": "propulsion",
+      "icelandic": "drif",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 469,
+      "alternatives": [
+        "framdrif"
+      ]
+    },
+    {
+      "english": "proton",
+      "icelandic": "róteind",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2941,
+      "alternatives": []
+    },
+    {
+      "english": "prove",
+      "icelandic": "sanna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3115,
+      "alternatives": []
+    },
+    {
+      "english": "pull",
+      "icelandic": "togkraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4015,
+      "alternatives": [
+        "aðdráttarkraftur"
+      ]
+    },
+    {
+      "english": "quantitative",
+      "icelandic": "megindlegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 69929,
+      "alternatives": []
+    },
+    {
+      "english": "quantity",
+      "icelandic": "stærð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3796,
+      "alternatives": []
+    },
+    {
+      "english": "quantum",
+      "icelandic": "skammtur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3309,
+      "alternatives": []
+    },
+    {
+      "english": "quantum theory",
+      "icelandic": "skammtakenning",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3296,
+      "alternatives": []
+    },
+    {
+      "english": "rate",
+      "icelandic": "tíðni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 70110,
+      "alternatives": [
+        "mælihlutfall"
+      ]
+    },
+    {
+      "english": "ratio",
+      "icelandic": "hlutfall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1357,
+      "alternatives": [
+        "hlutfallstala"
+      ]
+    },
+    {
+      "english": "reaction force",
+      "icelandic": "gagnkraftur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 912,
+      "alternatives": []
+    },
+    {
+      "english": "realization",
+      "icelandic": "leið slembiferlis",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 69879,
+      "alternatives": []
+    },
+    {
+      "english": "recoil",
+      "icelandic": "bakslag",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 212,
+      "alternatives": [
+        "afturkast"
+      ]
+    },
+    {
+      "english": "reference",
+      "icelandic": "viðmiðun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4323,
+      "alternatives": []
+    },
+    {
+      "english": "relation",
+      "icelandic": "vensl",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4301,
+      "alternatives": []
+    },
+    {
+      "english": "relativity",
+      "icelandic": "afstæði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 59,
+      "alternatives": []
+    },
+    {
+      "english": "relief",
+      "icelandic": "algildisflötur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59186,
+      "alternatives": []
+    },
+    {
+      "english": "representing",
+      "icelandic": "framsetjandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60625,
+      "alternatives": []
+    },
+    {
+      "english": "reproducible",
+      "icelandic": "samkvæmur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3059,
+      "alternatives": []
+    },
+    {
+      "english": "repulsion",
+      "icelandic": "fráhrinding",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 838,
+      "alternatives": [
+        "fráhrindingarkraftur"
+      ]
+    },
+    {
+      "english": "repulsive",
+      "icelandic": "fráhrindandi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 837,
+      "alternatives": [
+        "fráhrindingar-"
+      ]
+    },
+    {
+      "english": "research",
+      "icelandic": "rannsóknir",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2828,
+      "alternatives": []
+    },
+    {
+      "english": "resolving",
+      "icelandic": "úrlausn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65855,
+      "alternatives": []
+    },
+    {
+      "english": "response",
+      "icelandic": "svar,svörun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65215,
+      "alternatives": []
+    },
+    {
+      "english": "rest",
+      "icelandic": "kyrrstaða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1953,
+      "alternatives": []
+    },
+    {
+      "english": "result",
+      "icelandic": "niðurstaða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63151,
+      "alternatives": [
+        "útkoma"
+      ]
+    },
+    {
+      "english": "retain",
+      "icelandic": "geyma",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60904,
+      "alternatives": []
+    },
+    {
+      "english": "right triangle",
+      "icelandic": "rétthyrndur þríhyrningur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2896,
+      "alternatives": []
+    },
+    {
+      "english": "rigid",
+      "icelandic": "stjarfur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3681,
+      "alternatives": [
+        "stífur"
+      ]
+    },
+    {
+      "english": "rock",
+      "icelandic": "berg",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 234,
+      "alternatives": []
+    },
+    {
+      "english": "rocket",
+      "icelandic": "eldflaug",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 598,
+      "alternatives": []
+    },
+    {
+      "english": "rotation",
+      "icelandic": "snúningur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3501,
+      "alternatives": []
+    },
+    {
+      "english": "search",
+      "icelandic": "leit",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62380,
+      "alternatives": []
+    },
+    {
+      "english": "section",
+      "icelandic": "snið",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3478,
+      "alternatives": []
+    },
+    {
+      "english": "sensitivity",
+      "icelandic": "næmi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2578,
+      "alternatives": [
+        "næmni"
+      ]
+    },
+    {
+      "english": "set",
+      "icelandic": "mengi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2351,
+      "alternatives": []
+    },
+    {
+      "english": "shape",
+      "icelandic": "lögun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62628,
+      "alternatives": [
+        "gerð",
+        "mót",
+        "snið"
+      ]
+    },
+    {
+      "english": "shell",
+      "icelandic": "hvel",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1510,
+      "alternatives": [
+        "skel"
+      ]
+    },
+    {
+      "english": "shift",
+      "icelandic": "vik",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4345,
+      "alternatives": []
+    },
+    {
+      "english": "short",
+      "icelandic": "stuttur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65109,
+      "alternatives": [
+        "skammur"
+      ]
+    },
+    {
+      "english": "signal",
+      "icelandic": "merki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2356,
+      "alternatives": []
+    },
+    {
+      "english": "signature",
+      "icelandic": "formerkjatala",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60559,
+      "alternatives": []
+    },
+    {
+      "english": "significant",
+      "icelandic": "marktækur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2301,
+      "alternatives": []
+    },
+    {
+      "english": "similar",
+      "icelandic": "einslaga",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 583,
+      "alternatives": []
+    },
+    {
+      "english": "simple",
+      "icelandic": "einfaldur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59968,
+      "alternatives": []
+    },
+    {
+      "english": "simplify",
+      "icelandic": "einfalda",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59963,
+      "alternatives": []
+    },
+    {
+      "english": "simultaneous",
+      "icelandic": "samtímis",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3111,
+      "alternatives": [
+        "samtíma-"
+      ]
+    },
+    {
+      "english": "slide",
+      "icelandic": "skriða",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44932,
+      "alternatives": [
+        "skriðufall"
+      ]
+    },
+    {
+      "english": "slope",
+      "icelandic": "halli",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1132,
+      "alternatives": [
+        "hallatala"
+      ]
+    },
+    {
+      "english": "small",
+      "icelandic": "lítill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62510,
+      "alternatives": []
+    },
+    {
+      "english": "smaller",
+      "icelandic": "minni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62937,
+      "alternatives": [
+        "smærri"
+      ]
+    },
+    {
+      "english": "solve",
+      "icelandic": "leysa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62393,
+      "alternatives": []
+    },
+    {
+      "english": "solving",
+      "icelandic": "lausn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62290,
+      "alternatives": [
+        "úrlausn"
+      ]
+    },
+    {
+      "english": "source",
+      "icelandic": "uppspretta",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4168,
+      "alternatives": [
+        "gjafi",
+        "lind"
+      ]
+    },
+    {
+      "english": "southern hemisphere",
+      "icelandic": "syðra hálfhvel",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65252,
+      "alternatives": [
+        "suðurhvel"
+      ]
+    },
+    {
+      "english": "space suit",
+      "icelandic": "geimbúningur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 9435,
+      "alternatives": []
+    },
+    {
+      "english": "spacecraft",
+      "icelandic": "geimfar",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 9439,
+      "alternatives": [
+        "geimflaug"
+      ]
+    },
+    {
+      "english": "specific",
+      "icelandic": "eðlis-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 488,
+      "alternatives": [
+        "eðlislægur"
+      ]
+    },
+    {
+      "english": "spider",
+      "icelandic": "spegilfesting",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 68498,
+      "alternatives": [
+        "köngur"
+      ]
+    },
+    {
+      "english": "spin",
+      "icelandic": "spuni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3603,
+      "alternatives": []
+    },
+    {
+      "english": "spring",
+      "icelandic": "fjöður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 744,
+      "alternatives": [
+        "gormur"
+      ]
+    },
+    {
+      "english": "stability",
+      "icelandic": "stöðugleiki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3808,
+      "alternatives": []
+    },
+    {
+      "english": "stable",
+      "icelandic": "stöðugur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3810,
+      "alternatives": [
+        "staðfastur",
+        "traustur"
+      ]
+    },
+    {
+      "english": "standard",
+      "icelandic": "staðall",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3607,
+      "alternatives": [
+        "mælistaðall"
+      ]
+    },
+    {
+      "english": "standard distance",
+      "icelandic": "staðalfjarlægð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 44980,
+      "alternatives": []
+    },
+    {
+      "english": "star",
+      "icelandic": "stjarna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3682,
+      "alternatives": [
+        "sýnileg stjarna"
+      ]
+    },
+    {
+      "english": "statement",
+      "icelandic": "yrðing",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4442,
+      "alternatives": [
+        "fullyrðing",
+        "staðhæfing"
+      ]
+    },
+    {
+      "english": "static electricity",
+      "icelandic": "stöðurafmagn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3814,
+      "alternatives": []
+    },
+    {
+      "english": "stationary",
+      "icelandic": "sístæður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3235,
+      "alternatives": [
+        "sístöðu-",
+        "stæður",
+        "stöðugur"
+      ]
+    },
+    {
+      "english": "stop",
+      "icelandic": "ljósop",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67798,
+      "alternatives": [
+        "gapaldur"
+      ]
+    },
+    {
+      "english": "straight line",
+      "icelandic": "bein lína",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 223,
+      "alternatives": [
+        "lína"
+      ]
+    },
+    {
+      "english": "strategy",
+      "icelandic": "leikáætlun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62375,
+      "alternatives": [
+        "áætlun"
+      ]
+    },
+    {
+      "english": "strength",
+      "icelandic": "styrkur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65113,
+      "alternatives": [
+        "styrkleiki"
+      ]
+    },
+    {
+      "english": "string",
+      "icelandic": "strengur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3751,
+      "alternatives": []
+    },
+    {
+      "english": "strong",
+      "icelandic": "sterkur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64967,
+      "alternatives": []
+    },
+    {
+      "english": "strongly",
+      "icelandic": "sterklega",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64964,
+      "alternatives": []
+    },
+    {
+      "english": "structure",
+      "icelandic": "mynstur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63024,
+      "alternatives": []
+    },
+    {
+      "english": "submicroscopic",
+      "icelandic": "örsær",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4615,
+      "alternatives": []
+    },
+    {
+      "english": "subscript",
+      "icelandic": "lágvísir",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2018,
+      "alternatives": []
+    },
+    {
+      "english": "substance",
+      "icelandic": "efni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 527,
+      "alternatives": []
+    },
+    {
+      "english": "substitute",
+      "icelandic": "setja inn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64357,
+      "alternatives": []
+    },
+    {
+      "english": "substructure",
+      "icelandic": "hlutmynstur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61427,
+      "alternatives": []
+    },
+    {
+      "english": "sufficient",
+      "icelandic": "nægjanlegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 63271,
+      "alternatives": [
+        "fullnægjandi",
+        "tæmandi"
+      ]
+    },
+    {
+      "english": "sum",
+      "icelandic": "summa",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3834,
+      "alternatives": [
+        "samtala"
+      ]
+    },
+    {
+      "english": "supernova",
+      "icelandic": "sprengistjarna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3593,
+      "alternatives": []
+    },
+    {
+      "english": "supply",
+      "icelandic": "framboð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "earth-science",
+      "position": 4,
+      "conceptId": 43652,
+      "alternatives": []
+    },
+    {
+      "english": "symbol",
+      "icelandic": "tákn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3940,
+      "alternatives": [
+        "merki"
+      ]
+    },
+    {
+      "english": "table",
+      "icelandic": "tafla",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65268,
+      "alternatives": []
+    },
+    {
+      "english": "telescope",
+      "icelandic": "sjónauki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3271,
+      "alternatives": [
+        "kíkir"
+      ]
+    },
+    {
+      "english": "temperature",
+      "icelandic": "hiti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1276,
+      "alternatives": [
+        "hitastig"
+      ]
+    },
+    {
+      "english": "tendency",
+      "icelandic": "framvinda",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60630,
+      "alternatives": [
+        "tilhneiging"
+      ]
+    },
+    {
+      "english": "test",
+      "icelandic": "prófun",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2714,
+      "alternatives": [
+        "tilraun"
+      ]
+    },
+    {
+      "english": "theorem",
+      "icelandic": "setning",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 3191,
+      "alternatives": []
+    },
+    {
+      "english": "theoretical",
+      "icelandic": "kennilegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1771,
+      "alternatives": []
+    },
+    {
+      "english": "throw",
+      "icelandic": "kast",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 62023,
+      "alternatives": []
+    },
+    {
+      "english": "time",
+      "icelandic": "tími",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4010,
+      "alternatives": []
+    },
+    {
+      "english": "total",
+      "icelandic": "heildarsumma",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61190,
+      "alternatives": [
+        "lokasumma"
+      ]
+    },
+    {
+      "english": "train",
+      "icelandic": "loftsteinsslóð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "astronomy",
+      "position": 2,
+      "conceptId": 67830,
+      "alternatives": []
+    },
+    {
+      "english": "trajectory",
+      "icelandic": "ferill",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 668,
+      "alternatives": [
+        "braut"
+      ]
+    },
+    {
+      "english": "treatment",
+      "icelandic": "tilraunaliður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 70106,
+      "alternatives": [
+        "liður",
+        "meðferð"
+      ]
+    },
+    {
+      "english": "triangle",
+      "icelandic": "þríhyrningur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4508,
+      "alternatives": []
+    },
+    {
+      "english": "trigonometric",
+      "icelandic": "horna-",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61511,
+      "alternatives": [
+        "hornafræði-"
+      ]
+    },
+    {
+      "english": "trigonometry",
+      "icelandic": "hornafræði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1411,
+      "alternatives": []
+    },
+    {
+      "english": "true",
+      "icelandic": "sannur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64336,
+      "alternatives": []
+    },
+    {
+      "english": "tube",
+      "icelandic": "lampi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1971,
+      "alternatives": [
+        "útvarpslampi"
+      ]
+    },
+    {
+      "english": "two-dimensional",
+      "icelandic": "tvívíður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4107,
+      "alternatives": []
+    },
+    {
+      "english": "type",
+      "icelandic": "gerð",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 60893,
+      "alternatives": [
+        "tag"
+      ]
+    },
+    {
+      "english": "underlying",
+      "icelandic": "undirskipaður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65785,
+      "alternatives": []
+    },
+    {
+      "english": "unique",
+      "icelandic": "einræður",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 577,
+      "alternatives": [
+        "ótvíræður"
+      ]
+    },
+    {
+      "english": "unit",
+      "icelandic": "eining",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 569,
+      "alternatives": [
+        "mælieining"
+      ]
+    },
+    {
+      "english": "universe",
+      "icelandic": "alheimur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 86,
+      "alternatives": []
+    },
+    {
+      "english": "usual",
+      "icelandic": "venjulegur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 66035,
+      "alternatives": []
+    },
+    {
+      "english": "vacuum",
+      "icelandic": "lofttæmi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 2220,
+      "alternatives": [
+        "tóm",
+        "tómarúm"
+      ]
+    },
+    {
+      "english": "valid",
+      "icelandic": "réttmætur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 69989,
+      "alternatives": [
+        "gildur"
+      ]
+    },
+    {
+      "english": "validity",
+      "icelandic": "sannleiki",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 64334,
+      "alternatives": []
+    },
+    {
+      "english": "value",
+      "icelandic": "gildi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1025,
+      "alternatives": []
+    },
+    {
+      "english": "vary",
+      "icelandic": "breytast",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 59600,
+      "alternatives": []
+    },
+    {
+      "english": "vector",
+      "icelandic": "vigur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4335,
+      "alternatives": [
+        "vektor?"
+      ]
+    },
+    {
+      "english": "velocity",
+      "icelandic": "hraði",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 1438,
+      "alternatives": [
+        "hraðavigur"
+      ]
+    },
+    {
+      "english": "violation",
+      "icelandic": "brot",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 349,
+      "alternatives": [
+        "rof"
+      ]
+    },
+    {
+      "english": "water",
+      "icelandic": "vatn",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4265,
+      "alternatives": []
+    },
+    {
+      "english": "wave",
+      "icelandic": "bylgja",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 395,
+      "alternatives": [
+        "alda"
+      ]
+    },
+    {
+      "english": "weak",
+      "icelandic": "veikur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65985,
+      "alternatives": []
+    },
+    {
+      "english": "web",
+      "icelandic": "vefur",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 65974,
+      "alternatives": []
+    },
+    {
+      "english": "whole",
+      "icelandic": "heild",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "mathematics",
+      "position": 3,
+      "conceptId": 61177,
+      "alternatives": []
+    },
+    {
+      "english": "work",
+      "icelandic": "vinna",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 4350,
+      "alternatives": []
+    },
+    {
+      "english": "year",
+      "icelandic": "ár",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 1,
+      "conceptId": 178,
+      "alternatives": []
+    }
+  ]
+}
