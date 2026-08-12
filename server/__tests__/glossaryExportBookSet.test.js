@@ -183,7 +183,11 @@ describe('B3 changes no book outcome (spec D6)', () => {
       'efnafraedi-2e': 'refused-shrink',
       'liffraedi-2e': 'refused-shrink',
       'edlisfraedi-2e': 'refused-shrink',
-      'lifraen-efnafraedi': 'refused-producer',
+      // ⚠️ UPDATED 2026-08-12: organic was adopted too, so ALL FOUR books are
+      // now `export-terminology-resolved` and every one of them clears the
+      // producer gate and stops at the shrink gate instead. The uniformity is
+      // the point — there is no longer a book on the old producer.
+      'lifraen-efnafraedi': 'refused-shrink',
     };
     for (const [slug, expected] of Object.entries(outcomes)) {
       expect(`${slug}=${outcomeOf(slug)}`).toBe(`${slug}=${expected}`);
