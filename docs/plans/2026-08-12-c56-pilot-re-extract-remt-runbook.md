@@ -60,7 +60,24 @@ grep -rl "manualCorrections" books/*/02-mt-output --include='*-provenance.json'
 
 ⚠️ **The generalisable shape, from the memory:** *"a convention adopted once, never enforced, and later trusted as an index. The signal looks authoritative precisely because it exists at all."*
 
-## Gate B — the lock inventory · **NEW**
+## Gate B — the lock inventory · ✅ **EXECUTED 2026-08-12**
+
+> ✅ **DONE. The eight locks split cleanly by reason, and lock coverage is COMPLETE.**
+>
+> | reason | modules | what it protects |
+> |---|---|---|
+> | `backfill-already-edited` | `m68663` `m68664` `m68699` `m68700` | a **faithful file** — saved in git *and* the DB |
+> | `backfill-db-segment-edits` | `m68667` `m68674` · ch05 `chapter-metadata` · `m66443` | **DB `segment_edits` rows only** |
+>
+> **B1 answered.** The four faithful-less locks protect **18 rows across 18 segments** (`m68667` 4 · `m68674` 1 · ch05 `chapter-metadata` 1 · `m66443` 12), measured read-only on prod. ⚠️ **These exist in EXACTLY ONE PLACE — prod's gitignored `sessions.db` — so they are MORE fragile than the four faithful ones, not less.** The intuition that a module without a faithful file has less at stake is backwards here.
+>
+> ✅ **Lock coverage is complete — a positive measurement that could have gone the other way.** **Exactly 8 modules have `segment_edits`, and all 8 are locked.** Only one has been edited since the 2026-07-21 backfill — `m68667`, last edited **2026-08-06** — and it was already locked. **No module carries editorial work without protection.** Total editorial state in the DB: **163 rows across 8 modules**.
+>
+> ✅ **B2 answered: no pilot chapter contains a lock.** The eight sit in `efnafraedi-2e` ch01/ch03/ch05 and `liffraedi-2e` ch03; the pilot is `efnafraedi-2e` ch20 + `edlisfraedi-2e` ch04.
+>
+> ⚠️ **The residual risk is STRANDING BY ID CHANGE, not overwriting.** A lock stops the MT file being clobbered, but a re-extract **changes segment boundaries**, so `segment_edits` rows can reference ids that no longer exist. That is what the predecessor runbook's **Appendix A (re-attach)** exists for — it becomes load-bearing the moment any of these eight is unlocked.
+
+## Gate B (method, as originally written) — the lock inventory
 
 **8 `.locked` files exist, not 4** — measured 2026-08-12. All carry `reason: "backfill-db-segment-edits"`, locked 2026-07-21:
 
