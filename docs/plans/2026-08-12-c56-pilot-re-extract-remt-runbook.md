@@ -441,7 +441,23 @@ redirect obligation** that must be priced into the full-run decision alongside t
 ### M5, and what did NOT change
 
 - **Chemistry ch20: identical to its pre-run baseline** — the same single `shape-drift em 93→94`. **No worse** ✅
-- **Physics ch04: 0 findings, check 3 still inert** (no baseline file). ▶ **Capture physics's baseline NOW** — the render is clean, which is the precondition the tool's docstring requires.
+- 🔴 **CORRECTED 2026-08-12 — "physics ch04: 0 findings, 3 of 4 checks ran" WAS WRONG IN BOTH HALVES. It ran ZERO checks and read ZERO files** (§C60: the tool built an unpadded `chapters/4`). ▶ **The real result, measured after the fix with a like-for-like pre/post comparison, is that the pilot IMPROVED physics fidelity:**
+
+| | pre-pilot | post-pilot |
+|---|---|---|
+| findings | **3** | **2** |
+| raw CNXML leak | `<link document=` × **11** | `<emphasis` × **1** |
+| math dropped | 549→536, **13** | 554→546, **8** |
+| image dropped | 56→54, **2** | **0** ✅ |
+
+  **11 `<link document=` leaks and 2 image drops eliminated; math drops down from 13 to 8.** One new
+  leak appeared — a raw self-closing `<emphasis effect="bold"/>` — logged as **§C61**, a §C58
+  follow-on in the *renderer*.
+- 🔴 **THE PHYSICS BASELINE IS DELIBERATELY NOT CAPTURED.** The tool's docstring forbids baselining a
+  render known to contain a bug (*"or it blesses the bug"*), and §C61 is exactly that. ▶ **Fix §C61,
+  re-render, then capture.** *(An empty `chapters: {}` file was written and then removed during
+  diagnosis — an empty baseline is **worse than none**, because it looks captured while leaving the
+  drift check inert.)*
 - **Inject warnings, both PRE-EXISTING and neither caused by this run** *(checked, not assumed)*: physics has **15 unmapped math labels** across 7 modules (`net`, `app`, `tot`, `floor`, …) — it has **no glossary at all**; chemistry reports **76 exact untranslated-EN residues, all in `m68662`**, which is **not a pilot module** — no ch20 module appears in the residue report at all.
 - **`attrMismatches` (M4's real check): none reported** on either book — the `{{term}}` → `[[term:…|id]]` attachment, 84% of the payload, came through clean.
 
