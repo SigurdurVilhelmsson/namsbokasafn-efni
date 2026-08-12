@@ -23,7 +23,14 @@ The 2026-07-29 runbook is sound and its detail is hard-won. It is **not sufficie
 
 ---
 
-## Gate A — the hand-repair triage · **NEW, HARD GATE, blocks everything**
+## Gate A — the hand-repair triage · ✅ **EXECUTED 2026-08-12**
+
+> ✅ **DONE — evidence: [`docs/audit/2026-08-12-c56-gate-a-hand-repair-triage.md`](../audit/2026-08-12-c56-gate-a-hand-repair-triage.md), frozen.**
+> **Result: 7 hand-repair commits (~21 module-file touches); 2 reader-visible, one of which was unknown (→ §C57).**
+> ✅ **A3 SATISFIED FOR THE PILOT — no hand repair touches `efnafraedi-2e` ch20 or `edlisfraedi-2e` at all.** The pilot needs no re-application work; the **full run** does.
+> ⚠️ Census corrected to **31 unique commits, not 43** (12 touch more than one book), and the provenance-based discriminator is **invalid before 2026-06-30**. The gate's original text is kept below as the method record.
+
+## Gate A (method, as originally written) — the hand-repair triage
 
 **The problem, measured 2026-08-12.** `books/*/02-mt-output/` is marked READ-ONLY in CLAUDE.md, **yet it holds hand corrections that exist in no faithful file and under no `.locked` marker.** A re-MT reverts them silently.
 
