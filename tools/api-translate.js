@@ -320,6 +320,126 @@ export const BRACKET_MARKER_TYPES = [
 ];
 
 /**
+ * Every bracket type our own pipeline can legitimately emit — the set that
+ * `unwrapInventedMarkers` must never touch.
+ *
+ * ⚠️ Deliberately WIDER than `BRACKET_MARKER_TYPES`, which covers only the types
+ * `bracketMarkerDelta` tallies. The extras are real markers owned by other
+ * files, and a set missing one of them EATS A REAL MARKER:
+ *   - `MATH` / `TABLE` / `SPACE` / `BR` — atomic placeholders; authority is the
+ *     editor client `server/public/js/marker-highlight.js`, and `TABLE` is
+ *     emitted by `cnxml-extract.js` and hard-gated by `cnxml-inject.js`.
+ *   - `math` (lowercase) — the glossary-term MathML placeholder, `tools/lib/glossary-term.js`.
+ *   - `EQ` — the legacy markdown-pipeline placeholder `validate-chapter.js` gates on.
+ * Widening this set is safe (an invented marker goes unrepaired); narrowing it
+ * destroys content. `api-translate-invented-markers.test.js` guards the drift.
+ */
+export const KNOWN_BRACKET_TYPES = new Set([
+  ...BRACKET_MARKER_TYPES,
+  'MATH',
+  'TABLE',
+  'SPACE',
+  'BR',
+  'math',
+  'EQ',
+]);
+
+/**
+ * Remove bracket markers the MT INVENTED around glossary target words.
+ *
+ * The Málstaður model fuses the structured `glossaries` API field with the
+ * bracket syntax it sees in the text and emits `[[<glossary-target>|<inflected
+ * form>]]` — lemma as the "type", the correct Icelandic as the payload — or the
+ * bare `[[<glossary-target>]]`. The English carries no marker at that position,
+ * so **nothing real is lost by unwrapping**: the payload is the translation.
+ * Register §C67 class 3.
+ *
+ * A run is only unwrapped when its type is absent from `KNOWN_BRACKET_TYPES`,
+ * which is the entire safety argument — see that constant. The type token must
+ * also be whitespace-free (prose in brackets is not a marker) and must not look
+ * like a closing token (`[[/x]]`).
+ *
+ * @param {string} text
+ * @returns {{ text: string, unwrapped: Array<{type: string, inner: string}> }}
+ *          `unwrapped` makes the count reportable rather than silent.
+ */
+export function unwrapInventedMarkers(text) {
+  const s = String(text ?? '');
+  const unwrapped = [];
+  let out = '';
+  let i = 0;
+  while (i < s.length) {
+    if (!s.startsWith('[[', i)) {
+      out += s[i];
+      i++;
+      continue;
+    }
+    // Read the type token: everything up to the first `:`, `|` or closing `]]`.
+    let j = i + 2;
+    let type = '';
+    let sep = null;
+    while (j < s.length) {
+      if (s[j] === ':' || s[j] === '|') {
+        sep = s[j];
+        break;
+      }
+      if (s.startsWith(']]', j)) {
+        sep = ']]';
+        break;
+      }
+      // A `[` or `]` inside the token means this `[[` is not the opener — the
+      // corpus carries literal square brackets abutting real markers
+      // (`[[[i:v]], m/s]`, chemistry unit notation). Whitespace rules out prose.
+      if (s[j] === '[' || s[j] === ']' || s[j] === '\n' || /\s/.test(s[j])) break;
+      type += s[j];
+      j++;
+    }
+    const bare = type.replace(/^\//, '');
+    if (sep === null || type === '' || KNOWN_BRACKET_TYPES.has(bare) || type.startsWith('/')) {
+      // Real marker, or not an opener at all. Advance ONE character so the scan
+      // re-anchors on an inner `[[` — skipping two would step over the real
+      // opener in `[[[i:v]]` and leave it unexamined.
+      out += s[i];
+      i += 1;
+      continue;
+    }
+
+    if (sep === ']]') {
+      // Bare invented token: the type name IS the intended word.
+      unwrapped.push({ type, inner: type });
+      out += type;
+      i = j + 2;
+      continue;
+    }
+
+    // Typed invented marker: depth-scan to the matching `]]` so a payload that
+    // itself contains markers (`[[sameind|C[[sub:4]]H[[sub:10]]]]`) is not truncated.
+    let k = j + 1;
+    let depth = 1;
+    while (k < s.length && depth > 0) {
+      if (s.startsWith('[[', k)) {
+        depth++;
+        k += 2;
+      } else if (s.startsWith(']]', k)) {
+        depth--;
+        if (depth === 0) break;
+        k += 2;
+      } else k++;
+    }
+    if (depth !== 0) {
+      out += s[i];
+      i += 1;
+      continue; // unterminated — leave the text alone
+    }
+    const inner = s.slice(j + 1, k); // split at the FIRST separator; the tail is opaque
+    unwrapped.push({ type, inner });
+    out += inner;
+    i = k + 2;
+  }
+  return { text: out, unwrapped };
+}
+
+/**
  * Tally each inline bracket marker by its opening token `[[<type>:`. Counting the
  * type-prefixed opener is robust to nesting (`[[i:[[sub:x]]]]`) and to the
  * `|id`/`|class`/`|url` payloads, and never double-counts a closing delimiter.
@@ -900,6 +1020,9 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
   assertNoControlChars(output, chunkLabel);
   output = normalizeUnicode(output);
   output = repairSegTags(chunkText, output);
+  let unwrap = unwrapInventedMarkers(output);
+  output = unwrap.text;
+  let unwrapped = unwrap.unwrapped;
   let reattach = reattachIds(output, segments);
   output = reattach.text;
   let mismatches = reattach.mismatches;
@@ -917,6 +1040,12 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
       assertNoControlChars(output, chunkLabel);
       output = normalizeUnicode(output);
       output = repairSegTags(chunkText, output);
+      // The retry sends no glossary, so the §C67 hallucination is unlikely here
+      // — but "unlikely" is not "impossible", and a second path that silently
+      // skips a repair is exactly how a fix half-ships.
+      unwrap = unwrapInventedMarkers(output);
+      output = unwrap.text;
+      unwrapped = unwrap.unwrapped;
       reattach = reattachIds(output, segments);
       output = reattach.text;
       mismatches = reattach.mismatches;
@@ -932,7 +1061,7 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
     }
   }
 
-  return { text: output, usage: result.usage, mismatches };
+  return { text: output, usage: result.usage, mismatches, unwrapped };
 }
 
 /** Derive a module id (mNNNNN) from an mt-output output path. */
@@ -967,6 +1096,7 @@ export async function translateModule(
   let totalUsage = 0;
   const translatedChunks = [];
   const mismatches = [];
+  const unwrapped = [];
 
   for (let i = 0; i < chunks.length; i++) {
     const chunkLabel = needsSplitting ? `chunk ${i + 1}/${chunks.length}` : moduleId;
@@ -979,6 +1109,7 @@ export async function translateModule(
     translatedChunks.push(result.text);
     totalUsage += result.usage || 0;
     if (result.mismatches && result.mismatches.length) mismatches.push(...result.mismatches);
+    if (result.unwrapped && result.unwrapped.length) unwrapped.push(...result.unwrapped);
   }
 
   // Reassemble chunks
@@ -1048,7 +1179,24 @@ export async function translateModule(
   const bracketNote = formatBracketDelta(moduleId, bracketDelta);
   if (bracketNote) console.error(`  Note: ${bracketNote}`);
 
-  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches, bracketDelta };
+  // §C67 class 3: markers the MT invented around glossary target words and we
+  // removed. Reported, never silent — the rate is the input to deciding whether
+  // a glossary is safe to send at its current size.
+  if (unwrapped.length) {
+    const types = [...new Set(unwrapped.map((u) => u.type))].join(', ');
+    console.error(
+      `  Note: ${moduleId}: removed ${unwrapped.length} invented glossary marker(s) — ${types}`
+    );
+  }
+
+  return {
+    chars: input.length,
+    usage: totalUsage,
+    markersNormalized,
+    mismatches,
+    bracketDelta,
+    unwrapped,
+  };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
