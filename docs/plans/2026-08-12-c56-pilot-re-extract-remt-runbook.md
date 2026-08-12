@@ -158,6 +158,39 @@ The often-quoted "only 4" is **locked *and* faithful-reviewed** — `03-faithful
 >   marker-survival evidence is per-endpoint and rots when the model behind it changes; the last
 >   `/v1/translate` run was **2026-07-13**, so August survival at this scale is genuinely unmeasured.
 
+## 🧬 PILOT EXTENSION — `liffraedi-2e` ch05, added 2026-08-12 on [LEAD] direction
+
+**Why biology, and why ch05.** *"Biology is next in line for a complete MT, not physics"* — [LEAD].
+**ch05 is the only viable extracted chapter, and it is also statistically representative.**
+
+- **ch03 is disqualified on three counts**: it holds the only biology `.locked` module (`m66443`, 12 `segment_edits` rows), the reader-visible hand repair `m66441` (→ the live `3-3-lipid.html`), *and* the human DOCX reference translation.
+- **Only 2 of biology's 48 source chapters are extracted at all** (ch03, ch05), so the choice was between those two.
+- ✅ **ch05 is nonetheless representative**: **5 modules against a book median of 5**, **119 KB against a median of 121 KB**.
+- ✅ **Gates A and B clear.** No `.locked` module; **0 `segment_edits`** (positive control: biology's 12 rows are *all* in ch03); **no hand repairs** — the one commit the Gate A filter flags is `70676f88`, which **is** the provenance backfill Gate A already identified as invalidating that discriminator before 2026-06-30.
+- **Gate D is deliberately reduced for this run, and here is the reasoning:** it touches **no DB state whatsoever** and stays on dev, unpushed. The 2026-08-12 13:32 off-box backup and `VACUUM INTO` snapshot stand as the restore point. **Stopping the prod editorial server would buy nothing** — this is the scoping question the Gate D section raises, answered narrowly for a chapter with no editorial state rather than in general.
+
+### Pre-run baseline (v3 instrument) — a much cleaner starting point than physics
+
+| | value |
+|---|---|
+| modules | 6 |
+| legacy `{{…}}` | **84 EN / 84 IS — 100% `{{term}}`**, no `{{i}}`/`{{b}}`/`{{fn}}` |
+| bracket markers | **83, identical EN and IS** — 35 `[[xref:` · 35 `[[sup:` · 5 `[[i:` · 4 `[[link:` · 3 `[[MEDIA:` · 1 `[[b:` |
+| malformed / raw XML / `++` | 0 / 0 / 0 |
+| `bracketMarkerDelta` | **0 of 6 non-zero** |
+| vintage | **all six modules same-date (2026-03-23)** — no vintage confound |
+| self-closing `<emphasis/>` in source | **0** — no §C58/§C61 exposure |
+| published pages | 9 (**5 section** + 4 compiled) |
+
+### 🔒 PRE-REGISTERED, before the spend
+
+1. **`bracketMarkerDelta` is `{}` for all 6 modules.** This is a genuine test: biology is a **third book**, and it exercises `[[xref:]]` and `[[sup:]]` at 35 each — markers the other two pilot chapters barely covered.
+2. **Legacy `{{term}}` goes 84 → 0 on both sides.**
+3. 🔴 **THE MATH CHECK IS VACUOUS HERE AND MUST NOT BE REPORTED AS A PASS — biology ch05 contains ZERO equations.** A "MATH matched 0/0" result is a check with no input, not evidence. Say so explicitly.
+4. **Rename exposure is the 5 section pages.** Cross-book rates so far: physics **4 of 9**, chemistry **1 of 5**. Biology is the third data point, and the three together are what the C9 obligation should be sized from — **not the 35% figure from the first two alone.**
+
+⚠️ **Biology sends NO glossary terms** (2,262 entries, all `needs_review` → zero approved → loads as nothing, → §C62). **That is deliberate for this run: it is the control against which a post-Íðorðabankinn re-MT is measured.**
+
 ## Gate C (criteria, revised 2026-08-12 for the LEAD amendment) — **PRE-MT is free and loops; POST-MT costs money and runs once**
 
 **The split is the point.** Everything in the first table is re-checkable at zero cost, so it is a
