@@ -210,7 +210,15 @@ Ordered by what blocks what. The battery spec owns the detail.
 6. **The driver.**
 7. **Per-module wrappers** for the four tools that lack `--module`. ⚠️ `parseArgs` **silently
    drops unknown flags**, so passing `--module` to them today is a no-op that runs the whole book.
-8. **Baseline `orverufraedi`'s 14 dropped lists**, or the shakedown halts on module 1.
+8. ~~**Baseline `orverufraedi`'s 14 dropped lists**~~ — **RESOLVED 2026-08-13: there is nothing to
+   fix and nothing to baseline.** The `processExercise` MC-option fix **already shipped**
+   (`379926d3`, `orderedExerciseBlocks`/`emitExerciseSection` live in `cnxml-extract.js:1351,1389`).
+   The three failing modules were last extracted **2026-03-25**, months before it — micro's
+   `02-for-mt` is simply **stale pre-fix output**. **Measured:** re-extracting `m58781` alone with
+   today's extractor took the book from *14 dropped lists / 3 modules* → *10 / 2*, and grew its
+   segment file 26,277 → 27,488 chars (the recovered options). The natural control is inside the
+   same book — micro's `m58802`, re-extracted 2026-08-12, **passes**. ▶ **The loop's own step 2
+   recovers this; it is not a prerequisite.** *(The measurement was reverted; the tree is clean.)*
 9. **Pre-flight**: `.locked` check, `git log` on `02-mt-output`, expected-input assertion,
    mandatory `--force`, and `--force --dry-run` for the estimate — a bare `--dry-run` reports
    `~0 ISK` once output exists.
@@ -225,11 +233,20 @@ Ordered by what blocks what. The battery spec owns the detail.
   already in the record — so the remedy is candidate **promotion**, not deletion. Its own item.
 - **Anything outside §C80's scope.** Organic's 320-module gap stays dropped.
 
-## 10. Open questions for the [LEAD]
+## 10. [LEAD] rulings — all three resolved 2026-08-13
 
-1. **The §C69 comparability call** (prerequisite 4) — making the marker delta stricter than the
-   pilot means the full run is not directly comparable to the pilot's headline. Accept?
-2. **`orverufraedi`'s 14 dropped lists** — baseline them and proceed, or fix the extraction
-   defect first?
-3. **The ~1-in-10 sample cadence** — per book, or per chapter? Per chapter gives more even
-   coverage of a long book; per book is fewer interruptions.
+1. ✅ **The §C69 comparability call is ACCEPTED.** The bracket-marker delta is widened to all
+   types, computed per segment, and made gating. **The full run is therefore deliberately
+   stricter than the pilot, and its marker results are NOT directly comparable to the pilot's
+   headline.** Say so wherever the two are put side by side.
+2. ✅ **Fix the extraction defect rather than baseline it — and it is already fixed.** See
+   prerequisite 8: the code fix shipped 2026-07-16; micro's three failing modules are stale
+   pre-fix *output*. Re-extraction recovers them, which the loop does anyway. **This removes a
+   prerequisite instead of adding one.**
+3. ✅ **Sample cadence is PER CHAPTER** — the ~1-in-10 domain read is drawn per chapter, not per
+   book, so a long book gets even coverage rather than a front-loaded sample.
+
+**Consequence of ① + ②, worth stating because it is not obvious:** both are extraction-side, so
+they land in the **same** fingerprint change as §C81. Batch them into **one** re-extract per book
+and there is exactly **one** fingerprint transition before the run starts — rather than three,
+each of which would quarantine everything cleared before it.
