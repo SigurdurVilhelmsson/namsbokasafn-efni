@@ -1,0 +1,146 @@
+{
+  "generatedAt": "2026-08-15T18:10:38Z",
+  "task": "§C81 Task 9 — verify alt extraction against the in-scope corpus; reconcile the 422-count discrepancy flagged by Task 4 (progress.md line 107) between the design spec's full-corpus census (3,312) and Task 4's corpus sweep (2,890)",
+  "scope": {
+    "inScope": [
+      "efnafraedi-2e — FULL (all 149 source modules)",
+      "lifraen-efnafraedi — PREVIEW ONLY (17 of 342 source modules — those with extracted segments already present in 02-for-mt/)"
+    ],
+    "outOfScope": "lifraen-efnafraedi's other ~325 source modules. Their numbers are reported below ONLY to reconcile the full-corpus (491-module) discrepancy Task 4 flagged; they are not part of this book's in-scope count."
+  },
+  "method": "Counted by PARSING with @xmldom/xmldom — never by regex over raw XML, per this repo's standing rule. Two independent counting units are reported for every number, and must not be conflated:",
+  "countingUnits": {
+    "rawMediaAltCensus": "the number of <media> elements (any nesting depth) carrying a non-empty `alt` (mediaAttrs.alt || the child <image>/<iframe>'s alt), found by parsing each module's <content> with @xmldom/xmldom and reading getAttribute('alt'). This is the design spec's own census method (docs/superpowers/specs/2026-08-15-figure-alt-into-pipeline-design.md §1) and is a physical count of source material — it does not know or care what the extractor currently does with each element.",
+    "emittedAltSegments": "the number of 'alt'-typed segments actually produced by tools/cnxml-extract.js's extractSegments(), called in-memory on this branch (feat/c81-figure-alt) — no CLI run, per the global constraint. This is what the pipeline currently outputs."
+  },
+  "books": {
+    "efnafraedi-2e": {
+      "scope": "full (149 of 149 source modules)",
+      "modules": 149,
+      "rawMediaAltCensus": {
+        "total": 1149,
+        "byPosition": { "figure": 627, "para-inline": 214, "standalone": 308 },
+        "matchesDesignSpecCensus": true,
+        "note": "Exact match to the design spec's chemistry row (§1: 627/214/308, sum 1149) and to Task 3's independent DOM-based reproduction of the same figures (task-3-report.md, Finding 2)."
+      },
+      "emittedAltSegments": {
+        "total": 956,
+        "byPosition": { "figure": 625, "para-inline": 234, "standalone": 97 },
+        "note": "byPosition here is attributed from the extractor's OWN structure object (structure.inlineMedia[] = para-inline; a structure.content figure node's media = figure; a structure.content top-level media node = standalone) — a different classification method than the raw census's ancestor-chain walk, so most of the cross-bucket shift versus the raw breakdown (e.g. para-inline 234 vs raw 214) is a labeling artifact, not a count error. Part of the para-inline excess is NOT an artifact, though: 5 of those para-inline segments are the genuine double-emission documented in otherResidualEffects below (a real fingerprint, not classification noise). The TOTAL (956) is exact and unambiguous either way."
+      },
+      "gap": 193,
+      "gapAsPercentOfRawCensus": "16.8%",
+      "structurallyUnreachableInCurrentCode": {
+        "total": 197,
+        "breakdown": {
+          "media inside a <table><entry> cell": 29,
+          "bare <media> (no <figure> wrapper) directly in <example>": 114,
+          "bare <media> directly in <problem>": 40,
+          "bare <media> directly in <solution>": 13,
+          "bare <media> directly in <note>": 1
+        },
+        "mechanism": "Pre-existing gaps in tools/cnxml-extract.js, orthogonal to §C81 and predating this branch — the WHOLE <media> element (image + alt), not just the alt, has never been visible to the extracted structure at these four sites. processTable() calls extractInlineText(entry.content, mathMap, counters) with only 3 args, never threading inlineMediaMap, so the inline-media branch (gated `if (inlineMediaMap)`) never fires and a table-cell <media> is stripped as plain text with zero trace. processExample() and processNote() only walk <para>/<list>/<equation>/(<note>) children — a bare <media> sibling (not wrapped in <figure> or <para>) is invisible to them. emitExerciseSection()'s orderedExerciseBlocks() only returns <para> and sibling <list> blocks — a bare <media> sibling among <problem>/<solution> content is never collected. Verified empirically: none of these 197 elements' ids or alt text appear anywhere in extractSegments()'s output (structure JSON or segments array) for any of the 149 chemistry modules."
+      },
+      "otherResidualEffects": {
+        "netFromDoubleExtraction": "+5",
+        "netFromRegexTruncationDrop": "-1",
+        "net": "+4",
+        "arithmeticCheck": "1149 (raw) − 197 (structurally unreachable) + 4 (net residual) = 956 = measured emitted total. Fully reconciled, no unexplained residual.",
+        "duplicateAltSegmentIds": {
+          "distinctIds": 5,
+          "extraEmissions": 5,
+          "modules": ["m68739.cnxml (4 distinct duplicate ids)", "m68764.cnxml (1 distinct duplicate id)"],
+          "measuredBy": "counting id-multiplicity directly on extractSegments().segments.filter(s=>s.type==='alt') for all 149 modules; cross-checked by an independent duplicate-TEXT scan on the same population, which agrees exactly (5 modules->2, 5 instances->5).",
+          "significance": "⚠️ CONTRADICTS a recorded '0 of 491 real modules' for this defect class (task-3-report.md Finding 2; task-4-report.md; progress.md line 112 — 'Fires on 0 of 491 real modules'). That prior measurement covered only ONE narrow sub-pattern (a bare top-level <para><media>, not further wrapped). The 5 duplicates found here are TWO ADJACENT sub-patterns it did not test (see doubleExtractionExamples). Duplicate seg-ids are a tracked defect class in this repo (checkDuplicateSegIds, tools/lib/extraction-coverage.js) — parseSegmentsMap dedupes 'first', so the SECOND copy of each duplicate id is a silent inject drop, not a harmless repeat. §C80 re-extracts wholesale and freezes these ids, so this is worth carrying into the register as a named follow-up, not just prose here."
+        },
+        "doubleExtractionExamples": [
+          "m68739.cnxml: a <list> nested inside a <para> that is a direct child of <example> is processed TWICE — once via the para's own flattened inline text (extractInlineText + drainInlineMediaAlts), and again via processExample's separate extractNestedElements(example.content,'list') + processList() walk over the same list. 4 media alts emitted twice each under the SAME segment id (net +4).",
+          "m68764.cnxml: a <figure> nested inside a <para> that is a direct child of <problem> is processed twice — once via global figure extraction (extractNestedElements(content,'figure') -> processFigure, which runs regardless of nesting), and again because the para's own inline-media regex matches the media even though it sits inside a nested <figure>. 1 media alt emitted twice under the SAME segment id (net +1).",
+          "Both are the SAME 'double-extraction' defect family already flagged non-blocking in task-3-report.md (Finding 2, 'measured 0/491 real modules') — that measurement covered only the narrower 'bare top-level <para><media>' sub-pattern; these are adjacent sub-patterns (list-in-para-in-example, figure-in-para-in-problem) it did not test, and they DO fire in the real corpus."
+        ],
+        "regexTruncationExample": "m68727.cnxml, figure id CNX_Chem_05_03_Systemqw / media id fs-idp1427264: the alt text contains a literal, unescaped '>' character mid-string ('...the terms \"ΔU > 0\", ...'). processFigure's mediaMatch regex `<media[^>]*>` is lazy on '>' and stops at that literal character inside the attribute value, truncating the match before the tag's real closing '>'. The subsequent parseAttributes() call on the truncated fragment never finds a closing quote for alt=\"...\", so mediaAttrs.alt parses as undefined, altText becomes '', and the segment is silently never emitted (no error) — confirmed against extractSegments()'s actual output (the segment id is absent). This is the SAME single instance the design spec already flagged (§4: 'entity-bearing alt is 1 of 1,149 in chemistry ... probably regex over-match'), now precisely diagnosed. cnxml-render.js:1149 (renderMedia) also regex-parses raw CNXML and may hit the same truncation on this element, but that was NOT fetched/verified here — stated as a risk, not a confirmed reader-visible defect. Pre-existing; out of scope to fix in Task 9."
+      }
+    },
+    "lifraen-efnafraedi_preview": {
+      "scope": "preview (17 of 342 source modules — the modules with extracted segments already present in 02-for-mt/, per this book's current onboarding state)",
+      "modules": 17,
+      "rawMediaAltCensus": {
+        "total": 132,
+        "byPosition": { "figure": 100, "para-inline": 0, "standalone": 32 },
+        "matchesDesignSpecCensus": true,
+        "note": "Exact match to the design spec's organic-preview row (§1: 100/0/32, sum 132). All 32 non-figure media are id-less table-entry media (see below), consistent with the design's own 'id-less: 32' note."
+      },
+      "emittedAltSegments": {
+        "total": 104,
+        "byPosition": { "figure": 100, "para-inline": 4, "standalone": 0 }
+      },
+      "gap": 28,
+      "gapAsPercentOfRawCensus": "21.2%",
+      "structurallyUnreachableInCurrentCode": {
+        "total": 32,
+        "breakdown": { "media inside a <table><entry> cell": 32 },
+        "mechanism": "Same processTable()/extractInlineText 3-arg-call gap as chemistry's table-entry case. All 32 of organic's non-figure in-scope alts are id-less table-entry media (a functional-groups reference table in m00032), which is why the design's own census filed them as 'standalone, id-less' rather than distinguishing a table-entry bucket.",
+        "severityNote": "31 of these 32 cells contain ONLY the <media> (no other text) — extractInlineText produces empty text, so the cell's segmentId is null and cnxml-inject.js's buildTable() falls through to its final branch, which preserves the entry verbatim from the original CNXML. The image still renders; only its alt stays English (same severity class as the rest of §C81's known gap). ONE cell (id-less, alt 'The general structure of halide...', alongside literal text '(X=F, Cl, Br, I)' in the same <entry>) is MIXED text+media — that cell DOES have a segmentId, so buildTable's earlier branch replaces the whole entry's content with just the translated text, which would silently drop the <media> (and its image) from the published table entirely. This is a materially more severe, single-instance defect, also pre-existing and out of scope here — flagged for the register."
+      },
+      "otherResidualEffects": {
+        "net": "+4",
+        "arithmeticCheck": "132 (raw) − 32 (structurally unreachable) + 4 (net residual) = 104 = measured emitted total. Fully reconciled, no unexplained residual.",
+        "duplicateAltSegmentIds": {
+          "distinctIds": 0,
+          "extraEmissions": 0,
+          "note": "0, NOT because the double-extraction defect is absent here — organic's media are id-less (altElementId falls back to positional `${kind}-${index}-alt` ids), so a double emission produces two DIFFERENT positional ids rather than a colliding duplicate id. The id-based check is structurally blind to this book's version of the defect; measured by duplicate-TEXT instead (below)."
+        },
+        "duplicateAltTextInstances": {
+          "count": 4,
+          "extraEmissions": 4,
+          "modules": ["m00033.cnxml (1)", "m00035.cnxml (2)", "m00038.cnxml (1)"],
+          "measuredBy": "counting text-multiplicity on extractSegments().segments.filter(s=>s.type==='alt') for all 17 preview modules.",
+          "mechanismConfirmed": "All 4 duplicate-text instances occur in modules independently found to contain a <figure> nested inside a <para> (the exact m68764/chemistry fingerprint — 'figure-in-para candidates' = 4, matching exactly). This is a MEASURED confirmation, not an assumed generalisation from chemistry."
+        }
+      }
+    }
+  },
+  "fullCorpusReconciliation": {
+    "purpose": "Resolves progress.md line 107's OPEN QUESTION: Task 4's corpus sweep counted 2,890 alt segments across all 491 source modules of BOTH books, while the design spec's census predicted 3,312 for the same population (chem 1,149 full + organic 2,163 FULL, not preview). This section is NOT part of this deliverable's in-scope population — see 'scope' above — it exists solely to explain that gap.",
+    "lifraen-efnafraedi_FULL_342_modules_NOT_in_scope": {
+      "modules": 342,
+      "rawMediaAltCensus": { "total": 2163, "byPosition": { "figure": 1911, "para-inline": 7, "standalone": 245 } },
+      "emittedAltSegments": { "total": 1934, "byPosition": { "figure": 1911, "para-inline": 17, "standalone": 6 } },
+      "gap": 229,
+      "structurallyUnreachableInCurrentCode": { "total": 245, "breakdown": { "media inside a <table><entry> cell": 245 } },
+      "otherResidualEffects": {
+        "net": "+16",
+        "arithmeticCheck": "2163 (raw) − 245 (structurally unreachable) + 16 (net residual) = 1934 = measured emitted total. Fully reconciled, no unexplained residual.",
+        "duplicateAltTextInstances": {
+          "count": 16,
+          "extraEmissions": 16,
+          "modules": 12,
+          "measuredBy": "counting text-multiplicity on extractSegments().segments.filter(s=>s.type==='alt') for all 342 source modules (id-based check is blind here too — organic media are id-less across the whole book, not just the preview). MEASURED exactly, not assumed: 16 instances / 16 extra emissions matches the residual to the unit.",
+          "note": "Only 4 of the 16 modules match the simple 'figure nested directly in a para' fingerprint used to confirm the preview subset; the other instances are presumed to be adjacent nesting variants of the same id-less double-extraction family (not individually geometry-traced, since this population is out of scope) — the duplicate-TEXT COUNT is measured and exact, only the per-instance geometric mechanism beyond the 4 is not enumerated."
+        }
+      }
+    },
+    "combined_491_modules": {
+      "rawMediaAltCensusTotal": 3312,
+      "matchesSpecPrediction_3312": true,
+      "emittedAltSegmentsTotal": 2890,
+      "matchesTask4Sweep_2890": true,
+      "gap": 422,
+      "explanation": "The 422-count gap is NOT a units mismatch, a missed module, an empty/whitespace alt, or a raw grep-vs-parse artifact (all of Task 9's candidate explanations were checked and ruled out except one). It IS exactly 'alt inside a structure whose extraction path still drops it': 442 alt-bearing <media> elements across the 491-module corpus sit in FOUR structural positions the current extractor cannot reach at all (table-entry cells: 274 = 29 chem + 245 organic; bare media in <example>: 114, chem only; bare media in <problem>/<solution>: 53, chem only; bare media in <note>: 1, chem only), partially offset by a MEASURED (not estimated) +21 double-extraction instances across the 491-module population (5 in chemistry's 149 modules + 16 in organic's full 342 modules — organic-preview's +4 is a SUBSET of that 16, not additive on top of it — all confirmed by exact duplicate-id or duplicate-text counts on real extractSegments() output) and one regex-truncation drop in the opposite direction (−1, chem, m68727). Arithmetic: 442 − 21 + 1 = 422 — EXACT match to the measured gap, no unexplained residual. Both mechanisms are pre-existing and orthogonal to §C81's own scope, which only adds alt-segmentation to positions the extractor was ALREADY structurally reaching (figure / para-inline / top-level standalone) — it does not expand which media the extractor reaches."
+    }
+  },
+  "candidateExplanationsChecked": {
+    "altOnNonMediaElements": "Ruled out — census scoped to <media> elements only (not a raw grep alt= sweep); no other element carries the attribute in this corpus.",
+    "modulesThatFailToParseOrGlobMissed": "Ruled out — 0 extraction errors across all 491+166 modules parsed in this investigation; module counts (149, 342, 17) match `find`/`ls` exactly.",
+    "whitespaceOnlyAlt": "Ruled out — same finding as the design spec: 0 whitespace-only alts in either book.",
+    "altInsideAStructureWhoseExtractionPathStillDropsIt": "CONFIRMED — this is the dominant mechanism. See structurallyUnreachableInCurrentCode above, verified by code reading (tools/cnxml-extract.js) AND empirically (id/text absence-checked against real extractSegments() output for all candidates).",
+    "mediaReachedByTwoPathsOrSkippedContainer": "CONFIRMED as a smaller, opposite-direction effect, MEASURED exactly (+21 across the 491-module corpus, not estimated) — the pre-existing 'double-extraction' defect (task-3-report.md Finding 2; task-4-report.md; progress.md line 112, all previously recording '0 of 491 real modules' for this defect class) actually fires on 14 real modules (2 chemistry + 12 organic), on sub-patterns adjacent to the one that prior measurement tested. This is a correction to a recorded '0' finding, not just a new observation — see otherResidualEffects.duplicateAltSegmentIds / duplicateAltTextInstances above, which should be carried into the active register."
+  },
+  "verification": {
+    "npmTest": "PASS — 314 test files passed (314), 4615 tests passed (4615), exit code 0, duration 223.87s. Run from repo root as the final check (see task-9-report.md for full output).",
+    "noBooksModified": true,
+    "noCnxmlCliRun": true,
+    "noProductionCodeChanged": true
+  },
+  "notes": "In-scope numbers do NOT match the brief's ~1,149/~132 expectation when measured as EMITTED SEGMENTS (956/104) — but DO match exactly when measured as the RAW <media>-with-alt CENSUS (1,149/132), which is what the design spec's own number actually is. Both numbers are correct for what they measure; they are not interchangeable, and the brief's own Step 1 script computes the emitted-segment number while quoting the raw-census expectation. The 193/28-count shortfall within the IN-SCOPE population (not just the out-of-scope full-491 population) is real, reproducible, and traced to specific named code paths in tools/cnxml-extract.js (table-entry cells; bare media in <example>/<problem>/<solution>/<note>) that predate §C81 and are out of its stated scope — §C81 adds alt-segmentation only to the three positions (figure/para-inline/top-level-standalone) the extractor was already structurally visiting; it does not expand extraction coverage itself. This is a pre-existing gap, not a §C81 regression, and no production code was changed to produce this artifact. A SECOND finding surfaced during reconciliation and corrects a previously recorded '0 of 491' for the 'double-extraction' defect class (task-3-report.md / task-4-report.md / progress.md:112): it actually fires on 14 real modules (5 duplicate alt-segment emissions in 2 chemistry modules with colliding ids — a tracked defect class, checkDuplicateSegIds — plus 16 duplicate-text emissions in 12 organic modules, out of organic's full 342-module corpus, where id-less media hide the collision from an id-based check; 4 of those 16 fall within the 17-module in-scope preview). Both findings should be logged in the active register as follow-up scope before §C80's wholesale re-extraction freezes these ids; neither was fixed here (measurement-only task, no production code changed)."
+}
