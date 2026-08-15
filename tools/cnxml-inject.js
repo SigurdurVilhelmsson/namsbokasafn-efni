@@ -3014,8 +3014,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       // media-only (no other text), skip text injection entirely.
       if (parasWithFigures.has(child.id)) {
         const paraText = child.segmentId ? getSeg(child.segmentId) : '';
-        // Strip expanded <media>...</media> from segment text
-        const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+        // Strip expanded <media>...</media> from segment text. \b (not \s) so a
+        // media reconstructed with NO attributes at all (§C81 Task 10: an
+        // id-less, alt-suppressed duplicate — see extractInlineText's ownership
+        // suppression in cnxml-extract.js) still matches; \s required at least
+        // one attribute, which every id-bearing or alt-bearing media happened
+        // to have, so this gap was latent until Task 10 made a zero-attribute
+        // <media> reachable.
+        const textWithoutMedia = paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
 
         let titleText = '';
         if (isFirstPara && element.title?.segmentId) {
@@ -3343,8 +3349,9 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
             if (figId) keptFigureIds.add(figId);
           }
           const tableIdsBefore = new Set(keptTableIds);
+          // \b (not \s) — see the matching comment in buildExampleDom above.
           const textWithoutMedia = expandInlineTables(
-            paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim(),
+            paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim(),
             ctx,
             getSeg,
             originalCnxml,
@@ -3688,9 +3695,10 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       // and a flattened list would silently regress.
       const skipParaText =
         onlyFigures || paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
+      // \b (not \s) — see the matching comment in buildExampleDom above.
       const injectText = skipParaText
         ? ''
-        : paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+        : paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
       const idsBefore = new Set(keptTableIds);
       const expandedParaText = expandInlineTables(
         injectText,

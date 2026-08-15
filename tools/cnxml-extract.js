@@ -226,8 +226,39 @@ function extractInlineText(
 
   // Handle inline media elements (images within paragraphs)
   if (inlineMediaMap) {
+    // §C81 Task 10: a <media> nested inside a <figure> or <list> WITHIN THIS SAME
+    // text is already reached by a dedicated structural walk (processFigure /
+    // processList / emitExerciseSection's own list split) wherever this call's
+    // caller sits — top-level, in <example>, or in <problem>/<solution>. Neither
+    // container is modeled by this function, so the generic <media> match below
+    // still fires and would otherwise claim a SECOND, duplicate alt for the
+    // identical element. Measured on real corpus data: 5 duplicate alt seg-ids in
+    // chemistry (m68739.cnxml — a <list> nested in a <para> that is a direct
+    // child of <example>; m68764.cnxml — a <figure> nested in a <para> that is a
+    // direct child of <problem>) plus 4 duplicate-text emissions in organic's
+    // preview (all the figure-in-para shape; organic media are id-less, so the
+    // duplicate lands on distinct positional ids rather than a colliding one).
+    // Compute the figure/list spans on THIS text (never the whole module) and
+    // suppress only the redundant entry's altText — drainInlineMediaAlts already
+    // treats a falsy altText as "nothing to emit here" — so the placeholder,
+    // counters.media, and every other field stay untouched and [[MEDIA:N]]
+    // numbering for every OTHER inline media is unaffected.
+    const hasNestingToCheck =
+      /<media\b/.test(text) && (/<figure\b/.test(text) || /<list\b/.test(text));
+    const ownerSpansFor = (tagName) =>
+      hasNestingToCheck
+        ? extractNestedElements(text, tagName)
+            .map((el) => {
+              const start = text.indexOf(el.fullMatch);
+              return start === -1 ? null : { start, end: start + el.fullMatch.length };
+            })
+            .filter(Boolean)
+        : [];
+    const nestedFigureSpans = ownerSpansFor('figure');
+    const nestedListSpans = ownerSpansFor('list');
+
     const mediaPattern = /<media([^>]*)>([\s\S]*?)<\/media>/g;
-    text = text.replace(mediaPattern, (match, attrs, mediaContent) => {
+    text = text.replace(mediaPattern, (match, attrs, mediaContent, offset) => {
       counters.media = (counters.media || 0) + 1;
       const placeholder = `[[MEDIA:${counters.media}]]`;
 
@@ -238,10 +269,16 @@ function extractInlineText(
       const iframeMatch = mediaContent.match(/<iframe([^>]*)\/?>/);
       const iframeAttrs = iframeMatch ? parseAttributes(iframeMatch[1]) : {};
 
+      // §C81 Task 10: this element's alt is owned by processFigure/processList
+      // instead — see the comment above the span computation.
+      const ownedByFigureOrList =
+        nestedFigureSpans.some((s) => offset >= s.start && offset < s.end) ||
+        nestedListSpans.some((s) => offset >= s.start && offset < s.end);
+
       inlineMediaMap.set(placeholder, {
         id: parsedAttrs.id || null,
         class: parsedAttrs.class || null,
-        altText: parsedAttrs.alt || imageAttrs.alt || '', // §C81: raw; the caller segments it
+        altText: ownedByFigureOrList ? '' : parsedAttrs.alt || imageAttrs.alt || '', // §C81: raw; the caller segments it
         mediaIndex: counters.media, // §C81: N in [[MEDIA:N]]
         src: imageAttrs.src || '',
         mimeType: imageAttrs['mime-type'] || null,
@@ -902,7 +939,22 @@ function processTopLevelContent(
     }
   }
 
-  const standaloneMedia = extractNestedElements(contentWithoutLists, 'media');
+  // Strip paras before the standalone-media scan: a <media> that is a DIRECT
+  // child of a top-level <para> (no figure/list wrapper) is already reached via
+  // extractInlineText's [[MEDIA:N]] path, and scanning both from the same string
+  // emits it twice — a literal duplicate seg-id when the media carries an id.
+  // Same idiom as the container strips above (example/exercise/note/figure/
+  // table/list); <para> was the one left unstripped. The para scan itself keeps
+  // reading contentWithoutLists (unstripped of paras) — only the standalone-media
+  // scan is scoped narrower. (§C81 Task 10 — this specific shape measured 0/166
+  // in-scope modules; kept as a regression guard, see cnxml-extract-alt.test.js.)
+  let contentWithoutParas = contentWithoutLists;
+  for (const para of extractElements(contentWithoutLists, 'para')) {
+    if (para.fullMatch) {
+      contentWithoutParas = contentWithoutParas.replace(para.fullMatch, '');
+    }
+  }
+  const standaloneMedia = extractNestedElements(contentWithoutParas, 'media');
   const paras = extractElements(contentWithoutLists, 'para');
   const equations = extractElements(contentWithoutLists, 'equation');
 

@@ -117,64 +117,42 @@ describe('standalone top-level media alt (§C81)', () => {
     expect(new Set(alts.map((a) => a.id)).size).toBe(alts.length);
   });
 
-  // REGRESSION — pins a PRE-EXISTING double-extraction defect (see ledger; fires on 0 of
-  // 491 real modules). NOT a spec of desired behaviour — this test exists to make a known
-  // bug's current output visible, not to endorse it.
+  // REGRESSION GUARD (§C81 Task 10) — this test USED TO pin a real defect ("pins a
+  // PRE-EXISTING double-extraction defect (see ledger; fires on 0 of 491 real
+  // modules)"); FIXED 2026-08-15, kept here so the double-extraction cannot come
+  // back unnoticed. Do not delete: it is the only thing that proves the fix
+  // actually changed this fixture's behaviour.
   //
-  // 🔴 PRE-EXISTING DEFECT, predates Task 3 (reproduced on 5cdfca70, before any of this
-  // task's changes) — `processTopLevelContent` strips lists/figures/tables/examples/
-  // exercises/notes before scanning for standalone <media>
-  // (cnxml-extract.js:793-819), but never strips <para>. A <media> that is a
-  // DIRECT child of a top-level <para> (not itself wrapped in one of those
-  // stripped containers) is therefore extracted TWICE: once inline via
-  // extractInlineText → inlineMediaMap, and again here as "standalone". The
-  // design spec defines standalone as "in no figure and no paragraph"
-  // (specs/2026-08-15-figure-alt-into-pipeline-design.md:22) and treats the two
-  // buckets as disjoint (214 in-para vs 340 standalone, :47) — the code does not
-  // implement its own spec. With this task's change, that second extraction now
-  // also emits a real, duplicate, translatable alt segment (`standalone-2-alt`,
-  // same text as the inline one).
+  // What was wrong: `processTopLevelContent` stripped lists/figures/tables/
+  // examples/exercises/notes before scanning for standalone <media>, but never
+  // stripped <para>. A <media> that is a DIRECT child of a top-level <para> (not
+  // itself wrapped in one of those stripped containers) was therefore extracted
+  // TWICE: once inline via extractInlineText → inlineMediaMap, and again by the
+  // standalone-media scan finding the identical element a second time because
+  // <para> was never stripped from the string it read.
   //
-  // MEASURED SCOPE, not hypothesized: a corpus sweep with the real extractor
-  // over every .cnxml under both in-scope books' 01-source (491 modules: 149
-  // efnafraedi-2e + 342 lifraen-efnafraedi) found ZERO modules producing two alt
-  // segments with identical text. Root cause, checked directly against source:
-  // every real in-para <media> found by an @xmldom/xmldom ancestor-based census
-  // (which reproduces the spec's 214/308 chemistry split exactly) sits inside a
-  // <para> that is itself inside a stripped container — see
-  // books/efnafraedi-2e/01-source/ch06/m68732.cnxml:146, a <media> inside a
-  // <para> inside <problem><exercise>, so processExercise's own paragraph
-  // handling reaches it first and processTopLevelContent's top-level scan never
-  // sees it. So the defect is real and reachable (this fixture proves it) but,
-  // as measured, NOT currently firing on either in-scope book — it does not
-  // block this task or Task 4. It should still be fixed (strip <para> before
-  // the standalone-media scan) before §C80's corpus re-extract, in case a
-  // future module puts a bare top-level <para><media>.
-  //
-  // ⚠️ THIS TEST IS EXPECTED TO FAIL once the <para>-stripping fix lands — at that
-  // point the second (buggy) extraction disappears and this fixture should produce
-  // only `standalone-1-alt`. UPDATE this test to assert the corrected output then;
-  // do not delete it outright without replacing its coverage, since it is the only
-  // thing that currently proves the fix actually changed this fixture's behaviour.
-  it('pins a PRE-EXISTING double-extraction defect (see ledger; fires on 0 of 491 real modules)', () => {
+  // The fix: `processTopLevelContent` now strips <para> before the standalone-
+  // media scan too — same idiom as the container strips it already applied to
+  // example/exercise/note/figure/table/list (cnxml-extract.js, around the
+  // `contentWithoutParas` computation). This exact shape (a bare top-level
+  // <media> that is a DIRECT child of a top-level <para>, no figure/list
+  // wrapper) measured 0/491 real modules at the time it was found — kept as a
+  // synthetic regression guard, since a future module could still trip it.
+  it('does not double-extract a bare top-level <media> nested directly in a <para> (fixed defect, regression guard)', () => {
     const { segments } = extractSegments(
       wrap(`<media alt="Standalone first"><image src="s.png"/></media>
             <para id="p1">Text <media alt="Inline second"><image src="i.png"/></media> end.</para>`)
     );
     const alts = segments.filter((s) => s.type === 'alt');
-    // Pinning the defect's actual shape: standalone-1-alt (the genuine standalone
-    // media), then media-1-alt (§C81 Task 4: the SAME <media> also gets segmented
-    // via the inline path, since it sits inside a <para>'s inline text), then
-    // standalone-2-alt (the pre-existing double-extraction: processTopLevelContent's
-    // media scan finds the same element again because <para> is never stripped).
-    // The last one is the tracked defect; the first two are correct, independent
-    // extractions of two different <media> elements.
+    // Exactly two alt segments now: standalone-1-alt (the genuine standalone
+    // media) and media-1-alt (the para-inline media, via the inline path). The
+    // second, duplicate standalone extraction of the para-inline media no longer
+    // happens.
     expect(alts.map((a) => a.id)).toEqual([
       'm00001:alt:standalone-1-alt',
       'm00001:alt:media-1-alt',
-      'm00001:alt:standalone-2-alt',
     ]);
-    expect(alts.map((a) => a.text)).toEqual(['Standalone first', 'Inline second', 'Inline second']);
+    expect(alts.map((a) => a.text)).toEqual(['Standalone first', 'Inline second']);
   });
 });
 
@@ -407,61 +385,41 @@ describe('all three alt positions in one module (§C81)', () => {
 </content>
 </document>`;
 
-  // 🔴 THE BRIEF'S FIXTURE, TAKEN LITERALLY, DOES NOT PRODUCE THREE SEGMENTS.
-  // This fixture's <para id="p1"> is a bare top-level para (a direct child of
-  // <content>, not itself nested inside a figure/list/table/example/exercise/
-  // note) — exactly the trigger for the PRE-EXISTING double-extraction defect
-  // already pinned in the "standalone-media alt" describe block above
-  // ('pins a PRE-EXISTING double-extraction defect (see ledger; fires on 0 of
-  // 491 real modules)'): processTopLevelContent strips every other container
-  // before scanning for standalone <media>, but never strips <para>, so a
-  // <media> that is a direct child of a top-level <para> is extracted TWICE —
-  // once inline (via extractInlineText) and once again by the standalone scan.
+  // REGRESSION GUARD (§C81 Task 10) — this test USED TO pin a real defect
+  // ('emits alt segments in document order (pins the pre-existing double-
+  // extraction defect, now with a colliding id)'); FIXED 2026-08-15. Kept as a
+  // regression guard for both the ordering AND the id-collision hazard it
+  // previously exposed.
   //
-  // What is NEW here, beyond that already-pinned case: that fixture used
-  // id-LESS media, so the duplicate lands on a DISTINGUISHABLE positional id
-  // (`media-1-alt` vs `standalone-2-alt`). This fixture's media has an
-  // explicit id="mp", so BOTH extractions resolve to the exact same
-  // `altElementId` result and the duplicate segment carries the *identical*
-  // segment id (`m00002:alt:mp-alt` twice) — a silent-overwrite hazard for
-  // any consumer that does `new Map(segments.map(s => [s.id, s.text]))`
-  // (e.g. the injector's own getSeg, and the recursion-hazard test at
-  // "does not recurse when the inline-media alt segment id is present in
-  // segments" a few describes above, which builds exactly that Map).
+  // What was wrong: this fixture's <para id="p1"> is a bare top-level para (a
+  // direct child of <content>, not nested inside a figure/list/table/example/
+  // exercise/note) holding a DIRECT-child <media id="mp">, no figure/list
+  // wrapper — exactly the shape the sibling regression guard above fixes.
+  // processTopLevelContent's standalone-media scan used to find this SAME
+  // media a second time because <para> was never stripped from the string it
+  // read, and because this media has an explicit id (unlike the id-less sibling
+  // fixture above), both extractions resolved to the identical `altElementId`
+  // result — a literal segment-id collision (`m00002:alt:mp-alt` emitted
+  // twice), not just duplicate text. That was a silent-overwrite hazard for any
+  // consumer that does `new Map(segments.map(s => [s.id, s.text]))` (e.g. the
+  // injector's own getSeg).
   //
-  // MEASURED SCOPE (same method as the already-pinned defect): the ledger's
-  // own corpus finding — "every real in-para <media> ... sits inside a <para>
-  // that is itself inside a stripped container" — means this exact shape
-  // (bare top-level <para> holding id-bearing inline media) does not occur in
-  // either in-scope book either; see the §C81 corpus control below, which
-  // asserts zero positional alt ids across real chemistry source.
-  //
-  // Fixing this is OUT OF SCOPE for Task 8 (test-only). This test therefore
-  // pins CURRENT behaviour, not the brief's ideal, so a genuine ordering
-  // regression between the three handlers still goes red: the four alt texts
-  // must still read figure → para → para(duplicate) → standalone.
-  // ⚠️ THIS TEST IS EXPECTED TO FAIL once <para> stripping lands ahead of the
-  // standalone-media scan (see the sibling pinned-defect comment) — at that
-  // point this fixture should collapse to exactly three segments, matching
-  // the brief's original assertion. Update it then; do not delete it without
-  // replacing its ordering coverage.
-  it('emits alt segments in document order (pins the pre-existing double-extraction defect, now with a colliding id)', () => {
+  // The fix (same as the sibling guard): processTopLevelContent now strips
+  // <para> before the standalone-media scan, so the standalone scan no longer
+  // finds media nested inside a para. The three OTHER positions (figure /
+  // para-inline / genuinely-standalone) are unaffected — this test still
+  // guards their relative ORDER, now with the duplicate gone.
+  it('emits alt segments in document order, one per position, no id collision (fixed defect, regression guard)', () => {
     const { segments } = extractForOrder(cnxml);
     const alts = segments.filter((s) => s.type === 'alt');
-    expect(alts.map((a) => a.text)).toEqual([
-      'Figure alt',
-      'Para alt',
-      'Para alt',
-      'Standalone alt',
-    ]);
+    expect(alts.map((a) => a.text)).toEqual(['Figure alt', 'Para alt', 'Standalone alt']);
     expect(alts.map((a) => a.id)).toEqual([
       'm00002:alt:mf-alt',
       'm00002:alt:mp-alt',
-      'm00002:alt:mp-alt',
       'm00002:alt:ms-alt',
     ]);
-    // The NEW finding beyond the already-pinned defect: the duplicate's id is not
-    // merely repeated text, it is a literal segment-id collision.
+    // Regression guard for the id-collision hazard specifically: three distinct
+    // alt segments, three distinct ids.
     expect(new Set(alts.map((a) => a.id)).size).toBe(3);
   });
 });
