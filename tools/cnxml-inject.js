@@ -1242,7 +1242,12 @@ function escapeXml(text) {
 function buildMediaElement(media) {
   const idAttr = media.id ? ` id="${media.id}"` : '';
   const classAttr = media.class ? ` class="${media.class}"` : '';
-  const altAttr = media.alt ? ` alt="${escapeXml(media.alt)}"` : '';
+  // §C81: backstop only — the caller (reverseInlineMarkup's caller, in getSeg) resolves
+  // each inline-media entry's alt to a plain string before this ever runs. No getSeg is
+  // passed here on purpose: an unresolved {segmentId,text} object still falls back to its
+  // English text instead of reaching a published page as "[object Object]".
+  const altValue = readAlt(media.alt);
+  const altAttr = altValue ? ` alt="${escapeXml(altValue)}"` : '';
 
   if (media.embedSrc) {
     const w = media.width ? ` width="${escapeXml(media.width)}"` : '';
@@ -1905,6 +1910,17 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     _residueSeen: new Set(), // de-dupe segments referenced more than once
   };
 
+  // §C81: reverseInlineMarkup stays a pure text transformer (the mirror of
+  // extractInlineText on the extract side) — it must never gain a getSeg. So the
+  // resolution of each inline-media entry's alt happens HERE, at getSeg's own call
+  // site, before the array is handed to reverseInlineMarkup below. This starts out
+  // holding the raw (possibly dual-shape) list and is reassigned, ONCE, immediately
+  // after getSeg closes — not recomputed inline on every call: an alt segment's own
+  // text is itself fetched via this same getSeg, and unconditionally rebuilding the
+  // resolved array on every invocation would recurse into itself forever the moment
+  // an inline-media alt segment is actually present in `segments`.
+  let resolvedInlineMedia = structure.inlineMedia || [];
+
   // Helper to get segment text
   const getSeg = (segmentId) => {
     if (!segmentId) return '';
@@ -1941,7 +1957,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     return reverseInlineMarkup(
       text,
       equations,
-      structure.inlineMedia || [],
+      resolvedInlineMedia,
       structure.inlineTables || [],
       inlineAttrs[segmentId] || null,
       blockEquationIds,
@@ -1949,6 +1965,17 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       { segmentId, attrMismatches: stats.attrMismatches }
     );
   };
+
+  // §C81: now that getSeg is fully bound, resolve each inline-media entry's alt
+  // through it — string alt passes through unchanged (readAlt's contract), an
+  // unresolved {segmentId,text} object resolves to its Icelandic segment text (or
+  // falls back to the English text if that segment is missing). Any getSeg call
+  // made *during* this resolution (fetching an alt segment's own text) still sees
+  // the raw list above, breaking the self-reference instead of recursing into it.
+  resolvedInlineMedia = (structure.inlineMedia || []).map((m) => ({
+    ...m,
+    alt: readAlt(m.alt, getSeg),
+  }));
 
   // Extract metadata section from original
   const metadataMatch = originalCnxml.match(/<metadata[^>]*>[\s\S]*?<\/metadata>/);

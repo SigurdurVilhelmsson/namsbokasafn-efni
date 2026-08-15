@@ -1,11 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildFigure, buildMedia } from '../cnxml-inject.js';
-// NOTE: Task 7 (§C81) will widen this import to buildMediaElement as it adds tests to this
-// file that use it. The brief's Step 1 imports all three at once; the LEAD ruling in
-// progress.md split the three inject sites across separate commits (5 | 6 | 7), so importing
-// names this task's tests don't use trips `no-unused-vars` (eslint.config.js sets
-// `argsIgnorePattern` only, not `varsIgnorePattern` — an underscore prefix would not have
-// silenced it either).
+import { buildFigure, buildMedia, buildMediaElement, buildCnxml } from '../cnxml-inject.js';
 
 const getSeg = (id) => (id === 'm1:alt:fig-1-alt' ? 'Íslensk lýsing' : undefined);
 
@@ -79,5 +73,64 @@ describe('buildMedia alt (§C81)', () => {
   it('emits a legacy string alt unchanged even with no getSeg', () => {
     const out = buildMedia({ id: 'med-9', alt: 'Legacy alt', src: 'c.png' });
     expect(out).toContain('alt="Legacy alt"');
+  });
+});
+
+describe('buildMediaElement alt (§C81)', () => {
+  it('emits a pre-resolved string alt', () => {
+    const out = buildMediaElement({ id: 'mi-1', alt: 'Þýdd lýsing', src: 'e.png' });
+    expect(out).toContain('alt="Þýdd lýsing"');
+  });
+
+  // CONTROL: an unresolved object must never reach the page as [object Object]
+  it('never emits [object Object] if handed an unresolved object', () => {
+    const out = buildMediaElement({
+      id: 'mi-1',
+      alt: { segmentId: 'x', text: 'English' },
+      src: 'e.png',
+    });
+    expect(out).not.toContain('[object Object]');
+    expect(out).toContain('alt="English"');
+  });
+});
+
+describe('reverseInlineMarkup boundary resolution for para-inline media (§C81)', () => {
+  // PROBE: this exercises the real getSeg closure inside buildCnxml, not a hand-rolled
+  // stand-in — buildMediaElement alone can't catch a missed/mis-wired call site, and a
+  // naive "recompute the resolved array on every getSeg call" placement recurses forever
+  // the moment an inline-media alt segment is actually present in the segments map (an
+  // absent alt segment can't discriminate: getSeg's missing-segment branch returns before
+  // ever reaching reverseInlineMarkup, so it can't tell a correct fix from a broken one).
+  it('resolves an object alt on para-inline media to its Icelandic segment text', () => {
+    const structure = {
+      moduleId: 'test',
+      title: { segmentId: 'test:title:auto-1', text: 'Test' },
+      content: [{ type: 'para', id: 'p1', segmentId: 'test:para:p1' }],
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          id: 'mi-1',
+          alt: { segmentId: 'test:alt:mi-1-alt', text: 'English alt' },
+          src: 'e.png',
+        },
+      ],
+    };
+    const segments = new Map([
+      ['test:title:auto-1', 'Titill'],
+      ['test:para:p1', 'Sjá mynd: [[MEDIA:1]] hér.'],
+      ['test:alt:mi-1-alt', 'Íslensk lýsing'],
+    ]);
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<para id="p1">Original para content.</para>
+</content>
+</document>`;
+
+    const result = buildCnxml(structure, segments, {}, originalCnxml);
+    expect(result.cnxml).toContain('alt="Íslensk lýsing"');
+    expect(result.cnxml).not.toContain('[object Object]');
+    expect(result.cnxml).not.toContain('alt="English alt"');
   });
 });
