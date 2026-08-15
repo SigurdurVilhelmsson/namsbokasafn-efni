@@ -452,6 +452,21 @@ tool's `parseArgs` spec** (or its `--help`, which is generated from the same pla
 it from prose, from another tool, or from what the flag would sensibly be called. `--dry-run` is
 real on the CNXML/MT tools; most other "safety" flags you might reach for are not.
 
+🔴 **AMENDED 2026-08-15 — THE `--help` HALF OF THAT DEFENCE RETURNS A FALSE NEGATIVE, MEASURED
+(§C83). `cnxml-extract.js --output-dir` IS IN `--help`, IS ACCEPTED SILENTLY, AND IS IGNORED:
+the run writes into the real `books/` tree and exits 0.** Verified by running
+`node tools/cnxml-extract.js --book orverufraedi --chapter 1 --module m58781 --output-dir <scratch>`
+— exit **0**, scratch directory **empty**, stdout printing `→ books/orverufraedi/02-for-mt/…`,
+and `git status` showing **3 modified files** in the tracked tree. ▶ **So "confirm it is in
+`--help`" is NOT sufficient; a declared-but-unimplemented flag is indistinguishable from a working
+one, because the tool reports success and prints its real output paths in the same breath.**
+⚠️ **This is worse than the unknown-flag case above, and it bites hardest where it matters most:
+it is the flag you reach for precisely when you have decided not to touch the real tree.**
+`02-for-mt` is GENERATED so that instance was recoverable — the same shape on a tool writing
+anywhere irreversible would not be. **Read the flag's consumer in the source, or run it against a
+throwaway copy first.** Do not assume the sibling tools differ — `cnxml-inject` and `cnxml-render`
+share the idiom and have not been checked.
+
 **⚠️ DURABLE — COMMITTED SOURCE AND DOC FILES IN THIS REPO CONTAIN RAW NUL BYTES, AND PLAIN `grep`
 REPORTS *NOTHING* FOR STRINGS THEY DEMONSTRABLY CONTAIN. Use `grep -a` for every census.**
 GNU grep classifies a file holding a NUL as binary and suppresses its matches; with `-n` it
