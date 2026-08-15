@@ -99,10 +99,24 @@ media.alt = { segmentId: 'm68663:alt:fig-01-alt', text: 'A photograph of…' }
 Symmetric across `figStructure.media` and `structure.inlineMedia[]`, and identical to the
 established `{ segmentId, text }` used by `title` and `caption`.
 
-### 3.3 Inject — one site, dual-shape
+### 3.3 Inject — THREE sites, dual-shape
 
-`buildMedia` (`tools/cnxml-inject.js:3890`) resolves through `getSeg()` with the English as
-fallback, **and must accept both shapes**:
+⚠️ **CORRECTED during planning: there are three emission sites, not one**, and they pair exactly
+with the three capture sites. Two of them **cannot resolve a segment today** because they take no
+`getSeg`:
+
+| position | capture | emit | takes `getSeg`? | how it gets resolved |
+|---|---|---|---|---|
+| figure | `processFigure:1112` | `buildFigure:2375` | ✅ yes | directly |
+| standalone | `processTopLevelContent:1069` | `buildMedia:3890` | ❌ no | **thread `getSeg` in** — both callers (`buildElement:2233`, `buildList:3835`) already have it |
+| para-inline | `extractInlineText:222` | `buildMediaElement:1244` | ❌ no | **pre-resolve at the caller** — `reverseInlineMarkup:1305` receives `inlineMedia[]` but no `getSeg`, so its caller hands it an array whose `alt` is already a plain string |
+
+▶ **The para-inline resolution deliberately happens at the boundary**, leaving
+`reverseInlineMarkup` a pure text transformer — the mirror of `extractInlineText` staying pure on
+the extract side. **Pure functions at both ends, resolution at the callers.**
+
+Each site resolves through `getSeg()` with the English as fallback, **and all three must accept
+both shapes**:
 
 ```js
 const altText = typeof element.alt === 'string'
