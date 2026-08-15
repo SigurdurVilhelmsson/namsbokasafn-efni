@@ -66,6 +66,7 @@ import {
   reportMathLabels,
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
+import { readAlt } from './lib/alt-segments.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -2372,7 +2373,8 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
   // Add media
   if (element.media) {
     const mediaId = element.media.id ? ` id="${element.media.id}"` : '';
-    const alt = element.media.alt ? ` alt="${escapeXml(element.media.alt)}"` : '';
+    const altText = readAlt(element.media.alt, getSeg);
+    const alt = altText ? ` alt="${escapeXml(altText)}"` : '';
     lines.push(`<media${mediaId}${alt}>`);
     if (element.media.src) {
       const imageMapping = ctx && ctx.imageMapping;
@@ -4561,6 +4563,7 @@ export {
   loadImageBasenameMap,
   buildMediaElement,
   buildMedia,
+  buildFigure, // §C81: exported for alt dual-shape tests
   applyMathLabelSubstitution,
   getMathLabelResolver,
 };
