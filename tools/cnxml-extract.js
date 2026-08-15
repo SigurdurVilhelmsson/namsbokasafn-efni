@@ -1063,11 +1063,29 @@ function processTopLevelContent(
           : {};
         const iframeMatch = item.content.match(/<iframe([^>]*)\/?>/);
         const iframeAttrs = iframeMatch ? parseAttributes(iframeMatch[1]) : {};
+        // §C81: standalone media has neither caption nor containing paragraph,
+        // so its alt segment is emitted at the media's own position — which is
+        // where processTopLevelContent already is, in document order.
+        //
+        // 🔴 Uses its OWN counter. counters.media belongs to extractInlineText,
+        // which builds the [[MEDIA:N]] placeholder embedded in paragraph text;
+        // incrementing it here would renumber every later inline placeholder and
+        // break the placeholder↔structure join at inject. The 'standalone' kind
+        // keeps the two id namespaces from colliding at the same index.
+        const altText = mediaAttrs.alt || imageAttrs.alt || '';
+        counters.standaloneMedia = (counters.standaloneMedia || 0) + 1;
+        const altSegId = altText
+          ? addSegment(
+              'alt',
+              altText,
+              altElementId(item.id, counters.standaloneMedia, 'standalone')
+            )
+          : null;
         elements.push({
           type: 'media',
           id: item.id,
           class: mediaAttrs.class || null,
-          alt: mediaAttrs.alt || imageAttrs.alt || '',
+          alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
           src: imageAttrs.src || '',
           embedSrc: iframeAttrs.src || '',
           width: iframeAttrs.width || '',
