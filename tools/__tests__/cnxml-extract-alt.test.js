@@ -440,39 +440,68 @@ describe('all three alt positions in one module (§C81)', () => {
 // merge duplicates AFTER both exist and repoint every reference to the
 // survivor — so it never has to guess which copy renders.
 describe('§C81 Task 10 review round 2 — duplicate alt data is never lost, only merged', () => {
-  // Reproduces the actual failure shape: a <list> nested in a <para> that is
-  // a direct child of <exercise>'s <problem> (physics's real shape) — NOT
-  // wrapped in <example>, where extraction's own list-in-example re-walk
-  // (processExample) is the duplicate source. Here the para's OWN inline
-  // capture is one copy; processList's per-item capture (called via
-  // emitExerciseSection's nested-list split) is the other.
-  it('a <list> nested in a <para> inside <problem>: alt survives on the item, not merely the para', () => {
+  // 🔴 REPLACES an earlier version of this test that did NOT discriminate:
+  // its fixture put the <media> BEFORE the <list> (siblings inside one
+  // <para>), so the old suppression's span check never fired and
+  // `toHaveLength(1)` passed even against the reverted 07167ac7 code —
+  // review round 3 caught this ("confirmed to discriminate by reasoning"
+  // was wrong for this one; verified empirically instead, see below).
+  //
+  // Reproduces m42296's REAL corpus shape instead: a <figure><media alt=…>
+  // nested inside a <list><item>, inside <exercise>'s <problem> (physics
+  // multiple-choice-with-image options). processTopLevelContent's top-level
+  // figure scan runs over the WHOLE document content (see the comment at
+  // assertNoDroppedListBlocks: "Figures are hoisted to top-level content
+  // regardless of list nesting") and finds this figure too, so processFigure
+  // emits an alt segment for it — AND emitExerciseSection→processList's
+  // per-item extractInlineText call ALSO captures the same <media> inline
+  // (its regex doesn't care that the <media> sits inside a <figure>). Two
+  // emissions for one physical media element, exactly like the other shapes
+  // in this file — but here the loss wasn't "which segment survives", it was
+  // that structure.inlineMedia[]'s `alt` KEY went missing while the alt
+  // SEGMENT still existed (processFigure's copy). Verified this fixture
+  // fails against 07167ac7 before accepting it:
+  //   node -e "…extractSegments(cnxml) at HEAD vs 07167ac7…"
+  //   HEAD:     inlineMedia [{id:'med-a',hasAlt:true},{id:'med-b',hasAlt:true}]
+  //   07167ac7: inlineMedia [{id:'med-a',hasAlt:false},{id:'med-b',hasAlt:false}]
+  // — segments carried the real text at BOTH vintages; only inlineMedia[].alt
+  // (what buildMediaElement's readAlt() actually reads for this shape)
+  // differed, which is exactly why the prior test — which asserted only on
+  // segments — didn't catch it.
+  it('a <figure><media> nested inside a <list><item> (m42296 real shape): inlineMedia[].alt is never lost', () => {
     const cnxml = wrap(
       `<exercise id="ex1"><problem id="prob1">
-         <para id="q1">Pick one, see <media id="med-p1" alt="Setup diagram"><image src="p.png"/></media>:
-           <list id="opts-1" list-type="enumerated"><item id="it1">alpha</item><item id="it2">beta</item></list>
-         </para>
+         <para id="q1">Which shows it correctly?</para>
+         <list id="opts-1" list-type="enumerated"><item id="it1">
+           <figure id="fig-a"><media id="med-a" alt="Option A description"><image src="a.png"/></media></figure>
+         </item><item id="it2">
+           <figure id="fig-b"><media id="med-b" alt="Option B description"><image src="b.png"/></media></figure>
+         </item></list>
        </problem></exercise>`
     );
     const { segments, structure } = extractSegments(cnxml);
     const alts = segments.filter((s) => s.type === 'alt');
 
-    // Exactly one alt segment survives (the duplicate is merged, not both kept
-    // and not both lost) and it carries the REAL text, never empty.
-    expect(alts).toHaveLength(1);
-    expect(alts[0].text).toBe('Setup diagram');
-    expect(alts[0].text).not.toBe('');
+    // Both alts present with real, distinct text — no merge fires here
+    // (distinct literal ids, distinct text: neither Rule 1 nor Rule 2
+    // matches), so this is purely a loss check, not a dedup check.
+    expect(alts).toHaveLength(2);
+    expect(alts.map((a) => a.text).sort()).toEqual([
+      'Option A description',
+      'Option B description',
+    ]);
 
-    // Whichever structural reference the injector actually reads —
-    // structure.inlineMedia (the para's own capture) — must resolve to a
-    // REAL segment id with REAL text, not an id pointing at nothing and not
-    // an entry with no `alt` key at all (the exact regression shape: `{"id":
-    // "...", "src": "..."}` with no `alt`).
-    const inlineEntry = structure.inlineMedia.find((m) => m.id === 'med-p1');
-    expect(inlineEntry.alt).toBeDefined();
-    expect(inlineEntry.alt.segmentId).toBeDefined();
-    const resolvedText = segments.find((s) => s.id === inlineEntry.alt.segmentId)?.text;
-    expect(resolvedText).toBe('Setup diagram');
+    // The actual regression shape: assert on structure.inlineMedia, not just
+    // on segments — a segment can survive (processFigure's own copy) while
+    // the inlineMedia entry the injector reads for THIS shape has no `alt`
+    // key at all.
+    for (const id of ['med-a', 'med-b']) {
+      const entry = structure.inlineMedia.find((m) => m.id === id);
+      expect(entry.alt).toBeDefined();
+      expect(entry.alt.segmentId).toBeDefined();
+      const resolvedText = segments.find((s) => s.id === entry.alt.segmentId)?.text;
+      expect(resolvedText).toBeTruthy();
+    }
   });
 
   // Reproduces m66449's exact shape: a <figure> with TWO <subfigure>-wrapped

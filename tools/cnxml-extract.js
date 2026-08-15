@@ -558,13 +558,17 @@ function drainInlineMediaAlts(inlineMediaMap, addSegment) {
  *    SAME id-bearing `<media>` was captured twice — there is no other way for
  *    two segments to compute the identical id (CNXML ids are unique per
  *    document). No text comparison needed; always safe to collapse to one.
- *  - Identical alt TEXT among POSITIONALLY-numbered ids only (id-less media:
- *    `altElementId()`'s two independent counters — `media-N-alt` for inline
- *    captures, `standalone-N-alt` for the top-level scan — never collide on
- *    id even for the same element, so text is the only signal). Restricting
- *    to positional ids (not id-bearing ones, which are already handled by the
- *    id-collision rule above) keeps this from ever touching content that
- *    already has its own reliable identity.
+ *  - Identical alt TEXT where AT LEAST ONE side has a POSITIONALLY-numbered
+ *    id (`media-N-alt` / `standalone-N-alt`, from `altElementId()`'s id-less
+ *    fallback — text is the only signal once neither side's id collides
+ *    literally). NOT "both sides positional": `processFigure` anchors an
+ *    id-less `<media>` on `mediaAttrs.id || figure.id`, so the SAME physical
+ *    duplicate can surface as a positional id from the inline capture and a
+ *    figure-anchored, non-positional id (e.g. `fig-00006-alt`) from
+ *    `processFigure` — see the inline comment at the implementation below for
+ *    the corpus evidence. Requiring only one side positional still refuses to
+ *    merge two independently, non-positionally id-anchored segments that
+ *    happen to share text.
  *
  * A `<figure>` whose OWN extraction regex only reaches its first `<media>`
  * (multi-`<subfigure>` figures — processFigure's match is non-global) is
@@ -594,18 +598,33 @@ function dedupeAltSegments(segments, structure) {
   }
 
   // Rule 2: identical text where AT LEAST ONE side is a positionally-numbered
-  // (id-less-media) alt id. A positional id can only arise from an id-less
-  // <media> — never a literal collision (Rule 1 already covers same-id) — so
-  // its OTHER copy necessarily has a DIFFERENT id. That other id is not
-  // always ALSO positional: processFigure anchors on `mediaAttrs.id ||
-  // figure.id`, so an id-less <media> inside an id-BEARING <figure> gets a
-  // figure-anchored id (e.g. `fig-00006-alt`) from processFigure while its
-  // inline-capture duplicate still falls back to `media-N-alt` — two
-  // DIFFERENT id "kinds" for the same physical duplicate (measured:
-  // organic's m00033/m00035/m00038). Requiring only ONE side positional still
-  // guards against merging two DIFFERENT id-bearing, non-positional segments
-  // that coincidentally share text — genuinely different, properly-anchored
+  // alt id. A positional id USUALLY arises only from an id-less <media> —
+  // never a literal collision (Rule 1 already covers same-id) — so its OTHER
+  // copy necessarily has a DIFFERENT id. That other id is not always ALSO
+  // positional: processFigure anchors on `mediaAttrs.id || figure.id`, so an
+  // id-less <media> inside an id-BEARING <figure> gets a figure-anchored id
+  // (e.g. `fig-00006-alt`) from processFigure while its inline-capture
+  // duplicate still falls back to `media-N-alt` — two DIFFERENT id "kinds"
+  // for the same physical duplicate (measured: organic's
+  // m00033/m00035/m00038). Requiring only ONE side positional still guards
+  // against merging two DIFFERENT id-bearing, non-positional segments that
+  // coincidentally share text — genuinely different, properly-anchored
   // content is left alone.
+  //
+  // ⚠️ LATENT FALSE-POSITIVE SURFACE (review round 3, 2026-08-15): the regex
+  // below matches on SHAPE, not on provenance, so a real, id-BEARING <media>
+  // whose author-assigned id happens to look like the synthetic fallback
+  // pattern also reads as "positional". Live counter-example:
+  // books/edlisfraedi-2e/01-source/ch04/m42137.cnxml has
+  // `<media id="media-98271" …>` — its alt id `…:alt:media-98271-alt` matches
+  // this regex even though `98271` is that module's real, author-assigned id,
+  // not a counter value. It does not misfire today (0 over-merges measured
+  // corpus-wide: of 167 total merges, 22 are Rule 2, and for all 22 the
+  // source holds exactly one physical <media> with that alt text) because a
+  // false match still requires a SECOND alt segment with byte-identical text
+  // — m42137 has no such duplicate. Do NOT add a gate asserting no source id
+  // matches `^(media|standalone)-\d+$`: real corpus ids like `media-98271`
+  // would make it fail on commit.
   const positional = /:alt:(?:media|standalone)-\d+-alt$/;
   const byText = new Map();
   segments.forEach((seg, idx) => {
@@ -1053,8 +1072,12 @@ function processTopLevelContent(
   // Same idiom as the container strips above (example/exercise/note/figure/
   // table/list); <para> was the one left unstripped. The para scan itself keeps
   // reading contentWithoutLists (unstripped of paras) — only the standalone-media
-  // scan is scoped narrower. (§C81 Task 10 — this specific shape measured 0/166
-  // in-scope modules; kept as a regression guard, see cnxml-extract-alt.test.js.)
+  // scan is scoped narrower. (§C81 Task 10 — measured 0/166 modules across the
+  // in-scope set (chemistry + the organic preview subset), so it is inert THERE
+  // — but it is LIVE outside that set: it fires on all four organic-full
+  // modules m00018, m00078, m00230, m00330 (organic's full book was measured
+  // for the corpus-wide removal count but is not itself in §C80's scope). Kept
+  // as a regression guard either way, see cnxml-extract-alt.test.js.)
   let contentWithoutParas = contentWithoutLists;
   for (const para of extractElements(contentWithoutLists, 'para')) {
     if (para.fullMatch) {
