@@ -423,3 +423,86 @@ describe('all three alt positions in one module (§C81)', () => {
     expect(new Set(alts.map((a) => a.id)).size).toBe(3);
   });
 });
+
+// 🔴 CRITICAL REGRESSION, review round 2 (2026-08-15). An EARLIER version of
+// the duplicate-alt fix suppressed the DATA (altText → '') on whichever copy
+// looked "structurally redundant" (nested inside a <figure>/<list>) at
+// CAPTURE time. That guess is wrong for real shapes: cnxml-inject.js's
+// exercise/note builders FLATTEN a nested list into the enclosing para and
+// render THAT copy — exactly the one being suppressed — while the
+// separately-built processList segment sits on a path the injector never
+// reaches. Suppressing the wrong copy's data turned "duplicate, safe English
+// fallback" into "no alt attribute at all" on 14 attributes across 5 real
+// physics/biology modules the branch's own 14-module check never covered
+// (edlisfraedi-2e m42296/m42714/m42359/m42493, liffraedi-2e m66590) — a
+// regression worse than the defect this task exists to fix. Fixed by
+// dedupeAltSegments(): let BOTH copies create their segment normally, then
+// merge duplicates AFTER both exist and repoint every reference to the
+// survivor — so it never has to guess which copy renders.
+describe('§C81 Task 10 review round 2 — duplicate alt data is never lost, only merged', () => {
+  // Reproduces the actual failure shape: a <list> nested in a <para> that is
+  // a direct child of <exercise>'s <problem> (physics's real shape) — NOT
+  // wrapped in <example>, where extraction's own list-in-example re-walk
+  // (processExample) is the duplicate source. Here the para's OWN inline
+  // capture is one copy; processList's per-item capture (called via
+  // emitExerciseSection's nested-list split) is the other.
+  it('a <list> nested in a <para> inside <problem>: alt survives on the item, not merely the para', () => {
+    const cnxml = wrap(
+      `<exercise id="ex1"><problem id="prob1">
+         <para id="q1">Pick one, see <media id="med-p1" alt="Setup diagram"><image src="p.png"/></media>:
+           <list id="opts-1" list-type="enumerated"><item id="it1">alpha</item><item id="it2">beta</item></list>
+         </para>
+       </problem></exercise>`
+    );
+    const { segments, structure } = extractSegments(cnxml);
+    const alts = segments.filter((s) => s.type === 'alt');
+
+    // Exactly one alt segment survives (the duplicate is merged, not both kept
+    // and not both lost) and it carries the REAL text, never empty.
+    expect(alts).toHaveLength(1);
+    expect(alts[0].text).toBe('Setup diagram');
+    expect(alts[0].text).not.toBe('');
+
+    // Whichever structural reference the injector actually reads —
+    // structure.inlineMedia (the para's own capture) — must resolve to a
+    // REAL segment id with REAL text, not an id pointing at nothing and not
+    // an entry with no `alt` key at all (the exact regression shape: `{"id":
+    // "...", "src": "..."}` with no `alt`).
+    const inlineEntry = structure.inlineMedia.find((m) => m.id === 'med-p1');
+    expect(inlineEntry.alt).toBeDefined();
+    expect(inlineEntry.alt.segmentId).toBeDefined();
+    const resolvedText = segments.find((s) => s.id === inlineEntry.alt.segmentId)?.text;
+    expect(resolvedText).toBe('Setup diagram');
+  });
+
+  // Reproduces m66449's exact shape: a <figure> with TWO <subfigure>-wrapped
+  // <media> children, processed by processFigure — whose OWN media-matching
+  // regex is non-global and only ever reaches the FIRST <media>. Before this
+  // rework, BOTH subfigures' inline captures were suppressed as
+  // "figure-owned", but only the first ever had an owner — the second lost
+  // its alt entirely, corpus-measured as exactly one real instance across
+  // 1,192 modules. Fixed for free by the merge-after design: an entry with no
+  // duplicate anywhere in the module is never touched by either merge rule.
+  it('a <figure> with two <subfigure> media (only the first reachable by processFigure): BOTH alts survive', () => {
+    const cnxml = wrap(
+      `<note id="note-1"><para id="p1">
+         <figure id="fig-1"><subfigure id="sub-a">
+           <media id="med-a" alt="Part a description"><image src="a.png"/></media>
+         </subfigure><subfigure id="sub-b">
+           <media id="med-b" alt="Part b description"><image src="b.png"/></media>
+         </subfigure><caption>Two-part figure</caption></figure>
+       </para></note>`
+    );
+    const { segments } = extractSegments(cnxml);
+    const alts = segments.filter((s) => s.type === 'alt');
+    const texts = alts.map((a) => a.text).sort();
+
+    // Both descriptions present — neither subfigure's alt was dropped.
+    expect(texts).toEqual(['Part a description', 'Part b description']);
+    // Exactly two: processFigure's own emission for subfigure 'a' merges with
+    // its inline-capture duplicate (both share the literal id `med-a-alt`);
+    // subfigure 'b' has no processFigure emission to merge with (the regex
+    // never reaches it), so its own inline capture survives untouched.
+    expect(alts).toHaveLength(2);
+  });
+});

@@ -226,39 +226,25 @@ function extractInlineText(
 
   // Handle inline media elements (images within paragraphs)
   if (inlineMediaMap) {
-    // §C81 Task 10: a <media> nested inside a <figure> or <list> WITHIN THIS SAME
-    // text is already reached by a dedicated structural walk (processFigure /
-    // processList / emitExerciseSection's own list split) wherever this call's
-    // caller sits — top-level, in <example>, or in <problem>/<solution>. Neither
-    // container is modeled by this function, so the generic <media> match below
-    // still fires and would otherwise claim a SECOND, duplicate alt for the
-    // identical element. Measured on real corpus data: 5 duplicate alt seg-ids in
-    // chemistry (m68739.cnxml — a <list> nested in a <para> that is a direct
-    // child of <example>; m68764.cnxml — a <figure> nested in a <para> that is a
-    // direct child of <problem>) plus 4 duplicate-text emissions in organic's
-    // preview (all the figure-in-para shape; organic media are id-less, so the
-    // duplicate lands on distinct positional ids rather than a colliding one).
-    // Compute the figure/list spans on THIS text (never the whole module) and
-    // suppress only the redundant entry's altText — drainInlineMediaAlts already
-    // treats a falsy altText as "nothing to emit here" — so the placeholder,
-    // counters.media, and every other field stay untouched and [[MEDIA:N]]
-    // numbering for every OTHER inline media is unaffected.
-    const hasNestingToCheck =
-      /<media\b/.test(text) && (/<figure\b/.test(text) || /<list\b/.test(text));
-    const ownerSpansFor = (tagName) =>
-      hasNestingToCheck
-        ? extractNestedElements(text, tagName)
-            .map((el) => {
-              const start = text.indexOf(el.fullMatch);
-              return start === -1 ? null : { start, end: start + el.fullMatch.length };
-            })
-            .filter(Boolean)
-        : [];
-    const nestedFigureSpans = ownerSpansFor('figure');
-    const nestedListSpans = ownerSpansFor('list');
-
+    // §C81 Task 10 (reworked after review): a <media> nested inside a <figure>
+    // or <list> WITHIN THIS SAME text is ALSO reached by a dedicated structural
+    // walk elsewhere (processFigure / processList), which can produce a
+    // duplicate alt segment for the identical element. An EARLIER version of
+    // this fix suppressed the DATA (altText) here, guessing which of the two
+    // copies the injector would render based on structural "ownership". That
+    // guess is wrong for some shapes: cnxml-inject.js's exercise/note builders
+    // FLATTEN a list nested in a para and render the PARA-LEVEL inline entry —
+    // exactly the one that was being suppressed — while the separately-built
+    // processList segment sits on a path buildCnxml never reaches for that
+    // shape. Suppressing the wrong copy's data turned "duplicate, English
+    // fallback" into "no alt at all" for physics/biology modules outside the
+    // 14 this branch's own tests covered — a regression worse than the defect
+    // this task exists to fix. See dedupeAltSegments() below, which merges
+    // duplicates AFTER both copies exist (so it never has to guess which one
+    // renders) instead of suppressing before either is created. This capture
+    // path is intentionally back to computing the real altText unconditionally.
     const mediaPattern = /<media([^>]*)>([\s\S]*?)<\/media>/g;
-    text = text.replace(mediaPattern, (match, attrs, mediaContent, offset) => {
+    text = text.replace(mediaPattern, (match, attrs, mediaContent) => {
       counters.media = (counters.media || 0) + 1;
       const placeholder = `[[MEDIA:${counters.media}]]`;
 
@@ -269,16 +255,10 @@ function extractInlineText(
       const iframeMatch = mediaContent.match(/<iframe([^>]*)\/?>/);
       const iframeAttrs = iframeMatch ? parseAttributes(iframeMatch[1]) : {};
 
-      // §C81 Task 10: this element's alt is owned by processFigure/processList
-      // instead — see the comment above the span computation.
-      const ownedByFigureOrList =
-        nestedFigureSpans.some((s) => offset >= s.start && offset < s.end) ||
-        nestedListSpans.some((s) => offset >= s.start && offset < s.end);
-
       inlineMediaMap.set(placeholder, {
         id: parsedAttrs.id || null,
         class: parsedAttrs.class || null,
-        altText: ownedByFigureOrList ? '' : parsedAttrs.alt || imageAttrs.alt || '', // §C81: raw; the caller segments it
+        altText: parsedAttrs.alt || imageAttrs.alt || '', // §C81: raw; the caller segments it
         mediaIndex: counters.media, // §C81: N in [[MEDIA:N]]
         src: imageAttrs.src || '',
         mimeType: imageAttrs['mime-type'] || null,
@@ -550,6 +530,126 @@ function drainInlineMediaAlts(inlineMediaMap, addSegment) {
 }
 
 /**
+ * §C81 Task 10 (reworked after review). Some `<media>` are reached by TWO
+ * independent structural walks — a `<list>` nested in a `<para>` inside
+ * `<example>`; a `<figure>` nested in a `<para>` anywhere — and each walk
+ * creates its OWN `alt` segment for the identical physical element. Which
+ * copy `cnxml-inject.js` actually RENDERS is not predictable from extraction
+ * alone: its exercise/note builders flatten a nested list into the enclosing
+ * para and render THAT copy, while the separately-built `processList` segment
+ * sits on a path the injector never reaches for that shape — the opposite of
+ * what a naive "the structural walk owns it" rule would assume. So this does
+ * NOT try to guess which copy survives at capture time; it runs once, after
+ * every walk has already created its own segment normally, and MERGES true
+ * duplicates: keep exactly one alt SEGMENT, repoint every structural
+ * reference (a figure's `media.alt`, a standalone `media` node's `alt`, an
+ * `inlineMedia[]` entry's `alt`) that pointed at a removed duplicate to the
+ * survivor's id instead. Whichever entry the injector resolves, it now
+ * resolves to the SAME translated segment — so this can never turn "English
+ * fallback" into "no alt attribute at all", the failure an earlier,
+ * suppress-at-capture version of this fix produced (measured: 14 alt
+ * attributes lost across 5 physics/biology modules outside the two books
+ * this branch's own corpus tests cover).
+ *
+ * Two duplicate signatures, both PROVABLY safe (never merges unrelated
+ * content):
+ *  - Literal id collision: `altElementId()` is deterministic from the
+ *    media's own `id`, so two `alt` segments sharing one id can only mean the
+ *    SAME id-bearing `<media>` was captured twice — there is no other way for
+ *    two segments to compute the identical id (CNXML ids are unique per
+ *    document). No text comparison needed; always safe to collapse to one.
+ *  - Identical alt TEXT among POSITIONALLY-numbered ids only (id-less media:
+ *    `altElementId()`'s two independent counters — `media-N-alt` for inline
+ *    captures, `standalone-N-alt` for the top-level scan — never collide on
+ *    id even for the same element, so text is the only signal). Restricting
+ *    to positional ids (not id-bearing ones, which are already handled by the
+ *    id-collision rule above) keeps this from ever touching content that
+ *    already has its own reliable identity.
+ *
+ * A `<figure>` whose OWN extraction regex only reaches its first `<media>`
+ * (multi-`<subfigure>` figures — processFigure's match is non-global) is
+ * handled correctly for free: the uncaptured subfigure's inline alt has no
+ * duplicate anywhere in the module, so it is never touched by either rule
+ * and survives as its own segment — no processFigure change needed.
+ *
+ * @param {Array} segments - mutated in place (duplicate entries spliced out)
+ * @param {Object} structure - walked and mutated in place; call AFTER
+ *   `structure.inlineMedia` has been built, so its entries are reachable too
+ */
+function dedupeAltSegments(segments, structure) {
+  const removeIdx = new Set();
+  const remap = new Map(); // removed segmentId -> survivor segmentId
+
+  // Rule 1: literal id collisions.
+  const byId = new Map();
+  segments.forEach((seg, idx) => {
+    if (seg.type !== 'alt') return;
+    if (!byId.has(seg.id)) byId.set(seg.id, []);
+    byId.get(seg.id).push(idx);
+  });
+  for (const idxs of byId.values()) {
+    if (idxs.length < 2) continue;
+    for (let i = 1; i < idxs.length; i++) removeIdx.add(idxs[i]);
+    // Same id already on every entry in the group — nothing to remap.
+  }
+
+  // Rule 2: identical text where AT LEAST ONE side is a positionally-numbered
+  // (id-less-media) alt id. A positional id can only arise from an id-less
+  // <media> — never a literal collision (Rule 1 already covers same-id) — so
+  // its OTHER copy necessarily has a DIFFERENT id. That other id is not
+  // always ALSO positional: processFigure anchors on `mediaAttrs.id ||
+  // figure.id`, so an id-less <media> inside an id-BEARING <figure> gets a
+  // figure-anchored id (e.g. `fig-00006-alt`) from processFigure while its
+  // inline-capture duplicate still falls back to `media-N-alt` — two
+  // DIFFERENT id "kinds" for the same physical duplicate (measured:
+  // organic's m00033/m00035/m00038). Requiring only ONE side positional still
+  // guards against merging two DIFFERENT id-bearing, non-positional segments
+  // that coincidentally share text — genuinely different, properly-anchored
+  // content is left alone.
+  const positional = /:alt:(?:media|standalone)-\d+-alt$/;
+  const byText = new Map();
+  segments.forEach((seg, idx) => {
+    if (seg.type !== 'alt' || removeIdx.has(idx)) return;
+    if (!byText.has(seg.text)) byText.set(seg.text, []);
+    byText.get(seg.text).push(idx);
+  });
+  for (const idxs of byText.values()) {
+    if (idxs.length < 2) continue;
+    if (!idxs.some((i) => positional.test(segments[i].id))) continue;
+    const survivorIdx = idxs[0];
+    for (let i = 1; i < idxs.length; i++) {
+      removeIdx.add(idxs[i]);
+      remap.set(segments[idxs[i]].id, segments[survivorIdx].id);
+    }
+  }
+
+  if (removeIdx.size === 0) return;
+
+  // Remove the duplicate segments (descending order keeps earlier indices valid).
+  for (const idx of [...removeIdx].sort((a, b) => b - a)) segments.splice(idx, 1);
+
+  // Repoint every structural alt reference from a removed id to its survivor.
+  // Type-agnostic on purpose: `{segmentId, text}` under an `alt` key is the
+  // ONE shape used for this everywhere it appears — a figure's `media.alt`,
+  // a standalone `media` node's `alt`, and an `inlineMedia[]` entry's `alt`
+  // (only the last is reached via `inlineMediaMap`, not `structure.content`,
+  // which is why this walks the whole structure object, not just `.content`).
+  const walk = (node) => {
+    if (Array.isArray(node)) {
+      node.forEach(walk);
+      return;
+    }
+    if (node && typeof node === 'object') {
+      if (node.alt && typeof node.alt === 'object' && node.alt.segmentId) {
+        if (remap.has(node.alt.segmentId)) node.alt.segmentId = remap.get(node.alt.segmentId);
+      }
+      for (const key of Object.keys(node)) walk(node[key]);
+    }
+  };
+  walk(structure);
+}
+
+/**
  * Extract all segments from a CNXML document.
  * @param {string} cnxml - Raw CNXML content
  * @param {Object} options - Extraction options
@@ -766,6 +866,13 @@ function extractSegments(cnxml, options = {}) {
       return entry;
     });
   }
+
+  // §C81 Task 10: merge duplicate alt segments now that every structural walk
+  // (figure/standalone media above, inline media just above) has had its own
+  // chance to create one. Must run AFTER structure.inlineMedia is built, so
+  // its entries are reachable by the walk. See dedupeAltSegments()'s own
+  // comment for why this runs after rather than suppressing during capture.
+  dedupeAltSegments(segments, structure);
 
   if (inlineTablesMap.size > 0) {
     structure.inlineTables = Array.from(inlineTablesMap.entries())
