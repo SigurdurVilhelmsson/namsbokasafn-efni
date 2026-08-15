@@ -161,12 +161,80 @@ describe('standalone top-level media alt (§C81)', () => {
             <para id="p1">Text <media alt="Inline second"><image src="i.png"/></media> end.</para>`)
     );
     const alts = segments.filter((s) => s.type === 'alt');
-    // Pinning the defect's actual shape: two standalone-namespaced segments, the
-    // second a duplicate extraction of the para-inline media's alt text.
+    // Pinning the defect's actual shape: standalone-1-alt (the genuine standalone
+    // media), then media-1-alt (§C81 Task 4: the SAME <media> also gets segmented
+    // via the inline path, since it sits inside a <para>'s inline text), then
+    // standalone-2-alt (the pre-existing double-extraction: processTopLevelContent's
+    // media scan finds the same element again because <para> is never stripped).
+    // The last one is the tracked defect; the first two are correct, independent
+    // extractions of two different <media> elements.
     expect(alts.map((a) => a.id)).toEqual([
       'm00001:alt:standalone-1-alt',
+      'm00001:alt:media-1-alt',
       'm00001:alt:standalone-2-alt',
     ]);
-    expect(alts.map((a) => a.text)).toEqual(['Standalone first', 'Inline second']);
+    expect(alts.map((a) => a.text)).toEqual(['Standalone first', 'Inline second', 'Inline second']);
+  });
+});
+
+describe('para-inline media alt (§C81)', () => {
+  const cnxml = wrap(
+    `<para id="p1">Text with <media id="med-inline" alt="An inline chart"><image src="e.png"/></media> inside.</para>`
+  );
+
+  it('emits the alt segment immediately after the paragraph segment', () => {
+    const { segments } = extractSegments(cnxml);
+    const types = segments.map((s) => s.type);
+    expect(types.indexOf('alt')).toBe(types.indexOf('para') + 1);
+  });
+
+  it('records the segment reference on structure.inlineMedia', () => {
+    const { structure } = extractSegments(cnxml);
+    expect(structure.inlineMedia).toHaveLength(1);
+    expect(structure.inlineMedia[0].alt).toEqual({
+      segmentId: 'm00001:alt:med-inline-alt',
+      text: 'An inline chart',
+    });
+  });
+
+  // CONTROL: extractInlineText stays pure — calling it directly must not emit segments
+  it('does not emit segments from extractInlineText itself', () => {
+    const { segments } = extractSegments(wrap(`<para id="p9">No media here.</para>`));
+    expect(segments.filter((s) => s.type === 'alt')).toHaveLength(0);
+  });
+
+  // CONTROL: no working fields (altText, mediaIndex) leak into the committed structure
+  it('strips altText and mediaIndex working fields from structure.inlineMedia', () => {
+    const { structure } = extractSegments(cnxml);
+    expect(structure.inlineMedia[0]).not.toHaveProperty('altText');
+    expect(structure.inlineMedia[0]).not.toHaveProperty('mediaIndex');
+  });
+
+  // 🔴 RECURSION HAZARD (carried forward from Task 7): resolving an inline-media alt
+  // whose segmentId is present in `segments` must not recurse through getSeg. This
+  // drives the object-shaped alt through the injector end-to-end, the exact shape
+  // that reproduced RangeError: Maximum call stack size exceeded before Task 7's fix.
+  it('does not recurse when the inline-media alt segment id is present in segments (Task 7 hazard)', async () => {
+    const { buildCnxml } = await import('../cnxml-inject.js');
+    const { segments, structure, equations } = extractSegments(cnxml);
+    const segMap = new Map(segments.map((s) => [s.id, s.text]));
+    expect(segMap.has('m00001:alt:med-inline-alt')).toBe(true);
+    // Positive control: overwrite the alt segment's text with a distinct translated value so
+    // the assertion below can only pass if getSeg's resolution actually ran (not just the
+    // English `alt.text` fallback) — same recursion exercise, now discriminating.
+    segMap.set('m00001:alt:med-inline-alt', 'Íslensk lýsing');
+    expect(() => buildCnxml(structure, segMap, equations, cnxml)).not.toThrow();
+    const result = buildCnxml(structure, segMap, equations, cnxml);
+    expect(result.cnxml).toContain('Íslensk lýsing');
+    expect(result.cnxml).not.toContain('An inline chart');
+  });
+
+  // No alt attribute at all — must not emit an alt segment.
+  it('emits no alt segment when the inline media has no alt attribute', () => {
+    const { segments, structure } = extractSegments(
+      wrap(`<para id="p1">Text <media id="med-noalt"><image src="e.png"/></media> inside.</para>`)
+    );
+    expect(segments.filter((s) => s.type === 'alt')).toHaveLength(0);
+    expect(structure.inlineMedia[0].alt).toBeUndefined();
   });
 });

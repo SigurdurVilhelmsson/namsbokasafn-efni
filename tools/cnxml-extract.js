@@ -220,7 +220,8 @@ function extractInlineText(
       inlineMediaMap.set(placeholder, {
         id: parsedAttrs.id || null,
         class: parsedAttrs.class || null,
-        alt: parsedAttrs.alt || imageAttrs.alt || '',
+        altText: parsedAttrs.alt || imageAttrs.alt || '', // §C81: raw; the caller segments it
+        mediaIndex: counters.media, // §C81: N in [[MEDIA:N]]
         src: imageAttrs.src || '',
         mimeType: imageAttrs['mime-type'] || null,
         embedSrc: iframeAttrs.src || '',
@@ -431,6 +432,34 @@ function extractInlineText(
 }
 
 /**
+ * §C81: emit alt segments for any inline media the most recent extractInlineText()
+ * call(s) collected into `inlineMediaMap` but not yet segmented. Callers invoke this
+ * immediately AFTER the paragraph's own `addSegment('para', …)` call, so the alt
+ * follows the text that gives it context.
+ *
+ * `inlineMediaMap` and `addSegment` are threaded as explicit parameters (not closed
+ * over) because the three call sites — processTopLevelContent, processExample,
+ * processNote — are standalone functions, not nested inside extractSegments; each
+ * already receives both as its own parameters, the same threading every other
+ * inline-media-aware helper in this file uses.
+ *
+ * Idempotent per media entry (drains only what has not already been drained), so an
+ * extra call is harmless and a missing one silently drops that paragraph's alt.
+ * `inlineMediaMap` is `null` at call sites reached without it (mirrors every other
+ * `if (inlineMediaMap)` guard in this file for the same parameter) — a no-op then.
+ * @param {Map|null} inlineMediaMap
+ * @param {Function} addSegment
+ */
+function drainInlineMediaAlts(inlineMediaMap, addSegment) {
+  if (!inlineMediaMap) return;
+  for (const [, media] of inlineMediaMap) {
+    if (media.alt !== undefined || !media.altText) continue; // already drained, or nothing to emit
+    const segId = addSegment('alt', media.altText, altElementId(media.id, media.mediaIndex));
+    media.alt = segId ? { segmentId: segId, text: media.altText } : undefined;
+  }
+}
+
+/**
  * Extract all segments from a CNXML document.
  * @param {string} cnxml - Raw CNXML content
  * @param {Object} options - Extraction options
@@ -638,10 +667,14 @@ function extractSegments(cnxml, options = {}) {
 
   // Add inline media and tables to structure
   if (inlineMediaMap.size > 0) {
-    structure.inlineMedia = Array.from(inlineMediaMap.entries()).map(([placeholder, data]) => ({
-      placeholder,
-      ...data,
-    }));
+    structure.inlineMedia = Array.from(inlineMediaMap.entries()).map(([placeholder, data]) => {
+      // §C81: altText/mediaIndex are working fields for drainInlineMediaAlts(),
+      // not for the committed structure JSON.
+      const entry = { placeholder, ...data };
+      delete entry.altText;
+      delete entry.mediaIndex;
+      return entry;
+    });
   }
 
   if (inlineTablesMap.size > 0) {
@@ -971,6 +1004,7 @@ function processTopLevelContent(
           }
           if (text) {
             paraElement.segmentId = addSegment('para', text, item.id);
+            drainInlineMediaAlts(inlineMediaMap, addSegment);
           }
           elements.push(paraElement);
         }
@@ -1307,10 +1341,12 @@ function processExample(
       inlineTablesMap
     );
     if (text && text.trim()) {
+      const paraSegmentId = addSegment('para', text, para.id);
+      drainInlineMediaAlts(inlineMediaMap, addSegment);
       const paraElement = {
         type: 'para',
         id: para.id,
-        segmentId: addSegment('para', text, para.id),
+        segmentId: paraSegmentId,
       };
       if (paraTitle) {
         paraElement.title = paraTitle;
@@ -1561,6 +1597,7 @@ function processNote(
     );
     if (text) {
       const segId = addSegment('para', text, para.id);
+      drainInlineMediaAlts(inlineMediaMap, addSegment);
       noteStructure.content.push({
         type: 'para',
         id: para.id,
