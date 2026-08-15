@@ -2231,7 +2231,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'list':
       return buildList(element, getSeg, equations, ctx);
     case 'media':
-      return buildMedia(element);
+      return buildMedia(element, getSeg);
     default:
       return null;
   }
@@ -3834,7 +3834,7 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
         }
         if (bc.type === 'media') {
           const m = (ctx && ctx.inlineMedia ? ctx.inlineMedia : []).find((x) => x.id === bc.id);
-          return m ? buildMedia({ ...m }) : '';
+          return m ? buildMedia({ ...m }, getSeg) : '';
         }
         return '';
       })
@@ -3884,12 +3884,14 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
  * Build a standalone media element (not nested inside a figure).
  * Infers mime-type from the file extension of the src attribute.
  * @param {Object} element - Media element structure
+ * @param {Function} [getSeg] - Function to get segment text, for the {segmentId,text} alt shape
  * @returns {string} CNXML string for this media element
  */
-function buildMedia(element) {
+function buildMedia(element, getSeg) {
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const classAttr = element.class ? ` class="${element.class}"` : '';
-  const alt = element.alt ? ` alt="${escapeXml(element.alt)}"` : '';
+  const altText = readAlt(element.alt, getSeg);
+  const alt = altText ? ` alt="${escapeXml(altText)}"` : '';
 
   const lines = [];
   lines.push(`<media${idAttr}${classAttr}${alt}>`);
