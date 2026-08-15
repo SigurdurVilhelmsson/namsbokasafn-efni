@@ -238,3 +238,146 @@ describe('para-inline media alt (§C81)', () => {
     expect(structure.inlineMedia[0].alt).toBeUndefined();
   });
 });
+
+// 🔴 REVIEW FIX (Critical): drainInlineMediaAlts originally walked the WHOLE shared
+// inlineMediaMap, so an entry left undrained by an unwired call site (list items,
+// exercise problem/solution paras) sat there until whatever LATER literal-'para' site
+// fired anywhere else in the module — attaching that item's/exercise-para's alt to an
+// unrelated paragraph. Fixed by scoping the drain to a side channel
+// (lastInlineMediaPlaceholders) that only ever holds the MOST RECENT extractInlineText()
+// call's own placeholders, and wiring the drain at every addSegment site whose preceding
+// extractInlineText() call threads inlineMediaMap — not just the three literal 'para'
+// sites. This block pins the misattribution reproduction and the (now-closed) exercise
+// gap.
+describe('§C81 review fix — drain scoped to the owning segment only', () => {
+  // Exact reproduction of the finding: a <list><item> with inline media, followed by an
+  // unrelated top-level <para> with no media of its own. Before the fix, segment order
+  // came out `title, item, para, alt` — the alt landed after the unrelated para. After
+  // the fix, it must land immediately after its own item.
+  it('a <list><item> alt lands immediately after its own item, not after a later unrelated <para>', () => {
+    const cnxml = wrap(
+      `<list id="L1"><item id="it1">Step <media id="med-item" alt="A list item diagram"><image src="li.png"/></media> shown.</item></list>
+       <para id="p1">Unrelated paragraph with no media of its own.</para>`
+    );
+    const { segments } = extractSegments(cnxml);
+    const types = segments.map((s) => s.type);
+
+    // Precise pin: the whole segment-type sequence, not just an adjacency check.
+    expect(types).toEqual(['title', 'item', 'alt', 'para']);
+
+    // The two properties that matter, stated explicitly (belt + suspenders on the
+    // array-equality pin above): correctly attached to its own item...
+    expect(types.indexOf('alt')).toBe(types.indexOf('item') + 1);
+    // ...and NOT the old bug's signature (attached after the later, unrelated para).
+    expect(types.indexOf('alt')).not.toBe(types.indexOf('para') + 1);
+
+    const alt = segments.find((s) => s.type === 'alt');
+    expect(alt.id).toBe('m00001:alt:med-item-alt');
+    expect(alt.text).toBe('A list item diagram');
+  });
+
+  // A second <list><item> further down the SAME module, to prove the fix isn't just
+  // "the first one happens to work" — each item's alt must land after its OWN item,
+  // not the other item's, even though both entries pass through the one shared
+  // inlineMediaMap.
+  it('two separate <item>s each get their own alt, in their own position, with two unrelated paras between', () => {
+    const cnxml = wrap(
+      `<list id="L1"><item id="it1">First <media id="med-a" alt="Diagram A"><image src="a.png"/></media>.</item></list>
+       <para id="p1">Unrelated.</para>
+       <list id="L2"><item id="it2">Second <media id="med-b" alt="Diagram B"><image src="b.png"/></media>.</item></list>
+       <para id="p2">Also unrelated.</para>`
+    );
+    const { segments } = extractSegments(cnxml);
+    const types = segments.map((s) => s.type);
+    expect(types).toEqual(['title', 'item', 'alt', 'para', 'item', 'alt', 'para']);
+
+    const alts = segments.filter((s) => s.type === 'alt');
+    expect(alts.map((a) => a.id)).toEqual(['m00001:alt:med-a-alt', 'm00001:alt:med-b-alt']);
+    expect(alts.map((a) => a.text)).toEqual(['Diagram A', 'Diagram B']);
+  });
+
+  // The exercise gap this fix closes: emitExerciseSection's addSegment(segType, ...)
+  // calls use the variable 'problem'/'solution', never the literal 'para', so a bare
+  // literal-'para' grep would never have found them — but the scoped drain wires by
+  // "any addSegment whose preceding extractInlineText threaded inlineMediaMap", which
+  // covers them too. Before this fix, a corpus sweep found 258/258 (100%) of real
+  // exercise-context <media alt> elements silently dropped (never segmented at all).
+  it('emits alt segments for inline media inside <problem> AND <solution>, each after its own segment', () => {
+    const cnxml = wrap(
+      `<exercise id="ex1">
+         <problem id="prob1"><para id="q1">Question with <media id="med-q" alt="Question diagram"><image src="q.png"/></media> shown.</para></problem>
+         <solution id="sol1"><para id="a1">Answer with <media id="med-a" alt="Answer diagram"><image src="a.png"/></media> shown.</para></solution>
+       </exercise>`
+    );
+    const { segments } = extractSegments(cnxml);
+    const types = segments.map((s) => s.type);
+    expect(types).toEqual(['title', 'problem', 'alt', 'solution', 'alt']);
+
+    const alts = segments.filter((s) => s.type === 'alt');
+    expect(alts.map((a) => a.id)).toEqual(['m00001:alt:med-q-alt', 'm00001:alt:med-a-alt']);
+    expect(alts.map((a) => a.text)).toEqual(['Question diagram', 'Answer diagram']);
+  });
+
+  // The nested-list-split branch of emitExerciseSection (a <para> immediately followed,
+  // inside the SAME <problem>, by a sibling <list> split out of it) is the other of the
+  // two segType call sites; drainInlineMediaAlts must fire BEFORE the toList(nl)
+  // recursion runs (that recursion calls extractInlineText again for each list item and
+  // would otherwise reset the scoped side channel before the para's own media drained).
+  it('drains a problem para’s own alt before recursing into its sibling nested <list>', () => {
+    const cnxml = wrap(
+      `<exercise id="ex2">
+         <problem id="prob2"><para id="q2">Pick one, see <media id="med-p2" alt="Setup diagram"><image src="p2.png"/></media>:
+           <list id="opts-1" list-type="enumerated"><item>alpha</item><item>beta</item></list>
+         </para></problem>
+       </exercise>`
+    );
+    const { segments } = extractSegments(cnxml);
+    const types = segments.map((s) => s.type);
+    expect(types).toEqual(['title', 'problem', 'alt', 'item', 'item']);
+    const alt = segments.find((s) => s.type === 'alt');
+    expect(alt.id).toBe('m00001:alt:med-p2-alt');
+  });
+
+  // Confirms the three literal-'para' sites (Task 4's original scope) still behave
+  // correctly under the new scoped mechanism — a regression guard for the fix itself,
+  // not a re-test of Task 4 (that coverage lives in the describe blocks above). Split
+  // into three `it`s so each site's result is independently visible.
+  it("processTopLevelContent's top-level <para> still emits alt immediately after it", () => {
+    // NOT asserted as an exact type array here: a bare top-level <para><media> also
+    // triggers the SEPARATE, pre-existing, out-of-scope double-extraction defect
+    // documented above ('pins a PRE-EXISTING double-extraction defect') —
+    // processTopLevelContent's standalone-<media> scan never strips <para>, so this
+    // exact media additionally gets found and segmented a second time as "standalone".
+    // That defect is real but irrelevant to THIS fix (it existed before Task 4 and
+    // before this review fix, and is unrelated to drain scoping) — measured at 0/491
+    // real modules. Assert only what this fix is responsible for: adjacency of the
+    // (first) alt segment to its own para.
+    const { segments } = extractSegments(
+      wrap(`<para id="p1">Text <media id="m1" alt="Top-level"><image src="a.png"/></media>.</para>`)
+    );
+    const types = segments.map((s) => s.type);
+    expect(types.indexOf('alt')).toBe(types.indexOf('para') + 1);
+    expect(segments.filter((s) => s.type === 'alt')[0].text).toBe('Top-level');
+  });
+
+  it("processExample's <para> still emits alt immediately after it", () => {
+    // <example> IS stripped before the standalone-media scan, so this fixture does
+    // not hit the double-extraction defect above — a precise array pin is safe here.
+    const types = extractSegments(
+      wrap(
+        `<example id="ex-1"><para id="ep1">Text <media id="m2" alt="Example"><image src="b.png"/></media>.</para></example>`
+      )
+    ).segments.map((s) => s.type);
+    expect(types).toEqual(['title', 'para', 'alt']);
+  });
+
+  it("processNote's <para> still emits alt immediately after it", () => {
+    // <note> IS stripped before the standalone-media scan — same reasoning as above.
+    const types = extractSegments(
+      wrap(
+        `<note id="note-1"><para id="np1">Text <media id="m3" alt="Note"><image src="c.png"/></media>.</para></note>`
+      )
+    ).segments.map((s) => s.type);
+    expect(types).toEqual(['title', 'para', 'alt']);
+  });
+});

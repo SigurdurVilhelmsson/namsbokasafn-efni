@@ -150,6 +150,25 @@ function elementIdPosition(content, id) {
 let lastInlineAttrs = null;
 
 /**
+ * §C81 FIX (review finding, was Critical): side-channel reporting exactly which
+ * `inlineMediaMap` placeholders the MOST RECENT `extractInlineText()` call added.
+ * `inlineMediaMap` is one Map shared for the whole module — populated by every
+ * `extractInlineText()` call that threads it, across many different containers
+ * (paragraphs, list items, exercise problem/solution paras). A drain that walked
+ * the whole map (the original implementation) could pick up an entry left over
+ * from an EARLIER, unrelated call and attach its alt segment to the WRONG
+ * paragraph/item — reproduced: a `<list><item>` media's alt landing after a later,
+ * unrelated top-level `<para>`. Scoping the drain to only this array closes that:
+ * a caller can only ever drain the placeholders its OWN immediately-preceding
+ * `extractInlineText()` call just added, never anyone else's.
+ * Reset (to `[]`, not left stale) on every call, matching `lastInlineAttrs`'s
+ * finalization below — including calls that never populate it, so a title/caption
+ * extraction (no `inlineMediaMap` passed) between an item's own extract+drain
+ * pair can never carry a *previous* item's placeholders forward.
+ */
+let lastInlineMediaPlaceholders = [];
+
+/**
  * Extract inline text from element content, handling nested elements.
  * Replaces MathML with [[MATH:n]] placeholders.
  * Replaces inline media with [[MEDIA:n]] placeholders.
@@ -175,6 +194,8 @@ function extractInlineText(
   const collectedTermAttrs = [];
   const collectedFootnoteAttrs = [];
   const collectedEmphasisAttrs = [];
+  // §C81: placeholders THIS call adds to inlineMediaMap — see lastInlineMediaPlaceholders.
+  const collectedMediaPlaceholders = [];
 
   // Replace MathML with placeholders
   // First handle <equation> wrappers around <m:math> — preserve wrapper metadata in mathMap
@@ -228,6 +249,7 @@ function extractInlineText(
         width: iframeAttrs.width || '',
         height: iframeAttrs.height || '',
       });
+      collectedMediaPlaceholders.push(placeholder);
 
       return placeholder;
     });
@@ -428,35 +450,66 @@ function extractInlineText(
     lastInlineAttrs = null;
   }
 
+  // §C81 FIX: always reset — including to [] — so a call that adds no inline media
+  // (or is never passed inlineMediaMap at all) can't leave a PRIOR call's placeholders
+  // reachable for some later, unrelated drainInlineMediaAlts() to pick up.
+  lastInlineMediaPlaceholders = collectedMediaPlaceholders;
+
   return text;
 }
 
 /**
- * §C81: emit alt segments for any inline media the most recent extractInlineText()
- * call(s) collected into `inlineMediaMap` but not yet segmented. Callers invoke this
- * immediately AFTER the paragraph's own `addSegment('para', …)` call, so the alt
- * follows the text that gives it context.
+ * §C81: emit alt segments for the inline media the MOST RECENT `extractInlineText()`
+ * call added — never anything older. Callers invoke this immediately after the
+ * `addSegment()` that owns that same text (whatever its type — `'para'`, `'item'`,
+ * or an exercise's `segType`), so the alt follows the segment that gives it context.
+ *
+ * 🔴 FIX (review finding, was Critical): the original implementation iterated the
+ * WHOLE shared `inlineMediaMap` here, draining every undrained entry regardless of
+ * which `extractInlineText()` call produced it. Since that Map is populated by many
+ * different containers across a module (paragraphs, list items, exercise paras —
+ * see the call-site enumeration in the task report), an entry from a call site that
+ * had no drain wired (e.g. a `<list><item>`) sat undrained until whatever LATER
+ * literal-`'para'` site happened to fire anywhere else in the module — attaching
+ * that item's alt to an unrelated paragraph. Reproduced against the real extractor:
+ * segment order came out `title, item, para, alt`, the alt landing after `p1`, not
+ * after its own `item`. Scoping the drain to `lastInlineMediaPlaceholders` (set by
+ * `extractInlineText()` on every call, reset even when empty) makes that
+ * misattribution structurally impossible: a caller can only ever drain the
+ * placeholders its OWN immediately-preceding `extractInlineText()` call just added.
  *
  * `inlineMediaMap` and `addSegment` are threaded as explicit parameters (not closed
- * over) because the three call sites — processTopLevelContent, processExample,
- * processNote — are standalone functions, not nested inside extractSegments; each
- * already receives both as its own parameters, the same threading every other
- * inline-media-aware helper in this file uses.
+ * over) because the call sites are standalone functions, not nested inside
+ * `extractSegments`; each already receives both as its own parameters, the same
+ * threading every other inline-media-aware helper in this file uses.
+ * `lastInlineMediaPlaceholders` itself is module-scoped (mirrors `lastInlineAttrs`),
+ * so it needs no parameter.
  *
- * Idempotent per media entry (drains only what has not already been drained), so an
- * extra call is harmless and a missing one silently drops that paragraph's alt.
+ * MUST be called before any OTHER `extractInlineText()` call runs (including a
+ * recursive one, e.g. `processList`'s nested-list recursion) — that next call
+ * resets the side channel to ITS OWN placeholders. Every call site in this file
+ * drains immediately after its own `addSegment()`, before recursing or looping to
+ * a sibling element, which satisfies this.
+ *
+ * Idempotent per media entry (drains only what has not already been drained) and
+ * clears the side channel once read, so an extra call is harmless. A call site
+ * with no drain wired now, at worst, silently DROPS that alt (never misattributes
+ * it) — the side channel is overwritten by the very next `extractInlineText()`
+ * call regardless of whether anyone drained it first.
  * `inlineMediaMap` is `null` at call sites reached without it (mirrors every other
  * `if (inlineMediaMap)` guard in this file for the same parameter) — a no-op then.
  * @param {Map|null} inlineMediaMap
  * @param {Function} addSegment
  */
 function drainInlineMediaAlts(inlineMediaMap, addSegment) {
-  if (!inlineMediaMap) return;
-  for (const [, media] of inlineMediaMap) {
-    if (media.alt !== undefined || !media.altText) continue; // already drained, or nothing to emit
+  if (!inlineMediaMap || lastInlineMediaPlaceholders.length === 0) return;
+  for (const placeholder of lastInlineMediaPlaceholders) {
+    const media = inlineMediaMap.get(placeholder);
+    if (!media || media.alt !== undefined || !media.altText) continue; // already drained, or nothing to emit
     const segId = addSegment('alt', media.altText, altElementId(media.id, media.mediaIndex));
     media.alt = segId ? { segmentId: segId, text: media.altText } : undefined;
   }
+  lastInlineMediaPlaceholders = [];
 }
 
 /**
@@ -1481,18 +1534,26 @@ function emitExerciseSection(
       textContent = textContent.trim();
       if (textContent) {
         const text = toText(textContent);
-        if (text)
+        if (text) {
+          // §C81: drain BEFORE the toList(nl) loop below — that recursion calls
+          // extractInlineText again and would reset the scoped side channel first.
+          const segId = addSegment(segType, text, para.id);
+          drainInlineMediaAlts(inlineMediaMap, addSegment);
           content.push({
             type: 'para',
             id: para.id,
-            segmentId: addSegment(segType, text, para.id),
+            segmentId: segId,
           });
+        }
       }
       for (const nl of nestedLists) content.push(toList(nl));
     } else {
       const text = toText(para.content);
-      if (text)
-        content.push({ type: 'para', id: para.id, segmentId: addSegment(segType, text, para.id) });
+      if (text) {
+        const segId = addSegment(segType, text, para.id);
+        drainInlineMediaAlts(inlineMediaMap, addSegment);
+        content.push({ type: 'para', id: para.id, segmentId: segId });
+      }
     }
   }
   return content;
@@ -1757,6 +1818,10 @@ function processList(
       const itemSegId = text
         ? addSegment('item', text, item.id || `${list.id}-item-${i + 1}`)
         : null;
+      // §C81: drain BEFORE recursing into nested lists — that recursion calls
+      // extractInlineText again for each nested item and would reset the scoped
+      // side channel before this item's own media got a chance to drain.
+      drainInlineMediaAlts(inlineMediaMap, addSegment);
 
       // Recursively process nested lists
       const children = nestedLists.map((nl) =>
@@ -1807,6 +1872,7 @@ function processList(
       );
       if (text) {
         const itemId = addSegment('item', text, item.id || `${list.id}-item-${i + 1}`);
+        drainInlineMediaAlts(inlineMediaMap, addSegment);
         const itemEntry = {
           id: item.id,
           segmentId: itemId,
