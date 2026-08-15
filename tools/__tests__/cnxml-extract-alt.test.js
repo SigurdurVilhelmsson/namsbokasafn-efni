@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { extractSegments } from '../cnxml-extract.js';
+import { extractSegments as extractForOrder } from '../cnxml-extract.js';
 
 // NOTE: the brief's fixture set `module-id="m00001"` as a bare <document>
 // attribute, but extractModuleId() only ever reads <md:content-id> (see every
@@ -379,5 +380,88 @@ describe('§C81 review fix — drain scoped to the owning segment only', () => {
       )
     ).segments.map((s) => s.type);
     expect(types).toEqual(['title', 'para', 'alt']);
+  });
+});
+
+describe('all three alt positions in one module (§C81)', () => {
+  // NOTE: the brief's fixture set module-id="m00002" as a bare <document>
+  // attribute, but extractModuleId() only ever reads <md:content-id> (same
+  // gap already documented at the top of this file for the m00001 fixture)
+  // — a bare attribute resolves moduleId to null -> 'unknown'. Added the
+  // <metadata> block so the fixture actually exercises the id-anchored
+  // assertions below; no assertion value was changed from the brief.
+  const cnxml = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" module-id="m00002">
+<title>T</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+<md:content-id>m00002</md:content-id>
+<md:title>T</md:title>
+</metadata>
+<content>
+  <figure id="fig-a">
+    <media id="mf" alt="Figure alt"><image src="1.png"/></media>
+    <caption>Cap</caption>
+  </figure>
+  <para id="p1">Text <media id="mp" alt="Para alt"><image src="2.png"/></media> more.</para>
+  <media id="ms" alt="Standalone alt"><image src="3.png"/></media>
+</content>
+</document>`;
+
+  // 🔴 THE BRIEF'S FIXTURE, TAKEN LITERALLY, DOES NOT PRODUCE THREE SEGMENTS.
+  // This fixture's <para id="p1"> is a bare top-level para (a direct child of
+  // <content>, not itself nested inside a figure/list/table/example/exercise/
+  // note) — exactly the trigger for the PRE-EXISTING double-extraction defect
+  // already pinned in the "standalone-media alt" describe block above
+  // ('pins a PRE-EXISTING double-extraction defect (see ledger; fires on 0 of
+  // 491 real modules)'): processTopLevelContent strips every other container
+  // before scanning for standalone <media>, but never strips <para>, so a
+  // <media> that is a direct child of a top-level <para> is extracted TWICE —
+  // once inline (via extractInlineText) and once again by the standalone scan.
+  //
+  // What is NEW here, beyond that already-pinned case: that fixture used
+  // id-LESS media, so the duplicate lands on a DISTINGUISHABLE positional id
+  // (`media-1-alt` vs `standalone-2-alt`). This fixture's media has an
+  // explicit id="mp", so BOTH extractions resolve to the exact same
+  // `altElementId` result and the duplicate segment carries the *identical*
+  // segment id (`m00002:alt:mp-alt` twice) — a silent-overwrite hazard for
+  // any consumer that does `new Map(segments.map(s => [s.id, s.text]))`
+  // (e.g. the injector's own getSeg, and the recursion-hazard test at
+  // "does not recurse when the inline-media alt segment id is present in
+  // segments" a few describes above, which builds exactly that Map).
+  //
+  // MEASURED SCOPE (same method as the already-pinned defect): the ledger's
+  // own corpus finding — "every real in-para <media> ... sits inside a <para>
+  // that is itself inside a stripped container" — means this exact shape
+  // (bare top-level <para> holding id-bearing inline media) does not occur in
+  // either in-scope book either; see the §C81 corpus control below, which
+  // asserts zero positional alt ids across real chemistry source.
+  //
+  // Fixing this is OUT OF SCOPE for Task 8 (test-only). This test therefore
+  // pins CURRENT behaviour, not the brief's ideal, so a genuine ordering
+  // regression between the three handlers still goes red: the four alt texts
+  // must still read figure → para → para(duplicate) → standalone.
+  // ⚠️ THIS TEST IS EXPECTED TO FAIL once <para> stripping lands ahead of the
+  // standalone-media scan (see the sibling pinned-defect comment) — at that
+  // point this fixture should collapse to exactly three segments, matching
+  // the brief's original assertion. Update it then; do not delete it without
+  // replacing its ordering coverage.
+  it('emits alt segments in document order (pins the pre-existing double-extraction defect, now with a colliding id)', () => {
+    const { segments } = extractForOrder(cnxml);
+    const alts = segments.filter((s) => s.type === 'alt');
+    expect(alts.map((a) => a.text)).toEqual([
+      'Figure alt',
+      'Para alt',
+      'Para alt',
+      'Standalone alt',
+    ]);
+    expect(alts.map((a) => a.id)).toEqual([
+      'm00002:alt:mf-alt',
+      'm00002:alt:mp-alt',
+      'm00002:alt:mp-alt',
+      'm00002:alt:ms-alt',
+    ]);
+    // The NEW finding beyond the already-pinned defect: the duplicate's id is not
+    // merely repeated text, it is a literal segment-id collision.
+    expect(new Set(alts.map((a) => a.id)).size).toBe(3);
   });
 });

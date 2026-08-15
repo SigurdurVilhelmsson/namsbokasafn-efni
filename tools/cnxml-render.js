@@ -4138,4 +4138,6 @@ export {
   extractAnswerKey,
   LOUD_SEAM_IGNORE,
   ITEM_INLINE_OK,
+  escapeAttr, // §C81: exported to pin the two-path escaping asymmetry
+  decodeEntities,
 };

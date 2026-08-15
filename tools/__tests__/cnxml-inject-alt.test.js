@@ -134,3 +134,20 @@ describe('reverseInlineMarkup boundary resolution for para-inline media (§C81)'
     expect(result.cnxml).not.toContain('alt="English alt"');
   });
 });
+
+describe('alt escaping round-trip (§C81)', () => {
+  // No alt in the corpus contains an entity (1 of 1,149 in chemistry, 0 of 2,163
+  // in organic — and that one is probably regex over-match), so this MUST be
+  // synthetic. Translated alt crosses escapeXml at inject and escapeAttr at
+  // render, on two different render paths.
+  it('escapes an ampersand exactly once at inject', () => {
+    const out = buildMedia({ id: 'm', alt: 'sýrur & basar', src: 'f.png' });
+    expect(out).toContain('alt="sýrur &amp; basar"');
+    expect(out).not.toContain('&amp;amp;');
+  });
+
+  it('leaves plain ASCII alt byte-identical to the pre-§C81 form', () => {
+    const out = buildMedia({ id: 'm', alt: 'A plain description', src: 'f.png' });
+    expect(out).toContain('alt="A plain description"');
+  });
+});
