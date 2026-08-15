@@ -47,7 +47,16 @@
 **Interfaces:**
 - Consumes: nothing.
 - Produces:
-  - `altElementId(mediaId, placeholderIndex)` → `string` — the `elementId` to hand `generateSegmentId`. Returns `` `${mediaId}-alt` `` when `mediaId` is a non-empty string, else `` `media-${placeholderIndex}-alt` ``.
+  - `altElementId(mediaId, index, kind = 'media')` → `string` — the `elementId` to hand `generateSegmentId`. Returns `` `${mediaId}-alt` `` when `mediaId` is a non-empty string, else `` `${kind}-${index}-alt` ``.
+
+🔴 **`kind` exists to prevent a seg-id collision, and it is not optional in practice.** The
+id-less fallback needs an index, and the *only* existing media counter (`counters.media`) is owned
+by `extractInlineText:209`, which uses it to build the `[[MEDIA:N]]` placeholder that appears
+**inside paragraph segment text** and is matched at inject. **Incrementing it anywhere else
+renumbers every later inline placeholder and breaks the placeholder↔structure join.** So the
+standalone path gets its own counter — and with two independent counters, a module holding one
+inline and one id-less standalone media would emit **two segments both named `media-1-alt`**.
+The `kind` prefix is what makes them distinct: `media-1-alt` vs `standalone-1-alt`.
   - `readAlt(alt, getSeg)` → `string` — resolves either shape. `alt` is `string | {segmentId?, text?} | null | undefined`; `getSeg` is `(id) => string | undefined | null`, optional.
 
 - [ ] **Step 1: Write the failing test**
@@ -68,6 +77,16 @@ describe('altElementId', () => {
 
   it('treats an empty-string id as absent', () => {
     expect(altElementId('', 3)).toBe('media-3-alt');
+  });
+
+  it('namespaces the fallback by kind, so two counters cannot collide', () => {
+    expect(altElementId(null, 1, 'media')).toBe('media-1-alt');
+    expect(altElementId(null, 1, 'standalone')).toBe('standalone-1-alt');
+    expect(altElementId(null, 1, 'media')).not.toBe(altElementId(null, 1, 'standalone'));
+  });
+
+  it('ignores kind entirely when the media has an id', () => {
+    expect(altElementId('med-4', 1, 'standalone')).toBe('med-4-alt');
   });
 });
 
@@ -121,17 +140,23 @@ Expected: FAIL — `Failed to load ../lib/alt-segments.js`
  * The `elementId` to hand generateSegmentId for a media's alt segment.
  *
  * Media with an id get a stable, content-anchored id. The 32 id-less media in
- * scope (all standalone, all in lifraen-efnafraedi) fall back to the
- * [[MEDIA:N]] placeholder index, which is positional and therefore only safe
- * because §C80 re-extracts both books wholesale.
+ * scope (all standalone, all in lifraen-efnafraedi) fall back to a positional
+ * index, which is only safe because §C80 re-extracts both books wholesale.
+ *
+ * `kind` namespaces that fallback. The inline and standalone paths keep
+ * SEPARATE counters — the inline one is `counters.media`, which also builds the
+ * [[MEDIA:N]] placeholder embedded in paragraph text, so nothing else may touch
+ * it. Two independent counters would otherwise both reach 1 in the same module
+ * and emit two segments named `media-1-alt`.
  *
  * @param {string|null|undefined} mediaId
- * @param {number} placeholderIndex - the N in [[MEDIA:N]]
+ * @param {number} index - counters.media for inline; the standalone counter otherwise
+ * @param {'media'|'standalone'} [kind='media']
  * @returns {string}
  */
-export function altElementId(mediaId, placeholderIndex) {
+export function altElementId(mediaId, index, kind = 'media') {
   if (typeof mediaId === 'string' && mediaId.length > 0) return `${mediaId}-alt`;
-  return `media-${placeholderIndex}-alt`;
+  return `${kind}-${index}-alt`;
 }
 
 /**
@@ -329,13 +354,28 @@ describe('standalone top-level media alt (§C81)', () => {
     expect(media.alt).toEqual({ segmentId: 'm00001:alt:med-09-alt', text: 'A standalone diagram' });
   });
 
-  it('uses a positional id when the standalone media has no id', () => {
+  it('uses a standalone-namespaced positional id when it has no id', () => {
     const { segments } = extractSegments(
       wrap(`<media alt="An unidentified diagram"><image src="d.png"/></media>`)
     );
     const alt = segments.filter((s) => s.type === 'alt');
     expect(alt).toHaveLength(1);
-    expect(alt[0].id).toMatch(/^m00001:alt:media-\d+-alt$/);
+    expect(alt[0].id).toMatch(/^m00001:alt:standalone-\d+-alt$/);
+  });
+
+  // CONTROL: the two counters must not collide, and inline placeholders must not move
+  it('does not disturb [[MEDIA:N]] numbering for inline media', () => {
+    const { segments } = extractSegments(
+      wrap(`<media alt="Standalone first"><image src="s.png"/></media>
+            <para id="p1">Text <media alt="Inline second"><image src="i.png"/></media> end.</para>`)
+    );
+    const para = segments.find((s) => s.type === 'para');
+    // The inline media is the FIRST inline one, so it must still be [[MEDIA:1]]
+    expect(para.text).toContain('[[MEDIA:1]]');
+    const ids = segments.filter((s) => s.type === 'alt').map((s) => s.id);
+    expect(new Set(ids).size).toBe(ids.length); // no duplicate seg-ids
+    expect(ids).toContain('m00001:alt:standalone-1-alt');
+    expect(ids).toContain('m00001:alt:media-1-alt');
   });
 });
 ```
@@ -361,10 +401,16 @@ In `processTopLevelContent`'s `case 'media':`, replace the `elements.push({...})
         // §C81: standalone media has neither caption nor containing paragraph,
         // so its alt segment is emitted at the media's own position — which is
         // where processTopLevelContent already is, in document order.
+        //
+        // 🔴 Uses its OWN counter. counters.media belongs to extractInlineText,
+        // which builds the [[MEDIA:N]] placeholder embedded in paragraph text;
+        // incrementing it here would renumber every later inline placeholder and
+        // break the placeholder↔structure join at inject. The 'standalone' kind
+        // keeps the two id namespaces from colliding at the same index.
         const altText = mediaAttrs.alt || imageAttrs.alt || '';
-        counters.media = (counters.media || 0) + 1;
+        counters.standaloneMedia = (counters.standaloneMedia || 0) + 1;
         const altSegId = altText
-          ? addSegment('alt', altText, altElementId(item.id, counters.media))
+          ? addSegment('alt', altText, altElementId(item.id, counters.standaloneMedia, 'standalone'))
           : null;
         elements.push({
           type: 'media',
@@ -479,11 +525,21 @@ Add this helper inside `extractSegments`, next to `addSegment`:
   }
 ```
 
-Call `drainInlineMediaAlts()` immediately after each `addSegment('para', ...)` in
-`processTopLevelContent`, `processSection`, `processExample`, `processNote`, `processList` and
-`emitExerciseSection`. **Find them with `grep -an "addSegment('para'" tools/cnxml-extract.js` —
-do not work from this list, which is a prose enumeration of exactly the kind this repo has
-watched drift.**
+Call `drainInlineMediaAlts()` immediately after **every** `addSegment('para', …)` call site.
+
+🔴 **Enumerate them yourself — do not work from a list in this document.**
+
+```bash
+grep -an "addSegment('para'" tools/cnxml-extract.js
+```
+
+Whatever that prints is the authoritative set; a prose list here would be exactly the kind of
+enumeration this repo has repeatedly watched drift. **Add the call after each hit, then re-run
+the grep and confirm every hit has one.**
+
+Note the helper takes no arguments and is idempotent per media, so an extra call is harmless
+and a missing one silently drops that paragraph's alt — which is why the test in Step 1 asserts
+ordering rather than mere presence.
 
 Finally, where `structure.inlineMedia` is built, drop the working fields:
 

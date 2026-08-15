@@ -1497,6 +1497,33 @@ describe('buildNoteDom figure inside para (C13)', () => {
     expect(outsideFigures).not.toContain('<media');
   });
 
+  // §C81 Task 10 regression guard. The precedent test just above uses an
+  // id-bearing, alt-bearing INLINE_MEDIA entry, so buildMediaElement always
+  // renders it with at least one attribute (` id="..." alt="..."`) and the
+  // strip regex — originally `/<media\s[^>]*>.../` — always matched. Task 10's
+  // extraction-side fix (extractInlineText suppressing altText for a <media>
+  // already owned by a <figure>/<list>) can now produce an inline entry with NO
+  // id, NO class, and NO alt — organic's real shape, since its media is id-less
+  // — so buildMediaElement renders a BARE `<media>` with zero attributes and no
+  // leading whitespace before `>`. That tripped the `\s` requirement (which
+  // demands at least one attribute) and left an untranslated orphan <media> in
+  // the output — a real, measured regression on 3 real organic modules
+  // (m00033/m00035/m00038), fixed by widening `\s` to `\b`. Reproduce the exact
+  // zero-attribute shape directly, without going through extraction.
+  it('strips a ZERO-ATTRIBUTE expanded <media> too (id-less, alt-less — §C81 Task 10)', () => {
+    const bareMedia = [{ placeholder: '[[MEDIA:1]]', id: null, src: '../../media/x.png' }];
+    const mixedOriginal = ORIGINAL.replace(
+      '<para id="fs-id2000117">\n<figure',
+      '<para id="fs-id2000117">Skoðaðu myndina.\n<figure'
+    );
+    const mixedSegments = new Map(segments);
+    mixedSegments.set('m66440:para:fs-id2000117', `Skoðaðu myndina. [[MEDIA:1]] ${CAPTION_IS}`);
+    const bareGetSeg = (id) => reverseInlineMarkup(mixedSegments.get(id) ?? '', {}, bareMedia, []);
+    const result = buildNoteDom(element, bareGetSeg, {}, mixedOriginal, makeCtx());
+    const outsideFigures = result.replace(/<figure[\s\S]*?<\/figure>/g, '');
+    expect(outsideFigures).not.toContain('<media');
+  });
+
   it('leaves the source text of an UNTRANSLATED mixed-prose para in place', () => {
     // The pre-C13 path did `if (!paraText) continue`, so a para with no
     // translation kept its original English rather than being blanked. The new

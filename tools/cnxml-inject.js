@@ -66,6 +66,7 @@ import {
   reportMathLabels,
 } from './lib/math-label-substitute.js';
 import { formatCollisionReport } from './lib/glossary-collisions.js';
+import { readAlt } from './lib/alt-segments.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -1241,7 +1242,12 @@ function escapeXml(text) {
 function buildMediaElement(media) {
   const idAttr = media.id ? ` id="${media.id}"` : '';
   const classAttr = media.class ? ` class="${media.class}"` : '';
-  const altAttr = media.alt ? ` alt="${escapeXml(media.alt)}"` : '';
+  // §C81: backstop only — the caller (reverseInlineMarkup's caller, in getSeg) resolves
+  // each inline-media entry's alt to a plain string before this ever runs. No getSeg is
+  // passed here on purpose: an unresolved {segmentId,text} object still falls back to its
+  // English text instead of reaching a published page as "[object Object]".
+  const altValue = readAlt(media.alt);
+  const altAttr = altValue ? ` alt="${escapeXml(altValue)}"` : '';
 
   if (media.embedSrc) {
     const w = media.width ? ` width="${escapeXml(media.width)}"` : '';
@@ -1904,6 +1910,17 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     _residueSeen: new Set(), // de-dupe segments referenced more than once
   };
 
+  // §C81: reverseInlineMarkup stays a pure text transformer (the mirror of
+  // extractInlineText on the extract side) — it must never gain a getSeg. So the
+  // resolution of each inline-media entry's alt happens HERE, at getSeg's own call
+  // site, before the array is handed to reverseInlineMarkup below. This starts out
+  // holding the raw (possibly dual-shape) list and is reassigned, ONCE, immediately
+  // after getSeg closes — not recomputed inline on every call: an alt segment's own
+  // text is itself fetched via this same getSeg, and unconditionally rebuilding the
+  // resolved array on every invocation would recurse into itself forever the moment
+  // an inline-media alt segment is actually present in `segments`.
+  let resolvedInlineMedia = structure.inlineMedia || [];
+
   // Helper to get segment text
   const getSeg = (segmentId) => {
     if (!segmentId) return '';
@@ -1940,7 +1957,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     return reverseInlineMarkup(
       text,
       equations,
-      structure.inlineMedia || [],
+      resolvedInlineMedia,
       structure.inlineTables || [],
       inlineAttrs[segmentId] || null,
       blockEquationIds,
@@ -1948,6 +1965,17 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       { segmentId, attrMismatches: stats.attrMismatches }
     );
   };
+
+  // §C81: now that getSeg is fully bound, resolve each inline-media entry's alt
+  // through it — string alt passes through unchanged (readAlt's contract), an
+  // unresolved {segmentId,text} object resolves to its Icelandic segment text (or
+  // falls back to the English text if that segment is missing). Any getSeg call
+  // made *during* this resolution (fetching an alt segment's own text) still sees
+  // the raw list above, breaking the self-reference instead of recursing into it.
+  resolvedInlineMedia = (structure.inlineMedia || []).map((m) => ({
+    ...m,
+    alt: readAlt(m.alt, getSeg),
+  }));
 
   // Extract metadata section from original
   const metadataMatch = originalCnxml.match(/<metadata[^>]*>[\s\S]*?<\/metadata>/);
@@ -2230,7 +2258,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'list':
       return buildList(element, getSeg, equations, ctx);
     case 'media':
-      return buildMedia(element);
+      return buildMedia(element, getSeg);
     default:
       return null;
   }
@@ -2372,7 +2400,8 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
   // Add media
   if (element.media) {
     const mediaId = element.media.id ? ` id="${element.media.id}"` : '';
-    const alt = element.media.alt ? ` alt="${escapeXml(element.media.alt)}"` : '';
+    const altText = readAlt(element.media.alt, getSeg);
+    const alt = altText ? ` alt="${escapeXml(altText)}"` : '';
     lines.push(`<media${mediaId}${alt}>`);
     if (element.media.src) {
       const imageMapping = ctx && ctx.imageMapping;
@@ -2985,8 +3014,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       // media-only (no other text), skip text injection entirely.
       if (parasWithFigures.has(child.id)) {
         const paraText = child.segmentId ? getSeg(child.segmentId) : '';
-        // Strip expanded <media>...</media> from segment text
-        const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+        // Strip expanded <media>...</media> from segment text. \b (not \s) so a
+        // media reconstructed with NO attributes at all (§C81 Task 10: an
+        // id-less, alt-suppressed duplicate — see extractInlineText's ownership
+        // suppression in cnxml-extract.js) still matches; \s required at least
+        // one attribute, which every id-bearing or alt-bearing media happened
+        // to have, so this gap was latent until Task 10 made a zero-attribute
+        // <media> reachable.
+        const textWithoutMedia = paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
 
         let titleText = '';
         if (isFirstPara && element.title?.segmentId) {
@@ -3314,8 +3349,9 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
             if (figId) keptFigureIds.add(figId);
           }
           const tableIdsBefore = new Set(keptTableIds);
+          // \b (not \s) — see the matching comment in buildExampleDom above.
           const textWithoutMedia = expandInlineTables(
-            paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim(),
+            paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim(),
             ctx,
             getSeg,
             originalCnxml,
@@ -3659,9 +3695,10 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       // and a flattened list would silently regress.
       const skipParaText =
         onlyFigures || paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
+      // \b (not \s) — see the matching comment in buildExampleDom above.
       const injectText = skipParaText
         ? ''
-        : paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+        : paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
       const idsBefore = new Set(keptTableIds);
       const expandedParaText = expandInlineTables(
         injectText,
@@ -3832,7 +3869,7 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
         }
         if (bc.type === 'media') {
           const m = (ctx && ctx.inlineMedia ? ctx.inlineMedia : []).find((x) => x.id === bc.id);
-          return m ? buildMedia({ ...m }) : '';
+          return m ? buildMedia({ ...m }, getSeg) : '';
         }
         return '';
       })
@@ -3882,12 +3919,14 @@ function buildList(element, getSeg, equations = {}, ctx = null) {
  * Build a standalone media element (not nested inside a figure).
  * Infers mime-type from the file extension of the src attribute.
  * @param {Object} element - Media element structure
+ * @param {Function} [getSeg] - Function to get segment text, for the {segmentId,text} alt shape
  * @returns {string} CNXML string for this media element
  */
-function buildMedia(element) {
+function buildMedia(element, getSeg) {
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const classAttr = element.class ? ` class="${element.class}"` : '';
-  const alt = element.alt ? ` alt="${escapeXml(element.alt)}"` : '';
+  const altText = readAlt(element.alt, getSeg);
+  const alt = altText ? ` alt="${escapeXml(altText)}"` : '';
 
   const lines = [];
   lines.push(`<media${idAttr}${classAttr}${alt}>`);
@@ -4561,6 +4600,7 @@ export {
   loadImageBasenameMap,
   buildMediaElement,
   buildMedia,
+  buildFigure, // §C81: exported for alt dual-shape tests
   applyMathLabelSubstitution,
   getMathLabelResolver,
 };
