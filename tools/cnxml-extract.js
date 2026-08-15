@@ -39,6 +39,7 @@ import {
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
+import { altElementId } from './lib/alt-segments.js';
 import {
   parseArgs,
   BOOK_OPTION,
@@ -1107,9 +1108,18 @@ function processFigure(figure, moduleId, addSegment, mathMap, counters) {
     const imageMatch = mediaMatch[1].match(/<image[^>]*>/);
     if (imageMatch) {
       const imageAttrs = parseAttributes(imageMatch[0]);
+      const altText = mediaAttrs.alt || imageAttrs.alt || '';
+      // §C81: alt is a translatable segment, emitted AFTER the caption so a
+      // reviewer has the figure's context before judging the description.
+      // Anchor on the media id, else the FIGURE's id — a figure always has one,
+      // so the positional fallback never fires here. (Passing a media counter
+      // would be meaningless: processFigure does not increment counters.media.)
+      const altSegId = altText
+        ? addSegment('alt', altText, altElementId(mediaAttrs.id || figure.id, 0))
+        : null;
       figStructure.media = {
         id: mediaAttrs.id,
-        alt: mediaAttrs.alt || imageAttrs.alt,
+        alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
         src: imageAttrs.src,
         mimeType: imageAttrs['mime-type'],
       };
