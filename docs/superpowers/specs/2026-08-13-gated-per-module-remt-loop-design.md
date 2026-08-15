@@ -34,7 +34,7 @@ These were taken during design and are load-bearing; the architecture follows fr
 | ① | **Quarantine + batch re-run.** An extraction-side fix marks earlier cleared modules stale; they are re-MT'd in one batch at each book's end. | Requires a mechanical staleness signal → the extraction fingerprint (§5). Each book ends on **one vintage**. |
 | ② | **Auto-gate + calibrate + sample.** Checks gate mechanically. The [LEAD] reads the first 3 modules of each book, every failure, and a ~1-in-10 domain sample. | The battery must be honest about what it *cannot* see, because that defines the sample's brief. |
 | ③ | **The glossary arm is settled by measurement.** Module 1 of each book runs both `--glossary` and `--no-glossary` (~1,000 ISK); the winner sets that book's arm. | §C77 stops being a blocker and becomes the loop's first experiment. Needs a winner criterion — the battery owns it. |
-| ④ | **Physics preview is the shakedown** (10 files, ~2,346 ISK) before chemistry. | A broken loop costs ~2k to discover, not ~43k. |
+| ④ | ~~Physics preview is the shakedown~~ → **AMENDED 2026-08-15: `lifraen-efnafraedi`'s PREVIEW is the shakedown** (50 files, ~8,560 ISK) before chemistry. §C80's re-scope dropped physics. | A broken loop costs ~8.5k to discover, not ~43k — **and organic carries live positive controls physics lacked**: `m00033`'s nine reproducible invented markers (§C67) and all 32 in-scope id-less inline-media alts (§C81). |
 
 **Why ③ is now the only way to settle the glossary question:** the desk record is exhausted
 and genuinely ambiguous. Measured: exactly **one** benefit datapoint exists in the repository
@@ -177,9 +177,14 @@ surprise*, not on the known uncertainty.
    base rate exceeds ~5% cannot be blocking** — two candidates already fail that test.
 3. **§C81 lands → re-extract chemistry ch01 → re-run Tier 1**; the alt check must flip from
    100% fail to 0.
-4. **Physics preview shakedown** with the full battery live. Physics is the right shakedown
-   because it has *no* fidelity allowlist and *no* residue allowlist — the battery runs with
-   nothing pre-explained.
+4. **Organic-preview shakedown** with the full battery live *(amended 2026-08-15; was physics,
+   which §C80's re-scope dropped)*. Organic has **no fidelity allowlist and no residue
+   allowlist**, so the battery still runs with nothing pre-explained — **and unlike physics it
+   is known-bad in two ways the plan needs**: `m00033`'s nine reproducible invented markers give
+   a live SHOULD-TRIP for the marker checks, and its 32 id-less inline-media alts are the only
+   in-scope exercise of §C81's positional-id fallback. ⚠️ **A clean pass on organic must
+   therefore be read carefully: if the marker check does NOT fire on `m00033`, the check is
+   broken, not the corpus.**
 5. **Module 1 of each book runs both glossary arms** under the battery's winner criterion.
 6. **Only then chemistry.**
 
