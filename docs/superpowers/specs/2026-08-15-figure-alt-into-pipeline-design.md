@@ -57,6 +57,31 @@ classified by whether a `<figure>` ancestor exists:
 
 **Cost in scope:** 796,881 alt chars ≈ **7,969 ISK** (chemistry 782,099 + organic preview 14,782).
 
+> **⚠️ AMENDED 2026-08-15, after the whole-branch review of the implementation
+> (`feat/c81-figure-alt`).** This table and its "in scope" row are a census of **source
+> bytes** — every `<media>` carrying a non-empty `alt`, regardless of what the extractor
+> does with it. They were never a promise that every counted attribute becomes a segment,
+> but §4 and §7 below read that way, so the gap is recorded here too rather than only at
+> its two other sites.
+>
+> Shipped, the extractor emits an alt segment for **951 of chemistry's 1,149** and
+> **100 of organic-preview's 132** — **1,051 of 1,281, ≈82%** — not the ~100% this census
+> implies. The **796,881-char / 7,969 ISK** cost line above is therefore an **overstatement of
+> actual MT spend**: it prices every counted attribute, not the ~82% that will actually
+> reach a segment. The artifact does not report characters per emitted-vs-unreached
+> attribute, so this document does not restate a corrected ISK figure — see the register
+> (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C81) for why that number
+> needs re-deriving rather than scaling.
+>
+> The shortfall is **pre-existing and orthogonal to this design** — not a defect this
+> design introduced or failed to close. It sits in four structural positions the extractor
+> never visits for *any* content type, not only `alt`: media inside a table `<entry>`, and
+> bare (unwrapped) media directly inside `<example>`, `<problem>`/`<solution>`, or `<note>`.
+> Full breakdown, per book and per position → the committed measurement artifact,
+> `test-results/c81-alt-extraction-2026-08-15.json` (`books.*.structurallyUnreachableInCurrentCode`).
+> This document does not restate those counts — they belong to the artifact, not to prose
+> that can drift from it.
+
 ## 2. [LEAD] decisions
 
 | # | Decision | Why it matters |
@@ -168,6 +193,23 @@ and assert **1,149 alt segments appear where 0 exist today**, and that the rest 
 is otherwise unchanged apart from the expected `auto-N` renumbering. A change that quietly
 perturbs other segments would pass every unit test above.
 
+> **⚠️ AMENDED 2026-08-15, after the whole-branch review.** This assertion as written did not
+> ship, and could not have: **1,149** is the raw census (§1), not an achievable segment count —
+> the four structurally-unreachable positions named in §1's amendment were never in this
+> design's reach. The committed corpus control (`tools/__tests__/cnxml-extract-alt-corpus.test.js`)
+> instead asserts **zero duplicate alt segment ids/text** across the in-scope corpus, which is
+> the binding property this design's own dedup fix (§C81 Task 10) actually needed pinned. It
+> does not assert a total-count floor against the 1,149/132 raw census, and does not call
+> `buildCnxml()` — it measures `extractSegments()` output only.
+>
+> **A second control this design did not specify turned out to matter more**: an extract→inject
+> **round-trip** — comparing injected `alt` attribute counts across the full corpus at two
+> vintages — is what caught a critical regression during review (§C81 Task 10 review round 2:
+> 14 alt attributes lost entirely across 5 modules, closed before merge) and again at whole-branch
+> scope (pre-branch → HEAD, 6,881→6,874, confirmed duplicate removals not losses). That check
+> exists only as an ad hoc script run during review; it is not part of this design's test list
+> and is not committed. See the register, §C81, for its follow-up disposition.
+
 ## 5. Sequencing
 
 🔴 **§C81 cannot land piecemeal.** Adding segments renumbers `auto-N` seg-ids — the export
@@ -192,5 +234,23 @@ separate landings would quarantine everything cleared between them.
 
 ## 7. Open questions
 
-None. All four design decisions are ruled; the volume, the id-less population, the empty-alt
-case and the entity-bearing case are all measured rather than assumed.
+*(As originally written, retained:)* None. All four design decisions are ruled; the volume, the
+id-less population, the empty-alt case and the entity-bearing case are all measured rather than
+assumed.
+
+> **⚠️ AMENDED 2026-08-15, after the whole-branch review.** That was true of the four [LEAD]
+> decisions in §2 — none of them is reopened — but it is no longer an honest answer to "is
+> anything about this design still open," which is what this section is for. Two things are:
+>
+> 1. **This design does not reach ~82% of the corpus's alt attributes, and nothing here owns
+>    closing that gap.** The four structurally-unreachable positions (§1's amendment) are a
+>    pre-existing extraction-coverage defect this design's scope never included — §C81 was
+>    written and ruled against the raw census, not against what `cnxml-extract.js` can actually
+>    reach today. Whether and when to extend extraction to those four positions is undecided;
+>    tracked in the register, not here (`docs/plans/2026-07-21-post-item17-followup-campaign.md`,
+>    §C81).
+> 2. **Whether the extract→inject round-trip check (§4's amendment) should be committed** —
+>    as CI, a corpus test, or otherwise — given that §C82 runs the loop module-by-module for
+>    weeks with both the old and new `02-structure` shapes live simultaneously, which is exactly
+>    the condition under which this check caught a real regression once already. Also tracked
+>    in the register, §C81.
