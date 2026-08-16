@@ -2128,9 +2128,11 @@ corresponding kind. Set membership rather than positional matching, deliberately
 — segment ids do not map 1:1 onto source elements, and coupling the check to
 extraction order is how an instrument rots.
 
-Measured across all 149 chemistry modules: fires on 2 (1.3%), 2 findings out of
-16,630 markers examined (0.01%), 147 clean controls. The two are exactly the
-battery's named SHOULD-TRIP fixtures, m68710 and m68733.
+Measured across all 149 chemistry modules: fires on 2 modules (1.3%), 3 findings
+out of 16,991 markers examined (0.02%), 147 clean controls. The two modules are
+exactly the battery's named SHOULD-TRIP fixtures, m68710 (twice - the same body
+in two occurrences of a duplicated seg-id, which the battery spec's own note
+'m68710:716,722' independently corroborates) and m68733.
 
 The source scan covers the WHOLE DOCUMENT, not <content>: <glossary> sits outside
 <content> and the extractor emits 763 glossary-def + 763 glossary-term segments,
