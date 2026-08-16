@@ -117,7 +117,8 @@ describe('E2 on live corpus fixtures', () => {
     // opens - 16,991 examined), across ALL of BODY_SOURCE_ELEMENTS's types.
     // Review round 2, finding ①: the body regex now consumes a trailing
     // `|payload` (uncaptured) instead of failing to match at all, so every
-    // id-bearing `term` (61/61) and every `em` (1/1) — 60 markers, one module's
+    // id-bearing `term` (59/61 — CORRECTED 2026-08-16 from "61/61"; two nested
+    // term markers in m68791/m68793 remain unmatchable) and every `em` (1/1) — 60 markers, one module's
     // (m68733's) marker count unaffected since its gap is 100% nesting — moves
     // from "skipped" to "examined". Nesting itself is UNCHANGED and still not
     // fixed (see the docstring in bracket-body-check.js for why). Measured

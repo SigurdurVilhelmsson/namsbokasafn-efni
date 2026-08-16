@@ -42,6 +42,38 @@ export function glossaryContentHash(glossary) {
 }
 
 /**
+ * Normalize one API-reported `usage` value to a NUMBER of billing units.
+ *
+ * 🔴 WHY THIS EXISTS. `api-translate` used to do `totalUsage += result.usage || 0`
+ * starting from `0`, while the Málstaður client returns an OBJECT — three JSDoc
+ * sites in tools/lib/malstadur-api.js say `usage: object`, and its own
+ * `createUsageTracker().record()` reads `usage.units` / `usage.cost`. In JS
+ * `0 + {}` is string concatenation, so every real run persisted the literal
+ * string `"0[object Object]"` (and one `[object Object]` per extra chunk) into
+ * the sidecar's `usage` field. Measured 2026-08-16.
+ *
+ * ⚠️ THE SUITE COULD NOT SEE IT, AND THE REASON GENERALISES: the two test files
+ * disagreed about the contract. `malstadur-api.test.js` stubs `usage: {}`
+ * (correct); every test driving `translateModule` stubbed a NUMBER. So the
+ * producer was checked against reality and the consumer against a fiction, and
+ * the seam between them was untested by construction. Stub the SHAPE the real
+ * collaborator returns, not the shape the consumer happens to want.
+ *
+ * A number is still accepted, because this reads a value off an external API at
+ * a system boundary and a bare count is a plausible future/legacy shape. Anything
+ * else contributes 0 rather than throwing: this runs unattended through a paid,
+ * weeks-long run, and telemetry must never be able to abort the translation.
+ *
+ * @param {{units?: number}|number|null|undefined} usage
+ * @returns {number} billing units, 0 when unknown
+ */
+export function usageUnits(usage) {
+  if (typeof usage === 'number') return Number.isFinite(usage) ? usage : 0;
+  const units = usage?.units;
+  return typeof units === 'number' && Number.isFinite(units) ? units : 0;
+}
+
+/**
  * Tally `{type}`-bearing findings into `{type: count}`.
  * @param {Array<{type?: string}>|undefined} items
  * @returns {Record<string, number>}

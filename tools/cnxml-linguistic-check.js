@@ -238,6 +238,13 @@ function main() {
     process.exit(0);
   }
   requireBook(args);
+  // ⚠️ BARE `--module` — see the twin guard in cnxml-fidelity-check.js. Without
+  // it the flag is dropped and the run silently widens to the whole chapter,
+  // exit 0, answering about the wrong unit.
+  if (process.argv.slice(2).includes('--module') && !args.module) {
+    console.error('Error: --module requires a value (e.g. --module m68664).');
+    process.exit(2);
+  }
   if (args.module && !chapterProvided(args)) {
     console.error('Error: --module requires --chapter');
     process.exit(1);
@@ -305,6 +312,19 @@ function main() {
   console.log(`With untranslated content: ${modulesWithUntranslated}`);
   if (modulesSkipped > 0) console.log(`Skipped: ${modulesSkipped}`);
   console.log(`Total untranslated blocks: ${totalUntranslatedBlocks}`);
+
+  // 🔴 AN ABSENCE IS NOT AN ANSWER — twin of the guard in cnxml-fidelity-check.js.
+  // Measured 2026-08-16: `--module m99999` printed "All translated: 0" and exited
+  // 0, which §C82's driver would consume as a per-module R5 GREEN for a module
+  // never opened.
+  if (args.module && modulesChecked === 0) {
+    console.error(
+      `\nError: --module ${args.module} examined 0 modules in ${args.book} ` +
+        `chapter ${args.chapter} — no such module, or its 03-translated output is missing. ` +
+        `Refusing to report a pass for a module that was never checked.`
+    );
+    process.exit(2);
+  }
 
   process.exit(totalUntranslatedBlocks > 0 ? 1 : 0);
 }

@@ -32,7 +32,10 @@ describe('the production stamp call mirrored', () => {
 describe('translateModule persists the run record (§C82 prerequisite 2)', () => {
   /** A stub Málstaður client: echoes the wire text back, so every SEG marker survives. */
   const echoClient = {
-    translateAuto: async (text) => ({ text, usage: text.length }),
+    // ⚠️ `usage` is an OBJECT — the shape the REAL client returns. This stub said
+    // `usage: text.length` (a number) until 2026-08-16, and that fiction is what
+    // hid the "0[object Object]" defect from 4,733 green tests. See usageUnits().
+    translateAuto: async (text) => ({ text, usage: { units: text.length, cost: 0.01 } }),
   };
 
   const SEGMENTS = [
@@ -130,7 +133,10 @@ describe('translateModule records glossary OUTCOME, not just intent (§C82 fix r
   /** Same echo stub as above — its output equals its input, so filtering is
    *  the only thing under test here, not any repair/mismatch machinery. */
   const echoClient = {
-    translateAuto: async (text) => ({ text, usage: text.length }),
+    // ⚠️ `usage` is an OBJECT — the shape the REAL client returns. This stub said
+    // `usage: text.length` (a number) until 2026-08-16, and that fiction is what
+    // hid the "0[object Object]" defect from 4,733 green tests. See usageUnits().
+    translateAuto: async (text) => ({ text, usage: { units: text.length, cost: 0.01 } }),
   };
 
   const SEGMENTS = [
@@ -172,6 +178,10 @@ describe('translateModule wiring survives a stub whose output diverges from inpu
   // tests still pass. This stub's output genuinely differs from its input so
   // those wirings are distinguishable.
   const DIVERGE_USAGE = 424242; // deliberately unrelated to any string's .length
+  // The REAL client wraps it: `{units, cost}`. Keeping the bare number here as
+  // the expected VALUE while sending the object shape on the wire is the whole
+  // point — it pins that the units are unwrapped, not stringified.
+  const DIVERGE_USAGE_WIRE = { units: DIVERGE_USAGE, cost: 12.5 };
 
   // p1 carries an [[i:]] real marker (dropped by the stub, below) and a bare
   // invented marker [[efni]] ('efni' is not in KNOWN_BRACKET_TYPES, so
@@ -203,7 +213,7 @@ describe('translateModule wiring survives a stub whose output diverges from inpu
   const divergeClient = {
     translateAuto: async (text) => ({
       text: text.replace('[[i:atom]]', 'atom').replace('[[/term]]', ''),
-      usage: DIVERGE_USAGE,
+      usage: DIVERGE_USAGE_WIRE,
     }),
   };
 
@@ -222,6 +232,11 @@ describe('translateModule wiring survives a stub whose output diverges from inpu
     expect(run.chars).toBe(SEGMENTS_DIVERGE.length);
     // the stub's literal usage value, not text.length as echoClient's stub
     // would coincidentally satisfy either way.
+    // 🔴 TYPE FIRST, VALUE SECOND — deliberately. The historical defect produced
+    // the STRING "0[object Object]", and a `toBe(number)` alone reads identically
+    // whether the accumulator added or concatenated. Assert the type explicitly so
+    // a regression names itself instead of showing up as a puzzling value diff.
+    expect(typeof run.usage).toBe('number');
     expect(run.usage).toBe(DIVERGE_USAGE);
     expect(run.estimatedIsk).toBe(estimateIsk(SEGMENTS_DIVERGE.length));
     // bracketMarkerDelta(input, output): input HAS the [[i:]] marker, output

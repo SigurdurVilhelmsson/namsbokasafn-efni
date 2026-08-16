@@ -295,6 +295,17 @@ function main() {
     process.exit(0);
   }
   requireBook(args);
+  // ⚠️ BARE `--module` (flag present, no value). parseArgs leaves args.module
+  // undefined, so every guard below silently stands down and the run widens to
+  // the WHOLE CHAPTER while still exiting 0 — a per-module gate answering about
+  // the wrong unit. Measured 2026-08-16: `--chapter 1 --module` checked 7
+  // modules. Task 8 added exactly this guard to scan-residue and reasoned the
+  // others were safe; that reasoning covered `cnxml-render-fidelity-check.js`,
+  // which is a DIFFERENT TOOL from this one. This file was never in its frame.
+  if (process.argv.slice(2).includes('--module') && !args.module) {
+    console.error('Error: --module requires a value (e.g. --module m68664).');
+    process.exit(2);
+  }
   if (args.module && !chapterProvided(args)) {
     console.error('Error: --module requires --chapter');
     process.exit(1);
@@ -424,6 +435,23 @@ function main() {
   console.log(
     `Math check (warn-only): ${mathMismatchModules.length} module(s) with math differing from substituted source`
   );
+
+  // 🔴 AN ABSENCE IS NOT AN ANSWER. A scoped run that examined ZERO modules must
+  // never exit 0. Measured 2026-08-16: `--module m99999` printed "Checked: 0
+  // modules / Perfect: 0" and exited 0, so §C82's driver would have recorded a
+  // per-module GREEN for a module this tool never opened — from a typo, a module
+  // paired with the wrong chapter, or an inject output that was never written.
+  // `modulesChecked` (not the filter's match count) is the right subject: it is 0
+  // both when nothing matched AND when the module matched but its 03-translated
+  // file was missing, and both are the same lie to the caller.
+  if (args.module && modulesChecked === 0) {
+    console.error(
+      `\nError: --module ${args.module} examined 0 modules in ${args.book} ` +
+        `chapter ${args.chapter} — no such module, or its 03-translated output is missing. ` +
+        `Refusing to report a pass for a module that was never checked.`
+    );
+    process.exit(2);
+  }
 
   // Exit code is driven ONLY by unexplained tag-count discrepancies — the order
   // check is warn-only until the affected modules are re-extracted/re-injected (WS5).

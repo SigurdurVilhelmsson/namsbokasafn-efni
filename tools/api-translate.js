@@ -40,7 +40,7 @@ import {
 import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
-import { buildRunRecord, glossaryContentHash } from './lib/run-record.js';
+import { buildRunRecord, glossaryContentHash, usageUnits } from './lib/run-record.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
@@ -1144,7 +1144,13 @@ export function splitAtSegBoundaries(text, maxChars) {
  * false whenever filterGlossaryForText finds no term in this chunk's text,
  * and false again on the truncation-retry path below, which unconditionally
  * drops the glossary and REPLACES the first response.
- * @returns {{ text: string, usage: number, mismatches: Array, unwrapped: Array, glossarySent: boolean }}
+ * ⚠️ `usage` is passed through from the client VERBATIM and is an OBJECT
+ * (`{units, cost}`) — see tools/lib/malstadur-api.js, whose three JSDoc sites
+ * and `createUsageTracker().record()` both say so. This line claimed `number`
+ * until 2026-08-16, and the caller's `+= || 0` believed it, persisting the
+ * string `"0[object Object]"` into every sidecar. Normalize with `usageUnits()`
+ * before doing arithmetic on it.
+ * @returns {{ text: string, usage: object, mismatches: Array, unwrapped: Array, glossarySent: boolean }}
  */
 export async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
   const { wireText, segments } = stripTermFnToPaired(chunkText);
@@ -1267,7 +1273,9 @@ export async function translateModule(
 
     const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
     translatedChunks.push(result.text);
-    totalUsage += result.usage || 0;
+    // usageUnits(), not `|| 0`: the client returns an OBJECT and `0 + {}` is
+    // string concatenation, not addition. See run-record.js's usageUnits docs.
+    totalUsage += usageUnits(result.usage);
     if (result.glossarySent) chunksWithGlossary++;
     if (result.mismatches && result.mismatches.length) mismatches.push(...result.mismatches);
     if (result.unwrapped && result.unwrapped.length) unwrapped.push(...result.unwrapped);

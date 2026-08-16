@@ -29,6 +29,9 @@
  * Design: docs/superpowers/specs/2026-08-13-remt-check-battery.md §5 item 10.
  */
 import { parseModuleDoc } from './extraction-coverage.js';
+// Reuses the project's existing decoder rather than adding a second one — it is
+// the same helper cnxml-fidelity-check and cnxml-render already normalize with.
+import { decodeEntities } from './math-label-inventory.js';
 
 /**
  * Bracket type -> the source element localNames whose text can legitimately
@@ -63,8 +66,32 @@ export const BODY_SOURCE_ELEMENTS = Object.freeze({
 });
 
 /** Collapse whitespace for comparison; leading/trailing space is preserved as a single space. */
+/**
+ * 🔴 DECODES ENTITIES, AND THAT IS THE POINT — not just whitespace collapsing.
+ *
+ * The two sides of this comparison arrive in different encodings. The SOURCE
+ * side reads `element.textContent` through the DOM, which has already decoded
+ * every character reference; the BODY side is raw text lifted out of the
+ * segment file, where `&#8722;` is still five characters. Comparing them
+ * directly reports a swallow for every marker body containing a character
+ * reference, even though nothing was swallowed.
+ *
+ * Measured 2026-08-16 on FRESH extraction — which is exactly what the §C82
+ * loop's step 2 does: **6 of 342 organic modules fired, 10 false findings**
+ * (m00226 x4, m00109 x2, m00111, m00204, m00255, m00329), on bodies like
+ * `&#603;`, `&#43;`, `&#8722;`, `&#x2212;`, `&#8211;`. E2 is specified as a
+ * BLOCKING check on a 1.3% base rate, so each of these is a false halt on a
+ * paid run.
+ *
+ * Applied inside `norm` deliberately, because `norm` is the ONLY thing both
+ * sides pass through (sourceTexts at the top of this file, and the body
+ * comparison below). Decoding one side alone would trade this asymmetry for
+ * its mirror image. The source side is already decoded, so its second decode
+ * is a no-op for ordinary text — and where source text legitimately contains a
+ * literal `&#...;`, both sides receive the identical treatment and still match.
+ */
 function norm(s) {
-  return String(s || '').replace(/\s+/g, ' ');
+  return decodeEntities(String(s || '')).replace(/\s+/g, ' ');
 }
 
 /**
@@ -165,7 +192,13 @@ export function checkBracketBodies(cnxmlText, segText) {
     // compare. Innermost-first is unaffected: a nested `[[...]]` still
     // contains `[`, which both the body class AND the payload class refuse,
     // so a genuinely nested marker still cannot match, by design.
-    // Measured corpus-wide: this makes `term` (61/61) and `em` (1/1) fully
+    // ⚠️ CORRECTED 2026-08-16 — this said `term` (61/61), i.e. FULLY reachable.
+    // Re-measured across chemistry's 149 `02-for-mt` files: 61 raw `[[term:`
+    // openers, 59 matched by the regex below. **59/61, not 61/61** — two `term`
+    // markers (m68791/m68793) are nested and stay unmatchable, so a swallow in
+    // either is invisible to E2. Do not cite this comment as "term is covered"
+    // when scoping the nesting work; the 2 are real and they are not counted.
+    // Measured corpus-wide: this makes `term` (59/61) and `em` (1/1)
     // reachable — `examined` +60, `skippedUnmatchable` -60, `findings`
     // UNCHANGED at 3, firing set UNCHANGED at {m68710, m68733}. See
     // task-7-report.md "Fix round 2" for the full before/after table.

@@ -3,6 +3,39 @@
 
 # Check battery — companion to the gated per-module re-MT loop design
 
+> ## 🔴 AMENDMENT — 2026-08-16, after §C82 Plan A was implemented and reviewed
+>
+> **This spec is binding authority for Plans B and C, which are still unwritten — so read this
+> block before building from it.** Executing Plan A falsified several of its claims. Per this
+> project's convention a frozen design record is amended with a banner, never silently edited,
+> so the original text below stands unchanged and this block overrides it where they conflict.
+>
+> 1. **§5 item 7 lists `validate-chapter.js` among "the four tools with no `--module`" needing a
+>    per-module wrapper. That is WRONG, and building the wrapper would ship two silently-wrong
+>    checks.** `validate-chapter` is **chapter-scoped by design**: 2 of its **16** validators
+>    reconcile *across* a chapter's modules — `figure-numbers` (sequential within chapter) and
+>    `cross-references` (matched against the chapter-wide caption set). Neither is computable
+>    from one module. It belongs in this spec's existing *"chapter-only by design → Tier 4"*
+>    category, beside `cnxml-render-fidelity-check`. → register **§C86**.
+> 2. **The per-module R1/R5 tools are `cnxml-fidelity-check.js` and `cnxml-linguistic-check.js`
+>    — NOT `cnxml-render-fidelity-check.js`, which is a different tool.** Plan A's Task 8
+>    reasoned about the latter and left the former two ungated; both were measured on 2026-08-16
+>    exiting **0 having examined ZERO modules** on a `--module` that matched nothing, and
+>    silently widening to a whole-chapter scan on a bare `--module`. Both are fixed on the
+>    §C82 Plan A branch. **Any driver this spec describes must still treat "examined 0 units"
+>    as a failure in its own right, not infer a pass from exit 0.**
+> 3. **E2's occurrence figures in any prose — here or in the register — are stale.** The
+>    owner is the committed pin in `tools/__tests__/bracket-body-corpus.test.js`. One
+>    measurement had three published versions, differing in the finding count itself.
+> 4. **E2 required a fix Plan A found only under FRESH extraction** — which is what this
+>    spec's own loop step 2 performs. Its body comparison decoded entities on one side only,
+>    so every marker body holding a character reference (`&#8722;`, `&#x2212;`, …) reported a
+>    false swallow: 6 of 342 organic modules, 10 false findings. E2 is specified as BLOCKING,
+>    so each was a false halt on a paid run. **Any check comparing DOM-derived text against
+>    raw segment text inherits this hazard — normalize both sides.**
+> 5. **Do not treat "round-trip check green" as evidence that alt CONTENT survived.** It counts
+>    attributes; deleting every alt segment leaves it green. → register §C85.
+
 **Owns:** the check list, tiering, blocking/advisory split, fixture ledger and validation plan
 for §C82's loop.
 **Companion to:** [`2026-08-13-gated-per-module-remt-loop-design.md`](2026-08-13-gated-per-module-remt-loop-design.md),

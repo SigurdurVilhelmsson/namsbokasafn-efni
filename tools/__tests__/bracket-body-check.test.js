@@ -136,7 +136,7 @@ describe('checkBracketBodies — anchored to source, not to a byte pattern', () 
   // `[^\[\]|]*(?:\|[^\[\]]*)?\]\]` — an optional, uncaptured payload group —
   // so `term`/`em` bodies are now genuinely compared against source instead of
   // silently invisible. Measured corpus-wide: this makes `term`/`em` fully
-  // reachable (61/61, 1/1) while `examined`+60, `skippedUnmatchable`-60,
+  // reachable (59/61 — CORRECTED 2026-08-16 from "61/61"; 1/1 for em) while `examined`+60, `skippedUnmatchable`-60,
   // findings UNCHANGED at 3, firing set UNCHANGED at {m68710, m68733}.
   it('now EXAMINES an id-bearing term marker instead of skipping it, and matches it against source', () => {
     const src = doc('<para id="p1">a <term>cation</term> ion.</para>');
