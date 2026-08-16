@@ -17,11 +17,14 @@
  * check must not depend on extraction order — which is exactly the fragile
  * coupling that makes an instrument rot. Set membership is weaker but honest.
  *
- * ⚠️ `examined`/`findings` do not cover every raw marker: a marker nested
- * inside another marker, or carrying a trailing `|payload` (every id-bearing
- * `term`, every `em`), cannot match the body regex at all and is invisible to
- * both — not a partial match at a shorter body, no match whatsoever. Reported,
- * not silently absorbed, via `skippedNested` (review round 1, finding 1).
+ * ⚠️ `examined`/`findings` still do not cover every raw marker: a marker
+ * NESTED inside another marker cannot match the body regex at all (the body
+ * class `[^\[\]|]*` refuses `[`) and is invisible to both — not a partial
+ * match at a shorter body, no match whatsoever. Reported, not silently
+ * absorbed, via `skippedUnmatchable` (review round 1, finding 1; renamed
+ * round 2, finding ②, after round 1 also found a SECOND, larger cause under
+ * the same name — see the regex comment below for why that second cause is
+ * now fixed rather than merely counted).
  *
  * Design: docs/superpowers/specs/2026-08-13-remt-check-battery.md §5 item 10.
  */
@@ -93,7 +96,7 @@ function sourceTexts(root, localNames) {
  *
  * @param {string} cnxmlText the module's 01-source CNXML
  * @param {string} segText the module's 02-for-mt segment file text
- * @returns {{examined: number, findings: Array<{segId: string, type: string, body: string}>, skippedNested: number, ok: boolean}}
+ * @returns {{examined: number, findings: Array<{segId: string, type: string, body: string}>, skippedUnmatchable: number, ok: boolean}}
  */
 export function checkBracketBodies(cnxmlText, segText) {
   // ⚠️ THE WHOLE DOCUMENT, NOT `<content>`. `<glossary>` sits OUTSIDE `<content>`
@@ -115,7 +118,7 @@ export function checkBracketBodies(cnxmlText, segText) {
 
   const findings = [];
   let examined = 0;
-  let skippedNested = 0;
+  let skippedUnmatchable = 0;
 
   // ⚠️ RAW OCCURRENCES, NOT `parseSegmentsMap`. That helper defaults to
   // `duplicates: 'first'`, so every marker in a NON-FIRST occurrence of a
@@ -132,35 +135,43 @@ export function checkBracketBodies(cnxmlText, segText) {
     const segId = marker[1];
     const text = part.replace(/<!--\s*SEG:[^>]*-->/, '');
 
-    // ⚠️ NOT A FIX — REPORTED, PER review round 1 finding 1. The body regex
-    // below (`[^\[\]|]*` then literal `]]`) does not partially match a marker
-    // whose body contains a nested `[[...]]` or a `|payload` tail — it fails
-    // to match THAT MARKER AT ALL, so it is silently invisible to `examined`
-    // and `findings`, whatever its true content is. This is not only a
-    // nesting edge case: `[[term:x|id]]` (every id-bearing term) and
-    // `[[em:x|class]]` (every em — there is no class-less em) hit the exact
-    // same wall via their trailing pipe payload. Measured on the full
-    // chemistry corpus: 445 of 17,436 raw opens (2.6%) across 36 of 149
-    // modules are structurally unexaminable — 319 of those are nested `i`
-    // alone (m68733 loses 40 of its own 330), the rest are id-bearing
-    // term/em. `skippedNested` counts the raw `[[type:` openers (for types
-    // this check knows how to compare at all) that the match below could not
-    // reach, so `examined` is never mistaken for the true population — same
-    // idiom as `checkAltCoverage`'s `unreachable` in extraction-coverage.js.
-    // Deliberately not a change to what IS matched/compared: that would move
-    // the pinned `examined`/`findings` numbers Plan B's base-rate decision
-    // depends on, and this task is additive reporting only.
+    // ⚠️ NESTING IS STILL REPORTED, NOT FIXED — review round 1 finding 1,
+    // unchanged by round 2. A marker nested inside another marker (body
+    // contains `[[...]]`) cannot match the body regex at all: the body class
+    // `[^\[\]|]*` refuses `[`, so there is no shorter partial match, only no
+    // match. `skippedUnmatchable` counts the raw `[[type:` openers (for types
+    // this check can compare at all) that the match below could not reach —
+    // same idiom as `checkAltCoverage`'s `unreachable` in
+    // extraction-coverage.js. Deliberately not a fix: unlike the payload case
+    // just below, there is no positional sub-body to recover from a nested
+    // marker without guessing which part of it was the real content.
     let rawOpens = 0;
     for (const om of String(text).matchAll(/\[\[([A-Za-z]+):/g)) {
       if (BODY_SOURCE_ELEMENTS[om[1]]) rawOpens++;
     }
     let matchedHere = 0;
 
-    // Innermost-first: `[^\[\]|]` refuses to span a nested marker or a |payload,
-    // so `[[i:e[[sub:g]]]]` yields the sub body, never a body containing brackets.
-    for (const m of String(text).matchAll(/\[\[([A-Za-z]+):([^\[\]|]*)\]\]/g)) {
+    // ⚠️ WIDENED — review round 2, finding ①. Round 1 found a SECOND,
+    // structurally distinct cause behind the same "unmatchable" symptom:
+    // every id-bearing `term` marker (`[[term:x|id]]`, cnxml-extract.js's
+    // documented B4/RC3 shape) and every `em` marker (`[[em:x|class]]` —
+    // there is no class-less em; cnxml-extract.js falls back to `[[i:...]]`
+    // for that case) carries a trailing `|payload`, and the OLD regex's
+    // `[^\[\]|]*` immediately followed by literal `]]` never matches a
+    // `|id]]`/`|class]]` tail. Unlike nesting, this one IS fixable: the
+    // payload is a known, well-formed suffix, not an ambiguous embedded
+    // marker, so `(?:\|[^\[\]]*)?` consumes it (uncaptured) while the body
+    // group still captures only the pre-pipe text — the actual prose to
+    // compare. Innermost-first is unaffected: a nested `[[...]]` still
+    // contains `[`, which both the body class AND the payload class refuse,
+    // so a genuinely nested marker still cannot match, by design.
+    // Measured corpus-wide: this makes `term` (61/61) and `em` (1/1) fully
+    // reachable — `examined` +60, `skippedUnmatchable` -60, `findings`
+    // UNCHANGED at 3, firing set UNCHANGED at {m68710, m68733}. See
+    // task-7-report.md "Fix round 2" for the full before/after table.
+    for (const m of String(text).matchAll(/\[\[([A-Za-z]+):([^\[\]|]*)(?:\|[^\[\]]*)?\]\]/g)) {
       const [, type, body] = m;
-      if (!BODY_SOURCE_ELEMENTS[type]) continue; // opaque or payload-bearing — nothing to compare
+      if (!BODY_SOURCE_ELEMENTS[type]) continue; // opaque or id-reference — nothing to compare
       examined++;
       matchedHere++;
       const candidates = textsFor(type);
@@ -168,8 +179,8 @@ export function checkBracketBodies(cnxmlText, segText) {
         findings.push({ segId, type, body });
       }
     }
-    skippedNested += rawOpens - matchedHere;
+    skippedUnmatchable += rawOpens - matchedHere;
   }
 
-  return { examined, findings, skippedNested, ok: findings.length === 0 };
+  return { examined, findings, skippedUnmatchable, ok: findings.length === 0 };
 }
