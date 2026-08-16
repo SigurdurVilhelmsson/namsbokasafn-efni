@@ -749,6 +749,31 @@ describe('translateModule persists the run record (§C82 prerequisite 2)', () =>
     });
   });
 
+  it('never hands writeProvenance a null run record', async () => {
+    // ⚠️ ADDED at Task 2/3 review (Minor finding, closed here rather than by rework).
+    // The reviewer built an alternate writeProvenance WITHOUT the `run !== null`
+    // guard and it passed all four of Task 3's cases — because JSON.stringify drops
+    // `undefined` keys for free, so "omits the key" cannot tell the two apart. The
+    // guard is only observable when a caller passes an explicit null, and THIS is
+    // the call site where a conditionally-computed record could produce one.
+    const inputPath = path.join(dir, 'm66375-segments.en.md');
+    const outputPath = path.join(dir, 'm66375-segments.is.md');
+    fs.writeFileSync(inputPath, SEGMENTS.replace(/m66372/g, 'm66375'));
+
+    await translateModule(echoClient, inputPath, outputPath, null, false);
+
+    const parsed = readProvenance(dir, 'm66375');
+    expect(parsed.run).not.toBeNull();
+    expect(parsed.run).toBeTypeOf('object');
+  });
+
+  it('writeProvenance omits the key for an explicit null run (pins the guard)', () => {
+    // The direct pin the reviewer showed was missing. Without the `!== null` guard
+    // this writes `"run": null` and the assertion fails.
+    writeProvenance(dir, 'm66376', { tool: 'api-translate', run: null });
+    expect('run' in readProvenance(dir, 'm66376')).toBe(false);
+  });
+
   it('records the glossary arm, its hash and its size', async () => {
     const inputPath = path.join(dir, 'm66374-segments.en.md');
     const outputPath = path.join(dir, 'm66374-segments.is.md');
