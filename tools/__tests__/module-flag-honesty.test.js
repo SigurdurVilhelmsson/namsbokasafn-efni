@@ -122,6 +122,41 @@ describe('a tool that CAN honour --module narrows its scope', () => {
     expect(j.summary.modulesExamined).toBe(1);
     expect(Object.keys(j.modules)).toEqual([]);
   });
+
+  // §C82 review round 1, finding ①: the filter must be STRICT EQUALITY, not a
+  // substring/prefix match. Every ch17 module id (m68820..m68827) shares the
+  // prefix "m6882" — under `f.moduleId.includes(args.module)` this value would
+  // match all 8 of them (modulesExamined jumps to 8, nothing errors) instead of
+  // matching nothing. Verified red against that variant, green against the
+  // shipped `===` filter — see task-8-report.md "Fix round 1" for both runs.
+  it("does NOT substring/prefix-match — a value that is a real id's shared prefix matches nothing", () => {
+    const r = run('scan-residue.js', [
+      '--book',
+      'efnafraedi-2e',
+      '--chapter',
+      '17',
+      '--module',
+      'm6882',
+      '--json',
+    ]);
+    expect(r.code).not.toBe(0);
+    expect(r.out).toMatch(/matched no module/);
+  });
+
+  // §C82 review round 1, finding ②: a bare `--module` (no trailing value) is
+  // silently undetected by parseArgs' generic string-option handling
+  // (`if (nextArg === undefined) continue`) — args.module stays null exactly
+  // as if the flag were never passed, producing a whole-chapter scan the
+  // caller believes is scoped to one module. Fixed in scan-residue ONLY (the
+  // one tool that HONOURS --module, so the only one where this does harm) —
+  // validate-chapter and cnxml-render-fidelity-check reject --module outright
+  // regardless of value, so a missing value there degrades to "runs the whole
+  // chapter" either way, which is what they'd do anyway.
+  it('rejects a bare --module with no trailing value', () => {
+    const r = run('scan-residue.js', ['--book', 'efnafraedi-2e', '--chapter', '17', '--module']);
+    expect(r.code).not.toBe(0);
+    expect(r.out).toMatch(/--module/);
+  });
 });
 
 describe('validate-chapter also rejects --module (chapter-scoped checks)', () => {

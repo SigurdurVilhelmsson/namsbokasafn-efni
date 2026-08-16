@@ -60,12 +60,8 @@ export function collectResidueFiles(isDir) {
 const JSON_OPTION = { name: 'json', flags: ['--json'], type: 'boolean', default: false };
 
 function main() {
-  const args = parseArgs(process.argv.slice(2), [
-    BOOK_OPTION,
-    CHAPTER_OPTION,
-    MODULE_OPTION,
-    JSON_OPTION,
-  ]);
+  const argv = process.argv.slice(2);
+  const args = parseArgs(argv, [BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION, JSON_OPTION]);
 
   if (args.help) {
     console.log(
@@ -73,6 +69,22 @@ function main() {
         'Read-only EN-residue scan over 02-for-mt x 02-mt-output. Prints a report; --json for machine output.'
     );
     return;
+  }
+
+  // §C82 review finding: a bare `--module` with no following value is
+  // silently undetected by parseArgs' generic string-option handling
+  // (`if (nextArg === undefined) continue` — tools/lib/parseArgs.js) so
+  // `args.module` stays null, exactly as if the flag were never passed. Left
+  // unchecked, that produces a whole-chapter scan the caller believes is
+  // scoped to one module — the loop this exists to serve would consume those
+  // results as a per-module verdict. Fixed HERE ONLY: cnxml-render-fidelity-
+  // check and validate-chapter reject --module outright regardless of its
+  // value, so a missing value there degrades to "runs the whole chapter"
+  // either way (which is what they'd do for --module at all) — no separate
+  // check needed there, and this is not an oversight.
+  if (argv.includes('--module') && !args.module) {
+    console.error('Error: --module requires a value (e.g. --module m68823).');
+    process.exit(2);
   }
 
   requireBook(args);
