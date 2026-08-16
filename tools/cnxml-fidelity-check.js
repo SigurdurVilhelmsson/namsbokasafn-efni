@@ -444,11 +444,18 @@ function main() {
   // `modulesChecked` (not the filter's match count) is the right subject: it is 0
   // both when nothing matched AND when the module matched but its 03-translated
   // file was missing, and both are the same lie to the caller.
-  if (args.module && modulesChecked === 0) {
+  // ⚠️ ANY requested SCOPE, not just --module. Armed only on --module until
+  // 2026-08-16, a `--chapter 99` printed "Checked: 0 modules" and exited 0 —
+  // the identical false GREEN one level up, and §C82's driver runs these per
+  // chapter as well as per module. chapterProvided() is used rather than a
+  // truthiness test because chapter 0 is a real chapter.
+  const scopeRequested = Boolean(args.module) || chapterProvided(args);
+  if (scopeRequested && modulesChecked === 0) {
     console.error(
-      `\nError: --module ${args.module} examined 0 modules in ${args.book} ` +
-        `chapter ${args.chapter} — no such module, or its 03-translated output is missing. ` +
-        `Refusing to report a pass for a module that was never checked.`
+      `\nError: examined 0 modules in ${args.book} ` +
+        `${args.module ? `--module ${args.module} (chapter ${args.chapter})` : `chapter ${args.chapter}`}` +
+        ` — no such ${args.module ? 'module' : 'chapter'}, or its 03-translated output was never written.\n` +
+        `Refusing to report a pass for a scope that was never examined.`
     );
     process.exit(2);
   }

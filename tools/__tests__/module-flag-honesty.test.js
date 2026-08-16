@@ -178,3 +178,30 @@ describe('validate-chapter also rejects --module (chapter-scoped checks)', () =>
     expect(r.out).toMatch(/figure-numbers|files-exist/);
   });
 });
+
+describe('§C89 follow-up — a SCOPED run that examined nothing must not report success', () => {
+  // 🔴 The zero-examined guards added on 2026-08-16 were armed only under `--module`.
+  // A `--chapter` that matches nothing walked straight past them: "Checked: 0
+  // modules", exit 0. Measured. §C82's driver runs these per chapter as well as per
+  // module, so a chapter typo (12 vs 21) or a track that was never injected would be
+  // recorded GREEN for a chapter nothing ever looked at.
+  //
+  // This is the same defect as the --module case and the same rule: an absence is
+  // not an answer. A check that examined zero units has not passed; it has abstained.
+
+  for (const tool of ['cnxml-fidelity-check.js', 'cnxml-linguistic-check.js']) {
+    it(`${tool} refuses a --chapter that matches no modules`, () => {
+      const r = run(tool, ['--book', 'efnafraedi-2e', '--chapter', '99']);
+      expect(r.code).toBe(2);
+      expect(r.out).toMatch(/examined 0 modules/i);
+    });
+
+    it(`${tool} still succeeds on a real chapter — the positive control`, () => {
+      // Without this, a tool that errored on EVERY invocation would pass the test
+      // above and look fixed.
+      const r = run(tool, ['--book', 'efnafraedi-2e', '--chapter', '1']);
+      expect(r.code).not.toBe(2);
+      expect(r.out).toMatch(/Checked: [1-9]/);
+    });
+  }
+});
