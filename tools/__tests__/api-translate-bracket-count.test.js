@@ -127,4 +127,51 @@ describe('bracketMarkerDeltaBySegment — per segment, so losses cannot cancel',
     expect(r.segmentsExamined).toBe(0);
     expect(r.segmentsWithDelta).toBe(0);
   });
+
+  // Fix round 1: parseSegmentsMap's default `duplicates: 'first'` silently
+  // dropped every occurrence of a duplicated raw seg-id but the first, on
+  // BOTH sides — a delta confined to a non-first occurrence was invisible,
+  // and segmentsExamined undercounted. Verified red against the originally
+  // shipped code (commit 10c8b208, which used parseSegmentsMap) before the
+  // fix: both cases below returned a false-clean result.
+  it('a duplicated seg-id whose SECOND occurrence loses a marker is still caught, keyed segId#1', () => {
+    const en = [
+      '<!-- SEG:m1:para:p1 -->',
+      'First occurrence [[i:a]].',
+      '',
+      '<!-- SEG:m1:para:p1 -->',
+      'Second occurrence [[i:b]] and [[i:c]].',
+      '',
+    ].join('\n');
+    const is = [
+      '<!-- SEG:m1:para:p1 -->',
+      'Fyrsta tilvik [[i:a]].',
+      '',
+      '<!-- SEG:m1:para:p1 -->',
+      'Annað tilvik [[i:b]].', // dropped [[i:c]] — the SECOND occurrence's loss
+      '',
+    ].join('\n');
+    const r = bracketMarkerDeltaBySegment(en, is);
+    expect(r.segmentsExamined).toBe(2);
+    expect(r.segmentsWithDelta).toBe(1);
+    expect(r.bySegment['m1:para:p1#1']).toEqual({ i: -1 });
+    expect(r.bySegment['m1:para:p1']).toBeUndefined(); // first occurrence is clean
+    expect(r.total).toEqual({ i: -1 });
+    expect(r.unpairedSegIds).toEqual([]);
+  });
+
+  it('2 raw EN occurrences of an id against 1 raw IS occurrence reports the missing one, keyed segId#1', () => {
+    const en = [
+      '<!-- SEG:m1:para:p1 -->',
+      'First.',
+      '',
+      '<!-- SEG:m1:para:p1 -->',
+      'Second.',
+      '',
+    ].join('\n');
+    const is = ['<!-- SEG:m1:para:p1 -->', 'Fyrsta.', ''].join('\n'); // only one occurrence
+    const r = bracketMarkerDeltaBySegment(en, is);
+    expect(r.segmentsExamined).toBe(2);
+    expect(r.unpairedSegIds).toEqual(['m1:para:p1#1']);
+  });
 });

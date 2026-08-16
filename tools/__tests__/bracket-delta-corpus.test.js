@@ -38,10 +38,13 @@ describe('A3 acceptance — the widening catches what the 14-type module aggrega
     expect(bracketMarkerDelta(p.en, p.is)).toEqual({});
 
     // The new instrument sees the MATH loss. Measured 2026-08-16: exactly -2,
-    // over 2 of 149 segments. Asserting the value, not just the sign, so a
-    // widening that over-counts is caught too.
+    // over 2 of 151 RAW segment occurrences (fix round 1: segmentsExamined now
+    // counts every raw <!-- SEG: --> occurrence via parseSegmentRecords, not
+    // deduped parseSegmentsMap keys — 149 was the deduped-key undercount).
+    // Asserting the value, not just the sign, so a widening that over-counts
+    // is caught too.
     const r = bracketMarkerDeltaBySegment(p.en, p.is);
-    expect(r.segmentsExamined).toBe(149);
+    expect(r.segmentsExamined).toBe(151);
     expect(r.total).toEqual({ MATH: -2 });
     expect(r.segmentsWithDelta).toBe(2);
     expect(r.unpairedSegIds).toEqual([]);
@@ -51,10 +54,13 @@ describe('A3 acceptance — the widening catches what the 14-type module aggrega
     const p = pair('efnafraedi-2e', 'm68791');
     expect(p, 'm68791 EN/IS pair must exist — it is the MUST-NOT-TRIP control').not.toBeNull();
 
-    // Measured 2026-08-16: 0 of 373 segments carry a delta. The largest module
-    // in the trio, so a clean result here is not a small-sample artefact.
+    // Measured 2026-08-16: 0 of 380 RAW segment occurrences carry a delta (fix
+    // round 1: 373 was the deduped-unique-id count; this module has 7 raw
+    // duplicate occurrences that a deduped comparison never even looked at).
+    // The largest module in the trio, so a clean result here is not a
+    // small-sample artefact.
     const r = bracketMarkerDeltaBySegment(p.en, p.is);
-    expect(r.segmentsExamined).toBe(373);
+    expect(r.segmentsExamined).toBe(380);
     expect(r.segmentsWithDelta).toBe(0);
     expect(r.total).toEqual({});
     expect(r.unpairedSegIds).toEqual([]);
