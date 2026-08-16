@@ -72,5 +72,9 @@ describe('roundTripAltCount — alt survives extract -> inject', () => {
     );
     expect(r.rawAlt).toBe(1);
     expect(r.outAlt).toBe(2);
+    // ⚠️ The ONLY `ok === false` in this file, added 2026-08-16. Every other case here
+    // asserts `ok: true` or omits it, so before this line a hardcoded `ok: true` passed
+    // the whole suite. `ok` is what the §C82 loop gates on — pin it in both directions.
+    expect(r.ok).toBe(false);
   });
 });

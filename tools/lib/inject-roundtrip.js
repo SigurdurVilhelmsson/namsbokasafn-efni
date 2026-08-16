@@ -30,9 +30,23 @@ function countAlt(cnxml) {
 /**
  * Extract a module, inject its own English straight back, and compare alt counts.
  *
- * Injecting the ENGLISH back is what makes this a pure structural check: no
- * translation is involved, so any difference is the pipeline losing an
- * attribute, never a content decision.
+ * Injecting the ENGLISH back means no translation is involved, so any difference
+ * in the COUNT is the pipeline losing or duplicating an attribute, never a
+ * content decision.
+ *
+ * ⚠️ IT IS NOT A "PURE STRUCTURAL CHECK", AND THE OVERCLAIM MATTERED — THIS
+ * COUNTS ATTRIBUTES, NOT CONTENT. Measured 2026-08-16 by a reviewer: deleting
+ * EVERY `:alt:` segment from the parsed map before buildCnxml (951 chemistry,
+ * 1,918 organic, and all 11/19/8/8/22 in the regression fixtures) leaves all
+ * eight committed assertions GREEN. Two mechanisms bypass the segment path and
+ * keep the count intact — `readAlt` falls back to `alt.text`, the extraction-
+ * captured ENGLISH, and `buildFigure` copies id-bearing figures verbatim.
+ * ▶ So a future divergence between the alt segment ids written to 02-for-mt and
+ * the ids `readAlt` looks up would ship ENGLISH alt text to Icelandic readers —
+ * §C81's original reader-visible symptom — while this check reports
+ * `rawAlt === outAlt` on all 491 in-scope modules. **A green round-trip is not
+ * evidence for that class.** Catching it needs a sentinel distinct from the
+ * source text, which is a different instrument; logged to the register.
  *
  * Round-tripping through formatSegmentsMarkdown -> parseSegments rather than
  * building a Map by hand is deliberate — it exercises the same serialize/parse

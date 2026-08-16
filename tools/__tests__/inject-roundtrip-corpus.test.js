@@ -63,9 +63,23 @@ describe('alt survives the round trip', () => {
     // Four go clean -> lossy, so this case goes red against the broken vintage. The
     // numbers reproduce the reviewer's independently, which is what makes them evidence.
     //
-    // ⚠️ m42296 STILL LOSES ONE ALT AT HEAD (24 -> 23). That is a residual defect, not a
-    // test artefact — physics is out of §C80's scope so it is pinned, not fixed, and it
-    // is logged to the register. Pinning it is what makes a CHANGE in it visible.
+    // ⚠️⚠️ CORRECTED 2026-08-16 — THIS COMMENT SAID m42296's 24 -> 23 WAS "a residual
+    // defect, not a test artefact". THAT WAS BACKWARDS. It IS an artefact: `countAlt`
+    // regexes raw text, so it counts `alt=` inside XML COMMENTS. m42296 holds 24 alt
+    // attributes of which 2 are commented out; its LIVE markup round-trips 22 -> 22
+    // CLEAN, and the 24 -> 23 delta is one commented-out alt. Confirmed independently
+    // with an XML DOM parse, which is structurally incapable of seeing inside a comment.
+    //
+    // ▶ WHY countAlt IS NOT BEING CHANGED: censused 2026-08-16 across all six books —
+    // only edlisfraedi-2e has commented-out alt at all (4 modules: m42296 ×2, m42456 ×2,
+    // m42493 ×1, m42531 ×1). efnafraedi-2e 0/149 and lifraen-efnafraedi 0/342 — i.e.
+    // ZERO in both books inside §C80's re-MT scope. The imprecision cannot reach the
+    // §C82 loop, and stripping comments would move all five fixture pins and both
+    // discrimination vintages for no in-scope gain.
+    //
+    // The 24/23 pin therefore stays as a BEHAVIOUR pin — it records what this counter
+    // reports today so a change is visible. It is NOT evidence of a reader-visible
+    // defect, and must not be cited as one.
     //
     // The books here (edlisfraedi-2e, liffraedi-2e) are outside §C80's re-MT scope. That
     // is fine and deliberate: a regression fixture is chosen for the defect it
@@ -76,12 +90,17 @@ describe('alt survives the round trip', () => {
       return roundTripAltCount(fs.readFileSync(f, 'utf8'));
     };
 
-    expect(at('edlisfraedi-2e', 'm42714')).toMatchObject({ rawAlt: 11, outAlt: 11 });
-    expect(at('edlisfraedi-2e', 'm42359')).toMatchObject({ rawAlt: 19, outAlt: 19 });
-    expect(at('edlisfraedi-2e', 'm42493')).toMatchObject({ rawAlt: 8, outAlt: 8 });
-    expect(at('liffraedi-2e', 'm66590')).toMatchObject({ rawAlt: 8, outAlt: 8 });
-    // Residual, pinned deliberately — see the note above.
-    expect(at('edlisfraedi-2e', 'm42296')).toMatchObject({ rawAlt: 24, outAlt: 23 });
+    // ⚠️ `ok` IS ASSERTED IN BOTH DIRECTIONS, DELIBERATELY. Added 2026-08-16: the first
+    // cut never asserted `ok === false` anywhere, so a mutation returning a hardcoded
+    // `ok: true` — or relaxing `rawAlt === outAlt` to `<=`, which would call organic's
+    // DUPLICATED media clean — passed every assertion in this file. `ok` is what the
+    // §C82 loop gates on, so an unpinned `ok` is an unpinned gate.
+    expect(at('edlisfraedi-2e', 'm42714')).toMatchObject({ rawAlt: 11, outAlt: 11, ok: true });
+    expect(at('edlisfraedi-2e', 'm42359')).toMatchObject({ rawAlt: 19, outAlt: 19, ok: true });
+    expect(at('edlisfraedi-2e', 'm42493')).toMatchObject({ rawAlt: 8, outAlt: 8, ok: true });
+    expect(at('liffraedi-2e', 'm66590')).toMatchObject({ rawAlt: 8, outAlt: 8, ok: true });
+    // Behaviour pin, and the only `ok: false` in the file — see the note above.
+    expect(at('edlisfraedi-2e', 'm42296')).toMatchObject({ rawAlt: 24, outAlt: 23, ok: false });
   }, 120_000);
 
   it('organic: pins the four known round-trip defects so any change is visible', () => {
@@ -103,5 +122,9 @@ describe('alt survives the round trip', () => {
     expect(r.files).toBe(342);
     expect(r.loss.map((x) => x.module)).toEqual(['m00032']);
     expect(r.gain.map((x) => x.module).sort()).toEqual(['m00023', 'm00046', 'm00069']);
+    // `loss`/`gain` are derived from rawAlt/outAlt directly and never read `ok`, so
+    // assert it here too — this is the only `ok === false` pinned on a REAL corpus
+    // defect rather than a synthetic or a comment artefact.
+    expect([...r.loss, ...r.gain].every((x) => x.ok === false)).toBe(true);
   }, 600_000);
 });
