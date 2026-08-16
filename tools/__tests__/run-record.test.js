@@ -49,6 +49,8 @@ describe('buildRunRecord', () => {
     glossaryArm: 'glossary',
     glossaryHash: 'deadbeef',
     glossaryTermCount: 2097,
+    chunksWithGlossary: 1,
+    chunksTotal: 1,
   };
 
   it('stamps its own version', () => {
@@ -76,7 +78,19 @@ describe('buildRunRecord', () => {
       arm: 'glossary',
       contentHash: 'deadbeef',
       termCount: 2097,
+      chunksWithGlossary: 1,
+      chunksTotal: 1,
     });
+  });
+
+  it('records arm and outcome separately, so a mismatch between them is visible', () => {
+    // §C82 fix round 1, Finding 2: arm is caller intent; chunksWithGlossary/
+    // chunksTotal is what actually happened. The two are allowed to disagree —
+    // that disagreement is the whole point of carrying both.
+    const r = buildRunRecord({ ...base, chunksWithGlossary: 0, chunksTotal: 3 });
+    expect(r.glossary.arm).toBe('glossary');
+    expect(r.glossary.chunksWithGlossary).toBe(0);
+    expect(r.glossary.chunksTotal).toBe(3);
   });
 
   it('is stable when the optional arrays are absent', () => {

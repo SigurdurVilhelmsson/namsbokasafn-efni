@@ -66,9 +66,16 @@ function tallyByType(items) {
  * @param {Array<object>} [p.mismatches] per-segment id-reattachment mismatches
  * @param {Record<string, number>} [p.bracketDelta] module-level bracket delta
  * @param {Array<{type: string}>} [p.unwrapped] invented glossary markers removed
- * @param {'glossary'|'no-glossary'} p.glossaryArm which arm this run used
+ * @param {'glossary'|'no-glossary'} p.glossaryArm which arm the CALLER asked for —
+ *   intent, not outcome. A glossary can be asked for and never reach the wire:
+ *   the per-chunk text filter drops it when none of its terms appear in that
+ *   chunk, and the truncation retry always drops it. Read `chunksWithGlossary`/
+ *   `chunksTotal` alongside `arm`, never `arm` alone, to know whether the
+ *   glossary was actually used.
  * @param {string|null} p.glossaryHash glossaryContentHash of the glossary sent
  * @param {number|null} p.glossaryTermCount terms in the unfiltered glossary
+ * @param {number} p.chunksWithGlossary chunks whose actual (used) API call carried a glossary
+ * @param {number} p.chunksTotal total chunks the module was split into (>=1)
  * @returns {object} the run record, JSON-serializable
  */
 export function buildRunRecord({
@@ -82,6 +89,8 @@ export function buildRunRecord({
   glossaryArm,
   glossaryHash,
   glossaryTermCount,
+  chunksWithGlossary,
+  chunksTotal,
 }) {
   return {
     runRecordVersion: RUN_RECORD_VERSION,
@@ -97,6 +106,8 @@ export function buildRunRecord({
       arm: glossaryArm,
       contentHash: glossaryHash,
       termCount: glossaryTermCount,
+      chunksWithGlossary,
+      chunksTotal,
     },
   };
 }

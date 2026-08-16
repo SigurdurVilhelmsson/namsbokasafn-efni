@@ -999,14 +999,23 @@ export function splitAtSegBoundaries(text, maxChars) {
  * restored immediately after each translateAuto call (reattachIds) — before
  * the existing post-processing chain, which continues to operate on the
  * original id-anchored on-disk form.
- * @returns {{ text: string, usage: number, mismatches: Array }}
+ *
+ * §C82 fix round 1, Finding 2: `glossarySent` on the return value reports
+ * whether the API CALL WHOSE RESULT WAS USED actually carried a glossary —
+ * it is outcome, not the caller's intent (the `glossary` parameter). It is
+ * false whenever filterGlossaryForText finds no term in this chunk's text,
+ * and false again on the truncation-retry path below, which unconditionally
+ * drops the glossary and REPLACES the first response.
+ * @returns {{ text: string, usage: number, mismatches: Array, unwrapped: Array, glossarySent: boolean }}
  */
 export async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
   const { wireText, segments } = stripTermFnToPaired(chunkText);
   const filteredGlossary = filterGlossaryForText(glossary, chunkText);
   const translateOpts = { targetLanguage: 'is' };
+  let glossarySent = false;
   if (filteredGlossary) {
     translateOpts.glossaries = [filteredGlossary];
+    glossarySent = true;
   }
 
   // Order matters (Finding A): repairSegTags must run on the paired-form
@@ -1053,6 +1062,9 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
       reattach = reattachIds(output, segments);
       output = reattach.text;
       mismatches = reattach.mismatches;
+      // The USED result (this retry's) carried no glossary, regardless of
+      // whether the discarded first attempt did.
+      glossarySent = false;
     }
 
     if (!validateMarkers(chunkText, output)) {
@@ -1065,7 +1077,7 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
     }
   }
 
-  return { text: output, usage: result.usage, mismatches, unwrapped };
+  return { text: output, usage: result.usage, mismatches, unwrapped, glossarySent };
 }
 
 /** Derive a module id (mNNNNN) from an mt-output output path. */
@@ -1101,6 +1113,12 @@ export async function translateModule(
   const translatedChunks = [];
   const mismatches = [];
   const unwrapped = [];
+  // §C82 fix round 1, Finding 2: `glossary` (the parameter) records what the
+  // CALLER asked for, not what actually reached the API — filterGlossaryForText
+  // can drop it per-chunk (no term matches that chunk's text) and the truncation
+  // retry in translateChunk always drops it. Count the chunks whose actual API
+  // call carried one, so the run record can report outcome alongside intent.
+  let chunksWithGlossary = 0;
 
   for (let i = 0; i < chunks.length; i++) {
     const chunkLabel = needsSplitting ? `chunk ${i + 1}/${chunks.length}` : moduleId;
@@ -1112,6 +1130,7 @@ export async function translateModule(
     const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
     translatedChunks.push(result.text);
     totalUsage += result.usage || 0;
+    if (result.glossarySent) chunksWithGlossary++;
     if (result.mismatches && result.mismatches.length) mismatches.push(...result.mismatches);
     if (result.unwrapped && result.unwrapped.length) unwrapped.push(...result.unwrapped);
   }
@@ -1164,30 +1183,16 @@ export async function translateModule(
   }
   fs.writeFileSync(outputPath, output, 'utf8');
 
-  // B3: surface any inline bracket-marker loss/add at the producer, per module. This
-  // is a module-level aggregate: a drop in one segment and a spurious add of the same
-  // type in another cancel to zero and won't be reported — acceptable for a non-gating
-  // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
-  // §C82: the per-segment, all-types instrument that DOES catch the cancelling case
-  // is bracketMarkerDeltaBySegment; the loop's A3 gate uses that one, not this.
-  //
-  // MOVED ABOVE the provenance write (§C82) so the run record can carry it. The
-  // write must stay as close to fs.writeFileSync as possible: resolveRestorePolicy
-  // THROWS when a segment file exists with no sidecar, so every line between the
-  // two widens a real failure window.
+  // §C82 fix round 1, Finding 1: the ONLY thing that may sit between
+  // fs.writeFileSync and writeProvenance is what buildRunRecord actually needs —
+  // here, the bare bracketDelta value. resolveRestorePolicy THROWS when a segment
+  // file exists with no sidecar, so every statement in this window widens a real
+  // failure window; a pure computation over in-memory strings is about as safe as
+  // that window gets, but it is not zero, so keep it to exactly this one call.
+  // B3's diagnostics (the human-readable note and the invented-marker note) are
+  // deliberately printed AFTER writeProvenance below: neither is needed to build
+  // the record, and an EPIPE on a broken stderr must not cost us the sidecar.
   const bracketDelta = bracketMarkerDelta(input, output);
-  const bracketNote = formatBracketDelta(moduleId, bracketDelta);
-  if (bracketNote) console.error(`  Note: ${bracketNote}`);
-
-  // §C67 class 3: markers the MT invented around glossary target words and we
-  // removed. Reported, never silent — the rate is the input to deciding whether
-  // a glossary is safe to send at its current size.
-  if (unwrapped.length) {
-    const types = [...new Set(unwrapped.map((u) => u.type))].join(', ');
-    console.error(
-      `  Note: ${moduleId}: removed ${unwrapped.length} invented glossary marker(s) — ${types}`
-    );
-  }
 
   // B2: stamp producer provenance next to the segment file.
   // §C82 prerequisite 2: it now also carries the run record. Without this the
@@ -1206,6 +1211,8 @@ export async function translateModule(
       glossaryArm: glossary ? 'glossary' : 'no-glossary',
       glossaryHash: glossaryContentHash(glossary),
       glossaryTermCount: glossary?.terms?.length ?? null,
+      chunksWithGlossary,
+      chunksTotal: chunks.length,
     }),
   });
 
@@ -1215,6 +1222,25 @@ export async function translateModule(
   if (fs.existsSync(linksSource)) {
     const linksDest = path.join(outputDir, linksFilename);
     fs.copyFileSync(linksSource, linksDest);
+  }
+
+  // B3: surface any inline bracket-marker loss/add at the producer, per module. This
+  // is a module-level aggregate: a drop in one segment and a spurious add of the same
+  // type in another cancel to zero and won't be reported — acceptable for a non-gating
+  // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
+  // §C82: the per-segment, all-types instrument that DOES catch the cancelling case
+  // is bracketMarkerDeltaBySegment; the loop's A3 gate uses that one, not this.
+  const bracketNote = formatBracketDelta(moduleId, bracketDelta);
+  if (bracketNote) console.error(`  Note: ${bracketNote}`);
+
+  // §C67 class 3: markers the MT invented around glossary target words and we
+  // removed. Reported, never silent — the rate is the input to deciding whether
+  // a glossary is safe to send at its current size.
+  if (unwrapped.length) {
+    const types = [...new Set(unwrapped.map((u) => u.type))].join(', ');
+    console.error(
+      `  Note: ${moduleId}: removed ${unwrapped.length} invented glossary marker(s) — ${types}`
+    );
   }
 
   return {
