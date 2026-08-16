@@ -1183,6 +1183,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseModuleDoc, altReachability } from '../lib/extraction-coverage.js';
+import { extractSegments } from '../cnxml-extract.js';
 
 const REPO_ROOT = path.resolve(import.meta.dirname, '..', '..');
 
@@ -1220,8 +1221,9 @@ describe('§C81 alt shortfall is pinned, so a change in it is visible', () => {
     expect(sourceModules('efnafraedi-2e').length).toBe(149);
   });
 
-  it('chemistry: 197 alt attributes sit in the four blind positions', () => {
+  it('chemistry: 952 reachable, 197 in the four blind positions, 1149 total', () => {
     const t = census(sourceModules('efnafraedi-2e'));
+    expect(t.reachable).toBe(952);
     expect(t.unreachable).toBe(197);
     expect(t.reachable + t.unreachable).toBe(1149);
   });
@@ -1235,6 +1237,42 @@ describe('§C81 alt shortfall is pinned, so a change in it is visible', () => {
       'bare-media-in-note': 10,
     });
   });
+});
+
+describe('E5 fires on a real defect and on nothing else (live extractor)', () => {
+  // ⚠️ This block runs the REAL extractor in memory, NOT the committed 02-for-mt
+  // files. The tree is pre-re-extract and holds zero alt segments corpus-wide, so
+  // reading the committed files would make E5 fire on all 149 modules — a true
+  // statement about a stale tree, and useless as a discrimination test. What we
+  // want to know is whether the check separates a defect from a clean module,
+  // and only the live extractor can answer that today.
+  //
+  // Measured 2026-08-16: reachable 952, extractor emits 951, and the single
+  // shortfall is m68727 (6 reachable, 5 emitted) — the known regex-truncation
+  // defect in processFigure's non-global media regex. 148 clean controls.
+  const emittedAltCount = (cnxml) =>
+    extractSegments(cnxml).segments.filter((s) => s.type === 'alt').length;
+
+  it('exactly one chemistry module is short, and it is m68727', () => {
+    const short = [];
+    let reachableTotal = 0;
+    let emittedTotal = 0;
+
+    for (const f of sourceModules('efnafraedi-2e')) {
+      const src = fs.readFileSync(f, 'utf8');
+      const { reachable } = altReachability(parseModuleDoc(src).content);
+      const emitted = emittedAltCount(src);
+      reachableTotal += reachable;
+      emittedTotal += emitted;
+      if (emitted !== reachable) {
+        short.push({ module: path.basename(f, '.cnxml'), reachable, emitted });
+      }
+    }
+
+    expect(reachableTotal).toBe(952);
+    expect(emittedTotal).toBe(951);
+    expect(short).toEqual([{ module: 'm68727', reachable: 6, emitted: 5 }]);
+  }, 120_000);
 });
 ```
 
@@ -1280,9 +1318,16 @@ console.log(firing.slice(0, 5));
 "
 ```
 
-Expected **today, pre-re-extract**: E5 fires on every module that has any reachable alt, because zero alt segments exist in `02-for-mt` corpus-wide. That is the battery's documented SHOULD-TRIP (*"today's tree: chem 1,149 alt attrs → 0 alt segments"*) — **so a non-zero count here is the check working, not a bug.** Record the number in the commit message.
+**⚠️ THERE ARE TWO DIFFERENT MEASUREMENTS HERE AND THEY GIVE DIFFERENT ANSWERS. Both are correct; say which you ran.**
 
-The `m68727` single-module true positive only becomes visible **after** the re-extract, which is out of this plan's scope. Note that in the commit message too, so nobody later reads "E5 fires on 149 modules" as a defect.
+| what you read | E5 fires on | why |
+|---|---|---|
+| the **committed `02-for-mt` files** (the script above) | **~every module with a reachable alt** | the tree is pre-re-extract and holds **zero** alt segments corpus-wide — the battery's documented SHOULD-TRIP (*"chem 1,149 alt attrs → 0 alt segments"*) |
+| the **live extractor** (Step 6's corpus test) | **exactly 1 — `m68727`, 6 reachable / 5 emitted** | the extractor already emits alt; only the committed *files* are stale |
+
+**So a large number from the script above is the check working on a stale tree, not a defect** — and it is *not* evidence about discrimination, because a check that fires on everything discriminates nothing. The discrimination evidence is Step 6's live-extractor case, which was measured at 1 firing module against 148 clean controls.
+
+Run the script anyway and record **both** numbers in the commit message, labelled. Reporting only the first would let a later reader conclude E5 is broken; reporting only the second would hide that the tree still needs re-extracting.
 
 - [ ] **Step 9: Full suite, lint, format**
 
@@ -2041,10 +2086,14 @@ describe('a tool that CAN honour --module narrows its scope', () => {
     const one = run('scan-residue.js', ['--book', 'efnafraedi-2e', '--chapter', '20', '--module', 'm68823', '--json']);
     const wj = JSON.parse(whole.out);
     const oj = JSON.parse(one.out);
+    // `modulesExamined` goes in `summary`, beside its existing siblings
+    // (modulesWithResidue, exactResidues, ratioWarnings, toleratedResidues) —
+    // NOT at the top level, where the emitted object holds only {book, summary, modules}.
     // The scoped run must read strictly fewer modules — an equal count means the
     // flag was dropped and the whole chapter ran, which is the failure this pins.
-    expect(oj.modulesExamined).toBeLessThan(wj.modulesExamined);
-    expect(oj.modulesExamined).toBe(1);
+    expect(oj.summary.modulesExamined).toBeLessThan(wj.summary.modulesExamined);
+    expect(oj.summary.modulesExamined).toBe(1);
+    expect(Object.keys(oj.modules)).toEqual(['m68823']);
   });
 
   it('scan-residue rejects a --module that does not exist rather than scanning everything', () => {
@@ -2085,7 +2134,7 @@ Then read the current JSON shape and add the field **additively**, never renamin
 node tools/scan-residue.js --book efnafraedi-2e --chapter 20 --json | head -20
 ```
 
-Add `modulesExamined` to the emitted object. The design spec's rule is that **every check emits the number of units it examined** — §C60 is the precedent, where a check reported `Total findings: 0` while reading zero files. Without this field the scoping assertion in Step 2 is unfalsifiable: a scoped run and a dropped flag produce the same finding count whenever the chapter happens to be clean.
+Add `modulesExamined` to the `summary` object (NOT the top level — the emitted shape is `{book, summary, modules}`), computed from the `ids` array already present at `:110`. The design spec's rule is that **every check emits the number of units it examined** — §C60 is the precedent, where a check reported `Total findings: 0` while reading zero files. Without this field the scoping assertion in Step 2 is unfalsifiable: a scoped run and a dropped flag produce the same finding count whenever the chapter happens to be clean.
 
 Commit this on its own:
 
@@ -2121,24 +2170,40 @@ on a clean chapter."
 
 Add `MODULE_OPTION` to this tool's `parseArgs` option list so `args.module` is populated, and add a line to its `printHelp()` saying `--module` is deliberately unsupported.
 
-**`tools/scan-residue.js`** — add `MODULE_OPTION` to the option list, filter the module set after discovery, fail on an unknown id, and add `modulesExamined` to the JSON output:
+**`tools/scan-residue.js`** — add `MODULE_OPTION` to the option list at `:57` (it currently passes `[BOOK_OPTION, CHAPTER_OPTION, JSON_OPTION]`) and filter at discovery.
+
+⚠️ **Read the real shapes before writing the filter — verified 2026-08-16:**
+- `collectResidueFiles(isDir)` (`:44,:51`) returns **`{moduleId, file}[]`** — an array. That is where the filter belongs; the loop consumes it at `:88`.
+- `modules` (`:83`) is an **object keyed by moduleId**, built inside that loop — *not* an array, so `modules.filter(...)` does not apply to it.
+- The emitted JSON is `{book, summary, modules}` (`:120`), where `summary` (`:111-116`) already holds `modulesWithResidue`, `exactResidues`, `ratioWarnings`, `toleratedResidues`. **`modulesExamined` goes in `summary`, beside those** — `Object.keys(modules).length`, which the code already computes as `ids` at `:110`.
+
+Filter at the pair list, and make a non-matching id an error:
 
 ```javascript
-  // §C82: per-module scoping. A missing module is an ERROR, never a silent
-  // empty scan — an empty result set and a clean result set look identical.
-  if (args.module) {
-    const before = modules.length;
-    modules = modules.filter((m) => m.moduleId === args.module);
-    if (modules.length === 0) {
-      console.error(
-        `Error: --module ${args.module} matched none of the ${before} module(s) in scope.`
-      );
-      process.exit(2);
+    let files = collectResidueFiles(isDir);
+    if (args.module) {
+      files = files.filter((f) => f.moduleId === args.module);
     }
+    for (const { moduleId, file } of files) {
+```
+
+Then, after the loop, fail loudly if `--module` matched nothing anywhere in scope:
+
+```javascript
+  // §C82: a --module that matches nothing is an ERROR, never a silent empty
+  // scan. An empty result set and a clean result set are indistinguishable in
+  // the output, so a typo'd module id would read as "no residue found".
+  if (args.module && Object.keys(modules).length === 0) {
+    console.error(
+      `Error: --module ${args.module} matched no module in ${args.book}` +
+        (args.chapter !== null ? ` chapter ${args.chapter}` : '') +
+        '.'
+    );
+    process.exit(2);
   }
 ```
 
-> Adapt the variable names to the tool's own — `modules`/`moduleId` are illustrative. Read the discovery code first and keep its shape.
+> Adapt to the tool's own variable names and loop structure — the snippets above name the real identifiers as of 2026-08-16, but confirm against the file.
 
 **`tools/validate-chapter.js`** — same pattern. It takes `<book> <chapter>` positionally, so `--module` is a new declared option alongside them; keep the positional contract unchanged.
 
