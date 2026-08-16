@@ -2107,17 +2107,24 @@ that call is Plan B's."
 
 | tool | today | answer |
 |---|---|---|
-| `tools/scan-residue.js` | no `--module` | **add it** |
-| `tools/validate-chapter.js` | positional `<book> <chapter>` | **add `--module`** |
+| `tools/scan-residue.js` | no `--module`, silently dropped | **honour it** |
 | `tools/cnxml-render-fidelity-check.js` | chapter-aggregated **by design** | **reject `--module` loudly** |
+| **`tools/validate-chapter.js`** | positional `<book> <chapter>`, own hand-rolled parser | **reject `--module` loudly** — see the amendment below |
 | `tools/verify-extraction-coverage.js` | no `--module` | **no flag** — consumers import `analyzeModule` |
 
-The third is the valuable one. A tool that cannot honour a flag must say so, not ignore it — that is §C83's lesson, and `cnxml-render-fidelity-check`'s own header says the chapter is the closed reconciliation unit.
+The *rejections* are the valuable part. A tool that cannot honour a flag must say so, not ignore it — that is §C83's lesson, and `cnxml-render-fidelity-check`'s own header says the chapter is the closed reconciliation unit.
+
+**⚠️ AMENDED at pre-flight (2026-08-16, controller ruling — see the ledger). `validate-chapter.js` moves from HONOUR to REJECT, and the battery spec put it in the wrong category.** Measured by running its checks: two of its twelve reconcile **across** a chapter's modules —
+
+- **`figure-numbers`** — *"Figure numbers are sequential **within chapter** (no gaps)"*. One module cannot establish a sequence.
+- **`cross-references`** — *"Cross-references match existing figure/table captions"*. The caption set to match against is chapter-wide.
+
+Honouring `--module` would make those two silently produce **wrong answers**, which is strictly worse than the silent drop it replaces. The battery spec's §5 item 7 lists this tool among those needing a per-module wrapper, but the spec already has a *"chapter-only by design → Tier 4"* category and simply did not put it there. **Per CLAUDE.md a frozen doc is evidence, never status — and here the code outranks both.** The loop calls `validate-chapter` at chapter close, alongside `cnxml-render-fidelity-check`.
 
 **Files:**
-- Modify: `tools/scan-residue.js` (arg parsing + the module filter)
-- Modify: `tools/validate-chapter.js` (arg parsing + the module filter)
+- Modify: `tools/scan-residue.js` (arg parsing + the module filter + `summary.modulesExamined`)
 - Modify: `tools/cnxml-render-fidelity-check.js` (reject `--module`)
+- Modify: `tools/validate-chapter.js` (reject `--module` — hand-rolled parser, so no `MODULE_OPTION`)
 - Test: `tools/__tests__/module-flag-honesty.test.js` (create)
 
 **Interfaces:**
@@ -2195,9 +2202,25 @@ describe('a tool that CAN honour --module narrows its scope', () => {
     expect(r.code).not.toBe(0);
   });
 
-  it('validate-chapter --module narrows to one module', () => {
-    const one = run('validate-chapter.js', ['efnafraedi-2e', '20', '--module', 'm68823']);
-    expect(one.out).not.toMatch(/m68791/);
+});
+
+describe('validate-chapter also rejects --module (chapter-scoped checks)', () => {
+  it('rejects --module rather than silently running the whole chapter', () => {
+    // ⚠️ THE ORIGINAL ASSERTION HERE WAS VACUOUS and was replaced at pre-flight.
+    // It read `expect(one.out).not.toMatch(/m68791/)` — but validate-chapter NEVER
+    // prints a module id at all (measured: `grep -coE 'm6[0-9]{4}'` over a full run
+    // returns 0), so it passed trivially before and after. A test that cannot fail
+    // is not a test.
+    const r = run('validate-chapter.js', ['efnafraedi-2e', '20', '--module', 'm68823']);
+    expect(r.code).not.toBe(0);
+    expect(r.out).toMatch(/--module/);
+    expect(r.out).toMatch(/chapter/i);
+  });
+
+  it('still validates a chapter normally without --module (control)', () => {
+    const r = run('validate-chapter.js', ['efnafraedi-2e', '20', '--track', 'mt-preview']);
+    expect(r.out).not.toMatch(/not supported/i);
+    expect(r.out).toMatch(/figure-numbers|files-exist/);
   });
 });
 ```
@@ -2299,7 +2322,25 @@ Then, after the loop, fail loudly if `--module` matched nothing anywhere in scop
 
 > Adapt to the tool's own variable names and loop structure — the snippets above name the real identifiers as of 2026-08-16, but confirm against the file.
 
-**`tools/validate-chapter.js`** — same pattern. It takes `<book> <chapter>` positionally, so `--module` is a new declared option alongside them; keep the positional contract unchanged.
+**`tools/validate-chapter.js`** — **reject, do not honour.** It does not use `tools/lib/parseArgs.js`; it has a hand-rolled parser at `:996`, so there is no `MODULE_OPTION` to add. Add a `--module` branch to that parser purely so the flag can be *detected*, then refuse it in `main()` right after the existing `!args.book || args.chapter === null` guard:
+
+```javascript
+  // §C82/§C83: this tool's checks are CHAPTER-scoped. `figure-numbers` asserts figure
+  // numbers are sequential WITHIN THE CHAPTER, and `cross-references` matches refs
+  // against the chapter-wide caption set — neither is computable from one module, so
+  // honouring --module would silently produce WRONG answers, which is worse than the
+  // silent drop it would replace. Detected and refused, never ignored.
+  if (args.module) {
+    console.error(
+      'Error: --module is not supported by validate-chapter — its checks are chapter-scoped ' +
+        '(figure-numbers is sequential within the chapter; cross-references matches the ' +
+        "chapter's caption set). Run it per chapter."
+    );
+    process.exit(2);
+  }
+```
+
+Add `module: null` to the parser's `result` initialiser and an `else if (arg === '--module' && args[i + 1])` branch beside the existing `--track` one. Mention in `printHelp()` that `--module` is deliberately unsupported. **Leave the `normalizeChapter` import at `:33` alone** — it is a load-bearing MIT→AGPL edge.
 
 - [ ] **Step 5: Run the test to verify it passes**
 
@@ -2333,10 +2374,18 @@ git commit -m "feat(C82): honest --module handling across the battery's tools
 parseArgs silently drops undeclared flags, so --module on a tool that does not
 support it is a no-op that runs the whole book at full strength and exits 0.
 
-scan-residue and validate-chapter now honour --module (and error on an id that
-matches nothing — an empty scan and a clean scan look identical).
-cnxml-render-fidelity-check now REJECTS it: that tool is chapter-aggregated by
-design, and a tool that cannot honour a flag must say so rather than ignore it.
+scan-residue now honours --module (and errors on an id that matches nothing — an
+empty scan and a clean scan look identical).
+
+TWO tools now REJECT it, because their checks are chapter-scoped and honouring the
+flag would produce silently WRONG answers rather than merely ignoring it:
+  - cnxml-render-fidelity-check: chapter-aggregated by design (its own header says
+    the chapter is the closed reconciliation unit).
+  - validate-chapter: figure-numbers asserts sequence WITHIN the chapter and
+    cross-references matches the chapter-wide caption set. The battery spec listed
+    this tool as needing a per-module wrapper; measuring its checks says otherwise,
+    and the code outranks a frozen spec.
+
 verify-extraction-coverage gets no flag; consumers import analyzeModule.
 
 scan-residue's JSON now reports modulesExamined, per the design spec's rule that
