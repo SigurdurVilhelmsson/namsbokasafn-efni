@@ -1781,6 +1781,37 @@ function collectFigureCaptions(elements, map) {
 }
 
 /**
+ * Recursively map every `<figure>` id to its media's alt segment (§C89).
+ *
+ * Deliberately mirrors `collectFigureCaptions` above, because it solves the same
+ * problem: a figure kept inside a `<note>`/`<example>`/`<exercise>` is emitted by
+ * that container's builder from PRESERVED CNXML, and those builders hold the
+ * container's structure node — not the figure's. Without a lookup keyed on figure
+ * id they cannot reach the translation at all.
+ *
+ * Captions already had this map; alt did not, which is why 83 note-nested and 32
+ * example-nested alt translations were still discarded after `buildFigure` itself
+ * was fixed. Measured 2026-08-16.
+ *
+ * @param {Array} elements structure nodes
+ * @param {Record<string,{mediaId: string, segmentId: string}>} map out-param
+ */
+function collectFigureAlts(elements, map) {
+  for (const el of elements) {
+    // ⚠️ `el.media.id` is NOT required — 243 of organic's 1,918 alt translations
+    // (12.7%, 110 modules) are on ID-LESS media, and requiring an id skipped every
+    // one. A null mediaId means "the figure's first media", which is exactly what
+    // the extractor captured (processFigure records only the first).
+    if (el.type === 'figure' && el.id && el.media && el.media.alt?.segmentId) {
+      map[el.id] = { mediaId: el.media.id || null, segmentId: el.media.alt.segmentId };
+    }
+    if (el.content) {
+      collectFigureAlts(el.content, map);
+    }
+  }
+}
+
+/**
  * Recursively map every <table> node's id to its structure node (with .rows/.cells).
  * Used so container builders can translate direct-child tables they keep in place
  * (their structure node is a sibling of the container, not held by the builder). OC-B fix.
@@ -2048,13 +2079,29 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // Build context for tracking figures handled inside notes/examples (to avoid duplicates)
   const figureCaptions = {};
   collectFigureCaptions(structure.content, figureCaptions);
+  const figureAlts = {};
+  collectFigureAlts(structure.content, figureAlts);
   const tableNodesById = {};
   collectTableNodes(structure.content, tableNodesById);
   const figuresHandledInNotes = new Set();
   const figuresHandledInContainers = new Set();
   const tablesHandledInContainers = new Set();
+  // 🔴 §C89 — a NON-RECORDING lookup, and the distinction is load-bearing.
+  // `getSeg` pushes every miss onto `stats.segmentsMissing`, and enough misses make
+  // inject REFUSE the module ("incomplete injection"). An absent alt translation is
+  // NOT a defect: §C82 re-extracts one module at a time, so pre-§C81 `02-mt-output`
+  // vintages — which carry no alt segments at all — stay live for the whole run.
+  // Asking for one through `getSeg` turned that normal condition into a hard refusal
+  // and broke injection of every old-vintage module (caught by
+  // pipeline-integration's no-emphasis round-trip on m68687, 5 alts counted twice).
+  // ▶ Alt substitution must be BEST-EFFORT: translate when a translation exists,
+  // silently leave the source alt alone when it does not.
+  const peekSeg = (segmentId) => (segmentId ? segments.get(segmentId) || null : null);
+
   const ctx = {
     figureCaptions,
+    figureAlts,
+    peekSeg,
     figuresHandledInNotes,
     figuresHandledInContainers,
     tablesHandledInContainers,
@@ -2331,6 +2378,107 @@ function buildSection(element, getSeg, equations, originalCnxml, ctx) {
 }
 
 /**
+ * Rewrite one `<media>`'s `alt` inside a block of PRESERVED CNXML (§C89).
+ *
+ * The extractor reads a media's alt from EITHER the `<media>` tag or its child
+ * `<image>` (`mediaAlt`: `media.alt || image.alt`), so this must write back to
+ * whichever one actually carries it, or the substitution silently no-ops on half
+ * the corpus. Media tag wins when both are present, matching the read order.
+ *
+ * Scoped to the single `<media …id="mediaId"…>…</media>` element rather than
+ * applied to the whole figure block: a figure can hold several media (subfigures),
+ * and a bare `.replace(/alt="[^"]*"/, …)` would rewrite the first one it met
+ * regardless of which media the translation belongs to.
+ *
+ * Returns the block unchanged when the media or an `alt` cannot be located — a
+ * failed substitution must never corrupt preserved markup. The sentinel test is
+ * what proves the substitution actually happened; silence here is not success.
+ *
+ * @param {string} block preserved CNXML containing the media
+ * @param {string} mediaId the `id` of the `<media>` whose alt to rewrite
+ * @param {string} altText the translated alt, unescaped
+ * @returns {string}
+ */
+function replaceMediaAlt(block, mediaId, altText) {
+  // A null mediaId targets the figure's FIRST media — the id-less case. See
+  // collectFigureAlts: the extractor captures only the first media per figure, so
+  // "first" is not a guess, it is the same element the segment came from.
+  const mediaRe = mediaId
+    ? new RegExp(`<media\\s[^>]*id="${escapeRegExp(mediaId)}"[\\s\\S]*?<\\/media>`)
+    : /<media[\s>][\s\S]*?<\/media>/;
+  const m = mediaRe.exec(block);
+  if (!m) return block;
+  const escaped = escapeXml(altText);
+  let mediaBlock = m[0];
+
+  // The <media> opening tag is everything up to the first '>'.
+  const openEnd = mediaBlock.indexOf('>');
+  const openTag = mediaBlock.slice(0, openEnd + 1);
+  if (/\salt="[^"]*"/.test(openTag)) {
+    mediaBlock =
+      openTag.replace(/\salt="[^"]*"/, ` alt="${escaped}"`) + mediaBlock.slice(openEnd + 1);
+  } else {
+    // Otherwise it rides on the first <image> inside.
+    const imgRe = /<image\s[^>]*?\salt="[^"]*"[^>]*\/?>/;
+    const img = imgRe.exec(mediaBlock);
+    if (!img) return block;
+    mediaBlock = mediaBlock.replace(imgRe, img[0].replace(/\salt="[^"]*"/, ` alt="${escaped}"`));
+  }
+  return block.slice(0, m.index) + mediaBlock + block.slice(m.index + m[0].length);
+}
+
+/** Escape a string for literal use inside a RegExp. */
+function escapeRegExp(s) {
+  return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * DOM twin of `replaceMediaAlt` (§C89) — write a figure's translated alt onto the
+ * media node the extractor read it from.
+ *
+ * The container builders (`buildNoteDom`, `buildExampleDom`, `buildExerciseDom`)
+ * work on a parsed DOM rather than a CNXML string, and they hold the CONTAINER's
+ * structure node, not the figure's — so the translation is reached through
+ * `ctx.figureAlts`, keyed on figure id, exactly as captions already are.
+ *
+ * Writes to `<media alt>` when that is where the alt lives, else to the child
+ * `<image alt>` — mirroring `mediaAlt`'s read order. Setting the attribute (rather
+ * than string-replacing) means the serializer handles escaping, so this path must
+ * NOT pre-escape.
+ *
+ * @param {Element} figEl a `<figure>` DOM element inside preserved container markup
+ * @param {object} ctx build context carrying `figureAlts` and `peekSeg`
+ * @returns {boolean} true when an alt was actually rewritten
+ */
+function applyFigureAltDom(figEl, ctx) {
+  const figId = figEl.getAttribute && figEl.getAttribute('id');
+  if (!figId || !ctx || !ctx.figureAlts) return false;
+  const entry = ctx.figureAlts[figId];
+  if (!entry) return false;
+  const translated = ctx.peekSeg ? ctx.peekSeg(entry.segmentId) : null;
+  if (!translated) return false;
+
+  const medias = figEl.getElementsByTagName('media');
+  for (let i = 0; i < medias.length; i++) {
+    const media = medias[i];
+    // entry.mediaId === null is the id-less case: take the first media.
+    if (entry.mediaId !== null && media.getAttribute('id') !== entry.mediaId) continue;
+    if (media.getAttribute('alt')) {
+      media.setAttribute('alt', translated);
+      return true;
+    }
+    const images = media.getElementsByTagName('image');
+    for (let j = 0; j < images.length; j++) {
+      if (images[j].getAttribute('alt')) {
+        images[j].setAttribute('alt', translated);
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+/**
  * Build a figure element.
  */
 function buildFigure(element, getSeg, originalCnxml, ctx) {
@@ -2383,6 +2531,37 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
             /<caption>[\s\S]*?<\/caption>/,
             `<caption>${captionText}</caption>`
           );
+        }
+      }
+
+      // 🔴 §C89 — replace the media's alt with its translation.
+      //
+      // WITHOUT THIS THE WHOLE FIGURE PATH WAS A NO-OP FOR alt. This branch returns
+      // `originalCnxml`'s figure block VERBATIM, so before 2026-08-16 it returned the
+      // English alt on every id-bearing figure: 627 of 951 chemistry alt segments
+      // (65.9%, 130 of 149 modules) were extracted, translated, paid for and thrown
+      // away. `readAlt(…, getSeg)` existed only in the fallback branch below, which
+      // fires only when a figure has no id or no source match.
+      //
+      // ⚠️ NO COUNT-BASED CHECK COULD SEE IT — the English alt was still present, so
+      // the attribute count never moved and the round-trip check, the alt-corpus test
+      // and E5's coverage check were all green corpus-wide. That is why the guard for
+      // this is a SENTINEL test (tools/__tests__/alt-writeback.test.js), which compares
+      // VALUES, not counts.
+      //
+      // Same idiom as the caption substitution directly above — that was already the
+      // precedent for writing a translated value into preserved CNXML.
+      // ⚠️ DELIBERATELY NOT `readAlt(alt, getSeg)`. readAlt calls getSeg internally,
+      // which RECORDS A MISS — and on a pre-§C81 `02-mt-output` vintage (no alt
+      // segments at all) that made inject refuse the module outright. Measured: an
+      // earlier cut of this fix put 5 phantom misses on m68687 and broke
+      // pipeline-integration's round-trip, which main passes 115/115.
+      // Only the TRANSLATION is ever written here; when there is none, the source's
+      // own alt is left exactly as it was.
+      if (element.media && element.media.alt && element.media.alt.segmentId) {
+        const translated = ctx && ctx.peekSeg ? ctx.peekSeg(element.media.alt.segmentId) : null;
+        if (translated) {
+          figureCnxml = replaceMediaAlt(figureCnxml, element.media.id, translated);
         }
       }
 
@@ -3117,6 +3296,18 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
+  // §C89 — write each kept figure's translated alt before the container is
+  // serialized. These figures are preserved in place, so nothing else ever
+  // substitutes their alt: buildFigure returns null for them (they are marked
+  // handled just below), and the container holds its OWN structure node, not the
+  // figure's — hence the ctx.figureAlts lookup, keyed on figure id exactly as
+  // captions already are.
+  if (ctx && ctx.figureAlts) {
+    for (const fig of Array.from(exampleEl.getElementsByTagName('figure'))) {
+      applyFigureAltDom(fig, ctx);
+    }
+  }
+
   // Mark kept figures so buildFigure skips the standalone copy
   if (ctx && ctx.figuresHandledInContainers) {
     for (const figId of keptFigureIds) {
@@ -3436,6 +3627,18 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
+  // §C89 — write each kept figure's translated alt before the container is
+  // serialized. These figures are preserved in place, so nothing else ever
+  // substitutes their alt: buildFigure returns null for them (they are marked
+  // handled just below), and the container holds its OWN structure node, not the
+  // figure's — hence the ctx.figureAlts lookup, keyed on figure id exactly as
+  // captions already are.
+  if (ctx && ctx.figureAlts) {
+    for (const fig of Array.from(exerciseEl.getElementsByTagName('figure'))) {
+      applyFigureAltDom(fig, ctx);
+    }
+  }
+
   // Mark kept figures so buildFigure skips the standalone copy
   if (ctx && ctx.figuresHandledInContainers) {
     for (const figId of keptFigureIds) {
@@ -3559,6 +3762,16 @@ function buildNote(element, getSeg, equations, originalCnxml, ctx) {
               );
             }
             // Mark this figure as handled so standalone buildFigure skips it
+            ctx.figuresHandledInNotes.add(figId);
+          }
+          // §C89 — and its alt, which is reached the same way. Independent of the
+          // caption above: a figure can have a translated alt and no caption.
+          const altEntry = ctx.figureAlts && ctx.figureAlts[figId];
+          if (altEntry) {
+            const altText = ctx.peekSeg ? ctx.peekSeg(altEntry.segmentId) : null;
+            if (altText) {
+              noteCnxml = replaceMediaAlt(noteCnxml, altEntry.mediaId, altText);
+            }
             ctx.figuresHandledInNotes.add(figId);
           }
         }
@@ -3751,6 +3964,13 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       const figEl = figures[i];
       const figId = figEl.getAttribute('id');
       if (!figId) continue;
+
+      // §C89 — alt first, and unconditionally on the figure: it does not depend on
+      // the figure having a caption, and a `continue` in the caption branch below
+      // would skip it.
+      if (applyFigureAltDom(figEl, ctx)) {
+        ctx.figuresHandledInNotes.add(figId);
+      }
 
       const captionSegId = ctx.figureCaptions[figId];
       if (captionSegId) {
