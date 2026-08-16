@@ -253,6 +253,16 @@ describe('altReachability — the four positions cnxml-extract never visits (§C
     );
     expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
   });
+
+  it('does not count alt that lives only on an <iframe> child — no capture path in the extractor reads it', () => {
+    // processFigure, the standalone-media branch of processTopLevelContent, and
+    // extractInlineText's inline-media capture all compute altText as
+    // mediaAttrs.alt || imageAttrs.alt — none of them ever reads iframe.alt. A
+    // <media> whose only alt source is an iframe child has no alt the extractor
+    // can see, so it must be counted as neither reachable nor unreachable.
+    const r = reach('<figure id="f1"><media><iframe src="x" alt="mynd"/></media></figure>');
+    expect(r).toMatchObject({ reachable: 0, unreachable: 0 });
+  });
 });
 
 describe('checkAltCoverage — three numbers, gates on one', () => {
@@ -289,6 +299,18 @@ describe('checkAltCoverage — three numbers, gates on one', () => {
       ''
     );
     expect(r).toMatchObject({ reached: 0, expected: 0, unreached: 0, ok: true });
+  });
+
+  it('counts a same-id duplicate raw marker (the §C81 Rule-1 majority shape), not the deduped Map key', () => {
+    // parseSegmentsMap dedupes identical ids to one key — that hides a real
+    // over-emission the way it hides checkDuplicateSegIds's raw dups. reached
+    // must count raw marker OCCURRENCES, not deduped ids.
+    const oneAlt = wrap(
+      '<figure id="f1"><media alt="fyrsta"><image src="a.png"/></media></figure>'
+    );
+    const seg = '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n';
+    const r = checkAltCoverage(parseModuleDoc(oneAlt).content, seg);
+    expect(r).toMatchObject({ reached: 2, expected: 1, ok: false });
   });
 });
 

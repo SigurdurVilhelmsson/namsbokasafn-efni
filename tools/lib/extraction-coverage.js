@@ -167,6 +167,16 @@ export function checkDuplicateSegIds(content, segText) {
  * has no emitter on any walk. A <media> one level down, inside a <para>, DOES
  * reach the extractor through the para's inline-media flatten, which is why the
  * predicate is DIRECT parent and not ancestor.
+ *
+ * ⚠️ KNOWN GAP, DO NOT ADD A RULE FOR IT: a bare <media> that is a direct child
+ * of <exercise> ITSELF (as opposed to its <problem>/<solution> children) is not
+ * covered here — processExercise walks only problem/solution, so that shape
+ * would also be unreachable. It does not occur in either in-scope book: the
+ * corpus reconciles exactly (1149 = 952 + 197, no slack for an uncounted
+ * case), so adding 'exercise' here has nothing to validate it against and
+ * would risk moving a pinned number for a case that has never been observed.
+ * If it ever appears, add it and expect tools/__tests__/alt-coverage-corpus.test.js
+ * to move.
  */
 const ALT_BLIND_DIRECT_PARENTS = new Set(['example', 'problem', 'solution', 'note']);
 
@@ -180,14 +190,24 @@ function hasAncestor(el, localName) {
   return false;
 }
 
-/** The non-empty alt a <media> carries, on itself or on its child <image>/<iframe>. */
+/**
+ * The non-empty alt a <media> carries, on itself or on its child <image>.
+ *
+ * Mirrors the extractor's capture paths exactly, and no more: processFigure,
+ * the standalone-media branch of processTopLevelContent, and
+ * extractInlineText's inline-media capture all compute
+ * `altText = mediaAttrs.alt || imageAttrs.alt || ''` — none of the three ever
+ * reads an <iframe> child's alt. So this predicate must not read it either:
+ * doing so would count a media whose only alt lives on an <iframe> as
+ * reachable, when no capture path emits anything for it — a false E5 halt.
+ */
 function mediaAlt(media) {
   const own = media.getAttribute('alt');
   if (own && own.trim()) return own;
   for (let i = 0; i < media.childNodes.length; i++) {
     const c = media.childNodes[i];
     if (c.nodeType !== 1) continue;
-    if (c.localName !== 'image' && c.localName !== 'iframe') continue;
+    if (c.localName !== 'image') continue;
     const a = c.getAttribute('alt');
     if (a && a.trim()) return a;
   }
@@ -261,9 +281,17 @@ export function altReachability(content) {
  */
 export function checkAltCoverage(content, segText) {
   const { reachable, unreachable, unreachableByReason } = altReachability(content);
+  // Count raw marker OCCURRENCES, not deduped parseSegmentsMap keys. A same-id
+  // duplicate marker — the §C81 Rule-1 majority shape (~145 of 167 merges) —
+  // collapses to one Map key, which would silently hide the exact
+  // over-emission this check exists to catch. Same split/match idiom as
+  // checkDuplicateSegIds above, for the same reason: parseSegmentsMap's
+  // 'first' dedup is a deliberate RUNTIME tolerance, not something a
+  // pre-freeze gate should inherit.
   let reached = 0;
-  for (const id of parseSegmentsMap(String(segText || '')).keys()) {
-    if (String(id).split(':')[1] === 'alt') reached++;
+  for (const part of String(segText || '').split(/(?=<!--\s*SEG:)/)) {
+    const m = part.match(/<!--\s*SEG:([^\s]+?)\s*-->/);
+    if (m && String(m[1]).split(':')[1] === 'alt') reached++;
   }
   return {
     reached,
