@@ -40,16 +40,32 @@ Stated so nobody reads a gap as an oversight:
 
 ## Task 1: `--chapter 0` is a real chapter
 
-Chapter 0 is falsy. `if (args.module && !args.chapter)` rejects `--chapter 0`, and `args.chapter ? [one] : discoverChapters()` silently widens a chapter-0 run to the whole book — measured at 149 chemistry modules where `--chapter 1` scanned 7. Chemistry's ch00 holds `m68662`, the battery's only A5 fixture, so every per-module check is unreachable there today.
+Chapter 0 is falsy. Chemistry's ch00 holds `m68662`, the battery's only A5 fixture, so every per-module check is unreachable there today.
 
-Both sites are byte-identical, so the fix is one shared helper used twice.
+**⚠️ AMENDED at pre-flight (2026-08-16, controller ruling — see the ledger).** This task originally named **two** sites. Measured by running all four tools, with `--chapter 1` controls that behaved correctly:
+
+| tool | `--chapter 0 --module m68662` actually does | shape |
+|---|---|---|
+| `cnxml-linguistic-check.js:240` | `Error: --module requires --chapter` | shared `parseArgs`, `!args.chapter` |
+| `cnxml-fidelity-check.js:297` | `Error: --module requires --chapter` | shared `parseArgs`, `!args.chapter` |
+| **`cnxml-render-fidelity-check.js:411`** | **silently scans ch0, ch1, ch2, ch3… — the whole book** | shared `parseArgs`, `args.chapter ? … :` |
+| **`tools/validate-chapter.js:1249`** | **`Error: Please provide book and chapter`** | **its own hand-rolled parser**, `!args.chapter` |
+
+The first two are byte-identical and take the shared helper. The other two do **not**:
+
+- `cnxml-render-fidelity-check.js` has no `--module` guard at all; its bug is only the discovery ternary at :411-413. **It also silently ignored `--module` in the same run** — that half is Task 8's, not this task's. Fix only the chapter ternary here.
+- `validate-chapter.js` does **not** use `tools/lib/parseArgs.js`. It has a hand-rolled parser at `:996` whose `result.chapter` is set by `normalizeChapter` from `server/lib/chapterLabel` (`'appendices'→-1`, `'5'→5`, **junk→`null`**). So `chapterProvided` does not apply: the correct guard is an explicit `=== null` test. ⚠️ **`normalizeChapter` is one of the deliberate, load-bearing MIT→AGPL edges named in CLAUDE.md — do not sever that import.**
 
 **Files:**
 - Modify: `tools/lib/parseArgs.js` (add `chapterProvided`, near `CHAPTER_OPTION` at :60)
 - Modify: `tools/cnxml-linguistic-check.js:240-249`
 - Modify: `tools/cnxml-fidelity-check.js:297-306`
+- Modify: `tools/cnxml-render-fidelity-check.js:411-413`
+- Modify: `tools/validate-chapter.js:1249`
 - Test: `tools/__tests__/parseArgs.test.js` (existing file — append)
 - Test: `tools/__tests__/chapter-zero-cli.test.js` (create)
+
+> **⚠️ Task 8 touches `cnxml-render-fidelity-check.js` and `validate-chapter.js` again**, for `--module` handling. Keep this task's diff to the chapter guard only; do not pre-empt Task 8.
 
 **Interfaces:**
 - Consumes: nothing from earlier tasks.
@@ -163,6 +179,40 @@ describe('chapter 0 is accepted with --module (§C82 prerequisite 5)', () => {
     });
   }
 });
+
+describe('the two tools with a different shape (pre-flight amendment)', () => {
+  it('cnxml-render-fidelity-check --chapter 0 scopes to one chapter, not the whole book', () => {
+    // MEASURED BEFORE THE FIX: printed "ch0: … ch1: … ch2: … ch3: …" — the ternary
+    // at :411 treated 0 as "no chapter given" and fell through to discoverChapters.
+    const out = run('cnxml-render-fidelity-check.js', ['--book', 'efnafraedi-2e', '--chapter', '0']);
+    expect(out).toMatch(/\bch0\b/);
+    expect(out).not.toMatch(/\bch[1-9]\b/);
+  });
+
+  it('cnxml-render-fidelity-check --chapter 1 still works (control)', () => {
+    const out = run('cnxml-render-fidelity-check.js', ['--book', 'efnafraedi-2e', '--chapter', '1']);
+    expect(out).toMatch(/\bch1\b/);
+    expect(out).not.toMatch(/\bch0\b/);
+  });
+
+  it('validate-chapter accepts chapter 0', () => {
+    // MEASURED BEFORE THE FIX: "Error: Please provide book and chapter".
+    const out = run('validate-chapter.js', ['efnafraedi-2e', '0']);
+    expect(out).not.toContain('Please provide book and chapter');
+  });
+
+  it('validate-chapter still rejects a missing chapter (control)', () => {
+    expect(run('validate-chapter.js', ['efnafraedi-2e'])).toContain('Please provide book and chapter');
+  });
+
+  it('validate-chapter still rejects an unparseable chapter (normalizeChapter -> null)', () => {
+    expect(run('validate-chapter.js', ['efnafraedi-2e', 'banana'])).toContain('Please provide book and chapter');
+  });
+
+  it('validate-chapter still accepts appendices (normalizeChapter -> -1, control)', () => {
+    expect(run('validate-chapter.js', ['efnafraedi-2e', 'appendices'])).not.toContain('Please provide book and chapter');
+  });
+});
 ```
 
 - [ ] **Step 6: Run it and watch it fail**
@@ -188,6 +238,36 @@ In `tools/cnxml-linguistic-check.js`, add `chapterProvided` to the existing impo
 
 Apply the identical change to `tools/cnxml-fidelity-check.js` at lines 297-303. The two blocks are byte-identical today and must stay so.
 
+- [ ] **Step 7a: Fix `cnxml-render-fidelity-check.js` (different shape — chapter guard only)**
+
+Add `chapterProvided` to the existing import from `./lib/parseArgs.js`, then replace lines 411-413:
+
+```javascript
+  // §C82: chapter 0 is falsy. Before this, `--chapter 0` fell through to
+  // discoverChapters and silently scanned the WHOLE BOOK while reporting
+  // success — measured 2026-08-16, it printed ch0, ch1, ch2, ch3, …
+  const chapters = chapterProvided(args)
+    ? [String(args.chapter)]
+    : discoverChapters(bookDir).map((d) => d.replace(/^ch0?/, ''));
+```
+
+**Do not add `--module` handling here** — that is Task 8's, and this tool rejects the flag rather than honouring it.
+
+- [ ] **Step 7b: Fix `tools/validate-chapter.js` (hand-rolled parser — `=== null`, not `chapterProvided`)**
+
+This tool does **not** use `tools/lib/parseArgs.js`, so `chapterProvided` does not apply. Its own parser (`:996`) sets `result.chapter` from `normalizeChapter`, which yields `-1` for appendices, an integer for a number, and **`null` for junk**. Replace line 1249:
+
+```javascript
+  // §C82: chapter 0 is falsy, and this tool's own parser yields null (not 0)
+  // for an unparseable chapter — so `=== null` is both necessary and
+  // sufficient here, and chapterProvided() does not apply. Before this,
+  // `validate-chapter.js efnafraedi-2e 0` printed "Please provide book and
+  // chapter" and exited, making chemistry ch00 unvalidatable.
+  if (!args.book || args.chapter === null) {
+```
+
+⚠️ Leave the `normalizeChapter` import at `:33` alone — it is one of the deliberate, load-bearing MIT→AGPL edges named in CLAUDE.md.
+
 - [ ] **Step 8: Run both tests to verify they pass**
 
 Run: `npx vitest run tools/__tests__/parseArgs.test.js tools/__tests__/chapter-zero-cli.test.js`
@@ -202,14 +282,26 @@ Expected: all green. If `npm test` shows failures in unrelated files, they were 
 
 ```bash
 git add tools/lib/parseArgs.js tools/cnxml-linguistic-check.js tools/cnxml-fidelity-check.js \
+        tools/cnxml-render-fidelity-check.js tools/validate-chapter.js \
         tools/__tests__/parseArgs.test.js tools/__tests__/chapter-zero-cli.test.js
 git commit -m "fix(C82): chapter 0 is a real chapter, not a missing --chapter
 
-\`--chapter 0\` parses to the number 0, which is falsy, so both check tools
-rejected it with --module and silently widened an unmodularized run to the
-whole book. Chemistry ch00 holds m68662, the battery's only A5 fixture.
+Chemistry ch00 holds m68662, the battery's only A5 fixture, and chapter 0 is
+falsy — so every per-module check was unreachable there. FOUR sites, measured by
+running each tool with --chapter 0 and a --chapter 1 control:
 
-Adds chapterProvided() to parseArgs and uses it at both byte-identical sites.
+  cnxml-linguistic-check    'Error: --module requires --chapter'
+  cnxml-fidelity-check      same
+  cnxml-render-fidelity-check  SILENTLY scanned the whole book (ch0,ch1,ch2,...)
+  validate-chapter          'Error: Please provide book and chapter'
+
+The first two are byte-identical and take a new shared chapterProvided() helper.
+cnxml-render-fidelity-check needs only its discovery ternary fixed. validate-chapter
+does not use tools/lib/parseArgs at all — its hand-rolled parser yields null for
+an unparseable chapter, so === null is the correct guard there and chapterProvided
+does not apply.
+
+The plan named two of the four; the other two were found at pre-flight.
 Battery spec §5 item 5; design spec §8 item 5."
 ```
 
