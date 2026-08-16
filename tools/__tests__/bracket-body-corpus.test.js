@@ -53,6 +53,9 @@ describe('E2 on live corpus fixtures', () => {
       expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
       expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
     ]);
+    // Review round 1, finding 1: m68710 has no nested-marker shapes, so its
+    // skippedNested gap is zero — measured 2026-08-16.
+    expect(r.skippedNested).toBe(0);
   });
 
   it('m68733: catches the self-closing-emphasis swallow', () => {
@@ -62,6 +65,10 @@ describe('E2 on live corpus fixtures', () => {
     const r = checkBracketBodies(m.cnxml, m.seg);
     expect(r.examined).toBe(350);
     expect(r.findings).toEqual([expect.objectContaining({ type: 'i', body: ' 3d;' })]);
+    // Review round 1, finding 1: m68733 loses 40 of its own 330 raw `i`-opens
+    // to nested `[[i:…[[sub:…]]…]]` shapes — measured 2026-08-16, independently
+    // by the reviewer (raw 330 / matched 290) and reproduced here.
+    expect(r.skippedNested).toBe(40);
   });
 
   it('m68768: does NOT fire — its leading spaces are source-legitimate', () => {
@@ -75,6 +82,9 @@ describe('E2 on live corpus fixtures', () => {
     const r = checkBracketBodies(m.cnxml, m.seg);
     expect(r.examined).toBe(130);
     expect(r.findings).toEqual([]);
+    // Review round 1, finding 1: m68768 has no nested-marker shapes either —
+    // zero gap, measured 2026-08-16.
+    expect(r.skippedNested).toBe(0);
   });
 
   it('fires on exactly two chemistry modules corpus-wide — a 1.3% base rate', () => {
@@ -91,5 +101,22 @@ describe('E2 on live corpus fixtures', () => {
     expect(firing.map((x) => x.id).sort()).toEqual(['m68710', 'm68733']);
     expect(firing.reduce((s, x) => s + x.r.findings.length, 0)).toBe(3);
     expect(firing.reduce((s, x) => s + x.r.examined, 0)).toBeGreaterThan(0);
+  }, 120_000);
+
+  it('skippedNested totals 445 markers corpus-wide — a real population, wider than nesting alone', () => {
+    // Review round 1, finding 1 measured 319 (i-type nested markers only, 25 of
+    // 149 modules). Measured here across ALL of BODY_SOURCE_ELEMENTS's types
+    // (2026-08-16): 445 markers (17,436 raw opens - 16,991 examined), because
+    // the SAME regex blind spot also swallows every id-bearing `term` marker
+    // (61 of 61 — `[[term:x|id]]`'s trailing pipe payload, not nesting) and
+    // every `em` marker (1 of 1 — always `|class`-bearing; there is no
+    // class-less em, cnxml-extract.js falls back to [[i:...]] for that case).
+    // `examined`/`findings` are UNCHANGED by this — same 16,991 / 3 / 2-modules
+    // as the prior test — this is additive reporting, not a different check.
+    const all = chemistryPairs().map((m) => checkBracketBodies(m.cnxml, m.seg));
+    const totalExamined = all.reduce((s, r) => s + r.examined, 0);
+    const totalSkipped = all.reduce((s, r) => s + r.skippedNested, 0);
+    expect(totalExamined).toBe(16991);
+    expect(totalSkipped).toBe(445);
   }, 120_000);
 });

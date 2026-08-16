@@ -97,4 +97,48 @@ describe('checkBracketBodies — anchored to source, not to a byte pattern', () 
     expect(BODY_SOURCE_ELEMENTS.i).toContain('emphasis');
     expect(BODY_SOURCE_ELEMENTS.sub).toContain('sub');
   });
+
+  // ⚠️ REGRESSION GUARD — review round 1, finding 1. The body regex
+  // `[^\[\]|]*` refuses `[`, so a marker nested inside another marker does not
+  // partially match at a shorter body: the OUTER marker fails to match at all
+  // and is invisible to `examined`/`findings`, no matter what its true content
+  // is. Measured on the real corpus: 319 of 5,993 `i`-opens alone (5.32%, in 25
+  // of 149 modules); m68733 loses 40 of its own 330. `skippedNested` reports
+  // the gap so `examined` is never mistaken for the true marker population —
+  // same idiom as `checkAltCoverage`'s `unreachable` in extraction-coverage.js.
+  // Deliberately NOT a fix to the matching algorithm (that would change what is
+  // checked and move the pinned `examined`/`findings` numbers) — additive
+  // reporting only.
+  it('counts a nested marker as skipped, not examined — the outer marker cannot match at all', () => {
+    // [[i:m[[sub:l]]]] <- <emphasis effect="italics">m<sub>l</sub></emphasis>,
+    // common in chemistry for quantum-number notation (e.g. "2s" with a
+    // subscripted level). Only the inner [[sub:l]] is ever attempted.
+    const src = doc('<para id="p1"><emphasis effect="italics">m<sub>l</sub></emphasis></para>');
+    const seg = '<!-- SEG:m1:para:p1 -->\n[[i:m[[sub:l]]]]\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.examined).toBe(1); // only the inner [[sub:l]] is ever matched
+    expect(r.skippedNested).toBe(1); // the outer [[i:...]] opener: uncounted, unexaminable
+    expect(r.findings).toEqual([]); // neither flagged nor cleared — simply invisible
+  });
+
+  // ⚠️ THE SAME BLIND SPOT, A DIFFERENT CAUSE — not disclosed by review round 1,
+  // found while measuring its fix. An id-bearing `term` marker carries its id
+  // as a trailing `|id` payload (`[[term:cation|t1]]`, cnxml-extract.js's own
+  // documented B4/RC3 shape), and `em` markers ALWAYS carry a `|class` payload
+  // (there is no class-less `em` — cnxml-extract.js falls back to `[[i:...]]`
+  // when there is no class). `[^\[\]|]*` stops at the pipe and then requires
+  // `]]` immediately — which never follows a `|id]]`/`|class]]` tail — so these
+  // markers fail to match for the SAME structural reason as nesting, not merely
+  // as an edge case: measured corpus-wide, term is 0 matched of 61 raw opens
+  // (100%) and em is 0 of 1. `BODY_SOURCE_ELEMENTS.term`/`.em` currently never
+  // fire in practice; `skippedNested` is the only signal that they exist at
+  // all. Flagging for the controller — worth more than a passing mention.
+  it('counts an id-bearing term marker as skipped too — its trailing |id payload is the SAME regex blind spot as nesting', () => {
+    const src = doc('<para id="p1">a <term>cation</term> ion.</para>');
+    const seg = '<!-- SEG:m1:para:p1 -->\na [[term:cation|t1]] ion.\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.examined).toBe(0);
+    expect(r.skippedNested).toBe(1);
+    expect(r.findings).toEqual([]);
+  });
 });
