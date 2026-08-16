@@ -81,3 +81,44 @@ describe('resolveRestorePolicy', () => {
     });
   });
 });
+
+describe('the run record rides in the provenance sidecar (§C82 prerequisite 2)', () => {
+  it('persists a run record and reads it back intact', () => {
+    const run = {
+      runRecordVersion: 1,
+      chars: 1200,
+      markersNormalized: 2,
+      bracketDelta: { i: -1 },
+      unwrappedCount: 3,
+      glossary: { arm: 'glossary', contentHash: 'deadbeef', termCount: 2097 },
+    };
+    writeProvenance(dir, 'm12345', { tool: 'api-translate', run });
+    expect(readProvenance(dir, 'm12345').run).toEqual(run);
+  });
+
+  it('omits the key entirely when no run record is supplied', () => {
+    writeProvenance(dir, 'm12346', { tool: 'api-translate' });
+    const parsed = readProvenance(dir, 'm12346');
+    expect('run' in parsed).toBe(false);
+  });
+
+  it('still reads a v1 sidecar written before the run record existed', () => {
+    fs.writeFileSync(
+      path.join(dir, 'm12347-provenance.json'),
+      JSON.stringify({
+        schemaVersion: 1,
+        tool: 'api-translate',
+        generatedAt: '2026-01-01T00:00:00Z',
+      })
+    );
+    const parsed = readProvenance(dir, 'm12347');
+    expect(parsed.tool).toBe('api-translate');
+    expect(parsed.run).toBeUndefined();
+  });
+
+  it('validates the tool before writing, run record or not', () => {
+    expect(() => writeProvenance(dir, 'm12348', { tool: 'nope', run: {} })).toThrow(
+      /Unknown provenance tool/
+    );
+  });
+});
