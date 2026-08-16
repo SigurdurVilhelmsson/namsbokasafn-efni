@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { countBracketMarkers, bracketMarkerDelta, formatBracketDelta } from '../api-translate.js';
+import {
+  countBracketMarkers,
+  bracketMarkerDelta,
+  formatBracketDelta,
+  countBracketMarkersAll,
+  bracketMarkerDeltaBySegment,
+} from '../api-translate.js';
 
 describe('countBracketMarkers', () => {
   it('tallies each inline bracket type, including nested and payload-bearing', () => {
@@ -48,5 +54,77 @@ describe('formatBracketDelta', () => {
   });
   it('returns null for an empty delta', () => {
     expect(formatBracketDelta('m1', {})).toBeNull();
+  });
+});
+
+describe('countBracketMarkersAll — the six types the 14-type set omits', () => {
+  it('counts MATH, TABLE, SPACE, BR, math and EQ', () => {
+    const c = countBracketMarkersAll(
+      '[[MATH:1]] [[TABLE:2]] [[SPACE:3]] [[BR:4]] [[math:5]] [[EQ:6]]'
+    );
+    expect(c.MATH).toBe(1);
+    expect(c.TABLE).toBe(1);
+    expect(c.SPACE).toBe(1);
+    expect(c.BR).toBe(1);
+    expect(c.math).toBe(1);
+    expect(c.EQ).toBe(1);
+  });
+
+  it('still counts the original 14', () => {
+    expect(countBracketMarkersAll('[[i:x]] [[sub:2]]')).toMatchObject({ i: 1, sub: 1 });
+  });
+});
+
+describe('bracketMarkerDeltaBySegment — per segment, so losses cannot cancel', () => {
+  const EN = [
+    '<!-- SEG:m1:para:p1 -->',
+    'A [[i:first]] and a [[i:second]].',
+    '',
+    '<!-- SEG:m1:para:p2 -->',
+    'Plain text.',
+    '',
+  ].join('\n');
+
+  it('reports {} when nothing changed', () => {
+    const r = bracketMarkerDeltaBySegment(EN, EN);
+    expect(r.total).toEqual({});
+    expect(r.segmentsWithDelta).toBe(0);
+    expect(r.segmentsExamined).toBe(2);
+  });
+
+  it('catches a loss and an invention that cancel at module level', () => {
+    // p1 loses one [[i:]], p2 gains one. The MODULE-level delta is zero.
+    const IS = [
+      '<!-- SEG:m1:para:p1 -->',
+      'Eitt [[i:fyrsta]] og annað.',
+      '',
+      '<!-- SEG:m1:para:p2 -->',
+      'Venjulegur [[i:texti]].',
+      '',
+    ].join('\n');
+    const r = bracketMarkerDeltaBySegment(EN, IS);
+    expect(r.total).toEqual({});
+    expect(r.segmentsWithDelta).toBe(2);
+    expect(r.bySegment['m1:para:p1']).toEqual({ i: -1 });
+    expect(r.bySegment['m1:para:p2']).toEqual({ i: 1 });
+  });
+
+  it('catches a MATH loss the 14-type instrument cannot see', () => {
+    const en = '<!-- SEG:m1:para:p1 -->\n[[MATH:1]] and [[MATH:2]].\n';
+    const is = '<!-- SEG:m1:para:p1 -->\n[[MATH:1]] og.\n';
+    expect(bracketMarkerDeltaBySegment(en, is).bySegment['m1:para:p1']).toEqual({ MATH: -1 });
+  });
+
+  it('reports a segment present in one side and not the other', () => {
+    const is = '<!-- SEG:m1:para:p1 -->\nEitt [[i:fyrsta]] og [[i:annað]].\n';
+    const r = bracketMarkerDeltaBySegment(EN, is);
+    expect(r.unpairedSegIds).toEqual(['m1:para:p2']);
+  });
+
+  it('reports the number of units it examined even when clean', () => {
+    // §C60: a check reported `Total findings: 0` while reading zero files.
+    const r = bracketMarkerDeltaBySegment('', '');
+    expect(r.segmentsExamined).toBe(0);
+    expect(r.segmentsWithDelta).toBe(0);
   });
 });

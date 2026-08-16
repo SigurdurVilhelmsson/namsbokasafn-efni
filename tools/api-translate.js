@@ -42,6 +42,8 @@ import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
 import { buildRunRecord, glossaryContentHash } from './lib/run-record.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
+import segMarkers from './lib/seg-markers.cjs';
+const { parseSegmentsMap } = segMarkers;
 
 // ─── Configuration ──────────────────────────────────────────────────
 
@@ -480,6 +482,94 @@ export function formatBracketDelta(label, delta) {
   const parts = Object.entries(delta).map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`);
   if (parts.length === 0) return null;
   return `${label}: bracket-marker delta (output vs input) — ${parts.join(', ')}`;
+}
+
+/**
+ * Tally inline bracket markers over EVERY type our pipeline can emit —
+ * KNOWN_BRACKET_TYPES, not the 14-type BRACKET_MARKER_TYPES.
+ *
+ * The six extra (MATH, TABLE, SPACE, BR, math, EQ) are exactly the ones
+ * `bracketMarkerDelta` is blind to: measured, m68823 returns `{}` while its MATH
+ * markers went 56 → 54, and m68819/m68832/m68852 do the same.
+ *
+ * @param {string} text
+ * @returns {Record<string, number>}
+ */
+export function countBracketMarkersAll(text) {
+  const counts = {};
+  const s = String(text || '');
+  for (const type of KNOWN_BRACKET_TYPES) {
+    counts[type] = (s.match(new RegExp(`\\[\\[${type}:`, 'g')) || []).length;
+  }
+  return counts;
+}
+
+/**
+ * A3 — per-SEGMENT, all-types bracket-marker delta, output minus input.
+ *
+ * Two things this fixes about `bracketMarkerDelta`, which stays as-is for the
+ * producer's own note:
+ *   1. CANCELLATION. A module-level sum hides a drop in one segment against an
+ *      invention of the same type in another.
+ *   2. MISSING TYPES. The 14-type set omits MATH/TABLE/SPACE/BR/math/EQ.
+ *
+ * ⚠️ §C69 comparability call, ruled by the [LEAD] 2026-08-13: this is
+ * DELIBERATELY stricter than the pilot's instrument. The full run's marker
+ * results are NOT directly comparable to the pilot's headline. Say so wherever
+ * the two appear side by side.
+ *
+ * A segment present on one side only is never silently skipped — it lands in
+ * `unpairedSegIds`, because a missing segment is a worse defect than a marker
+ * delta and a comparison that quietly drops it reads as clean.
+ *
+ * @param {string} input pre-translation text (whole module, SEG-marked)
+ * @param {string} output post-translation text
+ * @returns {{bySegment: Record<string, Record<string, number>>, total: Record<string, number>, segmentsExamined: number, segmentsWithDelta: number, unpairedSegIds: string[]}}
+ */
+export function bracketMarkerDeltaBySegment(input, output) {
+  const a = parseSegmentsMap(String(input || ''));
+  const b = parseSegmentsMap(String(output || ''));
+
+  const bySegment = {};
+  const total = {};
+  const unpairedSegIds = [];
+  let segmentsWithDelta = 0;
+
+  for (const [segId, enText] of a) {
+    if (!b.has(segId)) {
+      unpairedSegIds.push(segId);
+      continue;
+    }
+    const ca = countBracketMarkersAll(enText);
+    const cb = countBracketMarkersAll(b.get(segId));
+    const delta = {};
+    for (const type of KNOWN_BRACKET_TYPES) {
+      if (ca[type] !== cb[type]) {
+        const d = cb[type] - ca[type];
+        delta[type] = d;
+        total[type] = (total[type] || 0) + d;
+      }
+    }
+    if (Object.keys(delta).length > 0) {
+      bySegment[segId] = delta;
+      segmentsWithDelta++;
+    }
+  }
+  for (const segId of b.keys()) {
+    if (!a.has(segId)) unpairedSegIds.push(segId);
+  }
+
+  // Drop types whose per-segment deltas summed back to zero — they are noise in
+  // `total` but their segments are already counted in segmentsWithDelta.
+  for (const [t, n] of Object.entries(total)) if (n === 0) delete total[t];
+
+  return {
+    bySegment,
+    total,
+    segmentsExamined: a.size,
+    segmentsWithDelta,
+    unpairedSegIds,
+  };
 }
 
 /**
