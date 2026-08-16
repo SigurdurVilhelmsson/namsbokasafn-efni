@@ -45,7 +45,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  requireBook,
+  chapterProvided,
+} from './lib/parseArgs.js';
 
 // C0 control chars except the three valid in text (tab, LF, CR). Mirrors
 // api-translate.js assertNoControlChars — the degree-sign-> NUL incident.
@@ -408,7 +414,10 @@ function main() {
   }
   requireBook(args);
   const bookDir = `books/${args.book}`;
-  const chapters = args.chapter
+  // §C82: chapter 0 is falsy. Before this, `--chapter 0` fell through to
+  // discoverChapters and silently scanned the WHOLE BOOK while reporting
+  // success — measured 2026-08-16, it printed ch0, ch1, ch2, ch3, …
+  const chapters = chapterProvided(args)
     ? [String(args.chapter)]
     : discoverChapters(bookDir).map((d) => d.replace(/^ch0?/, ''));
 

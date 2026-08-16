@@ -1248,7 +1248,12 @@ async function main() {
     process.exit(0);
   }
 
-  if (!args.book || !args.chapter) {
+  // §C82: chapter 0 is falsy, and this tool's own parser yields null (not 0)
+  // for an unparseable chapter — so `=== null` is both necessary and
+  // sufficient here, and chapterProvided() does not apply. Before this,
+  // `validate-chapter.js efnafraedi-2e 0` printed "Please provide book and
+  // chapter" and exited, making chemistry ch00 unvalidatable.
+  if (!args.book || args.chapter === null) {
     console.error('Error: Please provide book and chapter');
     console.error('Usage: node tools/validate-chapter.js <book> <chapter> [options]');
     console.error('Use --help for more information');

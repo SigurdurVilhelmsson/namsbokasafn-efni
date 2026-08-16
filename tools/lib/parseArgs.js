@@ -65,6 +65,24 @@ export const CHAPTER_OPTION = {
   parse: (val) => (val === 'appendices' ? 'appendices' : parseInt(val, 10)),
 };
 
+/**
+ * True when the caller actually supplied `--chapter`.
+ *
+ * `--chapter 0` parses to the NUMBER 0, which is falsy — so the idiomatic
+ * `if (args.chapter)` treats a real chapter 0 as "no chapter given" and
+ * silently widens the run to the whole book (measured: 149 chemistry modules
+ * where `--chapter 1` scanned 7). Chemistry's ch00 is a real chapter; it holds
+ * m68662. NaN, from an unparseable `--chapter abc`, is not a chapter.
+ *
+ * @param {{chapter?: number|string|null}} args parsed args
+ * @returns {boolean}
+ */
+export function chapterProvided(args) {
+  const c = args?.chapter;
+  if (c === null || c === undefined) return false;
+  return !(typeof c === 'number' && Number.isNaN(c));
+}
+
 export const MODULE_OPTION = {
   name: 'module',
   flags: ['--module'],

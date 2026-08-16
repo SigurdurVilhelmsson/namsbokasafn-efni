@@ -30,6 +30,7 @@ import {
   CHAPTER_OPTION,
   MODULE_OPTION,
   requireBook,
+  chapterProvided,
 } from './lib/parseArgs.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
@@ -237,13 +238,15 @@ function main() {
     process.exit(0);
   }
   requireBook(args);
-  if (args.module && !args.chapter) {
+  if (args.module && !chapterProvided(args)) {
     console.error('Error: --module requires --chapter');
     process.exit(1);
   }
 
   BOOKS_DIR = `books/${args.book}`;
-  const chapters = args.chapter ? [formatChapter(args.chapter)] : discoverChapters(BOOKS_DIR);
+  const chapters = chapterProvided(args)
+    ? [formatChapter(args.chapter)]
+    : discoverChapters(BOOKS_DIR);
 
   if (chapters.length === 0) {
     console.error(`No chapters found in ${BOOKS_DIR}/01-source/`);

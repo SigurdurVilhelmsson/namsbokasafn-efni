@@ -5,6 +5,7 @@ import {
   CHAPTER_OPTION,
   MODULE_OPTION,
   requireBook,
+  chapterProvided,
 } from '../lib/parseArgs.js';
 
 describe('parseArgs', () => {
@@ -198,5 +199,28 @@ describe('requireBook', () => {
   it('passes for an existing book directory', () => {
     expect(() => requireBook({ book: 'efnafraedi-2e', help: false })).not.toThrow();
     expect(exitSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('chapterProvided — chapter 0 is a real chapter, not a missing argument', () => {
+  it('returns true for chapter 0', () => {
+    expect(chapterProvided({ chapter: 0 })).toBe(true);
+  });
+
+  it('returns false when no chapter was supplied', () => {
+    expect(chapterProvided({ chapter: null })).toBe(false);
+  });
+
+  it('returns true for appendices', () => {
+    expect(chapterProvided({ chapter: 'appendices' })).toBe(true);
+  });
+
+  it('returns false for an unparseable chapter', () => {
+    // parseArgs' CHAPTER_OPTION.parse runs parseInt, so `--chapter abc` is NaN.
+    expect(chapterProvided({ chapter: NaN })).toBe(false);
+  });
+
+  it('returns true for an ordinary chapter', () => {
+    expect(chapterProvided({ chapter: 7 })).toBe(true);
   });
 });
