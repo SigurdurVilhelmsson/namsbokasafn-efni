@@ -9,7 +9,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 import { scanSegmentsForResidue } from './lib/residue-scan.js';
 import { loadResidueAllowlist, classifyResidue } from './lib/residue-allowlist.js';
 
@@ -54,11 +60,16 @@ export function collectResidueFiles(isDir) {
 const JSON_OPTION = { name: 'json', flags: ['--json'], type: 'boolean', default: false };
 
 function main() {
-  const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, CHAPTER_OPTION, JSON_OPTION]);
+  const args = parseArgs(process.argv.slice(2), [
+    BOOK_OPTION,
+    CHAPTER_OPTION,
+    MODULE_OPTION,
+    JSON_OPTION,
+  ]);
 
   if (args.help) {
     console.log(
-      'Usage: node tools/scan-residue.js --book <slug> [--chapter N|appendices] [--json]\n' +
+      'Usage: node tools/scan-residue.js --book <slug> [--chapter N|appendices] [--module ID] [--json]\n' +
         'Read-only EN-residue scan over 02-for-mt x 02-mt-output. Prints a report; --json for machine output.'
     );
     return;
@@ -86,7 +97,11 @@ function main() {
   for (const dir of chapterDirs(mtOutRoot, args.chapter)) {
     const isDir = path.join(mtOutRoot, dir);
     if (!fs.existsSync(isDir)) continue;
-    for (const { moduleId, file } of collectResidueFiles(isDir)) {
+    let files = collectResidueFiles(isDir);
+    if (args.module) {
+      files = files.filter((f) => f.moduleId === args.module);
+    }
+    for (const { moduleId, file } of files) {
       modulesExamined++;
       const enFile = path.join(forMtRoot, dir, `${moduleId}-segments.en.md`);
       if (!fs.existsSync(enFile)) {
@@ -107,6 +122,25 @@ function main() {
       if (exact.length || warnings.length || tolerated.length)
         modules[moduleId] = { chapter: dir, exact, warnings, tolerated };
     }
+  }
+
+  // §C82: a --module that matches nothing is an ERROR, never a silent empty
+  // scan — an empty result set and a clean result set are indistinguishable in
+  // the output, so a typo'd module id would read as "no residue found".
+  //
+  // Checked against `modulesExamined` (files actually opened), NOT
+  // `Object.keys(modules).length` — `modules` only gains an entry for a
+  // residue-related finding or a missing EN sibling, so a matched module with
+  // zero residue legitimately produces no `modules` entry. Keying the error on
+  // `modules` would misreport every healthy scoped module (the common case for
+  // Task 9's per-module loop) as "matched no module".
+  if (args.module && modulesExamined === 0) {
+    console.error(
+      `Error: --module ${args.module} matched no module in ${args.book}` +
+        (args.chapter !== null ? ` chapter ${args.chapter}` : '') +
+        '.'
+    );
+    process.exit(2);
   }
 
   const ids = Object.keys(modules);
