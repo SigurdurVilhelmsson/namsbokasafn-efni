@@ -111,7 +111,18 @@ describe('alt survives the round trip', () => {
     //   m00032  36 media/image/alt -> 35   image DROPPED   (IN §C80 scope: organic preview)
     //   m00046   4 media/image/alt ->  5   image DUPLICATED
     //   m00023  11 alt -> 12               duplicated
-    //   m00069   6 alt ->  9               duplicated x3
+    //   m00069   6 alt ->  6   ✅ RESOLVED BY §C89, 2026-08-16 (was 6 -> 9, tripled)
+    //
+    // ✅ §C89 FIXED m00069 AS A SIDE EFFECT, and this pin is what noticed. §C89 made
+    // the container builders write translated alt into figures they keep in place,
+    // which also marks those figures handled — so a figure that had been emitted
+    // BOTH standalone and inside its container is now emitted once. Re-measured on
+    // merged main: m00069 is 6/6/6 -> 6/6/6, media and image counts included.
+    // The other three are UNCHANGED and remain open under §C85.
+    //
+    // ⚠️ THE PIN GOING RED IS THE POINT — it is a defect CHARACTERISATION, so an
+    // improvement trips it exactly as a regression would. Read the direction before
+    // assuming which one you have; here the count moved toward the source, not away.
     //
     // ⚠️ §C81's own verification could not see these: it compared the injected alt
     // count at the BASE vintage against the NEW vintage and concluded "zero modules
@@ -121,7 +132,7 @@ describe('alt survives the round trip', () => {
     const r = sweep('lifraen-efnafraedi');
     expect(r.files).toBe(342);
     expect(r.loss.map((x) => x.module)).toEqual(['m00032']);
-    expect(r.gain.map((x) => x.module).sort()).toEqual(['m00023', 'm00046', 'm00069']);
+    expect(r.gain.map((x) => x.module).sort()).toEqual(['m00023', 'm00046']);
     // `loss`/`gain` are derived from rawAlt/outAlt directly and never read `ok`, so
     // assert it here too — this is the only `ok === false` pinned on a REAL corpus
     // defect rather than a synthetic or a comment artefact.
