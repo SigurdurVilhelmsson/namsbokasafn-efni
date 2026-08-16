@@ -2425,17 +2425,28 @@ describe('roundTripAltCount — alt survives extract -> inject', () => {
     expect(r.ok).toBe(true);
   });
 
-  it('the m42296 shape — figure in a list item in an exercise problem — keeps its alt', () => {
-    // This is the exact corpus shape whose alt was stripped by §C81's first
-    // Part 2, invisibly to every extraction-side test.
+  it('the m42296 shape — figure in a list item in an exercise problem — pins current behaviour', () => {
+    // ⚠️⚠️ THIS SYNTHETIC DOES **NOT** DISCRIMINATE. Measured 2026-08-16 against the
+    // broken vintage 07167ac7: it yields rawAlt 1 / outAlt 1 and PASSES. At HEAD it
+    // yields rawAlt 1 / outAlt 2. So neither `=== 1` (which an earlier draft of this
+    // plan asserted, and which would have failed against CORRECT code) nor `>= rawAlt`
+    // separates fixed from broken.
+    //
+    // This is the identical trap §C81 round 3 caught in its own fixture — "confirmed to
+    // discriminate by reasoning" was wrong there too. A reduced fixture does not
+    // reproduce the corpus shape that triggers the suppression.
+    //
+    // Kept only as a behaviour pin: outAlt 2 records that this shape DUPLICATES today
+    // (the same class as organic's m00023/m00046/m00069, logged to the register).
+    // ▶ The real discrimination lives in the `regression fixtures` block below, on real
+    // corpus modules. Do not treat this case as evidence of anything else.
     const r = roundTripAltCount(doc(
       '<exercise id="e1"><problem id="pr1"><list id="l1"><item id="i1">' +
         '<figure id="f1"><media alt="mynd"><image src="a.png" mime-type="image/png"/></media></figure>' +
         '</item></list></problem></exercise>'
     ));
     expect(r.rawAlt).toBe(1);
-    expect(r.outAlt).toBe(1);
-    expect(r.ok).toBe(true);
+    expect(r.outAlt).toBe(2);
   });
 });
 ```
@@ -2511,20 +2522,41 @@ Expected: PASS. If a shape fails, that is a **real finding** about the pipeline 
 
 - [ ] **Step 6: Verify the check discriminates against the broken code**
 
-**This step is mandatory and is the point of the task.** A round-trip check that has never gone red is not a check.
+**This step is mandatory and is the point of the task.** A round-trip check that has never
+gone red is not a check.
+
+✅ **Already performed 2026-08-16, before handover — and it found that the SYNTHETIC fixture
+does not discriminate.** Recording both results so you re-run the right one:
+
+| fixture | HEAD (fixed) | `07167ac7` (broken) | discriminates? |
+|---|---|---|---|
+| synthetic m42296 shape (unit file) | raw 1 / out 2 | raw 1 / out **1 — PASSES** | ❌ **no** |
+| real `m42714` | 11 / 11 ok | 11 / **7** | ✅ |
+| real `m42359` | 19 / 19 ok | 19 / **18** | ✅ |
+| real `m42493` | 8 / 8 ok | 8 / **6** | ✅ |
+| real `m66590` | 8 / 8 ok | 8 / **5** | ✅ |
+| real `m42296` | 24 / **23** | 24 / **19** | ✅ (degrades further) |
+
+⚠️ **The synthetic passing against the broken vintage is the same trap §C81 round 3 caught in
+its own fixture** — a reduced shape does not reproduce what triggers the suppression, and
+"confirmed to discriminate by reasoning" was wrong there too. **Do not accept the synthetic as
+discrimination evidence.**
+
+Re-run the real check yourself:
 
 ```bash
-# 07167ac7 is the §C81 commit whose Part 2 stripped alt from the m42296 shape.
-git stash
-git log --oneline --all | grep -i '07167ac7' || echo "commit not found — find the pre-rework tip on feat/c81-figure-alt"
+git stash                                  # if you have uncommitted work
 git checkout 07167ac7 -- tools/cnxml-extract.js
-npx vitest run tools/__tests__/inject-roundtrip.test.js
-# EXPECT: the m42296-shape case goes RED (outAlt 0, rawAlt 1).
+npx vitest run tools/__tests__/inject-roundtrip-corpus.test.js
+# EXPECT: the 'regression fixtures' case goes RED — m42714/m42359/m42493/m66590 lose alt.
 git checkout HEAD -- tools/cnxml-extract.js
 git stash pop
 ```
 
-If the m42296 case stays green against the reverted extractor, **the test does not discriminate** — that exact failure happened once already in §C81 round 3, where a fixture placed the `<media>` before the `<list>` and the assertion passed against the broken code. Fix the fixture until it goes red, then re-verify it goes green at HEAD.
+**Confirm the tree is restored before continuing** — `git status --porcelain` must show no
+modification to `tools/cnxml-extract.js`. If the case stays green against the reverted
+extractor, the fixtures are not reproducing the defect: **stop and report**, do not weaken
+the assertion.
 
 - [ ] **Step 7: Write the corpus sweep**
 
@@ -2552,27 +2584,120 @@ function sourceModules(book) {
   return out;
 }
 
-describe('alt survives the round trip across chemistry', () => {
-  it('no module loses an alt attribute between source and injected output', () => {
-    const files = sourceModules('efnafraedi-2e');
-    expect(files.length).toBe(149); // control: the sweep read what it claims to have read
+/** Round-trip every source module in a book; return the ones that lost or gained alt. */
+function sweep(book) {
+  const loss = [];
+  const gain = [];
+  const files = sourceModules(book);
+  for (const f of files) {
+    const r = roundTripAltCount(fs.readFileSync(f, 'utf8'));
+    const module = path.basename(f, '.cnxml');
+    if (r.outAlt < r.rawAlt) loss.push({ module, ...r });
+    else if (r.outAlt > r.rawAlt) gain.push({ module, ...r });
+  }
+  return { files: files.length, loss, gain };
+}
 
-    const losses = [];
-    for (const f of files) {
-      const r = roundTripAltCount(fs.readFileSync(f, 'utf8'));
-      if (r.outAlt < r.rawAlt) losses.push({ module: path.basename(f, '.cnxml'), ...r });
-    }
-    expect(losses).toEqual([]);
-  });
+describe('alt survives the round trip', () => {
+  // ⚠️ BOTH DIRECTIONS. An earlier draft checked only `outAlt < rawAlt`, and that is
+  // exactly how the duplication class below stayed invisible in the first sweep I ran.
+  // A one-sided invariant is half a check.
+
+  it('chemistry: 149 modules, no alt lost and none gained', () => {
+    // Measured 2026-08-16: perfectly clean. This is the negative control that makes
+    // organic's findings mean something.
+    const r = sweep('efnafraedi-2e');
+    expect(r.files).toBe(149);
+    expect(r.loss).toEqual([]);
+    expect(r.gain).toEqual([]);
+  }, 300_000);
+
+  it('regression fixtures: the five modules §C81 broke are clean at HEAD', () => {
+    // 🔴 THIS IS THE DISCRIMINATING TEST — the synthetic in the unit file is not.
+    // These are the real corpus modules the §C81 whole-branch reviewer measured as
+    // losing alt under that branch's first Part 2. Verified 2026-08-16 by checking out
+    // tools/cnxml-extract.js at 07167ac7 and re-running:
+    //
+    //   module   HEAD (fixed)   07167ac7 (broken)   C81 reviewer reported
+    //   m42714   11 -> 11  ok    11 -> 7             11->7   ✓
+    //   m42359   19 -> 19  ok    19 -> 18            19->18  ✓
+    //   m42493    8 ->  8  ok     8 -> 6              8->6   ✓
+    //   m66590    8 ->  8  ok     8 -> 5              8->5   ✓
+    //   m42296   24 -> 23  ⚠️     24 -> 19            23->19  ✓
+    //
+    // Four go clean -> lossy, so this case goes red against the broken vintage. The
+    // numbers reproduce the reviewer's independently, which is what makes them evidence.
+    //
+    // ⚠️ m42296 STILL LOSES ONE ALT AT HEAD (24 -> 23). That is a residual defect, not a
+    // test artefact — physics is out of §C80's scope so it is pinned, not fixed, and it
+    // is logged to the register. Pinning it is what makes a CHANGE in it visible.
+    //
+    // The books here (edlisfraedi-2e, liffraedi-2e) are outside §C80's re-MT scope. That
+    // is fine and deliberate: a regression fixture is chosen for the defect it
+    // reproduces, not for whether its book is being bought.
+    const at = (book, m) => {
+      const f = sourceModules(book).find((p) => path.basename(p, '.cnxml') === m);
+      expect(f, `${m} must exist — it is a §C81 regression fixture`).toBeTruthy();
+      return roundTripAltCount(fs.readFileSync(f, 'utf8'));
+    };
+
+    expect(at('edlisfraedi-2e', 'm42714')).toMatchObject({ rawAlt: 11, outAlt: 11 });
+    expect(at('edlisfraedi-2e', 'm42359')).toMatchObject({ rawAlt: 19, outAlt: 19 });
+    expect(at('edlisfraedi-2e', 'm42493')).toMatchObject({ rawAlt: 8, outAlt: 8 });
+    expect(at('liffraedi-2e', 'm66590')).toMatchObject({ rawAlt: 8, outAlt: 8 });
+    // Residual, pinned deliberately — see the note above.
+    expect(at('edlisfraedi-2e', 'm42296')).toMatchObject({ rawAlt: 24, outAlt: 23 });
+  }, 120_000);
+
+  it('organic: pins the four known round-trip defects so any change is visible', () => {
+    // 🔴 These are REAL, reader-visible defects found by this check, not test noise:
+    // the whole <media> element moves, image and all, so a reader sees a MISSING or
+    // DOUBLED image. Measured 2026-08-16 and logged to the active register.
+    //
+    //   m00032  36 media/image/alt -> 35   image DROPPED   (IN §C80 scope: organic preview)
+    //   m00046   4 media/image/alt ->  5   image DUPLICATED
+    //   m00023  11 alt -> 12               duplicated
+    //   m00069   6 alt ->  9               duplicated x3
+    //
+    // ⚠️ §C81's own verification could not see these: it compared the injected alt
+    // count at the BASE vintage against the NEW vintage and concluded "zero modules
+    // gained". That asks "did my change alter the count?", not "does the output carry
+    // what the source had" — a vintage-diff is structurally blind to a defect present
+    // at both vintages.
+    const r = sweep('lifraen-efnafraedi');
+    expect(r.files).toBe(342);
+    expect(r.loss.map((x) => x.module)).toEqual(['m00032']);
+    expect(r.gain.map((x) => x.module).sort()).toEqual(['m00023', 'm00046', 'm00069']);
+  }, 600_000);
 });
 ```
 
-> **⚠️ The assertion is `outAlt < rawAlt`, not equality.** The unreachable positions from Task 5 mean `rawAlt` exceeds what the pipeline can carry for *some* modules; this check is about **loss relative to what the round trip already produced**, so it must not re-litigate §C81's shortfall. If the sweep reports losses, record them and report — the four §C81 Part 1 removals (`m00018`, `m00078`, `m00230`, `m00330`) are organic, not chemistry, so chemistry should be clean.
+> **⚠️ Both directions, and the expected values are measured, not predicted.** An earlier draft
+> checked only `outAlt < rawAlt` — and that one-sided invariant is exactly how the DUPLICATION
+> class stayed invisible in the first sweep run against this tree. Measured 2026-08-16:
+> chemistry is 149 modules / 0 loss / 0 gain; organic is 342 modules / 1 loss (`m00032`) /
+> 3 gains (`m00023`, `m00046`, `m00069`).
+>
+> **Note this does NOT re-litigate §C81's ~82% shortfall.** `rawAlt` counts alt attributes in
+> the source *string*; the unreachable positions from Task 5 never produce a `<media>` in the
+> injected output either, so they cancel on both sides. This check asks a different question
+> from E5: E5 asks "did every reachable alt become a segment", this asks "did the injected
+> CNXML carry back what the source string held".
+>
+> **If a count differs from the pins, STOP and report.** These are live defect records, not
+> test scaffolding.
 
 - [ ] **Step 8: Run the corpus sweep**
 
 Run: `npx vitest run tools/__tests__/inject-roundtrip-corpus.test.js`
-Expected: PASS. Note the runtime — 149 modules through extract+inject may be slow. If it exceeds ~30s, add `{ timeout: 120_000 }` as the third argument to `it(...)` rather than trimming the corpus.
+
+Expected: PASS, all four cases. **Runtime is the thing to plan for** — this sweeps 149 + 342
+source modules through extract+inject, which took several minutes when measured. The timeouts
+are already set per-case (`300_000` chemistry, `600_000` organic, `120_000` fixtures).
+**Do not trim the corpus to make it faster** — a sampled sweep cannot pin an exact defect set,
+and the pins are the deliverable. If the total runtime makes the default `npm test` painful,
+say so in your report and let the controller rule on whether this file moves behind a flag;
+do not decide that yourself.
 
 - [ ] **Step 9: Full suite, lint, format**
 
