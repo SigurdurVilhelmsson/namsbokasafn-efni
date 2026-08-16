@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-export const SCHEMA_VERSION = 1;
+// v2 (§C82): an optional `run` key carrying the per-module MT run record.
+// Purely additive — a v1 sidecar reads fine and simply has no `run`.
+export const SCHEMA_VERSION = 2;
 
 // The only producers of 02-mt-output. tool -> restore policy.
 //   'mutate'  -> run the web-UI restores and rewrite segments (external/docx MT can drop markers)
@@ -25,13 +27,28 @@ export function provenancePath(mtOutputChapterDir, moduleId) {
   return path.join(mtOutputChapterDir, `${moduleId}-provenance.json`);
 }
 
-export function writeProvenance(mtOutputChapterDir, moduleId, { tool, generatedAt } = {}) {
+/**
+ * Stamp producer provenance next to a module's MT output.
+ *
+ * @param {string} mtOutputChapterDir
+ * @param {string} moduleId
+ * @param {object} opts
+ * @param {string} opts.tool must be a KNOWN_TOOLS key
+ * @param {string} [opts.generatedAt] ISO timestamp; defaults to now
+ * @param {object} [opts.run] the per-module run record (tools/lib/run-record.js).
+ *   Stored opaquely: this module owns storage, run-record.js owns shape, so
+ *   Plan C can add fields without touching this file. Omitted when absent, so a
+ *   sidecar written without one is byte-identical to a v1 sidecar bar the version.
+ * @returns {object} the payload written
+ */
+export function writeProvenance(mtOutputChapterDir, moduleId, { tool, generatedAt, run } = {}) {
   restorePolicyFor(tool); // validate before writing
   const payload = {
     schemaVersion: SCHEMA_VERSION,
     tool,
     generatedAt: generatedAt || new Date().toISOString(),
   };
+  if (run !== undefined && run !== null) payload.run = run;
   fs.writeFileSync(
     provenancePath(mtOutputChapterDir, moduleId),
     JSON.stringify(payload, null, 2) + '\n',

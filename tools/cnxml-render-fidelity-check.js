@@ -45,7 +45,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+  chapterProvided,
+} from './lib/parseArgs.js';
 
 // C0 control chars except the three valid in text (tab, LF, CR). Mirrors
 // api-translate.js assertNoControlChars — the degree-sign-> NUL incident.
@@ -395,6 +402,7 @@ function parseCliArgs(argv) {
   return parseArgs(argv, [
     BOOK_OPTION,
     CHAPTER_OPTION,
+    MODULE_OPTION,
     { name: 'track', flags: ['--track'], type: 'string', default: 'mt-preview' },
     { name: 'updateBaseline', flags: ['--update-baseline'], type: 'boolean', default: false },
   ]);
@@ -403,12 +411,31 @@ function parseCliArgs(argv) {
 function main() {
   const args = parseCliArgs(process.argv.slice(2));
   if (args.help) {
-    console.log('cnxml-render-fidelity-check.js — render-stage structural check. See file header.');
+    console.log(
+      'cnxml-render-fidelity-check.js — render-stage structural check. See file header.\n' +
+        '--module is deliberately NOT supported — this check is chapter-aggregated by design.'
+    );
     process.exit(0);
   }
   requireBook(args);
+  // §C82/§C83: this tool is chapter-aggregated BY DESIGN — the chapter is the
+  // closed reconciliation unit (see this file's header). It cannot narrow to a
+  // module. parseArgs silently drops flags a tool does not declare, so without
+  // this it would accept --module, ignore it, scan the whole chapter and exit 0
+  // — a wrong answer that looks like an answer.
+  if (args.module) {
+    console.error(
+      'Error: --module is not supported by cnxml-render-fidelity-check — this check is ' +
+        'chapter-aggregated by design (the chapter is the closed reconciliation unit). ' +
+        'Run it per chapter, or use cnxml-fidelity-check --module for a per-module check.'
+    );
+    process.exit(2);
+  }
   const bookDir = `books/${args.book}`;
-  const chapters = args.chapter
+  // §C82: chapter 0 is falsy. Before this, `--chapter 0` fell through to
+  // discoverChapters and silently scanned the WHOLE BOOK while reporting
+  // success — measured 2026-08-16, it printed ch0, ch1, ch2, ch3, …
+  const chapters = chapterProvided(args)
     ? [String(args.chapter)]
     : discoverChapters(bookDir).map((d) => d.replace(/^ch0?/, ''));
 

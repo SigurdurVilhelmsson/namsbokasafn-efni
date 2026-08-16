@@ -1002,6 +1002,7 @@ function parseArgs(args) {
     json: false,
     fix: false,
     help: false,
+    module: null,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -1017,6 +1018,10 @@ function parseArgs(args) {
       result.fix = true;
     } else if (arg === '--track' && args[i + 1]) {
       result.track = args[++i];
+    } else if (arg === '--module' && args[i + 1]) {
+      // §C82/§C83: detected purely so main() can REJECT it — this tool has no
+      // MODULE_OPTION to add (hand-rolled parser, not tools/lib/parseArgs.js).
+      result.module = args[++i];
     } else if (!arg.startsWith('-')) {
       if (!result.book) {
         result.book = arg;
@@ -1049,6 +1054,10 @@ Options:
   --json            Output as JSON
   --fix             Show fix suggestions
   -h, --help        Show this help message
+
+  --module <id>     NOT SUPPORTED — deliberately rejected. This tool's checks are
+                    chapter-scoped (figure-numbers, cross-references); a single
+                    module cannot be validated in isolation.
 
 Validation Checks:
   files-exist             Required markdown files are present
@@ -1248,11 +1257,30 @@ async function main() {
     process.exit(0);
   }
 
-  if (!args.book || !args.chapter) {
+  // §C82: chapter 0 is falsy, and this tool's own parser yields null (not 0)
+  // for an unparseable chapter — so `=== null` is both necessary and
+  // sufficient here, and chapterProvided() does not apply. Before this,
+  // `validate-chapter.js efnafraedi-2e 0` printed "Please provide book and
+  // chapter" and exited, making chemistry ch00 unvalidatable.
+  if (!args.book || args.chapter === null) {
     console.error('Error: Please provide book and chapter');
     console.error('Usage: node tools/validate-chapter.js <book> <chapter> [options]');
     console.error('Use --help for more information');
     process.exit(1);
+  }
+
+  // §C82/§C83: this tool's checks are CHAPTER-scoped. `figure-numbers` asserts figure
+  // numbers are sequential WITHIN THE CHAPTER, and `cross-references` matches refs
+  // against the chapter-wide caption set — neither is computable from one module, so
+  // honouring --module would silently produce WRONG answers, which is worse than the
+  // silent drop it would replace. Detected and refused, never ignored.
+  if (args.module) {
+    console.error(
+      'Error: --module is not supported by validate-chapter — its checks are chapter-scoped ' +
+        '(figure-numbers is sequential within the chapter; cross-references matches the ' +
+        "chapter's caption set). Run it per chapter."
+    );
+    process.exit(2);
   }
 
   // Check book directory exists

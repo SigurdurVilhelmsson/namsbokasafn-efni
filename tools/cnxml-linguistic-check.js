@@ -30,6 +30,7 @@ import {
   CHAPTER_OPTION,
   MODULE_OPTION,
   requireBook,
+  chapterProvided,
 } from './lib/parseArgs.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
@@ -237,13 +238,22 @@ function main() {
     process.exit(0);
   }
   requireBook(args);
-  if (args.module && !args.chapter) {
+  // ⚠️ BARE `--module` — see the twin guard in cnxml-fidelity-check.js. Without
+  // it the flag is dropped and the run silently widens to the whole chapter,
+  // exit 0, answering about the wrong unit.
+  if (process.argv.slice(2).includes('--module') && !args.module) {
+    console.error('Error: --module requires a value (e.g. --module m68664).');
+    process.exit(2);
+  }
+  if (args.module && !chapterProvided(args)) {
     console.error('Error: --module requires --chapter');
     process.exit(1);
   }
 
   BOOKS_DIR = `books/${args.book}`;
-  const chapters = args.chapter ? [formatChapter(args.chapter)] : discoverChapters(BOOKS_DIR);
+  const chapters = chapterProvided(args)
+    ? [formatChapter(args.chapter)]
+    : discoverChapters(BOOKS_DIR);
 
   if (chapters.length === 0) {
     console.error(`No chapters found in ${BOOKS_DIR}/01-source/`);
@@ -302,6 +312,26 @@ function main() {
   console.log(`With untranslated content: ${modulesWithUntranslated}`);
   if (modulesSkipped > 0) console.log(`Skipped: ${modulesSkipped}`);
   console.log(`Total untranslated blocks: ${totalUntranslatedBlocks}`);
+
+  // 🔴 AN ABSENCE IS NOT AN ANSWER — twin of the guard in cnxml-fidelity-check.js.
+  // Measured 2026-08-16: `--module m99999` printed "All translated: 0" and exited
+  // 0, which §C82's driver would consume as a per-module R5 GREEN for a module
+  // never opened.
+  // ⚠️ ANY requested SCOPE, not just --module. Armed only on --module until
+  // 2026-08-16, a `--chapter 99` printed "Checked: 0 modules" and exited 0 —
+  // the identical false GREEN one level up, and §C82's driver runs these per
+  // chapter as well as per module. chapterProvided() is used rather than a
+  // truthiness test because chapter 0 is a real chapter.
+  const scopeRequested = Boolean(args.module) || chapterProvided(args);
+  if (scopeRequested && modulesChecked === 0) {
+    console.error(
+      `\nError: examined 0 modules in ${args.book} ` +
+        `${args.module ? `--module ${args.module} (chapter ${args.chapter})` : `chapter ${args.chapter}`}` +
+        ` — no such ${args.module ? 'module' : 'chapter'}, or its 03-translated output was never written.\n` +
+        `Refusing to report a pass for a scope that was never examined.`
+    );
+    process.exit(2);
+  }
 
   process.exit(totalUntranslatedBlocks > 0 ? 1 : 0);
 }

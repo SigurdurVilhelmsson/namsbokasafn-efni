@@ -9,6 +9,8 @@ import {
   checkLists,
   checkDuplicateSegIds,
   analyzeModule,
+  altReachability,
+  checkAltCoverage,
 } from '../lib/extraction-coverage.js';
 
 const TOOLS = path.resolve(import.meta.dirname, '..');
@@ -186,6 +188,129 @@ describe('analyzeModule', () => {
     const cnxml = doc('<list id="L1"><item>a</item></list>');
     const r = analyzeModule(cnxml, seg('item:L1-item-1'));
     expect(r.hasFindings).toBe(false);
+  });
+});
+
+describe('altReachability — the four positions cnxml-extract never visits (§C81 shortfall)', () => {
+  const wrap = (inner) => `<document><content>${inner}</content></document>`;
+  const reach = (inner) => altReachability(parseModuleDoc(wrap(inner)).content);
+
+  it('counts a figure-wrapped media as reachable', () => {
+    const r = reach('<figure id="f1"><media alt="mynd"><image src="a.png"/></media></figure>');
+    expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
+  });
+
+  it('counts a media in a table entry, outside a figure, as unreachable', () => {
+    const r = reach(
+      '<table><row><entry><media alt="mynd"><image src="a.png"/></media></entry></row></table>'
+    );
+    expect(r.unreachable).toBe(1);
+    expect(r.unreachableByReason['entry-not-in-figure']).toBe(1);
+  });
+
+  it('counts a figure-wrapped media INSIDE a table entry as reachable', () => {
+    // The predicate is "in an entry AND not in a figure" — the figure wrapper rescues it.
+    const r = reach(
+      '<table><row><entry><figure id="f1"><media alt="mynd"><image src="a.png"/></media></figure></entry></row></table>'
+    );
+    expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
+  });
+
+  for (const parent of ['example', 'problem', 'solution', 'note']) {
+    it(`counts a bare media directly in <${parent}> as unreachable`, () => {
+      const r = reach(
+        `<${parent} id="x"><media alt="mynd"><image src="a.png"/></media></${parent}>`
+      );
+      expect(r.unreachable).toBe(1);
+      expect(r.unreachableByReason[`bare-media-in-${parent}`]).toBe(1);
+    });
+
+    it(`counts a FIGURE-wrapped media in <${parent}> as reachable`, () => {
+      const r = reach(
+        `<${parent} id="x"><figure id="f1"><media alt="mynd"><image src="a.png"/></media></figure></${parent}>`
+      );
+      expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
+    });
+  }
+
+  it('ignores media with no alt and media with an empty alt', () => {
+    const r = reach(
+      '<figure id="f1"><media><image src="a.png"/></media></figure><figure id="f2"><media alt=""><image src="b.png"/></media></figure>'
+    );
+    expect(r).toMatchObject({ reachable: 0, unreachable: 0 });
+  });
+
+  it('reads alt from a child <image> when the <media> carries none', () => {
+    const r = reach('<figure id="f1"><media><image src="a.png" alt="mynd"/></media></figure>');
+    expect(r.reachable).toBe(1);
+  });
+
+  it('is not fooled by an INDIRECT example parent', () => {
+    // Only a DIRECT <media> child of these containers is unreachable; one wrapped
+    // in a <para> reaches the extractor through the para's inline-media flatten.
+    const r = reach(
+      '<example id="e1"><para id="p1"><media alt="mynd"><image src="a.png"/></media></para></example>'
+    );
+    expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
+  });
+
+  it('does not count alt that lives only on an <iframe> child — no capture path in the extractor reads it', () => {
+    // processFigure, the standalone-media branch of processTopLevelContent, and
+    // extractInlineText's inline-media capture all compute altText as
+    // mediaAttrs.alt || imageAttrs.alt — none of them ever reads iframe.alt. A
+    // <media> whose only alt source is an iframe child has no alt the extractor
+    // can see, so it must be counted as neither reachable nor unreachable.
+    const r = reach('<figure id="f1"><media><iframe src="x" alt="mynd"/></media></figure>');
+    expect(r).toMatchObject({ reachable: 0, unreachable: 0 });
+  });
+});
+
+describe('checkAltCoverage — three numbers, gates on one', () => {
+  const wrap = (inner) => `<document><content>${inner}</content></document>`;
+  const SRC = wrap(
+    '<figure id="f1"><media alt="fyrsta"><image src="a.png"/></media></figure>' +
+      '<figure id="f2"><media alt="önnur"><image src="b.png"/></media></figure>' +
+      '<example id="e1"><media alt="ónáanleg"><image src="c.png"/></media></example>'
+  );
+
+  it('passes when every reachable alt was emitted, and reports the unreached', () => {
+    const seg = '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f2-alt -->\nönnur\n';
+    const r = checkAltCoverage(parseModuleDoc(SRC).content, seg);
+    expect(r).toMatchObject({ reached: 2, expected: 2, unreached: 1, ok: true });
+  });
+
+  it('fails when a reachable alt was dropped', () => {
+    const seg = '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n';
+    const r = checkAltCoverage(parseModuleDoc(SRC).content, seg);
+    expect(r).toMatchObject({ reached: 1, expected: 2, ok: false });
+  });
+
+  it('fails when MORE alt segments were emitted than the source has reachable alts', () => {
+    // The duplicate-emission direction §C81 Task 10 closed. Equality, not >=.
+    const seg =
+      '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f2-alt -->\nönnur\n\n<!-- SEG:m1:alt:media-0-alt -->\nafrit\n';
+    const r = checkAltCoverage(parseModuleDoc(SRC).content, seg);
+    expect(r).toMatchObject({ reached: 3, expected: 2, ok: false });
+  });
+
+  it('reports the examined count even on a figure-less module, so a pass is not vacuous', () => {
+    const r = checkAltCoverage(
+      parseModuleDoc(wrap('<para id="p1">engar myndir</para>')).content,
+      ''
+    );
+    expect(r).toMatchObject({ reached: 0, expected: 0, unreached: 0, ok: true });
+  });
+
+  it('counts a same-id duplicate raw marker (the §C81 Rule-1 majority shape), not the deduped Map key', () => {
+    // parseSegmentsMap dedupes identical ids to one key — that hides a real
+    // over-emission the way it hides checkDuplicateSegIds's raw dups. reached
+    // must count raw marker OCCURRENCES, not deduped ids.
+    const oneAlt = wrap(
+      '<figure id="f1"><media alt="fyrsta"><image src="a.png"/></media></figure>'
+    );
+    const seg = '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n';
+    const r = checkAltCoverage(parseModuleDoc(oneAlt).content, seg);
+    expect(r).toMatchObject({ reached: 2, expected: 1, ok: false });
   });
 });
 

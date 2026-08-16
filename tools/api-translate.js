@@ -40,7 +40,10 @@ import {
 import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
+import { buildRunRecord, glossaryContentHash, usageUnits } from './lib/run-record.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
+import segMarkers from './lib/seg-markers.cjs';
+const { parseSegmentRecords } = segMarkers;
 
 // ─── Configuration ──────────────────────────────────────────────────
 
@@ -479,6 +482,142 @@ export function formatBracketDelta(label, delta) {
   const parts = Object.entries(delta).map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`);
   if (parts.length === 0) return null;
   return `${label}: bracket-marker delta (output vs input) — ${parts.join(', ')}`;
+}
+
+// One compiled RegExp per KNOWN_BRACKET_TYPES entry, built once at module load
+// rather than on every `countBracketMarkersAll` call. `countBracketMarkersAll`
+// runs twice per segment OCCURRENCE inside `bracketMarkerDeltaBySegment`'s loop
+// (~860k RegExp constructions for a full book at pre-fix rates) — a global regex
+// is safe to share across `String.prototype.match()` calls because `match`
+// always starts at index 0 and resets `lastIndex` to 0 afterward, regardless of
+// its value beforehand (verified: `re.lastIndex = 5; 'aaa'.match(re)` still
+// returns all three matches).
+const KNOWN_BRACKET_TYPE_REGEXPS = new Map(
+  [...KNOWN_BRACKET_TYPES].map((type) => [type, new RegExp(`\\[\\[${type}:`, 'g')])
+);
+
+/**
+ * Tally inline bracket markers over EVERY type our pipeline can emit —
+ * KNOWN_BRACKET_TYPES, not the 14-type BRACKET_MARKER_TYPES.
+ *
+ * The six extra (MATH, TABLE, SPACE, BR, math, EQ) are exactly the ones
+ * `bracketMarkerDelta` is blind to: measured, m68823 returns `{}` while its MATH
+ * markers went 56 → 54, and m68819/m68832/m68852 do the same.
+ *
+ * @param {string} text
+ * @returns {Record<string, number>}
+ */
+export function countBracketMarkersAll(text) {
+  const counts = {};
+  const s = String(text || '');
+  for (const type of KNOWN_BRACKET_TYPES) {
+    counts[type] = (s.match(KNOWN_BRACKET_TYPE_REGEXPS.get(type)) || []).length;
+  }
+  return counts;
+}
+
+/**
+ * Build an occurrence-indexed `Map<key, content>` from raw SEG-marked text,
+ * via `parseSegmentRecords` (keeps ALL occurrences, in order — unlike
+ * `parseSegmentsMap`, whose default `duplicates: 'first'` is a deliberate
+ * RUNTIME tolerance for inject, not something a comparison instrument should
+ * inherit: a real content difference confined to a duplicate seg-id's SECOND
+ * or later occurrence would otherwise never be looked at on either side).
+ *
+ * A seg-id's FIRST occurrence keeps its bare seg-id as the key, so the
+ * overwhelmingly common non-duplicated case is unaffected; each later
+ * occurrence of the same seg-id is keyed `${segId}#${N}` (N = 1, 2, … — the
+ * 1-based index of that EXTRA occurrence), so a delta or a missing pair
+ * confined to a non-first occurrence is still visible and still attributable.
+ *
+ * @param {string} text
+ * @returns {Map<string, string>}
+ */
+function buildOccurrenceMap(text) {
+  const map = new Map();
+  const seen = new Map(); // segId -> occurrences of it seen so far on this side
+  for (const rec of parseSegmentRecords(text)) {
+    const idx = seen.get(rec.segmentId) || 0;
+    const key = idx === 0 ? rec.segmentId : `${rec.segmentId}#${idx}`;
+    map.set(key, rec.content);
+    seen.set(rec.segmentId, idx + 1);
+  }
+  return map;
+}
+
+/**
+ * A3 — per-OCCURRENCE, all-types bracket-marker delta, output minus input.
+ *
+ * Two things this fixes about `bracketMarkerDelta`, which stays as-is for the
+ * producer's own note:
+ *   1. CANCELLATION. A module-level sum hides a drop in one segment against an
+ *      invention of the same type in another.
+ *   2. MISSING TYPES. The 14-type set omits MATH/TABLE/SPACE/BR/math/EQ.
+ *
+ * ⚠️ §C69 comparability call, ruled by the [LEAD] 2026-08-13: this is
+ * DELIBERATELY stricter than the pilot's instrument. The full run's marker
+ * results are NOT directly comparable to the pilot's headline. Say so wherever
+ * the two appear side by side.
+ *
+ * Pairing is by OCCURRENCE, not by deduped seg-id (`buildOccurrenceMap`,
+ * above) — a duplicated raw `<!-- SEG: -->` marker's second (or later)
+ * occurrence is a real, independent piece of translated text, and comparing
+ * only the first occurrence of each id (as a `parseSegmentsMap`-keyed
+ * comparison would) silently drops any delta confined to the rest.
+ *
+ * An occurrence present on one side only is never silently skipped — it lands
+ * in `unpairedSegIds` (keyed the same way: bare seg-id for a first occurrence,
+ * `segId#N` for a later one), because a missing occurrence is a worse defect
+ * than a marker delta and a comparison that quietly drops it reads as clean.
+ *
+ * @param {string} input pre-translation text (whole module, SEG-marked)
+ * @param {string} output post-translation text
+ * @returns {{bySegment: Record<string, Record<string, number>>, total: Record<string, number>, segmentsExamined: number, segmentsWithDelta: number, unpairedSegIds: string[]}}
+ */
+export function bracketMarkerDeltaBySegment(input, output) {
+  const a = buildOccurrenceMap(String(input || ''));
+  const b = buildOccurrenceMap(String(output || ''));
+
+  const bySegment = {};
+  const total = {};
+  const unpairedSegIds = [];
+  let segmentsWithDelta = 0;
+
+  for (const [segId, enText] of a) {
+    if (!b.has(segId)) {
+      unpairedSegIds.push(segId);
+      continue;
+    }
+    const ca = countBracketMarkersAll(enText);
+    const cb = countBracketMarkersAll(b.get(segId));
+    const delta = {};
+    for (const type of KNOWN_BRACKET_TYPES) {
+      if (ca[type] !== cb[type]) {
+        const d = cb[type] - ca[type];
+        delta[type] = d;
+        total[type] = (total[type] || 0) + d;
+      }
+    }
+    if (Object.keys(delta).length > 0) {
+      bySegment[segId] = delta;
+      segmentsWithDelta++;
+    }
+  }
+  for (const segId of b.keys()) {
+    if (!a.has(segId)) unpairedSegIds.push(segId);
+  }
+
+  // Drop types whose per-segment deltas summed back to zero — they are noise in
+  // `total` but their segments are already counted in segmentsWithDelta.
+  for (const [t, n] of Object.entries(total)) if (n === 0) delete total[t];
+
+  return {
+    bySegment,
+    total,
+    segmentsExamined: a.size,
+    segmentsWithDelta,
+    unpairedSegIds,
+  };
 }
 
 /**
@@ -998,14 +1137,29 @@ export function splitAtSegBoundaries(text, maxChars) {
  * restored immediately after each translateAuto call (reattachIds) — before
  * the existing post-processing chain, which continues to operate on the
  * original id-anchored on-disk form.
- * @returns {{ text: string, usage: number, mismatches: Array }}
+ *
+ * §C82 fix round 1, Finding 2: `glossarySent` on the return value reports
+ * whether the API CALL WHOSE RESULT WAS USED actually carried a glossary —
+ * it is outcome, not the caller's intent (the `glossary` parameter). It is
+ * false whenever filterGlossaryForText finds no term in this chunk's text,
+ * and false again on the truncation-retry path below, which unconditionally
+ * drops the glossary and REPLACES the first response.
+ * ⚠️ `usage` is passed through from the client VERBATIM and is an OBJECT
+ * (`{units, cost}`) — see tools/lib/malstadur-api.js, whose three JSDoc sites
+ * and `createUsageTracker().record()` both say so. This line claimed `number`
+ * until 2026-08-16, and the caller's `+= || 0` believed it, persisting the
+ * string `"0[object Object]"` into every sidecar. Normalize with `usageUnits()`
+ * before doing arithmetic on it.
+ * @returns {{ text: string, usage: object, mismatches: Array, unwrapped: Array, glossarySent: boolean }}
  */
 export async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
   const { wireText, segments } = stripTermFnToPaired(chunkText);
   const filteredGlossary = filterGlossaryForText(glossary, chunkText);
   const translateOpts = { targetLanguage: 'is' };
+  let glossarySent = false;
   if (filteredGlossary) {
     translateOpts.glossaries = [filteredGlossary];
+    glossarySent = true;
   }
 
   // Order matters (Finding A): repairSegTags must run on the paired-form
@@ -1052,6 +1206,9 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
       reattach = reattachIds(output, segments);
       output = reattach.text;
       mismatches = reattach.mismatches;
+      // The USED result (this retry's) carried no glossary, regardless of
+      // whether the discarded first attempt did.
+      glossarySent = false;
     }
 
     if (!validateMarkers(chunkText, output)) {
@@ -1064,7 +1221,7 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
     }
   }
 
-  return { text: output, usage: result.usage, mismatches, unwrapped };
+  return { text: output, usage: result.usage, mismatches, unwrapped, glossarySent };
 }
 
 /** Derive a module id (mNNNNN) from an mt-output output path. */
@@ -1100,6 +1257,12 @@ export async function translateModule(
   const translatedChunks = [];
   const mismatches = [];
   const unwrapped = [];
+  // §C82 fix round 1, Finding 2: `glossary` (the parameter) records what the
+  // CALLER asked for, not what actually reached the API — filterGlossaryForText
+  // can drop it per-chunk (no term matches that chunk's text) and the truncation
+  // retry in translateChunk always drops it. Count the chunks whose actual API
+  // call carried one, so the run record can report outcome alongside intent.
+  let chunksWithGlossary = 0;
 
   for (let i = 0; i < chunks.length; i++) {
     const chunkLabel = needsSplitting ? `chunk ${i + 1}/${chunks.length}` : moduleId;
@@ -1110,7 +1273,10 @@ export async function translateModule(
 
     const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
     translatedChunks.push(result.text);
-    totalUsage += result.usage || 0;
+    // usageUnits(), not `|| 0`: the client returns an OBJECT and `0 + {}` is
+    // string concatenation, not addition. See run-record.js's usageUnits docs.
+    totalUsage += usageUnits(result.usage);
+    if (result.glossarySent) chunksWithGlossary++;
     if (result.mismatches && result.mismatches.length) mismatches.push(...result.mismatches);
     if (result.unwrapped && result.unwrapped.length) unwrapped.push(...result.unwrapped);
   }
@@ -1163,8 +1329,38 @@ export async function translateModule(
   }
   fs.writeFileSync(outputPath, output, 'utf8');
 
+  // §C82 fix round 1, Finding 1: the ONLY thing that may sit between
+  // fs.writeFileSync and writeProvenance is what buildRunRecord actually needs —
+  // here, the bare bracketDelta value. resolveRestorePolicy THROWS when a segment
+  // file exists with no sidecar, so every statement in this window widens a real
+  // failure window; a pure computation over in-memory strings is about as safe as
+  // that window gets, but it is not zero, so keep it to exactly this one call.
+  // B3's diagnostics (the human-readable note and the invented-marker note) are
+  // deliberately printed AFTER writeProvenance below: neither is needed to build
+  // the record, and an EPIPE on a broken stderr must not cost us the sidecar.
+  const bracketDelta = bracketMarkerDelta(input, output);
+
   // B2: stamp producer provenance next to the segment file.
-  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), { tool: 'api-translate' });
+  // §C82 prerequisite 2: it now also carries the run record. Without this the
+  // in-pipeline repairs erase their own evidence — the counters below exist
+  // nowhere else once this function returns.
+  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), {
+    tool: 'api-translate',
+    run: buildRunRecord({
+      chars: input.length,
+      usage: totalUsage,
+      estimatedIsk: estimateIsk(input.length),
+      markersNormalized,
+      mismatches,
+      bracketDelta,
+      unwrapped,
+      glossaryArm: glossary ? 'glossary' : 'no-glossary',
+      glossaryHash: glossaryContentHash(glossary),
+      glossaryTermCount: glossary?.terms?.length ?? null,
+      chunksWithGlossary,
+      chunksTotal: chunks.length,
+    }),
+  });
 
   // Copy -links.json if it exists
   const linksFilename = path.basename(inputPath).replace('-segments.en.md', '-segments-links.json');
@@ -1178,7 +1374,8 @@ export async function translateModule(
   // is a module-level aggregate: a drop in one segment and a spurious add of the same
   // type in another cancel to zero and won't be reported — acceptable for a non-gating
   // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
-  const bracketDelta = bracketMarkerDelta(input, output);
+  // §C82: the per-segment, all-types instrument that DOES catch the cancelling case
+  // is bracketMarkerDeltaBySegment; the loop's A3 gate uses that one, not this.
   const bracketNote = formatBracketDelta(moduleId, bracketDelta);
   if (bracketNote) console.error(`  Note: ${bracketNote}`);
 

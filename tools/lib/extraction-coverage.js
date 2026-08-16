@@ -159,13 +159,162 @@ export function checkDuplicateSegIds(content, segText) {
   return { sourceDup, rawDup };
 }
 
+/**
+ * Containers whose DIRECT <media> child the extractor never visits.
+ *
+ * Measured on the post-§C81 tree (test-results/c81-alt-extraction-2026-08-15.json):
+ * a bare <media> — no <figure> wrapper — that is a direct child of one of these
+ * has no emitter on any walk. A <media> one level down, inside a <para>, DOES
+ * reach the extractor through the para's inline-media flatten, which is why the
+ * predicate is DIRECT parent and not ancestor.
+ *
+ * ⚠️ KNOWN GAP, DO NOT ADD A RULE FOR IT: a bare <media> that is a direct child
+ * of <exercise> ITSELF (as opposed to its <problem>/<solution> children) is not
+ * covered here — processExercise walks only problem/solution, so that shape
+ * would also be unreachable. It does not occur in either in-scope book: the
+ * corpus reconciles exactly (1149 = 952 + 197, no slack for an uncounted
+ * case), so adding 'exercise' here has nothing to validate it against and
+ * would risk moving a pinned number for a case that has never been observed.
+ * If it ever appears, add it and expect tools/__tests__/alt-coverage-corpus.test.js
+ * to move.
+ */
+const ALT_BLIND_DIRECT_PARENTS = new Set(['example', 'problem', 'solution', 'note']);
+
+/** True if `el` has an ancestor of the given localName, up to <content>. */
+function hasAncestor(el, localName) {
+  let n = el.parentNode;
+  while (n && n.nodeType === 1 && n.localName !== 'content') {
+    if (n.localName === localName) return true;
+    n = n.parentNode;
+  }
+  return false;
+}
+
+/**
+ * The non-empty alt a <media> carries, on itself or on its child <image>.
+ *
+ * Mirrors the extractor's capture paths exactly, and no more: processFigure,
+ * the standalone-media branch of processTopLevelContent, and
+ * extractInlineText's inline-media capture all compute
+ * `altText = mediaAttrs.alt || imageAttrs.alt || ''` — none of the three ever
+ * reads an <iframe> child's alt. So this predicate must not read it either:
+ * doing so would count a media whose only alt lives on an <iframe> as
+ * reachable, when no capture path emits anything for it — a false E5 halt.
+ */
+function mediaAlt(media) {
+  const own = media.getAttribute('alt');
+  if (own && own.trim()) return own;
+  for (let i = 0; i < media.childNodes.length; i++) {
+    const c = media.childNodes[i];
+    if (c.nodeType !== 1) continue;
+    if (c.localName !== 'image') continue;
+    const a = c.getAttribute('alt');
+    if (a && a.trim()) return a;
+  }
+  return null;
+}
+
+/**
+ * Split a module's alt-bearing <media> elements into the set `cnxml-extract` is
+ * designed to reach and the set it structurally cannot.
+ *
+ * ⚠️ WHY THIS SPLIT EXISTS AT ALL. §C81 put figure alt into the pipeline but
+ * reaches ~82% of the corpus's alt attributes: 197 of chemistry's 1,149 and 32 of
+ * organic's 132 sit in four positions no walk visits, for any content type. That
+ * is a PRE-EXISTING extraction-coverage defect, not a §C81 regression. Asserting
+ * plain source==emitted equality would fail on ~17–24% of attributes, which by the
+ * battery's own "base rate over ~5% cannot be blocking" rule disqualifies the check.
+ * So the gate is on `reachable`, and `unreachable` is REPORTED — pinned by
+ * tools/__tests__/alt-coverage-corpus.test.js so any change in it is visible.
+ *
+ * Whether to extend extraction to those four positions is undecided and tracked in
+ * the register (§C81), not here.
+ *
+ * @param {Element|null} content the module's <content> element
+ * @returns {{reachable: number, unreachable: number, unreachableByReason: Record<string, number>}}
+ */
+export function altReachability(content) {
+  const out = { reachable: 0, unreachable: 0, unreachableByReason: {} };
+  if (!content) return out;
+  const media = content.getElementsByTagName('media');
+  for (let i = 0; i < media.length; i++) {
+    const el = media[i];
+    if (!mediaAlt(el)) continue;
+
+    const inFigure = hasAncestor(el, 'figure');
+    let reason = null;
+    if (!inFigure && hasAncestor(el, 'entry')) {
+      reason = 'entry-not-in-figure';
+    } else if (!inFigure) {
+      const parent = el.parentNode;
+      const pName = parent && parent.nodeType === 1 ? parent.localName : null;
+      if (pName && ALT_BLIND_DIRECT_PARENTS.has(pName)) reason = `bare-media-in-${pName}`;
+    }
+
+    if (reason) {
+      out.unreachable++;
+      out.unreachableByReason[reason] = (out.unreachableByReason[reason] || 0) + 1;
+    } else {
+      out.reachable++;
+    }
+  }
+  return out;
+}
+
+/**
+ * E5 — alt coverage. Emits three numbers, always, and gates on one.
+ *
+ *   reached   how many alt segments the extractor actually emitted
+ *   expected  how many alt attributes sit in positions it is designed to reach
+ *   unreached how many sit in the four blind positions (reported, never a halt)
+ *
+ * Equality, not >=: the over-emission direction is the duplicate-alt defect
+ * §C81 Task 10 closed, and it must not be allowed to reopen silently.
+ *
+ * `unreached` is reported even on a figure-less module so a pass can be told
+ * apart from a vacuous one (§C60: a check reported `Total findings: 0` while
+ * reading zero files).
+ *
+ * @param {Element|null} content
+ * @param {string} segText the module's 02-for-mt segment file text
+ * @returns {{reached: number, expected: number, unreached: number, unreachableByReason: Record<string, number>, ok: boolean}}
+ */
+export function checkAltCoverage(content, segText) {
+  const { reachable, unreachable, unreachableByReason } = altReachability(content);
+  // Count raw marker OCCURRENCES, not deduped parseSegmentsMap keys. A same-id
+  // duplicate marker — the §C81 Rule-1 majority shape (~145 of 167 merges) —
+  // collapses to one Map key, which would silently hide the exact
+  // over-emission this check exists to catch. Same split/match idiom as
+  // checkDuplicateSegIds above, for the same reason: parseSegmentsMap's
+  // 'first' dedup is a deliberate RUNTIME tolerance, not something a
+  // pre-freeze gate should inherit.
+  let reached = 0;
+  for (const part of String(segText || '').split(/(?=<!--\s*SEG:)/)) {
+    const m = part.match(/<!--\s*SEG:([^\s]+?)\s*-->/);
+    if (m && String(m[1]).split(':')[1] === 'alt') reached++;
+  }
+  return {
+    reached,
+    expected: reachable,
+    unreached: unreachable,
+    unreachableByReason,
+    ok: reached === reachable,
+  };
+}
+
 /** Run all v1 checks on one module's source CNXML + segment file text. */
 export function analyzeModule(cnxmlText, segText) {
   const { content } = parseModuleDoc(cnxmlText);
   const listFindings = checkLists(content, emittedElementIds(segText));
   const dupFindings = checkDuplicateSegIds(content, segText);
+  const altFindings = checkAltCoverage(content, segText);
   const realDups = dupFindings.rawDup.filter((d) => d.kind === 'real');
   const hasFindings =
     listFindings.length > 0 || dupFindings.sourceDup.length > 0 || realDups.length > 0;
-  return { listFindings, dupFindings, hasFindings };
+  // ⚠️ altFindings is REPORTED, not folded into hasFindings. verify-extraction-coverage.js
+  // exits on hasFindings, and every module in the tree is pre-re-extract today — zero alt
+  // segments exist corpus-wide — so folding it in turns the existing gate red for all 1,192
+  // modules the moment this lands. Plan C's driver reads altFindings.ok directly as its own
+  // E5 gate, after the §C81 re-extract. Do not widen this without re-extracting first.
+  return { listFindings, dupFindings, altFindings, hasFindings };
 }

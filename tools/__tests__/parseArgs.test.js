@@ -5,6 +5,7 @@ import {
   CHAPTER_OPTION,
   MODULE_OPTION,
   requireBook,
+  chapterProvided,
 } from '../lib/parseArgs.js';
 
 describe('parseArgs', () => {
@@ -198,5 +199,86 @@ describe('requireBook', () => {
   it('passes for an existing book directory', () => {
     expect(() => requireBook({ book: 'efnafraedi-2e', help: false })).not.toThrow();
     expect(exitSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('chapterProvided — chapter 0 is a real chapter, not a missing argument', () => {
+  it('returns true for chapter 0', () => {
+    expect(chapterProvided({ chapter: 0 })).toBe(true);
+  });
+
+  it('returns false when no chapter was supplied', () => {
+    expect(chapterProvided({ chapter: null })).toBe(false);
+  });
+
+  it('returns true for appendices', () => {
+    expect(chapterProvided({ chapter: 'appendices' })).toBe(true);
+  });
+
+  it('returns false for an unparseable chapter', () => {
+    // parseArgs' CHAPTER_OPTION.parse runs parseInt, so `--chapter abc` is NaN.
+    expect(chapterProvided({ chapter: NaN })).toBe(false);
+  });
+
+  it('returns true for an ordinary chapter', () => {
+    expect(chapterProvided({ chapter: 7 })).toBe(true);
+  });
+});
+
+describe('--flag=value — the GNU spelling, which used to be silently dropped', () => {
+  // 🔴 WHY THIS MATTERS BEYOND ERGONOMICS. `flagMap.get(arg)` was an EXACT match, so
+  // `--module=m68710` matched no flag and fell into parseArgs' documented
+  // silently-drops-unknown-flags path. Measured 2026-08-16 on the shipped tools:
+  //
+  //   cnxml-fidelity-check --module m99999   -> Checked: 0 modules, EXIT 2   (correct)
+  //   cnxml-fidelity-check --module=m99999   -> Checked: 7 modules, EXIT 0   (false GREEN)
+  //
+  // §C82's Plan C driver builds these arguments programmatically, and `--flag=value`
+  // is what an execFile-style builder produces routinely. A per-module gate that
+  // silently widens to a whole chapter and exits 0 is the exact failure the
+  // zero-examined guards were added to close — walked past by a spelling.
+  //
+  // Fixing it HERE rather than in each guard closes it for every tool at once:
+  // scan-residue, cnxml-render-fidelity-check and validate-chapter shared the hole.
+
+  it('parses --module=m68710 as a value, not as an unknown flag', () => {
+    const r = parseArgs(['--module=m68710'], [MODULE_OPTION]);
+    expect(r.module).toBe('m68710');
+  });
+
+  it('parses --chapter=0 as the number 0 — chapter 0 is a real chapter', () => {
+    // Pairs with the chapterProvided suite below: the equals form must not
+    // reintroduce the falsy-chapter bug that §C82 Plan A Task 1 fixed at four sites.
+    const r = parseArgs(['--chapter=0'], [CHAPTER_OPTION]);
+    expect(r.chapter).toBe(0);
+    expect(chapterProvided(r)).toBe(true);
+  });
+
+  it('keeps a value that itself contains "=" intact', () => {
+    // Split on the FIRST '=' only — a naive split('=') would truncate to 'a'.
+    //
+    // ⚠️ Uses a PLAIN option, deliberately. The first version of this test used
+    // BOOK_OPTION and failed — because BOOK_OPTION.parse validates the slug pattern
+    // and correctly rejects 'a=b' with process.exit(1). That failure was the
+    // validator doing its job, not the splitter dropping characters, and reading it
+    // as a splitter bug would have "fixed" working code. Separate the two concerns:
+    // this asserts the SPLIT, and the slug rule is tested on its own elsewhere.
+    const PLAIN = { name: 'label', flags: ['--label'], type: 'string' };
+    const r = parseArgs(['--label=a=b'], [PLAIN]);
+    expect(r.label).toBe('a=b');
+  });
+
+  it('still treats a bare --module (no value, no equals) as absent', () => {
+    // The bare-flag guards in cnxml-fidelity-check / cnxml-linguistic-check key on
+    // this staying falsy. Supporting `=` must not accidentally make it truthy.
+    const r = parseArgs(['--module'], [MODULE_OPTION]);
+    expect(r.module).toBeNull();
+  });
+
+  it('treats --module= (equals, empty value) as absent rather than as an empty id', () => {
+    // An empty id would match no module and, before the §C82 guards, exit 0 having
+    // examined nothing. Absent is the honest reading and routes to the bare-flag guard.
+    const r = parseArgs(['--module='], [MODULE_OPTION]);
+    expect(r.module).toBeNull();
   });
 });
