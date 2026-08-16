@@ -1,30 +1,19 @@
-<!-- ⚠️ FROZEN SNAPSHOT — banner-dated 2026-08-16, taken at branch HEAD `b83e382d`.
-     Per CLAUDE.md § One source of truth this is EVIDENCE, never status. -->
+<!-- ⚠️ FROZEN SNAPSHOT of the SDD execution ledger — RE-SNAPSHOT 2026-08-16 at branch close,
+     deliberately and in full, per the previous banner's own instruction ("do not update it
+     incrementally; re-snapshot deliberately"). The prior snapshot was taken at `8a067e31`,
+     before Task 9's review, the blind-pair whole-branch review, the fix wave and the register
+     update — and it still named the media defect §C84, a number that was already taken.
 
-# §C82 Plan A — execution ledger (frozen snapshot)
+     This exists because `.superpowers/` is gitignored and does not survive `git clean -fdx`.
+     It is EVIDENCE, not status: if it and the live ledger disagree, THE LIVE ONE WINS, and
+     the active register outranks both on anything that is open work. -->
 
-> **⚠️ READ THIS BANNER BEFORE THE CONTENTS.**
->
-> **This is a disaster-recovery copy, not the live ledger.** The live one is
-> `.superpowers/sdd/2026-08-15-c82-plan-a-loop-prerequisites/progress.md`, which is
-> gitignored (`.gitignore:104`) and therefore does not survive `git clean -fdx`. This copy was
-> committed on the user's instruction so the record survives that.
->
-> **If this copy and the live ledger disagree, THE LIVE ONE WINS** — same rule this project
-> applies to every frozen doc. **Do not update this file incrementally**; a second, drifting
-> copy of "what is next" is precisely what § *One source of truth* forbids, and it is the
-> failure this whole branch kept catching in other documents. Re-snapshot it deliberately, or
-> delete it once the branch is merged and git history is the record.
->
-> **Its "⏸️ STATE AT HANDOFF" block, at the bottom, was accurate at `b83e382d` (2026-08-16T11:50:57Z).**
-> Anything after that commit is not reflected here.
->
-> The companion draft it references is committed beside it as
-> [`2026-08-15-c82-plan-a-register-entry-draft.md`](2026-08-15-c82-plan-a-register-entry-draft.md).
 
----
-
-# SDD ledger — plan: docs/superpowers/plans/2026-08-15-c82-plan-a-loop-prerequisites.md
+> **This is the LIVE ledger.** A frozen copy was committed to the branch at `680afd31` as
+> `docs/superpowers/plans/2026-08-15-c82-plan-a-execution-ledger.md`, because this directory is
+> gitignored and does not survive `git clean -fdx`. **If the two disagree, THIS one wins.**
+> The committed copy is a disaster-recovery snapshot taken at HEAD `8a067e31` — do not update it
+> incrementally; re-snapshot deliberately, or delete it once the branch merges.
 
 Spec (binding authority): `docs/superpowers/specs/2026-08-13-gated-per-module-remt-loop-design.md`
 + `docs/superpowers/specs/2026-08-13-remt-check-battery.md` — both read.
@@ -69,14 +58,14 @@ tools/__tests__/inject-roundtrip-corpus.test.js
 ### To resume Task 9
 
 1. Confirm the three files are present (restore from the backup if not).
-2. Re-dispatch an implementer with `.superpowers/sdd/2026-08-15-c82-plan-a-loop-prerequisites/task-9-brief.md`, telling it the files are an **unverified draft** and that it must run every verification from scratch — and must report a step it cannot run retroactively as *not run*, never imply it ran.
+2. Re-dispatch an implementer with `<workspace>/task-9-brief.md`, telling it the files are an **unverified draft** and that it must run every verification from scratch — and must report a step it cannot run retroactively as *not run*, never imply it ran.
 3. The load-bearing step is the brief's **Step 6 discrimination check**: `git checkout 07167ac7 -- tools/cnxml-extract.js`, run the corpus test, confirm the `regression fixtures` case goes **red**, restore, prove byte-identical.
    ⚠️ **That check stages `tools/cnxml-extract.js`.** If you find it staged-modified, check its CONTENT before panicking — on 2026-08-16 it was a stale index entry with content identical to HEAD, cleared with `git reset HEAD -- tools/cnxml-extract.js`. If the content really is `07167ac7`'s, restore it immediately: that is the BROKEN extractor.
 4. Then: task review → fix loop → **final whole-branch review** (most capable model, `review-package` over `6f8fe867..HEAD`) → register update → `superpowers:finishing-a-development-branch`.
 
 ### Still owed after Task 9
 
-- **The register update** (`docs/plans/2026-07-21-post-item17-followup-campaign.md`). A full draft is ready at `docs/superpowers/plans/2026-08-15-c82-plan-a-register-entry-draft.md` — new items **§C84** (inject drops/duplicates whole `<media>` elements in organic; `m00032` is IN §C80 scope) and **§C85** (`validate-chapter` is chapter-scoped; the battery spec miscategorised it), plus three §C82 amendments. **Not yet applied.**
+- **The register update** (`docs/plans/2026-07-21-post-item17-followup-campaign.md`). A full draft is ready at `<workspace>/register-entry-draft.md` — new items **§C84** (inject drops/duplicates whole `<media>` elements in organic; `m00032` is IN §C80 scope) and **§C85** (`validate-chapter` is chapter-scoped; the battery spec miscategorised it), plus three §C82 amendments. **Not yet applied.** ⚠️ **SUPERSEDED — the numbers here are WRONG (§C84 was taken) and the draft is DELETED. Applied as §C85/§C86/§C87; see the handoff block at the bottom.**
 - **The deferred-minor list** further down this file — hand it to the final whole-branch review to triage.
 - **A deploy of `main` is owed to the user**, unrelated to this branch and pre-existing (see the campaign register's RESUME block).
 
@@ -335,7 +324,7 @@ improvement, and it is now a *specified* check rather than a measure-and-see.
 eligible to block**. That is Plan B's call to make; recorded here as its input.
 
 ⚠️ Amendments E and F are **HELD** per Ruling 8 — `impl-task23` is live. Apply before
-dispatching Task 7. Prototype kept at `.superpowers/sdd/2026-08-15-c82-plan-a-loop-prerequisites/e2probe.mjs` (gitignored).
+dispatching Task 7. Prototype kept at `<workspace>/e2probe.mjs` (gitignored).
 
 ---
 
@@ -423,7 +412,7 @@ surfaces.
 executable. Not yet run — it requires checking out an old `tools/cnxml-extract.js`, deferred
 until no implementer is live (Ruling 8).
 
-⚠️ Amendments G and H **HELD** — `impl-task4` is live. Prototypes at `.superpowers/sdd/2026-08-15-c82-plan-a-loop-prerequisites/rtprobe.mjs`,
+⚠️ Amendments G and H **HELD** — `impl-task4` is live. Prototypes at `<workspace>/rtprobe.mjs`,
 `rt2.mjs`, `rt3.mjs` (gitignored).
 
 ---
@@ -1032,15 +1021,54 @@ mutates nothing.
 **HEAD `8a067e31` · 26 commits · tracked tree CLEAN · nothing pushed (deliberate).**
 
 Still owed, in order:
-1. **Task 9's task review** (+ any fix loop). Package: `review-package <plan> 3d753df7 8a067e31`.
+1. ✅ **DONE 2026-08-16 — Task 9's task review ran and its fix round landed** (`0acd0859`).
+   See "Task 9 review + fix round" below.
 2. **Final whole-branch review** on the most capable model — `review-package <plan> 6f8fe867 HEAD`
    — and point it at the deferred-minor list below.
 3. **ONE fix wave** for its findings, then one scoped re-review.
-4. **Register update** — draft ready at `docs/superpowers/plans/2026-08-15-c82-plan-a-register-entry-draft.md`: new items **§C84**
-   (inject drops/duplicates whole `<media>` in organic; `m00032` is IN §C80 scope) and **§C85**
-   (`validate-chapter` is chapter-scoped; the battery spec miscategorised it), plus three §C82
-   amendments. NOT yet applied.
+4. ✅ **DONE 2026-08-16 — the register update is APPLIED.** **§C85** (inject drops/duplicates
+   whole `<media>` in organic; `m00032` is IN §C80 scope) · **§C86** (`validate-chapter` is
+   chapter-scoped) · **§C87** (five consolidated residual minors) are in
+   `docs/plans/2026-07-21-post-item17-followup-campaign.md`, together with §C82's three
+   amendments. **The draft file is DELETED**, per its own banner — an applied draft left beside
+   the register is exactly the two-sources-of-truth failure it warned about.
+   🔴 **RENUMBERED 2026-08-16 from §C84/§C85 — `C84` was already taken** by the glossary
+   net-value investigation, so the draft as written would have put two `C84` items in the
+   register. Caught by Task 9's review. The committed draft and the register's RESUME block
+   are both corrected; the **frozen execution-ledger copy still says C84/C85** and is left
+   alone deliberately per its own banner — re-snapshot or delete it at branch close.
 5. `superpowers:finishing-a-development-branch`.
+
+### Task 9 review + fix round (2026-08-16) — CLOSED
+
+Two independent reviewers (spec-compliance + mutation-prober), then every finding
+adversarially refuted by a separate agent. **13 raw findings → 5 survived, 8 refuted.**
+Both reviewers returned **approved-with-minors**; nothing needed reverting.
+
+Fixed in `0acd0859` (three of the four distinct survivors):
+- **`ok` was never asserted false anywhere.** A hardcoded `ok: true` — or relaxing
+  `rawAlt === outAlt` to `<=` — passed every assertion in both files. `ok` is what the
+  §C82 loop gates on. Now pinned in both directions. **Verified against the broken code:**
+  hardcoded `true` now fails 3 cases, `<=` fails 2 (the latter catching organic's
+  DUPLICATED media, the exact scenario the finding described).
+- **The `m42296` "residual defect" comment was backwards** — `countAlt` counts `alt=`
+  inside XML comments; live markup round-trips 22→22 clean. `countAlt` deliberately NOT
+  changed: censused all six books, commented-out alt exists only in `edlisfraedi-2e`
+  (4 modules) and is **0/149 chemistry, 0/342 organic** — zero inside §C80's scope.
+- **The docstring's "pure structural check" overclaim.** It counts attributes, not content;
+  deleting every `:alt:` segment leaves all 8 assertions green because `readAlt` falls back
+  to the extraction-captured English. Boundary now stated, and carried into the register draft.
+
+The fourth survivor was the §C84 id collision → item 4 above.
+
+⚠️ **Process note for the next campaign, measured:** the box is a WSL2 VM capped at
+**10 GB** by `.wslconfig`, and one root `npm test` costs ~310 MB RSS. The 2026-08-16
+"36-minute corpus sweep" and the `pipeline-integration` hook timeout were **contention,
+not defects** — ~20 agents each running the full suite is ~8.6 GiB against a 9.7 GiB
+ceiling. This review therefore ran the suite ONCE, by the controller, and handed the
+result to the agents as evidence; agent prompts forbade `npm test` and the corpus vitest
+file outright and capped verifier fan-out at 3. Peak `available` never dropped below
+7.6 GiB across 15 agents.
 
 **Deferred minors for the final review to triage** (search this file for `minor (deferred)`):
 Task 1 ×2 · Tasks 2+3 ×2 · Task 4 ×2 (incl. the multi-chunk partial-glossary gap it flagged
@@ -1073,3 +1101,78 @@ in an unrelated pre-existing file; confirmed clean in isolation and on full re-r
 regression — but expect recurrence while this many agents share one box, and do not read such a
 flake as a branch defect without re-running in isolation first.
 
+
+---
+
+## ⚖️ WHOLE-BRANCH REVIEW — BLIND PAIR (Opus + Fable), ADJUDICATED 2026-08-16
+
+Two independent halves on the same 30 commits, same inputs, neither shown the other's findings.
+- **Opus half** `wf_6394d7b2-14e` — 7 named lenses → adversarial verify. 56 agents, **1 errored**
+  (a verifier lost its connection; its finding is UNADJUDICATED, not refuted). 48 raw → **5 survived**.
+- **Fable half** `wf_83cc80d9-6c0` — 3 open finders → Fable skeptics. 26 agents, 0 errors.
+  13 raw → **15 survived** (some findings split during refutation).
+  ✅ **OPS-LESSON-4 CHECK RUN AND CLEAN: 0/26 agents fell back; 1,256 assistant turns, ALL
+  `claude-fable-5`.** The bio-scoping recipe (forbid reading `liffraedi-2e`/`orverufraedi`
+  content, supply measured facts instead) held — against 53% fallback on RUN 5 and ~100% on
+  RUN 6. This is the first fully-clean Fable run on a branch touching this corpus.
+
+### 🔴 THE PAIR WAS DECISIVE, AND THE DISAGREEMENT MATTERED MORE THAN THE AGREEMENT
+
+**Each half found a CRITICAL the other missed entirely, and the controller reproduced both.**
+
+1. **[CRITICAL · Fable only] `run.usage` persists as the string `"0[object Object]"`.**
+   `api-translate.js:1270` does `totalUsage += result.usage || 0` starting from `0`, but the
+   client returns an **object** — `malstadur-api.js` documents `usage: object` in three JSDoc
+   sites and `record()` reads `usage.units`/`usage.cost`. `0 + {}` is string concatenation.
+   Reproduced: 1 chunk → `"0[object Object]"`; 2 chunks → `"0[object Object][object Object]"`;
+   serializes into the sidecar verbatim. **Why 4,733 green tests missed it: the two test files
+   disagree about the contract.** `malstadur-api.test.js` correctly stubs `usage: {}`; every
+   test that exercises `translateModule` stubs a NUMBER (`usage: 1`, `text.length`, `1200`).
+   The suite validates the producer against reality and the consumer against a fiction, so the
+   seam between them is untested by construction. Per-module API spend exists nowhere else and
+   is unrecoverable after process exit.
+
+2. **[CRITICAL · Opus only] E2 reports a false swallow for every marker body holding a
+   character reference.** `norm()` collapses whitespace but does NOT decode entities, while the
+   source side decodes via DOM textContent. **Controller-reproduced on FRESH extraction (which
+   is exactly what the loop's step 2 does): 342 organic modules → 6 firing, 10 findings** —
+   `m00226` ×4, `m00109` ×2, `m00111`, `m00204`, `m00255`, `m00329`; bodies are
+   `&#603;`, `&#43;`, `&#8722;`, `&#x2212;`, `&#8211;`. E2 is specified as BLOCKING on a 1.3%
+   base rate; these are false halts on a paid run.
+
+### 🔴 WHERE THE HALVES DISAGREED, FABLE WAS RIGHT AND OPUS'S VERIFIERS WERE WRONG
+
+Opus refuted this **three times** across two lenses; Fable found it twice independently and it
+survived Fable's refutation. **Controller settled it by execution:**
+
+| invocation | modules examined | exit |
+|---|---|---|
+| real chapter (positive control) | 7 | 0 |
+| `cnxml-fidelity-check --module m99999` | **0** | **0** |
+| `cnxml-linguistic-check --module m99999` | **0** | **0** |
+| bare `--module` (no value) | **7 — the whole chapter** | **0** |
+
+3. **[IMPORTANT] R1/R5 exit 0 having examined ZERO modules.** Plan C would record a per-module
+   GREEN for a module never opened — the project's own *an absence is not an answer* rule.
+   `scan-residue` got exactly this matched-nothing guard in Task 8; these two did not.
+4. **[IMPORTANT] Bare `--module` silently widens both to a whole-chapter scan** — a per-module
+   gate measured on the wrong unit, exit 0 either way.
+
+▶ **META-LESSON: an aggressive refute-by-default verifier kills true findings too.** Opus's
+half refuted 43 of 48. Refutation raises precision and LOWERS recall, and nothing in the output
+distinguishes "killed because false" from "killed because the verifier was wrong". **A refuted
+finding is a claim about the verifier as much as about the code — spot-check the kills, not just
+the survivors.** Here, three kills were wrong about the same live defect.
+
+### Documentation/accuracy findings (both halves, agreeing)
+
+5. **E2's numbers exist in THREE conflicting versions** — register RESUME says 3/16,991, the
+   §C85 draft says 2/16,630, the shipped test pins **3/17,051**. The draft is destined to be
+   applied verbatim as Plan B's base-rate input.
+6. **The register RESUME is stale about its own branch** — says HEAD `8a067e31`/26 commits and
+   "next is Task 9's review"; actual is `a8ceebe5`/30 with that review closed.
+7. **"(61/61) fully reachable" is false in three files** — measured 59/61.
+8. **§C86 says "twelve checks"** — `validate-chapter` has 16 validators and runs all of them.
+9. **§C82 amendment labels character indices as "byte" offsets** (m68768 glossary).
+10. **The frozen battery spec carries execution-falsified claims with no banner-dated amendment**
+    — it is binding authority for the unwritten Plans B/C.
