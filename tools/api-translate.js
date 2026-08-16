@@ -40,6 +40,7 @@ import {
 import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
+import { buildRunRecord, glossaryContentHash } from './lib/run-record.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 
 // ─── Configuration ──────────────────────────────────────────────────
@@ -1163,21 +1164,17 @@ export async function translateModule(
   }
   fs.writeFileSync(outputPath, output, 'utf8');
 
-  // B2: stamp producer provenance next to the segment file.
-  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), { tool: 'api-translate' });
-
-  // Copy -links.json if it exists
-  const linksFilename = path.basename(inputPath).replace('-segments.en.md', '-segments-links.json');
-  const linksSource = path.join(path.dirname(inputPath), linksFilename);
-  if (fs.existsSync(linksSource)) {
-    const linksDest = path.join(outputDir, linksFilename);
-    fs.copyFileSync(linksSource, linksDest);
-  }
-
   // B3: surface any inline bracket-marker loss/add at the producer, per module. This
   // is a module-level aggregate: a drop in one segment and a spurious add of the same
   // type in another cancel to zero and won't be reported — acceptable for a non-gating
   // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
+  // §C82: the per-segment, all-types instrument that DOES catch the cancelling case
+  // is bracketMarkerDeltaBySegment; the loop's A3 gate uses that one, not this.
+  //
+  // MOVED ABOVE the provenance write (§C82) so the run record can carry it. The
+  // write must stay as close to fs.writeFileSync as possible: resolveRestorePolicy
+  // THROWS when a segment file exists with no sidecar, so every line between the
+  // two widens a real failure window.
   const bracketDelta = bracketMarkerDelta(input, output);
   const bracketNote = formatBracketDelta(moduleId, bracketDelta);
   if (bracketNote) console.error(`  Note: ${bracketNote}`);
@@ -1190,6 +1187,34 @@ export async function translateModule(
     console.error(
       `  Note: ${moduleId}: removed ${unwrapped.length} invented glossary marker(s) — ${types}`
     );
+  }
+
+  // B2: stamp producer provenance next to the segment file.
+  // §C82 prerequisite 2: it now also carries the run record. Without this the
+  // in-pipeline repairs erase their own evidence — the counters below exist
+  // nowhere else once this function returns.
+  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), {
+    tool: 'api-translate',
+    run: buildRunRecord({
+      chars: input.length,
+      usage: totalUsage,
+      estimatedIsk: estimateIsk(input.length),
+      markersNormalized,
+      mismatches,
+      bracketDelta,
+      unwrapped,
+      glossaryArm: glossary ? 'glossary' : 'no-glossary',
+      glossaryHash: glossaryContentHash(glossary),
+      glossaryTermCount: glossary?.terms?.length ?? null,
+    }),
+  });
+
+  // Copy -links.json if it exists
+  const linksFilename = path.basename(inputPath).replace('-segments.en.md', '-segments-links.json');
+  const linksSource = path.join(path.dirname(inputPath), linksFilename);
+  if (fs.existsSync(linksSource)) {
+    const linksDest = path.join(outputDir, linksFilename);
+    fs.copyFileSync(linksSource, linksDest);
   }
 
   return {
