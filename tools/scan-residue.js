@@ -82,10 +82,12 @@ function main() {
 
   const modules = {};
   let modulesMissingEn = 0;
+  let modulesExamined = 0;
   for (const dir of chapterDirs(mtOutRoot, args.chapter)) {
     const isDir = path.join(mtOutRoot, dir);
     if (!fs.existsSync(isDir)) continue;
     for (const { moduleId, file } of collectResidueFiles(isDir)) {
+      modulesExamined++;
       const enFile = path.join(forMtRoot, dir, `${moduleId}-segments.en.md`);
       if (!fs.existsSync(enFile)) {
         modulesMissingEn++;
@@ -114,6 +116,13 @@ function main() {
     ratioWarnings: ids.reduce((s, m) => s + modules[m].warnings.length, 0),
     toleratedResidues: ids.reduce((s, m) => s + (modules[m].tolerated || []).length, 0),
     modulesMissingEn,
+    // §C82/§C60: every check emits the number of units it examined. Counted at
+    // the {moduleId, file} pair actually opened for comparison — NOT
+    // `ids.length` (modules with a residue-related entry in `modules`), which
+    // undercounts: a clean module with its EN sibling present never gets a
+    // `modules` entry at all, so on a clean chapter that count would be 0
+    // regardless of whether 1 module or the whole chapter was scanned.
+    modulesExamined,
   };
 
   if (args.json) {
