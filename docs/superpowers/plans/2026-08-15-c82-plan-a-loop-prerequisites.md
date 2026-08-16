@@ -1814,6 +1814,24 @@ describe('checkBracketBodies — anchored to source, not to a byte pattern', () 
     expect(checkBracketBodies(src, seg)).toMatchObject({ examined: 1, ok: true });
   });
 
+  it('examines EVERY occurrence of a duplicated seg-id, not just the first', () => {
+    // ⚠️ REGRESSION GUARD. An earlier draft iterated `parseSegmentsMap`, which
+    // defaults to duplicates:'first'. Measured on the real corpus, that missed a
+    // genuine swallow: m68710 carries the SAME bad body in two occurrences and the
+    // deduped form reported only one. This is the same defect class that had to be
+    // fixed in checkAltCoverage (Task 5) and bracketMarkerDeltaBySegment (Task 6) —
+    // three checks in one plan, all from the same helper's default.
+    const src = doc('<para id="p1"><emphasis effect="italics">atom</emphasis> is small.</para>');
+    const seg =
+      '<!-- SEG:m1:para:p1 -->\n[[i:atom]] is small.\n\n' +
+      '<!-- SEG:m1:para:p1 -->\n[[i:atom is small]]\n';
+    const r = checkBracketBodies(src, seg);
+    expect(r.examined).toBe(2); // one marker per occurrence, not one total
+    expect(r.findings).toEqual([
+      expect.objectContaining({ segId: 'm1:para:p1', body: 'atom is small' }),
+    ]);
+  });
+
   it('exports the type -> source element map so drift is visible', () => {
     expect(BODY_SOURCE_ELEMENTS.i).toContain('emphasis');
     expect(BODY_SOURCE_ELEMENTS.sub).toContain('sub');
@@ -1853,9 +1871,6 @@ Create `tools/lib/bracket-body-check.js`:
  * Design: docs/superpowers/specs/2026-08-13-remt-check-battery.md §5 item 10.
  */
 import { parseModuleDoc } from './extraction-coverage.js';
-import segMarkers from './seg-markers.cjs';
-
-const { parseSegmentsMap } = segMarkers;
 
 /**
  * Bracket type -> the source element localNames whose text can legitimately
@@ -1922,7 +1937,20 @@ export function checkBracketBodies(cnxmlText, segText) {
   const findings = [];
   let examined = 0;
 
-  for (const [segId, text] of parseSegmentsMap(String(segText || ''))) {
+  // ⚠️ RAW OCCURRENCES, NOT `parseSegmentsMap`. That helper defaults to
+  // `duplicates: 'first'`, so every marker in a NON-FIRST occurrence of a
+  // duplicated seg-id would never be examined. Measured on chemistry: the
+  // deduped form examined 16,630 markers and found 2 defects; raw iteration
+  // examines 16,991 (+361) and finds 3 — it was MISSING A REAL SWALLOW.
+  // Corroborated independently: the battery spec's own fixture note reads
+  // `m68710:716,722`, naming TWO locations for that swallow, and only raw
+  // iteration reports both. Same idiom and same reason as
+  // `checkDuplicateSegIds` in tools/lib/extraction-coverage.js.
+  for (const part of String(segText || '').split(/(?=<!--\s*SEG:)/)) {
+    const marker = part.match(/<!--\s*SEG:([^\s]+?)\s*-->/);
+    if (!marker) continue;
+    const segId = marker[1];
+    const text = part.replace(/<!--\s*SEG:[^>]*-->/, '');
     // Innermost-first: `[^\[\]|]` refuses to span a nested marker or a |payload,
     // so `[[i:e[[sub:g]]]]` yields the sub body, never a body containing brackets.
     for (const m of String(text).matchAll(/\[\[([A-Za-z]+):([^\[\]|]*)\]\]/g)) {
@@ -1992,10 +2020,14 @@ describe('E2 on live corpus fixtures', () => {
   it('m68710: catches the no-leading-space swallow the byte pattern is blind to', () => {
     const m = module_('m68710');
     expect(m, 'm68710 must exist — it is the battery SHOULD-TRIP fixture').not.toBeNull();
-    // Measured 2026-08-16: 263 markers examined, exactly 1 finding.
+    // Measured 2026-08-16 with RAW occurrence iteration: 266 markers examined,
+    // and the SAME swallow appears TWICE — in two occurrences of a duplicated
+    // seg-id. The battery spec's own fixture note says `m68710:716,722`, naming
+    // both. A `parseSegmentsMap`-based implementation reports only one of them.
     const r = checkBracketBodies(m.cnxml, m.seg);
-    expect(r.examined).toBe(263);
+    expect(r.examined).toBe(266);
     expect(r.findings).toEqual([
+      expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
       expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
     ]);
   });
@@ -2003,9 +2035,9 @@ describe('E2 on live corpus fixtures', () => {
   it('m68733: catches the self-closing-emphasis swallow', () => {
     const m = module_('m68733');
     expect(m, 'm68733 must exist — it is the second SHOULD-TRIP fixture').not.toBeNull();
-    // Measured 2026-08-16: 345 markers examined, exactly 1 finding.
+    // Measured 2026-08-16 (raw occurrence iteration): 350 markers examined, 1 finding.
     const r = checkBracketBodies(m.cnxml, m.seg);
-    expect(r.examined).toBe(345);
+    expect(r.examined).toBe(350);
     expect(r.findings).toEqual([expect.objectContaining({ type: 'i', body: ' 3d;' })]);
   });
 
@@ -2016,23 +2048,26 @@ describe('E2 on live corpus fixtures', () => {
     // <content> instead of the whole document makes it fire twice, on
     // [[i:melting point]] and [[i:freezing point]] — both sourced from <emphasis>
     // inside a <glossary><definition><meaning>, which lives OUTSIDE <content>.
-    // Measured 2026-08-16: 126 markers examined, 0 findings.
+    // Measured 2026-08-16 (raw occurrence iteration): 130 markers examined, 0 findings.
     const r = checkBracketBodies(m.cnxml, m.seg);
-    expect(r.examined).toBe(126);
+    expect(r.examined).toBe(130);
     expect(r.findings).toEqual([]);
   });
 
   it('fires on exactly two chemistry modules corpus-wide — a 1.3% base rate', () => {
-    // Measured 2026-08-16 across all 149 chemistry modules: 2 findings out of
-    // 16,630 markers examined (0.01%), in exactly the two modules above. 147 clean
-    // controls. Under the battery's "base rate over ~5% cannot be blocking" bar,
-    // so E2 is eligible to gate — that call belongs to Plan B.
+    // Measured 2026-08-16 across all 149 chemistry modules with RAW occurrence
+    // iteration: **3 findings** out of **16,991** markers examined (0.02%), in
+    // exactly the two modules above (m68710 twice, m68733 once). 147 clean
+    // controls. The module base rate is 1.3% either way — under the battery's
+    // "base rate over ~5% cannot be blocking" bar — so E2 is eligible to gate;
+    // that call belongs to Plan B.
     const firing = chemistryPairs()
       .map((m) => ({ id: m.id, r: checkBracketBodies(m.cnxml, m.seg) }))
       .filter((x) => !x.r.ok);
 
     expect(firing.map((x) => x.id).sort()).toEqual(['m68710', 'm68733']);
-    expect(firing.reduce((s, x) => s + x.r.findings.length, 0)).toBe(2);
+    expect(firing.reduce((s, x) => s + x.r.findings.length, 0)).toBe(3);
+    expect(firing.reduce((s, x) => s + x.r.examined, 0)).toBeGreaterThan(0);
   }, 120_000);
 });
 ```
@@ -2045,16 +2080,23 @@ Run: `npx vitest run tools/__tests__/bracket-body-corpus.test.js`
 2026-08-16, before the plan was handed over.** The expected values in the test are
 measurements from this tree, not predictions:
 
-| | `<content>`-scoped (the plan's FIRST draft — wrong) | whole-document (as specified above) |
-|---|---|---|
-| firing modules | 15 / 149 = **10.1%** | **2 / 149 = 1.3%** |
-| findings / markers examined | 24 / 16,630 | **2 / 16,630 = 0.01%** |
-| which modules | 15, mostly false positives | **`m68710`, `m68733`** |
-| `m68768` (MUST-NOT-TRIP) | ❌ fired twice | ✅ **clean, 126 examined** |
+**Two independent defects were found in this plan's own first draft of E2 and both are already corrected above** — read the table before assuming a number is a prediction:
 
-The two firing modules are exactly the battery's two named SHOULD-TRIP fixtures. **2 true
-positives, 147 clean controls, 0 false positives** — against an instrument it replaces that
-ran at 89% false positives by occurrence and could not see `m68710` at all.
+| | draft 1: `<content>`-scoped | draft 2: whole-doc, `parseSegmentsMap` | **as specified above: whole-doc + raw occurrences** |
+|---|---|---|---|
+| firing modules | 15 / 149 = **10.1%** | 2 / 149 = 1.3% | **2 / 149 = 1.3%** |
+| findings | 24 | 2 | **3** |
+| markers examined | 16,630 | 16,630 | **16,991** (+361) |
+| `m68710` | fired | 263 examined, **1** finding | **266 examined, 2 findings** |
+| `m68733` | fired | 345 / 1 | **350 / 1** |
+| `m68768` (MUST-NOT-TRIP) | ❌ fired twice | ✅ 126 / 0 | ✅ **130 / 0** |
+
+- **Draft 1's bug** — scoping the source scan to `<content>` — made every glossary-sourced marker look like a swallow.
+- **Draft 2's bug** — iterating `parseSegmentsMap` — silently skipped every marker in a non-first occurrence of a duplicated seg-id, and **it was hiding a real finding**. ✅ **Corroborated independently: the battery spec's own fixture note reads `m68710:716,722`, naming TWO locations for that swallow.** A spec written from observation agrees with the corrected instrument, not the planned one.
+
+The two firing modules are exactly the battery's two named SHOULD-TRIP fixtures. **3 true
+positives across 2 modules, 147 clean controls, 0 false positives** — against an instrument it
+replaces that ran at 89% false positives by occurrence and could not see `m68710` at all.
 
 ▶ **Consequence for Plan B: at 1.3% E2 is UNDER the battery's "base rate over ~5% cannot be
 blocking" bar, so it is eligible to gate.** Record that in the commit message; it is Plan B's
