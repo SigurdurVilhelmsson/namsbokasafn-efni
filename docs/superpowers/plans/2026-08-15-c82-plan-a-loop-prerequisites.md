@@ -1532,76 +1532,106 @@ import { bracketMarkerDelta, bracketMarkerDeltaBySegment } from '../api-translat
 
 const REPO_ROOT = path.resolve(import.meta.dirname, '..', '..');
 
-/** Read a committed EN/IS pair, or null when either side is absent. */
-function pair(book, chapter, moduleId) {
-  const en = path.join(REPO_ROOT, 'books', book, '02-for-mt', chapter, `${moduleId}-segments.en.md`);
-  const is = path.join(REPO_ROOT, 'books', book, '02-mt-output', chapter, `${moduleId}-segments.is.md`);
-  if (!fs.existsSync(en) || !fs.existsSync(is)) return null;
-  return { en: fs.readFileSync(en, 'utf8'), is: fs.readFileSync(is, 'utf8') };
+/**
+ * Read a committed EN/IS pair by module id, DISCOVERING the chapter.
+ * Do not hardcode a chapter — these five modules span ch12/ch16/ch17/ch18/ch21,
+ * and an earlier draft of this plan guessed ch20 for all of them.
+ */
+function pair(book, moduleId) {
+  const forMt = path.join(REPO_ROOT, 'books', book, '02-for-mt');
+  for (const ch of fs.readdirSync(forMt)) {
+    const en = path.join(forMt, ch, `${moduleId}-segments.en.md`);
+    const is = path.join(REPO_ROOT, 'books', book, '02-mt-output', ch, `${moduleId}-segments.is.md`);
+    if (fs.existsSync(en) && fs.existsSync(is)) {
+      return { en: fs.readFileSync(en, 'utf8'), is: fs.readFileSync(is, 'utf8'), ch };
+    }
+  }
+  return null;
 }
 
 describe('A3 acceptance — the widening catches what the 14-type module aggregate misses', () => {
   it('m68823: the old instrument returns {} while MATH markers were lost', () => {
-    const p = pair('efnafraedi-2e', 'ch20', 'm68823');
+    const p = pair('efnafraedi-2e', 'm68823');
     expect(p, 'm68823 EN/IS pair must exist — it is the acceptance fixture').not.toBeNull();
 
     // The proven false negative: module-level, 14 types, sees nothing.
     expect(bracketMarkerDelta(p.en, p.is)).toEqual({});
 
-    // The new instrument sees the MATH loss.
+    // The new instrument sees the MATH loss. Measured 2026-08-16: exactly -2,
+    // over 2 of 149 segments. Asserting the value, not just the sign, so a
+    // widening that over-counts is caught too.
     const r = bracketMarkerDeltaBySegment(p.en, p.is);
-    expect(r.segmentsExamined).toBeGreaterThan(0);
-    expect(r.total.MATH).toBeLessThan(0);
+    expect(r.segmentsExamined).toBe(149);
+    expect(r.total).toEqual({ MATH: -2 });
+    expect(r.segmentsWithDelta).toBe(2);
+    expect(r.unpairedSegIds).toEqual([]);
   });
 
   it('m68791: a clean module stays clean — this is what makes the above mean anything', () => {
-    const p = pair('efnafraedi-2e', 'ch20', 'm68791');
+    const p = pair('efnafraedi-2e', 'm68791');
     expect(p, 'm68791 EN/IS pair must exist — it is the MUST-NOT-TRIP control').not.toBeNull();
 
+    // Measured 2026-08-16: 0 of 373 segments carry a delta. The largest module
+    // in the trio, so a clean result here is not a small-sample artefact.
     const r = bracketMarkerDeltaBySegment(p.en, p.is);
-    expect(r.segmentsExamined).toBeGreaterThan(0);
+    expect(r.segmentsExamined).toBe(373);
     expect(r.segmentsWithDelta).toBe(0);
+    expect(r.total).toEqual({});
     expect(r.unpairedSegIds).toEqual([]);
+  });
+
+  it('the three other known-bad modules each gain a MATH loss the old instrument missed', () => {
+    // Measured 2026-08-16. Each row: the old instrument's verdict, and the MATH
+    // delta only the widened one sees. m68819 and m68832 were NOT silent before —
+    // they reported other types — so the point here is the ADDED MATH finding,
+    // which is why each assertion names it specifically.
+    const expected = {
+      m68819: { old: { i: -2 }, math: -1 },
+      m68832: { old: { i: -13, sub: 1, sup: 1, xref: -11 }, math: -1 },
+      m68852: { old: {}, math: -2 },
+    };
+    for (const [moduleId, exp] of Object.entries(expected)) {
+      const p = pair('efnafraedi-2e', moduleId);
+      expect(p, `${moduleId} EN/IS pair must exist`).not.toBeNull();
+
+      expect(bracketMarkerDelta(p.en, p.is), `${moduleId} old instrument`).toEqual(exp.old);
+
+      const r = bracketMarkerDeltaBySegment(p.en, p.is);
+      expect(r.total.MATH, `${moduleId} MATH delta`).toBe(exp.math);
+      expect(r.unpairedSegIds, `${moduleId} unpaired`).toEqual([]);
+    }
   });
 });
 ```
 
-> **⚠️ Chapter directories:** `02-for-mt` and `02-mt-output` use the `ch`-prefixed convention (`ch20`), **not** the bare publication-track form. If a path does not resolve, confirm with `ls books/efnafraedi-2e/02-for-mt/` before changing the test.
+> **⚠️ Do not hardcode a chapter.** The `pair()` helper discovers it, because these five modules live in **ch12, ch16, ch17, ch18 and ch21** — an earlier draft of this plan assumed ch20 for all of them and every case would have failed on a missing file. `02-for-mt`/`02-mt-output` use the `ch`-prefixed convention.
 >
-> **⚠️ If either fixture is missing from the tree, STOP.** Do not delete the test or weaken it to a skip. Report which file is absent — the battery names these three modules as its acceptance trio, and a missing fixture is a finding about the corpus.
+> **⚠️ If a fixture is missing from the tree, STOP.** Do not delete the test or weaken it to a skip. Report which file is absent — the battery names these as its acceptance fixtures, and a missing one is a finding about the corpus, not about the test.
 
 - [ ] **Step 6: Run the corpus acceptance test**
 
 Run: `npx vitest run tools/__tests__/bracket-delta-corpus.test.js`
-Expected: PASS both. **The first case is the whole point** — it asserts the old instrument is blind *and* the new one is not, in one test, so it cannot pass for the wrong reason.
 
-- [ ] **Step 7: Sweep the three remaining known-bad modules**
+**✅ All three cases were verified against the live corpus on 2026-08-16, before this plan was handed over**, so the expected values are measurements, not predictions:
 
-Confirm the instrument generalises beyond the one fixture. Scratch, not committed:
+| module | ch | old instrument | new instrument (total) | segs w/ delta |
+|---|---|---|---|---|
+| `m68823` | ch17 | `{}` — **blind** | `{MATH: -2}` | 2 / 149 |
+| `m68791` | ch12 | `{}` | `{}` — **clean control** | 0 / 373 |
+| `m68819` | ch16 | `{i:-2}` | adds `MATH: -1` | 3 / 324 |
+| `m68832` | ch18 | `{i:-13, sub:1, sup:1, xref:-11}` | adds `MATH: -1` | 15 / 86 |
+| `m68852` | ch21 | `{}` — **blind** | `{MATH: -2}` | 1 / 81 |
 
-```bash
-node --input-type=module -e "
-import fs from 'node:fs';
-import { bracketMarkerDelta, bracketMarkerDeltaBySegment } from './tools/api-translate.js';
-for (const [ch, id] of [['ch20','m68823'],['ch20','m68819'],['ch20','m68832'],['ch20','m68852'],['ch20','m68791']]) {
-  const en = 'books/efnafraedi-2e/02-for-mt/' + ch + '/' + id + '-segments.en.md';
-  const is = 'books/efnafraedi-2e/02-mt-output/' + ch + '/' + id + '-segments.is.md';
-  if (!fs.existsSync(en) || !fs.existsSync(is)) { console.log(id, 'MISSING'); continue; }
-  const a = fs.readFileSync(en,'utf8'), b = fs.readFileSync(is,'utf8');
-  const r = bracketMarkerDeltaBySegment(a,b);
-  console.log(id, 'old:', JSON.stringify(bracketMarkerDelta(a,b)), '| new total:', JSON.stringify(r.total), '| segs w/ delta:', r.segmentsWithDelta, '/', r.segmentsExamined);
-}
-"
-```
+Every row reproduces the battery spec's `[M]` claim exactly (it recorded m68823 as MATH 56→54, m68819 120→119, m68832 9→8, m68852 52→50). `unpairedSegIds` was `[]` for all five, and `BRACKET_MARKER_TYPES` is 14 against `KNOWN_BRACKET_TYPES` 20 — so the widening is 14→20.
 
-Expected: `m68819`, `m68832`, `m68852` each show a negative MATH in the new instrument. Their chapter may not be `ch20` — if a module reports `MISSING`, find it with `ls books/efnafraedi-2e/02-for-mt/*/m68819-segments.en.md` and rerun. Record the output in the commit message; it is the evidence that ~1.8% figure is real.
+**The first case is the whole point** — it asserts the old instrument is blind *and* the new one is not, on the same bytes, so it cannot pass for the wrong reason. **If any measured value differs, STOP and report it** rather than relaxing the assertion: these numbers were taken from this exact tree.
 
-- [ ] **Step 8: Full suite, lint, format**
+- [ ] **Step 7: Full suite, lint, format**
 
 Run: `npm test && npm run lint && npm run format:check`
 Expected: green.
 
-- [ ] **Step 9: Commit**
+- [ ] **Step 8: Commit**
 
 ```bash
 git add tools/api-translate.js tools/__tests__/api-translate-bracket-count.test.js \
