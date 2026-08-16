@@ -1,6 +1,18 @@
-<!-- ⚠️ FROZEN SNAPSHOT — banner-dated 2026-08-16, taken at branch HEAD `b83e382d`. -->
+<!-- ⚠️ FROZEN SNAPSHOT — banner-dated 2026-08-16, taken at branch HEAD `b83e382d`, -->
+<!-- then CORRECTED 2026-08-16 by Task 9's review (renumber + one falsified row). -->
 
-# §C84 / §C85 register entries — DRAFT, not yet applied
+# §C85 / §C86 register entries — DRAFT, not yet applied
+
+> **🔴 RENUMBERED 2026-08-16 — these were drafted as §C84 / §C85 and BOTH numbers were
+> wrong.** `C84` is already taken by *the glossary net-value investigation* (register
+> line 338, P1, cross-referenced from line 477), so applying the draft as written would
+> have put **two items numbered C84** into the file that owns open-work status — and a
+> reader following "§C84" would have landed on the glossary item instead of the media
+> defect, losing the `m00032`-blocks-organic-preview dependency. `C85` was free as an
+> item but was already promised to the *second* of these two by the register's own
+> RESUME block, so both shift: **media defect → §C85 · `validate-chapter` → §C86.**
+> Found by Task 9's review; the collision was committed in three places and all are
+> corrected except the frozen execution ledger, which is re-snapshotted at branch close.
 
 > **⚠️ This is a draft of text destined for the active register**
 > (`docs/plans/2026-07-21-post-item17-followup-campaign.md`), **not a second register.**
@@ -14,9 +26,9 @@
 
 ---
 
-## New item — §C84
+## New item — §C85
 
-- **C84 · 🔴 INJECT DROPS AND DUPLICATES WHOLE `<media>` ELEMENTS IN ORGANIC — READER-VISIBLE, AND ONE IS INSIDE §C80's SCOPE** — **[CODE]** — **P1** — *found 2026-08-16 by §C82 Plan A's Task 9 round-trip check, before that check was even committed.*
+- **C85 · 🔴 INJECT DROPS AND DUPLICATES WHOLE `<media>` ELEMENTS IN ORGANIC — READER-VISIBLE, AND ONE IS INSIDE §C80's SCOPE** — **[CODE]** — **P1** — *found 2026-08-16 by §C82 Plan A's Task 9 round-trip check, before that check was even committed.*
   - 🔴 **Measured by extracting each `01-source` module and injecting its own English straight back, then counting `alt=` on both sides.** The whole `<media>` element moves — `<media>`, `<image>` and `alt` counts all shift together — so a reader sees a **missing or doubled image**, not merely absent alt text.
 
     | book | module | source media/image/alt | injected | effect | §C80 scope |
@@ -25,19 +37,23 @@
     | `lifraen-efnafraedi` | `m00046` | 4 / 4 / 4 | **5 / 5 / 5** | image **DUPLICATED** | out (book, not preview) |
     | `lifraen-efnafraedi` | `m00023` | 11 alt | 12 alt | duplicated | out |
     | `lifraen-efnafraedi` | `m00069` | 6 alt | 9 alt | duplicated ×3 | out |
-    | `edlisfraedi-2e` | `m42296` | 24 alt | **23 alt** | one alt **lost** | out (book dropped by §C80) |
+    | ~~`edlisfraedi-2e`~~ | ~~`m42296`~~ | ~~24 alt~~ | ~~**23 alt**~~ | 🔴 **WITHDRAWN — NOT A DEFECT** | out (book dropped by §C80) |
 
+  - 🔴 **THE `m42296` ROW WAS FALSIFIED 2026-08-16 BY TASK 9's OWN REVIEW — it is a counting artefact, not a lost image, and it is struck out above rather than deleted because the way it got here is the reusable part.** `countAlt` regexes raw text, so it counts `alt=` **inside XML comments**. `m42296` holds 24 alt attributes of which **2 are commented out**; its **live markup round-trips 22 → 22 clean**. Confirmed independently with an **XML DOM parse**, an instrument structurally incapable of seeing inside a comment — which is what makes it evidence rather than a second opinion. ▶ **The lesson is this register's own:** the first measurement and the check agreed with each other because they *shared the counter*, and two implementations agreeing rules out transcription error, never a shared premise.
+    - ✅ **The imprecision cannot reach the §C82 loop, and that was measured, not assumed.** Censused across all six books: commented-out alt exists **only** in `edlisfraedi-2e` (4 modules — `m42296` ×2, `m42456` ×2, `m42493` ×1, `m42531` ×1) and is **0 of 149** in chemistry and **0 of 342** in organic — zero in both books inside §C80's re-MT scope. So `countAlt` is deliberately **not** changed: stripping comments would move all five fixture pins and both discrimination vintages for no in-scope gain.
   - ✅ **`efnafraedi-2e` is CLEAN — 149 modules, 0 loss, 0 gain.** That is the negative control that makes the organic result mean something, and it means the full chemistry re-MT is not exposed to this.
+  - 🔬 **THE STRUCTURAL CAUSE OF `m00032` IS IDENTIFIED** (Task 9 review, 2026-08-16): the module's **one table `<entry>` that holds both a `<media>` and a `<para>`** is exactly the one dropped. The organic *gains* were separately confirmed as **genuine element duplication** — well-formed XML with a doubled `<image src>` — so the "reader sees a doubled image" reading is right, not an alt-only artefact.
   - 🔴 **WHY §C81's OWN VERIFICATION COULD NOT SEE THIS, and the lesson generalises past this bug.** §C81's review round 2 ran a round-trip diff over all 1,192 modules and concluded *"ZERO modules gained an alt attribute"*. That measurement compared the **base vintage against the new vintage** — it asked *"did my change alter the injected alt count?"*. This one compares **source against injected output** — *"does the output carry what the source had?"*. ▶ **A vintage-diff is structurally blind to a defect present at BOTH vintages.** This is the register's own rule (*"a diff is only a measurement if both sides are the same vintage"*) firing in the direction nobody checks: same-vintage agreement is evidence of **stability**, never of **correctness**.
   - ▶ **`m00032` must be resolved before organic's preview is re-MT'd** (§C80 ruling: organic preview in full). The other three are out of the preview but in the book; `m42296` is in a book §C80 dropped.
-  - ⚠️ **The check that found this is committed by §C82 Plan A Task 9** (`tools/lib/inject-roundtrip.js` + `tools/__tests__/inject-roundtrip-corpus.test.js`), which **pins all five** so any change is visible. It is a pin, not a fix.
+  - ⚠️ **The check that found this is committed by §C82 Plan A Task 9** (`tools/lib/inject-roundtrip.js` + `tools/__tests__/inject-roundtrip-corpus.test.js`), which **pins the four organic modules plus the `m42296` counter behaviour** so any change is visible. It is a pin, not a fix.
+  - 🔴 **AND THE CHECK HAS A COVERAGE BOUNDARY THAT §C82's GATING DESIGN MUST NOT INHERIT — IT COUNTS ATTRIBUTES, NOT CONTENT.** Measured by Task 9's review: deleting **every** `:alt:` segment from the parsed map before `buildCnxml` — 951 chemistry, 1,918 organic and all 11/19/8/8/22 in the regression fixtures — leaves **all eight committed assertions green**, because `readAlt` falls back to `alt.text` (the extraction-captured **English**) and `buildFigure` copies id-bearing figures verbatim. ▶ **So a future divergence between the alt segment ids written to `02-for-mt` and the ids `readAlt` looks up would ship ENGLISH alt text to Icelandic readers — §C81's original reader-visible symptom — while this check reports `rawAlt === outAlt` on all 491 in-scope modules.** **A green round-trip is evidence about attribute COUNT and nothing at all about attribute CONTENT.** Catching that class needs a **sentinel distinct from the source text**, which is a different instrument and is not built. The boundary is stated in the module docstring; say so wherever §C82 cites "round-trip green" as a gate.
   - *[severity: reader-visible missing/duplicated images · reader-visible: **yes** · blocks: organic preview re-MT (`m00032` only) · relates: §C80, §C81, §C82]*
 
 ---
 
-## New item — §C85
+## New item — §C86
 
-- **C85 · 📐 `validate-chapter.js` IS CHAPTER-SCOPED BY DESIGN, AND THE §C82 BATTERY SPEC PUT IT IN THE WRONG CATEGORY** — **[CODE]** — **P3** — *found 2026-08-16 during §C82 Plan A pre-flight.*
+- **C86 · 📐 `validate-chapter.js` IS CHAPTER-SCOPED BY DESIGN, AND THE §C82 BATTERY SPEC PUT IT IN THE WRONG CATEGORY** — **[CODE]** — **P3** — *found 2026-08-16 during §C82 Plan A pre-flight.*
   - The battery spec's §5 item 7 lists `validate-chapter.js` among "the four tools with no `--module`" needing a per-module wrapper. **Measured: two of its twelve checks reconcile ACROSS a chapter's modules** — `figure-numbers` (*"Figure numbers are sequential **within chapter** (no gaps)"*) and `cross-references` (*"Cross-references match existing figure/table captions"*, matched against the chapter-wide caption set). Neither is computable from one module.
   - ▶ **So honouring `--module` there would make two checks silently produce WRONG answers** — strictly worse than the silent drop `parseArgs` gives today. It belongs in the spec's existing *"chapter-only by design → Tier 4"* category, alongside `cnxml-render-fidelity-check`.
   - ✅ **Handled in Plan A Task 8**: `validate-chapter` and `cnxml-render-fidelity-check` both **reject** `--module` loudly; only `scan-residue` honours it.
