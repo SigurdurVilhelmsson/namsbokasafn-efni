@@ -347,9 +347,12 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
         .json({ error: 'No repo URL', message: 'Book has no GitHub repo URL configured' });
     }
 
-    // F2: never overwrite the irrevocable CC BY 01-source/ copies from the server.
-    // A deliberate re-fetch is a human CLI act (see CLAUDE.md double-consent) — delete
-    // 01-source/ by hand first, then re-run download-source.js --allow-overwrite-source.
+    // F2 (+ §C93 G1-G4): never overwrite the irrevocable CC BY 01-source/ copies from the
+    // server. A deliberate re-fetch is a human CLI act (see CLAUDE.md double-consent), run via
+    // download-source.js --allow-overwrite-source — which only copies newly fetched modules and
+    // media over the old ones and deletes nothing. Do NOT delete 01-source/ by hand to "fix"
+    // this: that permanently destroys docx/, exercises/, and any other locally-obtained file no
+    // refetch restores.
     if (pipeline.isSourcePopulated(slug)) {
       return res.status(409).json({
         error: 'Source already present',

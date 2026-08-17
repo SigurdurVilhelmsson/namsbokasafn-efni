@@ -41,7 +41,10 @@ function assertRefreshable(sourceDir) {
   let code;
   try {
     const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-    const lic = cfg.licence || cfg.license;
+    // §C93 review M1: no book-config.json anywhere in the repo uses the American spelling
+    // ("license") — the fallback that used to read `cfg.licence || cfg.license` was dead code
+    // implying a second supported shape that does not exist. British spelling only.
+    const lic = cfg.licence;
     code = typeof lic === 'string' ? lic : lic && lic.code;
   } catch (err) {
     throw new Error(

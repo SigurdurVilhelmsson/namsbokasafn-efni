@@ -5,11 +5,17 @@ import { parseCollectionXml, organizeSourceFiles } from '../download-source.js';
 
 const TMP = join(import.meta.dirname, '..', '..', '.tmp', 'test-source-downloader');
 
+// §C93 G3's expected licence for every fixture below: the sibling book-config.json this file
+// writes is always CC BY-NC-SA 4.0 (see beforeEach blocks). Kept as a named constant so the G3
+// refusal test can swap it for the CC BY URL without duplicating the raw string.
+const NCSA_LICENSE_URL = 'http://creativecommons.org/licenses/by-nc-sa/4.0/';
+
 // Minimal collection.xml that mirrors OpenStax structure
 const SAMPLE_COLLECTION_XML = `<?xml version="1.0" encoding="UTF-8"?>
 <col:collection xmlns:col="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml">
   <col:metadata>
     <md:title>Test Chemistry Book</md:title>
+    <md:license url="${NCSA_LICENSE_URL}">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</md:license>
   </col:metadata>
   <col:content>
     <col:module document="m00001"/>
@@ -109,10 +115,21 @@ describe('parseCollectionXml', () => {
 // organizeSourceFiles tests
 // =====================================================================
 
+// §C93 G2's `.source-info.json` needs a `commitHash` distinct from the commit each fetch is
+// "about to write" — real shapes, not mocks of the gate (a mocked gate is a gate by care).
+const OLD_COMMIT = 'commit-old-0000000000000000000000000000000000';
+const NEW_COMMIT = 'commit-new-1111111111111111111111111111111111';
+
 describe('organizeSourceFiles', () => {
   const extractedDir = join(TMP, 'extracted');
   const sourceDir = join(TMP, 'source');
 
+  // §C93 G2/G3/G4 note: every `organizeSourceFiles(...)` call in this describe block passes
+  // `collectionXml: SAMPLE_COLLECTION_XML` (CC BY-NC-SA licence, matching book-config.json below)
+  // and `newCommit: NEW_COMMIT` (differing from `.source-info.json`'s OLD_COMMIT). None of them
+  // throw — so this whole block doubles as the PASSING CONTROL for G2 and G3, and (since every
+  // written path here is on the closed allowlist with no localOrigin carve-out) for G4 too. The
+  // dedicated refusal tests for G2/G3/G4 live in their own describe block below.
   beforeEach(() => {
     rmSync(TMP, { recursive: true, force: true });
 
@@ -125,6 +142,12 @@ describe('organizeSourceFiles', () => {
       join(TMP, 'book-config.json'),
       JSON.stringify({ licence: { code: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' } })
     );
+
+    // §C93 G2 needs a pre-existing `.source-info.json` *inside* sourceDir with a commitHash
+    // that will differ from NEW_COMMIT below. sourceDir doesn't exist yet at this point in a
+    // real run (organizeSourceFiles creates it after G1-G3), so this test creates it explicitly.
+    mkdirSync(sourceDir, { recursive: true });
+    writeFileSync(join(sourceDir, '.source-info.json'), JSON.stringify({ commitHash: OLD_COMMIT }));
 
     // Create mock extracted directory with modules
     const modules = [
@@ -160,7 +183,14 @@ describe('organizeSourceFiles', () => {
 
   it('should place modules in correct chapter directories', () => {
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    const result = organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+    const result = organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    });
 
     // Preface
     expect(existsSync(join(sourceDir, 'ch00', 'm00001.cnxml'))).toBe(true);
@@ -186,7 +216,14 @@ describe('organizeSourceFiles', () => {
 
   it('should copy media files', () => {
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    const result = organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+    const result = organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    });
 
     expect(existsSync(join(sourceDir, 'media', 'fig1.png'))).toBe(true);
     expect(existsSync(join(sourceDir, 'media', 'fig2.jpg'))).toBe(true);
@@ -199,7 +236,14 @@ describe('organizeSourceFiles', () => {
     rmSync(join(extractedDir, 'modules', 'm68665'), { recursive: true });
 
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    const result = organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+    const result = organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    });
 
     // Should still process all other modules
     expect(result.moduleCount).toBe(8);
@@ -210,7 +254,14 @@ describe('organizeSourceFiles', () => {
 
   it('should preserve CNXML content in copied files', () => {
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+    organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    });
 
     const content = readFileSync(join(sourceDir, 'ch01', 'm68663.cnxml'), 'utf8');
     expect(content).toContain('<document id="m68663">');
@@ -221,7 +272,14 @@ describe('organizeSourceFiles', () => {
     rmSync(join(extractedDir, 'media'), { recursive: true });
 
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    const result = organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+    const result = organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    });
 
     expect(result.mediaCount).toBe(0);
     expect(result.moduleCount).toBe(9);
@@ -229,16 +287,37 @@ describe('organizeSourceFiles', () => {
 
   it('refuses to overwrite a populated 01-source/ by default', () => {
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false }); // populate once
+    organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    }); // populate once
 
     expect(() =>
-      organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false })
+      organizeSourceFiles({
+        extractedDir,
+        sourceDir,
+        structure,
+        verbose: false,
+        collectionXml: SAMPLE_COLLECTION_XML,
+        newCommit: NEW_COMMIT,
+      })
     ).toThrow(/Refusing to overwrite populated 01-source/);
   });
 
   it('allows overwrite when allowOverwrite:true', () => {
     const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+    organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+    });
 
     const result = organizeSourceFiles({
       extractedDir,
@@ -246,6 +325,8 @@ describe('organizeSourceFiles', () => {
       structure,
       verbose: false,
       allowOverwrite: true,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
     });
     expect(result.moduleCount).toBe(9);
   });
@@ -306,5 +387,117 @@ describe('organizeSourceFiles — §C93 G1 licence gate', () => {
       })
     ).toThrow(/CC BY 4\.0/);
     expect(existsSync(join(ccbySourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+});
+
+// =====================================================================
+// §C93 G2, G3, G4 — the gates built in Tasks 2-3 but, until this task, wired nowhere
+// =====================================================================
+//
+// The whole `describe('organizeSourceFiles', ...)` block above is the PASSING CONTROL for all
+// three: every case there flows through G2 (vintage) and G3 (licence-identity) and G4
+// (write-set) without throwing. These three tests exercise each gate's REFUSAL path through the
+// real wiring — a book that is otherwise entirely legitimate (refreshable licence, real
+// extracted modules) except for the one condition the gate under test exists to catch.
+
+describe('organizeSourceFiles — §C93 G2/G3/G4, newly wired', () => {
+  const G234_ROOT = join(TMP, 'g234-book');
+  const g234ExtractedDir = join(G234_ROOT, 'extracted');
+  const g234SourceDir = join(G234_ROOT, 'source');
+  const CCBY_LICENSE_URL = 'http://creativecommons.org/licenses/by/4.0/';
+
+  beforeEach(() => {
+    rmSync(G234_ROOT, { recursive: true, force: true });
+
+    mkdirSync(G234_ROOT, { recursive: true });
+    writeFileSync(
+      join(G234_ROOT, 'book-config.json'),
+      JSON.stringify({ licence: { code: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' } })
+    );
+
+    // Just the preface module: G4's test carves out exactly this path, and since the preface
+    // is the FIRST write attempted, a refusal there proves nothing else got written either —
+    // no reliance on iteration order among sibling files.
+    const modDir = join(g234ExtractedDir, 'modules', 'm00001');
+    mkdirSync(modDir, { recursive: true });
+    writeFileSync(join(modDir, 'index.cnxml'), '<document id="m00001"><title>M</title></document>');
+  });
+
+  afterEach(() => {
+    rmSync(G234_ROOT, { recursive: true, force: true });
+  });
+
+  it('🔴 G2 REFUSES a refreshable book with no prior .source-info.json — nothing to supersede', () => {
+    // No .source-info.json planted at all: G1 passes (licence is refreshable) but G2 has
+    // nothing to compare newCommit against.
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    expect(() =>
+      organizeSourceFiles({
+        extractedDir: g234ExtractedDir,
+        sourceDir: g234SourceDir,
+        structure,
+        verbose: false,
+        collectionXml: SAMPLE_COLLECTION_XML,
+        newCommit: NEW_COMMIT,
+      })
+    ).toThrow(/§C93 G2 REFUSED/);
+    // control: refused before any write, including sourceDir's own creation
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  it('🔴 G3 REFUSES when the freshly-fetched collection licence differs from the recorded one', () => {
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(
+      join(g234SourceDir, '.source-info.json'),
+      JSON.stringify({ commitHash: OLD_COMMIT })
+    );
+    // Same book structure, but the *fetched* collection.xml now carries the CC BY url instead
+    // of the CC BY-NC-SA one book-config.json records — the NC-SA→CC BY self-poisoning
+    // direction G3 exists to catch.
+    const flippedCollectionXml = SAMPLE_COLLECTION_XML.replace(NCSA_LICENSE_URL, CCBY_LICENSE_URL);
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    expect(() =>
+      organizeSourceFiles({
+        extractedDir: g234ExtractedDir,
+        sourceDir: g234SourceDir,
+        structure,
+        verbose: false,
+        collectionXml: flippedCollectionXml,
+        newCommit: NEW_COMMIT,
+      })
+    ).toThrow(/§C93 G3 REFUSED/);
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  it('🔴 G4 REFUSES a write path declared localOrigin in a v2 manifest', () => {
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(
+      join(g234SourceDir, '.source-info.json'),
+      JSON.stringify({ commitHash: OLD_COMMIT })
+    );
+    // A v2 manifest carving out the preface module — G1-G3 all pass; only G4 stands between
+    // this write and disk.
+    writeFileSync(
+      join(g234SourceDir, '.source-manifest.json'),
+      JSON.stringify({
+        version: 2,
+        book: 'g234-book',
+        algorithm: 'sha256',
+        localOrigin: [{ path: 'ch00/m00001.cnxml', reason: 'test carve-out' }],
+        files: {},
+      })
+    );
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    expect(() =>
+      organizeSourceFiles({
+        extractedDir: g234ExtractedDir,
+        sourceDir: g234SourceDir,
+        structure,
+        verbose: false,
+        collectionXml: SAMPLE_COLLECTION_XML,
+        newCommit: NEW_COMMIT,
+      })
+    ).toThrow(/§C93 G4 REFUSED.*localOrigin/);
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
   });
 });
