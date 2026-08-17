@@ -471,21 +471,48 @@ describe('organizeSourceFiles — §C93 G2/G3/G4, newly wired', () => {
     rmSync(G234_ROOT, { recursive: true, force: true });
   });
 
-  it('🔴 G2 REFUSES a refreshable book with no prior .source-info.json — nothing to supersede', () => {
-    // No .source-info.json planted at all: G1 passes (licence is refreshable) but G2 has
-    // nothing to compare newCommit against.
-    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
-    expect(() =>
-      organizeSourceFiles({
-        extractedDir: g234ExtractedDir,
-        sourceDir: g234SourceDir,
-        structure,
-        verbose: false,
-        collectionXml: SAMPLE_COLLECTION_XML,
-        newCommit: NEW_COMMIT,
-      })
-    ).toThrow(/§C93 G2 REFUSED/);
-    // control: refused before any write, including sourceDir's own creation
+  // ⚠️ AMENDED 2026-08-17 after whole-branch review. This case used to plant NOTHING and expect
+  // a G2 refusal — which pinned a REGRESSION: `.source-info.json` is written by main() AFTER
+  // organizeSourceFiles returns, so "no record and no bytes" is a book's FIRST fetch, and
+  // refusing it deadlocked intake permanently with no flag to help. The refusal is still correct
+  // for "record lost, bytes present", which is what this fixture now builds, and the first-fetch
+  // path gets its own passing case immediately below.
+  it('🔴 G2 REFUSES when the record is gone but CNXML is present — "record lost", not a first fetch', () => {
+    mkdirSync(join(g234SourceDir, 'ch01'), { recursive: true });
+    writeFileSync(join(g234SourceDir, 'ch01', 'm68663.cnxml'), '<document id="m68663"/>');
+    expect(() => organize()).toThrow(/§C93 G2 REFUSED/);
+    // control: refused before the preface was written
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  it('✅ A FIRST FETCH SUCCEEDS — empty 01-source, no record: G2 has nothing to supersede', () => {
+    // The state bookRegistration.createBookDirectories() leaves: the dir exists, holds a README
+    // and nothing else. Before the fix this threw §C93 G2 REFUSED and no new book could ever be
+    // fetched — a regression against the merge base that killed both admin fetch endpoints for
+    // their only reachable input.
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(join(g234SourceDir, 'README.md'), '# source goes here');
+    const result = organize();
+    expect(result.moduleCount).toBe(3);
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(true);
+  });
+
+  it('🔴 …and a first fetch is still fully gated: G1 refuses a CC BY book with an empty dir', () => {
+    // The load-bearing half of the fix. Skipping G2 on a first fetch must not skip anything
+    // else, so the same empty-directory state must still refuse for a CC BY book.
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(
+      join(G234_ROOT, 'book-config.json'),
+      JSON.stringify({ licence: { code: 'CC BY 4.0', obtained: '2026-01-19' } })
+    );
+    expect(() => organize()).toThrow(/§C93 G1 REFUSED/);
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  it('🔴 …and G3 still runs on a first fetch: a flipped upstream licence refuses', () => {
+    mkdirSync(g234SourceDir, { recursive: true });
+    const flipped = SAMPLE_COLLECTION_XML.replace(NCSA_LICENSE_URL, CCBY_LICENSE_URL);
+    expect(() => organize({ collectionXml: flipped })).toThrow(/§C93 G3 REFUSED/);
     expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
   });
 

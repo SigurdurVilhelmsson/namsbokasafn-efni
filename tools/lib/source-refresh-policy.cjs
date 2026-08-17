@@ -12,6 +12,10 @@
  */
 const fs = require('fs');
 const path = require('path');
+// One-way: source-manifest.cjs requires only node builtins, so there is no cycle. The coupling
+// is honest — this module's whole subject IS the state of a `01-source` directory, and "does it
+// hold any CNXML" is part of that state, not a manifest concern borrowed from elsewhere.
+const { listCnxmlFiles } = require('./source-manifest.cjs');
 
 /**
  * Licences whose books may be refreshed from upstream. EXACT string match, deliberately.
@@ -157,6 +161,37 @@ function assertVintageAdvances(sourceDir, newCommit) {
 }
 
 /**
+ * Is this an unambiguous FIRST fetch — a book that has never had source at all?
+ *
+ * 🔴 WHY THIS EXISTS. G2 requires `.source-info.json`, and that file has exactly ONE writer:
+ * `download-source.js`'s `main()`, which runs it AFTER `organizeSourceFiles` returns. So the
+ * artifact G2 demands is produced by the very run G2 blocks — without this predicate, a book's
+ * FIRST fetch deadlocks permanently and there is no flag that helps (`--allow-overwrite-source`
+ * is checked further down and G2 never reads it). Found by whole-branch review 2026-08-17; it
+ * was a REGRESSION against the merge base, and it killed the only reachable input of both
+ * admin fetch endpoints.
+ *
+ * ⚠️ BOTH conditions are required and the conjunction is the entire safety argument:
+ *   - no `.source-info.json`  AND
+ *   - no `.cnxml` anywhere under `sourceDir`
+ * "No record but bytes present" is **record lost**, which is dangerous and must still refuse —
+ * it is exactly the state a partial delete leaves, and treating it as a first fetch would let a
+ * refresh proceed with nothing to record as superseded. Only "no record AND no bytes" is
+ * unambiguous, and in that state there is nothing to supersede and nothing to destroy.
+ *
+ * Note this does NOT weaken the other three gates: G1 still refuses every CC BY book, G3 still
+ * pins the fetched licence, and G4 still confines the write set — so a first fetch into an
+ * emptied directory cannot reach `docx/` or `exercises/` either.
+ *
+ * @param {string} sourceDir absolute path to a book's `01-source` directory
+ * @returns {boolean} true only when the book has never been fetched
+ */
+function isFirstFetch(sourceDir) {
+  if (fs.existsSync(path.join(sourceDir, '.source-info.json'))) return false;
+  return listCnxmlFiles(sourceDir).length === 0;
+}
+
+/**
  * Closed URL→code enum for G3. Deliberately a fixed map, never a substring match on the
  * human-readable licence name — an unrecognised URL must refuse, the same allowlist discipline
  * G1 applies to book-config.json's licence string.
@@ -229,6 +264,7 @@ module.exports = {
   assertWritePathAllowed,
   assertVintageAdvances,
   assertLicenceUnchanged,
+  isFirstFetch,
   REFRESHABLE,
   LICENCE_URL_TO_CODE,
 };

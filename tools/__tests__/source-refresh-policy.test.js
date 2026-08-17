@@ -56,6 +56,10 @@ describe('§C93 G1 — the book gate', () => {
     // here also collides with the mandated export `assertWritePathAllowed`, which legitimately
     // contains "Allow". Do not "helpfully" relax this back to a pattern. Grown for G2/G3
     // (Task 3): update this exact list again, consciously, the next time an export is added.
+    // Grown again 2026-08-17 for `isFirstFetch`, consciously and with the reasoning recorded:
+    // it is a PREDICATE, not an assertion — it grants no permission by itself, and the caller
+    // that consults it still runs G1, G3 and G4 unconditionally. It is exported so it can be
+    // tested directly, which is the opposite of an escape hatch.
     expect(Object.keys(policy).sort()).toEqual([
       'LICENCE_URL_TO_CODE',
       'REFRESHABLE',
@@ -63,7 +67,66 @@ describe('§C93 G1 — the book gate', () => {
       'assertRefreshable',
       'assertVintageAdvances',
       'assertWritePathAllowed',
+      'isFirstFetch',
     ]);
+  });
+});
+
+// =====================================================================
+// isFirstFetch — the predicate that keeps G2 a gate instead of a deadlock (§C93, 2026-08-17)
+// =====================================================================
+//
+// A whole-branch review measured that G2 made a book's FIRST fetch impossible: it requires
+// .source-info.json, whose only writer runs after the function G2 guards. The conjunction below
+// is the whole safety argument, so each arm is pinned separately — a version of this predicate
+// that looked at only ONE of the two conditions would pass a single-arm test.
+
+describe('§C93 isFirstFetch', () => {
+  /** A throwaway 01-source directory. Each case builds only the state it is about. */
+  function emptySourceDir() {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'c93-first-fetch-'));
+    const sourceDir = path.join(root, '01-source');
+    fs.mkdirSync(sourceDir, { recursive: true });
+    return sourceDir;
+  }
+
+  it('✅ TRUE when the directory does not exist at all', () => {
+    expect(policy.isFirstFetch(path.join(emptySourceDir(), 'never-created'))).toBe(true);
+  });
+
+  it('✅ TRUE for an empty 01-source: no record and no bytes, so nothing to supersede', () => {
+    expect(policy.isFirstFetch(emptySourceDir())).toBe(true);
+  });
+
+  it('🔴 FALSE when .source-info.json exists — a recorded vintage means G2 must run', () => {
+    const dir = emptySourceDir();
+    fs.writeFileSync(path.join(dir, '.source-info.json'), JSON.stringify({ commitHash: 'abc' }));
+    expect(policy.isFirstFetch(dir)).toBe(false);
+  });
+
+  it('🔴 FALSE when CNXML is present but the record is gone — "record lost", NOT a first fetch', () => {
+    // The dangerous arm, and the reason both conditions are required. This is the state a
+    // partial delete leaves; treating it as a first fetch would let a refresh run with nothing
+    // to record as superseded.
+    const dir = emptySourceDir();
+    fs.mkdirSync(path.join(dir, 'ch01'), { recursive: true });
+    fs.writeFileSync(path.join(dir, 'ch01', 'm00001.cnxml'), '<document/>');
+    expect(policy.isFirstFetch(dir)).toBe(false);
+  });
+
+  it('🔴 FALSE finds CNXML at ANY depth, not just the top level', () => {
+    const dir = emptySourceDir();
+    fs.mkdirSync(path.join(dir, 'appendices'), { recursive: true });
+    fs.writeFileSync(path.join(dir, 'appendices', 'm99901.cnxml'), '<document/>');
+    expect(policy.isFirstFetch(dir)).toBe(false);
+  });
+
+  it('✅ TRUE when the directory holds only non-CNXML scaffolding (a README)', () => {
+    // Exactly what bookRegistration.createBookDirectories() leaves behind. If this returned
+    // false, first-time intake would still be deadlocked for every newly registered book.
+    const dir = emptySourceDir();
+    fs.writeFileSync(path.join(dir, 'README.md'), '# source goes here');
+    expect(policy.isFirstFetch(dir)).toBe(true);
   });
 });
 

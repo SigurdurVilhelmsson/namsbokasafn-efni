@@ -28,6 +28,7 @@ const {
   assertVintageAdvances,
   assertLicenceUnchanged,
   assertWritePathAllowed,
+  isFirstFetch,
 } = require('./lib/source-refresh-policy.cjs');
 
 const __filename = fileURLToPath(import.meta.url);
@@ -225,12 +226,19 @@ export function organizeSourceFiles({
   assertRefreshable(sourceDir);
 
   // §C93 G2 — the vintage gate. Must run before any write, right after G1. `.source-info.json`
-  // must already carry a commitHash that differs from `newCommit` — a book on the refreshable
-  // allowlist with no prior `.source-info.json` refuses here, because there is nothing to
-  // record as the superseded commit. (A CC BY book never reaches this line at all — G1 above
-  // already refused it; that's why efnafraedi-2e having no .source-info.json is not a problem
-  // G2 needs to handle specially.)
-  assertVintageAdvances(sourceDir, newCommit);
+  // must already carry a commitHash that differs from `newCommit`, so a refresh records what it
+  // superseded rather than silently repeating a vintage.
+  //
+  // 🔴 EXCEPT ON A GENUINE FIRST FETCH, and that exception is not a softening — it is the
+  // difference between a gate and a deadlock. `.source-info.json` is written by `main()` BELOW,
+  // after this function returns, so requiring it here made a book's first fetch impossible: the
+  // artifact G2 demands is produced by the run G2 blocks. `isFirstFetch` demands BOTH no record
+  // AND no CNXML, so "record lost, bytes present" — the state a partial delete leaves — still
+  // refuses. G1/G3/G4 are untouched by this branch, so a first fetch is still licence-gated,
+  // licence-identity-checked and confined to the write allowlist.
+  if (!isFirstFetch(sourceDir)) {
+    assertVintageAdvances(sourceDir, newCommit);
+  }
 
   // §C93 G3 — the licence-identity gate. G1 keys on the RECORDED licence (the OLD bytes); this
   // checks the licence on the bytes about to be fetched, from the freshly-downloaded
