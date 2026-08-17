@@ -4,10 +4,12 @@ import { DOMParser } from '@xmldom/xmldom';
 // a named `export { … }` block at the bottom of the file (tools/cnxml-inject.js:4795),
 // which already carries buildFigure, buildMediaElement, collectTableNodes and others
 // "exported for comparison testing". Step 3 adds the three new names to it.
-// Task 3 extends this import with `applyMediaAltString`. Do NOT import it now —
-// the binding does not exist yet and an ESM import of a missing export is a
-// load-time error that fails the whole FILE, masking Task 2's real assertions.
-import { collectMediaAlts, applyMediaAltDom, buildCnxml } from '../cnxml-inject.js';
+import {
+  collectMediaAlts,
+  applyMediaAltDom,
+  applyMediaAltString,
+  buildCnxml,
+} from '../cnxml-inject.js';
 
 function parse(fragment) {
   const doc = new DOMParser().parseFromString(
@@ -164,5 +166,103 @@ describe('§C88 — structure.inlineMedia folds into ctx.mediaAlts (buildCnxml)'
     const { cnxml } = buildCnxml(structure, segments, {}, originalCnxml, {}, {});
     expect(cnxml).toContain('alt="English alt"');
     expect(cnxml).not.toContain('alt="Þýtt alt"');
+  });
+});
+
+describe('§C88 — table-entry alt write-back (string path)', () => {
+  it('rewrites a media alt inside a verbatim entry string', () => {
+    const entry = '<entry><media id="m-cell" alt="A flask"><image src="a.png"/></media></entry>';
+    const ctx = { mediaAlts: { 'm-cell': { segmentId: 's' } }, peekSeg: () => 'Kolba' };
+    expect(applyMediaAltString(entry, ctx)).toBe(
+      '<entry><media id="m-cell" alt="Kolba"><image src="a.png"/></media></entry>'
+    );
+  });
+
+  it('escapes the translation so a quote cannot break the attribute', () => {
+    const entry = '<entry><media id="m-cell" alt="A flask"/></entry>';
+    const ctx = {
+      mediaAlts: { 'm-cell': { segmentId: 's' } },
+      peekSeg: () => 'A "big" flask & more',
+    };
+    const out = applyMediaAltString(entry, ctx);
+    expect(out).toContain('alt="A &quot;big&quot; flask &amp; more"');
+    expect(out).not.toContain('alt="A "big"');
+  });
+
+  it('IS BEST-EFFORT: no translation returns the string byte-for-byte unchanged', () => {
+    const entry = '<entry><media id="m-cell" alt="A flask"/></entry>';
+    expect(
+      applyMediaAltString(entry, {
+        mediaAlts: { 'm-cell': { segmentId: 's' } },
+        peekSeg: () => null,
+      })
+    ).toBe(entry);
+  });
+
+  it('leaves an unmapped media alone', () => {
+    const entry = '<entry><media id="other" alt="A flask"/></entry>';
+    expect(
+      applyMediaAltString(entry, {
+        mediaAlts: { 'm-cell': { segmentId: 's' } },
+        peekSeg: () => 'Kolba',
+      })
+    ).toBe(entry);
+  });
+
+  it('rewrites only the matching media when an entry holds two', () => {
+    const entry = '<entry><media id="a" alt="One"/><media id="b" alt="Two"/></entry>';
+    const ctx = { mediaAlts: { b: { segmentId: 's' } }, peekSeg: () => 'Tveir' };
+    expect(applyMediaAltString(entry, ctx)).toBe(
+      '<entry><media id="a" alt="One"/><media id="b" alt="Tveir"/></entry>'
+    );
+  });
+
+  // The five tests above pin applyMediaAltString in isolation; none of them exercise
+  // buildTable's actual wiring (its new 5th `ctx` param, and the fall-through return
+  // routed through applyMediaAltString). buildTable has FOUR call sites and the task-3
+  // brief warns explicitly: "Miss one and table-entry alts are silently never written
+  // back on that path — no error, no failing test, just an uncovered path." This
+  // end-to-end test goes through buildCnxml → buildElement's `case 'table':` (the
+  // primary content-table call site) with an empty-text cell (`segmentId: null`,
+  // the exact shape from the "Fix B" self-closing-entry fixture above) whose source
+  // entry carries a bare <media>, so it can only pass if the wiring is real.
+  it('an empty-text table cell still gets its bare-media alt translated (buildCnxml, end-to-end)', () => {
+    const structure = {
+      moduleId: 'test2',
+      content: [
+        {
+          type: 'table',
+          id: 'tbl-alt',
+          class: null,
+          summary: null,
+          rows: [{ cells: [{ segmentId: null, attributes: {} }] }],
+        },
+      ],
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          id: 'm-cell',
+          alt: { segmentId: 'test2:alt:m-cell-alt', text: 'A flask' },
+          src: 'a.png',
+        },
+      ],
+    };
+    const segments = new Map([['test2:alt:m-cell-alt', 'Kolba']]);
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<content>
+<table id="tbl-alt" summary="">
+<tgroup cols="1">
+<tbody>
+<row><entry><media id="m-cell" alt="A flask"><image mime-type="image/png" src="a.png"/></media></entry></row>
+</tbody>
+</tgroup>
+</table>
+</content>
+</document>`;
+
+    const { cnxml } = buildCnxml(structure, segments, {}, originalCnxml, {}, {});
+    expect(cnxml).toContain('alt="Kolba"');
+    expect(cnxml).not.toContain('alt="A flask"');
   });
 });

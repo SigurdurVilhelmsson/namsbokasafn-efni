@@ -2340,7 +2340,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       if (ctx && ctx.tablesHandledInContainers && ctx.tablesHandledInContainers.has(element.id)) {
         return null;
       }
-      return buildTable(element, getSeg, originalCnxml, ctx && ctx.tableCellGaps);
+      return buildTable(element, getSeg, originalCnxml, ctx && ctx.tableCellGaps, ctx);
     case 'example':
       return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
     case 'exercise':
@@ -2382,7 +2382,7 @@ function buildPara(element, getSeg, equations, originalCnxml, ctx) {
     text = text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
       const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
       if (tableData && tableData.structure) {
-        return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
+        return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
       }
       return match; // Keep placeholder if not found
     });
@@ -2576,6 +2576,44 @@ function applyMediaAltDom(containerEl, ctx) {
 }
 
 /**
+ * §C88 — the string-path twin of applyMediaAltDom, for buildTable.
+ *
+ * buildTable is regex/string based, and an empty-text entry falls through to
+ * `return entryMatch` — the VERBATIM source entry, English alt included. The 29
+ * chemistry `entry-not-in-figure` alts live exactly there.
+ *
+ * ⚠️ Rewrites ONLY the value of an existing alt attribute on a media whose id is
+ * in the map. It never adds an attribute and never builds an element, so it
+ * cannot trip deduplicateMedia and cannot change the entry's structure.
+ *
+ * 🔴 peekSeg, not getSeg — best-effort, see applyMediaAltDom.
+ *
+ * @param {string} entryCnxml verbatim `<entry>…</entry>` source
+ * @param {object} ctx build context carrying `mediaAlts` and `peekSeg`
+ * @returns {string} the entry with translated alt values, or the input unchanged
+ */
+function applyMediaAltString(entryCnxml, ctx) {
+  if (!entryCnxml || !ctx || !ctx.mediaAlts) return entryCnxml;
+  return entryCnxml.replace(/<media\b[^>]*>/g, (openTag) => {
+    const idMatch = openTag.match(/\bid="([^"]*)"/);
+    if (!idMatch) return openTag;
+    const entry = ctx.mediaAlts[idMatch[1]];
+    if (!entry) return openTag;
+    const translated = ctx.peekSeg ? ctx.peekSeg(entry.segmentId) : null;
+    if (!translated) return openTag;
+    if (!/\balt="/.test(openTag)) return openTag;
+    // §C88 — `&` MUST be escaped first: escaping `"` before `&` would then
+    // re-escape the `&` inside the just-produced `&quot;`, yielding `&amp;quot;`.
+    const escaped = String(translated)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+    return openTag.replace(/\balt="[^"]*"/, `alt="${escaped}"`);
+  });
+}
+
+/**
  * Build a figure element.
  */
 function buildFigure(element, getSeg, originalCnxml, ctx) {
@@ -2716,8 +2754,13 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
  *   (see the !cell branch below). Absent for isolated-builder/library calls,
  *   which then keep the lenient pre-fix pass-through (same contract as
  *   translateKeptContainerTables' missing-ctx no-op).
+ * @param {object|null} ctx - §C88: build context carrying `mediaAlts`/`peekSeg`,
+ *   consulted ONLY on the verbatim-entry fall-through (a bare <media>'s alt is
+ *   rewritten in place there via applyMediaAltString). Additive fifth param —
+ *   absent for isolated-builder/library calls, which then no-op (same contract
+ *   as tableCellGaps above).
  */
-function buildTable(element, getSeg, originalCnxml, tableCellGaps) {
+function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
   // For tables, extract from original and replace cell content
   if (element.id) {
     // Match table by ID - id attribute can appear anywhere in the opening tag
@@ -2800,7 +2843,10 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps) {
                   }
                 }
                 cellIdx++;
-                return entryMatch;
+                // §C88 — this is the VERBATIM source entry (empty-text cell, or a
+                // cell whose translation is missing). Any bare <media> in it still
+                // carries its English alt; rewrite it in place before returning.
+                return applyMediaAltString(entryMatch, ctx);
               }
             );
           }
@@ -2850,7 +2896,7 @@ function translateKeptContainerTables(
         `translateKeptContainerTables: no structure node for kept container table id="${tableId}" in module ${moduleId} — cannot translate; refusing to emit source table.`
       );
     }
-    const translated = buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps);
+    const translated = buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
     if (!translated) {
       throw new Error(
         `translateKeptContainerTables: buildTable returned null for table id="${tableId}" in module ${moduleId}.`
@@ -2884,7 +2930,7 @@ function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
     const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
     if (tableData && tableData.structure) {
       keptTableIds.add(tableId);
-      return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
+      return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
     }
     return match; // unknown id → leave placeholder; the gate will catch it
   });
@@ -4931,4 +4977,5 @@ export {
   getMathLabelResolver,
   collectMediaAlts, // §C88: exported for bare-media alt write-back tests
   applyMediaAltDom, // §C88
+  applyMediaAltString, // §C88: table-entry (string-path) twin of applyMediaAltDom
 };
