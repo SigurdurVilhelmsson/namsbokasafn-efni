@@ -35,9 +35,19 @@ technicality against OpenStax (see §5). Only Organic and Physics need remediati
 have **only machine-translation derivatives, no citable faithful translation**.
 
 **Preface module `m68662` — re-created, not downloaded (2026-06-25).** The Chemistry CNXML
-download (2026-01-19) omitted the book's preface module `m68662` (the CC BY-era pulls of
-Chemistry, Biology, and College Physics all skipped their preface; the lowest captured
-Chemistry module is `m68663`). A fresh OpenStax pull now would be CC BY-NC-SA, so the preface
+download (2026-01-19) omitted the book's preface module `m68662`; the lowest captured
+Chemistry module is `m68663`.
+
+> ⚠️ **CORRECTED 2026-08-17 — this sentence used to add "*the CC BY-era pulls of Chemistry,
+> Biology, and College Physics all skipped their preface*". THAT IS FALSE, and it matters
+> because it overstates the reconstructed surface.** Measured on disk: **every one of the five
+> books has its Preface, and Chemistry's is the ONLY reconstruction.** Biology `m66425`
+> "Preface" (23,207 B, from `53442ca7 chore: download Biology 2e source CNXML (all 47 chapters,
+> 259 modules)`) · Microbiology `m63247` "Preface" (43,990 B, `c733eae4`) · College Physics
+> `m42955` "Preface" (24,217 B, `7aca8fd0`) · Organic `m00001` "Dedication and Preface"
+> (20,020 B, `7aca8fd0`) — all from ordinary bulk-download commits. The same wrong
+> generalisation is in commit `51a62b75`'s message, which cannot be edited; this is the
+> correction of record. A fresh OpenStax pull now would be CC BY-NC-SA, so the preface
 was instead **re-authored as CNXML at `books/efnafraedi-2e/01-source/ch00/m68662.cnxml` from
 the user's CC BY-era Word export** (`01-source/docx/ch00/preface.docx`, file date
 **2025-09-12**). The docx body self-states *"Chemistry 2e is licensed under a Creative Commons
@@ -46,6 +56,19 @@ re-created CNXML therefore inherits **CC BY 4.0** and is safe in this CC BY book
 re-creation kept the preface intro, the CC BY licence statement, "About Chemistry 2e", and the
 full author/contributor/reviewer attribution lists; it dropped OpenStax-platform boilerplate. A
 re-created module carries a locally-generated `md:uuid`, not the original OpenStax uuid.)
+
+**Three consequences of that reconstruction, recorded 2026-08-17 because none is visible in the
+file itself:**
+- 🔴 **The file does NOT self-declare as a reconstruction.** It carries no comment, no marker and
+  no distinguishing metadata — its `md:content-id`/`md:title`/`md:uuid` shape is identical to a
+  downloaded module. **Reading `ch00/m68662.cnxml` gives a reader no signal at all.** The only
+  records are this document, commit `51a62b75`, and the committed `docx/ch00/preface.docx`.
+- ⚠️ **The locally-generated `md:uuid` (`256d4a6d-…`) does not exist upstream**, so this module
+  can never be joined to a published OpenStax page — the join key is `page_<md:uuid>`. Any
+  upstream comparison (§C94) must exclude it **by name**, not discover it as a miss.
+- ⚠️ **It is a PARTIAL reconstruction by design** — OpenStax platform/instructor boilerplate was
+  deliberately dropped — so it is not content-equivalent to upstream even setting licence aside.
+  A byte or structural diff against upstream will always differ, correctly.
 
 ---
 
