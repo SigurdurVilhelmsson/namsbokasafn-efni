@@ -21,11 +21,7 @@ const path = require('path');
 const REFRESHABLE = Object.freeze(new Set(['CC BY-NC-SA 4.0']));
 
 /** Closed write allowlist. Anything not matched here is unreachable by a refresh. */
-const WRITE_ALLOW = [
-  /^ch\d{2}\/[^/]+\.cnxml$/,
-  /^appendices\/[^/]+\.cnxml$/,
-  /^media\/[^/]+$/,
-];
+const WRITE_ALLOW = [/^ch\d{2}\/[^/]+\.cnxml$/, /^appendices\/[^/]+\.cnxml$/, /^media\/[^/]+$/];
 const WRITE_ALLOW_EXACT = new Set([
   '.source-info.json',
   '.source-manifest.json',
@@ -79,8 +75,7 @@ function assertWritePathAllowed(relPath, localOrigin = []) {
   if (relPath.includes('..') || path.isAbsolute(relPath)) {
     throw new Error(`§C93 G4 REFUSED: '${relPath}' escapes 01-source/.`);
   }
-  const onList =
-    WRITE_ALLOW_EXACT.has(relPath) || WRITE_ALLOW.some((re) => re.test(relPath));
+  const onList = WRITE_ALLOW_EXACT.has(relPath) || WRITE_ALLOW.some((re) => re.test(relPath));
   if (!onList) {
     throw new Error(
       `§C93 G4 REFUSED: '${relPath}' is not on the write allowlist. A refresh may touch only ` +
@@ -102,4 +97,119 @@ function assertWritePathAllowed(relPath, localOrigin = []) {
   }
 }
 
-module.exports = { assertRefreshable, assertWritePathAllowed, REFRESHABLE };
+/**
+ * G2 — the vintage gate. `.source-info.json` must exist and carry a `commitHash`, and the new
+ * upstream commit must differ from it. Absent → refuse: there is nothing to record as the OLD
+ * commit. A refresh that would "supersede" itself with the commit it already holds is not a
+ * refresh — it is bookkeeping for a no-op, and it would mint a `supersedes` entry that
+ * describes no actual change.
+ *
+ * @param {string} sourceDir absolute path to a book's `01-source` directory
+ * @param {string} newCommit the upstream commit sha the refresh is about to fetch
+ * @returns {{previousCommit: string}}
+ * @throws if `.source-info.json` is unreadable, has no `commitHash`, or `newCommit` equals it
+ */
+function assertVintageAdvances(sourceDir, newCommit) {
+  const infoPath = path.join(sourceDir, '.source-info.json');
+  let info;
+  try {
+    info = JSON.parse(fs.readFileSync(infoPath, 'utf8'));
+  } catch (err) {
+    throw new Error(
+      `§C93 G2 REFUSED: cannot read ${infoPath} (${err.message}). A refresh needs a recorded ` +
+        `commitHash to supersede — there is nothing to record as the OLD commit. This fails ` +
+        `CLOSED on purpose — a missing or unreadable .source-info.json is not permission.`
+    );
+  }
+  const previousCommit = info && info.commitHash;
+  if (typeof previousCommit !== 'string' || previousCommit === '') {
+    throw new Error(
+      `§C93 G2 REFUSED: ${infoPath} has no commitHash. A refresh needs a recorded commitHash ` +
+        `to supersede — there is nothing to record as the OLD commit.`
+    );
+  }
+  if (previousCommit === newCommit) {
+    throw new Error(
+      `§C93 G2 REFUSED: the new commit '${newCommit}' equals the recorded commit — nothing to ` +
+        `supersede. A refresh must advance the vintage, not repeat it.`
+    );
+  }
+  return { previousCommit };
+}
+
+/**
+ * Closed URL→code enum for G3. Deliberately a fixed map, never a substring match on the
+ * human-readable licence name — an unrecognised URL must refuse, the same allowlist discipline
+ * G1 applies to book-config.json's licence string.
+ */
+const LICENCE_URL_TO_CODE = Object.freeze({
+  // Measured LIVE 2026-08-17 (test-results/c93-g3-premise-2026-08-17.txt): both chemistry's
+  // and organic's upstream collection.xml currently resolve their <md:license url=…> here.
+  'http://creativecommons.org/licenses/by-nc-sa/4.0/': 'CC BY-NC-SA 4.0',
+  // NOT independently re-observed live — nobody has re-fetched a CC BY upstream collection.
+  // Sourced from docs/provenance/openstax-cnxml-licence-provenance.md §2's git-log diff of the
+  // governing collection metadata BEFORE the 2026-04-23 relicense edit (the exact URL every
+  // affected collection carried while still CC BY, e.g. Chemistry commit `d91a52cb`'s removed
+  // line). Included so G3 can catch the direction that matters most: an upstream NC-SA→CC BY
+  // flip pulling CC BY bytes into a book still recorded NC-SA, which would poison the
+  // allowlist for the NEXT refresh (see the gate's own doc comment below).
+  'http://creativecommons.org/licenses/by/4.0/': 'CC BY 4.0',
+});
+
+/**
+ * G3 — the licence-identity gate. THE SUBTLEST GATE. G1 keys on the RECORDED licence, which
+ * describes the OLD bytes, while authorising a write of NEW bytes whose licence is unknown
+ * until fetched. Without G3 the allowlist self-poisons: an upstream NC-SA→CC BY flip would
+ * pull CC BY bytes into a book still recorded NC-SA, and the NEXT refresh would then destroy
+ * an irrevocable CC BY copy using G1 alone. G3 must refuse a DIFFERENCE IN EITHER DIRECTION —
+ * NC-SA→CC BY self-poisons the allowlist; CC BY→NC-SA (or worse) would silently strip our
+ * derivatives of the right to exist. An unrecognised URL refuses rather than guessing.
+ *
+ * Parses the LEAF `<md:license url="…">` element directly with a regex, never by walking down
+ * from the metadata wrapper: the wrapper's own tag/prefix is NOT stable — chemistry's is
+ * unprefixed `<metadata mdml-version="0.5">`, organic's is `<col:metadata>` — but the leaf
+ * `<md:license>` keeps its `md:` prefix in both (measured live,
+ * test-results/c93-g3-premise-2026-08-17.txt). A regex on the leaf element is safe; a parser
+ * that assumes the wrapper's prefix is not.
+ *
+ * @param {string} collectionXml raw XML text of the freshly-fetched collection.xml
+ * @param {string} expectedCode the code G1 already approved for this book (e.g. 'CC BY-NC-SA 4.0')
+ * @throws if no `<md:license url="…">` element is found, if its URL is not in the closed enum,
+ *   or if the mapped code differs from `expectedCode` in EITHER direction
+ */
+function assertLicenceUnchanged(collectionXml, expectedCode) {
+  const match = /<md:license\b[^>]*\burl=["']([^"']+)["']/.exec(collectionXml);
+  if (!match) {
+    throw new Error(
+      `§C93 G3 REFUSED: no <md:license url="…"> element found in the fetched collection XML. ` +
+        `A refresh requires a verifiable licence on the NEW bytes before they may be written. ` +
+        `This fails CLOSED — a missing element is not permission. Nothing was written.`
+    );
+  }
+  const url = match[1];
+  const foundCode = LICENCE_URL_TO_CODE[url];
+  if (!foundCode) {
+    throw new Error(
+      `§C93 G3 REFUSED: licence URL '${url}' is not on the known-URL allowlist ` +
+        `(${Object.keys(LICENCE_URL_TO_CODE).join(', ')}). An unrecognised URL refuses rather ` +
+        `than guessing at a code. Nothing was written.`
+    );
+  }
+  if (foundCode !== expectedCode) {
+    throw new Error(
+      `§C93 G3 REFUSED: the fetched licence is '${foundCode}' (${url}) but the recorded ` +
+        `licence is '${expectedCode}'. A refresh may replace bytes only with identically- ` +
+        `licensed bytes — this direction matters as much as the other, because an unnoticed ` +
+        `NC-SA→CC BY flip would poison the allowlist for the NEXT refresh. Nothing was written.`
+    );
+  }
+}
+
+module.exports = {
+  assertRefreshable,
+  assertWritePathAllowed,
+  assertVintageAdvances,
+  assertLicenceUnchanged,
+  REFRESHABLE,
+  LICENCE_URL_TO_CODE,
+};
