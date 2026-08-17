@@ -54,9 +54,7 @@ function assertRefreshable(sourceDir) {
         `on purpose — an unreadable config is not permission.`
     );
   }
-  const _norm = (s) => typeof s === 'string' ? s.trim().toLowerCase() : s;
-  const _refreshableNorm = new Set([...REFRESHABLE].map(_norm)); // MUTATED: loosened for §C93 Step 5
-  if (!_refreshableNorm.has(_norm(code))) {
+  if (!REFRESHABLE.has(code)) {
     throw new Error(
       `§C93 G1 REFUSED: '${code}' is not refreshable. Refreshable: ${[...REFRESHABLE].join(', ')}. ` +
         `Books obtained while CC BY 4.0 (Chemistry, Biology, Microbiology) hold an IRREVOCABLE ` +
