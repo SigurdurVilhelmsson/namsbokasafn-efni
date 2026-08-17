@@ -66,25 +66,36 @@ function sweep(book) {
 }
 
 describe('§C89 — translated alt reaches the injected output', () => {
-  it('chemistry: 950 of 951 alt translations survive; only m68801 does not', () => {
+  it('chemistry: all 951 alt translations survive (m68801 resolved by §C88 write-back)', () => {
     // 🔴 THE BEFORE/AFTER IS THE POINT, and it is what makes this pin meaningful:
     //   before §C89   324 / 951   (65.9% discarded, 130 modules affected)
-    //   after  §C89   950 / 951   (0.1% discarded, 1 module)
-    // A bare `expect(reached).toBeGreaterThan(0)` would have passed at BOTH, which
-    // is exactly how the original defect survived every gate.
+    //   after  §C89   950 / 951   (0.1% discarded, 1 module — m68801)
+    //   after  §C88   951 / 951   (0% discarded)
+    // A bare `expect(reached).toBeGreaterThan(0)` would have passed at ALL THREE,
+    // which is exactly how the original defect survived every gate.
     const r = sweep('efnafraedi-2e');
 
     expect(r.emitted).toBe(951);
-    expect(r.reached).toBe(950);
+    expect(r.reached).toBe(951);
 
-    // ⚠️ m68801 is a KNOWN, LOGGED RESIDUAL, not an accepted failure. Its holdout is
-    // a BARE <media> (no <figure> wrapper) at `media < item < list < example`: the
-    // container preserves that subtree verbatim, so the inline-media placeholder
-    // never expands, and the figure-id-keyed lookup §C89 added cannot reach a media
-    // that belongs to no figure. Closing it needs a media-id-keyed lookup — the same
-    // mechanism §C88 must build anyway. Pinned by NAME so that if the count ever
-    // improves or a DIFFERENT module starts dropping, this test says which.
-    expect(r.dropped).toEqual(['m68801']);
+    // ⚠️ m68801 WAS a KNOWN, LOGGED RESIDUAL (kept here as the record of why it
+    // existed — do not delete on resolution). Its holdout was a BARE <media> (no
+    // <figure> wrapper) at `media < item < list < example`: the container preserves
+    // that subtree verbatim, so the figure-id-keyed lookup §C89 added could never
+    // reach a media that belongs to no figure.
+    //
+    // ✅ RESOLVED by §C88's media-id-keyed lookup (`collectMediaAlts` +
+    // `applyMediaAltDom`) — but that alone was NOT sufficient: m68801's alt segment
+    // is not a `.content`-level `type:'media'` node (the shape `collectMediaAlts`
+    // scans, and what later §C88 emitter tasks mint for the 197 reachable chemistry
+    // instances). It lives ONLY in `structure.inlineMedia` — the pre-existing
+    // [[MEDIA:N]] placeholder mechanism from §C81/§C89 — because its media is a
+    // list-item block child, recorded as a bare `{type:'media', id}` with no `.alt`
+    // of its own. Closing it required a SECOND source at the ctx-wiring site in
+    // `buildCnxml`, folding `structure.inlineMedia` entries into `ctx.mediaAlts`
+    // alongside `collectMediaAlts`'s output. Pinned by NAME so that if the count
+    // ever regresses or a DIFFERENT module starts dropping, this test says which.
+    expect(r.dropped).toEqual([]);
   }, 300_000);
 
   it('organic: all 1,918 alt translations survive', () => {

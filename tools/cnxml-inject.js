@@ -1812,6 +1812,32 @@ function collectFigureAlts(elements, map) {
 }
 
 /**
+ * §C88 — recursively map every BARE `<media>` structure node's id to its alt
+ * segment. The §C89 companion, `collectFigureAlts`, keys on FIGURE id and so
+ * cannot reach these: all 197 chemistry instances are bare `<media>` with no
+ * `<figure>` ancestor (measured 0 of 197).
+ *
+ * ⚠️ Keyed on the MEDIA's own id, and an id is REQUIRED here — unlike
+ * collectFigureAlts, where a null mediaId legitimately means "the figure's
+ * first media". A bare media has no enclosing element to anchor on, so an
+ * id-less one cannot be addressed at inject and is skipped rather than guessed.
+ * All 197 in scope carry an id (measured).
+ *
+ * @param {Array} elements structure nodes
+ * @param {Record<string,{segmentId: string}>} map out-param
+ */
+function collectMediaAlts(elements, map) {
+  for (const el of elements) {
+    if (el.type === 'media' && el.id && el.alt?.segmentId) {
+      map[el.id] = { segmentId: el.alt.segmentId };
+    }
+    if (el.content) {
+      collectMediaAlts(el.content, map);
+    }
+  }
+}
+
+/**
  * Recursively map every <table> node's id to its structure node (with .rows/.cells).
  * Used so container builders can translate direct-child tables they keep in place
  * (their structure node is a sibling of the container, not held by the builder). OC-B fix.
@@ -2081,6 +2107,26 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   collectFigureCaptions(structure.content, figureCaptions);
   const figureAlts = {};
   collectFigureAlts(structure.content, figureAlts);
+  const mediaAlts = {};
+  collectMediaAlts(structure.content, mediaAlts);
+  // §C88 — SECOND SOURCE, beyond the task-2 spec: `structure.inlineMedia` (the
+  // pre-existing [[MEDIA:N]] placeholder mechanism from §C81/§C89) is where the
+  // ALREADY-EXTRACTED residual m68801 actually carries its alt. collectMediaAlts
+  // alone cannot reach it: m68801's media is a list-item block child, recorded
+  // in structure as a bare `{type:'media', id}` (no `.alt`) inside the item's
+  // `blockChildren`, never as a `type:'media'` node in `.content` with `.alt`.
+  // Its [[MEDIA:N]] placeholder is deliberately suppressed at expansion time
+  // (blockMediaIds, "OC-E Layer 2") to avoid duplicating the block-preserved
+  // DOM node, so nothing else ever reaches this alt without this second source.
+  // ⚠️ Source from `structure.inlineMedia`, NEVER `resolvedInlineMedia` — that
+  // is built later (after getSeg binds) and its `.alt` is already flattened to
+  // a plain string by then, with the segmentId gone.
+  // ⚠️ `m.id &&` guard kept for the same reason collectMediaAlts requires an id:
+  // organic has 243 id-less inline media entries (12.7%) that cannot be
+  // addressed at inject.
+  for (const m of structure.inlineMedia || []) {
+    if (m.id && m.alt?.segmentId) mediaAlts[m.id] = { segmentId: m.alt.segmentId };
+  }
   const tableNodesById = {};
   collectTableNodes(structure.content, tableNodesById);
   const figuresHandledInNotes = new Set();
@@ -2101,6 +2147,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   const ctx = {
     figureCaptions,
     figureAlts,
+    mediaAlts,
     peekSeg,
     figuresHandledInNotes,
     figuresHandledInContainers,
@@ -2476,6 +2523,56 @@ function applyFigureAltDom(figEl, ctx) {
     }
   }
   return false;
+}
+
+/**
+ * §C88 — write translated alt onto every BARE `<media>` inside a
+ * preserved-verbatim container, before it is serialized.
+ *
+ * The §C89 mirror of applyFigureAltDom, keyed on MEDIA id instead of figure id.
+ * Runs over the whole container subtree: a media that IS inside a `<figure>`
+ * has already been handled by applyFigureAltDom, and re-writing the same value
+ * is idempotent, so no ancestor test is needed.
+ *
+ * 🔴 Reads through ctx.peekSeg, NOT getSeg. An absent alt translation is normal
+ * (§C82 keeps pre-§C81 vintages live), and getSeg would record a miss and make
+ * inject REFUSE the module — §C89's first-cut defect.
+ *
+ * 🔴 Rewrites attributes IN PLACE and never constructs a `<media>`:
+ * deduplicateMedia keeps the FIRST media by id, so an appended translated copy
+ * would be silently deleted (§C81's Critical).
+ *
+ * @param {Element} containerEl a preserved container element (example/exercise/note)
+ * @param {object} ctx build context carrying `mediaAlts` and `peekSeg`
+ * @returns {number} how many alt attributes were actually rewritten
+ */
+function applyMediaAltDom(containerEl, ctx) {
+  if (!containerEl || !ctx || !ctx.mediaAlts) return 0;
+  let written = 0;
+  const medias = Array.from(containerEl.getElementsByTagName('media'));
+  for (const media of medias) {
+    const mediaId = media.getAttribute('id');
+    if (!mediaId) continue;
+    const entry = ctx.mediaAlts[mediaId];
+    if (!entry) continue;
+    const translated = ctx.peekSeg ? ctx.peekSeg(entry.segmentId) : null;
+    if (!translated) continue;
+
+    if (media.getAttribute('alt')) {
+      media.setAttribute('alt', translated);
+      written++;
+      continue;
+    }
+    const images = Array.from(media.getElementsByTagName('image'));
+    for (const image of images) {
+      if (image.getAttribute('alt')) {
+        image.setAttribute('alt', translated);
+        written++;
+        break;
+      }
+    }
+  }
+  return written;
 }
 
 /**
@@ -3307,6 +3404,8 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       applyFigureAltDom(fig, ctx);
     }
   }
+  // §C88 — bare <media> in this container have no <figure> to key on.
+  applyMediaAltDom(exampleEl, ctx);
 
   // Mark kept figures so buildFigure skips the standalone copy
   if (ctx && ctx.figuresHandledInContainers) {
@@ -3638,6 +3737,8 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
       applyFigureAltDom(fig, ctx);
     }
   }
+  // §C88 — bare <media> in this container have no <figure> to key on.
+  applyMediaAltDom(exerciseEl, ctx);
 
   // Mark kept figures so buildFigure skips the standalone copy
   if (ctx && ctx.figuresHandledInContainers) {
@@ -3988,6 +4089,11 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       }
     }
   }
+
+  // §C88 — bare <media> in this note have no <figure> to key on, so the loop
+  // above never reaches them; and a note with zero figures skips that loop
+  // entirely. Runs once, on the whole note subtree.
+  applyMediaAltDom(noteEl, ctx);
 
   // C13: a figure kept inside a note para is already in the output DOM, so the
   // hoisted standalone structure entry must not be emitted a second time. The
@@ -4823,4 +4929,6 @@ export {
   buildFigure, // §C81: exported for alt dual-shape tests
   applyMathLabelSubstitution,
   getMathLabelResolver,
+  collectMediaAlts, // §C88: exported for bare-media alt write-back tests
+  applyMediaAltDom, // §C88
 };
