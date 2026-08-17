@@ -419,6 +419,72 @@ Every case passes a tmp `sourceDir` with no sibling config, so the gate refuses 
 
 ---
 
+## Task 7: Wire G2, G3 and G4 — the gates that exist but are never called
+
+> 🔴 **ADDED 2026-08-17 after the whole-branch review. This task exists because the plan had a
+> hole: Tasks 2–3 built four gates, Task 4 wired ONE, and no later task wired the rest.**
+> Confirmed by counting production call sites: `assertRefreshable` **1**; `assertVintageAdvances`,
+> `assertLicenceUnchanged`, `assertWritePathAllowed` **0 each** — against a module that defines
+> four. **A gate that exists and is never called is indistinguishable from a gate that does not
+> exist, except that it reads as protection to anyone auditing the module.**
+>
+> ⚠️ **§C92's approved organic refresh MUST NOT RUN until this task lands.** G1 alone still fully
+> blocks the three CC BY books, so nothing irrevocable is exposed — but the refresh's own rails
+> are absent: no check that upstream's licence flipped (G3), no vintage bookkeeping (G2), and
+> nothing keeping the write out of `docx/` and `exercises/` (G4).
+
+**Files:** `tools/download-source.js` · `tools/__tests__/source-downloader.test.js` ·
+`server/routes/admin.js` (comment only)
+
+**Interfaces consumed** (all shipped and mutation-tested; do not change their signatures):
+`assertVintageAdvances(sourceDir, newCommit) → {previousCommit}` ·
+`assertLicenceUnchanged(collectionXml, expectedCode)` ·
+`assertWritePathAllowed(relPath, localOrigin)` · `LICENCE_URL_TO_CODE`
+
+- [ ] **Step 1: Wire G3 at the seam that already exists.** `download-source.js` downloads and
+      parses the collection XML *before* `organizeSourceFiles` runs — so G3 fits with no
+      restructuring. Read the freshly-fetched collection's `<md:license url=…>`, map it through
+      `LICENCE_URL_TO_CODE`, and require exact equality with the book's recorded code.
+      ⚠️ **Parse the LEAF element, not the wrapper.** Chemistry uses unprefixed
+      `<metadata mdml-version="0.5">`, organic uses `<col:metadata>`; only `<md:license>` keeps
+      its prefix in both. A parser that walks down from the wrapper works on one book and
+      silently fails on the other.
+
+- [ ] **Step 2: Wire G2 before the write.** `.source-info.json` must exist, carry a `commitHash`,
+      and the new upstream commit must differ from it. ⚠️ `efnafraedi-2e` has **no**
+      `.source-info.json` — it is protected by G1 anyway, which is exactly why G2 is a gate and
+      not a warning.
+
+- [ ] **Step 3: Wire G4 into the copy loop**, so each written path is checked against the closed
+      write allowlist and the `localOrigin` carve-out. **This is what keeps a refresh out of
+      `docx/` (273 chemistry files, the sole CC BY provenance basis for the hand-authored
+      `m68662.cnxml`) and `exercises/` (1,961 organic files)** — both outside `computeFiles`'
+      `*.cnxml` walk and therefore outside every hash gate.
+
+- [ ] **Step 4: One refusal test per newly-wired gate**, each with a passing control in the same
+      file. Then **mutate each wiring call away and confirm the corresponding test goes RED** —
+      not green; these are `toThrow` assertions, and a refusal test that stays green under
+      mutation is vacuous. Confirm every refusal test is reached by some mutant.
+
+- [ ] **Step 5: Fix `server/routes/admin.js:352`** — it still reads *"delete 01-source/ by hand
+      first, then re-run download-source.js --allow-overwrite-source"*, the exact destructive
+      instruction Task 4 removed from the live error message. Comment only; the JSON response is
+      fine. **A destructive recipe surviving in a comment is how it gets followed.**
+
+- [ ] **Step 6: Two tidies from the review.** Remove the dead `cfg.licence || cfg.license`
+      fallback (it never loosens the match, but it implies a second supported shape that does not
+      exist). And move `main()`'s `mkdir` of the empty `sourceDir` to *after* G1 — no bytes are at
+      risk today, but the "before any write" claim is load-bearing in a comment and should be
+      literally true.
+
+- [ ] **Step 7: `npm test` · `npm run lint` · `npm run format:check`, all from the repo root.
+      Re-count the production call sites and confirm all four gates are now ≥1.** That count is
+      the acceptance criterion — it is what caught the gap.
+
+- [ ] **Step 8: Commit.**
+
+---
+
 ## Self-Review
 
 **Spec coverage.** G1 → Task 2. G2/G3 → Task 3 (gated on Task 1's premise check). G4 + `localOrigin` → Task 2. Placement (no new tool, CJS, sibling-config path resolution) → Task 2's module header. Manifest v2 + supersede-never-regenerate → Task 5. The test plan's five items → Tasks 2, 4, 5. Threat model (out of model: an insider editing CNXML *and* config *and* manifest) → Task 2's module docstring.
