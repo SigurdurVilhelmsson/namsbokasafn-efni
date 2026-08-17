@@ -1,6 +1,23 @@
 <!-- FROZEN EVIDENCE — banner-dated 2026-08-16. Per CLAUDE.md § One source of truth this is
      EVIDENCE, never status. If it disagrees with the active register, THE REGISTER WINS. -->
 
+<!-- ⚠️ AMENDED 2026-08-17 — the pre-planning verification gate. 52 claims in this document were
+     re-derived from the tree; 43 confirmed, 3 falsifications upheld after adversarial
+     adjudication, 3 overturned (this document was right and the verifier erred).
+     Amendments are inline and banner-dated at §1, §6, §7 and §8. Nothing is silently edited.
+     Evidence → test-results/c88-spec-verification-2026-08-17.md
+     ▶ THE TWO THAT MATTER, both in §6's table: the problem/solution emit point names TWO of a
+     THREE-function chain (a plan built on it is a corpus-wide no-op), and the entry row's
+     mechanism cites an `addSegment` call that is never reached on that path. -->
+
+> ## ⚠️ READ BEFORE PLANNING FROM §6
+>
+> **The design (approach A) is sound and the population is confirmed.** But §6's table — the part
+> a plan author implements directly — has **two wrong cells**, both measured 2026-08-17 and both
+> corrected in the amendment block immediately after the table. A plan written from the table as
+> originally drafted recovers **144 of 197**, not 197, and the missing 53 fail *silently* with
+> every count-based gate green. **Read §6's "⚠️ AMENDED 2026-08-17" block before writing tasks.**
+
 # §C88 — reaching the 197 chemistry figure-alt attributes the extractor never visits
 
 **Owns:** the measured population, the two [LEAD] rulings, the id-stability constraint that
@@ -39,6 +56,23 @@ By `altReachability`'s own reason codes:
 
 ⚠️ **Pre-existing and orthogonal to §C81** — these positions have never been visited for **any**
 content type. Not a regression that branch caused.
+
+> **⚠️ AMENDED 2026-08-17 — the *orthogonal* half is CONFIRMED; the *never visited* half is
+> loosely worded and should be read in its corrected form.**
+>
+> **Confirmed:** alt extraction did not exist at all before §C81 — **0** `addSegment('alt'` calls
+> in the pre-§C81 extractor, against a positive control of 22 `addSegment(` calls total. Chemistry
+> alt coverage therefore went **0 → 952**, never 1,149 → 952. §C81 caused no regression here.
+>
+> **Corrected wording:** at these node locations a *different* element type **is** emitted — swap a
+> bare `<media>` for `<para>SENTINEL</para>` and 16 of 16 are extracted. The defensible statement,
+> which measures true at **0 of 197** against a **952 of 952** control, is: ▶ *no extraction walk
+> ever reads a `<media>` in these positions.*
+>
+> One sub-case is stronger than the general claim and is worth carrying into §6: for the **29
+> `entry` rows the host `<entry>` really does emit nothing at all** (sentinel test: 84→108 and
+> 14→19 — every one of the 29 hosts is silent). The 84/14 entry segments those modules do emit come
+> entirely from *other* cells.
 
 ---
 
@@ -211,16 +245,89 @@ in full, and — because of §3.1 — makes a later fix cost a full re-extract a
 
 ### The five emit points (approach A)
 
+> **⚠️ AMENDED 2026-08-17 — "five" is a count of REASON CODES, not of code sites.** §1 lists five
+> reason codes; this table has **four rows**, because `problem` (40) and `solution` (13) share one
+> owner. A planner will hunt for a missing fifth row: **there is none.**
+>
+> ▶ **And do not read the row count as a count of functions to change either.** The
+> problem/solution row spans **two** functions, not one — see the amendment below the table. The
+> total number of code sites is **not asserted here**; derive it from the corrected rows when
+> writing tasks, and state it once, in the plan.
+
 | position | owner | walk visits it? | emit point |
 |---|---|---|---|
 | `example` (105) | `processExample` | **no** — extracts only paras/lists/equations/notes, and `processTopLevelContent` strips `example.fullMatch` before the standalone-media scan | new media pass after the para loop, using the existing strip idiom |
-| `problem`/`solution` (53) | `processExercise` → `orderedExerciseBlocks` | **no** — returns only `para`/`list` kinds | **the one natural document-order point**: `orderedExerciseBlocks` already sorts blocks by source offset; add `media` as a third kind |
+| `problem`/`solution` (53) | 🔴 **WRONG — see amendment ①** ~~`processExercise` → `orderedExerciseBlocks`~~ | **no** — returns only `para`/`list` kinds | 🔴 **INSUFFICIENT — see amendment ①.** ~~**the one natural document-order point**: `orderedExerciseBlocks` already sorts blocks by source offset; add `media` as a third kind~~ |
 | `note` (10) | `processNote` | **no** | new scan after the para loop. ⚠️ **9 of 10 are notes nested inside `<example>`**, reached through a 5-arg `processNote` call with no `inlineMediaMap` — a direct `addSegment` works there; anything routed through `inlineMediaMap` silently misses 9 of 10 |
-| `entry` (29) | `processTable` | **yes** — but calls `extractInlineText` without `inlineMediaMap`, so the media is stripped, `text` is `''`, and `addSegment` returns `null` | inside the entry loop, where the empty text is discarded |
+| `entry` (29) | `processTable` | **yes** — but calls `extractInlineText` without `inlineMediaMap`, so the media is stripped and `text` is `''`. 🔴 ~~and `addSegment` returns `null`~~ — **WRONG, see amendment ②: `addSegment` is never called** | inside the entry loop, where the empty text is discarded *(this cell is correct)* |
+
+> ## ⚠️ AMENDED 2026-08-17 — two cells of the table above are wrong. Measured.
+>
+> ### ① `problem`/`solution` (53 alts): the emit point spans TWO functions; the table names one.
+>
+> **The real chain is `processExercise` → `emitExerciseSection` → `orderedExerciseBlocks`** —
+> three hops. The omitted middle hop is **where the dispatch lives**. `emitExerciseSection` is at
+> `tools/cnxml-extract.js:1688`, calls `orderedExerciseBlocks` at `:1704`, and is itself called
+> from `processExercise` at `:1771` and `:1787`. The name appears **0 times** in this document as
+> originally written (positive control: `orderedExerciseBlocks`, 1 occurrence).
+>
+> **Two-arm controlled experiment, all 149 chemistry modules:**
+>
+> | arm | alt delta | modules changed |
+> |---|---|---|
+> | the table's literal prescription — add a `media` kind in `orderedExerciseBlocks` only | **0** | **0** |
+> | add a `block.kind === 'media'` branch in **`emitExerciseSection`** | **+53** | **24** |
+>
+> 🔴 **The literal prescription is a corpus-wide NO-OP, and it fails SILENTLY.** Instrumentation
+> confirms the media blocks *do* reach the consumer — they fall through to the para branch, where
+> `toText` returns `''` and they are dropped. No error, no count moves, every gate green.
+> ▶ **That is §C89's exact shape, reproduced inside the document written to prevent it.**
+>
+> **Two riders the corrected row needs, neither obvious from the diff:**
+> - **(a)** The alt-emitting machinery already exists at that call site —
+>   `drainInlineMediaAlts(inlineMediaMap, addSegment)` → `addSegment('alt', …)`. So the consumer
+>   branch is *small*. What is missing is a media block shaped so `extractInlineText` can see the
+>   element: **the para branch passes `.content`, not `.fullMatch`.**
+> - **(b) 🔴 The branch MUST also push a structure entry into `content`.** Emitting the alt segment
+>   without one recreates §C89 literally — extracted, translated, paid for, nowhere to land at
+>   inject. *(The verification arm that recovered 53 deliberately did NOT push a structure entry.
+>   It was a positive control proving reachability, **not** a proposed patch. Do not copy it.)*
+>
+> ### ② `entry` (29 alts): `addSegment` is never called on this path.
+>
+> The table says the media is stripped, `text` is `''`, **"and `addSegment` returns `null`"**. The
+> first two clauses are right; the third is wrong. **Both** `addSegment('entry', …)` calls in
+> `processTable` sit inside `if (text)`. With `text === ''`, control reaches the **else branch at
+> `tools/cnxml-extract.js:1465-1467`**, which pushes `{ segmentId: null, attributes }` **without
+> ever entering `addSegment`**.
+>
+> Confirmed for **29 of 29** — all in the single-content branch, **0** in the multi-para branch —
+> and proved by partition closure: empty-text entries === null cells (34===34, 5===5) alongside
+> non-empty === real ids (84===84, 14===14).
+>
+> ⚠️ **Why this one is more dangerous than it looks.** There *is* an `addSegment('entry', …)` at
+> `:1447`, in the **multi-para** branch. A plan author who goes looking for "the `addSegment` that
+> returns null" finds it, wires the emit there, and fixes **0 of 29** — the branch is 0/29 for this
+> population. ▶ **A false mechanism pointing at a real-but-wrong code site is worse than one
+> pointing at nothing**, because the wrong site compiles, runs and passes review.
+>
+> **Everything else in the row is correct**, including "walk visits it? **yes**" and the prescribed
+> emit point ("inside the entry loop, where the empty text is discarded").
 
 ⚠️ **Counter safety.** All 197 carry ids, so `altElementId` never consults the positional
 fallback *for them*. That does **not** make insertion safe — see §3.1. It only means C88 adds no
 *new* positional ids.
+
+> **✅ CONFIRMED 2026-08-17** — all 197 do carry their own `id`. Also confirmed: the
+> `deduplicateMedia` first-wins hazard below is real and reproducible, and it applies to **all four**
+> C88 containers, not only examples. §C89 did avoid it by rewriting attributes in place with zero
+> node construction.
+>
+> ⚠️ **And §3.1's id shear is now measured on a realistic emit point, not only on the synthetic
+> position-zero probe:** in the corrected two-function exercise arm, **4 of 149 chemistry modules
+> had positional `entry:auto-N` ids renumber** — with segment-list lengths *identical* on both
+> sides (93/93, 263/263, 356/356). ▶ **Equal lengths, sheared mapping. The blocking ruling holds at
+> the emit points C88 will actually use.**
 
 ⚠️ **`deduplicateMedia` hazard.** `buildExampleDom` keeps the **first** `<media>` by id, so a
 newly-built translated copy appended after a preserved English one is **silently deleted** —
@@ -238,6 +345,43 @@ never constructing a `<media>`; C88 must do the same.
   **That reconciliation changes.** Re-derive the warning; do not carry it forward unexamined.
 - Every committed pin recording alt counts. **Enumerate them by reading the pins, not the prose.**
 - `alt-writeback-corpus.test.js`'s chemistry pin — `m68801` should stop being the residual.
+
+> ## ✅ AMENDED 2026-08-17 — the enumeration, done by reading the pins
+>
+> The instruction above ("enumerate them by reading the pins, not the prose") was carried out.
+> ⚠️ **This list is dated. Re-read the pins before trusting it** — that is what the original
+> instruction is for, and it still governs. Predicted post-C88 values are marked `→`.
+>
+> | file | pin | class |
+> |---|---|---|
+> | `alt-coverage-corpus.test.js:45,46` | `reachable` 952 → **1,149** · `unreachable` 197 → **0** | moves |
+> | `alt-coverage-corpus.test.js:51-57` | five-key reason `toEqual` → `{}` | moves |
+> | `alt-coverage-corpus.test.js:91-93` | `reachableTotal` 952→1,149 · `emittedTotal` 951→~1,148 · shortfall `[{m68727, 6, 5}]` (module stays, pair changes) | moves |
+> | `alt-coverage-corpus.test.js:40,47` | 149 modules · 1,149 total | **invariant** |
+> | `alt-writeback-corpus.test.js:77,78,87` | chemistry `emitted` 951→~1,148 · `reached` 950→~1,148 · `dropped ['m68801']` → `[]` | moves |
+> | 🔴 `alt-writeback-corpus.test.js:101-103` | **organic** 1,918 → **2,163**, `dropped []` at risk | **at risk — see hazard ⓐ** |
+> | `extraction-coverage.test.js:207-208, 219-234, 279` | five unit fixtures `unreachable: 1` all invert; `{reached:2,expected:2,unreached:1}` → `{3,3,0}`; describe title at `:194` | moves |
+> | ⚠️ `cnxml-extract-alt-corpus.test.js:94` | `positional` must stay `[]` — the new capture sites must not mint `media-N-alt` ids | **must not move** |
+> | ⚠️ `cnxml-extract-alt-corpus.test.js:124,143` | duplicate-alt-**ID** `[]` | **must not move** |
+> | 🔴 `cnxml-extract-alt-corpus.test.js:167` | organic duplicate-alt-**TEXT** `[]` | **must not move — see hazard ⓑ** |
+> | `inject-roundtrip-corpus.test.js:134-139` | loss `['m00032']` / gain `['m00023','m00046']` | **must not move** |
+> | `alt-writeback.test.js` (6× `toBe(1)`), `cnxml-extract-alt.test.js`, `alt-segments.test.js`, `cnxml-inject-alt.test.js`, `cnxml-render-alt-escaping.test.js` | — | **does not move** — no C88-blind fixture; the problem/solution fixtures nest media in a `<para>`, already reachable |
+> | `test-results/c81-alt-extraction-2026-08-15.json` | 951 / 1,149 / 442 / 197 / 32 | **not a test — a frozen artifact that will silently disagree with the tree after C88** |
+>
+> ### 🔴 Two hazards this document does not otherwise mention
+>
+> **ⓐ Organic's pin moves even though §2 scopes the population to chemistry alone.** §6's `entry`
+> emit point sits inside `processTable`, which is **book-agnostic**, and the corpus sweep runs the
+> live extractor over all **342** organic source modules — not merely the 17 with committed
+> segments. Expect organic `emitted`/`reached` 1,918 → **2,163** alt segments. ▶ **Either scope the
+> emitter to the book, or move the organic pin deliberately and say so in the PR.** Silently
+> re-baselining it is how a scope ruling gets widened without a decision.
+>
+> **ⓑ `cnxml-extract-alt-corpus.test.js:167` is at genuine risk, and the id-based pins cannot see
+> it.** Organic's 245 `entry-not-in-figure` alts are **0-of-245 id-bearing**, so C88's entry
+> emitter mints **id-less** segments there. Repeated table-cell alt text would then trip a
+> duplicate-alt-**TEXT** pin while every duplicate-alt-**ID** pin stays green. ▶ **Different
+> property, different instrument** — do not treat the ID pins as cover for the TEXT one.
 
 ---
 
@@ -263,6 +407,49 @@ never constructing a `<media>`; C88 must do the same.
    the mapping, never the id set** (§3.1). This is expected to FAIL for `auto-N` ids, which is
    exactly why C88 must land before extraction; the gate exists to prove nothing has been
    extracted yet, not to prove the ids are stable.
+
+> ## ⚠️ AMENDED 2026-08-17 — one correction, two things that were CHALLENGED AND HELD
+>
+> ### ③ Check 1: one of the two named shortfalls contributes **zero**. *(correction)*
+>
+> Check 1's rationale names **two** pre-existing shortfalls between "reachable" and "emitted".
+> Measured: the gap is **exactly 1 alt segment**, all of it `m68727` (pinned as a single-element
+> array). **§C87 ① is latent and worth 0** — and structurally so, not just today: across all five
+> content books, alt-only-on-`<image>` = **0** and `<media>` with more than one `<image>`
+> descendant = **0**, so the image-fallback half of the `mediaAlt` predicate **cannot fire on this
+> corpus**, including on the 197 after C88 widens the reachable set.
+>
+> ▶ **The conclusion is unaffected — state the gate as a DELTA — and it rests soundly on `m68727`
+> alone.** Keep the §C87 ① reference, but move it from "shortfalls to budget for" to "latent risks
+> C88 inherits". A planner who budgets for two sources of slack and finds one will assume they
+> mismeasured.
+>
+> ### Check 1's field names: a wording nit, **not** a defect. *(challenged, overturned)*
+>
+> `checkAltCoverage` returns **`unreached` / `expected`**; **`reachable` / `unreachable`** are
+> `altReachability`'s keys. Both are the source's own concept vocabulary and the committed pin uses
+> the same words, so the check is unambiguous as written. Optional rewording if you touch it:
+> *"`altReachability`'s `unreachable` 197 → 0 and `reachable` 952 → 1,149 — i.e. `checkAltCoverage`'s
+> `unreached` → 0 and `expected` → 1,149."*
+>
+> ### 🔴 Check 3 is SOUND. A challenge that it is an unpassable gate was REFUTED. *(overturned)*
+>
+> Recorded because the challenge is the plausible reading, and acting on it would relax the
+> blocking constraint — the same failure §3.1 already narrowly avoided once.
+>
+> The challenge held that check 3 cannot pass, protects no existing mapping, and is really a
+> precondition mis-filed as an acceptance criterion. **The empirical leg is false.** The mapping
+> check 3 protects is **not** alt ids — it is the pre-existing **non-alt `auto-N` ids**, which
+> exist in duplicate and are **money-backed**: 6,085 identical `auto-N` ids on the `02-for-mt`
+> source side *and* on the purchased `02-mt-output` side, with the same 4,889 `:para:` control on
+> both. Shear those and you have misattached Icelandic text in a corpus you have already paid for.
+>
+> ▶ **Residual, and it is taxonomy rather than substance:** filing check 3 under "Acceptance gate"
+> rather than a Preconditions block is *loose, not wrong*. Read it as: **"prove nothing has been
+> extracted at the C88 vintage yet"** — which is checkable, and which **measured TRUE on
+> 2026-08-17** (three independent instruments, each with a positive control in the same command;
+> see the verification artifact). **That window is what makes approach A cheap, and it closes the
+> moment any chemistry module is extracted.**
 
 **Positive control for each:** the in-`<para>` and standalone positions must stay at 100%
 throughout. A sweep that examined nothing reports clean, and this project's rule is that an
