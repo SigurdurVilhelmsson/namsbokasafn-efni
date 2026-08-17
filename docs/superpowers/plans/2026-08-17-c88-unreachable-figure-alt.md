@@ -371,6 +371,49 @@ Expected: the chemistry test now **FAILS** on `expect(r.dropped).toEqual(['m6880
 
 > ▶ **That failure is the deliverable.** It is the only corpus-level evidence this task worked, and it exists before any emitter is written.
 
+> ## 🔴 CORRECTED 2026-08-17, DURING EXECUTION — THIS STEP AS WRITTEN ABOVE IS WRONG
+>
+> **`collectMediaAlts` alone does NOT reach `m68801`, so the failure this step predicts does
+> not occur.** Measured on merged source, with the counts side by side: m68801 emits **1** alt
+> segment; reachable via `collectMediaAlts`'s `.content` walk = **0**; reachable via
+> `structure.inlineMedia` = **1**.
+>
+> **Why.** m68801's media is a list-item block child, recorded in the structure as a bare
+> `{type: 'media', id}` with **no `.alt`** — the alt lives on a `structure.inlineMedia` entry
+> instead, put there by §C81's `[[MEDIA:N]]` placeholder mechanism via `drainInlineMediaAlts`.
+> And that placeholder is deliberately suppressed at expansion time (`blockMediaIds`, "OC-E
+> Layer 2") so the block-preserved DOM node is not duplicated. **So nothing reaches this alt
+> without a second source.**
+>
+> **A SECOND SOURCE is therefore part of Task 2**, folded in at the Step 5 `ctx` wiring site
+> (not inside `collectMediaAlts`, which stays exactly as specified — it is correct for the
+> `{type:'media', id, alt}` nodes Tasks 4–7 will add):
+>
+> ```javascript
+>   // ⚠️ Source from `structure.inlineMedia`, NEVER `resolvedInlineMedia` — the latter is
+>   // built after getSeg binds and its `.alt` is already flattened to a plain string, with
+>   // the segmentId gone.
+>   // ⚠️ `m.id &&` for the same reason collectMediaAlts requires an id: organic has 243
+>   // id-less inline media entries that cannot be addressed at inject.
+>   for (const m of structure.inlineMedia || []) {
+>     if (m.id && m.alt?.segmentId) mediaAlts[m.id] = { segmentId: m.alt.segmentId };
+>   }
+> ```
+>
+> ▶ **The two sources are complementary and BOTH are load-bearing** — `collectMediaAlts` for
+> the structure nodes §C88's emitters create, the `inlineMedia` loop for §C81's pre-existing
+> placeholder entries. Neither subsumes the other.
+>
+> **Corrected expectation for this step:** with both sources wired, chemistry goes
+> `reached` 950 → 951 and `dropped: ['m68801']` → `[]`, and **organic must stay exactly
+> 1,918/1,918 with `dropped: []`** — if organic moves here, stop: that is Task 10's tripwire,
+> not this step's success.
+>
+> *Recorded rather than silently rewritten because the wrong prediction is itself the
+> finding: the plan reasoned from where an alt SHOULD live in the structure, not from where
+> this one DOES. It was caught only because the step demanded a specific failure and the
+> implementer got silence instead — a vaguer "check it works" would have passed.*
+
 - [ ] **Step 9: Move the m68801 pin**
 
 In `tools/__tests__/alt-writeback-corpus.test.js`, update the chemistry case:
