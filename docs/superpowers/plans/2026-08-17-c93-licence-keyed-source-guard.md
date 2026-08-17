@@ -318,7 +318,11 @@ Expected: PASS.
 
 - [ ] **Step 5: 🔴 Verify each refusal against the BROKEN state**
 
-For **each** refusal test, neutralise the gate it exercises (e.g. temporarily make `assertRefreshable` a no-op, or make `WRITE_ALLOW` match everything), re-run, and confirm **that specific test goes green** (i.e. the write would have been allowed). Restore. Record which tests you checked and what happened.
+For **each** refusal test, neutralise the gate it exercises (e.g. temporarily make `assertRefreshable` a no-op, or make `WRITE_ALLOW` match everything), re-run, and confirm **that specific test FAILS**. Restore. Record which tests you checked, which mutant flipped each, and what happened.
+
+> 🔴 **CORRECTED 2026-08-17 — this step first said "confirm that specific test goes green", which is INVERTED and dangerous.** These are `expect(...).toThrow()` assertions: with the gate removed the call no longer throws, so the test goes **RED**. A refusal test that stays **green** under mutation is precisely the vacuous case this step exists to catch — the original wording told the implementer to accept exactly what it was meant to reject.
+>
+> ⚠️ **And one mutant per gate is not enough — check that every refusal test is reached by some mutant.** Neutralising the path allowlist does **not** exercise the `localOrigin` carve-out, because the carve-out runs *after* it; a sweep of A–C would have reported "all refusal tests discriminate" with two unchecked. **A mutant that does not reach a test tells you nothing about that test.**
 
 > A refusal test that would still refuse with the gate removed proves nothing. Task 2 of the §C88 branch found a negative test that could not discriminate at all — do not repeat it.
 
@@ -351,7 +355,7 @@ The URL→code map is a **closed enum**; an unrecognised URL refuses. Write the 
 
 - [ ] **Step 4: Run and verify they pass.**
 
-- [ ] **Step 5: Verify each refusal against the broken state**, as Task 2 Step 5.
+- [ ] **Step 5: Verify each refusal against the broken state**, as Task 2 Step 5 — **neutralise the gate and confirm the refusal test goes RED, not green** (see the correction there), and confirm every refusal test is reached by at least one mutant.
 
 - [ ] **Step 6: Commit.**
 
