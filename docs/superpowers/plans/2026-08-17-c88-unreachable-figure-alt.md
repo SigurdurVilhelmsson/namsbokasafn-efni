@@ -30,6 +30,7 @@ Every task's requirements implicitly include this section.
 - **Root `npm test` (run from the repo root) is the authoritative gate.** `npm test` is `vitest run` and does **not** run Playwright. CI also runs `npm run lint` **and** `npm run format:check`.
 - **`docs-check` CI fires on `tools/**` changes.** This plan modifies `tools/`, so `npm run docs:generate` must be run and its output committed (Task 11).
 - **Scope: chemistry's 197. Nothing else.** Organic is explicitly out ([LEAD] ruling, spec §2) — but see Task 10, because two code paths are book-agnostic and will move organic's pins anyway.
+- **✅ `extractElements(content, 'media')` handles self-closing `<media …/>` correctly — verified 2026-08-17, do NOT add an expansion step.** Its pattern is `<tag([^>]*?)(?:\/>|>([\s\S]*?)<\/tag>)` and the **lazy** `[^>]*?` reaches the `\/>` branch before the trailing `/` is consumed; there is a comment at `tools/lib/cnxml-parser.js:186` saying so, and a test. It returns `{id, attributes, content, fullMatch}` — the shape all four emitters assume. ⚠️ **Do not generalise from `processTable`'s `<entry.../>` expansion at `:1439`:** that guards a *different*, hand-rolled greedy `<entry([^>]*)>` regex, not `extractElements`. Two similar-looking patterns, only one of which needs the workaround.
 
 ---
 
@@ -347,7 +348,9 @@ and add `mediaAlts,` to the `ctx` object literal (currently `figureCaptions, fig
   applyMediaAltDom(exerciseEl, ctx);
 ```
 
-`buildNoteDom` — the figure loop there is inside a larger `for` over figures (`:3962-3974`). Do **not** put the media call inside that loop; add it immediately **after** the loop closes, so it runs once per note and runs even when the note has no figures:
+`buildNoteDom` — the figure handling there is a `for` over `noteEl.getElementsByTagName('figure')` (`:3962-3974`) whose body starts with `if (!figId) continue;`. Do **not** put the media call inside that loop.
+
+⚠️ **Read the surrounding braces before inserting.** The insertion point must be after the loop's closing `}` **and** outside any enclosing conditional that a figure-less note would skip — a note with zero figures must still get its bare media translated, and 9 of the 10 corpus instances are notes nested in examples that may have no figure at all. Verify by checking that the new line's indentation matches the `for`'s, not the loop body's:
 
 ```javascript
   // §C88 — bare <media> in this note have no <figure> to key on, so the loop
@@ -861,6 +864,39 @@ describe('§C88 — bare media alt in <example>', () => {
     );
     expect(altSegs(r).map((s) => s.text)).toEqual(['In a note']);
   });
+
+  it('🔴 STRIP-ORDER GUARD — a para, a SIBLING list and a bare media in one example', () => {
+    // The fixture the two tests above cannot catch: `paras` is shallow and
+    // `lists` is nested, so a list-before-para strip leaves the para in the
+    // residue and double-emits its inline media. Exactly three alts, in order.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <para id="p1">Text <media id="m-x" alt="A"/> more.</para>
+             <list id="l1"><item id="i1"><media id="m-y" alt="B"/></item></list>
+             <media id="m-z" alt="C"/>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'B', 'C']);
+    expect(altSegs(r).map((s) => s.id)).toEqual([
+      'm00001:alt:m-x-alt',
+      'm00001:alt:m-y-alt',
+      'm00001:alt:m-z-alt',
+    ]);
+  });
+
+  it('🔴 STRIP-ORDER GUARD — a list NESTED INSIDE the para, the worst case', () => {
+    // Here the list's fullMatch is a substring of the para's. Strip the list
+    // first and the para never matches, survives, and m-x is emitted twice.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <para id="p1">Text <media id="m-x" alt="A"/>
+               <list id="l1"><item id="i1">inner</item></list>
+             </para>
+             <media id="m-z" alt="C"/>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'C']);
+  });
 });
 ```
 
@@ -883,9 +919,18 @@ In `tools/cnxml-extract.js`, immediately after the lists loop (ends `:1613`) and
   //
   // Uses the STRIP IDIOM so a media nested in a <list>/<note>/<para> is not
   // taken twice — those walks own their own copies.
+  // 🔴 STRIP ORDER IS LOAD-BEARING: PARAS FIRST, then lists, then notes.
+  // `paras` is SHALLOW (extractElements) but `lists` is NESTED
+  // (extractNestedElements), so a list's fullMatch can sit INSIDE a para's
+  // fullMatch. Strip that list first and the para's fullMatch no longer matches
+  // the mutated string — the para SURVIVES the strip, and its inline <media> is
+  // emitted a SECOND time here. `dedupeAltSegments` would then collapse the pair
+  // by literal id collision, so the bug is invisible in the segment list and
+  // shows up only as a wasted emit. Paras-first makes the later list strip a
+  // harmless no-op instead.
   let exampleBareContent = example.content;
-  for (const list of lists) exampleBareContent = exampleBareContent.replace(list.fullMatch, '');
   for (const para of paras) exampleBareContent = exampleBareContent.replace(para.fullMatch, '');
+  for (const list of lists) exampleBareContent = exampleBareContent.replace(list.fullMatch, '');
   for (const note of extractNestedElements(example.content, 'note')) {
     exampleBareContent = exampleBareContent.replace(note.fullMatch, '');
   }
@@ -975,6 +1020,20 @@ describe('§C88 — bare media alt in <note>', () => {
     const note = r.structure.content.find((e) => e.type === 'note');
     expect(note.content.find((e) => e.type === 'media').alt.text).toBe('A caution icon');
   });
+
+  it('🔴 STRIP-ORDER GUARD — a para with inline media, a sibling list, and a bare media', () => {
+    // processNote has the same shallow-paras / nested-lists asymmetry as
+    // processExample. Strip the list before the para and the para survives the
+    // strip, double-emitting m-x. Exactly three alts.
+    const r = extractSegments(
+      wrap(`<note id="n1">
+             <para id="p1">Text <media id="m-x" alt="A"/> more.</para>
+             <list id="l1"><item id="i1"><media id="m-y" alt="B"/></item></list>
+             <media id="m-z" alt="C"/>
+           </note>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'B', 'C']);
+  });
 });
 ```
 
@@ -997,6 +1056,10 @@ In `tools/cnxml-extract.js`, immediately after the lists loop (ends `:1865`) and
   // through the 5-ARG processNote call at the example's notes loop, which
   // passes no inlineMediaMap at all. Routing through it would silently cover
   // 1 of 10.
+  // 🔴 PARAS FIRST — same shallow-paras / nested-lists asymmetry as
+  // processExample (`paras` is extractElements, `lists` is
+  // extractNestedElements). A list-first strip leaves a list-bearing para in the
+  // residue and double-emits its inline media. See Task 5's note.
   let noteBareContent = note.content;
   for (const para of paras) noteBareContent = noteBareContent.replace(para.fullMatch, '');
   for (const list of lists) noteBareContent = noteBareContent.replace(list.fullMatch, '');
@@ -1129,7 +1192,13 @@ In `tools/cnxml-extract.js`, replace the else branch at `:1465-1467`:
               altText,
               altElementId(media.id, counters.entryMedia, 'entry-media')
             );
-            if (altSegId) cell.alt = { segmentId: altSegId, text: altText };
+            // 🔴 `mediaId` is REQUIRED, not decorative. collectMediaAlts (Step 4)
+            // keys the inject-side map on it. It cannot be recovered from the
+            // seg-id: `${moduleId}:alt:${mediaId}-alt` only holds the media id
+            // when the media HAS one — the id-less fallback is
+            // `entry-media-N-alt`, from which parsing yields a plausible, wrong
+            // key. Carry the value.
+            if (altSegId) cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id };
           }
           rowStructure.cells.push(cell);
         }
@@ -1156,13 +1225,9 @@ In `tools/cnxml-extract.js`, replace the else branch at `:1465-1467`:
     }
 ```
 
-and add `mediaId: media.id` to the `cell.alt` object written in Step 3:
+Step 3's code block already writes `mediaId: media.id` onto `cell.alt`, so nothing further is needed on the extract side.
 
-```javascript
-            if (altSegId) cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id };
-```
-
-> **Why carry `mediaId` explicitly rather than parse it out of the seg-id:** the seg-id is `${moduleId}:alt:${mediaId}-alt` only when the media has an id; the id-less fallback is `entry-media-N-alt`, from which no media id can be recovered. Parsing would work for chemistry and silently produce a wrong key for organic. Carry the value.
+> ⚠️ **Confirm that before moving on.** Step 5's unit test builds the cell **by hand, with `mediaId` present** — so if Step 3's real code omitted it, the test would still pass and the corpus map would be silently empty. Read the line you actually wrote in `cnxml-extract.js`, don't infer it from the green test. *(Stub the shape the real collaborator returns, not the shape the consumer wants.)*
 
 - [ ] **Step 5: Add the inject-side test for the table path**
 
