@@ -23,6 +23,7 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 const { listCnxmlFiles } = require('./lib/source-manifest.cjs');
+const { assertRefreshable } = require('./lib/source-refresh-policy.cjs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -187,15 +188,30 @@ export function organizeSourceFiles({
   verbose,
   allowOverwrite = false,
 }) {
-  // F2 provenance guard: never silently overwrite the irrevocable CC BY copies.
+  // §C93 G1 — the licence-keyed book gate. Arity 1, unconditional: no flag on this tool (not
+  // even --allow-overwrite-source, checked below) can reach past it. Refuses unless this book's
+  // recorded licence is on the closed refreshable allowlist (currently CC BY-NC-SA 4.0 only) —
+  // which is exactly what keeps a CC BY book (Chemistry, Biology, Microbiology) unreachable by
+  // this tool, by any combination of flags. Must run before any write.
+  assertRefreshable(sourceDir);
+
+  // F2's populated-directory confirmation. This is NOT a licence check — G1 above already ran,
+  // unconditionally, and is what makes that guarantee. This check only asks "did you mean to
+  // overwrite what's already here?" for a book G1 has already confirmed is refreshable.
   const existingCnxml = listCnxmlFiles(sourceDir);
   if (existingCnxml.length > 0 && !allowOverwrite) {
     const book = path.basename(path.dirname(sourceDir));
     throw new Error(
       `Refusing to overwrite populated 01-source/ for '${book}' (${existingCnxml.length} CNXML ` +
-        `files present). These are the irrevocable CC BY provenance copies. To intentionally ` +
-        `replace them, follow the CLAUDE.md double-consent rule, delete 01-source/ by hand, then ` +
-        `re-run with --allow-overwrite-source.`
+        `files present). §C93 G1 has already confirmed this book's recorded licence is ` +
+        `refreshable, but this check only knows about *.cnxml — it cannot tell whether ` +
+        `01-source/ also holds a docx/ or exercises/ directory (or any other locally-obtained, ` +
+        `hand-authored file), and none of those are restored by a re-download. ` +
+        `DO NOT delete 01-source/ by hand to "fix" this refusal: that permanently destroys ` +
+        `anything a refetch cannot restore. If you intend to replace the CNXML, follow ` +
+        `CLAUDE.md's double-consent rule, then re-run with --allow-overwrite-source — it copies ` +
+        `the newly fetched modules and media over the old ones and does not delete anything else ` +
+        `under 01-source/.`
     );
   }
 

@@ -116,6 +116,16 @@ describe('organizeSourceFiles', () => {
   beforeEach(() => {
     rmSync(TMP, { recursive: true, force: true });
 
+    // §C93 G1 needs a sibling book-config.json beside sourceDir (`TMP/source`) with a
+    // refreshable licence — sourceDir/.. is TMP, so this goes at TMP/book-config.json. Real
+    // shape (`{ licence: { code, obtained } }`), not a mock of the gate: a mocked gate is a
+    // gate by care.
+    mkdirSync(TMP, { recursive: true });
+    writeFileSync(
+      join(TMP, 'book-config.json'),
+      JSON.stringify({ licence: { code: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' } })
+    );
+
     // Create mock extracted directory with modules
     const modules = [
       'm00001',
@@ -238,5 +248,63 @@ describe('organizeSourceFiles', () => {
       allowOverwrite: true,
     });
     expect(result.moduleCount).toBe(9);
+  });
+});
+
+// =====================================================================
+// §C93 G1 — the licence-keyed book gate, wired into organizeSourceFiles
+// =====================================================================
+
+describe('organizeSourceFiles — §C93 G1 licence gate', () => {
+  const CCBY_ROOT = join(TMP, 'ccby-book');
+  const ccbyExtractedDir = join(CCBY_ROOT, 'extracted');
+  const ccbySourceDir = join(CCBY_ROOT, '01-source');
+
+  beforeEach(() => {
+    rmSync(CCBY_ROOT, { recursive: true, force: true });
+
+    // A CC BY book — the irrevocable copies §C93 exists to protect. sourceDir/.. is CCBY_ROOT,
+    // so the sibling config goes there.
+    mkdirSync(CCBY_ROOT, { recursive: true });
+    writeFileSync(
+      join(CCBY_ROOT, 'book-config.json'),
+      JSON.stringify({ licence: { code: 'CC BY 4.0', obtained: '2026-01-19' } })
+    );
+
+    const modDir = join(ccbyExtractedDir, 'modules', 'm00001');
+    mkdirSync(modDir, { recursive: true });
+    writeFileSync(join(modDir, 'index.cnxml'), '<document id="m00001"><title>M</title></document>');
+  });
+
+  afterEach(() => {
+    rmSync(CCBY_ROOT, { recursive: true, force: true });
+  });
+
+  it('🔴 REFUSES a CC BY book even on a fresh, empty 01-source/ (no populated-dir loophole)', () => {
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    expect(() =>
+      organizeSourceFiles({
+        extractedDir: ccbyExtractedDir,
+        sourceDir: ccbySourceDir,
+        structure,
+        verbose: false,
+      })
+    ).toThrow(/CC BY 4\.0/);
+    // control: G1 refused before any write happened
+    expect(existsSync(join(ccbySourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  it('🔴 --allow-overwrite-source CANNOT reach a CC BY book — G1 runs unconditionally', () => {
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    expect(() =>
+      organizeSourceFiles({
+        extractedDir: ccbyExtractedDir,
+        sourceDir: ccbySourceDir,
+        structure,
+        verbose: false,
+        allowOverwrite: true,
+      })
+    ).toThrow(/CC BY 4\.0/);
+    expect(existsSync(join(ccbySourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
   });
 });
