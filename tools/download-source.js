@@ -201,8 +201,11 @@ function readLicenceCode(sourceDir) {
  * @param {string} params.sourceDir - Target 01-source/ directory
  * @param {{ chapters: Array, preface: string|null, appendixModules: string[] }} params.structure - Parsed collection structure
  * @param {boolean} params.verbose - Whether to log progress
- * @param {string} [params.collectionXml] - raw XML of the freshly-fetched collection.xml (§C93 G3)
- * @param {string} [params.newCommit] - the upstream commit sha this fetch is about to write (§C93 G2)
+ * @param {string} params.collectionXml - raw XML of the freshly-fetched collection.xml (§C93 G3).
+ *   REQUIRED: G3 refuses when it is absent — it is not an opt-in check.
+ * @param {string} params.newCommit - the upstream commit sha this fetch is about to write (§C93 G2).
+ *   REQUIRED: G2 refuses when it is absent. This was marked optional until 2026-08-17, which is
+ *   exactly the invitation that made G2's absent-input fail-open reachable by a future caller.
  * @returns {{ moduleCount: number, mediaCount: number, warnings: string[] }}
  */
 export function organizeSourceFiles({

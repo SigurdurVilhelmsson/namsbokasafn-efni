@@ -415,13 +415,57 @@ describe('organizeSourceFiles — §C93 G2/G3/G4, newly wired', () => {
       JSON.stringify({ licence: { code: 'CC BY-NC-SA 4.0', obtained: '2026-03-23' } })
     );
 
-    // Just the preface module: G4's test carves out exactly this path, and since the preface
-    // is the FIRST write attempted, a refusal there proves nothing else got written either —
-    // no reliance on iteration order among sibling files.
-    const modDir = join(g234ExtractedDir, 'modules', 'm00001');
-    mkdirSync(modDir, { recursive: true });
-    writeFileSync(join(modDir, 'index.cnxml'), '<document id="m00001"><title>M</title></document>');
+    // ONE module per write loop, and one media file — deliberately minimal. `organizeSourceFiles`
+    // skips any module with no extracted `index.cnxml` (it only pushes a warning), so planting
+    // exactly one reachable file per loop makes each G4 test order-independent: there is only
+    // ever one write attempt per loop, and it is the one the test carves out.
+    //
+    // Write order is preface -> chapters -> appendices -> media, which is what lets each test
+    // below use the PRECEDING stages' successful writes as its positive control. Without that,
+    // "the file is absent" is equally consistent with an earlier gate having refused first.
+    for (const moduleId of ['m00001', 'm68663', 'm99901']) {
+      const modDir = join(g234ExtractedDir, 'modules', moduleId);
+      mkdirSync(modDir, { recursive: true });
+      writeFileSync(
+        join(modDir, 'index.cnxml'),
+        `<document id="${moduleId}"><title>M</title></document>`
+      );
+    }
+    mkdirSync(join(g234ExtractedDir, 'media'), { recursive: true });
+    writeFileSync(join(g234ExtractedDir, 'media', 'fig1.png'), 'fake-png');
   });
+
+  /** Plant a valid `.source-info.json` (so G2 passes) plus a v2 manifest carving out `relPath`. */
+  function plantCarveOut(relPath) {
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(
+      join(g234SourceDir, '.source-info.json'),
+      JSON.stringify({ commitHash: OLD_COMMIT })
+    );
+    writeFileSync(
+      join(g234SourceDir, '.source-manifest.json'),
+      JSON.stringify({
+        version: 2,
+        book: 'g234-book',
+        algorithm: 'sha256',
+        localOrigin: [{ path: relPath, reason: 'test carve-out' }],
+        files: {},
+      })
+    );
+  }
+
+  /** Run the real wiring with every gate-relevant input supplied. */
+  function organize(overrides = {}) {
+    return organizeSourceFiles({
+      extractedDir: g234ExtractedDir,
+      sourceDir: g234SourceDir,
+      structure: parseCollectionXml(SAMPLE_COLLECTION_XML),
+      verbose: false,
+      collectionXml: SAMPLE_COLLECTION_XML,
+      newCommit: NEW_COMMIT,
+      ...overrides,
+    });
+  }
 
   afterEach(() => {
     rmSync(G234_ROOT, { recursive: true, force: true });
@@ -499,5 +543,84 @@ describe('organizeSourceFiles — §C93 G2/G3/G4, newly wired', () => {
       })
     ).toThrow(/§C93 G4 REFUSED.*localOrigin/);
     expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  // -------------------------------------------------------------------------------------
+  // G4's OTHER THREE call sites. Added 2026-08-17 by Task 7 Step 4's mutation run, which
+  // measured that only the preface site above was load-bearing: deleting the chapters,
+  // appendices or media call individually left all 4,791 tests GREEN. The chapters loop is
+  // where essentially every write in a real refresh happens, so G4's only covered site was
+  // its least consequential one.
+  //
+  // Each test carves out exactly one path and asserts the PRECEDING stages wrote — that
+  // positive control is what distinguishes "this loop's gate refused" from "something
+  // earlier refused and this file never got a turn", which the absence assertion alone
+  // cannot tell apart.
+  // -------------------------------------------------------------------------------------
+
+  it('🔴 G4 REFUSES a carved-out CHAPTER module — the loop that does nearly every real write', () => {
+    plantCarveOut('ch01/m68663.cnxml');
+    expect(() => organize()).toThrow(/§C93 G4 REFUSED.*localOrigin/);
+    expect(existsSync(join(g234SourceDir, 'ch01', 'm68663.cnxml'))).toBe(false);
+    // positive control: the preface, which is NOT carved out, was written first
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(true);
+  });
+
+  it('🔴 G4 REFUSES a carved-out APPENDIX module', () => {
+    plantCarveOut('appendices/m99901.cnxml');
+    expect(() => organize()).toThrow(/§C93 G4 REFUSED.*localOrigin/);
+    expect(existsSync(join(g234SourceDir, 'appendices', 'm99901.cnxml'))).toBe(false);
+    // positive control: both earlier loops ran to completion
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(true);
+    expect(existsSync(join(g234SourceDir, 'ch01', 'm68663.cnxml'))).toBe(true);
+  });
+
+  it('🔴 G4 REFUSES a carved-out MEDIA file — the erratum case, invisible to any CNXML diff', () => {
+    plantCarveOut('media/fig1.png');
+    expect(() => organize()).toThrow(/§C93 G4 REFUSED.*localOrigin/);
+    expect(existsSync(join(g234SourceDir, 'media', 'fig1.png'))).toBe(false);
+    // positive control: all three module loops ran to completion
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(true);
+    expect(existsSync(join(g234SourceDir, 'ch01', 'm68663.cnxml'))).toBe(true);
+    expect(existsSync(join(g234SourceDir, 'appendices', 'm99901.cnxml'))).toBe(true);
+  });
+
+  // -------------------------------------------------------------------------------------
+  // G2's absent-input path. Measured 2026-08-17: `undefined`, `null` and `''` ALL passed G2,
+  // because its only test involving `newCommit` was the equality comparison and
+  // `'<sha>' === undefined` is false — so an absent sha read as "the vintage advanced".
+  // G3 already failed closed on the same inputs; this makes the two symmetric.
+  // -------------------------------------------------------------------------------------
+
+  it.each([
+    ['undefined', undefined],
+    ['null', null],
+    ['the empty string', ''],
+  ])('🔴 G2 REFUSES when newCommit is %s — an absent sha is not permission', (_label, value) => {
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(
+      join(g234SourceDir, '.source-info.json'),
+      JSON.stringify({ commitHash: OLD_COMMIT })
+    );
+    expect(() => organize({ newCommit: value })).toThrow(/§C93 G2 REFUSED/);
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(false);
+  });
+
+  it('✅ CONTROL: the same fixture with a real, advancing sha writes every position', () => {
+    mkdirSync(g234SourceDir, { recursive: true });
+    writeFileSync(
+      join(g234SourceDir, '.source-info.json'),
+      JSON.stringify({ commitHash: OLD_COMMIT })
+    );
+    // No carve-out, correct licence, advancing vintage: all four gates pass and all four
+    // write loops run. Without this row, every assertion above is consistent with a fixture
+    // that simply cannot write anything.
+    const result = organize();
+    expect(result.moduleCount).toBe(3);
+    expect(result.mediaCount).toBe(1);
+    expect(existsSync(join(g234SourceDir, 'ch00', 'm00001.cnxml'))).toBe(true);
+    expect(existsSync(join(g234SourceDir, 'ch01', 'm68663.cnxml'))).toBe(true);
+    expect(existsSync(join(g234SourceDir, 'appendices', 'm99901.cnxml'))).toBe(true);
+    expect(existsSync(join(g234SourceDir, 'media', 'fig1.png'))).toBe(true);
   });
 });

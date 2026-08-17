@@ -108,11 +108,27 @@ function assertWritePathAllowed(relPath, localOrigin = []) {
  * describes no actual change.
  *
  * @param {string} sourceDir absolute path to a book's `01-source` directory
- * @param {string} newCommit the upstream commit sha the refresh is about to fetch
+ * @param {string} newCommit the upstream commit sha the refresh is about to fetch — REQUIRED;
+ *   an absent or empty value refuses, it does not skip the gate
  * @returns {{previousCommit: string}}
- * @throws if `.source-info.json` is unreadable, has no `commitHash`, or `newCommit` equals it
+ * @throws if `newCommit` is absent or empty, or if `.source-info.json` is unreadable, has no
+ *   `commitHash`, or holds a `commitHash` equal to `newCommit`
  */
 function assertVintageAdvances(sourceDir, newCommit) {
+  // Fail closed on an ABSENT sha. Until 2026-08-17 the only test involving `newCommit` was the
+  // equality comparison at the bottom of this function — and `'<sha>' === undefined` is false,
+  // so omitting the argument read as "the vintage advanced" and G2 stood down silently.
+  // Measured: `undefined`, `null` and `''` all passed, while G3 refused all three. Same shape as
+  // CLAUDE.md's durable rule that a gate keyed on one representation of "nothing" can be walked
+  // past by another. Checked FIRST so the message names the real problem rather than blaming
+  // .source-info.json.
+  if (typeof newCommit !== 'string' || newCommit === '') {
+    throw new Error(
+      `§C93 G2 REFUSED: no upstream commit sha was supplied (received ${JSON.stringify(newCommit)}). ` +
+        `A refresh must name the commit it is about to write, so the superseded vintage can be ` +
+        `recorded. This fails CLOSED on purpose — a missing sha is not permission.`
+    );
+  }
   const infoPath = path.join(sourceDir, '.source-info.json');
   let info;
   try {
