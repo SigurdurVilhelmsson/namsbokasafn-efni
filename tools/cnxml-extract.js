@@ -1495,14 +1495,26 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
  * processNote's own scan (correct) and via processExample's bare-media scan
  * (spurious duplicate `type:'media'` entry for the same id).
  *
- * Stripping the LARGEST fullMatch first is safe regardless of which way a
- * nesting relationship runs: removing an outer container removes everything
- * nested inside it in one shot, so a later `.replace()` for any of its
- * descendants is a harmless no-op (their fullMatch is already gone from the
- * string). This is the same "list nested inside a para" hazard the fixed
- * PARAS-then-LISTS order was written to guard — generalized so it self-corrects
- * for a nesting shape it wasn't written to expect, instead of only the one
- * case it happened to be tested against.
+ * Stripping the LARGEST fullMatch first is safe whenever the candidate spans
+ * NEST or are DISJOINT, regardless of which way the nesting relationship
+ * runs: removing an outer container removes everything nested inside it in
+ * one shot, so a later `.replace()` for any of its descendants is a harmless
+ * no-op (their fullMatch is already gone from the string). This is the same
+ * "list nested inside a para" hazard the fixed PARAS-then-LISTS order was
+ * written to guard — generalized so it self-corrects for a nesting shape it
+ * wasn't written to expect, instead of only the one case it happened to be
+ * tested against.
+ *
+ * ⚠️ That precondition is not guaranteed — `paras` comes from `extractElements`,
+ * whose non-greedy `([\s\S]*?)</para>` truncates an outer `<para>` at the
+ * FIRST inner `</para>`, so a para span and a list span can PARTIALLY OVERLAP
+ * (neither nests the other, neither is disjoint from the other). Length
+ * ordering guarantees nothing for a partially-overlapping pair — whichever is
+ * stripped first can corrupt the other's `fullMatch` and leave it in the
+ * residue as a silent no-op, the exact failure this helper exists to prevent.
+ * 0 instances of this shape measured in the chemistry corpus; not fixed here,
+ * since it is the same pre-existing non-greedy-para defect self-review
+ * finding 3 already logged as out of scope for §C88 Tasks 5/6.
  *
  * @param {string} content - the container's raw inner CNXML
  * @param {Array<Array<{fullMatch?: string}>>} elementLists - extracted element
@@ -1664,16 +1676,26 @@ function processExample(
   // <para> (via extractInlineText's [[MEDIA:N]] placeholder — paired form only).
   //
   // Uses the STRIP IDIOM against a LOCAL copy so a media nested in a
-  // <list>/<note>/<para>/<figure>/<table> is not taken twice — those walks own
-  // their own copies. `example.content` itself is left untouched for the loops
-  // above/below. See stripContainersByLength for why the strip order is
-  // length-descending rather than a fixed sequence.
+  // <list>/<note>/<para>/<figure>/<table>/<exercise> is not taken twice —
+  // those walks own their own copies. `example.content` itself is left
+  // untouched for the loops above/below. See stripContainersByLength for why
+  // the strip order is length-descending rather than a fixed sequence.
+  //
+  // Fix round 1 (Minor #3): EXERCISE STRIP — same reasoning as figure/table.
+  // processTopLevelContent's exercise scan (`extractNestedElements(content,
+  // 'exercise')`) runs on the WHOLE document with no isInsideExample/
+  // isInsideNote exclusion, so an <exercise> nested here is already
+  // represented at the top level via processExercise, and Task 4 emits bare-
+  // media alts from its <problem>/<solution>. Without this strip a bare
+  // media inside a nested exercise would double-emit here too. Latent only —
+  // 0 duplicates measured in chemistry, biology, organic and microbiology.
   const exampleBareContent = stripContainersByLength(example.content, [
     paras,
     lists,
     extractNestedElements(example.content, 'note'),
     extractNestedElements(example.content, 'figure'),
     extractNestedElements(example.content, 'table'),
+    extractNestedElements(example.content, 'exercise'),
   ]);
   for (const media of extractElements(exampleBareContent, 'media')) {
     // Guard on id (Controller Ruling 9): collectMediaAlts (tools/cnxml-inject.js)
@@ -1999,11 +2021,15 @@ function processNote(
   // comment: processTopLevelContent hoists every <figure>/<table> to a
   // top-level structure node with no isInsideExample/isInsideNote exclusion, so
   // a figure nested in this note is already represented elsewhere.
+  // Fix round 1 (Minor #3): EXERCISE STRIP — same reasoning, applied to
+  // <exercise>. See processExample's identical comment; latent only, 0
+  // duplicates measured in chemistry, biology, organic and microbiology.
   const noteBareContent = stripContainersByLength(note.content, [
     paras,
     lists,
     extractNestedElements(note.content, 'figure'),
     extractNestedElements(note.content, 'table'),
+    extractNestedElements(note.content, 'exercise'),
   ]);
   for (const media of extractElements(noteBareContent, 'media')) {
     // Guard on id (Controller Ruling 9) — see processExample's identical guard

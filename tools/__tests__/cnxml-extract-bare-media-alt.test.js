@@ -192,6 +192,14 @@ describe('§C88 — bare media alt in <example>', () => {
            </example>`)
     );
     expect(altSegs(r).map((s) => s.text)).toEqual(['In a list']);
+    // Fix round 1 (Important #1): the segment-level assertion above cannot see
+    // a double-emit — generateSegmentId is deterministic on the media id, so a
+    // spurious second push resolves to the SAME segment id and dedupeAltSegments
+    // splices it out before it reaches `altSegs`. Only a structure-tree
+    // assertion can catch the bare-media pass over-reaching into a list
+    // processList already owns.
+    const ex = r.structure.content.find((e) => e.type === 'example');
+    expect(ex.content.filter((e) => e.type === 'media').map((e) => e.id)).toEqual([]);
   });
 
   it('does not double-emit a media inside a nested <note> (Task 6 owns it)', () => {
@@ -201,6 +209,12 @@ describe('§C88 — bare media alt in <example>', () => {
            </example>`)
     );
     expect(altSegs(r).map((s) => s.text)).toEqual(['In a note']);
+    // Fix round 1 (Important #1): see the identical rationale on the <list>
+    // guard above. The note's own entry (inside note.content) is unaffected
+    // either way — this checks only that example.content gained no spurious
+    // sibling media entry.
+    const ex = r.structure.content.find((e) => e.type === 'example');
+    expect(ex.content.filter((e) => e.type === 'media').map((e) => e.id)).toEqual([]);
   });
 
   it('🔴 STRIP-ORDER GUARD — a para, a SIBLING list and a bare media in one example', () => {
@@ -228,6 +242,14 @@ describe('§C88 — bare media alt in <example>', () => {
       'm00001:alt:m-y-alt',
       'm00001:alt:m-z-alt',
     ]);
+    // Fix round 1 (Important #1): a double-emit of m-x/m-y resolves to the
+    // SAME segment id as the correct emission (generateSegmentId is
+    // deterministic on the media id), so dedupeAltSegments hides it from the
+    // segment-level assertions above. Only the direct example-level media
+    // list is `['m-z']` — a broken strip order leaves m-x/m-y in the residue
+    // too and this is where that shows up.
+    const ex = r.structure.content.find((e) => e.type === 'example');
+    expect(ex.content.filter((e) => e.type === 'media').map((e) => e.id)).toEqual(['m-z']);
   });
 
   it('🔴 STRIP-ORDER GUARD — a list NESTED INSIDE the para, the worst case', () => {
@@ -243,6 +265,11 @@ describe('§C88 — bare media alt in <example>', () => {
            </example>`)
     );
     expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'C']);
+    // Fix round 1 (Important #1): same rationale as the sibling-list guard
+    // above — a broken strip leaves m-x in the residue and it resurfaces as a
+    // spurious direct example.content entry, invisible at the segment level.
+    const ex = r.structure.content.find((e) => e.type === 'example');
+    expect(ex.content.filter((e) => e.type === 'media').map((e) => e.id)).toEqual(['m-z']);
   });
 });
 
@@ -304,5 +331,10 @@ describe('§C88 — bare media alt in <note>', () => {
            </note>`)
     );
     expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'B', 'C']);
+    // Fix round 1 (Important #1): identical rationale to processExample's
+    // strip-order guards above — a broken strip resurfaces m-x/m-y as spurious
+    // direct note.content entries, invisible to the segment-level assertion.
+    const note = r.structure.content.find((e) => e.type === 'note');
+    expect(note.content.filter((e) => e.type === 'media').map((e) => e.id)).toEqual(['m-z']);
   });
 });
