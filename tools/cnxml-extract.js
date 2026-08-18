@@ -1475,6 +1475,52 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
 }
 
 /**
+ * §C88 — strip a set of already-extracted container elements out of `content`,
+ * leaving only what belongs to none of them (used to find a container's own
+ * DIRECT bare `<media>` children without double-counting media a nested walk
+ * already owns).
+ *
+ * 🔴 ORDER IS LENGTH-DESCENDING, NOT INSERTION ORDER, AND THAT IS LOAD-BEARING.
+ * A fixed sequential order (paras, then lists, then notes, ...) breaks as soon
+ * as a nesting relationship runs the OTHER way: `paras = extractElements(...)`
+ * is SHALLOW and matches a `<para>` anywhere in the string, including one that
+ * is a note's own inner para. Stripping that para FIRST removes a byte range
+ * from inside the note's span, so the note's `fullMatch` (captured against the
+ * ORIGINAL string) no longer matches the mutated string — its `.replace()`
+ * becomes a silent no-op, and the note's own bare media (or anything else
+ * after that inner para) leaks into the residue. Confirmed on real corpus data
+ * (books/efnafraedi-2e/01-source/ch07/m68740.cnxml, example fs-idp59620704):
+ * a `<note>` whose FIRST child is a `<para>` and whose SECOND child is a bare
+ * `<media>` — stripping paras before notes left the media reachable both via
+ * processNote's own scan (correct) and via processExample's bare-media scan
+ * (spurious duplicate `type:'media'` entry for the same id).
+ *
+ * Stripping the LARGEST fullMatch first is safe regardless of which way a
+ * nesting relationship runs: removing an outer container removes everything
+ * nested inside it in one shot, so a later `.replace()` for any of its
+ * descendants is a harmless no-op (their fullMatch is already gone from the
+ * string). This is the same "list nested inside a para" hazard the fixed
+ * PARAS-then-LISTS order was written to guard — generalized so it self-corrects
+ * for a nesting shape it wasn't written to expect, instead of only the one
+ * case it happened to be tested against.
+ *
+ * @param {string} content - the container's raw inner CNXML
+ * @param {Array<Array<{fullMatch?: string}>>} elementLists - extracted element
+ *   arrays (e.g. paras, lists, notes, figures, tables) whose fullMatch spans
+ *   should be removed
+ * @returns {string} content with every listed element's fullMatch removed
+ */
+function stripContainersByLength(content, elementLists) {
+  const all = elementLists
+    .flat()
+    .filter((el) => el && el.fullMatch)
+    .sort((a, b) => b.fullMatch.length - a.fullMatch.length);
+  let residue = content;
+  for (const el of all) residue = residue.replace(el.fullMatch, '');
+  return residue;
+}
+
+/**
  * Process an example element.
  *
  * OpenStax CNXML examples have a specific structure where:
@@ -1610,6 +1656,41 @@ function processExample(
       inlineTablesMap
     );
     exampleStructure.content.push(listStructure);
+  }
+
+  // §C88 — bare <media> that is a DIRECT child of this example. Reached by no
+  // other walk: processTopLevelContent strips example.fullMatch before its
+  // standalone-media scan, and the para loop above only sees media INSIDE a
+  // <para> (via extractInlineText's [[MEDIA:N]] placeholder — paired form only).
+  //
+  // Uses the STRIP IDIOM against a LOCAL copy so a media nested in a
+  // <list>/<note>/<para>/<figure>/<table> is not taken twice — those walks own
+  // their own copies. `example.content` itself is left untouched for the loops
+  // above/below. See stripContainersByLength for why the strip order is
+  // length-descending rather than a fixed sequence.
+  const exampleBareContent = stripContainersByLength(example.content, [
+    paras,
+    lists,
+    extractNestedElements(example.content, 'note'),
+    extractNestedElements(example.content, 'figure'),
+    extractNestedElements(example.content, 'table'),
+  ]);
+  for (const media of extractElements(exampleBareContent, 'media')) {
+    // Guard on id (Controller Ruling 9): collectMediaAlts (tools/cnxml-inject.js)
+    // requires el.id to write a translation back. Without this guard an id-less
+    // media would take altElementId's positional fallback branch, get a segment
+    // id that no inject-side lookup can ever resolve, and that segment would be
+    // extracted, translated, paid for, and silently discarded — §C89 recreated.
+    // Leave an id-less bare media unextracted instead.
+    if (!media.id) continue;
+    const altText =
+      media.attributes.alt || (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] || '';
+    const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+    exampleStructure.content.push({
+      type: 'media',
+      id: media.id,
+      alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
+    });
   }
 
   // Process equations in example

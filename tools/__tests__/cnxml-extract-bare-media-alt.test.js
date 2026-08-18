@@ -136,3 +136,98 @@ describe('§C88 — bare media alt in <problem>/<solution>', () => {
     expect(altSegs(r).map((s) => s.text)).toEqual(['Inline']);
   });
 });
+
+describe('§C88 — bare media alt in <example>', () => {
+  it('emits an alt segment for a bare media directly inside <example>', () => {
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <para id="p1">Worked example.</para>
+             <media id="m-ex" alt="A reaction diagram"><image src="a.png"/></media>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A reaction diagram']);
+    expect(altSegs(r)[0].id).toBe('m00001:alt:m-ex-alt');
+  });
+
+  it('pushes a structure entry into the example content', () => {
+    const r = extractSegments(
+      wrap(`<example id="ex1"><media id="m-ex" alt="A reaction diagram"/></example>`)
+    );
+    const ex = r.structure.content.find((e) => e.type === 'example');
+    const media = ex.content.find((e) => e.type === 'media');
+    expect(media.alt).toEqual({ segmentId: 'm00001:alt:m-ex-alt', text: 'A reaction diagram' });
+  });
+
+  it('does not double-emit a media that is inside a nested <list> (processList owns it)', () => {
+    // ⚠️ DEVIATION FROM BRIEF, MEASURED: processList's item handling routes
+    // through extractInlineText, whose media capture (cnxml-extract.js:246,
+    // `/<media([^>]*)>([\s\S]*?)<\/media>/g`) matches only the PAIRED form —
+    // exactly the same limitation the pre-existing "does not disturb a media
+    // nested inside a <para> (already reachable)" test above documents for
+    // paras. A self-closing `<media id=".." alt=".."/>` as the SOLE content of
+    // a list <item> is not reachable by processList at all (confirmed empirically:
+    // it produces `items: []`, not a dropped-alt item) — a pre-existing gap
+    // outside processExample/processList scope, not something this task's strip
+    // idiom creates or fixes. Using the PAIRED form here tests the real hazard
+    // this guard exists for (does the new example-level pass over-reach into a
+    // list processList already owns), against a fixture processList actually
+    // handles.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <list id="l1"><item id="i1"><media id="m-in-list" alt="In a list"><image src="a.png"/></media></item></list>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['In a list']);
+  });
+
+  it('does not double-emit a media inside a nested <note> (Task 6 owns it)', () => {
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <note id="n1"><media id="m-in-note" alt="In a note"/></note>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['In a note']);
+  });
+
+  it('🔴 STRIP-ORDER GUARD — a para, a SIBLING list and a bare media in one example', () => {
+    // The fixture the two tests above cannot catch: `paras` is shallow and
+    // `lists` is nested, so a list-before-para strip leaves the para in the
+    // residue and double-emits its inline media. Exactly three alts, in order.
+    //
+    // ⚠️ DEVIATION FROM BRIEF, MEASURED: m-x and m-y use the PAIRED <media>
+    // form, not the brief's self-closing one — see the PAIRED-form note on the
+    // "does not double-emit … <list>" test above; the identical limitation
+    // applies to a para's own inline media (extractInlineText's capture is
+    // paired-only, already documented by the pre-existing "already reachable"
+    // test). m-z (the bare/direct case this task actually targets) stays
+    // self-closing — extractElements handles both forms for that path.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <para id="p1">Text <media id="m-x" alt="A"><image src="x.png"/></media> more.</para>
+             <list id="l1"><item id="i1"><media id="m-y" alt="B"><image src="y.png"/></media></item></list>
+             <media id="m-z" alt="C"/>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'B', 'C']);
+    expect(altSegs(r).map((s) => s.id)).toEqual([
+      'm00001:alt:m-x-alt',
+      'm00001:alt:m-y-alt',
+      'm00001:alt:m-z-alt',
+    ]);
+  });
+
+  it('🔴 STRIP-ORDER GUARD — a list NESTED INSIDE the para, the worst case', () => {
+    // Here the list's fullMatch is a substring of the para's. Strip the list
+    // first and the para never matches, survives, and m-x is emitted twice.
+    // ⚠️ m-x uses the PAIRED form — see the deviation note above.
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <para id="p1">Text <media id="m-x" alt="A"><image src="x.png"/></media>
+               <list id="l1"><item id="i1">inner</item></list>
+             </para>
+             <media id="m-z" alt="C"/>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'C']);
+  });
+});
