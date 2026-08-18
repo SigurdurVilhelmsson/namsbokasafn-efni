@@ -33,6 +33,15 @@ describe('slug-map: reading', () => {
     expect(readSlugMap(p, { book: 'b', track: 't' }).renames).toEqual({});
     fs.rmSync(dir, { recursive: true, force: true });
   });
+
+  it('returns an empty map when renames is an array, not an object', () => {
+    // typeof [] === 'object', so the guard must reject arrays explicitly.
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c9-arr-'));
+    const p = path.join(dir, SLUG_MAP_FILENAME);
+    fs.writeFileSync(p, JSON.stringify({ renames: ['oops'] }));
+    expect(readSlugMap(p, { book: 'b', track: 't' }).renames).toEqual({});
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
 });
 
 describe('slug-map: recordRename', () => {
@@ -117,6 +126,45 @@ describe('slug-map: recordRename', () => {
       recordedAt: AT,
     });
     expect(map.renames).toEqual({});
+  });
+
+  it('🔴 FREED-SLUG REUSE: A→B then D→A drops the stale A entry instead of shadowing D', () => {
+    // A→B frees the slug "A". D→A then reclaims it: A is live again, now holding D's
+    // content. A lookup on A must land on D's page, not redirect away to B.
+    let map = recordRename(m(), {
+      from: `${K}a.html`,
+      to: `${K}b.html`,
+      moduleId: 'm1',
+      recordedAt: AT,
+    });
+    map = recordRename(map, {
+      from: `${K}d.html`,
+      to: `${K}a.html`,
+      moduleId: 'm2',
+      recordedAt: AT,
+    });
+    expect(map.renames).toEqual({
+      [`${K}d.html`]: { to: `${K}a.html`, moduleId: 'm2', recordedAt: AT },
+    });
+  });
+
+  it('✅ CONTROL: a rename that does not reuse a freed slug leaves the earlier entry intact', () => {
+    let map = recordRename(m(), {
+      from: `${K}a.html`,
+      to: `${K}b.html`,
+      moduleId: 'm1',
+      recordedAt: AT,
+    });
+    map = recordRename(map, {
+      from: `${K}x.html`,
+      to: `${K}y.html`,
+      moduleId: 'm2',
+      recordedAt: AT,
+    });
+    expect(map.renames).toEqual({
+      [`${K}a.html`]: { to: `${K}b.html`, moduleId: 'm1', recordedAt: AT },
+      [`${K}x.html`]: { to: `${K}y.html`, moduleId: 'm2', recordedAt: AT },
+    });
   });
 });
 

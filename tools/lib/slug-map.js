@@ -39,7 +39,8 @@ export function readSlugMap(mapPath, { book, track }) {
       !parsed ||
       typeof parsed !== 'object' ||
       typeof parsed.renames !== 'object' ||
-      !parsed.renames
+      !parsed.renames ||
+      Array.isArray(parsed.renames)
     ) {
       return empty;
     }
@@ -54,8 +55,11 @@ export function readSlugMap(mapPath, { book, track }) {
  *
  * Order matters and is the whole algorithm:
  *   1. Re-point every entry that used to end at `from` so it ends at `to`.
- *   2. Drop any entry that has become an identity (a rename that returned to its
- *      original name) — that file exists again and must not redirect.
+ *   2. Drop any entry KEYED by `to` — `to` names a file that is live as of this
+ *      rename (freshly created, or a freed slug this rename is reclaiming), so no
+ *      entry may go on redirecting away from it. An identity (a rename that returned
+ *      to its original name) is just the case where step 1 repointed `renames[to]`
+ *      to itself; this same guard drops it, so it needs no separate handling.
  *   3. Add `from → to`, unless nothing moved.
  *
  * @param {object} map        as returned by readSlugMap; MUTATED and returned
@@ -67,9 +71,7 @@ export function recordRename(map, { from, to, moduleId, recordedAt }) {
   for (const [key, entry] of Object.entries(map.renames)) {
     if (entry.to === from) map.renames[key] = { to, moduleId, recordedAt };
   }
-  for (const key of Object.keys(map.renames)) {
-    if (map.renames[key].to === key) delete map.renames[key];
-  }
+  delete map.renames[to];
 
   map.renames[from] = { to, moduleId, recordedAt };
   return map;
