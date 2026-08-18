@@ -1,0 +1,12 @@
+{
+  "book": "efnafraedi-2e",
+  "track": "mt-preview",
+  "contract": "C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are collapsed on write, so a single lookup suffices and no transitive walk is needed.",
+  "renames": {
+    "chapters/10/10-5-fast-astand-efnis.html": {
+      "to": "chapters/10/10-5-fastur-efnishamur.html",
+      "moduleId": "m68770",
+      "recordedAt": "2026-08-18"
+    }
+  }
+}

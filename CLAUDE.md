@@ -599,12 +599,31 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 - **⚠️ `sync-content.js` WITH NO ARGUMENTS SYNCS EVERY BOOK — scope it, or you publish the ones under a hold.** It accepts `[book...]` and `--dry-run`; a bare run picks up whatever `05-publication/` currently holds for **all** books. The active register's [LEAD] queue routinely holds a book back (e.g. `liffraedi-2e`, held 2026-07-30 pending re-extraction + re-MT), and that hold exists **only in the register** — nothing in the tooling enforces it. **Check the register's holds, then name the books.** Learned 2026-08-07, when a bare sync would have published a chapter the assessment already records as known-bad.
 - **⚠️ A vefur sync/deploy proves nothing until you fetch the CONTENT FILE.** Verify at `/content/<book>/chapters/<NN>/<file>.html`, never a page URL — the SPA fallback returns 200 with an identical shell for every path. **And pair it with a control you expect to still be broken**: a set of clean results is indistinguishable from fetching something empty. Measured 2026-08-07: a live page is ~30 KB against ~160 bytes for a nonsense URL, and a page knowingly left unfixed still returned its defect — which is what made the clean ones mean anything. → [[engineering-lessons]]
 - **⚠️ `deleting toc.json` in the sync output is EXPECTED — and its regeneration is warn-only.** efni ships no `toc.json`; vefur deletes and regenerates it. But that regen cannot fail the sync, while vefur skips any book lacking one — so a failed regen silently drops a whole book with every exit code green. **The rule is vefur's and lives in vefur's CLAUDE.md**; noted here only so nobody aborts an efni delivery over the line.
-- **Prune-on-rename MUST EMIT an old-slug → new-slug map — do not merely delete.** Vefur needs
-  that map to serve redirects for renamed sections, and since its PR #200 (overlay keys on
-  `data-module-id`, not filename) **the old filename no longer exists on its side to derive one
-  from**. The moment we prune is the only moment the old name is still known; a prune that just
-  unlinks destroys the information permanently and 404s every inbound link. Persist the map with
-  the rendered output so it survives across syncs.
+- **✅ Prune-on-rename SHIPPED (§C9).** A render that supersedes a page deletes it and records
+  `old → new` in **`books/<slug>/05-publication/<track>/slug-map.<track>.json`** — inside the
+  synced tree, at track root (not in `chapters/NN/`, which the render sweep empties and vefur's
+  `generate-toc` reads as pages). **Chains collapse on write**, so every `to` names a file that
+  currently exists and a consumer does ONE lookup — no transitive walk, no cycles, no redirect
+  onto a deleted page. ⚠️ **`books/_slug-maps/` is NOT that map** — `sync-content.js` copies only
+  `05-publication/{mt-preview,faithful}/`, so nothing there ever reaches vefur.
+  ⚠️ **The vefur consumer is not built yet**, so a superseded URL 404s until it is.
+  - 🔴 **THE FILENAME IS TRACK-QUALIFIED, AND THAT IS LOAD-BEARING — do not "tidy" it back to
+    `slug-map.json`.** Vefur **flattens both tracks** into one `static/content/<book>/`, and its
+    overlay filter has no branch for a track-root file, so a single shared name means a
+    `faithful` map is copied over `mt-preview`'s with `force: true`. `runRender` defaults to
+    `track = 'faithful'`, so an ordinary editor republish is the colliding writer. Qualifying the
+    name makes both arrive intact and the **synced tree self-describing** — a consumer needs no
+    access to this repo to know which track a map describes. `slugMapFilename(track)` is the
+    single construction point and **validates `track`**, because it reaches a filename from a CLI
+    flag.
+  - ⚠️ **The invariant is PER-TRACK; the merged destination is vefur's to reconcile.** A consumer
+    must read each track's map and reconcile them itself, and must skip `to === from`. Vefur's own
+    `resolveChapterDuplicates` can delete the page a `to` names, invalidating it from outside efni
+    entirely — so "every `to` exists" is true of this tree, not of the destination.
+  - ⚠️ **The map is NOT regenerable.** Entries are recorded once, at the moment a prune happens;
+    re-rendering a chapter that no longer has a duplicate records nothing. **Treat it as data, not
+    as build output** — that is why the write is atomic (`.tmp` + rename) and why the artifact was
+    moved with `git mv` rather than re-derived.
 - **A sync conflict is WARN-ONLY and does NOT change `sync-content.js`'s exit code.** That is
   deliberate on vefur's side — a duplicate is an *efni* content defect, and failing the sync would
   block a deploy over something vefur cannot fix. **So a clean sync exit is NOT evidence that

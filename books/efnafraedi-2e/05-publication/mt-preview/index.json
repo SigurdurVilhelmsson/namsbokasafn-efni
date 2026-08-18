@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-25T19:21:23.060Z",
+  "generated": "2026-08-18T11:32:08.870Z",
   "termCount": 763,
   "entries": [
     {
@@ -61,7 +61,7 @@
       "termIs": "aðferð upphafshraða",
       "termEn": "method of initial rates",
       "termFull": "aðferð upphafshraða (e. method of initial rates)",
-      "definition": "algeng tilraunaaðferð til að ákvarða hraðalögmál sem felur í sér að mæla hvarfhraða við mismunandi upphafsstyrk hvarfefna",
+      "definition": "algeng tilraunaaðferð til að ákvarða hraðajöfnur sem felur í sér að mæla hvarfhraða við mismunandi upphafsstyrk hvarfefna",
       "chapter": 12,
       "section": "12.3",
       "sectionTitle": "Hraðajöfnur",
@@ -72,7 +72,7 @@
       "termIs": "afoxari",
       "termEn": "reducing agent",
       "termFull": "afoxari (e. reducing agent)",
-      "definition": "(einnig, afoxunarefni) efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu",
+      "definition": "efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -83,7 +83,7 @@
       "termIs": "afoxun",
       "termEn": "reduction",
       "termFull": "afoxun (e. reduction)",
-      "definition": "ferli þar sem oxunartala frumefnis lækkar vegna rafeindaaukningar",
+      "definition": "ferli þar sem oxunartala frumefnis lækkar vegna rafeindaásóknar",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -149,7 +149,7 @@
       "termIs": "aldehýð",
       "termEn": "aldehyde",
       "termFull": "aldehýð (e. aldehyde)",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp sem er tengdur við tvær vetnisfrumeindir eða vetnisfrumeind og kolefnisskiptihóp",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp tengdan tveimur vetnisatómum eða vetnisatómi og kolefnishliðarhópi",
       "chapter": 20,
       "section": "20.3",
       "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og estrar",
@@ -215,7 +215,7 @@
       "termIs": "alkani",
       "termEn": "alkane",
       "termFull": "alkani (e. alkane)",
-      "definition": "sameind sem samanstendur eingöngu af kolefnis- og vetnisfrumeindum sem eru tengdar með eintengjum (σ-tengjum)",
+      "definition": "sameind sem samanstendur eingöngu af kolefnis- og vetnisatómum sem eru tengd með eintengjum (σ)",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -226,7 +226,7 @@
       "termIs": "alkeni",
       "termEn": "alkene",
       "termFull": "alkeni (e. alkene)",
-      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt tvítengi milli kolefnisfrumeinda",
+      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt tvítengi kolefnis-kolefnis",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -259,7 +259,7 @@
       "termIs": "alkýlhópur",
       "termEn": "alkyl group",
       "termFull": "alkýlhópur (e. alkyl group)",
-      "definition": "hliðarhópur, sem samanstendur af alkana sem vantar eina vetnisfrumeind, tengdur við stærri byggingu",
+      "definition": "áskilinn hópur, sem samanstendur af alkana sem vantar eitt vetnisatóm, tengdur við stærri byggingu",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -270,7 +270,7 @@
       "termIs": "alkýn",
       "termEn": "alkyne",
       "termFull": "alkýn (e. alkyne)",
-      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt þrítengi milli kolefnisfrumeinda",
+      "definition": "sameind sem samanstendur af kolefni og vetni og inniheldur að minnsta kosti eitt þrítengi kolefnis-kolefnis",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -303,7 +303,7 @@
       "termIs": "amíð",
       "termEn": "amide",
       "termFull": "amíð (e. amide)",
-      "definition": "lífræn sameind sem inniheldur niturfrumeind tengda við kolefnisfrumeind í karbónýlhópi",
+      "definition": "lífræn sameind sem inniheldur nituratóm tengt kolefnisatómi í karbónýlhópi",
       "chapter": 20,
       "section": "20.4",
       "sectionTitle": "Amín og amíð",
@@ -314,7 +314,7 @@
       "termIs": "amín",
       "termEn": "amine",
       "termFull": "amín (e. amine)",
-      "definition": "lífræn sameind þar sem niturfrumeind er tengd við einn eða fleiri alkýlhópa",
+      "definition": "lífræn sameind þar sem nituratóm er tengt einum eða fleiri alkýlhópum",
       "chapter": 20,
       "section": "20.4",
       "sectionTitle": "Amín og amíð",
@@ -358,7 +358,7 @@
       "termIs": "annað lögmál varmafræðinnar",
       "termEn": "second law of thermodynamics",
       "termFull": "annað lögmál varmafræðinnar (e. second law of thermodynamics)",
-      "definition": "öll sjálfsprottin ferli fela í sér aukningu á óreiðu alheimsins",
+      "definition": "öll sjálfgeng ferli fela í sér aukningu á óreiðu alheimsins",
       "chapter": 16,
       "section": "16.3",
       "sectionTitle": "Annað og þriðja lögmál varmafræðinnar",
@@ -380,7 +380,7 @@
       "termIs": "arómatískt vetniskolefni",
       "termEn": "aromatic hydrocarbon",
       "termFull": "arómatískt vetniskolefni (e. aromatic hydrocarbon)",
-      "definition": "hringtengd sameind sem samanstendur af kolefni og vetni með óstaðbundnum víxlverkunum milli ein- og tvítengja kolefnisfrumeinda, sem leiðir til aukins stöðugleika",
+      "definition": "hringlaga sameind sem samanstendur af kolefni og vetni með óstaðbundnum víxlum á eintengjum og tvítengjum kolefnis-kolefnis, sem leiðir til aukins stöðugleika",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -388,9 +388,9 @@
       "termId": "fs-idp73021984"
     },
     {
-      "termIs": "Arrheniusar-jafnan",
+      "termIs": "Arrheniusar-jafna",
       "termEn": "arrhenius equation",
-      "termFull": "Arrheniusar-jafnan (e. arrhenius equation)",
+      "termFull": "Arrheniusar-jafna (e. arrhenius equation)",
       "definition": "stærðfræðilegt samband milli hraðafasta efnahvarfs, virkjunarorku og hitastigs",
       "chapter": 12,
       "section": "12.5",
@@ -419,6 +419,17 @@
       "sectionTitle": "Frumeindabygging og táknmál",
       "sectionSlug": "2-3-bygging-atoms-og-taknmal",
       "termId": "fs-idp230158528"
+    },
+    {
+      "termIs": "auðleystur",
+      "termEn": "soluble",
+      "termFull": "auðleystur (e. soluble)",
+      "definition": "með tiltölulega mikla leysni; leysist upp að tiltölulega miklu leyti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp64228624"
     },
     {
       "termIs": "Aufbau-lögmálið",
@@ -454,6 +465,17 @@
       "termId": "fs-idp127211536"
     },
     {
+      "termIs": "autt rými",
+      "termEn": "vacancy",
+      "termFull": "autt rými (e. vacancy)",
+      "definition": "galli sem verður þegar staða sem ætti að innihalda frumeind eða jón er auð",
+      "chapter": 10,
+      "section": "10.5",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
+      "termId": "fs-idm37032656"
+    },
+    {
       "termIs": "Avogadrosartala (NA)",
       "termEn": "avogadro’s number (na)",
       "termFull": "Avogadrosartala (NA) (e. avogadro’s number (na))",
@@ -479,7 +501,7 @@
       "termIs": "álagningarhvarf",
       "termEn": "addition reaction",
       "termFull": "álagningarhvarf (e. addition reaction)",
-      "definition": "efnahvarf þar sem tvítengi milli kolefnisfrumeinda myndar eintengi milli kolefnisfrumeinda með álagningu hvarfefnis. Dæmigert efnahvarf fyrir alkena.",
+      "definition": "efnahvarf þar sem tvítengi kolefnis-kolefnis myndar eintengi kolefnis-kolefnis með álagningu hvarfefnis. Dæmigert efnahvarf fyrir alkena.",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -496,6 +518,17 @@
       "sectionTitle": "Árekstrakenningin",
       "sectionSlug": "12-5-arekstrakenningin",
       "termId": "fs-idm101548864"
+    },
+    {
+      "termIs": "áskilinn hópur",
+      "termEn": "substituent",
+      "termFull": "áskilinn hópur (e. substituent)",
+      "definition": "grein eða virknihópur sem kemur í stað vetnisatóma í stærri vetniskolefniskeðju",
+      "chapter": 20,
+      "section": "20.1",
+      "sectionTitle": "Kolvetni",
+      "sectionSlug": "20-1-kolvetni",
+      "termId": "fs-idp68310656"
     },
     {
       "termIs": "ásstaða",
@@ -622,7 +655,7 @@
       "termIs": "beinagrindarmynd",
       "termEn": "skeletal structure",
       "termFull": "beinagrindarmynd (e. skeletal structure)",
-      "definition": "stytt aðferð til að teikna lífrænar sameindir þar sem kolefnisfrumeindir eru táknaðar með endum lína og beygjum á milli lína, og vetnisfrumeindir sem eru tengdar kolefnisfrumeindunum eru ekki sýndar (en er gert ráð fyrir að þær séu til staðar miðað við samhengi byggingarinnar)",
+      "definition": "stytt aðferð til að teikna lífrænar sameindir þar sem kolefnisatóm eru táknuð með endum lína og beygjum á milli lína, og vetnisatóm sem eru tengd við kolefnisatómin eru ekki sýnd (en eru gefin í skyn af samhengi byggingarinnar)",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -798,23 +831,12 @@
       "termIs": "botnfall",
       "termEn": "precipitate",
       "termFull": "botnfall (e. precipitate)",
-      "definition": "ólæst myndefni sem myndast við hvarf leysanlegra hvarfefna",
+      "definition": "torleyst myndefni sem myndast við efnahvarf auðleystra hvarfefna",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
       "sectionSlug": "4-2-flokkun-efnahvarfa",
       "termId": "fs-idp57132192"
-    },
-    {
-      "termIs": "botnfallshvarf",
-      "termEn": "precipitation reaction",
-      "termFull": "botnfallshvarf (e. precipitation reaction)",
-      "definition": "hvarf sem myndar eitt eða fleiri ólæst myndefni; þegar hvarfefni eru jónísk efnasambönd, stundum kallað tvöföld skipti eða metatesa",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idp55089136"
     },
     {
       "termIs": "bórat",
@@ -883,10 +905,10 @@
       "termId": "fs-idp72814256"
     },
     {
-      "termIs": "brunahvarf",
+      "termIs": "bruni",
       "termEn": "combustion reaction",
-      "termFull": "brunahvarf (e. combustion reaction)",
-      "definition": "kröftugt oxunar-afoxunarhvarf sem framleiðir umtalsvert magn af orku í formi hita og stundum ljóss",
+      "termFull": "bruni (e. combustion reaction)",
+      "definition": "kröftugt oxunar-afoxunarhvarf sem framleiðir umtalsverða orku í formi varma og stundum ljóss",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -1164,7 +1186,7 @@
       "definition": "eðliseiginleiki efnis sem táknar það varmamagn sem þarf til að hækka hitastig 1 gramms af efninu um 1 gráðu á Celsíus (eða 1 kelvín)",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp31727024"
     },
@@ -1227,7 +1249,7 @@
       "termIs": "efnahvarfsrit",
       "termEn": "reaction diagram",
       "termFull": "efnahvarfsrit (e. reaction diagram)",
-      "definition": "notað í hraðafræði efnahvarfa til að sýna ýmsa eiginleika efnahvarfs",
+      "definition": "notað í hraðafræði efna til að sýna ýmsa eiginleika efnahvarfs",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -1337,7 +1359,7 @@
       "termIs": "einföld skipti",
       "termEn": "single-displacement reaction",
       "termFull": "einföld skipti (e. single-displacement reaction)",
-      "definition": "(einnig, útskipti) oxunar-afoxunarhvarf sem felur í sér oxun frumefnis með jónaefni",
+      "definition": "(einnig, skiptihvarf) oxunar-afoxunarhvarf sem felur í sér oxun frumefnis með jónaefni",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -1513,7 +1535,7 @@
       "termIs": "ester",
       "termEn": null,
       "termFull": "ester",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdri súrefnisfrumeind sem er tengd við kolefnisskiptihóp",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdu súrefnisatómi sem er tengt kolefnishliðarhópi",
       "chapter": 20,
       "section": "20.3",
       "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og estrar",
@@ -1653,9 +1675,9 @@
       "termId": "fs-idp93746160"
     },
     {
-      "termIs": "fjölhamir",
+      "termIs": "fjölmyndir",
       "termEn": "allotropes",
-      "termFull": "fjölhamir (e. allotropes)",
+      "termFull": "fjölmyndir (e. allotropes)",
       "definition": "tvö eða fleiri form af sama frumefni, í sama eðlisástandi, með mismunandi efnafræðilega byggingu",
       "chapter": 18,
       "section": "18.1",
@@ -1728,17 +1750,6 @@
       "sectionTitle": "Uppbygging og almennir eiginleikar hálfmálma",
       "sectionSlug": "18-3-uppbygging-og-almennir-eiginleikar-halfmalma",
       "termId": "fs-idp50657904"
-    },
-    {
-      "termIs": "formlaust fast efni",
-      "termEn": "amorphous solid",
-      "termFull": "formlaust fast efni (e. amorphous solid)",
-      "definition": "(einnig, ókristallað fast efni) fast efni þar sem agnirnar hafa ekki skipulagða innri byggingu",
-      "chapter": 10,
-      "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
-      "termId": "fs-idm63193280"
     },
     {
       "termIs": "formleg hleðsla",
@@ -2291,6 +2302,17 @@
       "termId": "fs-idp11032848"
     },
     {
+      "termIs": "hálfhvarf",
+      "termEn": "half-reaction",
+      "termFull": "hálfhvarf (e. half-reaction)",
+      "definition": "efnajafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í efnahvarfi.",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28945840"
+    },
+    {
       "termIs": "hálfker",
       "termEn": "half cell",
       "termFull": "hálfker (e. half cell)",
@@ -2382,7 +2404,7 @@
       "termIs": "heildarstig efnahvarfs",
       "termEn": "overall reaction order",
       "termFull": "heildarstig efnahvarfs (e. overall reaction order)",
-      "definition": "summa stiga efnahvarfsins fyrir hvert efni sem kemur fram í hraðajöfnunni",
+      "definition": "summa stiga efnahvarfs fyrir hvert efni sem kemur fram í hraðajöfnunni",
       "chapter": 12,
       "section": "12.3",
       "sectionTitle": "Hraðajöfnur",
@@ -2401,10 +2423,10 @@
       "termId": "fs-idp172569488"
     },
     {
-      "termIs": "helmingunartími efnahvarfs (t1/2)",
+      "termIs": "helmingunartími efnahvarfs (tl/2)",
       "termEn": "half-life of a reaction (tl/2)",
-      "termFull": "helmingunartími efnahvarfs (t1/2) (e. half-life of a reaction (tl/2))",
-      "definition": "tíminn sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast",
+      "termFull": "helmingunartími efnahvarfs (tl/2) (e. half-life of a reaction (tl/2))",
+      "definition": "tíminn sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast",
       "chapter": 12,
       "section": "12.4",
       "sectionTitle": "Heilduð hraðalögmál",
@@ -2462,7 +2484,7 @@
       "definition": "eðliseiginleiki efnis sem er magnbundinn mælikvarði á „hita“ og „kulda“",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp31728864"
     },
@@ -2478,26 +2500,15 @@
       "termId": "fs-idp330245120"
     },
     {
-      "termIs": "hjáleiðing",
+      "termIs": "hjúpun",
       "termEn": "passivation",
-      "termFull": "hjáleiðing (e. passivation)",
-      "definition": "málmar með verndandi, óhvarfgjarna filmu af oxíði eða öðru efnasambandi sem myndar hindrun fyrir efnahvörf; ef þessi óvirknisfilma er fjarlægð með eðlis- eða efnafræðilegum aðferðum geta málmarnir sýnt sína væntu hvarfgirni",
+      "termFull": "hjúpun (e. passivation)",
+      "definition": "málmar með verndandi, óhvarfgjarna filmu úr oxíði eða öðru efnasambandi sem myndar hindrun fyrir efnahvörf; ef óvirknifilman er fjarlægð með eðlis- eða efnafræðilegum aðferðum geta málmarnir sýnt vænta hvarfgirni sína",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
       "sectionSlug": "18-1-lotubundnir-eiginleikar",
       "termId": "fs-idp8939856"
-    },
-    {
-      "termIs": "hliðarhópur",
-      "termEn": "substituent",
-      "termFull": "hliðarhópur (e. substituent)",
-      "definition": "kvísl eða virknihópur sem kemur í stað vetnisfrumeinda í stærri vetniskolefniskeðju",
-      "chapter": 20,
-      "section": "20.1",
-      "sectionTitle": "Kolvetni",
-      "sectionSlug": "20-1-kolvetni",
-      "termId": "fs-idp68310656"
     },
     {
       "termIs": "hliðarmálmur",
@@ -2599,10 +2610,10 @@
       "termId": "fs-idp143891408"
     },
     {
-      "termIs": "hlutleysingarhvarf",
+      "termIs": "hlutleysing",
       "termEn": "neutralization reaction",
-      "termFull": "hlutleysingarhvarf (e. neutralization reaction)",
-      "definition": "hvarf milli sýru og basa sem myndar salt og vatn",
+      "termFull": "hlutleysing (e. neutralization reaction)",
+      "definition": "efnahvarf milli sýru og basa sem myndar salt og vatn",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -2646,7 +2657,7 @@
       "termIs": "hraðajafna",
       "termEn": "rate law",
       "termFull": "hraðajafna (e. rate law)",
-      "definition": "(einnig, hraðalögmál) (einnig, diffrað hraðalögmál) stærðfræðileg jafna sem sýnir háðni hvarfhraða á hraðafasta og styrk eins eða fleiri hvarfefna",
+      "definition": "(einnig, hraðalögmál) (einnig, diffruð hraðalögmál) stærðfræðileg jafna sem sýnir háðni hvarfhraða á hraðafasta og styrk eins eða fleiri hvarfefna",
       "chapter": 12,
       "section": "12.3",
       "sectionTitle": "Hraðajöfnur",
@@ -2704,7 +2715,7 @@
       "definition": "orka sem tengist hreyfingu hlutar, jöfn helmingi margfeldis massa hlutarins og hraða hans í öðru veldi, 12mv2 (þar sem m = massi og v = hraði)",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25509680"
     },
@@ -2731,17 +2742,6 @@
       "termId": "fs-idp154473568"
     },
     {
-      "termIs": "hvarfhelmingur",
-      "termEn": "half-reaction",
-      "termFull": "hvarfhelmingur (e. half-reaction)",
-      "definition": "jafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í hvarfi.",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idm28945840"
-    },
-    {
       "termIs": "hvarfhraði",
       "termEn": "rate of reaction",
       "termFull": "hvarfhraði (e. rate of reaction)",
@@ -2751,17 +2751,6 @@
       "sectionTitle": "Hvarfhraði efnahvarfa",
       "sectionSlug": "12-1-hvarfhradi-efnahvarfa",
       "termId": "fs-idp172602144"
-    },
-    {
-      "termIs": "hvarfstig",
-      "termEn": "reaction order",
-      "termFull": "hvarfstig (e. reaction order)",
-      "definition": "gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2 og svo framvegis)",
-      "chapter": 12,
-      "section": "12.3",
-      "sectionTitle": "Hraðajöfnur",
-      "sectionSlug": "12-3-hradajofnur",
-      "termId": "fs-idm333854336"
     },
     {
       "termIs": "hvarfstuðull (Q)",
@@ -2979,7 +2968,7 @@
       "definition": "efnahvarf eða eðlisbreyting sem gleypir varma",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25501040"
     },
@@ -3075,7 +3064,7 @@
       "termIs": "jarðalkalímálmur",
       "termEn": "alkaline earth metal",
       "termFull": "jarðalkalímálmur (e. alkaline earth metal)",
-      "definition": "hver þeirra málma (beryllíum, magnesíum, kalsíum, strontíum, baríum og radíum) sem eru í hópi 2 í lotukerfinu; þeir eru hvarfgjarnir, tvígilndir málmar sem mynda basísk oxíð",
+      "definition": "hver þeirra málma (beryllíum, magnesíum, kalsíum, strontíum, baríum og radíum) sem eru í hópi 2 í lotukerfinu; þeir eru hvarfgjarnir, tvígilentir málmar sem mynda basísk oxíð",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -3111,7 +3100,7 @@
       "definition": "SI-eining orku; orkumagn sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra, 1 J = 1 kg m2/s2 og 4,184 J = 1 cal",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25507984"
     },
@@ -3147,17 +3136,6 @@
       "sectionTitle": "Jónaefnasambönd og sameindaefnasambönd",
       "sectionSlug": "2-6-jona-og-sameindaefnasambond",
       "termId": "fs-idp182712496"
-    },
-    {
-      "termIs": "jónaefni",
-      "termEn": "ionic solid",
-      "termFull": "jónaefni (e. ionic solid)",
-      "definition": "fast efni sem samanstendur af jákvæðum og neikvæðum jónum sem haldast saman með sterkum rafstöðukröftum",
-      "chapter": 10,
-      "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
-      "termId": "fs-idm37301360"
     },
     {
       "termIs": "jónandi geislun",
@@ -3202,6 +3180,17 @@
       "sectionTitle": "Jónatengi",
       "sectionSlug": "7-1-jonatengi",
       "termId": "fs-idm118453184"
+    },
+    {
+      "termIs": "jónískt fast efni",
+      "termEn": "ionic solid",
+      "termFull": "jónískt fast efni (e. ionic solid)",
+      "definition": "fast efni sem samanstendur af jákvæðum og neikvæðum jónum sem haldið er saman með sterkum rafstöðukröftum",
+      "chapter": 10,
+      "section": "10.5",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
+      "termId": "fs-idm37301360"
     },
     {
       "termIs": "jónmargfeldisfasti vatns (Kw)",
@@ -3276,7 +3265,7 @@
       "definition": "eining fyrir varma eða aðra orku; orkumagnið sem þarf til að hækka hitastig 1 gramms af vatni um 1 gráðu á Celsíus; 1 cal er skilgreind sem 4,184 J",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25499888"
     },
@@ -3284,7 +3273,7 @@
       "termIs": "karboxýlsýra",
       "termEn": "carboxylic acid",
       "termFull": "karboxýlsýra (e. carboxylic acid)",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdum hýdroxýlhóp",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tengdum hýdroxýlhópi",
       "chapter": 20,
       "section": "20.3",
       "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og estrar",
@@ -3306,7 +3295,7 @@
       "termIs": "karbónýlhópur",
       "termEn": "carbonyl group",
       "termFull": "karbónýlhópur (e. carbonyl group)",
-      "definition": "kolefnisfrumeind tvítengd súrefnisfrumeind",
+      "definition": "kolefnisatóm tvítengt súrefnisatómi",
       "chapter": 20,
       "section": "20.3",
       "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og estrar",
@@ -3427,7 +3416,7 @@
       "termIs": "ketón",
       "termEn": "ketone",
       "termFull": "ketón (e. ketone)",
-      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tveimur kolefnisskiptihópum tengdum við hann",
+      "definition": "lífrænt efnasamband sem inniheldur karbónýlhóp með tveimur kolefnishliðarhópum tengdum við hann",
       "chapter": 20,
       "section": "20.3",
       "sectionTitle": "Aldehýð, ketónar, karboxýlsýrur og estrar",
@@ -3721,14 +3710,14 @@
       "termId": "fs-idp102386192"
     },
     {
-      "termIs": "kristallað fast efni",
+      "termIs": "kristalkennt fastefni",
       "termEn": "crystalline solid",
-      "termFull": "kristallað fast efni (e. crystalline solid)",
-      "definition": "fast efni þar sem agnirnar eru raðaðar í ákveðið endurtekið mynstur",
+      "termFull": "kristalkennt fastefni (e. crystalline solid)",
+      "definition": "fast efni þar sem eindirnar eru raðaðar í ákveðið endurtekið mynstur",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idp141680624"
     },
     {
@@ -3930,17 +3919,6 @@
       "termId": "fs-idm4190352"
     },
     {
-      "termIs": "leysanlegt",
-      "termEn": "soluble",
-      "termFull": "leysanlegt (e. soluble)",
-      "definition": "af tiltölulega mikilli leysni; leysist upp að tiltölulega miklu leyti",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idp64228624"
-    },
-    {
       "termIs": "leysið efni",
       "termEn": "solute",
       "termFull": "leysið efni (e. solute)",
@@ -3966,7 +3944,7 @@
       "termIs": "leysni",
       "termEn": "solubility",
       "termFull": "leysni (e. solubility)",
-      "definition": "að hve miklu leyti efni getur leyst upp í vatni, eða öðrum leysi",
+      "definition": "að hve miklu leyti efni getur leyst upp í vatni eða öðrum leysi",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -4538,11 +4516,11 @@
       "termIs": "málmkennt fast efni",
       "termEn": "metallic solid",
       "termFull": "málmkennt fast efni (e. metallic solid)",
-      "definition": "fast efni sem samanstendur af málmatómum",
+      "definition": "fast efni sem samanstendur af málmfrumeindum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm21108640"
     },
     {
@@ -4571,7 +4549,7 @@
       "termIs": "málmur (aðalflokka)",
       "termEn": "metal (representative)",
       "termFull": "málmur (aðalflokka) (e. metal (representative))",
-      "definition": "atóm málmfrumefna í hópum 1, 2, 12, 13, 14, 15 og 16, sem mynda jónaefni með því að tapa rafeindum úr ytri s eða p svigrúmum sínum",
+      "definition": "atóm málmfrumefna í hópum 1, 2, 12, 13, 14, 15 og 16, sem mynda jónaefni með því að missa rafeindir af ytri s eða p svigrúmum sínum",
       "chapter": 18,
       "section": "18.1",
       "sectionTitle": "Lotubundnir eiginleikar",
@@ -4637,7 +4615,7 @@
       "termIs": "mettað vetniskolefni",
       "termEn": "saturated hydrocarbon",
       "termFull": "mettað vetniskolefni (e. saturated hydrocarbon)",
-      "definition": "sameind sem inniheldur kolefni og vetni og hefur aðeins eintengi milli kolefnisfrumeinda",
+      "definition": "sameind sem inniheldur kolefni og vetni sem hefur aðeins eintengi milli kolefnisatóma",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -4736,11 +4714,11 @@
       "termIs": "millirými",
       "termEn": "interstitial sites",
       "termFull": "millirými (e. interstitial sites)",
-      "definition": "rými milli reglulegra agnastaða í hvaða fylkingu atóma eða jóna sem er",
+      "definition": "rými milli reglulegra staða einda í fylkingu frumeinda eða jóna",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idm134621184"
     },
     {
@@ -4896,6 +4874,17 @@
       "sectionTitle": "Að skrifa og stilla efnajöfnur",
       "sectionSlug": "4-1-ad-skrifa-og-stilla-efnajofnur",
       "termId": "fs-idp145224064"
+    },
+    {
+      "termIs": "myndlaust fastefni",
+      "termEn": "amorphous solid",
+      "termFull": "myndlaust fastefni (e. amorphous solid)",
+      "definition": "(einnig ókristallað fast efni) fast efni þar sem eindirnar hafa ekki skipulagða innri byggingu",
+      "chapter": 10,
+      "section": "10.5",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
+      "termId": "fs-idm63193280"
     },
     {
       "termIs": "myndunarfasti",
@@ -5069,7 +5058,7 @@
       "definition": "geta til að veita varma eða vinna vinnu",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25502192"
     },
@@ -5121,7 +5110,7 @@
       "termIs": "oxari",
       "termEn": "oxidizing agent",
       "termFull": "oxari (e. oxidizing agent)",
-      "definition": "(einnig, oxunarefni) efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu",
+      "definition": "efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -5176,7 +5165,7 @@
       "termIs": "oxunar-afoxunarhvarf",
       "termEn": "oxidation-reduction reaction",
       "termFull": "oxunar-afoxunarhvarf (e. oxidation-reduction reaction)",
-      "definition": "(einnig, redoxhvarf) hvarf sem felur í sér breytingu á oxunartölu fyrir eitt eða fleiri hvarfefni",
+      "definition": "(einnig, redoxhvarf) efnahvarf sem felur í sér breytingu á oxunartölu fyrir eitt eða fleiri hvarfefni",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -5187,7 +5176,7 @@
       "termIs": "oxunartala",
       "termEn": "oxidation number",
       "termFull": "oxunartala (e. oxidation number)",
-      "definition": "(einnig, oxunarástand) hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónískt",
+      "definition": "(einnig, oxunarástand) hleðslan sem hver frumeind frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -5237,17 +5226,6 @@
       "sectionTitle": "Líffræðileg áhrif geislunar",
       "sectionSlug": "21-6-liffraedileg-ahrif-geislunar",
       "termId": "fs-idp8726208"
-    },
-    {
-      "termIs": "ólæst",
-      "termEn": "insoluble",
-      "termFull": "ólæst (e. insoluble)",
-      "definition": "af tiltölulega litlum leysanleika; leysist aðeins upp í litlum mæli",
-      "chapter": 4,
-      "section": "4.2",
-      "sectionTitle": "Flokkun efnahvarfa",
-      "sectionSlug": "4-2-flokkun-efnahvarfa",
-      "termId": "fs-idm28944688"
     },
     {
       "termIs": "ómettaður",
@@ -5858,7 +5836,7 @@
       "termIs": "salt",
       "termEn": null,
       "termFull": "salt",
-      "definition": "jónískt efnasamband sem getur myndast við hvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
+      "definition": "jónaefni sem getur myndast við efnahvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -5935,11 +5913,11 @@
       "termIs": "sameindafast efni",
       "termEn": "molecular solid",
       "termFull": "sameindafast efni (e. molecular solid)",
-      "definition": "fast efni sem samanstendur af hlutlausum sameindum sem haldið er saman af aðdráttarkröftum milli sameinda",
+      "definition": "fast efni sem samanstendur af hlutlausum sameindum sem haldið er saman með aðdráttarkröftum millisameindakrafta",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idp66006736"
     },
     {
@@ -6042,14 +6020,14 @@
       "termId": "fs-idm57959600"
     },
     {
-      "termIs": "samgilt net",
+      "termIs": "samgilt netfast efni",
       "termEn": "covalent network solid",
-      "termFull": "samgilt net (e. covalent network solid)",
-      "definition": "fast efni þar sem agnirnar haldast saman með samgildum tengjum",
+      "termFull": "samgilt netfast efni (e. covalent network solid)",
+      "definition": "fast efni þar sem eindunum er haldið saman með samgildum tengjum",
       "chapter": 10,
       "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
+      "sectionTitle": "Fastur efnishamur",
+      "sectionSlug": "10-5-fastur-efnishamur",
       "termId": "fs-idp42521392"
     },
     {
@@ -6353,7 +6331,7 @@
       "termIs": "skiptihvarf",
       "termEn": "substitution reaction",
       "termFull": "skiptihvarf (e. substitution reaction)",
-      "definition": "efnahvarf þar sem ein frumeind kemur í stað annarrar í sameind",
+      "definition": "efnahvarf þar sem eitt atóm kemur í stað annars í sameind",
       "chapter": 20,
       "section": "20.1",
       "sectionTitle": "Kolvetni",
@@ -6527,8 +6505,8 @@
     },
     {
       "termIs": "staðalbrunavermi",
-      "termEn": "standard enthalpy of combustion",
-      "termFull": "staðalbrunavermi (e. standard enthalpy of combustion )",
+      "termEn": "standard enthalpy of combustion (ΔHc°)",
+      "termFull": "staðalbrunavermi (e. standard enthalpy of combustion (ΔHc°))",
       "definition": "varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
       "chapter": 5,
       "section": "5.3",
@@ -6538,8 +6516,8 @@
     },
     {
       "termIs": "staðalkerspenna (Ekerfis°)",
-      "termEn": "standard cell potential",
-      "termFull": "staðalkerspenna (Ekerfis°) (e. standard cell potential )",
+      "termEn": "standard cell potential (Eker°)",
+      "termFull": "staðalkerspenna (Ekerfis°) (e. standard cell potential (Eker°))",
       "definition": "kerspennan þegar öll hvarfefni og myndefni eru í staðalham (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni), venjulega við 298,15 K",
       "chapter": 17,
       "section": "17.3",
@@ -6560,8 +6538,8 @@
     },
     {
       "termIs": "staðalmyndunarvermi",
-      "termEn": "standard enthalpy of formation",
-      "termFull": "staðalmyndunarvermi (e. standard enthalpy of formation )",
+      "termEn": "standard enthalpy of formation (ΔHf°)",
+      "termFull": "staðalmyndunarvermi (e. standard enthalpy of formation (ΔHf°))",
       "definition": "vermibreyting efnahvarfs þar sem 1 mól af hreinu efni myndast úr frumefnum sínum í sínu stöðugasta ástandi við staðalaðstæður",
       "chapter": 5,
       "section": "5.3",
@@ -6573,7 +6551,7 @@
       "termIs": "staðalóreiða (S°)",
       "termEn": "standard entropy (s°)",
       "termFull": "staðalóreiða (S°) (e. standard entropy (s°))",
-      "definition": "óreiða fyrir eitt mól af efni við 1 bar þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K",
+      "definition": "óreiða fyrir eitt mól af efni við 1 bars þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K",
       "chapter": 16,
       "section": "16.3",
       "sectionTitle": "Annað og þriðja lögmál varmafræðinnar",
@@ -6584,7 +6562,7 @@
       "termIs": "staðalóreiðubreyting (ΔS°)",
       "termEn": "standard entropy change (δs°)",
       "termFull": "staðalóreiðubreyting (ΔS°) (e. standard entropy change (δs°))",
-      "definition": "óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðugildum",
+      "definition": "óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðum",
       "chapter": 16,
       "section": "16.3",
       "sectionTitle": "Annað og þriðja lögmál varmafræðinnar",
@@ -6593,8 +6571,8 @@
     },
     {
       "termIs": "staðalraftroðsspenna ((EX°))",
-      "termEn": "standard electrode potential ()",
-      "termFull": "staðalraftroðsspenna ((EX°)) (e. standard electrode potential ())",
+      "termEn": "standard electrode potential ((EX°))",
+      "termFull": "staðalraftroðsspenna ((EX°)) (e. standard electrode potential ((EX°)))",
       "definition": "raftroðsspenna mæld við staðalaðstæður (1 bar eða 1 atm fyrir lofttegundir; 1 M fyrir uppleyst efni) venjulega við 298,15 K",
       "chapter": 17,
       "section": "17.3",
@@ -6661,7 +6639,7 @@
       "termIs": "sterk sýra",
       "termEn": "strong acid",
       "termFull": "sterk sýra (e. strong acid)",
-      "definition": "sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar oxóníumjónir",
+      "definition": "sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -6711,6 +6689,17 @@
       "sectionTitle": "Rafkleyfar",
       "sectionSlug": "11-2-rafkleyfar",
       "termId": "fs-idm7742384"
+    },
+    {
+      "termIs": "stig efnahvarfs",
+      "termEn": "reaction order",
+      "termFull": "stig efnahvarfs (e. reaction order)",
+      "definition": "gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2, og svo framvegis)",
+      "chapter": 12,
+      "section": "12.3",
+      "sectionTitle": "Hraðajöfnur",
+      "sectionSlug": "12-3-hradajofnur",
+      "termId": "fs-idm333854336"
     },
     {
       "termIs": "stillt jafna",
@@ -6862,7 +6851,7 @@
       "definition": "orka ögnar eða kerfis agna sem er fengin úr hlutfallslegri stöðu, samsetningu eða ástandi",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25515184"
     },
@@ -7010,10 +6999,10 @@
       "termId": "fs-idm39846352"
     },
     {
-      "termIs": "sýru-basa hvarf",
+      "termIs": "sýru-basa efnahvarf",
       "termEn": "acid-base reaction",
-      "termFull": "sýru-basa hvarf (e. acid-base reaction)",
-      "definition": "hvarf sem felur í sér flutning vetnisjónar milli hvarfefna",
+      "termFull": "sýru-basa efnahvarf (e. acid-base reaction)",
+      "definition": "efnahvarf sem felur í sér flutning vetnisjónar milli hvarfefna",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -7222,7 +7211,7 @@
       "termIs": "tíðnistuðull (A)",
       "termEn": "frequency factor (a)",
       "termFull": "tíðnistuðull (A) (e. frequency factor (a))",
-      "definition": "jöfnunarstuðull í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
+      "definition": "hlutfallsfasti í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda árekstra sem hafa stefnu sem getur leitt til myndunar myndefnis",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -7263,6 +7252,17 @@
       "termId": "fs-idp122977840"
     },
     {
+      "termIs": "torleystur",
+      "termEn": "insoluble",
+      "termFull": "torleystur (e. insoluble)",
+      "definition": "af tiltölulega litlum leysanleika; leysist aðeins upp að litlu leyti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idm28944688"
+    },
+    {
       "termIs": "torr",
       "termEn": null,
       "termFull": "torr",
@@ -7272,17 +7272,6 @@
       "sectionTitle": "Gasþrýstingur",
       "sectionSlug": "9-1-gasthrystingur",
       "termId": "fs-idm23965520"
-    },
-    {
-      "termIs": "tóm",
-      "termEn": "vacancy",
-      "termFull": "tóm (e. vacancy)",
-      "definition": "galli sem verður þegar staða sem ætti að innihalda atóm eða jón er tóm",
-      "chapter": 10,
-      "section": "10.5",
-      "sectionTitle": "Fast ástand efnis",
-      "sectionSlug": "10-5-fast-astand-efnis",
-      "termId": "fs-idm37032656"
     },
     {
       "termIs": "trans-afstaða",
@@ -7583,6 +7572,17 @@
     },
     {
       "termIs": "útfelling",
+      "termEn": "precipitation reaction",
+      "termFull": "útfelling (e. precipitation reaction)",
+      "definition": "efnahvarf sem myndar eitt eða fleiri torleyst myndefni; þegar hvarfefni eru jónaefni, stundum kallað tvöföld skipti eða gagnskipti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Flokkun efnahvarfa",
+      "sectionSlug": "4-2-flokkun-efnahvarfa",
+      "termId": "fs-idp55089136"
+    },
+    {
+      "termIs": "útfelling",
       "termEn": "deposition",
       "termFull": "útfelling (e. deposition)",
       "definition": "breyting úr gasástandi beint í fast ástand",
@@ -7621,7 +7621,7 @@
       "definition": "efnahvarf eða eðlisbreyting sem losar varma",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25503344"
     },
@@ -7676,7 +7676,7 @@
       "definition": "fræðigrein sem fæst við mælingar á því hversu mikill varmi losnar eða binst við efnahvarf eða eðlisbreytingu",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp31731568"
     },
@@ -7709,7 +7709,7 @@
       "definition": "hreyfiorka sem tengist tilviljanakenndri hreyfingu frumeinda og sameinda",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp31730416"
     },
@@ -7720,7 +7720,7 @@
       "definition": "útþaninn eiginleiki efnis sem táknar magn varma sem þarf til að hækka hitastig þess um 1 gráðu á Celsíus (eða 1 kelvin)",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25506160"
     },
@@ -7731,7 +7731,7 @@
       "definition": "flutningur varmaorku milli tveggja hluta",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp25504496"
     },
@@ -7750,7 +7750,7 @@
       "termIs": "veik sýra",
       "termEn": "weak acid",
       "termFull": "veik sýra (e. weak acid)",
-      "definition": "sýra sem hvarfast aðeins að litlu leyti þegar hún er leyst upp í vatni og myndar oxóníumjónir",
+      "definition": "sýra sem hvarfast aðeins að litlu leyti þegar hún er leyst upp í vatni og myndar hýdróníumjónir",
       "chapter": 4,
       "section": "4.2",
       "sectionTitle": "Flokkun efnahvarfa",
@@ -7918,7 +7918,7 @@
       "definition": "orkuflutningur vegna breytinga á ytri, stórsæjum breytum eins og þrýstingi og rúmmáli; eða það að fá efni til að hreyfast gegn andstæðum krafti",
       "chapter": 5,
       "section": "5.1",
-      "sectionTitle": "Grunnatriði orku",
+      "sectionTitle": "Grundvallaratriði orku",
       "sectionSlug": "5-1-grunnatridi-orku",
       "termId": "fs-idp31732848"
     },
@@ -7937,7 +7937,7 @@
       "termIs": "virkjaður flóki",
       "termEn": "activated complex",
       "termFull": "virkjaður flóki (e. activated complex)",
-      "definition": "(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast í efnahvarfi",
+      "definition": "(einnig, virkniástand) óstöðug samsetning hvarfefna sem myndast við efnahvarf",
       "chapter": 12,
       "section": "12.5",
       "sectionTitle": "Árekstrakenningin",
@@ -8069,7 +8069,7 @@
       "termIs": "yfirborðsspenna",
       "termEn": "surface tension",
       "termFull": "yfirborðsspenna (e. surface tension)",
-      "definition": "orka sem þarf til að auka flatarmál, eða lengd, yfirborðs vökva um tiltekna stærð",
+      "definition": "orka sem þarf til að auka flatarmál, eða lengd, yfirborðs vökva um tiltekið magn",
       "chapter": 10,
       "section": "10.2",
       "sectionTitle": "Eiginleikar vökva",
