@@ -80,17 +80,30 @@ export function reconcilePublishedRenames({
   for (const [filename, moduleId] of snap) {
     const current = renderedModules.get(moduleId);
     if (!current || current === filename) continue;
+
+    const filePath = path.join(outputDir, filename);
     try {
-      fs.unlinkSync(path.join(outputDir, filename));
-    } catch {
-      continue; // already gone (e.g. the full-chapter sweep took it) — still record it
-    } finally {
-      pruned.push({
-        from: `${chapterRelDir}/${filename}`,
-        to: `${chapterRelDir}/${current}`,
-        moduleId,
-      });
+      fs.unlinkSync(filePath);
+    } catch (err) {
+      if (err.code === 'ENOENT') {
+        // Already gone — e.g. the renderer's own full-chapter sweep deleted every
+        // .html before rendering. Expected and silent; still record the rename below.
+      } else {
+        // Any other failure means the superseded file is STILL ON DISK, so the
+        // duplicate it exists to fix will persist even though we record the rename
+        // (rule 5: a record with no unlink still beats no record at all).
+        console.warn(
+          `[publication-reconcile] failed to delete superseded page ${filePath} ` +
+            `(${err.code}): the old page is still on disk and the duplicate will persist.`
+        );
+      }
     }
+
+    pruned.push({
+      from: `${chapterRelDir}/${filename}`,
+      to: `${chapterRelDir}/${current}`,
+      moduleId,
+    });
   }
 
   if (pruned.length === 0) return { pruned };
