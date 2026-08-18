@@ -188,8 +188,10 @@ export function checkDuplicateSegIds(content, segText) {
  * with an id and an alt would show up in that same census as an ADDITIONAL,
  * unattributed reachable-but-unemitted shortfall (processExercise's walk
  * would never reach it, the same way it doesn't reach an id-less bare media
- * in the four now-covered positions — see Ruling 1,
- * .superpowers/sdd/2026-08-17-c88-unreachable-figure-alt/progress.md). No
+ * in the four now-covered positions — see the frozen spec's §2 scope banner,
+ * docs/superpowers/specs/2026-08-16-c88-unreachable-figure-alt-design.md
+ * (the `if (!media.id) continue` guard reasoning), and the register's §C88
+ * entries in docs/plans/2026-07-21-post-item17-followup-campaign.md. No
  * such extra shortfall exists in chemistry, so the case remains unobserved
  * there. Organic is not evidence either way here — Task 10 measures it
  * separately. If a bare <media> direct child of <exercise> is ever found,
