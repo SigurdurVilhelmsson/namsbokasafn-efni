@@ -1854,18 +1854,13 @@ function collectMediaAlts(elements, map) {
     }
     if (el.type === 'table' && Array.isArray(el.rows)) {
       for (const row of el.rows) {
-        for (const cell of row.cells || []) {
+        for (const cell of row?.cells || []) {
           // §C88 Task 7 — a table cell is not a {type:'media'} node, so the
           // branch above never sees it. Key on `cell.alt.mediaId`, which
-          // processTable (cnxml-extract.js) carries EXPLICITLY for exactly
-          // this reason: it cannot be recovered from the seg-id instead.
-          // `${moduleId}:alt:${mediaId}-alt` only holds the media id when
-          // the media HAS one, and there is no id-less fallback form to
-          // parse here (the extractor's Ruling-9 guard means every emitted
-          // cell.alt already has a real media id) — but *parsing* the seg-id
-          // would be reconstructing a value the producer already handed us,
-          // for no reason, and fragile if the id-less fallback shape ever
-          // changes. Read the field.
+          // processTable (cnxml-extract.js) carries EXPLICITLY: reading it
+          // directly means not reconstructing a value the producer already
+          // handed us, for no reason, and not coupling this reader to the
+          // seg-id's format. Read the field.
           if (cell && cell.alt?.segmentId && cell.alt.mediaId) {
             map[cell.alt.mediaId] = { segmentId: cell.alt.segmentId };
           }
@@ -2165,6 +2160,20 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   for (const m of structure.inlineMedia || []) {
     if (m.id && m.alt?.segmentId) mediaAlts[m.id] = { segmentId: m.alt.segmentId };
   }
+  // §C88 Task 7 fix round 1 (review Finding 1) — THIRD SOURCE, same shape as
+  // the second: an inline (para-embedded) table is explicitly EXCLUDED from
+  // `structure.content` (cnxml-extract.js:1263, the `inlineTablesMap.has(
+  // item.id)` break) and lives only in `structure.inlineTables[].structure`.
+  // `collectMediaAlts(structure.content, …)` above can never reach a
+  // bare-media alt inside an inline table's cell — yet that table IS still
+  // rendered, through `expandInlineTables`/`buildPara`'s `[[TABLE:id]]`
+  // restoration (both call `buildTable` → `applyMediaAltString`). Without
+  // this fold, `ctx.mediaAlts` has no key for that media id, the English alt
+  // is retained, and the translation is extracted, sent to the paid MT, and
+  // silently discarded at write-back — the §C89 shape this whole branch
+  // exists to close. Reuses `collectMediaAlts`'s existing `table` branch; no
+  // new logic.
+  for (const t of structure.inlineTables || []) collectMediaAlts([t.structure], mediaAlts);
   const tableNodesById = {};
   collectTableNodes(structure.content, tableNodesById);
   const figuresHandledInNotes = new Set();

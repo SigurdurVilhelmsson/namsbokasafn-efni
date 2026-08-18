@@ -385,4 +385,74 @@ describe('§C88 — table-entry alt write-back (string path)', () => {
     expect(cnxml).toContain('alt="Kolba"');
     expect(cnxml).not.toContain('alt="A flask"');
   });
+
+  // §C88 Task 7 fix round 1 (review Finding 1) — an INLINE (para-embedded)
+  // table is explicitly excluded from `structure.content`
+  // (cnxml-extract.js:1263) and lives only in `structure.inlineTables[]
+  // .structure`, reached at write-back through `buildPara`'s `[[TABLE:id]]`
+  // restoration — NOT through collectMediaAlts's walk of `structure.content`.
+  // Before this fix `collectMediaAlts` never saw `structure.inlineTables` at
+  // all, so a bare-media alt inside an inline table's cell would be
+  // extracted, translated, and silently discarded at write-back (the §C89
+  // shape this whole branch exists to close) — the English alt would survive
+  // untouched with no error and no failing test. `structure.inlineMedia` is
+  // deliberately absent from this fixture, so this can only pass if the new
+  // `for (const t of structure.inlineTables || [])` fold in `buildCnxml`
+  // actually runs.
+  it('§C88 fix round 1 — a bare-media alt inside an INLINE (para-embedded) table reaches the output', () => {
+    const structure = {
+      moduleId: 'test4',
+      content: [{ type: 'para', id: 'p1', segmentId: 'seg-p1' }],
+      inlineTables: [
+        {
+          tableId: 'tbl-inline',
+          structure: {
+            type: 'table',
+            id: 'tbl-inline',
+            class: null,
+            summary: null,
+            rows: [
+              {
+                cells: [
+                  {
+                    segmentId: null,
+                    attributes: {},
+                    alt: {
+                      segmentId: 'test4:alt:m-inline-alt',
+                      text: 'A flask',
+                      mediaId: 'm-inline',
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      // Deliberately no `inlineMedia` — the older §C81 fallback source must
+      // NOT be what makes this pass.
+    };
+    const segments = new Map([
+      ['seg-p1', 'See data:[[TABLE:tbl-inline]]'],
+      ['test4:alt:m-inline-alt', 'Kolba'],
+    ]);
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<content>
+<para id="p1">See data:<newline/><table id="tbl-inline" summary="">
+<tgroup cols="1">
+<tbody>
+<row><entry><media id="m-inline" alt="A flask"><image mime-type="image/png" src="a.png"/></media></entry></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</content>
+</document>`;
+
+    const { cnxml } = buildCnxml(structure, segments, {}, originalCnxml, {}, {});
+    expect(cnxml).toContain('alt="Kolba"');
+    expect(cnxml).not.toContain('alt="A flask"');
+    expect(cnxml).not.toContain('[[TABLE:');
+  });
 });

@@ -403,4 +403,23 @@ describe('§C88 — bare media alt in a table <entry>', () => {
     expect(cell.segmentId).toBeNull();
     expect(cell.alt).toBeUndefined();
   });
+
+  // Review Finding 3 (fix round 1): every test above uses a single-cell row,
+  // so none pins cellIdx alignment. buildTable (tools/cnxml-inject.js) walks
+  // entries POSITIONALLY against row.cells, and tableCellGaps fires only on
+  // `!cell` — an OVER-count of cells.push() records no gap at all. So if
+  // `rowStructure.cells.push(cell)` ever moved INSIDE the media loop (instead
+  // of once per entry, after it), a later text cell in the same row would
+  // silently receive the WRONG translation, with every other test here still
+  // green. This is the sharpest available pin for that failure mode.
+  it('does not shift a later cell in the same row (media-only cell sits at its own index)', () => {
+    const r = extractSegments(
+      table('<entry>A</entry><entry><media id="m-x" alt="pic"/></entry><entry>B</entry>')
+    );
+    const t = r.structure.content.find((e) => e.type === 'table');
+    const cells = t.rows[0].cells;
+    expect(cells.length).toBe(3);
+    const lastCellText = r.segments.find((s) => s.id === cells[2].segmentId)?.text;
+    expect(lastCellText).toBe('B');
+  });
 });

@@ -886,13 +886,6 @@ function extractSegments(cnxml, options = {}) {
     });
   }
 
-  // §C81 Task 10: merge duplicate alt segments now that every structural walk
-  // (figure/standalone media above, inline media just above) has had its own
-  // chance to create one. Must run AFTER structure.inlineMedia is built, so
-  // its entries are reachable by the walk. See dedupeAltSegments()'s own
-  // comment for why this runs after rather than suppressing during capture.
-  dedupeAltSegments(segments, structure);
-
   if (inlineTablesMap.size > 0) {
     structure.inlineTables = Array.from(inlineTablesMap.entries())
       .filter(([_, data]) => data.processed)
@@ -901,6 +894,18 @@ function extractSegments(cnxml, options = {}) {
         structure: data.structure,
       }));
   }
+
+  // §C81 Task 10 (reordered, §C88 Task 7 fix round 1 — review Finding 1 §5):
+  // merge duplicate alt segments now that every structural walk (figure/
+  // standalone media above, inline media and inline tables just above) has
+  // had its own chance to create one. Must run AFTER structure.inlineMedia
+  // AND structure.inlineTables are built, so their entries are reachable by
+  // the walk — a Rule 2 merge that ran before structure.inlineTables was
+  // attached would remap segment ids everywhere EXCEPT inside it, leaving an
+  // inline table's `cell.alt.segmentId` pointing at a spliced-out segment.
+  // See dedupeAltSegments()'s own comment for why this runs after rather
+  // than suppressing during capture.
+  dedupeAltSegments(segments, structure);
 
   if (verbose) {
     console.error(
@@ -1486,6 +1491,19 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             // paid for, and silently discarded (§C89 recreated). Leave an
             // id-less bare media unextracted instead.
             if (!media.id) continue;
+            // ⚠️ Review Finding 5 (fix round 1) — this fallback has no
+            // counterpart in the string-path writer. `applyMediaAltString`
+            // (tools/cnxml-inject.js) matches only `<media …>` open tags and
+            // never inspects a child `<image>` tag, unlike its DOM-path twin
+            // `applyMediaAltDom`, which does fall back to a child `<image>`
+            // alt. So an alt living ONLY on a child `<image>` (never on the
+            // `<media>` itself) is emitted here but never written back on
+            // the string path this emit site feeds — same emit-without-reach
+            // class as Finding 1, measured at zero instances corpus-wide.
+            // Deliberately not fixed here: `applyMediaAltString` is Task 3's
+            // code, outside this task's scope, and teaching it the `<image>`
+            // fallback has a blast radius across every string-path
+            // write-back. Logged for the register, not closed.
             const altText =
               media.attributes.alt ||
               (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] ||
@@ -1495,10 +1513,9 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             // {type:'media'} structure nodes at the other three emit sites,
             // a table cell is not itself keyed by media id, so
             // collectMediaAlts (Step 4, tools/cnxml-inject.js) needs it
-            // carried explicitly. It cannot be recovered from the seg-id
-            // alone: `${moduleId}:alt:${mediaId}-alt` only holds the media
-            // id when the media HAS one, and the guard above means every
-            // media reaching this line does.
+            // carried explicitly: don't reconstruct a value the producer
+            // already handed you, and don't couple the reader to the seg-id
+            // format.
             // ⚠️ Only ONE alt survives on `cell.alt` if a cell ever holds more
             // than one alt-bearing media — and, since this loop does not
             // break, it is whichever media comes LAST in document order, not
