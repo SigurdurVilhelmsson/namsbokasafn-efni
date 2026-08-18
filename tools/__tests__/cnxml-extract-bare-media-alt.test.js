@@ -97,6 +97,26 @@ describe('§C88 — bare media alt in <problem>/<solution>', () => {
     expect(altSegs(r).map((s) => s.text)).toEqual(['Has one']);
   });
 
+  it('drops a bare media with no id — no segment, no structure entry (Controller Ruling 1 guard)', () => {
+    // Without an id, altElementId's positional fallback would mint a segment id
+    // that collectMediaAlts (inject-side, id-keyed only) can never resolve — the
+    // segment would be extracted, translated, paid for, and silently discarded
+    // at inject: the exact §C89 defect class this guard exists to prevent. The
+    // `if (!mediaEl.id) continue;` line at cnxml-extract.js:1734 is the only thing
+    // preventing that. Assert BOTH emissions it suppresses — the alt segment and
+    // the structure entry are separate pushes, and a future bug could drop only
+    // one of them.
+    const r = extractSegments(
+      wrap(`<exercise id="ex1"><problem id="p1">
+             <media alt="No id here"/>
+           </problem></exercise>`)
+    );
+    expect(altSegs(r)).toEqual([]);
+    const ex = r.structure.content.find((e) => e.type === 'exercise');
+    const media = ex.problem.content.find((e) => e.type === 'media');
+    expect(media).toBeUndefined();
+  });
+
   it('does not disturb a media nested inside a <para> (already reachable)', () => {
     // §C88 finding (out of scope for this task): extractInlineText's inline-media
     // capture (cnxml-extract.js:246) matches only the PAIRED `<media>...</media>`

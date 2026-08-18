@@ -1694,7 +1694,7 @@ function orderedExerciseBlocks(inner) {
  *
  * @param {string} inner   - raw content between the section's open/close tags
  * @param {'problem'|'solution'} segType - segment type for the section's paras
- * @returns {Array<object>} structure content entries (para + list) in document order
+ * @returns {Array<object>} structure content entries (para + list + media) in document order
  */
 function emitExerciseSection(
   inner,
