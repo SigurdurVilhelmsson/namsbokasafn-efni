@@ -1983,6 +1983,42 @@ function processNote(
     noteStructure.content.push(listStructure);
   }
 
+  // §C88 — bare <media> that is a direct child of this note.
+  //
+  // 🔴 A DIRECT addSegment, deliberately NOT routed through inlineMediaMap:
+  // 9 of the 10 corpus instances are notes nested inside <example>, reached
+  // through the 5-ARG processExample call at the example's notes loop, which
+  // passes no inlineMediaMap at all. Routing through it would silently cover
+  // 1 of 10.
+  // Uses stripContainersByLength (see processExample) rather than a fixed
+  // paras-then-lists order — `paras` is shallow (extractElements) and can
+  // include a para nested inside a list item's wrapsPara shape, so a fixed
+  // order risks the same silent-no-op corruption processExample hit for a
+  // note-nested para (§C88).
+  // 🔴 FIGURE/TABLE STRIP IS NOT OPTIONAL — see processExample's identical
+  // comment: processTopLevelContent hoists every <figure>/<table> to a
+  // top-level structure node with no isInsideExample/isInsideNote exclusion, so
+  // a figure nested in this note is already represented elsewhere.
+  const noteBareContent = stripContainersByLength(note.content, [
+    paras,
+    lists,
+    extractNestedElements(note.content, 'figure'),
+    extractNestedElements(note.content, 'table'),
+  ]);
+  for (const media of extractElements(noteBareContent, 'media')) {
+    // Guard on id (Controller Ruling 9) — see processExample's identical guard
+    // for the full §C89 rationale.
+    if (!media.id) continue;
+    const altText =
+      media.attributes.alt || (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] || '';
+    const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+    noteStructure.content.push({
+      type: 'media',
+      id: media.id,
+      alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
+    });
+  }
+
   return noteStructure;
 }
 

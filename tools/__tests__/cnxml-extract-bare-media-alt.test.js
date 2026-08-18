@@ -231,3 +231,53 @@ describe('§C88 — bare media alt in <example>', () => {
     expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'C']);
   });
 });
+
+describe('§C88 — bare media alt in <note>', () => {
+  it('emits an alt segment for a bare media in a TOP-LEVEL note', () => {
+    const r = extractSegments(
+      wrap(`<note id="n1" class="note"><media id="m-note" alt="A caution icon"/></note>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A caution icon']);
+  });
+
+  it('🔴 emits for a note NESTED IN AN EXAMPLE — the 9-of-10 majority case', () => {
+    const r = extractSegments(
+      wrap(`<example id="ex1">
+             <para id="p1">Body.</para>
+             <note id="n1" class="answer"><media id="m-nested" alt="An answer diagram"/></note>
+           </example>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['An answer diagram']);
+    expect(altSegs(r)[0].id).toBe('m00001:alt:m-nested-alt');
+  });
+
+  it('pushes a structure entry into the note content', () => {
+    const r = extractSegments(
+      wrap(`<note id="n1"><media id="m-note" alt="A caution icon"/></note>`)
+    );
+    const note = r.structure.content.find((e) => e.type === 'note');
+    expect(note.content.find((e) => e.type === 'media').alt.text).toBe('A caution icon');
+  });
+
+  it('🔴 STRIP-ORDER GUARD — a para with inline media, a sibling list, and a bare media', () => {
+    // processNote has the same shallow-paras / nested-lists asymmetry as
+    // processExample. Strip the list before the para and the para survives the
+    // strip, double-emitting m-x. Exactly three alts.
+    //
+    // ⚠️ DEVIATION FROM BRIEF, MEASURED: m-x and m-y use the PAIRED <media>
+    // form — see the identical deviation note on processExample's STRIP-ORDER
+    // tests. A self-closing media as a para's inline content or as a list
+    // item's sole content is not reachable by extractInlineText/processList
+    // (pre-existing, out-of-scope gap); with the brief's self-closing form
+    // this fixture also trips `assertNoDroppedListBlocks` (m-y is top-level
+    // here, not inside an example/exercise subtree the guard excludes).
+    const r = extractSegments(
+      wrap(`<note id="n1">
+             <para id="p1">Text <media id="m-x" alt="A"><image src="x.png"/></media> more.</para>
+             <list id="l1"><item id="i1"><media id="m-y" alt="B"><image src="y.png"/></media></item></list>
+             <media id="m-z" alt="C"/>
+           </note>`)
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A', 'B', 'C']);
+  });
+});
