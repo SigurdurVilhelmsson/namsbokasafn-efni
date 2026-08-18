@@ -607,6 +607,14 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
   a deleted page. ⚠️ **`books/_slug-maps/` is NOT that map** — `sync-content.js` copies only
   `05-publication/{mt-preview,faithful}/`, so nothing there ever reaches vefur.
   ⚠️ **The vefur consumer is not built yet**, so a superseded URL 404s until it is.
+  ⚠️ **The CONTRACT is PER-TRACK, not per-book — the merged destination is vefur's to
+  reconcile.** Vefur flattens both tracks into one `static/content/<book>/`, its overlay
+  filter has no branch for a track-root `slug-map.json`, so an ordinary editor republish
+  (`track` defaults to `faithful`) would copy a `faithful` map over `mt-preview`'s with
+  `force: true` — and vefur's own `resolveChapterDuplicates` can delete the page a `to`
+  names, invalidating it from outside efni entirely. Decide the destination shape
+  (track-qualify the filename, or read both per-track maps from `--efni-path`) **before**
+  writing the vefur consumer PR — not after.
 - **A sync conflict is WARN-ONLY and does NOT change `sync-content.js`'s exit code.** That is
   deliberate on vefur's side — a duplicate is an *efni* content defect, and failing the sync would
   block a deploy over something vefur cannot fix. **So a clean sync exit is NOT evidence that
