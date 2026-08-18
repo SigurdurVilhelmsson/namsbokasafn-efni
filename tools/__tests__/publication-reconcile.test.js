@@ -231,4 +231,77 @@ describe('reconcilePublishedRenames', () => {
       warnSpy.mockRestore();
     }
   });
+
+  it('🔴 HANDOFF: a page this pass wrote for a DIFFERENT module must not be pruned or redirected onto — an ordinary rename in the same chapter is the CONTROL proving the guard does not suppress legitimate prunes', () => {
+    // mX moves 10-5→10-6 while mY moves 10-6→10-7 in the SAME pass, so mX's NEW
+    // name is mY's OLD name.
+    page('10-5-alpha.html', 'mX');
+    page('10-6-alpha.html', 'mY');
+    // CONTROL: an ordinary, non-colliding rename in the same chapter — the guard
+    // must not suppress this one.
+    page('10-5-fast-astand-efnis.html', 'm68770');
+
+    const snapshot = snapshotModuleIds(outputDir);
+
+    // The render pass itself: mX's fresh page overwrites mY's old file (same
+    // filename), mY's fresh page lands at its new name, and the ordinary rename's
+    // fresh page lands at its new name.
+    page('10-6-alpha.html', 'mX'); // overwrite — mX's fresh content now sits here
+    page('10-7-alpha.html', 'mY');
+    page('10-5-fastur-efnishamur.html', 'm68770');
+
+    const res = reconcilePublishedRenames({
+      outputDir,
+      trackDir,
+      chapterRelDir: 'chapters/10',
+      renderedModules: new Map([
+        ['mX', '10-6-alpha.html'],
+        ['mY', '10-7-alpha.html'],
+        ['m68770', '10-5-fastur-efnishamur.html'],
+      ]),
+      book: 'efnafraedi-2e',
+      track: 'mt-preview',
+      recordedAt: AT,
+      snapshot,
+    });
+
+    // Only the two LEGITIMATE prunes are recorded — the mY handoff entry is
+    // dropped entirely, not merely half-suppressed.
+    expect(res.pruned.sort((a, b) => a.from.localeCompare(b.from))).toEqual([
+      {
+        from: 'chapters/10/10-5-alpha.html',
+        to: 'chapters/10/10-6-alpha.html',
+        moduleId: 'mX',
+      },
+      {
+        from: 'chapters/10/10-5-fast-astand-efnis.html',
+        to: 'chapters/10/10-5-fastur-efnishamur.html',
+        moduleId: 'm68770',
+      },
+    ]);
+
+    // mX's fresh page survives — this is the defect under test: without the
+    // guard it gets deleted because mY's stale snapshot entry still names it.
+    expect(fs.existsSync(path.join(outputDir, '10-6-alpha.html'))).toBe(true);
+    expect(fs.readFileSync(path.join(outputDir, '10-6-alpha.html'), 'utf8')).toContain(
+      'data-module-id="mX"'
+    );
+    // mY's fresh page is untouched.
+    expect(fs.existsSync(path.join(outputDir, '10-7-alpha.html'))).toBe(true);
+    // CONTROL: the ordinary rename still pruned its superseded page.
+    expect(fs.existsSync(path.join(outputDir, '10-5-alpha.html'))).toBe(false);
+    expect(fs.existsSync(path.join(outputDir, '10-5-fast-astand-efnis.html'))).toBe(false);
+    expect(fs.existsSync(path.join(outputDir, '10-5-fastur-efnishamur.html'))).toBe(true);
+
+    const map = readSlugMap(path.join(trackDir, SLUG_MAP_FILENAME), {
+      book: 'efnafraedi-2e',
+      track: 'mt-preview',
+    });
+    // No bogus entry redirecting away from mX's live page.
+    expect(map.renames['chapters/10/10-6-alpha.html']).toBeUndefined();
+    expect(map.renames['chapters/10/10-5-alpha.html'].to).toBe('chapters/10/10-6-alpha.html');
+    expect(map.renames['chapters/10/10-5-fast-astand-efnis.html'].to).toBe(
+      'chapters/10/10-5-fastur-efnishamur.html'
+    );
+  });
 });

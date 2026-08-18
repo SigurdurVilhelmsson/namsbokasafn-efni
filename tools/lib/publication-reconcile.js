@@ -76,10 +76,17 @@ export function reconcilePublishedRenames({
 }) {
   const snap = snapshot || snapshotModuleIds(outputDir);
   const pruned = [];
+  const writtenThisPass = new Set(renderedModules.values());
 
   for (const [filename, moduleId] of snap) {
     const current = renderedModules.get(moduleId);
     if (!current || current === filename) continue;
+    // `filename` belonged to `moduleId` at snapshot time, but it is now the CURRENT
+    // name of some OTHER module this pass just wrote (a name handoff between two
+    // modules' slugs). Pruning it would delete that other module's fresh page and
+    // record a rename onto it — silent content substitution. Skip both the unlink
+    // and the record; the file is live and owned by whichever module wrote it.
+    if (writtenThisPass.has(filename)) continue;
 
     const filePath = path.join(outputDir, filename);
     try {

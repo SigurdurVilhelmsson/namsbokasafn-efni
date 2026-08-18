@@ -1,5 +1,5 @@
 // tools/__tests__/slug-map.test.js
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -200,5 +200,47 @@ describe('slug-map: round-trip', () => {
     const raw = fs.readFileSync(p, 'utf8');
     expect(raw.endsWith('\n')).toBe(true);
     expect(raw).toContain('\n  "renames"');
+  });
+
+  it('🔴 writes ATOMICALLY: content lands via a `.tmp` file + rename, not a direct write, and no `.tmp` survives', () => {
+    // A bare writeFileSync(mapPath, …) can leave a truncated/zero-length
+    // slug-map.json if the process is killed mid-write (measured: 8 of 55 SIGINT
+    // trials). write-to-tmp-then-rename closes that window because a rename is a
+    // single filesystem operation — there is no instant at which mapPath is
+    // partially written. Pin the MECHANISM, not just the end state: a direct
+    // writeFileSync(mapPath, …) with no renameSync would satisfy every
+    // outcome-only assertion (no .tmp file, one file in the dir) just as well,
+    // so this must also assert the write went through a differently-named path.
+    const p = path.join(dir, SLUG_MAP_FILENAME);
+    const map = recordRename(m(), {
+      from: `${K}a.html`,
+      to: `${K}b.html`,
+      moduleId: 'm1',
+      recordedAt: AT,
+    });
+
+    const writeSpy = vi.spyOn(fs, 'writeFileSync');
+    const renameSpy = vi.spyOn(fs, 'renameSync');
+    try {
+      writeSlugMap(p, map);
+
+      expect(writeSpy).toHaveBeenCalledTimes(1);
+      const [writtenPath] = writeSpy.mock.calls[0];
+      expect(writtenPath).not.toBe(p); // content must NOT land directly on the final path
+      expect(writtenPath).toBe(`${p}.tmp`);
+
+      expect(renameSpy).toHaveBeenCalledTimes(1);
+      expect(renameSpy.mock.calls[0]).toEqual([`${p}.tmp`, p]);
+    } finally {
+      writeSpy.mockRestore();
+      renameSpy.mockRestore();
+    }
+
+    // Outcome checks, alongside the mechanism pin above.
+    expect(fs.existsSync(`${p}.tmp`)).toBe(false);
+    expect(fs.readdirSync(dir).sort()).toEqual([SLUG_MAP_FILENAME]);
+    expect(readSlugMap(p, { book: 'efnafraedi-2e', track: 'mt-preview' }).renames).toEqual(
+      map.renames
+    );
   });
 });

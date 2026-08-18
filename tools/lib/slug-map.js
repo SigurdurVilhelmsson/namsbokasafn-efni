@@ -77,11 +77,20 @@ export function recordRename(map, { from, to, moduleId, recordedAt }) {
   return map;
 }
 
-/** Write the map, sorted by key so the committed diff is stable. */
+/**
+ * Write the map, sorted by key so the committed diff is stable.
+ *
+ * Atomic: writes to `<mapPath>.tmp` then renames over the destination, so a process
+ * killed mid-write (e.g. SIGINT) never leaves a truncated/zero-length `slug-map.json`
+ * on disk — `readSlugMap` would silently treat that as an empty map and the next
+ * render would rewrite it with only its own entry, losing every prior rename.
+ */
 export function writeSlugMap(mapPath, map) {
   const renames = {};
   for (const key of Object.keys(map.renames).sort()) renames[key] = map.renames[key];
   const payload = { book: map.book, track: map.track, contract: CONTRACT, renames };
   fs.mkdirSync(path.dirname(mapPath), { recursive: true });
-  fs.writeFileSync(mapPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  const tmpPath = `${mapPath}.tmp`;
+  fs.writeFileSync(tmpPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  fs.renameSync(tmpPath, mapPath);
 }
