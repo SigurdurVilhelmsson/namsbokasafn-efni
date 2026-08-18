@@ -103,7 +103,7 @@ describe('slug-map: recordRename', () => {
     });
   });
 
-  it('✅ CONTROL: collapsing does not disturb an unrelated module’s entry', () => {
+  it('✅ CONTROL: collapsing does not disturb an unrelated module entry', () => {
     let map = recordRename(m(), { from: `${K}x.html`, to: `${K}y.html`, moduleId: 'm9', recordedAt: AT });
     map = recordRename(map, { from: `${K}a.html`, to: `${K}b.html`, moduleId: 'm1', recordedAt: AT });
     map = recordRename(map, { from: `${K}b.html`, to: `${K}c.html`, moduleId: 'm1', recordedAt: AT });
