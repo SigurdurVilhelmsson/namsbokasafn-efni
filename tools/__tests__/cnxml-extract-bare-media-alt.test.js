@@ -158,6 +158,20 @@ describe('§C88 — bare media alt in <example>', () => {
     expect(media.alt).toEqual({ segmentId: 'm00001:alt:m-ex-alt', text: 'A reaction diagram' });
   });
 
+  it('drops a bare media with no id — no segment, no structure entry (Controller Ruling 9 guard)', () => {
+    // Same guard as the <problem>/<solution> pin above, applied to <example>'s
+    // own emit point. Without an id, altElementId's positional fallback would
+    // mint a segment id that collectMediaAlts (inject-side, id-keyed only) can
+    // never resolve — extracted, translated, paid for, and silently discarded
+    // at inject: the exact §C89 defect class this guard exists to prevent.
+    // Assert BOTH emissions it suppresses.
+    const r = extractSegments(wrap(`<example id="ex1"><media alt="No id here"/></example>`));
+    expect(altSegs(r)).toEqual([]);
+    const ex = r.structure.content.find((e) => e.type === 'example');
+    const media = ex.content.find((e) => e.type === 'media');
+    expect(media).toBeUndefined();
+  });
+
   it('does not double-emit a media that is inside a nested <list> (processList owns it)', () => {
     // ⚠️ DEVIATION FROM BRIEF, MEASURED: processList's item handling routes
     // through extractInlineText, whose media capture (cnxml-extract.js:246,
@@ -257,6 +271,17 @@ describe('§C88 — bare media alt in <note>', () => {
     );
     const note = r.structure.content.find((e) => e.type === 'note');
     expect(note.content.find((e) => e.type === 'media').alt.text).toBe('A caution icon');
+  });
+
+  it('drops a bare media with no id — no segment, no structure entry (Controller Ruling 9 guard)', () => {
+    // Same guard as the <example> and <problem>/<solution> pins, applied to
+    // <note>'s own emit point. See the <example> guard test above for the
+    // full §C89 rationale.
+    const r = extractSegments(wrap(`<note id="n1"><media alt="No id here"/></note>`));
+    expect(altSegs(r)).toEqual([]);
+    const note = r.structure.content.find((e) => e.type === 'note');
+    const media = note.content.find((e) => e.type === 'media');
+    expect(media).toBeUndefined();
   });
 
   it('🔴 STRIP-ORDER GUARD — a para with inline media, a sibling list, and a bare media', () => {
