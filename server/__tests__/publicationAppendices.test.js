@@ -184,13 +184,29 @@ describe('publicationService resolves the appendices dir (not ch-1)', () => {
 
   it('getPublicationStatus for appendices reads the real 05-publication/mt-preview/chapters/appendices/ dir (not chapters/-1)', () => {
     // Real committed data: books/efnafraedi-2e/05-publication/mt-preview/chapters/appendices/
-    // has 13 rendered .html files (verified via `ls` before writing this test).
+    // holds rendered .html files for the appendices chapter.
     // Pre-fix this site built `chapters/-1` (String(-1).padStart(2,'0') === '-1'),
     // a nonexistent dir → published:false, fileCount:0.
     const status = getPublicationStatus('efnafraedi-2e', -1);
 
     expect(status.mtPreview.published).toBe(true);
-    expect(status.mtPreview.fileCount).toBe(13);
+    // §C9: this used to pin 13 against a WRITE directory, so prune-on-rename — which
+    // deliberately deletes superseded pages from exactly such a directory — would have
+    // turned it red for a reason unrelated to what it tests. Observe the directory and
+    // assert agreement instead. The sibling `.path` assertion below is KEPT AS IS: that
+    // one genuinely discriminates.
+    const appendixDir = path.join(
+      REPO_ROOT,
+      'books',
+      'efnafraedi-2e',
+      '05-publication',
+      'mt-preview',
+      'chapters',
+      'appendices'
+    );
+    const onDisk = fs.readdirSync(appendixDir).filter((f) => f.endsWith('.html')).length;
+    expect(onDisk).toBeGreaterThan(0); // control: an empty dir must not make this vacuous
+    expect(status.mtPreview.fileCount).toBe(onDisk);
     expect(status.mtPreview.path).toBe('05-publication/mt-preview/chapters/appendices');
   });
 
