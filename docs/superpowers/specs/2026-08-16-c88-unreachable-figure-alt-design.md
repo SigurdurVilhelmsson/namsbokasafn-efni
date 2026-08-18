@@ -44,6 +44,24 @@ content type. Not a regression that branch caused.
 
 ## 2. Scope — RULED
 
+> ⚠️ **BANNER 2026-08-17 — THE "OUT" RULING BELOW RESTS ON A PREMISE §C80 HAS SINCE VOIDED.**
+> It reads *"213 of them sit in modules §C80 is not buying"*. §C80's 2026-08-17 scope-up buys
+> **all 342 organic modules**, so **all 245 are now in purchased modules.** This spec is frozen
+> evidence; **the register is status and the register wins.**
+>
+> ▶ **The IN scope is UNCHANGED and this item proceeds:** chemistry's 197 are still exactly the
+> population, and organic's 245 stay out — but **for a different and stronger reason than the one
+> written below.** They are excluded on *design* grounds, not spend: **0 of 245 carry a media
+> `@id` or a figure `@id`**, the only two keys §C89's write-back can address. Emitting them would
+> extract, pay for and discard — §C89's shape. That exclusion is now enforced mechanically, by the
+> `if (!media.id) continue` guard in all four emitters.
+>
+> ⚠️ **Two consequences that are NOT discharged by this banner:** ① organic's 245 are now
+> in-scope-and-unreachable, which is a gap needing its own item, not a scope footnote. ② **§8's
+> acceptance gate is chemistry-derived** (197 unreachable of 1,149); organic's shape is 245 of
+> 2,163 (11.3%), all one position, with 1,918 of 1,918 reaching injected output. **Re-state the
+> gate for organic before organic module 1.**
+
 **IN: chemistry's 197. Nothing else.** [LEAD] ruling, 2026-08-16.
 
 **OUT:** organic's 245 `entry-not-in-figure` alts — **0 of 245 carry an id**, and **213 of them

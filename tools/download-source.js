@@ -22,7 +22,14 @@ import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { listCnxmlFiles } = require('./lib/source-manifest.cjs');
+const { listCnxmlFiles, readLocalOrigin } = require('./lib/source-manifest.cjs');
+const {
+  assertRefreshable,
+  assertVintageAdvances,
+  assertLicenceUnchanged,
+  assertWritePathAllowed,
+  isFirstFetch,
+} = require('./lib/source-refresh-policy.cjs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -171,6 +178,23 @@ export function parseCollectionXml(xml) {
 // ---------------------------------------------------------------------------
 
 /**
+ * §C93 G3's `expectedCode` — the book's recorded licence, re-read beside `sourceDir`. Mirrors
+ * `assertRefreshable`'s (G1) own internal read rather than importing something new from
+ * source-refresh-policy.cjs: by the time this runs, G1 has already validated this exact value
+ * against the refreshable allowlist, so duplicating the read avoids inventing a coupling that
+ * doesn't exist today — the same call `generate-source-manifest.js`'s `readLicenceCode` makes
+ * for the same reason.
+ *
+ * @param {string} sourceDir absolute path to a book's `01-source` directory
+ * @returns {string|undefined} the recorded licence code, e.g. 'CC BY-NC-SA 4.0'
+ */
+function readLicenceCode(sourceDir) {
+  const configPath = path.join(sourceDir, '..', 'book-config.json');
+  const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  return cfg.licence && cfg.licence.code;
+}
+
+/**
  * Organize extracted source files into the project's chapter directory structure.
  *
  * @param {object} params
@@ -178,6 +202,11 @@ export function parseCollectionXml(xml) {
  * @param {string} params.sourceDir - Target 01-source/ directory
  * @param {{ chapters: Array, preface: string|null, appendixModules: string[] }} params.structure - Parsed collection structure
  * @param {boolean} params.verbose - Whether to log progress
+ * @param {string} params.collectionXml - raw XML of the freshly-fetched collection.xml (§C93 G3).
+ *   REQUIRED: G3 refuses when it is absent — it is not an opt-in check.
+ * @param {string} params.newCommit - the upstream commit sha this fetch is about to write (§C93 G2).
+ *   REQUIRED: G2 refuses when it is absent. This was marked optional until 2026-08-17, which is
+ *   exactly the invitation that made G2's absent-input fail-open reachable by a future caller.
  * @returns {{ moduleCount: number, mediaCount: number, warnings: string[] }}
  */
 export function organizeSourceFiles({
@@ -186,16 +215,58 @@ export function organizeSourceFiles({
   structure,
   verbose,
   allowOverwrite = false,
+  collectionXml,
+  newCommit,
 }) {
-  // F2 provenance guard: never silently overwrite the irrevocable CC BY copies.
+  // §C93 G1 — the licence-keyed book gate. Arity 1, unconditional: no flag on this tool (not
+  // even --allow-overwrite-source, checked below) can reach past it. Refuses unless this book's
+  // recorded licence is on the closed refreshable allowlist (currently CC BY-NC-SA 4.0 only) —
+  // which is exactly what keeps a CC BY book (Chemistry, Biology, Microbiology) unreachable by
+  // this tool, by any combination of flags. Must run before any write.
+  assertRefreshable(sourceDir);
+
+  // §C93 G2 — the vintage gate. Must run before any write, right after G1. `.source-info.json`
+  // must already carry a commitHash that differs from `newCommit`, so a refresh records what it
+  // superseded rather than silently repeating a vintage.
+  //
+  // 🔴 EXCEPT ON A GENUINE FIRST FETCH, and that exception is not a softening — it is the
+  // difference between a gate and a deadlock. `.source-info.json` is written by `main()` BELOW,
+  // after this function returns, so requiring it here made a book's first fetch impossible: the
+  // artifact G2 demands is produced by the run G2 blocks. `isFirstFetch` demands BOTH no record
+  // AND no CNXML, so "record lost, bytes present" — the state a partial delete leaves — still
+  // refuses. G1/G3/G4 are untouched by this branch, so a first fetch is still licence-gated,
+  // licence-identity-checked and confined to the write allowlist.
+  if (!isFirstFetch(sourceDir)) {
+    assertVintageAdvances(sourceDir, newCommit);
+  }
+
+  // §C93 G3 — the licence-identity gate. G1 keys on the RECORDED licence (the OLD bytes); this
+  // checks the licence on the bytes about to be fetched, from the freshly-downloaded
+  // collection.xml, and requires exact equality with G1's code in EITHER direction — an
+  // unnoticed upstream flip must never poison the allowlist for the next refresh.
+  assertLicenceUnchanged(collectionXml, readLicenceCode(sourceDir));
+
+  // §C93 Step 6 tidy: create sourceDir only after every gate above has run, so the "before any
+  // write" claim is literally true (previously main() mkdir'd this one statement before G1 ran).
+  fs.mkdirSync(sourceDir, { recursive: true });
+
+  // F2's populated-directory confirmation. This is NOT a licence check — G1 above already ran,
+  // unconditionally, and is what makes that guarantee. This check only asks "did you mean to
+  // overwrite what's already here?" for a book G1 has already confirmed is refreshable.
   const existingCnxml = listCnxmlFiles(sourceDir);
   if (existingCnxml.length > 0 && !allowOverwrite) {
     const book = path.basename(path.dirname(sourceDir));
     throw new Error(
       `Refusing to overwrite populated 01-source/ for '${book}' (${existingCnxml.length} CNXML ` +
-        `files present). These are the irrevocable CC BY provenance copies. To intentionally ` +
-        `replace them, follow the CLAUDE.md double-consent rule, delete 01-source/ by hand, then ` +
-        `re-run with --allow-overwrite-source.`
+        `files present). §C93 G1 has already confirmed this book's recorded licence is ` +
+        `refreshable, but this check only knows about *.cnxml — it cannot tell whether ` +
+        `01-source/ also holds a docx/ or exercises/ directory (or any other locally-obtained, ` +
+        `hand-authored file), and none of those are restored by a re-download. ` +
+        `DO NOT delete 01-source/ by hand to "fix" this refusal: that permanently destroys ` +
+        `anything a refetch cannot restore. If you intend to replace the CNXML, follow ` +
+        `CLAUDE.md's double-consent rule, then re-run with --allow-overwrite-source — it copies ` +
+        `the newly fetched modules and media over the old ones and does not delete anything else ` +
+        `under 01-source/.`
     );
   }
 
@@ -206,12 +277,20 @@ export function organizeSourceFiles({
 
   const log = verbose ? (msg) => process.stderr.write(msg + '\n') : () => {};
 
+  // §C93 G4 — the write-set gate. `localOrigin` is the carve-out declared in a v2 manifest
+  // (files that did not come from upstream, e.g. chemistry's re-authored m68662.cnxml); a v1
+  // manifest or none at all yields [] and never throws. Checked at every copy site below,
+  // immediately before the write it guards.
+  const localOrigin = readLocalOrigin(sourceDir);
+
   // Copy preface module → ch00/
   if (structure.preface) {
     const prefaceDir = path.join(sourceDir, 'ch00');
     fs.mkdirSync(prefaceDir, { recursive: true });
     const src = path.join(modulesDir, structure.preface, 'index.cnxml');
     if (fs.existsSync(src)) {
+      const relPath = `ch00/${structure.preface}.cnxml`;
+      assertWritePathAllowed(relPath, localOrigin);
       fs.copyFileSync(src, path.join(prefaceDir, `${structure.preface}.cnxml`));
       moduleCount++;
     } else {
@@ -221,15 +300,16 @@ export function organizeSourceFiles({
 
   // Copy chapter modules → ch{NN}/
   for (const ch of structure.chapters) {
-    const chDir = path.join(sourceDir, `ch${String(ch.chapter).padStart(2, '0')}`);
+    const chNum = String(ch.chapter).padStart(2, '0');
+    const chDir = path.join(sourceDir, `ch${chNum}`);
     fs.mkdirSync(chDir, { recursive: true });
-    log(
-      `Copying modules: ch${String(ch.chapter).padStart(2, '0')} (${ch.modules.length} modules)...`
-    );
+    log(`Copying modules: ch${chNum} (${ch.modules.length} modules)...`);
 
     for (const moduleId of ch.modules) {
       const src = path.join(modulesDir, moduleId, 'index.cnxml');
       if (fs.existsSync(src)) {
+        const relPath = `ch${chNum}/${moduleId}.cnxml`;
+        assertWritePathAllowed(relPath, localOrigin);
         fs.copyFileSync(src, path.join(chDir, `${moduleId}.cnxml`));
         moduleCount++;
       } else {
@@ -247,6 +327,8 @@ export function organizeSourceFiles({
     for (const moduleId of structure.appendixModules) {
       const src = path.join(modulesDir, moduleId, 'index.cnxml');
       if (fs.existsSync(src)) {
+        const relPath = `appendices/${moduleId}.cnxml`;
+        assertWritePathAllowed(relPath, localOrigin);
         fs.copyFileSync(src, path.join(appendixDir, `${moduleId}.cnxml`));
         moduleCount++;
       } else {
@@ -267,6 +349,8 @@ export function organizeSourceFiles({
     for (const file of mediaFiles) {
       const srcFile = path.join(mediaDir, file);
       if (fs.statSync(srcFile).isFile()) {
+        const relPath = `media/${file}`;
+        assertWritePathAllowed(relPath, localOrigin);
         fs.copyFileSync(srcFile, path.join(targetMediaDir, file));
         mediaCount++;
       }
@@ -422,14 +506,17 @@ async function main() {
         (structure.preface ? ' + preface' : '')
     );
 
-    // Step 4: Organize files into 01-source/
-    fs.mkdirSync(sourceDir, { recursive: true });
+    // Step 4: Organize files into 01-source/. (§C93: sourceDir itself is created inside
+    // organizeSourceFiles, after G1/G2/G3 have all run — see the Step 6 tidy note there. It
+    // used to be created here, one statement before G1.)
     const result = organizeSourceFiles({
       extractedDir,
       sourceDir,
       structure,
       verbose,
       allowOverwrite: args.allowOverwrite === true,
+      collectionXml,
+      newCommit: commitHash,
     });
 
     // Log warnings for missing modules

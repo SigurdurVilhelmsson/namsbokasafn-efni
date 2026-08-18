@@ -1,0 +1,32 @@
+§C93 Task 6 Step 4 — G1 proven on the real books/ tree, READ-ONLY.
+Run 2026-08-17 on branch fix/c93-licence-keyed-source-guard @ 7a28e231.
+
+The 'expected' column is NOT derived from the code under test. It is the oracle the
+controller measured from book-config.json BEFORE the gate existed, recorded in the SDD
+ledger. A gate that refused all seven would look safe and be useless; the two PASSes are
+what prove it discriminates.
+
+book                  tracked  source-bearing  expected  actual   verdict
+--------------------  -------  --------------  --------  -------  -------
+__e2e-fixture__       yes      no              REFUSE    REFUSE   OK
+edlisfraedi-2e        yes      yes             PASS      PASS     OK
+efnafraedi-2e         yes      yes             REFUSE    REFUSE   OK
+liffraedi-2e          yes      yes             REFUSE    REFUSE   OK
+lifraen-efnafraedi    yes      yes             PASS      PASS     OK
+orverufraedi          yes      yes             REFUSE    REFUSE   OK
+stjornufraedi         yes      no              REFUSE    REFUSE   OK
+testbook              no       no              n/a       REFUSE   OK (fail-closed)
+
+note: 1 untracked (gitignored) book dir(s) on disk — testbook. Not in the oracle, which describes the COMMITTED tree; asserted fail-closed instead.
+
+book dirs on disk with a book-config.json : 8  (tracked: 7, oracle rows: 7)
+source-bearing books          : 5
+  PASS   : 2  [edlisfraedi-2e, lifraen-efnafraedi]
+  REFUSE : 3  [efnafraedi-2e, liffraedi-2e, orverufraedi]
+fail-closed controls          : __e2e-fixture__=REFUSE, stjornufraedi=REFUSE, testbook=REFUSE
+MISMATCHES vs pre-derived oracle: 0
+
+Why the split matters: a gate that REFUSED all seven would look safe and be useless.
+The two PASSes are what prove the gate discriminates rather than blanket-denying.
+
+git status for books/ immediately after the run (empty = wrote nothing):

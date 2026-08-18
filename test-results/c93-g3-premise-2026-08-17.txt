@@ -1,0 +1,146 @@
+C93 Task 1 — G3 premise check: does upstream collection XML still carry <md:license url=…> TODAY?
+====================================================================================================
+Date: 2026-08-17
+Method: read-only HTTP GET via GitHub REST "contents" API (Accept: application/vnd.github.raw+json),
+        after resolving each repo's `main` branch HEAD sha via the git refs API. Same GitHub source
+        as tools/download-source.js's getCommitSha(), but a single-file fetch instead of a tarball
+        download — nothing was extracted, nothing was written under books/.
+Positive control: <col:subcollection presence in the same file, per the brief.
+No files were written to books/. No pipeline tool was run. Fetched bytes live only under
+/tmp/c93-g3-premise/ (not committed) and inline below (committed as evidence).
+
+----------------------------------------------------------------------------------------------------
+STEP 1 — Organic Chemistry (openstax/osbooks-organic-chemistry)
+----------------------------------------------------------------------------------------------------
+
+Commit sha fetched at (main HEAD, resolved twice — before and after the content fetch, both agree):
+  8917713cdfb7f74018a8fd43cdcfe3173419bb82
+
+Command:
+  curl -sf -H 'Accept: application/vnd.github.v3+json' -H 'User-Agent: namsbokasafn-pipeline' \
+    https://api.github.com/repos/openstax/osbooks-organic-chemistry/git/ref/heads/main
+  curl -sf -H 'Accept: application/vnd.github.raw+json' -H 'User-Agent: namsbokasafn-pipeline' \
+    "https://api.github.com/repos/openstax/osbooks-organic-chemistry/contents/collections/organic-chemistry.collection.xml?ref=main"
+
+Fetched file size: 19099 bytes — matches the "size" field the GitHub contents-listing API reports
+for this path/ref independently (cross-check, not just the download itself).
+
+Raw matched <md:license> element (verbatim, line 7 of the fetched file):
+  <md:license url="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</md:license>
+
+grep -a for any other licence/copyright-bearing element (`licen[sc]e|copyright`, case-insensitive):
+  → only the one line above. No separate <md:copyright-holder>, no <md:role> with a licence-like
+    value, no license text living in a stray text node. <md:license> is the sole locus.
+
+Positive control — <col:subcollection presence in the same fetched file:
+  grep -ac '<col:subcollection' → 31   (organic has 31 subcollections/chapters; matches the local
+                                         collection-order.json chapter count for this book, so the
+                                         fetch is the real collection XML, not an error page)
+
+Header shape observed (first 8 lines):
+  <col:collection xmlns:col="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns="http://cnx.rice.edu/collxml">
+    <col:metadata>
+      <md:title>Organic Chemistry</md:title>
+      <md:slug>organic-chemistry</md:slug>
+      <md:language>en</md:language>
+      <md:uuid>6c2f7d1d-fbad-42e8-b977-9b903e6cb83b</md:uuid>
+      <md:license url="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</md:license>
+    </col:metadata>
+
+Interpretation: CC BY-NC-SA today. Expected and unsurprising — per
+docs/provenance/openstax-cnxml-licence-provenance.md §2, organic's collection has carried
+CC BY-NC-SA since its first commit in 2022; it was never CC BY. This re-fetch just confirms the
+<md:license> element itself still exists in the schema/shape today, at HEAD, and still carries
+a `url` attribute in the same form the provenance doc's 2026-06-24 clone-based investigation found.
+
+----------------------------------------------------------------------------------------------------
+STEP 2 — Chemistry (openstax/osbooks-chemistry-bundle), read-only, for contrast
+----------------------------------------------------------------------------------------------------
+
+Commit sha fetched at (main HEAD, resolved twice, both agree):
+  3be4b60ff501f29a445f0cacf003e5f5cc16244d
+
+Command:
+  curl -sf -H 'Accept: application/vnd.github.v3+json' -H 'User-Agent: namsbokasafn-pipeline' \
+    https://api.github.com/repos/openstax/osbooks-chemistry-bundle/git/ref/heads/main
+  curl -sf -H 'Accept: application/vnd.github.raw+json' -H 'User-Agent: namsbokasafn-pipeline' \
+    "https://api.github.com/repos/openstax/osbooks-chemistry-bundle/contents/collections/chemistry-2e.collection.xml?ref=main"
+
+Fetched file size: 14762 bytes — matches the GitHub contents-listing API's independently reported
+"size" field for this path/ref.
+
+Raw matched <md:license> element (verbatim, line 6 of the fetched file):
+  <md:license url="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</md:license>
+
+grep -a for any other licence/copyright-bearing element: only the one line above, same as organic.
+
+Positive control — <col:subcollection presence in the same fetched file:
+  grep -ac '<col:subcollection' → 21
+
+Header shape observed — NOTE a structural difference from organic's file:
+  <col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+    <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:title>Chemistry 2e</md:title>
+
+
+    <md:license url="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</md:license>
+    ...
+  Chemistry's wrapper is unprefixed <metadata ...> (resolves into the collxml default namespace,
+  same meaning) where organic's is <col:metadata>. This does NOT affect a regex keyed on
+  <md:license ...> or <col:subcollection ...> — both of those retain their literal prefix in BOTH
+  files — but it means Task 3's parser must not assume the wrapper tag's prefix, only the leaf
+  tags actually consumed.
+
+Interpretation — THIS IS THE LOUD FINDING, EXACTLY AS THE BRIEF SET UP:
+  Today, upstream chemistry's collection XML says CC BY-NC-SA 4.0 — NOT CC BY 4.0.
+  Chemistry's LOCAL copy (books/efnafraedi-2e/) was obtained 2026-01-19 under CC BY 4.0
+  (docs/provenance/openstax-cnxml-licence-provenance.md §1, "CONFIRMED"), well before the
+  2026-04-23 per-collection relicense flip documented there. So the live upstream value observed
+  here (CC BY-NC-SA) diverges from the locally-recorded licence (CC BY) — this is *precisely* the
+  substitution scenario the C93 guard exists to prevent: a naive re-download today would silently
+  replace the irrevocable CC BY copy's provenance basis with CC BY-NC-SA bytes. This was expected
+  going in (CLAUDE.md already names Chemistry as a book needing this protection) — it is not a new
+  discovery, but it IS a live, freshly-measured confirmation, not a citation of the 2026-06-24
+  investigation.
+
+----------------------------------------------------------------------------------------------------
+STEP 3 — Interpretation / verdict for G3's premise
+----------------------------------------------------------------------------------------------------
+
+VERDICT: NOT BLOCKED. <md:license url=…> IS present in upstream collection XML today, in both
+books checked, in the exact shape G3 needs: a self-closing-attribute-bearing element,
+`<md:license url="…">…</md:license>`, holding a Creative Commons URL. The premise holds — G3 can
+be built as specified, parsing this element out of a freshly fetched collection XML and comparing
+its `url` against the locally recorded licence.
+
+Distinct licence URLs OBSERVED in this task's live fetches (for Task 3's closed enum):
+  - http://creativecommons.org/licenses/by-nc-sa/4.0/   (organic today; chemistry today)
+
+That is the ONLY value this task's live HTTP fetches actually produced — both books currently
+resolve to CC BY-NC-SA upstream, so only one URL was observed live. Task 3 will need a second
+enum member for CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/) to cover the three books
+still legitimately CC BY locally (Chemistry, Biology, Microbiology) — that exact URL string is
+NOT re-verified by this task's live fetch (upstream no longer serves it for chemistry), but it is
+corroborated by two independent sources: (a) docs/provenance/openstax-cnxml-licence-provenance.md
+§2's `git log -S 'licenses/by/4.0'` census on the same four repos, and (b) this task's own
+observation that BOTH files use the identical element/attribute shape
+`<md:license url="...">...</md:license>` — only the url value and human-readable text between the
+tags differ between the CC BY and CC BY-NC-SA cases, per the diff already captured in the
+provenance doc §2. Task 3 should treat the CC BY url as "known shape, not live-reconfirmed today"
+and cite the provenance doc, not this file, for that half of the enum.
+
+Format note for Task 3's parser: match `<md:license\s+url="([^"]+)"` — works against both files'
+literal text regardless of the `<col:metadata>` vs unprefixed `<metadata>` wrapper difference noted
+above, since only the wrapper tag differs, not the `<md:license>` leaf.
+
+----------------------------------------------------------------------------------------------------
+Raw fetched files (not committed; reproducible via the curl commands above at the recorded shas)
+----------------------------------------------------------------------------------------------------
+  /tmp/c93-g3-premise/organic-chemistry.collection.xml   (19099 bytes)
+    sha256: 7a232d8832c365481286ec49586aa849ff61797bbad376903594f0e4b3d7d5b2
+  /tmp/c93-g3-premise/chemistry-2e.collection.xml        (14762 bytes)
+    sha256: 96967ac297fc0d32c3138893393aff0e0c3e878f8569ec48bb9934c9b0438c35
+
+(Both hashes are reproducible against a fresh fetch of the same commit shas recorded above; they
+are not reproducible against `main` after either repo's next commit, by design — this file exists
+to pin what was true on 2026-08-17, not to be a live oracle.)

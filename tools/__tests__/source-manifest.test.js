@@ -8,6 +8,8 @@ const {
   listCnxmlFiles,
   computeFiles,
   computeSourceManifest,
+  readSourceManifest,
+  readLocalOrigin,
   verifySourceManifest,
 } = require('../lib/source-manifest.cjs');
 
@@ -113,5 +115,95 @@ describe('verifySourceManifest', () => {
     const r = verifySourceManifest(sourceDir);
     expect(r.ok).toBe(false);
     expect(r.added).toEqual(['ch01/m002.cnxml']);
+  });
+});
+
+describe('manifest v2 read support (§C93) — read only, this branch never writes v2', () => {
+  const manifestPath = join(sourceDir, '.source-manifest.json');
+  const LOCAL_ORIGIN = [
+    { path: 'ch00/m68662.cnxml', reason: 're-authored, does not exist upstream' },
+    { path: 'docx/', reason: 'CC BY-era Word export' },
+  ];
+
+  function writeV1() {
+    const m = computeSourceManifest(sourceDir, { book: 'testbook' });
+    writeFileSync(manifestPath, JSON.stringify(m, null, 2));
+  }
+
+  function writeV2(extra = {}) {
+    const m = computeSourceManifest(sourceDir, { book: 'testbook' });
+    const v2 = {
+      ...m,
+      version: 2,
+      upstream: { repo: 'openstax/osbooks-example', commit: 'deadbeef' },
+      localOrigin: LOCAL_ORIGIN,
+      supersedes: [],
+      ...extra,
+    };
+    writeFileSync(manifestPath, JSON.stringify(v2, null, 2));
+  }
+
+  describe('readSourceManifest', () => {
+    it('returns null when no manifest is present', () => {
+      expect(readSourceManifest(sourceDir)).toBeNull();
+    });
+
+    it('reads a v1 manifest', () => {
+      writeV1();
+      expect(readSourceManifest(sourceDir).version).toBe(1);
+    });
+
+    it('reads a v2 manifest, extra keys intact', () => {
+      writeV2();
+      const m = readSourceManifest(sourceDir);
+      expect(m.version).toBe(2);
+      expect(m.localOrigin).toEqual(LOCAL_ORIGIN);
+      expect(Array.isArray(m.supersedes)).toBe(true);
+    });
+  });
+
+  describe('readLocalOrigin', () => {
+    it('is [] when no manifest is present', () => {
+      expect(readLocalOrigin(sourceDir)).toEqual([]);
+    });
+
+    it('is [] for a v1 manifest — v1 has no localOrigin', () => {
+      writeV1();
+      expect(readLocalOrigin(sourceDir)).toEqual([]);
+    });
+
+    it('is [] for a v2 manifest that omits localOrigin — never throws on the older shape', () => {
+      writeV2({ localOrigin: undefined });
+      expect(readLocalOrigin(sourceDir)).toEqual([]);
+    });
+
+    it('returns the declared carve-out for a v2 manifest', () => {
+      writeV2();
+      expect(readLocalOrigin(sourceDir)).toEqual(LOCAL_ORIGIN);
+    });
+  });
+
+  describe('verifySourceManifest on v2', () => {
+    it('ok:true on a clean tree — v2 keys (upstream/localOrigin/supersedes) do not change what is compared', () => {
+      writeV2();
+      expect(verifySourceManifest(sourceDir)).toMatchObject({
+        ok: true,
+        manifestMissing: false,
+        changed: [],
+        missing: [],
+        added: [],
+      });
+    });
+
+    it('still reports a changed byte under a v2 manifest', () => {
+      writeV2();
+      writeFileSync(
+        join(sourceDir, 'ch01', 'm001.cnxml'),
+        '<document id="m001">TAMPERED</document>'
+      );
+      const r = verifySourceManifest(sourceDir);
+      expect(r.ok).toBe(false);
+      expect(r.changed).toEqual(['ch01/m001.cnxml']);
+    });
   });
 });

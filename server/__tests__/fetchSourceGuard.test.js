@@ -11,15 +11,52 @@ describe('F2 server source guard', () => {
     expect(pipeline.isSourcePopulated('__nonexistent_book__')).toBe(false);
   });
 
-  it('runFetchSource never passes the --allow-overwrite-source escape hatch to the CLI', () => {
-    // The server must not know this flag: assert the string appears nowhere in pipelineService.
-    const fs = require('fs');
+  it('runFetchSource spawns node with the exact known argv — no escape hatch', async () => {
+    // An absence check (grep the source for a flag string) says whether you
+    // observed the flag, never whether it's there — it passes vacuously the
+    // moment the escape hatch is renamed. Assert the actual spawned argv
+    // equals the exact known list instead: a positive, closed assertion that
+    // a renamed or newly-added flag cannot slip past silently.
     const path = require('path');
-    const src = fs.readFileSync(
-      path.join(import.meta.dirname, '..', 'services', 'pipelineService.js'),
-      'utf8'
-    );
-    expect(src.includes('--allow-overwrite-source')).toBe(false);
+    const pipeline = require('../services/pipelineService');
+
+    let captured = null;
+    const fakeSpawn = (command, args) => {
+      captured = { command, args };
+      return {
+        stdout: { on() {} },
+        stderr: { on() {} },
+        on(event, cb) {
+          if (event === 'close') setImmediate(() => cb(0));
+        },
+      };
+    };
+
+    pipeline._setTestSpawn(fakeSpawn);
+    try {
+      const { promise } = pipeline.runFetchSource({
+        slug: '__c93_fetch_argv_fixture__', // no 01-source on disk: no DB side effect
+        repo: 'openstax/osbooks-chemistry-bundle',
+        collection: 'chemistry-2e',
+        userId: 'test-user',
+      });
+      await promise;
+    } finally {
+      pipeline._setTestSpawn(null);
+    }
+
+    expect(captured).not.toBeNull();
+    expect(captured.command).toBe('node');
+    expect(captured.args).toEqual([
+      path.join(import.meta.dirname, '..', '..', 'tools', 'download-source.js'),
+      '--repo',
+      'openstax/osbooks-chemistry-bundle',
+      '--collection',
+      'chemistry-2e',
+      '--book',
+      '__c93_fetch_argv_fixture__',
+      '--verbose',
+    ]);
   });
 
   it('the fetch-source route guards on a populated 01-source/ and returns 409', () => {

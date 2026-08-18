@@ -53,13 +53,47 @@ function computeSourceManifest(sourceDir, { book }) {
   };
 }
 
-/** Compare the committed manifest to the current tree. */
-function verifySourceManifest(sourceDir) {
+/**
+ * Read + parse the committed manifest, v1 or v2 alike. Returns null if the file
+ * is absent. Does NOT swallow a JSON parse error — a corrupt manifest must not
+ * silently read as "no manifest", which would misroute a caller (e.g. G2) into
+ * the wrong refusal path.
+ */
+function readSourceManifest(sourceDir) {
   const manifestPath = path.join(sourceDir, MANIFEST_NAME);
-  if (!fs.existsSync(manifestPath)) {
+  if (!fs.existsSync(manifestPath)) return null;
+  return JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+}
+
+/**
+ * The `localOrigin` carve-out declared in a v2 manifest (§C93 G4) — file paths
+ * and directory prefixes for bytes that did not come from upstream, e.g.
+ * chemistry's re-authored `ch00/m68662.cnxml`. A v1 manifest, or a v2 manifest
+ * that simply omits the key, has none: this always returns an array and never
+ * throws on the older shape.
+ *
+ * Read support only — writing `localOrigin` happens on the refresher path.
+ *
+ * @param {string} sourceDir absolute path to a book's `01-source` directory
+ * @returns {Array<{path: string, reason?: string, evidence?: string}>}
+ */
+function readLocalOrigin(sourceDir) {
+  const manifest = readSourceManifest(sourceDir);
+  if (!manifest || manifest.version < 2 || !Array.isArray(manifest.localOrigin)) return [];
+  return manifest.localOrigin;
+}
+
+/**
+ * Compare the committed manifest to the current tree. Reads v1 and v2 manifests
+ * alike — both carry the same `files` map (posixRelPath -> sha256hex); v2's
+ * extra keys (`upstream`, `localOrigin`, `supersedes`) are additive and don't
+ * change what gets compared here.
+ */
+function verifySourceManifest(sourceDir) {
+  const manifest = readSourceManifest(sourceDir);
+  if (!manifest) {
     return { ok: false, manifestMissing: true, changed: [], missing: [], added: [] };
   }
-  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   const expected = manifest.files || {};
   const actual = computeFiles(sourceDir);
 
@@ -89,5 +123,7 @@ module.exports = {
   listCnxmlFiles,
   computeFiles,
   computeSourceManifest,
+  readSourceManifest,
+  readLocalOrigin,
   verifySourceManifest,
 };

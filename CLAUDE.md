@@ -89,6 +89,21 @@ proceed** — stop and report. This guard is in addition to the general `01-sour
 rule below; it specifically covers the *replace-from-upstream* path, which a re-download could
 otherwise bypass.
 
+**✅ A mechanical, licence-keyed gate now BACKS this rule (§C93) — it does not replace it.**
+`tools/download-source.js` calls four conjunctive fail-closed gates from
+`tools/lib/source-refresh-policy.cjs` before any write: **G1** the book's recorded `licence.code`
+must be on a closed refreshable allowlist (**CC BY-NC-SA only**, so Chemistry, Biology and
+Microbiology are unreachable by this tool and **no flag overrides it —
+`--allow-overwrite-source` included**) · **G2** the vintage must advance · **G3** the
+*freshly fetched* `<md:license url=…>` must match the recorded code, and a difference in
+**either** direction refuses · **G4** a closed write set (`chNN/*.cnxml`, `appendices/*.cnxml`,
+`media/*`, the three metadata sidecars) — which is what keeps a refresh out of `docx/` and
+`exercises/`, both outside every hash gate and restorable by no refetch.
+▶ **The gate makes the ACCIDENT impossible; the three-step consent above governs the DELIBERATE
+act and stays unconditional, for every book.** ⚠️ **And deleting `01-source/` is not a safe
+reset** — it destroys exactly those unhashed trees; the tool's error message used to prescribe
+it and no longer does.
+
 ---
 
 ## 🌐 THIS REPOSITORY IS PUBLIC (since 2026-07-25)
