@@ -160,25 +160,42 @@ export function checkDuplicateSegIds(content, segText) {
 }
 
 /**
- * Containers whose DIRECT <media> child the extractor never visits.
+ * §C88 — EMPTY as of 2026-08-17. These four were the positions `cnxml-extract`
+ * never visited for a bare `<media>`; §C88 added an emitter for each, so a bare
+ * media in an <example>/<problem>/<solution>/<note> is now captured.
  *
- * Measured on the post-§C81 tree (test-results/c81-alt-extraction-2026-08-15.json):
- * a bare <media> — no <figure> wrapper — that is a direct child of one of these
- * has no emitter on any walk. A <media> one level down, inside a <para>, DOES
- * reach the extractor through the para's inline-media flatten, which is why the
- * predicate is DIRECT parent and not ancestor.
+ * Kept as an (empty) named set rather than deleted, because the reachability
+ * model still needs a place to name a NEW blind parent if a future intake
+ * introduces one — and because deleting it would silently drop the concept from
+ * the file that owns it.
  *
- * ⚠️ KNOWN GAP, DO NOT ADD A RULE FOR IT: a bare <media> that is a direct child
- * of <exercise> ITSELF (as opposed to its <problem>/<solution> children) is not
- * covered here — processExercise walks only problem/solution, so that shape
- * would also be unreachable. It does not occur in either in-scope book: the
- * corpus reconciles exactly (1149 = 952 + 197, no slack for an uncounted
- * case), so adding 'exercise' here has nothing to validate it against and
- * would risk moving a pinned number for a case that has never been observed.
- * If it ever appears, add it and expect tools/__tests__/alt-coverage-corpus.test.js
- * to move.
+ * ⚠️ The pre-§C88 comment here warned against adding 'exercise' (a bare <media>
+ * that is a direct child of <exercise> itself, not its <problem>/<solution>
+ * children — processExercise walks only those two), reasoning that the corpus
+ * reconciled exactly at 1149 = 952 + 197 with no slack for an unobserved case.
+ * That reconciliation is RE-DERIVED here, not carried forward: it never actually
+ * could have detected this case. 'exercise' was never in this set, before or
+ * after §C88, so a bare <media> direct child of <exercise> always fell through
+ * to `reason = null` and was counted as reachable either way — the identity
+ * balances by construction regardless of whether such a case exists, so it was
+ * never evidence against one.
+ *
+ * The real evidence is elsewhere: `tools/__tests__/alt-coverage-corpus.test.js`
+ * cross-checks this module's `reachable` count against what `cnxml-extract`
+ * actually emits, corpus-wide, and chemistry's gap is exactly ONE segment
+ * (m68727, attributed to a known, different cause — processFigure's
+ * non-global media regex truncation). An exercise-direct-child bare media
+ * with an id and an alt would show up in that same census as an ADDITIONAL,
+ * unattributed reachable-but-unemitted shortfall (processExercise's walk
+ * would never reach it, the same way it doesn't reach an id-less bare media
+ * in the four now-covered positions — see Ruling 1,
+ * .superpowers/sdd/2026-08-17-c88-unreachable-figure-alt/progress.md). No
+ * such extra shortfall exists in chemistry, so the case remains unobserved
+ * there. Organic is not evidence either way here — Task 10 measures it
+ * separately. If a bare <media> direct child of <exercise> is ever found,
+ * add 'exercise' here and expect that corpus test to move.
  */
-const ALT_BLIND_DIRECT_PARENTS = new Set(['example', 'problem', 'solution', 'note']);
+const ALT_BLIND_DIRECT_PARENTS = new Set([]);
 
 /** True if `el` has an ancestor of the given localName, up to <content>. */
 function hasAncestor(el, localName) {
@@ -218,17 +235,23 @@ function mediaAlt(media) {
  * Split a module's alt-bearing <media> elements into the set `cnxml-extract` is
  * designed to reach and the set it structurally cannot.
  *
- * ⚠️ WHY THIS SPLIT EXISTS AT ALL. §C81 put figure alt into the pipeline but
- * reaches ~82% of the corpus's alt attributes: 197 of chemistry's 1,149 and 32 of
- * organic's 132 sit in four positions no walk visits, for any content type. That
- * is a PRE-EXISTING extraction-coverage defect, not a §C81 regression. Asserting
- * plain source==emitted equality would fail on ~17–24% of attributes, which by the
- * battery's own "base rate over ~5% cannot be blocking" rule disqualifies the check.
- * So the gate is on `reachable`, and `unreachable` is REPORTED — pinned by
- * tools/__tests__/alt-coverage-corpus.test.js so any change in it is visible.
+ * ⚠️ WHY THIS SPLIT EXISTS AT ALL, POST-§C88. §C81 put figure alt into the
+ * pipeline but left it blind in five positions: a bare (non-figure-wrapped)
+ * <media> in a table <entry>, or as a direct child of <example>/<problem>/
+ * <solution>/<note> — a PRE-EXISTING extraction-coverage defect, not a §C81
+ * regression. §C88 added an emitter for every one of those five, so as of this
+ * change `ALT_BLIND_DIRECT_PARENTS` is empty and the split's `unreachable` side
+ * is expected to read 0 corpus-wide — pinned by
+ * tools/__tests__/alt-coverage-corpus.test.js, which owns the actual measured
+ * numbers (not restated here; see CLAUDE.md § One source of truth).
  *
- * Whether to extend extraction to those four positions is undecided and tracked in
- * the register (§C81), not here.
+ * The split itself stays, rather than collapsing back to a flat count: it is
+ * still the mechanism that would flag a NEW blind position if one is ever
+ * found (see the 'exercise' case discussed above `ALT_BLIND_DIRECT_PARENTS`).
+ * checkAltCoverage's gate is `reached === reachable` (actual emitted count vs
+ * this function's `reachable`), not a raw source-attribute-count vs emitted
+ * equality — the latter would fire on every genuinely-blind position too, the
+ * exact over-broad check §C81 rejected when this split was introduced.
  *
  * @param {Element|null} content the module's <content> element
  * @returns {{reachable: number, unreachable: number, unreachableByReason: Record<string, number>}}
@@ -243,9 +266,7 @@ export function altReachability(content) {
 
     const inFigure = hasAncestor(el, 'figure');
     let reason = null;
-    if (!inFigure && hasAncestor(el, 'entry')) {
-      reason = 'entry-not-in-figure';
-    } else if (!inFigure) {
+    if (!inFigure) {
       const parent = el.parentNode;
       const pName = parent && parent.nodeType === 1 ? parent.localName : null;
       if (pName && ALT_BLIND_DIRECT_PARENTS.has(pName)) reason = `bare-media-in-${pName}`;
@@ -266,7 +287,9 @@ export function altReachability(content) {
  *
  *   reached   how many alt segments the extractor actually emitted
  *   expected  how many alt attributes sit in positions it is designed to reach
- *   unreached how many sit in the four blind positions (reported, never a halt)
+ *   unreached how many sit in a still-blind position (reported, never a halt —
+ *             §C88 emits for all five known positions, so this is expected 0
+ *             corpus-wide; it stays live as the sensor for a NEW blind position)
  *
  * Equality, not >=: the over-emission direction is the duplicate-alt defect
  * §C81 Task 10 closed, and it must not be allowed to reopen silently.
