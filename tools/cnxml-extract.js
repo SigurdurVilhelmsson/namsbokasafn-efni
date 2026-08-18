@@ -1464,7 +1464,54 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             attributes: entry.attributes,
           });
         } else {
-          rowStructure.cells.push({ segmentId: null, attributes: entry.attributes });
+          // §C88 — text is '' because extractInlineText (above) is called
+          // without an inlineMediaMap, so a bare <media> in the cell is
+          // stripped rather than placeholdered. Without this branch the
+          // entry — and the media's alt with it — is discarded here: 29
+          // chemistry instances.
+          //
+          // ⚠️ NOT wired to the addSegment('entry', …) in the multi-para
+          // branch above: that branch is 0/29 for this population. Emit
+          // here, where the empty single-content text is what gets thrown
+          // away.
+          const cell = { segmentId: null, attributes: entry.attributes };
+          for (const media of extractElements(entry.content, 'media')) {
+            // Guard on id (Controller Ruling 9, matching the identical guard
+            // at the <example>/<problem>/<solution>/<note> emit sites,
+            // cnxml-extract.js:1707 et al.): collectMediaAlts
+            // (tools/cnxml-inject.js) requires the media id to write a
+            // translation back. Without this guard an id-less media would
+            // take altElementId's positional fallback, get a segment id
+            // nothing at inject can resolve, and be extracted, translated,
+            // paid for, and silently discarded (§C89 recreated). Leave an
+            // id-less bare media unextracted instead.
+            if (!media.id) continue;
+            const altText =
+              media.attributes.alt ||
+              (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] ||
+              '';
+            const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+            // 🔴 `mediaId` is REQUIRED here, not decorative — unlike the
+            // {type:'media'} structure nodes at the other three emit sites,
+            // a table cell is not itself keyed by media id, so
+            // collectMediaAlts (Step 4, tools/cnxml-inject.js) needs it
+            // carried explicitly. It cannot be recovered from the seg-id
+            // alone: `${moduleId}:alt:${mediaId}-alt` only holds the media
+            // id when the media HAS one, and the guard above means every
+            // media reaching this line does.
+            // ⚠️ Only ONE alt survives on `cell.alt` if a cell ever holds more
+            // than one alt-bearing media — and, since this loop does not
+            // break, it is whichever media comes LAST in document order, not
+            // the first. Measured (parsed, not grepped) across all six books:
+            // 0 entries anywhere hold more than one alt-bearing (id'd) media
+            // — 37 total alt-bearing table-cell media corpus-wide (29
+            // chemistry + 8 physics), every one alone in its cell — so this
+            // never fires in the current corpus. If that ever changes,
+            // promote `cell.alt` to `cell.alts[]` and teach collectMediaAlts
+            // (tools/cnxml-inject.js) to walk it.
+            if (altSegId) cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id };
+          }
+          rowStructure.cells.push(cell);
         }
       }
     }

@@ -1835,7 +1835,7 @@ function collectFigureAlts(elements, map) {
  * — a generic walker's failure mode is silently descending into an array nobody
  * intended, which is exactly the class of invisible defect this branch closes.
  * `table` has the same shape of gap (`.rows[].cells`, not `.content`) — Task 7
- * owns adding that third explicit path; do not add it here.
+ * adds that third explicit path below.
  *
  * @param {Array} elements structure nodes
  * @param {Record<string,{segmentId: string}>} map out-param
@@ -1851,6 +1851,26 @@ function collectMediaAlts(elements, map) {
     if (el.type === 'exercise') {
       if (el.problem?.content) collectMediaAlts(el.problem.content, map);
       if (el.solution?.content) collectMediaAlts(el.solution.content, map);
+    }
+    if (el.type === 'table' && Array.isArray(el.rows)) {
+      for (const row of el.rows) {
+        for (const cell of row.cells || []) {
+          // §C88 Task 7 — a table cell is not a {type:'media'} node, so the
+          // branch above never sees it. Key on `cell.alt.mediaId`, which
+          // processTable (cnxml-extract.js) carries EXPLICITLY for exactly
+          // this reason: it cannot be recovered from the seg-id instead.
+          // `${moduleId}:alt:${mediaId}-alt` only holds the media id when
+          // the media HAS one, and there is no id-less fallback form to
+          // parse here (the extractor's Ruling-9 guard means every emitted
+          // cell.alt already has a real media id) — but *parsing* the seg-id
+          // would be reconstructing a value the producer already handed us,
+          // for no reason, and fragile if the id-less fallback shape ever
+          // changes. Read the field.
+          if (cell && cell.alt?.segmentId && cell.alt.mediaId) {
+            map[cell.alt.mediaId] = { segmentId: cell.alt.segmentId };
+          }
+        }
+      }
     }
   }
 }

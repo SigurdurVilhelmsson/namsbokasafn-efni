@@ -338,3 +338,69 @@ describe('§C88 — bare media alt in <note>', () => {
     expect(note.content.filter((e) => e.type === 'media').map((e) => e.id)).toEqual(['m-z']);
   });
 });
+
+describe('§C88 — bare media alt in a table <entry>', () => {
+  const table = (cell) =>
+    wrap(`<table id="t1" summary="s"><tgroup cols="1"><tbody>
+           <row>${cell}</row>
+         </tbody></tgroup></table>`);
+
+  it('emits an alt segment for a media in an otherwise-empty entry', () => {
+    const r = extractSegments(
+      table('<entry><media id="m-cell" alt="A structural formula"/></entry>')
+    );
+    expect(altSegs(r).map((s) => s.text)).toEqual(['A structural formula']);
+    expect(altSegs(r)[0].id).toBe('m00001:alt:m-cell-alt');
+  });
+
+  it('records the alt on the cell so inject can find it', () => {
+    const r = extractSegments(
+      table('<entry><media id="m-cell" alt="A structural formula"/></entry>')
+    );
+    const t = r.structure.content.find((e) => e.type === 'table');
+    const cell = t.rows[0].cells[0];
+    expect(cell.segmentId).toBeNull();
+    // ⚠️ DEVIATION FROM BRIEF, MEASURED: the brief's literal expectation here
+    // was { segmentId, text } — no mediaId — which fails against the code
+    // Ruling 16 requires (`toEqual` rejects the extra key; confirmed by
+    // running this exact assertion against the implemented code before this
+    // fix). Ruling 16 and Step 4's own "confirm before moving on" warning
+    // both establish that `mediaId` MUST be on `cell.alt`, or collectMediaAlts
+    // has no key to read and the corpus map is silently empty. Asserting the
+    // brief's narrower shape here would make this test pass while hiding
+    // exactly that regression — so the assertion is widened to the real,
+    // required shape instead.
+    expect(cell.alt).toEqual({
+      segmentId: 'm00001:alt:m-cell-alt',
+      text: 'A structural formula',
+      mediaId: 'm-cell',
+    });
+  });
+
+  it('POSITIVE CONTROL — a text cell still emits its entry segment and no alt', () => {
+    const r = extractSegments(table('<entry>Melting point</entry>'));
+    expect(altSegs(r)).toEqual([]);
+    expect(r.segments.filter((s) => s.type === 'entry').map((s) => s.text)).toEqual([
+      'Melting point',
+    ]);
+  });
+
+  it('a genuinely blank entry still produces no alt and no crash', () => {
+    const r = extractSegments(table('<entry></entry>'));
+    expect(altSegs(r)).toEqual([]);
+  });
+
+  // Controller Ruling 9: guard the emit on the media id, matching the identical
+  // guard at the <example>/<problem>/<solution>/<note> emit sites. Without it an
+  // id-less media takes altElementId's positional fallback, gets a segment id
+  // nothing at inject can resolve, and is extracted, translated, paid for, and
+  // silently discarded (§C89 recreated).
+  it('drops a bare media with no id — no segment, no alt on the cell (Controller Ruling 9 guard)', () => {
+    const r = extractSegments(table('<entry><media alt="No id here"/></entry>'));
+    expect(altSegs(r)).toEqual([]);
+    const t = r.structure.content.find((e) => e.type === 'table');
+    const cell = t.rows[0].cells[0];
+    expect(cell.segmentId).toBeNull();
+    expect(cell.alt).toBeUndefined();
+  });
+});

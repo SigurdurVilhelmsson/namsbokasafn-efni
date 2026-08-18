@@ -308,4 +308,81 @@ describe('§C88 — table-entry alt write-back (string path)', () => {
     expect(cnxml).toContain('alt="Kolba"');
     expect(cnxml).not.toContain('alt="A flask"');
   });
+
+  // §C88 Task 7 — collectMediaAlts's new `el.type === 'table'` branch (direct unit test).
+  it('§C88 — collects a table cell media alt keyed on the media id', () => {
+    const map = {};
+    collectMediaAlts(
+      [
+        {
+          type: 'table',
+          id: 't1',
+          rows: [
+            {
+              cells: [
+                {
+                  segmentId: null,
+                  alt: { segmentId: 'mod:alt:m-cell-alt', text: 'X', mediaId: 'm-cell' },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      map
+    );
+    expect(map).toEqual({ 'm-cell': { segmentId: 'mod:alt:m-cell-alt' } });
+  });
+
+  // The end-to-end test above (line ~272) proves the wiring using the OLDER
+  // `structure.inlineMedia` fold — the only source available before Task 7 gave
+  // `processTable` a real `cell.alt`. This test proves the path Task 7 actually
+  // adds: `structure.content`'s table `cell.alt` (real shape, no `.mediaId`
+  // recovery, no `inlineMedia` fallback) reaching collectMediaAlts's new
+  // `el.type === 'table'` branch and from there all the way to the rendered
+  // attribute. It can only pass if that branch runs — `inlineMedia` is absent
+  // here, so there is no other path `ctx.mediaAlts` could be populated from.
+  it('§C88 — an empty-text table cell with a REAL cell.alt (no inlineMedia) still gets translated', () => {
+    const structure = {
+      moduleId: 'test3',
+      content: [
+        {
+          type: 'table',
+          id: 'tbl-alt2',
+          class: null,
+          summary: null,
+          rows: [
+            {
+              cells: [
+                {
+                  segmentId: null,
+                  attributes: {},
+                  alt: { segmentId: 'test3:alt:m-cell2-alt', text: 'A flask', mediaId: 'm-cell2' },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      // Deliberately no `inlineMedia` — Task 3's fallback source must NOT be
+      // required for this to work.
+    };
+    const segments = new Map([['test3:alt:m-cell2-alt', 'Kolba']]);
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<content>
+<table id="tbl-alt2" summary="">
+<tgroup cols="1">
+<tbody>
+<row><entry><media id="m-cell2" alt="A flask"><image mime-type="image/png" src="a.png"/></media></entry></row>
+</tbody>
+</tgroup>
+</table>
+</content>
+</document>`;
+
+    const { cnxml } = buildCnxml(structure, segments, {}, originalCnxml, {}, {});
+    expect(cnxml).toContain('alt="Kolba"');
+    expect(cnxml).not.toContain('alt="A flask"');
+  });
 });
