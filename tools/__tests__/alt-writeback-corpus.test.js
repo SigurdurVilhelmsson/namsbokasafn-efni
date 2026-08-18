@@ -66,17 +66,20 @@ function sweep(book) {
 }
 
 describe('§C89 — translated alt reaches the injected output', () => {
-  it('chemistry: all 951 alt translations survive (m68801 resolved by §C88 write-back)', () => {
+  it('chemistry: all 1,148 alt translations survive (m68801 resolved by §C88 write-back)', () => {
     // 🔴 THE BEFORE/AFTER IS THE POINT, and it is what makes this pin meaningful:
-    //   before §C89   324 / 951   (65.9% discarded, 130 modules affected)
-    //   after  §C89   950 / 951   (0.1% discarded, 1 module — m68801)
-    //   after  §C88   951 / 951   (0% discarded)
-    // A bare `expect(reached).toBeGreaterThan(0)` would have passed at ALL THREE,
+    //   before §C89        324 / 951    (65.9% discarded, 130 modules affected)
+    //   after  §C89        950 / 951    (0.1% discarded, 1 module — m68801)
+    //   after  §C88 (T1-8) 951 / 951    (0% discarded)
+    //   after  §C88 (T9)  1148 / 1148   (0% discarded; the reachability-model
+    //     change — all five positions now reachable — raised the emitted count
+    //     itself from 951 to 1148, +197, matching the closed blind positions)
+    // A bare `expect(reached).toBeGreaterThan(0)` would have passed at ALL FOUR,
     // which is exactly how the original defect survived every gate.
     const r = sweep('efnafraedi-2e');
 
-    expect(r.emitted).toBe(951);
-    expect(r.reached).toBe(951);
+    expect(r.emitted).toBe(1148);
+    expect(r.reached).toBe(1148);
 
     // ⚠️ m68801 WAS a KNOWN, LOGGED RESIDUAL (kept here as the record of why it
     // existed — do not delete on resolution). Its holdout was a BARE <media> (no

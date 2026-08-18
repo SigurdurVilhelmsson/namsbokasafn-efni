@@ -40,21 +40,15 @@ describe('§C81 alt shortfall is pinned, so a change in it is visible', () => {
     expect(sourceModules('efnafraedi-2e').length).toBe(149);
   });
 
-  it('chemistry: 952 reachable, 197 in the four blind positions, 1149 total', () => {
+  it('chemistry: 1,149 reachable, 0 unreachable — all five positions reachable (§C88), 1149 total', () => {
     const t = census(sourceModules('efnafraedi-2e'));
-    expect(t.reachable).toBe(952);
-    expect(t.unreachable).toBe(197);
+    expect(t.reachable).toBe(1149);
+    expect(t.unreachable).toBe(0);
     expect(t.reachable + t.unreachable).toBe(1149);
   });
 
-  it('chemistry: the blind positions break down exactly as measured 2026-08-15', () => {
-    expect(census(sourceModules('efnafraedi-2e')).unreachableByReason).toEqual({
-      'entry-not-in-figure': 29,
-      'bare-media-in-example': 105,
-      'bare-media-in-problem': 40,
-      'bare-media-in-solution': 13,
-      'bare-media-in-note': 10,
-    });
+  it('chemistry: no unreachable positions remain — the §C88 emitters closed all five (measured 2026-08-18)', () => {
+    expect(census(sourceModules('efnafraedi-2e')).unreachableByReason).toEqual({});
   });
 });
 
@@ -66,9 +60,11 @@ describe('E5 fires on a real defect and on nothing else (live extractor)', () =>
   // want to know is whether the check separates a defect from a clean module,
   // and only the live extractor can answer that today.
   //
-  // Measured 2026-08-16: reachable 952, extractor emits 951, and the single
-  // shortfall is m68727 (6 reachable, 5 emitted) — the known regex-truncation
-  // defect in processFigure's non-global media regex. 148 clean controls.
+  // Measured 2026-08-18 (post-§C88, all five positions now reachable):
+  // reachable 1149, extractor emits 1148, and the single shortfall is still
+  // m68727 (6 reachable, 5 emitted) — the known regex-truncation defect in
+  // processFigure's non-global media regex, unrelated to the §C88 blind
+  // positions. 148 clean controls.
   const emittedAltCount = (cnxml) =>
     extractSegments(cnxml).segments.filter((s) => s.type === 'alt').length;
 
@@ -88,8 +84,8 @@ describe('E5 fires on a real defect and on nothing else (live extractor)', () =>
       }
     }
 
-    expect(reachableTotal).toBe(952);
-    expect(emittedTotal).toBe(951);
+    expect(reachableTotal).toBe(1149);
+    expect(emittedTotal).toBe(1148);
     expect(short).toEqual([{ module: 'm68727', reachable: 6, emitted: 5 }]);
   }, 120_000);
 });
