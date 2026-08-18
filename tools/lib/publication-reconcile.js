@@ -115,7 +115,7 @@ export function reconcilePublishedRenames({
 
   if (pruned.length === 0) return { pruned };
 
-  const mapPath = slugMapPath(trackDir);
+  const mapPath = slugMapPath(trackDir, track);
   const map = readSlugMap(mapPath, { book, track });
   for (const p of pruned) {
     recordRename(map, { from: p.from, to: p.to, moduleId: p.moduleId, recordedAt });

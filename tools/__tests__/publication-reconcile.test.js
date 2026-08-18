@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { snapshotModuleIds, reconcilePublishedRenames } from '../lib/publication-reconcile.js';
-import { SLUG_MAP_FILENAME, readSlugMap } from '../lib/slug-map.js';
+import { slugMapFilename, readSlugMap } from '../lib/slug-map.js';
 
 const AT = '2026-08-18';
 
@@ -80,7 +80,7 @@ describe('reconcilePublishedRenames', () => {
     expect(fs.existsSync(path.join(outputDir, '10-5-fastur-efnishamur.html'))).toBe(true);
     expect(fs.existsSync(path.join(outputDir, '10-4-other.html'))).toBe(true);
 
-    const map = readSlugMap(path.join(trackDir, SLUG_MAP_FILENAME), {
+    const map = readSlugMap(path.join(trackDir, slugMapFilename('mt-preview')), {
       book: 'efnafraedi-2e',
       track: 'mt-preview',
     });
@@ -107,7 +107,7 @@ describe('reconcilePublishedRenames', () => {
     const res = reconcile(new Map([['m68770', '10-5-same.html']]));
     expect(res.pruned).toEqual([]);
     expect(fs.existsSync(path.join(outputDir, '10-5-same.html'))).toBe(true);
-    expect(fs.existsSync(path.join(trackDir, SLUG_MAP_FILENAME))).toBe(false); // no map on a no-op
+    expect(fs.existsSync(path.join(trackDir, slugMapFilename('mt-preview')))).toBe(false); // no map on a no-op
   });
 
   it('🔴 ignores modules that were NOT rendered this pass', () => {
@@ -138,7 +138,7 @@ describe('reconcilePublishedRenames', () => {
     expect(fs.existsSync(path.join(outputDir, '10-6-old.html'))).toBe(false);
     expect(fs.existsSync(path.join(outputDir, '10-6-new.html'))).toBe(true);
 
-    const map = readSlugMap(path.join(trackDir, SLUG_MAP_FILENAME), {
+    const map = readSlugMap(path.join(trackDir, slugMapFilename('mt-preview')), {
       book: 'efnafraedi-2e',
       track: 'mt-preview',
     });
@@ -178,7 +178,7 @@ describe('reconcilePublishedRenames', () => {
       expect(message).toContain(path.join(outputDir, '10-5-old.html'));
       expect(message).toContain('EACCES');
 
-      const map = readSlugMap(path.join(trackDir, SLUG_MAP_FILENAME), {
+      const map = readSlugMap(path.join(trackDir, slugMapFilename('mt-preview')), {
         book: 'efnafraedi-2e',
         track: 'mt-preview',
       });
@@ -222,7 +222,7 @@ describe('reconcilePublishedRenames', () => {
       // Read BEFORE mockRestore() — restore clears the call history.
       expect(warnSpy).not.toHaveBeenCalled();
 
-      const map = readSlugMap(path.join(trackDir, SLUG_MAP_FILENAME), {
+      const map = readSlugMap(path.join(trackDir, slugMapFilename('mt-preview')), {
         book: 'efnafraedi-2e',
         track: 'mt-preview',
       });
@@ -293,7 +293,7 @@ describe('reconcilePublishedRenames', () => {
     expect(fs.existsSync(path.join(outputDir, '10-5-fast-astand-efnis.html'))).toBe(false);
     expect(fs.existsSync(path.join(outputDir, '10-5-fastur-efnishamur.html'))).toBe(true);
 
-    const map = readSlugMap(path.join(trackDir, SLUG_MAP_FILENAME), {
+    const map = readSlugMap(path.join(trackDir, slugMapFilename('mt-preview')), {
       book: 'efnafraedi-2e',
       track: 'mt-preview',
     });

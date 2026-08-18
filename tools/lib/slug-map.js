@@ -14,15 +14,46 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const SLUG_MAP_FILENAME = 'slug-map.json';
+/**
+ * The map's filename is TRACK-QUALIFIED, and that is load-bearing rather than cosmetic.
+ *
+ * 🔴 WHY. `namsbokasafn-vefur` FLATTENS both publication tracks into one directory
+ * (`static/content/<book>/`): `mt-preview` is mirrored first, then `faithful` is copied on top.
+ * Its overlay filter has no branch for a track-root file, so a single `slug-map.json` from the
+ * faithful track would be copied over the mt-preview one with `force: true` — and
+ * `pipelineService.runRender` defaults to `track = 'faithful'`, so an ordinary editor republish is
+ * the colliding writer. Qualifying the name means both maps arrive intact and the SYNCED tree is
+ * self-describing: a consumer needs no access to this repo to know which track a map describes.
+ *
+ * ⚠️ The map is NOT regenerable. Its entries are recorded once, at the moment a prune happens;
+ * re-rendering a chapter that no longer has a duplicate records nothing. Treat it as data.
+ *
+ * @param {string} track publication track, e.g. 'mt-preview' or 'faithful'
+ * @returns {string} e.g. 'slug-map.mt-preview.json'
+ */
+export function slugMapFilename(track) {
+  // This value is interpolated into a filename, so it is validated rather than trusted: `track`
+  // arrives from a CLI flag, and a separator or `..` here would place the map outside trackDir.
+  if (typeof track !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(track)) {
+    throw new Error(
+      `slug-map: refusing to build a filename from an unsafe track name ${JSON.stringify(track)}. ` +
+        `Expected lowercase alphanumerics and hyphens, e.g. 'mt-preview'.`
+    );
+  }
+  return `slug-map.${track}.json`;
+}
 
 const CONTRACT =
   'C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are ' +
-  'collapsed on write, so a single lookup suffices and no transitive walk is needed.';
+  'collapsed on write, so a single lookup suffices and no transitive walk is needed. ' +
+  'SCOPE: this map describes ONE track of ONE book. The reader site flattens both tracks into ' +
+  "one directory, so a consumer must read each track's map separately and reconcile them " +
+  "itself; a `to` here can also be superseded at the destination by the reader site's own " +
+  'overlay pruning.';
 
 /** Absolute path to a book+track's map. `trackDir` is `<book>/05-publication/<track>`. */
-export function slugMapPath(trackDir) {
-  return path.join(trackDir, SLUG_MAP_FILENAME);
+export function slugMapPath(trackDir, track) {
+  return path.join(trackDir, slugMapFilename(track));
 }
 
 /**

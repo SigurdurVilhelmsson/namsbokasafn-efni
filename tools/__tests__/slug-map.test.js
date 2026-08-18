@@ -3,14 +3,20 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { SLUG_MAP_FILENAME, readSlugMap, recordRename, writeSlugMap } from '../lib/slug-map.js';
+import {
+  slugMapFilename,
+  slugMapPath,
+  readSlugMap,
+  recordRename,
+  writeSlugMap,
+} from '../lib/slug-map.js';
 
 const AT = '2026-08-18';
 const K = 'chapters/10/';
 
 /** Fresh empty map for efnafraedi-2e / mt-preview. */
 function m() {
-  return readSlugMap(path.join(os.tmpdir(), 'nope-does-not-exist', SLUG_MAP_FILENAME), {
+  return readSlugMap(path.join(os.tmpdir(), 'nope-does-not-exist', slugMapFilename('mt-preview')), {
     book: 'efnafraedi-2e',
     track: 'mt-preview',
   });
@@ -28,7 +34,7 @@ describe('slug-map: reading', () => {
     // Fail SAFE: a corrupt map must not abort a render. Losing redirect history is
     // recoverable; refusing to publish is not proportionate.
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c9-'));
-    const p = path.join(dir, SLUG_MAP_FILENAME);
+    const p = path.join(dir, slugMapFilename('mt-preview'));
     fs.writeFileSync(p, '{ this is not json');
     expect(readSlugMap(p, { book: 'b', track: 't' }).renames).toEqual({});
     fs.rmSync(dir, { recursive: true, force: true });
@@ -37,7 +43,7 @@ describe('slug-map: reading', () => {
   it('returns an empty map when renames is an array, not an object', () => {
     // typeof [] === 'object', so the guard must reject arrays explicitly.
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c9-arr-'));
-    const p = path.join(dir, SLUG_MAP_FILENAME);
+    const p = path.join(dir, slugMapFilename('mt-preview'));
     fs.writeFileSync(p, JSON.stringify({ renames: ['oops'] }));
     expect(readSlugMap(p, { book: 'b', track: 't' }).renames).toEqual({});
     fs.rmSync(dir, { recursive: true, force: true });
@@ -178,7 +184,7 @@ describe('slug-map: round-trip', () => {
   });
 
   it('writes and reads back identically', () => {
-    const p = path.join(dir, SLUG_MAP_FILENAME);
+    const p = path.join(dir, slugMapFilename('mt-preview'));
     const map = recordRename(m(), {
       from: `${K}a.html`,
       to: `${K}b.html`,
@@ -192,7 +198,7 @@ describe('slug-map: round-trip', () => {
   });
 
   it('writes a trailing newline and 2-space indent, so diffs stay readable', () => {
-    const p = path.join(dir, SLUG_MAP_FILENAME);
+    const p = path.join(dir, slugMapFilename('mt-preview'));
     writeSlugMap(
       p,
       recordRename(m(), { from: `${K}a.html`, to: `${K}b.html`, moduleId: 'm1', recordedAt: AT })
@@ -211,7 +217,7 @@ describe('slug-map: round-trip', () => {
     // writeFileSync(mapPath, …) with no renameSync would satisfy every
     // outcome-only assertion (no .tmp file, one file in the dir) just as well,
     // so this must also assert the write went through a differently-named path.
-    const p = path.join(dir, SLUG_MAP_FILENAME);
+    const p = path.join(dir, slugMapFilename('mt-preview'));
     const map = recordRename(m(), {
       from: `${K}a.html`,
       to: `${K}b.html`,
@@ -238,9 +244,64 @@ describe('slug-map: round-trip', () => {
 
     // Outcome checks, alongside the mechanism pin above.
     expect(fs.existsSync(`${p}.tmp`)).toBe(false);
-    expect(fs.readdirSync(dir).sort()).toEqual([SLUG_MAP_FILENAME]);
+    expect(fs.readdirSync(dir).sort()).toEqual([slugMapFilename('mt-preview')]);
     expect(readSlugMap(p, { book: 'efnafraedi-2e', track: 'mt-preview' }).renames).toEqual(
       map.renames
+    );
+  });
+});
+
+// =====================================================================
+// slugMapFilename — the map's name is TRACK-QUALIFIED (§C9 F3 follow-up, 2026-08-18)
+// =====================================================================
+//
+// The reader site flattens both publication tracks into one directory and its overlay filter has
+// no branch for a track-root file, so a single `slug-map.json` written by a faithful render would
+// be copied over the mt-preview one. Qualifying the name is what makes both survive the sync — so
+// these tests pin the NAME SHAPE, not just that some name is produced.
+
+describe('§C9 slugMapFilename', () => {
+  it('qualifies the filename with the track', () => {
+    expect(slugMapFilename('mt-preview')).toBe('slug-map.mt-preview.json');
+    expect(slugMapFilename('faithful')).toBe('slug-map.faithful.json');
+  });
+
+  it('🔴 the two tracks produce DIFFERENT names — the whole point of the change', () => {
+    // If these ever collide, a faithful republish silently overwrites mt-preview's map at the
+    // reader site, destroying redirect history for every rename recorded under the other track.
+    expect(slugMapFilename('mt-preview')).not.toBe(slugMapFilename('faithful'));
+  });
+
+  it('🔴 REFUSES a track name that could escape the directory', () => {
+    // `track` reaches here from a CLI flag and is interpolated into a filename.
+    for (const bad of ['../evil', 'a/b', '..', '', 'Mt-Preview', '-leading', 'x\ny']) {
+      expect(() => slugMapFilename(bad)).toThrow(/unsafe track name/);
+    }
+  });
+
+  it('🔴 REFUSES a non-string track', () => {
+    for (const bad of [undefined, null, 42, {}, ['mt-preview']]) {
+      expect(() => slugMapFilename(bad)).toThrow(/unsafe track name/);
+    }
+  });
+
+  it('✅ CONTROL: an ordinary hyphenated track name is accepted', () => {
+    // Without this the refusal tests are consistent with a function that rejects everything.
+    expect(() => slugMapFilename('mt-preview')).not.toThrow();
+    expect(() => slugMapFilename('faithful')).not.toThrow();
+  });
+});
+
+describe('§C9 slugMapPath', () => {
+  it('places the track-qualified map at the track root', () => {
+    expect(slugMapPath('/books/x/05-publication/mt-preview', 'mt-preview')).toBe(
+      '/books/x/05-publication/mt-preview/slug-map.mt-preview.json'
+    );
+  });
+
+  it('🔴 propagates the track validation rather than building a path from a bad name', () => {
+    expect(() => slugMapPath('/books/x/05-publication/mt-preview', '../evil')).toThrow(
+      /unsafe track name/
     );
   });
 });
