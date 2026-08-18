@@ -1823,6 +1823,20 @@ function collectFigureAlts(elements, map) {
  * id-less one cannot be addressed at inject and is skipped rather than guessed.
  * All 197 in scope carry an id (measured).
  *
+ * ⚠️ §C88 Task 4 fix-round-1 (2026-08-18) — an `exercise` structure node has NO
+ * `.content` of its own; its children live at `.problem.content`/`.solution.content`
+ * instead (`processExercise`, cnxml-extract.js:1795-1830), so the `.content` walk
+ * below never reached a bare `<media>` Task 4 emits there. Measured: chemistry
+ * `reached` was stuck at 951 while `emitted` moved to 1004 — 53 alt segments
+ * extracted, translated, and silently discarded at inject, across exactly the 24
+ * modules Task 4 touched. Two EXPLICIT descent paths fix it, matching this file's
+ * own idiom (`collectTableNodes` immediately below takes the same explicit
+ * approach) rather than a generic "recurse into any array-valued property" walker
+ * — a generic walker's failure mode is silently descending into an array nobody
+ * intended, which is exactly the class of invisible defect this branch closes.
+ * `table` has the same shape of gap (`.rows[].cells`, not `.content`) — Task 7
+ * owns adding that third explicit path; do not add it here.
+ *
  * @param {Array} elements structure nodes
  * @param {Record<string,{segmentId: string}>} map out-param
  */
@@ -1833,6 +1847,10 @@ function collectMediaAlts(elements, map) {
     }
     if (el.content) {
       collectMediaAlts(el.content, map);
+    }
+    if (el.type === 'exercise') {
+      if (el.problem?.content) collectMediaAlts(el.problem.content, map);
+      if (el.solution?.content) collectMediaAlts(el.solution.content, map);
     }
   }
 }

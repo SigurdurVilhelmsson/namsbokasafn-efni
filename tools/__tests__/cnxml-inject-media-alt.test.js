@@ -41,6 +41,49 @@ describe('§C88 — bare-media alt write-back', () => {
     expect(map).toEqual({ 'm-bare': { segmentId: 'mod:alt:m-bare-alt' } });
   });
 
+  it('descends into an exercise via .problem.content/.solution.content (§C88 Task 4 fix-round-1)', () => {
+    // An `exercise` structure node has NO `.content` of its own — the real shape
+    // from `processExercise` (tools/cnxml-extract.js:1794-1799) is
+    // {type:'exercise', id, problem:{content:[...]}|null, solution:{content:[...]}|null}.
+    // A fixture shaped like `{type:'exercise', content:[...]}` would pass against the
+    // BROKEN collectMediaAlts too (it would just hit the pre-existing generic
+    // `el.content` walk) without ever exercising the fix — this fixture matches the
+    // real producer shape exactly, so it can only pass with the two explicit
+    // `.problem.content`/`.solution.content` descent paths in place.
+    const map = {};
+    collectMediaAlts(
+      [
+        {
+          type: 'exercise',
+          id: 'ex1',
+          problem: {
+            content: [
+              {
+                type: 'media',
+                id: 'm-prob',
+                alt: { segmentId: 'mod:alt:m-prob-alt', text: 'A titration setup' },
+              },
+            ],
+          },
+          solution: {
+            content: [
+              {
+                type: 'media',
+                id: 'm-sol',
+                alt: { segmentId: 'mod:alt:m-sol-alt', text: 'A graph' },
+              },
+            ],
+          },
+        },
+      ],
+      map
+    );
+    expect(map).toEqual({
+      'm-prob': { segmentId: 'mod:alt:m-prob-alt' },
+      'm-sol': { segmentId: 'mod:alt:m-sol-alt' },
+    });
+  });
+
   it('rewrites the alt attribute in place on a bare media inside a container', () => {
     const el = parse(
       '<example id="ex1"><media id="m-bare" alt="A flask"><image src="a.png"/></media></example>'
