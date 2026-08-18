@@ -286,3 +286,35 @@ C20 spec + 5-task plan written; reproducer simplified to chmod 000 BEFORE the re
 ⚠️ No CI on any of it — GitHub Actions was in a major_outage; local npm test was the gate.
 
 ---
+
+## 2026-08-18 13:45 - §C9 shipped and merged; efni half of the vefur handoff done
+
+**Branch:** docs/c9-closeout (docs-only, unpushed — rides with the next code PR per the batching rule)
+**Modified:**
+
+(clean)
+
+**Recent commits:**
+aff28d51 docs(C9): freeze the whole-branch review as evidence; log C97
+9ed68159 docs(C9): RESUME — §C9 and §C93 both merged; next is a deploy, then §C88
+d3607c50 §C9: prune-on-rename — a corrected section title no longer orphans the page it replaced (#404)
+
+**Why:** The overdue reader-visible defect is fixed — chemistry ch10 no longer lists two "10.5"
+entries. Corpus duplicate-module-id groups 1 → 0, published files 335 → 334.
+
+**Carry into the next session, in order:**
+1. **A DEPLOY IS OWED — two merges behind** (`c9b2aeaf` §C93, `d3607c50` §C9). Prod's next content
+   tick with real content is rejected until `./scripts/deploy.sh` runs, and releasing the stranded
+   commit is a separate manual push.
+2. **§C88 tasks 4–11** — spec and plan written, tasks 1–3 done on `feat/c88-unreachable-figure-alt`
+   (rebased onto main, 7 commits). It blocks the §C82 run.
+3. **The vefur redirect consumer** — separate session in that repo; handoff already written there.
+
+**The one lesson worth carrying:** the whole-branch review found a defect six per-task reviews and
+two re-reviews all missed, because every one of them asked *"did this module move?"* and the fault
+lived in *"did a filename move between modules?"*. It surfaced only when a reviewer was briefed on
+the **capability** ("this deletes files — when can it delete a wrong one?") rather than the feature.
+Its sibling: **a prune has consumers beyond the directory it prunes** — the repair had orphaned 8
+entries in the subject index, which nothing had looked at.
+
+---
