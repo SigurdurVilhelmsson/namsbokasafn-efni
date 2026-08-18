@@ -1645,7 +1645,7 @@ function processExample(
  * exercise lists at all).
  *
  * @param {string} inner - raw content between the section's open/close tags
- * @returns {Array<{kind:'para'|'list', el:object}>} blocks in document order
+ * @returns {Array<{kind:'para'|'list'|'media', el:object}>} blocks in document order
  */
 function orderedExerciseBlocks(inner) {
   const paras = extractElements(inner, 'para');
@@ -1668,6 +1668,17 @@ function orderedExerciseBlocks(inner) {
     // Skip a list nested inside a para — it belongs to that para (legacy behavior).
     const nested = paraSpans.some((p) => start > p.start && start < p.end);
     if (!nested) blocks.push({ kind: 'list', el, start });
+  }
+  // §C88 — a bare <media> that is a SIBLING of the paras. Same nesting rule as
+  // lists: a media inside a para belongs to that para (extractInlineText already
+  // captures it via the [[MEDIA:N]] placeholder), so only top-level ones become
+  // their own block.
+  let mcur = 0;
+  for (const el of extractElements(inner, 'media')) {
+    const start = inner.indexOf(el.fullMatch, mcur);
+    mcur = start + el.fullMatch.length;
+    const nested = paraSpans.some((p) => start > p.start && start < p.end);
+    if (!nested) blocks.push({ kind: 'media', el, start });
   }
   blocks.sort((a, b) => a.start - b.start);
   return blocks;
@@ -1704,6 +1715,33 @@ function emitExerciseSection(
   for (const block of orderedExerciseBlocks(inner)) {
     if (block.kind === 'list') {
       content.push(toList(block.el));
+      continue;
+    }
+    if (block.kind === 'media') {
+      // §C88 — a bare <media> here is reached by NO other walk: the para branch
+      // below passes `.content`, so a media block would fall through it, toText
+      // would return '' and it would be dropped silently. Emit directly.
+      //
+      // 🔴 The structure entry is NOT optional. Emitting the alt segment without
+      // one recreates §C89: extracted, translated, paid for, nowhere to land.
+      const mediaEl = block.el;
+      // Guard on id: collectMediaAlts (tools/cnxml-inject.js) requires el.id to
+      // write a translation back. Without this guard an id-less media would take
+      // altElementId's positional fallback branch, get a segment id that no
+      // inject-side lookup can ever resolve, and that segment would be
+      // extracted, translated, paid for, and silently discarded — §C89
+      // recreated. Leave an id-less bare media unextracted instead.
+      if (!mediaEl.id) continue;
+      const altText =
+        mediaEl.attributes.alt ||
+        (mediaEl.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] ||
+        '';
+      const altSegId = altText ? addSegment('alt', altText, altElementId(mediaEl.id, 0)) : null;
+      content.push({
+        type: 'media',
+        id: mediaEl.id,
+        alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
+      });
       continue;
     }
     const para = block.el;
