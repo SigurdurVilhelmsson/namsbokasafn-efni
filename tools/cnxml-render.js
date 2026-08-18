@@ -65,6 +65,7 @@ import {
   getExerciseSectionClasses,
 } from './lib/book-rendering-config.js';
 import { loadEmbedMapping, renderEmbedHtml } from './lib/embed-mapping.js';
+import { snapshotModuleIds, reconcilePublishedRenames } from './lib/publication-reconcile.js';
 
 // Matches editor/pipeline artifact files that must never live in or sync from
 // the publication dir: safeWrite backups, manual `.pre-fix-*`, `.bak`, and any
@@ -3254,12 +3255,18 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
+    // §C9 — snapshot filename → module id BEFORE anything is deleted or written. This is
+    // the only moment both the old and the new file sets are knowable, and for a full-chapter
+    // render it MUST precede the sweep below, which unlinks every .html and would otherwise
+    // destroy the old→new information permanently.
+    const outputDir = path.join(BOOKS_DIR, '05-publication', args.track, 'chapters', chapterStr);
+    const preRenderSnapshot = snapshotModuleIds(outputDir);
+
     // Clean stale HTML files before rendering (full chapter only, not single-module).
     // Also sweep editor/pipeline artifacts (safeWrite `.backup.*`, stray `.pre-fix-*`,
     // `.bak`, leftover `.tmp.*`) so they never accumulate in — or get synced from —
     // the publication directory (handoff #9).
     if (!args.module) {
-      const outputDir = path.join(BOOKS_DIR, '05-publication', args.track, 'chapters', chapterStr);
       if (fs.existsSync(outputDir)) {
         const all = fs.readdirSync(outputDir);
         const html = all.filter((f) => f.endsWith('.html'));
@@ -3501,6 +3508,11 @@ async function main() {
     const writtenFiles = []; // Track files written in this render pass for cleanup on failure
     const failedModules = [];
 
+    // §C9 — moduleId → basename written this pass. Only real modules go in here; the
+    // end-of-chapter rollups below carry no data-module-id and have fixed, title-independent
+    // names, so they cannot rename and must not be tracked.
+    const renderedModules = new Map();
+
     try {
       for (const moduleId of modules) {
         try {
@@ -3578,6 +3590,7 @@ ${anchors}
 
           const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
           writtenFiles.push(outputPath);
+          renderedModules.set(moduleId, path.basename(outputPath));
 
           console.log(`${moduleId}: Rendered to HTML`);
           console.log(`  → ${outputPath}`);
@@ -4038,6 +4051,31 @@ ${anchors}
         `Render failed: ${renderErr.message} — rolled back ${writtenFiles.length} file(s) from this pass ` +
           `(${restored} restored to previous version, ${deleted} newly-created file(s) removed).`
       );
+    }
+
+    // §C9 — prune pages this render superseded, and record old→new so vefur can redirect.
+    // AFTER the rollback boundary on purpose: a failed render must delete nothing.
+    try {
+      const { pruned } = reconcilePublishedRenames({
+        outputDir,
+        trackDir: path.join(BOOKS_DIR, '05-publication', args.track),
+        chapterRelDir: `chapters/${chapterStr}`,
+        renderedModules,
+        book: BOOK_SLUG,
+        track: args.track,
+        recordedAt: new Date().toISOString().slice(0, 10),
+        snapshot: preRenderSnapshot,
+      });
+      for (const p of pruned) {
+        console.log(`Pruned superseded page: ${p.from} → ${p.to} (${p.moduleId})`);
+      }
+      if (pruned.length > 0) {
+        console.log(
+          `Recorded ${pruned.length} rename(s) in 05-publication/${args.track}/slug-map.json`
+        );
+      }
+    } catch (err) {
+      console.error(`§C9 reconcile failed (render itself succeeded): ${err.message}`);
     }
 
     // Render succeeded: the per-file `.backup.<timestamp>` copies safeWrite() made
