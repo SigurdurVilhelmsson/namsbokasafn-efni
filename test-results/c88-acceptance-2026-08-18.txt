@@ -38,11 +38,27 @@ here.
 ────────────────────────────────────────────────────────────────────────────────────────
 POSITIVE CONTROL — the two PRE-EXISTING reachable positions must be unchanged
 ────────────────────────────────────────────────────────────────────────────────────────
-⚠️ Measured directly as a real BEFORE/AFTER, not copied from the task-11 brief's stated
-"in-para 214, standalone 110" — those two numbers do not appear anywhere in this repo or
-the SDD workspace as a citable measurement, and this session's own measurement disagrees
-with them. Reported plainly, not reconciled (per this branch's own standing rule: a
-disagreement found now is worth more than a clean-looking artifact).
+⚠️ Corrected 2026-08-19 (fix round 1): this originally claimed the task-11 brief's stated
+"in-para 214, standalone 110" do not appear anywhere else in this repo or the SDD workspace.
+False — the search behind that claim came back empty and was reported as a universal
+negative instead of checked. They appear, cited with method, at: register §C89
+(docs/plans/2026-07-21-post-item17-followup-campaign.md:505 — 214/110 as SEGMENT
+WRITE-BACK-REACH counts, measured after §C81 shipped); the frozen design spec
+(docs/superpowers/specs/2026-08-15-figure-alt-into-pipeline-design.md:45 — 214/308(*) as
+SOURCE-POPULATION counts by structural position, measured before §C81/§C88 existed); and the
+tracked plan the task-11 brief was excerpted from
+(docs/superpowers/plans/2026-08-17-c88-unreachable-figure-alt.md:1521 — inside the SDD
+workspace's own source, not outside it).
+
+This measurement below uses a fourth unit — STRUCTURE-TREE POPULATION, at two commits —
+which is why it disagrees with both cited sources: 233 in-para vs. 214/214; 97 standalone
+vs. 110/308. (*) The design spec's 308 predates the position split this item introduces: it
+is one coarse "standalone" bucket, ancestor to both this branch's §C88 population (197,
+across five sub-positions) and today's true-standalone 97. 308 − 197 = 111 — close to but
+not exactly §C89's 110: a near-reconciliation, not exact, not chased further. In-para
+(233 vs. 214) has no equivalent lineage found. Reported plainly, not fully reconciled (per
+this branch's own standing rule: a disagreement found now is worth more than a
+clean-looking artifact).
 
 Method: same structure-tree walk, run twice — once against a git worktree pinned at
 e72e9b31 ("chore(C88): preflight — confirm nothing is extracted at the C88 vintage", the
