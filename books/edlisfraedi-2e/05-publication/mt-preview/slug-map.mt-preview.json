@@ -1,0 +1,27 @@
+{
+  "book": "edlisfraedi-2e",
+  "track": "mt-preview",
+  "contract": "C9 — old→new so vefur can serve redirects. Every value is CURRENT: chains are collapsed on write, so a single lookup suffices and no transitive walk is needed. SCOPE: this map describes ONE track of ONE book. The reader site flattens both tracks into one directory, so a consumer must read each track's map separately and reconcile them itself; a `to` here can also be superseded at the destination by the reader site's own overlay pruning.",
+  "renames": {
+    "chapters/04/4-1-throun-krafthugtaksins.html": {
+      "to": "chapters/04/4-1-throun-kraftshugtaksins.html",
+      "moduleId": "m42069",
+      "recordedAt": "2026-08-12"
+    },
+    "chapters/04/4-5-thverkraftur-spenna-og-onnur-daemi-um-krafta.html": {
+      "to": "chapters/04/4-5-thverkraftur-togkraftur-og-onnur-daemi-um-krafta.html",
+      "moduleId": "m42075",
+      "recordedAt": "2026-08-12"
+    },
+    "chapters/04/4-6-lausn-vandamala.html": {
+      "to": "chapters/04/4-6-lausnaradferdir-vid-urlausn-verkefna.html",
+      "moduleId": "m42076",
+      "recordedAt": "2026-08-12"
+    },
+    "chapters/04/4-8-itarefni-inngangur-ad-grunnkroftunum-fjorum.html": {
+      "to": "chapters/04/4-8-itarefni-grunnkraftarnir-fjorir-inngangur.html",
+      "moduleId": "m42137",
+      "recordedAt": "2026-08-12"
+    }
+  }
+}
