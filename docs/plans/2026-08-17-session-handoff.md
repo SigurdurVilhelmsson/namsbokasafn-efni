@@ -1,5 +1,15 @@
 # Session handoff — 2026-08-17 evening
 
+> **⛔ SUPERSEDED 2026-08-19 — do not resume from this file.** Both branches it points at are
+> finished: §C93 merged as PR #403, §C88 as PR #405. Its "resume order" is spent.
+>
+> ⚠️ **Its two ledger citations below point into `.superpowers/sdd/`, which is gitignored and is
+> deleted at plan close-out — so they dangle by design, and that is §C97 exactly.** The durable
+> replacements: §C88's whole-branch review is frozen at
+> `docs/superpowers/specs/2026-08-19-c88-whole-branch-review.md`, its design spec at
+> `docs/superpowers/specs/2026-08-16-c88-unreachable-figure-alt-design.md`, and every ruling and
+> open item it produced is in the active register (§C97–§C102). Read the register, not this.
+
 **Everything is committed. No branch has uncommitted work. Nothing is pushed.**
 Per § *One source of truth*, this file is a **breadcrumb, not status** — the register owns
 open work. It exists so the next session knows which branch to stand on.
