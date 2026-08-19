@@ -1812,6 +1812,65 @@ function collectFigureAlts(elements, map) {
 }
 
 /**
+ * §C88 — recursively map every BARE `<media>` structure node's id to its alt
+ * segment. The §C89 companion, `collectFigureAlts`, keys on FIGURE id and so
+ * cannot reach these: all 197 chemistry instances are bare `<media>` with no
+ * `<figure>` ancestor (measured 0 of 197).
+ *
+ * ⚠️ Keyed on the MEDIA's own id, and an id is REQUIRED here — unlike
+ * collectFigureAlts, where a null mediaId legitimately means "the figure's
+ * first media". A bare media has no enclosing element to anchor on, so an
+ * id-less one cannot be addressed at inject and is skipped rather than guessed.
+ * All 197 in scope carry an id (measured).
+ *
+ * ⚠️ §C88 Task 4 fix-round-1 (2026-08-18) — an `exercise` structure node has NO
+ * `.content` of its own; its children live at `.problem.content`/`.solution.content`
+ * instead (`processExercise`, cnxml-extract.js:1795-1830), so the `.content` walk
+ * below never reached a bare `<media>` Task 4 emits there. Measured: chemistry
+ * `reached` was stuck at 951 while `emitted` moved to 1004 — 53 alt segments
+ * extracted, translated, and silently discarded at inject, across exactly the 24
+ * modules Task 4 touched. Two EXPLICIT descent paths fix it, matching this file's
+ * own idiom (`collectTableNodes` immediately below takes the same explicit
+ * approach) rather than a generic "recurse into any array-valued property" walker
+ * — a generic walker's failure mode is silently descending into an array nobody
+ * intended, which is exactly the class of invisible defect this branch closes.
+ * `table` has the same shape of gap (`.rows[].cells`, not `.content`) — Task 7
+ * adds that third explicit path below.
+ *
+ * @param {Array} elements structure nodes
+ * @param {Record<string,{segmentId: string}>} map out-param
+ */
+function collectMediaAlts(elements, map) {
+  for (const el of elements) {
+    if (el.type === 'media' && el.id && el.alt?.segmentId) {
+      map[el.id] = { segmentId: el.alt.segmentId };
+    }
+    if (el.content) {
+      collectMediaAlts(el.content, map);
+    }
+    if (el.type === 'exercise') {
+      if (el.problem?.content) collectMediaAlts(el.problem.content, map);
+      if (el.solution?.content) collectMediaAlts(el.solution.content, map);
+    }
+    if (el.type === 'table' && Array.isArray(el.rows)) {
+      for (const row of el.rows) {
+        for (const cell of row?.cells || []) {
+          // §C88 Task 7 — a table cell is not a {type:'media'} node, so the
+          // branch above never sees it. Key on `cell.alt.mediaId`, which
+          // processTable (cnxml-extract.js) carries EXPLICITLY: reading it
+          // directly means not reconstructing a value the producer already
+          // handed us, for no reason, and not coupling this reader to the
+          // seg-id's format. Read the field.
+          if (cell && cell.alt?.segmentId && cell.alt.mediaId) {
+            map[cell.alt.mediaId] = { segmentId: cell.alt.segmentId };
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
  * Recursively map every <table> node's id to its structure node (with .rows/.cells).
  * Used so container builders can translate direct-child tables they keep in place
  * (their structure node is a sibling of the container, not held by the builder). OC-B fix.
@@ -2081,6 +2140,40 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   collectFigureCaptions(structure.content, figureCaptions);
   const figureAlts = {};
   collectFigureAlts(structure.content, figureAlts);
+  const mediaAlts = {};
+  collectMediaAlts(structure.content, mediaAlts);
+  // §C88 — SECOND SOURCE, beyond the task-2 spec: `structure.inlineMedia` (the
+  // pre-existing [[MEDIA:N]] placeholder mechanism from §C81/§C89) is where the
+  // ALREADY-EXTRACTED residual m68801 actually carries its alt. collectMediaAlts
+  // alone cannot reach it: m68801's media is a list-item block child, recorded
+  // in structure as a bare `{type:'media', id}` (no `.alt`) inside the item's
+  // `blockChildren`, never as a `type:'media'` node in `.content` with `.alt`.
+  // Its [[MEDIA:N]] placeholder is deliberately suppressed at expansion time
+  // (blockMediaIds, "OC-E Layer 2") to avoid duplicating the block-preserved
+  // DOM node, so nothing else ever reaches this alt without this second source.
+  // ⚠️ Source from `structure.inlineMedia`, NEVER `resolvedInlineMedia` — that
+  // is built later (after getSeg binds) and its `.alt` is already flattened to
+  // a plain string by then, with the segmentId gone.
+  // ⚠️ `m.id &&` guard kept for the same reason collectMediaAlts requires an id:
+  // organic has 243 id-less inline media entries (12.7%) that cannot be
+  // addressed at inject.
+  for (const m of structure.inlineMedia || []) {
+    if (m.id && m.alt?.segmentId) mediaAlts[m.id] = { segmentId: m.alt.segmentId };
+  }
+  // §C88 Task 7 fix round 1 (review Finding 1) — THIRD SOURCE, same shape as
+  // the second: an inline (para-embedded) table is explicitly EXCLUDED from
+  // `structure.content` (cnxml-extract.js:1263, the `inlineTablesMap.has(
+  // item.id)` break) and lives only in `structure.inlineTables[].structure`.
+  // `collectMediaAlts(structure.content, …)` above can never reach a
+  // bare-media alt inside an inline table's cell — yet that table IS still
+  // rendered, through `expandInlineTables`/`buildPara`'s `[[TABLE:id]]`
+  // restoration (both call `buildTable` → `applyMediaAltString`). Without
+  // this fold, `ctx.mediaAlts` has no key for that media id, the English alt
+  // is retained, and the translation is extracted, sent to the paid MT, and
+  // silently discarded at write-back — the §C89 shape this whole branch
+  // exists to close. Reuses `collectMediaAlts`'s existing `table` branch; no
+  // new logic.
+  for (const t of structure.inlineTables || []) collectMediaAlts([t.structure], mediaAlts);
   const tableNodesById = {};
   collectTableNodes(structure.content, tableNodesById);
   const figuresHandledInNotes = new Set();
@@ -2101,6 +2194,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   const ctx = {
     figureCaptions,
     figureAlts,
+    mediaAlts,
     peekSeg,
     figuresHandledInNotes,
     figuresHandledInContainers,
@@ -2293,7 +2387,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       if (ctx && ctx.tablesHandledInContainers && ctx.tablesHandledInContainers.has(element.id)) {
         return null;
       }
-      return buildTable(element, getSeg, originalCnxml, ctx && ctx.tableCellGaps);
+      return buildTable(element, getSeg, originalCnxml, ctx && ctx.tableCellGaps, ctx);
     case 'example':
       return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
     case 'exercise':
@@ -2335,7 +2429,7 @@ function buildPara(element, getSeg, equations, originalCnxml, ctx) {
     text = text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
       const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
       if (tableData && tableData.structure) {
-        return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
+        return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
       }
       return match; // Keep placeholder if not found
     });
@@ -2479,6 +2573,94 @@ function applyFigureAltDom(figEl, ctx) {
 }
 
 /**
+ * §C88 — write translated alt onto every BARE `<media>` inside a
+ * preserved-verbatim container, before it is serialized.
+ *
+ * The §C89 mirror of applyFigureAltDom, keyed on MEDIA id instead of figure id.
+ * Runs over the whole container subtree: a media that IS inside a `<figure>`
+ * has already been handled by applyFigureAltDom, and re-writing the same value
+ * is idempotent, so no ancestor test is needed.
+ *
+ * 🔴 Reads through ctx.peekSeg, NOT getSeg. An absent alt translation is normal
+ * (§C82 keeps pre-§C81 vintages live), and getSeg would record a miss and make
+ * inject REFUSE the module — §C89's first-cut defect.
+ *
+ * 🔴 Rewrites attributes IN PLACE and never constructs a `<media>`:
+ * deduplicateMedia keeps the FIRST media by id, so an appended translated copy
+ * would be silently deleted (§C81's Critical).
+ *
+ * @param {Element} containerEl a preserved container element (example/exercise/note)
+ * @param {object} ctx build context carrying `mediaAlts` and `peekSeg`
+ * @returns {number} how many alt attributes were actually rewritten
+ */
+function applyMediaAltDom(containerEl, ctx) {
+  if (!containerEl || !ctx || !ctx.mediaAlts) return 0;
+  let written = 0;
+  const medias = Array.from(containerEl.getElementsByTagName('media'));
+  for (const media of medias) {
+    const mediaId = media.getAttribute('id');
+    if (!mediaId) continue;
+    const entry = ctx.mediaAlts[mediaId];
+    if (!entry) continue;
+    const translated = ctx.peekSeg ? ctx.peekSeg(entry.segmentId) : null;
+    if (!translated) continue;
+
+    if (media.getAttribute('alt')) {
+      media.setAttribute('alt', translated);
+      written++;
+      continue;
+    }
+    const images = Array.from(media.getElementsByTagName('image'));
+    for (const image of images) {
+      if (image.getAttribute('alt')) {
+        image.setAttribute('alt', translated);
+        written++;
+        break;
+      }
+    }
+  }
+  return written;
+}
+
+/**
+ * §C88 — the string-path twin of applyMediaAltDom, for buildTable.
+ *
+ * buildTable is regex/string based, and an empty-text entry falls through to
+ * `return entryMatch` — the VERBATIM source entry, English alt included. The 29
+ * chemistry `entry-not-in-figure` alts live exactly there.
+ *
+ * ⚠️ Rewrites ONLY the value of an existing alt attribute on a media whose id is
+ * in the map. It never adds an attribute and never builds an element, so it
+ * cannot trip deduplicateMedia and cannot change the entry's structure.
+ *
+ * 🔴 peekSeg, not getSeg — best-effort, see applyMediaAltDom.
+ *
+ * @param {string} entryCnxml verbatim `<entry>…</entry>` source
+ * @param {object} ctx build context carrying `mediaAlts` and `peekSeg`
+ * @returns {string} the entry with translated alt values, or the input unchanged
+ */
+function applyMediaAltString(entryCnxml, ctx) {
+  if (!entryCnxml || !ctx || !ctx.mediaAlts) return entryCnxml;
+  return entryCnxml.replace(/<media\b[^>]*>/g, (openTag) => {
+    const idMatch = openTag.match(/\bid="([^"]*)"/);
+    if (!idMatch) return openTag;
+    const entry = ctx.mediaAlts[idMatch[1]];
+    if (!entry) return openTag;
+    const translated = ctx.peekSeg ? ctx.peekSeg(entry.segmentId) : null;
+    if (!translated) return openTag;
+    if (!/\balt="/.test(openTag)) return openTag;
+    // §C88 — `&` MUST be escaped first: escaping `"` before `&` would then
+    // re-escape the `&` inside the just-produced `&quot;`, yielding `&amp;quot;`.
+    const escaped = String(translated)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+    return openTag.replace(/\balt="[^"]*"/, `alt="${escaped}"`);
+  });
+}
+
+/**
  * Build a figure element.
  */
 function buildFigure(element, getSeg, originalCnxml, ctx) {
@@ -2619,8 +2801,13 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
  *   (see the !cell branch below). Absent for isolated-builder/library calls,
  *   which then keep the lenient pre-fix pass-through (same contract as
  *   translateKeptContainerTables' missing-ctx no-op).
+ * @param {object|null} ctx - §C88: build context carrying `mediaAlts`/`peekSeg`,
+ *   consulted ONLY on the verbatim-entry fall-through (a bare <media>'s alt is
+ *   rewritten in place there via applyMediaAltString). Additive fifth param —
+ *   absent for isolated-builder/library calls, which then no-op (same contract
+ *   as tableCellGaps above).
  */
-function buildTable(element, getSeg, originalCnxml, tableCellGaps) {
+function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
   // For tables, extract from original and replace cell content
   if (element.id) {
     // Match table by ID - id attribute can appear anywhere in the opening tag
@@ -2703,7 +2890,10 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps) {
                   }
                 }
                 cellIdx++;
-                return entryMatch;
+                // §C88 — this is the VERBATIM source entry (empty-text cell, or a
+                // cell whose translation is missing). Any bare <media> in it still
+                // carries its English alt; rewrite it in place before returning.
+                return applyMediaAltString(entryMatch, ctx);
               }
             );
           }
@@ -2753,7 +2943,7 @@ function translateKeptContainerTables(
         `translateKeptContainerTables: no structure node for kept container table id="${tableId}" in module ${moduleId} — cannot translate; refusing to emit source table.`
       );
     }
-    const translated = buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps);
+    const translated = buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
     if (!translated) {
       throw new Error(
         `translateKeptContainerTables: buildTable returned null for table id="${tableId}" in module ${moduleId}.`
@@ -2787,7 +2977,7 @@ function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
     const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
     if (tableData && tableData.structure) {
       keptTableIds.add(tableId);
-      return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
+      return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps, ctx);
     }
     return match; // unknown id → leave placeholder; the gate will catch it
   });
@@ -3307,6 +3497,8 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       applyFigureAltDom(fig, ctx);
     }
   }
+  // §C88 — bare <media> in this container have no <figure> to key on.
+  applyMediaAltDom(exampleEl, ctx);
 
   // Mark kept figures so buildFigure skips the standalone copy
   if (ctx && ctx.figuresHandledInContainers) {
@@ -3638,6 +3830,8 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
       applyFigureAltDom(fig, ctx);
     }
   }
+  // §C88 — bare <media> in this container have no <figure> to key on.
+  applyMediaAltDom(exerciseEl, ctx);
 
   // Mark kept figures so buildFigure skips the standalone copy
   if (ctx && ctx.figuresHandledInContainers) {
@@ -3988,6 +4182,11 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       }
     }
   }
+
+  // §C88 — bare <media> in this note have no <figure> to key on, so the loop
+  // above never reaches them; and a note with zero figures skips that loop
+  // entirely. Runs once, on the whole note subtree.
+  applyMediaAltDom(noteEl, ctx);
 
   // C13: a figure kept inside a note para is already in the output DOM, so the
   // hoisted standalone structure entry must not be emitted a second time. The
@@ -4823,4 +5022,7 @@ export {
   buildFigure, // §C81: exported for alt dual-shape tests
   applyMathLabelSubstitution,
   getMathLabelResolver,
+  collectMediaAlts, // §C88: exported for bare-media alt write-back tests
+  applyMediaAltDom, // §C88
+  applyMediaAltString, // §C88: table-entry (string-path) twin of applyMediaAltDom
 };

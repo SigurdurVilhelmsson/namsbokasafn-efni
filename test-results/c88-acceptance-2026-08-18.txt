@@ -1,0 +1,270 @@
+§C88 acceptance — 2026-08-18 (Task 11, final verification)
+
+Scope: chemistry (efnafraedi-2e) is the item's population (197 unreachable figure-alt
+attributes in five positions the extractor never visited). Every number below states its
+book and module coverage in the same breath — a measurement generalised past its coverage
+is this repo's commonest documented error (CLAUDE.md).
+
+────────────────────────────────────────────────────────────────────────────────────────
+CHECK 1 — coverage rose, stated as a DELTA (not "1,149 of 1,149 emitted")
+────────────────────────────────────────────────────────────────────────────────────────
+Command: npx vitest run --reporter=verbose tools/__tests__/alt-coverage-corpus.test.js
+Result (chemistry, 149/149 source modules):
+  unreachable  197 -> 0
+  reachable    952 -> 1,149
+  reason codes -> {} (all five: bare-media-in-example, bare-media-in-problem,
+                       bare-media-in-solution, bare-media-in-note, entry-not-in-figure)
+  E5 (live-extractor cross-check): exactly ONE module short, m68727 (6 reachable, 5
+  emitted) — the pre-existing, un-closed regex-truncation shortfall named in the brief;
+  not C88's to close. §C87 ①, the spec's OTHER named shortfall, contributes zero and is
+  structurally unable to fire on this corpus (unchanged from prior tasks' findings).
+All 4 tests in the file: PASS.
+
+────────────────────────────────────────────────────────────────────────────────────────
+CHECK 2 — the translations SURVIVE (the §C89 defect shape, guarded against)
+────────────────────────────────────────────────────────────────────────────────────────
+Command: npx vitest run --reporter=verbose tools/__tests__/alt-writeback-corpus.test.js
+Result:
+  chemistry (149/149 modules): emitted 1,148, reached 1,148, dropped []
+    reached rose 951 -> 1,148 (+197) — exactly the count of newly-emitted alt segments
+    (951 measured independently below, at the true pre-C88 commit e72e9b31; matches
+    §C89's own "950/951" and Task 9's commit-recorded "951 -> 1,148").
+  organic preview (in-scope subset): emitted 1,918, reached 1,918, dropped []
+  No module newly appears in either book's dropped list (both are the empty array).
+Both tests in the file: PASS. Check 1 without check 2 would be exactly the §C89 defect
+(more extracted, more discarded, more spent, no reader benefit) — it is not what happened
+here.
+
+────────────────────────────────────────────────────────────────────────────────────────
+POSITIVE CONTROL — the two PRE-EXISTING reachable positions must be unchanged
+────────────────────────────────────────────────────────────────────────────────────────
+⚠️ Corrected 2026-08-19 (fix round 1): this originally claimed the task-11 brief's stated
+"in-para 214, standalone 110" do not appear anywhere else in this repo or the SDD workspace.
+False — the search behind that claim came back empty and was reported as a universal
+negative instead of checked. They appear, cited with method, at: register §C89
+(docs/plans/2026-07-21-post-item17-followup-campaign.md:505 — 214/110 as SEGMENT
+WRITE-BACK-REACH counts, measured after §C81 shipped); the frozen design spec
+(docs/superpowers/specs/2026-08-15-figure-alt-into-pipeline-design.md:45 — 214/308(*) as
+SOURCE-POPULATION counts by structural position, measured before §C81/§C88 existed); and the
+tracked plan the task-11 brief was excerpted from
+(docs/superpowers/plans/2026-08-17-c88-unreachable-figure-alt.md:1521 — inside the SDD
+workspace's own source, not outside it).
+
+This measurement below uses a fourth unit — STRUCTURE-TREE POPULATION, at two commits —
+which is why it disagrees with both cited sources: 233 in-para vs. 214/214; 97 standalone
+vs. 110/308. (*) The design spec's 308 predates the position split this item introduces: it
+is one coarse "standalone" bucket, ancestor to both this branch's §C88 population (197,
+across five sub-positions) and today's true-standalone 97. 308 − 197 = 111 — close to but
+not exactly §C89's 110: a near-reconciliation, not exact, not chased further. In-para
+(233 vs. 214) has no equivalent lineage found. Reported plainly, not fully reconciled (per
+this branch's own standing rule: a disagreement found now is worth more than a
+clean-looking artifact).
+
+Method: same structure-tree walk, run twice — once against a git worktree pinned at
+e72e9b31 ("chore(C88): preflight — confirm nothing is extracted at the C88 vintage", the
+commit immediately before ANY §C88 emitter or write-back code), once against this branch's
+HEAD (1df38ea8 at measurement time) — both over the SAME unchanged, read-only
+books/efnafraedi-2e/01-source tree (149 modules).
+
+  position                              e72e9b31 (pre)      HEAD (post)     delta
+  in-para   (structure.inlineMedia[])   233 / 33 modules    233 / 33 modules   0
+  standalone (top-level {type:'media'}) 97  / 30 modules    97  / 30 modules   0
+
+Bit-for-bit identical before and after — 0% drift, not "~100%". Emitted-alt total at
+e72e9b31 was 951 (all positions), matching the figure §C89's fix commit and Task 9's pin
+move both cite independently.
+
+────────────────────────────────────────────────────────────────────────────────────────
+STRUCTURE-LEVEL CENSUS (controller addition ①) — closes the segment-level blind spot
+────────────────────────────────────────────────────────────────────────────────────────
+Rationale: generateSegmentId is a pure function of the media's own id, so a duplicate
+STRUCTURE entry for the same media produces two segments sharing one id — and
+dedupeAltSegments Rule 1 splices the duplicate segment out before any segment-level count
+ever runs. Both of Check 1 and Check 2 above are segment-level and are documented-blind to
+that failure mode. This census walks the actual structure TREE that
+tools/cnxml-inject.js's collectMediaAlts reads — i.e. what an editor's translation is
+actually keyed against — and counts `{type:'media', alt}` nodes per container, plus the
+one §C88 emitter (table entries) that uses a different shape (`cell.alt`, not
+`{type:'media'}`).
+
+Command: node <scratch script, method below> over all 149 chemistry source modules,
+importing extractSegments from tools/cnxml-extract.js (pure function, no CLI, no
+--output-dir, no write — per §C83, cnxml-extract.js is never invoked as a CLI against the
+real tree).
+
+  container            count   modules   task
+  example.content        105        33   Task 5
+  note.content             10         7   Task 6
+  problem.content          40        20   Task 4 (problem half)
+  solution.content         13         8   Task 4 (solution half)
+  entry (table cell)*      29         2   Task 7 (*cell.alt shape, not {type:'media'})
+  ---------------------------------------------
+  §C88 emitter total      197                  matches Check 1's delta EXACTLY
+
+  standalone (pre-existing, §C81)   97   30    unchanged — see positive control above
+  in-para   (pre-existing, §C81)   233   33    unchanged — see positive control above
+
+⚠️ Soundness check on the census itself, read from tools/cnxml-extract.js:583-668
+(dedupeAltSegments), not assumed from its docstring: the function splices REMOVED entries
+only out of `segments` (line 648, `segments.splice(idx, 1)`); its walk over `structure`
+(lines 656-668) only reassigns `node.alt.segmentId` on a surviving id — it never deletes,
+splices, or otherwise removes a `{type:'media'}` structure node. So this census's counts
+are NOT touched by dedup at all, in either direction: they reflect what actually sits in
+the structure tree regardless of how many (if any) segment-level merges fired. That the
+structure total (197) matches the segment-level delta (197) exactly is therefore a genuine,
+non-tautological agreement — it additionally means dedup fired ZERO times among the
+newly-emitted C88 positions specifically (a merge there would have left the structure count
+at 197 while dropping the segment delta below it; both are 197, so none fired).
+
+The structure-level total (197) matches the segment-level delta (197) exactly, module
+count for module count against the known-good per-task figures (105/33 and 10/7 were
+supplied as known-good by the controller and reproduced exactly here; 40/20, 13/8 and
+29/2 were not supplied and match the spec's §1 reason-code table and Task 7's own commit
+title exactly). No duplicate structure entry inflating or silently absorbing a count was
+found in this census.
+
+Recipe (not committed as a script; reproducible from this description): walk
+structure.content recursively; a {type:'example'} node's own .content is the
+'example.content' container, {type:'note'} -> 'note.content', {type:'exercise'} ->
+its .problem.content / .solution.content are 'problem.content' / 'solution.content'
+respectively, {type:'section'} is transparent (recurse with the same label); a
+{type:'media'} node with a truthy .alt is counted under whichever container label is
+active; {type:'table'} is walked separately for row.cells[].alt (Task 7's shape, never a
+{type:'media'} node); {type:'figure'} is not descended into (pre-existing, different alt
+carrier, out of this census's scope).
+
+────────────────────────────────────────────────────────────────────────────────────────
+FIVE-BOOK TABLE (controller addition ②) — the four emitters are book-agnostic
+────────────────────────────────────────────────────────────────────────────────────────
+The population this item closes (197) is chemistry-specific, but processTable /
+processExample / emitExerciseSection / processNote are shared code — every book with
+01-source now reports unreachable=0. reachable/unreachable/emitted below are
+INDEPENDENTLY RE-DERIVED this session (not copied from Task 10's report), via the same
+pure-function recipe as the structure census above, over every book's full 01-source tree:
+
+  book (scope)                          modules  reachable  unreachable  emitted
+  efnafraedi-2e (chemistry, IN §C82)        149       1149            0     1148
+  lifraen-efnafraedi (organic, IN §C82)     342       2163            0     1918
+  edlisfraedi-2e (physics, OUT of §C82)     283       1501            0     1465
+  liffraedi-2e (biology, OUT of §C82)       259       1212            0     1212
+  orverufraedi (microbio, OUT of §C82)      159        849            0      848
+
+These reachable/unreachable/emitted figures match Task 10's report and register entry
+exactly (independent re-derivation, same method, same result). The write-back sweep
+(reached/dropped) column is NOT re-run in full for physics/biology/microbiology in this
+acceptance pass (out of §C82 scope, and Task 10 already ran and recorded it); chemistry
+and organic ARE reconfirmed directly above via the actual committed pinned tests
+(1148/1148/[] and 1918/1918/[]). For the record, citing Task 10 (register, dated
+2026-08-18, "§C88 Task 10" RESUME bullet), not re-measured here:
+  edlisfraedi-2e:  1465/1459/dropped 5 modules (6 segments) — includes §C99, a GENUINE,
+                   unfixed write-back drop (m42099) recurring outside any pin's coverage.
+  liffraedi-2e:    1205/1205/[] over 258 of 259 modules — m66542 could not be swept at all
+                   (§C100, a pre-existing, unrelated round-trip crash).
+  orverufraedi:    848/848/[] (the emitted shortfall below is extraction-side, so
+                   write-back has nothing to drop for it).
+
+⚠️ NOT a clean sweep across all five books: §C99 (edlisfraedi-2e / physics, m42099) is a
+LIVE write-back drop of the exact §C89 failure shape, uncaught only because no pin covers
+physics — it is currently reader-invisible only because physics is out of the §C82 run's
+scope. A chemistry-only "197 -> 0" headline would misrepresent this branch's reach; naming
+§C99 here is deliberate, not an oversight.
+
+The single-module extraction shortfalls (chemistry m68727 6->5, microbiology m58854
+13->12) are NOT both certified: chemistry's traces to a confirmed, already-documented
+regex-truncation defect; microbiology's is a LEAD (an unescaped literal `>` inside the alt
+value, same plausible mechanism, not traced to the exact regex) — see the register's §C88
+Task 10 entry for both.
+
+────────────────────────────────────────────────────────────────────────────────────────
+PRECONDITION RE-CHECK — Task 1 Step 1's vintage probe, re-run
+────────────────────────────────────────────────────────────────────────────────────────
+=== efnafraedi-2e ===
+  02-for-mt files with ':alt:'      (expect 0): 0
+  02-for-mt files with ':para:'   (CONTROL >0): 191
+  02-mt-output files with ':alt:'   (expect 0): 0
+  02-mt-output files with ':para:'(CONTROL >0): 141
+  02-structure with "alt":{  (NEW, expect 0): 0
+  02-structure with "alt":"  (CONTROL >0):    134
+=== lifraen-efnafraedi ===
+  02-for-mt files with ':alt:'      (expect 0): 0
+  02-for-mt files with ':para:'   (CONTROL >0): 17
+  02-mt-output files with ':alt:'   (expect 0): 0
+  02-mt-output files with ':para:'(CONTROL >0): 18
+  02-structure with "alt":{  (NEW, expect 0): 0
+  02-structure with "alt":"  (CONTROL >0):    17
+
+Every "expect 0" row is 0; every CONTROL row is > 0. The precondition still holds — no
+module was extracted at the C88 vintage while this branch was in progress.
+
+────────────────────────────────────────────────────────────────────────────────────────
+MUST-NOT-MOVE PINS — confirmed untouched
+────────────────────────────────────────────────────────────────────────────────────────
+git status --porcelain: clean before this artifact was written (no uncommitted change to
+any of the four pin files below at measurement time).
+
+  tools/__tests__/alt-coverage-corpus.test.js       last touched d46c457c (Task 9)
+  tools/__tests__/alt-writeback-corpus.test.js      last touched d46c457c (Task 9)
+  tools/__tests__/cnxml-extract-alt-corpus.test.js  last touched 07167ac7 (pre-dates C88)
+  tools/__tests__/inject-roundtrip-corpus.test.js   last touched 938ab553 (pre-dates C88)
+
+npx vitest run --reporter=verbose tools/__tests__/cnxml-extract-alt-corpus.test.js \
+    tools/__tests__/inject-roundtrip-corpus.test.js
+  -> 2 files, 8 tests, all PASS. Invariants observed exactly as pinned:
+     positional alt ids anywhere in chemistry: [] (none)
+     duplicate alt segment ids (chemistry, 149 modules): []
+     duplicate alt segment ids (organic preview, 17 modules): []
+     duplicate alt segment TEXT (organic preview, id-less media, 17 modules): []
+     chemistry round trip: 149 modules, no alt lost and none gained
+     the five §C81-regression fixture modules: clean at HEAD
+     organic: the four known, pre-existing round-trip defects (unrelated to C88): pinned,
+       unchanged
+
+Neither file was edited by this task. The four corpus-pin invariants above are unchanged
+from what Task 9/earlier tasks committed — this is the confirmation, not a new value.
+
+────────────────────────────────────────────────────────────────────────────────────────
+docs:generate
+────────────────────────────────────────────────────────────────────────────────────────
+npm run docs:generate -> "Generated docs/_generated/tools.md with 44 tools",
+"Generated docs/_generated/routes.md", "Updated README.md sections"
+git status --porcelain docs/_generated/ README.md -> empty (no diff produced; this
+branch's changes were all inside existing function bodies, not new tools/routes).
+
+Verified against the actual CI job, not just the npm script name (.github/workflows/
+docs-check.yml): triggers on pull_request paths tools/**, server/routes/**, scripts/**
+(this branch touches tools/** heavily, so it WILL fire) and its check-docs job runs
+exactly `npm run docs:generate` then fails only if `git status --porcelain docs/_generated/`
+is non-empty. Both are exactly what was run above — nothing else the job checks was missed.
+
+────────────────────────────────────────────────────────────────────────────────────────
+CLOSE-OUT FIX (controller addition ③)
+────────────────────────────────────────────────────────────────────────────────────────
+tools/lib/extraction-coverage.js carried a source comment citing
+.superpowers/sdd/2026-08-17-c88-unreachable-figure-alt/progress.md — gitignored, deleted
+at plan close-out. Re-pointed to the frozen spec
+(docs/superpowers/specs/2026-08-16-c88-unreachable-figure-alt-design.md, §2's scope
+banner) and the register's §C88 entries. Swept tools/cnxml-extract.js, tools/cnxml-inject.js
+and tools/lib/extraction-coverage.js with TWO independent patterns (not just the literal
+string that matched the known instance): `git grep -na "superpowers"`, and
+`grep -naE 'progress\.md|task-[0-9]+-(report|brief|review)|ruling-[0-9]|sdd/'` (catches a
+bare-filename citation that dodges the literal ".superpowers/" string). Both clean except
+the one instance already fixed — the only other ".../superpowers/..." hits in those
+three files are docs/superpowers/specs/... (the durable, committed frozen-spec directory,
+not gitignored).
+
+────────────────────────────────────────────────────────────────────────────────────────
+Real gates (Step 6)
+────────────────────────────────────────────────────────────────────────────────────────
+npm run lint         -> clean
+npm run format:check -> clean
+npm test (root, authoritative gate) -> Test Files 330 passed (330); Tests 4883 passed
+  (4883); exit code 0. Identical file/test count to the pre-Task-11 baseline stated at
+  dispatch and reconfirmed by Task 10 (330 files / 4883 tests) — this task added no new
+  test, consistent with a docs+comment-only change plus one code-comment citation fix.
+  Two lines in the raw log read as errors ("Error: spawn ENOENT" in
+  server/__tests__/tmService.test.js, "Error: Unknown command 'update'") — both are
+  expected output of tests that deliberately exercise an error path, not failures; the
+  file/test pass counts and exit code above are the actual verdict.
+  (This is a dated, immutable measurement record under test-results/ — the number is
+  recorded here, not in the register, per CLAUDE.md's one-source-of-truth rule for
+  prose elsewhere in this repo.)

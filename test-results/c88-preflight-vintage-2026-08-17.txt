@@ -1,0 +1,14 @@
+=== efnafraedi-2e ===
+  02-for-mt files with ':alt:'      (expect 0): 0
+  02-for-mt files with ':para:'   (CONTROL >0): 191
+  02-mt-output files with ':alt:'   (expect 0): 0
+  02-mt-output files with ':para:'(CONTROL >0): 141
+  02-structure with "alt":{  (NEW, expect 0): 0
+  02-structure with "alt":"  (CONTROL >0):    134
+=== lifraen-efnafraedi ===
+  02-for-mt files with ':alt:'      (expect 0): 0
+  02-for-mt files with ':para:'   (CONTROL >0): 17
+  02-mt-output files with ':alt:'   (expect 0): 0
+  02-mt-output files with ':para:'(CONTROL >0): 18
+  02-structure with "alt":{  (NEW, expect 0): 0
+  02-structure with "alt":"  (CONTROL >0):    17

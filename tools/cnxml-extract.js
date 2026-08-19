@@ -886,13 +886,6 @@ function extractSegments(cnxml, options = {}) {
     });
   }
 
-  // §C81 Task 10: merge duplicate alt segments now that every structural walk
-  // (figure/standalone media above, inline media just above) has had its own
-  // chance to create one. Must run AFTER structure.inlineMedia is built, so
-  // its entries are reachable by the walk. See dedupeAltSegments()'s own
-  // comment for why this runs after rather than suppressing during capture.
-  dedupeAltSegments(segments, structure);
-
   if (inlineTablesMap.size > 0) {
     structure.inlineTables = Array.from(inlineTablesMap.entries())
       .filter(([_, data]) => data.processed)
@@ -901,6 +894,18 @@ function extractSegments(cnxml, options = {}) {
         structure: data.structure,
       }));
   }
+
+  // §C81 Task 10 (reordered, §C88 Task 7 fix round 1 — review Finding 1 §5):
+  // merge duplicate alt segments now that every structural walk (figure/
+  // standalone media above, inline media and inline tables just above) has
+  // had its own chance to create one. Must run AFTER structure.inlineMedia
+  // AND structure.inlineTables are built, so their entries are reachable by
+  // the walk — a Rule 2 merge that ran before structure.inlineTables was
+  // attached would remap segment ids everywhere EXCEPT inside it, leaving an
+  // inline table's `cell.alt.segmentId` pointing at a spliced-out segment.
+  // See dedupeAltSegments()'s own comment for why this runs after rather
+  // than suppressing during capture.
+  dedupeAltSegments(segments, structure);
 
   if (verbose) {
     console.error(
@@ -1464,7 +1469,66 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             attributes: entry.attributes,
           });
         } else {
-          rowStructure.cells.push({ segmentId: null, attributes: entry.attributes });
+          // §C88 — text is '' because extractInlineText (above) is called
+          // without an inlineMediaMap, so a bare <media> in the cell is
+          // stripped rather than placeholdered. Without this branch the
+          // entry — and the media's alt with it — is discarded here: 29
+          // chemistry instances.
+          //
+          // ⚠️ NOT wired to the addSegment('entry', …) in the multi-para
+          // branch above: that branch is 0/29 for this population. Emit
+          // here, where the empty single-content text is what gets thrown
+          // away.
+          const cell = { segmentId: null, attributes: entry.attributes };
+          for (const media of extractElements(entry.content, 'media')) {
+            // Guard on id (Controller Ruling 9, matching the identical guard
+            // at the <example>/<problem>/<solution>/<note> emit sites,
+            // cnxml-extract.js:1707 et al.): collectMediaAlts
+            // (tools/cnxml-inject.js) requires the media id to write a
+            // translation back. Without this guard an id-less media would
+            // take altElementId's positional fallback, get a segment id
+            // nothing at inject can resolve, and be extracted, translated,
+            // paid for, and silently discarded (§C89 recreated). Leave an
+            // id-less bare media unextracted instead.
+            if (!media.id) continue;
+            // ⚠️ Review Finding 5 (fix round 1) — this fallback has no
+            // counterpart in the string-path writer. `applyMediaAltString`
+            // (tools/cnxml-inject.js) matches only `<media …>` open tags and
+            // never inspects a child `<image>` tag, unlike its DOM-path twin
+            // `applyMediaAltDom`, which does fall back to a child `<image>`
+            // alt. So an alt living ONLY on a child `<image>` (never on the
+            // `<media>` itself) is emitted here but never written back on
+            // the string path this emit site feeds — same emit-without-reach
+            // class as Finding 1, measured at zero instances corpus-wide.
+            // Deliberately not fixed here: `applyMediaAltString` is Task 3's
+            // code, outside this task's scope, and teaching it the `<image>`
+            // fallback has a blast radius across every string-path
+            // write-back. Logged for the register, not closed.
+            const altText =
+              media.attributes.alt ||
+              (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] ||
+              '';
+            const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+            // 🔴 `mediaId` is REQUIRED here, not decorative — unlike the
+            // {type:'media'} structure nodes at the other three emit sites,
+            // a table cell is not itself keyed by media id, so
+            // collectMediaAlts (Step 4, tools/cnxml-inject.js) needs it
+            // carried explicitly: don't reconstruct a value the producer
+            // already handed you, and don't couple the reader to the seg-id
+            // format.
+            // ⚠️ Only ONE alt survives on `cell.alt` if a cell ever holds more
+            // than one alt-bearing media — and, since this loop does not
+            // break, it is whichever media comes LAST in document order, not
+            // the first. Measured (parsed, not grepped) across all six books:
+            // 0 entries anywhere hold more than one alt-bearing (id'd) media
+            // — 37 total alt-bearing table-cell media corpus-wide (29
+            // chemistry + 8 physics), every one alone in its cell — so this
+            // never fires in the current corpus. If that ever changes,
+            // promote `cell.alt` to `cell.alts[]` and teach collectMediaAlts
+            // (tools/cnxml-inject.js) to walk it.
+            if (altSegId) cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id };
+          }
+          rowStructure.cells.push(cell);
         }
       }
     }
@@ -1472,6 +1536,64 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
   }
 
   return tableStructure;
+}
+
+/**
+ * §C88 — strip a set of already-extracted container elements out of `content`,
+ * leaving only what belongs to none of them (used to find a container's own
+ * DIRECT bare `<media>` children without double-counting media a nested walk
+ * already owns).
+ *
+ * 🔴 ORDER IS LENGTH-DESCENDING, NOT INSERTION ORDER, AND THAT IS LOAD-BEARING.
+ * A fixed sequential order (paras, then lists, then notes, ...) breaks as soon
+ * as a nesting relationship runs the OTHER way: `paras = extractElements(...)`
+ * is SHALLOW and matches a `<para>` anywhere in the string, including one that
+ * is a note's own inner para. Stripping that para FIRST removes a byte range
+ * from inside the note's span, so the note's `fullMatch` (captured against the
+ * ORIGINAL string) no longer matches the mutated string — its `.replace()`
+ * becomes a silent no-op, and the note's own bare media (or anything else
+ * after that inner para) leaks into the residue. Confirmed on real corpus data
+ * (books/efnafraedi-2e/01-source/ch07/m68740.cnxml, example fs-idp59620704):
+ * a `<note>` whose FIRST child is a `<para>` and whose SECOND child is a bare
+ * `<media>` — stripping paras before notes left the media reachable both via
+ * processNote's own scan (correct) and via processExample's bare-media scan
+ * (spurious duplicate `type:'media'` entry for the same id).
+ *
+ * Stripping the LARGEST fullMatch first is safe whenever the candidate spans
+ * NEST or are DISJOINT, regardless of which way the nesting relationship
+ * runs: removing an outer container removes everything nested inside it in
+ * one shot, so a later `.replace()` for any of its descendants is a harmless
+ * no-op (their fullMatch is already gone from the string). This is the same
+ * "list nested inside a para" hazard the fixed PARAS-then-LISTS order was
+ * written to guard — generalized so it self-corrects for a nesting shape it
+ * wasn't written to expect, instead of only the one case it happened to be
+ * tested against.
+ *
+ * ⚠️ That precondition is not guaranteed — `paras` comes from `extractElements`,
+ * whose non-greedy `([\s\S]*?)</para>` truncates an outer `<para>` at the
+ * FIRST inner `</para>`, so a para span and a list span can PARTIALLY OVERLAP
+ * (neither nests the other, neither is disjoint from the other). Length
+ * ordering guarantees nothing for a partially-overlapping pair — whichever is
+ * stripped first can corrupt the other's `fullMatch` and leave it in the
+ * residue as a silent no-op, the exact failure this helper exists to prevent.
+ * 0 instances of this shape measured in the chemistry corpus; not fixed here,
+ * since it is the same pre-existing non-greedy-para defect self-review
+ * finding 3 already logged as out of scope for §C88 Tasks 5/6.
+ *
+ * @param {string} content - the container's raw inner CNXML
+ * @param {Array<Array<{fullMatch?: string}>>} elementLists - extracted element
+ *   arrays (e.g. paras, lists, notes, figures, tables) whose fullMatch spans
+ *   should be removed
+ * @returns {string} content with every listed element's fullMatch removed
+ */
+function stripContainersByLength(content, elementLists) {
+  const all = elementLists
+    .flat()
+    .filter((el) => el && el.fullMatch)
+    .sort((a, b) => b.fullMatch.length - a.fullMatch.length);
+  let residue = content;
+  for (const el of all) residue = residue.replace(el.fullMatch, '');
+  return residue;
 }
 
 /**
@@ -1612,6 +1734,51 @@ function processExample(
     exampleStructure.content.push(listStructure);
   }
 
+  // §C88 — bare <media> that is a DIRECT child of this example. Reached by no
+  // other walk: processTopLevelContent strips example.fullMatch before its
+  // standalone-media scan, and the para loop above only sees media INSIDE a
+  // <para> (via extractInlineText's [[MEDIA:N]] placeholder — paired form only).
+  //
+  // Uses the STRIP IDIOM against a LOCAL copy so a media nested in a
+  // <list>/<note>/<para>/<figure>/<table>/<exercise> is not taken twice —
+  // those walks own their own copies. `example.content` itself is left
+  // untouched for the loops above/below. See stripContainersByLength for why
+  // the strip order is length-descending rather than a fixed sequence.
+  //
+  // Fix round 1 (Minor #3): EXERCISE STRIP — same reasoning as figure/table.
+  // processTopLevelContent's exercise scan (`extractNestedElements(content,
+  // 'exercise')`) runs on the WHOLE document with no isInsideExample/
+  // isInsideNote exclusion, so an <exercise> nested here is already
+  // represented at the top level via processExercise, and Task 4 emits bare-
+  // media alts from its <problem>/<solution>. Without this strip a bare
+  // media inside a nested exercise would double-emit here too. Latent only —
+  // 0 duplicates measured in chemistry, biology, organic and microbiology.
+  const exampleBareContent = stripContainersByLength(example.content, [
+    paras,
+    lists,
+    extractNestedElements(example.content, 'note'),
+    extractNestedElements(example.content, 'figure'),
+    extractNestedElements(example.content, 'table'),
+    extractNestedElements(example.content, 'exercise'),
+  ]);
+  for (const media of extractElements(exampleBareContent, 'media')) {
+    // Guard on id (Controller Ruling 9): collectMediaAlts (tools/cnxml-inject.js)
+    // requires el.id to write a translation back. Without this guard an id-less
+    // media would take altElementId's positional fallback branch, get a segment
+    // id that no inject-side lookup can ever resolve, and that segment would be
+    // extracted, translated, paid for, and silently discarded — §C89 recreated.
+    // Leave an id-less bare media unextracted instead.
+    if (!media.id) continue;
+    const altText =
+      media.attributes.alt || (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] || '';
+    const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+    exampleStructure.content.push({
+      type: 'media',
+      id: media.id,
+      alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
+    });
+  }
+
   // Process equations in example
   const equations = extractElements(example.content, 'equation');
   for (const eq of equations) {
@@ -1645,7 +1812,7 @@ function processExample(
  * exercise lists at all).
  *
  * @param {string} inner - raw content between the section's open/close tags
- * @returns {Array<{kind:'para'|'list', el:object}>} blocks in document order
+ * @returns {Array<{kind:'para'|'list'|'media', el:object}>} blocks in document order
  */
 function orderedExerciseBlocks(inner) {
   const paras = extractElements(inner, 'para');
@@ -1669,6 +1836,17 @@ function orderedExerciseBlocks(inner) {
     const nested = paraSpans.some((p) => start > p.start && start < p.end);
     if (!nested) blocks.push({ kind: 'list', el, start });
   }
+  // §C88 — a bare <media> that is a SIBLING of the paras. Same nesting rule as
+  // lists: a media inside a para belongs to that para (extractInlineText already
+  // captures it via the [[MEDIA:N]] placeholder), so only top-level ones become
+  // their own block.
+  let mcur = 0;
+  for (const el of extractElements(inner, 'media')) {
+    const start = inner.indexOf(el.fullMatch, mcur);
+    mcur = start + el.fullMatch.length;
+    const nested = paraSpans.some((p) => start > p.start && start < p.end);
+    if (!nested) blocks.push({ kind: 'media', el, start });
+  }
   blocks.sort((a, b) => a.start - b.start);
   return blocks;
 }
@@ -1683,7 +1861,7 @@ function orderedExerciseBlocks(inner) {
  *
  * @param {string} inner   - raw content between the section's open/close tags
  * @param {'problem'|'solution'} segType - segment type for the section's paras
- * @returns {Array<object>} structure content entries (para + list) in document order
+ * @returns {Array<object>} structure content entries (para + list + media) in document order
  */
 function emitExerciseSection(
   inner,
@@ -1704,6 +1882,33 @@ function emitExerciseSection(
   for (const block of orderedExerciseBlocks(inner)) {
     if (block.kind === 'list') {
       content.push(toList(block.el));
+      continue;
+    }
+    if (block.kind === 'media') {
+      // §C88 — a bare <media> here is reached by NO other walk: the para branch
+      // below passes `.content`, so a media block would fall through it, toText
+      // would return '' and it would be dropped silently. Emit directly.
+      //
+      // 🔴 The structure entry is NOT optional. Emitting the alt segment without
+      // one recreates §C89: extracted, translated, paid for, nowhere to land.
+      const mediaEl = block.el;
+      // Guard on id: collectMediaAlts (tools/cnxml-inject.js) requires el.id to
+      // write a translation back. Without this guard an id-less media would take
+      // altElementId's positional fallback branch, get a segment id that no
+      // inject-side lookup can ever resolve, and that segment would be
+      // extracted, translated, paid for, and silently discarded — §C89
+      // recreated. Leave an id-less bare media unextracted instead.
+      if (!mediaEl.id) continue;
+      const altText =
+        mediaEl.attributes.alt ||
+        (mediaEl.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] ||
+        '';
+      const altSegId = altText ? addSegment('alt', altText, altElementId(mediaEl.id, 0)) : null;
+      content.push({
+        type: 'media',
+        id: mediaEl.id,
+        alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
+      });
       continue;
     }
     const para = block.el;
@@ -1862,6 +2067,46 @@ function processNote(
       inlineTablesMap
     );
     noteStructure.content.push(listStructure);
+  }
+
+  // §C88 — bare <media> that is a direct child of this note.
+  //
+  // 🔴 A DIRECT addSegment, deliberately NOT routed through inlineMediaMap:
+  // 9 of the 10 corpus instances are notes nested inside <example>, reached
+  // through the 5-ARG processExample call at the example's notes loop, which
+  // passes no inlineMediaMap at all. Routing through it would silently cover
+  // 1 of 10.
+  // Uses stripContainersByLength (see processExample) rather than a fixed
+  // paras-then-lists order — `paras` is shallow (extractElements) and can
+  // include a para nested inside a list item's wrapsPara shape, so a fixed
+  // order risks the same silent-no-op corruption processExample hit for a
+  // note-nested para (§C88).
+  // 🔴 FIGURE/TABLE STRIP IS NOT OPTIONAL — see processExample's identical
+  // comment: processTopLevelContent hoists every <figure>/<table> to a
+  // top-level structure node with no isInsideExample/isInsideNote exclusion, so
+  // a figure nested in this note is already represented elsewhere.
+  // Fix round 1 (Minor #3): EXERCISE STRIP — same reasoning, applied to
+  // <exercise>. See processExample's identical comment; latent only, 0
+  // duplicates measured in chemistry, biology, organic and microbiology.
+  const noteBareContent = stripContainersByLength(note.content, [
+    paras,
+    lists,
+    extractNestedElements(note.content, 'figure'),
+    extractNestedElements(note.content, 'table'),
+    extractNestedElements(note.content, 'exercise'),
+  ]);
+  for (const media of extractElements(noteBareContent, 'media')) {
+    // Guard on id (Controller Ruling 9) — see processExample's identical guard
+    // for the full §C89 rationale.
+    if (!media.id) continue;
+    const altText =
+      media.attributes.alt || (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] || '';
+    const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+    noteStructure.content.push({
+      type: 'media',
+      id: media.id,
+      alt: altSegId ? { segmentId: altSegId, text: altText } : undefined,
+    });
   }
 
   return noteStructure;

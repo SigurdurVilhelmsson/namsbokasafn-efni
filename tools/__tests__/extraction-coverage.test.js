@@ -191,7 +191,7 @@ describe('analyzeModule', () => {
   });
 });
 
-describe('altReachability — the four positions cnxml-extract never visits (§C81 shortfall)', () => {
+describe('altReachability — all five positions cnxml-extract now visits (§C88)', () => {
   const wrap = (inner) => `<document><content>${inner}</content></document>`;
   const reach = (inner) => altReachability(parseModuleDoc(wrap(inner)).content);
 
@@ -200,12 +200,11 @@ describe('altReachability — the four positions cnxml-extract never visits (§C
     expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
   });
 
-  it('counts a media in a table entry, outside a figure, as unreachable', () => {
+  it('counts a media in a table entry, outside a figure, as reachable (§C88 table-entry emitter)', () => {
     const r = reach(
       '<table><row><entry><media alt="mynd"><image src="a.png"/></media></entry></row></table>'
     );
-    expect(r.unreachable).toBe(1);
-    expect(r.unreachableByReason['entry-not-in-figure']).toBe(1);
+    expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
   });
 
   it('counts a figure-wrapped media INSIDE a table entry as reachable', () => {
@@ -217,12 +216,11 @@ describe('altReachability — the four positions cnxml-extract never visits (§C
   });
 
   for (const parent of ['example', 'problem', 'solution', 'note']) {
-    it(`counts a bare media directly in <${parent}> as unreachable`, () => {
+    it(`counts a bare media directly in <${parent}> as reachable (§C88 emitter)`, () => {
       const r = reach(
         `<${parent} id="x"><media alt="mynd"><image src="a.png"/></media></${parent}>`
       );
-      expect(r.unreachable).toBe(1);
-      expect(r.unreachableByReason[`bare-media-in-${parent}`]).toBe(1);
+      expect(r).toMatchObject({ reachable: 1, unreachable: 0 });
     });
 
     it(`counts a FIGURE-wrapped media in <${parent}> as reachable`, () => {
@@ -274,23 +272,29 @@ describe('checkAltCoverage — three numbers, gates on one', () => {
   );
 
   it('passes when every reachable alt was emitted, and reports the unreached', () => {
-    const seg = '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f2-alt -->\nönnur\n';
+    // §C88: SRC's third media (a bare <media> directly inside <example id="e1">)
+    // is now reachable too, so all three alts must be emitted for this to pass.
+    const seg =
+      '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f2-alt -->\nönnur\n\n<!-- SEG:m1:alt:e1-alt -->\nónáanleg\n';
     const r = checkAltCoverage(parseModuleDoc(SRC).content, seg);
-    expect(r).toMatchObject({ reached: 2, expected: 2, unreached: 1, ok: true });
+    expect(r).toMatchObject({ reached: 3, expected: 3, unreached: 0, ok: true });
   });
 
   it('fails when a reachable alt was dropped', () => {
     const seg = '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n';
     const r = checkAltCoverage(parseModuleDoc(SRC).content, seg);
-    expect(r).toMatchObject({ reached: 1, expected: 2, ok: false });
+    expect(r).toMatchObject({ reached: 1, expected: 3, ok: false });
   });
 
   it('fails when MORE alt segments were emitted than the source has reachable alts', () => {
     // The duplicate-emission direction §C81 Task 10 closed. Equality, not >=.
+    // §C88: all three of SRC's alts are reachable now, so the over-emission
+    // needs a 4th marker (all three legitimate ids plus one extra) to still
+    // land on reached > expected.
     const seg =
-      '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f2-alt -->\nönnur\n\n<!-- SEG:m1:alt:media-0-alt -->\nafrit\n';
+      '<!-- SEG:m1:alt:f1-alt -->\nfyrsta\n\n<!-- SEG:m1:alt:f2-alt -->\nönnur\n\n<!-- SEG:m1:alt:e1-alt -->\nónáanleg\n\n<!-- SEG:m1:alt:media-0-alt -->\nafrit\n';
     const r = checkAltCoverage(parseModuleDoc(SRC).content, seg);
-    expect(r).toMatchObject({ reached: 3, expected: 2, ok: false });
+    expect(r).toMatchObject({ reached: 4, expected: 3, ok: false });
   });
 
   it('reports the examined count even on a figure-less module, so a pass is not vacuous', () => {
