@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildPublicationMap } from '../generate-index.js';
+import { buildPublicationMap, loadPublicationPages } from '../generate-index.js';
 
 /**
  * §C104 — index.json's section slugs and titles must come from THIS repo's own
@@ -90,5 +90,20 @@ describe('buildPublicationMap — slug/title source of truth (§C104)', () => {
         page('20-3-aldehyd-keton-karboxylsyrur-og-estrar', 20, 'm68848', 'Nýtt'),
       ])
     ).toThrow(/m68848/);
+  });
+});
+
+describe('loadPublicationPages — fails loud on an unrendered track (§C104)', () => {
+  it('throws rather than returning an empty page list', () => {
+    // The branch that matters most. A silently empty map would null EVERY
+    // sectionSlug in a shipped index.json and read as "no terms have sections"
+    // — the same silence that let this defect ship in the first place.
+    expect(() => loadPublicationPages('efnafraedi-2e', 'no-such-track')).toThrow(/render the/i);
+  });
+
+  it('and returns pages for a track that IS rendered — the positive control', () => {
+    const pages = loadPublicationPages('efnafraedi-2e', 'mt-preview');
+    expect(pages.length).toBeGreaterThan(0);
+    expect(pages.every((p) => typeof p.slug === 'string' && typeof p.html === 'string')).toBe(true);
   });
 });
