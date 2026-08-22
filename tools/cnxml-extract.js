@@ -40,6 +40,7 @@ import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import { altElementId } from './lib/alt-segments.js';
+import { isMtLocked } from './lib/mt-lock.cjs';
 import {
   parseArgs,
   BOOK_OPTION,
@@ -2571,6 +2572,53 @@ function hasExtractTarget(args) {
   return args.input != null || args.chapter != null;
 }
 
+/**
+ * §C110 — modules whose MT output is edit-locked, reported at EXTRACTION time.
+ *
+ * A re-extract advances `02-for-mt`/`02-structure`, while `mtRunDecision`
+ * refuses to re-translate a locked module (`locked-skip`, which `--force` does
+ * NOT override), so the two halves of one module end up at different vintages.
+ * `cnxml-inject` catches that two stages later and refuses the module as an
+ * "incomplete injection" — a message that names the wrong cause. This is the
+ * diagnostic at the point of divergence, which is the only place that can name
+ * the real one.
+ *
+ * WARNS; NEVER REFUSES. Clearing a lock and re-extracting is a legitimate,
+ * intended operation — it is exactly what the §C82 clean break does — so this
+ * must not become a gate. The hazard it exists for is a lock created *during* a
+ * long run (`saveSegmentEdit` locks a module on its first edit), which no
+ * amount of up-front lock-clearing can prevent.
+ *
+ * @param {string} bookDir - the book's directory, e.g. `books/efnafraedi-2e`
+ * @param {number|'appendices'} chapter - both `-1` and `'appendices'` mean appendices
+ * @param {string[]} moduleIds - modules this run extracted
+ * @returns {{locked: string[], warnings: string[], summary: string|null}}
+ */
+function mtLockWarnings(bookDir, chapter, moduleIds) {
+  // Appendices are the -1 sentinel and are NOT `ch-1` (CLAUDE.md § Directory
+  // Structure). Getting this wrong makes the check silently never fire there.
+  const chDir =
+    chapter === 'appendices' || chapter === -1
+      ? 'appendices'
+      : `ch${String(chapter).padStart(2, '0')}`;
+  const locked = moduleIds.filter((moduleId) =>
+    isMtLocked(path.join(bookDir, '02-mt-output', chDir, `${moduleId}-segments.is.md`))
+  );
+  const warnings = locked.map(
+    (moduleId) =>
+      `  ⚠ ${moduleId}: MT output is EDIT-LOCKED. This extraction advanced 02-for-mt, but ` +
+      `api-translate will return locked-skip (--force does NOT override), leaving 02-mt-output ` +
+      `at the older vintage. Inject will then refuse this module as "incomplete injection".`
+  );
+  const summary =
+    locked.length === 0
+      ? null
+      : `⚠ §C110: ${locked.length} module(s) extracted with a LOCKED MT output — ` +
+        `${locked.join(', ')}. Their 02-for-mt is now newer than their 02-mt-output. ` +
+        `Clear the lock and re-run api-translate, or restore the previous extraction.`;
+  return { locked, warnings, summary };
+}
+
 async function main() {
   const args = parseCliArgs(process.argv.slice(2));
   BOOKS_DIR = `books/${args.book}`;
@@ -2621,6 +2669,8 @@ async function main() {
       });
     }
 
+    const extractedModuleIds = [];
+
     for (const file of files) {
       if (args.verbose) {
         console.error(`Processing: ${file}`);
@@ -2646,6 +2696,7 @@ async function main() {
       console.log(`  → ${output.segmentsPath}`);
       console.log(`  → ${output.structurePath}`);
       console.log(`  → ${output.manifestPath}`);
+      extractedModuleIds.push(moduleId);
     }
 
     // Extract chapter title from collection-order.json as a translatable segment
@@ -2666,9 +2717,22 @@ async function main() {
           fs.writeFileSync(segPath, content, 'utf-8');
           console.log(`Chapter title: Extracted "${chapterData.title}"`);
           console.log(`  → ${segPath}`);
+          // The chapter-title leg writes chapter-metadata-segments.en.md on
+          // every run, and a lock can sit on its MT sibling exactly as on a
+          // module's (efnafraedi-2e ch05 has one today), so it diverges the
+          // same way and must be checked the same way.
+          extractedModuleIds.push('chapter-metadata');
         }
       }
     }
+
+    // §C110 — name the divergence HERE, at the point where its cause is still
+    // knowable; inject reports it two stages later under the wrong name. Runs
+    // after the chapter-title leg so it covers that id too. WARN ONLY:
+    // re-extracting a cleared-lock module is the intended §C82 operation.
+    const mtLocks = mtLockWarnings(BOOKS_DIR, chapter, extractedModuleIds);
+    for (const w of mtLocks.warnings) console.warn(w);
+    if (mtLocks.summary) console.warn(`\n${mtLocks.summary}`);
   } catch (error) {
     console.error('Error:', error.message);
     if (args.verbose) {
@@ -2692,4 +2756,5 @@ export {
   elementIdPosition,
   assertNoDroppedListBlocks,
   hasExtractTarget,
+  mtLockWarnings,
 };
