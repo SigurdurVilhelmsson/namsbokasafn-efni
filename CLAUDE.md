@@ -421,11 +421,37 @@ it. What breaks is the regex: `[^>]*` stops at the first raw `>`, leaving an unt
 and an **empty capture** — the tool then reports success and emits an **empty value**, not a
 missing one, which is why it reads as "the source had nothing there". ▶ **Do not use a regex to
 find the end of an open tag whose attributes you are about to read** — scan it respecting quoted
-values, or parse. ⚠️ **The `[^>]*` idiom is pervasive across `cnxml-extract.js`, `cnxml-inject.js`,
-`cnxml-render.js` and `tools/lib/` — do not trust any enumeration here, re-derive it — so the
-exposure is set by the CORPUS, not by the code**: a source refresh, a new book, or a different
-element type can light up sites that have never fired. The measured instances, their counts and
-the affected books live in the active register (**§C115**), never here.
+values, or parse. **`tools/lib/cnxml-parser.js` now exports `TAG_ATTR_SPAN` (a drop-in for `[^>]*`)
+and `openTagPattern()`; use them rather than writing a new span.** ⚠️ **The `[^>]*` idiom is
+pervasive across `cnxml-extract.js`, `cnxml-inject.js`, `cnxml-render.js` and `tools/lib/` — do not
+trust any enumeration here, re-derive it — so the exposure is set by the CORPUS, not by the code**:
+a source refresh, a new book, or a different element type can light up sites that have never fired.
+The measured instances, their counts and the affected books live in the active register
+(**§C115**), never here.
+- 🔴 **AMENDED 2026-08-24 — THE CLASS IS "FIND THE END OF AN OPEN TAG", **HOWEVER WRITTEN**, AND A
+  GREP FOR THE REGEX IDIOM CANNOT SEE THE WORST INSTANCE.** The rule above named `[^>]*`. The
+  injector's half of §C115 was **`mediaBlock.indexOf('>')`**, under a comment stating *"The `<media>`
+  opening tag is everything up to the first `'>'`"* — the same false premise in **imperative** form,
+  invisible to every `[^>]*` sweep, and found only by a sentinel that compared VALUES end to end.
+  ▶ **When you sweep for this, sweep for the QUESTION being asked, not the syntax**: `indexOf('>')`,
+  `split('>')`, `slice(0, i)` on a tag, and a hand-rolled scanner all belong to it.
+- 🔴 **AND IT IS TYPICALLY TWO INDEPENDENT DEFECTS, ONE PER SIDE — FIXING ONLY THE EXTRACT SIDE
+  MAKES THINGS WORSE, NOT BETTER.** Measured on m68727: with extraction fixed and injection not,
+  the alt was extracted, sent to the paid MT and **discarded at inject** — emitted 1149, reached
+  1148 — i.e. a fresh §C89 drop manufactured by a partial fix. **A repair here is not done until a
+  sentinel run shows `emitted === reached`.**
+- ⚠️ **PRECISION THAT CHANGES THE DIAGNOSIS: the attribute read comes back `undefined`, and what
+  reaches the output depends on the CALLER.** `parseAttributes` requires a closing quote, so a
+  truncated span yields **no `alt` key at all** — not an empty capture and not `''`. Whether that
+  becomes an empty value or a *missing* one is then the caller's `|| ''` and its emptiness guard:
+  on m68727 it became a **missing segment** (5 emitted of 6 reachable), and the published page kept
+  the **untranslated English** alt. ▶ **Look for a MISSING artefact as readily as an empty one**,
+  and do not assume the two symptoms this rule describes always travel together.
+- ⚠️ **A quote-aware span is behaviour-identical where the old one worked, and that is checkable —
+  so check it.** Over the two kept books: same match count (3,312 `<media>` open tags), same speed,
+  and full-corpus extraction output **457 of 491 modules byte-identical** with the 34 changed ones
+  individually accounted for. **A class-wide regex change without a corpus byte-identity diff is
+  unverified**, and the diff is what caught a gratuitous field that touched two innocent modules.
 
 **⚠️ DURABLE — `book-config.json` is MULTI-CONSUMER; a new non-render key must be excluded via `NON_RENDER_KEYS`.** The item-17 licence key leaked through `book-rendering-config.js` `mergeWithShared()`'s lossless passthrough into `getBookRenderConfig()`'s object and broke a golden `toEqual` migration oracle. Verifying "inert on the render path" must check the config-**object** shape and its tests, not just the rendered HTML — a `toEqual`-vs-golden is a shape pin, not only a `toMatchSnapshot`.
 

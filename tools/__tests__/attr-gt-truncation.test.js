@@ -6,10 +6,20 @@
  * still MATCHES; it just matches a shorter span. So the number of `<media>` open tags
  * found is IDENTICAL before and after the fix (measured: 3,312 over the two kept
  * books, both patterns), and every count-shaped check stays green while the alt is
- * silently lost. `parseAttributes` then finds no complete `alt="…"` pair and the
- * caller reads `undefined`, so the pipeline emits an EMPTY alt rather than a missing
- * one — which reads downstream as "the source had nothing there", and publishes
- * `alt=""`. An empty alt is WORSE than an English one: it tells a screen reader
+ * silently lost. `parseAttributes` requires a closing quote, so a truncated span
+ * yields NO `alt` key at all — not an empty capture, and not `''`. What reaches the
+ * output is then the caller's business: here `alt || '' ` makes it `''`, `addSegment`
+ * declines an empty string, and the result is a MISSING segment (5 emitted of 6
+ * reachable) — which reads downstream as "the source had nothing there".
+ *
+ * ⚠️ WHAT THAT COSTS THE READER, MEASURED RATHER THAN ASSUMED. With no segment to
+ * translate, the figure's alt stays permanently ENGLISH on the published page — the
+ * image is described, just not in Icelandic, and no gate can see it because the
+ * attribute is present and non-empty. §C115 is also recorded as publishing `alt=""`;
+ * that is TRUE OF THE COMMITTED 05-publication HTML (one empty alt among 1,381
+ * `<img>`, on this very image's localized variant) but is NOT reproducible from
+ * today's code — see the reader-visible case at the bottom of this file, which
+ * measures both. An empty alt would be worse still: it tells a screen reader
  * "decorative, skip".
  *
  * The positive control is built in: the clean modules asserted alongside mean a
@@ -19,7 +29,9 @@ import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { TAG_ATTR_SPAN, openTagPattern, parseAttributes } from '../lib/cnxml-parser.js';
-import { extractSegments } from '../cnxml-extract.js';
+import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
+import { buildCnxml, parseSegments } from '../cnxml-inject.js';
+import { renderCnxmlToHtml } from '../cnxml-render.js';
 
 const REPO_ROOT = path.resolve(import.meta.dirname, '..', '..');
 const M68727 = path.join(REPO_ROOT, 'books/efnafraedi-2e/01-source/ch05/m68727.cnxml');
@@ -102,4 +114,67 @@ describe('§C115 — a bare `>` in an attribute value must not truncate the open
     expect(alts.length).toBeGreaterThan(0);
     for (const a of alts) expect(a.text.trim()).not.toBe('');
   });
+
+  it('READER-VISIBLE: the recovered alt reaches the published <img alt>', () => {
+    // 🔴 THE ONLY ASSERTION THAT SPEAKS FOR THE READER. Everything above stops at
+    // the segment; this runs source → extract → inject → render and looks at the
+    // `<img alt>` a screen reader would actually announce.
+    //
+    // The sentinel is what makes it meaningful: every alt is overwritten with a
+    // token that cannot have come from the source, so "the attribute is non-empty"
+    // cannot pass for "the translation arrived" — which is the §C89 failure this
+    // whole thread exists to prevent, and is exactly how the defect read before.
+    //
+    // 📌 THE `imageMapping` IS LOAD-BEARING, NOT DECORATION. m68727's figure is a
+    // LOCALIZED image (CNX_Chem_05_03_Systemqw → …_IS.svg), and that is the path
+    // the published page takes. Rendering without it exercises a different branch.
+    //
+    // ⚠️ MEASURED CORRECTION TO THE REGISTER, recorded here because the artifact is
+    // what a future reader will check: §C115's second symptom is documented as
+    // "publishes alt=\"\"". Today's code does NOT produce an empty alt for this
+    // image — before the fix it published the untranslated ENGLISH alt. The one
+    // empty alt in the committed 05-publication HTML is from an OLDER pipeline
+    // vintage. Both are defects; they are not the same defect.
+    const src = fs.readFileSync(M68727, 'utf8');
+    const mapping = new Map();
+    for (const e of JSON.parse(
+      fs.readFileSync(path.join(REPO_ROOT, 'books/efnafraedi-2e/media/image-mapping.json'), 'utf8')
+    )) {
+      mapping.set(e.originalImage, e);
+    }
+
+    const { segments, structure, equations, inlineAttrs } = extractSegments(src);
+    const parsed = parseSegments(formatSegmentsMarkdown(segments));
+    const sentinels = [];
+    for (const [k] of parsed) {
+      if (String(k).split(':')[1] !== 'alt') continue;
+      const token = `ZQXALT${sentinels.length}ZQX`;
+      parsed.set(k, token);
+      sentinels.push(token);
+    }
+    const injected = buildCnxml(
+      structure,
+      parsed,
+      equations,
+      src,
+      { imageMapping: mapping },
+      inlineAttrs
+    ).cnxml;
+    const { html } = renderCnxmlToHtml(injected, {
+      bookSlug: 'efnafraedi-2e',
+      imageMapping: mapping,
+    });
+
+    // 6, not 5 — the sixth is the raw-`>` alt §C115 recovered.
+    expect(sentinels).toHaveLength(6);
+    // Control: the page really rendered, and every image is present.
+    const imgs = [...html.matchAll(/<img[^>]*>/g)].map((m) => m[0]);
+    expect(imgs).toHaveLength(6);
+    // Every alt translation reaches the page — VALUES, not a count of attributes.
+    expect(sentinels.filter((t) => html.includes(t))).toHaveLength(6);
+    // And specifically the formerly-lost one, on the localized image.
+    const systemqw = imgs.find((t) => t.includes('Systemqw'));
+    expect(systemqw).toMatch(/_IS\.svg/);
+    expect(systemqw).toMatch(/alt="ZQXALT\d+ZQX"/);
+  }, 60_000);
 });
