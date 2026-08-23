@@ -6,18 +6,26 @@
 
 **Read this, then §C36 (Part A · B0 · Part B) — that is the live thread.** §C10/§C11/§C12 are closed or [LEAD]-deferred and are kept as evidence, not as next actions. Everything else in this file predates the 2026-07-26 audit. *(This heading was dated 2026-08-04 and pointed at §C10–§C12 until 2026-08-08, by which time the block's top four bullets were all newer than the heading itself. It then read 2026-08-08 while B3 merged, deployed, ran a clean unattended tick and spawned §C38 underneath it — **the heading has now drifted behind its own contents twice**, so treat the top bullet's date as authoritative and this one as decoration.)*
 
-- **🆕 2026-08-23 (LATEST, evening) — ✅ BOTH PRs MERGED AND DEPLOYED. PHASE 0 IS COMPLETE; PHASE 1.1 IS CLOSED. ▶ NEXT IS PHASE 1.2 — §C88's SCOPE RE-TAKE — THE LAST GATE BEFORE PHASE 3.**
+- **🆕 2026-08-23 (LATEST, evening) — ✅ BOTH PRs MERGED AND DEPLOYED. PHASE 0 IS COMPLETE; PHASES 1.1 AND 1.2 ARE BOTH CLOSED — §C88's SCOPE RULING IS TAKEN. ▶ NEXT IS A NEW PRE-PHASE-3 BUILD: BRING ORGANIC'S 244 IN (§C88 UNIT A).**
   - ✅ **PR #408 → `6e151fa5`** (§C90, §C85 ×3, §C108 organic) and **PR #409 → `3602dea1`** (Phase 0 captures, §C93 ④ descoped, ⑥ closed). Both squash-merged, **all five checks green on each**, and **verified on `main` against the ARTIFACT rather than the merge exit code** — `stripXmlComments` present, `cellParas.length >= 1` present, `keptFigureIds` present, organic ch18 intro = `m00075`.
   - ✅ **DEPLOYED, prod verified read-only:** HEAD `3602dea1`, **0 ahead / 0 behind**, tree clean, fixes on disk, **8 lock markers unchanged** (0.3's ledger holds). 🔴 **THE 0.4 RESURRECTION QUESTION IS SETTLED EMPIRICALLY: `deploy.sh`'s stash→pull→pop did NOT restore the four faithful files.** Still absent on prod, preserved copies intact. Expected now the deletion is committed — a pull REINFORCES 0.4 instead of fighting it.
   - 📌 **17 stale stashes on prod — identified, benign, deliberately NOT cleared.** Newest is `auto-backup: 2026-03-14`; **none from today's deploy**, so the pop worked. Contents are lockfile churn (10× `package-lock.json`, 8× `server/package-lock.json`, 3× `server/data/chemistry-2e.json`) plus one 87-file entry of generated `02-structure/*-manifest.json`. **No editorial content anywhere in the union** — nothing is trapped. A stash is inert unless popped; dropping is irreversible and is the operator's call.
   - 🔴 **A CI TRAP THAT MADE A STACKED PR LOOK GREEN ON ALMOST NOTHING.** Four of the five gating workflows carry `pull_request: branches: [main]`, so **a PR targeting anything but `main` schedules almost no CI** — #409 sat on a single reporting check (`docs-check`, the only one with no branch filter) for its whole stacked life. ⚠️ **Retargeting the base does NOT emit a `synchronize` event**, so the checks never appear on their own: close+reopen, or push. ▶ **Same shape as this file's standing `validate` warning — a check that never reports is indistinguishable from one that passed.**
   - ⚠️ **A SQUASH MERGE STRANDS A STACKED BRANCH — TWICE THIS SESSION, INCLUDING LOCAL `main`.** After #408 squash-merged, #409's branch still carried the 11 original commits (not ancestors of `main`), showing **4 commits / 20 files and `CONFLICTING`**; fixed with `git rebase --onto origin/main <old-tip>`. Local `main` diverged the same way and was reset only after **verifying each local-only commit's CONTENT was present in the squash** — not after assuming it. **Re-verified after the rebase, not assumed:** 47 tests green, 0.2's baseline still loading through the real gate.
   - ⚠️ **`gh pr edit` FAILED SILENTLY TWICE** — a Projects-classic GraphQL deprecation error, while the base and body edits simply did not apply. **Caught only by reading the artifact back.** Use `gh api -X PATCH …/pulls/N` for base and body.
-  - ⏭️ **NEXT: PHASE 1.2 — TAKE §C88's SCOPE RULING. ✅ ITS RE-MEASUREMENT PRECONDITION IS DISCHARGED (2026-08-23): ALL FOUR CARRIED NUMBERS REPRODUCE EXACTLY, SO THE RULING CAN BE TAKEN ON THE NUMBERS AS WRITTEN — DO NOT RE-DERIVE THEM.** Its OUT ruling for organic's **245 `entry-not-in-figure` alts** rested on *"213 of them sit in modules §C80 is not buying"*, and **all 245 are now bought**. ⚠️ **The anchor is design, not spend** — the cost argument is the half that expired. **Phase 1.3 (chemistry `--dry-run`, 0 ISK) is free and can run alongside.** 📋 Cold-start briefing: [`2026-08-23-phase-1-2-c88-scope-retake-handoff.md`](2026-08-23-phase-1-2-c88-scope-retake-handoff.md).
+  - ✅ **PHASE 1.2 IS RULED — [LEAD], 2026-08-23. TWO HALVES: ① THE 244 COME IN, AND THEY LAND *BEFORE* PHASE 3. ② THE REMAINING 1 IS DEFERRED TO A HAND-FIX AFTER THE RUN, RECORDED IN THE NEW ⚒️ POST-RUN MANUAL-FIX LEDGER BELOW — NOT DROPPED.** §C88's OUT ruling for organic's **245 `entry-not-in-figure` alts** rested on *"213 of them sit in modules §C80 is not buying"*; the 2026-08-17 scope-up bought all 342 modules, so the premise was void and the ruling was re-taken on its merits. ⚠️ **The anchor was design, not spend** — the cost argument is the half that expired. **Phase 1.3 (chemistry `--dry-run`, 0 ISK) is still free and can run alongside the build.** 📋 Briefing that framed the call: [`2026-08-23-phase-1-2-c88-scope-retake-handoff.md`](2026-08-23-phase-1-2-c88-scope-retake-handoff.md).
+    - ▶ **WHAT THE RULING MAKES NEXT: §C88 Unit A** — relax `if (!media.id) continue` (`cnxml-extract.js:1557`) and give the 244 a key; teach `applyMediaAltString` the no-`mediaId` case. **It is extraction-side, so it MUST precede Phase 3** — after the run it costs a second re-extract and a second re-key of organic's seg-ids. Sizing, keys, pins and the acceptance shape are measured in the 📐 bullet below; **the `src`-over-position argument there is part of the ruling's rationale, not a footnote.**
+    - 📛 **THE 1 DEFERRED CASE — `m00032`, Branch 1** — a cell holding one `<media>` and one `<para>`, i.e. the exact cell §C85 just fixed, against a fresh pin whose sibling branch destroys non-para content. **Wiring it into the run is not worth that risk; a human edits one alt afterwards.** → **⚒️ Post-run manual-fix ledger, item M1.**
     - ✅ **RE-MEASURED 2026-08-23, five books, DOM-parsed with the detector stated — frozen at [`test-results/c88-scope-retake-remeasurement-2026-08-23.md`](../../test-results/c88-scope-retake-remeasurement-2026-08-23.md)** (+ a cwd-independent probe beside it, re-runnable from any directory). Organic: **guarded 245, all `entry`, across 33 modules**; `reachable 2163 − 245 = emitted 1918`, **exact**. The **213 outside / 32 inside** split reproduces against the bought set derived from `02-mt-output` on disk, and 🔴 **all 32 in-scope alts are in `m00032`** — the module the §C85-drop fix took 36→36. ⚠️ **The five-book table is the control, not the organic row:** Task 10's three signed residuals (chem −1, micro −1, physics **+5**) and physics's `note`×40 + `problem`×1 split all reproduce — **two exact zeros plus three correctly-signed residuals is what a compensating detector error cannot fake**, and organic alone could not have told them apart.
     - 🔴 **SHARPENED BY THAT MEASUREMENT, AND THE DECISION TURNS ON THE SHARPER FORM: organic has ZERO id-bearing `<media>` (0 of 2,163, and 0 of its 340 media-bearing files) BUT 1,911 of 1,911 id-bearing `<figure>`. The book is not id-less — its ids sit on the FIGURE, never on the MEDIA.** *(This bullet read "the `!media.id` guard is structurally inert for the whole book". That is true of the **rescue** and of nothing else — organic's 1,918 figure-keyed alts emit and write back cleanly, pinned at 1918/1918/dropped `[]` by `tools/__tests__/alt-writeback-corpus.test.js`, re-run green 2026-08-23. Read as a statement about organic's alt **pipeline** it inverts the conclusion, which is this register's own most-cited error class.)* ▶ **So the 245 are the subset with neither a media id nor a `<figure>` ancestor — i.e. no key at all**, and bringing them in needs a genuine inject-side key for an id-less bare `<media>` in a table cell, not a pin move. Per §C88 Task 10, option (a) *"remains available as its own future [LEAD] call"* — **still not taken.**
     - ⚠️ **TWO PREDICATE TRAPS THE CARRIED NUMBERS DO NOT MENTION, both measured.** ① **Organic's entry-media count is 245 by direct-parent and 246 by any-depth** — the extra is `m00046`, an id-less `<media>` inside `<figure id="fig-00004">` inside a table cell, correctly excluded from `guarded` and reachable through the figure key. **Both numbers are right; they answer different questions**, and the same split is what reconciles `cnxml-extract.js:1557ff`'s *"37 = 29 chemistry + 8 physics"* (chemistry's 29 sit directly in the cell; physics's 8 are all figure-wrapped, all in `m42368`). ② **Do not conflate the 245 with §C89's 243** (`alt-writeback-corpus.test.js:108`): those were **emitted-then-dropped-at-inject** and have been recovered; the 245 are **never-emitted**. Adjacent magnitudes, different populations, one shared cause.
     - 📛 **THE CONSEQUENCE TO PUT TO THE [LEAD], in these terms:** if the ruling stands, **organic ships 245 English figure-alt attributes across 22 chapters plus `appendices`** — an accessibility fact, not a scope technicality.
+    - 📐 **SIZING, MEASURED 2026-08-23 — DECISION INPUT, NOT A RULING. THE OTHER SIDE OF THE LEDGER IS SMALL: 244 of the 245 need ONE RELAXED GUARD PLUS A KEY, not a new mechanism.** Frozen at [`test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md) (+ its probe). **Measured:** `processTable` branch split **B3 244 · B1 1 · B2 0** — and **B3 already carries the alt emitter**, blocked only by `if (!media.id) continue` (`cnxml-extract.js:1557`); alt lives on the `<media>` itself **245/245** (so §C88 Finding 5's `<image>` blind spot **does not bite**); **0** cells hold more than one alt-bearing media (so `cell.alt`'s single slot suffices); the enclosing `<table>` has an `@id` **245/245** and `src` is unique in-module **245/245** — **two independent keys**; every chain is `entry>row>tbody|thead>tgroup>table`, so **one** write path, no example/note/exercise builder; and the m68863 `tableCellGaps` class **does not occur** — **0 of 822 rows** disagree with the source `<entry>` count (**0 of 454** in the 35 host tables). ▶ **It is an EXTENSION, not an invention:** `collectFigureAlts`/`applyFigureAltDom` already solve id-less media by keying the **figure** id with `mediaId: null` = *"first media"* — added by §C89 for **this same book and cause** (*"243 of organic's 1,918 … are on ID-LESS media"*).
+      - 🔴 **THE GUARD SUPPRESSES TWO FAILURES WHILE DOCUMENTING ONE — so deleting it is not the fix.** Its comments explain only the unresolvable inject key; the site also calls `altElementId(media.id, 0)` with a **hardcoded index 0**, so id-less media in one module would collide on a single `media-0-alt`. **A key is required, and choosing it is the one real design decision.** ⚠️ **`src` over position:** both work today, but a positional key inherits any future indexing drift and **an alt written to the wrong cell is SILENT — no count moves**, which is the §C89 shape this thread exists to prevent. **Do not copy `applyFigureAltDom`'s "first media" for the reason it chose it** — a figure has one media by construction; a table cell does not.
+      - ⚠️ **UNIT B — the 1 in Branch 1 (`m00032`) is a SEPARATE, RISKIER call; price it on its own, do not fold it in.** That cell holds one `<media>` and one `<para>` — **the exact cell §C85 just fixed**, pinned by `table-entry-media-preserved.test.js` — so wiring an emitter into the `cell.paras` branch means touching code whose **sibling branch destroys non-para content**, in the module that most recently had a defect there, against a fresh pin. *(Corroborated independently: `cnxml-extract.js:1509`'s own census says exactly one organic single-`<para>` entry also holds a `<media>`; this probe finds exactly 1.)*
+      - ⏰ **THE EXPENSIVE VARIABLE IS THE WINDOW, NOT THE CODE — same logic that scheduled §C85/§C90 ahead of the run.** The 244 are **extraction-side**: taken before Phase 3 they ride the clean-break re-extract for free; taken after, they need a second re-extract and a second re-key of organic's seg-ids (the TM/export-corpus join key). Marginal MT is 244 short alt strings against a 342-module book, and **Phase 1.3's `--dry-run` measures it exactly**. 📌 **Pins that move:** `alt-writeback-corpus` organic **1918 → 2162**, `cnxml-extract-alt-corpus`, and 🔴 `inject-roundtrip-corpus` — whose third assertion **passes vacuously on empty arrays**, so it must be **re-pointed**, not blanked. `alt-coverage-corpus` pins chemistry only and does **not** move. **Acceptance is a SENTINEL SUBSTITUTION, never a count** (§C89), with the 1,918 that already work asserted alongside as the positive control.
+  - ⚒️ **NEW STANDING SECTION, SAME [LEAD] RULING — the ⚒️ POST-RUN MANUAL-FIX LEDGER (below, before the LEAD operational lane).** Deferring a defect because wiring it into the run costs more than a hand fix is a legitimate call; **losing it is not.** The ledger is the ONE home for such items and the checklist **runbook Phase 4.5** works through after the run. 🔴 **Process rule: add the item in the SAME COMMIT as the deferral decision** — a deferral recorded only in a session, a PR body or a spec is one that gets lost, which is exactly how eight findings evaporated before the 2026-07-26 audit.
+    - ⚠️ **IT IS SEEDED, NOT SWEPT — M1–M3 are one session's confirmed finds, and `3 items` is NOT `3 anomalies exist`.** **M0 is the systematic sweep, it is OPEN, and it must finish BEFORE Phase 3, not after**: once the run lands you can no longer tell *"the re-MT did not fix it"* from *"the re-MT introduced it"* — the same argument that put Phase 0's captures where they are. ▶ **Admission rule is kept-books-only and "say why the run will not fix it"** — §C102 looks like a fit and is **physics-only**, i.e. §C109's, not the ledger's.
 - **🆕 2026-08-23 (earlier) — ✅ THE FIVE PRE-RUN CONTENT DEFECTS ARE FIXED: §C90, §C85 (all three) AND §C108's ORGANIC HALF. ▶ THIS UNBLOCKS RUNBOOK PHASE 0.2, which was held because a fidelity baseline captured over defective output blesses the defect.**
   - 🔴 **AN ORDERING INTERACTION THE RUNBOOK DID NOT STATE, FOUND BY EXECUTING IT WRONG: 0.4 EMPTIES AN INPUT 0.1 READS.** `export-corpus.js` reads `03-faithful-translation/`; 0.4 moves chemistry's four faithful files out of it. Run 0.4 first and the corpus export **succeeds, writes its files, exits 0 and passes 0.1's own gate** — while recording `tiers {mt: 21251, faithful: 0, localized: 0}`. **That zero is an artefact of step order, not a fact about the book**, and it silently drops the only human editorial work in the corpus. ▶ **Corrected the same day: 360 faithful rows recovered, 64 of them `postEdited: true`** — segments a human actually changed. Restored the four files from the deletion commit's parent, re-exported, removed them again; 0.4 stayed in force and the tree was verified clean before and after. ⚠️ **Only possible BEFORE the run** — afterwards the seg-ids are renumbered and the alignment is unreconstructable, which is the entire reason 0.1 exists. ▶ **The gate could not see it, and that is the lesson: 0.1's gate asked "do the files exist and is the directory still ignored?" — both true of an export missing a whole tier.** A count of files cannot see an empty tier inside them. The runbook now carries a VALUE check (`tiers.faithful > 0` for chemistry) and the ordering warning on both steps. → [[engineering-lessons]]
   - ✅ **RUNBOOK PHASE 0.4 IS ALSO DONE** — see §C112 below; the four faithful files are aside on prod with a detector for resurrection.
@@ -2428,6 +2436,91 @@ The pre-semester campaign's **Phase 5** (fold-in) plus a long low-severity tail.
 - **The rest (~120 low findings):** collapsed by design — see the pre-semester campaign register sections and the SDD ledger (`.superpowers/sdd/progress.md`) for the full itemization. Pull one into a PR opportunistically; do not enumerate here.
 
 ---
+
+## ⚒️ Post-run manual-fix ledger — anomalies deliberately NOT wired into the re-MT
+
+**Established 2026-08-23 by [LEAD] ruling, alongside the §C88 Phase 1.2 decision.**
+
+**What this section is for.** Some defects cost more to wire into the §C82 run than a human
+costs to fix by hand afterwards. Deferring one is a legitimate call — **losing it is not.**
+This is the ONE place a deferred-to-manual item is recorded, and it is the checklist runbook
+**Phase 4.5** works through after the run and before either editor resumes.
+
+**Admission rule — an item belongs here when ALL of these hold:**
+1. It is in a **KEPT** book (`efnafraedi-2e`, `lifraen-efnafraedi`). Withdrawn books are §C109's,
+   not this ledger's — **check before adding**: §C102 looks like a fit and is *physics-only*.
+2. **The run will not fix it.** State WHY in the item. An anomaly the re-MT resolves on its own
+   must NOT be listed — a ledger that lists self-healing items teaches people to ignore it.
+3. Wiring it into the run costs materially more than the hand fix — **say what the code fix
+   would have been**, so a later reader can re-take the trade instead of inheriting it blind.
+
+🔴 **THE PROCESS RULE, and it is the point of the section:** when you defer something because
+wiring it in costs more than a hand fix, **add it here in the SAME commit as the decision.**
+A deferral recorded only in a session, a PR body or a spec is a deferral that will be lost — this
+file's own § One source of truth exists because exactly that happened to eight findings.
+
+⚠️ **COMPLETENESS — READ THIS BEFORE TREATING THE LIST AS THE ANSWER. It is SEEDED, NOT SWEPT.**
+M1–M3 are what a single session confirmed while ruling §C88; **no systematic pass over this
+register, the specs or the frozen evidence has been run.** M0 is that pass, and it is open.
+**Do not read "3 items" as "3 anomalies exist."**
+
+- **M0 · ⏰ THE SWEEP ITSELF — OPEN, AND IT MUST FINISH BEFORE PHASE 3, NOT AFTER** — **[CODE]** —
+  *opened 2026-08-23 with this section.*
+  - **Why before the run:** several anomaly classes are only *distinguishable* while the pre-run
+    vintage still exists. After the run you cannot tell "the re-MT did not fix it" from "the
+    re-MT introduced it" — the same argument that put runbook Phase 0's captures where they are.
+  - **Scope to cover:** this register's P0–P3 body entries filtered to the two kept books · the
+    frozen `test-results/` artifacts · `docs/pipeline/cnxml-fidelity-gaps.md` · §C107's **relayed,
+    unverified** backlog of *208 English `alt` texts and 59 stray-English prose runs across all
+    books* (**triage first — that count is not re-derived, and §C107 records two relayed items
+    that did not survive re-measurement**).
+  - ⚠️ **State the sweep's RANGE and PREDICATE when it runs.** A count of items found means
+    nothing without what was searched; and per § One source of truth, use `grep -a` — committed
+    docs in this repo carry NUL bytes that make plain `grep` silently report nothing.
+
+- **M1 · organic `lifraen-efnafraedi` `m00032` — ONE table-cell figure `alt` stays English** —
+  **[EDITOR]** — *deferred 2026-08-23 by the [LEAD] ruling that brought the other 244 in.*
+  - **What:** the single Branch-1 member of §C88's 245 — a table cell holding one `<media>` and
+    one `<para>` (`"(X=F, Cl, Br, I)"`). The other 244 are Branch 3 and are being wired in
+    (§C88 Unit A, pre-Phase-3).
+  - **Why the run will not fix it:** the alt never becomes a segment, so there is nothing for the
+    MT to translate. Re-running the loop changes nothing about this attribute.
+  - **Why deferred rather than coded:** the emitter would have to go into `processTable`'s
+    `cell.paras` branch — whose *sibling* branch destroys non-para content, in the module that
+    most recently had a defect there (§C85), against the fresh pin
+    `tools/__tests__/table-entry-media-preserved.test.js`. **Different risk class from the
+    one-line guard relaxation the 244 need.**
+  - **The hand fix:** after the run, an editor sets the Icelandic `alt` on that one media.
+  - **Verify:** the attribute is non-English in the published `m00032` page; measured, not eyeballed.
+  - → sizing and measurements: [`test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
+
+- **M2 · chemistry `efnafraedi-2e` `ch05/m68727` — ONE alt segment the extractor never emits** —
+  **[EDITOR]** — *pre-existing; long known, entered here 2026-08-23 because it had no post-run home.*
+  - **What:** the module has **6** reachable alt attributes and emits **5**. Pinned as a known
+    shortfall by `tools/__tests__/alt-coverage-corpus.test.js` (`expect(short).toEqual([{ module:
+    'm68727', reachable: 6, emitted: 5 }])`), which is why it is a stable fact and not a rumour.
+  - **Why the run will not fix it:** the cause is a **regex-truncation defect in extraction**, so
+    the sixth alt is absent from `02-for-mt` at any vintage. The MT cannot translate a segment
+    that was never extracted.
+  - **Why deferred rather than coded:** the fix is in the extractor's regex fragility class — real
+    work with corpus-wide blast radius, for one attribute in one module of a kept book.
+  - **The hand fix:** an editor sets that one Icelandic `alt` after the run.
+  - ⚠️ **If the regex class is ever fixed properly, DELETE this item** — leaving it would send a
+    human to re-do work the code now does. Same for M1 and M3.
+
+- **M3 · chemistry `efnafraedi-2e` `ch05` `5-3-vermi.html` — ONE EMPTY `alt` on a localized SVG** —
+  **[EDITOR]** — *confirmed by §C107 (2026-08-19); re-verified on disk 2026-08-23.*
+  - **What:** exactly **one** `alt=""`, on the Icelandic SVG `CNX_Chem_05_03_Systemqw_IS.svg`.
+    **Re-measured with a positive control:** 1 empty against **5** non-empty alts on the same page,
+    so the instrument discriminates rather than reading an empty file.
+  - **Why the run will not fix it:** it is **empty**, not English. There is no source string to
+    translate, and §C88's reachability gate is structurally blind to it — that gate measures
+    whether a translation *reached* the attribute, never whether the attribute has *content*.
+  - **Why deferred rather than coded:** writing alt text for a localized image is an authoring
+    act, not a pipeline one.
+  - ⚠️ **Cause not fully established:** it arrives with the image-localization route, so **confirm
+    whether the empty alt originates in the SVG swap before writing one by hand** — if the swap
+    drops a non-empty alt, that IS a code defect and belongs in P1, not here.
 
 ## LEAD operational lane (parallel — unblock whenever convenient)
 
