@@ -1,14 +1,14 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T20:57:26.097Z",
+  "generated": "2026-08-23T10:00:03.601Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 2039,
-    "approved": 2039,
+    "total": 2021,
+    "approved": 2021,
     "ties": 299,
     "nominalTies": 120,
-    "outOfScopeOnly": 1200,
-    "censusStrings": 118749
+    "outOfScopeOnly": 1187,
+    "censusStrings": 94697
   },
   "terms": [
     {
@@ -234,16 +234,6 @@
       "alternatives": []
     },
     {
-      "english": "Er",
-      "icelandic": "erbín",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 617,
-      "alternatives": []
-    },
-    {
       "english": "Erlenmeyer flask",
       "icelandic": "keiluflaska",
       "status": "approved",
@@ -456,16 +446,6 @@
       "alternatives": []
     },
     {
-      "english": "Pal",
-      "icelandic": "paleósen",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47711,
-      "alternatives": []
-    },
-    {
       "english": "Pb",
       "icelandic": "blý",
       "status": "approved",
@@ -483,16 +463,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 2706,
-      "alternatives": []
-    },
-    {
-      "english": "Pr",
-      "icelandic": "praseódým",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2712,
       "alternatives": []
     },
     {
@@ -1261,18 +1231,6 @@
       "position": 2,
       "conceptId": 2215,
       "alternatives": []
-    },
-    {
-      "english": "ala",
-      "icelandic": "vængur",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47494,
-      "alternatives": [
-        "barð"
-      ]
     },
     {
       "english": "alanine",
@@ -2823,18 +2781,6 @@
       "position": 3,
       "conceptId": 48108,
       "alternatives": []
-    },
-    {
-      "english": "bid",
-      "icelandic": "tvisvar á sólarhring",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 57222,
-      "alternatives": [
-        "bis in die"
-      ]
     },
     {
       "english": "bidentate",
@@ -8304,18 +8250,6 @@
       ]
     },
     {
-      "english": "fen",
-      "icelandic": "mýri",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47702,
-      "alternatives": [
-        "aðrennslismýri (með störum)"
-      ]
-    },
-    {
       "english": "fermentation",
       "icelandic": "gerjun",
       "status": "approved",
@@ -8391,16 +8325,6 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5061,
-      "alternatives": []
-    },
-    {
-      "english": "fin",
-      "icelandic": "uggi",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 51784,
       "alternatives": []
     },
     {
@@ -11390,18 +11314,6 @@
       ]
     },
     {
-      "english": "lag",
-      "icelandic": "töf",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4114,
-      "alternatives": [
-        "tímamunur"
-      ]
-    },
-    {
       "english": "language",
       "icelandic": "tölvumál",
       "status": "approved",
@@ -11846,16 +11758,6 @@
       "alternatives": []
     },
     {
-      "english": "lm",
-      "icelandic": "lúmen",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2252,
-      "alternatives": []
-    },
-    {
       "english": "ln",
       "icelandic": "náttúrlegur logri",
       "status": "approved",
@@ -12180,26 +12082,6 @@
         "aðal-",
         "stærri"
       ]
-    },
-    {
-      "english": "mal",
-      "icelandic": "sjúkdómur",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 54077,
-      "alternatives": []
-    },
-    {
-      "english": "mala",
-      "icelandic": "vangi",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 54161,
-      "alternatives": []
     },
     {
       "english": "malleable",
@@ -15275,18 +15157,6 @@
       ]
     },
     {
-      "english": "plat",
-      "icelandic": "flatur",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 49085,
-      "alternatives": [
-        "breiður"
-      ]
-    },
-    {
       "english": "plate",
       "icelandic": "fleki",
       "status": "approved",
@@ -15704,19 +15574,6 @@
       "position": 3,
       "conceptId": 53984,
       "alternatives": []
-    },
-    {
-      "english": "pr",
-      "icelandic": "áður",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47630,
-      "alternatives": [
-        "for-",
-        "fyrr"
-      ]
     },
     {
       "english": "praseodymium",
@@ -18077,16 +17934,6 @@
       ]
     },
     {
-      "english": "sex",
-      "icelandic": "kyn",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 53428,
-      "alternatives": []
-    },
-    {
       "english": "shell",
       "icelandic": "hvolf",
       "status": "approved",
@@ -19622,16 +19469,6 @@
       "alternatives": []
     },
     {
-      "english": "sundrun",
-      "icelandic": "disintegration",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 56562,
-      "alternatives": []
-    },
-    {
       "english": "superconducting",
       "icelandic": "ofurleiðandi",
       "status": "approved",
@@ -20111,16 +19948,6 @@
       ]
     },
     {
-      "english": "tg",
-      "icelandic": "tangens",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 3936,
-      "alternatives": []
-    },
-    {
       "english": "theorem",
       "icelandic": "setning",
       "status": "approved",
@@ -20356,16 +20183,6 @@
       "alternatives": [
         "skjaldvaki"
       ]
-    },
-    {
-      "english": "tilt",
-      "icelandic": "halli",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 1133,
-      "alternatives": []
     },
     {
       "english": "time",
@@ -21744,18 +21561,6 @@
       "position": 3,
       "conceptId": 56401,
       "alternatives": []
-    },
-    {
-      "english": "wolfram",
-      "icelandic": "wolfram",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4424,
-      "alternatives": [
-        "þungsteinn"
-      ]
     },
     {
       "english": "wood",
