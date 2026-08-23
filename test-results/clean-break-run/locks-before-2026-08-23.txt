@@ -1,0 +1,51 @@
+# Phase 0.3 — MT lock markers BEFORE the clean-break re-MT
+
+**Captured:** 2026-08-23 · **Runbook:** docs/plans/2026-08-23-clean-break-re-mt-runbook.md §0.3
+**Register item:** §C111
+
+⚠️ **This is the diff target for Phase 4.4.** After the run, restore the locks and verify with
+`find books -name '*-segments.locked' | sort` **diffed against the LOCKS list below** — never by
+the restoring command's exit code, which is 0 whether it restored 7 or 4.
+
+## LOCKS (8) — dev and PROD lists compared and byte-identical; all 8 tracked in git
+books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.locked
+books/efnafraedi-2e/02-mt-output/ch01/m68664-segments.locked
+books/efnafraedi-2e/02-mt-output/ch01/m68667-segments.locked
+books/efnafraedi-2e/02-mt-output/ch01/m68674-segments.locked
+books/efnafraedi-2e/02-mt-output/ch03/m68699-segments.locked
+books/efnafraedi-2e/02-mt-output/ch03/m68700-segments.locked
+books/efnafraedi-2e/02-mt-output/ch05/chapter-metadata-segments.locked
+books/liffraedi-2e/02-mt-output/ch03/m66443-segments.locked
+
+## Why "7 chemistry" is not "7 modules"
+ch01 x4 (m68663, m68664, m68667, m68674) · ch03 x2 (m68699, m68700) ·
+ch05/chapter-metadata x1 — **not a module id**, so it will not appear in any module-keyed
+sweep. Biology's m66443 is OUT OF SCOPE and STAYS LOCKED.
+
+## What a `--db` restore can reach — MEASURED ON PROD, read-only, 2026-08-23
+§C111 asked this question and left it open: "ch05/chapter-metadata is reachable only if
+segment_edits holds a row with that literal module_id — check on prod; if not, write it by
+hand." **It does. Answered: no hand-writing needed.**
+
+    book             module_id          edits
+    efnafraedi-2e    chapter-metadata   1     <- the one in doubt
+    efnafraedi-2e    m68663             2
+    efnafraedi-2e    m68664             45
+    efnafraedi-2e    m68667             4
+    efnafraedi-2e    m68674             1
+    efnafraedi-2e    m68699             2
+    efnafraedi-2e    m68700             96
+    liffraedi-2e     m66443             12
+
+**8 modules with edit rows, 8 lock files, 1:1.** So `node scripts/backfill-mt-locks.js --db`
+ON PROD can reach the whole set.
+
+⚠️ **The two traps §C111 records still apply and are NOT discharged by the above:**
+ 1. A BARE run (no `--db`) restores only the modules with a faithful file. Those four faithful
+    files were moved aside in Phase 0.4 and their deletion is now committed (`c5f4880e`), so a
+    bare run today would restore even fewer than the 4 that entry predicted.
+ 2. A `--db` run on a DEV box is indistinguishable from the right one — the guard fires only on
+    an ABSENT database, and dev has one. **Prove which box you are on before running.**
+
+## Gate
+    find books -name '*-segments.locked' | sort   ==   the LOCKS list above (8 lines)

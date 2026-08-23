@@ -1,0 +1,24 @@
+{
+  "_note": "Render-stage shape baseline. Capture ONLY from a clean render — a baseline taken from output containing a render bug blesses the bug. Regenerate after intentional render changes.\n\n⚠️ THIS BASELINE IS KNOWINGLY ONE IMAGE SHORT, AND THAT IS RECORDED RATHER THAN HIDDEN. Captured 2026-08-23 for runbook Phase 0.3/0.2 (§C114 ③) from the 13 pages organic has rendered TODAY. Those pages predate the §C85-drop fix: books/lifraen-efnafraedi ch03/m00032 had a <media> inside a table <entry> destroyed at inject, and the published HTML carries 0 occurrences of OChem_03_01_003c.jpg (verified in both pages that reference the module). The fix is in tools/cnxml-extract.js processTable and is EXTRACT-SIDE, so the render cannot be corrected without a re-extract — which re-keys that module's segment ids and splits the vintage against 02-mt-output. That re-extract IS the clean-break run.\n\n▶ CONSEQUENCE FOR WHOEVER COMPARES AGAINST THIS: after the run, ch3's `img` bucket is EXPECTED to rise by at least one for m00032. That is the FIX LANDING, not drift. Do not 'correct' it by regenerating this baseline without reading this note first.\n\n▶ SCOPE, stated with the number: ch3 ONLY, 13 html files. Organic has 342 source modules, so this is a comparison point for ~4% of the book and coverage of nothing. Chemistry's baseline holds 13 chapters and is the shape this one should eventually match.",
+  "track": "mt-preview",
+  "chapters": {
+    "3": {
+      "figure": 49,
+      "img": 197,
+      "table": 5,
+      "ul": 2,
+      "ol": 0,
+      "li": 47,
+      "em": 93,
+      "strong": 283,
+      "aside.example": 4,
+      "aside.note": 0,
+      "div.eoc-exercise": 73,
+      "div.equation": 1,
+      "mjx-container": 14,
+      "span.math-inline": 13,
+      "span.mathjax-display": 1,
+      "a[href]": 62
+    }
+  }
+}
