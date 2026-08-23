@@ -170,6 +170,25 @@ let lastInlineAttrs = null;
 let lastInlineMediaPlaceholders = [];
 
 /**
+ * Remove XML comments from a CNXML fragment.
+ *
+ * §C90 — commented-out markup is still visible to a raw regex, so any regex that
+ * answers a STRUCTURAL question ("which image does this figure use?") must run
+ * over masked text. OpenStax leaves dead `<image>` elements commented in place
+ * beside their replacements, and reading one produced a published page carrying
+ * the wrong photograph while every count stayed equal.
+ *
+ * ⚠️ Use this ONLY on `01-source` fragments. Pipeline output carries
+ * `<!-- SEG:… -->` markers, which this would strip.
+ *
+ * @param {string} xml - raw CNXML fragment
+ * @returns {string} the fragment with comment spans removed
+ */
+function stripXmlComments(xml) {
+  return String(xml || '').replace(/<!--[\s\S]*?-->/g, '');
+}
+
+/**
  * Extract inline text from element content, handling nested elements.
  * Replaces MathML with [[MATH:n]] placeholders.
  * Replaces inline media with [[MEDIA:n]] placeholders.
@@ -1395,7 +1414,30 @@ function processFigure(figure, moduleId, addSegment, mathMap, counters) {
   }
 
   // Extract media info
-  const mediaMatch = figure.content.match(/<media[^>]*>([\s\S]*?)<\/media>/);
+  //
+  // §C90 — MASK XML COMMENTS FIRST. `figure.content` is raw source text, so a
+  // commented-out element is still visible to a regex. `lifraen-efnafraedi`
+  // ch28/m00309 opens its <media> with a dead <image>:
+  //     <media alt="…">
+  //     <!--<image … src="…/OChem_28_00_Retrievers.jpg"/>-->
+  //     <image … src="…/OSX_OrgChem_28_00_Afghans.jpg"/>
+  // so `/<image[^>]*>/` matched the DEAD one and the published page carried a
+  // different photograph than the book specifies.
+  //
+  // 🔴 It was invisible to every count-based check: 1 media in / 1 media out,
+  // 1 image in / 1 image out. A count cannot see a SUBSTITUTION, only a change
+  // in quantity (§C89). Pinned by a VALUE assertion in
+  // tools/__tests__/figure-image-comment-masking.test.js, whose control is the
+  // mirror module ch16/m00198 — same ingredients, comment AFTER the live image,
+  // i.e. correct only by luck of ordering and required to stay unchanged.
+  //
+  // Masking rather than offset-preserving blanking is safe here because the
+  // masked text is used only to FIND the live elements and parse their
+  // attributes; no source offsets are derived from it. `01-source` CNXML carries
+  // no `<!-- SEG: -->` markers (those are an output artefact), so nothing
+  // load-bearing is stripped.
+  const figureContentLive = stripXmlComments(figure.content);
+  const mediaMatch = figureContentLive.match(/<media[^>]*>([\s\S]*?)<\/media>/);
   if (mediaMatch) {
     const mediaAttrs = parseAttributes(mediaMatch[0].match(/<media([^>]*)>/)[1]);
     const imageMatch = mediaMatch[1].match(/<image[^>]*>/);
