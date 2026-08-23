@@ -23,13 +23,13 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 | | |
 |---|---|
-| Branch | `feat/c82-plan-b-check-battery`, pushed, open as **[PR #411](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/411)** — **plans + the Phase 2.1 lock clearing, no executable code** |
-| `main` | at `a9f1e457` (§C88 Unit A + §C115), **deployed** |
+| `main` | at **`2166551b`** — PR #411 merged **and deployed**. Both plans, the handoff and the Phase 2.1 lock clearing are all on `main` and on production. |
+| Branch | none — **cut a fresh branch from `main`** for Plan B's code |
 | Runbook | Phases 0, 1.1, 1.2, **2.1**, **2.2** complete. **3.1 is Plans B + C — this work.** |
-| Locks | 7 chemistry markers cleared on the branch; **1 remains on disk** (biology's `m66443`, withdrawn, deliberate) |
+| Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |
 
-▶ **Start by deciding where Plan B's code goes.** #411 is docs-only; the implementation wants its own branch off `main` **after #411 merges**, so the plan travels with the code that implements it.
+▶ **Start by cutting a branch from `main`.** #411 is merged and deployed, so `main` already carries both plans and this briefing.
 
 ## Five things measured in the planning session that a cold reader will otherwise re-derive
 
@@ -64,4 +64,4 @@ Not "everything green". The base-rate sweep (Task 13) must show:
 
 **Plan C** (driver + ledger + fingerprint), then runbook **Phase 3** — the run itself. ⏰ **Two things come due later and are easy to drop:**
 - **§C111** — re-apply the MT locks, triggered by the END of the run. `backfill-mt-locks.js --db` **on PROD**, verified by count against `test-results/clean-break-run/locks-before-2026-08-23.txt`, never by exit code.
-- **The lock-clearing commit must reach prod** — merging #411 puts it on `main`; prod pulls on the next deploy.
+- ~~The lock-clearing commit must reach prod~~ — ✅ **done 2026-08-24**, verified on `origin/main`.
