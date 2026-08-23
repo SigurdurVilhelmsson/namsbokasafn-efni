@@ -79,7 +79,25 @@ function readSourceManifest(sourceDir) {
  */
 function readLocalOrigin(sourceDir) {
   const manifest = readSourceManifest(sourceDir);
-  if (!manifest || manifest.version < 2 || !Array.isArray(manifest.localOrigin)) return [];
+  if (!manifest) return [];
+  // §C93 ⑥ⓑ — a `localOrigin` declared in a v1 manifest is a CONTRADICTION, and
+  // returning [] for it is a fail-OPEN in the module whose whole thesis is
+  // fail-closed. The carve-out exempts named files from the hash comparison, so
+  // silently ignoring a declared one means the author believes files are exempt
+  // while the verifier believes they are not — and nobody is told. Zero reach
+  // today (nothing mints v2), which is exactly when it is cheap to close.
+  if (manifest.version < 2) {
+    if (Array.isArray(manifest.localOrigin)) {
+      throw new Error(
+        `${MANIFEST_NAME} declares a localOrigin carve-out but is version ${manifest.version}; ` +
+          `localOrigin is a v2 feature and is IGNORED below v2. Refusing rather than silently ` +
+          `dropping an exemption its author expects to be honoured. Mint a v2 manifest, or ` +
+          `remove the localOrigin key.`
+      );
+    }
+    return [];
+  }
+  if (!Array.isArray(manifest.localOrigin)) return [];
   return manifest.localOrigin;
 }
 

@@ -71,11 +71,25 @@ first "Vista + Birta", not at first sight.
 
 ## Phase 1 — Decisions that must be closed before any spend
 
-### 1.1 ⚠️ §C92 — organic's `01-source` refresh: rule it, or explicitly skip it
-Blocked by **§C93 ④** (the append-only supersede write is unbuilt; a refresh today turns root
-`npm test` red with no supported way back). **Order is fixed:** build §C93 ④ **or** descope it in
-the register → obtain the **three-step written consent** (unconditional, per CLAUDE.md) → refresh
-**CNXML *and* `media/`** → extract.
+### 1.1 ✅ §C92 — organic's `01-source` refresh: RULED, AND THE ANSWER IS NO. CLOSED 2026-08-23.
+**[LEAD] descoped both the refresh and §C93 ④.** This step requires nothing further; do not
+re-derive it. The register's §C93 ④ owns the reasoning and the still-valid build estimate.
+
+**Ruled on a measurement, not on cost.** Read-only compare of `2a1f8284…main` on
+`openstax/osbooks-organic-chemistry`: **8 commits, 15 files, +42/−14 across 12 of 342 modules
+(3.5%)**, plus 2 media and 1 collection.xml — a preface tidy, a typo, table-header fixes, a
+spelling fix and three errata. Nothing structural; upstream last pushed 2026-07-01. Replacing 342
+files for that, before a re-MT that re-translates everything, is a poor trade.
+
+🔴 **The commit named "updating md license" is NOT a relicensing** — checked, not assumed.
+`278405a6` leaves the URL byte-identical (`…/by-nc-sa/4.0/`) and only adds human-readable text
+inside the element. Organic was and remains `CC BY-NC-SA 4.0`. **No window is closing here.**
+
+📌 **If the three errata are wanted:** an editor applies them by hand to the 12 named modules
+after the run. No refresh, no ④, no consent ceremony.
+⚠️ **If a refresh is ever wanted later, §C93 ④ must be built FIRST** — a refresh today leaves the
+manifest stale, flips `verifySourceManifest` to `{ok:false}`, and turns root `npm test` red with
+no supported way back.
 
 ### 1.2 ⚠️ §C88 — re-take its scope ruling
 Its OUT ruling for organic's 245 `entry-not-in-figure` alts rests on *"213 of them sit in modules

@@ -180,7 +180,10 @@ rm -rf /tmp/restore-test
    directory and compare first — you want to know *what* differs before you replace anything.
 2. Compare against the repo's own hash record, which covers CNXML:
    ```bash
-   node tools/verify-source-manifest.js        # checks 01-source CNXML against .source-manifest.json
+   node tools/verify-source-manifest.js --all  # checks 01-source CNXML against .source-manifest.json
+   # ⚠️ --all (or --book SLUG) is REQUIRED. The flagless form prints usage and exits 1,
+   #    verifying NOTHING — and if you pipe it, the pipe masks the exit code and it reads
+   #    as success. §C93 ⑥ⓐ; this guide prescribed the flagless form until 2026-08-23.
    ```
 3. Only then copy the files you actually need back.
 

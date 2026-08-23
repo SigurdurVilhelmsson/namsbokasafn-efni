@@ -14,20 +14,40 @@ import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { verifySourceManifest, listCnxmlFiles } = require('./lib/source-manifest.cjs');
+const {
+  verifySourceManifest,
+  listCnxmlFiles,
+  MANIFEST_NAME,
+} = require('./lib/source-manifest.cjs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, '..');
 const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 
-function populatedBooks() {
-  if (!fs.existsSync(BOOKS_DIR)) return [];
+export function populatedBooks(booksDir = BOOKS_DIR) {
+  if (!fs.existsSync(booksDir)) return [];
   return fs
-    .readdirSync(BOOKS_DIR, { withFileTypes: true })
+    .readdirSync(booksDir, { withFileTypes: true })
     .filter((d) => d.isDirectory())
     .map((d) => d.name)
-    .filter((slug) => listCnxmlFiles(path.join(BOOKS_DIR, slug, '01-source')).length > 0);
+    .filter((slug) => {
+      // §C93 ⑥ⓐ — the books to verify are the UNION of "has CNXML" and "has a
+      // manifest", not CNXML alone. A CNXML-only enumeration silently SKIPS a book
+      // whose 01-source CNXML was emptied while its manifest is still there
+      // expecting those files — i.e. exactly the state the manifest exists to
+      // detect, verified by nobody. `--all` then exits 0 having checked one book
+      // fewer than it should.
+      //
+      // This mirrors guardedBooks() in tools/__tests__/source-manifest-baseline.test.js,
+      // which was fixed for finding ② while this CLI was left behind. Two
+      // enumerations of "the books to guard" must not disagree; if this predicate
+      // changes, change that one too.
+      const sourceDir = path.join(booksDir, slug, '01-source');
+      return (
+        listCnxmlFiles(sourceDir).length > 0 || fs.existsSync(path.join(sourceDir, MANIFEST_NAME))
+      );
+    });
 }
 
 function main() {
