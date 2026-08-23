@@ -2902,6 +2902,47 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
         }
       );
 
+      // §C85-A — a <figure> KEPT inside this table must be given its translated
+      // alt AND marked handled. This is the §C89 container×figure matrix with the
+      // `table` cell filled in; buildExampleDom/buildNoteDom already fill theirs.
+      //
+      // 🔴 REGISTERING ALONE IS A REGRESSION, NOT A FIX. Marking the figure
+      // handled suppresses the STANDALONE copy — which is the one carrying the
+      // TRANSLATED alt — and leaves the kept in-table copy holding the source
+      // ENGLISH. The media count then reads a clean 4 -> 4 while the content gets
+      // WORSE. Measured across all four arms: off -> 5 media (English+sentinel),
+      // register-only -> 4 (English), string-apply -> 4 (English),
+      // register + DOM-apply -> 4 (SENTINEL). Only the last is correct, and only a
+      // VALUE assertion distinguishes them — see
+      // tools/__tests__/table-kept-figure-alt.test.js.
+      //
+      // ⚠️ The §C89 idiom does not transfer verbatim: buildExampleDom is DOM-based
+      // and this builder is string-based, so there is no string twin of
+      // applyFigureAltDom. Hence the parse → apply → serialize below, which is
+      // entered ONLY when this table actually contains a figure, so tables without
+      // one are not re-serialized and cannot churn.
+      //
+      // ⚠️ Deliberately inside buildTable rather than at a call site: buildTable is
+      // also reached from translateKeptContainerTables.
+      const keptFigureIds = [...tableCnxml.matchAll(/<figure\b[^>]*?\bid="([^"]+)"/g)].map(
+        (m) => m[1]
+      );
+      if (keptFigureIds.length > 0) {
+        if (ctx && ctx.figureAlts) {
+          const { root } = parseCnxmlFragment(tableCnxml);
+          const tableEl = root.getElementsByTagName('table')[0];
+          if (tableEl) {
+            for (const fig of Array.from(tableEl.getElementsByTagName('figure'))) {
+              applyFigureAltDom(fig, ctx);
+            }
+            tableCnxml = serializeCnxmlFragment(tableEl);
+          }
+        }
+        if (ctx && ctx.figuresHandledInContainers) {
+          for (const figId of keptFigureIds) ctx.figuresHandledInContainers.add(figId);
+        }
+      }
+
       return tableCnxml;
     }
   }
