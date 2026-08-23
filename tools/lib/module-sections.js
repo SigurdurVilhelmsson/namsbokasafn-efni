@@ -187,7 +187,6 @@ function parseSegments(content) {
 export function buildModuleSections(book, chapter) {
   const chapterDir = formatChapterDir(chapter);
   const structDir = path.join(REPO_ROOT, 'books', book, '02-structure', chapterDir);
-  const segDir = path.join(REPO_ROOT, 'books', book, '02-for-mt', chapterDir);
 
   // 1. Read all structure files, sorted by sectionOrder when present, falling back to alphabetical
   const structFileNames = fs.readdirSync(structDir).filter((f) => f.endsWith('-structure.json'));
@@ -205,11 +204,19 @@ export function buildModuleSections(book, chapter) {
     ? sortByAuthoritativeOrder(structEntries, authIds, { book, chapter })
     : [...structEntries].sort(legacyStructComparator);
 
-  // 2. Read all segment files for Icelandic titles
-  // Try both 02-for-mt (old chapters) and 03-faithful-translation (new chapters)
+  // 2. Read all segment files for Icelandic titles.
+  // Reviewed translations outrank raw machine translation; the resulting title
+  // becomes the reader slug, so this order is reader-visible.
+  //
+  // §C113 (2026-08-22): `02-for-mt` USED TO LEAD THIS LIST and no longer appears
+  // in it. That directory is GENERATED and its contract is the English extraction
+  // (`*-segments.en.md`); 30 committed `*-segments.is.md` had survived there since
+  // the 2026-03 book rename, and while they did they outranked BOTH sources below
+  // for chemistry ch01-ch05 — freezing those sections' titles, and therefore their
+  // URLs, against a stale copy that re-extraction could never clear. Do not
+  // re-add it: a translation belongs in one of the two directories below.
   const segments = new Map();
   const segDirs = [
-    segDir, // 02-for-mt (chapters 1-5)
     path.join(REPO_ROOT, 'books', book, '03-faithful-translation', chapterDir),
     path.join(REPO_ROOT, 'books', book, '02-mt-output', chapterDir),
   ];
@@ -222,7 +229,7 @@ export function buildModuleSections(book, chapter) {
       const content = fs.readFileSync(path.join(dir, sf), 'utf-8');
       const parsed = parseSegments(content);
       for (const [k, v] of parsed) {
-        // Only set if not already found (02-for-mt takes precedence)
+        // First hit wins, so 03-faithful-translation takes precedence over 02-mt-output
         if (!segments.has(k)) {
           segments.set(k, v);
         }
