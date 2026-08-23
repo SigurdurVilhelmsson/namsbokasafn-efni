@@ -108,7 +108,7 @@ describe('alt survives the round trip', () => {
     // the whole <media> element moves, image and all, so a reader sees a MISSING or
     // DOUBLED image. Measured 2026-08-16 and logged to the active register.
     //
-    //   m00032  36 media/image/alt -> 35   image DROPPED   (IN §C80 scope: organic preview)
+    //   m00032  36 media/image/alt -> 36   ✅ RESOLVED BY §C85-drop, 2026-08-23 (was -> 35, DROPPED)
     //   m00046   4 media/image/alt ->  5   image DUPLICATED
     //   m00023  11 alt -> 11   ✅ RESOLVED BY §C85-B, 2026-08-23 (was 11 -> 12, duplicated)
     //   m00069   6 alt ->  6   ✅ RESOLVED BY §C89, 2026-08-16 (was 6 -> 9, tripled)
@@ -138,7 +138,13 @@ describe('alt survives the round trip', () => {
     // m00046 (gain).
     const r = sweep('lifraen-efnafraedi');
     expect(r.files).toBe(342);
-    expect(r.loss.map((x) => x.module)).toEqual(['m00032']);
+    // ✅ §C85-drop FIXED m00032, 2026-08-23 — processTable now routes a cell on
+    // `cellParas.length >= 1`, so a single-para entry takes buildTable's
+    // PRESERVING branch (replace each <para> body in place) instead of the one
+    // that replaces the whole entry body with a flat string and destroys a
+    // sibling <media>. Direction read before updating: loss went ['m00032'] -> [].
+    // ONE defect now remains pinned here: m00046 (gain).
+    expect(r.loss.map((x) => x.module)).toEqual([]);
     expect(r.gain.map((x) => x.module).sort()).toEqual(['m00046']);
     // `loss`/`gain` are derived from rawAlt/outAlt directly and never read `ok`, so
     // assert it here too — this is the only `ok === false` pinned on a REAL corpus

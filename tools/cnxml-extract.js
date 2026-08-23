@@ -1486,10 +1486,31 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
     const expandedRow = row.content.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
     const entries = extractElements(expandedRow, 'entry');
     for (const entry of entries) {
-      // Check for multi-para cells (entries containing multiple <para> elements)
+      // Check for para-bearing cells (entries containing one or more <para> elements)
       const cellParas = extractElements(entry.content, 'para');
-      if (cellParas.length > 1) {
-        // Multi-para cell: extract each para as a separate segment
+      // §C85 — `>= 1`, NOT `> 1`. The two inject-side branches are not equivalent
+      // in what they PRESERVE, so this predicate decides whether a cell's
+      // non-para content survives:
+      //
+      //   cell.paras     -> buildTable starts from the ORIGINAL entry content and
+      //                     replaces each <para id=…> body in place, so a sibling
+      //                     <media> survives verbatim.
+      //   cell.segmentId -> buildTable returns `<entry attrs>${cellText}</entry>`,
+      //                     replacing the WHOLE body with one flat string. A
+      //                     sibling <media> is destroyed, <para> wrapper included.
+      //
+      // ch03/m00032 has an entry holding one <media> and ONE <para>. One para is
+      // not `> 1`, so it took the destroying branch and the image vanished
+      // (36 media -> 35). §C88's rescue below could not catch it: that fires only
+      // when extractInlineText returns EMPTY, and this cell's para text is
+      // non-empty — so the entry looked handled while its image was discarded.
+      //
+      // Blast radius, measured rather than assumed: entries holding exactly one
+      // <para> are 2 in lifraen-efnafraedi and 1 in efnafraedi-2e (against 2,724
+      // and 5,852 holding none), and exactly ONE of those also holds a <media>.
+      // Pinned by tools/__tests__/table-entry-media-preserved.test.js.
+      if (cellParas.length >= 1) {
+        // Para-bearing cell: extract each para as a separate segment
         const parasArray = [];
         for (const para of cellParas) {
           const text = extractInlineText(para.content, mathMap, counters);
