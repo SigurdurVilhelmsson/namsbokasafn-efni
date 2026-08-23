@@ -103,14 +103,14 @@ describe('alt survives the round trip', () => {
     expect(at('edlisfraedi-2e', 'm42296')).toMatchObject({ rawAlt: 24, outAlt: 23, ok: false });
   }, 120_000);
 
-  it('organic: pins the four known round-trip defects so any change is visible', () => {
+  it('organic: 342 modules, no alt lost and none gained', () => {
     // 🔴 These are REAL, reader-visible defects found by this check, not test noise:
     // the whole <media> element moves, image and all, so a reader sees a MISSING or
     // DOUBLED image. Measured 2026-08-16 and logged to the active register.
     //
-    //   m00032  36 media/image/alt -> 35   image DROPPED   (IN §C80 scope: organic preview)
-    //   m00046   4 media/image/alt ->  5   image DUPLICATED
-    //   m00023  11 alt -> 12               duplicated
+    //   m00032  36 media/image/alt -> 36   ✅ RESOLVED BY §C85-drop, 2026-08-23 (was -> 35, DROPPED)
+    //   m00046   4 media/image/alt ->  4   ✅ RESOLVED BY §C85-A, 2026-08-23 (was ->  5, DUPLICATED)
+    //   m00023  11 alt -> 11   ✅ RESOLVED BY §C85-B, 2026-08-23 (was 11 -> 12, duplicated)
     //   m00069   6 alt ->  6   ✅ RESOLVED BY §C89, 2026-08-16 (was 6 -> 9, tripled)
     //
     // ✅ §C89 FIXED m00069 AS A SIDE EFFECT, and this pin is what noticed. §C89 made
@@ -118,7 +118,12 @@ describe('alt survives the round trip', () => {
     // which also marks those figures handled — so a figure that had been emitted
     // BOTH standalone and inside its container is now emitted once. Re-measured on
     // merged main: m00069 is 6/6/6 -> 6/6/6, media and image counts included.
-    // The other three are UNCHANGED and remain open under §C85.
+    // ⚠️ THAT SENTENCE USED TO READ "The other three are UNCHANGED and remain open
+    // under §C85" and is no longer true — all three were fixed on 2026-08-23. Left
+    // corrected rather than deleted because a whole-branch review found it: this
+    // branch updated two lines of the table above and missed these, so the block
+    // simultaneously said RESOLVED and "remain open". A comment updated in PART is
+    // worse than one not updated at all — it reads as current.
     //
     // ⚠️ THE PIN GOING RED IS THE POINT — it is a defect CHARACTERISATION, so an
     // improvement trips it exactly as a regression would. Read the direction before
@@ -129,13 +134,43 @@ describe('alt survives the round trip', () => {
     // gained". That asks "did my change alter the count?", not "does the output carry
     // what the source had" — a vintage-diff is structurally blind to a defect present
     // at both vintages.
+    // ✅ ALL FOUR ORGANIC DEFECTS ARE NOW FIXED (2026-08-23). This case has
+    // therefore CHANGED CHARACTER: it was a defect CHARACTERISATION pin, and it is
+    // now a CLEAN pin, the same shape as chemistry's above.
+    //
+    //   m00069  §C89       (was 6 -> 9, tripled)
+    //   m00023  §C85-B     (was 11 -> 12, inline media treated as a block child)
+    //   m00032  §C85-drop  (was 36 -> 35, media destroyed by the flat-entry branch)
+    //   m00046  §C85-A     (was 4 -> 5, table-kept figure also emitted standalone)
+    //
+    // Each direction was read BEFORE the pin was updated, never after: loss went
+    // ['m00032'] -> [] and gain went ['m00023','m00046'] -> [], i.e. toward the
+    // source in both cases.
     const r = sweep('lifraen-efnafraedi');
     expect(r.files).toBe(342);
-    expect(r.loss.map((x) => x.module)).toEqual(['m00032']);
-    expect(r.gain.map((x) => x.module).sort()).toEqual(['m00023', 'm00046']);
-    // `loss`/`gain` are derived from rawAlt/outAlt directly and never read `ok`, so
-    // assert it here too — this is the only `ok === false` pinned on a REAL corpus
-    // defect rather than a synthetic or a comment artefact.
-    expect([...r.loss, ...r.gain].every((x) => x.ok === false)).toBe(true);
+    expect(r.loss).toEqual([]);
+    expect(r.gain).toEqual([]);
+
+    // 🔴 THE `ok === false` ASSERTION THAT USED TO LIVE HERE IS REMOVED
+    // DELIBERATELY, NOT BLANKED — which is what its own guard demanded.
+    // It read `[...r.loss, ...r.gain].every((x) => x.ok === false)`, and
+    // `[].every()` is TRUE, so with both arrays now empty it would have passed
+    // VACUOUSLY: green, meaningless, and impossible to notice. A guard added with
+    // §C85-B made that state go red instead, which is why this is being handled
+    // rather than silently inherited.
+    //
+    // WHERE THAT COVERAGE LIVES NOW, so it is not simply lost:
+    //   - `ok === false` is still pinned on a real measurement by the m42296
+    //     behaviour pin in the case above, which catches a mutation hardcoding
+    //     `ok: true`.
+    //   - The four defects themselves are now covered by DEDICATED tests that
+    //     assert VALUES rather than counts — which is strictly stronger than this
+    //     pin ever was, since a count cannot see a substitution:
+    //       tools/__tests__/figure-image-comment-masking.test.js   (§C90)
+    //       tools/__tests__/inline-media-not-block.test.js          (§C85-B)
+    //       tools/__tests__/table-entry-media-preserved.test.js     (§C85-drop)
+    //       tools/__tests__/table-kept-figure-alt.test.js           (§C85-A)
+    // ⚠️ This case is now a REGRESSION guard, not a characterisation: if it goes
+    // red, a defect has been REINTRODUCED. Read the direction before assuming.
   }, 600_000);
 });

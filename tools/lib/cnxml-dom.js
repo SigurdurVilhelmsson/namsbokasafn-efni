@@ -119,7 +119,40 @@ function insertCnxmlBefore(doc, parent, cnxmlString, refNode) {
  * @returns {boolean} true if node is an element with a block-level tag name
  */
 function isBlockElement(node) {
-  return node.nodeType === 1 && BLOCK_TAGS.has(node.localName);
+  if (node.nodeType !== 1 || !BLOCK_TAGS.has(node.localName)) return false;
+  // §C85 — a `display="inline"` <media> is NOT a block child here. When such a
+  // media was preserved in place AND also re-expanded from the `[[MEDIA:n]]`
+  // marker in the para's translated text, the reader saw the image twice
+  // (lifraen-efnafraedi ch02/m00023: 11 media -> 12).
+  //
+  // ⚠️ Deliberately a PREDICATE, not `BLOCK_TAGS.delete('media')`.
+  // handled-tags-shared.test.js freezes BLOCK_TAGS as an exact set and asserts
+  // BLOCK_TAGS ⊆ HANDLED_BLOCK, so removing the member turns that red.
+  //
+  // 🔴 WHY `display="inline"` — STATED AS WHAT WAS MEASURED, NOT AS A MECHANISM.
+  // An earlier version of this comment claimed `display="inline"` "is the same
+  // property that caused the marker to be emitted". THAT IS FALSE, and a
+  // whole-branch review caught it: `extractInlineText` emits a `[[MEDIA:n]]`
+  // marker for EVERY <media> it walks (cnxml-extract.js ~:267) and never reads
+  // `display`. So the attribute is a CORRELATE of the duplicating shape in this
+  // corpus, not its cause — what actually varies is whether a given para was
+  // extracted through a path that passed an `inlineMediaMap` at all.
+  //
+  // What IS measured, and is the whole basis for this predicate:
+  //   - <media> inside <para> with display="inline": lifraen-efnafraedi 7,
+  //     efnafraedi-2e 0 (against 215 non-inline). The change cannot reach
+  //     chemistry by construction.
+  //   - Round-tripping every module in both kept books (n=491) with and without
+  //     this line: exactly ONE output differs (m00023). Chemistry 0 of 149.
+  // ▶ A narrow, corpus-verified guard — not a general rule about inline media.
+  // Widening it, or relying on it for a book outside those two, needs a
+  // re-measurement first.
+  //
+  // Pinned by tools/__tests__/inline-media-not-block.test.js, which asserts the
+  // SURVIVING copy is the marker-expanded one in its sentence position — a count
+  // alone cannot tell which of the two duplicates was removed.
+  if (node.localName === 'media' && node.getAttribute('display') === 'inline') return false;
+  return true;
 }
 
 /**

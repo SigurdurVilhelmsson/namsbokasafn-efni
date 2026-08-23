@@ -132,6 +132,31 @@ The pipeline preserves **most** CNXML structure with high fidelity. Structural e
 **What:** The Málstaður API occasionally converts `~2~` to Unicode subscript `₂`.
 **Fix:** `api-translate.js` includes `normalizeUnicode()` post-processing that converts Unicode sub/superscripts back to `~N~`/`^N^` format before writing output.
 
+### Gap 8: `display="inline"` dropped from inline `<media>` (2026-08-23, §C85)
+**Severity:** Low for readers, real for a remerge.
+**What:** A `<media display="inline">` inside a `<para>` round-trips **without** the
+`display` attribute. Measured on `lifraen-efnafraedi` ch02/m00023: source 1, output 0.
+
+**Why it is accepted, not a regression to revert.** It is the cost of fixing a
+**reader-visible** defect: `media` is in `cnxml-dom.js`'s `BLOCK_TAGS`, so an inline
+media was preserved in place **and** re-expanded from the `[[MEDIA:n]]` marker its own
+extraction had emitted — the reader saw the image twice (11 media → 12). The fix makes
+`isBlockElement` treat `display="inline"` media as non-block, so only the
+marker-expanded copy survives; extraction never captured `display` into
+`inlineMediaMap`, so that copy cannot carry the attribute back.
+
+**Not reader-visible — verified at the consumer, not assumed.** `cnxml-render.js:1149`
+emits `media-inline` **unconditionally** and never reads `display=`, so the rendered
+HTML is identical either way. The loss matters only for merging CNXML back to OpenStax.
+
+**Scope, with a control:** `<media>` inside `<para>` carrying `display="inline"` is
+**7 occurrences in `lifraen-efnafraedi` and 0 in `efnafraedi-2e`** (which has 215
+non-inline ones) — so chemistry is untouched by both the defect and the fix.
+
+**To close it:** capture `display` when building the inline-media map in
+`cnxml-extract.js` and re-emit it in `buildMediaElement`. Not done here — it is a
+separate change with its own pins, and nothing reader-facing depends on it.
+
 ---
 
 ## Empirical Verification
