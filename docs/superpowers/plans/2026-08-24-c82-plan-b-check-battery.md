@@ -609,7 +609,13 @@ The five legs, of which **only the lock check exists**:
 4. **`--force` present** — net-new; the loop always re-translates over existing output.
 5. **`--force --dry-run` cost within band** — net-new. 🔴 **A bare `--dry-run` reports `~0 ISK` once output exists** — a wrong answer that looks like an answer.
 
-🔴 **Leg 1 is a hard gate and it is live today.** `cnxml-extract.js` is **not** lock-aware while `api-translate.js` is (§C110), so a surviving lock splits the vintage *inside one module* and nothing reports it. The 7 chemistry markers were cleared on 2026-08-24 (`cc725a62`), **but that commit must reach prod before the run** — so E9 must **detect** the lock state, never assume Phase 2.1 was done. Biology's `m66443` stays locked deliberately.
+🔴 **Leg 1 is a hard gate, and its fixture situation changed mid-audit — read this before writing the test.** `cnxml-extract.js` is **not** lock-aware while `api-translate.js` is (§C110), so a surviving lock splits the vintage *inside one module* and nothing reports it.
+
+⚠️ **MEASURED 2026-08-24, AFTER the 7 chemistry markers were cleared (`cc725a62`): in-scope live locks are ZERO.** Exactly one `.locked` file remains in the tree — biology's `m66443`, deliberately kept, and biology is withdrawn. ▶ **Two consequences:**
+1. **The lock leg has NO live in-scope fixture**, so by the spec's own rule (*a check with no known-bad fixture cannot be blocking*) its SHOULD-TRIP must be **synthetic** — plant a `.locked` sibling in a temp dir, as the test below does. Do not reach for a corpus path.
+2. **E9 must still DETECT the lock state, never assume Phase 2.1 was done.** The clearing commit is on `main` but **must reach prod before the run**; until it does, prod still holds all 7. And the runbook marked 2.1 ✅ while all 8 were on disk — its ✅ marks are provenance, not completion.
+
+📌 *A process note worth keeping: an audit agent reported "8 live lock files, measured today" while the clearing had already landed — it read the register's prose as a measurement. Its adversarial verifier caught it with four independent commands. **A parallel audit races a mutating tree; re-measure anything a plan will act on.***
 
 - [ ] **Step 1: Write the failing test**
 
@@ -687,7 +693,7 @@ it('G5 refuses the 4-byte null payload — the §C21 type collision', async () =
 | **A2(b)** | `parseSegments(out).length == raw marker count` | BLOCKING |
 | **A2(c)** | no `<!-- SEG: ` **spaced** form | BLOCKING. Synthetic fixture only — **0 spaced-SEG occurrences corpus-wide against a positive control of 36,907 canonical markers.** |
 
-🔴 **Reproduce `parseSegments` in `tools/`, do not import `server/`.** `server/services/segmentParser.js:18-23` is a thin wrapper over MIT code: `parseSegmentRecords` from `tools/lib/seg-markers.cjs` plus `normalizeWraps` from `tools/lib/mt-normalize.cjs`, with a `{{SEG:…}}` → `<!-- SEG:… -->` normalization in front. ⚠️ **Do NOT substitute bare `parseSegmentRecords`** — both the mustache normalization and `normalizeWraps` are load-bearing, and dropping either changes what "parses" means.
+🔴 **Reproduce `parseSegments` in `tools/`, do not import `server/`** — independently confirmed twice. **The marker RECOGNIZER is already shared across both trees**: `server/services/segmentParser.js:18` does `require('../../tools/lib/seg-markers.cjs')` and `tools/cnxml-inject.js:54` imports `SEG_MARKER, parseSegmentsMap` from that same MIT file, so a `tools/`-side A2(b) checks **the very recognizer inject uses** — not a different parser. `server/services/segmentParser.js:18-23` is a thin wrapper over MIT code: `parseSegmentRecords` from `tools/lib/seg-markers.cjs` plus `normalizeWraps` from `tools/lib/mt-normalize.cjs`, with a `{{SEG:…}}` → `<!-- SEG:… -->` normalization in front. ⚠️ **Do NOT substitute bare `parseSegmentRecords`** — both the mustache normalization and `normalizeWraps` are load-bearing, and dropping either changes what "parses" means.
 
 ```javascript
 // tools/lib/remt-checks-mt.js — the MIT-side equivalent of segmentParser.parseSegments
@@ -777,6 +783,7 @@ Acceptance trio, all previously executed — reuse verbatim:
 **A5 — stage 1 is reusable as-is; stage 2 does not exist.**
 - Stage 1: exact EN==IS residue beyond `residue-allowlist.json`. 🔴 **`scan-residue.js` EXITS 0 WITH FINDINGS** — read `--json`, apply the battery's own threshold.
 - Stage 2: identical **and** ≥120 alphabetic chars **after stripping markers** → **9 segments corpus-wide**, 3 of them known-good `m68662` biographies, **6 genuine**. WARN → human queue, never a halt.
+  - ✅ **STAGE 2 IS A LENGTH CHECK OVER AN EXISTING EXPORT, NOT A NEW INSTRUMENT** *(corrected 2026-08-24 by the audit's own adversarial pass, whose grep range had omitted the file)*: `tools/lib/residue-check.js` holds **both** halves. `normalizeForComparison` (`:32`, **exported**) is exactly strip-markers → drop digits → Unicode letters only → lowercase, so *"alphabetic chars after stripping markers"* is `normalizeForComparison(t).replace(/\s/g,'').length`; and `detectResidue` (`:155-180`) already returns `exact` (`:160`, `enNorm === isNorm`) — the "identical" half, **already marker-stripped**. ▶ **Reuse both. Do not write a second stripper**, and do not reach for the `ratio` — it is a different quantity that happens to sit in the same return object.
 - ⚠️ **Raw byte-identity is useless as a predicate: 7,300 of 31,025 paired segments (23.5%) are legitimately identical.**
 - 🔴 **A5 stage 1 is BLOCKING only AFTER `residue-allowlist.json` is re-derived.** It is **segmentId-keyed** and the re-extract renumbers seg-ids, so it is **wholly voided**. Until then `m68662`'s 76 residues fire. **This sequencing constraint appears in no other document.**
 
@@ -796,6 +803,8 @@ Acceptance trio, all previously executed — reuse verbatim:
 | **R3** | ✅ BUILT | `experiments/cnxml-validation-gate/validate-cnxml.js`, **one file per invocation** — that is what structurally defeats jing's batch-abort fail-quiet. `--allowlist allowlist.recommended.json` is effectively mandatory. |
 | **R5** | ✅ BUILT | wrap `cnxml-linguistic-check.js`. **WARN only** — fires on 68 of 149 chemistry modules (~46%), far over the 5% blocking bar. |
 | **R2** | ⚠️ PARTIAL | `cnxml-inject.js` computes `attrMismatches` but exposes it **only as prose on stderr**. Add it to a `--json` payload. **Read the output, never the exit code** — `complete` is computed from four conditions and `attrMismatches` is deliberately excluded. |
+
+📐 **THE `--json` GAP IS EXACTLY THREE IDS ACROSS THREE TOOLS — R1, R2, R5** *(corrected 2026-08-24; an earlier count of "six ids across five tools" was inflated)*. **G1 needs none**: `findGlossaryCollisions` is a pure ESM export returning a structured object, so the driver imports it — `validate-glossary.js` is only its CLI wrapper. **K1/K2 need none**: their tool is chapter-only *by design* and sits in Tier 4, so it is never a per-module driver invocation. Counting either against a per-module achievability claim overstates the blocker.
 | **R4** | ❌ NOT_BUILT | `audit-render-output.js` is untouched by Plan A and has **four** defects, two of them found in this audit and in no spec. |
 
 🔴 **R4's four defects, each needing its own fix and its own test:**
