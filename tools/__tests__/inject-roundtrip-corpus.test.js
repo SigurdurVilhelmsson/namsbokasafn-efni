@@ -110,7 +110,7 @@ describe('alt survives the round trip', () => {
     //
     //   m00032  36 media/image/alt -> 35   image DROPPED   (IN §C80 scope: organic preview)
     //   m00046   4 media/image/alt ->  5   image DUPLICATED
-    //   m00023  11 alt -> 12               duplicated
+    //   m00023  11 alt -> 11   ✅ RESOLVED BY §C85-B, 2026-08-23 (was 11 -> 12, duplicated)
     //   m00069   6 alt ->  6   ✅ RESOLVED BY §C89, 2026-08-16 (was 6 -> 9, tripled)
     //
     // ✅ §C89 FIXED m00069 AS A SIDE EFFECT, and this pin is what noticed. §C89 made
@@ -129,13 +129,28 @@ describe('alt survives the round trip', () => {
     // gained". That asks "did my change alter the count?", not "does the output carry
     // what the source had" — a vintage-diff is structurally blind to a defect present
     // at both vintages.
+    // ✅ §C85-B FIXED m00023, 2026-08-23 — and this pin went red to say so, exactly
+    // as the note above predicts. `display="inline"` <media> is no longer treated as
+    // a block child by replaceParaContent, so it is carried once by its [[MEDIA:n]]
+    // marker instead of also being preserved in place. Direction read before the pin
+    // was updated: gain went ['m00023','m00046'] -> ['m00046'], i.e. toward the
+    // source. Two of the four original defects now remain: m00032 (loss) and
+    // m00046 (gain).
     const r = sweep('lifraen-efnafraedi');
     expect(r.files).toBe(342);
     expect(r.loss.map((x) => x.module)).toEqual(['m00032']);
-    expect(r.gain.map((x) => x.module).sort()).toEqual(['m00023', 'm00046']);
+    expect(r.gain.map((x) => x.module).sort()).toEqual(['m00046']);
     // `loss`/`gain` are derived from rawAlt/outAlt directly and never read `ok`, so
     // assert it here too — this is the only `ok === false` pinned on a REAL corpus
     // defect rather than a synthetic or a comment artefact.
+    //
+    // 🔴 THE NON-EMPTINESS GUARD IS LOAD-BEARING, NOT DECORATION. `[].every()` is
+    // `true`, so once the remaining defects are fixed and both arrays are empty this
+    // assertion would pass VACUOUSLY — silently discarding the suite's only
+    // `ok === false` check pinned on a real corpus defect, while still looking green.
+    // Whoever fixes m00032/m00046 must re-point this at something real (or delete it
+    // deliberately), not simply blank the arrays above and move on.
+    expect([...r.loss, ...r.gain].length).toBeGreaterThan(0);
     expect([...r.loss, ...r.gain].every((x) => x.ok === false)).toBe(true);
   }, 600_000);
 });
