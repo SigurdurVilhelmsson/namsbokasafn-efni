@@ -66,7 +66,7 @@ function sweep(book) {
 }
 
 describe('§C89 — translated alt reaches the injected output', () => {
-  it('chemistry: all 1,148 alt translations survive (m68801 resolved by §C88 write-back)', () => {
+  it('chemistry: all 1,149 alt translations survive (m68801 resolved by §C88 write-back)', () => {
     // 🔴 THE BEFORE/AFTER IS THE POINT, and it is what makes this pin meaningful:
     //   before §C89        324 / 951    (65.9% discarded, 130 modules affected)
     //   after  §C89        950 / 951    (0.1% discarded, 1 module — m68801)
@@ -74,12 +74,24 @@ describe('§C89 — translated alt reaches the injected output', () => {
     //   after  §C88 (T9)  1148 / 1148   (0% discarded; the reachability-model
     //     change — all five positions now reachable — raised the emitted count
     //     itself from 951 to 1148, +197, matching the closed blind positions)
-    // A bare `expect(reached).toBeGreaterThan(0)` would have passed at ALL FOUR,
+    //   after  §C115      1149 / 1149   (m68727's raw-`>` alt, +1 — see below)
+    // A bare `expect(reached).toBeGreaterThan(0)` would have passed at ALL FIVE,
     // which is exactly how the original defect survived every gate.
+    //
+    // 🔴 §C115 MOVED **BOTH** NUMBERS, AND THAT IS THE INTERESTING PART. The raw
+    // `>` inside m68727's 485-character alt truncated an open-tag match on BOTH
+    // SIDES of the pipeline, independently:
+    //   - extract (`processFigure`'s `<media[^>]*>`) never emitted the segment
+    //     → emitted was 1148, not 1149;
+    //   - inject (`replaceMediaAlt`'s `indexOf('>')`) could not find the alt to
+    //     rewrite and returned the block unchanged.
+    // Fixing extraction ALONE moved emitted to 1149 while reached stayed at 1148 —
+    // i.e. it manufactured a fresh §C89 drop: extracted, sent to the paid MT, and
+    // discarded. ▶ That intermediate state is why this file asserts BOTH numbers.
     const r = sweep('efnafraedi-2e');
 
-    expect(r.emitted).toBe(1148);
-    expect(r.reached).toBe(1148);
+    expect(r.emitted).toBe(1149);
+    expect(r.reached).toBe(1149);
 
     // ⚠️ m68801 WAS a KNOWN, LOGGED RESIDUAL (kept here as the record of why it
     // existed — do not delete on resolution). Its holdout was a BARE <media> (no
@@ -101,19 +113,37 @@ describe('§C89 — translated alt reaches the injected output', () => {
     expect(r.dropped).toEqual([]);
   }, 300_000);
 
-  it('organic: all 1,918 alt translations survive', () => {
+  it('organic: all 2,162 alt translations survive (1,918 + §C88 Unit A’s 244)', () => {
     // 🔴 THE SECOND BOOK IS NOT A REPEAT — IT CAUGHT A DEFECT CHEMISTRY COULD NOT.
-    //   before §C89   1675 / 1918   (87.3%)
-    //   after  §C89   1918 / 1918   (100%)
+    //   before §C89        1675 / 1918   (87.3%)
+    //   after  §C89        1918 / 1918   (100%)
+    //   after  §C88 Unit A 2162 / 2162   (+244 id-less table-cell media)
     // §C89's first cut keyed its lookup on the media's id and still dropped 243 here
     // (12.7%, 110 modules) — because organic's media are overwhelmingly ID-LESS,
     // while chemistry's are not. Chemistry alone reported 950/951 and looked done.
     // ▶ One corpus is one corpus. A book whose shapes differ is the cheapest way to
     // find out which of your assumptions were really about the data.
+    //
+    // §C88 UNIT A — THE +244, AND WHY IT IS 244 AND NOT 245. Organic has 245
+    // alt-bearing `<media>` sitting DIRECTLY in a table `<entry>` with no id and no
+    // `<figure>` ancestor; `if (!media.id) continue` meant none was ever extracted.
+    // 244 arrive in the empty-text branch and are keyed on the image `src`. The
+    // 245th (m00032, the `cellParas` branch) is [LEAD]-DEFERRED to a hand fix —
+    // ledger M1, runbook 4.5 — because wiring it in means touching a branch whose
+    // sibling destroys non-para content, against a fresh §C85 pin.
+    //
+    // ⚠️ 245 WOULD ALSO HAVE BEEN A PLAUSIBLE-LOOKING NUMBER HERE, and briefly was:
+    // `extractElements` is depth-blind, so relaxing the guard first made m00046
+    // emit a figure-wrapped media's alt a SECOND time under a src key while the
+    // figure path still emitted it under `fig-00004-alt`. The tell was +245 against
+    // a predicted +244 — one too many, not one too few. A per-module diff named the
+    // module in seconds; the book total alone would have looked close enough to
+    // wave through. ▶ The population is 245 by direct-parent and 246 by any-depth,
+    // and this test sits on the difference.
     const r = sweep('lifraen-efnafraedi');
 
-    expect(r.emitted).toBe(1918);
-    expect(r.reached).toBe(1918);
+    expect(r.emitted).toBe(2162);
+    expect(r.reached).toBe(2162);
     expect(r.dropped).toEqual([]);
   }, 600_000);
 });

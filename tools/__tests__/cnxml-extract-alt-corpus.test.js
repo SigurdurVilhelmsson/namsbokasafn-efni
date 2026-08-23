@@ -167,3 +167,74 @@ describe('§C81 Task 10 — zero duplicate alt segments across the in-scope corp
     expect(duplicates).toEqual([]);
   });
 });
+
+// §C88 Unit A — the id-less table-cell population, corpus-wide.
+//
+// 🔴 WHY THIS IS A SEPARATE CASE FROM THE 17-MODULE PREVIEW ABOVE. Unit A's 244
+// new alt segments live in 33 organic modules; the preview set is 17 modules
+// chosen for a different reason and does not contain all of them. A duplicate-key
+// check that happens not to cover the population it is supposed to guard reads
+// exactly like one that does — so the scope is stated and asserted here.
+//
+// The failure this guards is not hypothetical: the `if (!media.id) continue` that
+// Unit A removed was suppressing TWO defects while its comment documented one, and
+// the undocumented half was a COLLISION — the emit site called
+// `altElementId(media.id, 0)` with a hardcoded index, so every id-less media in a
+// module would have collapsed onto a single `media-0-alt`.
+describe('§C88 Unit A — id-less table-cell alt keys are unique and content-anchored', () => {
+  it('organic, ALL 342 modules: no module emits two alt segments sharing an id', () => {
+    const files = listAllSourceModules(ORGANIC_SOURCE);
+    expect(files.length).toBe(342); // control: the walk really covered the book
+
+    const duplicates = [];
+    let altTotal = 0;
+    for (const file of files) {
+      const alts = extractSegments(fs.readFileSync(file, 'utf-8')).segments.filter(
+        (s) => s.type === 'alt'
+      );
+      altTotal += alts.length;
+      const counts = new Map();
+      for (const a of alts) counts.set(a.id, (counts.get(a.id) || 0) + 1);
+      for (const [id, count] of counts) {
+        if (count > 1) duplicates.push({ file: path.basename(file), id, count });
+      }
+    }
+    // Control: an empty `duplicates` means nothing if no alts were examined.
+    expect(altTotal).toBe(2162);
+    expect(duplicates).toEqual([]);
+  }, 300_000);
+
+  it('Unit A adds no positional alt ids — its key is anchored to content, not order', () => {
+    // A positional key would pass the uniqueness case above and still be wrong: it
+    // drifts with cell indexing, and an alt written to the wrong cell is SILENT —
+    // no count moves (§C89). That is why `src` was chosen over an index, and this
+    // is the assertion that separates the two.
+    //
+    // ⚠️ THE ASSERTION IS 17, NOT 0, AND THE DIFFERENCE IS A MEASUREMENT RATHER
+    // THAN A CONCESSION. An earlier cut of this case asserted `[]` — a tidier,
+    // stronger-looking claim that was simply FALSE: organic already emitted 17
+    // `media-N-alt` ids from the INLINE-media path (`altElementId(media.id,
+    // media.mediaIndex)`), which Unit A does not touch. Measured on both sides of
+    // the change — 17 before, 17 after — so the number pins "Unit A contributed
+    // none of them", which is the real claim. Asserting an absence that was never
+    // true would have failed immediately; asserting one that happened to be true
+    // for the wrong reason is the version that survives and rots.
+    //
+    // 📌 Those 17 are a LATENT instance of the very collision class Unit A closed
+    // (a hardcoded/derived index rather than content). They are unique today —
+    // the case above proves it corpus-wide — so this is a note, not a defect.
+    const positional = { media: [], standalone: [] };
+    let altTotal = 0;
+    for (const file of listAllSourceModules(ORGANIC_SOURCE)) {
+      for (const s of extractSegments(fs.readFileSync(file, 'utf-8')).segments) {
+        if (s.type !== 'alt') continue;
+        altTotal++;
+        if (/:alt:media-\d+-alt$/.test(s.id)) positional.media.push(s.id);
+        if (/:alt:standalone-\d+-alt$/.test(s.id)) positional.standalone.push(s.id);
+      }
+    }
+    expect(altTotal).toBe(2162); // control: the population really was examined
+    expect(positional.media).toHaveLength(17);
+    expect(positional.standalone).toEqual([]);
+  }, 300_000);
+});
