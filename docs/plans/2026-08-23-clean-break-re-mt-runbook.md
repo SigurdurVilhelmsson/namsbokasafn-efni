@@ -38,6 +38,35 @@ cp -r books/efnafraedi-2e/corpus books/lifraen-efnafraedi/corpus <off-box destin
 **Gate:** the destination holds both trees, and `git check-ignore -v books/efnafraedi-2e/corpus`
 still reports `.gitignore:138` (i.e. you did not "fix" it by committing it).
 
+🔴 **0.1 MUST RUN BEFORE 0.4, AND THE GATE ABOVE CANNOT SEE THE FAILURE — MEASURED
+2026-08-23.** 0.4 moves chemistry's four faithful files out of
+`03-faithful-translation/`, and `export-corpus.js` reads that directory. Run in the
+wrong order the export succeeds, writes its files, exits 0 and satisfies every gate
+above — while recording `tiers {mt: 21251, faithful: 0, localized: 0}`. **That zero
+is an artefact of step order, not a fact about the book**, and it silently drops the
+only human editorial work in the corpus.
+
+▶ **ADD THIS TO THE GATE — it is a VALUE check, and the count-based one above is
+structurally blind to it:**
+```bash
+python3 -c "import json;print(json.load(open('books/efnafraedi-2e/corpus/efnafraedi-2e.corpus-manifest.json'))['stats']['tiers'])"
+# chemistry MUST show faithful > 0   (360 as of 2026-08-23, of which 64 postEdited:true)
+# organic's faithful:0 is CORRECT    — it has no faithful files at all
+```
+⚠️ **If 0.4 has already run**, restore the four files from the commit before the backup
+cron committed their deletion, export, then remove them again — 0.4 stays in force, and
+the working tree must be verified clean before and after:
+```bash
+for m in ch01/m68663 ch01/m68664 ch03/m68699 ch03/m68700; do
+  git show <deletion-commit>^:books/efnafraedi-2e/03-faithful-translation/$m-segments.is.md \
+    > books/efnafraedi-2e/03-faithful-translation/$m-segments.is.md
+done
+node tools/export-corpus.js --book efnafraedi-2e     # verify faithful > 0
+rm books/efnafraedi-2e/03-faithful-translation/ch0*/m68*-segments.is.md
+```
+**Only possible BEFORE the run** — afterwards the seg-ids are renumbered and the
+alignment is gone for good, which is the whole reason 0.1 exists.
+
 ### 0.2 ✅ Capture organic's render-fidelity baseline — §C114 ③
 `lifraen-efnafraedi` has neither `render-fidelity-baseline.json` nor `fidelity-allowlist.json`;
 chemistry has both. A baseline captured **after** the run freezes whatever the run produced and
@@ -66,16 +95,34 @@ prod** — that is the tree the segment editor reads.
 **Gate:** the four are absent from prod's `03-faithful-translation/` and present at the preserved
 location. ⚠️ **Opening a module is safe; the write fires on apply** — the window closes at the
 first "Vista + Birta", not at first sight.
+🔴 **DO 0.1 FIRST — THIS STEP EMPTIES AN INPUT 0.1 READS.** `export-corpus.js` reads
+`03-faithful-translation/`, so running 0.4 first makes the corpus export record
+`faithful: 0` while exiting 0 and passing 0.1's own gate. Measured 2026-08-23, when
+exactly that happened; the recovery is written out in 0.1.
 
 ---
 
 ## Phase 1 — Decisions that must be closed before any spend
 
-### 1.1 ⚠️ §C92 — organic's `01-source` refresh: rule it, or explicitly skip it
-Blocked by **§C93 ④** (the append-only supersede write is unbuilt; a refresh today turns root
-`npm test` red with no supported way back). **Order is fixed:** build §C93 ④ **or** descope it in
-the register → obtain the **three-step written consent** (unconditional, per CLAUDE.md) → refresh
-**CNXML *and* `media/`** → extract.
+### 1.1 ✅ §C92 — organic's `01-source` refresh: RULED, AND THE ANSWER IS NO. CLOSED 2026-08-23.
+**[LEAD] descoped both the refresh and §C93 ④.** This step requires nothing further; do not
+re-derive it. The register's §C93 ④ owns the reasoning and the still-valid build estimate.
+
+**Ruled on a measurement, not on cost.** Read-only compare of `2a1f8284…main` on
+`openstax/osbooks-organic-chemistry`: **8 commits, 15 files, +42/−14 across 12 of 342 modules
+(3.5%)**, plus 2 media and 1 collection.xml — a preface tidy, a typo, table-header fixes, a
+spelling fix and three errata. Nothing structural; upstream last pushed 2026-07-01. Replacing 342
+files for that, before a re-MT that re-translates everything, is a poor trade.
+
+🔴 **The commit named "updating md license" is NOT a relicensing** — checked, not assumed.
+`278405a6` leaves the URL byte-identical (`…/by-nc-sa/4.0/`) and only adds human-readable text
+inside the element. Organic was and remains `CC BY-NC-SA 4.0`. **No window is closing here.**
+
+📌 **If the three errata are wanted:** an editor applies them by hand to the 12 named modules
+after the run. No refresh, no ④, no consent ceremony.
+⚠️ **If a refresh is ever wanted later, §C93 ④ must be built FIRST** — a refresh today leaves the
+manifest stale, flips `verifySourceManifest` to `{ok:false}`, and turns root `npm test` red with
+no supported way back.
 
 ### 1.2 ⚠️ §C88 — re-take its scope ruling
 Its OUT ruling for organic's 245 `entry-not-in-figure` alts rests on *"213 of them sit in modules
