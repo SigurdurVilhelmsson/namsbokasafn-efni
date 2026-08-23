@@ -155,7 +155,7 @@ survivors cannot stage a deletion.** Delete them all and the glob matches nothin
 only the survivors are staged. Either way a later `git pull` can resurrect them.
 **Gate:** the deletion appears in `git show --stat HEAD` as 7 deletions.
 
-### 2.2 ⚠️ §C88 Unit A — bring organic's 244 in. MERGED **AND DEPLOYED** BEFORE PHASE 3.
+### 2.2 ⚠️ §C88 Unit A **+ §C115** — one branch, one PR. MERGED **AND DEPLOYED** BEFORE PHASE 3.
 Ruled at 1.2. Relax `if (!media.id) continue` (`tools/cnxml-extract.js:1557`) and give the 244 a
 key; teach `applyMediaAltString` (`tools/cnxml-inject.js`) the no-`mediaId` case. `buildTable`
 already holds `cell` at its call site, so `collectMediaAlts`' id-keyed table branch need not change.
@@ -167,14 +167,24 @@ already holds `cell` at its call site, so `collectMediaAlts`' id-keyed table bra
   drift and **an alt written to the wrong cell is SILENT — no count moves.** Do not copy
   `applyFigureAltDom`'s "first media" *for the reason it chose it*: a figure has one media by
   construction; a table cell does not.
+- ➕ **§C115 RIDES THIS BRANCH** — a raw `>` in an `alt` value truncates `<media[^>]*>`, losing a
+  segment *and* publishing `alt=""`. Same file, same `[^>]*` neighbourhood, same acceptance shape,
+  and it is extraction-side too. 🔴 **Fix the CLASS, not the line** — the idiom is pervasive across
+  the pipeline tools (re-derive that enumeration), and **the corpus, not the code, is what has
+  limited the damage**. State the sweep's range in the PR.
 - 📌 **Pins that move:** `alt-writeback-corpus` organic **1918 → 2162** · `cnxml-extract-alt-corpus`
-  · 🔴 `inject-roundtrip-corpus`, whose third assertion **passes vacuously on empty arrays** and must
-  be **re-pointed, not blanked**. `alt-coverage-corpus` pins chemistry only and does **not** move.
+  · **`alt-coverage-corpus` chemistry 1148 → 1149 once §C115 lands**, and its
+  `expect(short).toEqual([{module:'m68727', reachable:6, emitted:5}])` empties — **re-point that
+  assertion, do not blank it** *(this line said "alt-coverage-corpus does not move"; that was true
+  of Unit A alone, before §C115 joined the branch)* · 🔴 `inject-roundtrip-corpus`, whose third
+  assertion **passes vacuously on empty arrays** and must be **re-pointed, not blanked**.
 - **Gate:** a **SENTINEL SUBSTITUTION**, never a count (§C89) — overwrite each of the 244 with a
   token that cannot have come from source, inject, count tokens, **with the 1,918 that already work
   asserted alongside as a built-in positive control.**
 
 Sizing and detectors: [`../../test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
+· §C115's mechanism and corpus census: [`../../test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md)
+· **cold-start briefing for this step:** [`2026-08-24-unit-a-c115-handoff.md`](2026-08-24-unit-a-c115-handoff.md)
 
 ---
 

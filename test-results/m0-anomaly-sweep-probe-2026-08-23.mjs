@@ -109,3 +109,35 @@ for (const b of KEPT) {
 console.log(`   localized (_IS.):  non-empty alt ${String(tally.IS[0]).padStart(4)}   EMPTY ${tally.IS[1]}`);
 console.log(`   everything else :  non-empty alt ${String(tally.other[0]).padStart(4)}   EMPTY ${tally.other[1]}`);
 empties.forEach((e) => console.log(`        EMPTY: ${e}`));
+
+// 4 · WIDENED 2026-08-23 — the same truncation class over EVERY element type and
+//     ALL FIVE books, not just media/image in the kept two. This is what turns
+//     "any [^>]* regex has the same exposure" from a hedge into a measurement.
+const ALL = ['efnafraedi-2e', 'lifraen-efnafraedi', 'edlisfraedi-2e', 'liffraedi-2e', 'orverufraedi'];
+console.log('\n4 · RAW ">" inside ANY quoted attribute value, ALL element types, all books');
+for (const b of ALL) {
+  const root = path.join(REPO, 'books', b, '01-source');
+  if (!fs.existsSync(root)) continue;
+  let tags = 0; const hits = [];
+  for (const f of walk(root, '.cnxml')) {
+    const t = fs.readFileSync(f, 'utf-8');
+    for (const m of t.matchAll(/<[A-Za-z][\w:.-]*/g)) {
+      const i = m.index, e = tagEnd(t, i);
+      if (e < 0) continue;
+      tags++;
+      const inner = t.slice(i, e);
+      let q = null, raw = false;
+      for (const c of inner) {
+        if (q) { if (c === q) q = null; else if (c === '>') raw = true; }
+        else if (c === '"' || c === "'") q = c;
+      }
+      if (raw) {
+        const id = inner.match(/id="([^"]*)"/);
+        hits.push(`${path.basename(f, '.cnxml')} <${m[0].slice(1)} id=${id ? id[1] : '-'}>`);
+      }
+    }
+  }
+  const kept = KEPT.includes(b);
+  console.log(`   ${b.padEnd(20)} ${String(hits.length).padStart(3)} of ${String(tags).padStart(7)} open tags   ${kept ? '(KEPT)' : '(withdrawn)'}`);
+  hits.forEach((h) => console.log(`        ${h}`));
+}

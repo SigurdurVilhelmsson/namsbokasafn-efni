@@ -1,5 +1,19 @@
 # Handoff — Phase 1.2: re-take §C88's scope ruling
 
+> # 🛑 SUPERSEDED — THE RULING WAS TAKEN 2026-08-23. DO NOT EXECUTE THIS BRIEFING.
+> **This document asks you to re-measure and then propose a ruling. Both are done.** A cold
+> session following it will repeat a full day's work.
+> - **The re-measurement RAN** — all four carried numbers reproduced exactly. Frozen at
+>   [`../../test-results/c88-scope-retake-remeasurement-2026-08-23.md`](../../test-results/c88-scope-retake-remeasurement-2026-08-23.md).
+> - **The ruling was TAKEN** — ① the 244 come in **before Phase 3** (§C88 Unit A, runbook step
+>   **2.2**); ② the remaining 1 (`m00032`) is deferred to a hand fix, ledger item **M1**, runbook
+>   **4.5**. Sizing at [`../../test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md).
+> - **A new item came out of the follow-up sweep:** **§C115** — a raw `>` in an `alt` value
+>   truncating the extractor's `<media[^>]*>` match. It rides Unit A's branch.
+>
+> ▶ **Read the register's ⏩ RESUME block and the runbook instead.** Retained as evidence of how
+> the decision was framed before it was taken — **evidence, never status.**
+
 **Written:** 2026-08-23, end of the Phase 0 session · **For:** the next session, starting cold.
 **Status owner is still the register's ⏩ RESUME block** — this file is a briefing, not a status
 record. If they disagree, the register wins.

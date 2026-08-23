@@ -413,6 +413,20 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 **⚠️ When you census the corpus for a structural shape, parse it — do not regex it, and state the counting unit.** Regex counts over `<para>`/`<figure>` nesting produced three wrong numbers in one C13 session (an over-generalised book attribution, a glob silently scoped to one book, and a miscount that included an empty `<caption>`). Use `@xmldom/xmldom` and a parent/ancestor predicate, and say whether you counted **per figure or per para** — for C13 the two differ (71 vs 70) and only per-figure matches the schema gate 1:1.
 
+**🔴 DURABLE — A BARE `>` IS LEGAL INSIDE AN XML ATTRIBUTE VALUE, SO `<tag[^>]*>` CAN TRUNCATE
+MID-ATTRIBUTE — SILENTLY, AND NO SCHEMA CHECK CAN SEE IT.** Only `<` and `&` *must* be escaped in
+an attribute value; `>` need not be, and OpenStax's own source escapes one while leaving the other
+raw **in the same sentence**. The document is well-formed, so the RelaxNG gate is correct to pass
+it. What breaks is the regex: `[^>]*` stops at the first raw `>`, leaving an unterminated `attr="`
+and an **empty capture** — the tool then reports success and emits an **empty value**, not a
+missing one, which is why it reads as "the source had nothing there". ▶ **Do not use a regex to
+find the end of an open tag whose attributes you are about to read** — scan it respecting quoted
+values, or parse. ⚠️ **The `[^>]*` idiom is pervasive across `cnxml-extract.js`, `cnxml-inject.js`,
+`cnxml-render.js` and `tools/lib/` — do not trust any enumeration here, re-derive it — so the
+exposure is set by the CORPUS, not by the code**: a source refresh, a new book, or a different
+element type can light up sites that have never fired. The measured instances, their counts and
+the affected books live in the active register (**§C115**), never here.
+
 **⚠️ DURABLE — `book-config.json` is MULTI-CONSUMER; a new non-render key must be excluded via `NON_RENDER_KEYS`.** The item-17 licence key leaked through `book-rendering-config.js` `mergeWithShared()`'s lossless passthrough into `getBookRenderConfig()`'s object and broke a golden `toEqual` migration oracle. Verifying "inert on the render path" must check the config-**object** shape and its tests, not just the rendered HTML — a `toEqual`-vs-golden is a shape pin, not only a `toMatchSnapshot`.
 
 **⚠️ DURABLE — `glossary-unified.json` has THREE producers** *(said TWO until 2026-08-09; §C36 B3 added `export-terminology-resolved`, a resolved view of the concept model, and it is now what `export-terminology.js` builds by default — the old `export-terminology` payload is dead code awaiting Part C)*, **the export WRITES UNATTENDED, and its shrink guard does not stop a replacement.** ⚠️ **The three fingerprints are DISJOINT and must stay so** — `category`+`chapter` = merge-glossary · `subjects` = the old export · `domain` = resolved — because `detectProducer` falls back to shape inference when a payload carries no stamp, and an overlap would make a swap undetectable. `tools/merge-glossary.js` wrote every committed copy; `server/scripts/export-terminology.js` is the second, and **`scripts/git-backup.sh` invokes it on the 2-hourly cron — unforced.** The two producers are not interchangeable: **`merge-glossary.js` still has 3 sources and Íðorðabankinn is not one of them**, and its own `--db` upsert targets the `terminology_terms` table that migration 032 dropped. The file also feeds the **render** path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a bad write is **reader-visible**, not merely an MT-quality regression.
