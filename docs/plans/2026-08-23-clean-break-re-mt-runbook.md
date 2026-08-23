@@ -38,6 +38,35 @@ cp -r books/efnafraedi-2e/corpus books/lifraen-efnafraedi/corpus <off-box destin
 **Gate:** the destination holds both trees, and `git check-ignore -v books/efnafraedi-2e/corpus`
 still reports `.gitignore:138` (i.e. you did not "fix" it by committing it).
 
+🔴 **0.1 MUST RUN BEFORE 0.4, AND THE GATE ABOVE CANNOT SEE THE FAILURE — MEASURED
+2026-08-23.** 0.4 moves chemistry's four faithful files out of
+`03-faithful-translation/`, and `export-corpus.js` reads that directory. Run in the
+wrong order the export succeeds, writes its files, exits 0 and satisfies every gate
+above — while recording `tiers {mt: 21251, faithful: 0, localized: 0}`. **That zero
+is an artefact of step order, not a fact about the book**, and it silently drops the
+only human editorial work in the corpus.
+
+▶ **ADD THIS TO THE GATE — it is a VALUE check, and the count-based one above is
+structurally blind to it:**
+```bash
+python3 -c "import json;print(json.load(open('books/efnafraedi-2e/corpus/efnafraedi-2e.corpus-manifest.json'))['stats']['tiers'])"
+# chemistry MUST show faithful > 0   (360 as of 2026-08-23, of which 64 postEdited:true)
+# organic's faithful:0 is CORRECT    — it has no faithful files at all
+```
+⚠️ **If 0.4 has already run**, restore the four files from the commit before the backup
+cron committed their deletion, export, then remove them again — 0.4 stays in force, and
+the working tree must be verified clean before and after:
+```bash
+for m in ch01/m68663 ch01/m68664 ch03/m68699 ch03/m68700; do
+  git show <deletion-commit>^:books/efnafraedi-2e/03-faithful-translation/$m-segments.is.md \
+    > books/efnafraedi-2e/03-faithful-translation/$m-segments.is.md
+done
+node tools/export-corpus.js --book efnafraedi-2e     # verify faithful > 0
+rm books/efnafraedi-2e/03-faithful-translation/ch0*/m68*-segments.is.md
+```
+**Only possible BEFORE the run** — afterwards the seg-ids are renumbered and the
+alignment is gone for good, which is the whole reason 0.1 exists.
+
 ### 0.2 ✅ Capture organic's render-fidelity baseline — §C114 ③
 `lifraen-efnafraedi` has neither `render-fidelity-baseline.json` nor `fidelity-allowlist.json`;
 chemistry has both. A baseline captured **after** the run freezes whatever the run produced and
@@ -66,6 +95,10 @@ prod** — that is the tree the segment editor reads.
 **Gate:** the four are absent from prod's `03-faithful-translation/` and present at the preserved
 location. ⚠️ **Opening a module is safe; the write fires on apply** — the window closes at the
 first "Vista + Birta", not at first sight.
+🔴 **DO 0.1 FIRST — THIS STEP EMPTIES AN INPUT 0.1 READS.** `export-corpus.js` reads
+`03-faithful-translation/`, so running 0.4 first makes the corpus export record
+`faithful: 0` while exiting 0 and passing 0.1's own gate. Measured 2026-08-23, when
+exactly that happened; the recovery is written out in 0.1.
 
 ---
 
