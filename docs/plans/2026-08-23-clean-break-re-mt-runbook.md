@@ -201,6 +201,21 @@ before that pull, they edit the old vintage.**
 From the docx (ch01–ch02) and the moved-aside faithful copies (ch03). **Seg-id renumbering is
 expected and accepted** — re-application is manual and matches by meaning, not by id.
 
+✅ **`02-mt-output` HAND REPAIRS — SWEPT 2026-08-23 (ledger M0): NOTHING NEEDS RE-APPLYING HERE.**
+The run overwrites `02-mt-output`, so human corrections in it are **destroyed, not preserved** —
+and this step named only the docx and the faithful copies, so they had no home. Swept by **path**
+across full git history for both kept books (the `manualCorrections` provenance block is a known
+under-report), positive control §C57 `827424da` fired. Five genuine hand repairs; **every cause has
+a shipped mitigation or is superseded by re-extraction** — `unwrapInventedMarkers` (§C67), the
+fail-loud null-byte guard, the bracket-marker migration, and id renumbering.
+- ⚠️ **Re-run the sweep if the run slips or more hand repairs land**, and classify by **path, then
+  by diff** — never by commit subject: `827424da` carries a `fix(…)` subject and a 492-line diff
+  and is a **re-translation**, not a hand edit.
+- 🔴 **This rests on causes being FIXED, not on anything being backed up.**
+  `03-faithful-translation/` holds **0** files for organic and only a README for chemistry, so
+  nothing in `02-mt-output` is protected that way.
+- 📋 [`../../test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md)
+
 ### 4.3 🔴 ✅ If you use `reattach-segment-edits.js`, verify content first — §C114 ①
 Its header says *"Matching is exact (module_id, segment_id). There is no fallback"*, and
 `original_content` is read only as context — **never compared**. An id that survives while naming
@@ -227,9 +242,10 @@ The register's **⚒️ Post-run manual-fix ledger** section holds every anomaly
 into the run because a human costs less than the code. **This is the step that spends them.**
 - Each item states **why the run will not fix it** — if the run did fix one, **delete the item**
   rather than working it; a ledger that sends people to redo solved work stops being read.
-- ⚠️ **The ledger is SEEDED, NOT SWEPT.** Its **M0** is the systematic sweep and **M0 must finish
-  BEFORE Phase 3, not here** — once the run lands you can no longer tell *"the re-MT did not fix
-  it"* from *"the re-MT introduced it"*, the same argument that puts Phase 0's captures first.
+- ✅ **M0, the sweep, RAN 2026-08-23 and the ledger is now ONE item (M1), not three.** M2+M3 were
+  measured to a single defect that cannot be hand-fixed at all → **§C115**, an extraction-side
+  [CODE] item that belongs on **step 2.2's branch**, not here. ⚠️ M0 is *substantially*, not
+  exhaustively, complete — its stated exclusions are in the register's M0 entry.
 - **Gate:** every ledger item is either fixed-and-verified or explicitly re-deferred with a reason;
   **an item silently left unworked is the failure this section exists to prevent.**
 

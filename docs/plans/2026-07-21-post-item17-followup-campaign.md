@@ -25,7 +25,8 @@
       - ⚠️ **UNIT B — the 1 in Branch 1 (`m00032`) is a SEPARATE, RISKIER call; price it on its own, do not fold it in.** That cell holds one `<media>` and one `<para>` — **the exact cell §C85 just fixed**, pinned by `table-entry-media-preserved.test.js` — so wiring an emitter into the `cell.paras` branch means touching code whose **sibling branch destroys non-para content**, in the module that most recently had a defect there, against a fresh pin. *(Corroborated independently: `cnxml-extract.js:1509`'s own census says exactly one organic single-`<para>` entry also holds a `<media>`; this probe finds exactly 1.)*
       - ⏰ **THE EXPENSIVE VARIABLE IS THE WINDOW, NOT THE CODE — same logic that scheduled §C85/§C90 ahead of the run.** The 244 are **extraction-side**: taken before Phase 3 they ride the clean-break re-extract for free; taken after, they need a second re-extract and a second re-key of organic's seg-ids (the TM/export-corpus join key). Marginal MT is 244 short alt strings against a 342-module book, and **Phase 1.3's `--dry-run` measures it exactly**. 📌 **Pins that move:** `alt-writeback-corpus` organic **1918 → 2162**, `cnxml-extract-alt-corpus`, and 🔴 `inject-roundtrip-corpus` — whose third assertion **passes vacuously on empty arrays**, so it must be **re-pointed**, not blanked. `alt-coverage-corpus` pins chemistry only and does **not** move. **Acceptance is a SENTINEL SUBSTITUTION, never a count** (§C89), with the 1,918 that already work asserted alongside as the positive control.
   - ⚒️ **NEW STANDING SECTION, SAME [LEAD] RULING — the ⚒️ POST-RUN MANUAL-FIX LEDGER (below, before the LEAD operational lane).** Deferring a defect because wiring it into the run costs more than a hand fix is a legitimate call; **losing it is not.** The ledger is the ONE home for such items and the checklist **runbook Phase 4.5** works through after the run. 🔴 **Process rule: add the item in the SAME COMMIT as the deferral decision** — a deferral recorded only in a session, a PR body or a spec is one that gets lost, which is exactly how eight findings evaporated before the 2026-07-26 audit.
-    - ⚠️ **IT IS SEEDED, NOT SWEPT — M1–M3 are one session's confirmed finds, and `3 items` is NOT `3 anomalies exist`.** **M0 is the systematic sweep, it is OPEN, and it must finish BEFORE Phase 3, not after**: once the run lands you can no longer tell *"the re-MT did not fix it"* from *"the re-MT introduced it"* — the same argument that put Phase 0's captures where they are. ▶ **Admission rule is kept-books-only and "say why the run will not fix it"** — §C102 looks like a fit and is **physics-only**, i.e. §C109's, not the ledger's.
+    - ✅ **M0 — THE SWEEP — RAN 2026-08-23, AND IT SUBTRACTED: the ledger is ONE item, not three.** M2 and M3 were measured to a single defect that **cannot be hand-fixed at all** (no segment for the editor to reach; published HTML is overwritten by the next render; `01-source` is read-only) → struck, and now **§C115**, an extraction-side [CODE] item that **should ride §C88 Unit A's branch** since the run re-bakes it otherwise. 🔴 **The lesson: a ledger item prescribing an impossible hand fix reads as discharged when the work cannot be done** — which is exactly what M0 existed to catch, and it caught it in its own seed data.
+      - ⚠️ **M0 is SUBSTANTIALLY, not exhaustively, complete — its range, predicate and stated exclusions are in the M0 entry**; the specs and the individual frozen artifacts were not swept. **Also settled: §C32 = §C33 = §C107 are ONE 2026-08-07 audit** (that one defect had been logged three times), its alt backlog is **resolved by §C81 + §C88 + the run**, and its `209` is a **detector-limited lower bound**, not a population. **E1 — the `02-mt-output` hand repairs the run destroys — needs NOTHING re-applied**, but that rests on causes being fixed, not on backups: `03-faithful-translation/` holds 0 files for organic.
 - **🆕 2026-08-23 (earlier) — ✅ THE FIVE PRE-RUN CONTENT DEFECTS ARE FIXED: §C90, §C85 (all three) AND §C108's ORGANIC HALF. ▶ THIS UNBLOCKS RUNBOOK PHASE 0.2, which was held because a fidelity baseline captured over defective output blesses the defect.**
   - 🔴 **AN ORDERING INTERACTION THE RUNBOOK DID NOT STATE, FOUND BY EXECUTING IT WRONG: 0.4 EMPTIES AN INPUT 0.1 READS.** `export-corpus.js` reads `03-faithful-translation/`; 0.4 moves chemistry's four faithful files out of it. Run 0.4 first and the corpus export **succeeds, writes its files, exits 0 and passes 0.1's own gate** — while recording `tiers {mt: 21251, faithful: 0, localized: 0}`. **That zero is an artefact of step order, not a fact about the book**, and it silently drops the only human editorial work in the corpus. ▶ **Corrected the same day: 360 faithful rows recovered, 64 of them `postEdited: true`** — segments a human actually changed. Restored the four files from the deletion commit's parent, re-exported, removed them again; 0.4 stayed in force and the tree was verified clean before and after. ⚠️ **Only possible BEFORE the run** — afterwards the seg-ids are renumbered and the alignment is unreconstructable, which is the entire reason 0.1 exists. ▶ **The gate could not see it, and that is the lesson: 0.1's gate asked "do the files exist and is the directory still ignored?" — both true of an export missing a whole tier.** A count of files cannot see an empty tier inside them. The runbook now carries a VALUE check (`tiers.faithful > 0` for chemistry) and the ordering warning on both steps. → [[engineering-lessons]]
   - ✅ **RUNBOOK PHASE 0.4 IS ALSO DONE** — see §C112 below; the four faithful files are aside on prod with a detector for resurrection.
@@ -350,6 +351,17 @@ These gate whether ANY of the 21 shipped items, and all content fixes, actually 
 ---
 
 ## P1 — Correctness backlog · **[CODE]** (real gaps, mostly reader- or integrity-affecting)
+
+- **C115 · 🔴 A RAW `>` INSIDE AN `alt` VALUE TRUNCATES THE EXTRACTOR'S `<media[^>]*>` MATCH — CHEMISTRY `m68727` LOSES ONE ALT SEGMENT *AND* PUBLISHES `alt=""`** — **[CODE]** — **P2 by size, but SCHEDULE IT WITH §C88 Unit A** — *found 2026-08-23 by the M0 ledger sweep, which was looking for hand-fixable anomalies and found a code defect instead.*
+  - **Mechanism, measured:** `ch05/m68727`'s `<media id="fs-idp1427264">` carries a **485-character** alt whose text contains a raw, unescaped `>` — `“Δ U > 0”` — while the `<` in the same sentence **is** escaped as `&lt;`. **Only `<` and `&` must be escaped in an XML attribute value, so a bare `>` is LEGAL** and no schema check can see it. `<media[^>]*>` stops at it 483 characters in, leaving an unterminated `alt="` and an empty capture.
+  - **Two symptoms, one cause** — they were separately logged as ledger M2 and M3 before M0 merged them: empty text ⇒ `addSegment` returns `null`, so **6 reachable alts emit 5**; and the structure node's `alt` is `undefined` ⇒ `readAlt` returns `''` ⇒ the published page carries **`alt=""`**.
+  - **Blast radius, with a control:** **1 of 2,298** chemistry media/image open tags, **0 of 4,328** organic. One instance in the kept books — and the empty alt is the only one among **1,381** published `<img>`.
+  - 🔴 **`alt=""` is WORSE than English alt** — it tells a screen reader *"decorative, skip"*, so the image conveys nothing at all. Reader-visible accessibility, not a fidelity nicety.
+  - 🔴 **NOT HAND-FIXABLE — this is why it is a [CODE] item and not a ledger entry.** No segment exists for the editor to reach; `05-publication/` HTML is overwritten by the next render; and `01-source` is READ-ONLY and legally load-bearing, so escaping the `>` at source is forbidden (→ CLAUDE.md § *Never overwrite local OpenStax CNXML*).
+  - ⏰ **SCHEDULING — it is extraction-side, exactly like §C88 Unit A: cheap before Phase 3, a second re-extract after it.** The run reproduces it today. **Ride the same branch.**
+  - ⚠️ **Do not assume the class is confined to `<media>`/`<image>`.** The census covered those two element types only; **any `[^>]*` open-tag regex in the extractor has the same exposure**, and a raw `>` is legal in every attribute value. **Fix the class, state the sweep's range.**
+  - *[severity: one image publishes no accessible text at all, reader-visible · blocks: nothing, but re-baked by the run if unfixed · relates: §C88, §C89, ledger M2/M3 (struck), §C32's `img-missing-alt`]*
+  - 📋 Evidence: [`test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md)
 
 - **C114 · ⏰ THREE PRE-RUN CAPTURES AND ONE SILENT MIS-ATTACHMENT — WHAT SURVIVED VERIFICATION FROM THE COMPLETENESS-CRITIC SWEEP** — **[LEAD]** + **[CODE]** — **P1, and three of the four have a DEADLINE: they must happen BEFORE the run** — *swept 2026-08-22; 18 candidates, and only what is below was re-measured first-hand and survived. The rest is deliberately not carried.*
   - 🔴 **① `reattach-segment-edits.js` CAN RESTORE AN EDIT ONTO THE WRONG SEGMENT AND COUNT IT A SUCCESS — verified in the code.** Its own header says *"Matching is exact (module_id, segment_id). There is no fallback"*, and `:83-97` matches on id alone; **`row.original_content` is read at `:103` only as `oldMt` CONTEXT and is never compared to what the id now names.** ▶ **So an id that SURVIVES the re-extract while naming DIFFERENT text restores silently onto the wrong segment, and the run reports `unmatched: 0`.**
@@ -2459,24 +2471,25 @@ wiring it in costs more than a hand fix, **add it here in the SAME commit as the
 A deferral recorded only in a session, a PR body or a spec is a deferral that will be lost — this
 file's own § One source of truth exists because exactly that happened to eight findings.
 
-⚠️ **COMPLETENESS — READ THIS BEFORE TREATING THE LIST AS THE ANSWER. It is SEEDED, NOT SWEPT.**
-M1–M3 are what a single session confirmed while ruling §C88; **no systematic pass over this
-register, the specs or the frozen evidence has been run.** M0 is that pass, and it is open.
-**Do not read "3 items" as "3 anomalies exist."**
+✅ **COMPLETENESS — M0 RAN 2026-08-23, AND IT SUBTRACTED. The list is now ONE item, not three.**
+M2 and M3 were measured to a single defect that **cannot be hand-fixed at all** and left for
+**§C115**. **M0's range, predicate and stated exclusions are in the M0 entry below — read them
+before treating this list as the answer**, because M0 is *substantially*, not exhaustively,
+complete: the specs and the individual frozen artifacts were not swept.
+🔴 **The lesson the sweep paid for: a ledger item prescribing a hand fix that CANNOT BE PERFORMED
+is worse than no item — it reads as discharged when the work is impossible.** Every entry here
+must name a fix a human can actually carry out.
 
-- **M0 · ⏰ THE SWEEP ITSELF — OPEN, AND IT MUST FINISH BEFORE PHASE 3, NOT AFTER** — **[CODE]** —
-  *opened 2026-08-23 with this section.*
-  - **Why before the run:** several anomaly classes are only *distinguishable* while the pre-run
-    vintage still exists. After the run you cannot tell "the re-MT did not fix it" from "the
-    re-MT introduced it" — the same argument that put runbook Phase 0's captures where they are.
-  - **Scope to cover:** this register's P0–P3 body entries filtered to the two kept books · the
-    frozen `test-results/` artifacts · `docs/pipeline/cnxml-fidelity-gaps.md` · §C107's **relayed,
-    unverified** backlog of *208 English `alt` texts and 59 stray-English prose runs across all
-    books* (**triage first — that count is not re-derived, and §C107 records two relayed items
-    that did not survive re-measurement**).
-  - ⚠️ **State the sweep's RANGE and PREDICATE when it runs.** A count of items found means
-    nothing without what was searched; and per § One source of truth, use `grep -a` — committed
-    docs in this repo carry NUL bytes that make plain `grep` silently report nothing.
+- **M0 · ✅ THE SWEEP — RUN 2026-08-23. SUBSTANTIALLY, NOT EXHAUSTIVELY, COMPLETE; ITS RANGE AND EXCLUSIONS ARE STATED SO THAT IS CHECKABLE** — **[CODE]** — *opened and run 2026-08-23.*
+  - 🔴 **THE RESULT WAS A SUBTRACTION, NOT AN ADDITION: the ledger went from 3 seeded items to 1.** M2 and M3 were measured to **one** defect that **cannot be hand-fixed at all** → struck, now **§C115**. **The sweep's most useful output was removing bad entries, not finding new ones.**
+  - **Predicate used:** content-level · KEPT book · still open · **survives or is undone by the run** · cheaper by hand than by code.
+  - **Range swept:** `books/{efnafraedi-2e,lifraen-efnafraedi}/02-mt-output/` full git history **path-filtered** (not subject-keyword filtered) · class-B alt census over all `01-source` in both kept books · the `<media[^>]*>` truncation class over all 6,626 media/image open tags · published `<img>` alt across both `05-publication/` trees · the register's **101** body items enumerated mechanically and filtered by book scope and class · `docs/pipeline/cnxml-fidelity-gaps.md` + `html-pipeline-issues.md` · population reconciliation of §C32/§C33/§C107.
+  - **Excluded as a class, with the reason — this is what makes the range checkable:** withdrawn books (§C109's, which is why **§C102 is out: it looks like a fit and is physics-only**) · tooling/CI/authz/deploy/glossary-process items (not content-level; most of the 101) · publication-layer items §C57/§C103/§C104 (**runbook Phase 5 owns them**, §5.3 by name).
+  - ⚠️ **NOT swept, said plainly:** the other frozen `test-results/` artifacts individually · `docs/superpowers/specs/` · the 101 register items read **in full** (filtered by class and book scope, not each read end-to-end). **Treat M0 as substantially complete, not exhaustive.**
+  - ✅ **E1 — the `02-mt-output` hand repairs the run would DESTROY: nothing needs re-applying.** Five genuine hand repairs across both kept books; every cause has a shipped mitigation or is superseded by re-extraction (`unwrapInventedMarkers` for §C67's organic repair · the fail-loud null-byte guard · the bracket-marker migration for the `{=…=}` and `[[docref:]]` repairs · re-extraction for the marker relabel). **Positive control fired** — §C57's `827424da` appears in the path-filtered result. ⚠️ **`827424da` is NOT a hand edit** despite its `fix(…)` subject and 492-line diff: the content diff is wholesale MT rewording plus a `[#CNX_…]`→`[[xref:…]]` migration, i.e. a **re-translation**. **Classifying by subject keyword would have manufactured a false item.** 🔴 **The conclusion rests on causes being FIXED, not on anything being backed up** — `03-faithful-translation/` holds **0** files for organic and only a README for chemistry, so nothing in `02-mt-output` is protected that way. → runbook **4.2**.
+  - ✅ **§C32, §C33 and §C107 are the SAME 2026-08-07 vefur audit — do not treat them as separate backlogs.** §C32's `img-missing-alt: 1 (chemistry 5-3-vermi)` **IS** M3, so that one defect had been logged **three times** before M0 merged it. Its alt backlog is **resolved by §C81 + §C88 + the run** (§C32's "extraction does not send alt for translation" predates both merges). ⚠️ **209 is a DETECTOR-LIMITED LOWER BOUND** — the check is "alt ≥30 chars with no Icelandic letters" — **not** the population, which is all **3,312** alts across the two kept books.
+  - ✅ **Neither pipeline doc yields an item.** `html-pipeline-issues.md` is entirely Fixed/Resolved (last written 2026-03-02). `cnxml-fidelity-gaps.md` Gaps 2–6 are **2026-03-18, pre-bracket-marker vintage**, describing the `*text*`/`^N^`/`__term__` dialect the migration replaced, and are scoped to **OpenStax remerge, not readers**; Gap 8 is a documented accepted cost. ▶ **Re-measure that doc at the post-run vintage before anyone acts on its numbers.**
+  - 📋 **Full sweep, with detectors and controls:** [`test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md) + its probe.
 
 - **M1 · organic `lifraen-efnafraedi` `m00032` — ONE table-cell figure `alt` stays English** —
   **[EDITOR]** — *deferred 2026-08-23 by the [LEAD] ruling that brought the other 244 in.*
@@ -2494,33 +2507,12 @@ register, the specs or the frozen evidence has been run.** M0 is that pass, and 
   - **Verify:** the attribute is non-English in the published `m00032` page; measured, not eyeballed.
   - → sizing and measurements: [`test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
 
-- **M2 · chemistry `efnafraedi-2e` `ch05/m68727` — ONE alt segment the extractor never emits** —
-  **[EDITOR]** — *pre-existing; long known, entered here 2026-08-23 because it had no post-run home.*
-  - **What:** the module has **6** reachable alt attributes and emits **5**. Pinned as a known
-    shortfall by `tools/__tests__/alt-coverage-corpus.test.js` (`expect(short).toEqual([{ module:
-    'm68727', reachable: 6, emitted: 5 }])`), which is why it is a stable fact and not a rumour.
-  - **Why the run will not fix it:** the cause is a **regex-truncation defect in extraction**, so
-    the sixth alt is absent from `02-for-mt` at any vintage. The MT cannot translate a segment
-    that was never extracted.
-  - **Why deferred rather than coded:** the fix is in the extractor's regex fragility class — real
-    work with corpus-wide blast radius, for one attribute in one module of a kept book.
-  - **The hand fix:** an editor sets that one Icelandic `alt` after the run.
-  - ⚠️ **If the regex class is ever fixed properly, DELETE this item** — leaving it would send a
-    human to re-do work the code now does. Same for M1 and M3.
-
-- **M3 · chemistry `efnafraedi-2e` `ch05` `5-3-vermi.html` — ONE EMPTY `alt` on a localized SVG** —
-  **[EDITOR]** — *confirmed by §C107 (2026-08-19); re-verified on disk 2026-08-23.*
-  - **What:** exactly **one** `alt=""`, on the Icelandic SVG `CNX_Chem_05_03_Systemqw_IS.svg`.
-    **Re-measured with a positive control:** 1 empty against **5** non-empty alts on the same page,
-    so the instrument discriminates rather than reading an empty file.
-  - **Why the run will not fix it:** it is **empty**, not English. There is no source string to
-    translate, and §C88's reachability gate is structurally blind to it — that gate measures
-    whether a translation *reached* the attribute, never whether the attribute has *content*.
-  - **Why deferred rather than coded:** writing alt text for a localized image is an authoring
-    act, not a pipeline one.
-  - ⚠️ **Cause not fully established:** it arrives with the image-localization route, so **confirm
-    whether the empty alt originates in the SVG swap before writing one by hand** — if the swap
-    drops a non-empty alt, that IS a code defect and belongs in P1, not here.
+- **M2 + M3 · ~~struck 2026-08-23 by the M0 sweep~~ — THEY ARE ONE DEFECT, IT IS NOT HAND-FIXABLE, AND IT IS NOW §C115** — *retained as an entry rather than deleted, because WHY they left is the reusable part.*
+  - **They were seeded as two ledger items** — chemistry `m68727` emitting 5 alt segments where 6 are reachable (M2), and one `alt=""` on `5-3-vermi.html` (M3). **M0 measured them to one root cause in one module.**
+  - **The mechanism:** `m68727`'s `<media id="fs-idp1427264">` carries a 485-character alt containing a **raw, unescaped `>`** (`“Δ U > 0”` — while the `<` beside it IS escaped). That is **legal XML**, so no schema check sees it; but `<media[^>]*>` stops at it, leaving an unterminated `alt="` and an **empty capture**. Empty text ⇒ `addSegment` returns `null` (**M2**) *and* the structure's `alt` is `undefined` ⇒ `readAlt` returns `''` ⇒ published **`alt=""`** (**M3**).
+  - 🔴 **WHY THE STRIKE MATTERS MORE THAN THE MERGE: the hand fix they prescribed CANNOT BE PERFORMED.** There is no segment, so the editor cannot reach it; `05-publication/` HTML is overwritten by the next render; and `01-source` is READ-ONLY and legally load-bearing, so escaping the `>` at source is forbidden. ▶ **A ledger item prescribing an impossible hand fix is worse than no item — it reads as discharged when the work cannot be done.** That is the failure M0 existed to catch, and it caught it in its own seed data.
+  - 📌 **Severity is HIGHER than either item implied:** `alt=""` tells a screen reader *"decorative, skip"* — **strictly worse than English alt text**, which at least carries meaning. It is the only empty alt among **1,381** published `<img>` across both kept books.
+  - → **§C115** owns it now. Evidence: [`test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md)
 
 ## LEAD operational lane (parallel — unblock whenever convenient)
 
