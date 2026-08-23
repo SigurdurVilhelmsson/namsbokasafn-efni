@@ -119,7 +119,24 @@ function insertCnxmlBefore(doc, parent, cnxmlString, refNode) {
  * @returns {boolean} true if node is an element with a block-level tag name
  */
 function isBlockElement(node) {
-  return node.nodeType === 1 && BLOCK_TAGS.has(node.localName);
+  if (node.nodeType !== 1 || !BLOCK_TAGS.has(node.localName)) return false;
+  // §C85 — a `display="inline"` <media> is NOT a block child here. Extraction
+  // replaces it with a `[[MEDIA:n]]` marker inside the para's text, so the
+  // translated content already carries it; preserving it in place as well
+  // emitted the image TWICE (lifraen-efnafraedi ch02/m00023: 11 media -> 12).
+  //
+  // ⚠️ Deliberately a PREDICATE, not `BLOCK_TAGS.delete('media')`.
+  // handled-tags-shared.test.js freezes BLOCK_TAGS as an exact set and asserts
+  // BLOCK_TAGS ⊆ HANDLED_BLOCK, so removing the member turns that red — and it
+  // would also strand genuinely block-level media, of which efnafraedi-2e has
+  // 215 inside paras and 0 inline. `display="inline"` is the same property that
+  // caused the marker to be emitted, so it is the correct discriminator.
+  //
+  // Pinned by tools/__tests__/inline-media-not-block.test.js, which asserts the
+  // SURVIVING copy is the marker-expanded one in its sentence position — a count
+  // alone cannot tell which of the two duplicates was removed.
+  if (node.localName === 'media' && node.getAttribute('display') === 'inline') return false;
+  return true;
 }
 
 /**
