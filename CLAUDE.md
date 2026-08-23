@@ -413,6 +413,46 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 **⚠️ When you census the corpus for a structural shape, parse it — do not regex it, and state the counting unit.** Regex counts over `<para>`/`<figure>` nesting produced three wrong numbers in one C13 session (an over-generalised book attribution, a glob silently scoped to one book, and a miscount that included an empty `<caption>`). Use `@xmldom/xmldom` and a parent/ancestor predicate, and say whether you counted **per figure or per para** — for C13 the two differ (71 vs 70) and only per-figure matches the schema gate 1:1.
 
+**🔴 DURABLE — A BARE `>` IS LEGAL INSIDE AN XML ATTRIBUTE VALUE, SO `<tag[^>]*>` CAN TRUNCATE
+MID-ATTRIBUTE — SILENTLY, AND NO SCHEMA CHECK CAN SEE IT.** Only `<` and `&` *must* be escaped in
+an attribute value; `>` need not be, and OpenStax's own source escapes one while leaving the other
+raw **in the same sentence**. The document is well-formed, so the RelaxNG gate is correct to pass
+it. What breaks is the regex: `[^>]*` stops at the first raw `>`, leaving an unterminated `attr="`
+and an **empty capture** — the tool then reports success and emits an **empty value**, not a
+missing one, which is why it reads as "the source had nothing there". ▶ **Do not use a regex to
+find the end of an open tag whose attributes you are about to read** — scan it respecting quoted
+values, or parse. **`tools/lib/cnxml-parser.js` now exports `TAG_ATTR_SPAN` (a drop-in for `[^>]*`)
+and `openTagPattern()`; use them rather than writing a new span.** ⚠️ **The `[^>]*` idiom is
+pervasive across `cnxml-extract.js`, `cnxml-inject.js`, `cnxml-render.js` and `tools/lib/` — do not
+trust any enumeration here, re-derive it — so the exposure is set by the CORPUS, not by the code**:
+a source refresh, a new book, or a different element type can light up sites that have never fired.
+The measured instances, their counts and the affected books live in the active register
+(**§C115**), never here.
+- 🔴 **AMENDED 2026-08-24 — THE CLASS IS "FIND THE END OF AN OPEN TAG", **HOWEVER WRITTEN**, AND A
+  GREP FOR THE REGEX IDIOM CANNOT SEE THE WORST INSTANCE.** The rule above named `[^>]*`. The
+  injector's half of §C115 was **`mediaBlock.indexOf('>')`**, under a comment stating *"The `<media>`
+  opening tag is everything up to the first `'>'`"* — the same false premise in **imperative** form,
+  invisible to every `[^>]*` sweep, and found only by a sentinel that compared VALUES end to end.
+  ▶ **When you sweep for this, sweep for the QUESTION being asked, not the syntax**: `indexOf('>')`,
+  `split('>')`, `slice(0, i)` on a tag, and a hand-rolled scanner all belong to it.
+- 🔴 **AND IT IS TYPICALLY TWO INDEPENDENT DEFECTS, ONE PER SIDE — FIXING ONLY THE EXTRACT SIDE
+  MAKES THINGS WORSE, NOT BETTER.** Measured on m68727: with extraction fixed and injection not,
+  the alt was extracted, sent to the paid MT and **discarded at inject** — emitted 1149, reached
+  1148 — i.e. a fresh §C89 drop manufactured by a partial fix. **A repair here is not done until a
+  sentinel run shows `emitted === reached`.**
+- ⚠️ **PRECISION THAT CHANGES THE DIAGNOSIS: the attribute read comes back `undefined`, and what
+  reaches the output depends on the CALLER.** `parseAttributes` requires a closing quote, so a
+  truncated span yields **no `alt` key at all** — not an empty capture and not `''`. Whether that
+  becomes an empty value or a *missing* one is then the caller's `|| ''` and its emptiness guard:
+  on m68727 it became a **missing segment** (5 emitted of 6 reachable), and the published page kept
+  the **untranslated English** alt. ▶ **Look for a MISSING artefact as readily as an empty one**,
+  and do not assume the two symptoms this rule describes always travel together.
+- ⚠️ **A quote-aware span is behaviour-identical where the old one worked, and that is checkable —
+  so check it.** Over the two kept books: same match count (3,312 `<media>` open tags), same speed,
+  and full-corpus extraction output **457 of 491 modules byte-identical** with the 34 changed ones
+  individually accounted for. **A class-wide regex change without a corpus byte-identity diff is
+  unverified**, and the diff is what caught a gratuitous field that touched two innocent modules.
+
 **⚠️ DURABLE — `book-config.json` is MULTI-CONSUMER; a new non-render key must be excluded via `NON_RENDER_KEYS`.** The item-17 licence key leaked through `book-rendering-config.js` `mergeWithShared()`'s lossless passthrough into `getBookRenderConfig()`'s object and broke a golden `toEqual` migration oracle. Verifying "inert on the render path" must check the config-**object** shape and its tests, not just the rendered HTML — a `toEqual`-vs-golden is a shape pin, not only a `toMatchSnapshot`.
 
 **⚠️ DURABLE — `glossary-unified.json` has THREE producers** *(said TWO until 2026-08-09; §C36 B3 added `export-terminology-resolved`, a resolved view of the concept model, and it is now what `export-terminology.js` builds by default — the old `export-terminology` payload is dead code awaiting Part C)*, **the export WRITES UNATTENDED, and its shrink guard does not stop a replacement.** ⚠️ **The three fingerprints are DISJOINT and must stay so** — `category`+`chapter` = merge-glossary · `subjects` = the old export · `domain` = resolved — because `detectProducer` falls back to shape inference when a payload carries no stamp, and an overlap would make a swap undetectable. `tools/merge-glossary.js` wrote every committed copy; `server/scripts/export-terminology.js` is the second, and **`scripts/git-backup.sh` invokes it on the 2-hourly cron — unforced.** The two producers are not interchangeable: **`merge-glossary.js` still has 3 sources and Íðorðabankinn is not one of them**, and its own `--db` upsert targets the `terminology_terms` table that migration 032 dropped. The file also feeds the **render** path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a bad write is **reader-visible**, not merely an MT-quality regression.
@@ -427,6 +467,7 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 **⚠️ DURABLE — onboard a new book LICENCE-FIRST: TM auto-regen needs a per-book licence row.** A missing row is a loud 500 on `GET /api/tm/export` but a **SILENT, warn-only stale TM** on the fire-and-forget regen cron — the failure you won't notice.
 
 **⚠️ DURABLE — the `<!-- SEG:… -->` marker takes NO SPACE after the colon.** `segmentParser.parseSegments` matches `<!-- SEG:m001:para:fs-id1 -->`; the spaced form `<!-- SEG: m001:… -->` parses to **`[]`** — an empty segment list, not an error. Prose across this repo (including specs and register entries) writes it spaced for readability, so it is easy to copy the readable form into a test fixture or a tool and get a silent empty parse that looks like a matching bug. **Verify a fixture against the real parser before building on it.** Found 2026-07-29 while writing the C16 re-attach plan, where 10 fixtures had it wrong.
+- 🔴 **SAME RULE, SECOND EDGE (2026-08-24) — A SEGMENT ID'S `elementId` MAY CONTAIN ONLY `[\w-]`, AND THE TWO PARSERS DISAGREE ABOUT IT.** `server/services/segmentParser.js` matches `SEG:([\w]+):([\w-]+):([\w-]+)`, so an elementId carrying a **dot or a slash does not parse** — and, exactly as above, the failure is an **empty segment list, silently**. ⚠️ **`tools/lib/extraction-coverage.js` uses a looser `[^\s]+?`, so a bad id looks FINE to the coverage check while being invisible to the editor** — green in one place, blind in the other. ▶ **Minting a new segment id from content? Slug it to `[\w-]` and test it against BOTH regexes.** Found while keying §C88 Unit A's 244 alts on the image `src`: the raw `src` fails, and so does a bare basename — on the extension's dot — 245 of 245. `altElementIdFromSrc` (`tools/lib/alt-segments.js`) is the worked example.
 
 **⚠️ Schema validity ⊥ fidelity.** A RelaxNG gate complements `cnxml-fidelity-check.js`, never replaces it (chemistry has 37 known discrepancies and **0** schema errors). If you run the gate, read its traps first — `jing -i` is mandatory, and jing **aborts the rest of the batch** after the first `fatal:`, making a naive invocation fail-QUIET: `experiments/cnxml-validation-gate/FINDINGS.md`.
 

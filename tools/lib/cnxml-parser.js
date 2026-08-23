@@ -190,8 +190,15 @@ export function extractElements(content, tagName) {
   // the trailing `/` is consumed — a greedy `[^>]*` eats the `/`, defeats the
   // self-closing branch, and swallows the next element's opening tag as content
   // (F1: leading-empty table cells, tools/__tests__/cnxml-parser.test.js).
+  // §C115 — quote-aware, and LAZY (`*?`) for exactly the reason above. The span's
+  // alternatives consume a quoted value WHOLE, so laziness cannot stop the match
+  // inside `alt="… > …"`: `"` is not in the bare-character class, so the only way
+  // past a quote is to take the whole `"[^"]*"` alternative.
   const safeTag = escapeRegExp(tagName);
-  const pattern = new RegExp(`<${safeTag}([^>]*?)(?:\\/>|>([\\s\\S]*?)<\\/${safeTag}>)`, 'g');
+  const pattern = new RegExp(
+    `<${safeTag}(${TAG_ATTR_SPAN}?)(?:\\/>|>([\\s\\S]*?)<\\/${safeTag}>)`,
+    'g'
+  );
 
   let match;
   while ((match = pattern.exec(content)) !== null) {
@@ -205,6 +212,52 @@ export function extractElements(content, tagName) {
   }
 
   return elements;
+}
+
+/**
+ * §C115 — the attribute span of an open tag, QUOTE-AWARE. Drop-in for `[^>]*`.
+ *
+ * 🔴 A BARE `>` IS LEGAL INSIDE AN XML ATTRIBUTE VALUE. Only `<` and `&` *must*
+ * be escaped, so a well-formed document may carry a raw `>` in a value — and
+ * OpenStax's own source does, escaping the `<` while leaving the `>` raw IN THE
+ * SAME SENTENCE (`efnafraedi-2e/ch05/m68727`, `alt="… “Δ U > 0” … “Δ U &lt; 0.”"`).
+ *
+ * `<media[^>]*>` therefore stops at that `>` 483 characters into a 485-character
+ * value, leaving an unterminated `alt="`. The failure is what makes it dangerous:
+ * `parseAttributes` then finds NO complete `alt` pair, so the caller reads
+ * `undefined` and emits an EMPTY value rather than a missing one — which reads
+ * downstream as "the source had nothing there". The tool reports success, and no
+ * schema check can see it, because the document is well-formed and the RelaxNG
+ * gate is CORRECT to pass it. A count cannot see it either: the truncated match
+ * still matches, so the tally never moves (§C89).
+ *
+ * The three alternatives are disjoint on their first character (`"`, `'`, anything
+ * else), so the star is effectively deterministic — no catastrophic backtracking.
+ * Measured over the two kept books (491 files): identical match count to `[^>]*`
+ * (3,312 `<media>` open tags) at identical speed, i.e. behaviour-identical
+ * wherever the old pattern already worked.
+ *
+ * ⚠️ Use this ONLY where the match's ATTRIBUTES are subsequently read. Sites that
+ * merely strip or skip tags (`/<[^>]*>/g`) fail differently — they over-consume
+ * visible text, which is loud rather than silent — and are deliberately left alone.
+ *
+ * @type {string}
+ */
+export const TAG_ATTR_SPAN = `(?:"[^"]*"|'[^']*'|[^>'"])*`;
+
+/**
+ * Build a quote-aware open-tag RegExp for one element.
+ *
+ * @param {string} tagName - element name, e.g. 'media' (regex-escaped for you)
+ * @param {object} [opts]
+ * @param {string} [opts.flags=''] - RegExp flags
+ * @param {boolean} [opts.capture=false] - wrap the attribute span in a capture group
+ * @param {boolean} [opts.selfClosing=false] - also match `<tag …/>`
+ * @returns {RegExp}
+ */
+export function openTagPattern(tagName, { flags = '', capture = false, selfClosing = false } = {}) {
+  const span = capture ? `(${TAG_ATTR_SPAN})` : TAG_ATTR_SPAN;
+  return new RegExp(`<${escapeRegExp(tagName)}\\b${span}${selfClosing ? '\\/?' : ''}>`, flags);
 }
 
 /**
@@ -232,7 +285,9 @@ export function parseAttributes(attrString) {
 export function extractNestedElements(content, tagName) {
   const elements = [];
   const safeTag = escapeRegExp(tagName);
-  const openTag = new RegExp(`<${safeTag}(\\s[^>]*)?>`, 'g');
+  // §C115 — quote-aware; a raw `>` in an attribute must not end the open tag, or
+  // the depth walk below starts counting from the wrong offset.
+  const openTag = new RegExp(`<${safeTag}(\\s${TAG_ATTR_SPAN})?>`, 'g');
   const closeTag = `</${tagName}>`;
 
   let match;
@@ -354,7 +409,11 @@ export function extractGlossary(cnxml) {
  */
 export function walkContent(content, handlers, context = {}) {
   // Process elements in document order by finding all opening tags
-  const tagPattern = /<(\w+)(\s[^>]*)?>([^<]*(?:(?!<\1[\s>])<[^<]*)*)<\/\1>|<(\w+)(\s[^>]*)?\/>/g;
+  // §C115 — quote-aware attribute spans; the captures feed parseAttributes below.
+  const tagPattern = new RegExp(
+    `<(\\w+)(\\s${TAG_ATTR_SPAN})?>([^<]*(?:(?!<\\1[\\s>])<[^<]*)*)<\\/\\1>|<(\\w+)(\\s${TAG_ATTR_SPAN})?\\/>`,
+    'g'
+  );
 
   let match;
   while ((match = tagPattern.exec(content)) !== null) {

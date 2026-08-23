@@ -13,7 +13,7 @@ import {
 } from './mathml-to-latex.js';
 import { resolveModuleHref } from './module-sections.js';
 import { renderEmbedHtml } from './embed-mapping.js';
-import { parseAttributes } from './cnxml-parser.js';
+import { parseAttributes, TAG_ATTR_SPAN } from './cnxml-parser.js';
 
 // =====================================================================
 // CROSS-MODULE LINK RESOLUTION
@@ -838,7 +838,13 @@ export function processInlineContent(content, context) {
 
   // Convert inline <media><image> elements (e.g., images inside table cells)
   result = result.replace(
-    /<media\s([^>]*)>\s*<image[^>]*src="([^"]*)"[^>]*\/>\s*<\/media>/g,
+    // §C115 — quote-aware. A raw `>` in the media's alt made this whole pattern
+    // FAIL TO MATCH (not merely truncate), so the inline <media><image> was left
+    // unconverted in the rendered output — a silent drop rather than an empty value.
+    new RegExp(
+      `<media\\s(${TAG_ATTR_SPAN})>\\s*<image${TAG_ATTR_SPAN}src="([^"]*)"${TAG_ATTR_SPAN}\\/>\\s*<\\/media>`,
+      'g'
+    ),
     (match, mediaAttrsStr, src) => {
       // Extract alt and class from media attributes
       const altMatch = mediaAttrsStr.match(/alt="([^"]*)"/);

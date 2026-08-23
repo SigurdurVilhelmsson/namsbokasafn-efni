@@ -124,9 +124,21 @@ after the run. No refresh, no ④, no consent ceremony.
 manifest stale, flips `verifySourceManifest` to `{ok:false}`, and turns root `npm test` red with
 no supported way back.
 
-### 1.2 ⚠️ §C88 — re-take its scope ruling
-Its OUT ruling for organic's 245 `entry-not-in-figure` alts rests on *"213 of them sit in modules
-§C80 is not buying"*. **All 245 are now bought.** The anchor is design, not spend.
+### 1.2 ✅ §C88 — scope ruling RE-TAKEN. RULED [LEAD] 2026-08-23. CLOSED.
+Its OUT ruling for organic's 245 `entry-not-in-figure` alts rested on *"213 of them sit in modules
+§C80 is not buying"*; the 2026-08-17 scope-up bought all 342 modules, so the premise was void.
+Re-measured first — all four carried numbers reproduced exactly — then ruled on design, not spend.
+
+**The ruling, in two halves:**
+- **① The 244 come in, and they land BEFORE the run** → new step **2.2** below. They are
+  extraction-side, so after the run they would cost a second re-extract and a second re-key of
+  organic's seg-ids.
+- **② The remaining 1 (`m00032`, Branch 1) is deferred to a HAND FIX after the run** — recorded as
+  **M1** in the register's ⚒️ post-run manual-fix ledger, and worked through at **4.5** below.
+  **Deferred, not dropped.**
+
+Evidence: [`../../test-results/c88-scope-retake-remeasurement-2026-08-23.md`](../../test-results/c88-scope-retake-remeasurement-2026-08-23.md)
+· [`../../test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
 
 ### 1.3 ✅ Free measurement — settle the chemistry ceiling
 A `--dry-run` on a **fresh** chemistry extract costs 0 ISK and resolves the unmeasured vintage
@@ -142,6 +154,37 @@ glob with `compgen -G` and passes only the **surviving** paths to `git add` — 
 survivors cannot stage a deletion.** Delete them all and the glob matches nothing; delete some and
 only the survivors are staged. Either way a later `git pull` can resurrect them.
 **Gate:** the deletion appears in `git show --stat HEAD` as 7 deletions.
+
+### 2.2 ⚠️ §C88 Unit A **+ §C115** — one branch, one PR. MERGED **AND DEPLOYED** BEFORE PHASE 3.
+Ruled at 1.2. Relax `if (!media.id) continue` (`tools/cnxml-extract.js:1557`) and give the 244 a
+key; teach `applyMediaAltString` (`tools/cnxml-inject.js`) the no-`mediaId` case. `buildTable`
+already holds `cell` at its call site, so `collectMediaAlts`' id-keyed table branch need not change.
+- 🔴 **A key is REQUIRED — deleting the guard is not the fix.** That site calls
+  `altElementId(media.id, 0)` with a **hardcoded index 0**, so id-less media in one module would
+  collide on a single `media-0-alt`. **The guard suppressed two failures while documenting one.**
+- ⚠️ **Prefer the content-anchored key (`src`, measured unique 245/245 in-module) over a positional
+  one.** Both work today (0 of 822 rows disagree), but a positional key inherits future indexing
+  drift and **an alt written to the wrong cell is SILENT — no count moves.** Do not copy
+  `applyFigureAltDom`'s "first media" *for the reason it chose it*: a figure has one media by
+  construction; a table cell does not.
+- ➕ **§C115 RIDES THIS BRANCH** — a raw `>` in an `alt` value truncates `<media[^>]*>`, losing a
+  segment *and* publishing `alt=""`. Same file, same `[^>]*` neighbourhood, same acceptance shape,
+  and it is extraction-side too. 🔴 **Fix the CLASS, not the line** — the idiom is pervasive across
+  the pipeline tools (re-derive that enumeration), and **the corpus, not the code, is what has
+  limited the damage**. State the sweep's range in the PR.
+- 📌 **Pins that move:** `alt-writeback-corpus` organic **1918 → 2162** · `cnxml-extract-alt-corpus`
+  · **`alt-coverage-corpus` chemistry 1148 → 1149 once §C115 lands**, and its
+  `expect(short).toEqual([{module:'m68727', reachable:6, emitted:5}])` empties — **re-point that
+  assertion, do not blank it** *(this line said "alt-coverage-corpus does not move"; that was true
+  of Unit A alone, before §C115 joined the branch)* · 🔴 `inject-roundtrip-corpus`, whose third
+  assertion **passes vacuously on empty arrays** and must be **re-pointed, not blanked**.
+- **Gate:** a **SENTINEL SUBSTITUTION**, never a count (§C89) — overwrite each of the 244 with a
+  token that cannot have come from source, inject, count tokens, **with the 1,918 that already work
+  asserted alongside as a built-in positive control.**
+
+Sizing and detectors: [`../../test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
+· §C115's mechanism and corpus census: [`../../test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md)
+· **cold-start briefing for this step:** [`2026-08-24-unit-a-c115-handoff.md`](2026-08-24-unit-a-c115-handoff.md)
 
 ---
 
@@ -168,6 +211,21 @@ before that pull, they edit the old vintage.**
 From the docx (ch01–ch02) and the moved-aside faithful copies (ch03). **Seg-id renumbering is
 expected and accepted** — re-application is manual and matches by meaning, not by id.
 
+✅ **`02-mt-output` HAND REPAIRS — SWEPT 2026-08-23 (ledger M0): NOTHING NEEDS RE-APPLYING HERE.**
+The run overwrites `02-mt-output`, so human corrections in it are **destroyed, not preserved** —
+and this step named only the docx and the faithful copies, so they had no home. Swept by **path**
+across full git history for both kept books (the `manualCorrections` provenance block is a known
+under-report), positive control §C57 `827424da` fired. Five genuine hand repairs; **every cause has
+a shipped mitigation or is superseded by re-extraction** — `unwrapInventedMarkers` (§C67), the
+fail-loud null-byte guard, the bracket-marker migration, and id renumbering.
+- ⚠️ **Re-run the sweep if the run slips or more hand repairs land**, and classify by **path, then
+  by diff** — never by commit subject: `827424da` carries a `fix(…)` subject and a 492-line diff
+  and is a **re-translation**, not a hand edit.
+- 🔴 **This rests on causes being FIXED, not on anything being backed up.**
+  `03-faithful-translation/` holds **0** files for organic and only a README for chemistry, so
+  nothing in `02-mt-output` is protected that way.
+- 📋 [`../../test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md)
+
 ### 4.3 🔴 ✅ If you use `reattach-segment-edits.js`, verify content first — §C114 ①
 Its header says *"Matching is exact (module_id, segment_id). There is no fallback"*, and
 `original_content` is read only as context — **never compared**. An id that survives while naming
@@ -188,6 +246,18 @@ line. **Prove which box you are on.**
 the command's exit code. ⚠️ **`ch05/chapter-metadata` is reachable only if `segment_edits` holds a
 row with that literal `module_id` — check on prod; if not, write it by hand.**
 📌 **"Properly safe format" is an open [LEAD] question**, not decided here.
+
+### 4.5 ⚠️ Work through the ⚒️ post-run manual-fix ledger — the deferred hand fixes
+The register's **⚒️ Post-run manual-fix ledger** section holds every anomaly deliberately NOT wired
+into the run because a human costs less than the code. **This is the step that spends them.**
+- Each item states **why the run will not fix it** — if the run did fix one, **delete the item**
+  rather than working it; a ledger that sends people to redo solved work stops being read.
+- ✅ **M0, the sweep, RAN 2026-08-23 and the ledger is now ONE item (M1), not three.** M2+M3 were
+  measured to a single defect that cannot be hand-fixed at all → **§C115**, an extraction-side
+  [CODE] item that belongs on **step 2.2's branch**, not here. ⚠️ M0 is *substantially*, not
+  exhaustively, complete — its stated exclusions are in the register's M0 entry.
+- **Gate:** every ledger item is either fixed-and-verified or explicitly re-deferred with a reason;
+  **an item silently left unworked is the failure this section exists to prevent.**
 
 ---
 

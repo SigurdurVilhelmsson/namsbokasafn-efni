@@ -33,6 +33,7 @@ import {
   extractElements,
   parseAttributes,
   stripTags,
+  TAG_ATTR_SPAN,
 } from './lib/cnxml-parser.js';
 import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
 import {
@@ -557,7 +558,9 @@ function hasUnnumberedClass(attrs) {
  */
 function scanBlocks(cnxml, tagName) {
   const out = [];
-  const re = new RegExp(`<${tagName}\\b([^>]*)>`, 'g');
+  // §C115 — quote-aware: a raw `>` in an attribute would end the span early and
+  // hand a truncated `attrs` string to the id/class reads below.
+  const re = new RegExp(`<${tagName}\\b(${TAG_ATTR_SPAN})>`, 'g');
   let m;
   while ((m = re.exec(cnxml)) !== null) {
     const attrs = m[1];
@@ -1051,7 +1054,13 @@ function renderFigure(figure, context) {
   lines.push(`<figure ${attrs.join(' ')}>`);
 
   // Extract media/image
-  const mediaMatch = figure.content.match(/<media([^>]*)>([\s\S]*?)<\/media>/);
+  // §C115 — quote-aware. THIS IS THE READER-VISIBLE ONE: `mediaAttrs.alt` below
+  // becomes the published `<img alt>`, so a truncated open tag here publishes
+  // `alt=""` — which tells a screen reader "decorative, skip" and is WORSE than
+  // leaving the English text in place.
+  const mediaMatch = figure.content.match(
+    new RegExp(`<media(${TAG_ATTR_SPAN})>([\\s\\S]*?)<\\/media>`)
+  );
   if (mediaMatch) {
     const mediaAttrs = parseAttributes(mediaMatch[1]);
     const mediaContent = mediaMatch[2];

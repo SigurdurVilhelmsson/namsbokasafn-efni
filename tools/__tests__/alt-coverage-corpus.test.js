@@ -68,7 +68,7 @@ describe('E5 fires on a real defect and on nothing else (live extractor)', () =>
   const emittedAltCount = (cnxml) =>
     extractSegments(cnxml).segments.filter((s) => s.type === 'alt').length;
 
-  it('exactly one chemistry module is short, and it is m68727', () => {
+  it('no chemistry module is short — m68727 closed by §C115', () => {
     const short = [];
     let reachableTotal = 0;
     let emittedTotal = 0;
@@ -85,7 +85,34 @@ describe('E5 fires on a real defect and on nothing else (live extractor)', () =>
     }
 
     expect(reachableTotal).toBe(1149);
-    expect(emittedTotal).toBe(1148);
-    expect(short).toEqual([{ module: 'm68727', reachable: 6, emitted: 5 }]);
+    expect(emittedTotal).toBe(1149);
+
+    // 🔴 THIS ASSERTION IS RE-POINTED, NOT BLANKED — and the distinction is the
+    // whole reason for this comment. It used to read
+    //   expect(short).toEqual([{ module: 'm68727', reachable: 6, emitted: 5 }])
+    // i.e. it PINNED A KNOWN DEFECT. §C115 fixed that defect, so the literal now
+    // has to change. Replacing it with `expect(short).toEqual([])` would be
+    // correct AND would quietly destroy what the case was worth: an empty-array
+    // equality passes just as happily when the harness silently stops producing
+    // rows at all, which is precisely how a corpus gate rots into decoration.
+    //
+    // So the emptiness is asserted TOGETHER WITH the population that produced it:
+    // if `emittedAltCount` or `altReachability` ever returns nothing, or the module
+    // walk comes back empty, `reachableTotal` and the module count go with it and
+    // this case goes red instead of vacuously green. m68727 is named explicitly as
+    // the one that USED to be short, so a regression says which.
+    expect(short).toEqual([]);
+    expect(sourceModules('efnafraedi-2e').length).toBe(149); // the walk really ran
+    const m68727 = sourceModules('efnafraedi-2e').find((f) => f.includes('m68727'));
+    const src = fs.readFileSync(m68727, 'utf8');
+    // The formerly-short module, asserted by VALUE rather than by count: 6 of 6,
+    // and the recovered one carries the tail that lay beyond the raw `>`.
+    expect(emittedAltCount(src)).toBe(6);
+    expect(altReachability(parseModuleDoc(src).content).reachable).toBe(6);
+    expect(
+      extractSegments(src)
+        .segments.filter((s) => s.type === 'alt')
+        .some((s) => s.text.includes('“Δ U > 0”, “System,” and “Δ U &lt; 0.”'))
+    ).toBe(true);
   }, 120_000);
 });

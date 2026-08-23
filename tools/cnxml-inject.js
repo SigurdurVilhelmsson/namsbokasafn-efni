@@ -46,7 +46,7 @@ import {
   requireBook,
 } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
-import { extractGlossary } from './lib/cnxml-parser.js';
+import { extractGlossary, TAG_ATTR_SPAN } from './lib/cnxml-parser.js';
 import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
@@ -2498,25 +2498,48 @@ function replaceMediaAlt(block, mediaId, altText) {
   // collectFigureAlts: the extractor captures only the first media per figure, so
   // "first" is not a guess, it is the same element the segment came from.
   const mediaRe = mediaId
-    ? new RegExp(`<media\\s[^>]*id="${escapeRegExp(mediaId)}"[\\s\\S]*?<\\/media>`)
+    ? new RegExp(`<media\\s${TAG_ATTR_SPAN}id="${escapeRegExp(mediaId)}"[\\s\\S]*?<\\/media>`)
     : /<media[\s>][\s\S]*?<\/media>/;
   const m = mediaRe.exec(block);
   if (!m) return block;
   const escaped = escapeXml(altText);
   let mediaBlock = m[0];
 
-  // The <media> opening tag is everything up to the first '>'.
-  const openEnd = mediaBlock.indexOf('>');
-  const openTag = mediaBlock.slice(0, openEnd + 1);
+  // 🔴 §C115 — THE OPENING TAG IS *NOT* "EVERYTHING UP TO THE FIRST '>'", which is
+  // what this line used to say and do (`mediaBlock.indexOf('>')`). A raw `>` is legal
+  // inside an attribute value, so on chemistry ch05/m68727 the first `>` sits 483
+  // characters INSIDE the 485-character alt. The truncated openTag then failed the
+  // `alt="…"` test (the quote was never closed), execution fell through to the
+  // `<image>` branch, no image alt existed, and the function returned the block
+  // UNCHANGED — silently discarding a translation that had been extracted, sent to
+  // the paid MT and paid for. Exactly the §C89 shape, in the injector.
+  //
+  // ⚠️ WORTH GENERALISING: this was NOT a `[^>]*` regex, it was `indexOf('>')` —
+  // the same defect in imperative form. A sweep that greps for the regex idiom
+  // cannot see it. The class is "find the end of an open tag", however written.
+  const openMatch = mediaBlock.match(new RegExp(`^<media\\b${TAG_ATTR_SPAN}>`));
+  if (!openMatch) return block;
+  const openTag = openMatch[0];
+  const openEnd = openTag.length - 1;
   if (/\salt="[^"]*"/.test(openTag)) {
     mediaBlock =
       openTag.replace(/\salt="[^"]*"/, ` alt="${escaped}"`) + mediaBlock.slice(openEnd + 1);
   } else {
-    // Otherwise it rides on the first <image> inside.
-    const imgRe = /<image\s[^>]*?\salt="[^"]*"[^>]*\/?>/;
-    const img = imgRe.exec(mediaBlock);
+    // Otherwise it rides on the first <image> inside. ⚠️ Match the whole open tag
+    // quote-aware FIRST and test for `alt` on the result, rather than requiring
+    // `alt` inside the pattern: a greedy attribute span that has to backtrack out
+    // of a quoted value to find `alt="` is both hard to read and easy to get
+    // subtly wrong. Same reason the media branch above matches then inspects.
+    const imgRe = new RegExp(`<image\\s${TAG_ATTR_SPAN}\\/?>`, 'g');
+    let img = null;
+    for (const cand of mediaBlock.match(imgRe) || []) {
+      if (/\salt="[^"]*"/.test(cand)) {
+        img = cand;
+        break;
+      }
+    }
     if (!img) return block;
-    mediaBlock = mediaBlock.replace(imgRe, img[0].replace(/\salt="[^"]*"/, ` alt="${escaped}"`));
+    mediaBlock = mediaBlock.replace(img, img.replace(/\salt="[^"]*"/, ` alt="${escaped}"`));
   }
   return block.slice(0, m.index) + mediaBlock + block.slice(m.index + m[0].length);
 }
@@ -2639,24 +2662,80 @@ function applyMediaAltDom(containerEl, ctx) {
  * @param {object} ctx build context carrying `mediaAlts` and `peekSeg`
  * @returns {string} the entry with translated alt values, or the input unchanged
  */
-function applyMediaAltString(entryCnxml, ctx) {
-  if (!entryCnxml || !ctx || !ctx.mediaAlts) return entryCnxml;
-  return entryCnxml.replace(/<media\b[^>]*>/g, (openTag) => {
-    const idMatch = openTag.match(/\bid="([^"]*)"/);
-    if (!idMatch) return openTag;
-    const entry = ctx.mediaAlts[idMatch[1]];
-    if (!entry) return openTag;
-    const translated = ctx.peekSeg ? ctx.peekSeg(entry.segmentId) : null;
-    if (!translated) return openTag;
-    if (!/\balt="/.test(openTag)) return openTag;
-    // §C88 — `&` MUST be escaped first: escaping `"` before `&` would then
-    // re-escape the `&` inside the just-produced `&quot;`, yielding `&amp;quot;`.
-    const escaped = String(translated)
+/**
+ * Write translated `alt` values into the bare `<media>` elements of ONE verbatim
+ * table `<entry>`.
+ *
+ * Two populations, two keys — and they are resolved differently on purpose:
+ *  - **id-bearing media** (chemistry 29, physics 8) are looked up in `ctx.mediaAlts`
+ *    by their own id, exactly as before.
+ *  - **id-less media** (§C88 Unit A — organic's 244) have no id to look up, so
+ *    `buildTable` passes the cell's own alt record in directly as `cellAlt`. It is
+ *    matched to a `<media>` by the child `<image>`'s `src`, NOT by position: an alt
+ *    written to the wrong cell is SILENT — no count moves (§C89) — so the key is
+ *    anchored to the content it describes.
+ *
+ * @param {string} entryCnxml - the verbatim `<entry>…</entry>` source
+ * @param {object|null} ctx - build context (`mediaAlts`, `peekSeg`)
+ * @param {{segmentId: string, text?: string, mediaId: string|null, src: string|null}|null} [cellAlt]
+ *   §C88 Unit A — the structure record for an id-less media in THIS cell.
+ * @returns {string}
+ */
+function applyMediaAltString(entryCnxml, ctx, cellAlt = null) {
+  if (!entryCnxml || !ctx) return entryCnxml;
+  if (!ctx.mediaAlts && !cellAlt) return entryCnxml;
+
+  // §C88 — `&` MUST be escaped first: escaping `"` before `&` would then
+  // re-escape the `&` inside the just-produced `&quot;`, yielding `&amp;quot;`.
+  // ⚠️ `>` is escaped too. It need not be, but writing `&gt;` keeps a translated
+  // value from re-introducing the §C115 truncation hazard into our own output.
+  const escapeAttr = (s) =>
+    String(s)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
-    return openTag.replace(/\balt="[^"]*"/, `alt="${escaped}"`);
+
+  const translationFor = (segmentId) => (ctx.peekSeg ? ctx.peekSeg(segmentId) : null);
+
+  // §C115 — the open tag is delimited QUOTE-AWARE. A raw `>` inside an existing
+  // alt value would otherwise truncate the match, and the rewrite below would
+  // splice a replacement into the middle of an attribute.
+  // ⚠️ BOTH FORMS, and the self-closing one is not hypothetical: `<media …/>` with
+  // no `</media>` is what this function's own fixtures use, and an earlier cut of
+  // this rewrite matched only the paired form and silently stopped writing to them.
+  // The span is LAZY here for the same reason `extractElements` makes it lazy — a
+  // greedy span swallows the `/` and defeats the self-closing branch.
+  const MEDIA_BLOCK = new RegExp(`<media\\b${TAG_ATTR_SPAN}?(?:\\/>|>[\\s\\S]*?<\\/media>)`, 'g');
+  const MEDIA_OPEN = new RegExp(`^<media\\b${TAG_ATTR_SPAN}?\\/?>`);
+
+  const rewriteOpenTag = (openTag, translated) => {
+    if (!translated) return openTag;
+    // Only REPLACE an existing alt; never invent one. A media with no alt in the
+    // source had nothing to translate, and adding an attribute here would change
+    // the source shape on a path that is supposed to be verbatim.
+    if (!/\balt="/.test(openTag)) return openTag;
+    return openTag.replace(/\balt="[^"]*"/, `alt="${escapeAttr(translated)}"`);
+  };
+
+  return entryCnxml.replace(MEDIA_BLOCK, (block) => {
+    const openMatch = block.match(MEDIA_OPEN);
+    if (!openMatch) return block;
+    const openTag = openMatch[0];
+    const idMatch = openTag.match(/\bid="([^"]*)"/);
+
+    if (idMatch) {
+      const entry = ctx.mediaAlts && ctx.mediaAlts[idMatch[1]];
+      if (!entry) return block;
+      return block.replace(openTag, rewriteOpenTag(openTag, translationFor(entry.segmentId)));
+    }
+
+    // §C88 Unit A — id-less. The only key is the child <image>'s src.
+    if (!cellAlt || cellAlt.mediaId || !cellAlt.src) return block;
+    const imageOpen = block.match(new RegExp(`<image\\b${TAG_ATTR_SPAN}\\/?>`));
+    const src = imageOpen ? (imageOpen[0].match(/\bsrc="([^"]*)"/) || [])[1] : null;
+    if (!src || src !== cellAlt.src) return block;
+    return block.replace(openTag, rewriteOpenTag(openTag, translationFor(cellAlt.segmentId)));
   });
 }
 
@@ -2893,7 +2972,17 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
                 // §C88 — this is the VERBATIM source entry (empty-text cell, or a
                 // cell whose translation is missing). Any bare <media> in it still
                 // carries its English alt; rewrite it in place before returning.
-                return applyMediaAltString(entryMatch, ctx);
+                //
+                // §C88 Unit A — `cell.alt` is passed DIRECTLY rather than looked up.
+                // Organic's 244 id-less media have no id for `collectMediaAlts` to
+                // key on, and `cell` is already in scope here, so the record travels
+                // straight from the producer to the writer. `collectMediaAlts`'
+                // id-keyed table branch is untouched, which is why chemistry's 29
+                // and physics's 8 are unaffected.
+                // ⚠️ `cell` may be undefined here (the RC4 gap branch above), so
+                // read `alt` defensively — an undefined cell is a structure defect
+                // already recorded in tableCellGaps, not a reason to throw.
+                return applyMediaAltString(entryMatch, ctx, cell ? cell.alt || null : null);
               }
             );
           }

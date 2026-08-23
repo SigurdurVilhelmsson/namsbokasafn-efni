@@ -35,11 +35,12 @@ import {
   parseAttributes,
   stripTags,
   extractGlossary,
+  TAG_ATTR_SPAN,
 } from './lib/cnxml-parser.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
-import { altElementId } from './lib/alt-segments.js';
+import { altElementId, altElementIdFromSrc } from './lib/alt-segments.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import {
   parseArgs,
@@ -263,16 +264,20 @@ function extractInlineText(
     // duplicates AFTER both copies exist (so it never has to guess which one
     // renders) instead of suppressing before either is created. This capture
     // path is intentionally back to computing the real altText unconditionally.
-    const mediaPattern = /<media([^>]*)>([\s\S]*?)<\/media>/g;
+    // §C115 — quote-aware open tags on all three reads below. This is the INLINE
+    // media path (media embedded in <para> text); m68727's media is a figure child
+    // so this site has never fired on the raw-`>` instance, but the exposure is set
+    // by the corpus, not by the code — a source refresh or a new book lights it up.
+    const mediaPattern = new RegExp(`<media(${TAG_ATTR_SPAN})>([\\s\\S]*?)<\\/media>`, 'g');
     text = text.replace(mediaPattern, (match, attrs, mediaContent) => {
       counters.media = (counters.media || 0) + 1;
       const placeholder = `[[MEDIA:${counters.media}]]`;
 
       // Extract media attributes
       const parsedAttrs = parseAttributes(attrs);
-      const imageMatch = mediaContent.match(/<image([^>]*)>/);
+      const imageMatch = mediaContent.match(new RegExp(`<image(${TAG_ATTR_SPAN})>`));
       const imageAttrs = imageMatch ? parseAttributes(imageMatch[1]) : {};
-      const iframeMatch = mediaContent.match(/<iframe([^>]*)\/?>/);
+      const iframeMatch = mediaContent.match(new RegExp(`<iframe(${TAG_ATTR_SPAN})\\/?>`));
       const iframeAttrs = iframeMatch ? parseAttributes(iframeMatch[1]) : {};
 
       inlineMediaMap.set(placeholder, {
@@ -873,7 +878,10 @@ function extractSegments(cnxml, options = {}) {
   for (const [tableId, tableData] of inlineTablesMap) {
     if (!tableData.processed) {
       // Parse the table element to extract its structure
-      const tableAttrsMatch = tableData.fullMatch.match(/<table([^>]*)>/);
+      // §C115 — quote-aware. The corpus instance for <table> is microbiology's
+      // m58798 (a withdrawn book, so no live effect today); the site is fixed
+      // because the exposure is set by the CORPUS, not by the code.
+      const tableAttrsMatch = tableData.fullMatch.match(new RegExp(`<table(${TAG_ATTR_SPAN})>`));
       const tableAttrs = tableAttrsMatch ? parseAttributes(tableAttrsMatch[1]) : {};
 
       const tableElement = {
@@ -1437,10 +1445,21 @@ function processFigure(figure, moduleId, addSegment, mathMap, counters) {
   // no `<!-- SEG: -->` markers (those are an output artefact), so nothing
   // load-bearing is stripped.
   const figureContentLive = stripXmlComments(figure.content);
-  const mediaMatch = figureContentLive.match(/<media[^>]*>([\s\S]*?)<\/media>/);
+  // §C115 — QUOTE-AWARE, not `[^>]*`. A raw `>` is legal inside an attribute
+  // value, and chemistry ch05/m68727's 485-character alt contains one (“Δ U > 0”)
+  // while the `<` in the same sentence IS escaped. `<media[^>]*>` stopped 483
+  // characters in, leaving an unterminated `alt="` — so parseAttributes found no
+  // alt pair, altText fell to '', addSegment returned null, and the module emitted
+  // 5 of its 6 reachable alts while the page published `alt=""`. Two symptoms, one
+  // cause. ⚠️ The match COUNT is identical either way, so no tally could see it.
+  const mediaMatch = figureContentLive.match(
+    new RegExp(`<media${TAG_ATTR_SPAN}>([\\s\\S]*?)<\\/media>`)
+  );
   if (mediaMatch) {
-    const mediaAttrs = parseAttributes(mediaMatch[0].match(/<media([^>]*)>/)[1]);
-    const imageMatch = mediaMatch[1].match(/<image[^>]*>/);
+    const mediaAttrs = parseAttributes(
+      mediaMatch[0].match(new RegExp(`<media(${TAG_ATTR_SPAN})>`))[1]
+    );
+    const imageMatch = mediaMatch[1].match(new RegExp(`<image${TAG_ATTR_SPAN}>`));
     if (imageMatch) {
       const imageAttrs = parseAttributes(imageMatch[0]);
       const altText = mediaAttrs.alt || imageAttrs.alt || '';
@@ -1544,17 +1563,61 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
           // here, where the empty single-content text is what gets thrown
           // away.
           const cell = { segmentId: null, attributes: entry.attributes };
-          for (const media of extractElements(entry.content, 'media')) {
-            // Guard on id (Controller Ruling 9, matching the identical guard
-            // at the <example>/<problem>/<solution>/<note> emit sites,
-            // cnxml-extract.js:1707 et al.): collectMediaAlts
-            // (tools/cnxml-inject.js) requires the media id to write a
-            // translation back. Without this guard an id-less media would
-            // take altElementId's positional fallback, get a segment id
-            // nothing at inject can resolve, and be extracted, translated,
-            // paid for, and silently discarded (§C89 recreated). Leave an
-            // id-less bare media unextracted instead.
-            if (!media.id) continue;
+          // 🔴 §C88 UNIT A — A FIGURE INSIDE THIS CELL ALREADY OWNS ITS MEDIA, so
+          // scan only the residue. `extractElements` is depth-BLIND: it matches a
+          // `<media>` anywhere in the entry, INCLUDING one wrapped in a `<figure>`,
+          // and the figure path has already emitted that alt under the figure's id.
+          // Before this strip, relaxing the id guard made m00046 emit the SAME alt
+          // text twice — once as `fig-00004-alt` (correct) and once as
+          // `OChem_04_07_004_jpg-alt` (spurious) — which would have been translated
+          // and PAID FOR twice, and would have raced the figure's own write-back.
+          // ⚠️ THE TOTAL IS WHAT EXPOSED IT, AND ONLY BECAUSE IT WAS PREDICTED: the
+          // population is 245 by DIRECT-PARENT and 246 by ANY-DEPTH, so a corpus
+          // delta of +245 instead of +244 was one too many. A per-module diff named
+          // the module; a book-level count alone would have looked close enough.
+          // Same class the length-descending strip below was written for.
+          const cellFigures = extractElements(entry.content, 'figure');
+          const cellMediaScope = cellFigures.length
+            ? stripContainersByLength(entry.content, [cellFigures])
+            : entry.content;
+          for (const media of extractElements(cellMediaScope, 'media')) {
+            // §C88 UNIT A — the id guard that used to sit here is GONE, replaced
+            // by a real key. What it said: collectMediaAlts (tools/cnxml-inject.js)
+            // needs a media id to write a translation back, so an id-less media
+            // would be extracted, translated, PAID FOR and silently discarded
+            // (§C89 recreated) — therefore leave it unextracted.
+            //
+            // 🔴 IT WAS SUPPRESSING TWO FAILURES WHILE DOCUMENTING ONE, which is why
+            // simply deleting it was never the fix: the emit below called
+            // `altElementId(media.id, 0)` with a HARDCODED index 0, so every id-less
+            // media in a module would also have collided on one `media-0-alt`.
+            //
+            // Both are closed by keying on the image `src` (altElementIdFromSrc):
+            // content-anchored, so it cannot drift the way a positional key would,
+            // and an alt written to the wrong cell is SILENT — no count moves.
+            // The write-back reaches these through `cell.alt`, which buildTable
+            // hands to applyMediaAltString directly, so no id lookup is involved.
+            //
+            // Scope, measured: organic has 245 such media (0 id-bearing `<media>`
+            // in the whole book — its ids sit on the FIGURE, never the MEDIA), of
+            // which 244 arrive here; the 245th is in the sibling `cellParas` branch
+            // and is [LEAD]-deferred to a hand fix (ledger M1). Chemistry's 29 and
+            // physics's 8 are id-BEARING and are unaffected by this change.
+            //
+            // ⚠️ A media with no usable src still cannot be keyed, so it keeps the
+            // old behaviour — unextracted rather than extracted-and-discarded.
+            // Measured at 0 of 245 today; the branch is the guard's surviving half,
+            // not dead code.
+            // Parse the child <image>'s attributes ONCE, quote-aware (§C115), and
+            // read both `src` (the key) and `alt` (the fallback text) off it. Doing
+            // it in one place avoids a second `[^>]*` and keeps the two reads from
+            // disagreeing about where the open tag ends.
+            const imageOpen = media.content.match(new RegExp(`<image${TAG_ATTR_SPAN}\\/?>`));
+            const imageAttrs = imageOpen ? parseAttributes(imageOpen[0]) : {};
+            const altKey = media.id
+              ? altElementId(media.id, 0)
+              : altElementIdFromSrc(imageAttrs.src);
+            if (!altKey) continue;
             // ⚠️ Review Finding 5 (fix round 1) — this fallback has no
             // counterpart in the string-path writer. `applyMediaAltString`
             // (tools/cnxml-inject.js) matches only `<media …>` open tags and
@@ -1568,11 +1631,8 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             // code, outside this task's scope, and teaching it the `<image>`
             // fallback has a blast radius across every string-path
             // write-back. Logged for the register, not closed.
-            const altText =
-              media.attributes.alt ||
-              (media.content.match(/<image[^>]*\balt="([^"]*)"/) || [])[1] ||
-              '';
-            const altSegId = altText ? addSegment('alt', altText, altElementId(media.id, 0)) : null;
+            const altText = media.attributes.alt || imageAttrs.alt || '';
+            const altSegId = altText ? addSegment('alt', altText, altKey) : null;
             // 🔴 `mediaId` is REQUIRED here, not decorative — unlike the
             // {type:'media'} structure nodes at the other three emit sites,
             // a table cell is not itself keyed by media id, so
@@ -1584,13 +1644,33 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             // than one alt-bearing media — and, since this loop does not
             // break, it is whichever media comes LAST in document order, not
             // the first. Measured (parsed, not grepped) across all six books:
-            // 0 entries anywhere hold more than one alt-bearing (id'd) media
-            // — 37 total alt-bearing table-cell media corpus-wide (29
-            // chemistry + 8 physics), every one alone in its cell — so this
-            // never fires in the current corpus. If that ever changes,
+            // 0 entries anywhere hold more than one alt-bearing media — 37
+            // id-BEARING corpus-wide (29 chemistry + 8 physics) plus organic's
+            // 245 id-LESS ones (§C88 Unit A), every one alone in its cell — so
+            // this never fires in the current corpus. If that ever changes,
             // promote `cell.alt` to `cell.alts[]` and teach collectMediaAlts
             // (tools/cnxml-inject.js) to walk it.
-            if (altSegId) cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id };
+            //
+            // §C88 Unit A — `mediaId` is now NULLABLE. It stays the key for the
+            // id-bearing population (collectMediaAlts' table branch resolves those
+            // by id, unchanged). For an id-less media there is nothing to look up,
+            // so buildTable passes this record to applyMediaAltString DIRECTLY;
+            // `src` is carried so the writer can find the right `<media>` in a cell
+            // without relying on position.
+            if (altSegId) {
+              cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id || null };
+              // ⚠️ `src` IS CARRIED ONLY FOR THE ID-LESS CASE, deliberately — it is
+              // the write-back key, and an id-bearing media does not need one
+              // (collectMediaAlts resolves those by id). Adding it unconditionally
+              // was the first cut and it changed the structure output of two
+              // chemistry appendix modules (m68866, m68867) that this change has no
+              // business touching. `books/*/02-structure/` is TRACKED — 717 files —
+              // so a gratuitous field is committed churn, and it widens the
+              // acceptance diff from "exactly the population Unit A targets" to
+              // "that plus some". The corpus byte-identity check caught it, which
+              // is the argument for running one.
+              if (!media.id) cell.alt.src = imageAttrs.src || null;
+            }
           }
           rowStructure.cells.push(cell);
         }
