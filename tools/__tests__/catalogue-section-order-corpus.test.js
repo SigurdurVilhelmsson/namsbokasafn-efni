@@ -130,7 +130,13 @@ function compare(slug, json) {
     if (committed.get(id) === String(want)) matched += 1;
     else mismatches.push(`${id}: catalogue "${committed.get(id)}" vs manifest "${want}"`);
   }
-  return { matched, mismatches, compared: matched + mismatches.length };
+  return {
+    matched,
+    mismatches,
+    compared: matched + mismatches.length,
+    manifestSize: manifest.size,
+    catalogueSize: committed.size,
+  };
 }
 
 /** Books carrying BOTH a catalogue and a collection manifest, discovered not listed. */
@@ -161,8 +167,19 @@ describe('§C108 — server/data catalogues follow collection-order.json', () =>
     it(`${slug} (${file}) assigns every section in collection order`, () => {
       const r = compare(slug, cataloguesBySlug().get(slug).json);
       expect(r).not.toBeNull();
-      // Positive control in the same assertion: a broken harness compares 0.
-      expect(r.compared).toBeGreaterThan(0);
+      // 🔴 COVERAGE FLOOR, not just a non-zero check. `compare()` skips any
+      // manifest id the catalogue does not carry, so WITHOUT this a catalogue
+      // that simply DROPPED entries — including every module of the two chapters
+      // §C108 exists to protect — would compare fewer ids and still report zero
+      // mismatches, i.e. pass while broken. Found by a whole-branch review, which
+      // demonstrated it by emptying ch06+ch18's module arrays and watching the pin
+      // stay green.
+      //
+      // Measured satisfiable for all five books, both directions: manifest and
+      // catalogue id sets are congruent (0 manifest-only, 0 catalogue-only), so
+      // this is an exact equality rather than a lower bound.
+      expect(r.compared).toBe(r.manifestSize);
+      expect(r.compared).toBe(r.catalogueSize);
       expect({ slug, matched: r.matched, mismatches: r.mismatches }).toEqual({
         slug,
         matched: r.compared,
@@ -177,7 +194,10 @@ describe('§C108 — server/data catalogues follow collection-order.json', () =>
       if (!entry) return; // book removed entirely; nothing to warrant
       const r = compare(slug, entry.json);
       expect(r).not.toBeNull();
-      expect(r.compared).toBeGreaterThan(0); // control: we really did compare
+      // Same coverage floor as above — a KNOWN_BAD book that lost entries would
+      // otherwise still satisfy "has mismatches" while hiding how many.
+      expect(r.compared).toBe(r.manifestSize);
+      expect(r.compared).toBe(r.catalogueSize);
       // If this book is ever corrected, this fails and the KNOWN_BAD entry must go.
       expect(r.mismatches.length).toBeGreaterThan(0);
     });

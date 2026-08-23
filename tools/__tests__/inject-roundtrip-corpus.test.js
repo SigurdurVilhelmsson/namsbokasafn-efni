@@ -109,7 +109,7 @@ describe('alt survives the round trip', () => {
     // DOUBLED image. Measured 2026-08-16 and logged to the active register.
     //
     //   m00032  36 media/image/alt -> 36   ✅ RESOLVED BY §C85-drop, 2026-08-23 (was -> 35, DROPPED)
-    //   m00046   4 media/image/alt ->  5   image DUPLICATED
+    //   m00046   4 media/image/alt ->  4   ✅ RESOLVED BY §C85-A, 2026-08-23 (was ->  5, DUPLICATED)
     //   m00023  11 alt -> 11   ✅ RESOLVED BY §C85-B, 2026-08-23 (was 11 -> 12, duplicated)
     //   m00069   6 alt ->  6   ✅ RESOLVED BY §C89, 2026-08-16 (was 6 -> 9, tripled)
     //
@@ -118,7 +118,12 @@ describe('alt survives the round trip', () => {
     // which also marks those figures handled — so a figure that had been emitted
     // BOTH standalone and inside its container is now emitted once. Re-measured on
     // merged main: m00069 is 6/6/6 -> 6/6/6, media and image counts included.
-    // The other three are UNCHANGED and remain open under §C85.
+    // ⚠️ THAT SENTENCE USED TO READ "The other three are UNCHANGED and remain open
+    // under §C85" and is no longer true — all three were fixed on 2026-08-23. Left
+    // corrected rather than deleted because a whole-branch review found it: this
+    // branch updated two lines of the table above and missed these, so the block
+    // simultaneously said RESOLVED and "remain open". A comment updated in PART is
+    // worse than one not updated at all — it reads as current.
     //
     // ⚠️ THE PIN GOING RED IS THE POINT — it is a defect CHARACTERISATION, so an
     // improvement trips it exactly as a regression would. Read the direction before
