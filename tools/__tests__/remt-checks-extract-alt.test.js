@@ -122,6 +122,54 @@ describe("E5's `examined` unit — decided here, not inherited (§C82 L17)", () 
 });
 
 /**
+ * 🔴 THESE TWO TESTS EXIST BECAUSE THE MUTATION BATTERY FOUND THEM MISSING, NOT BECAUSE
+ * THEY WERE PLANNED. Ten mutations were applied to E5; eight died and two walked:
+ *
+ *   `verdict: reached >= expected ? PASS : FAIL`   every other test still green
+ *   `findings: []`                                 every other test still green
+ *
+ * ▶ THE FIRST IS THE SHARPER ONE, AND IT IS THIS REPO'S OWN LESSON ABOUT COMMENTS. E5's
+ * docstring asserts "EQUALITY, NOT `>=`" and names the reason — a `reached > expected` is
+ * the duplicate-alt shape §C81 Task 10 closed, where an alt is emitted twice, translated
+ * twice and **PAID FOR twice**. Nothing tested it, because the natural over-emission rate
+ * is 0 corpus-wide: the direction is UNFALSIFIABLE without a planted control, exactly as
+ * Task 5's E3 row says of raw XML residue. A comment that generalises past its code is how
+ * a gap survives review.
+ * ▶ THE SECOND matters to Plan C, not to Tier 1's exit code: the driver quarantines and
+ * ATTRIBUTES from `findings`, so a FAIL carrying none is a halt nobody can act on.
+ */
+describe('the equality gate, and the findings a FAIL must carry', () => {
+  it('🔴 FAILs when an alt is emitted TWICE — a planted control, because the base rate is 0', async () => {
+    const cnxml = srcText(CHEM, 'ch04', 'm68710');
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    const anAlt = fresh.match(/<!--\s*SEG:[^\s]*:alt:[^\s]*\s*-->/);
+    expect(anAlt).not.toBeNull(); // control: the fixture really does carry alt markers
+    const doubled = fresh.replace(anAlt[0], `${anAlt[0]}\n\ndup\n\n${anAlt[0]}`);
+    const r = await runCheck(E5, { cnxml, segText: doubled });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.message).toMatch(/expected 6 .*reached 7 /);
+    // Signed, not clamped: the sign IS the direction, and over-emission is the paid one.
+    expect(r.findings).toHaveLength(1);
+    expect(r.findings[0]).toMatchObject({
+      kind: 'alt-coverage',
+      expected: 6,
+      reached: 7,
+      delta: 1,
+    });
+  });
+
+  it('📌 L20 PREMISE PIN — the under-emission FAIL carries a finding with a negative delta', async () => {
+    // EXPECTED TO MOVE AT THE RE-EXTRACT, like every other `02-for-mt`-derived assertion
+    // here: this module reads `reached 1` afterwards and stops FAILing at all. The
+    // DURABLE half of the pair is the planted control above, which FAILs forever.
+    const r = await runCheck(E5, modCtx(CHEM, 'ch01', 'm68663'));
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings).toHaveLength(1);
+    expect(r.findings[0]).toMatchObject({ kind: 'alt-coverage', reached: 0, delta: -1 });
+    expect(r.findings[0].expected).toBeGreaterThan(0);
+  });
+});
+/**
  * 🔴 E5 IS MORE EXPOSED TO THE SOURCE-SIDE VOID THAN E2 OR E4, NOT LESS — and the
  * reason is already written down in `remt-checks-extract.js`: `checkBracketBodies` and
  * `analyzeModule` THROW on a missing ctx, while `checkAltCoverage` returns a CLEAN
