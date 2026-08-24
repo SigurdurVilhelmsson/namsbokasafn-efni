@@ -88,7 +88,9 @@ describe('the empty-selection refusal', () => {
 /**
  * 🔴 L4 — `--tier` COULD NOT BE TRUSTED, AND THE FAILURE WAS A SILENT EXIT 0.
  *
- * `parseArgs` coerces `type: 'number'` with `parseInt(raw, 10)` (parseArgs.js:178).
+ * `parseArgs` coerces `type: 'number'` with `parseInt(raw, 10)` (parseArgs.js:179 — `:178`
+ * is the `else if` ABOVE the call, the exact off-by-one this branch already corrected in
+ * the source-file copy of this rationale and left standing in the duplicate here).
  * Measured: `parseInt('abc')` is **NaN**, and the plan's guard is
  * `if (args.tier == null)` — but **`NaN == null` is false**, so NaN passes the
  * guard; `c.tier === NaN` then selects zero checks and the run exits 0.

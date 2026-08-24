@@ -338,7 +338,9 @@ export function analyzeModule(cnxmlText, segText) {
     listFindings.length > 0 || dupFindings.sourceDup.length > 0 || realDups.length > 0;
   // ⚠️ altFindings is REPORTED, not folded into hasFindings. verify-extraction-coverage.js
   // exits on hasFindings, and every module in the tree is pre-re-extract today — zero alt
-  // segments exist corpus-wide — so folding it in turns the existing gate red for all 1,192
+  // segments exist corpus-wide — so folding it in turns the existing gate red for 183 of the
+  // 196 units it can analyse (re-measured 2026-08-24; this read "all 1,192", wrong ~6x and
+  // wrong in the "all" — 13 stay clean)
   // modules the moment this lands. Plan C's driver reads altFindings.ok directly as its own
   // E5 gate, after the §C81 re-extract. Do not widen this without re-extracting first.
   return { listFindings, dupFindings, altFindings, hasFindings };

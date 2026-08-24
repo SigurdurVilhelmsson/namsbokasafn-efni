@@ -18,6 +18,7 @@ import path from 'node:path';
 import { runCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
 import { E2, E4, E7, EXTRACT_CHECKS, countSegments } from '../lib/remt-checks-extract.js';
 import { modulesWithSegments } from './helpers/remt-corpus.js';
+import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
 
 const ROOT = path.resolve(import.meta.dirname, '..', '..');
 const src = (b, ch, m) =>
@@ -57,13 +58,34 @@ describe('countSegments — the shared examined unit', () => {
   });
 });
 
+/**
+ * 🔴 E2's ONLY NATURAL MUST-TRIP FIXTURES SELF-REPAIR AT THE RE-EXTRACT, AND THERE IS NO
+ * REPLACEMENT IN EITHER KEPT BOOK. Filed independently by two review lenses and confirmed
+ * by corpus census: run through the REAL `runCheck(E2, …)` over every module carrying both
+ * a source CNXML and a segment file (chemistry 149, organic 17, micro 10 = 176), the
+ * COMMITTED `02-for-mt` fires on exactly 2 modules / 3 findings — ch04/m68710 and
+ * ch06/m68733, which are the two below — while a byte-faithful FRESH extract of the same
+ * `01-source` fires on **0**. The extractor fixes both swallows.
+ * ▶ SO THE TWO TESTS BELOW GO RED AT THE RE-EXTRACT, and the natural repair — swap the
+ * fixture — HAS NO CANDIDATE. The repair after that is to relax the assertion, and once
+ * that happens mutating E2 to `verdict: VERDICT.PASS` leaves the whole suite green: a
+ * blocking money gate becomes unfalsifiable, and a swallowed marker body reaches the paid
+ * MT undetected. That is the FALSE-PASS direction, the expensive one.
+ * ▶ THE ANSWER IS A PLANTED CONTROL, exactly as Task 5's E3 row prescribes for a base rate
+ * of 0 and as E5's over-emission control already does: corrupt one marker body in a FRESH
+ * extract, where the corruption cannot be repaired by re-extracting. That test is last in
+ * this block and it is the one that must never be deleted.
+ */
 describe('E2 — bracket-marker bodies match 01-source', () => {
-  it('SHOULD-TRIP on m68733 (a self-closing <emphasis/> swallow)', async () => {
+  it('📌 L20 PREMISE PIN — SHOULD-TRIP on m68733 (a self-closing <emphasis/> swallow)', async () => {
+    // EXPECTED TO GO GREEN AT THE RE-EXTRACT: the fresh extractor does not reproduce this
+    // swallow. When it does, that is the corpus being fixed, not E2 breaking — delete or
+    // re-point this test in the commit that observes it, and keep the planted control.
     const r = await runCheck(E2, mod('efnafraedi-2e', 'ch06', 'm68733'));
     expect(r.verdict).toBe(VERDICT.FAIL);
   });
 
-  it('SHOULD-TRIP on m68710, and reports BOTH locations', async () => {
+  it('📌 L20 PREMISE PIN — SHOULD-TRIP on m68710, and reports BOTH locations', async () => {
     // The spec's fixture note reads `m68710:716,722` — two locations for one swallow.
     // Only raw (non-deduped) marker iteration reports both; asserting the count is what
     // keeps `checkBracketBodies`'s raw-iteration choice from being "simplified" away.
@@ -83,6 +105,7 @@ describe('E2 — bracket-marker bodies match 01-source', () => {
     // halting a paid run on a module that is clean. Measured: 12 of chemistry's 149.
     const r = await runCheck(E2, mod('efnafraedi-2e', 'ch01', 'm68663'));
     expect(r.verdict).toBe(VERDICT.PASS);
+    // 📌 L20 PREMISE PIN — 11 is the COMMITTED segment count; fresh emits 12 (measured).
     expect(r.examined).toBe(11);
     expect(r.message).toMatch(/0 marker bodies compared/);
   });
@@ -101,6 +124,29 @@ describe('E2 — bracket-marker bodies match 01-source', () => {
     expect(r.verdict).toBe(VERDICT.PASS);
   });
 
+  it('🔴 SHOULD-TRIP on a PLANTED body corruption in a FRESH extract — the flip-proof control', async () => {
+    // 🔴 THE ONE E2 MUST-TRIP THAT SURVIVES THE RE-EXTRACT. Both natural fixtures above go
+    // green when the corpus is re-extracted (see this block's header); this one cannot,
+    // because the corruption is introduced AFTER extraction and no re-extract can repair it.
+    // Without it, E2 has no must-trip at all post-flip and `verdict: PASS` is unfalsifiable.
+    const cnxml = src('efnafraedi-2e', 'ch04', 'm68710');
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+
+    // CONTROL: the fresh extract really is clean, so the FAIL below is the plant and not
+    // a leftover natural defect. This is also the corpus-flip assertion in miniature.
+    expect((await runCheck(E2, { cnxml, segText: fresh })).verdict).toBe(VERDICT.PASS);
+
+    const marker = fresh.match(/\[\[i:([^\]]{3,40})\]\]/);
+    expect(marker).not.toBeNull(); // control: the fixture carries comparable marker bodies
+    const planted = fresh.replace(marker[0], '[[i:ZZQXCORRUPTBODY]]');
+    expect(planted).not.toBe(fresh); // control: the substitution actually happened
+
+    const r = await runCheck(E2, { cnxml, segText: planted });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings).toHaveLength(1);
+    expect(r.examined).toBeGreaterThan(0); // vacuity control
+  });
+
   it('SKIPPED, naming the key, when the loader supplied no segText', async () => {
     const r = await runCheck(E2, { cnxml: src('efnafraedi-2e', 'ch01', 'm68663') });
     expect(r.verdict).toBe(VERDICT.SKIPPED);
@@ -116,7 +162,12 @@ describe('E2 — bracket-marker bodies match 01-source', () => {
 });
 
 describe('E4 — list coverage and REAL duplicate seg-ids', () => {
-  it('SHOULD-TRIP on orverufraedi ch01/m58781 — 4 dropped multiple-choice lists', async () => {
+  it('📌 L20 PREMISE PIN — SHOULD-TRIP on orverufraedi ch01/m58781, 4 dropped lists', async () => {
+    // 🔴 MEASURED TO FLIP: a fresh extract of this same `01-source` gives PASS / 0 findings
+    // (committed FAIL/4 -> fresh PASS/0), because the extractor no longer drops the lists.
+    // So E4's ONLY natural must-trip self-repairs exactly as E2's two do — the same defect
+    // class, found while closing the review rather than by it. The flip-proof replacement is
+    // the PLANTED pair at the end of this block; do not delete those when this goes green.
     // ⚠️ Withdrawn-book BYTES as a fixture are fine; pointing a RUN at that book is not.
     // ⚠️ The plan names this fixture as `ch24/m58781`. It is ch01 — ch24 has no such
     // module and the read would have thrown ENOENT. → active register §C82 L18.
@@ -126,7 +177,7 @@ describe('E4 — list coverage and REAL duplicate seg-ids', () => {
     expect(r.examined).toBeGreaterThan(0);
   });
 
-  it('the trip is through DROPPED LIST ITEMS, not through some other finding', async () => {
+  it('📌 L20 PREMISE PIN — the trip is through DROPPED LIST ITEMS, not some other finding', async () => {
     // Pins WHY it fails. A wrapper that spread `rawDup` whole would also make this
     // module FAIL — for the wrong reason, and the SHOULD-TRIP alone could not tell.
     const r = await runCheck(E4, mod('orverufraedi', 'ch01', 'm58781'));
@@ -150,8 +201,50 @@ describe('E4 — list coverage and REAL duplicate seg-ids', () => {
     // half has traversed the whole module and found it clean.
     const r = await runCheck(E4, mod('efnafraedi-2e', 'ch01', 'm68663'));
     expect(r.verdict).toBe(VERDICT.PASS);
+    // 📌 L20 PREMISE PIN — 11 is the COMMITTED segment count; a fresh extract of m68663
+    // emits 12 (measured). The DURABLE half of this test is `examined > 0` with 0 lists.
     expect(r.examined).toBe(11);
     expect(r.message).toMatch(/^0 list, /);
+  });
+
+  /**
+   * 🔴 THE FLIP-PROOF PAIR. Both of E4's natural must-trips die at the re-extract — the
+   * dropped-list fixture repairs itself (FAIL/4 -> PASS/0, measured), and no real duplicate
+   * seg-id exists anywhere in the corpus (0 across all 176 module pairs), so the dup half
+   * has NEVER been exercised by a corpus fixture at all. An earlier review round measured
+   * that the dup detection could be DELETED ENTIRELY with 91 of 91 tests green.
+   * ▶ These two plant each half into a FRESH extract, where no re-extract can repair them.
+   */
+  it('🔴 SHOULD-TRIP on a PLANTED dropped list item — the list half, flip-proof', async () => {
+    const cnxml = src('orverufraedi', 'ch01', 'm58781');
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    // CONTROL: the fresh extract is clean, so the FAIL below is the plant, not a leftover.
+    expect((await runCheck(E4, { cnxml, segText: fresh })).verdict).toBe(VERDICT.PASS);
+
+    const parts = fresh.split(/(?=<!--\s*SEG:)/);
+    const victim = parts.findIndex((p) => /<!--\s*SEG:[^\s]*:item:[^\s]*\s*-->/.test(p));
+    expect(victim).toBeGreaterThan(-1); // control: the fixture really has list-item segments
+    const r = await runCheck(E4, {
+      cnxml,
+      segText: parts.filter((_, i) => i !== victim).join(''),
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.message).toMatch(/^1 list, /);
+  });
+
+  it('🔴 SHOULD-TRIP on a PLANTED real duplicate seg-id — the half no corpus module reaches', async () => {
+    const cnxml = src('orverufraedi', 'ch01', 'm58781');
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    const first = fresh.match(/<!--\s*SEG:([^\s]+?)\s*-->/);
+    expect(first).not.toBeNull(); // control
+    // Same id, DIFFERENT visible text — that difference is what makes it `kind: 'real'`
+    // rather than one of the benign duplicates the filter deliberately drops.
+    const r = await runCheck(E4, {
+      cnxml,
+      segText: `${fresh}\n\n<!-- SEG:${first[1]} -->\nZZQXDIFFERENTVISIBLETEXT\n`,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.message).toMatch(/1 raw-dup findings/);
   });
 
   it("agrees with analyzeModule's own hasFindings across the chemistry corpus", async () => {
@@ -401,8 +494,13 @@ describe('the ctx guard — a gate must refuse the wrong module, not judge it', 
     ],
   ];
 
-  it('POSITIVE CONTROL: the real pair still FAILs with its 4 findings', async () => {
+  it('📌 L20 PREMISE PIN — POSITIVE CONTROL: the real pair still FAILs with its 4 findings', async () => {
     // Without this, a guard that skipped everything would satisfy every case below.
+    // 🔴 IT IS A POSITIVE CONTROL **AND** A PREMISE PIN, WHICH IS THE DANGEROUS COMBINATION
+    // THE REVIEW NAMED: the fixture PASSes on a fresh extract, so at the flip the natural
+    // 'repair' is to weaken the very assertion that proves the guard does not refuse
+    // everything. ▶ WHEN IT FLIPS, RE-POINT IT AT A PLANTED INPUT (the pair at the end of
+    // the E4 block), never relax it to `not.toBe(SKIPPED)`.
     const r = await runCheck(E4, REAL());
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings).toHaveLength(4);

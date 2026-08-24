@@ -437,7 +437,13 @@ export function emittedAltIds(segText) {
  * 🔴 DO NOT "FIX" THAT BY WIDENING `analyzeModule`'s `hasFindings`. It folds `altFindings`
  * OUT deliberately and says so in code at `extraction-coverage.js:339-343`:
  * `verify-extraction-coverage.js` exits on `hasFindings`, so folding it in turns that
- * existing gate red for all 1,192 modules the moment it lands. E5 reads `altFindings.ok`
+ * existing gate red for 183 of the 196 units it can analyse, the moment it lands.
+ * ⚠️ RE-MEASURED 2026-08-24, because the number this sentence inherited was wrong in BOTH
+ * halves: it said "all 1,192 modules". The gate enumerates 226 `-segments.en.md` units
+ * across every book, 196 of which have a source CNXML to analyse; of those **183 would go
+ * red and 13 stay clean** (chemistry 137/12, organic 17/0, physics 8/1, biology 11/0,
+ * micro 10/0). A ~6x scare number, and an "all" that is false, in a comment whose whole
+ * job is to stop a future session making this change. E5 reads `altFindings.ok`
  * directly, which is also what keeps the two gates from giving one module two answers.
  *
  * ⚠️ EQUALITY, NOT `>=`, AND THE OVER-EMISSION DIRECTION IS A REAL DEFECT CLASS. A
