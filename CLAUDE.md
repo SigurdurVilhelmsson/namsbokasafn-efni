@@ -525,6 +525,29 @@ anywhere irreversible would not be. **Read the flag's consumer in the source, or
 throwaway copy first.** Do not assume the sibling tools differ — `cnxml-inject` and `cnxml-render`
 share the idiom and have not been checked.
 
+🔴 **DURABLE — NEVER `process.exit()` WITH OUTPUT IN FLIGHT. NODE WRITES STDOUT TO A **PIPE**
+ASYNCHRONOUSLY, SO `process.exit()` DISCARDS WHATEVER IS STILL QUEUED — SILENTLY, AND WITH THE
+EXIT CODE STILL CORRECT.** Measured 2026-08-24 on `tools/remt-battery.js`: a `--json` payload came
+back as **150,342 valid bytes** through a `>` redirect and **exactly 65,536** (the pipe buffer)
+through `| cat`, 3 runs of 3, `JSON.parse` → `Unterminated string`. ▶ **A `>` redirect is
+SYNCHRONOUS and stays clean, which is why a hand check misses this entirely** — and why it
+surfaces only once a payload outgrows 64 KB, i.e. on the real corpus rather than in a smoke test.
+**Use `process.exitCode = n` and let the process end naturally**, or await a flush first.
+⚠️ **Do NOT blanket-replace every `process.exit`** — measured on the same file, converting a
+usage-error exit makes the function fall THROUGH to the rest of `main()` and the run exits **0**.
+Only the exit that follows a stdout write is the bug. ⚠️ **And the trade-off is real:**
+`process.exitCode` waits for the event loop to drain, so a leaked handle turns a wrong 0 into a
+hang. A hang is louder. ⚠️ **Do not trust a grep here** — a file containing both
+`JSON.stringify` and `process.exit` proves nothing (31 files do), and *line* order is not
+*execution* order. **The predicate is an exit on the same path AFTER a write; only reading the
+function settles it.** Instances live in the active register, never here.
+
+🔴 **DURABLE — A PROMISE THAT NEVER SETTLES EXITS 0; IT DOES NOT HANG.** `new Promise(() => {})`
+holds **no handle**, so Node's event loop empties and the process exits **normally with 0**,
+having produced no output and reached no verdict. Measured under `timeout 8`: it returned **0,
+not 124**. ▶ **Any tool whose exit code is a verdict needs a FAILURE DEFAULT** — set
+`process.exitCode = <error>` on entry and overwrite it only when a verdict is actually reached.
+
 **⚠️ DURABLE — COMMITTED SOURCE AND DOC FILES IN THIS REPO CONTAIN RAW NUL BYTES, AND PLAIN `grep`
 REPORTS *NOTHING* FOR STRINGS THEY DEMONSTRABLY CONTAIN. Use `grep -a` for every census.**
 GNU grep classifies a file holding a NUL as binary and suppresses its matches; with `-n` it
