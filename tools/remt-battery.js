@@ -32,10 +32,20 @@
  *   @property {string} [mtOutputPath] path, for the .locked sibling  (Task 6: E9)
  *   @property {string} [scanDir]      directory to sweep             (Task 5: E6)
  *
- * ▶ Until the loader lands, this CLI passes only the SCOPE keys. That is safe
- * rather than silent: a gate reading `ctx.cnxml` on an undefined ctx throws,
- * `runCheck` converts the throw to FAIL, and a blocking FAIL exits 1. The gap
- * announces itself. → active register §C82 L6.
+ * ▶ Until the loader lands, this CLI passes only the SCOPE keys, so every other key
+ * reads as plain `undefined`. 🔴 THAT IS NOT STRUCTURALLY LOUD, AND AN EARLIER
+ * VERSION OF THIS COMMENT CLAIMED IT WAS. Reading `ctx.cnxml` does not throw — it
+ * yields `undefined` — and what happens next is PER-GATE. Measured over the real
+ * instruments, called with `undefined`:
+ *     THREW (loud)   checkBracketBodies · analyzeModule · isMtLocked
+ *     RETURNED EMPTY checkAltCoverage · detectResidue · findGlossaryCollisions
+ * Three of six. For the quiet half the only backstop is `runCheck`'s
+ * `PASS + examined 0 → SKIPPED` rule, and that fires ONLY if the gate keyed
+ * `examined` to content it actually read.
+ * ▶ SO, GATE AUTHORS OF TASKS 3-12: KEY `examined` TO CONTENT, NEVER TO A FIXED LEG
+ * COUNT. A gate reporting a constant — Plan B's own E9 test asserts
+ * `expect(r.examined).toBe(5)`, its five legs — reports PASS with examined 5 over a
+ * ctx carrying nothing, and the CLI exits 0. → active register §C82 L6.
  *
  * 🔴 WHOEVER BUILDS THAT LOADER: IT WILL READ THE READ-ONLY OPENSTAX SOURCE TREE,
  * AND THAT MAKES THIS TOOL A PROV-1 TOUCHER. `tools/__tests__/source-write-guard.test.js`
@@ -46,7 +56,10 @@
  * deliberately NOT in the set today: it performs no I/O at all (no `fs` import),
  * and listing a non-toucher would dilute the tripwire for the one moment it exists
  * to catch. ⚠️ Note the guard's own SCOPE comment: it nets top-level `tools/*.js`
- * ONLY, so the tier modules under `tools/lib/` are invisible to it. → §C82 L10.
+ * ONLY, so the tier modules under `tools/lib/` are invisible to it.
+ * → active register **§C82 L10** — cite it qualified, always: an unrelated `L10`
+ * already exists in that file under the embed backlog (physics `m42074`), because
+ * the L-numbers are item-scoped rather than global.
  */
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from './lib/parseArgs.js';
@@ -68,9 +81,13 @@ import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
  * mention is an import BINDING, which a keyword grep cannot tell from a call.
  *
  * ⚠️ DO NOT instead import the tier modules from `lib/remt-battery.js`. Measured:
- * import hoisting puts `REGISTRY` in the temporal dead zone and the process dies
- * with `ReferenceError: Cannot access 'REGISTRY' before initialization`. The CLI
- * is the right place precisely because it is downstream of the contract.
+ * import hoisting evaluates the tier module BEFORE this module's own top-level
+ * bindings exist, so the first binding it touches dies in the temporal dead zone:
+ * `ReferenceError: Cannot access '<binding>' before initialization`. WHICH binding
+ * depends on the tier module's shape — with Task 3's (a top-level `defineCheck`
+ * call) it is `MIN_TIER`; a top-level `VERDICT` read names `VERDICT`. State the
+ * class, not one identifier. The CLI is the right place precisely because it is
+ * downstream of the contract.
  *
  * None exist yet, so the registry is empty — and `runTier` REFUSES an empty
  * selection rather than reporting a clean run over it.
@@ -85,7 +102,10 @@ export const TIER_MAX = 4;
  *
  * 🔴 THE RAW STRING IS THE ONLY PLACE THE ERROR IS STILL VISIBLE, which is why
  * `--tier` is declared `type: 'string'` below instead of `type: 'number'`.
- * `parseArgs` coerces numbers with `parseInt(raw, 10)` (parseArgs.js:178), and
+ * `parseArgs` coerces numbers with `parseInt(raw, 10)` — at parseArgs.js:179 (the
+ * spaced `--tier 1` form) and :165 (the inline `--tier=1` form), with a third in
+ * CHAPTER_OPTION at :65. (This cited one site, ":178", which is the `else if`
+ * ABOVE the call rather than the call.) And
  * `parseInt` TRUNCATES: `parseInt('1.5')` is 1 and `parseInt('1abc')` is 1. By the
  * time a numeric guard runs, both look like a legitimate tier 1. `parseInt('abc')`
  * is NaN, and the plan's guard `if (args.tier == null)` misses it because
@@ -127,8 +147,21 @@ export async function runTier(tier, ctx, checks) {
   // supplied no evidence — and a gate that supplied no evidence must not let a
   // paid module through. This is the amendment's "treat 'examined 0 units' as a
   // failure in its own right, not infer a pass from exit 0."
+  //
+  // ⚠️ `examined === 0` IS ITS OWN CLAUSE, NOT A RESTATEMENT OF `SKIPPED`. The rule
+  // above is general; the verdicts are not symmetrical under it. PASS+0 is downgraded
+  // to SKIPPED upstream in `runCheck`, and FAIL+0 is caught by the FAIL clause — but
+  // **WARN+0 was the one green cell**, measured: `WARN W0 v1 (examined 0)` … exit 0,
+  // a blocking gate that looked at nothing letting a paid module through.
+  // ▶ Two other repairs were considered and are WRONG. Downgrading WARN→SKIPPED in
+  // `runCheck` ERASES the check's findings and message. And `defineCheck` cannot
+  // decide at construction whether a check may return WARN — the spec has R3 blocking
+  // *and* WARN-returning at once. Widening this filter is the only repair that keeps
+  // the evidence intact; a WARN that DID examine still exits 0.
   const blockingFailures = results.filter(
-    (r) => r.blocking && (r.verdict === VERDICT.FAIL || r.verdict === VERDICT.SKIPPED)
+    (r) =>
+      r.blocking &&
+      (r.verdict === VERDICT.FAIL || r.verdict === VERDICT.SKIPPED || r.examined === 0)
   );
   return { tier, results, blockingFailures };
 }
@@ -162,6 +195,14 @@ async function selfTest() {
 }
 
 async function main() {
+  // 🔴 FAILURE DEFAULT. A run that never reaches a verdict must not exit 0, and the
+  // way it gets there is not a hang: a check returning `new Promise(() => {})` holds
+  // NO handle, so Node's event loop empties and the process exits NORMALLY with 0,
+  // having produced no output, run no later checks, and never computed
+  // `blockingFailures`. Measured under `timeout 8` — it returned 0, not 124. Standing
+  // at 2 until a verdict overwrites it is what makes that shape visible.
+  process.exitCode = 2;
+
   const args = parseArgs(process.argv.slice(2), [
     { name: 'book', flags: ['--book'], type: 'string' },
     // `--chapter` is a STRING on purpose: chapter 0 is falsy as a number (the
@@ -200,5 +241,20 @@ async function main() {
       );
     }
   }
-  process.exit(exitCodeFor(run));
+  // 🔴 `process.exitCode`, NEVER `process.exit()`, WITH OUTPUT IN FLIGHT. Node writes
+  // stdout to a PIPE asynchronously, so `process.exit()` discards whatever is still
+  // queued: measured at exactly 65,536 bytes (the pipe buffer), 3 runs of 3, against
+  // 150,342 valid bytes through a `>` redirect — with the exit code correct in both.
+  // `--json` exists to be piped and the standing rule is "read --json, apply the
+  // battery's threshold", so a consumer doing exactly the right thing received a
+  // truncated document. A `>` redirect is synchronous and stays clean, which is why a
+  // hand check misses this entirely.
+  // ⚠️ DO NOT extend this to `usage()` or the `main().catch` — measured: `usage()`
+  // then falls through to the rest of main and the run exits 0. Those two keep
+  // `process.exit(2)`.
+  // ⚠️ TRADE-OFF, stated rather than discovered later: `process.exitCode` waits for
+  // the event loop to drain, so a future ctx loader leaving a handle open would make
+  // this hang instead of exiting. A hang is louder than a wrong 0 — that is the trade
+  // being accepted here.
+  process.exitCode = exitCodeFor(run);
 }

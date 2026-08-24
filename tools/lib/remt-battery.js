@@ -69,7 +69,7 @@ const MAX_TIER = 4;
 export function defineCheck({ id, tier, blocking, version, run }) {
   if (!id) throw new Error('defineCheck: id is required');
   // 🔴 A TIER TYPO MAKES A CHECK INVISIBLE, NOT BROKEN. `runTier` selects with
-  // `c.tier === tier` — strict equality against a parseArgs `type: 'number'` — so
+  // `c.tier === tier` — strict equality against the number the CLI validated — so
   // a string or out-of-range tier is never selected, never runs, and reports
   // nothing. "A gate that is never called is indistinguishable from one that does
   // not exist." Closed here, at construction, where it costs one line; the

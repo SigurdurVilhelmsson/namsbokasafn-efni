@@ -1,4 +1,9 @@
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, afterEach, beforeAll, afterAll } from 'vitest';
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { defineCheck, REGISTRY, VERDICT } from '../lib/remt-battery.js';
 import { runTier, exitCodeFor, parseTier, TIER_MIN, TIER_MAX } from '../remt-battery.js';
 
@@ -65,14 +70,18 @@ describe('the empty-selection refusal', () => {
     await expect(runTier(3, {})).rejects.toThrow(/registry holds \d+/);
   });
 
-  it('POSITIVE CONTROL: a registered check IS selected from the REGISTRY by tier', async () => {
-    // Without this, the refusal above could be passing because selection is broken
-    // rather than because the registry is empty.
+  it('POSITIVE CONTROL: selection really filters BY TIER, not "whatever is registered"', async () => {
+    // ⚠️ Registering ONE check was not a control: a filter mutated to `() => true`,
+    // to `&& c.blocking`, or to a hard-coded tier all return the sole entry and the
+    // assertion still passes. Two checks in DIFFERENT tiers, differing in `blocking`
+    // too, is what makes those three mutants fail.
     const { registerChecks } = await import('../lib/remt-battery.js');
-    registerChecks([mk('B5', VERDICT.PASS, true, 7, 4)]);
+    registerChecks([mk('B5', VERDICT.PASS, true, 7, 4), mk('B5b', VERDICT.PASS, false, 9, 2)]);
     const r = await runTier(4, {});
     expect(r.results.map((x) => x.id)).toEqual(['B5']);
     expect(r.results[0].examined).toBe(7);
+    const r2 = await runTier(2, {});
+    expect(r2.results.map((x) => x.id)).toEqual(['B5b']);
   });
 });
 
@@ -117,6 +126,42 @@ describe('parseTier — the raw string is the only place the error is still visi
     expect(parseTier('')).toBeNull();
     expect(parseTier(undefined)).toBeNull();
   });
+
+  it('rejects a NUMBER — the string-only clause is the whole L4 defence', () => {
+    // Dropping `typeof raw !== 'string'` leaves the regex, which coerces its operand,
+    // so parseTier(1) would quietly return 1 and the guard would appear to work.
+    expect(parseTier(1)).toBeNull();
+    expect(parseTier(1.5)).toBeNull();
+  });
+
+  it('the LITERAL tier bounds match the regex — the two can drift apart', () => {
+    // ⚠️ Asserted against literals on purpose. `String(TIER_MAX + 1)` derives from the
+    // value under test, so it follows a mutated TIER_MAX and never goes red.
+    expect(TIER_MIN).toBe(0);
+    expect(TIER_MAX).toBe(4);
+    expect(parseTier('4')).toBe(4);
+    expect(parseTier('5')).toBeNull();
+  });
+});
+
+describe('the ctx reaches the check', () => {
+  it('runTier passes its ctx THROUGH to each check, not a fresh empty object', async () => {
+    // SURVIVING MUTANT otherwise: `runCheck(c, {})` in place of `runCheck(c, ctx)`
+    // passed all 16 tests, because no test read ctx. Every Tier-1 gate depends on it.
+    let seen = null;
+    const spy = defineCheck({
+      id: 'CTX1',
+      tier: 1,
+      blocking: false,
+      version: 1,
+      run: (ctx) => {
+        seen = ctx;
+        return { verdict: VERDICT.PASS, examined: 1, findings: [] };
+      },
+    });
+    await runTier(1, { book: 'efnafraedi-2e', module: 'm68663' }, [spy]);
+    expect(seen).toMatchObject({ book: 'efnafraedi-2e', module: 'm68663' });
+  });
 });
 
 describe('exitCodeFor keeps the plan’s documented 0/1 contract', () => {
@@ -142,4 +187,164 @@ afterEach(() => {
   // `resetRegistry()` was considered and rejected, because an exported
   // registry-emptier is itself a new wrong-PASS surface.
   expect(REGISTRY).toBeInstanceOf(Map);
+});
+
+/**
+ * 🔴 THE CLI AS A PROCESS. Everything above calls `runTier`/`exitCodeFor`/`parseTier`
+ * as functions, so `main()`, `usage()`, both output branches and the entry guard had
+ * ZERO coverage — and an adversarial review found three live defects in exactly that
+ * gap, all invisible to an in-process test. `execFileSync` captures stdout through a
+ * PIPE, which is what makes the truncation case below reproducible; a `>` redirect is
+ * synchronous and stays clean, which is why a hand check misses it.
+ *
+ * ⚠️ `execFileSync` throws on any non-zero exit, so a bare call cannot tell exit 1
+ * from exit 2 — hence the try/catch returning `{out, code}`. Idiom copied from
+ * `tools/__tests__/module-flag-honesty.test.js:27-37`.
+ */
+describe('the CLI as a process', () => {
+  const REPO_ROOT = path.resolve(import.meta.dirname, '..', '..');
+  const LIB = pathToFileURL(path.join(REPO_ROOT, 'tools', 'lib', 'remt-battery.js')).href;
+  let probeDir;
+
+  const probe = (name, body) => {
+    const file = path.join(probeDir, `${name}.mjs`);
+    fs.writeFileSync(
+      file,
+      `import { defineCheck, registerChecks, VERDICT } from '${LIB}';\n${body}\n`
+    );
+    return pathToFileURL(file).href;
+  };
+
+  const runCli = (args, preload) => {
+    const nodeArgs = preload ? ['--import', preload] : [];
+    try {
+      const out = execFileSync(
+        'node',
+        [...nodeArgs, path.join('tools', 'remt-battery.js'), ...args],
+        {
+          cwd: REPO_ROOT,
+          encoding: 'utf8',
+          stdio: ['ignore', 'pipe', 'pipe'],
+          maxBuffer: 64 * 1024 * 1024,
+        }
+      );
+      return { out, code: 0 };
+    } catch (err) {
+      return { out: `${err.stdout || ''}${err.stderr || ''}`, code: err.status ?? 1 };
+    }
+  };
+
+  beforeAll(() => {
+    probeDir = fs.mkdtempSync(path.join(os.tmpdir(), 'remt-cli-'));
+  });
+  afterAll(() => {
+    fs.rmSync(probeDir, { recursive: true, force: true });
+  });
+
+  const SCOPE = ['--book', 'efnafraedi-2e', '--tier', '1'];
+
+  it('exits 2 with a usage error when --book is absent', () => {
+    const r = runCli(['--tier', '1']);
+    expect(r.code).toBe(2);
+    expect(r.out).toMatch(/--book is required/);
+  });
+
+  it('exits 2 on a fractional --tier — the L4 defence, at process level', () => {
+    const r = runCli(['--book', 'efnafraedi-2e', '--tier', '1.5']);
+    expect(r.code).toBe(2);
+    expect(r.out).toMatch(/1\.5/);
+  });
+
+  it('exits 2 rather than 0 when the registry is empty', () => {
+    const r = runCli(SCOPE);
+    expect(r.code).toBe(2);
+    expect(r.out).toMatch(/no checks selected/);
+  });
+
+  it('POSITIVE CONTROL: exits 0 when every blocking check passes', () => {
+    const p = probe(
+      'pass',
+      `registerChecks([defineCheck({id:'CP1',tier:1,blocking:true,version:3,run:()=>({verdict:VERDICT.PASS,examined:12,findings:[]})})]);`
+    );
+    const r = runCli(SCOPE, p);
+    expect(r.code).toBe(0);
+    expect(r.out).toMatch(/PASS\s+CP1 v3 \(examined 12\)/);
+  });
+
+  it('exits 1 on a blocking FAIL', () => {
+    const p = probe(
+      'fail',
+      `registerChecks([defineCheck({id:'CF1',tier:1,blocking:true,version:1,run:()=>({verdict:VERDICT.FAIL,examined:9,findings:['x']})})]);`
+    );
+    expect(runCli(SCOPE, p).code).toBe(1);
+  });
+
+  /**
+   * 🔴 A BLOCKING CHECK THAT EXAMINED NOTHING MUST NOT EXIT 0 — AND `WARN` WAS THE
+   * ONE GREEN CELL. The comment beside `blockingFailures` states the rule generally
+   * ("treat 'examined 0 units' as a failure in its own right"), and the filter
+   * implemented it for three verdicts of four: FAIL and SKIPPED were caught, PASS was
+   * downgraded to SKIPPED upstream — and WARN sailed through. Measured before the fix:
+   * `WARN W0 v1 (examined 0)` … exit 0.
+   * ⚠️ Two other repairs were considered and are WRONG: downgrading WARN→SKIPPED in
+   * `runCheck` ERASES the check's findings and message, and `defineCheck` cannot decide
+   * at construction whether a check may return WARN (spec:142 has R3 blocking *and*
+   * WARN-returning). Widening the filter is the only one that keeps the evidence.
+   */
+  it('exits 1 on a blocking WARN that examined nothing — no evidence is not a pass', () => {
+    const p = probe(
+      'warn0',
+      `registerChecks([defineCheck({id:'CW0',tier:1,blocking:true,version:1,run:()=>({verdict:VERDICT.WARN,examined:0,findings:[],message:'no evidence'})})]);`
+    );
+    expect(runCli(SCOPE, p).code).toBe(1);
+  });
+
+  it('POSITIVE CONTROL: a blocking WARN that DID examine still exits 0', () => {
+    // Without this, the fix above could be "any WARN blocks", which would halt a paid
+    // run on R3 — specified blocking and WARN-returning at once.
+    const p = probe(
+      'warnN',
+      `registerChecks([defineCheck({id:'CWN',tier:1,blocking:true,version:1,run:()=>({verdict:VERDICT.WARN,examined:31,findings:['advisory']})})]);`
+    );
+    expect(runCli(SCOPE, p).code).toBe(0);
+  });
+
+  /**
+   * 🔴 `process.exit()` DISCARDS QUEUED STDOUT. Node's stdout-to-a-pipe is async, so a
+   * payload larger than the 64 KB pipe buffer is cut off mid-document while the exit
+   * code stays correct — measured at exactly 65,536 bytes, 3 runs of 3, against
+   * 150,342 valid bytes through a `>` redirect. `--json` exists precisely to be piped,
+   * and the constraint is "read --json, apply the battery's threshold" — so a consumer
+   * doing the right thing receives a truncated document.
+   */
+  it('emits COMPLETE --json through a pipe when the payload exceeds the 64 KB buffer', () => {
+    const p = probe(
+      'big',
+      `const findings = Array.from({length:1200},(_,i)=>({seg:'m1:para:p'+i,why:'a finding long enough to matter for buffer purposes'}));
+       registerChecks([defineCheck({id:'CBIG',tier:1,blocking:false,version:1,run:()=>({verdict:VERDICT.WARN,examined:1200,findings})})]);`
+    );
+    const r = runCli([...SCOPE, '--json'], p);
+    expect(r.out.length).toBeGreaterThan(65536); // the buffer it used to be cut at
+    expect(() => JSON.parse(r.out)).not.toThrow();
+    expect(JSON.parse(r.out).results[0].findings).toHaveLength(1200);
+  });
+
+  /**
+   * 🔴 A CHECK WHOSE PROMISE NEVER SETTLES USED TO EXIT 0 WITH NO OUTPUT — and it did
+   * not hang, which is what makes it dangerous. `new Promise(() => {})` holds no
+   * handle, so Node's event loop empties and the process exits NORMALLY, code 0, having
+   * run no further checks and never computed `blockingFailures`. A second, blocking
+   * FAIL check in the same tier never ran. The fix is a failure-default `exitCode`.
+   */
+  it('exits 2, not 0, when a check never settles and the run reaches no verdict', () => {
+    const p = probe(
+      'hang',
+      `registerChecks([
+         defineCheck({id:'CH1',tier:1,blocking:true,version:1,run:()=>new Promise(()=>{})}),
+         defineCheck({id:'CH2',tier:1,blocking:true,version:1,run:()=>({verdict:VERDICT.FAIL,examined:5,findings:['never reached']})}),
+       ]);`
+    );
+    const r = runCli(SCOPE, p);
+    expect(r.code).toBe(2);
+  });
 });
