@@ -542,6 +542,20 @@ hang. A hang is louder. ⚠️ **Do not trust a grep here** — a file containin
 *execution* order. **The predicate is an exit on the same path AFTER a write; only reading the
 function settles it.** Instances live in the active register, never here.
 
+🔴 **DURABLE — `git checkout -- <file>` IS NOT A MUTATION-TEST RESTORE. IT RESTORES TO `HEAD`,
+SO IT SILENTLY DISCARDS UNCOMMITTED WORK ON THAT FILE — AND THE ROUNDS THAT FOLLOW STILL PRINT
+PLAUSIBLE NUMBERS.** Measured 2026-08-24 while mutation-testing `tools/lib/remt-checks-extract.js`:
+a guard written and verified but **not yet committed** was deleted by the harness's own restore
+step after round 1; rounds 2–4 then asserted their anchors successfully, ran, and reported red
+counts **against a file that had reverted underneath them**. The output looked like evidence.
+⚠️ **AND A TIMEOUT LEAVES A LIVE MUTANT IN THE TREE** — the loop is *mutate → run → restore*, so a
+cap that fires between the run and the restore leaves the mutation in place; here it left
+`filter(() => true)` inside a blocking gate, found only by an explicit `cmp`. ▶ **THE RULE:
+`cp` the file to a golden copy BEFORE the first mutation and restore from THAT; `cmp` against the
+golden after every round; and `cmp` once more at the end — the round that dies is precisely the
+one that never restored.** ⚠️ **Commit first where you can:** an uncommitted edit has no second
+copy anywhere, which is what made the loss total rather than recoverable.
+
 🔴 **DURABLE — A PROMISE THAT NEVER SETTLES EXITS 0; IT DOES NOT HANG.** `new Promise(() => {})`
 holds **no handle**, so Node's event loop empties and the process exits **normally with 0**,
 having produced no output and reached no verdict. Measured under `timeout 8`: it returned **0,
