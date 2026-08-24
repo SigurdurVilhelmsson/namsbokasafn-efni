@@ -206,11 +206,45 @@ describe('the CLI as a process', () => {
   const LIB = pathToFileURL(path.join(REPO_ROOT, 'tools', 'lib', 'remt-battery.js')).href;
   let probeDir;
 
+  /**
+   * A preload module that makes ITS checks the only ones in the child's registry.
+   *
+   * 🔴 WHY IT MUST CLEAR, AND WHY IT CLEARS *AFTER* AN IMPORT RATHER THAN BEFORE.
+   * Once a tier module is wired into the CLI (Task 3 wired tier 1), `--tier 1`
+   * selects the real E2/E4/E7 alongside whatever a probe registers. They read
+   * SKIPPED over a scope-only ctx, and a SKIPPED blocking check is a blocking
+   * failure — so the probe's own verdict stops deciding the exit code and three
+   * of these tests went red while two others started passing for the WRONG reason
+   * (they expect exit 1, and E2/E4 supply one regardless of the probe).
+   *
+   * Register §C82 L11 predicted this class for Tasks 11/12 and prescribed
+   * save/clear/restore of `REGISTRY` around the tests. That works only for the
+   * in-process half above: a spawned CLI has its OWN module instance, and the
+   * parent cannot reach into it. The clear therefore happens on the child's side.
+   *
+   * ⚠️ THE `await import` BEFORE THE CLEAR IS LOAD-BEARING, NOT DEFENSIVE. A
+   * preload runs BEFORE the CLI's own imports, so clearing first would be undone
+   * moments later when the CLI imports the tier module and it registers. Importing
+   * it here first means the CLI's import is an ESM CACHE HIT — the module body
+   * never re-runs, so `registerChecks` is never called again and the clear stands.
+   * ▶ Add every newly wired tier module to WIRED below, or its checks reappear.
+   *
+   * ⚠️ It deliberately does NOT export a registry-emptier from the library. The
+   * contract's own tests rejected `resetRegistry()` on the grounds that an exported
+   * emptier is itself a new wrong-PASS surface; `REGISTRY.clear()` is the Map's own
+   * method, reached only from a test-authored preload.
+   */
+  const WIRED = [
+    pathToFileURL(path.join(REPO_ROOT, 'tools', 'lib', 'remt-checks-extract.js')).href,
+  ];
+
   const probe = (name, body) => {
     const file = path.join(probeDir, `${name}.mjs`);
     fs.writeFileSync(
       file,
-      `import { defineCheck, registerChecks, VERDICT } from '${LIB}';\n${body}\n`
+      `import { REGISTRY, defineCheck, registerChecks, VERDICT } from '${LIB}';\n` +
+        WIRED.map((m) => `await import('${m}');`).join('\n') +
+        `\nREGISTRY.clear();\n${body}\n`
     );
     return pathToFileURL(file).href;
   };
@@ -256,9 +290,28 @@ describe('the CLI as a process', () => {
   });
 
   it('exits 2 rather than 0 when the registry is empty', () => {
-    const r = runCli(SCOPE);
+    // The empty state is now MANUFACTURED rather than inherited: tier 1 is wired, so
+    // the default registry is no longer empty. A probe that clears and registers
+    // nothing reproduces the L3 shape exactly, and keeps testing what this test is
+    // about — `runTier` refusing to report a clean run over an empty selection.
+    const r = runCli(SCOPE, probe('empty', '/* registers nothing */'));
     expect(r.code).toBe(2);
     expect(r.out).toMatch(/no checks selected/);
+  });
+
+  it('🔴 THE COMPLEMENT: with NO probe, tier 1 selects the REAL wired checks', () => {
+    // The L3 guard at process level, and the reason the test above needed a probe.
+    // "A gate that is never called is indistinguishable from one that does not
+    // exist" — this is the one test that would go red if the CLI's tier-module
+    // import were ever dropped, and no unit test can see a missing connection.
+    const r = runCli(SCOPE);
+    expect(r.out).toMatch(/E2 v\d+/);
+    expect(r.out).toMatch(/E4 v\d+/);
+    expect(r.out).toMatch(/E7 v\d+/);
+    // ...and it exits 1, not 0: E2 and E4 are blocking and the CLI passes only the
+    // scope keys today, so they SKIP for want of a loader. No evidence is not a pass.
+    expect(r.code).toBe(1);
+    expect(r.out).toMatch(/ctx is missing cnxml and segText/);
   });
 
   it('POSITIVE CONTROL: exits 0 when every blocking check passes', () => {

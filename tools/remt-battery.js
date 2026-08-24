@@ -89,9 +89,25 @@ import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
  * class, not one identifier. The CLI is the right place precisely because it is
  * downstream of the contract.
  *
- * None exist yet, so the registry is empty — and `runTier` REFUSES an empty
- * selection rather than reporting a clean run over it.
+ * ⚠️ EACH IMPORT BELOW CHANGES WHAT `--tier N` SELECTS, AND THIS FILE'S OWN PROCESS
+ * TESTS SPAWN WITH `--tier 1`. Measured when Tier 1 was wired: THREE went red — the
+ * empty-registry test (the registry is no longer empty at tier 1) and the two
+ * positive controls that expect exit 0, because E2/E4 now run beside the probe's
+ * check over a scope-only ctx and read SKIPPED, which for a blocking check is a
+ * blocking failure.
+ * 🔴 AND TWO MORE WENT QUIETLY WRONG RATHER THAN RED, which is the half worth
+ * remembering: the tests expecting exit 1 kept passing — E2/E4 now supply that 1 no
+ * matter what the probe returns, so they had stopped discriminating. A red count is
+ * not the measure of this change; every probe test needed its synthetic check to be
+ * the SOLE determinant again.
+ * ▶ Register §C82 L11 predicted this class for Tasks 11/12 and named the wrong task:
+ * it fires at the FIRST tier wired. Its prescribed fix — save/clear/restore of
+ * `REGISTRY` around the tests — works only for the in-process half, because a spawned
+ * CLI has its own module instance the parent cannot reach into. The preload clears on
+ * the child's own side; see the `probe` helper's comment for why the clear must
+ * follow an import rather than precede it.
  * ─────────────────────────────────────────────────────────────────────────── */
+import './lib/remt-checks-extract.js'; // Task 3 — E2, E4, E7 (tier 1)
 
 /** Tiers the battery defines: 0 glossary · 1 extract · 2 MT · 3 output · 4 chapter. */
 export const TIER_MIN = 0;
