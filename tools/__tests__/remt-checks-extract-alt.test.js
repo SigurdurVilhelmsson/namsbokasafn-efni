@@ -373,11 +373,17 @@ describe('E5 leg 2 — the orphan key a tally cannot see', () => {
     // a shape that stopped resolving would move `producible` down and `orphan` up together.
     expect(tally).toEqual({
       modules: 491, // control: chemistry 149 + organic 342
-      alts: 3311, // control: chemistry 1149 + organic 2162
-      producible: 3294, // figure/media id + src slug
+      alts: 3312, // control: chemistry 1149 + organic 2163
+      producible: 3295, // figure/media id + src slug
       positional: 17, // media-N-alt / standalone-N-alt, accepted by pattern
       orphan: 0, // the assertion this test exists for
     });
+    // 📌 3,311 -> 3,312 when §C85-alt (#412) landed on main: a table entry holding BOTH a
+    // <media> and a <para> now emits its alt, which is organic's 245th entry-media. The
+    // move was PREDICTED before merging main into this branch and measured after — and
+    // `orphan` stayed 0, which is the cross-check that matters: the new alt is keyed by
+    // `altElementIdFromSrc`, a shape `altIdsSourceCanProduce` already accepts, so two
+    // independently-built pieces agree about what a legitimate alt id looks like.
   });
 });
 
