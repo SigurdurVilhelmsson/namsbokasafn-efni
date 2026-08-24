@@ -133,9 +133,11 @@ Re-measured first — all four carried numbers reproduced exactly — then ruled
 - **① The 244 come in, and they land BEFORE the run** → new step **2.2** below. They are
   extraction-side, so after the run they would cost a second re-extract and a second re-key of
   organic's seg-ids.
-- **② The remaining 1 (`m00032`, Branch 1) is deferred to a HAND FIX after the run** — recorded as
-  **M1** in the register's ⚒️ post-run manual-fix ledger, and worked through at **4.5** below.
-  **Deferred, not dropped.**
+- **② ✅ The remaining 1 (`m00032`, Branch 1) IS NOW FIXED IN CODE — PR #412, 2026-08-24.** It was
+  deferred to a hand fix (ledger **M1**), and that deferral was **withdrawn because the hand fix
+  turned out to be unperformable**: with no alt segment emitted there is no row in the segment
+  editor for an editor to set. The `cellParas` branch now emits the alt and writes the translation
+  back. **Nothing remains for 4.5 to work here, and the ledger is empty.**
 
 Evidence: [`../../test-results/c88-scope-retake-remeasurement-2026-08-23.md`](../../test-results/c88-scope-retake-remeasurement-2026-08-23.md)
 · [`../../test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
@@ -252,7 +254,11 @@ The register's **⚒️ Post-run manual-fix ledger** section holds every anomaly
 into the run because a human costs less than the code. **This is the step that spends them.**
 - Each item states **why the run will not fix it** — if the run did fix one, **delete the item**
   rather than working it; a ledger that sends people to redo solved work stops being read.
-- ✅ **M0, the sweep, RAN 2026-08-23 and the ledger is now ONE item (M1), not three.** M2+M3 were
+- ✅ **THE LEDGER IS EMPTY as of 2026-08-24 — M1, its last item, was CLOSED BY CODE (PR #412), and
+  this section's own rule above is what applies: an item the code fixed is DELETED, not worked.**
+  ⚠️ **Still run the gate** — empty is a state to verify, not to assume, and a deferral added
+  between now and the run lands here.
+- ✅ *(how it got to one)* **M0, the sweep, RAN 2026-08-23 and the ledger was then ONE item (M1), not three.** M2+M3 were
   measured to a single defect that cannot be hand-fixed at all → **§C115**, an extraction-side
   [CODE] item that belongs on **step 2.2's branch**, not here. ⚠️ M0 is *substantially*, not
   exhaustively, complete — its stated exclusions are in the register's M0 entry.

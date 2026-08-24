@@ -2634,7 +2634,9 @@ wiring it in costs more than a hand fix, **add it here in the SAME commit as the
 A deferral recorded only in a session, a PR body or a spec is a deferral that will be lost — this
 file's own § One source of truth exists because exactly that happened to eight findings.
 
-✅ **COMPLETENESS — M0 RAN 2026-08-23, AND IT SUBTRACTED. The list is now ONE item, not three.**
+✅ **COMPLETENESS — THE LIST IS NOW EMPTY. M0 subtracted it from three to one (2026-08-23), and M1 was CLOSED BY CODE on 2026-08-24 (PR #412).** ⚠️ **An empty ledger is not a discharged one** — the admission rule stands, and the next deferral goes here in the same commit as the decision.
+
+*(Original completeness note, kept as filed:)* ✅ **M0 RAN 2026-08-23, AND IT SUBTRACTED. The list was then ONE item, not three.**
 M2 and M3 were measured to a single defect that **cannot be hand-fixed at all** and left for
 **§C115**. **M0's range, predicate and stated exclusions are in the M0 entry below — read them
 before treating this list as the answer**, because M0 is *substantially*, not exhaustively,
@@ -2654,6 +2656,7 @@ must name a fix a human can actually carry out.
   - ✅ **Neither pipeline doc yields an item.** `html-pipeline-issues.md` is entirely Fixed/Resolved (last written 2026-03-02). `cnxml-fidelity-gaps.md` Gaps 2–6 are **2026-03-18, pre-bracket-marker vintage**, describing the `*text*`/`^N^`/`__term__` dialect the migration replaced, and are scoped to **OpenStax remerge, not readers**; Gap 8 is a documented accepted cost. ▶ **Re-measure that doc at the post-run vintage before anyone acts on its numbers.**
   - 📋 **Full sweep, with detectors and controls:** [`test-results/m0-anomaly-sweep-2026-08-23.md`](../../test-results/m0-anomaly-sweep-2026-08-23.md) + its probe.
 
+- **✅ M1 · CLOSED 2026-08-24 BY CODE, NOT BY HAND — THE LEDGER IS NOW EMPTY.** The fix shipped as **PR #412** (squash `877dd9ba`): the `cellParas` branch now emits the sibling media's alt and writes the translation back, which is the §C88 pattern its sibling branch already ran. **This section's own admission rule 2 is what closes it — *"the run will not fix it"* was true, but a CODE fix landed instead, and the runbook's Phase 4.5 rule says an item the run no longer needs is DELETED rather than worked.** 🔴 **The deferral was withdrawn because its prescribed hand fix was UNPERFORMABLE, and that is the reusable lesson: with no segment emitted there is no row in the segment editor to set, so *"an editor sets the Icelandic alt after the run"* named an action nobody could take.** ▶ **AMEND ADMISSION RULE 3 ACCORDINGLY: "say what the code fix would have been" is not enough — also say WHERE THE HAND FIX IS PERFORMED. An item whose hand fix has no home reads as handled and is not.** ⚠️ Upstream was checked before spending anything: OpenStax publishes that image with exactly this alt, per the [LEAD] test *"if it is in code but not published, this is a non-issue"*. Scope was 1 entry in 1,192 modules; acceptance was a corpus byte-identity diff, 1,191 of 1,192 unchanged. *(Original entry follows, kept as filed.)*
 - **M1 · organic `lifraen-efnafraedi` `m00032` — ONE table-cell figure `alt` stays English** —
   **[EDITOR]** — *deferred 2026-08-23 by the [LEAD] ruling that brought the other 244 in.*
   - **What:** the single Branch-1 member of §C88's 245 — a table cell holding one `<media>` and
