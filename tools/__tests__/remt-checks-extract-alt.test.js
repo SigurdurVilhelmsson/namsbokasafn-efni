@@ -223,6 +223,39 @@ describe("E5's ctx guard — the unit fix removed an accidental protection", () 
   });
 });
 
+/**
+ * 🔴 A TRIPWIRE, NOT A TEST OF THE FEATURE — AND THE DIFFERENCE IS WORTH STATING. E5's
+ * message carries a parenthesised `unreachableByReason` suffix, and NO INPUT CAN MAKE IT
+ * APPEAR: `ALT_BLIND_DIRECT_PARENTS` is `new Set([])` (`extraction-coverage.js:200`),
+ * because §C88 added an emitter for all five known blind positions. So `altReachability`
+ * never assigns a `reason`, `unreached` is always 0, and the suffix is structurally
+ * unreachable rather than merely zero-base-rate.
+ * Measured: three mutations against that path — dropping the suffix, hardcoding `unreached`
+ * to 0, and joining the reasons with `''` — ALL ESCAPE a green suite, and none of them CAN
+ * be caught while the Set is empty. Planting a control would mean editing
+ * `extraction-coverage.js`, which is not this task's file.
+ * ▶ WHAT THIS TEST BUYS INSTEAD: the day someone re-arms that Set — the one event that
+ * makes the sensor live — this goes red and names E5's unverified formatting, instead of
+ * the new blind position being reported through a code path nothing ever ran.
+ */
+describe('the still-blind-position sensor is disarmed, and this is what re-arms it', () => {
+  it('📌 TRIPWIRE — `unreached` is 0 and no message carries a reasons suffix, corpus-wide', async () => {
+    let withReasons = 0;
+    let nonZeroUnreached = 0;
+    let n = 0;
+    for (const book of [CHEM, 'lifraen-efnafraedi']) {
+      for (const { ch, m } of modulesWithSegments(book)) {
+        const r = await runCheck(E5, modCtx(book, ch, m));
+        n++;
+        if (/still-blind position \(/.test(r.message)) withReasons++;
+        if (!/ 0 in a still-blind position/.test(r.message)) nonZeroUnreached++;
+      }
+    }
+    expect(n).toBeGreaterThan(100); // control: the walk is not empty
+    expect({ withReasons, nonZeroUnreached }).toEqual({ withReasons: 0, nonZeroUnreached: 0 });
+  });
+});
+
 describe('E5 in the contract', () => {
   it('registers at tier 1 as a BLOCKING check, in id order beside its siblings', () => {
     expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E2', 'E4', 'E5', 'E7']);

@@ -356,10 +356,21 @@ export const E4 = defineCheck({
  * is translated twice and PAID FOR twice — so `delta` is signed and reported rather than
  * clamped.
  *
- * ⚠️ `unreached` IS REPORTED, NEVER JUDGED. It counts alts sitting in a still-blind
- * position; §C88 emits for all five known ones, so it is expected 0 corpus-wide (measured:
- * 0 across chemistry 149, organic 17, micro 10). It stays live as the sensor for a NEW blind
- * position — failing on it would halt a paid run on the instrument's own blind spot.
+ * ⚠️ `unreached` IS REPORTED, NEVER JUDGED, and failing on it would halt a paid run on the
+ * instrument's own blind spot rather than on a defect.
+ * 🔴 BUT ITS REPORTING PATH IS STRUCTURALLY UNREACHABLE TODAY, NOT MERELY UNEXERCISED, AND
+ * THAT IS A STRONGER STATEMENT — SO IT IS STATED. `ALT_BLIND_DIRECT_PARENTS` is
+ * `new Set([])` (`extraction-coverage.js:200`) because §C88 added an emitter for all five
+ * known blind positions, so `altReachability` never assigns a `reason`, `unreached` is
+ * always 0 and `unreachableByReason` is always `{}`. **No cnxml can make the parenthesised
+ * reasons suffix below appear.** Measured: three mutations against it — dropping the suffix,
+ * hardcoding `unreached` to 0, and joining the reasons with `''` — ALL ESCAPE a green suite,
+ * and none of them CAN be caught while that Set is empty.
+ * ▶ SO THE SENSOR IS ARMED BY EDITING THAT SET, NOT BY A CORPUS CHANGE. The tripwire is in
+ * `remt-checks-extract-alt.test.js`: it pins `unreached === 0` and the absence of a reasons
+ * suffix corpus-wide, so re-arming the Set turns it red and points the next session straight
+ * at this unverified formatting. That is the most a test can do here without changing
+ * `extraction-coverage.js`, which is not Task 4's file.
  */
 export const E5 = defineCheck({
   id: 'E5',
