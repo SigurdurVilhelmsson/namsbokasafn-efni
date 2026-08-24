@@ -109,6 +109,12 @@ describe('E2 — bracket-marker bodies match 01-source', () => {
     // the module E2 could not see.
     const r = await runCheck(E2, mod('orverufraedi', 'ch01', 'm58781'));
     expect(r.message).toMatch(/1 unmatchable \(nested\)/);
+    // 🔴 THE VERDICT IS THE HALF THIS TEST IS NAMED FOR. `message` is built from
+    // `skippedUnmatchable` and the verdict from `findings.length` — they are
+    // INDEPENDENT, so without this line the fixture could start FAILing on its
+    // nested marker (exactly the ruling being pinned) and the test stays green.
+    // It reads the same fixture the assertion above reads, so it adds no drift surface.
+    expect(r.verdict).toBe(VERDICT.PASS);
   });
 
   it('SKIPPED, naming the key, when the loader supplied no segText', async () => {
@@ -287,6 +293,21 @@ describe('E7 — re-extract equivalence, advisory', () => {
     expect(r.findings).toContain('segment-id-set changed');
   });
 
+  it('🔴 examined counts BOTH seg-ids and equation keys — a dropped addend must show', async () => {
+    // The two addends are deliberately DIFFERENT non-zero numbers (2 seg-ids, 3
+    // equation keys). A pin on a sum whose addends the fixture cannot separate is
+    // no pin at all: with 1 and 1, deleting the equations half still yields a
+    // plausible number. Measured: real = 5, equations-half deleted = 2.
+    const segs = '<!-- SEG:m1:para:a -->one\n\n<!-- SEG:m1:para:b -->two';
+    const eq = { 'math-1': 'x', 'math-2': 'y', 'math-3': 'z' };
+    const r = await runCheck(E7, {
+      committedExtract: snapshot(segs, eq),
+      freshExtract: snapshot(segs, eq),
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.examined).toBe(5);
+  });
+
   it('WARNs on an equation key added — the m68852 renumbering mechanism', async () => {
     const s = snapshot('<!-- SEG:m1:para:a -->text', { 'math-1': 'x' });
     const b = snapshot('<!-- SEG:m1:para:a -->text', { 'math-1': 'x', 'math-2': 'y' });
@@ -308,6 +329,132 @@ describe('E7 — re-extract equivalence, advisory', () => {
     const s = snapshot('<!-- SEG:m1:para:a -->x');
     const r = await runCheck(E7, { committedExtract: s, freshExtract: { segIds: new Set() } });
     expect(r.verdict).toBe(VERDICT.SKIPPED);
+  });
+});
+
+/**
+ * 🔴 THESE THREE TESTS EXIST BECAUSE THE CORPUS CANNOT PROVIDE THE FIXTURE, AND A
+ * MUTATION REVIEW PROVED THE ABSENCE MATTERED. Across every module with a segment file
+ * — chemistry 149, organic 17, micro 10 — there are ZERO `sourceDup` and ZERO
+ * `kind: 'real'` rawDup findings. So the corpus parity test below ran
+ * `expect(PASS).toBe(PASS)` 149 times and its FAIL branch never executed anywhere in the
+ * suite: deleting E4's ENTIRE duplicate-seg-id detection from a blocking money-gate left
+ * 91 of 91 tests green.
+ * ⚠️ ONE FIXTURE WITH BOTH LEGS WOULD NOT HAVE CLOSED IT. E4's verdict is
+ * `findings.length ? FAIL : PASS`, so dropping only ONE leg leaves length 1 and still
+ * FAILs — a verdict assertion would kill the both-legs mutation and survive each single-leg
+ * one, i.e. the same hole, one leg narrower. **Each leg gets its own fixture.**
+ * ⚠️ A duplicate seg-id is "a latent inject drop", the class most likely to APPEAR in a
+ * NEW `02-for-mt` tree — which is exactly what the §C82 re-extract produces. The leg with
+ * no corpus fixture today is the one most likely to matter tomorrow.
+ */
+describe('E4 — the duplicate-seg-id legs, which no corpus module exercises', () => {
+  const doc = (body) =>
+    `<document xmlns="http://cnx.rice.edu/cnxml"><metadata xmlns:md="http://cnx.rice.edu/mdml">` +
+    `<md:content-id>m1</md:content-id></metadata><content>${body}</content></document>`;
+
+  it('SHOULD-TRIP on a SOURCE duplicate id — one element id defining two elements', async () => {
+    const r = await runCheck(E4, {
+      cnxml: doc('<para id="p1">one</para><para id="p1">two</para>'),
+      segText: '<!-- SEG:m1:para:p1 -->one\n',
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings).toHaveLength(1);
+    expect(r.message).toMatch(/1 source-dup/);
+  });
+
+  it('SHOULD-TRIP on a REAL raw duplicate — one marker repeated with differing text', async () => {
+    const r = await runCheck(E4, {
+      cnxml: doc('<para id="p1">one</para><para id="p2">two</para>'),
+      segText: '<!-- SEG:m1:para:p1 -->one\n\n<!-- SEG:m1:para:p1 -->two different\n',
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings).toHaveLength(1);
+    expect(r.message).toMatch(/1 raw-dup/);
+  });
+
+  it('MUST-NOT-TRIP on the same shape without a duplicate — the fixtures discriminate', async () => {
+    // Without this, both tests above are satisfied by a check that fails everything.
+    const r = await runCheck(E4, {
+      cnxml: doc('<para id="p1">one</para><para id="p2">two</para>'),
+      segText: '<!-- SEG:m1:para:p1 -->one\n\n<!-- SEG:m1:para:p2 -->two\n',
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+  });
+});
+
+/**
+ * 🔴 `examined` IS KEYED TO `segText`, SO IT CANNOT SEE A SOURCE-SIDE VOID. Three
+ * independent review lenses found this. Both instruments read the SOURCE side, and
+ * `analyzeModule`'s source halves go inert on a null `<content>` — so a wrong-but-
+ * well-formed cnxml took E4's own 4-dropped-list fixture from `FAIL examined 80
+ * findings 4` to `PASS examined 80 findings 0`, with `runCheck`'s `PASS + examined 0`
+ * backstop structurally unable to fire.
+ * ⚠️ THE ROW THAT JUSTIFIES TWO LEGS RATHER THAN A NULL-CHECK is `three-element decoy`:
+ * it HAS a `<content>`, so `content == null` waves it through. Identity catches it.
+ * And `<content> renamed` has a matching content-id, so identity waves THAT through.
+ * Neither leg is redundant.
+ */
+describe('the ctx guard — a gate must refuse the wrong module, not judge it', () => {
+  const REAL = () => mod('orverufraedi', 'ch01', 'm58781'); // FAILs with 4 findings
+  const CHEM = () => mod('efnafraedi-2e', 'ch01', 'm68663');
+
+  const CASES = [
+    [
+      '<content> renamed away',
+      (c) => c.replace(/<content([ >])/, '<contentX$1').replace('</content>', '</contentX>'),
+    ],
+    ['an empty <content/>', (c) => c.replace(/<content[\s\S]*<\/content>/, '<content/>')],
+    [
+      'a wholly unrelated XML document',
+      () => '<svg xmlns="http://www.w3.org/2000/svg"><rect/></svg>',
+    ],
+    ["ANOTHER module's cnxml", () => CHEM().cnxml],
+    [
+      'a three-element decoy that HAS a <content>',
+      () =>
+        '<document xmlns="http://cnx.rice.edu/cnxml"><title>t</title><content><para id="z">x</para></content></document>',
+    ],
+  ];
+
+  it('POSITIVE CONTROL: the real pair still FAILs with its 4 findings', async () => {
+    // Without this, a guard that skipped everything would satisfy every case below.
+    const r = await runCheck(E4, REAL());
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings).toHaveLength(4);
+  });
+
+  for (const [name, mutate] of CASES) {
+    it(`SKIPS both blocking gates on ${name}`, async () => {
+      const { cnxml, segText } = REAL();
+      const ctx = { cnxml: mutate(cnxml), segText };
+      for (const c of [E2, E4]) {
+        const r = await runCheck(c, ctx);
+        expect(r.verdict).toBe(VERDICT.SKIPPED);
+        expect(r.examined).toBe(0);
+      }
+    });
+  }
+
+  it('and the guard NEVER fires on a real module — 176 pairs, three books', async () => {
+    // The false-halt control. A guard measured only against defects is indistinguishable
+    // from one that refuses everything, and this file's own L17 is what that costs.
+    let checked = 0;
+    for (const [book, expected] of [
+      ['efnafraedi-2e', 149],
+      ['lifraen-efnafraedi', 17],
+      ['orverufraedi', 10],
+    ]) {
+      const mods = modulesWithSegments(book);
+      expect(mods.length).toBe(expected);
+      for (const { ch, m } of mods) {
+        for (const c of [E2, E4]) {
+          expect((await runCheck(c, mod(book, ch, m))).verdict).not.toBe(VERDICT.SKIPPED);
+          checked++;
+        }
+      }
+    }
+    expect(checked).toBe(352); // 176 pairs x 2 gates
   });
 });
 

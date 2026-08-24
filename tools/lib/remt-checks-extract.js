@@ -46,7 +46,7 @@
  */
 import { defineCheck, registerChecks, VERDICT } from './remt-battery.js';
 import { checkBracketBodies } from './bracket-body-check.js';
-import { analyzeModule } from './extraction-coverage.js';
+import { analyzeModule, parseModuleDoc } from './extraction-coverage.js';
 import { compareModule } from '../verify-reextract-equivalence.js';
 
 /**
@@ -76,7 +76,7 @@ export function countSegments(segText) {
 }
 
 /**
- * The ctx guard both blocking gates share.
+ * The ctx precondition guard both blocking gates share.
  *
  * 🔴 A MISSING ctx KEY DOES NOT THROW — IT YIELDS `undefined`, AND WHAT HAPPENS NEXT IS
  * PER-GATE. Measured over the real instruments called with `undefined`: `checkBracketBodies`
@@ -86,23 +86,127 @@ export function countSegments(segText) {
  * would report a loader bug as a CONTENT defect — a FAIL naming a parse error, on a module
  * that is fine.
  * ▶ So the absence is classified here, explicitly, as SKIPPED. For a blocking check that
- * still halts, which is correct; what changes is that the message names the missing key.
+ * still halts, which is correct; what changes is that the message names the cause.
+ *
+ * ── WHY THERE ARE THREE LEGS AND NOT ONE ──────────────────────────────────────────────
+ *
+ * 🔴 `examined` IS KEYED TO `segText`, SO IT CANNOT SEE A SOURCE-SIDE VOID — AND BOTH
+ * INSTRUMENTS READ THE SOURCE SIDE. An adversarial review found this three times, from
+ * three independent lenses. `analyzeModule`'s source halves reach the document only via
+ * `parseModuleDoc(...).content`: `checkLists` returns `[]` on a null content and
+ * `checkDuplicateSegIds` skips its whole `sourceDup` block on `if (content)`. So a cnxml
+ * that is well-formed but is not this module's leaves the source side inert while
+ * `examined` stays high — and `runCheck`'s `PASS + examined 0 -> SKIPPED` backstop is
+ * structurally unreachable, because the count is keyed to the side that was never in doubt.
+ * MEASURED, through `runCheck`, on E4's own 4-dropped-list fixture: renaming `<content>`
+ * takes it from `FAIL examined 80 findings 4` to `PASS examined 80 findings 0`.
+ *
+ * ⚠️ AND FIXING IT WITH `content == null` WOULD HAVE REINTRODUCED A CLASS THIS REPO
+ * ALREADY RECORDS. That is ONE representation of "not this module", and a three-element
+ * decoy carrying a `<content>` walks straight past it — measured: both blocking gates
+ * PASS at examined 11 over a document sharing nothing with the module. It is the glossary
+ * lesson verbatim: *a gate keyed on one representation of "nothing" can be walked past by
+ * another representation of "nothing"*. A guard that reads as closed and is not is worse
+ * than an open one, because nobody re-opens a line that looks handled.
+ *
+ * ▶ SO THE CHECK IS A POSITIVE IDENTITY ASSERTION PLUS A NON-EMPTINESS ASSERTION, and the
+ * two are NOT redundant — each catches what the other misses:
+ *
+ *   input                          identity      source elements   caught by
+ *   the real module                 agrees            > 0          (runs)
+ *   `<content>` renamed away        agrees              0          leg 3
+ *   empty `<content/>`              agrees              0          leg 3
+ *   a wholly unrelated XML doc      no content-id     0 or > 0     leg 2
+ *   ANOTHER module's cnxml          mismatch          > 0          leg 2
+ *   the three-element decoy         no content-id       1          leg 2
+ *
+ * ⚠️ IT NEEDS NO NEW ctx KEY, WHICH IS WHY IT IS A VALUE COMPARISON RATHER THAN A SHAPE
+ * TEST: both inputs already name the module — the CNXML in `<md:content-id>`, the segment
+ * file in the first field of its `<!-- SEG:mNNNNN:… -->` markers. The gate asserts that
+ * its two inputs AGREE ABOUT WHICH MODULE THEY DESCRIBE. "Prove it by VALUE" is this
+ * repo's standing rule, and a count cannot see a substitution that did not happen.
+ *
+ * ✅ MEASURED NOT TO FALSE-HALT: over every module carrying both a source CNXML and a
+ * segment file — chemistry 149, organic 17, micro 10 — there are **0** without a
+ * `content-id`, **0** without a seg module id, **0** mismatches and **0** with an empty
+ * `<content>`. The guard never fires on a real module, so it does not reintroduce the
+ * L17 false-halt class it sits beside.
+ *
+ * ⚠️ WHAT IT DOES NOT COVER, stated rather than implied: a wrong cnxml whose `content-id`
+ * happens to equal this module's, and any semantic mismatch past identity and
+ * non-emptiness — a stale VINTAGE of the right module passes every leg. Guaranteeing the
+ * loader hands each gate the bytes it asked for is the LOADER's contract, not a count's.
+ * → active register §C82 L21.
+ *
+ * ⚠️ IT PARSES THE CNXML A SECOND TIME (the instruments parse it again inside). Accepted
+ * deliberately rather than drifted into: threading a parsed document through would change
+ * `checkBracketBodies`/`analyzeModule`'s signatures, which are consumed by the existing
+ * `verify-extraction-coverage.js` gate. Measured cost is a second parse of ~30 KB per
+ * module. ⚠️ A malformed cnxml throws HERE rather than inside the instrument — deliberately
+ * NOT caught, so `runCheck` still reports it as a loud FAIL. Swallowing it into SKIPPED
+ * would look tidier and would hide an unparseable source file behind an input-problem verdict.
+ *
+ * ⚠️ ORDERING IS LOAD-BEARING: leg 1 runs first, so a `chapter-metadata` unit — which has
+ * NO `01-source` counterpart at all, and whose markers read `SEG:chapter:…` rather than a
+ * module id — reaches the missing-key branch and never the identity branch. Verified.
  *
  * @param {object} ctx
  * @param {string} id
  * @returns {{verdict:string, examined:number, findings:Array, message:string}|null}
  */
-function skipIfNoModuleText(ctx, id) {
-  const missing = [];
-  if (typeof ctx?.cnxml !== 'string' || ctx.cnxml === '') missing.push('cnxml');
-  if (typeof ctx?.segText !== 'string' || ctx.segText === '') missing.push('segText');
-  if (missing.length === 0) return null;
-  return {
+function skipIfCtxUnusable(ctx, id) {
+  const skip = (why) => ({
     verdict: VERDICT.SKIPPED,
     examined: 0,
     findings: [],
-    message: `${id}: ctx is missing ${missing.join(' and ')} — no module text to examine`,
-  };
+    message: `${id}: ${why}`,
+  });
+
+  // Leg 1 — the key is absent or empty.
+  const missing = [];
+  if (typeof ctx?.cnxml !== 'string' || ctx.cnxml === '') missing.push('cnxml');
+  if (typeof ctx?.segText !== 'string' || ctx.segText === '') missing.push('segText');
+  if (missing.length > 0) {
+    return skip(`ctx is missing ${missing.join(' and ')} — no module text to examine`);
+  }
+
+  const { doc, content } = parseModuleDoc(ctx.cnxml);
+
+  // Leg 2 — the two inputs must agree about which module they describe.
+  const sourceId = moduleIdOfCnxml(doc);
+  const segId = moduleIdOfSegments(ctx.segText);
+  if (sourceId === null || segId === null || sourceId !== segId) {
+    return skip(
+      `cnxml and segText disagree about the module (cnxml content-id ${JSON.stringify(sourceId)}, segments ${JSON.stringify(segId)}) — refusing to judge one module's segments against another's source`
+    );
+  }
+
+  // Leg 3 — the source side must actually hold something to traverse.
+  const sourceElements = content ? content.getElementsByTagName('*').length : 0;
+  if (sourceElements === 0) {
+    return skip(
+      `cnxml has no traversable <content> (0 elements) — every source-side finding would be vacuously empty`
+    );
+  }
+
+  return null;
+}
+
+/** The module id the CNXML claims for itself, or null. */
+function moduleIdOfCnxml(doc) {
+  const n =
+    doc.getElementsByTagName('md:content-id')[0] || doc.getElementsByTagName('content-id')[0];
+  const v = n ? (n.textContent || '').trim() : '';
+  return v === '' ? null : v;
+}
+
+/**
+ * The module id the segment file claims, read from the FIRST field of its first SEG
+ * marker. ⚠️ Takes no space after the colon — the spaced form parses to nothing, silently.
+ */
+function moduleIdOfSegments(segText) {
+  const m = String(segText).match(/<!--\s*SEG:([^\s:]+):/);
+  return m ? m[1] : null;
 }
 
 /**
@@ -130,7 +234,7 @@ export const E2 = defineCheck({
   blocking: true,
   version: 1,
   run: (ctx) => {
-    const skip = skipIfNoModuleText(ctx, 'E2');
+    const skip = skipIfCtxUnusable(ctx, 'E2');
     if (skip) return skip;
     const {
       examined: bodies,
@@ -176,7 +280,7 @@ export const E4 = defineCheck({
   blocking: true,
   version: 1,
   run: (ctx) => {
-    const skip = skipIfNoModuleText(ctx, 'E4');
+    const skip = skipIfCtxUnusable(ctx, 'E4');
     if (skip) return skip;
     const { listFindings, dupFindings } = analyzeModule(ctx.cnxml, ctx.segText);
     const realDups = dupFindings.rawDup.filter((d) => d.kind === 'real');
