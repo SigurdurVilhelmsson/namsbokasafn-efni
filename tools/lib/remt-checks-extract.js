@@ -54,6 +54,7 @@
 import { defineCheck, registerChecks, VERDICT } from './remt-battery.js';
 import { checkBracketBodies } from './bracket-body-check.js';
 import { analyzeModule, checkAltCoverage, parseModuleDoc } from './extraction-coverage.js';
+import { altElementIdFromSrc } from './alt-segments.js';
 import { compareModule } from '../verify-reextract-equivalence.js';
 
 /**
@@ -305,6 +306,94 @@ export const E4 = defineCheck({
 });
 
 /**
+ * The alt elementIds this module's SOURCE is able to produce.
+ *
+ * 🔴 WHY E5 NEEDS THIS AT ALL — A TALLY CANNOT SEE A SUBSTITUTION THAT DID NOT HAPPEN.
+ * `checkAltCoverage`'s `ok` is `reached === reachable`: two COUNTS. It never reads the
+ * emitted alt's elementId, and `reachable` is a count of alt-bearing `<media>` rather than
+ * a set of their ids. So an alt segment keyed to an id nothing in the source produces
+ * balances the tally perfectly. MEASURED through the committed §C89 sentinel harness on
+ * `ch04/m68710`: renaming ONE alt marker's elementId leaves E5 at `expected 6, reached 6`
+ * **PASS**, while the sentinel sweep drops from **6/6 to 5/6** — the injector resolves alt
+ * through `structure.alt.segmentId`, misses, and falls back to `alt.text`, so the
+ * UNTRANSLATED ENGLISH alt is published. That is §C89 exactly, inside the gate built to
+ * prevent it, and it is why CLAUDE.md's rule reads *"prove a translation REACHED the output
+ * with a sentinel, never with a tally."*
+ * ⚠️ Filed by the whole-branch review as a blocker, REFUTED by its skeptic on the grounds
+ * that "an orphan-keyed alt does not make readAlt miss", and the refutation was overturned
+ * by execution. → active register §C82 L26.
+ *
+ * ── THE ENUMERATION IS THE RISK, AND IT WAS MEASURED, NOT REASONED ──
+ *
+ * Four id shapes are legitimate (`tools/lib/alt-segments.js`), and a set missing ONE of them
+ * false-halts a whole book. A first draft collecting only `<media>` ids and src slugs left
+ * **1,901 of organic's 2,162** alt segments unresolved — 88% of the book — because organic
+ * keys most alts on the FIGURE's id. Measured over a fresh in-process extract of both kept
+ * books, 491 modules / 3,311 alt segments:
+ *
+ *   shape                      chemistry   organic   resolves via
+ *   <figure id> / <media id>      1,149      1,901    the id set below
+ *   src slug (§C88 entry media)       0        244    altElementIdFromSrc
+ *   media-N-alt / standalone-N-alt    0         17    ALT_POSITIONAL
+ *   UNRESOLVED                        0          0
+ *
+ * ⚠️ `<subfigure>` ids are DELIBERATELY NOT COLLECTED — measured: dropping them leaves 0
+ * unresolved, so including them would widen the accepted set for nothing, and every extra
+ * accepted shape makes the orphan check weaker. Do not add a tag here without re-running
+ * that sweep and showing it changes the unresolved count.
+ *
+ * ⚠️ THE POSITIONAL FORM IS ACCEPTED BY PATTERN, NOT BY VALUE, AND THAT IS A STATED
+ * WEAKENING. `altElementId`'s fallback is `${kind}-${index}-alt`, where `index` comes from
+ * the extractor's own counters — reproducing it here would mean reimplementing the
+ * traversal. So a positional alt whose INDEX is wrong still passes this leg. It is 17 of
+ * 3,311 (0.5%), all organic, all standalone.
+ *
+ * @param {Element|null} content
+ * @returns {Set<string>}
+ */
+export function altIdsSourceCanProduce(content) {
+  const out = new Set();
+  if (!content) return out;
+  for (const tag of ['figure', 'media']) {
+    const els = content.getElementsByTagName(tag);
+    for (let i = 0; i < els.length; i++) {
+      const id = els[i].getAttribute('id');
+      if (id) out.add(`${id}-alt`);
+    }
+  }
+  const media = content.getElementsByTagName('media');
+  for (let i = 0; i < media.length; i++) {
+    const imgs = media[i].getElementsByTagName('image');
+    for (let j = 0; j < imgs.length; j++) {
+      const slug = altElementIdFromSrc(imgs[j].getAttribute('src'));
+      if (slug) out.add(slug);
+    }
+  }
+  return out;
+}
+
+/** The documented positional fallback, accepted by shape — see altIdsSourceCanProduce. */
+const ALT_POSITIONAL = /^(media|standalone)-\d+-alt$/;
+
+/**
+ * The elementIds of the alt segments the module actually emitted.
+ *
+ * ⚠️ SAME SPLIT/MATCH IDIOM AS `checkAltCoverage`'s `reached` COUNTER, deliberately: the
+ * orphan leg must range over exactly the population the tally counts, or the two legs
+ * measure different things and their agreement means nothing. Raw occurrences, not deduped
+ * keys, for the same reason `countSegments` uses them.
+ */
+export function emittedAltIds(segText) {
+  const out = [];
+  for (const part of String(segText || '').split(/(?=<!--\s*SEG:)/)) {
+    const m = part.match(/<!--\s*SEG:([^\s]+?)\s*-->/);
+    if (!m) continue;
+    const fields = String(m[1]).split(':');
+    if (fields[1] === 'alt') out.push(fields.slice(2).join(':'));
+  }
+  return out;
+}
+/**
  * E5 — figure-alt coverage: every alt attribute sitting in a position the extractor is
  * DESIGNED to reach became an alt segment. §C89 is what its absence costs — 627 of 951
  * chemistry alt segments were extracted, sent to the paid MT and then discarded at inject,
@@ -376,25 +465,44 @@ export const E5 = defineCheck({
   id: 'E5',
   tier: 1,
   blocking: true,
-  version: 1,
+  // 🔴 v2, NOT v1: the ORPHAN leg changed E5's JUDGEMENT — it now FAILs inputs it used to
+  // PASS. The contract's rule is "bump when the JUDGEMENT changes, not when the wrapper is
+  // reformatted", and decision ① cannot scope a quarantine across a silent judgement change.
+  version: 2,
   run: (ctx) => {
     const skip = skipIfCtxUnusable(ctx, 'E5');
     if (skip) return skip;
     const { content } = parseModuleDoc(ctx.cnxml);
-    const { reached, expected, unreached, unreachableByReason, ok } = checkAltCoverage(
-      content,
-      ctx.segText
+    const {
+      reached,
+      expected,
+      unreached,
+      unreachableByReason,
+      ok: tallyOk,
+    } = checkAltCoverage(content, ctx.segText);
+
+    // LEG 2 — a VALUE comparison, because the tally above cannot see a substitution.
+    // Every emitted alt must be keyed to something this module's source can produce.
+    const producible = altIdsSourceCanProduce(content);
+    const orphans = emittedAltIds(ctx.segText).filter(
+      (id) => !producible.has(id) && !ALT_POSITIONAL.test(id)
     );
+
     const reasons = Object.entries(unreachableByReason)
       .map(([reason, n]) => `${reason}:${n}`)
       .join(', ');
+    const findings = [];
+    if (!tallyOk)
+      findings.push({ kind: 'alt-coverage', expected, reached, delta: reached - expected });
+    for (const id of orphans) findings.push({ kind: 'alt-orphan-key', elementId: id });
     return {
-      verdict: ok ? VERDICT.PASS : VERDICT.FAIL,
+      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
       examined: countSegments(ctx.segText),
-      findings: ok ? [] : [{ kind: 'alt-coverage', expected, reached, delta: reached - expected }],
+      findings,
       message:
         `expected ${expected} reachable alt positions, reached ${reached} emitted alt segments, ` +
-        `${unreached} in a still-blind position${reasons ? ` (${reasons})` : ''}`,
+        `${unreached} in a still-blind position${reasons ? ` (${reasons})` : ''}, ` +
+        `${orphans.length} orphan-keyed`,
     };
   },
 });

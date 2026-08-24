@@ -32,7 +32,31 @@ import { runCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
 import { E5, EXTRACT_CHECKS } from '../lib/remt-checks-extract.js';
 import { parseModuleDoc, altReachability } from '../lib/extraction-coverage.js';
 import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
-import { modulesWithSegments, srcText, modCtx } from './helpers/remt-corpus.js';
+import { buildCnxml, parseSegments } from '../cnxml-inject.js';
+import { altIdsSourceCanProduce, emittedAltIds } from '../lib/remt-checks-extract.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import { modulesWithSegments, srcText, modCtx, REPO_ROOT } from './helpers/remt-corpus.js';
+
+/**
+ * EVERY `01-source` module, not just those with a committed segment file. The orphan
+ * sweep must cover the population the PAID RUN will extract (491), not the 166 that
+ * happen to carry a pre-re-extract segment file — those are different populations and
+ * this file's own header warns about conflating them.
+ */
+function allSourceModules(book) {
+  const root = path.join(REPO_ROOT, 'books', book, '01-source');
+  const out = [];
+  const walk = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('.cnxml')) out.push(p);
+    }
+  };
+  if (fs.existsSync(root)) walk(root);
+  return out;
+}
 
 const CHEM = 'efnafraedi-2e';
 
@@ -256,6 +280,107 @@ describe('the still-blind-position sensor is disarmed, and this is what re-arms 
   });
 });
 
+/**
+ * 🔴 THE ORPHAN LEG — IT EXISTS BECAUSE A WHOLE-BRANCH REVIEW FILED THIS AS A BLOCKER,
+ * ITS SKEPTIC REFUTED IT, AND THE REFUTATION WAS OVERTURNED BY EXECUTION.
+ *
+ * The skeptic's ground was that "an orphan-keyed alt does not make readAlt miss". The
+ * committed §C89 sentinel harness says otherwise, and this file now runs that harness
+ * rather than restating the argument:
+ *
+ *   control (fresh extract)                E5 PASS  expected 6 reached 6   sentinel 6/6
+ *   ONE alt elementId renamed              E5 PASS  expected 6 reached 6   sentinel 5/6   <- before
+ *   ONE alt elementId renamed              E5 FAIL  1 orphan-keyed         sentinel 5/6   <- after
+ *
+ * The injector resolves an alt through `structure.alt.segmentId`, misses, and falls back
+ * to `alt.text` — so the UNTRANSLATED ENGLISH alt is published while every count
+ * reconciles. That is §C89 reproduced inside the gate built to prevent it.
+ * ▶ CLAUDE.md: "A COUNT CANNOT SEE A SUBSTITUTION THAT DID NOT HAPPEN. Prove a translation
+ * REACHED the output with a sentinel, never with a tally." → active register §C82 L26.
+ */
+describe('E5 leg 2 — the orphan key a tally cannot see', () => {
+  /** The §C89 sentinel: replace every alt's TEXT with a token the source cannot contain. */
+  function sentinelSweep(cnxml, segTextRaw) {
+    const { structure, equations, inlineAttrs } = extractSegments(cnxml);
+    const parsed = parseSegments(segTextRaw);
+    const sent = new Map();
+    let n = 0;
+    for (const [key] of parsed) {
+      if (String(key).split(':')[1] !== 'alt') continue;
+      const token = `ZQXALT${n}ZQX`;
+      parsed.set(key, token);
+      sent.set(key, token);
+      n++;
+    }
+    const out = buildCnxml(structure, parsed, equations, cnxml, {}, inlineAttrs).cnxml;
+    let reached = 0;
+    for (const token of sent.values()) if (out.includes(token)) reached++;
+    return { emitted: n, reached };
+  }
+
+  const CNXML = () => srcText(CHEM, 'ch04', 'm68710');
+
+  it('POSITIVE CONTROL: an untouched fresh extract PASSes and all 6 alts reach the output', async () => {
+    const cnxml = CNXML();
+    const segText = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    const r = await runCheck(E5, { cnxml, segText });
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(sentinelSweep(cnxml, segText)).toEqual({ emitted: 6, reached: 6 });
+  });
+
+  it('🔴 FAILs an orphan-keyed alt — and the sentinel proves a translation really is dropped', async () => {
+    const cnxml = CNXML();
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    const victim = fresh.match(/<!--\s*SEG:([^\s]*:alt:[^\s]*)\s*-->/);
+    expect(victim).not.toBeNull(); // control: the fixture carries alt markers
+    const mutated = fresh.replace(
+      `SEG:${victim[1]}`,
+      `SEG:${victim[1].replace(/:alt:.*$/, ':alt:fs-idORPHANNOTHINGHASTHIS')}`
+    );
+    expect(mutated).not.toBe(fresh); // control: the substitution actually happened
+
+    // The tally is UNMOVED — this is the whole point, and why leg 1 alone cannot see it.
+    const r = await runCheck(E5, { cnxml, segText: mutated });
+    expect(r.message).toMatch(/expected 6 .*reached 6 /);
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.filter((f) => f.kind === 'alt-orphan-key')).toHaveLength(1);
+
+    // And the defect is REAL, not just detected: one translation does not reach the output.
+    expect(sentinelSweep(cnxml, mutated)).toEqual({ emitted: 6, reached: 5 });
+  });
+
+  it('🔴 FALSE-HALT CONTROL — 0 orphans over a fresh extract of both kept books', () => {
+    // The enumeration is the risk: a first draft collecting only <media> ids and src slugs
+    // left 1,901 of organic's 2,162 unresolved (88% of the book), because organic keys most
+    // alts on the FIGURE id. A missing shape false-halts a whole book, so this asserts the
+    // per-shape breakdown too — a bare "0 unresolved" would also pass over an empty walk.
+    const tally = { modules: 0, alts: 0, producible: 0, positional: 0, orphan: 0 };
+    for (const book of [CHEM, 'lifraen-efnafraedi']) {
+      for (const file of allSourceModules(book)) {
+        const cnxml = fs.readFileSync(file, 'utf8');
+        const { segments } = extractSegments(cnxml);
+        const producible = altIdsSourceCanProduce(parseModuleDoc(cnxml).content);
+        tally.modules++;
+        for (const id of emittedAltIds(formatSegmentsMarkdown(segments))) {
+          tally.alts++;
+          if (producible.has(id)) tally.producible++;
+          else if (/^(media|standalone)-\d+-alt$/.test(id)) tally.positional++;
+          else tally.orphan++;
+        }
+      }
+    }
+    // Every count asserted, so the three buckets cannot silently trade against each other:
+    // a shape that stopped resolving would move `producible` down and `orphan` up together.
+    expect(tally).toEqual({
+      modules: 491, // control: chemistry 149 + organic 342
+      alts: 3311, // control: chemistry 1149 + organic 2162
+      producible: 3294, // figure/media id + src slug
+      positional: 17, // media-N-alt / standalone-N-alt, accepted by pattern
+      orphan: 0, // the assertion this test exists for
+    });
+  });
+});
+
 describe('E5 in the contract', () => {
   it('registers at tier 1 as a BLOCKING check, in id order beside its siblings', () => {
     expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E2', 'E4', 'E5', 'E7']);
@@ -266,9 +391,14 @@ describe('E5 in the contract', () => {
     expect(E5.blocking).toBe(true);
   });
 
-  it('stamps a version, so decision ① can scope a quarantine to it', async () => {
+  it('stamps version 2 EXACTLY — a silent revert is what decision ① cannot survive', async () => {
+    // 🔴 PINNED TO THE EXACT NUMBER, not `>= 1`, and that is deliberate. E5 went to v2 when
+    // the orphan leg changed its JUDGEMENT. A mutation reverting it to 1 escaped the whole
+    // battery under the loose assertion — and the version's only job is to let decision ①
+    // scope a quarantine to "verdicts issued by instrument version N", which a silent
+    // revert makes unfalsifiable. Bumping this line is the point: it forces the next
+    // judgement change to be deliberate rather than incidental.
     const r = await runCheck(E5, modCtx(CHEM, 'ch01', 'm68663'));
-    expect(Number.isInteger(r.version)).toBe(true);
-    expect(r.version).toBeGreaterThanOrEqual(1);
+    expect(r.version).toBe(2);
   });
 });
