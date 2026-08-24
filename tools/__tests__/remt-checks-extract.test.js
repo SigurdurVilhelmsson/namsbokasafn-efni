@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { runCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
 import { E2, E4, E7, EXTRACT_CHECKS, countSegments } from '../lib/remt-checks-extract.js';
+import { modulesWithSegments } from './helpers/remt-corpus.js';
 
 const ROOT = path.resolve(import.meta.dirname, '..', '..');
 const src = (b, ch, m) =>
@@ -26,30 +27,13 @@ const seg = (b, ch, m) =>
 const mod = (b, ch, m) => ({ cnxml: src(b, ch, m), segText: seg(b, ch, m) });
 
 /**
- * ⚠️ THE `.backup.*` EXCLUSION IS THE HELPER'S JOB, NOT THE CALLER'S. `02-for-mt` holds
- * dated backups beside every live segment file (ch01 alone has three for m68663), and a
- * naive `endsWith('.md')` walk would count each stale vintage as a module. Tasks 4-12
- * inherit this walker rather than re-deriving the filter.
+ * ⚠️ THE `.backup.*` EXCLUSION IS THE WALKER'S JOB, NOT THE CALLER'S — it walks
+ * `01-source` and tests for the segment file, so a `02-for-mt` backup is invisible to it
+ * by construction. It MOVED to `./helpers/remt-corpus.js` at Task 4, which is what this
+ * comment always asked for: Tasks 4-12 inherit the walker rather than re-deriving the
+ * filter. It is a helper module and not an export of this file, because importing one
+ * `.test.js` from another registers its describes into the importer's run too.
  */
-function modulesWithSegments(book) {
-  const srcRoot = path.join(ROOT, 'books', book, '01-source');
-  const segRoot = path.join(ROOT, 'books', book, '02-for-mt');
-  const out = [];
-  for (const ch of fs
-    .readdirSync(srcRoot)
-    .filter((d) => fs.statSync(path.join(srcRoot, d)).isDirectory())
-    .sort()) {
-    for (const f of fs
-      .readdirSync(path.join(srcRoot, ch))
-      .filter((f) => f.endsWith('.cnxml'))
-      .sort()) {
-      const m = f.replace(/\.cnxml$/, '');
-      const sp = path.join(segRoot, ch, `${m}-segments.en.md`);
-      if (fs.existsSync(sp)) out.push({ ch, m });
-    }
-  }
-  return out;
-}
 
 describe('countSegments — the shared examined unit', () => {
   it('counts raw SEG marker occurrences', () => {
@@ -494,10 +478,13 @@ describe('the contract holds for every extract check', () => {
     }
   });
 
-  it("all three register themselves at tier 1, and the blocking split is the spec's", () => {
-    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E2', 'E4', 'E7']);
+  it("all four register themselves at tier 1, and the blocking split is the spec's", () => {
+    // E5 joined at Task 4, in id order. The blocking split is the spec's ruling and not a
+    // default: E7 is advisory BECAUSE §C81 intends to change extraction this cycle, so a
+    // halt on "extraction changed" would fire on the very thing the loop exists to do.
+    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E2', 'E4', 'E5', 'E7']);
     for (const c of EXTRACT_CHECKS) expect(c.tier).toBe(1);
-    expect(EXTRACT_CHECKS.map((c) => c.blocking)).toEqual([true, true, false]);
+    expect(EXTRACT_CHECKS.map((c) => c.blocking)).toEqual([true, true, true, false]);
   });
 
   it('importing this module is what puts them in the REGISTRY', () => {
