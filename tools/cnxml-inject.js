@@ -2932,7 +2932,21 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
                     }
                   }
                   cellIdx++;
-                  return `<entry${entryAttrs}>${newContent}</entry>`;
+                  // 🔴 §C85-alt — THE WRITE-BACK THIS BRANCH NEVER HAD. It rebuilds the
+                  // entry from the ORIGINAL content (that is what preserves a sibling
+                  // `<media>`, §C85) — and preserving it verbatim means preserving its
+                  // ENGLISH alt too. The fallthrough branch below has made exactly this
+                  // call since §C88; the two branches simply diverged.
+                  // ⚠️ FIXING THE EXTRACT SIDE ALONE MAKES THIS WORSE, MEASURED: with the
+                  // emitter added and this line absent, m00032 goes `emitted 36 / reached
+                  // 35` — the alt is extracted, sent to the paid MT and discarded, which
+                  // is a fresh §C89 drop manufactured by a partial fix. Not done until a
+                  // sentinel shows `emitted === reached`.
+                  return applyMediaAltString(
+                    `<entry${entryAttrs}>${newContent}</entry>`,
+                    ctx,
+                    cell.alt || null
+                  );
                 } else if (cell && cell.segmentId) {
                   const cellText = getSeg(cell.segmentId);
                   if (cellText) {

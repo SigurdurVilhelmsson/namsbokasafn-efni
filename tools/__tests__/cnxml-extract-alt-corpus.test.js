@@ -200,7 +200,8 @@ describe('§C88 Unit A — id-less table-cell alt keys are unique and content-an
       }
     }
     // Control: an empty `duplicates` means nothing if no alts were examined.
-    expect(altTotal).toBe(2162);
+    // 2,163 since §C85-alt: Unit A's 244 plus the 245th (m00032's `cellParas` cell).
+    expect(altTotal).toBe(2163);
     expect(duplicates).toEqual([]);
   }, 300_000);
 
@@ -233,7 +234,7 @@ describe('§C88 Unit A — id-less table-cell alt keys are unique and content-an
         if (/:alt:standalone-\d+-alt$/.test(s.id)) positional.standalone.push(s.id);
       }
     }
-    expect(altTotal).toBe(2162); // control: the population really was examined
+    expect(altTotal).toBe(2163); // control: the population really was examined
     expect(positional.media).toHaveLength(17);
     expect(positional.standalone).toEqual([]);
   }, 300_000);
