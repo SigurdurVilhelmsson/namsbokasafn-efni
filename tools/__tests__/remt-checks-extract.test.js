@@ -436,6 +436,33 @@ describe('the ctx guard — a gate must refuse the wrong module, not judge it', 
     });
   }
 
+  it('LEG ORDER: a chapter-metadata unit reaches the missing-key branch, not the identity one', async () => {
+    // 🔴 ORDERING IS THE ASSERTION HERE, NOT THE VERDICT. `chapter-metadata` units have
+    // NO `01-source` counterpart at all (21 in chemistry, 2 in organic → §C82 L19), and
+    // their markers read `SEG:chapter:…` — so the module id they report is the literal
+    // string `chapter`, which leg 2 would happily call a mismatch. Leg 1 must get there
+    // first, or the message blames a disagreement between two files when one of them
+    // simply does not exist. Was a hand check until this test.
+    const metaSeg = fs.readFileSync(
+      path.join(
+        ROOT,
+        'books',
+        'efnafraedi-2e',
+        '02-for-mt',
+        'ch01',
+        'chapter-metadata-segments.en.md'
+      ),
+      'utf8'
+    );
+    expect(metaSeg).toMatch(/<!--\s*SEG:chapter:/); // control: the fixture is what we think
+    for (const c of [E2, E4]) {
+      const r = await runCheck(c, { segText: metaSeg });
+      expect(r.verdict).toBe(VERDICT.SKIPPED);
+      expect(r.message).toMatch(/missing cnxml/);
+      expect(r.message).not.toMatch(/disagree about the module/);
+    }
+  });
+
   it('and the guard NEVER fires on a real module — 176 pairs, three books', async () => {
     // The false-halt control. A guard measured only against defects is indistinguishable
     // from one that refuses everything, and this file's own L17 is what that costs.
