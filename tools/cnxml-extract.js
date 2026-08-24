@@ -1538,10 +1538,42 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
             parasArray.push({ segmentId: segId, paraId: para.id });
           }
         }
-        rowStructure.cells.push({
-          paras: parasArray,
-          attributes: entry.attributes,
-        });
+        const cell = { paras: parasArray, attributes: entry.attributes };
+        // 🔴 §C85-alt — THE SIBLING `<media>`'s ALT. §C85 made this branch PRESERVE the
+        // media (that is the `>= 1` predicate above); it never made it TRANSLATE it, so
+        // the alt was emitted nowhere and the page published ENGLISH. The else branch
+        // below has done exactly this since §C88 — the two branches simply diverged, and
+        // this is the gap between them, not new behaviour.
+        //
+        // ⚠️ SCAN THE RESIDUE, NOT `entry.content` — `extractElements` is depth-BLIND and
+        // both exclusions are load-bearing, for DIFFERENT reasons:
+        //   figures — the figure path already emitted that alt under the figure's id, so
+        //     including them re-emits it: translated and PAID FOR twice (§C88 measured
+        //     exactly this on m00046, caught only because the delta was predicted).
+        //   paras  — `buildTable` replaces each `<para>` BODY, so a media INSIDE a para is
+        //     destroyed at inject. Emitting its alt would be extract-without-reach, the
+        //     §C89 class this whole area exists to prevent. Measured 0 corpus-wide today;
+        //     excluded so it stays 0 by construction rather than by luck.
+        const cellFigures = extractElements(entry.content, 'figure');
+        const mediaScope = stripContainersByLength(entry.content, [cellFigures, cellParas]);
+        for (const media of extractElements(mediaScope, 'media')) {
+          // Quote-aware span (§C115) and ONE parse, so the `src` key and the `alt`
+          // fallback cannot disagree about where the open tag ends.
+          const imageOpen = media.content.match(new RegExp(`<image${TAG_ATTR_SPAN}\\/?>`));
+          const imageAttrs = imageOpen ? parseAttributes(imageOpen[0]) : {};
+          const altKey = media.id ? altElementId(media.id, 0) : altElementIdFromSrc(imageAttrs.src);
+          if (!altKey) continue;
+          const altText = media.attributes.alt || imageAttrs.alt || '';
+          const altSegId = altText ? addSegment('alt', altText, altKey) : null;
+          if (altSegId) {
+            cell.alt = { segmentId: altSegId, text: altText, mediaId: media.id || null };
+            // `src` is the write-back key for an id-less media, and is carried ONLY
+            // then — adding it unconditionally churns tracked `02-structure/` output
+            // for id-bearing media that do not need it (§C88 measured that regression).
+            if (!media.id) cell.alt.src = imageAttrs.src || null;
+          }
+        }
+        rowStructure.cells.push(cell);
       } else {
         // Single-content cell: original behavior
         const text = extractInlineText(entry.content, mathMap, counters);

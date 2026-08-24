@@ -113,24 +113,33 @@ describe('§C89 — translated alt reaches the injected output', () => {
     expect(r.dropped).toEqual([]);
   }, 300_000);
 
-  it('organic: all 2,162 alt translations survive (1,918 + §C88 Unit A’s 244)', () => {
+  it('organic: all 2,163 alt translations survive (1,918 + Unit A’s 244 + §C85-alt’s 1)', () => {
     // 🔴 THE SECOND BOOK IS NOT A REPEAT — IT CAUGHT A DEFECT CHEMISTRY COULD NOT.
     //   before §C89        1675 / 1918   (87.3%)
     //   after  §C89        1918 / 1918   (100%)
     //   after  §C88 Unit A 2162 / 2162   (+244 id-less table-cell media)
+    //   after  §C85-alt     2163 / 2163   (+1 — the 245th, m00032, see below)
     // §C89's first cut keyed its lookup on the media's id and still dropped 243 here
     // (12.7%, 110 modules) — because organic's media are overwhelmingly ID-LESS,
     // while chemistry's are not. Chemistry alone reported 950/951 and looked done.
     // ▶ One corpus is one corpus. A book whose shapes differ is the cheapest way to
     // find out which of your assumptions were really about the data.
     //
-    // §C88 UNIT A — THE +244, AND WHY IT IS 244 AND NOT 245. Organic has 245
+    // §C88 UNIT A — THE +244, AND WHY IT WAS 244 AND NOT 245. Organic has 245
     // alt-bearing `<media>` sitting DIRECTLY in a table `<entry>` with no id and no
     // `<figure>` ancestor; `if (!media.id) continue` meant none was ever extracted.
-    // 244 arrive in the empty-text branch and are keyed on the image `src`. The
-    // 245th (m00032, the `cellParas` branch) is [LEAD]-DEFERRED to a hand fix —
-    // ledger M1, runbook 4.5 — because wiring it in means touching a branch whose
-    // sibling destroys non-para content, against a fresh §C85 pin.
+    // 244 arrive in the empty-text branch and are keyed on the image `src`.
+    //
+    // ✅ §C85-alt — THE 245th IS NOW IN, WHICH IS THE +1. It sits in the `cellParas`
+    // branch (m00032's entry holds a media AND a para), which extracted the paras and
+    // never looked at the sibling media. It was deferred to a hand fix (ledger M1) on
+    // the grounds that wiring it in means touching a branch whose sibling destroys
+    // non-para content. ▶ THAT DEFERRAL WAS WITHDRAWN once the hand fix was shown to be
+    // UNPERFORMABLE: with no segment emitted there is no row for an editor to translate,
+    // so the page published the ENGLISH alt for a figure OpenStax does publish. The fix
+    // is the §C88 pattern applied to the sibling branch, and its acceptance was a
+    // corpus byte-identity diff: 1,191 of 1,192 modules IDENTICAL on segments,
+    // structure AND injected output, m00032 the only change, 35/35 -> 36/36.
     //
     // ⚠️ 245 WOULD ALSO HAVE BEEN A PLAUSIBLE-LOOKING NUMBER HERE, and briefly was:
     // `extractElements` is depth-blind, so relaxing the guard first made m00046
@@ -142,8 +151,8 @@ describe('§C89 — translated alt reaches the injected output', () => {
     // and this test sits on the difference.
     const r = sweep('lifraen-efnafraedi');
 
-    expect(r.emitted).toBe(2162);
-    expect(r.reached).toBe(2162);
+    expect(r.emitted).toBe(2163);
+    expect(r.reached).toBe(2163);
     expect(r.dropped).toEqual([]);
   }, 600_000);
 });
