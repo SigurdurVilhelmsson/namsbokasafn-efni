@@ -80,8 +80,25 @@ describe('the empty-selection refusal', () => {
     const r = await runTier(4, {});
     expect(r.results.map((x) => x.id)).toEqual(['B5']);
     expect(r.results[0].examined).toBe(7);
+
+    // ⚠️ WIDENED WHEN TIER 2 WAS WIRED (Task 8), AND THE THREE MUTANTS IT KILLS ARE
+    // UNCHANGED. Tier 2 is no longer synthetic-only — `remt-checks-mt.js` registers A1,
+    // A6, A2b and A2c at import time — so an exact `toEqual(['B5b'])` was asserting that
+    // the REAL checks are absent. That is the failure mode this file's own header warns
+    // about: a probe whose synthetic check has stopped being the sole determinant.
+    // The synthetic is restored as the determinant by asserting its PRESENCE and the
+    // other tier's ABSENCE, which is what each mutant breaks:
+    //   `() => true`      → tier 4 returns everything, killed by the toEqual above
+    //   `&& c.blocking`   → drops B5b (blocking:false), killed by toContain('B5b')
+    //   hard-coded tier   → returns B5 for tier 2, killed by not.toContain('B5')
     const r2 = await runTier(2, {});
-    expect(r2.results.map((x) => x.id)).toEqual(['B5b']);
+    const ids2 = r2.results.map((x) => x.id);
+    expect(ids2).toContain('B5b');
+    expect(ids2).not.toContain('B5');
+    expect(ids2.every((id) => REGISTRY.get(id).tier === 2)).toBe(true);
+    // L37: the COUNT beside the predicate — `[].every(...)` is vacuously true. A premise
+    // pin, updated by the task that widens the tier: Task 9 adds A2a, A4 and A8.
+    expect(ids2).toHaveLength(5);
   });
 });
 

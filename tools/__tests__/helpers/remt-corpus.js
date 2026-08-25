@@ -59,3 +59,51 @@ export const segTextOf = (b, ch, m) =>
 
 /** The `{cnxml, segText}` ctx a Tier-1 per-module gate takes. */
 export const modCtx = (b, ch, m) => ({ cnxml: srcText(b, ch, m), segText: segTextOf(b, ch, m) });
+
+/**
+ * Every LIVE `02-mt-output` IS segment file of `book`, in stable path order — the
+ * Tier-2 population, and it is NOT the Tier-1 one.
+ *
+ * ⚠️ IT DRIVES FROM `02-mt-output`, NOT FROM `01-source`, AND THAT IS A DELIBERATE
+ * DEPARTURE FROM `modulesWithSegments` ABOVE. Tier 2 judges what came BACK from the
+ * paid MT, and a large part of that has no `01-source` counterpart at all: organic's
+ * `exercises-segments.is.md` bundles are its own files, not modules. Driving from the
+ * source side would silently drop them — and they are exactly where A1's only natural
+ * must-trip lives (4 of them), so the drop would read as "A1 never fires".
+ *
+ * ⚠️ `chapter-metadata-*` IS EXCLUDED: those units carry `SEG:chapter:…` markers and
+ * no module id, and Tier 1's own ctx guard already treats them as a separate class.
+ * Including them changes every count below without changing what is being measured.
+ *
+ * ⚠️ The `-segments.is.md` suffix filter is what keeps dated backups out — a backup is
+ * `…-segments.is.<date>.md` and cannot end with the live suffix. Measured 2026-08-25:
+ * chemistry 149, organic 48, micro 10.
+ *
+ * @param {string} book book slug
+ * @returns {string[]} absolute paths
+ */
+export function mtOutputSegmentFiles(book) {
+  const root = path.join(REPO_ROOT, 'books', book, '02-mt-output');
+  const out = [];
+  const walk = (dir) => {
+    for (const e of fs
+      .readdirSync(dir, { withFileTypes: true })
+      .sort((a, b) => (a.name < b.name ? -1 : 1))) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('-segments.is.md') && !e.name.startsWith('chapter-metadata')) {
+        out.push(p);
+      }
+    }
+  };
+  if (fs.existsSync(root)) walk(root);
+  return out;
+}
+
+/** The `02-for-mt` EN counterpart of an IS segment file path, or null if there is none. */
+export function enCounterpart(isPath) {
+  const en = isPath
+    .replace('/02-mt-output/', '/02-for-mt/')
+    .replace('-segments.is.md', '-segments.en.md');
+  return fs.existsSync(en) ? en : null;
+}
