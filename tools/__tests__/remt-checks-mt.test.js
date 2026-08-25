@@ -19,7 +19,16 @@
  *
  * ⚠️ AND EVERY MUST-NOT-TRIP CONTROL IS LOAD-BEARING. A6 over organic is 0 across 48
  * files — which is exactly what a wholly broken detector returns. The planted trip and
- * the chemistry 5,491 are what separate the two readings (L44③).
+ * the chemistry figures are what separate the two readings (L44③).
+ *
+ * 🔴 THE TWO A6 DIALECT FIGURES ARE NEVER SUMMED, AND THE SUM IS NOT A TYPO TO
+ * RESTORE. `5,442` is a count of MUSTACHE OCCURRENCES; `49` is the number of times a
+ * REGEX that this same suite pins as over-counting by +25.6% matched — a detector, not
+ * a counter (E1 anchors it to `01-source`, and Tier 2 carries no `cnxml`, so no anchor
+ * is available here). `5,442 + 49 = 5,491` is therefore neither figure: it is an
+ * occurrence count with a detector reading added to it. Report them separately, each
+ * labelled with its dialect and its population. ⚠️ `5,442 + 146 = 5,588` IS legitimate
+ * and is kept — same dialect, two books.
  */
 import { describe, it, expect, vi } from 'vitest';
 import fs from 'node:fs';
@@ -202,9 +211,13 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
       if (p) plus += p.regexHits;
       if (r.verdict === VERDICT.FAIL) carriers++;
     }
-    expect(mustache).toBe(5442);
-    expect(plus).toBe(49);
-    expect(mustache + plus).toBe(5491);
+    // ⚠️ TWO FIGURES, NEVER A SUM — see this file's header. `mustache` is an occurrence
+    // count; `plus` is a hit count from a detector this suite pins as over-counting by
+    // +25.6%. Adding them produces a number that is neither, and no single corrected
+    // figure exists to put in its place: the plan's 49-vs-39 anchor was EN-side, over 6
+    // modules, against `01-source`, while this 49 is IS-side and corpus-wide.
+    expect(mustache).toBe(5442); // {{…}} occurrences, chemistry IS side, 149 files
+    expect(plus).toBe(49); // ++ REGEX HITS (detector), same population
     expect(carriers).toBe(115);
     expect(examined).toBe(21515); // segments inspected; an empty walk cannot reach it
   });

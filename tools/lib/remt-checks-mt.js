@@ -416,9 +416,17 @@ export const A1 = defineCheck({
  *   orverufraedi           10      146          0           4   (fixture bytes only)
  *
  * ▶ 5,442 + 146 = 5,588 — the plan's figure EXACTLY, which is the reconciliation that shows
- * the plan's number counts the MUSTACHE DIALECT ONLY. A6 as specified covers BOTH, so its
- * real fixture is 5,491 occurrences over 115 chemistry files plus 146 over 4 micro ones.
- * State the dialect and the population in the same breath as any of these counts.
+ * the plan's number counts the MUSTACHE DIALECT ONLY. That sum is legitimate: one dialect,
+ * two books.
+ * 🔴 BUT THE TWO DIALECT FIGURES ARE NEVER SUMMED ACROSS DIALECTS, AND THIS DOCSTRING
+ * USED TO DO EXACTLY THAT — it called A6's fixture "5,491 occurrences", i.e. 5,442 mustache
+ * OCCURRENCES plus 49 hits from the `++` REGEX that the very next paragraph pins as a
+ * DETECTOR over-counting by +25.6%. The sum is neither figure. ⚠️ AND THERE IS NO SINGLE
+ * CORRECTED NUMBER TO SUBSTITUTE — do not invent one: the plan's 49-vs-39 anchor was
+ * EN-side, over 6 modules, against `01-source`; this 49 is IS-side and corpus-wide; and
+ * Tier 2 carries no `cnxml`, so no anchor is available here at all. ▶ THE HONEST FORM IS
+ * TWO FIGURES, ALWAYS REPORTED SEPARATELY, each labelled with its dialect and population —
+ * which is what the table above already does, and what A6's `message` does at runtime.
  * ▶ Every one of those lives in a tree the re-MT REPLACES, so the corpus pins are premise
  * pins and the test carries a PLANTED must-trip that no re-MT can repair.
  *
