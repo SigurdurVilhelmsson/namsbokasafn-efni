@@ -797,14 +797,26 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
     // structurally blind to it and these four reached disk. §C89 verbatim: a count cannot
     // see a substitution. A1 stays advisory because the base rate is 4/207, not 0.
     const hits = [];
+    // 🔴 A CONTROL COUNT, AND THE PER-ITERATION ASSERTION THAT MAKES IT MEAN SOMETHING.
+    // This loop used to do `if (!en) continue;` with nothing counting the pairs it
+    // actually compared. Today 207/207 resolve, so it was latent — but if the EN side
+    // ever moved, the loop would silently compare fewer pairs, still find the same 4
+    // organic hits, and PASS while covering less. `[].every(...)` is vacuously true and
+    // so is a loop over a shrinking walk: assert the COUNT beside the predicate.
+    // ⚠️ THE TOTAL ALONE IS NOT ENOUGH, which is why the sibling's `expect(en).not
+    // .toBeNull()` is adopted rather than just a counter — a total still tolerates a
+    // silent skip if some other file were added to make the number up.
+    let compared = 0;
     for (const b of BOOKS) {
       for (const f of FILES[b]) {
         const en = enCounterpart(f);
-        if (!en) continue;
+        expect(en, f).not.toBeNull();
         const r = await runCheck(A1, { segText: read(en), isText: read(f) });
         if (r.verdict !== VERDICT.PASS) hits.push([f, r]);
+        compared++;
       }
     }
+    expect(compared).toBe(207); // the population this 4/207 base rate is 4 OF
     expect(hits).toHaveLength(4);
     expect(hits.map(([f]) => f.match(/(ch\d+)\/exercises/)[1])).toEqual([
       'ch06',
