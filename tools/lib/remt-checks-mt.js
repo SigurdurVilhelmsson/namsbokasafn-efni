@@ -296,6 +296,27 @@ export const A1 = defineCheck({
  * State the dialect and the population in the same breath as any of these counts.
  * ▶ Every one of those lives in a tree the re-MT REPLACES, so the corpus pins are premise
  * pins and the test carries a PLANTED must-trip that no re-MT can repair.
+ *
+ * ── THE FALSE-POSITIVE DIRECTION, STATED WITH ITS MEASURED BASE RATE ──────────────────
+ * ⚠️ `LEGACY_PLUSPLUS_RE` IS `/\+\+[^+]+\+\+/`, AND `[^+]+` CROSSES WORDS. In
+ * `Kalsíumjónin Ca++ og magnesíumjónin Mg++ eru tvígildar.` it matches
+ * `++ og magnesíumjónin Mg++` — the closing `++` of one ion and the opening of the next,
+ * read as one legacy marker. A6 IS BLOCKING, so legitimate chemistry prose halts a paid
+ * run. Ion notation is ordinary in this corpus's subject matter.
+ *
+ * ▶ THE PATTERN IS DELIBERATELY NOT CHANGED, AND THE MEASUREMENT IS THE REASON.
+ *   1. It is E1's binding, shared BY IDENTITY (see the re-export above). Widening it here
+ *      silently changes a Tier-1 blocking check whose behaviour its own tests pin.
+ *   2. The live risk is ZERO. Measured 2026-08-25 over all 207 population files: **49 `++`
+ *      regex hits against 98 raw `++` occurrences — exactly 49 × 2**, so every `++` in the
+ *      corpus is half of a paired legacy marker and there are NO orphans. The four
+ *      ion-SHAPED candidates are, inspected in context, all a marker's closing delimiter
+ *      (`++bráðnar við −220 °C++`, `(++C++H)`, `K++N++O`). **ZERO genuine instances.**
+ * ▶ SO IT IS LATENT, NOT LIVE — and it becomes live precisely when the re-MT run replaces
+ * this corpus with prose that no legacy marker survives into. The behaviour is PINNED in
+ * the test so the first false halt is met as a documented trade-off, not as a mystery.
+ * ⚠️ WHEN IT DOES FIRE, THE FIX BELONGS IN E1's PATTERN, WITH E1's TESTS — not in a
+ * re-typed copy here, which is the §C82 L41 failure this file has already shipped twice.
  */
 export const A6 = defineCheck({
   id: 'A6',

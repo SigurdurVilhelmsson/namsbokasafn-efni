@@ -237,6 +237,41 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     expect(p).not.toHaveProperty('sourceElements');
   });
 
+  it('PINS THE FALSE-POSITIVE DIRECTION — ion notation blocking-FAILs A6, deliberately', async () => {
+    // 🔴 A CHARACTERIZATION PIN, NOT A REGRESSION PIN. `LEGACY_PLUSPLUS_RE` is
+    // `/\+\+[^+]+\+\+/` — `[^+]+` crosses words, so in
+    // `Kalsíumjónin Ca++ og magnesíumjónin Mg++ eru tvígildar.` it matches
+    // `++ og magnesíumjónin Mg++`: the closing `++` of one ion and the opening of the
+    // next, read as one legacy marker. A6 is BLOCKING, so legitimate chemistry prose
+    // would halt a paid run.
+    //
+    // ▶ THE REGEX IS NOT CHANGED, AND THE MEASUREMENT IS WHY. It is E1's binding, shared
+    // by identity (see the two pins above) and pinned by E1's own tests — widening it
+    // here would silently change a Tier-1 blocking check. And the live risk is ZERO:
+    // measured 2026-08-25 over all 207 population files, **49 `++` regex hits and 98 raw
+    // `++` occurrences — exactly 49 × 2**, i.e. every `++` in the corpus is half of a
+    // paired legacy marker and there are NO orphans. Inspected in context, the four
+    // ion-SHAPED candidates are all a marker's closing delimiter (`++bráðnar við −220 °C++`,
+    // `(++C++H)`, `K++N++O`). ZERO genuine ion-notation instances.
+    //
+    // ⚠️ SO THIS IS LATENT, NOT LIVE — and it becomes live exactly when the re-MT run
+    // replaces this corpus with prose no legacy marker survives into. This pin exists so
+    // whoever meets the first false halt meets it as a DOCUMENTED, measured trade-off
+    // rather than as a mystery in production. If the re-MT output carries ion notation,
+    // the fix belongs in E1's pattern, with E1's tests, not here.
+    const ionProse =
+      '<!-- SEG:m1:para:a -->\nKalsíumjónin Ca++ og magnesíumjónin Mg++ eru tvígildar.\n';
+    const r = await runCheck(A6, { isText: ionProse });
+    expect(r.verdict).toBe(VERDICT.FAIL); // ← the false halt, pinned
+    expect(r.findings.find((f) => f.dialect === '++')).toMatchObject({
+      regexHits: 1,
+      countIs: 'detector', // and it is still LABELLED a detector, never a count
+    });
+    // By value, so the mechanism is visible rather than asserted: ONE match spanning two
+    // separate ions, not two matches.
+    expect(ionProse.match(A6_PLUSPLUS_RE)).toEqual(['++ og magnesíumjónin Mg++']);
+  });
+
   it('SKIPPED, not PASS, when the ctx carries no isText — L6/L33', async () => {
     for (const ctx of [{}, { isText: '' }, { isText: null }, { isText: ['x'] }, { segText: 'x' }]) {
       const r = await runCheck(A6, ctx);
