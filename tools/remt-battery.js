@@ -30,7 +30,12 @@
  *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G4)
  *   @property {string} [payloadText]  raw glossary bytes             (Task 7: G5)
  *   @property {string} [mtOutputPath] path, for the .locked sibling  (Task 6: E9)
- *   @property {string} [scanDir]      directory to sweep             (Task 5: E6)
+ *   @property {string[]} [emittedFiles] filenames the extract emitted (Task 5: E6)
+ *                                     ⚠️ A LISTING, NOT A PATH — gates are pure, so the
+ *                                     loader walks the directory. It must scope the list
+ *                                     to THIS RUN's output: the two kept books' generated
+ *                                     trees already hold 14,634 historical backup files
+ *                                     (2026-03-08 → 2026-08-12), and E6 is blocking.
  *
  * ▶ Until the loader lands, this CLI passes only the SCOPE keys, so every other key
  * reads as plain `undefined`. 🔴 THAT IS NOT STRUCTURALLY LOUD, AND AN EARLIER

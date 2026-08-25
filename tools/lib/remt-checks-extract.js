@@ -1,5 +1,5 @@
 /**
- * remt-checks-extract.js — Tier 1 of the §C82 battery: E2, E4, E5, E7.
+ * remt-checks-extract.js — Tier 1 of the §C82 battery: E1-E7 and E9.
  *
  * Tier 1 is PER MODULE, PRE-MT. It is free, it loops until clean, and it GATES THE
  * SPEND: a halt here costs a re-extract, not money (design §4). That asymmetry is
@@ -585,7 +585,305 @@ function isSnapshot(s) {
   );
 }
 
-export const EXTRACT_CHECKS = [E2, E4, E5, E7];
+/**
+ * The two retired inline-marker dialects. Both predate the `[[type:content]]` bracket
+ * form and both are still PARSED by the injector for back-compat, which is exactly why
+ * their presence on the EN side is a defect rather than a curiosity: the module extracts,
+ * the segment count is right, and the marker survives to the MT as literal text.
+ *
+ * ⚠️ THE `++` REGEX IS A DETECTOR, NEVER A COUNTER — it over-counts by 25.6%, MEASURED.
+ * Re-measured 2026-08-25 over the six chemistry modules that carry any: **49 regex hits
+ * against 39 `<emphasis effect="underline">` elements in `01-source`**, reproducing the
+ * spec's figures exactly.
+ *
+ * 🔴 BUT THE SPEC'S STATED MECHANISM IS WRONG, AND THE REAL ONE MATTERS MORE. The spec and
+ * the plan both attribute the excess to the regex being "greedy on ADJACENT RUNS". It is not:
+ * every hit in the worst module is a well-formed `++C++` / `++O++` around a single element
+ * symbol, and the regex reads each correctly. The excess is **`++` occurrences inside
+ * DUPLICATED SEGMENT BLOCKS** — the segment file repeats whole `<!-- SEG:… -->` blocks, so
+ * the same source element is counted once per copy. The account is exact, with no residual:
+ *
+ *   module         regex  source-underline  delta   ++ inside repeated seg-ids
+ *   ch01/m68664       8          8            0                 0
+ *   ch01/m68670       6          6            0                 0
+ *   ch04/m68710       2          2            0                 0   (3 dup ids, none carrying ++)
+ *   ch06/m68734       2          2            0                 0   (2 dup ids, none carrying ++)
+ *   ch07/m68742      27         19           +8                 8
+ *   ch08/m68745       4          2           +2                 2
+ *
+ * ▶ m68710 and m68734 are the CONTROL that rules out the looser story "duplicates inflate the
+ * count": both HAVE duplicate seg-ids and both have delta 0, because their duplicated blocks
+ * carry no `++`. ▶ AND THE CONSEQUENCE IS NOT COSMETIC — it means E1's over-count and E4's
+ * duplicate-seg-id half are ONE defect observed twice, so a module can be red here for a
+ * reason E4 already names. The anchor is still the right repair, for a different reason than
+ * the spec gives: the source element count cannot be inflated by a duplicated segment.
+ *
+ * ⚠️ THE EXCESS IS NOT SPREAD EVENLY, WHICH IS THE TRAP EITHER WAY. Four of the six agree
+ * exactly, so a spot-check of one or two modules reads as agreement. That is why the reported
+ * count is anchored to the SOURCE element count and the regex hit count is carried alongside
+ * it, never in its place.
+ */
+export const LEGACY_MUSTACHE_RE = /\{\{\s*\/?\s*(?:i|b|term|fn)\s*\}\}/g;
+export const LEGACY_PLUSPLUS_RE = /\+\+[^+]+\+\+/g;
+
+/**
+ * `<emphasis effect="underline">` elements in the module's read-only source, BY PARSE.
+ *
+ * 🔴 PARSED, NOT REGEXED, AND THAT IS THE §C115 RULE RATHER THAN A PREFERENCE. A bare `>`
+ * is legal inside an XML attribute value, so `<emphasis[^>]*effect="underline"` can truncate
+ * mid-attribute and silently under-count — and the failure is an EMPTY capture, so the tool
+ * reports success. This is the anchor E1's `++` count rests on; an anchor that can quietly
+ * shrink would make the over-count it exists to correct look larger than it is.
+ * ⚠️ Verified equal on today's corpus: the parsed count and the `[^>]*` regex both return 39
+ * over the six carrier modules. That agreement is a CONTROL on this function, not a licence
+ * to use the regex — these six happen to carry no raw `>` in an emphasis tag; a source
+ * refresh or a new book can light up a site that has never fired.
+ *
+ * @param {string} cnxml read-only `01-source` text
+ * @returns {number} elements whose effect is exactly "underline"
+ */
+export function countUnderlineElements(cnxml) {
+  const { doc } = parseModuleDoc(cnxml);
+  const all = doc.getElementsByTagName('emphasis');
+  let n = 0;
+  for (let i = 0; i < all.length; i++) {
+    if (all[i].getAttribute('effect') === 'underline') n++;
+  }
+  return n;
+}
+
+/**
+ * E1 — zero legacy inline markers on the EN side, BOTH dialects.
+ *
+ * A legacy marker that reaches `02-for-mt` reaches the paid MT verbatim. The mustache form
+ * additionally shares the `[[…]]` family's spacing hazard: what the API returns may not be
+ * what parses back.
+ *
+ * ── WHY IT REQUIRES `cnxml` THOUGH ITS SUBJECT IS THE SEGMENT FILE ──
+ * The `++` half is only reportable against the source element count (above), so both inputs
+ * are intrinsic to the judgement rather than required for symmetry. That makes
+ * `skipIfCtxUnusable` the right guard here — E1 gets its identity and non-emptiness legs for
+ * free, and a loader that supplied one side does not wave a paid module through.
+ *
+ * ⚠️ ITS NATURAL MUST-TRIP POPULATION HAS A HALF-LIFE — §C82 L27, and L20's labelling rule.
+ * MEASURED 2026-08-25 over the two kept books: chemistry **1,644 mustache occurrences across
+ * 104 of 170 EN segment files** and **49 `++` hits across 6**; organic **0 and 0** of 50.
+ * Every one of those lives in `02-for-mt`, which the loop's own re-extract rewrites — and the
+ * re-extract emits bracket markers BY DESIGN, so E1's entire corpus fixture is expected to go
+ * to zero. ▶ A corpus pin here is a PREMISE pin: when it moves that is the corpus changing,
+ * not a regression, and it is updated in the commit that observes it. The SHOULD-TRIP that
+ * must survive the re-extract is therefore PLANTED, in the test file, where no re-extract can
+ * repair it. Organic's 0-of-50 is the MUST-NOT-TRIP control and is stable.
+ */
+export const E1 = defineCheck({
+  id: 'E1',
+  tier: 1,
+  blocking: true,
+  version: 1,
+  run: (ctx) => {
+    const skip = skipIfCtxUnusable(ctx, 'E1');
+    if (skip) return skip;
+
+    const mustache = ctx.segText.match(LEGACY_MUSTACHE_RE) || [];
+    const plusHits = ctx.segText.match(LEGACY_PLUSPLUS_RE) || [];
+
+    const findings = [];
+    if (mustache.length > 0) {
+      findings.push({ kind: 'legacy-marker', dialect: '{{}}', occurrences: mustache.length });
+    }
+    if (plusHits.length > 0) {
+      // The finding's authoritative count is the SOURCE element count; `regexHits` rides
+      // along so the +25.6% is visible rather than silently corrected away.
+      findings.push({
+        kind: 'legacy-marker',
+        dialect: '++',
+        sourceElements: countUnderlineElements(ctx.cnxml),
+        regexHits: plusHits.length,
+      });
+    }
+
+    return {
+      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
+      examined: countSegments(ctx.segText),
+      findings,
+      message: `${mustache.length} {{…}} occurrences, ${plusHits.length} ++ regex hits`,
+    };
+  },
+});
+
+/**
+ * The raw-XML tags E3 treats as residue in a segment file.
+ *
+ * ⚠️ EXPORTED, AND A NAMED CONSTANT RATHER THAN AN INLINE PATTERN, BECAUSE THE SPEC SAYS
+ * THIS LIST HAS ALREADY BEEN WIDENED ONCE AND TO "ASSUME A NEXT TAG". A future widening is
+ * then one edit in one place with a test that reads the same constant — rather than a regex
+ * literal duplicated between the gate and its test, where the two drift and the test keeps
+ * passing against the list it was written for.
+ */
+export const XML_RESIDUE_TAGS = Object.freeze([
+  'emphasis',
+  'term',
+  'link',
+  'note',
+  'para',
+  'entry',
+  'row',
+]);
+
+/** Built from the constant above, so the gate and its tests cannot disagree about the list. */
+export const xmlResidueRe = () => new RegExp(`<(?:${XML_RESIDUE_TAGS.join('|')})\\b`, 'g');
+
+/**
+ * E3 — no raw CNXML tags survive into a segment file. Extraction is supposed to have turned
+ * every one of them into text or a bracket marker; one that arrives intact is sent to the
+ * paid MT as literal angle-bracket noise.
+ *
+ * 🔴 ITS BASE RATE IS ZERO ON EVERY SIDE OF THE LIVE CORPUS, SO WITHOUT A PLANTED CONTROL IT
+ * IS UNFALSIFIABLE. MEASURED 2026-08-25 across both kept books and BOTH sides — chemistry
+ * 170 EN + 170 IS, organic 50 EN + 50 IS — **0 occurrences, 0 modules, everywhere**. A gate
+ * that has never fired and cannot be shown to fire is indistinguishable from one that does
+ * not work; the spec says so in its own coverage table (spec:249, which lists E3 among the
+ * checks with no natural known-bad fixture). ▶ Its SHOULD-TRIP is a planted string in the
+ * test file. ⚠️ That is ALSO why the zero above is quoted as a MUST-NOT-TRIP control and not
+ * as evidence the check works: 0 findings over 440 files is exactly what a wholly broken
+ * detector returns.
+ *
+ * ⚠️ IT KEEPS BLOCKING, AND THE SPEC CONTRADICTS ITSELF ABOUT THAT — decided here, not
+ * inherited. spec:175 lists E1–E6/E9 as blocking with live fixtures; spec:249 lists E3 among
+ * the checks with no natural known-bad fixture, and §2's mechanical rule is that such a check
+ * "cannot be blocking". The tie is broken by this branch's own precedent rather than by
+ * re-reading the spec: §C82 L27 closed E2 and E4 with PLANTED controls and left both
+ * `blocking: true`. A planted control is a known-bad fixture — it is simply one whose bytes
+ * the loop's re-extract cannot repair, which is the property the rule is actually about.
+ * Costlessness settles the risk: E3's examined unit is `countSegments`, zero for 0 of 149
+ * chemistry and 0 of 17 organic modules, so no module is halted by the unit rather than by a
+ * defect (the §C82 L9/L17 class).
+ *
+ * ── WHY ITS GUARD IS NOT `skipIfCtxUnusable` ──
+ * E3 never reads the source side. Requiring `cnxml` would make a loader that supplied only
+ * `segText` produce SKIPPED, which for a blocking gate is a HALT — a false halt manufactured
+ * by an input the gate does not use. The identity leg is genuinely lost by that choice and
+ * the loss is stated rather than implied: handed another module's `segText`, E3 answers
+ * correctly about the wrong module. That is the LOADER's contract (§C82 L21), not a guard's.
+ */
+export const E3 = defineCheck({
+  id: 'E3',
+  tier: 1,
+  blocking: true,
+  version: 1,
+  run: (ctx) => {
+    if (typeof ctx?.segText !== 'string' || ctx.segText === '') {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message: 'E3: ctx is missing segText — no segments to examine',
+      };
+    }
+    const hits = ctx.segText.match(xmlResidueRe()) || [];
+    const byTag = {};
+    for (const h of hits) {
+      const tag = h.slice(1);
+      byTag[tag] = (byTag[tag] || 0) + 1;
+    }
+    const findings = Object.entries(byTag).map(([tag, occurrences]) => ({
+      kind: 'xml-residue',
+      tag,
+      occurrences,
+    }));
+    return {
+      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
+      examined: countSegments(ctx.segText),
+      findings,
+      message: `${hits.length} raw XML tag occurrences over ${XML_RESIDUE_TAGS.length} watched tags`,
+    };
+  },
+});
+
+/**
+ * Classify one emitted filename. Returns a defect kind, or `null` for an expected file.
+ *
+ * 🔴 IT DETECTS KNOWN-BAD SHAPES; IT DOES NOT ASSERT AN ALLOWLIST — a deliberate choice with
+ * a stated cost. An allowlist would need the closed set of everything the extractor may emit,
+ * and "an UNKNOWN bucket is only as trustworthy as the KNOWN set". Derived wrongly it turns
+ * every unanticipated-but-legitimate artefact into a halt on a blocking gate. ▶ So E6 cannot
+ * see a wholly new kind of junk, and that is the honest limit of it.
+ *
+ * ⚠️ THREE BACKUP SHAPES, NOT ONE. The spec and the runbook both name `*.backup.*` only;
+ * `.gitignore:18-20` hides **`*.bak`, `*.backup` AND `*.backup.*`**, and CLAUDE.md § File
+ * Permissions prescribes a fourth spelling, `{filename}.{YYYY-MM-DD-HHMM}.bak`, which lands
+ * under `*.bak`. Real files of both families exist in the tree today. A glob covering one of
+ * three is the "fix the line, not the class" failure.
+ *
+ * ⚠️ AND A SHAPE NEITHER DOCUMENT NAMES: parenthesised duplicates, `m68709-segments(b).en.md`
+ * — **49 tracked in chemistry's `02-for-mt`**, none gitignored. They are the reason the
+ * spec's "never `git status --porcelain`" rule is right for a SECOND mechanism it never
+ * states: `git status` misses them not because they are ignored but because they are
+ * COMMITTED. An untracked-file detector cannot see junk that was checked in.
+ */
+export function classifyEmittedFile(name) {
+  const base = String(name).split('/').pop();
+  if (/\.bak$/.test(base) || /\.backup(\.|$)/.test(base)) return 'backup';
+  if (/\([a-z]\)\./i.test(base)) return 'duplicate';
+  return null;
+}
+
+/**
+ * E6 — the extract emitted no unexpected files.
+ *
+ * 🔴 THE GATE IS PURE: IT TAKES A LISTING, NOT A DIRECTORY. Plan B's Task 5 sketch passes
+ * `{ scanDir }` and lets the gate walk it; Global Constraint 5 says gates do no I/O and
+ * "file reading happens in the CLI or in Plan C's driver", and E7 (Task 4) already set that
+ * precedent by taking two pre-built snapshots. Taking a path would also make every test of
+ * this gate need a real directory. ▶ So the ctx key is `emittedFiles`, an array of names the
+ * loader observed. The ctx typedef in `tools/remt-battery.js` is updated to match.
+ *
+ * 🔴 THE LISTING MUST BE SCOPED TO WHAT *THIS RUN* EMITTED, AND HANDING IT THE TREE HALTS
+ * EVERYTHING — MEASURED, and this is the §C82 L9/L17 false-halt class arriving a third time.
+ * The spec's fixture is "the 2026-08-12 run wrote 67 backup files". Today's two kept books
+ * hold, across their generated trees: chemistry `02-structure` **11,500**, chemistry
+ * `02-for-mt` **3,102**, organic `02-structure` **24**, organic `02-for-mt` **8** —
+ * **14,634** backup files, plus the 49 duplicates. They accumulated over five months
+ * (**2026-03-08 → 2026-08-12**, mtimes), so they are HISTORY, not this run's output. A
+ * tree-scoped listing therefore FAILS a blocking gate on every module, forever, for a defect
+ * no current run committed. ▶ Scoping is the LOADER's job and Plan C's driver owns it; E6's
+ * contribution is to classify what it is handed and to say so loudly here.
+ *
+ * `examined` is the number of entries classified — content-keyed per §C82 L6, so an empty or
+ * absent listing counts 0 and reads SKIPPED rather than reporting a clean sweep of nothing.
+ */
+export const E6 = defineCheck({
+  id: 'E6',
+  tier: 1,
+  blocking: true,
+  version: 1,
+  run: (ctx) => {
+    const entries = ctx?.emittedFiles;
+    if (!Array.isArray(entries)) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message: 'E6: ctx is missing an emittedFiles array — nothing was listed to examine',
+      };
+    }
+    const findings = [];
+    for (const name of entries) {
+      const kind = classifyEmittedFile(name);
+      if (kind) findings.push({ kind: `unexpected-file:${kind}`, file: String(name) });
+    }
+    const backups = findings.filter((f) => f.kind.endsWith('backup')).length;
+    const dups = findings.length - backups;
+    return {
+      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
+      examined: entries.length,
+      findings,
+      message: `${entries.length} emitted files listed, ${backups} backup-shaped, ${dups} parenthesised duplicates`,
+    };
+  },
+});
+
+export const EXTRACT_CHECKS = [E1, E2, E3, E4, E5, E6, E7];
 
 // 🔴 REGISTRATION HAPPENS AT IMPORT TIME, AND ONLY THE CLI IMPORTS THIS MODULE.
 // Nothing else puts a check in the REGISTRY — measured (§C82 L3): no task in either
