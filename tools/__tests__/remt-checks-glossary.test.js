@@ -119,11 +119,23 @@ describe('G2 — the §C73 element-suffix rule', () => {
     });
   });
 
-  it('accepts the CORRECT -íum ending — the í is the whole predicate', async () => {
+  it('accepts the CORRECT -íum ending — asserted by a TEST, since no branch can express it', async () => {
+    // 🔴 An earlier draft carried a `!/íum$/i` exclusion beside a comment claiming it was not
+    // redundant. It was dead code: the -ín test requires a final `n` and `íum` ends in `m`, so
+    // nothing can match both. Deleting it left every test green — mutation testing found it.
+    // This assertion is what actually pins the correct form passing.
     const ok = await runCheck(G2, { glossary: [term('magnesium', 'magnesíum')] });
     expect(ok.verdict).toBe(VERDICT.PASS);
     const bad = await runCheck(G2, { glossary: [term('magnesium', 'magnesín')] });
     expect(bad.verdict).toBe(VERDICT.FAIL);
+  });
+
+  it('catches the UNACCENTED -in too — a planted control, since all 44 real ones use -ín', async () => {
+    // Narrowing /[ií]n$/ to /ín$/ left the suite green until this fixture existed: the corpus
+    // exercises only the accented spelling, so the breadth was untested rather than verified.
+    const r = await runCheck(G2, { glossary: [term('helium', 'helin')] });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings[0]).toMatchObject({ english: 'helium', icelandic: 'helin' });
   });
 
   it('is clean on both live glossaries today', async () => {

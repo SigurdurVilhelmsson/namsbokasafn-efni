@@ -105,13 +105,20 @@ export const G1 = defineCheck({
  * The §C73 element-suffix rule: an English `-ium` element name must resolve to Icelandic
  * `-íum`, never to `-ín`/`-in`.
  *
- * ⚠️ THE `í` IS THE WHOLE PREDICATE, so the exclusion is not redundant with the match: `-íum`
- * is the CORRECT ending and shares its tail with nothing here, while `-ín` is the wrong one
- * chemistry inherited from physics across 44 entries.
+ * 🔴 THERE IS DELIBERATELY NO `-íum` EXCLUSION, AND AN EARLIER DRAFT HAD ONE THAT WAS DEAD
+ * CODE. It read `!/íum$/i.test(target)` beside a comment claiming "the exclusion is not
+ * redundant with the match". It is: `IN_ENDING` requires the last character to be `n`, and
+ * `íum` ends in `m`, so **no string can match both** and the branch could never fire. Mutation
+ * testing caught it — deleting the exclusion left every test green — and a guard that reads as
+ * protection while being unreachable is worse than no guard, because nobody re-opens a line
+ * that looks handled. ▶ The CORRECT form passing is asserted by a test instead of by a branch.
+ *
+ * ⚠️ `[ií]` COVERS BOTH SPELLINGS ON PURPOSE, and that breadth is a planted control rather
+ * than a corpus one: all 44 real §C73 entries use the accented `-ín`, so narrowing this to
+ * `/ín$/` also left the suite green until a `-in` fixture was added.
  */
 const IUM_HEADWORD = /ium$/i;
 const IN_ENDING = /[ií]n$/i;
-const CORRECT_IUM = /íum$/i;
 
 /**
  * G2 — no `-ium` headword resolves to a `-ín`/`-in` ending.
@@ -139,12 +146,7 @@ export const G2 = defineCheck({
     if (skip) return skip;
     const wire = wireTerms(ctx.glossary);
     const findings = wire
-      .filter(
-        (t) =>
-          IUM_HEADWORD.test(t.sourceWord) &&
-          IN_ENDING.test(t.targetWord) &&
-          !CORRECT_IUM.test(t.targetWord)
-      )
+      .filter((t) => IUM_HEADWORD.test(t.sourceWord) && IN_ENDING.test(t.targetWord))
       .map((t) => ({ kind: 'element-suffix', english: t.sourceWord, icelandic: t.targetWord }));
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
