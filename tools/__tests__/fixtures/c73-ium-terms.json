@@ -1,0 +1,880 @@
+{
+  "before": [
+    {
+      "english": "actinium",
+      "icelandic": "aktín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 74,
+      "alternatives": []
+    },
+    {
+      "english": "americium",
+      "icelandic": "ameríkín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 111,
+      "alternatives": []
+    },
+    {
+      "english": "barium",
+      "icelandic": "barín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 216,
+      "alternatives": []
+    },
+    {
+      "english": "beryllium",
+      "icelandic": "beryllín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 240,
+      "alternatives": []
+    },
+    {
+      "english": "cadmium",
+      "icelandic": "kadmín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1740,
+      "alternatives": []
+    },
+    {
+      "english": "calcium",
+      "icelandic": "kalsín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1746,
+      "alternatives": []
+    },
+    {
+      "english": "californium",
+      "icelandic": "kalífornín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1741,
+      "alternatives": []
+    },
+    {
+      "english": "cerium",
+      "icelandic": "serín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3187,
+      "alternatives": []
+    },
+    {
+      "english": "cesium",
+      "icelandic": "sesín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3188,
+      "alternatives": []
+    },
+    {
+      "english": "chemical equilibrium",
+      "icelandic": "efnajafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4696,
+      "alternatives": []
+    },
+    {
+      "english": "chromium",
+      "icelandic": "króm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1899,
+      "alternatives": []
+    },
+    {
+      "english": "curium",
+      "icelandic": "kúrín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1925,
+      "alternatives": []
+    },
+    {
+      "english": "deuterium",
+      "icelandic": "tvívetni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4105,
+      "alternatives": []
+    },
+    {
+      "english": "dynamic equilibrium",
+      "icelandic": "kvikt jafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4878,
+      "alternatives": []
+    },
+    {
+      "english": "dysprosium",
+      "icelandic": "dysprósín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 476,
+      "alternatives": []
+    },
+    {
+      "english": "einsteinium",
+      "icelandic": "einsteinín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 587,
+      "alternatives": []
+    },
+    {
+      "english": "equilibrium",
+      "icelandic": "jafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4839,
+      "alternatives": []
+    },
+    {
+      "english": "europium",
+      "icelandic": "evrópín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 621,
+      "alternatives": []
+    },
+    {
+      "english": "francium",
+      "icelandic": "fransín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 835,
+      "alternatives": []
+    },
+    {
+      "english": "gadolinium",
+      "icelandic": "gadolín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 907,
+      "alternatives": []
+    },
+    {
+      "english": "gallium",
+      "icelandic": "gallín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 924,
+      "alternatives": []
+    },
+    {
+      "english": "germanium",
+      "icelandic": "german",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1013,
+      "alternatives": []
+    },
+    {
+      "english": "hafnium",
+      "icelandic": "hafnín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1122,
+      "alternatives": []
+    },
+    {
+      "english": "helium",
+      "icelandic": "helín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1226,
+      "alternatives": []
+    },
+    {
+      "english": "indium",
+      "icelandic": "indín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1565,
+      "alternatives": []
+    },
+    {
+      "english": "iridium",
+      "icelandic": "iridín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1598,
+      "alternatives": []
+    },
+    {
+      "english": "lawrencium",
+      "icelandic": "lárensín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2020,
+      "alternatives": []
+    },
+    {
+      "english": "lithium",
+      "icelandic": "litín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2085,
+      "alternatives": []
+    },
+    {
+      "english": "lutetium",
+      "icelandic": "lútesín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2253,
+      "alternatives": []
+    },
+    {
+      "english": "magnesium",
+      "icelandic": "magnesín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2275,
+      "alternatives": [
+        "magnín"
+      ]
+    },
+    {
+      "english": "medium",
+      "icelandic": "æti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 3,
+      "conceptId": 54185,
+      "alternatives": []
+    },
+    {
+      "english": "mendelevium",
+      "icelandic": "mendelefín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2350,
+      "alternatives": []
+    },
+    {
+      "english": "neptunium",
+      "icelandic": "neptún",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2538,
+      "alternatives": []
+    },
+    {
+      "english": "niobium",
+      "icelandic": "níóbín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2549,
+      "alternatives": []
+    },
+    {
+      "english": "nobelium",
+      "icelandic": "nóbelín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2556,
+      "alternatives": []
+    },
+    {
+      "english": "nonequilibrium",
+      "icelandic": "ójafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2660,
+      "alternatives": []
+    },
+    {
+      "english": "osmium",
+      "icelandic": "osmín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2629,
+      "alternatives": []
+    },
+    {
+      "english": "palladium",
+      "icelandic": "palladín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2688,
+      "alternatives": []
+    },
+    {
+      "english": "plutonium",
+      "icelandic": "plúton",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2699,
+      "alternatives": []
+    },
+    {
+      "english": "polonium",
+      "icelandic": "pólon",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2706,
+      "alternatives": []
+    },
+    {
+      "english": "potassium",
+      "icelandic": "kalín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1742,
+      "alternatives": []
+    },
+    {
+      "english": "praseodymium",
+      "icelandic": "praseódým",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2712,
+      "alternatives": []
+    },
+    {
+      "english": "promethium",
+      "icelandic": "prómetín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2716,
+      "alternatives": []
+    },
+    {
+      "english": "protium",
+      "icelandic": "einvetni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 594,
+      "alternatives": []
+    },
+    {
+      "english": "radium",
+      "icelandic": "radín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2724,
+      "alternatives": []
+    },
+    {
+      "english": "rhenium",
+      "icelandic": "renín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2882,
+      "alternatives": []
+    },
+    {
+      "english": "rhodium",
+      "icelandic": "ródín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2930,
+      "alternatives": []
+    },
+    {
+      "english": "rubidium",
+      "icelandic": "rúbidín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2944,
+      "alternatives": []
+    },
+    {
+      "english": "ruthenium",
+      "icelandic": "rúten",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2961,
+      "alternatives": []
+    },
+    {
+      "english": "scandium",
+      "icelandic": "skandín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3310,
+      "alternatives": []
+    },
+    {
+      "english": "selenium",
+      "icelandic": "selen",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3181,
+      "alternatives": []
+    },
+    {
+      "english": "sodium",
+      "icelandic": "natrín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2495,
+      "alternatives": [
+        "natur"
+      ]
+    },
+    {
+      "english": "strontium",
+      "icelandic": "strontín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3760,
+      "alternatives": []
+    },
+    {
+      "english": "technetium",
+      "icelandic": "teknetín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3953,
+      "alternatives": []
+    },
+    {
+      "english": "tellurium",
+      "icelandic": "tellúr",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3956,
+      "alternatives": []
+    },
+    {
+      "english": "terbium",
+      "icelandic": "terbín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3971,
+      "alternatives": []
+    },
+    {
+      "english": "thallium",
+      "icelandic": "þallín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4454,
+      "alternatives": []
+    },
+    {
+      "english": "thermal equilibrium",
+      "icelandic": "varmajafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4248,
+      "alternatives": [
+        "jafnhiti"
+      ]
+    },
+    {
+      "english": "thorium",
+      "icelandic": "þórín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4492,
+      "alternatives": []
+    },
+    {
+      "english": "titanium",
+      "icelandic": "títan",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4012,
+      "alternatives": []
+    },
+    {
+      "english": "tritium",
+      "icelandic": "þrívetni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4515,
+      "alternatives": []
+    },
+    {
+      "english": "uranium",
+      "icelandic": "úran",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4175,
+      "alternatives": []
+    },
+    {
+      "english": "vanadium",
+      "icelandic": "vanadín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4234,
+      "alternatives": []
+    },
+    {
+      "english": "yttrium",
+      "icelandic": "yttrín",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4449,
+      "alternatives": []
+    },
+    {
+      "english": "zirconium",
+      "icelandic": "sirkon",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3220,
+      "alternatives": []
+    }
+  ],
+  "after": [
+    {
+      "english": "chemical equilibrium",
+      "icelandic": "efnajafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4696,
+      "alternatives": []
+    },
+    {
+      "english": "chromium",
+      "icelandic": "króm",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1899,
+      "alternatives": []
+    },
+    {
+      "english": "deuterium",
+      "icelandic": "tvívetni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4105,
+      "alternatives": []
+    },
+    {
+      "english": "dynamic equilibrium",
+      "icelandic": "kvikt jafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4878,
+      "alternatives": []
+    },
+    {
+      "english": "equilibrium",
+      "icelandic": "jafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "chemistry",
+      "position": 1,
+      "conceptId": 4839,
+      "alternatives": []
+    },
+    {
+      "english": "germanium",
+      "icelandic": "german",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 1013,
+      "alternatives": []
+    },
+    {
+      "english": "medium",
+      "icelandic": "æti",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "biology",
+      "position": 3,
+      "conceptId": 54185,
+      "alternatives": []
+    },
+    {
+      "english": "neptunium",
+      "icelandic": "neptún",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2538,
+      "alternatives": []
+    },
+    {
+      "english": "nonequilibrium",
+      "icelandic": "ójafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2660,
+      "alternatives": []
+    },
+    {
+      "english": "plutonium",
+      "icelandic": "plúton",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2699,
+      "alternatives": []
+    },
+    {
+      "english": "polonium",
+      "icelandic": "pólon",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2706,
+      "alternatives": []
+    },
+    {
+      "english": "praseodymium",
+      "icelandic": "praseódým",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2712,
+      "alternatives": []
+    },
+    {
+      "english": "protium",
+      "icelandic": "einvetni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 594,
+      "alternatives": []
+    },
+    {
+      "english": "ruthenium",
+      "icelandic": "rúten",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 2961,
+      "alternatives": []
+    },
+    {
+      "english": "selenium",
+      "icelandic": "selen",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3181,
+      "alternatives": []
+    },
+    {
+      "english": "tellurium",
+      "icelandic": "tellúr",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3956,
+      "alternatives": []
+    },
+    {
+      "english": "thermal equilibrium",
+      "icelandic": "varmajafnvægi",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4248,
+      "alternatives": [
+        "jafnhiti"
+      ]
+    },
+    {
+      "english": "titanium",
+      "icelandic": "títan",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4012,
+      "alternatives": []
+    },
+    {
+      "english": "tritium",
+      "icelandic": "þrívetni",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4515,
+      "alternatives": []
+    },
+    {
+      "english": "uranium",
+      "icelandic": "úran",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 4175,
+      "alternatives": []
+    },
+    {
+      "english": "zirconium",
+      "icelandic": "sirkon",
+      "status": "approved",
+      "reason": "head-form",
+      "domain": "physics",
+      "position": 2,
+      "conceptId": 3220,
+      "alternatives": []
+    }
+  ],
+  "_provenance": {
+    "source": "books/efnafraedi-2e/glossary/glossary-unified.json",
+    "before": "120352b0",
+    "after": "b665c43d",
+    "note": "only -ium headwords; verified to yield the same G2 finding count as the full blobs"
+  }
+}
