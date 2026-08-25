@@ -576,13 +576,35 @@ describe('the contract holds for every extract check', () => {
     }
   });
 
-  it("all four register themselves at tier 1, and the blocking split is the spec's", () => {
+  it("every extract check registers at tier 1, and the blocking split is the spec's", () => {
     // E5 joined at Task 4, in id order. The blocking split is the spec's ruling and not a
     // default: E7 is advisory BECAUSE §C81 intends to change extraction this cycle, so a
     // halt on "extraction changed" would fire on the very thing the loop exists to do.
-    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E2', 'E4', 'E5', 'E7']);
+    // Tier 1 completed at Tasks 5-6: E1/E3/E6 then E9, all in id order. There is no E8 —
+    // the fingerprint is Plan C, not Plan B.
+    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual([
+      'E1',
+      'E2',
+      'E3',
+      'E4',
+      'E5',
+      'E6',
+      'E7',
+      'E9',
+    ]);
     for (const c of EXTRACT_CHECKS) expect(c.tier).toBe(1);
-    expect(EXTRACT_CHECKS.map((c) => c.blocking)).toEqual([true, true, true, false]);
+    // Keyed rather than positional: a bare [true,true,…,false] array made the ONE advisory
+    // check identifiable only by counting, and the list has now grown twice.
+    expect(Object.fromEntries(EXTRACT_CHECKS.map((c) => [c.id, c.blocking]))).toEqual({
+      E1: true,
+      E2: true,
+      E3: true,
+      E4: true,
+      E5: true,
+      E6: true,
+      E7: false, // the only advisory gate in Tier 1 — see the comment above
+      E9: true,
+    });
   });
 
   it('importing this module is what puts them in the REGISTRY', () => {

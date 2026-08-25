@@ -253,7 +253,16 @@ describe('E6 — unexpected files emitted by the extract', () => {
 
 describe('registration', () => {
   it('registers E1, E3 and E6 alongside the Task 3/4 checks', () => {
-    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7']);
+    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual([
+      'E1',
+      'E2',
+      'E3',
+      'E4',
+      'E5',
+      'E6',
+      'E7',
+      'E9',
+    ]);
     for (const id of ['E1', 'E3', 'E6']) expect(REGISTRY.get(id)?.id).toBe(id);
   });
 

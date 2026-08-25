@@ -389,7 +389,16 @@ describe('E5 leg 2 — the orphan key a tally cannot see', () => {
 
 describe('E5 in the contract', () => {
   it('registers at tier 1 as a BLOCKING check, in id order beside its siblings', () => {
-    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual(['E2', 'E4', 'E5', 'E7']);
+    expect(EXTRACT_CHECKS.map((c) => c.id)).toEqual([
+      'E1',
+      'E2',
+      'E3',
+      'E4',
+      'E5',
+      'E6',
+      'E7',
+      'E9',
+    ]);
     expect(REGISTRY.get('E5')).toBe(E5);
     expect(E5.tier).toBe(1);
     // Blocking is the spec's ruling: a module whose paid translation would silently
