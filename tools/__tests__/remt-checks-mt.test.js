@@ -588,7 +588,12 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
 });
 
 describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
-  it('is ADVISORY — a 1.7% base rate on the committed corpus cannot block a paid run', () => {
+  it('is ADVISORY — 4/207 = 1.9% on the committed corpus, which cannot block a paid run', () => {
+    // ⚠️ THE FIGURE AND ITS POPULATION IN ONE BREATH, and it is the SAME figure the
+    // docstring carries. This line read "1.7%" while `remt-checks-mt.js` read "4/207
+    // (1.9%)" — two numbers for one measurement, in a repo whose § One source of truth
+    // exists to stop exactly that. 4/207 = 1.932%, so 1.9% is the correct rounding; 1.7%
+    // was arithmetic on no population at all.
     expect(A1.blocking).toBe(false);
   });
 
