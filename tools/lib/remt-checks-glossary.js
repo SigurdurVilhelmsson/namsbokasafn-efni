@@ -38,18 +38,53 @@ import { formatGlossary } from './malstadur-api.js';
  * across the three producers.
  */
 export function glossaryTerms(glossary) {
-  if (Array.isArray(glossary)) return glossary;
-  if (glossary && typeof glossary === 'object' && Array.isArray(glossary.terms)) {
-    return glossary.terms;
-  }
-  return null;
+  // ⚠️ BOTH SHAPES GO THROUGH THE SAME ROW CHECK BELOW. An earlier draft of this fix returned
+  // the bare-array shape EARLY, so the guard covered only `{terms: […]}` — fixing the line
+  // rather than the class, in the repair for a defect whose whole lesson is that shape.
+  const rows = Array.isArray(glossary)
+    ? glossary
+    : glossary && typeof glossary === 'object' && Array.isArray(glossary.terms)
+      ? glossary.terms
+      : null;
+  if (rows === null) return null;
+  // ⚠️ A MALFORMED ROW SPLIT THE GATES BEFORE THIS CHECK, which is worse than either outcome
+  // alone: `findGlossaryCollisions` has a `t &&` guard so G1 read PASS, while `formatGlossary`
+  // dereferences `t.status` unguarded so G2 FAILed with a bare "Cannot read properties of null".
+  // One glossary, two verdicts, and the FAIL's message named a TypeError rather than a cause.
+  // ▶ Classified here instead: a glossary carrying a non-object row cannot be judged at all, so
+  // every gate SKIPs it with the same cause. Fail-closed — for a blocking gate a SKIP is a halt,
+  // which is right for a payload nothing can read.
+  return rows.every((r) => r && typeof r === 'object') ? rows : null;
 }
 
-/** The entries the MT would actually receive, or `null` if the glossary is unusable. */
+/**
+ * The entries the MT would actually receive, over BOTH populations a paid caller can send.
+ *
+ * 🔴 `approvedOnly` IS NOT A CONSTANT ACROSS CALLERS, SO JUDGING ONE POPULATION AUTHORISES A
+ * POPULATION THE GATES NEVER SAW. `api-translate.js` passes `true`; `tools/translate-chapter-titles.js`
+ * passes **`false`** and sends the result to the same paid API. Measured: a glossary carrying
+ * `{english:'magnesium', icelandic:'magnesín', status:'pending'}` gave the whole battery GREEN
+ * while `formatGlossary(terms, {approvedOnly:false})` — what the titles tool sends — contained
+ * CLAUDE.md's own worked §C73 example. ▶ So the gates judge the UNION.
+ * ⚠️ LATENT TODAY, STRUCTURAL TOMORROW: all four committed glossaries are 100% `approved`
+ * (measured), so the union equals the approved wire and no count moves. The blast radius is
+ * titles-only and re-runnable, which is why this is a correctness repair rather than an alarm.
+ */
 export function wireTerms(glossary) {
   const terms = glossaryTerms(glossary);
   if (terms === null) return null;
-  return formatGlossary(terms, { approvedOnly: true }).terms;
+  const seen = new Set();
+  const out = [];
+  for (const t of [
+    ...formatGlossary(terms, { approvedOnly: true }).terms,
+    ...formatGlossary(terms, { approvedOnly: false }).terms,
+  ]) {
+    const key = `${t.sourceWord}\u0000${t.targetWord}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(t);
+  }
+  return out;
 }
 
 /** The shared "this ctx cannot be judged" classification, so every gate names the cause. */
@@ -85,6 +120,12 @@ export const G1 = defineCheck({
     const skip = skipUnusable('G1', ctx?.glossary);
     if (skip) return skip;
     const terms = glossaryTerms(ctx.glossary);
+    // ⚠️ `examined` COUNTS THE ROWS THE INSTRUMENT ACTUALLY JUDGED, not the rows supplied.
+    // `findGlossaryCollisions` filters to `status === 'approved'` internally, so keying the count
+    // to `terms.length` reported a judgement over rows it never read — and defeated the
+    // `PASS + 0 -> SKIPPED` downgrade for an all-unapproved glossary, where G2 and G3 correctly
+    // read SKIPPED and G1 alone read PASS. That is §C82 L6 inside Tier 0.
+    const judged = terms.filter((t) => t && t.status === 'approved');
     const { competitions, commaLists } = findGlossaryCollisions(terms, { approvedOnly: true });
     const findings = [
       ...competitions.map((c) => ({ kind: 'glossary-competition', ...c })),
@@ -92,10 +133,10 @@ export const G1 = defineCheck({
     ];
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
-      examined: terms.length,
+      examined: judged.length,
       findings,
       message:
-        `${terms.length} terms; ${competitions.length} competitions, ${commaLists.length} comma lists. ` +
+        `${judged.length} approved terms judged of ${terms.length} supplied; ${competitions.length} competitions, ${commaLists.length} comma lists. ` +
         `BLIND to a single-valued WRONG entry (§C73/§C77) — a PASS here is not "the glossary is sound"`,
     };
   },
@@ -185,8 +226,17 @@ export const FUNCTION_WORDS = Object.freeze(
       'in on at by for to of off up out over under with within without from into onto upon ' +
       'about above below between through during before after against among across behind beyond ' +
       'and or but nor so yet if then than as because while when where which who whom whose what why how ' +
-      'no not none all any both each either few many more most much neither other others some such ' +
-      'only own same very just also too there here now again once ever never'
+      'no not none all any both each every either few many more most much less least neither other others some such ' +
+      'one anyone everyone someone anything everything nothing something ' +
+      'only own same very just also too there here now again once ever never ' +
+      // ⚠️ CLOSED 2026-08-25 — PARADIGM HOLES FOUND BY A BLIND REVIEW, and they were holes in the
+      // DERIVATION rather than in the instances: `up/out/over/under` were present while `down`
+      // was missing, `within/without` while `inside/outside` were missing, `few/many/more/most`
+      // while `less/least` were missing, `each` while `every` was missing. The docstring below
+      // claims this list IS the closed classes of English; a paradigm with one member absent
+      // falsifies that claim, which is the "comment generalises past its code" shape.
+      'down inside outside near per via since until toward towards despite except like plus minus ' +
+      'beside beneath along around behind unless though whether'
     ).split(/\s+/)
   )
 );
@@ -260,9 +310,17 @@ export const G4 = defineCheck({
     }
     /** @type {Map<string, Map<string, string[]>>} english -> icelandic -> books */
     const seen = new Map();
+    const findings = [];
     for (const book of books) {
       const wire = wireTerms(byBook[book]);
-      if (wire === null) continue;
+      if (wire === null) {
+        // ⚠️ SILENTLY SKIPPING A BOOK MADE G4 REPORT AGREEMENT IT NEVER TESTED — measured: one
+        // usable book and one unusable gave PASS at "1 distinct headwords across 2 books". That is
+        // the same walk-past its own <2-books guard exists to prevent, one representation of
+        // "nothing" past a guard keyed on another. A book it could not read is a finding.
+        findings.push({ kind: 'unreadable-book', book });
+        continue;
+      }
       for (const t of wire) {
         const en = String(t.sourceWord).trim().toLowerCase();
         if (!seen.has(en)) seen.set(en, new Map());
@@ -272,7 +330,6 @@ export const G4 = defineCheck({
         vals.get(is).push(book);
       }
     }
-    const findings = [];
     for (const [en, vals] of seen) {
       if (vals.size > 1) {
         findings.push({
@@ -355,15 +412,31 @@ export const G5 = defineCheck({
         }
       }
     }
-    // The producer verdict, when the loader spawned the AGPL CLI for it. Its ABSENCE is not a
-    // finding — it is a leg not run — but an 'unknown' producer is.
+    // 🔴 A LEG THAT DID NOT RUN IS A FINDING, NOT A PASS — and an earlier draft of this file got
+    // it wrong in exactly the way E9 had already been fixed for, three commits earlier. It read
+    // "its ABSENCE is not a finding — it is a leg not run", left the verdict PASS, and put the
+    // caveat in `message`. **`exitCodeFor` reads verdicts, not messages.** Measured: a
+    // merge-glossary-shaped payload — the §C14 ②/§C21 wholesale-producer-swap class — took the
+    // WHOLE battery green (G1/G2/G3 PASS on a wire that is perfectly well formed) with the one
+    // detector that exists for it never run. G5 was the only place in this battery where a
+    // not-run leg read PASS.
+    // ⚠️ AND THE ctx CONTRACT WAS STEERING THE LOADER INTO IT: `payloadVerdict` appeared nowhere
+    // in `tools/remt-battery.js`'s CheckContext typedef, so a loader built to the documented
+    // shape would never supply it. Fixed there in the same commit.
     const v = ctx?.payloadVerdict;
-    let producerNote = 'producer not checked (no spawned verdict supplied)';
+    let producerNote;
     if (v && typeof v === 'object') {
       producerNote = `producer ${v.producer}`;
       if (v.producer === 'unknown') {
         findings.push({ kind: 'payload', reason: 'producer is unrecognised' });
       }
+    } else {
+      producerNote = 'producer NOT CHECKED';
+      findings.push({
+        kind: 'leg-not-checked',
+        leg: 'producer',
+        why: 'ctx.payloadVerdict absent — run spawnGlossaryPayloadCheck() in the loader and pass its result',
+      });
     }
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,

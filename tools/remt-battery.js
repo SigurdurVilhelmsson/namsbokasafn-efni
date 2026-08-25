@@ -27,7 +27,13 @@
  *   @property {string} [segText]      02-for-mt EN segments          (Task 3: E2/E4)
  *   @property {string} [isText]       02-mt-output IS segments       (Task 8: A2/A6)
  *   @property {object} [provenance]   the parsed sidecar             (Task 9: A4/A8)
- *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G4)
+ *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G3)
+ *   @property {object} [glossariesByBook] {slug: parsedGlossary}     (Task 7: G4)
+ *   @property {object} [payloadVerdict]   spawnGlossaryPayloadCheck() result (Task 7: G5)
+ *                                     🔴 G5's producer leg is a FINDING when this is absent,
+ *                                     not a pass. It was missing from this typedef, so a
+ *                                     loader built to the documented shape left the only
+ *                                     detector for a wholesale producer swap unrun.
  *   @property {string} [payloadText]  raw glossary bytes             (Task 7: G5)
  *   @property {boolean}  [locked]      from isMtLocked() — NOT fs.existsSync (Task 6: E9)
  *   @property {string[]} [handEdits]   hand-edit commits under 02-mt-output    (Task 6: E9)

@@ -233,8 +233,29 @@ describe('G3 — function-word headwords (§C77)', () => {
     const org = await runCheck(G3, { glossary: live('lifraen-efnafraedi') });
     expect(chem.verdict).toBe(VERDICT.FAIL);
     expect(org.verdict).toBe(VERDICT.FAIL);
-    expect(chem.findings.map((f) => f.english).sort()).toEqual(['AM', 'As', 'in', 'is', 'no']);
-    expect(org.findings.map((f) => f.english).sort()).toEqual(['As', 'OR', 'in', 'is', 'no']);
+    // ⚠️ SEVEN, NOT FIVE, SINCE THE 2026-08-25 WIDENING — and TWO of the seven are BENIGN.
+    // `plus→plús` and `minus→mínus` are same-sense and correct; they are reported because G3
+    // cannot know sense, only homography. That over-report is deliberate: a gate that hid benign
+    // instances to keep its list tidy would need a sense model it does not have. Whoever triages
+    // §C82 L38 dismisses these two and acts on the other five.
+    expect(chem.findings.map((f) => f.english).sort()).toEqual([
+      'AM',
+      'As',
+      'in',
+      'is',
+      'minus',
+      'no',
+      'plus',
+    ]);
+    expect(org.findings.map((f) => f.english).sort()).toEqual([
+      'As',
+      'OR',
+      'in',
+      'is',
+      'minus',
+      'no',
+      'plus',
+    ]);
   });
 });
 
@@ -291,10 +312,31 @@ describe('G5 — the committed payload', () => {
     }
   });
 
-  it('PASSES a well-formed payload — the positive control', async () => {
-    const r = await runCheck(G5, { payloadText: JSON.stringify({ terms: [] }) });
+  it('PASSES a well-formed payload WITH a producer verdict — the positive control', async () => {
+    const r = await runCheck(G5, {
+      payloadText: JSON.stringify({ terms: [] }),
+      payloadVerdict: { kind: 'ok', producer: 'export-terminology-resolved' },
+    });
     expect(r.verdict).toBe(VERDICT.PASS);
     expect(r.examined).toBe(1);
+  });
+
+  it('🔴 does NOT pass when the producer leg was never run — a not-run leg is a FINDING', async () => {
+    // The §C14 ②/§C21 wholesale-producer-swap class: a merge-glossary-shaped payload has a
+    // perfectly well-formed wire, so G1/G2/G3 all PASS. G5's producer check is the ONLY detector,
+    // and it read PASS with the caveat in `message` — but `exitCodeFor` reads verdicts, not
+    // messages. This is the same defect E9 was fixed for three commits earlier.
+    const mergeShaped = {
+      terms: [{ english: 'atom', icelandic: 'frumeind', status: 'approved' }],
+      category: 'x',
+    };
+    const r = await runCheck(G5, { payloadText: JSON.stringify(mergeShaped) });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((f) => f.kind === 'leg-not-checked')?.leg).toBe('producer');
+    // and the rest of the battery really is green over it, which is why G5 must not be
+    for (const c of [G1, G2, G3]) {
+      expect((await runCheck(c, { glossary: mergeShaped })).verdict, c.id).toBe(VERDICT.PASS);
+    }
   });
 
   it('FAILS an unrecognised producer when the loader supplied a spawned verdict', async () => {
@@ -364,12 +406,93 @@ describe('the G5 spawn helper — the licence boundary in practice', () => {
     }
   });
 
-  it('does NOT import server/ — the MIT→AGPL edge is avoided by spawning', () => {
+  it('does NOT import server/ — and the guard covers the shape a `/server/` grep cannot see', () => {
+    // 🔴 THE THIRD REGEX IS THE POINT, AND ITS ABSENCE WAS A COMMENT GENERALISING PAST ITS CODE
+    // — the same shape as §C82 L39, in this same file, written in the commit that fixed L39's
+    // other instance. The old comment claimed to check "a path.join(..., 'server', ...) require,
+    // which a '../server/' grep cannot see"; MEASURED, neither of the two regexes matched
+    // `require(path.join(root, 'server', 'lib', 'glossaryProducer'))`, because both demand a
+    // literal `/server/` INSIDE a quoted string — which the path.join shape by construction
+    // never has. root LICENSE's own gap-E-2 note names both shapes for exactly this reason.
     const src = fs.readFileSync(path.join(ROOT, 'tools/lib/remt-checks-glossary.js'), 'utf8');
-    // Both shapes root LICENSE's enumeration cares about: a literal '../server/…' and a
-    // path.join(..., 'server', ...) require, which a '../server/' grep cannot see.
-    expect(src).not.toMatch(/from\s+['"][^'"]*\/server\//);
-    expect(src).not.toMatch(/require\(\s*['"][^'"]*\/server\//);
+    const literalImport = /from\s+['"][^'"]*\/server\//;
+    const literalRequire = /require\(\s*['"][^'"]*\/server\//;
+    const joinedRequire = /(?:require|import)\([^)]*\bpath\.join\([^)]*['"]server['"]/;
+
+    expect(src).not.toMatch(literalImport);
+    expect(src).not.toMatch(literalRequire);
+    expect(src).not.toMatch(joinedRequire);
+
+    // POSITIVE CONTROLS — a guard that matches nothing is indistinguishable from one that works.
+    expect("import x from '../server/lib/glossaryProducer.js';").toMatch(literalImport);
+    expect("const x = require('../../server/lib/glossaryProducer');").toMatch(literalRequire);
+    expect("const m = require(path.join(root, 'server', 'lib', 'glossaryProducer'));").toMatch(
+      joinedRequire
+    );
+  });
+});
+
+describe('findings from the blind Tier-0 review', () => {
+  it('G3 covers whole paradigms, not a sample of them', () => {
+    // The holes were in the DERIVATION: up/out/over/under present but `down` absent;
+    // within/without but not inside/outside; few/many/more/most but not less/least; each but
+    // not every. A paradigm with one member missing falsifies "this IS the closed classes".
+    for (const w of [
+      'down',
+      'inside',
+      'outside',
+      'less',
+      'least',
+      'every',
+      'one',
+      'since',
+      'until',
+    ]) {
+      expect(FUNCTION_WORDS.has(w), w).toBe(true);
+    }
+  });
+
+  it('G2/G3 judge the union of BOTH wire populations — a paid caller sends approvedOnly:false', async () => {
+    // `translate-chapter-titles.js` passes approvedOnly:false to the same paid API. A `pending`
+    // row carrying CLAUDE.md's own worked §C73 example took the whole battery green before this.
+    const g = [
+      { english: 'atom', icelandic: 'frumeind', status: 'approved' },
+      { english: 'magnesium', icelandic: 'magnesín', status: 'pending' },
+    ];
+    const r = await runCheck(G2, { glossary: g });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings[0]).toMatchObject({ english: 'magnesium', icelandic: 'magnesín' });
+  });
+
+  it('G1 counts the rows it JUDGED, so an all-unapproved glossary SKIPs like its siblings', async () => {
+    const pending = [
+      { english: 'atom', icelandic: 'frumeind', status: 'pending' },
+      { english: 'atom', icelandic: 'atóm', status: 'pending' },
+    ];
+    const r = await runCheck(G1, { glossary: pending });
+    expect(r.verdict).toBe(VERDICT.SKIPPED); // was PASS at examined 2, having judged 0
+    expect(r.examined).toBe(0);
+  });
+
+  it('G4 reports a book it could not read instead of silently comparing fewer', async () => {
+    const r = await runCheck(G4, {
+      glossariesByBook: {
+        a: [{ english: 'cell', icelandic: 'fruma', status: 'approved' }],
+        b: { producer: 'x' },
+      },
+    });
+    expect(r.verdict).toBe(VERDICT.WARN);
+    expect(r.findings.find((f) => f.kind === 'unreadable-book')?.book).toBe('b');
+  });
+
+  it('a malformed row SKIPs every gate identically, instead of splitting them', async () => {
+    // G1 used to PASS (its instrument has a `t &&` guard) while G2 FAILed with a bare
+    // "Cannot read properties of null" — one glossary, two verdicts, and a cause-free message.
+    const g = [{ english: 'atom', icelandic: 'frumeind', status: 'approved' }, null];
+    for (const c of [G1, G2, G3]) {
+      const r = await runCheck(c, { glossary: g });
+      expect(r.verdict, c.id).toBe(VERDICT.SKIPPED);
+    }
   });
 });
 
