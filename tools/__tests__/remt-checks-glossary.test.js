@@ -292,6 +292,28 @@ describe('the G5 spawn helper — the licence boundary in practice', () => {
     expect(v.kind).toBe('absent');
   });
 
+  it('REJECTS when the child produces no parseable JSON, rather than resolving something', async () => {
+    // 🔴 THE FAILURE PATH IS THE ONE THAT MATTERS. A helper that resolved a default on a
+    // broken child would hand G5 a verdict nobody computed; a driver that swallows the
+    // rejection instead turns a BLOCKING check into a silent SKIP. Two ways the child can
+    // fail, both asserted, both with stderr attached so the cause is not lost.
+    await expect(
+      spawnGlossaryPayloadCheck('/x.json', { repoRoot: os.tmpdir() }) // CLI not there at all
+    ).rejects.toThrow(/no parseable JSON/);
+
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'g5-fail-'));
+    try {
+      fs.mkdirSync(path.join(dir, 'server', 'scripts'), { recursive: true });
+      fs.writeFileSync(
+        path.join(dir, 'server', 'scripts', 'check-glossary-payload.js'),
+        'process.stdout.write("not json at all"); process.stderr.write("boom");'
+      );
+      await expect(spawnGlossaryPayloadCheck('/x.json', { repoRoot: dir })).rejects.toThrow(/boom/);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it('does NOT import server/ — the MIT→AGPL edge is avoided by spawning', () => {
     const src = fs.readFileSync(path.join(ROOT, 'tools/lib/remt-checks-glossary.js'), 'utf8');
     // Both shapes root LICENSE's enumeration cares about: a literal '../server/…' and a
