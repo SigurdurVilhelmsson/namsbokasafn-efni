@@ -34,12 +34,14 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 | Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |
 
-▶ **Start by cutting a branch from `main`.** #411 is merged and deployed, so `main` already carries both plans and this briefing.
+▶ **Start by cutting a branch from `main`.** #416 is merged and deployed, so `main` already carries Tiers 0+1, both plans and this briefing.
 
 ## Five things measured in the planning session that a cold reader will otherwise re-derive
 
+⚠️ **Item 2 has since been discharged by Task 1; the other four still hold.**
+
 1. **The run record is BUILT AND WIRED** (`tools/lib/run-record.js` → `api-translate.js:1347`) — **but no module carries one.** 200 sidecars, 200 with `"tool"` (positive control), **0** with `schemaVersion: 2`. ▶ `A2(a)`/`A4`/`A8` examine **0 of 220 pairs**; the deliverable is the **SKIPPED** path.
-2. **The `{verdict, version, examined}` contract exists nowhere** — that is Plan B **Task 1**, and everything else depends on it. Build it first; do not start with a check that looks easy.
+2. ~~The `{verdict, version, examined}` contract exists nowhere~~ — ✅ **BUILT at Task 1** (`tools/lib/remt-battery.js`) and merged. Its guards are the chokepoint every later check relies on; **read its top-of-file docstring before writing a new check** — it records, in code, why each guard exists and which of them a defect walked past.
 3. **E5 is wired but RED against today's tree, correctly** — **0** alt SEG markers in committed `02-for-mt` for both books, against **21,536** / **7,309** total. It goes green only after the loop's own re-extract. **Do not "fix" it by widening `analyzeModule`'s `hasFindings`** — `extraction-coverage.js:339-343` forbids it in code.
 4. **The validation corpus is 220 EN/IS pairs** (chemistry **170**, organic **50**) — not the spec's 227 across five books. **Chemistry-shaped: say so in the same breath as any pass rate.**
 5. **Never import `server/` from the battery.** `A2` needs no edge, `A7` is a port, and **`G5` is spawned, not imported**. If any executor adds a static import, root `LICENSE`'s enumeration must be updated in the same commit.
