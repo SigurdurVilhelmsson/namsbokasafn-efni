@@ -37,6 +37,7 @@ import {
   parseSegmentsMit,
   countRawSegTokens,
   SPACED_SEG_RE,
+  SEG_ID_RE,
 } from '../lib/remt-checks-mt.js';
 import { mtOutputSegmentFiles, enCounterpart } from './helpers/remt-corpus.js';
 // ⚠️ INJECT'S OWN PARSER, imported so the two-parser disagreement is asserted rather than
@@ -561,6 +562,140 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
   it('is BLOCKING', () => {
     expect(A2b.blocking).toBe(true);
   });
+
+  describe('leg `id-charset` — an id corrupted WITHOUT moving the count', () => {
+    // 🔴 THE FOURTH CELL OF THE DAMAGE TAXONOMY, WHICH HAD NO BLOCKING OWNER. The two
+    // count-moving corruptions below are caught by the cross-side leg; the two
+    // invisible-character ones are not, because they change the id and leave the count
+    // identical. They fell to A1, which is ADVISORY and — the real point — cannot
+    // distinguish a legitimate rename from a corruption even when it does warn.
+    //
+    // ⚠️ THE FIXTURES USE `\uXXXX` ESCAPES, NOT RAW BYTES. A raw U+200B in this source
+    // file would be invisible in every diff and every grep readout (CLAUDE.md's U+0001
+    // rule: with a format char the OUTPUT lies), and a future reader could not tell the
+    // fixture from the clean control it is compared against.
+    const CLEAN_MARKER = '<!-- SEG:m68663:title:auto-1 -->';
+    const zwspIs = isText68663.replace(CLEAN_MARKER, '<!-- SEG:m68663:title:aut\u200bo-1 -->');
+    const shyIs = isText68663.replace(CLEAN_MARKER, '<!-- SEG:m68663:title:aut\u00ado-1 -->');
+
+    it('THE FOUR-ROW DAMAGE TABLE — measured 2026-08-25, verdicts pinned by row', async () => {
+      // 🔴 EACH ROW STATES WHAT PARSES AND WHICH LEG OWNS IT. Rows 1-2 move the count and
+      // the cross-side leg sees them; rows 3-4 do not and, before this leg, EVERY blocking
+      // check returned PASS on them (measured: A6 PASS, A2b PASS, A2c PASS, A1 WARN only).
+      const rows = [
+        ['clean control', isText68663, 11, VERDICT.PASS, null],
+        [
+          'SEG: -> SG:',
+          isText68663.replace('<!-- SEG:', '<!-- SG:', 1),
+          10,
+          VERDICT.FAIL,
+          'cross-side',
+        ],
+        [
+          'colon deleted',
+          isText68663.replace('<!-- SEG:', '<!-- SEG', 1),
+          10,
+          VERDICT.FAIL,
+          'cross-side',
+        ],
+        ['ZWSP in elementId', zwspIs, 11, VERDICT.FAIL, 'id-charset'],
+        ['soft hyphen in elementId', shyIs, 11, VERDICT.FAIL, 'id-charset'],
+      ];
+      let checked = 0;
+      for (const [label, text, parsed, verdict, leg] of rows) {
+        // BY VALUE FIRST: the parsed count is what makes rows 3-4 invisible to every
+        // count-based leg, so it is asserted rather than described.
+        expect(parseSegmentsMit(text), label).toHaveLength(parsed);
+        const r = await runCheck(A2b, { isText: text, segText: enText68663 });
+        expect(r.verdict, label).toBe(verdict);
+        if (leg)
+          expect(
+            r.findings.find((f) => f.leg === leg),
+            label
+          ).toBeDefined();
+        checked++;
+      }
+      expect(checked).toBe(5); // an empty table cannot pass this block
+    });
+
+    it('THE MUST-NOT-TRIP CONTROL, ISOLATED — the clean file fires no id-charset leg', async () => {
+      // Without this, a leg that rejected EVERY id would satisfy the table above's four
+      // failing rows and be indistinguishable from a working one (L44③).
+      const r = await runCheck(A2b, { isText: isText68663, segText: enText68663 });
+      expect(r.verdict).toBe(VERDICT.PASS);
+      expect(r.findings).toHaveLength(0);
+      expect(r.examined).toBe(11);
+    });
+
+    it('ESCAPES the offending id — a finding that printed it raw would be the defect again', async () => {
+      // 🔴 A ZWSP RENDERS AS NOTHING. A finding that emitted the id verbatim would print
+      // `m68663:title:auto-1` — character-identical to the clean id on screen — so the
+      // diagnostic would reproduce exactly the invisibility it exists to report.
+      const r = await runCheck(A2b, { isText: zwspIs, segText: enText68663 });
+      const f = r.findings.find((x) => x.leg === 'id-charset');
+      expect(f).toMatchObject({ kind: 'seg-id-charset', offending: 1 });
+      expect(f.ids).toEqual(['m68663:title:aut\\u200bo-1']);
+      // The codepoints are reported separately, so the reader never has to spot the
+      // difference between two strings that look the same.
+      expect(f.codepoints).toEqual(['U+200B']);
+    });
+
+    it('PREMISE PIN — 0 violations over 58,952 ids in 414 files, which is what licences a BLOCK', async () => {
+      // 🔴 MEASURED 2026-08-25 over the walker population, BOTH SIDES: 207 IS files +
+      // 207 EN counterparts = 414 files, 29,476 + 29,476 = 58,952 parsed ids, **0**
+      // violations = 0.000%, far under Plan B rule 4's ~5% bar.
+      // ▶ PREMISE PIN, NOT A REGRESSION PIN (§C82 L20/L27): the corpus this battery gates
+      // is about to be replaced by the re-MT run, so this is re-measured when it moves.
+      let ids = 0;
+      let files = 0;
+      let violations = 0;
+      for (const b of BOOKS) {
+        for (const f of FILES[b]) {
+          const en = enCounterpart(f);
+          expect(en).not.toBeNull();
+          for (const t of [read(f), read(en)]) {
+            files++;
+            for (const rec of parseSegmentsMit(t)) {
+              ids++;
+              if (!SEG_ID_RE.test(rec.segmentId)) violations++;
+            }
+          }
+        }
+      }
+      expect(files).toBe(414);
+      expect(ids).toBe(58952); // L37: the COUNT beside the predicate — an empty walk fails here
+      expect(violations).toBe(0);
+    });
+
+    it('SEG_ID_RE accepts every id SHAPE the corpus really carries, not just the common one', () => {
+      // ⚠️ THE ACCEPT SIDE IS WHERE A CHARSET GATE MANUFACTURES A FALSE HALT, so the
+      // unusual shapes are pinned individually rather than left to the corpus pin above.
+      expect(SEG_ID_RE.test('m68663:title:auto-1')).toBe(true); // the ordinary module form
+      expect(SEG_ID_RE.test('06-99-OC-VC03:stem:353278-b0')).toBe(true); // organic exercises
+      // ⚠️ `chapter-metadata-*` units are EXCLUDED by the test walker but NOT by Plan C's
+      // loader, which is unwritten. Measured 2026-08-25: 50 such files, 50 ids, 0
+      // violations — `SEG:chapter:title:ch01` is three-part and passes. So a loader that
+      // walks the directory plainly does NOT hard-halt on them. Asserted, not assumed.
+      expect(SEG_ID_RE.test('chapter:title:ch01')).toBe(true);
+
+      expect(SEG_ID_RE.test('m68663:title:aut\u200bo-1')).toBe(false); // ZWSP
+      expect(SEG_ID_RE.test('m68663:title:aut\u00ado-1')).toBe(false); // soft hyphen
+      // The two shapes CLAUDE.md's segment-id rule already names, which no gate anywhere
+      // rejected until now.
+      expect(SEG_ID_RE.test('m68663:title:auto.1')).toBe(false); // a dot
+      expect(SEG_ID_RE.test('m68663:title:auto/1')).toBe(false); // a slash
+      expect(SEG_ID_RE.test('m68663:title')).toBe(false); // two parts, not three
+    });
+
+    it('is BLOCKING and reports examined — an id-charset FAIL cannot read as an empty run', async () => {
+      const r = await runCheck(A2b, { isText: zwspIs, segText: enText68663 });
+      expect(A2b.blocking).toBe(true);
+      expect(r.verdict).toBe(VERDICT.FAIL);
+      // The unit stays the RAW token count: parsed ids are a SUBSET of raw tokens, so
+      // raw tokens remains the enclosing population all three legs judge.
+      expect(r.examined).toBe(11);
+    });
+  });
 });
 
 describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
@@ -700,13 +835,14 @@ describe('registry wiring — a check that is never selected does not exist', ()
       expect(c.tier).toBe(2);
     }
     // ⚠️ VERSIONS ARE PINNED INDIVIDUALLY, NOT AS "all 1". `defineCheck`'s contract is
-    // "bump whenever the JUDGEMENT changes", and A2b's did: it acquired the cross-side
-    // leg. Decision ① scopes quarantine on this stamp, so a verdict recorded by A2b v1
-    // must not be readable as one this version would have produced.
+    // "bump whenever the JUDGEMENT changes", and A2b's has now changed TWICE: v2 acquired
+    // the cross-side leg, v3 the `id-charset` leg. Decision ① scopes quarantine on this
+    // stamp, so a verdict recorded by A2b v1 or v2 must not be readable as one this
+    // version would have produced — v2 PASSED the invisible-character files v3 FAILS.
     expect(Object.fromEntries(MT_FREE_CHECKS.map((c) => [c.id, c.version]))).toEqual({
       A1: 1,
       A6: 1,
-      A2b: 2,
+      A2b: 3,
       A2c: 1,
     });
     expect([...REGISTRY.values()].filter((c) => c.tier === 2)).toHaveLength(4);

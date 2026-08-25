@@ -41,6 +41,22 @@
  *   contract every check returns `verdict`, `version` and `examined`; `examined === 0` is
  *            never a pass (`runCheck` downgrades PASS+0 to SKIPPED). Gates are pure: this
  *            file imports no `fs`, opens no socket and touches no DB.
+ *   L41      THE SEG-ID CHARSET RULE WAS SWEPT ACROSS TIER 2, AND THE CONCLUSION IS THAT
+ *            IT BELONGS IN EXACTLY ONE PLACE. Checked, 2026-08-25, check by check:
+ *              A2c  reads the SPACED comment form only and parses no ids — nothing to add.
+ *              A6   scans for legacy inline DIALECTS in prose; ids are not its population.
+ *              A1   DOES parse ids, both sides — and this is the sharp one. It already
+ *                   fires on both invisible-character fixtures (measured: WARN on each).
+ *                   Adding a charset predicate to A1 would NOT close the gap, because A1
+ *                   is advisory BY MEASUREMENT (4/207 = 1.9% natural mismatches on the
+ *                   committed corpus) and promoting it would halt the run on those four.
+ *                   The gap was never "no check parses ids"; it was "the only check that
+ *                   sees this cannot BLOCK and cannot CLASSIFY". So the predicate goes on
+ *                   A2b — blocking at a measured 0.000% base rate — and A1 is untouched.
+ *            ⚠️ AND THE SWEEP FOUND A GAP IT DELIBERATELY DID NOT CLOSE: no Tier-1 check
+ *            (E1-E9) enforces this charset on the EN side either. Widening scope into
+ *            Tier 1 from a Tier-2 fix round is how a task grows unreviewably; logged to
+ *            the active register instead.
  *
  * 🔴 NOTHING HERE IMPORTS `server/`. `tools/` is MIT, `server/` is AGPL-3.0, and root
  * LICENSE enumerates the existing edges. `parseSegmentsMit` below is the MIT reproduction
@@ -188,6 +204,88 @@ export function countRawSegTokens(text) {
 }
 
 /**
+ * The charset a segment id may use — `moduleId:segmentType:elementId`, each `[\w-]+`.
+ *
+ * 🔴 THIS ENCODES AN EXISTING DURABLE RULE, IT DOES NOT INVENT ONE. CLAUDE.md's
+ * segment-id rule already states that an `elementId` may contain only `[\w-]`, and that
+ * minting an id outside that set is a defect. What did not exist anywhere was a check
+ * that ENFORCES it — measured below.
+ *
+ * ⚠️ DO NOT REPEAT CLAUDE.md's STATED MECHANISM FOR THAT RULE — IT IS WRONG, RE-MEASURED
+ * 2026-08-25. The rule attributes the failure to `server/services/segmentParser.js`
+ * `parseSegments` rejecting the id and returning an EMPTY segment list "silently". It does
+ * not: `parseSegments` delegates to the PERMISSIVE recognizer in `seg-markers.cjs`
+ * (`/<!--\s*SEG:([^\s]+?)\s*-->/g`) and returns every record with its id intact. The strict
+ * `SEG_MARKER_REGEX` in that file is real, but its only consumer is `countModuleSegments()`,
+ * which returns a COUNT and never a segment list. ▶ The PRESCRIPTION is right and is what
+ * this constant enforces; the DIAGNOSIS is not, and is deliberately not restated here.
+ *
+ * ── THE DAMAGE CELL THIS CLOSES, AND WHY IT HAD NO BLOCKING OWNER ─────────────────────
+ * A2b's other two legs and A2c all compare COUNTS. An invisible format character inside an
+ * elementId — U+200B ZWSP, U+00AD soft hyphen — is not `\s` to the recognizer, so the file
+ * parses to the SAME number of records and every count-based leg cancels. Measured on
+ * `ch01/m68663` (11 records both sides): with a ZWSP or a soft hyphen planted in one id,
+ * **parsed stays 11 and A6, A2b and A2c all returned PASS**; only advisory A1 warned.
+ * ▶ AND A1 CANNOT BE PROMOTED INTO THE GAP, WHICH IS THE REAL POINT. A1 compares seg-id
+ * SETS, so a legitimate rename and an invisible-character corruption are the SAME
+ * observation to it — it can report a difference, never classify one. This leg asks a
+ * different question with a local answer: is this id well-formed AT ALL.
+ * ⚠️ UPSTREAM DOES NOT COVER IT EITHER, VERIFIED: `assertNoControlChars` is C0-only, so
+ * both characters pass `api-translate` untouched, and `validateMarkers` is the same COUNT
+ * comparison — blind by construction (§C89: a count cannot see a substitution).
+ *
+ * ── SEVERITY, TRACED TO THE CONSUMER RATHER THAN ASSUMED ──────────────────────────────
+ * `tools/cnxml-inject.js` gates `report.complete` on `stats.segmentsMissing.length === 0`,
+ * and it looks a segment up BY ID. A corrupted id therefore misses, the module is reported
+ * incomplete and inject REFUSES it (`!result.report.complete && !args.allowIncomplete`).
+ * So this fails LATE-LOUD per module, exactly like the mustache dialect leg beside it —
+ * ⚠️ except under `--allow-incomplete`, which turns the refusal back into a write. That is
+ * why the gate is worth having upstream of inject rather than left to it.
+ * ▶ AND IT IS SCOPED TO THE IS SIDE FOR THAT REASON, NOT BY OVERSIGHT: the IS file is what
+ * inject reads. An EN-side id is Tier 1's population — and no Tier-1 check enforces this
+ * charset today (verified: E1-E9 carry no id predicate), which is logged to the active
+ * register rather than fixed by widening this check's scope.
+ *
+ * ── THE BASE RATE THAT LICENCES IT TO BLOCK ───────────────────────────────────────────
+ * ▶ MEASURED 2026-08-25: **0 violations of 57,644 parsed ids across 394 files** — both run
+ * -target books (`efnafraedi-2e`, `lifraen-efnafraedi`), both stages (`02-for-mt` and
+ * `02-mt-output`), `chapter-metadata-*` excluded. **0.000%**, far under Plan B rule 4's ~5%
+ * bar. Over the wider TEST-walker population (adds `orverufraedi`, both sides) it is 0 of
+ * 58,952 ids in 414 files — the figure the test pins, stated beside this one so a reader
+ * meets both populations rather than reading a disagreement into them.
+ * ▶ AND THE UNITS THE WALKER EXCLUDES WERE MEASURED TOO, because Plan C's loader is
+ * unwritten and under no obligation to use that filter: **50 `chapter-metadata-*` files, 50
+ * ids, 0 violations** — `SEG:chapter:title:ch01` is three-part and PASSES — and the 7
+ * parenthesized `ch05/m6872{4,6,7}-segments(b|c|d)` variants carry 563 ids, 0 violations.
+ * So unlike the mustache leg beside it, this one has no known hard-halt waiting for a
+ * loader that walks the directory plainly.
+ * 🔴 EVERY ONE OF THOSE IS A PREMISE PIN, NOT A REGRESSION PIN (§C82 L20/L27): the corpus
+ * this battery gates is about to be REPLACED by the re-MT run, so these are re-measured
+ * when they move, never assumed to have held.
+ */
+export const SEG_ID_RE = /^[\w-]+:[\w-]+:[\w-]+$/;
+
+/**
+ * Render an id so a reader can SEE what is wrong with it.
+ *
+ * 🔴 A FINDING THAT PRINTED THE OFFENDING ID VERBATIM WOULD REPRODUCE THE DEFECT IT
+ * REPORTS. U+200B renders as nothing, so `m68663:title:aut<ZWSP>o-1` is character-identical
+ * ON SCREEN to the clean `m68663:title:auto-1`; a reader comparing the two in a terminal
+ * sees one string twice. This is CLAUDE.md's `U+0001` rule in a new place — with a format
+ * character it is the OUTPUT that lies, and `grep -a` is no defence because grep was never
+ * blind, the reader is.
+ * ▶ So every character outside printable ASCII is emitted as `\uXXXX`, and the offending
+ * codepoints are reported in their own field beside it so spotting the difference is never
+ * the reader's job.
+ *
+ * @param {string} id
+ * @returns {string}
+ */
+export function escapeSegId(id) {
+  return id.replace(/[^\x21-\x7e]/g, (c) => `\\u${c.codePointAt(0).toString(16).padStart(4, '0')}`);
+}
+
+/**
  * The ctx precondition every Tier-2 check shares.
  *
  * 🔴 A MISSING KEY YIELDS `undefined`, NOT A THROW, AND `String(undefined)` IS THE STRING
@@ -243,7 +341,15 @@ function skipIfMissing(ctx, id, keys) {
  * coverage — this repo's commonest error:
  *   DAMAGED  it no longer parses          → A2b / A2c, BLOCKING, here in Tier 2
  *   LOST     the count moved              → `validateMarkers`, pre-write, upstream
- *   RENAMED  count identical, id rewritten → A1 ONLY, advisory, 4/207 on `main`
+ *   RENAMED  count identical, id rewritten → A1, advisory, 4/207 on `main`
+ *   CORRUPTED same, but the id is MALFORMED → A2b leg `id-charset`, BLOCKING (added
+ *            2026-08-25). ⚠️ THIS ROW USED TO BE FOLDED INTO `RENAMED` AND THE TABLE READ
+ *            AS COMPLETE COVERAGE. It was not: an invisible format character inside an
+ *            elementId (U+200B, U+00AD) leaves the count identical, so every count-based
+ *            leg cancels — measured, all three blocking checks returned PASS — and it fell
+ *            to A1, which is ADVISORY and, being a SET comparison, cannot tell a
+ *            legitimate rename from a corruption in the first place. The two rows are
+ *            different EVENTS with different owners, which is why they are now two rows.
  * ⚠️ AND SET EQUALITY IS BLIND TO MULTIPLICITY: an id present once on the EN side and
  * TWICE on the IS side gives two equal SETS. That direction is covered by
  * `validateMarkers`' count comparison — the guard this docstring just called blind — so
@@ -383,7 +489,7 @@ export const A6 = defineCheck({
  * lost segment is appended to its predecessor, and injection then fills one element with
  * two segments' worth of prose. Nothing downstream reports anything.
  *
- * ── THREE LEGS, AND NO ONE OF THEM SUBSUMES ANOTHER ───────────────────────────────────
+ * ── FOUR LEGS, AND NO ONE OF THEM SUBSUMES ANOTHER ────────────────────────────────────
  * 🔴 THE SINGLE-LEG VERSION OF THIS CHECK WAS MEASURED TO WAVE THROUGH THE EXACT DAMAGE
  * IT EXISTS TO CATCH, AND SO DID THE OTHER TWO BLOCKING CHECKS BESIDE IT. On
  * `ch01/m68663` (11 records), corrupting ONE `<!-- SEG:` to `<!-- SEG :` — a space BEFORE
@@ -408,6 +514,18 @@ export const A6 = defineCheck({
  *                        because this port normalizes the mustache dialect and inject's
  *                        `parseSegmentsMap` does not. See `parseSegmentsMit` above for the
  *                        measured two-parser disagreement (port 2, inject 0).
+ *   leg `id-charset`     every parsed id is `[\w-]+:[\w-]+:[\w-]+`. Catches corruption
+ *                        that rewrites an id and leaves the COUNT untouched, which all
+ *                        three legs above cancel on by construction. See `SEG_ID_RE`.
+ *
+ * ▶ THE FOUR LEGS ARE THE FOUR CELLS OF THE DAMAGE TAXONOMY IN A1's DOCSTRING, AND THAT
+ * TAXONOMY USED TO CLAIM COMPLETE COVERAGE WITH A CELL UNOWNED. `RENAMED` (count
+ * identical, id rewritten) was assigned to "A1 ONLY, advisory" — correct as a statement of
+ * where it landed, wrong as a statement that it was covered, because a blocking gate and an
+ * advisory detector are not the same protection. Leg 4 gives that cell a blocking owner for
+ * the CORRUPTION half; A1 keeps the RENAME half, which needs a two-sided comparison and
+ * genuinely cannot block at 4/207. §C82 L41: a comment that generalises past its code is
+ * how a gap survives review.
  *
  * ⚠️ WHAT LEG 2 IS ACTUALLY FOR, STATED HONESTLY — IT IS NOT THE MT-TIME DETECTOR.
  * Measured: `validateMarkers` (`tools/api-translate.js:280`) counts `<!-- SEG:` and this
@@ -433,7 +551,12 @@ export const A2b = defineCheck({
   id: 'A2b',
   tier: 2,
   blocking: true,
-  version: 2,
+  // ⚠️ 2 → 3: the JUDGEMENT changed again — the `id-charset` leg makes A2b FAIL files
+  // v2 passed. `defineCheck`'s contract is "bump whenever the judgement changes" and
+  // decision ① scopes quarantine on this stamp, so a verdict recorded by v2 must not be
+  // readable as one this version would have produced. Verified 2026-08-25 that the
+  // registry test in this module's suite is the ONLY pin on the number.
+  version: 3,
   run: (ctx) => {
     // 🔴 BOTH KEYS ARE REQUIRED, AND THAT IS THE WHOLE POINT OF §C82 L33/L41: A LEG THE
     // ctx DOES NOT CARRY IS ITSELF A FINDING, NEVER A SILENT PASS. Falling back to the
@@ -449,7 +572,10 @@ export const A2b = defineCheck({
     if (skip) return skip;
 
     const rawTokens = countRawSegTokens(ctx.isText);
-    const parsed = parseSegmentsMit(ctx.isText).length;
+    // ⚠️ THE RECORDS, NOT JUST THEIR COUNT — leg 4 judges the ids themselves, and parsing
+    // the same bytes twice invites the two reads to drift apart under a later edit.
+    const isRecords = parseSegmentsMit(ctx.isText);
+    const parsed = isRecords.length;
     const enParsed = parseSegmentsMit(ctx.segText).length;
 
     const findings = [];
@@ -475,6 +601,36 @@ export const A2b = defineCheck({
         kind: 'mustache-seg-dialect',
         leg: 'inject-dialect',
         occurrences: mustacheHits.length,
+      });
+    }
+    // 🔴 LEG 4: THE COUNT IS RIGHT AND THE ID IS NOT. The three legs above all compare
+    // COUNTS, so corruption that rewrites an id WITHOUT moving the count cancels in every
+    // one of them — measured on `ch01/m68663` with a ZWSP and with a soft hyphen: parsed
+    // stays 11 and A6, A2b and A2c ALL returned PASS. Only advisory A1 warned, and A1
+    // compares SETS, so it cannot tell a legitimate rename from a corruption. See
+    // `SEG_ID_RE` above for the measured base rate (0 of 57,644) that licences a BLOCK,
+    // for why the upstream guards are blind, and for the traced late-loud severity.
+    const badIds = isRecords.map((r) => r.segmentId).filter((id) => !SEG_ID_RE.test(id));
+    if (badIds.length > 0) {
+      findings.push({
+        kind: 'seg-id-charset',
+        leg: 'id-charset',
+        offending: badIds.length,
+        // ⚠️ ESCAPED AND CAPPED. Escaped because an invisible character printed raw makes
+        // the finding indistinguishable from a clean id (see `escapeSegId`); capped
+        // because a wholesale corruption would otherwise dump every id in the module into
+        // a readout a human has to scan. `offending` carries the full count regardless, so
+        // the cap can never make a large failure look like a small one.
+        ids: badIds.slice(0, 10).map(escapeSegId),
+        codepoints: [
+          ...new Set(
+            badIds
+              .join('')
+              .split('')
+              .filter((c) => !/[\w\-:]/.test(c))
+              .map((c) => `U+${c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}`)
+          ),
+        ].slice(0, 10),
       });
     }
     if (enParsed !== parsed) {
