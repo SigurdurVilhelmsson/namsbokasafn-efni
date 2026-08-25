@@ -98,6 +98,27 @@ describe('parseSegmentsMit — the MIT port of the AGPL segmentParser', () => {
     expect(parseSegmentsMit(wrapped)[0].content).toBe('fyrri lína seinni lína');
   });
 
+  it('THROWS on non-string input, exactly as the AGPL original does', async () => {
+    // 🔴 A DELIBERATE CONTRACT DECISION, RECORDED RATHER THAN LEFT AS AN ACCIDENT. The
+    // port used to coerce via `String(content)`, so `null`, `undefined` and `42` all
+    // returned `[]` while `parseSegments` THREW on each. That divergence is precisely the
+    // hazard this module's own ctx-guard docstring names: `String(undefined)` is the
+    // string `"undefined"`, which parses to zero markers and reads as a clean empty file.
+    // A port whose contract differs from the function it claims to port is a trap for the
+    // next reader, and the permissive direction is the one that manufactures a false PASS.
+    // ▶ Unreachable through the four checks — all guard via `skipIfMissing`, so every call
+    // site is already a non-empty string — but the function is EXPORTED, so its contract
+    // is a public surface and "unreachable today" is not a reason to leave it divergent.
+    // ⚠️ Asserted as "throws", NOT by message: the text comes from Node's TypeError and is
+    // version-fragile, which would make this a pin on the runtime rather than the contract.
+    const require = createRequire(import.meta.url);
+    const { parseSegments } = require('../../server/services/segmentParser.js');
+    for (const bad of [null, undefined, 42, {}, ['x']]) {
+      expect(() => parseSegments(bad)).toThrow();
+      expect(() => parseSegmentsMit(bad)).toThrow();
+    }
+  });
+
   it('agrees with the AGPL original across the whole corpus, not one file', () => {
     // ⚠️ The port is character-identical to its original (both delegate to
     // `parseSegmentRecords` + `normalizeWraps`), so this is a TRANSCRIPTION pin, not an

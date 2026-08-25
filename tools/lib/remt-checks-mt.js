@@ -110,7 +110,16 @@ export { LEGACY_MUSTACHE_RE as A6_MUSTACHE_RE, LEGACY_PLUSPLUS_RE as A6_PLUSPLUS
  * @returns {Array<{segmentId:string,moduleId:string,segmentType:string,elementId:string,content:string}>}
  */
 export function parseSegmentsMit(content) {
-  const normalized = String(content).replace(/\{\{SEG:([^}]+)\}\}/g, '<!-- SEG:$1 -->');
+  // 🔴 NO `String(content)` COERCION — DECIDED, NOT OVERLOOKED. The original throws on a
+  // non-string, and a port whose CONTRACT differs from the function it reproduces is a
+  // trap for the next reader. The coercion diverged in the permissive direction, which is
+  // the one that manufactures a false PASS: `String(undefined)` is the string
+  // `"undefined"`, which parses to zero markers and reads as a clean empty file — exactly
+  // the hazard `skipIfMissing`'s docstring below names. Unreachable through the four
+  // checks (all four guard first), but this function is EXPORTED, so its contract is a
+  // public surface. `runCheck` catches a throw and returns FAIL, so the loud path is also
+  // the safe one. Pinned against the original, on the same inputs, in the test.
+  const normalized = content.replace(/\{\{SEG:([^}]+)\}\}/g, '<!-- SEG:$1 -->');
   return parseSegmentRecords(normalized).map((r) => ({ ...r, content: normalizeWraps(r.content) }));
 }
 
@@ -165,6 +174,12 @@ export const SPACED_SEG_RE = /<!--\s*SEG:\s+/g;
  * @returns {number}
  */
 export function countRawSegTokens(text) {
+  // ⚠️ THE `String()` HERE IS KEPT, AND THE ASYMMETRY WITH `parseSegmentsMit` IS
+  // DELIBERATE — swept per §C82 L41 rather than left for a reviewer to read as an
+  // inconsistency. The argument for removing it there was a CONTRACT one: that function
+  // claims to reproduce `parseSegments`, which throws, and a port that diverges from its
+  // original is a trap. This function reproduces nothing and has no original to diverge
+  // from; its only caller has already passed `skipIfMissing`'s non-empty-string guard.
   return (String(text).match(/SEG:/g) || []).length;
 }
 
