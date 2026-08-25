@@ -151,6 +151,24 @@ describe('E3 — raw XML residue in segments', () => {
     expect(r.findings[0]).toMatchObject({ kind: 'xml-residue', tag: 'emphasis' });
   });
 
+  it('PINS the watched-tag list — a loop over the constant cannot see the constant SHRINK', () => {
+    // 🔴 MEASURED MUTATION ESCAPE, and the reason this pin exists. Truncating
+    // XML_RESIDUE_TAGS to a single tag left the whole suite GREEN: the loop below iterates
+    // the very constant it is meant to guard, so it faithfully tested the one tag that
+    // survived. A test derived from the thing under test cannot detect that thing shrinking.
+    // ⚠️ INTENTIONAL PIN: the spec says this list "has been widened once already; assume a
+    // next tag". A widening SHOULD turn this red — update it in the commit that widens.
+    expect([...XML_RESIDUE_TAGS]).toEqual([
+      'emphasis',
+      'term',
+      'link',
+      'note',
+      'para',
+      'entry',
+      'row',
+    ]);
+  });
+
   it('fires on EVERY tag in XML_RESIDUE_TAGS — the constant and the regex cannot drift apart', async () => {
     expect(XML_RESIDUE_TAGS.length).toBeGreaterThan(0);
     for (const tag of XML_RESIDUE_TAGS) {
