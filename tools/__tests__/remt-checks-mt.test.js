@@ -126,22 +126,37 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     // re-export pins what the module EXPORTS; only replacing E1's binding and watching
     // A6's behaviour follow pins what it USES — which is the thing that silently stops
     // tracking E1 the first time either pattern is widened (§C82 L41).
+    // ⚠️ BOTH BINDINGS, NOT ONE. The first version of this test overrode only the
+    // mustache pattern — and a re-typed copy of `LEGACY_PLUSPLUS_RE` then passed the whole
+    // suite (mutation M9, measured). That is L41 a second time, in the test written to
+    // enforce L41, one commit after closing it for the mustache half: a ruling applied to
+    // one instance and not swept to its sibling. A6 scans with TWO patterns, so both are
+    // replaced and both directions are asserted.
     vi.resetModules();
     vi.doMock('../lib/remt-checks-extract.js', async (importOriginal) => ({
       ...(await importOriginal()),
-      LEGACY_MUSTACHE_RE: /SENTINEL-DIALECT/g,
+      LEGACY_MUSTACHE_RE: /SENTINEL-MUSTACHE/g,
+      LEGACY_PLUSPLUS_RE: /SENTINEL-PLUSPLUS/g,
     }));
     const { A6: A6mocked } = await import('../lib/remt-checks-mt.js');
     const { runCheck: rc } = await import('../lib/remt-battery.js');
 
-    // It fires on E1's (replaced) pattern...
-    const onSentinel = await rc(A6mocked, {
-      isText: '<!-- SEG:m1:para:a -->\nSENTINEL-DIALECT hér\n',
+    // It fires on E1's (replaced) patterns — one assertion per dialect...
+    const onMustacheSentinel = await rc(A6mocked, {
+      isText: '<!-- SEG:m1:para:a -->\nSENTINEL-MUSTACHE hér\n',
     });
-    expect(onSentinel.verdict).toBe(VERDICT.FAIL);
-    // ...and NOT on the real mustache form, which a re-typed copy would still catch.
-    const onRealMustache = await rc(A6mocked, { isText: '<!-- SEG:m1:para:a -->\n{{i}}\n' });
-    expect(onRealMustache.findings.filter((f) => f.dialect === '{{}}')).toHaveLength(0);
+    expect(onMustacheSentinel.findings.filter((f) => f.dialect === '{{}}')).toHaveLength(1);
+    const onPlusSentinel = await rc(A6mocked, {
+      isText: '<!-- SEG:m1:para:a -->\nSENTINEL-PLUSPLUS hér\n',
+    });
+    expect(onPlusSentinel.findings.filter((f) => f.dialect === '++')).toHaveLength(1);
+
+    // ...and NOT on the real forms, which a re-typed copy of either would still catch.
+    const onRealForms = await rc(A6mocked, {
+      isText: '<!-- SEG:m1:para:a -->\n{{i}} ++undirstrikað++\n',
+    });
+    expect(onRealForms.findings).toHaveLength(0);
+    expect(onRealForms.verdict).toBe(VERDICT.PASS);
 
     vi.doUnmock('../lib/remt-checks-extract.js');
     vi.resetModules();
@@ -275,6 +290,17 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     expect(r.findings[0]).toMatchObject({ rawTokens: 2, parsed: 1 });
   });
 
+  it('EVERY marker damaged — rawTokens stays high, so the FAIL cannot read as an empty run', async () => {
+    const allBroken = isText68663.replaceAll('-->', '--');
+    const r = await runCheck(A2b, { isText: allBroken });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings[0]).toMatchObject({ rawTokens: 11, parsed: 0, unparsed: 11 });
+    // ⚠️ This is why the unit is the RAW token count: keyed to `parsed` it would be 0
+    // here, and a blocking gate reporting "examined nothing" over a wholly corrupted file
+    // is a loader-shaped message for a content-shaped defect.
+    expect(r.examined).toBe(11);
+  });
+
   it('counts raw tokens in both delimiter dialects', () => {
     expect(countRawSegTokens('<!-- SEG:a:b:c -->{{SEG:d:e:f}}')).toBe(2);
     expect(countRawSegTokens('engir merkimiðar hér')).toBe(0);
@@ -326,6 +352,23 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     // no error anywhere. 11 → 10, measured on the same bytes the check judged.
     expect(parseSegmentsMit(isText68663)).toHaveLength(11);
     expect(parseSegmentsMit(spaced)).toHaveLength(10);
+  });
+
+  it('EVERY marker spaced — a blocking FAIL at examined 0, which runCheck must NOT hide', async () => {
+    // 🔴 THE REALISTIC WORST CASE, AND THE ONLY FIXTURE WHERE THE CONTRACT ITSELF IS LOAD
+    // BEARING. `/v1/grammar` was measured to introduce exactly this spacing into the
+    // sibling bracket markers, and it would not do it to one marker. Every other A2c
+    // fixture spaces ONE, so `examined` stays non-zero and this branch never runs.
+    // `runCheck` downgrades PASS+0 to SKIPPED and deliberately does NOT downgrade FAIL —
+    // a check that found something wrong while examining zero units has a defect worth
+    // surfacing. If that ever changed, the file where NOTHING parses would read SKIPPED.
+    const allSpaced = isText68663.replaceAll('<!-- SEG:', '<!-- SEG: ');
+    const r = await runCheck(A2c, { isText: allSpaced });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.examined).toBe(0);
+    expect(r.findings[0]).toMatchObject({ kind: 'spaced-seg-marker', occurrences: 11 });
+    // By value: all 11 records are gone, and no error was raised anywhere.
+    expect(parseSegmentsMit(allSpaced)).toHaveLength(0);
   });
 
   it('SPACED_SEG_RE fires on the spaced form and not on the canonical one', () => {
