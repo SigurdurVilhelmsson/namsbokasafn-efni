@@ -242,9 +242,20 @@ export function countRawSegTokens(text) {
  * ⚠️ except under `--allow-incomplete`, which turns the refusal back into a write. That is
  * why the gate is worth having upstream of inject rather than left to it.
  * ▶ AND IT IS SCOPED TO THE IS SIDE FOR THAT REASON, NOT BY OVERSIGHT: the IS file is what
- * inject reads. An EN-side id is Tier 1's population — and no Tier-1 check enforces this
- * charset today (verified: E1-E9 carry no id predicate), which is logged to the active
- * register rather than fixed by widening this check's scope.
+ * inject reads. An EN-side id is Tier 1's population — and no Tier-1 CHECK enforces this
+ * charset today, which is logged to the active register (L47) rather than fixed by
+ * widening this check's scope.
+ * ⚠️ THAT NEGATIVE IS STATED WITH ITS SWEEP RANGE, BECAUSE AN UNQUALIFIED ONE READS AS
+ * RIGOUR AND IS NOT. Range: every `tier: 1` check (E1-E9, all in `remt-checks-extract.js`
+ * — no other lib file defines one), swept for the QUESTION rather than the syntax. It
+ * found TWO things that are NOT this gate and must not be mistaken for it:
+ *   `ALT_POSITIONAL` (`/^(media|standalone)-\d+-alt$/`) IS an id predicate, but a SHAPE
+ *   test that classifies E5's positional-id defect, scoped to the alt population — it
+ *   says nothing about which characters an id may contain.
+ *   `altElementIdFromSrc` MINTS to `[\w-]` (`.replace(/[^\w-]+/g, '_')`), so alt ids are
+ *   charset-clean BY CONSTRUCTION at the point of minting — which is a producer
+ *   guarantee, not a check, and covers only ids that helper produces.
+ * ▶ So the EN side is charset-clean where it is minted and unverified everywhere else.
  *
  * ── THE BASE RATE THAT LICENCES IT TO BLOCK ───────────────────────────────────────────
  * ▶ MEASURED 2026-08-25: **0 violations of 57,644 parsed ids across 394 files** — both run
