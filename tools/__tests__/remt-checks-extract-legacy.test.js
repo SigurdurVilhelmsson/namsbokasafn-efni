@@ -305,7 +305,15 @@ describe('E6 — unexpected files emitted by the extract', () => {
 
     const junk = await runCheck(E6, { emittedFiles: [42, null, { size: 10 }] });
     expect(junk.verdict).toBe(VERDICT.FAIL);
+    // 🔴 THE LENGTH ASSERTION IS LOAD-BEARING — `[].every(...)` IS VACUOUSLY TRUE. A mutation
+    // removing the `name === null` guard makes `name.split('/')` throw; runCheck converts that
+    // to FAIL with `findings: []`, and an `every()` check alone passed over the empty array.
+    // Measured as a mutation ESCAPE before this line was added. The verdict is right for the
+    // wrong reason there — a thrown TypeError, not a classified entry — which is exactly the
+    // difference the count catches.
+    expect(junk.findings).toHaveLength(3);
     expect(junk.findings.every((f) => f.kind === 'unexpected-file:unreadable-entry')).toBe(true);
+    expect(junk.examined).toBe(3);
   });
 
   it('backupSourceOf recognises every backup spelling, and nothing else', () => {
