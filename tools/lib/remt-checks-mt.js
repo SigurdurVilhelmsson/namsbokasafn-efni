@@ -299,26 +299,90 @@ export const A6 = defineCheck({
  * lost segment is appended to its predecessor, and injection then fills one element with
  * two segments' worth of prose. Nothing downstream reports anything.
  *
+ * ── TWO LEGS, AND NEITHER SUBSUMES THE OTHER ──────────────────────────────────────────
+ * 🔴 THE SINGLE-LEG VERSION OF THIS CHECK WAS MEASURED TO WAVE THROUGH THE EXACT DAMAGE
+ * IT EXISTS TO CATCH, AND SO DID THE OTHER TWO BLOCKING CHECKS BESIDE IT. On
+ * `ch01/m68663` (11 records), corrupting ONE `<!-- SEG:` to `<!-- SEG :` — a space BEFORE
+ * the colon, the mirror of the spacing `/v1/grammar` was measured to insert into the
+ * sibling bracket markers — silently merges a segment into its predecessor, 11 → 10, and
+ * on `main` before this leg: **A6 PASS, A2b PASS, A2c PASS, examined 10, 0 findings.**
+ * Only advisory A1 warned, so the blocking set passed the module.
+ * ▶ THE ROOT CAUSE IS STRUCTURAL, NOT AN OVERSIGHT: leg 1 compares
+ * `countRawSegTokens(isText)` to `parseSegmentsMit(isText).length`, and BOTH are derived
+ * from the same 4-byte `SEG:` token. Damage to that token moves both sides equally and
+ * the comparison cancels. **A self-referential invariant cannot see damage to its own
+ * anchor** — which is why leg 2 anchors OUTSIDE the IS file entirely.
+ *
+ *   leg `raw-vs-parsed`  raw `SEG:` tokens vs parsed records, IS side only. Catches
+ *                        damage that PRESERVES the token: an eaten `-->`, the spaced
+ *                        comment form, the spaced mustache form. Verified all three
+ *                        still trip it.
+ *   leg `cross-side`     parsed EN records vs parsed IS records. Catches damage that
+ *                        DESTROYS the token, which leg 1 structurally cannot see.
+ *
+ * ⚠️ WHAT LEG 2 IS ACTUALLY FOR, STATED HONESTLY — IT IS NOT THE MT-TIME DETECTOR.
+ * Measured: `validateMarkers` (`tools/api-translate.js:280`) counts `<!-- SEG:` and this
+ * corruption moves that count 11 → 10, so the PRE-WRITE guard would have refused these
+ * bytes at MT time. Leg 2's coverage is what that guard structurally cannot see because
+ * it ran before the bytes hit disk: **POST-WRITE damage** — a hand edit under the
+ * read-only `02-mt-output` tree, or a later tool. Do not read it as a second line of
+ * defence against the API; read it as the only one against everything after.
+ *
  * ⚠️ SEE `countRawSegTokens` FOR WHY THE RAW SIDE IS COUNTED WITH A BROADER PATTERN THAN
  * THE PARSER USES — comparing the parser to itself is the tautology this check must not be.
- * Base rate 0 over 207 files, which is what licences it to block.
+ *
+ * ▶ BASE RATE FOR THE CROSS-SIDE PREDICATE, MEASURED 2026-08-25: **207 IS files, 207 with
+ * an EN counterpart (0 without), 207 count-equal, 0 disagreements = 0.0%** over chemistry
+ * 149 + organic 48 + micro 10. The two-book RUN-TARGET subset (chemistry + organic) is
+ * **197/197**, the same measurement over the narrower population — stated so a reader
+ * meets both framings rather than reading a disagreement into them. Under Plan B rule 4's
+ * ~5% bar, which is what licences leg 2 to BLOCK rather than warn.
+ * ▶ IT IS A PREMISE PIN, NOT A REGRESSION PIN (§C82 L20/L27): the corpus this battery
+ * gates is about to be replaced by the re-MT run, so it is re-measured when it moves.
  */
 export const A2b = defineCheck({
   id: 'A2b',
   tier: 2,
   blocking: true,
-  version: 1,
+  version: 2,
   run: (ctx) => {
-    const skip = skipIfMissing(ctx, 'A2b', ['isText']);
+    // 🔴 BOTH KEYS ARE REQUIRED, AND THAT IS THE WHOLE POINT OF §C82 L33/L41: A LEG THE
+    // ctx DOES NOT CARRY IS ITSELF A FINDING, NEVER A SILENT PASS. Falling back to the
+    // single-leg comparison when `segText` is absent would restore precisely the false
+    // PASS this version exists to close, on every module whose loader dropped the EN
+    // side. `exitCodeFor` reads `verdict` and NEVER `message`, so a caveat in the message
+    // is invisible to the gate — the absence must be a SKIPPED, which for a blocking
+    // check exits 1. This rule was closed in E9 and shipped broken again in G5 three
+    // commits later; it is stated here so the sweep reaches this check too.
+    // ⚠️ `segText` needs no ctx contract change — the CLI's CheckContext typedef already
+    // documents it ("02-for-mt EN segments"); A1 has consumed it since Task 8.
+    const skip = skipIfMissing(ctx, 'A2b', ['isText', 'segText']);
     if (skip) return skip;
 
     const rawTokens = countRawSegTokens(ctx.isText);
     const parsed = parseSegmentsMit(ctx.isText).length;
+    const enParsed = parseSegmentsMit(ctx.segText).length;
 
-    const findings =
-      rawTokens === parsed
-        ? []
-        : [{ kind: 'unparsed-seg-token', rawTokens, parsed, unparsed: rawTokens - parsed }];
+    const findings = [];
+    if (rawTokens !== parsed) {
+      findings.push({
+        kind: 'unparsed-seg-token',
+        leg: 'raw-vs-parsed',
+        rawTokens,
+        parsed,
+        unparsed: rawTokens - parsed,
+      });
+    }
+    if (enParsed !== parsed) {
+      // ⚠️ BOTH COUNTS, NOT A MISMATCH FLAG. Without them the DIRECTION is unreadable and
+      // a damaged EN side gets blamed on the paid MT.
+      findings.push({
+        kind: 'seg-count-cross-side-mismatch',
+        leg: 'cross-side',
+        enParsed,
+        isParsed: parsed,
+      });
+    }
 
     return {
       // ⚠️ `examined` IS THE RAW TOKEN COUNT, NOT THE PARSED ONE — the parsed count is half
@@ -327,10 +391,19 @@ export const A2b = defineCheck({
       // Raw tokens is the population the predicate compares over, and a file holding none
       // correctly reads SKIPPED: an IS segment file with no marker-like token at all is a
       // loader or MT defect, not a clean file.
+      // ⚠️ AND IT STAYS KEYED TO THE IS SIDE NOW THAT A2b HAS TWO INPUTS — which looks
+      // like the L6 defect A1's docstring warns about, and is not. A1 keys to the UNION
+      // because either side can be absent at the point the count is formed; here
+      // `skipIfMissing` has already guaranteed BOTH are non-empty strings before this
+      // line runs, so there is no path on which a high `examined` covers a comparison
+      // that never happened. The unit is IS marker-like tokens because that is the
+      // population BOTH legs judge.
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
       examined: rawTokens,
       findings,
-      message: `${rawTokens} raw SEG tokens, ${parsed} parsed`,
+      message:
+        `${rawTokens} raw SEG tokens, ${parsed} parsed, ${enParsed} EN parsed` +
+        (findings.length ? ` — legs fired: ${findings.map((f) => f.leg).join(', ')}` : ''),
     };
   },
 });

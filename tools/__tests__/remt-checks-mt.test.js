@@ -249,26 +249,102 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
 });
 
 describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
-  it('BASE RATE — 0 mismatches over all 207 files, so it can block', async () => {
+  it('BASE RATE — 0 mismatches over all 207 pairs, BOTH legs, so it can block', async () => {
+    // 🔴 THE POPULATION IS NOW PAIRS, NOT FILES, because A2b acquired a cross-side leg.
+    // Measured 2026-08-25: 207 IS files, 207 with an EN counterpart (0 without), 207
+    // count-equal on the cross-side leg and 0 raw-vs-parsed mismatches. The two-book
+    // run-target subset (chemistry 149 + organic 48) is 197/197 — the same measurement,
+    // stated over the narrower population, and NOT a disagreement with the 207 above.
     let examined = 0;
-    let files = 0;
+    let pairs = 0;
     for (const b of BOOKS) {
       for (const f of FILES[b]) {
-        const r = await runCheck(A2b, { isText: read(f) });
+        const en = enCounterpart(f);
+        expect(en).not.toBeNull(); // 0 IS files lack an EN pair — asserted, not assumed
+        const r = await runCheck(A2b, { isText: read(f), segText: read(en) });
         expect(r.verdict).toBe(VERDICT.PASS);
         examined += r.examined;
-        files++;
+        pairs++;
       }
     }
-    expect(files).toBe(207);
+    expect(pairs).toBe(207);
     expect(examined).toBe(29476);
+  });
+
+  it('MUST-TRIP — a DESTROYED `SEG:` token, which the raw leg structurally cannot see', async () => {
+    // 🔴 THIS IS THE DEFECT THE CROSS-SIDE LEG WAS ADDED FOR, AND THE RAW LEG'S BLINDNESS
+    // TO IT IS ASSERTED HERE RATHER THAN DESCRIBED. `<!-- SEG:` → `<!-- SEG :` (a space
+    // BEFORE the colon — the mirror of the spacing `/v1/grammar` was measured to insert)
+    // destroys the 4-byte token BOTH sides of the raw comparison are derived from, so
+    // `rawTokens` and `parsed` fall together, 11 → 10, and the comparison cancels.
+    // Measured on `main` before this leg existed: A6 PASS, A2b PASS, A2c PASS, 0 findings
+    // — a segment silently merged into its predecessor and every blocking check waved it
+    // through. A self-referential invariant cannot see damage to its own anchor.
+    const destroyed = isText68663.replace('<!-- SEG:', '<!-- SEG :', 1);
+    const r = await runCheck(A2b, { isText: destroyed, segText: enText68663 });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+
+    // The cross-side leg fires, and carries BOTH counts so the DIRECTION is readable —
+    // a damaged EN side must not be reported as MT damage.
+    const cross = r.findings.find((f) => f.leg === 'cross-side');
+    expect(cross).toMatchObject({
+      kind: 'seg-count-cross-side-mismatch',
+      enParsed: 11,
+      isParsed: 10,
+    });
+
+    // ...and the raw leg does NOT, on the very same bytes. That is the positive control
+    // that proves the new leg is what caught it, not a coincidental second detector.
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toBeUndefined();
+    expect(countRawSegTokens(destroyed)).toBe(10);
+    expect(parseSegmentsMit(destroyed)).toHaveLength(10);
+  });
+
+  it('KEEPS the raw leg — it catches damage that PRESERVES the token, which cross-side may not', async () => {
+    // Neither leg subsumes the other, asserted by value in the direction the new leg is
+    // weak: an eaten `-->` with an EN side that has the SAME parsed count would pass
+    // cross-side alone. Here the EN counterpart is the clean IS file itself (11 records),
+    // so cross-side ALSO fires — the point is that raw fires too, independently.
+    const broken = isText68663.replace('-->', '--', 1);
+    const r = await runCheck(A2b, { isText: broken, segText: enText68663 });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
+      kind: 'unparsed-seg-token',
+      rawTokens: 11,
+      parsed: 10,
+    });
+  });
+
+  it('SKIPPED, never a silent PASS, when the ctx cannot supply the cross-side leg — L33/L41', async () => {
+    // 🔴 §C82 L33/L41: A LEG THE ctx DOES NOT CARRY IS ITSELF A FINDING. This exact rule
+    // was closed in E9 and shipped broken again in G5 three commits later, so it is
+    // asserted here rather than trusted. Falling back to the single-leg comparison would
+    // report PASS on a module whose cross-side check never ran — and `exitCodeFor` reads
+    // `verdict` and NEVER `message`, so a caveat in the message is invisible to the gate.
+    for (const ctx of [
+      { isText: isText68663 },
+      { isText: isText68663, segText: '' },
+      { isText: isText68663, segText: 42 },
+      { isText: isText68663, segText: null },
+    ]) {
+      const r = await runCheck(A2b, ctx);
+      expect(r.verdict).toBe(VERDICT.SKIPPED);
+      expect(r.examined).toBe(0);
+      expect(r.message).toMatch(/segText/);
+    }
   });
 
   it('PLANTED must-trip — an eaten `-->` leaves a marker-like token that does not parse', async () => {
     const broken = isText68663.replace('-->', '--', 1);
-    const r = await runCheck(A2b, { isText: broken });
+    const r = await runCheck(A2b, { isText: broken, segText: enText68663 });
     expect(r.verdict).toBe(VERDICT.FAIL);
-    expect(r.findings[0]).toMatchObject({ kind: 'unparsed-seg-token', rawTokens: 11, parsed: 10 });
+    // ⚠️ BY LEG, NOT BY INDEX. A2b emits up to three findings now, so `findings[0]` would
+    // silently stop testing the leg it names the first time another leg fires first.
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
+      kind: 'unparsed-seg-token',
+      rawTokens: 11,
+      parsed: 10,
+    });
     // The unit is the RAW token count, not the parsed one — 11, the population the
     // predicate compared over, so a file whose markers ALL failed to parse cannot report
     // `examined: 0` as though nothing had been looked at.
@@ -283,18 +359,26 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // This is why the predicate is a raw-token count and not `parseSegmentRecords().length
     // === SEG_MARKER matches`, which would be a tautology.
     const spacedMustache = '{{SEG: m1:para:a}}\nhalló\n<!-- SEG:m1:para:b -->\nheimur\n';
+    const enPair = '<!-- SEG:m1:para:a -->\nhello\n<!-- SEG:m1:para:b -->\nworld\n';
     expect((await runCheck(A6, { isText: spacedMustache })).findings).toHaveLength(0);
     expect((await runCheck(A2c, { isText: spacedMustache })).verdict).toBe(VERDICT.PASS);
-    const r = await runCheck(A2b, { isText: spacedMustache });
+    const r = await runCheck(A2b, { isText: spacedMustache, segText: enPair });
     expect(r.verdict).toBe(VERDICT.FAIL);
-    expect(r.findings[0]).toMatchObject({ rawTokens: 2, parsed: 1 });
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
+      rawTokens: 2,
+      parsed: 1,
+    });
   });
 
   it('EVERY marker damaged — rawTokens stays high, so the FAIL cannot read as an empty run', async () => {
     const allBroken = isText68663.replaceAll('-->', '--');
-    const r = await runCheck(A2b, { isText: allBroken });
+    const r = await runCheck(A2b, { isText: allBroken, segText: enText68663 });
     expect(r.verdict).toBe(VERDICT.FAIL);
-    expect(r.findings[0]).toMatchObject({ rawTokens: 11, parsed: 0, unparsed: 11 });
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
+      rawTokens: 11,
+      parsed: 0,
+      unparsed: 11,
+    });
     // ⚠️ This is why the unit is the RAW token count: keyed to `parsed` it would be 0
     // here, and a blocking gate reporting "examined nothing" over a wholly corrupted file
     // is a loader-shaped message for a content-shaped defect.
@@ -306,14 +390,41 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     expect(countRawSegTokens('engir merkimiðar hér')).toBe(0);
   });
 
-  it('SKIPPED, not PASS, on a file with no marker-like token at all', async () => {
-    const r = await runCheck(A2b, { isText: 'bara texti, engin SEG merki\n' });
+  it('a marker-less IS file against a REAL EN side is a content FAIL, not a SKIPPED', async () => {
+    // 🔴 THE CROSS-SIDE LEG STRENGTHENED THIS CASE, AND THE CHANGE IS THE POINT. Before
+    // leg 2 this returned PASS at examined 0, which `runCheck` downgraded to SKIPPED — a
+    // LOADER-shaped verdict for a CONTENT-shaped defect. With the EN side present the
+    // wholesale loss is now named: 11 EN records against 0 IS ones. `runCheck` downgrades
+    // only PASS, so the FAIL survives examined 0 and the finding is not lost.
+    const r = await runCheck(A2b, {
+      isText: 'bara texti, engin SEG merki\n',
+      segText: enText68663,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.examined).toBe(0);
+    expect(r.findings.find((f) => f.leg === 'cross-side')).toMatchObject({
+      enParsed: 11,
+      isParsed: 0,
+    });
+  });
+
+  it('SKIPPED — genuinely empty on BOTH sides is a loader defect, and still reads as one', async () => {
+    // The other half of the branch above: with nothing on either side there is no content
+    // finding to make, both legs agree at 0, and PASS+0 correctly downgrades to SKIPPED.
+    const r = await runCheck(A2b, {
+      isText: 'bara texti, engin SEG merki\n',
+      segText: 'just text, no SEG markers\n',
+    });
     expect(r.verdict).toBe(VERDICT.SKIPPED);
     expect(r.examined).toBe(0);
   });
 
   it('SKIPPED on a missing or wrong-typed isText — L33: a wrong shape is not an empty result', async () => {
-    for (const ctx of [{}, { isText: 42 }, { isText: {} }]) {
+    for (const ctx of [
+      {},
+      { isText: 42, segText: enText68663 },
+      { isText: {}, segText: enText68663 },
+    ]) {
       const r = await runCheck(A2b, ctx);
       expect(r.verdict).toBe(VERDICT.SKIPPED);
       expect(r.examined).toBe(0);
@@ -455,8 +566,17 @@ describe('registry wiring — a check that is never selected does not exist', ()
     for (const c of MT_FREE_CHECKS) {
       expect(REGISTRY.get(c.id)).toBe(c);
       expect(c.tier).toBe(2);
-      expect(c.version).toBe(1);
     }
+    // ⚠️ VERSIONS ARE PINNED INDIVIDUALLY, NOT AS "all 1". `defineCheck`'s contract is
+    // "bump whenever the JUDGEMENT changes", and A2b's did: it acquired the cross-side
+    // leg. Decision ① scopes quarantine on this stamp, so a verdict recorded by A2b v1
+    // must not be readable as one this version would have produced.
+    expect(Object.fromEntries(MT_FREE_CHECKS.map((c) => [c.id, c.version]))).toEqual({
+      A1: 1,
+      A6: 1,
+      A2b: 2,
+      A2c: 1,
+    });
     expect([...REGISTRY.values()].filter((c) => c.tier === 2)).toHaveLength(4);
   });
 });
