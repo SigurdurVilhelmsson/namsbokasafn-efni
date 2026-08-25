@@ -142,7 +142,13 @@ Re-measured first — all four carried numbers reproduced exactly — then ruled
 Evidence: [`../../test-results/c88-scope-retake-remeasurement-2026-08-23.md`](../../test-results/c88-scope-retake-remeasurement-2026-08-23.md)
 · [`../../test-results/c88-245-feasibility-2026-08-23.md`](../../test-results/c88-245-feasibility-2026-08-23.md)
 
-### 1.3 ✅ Free measurement — settle the chemistry ceiling
+### 1.3 ⬜ NOT TAKEN — free measurement, settle the chemistry ceiling
+🔴 **CORRECTED 2026-08-25: this carried a ✅ and the register says it was NEVER TAKEN.** It requires
+a **FRESH** extract, so running it on today's stale one answers a different question — which is
+exactly why it belongs immediately before the chemistry leg rather than here. It is free (0 ISK)
+and can run alongside the build. ⚠️ **This is the second time a ✅ in this runbook has meant
+provenance rather than completion** (2.1 carried one while all 8 lock markers were still on disk).
+**Read every ✅ here as "someone wrote this down", and confirm against the register.**
 A `--dry-run` on a **fresh** chemistry extract costs 0 ISK and resolves the unmeasured vintage
 caveat on the 43,078 figure. **Take it before the chemistry leg, not organic's.**
 
@@ -192,8 +198,13 @@ Sizing and detectors: [`../../test-results/c88-245-feasibility-2026-08-23.md`](.
 
 ## Phase 3 — The run
 
-### 3.1 ⚠️ §C82 Plans B (the check battery) and C (driver + ledger) — still unwritten
+### 3.1 ⚠️ §C82 Plans B (the check battery) and C (driver + ledger)
 This is the bulk of the remaining preparation. §C88 was its last blocker and is merged.
+⚠️ **CORRECTED 2026-08-25 — this said "still unwritten", which stopped being true on 2026-08-24.**
+Both plans are WRITTEN and merged (PR #411 → `2166551b`) and deployed, and Plan B's **Tasks 1-7
+are BUILT** — Tier 0 (`G1`-`G5`) and Tier 1 (`E1`-`E7`, `E9`). **Plan B Tasks 8-13 and the whole of
+Plan C remain.** ▶ **Status lives in the register's ⏩ RESUME block, not here** — this line is
+corrected rather than maintained, per this document's own closing section.
 
 ### 3.2 ✅ Expect §C110's warning to be SILENT — and do not read silence as proof
 Extraction now warns per module and prints a counted run-end summary when it advances a module
@@ -210,8 +221,17 @@ reaches prod only via `./scripts/deploy.sh`'s `git pull --rebase`. **If an edito
 before that pull, they edit the old vintage.**
 
 ### 4.2 ✅ Re-apply the editorial work by hand
-From the docx (ch01–ch02) and the moved-aside faithful copies (ch03). **Seg-id renumbering is
-expected and accepted** — re-application is manual and matches by meaning, not by id.
+From the docx (ch01–ch02), the moved-aside faithful copies (ch03), **and the §C79 harvest**.
+**Seg-id renumbering is expected and accepted** — re-application is manual and matches by meaning,
+not by id.
+- 🔴 **ADDED 2026-08-25 — THE §C79 HARVEST WAS MISSING FROM THIS LIST, AND IT IS THE ONLY COPY.**
+  The DB-only locked modules' edits (`m68667`, `m68674`, ch05 `chapter-metadata`) live **nowhere in
+  the repo tree** — they were harvested out of `sessions.db` to
+  [`../../test-results/c79-locked-module-edits-harvest-2026-08-12.json`](../../test-results/c79-locked-module-edits-harvest-2026-08-12.json)
+  (16.6 KB). This step named only the docx and the faithful copies, so those edits had **no home**
+  — the same shape as the `02-mt-output` sweep below, which this step's own omission is what
+  surfaced. ⚠️ **§C79's disposition is still an open [LEAD] call** (harvest+drop / harvest+re-apply
+  / drop outright); the harvest being done is what makes it reversible, not decided.
 
 ✅ **`02-mt-output` HAND REPAIRS — SWEPT 2026-08-23 (ledger M0): NOTHING NEEDS RE-APPLYING HERE.**
 The run overwrites `02-mt-output`, so human corrections in it are **destroyed, not preserved** —
