@@ -561,15 +561,23 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
   });
 
   it('SKIPPED on a missing or wrong-typed isText — L33: a wrong shape is not an empty result', async () => {
+    // ⚠️ THE EMPTY STRING IS INCLUDED HERE TOO. A2b's skip path was pinned on that
+    // branch only via `segText` (the test above); `isText: ''` went unasserted, so half
+    // of this check's own guard rested on the sibling key. Same branch, both keys.
+    let checked = 0;
     for (const ctx of [
       {},
+      { isText: '', segText: enText68663 },
       { isText: 42, segText: enText68663 },
       { isText: {}, segText: enText68663 },
     ]) {
       const r = await runCheck(A2b, ctx);
-      expect(r.verdict).toBe(VERDICT.SKIPPED);
-      expect(r.examined).toBe(0);
+      expect(r.verdict, JSON.stringify(ctx)).toBe(VERDICT.SKIPPED);
+      expect(r.examined, JSON.stringify(ctx)).toBe(0);
+      expect(r.message, JSON.stringify(ctx)).toMatch(/isText/);
+      checked++;
     }
+    expect(checked).toBe(4);
   });
 
   it('is BLOCKING', () => {
@@ -762,10 +770,24 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     expect('<!-- SEG:m1:para:a -->'.match(SPACED_SEG_RE)).toBeNull();
   });
 
-  it('SKIPPED, not PASS, when the ctx carries no isText', async () => {
-    const r = await runCheck(A2c, {});
-    expect(r.verdict).toBe(VERDICT.SKIPPED);
-    expect(r.examined).toBe(0);
+  it('SKIPPED, not PASS, when the ctx carries no isText — including the EMPTY STRING', async () => {
+    // 🔴 THE EMPTY STRING IS ITS OWN BRANCH, AND IT IS PINNED PER CHECK ON PURPOSE.
+    // `skipIfMissing` rejects a key that is not a string OR that is `''`; the second half
+    // is what stops a zero-byte segment file — a real loader defect — from being read as
+    // "an empty file that is fine" and PASSING. Measured 2026-08-25 by deleting
+    // `|| ctx[k] === ''`: only TWO assertions in this whole file went red, both A6's and
+    // A2b's, so A2c and A1 pinned the branch not at all and A2b pinned it only on
+    // `segText`. Each blocking check now covers it on every key it requires, so the branch
+    // is not one deleted test away from being unpinned.
+    let checked = 0;
+    for (const ctx of [{}, { isText: '' }, { isText: null }, { isText: 42 }]) {
+      const r = await runCheck(A2c, ctx);
+      expect(r.verdict, JSON.stringify(ctx)).toBe(VERDICT.SKIPPED);
+      expect(r.examined, JSON.stringify(ctx)).toBe(0);
+      expect(r.message, JSON.stringify(ctx)).toMatch(/isText/);
+      checked++;
+    }
+    expect(checked).toBe(4);
   });
 
   it('is BLOCKING', () => {
@@ -849,6 +871,24 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
     expect(isOnly.verdict).toBe(VERDICT.SKIPPED);
     expect(isOnly.examined).toBe(0);
     expect(isOnly.message).toMatch(/segText/);
+
+    // ⚠️ AND THE EMPTY STRING ON EITHER SIDE — the branch `skipIfMissing` needs beyond
+    // the type test, which NO A1 assertion covered before. A1 is advisory, but the branch
+    // is what is being pinned, not the blocking flag: an empty side read as "a clean file
+    // with no seg-ids" makes two empty SETS compare EQUAL, which is a silent PASS on a
+    // comparison that never happened — the exact L6 shape this test is named for.
+    let checked = 0;
+    for (const ctx of [
+      { segText: '', isText: isText68663 },
+      { segText: enText68663, isText: '' },
+      { segText: '', isText: '' },
+    ]) {
+      const r = await runCheck(A1, ctx);
+      expect(r.verdict).toBe(VERDICT.SKIPPED);
+      expect(r.examined).toBe(0);
+      checked++;
+    }
+    expect(checked).toBe(3);
   });
 });
 
