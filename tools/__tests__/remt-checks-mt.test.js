@@ -21,7 +21,7 @@
  * files — which is exactly what a wholly broken detector returns. The planted trip and
  * the chemistry 5,491 are what separate the two readings (L44③).
  */
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import { runCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
@@ -114,12 +114,37 @@ describe('parseSegmentsMit — the MIT port of the AGPL segmentParser', () => {
 });
 
 describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', () => {
-  it('is the same instrument as E1, by identity and not by resemblance', () => {
-    // §C82 L41: a ruling recorded against one check is not a change to the others. The
-    // only way to make "same instrument, other side" true rather than aspirational is to
-    // assert the SAME OBJECT — a re-typed copy of the pattern drifts silently.
+  it("re-exports E1's patterns by identity, not by copy", () => {
     expect(A6_MUSTACHE_RE).toBe(LEGACY_MUSTACHE_RE);
     expect(A6_PLUSPLUS_RE).toBe(LEGACY_PLUSPLUS_RE);
+  });
+
+  it("A6 SCANS WITH E1's binding — the re-export pin above does not establish this", async () => {
+    // 🔴 THIS TEST EXISTS BECAUSE THE ONE ABOVE WAS MEASURED TO BE INSUFFICIENT. A
+    // mutation that left the re-export alone and gave A6's `run` a character-identical
+    // RE-TYPED copy of the pattern passed the whole suite (mutation round 1, M4). The
+    // re-export pins what the module EXPORTS; only replacing E1's binding and watching
+    // A6's behaviour follow pins what it USES — which is the thing that silently stops
+    // tracking E1 the first time either pattern is widened (§C82 L41).
+    vi.resetModules();
+    vi.doMock('../lib/remt-checks-extract.js', async (importOriginal) => ({
+      ...(await importOriginal()),
+      LEGACY_MUSTACHE_RE: /SENTINEL-DIALECT/g,
+    }));
+    const { A6: A6mocked } = await import('../lib/remt-checks-mt.js');
+    const { runCheck: rc } = await import('../lib/remt-battery.js');
+
+    // It fires on E1's (replaced) pattern...
+    const onSentinel = await rc(A6mocked, {
+      isText: '<!-- SEG:m1:para:a -->\nSENTINEL-DIALECT hér\n',
+    });
+    expect(onSentinel.verdict).toBe(VERDICT.FAIL);
+    // ...and NOT on the real mustache form, which a re-typed copy would still catch.
+    const onRealMustache = await rc(A6mocked, { isText: '<!-- SEG:m1:para:a -->\n{{i}}\n' });
+    expect(onRealMustache.findings.filter((f) => f.dialect === '{{}}')).toHaveLength(0);
+
+    vi.doUnmock('../lib/remt-checks-extract.js');
+    vi.resetModules();
   });
 
   it('PREMISE PIN — chemistry: 5,442 mustache + 49 ++ hits over 115 of 149 files', async () => {
@@ -229,6 +254,10 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     const r = await runCheck(A2b, { isText: broken });
     expect(r.verdict).toBe(VERDICT.FAIL);
     expect(r.findings[0]).toMatchObject({ kind: 'unparsed-seg-token', rawTokens: 11, parsed: 10 });
+    // The unit is the RAW token count, not the parsed one — 11, the population the
+    // predicate compared over, so a file whose markers ALL failed to parse cannot report
+    // `examined: 0` as though nothing had been looked at.
+    expect(r.examined).toBe(11);
     // Proven BY VALUE, not by the verdict alone: a marker really was lost.
     expect(parseSegmentsMit(broken)).toHaveLength(10);
   });
@@ -351,6 +380,10 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
     ]);
     const [, first] = hits[0];
     expect(first.verdict).toBe(VERDICT.WARN); // advisory: a finding, never a halt
+    // L6, pinned by VALUE: the unit is the UNION of both sides. ch06 is 153 EN and 153 IS
+    // seg-ids with one differing on each side, so the union is 154 — a number neither
+    // side alone can produce, which is what kills an `examined = isIds.size` mutant.
+    expect(first.examined).toBe(154);
     expect(first.findings[0]).toMatchObject({
       kind: 'seg-id-set-mismatch',
       enOnly: ['06-99-OC-VC03:stem:353278-b0'],
