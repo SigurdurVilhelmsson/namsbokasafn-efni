@@ -174,6 +174,19 @@ function skipIfMissing(ctx, id, keys) {
  * ▶ SO A1 STAYS ADVISORY BECAUSE THE BASE RATE IS 4/207 (1.9%), NOT BECAUSE IT CANNOT
  * FIRE. A blocking A1 would halt on the committed corpus.
  *
+ * ── WHAT A1 COVERS, AND THE TWO THINGS IT DOES NOT ────────────────────────────────────
+ * A marker can fail in three ways, and they have three different owners. Reading A1 as
+ * "marker identity is checked" would be a measurement generalised one step past its
+ * coverage — this repo's commonest error:
+ *   DAMAGED  it no longer parses          → A2b / A2c, BLOCKING, here in Tier 2
+ *   LOST     the count moved              → `validateMarkers`, pre-write, upstream
+ *   RENAMED  count identical, id rewritten → A1 ONLY, advisory, 4/207 on `main`
+ * ⚠️ AND SET EQUALITY IS BLIND TO MULTIPLICITY: an id present once on the EN side and
+ * TWICE on the IS side gives two equal SETS. That direction is covered by
+ * `validateMarkers`' count comparison — the guard this docstring just called blind — so
+ * the two are complementary rather than one superseding the other. Neither alone is
+ * "the marker is intact".
+ *
  * ⚠️ AND ITS ONLY NATURAL FIXTURE IS IN THE ORGANIC `exercises` POPULATION — the one whose
  * loader gating is still undecided (§C82 L19/L21/L36①: those bundles are 91.2% of organic's
  * segments and have NO `01-source`). If that population is gated out of the run, A1 loses
