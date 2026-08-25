@@ -100,11 +100,15 @@ export { LEGACY_MUSTACHE_RE as A6_MUSTACHE_RE, LEGACY_PLUSPLUS_RE as A6_PLUSPLUS
  * so a mustache file reaches inject and is refused per module rather than publishing empty
  * prose. ⚠️ `--allow-incomplete` turns that back into a write, which is why the gate is
  * still worth having upstream of it.
- * ⚠️ LIVE RELEVANCE, BOUNDED: 7 files on disk carry `{{SEG:` — chemistry
- * `ch05/m6872{4,6,7}-segments(b|c|d).is.md` — and ALL 7 are outside the battery's
- * population, since the walker's `-segments.is.md` suffix filter excludes parenthesized
- * variants. They are unexamined. Widening the filter moves every corpus count in the test
- * file, so that is logged to the active register, not done here.
+ * ⚠️ LIVE RELEVANCE, BOUNDED — AND THE BOUND IS A PROPERTY OF THE TEST WALKER, NOT OF THE
+ * RUNTIME. 7 files on disk carry `{{SEG:` (chemistry `ch05/m6872{4,6,7}-segments(b|c|d).is.md`)
+ * and all 7 sit outside `mtOutputSegmentFiles`, whose `-segments.is.md` suffix filter excludes
+ * parenthesized variants. **So the 0-of-207 base rate covers the TEST population, and Plan C's
+ * loader is unwritten and under no obligation to use that filter.** A loader that walks the
+ * directory plainly feeds those 7 files to this now-blocking leg and gets 7 hard halts — which
+ * may well be right, since inject cannot read them either, but it is a consequence to choose
+ * deliberately rather than discover. Widening the test walker instead moves every corpus count
+ * in the Task 8 suite. Recorded in the active register (§C82), not decided here.
  *
  * @param {string} content raw segment-file text
  * @returns {Array<{segmentId:string,moduleId:string,segmentType:string,elementId:string,content:string}>}

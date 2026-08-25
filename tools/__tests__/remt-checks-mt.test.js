@@ -375,6 +375,23 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     });
   });
 
+  it('KEEPS the raw leg — the spaced COMMENT form, the third token-preserving damage shape', async () => {
+    // ⚠️ THE THIRD FORM, ASSERTED RATHER THAN CLAIMED. The raw leg is kept because it
+    // catches damage that PRESERVES the `SEG:` token, and three shapes do: an eaten `-->`,
+    // the spaced mustache form, and this one — `<!-- SEG: ` (space AFTER the colon, which
+    // `seg-markers.cjs`'s `SEG_MARKER` rejects while tolerating space BEFORE `SEG:`).
+    // The first two are pinned above; this one appeared only in A2c's fixtures, so A2b's
+    // coverage of it was stated in a commit message and verified nowhere.
+    const spacedComment = isText68663.replace('<!-- SEG:', '<!-- SEG: ', 1);
+    const r = await runCheck(A2b, { isText: spacedComment, segText: enText68663 });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toMatchObject({
+      rawTokens: 11,
+      parsed: 10,
+      unparsed: 1,
+    });
+  });
+
   it('SKIPPED, never a silent PASS, when the ctx cannot supply the cross-side leg — L33/L41', async () => {
     // 🔴 §C82 L33/L41: A LEG THE ctx DOES NOT CARRY IS ITSELF A FINDING. This exact rule
     // was closed in E9 and shipped broken again in G5 three commits later, so it is
