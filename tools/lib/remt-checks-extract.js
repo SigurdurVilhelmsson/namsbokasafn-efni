@@ -935,11 +935,24 @@ function entryName(entry) {
  * every output whose target already exists, so flagging them made E6 unable to pass any
  * re-extract. What remains a finding is an ORPHAN backup — one whose base file this run did
  * not write — because that is a backup nothing accounts for.
- * ⚠️ THE COUNT IS STILL REPORTED. The §C82 L29 hazard is unchanged and is the loader's:
- * the two kept books' generated trees hold **14,634** historical backups accumulated
- * 2026-03-08 → 2026-08-12, and a tree-scoped listing hands E6 thousands of orphans. Scoping
- * is Plan C's driver's job; what changed here is that a CORRECTLY scoped listing can now
- * pass, which it previously could not.
+ * ⚠️ AND THE ACCOUNTING DISCHARGED §C82 L29's TREE-SCOPE HAZARD AS A SIDE EFFECT — MEASURED,
+ * because the earlier draft of this comment asserted the opposite. It said a tree-scoped
+ * listing "hands E6 thousands of orphans". It does not: a tree listing contains the base
+ * files too, so every backup resolves. Over the real trees — chemistry `02-structure`
+ * 12,035 files PASS (all 11,500 backups accounted for), chemistry `02-for-mt` 3,405 FAIL on
+ * the 49 parenthesised duplicates ONLY, both organic trees PASS — **14,634 backups,
+ * 0 orphans corpus-wide.** Scoping the listing to one run is still what the check is
+ * specified against and still worth doing, but it is no longer load-bearing for correctness.
+ *
+ * 📌 WHAT THIS GATE CAN ACTUALLY FIRE ON, stated plainly because a gate with no reachable
+ * trigger is indistinguishable from one that does not exist:
+ *   ① the 49 parenthesised duplicates — live in the tree, so E6 has a NATURAL known-bad
+ *     fixture, which is what lets it stay blocking under the spec's own rule. Nothing in
+ *     `cnxml-extract.js` mints such a name; they arrived with the `3c39e161` rename.
+ *   ② an ORPHAN backup — 0 today and structurally hard to produce, since `safeWrite` writes
+ *     the backup and the file together. Reachable when a base file is later renamed or
+ *     deleted while its backup survives, which is exactly what `3c39e161` did.
+ *   ③ an unreadable listing entry — a loader defect (see `entryName`).
  *
  * `examined` is the number of entries classified — content-keyed per §C82 L6, so an empty
  * or absent listing counts 0 and reads SKIPPED rather than reporting a clean sweep of nothing.

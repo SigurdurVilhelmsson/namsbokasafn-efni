@@ -16,6 +16,8 @@
  * broken detector returns. The planted control is what separates the two readings.
  */
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
 import { runCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
 import {
   E1,
@@ -27,7 +29,13 @@ import {
   backupSourceOf,
   countUnderlineElements,
 } from '../lib/remt-checks-extract.js';
-import { modulesWithSegments, srcText, segTextOf, modCtx } from './helpers/remt-corpus.js';
+import {
+  modulesWithSegments,
+  srcText,
+  segTextOf,
+  modCtx,
+  REPO_ROOT as ROOT,
+} from './helpers/remt-corpus.js';
 
 /**
  * A minimal well-formed module, built so a planted segment string can reach E1's judgement.
@@ -314,6 +322,42 @@ describe('E6 — unexpected files emitted by the extract', () => {
     expect(junk.findings).toHaveLength(3);
     expect(junk.findings.every((f) => f.kind === 'unexpected-file:unreadable-entry')).toBe(true);
     expect(junk.examined).toBe(3);
+  });
+
+  it('PASSES the real generated trees — the tree-scope false halt is discharged, not merely scoped away', async () => {
+    // 🔴 THIS PINS §C82 L29's DISCHARGE. The first draft of E6 (and of L29) asserted that a
+    // tree-scoped listing "hands E6 thousands of orphans". It does not — a tree listing
+    // contains the base files too, so every backup resolves. Corpus-wide: 14,634 backups,
+    // 0 orphans. If a future change reintroduces the false halt, this goes red.
+    // ⚠️ PREMISE PIN over generated trees (§C82 L20) — these counts move at the re-extract.
+    const walk = (d, out = []) => {
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        const p = path.join(d, e.name);
+        e.isDirectory() ? walk(p, out) : out.push(e.name);
+      }
+      return out;
+    };
+    const listing = (b, tree) => walk(path.join(ROOT, 'books', b, tree));
+
+    const structure = await runCheck(E6, {
+      emittedFiles: listing('efnafraedi-2e', '02-structure'),
+    });
+    expect(structure.examined).toBeGreaterThan(10000); // control: an empty walk must not pass
+    expect(structure.verdict).toBe(VERDICT.PASS);
+
+    for (const b of ['lifraen-efnafraedi']) {
+      for (const tree of ['02-for-mt', '02-structure']) {
+        const r = await runCheck(E6, { emittedFiles: listing(b, tree) });
+        expect(r.verdict, `${b}/${tree}`).toBe(VERDICT.PASS);
+      }
+    }
+
+    // Chemistry's 02-for-mt is the one FAIL, and ONLY on the 49 duplicates — 0 orphan backups.
+    const forMt = await runCheck(E6, { emittedFiles: listing('efnafraedi-2e', '02-for-mt') });
+    expect(forMt.verdict).toBe(VERDICT.FAIL);
+    const kinds = {};
+    for (const f of forMt.findings) kinds[f.kind] = (kinds[f.kind] || 0) + 1;
+    expect(kinds).toEqual({ 'unexpected-file:duplicate': 49 });
   });
 
   it('backupSourceOf recognises every backup spelling, and nothing else', () => {
