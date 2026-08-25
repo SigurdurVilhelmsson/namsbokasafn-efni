@@ -339,11 +339,25 @@ describe('E6 — unexpected files emitted by the extract', () => {
     };
     const listing = (b, tree) => walk(path.join(ROOT, 'books', b, tree));
 
+    // 🔴 THE BACKUP FILES ARE GITIGNORED, SO CI AND A DEV BOX ARE DIFFERENT POPULATIONS —
+    // MEASURED, and it turned this test red on PR #416 while `npm test` was green locally.
+    // `.gitignore:18-20` hides all three backup shapes, so a fresh checkout holds 535 tracked
+    // files under chemistry's `02-structure` where this machine has 12,035. ▶ The INVARIANT is
+    // asserted unconditionally; the MAGNITUDE only where backups actually exist — and the branch
+    // keys on the gate's own reported count, so it cannot silently degrade into asserting nothing.
     const structure = await runCheck(E6, {
       emittedFiles: listing('efnafraedi-2e', '02-structure'),
     });
-    expect(structure.examined).toBeGreaterThan(10000); // control: an empty walk must not pass
+    expect(structure.examined).toBeGreaterThan(500); // control: an empty walk must not pass
     expect(structure.verdict).toBe(VERDICT.PASS);
+
+    const accounted = Number(structure.message.match(/(\d+) backups accounted for/)?.[1] ?? 0);
+    if (accounted > 0) {
+      // A tree that has actually run the extractor: every backup is accounted for by a file the
+      // same listing contains, which is precisely the §C82 L32 repair.
+      expect(structure.examined).toBeGreaterThan(10000);
+      expect(structure.findings).toHaveLength(0);
+    }
 
     for (const b of ['lifraen-efnafraedi']) {
       for (const tree of ['02-for-mt', '02-structure']) {

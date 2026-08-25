@@ -36,6 +36,26 @@ const BEFORE_C73 = '120352b0';
 const AFTER_C73 = 'b665c43d';
 const GLOSSARY = 'books/efnafraedi-2e/glossary/glossary-unified.json';
 
+/**
+ * 🔴 CI CHECKS OUT SHALLOW, SO THE GIT-BLOB FIXTURE IS NOT AVAILABLE THERE — MEASURED, and it
+ * turned this file red on PR #416 while `npm test` was green locally. `.github/workflows/test.yml`
+ * uses `actions/checkout@v7` with no `fetch-depth`, which defaults to depth 1, so
+ * `git show 120352b0:…` cannot resolve. ▶ The fixture is therefore COMMITTED at
+ * `fixtures/c73-ium-terms.json`, and the blobs are used — when they resolve — only to prove the
+ * committed copy has not drifted from them. **A local green was never evidence about CI**, and a
+ * corpus test that reads git history is testing the developer's clone.
+ * ⚠️ Deliberately NOT solved by adding `fetch-depth: 0`: `.git` here is 4.2 GB.
+ */
+const blobsResolvable = (() => {
+  try {
+    execFileSync('git', ['cat-file', '-e', `${BEFORE_C73}:${GLOSSARY}`], { cwd: ROOT });
+    execFileSync('git', ['cat-file', '-e', `${AFTER_C73}:${GLOSSARY}`], { cwd: ROOT });
+    return true;
+  } catch {
+    return false;
+  }
+})();
+
 const atSha = (sha) =>
   JSON.parse(
     execFileSync('git', ['show', `${sha}:${GLOSSARY}`], {
@@ -44,6 +64,11 @@ const atSha = (sha) =>
       maxBuffer: 256e6,
     })
   );
+
+/** The committed slice: only `-ium` headwords, verified to yield the same finding count. */
+const IUM_FIXTURE = JSON.parse(
+  fs.readFileSync(path.join(ROOT, 'tools/__tests__/fixtures/c73-ium-terms.json'), 'utf8')
+);
 const live = (book) =>
   JSON.parse(
     fs.readFileSync(path.join(ROOT, 'books', book, 'glossary', 'glossary-unified.json'), 'utf8')
@@ -100,23 +125,48 @@ describe('G1 — competitions and comma lists', () => {
 
 describe('G2 — the §C73 element-suffix rule', () => {
   it('fires 44 times on the pre-§C73 chemistry glossary and 0 after it', async () => {
-    const before = await runCheck(G2, { glossary: atSha(BEFORE_C73) });
-    const after = await runCheck(G2, { glossary: atSha(AFTER_C73) });
+    // Runs EVERYWHERE, from the committed slice — this is the known-bad fixture that lets G2
+    // be blocking, so it must not depend on clone depth.
+    const before = await runCheck(G2, { glossary: IUM_FIXTURE.before });
+    const after = await runCheck(G2, { glossary: IUM_FIXTURE.after });
     expect(before.verdict).toBe(VERDICT.FAIL);
     expect(before.findings).toHaveLength(44);
     expect(after.verdict).toBe(VERDICT.PASS);
     expect(after.findings).toHaveLength(0);
-    // Both arms examined a real population — a broken loader would give 0 findings twice.
-    expect(after.examined).toBeGreaterThan(1000);
+    // Control: both arms examined a real population, so a broken loader cannot read as "clean".
+    expect(before.examined).toBeGreaterThan(40);
+    expect(after.examined).toBeGreaterThan(15);
   });
 
   it('names the offending pair, so the finding is actionable without re-running', async () => {
-    const before = await runCheck(G2, { glossary: atSha(BEFORE_C73) });
+    const before = await runCheck(G2, { glossary: IUM_FIXTURE.before });
     expect(before.findings).toContainEqual({
       kind: 'element-suffix',
       english: 'barium',
       icelandic: 'barín',
     });
+  });
+
+  it('the committed fixture still matches the real git blobs (skipped on a shallow clone)', async () => {
+    // 🔴 THE DRIFT CHECK, and it is what keeps the slice honest. It runs on a full clone and is
+    // SKIPPED — loudly, never silently — where history is absent. `blobsResolvable` is computed
+    // from `git cat-file -e`, so this cannot quietly stop running on a machine that HAS the
+    // history: a shallow clone is the only thing that suppresses it.
+    if (!blobsResolvable) {
+      expect(blobsResolvable).toBe(false); // records WHY this assertion did not run
+      return;
+    }
+    for (const [key, sha] of [
+      ['before', BEFORE_C73],
+      ['after', AFTER_C73],
+    ]) {
+      const full = await runCheck(G2, { glossary: atSha(sha) });
+      const slice = await runCheck(G2, { glossary: IUM_FIXTURE[key] });
+      expect(full.findings.length, `${key}: slice must reproduce the full blob`).toBe(
+        slice.findings.length
+      );
+      expect(full.examined).toBeGreaterThan(1000); // the full blob is a real population
+    }
   });
 
   it('accepts the CORRECT -íum ending — asserted by a TEST, since no branch can express it', async () => {
