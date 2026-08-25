@@ -121,7 +121,8 @@ import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
  * the child's own side; see the `probe` helper's comment for why the clear must
  * follow an import rather than precede it.
  * ─────────────────────────────────────────────────────────────────────────── */
-import './lib/remt-checks-extract.js'; // Tasks 3-4 — E2, E4, E5, E7 (tier 1)
+import './lib/remt-checks-glossary.js'; // Task 7 — G1-G5 (tier 0)
+import './lib/remt-checks-extract.js'; // Tasks 3-6 — E1-E7, E9 (tier 1)
 
 /** Tiers the battery defines: 0 glossary · 1 extract · 2 MT · 3 output · 4 chapter. */
 export const TIER_MIN = 0;
