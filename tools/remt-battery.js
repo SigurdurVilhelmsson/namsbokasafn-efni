@@ -29,7 +29,16 @@
  *   @property {object} [provenance]   the parsed sidecar             (Task 9: A4/A8)
  *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G4)
  *   @property {string} [payloadText]  raw glossary bytes             (Task 7: G5)
- *   @property {string} [mtOutputPath] path, for the .locked sibling  (Task 6: E9)
+ *   @property {boolean}  [locked]      from isMtLocked() — NOT fs.existsSync (Task 6: E9)
+ *   @property {string[]} [handEdits]   hand-edit commits under 02-mt-output    (Task 6: E9)
+ *   @property {object[]} [inputs]      [{path, exists, bytes}]                 (Task 6: E9)
+ *   @property {boolean}  [force]       --force was passed                      (Task 6: E9)
+ *   @property {object}   [costEstimate] {isk, withForce} from --force --dry-run (Task 6: E9)
+ *   @property {object}   [costBand]    optional {minIsk, maxIsk}               (Task 6: E9)
+ *                                     ⚠️ E9 takes VALUES, not a path: leg 5's estimate
+ *                                     comes from `api-translate --force --dry-run`, which
+ *                                     costs money and which no test may reach — so the
+ *                                     driver must produce it and the gate stays pure.
  *   @property {string[]} [emittedFiles] filenames the extract emitted (Task 5: E6)
  *                                     ⚠️ A LISTING, NOT A PATH — gates are pure, so the
  *                                     loader walks the directory. It must scope the list

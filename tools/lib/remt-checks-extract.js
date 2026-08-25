@@ -883,7 +883,197 @@ export const E6 = defineCheck({
   },
 });
 
-export const EXTRACT_CHECKS = [E1, E2, E3, E4, E5, E6, E7];
+/**
+ * The five legs of the E9 pre-flight, in the order the spec lists them. Exported so the
+ * loader, the tests and any future driver name them from one place rather than by string
+ * literal in three.
+ */
+export const E9_LEGS = Object.freeze(['locked', 'handEdits', 'inputs', 'force', 'cost']);
+
+/**
+ * E9 — the pre-MT pre-flight. Five independent legs, every one of which has actually gone
+ * wrong on this project at least once, and all five gating a step that spends money.
+ *
+ * ── WHY IT IS PURE, AND WHY LEG 5 SETTLES THAT ARGUMENT RATHER THAN TASTE ──
+ * Plan B's Task 6 sketch passes `{mtOutputPath, force}` and lets the gate call `isMtLocked`,
+ * stat its inputs and shell out for a cost estimate. Global Constraint 5 forbids that in
+ * general ("gates are pure … file reading happens in the CLI or in Plan C's driver"), but the
+ * decisive argument is specific: leg 5's estimate comes from `api-translate.js --force
+ * --dry-run`, and this repo's test conventions forbid any test path reaching that tool
+ * because it costs real money. A gate that cannot be exercised in a test is not a gate. Once
+ * the driver must supply leg 5, supplying the other four is the consistent choice, and E7
+ * (Task 4) already set the precedent by taking pre-built snapshots.
+ *
+ * 🔴 `examined` IS THE NUMBER OF LEGS WHOSE INPUT WAS ACTUALLY SUPPLIED — NOT 5. Plan B's own
+ * Task 6 test asserts `expect(r.examined).toBe(5)` against a ctx carrying `{mtOutputPath:
+ * '/nonexistent/m1.is.md', force: true}`, i.e. a CONSTANT over a ctx holding one real input.
+ * That is the §C82 L6 defect verbatim, and `tools/remt-battery.js`'s own ctx docstring
+ * already names this exact test as the anti-pattern: a gate reporting a fixed leg count
+ * "reports PASS with examined 5 over a ctx carrying nothing, and the CLI exits 0". Keyed to
+ * supplied inputs instead, a ctx carrying nothing examines 0 and cannot read PASS.
+ *
+ * 🔴 AND A MISSING LEG IS ITSELF A FINDING, WHICH IS THE OTHER HALF OF THE SAME REPAIR.
+ * Counting only supplied legs would, on its own, let a ctx carrying `{force: true}` report
+ * PASS at examined 1 — a pre-flight that checked one leg of five and waved a paid module
+ * through. So every leg the ctx does not carry is reported as `kind: 'leg-not-checked'`. A
+ * pre-flight that cannot check something must never pass it. ⚠️ This is §C82 L22 applied
+ * before the fact rather than after: re-keying `examined` away from a constant removes an
+ * accidental protection (the constant at least guaranteed all five were considered), so the
+ * unit change and the missing-leg finding are a MATCHED PAIR and neither ships alone.
+ *
+ * ── THE LEGS, AND THE TRAP IN EACH ──
+ *
+ * 1. `locked` — a `.locked` sibling means an editor's baseline is protected. ⚠️ MUST BE
+ *    PRODUCED BY `isMtLocked` (`tools/lib/mt-lock.cjs`), whose fail-safe is that an
+ *    existing-but-UNREADABLE marker counts as locked. A loader substituting a bare
+ *    `fs.existsSync` silently discards that; the gate cannot see the difference, so it is
+ *    stated as the loader's contract. ▶ A non-boolean `locked` is treated as NOT CHECKED
+ *    rather than as "not locked" — the whole point, since the permissive reading of a
+ *    forgotten leg is the one that clobbers an edited baseline.
+ *    🔴 The leg matters even though in-scope live locks are currently ZERO: `cnxml-extract.js`
+ *    is not lock-aware while `api-translate.js` is (§C110), so a surviving lock splits the
+ *    vintage INSIDE one module and nothing else reports it. E9 must DETECT the state, never
+ *    assume Phase 2.1 was done — the clearing commit is on `main` but a box that has not
+ *    pulled it still holds all seven.
+ *
+ * 2. `handEdits` — commits that hand-edited the READ-ONLY `02-mt-output` baseline. This is
+ *    the only witness that a module's MT output was touched by hand, and re-translating over
+ *    one destroys work. ⚠️ CLASSIFY BY PATH, THEN BY DIFF — NEVER BY COMMIT SUBJECT:
+ *    `827424da` carries a `fix(…)` subject and is a re-translation, not a hand edit, while a
+ *    real hand repair on this project said `data(…)`. The classification is the loader's;
+ *    what the gate asserts is that the list it was handed is empty.
+ *
+ * 3. `inputs` — every expected input exists and is non-empty. A zero-byte input is the
+ *    dangerous shape rather than a missing one: it exists, so an existence check passes, and
+ *    the MT is then asked to translate nothing at full price.
+ *
+ * 4. `force` — the loop always re-translates over existing output, so `--force` is mandatory.
+ *    Anything other than exactly `true` is a finding.
+ *
+ * 5. `cost` — the estimate must come from `--force --dry-run`. 🔴 A BARE `--dry-run` REPORTS
+ *    `~0 ISK` ONCE OUTPUT EXISTS — a wrong answer that looks like an answer, and the reason
+ *    this leg encodes its provenance rather than trusting a number. `costEstimate.withForce`
+ *    must be exactly `true`; a number produced any other way is refused even when it looks
+ *    reasonable. An optional `costBand` `{minIsk, maxIsk}` bounds it when the caller knows
+ *    what the module should cost.
+ */
+export const E9 = defineCheck({
+  id: 'E9',
+  tier: 1,
+  blocking: true,
+  version: 1,
+  run: (ctx) => {
+    const c = ctx || {};
+    const findings = [];
+    let examined = 0;
+
+    const notChecked = (leg, why) => findings.push({ kind: 'leg-not-checked', leg, why });
+
+    // Leg 1 — the .locked sibling.
+    if (typeof c.locked === 'boolean') {
+      examined++;
+      if (c.locked) {
+        findings.push({
+          kind: 'preflight',
+          leg: 'locked',
+          detail: 'a .locked sibling protects this MT baseline — re-translating would clobber it',
+        });
+      }
+    } else {
+      notChecked('locked', 'ctx.locked must be a boolean produced by isMtLocked()');
+    }
+
+    // Leg 2 — hand edits under the read-only 02-mt-output tree.
+    if (Array.isArray(c.handEdits)) {
+      examined++;
+      for (const commit of c.handEdits) {
+        findings.push({ kind: 'preflight', leg: 'handEdits', commit });
+      }
+    } else {
+      notChecked('handEdits', 'ctx.handEdits must be an array of hand-edit commits (may be empty)');
+    }
+
+    // Leg 3 — every expected input exists and is non-empty.
+    if (Array.isArray(c.inputs)) {
+      examined++;
+      for (const inp of c.inputs) {
+        const path = inp && inp.path ? String(inp.path) : '(unnamed)';
+        if (!inp || inp.exists !== true) {
+          findings.push({ kind: 'preflight', leg: 'inputs', path, detail: 'missing' });
+        } else if (!Number.isFinite(inp.bytes) || inp.bytes <= 0) {
+          // Deliberately louder than "missing": a zero-byte input passes an existence check
+          // and buys a full-price translation of nothing.
+          findings.push({ kind: 'preflight', leg: 'inputs', path, detail: 'empty' });
+        }
+      }
+    } else {
+      notChecked('inputs', 'ctx.inputs must be an array of {path, exists, bytes}');
+    }
+
+    // Leg 4 — --force is mandatory.
+    if (typeof c.force === 'boolean') {
+      examined++;
+      if (c.force !== true) {
+        findings.push({
+          kind: 'preflight',
+          leg: 'force',
+          detail: '--force is required: the loop always re-translates over existing output',
+        });
+      }
+    } else {
+      notChecked('force', 'ctx.force must be a boolean');
+    }
+
+    // Leg 5 — the cost estimate, and where it came from.
+    if (c.costEstimate != null && typeof c.costEstimate === 'object') {
+      examined++;
+      const { isk, withForce } = c.costEstimate;
+      if (withForce !== true) {
+        findings.push({
+          kind: 'preflight',
+          leg: 'cost',
+          detail:
+            'the estimate was not produced with --force --dry-run: a bare --dry-run reports ~0 ISK once output exists',
+        });
+      } else if (!Number.isFinite(isk)) {
+        findings.push({ kind: 'preflight', leg: 'cost', detail: `unusable estimate ${isk}` });
+      } else {
+        const band = c.costBand;
+        if (band && (isk < band.minIsk || isk > band.maxIsk)) {
+          findings.push({
+            kind: 'preflight',
+            leg: 'cost',
+            detail: `estimate ${isk} ISK outside band ${band.minIsk}-${band.maxIsk}`,
+          });
+        }
+      }
+    } else {
+      notChecked('cost', 'ctx.costEstimate must be {isk, withForce} from --force --dry-run');
+    }
+
+    // A ctx carrying none of the five is a LOADER problem, not a content one, and saying so
+    // is the same idiom `skipIfCtxUnusable` uses for the per-module gates. It still halts —
+    // E9 is blocking and a SKIPPED blocking check exits 1 — but the message names the cause
+    // instead of reporting five content findings against a module nobody looked at.
+    if (examined === 0) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message: `E9: ctx carries none of the five pre-flight inputs (${E9_LEGS.join(', ')})`,
+      };
+    }
+
+    return {
+      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
+      examined,
+      findings,
+      message: `${examined} of ${E9_LEGS.length} pre-flight legs checked, ${findings.length} findings`,
+    };
+  },
+});
+
+export const EXTRACT_CHECKS = [E1, E2, E3, E4, E5, E6, E7, E9];
 
 // 🔴 REGISTRATION HAPPENS AT IMPORT TIME, AND ONLY THE CLI IMPORTS THIS MODULE.
 // Nothing else puts a check in the REGISTRY — measured (§C82 L3): no task in either
