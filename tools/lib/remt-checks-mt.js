@@ -8,7 +8,9 @@
  *
  * ── THE ctx THIS TIER TAKES, AND THE ONE KEY IT DOES NOT HAVE ─────────────────────────
  * `isText` — the `02-mt-output` IS segment file (A1, A6, A2b, A2c)
- * `segText` — the `02-for-mt` EN segment file (A1 only; it is a two-sided comparison)
+ * `segText` — the `02-for-mt` EN segment file (A1 AND A2b; both are two-sided). This
+ *             line read "A1 only" until A2b acquired its cross-side leg — when a check
+ *             starts consuming a ctx key, this list is part of the change.
  *
  * 🔴 THERE IS NO `cnxml` IN THE TIER-2 ctx, AND THAT CHANGES WHAT A6 IS ALLOWED TO CLAIM.
  * The CLI's ctx typedef lists `cnxml` for Tier 1 (E2/E4) and `isText` for Tier 2 (A2/A6);
@@ -74,9 +76,35 @@ export { LEGACY_MUSTACHE_RE as A6_MUSTACHE_RE, LEGACY_PLUSPLUS_RE as A6_PLUSPLUS
  *   3. `normalizeWraps`                 — joins single newlines, which is what makes a
  *      record's `content` the EDITOR-VISIBLE text rather than the on-disk wrap.
  *
- * ✅ This is not a different parser from the one injection uses: `tools/cnxml-inject.js`
- * imports `SEG_MARKER`/`parseSegmentsMap` from the same `seg-markers.cjs`, so A2b judges
- * the very recognizer that will later read these files.
+ * ── THE IDENTITY THIS PORT HAS, AND THE ONE IT DOES NOT ───────────────────────────────
+ * 🔴 THIS DOCSTRING USED TO CLAIM A2b "judges the very recognizer that will later read
+ * these files". THAT IS FALSE FOR THE MUSTACHE FORM, AND MEASURABLY SO. There are two
+ * different identities here and the old text collapsed them:
+ *   ✅ HOLDS   vs `server/services/segmentParser.js` `parseSegments` — record-for-record,
+ *              on the HTML-comment form AND the mustache form, because the original does
+ *              the same normalization. That is the equivalence the test pins, and step 1
+ *              is REQUIRED for it.
+ *   ❌ FAILS   vs INJECTION. `tools/cnxml-inject.js` uses `SEG_MARKER`/`parseSegmentsMap`
+ *              from this same `seg-markers.cjs` — with NO mustache normalization. Measured
+ *              on `{{SEG:m1:para:a}}\nhalló\n{{SEG:m1:para:b}}\nheimur\n`: this port
+ *              returns **2** records, inject's `parseSegmentsMap` returns **0**, and A6,
+ *              A2b (pre-fix) and A2c ALL passed the file.
+ * ▶ SO THE NORMALIZATION IS WHAT MAKES THE PORT FAITHFUL AND WHAT MAKES IT BLIND, in that
+ * order, and A2b needs the `inject-dialect` leg below to see past it. Do NOT remove step 1
+ * to close the gap: it would break the AGPL equivalence pin, which is the only evidence
+ * this port still tracks the code it was copied from.
+ *
+ * ⚠️ SEVERITY, TRACED RATHER THAN ASSUMED: this fails LATE-LOUD, not reader-silent.
+ * `tools/cnxml-inject.js:5040` refuses a module whose injection is incomplete
+ * (`!result.report.complete && !args.allowIncomplete` → `SKIPPED — incomplete injection`),
+ * so a mustache file reaches inject and is refused per module rather than publishing empty
+ * prose. ⚠️ `--allow-incomplete` turns that back into a write, which is why the gate is
+ * still worth having upstream of it.
+ * ⚠️ LIVE RELEVANCE, BOUNDED: 7 files on disk carry `{{SEG:` — chemistry
+ * `ch05/m6872{4,6,7}-segments(b|c|d).is.md` — and ALL 7 are outside the battery's
+ * population, since the walker's `-segments.is.md` suffix filter excludes parenthesized
+ * variants. They are unexamined. Widening the filter moves every corpus count in the test
+ * file, so that is logged to the active register, not done here.
  *
  * @param {string} content raw segment-file text
  * @returns {Array<{segmentId:string,moduleId:string,segmentType:string,elementId:string,content:string}>}
@@ -85,6 +113,17 @@ export function parseSegmentsMit(content) {
   const normalized = String(content).replace(/\{\{SEG:([^}]+)\}\}/g, '<!-- SEG:$1 -->');
   return parseSegmentRecords(normalized).map((r) => ({ ...r, content: normalizeWraps(r.content) }));
 }
+
+/**
+ * The mustache SEG dialect `{{SEG:…}}` — a marker THIS PORT reads and INJECT does not.
+ *
+ * ⚠️ DELIBERATELY THE BARE TOKEN, NOT A WELL-FORMED-MARKER PATTERN. The question this leg
+ * asks is "does the file carry the dialect inject cannot read", and a malformed mustache
+ * marker is no more readable to inject than a well-formed one. It also makes the leg fire
+ * on the spaced mustache form `{{SEG: …}}`, which is correct: that one is unreadable to
+ * BOTH parsers.
+ */
+export const MUSTACHE_SEG_RE = /\{\{SEG:/g;
 
 /**
  * The spaced `<!-- SEG: ` form — a marker that a human reads as a marker and the parser
@@ -108,7 +147,12 @@ export const SPACED_SEG_RE = /<!--\s*SEG:\s+/g;
  * recognisable as one: an eaten `-->`, a newline inside the id, the spaced HTML-comment
  * form, and the spaced MUSTACHE form `{{SEG: …}}` — which is invisible to A6 (its mustache
  * pattern matches only `i|b|term|fn`) and to A2c (which matches only the comment form), so
- * A2b is its ONLY detector.
+ * A2b is its only detector.
+ * ⚠️ THAT SENTENCE SAID "A2b's ONLY detector" UNTIL A2b GREW A THIRD LEG, and a comment
+ * that generalises past its code is how a gap survives review. Precisely: within A2b, the
+ * spaced mustache form now trips BOTH this raw leg (it does not parse) and the
+ * `inject-dialect` leg (it carries `{{SEG:`). Across the battery, A2b remains the only
+ * check that sees it at all.
  *
  * ⚠️ THE FALSE-POSITIVE DIRECTION, STATED: a literal `SEG:` inside translated PROSE would
  * make this blocking check halt a paid run. Measured 2026-08-25 over 207 live IS segment
@@ -299,7 +343,7 @@ export const A6 = defineCheck({
  * lost segment is appended to its predecessor, and injection then fills one element with
  * two segments' worth of prose. Nothing downstream reports anything.
  *
- * ── TWO LEGS, AND NEITHER SUBSUMES THE OTHER ──────────────────────────────────────────
+ * ── THREE LEGS, AND NO ONE OF THEM SUBSUMES ANOTHER ───────────────────────────────────
  * 🔴 THE SINGLE-LEG VERSION OF THIS CHECK WAS MEASURED TO WAVE THROUGH THE EXACT DAMAGE
  * IT EXISTS TO CATCH, AND SO DID THE OTHER TWO BLOCKING CHECKS BESIDE IT. On
  * `ch01/m68663` (11 records), corrupting ONE `<!-- SEG:` to `<!-- SEG :` — a space BEFORE
@@ -319,6 +363,11 @@ export const A6 = defineCheck({
  *                        still trip it.
  *   leg `cross-side`     parsed EN records vs parsed IS records. Catches damage that
  *                        DESTROYS the token, which leg 1 structurally cannot see.
+ *   leg `inject-dialect` `{{SEG:` present at all. Catches the file that parses CLEANLY on
+ *                        both count legs and that `cnxml-inject.js` still cannot read,
+ *                        because this port normalizes the mustache dialect and inject's
+ *                        `parseSegmentsMap` does not. See `parseSegmentsMit` above for the
+ *                        measured two-parser disagreement (port 2, inject 0).
  *
  * ⚠️ WHAT LEG 2 IS ACTUALLY FOR, STATED HONESTLY — IT IS NOT THE MT-TIME DETECTOR.
  * Measured: `validateMarkers` (`tools/api-translate.js:280`) counts `<!-- SEG:` and this
@@ -371,6 +420,21 @@ export const A2b = defineCheck({
         rawTokens,
         parsed,
         unparsed: rawTokens - parsed,
+      });
+    }
+    // 🔴 LEG 3: THE FILE PARSES, AND INJECT STILL CANNOT READ IT. Both legs above compare
+    // COUNTS, and the mustache dialect is invisible to both because `parseSegmentsMit`
+    // normalizes it before either count is formed — so the file reads clean end to end
+    // while `parseSegmentsMap` (what inject actually uses) returns 0. A gate that exists
+    // to protect inject must not pass a file inject cannot read.
+    // ▶ Base rate 0 of 207 IS files and 0 of 207 EN files, measured 2026-08-25, which is
+    // what licences it to block. Premise pin: the re-MT run moves it.
+    const mustacheHits = ctx.isText.match(MUSTACHE_SEG_RE) || [];
+    if (mustacheHits.length > 0) {
+      findings.push({
+        kind: 'mustache-seg-dialect',
+        leg: 'inject-dialect',
+        occurrences: mustacheHits.length,
       });
     }
     if (enParsed !== parsed) {

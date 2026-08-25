@@ -39,6 +39,10 @@ import {
   SPACED_SEG_RE,
 } from '../lib/remt-checks-mt.js';
 import { mtOutputSegmentFiles, enCounterpart } from './helpers/remt-corpus.js';
+// ⚠️ INJECT'S OWN PARSER, imported so the two-parser disagreement is asserted rather than
+// described. `.cjs` under a `"type": "module"` root loads as CommonJS default-only.
+import segMarkers from '../lib/seg-markers.cjs';
+const { parseSegmentsMap } = segMarkers;
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi', 'orverufraedi'];
@@ -417,6 +421,56 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     });
     expect(r.verdict).toBe(VERDICT.SKIPPED);
     expect(r.examined).toBe(0);
+  });
+
+  it('MUST-TRIP — the mustache SEG dialect, which the PORT reads and INJECT cannot', async () => {
+    // 🔴 THE IDENTITY CLAIM THIS LEG EXISTS TO REPAIR. `parseSegmentsMit` FIRST normalizes
+    // `{{SEG:…}}` → `<!-- SEG:… -->`, so it reads a mustache file happily. `cnxml-inject.js`
+    // uses `parseSegmentsMap` from the same shared lib with NO such normalization, and that
+    // returns ZERO. Measured: on these bytes A6, A2b (pre-fix) and A2c ALL passed while the
+    // port saw 2 records and inject saw 0 — a file inject cannot read, passing the gates
+    // that exist to protect inject.
+    const mustache = '{{SEG:m1:para:a}}\nhalló\n{{SEG:m1:para:b}}\nheimur\n';
+    const enPair = '<!-- SEG:m1:para:a -->\nhello\n<!-- SEG:m1:para:b -->\nworld\n';
+
+    // Proven BY VALUE, on the same bytes the check judges — the two parsers disagree.
+    expect(parseSegmentsMit(mustache)).toHaveLength(2);
+    expect(parseSegmentsMap(mustache).size).toBe(0);
+
+    const r = await runCheck(A2b, { isText: mustache, segText: enPair });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((f) => f.leg === 'inject-dialect')).toMatchObject({
+      kind: 'mustache-seg-dialect',
+      occurrences: 2,
+    });
+    // The other two legs are SILENT here — the raw and cross-side counts both read 2,
+    // because the port normalizes. That is exactly why this needs its own leg.
+    expect(r.findings.find((f) => f.leg === 'raw-vs-parsed')).toBeUndefined();
+    expect(r.findings.find((f) => f.leg === 'cross-side')).toBeUndefined();
+  });
+
+  it('PREMISE PIN — 0 mustache-dialect files in the population, so the leg can block', async () => {
+    // 🔴 A GUARD THAT MATCHES NOTHING IS INDISTINGUISHABLE FROM A BROKEN ONE (L44③), so
+    // this zero is only interpretable beside the planted trip above. Measured 2026-08-25:
+    // 0 of 207 IS files and 0 of 207 EN files carry `{{SEG:`.
+    // ⚠️ AND THE ZERO IS A STATEMENT ABOUT THE POPULATION, NOT ABOUT THE TREE. 7 files on
+    // disk DO carry the dialect — `books/efnafraedi-2e/02-mt-output/ch05/m6872{4,6,7}-
+    // segments(b|c|d).is.md` — and every one is OUTSIDE the walker, whose `-segments.is.md`
+    // suffix filter excludes the parenthesized variants. They are unexamined by this
+    // battery, deliberately: widening the filter to reach them moves every corpus count in
+    // this file. Logged to the active register rather than fixed here.
+    let mustacheFiles = 0;
+    let files = 0;
+    for (const b of BOOKS) {
+      for (const f of FILES[b]) {
+        files++;
+        if (read(f).includes('{{SEG:')) mustacheFiles++;
+        const en = enCounterpart(f);
+        if (en && read(en).includes('{{SEG:')) mustacheFiles++;
+      }
+    }
+    expect(files).toBe(207);
+    expect(mustacheFiles).toBe(0);
   });
 
   it('SKIPPED on a missing or wrong-typed isText — L33: a wrong shape is not an empty result', async () => {
