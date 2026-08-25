@@ -8,7 +8,12 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 ## The job, in one line
 
-**Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — 13 tasks, subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
+**Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
+
+> ⏩ **UPDATED 2026-08-25 — TASKS 1-7 ARE DONE, MERGED (PR #416 → `d6c5e38b`) AND DEPLOYED.** Tiers 0
+> and 1 — everything that runs **before money is spent** — are on `main`. **Start at Task 8**
+> (Tier 2's free half: `A1`, `A6`, `A2(b)(c)`). Six Plan B tasks remain, then all 11 of Plan C.
+> **Status is the register's ⏩ RESUME block, not this file.**
 
 ## Read these, in this order, before touching anything
 
@@ -23,8 +28,8 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 | | |
 |---|---|
-| `main` | at **`2166551b`** — PR #411 merged **and deployed**. Both plans, the handoff and the Phase 2.1 lock clearing are all on `main` and on production. |
-| Branch | none — **cut a fresh branch from `main`** for Plan B's code |
+| `main` | at **`d6c5e38b`** — PR #416 merged **and deployed 2026-08-25**, verified by tree diff and a clean fast-forward on prod (`Health: ok`, nothing stranded). Tiers 0+1, both plans, this handoff and the Phase 2.1 lock clearing are all on `main` and on production. |
+| Branch | none — **cut a fresh branch from `main`** (which is at `d6c5e38b`) |
 | Runbook | Phases 0, 1.1, 1.2, **2.1**, **2.2** complete. **3.1 is Plans B + C — this work.** |
 | Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |
@@ -46,6 +51,32 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 - ⚠️ **`grep` here is ugrep**; an escaped-bracket pattern silently returns 0. Use `grep -aF` for literals, always `-a`.
 - ⚠️ **`cd` persists between Bash calls.** A `cd server` cost a failed edit two commands later.
 - ⚠️ **`tools/lib/parseArgs.js` silently drops unknown flags**, and `--output-dir` on the CNXML tools is accepted, documented and **ignored** (§C83). Never run `cnxml-extract/inject/render` from a test — import the function.
+
+## What Tasks 1-7 established that Tasks 8-13 inherit
+
+Read the register's **§C82 L1-L44** before any task — they are numbered findings from executing
+1-7, and several are things a literal transcription of the plan would ship broken. The five that
+generalise furthest:
+
+1. 🔴 **A ruling recorded against ONE check is not a change to the others (L41).** E9's "a leg the
+   ctx does not carry is itself a finding" was fixed at Task 6 and then shipped broken again in G5
+   at Task 7, three commits later. **When an L-item states a RULE, sweep the other tier modules for
+   it.**
+2. 🔴 **Validate the PAYLOAD, not the container (L33/L35).** `Array.isArray(x)` and
+   `typeof x === 'object'` are TYPE tests; both were walked past by an empty array and by a
+   `Dirent`. And in tests, **`[].every(...)` is vacuously true** — assert the COUNT beside the
+   predicate (L37).
+3. 🔴 **When a gate's `blocking` rests on a claim about what the world contains, go read the
+   PRODUCER (L32).** E6 was blocking on the premise that 14,634 backups were history; `safeWrite`
+   mints five per module per run, so the gate could never converge. No test could see it.
+4. 🔴 **Mutation-test the predicate's BREADTH, not only its presence (L39).** A corpus exercising
+   one spelling of an alternation certifies nothing about the others — and mutation testing also
+   found real DEAD CODE behind a comment claiming it was load-bearing.
+5. ⚠️ **A local green is not evidence about CI.** CI checks out **shallow** (no `fetch-depth`), and
+   gitignored artefacts are absent there — two of this branch's tests were measuring the dev box.
+   Verify anything corpus-derived in a `git clone --depth 1`. **And `/tmp` is a 4.9 GB tmpfs**: a
+   scratch clone took it to 97% and produced three `ENOSPC` failures that read exactly like code
+   faults.
 
 ## Acceptance for Plan B as a whole
 
