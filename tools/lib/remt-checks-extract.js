@@ -721,6 +721,7 @@ export const E1 = defineCheck({
  * passing against the list it was written for.
  */
 export const XML_RESIDUE_TAGS = Object.freeze([
+  // The spec's original seven (spec:115, runbook P3).
   'emphasis',
   'term',
   'link',
@@ -728,10 +729,42 @@ export const XML_RESIDUE_TAGS = Object.freeze([
   'para',
   'entry',
   'row',
+  // ⚠️ WIDENED 2026-08-25, AND PRICED FIRST. A detector watching 7 CNXML element names of
+  // ~20 answers "no raw XML survived" while `<media>`, `<list>` or `<title>` residue passes
+  // — and this re-extract cycle is changing exactly those. MEASURED over all 440 committed
+  // EN+IS segment files across the two kept books: the original seven find **0** occurrences
+  // and this widened set also finds **0**, so the widening costs nothing in false halts on a
+  // blocking gate. It buys nothing measurable TODAY either — it is future-proofing, which is
+  // what the spec means by "assume a next tag".
+  'media',
+  'image',
+  'list',
+  'item',
+  'title',
+  'caption',
+  'table',
+  'tgroup',
+  'code',
+  'footnote',
+  'quote',
+  'figure',
+  'section',
+  'exercise',
+  'problem',
+  'solution',
+  'definition',
+  'newline',
 ]);
 
 /** Built from the constant above, so the gate and its tests cannot disagree about the list. */
-export const xmlResidueRe = () => new RegExp(`<(?:${XML_RESIDUE_TAGS.join('|')})\\b`, 'g');
+// ⚠️ `</?` — A CLOSING TAG IS RESIDUE TOO. The original pattern matched openers only, so
+// `leaked close</emphasis>` PASSED a blocking gate: exactly as much angle-bracket noise to
+// the paid MT as an opener, and E3's whole premise is a base rate of 0 and vigilance for the
+// unexpected. No producing path was demonstrated for an ORPHAN closer — the extractor's
+// nested-emphasis leak carries an opener alongside it, which the old pattern already caught
+// — but a detector that watches half of a syntax is half a detector, and the fix is two
+// characters.
+export const xmlResidueRe = () => new RegExp(`</?(?:${XML_RESIDUE_TAGS.join('|')})\\b`, 'g');
 
 /**
  * E3 — no raw CNXML tags survive into a segment file. Extraction is supposed to have turned
@@ -770,7 +803,7 @@ export const E3 = defineCheck({
   id: 'E3',
   tier: 1,
   blocking: true,
-  version: 1,
+  version: 2,
   run: (ctx) => {
     if (typeof ctx?.segText !== 'string' || ctx.segText === '') {
       return {
@@ -783,7 +816,7 @@ export const E3 = defineCheck({
     const hits = ctx.segText.match(xmlResidueRe()) || [];
     const byTag = {};
     for (const h of hits) {
-      const tag = h.slice(1);
+      const tag = h.replace(/^<\/?/, '');
       byTag[tag] = (byTag[tag] || 0) + 1;
     }
     const findings = Object.entries(byTag).map(([tag, occurrences]) => ({
@@ -824,7 +857,66 @@ export const E3 = defineCheck({
 export function classifyEmittedFile(name) {
   const base = String(name).split('/').pop();
   if (/\.bak$/.test(base) || /\.backup(\.|$)/.test(base)) return 'backup';
-  if (/\([a-z]\)\./i.test(base)) return 'duplicate';
+  // ⚠️ `[0-9a-z]{1,3}`, NOT `[a-z]` — the CLASS is "parenthesised duplicate" and a browser
+  // writes `(1)`, `(2)` as readily as the extractor writes `(b)`. MEASURED over 9,537
+  // `01-source` filenames: 5 contain a parenthesis, 4 are `(N)` download duplicates BYTE-
+  // IDENTICAL to an existing original, and 1 is legitimate — `CNX_Chem_11_02_Fe(NO3)3_img.jpg`,
+  // a chemical formula. 🔴 THE `)\.` ANCHOR IS WHAT SEPARATES THEM: a duplicate marker sits
+  // immediately before the extension, while a formula or a figure label
+  // (`arrows(d2)_img.jpg`, `Figure_20_05_06(b)a.jpg`) is followed by more name. Widening the
+  // character class WITHOUT that anchor would false-halt on chemistry filenames — the
+  // direction that costs a paid run.
+  if (/\([0-9a-z]{1,3}\)\./i.test(base)) return 'duplicate';
+  return null;
+}
+
+/**
+ * The file a backup was taken FROM, or null if `name` is not backup-shaped.
+ *
+ * 🔴 THIS EXISTS BECAUSE E6's ORIGINAL PREMISE WAS FALSE, AND THE PREMISE WAS LOAD-BEARING
+ * FOR ITS `blocking: true`. The docstring below used to argue that the 14,634 committed
+ * backups are "HISTORY, not this run's output", so only a badly-scoped listing could fail.
+ * **`tools/lib/safeWrite.js:22-27` copies the existing file to `${path}.backup.${ISO}`
+ * unconditionally — no byte-identical short-circuit — and `cnxml-extract.js` calls it FIVE
+ * times per module (lines 2704, 2709, 2715, 2722, 2729).** So a listing scoped exactly as
+ * E6 demands, of what THIS run emitted, contains five fresh backups for every module that
+ * already had output — which is every module in `02-for-mt` today. ▶ The gate as first
+ * written FAILS the first re-extract of every module, and Tier 1 "loops until clean" never
+ * converges: each repair iteration rewrites the files and mints another five.
+ * ⚠️ The spec's own fixture is evidence FOR this, not against it — "the 2026-08-12 run
+ * reported `??` = none while writing 67 backup files" describes a run that re-extracted 67
+ * existing files. Found by an adversarial review; no test could see it, because every test
+ * supplied its own listing.
+ *
+ * @param {string} base a bare filename
+ * @returns {string|null} the base file's name
+ */
+export function backupSourceOf(base) {
+  let m = /^(.*)\.backup(?:\..*)?$/.exec(base);
+  if (m) return m[1];
+  m = /^(.*)\.\d{4}-\d{2}-\d{2}-\d{4}\.bak$/.exec(base); // CLAUDE.md § File Permissions form
+  if (m) return m[1];
+  m = /^(.*)\.bak$/.exec(base);
+  if (m) return m[1];
+  return null;
+}
+
+/**
+ * One listing entry as a filename, or `null` if it cannot be read as one.
+ *
+ * 🔴 `String(entry)` WAS A SILENT FALSE PASS, AND IT FIRED ON THE MOST IDIOMATIC LOADER.
+ * `fs.readdirSync(dir, { withFileTypes: true })` returns `Dirent` objects; `String(dirent)`
+ * is `"[object Object]"`, which matches neither the backup nor the duplicate pattern — so a
+ * directory full of backups classified as CLEAN, at the correct `examined` count, and the
+ * blocking gate reported a sweep it never performed. Measured on a real directory: the
+ * string listing gave FAIL/2 findings and the Dirent listing gave PASS/0 over the same
+ * three files. ▶ Dirents are accepted on purpose (the loader convention is legitimate), and
+ * anything that is neither a string nor a `{name}` is a FINDING rather than a skip — an
+ * entry the gate cannot read is exactly the shape that must not read as clean.
+ */
+function entryName(entry) {
+  if (typeof entry === 'string') return entry;
+  if (entry && typeof entry.name === 'string') return entry.name; // fs.Dirent
   return null;
 }
 
@@ -835,28 +927,28 @@ export function classifyEmittedFile(name) {
  * `{ scanDir }` and lets the gate walk it; Global Constraint 5 says gates do no I/O and
  * "file reading happens in the CLI or in Plan C's driver", and E7 (Task 4) already set that
  * precedent by taking two pre-built snapshots. Taking a path would also make every test of
- * this gate need a real directory. ▶ So the ctx key is `emittedFiles`, an array of names the
- * loader observed. The ctx typedef in `tools/remt-battery.js` is updated to match.
+ * this gate need a real directory. ▶ So the ctx key is `emittedFiles`, an array of names —
+ * or `Dirent`s — the loader observed. The ctx typedef in `tools/remt-battery.js` matches.
  *
- * 🔴 THE LISTING MUST BE SCOPED TO WHAT *THIS RUN* EMITTED, AND HANDING IT THE TREE HALTS
- * EVERYTHING — MEASURED, and this is the §C82 L9/L17 false-halt class arriving a third time.
- * The spec's fixture is "the 2026-08-12 run wrote 67 backup files". Today's two kept books
- * hold, across their generated trees: chemistry `02-structure` **11,500**, chemistry
- * `02-for-mt` **3,102**, organic `02-structure` **24**, organic `02-for-mt` **8** —
- * **14,634** backup files, plus the 49 duplicates. They accumulated over five months
- * (**2026-03-08 → 2026-08-12**, mtimes), so they are HISTORY, not this run's output. A
- * tree-scoped listing therefore FAILS a blocking gate on every module, forever, for a defect
- * no current run committed. ▶ Scoping is the LOADER's job and Plan C's driver owns it; E6's
- * contribution is to classify what it is handed and to say so loudly here.
+ * 🔴 A BACKUP THAT ACCOMPANIES ITS OWN REWRITTEN FILE IS EXPECTED, NOT UNEXPECTED — see
+ * `backupSourceOf` above for the measurement that forced this. `safeWrite` mints one for
+ * every output whose target already exists, so flagging them made E6 unable to pass any
+ * re-extract. What remains a finding is an ORPHAN backup — one whose base file this run did
+ * not write — because that is a backup nothing accounts for.
+ * ⚠️ THE COUNT IS STILL REPORTED. The §C82 L29 hazard is unchanged and is the loader's:
+ * the two kept books' generated trees hold **14,634** historical backups accumulated
+ * 2026-03-08 → 2026-08-12, and a tree-scoped listing hands E6 thousands of orphans. Scoping
+ * is Plan C's driver's job; what changed here is that a CORRECTLY scoped listing can now
+ * pass, which it previously could not.
  *
- * `examined` is the number of entries classified — content-keyed per §C82 L6, so an empty or
- * absent listing counts 0 and reads SKIPPED rather than reporting a clean sweep of nothing.
+ * `examined` is the number of entries classified — content-keyed per §C82 L6, so an empty
+ * or absent listing counts 0 and reads SKIPPED rather than reporting a clean sweep of nothing.
  */
 export const E6 = defineCheck({
   id: 'E6',
   tier: 1,
   blocking: true,
-  version: 1,
+  version: 2,
   run: (ctx) => {
     const entries = ctx?.emittedFiles;
     if (!Array.isArray(entries)) {
@@ -867,18 +959,53 @@ export const E6 = defineCheck({
         message: 'E6: ctx is missing an emittedFiles array — nothing was listed to examine',
       };
     }
+
+    const named = entries.map((e) => ({ raw: e, name: entryName(e) }));
+    // Files this run actually wrote, by bare name — the denominator for "is this backup
+    // accounted for?". Built before the classification loop so order in the listing is
+    // irrelevant: safeWrite writes the backup first, so a single pass would miss it.
+    const written = new Set(
+      named
+        .filter((n) => n.name !== null && classifyEmittedFile(n.name) === null)
+        .map((n) => n.name.split('/').pop())
+    );
+
     const findings = [];
-    for (const name of entries) {
-      const kind = classifyEmittedFile(name);
-      if (kind) findings.push({ kind: `unexpected-file:${kind}`, file: String(name) });
+    let accountedBackups = 0;
+    for (const { raw, name } of named) {
+      if (name === null) {
+        findings.push({
+          kind: 'unexpected-file:unreadable-entry',
+          file: `<${typeof raw}>`,
+          detail: 'listing entry is neither a string nor a {name} — E6 cannot classify it',
+        });
+        continue;
+      }
+      const base = name.split('/').pop();
+      const kind = classifyEmittedFile(base);
+      if (kind === null) continue;
+      if (kind === 'backup') {
+        const src = backupSourceOf(base);
+        if (src !== null && written.has(src)) {
+          accountedBackups++; // safeWrite doing its job for a file this run rewrote
+          continue;
+        }
+        findings.push({ kind: 'unexpected-file:orphan-backup', file: name });
+        continue;
+      }
+      findings.push({ kind: `unexpected-file:${kind}`, file: name });
     }
-    const backups = findings.filter((f) => f.kind.endsWith('backup')).length;
-    const dups = findings.length - backups;
+
+    const orphans = findings.filter((f) => f.kind.endsWith('orphan-backup')).length;
+    const dups = findings.filter((f) => f.kind.endsWith('duplicate')).length;
+    const unreadable = findings.length - orphans - dups;
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
       examined: entries.length,
       findings,
-      message: `${entries.length} emitted files listed, ${backups} backup-shaped, ${dups} parenthesised duplicates`,
+      message:
+        `${entries.length} emitted files listed, ${accountedBackups} backups accounted for by a file this run wrote, ` +
+        `${orphans} orphan backups, ${dups} parenthesised duplicates, ${unreadable} unreadable entries`,
     };
   },
 });
@@ -961,7 +1088,7 @@ export const E9 = defineCheck({
   id: 'E9',
   tier: 1,
   blocking: true,
-  version: 1,
+  version: 2,
   run: (ctx) => {
     const c = ctx || {};
     const findings = [];
@@ -996,6 +1123,25 @@ export const E9 = defineCheck({
     // Leg 3 — every expected input exists and is non-empty.
     if (Array.isArray(c.inputs)) {
       examined++;
+      if (c.inputs.length === 0) {
+        // 🔴 AN EMPTY LIST IS NOT A CLEAN LEG, AND THIS WAS THE WORST DEFECT IN TIER 1.
+        // `Array.isArray` is a TYPE test where the leg needs a CONTENT test, so `inputs: []`
+        // returned PASS at examined 5 — byte-identical to a ctx carrying a real input, and
+        // clearing `blockingFailures` and `exitCodeFor` alike. That is §C60's founding
+        // incident ("a --module that matched nothing, exit 0") reappearing INSIDE the gate
+        // built to prevent it, and it was inverted on its face: OMITTING `inputs` gave
+        // FAIL/examined 4, while saying "I found nothing" gave PASS. E6 answers the identical
+        // shape the opposite way ("a sweep of nothing is not a clean sweep").
+        // ⚠️ THE FIX IS DELIBERATELY ASYMMETRIC ACROSS THE TWO ARRAY LEGS: `handEdits: []` is
+        // legitimately the GOOD state and must keep counting; only `inputs` requires length.
+        // It cannot false-halt — an empty `inputs` arises only when the loader located
+        // nothing, which is precisely when a halt is wanted.
+        findings.push({
+          kind: 'preflight',
+          leg: 'inputs',
+          detail: 'no expected inputs supplied — the loader discovered nothing to translate',
+        });
+      }
       for (const inp of c.inputs) {
         const path = inp && inp.path ? String(inp.path) : '(unnamed)';
         if (!inp || inp.exists !== true) {
@@ -1035,16 +1181,44 @@ export const E9 = defineCheck({
           detail:
             'the estimate was not produced with --force --dry-run: a bare --dry-run reports ~0 ISK once output exists',
         });
-      } else if (!Number.isFinite(isk)) {
+      } else if (!Number.isFinite(isk) || isk <= 0) {
+        // 🔴 THE LEG CHECKED PROVENANCE AND NEVER THE VALUE, SO `isk: 0` PASSED — THE EXACT
+        // SYMPTOM IT EXISTS TO CATCH. `withForce` is an assertion the gate cannot verify: a
+        // driver whose `--force --dry-run` parse fails and defaults to 0, or which sets the
+        // flag from its own intent rather than from the invocation it actually made, got a
+        // green cost pre-flight over an estimate of nothing. `Number.isFinite(0)` is true, so
+        // 0 and -500 both read as clean estimates. A module with a real segment file cannot
+        // cost 0, and leg 3 already refuses an empty input list — so `isk > 0` cannot
+        // false-halt a module that has anything to translate.
         findings.push({ kind: 'preflight', leg: 'cost', detail: `unusable estimate ${isk}` });
       } else {
         const band = c.costBand;
-        if (band && (isk < band.minIsk || isk > band.maxIsk)) {
-          findings.push({
-            kind: 'preflight',
-            leg: 'cost',
-            detail: `estimate ${isk} ISK outside band ${band.minIsk}-${band.maxIsk}`,
-          });
+        if (band != null) {
+          // 🔴 A SUPPLIED-BUT-UNUSABLE BAND MUST FAIL, NOT STAND DOWN. `isk < undefined` and
+          // `isk > NaN` are both false, so a misspelt key (`{min, max}`), a NaN bound, a
+          // half-specified band or an inverted one silently removed the ONLY value bound on
+          // money — while the operator who supplied it believes a ceiling is enforced.
+          // Over-band spend is the direction denominated in ISK. Measured: a 999,999 ISK
+          // estimate read as inside `{min:100, max:500}` with no finding and no message
+          // change. This is the repo's own parseArgs class (a misremembered key is a no-op,
+          // not an error) and the contract's "no guard may default", in the one leg where the
+          // default costs money — and it is asymmetric with this gate's own `locked`
+          // handling, which already refuses a non-boolean rather than reading it as false.
+          const lo = band.minIsk;
+          const hi = band.maxIsk;
+          if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo > hi) {
+            findings.push({
+              kind: 'preflight',
+              leg: 'cost',
+              detail: `unusable costBand ${JSON.stringify(band)} — expected finite {minIsk, maxIsk} with minIsk <= maxIsk`,
+            });
+          } else if (isk < lo || isk > hi) {
+            findings.push({
+              kind: 'preflight',
+              leg: 'cost',
+              detail: `estimate ${isk} ISK outside band ${lo}-${hi}`,
+            });
+          }
         }
       }
     } else {

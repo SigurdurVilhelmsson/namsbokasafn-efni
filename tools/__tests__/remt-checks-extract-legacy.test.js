@@ -24,6 +24,7 @@ import {
   EXTRACT_CHECKS,
   XML_RESIDUE_TAGS,
   classifyEmittedFile,
+  backupSourceOf,
   countUnderlineElements,
 } from '../lib/remt-checks-extract.js';
 import { modulesWithSegments, srcText, segTextOf, modCtx } from './helpers/remt-corpus.js';
@@ -158,6 +159,10 @@ describe('E3 — raw XML residue in segments', () => {
     // survived. A test derived from the thing under test cannot detect that thing shrinking.
     // ⚠️ INTENTIONAL PIN: the spec says this list "has been widened once already; assume a
     // next tag". A widening SHOULD turn this red — update it in the commit that widens.
+    // ⚠️ WIDENED 2026-08-25 from the spec's original seven, after measuring the cost: the
+    // seven and this set both find 0 occurrences across all 440 committed EN+IS segment
+    // files, so the widening is free on a blocking gate. The pin moved in the commit that
+    // widened it, which is the whole point of pinning it.
     expect([...XML_RESIDUE_TAGS]).toEqual([
       'emphasis',
       'term',
@@ -166,6 +171,24 @@ describe('E3 — raw XML residue in segments', () => {
       'para',
       'entry',
       'row',
+      'media',
+      'image',
+      'list',
+      'item',
+      'title',
+      'caption',
+      'table',
+      'tgroup',
+      'code',
+      'footnote',
+      'quote',
+      'figure',
+      'section',
+      'exercise',
+      'problem',
+      'solution',
+      'definition',
+      'newline',
     ]);
   });
 
@@ -223,13 +246,74 @@ describe('E6 — unexpected files emitted by the extract', () => {
     expect(classifyEmittedFile('books/x/02-for-mt/ch01/m68663-segments.en.md')).toBeNull();
   });
 
-  it('FAILS a listing carrying a backup, and reports what it examined', async () => {
+  it('PASSES a backup ACCOMPANIED by its own rewritten file — safeWrite doing its job', async () => {
+    // 🔴 THE FIX FOR THE WORST FALSE-HALT IN TIER 1. `safeWrite` copies the existing file to
+    // `${path}.backup.${ISO}` unconditionally and `cnxml-extract.js` calls it five times per
+    // module, so a listing scoped exactly as E6 demands — what THIS run emitted — always
+    // contains fresh backups for any module that already had output. Flagging them made E6
+    // unable to pass ANY re-extract, and "loops until clean" could never converge. This test
+    // asserted FAIL until 2026-08-25.
     const r = await runCheck(E6, {
       emittedFiles: ['m1-segments.en.md', 'm1-segments.en.md.backup.2026-08-12T13-43-10'],
     });
-    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.verdict).toBe(VERDICT.PASS);
     expect(r.examined).toBe(2);
-    expect(r.findings).toHaveLength(1);
+    expect(r.message).toContain('1 backups accounted for');
+  });
+
+  it('FAILS an ORPHAN backup — one whose base file this run did not write', async () => {
+    const r = await runCheck(E6, {
+      emittedFiles: ['m1-segments.en.md', 'm2-structure.json.backup.2026-08-12T13-43-10'],
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings[0].kind).toBe('unexpected-file:orphan-backup');
+  });
+
+  it('accounts for a backup listed BEFORE its base file — safeWrite writes the backup first', async () => {
+    const r = await runCheck(E6, {
+      emittedFiles: ['m1-segments.en.md.backup.2026-08-12T13-43-10', 'm1-segments.en.md'],
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+  });
+
+  it('accounts for all five outputs of a real re-extract', async () => {
+    const stem = [
+      'segments.en.md',
+      'structure.json',
+      'equations.json',
+      'inline-attrs.json',
+      'manifest.json',
+    ];
+    const emitted = stem.flatMap((x) => [`m68663-${x}`, `m68663-${x}.backup.2026-08-25T06-36-58`]);
+    const r = await runCheck(E6, { emittedFiles: emitted });
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.examined).toBe(10);
+  });
+
+  it('FAILS a Dirent-shaped entry it cannot read, rather than passing over it', async () => {
+    // 🔴 `String(dirent)` is "[object Object]", which matches neither pattern — so the most
+    // idiomatic loader (`readdirSync(dir, {withFileTypes: true})`) made a directory full of
+    // backups classify as CLEAN at the correct examined count. Dirents are now READ; anything
+    // else is a finding.
+    const dirents = [
+      { name: 'm1-segments.en.md' },
+      { name: 'm2-old.json.backup.2026-01-01T00-00-00' },
+    ];
+    const ok = await runCheck(E6, { emittedFiles: dirents });
+    expect(ok.verdict).toBe(VERDICT.FAIL); // the orphan backup is seen through the Dirent
+    expect(ok.findings[0].kind).toBe('unexpected-file:orphan-backup');
+
+    const junk = await runCheck(E6, { emittedFiles: [42, null, { size: 10 }] });
+    expect(junk.verdict).toBe(VERDICT.FAIL);
+    expect(junk.findings.every((f) => f.kind === 'unexpected-file:unreadable-entry')).toBe(true);
+  });
+
+  it('backupSourceOf recognises every backup spelling, and nothing else', () => {
+    expect(backupSourceOf('x.en.md.backup.2026-08-12T13-43-10')).toBe('x.en.md');
+    expect(backupSourceOf('x.en.md.backup')).toBe('x.en.md');
+    expect(backupSourceOf('x.en.md.2026-08-12-1802.bak')).toBe('x.en.md');
+    expect(backupSourceOf('x.en.md.bak')).toBe('x.en.md');
+    expect(backupSourceOf('x.en.md')).toBeNull();
   });
 
   it('PASSES a clean listing', async () => {
@@ -271,5 +355,36 @@ describe('registration', () => {
       expect(c.tier).toBe(1);
       expect(c.blocking).toBe(true);
     }
+  });
+});
+
+describe('findings from the blind adversarial review', () => {
+  it('E3 catches a CLOSING tag — it watched only half the syntax', async () => {
+    // Measured PASS/examined 1 before the fix. A dangling closer is exactly as much
+    // angle-bracket noise to the paid MT as an opener.
+    for (const frag of ['leaked close</emphasis> here', 'x</para>', 'y</entry>']) {
+      const r = await runCheck(E3, { segText: `<!-- SEG:m1:para:p1 -->\n${frag}\n` });
+      expect(r.verdict, frag).toBe(VERDICT.FAIL);
+    }
+  });
+
+  it('E3 still reports the tag NAME for a closing match, not "/emphasis"', async () => {
+    const r = await runCheck(E3, { segText: '<!-- SEG:m1:para:p1 -->\nx</emphasis>\n' });
+    expect(r.findings[0].tag).toBe('emphasis');
+  });
+
+  it('E6 catches a NUMERIC parenthesised duplicate, not only a lettered one', () => {
+    expect(classifyEmittedFile('m1-segments(1).en.md')).toBe('duplicate');
+    expect(classifyEmittedFile('m1-segments(12).en.md')).toBe('duplicate');
+    expect(classifyEmittedFile('m1-segments(b).en.md')).toBe('duplicate');
+  });
+
+  it('E6 leaves a CHEMICAL FORMULA alone — the `)\\.` anchor is what makes widening safe', () => {
+    // 🔴 MEASURED over 9,537 `01-source` filenames: 5 contain a parenthesis. Four are `(N)`
+    // download duplicates byte-identical to an existing original; one is a formula. Widening
+    // the character class WITHOUT the `)\.` anchor would false-halt on chemistry filenames.
+    expect(classifyEmittedFile('CNX_Chem_11_02_Fe(NO3)3_img.jpg')).toBeNull();
+    expect(classifyEmittedFile('CNX_APPhysics_22_M2_arrows(d2)_img.jpg')).toBeNull();
+    expect(classifyEmittedFile('Figure_20_05_06(b)a.jpg')).toBeNull();
   });
 });

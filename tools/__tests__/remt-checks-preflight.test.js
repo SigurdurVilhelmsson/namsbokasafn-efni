@@ -179,3 +179,75 @@ describe('registration', () => {
     expect(E9.blocking).toBe(true);
   });
 });
+
+describe('E9 — findings from the blind adversarial review', () => {
+  it('does NOT pass an EMPTY inputs list — the loader discovering nothing is not a clean leg', async () => {
+    // 🔴 §C60's founding incident ("a --module that matched nothing, exit 0") reappearing
+    // INSIDE the gate built to prevent it. A typo'd module id yields exactly this ctx end to
+    // end: glob -> [], git log over nothing -> [], no file -> locked:false, dry-run over
+    // nothing -> isk 0. Every leg reads green. Measured PASS/examined 5 before the fix.
+    const r = await runCheck(E9, {
+      locked: false,
+      handEdits: [],
+      inputs: [],
+      force: true,
+      costEstimate: { isk: 0, withForce: true },
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.find((f) => f.leg === 'inputs')?.detail).toContain('discovered nothing');
+  });
+
+  it('still PASSES one real input — the positive control for the empty-list FAIL above', async () => {
+    const r = await runCheck(E9, cleanCtx());
+    expect(r.verdict).toBe(VERDICT.PASS);
+  });
+
+  it('REFUSES an unusable costBand rather than silently dropping the ceiling', async () => {
+    // `isk < undefined` and `isk > NaN` are both false, so each of these shapes removed the
+    // ONLY value check on money while the operator believed a ceiling was enforced.
+    // All three measured PASS at isk 99999 before the fix.
+    for (const band of [
+      { min: 100, max: 5000 }, // misspelt keys — the parseArgs class
+      { minIsk: NaN, maxIsk: NaN },
+      { minIsk: 100 }, // half-specified: max silently unenforced
+      { minIsk: 5000, maxIsk: 100 }, // inverted: matches nothing, so never fires
+    ]) {
+      const r = await runCheck(E9, {
+        ...cleanCtx(),
+        costBand: band,
+        costEstimate: { isk: 99999, withForce: true },
+      });
+      expect(r.verdict, `band ${JSON.stringify(band)}`).toBe(VERDICT.FAIL);
+      expect(r.findings.find((f) => f.leg === 'cost')?.detail).toContain('unusable costBand');
+    }
+  });
+
+  it('a WELL-FORMED band still bounds normally — the control for the refusals above', async () => {
+    const band = { minIsk: 100, maxIsk: 5000 };
+    expect((await runCheck(E9, { ...cleanCtx(), costBand: band })).verdict).toBe(VERDICT.PASS);
+    const over = await runCheck(E9, {
+      ...cleanCtx(),
+      costBand: band,
+      costEstimate: { isk: 99999, withForce: true },
+    });
+    expect(over.findings.find((f) => f.leg === 'cost')?.detail).toContain('outside band');
+  });
+});
+
+describe('E9 leg 5 — the VALUE, not only the provenance', () => {
+  it('REFUSES isk 0 — the exact symptom the leg exists to catch', async () => {
+    // The leg's rationale is that a bare `--dry-run` reports ~0 ISK once output exists.
+    // `withForce` is an assertion the gate cannot verify, and `Number.isFinite(0)` is true,
+    // so before this fix `isk: 0` and `isk: -500` both read as clean estimates.
+    for (const isk of [0, -500]) {
+      const r = await runCheck(E9, { ...cleanCtx(), costEstimate: { isk, withForce: true } });
+      expect(r.verdict, `isk=${isk}`).toBe(VERDICT.FAIL);
+      expect(r.findings.find((f) => f.leg === 'cost')?.detail).toContain('unusable estimate');
+    }
+  });
+
+  it('accepts a positive estimate — the control for the refusals above', async () => {
+    const r = await runCheck(E9, { ...cleanCtx(), costEstimate: { isk: 1, withForce: true } });
+    expect(r.verdict).toBe(VERDICT.PASS);
+  });
+});
