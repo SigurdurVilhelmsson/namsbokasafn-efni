@@ -30,34 +30,44 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+  chapterProvided,
+} from './lib/parseArgs.js';
 
-let BOOKS_DIR = 'books/efnafraedi-2e';
-let BOOK_SLUG = 'efnafraedi-2e';
+// Set from --book in main(). No default: see AUDIT_OPTIONS below.
+let BOOKS_DIR = null;
+let BOOK_SLUG = null;
 
-function parseArgs(args) {
-  const result = {
-    chapter: null,
-    module: null,
-    book: 'efnafraedi-2e',
-    track: 'mt-preview',
-    verbose: false,
-    json: false,
-    help: false,
-  };
-
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-    if (arg === '-h' || arg === '--help') result.help = true;
-    else if (arg === '--verbose') result.verbose = true;
-    else if (arg === '--json') result.json = true;
-    else if (arg === '--book' && args[i + 1]) result.book = args[++i];
-    else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
-    else if (arg === '--module' && args[i + 1]) result.module = args[++i];
-    else if (arg === '--track' && args[i + 1]) result.track = args[++i];
-  }
-
-  return result;
-}
+/**
+ * 🔴 `--track` AND `--json` MUST BE DECLARED HERE OR THEY VANISH SILENTLY.
+ * `tools/lib/parseArgs.js` DROPS UNKNOWN FLAGS WITHOUT WARNING (§C83), so migrating
+ * off this file's former module-local parser would otherwise turn `--track faithful`
+ * into a no-op that quietly falls back to `mt-preview` — a wrong answer reported as
+ * a right one, which is the failure this whole battery exists to prevent.
+ * `--help` and `--verbose` come from the parser's BUILTIN_OPTIONS and must NOT be
+ * re-declared. Bound by the `--track` test in
+ * `tools/__tests__/audit-render-output-defects.test.js`, whose fixture is decisive
+ * because the two tracks give OPPOSITE verdicts on chemistry ch01: mt-preview FAILs
+ * (2 errors, exit 1) and faithful PASSes with warnings (exit 0). A dropped flag
+ * therefore shows up as the wrong verdict rather than as a missing option.
+ *
+ * ▶ THE MIGRATION IS WHAT FIXES TWO OF THE FOUR DEFECTS, and it is the idiom the
+ * sibling tool `cnxml-fidelity-check.js` already uses: `BOOK_OPTION.default` is
+ * `null` + `requireBook()` (defect 4), and `chapterProvided()` (defect 2). It also
+ * gains `--flag=value` support, which the former local parser did not handle.
+ */
+const AUDIT_OPTIONS = [
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  { name: 'track', flags: ['--track'], type: 'string', default: 'mt-preview' },
+  { name: 'json', flags: ['--json'], type: 'boolean', default: false },
+];
 
 function printHelp() {
   console.log(`
@@ -365,9 +375,15 @@ async function auditModule(chapter, moduleId, track, _verbose) {
   };
 
   if (missingIds.length > 0) {
+    // 🔴 PROMOTED warning -> error (§C82 Plan B Task 11, R4 defect 1). The exit code
+    // keys on `totalErrors`, so as a `warning` a real ID drop printed
+    // `PASS with warnings` and exited 0 — reader-visible content going missing,
+    // reported as success by the tool whose job is to catch exactly that. Measured on
+    // `m68663 --track mt-preview`: `0 error(s), 1 warning(s)` / `1 ID(s) missing from
+    // output`, exit 0.
     issues.push({
       check: 'id-preservation',
-      severity: 'warning',
+      severity: 'error',
       message: `${missingIds.length} ID(s) missing from output`,
       details: missingIds.slice(0, 10),
     });
@@ -464,16 +480,28 @@ function findModules(chapter, moduleId) {
 }
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2));
-  BOOKS_DIR = `books/${args.book}`;
-  BOOK_SLUG = args.book;
+  const args = parseArgs(process.argv.slice(2), AUDIT_OPTIONS);
 
   if (args.help) {
     printHelp();
     process.exit(0);
   }
 
-  if (!args.chapter) {
+  // 🔴 DEFECT 4 — `--book` no longer defaults to `efnafraedi-2e`. Omitting it used to
+  // audit chemistry whichever book you meant. `requireBook` is a no-op under --help,
+  // so the help text above still prints. Swept before changing: NOTHING executable
+  // invokes this tool (package.json, scripts/, .github/workflows/, server/), so no
+  // caller relied on the default.
+  requireBook(args);
+  BOOKS_DIR = `books/${args.book}`;
+  BOOK_SLUG = args.book;
+
+  // 🔴 DEFECT 2 — `if (!args.chapter)` rejected `--chapter 0`, the falsy-zero
+  // truthiness bug. Chemistry's ch00 is a real chapter: it holds `m68662` and its
+  // rendered page `0-1-formali.html` exists, so the chapter was fully auditable and
+  // the tool simply refused to look. Plan A fixed this class in four tools and never
+  // enumerated this one. `chapterProvided` also rejects NaN from `--chapter abc`.
+  if (!chapterProvided(args)) {
     console.error('Error: --chapter is required');
     process.exit(1);
   }
@@ -483,6 +511,23 @@ async function main() {
     const allResults = [];
     let totalIssues = 0;
     let totalErrors = 0;
+    // 🔴 DEFECT 3 — modules the tool COULD NOT AUDIT were `continue`d past without
+    // touching `totalErrors` or any success counter, so a chapter in which every
+    // module failed printed `Result: PASS` and exited 0. That is §C60's signature —
+    // a check reporting clean having read nothing — inside the tool §C82's Tier 3
+    // wraps. Measured 2026-08-26 by sweeping every chapter of both kept books, and
+    // it is WHOLE-CHAPTER rather than the single-module edge case it was filed as:
+    //
+    //   book                track       chapters printing PASS over ZERO audited
+    //   efnafraedi-2e       mt-preview   0 of 23   <- control: it discriminates
+    //   efnafraedi-2e       faithful    19 of 23
+    //   lifraen-efnafraedi  mt-preview  30 of 31   (329 modules)
+    //   lifraen-efnafraedi  faithful    n/a — no rendered html exists at all
+    //
+    // ⚠️ QUOTE THE TRACK WITH THE NUMBER. "chemistry: 0 of 23" is true of mt-preview
+    // and false of faithful; stating it as a BOOK figure is a measurement generalised
+    // one step past its coverage.
+    let failedModules = 0;
 
     for (const moduleId of modules) {
       const result = await auditModule(args.chapter, moduleId, args.track, args.verbose);
@@ -490,6 +535,7 @@ async function main() {
 
       if (result.error) {
         console.error(`${moduleId}: ${result.error}`);
+        failedModules++;
         continue;
       }
 
@@ -524,14 +570,22 @@ async function main() {
       }
     }
 
+    const audited = modules.length - failedModules;
+
     if (args.json) {
       console.log(JSON.stringify(allResults, null, 2));
     } else {
       console.log('\n' + '='.repeat(60));
+      // The count says how many modules were ATTEMPTED and how many were actually
+      // AUDITED. Reporting only the former is what made `13 module(s), 0 issue(s)`
+      // read as a clean chapter when all 13 had failed.
       console.log(
-        `Audit complete: ${modules.length} module(s), ${totalIssues} issue(s) (${totalErrors} error(s))`
+        `Audit complete: ${modules.length} module(s) attempted, ${audited} audited, ` +
+          `${totalIssues} issue(s) (${totalErrors} error(s), ${failedModules} unauditable)`
       );
-      if (totalErrors === 0 && totalIssues === 0) {
+      if (failedModules > 0) {
+        console.log(`Result: FAIL — ${failedModules} module(s) could not be audited`);
+      } else if (totalErrors === 0 && totalIssues === 0) {
         console.log('Result: PASS');
       } else if (totalErrors === 0) {
         console.log('Result: PASS with warnings');
@@ -540,7 +594,20 @@ async function main() {
       }
     }
 
-    process.exit(totalErrors > 0 ? 1 : 0);
+    // 🔴 `process.exitCode`, NOT `process.exit()`. Node writes stdout to a PIPE
+    // asynchronously, so `process.exit()` DISCARDS whatever is still queued —
+    // silently, with the exit code still correct. This is the LAST statement of the
+    // try block, so letting the function return changes nothing else; the
+    // usage-error exits above are deliberately left as `process.exit()`, because
+    // converting one of those makes `main()` fall THROUGH to the rest of the run.
+    // ⚠️ HONEST SCOPE: measured 2026-08-26, this is NOT a live truncation today —
+    // the largest real `--json` payload is chemistry ch18 at 21,657 bytes against a
+    // 65,536-byte pipe buffer, and redirect and pipe were byte-identical. It is
+    // closed anyway because the margin is only ~3x and Plan C's driver reads this
+    // tool's `--json` through a PIPE (the spawn model at
+    // `server/services/publicationService.js:124-184`), which is precisely the
+    // invocation shape that trips it.
+    process.exitCode = totalErrors > 0 || failedModules > 0 ? 1 : 0;
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
