@@ -46,8 +46,13 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '.
 /** A record the REAL producer would emit for a clean module. */
 function cleanRecord(over = {}) {
   return buildRunRecord({
+    // 🔴 THE THREE NUMBERS ARE DELIBERATELY DISTINCT. They were `chars: 12345` and
+    // `usage: 12345`, which made `expect(message).toContain('12345')` satisfiable by
+    // EITHER field — so the assertion bound neither, and the whole `usage` branch was
+    // unbound in both directions. Measured: a record with `chars: 999, usage: 12345`
+    // still contained '12345'. Distinct values are what make the message assertions real.
     chars: 12345,
-    usage: 12345,
+    usage: 777,
     estimatedIsk: 246.9,
     markersNormalized: 0,
     mismatches: [],
@@ -261,19 +266,74 @@ describe('A4 — unwrappedCount + unwrappedByType', () => {
 });
 
 describe('A8 — chars and estimatedIsk, RECORD ONLY', () => {
-  it('records both values in the message and never fails', async () => {
+  it("records all three values EXACTLY — the message is A8's entire deliverable", async () => {
+    // An exact match, not three `toContain`s. A8 always returns PASS / examined 1 /
+    // findings [], so the message IS the output; a partial matcher leaves most of it
+    // unbound, and `toContain` on a shared value binds nothing at all.
     const r = await runCheck(A8, v2(cleanRecord()));
     expect(r.verdict).toBe(VERDICT.PASS);
     expect(r.examined).toBe(1);
     expect(r.findings).toHaveLength(0);
-    expect(r.message).toContain('12345');
-    expect(r.message).toContain('246.9');
+    expect(r.message).toBe('chars=12345 estimatedIsk=246.9 usage=777');
   });
 
   it('SKIPs when estimatedIsk is absent — a recorder with nothing to record', async () => {
     const r = await runCheck(A8, v2({ runRecordVersion: 1, chars: 10 }));
     expect(r.verdict).toBe(VERDICT.SKIPPED);
     expect(r.message).toContain('estimatedIsk');
+  });
+
+  // 🔴 `usage` IS THE ONE FIELD IN THIS RECORD WHOSE CORRUPTION ACTUALLY SHIPPED.
+  // `run-record.js`'s own docstring records it: `totalUsage += result.usage || 0` against
+  // an API that returns an OBJECT persisted the literal string "0[object Object]" into
+  // every real sidecar until 2026-08-16. A8 is the only check that looks at `usage`, so
+  // if A8 drops a malformed one silently, a recurrence has no observer anywhere.
+  for (const [label, usage] of [
+    ['the historical "0[object Object]" string', '0[object Object]'],
+    ['the raw API object it came from', { units: 12345 }],
+    ['null', null],
+    ['NaN', NaN],
+    ['a numeric STRING', '777'],
+  ]) {
+    it(`WARNs and names the shape when usage is ${label}`, async () => {
+      const r = await runCheck(A8, v2(cleanRecord({ usage })));
+      expect(r.verdict).toBe(VERDICT.WARN);
+      expect(r.examined).toBe(1);
+      expect(r.findings).toHaveLength(1);
+      expect(r.findings[0]).toMatchObject({ kind: 'malformed-usage' });
+      // The message must NOT read as though usage were simply absent — that is the
+      // coerce-to-empty this fix removes.
+      expect(r.message).toContain('usage');
+    });
+  }
+
+  it('a MISSING usage key is not a finding — absent and malformed are different', async () => {
+    // The discriminator is the KEY, not the value: JSON.stringify drops an undefined
+    // value, so a sidecar that never carried one has no key at all.
+    // A JSON round-trip is the honest way to produce this: it is exactly what strips an
+    // undefined-valued key on the way to disk.
+    const noUsage = JSON.parse(JSON.stringify(cleanRecord({ usage: undefined })));
+    const r = await runCheck(A8, v2(noUsage));
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.findings).toHaveLength(0);
+    expect(r.message).toBe('chars=12345 estimatedIsk=246.9');
+  });
+});
+
+describe('the case-2 message must not assert a cause the code cannot know', () => {
+  // 🔴 `writeProvenance` stamps `schemaVersion: 2` UNCONDITIONALLY and attaches `run`
+  // only when passed one. Measured 2026-08-26: of three production callers, only
+  // `api-translate.js:1347` passes it — `docx-import.js:829` and
+  // `backfill-provenance.js:36` both write v2-WITHOUT-run TODAY. So "this module
+  // predates the run-record writer" is false for a shape two live tools produce, and it
+  // is the message — the only thing distinguishing the three kinds of nothing — that
+  // carries this task's whole deliverable.
+  it('names the producer-emits-none cause alongside the predates-the-writer one', async () => {
+    const r = await runCheck(A4, v2(undefined));
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toMatch(/no run record/i);
+    expect(r.message).toMatch(/predates the writer/i);
+    expect(r.message).toMatch(/docx-import|producer emits none/i);
   });
 });
 

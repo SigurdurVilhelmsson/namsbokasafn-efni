@@ -827,10 +827,18 @@ function readRunRecord(ctx, id, fields) {
   }
   const run = ctx.provenance.run;
   if (!isPlainRecord(run)) {
-    // The whole committed corpus lands here. The wording is load-bearing: it says the
-    // module PREDATES the writer, not that it is clean.
+    // The whole committed corpus lands here. The wording is load-bearing: it says no
+    // counters were CAPTURED, not that the module is clean.
+    // ⚠️ AND IT MUST NOT NAME A SINGLE CAUSE. `writeProvenance` stamps `schemaVersion: 2`
+    // UNCONDITIONALLY and attaches `run` only when one is passed, so v2-without-run is a
+    // normal on-disk state, not a legacy one: of three production callers only
+    // `api-translate.js:1347` passes a record — `docx-import.js:829` and
+    // `backfill-provenance.js:36` write this shape TODAY. An earlier wording asserted
+    // "the module predates the run-record writer" as the cause, which is false for both
+    // of them. The message is the ONLY thing that distinguishes the three kinds of
+    // nothing, so a confident wrong cause here defeats the point of the check.
     return skip(
-      `no run record on this sidecar (schemaVersion ${JSON.stringify(ctx.provenance.schemaVersion)}, run is ${describeType(run)}) — the module predates the run-record writer, so there is no evidence either way`
+      `no run record on this sidecar (schemaVersion ${JSON.stringify(ctx.provenance.schemaVersion)}, run is ${describeType(run)}) — no counters were captured: either the module predates the writer, or its producer emits none (docx-import and backfill-provenance both stamp v2 with no run). No evidence either way`
     );
   }
   const bad = fields.filter(([name, kind]) => !FIELD_KIND[kind](run[name]));
@@ -923,19 +931,22 @@ export const A4 = defineCheck({
 /**
  * A8 — the module's input size and its cost estimate. RECORD ONLY, and deliberately so.
  *
- * 🔴 IT HAS NO FAILURE MODE, AND MANUFACTURING ONE WOULD BE §C82 L46 VERBATIM.
- * `estimatedIsk` is `estimateIsk(chars)` = `chars * ISK_PER_1000_CHARS / 1000`
+ * 🔴 IT PASSES NO JUDGEMENT ON THE NUMBERS, AND MANUFACTURING ONE WOULD BE §C82 L46
+ * VERBATIM. `estimatedIsk` is `estimateIsk(chars)` = `chars * ISK_PER_1000_CHARS / 1000`
  * (`tools/lib/malstadur-api.js:39`) — a pure linear function of `chars`. Recomputing it
  * and comparing would be a predicate whose two sides derive from one input: both move
  * together and the comparison cancels. The plan's "compare CHARACTERS, never
  * estimate-vs-estimate from one function" is exactly this, and the way to honour it is
  * to SURFACE `chars` as the comparable quantity rather than to invent a verdict.
  *
- * ⚠️ `usage` IS the one independently-sourced number here — it comes back from the API
- * rather than from us — and it is still NOT a predicate. `usageUnits()` returns 0 for any
- * shape it does not recognise, so `0` is ambiguous between "nothing was billed" and "the
- * shape changed and we could not read it"; a gate built on it would report the second as
- * the first. It is recorded when readable and carries no verdict.
+ * ⚠️ ITS ONE FAILURE MODE IS A TYPE, NOT A VALUE, AND THE DISTINCTION IS THE WHOLE POINT.
+ * `usage` is the only independently-sourced number here — it comes back from the API
+ * rather than from us — and its VALUE is still not a predicate: `usageUnits()` returns 0
+ * for any shape it does not recognise, so `0` is ambiguous between "nothing was billed"
+ * and "the shape changed and we could not read it", and a gate built on the value would
+ * report the second as the first. But its TYPE is not ambiguous at all, and a `usage` that
+ * is present and NOT a finite number is the exact shape that shipped to production for
+ * months. That is reported. See the body for the measurement.
  *
  * The values ride in `message` because `runCheck` normalises the result to the contract's
  * five keys — an extra `record` key would be dropped silently on the way to the ledger.
@@ -952,12 +963,44 @@ export const A8 = defineCheck({
     ]);
     if (skip) return skip;
 
-    const usage = FIELD_KIND.number(run.usage) ? ` usage=${run.usage}` : '';
+    // 🔴 A MALFORMED `usage` IS REPORTED, NOT DROPPED — and this is the one field in the
+    // record whose corruption ACTUALLY SHIPPED. `run-record.js`'s docstring records it:
+    // `totalUsage += result.usage || 0` against an API returning an OBJECT persisted the
+    // literal string `"0[object Object]"` into every real sidecar until 2026-08-16, and
+    // the suite could not see it because producer and consumer were stubbed differently.
+    // A8 is the ONLY check that reads `usage`, so a silent drop leaves a recurrence with
+    // no observer anywhere in the battery.
+    // ⚠️ The earlier form was `FIELD_KIND.number(run.usage) ? ... : ''` — a coerce-to-empty
+    // on a wrong shape followed by PASS, which is exactly what this file's own header says
+    // it does not do (§C82 L1). Measured: it rendered `"0[object Object]"`, `{units: N}`,
+    // `null` and ABSENT byte-identically, so the historical bug was indistinguishable from
+    // a field that was never written.
+    // ▶ THE DISCRIMINATOR IS THE KEY, NOT THE VALUE. `JSON.stringify` drops an undefined
+    // value, so a sidecar that never carried a usage has no key at all — absent is silence,
+    // present-and-mistyped is a finding.
+    const findings = [];
+    let usagePart = '';
+    if (Object.prototype.hasOwnProperty.call(run, 'usage')) {
+      if (FIELD_KIND.number(run.usage)) {
+        usagePart = ` usage=${run.usage}`;
+      } else {
+        usagePart = ' usage=MALFORMED';
+        findings.push({
+          kind: 'malformed-usage',
+          got: describeType(run.usage),
+          value: String(run.usage).slice(0, 40),
+        });
+      }
+    }
+
+    // ⚠️ SO A8 HAS EXACTLY ONE FAILURE MODE, AND IT IS NOT A COST JUDGEMENT. It never
+    // compares an estimate against anything (that would be L46's self-referential
+    // invariant); it reports a field the producer PROMISED and did not deliver.
     return {
-      verdict: VERDICT.PASS,
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
       examined: 1,
-      findings: [],
-      message: `chars=${run.chars} estimatedIsk=${run.estimatedIsk}${usage}`,
+      findings,
+      message: `chars=${run.chars} estimatedIsk=${run.estimatedIsk}${usagePart}`,
     };
   },
 });
