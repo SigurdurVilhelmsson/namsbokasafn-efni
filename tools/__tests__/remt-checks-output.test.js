@@ -615,6 +615,37 @@ describe('fix round — guards an adversarial review found missing', () => {
     expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: v }).verdict).toBe(VERDICT.FAIL);
   });
 
+  it('R4: a payload that never mentions ctx.module is SKIPPED, and the evidence is scoped', () => {
+    // 🔴 §C82 L41 FOR THE THIRD TIME IN THIS TASK. The previous fix round bound R3's
+    // payload to ctx.module and left R4's unbound IN THE SAME COMMIT. Measured:
+    // `R4.run({module:'m68663', auditResults:[m68832, m68833]})` -> PASS examined 2, an
+    // advisory clean verdict over a payload that never mentions the module. R4 is
+    // advisory, which makes it quieter than R3's version, not safer.
+    const other = {
+      module: 'm68663',
+      auditResults: [
+        { moduleId: 'm68832', issues: [] },
+        { moduleId: 'm68833', issues: [] },
+      ],
+    };
+    expect(R4.run(other).verdict).toBe(VERDICT.SKIPPED);
+
+    // And the evidence is scoped, not merely the permission to report it: a sibling's
+    // failure must not fail a clean module.
+    const mixed = [
+      { moduleId: 'm68832', issues: [] },
+      { moduleId: 'm68833', error: 'Rendered HTML not found for m68833' },
+    ];
+    const clean = R4.run({ module: 'm68832', auditResults: mixed });
+    expect(clean.verdict).toBe(VERDICT.PASS);
+    expect(clean.examined).toBe(1);
+    expect(clean.message).toMatch(/scoped to m68832 of 2 in the payload/);
+    // THE SEPARATOR — without it, a filter that dropped everything would also pass.
+    expect(R4.run({ module: 'm68833', auditResults: mixed }).verdict).toBe(VERDICT.FAIL);
+    // CONTROL: unscoped, the chapter view is unchanged.
+    expect(R4.run({ auditResults: mixed }).verdict).toBe(VERDICT.FAIL);
+  });
+
   it('the blocking policy is genuinely immutable — a frozen Set is not', () => {
     // ⚠️ `Object.freeze(new Set([...]))` reports `Object.isFrozen === true` and still
     // permits `.add()` and `.delete()`. The policy that decides FAIL-vs-WARN on a blocking
@@ -680,8 +711,16 @@ describe('fix round — guards an adversarial review found missing', () => {
     // (2.88%) carry an inline-attr entry at all.
     const rep = { segmentsFound: 81, attrMismatches: [] };
     expect(R2.run({ injectReport: rep }).message).toMatch(/judgeable population unknown/);
-    const withAttrs = R2.run({ injectReport: rep, inlineAttrs: { a: { terms: [1] }, b: {} } });
-    expect(withAttrs.message).toMatch(/of which 2 carry an inline-attr entry/);
-    expect(withAttrs.examined).toBe(81);
+    // ⚠️ THE FIXTURE COMES FROM THE REAL PRODUCER (§C82 L48). A hand-written
+    // `{a:{terms:[1]}, b:{}}` counted 2 while `{}` is a shape `extractSegments` never
+    // emits — a fixture encoding the author's belief about a producer rather than the
+    // producer.
+    const { inlineAttrs } = extractSegments(SRC('lifraen-efnafraedi', 'ch03', 'm00032'));
+    const real = Object.values(inlineAttrs).filter((v) => v && typeof v === 'object').length;
+    expect(real).toBeGreaterThan(0); // non-vacuity: this module really has entries
+    const withAttrs = R2.run({ injectReport: rep, inlineAttrs });
+    expect(withAttrs.message).toMatch(new RegExp(`of which ${real} carry an inline-attr entry`));
+    expect(withAttrs.examined).toBe(81); // examined stays segmentsFound, not the sub-count
+    expect(withAttrs.examined).not.toBe(real);
   });
 });

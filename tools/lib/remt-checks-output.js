@@ -19,6 +19,12 @@
  *   R4     05-publication chemistry     2026-07-10               renderer 2026-08-23,
  *          05-publication organic       2026-07-17               ~24 commits later
  *
+ * ⚠️ AND A BASE RATE CAN MOVE BECAUSE YOU FIXED THE INSTRUMENT. R4's per-chapter figures
+ * were first measured while `--chapter appendices` was broken, so the sweep silently
+ * excluded the chapters the tool could not reach; repairing that changed 19→21 and 30/31→
+ * 32/33. **State the sweep scope with the number, or the number cannot survive its own
+ * repair.**
+ *
  * ▶ SO NO TIER-3 BASE RATE MEASURED TODAY IS A RATE FOR THE CODE THAT WILL RUN, and
  * CLAUDE.md's *"an output file is dated evidence, never evidence about `main`"* applies
  * to every one of them. This is a property of the TIER, not of any single check, and it
@@ -365,8 +371,10 @@ export const R2 = defineCheck({
     // THE OBJECTION, MEASURED AND CORRECT: every one of R2's three legs requires
     // `inlineAttrs[segmentId]` truthy, and over all 166 buildable modules with FRESH
     // extraction only **666 of 23,154 segments (2.88%)** carry such an entry, with
-    // **39 of 166 modules (23.5%) carrying none at all**. So `segmentsFound` overstates the
-    // population R2 could possibly judge by ~35x.
+    // **39 of 166 modules (23.5%) carrying none at all**.
+    // ⚠️ THE OVERSTATEMENT FACTOR IS **33.2x**, NOT "~35x" — and the correction matters
+    // because the subject of this sentence is `segmentsFound`, whose corpus sum is 22,111,
+    // not the 23,154 parsed segments the 2.88% is over. Two denominators, one sentence.
     // ▶ WHY IT IS STILL THE RIGHT UNIT: keying `examined` to the judgeable sub-count would
     // make 23.5% of modules report `examined 0`, and R2 is BLOCKING — `runTier` turns that
     // into a halt. That is precisely the ~70% false-halt trap `remt-checks-extract.js`'s
@@ -637,9 +645,19 @@ export const R3 = defineCheck({
  * ITSELF. `Audit complete: N module(s)` counts modules ATTEMPTED: the tool's per-module
  * error path `continue`d without touching any counter, so a chapter in which EVERY module
  * failed printed `Result: PASS` and exited 0 — §C60's signature inside the tool this check
- * wraps. Measured per track: organic mt-preview **30 of 31 chapters (329 modules)**,
- * chemistry faithful **19 of 23**, chemistry mt-preview **0 of 23** (the control that
- * shows it discriminates). Keying `examined` to the attempted count would make
+ * wraps.
+ * ⚠️ MEASURED PER TRACK, AND THE SWEEP SCOPE IS PART OF THE NUMBER. A "chapter" here is
+ * every `chNN` or `appendices` directory under the read-only source tree — **chemistry 23,
+ * organic 33** — and the unit is CHAPTERS printing a clean result while auditing zero
+ * modules:
+ *     efnafraedi-2e       mt-preview   **0 of 23**   <- the control: it discriminates
+ *     efnafraedi-2e       faithful     **21 of 23**
+ *     lifraen-efnafraedi  mt-preview   **32 of 33**
+ *     lifraen-efnafraedi  faithful     n/a — no rendered html exists at all
+ * 🔴 AN EARLIER FORM SAID "30 of 31" AND "19 of 23", measured while `--chapter appendices`
+ * was still broken — so the sweep SILENTLY EXCLUDED the chapters the tool could not reach,
+ * and repairing the tool moved its own base rate. **A rate whose scope is unstated cannot
+ * survive its own repair.** Keying `examined` to the attempted count would make
  * `runCheck`'s `PASS + examined 0 → SKIPPED` downgrade never fire, and the battery would
  * inherit exactly the defect it exists to prevent.
  */
@@ -660,11 +678,32 @@ export const R4 = defineCheck({
           '(one entry per module attempted)',
       };
     }
+    // 🔴 THE SAME BINDING R3 GOT, AND R4 DID NOT — §C82 L41 FOR THE THIRD TIME IN THIS
+    // TASK. A ruling recorded against ONE check is not a change to the others: the fix
+    // round bound R3's payload to `ctx.module` and left R4's unbound in the same commit.
+    // Measured: `R4.run({module:'m68663', auditResults:[m68832, m68833]})` returned
+    // **PASS examined 2** — an advisory clean verdict over a payload that never mentions
+    // the module. R4 is advisory, so this reads as "nothing to see" rather than as a halt,
+    // which makes it quieter than R3's version, not safer.
+    // ⚠️ Unlike R3's payload, every `auditResults` entry DOES carry `moduleId`, so the
+    // binding needs no producer change — it was simply never applied.
+    if (ctx?.module && !results.some((r) => r && r.moduleId === ctx.module)) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message:
+          `R4: auditResults covers ${results.length} module(s), none of them ${ctx.module} — ` +
+          `an audit of other modules is not evidence about this one`,
+      };
+    }
+    // Scope the evidence too, not merely the permission to report it (R3's lesson).
+    const scoped = ctx?.module ? results.filter((r) => r && r.moduleId === ctx.module) : results;
     // A module carrying `error` was ATTEMPTED but not audited. It is a finding in its own
     // right — never a silent omission from the denominator, which is what let a
     // whole-chapter failure read as clean.
-    const unauditable = results.filter((r) => r && r.error);
-    const audited = results.filter((r) => r && !r.error);
+    const unauditable = scoped.filter((r) => r && r.error);
+    const audited = scoped.filter((r) => r && !r.error);
     const findings = unauditable.map((r) => ({
       kind: 'module-not-audited',
       module: r.moduleId,
@@ -687,8 +726,9 @@ export const R4 = defineCheck({
       examined: audited.length,
       findings,
       message:
-        `${results.length} module(s) attempted, ${audited.length} audited, ` +
-        `${unauditable.length} unauditable; ${findings.length} finding(s)`,
+        `${scoped.length} module(s) attempted, ${audited.length} audited, ` +
+        `${unauditable.length} unauditable; ${findings.length} finding(s)` +
+        (ctx?.module ? ` (scoped to ${ctx.module} of ${results.length} in the payload)` : ''),
     };
   },
 });
@@ -712,8 +752,8 @@ export const R4 = defineCheck({
  *
  * `examined` is LEAF ELEMENTS COMPARED, not findings — the finding count is zero on 81 of
  * 149 chemistry modules (54.4%) and 7 of 8 organic (87.5%), so keying to it would report
- * "never ran" on most of a healthy book. The chosen unit is zero on 12 of 149 chemistry
- * modules (8.1%) and 0 of 8 organic — and **all 12 are appendices, 11 of them holding
+ * "never ran" on most of a healthy book. The chosen unit is zero on 11 of 149 chemistry
+ * modules (7.4%) and 0 of 8 organic — and **all 11 are appendices, every one holding
  * literally no `<para>`, `<item>` or `<caption>` at all**, so SKIPPED is CORRECT there
  * rather than spurious.
  */
