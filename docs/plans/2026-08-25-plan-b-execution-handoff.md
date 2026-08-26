@@ -10,12 +10,15 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 — TASKS 1-8 ARE DONE AND MERGED.** Tasks 1-7 = PR #416 (`d6c5e38b`),
-> **deployed**. Task 8 = PR #417 (`b93f5665`) — Tier 2's free half (`A1` advisory, `A6`/`A2b`/`A2c`
-> blocking) + the MIT `parseSegmentsMit` port — ✅ **deployed 2026-08-26 [OPERATOR-REPORTED, not
-> verifiable from a dev session].** **Start at Task 9** (Tier 2's
-> run-record half: `A2(a)`, `A4`, `A8`, and the SKIPPED path that matters — no module carries a run
-> record, so all three examine 0 of 220 pairs). **Five** Plan B tasks remain, then all 11 of Plan C.
+> ⏩ **UPDATED 2026-08-26 — TASKS 1-8 ARE MERGED AND DEPLOYED; TASK 9 IS OPEN AS PR #418.**
+> Tasks 1-7 = PR #416, Task 8 = PR #417 (Tier 2's free half + the MIT `parseSegmentsMit`
+> port), both **deployed** [OPERATOR-REPORTED, not verifiable from a dev session].
+> **Task 9** (Tier 2's run-record half: `A2a`, `A4`, `A8`, all advisory) is **complete and in
+> review on `feat/c82-plan-b-task9-runrecord`, NOT merged**. ▶ **If #418 has merged, start at
+> Task 10** (A3 gating, A5 stages, A7 port); if it has not, that branch is where the work is.
+> 🔴 **Read §C82 L48 before Task 10: the plan named a producer field that does not exist, and
+> with 0 of 200 sidecars carrying a run record no corpus test could have caught it. Re-derive
+> every field a check reads FROM THE PRODUCER, not from the plan.**
 > 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still open and still blocks Plan C.**
 > **Status is the register's ⏩ RESUME block, not this file.**
 

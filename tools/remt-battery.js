@@ -32,7 +32,17 @@
  *                                     below: a key a check consumes but this typedef does not
  *                                     list is a detector a loader built to the doc leaves unrun.
  *   @property {string} [isText]       02-mt-output IS segments       (Task 8: A2/A6)
- *   @property {object} [provenance]   the parsed sidecar             (Task 9: A4/A8)
+ *   @property {object} [provenance]   the parsed sidecar        (Task 9: A2a/A4/A8)
+ *                                     ⚠️ ALL THREE, not the two this line named until
+ *                                     2026-08-26 — A2a reads `run.markersNormalized` and
+ *                                     was missing here, the same G5/L41 shape: a key a
+ *                                     check consumes that the contract does not list is a
+ *                                     detector a loader built to the doc leaves unrun.
+ *                                     🔴 The loader must pass the PARSED SIDECAR, not the
+ *                                     run record — all three reach through `.run`, and
+ *                                     they report SKIPPED (never a clean zero) when it is
+ *                                     absent, which is the state of all 200 committed
+ *                                     sidecars today.
  *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G3)
  *   @property {object} [glossariesByBook] {slug: parsedGlossary}     (Task 7: G4)
  *   @property {object} [payloadVerdict]   spawnGlossaryPayloadCheck() result (Task 7: G5)

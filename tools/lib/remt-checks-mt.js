@@ -741,3 +741,281 @@ export const MT_FREE_CHECKS = [A1, A6, A2b, A2c];
 // `lib/remt-battery.js` to make it automatic: hoisting evaluates this file first and the
 // `defineCheck` calls above die in the temporal dead zone.
 registerChecks(MT_FREE_CHECKS);
+
+// ─── Tier 2, the run-record half: A2a, A4, A8 (Task 9) ────────────────────────────────
+/**
+ * 🔴 THESE THREE READ A COUNTER, AND THE COUNTER IS THE ONLY EVIDENCE THERE IS.
+ *
+ * `repairSegTags`, `normalizeSegMarkers` and `unwrapInventedMarkers` all fix their
+ * finding and proceed, BEFORE `02-mt-output` is written. So a post-hoc scan of the file
+ * reads identically for a clean run and a heavily-repaired one — A4's file-scan form is
+ * a TAUTOLOGY, holding whether the model invented 9 markers or 900. The run record is
+ * where that evidence survives, which is why these checks exist at all.
+ *
+ * ── THE SHAPE DRIFT THIS TASK FOUND, AND WHY IT COULD NOT HAVE BEEN CAUGHT LATER ─────
+ * 🔴 PLAN B:738 SPECIFIES A4 AS READING `run.unwrapped[]`. `buildRunRecord()` HAS NEVER
+ * WRITTEN THAT KEY — it converts the caller's `unwrapped` array into `unwrappedCount`
+ * (a number) and `unwrappedByType` (a `{type: count}` tally); `writeProvenance` then
+ * stores the record OPAQUELY, so nothing downstream restores the original shape.
+ * Written as specified — `(run.unwrapped || []).length` — A4 reports 0 findings and
+ * PASS on every v2 sidecar that will ever be written.
+ * ▶ AND NO CORPUS COULD HAVE FALSIFIED IT: measured 2026-08-26, **0 of 200** committed
+ * sidecars carry a run record, so the first real one arrives MID-PAID-RUN. Check and
+ * fixture would have agreed with each other and disagreed with the producer, green
+ * throughout. The structural answer lives in the test file: every fixture meant to be
+ * READ is built by CALLING `buildRunRecord()`, so a producer rename goes red here
+ * instead of shipping a silent pass. §C82 L45's shape — a plan's stated field is a
+ * PREMISE, and premises go stale; re-derive it from the producer before inheriting it.
+ *
+ * ── THE THREE KINDS OF "NOTHING". CONFLATING ANY TWO IS THE DEFECT ───────────────────
+ *   1. `ctx.provenance` absent / not a plain object → SKIPPED, the ctx key named
+ *   2. a v1 sidecar, or v2 with no `run`            → SKIPPED, `examined: 0`
+ *   3. a `run` whose FIELD is absent or mistyped    → SKIPPED, the FIELD named
+ * Case 2 is Task 9's deliverable: it is the state of the ENTIRE committed corpus, and
+ * §C60's rule is that it must report SKIPPED rather than a clean zero. Case 3 is where
+ * a single `|| []` would have hidden the drift above forever, which is why nothing here
+ * coerces (§C82 L1). All three are ADVISORY, so none of this moves the blocking split.
+ *
+ * ── `examined` IS THE NUMBER OF RECORDS READ — 0 OR 1 — NEVER THE COUNTER'S VALUE ────
+ * A genuinely clean module (`markersNormalized: 0`, record present) is a real
+ * measurement and reads PASS at `examined: 1`. Key `examined` to the counter instead and
+ * `runCheck` downgrades PASS+0 to SKIPPED — making a clean module indistinguishable from
+ * one that predates the writer, which is precisely the distinction these checks exist to
+ * draw. §C82 L6/L44②: `examined` is keyed to CONTENT actually parsed.
+ */
+
+/** The PAYLOAD test, not the container test: `typeof null` and `typeof []` are both 'object' (L33/L35). */
+function isPlainRecord(v) {
+  return typeof v === 'object' && v !== null && !Array.isArray(v);
+}
+
+/** What a rejected value actually was — a diagnostic that survives JSON round-tripping. */
+function describeType(v) {
+  if (v === null) return 'null';
+  if (Array.isArray(v)) return 'array';
+  return typeof v;
+}
+
+/**
+ * The three field kinds a run record carries. Deliberately TIGHTER than `typeof`:
+ * a count is a non-negative integer, so `-1`, `1.5` and `NaN` are defects rather than
+ * values. `estimatedIsk` is genuinely fractional and so is only required to be finite.
+ */
+const FIELD_KIND = Object.freeze({
+  count: (v) => Number.isInteger(v) && v >= 0,
+  number: (v) => typeof v === 'number' && Number.isFinite(v),
+  record: isPlainRecord,
+});
+
+/**
+ * Resolve `ctx.provenance.run`, or the SKIPPED result naming which "nothing" applied.
+ *
+ * @param {object} ctx
+ * @param {string} id      the check, for the message
+ * @param {Array<[string, 'count'|'number'|'record']>} fields  what this check reads
+ * @returns {{skip: object}|{skip: null, run: object}}
+ */
+function readRunRecord(ctx, id, fields) {
+  const skip = (message) => ({
+    skip: { verdict: VERDICT.SKIPPED, examined: 0, findings: [], message: `${id}: ${message}` },
+  });
+
+  if (!isPlainRecord(ctx?.provenance)) {
+    return skip(
+      `ctx carries no usable provenance object (got ${describeType(ctx?.provenance)}) — nothing to examine`
+    );
+  }
+  const run = ctx.provenance.run;
+  if (!isPlainRecord(run)) {
+    // The whole committed corpus lands here. The wording is load-bearing: it says no
+    // counters were CAPTURED, not that the module is clean.
+    // ⚠️ AND IT MUST NOT NAME A SINGLE CAUSE. `writeProvenance` stamps `schemaVersion: 2`
+    // UNCONDITIONALLY and attaches `run` only when one is passed, so v2-without-run is a
+    // normal on-disk state, not a legacy one: of three production callers only
+    // `api-translate.js:1347` passes a record — `docx-import.js:829` and
+    // `backfill-provenance.js:36` write this shape TODAY. An earlier wording asserted
+    // "the module predates the run-record writer" as the cause, which is false for both
+    // of them. The message is the ONLY thing that distinguishes the three kinds of
+    // nothing, so a confident wrong cause here defeats the point of the check.
+    return skip(
+      `no run record on this sidecar (schemaVersion ${JSON.stringify(ctx.provenance.schemaVersion)}, run is ${describeType(run)}) — no counters were captured: either the module predates the writer, or its producer emits none (docx-import and backfill-provenance both stamp v2 with no run). No evidence either way`
+    );
+  }
+  const bad = fields.filter(([name, kind]) => !FIELD_KIND[kind](run[name]));
+  if (bad.length) {
+    // 🔴 NOT A CLEAN ZERO. A field the producer stopped writing — or never wrote — is a
+    // shape disagreement between producer and consumer, and the only safe reading of it
+    // is "this check did not run".
+    return skip(
+      `the run record carries no usable ${bad.map(([n, k]) => `\`${n}\` (${k}, got ${describeType(run[n])})`).join(' or ')} — a missing field is a producer/consumer shape drift, not a clean zero`
+    );
+  }
+  return { skip: null, run };
+}
+
+/**
+ * A2a — SEG markers the MT glued together and `normalizeSegMarkers` pulled apart. ADVISORY.
+ *
+ * A REPAIRED condition: by the time `02-mt-output` exists the file is clean, so the
+ * counter is the only evidence the damage ever happened. WARN → Plan C quarantine.
+ */
+export const A2a = defineCheck({
+  id: 'A2a',
+  tier: 2,
+  blocking: false,
+  version: 1,
+  run: (ctx) => {
+    const { skip, run } = readRunRecord(ctx, 'A2a', [['markersNormalized', 'count']]);
+    if (skip) return skip;
+
+    const n = run.markersNormalized;
+    const findings = n > 0 ? [{ kind: 'markers-normalized', occurrences: n }] : [];
+    return {
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
+      examined: 1,
+      findings,
+      message: `${n} SEG markers re-glued by normalizeSegMarkers`,
+    };
+  },
+});
+
+/**
+ * A4 — glossary markers the MT invented and `unwrapInventedMarkers` removed. ADVISORY.
+ *
+ * An input to the §C82 ③ glossary-arm decision: if the glossary arm invents markers at a
+ * materially higher rate than the no-glossary arm, that is a cost of the arm and it is
+ * visible nowhere else.
+ *
+ * ⚠️ THE UNIT IS THE TYPE, NOT THE ITEM — the plan assumed a per-item array and asserted
+ * `toHaveLength(2)` for two items. The producer tallies (`{i: 2, term: 1}`), so one
+ * finding per type carrying its own count is what the data supports; the total rides in
+ * `message`. Richer than the plan assumed, not poorer.
+ */
+export const A4 = defineCheck({
+  id: 'A4',
+  tier: 2,
+  blocking: false,
+  version: 1,
+  run: (ctx) => {
+    const { skip, run } = readRunRecord(ctx, 'A4', [
+      ['unwrappedCount', 'count'],
+      ['unwrappedByType', 'record'],
+    ]);
+    if (skip) return skip;
+
+    const count = run.unwrappedCount;
+    const byType = run.unwrappedByType;
+    const findings = Object.entries(byType).map(([type, occurrences]) => ({
+      kind: 'invented-marker',
+      type,
+      occurrences,
+    }));
+
+    // NOT a self-referential invariant (§C82 L46): `.length` and `tallyByType` are
+    // computed by different code from the same input, so damage to one does not move the
+    // other. It is the only detector here for a sidecar edited after it was written.
+    const tallied = Object.values(byType).reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0);
+    if (tallied !== count) {
+      findings.push({ kind: 'tally-disagrees-with-count', count, tallied });
+    }
+
+    return {
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
+      examined: 1,
+      findings,
+      message: `${count} invented markers unwrapped across ${Object.keys(byType).length} type(s)`,
+    };
+  },
+});
+
+/**
+ * A8 — the module's input size and its cost estimate. RECORD ONLY, and deliberately so.
+ *
+ * 🔴 IT PASSES NO JUDGEMENT ON THE NUMBERS, AND MANUFACTURING ONE WOULD BE §C82 L46
+ * VERBATIM. `estimatedIsk` is `estimateIsk(chars)` = `chars * ISK_PER_1000_CHARS / 1000`
+ * (`tools/lib/malstadur-api.js:39`) — a pure linear function of `chars`. Recomputing it
+ * and comparing would be a predicate whose two sides derive from one input: both move
+ * together and the comparison cancels. The plan's "compare CHARACTERS, never
+ * estimate-vs-estimate from one function" is exactly this, and the way to honour it is
+ * to SURFACE `chars` as the comparable quantity rather than to invent a verdict.
+ *
+ * ⚠️ ITS ONE FAILURE MODE IS A TYPE, NOT A VALUE, AND THE DISTINCTION IS THE WHOLE POINT.
+ * `usage` is the only independently-sourced number here — it comes back from the API
+ * rather than from us — and its VALUE is still not a predicate: `usageUnits()` returns 0
+ * for any shape it does not recognise, so `0` is ambiguous between "nothing was billed"
+ * and "the shape changed and we could not read it", and a gate built on the value would
+ * report the second as the first. But its TYPE is not ambiguous at all, and a `usage`
+ * that is present and NOT a finite number is a real, once-live producer bug. That is
+ * reported. See the body for what is and is not known about its history.
+ *
+ * The values ride in `message` because `runCheck` normalises the result to the contract's
+ * five keys — an extra `record` key would be dropped silently on the way to the ledger.
+ */
+export const A8 = defineCheck({
+  id: 'A8',
+  tier: 2,
+  blocking: false,
+  version: 1,
+  run: (ctx) => {
+    const { skip, run } = readRunRecord(ctx, 'A8', [
+      ['chars', 'count'],
+      ['estimatedIsk', 'number'],
+    ]);
+    if (skip) return skip;
+
+    // 🔴 A MALFORMED `usage` IS REPORTED, NOT DROPPED — this is the only field here with a
+    // real history of arriving wrong. `api-translate` did `totalUsage += result.usage || 0`
+    // from `0` while the Málstaður client returns an OBJECT, and `0 + {}` in JS is string
+    // concatenation. The suite could not see it because producer and consumer were stubbed
+    // differently — the seam was untested by construction.
+    // ⚠️ AND HERE IS THE PART THAT MUST NOT BE OVERSTATED, BECAUSE THIS COMMENT SAID IT
+    // AND IT WAS WRONG: the corrupted value NEVER REACHED A SIDECAR. Measured 2026-08-26 —
+    // 242 provenance sidecars corpus-wide, ALL `schemaVersion: 1`, and 0 carrying a
+    // `usage` field at all. The run record was wired at `c91a7a7a` (2026-08-16 06:23Z) and
+    // the accumulation was fixed at `dac671b0` (19:48Z the SAME DAY); no run happened in
+    // that ~13-hour window. So the bug is real and the shape is real, but "it shipped into
+    // every sidecar for months" was a confident cause the evidence does not support — the
+    // §C82 L50 shape, in the very comment written to close L50. `run-record.js`'s own
+    // docstring carried the same overstatement and is corrected in the same commit.
+    // ▶ THE CHECK IS RIGHT EITHER WAY: coercing a wrong shape to empty and returning PASS
+    // is forbidden here whatever the field's history (L1), and A8 is the ONLY check that
+    // reads `usage`, so a silent drop leaves a recurrence with no observer in the battery.
+    // ⚠️ The earlier form was `FIELD_KIND.number(run.usage) ? ... : ''` — a coerce-to-empty
+    // on a wrong shape followed by PASS, which is exactly what this file's own header says
+    // it does not do (§C82 L1). Measured: it rendered `"0[object Object]"`, `{units: N}`,
+    // `null` and ABSENT byte-identically, so the historical bug was indistinguishable from
+    // a field that was never written.
+    // ▶ THE DISCRIMINATOR IS THE KEY, NOT THE VALUE. `JSON.stringify` drops an undefined
+    // value, so a sidecar that never carried a usage has no key at all — absent is silence,
+    // present-and-mistyped is a finding.
+    const findings = [];
+    let usagePart = '';
+    if (Object.prototype.hasOwnProperty.call(run, 'usage')) {
+      if (FIELD_KIND.number(run.usage)) {
+        usagePart = ` usage=${run.usage}`;
+      } else {
+        usagePart = ' usage=MALFORMED';
+        findings.push({
+          kind: 'malformed-usage',
+          got: describeType(run.usage),
+          value: String(run.usage).slice(0, 40),
+        });
+      }
+    }
+
+    // ⚠️ SO A8 HAS EXACTLY ONE FAILURE MODE, AND IT IS NOT A COST JUDGEMENT. It never
+    // compares an estimate against anything (that would be L46's self-referential
+    // invariant); it reports a field the producer PROMISED and did not deliver.
+    return {
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
+      examined: 1,
+      findings,
+      message: `chars=${run.chars} estimatedIsk=${run.estimatedIsk}${usagePart}`,
+    };
+  },
+});
+
+/** Tier 2's run-record half. Registered separately so the two halves stay legible. */
+export const MT_RUNRECORD_CHECKS = [A2a, A4, A8];
+
+registerChecks(MT_RUNRECORD_CHECKS);
