@@ -32,13 +32,13 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 | | |
 |---|---|
-| `main` | at **`d6c5e38b`** — PR #416 merged **and deployed 2026-08-25**, verified by tree diff and a clean fast-forward on prod (`Health: ok`, nothing stranded). Tiers 0+1, both plans, this handoff and the Phase 2.1 lock clearing are all on `main` and on production. |
-| Branch | none — **cut a fresh branch from `main`** (which is at `d6c5e38b`) |
+| `main` | ⚠️ **No sha is recorded here on purpose — this table pinned `d6c5e38b` and went stale the day Task 8 merged.** Tiers 0+1 (PR #416) and Tier 2's free half (PR #417) are both on `main` and both deployed. **`git rev-parse --short main` is the answer; the register's ⏩ RESUME owns what is merged.** |
+| Branch | none — **cut a fresh branch from `main`** |
 | Runbook | Phases 0, 1.1, 1.2, **2.1**, **2.2** complete. **3.1 is Plans B + C — this work.** |
 | Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |
 
-▶ **Start by cutting a branch from `main`.** #416 is merged and deployed, so `main` already carries Tiers 0+1, both plans and this briefing.
+▶ **Start by cutting a branch from `main`.** #416 and #417 are merged and deployed, so `main` already carries Tiers 0+1, Tier 2's free half, both plans and this briefing.
 
 ## Five things measured in the planning session that a cold reader will otherwise re-derive
 
