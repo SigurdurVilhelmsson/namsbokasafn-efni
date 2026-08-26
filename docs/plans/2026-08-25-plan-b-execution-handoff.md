@@ -10,9 +10,13 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-25 — TASKS 1-7 ARE DONE, MERGED (PR #416 → `d6c5e38b`) AND DEPLOYED.** Tiers 0
-> and 1 — everything that runs **before money is spent** — are on `main`. **Start at Task 8**
-> (Tier 2's free half: `A1`, `A6`, `A2(b)(c)`). Six Plan B tasks remain, then all 11 of Plan C.
+> ⏩ **UPDATED 2026-08-26 — TASKS 1-8 ARE DONE AND MERGED.** Tasks 1-7 = PR #416 (`d6c5e38b`),
+> **deployed**. Task 8 = PR #417 (`b93f5665`) — Tier 2's free half (`A1` advisory, `A6`/`A2b`/`A2c`
+> blocking) + the MIT `parseSegmentsMit` port — ✅ **deployed 2026-08-26 [OPERATOR-REPORTED, not
+> verifiable from a dev session].** **Start at Task 9** (Tier 2's
+> run-record half: `A2(a)`, `A4`, `A8`, and the SKIPPED path that matters — no module carries a run
+> record, so all three examine 0 of 220 pairs). **Five** Plan B tasks remain, then all 11 of Plan C.
+> 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still open and still blocks Plan C.**
 > **Status is the register's ⏩ RESUME block, not this file.**
 
 ## Read these, in this order, before touching anything
