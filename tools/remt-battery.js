@@ -24,7 +24,13 @@
  *   @property {string} [chapter]      'ch01' | '0' | 'appendices'          (scope)
  *   @property {string} [module]       'm68663'                             (scope)
  *   @property {string} [cnxml]        read-only source CNXML text    (Task 3: E2/E4)
- *   @property {string} [segText]      02-for-mt EN segments          (Task 3: E2/E4)
+ *   @property {string} [segText]      02-for-mt EN segments  (Task 3: E2/E4 · Task 8: A1/A2b)
+ *                                     🔴 A2b REQUIRES it — its cross-side leg is the only
+ *                                     detector for damage that DESTROYS a `SEG:` token, and
+ *                                     a loader that omits it gets SKIPPED (exit 1), never a
+ *                                     silent single-leg PASS. Same shape as `payloadVerdict`
+ *                                     below: a key a check consumes but this typedef does not
+ *                                     list is a detector a loader built to the doc leaves unrun.
  *   @property {string} [isText]       02-mt-output IS segments       (Task 8: A2/A6)
  *   @property {object} [provenance]   the parsed sidecar             (Task 9: A4/A8)
  *   @property {object} [glossary]     parsed glossary-unified.json   (Task 7: G1-G3)
@@ -129,6 +135,7 @@ import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
  * ─────────────────────────────────────────────────────────────────────────── */
 import './lib/remt-checks-glossary.js'; // Task 7 — G1-G5 (tier 0)
 import './lib/remt-checks-extract.js'; // Tasks 3-6 — E1-E7, E9 (tier 1)
+import './lib/remt-checks-mt.js'; // Task 8 — A1, A6, A2b, A2c (tier 2); Task 9 adds A2a/A4/A8
 
 /** Tiers the battery defines: 0 glossary · 1 extract · 2 MT · 3 output · 4 chapter. */
 export const TIER_MIN = 0;
