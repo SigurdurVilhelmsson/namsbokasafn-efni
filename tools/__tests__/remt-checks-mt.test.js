@@ -910,6 +910,12 @@ describe('registry wiring — a check that is never selected does not exist', ()
       A2b: 3,
       A2c: 1,
     });
-    expect([...REGISTRY.values()].filter((c) => c.tier === 2)).toHaveLength(4);
+    // ⚠️ A MEMBERSHIP PIN, WIDENED BY TASK 9 FROM 4 TO 7 — NOT DELETED. Tier 2 now also
+    // holds the run-record half (A2a, A4, A8), which registers from the same module.
+    // Asserting the IDS rather than only the count is what keeps this a pin: a count
+    // alone is satisfied by any seven checks, including seven of the wrong ones.
+    const tier2 = [...REGISTRY.values()].filter((c) => c.tier === 2);
+    expect(tier2.map((c) => c.id).sort()).toEqual(['A1', 'A2a', 'A2b', 'A2c', 'A4', 'A6', 'A8']);
+    expect(tier2).toHaveLength(7);
   });
 });
