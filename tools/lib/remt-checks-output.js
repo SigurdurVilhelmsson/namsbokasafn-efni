@@ -138,8 +138,16 @@ export const TRACKS = Object.freeze(['mt-preview', 'faithful']);
  * ⚠️ A book in NEITHER set is SKIPPED, not defaulted. Adding a run target means adding it
  * here deliberately, which is the point: the sets are the policy.
  */
-export const SCHEMA_STRICT_BOOKS = Object.freeze(new Set(['efnafraedi-2e']));
-export const SCHEMA_WARN_BOOKS = Object.freeze(new Set(['lifraen-efnafraedi']));
+/**
+ * ⚠️ FROZEN **ARRAYS**, NOT FROZEN `Set`s — measured, and the difference is not cosmetic.
+ * `Object.freeze(new Set([...]))` DOES NOT FREEZE THE SET: `Object.isFrozen` returns
+ * **true** while `.add()` and `.delete()` both still succeed silently. So the previous
+ * form advertised an immutable policy and provided a mutable one — on the policy that
+ * decides whether a blocking money gate FAILs or WARNs. `TRACKS` above is a frozen array
+ * and `TRACKS.push(...)` correctly throws, which is the shape to copy.
+ */
+export const SCHEMA_STRICT_BOOKS = Object.freeze(['efnafraedi-2e']);
+export const SCHEMA_WARN_BOOKS = Object.freeze(['lifraen-efnafraedi']);
 
 /**
  * Count the distinct element NAMES a tag-count comparison would look at.
@@ -468,7 +476,25 @@ export const R3 = defineCheck({
     // ▶ This is the argument the ctx contract already makes about `track` — "a Tier-3 gate
     // handed 'the translated CNXML' without a track judges AN artifact, not THE artifact" —
     // applied to the payload-taking checks, where it had not been.
-    if (ctx?.module && Array.isArray(v.targets) && v.targets.length) {
+    // 🔴 FAIL CLOSED. The first version of this guard ran only `if (ctx.module &&
+    // Array.isArray(v.targets) && v.targets.length)` — so a payload with `targets` absent,
+    // null, a string, or empty SKIPPED THE BINDING ENTIRELY and R3 went back to certifying
+    // whatever the verdict happened to cover. Measured: six such variants all returned
+    // `PASS examined 7` for a module the verdict said nothing about.
+    // ▶ THAT IS THE `errors` DEFECT AGAIN, IN THE COMMIT THAT FIXED `errors` — forty lines
+    // apart, opposite directions. A fix round is exactly where this happens.
+    if (ctx?.module) {
+      if (!Array.isArray(v.targets) || v.targets.length === 0) {
+        return {
+          verdict: VERDICT.SKIPPED,
+          examined: 0,
+          findings: [],
+          message:
+            'R3: ctx.module is set but the verdict carries no `targets` — a verdict that ' +
+            'cannot say WHICH files it covered is not evidence about this module. Produce it ' +
+            'with spawnSchemaCheck(), which echoes its targets.',
+        };
+      }
       // ⚠️ AN EXACT BASENAME MATCH, NOT A SUBSTRING TEST. A substring test happens to be
       // safe on today's corpus — measured: 0 substring pairs among all 1,192 module ids,
       // because they are fixed-width `m` + 5 digits — but that is a property of the CORPUS,
@@ -528,7 +554,7 @@ export const R3 = defineCheck({
     // ⚠️ This is NOT the "validate in the loader, not the gate" case: that rule is about a
     // PATH, which needs the filesystem. A closed-set membership test is a PURE policy
     // lookup — the same kind of pure refusal R1 already performs on `fidelityAllowlist`.
-    if (!SCHEMA_STRICT_BOOKS.has(ctx?.book) && !SCHEMA_WARN_BOOKS.has(ctx?.book)) {
+    if (!SCHEMA_STRICT_BOOKS.includes(ctx?.book) && !SCHEMA_WARN_BOOKS.includes(ctx?.book)) {
       return {
         verdict: VERDICT.SKIPPED,
         examined: 0,
@@ -539,8 +565,20 @@ export const R3 = defineCheck({
           `${[...SCHEMA_STRICT_BOOKS, ...SCHEMA_WARN_BOOKS].join(', ')}`,
       };
     }
-    const examined = Number.isInteger(v.filesChecked) ? v.filesChecked : 0;
-    const errors = v.errors;
+    // 🔴 SCOPE THE EVIDENCE TO THE MODULE, NOT JUST THE PERMISSION TO REPORT IT.
+    // The binding above decides WHETHER this verdict may speak for `ctx.module`; without
+    // this, `examined` and `findings` still described every file in the payload. Measured
+    // with the real instrument on a two-file batch where only the SIBLING was broken:
+    // `m68663` alone -> PASS; `m68663` batched with a broken `m68664` -> **FAIL, examined 2,
+    // the sole finding naming m68664.cnxml**. A clean module failed for its neighbour's
+    // defect, and the guard made the readout look module-scoped while it was not.
+    const inScope = (e) =>
+      !ctx?.module ||
+      String(e?.file || '')
+        .split('/')
+        .pop() === `${ctx.module}.cnxml`;
+    const errors = ctx?.module ? v.errors.filter(inScope) : v.errors;
+    const examined = ctx?.module ? 1 : Number.isInteger(v.filesChecked) ? v.filesChecked : 0;
     const fatals = errors.filter((e) => String(e?.type || '').toLowerCase() === 'fatal');
     const findings = errors.map((e) => ({
       kind: String(e?.type || '').toLowerCase() === 'fatal' ? 'schema-fatal' : 'schema-error',
@@ -555,7 +593,7 @@ export const R3 = defineCheck({
     let verdict = VERDICT.PASS;
     if (fatals.length) verdict = VERDICT.FAIL;
     else if (findings.length)
-      verdict = SCHEMA_STRICT_BOOKS.has(ctx.book) ? VERDICT.FAIL : VERDICT.WARN;
+      verdict = SCHEMA_STRICT_BOOKS.includes(ctx.book) ? VERDICT.FAIL : VERDICT.WARN;
     const suppressed = Array.isArray(v.suppressed) ? v.suppressed.length : 0;
     return {
       verdict,
@@ -758,6 +796,35 @@ export const OUTPUT_CHECKS = [R1, R2, R3, R4, R5];
 registerChecks(OUTPUT_CHECKS);
 
 /**
+ * Classify the validator's stderr: is this "the instrument could not run" or a real error?
+ *
+ * 🔴 EXTRACTED SO IT CAN BE TESTED WHERE THE INSTRUMENT DOES NOT EXIST — which is CI, and
+ * every fresh clone. The distinction it draws (instrument-absent vs usage-error) was
+ * originally asserted only through the real tool, and THAT TEST WENT RED IN CI while
+ * passing on a dev box:
+ *   · `experiments/cnxml-validation-gate/external/` (the RelaxNG schema) is gitignored —
+ *     **0 tracked files** — and no workflow installs `jing` or `java`;
+ *   · `validate-cnxml.js` checks the schema at `:91` and loads the allowlist at `:131`,
+ *     **schema first**;
+ *   · so on CI a deliberately-bad `--allowlist` never reaches the allowlist check. The tool
+ *     dies `FATAL: schema not found`, this classifier converts it, the helper RESOLVES, and
+ *     a test asserting a REJECTION fails.
+ * ▶ **A guard whose only test needs an instrument CI does not have is a guard CI cannot
+ * check** — and conditionally skipping it would leave it out of the loop entirely (§C82
+ * L57). Made pure instead, so the classification is bound everywhere and only the
+ * environment-dependent half stays in the spawn tests.
+ *
+ * @param {string} stderr
+ * @returns {{instrumentMissing: true, reason: string}|null} null when this is NOT an
+ *   instrument-absence — a usage error, which the caller must surface rather than swallow.
+ */
+export function classifyInstrumentStderr(stderr) {
+  const text = String(stderr || '');
+  if (!/FATAL: (jing not found|schema not found)/.test(text)) return null;
+  return { instrumentMissing: true, reason: text.trim().split('\n')[0] };
+}
+
+/**
  * Loader helper — run the RelaxNG gate in a separate process and return its parsed JSON.
  * NOT a gate: it does I/O and spawns, and it exists so `R3` does not have to.
  *
@@ -800,9 +867,8 @@ export function spawnSchemaCheck(targets, { repoRoot, allowlist, env } = {}) {
     child.on('close', () => {
       // The instrument's own refusals are FATAL: lines on stderr with exit 2. They are a
       // legitimate result of this helper, not an exception — R3 decides what they mean.
-      if (/FATAL: (jing not found|schema not found)/.test(err)) {
-        return resolve({ instrumentMissing: true, reason: err.trim().split('\n')[0] });
-      }
+      const missing = classifyInstrumentStderr(err);
+      if (missing) return resolve(missing);
       try {
         // `targets` is echoed back so a gate can refuse a verdict that does not cover the
         // module it is judging. The payload itself names no file on a clean run.

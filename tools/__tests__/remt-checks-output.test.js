@@ -31,6 +31,8 @@ import {
   elementNamesCompared,
   leafElementsCompared,
   spawnSchemaCheck,
+  classifyInstrumentStderr,
+  SCHEMA_STRICT_BOOKS,
 } from '../lib/remt-checks-output.js';
 import { loadAllowlist, loadAllowlistOrNull } from '../lib/fidelity-allowlist.js';
 import { extractLeafElements, preprocess } from '../cnxml-linguistic-check.js';
@@ -471,18 +473,28 @@ describe('spawnSchemaCheck — the loader helper', () => {
     expect(gate.examined).toBe(0);
   }, 30000);
 
-  it('a USAGE error REJECTS — it is not the same thing as a missing instrument', async () => {
-    // ⚠️ THE DISTINCTION IS LOAD-BEARING, and the first draft of this file conflated the
-    // two: a bad `--allowlist` is MY argument being wrong, not the environment lacking a
-    // tool. Rejecting is correct — it must not be swallowed into a verdict object, because
-    // `instrumentMissing` is a fact about the box that a human is expected to act on.
-    await expect(
-      spawnSchemaCheck([path.join(REPO_ROOT, 'books/efnafraedi-2e/03-translated')], {
-        repoRoot: REPO_ROOT,
-        allowlist: path.join(REPO_ROOT, 'no-such-allowlist.json'),
-      })
-    ).rejects.toThrow(/could not parse --json/);
-  }, 30000);
+  it('the instrument-vs-usage distinction is bound PURELY, so CI can check it', () => {
+    // 🔴 THIS REPLACED A TEST THAT WAS GREEN HERE AND RED IN CI — the exact "a local green
+    // is not evidence about CI" trap, committed on this branch. The old test provoked a
+    // USAGE error with a bad `--allowlist` and asserted a REJECTION. But
+    // `validate-cnxml.js` checks the schema at :91 and loads the allowlist at :131 —
+    // SCHEMA FIRST — and the schema tree is gitignored (0 tracked files), so on CI the tool
+    // dies `FATAL: schema not found`, the classifier converts it, the helper RESOLVES, and
+    // the assertion fails. Proven by running the tool with `--schema /nonexistent`.
+    // ▶ The distinction itself is pure, so it is tested purely and runs everywhere.
+    expect(classifyInstrumentStderr('validate-cnxml: FATAL: jing not found on PATH')).toMatchObject(
+      { instrumentMissing: true }
+    );
+    expect(classifyInstrumentStderr('validate-cnxml: FATAL: schema not found: /x')).toMatchObject({
+      instrumentMissing: true,
+    });
+    // A usage error is NOT an absent instrument — it must be surfaced, not swallowed.
+    expect(classifyInstrumentStderr('validate-cnxml: FATAL: allowlist not found: /x')).toBeNull();
+    expect(
+      classifyInstrumentStderr('validate-cnxml: FATAL: no such file or directory: /x')
+    ).toBeNull();
+    expect(classifyInstrumentStderr('')).toBeNull();
+  });
 });
 
 /**
@@ -554,14 +566,76 @@ describe('fix round — guards an adversarial review found missing', () => {
     expect(run(['/x/ch01'], 'm68663')).toBe(VERDICT.SKIPPED);
   });
 
+  it('R3: an absent/empty/mistyped `targets` FAILS CLOSED when a module is in scope', () => {
+    // 🔴 THE SECOND ROUND'S OWN DEFECT: the first version of this guard ran only when
+    // `targets` was a non-empty array, so every other shape SKIPPED THE BINDING and R3
+    // returned PASS for a module the verdict said nothing about — the `errors` fail-open
+    // defect again, forty lines away, inside the commit that fixed `errors`.
+    const base = { filesChecked: 7, errors: [], suppressed: [] };
+    for (const targets of [undefined, [], 'x', null, 42]) {
+      const r = R3.run({
+        book: 'efnafraedi-2e',
+        module: 'm68663',
+        schemaVerdict: { ...base, targets },
+      });
+      expect(r.verdict, `targets=${JSON.stringify(targets)}`).toBe(VERDICT.SKIPPED);
+    }
+    // CONTROLS: with no module in scope there is nothing to bind, and a correct target passes.
+    expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: base }).verdict).toBe(VERDICT.PASS);
+    expect(
+      R3.run({
+        book: 'efnafraedi-2e',
+        module: 'm68663',
+        schemaVerdict: { ...base, targets: ['/x/m68663.cnxml'] },
+      }).verdict
+    ).toBe(VERDICT.PASS);
+  });
+
+  it("R3: a sibling's schema error does not fail a clean module", () => {
+    // 🔴 The binding decided WHETHER the verdict could speak for this module; it did not
+    // scope WHAT it said. Measured with the real instrument on a two-file batch where only
+    // the sibling was broken: the clean module came back FAIL, examined 2, its sole finding
+    // naming the OTHER file. The guard made the readout look module-scoped while it was not.
+    const v = {
+      filesChecked: 2,
+      suppressed: [],
+      targets: ['/x/ch01/m68663.cnxml', '/x/ch01/m68664.cnxml'],
+      errors: [{ type: 'error', file: '/x/ch01/m68664.cnxml', message: 'bad element' }],
+    };
+    const clean = R3.run({ book: 'efnafraedi-2e', module: 'm68663', schemaVerdict: v });
+    expect(clean.verdict).toBe(VERDICT.PASS);
+    expect(clean.findings).toHaveLength(0);
+    expect(clean.examined).toBe(1);
+    // The SEPARATOR: the broken sibling must still fail, or the filter is just suppressing
+    // everything. Asserting only the clean side would pass on `errors = []`.
+    const broken = R3.run({ book: 'efnafraedi-2e', module: 'm68664', schemaVerdict: v });
+    expect(broken.verdict).toBe(VERDICT.FAIL);
+    expect(broken.findings).toHaveLength(1);
+    // And unscoped, the batch view is unchanged.
+    expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: v }).verdict).toBe(VERDICT.FAIL);
+  });
+
+  it('the blocking policy is genuinely immutable — a frozen Set is not', () => {
+    // ⚠️ `Object.freeze(new Set([...]))` reports `Object.isFrozen === true` and still
+    // permits `.add()` and `.delete()`. The policy that decides FAIL-vs-WARN on a blocking
+    // money gate was advertised as frozen and was not. Frozen ARRAYS do throw.
+    expect(() => SCHEMA_STRICT_BOOKS.push('liffraedi-2e')).toThrow();
+    expect(Object.isFrozen(SCHEMA_STRICT_BOOKS)).toBe(true);
+    expect([...SCHEMA_STRICT_BOOKS]).toEqual(['efnafraedi-2e']);
+  });
+
   it('R5: `examined` counts what findUntranslatedText ACTUALLY compares, preprocessing included', () => {
     // 🔴 THE SECOND ROUND OF THE SAME DEFECT. Round 1 stopped re-deriving the PREDICATE;
     // this binds the INPUT too. `findUntranslatedText` preprocesses (stripping <metadata>
     // and <m:math>) BEFORE extracting, and the first fix did not — measured across all 161
     // corpus pairs, raw was larger on 136 and smaller on 0.
     // RED BEFORE THE FIX on this very module: 10 against 3.
-    const s = SRC('efnafraedi-2e', 'ch01', 'm68663');
-    const t = TR('efnafraedi-2e', 'ch01', 'm68663', 'faithful');
+    // ⚠️ ch04/m68709, NOT ch01/m68663. On m68663 a ONE-SIDED loss of `preprocess` is
+    // invisible — 3 whichever single side drops it — so that fixture bound only the exact
+    // both-sides regression that existed and nothing narrower. m68709 separates all four:
+    // truth 109 · source-raw-only 107 · translated-raw-only 107 · both raw 112.
+    const s = SRC('efnafraedi-2e', 'ch04', 'm68709');
+    const t = TR('efnafraedi-2e', 'ch04', 'm68709');
     const truth = (() => {
       const a = extractLeafElements(preprocess(s));
       const b = extractLeafElements(preprocess(t));
@@ -570,15 +644,16 @@ describe('fix round — guards an adversarial review found missing', () => {
       return n;
     })();
     expect(leafElementsCompared(s, t)).toBe(truth);
-    // Non-vacuity: the raw count really does differ here, so this is not two zeros agreeing.
-    const raw = (() => {
-      const a = extractLeafElements(s);
-      const b = extractLeafElements(t);
+    const inter = (x, y) => {
       let n = 0;
-      for (const k of a.keys()) if (b.has(k)) n++;
+      for (const k of x.keys()) if (y.has(k)) n++;
       return n;
-    })();
-    expect(raw).toBeGreaterThan(truth);
+    };
+    // Non-vacuity, and it binds THREE mutants rather than one: dropping preprocess from
+    // both sides, from the source only, and from the translated only all move the number.
+    expect(inter(extractLeafElements(s), extractLeafElements(t))).toBeGreaterThan(truth);
+    expect(inter(extractLeafElements(s), extractLeafElements(preprocess(t)))).not.toBe(truth);
+    expect(inter(extractLeafElements(preprocess(s)), extractLeafElements(t))).not.toBe(truth);
   });
 
   it('R5: the BOTH-SIDES intersection is what stops an empty translation reading clean', () => {

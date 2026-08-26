@@ -131,6 +131,23 @@
  *                                     trap (L17) in a new place — so the sub-count is
  *                                     REPORTED rather than gated on.
  *   @property {object} [schemaVerdict] spawnSchemaCheck() result            (Task 11: R3)
+ *                                     🔴 IT MUST CARRY `targets` — the array of paths the
+ *                                     validator actually looked at — WHENEVER `module` is
+ *                                     set, or R3 SKIPs (and R3 is blocking, so that halts).
+ *                                     `spawnSchemaCheck` echoes it; a verdict read from a
+ *                                     cache or produced by any other route must too. On a
+ *                                     CLEAN verdict the payload names no file at all
+ *                                     (`errors[]` is the only place a filename appears, and
+ *                                     it is empty exactly then), so without `targets` there
+ *                                     is nothing to bind a PASS to.
+ *                                     ⚠️ SPAWN WITH PER-FILE TARGETS, NOT A DIRECTORY, when
+ *                                     you intend per-module verdicts: a directory target
+ *                                     names no module and is refused. ONE spawn per chapter
+ *                                     listing its files works and is cheap — the cost is
+ *                                     JVM startup per INVOCATION, not per file — and R3
+ *                                     then scopes `findings`/`examined` to `ctx.module`
+ *                                     itself. A single-file spawn is ~732 ms if you prefer
+ *                                     it.
  *                                     🔴 Same shape as `payloadVerdict` above: a key a
  *                                     check consumes that the contract does not list is a
  *                                     detector a loader built to the doc leaves unrun. R3
