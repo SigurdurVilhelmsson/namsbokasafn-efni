@@ -393,6 +393,33 @@ function numericDrops(ctx) {
   return Number.isInteger(n) && n >= 0 ? n : NaN;
 }
 
+/**
+ * How much surplus a `>=` PASS is sitting on, per unit — the amount of real loss a clean
+ * K2 verdict could absorb without moving. Reported, never gated on.
+ *
+ * ⚠️ THIS RE-DERIVES THE PRODUCER'S COUNTING PREDICATE, WHICH THIS FILE'S OWN HEADER WARNS
+ * AGAINST (§C82 L69), SO THE BOUND IS STATED RATHER THAN LEFT IMPLICIT. `checkChapter`'s
+ * counts are module-local and not exported, so a margin figure cannot be obtained by
+ * calling the real thing. What makes the copy acceptable HERE and not in `examined` is that
+ * it feeds a MESSAGE and never a verdict: if it drifts from the producer, an operator reads
+ * a wrong surplus, and no gate changes its mind. That is §C82 L76's precedent — report the
+ * sub-count, never gate on it — and the day these numbers gate anything, this function must
+ * be replaced by an export from the producer instead of kept in sync by hand.
+ */
+function marginNote({ cnxml, html }) {
+  const c = (s, re) => (s.match(re) || []).length;
+  const cn = cnxml.join('\n');
+  const ht = html.join('\n');
+  const parts = [];
+  for (const [unit, a, b] of [
+    ['math', c(cn, /<m:math\b/g), c(ht, /<mjx-container\b/g)],
+    ['image', c(cn, /<image\b/g), c(ht, /<img\b/g)],
+  ]) {
+    if (b > a) parts.push(`${unit} +${b - a}`);
+  }
+  return parts.length ? `PASS margin ${parts.join(', ')} (rollups re-present; not a defect)` : '';
+}
+
 /** The shared refusal for a missing `knownIntentionalImageDrops`. */
 function dropsRefusal(id, examined) {
   return {
@@ -446,7 +473,16 @@ export const K2 = defineCheck({
       message:
         `${findings.length} cross-stage drop(s) over ${content.html.length} published HTML ` +
         `file(s) from ${content.cnxml.length} injected CNXML file(s)` +
-        (drops ? `, allowing ${drops} intentional image drop(s)` : ''),
+        (drops ? `, allowing ${drops} intentional image drop(s)` : '') +
+        // ⚠️ THE MARGIN A PASS CARRIES, DISCLOSED — because the invariant is `>=`, a PASS
+        // means "the html side has AT LEAST as many", and the surplus is how much real
+        // damage a PASS could absorb unseen. Measured: in 2 of 26 evaluable cells that
+        // surplus EXCEEDS the entire CNXML-side population, including organic's ONLY cell
+        // with published HTML. ▶ The `>=` is CORRECT and must not be tightened — rollup
+        // pages legitimately re-present equations — so the answer is disclosure, not a
+        // stricter comparison. Without it, a PASS printed byte-identical text whether the
+        // margin was untouched or had swallowed a genuine loss.
+        (marginNote(content) ? ` · ${marginNote(content)}` : ''),
     };
   },
 });
@@ -589,6 +625,26 @@ export const K3 = defineCheck({
     // later, on a blocking check. Found twice independently: once as a finding, and once
     // as a SURVIVING MUTANT whose removal was the safer direction.
     // ▶ A map supplied without a track to check it against cannot be used as evidence.
+    // 🔴 `TRACKS` IS CONSULTED HERE, AND UNTIL THE FIX ROUND IT WAS CONSUMED BY NOTHING —
+    // exported, frozen, pinned for frozenness, and read by no production path. That is the
+    // exact inverse of the shape this whole battery exists to prevent (§C82 L3/L5, "a gate
+    // that is never called"): a constant that looks like policy and enforces none. Either
+    // use it or delete it; this uses it. An unknown track means the loader reached a
+    // directory path from an unvalidated flag, which is precisely what `slugMapFilename`
+    // validates for the same reason.
+    // ⚠️ A closed-set membership test is a PURE POLICY LOOKUP, which §C82 L73 established a
+    // pure gate may perform — unlike a path check, which needs the filesystem and belongs
+    // in the loader.
+    if (ctx?.track != null && !TRACKS.includes(ctx.track)) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message:
+          `K3: ${JSON.stringify(ctx.track)} is not a publication track ` +
+          `(${TRACKS.join(' | ')}) — a verdict cannot be scoped to a tree that does not exist`,
+      };
+    }
     if (rawMap != null && (!ctx?.track || rawMap.track !== ctx.track)) {
       return {
         verdict: VERDICT.SKIPPED,
@@ -619,6 +675,11 @@ export const K3 = defineCheck({
     const accounted = new Set(
       entries
         .filter((r) => r && r.from && r.to && r.from !== r.to)
+        // ⚠️ `r.from` IS STILL LOAD-BEARING AFTER THE L93 FIX, RE-DERIVED RATHER THAN
+        // ASSUMED. `from` now arrives as the `Object.entries` KEY rather than a field, so
+        // the obvious reading is that it can no longer be falsy — but an empty-string key
+        // is legal JSON and survives `Object.entries` intact (`{"": {...}}` → `['', …]`),
+        // which is exactly the degenerate entry a hand-edited map can carry.
         // Bound on the module id AND BOTH ENDS of the rename. The first draft keyed on
         // `(moduleId, to)` only, which the review measured as too weak in the direction
         // that matters: ANY historical entry whose destination happens to be the current

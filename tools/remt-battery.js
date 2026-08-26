@@ -21,7 +21,30 @@
  *
  *   @typedef {object} CheckContext
  *   @property {string}  book          slug, e.g. 'efnafraedi-2e'          (scope)
- *   @property {string} [chapter]      'ch01' | '0' | 'appendices'          (scope)
+ *   @property {string} [chapter]      '1' | '01' | 1 | '0' | 'appendices'  (scope)
+ *                                     🔴 THIS LINE READ `'ch01' | '0' | 'appendices'` UNTIL
+ *                                     TASK 12, AND THE FIRST SPELLING IT DOCUMENTED IS ONE
+ *                                     THAT SILENTLY READS NOTHING. Measured against
+ *                                     `readChapterFromDisk`, the producer of Tier 4's
+ *                                     `chapterInputs`:
+ *                                       4 · '4' · '04' · 0 · '0' · 'appendices'  → content
+ *                                       'ch04' · 'ch4' · 'ch00' · -1             → {cnxml:[], html:[]}
+ *                                     An empty read makes every Tier-4 content check SKIP,
+ *                                     and K2/K5 are BLOCKING — so a driver built to the old
+ *                                     wording halts on every chapter while looking like a
+ *                                     tier that simply found nothing to judge.
+ *                                     ⚠️ **`-1` IS THE TRAP A CAREFUL READER IS MOST LIKELY
+ *                                     TO HIT, BECAUSE CLAUDE.md SENDS THEM THERE**: its
+ *                                     Directory-Structure section prescribes `-1` as the
+ *                                     appendix sentinel, and that is right for
+ *                                     `chapterLabel.chapterDir()` and wrong here — both of
+ *                                     the render-fidelity tool's path builders compare
+ *                                     `chapter === 'appendices'` as a STRING, so `-1`
+ *                                     builds `ch-1` and `chapters/-1`. **Pass the string.**
+ *                                     ▶ The `ch`-prefixed forms are the source-tree
+ *                                     convention; Tier 4 reads publication-track output,
+ *                                     whose dirs are BARE. Two conventions, and this key
+ *                                     takes the bare one.
  *   @property {string} [module]       'm68663'                    (scope · Task 10: A5)
  *                                     ⚠️ NO LONGER SCOPE-ONLY. A5 keys the residue
  *                                     allowlist on it and SKIPS without it. It is

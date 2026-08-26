@@ -70,6 +70,35 @@ describe('the corpus fixtures this file rests on are real', () => {
   });
 });
 
+/**
+ * 🔴 READ THIS BEFORE "FIXING" A RED IN THIS FILE AFTER A RE-RENDER.
+ *
+ * Four assertions below pin EXACT magnitudes from the July-2026 chemistry publication tree:
+ * K2's `dropped: 6` on ch4, K4's `lostCount: 6` on the same cell, the appendices
+ * `dropped: 1` pair, and K2's `PASS margin math +6` on ch6. They are green in CI today and
+ * **they will go RED on the first chemistry re-render — which is the very event this
+ * battery exists to gate.** The failure therefore arrives mid-campaign, inside the tests of
+ * the tool doing the gating, which is the worst possible moment to be guessing.
+ *
+ * ▶ THE DECISION, STATED RATHER THAN LEFT IMPLICIT: the constants STAY. Three options were
+ * available — derive the expectation from the inputs at runtime, assert a relation
+ * (`dropped > 0`) instead of a magnitude, or keep the magnitudes with this note. Deriving
+ * at runtime makes the test tautological: it would compare the check against a re-derivation
+ * of the check, and pass for a detector returning garbage. A bare `> 0` is weaker in the
+ * direction that matters — Global Constraint 4 licenses K2's BLOCKING flag on a *measured*
+ * known-bad fixture, and a relation does not measure anything.
+ *
+ * ▶ SO A RED HERE IS SIGNAL, NOT FLAKE: it means the fixture's premise expired — the
+ * known-bad chapter got re-rendered and may no longer be bad. **Re-measure and re-pin; do
+ * not relax the assertion and do not delete the test.** If `dropped` becomes 0, that is the
+ * §C64 loss being FIXED, and the right response is to find a new known-bad fixture or move
+ * K2 to advisory with the new rate stated — not to make the old assertion vaguer.
+ *
+ * ⚠️ `BASELINE_CH12`/`REAL_BASELINE_APP` are deliberately NOT in this category: they read
+ * the committed baseline file, so they move with the artifact. That was chosen for staleness
+ * resistance and it has a cost worth naming — a regenerated baseline cannot make those tests
+ * fail, so they pin K1's HANDLING of a histogram, never the histogram's content.
+ */
 describe('K2 — the cross-stage drop invariant, and the option that decides its rate', () => {
   it('finds the measured drop on chemistry ch4: 6 equations', async () => {
     // The one natural must-trip in the two run-target books. §C82 L88's denominator:
@@ -697,6 +726,62 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
     // outside it by design, so `examined` is smaller than the file count.
     const htmlCount = fs.readdirSync(dir).filter((f) => f.endsWith('.html')).length;
     expect(before.size).toBeLessThan(htmlCount);
+  });
+
+  it('K3 refuses an unknown track — TRACKS is consulted, not merely frozen', async () => {
+    // 🔴 UNTIL THIS TEST, `TRACKS` WAS CONSUMED BY NOTHING: exported, frozen, pinned for
+    // frozenness, and read by no production path — a constant that looks like policy and
+    // enforces none, which is §C82 L3/L5's shape inverted. An unknown track means the
+    // loader reached a directory path from an unvalidated flag.
+    const r = await runCheck(K3, {
+      book: 'efnafraedi-2e',
+      track: 'MT-Preview', // right letters, wrong case — the near-miss L73 measured
+      chapter: '10',
+      publishedBefore: snap([['a.html', 'm1']]),
+      publishedAfter: snap([['a.html', 'm1']]),
+    });
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toContain('not a publication track');
+  });
+
+  it('K3 keeps BOTH files when one module occupies two pages — append, not overwrite', async () => {
+    // `byModule`'s `if (!m.has(moduleId))` is what makes the value a list. Overwriting
+    // instead would make a module that lost one of its two pages read as clean.
+    const r = await runCheck(K3, {
+      ...base,
+      publishedBefore: snap([
+        ['x-1.html', 'm1'],
+        ['x-2.html', 'm1'],
+      ]),
+      publishedAfter: snap([['x-1.html', 'm1']]),
+      slugMap: null,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.map((f) => f.kind)).toContain('unaccounted-rename');
+    expect(r.examined).toBe(2); // both pages were in the population
+  });
+
+  it('K2 discloses the margin a PASS is sitting on, and stays silent when there is none', async () => {
+    // The `>=` is correct and must not be tightened — rollups legitimately re-present
+    // equations — so the answer to "how much damage could this PASS absorb?" is disclosure.
+    // ⚠️ THE FIXTURE IS ch6, AND FINDING IT REQUIRED RE-MEASURING A RELAYED CLAIM. The
+    // review reported "2 of 26 cells" carry a margin exceeding the whole CNXML population;
+    // re-measured here, **4 of 26 carry ANY positive margin** — chemistry/mt-preview ch6
+    // (math +6), chemistry/faithful ch1 (math +73 over a CNXML population of ZERO) and ch3
+    // (math +23), organic/mt-preview ch3 (image +117 over 80) — and the reviewer's 2 are
+    // the subset where it exceeds the population. Both numbers are right about different
+    // things; the denominator is what separates them. **Chemistry appendices, the obvious
+    // fixture, has NO positive margin at all** (math 504→504, image 36→35), which is why
+    // the first draft of this test failed.
+    const withMargin = await runCheck(K2, ctxFor(6));
+    expect(withMargin.verdict).toBe(VERDICT.PASS);
+    expect(withMargin.message).toContain('PASS margin math +6');
+
+    // The negative half: a clean cell with no surplus must not print a margin note at all,
+    // or the disclosure becomes noise an operator learns to skip.
+    const noMargin = await runCheck(K2, ctxFor(10));
+    expect(noMargin.verdict).toBe(VERDICT.PASS);
+    expect(noMargin.message).not.toContain('PASS margin');
   });
 
   it('K4 carries the skeletons an operator needs, not just a count', async () => {
