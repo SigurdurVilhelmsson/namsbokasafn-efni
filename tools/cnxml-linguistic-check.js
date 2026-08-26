@@ -46,7 +46,7 @@ const LEAF_TAGS = ['para', 'item', 'caption'];
  * Strip metadata and MathML blocks from CNXML before extraction.
  * These contain content that is legitimately identical in both languages.
  */
-function preprocess(cnxml) {
+export function preprocess(cnxml) {
   let result = cnxml;
   // Strip <metadata>...</metadata> blocks
   result = result.replace(/<metadata[\s\S]*?<\/metadata>/g, '');
@@ -73,7 +73,7 @@ function preprocess(cnxml) {
  * In practice this risk is low because OpenStax CNXML is structurally
  * preserved during injection — untranslated elements are copied as-is.
  */
-function extractLeafElements(cnxml) {
+export function extractLeafElements(cnxml) {
   const elements = new Map();
 
   for (const tag of LEAF_TAGS) {

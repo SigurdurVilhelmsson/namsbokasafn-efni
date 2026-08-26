@@ -61,13 +61,37 @@ describe('the empty-selection refusal', () => {
     await expect(runTier(1, {}, [])).rejects.toThrow(/no checks selected/);
   });
 
+  /**
+   * ⚠️ THE PROBE TIER IS 9, AND IT USED TO BE 3 — Task 11 registered tier 3 (R1-R5) and
+   * both of these went red, exactly as predicted before that module was written.
+   *
+   * 🔴 THE OBVIOUS REPAIR — 3 → 4 — IS WRONG: Task 12 registers tier 4 and inherits the
+   * identical breakage one task later. The property under test is `runTier`'s OWN
+   * contract ("a run that judged nothing must not report clean"), not a fact about which
+   * tiers happen to be empty today, and every tier 0-4 is populated by the end of Plan B.
+   *
+   * ▶ 9 IS SOUND RATHER THAN A DODGE, and the mechanism is unchanged: `runTier` does NOT
+   * range-validate its tier — it only filters `REGISTRY` by `c.tier === tier` — so tier 9
+   * exercises the same selection path and the same empty-set refusal. Only the CLI
+   * validates the 0-4 range, via `parseTier`, so a tier outside it is unreachable from the
+   * CLI and can never be claimed by a future task.
+   * ⚠️ Do NOT try to `mk()` a tier-9 check to pair with this: `defineCheck` rejects any
+   * tier outside 0-4 at construction. These tests need no synthetic check at all — that
+   * is the point of them.
+   */
   it('throws when the REGISTRY holds nothing for the requested tier', async () => {
-    // The L3 shape exactly: nothing registered for tier 3.
-    await expect(runTier(3, {})).rejects.toThrow(/no checks selected/);
+    await expect(runTier(9, {})).rejects.toThrow(/no checks selected/);
   });
 
   it('the message says how big the registry is, so the cause is readable', async () => {
-    await expect(runTier(3, {})).rejects.toThrow(/registry holds \d+/);
+    await expect(runTier(9, {})).rejects.toThrow(/registry holds \d+/);
+  });
+
+  it('CONTROL: the refusal is about EMPTINESS, not about the number 9', async () => {
+    // Without this, both tests above would still pass if `runTier` had been changed to
+    // reject every unknown tier for its own reasons — the assertion would name the tier
+    // rather than the empty selection. Tier 3 is populated now, so it must NOT throw.
+    await expect(runTier(3, {})).resolves.toBeDefined();
   });
 
   it('POSITIVE CONTROL: selection really filters BY TIER, not "whatever is registered"', async () => {

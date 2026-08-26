@@ -83,6 +83,84 @@
  *                                     comes from `api-translate --force --dry-run`, which
  *                                     costs money and which no test may reach — so the
  *                                     driver must produce it and the gate stays pure.
+ *   @property {string} [track]       'mt-preview' | 'faithful'          (Task 11: TIER 3)
+ *                                     🔴 TIER 3 IS THE FIRST TIER WHOSE INPUTS ARE
+ *                                     TRACK-SCOPED, which is why this key did not exist
+ *                                     until now: the read-only source tree and both
+ *                                     `02-*` trees are not split by track, while
+ *                                     `03-translated/<track>/` and
+ *                                     `05-publication/<track>/` are. Measured: the four
+ *                                     chemistry modules present in BOTH tracks DIFFER in
+ *                                     all four (m68663 3098v3129, m68664 25895v26223,
+ *                                     m68699 1895v1897, m68700 78247v78200 bytes), so a
+ *                                     Tier-3 gate handed "the translated CNXML" without a
+ *                                     track judges AN artifact, not THE artifact.
+ *                                     ⚠️ VALIDATE IT IN THE LOADER, NOT IN A GATE — it
+ *                                     reaches a directory path from a CLI flag, the same
+ *                                     reason `slugMapFilename(track)` validates. Gates are
+ *                                     pure (rule 5), so they cannot.
+ *   @property {string} [translatedCnxml] `03-translated/<track>/<ch>/<m>.cnxml` text
+ *                                     (Task 11: R1/R5)
+ *   @property {object} [fidelityAllowlist] the PARSED books/<slug>/fidelity-allowlist.json,
+ *                                     or `null` when the file is absent (Task 11: R1)
+ *                                     🔴 THE LOADER MUST BE `loadAllowlistOrNull`, NOT
+ *                                     `loadAllowlist` — the third instance of §C21/§C82
+ *                                     L57 and the worst of them, because it has THREE
+ *                                     representations of "nothing": a missing file,
+ *                                     `{"entries": []}` and `{"entries": null}` all return
+ *                                     byte-identical `{entries: []}`. Measured: of the six
+ *                                     books with a source tree exactly ONE has a
+ *                                     fidelity-allowlist; `lifraen-efnafraedi`, a live run
+ *                                     target, has NONE — so R1 over organic would load
+ *                                     "nothing is pre-explained" and be unable to tell
+ *                                     that from a deliberately-empty allowlist.
+ *   @property {object} [injectReport] the object `buildCnxml()` returns (Task 11: R2)
+ *                                     ⚠️ `cnxml-inject.js` has NO `--json` and needs none:
+ *                                     `buildCnxml` is exported at :5154 and is I/O-free
+ *                                     (verified by call-site census). The DRIVER calls it;
+ *                                     the gate stays pure.
+ *   @property {object} [inlineAttrs] `extractSegments`' inlineAttrs map     (Task 11: R2)
+ *                                     ⚠️ OPTIONAL AND REPORTING-ONLY — R2's verdict does
+ *                                     not depend on it. It exists so the message can state
+ *                                     the JUDGEABLE population beside `examined`: every
+ *                                     R2 leg requires `inlineAttrs[segmentId]` truthy, and
+ *                                     only 666 of 23,154 segments (2.88%) carry an entry,
+ *                                     with 39 of 166 modules (23.5%) carrying none. Keying
+ *                                     `examined` to that count would SKIP 23.5% of modules
+ *                                     on a BLOCKING check — E4's measured ~70% false-halt
+ *                                     trap (L17) in a new place — so the sub-count is
+ *                                     REPORTED rather than gated on.
+ *   @property {object} [schemaVerdict] spawnSchemaCheck() result            (Task 11: R3)
+ *                                     🔴 IT MUST CARRY `targets` — the array of paths the
+ *                                     validator actually looked at — WHENEVER `module` is
+ *                                     set, or R3 SKIPs (and R3 is blocking, so that halts).
+ *                                     `spawnSchemaCheck` echoes it; a verdict read from a
+ *                                     cache or produced by any other route must too. On a
+ *                                     CLEAN verdict the payload names no file at all
+ *                                     (`errors[]` is the only place a filename appears, and
+ *                                     it is empty exactly then), so without `targets` there
+ *                                     is nothing to bind a PASS to.
+ *                                     ⚠️ SPAWN WITH PER-FILE TARGETS, NOT A DIRECTORY, when
+ *                                     you intend per-module verdicts: a directory target
+ *                                     names no module and is refused. ONE spawn per chapter
+ *                                     listing its files works and is cheap — the cost is
+ *                                     JVM startup per INVOCATION, not per file — and R3
+ *                                     then scopes `findings`/`examined` to `ctx.module`
+ *                                     itself. A single-file spawn is ~732 ms if you prefer
+ *                                     it.
+ *                                     🔴 Same shape as `payloadVerdict` above: a key a
+ *                                     check consumes that the contract does not list is a
+ *                                     detector a loader built to the doc leaves unrun. R3
+ *                                     is BLOCKING, so its absence HALTS rather than
+ *                                     passing — an unvalidated module is not a certified
+ *                                     one.
+ *   @property {object[]} [auditResults] the array `audit-render-output.js --json` emits,
+ *                                     one entry per module ATTEMPTED       (Task 11: R4)
+ *                                     ⚠️ Entries carrying `error` were attempted and NOT
+ *                                     audited. R4 counts them as findings and excludes
+ *                                     them from `examined`; treating the array length as
+ *                                     the examined count is the §C60 defect this check was
+ *                                     built around.
  *   @property {string[]} [emittedFiles] filenames the extract emitted (Task 5: E6)
  *                                     ⚠️ A LISTING, NOT A PATH — gates are pure, so the
  *                                     loader walks the directory. It must scope the list
@@ -90,6 +168,17 @@
  *                                     trees already hold 14,634 historical backup files
  *                                     (2026-03-08 → 2026-08-12), and E6 is blocking.
  *
+ * ⚠️ THE PROSE ABOVE DELIBERATELY AVOIDS THE LITERAL STRING `01-` + `source`, AND THAT
+ * IS NOT FUSSINESS. `tools/__tests__/source-write-guard.test.js` nets any top-level
+ * `tools/*.js` whose TEXT matches the read-only source directory's name and requires a
+ * reviewer to classify it. (That name is deliberately not spelled here either — quoting
+ * the guard's own pattern in a comment re-trips it, which is how this note started.)
+ * This file performs NO I/O AT ALL — it imports no `fs`, and the one `fs.` above is
+ * itself prose — so it is not a toucher and must not be added to that ALLOW set: doing so
+ * would dilute the tripwire for the one moment it exists to catch. Task 11 tripped this
+ * red by naming the source tree in a COMMENT, which is exactly the review the guard is
+ * for; the classification came back "not a toucher", so the prose changed rather than the
+ * allow-list. ▶ If you add a real loader here, that answer flips — see the note below.
  * ▶ Until the loader lands, this CLI passes only the SCOPE keys, so every other key
  * reads as plain `undefined`. 🔴 THAT IS NOT STRUCTURALLY LOUD, AND AN EARLIER
  * VERSION OF THIS COMMENT CLAIMED IT WAS. Reading `ctx.cnxml` does not throw — it
@@ -168,6 +257,7 @@ import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
 import './lib/remt-checks-glossary.js'; // Task 7 — G1-G5 (tier 0)
 import './lib/remt-checks-extract.js'; // Tasks 3-6 — E1-E7, E9 (tier 1)
 import './lib/remt-checks-mt.js'; // Task 8 — A1, A6, A2b, A2c (tier 2); Task 9 adds A2a/A4/A8
+import './lib/remt-checks-output.js'; // Task 11 — R1-R5 (tier 3)
 
 /** Tiers the battery defines: 0 glossary · 1 extract · 2 MT · 3 output · 4 chapter. */
 export const TIER_MIN = 0;

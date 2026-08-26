@@ -320,4 +320,25 @@ if (opts.json) {
   }
 }
 
-process.exit(surviving.length > 0 ? 1 : 0);
+// 🔴 `process.exitCode`, NOT `process.exit()` — AND THIS ONE WAS A LIVE, MEASURED
+// TRUNCATION, not a precaution. Node writes stdout to a PIPE asynchronously, so
+// `process.exit()` discards whatever is still queued, silently, with the exit code still
+// correct. Measured 2026-08-26 on the two kept books' `03-translated` trees:
+//
+//     `> file` (synchronous)   171,714 bytes ×3, JSON.parse OK
+//     `| cat`  (a pipe)         65,536 bytes ×3 — exactly the pipe buffer — JSON.parse
+//                               throws `Unterminated string in JSON`
+//     execFileSync(maxBuffer 256MB)   0 of 5 runs parsed, all with status 0
+//
+// ▶ A `>` redirect stays clean, which is why a hand check never sees this. It surfaces
+// only once the payload outgrows 64 KB — i.e. on the real corpus rather than in a smoke
+// test — and the caller that trips it is precisely the one §C82's Tier 3 needs:
+// `spawnSchemaCheck` reads this tool's `--json` from a pipe, ignores the exit code, and
+// parses stdout. Without this line R3-by-spawn cannot work at all.
+//
+// ⚠️ ONLY THIS EXIT CONVERTS. The `die()` paths above keep `process.exit(2)`: they run
+// BEFORE any stdout write, and converting an exit that guards a usage error makes the
+// program fall through into the rest of the run (CLAUDE.md's durable rule says so
+// explicitly, from a measured case on `tools/remt-battery.js`). This is the last
+// statement in the file, so letting the process end naturally changes nothing else.
+process.exitCode = surviving.length > 0 ? 1 : 0;
