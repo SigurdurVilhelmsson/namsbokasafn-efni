@@ -73,7 +73,7 @@ function preprocess(cnxml) {
  * In practice this risk is low because OpenStax CNXML is structurally
  * preserved during injection — untranslated elements are copied as-is.
  */
-function extractLeafElements(cnxml) {
+export function extractLeafElements(cnxml) {
   const elements = new Map();
 
   for (const tag of LEAF_TAGS) {
