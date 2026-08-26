@@ -93,6 +93,18 @@ describe('the premise: the committed corpus is v1 today', () => {
     expect(byBook).toEqual({ 'efnafraedi-2e': 150, 'lifraen-efnafraedi': 50 });
     expect(found).toHaveLength(200);
 
+    // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 200
+    // is NOT the population every other number in this suite family uses. The sibling
+    // suite counts `*-segments.is.md` with `chapter-metadata-*` DELIBERATELY EXCLUDED
+    // (chemistry 149, organic 48); this walk counts SIDECARS and excludes nothing, so it
+    // is 197 module sidecars PLUS 3 chapter-metadata ones. Both numbers are right and
+    // they reconcile exactly — but a reader comparing 200 against 207 without this note
+    // is comparing populations, which is this repo's commonest error. Asserted rather
+    // than merely commented, so the reconciliation stays checkable.
+    const metadata = found.filter((f) => path.basename(f).startsWith('chapter-metadata'));
+    expect(metadata).toHaveLength(3);
+    expect(found.length - metadata.length).toBe(197); // 149 chemistry + 48 organic modules
+
     const parsed = found.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
     // The positive control. Without it, "0 with a run record" is what a broken walk
     // returns — an absence you manufactured is not an answer.
