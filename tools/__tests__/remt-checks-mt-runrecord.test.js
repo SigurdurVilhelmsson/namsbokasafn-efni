@@ -337,6 +337,71 @@ describe('the case-2 message must not assert a cause the code cannot know', () =
   });
 });
 
+/**
+ * ── PINS ADDED BY MUTATION TESTING, NOT BY REVIEW ──────────────────────────────────
+ * A first pass caught 16 of 21 mutants. The five survivors below were all cases where
+ * the CODE was already correct and NOTHING BOUND IT — a later "simplification" of
+ * `FIELD_KIND` or of A2a's threshold would have gone green. §C82 L39: mutation-test the
+ * predicate's BREADTH, not merely its presence. Each `it` here kills exactly one mutant,
+ * named in its comment, so a future reader can tell what the test is defending.
+ */
+describe('predicate breadth — the cases a green suite did not bind', () => {
+  // MUTANT: `count: (v) => typeof v === 'number' && v >= 0` (integer-ness dropped).
+  // A fractional counter is nonsense that would flow straight into a finding's magnitude.
+  it('A2a SKIPs on a FRACTIONAL markersNormalized', async () => {
+    const r = await runCheck(A2a, v2(cleanRecord({ markersNormalized: 1.5 })));
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toContain('markersNormalized');
+  });
+
+  // MUTANT: `count: (v) => Number.isInteger(v)` (the `>= 0` clause dropped).
+  // 🔴 THE DANGEROUS DIRECTION: a negative counter passes `n > 0` as FALSE, so the module
+  // would read PASS — a clean verdict manufactured from a corrupt number.
+  it('A2a SKIPs on a NEGATIVE markersNormalized rather than reading it as clean', async () => {
+    const r = await runCheck(A2a, v2(cleanRecord({ markersNormalized: -1 })));
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toContain('markersNormalized');
+  });
+
+  // MUTANT: `const findings = n > 1 ? ...` — the classic boundary. Exactly one re-glued
+  // marker is still damage the file cannot show you.
+  it('A2a WARNs at markersNormalized === 1, the boundary', async () => {
+    const r = await runCheck(A2a, v2(cleanRecord({ markersNormalized: 1 })));
+    expect(r.verdict).toBe(VERDICT.WARN);
+    expect(r.findings).toHaveLength(1);
+    expect(r.findings[0]).toMatchObject({ kind: 'markers-normalized', occurrences: 1 });
+  });
+
+  // MUTANT: `record: (v) => typeof v === 'object'` — which admits an ARRAY. `[]` then
+  // yields `Object.entries([]) === []`, so an empty tally beside `unwrappedCount: 0`
+  // reads PASS. L33/L35's container-vs-payload trap, one layer in.
+  it('A4 SKIPs when unwrappedByType is an ARRAY, not a record', async () => {
+    const r = await runCheck(
+      A4,
+      v2({ runRecordVersion: 1, unwrappedCount: 0, unwrappedByType: [] })
+    );
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toContain('unwrappedByType');
+  });
+
+  // MUTANT: `unwrappedByType` dropped from A4's required field list. Every fixture that
+  // reaches A4's body comes from buildRunRecord and always carries one, so nothing
+  // distinguished "required" from "happens to be there".
+  it('A4 SKIPs when unwrappedByType is absent but the count is present', async () => {
+    const r = await runCheck(A4, v2({ runRecordVersion: 1, unwrappedCount: 3 }));
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.examined).toBe(0);
+    expect(r.message).toContain('unwrappedByType');
+  });
+
+  // Same breadth gap on A8's side of the field table.
+  it('A8 SKIPs on a FRACTIONAL chars', async () => {
+    const r = await runCheck(A8, v2(cleanRecord({ chars: 1.5 })));
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toContain('chars');
+  });
+});
+
 describe('registry and contract', () => {
   it('tier 2 now holds SEVEN checks — the free four plus the run-record three', async () => {
     const tier2 = [...REGISTRY.values()].filter((c) => c.tier === 2);
