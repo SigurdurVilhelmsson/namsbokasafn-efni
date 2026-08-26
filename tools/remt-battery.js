@@ -266,6 +266,23 @@
  *                                     `slug-map.json` means a `faithful` map overwrites
  *                                     `mt-preview`'s. K3 refuses a map whose own `track`
  *                                     disagrees with `ctx.track`.
+ *                                     🔴 THAT REFUSAL CANNOT FIRE IF YOU LOAD WITH
+ *                                     `readSlugMap`, AND THE LOADER MUST KNOW IT.
+ *                                     `readSlugMap(mapPath, {book, track})` RE-STAMPS
+ *                                     `track` from the CALLER's argument and discards the
+ *                                     value on disk — by design, since it also fabricates
+ *                                     an empty map for a missing file — so `map.track`
+ *                                     always equals whatever the loader just passed, and a
+ *                                     cross-track comparison against it is a tautology.
+ *                                     ▶ **To make the guard real, the loader must read the
+ *                                     FILE's own `track` field** (parse the JSON directly,
+ *                                     or compare `readSlugMap`'s output against the raw
+ *                                     bytes) and hand K3 the on-disk value. Same shape as
+ *                                     `loadAllowlistOrNull` above: a gate is pure, so it
+ *                                     cannot tell a re-stamped field from a read one, and
+ *                                     the contract is the only place the distinction can
+ *                                     be stated. K3's guard still catches an absent
+ *                                     `ctx.track` and a map assembled by any other route.
  *   @property {string[]} [emittedFiles] filenames the extract emitted (Task 5: E6)
  *                                     ⚠️ A LISTING, NOT A PATH — gates are pure, so the
  *                                     loader walks the directory. It must scope the list

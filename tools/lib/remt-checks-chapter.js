@@ -204,7 +204,13 @@ function chapterContent(ctx, id) {
       },
     };
   }
-  return inputs;
+  // 🔴 THE CONTENT COUNTS ARE RETURNED, NOT SPENT ON A BOOLEAN. The first repair computed
+  // `cn`/`ht` and then reported `content.html.length` — the CONTAINER count — as `examined`,
+  // so at anything short of TOTAL emptiness the checks over-reported coverage: a chapter of
+  // 10 published files, 3 of them empty, claimed `examined: 10`. That is the same
+  // container-vs-payload confusion the guard was written to close, surviving one line below
+  // the fix. → §C82 L95.
+  return { ...inputs, contentCnxml: cn, contentHtml: ht };
 }
 
 /**
@@ -302,7 +308,7 @@ export const K1 = defineCheck({
     if (typeof baseline !== 'object' || Array.isArray(baseline)) {
       return {
         verdict: VERDICT.FAIL,
-        examined: content.html.length,
+        examined: content.contentHtml,
         findings: [{ kind: 'baseline-malformed', got: typeof baseline }],
         message: `K1: ctx.renderBaseline is ${typeof baseline}, not a bucket histogram or null`,
       };
@@ -323,15 +329,24 @@ export const K1 = defineCheck({
     // silently checking the wrong shape — the §C82 L69 lesson (stop porting; call the real
     // thing) applied to a key set rather than to a predicate.
     const canonical = Object.keys(htmlShapeHistogram(''));
-    const missing = canonical.filter((b) => !(b in baseline));
+    // 🔴 PRESENCE IS NOT A VALUE — AN EIGHTH REPRESENTATION OF "NOTHING", FOUND IN THE
+    // REPAIR FOR THE SEVEN. The first version of this guard tested `!(b in baseline)`, so a
+    // baseline carrying all 16 canonical keys with `null`, `undefined` or string values
+    // passed it and went straight into the drift loop, where `baseline[bucket] || 0`
+    // coerces every one of them to 0 and reports wholesale false drift — the exact outcome
+    // the guard exists to prevent, reached through the keys it just checked.
+    // ▶ THE CONTAINER IS NOT THE PAYLOAD, for the third time in this file: the key set was
+    // validated and the values behind it were not.
+    const missing = canonical.filter((b) => !Number.isFinite(baseline[b]));
     if (missing.length) {
       return {
         verdict: VERDICT.FAIL,
-        examined: content.html.length,
+        examined: content.contentHtml,
         findings: [{ kind: 'baseline-incomplete', missing, present: Object.keys(baseline).length }],
         message:
-          `K1: the baseline entry for this chapter is missing ${missing.length} of ` +
-          `${canonical.length} buckets (${missing.join(', ')}). That is not "no baseline" — ` +
+          `K1: the baseline entry for this chapter is missing, or carries a non-numeric ` +
+          `value for, ${missing.length} of ${canonical.length} buckets ` +
+          `(${missing.join(', ')}). That is not "no baseline" — ` +
           `every absent bucket is compared against 0, so the chapter reads as wholesale ` +
           `drift. An empty histogram is the limiting case of this, not a separate one`,
       };
@@ -351,7 +366,7 @@ export const K1 = defineCheck({
 
     return {
       verdict: drift.length ? VERDICT.WARN : VERDICT.PASS,
-      examined: content.html.length,
+      examined: content.contentHtml,
       findings: drift,
       message:
         `${drift.length} shape-drift finding(s) over ${content.html.length} published ` +
@@ -406,18 +421,24 @@ function numericDrops(ctx) {
  * sub-count, never gate on it — and the day these numbers gate anything, this function must
  * be replaced by an export from the producer instead of kept in sync by hand.
  */
-function marginNote({ cnxml, html }) {
+function marginNote({ cnxml, html }, drops) {
   const c = (s, re) => (s.match(re) || []).length;
   const cn = cnxml.join('\n');
   const ht = html.join('\n');
   const parts = [];
   for (const [unit, a, b] of [
     ['math', c(cn, /<m:math\b/g), c(ht, /<mjx-container\b/g)],
-    ['image', c(cn, /<image\b/g), c(ht, /<img\b/g)],
+    // ⚠️ `- drops` IS PART OF THE PRODUCER'S EXPRESSION, AND THE FIRST DRAFT OMITTED IT —
+    // re-deriving a predicate and then dropping one of its terms, which is worse than
+    // re-deriving it whole. `checkChapter` compares `<image> - knownIntentionalImageDrops`
+    // against `<img>`, so a note computed without the subtraction under-reports the slack
+    // by exactly `drops`. Latent (0 of 26 cells disagree today, and only one cell has
+    // drops > 0) but wrong by construction.
+    ['image', c(cn, /<image\b/g) - (Number.isInteger(drops) ? drops : 0), c(ht, /<img\b/g)],
   ]) {
     if (b > a) parts.push(`${unit} +${b - a}`);
   }
-  return parts.length ? `PASS margin ${parts.join(', ')} (rollups re-present; not a defect)` : '';
+  return parts.length ? `${parts.join(', ')} (rollups re-present; not a defect)` : '';
 }
 
 /** The shared refusal for a missing `knownIntentionalImageDrops`. */
@@ -428,7 +449,8 @@ function dropsRefusal(id, examined) {
     findings: [],
     message:
       `${id}: ctx.knownIntentionalImageDrops must be a non-negative integer — the count of ` +
-      `images this book deliberately omits (book-config.json specialModules). It is NOT ` +
+      `images deliberately omitted from THIS CHAPTER (its book-config.json specialModules ` +
+      `that live in this chapter, not the book total). It is NOT ` +
       `defaulted to 0: computeIntentionalImageDrops is module-local, and omitting the ` +
       `option reports chemistry appendices as an image drop (m68859, the periodic table), ` +
       `doubling this tier's measured rate from 3.8% to 7.7% — across the ~5% blocking bar` +
@@ -465,15 +487,23 @@ export const K2 = defineCheck({
     const findings = checkChapter(content, null, {
       knownIntentionalImageDrops: drops,
     }).filter((f) => f.type === 'cross-stage-drop');
+    const margin = marginNote(content, drops);
 
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
-      examined: content.html.length,
+      examined: content.contentHtml,
       findings,
       message:
         `${findings.length} cross-stage drop(s) over ${content.html.length} published HTML ` +
         `file(s) from ${content.cnxml.length} injected CNXML file(s)` +
         (drops ? `, allowing ${drops} intentional image drop(s)` : '') +
+        // ⚠️ RELABELLED ON A FAIL, NOT SUPPRESSED, AND COMPUTED ONCE. The first draft
+        // appended the clause unconditionally, so a K2 FAIL printed "PASS margin …" — text
+        // contradicting its own verdict — and called `marginNote` TWICE to do it.
+        // Suppressing it on FAIL would discard real information: when one unit drops, the
+        // surplus in the OTHER unit is exactly what bounds how much loss that unit could be
+        // hiding (organic ch3 carries image +117 over a population of 80). So the number
+        // stays and the word changes.
         // ⚠️ THE MARGIN A PASS CARRIES, DISCLOSED — because the invariant is `>=`, a PASS
         // means "the html side has AT LEAST as many", and the surplus is how much real
         // damage a PASS could absorb unseen. Measured: in 2 of 26 evaluable cells that
@@ -482,7 +512,7 @@ export const K2 = defineCheck({
         // pages legitimately re-present equations — so the answer is disclosure, not a
         // stricter comparison. Without it, a PASS printed byte-identical text whether the
         // margin was untouched or had swallowed a genuine loss.
-        (marginNote(content) ? ` · ${marginNote(content)}` : ''),
+        (margin ? ` · ${findings.length ? 'surplus' : 'PASS margin'} ${margin}` : ''),
     };
   },
 });
@@ -612,7 +642,14 @@ export const K3 = defineCheck({
             `this check cannot read is not an empty map`,
         };
       }
-      entries = Object.entries(r).map(([from, e]) => ({ from, ...(e || {}) }));
+      // 🔴 THE KEY GOES LAST SO IT WINS, AND THE FIRST DRAFT OF THIS LINE HAD IT FIRST —
+      // a defect the fix round INTRODUCED, reopening exactly the hole the both-ends binding
+      // was written to close. With `{ from, ...(e || {}) }`, an entry VALUE carrying its own
+      // `from` field silently overrode the `Object.entries` KEY — and the key IS the §C9
+      // contract: it is the old path vefur keys its redirect on. A hand-edited or
+      // future-producer map with a stray `from` would have had its real key discarded and
+      // the rename credited to whatever the value claimed.
+      entries = Object.entries(r).map(([from, e]) => ({ ...(e || {}), from }));
     }
 
     // ⚠️ A map whose `track` disagrees with the chapter being judged is judging the wrong
@@ -702,6 +739,24 @@ export const K3 = defineCheck({
     );
 
     const findings = [];
+
+    // 🔴 THE FAILED PRUNE — A PROPERTY OF `after` ALONE, AND THE FIX ROUND KEYED IT ON
+    // `before`. A module occupying MORE THAN ONE published file after the render means the
+    // superseded page was not deleted: the chapter TOC then lists the section twice, once
+    // under the corrected title and once under the old machine translation, which is the
+    // symptom that caused §C9 to be written at all.
+    // ▶ THE FIRST REPAIR PUT THIS INSIDE THE `beforeByModule` LOOP, so a duplicate whose
+    // module is ABSENT from the before-snapshot — a module first published by this very
+    // render, which is the commonest way to end up with two pages — was never examined and
+    // the chapter returned PASS with "0 unaccounted". The comment stated the rule over
+    // `after` while the code ranged over `before`: a comment generalising past its code,
+    // in the repair for a comment generalising past its code. → §C82 L94①.
+    for (const [moduleId, files] of afterByModule) {
+      if (files.length > 1) {
+        findings.push({ kind: 'module-in-multiple-files', moduleId, files: [...files].sort() });
+      }
+    }
+
     for (const [moduleId, oldFiles] of beforeByModule) {
       const newFiles = afterByModule.get(moduleId) || [];
       if (newFiles.length === 0) {
@@ -710,17 +765,6 @@ export const K3 = defineCheck({
         // 404s) and it is the one thing a module-id diff alone would report as nothing.
         findings.push({ kind: 'module-disappeared', moduleId, was: oldFiles });
         continue;
-      }
-      // 🔴 THE FAILED PRUNE — AND THE FIRST DRAFT WAS BLIND TO EXACTLY THE FAILURE §C9
-      // EXISTS TO ELIMINATE. A module occupying MORE THAN ONE published file after the
-      // render means the superseded page was not deleted: the chapter TOC then lists the
-      // section twice, once under the corrected title and once under the old machine
-      // translation, which is the symptom that caused §C9 to be written at all. The old
-      // loop reached `if (newFiles.includes(oldFile)) continue` FIRST — the old name is
-      // still there, so it read as "not a rename" — and certified the chapter with no map
-      // at all. → §C82 L94①.
-      if (newFiles.length > 1) {
-        findings.push({ kind: 'module-in-multiple-files', moduleId, files: [...newFiles].sort() });
       }
       for (const oldFile of oldFiles) {
         if (newFiles.includes(oldFile)) continue; // this name survived — not a rename
@@ -797,7 +841,7 @@ export const K4 = defineCheck({
 
     return {
       verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
-      examined: content.html.length,
+      examined: content.contentHtml,
       findings,
       message:
         `${lostCount} equation(s) lost by skeleton across ${content.html.length} published ` +
@@ -875,7 +919,7 @@ export const K5 = defineCheck({
 
     return {
       verdict: leaks.length ? VERDICT.FAIL : VERDICT.PASS,
-      examined: content.html.length,
+      examined: content.contentHtml,
       findings: leaks,
       message:
         (detail.length

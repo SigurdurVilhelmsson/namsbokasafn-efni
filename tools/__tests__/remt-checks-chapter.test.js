@@ -27,7 +27,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { REGISTRY, VERDICT, runCheck } from '../lib/remt-battery.js';
 import { K1, K2, K3, K4, K5, CHAPTER_CHECKS, TRACKS } from '../lib/remt-checks-chapter.js';
-import { readChapterFromDisk } from '../cnxml-render-fidelity-check.js';
+import {
+  readChapterFromDisk,
+  htmlShapeHistogram,
+  addHistograms,
+} from '../cnxml-render-fidelity-check.js';
 import { snapshotModuleIds } from '../lib/publication-reconcile.js';
 import { readSlugMap, recordRename } from '../lib/slug-map.js';
 import fs from 'node:fs';
@@ -95,9 +99,14 @@ describe('the corpus fixtures this file rests on are real', () => {
  * K2 to advisory with the new rate stated — not to make the old assertion vaguer.
  *
  * ⚠️ `BASELINE_CH12`/`REAL_BASELINE_APP` are deliberately NOT in this category: they read
- * the committed baseline file, so they move with the artifact. That was chosen for staleness
- * resistance and it has a cost worth naming — a regenerated baseline cannot make those tests
- * fail, so they pin K1's HANDLING of a histogram, never the histogram's content.
+ * the committed baseline file, so they move with the artifact — chosen for staleness
+ * resistance. 🔴 THE NOTE HERE USED TO ADD "a regenerated baseline cannot make those tests
+ * fail", AND THAT IS FALSE. Reading the baseline from disk removes only the *hard-coded*
+ * side of the comparison; the OTHER side is the published HTML, and the two move
+ * independently. Regenerate the baseline from a re-rendered tree and K1's drift test — which
+ * asserts a WARN and a non-empty finding list — goes green-to-red the moment the drift it
+ * depends on is what got fixed. **They pin K1's handling of a histogram AND the continued
+ * existence of drift between two artifacts that are not updated together.**
  */
 describe('K2 — the cross-stage drop invariant, and the option that decides its rate', () => {
   it('finds the measured drop on chemistry ch4: 6 equations', async () => {
@@ -623,15 +632,26 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
   it('K1 is unaffected by knownIntentionalImageDrops, in either direction', async () => {
     // The ctx contract used to advertise K1 as a consumer. Measured on the specialModules
     // cell itself, where K2 swings SKIPPED/FAIL/PASS on the same inputs.
-    const verdicts = new Set();
+    // 🔴 `renderBaseline: null` USED TO BE PASSED HERE, WHICH SHORT-CIRCUITED K1 AT ITS
+    // no-baseline GUARD — so all four arms returned SKIPPED without ever reaching
+    // `checkChapter`, and the test was identical against the pre-fix K1 it was written to
+    // pin. A real baseline is what makes the drift computation run.
+    const results = [];
     for (const drops of [undefined, 0, 1, 7]) {
       const r = await runCheck(
         K1,
-        ctxFor('appendices', { knownIntentionalImageDrops: drops, renderBaseline: null })
+        ctxFor('appendices', {
+          knownIntentionalImageDrops: drops,
+          renderBaseline: REAL_BASELINE_APP(),
+        })
       );
-      verdicts.add(r.verdict);
+      results.push(r);
     }
-    expect([...verdicts]).toEqual([VERDICT.SKIPPED]);
+    // The verdict AND the findings must be identical across all four — a verdict-only
+    // assertion would pass for a K1 whose findings changed with the option.
+    expect(new Set(results.map((r) => r.verdict)).size).toBe(1);
+    expect(results[0].verdict).not.toBe(VERDICT.SKIPPED); // it really reached the comparison
+    expect(new Set(results.map((r) => JSON.stringify(r.findings))).size).toBe(1);
   });
 
   it('🔴 K1 refuses a SPARSE histogram, not only a fully empty one', async () => {
@@ -648,8 +668,19 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
   it('K1 and K4 can return PASS — neither had a single passing fixture', async () => {
     // An always-alarming constant survived both. K4's advisory->blocking promotion is
     // scheduled on a re-measured rate a broken PASS path would compute as 100%.
-    const k1 = await runCheck(K1, ctxFor('appendices', { renderBaseline: REAL_BASELINE_APP() }));
-    expect([VERDICT.PASS, VERDICT.WARN]).toContain(k1.verdict);
+    // 🔴 THIS ASSERTION USED TO ACCEPT WARN, AND ITS FIXTURE RETURNS WARN — so it bound
+    // nothing for K1 and an always-WARN K1 survived it. The title claimed a passing fixture
+    // and there was none. A baseline captured FROM this chapter's own current bytes is the
+    // only construction that can make K1 pass, which is what makes it the right fixture:
+    // zero drift by construction, so a WARN means the comparison itself is broken.
+    const appInputs = inputsFor('appendices');
+    const selfBaseline = appInputs.html.reduce(
+      (acc, h) => addHistograms(acc, htmlShapeHistogram(h)),
+      {}
+    );
+    const k1 = await runCheck(K1, ctxFor('appendices', { renderBaseline: selfBaseline }));
+    expect(k1.verdict).toBe(VERDICT.PASS);
+    expect(k1.findings).toHaveLength(0);
     const k4 = await runCheck(K4, ctxFor(1));
     expect(k4.verdict).toBe(VERDICT.PASS);
   });
@@ -782,6 +813,139 @@ describe('the fix round — every defect the blind review confirmed, pinned', ()
     const noMargin = await runCheck(K2, ctxFor(10));
     expect(noMargin.verdict).toBe(VERDICT.PASS);
     expect(noMargin.message).not.toContain('PASS margin');
+  });
+
+  it('the second pass — `examined` counts files with CONTENT, not array entries', async () => {
+    // The first repair computed the content counts and then reported the CONTAINER count,
+    // so 10 published files with 3 empty claimed `examined: 10`. No corpus cell has an
+    // empty file, so this is synthetic by necessity — stated rather than hidden.
+    const real = inputsFor(4);
+    const padded = {
+      cnxml: [...real.cnxml, '', '   '],
+      html: [...real.html, '', '\n'],
+    };
+    const r = await runCheck(K2, {
+      ...base,
+      chapter: '4',
+      knownIntentionalImageDrops: 0,
+      chapterInputs: padded,
+    });
+    expect(r.examined).toBe(real.html.length); // NOT real.html.length + 2
+  });
+
+  it('the second pass — K1 refuses a full-key baseline whose VALUES are not numbers', async () => {
+    // An eighth representation of "nothing", found in the repair for the seven: the guard
+    // tested `b in baseline`, and `baseline[bucket] || 0` coerces null/undefined/'' to 0,
+    // producing wholesale false drift through the very keys just validated.
+    for (const bad of [null, undefined, 'zero', NaN, {}]) {
+      const poisoned = Object.fromEntries(Object.keys(REAL_BASELINE_CH12()).map((k) => [k, bad]));
+      const r = await runCheck(K1, ctxFor(12, { renderBaseline: poisoned }));
+      expect(r.verdict, String(bad)).toBe(VERDICT.FAIL);
+      expect(r.findings[0].kind, String(bad)).toBe('baseline-incomplete');
+    }
+  });
+
+  it('the second pass — a slug-map entry cannot override its own key', async () => {
+    // The fix round INTRODUCED this one: `{ from, ...(e || {}) }` let an entry VALUE
+    // carrying `from` override the `Object.entries` KEY — and the key IS the §C9 contract,
+    // the old path vefur keys its redirect on.
+    const r = await runCheck(K3, {
+      ...base,
+      publishedBefore: snap([['10-5-old.html', 'm68770']]),
+      publishedAfter: snap([['10-5-new.html', 'm68770']]),
+      slugMap: {
+        book: 'efnafraedi-2e',
+        track: 'mt-preview',
+        renames: {
+          // The KEY is the real old path; the value lies about it.
+          'chapters/10/10-5-old.html': {
+            from: 'chapters/10/SOMETHING-ELSE.html',
+            to: 'chapters/10/10-5-new.html',
+            moduleId: 'm68770',
+          },
+        },
+      },
+    });
+    expect(r.verdict).toBe(VERDICT.PASS); // the KEY wins, so the rename is accounted
+  });
+
+  it('the second pass — a failed prune is caught even when the module is NEW', async () => {
+    // The first repair put this leg inside the `beforeByModule` loop, so a duplicate whose
+    // module is absent from the before-snapshot — a module first published by this very
+    // render, the commonest route to two pages — returned PASS with "0 unaccounted".
+    const r = await runCheck(K3, {
+      ...base,
+      publishedBefore: snap([['keep.html', 'm-other']]),
+      publishedAfter: snap([
+        ['keep.html', 'm-other'],
+        ['new-a.html', 'm-new'],
+        ['new-b.html', 'm-new'],
+      ]),
+      slugMap: null,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.map((f) => f.kind)).toContain('module-in-multiple-files');
+  });
+
+  it('the second pass — the margin note is RELABELLED on a FAIL, never captioned PASS', async () => {
+    // Suppressing it would discard real information: when one unit drops, the surplus in
+    // the other bounds how much loss that unit could be hiding.
+    // 🔴 THE FIXTURE MUST FAIL **AND** CARRY A MARGIN, OR THE ASSERTION IS VACUOUS.
+    // A first draft used chemistry ch4: it FAILs (math -6) but has NO positive margin in
+    // either unit, so the clause is never appended and `not.toContain('PASS margin')` was
+    // satisfied by its absence rather than by its relabelling — a mutant reverting the
+    // label survived. No corpus cell both fails and carries a surplus, so this is synthetic
+    // by necessity: math DROPS (2 -> 1) while image SURPLUSES (1 -> 3).
+    const mixed = {
+      cnxml: ['<m:math/><m:math/><image/>'],
+      html: ['<mjx-container/><img/><img/><img/>'],
+    };
+    const r = await runCheck(K2, {
+      ...base,
+      chapter: '4',
+      knownIntentionalImageDrops: 0,
+      chapterInputs: mixed,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.message).toContain('image +2'); // the surplus is still disclosed on a FAIL...
+    expect(r.message).toContain('surplus'); // ...under the correct word
+    expect(r.message).not.toContain('PASS margin');
+  });
+
+  it('the second pass — the margin note subtracts the intentional image drops', async () => {
+    // `marginNote` re-derives the producer's image predicate; omitting the `- drops` term
+    // re-derives one term short, which is worse than re-deriving it whole.
+    const withDrops = await runCheck(K2, ctxFor('appendices', { knownIntentionalImageDrops: 5 }));
+    const without = await runCheck(K2, ctxFor('appendices', { knownIntentionalImageDrops: 1 }));
+    // Chemistry appendices is image 36 -> 35; allowing 5 makes the adjusted cnxml side 31,
+    // so the html side now shows a surplus the note must disclose.
+    expect(withDrops.message).toContain('image +');
+    expect(without.message).not.toContain('image +');
+  });
+
+  it('the second pass — K5 sums OCCURRENCES, distinguishably from the pattern count', async () => {
+    // 🔴 THE CORPUS FIXTURE CANNOT SEPARATE THEM: micro ch5 has count 1 across 1 pattern, so
+    // `occurrences` and `detail.length` are the same number and a mutant collapsing the sum
+    // to the pattern count survives. This is the §C82 L44③ shape again — a natural value of
+    // 1 is also what a broken sum returns — and the only way out is a fixture where the two
+    // differ, which the corpus does not contain. Synthetic by necessity, and said so.
+    const html = [
+      '<p>a</p><link document="m1">x</link><link document="m2">y</link>',
+      '<p>b</p><link document="m3">z</link><emphasis>e</emphasis>',
+    ];
+    const r = await runCheck(K5, {
+      ...base,
+      chapter: '4',
+      chapterInputs: { cnxml: ['<document/>'], html },
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    const detail = r.findings[0].leaks;
+    const patterns = detail.length;
+    const occurrences = detail.reduce((n, l) => n + l.count, 0);
+    expect(occurrences).toBeGreaterThan(patterns); // the two are now separable
+    expect(r.message).toContain(
+      `${occurrences} raw-CNXML occurrence(s) across ${patterns} pattern(s)`
+    );
   });
 
   it('K4 carries the skeletons an operator needs, not just a count', async () => {
