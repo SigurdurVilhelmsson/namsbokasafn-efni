@@ -14,7 +14,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > Branch `c82-plan-b-task-10` (`624830cb` + fix round `3ac1a3c2`) carries Tier 2's gating half
 > (`A3`/`A5`/`A7`), so **Tier 2 is complete: 10 checks, 3 blocking.** ▶ **Start at Task 11** once
 > it merges. 🔴 **ALL THREE SHIP ADVISORY — the plan's heading says "A3 gating" and the measured
-> base rate (54.31% / 10.89% vs a ≤5% bar) refuses it.** 🔴 **Read §C82 L51-L59 before Task 11.**
+> base rate (54.31% / 10.89% vs a ≤5% bar) refuses it.** 🔴 **Read §C82 L51-L62 before Task 11.**
 > Three that generalise: **a vacuous test is why a real bug shipped (L55)**; **an identity claim
 > that nothing cross-checks is worth nothing (L54, found by 4 of 5 lenses)**; **a gate keyed on one
 > representation of "nothing" is walked past by another (L57)**.
