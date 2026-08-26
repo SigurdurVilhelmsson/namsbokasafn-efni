@@ -10,10 +10,13 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 11) — TASKS 1-10 ARE MERGED AND DEPLOYED; TASK 11 IS BUILT AND ON A BRANCH.**
-> Branch `c82-plan-b-task-11` carries **TIER 3 (`R1`-`R5`)**, so Tier 3 is complete: **5 checks, 2
-> blocking (`R2`, `R3`)**. ▶ **Start at Task 12 once it merges** — 2 Plan B tasks remain (12, 13),
-> then all 11 of Plan C.
+> ⏩ **UPDATED 2026-08-26 (Task 11) — TASKS 1-11 ARE ALL MERGED AND DEPLOYED** (Task 11 = PR #420 → squash `fa208375`; deploy operator-reported).
+> **TIER 3 IS COMPLETE: 5 checks, 2 blocking (`R2`, `R3`).** ▶ **START AT TASK 12** — 2 Plan B tasks
+> remain (12 = Tier 4 `K1`/`K2`/`K3`, 13 = `--self-test` + the base-rate sweep), then all 11 of Plan C.
+> ⚠️ **AND ONE FOLLOW-UP IS OWED FIRST OR ALONGSIDE:** [LEAD] ruled that
+> `auto-insert-placeholders.js:331` and `docx-import.js:968` — the last two live chapter-0 sites —
+> are fixed on a **follow-up branch**, now that `ch00` is measured to be the **Preface in 5 of 5
+> books holding any CNXML** (§C82 L65). Each wants its own red-first test.
 > 🔴 **READ §C82 L63-L78 BEFORE TASK 12.** The three that generalise furthest:
 > **① THE WIRING IS A SEPARATE FACT FROM THE ARRAY (L71)** — dropping both BLOCKING checks from the
 > registry left the ENTIRE `tools/__tests__` suite byte-identical to baseline. Task 12 registers
@@ -85,7 +88,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 | | |
 |---|---|
 | `main` | ⚠️ **No sha is recorded here on purpose — this table pinned `d6c5e38b` and went stale the day Task 8 merged.** Tiers 0+1 (PR #416) and Tier 2's free half (PR #417) are both on `main` and both deployed. **`git rev-parse --short main` is the answer; the register's ⏩ RESUME owns what is merged.** |
-| Branch | ⚠️ **`c82-plan-b-task-11` is LIVE and unmerged** (Tier 3). Cut Task 12's branch from `main` only AFTER it merges, or from it if you are continuing the same thread — `git branch --show-current` is the answer, not this row. |
+| Branch | none live — #420 merged and its branch deleted. **Cut Task 12's from `main`.** ⚠️ `git branch --show-current` is the answer, not this row. |
 | Runbook | Phases 0, 1.1, 1.2, **2.1**, **2.2** complete. **3.1 is Plans B + C — this work.** |
 | Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |
