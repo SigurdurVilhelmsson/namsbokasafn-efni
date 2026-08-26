@@ -30,7 +30,7 @@ import {
   extractNumbers,
 } from '../lib/remt-checks-mt.js';
 import { mtOutputSegmentFiles, enCounterpart, REPO_ROOT } from './helpers/remt-corpus.js';
-import { loadResidueAllowlist } from '../lib/residue-allowlist.js';
+import { loadResidueAllowlist, loadResidueAllowlistOrNull } from '../lib/residue-allowlist.js';
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi'];
@@ -351,7 +351,7 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     });
     expect(bare.examined).toBe(2);
     expect(bare.findings.filter((f) => f.kind === 'en-residue')).toHaveLength(2);
-    expect(bare.findings.map((f) => f.segmentId)).toEqual(['m1:para:a', 'm1:para:a#2']);
+    expect(bare.findings.map((f) => f.segmentId)).toEqual(['m1:para:a', 'm1:para:a#1']);
 
     const listed = A5.run({
       segText: dup,
@@ -435,11 +435,30 @@ describe('A7 — number consistency, ported from the AGPL qaCheckService', () =>
   const require_ = createRequire(import.meta.url);
   const agpl = require_('../../server/services/qaCheckService.js');
 
-  it('agrees with the AGPL original on real corpus text', () => {
+  it('🔴 agrees with the AGPL original — over a NON-EMPTY comparison', () => {
+    // ⚠️ THIS PIN WAS VACUOUS AND IT LET A REAL BUG SHIP. It compared `checkNumbers` on a
+    // clean corpus pair, which returns [] on BOTH sides — `expect([]).toEqual([])` passes
+    // whatever the port does to the finding it never produced. The port had DROPPED U+00F0
+    // from its message ("þýdingunni" for "þýðingunni") and this test was green.
+    // ▶ The `extractNumbers(...).length > 0` "control" did not save it either: it proved
+    // numbers were EXTRACTED, not that findings were COMPARED. An assertion that names the
+    // thing without binding what distinguishes it pins nothing.
     const { segText, isText } = pair('efnafraedi-2e', 'ch01', 'm68663');
-    const mine = checkNumbers(segText, isText);
-    expect(mine).toEqual(agpl.checkNumbers(segText, isText));
-    expect(extractNumbers(segText).length).toBeGreaterThan(0); // control: it found numbers
+    const clean = checkNumbers(segText, isText);
+    expect(clean).toEqual(agpl.checkNumbers(segText, isText));
+    expect(clean).toHaveLength(0); // stated, so the vacuity is visible rather than hidden
+
+    // The comparison that actually binds: a case where BOTH sides must produce findings.
+    const mine = checkNumbers(segText, 'engar tölur hér');
+    const theirs = agpl.checkNumbers(segText, 'engar tölur hér');
+    // L37: the COUNT, not `> 0` — a one-finding comparison and an eleven-finding one are
+    // both "non-empty", and only one of them exercises the dedup and the message path.
+    // A premise pin: it moves when m68663's numbers move.
+    expect(mine).toHaveLength(11);
+    expect(mine).toEqual(theirs);
+    // And the MESSAGE, character for character — the field the port actually corrupted.
+    expect(mine[0].message).toBe(theirs[0].message);
+    expect(mine[0].message).toContain('\u00fe\u00fd\u00f0ingunni'); // þýðingunni, with the ð
   });
 
   it('\U0001f534 preserves U+00A0 and U+2009 inside the numeric character class', () => {
@@ -498,6 +517,89 @@ describe('A7 — number consistency, ported from the AGPL qaCheckService', () =>
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
+describe('the cross-check the review found missing', () => {
+  it('🔴 A3 and A5/A7 name the SAME segment by the SAME id, on repeats too', async () => {
+    // This is the assertion whose absence let a real defect ship. `pairByOccurrence`
+    // CLAIMS to key segments exactly as A3's instrument (`buildOccurrenceMap`) does, and
+    // for one release it did not: a 1-based repeat suffix produced `#2` here against `#1`
+    // there, so `id#2` named the THIRD occurrence in A3 and the SECOND in A5/A7 — and
+    // Plan C's ledger joins these checks BY segmentId. Every test passed, because each
+    // check's tests only ever read its own keys. An identity claim that nothing
+    // cross-checks is worth nothing; four review lenses found it independently.
+    const seg = (body) => `<!-- SEG:m1:para:a -->\n${body}\n`;
+    const en = seg('ONE [[i:x]]') + '\n' + seg('TWO [[i:y]]') + '\n' + seg('THREE [[i:z]]');
+    const is = seg('EITT') + '\n' + seg('TVÖ') + '\n' + seg('ÞRJÚ'); // all three lose their marker
+
+    const a3 = await runCheck(A3, { segText: en, isText: is });
+    const a3Ids = a3.findings.filter((f) => f.kind === 'marker-delta').map((f) => f.segmentId);
+    const a7 = await runCheck(A7, {
+      segText: seg('1 og 2') + '\n' + seg('3 og 4') + '\n' + seg('5 og 6'),
+      isText: is,
+    });
+    const a7Ids = a7.findings.map((f) => f.segmentId);
+
+    // The control: all three occurrences must be present on both sides, or the comparison
+    // below is between two short lists and proves nothing.
+    expect(a3Ids).toHaveLength(3);
+    expect([...new Set(a7Ids)]).toHaveLength(3);
+    expect(a3Ids).toEqual(['m1:para:a', 'm1:para:a#1', 'm1:para:a#2']);
+    expect([...new Set(a7Ids)]).toEqual(a3Ids); // ← the identity, asserted rather than claimed
+  });
+
+  it('🔴 A7 does not report "0 missing" over a segment it refused to judge', async () => {
+    // `checkNumbers` short-circuits on an empty side (faithful to the AGPL original, where
+    // empty IS means "not filled in yet"). Post-MT it means the translation is GONE, and
+    // the short-circuit made A7 STRICTLY LESS CAPABLE ON STRICTLY LESS CONTENT.
+    const en = '<!-- SEG:m1:para:a -->\nHeat to 100 degrees for 5 minutes.\n';
+    const oneDot = await runCheck(A7, { segText: en, isText: '<!-- SEG:m1:para:a -->\n.\n' });
+    const empty = await runCheck(A7, { segText: en, isText: '<!-- SEG:m1:para:a -->\n\n' });
+
+    // The monotonicity control: one dot of content yields TWO findings...
+    expect(oneDot.findings.filter((f) => f.kind === 'number-mismatch')).toHaveLength(2);
+    // ...so zero content must not yield zero. It must say what happened.
+    expect(empty.verdict).toBe(VERDICT.WARN);
+    expect(empty.findings).toEqual([
+      { kind: 'empty-is-segment', segmentId: 'm1:para:a', enNumbers: 2 },
+    ]);
+    expect(empty.examined).toBe(1); // the pair is still counted — hiding it is not the fix
+    expect(empty.message).toMatch(/EMPTY against non-empty EN/);
+    // The message must no longer assert a clean comparison it never made.
+    expect(empty.message).not.toMatch(/^0 EN numbers missing from IS over 1 paired segments$/);
+  });
+
+  it('🔴 loadResidueAllowlistOrNull separates ABSENT from EMPTY; the other loader cannot', () => {
+    // A5's absent-allowlist guard was unreachable through the loader the typedef named:
+    // `loadResidueAllowlist` returns `{entries: []}` for a missing file AND for a real
+    // empty one, so the guard accepted the exact state it exists to refuse. §C21's lesson:
+    // a gate keyed on one representation of "nothing" is walked past by another.
+    const missing = path.join(REPO_ROOT, 'books', '__no_such_book__');
+    expect(loadResidueAllowlist(missing)).toEqual({ entries: [] }); // indistinguishable
+    expect(loadResidueAllowlistOrNull(missing)).toBeNull(); // distinguishable
+    // A real book still loads, and with entries — the control that proves the null above
+    // is about absence and not about the function being broken.
+    expect(
+      loadResidueAllowlistOrNull(path.join(REPO_ROOT, 'books', 'efnafraedi-2e')).entries
+    ).toHaveLength(4);
+  });
+
+  it('🔴 the allowlist survives a re-extract — the plan says it does not', () => {
+    // A5's documented blocking constraint was "the allowlist is segmentId-keyed and the
+    // re-extract voids every entry". `generateSegmentId` (cnxml-extract.js:119) uses the
+    // SOURCE element id when there is one, and `01-source` cannot drift by project rule;
+    // only the `auto-N` fallback renumbers. Measured: 0 of 16 entries use `auto-N`.
+    const autoForm = /:auto-\d+$/;
+    let total = 0;
+    let auto = 0;
+    for (const b of BOOKS) {
+      const entries = loadResidueAllowlistOrNull(path.join(REPO_ROOT, 'books', b)).entries;
+      total += entries.length;
+      auto += entries.filter((e) => autoForm.test(e.segmentId)).length;
+    }
+    expect(total).toBe(16); // control: chemistry 4 + organic 12
+    expect(auto).toBe(0); // ⇒ every entry keys on a stable, source-derived element id
+  });
+});
+
 describe('registry', () => {
   it('registers exactly the three gating checks', () => {
     expect(MT_GATING_CHECKS.map((c) => c.id)).toEqual(['A3', 'A5', 'A7']);

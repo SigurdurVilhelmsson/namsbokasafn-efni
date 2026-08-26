@@ -1069,6 +1069,21 @@ registerChecks(MT_RUNRECORD_CHECKS);
  * So a missing `residueAllowlist` is SKIPPED with the key named — L33(E9), the ruling
  * this file already applies to `isText` and `provenance`.
  *
+ * 🔴 BUT THIS GATE ALONE CANNOT CLOSE IT, AND PRETENDING OTHERWISE IS THE WHOLE TRAP.
+ * `loadResidueAllowlist(bookDir)` — the loader the CLI typedef used to name — returns
+ * `{ entries: [] }` for a MISSING FILE and for a real allowlist that tolerates nothing.
+ * The two states are byte-identical in its return value, so the guard below **accepts the
+ * exact value the absent case produces** and the zero-tolerance state it exists to refuse
+ * walks straight past it. Gates are pure (Global Constraints rule 5), so no check can go
+ * and look at the filesystem to tell them apart.
+ * ▶ THE FIX IS AT THE BOUNDARY, NOT HERE: `loadResidueAllowlistOrNull()` was added to
+ * `tools/lib/residue-allowlist.js` and returns **`null`** when the file is absent. Plan
+ * C's loader MUST use it; `null` is not a plain record, so the guard then fires.
+ * ▶ This is CLAUDE.md's §C21 lesson verbatim — **a gate keyed on one representation of
+ * "nothing" can be walked past by another representation of "nothing"** — and it is the
+ * second time in this file's history that the shape has appeared. Found by adversarial
+ * review 2026-08-26; no test could see it, because every test supplied its own ctx.
+ *
  * ── WHAT THE MEASUREMENT DECIDED, AGAINST THE PLAN ────────────────────────────
  * 🔴 ALL THREE ARE ADVISORY, AND THE PLAN'S TASK HEADING SAYS "A3 gating".
  * Global Constraints rule 4 — a post-MT check that blocks needs a measured base rate
@@ -1083,10 +1098,23 @@ registerChecks(MT_RUNRECORD_CHECKS);
  *        refused on BOTH numbers (54.31% and 10.89%), so the verdict does not depend
  *        on the split.** The run re-extracts AND re-MTs, which retires the 96-pair
  *        category, so 10.89% is the number that predicts the run.
- *   A5   stage 1 is 9/197 = 4.57%, which is UNDER the bar — and it still does not
- *        block, because the constraint is SEQUENCING, not rate: the allowlist is
- *        segmentId-keyed and the re-extract voids every entry. ⚠️ 4.57% also hides a
- *        25× per-book spread (chemistry 0.67%, organic 16.67%).
+ *   A5   stage 1 is 5/166 = 3.01% (chemistry 1/149 = 0.67%, organic 4/17 = 23.53%),
+ *        which is UNDER the bar — and it still does not block.
+ *        🔴 BUT NOT FOR THE REASON THE PLAN GIVES, WHICH IS FALSE AS STATED. The plan
+ *        says the allowlist is "wholly voided" because it is segmentId-keyed and the
+ *        re-extract renumbers seg-ids. MEASURED 2026-08-26: `generateSegmentId`
+ *        (`cnxml-extract.js:119`) returns `${moduleId}:${type}:${elementId}` whenever the
+ *        source element HAS an id, and only falls back to `auto-${counter}` when it does
+ *        not — element ids come from READ-ONLY `01-source`, which cannot drift by project
+ *        rule. **ALL 16 allowlist entries (chemistry 4, organic 12) use the element-id
+ *        form; ZERO use `auto-N`**, though 22.1% of corpus seg-ids overall do. So the
+ *        allowlist largely SURVIVES the re-extract.
+ *        ▶ THE HONEST REASONS A5 STAYS ADVISORY: (1) the post-run base rate is
+ *        UNMEASURED, and organic's 23.53% today is over **seventeen** modules of a
+ *        342-module book that is 5% extracted; (2) the re-extract changes which segments
+ *        exist and what they contain, so a surviving KEY is not a surviving JUDGEMENT.
+ *        ⚠️ This is §C82 L45 a second time — the conclusion held and the reason did not,
+ *        which is the case that reads as agreement.
  *   A7   `numberKey` strips every non-digit, so `3.5` and `35` collide by design.
  * ▶ Full record, with the per-type histogram and the threshold sensitivity sweep:
  *   `test-results/c82-a3-baserate-2026-08-26.md`.
@@ -1104,7 +1132,25 @@ registerChecks(MT_RUNRECORD_CHECKS);
  * ⚠️ THE KEYING IS COPIED DELIBERATELY AND IS NOT AN IMPLEMENTATION DETAIL. A3 gets its
  * segment ids from `api-translate.js`'s `buildOccurrenceMap` (`:536`, NOT exported), and
  * A5/A7 must report the same id for the same piece of text or the ledger cannot join
- * their findings. First occurrence keeps the bare seg-id; a repeat becomes `segId#N`.
+ * their findings. First occurrence keeps the bare seg-id; occurrence n>1 becomes
+ * `segId#(n-1)` — **0-BASED ON THE REPEATS**, which is what the original does.
+ *
+ * 🔴 AND THE IDENTITY IS PINNED BY A CROSS-CHECK TEST, NOT BY THIS COMMENT. It shipped
+ * WRONG once: a 1-based suffix put `#2` here against `#1` there, so `id#2` named the
+ * third occurrence in A3 and the second in A5/A7. Every test passed, because each
+ * check's tests only ever read its own keys — an identity claim that nothing
+ * cross-checks is worth nothing.
+ *
+ * ⚠️ THE IDENTITY HOLDS FOR THE HTML-COMMENT DIALECT AND **NOT** FOR THE MUSTACHE ONE,
+ * and that asymmetry is safe rather than accidental. `buildOccurrenceMap` splits on
+ * `/(?=<!-- SEG:)/`, so it sees ZERO segments in a `{{SEG:…}}` file, while
+ * `parseSegmentsMit` normalises the mustache form first and sees all of them. Measured:
+ * A3 `examined: 0` vs A7 `examined: 2` on the same input. ▶ A3 therefore reports
+ * **SKIPPED, not PASS** (`runCheck` downgrades PASS+0), so the module is visible rather
+ * than cleared — and the dialect is caught upstream anyway by **A2b, which is BLOCKING**
+ * and carries the `inject-dialect` leg for exactly this. **Do not "unify" the two
+ * parsers to close it:** `parseSegmentsMit`'s normalisation is what makes the AGPL
+ * equivalence pin hold, and A3 must keep using its instrument by identity (§C82 L41).
  *
  * ⚠️ AND THE REPEAT SUFFIX IS LOAD-BEARING, NOT COSMETIC: a duplicated raw `SEG:` marker's
  * second occurrence is a real, independent piece of translated text. Keying on the bare
@@ -1120,9 +1166,15 @@ function pairByOccurrence(enText, isText) {
     const seen = new Map();
     const out = new Map();
     for (const r of parseSegmentsMit(text)) {
-      const n = (seen.get(r.segmentId) || 0) + 1;
-      seen.set(r.segmentId, n);
-      out.set(n === 1 ? r.segmentId : `${r.segmentId}#${n}`, r.content);
+      // 🔴 `idx` IS OCCURRENCES SEEN *BEFORE* THIS ONE, NOT INCLUDING IT — copied from
+      // `buildOccurrenceMap` (api-translate.js:540) line for line. An earlier version
+      // used a 1-based count and produced `#2` where A3 produces `#1`, so THE SAME KEY
+      // NAMED DIFFERENT SEGMENTS in the two checks and Plan C's ledger join would have
+      // mis-attributed silently. Four review lenses found it independently; no test
+      // caught it, because each check's tests only ever read its own keys.
+      const idx = seen.get(r.segmentId) || 0;
+      seen.set(r.segmentId, idx + 1);
+      out.set(idx === 0 ? r.segmentId : `${r.segmentId}#${idx}`, r.content);
     }
     return out;
   };
@@ -1391,7 +1443,7 @@ export function checkNumbers(enContent, isContent) {
       findings.push({
         type: 'number-mismatch',
         value: token,
-        message: `Talan \u201E${token}\u201C \u00FAr ensku finnst ekki \u00ED \u00FE\u00FDdingunni`,
+        message: `Talan \u201E${token}\u201C \u00FAr ensku finnst ekki \u00ED \u00FE\u00FD\u00F0ingunni`,
       });
     }
   }
@@ -1418,17 +1470,40 @@ export const A7 = defineCheck({
 
     const pairs = pairByOccurrence(ctx.segText, ctx.isText);
     const findings = [];
+    let emptyIs = 0;
     for (const [segmentId, { en, is }] of pairs) {
+      // 🔴 THE PORTED GUARD IS NON-MONOTONIC HERE, AND SILENCE WOULD BE A FALSE STATEMENT.
+      // `checkNumbers` opens `if (!enContent || !isContent) return []` — faithful to the
+      // AGPL original, where an empty IS field means "the editor has not filled it in yet".
+      // POST-MT it means the opposite: the translation is GONE. Measured on one EN segment
+      // carrying two numbers: IS `'.'` → 2 findings, IS `''` → 0 findings. **Strictly less
+      // content yields strictly fewer findings**, and A7 then printed
+      // `0 EN numbers missing from IS over 1 paired segments` — not a missing statement but
+      // a positively FALSE one, over the only check in the tier that could have spoken.
+      // ▶ The fix is NOT to drop the pair from `examined` (that hides the segment and still
+      // reports clean). It is to say what happened. Found by adversarial review 2026-08-26;
+      // the corpus holds 0 empty IS bodies in 28,822 segments, so no corpus test could see
+      // it — the L44③ shape, where a natural rate of 0 is also what a broken detector gives.
+      if (en.trim() && !is.trim()) {
+        emptyIs++;
+        findings.push({
+          kind: 'empty-is-segment',
+          segmentId,
+          enNumbers: extractNumbers(en).length,
+        });
+        continue;
+      }
       for (const f of checkNumbers(en, is)) {
         findings.push({ kind: 'number-mismatch', segmentId, value: f.value });
       }
     }
 
+    const mismatches = findings.length - emptyIs;
     return {
       verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
       examined: pairs.size,
       findings,
-      message: `${findings.length} EN numbers missing from IS over ${pairs.size} paired segments`,
+      message: `${mismatches} EN numbers missing from IS over ${pairs.size} paired segments${emptyIs ? `, and ${emptyIs} IS segment(s) EMPTY against non-empty EN — not judged for numbers` : ''}`,
     };
   },
 });

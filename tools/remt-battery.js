@@ -46,8 +46,14 @@
  *                                     an absent allowlist tolerates NOTHING, so every
  *                                     human-triaged residue would report as a finding —
  *                                     `m68662` alone contributes 76 that look real.
- *                                     ⚠️ The loader reads it (`loadResidueAllowlist`);
- *                                     the gate cannot, because gates are pure.
+ *                                     🔴 THE LOADER MUST USE `loadResidueAllowlistOrNull`,
+ *                                     NOT `loadResidueAllowlist`. The latter returns
+ *                                     `{entries: []}` for a MISSING FILE and for a real
+ *                                     empty allowlist — identical values — so A5's guard
+ *                                     accepts the very state it exists to refuse. The
+ *                                     `OrNull` variant returns `null` when the file is
+ *                                     absent, which the guard rejects. Gates are pure, so
+ *                                     no check can tell the two apart on its own.
  *   @property {object} [provenance]   the parsed sidecar        (Task 9: A2a/A4/A8)
  *                                     ⚠️ ALL THREE, not the two this line named until
  *                                     2026-08-26 — A2a reads `run.markersNormalized` and
