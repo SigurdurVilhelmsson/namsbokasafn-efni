@@ -10,8 +10,29 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 10) — TASKS 1-10 ARE ALL MERGED (#419 → squash `43b43238`) AND DEPLOYED** [operator-reported; not verifiable from a dev session].
-> ▶ **Start at Task 11.** Tier 2 is complete: 10 checks, 3 blocking.
+> ⏩ **UPDATED 2026-08-26 (Task 11) — TASKS 1-10 ARE MERGED AND DEPLOYED; TASK 11 IS BUILT AND ON A BRANCH.**
+> Branch `c82-plan-b-task-11` carries **TIER 3 (`R1`-`R5`)**, so Tier 3 is complete: **5 checks, 2
+> blocking (`R2`, `R3`)**. ▶ **Start at Task 12 once it merges** — 2 Plan B tasks remain (12, 13),
+> then all 11 of Plan C.
+> 🔴 **READ §C82 L63-L78 BEFORE TASK 12.** The three that generalise furthest:
+> **① THE WIRING IS A SEPARATE FACT FROM THE ARRAY (L71)** — dropping both BLOCKING checks from the
+> registry left the ENTIRE `tools/__tests__` suite byte-identical to baseline. Task 12 registers
+> tier 4; **pin `registerChecks`' argument, not just the exported array.**
+> **② TIER 3's INPUTS ARE OUTPUTS OF THE PIPELINE IT JUDGES**, so no Tier-3 base rate measured today
+> is a rate for the code that will run. **Tier 4 (K1-K3) reads `05-publication` and a
+> `render-fidelity-baseline.json` — the same hazard, so measure the VINTAGE of anything you
+> base-rate.**
+> **③ "CALL THE SAME FUNCTION" IS NOT "COMPUTE THE SAME THING" (L75)** — two call sites of one
+> function still disagree if handed different inputs, and a docstring asserting otherwise is an
+> identity claim nothing cross-checks.
+> ⚠️ **A FIX ROUND IS WHERE DEFECTS ENTER: 2 of the 10 review findings were defects in MY OWN
+> EARLIER FIXES on this same branch.**
+> ⚠️ **`--chapter appendices` NOW WORKS in `audit-render-output.js`** (it built `chappendices`) —
+> but `auto-insert-placeholders.js:331` and `docx-import.js:968` still carry the **chapter-0**
+> truthiness bug in a syntax the obvious grep misses (L65), logged deliberately unfixed.
+>
+> ⏩ **PREVIOUS (Task 10) — TASKS 1-10 ARE ALL MERGED (#419 → squash `43b43238`) AND DEPLOYED** [operator-reported; not verifiable from a dev session].
+> ▶ ~~Start at Task 11.~~ Tier 2 is complete: 10 checks, 3 blocking. **Task 11 is now built — see the block above.**
 > ✅ **[LEAD] 2026-08-26: extraction sequencing CONFIRMED** — organic's remaining 323 modules are
 > extracted **after Plan B, before Plan C's ctx-loader decision** (§C82 L59).
 > ✅ **`m00032` needs NO bypass** — the defect was fixed by §C85-alt on 2026-08-24 and the register
@@ -64,12 +85,12 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 | | |
 |---|---|
 | `main` | ⚠️ **No sha is recorded here on purpose — this table pinned `d6c5e38b` and went stale the day Task 8 merged.** Tiers 0+1 (PR #416) and Tier 2's free half (PR #417) are both on `main` and both deployed. **`git rev-parse --short main` is the answer; the register's ⏩ RESUME owns what is merged.** |
-| Branch | none — **cut a fresh branch from `main`** |
+| Branch | ⚠️ **`c82-plan-b-task-11` is LIVE and unmerged** (Tier 3). Cut Task 12's branch from `main` only AFTER it merges, or from it if you are continuing the same thread — `git branch --show-current` is the answer, not this row. |
 | Runbook | Phases 0, 1.1, 1.2, **2.1**, **2.2** complete. **3.1 is Plans B + C — this work.** |
 | Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |
 
-▶ **Start by cutting a branch from `main`.** #416 and #417 are merged and deployed, so `main` already carries Tiers 0+1, Tier 2's free half, both plans and this briefing.
+▶ **Start by checking what is already on a branch** — `git log --oneline main..HEAD`. This line used to say "start by cutting a branch from `main`" unconditionally, which is wrong whenever the previous task has not merged yet.
 
 ## Five things measured in the planning session that a cold reader will otherwise re-derive
 
