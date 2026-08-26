@@ -10,7 +10,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 10) — TASKS 1-10 ARE ALL MERGED (#419 → squash `43b43238`); TASK 10 IS NOT YET DEPLOYED.**
+> ⏩ **UPDATED 2026-08-26 (Task 10) — TASKS 1-10 ARE ALL MERGED (#419 → squash `43b43238`) AND DEPLOYED** [operator-reported; not verifiable from a dev session].
 > ▶ **Start at Task 11.** Tier 2 is complete: 10 checks, 3 blocking.
 > ✅ **[LEAD] 2026-08-26: extraction sequencing CONFIRMED** — organic's remaining 323 modules are
 > extracted **after Plan B, before Plan C's ctx-loader decision** (§C82 L59).
