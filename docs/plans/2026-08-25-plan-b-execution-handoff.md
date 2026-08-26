@@ -13,10 +13,20 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > ⏩ **UPDATED 2026-08-26 (Task 11) — TASKS 1-11 ARE ALL MERGED AND DEPLOYED** (Task 11 = PR #420 → squash `fa208375`; deploy operator-reported).
 > **TIER 3 IS COMPLETE: 5 checks, 2 blocking (`R2`, `R3`).** ▶ **START AT TASK 12** — 2 Plan B tasks
 > remain (12 = Tier 4 `K1`/`K2`/`K3`, 13 = `--self-test` + the base-rate sweep), then all 11 of Plan C.
-> ⚠️ **AND ONE FOLLOW-UP IS OWED FIRST OR ALONGSIDE:** [LEAD] ruled that
-> `auto-insert-placeholders.js:331` and `docx-import.js:968` — the last two live chapter-0 sites —
-> are fixed on a **follow-up branch**, now that `ch00` is measured to be the **Preface in 5 of 5
-> books holding any CNXML** (§C82 L65). Each wants its own red-first test.
+> ✅ **THE OWED L65 FOLLOW-UP IS DONE — branch `c82-l65-chapter0-followup`, 2026-08-26** (§C82
+> **L85/L86/L87**). ~~[LEAD] ruled that `auto-insert-placeholders.js:331` and `docx-import.js:968`
+> — the last two live chapter-0 sites — are fixed on a follow-up branch. Each wants its own
+> red-first test.~~ 🔴 **THE TWO GOT OPPOSITE TREATMENTS, WHICH IS THE FINDING:**
+> `auto-insert-placeholders` **accepts** 0 (`ch00` exists, `padStart` builds it correctly);
+> `docx-import` **still refuses** it, because **no book JSON models a chapter 0** — all three
+> number chapters from 1 and carry the preface as a top-level `preface` key — so flipping its
+> guard alone parses 57 docx blocks of real work and *then* dies `Chapter 0 not found in
+> server/data/chemistry-2e.json`, the roadmap's proceed-into-broken-path reproduced. **The shared
+> class is fixed in both; the per-tool answer differs.** ⚠️ **And the flip alone would have
+> REGRESSED an exit code** (L86) — organic has no `02-for-mt/ch00`, so accepting 0 routes it into
+> a branch that reported to stderr and exited **0**. ⚠️ **L87 ①: `auto-insert-placeholders` is a
+> no-op on EVERY chapter** (0 of 220 EN files have a matching `.is.md` in its search path) — the
+> fix makes ch00 *reachable*, not *working*. **Status is the register's RESUME, not this line.**
 > 🔴 **READ §C82 L63-L78 BEFORE TASK 12.** The three that generalise furthest:
 > **① THE WIRING IS A SEPARATE FACT FROM THE ARRAY (L71)** — dropping both BLOCKING checks from the
 > registry left the ENTIRE `tools/__tests__` suite byte-identical to baseline. Task 12 registers
