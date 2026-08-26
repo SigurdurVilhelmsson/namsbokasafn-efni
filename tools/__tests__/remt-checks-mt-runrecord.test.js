@@ -285,22 +285,29 @@ describe('A8 — chars and estimatedIsk, RECORD ONLY', () => {
 
   // 🔴 `usage` IS THE ONE FIELD IN THIS RECORD WHOSE CORRUPTION ACTUALLY SHIPPED.
   // `run-record.js`'s own docstring records it: `totalUsage += result.usage || 0` against
-  // an API that returns an OBJECT persisted the literal string "0[object Object]" into
-  // every real sidecar until 2026-08-16. A8 is the only check that looks at `usage`, so
-  // if A8 drops a malformed one silently, a recurrence has no observer anywhere.
-  for (const [label, usage] of [
-    ['the historical "0[object Object]" string', '0[object Object]'],
-    ['the raw API object it came from', { units: 12345 }],
-    ['null', null],
-    ['NaN', NaN],
-    ['a numeric STRING', '777'],
+  // an API that returns an OBJECT would have concatenated to the literal string
+  // "0[object Object]". A8 is the only check that looks at `usage`, so if A8 drops a
+  // malformed one silently, a recurrence has no observer anywhere.
+  //
+  // 🔴 `got` AND `value` ARE ASSERTED PER SHAPE, AND THAT IS THE POINT OF THE TABLE.
+  // The `message` is BYTE-IDENTICAL for all five (`… usage=MALFORMED`), so these two
+  // fields are the ONLY thing separating "0[object Object]" from `{units:N}` from
+  // `null`. A `toMatchObject({kind})` left both unbound: measured, a mutant deleting
+  // them from the finding survived the whole file 41/41. `toEqual` binds the object.
+  // ⚠️ THIS IS THE SAME DEFECT THIS ROUND ALREADY FIXED ONE LAYER OUT — an assertion
+  // that names the thing without binding what distinguishes it.
+  for (const [label, usage, got, value] of [
+    ['the historical "0[object Object]" string', '0[object Object]', 'string', '0[object Object]'],
+    ['the raw API object it came from', { units: 12345 }, 'object', '[object Object]'],
+    ['null', null, 'null', 'null'],
+    ['NaN', NaN, 'number', 'NaN'],
+    ['a numeric STRING', '777', 'string', '777'],
   ]) {
     it(`WARNs and names the shape when usage is ${label}`, async () => {
       const r = await runCheck(A8, v2(cleanRecord({ usage })));
       expect(r.verdict).toBe(VERDICT.WARN);
       expect(r.examined).toBe(1);
-      expect(r.findings).toHaveLength(1);
-      expect(r.findings[0]).toMatchObject({ kind: 'malformed-usage' });
+      expect(r.findings).toEqual([{ kind: 'malformed-usage', got, value }]);
       // The message must NOT read as though usage were simply absent — that is the
       // coerce-to-empty this fix removes.
       expect(r.message).toContain('usage');

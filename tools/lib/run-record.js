@@ -48,9 +48,17 @@ export function glossaryContentHash(glossary) {
  * starting from `0`, while the Málstaður client returns an OBJECT — three JSDoc
  * sites in tools/lib/malstadur-api.js say `usage: object`, and its own
  * `createUsageTracker().record()` reads `usage.units` / `usage.cost`. In JS
- * `0 + {}` is string concatenation, so every real run persisted the literal
- * string `"0[object Object]"` (and one `[object Object]` per extra chunk) into
- * the sidecar's `usage` field. Measured 2026-08-16.
+ * `0 + {}` is string concatenation, so the accumulator became the literal string
+ * `"0[object Object]"` (and one `[object Object]` per extra chunk). Measured 2026-08-16.
+ *
+ * ⚠️ CORRECTED 2026-08-26 — THIS SAID THE STRING WAS PERSISTED "into the sidecar's
+ * `usage` field" BY "every real run". IT NEVER REACHED A SIDECAR. Measured: 242
+ * provenance sidecars corpus-wide, all `schemaVersion: 1`, 0 carrying a `usage` field.
+ * This writer was wired at `c91a7a7a` (2026-08-16 06:23Z) and the accumulation was fixed
+ * at `dac671b0` (19:48Z the same day) — no run happened in that ~13-hour window, and
+ * before it the value had no consumer. The TYPE MISMATCH IS REAL and the lesson below
+ * stands unchanged; the claim about what is on disk did not. Found by an adversarial
+ * review of §C82 Task 9, whose A8 check had inherited the overstatement verbatim.
  *
  * ⚠️ THE SUITE COULD NOT SEE IT, AND THE REASON GENERALISES: the two test files
  * disagreed about the contract. `malstadur-api.test.js` stubs `usage: {}`

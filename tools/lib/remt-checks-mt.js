@@ -944,9 +944,9 @@ export const A4 = defineCheck({
  * rather than from us — and its VALUE is still not a predicate: `usageUnits()` returns 0
  * for any shape it does not recognise, so `0` is ambiguous between "nothing was billed"
  * and "the shape changed and we could not read it", and a gate built on the value would
- * report the second as the first. But its TYPE is not ambiguous at all, and a `usage` that
- * is present and NOT a finite number is the exact shape that shipped to production for
- * months. That is reported. See the body for the measurement.
+ * report the second as the first. But its TYPE is not ambiguous at all, and a `usage`
+ * that is present and NOT a finite number is a real, once-live producer bug. That is
+ * reported. See the body for what is and is not known about its history.
  *
  * The values ride in `message` because `runCheck` normalises the result to the contract's
  * five keys — an extra `record` key would be dropped silently on the way to the ledger.
@@ -963,13 +963,23 @@ export const A8 = defineCheck({
     ]);
     if (skip) return skip;
 
-    // 🔴 A MALFORMED `usage` IS REPORTED, NOT DROPPED — and this is the one field in the
-    // record whose corruption ACTUALLY SHIPPED. `run-record.js`'s docstring records it:
-    // `totalUsage += result.usage || 0` against an API returning an OBJECT persisted the
-    // literal string `"0[object Object]"` into every real sidecar until 2026-08-16, and
-    // the suite could not see it because producer and consumer were stubbed differently.
-    // A8 is the ONLY check that reads `usage`, so a silent drop leaves a recurrence with
-    // no observer anywhere in the battery.
+    // 🔴 A MALFORMED `usage` IS REPORTED, NOT DROPPED — this is the only field here with a
+    // real history of arriving wrong. `api-translate` did `totalUsage += result.usage || 0`
+    // from `0` while the Málstaður client returns an OBJECT, and `0 + {}` in JS is string
+    // concatenation. The suite could not see it because producer and consumer were stubbed
+    // differently — the seam was untested by construction.
+    // ⚠️ AND HERE IS THE PART THAT MUST NOT BE OVERSTATED, BECAUSE THIS COMMENT SAID IT
+    // AND IT WAS WRONG: the corrupted value NEVER REACHED A SIDECAR. Measured 2026-08-26 —
+    // 242 provenance sidecars corpus-wide, ALL `schemaVersion: 1`, and 0 carrying a
+    // `usage` field at all. The run record was wired at `c91a7a7a` (2026-08-16 06:23Z) and
+    // the accumulation was fixed at `dac671b0` (19:48Z the SAME DAY); no run happened in
+    // that ~13-hour window. So the bug is real and the shape is real, but "it shipped into
+    // every sidecar for months" was a confident cause the evidence does not support — the
+    // §C82 L50 shape, in the very comment written to close L50. `run-record.js`'s own
+    // docstring carried the same overstatement and is corrected in the same commit.
+    // ▶ THE CHECK IS RIGHT EITHER WAY: coercing a wrong shape to empty and returning PASS
+    // is forbidden here whatever the field's history (L1), and A8 is the ONLY check that
+    // reads `usage`, so a silent drop leaves a recurrence with no observer in the battery.
     // ⚠️ The earlier form was `FIELD_KIND.number(run.usage) ? ... : ''` — a coerce-to-empty
     // on a wrong shape followed by PASS, which is exactly what this file's own header says
     // it does not do (§C82 L1). Measured: it rendered `"0[object Object]"`, `{units: N}`,
