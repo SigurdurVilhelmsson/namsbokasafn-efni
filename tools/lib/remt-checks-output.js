@@ -469,7 +469,13 @@ export const R3 = defineCheck({
     // handed 'the translated CNXML' without a track judges AN artifact, not THE artifact" —
     // applied to the payload-taking checks, where it had not been.
     if (ctx?.module && Array.isArray(v.targets) && v.targets.length) {
-      const covers = v.targets.some((t) => String(t).includes(ctx.module));
+      // ⚠️ AN EXACT BASENAME MATCH, NOT A SUBSTRING TEST. A substring test happens to be
+      // safe on today's corpus — measured: 0 substring pairs among all 1,192 module ids,
+      // because they are fixed-width `m` + 5 digits — but that is a property of the CORPUS,
+      // not of the code, and `m0003 ⊂ m00031` is the shape it would fail on. The predicate
+      // should not depend on a coincidence a new book could remove.
+      const wanted = `${ctx.module}.cnxml`;
+      const covers = v.targets.some((t) => String(t).split('/').pop() === wanted);
       if (!covers) {
         return {
           verdict: VERDICT.SKIPPED,

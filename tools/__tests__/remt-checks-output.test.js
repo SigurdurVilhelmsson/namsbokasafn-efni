@@ -539,6 +539,21 @@ describe('fix round — guards an adversarial review found missing', () => {
     expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: other }).verdict).toBe(VERDICT.PASS);
   });
 
+  it('R3: the module binding is an exact basename match, not a substring test', () => {
+    // ⚠️ A substring test passes on TODAY's corpus by coincidence — measured, 0 substring
+    // pairs among all 1,192 module ids, because they are fixed-width `m` + 5 digits. That
+    // is a property of the corpus, not of the code, and a new book could remove it.
+    const v = (targets) => ({ filesChecked: 1, errors: [], suppressed: [], targets });
+    const run = (targets, module) =>
+      R3.run({ book: 'efnafraedi-2e', module, schemaVerdict: v(targets) }).verdict;
+    expect(run(['/x/ch01/m68663.cnxml'], 'm68663')).toBe(VERDICT.PASS);
+    expect(run(['/x/ch01/m68664.cnxml'], 'm68663')).toBe(VERDICT.SKIPPED);
+    // The shape a substring test would get WRONG: a shorter id inside a longer filename.
+    expect(run(['/x/ch03/m00031.cnxml'], 'm0003')).toBe(VERDICT.SKIPPED);
+    // A directory target is not evidence about one module either.
+    expect(run(['/x/ch01'], 'm68663')).toBe(VERDICT.SKIPPED);
+  });
+
   it('R5: `examined` counts what findUntranslatedText ACTUALLY compares, preprocessing included', () => {
     // 🔴 THE SECOND ROUND OF THE SAME DEFECT. Round 1 stopped re-deriving the PREDICATE;
     // this binds the INPUT too. `findUntranslatedText` preprocesses (stripping <metadata>
