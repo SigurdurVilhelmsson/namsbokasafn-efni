@@ -172,18 +172,30 @@
  *                                     reads it SKIPs. A chapter rendered on one side only
  *                                     cannot be judged; §C82 L78② measured a one-sided
  *                                     guard reporting PASS over an empty document.
- *   @property {number} [knownIntentionalImageDrops] the count of images this book
- *                                     deliberately omits              (Task 12: K1/K2/K5)
+ *   @property {number} [knownIntentionalImageDrops] images deliberately omitted **from THIS
+ *                                     CHAPTER**                            (Task 12: K2)
  *                                     🔴 REQUIRED, NEVER DEFAULTED TO 0, AND K2 IS
  *                                     BLOCKING. `computeIntentionalImageDrops` is
  *                                     module-local in the render-fidelity tool, so a gate
  *                                     that calls `checkChapter` without this option reports
  *                                     chemistry appendices as an image drop (m68859, the
  *                                     periodic table) — taking the tier's measured rate
- *                                     from 3.8% to 7.7%, across the ~5% blocking bar. The
- *                                     value comes from the book's `specialModules`.
+ *                                     from 3.8% to 7.7%, across the ~5% blocking bar.
  *                                     ⚠️ A wrapper tested only against organic passes
  *                                     without it: organic's specialModules is `{}`.
+ *                                     🔴 PER CHAPTER, NOT PER BOOK — THIS LINE SAID "this
+ *                                     book" AND POINTED AT THE BOOK-LEVEL `specialModules`
+ *                                     UNTIL A REVIEW MEASURED IT. `checkChapter` subtracts
+ *                                     the value from THAT CHAPTER's `<image>` count, so a
+ *                                     driver following the old wording would hand
+ *                                     chemistry's book total to all 23 chapters and MASK a
+ *                                     real one-image drop as PASS — L88's false positive
+ *                                     inverted into a false negative, on a blocking check.
+ *                                     Count only the special modules IN the chapter judged.
+ *                                     ⚠️ K1 AND K5 ARE NOT CONSUMERS — this said
+ *                                     "K1/K2/K5". Both filter finding types the option
+ *                                     cannot move, and K5's demand for it was a pure
+ *                                     false-halt surface on a blocking check (§C82 L96②).
  *   @property {object|null} [renderBaseline] the PARSED per-CHAPTER bucket histogram from
  *                                     `render-fidelity-baseline.json`, or `null` when this
  *                                     chapter has none                      (Task 12: K1)

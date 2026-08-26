@@ -1,11 +1,21 @@
 /**
  * remt-checks-chapter.test.js — Tier 4 (K1-K5).
  *
- * ⚠️ THE POSITIVE FIXTURES ARE BUILT BY CALLING THE REAL PRODUCER, never hand-written.
- * `readChapterFromDisk` supplies `chapterInputs` and `snapshotModuleIds` supplies K3's
- * Maps, because a hand-built fixture and the check can agree with each other while both
- * disagree with the producer — the failure mode that stays green until the first real
- * payload arrives mid-run.
+ * ⚠️ THE POSITIVE FIXTURES ARE BUILT BY CALLING THE REAL PRODUCER — `readChapterFromDisk`
+ * for `chapterInputs`, `snapshotModuleIds` for K3's Maps, `readSlugMap`/`recordRename` for
+ * its slug maps, and the committed `render-fidelity-baseline.json` for K1's histograms —
+ * because a hand-built fixture and the check can agree with each other while both disagree
+ * with the producer, and stay green until the first real payload arrives mid-run.
+ *
+ * 🔴 THAT PARAGRAPH WAS A CLAIM BEFORE IT WAS TRUE, AND THE GAP IS WHY THIS FILE HAS A FIX
+ * ROUND. It named `snapshotModuleIds` while the function was never imported; every K3
+ * fixture was a hand-written literal, K1's baseline was a 2-bucket object the producer
+ * cannot emit, and the slug map was an ARRAY where the producer writes an OBJECT keyed by
+ * `from`. The check was written to match those fixtures, so 39 tests passed over a BLOCKING
+ * gate that could not read its own artifact. → §C82 L93.
+ * ▶ THE EXCEPTIONS ARE NOW DELIBERATE AND LABELLED, each with a producer-refusal control
+ * beside it: a degenerate `to === from` entry and a malformed `renames`, neither of which
+ * the producer can emit — which is exactly why they need hand-built fixtures.
  *
  * ⚠️ EVERY CORPUS PATH READ HERE IS TRACKED (verified: 05-publication is 100% tracked in
  * both books; the whole on-disk-vs-tracked gap is `*.backup.*`), so CI reads the same
@@ -18,6 +28,9 @@ import { fileURLToPath } from 'node:url';
 import { REGISTRY, VERDICT, runCheck } from '../lib/remt-battery.js';
 import { K1, K2, K3, K4, K5, CHAPTER_CHECKS, TRACKS } from '../lib/remt-checks-chapter.js';
 import { readChapterFromDisk } from '../cnxml-render-fidelity-check.js';
+import { snapshotModuleIds } from '../lib/publication-reconcile.js';
+import { readSlugMap, recordRename } from '../lib/slug-map.js';
+import fs from 'node:fs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CHEM = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
@@ -26,6 +39,11 @@ const CHEM = path.join(REPO_ROOT, 'books', 'efnafraedi-2e');
 const inputsFor = (chapter, track = 'mt-preview') => readChapterFromDisk(CHEM, chapter, track);
 
 /** A ctx carrying everything the content checks need, so only the varied key is under test. */
+const RB = () =>
+  JSON.parse(fs.readFileSync(path.join(CHEM, 'render-fidelity-baseline.json'), 'utf8')).chapters;
+const REAL_BASELINE_CH12 = () => RB()['12'];
+const REAL_BASELINE_APP = () => RB()['appendices'];
+
 const ctxFor = (chapter, extra = {}) => ({
   book: 'efnafraedi-2e',
   track: 'mt-preview',
@@ -146,7 +164,17 @@ describe('K2 — the cross-stage drop invariant, and the option that decides its
 });
 
 describe('K1 — shape drift, and the seven representations of "nothing"', () => {
-  const BASELINE_CH12 = { em: 370, 'div.equation': 121 };
+  // 🔴 THE REAL COMMITTED BASELINE, NOT A HAND-WRITTEN LITERAL — AND THE FIRST DRAFT'S
+  // LITERAL WAS ITSELF AN INSTANCE OF THE BUG THE NEXT TEST REFUSES. It was
+  // `{ em: 370, 'div.equation': 121 }`: a 2-bucket histogram the producer structurally
+  // cannot emit (`htmlShapeHistogram` always returns all 16), so the other 14 buckets were
+  // each compared against 0 and the fixture pinned SIXTEEN findings where the real
+  // 16-bucket entry yields SIX. The documented "3 of 14 cells drift, 9 findings" was
+  // measured with the real baseline; this fixture disagreed with it and nothing noticed.
+  const REAL_BASELINE = JSON.parse(
+    fs.readFileSync(path.join(CHEM, 'render-fidelity-baseline.json'), 'utf8')
+  );
+  const BASELINE_CH12 = REAL_BASELINE.chapters['12'];
 
   it('SKIPs on `null` — no baseline is the EXPECTED inert state, never a clean pass', async () => {
     const r = await runCheck(K1, ctxFor(4, { renderBaseline: null }));
@@ -169,7 +197,7 @@ describe('K1 — shape drift, and the seven representations of "nothing"', () =>
     // findings on chemistry ch10, every one `expected: 0`).
     const r = await runCheck(K1, ctxFor(4, { renderBaseline: {} }));
     expect(r.verdict).toBe(VERDICT.FAIL);
-    expect(r.findings[0].kind).toBe('baseline-vacuous');
+    expect(r.findings[0].kind).toBe('baseline-incomplete');
     // And it did NOT emit a drift finding per bucket — the thing the refusal prevents.
     expect(r.findings).toHaveLength(1);
   });
@@ -270,6 +298,23 @@ describe('the both-sides guard — a chapter rendered on one side cannot read as
 
 describe('K3 — renames accounted for by the slug map', () => {
   const snap = (pairs) => new Map(pairs);
+
+  /**
+   * 🔴 BUILT BY THE REAL PRODUCER, not by an object literal — this is the repair for the
+   * defect that let K3 ship unable to read its own artifact. `recordRename` is what writes
+   * every committed map, and it keys `renames` by the OLD track-relative path with values
+   * `{to, moduleId, recordedAt}`. The first draft hand-wrote an ARRAY here, the check was
+   * written to match the fixture, and the two agreed with each other while both disagreed
+   * with the producer — green through 39 tests. → §C82 L93.
+   */
+  const mapWith = (...renames) => {
+    const m = readSlugMap('/nonexistent-so-this-is-a-fresh-empty-map', {
+      book: 'efnafraedi-2e',
+      track: 'mt-preview',
+    });
+    for (const r of renames) recordRename(m, { ...r, recordedAt: '2026-08-18' });
+    return m;
+  };
   const base = { book: 'efnafraedi-2e', track: 'mt-preview', chapter: '10' };
 
   it('🔴 SKIPs with no before-snapshot — and that HALTS, because K3 is blocking', async () => {
@@ -294,16 +339,11 @@ describe('K3 — renames accounted for by the slug map', () => {
       ...base,
       publishedBefore: snap([['10-5-old.html', 'm68770']]),
       publishedAfter: snap([['10-5-new.html', 'm68770']]),
-      slugMap: {
-        track: 'mt-preview',
-        renames: [
-          {
-            from: 'chapters/10/10-5-old.html',
-            to: 'chapters/10/10-5-new.html',
-            moduleId: 'm68770',
-          },
-        ],
-      },
+      slugMap: mapWith({
+        from: 'chapters/10/10-5-old.html',
+        to: 'chapters/10/10-5-new.html',
+        moduleId: 'm68770',
+      }),
     });
     expect(r.verdict).toBe(VERDICT.PASS);
     expect(r.examined).toBe(1);
@@ -334,31 +374,44 @@ describe('K3 — renames accounted for by the slug map', () => {
       ...base,
       publishedBefore: snap([['10-5-old.html', 'm68770']]),
       publishedAfter: snap([['10-5-new.html', 'm68770']]),
-      slugMap: {
-        track: 'mt-preview',
-        renames: [
-          { from: 'chapters/10/x.html', to: 'chapters/10/10-5-other.html', moduleId: 'm68770' },
-        ],
-      },
+      slugMap: mapWith({
+        from: 'chapters/10/x.html',
+        to: 'chapters/10/10-5-other.html',
+        moduleId: 'm68770',
+      }),
     });
     expect(r.verdict).toBe(VERDICT.FAIL);
   });
 
   it('ignores a `to === from` entry — a re-render is not a rename', async () => {
     // CLAUDE.md's §C9 contract. Such an entry must not account for a real rename.
+    // ⚠️ THIS IS THE ONE FIXTURE HERE THAT IS DELIBERATELY *NOT* PRODUCER-BUILT, AND THE
+    // REASON IS THE POINT: `recordRename` refuses `from === to` outright (`if (from === to)
+    // return map;`), so the producer CANNOT emit a degenerate entry. It can only arrive
+    // from a hand-edited or corrupted map — which is exactly the state this guard exists
+    // for, and exactly why it needs a hand-built fixture. The positive control below proves
+    // the producer's refusal rather than assuming it.
+    const producerRefused = mapWith({
+      from: 'chapters/10/10-5-new.html',
+      to: 'chapters/10/10-5-new.html',
+      moduleId: 'm68770',
+    });
+    expect(Object.keys(producerRefused.renames)).toHaveLength(0);
+
     const r = await runCheck(K3, {
       ...base,
       publishedBefore: snap([['10-5-old.html', 'm68770']]),
       publishedAfter: snap([['10-5-new.html', 'm68770']]),
       slugMap: {
+        book: 'efnafraedi-2e',
         track: 'mt-preview',
-        renames: [
-          {
-            from: 'chapters/10/10-5-new.html',
+        renames: {
+          'chapters/10/10-5-new.html': {
             to: 'chapters/10/10-5-new.html',
             moduleId: 'm68770',
+            recordedAt: '2026-08-18',
           },
-        ],
+        },
       },
     });
     expect(r.verdict).toBe(VERDICT.FAIL);
@@ -400,10 +453,256 @@ describe('K3 — renames accounted for by the slug map', () => {
       ...base,
       publishedBefore: snap([['10-5-old.html', 'm68770']]),
       publishedAfter: snap([['10-5-new.html', 'm68770']]),
-      slugMap: { track: 'faithful', renames: [] },
+      slugMap: { book: 'efnafraedi-2e', track: 'faithful', renames: {} },
     });
     expect(r.verdict).toBe(VERDICT.SKIPPED);
     expect(r.message).toContain('faithful');
+  });
+});
+
+describe('the fix round — every defect the blind review confirmed, pinned', () => {
+  const base = { book: 'efnafraedi-2e', track: 'mt-preview', chapter: '10' };
+  const snap = (pairs) => new Map(pairs);
+
+  it('K3 reads the producer OBJECT shape — the false halt that shipped through 39 green tests', async () => {
+    // §C82 L93. The whole accounting branch was unreachable: `renames` is an object keyed
+    // by `from`, the code required an array, so every correctly-recorded rename read as
+    // unaccounted on a BLOCKING check. Built here by the real producer so the fixture
+    // cannot drift back.
+    const m = readSlugMap('/nonexistent', { book: 'efnafraedi-2e', track: 'mt-preview' });
+    recordRename(m, {
+      from: 'chapters/10/a.html',
+      to: 'chapters/10/b.html',
+      moduleId: 'm1',
+      recordedAt: '2026-08-18',
+    });
+    expect(Array.isArray(m.renames)).toBe(false); // the shape the first draft assumed
+    const r = await runCheck(K3, {
+      ...base,
+      publishedBefore: snap([['a.html', 'm1']]),
+      publishedAfter: snap([['b.html', 'm1']]),
+      slugMap: m,
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+  });
+
+  it('K3 refuses a malformed `renames` rather than reading it as an empty map', async () => {
+    for (const bad of [[], 'x', 3, null]) {
+      const r = await runCheck(K3, {
+        ...base,
+        publishedBefore: snap([['a.html', 'm1']]),
+        publishedAfter: snap([['a.html', 'm1']]),
+        slugMap: { book: 'efnafraedi-2e', track: 'mt-preview', renames: bad },
+      });
+      expect(r.verdict, `renames=${JSON.stringify(bad)}`).toBe(VERDICT.SKIPPED);
+    }
+  });
+
+  it('🔴 K3 reports a FAILED PRUNE — the duplicate page §C9 exists to eliminate', async () => {
+    // §C82 L94①. The old loop hit `newFiles.includes(oldFile)` first — the old name is
+    // still on disk, so it read as "not a rename" — and certified the chapter with no map.
+    const r = await runCheck(K3, {
+      ...base,
+      publishedBefore: snap([['10-5-old.html', 'm68770']]),
+      publishedAfter: snap([
+        ['10-5-old.html', 'm68770'],
+        ['10-5-new.html', 'm68770'],
+      ]),
+      slugMap: null,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings.map((f) => f.kind)).toContain('module-in-multiple-files');
+  });
+
+  it('K3 binds the rename on BOTH ends — an entry with the right destination is not enough', async () => {
+    // §C82 L94②. The redirect vefur serves is keyed on the OLD path, so the entry that must
+    // exist is precisely the one a `(moduleId, to)` binding never checked for.
+    const m = readSlugMap('/nonexistent', { book: 'efnafraedi-2e', track: 'mt-preview' });
+    recordRename(m, {
+      from: 'chapters/10/SOMETHING-ELSE.html',
+      to: 'chapters/10/10-5-new.html',
+      moduleId: 'm68770',
+      recordedAt: '2026-08-18',
+    });
+    const r = await runCheck(K3, {
+      ...base,
+      publishedBefore: snap([['10-5-old.html', 'm68770']]),
+      publishedAfter: snap([['10-5-new.html', 'm68770']]),
+      slugMap: m,
+    });
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings[0].kind).toBe('unaccounted-rename');
+  });
+
+  it('🔴 K3s track guard fails CLOSED when ctx.track is absent', async () => {
+    // §C82 L94③, found twice: once as a finding, once as a SURVIVING MUTANT whose removal
+    // was the safer direction. The old `ctx?.track &&` conjunct short-circuited, routing a
+    // track-mismatched map to the permissive branch on a blocking check.
+    const r = await runCheck(K3, {
+      book: 'efnafraedi-2e',
+      chapter: '10', // no `track`
+      publishedBefore: snap([['10-5-old.html', 'm68770']]),
+      publishedAfter: snap([['10-5-new.html', 'm68770']]),
+      slugMap: { book: 'efnafraedi-2e', track: 'faithful', renames: {} },
+    });
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+  });
+
+  it('🔴 the both-sides guard checks CONTENT, not array length', async () => {
+    // §C82 L95. `readChapterFromDisk` returns [''] for a zero-byte file, and the length-only
+    // guard let BOTH BLOCKING checks PASS with a healthy-looking `examined`.
+    for (const check of [K1, K2, K4, K5]) {
+      const r = await runCheck(check, {
+        ...base,
+        chapter: '4',
+        knownIntentionalImageDrops: 0,
+        renderBaseline: null,
+        chapterInputs: { cnxml: [''], html: ['', '   '] },
+      });
+      expect(r.verdict, check.id).toBe(VERDICT.SKIPPED);
+      expect(r.examined, check.id).toBe(0);
+    }
+  });
+
+  it('the ctx shape guard is pinned — deleting it used to leave the suite green', async () => {
+    const r = await runCheck(K2, { ...base, chapterInputs: { cnxml: 'not-an-array', html: [] } });
+    expect(r.verdict).toBe(VERDICT.SKIPPED);
+    expect(r.message).toContain('readChapterFromDisk');
+  });
+
+  it('numericDrops refuses a NON-INTEGER, not merely a missing key', async () => {
+    // The only thing stopping a CLI-parsed string or a float from silently disabling K2's
+    // image invariant — and no test fed it one.
+    for (const bad of ['1', 1.5, -1, null, {}]) {
+      const r = await runCheck(K2, ctxFor('appendices', { knownIntentionalImageDrops: bad }));
+      expect(r.verdict, JSON.stringify(bad)).toBe(VERDICT.SKIPPED);
+    }
+  });
+
+  it('🔴 K5 no longer SKIPs over a value that cannot change its verdict', async () => {
+    // §C82 L96②. K5 filters `raw-cnxml-leak`, computed from the HTML alone, so demanding
+    // `knownIntentionalImageDrops` converted an irrelevant absent key into a blocking halt.
+    const r = await runCheck(K5, {
+      ...base,
+      chapter: '4',
+      chapterInputs: inputsFor(4), // no knownIntentionalImageDrops at all
+    });
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.examined).toBe(inputsFor(4).html.length);
+  });
+
+  it('K1 is unaffected by knownIntentionalImageDrops, in either direction', async () => {
+    // The ctx contract used to advertise K1 as a consumer. Measured on the specialModules
+    // cell itself, where K2 swings SKIPPED/FAIL/PASS on the same inputs.
+    const verdicts = new Set();
+    for (const drops of [undefined, 0, 1, 7]) {
+      const r = await runCheck(
+        K1,
+        ctxFor('appendices', { knownIntentionalImageDrops: drops, renderBaseline: null })
+      );
+      verdicts.add(r.verdict);
+    }
+    expect([...verdicts]).toEqual([VERDICT.SKIPPED]);
+  });
+
+  it('🔴 K1 refuses a SPARSE histogram, not only a fully empty one', async () => {
+    // The module used to claim `{}` was "the ONLY representation that produces FALSE
+    // POSITIVES". Any sparse histogram does — and the branch's own K1 fixture was one.
+    const full = REAL_BASELINE_CH12();
+    const sparse = { em: full.em, 'div.equation': full['div.equation'] };
+    const r = await runCheck(K1, ctxFor(12, { renderBaseline: sparse }));
+    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.findings[0].kind).toBe('baseline-incomplete');
+    expect(r.findings[0].missing.length).toBe(14);
+  });
+
+  it('K1 and K4 can return PASS — neither had a single passing fixture', async () => {
+    // An always-alarming constant survived both. K4's advisory->blocking promotion is
+    // scheduled on a re-measured rate a broken PASS path would compute as 100%.
+    const k1 = await runCheck(K1, ctxFor('appendices', { renderBaseline: REAL_BASELINE_APP() }));
+    expect([VERDICT.PASS, VERDICT.WARN]).toContain(k1.verdict);
+    const k4 = await runCheck(K4, ctxFor(1));
+    expect(k4.verdict).toBe(VERDICT.PASS);
+  });
+
+  it('K1 filters to shape-drift only — pinned on the cell that emits a second type', async () => {
+    // The same defect diagnosed for K2: on chemistry the filter had nothing to exclude.
+    const micro = path.join(REPO_ROOT, 'books', 'orverufraedi');
+    const inputs = readChapterFromDisk(micro, 5, 'mt-preview');
+    const r = await runCheck(K1, {
+      book: 'orverufraedi',
+      track: 'mt-preview',
+      chapter: '5',
+      chapterInputs: inputs,
+      renderBaseline: REAL_BASELINE_CH12(), // any full histogram; drift is expected
+    });
+    expect(r.findings.some((f) => f.type === 'raw-cnxml-leak')).toBe(false);
+    expect(r.findings.every((f) => f.type === 'shape-drift')).toBe(true);
+    expect(r.findings.length).toBeGreaterThan(0);
+  });
+
+  it('every content check keys `examined` to HTML files read — all four, not just K2', async () => {
+    // §C82 L95: the test written to stop a constant covered one id of four.
+    const n4 = inputsFor(4).html.length;
+    const nApp = inputsFor('appendices').html.length;
+    expect(n4).not.toBe(nApp); // a constant that happens to match would satisfy one alone
+    for (const [check, extra] of [
+      [K1, { renderBaseline: REAL_BASELINE_CH12() }],
+      [K2, {}],
+      [K4, {}],
+      [K5, {}],
+    ]) {
+      const a = await runCheck(check, ctxFor(4, extra));
+      const b = await runCheck(
+        check,
+        ctxFor('appendices', { ...extra, knownIntentionalImageDrops: 1 })
+      );
+      expect(a.examined, check.id).toBe(n4);
+      expect(b.examined, check.id).toBe(nApp);
+    }
+  });
+
+  it('K5 reports the leak COUNT, not the finding count capped at one', async () => {
+    const micro = path.join(REPO_ROOT, 'books', 'orverufraedi');
+    const r = await runCheck(K5, {
+      book: 'orverufraedi',
+      track: 'mt-preview',
+      chapter: '5',
+      chapterInputs: readChapterFromDisk(micro, 5, 'mt-preview'),
+    });
+    expect(r.findings).toHaveLength(1); // the producer pushes at most one
+    // 🔴 THE VALUE, NOT THE SHAPE. A first draft asserted only the message PATTERN
+    // (`/occurrence\(s\) across \d+ pattern\(s\)/`), and a mutant hard-coding the count to
+    // 0 SURVIVED it — `0 occurrence(s) across 1 pattern(s)` matches that regex perfectly.
+    // An assertion that names the thing without binding what distinguishes it pins nothing.
+    const detail = r.findings[0].leaks;
+    expect(detail.map((l) => l.pattern)).toEqual(['link']);
+    expect(detail[0].count).toBe(1);
+    expect(r.message).toContain('1 raw-CNXML occurrence(s) across 1 pattern(s) (link)');
+  });
+
+  it('K3 accepts a snapshot built by the REAL producer over a real published chapter', async () => {
+    // 🔴 THIS TEST EXISTS BECAUSE THE FILE HEADER CLAIMED IT ALREADY DID. The header said
+    // "`snapshotModuleIds` supplies K3's Maps"; the function was never imported and every
+    // K3 fixture was a hand-written literal — which is precisely how K3 shipped unable to
+    // read the producer's slug map. A claim of discipline is not the discipline. → §C82 L93.
+    const dir = path.join(CHEM, '05-publication', 'mt-preview', 'chapters', '10');
+    const before = snapshotModuleIds(dir);
+    expect(before.size).toBeGreaterThan(0); // the producer really read something
+    // Nothing moved between the two snapshots, so a clean chapter must read clean.
+    const r = await runCheck(K3, { ...base, publishedBefore: before, publishedAfter: before });
+    expect(r.verdict).toBe(VERDICT.PASS);
+    expect(r.examined).toBe(before.size);
+    // And the population caveat the check reports rather than implying: id-less rollups are
+    // outside it by design, so `examined` is smaller than the file count.
+    const htmlCount = fs.readdirSync(dir).filter((f) => f.endsWith('.html')).length;
+    expect(before.size).toBeLessThan(htmlCount);
+  });
+
+  it('K4 carries the skeletons an operator needs, not just a count', async () => {
+    const r = await runCheck(K4, ctxFor(4));
+    expect(r.findings[0].lostCount).toBe(6);
+    expect(r.findings[0].lostSkeletons.length).toBeGreaterThan(0);
   });
 });
 

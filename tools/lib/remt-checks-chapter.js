@@ -12,11 +12,18 @@
  * `05-publication`, and `render-fidelity-baseline.json`, which is itself captured FROM a
  * render. Measured vintages:
  *
- *   input                              vintage       producer's vintage
- *   05-publication chemistry           2026-07-10    renderer last written 2026-08-23
- *   05-publication organic             2026-07-17    (~24 commits later, several
- *   render-fidelity-baseline chemistry 2026-07-10     changing ID emission)
- *   render-fidelity-baseline organic   2026-08-23    ← NEWER than the render it judges
+ *   input                              vintage        producer's vintage
+ *   05-publication chemistry           SEE BELOW      renderer last written 2026-08-23
+ *   05-publication organic             2026-07-17     (~24 commits later, several
+ *   render-fidelity-baseline chemistry 2026-07-10      changing ID emission)
+ *   render-fidelity-baseline organic   2026-08-23     ← NEWER than the render it judges
+ *
+ * ⚠️ "SEE BELOW" REPLACES A SINGLE DATE THAT WAS WRONG FOR MOST OF THE TREE. This row read
+ * `2026-07-10`; measured per file, chemistry's published tree spans **16 distinct render
+ * dates across 265 files, 2026-03-19 → 2026-08-18**. The single date holds for **ch4** —
+ * the only cell K2 and K4 fire on, so their stated advisory reasoning survives intact — and
+ * is wrong for three of the four cells this tier actually reads. ▶ **A tree does not have
+ * a vintage; its FILES do.** Quote the vintage of the cell you measured, never the tree's.
  *
  * ⚠️ THAT LAST ROW MAKES ORGANIC'S K1 ZERO TAUTOLOGICAL. Its baseline was captured from
  * the exact bytes it is compared against, so `0 findings` is not evidence of cleanliness.
@@ -34,7 +41,8 @@
  *   K3  (slug map)          this file             YES       0 of 4 — SKIPPED, see K3
  *   K4  genuine-math-drop   identityDiffChapter   no        1 of 26 (3.8%)
  *   K5  raw-cnxml-leak      checkChapter §1b      YES       0 of 278 run-target files
- *                                                            (1 of 334 corpus-wide)
+ *                                                            (1 of 334 files = 1 of 31
+ *                                                             CELLS, 3.2%, corpus-wide)
  *
  * 🔴 K4 AND K5 ARE DELIBERATE SCOPE EXPANSIONS, RECORDED RATHER THAN FOLDED IN SILENTLY
  * (the shape §C82 L68 established). The spec sizes this tier at three ids and names only
@@ -47,11 +55,17 @@
  *
  * ⚠️ THE FOURTH TYPE, `control-char`, IS DELIBERATELY *NOT* GIVEN AN ID — and the reason
  * is the spec's own rule, not taste. Global Constraint 4 forbids blocking without a
- * known-bad fixture, and there is none anywhere: 0 of 334 published HTML files, 0 of 191
- * `03-translated` CNXML, 0 of 1,192 read-only source CNXML across all five books, 0 of 476
- * `02-mt-output` files — ~2,193 files, zero everywhere, with a planted-NUL positive control
- * confirming the detector fires. It is also already enforced upstream. Logged as a gap in
- * the register rather than shipped as a check that can never fail. → §C82 L91.
+ * known-bad fixture, and there is none anywhere it has been looked for: **0 of 334 published
+ * HTML files and 0 of 191 `03-translated` CNXML** — the two populations Tier 4 actually
+ * reads, both re-confirmed by an independent reviewer — with a planted-NUL positive control
+ * confirming the detector fires. Logged as a gap in the register rather than shipped as a
+ * check that can never fail. → §C82 L91.
+ * ⚠️ TWO SUPPORTING CLAIMS WERE WITHDRAWN RATHER THAN REPAIRED, because neither could be
+ * reproduced: a "0 of 476 `02-mt-output` files" denominator, and "it is also already
+ * enforced upstream" — the upstream guard that exists does not cover the render stage this
+ * tier judges, so it was never an argument for giving the detector no id here. **The
+ * conclusion stands on the two denominators above alone**, which is a narrower claim than
+ * the paragraph used to make and is the one that survives measurement.
  *
  * ══ THE MEASUREMENT THAT DECIDES K2's BLOCKING FLAG ══════════════════════════════
  * 🔴 `computeIntentionalImageDrops` IS NOT EXPORTED, AND K2 IS BLOCKING. `checkChapter`
@@ -80,6 +94,12 @@
  *  2. It is zero exactly when nothing was rendered, which is precisely when none of the
  *     four can judge. No other candidate has that property: shape BUCKETS are >=1 whenever
  *     a baseline exists, and FINDINGS are zero on a healthy chapter.
+ *     🔴 THAT SENTENCE WAS FALSE UNTIL THE FIX ROUND, AND IT WAS FALSE IN THE DIRECTION
+ *     THAT COSTS MONEY. `chapterContent` tested `.length === 0` only, so `{cnxml: [''],
+ *     html: ['']}` — **exactly what `readChapterFromDisk` returns for a zero-byte file** —
+ *     passed the guard and both BLOCKING checks returned PASS with a large `examined`.
+ *     The guard now counts files with CONTENT, so the claim is true of the payload and not
+ *     merely of the container. → §C82 L95.
  *  3. 🔴 IT AVOIDS RE-DERIVING A PREDICATE. K4's natural unit — equations compared — would
  *     need a count of `<m:math>` elements, and `mathSkeletons` (the real predicate, which
  *     requires a matching CLOSE tag) is NOT exported. Counting `<m:math` with a regex is a
@@ -116,7 +136,11 @@
  * "no baseline" and reports SKIPPED, which looks exactly like the expected inert state.
  */
 import { defineCheck, registerChecks, VERDICT } from './remt-battery.js';
-import { checkChapter, identityDiffChapter } from '../cnxml-render-fidelity-check.js';
+import {
+  checkChapter,
+  htmlShapeHistogram,
+  identityDiffChapter,
+} from '../cnxml-render-fidelity-check.js';
 
 /** Tracks whose publication trees this tier may be pointed at. Frozen ARRAY, not Set. */
 // ⚠️ A FROZEN ARRAY, DELIBERATELY — `Object.freeze(new Set(...))` DOES NOT FREEZE A SET.
@@ -154,16 +178,29 @@ function chapterContent(ctx, id) {
       },
     };
   }
-  if (inputs.html.length === 0 || inputs.cnxml.length === 0) {
+  // 🔴 CONTENT, NOT CONTAINER — AND THE FIRST DRAFT CHECKED ONLY `.length`, WHICH IS THE
+  // FALSE-CLEAN THIS FUNCTION'S OWN DOCSTRING CLAIMS TO PREVENT. `{cnxml: [''], html: ['']}`
+  // passed the length test, and BOTH BLOCKING checks then returned PASS with a large,
+  // healthy-looking `examined`. That is not hypothetical input: `readChapterFromDisk`
+  // returns `['']` for a zero-byte file, and the same hole swallows a loader that hands
+  // over file PATHS instead of file CONTENTS. `runCheck`'s `PASS + examined 0 -> SKIPPED`
+  // backstop cannot fire, because `examined` is the array length and is non-zero.
+  // ▶ THE CONTAINER IS NOT THE PAYLOAD, one level in from where that rule usually lands:
+  // the array was validated and the strings inside it were not. → §C82 L95.
+  const nonEmpty = (arr) => arr.filter((s) => typeof s === 'string' && s.trim() !== '').length;
+  const cn = nonEmpty(inputs.cnxml);
+  const ht = nonEmpty(inputs.html);
+  if (cn === 0 || ht === 0) {
     return {
       skip: {
         verdict: VERDICT.SKIPPED,
         examined: 0,
         findings: [],
         message:
-          `${id}: nothing to compare — ${inputs.cnxml.length} injected CNXML file(s), ` +
-          `${inputs.html.length} published HTML file(s). Both sides are required; a chapter ` +
-          `rendered on one side only cannot be judged and must not read as clean`,
+          `${id}: nothing to compare — ${cn} of ${inputs.cnxml.length} injected CNXML ` +
+          `file(s) and ${ht} of ${inputs.html.length} published HTML file(s) carry any ` +
+          `content. Both sides are required; a chapter rendered on one side only, or read ` +
+          `as empty strings, cannot be judged and must not read as clean`,
       },
     };
   }
@@ -190,12 +227,25 @@ function chapterContent(ctx, id) {
  *   R3  `chapters` ok, chapter absent -> undefined               -> silent skip
  *                                        ⚠️ THE COMMONEST STATE: 84 of 112 cells,
  *                                           12 of them with real HTML
- *   R4  chapter present but `{}`      -> 🔴 `{}` IS TRUTHY, so the drift loop runs over
- *                                        every ACTUAL bucket against `baseline[b] || 0`.
- *                                        Measured on chemistry ch10: **16 findings, every
- *                                        one `expected: 0`.** The ONLY representation that
- *                                        produces FALSE POSITIVES. Corpus count today:
- *                                        0 of 28 entries — latent, not live.
+ *   R4  chapter present but SPARSE    -> 🔴 A partial histogram IS TRUTHY, so the drift
+ *                                        loop runs over every ACTUAL bucket against
+ *                                        `baseline[b] || 0`. Measured on chemistry ch10
+ *                                        with `{}`: **16 findings, every one
+ *                                        `expected: 0`.** Corpus count of `{}` entries
+ *                                        today: 0 of **15** committed entries (13
+ *                                        chemistry + 1 organic + 1 physics) — latent.
+ *                                        🔴 THIS ROW SAID `{}` AND CALLED IT "THE ONLY
+ *                                        REPRESENTATION THAT PRODUCES FALSE POSITIVES".
+ *                                        BOTH HALVES WERE WRONG. **Any** sparse histogram
+ *                                        does it; `{}` is merely the limiting case. And
+ *                                        the branch's own K1 fixture was an instance — a
+ *                                        hand-written 2-bucket literal pinning 16 findings
+ *                                        where the real 16-bucket entry yields 6. The
+ *                                        guard now compares against the producer's own
+ *                                        key set (`htmlShapeHistogram('')`), so a
+ *                                        renderer that gains a bucket cannot leave it
+ *                                        silently checking the wrong shape.
+ *                                        ⚠️ "0 of 28" was also wrong: there are 15.
  *   R5  malformed JSON                -> bare `JSON.parse` THROWS UNCAUGHT. Different
  *                                        severity from every other row: it kills the RUN,
  *                                        not one chapter.
@@ -257,25 +307,47 @@ export const K1 = defineCheck({
         message: `K1: ctx.renderBaseline is ${typeof baseline}, not a bucket histogram or null`,
       };
     }
-    // 🔴 R4, AND IT IS A FINDING RATHER THAN A SKIP. An empty histogram is TRUTHY, so
-    // `checkChapter` would happily compare every actual bucket against 0 and report the
-    // whole chapter as drift. Refusing it here is what stops 16 false positives; calling it
-    // SKIPPED instead would hide a producer defect behind the expected inert state.
-    if (Object.keys(baseline).length === 0) {
+    // 🔴 R4, AND IT IS A FINDING RATHER THAN A SKIP. A histogram missing buckets is TRUTHY,
+    // so `checkChapter` compares each absent bucket against `baseline[b] || 0` and reports
+    // the whole chapter as drift. Refusing it here is what stops those false positives;
+    // calling it SKIPPED instead would hide a producer defect behind the expected inert
+    // state.
+    // 🔴 THE FIRST DRAFT TESTED `Object.keys(baseline).length === 0`, AND THE MODULE HEADER
+    // CLAIMED `{}` WAS "THE ONLY REPRESENTATION THAT PRODUCES FALSE POSITIVES". BOTH WERE
+    // WRONG: **any SPARSE histogram does the same thing**, and an empty one is merely its
+    // limiting case. The branch's own K1 fixture was an instance — a hand-written 2-bucket
+    // literal that pinned 16 findings where the real 16-bucket baseline yields 6.
+    // ▶ THE CANONICAL SET IS DERIVED FROM THE PRODUCER, never hard-coded: `htmlShapeHistogram('')`
+    // returns all 16 buckets at zero, which is exactly the key set `--update-baseline`
+    // writes. Deriving it means a renderer that gains a bucket cannot leave this guard
+    // silently checking the wrong shape — the §C82 L69 lesson (stop porting; call the real
+    // thing) applied to a key set rather than to a predicate.
+    const canonical = Object.keys(htmlShapeHistogram(''));
+    const missing = canonical.filter((b) => !(b in baseline));
+    if (missing.length) {
       return {
         verdict: VERDICT.FAIL,
         examined: content.html.length,
-        findings: [{ kind: 'baseline-vacuous' }],
+        findings: [{ kind: 'baseline-incomplete', missing, present: Object.keys(baseline).length }],
         message:
-          'K1: the baseline entry for this chapter is an EMPTY histogram. That is not ' +
-          '"no baseline" — it compares every rendered bucket against 0 and reports the ' +
-          'entire chapter as drift (measured: 16 findings on chemistry ch10)',
+          `K1: the baseline entry for this chapter is missing ${missing.length} of ` +
+          `${canonical.length} buckets (${missing.join(', ')}). That is not "no baseline" — ` +
+          `every absent bucket is compared against 0, so the chapter reads as wholesale ` +
+          `drift. An empty histogram is the limiting case of this, not a separate one`,
       };
     }
 
-    const drift = checkChapter(content, baseline, {
-      knownIntentionalImageDrops: numericDrops(ctx),
-    }).filter((f) => f.type === 'shape-drift');
+    // ⚠️ `0`, NOT `numericDrops(ctx)` — AND THIS IS A CORRECTION, NOT A SHORTCUT. The
+    // option only ever moves `cross-stage-drop` findings, which K1 filters away, so it
+    // provably cannot change a shape-drift verdict: measured byte-identical across
+    // `undefined` / 0 / 1 / 7 on the specialModules cell itself, while K2 swings
+    // SKIPPED/FAIL/PASS/PASS on the same inputs. The first draft passed `numericDrops(ctx)`
+    // here, which had two costs and no benefit — it let a `NaN` reach `checkChapter`
+    // unguarded, and it made the ctx contract advertise K1 as a consumer of a key K1 does
+    // not use, which is what a Task-13 driver would be written against. → §C82 L96②.
+    const drift = checkChapter(content, baseline, { knownIntentionalImageDrops: 0 }).filter(
+      (f) => f.type === 'shape-drift'
+    );
 
     return {
       verdict: drift.length ? VERDICT.WARN : VERDICT.PASS,
@@ -289,14 +361,29 @@ export const K1 = defineCheck({
 });
 
 /**
- * The `knownIntentionalImageDrops` accessor, shared by every check that calls
- * `checkChapter` — because the option is what separates a real image drop from a book's
- * declared `specialModules`, and the function that computes it is not exported (§C82 L88).
+ * The `knownIntentionalImageDrops` accessor. **K2 ONLY** — it is what separates a real
+ * image drop from a book's declared `specialModules`, and the function that computes it is
+ * not exported (§C82 L88).
  *
  * ⚠️ IT IS REQUIRED, NOT DEFAULTED. Returning 0 for an absent key would be the permissive
  * branch, and the permissive branch here manufactures a false positive on a BLOCKING check
  * — chemistry appendices, `{unit:'image', dropped:1}`, from `m68859` the periodic table.
  * `NaN` propagates through the caller's guard rather than silently becoming 0.
+ *
+ * 🔴 K1 AND K5 DELIBERATELY DO NOT CONSULT IT, AND EARLIER DRAFTS OF BOTH DID. The option
+ * only moves `cross-stage-drop` findings, which K1 (shape-drift) and K5 (raw-cnxml-leak)
+ * filter away — so demanding it bought nothing and cost a **false halt**: K5 is BLOCKING,
+ * and its `NaN` refusal turned an irrelevant absent key into a SKIPPED that halts a paid
+ * run. §C82 L41/L83 inverted — not a rule missing from a neighbour, but a rule APPLIED to
+ * a neighbour it does not belong to.
+ *
+ * ⚠️ THE VALUE IS **PER CHAPTER**, NOT PER BOOK. `checkChapter` subtracts it from THAT
+ * chapter's `<image>` count. Both this file and the ctx contract described it as "the count
+ * of images this book deliberately omits", pointing at book-level `specialModules` — and a
+ * driver following that wording literally would pass chemistry's book total to all 23
+ * chapters and MASK a real one-image drop as PASS on a blocking check: L88's false positive
+ * inverted into a false negative. Count only the special modules that live in the chapter
+ * being judged.
  *
  * @param {object} ctx
  * @returns {number} NaN when the key is missing or not a count
@@ -459,20 +546,58 @@ export const K3 = defineCheck({
       };
     }
 
-    const renames = ctx?.slugMap && Array.isArray(ctx.slugMap.renames) ? ctx.slugMap.renames : [];
+    // 🔴 THE PRODUCER EMITS AN OBJECT KEYED BY `from`, NOT AN ARRAY — AND THE FIRST DRAFT
+    // OF THIS LINE READ `Array.isArray(ctx.slugMap.renames) ? … : []`, WHICH COERCED EVERY
+    // REAL MAP TO EMPTY. `recordRename` does `map.renames[from] = {to, moduleId,
+    // recordedAt}` and `readSlugMap` explicitly REFUSES an array, so the array branch was
+    // unreachable against every shape the §C9 producer can emit: every correctly-recorded
+    // rename read as UNACCOUNTED, and K3 is BLOCKING, so the direction was a FALSE HALT on
+    // exactly the chapters whose renames had been recorded properly.
+    // ▶ IT SHIPPED THROUGH 39 GREEN TESTS BECAUSE EVERY FIXTURE WAS HAND-BUILT — and this
+    // file's own test header claimed the opposite. That is the campaign's recorded lesson
+    // (build every positive fixture by calling the REAL producer) committed in the file
+    // whose docstring states it. → §C82 L93.
+    // ⚠️ A MALFORMED `renames` IS NOT "NO MAP": an absent map means no rename was ever
+    // recorded, which is a legitimate state that makes every observed rename unaccounted.
+    // A map whose `renames` is the wrong type means the producer's shape changed, and the
+    // only honest answer is that this check cannot judge — never a clean PASS.
+    const rawMap = ctx?.slugMap;
+    let entries = [];
+    if (rawMap != null) {
+      const r = rawMap.renames;
+      if (!r || typeof r !== 'object' || Array.isArray(r)) {
+        return {
+          verdict: VERDICT.SKIPPED,
+          examined: 0,
+          findings: [],
+          message:
+            `K3: the slug map's \`renames\` is ${Array.isArray(r) ? 'an array' : typeof r} — ` +
+            `the §C9 producer emits an OBJECT keyed by the old track-relative path. A shape ` +
+            `this check cannot read is not an empty map`,
+        };
+      }
+      entries = Object.entries(r).map(([from, e]) => ({ from, ...(e || {}) }));
+    }
+
     // ⚠️ A map whose `track` disagrees with the chapter being judged is judging the wrong
     // tree. CLAUDE.md: vefur FLATTENS both tracks into one directory, which is why the
     // filename is track-qualified in the first place; a `faithful` map read while checking
     // `mt-preview` would silently account for renames that never happened here.
-    if (ctx?.slugMap && ctx?.track && ctx.slugMap.track !== ctx.track) {
+    // 🔴 THE `ctx?.track &&` CONJUNCT WAS REMOVED, AND ITS PRESENCE WAS THE BUG: an ABSENT
+    // `ctx.track` short-circuited the conjunction, routing a track-mismatched map to the
+    // PERMISSIVE branch — §C82 L73's `ctx?.book === 'x' ? FAIL : WARN` shape one tier
+    // later, on a blocking check. Found twice independently: once as a finding, and once
+    // as a SURVIVING MUTANT whose removal was the safer direction.
+    // ▶ A map supplied without a track to check it against cannot be used as evidence.
+    if (rawMap != null && (!ctx?.track || rawMap.track !== ctx.track)) {
       return {
         verdict: VERDICT.SKIPPED,
         examined: 0,
         findings: [],
         message:
-          `K3: the slug map declares track ${JSON.stringify(ctx.slugMap.track)} while this ` +
-          `chapter is on ${JSON.stringify(ctx.track)} — a map for another track is not ` +
-          `evidence about this one`,
+          `K3: the slug map declares track ${JSON.stringify(rawMap.track)} while this ` +
+          `chapter is on ${JSON.stringify(ctx?.track)} — a map for another track, or a map ` +
+          `with no track to check it against, is not evidence about this one`,
       };
     }
 
@@ -492,12 +617,16 @@ export const K3 = defineCheck({
     // the same name is not a rename, and an entry recording one would point a redirect at
     // itself.
     const accounted = new Set(
-      renames
+      entries
         .filter((r) => r && r.from && r.to && r.from !== r.to)
-        // Bound on BOTH the module id and the new file's basename. Matching on the
-        // basename alone is a corpus coincidence (§C82 L74's lesson one field over);
-        // matching on the module id alone would accept an entry describing a DIFFERENT
-        // rename of the same module.
+        // Bound on the module id AND BOTH ENDS of the rename. The first draft keyed on
+        // `(moduleId, to)` only, which the review measured as too weak in the direction
+        // that matters: ANY historical entry whose destination happens to be the current
+        // filename accounted for a rename the map has no key for — and the redirect vefur
+        // actually serves is keyed on the OLD path, so the entry that must exist is
+        // precisely the one that binding never checked for. Matching the basename alone
+        // is a corpus coincidence (§C82 L74 one field over); matching the module id alone
+        // accepts an entry describing a DIFFERENT rename of the same module.
         // ⚠️ `JSON.stringify([a, b])` RATHER THAN A DELIMITED STRING, and not for taste:
         // the first draft joined the two with a separator character that turned out to be
         // a raw NUL byte, and NOTHING COULD SEE IT. All 38 tests passed — a NUL is a
@@ -508,23 +637,34 @@ export const K3 = defineCheck({
         // invisible bytes that make GNU grep classify it binary and report nothing for
         // strings it demonstrably contains. A structured key removes the separator
         // question entirely — no delimiter to get wrong, and no collision to reason about.
-        .map((r) => JSON.stringify([r.moduleId, basename(r.to)]))
+        .map((r) => JSON.stringify([r.moduleId, basename(r.from), basename(r.to)]))
     );
 
     const findings = [];
     for (const [moduleId, oldFiles] of beforeByModule) {
-      const newFiles = afterByModule.get(moduleId);
-      if (!newFiles) {
+      const newFiles = afterByModule.get(moduleId) || [];
+      if (newFiles.length === 0) {
         // The module left the tree entirely. That is a DELETION, not a rename, and the
         // slug map does not describe it — but it is reader-visible (every inbound link
         // 404s) and it is the one thing a module-id diff alone would report as nothing.
         findings.push({ kind: 'module-disappeared', moduleId, was: oldFiles });
         continue;
       }
+      // 🔴 THE FAILED PRUNE — AND THE FIRST DRAFT WAS BLIND TO EXACTLY THE FAILURE §C9
+      // EXISTS TO ELIMINATE. A module occupying MORE THAN ONE published file after the
+      // render means the superseded page was not deleted: the chapter TOC then lists the
+      // section twice, once under the corrected title and once under the old machine
+      // translation, which is the symptom that caused §C9 to be written at all. The old
+      // loop reached `if (newFiles.includes(oldFile)) continue` FIRST — the old name is
+      // still there, so it read as "not a rename" — and certified the chapter with no map
+      // at all. → §C82 L94①.
+      if (newFiles.length > 1) {
+        findings.push({ kind: 'module-in-multiple-files', moduleId, files: [...newFiles].sort() });
+      }
       for (const oldFile of oldFiles) {
-        if (newFiles.includes(oldFile)) continue; // same name survived — not a rename
+        if (newFiles.includes(oldFile)) continue; // this name survived — not a rename
         for (const newFile of newFiles) {
-          if (accounted.has(JSON.stringify([moduleId, newFile]))) continue;
+          if (accounted.has(JSON.stringify([moduleId, oldFile, newFile]))) continue;
           findings.push({ kind: 'unaccounted-rename', moduleId, from: oldFile, to: newFile });
         }
       }
@@ -536,7 +676,7 @@ export const K3 = defineCheck({
       findings,
       message:
         `${before.size} published page(s) carrying a module id before the render, ` +
-        `${after.size} after; ${renames.length} slug-map entr(ies); ` +
+        `${after.size} after; ${entries.length} slug-map entr(ies); ` +
         `${findings.length} unaccounted. ⚠️ Pages with no data-module-id are outside this ` +
         `population by design (240 of 334 corpus-wide carry one)`,
     };
@@ -616,7 +756,13 @@ export const K4 = defineCheck({
  *
  * Rate, with BOTH denominators because the fixture and the run targets are different
  * populations: **0 of 278 published HTML files across the two run-target books**, and
- * **1 of 334 corpus-wide (0.30%)** — an order of magnitude under the ~5% bar.
+ * **1 of 334 corpus-wide (0.30%)**.
+ * ⚠️ AND IN THE UNIT THE VERDICT IS ACTUALLY IN, WHICH THE FIRST DRAFT DID NOT STATE:
+ * K5 returns **one verdict per CELL**, not per file, so the rate that predicts false halts
+ * is **1 of 31 cells = 3.2%** corpus-wide — an order of magnitude closer to the ~5% bar
+ * than the per-file 0.30%. Both readings clear it and the blocking flag survives, but
+ * 0.30% was the more favourable of two available denominators quoted without saying which
+ * unit the bar is measured in. **Quote the rate in the unit the gate emits.**
  *
  * 🔴 THE ONE INSTANCE IS A VERIFIED TRUE POSITIVE, read at the bytes rather than inferred
  * from a count: `books/orverufraedi/05-publication/mt-preview/chapters/05/5-4-thorungar.html`
@@ -643,20 +789,38 @@ export const K5 = defineCheck({
   run: (ctx) => {
     const content = chapterContent(ctx, 'K5');
     if (content.skip) return content.skip;
-    const drops = numericDrops(ctx);
-    if (Number.isNaN(drops)) return dropsRefusal('K5', content.html.length);
 
-    const findings = checkChapter(content, null, {
-      knownIntentionalImageDrops: drops,
-    }).filter((f) => f.type === 'raw-cnxml-leak');
+    // 🔴 NO `knownIntentionalImageDrops` REFUSAL HERE, AND REMOVING IT CLOSED A PURE
+    // FALSE-HALT SURFACE. `findRawCnxmlLeaks` is computed from the HTML alone, so the
+    // option cannot touch this verdict — yet the first draft made a missing key return
+    // SKIPPED, and K5 is BLOCKING, so `runTier` turned an irrelevant absent value into a
+    // halted paid run with no compensating detection. The refusal belongs to K2, whose
+    // verdict the option really does decide. → §C82 L96②.
+    const leaks = checkChapter(content, null, { knownIntentionalImageDrops: 0 }).filter(
+      (f) => f.type === 'raw-cnxml-leak'
+    );
+
+    // ⚠️ THE MESSAGE COUNTS LEAKING CONSTRUCTS, NOT FINDINGS. `checkChapter` pushes at
+    // most ONE `raw-cnxml-leak` finding per chapter — shape
+    // `{type, where, leaks: [{pattern, count, sample}]}` — so `findings.length` is capped
+    // at 1, and a chapter with one leak printed the same text as a chapter with five
+    // distinct leaking constructs and hundreds of occurrences. The finding object is
+    // unchanged; only the operator-facing counts now vary with the damage.
+    // ▶ THE FIELD IS `leaks`, VERIFIED AGAINST THE PRODUCER RATHER THAN GUESSED — the
+    // first draft of this line named a field that does not exist, which would have
+    // rendered `0 pattern(s)` on every real leak while the verdict stayed correct.
+    const detail = leaks.flatMap((f) => (Array.isArray(f.leaks) ? f.leaks : []));
+    const occurrences = detail.reduce((n, l) => n + (Number(l.count) || 0), 0);
 
     return {
-      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
+      verdict: leaks.length ? VERDICT.FAIL : VERDICT.PASS,
       examined: content.html.length,
-      findings,
+      findings: leaks,
       message:
-        `${findings.length} raw-CNXML leak(s) over ${content.html.length} published HTML ` +
-        `file(s)`,
+        (detail.length
+          ? `${occurrences} raw-CNXML occurrence(s) across ${detail.length} pattern(s) ` +
+            `(${detail.map((l) => l.pattern).join(', ')})`
+          : '0 raw-CNXML leaks') + ` over ${content.html.length} published HTML file(s)`,
     };
   },
 });
