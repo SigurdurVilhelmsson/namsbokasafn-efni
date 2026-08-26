@@ -10,7 +10,14 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 10) — TASKS 1-9 MERGED; TASK 10 IS BUILT ON A BRANCH, NOT MERGED.**
+> ⏩ **UPDATED 2026-08-26 (Task 10) — TASKS 1-10 ARE ALL MERGED (#419 → squash `43b43238`); TASK 10 IS NOT YET DEPLOYED.**
+> ▶ **Start at Task 11.** Tier 2 is complete: 10 checks, 3 blocking.
+> ✅ **[LEAD] 2026-08-26: extraction sequencing CONFIRMED** — organic's remaining 323 modules are
+> extracted **after Plan B, before Plan C's ctx-loader decision** (§C82 L59).
+> ✅ **`m00032` needs NO bypass** — the defect was fixed by §C85-alt on 2026-08-24 and the register
+> entry claiming otherwise was written a day later from a stale premise. Withdrawn by execution.
+>
+> ⏩ **PREVIOUS (2026-08-26, Task 10 in progress) — TASK 10 WAS ON A BRANCH.**
 > Branch `c82-plan-b-task-10` (`624830cb` + fix round `3ac1a3c2`) carries Tier 2's gating half
 > (`A3`/`A5`/`A7`), so **Tier 2 is complete: 10 checks, 3 blocking.** ▶ **Start at Task 11** once
 > it merges. 🔴 **ALL THREE SHIP ADVISORY — the plan's heading says "A3 gating" and the measured
