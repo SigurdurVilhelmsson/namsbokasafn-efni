@@ -422,10 +422,25 @@ describe('predicate breadth — the cases a green suite did not bind', () => {
 });
 
 describe('registry and contract', () => {
-  it('tier 2 now holds SEVEN checks — the free four plus the run-record three', async () => {
+  it('tier 2 now holds TEN checks — free four + run-record three + gating three', async () => {
+    // ⚠️ WIDENED BY TASK 10 (A3, A5, A7). This pin lives in TWO files by design — here and
+    // in `remt-checks-mt.test.js` — because each asserts it from a different import path,
+    // and a registration that happened only as a side effect of the other file's import
+    // would pass one and fail the other.
     const tier2 = [...REGISTRY.values()].filter((c) => c.tier === 2);
-    expect(tier2.map((c) => c.id).sort()).toEqual(['A1', 'A2a', 'A2b', 'A2c', 'A4', 'A6', 'A8']);
-    expect(tier2).toHaveLength(7);
+    expect(tier2.map((c) => c.id).sort()).toEqual([
+      'A1',
+      'A2a',
+      'A2b',
+      'A2c',
+      'A3',
+      'A4',
+      'A5',
+      'A6',
+      'A7',
+      'A8',
+    ]);
+    expect(tier2).toHaveLength(10);
   });
 
   it('all three are ADVISORY and version-stamped', async () => {

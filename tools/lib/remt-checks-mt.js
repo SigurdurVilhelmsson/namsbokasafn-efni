@@ -1,16 +1,29 @@
 /**
- * remt-checks-mt.js — Tier 2 of the §C82 battery: the FREE half (A1, A6, A2b, A2c).
+ * remt-checks-mt.js — Tier 2 of the §C82 battery: ALL TEN checks, in three halves.
+ *   free      A1, A6, A2b, A2c   (Task 8) — text only
+ *   run-record A2a, A4, A8       (Task 9) — the provenance sidecar
+ *   gating    A3, A5, A7         (Task 10) — the two-sided comparisons
  *
  * Tier 2 is PER MODULE, POST-MT. The money is already spent when these run, so unlike
  * Tier 1 a halt here does not save ISK — it stops a corrupted module from being frozen
  * into `03-faithful-translation`, edited by a human, and published. That is why three of
- * the four are blocking despite sitting downstream of the spend.
+ * the ten are blocking despite sitting downstream of the spend.
+ * ⚠️ THREE, NOT "three of the four" — that phrasing was written when the file held only
+ * the free half, and it silently became a claim about the whole tier when the tier grew.
+ * The blocking three are A6, A2b and A2c; the other SEVEN are advisory, each for a
+ * reason recorded at its own definition.
  *
  * ── THE ctx THIS TIER TAKES, AND THE ONE KEY IT DOES NOT HAVE ─────────────────────────
- * `isText` — the `02-mt-output` IS segment file (A1, A6, A2b, A2c)
- * `segText` — the `02-for-mt` EN segment file (A1 AND A2b; both are two-sided). This
- *             line read "A1 only" until A2b acquired its cross-side leg — when a check
- *             starts consuming a ctx key, this list is part of the change.
+ * `isText`  — the `02-mt-output` IS segment file (A1, A6, A2b, A2c, A3, A5, A7)
+ * `segText` — the `02-for-mt` EN segment file (A1, A2b, A3, A5, A7 — all two-sided).
+ *             This line read "A1 only" until A2b acquired its cross-side leg, then
+ *             "A1 AND A2b" until Task 10 added three more — when a check starts
+ *             consuming a ctx key, this list is part of the change.
+ * `provenance` — the parsed sidecar (A2a, A4, A8); they reach through `.run`.
+ * `module`  — the module id (A5 only), to key the residue allowlist.
+ * `residueAllowlist` — the PARSED allowlist (A5 only). It cannot be read here: gates are
+ *             pure. See the gating-half header for why ABSENT must be SKIPPED, not "no
+ *             exclusions".
  *
  * 🔴 THERE IS NO `cnxml` IN THE TIER-2 ctx, AND THAT CHANGES WHAT A6 IS ALLOWED TO CLAIM.
  * The CLI's ctx typedef lists `cnxml` for Tier 1 (E2/E4) and `isText` for Tier 2 (A2/A6);
@@ -68,6 +81,17 @@ import { defineCheck, registerChecks, VERDICT } from './remt-battery.js';
 import { parseSegmentRecords } from './seg-markers.cjs';
 import { normalizeWraps } from './mt-normalize.cjs';
 import { LEGACY_MUSTACHE_RE, LEGACY_PLUSPLUS_RE } from './remt-checks-extract.js';
+// A3's instrument, imported BY IDENTITY rather than re-declared — the A6 precedent
+// (§C82 L41). `api-translate.js` guards its `main()` behind an `import.meta.url` check,
+// so importing it runs no CLI, opens no socket and spends no money; the two functions
+// A3 needs are pure. Re-typing `bracketMarkerDeltaBySegment` here would pass every test
+// on the day it was written and silently stop tracking the widened type set.
+import { bracketMarkerDeltaBySegment } from '../api-translate.js';
+// A5 reuses BOTH halves of the existing residue instrument rather than writing a second
+// stripper — the plan is explicit about this, and `normalizeForComparison` is exactly
+// "strip markers -> drop digits -> Unicode letters only -> lowercase".
+import { detectResidue, normalizeForComparison } from './residue-check.js';
+import { classifyResidue } from './residue-allowlist.js';
 
 /**
  * A6 uses E1's instrument BY IDENTITY, not by resemblance.
@@ -1019,3 +1043,397 @@ export const A8 = defineCheck({
 export const MT_RUNRECORD_CHECKS = [A2a, A4, A8];
 
 registerChecks(MT_RUNRECORD_CHECKS);
+
+/* ═══ Tier 2, the GATING half — A3, A5, A7 ═════════════════════════════════════
+ *
+ * ── THE ctx THESE THREE ADD, AND WHY EACH IS A HARD REQUIREMENT ───────────────
+ * `segText` + `isText`  A3, A5, A7 are all two-sided. `segText` is now consumed by
+ *                       FIVE checks (A1, A2b, A3, A5, A7), not the two the file header
+ *                       listed before this task — when a check starts consuming a ctx
+ *                       key, that list is part of the change.
+ * `module`              A5 only — the EXISTING scope key, not a new near-duplicate.
+ *                       `residue-allowlist.json` is keyed on exact `moduleId` +
+ *                       `segmentId`, so without it nothing can be tolerated. ⚠️ A second
+ *                       key named `moduleId` was written first and withdrawn: a loader
+ *                       that set `module` would have left A5 permanently SKIPPED, and on
+ *                       an ADVISORY check that reads as ignorable rather than as broken.
+ * `residueAllowlist`    A5 only, the PARSED allowlist object. 🔴 IT CANNOT BE READ HERE:
+ *                       Global Constraints rule 5 makes gates pure, and
+ *                       `loadResidueAllowlist` does file I/O. The loader supplies it.
+ *
+ * 🔴 AND FOR A5 THE ABSENT CASE IS THE DANGEROUS ONE, NOT THE MALFORMED ONE.
+ * `classifyResidue` does `(allowlist.entries || [])`, so an absent — or merely empty —
+ * allowlist tolerates NOTHING and every known-good residue fires: measured, `m68662`
+ * alone contributes 76. A check that treated absent as "no exclusions" would report 76
+ * findings on a module a human already triaged, and it would look like a real result.
+ * So a missing `residueAllowlist` is SKIPPED with the key named — L33(E9), the ruling
+ * this file already applies to `isText` and `provenance`.
+ *
+ * ── WHAT THE MEASUREMENT DECIDED, AGAINST THE PLAN ────────────────────────────
+ * 🔴 ALL THREE ARE ADVISORY, AND THE PLAN'S TASK HEADING SAYS "A3 gating".
+ * Global Constraints rule 4 — a post-MT check that blocks needs a measured base rate
+ * ≤ ~5% — beats a task heading. Measured 2026-08-26 over the 197 run-target pairs
+ * (chemistry 149 + organic 48; `orverufraedi` excluded per §C80/§C109):
+ *   A3   107/197 = 54.31% of modules carry a per-segment delta. Splitting by whether
+ *        the EN side's last commit POSTDATES the IS side's separates it cleanly:
+ *        96 skewed pairs trip at 100.00%, 101 comparable pairs at 10.89%. The skew is
+ *        not a defect — commit `689ddf3e` (2026-07-07) re-extracted 143 modules
+ *        WITHOUT re-running MT and said so in its subject line ([STALE-STRUCT]); on
+ *        `m68798` the EN side carries 219 `[[i:]]` and the IS side 0. **Blocking is
+ *        refused on BOTH numbers (54.31% and 10.89%), so the verdict does not depend
+ *        on the split.** The run re-extracts AND re-MTs, which retires the 96-pair
+ *        category, so 10.89% is the number that predicts the run.
+ *   A5   stage 1 is 9/197 = 4.57%, which is UNDER the bar — and it still does not
+ *        block, because the constraint is SEQUENCING, not rate: the allowlist is
+ *        segmentId-keyed and the re-extract voids every entry. ⚠️ 4.57% also hides a
+ *        25× per-book spread (chemistry 0.67%, organic 16.67%).
+ *   A7   `numberKey` strips every non-digit, so `3.5` and `35` collide by design.
+ * ▶ Full record, with the per-type histogram and the threshold sensitivity sweep:
+ *   `test-results/c82-a3-baserate-2026-08-26.md`.
+ *
+ * ⚠️ THE WIDENING IS NOT WHAT DISQUALIFIED A3, AND THE RECORD SHOULD NOT BE READ THAT
+ * WAY: modules tripping on the PRE-widening type set are 105/197 = 53.30%, and the
+ * types added by §C69 account for 2/197 = 1.02% on their own. The widening closes four
+ * proven false negatives for ~1%.
+ */
+
+/**
+ * Pair EN and IS segments by OCCURRENCE, keyed exactly as
+ * `bracketMarkerDeltaBySegment` keys them internally.
+ *
+ * ⚠️ THE KEYING IS COPIED DELIBERATELY AND IS NOT AN IMPLEMENTATION DETAIL. A3 gets its
+ * segment ids from `api-translate.js`'s `buildOccurrenceMap` (`:536`, NOT exported), and
+ * A5/A7 must report the same id for the same piece of text or the ledger cannot join
+ * their findings. First occurrence keeps the bare seg-id; a repeat becomes `segId#N`.
+ *
+ * ⚠️ AND THE REPEAT SUFFIX IS LOAD-BEARING, NOT COSMETIC: a duplicated raw `SEG:` marker's
+ * second occurrence is a real, independent piece of translated text. Keying on the bare
+ * id (as a `parseSegmentsMap`-style 'first wins' map would) silently drops every finding
+ * confined to the rest — which is the duplicate-emission artifact E4 exists to find.
+ *
+ * @param {string} enText
+ * @param {string} isText
+ * @returns {Map<string, {en: string, is: string}>} only ids present on BOTH sides
+ */
+function pairByOccurrence(enText, isText) {
+  const index = (text) => {
+    const seen = new Map();
+    const out = new Map();
+    for (const r of parseSegmentsMit(text)) {
+      const n = (seen.get(r.segmentId) || 0) + 1;
+      seen.set(r.segmentId, n);
+      out.set(n === 1 ? r.segmentId : `${r.segmentId}#${n}`, r.content);
+    }
+    return out;
+  };
+  const en = index(enText);
+  const is = index(isText);
+  const out = new Map();
+  for (const [id, text] of en) if (is.has(id)) out.set(id, { en: text, is: is.get(id) });
+  return out;
+}
+
+/**
+ * A3 — per-segment, per-type, bidirectional bracket-marker delta. ADVISORY (measured).
+ *
+ * 🔴 THE VERDICT KEYS ON `bySegment`, NEVER ON `total`, AND THIS IS THE WHOLE REASON THE
+ * CHECK WAS MADE PER-SEGMENT. `bracketMarkerDeltaBySegment` DELETES types whose
+ * per-segment deltas sum back to zero (`api-translate.js:612`, comment: "noise in
+ * `total` but their segments are already counted in segmentsWithDelta"). So a module
+ * that loses a `MATH` in one segment and gains one in another has `total === {}` and two
+ * `bySegment` entries — real destruction, invisible to a `total`-keyed predicate.
+ * ⚠️ AND THE PLAN'S ACCEPTANCE TRIO IS WRITTEN IN `total`-SHAPED NOTATION (`m68791 → {}`,
+ * `m58781 → {"b":-2}`), so a literal transcription builds the cancelling design.
+ * 🔴 THE CORPUS CANNOT CATCH THAT MISTAKE: measured over all 197 run-target pairs the two
+ * predicates agree EXACTLY (107 = 107; cancel-only modules = 0). The planted
+ * cross-segment fixture in the test file is the ONLY detector — the L44③ shape, where a
+ * natural rate of 0 is also what a wholly broken detector returns.
+ *
+ * ⚠️ `unpairedSegIds` IS FOLDED IN AS ITS OWN FINDING KIND, deliberately. The
+ * instrument's own docstring: "a missing occurrence is a worse defect than a marker delta
+ * and a comparison that quietly drops it reads as clean." Reading only `bySegment` passes
+ * a module whose segments went missing entirely. Measured cost: 4 modules, 2.03% — it
+ * does not move the blocking verdict either way, so this is a correctness choice rather
+ * than a rate one.
+ */
+export const A3 = defineCheck({
+  id: 'A3',
+  tier: 2,
+  blocking: false,
+  version: 1,
+  run: (ctx) => {
+    // Both keys, in this order, so the message names the side the loader dropped.
+    const skip = skipIfMissing(ctx, 'A3', ['segText', 'isText']);
+    if (skip) return skip;
+
+    const d = bracketMarkerDeltaBySegment(ctx.segText, ctx.isText);
+
+    const findings = Object.entries(d.bySegment).map(([segmentId, delta]) => ({
+      kind: 'marker-delta',
+      segmentId,
+      delta,
+    }));
+    for (const segmentId of d.unpairedSegIds)
+      findings.push({ kind: 'unpaired-segment', segmentId });
+
+    return {
+      // WARN, not FAIL — advisory by measurement, and the WARN is what makes it visible
+      // in the readout rather than silently clean.
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
+      // ⚠️ THE UNIT IS EN-SIDE SEGMENT OCCURRENCES — content this check actually parsed
+      // (L6/L44②). Nothing is silently filtered out of it: an occurrence that had no
+      // counterpart is not dropped from the population, it becomes an `unpaired-segment`
+      // finding. And a `segText` that parses to zero segments yields `examined: 0`, which
+      // `runCheck` converts to SKIPPED rather than a clean pass.
+      examined: d.segmentsExamined,
+      findings,
+      message: `${d.segmentsWithDelta}/${d.segmentsExamined} segments with a marker delta, ${d.unpairedSegIds.length} unpaired; total ${JSON.stringify(d.total)}`,
+    };
+  },
+});
+
+/** Alphabetic characters left after markers, digits and punctuation are stripped. */
+const alphaLength = (text) => normalizeForComparison(text).replace(/\s/g, '').length;
+
+/**
+ * A5 stage 2's floor: identical AND this many alphabetic characters after stripping.
+ *
+ * ⚠️ IT SITS ON A PLATEAU, WHICH IS WHY THE EXACT CONSTANT IS SAFE. Measured over the
+ * 197 run-target pairs: ≥60 → 10 segments, ≥80 → 8, **≥100 → 7, ≥120 → 7, ≥150 → 7,
+ * ≥200 → 7**. The count does not turn on the value, so this is a choice with margin
+ * rather than a tuned threshold that a corpus change will invalidate quietly.
+ */
+export const A5_LONG_RESIDUE_MIN_ALPHA = 120;
+
+/**
+ * A5 — untranslated-EN residue, in two stages. ADVISORY (sequencing, not rate).
+ *
+ * Stage 1 (`en-residue`)      exact normalized EN==IS, minus the allowlist.
+ * Stage 2 (`long-en-residue`) a stage-1 hit that is also ≥120 alphabetic characters —
+ *                             long enough to be certainly prose rather than a formula or
+ *                             a unit cell. WARN → a human queue, never a halt.
+ *
+ * ⚠️ STAGE 2 IS A STRICT SUBSET OF STAGE 1, INCLUDING THE ALLOWLIST FILTER, AND THAT IS A
+ * DECISION THE CORPUS CANNOT ADJUDICATE. An allowlist entry records a human triage
+ * ("proper-noun", with a reason), so re-queueing it for a human contradicts the record;
+ * stage 2's job is to PRIORITISE stage 1, not to re-open it. ▶ Measured, the two designs
+ * are indistinguishable today — none of the 7 stage-2 hits is allowlisted — so the test
+ * file pins the distinction with a planted allowlisted long segment. Same shape as A3's
+ * `total`-vs-`bySegment` fixture: where the corpus cannot separate two designs, the
+ * separation has to be planted.
+ *
+ * ⚠️ NO SECOND STRIPPER IS WRITTEN HERE. `detectResidue` already returns `exact`
+ * (`enNorm === isNorm`, marker-stripped) and `normalizeForComparison` is already
+ * strip-markers → drop digits → Unicode letters → lowercase. ⚠️ And do NOT reach for
+ * `detectResidue`'s `ratio` — it is a different quantity that happens to ride in the
+ * same return object.
+ *
+ * ⚠️ `detectResidue` DEMOTES language-neutral verbatim-EN (a formula/unit cell) to
+ * `exact: false`. That is wanted, and at stage 2's floor it is also inert: measured, a
+ * raw `normalizeForComparison` equality and `detectResidue(...).exact` select the SAME 7
+ * segments, so the reuse is demonstrated equivalent rather than assumed.
+ */
+export const A5 = defineCheck({
+  id: 'A5',
+  tier: 2,
+  blocking: false,
+  version: 1,
+  run: (ctx) => {
+    const skip = skipIfMissing(ctx, 'A5', ['segText', 'isText', 'module']);
+    if (skip) return skip;
+    // 🔴 ABSENT IS NOT "NOTHING IS TOLERATED" — see the tier header. A missing allowlist
+    // would turn `m68662`'s 76 triaged residues into 76 findings that look real.
+    if (!isPlainRecord(ctx.residueAllowlist)) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message: `A5: ctx carries no usable residueAllowlist (got ${describeType(ctx.residueAllowlist)}) — an absent allowlist tolerates nothing, which would report triaged residues as findings`,
+      };
+    }
+
+    // 🔴 THE EXERCISES BUNDLES ARE SKIPPED BY EXACT NAME, AND THIS MIRRORS AN EXISTING
+    // DELIBERATE EXCLUSION RATHER THAN INVENTING ONE. `tools/scan-residue.js`'s
+    // `collectResidueFiles` drops `exercises-segments.is.md` for two reasons that both
+    // apply here: every chapter has one, so they all fold to the single key 'exercises';
+    // and the allowlist entries for that content are keyed by NICKNAME, not by 'exercises'.
+    // ▶ MEASURED 2026-08-26: all 12 of organic's allowlist entries are nickname-keyed
+    // (`11-03-OC-P06`, `26-04-OC-P08`, …) and NOT ONE is reachable from the file's
+    // basename, so a lookup here can never tolerate anything — every residue in an
+    // exercises bundle would report as untriaged. That is ~11 of organic's 20 stage-1
+    // residues turned into false findings by construction.
+    // ▶ `tools/exercise-assemble.js` is the authoritative residue gate for os-embed
+    // exercise content — nickname-keyed, per-chapter, already wired into the inject-stage
+    // exit code — so skipping here delegates rather than leaving the content unchecked.
+    // ⚠️ THE GUARD LIVES IN THE GATE, NOT IN THE LOADER, ON PURPOSE: a loader can forget
+    // it, and the failure mode is silent over-reporting that looks like a real result.
+    if (ctx.module === 'exercises') {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message: `A5: 'exercises' is a per-chapter bundle, not a module — its allowlist entries are nickname-keyed and unreachable from this id, so nothing here could be tolerated. exercise-assemble.js is the authoritative residue gate for this content`,
+      };
+    }
+
+    const pairs = pairByOccurrence(ctx.segText, ctx.isText);
+    const findings = [];
+    let tolerated = 0;
+    for (const [segmentId, { en, is }] of pairs) {
+      if (!detectResidue(en, is).exact) continue;
+      // The allowlist is keyed on the BARE seg-id; a repeat occurrence carries the same
+      // triage decision as its first, so the `#N` suffix is stripped for the lookup only.
+      const verdict = classifyResidue(
+        ctx.module,
+        segmentId.replace(/#\d+$/, ''),
+        ctx.residueAllowlist
+      );
+      if (verdict.tolerated) {
+        tolerated++;
+        continue;
+      }
+      const alpha = alphaLength(is);
+      findings.push({ kind: 'en-residue', segmentId, alpha });
+      if (alpha >= A5_LONG_RESIDUE_MIN_ALPHA) {
+        findings.push({ kind: 'long-en-residue', segmentId, alpha });
+      }
+    }
+
+    return {
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
+      // The unit is PAIRED segments — the population the predicate actually judged. An
+      // unpaired segment is A1's and A3's finding, not A5's; counting it here would
+      // report a comparison that never ran.
+      examined: pairs.size,
+      findings,
+      message: `${findings.filter((f) => f.kind === 'en-residue').length} EN residues (${findings.filter((f) => f.kind === 'long-en-residue').length} long) over ${pairs.size} paired segments, ${tolerated} tolerated by the allowlist`,
+    };
+  },
+});
+
+/* ── A7: the MIT port of `server/services/qaCheckService.js`'s number check ─────
+ *
+ * 🔴 NOTHING HERE IMPORTS `server/`. `tools/` is MIT and `server/` is AGPL-3.0, and root
+ * LICENSE enumerates the existing edges — `qaCheckService` is not among them and this
+ * task does not add it. The port's equivalence to the original is PINNED IN THE TEST,
+ * which may `require` the AGPL file because the test suite is not shipped tooling.
+ *
+ * 🔴 `checkNumbers` CANNOT BE PORTED ALONE, AND `residue-check.js`'s STRIPPER IS NOT A
+ * SUBSTITUTE. It calls `extractNumbers` → `stripMath(stripMarkers(text))`, both private
+ * to that file, and the two repos' `stripMarkers` differ materially: qaCheckService's
+ * DROPS `xref`/`docref` entirely and unwraps `{{type}}…{{/type}}` and `++…++`;
+ * `residue-check.js`'s KEEPS the text before `|` for every type and drops `[#id]`.
+ * Swapping them changes which numbers are extracted. So all five functions come across
+ * as a set.
+ *
+ * 🔴 AND BOTH `extractNumbers` REGEXES CARRY INVISIBLE CHARACTERS THAT A HAND
+ * TRANSCRIPTION LOSES SILENTLY. Measured by code point, not by eye: the numeric
+ * character class in the ORIGINAL contains U+00A0 (NBSP) and U+2009 (THIN SPACE)
+ * alongside the ASCII space, in BOTH the match and the trailing-trim.
+ * ▶ They are written here as explicit `\u00A0` / `\u2009` escapes — behaviourally
+ * identical, but VISIBLE to a reader and to a grep, which the raw bytes are not
+ * (CLAUDE.md § invisible control bytes: a `U+2009` does not render, so `[.,  ]` and
+ * `[., ]` look the same in a diff).
+ * ▶ They are LOAD-BEARING, not decorative: NBSP and thin space are exactly the thousands
+ * separators European and Icelandic number formatting uses, so dropping them splits
+ * `1 000` into `1` and `000` and invents two findings where there are none.
+ */
+
+/** Remove `[[MATH:N]]` placeholders (their index is not content). */
+const stripMathA7 = (text) => text.replace(/\[\[MATH:\d+\]\]/g, ' ');
+
+/** Strip inline markers to their inner text (display text for pipe forms). */
+function stripMarkersA7(text) {
+  return text
+    .replace(/\[\[(?:link|xref|docref):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+    .replace(/ ?\[\[(?:xref|docref):[^\]]*\]\]/g, '')
+    .replace(/\[\[(?:i|b|sub|sup):([^\]]*)\]\]/g, '$1')
+    .replace(/\+\+([^+]+)\+\+/g, '$1')
+    .replace(/\{\{([a-z]+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, '$2')
+    .replace(
+      /\[\[(?:term|fn|em):((?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\]|])*)\|[^\]]*\]\]/g,
+      '$1'
+    )
+    .replace(/\[\[(?:term|fn|u):((?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\]])*)\]\]/g, '$1');
+}
+
+/**
+ * Reduce a numeric token to a comparison key: digits only, leading zeros dropped.
+ * `"3.5"→"35"`, `"1,000"→"1000"`. ⚠️ A HEURISTIC BY ITS OWN ADMISSION — `3.5` and `35`
+ * collide — which is one of the reasons A7 is advisory rather than blocking.
+ */
+export const numberKey = (token) => token.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+
+/** Extract numeric tokens (runs of digits with internal separators). */
+export function extractNumbers(text) {
+  const cleaned = stripMathA7(stripMarkersA7(text));
+  const matches = cleaned.match(/\d[\d.,\u00A0\u2009 ]*\d|\d/g) || [];
+  // Trim trailing separators a greedy match may have grabbed (e.g. "5." in "5.")
+  return matches.map((m) => m.replace(/[.,\u00A0\u2009 ]+$/, '')).filter(Boolean);
+}
+
+/**
+ * Numbers present in EN but absent from IS (by comparison key).
+ * Returns the ORIGINAL's shape verbatim, which is what the equivalence pin compares.
+ *
+ * @returns {Array<{type:'number-mismatch', value:string, message:string}>}
+ */
+export function checkNumbers(enContent, isContent) {
+  if (!enContent || !isContent) return [];
+  const isKeys = new Set(extractNumbers(isContent).map(numberKey));
+  const findings = [];
+  const reported = new Set();
+  for (const token of extractNumbers(enContent)) {
+    const key = numberKey(token);
+    if (!key || reported.has(key)) continue;
+    if (!isKeys.has(key)) {
+      reported.add(key);
+      findings.push({
+        type: 'number-mismatch',
+        value: token,
+        message: `Talan \u201E${token}\u201C \u00FAr ensku finnst ekki \u00ED \u00FE\u00FDdingunni`,
+      });
+    }
+  }
+  return findings;
+}
+
+/**
+ * A7 — a number present in EN and missing from IS. ADVISORY.
+ *
+ * ⚠️ RUN PER SEGMENT, NOT PER MODULE, so a finding names the segment a human must open.
+ * The original is called the same way (`qaCheckService.runChecks` takes ONE segment's
+ * EN/IS content), so this is the port's own idiom rather than a widening of it.
+ * ⚠️ Do NOT also port `checkEnResidue` — it is the §C67 over-reporter, and A5 above
+ * already covers the residue class with a measured allowlist behind it.
+ */
+export const A7 = defineCheck({
+  id: 'A7',
+  tier: 2,
+  blocking: false,
+  version: 1,
+  run: (ctx) => {
+    const skip = skipIfMissing(ctx, 'A7', ['segText', 'isText']);
+    if (skip) return skip;
+
+    const pairs = pairByOccurrence(ctx.segText, ctx.isText);
+    const findings = [];
+    for (const [segmentId, { en, is }] of pairs) {
+      for (const f of checkNumbers(en, is)) {
+        findings.push({ kind: 'number-mismatch', segmentId, value: f.value });
+      }
+    }
+
+    return {
+      verdict: findings.length ? VERDICT.WARN : VERDICT.PASS,
+      examined: pairs.size,
+      findings,
+      message: `${findings.length} EN numbers missing from IS over ${pairs.size} paired segments`,
+    };
+  },
+});
+
+/** Tier 2's gating half. Registered separately so the three halves stay legible. */
+export const MT_GATING_CHECKS = [A3, A5, A7];
+
+registerChecks(MT_GATING_CHECKS);
