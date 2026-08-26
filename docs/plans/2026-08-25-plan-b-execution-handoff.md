@@ -10,7 +10,30 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 11) — TASKS 1-11 ARE ALL MERGED AND DEPLOYED** (Task 11 = PR #420 → squash `fa208375`; deploy operator-reported).
+> ⏩ **UPDATED 2026-08-26 (Task 12) — TASK 12 IS BUILT ON BRANCH `c82-plan-b-task-12`, NOT YET
+> MERGED.** Tier 4 ships **FIVE** ids, not the spec's three: `K1` shape-drift (WARN) ·
+> `K2` cross-stage-drop (BLOCKING) · `K3` slug-map renames (BLOCKING) · **`K4`
+> genuine-math-drop** and **`K5` raw-cnxml-leak**, both deliberate scope expansions recorded
+> in the register — two detectors that already ran and would have had their verdicts filtered
+> away. `control-char` gets NO id on purpose (0 of ~2,193 files, so Global Constraint 4 bars
+> blocking and a check that can never fail is not a check).
+> ▶ **NEXT IS TASK 13** (`--self-test` + the base-rate sweep), then all 11 of Plan C.
+> 🔴 **READ §C82 L88-L104 BEFORE TASK 13.** The four that change what you do:
+> **① TASK 13'S SWEEP WILL SEE `--tier 4` EXIT 1 ON EVERY BOOK×TRACK, AND THAT IS CORRECT** —
+> K3 is structurally SKIPPED (no before-snapshot artifact exists anywhere) and K2 SKIPs on the
+> 86 of 112 cells with no published HTML. **Do not "fix" it by making either advisory.**
+> **② THE ctx CONTRACT'S `chapter` KEY WAS A TRAP AND IS NOW CORRECTED** — `'ch01'` and `-1`
+> (CLAUDE.md's own appendix sentinel!) both read as EMPTY, which SKIPs every content check.
+> Pass `1`/`'01'`/`'appendices'`.
+> **③ TWO GUARDS ARE LOADER OBLIGATIONS THE GATE CANNOT CLOSE (L104)** — K3's cross-track
+> refusal is a tautology against `readSlugMap` (it re-stamps `track` from the caller), and
+> `chapterContent` cannot tell a file PATH from a document without I/O.
+> **④ A FIX ROUND IS WHERE DEFECTS ENTER, MEASURED TWICE NOW: 6 of 14 second-pass findings
+> were defects in the fix round's OWN repairs** — the same ratio Task 11 measured. Budget for
+> a second pass; it is not optional.
+> ✅ **The owed L65 follow-up is DONE** (see below).
+>
+> ⏩ **PREVIOUS (Task 11) — TASKS 1-11 ARE ALL MERGED AND DEPLOYED** (Task 11 = PR #420 → squash `fa208375`; deploy operator-reported).
 > **TIER 3 IS COMPLETE: 5 checks, 2 blocking (`R2`, `R3`).** ▶ **START AT TASK 12** — 2 Plan B tasks
 > remain (12 = Tier 4 `K1`/`K2`/`K3`, 13 = `--self-test` + the base-rate sweep), then all 11 of Plan C.
 > ✅ **THE OWED L65 FOLLOW-UP IS DONE — branch `c82-l65-chapter0-followup`, 2026-08-26** (§C82
