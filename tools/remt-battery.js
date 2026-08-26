@@ -161,6 +161,76 @@
  *                                     them from `examined`; treating the array length as
  *                                     the examined count is the §C60 defect this check was
  *                                     built around.
+ *   @property {object} [chapterInputs] readChapterFromDisk()'s `{cnxml, html}` for ONE
+ *                                     chapter x track                (Task 12: K1/K2/K4/K5)
+ *                                     🔴 TIER 4 IS PER CHAPTER, NOT PER MODULE — the
+ *                                     chapter is the closed reconciliation unit, because
+ *                                     rollup pages re-present content from several modules
+ *                                     and a per-module count of anything in the published
+ *                                     tree is wrong by construction.
+ *                                     ⚠️ BOTH ARRAYS MUST BE NON-EMPTY or every check that
+ *                                     reads it SKIPs. A chapter rendered on one side only
+ *                                     cannot be judged; §C82 L78② measured a one-sided
+ *                                     guard reporting PASS over an empty document.
+ *   @property {number} [knownIntentionalImageDrops] the count of images this book
+ *                                     deliberately omits              (Task 12: K1/K2/K5)
+ *                                     🔴 REQUIRED, NEVER DEFAULTED TO 0, AND K2 IS
+ *                                     BLOCKING. `computeIntentionalImageDrops` is
+ *                                     module-local in the render-fidelity tool, so a gate
+ *                                     that calls `checkChapter` without this option reports
+ *                                     chemistry appendices as an image drop (m68859, the
+ *                                     periodic table) — taking the tier's measured rate
+ *                                     from 3.8% to 7.7%, across the ~5% blocking bar. The
+ *                                     value comes from the book's `specialModules`.
+ *                                     ⚠️ A wrapper tested only against organic passes
+ *                                     without it: organic's specialModules is `{}`.
+ *   @property {object|null} [renderBaseline] the PARSED per-CHAPTER bucket histogram from
+ *                                     `render-fidelity-baseline.json`, or `null` when this
+ *                                     chapter has none                      (Task 12: K1)
+ *                                     🔴 TRI-STATE, AND THE FOURTH INSTANCE OF §C21/§C82
+ *                                     L57 — the worst yet, with SEVEN representations of
+ *                                     "nothing" against `fidelityAllowlist`'s three: a
+ *                                     missing file · a file with no `chapters` key · this
+ *                                     chapter absent (84 of 112 cells) · the entry present
+ *                                     but `{}` · malformed JSON · the four bytes `null` ·
+ *                                     `chapters` not an object. **`{}` is TRUTHY and
+ *                                     manufactures 16 false findings, every one
+ *                                     `expected: 0`; malformed JSON throws UNCAUGHT and
+ *                                     kills the whole run rather than one chapter.**
+ *                                     `undefined` means the loader never set the key and is
+ *                                     refused separately from `null`.
+ *                                     ⚠️ ITS KEYS ARE A THIRD CHAPTER CONVENTION —
+ *                                     UNPADDED (`"3"`), while the publication directory is
+ *                                     `"03"`. The loader owns that mapping; a gate handed
+ *                                     the wrong key reads "no baseline" and SKIPs, which
+ *                                     looks exactly like the expected inert state.
+ *   @property {Map<string,string>} [publishedBefore] snapshotModuleIds() filename ->
+ *                                     moduleId, taken BEFORE the render     (Task 12: K3)
+ *                                     🔴 THE ONLY ctx KEY WHOSE CORRECTNESS IS A PROPERTY
+ *                                     OF *WHEN* IT WAS TAKEN, AND NO PURE GATE CAN CHECK
+ *                                     IT. The slug map is not regenerable. Measured: a
+ *                                     snapshot taken AFTER the render is the inverse of
+ *                                     `renderedModules`, so the rename set is empty and K3
+ *                                     reports a clean "zero unaccounted" on exactly the
+ *                                     runs that destroyed the information — and
+ *                                     `snapshotSize` is identical in both arms, so the
+ *                                     `PASS + examined 0 -> SKIPPED` backstop is silent.
+ *                                     Nothing on disk witnesses vintage: the map payload
+ *                                     carries no run id, sha or timestamp, and the write is
+ *                                     skipped entirely when nothing was pruned, so absence
+ *                                     of the file is also absence of evidence.
+ *                                     ▶ THIS IS A SEQUENCING OBLIGATION ON THE DRIVER.
+ *                                     A `Map` is required rather than a serialisable
+ *                                     object precisely because it cannot be reconstructed
+ *                                     from a file written at an unknown time.
+ *   @property {Map<string,string>} [publishedAfter] the same, after the render (Task 12: K3)
+ *   @property {object|null} [slugMap] the PARSED track-qualified
+ *                                     `slug-map.<track>.json`, or null      (Task 12: K3)
+ *                                     ⚠️ TRACK-QUALIFIED IS LOAD-BEARING — vefur flattens
+ *                                     both tracks into one directory, so a shared
+ *                                     `slug-map.json` means a `faithful` map overwrites
+ *                                     `mt-preview`'s. K3 refuses a map whose own `track`
+ *                                     disagrees with `ctx.track`.
  *   @property {string[]} [emittedFiles] filenames the extract emitted (Task 5: E6)
  *                                     ⚠️ A LISTING, NOT A PATH — gates are pure, so the
  *                                     loader walks the directory. It must scope the list
@@ -258,6 +328,7 @@ import './lib/remt-checks-glossary.js'; // Task 7 — G1-G5 (tier 0)
 import './lib/remt-checks-extract.js'; // Tasks 3-6 — E1-E7, E9 (tier 1)
 import './lib/remt-checks-mt.js'; // Task 8 — A1, A6, A2b, A2c (tier 2); Task 9 adds A2a/A4/A8
 import './lib/remt-checks-output.js'; // Task 11 — R1-R5 (tier 3)
+import './lib/remt-checks-chapter.js'; // Task 12 — K1-K5 (tier 4)
 
 /** Tiers the battery defines: 0 glossary · 1 extract · 2 MT · 3 output · 4 chapter. */
 export const TIER_MIN = 0;

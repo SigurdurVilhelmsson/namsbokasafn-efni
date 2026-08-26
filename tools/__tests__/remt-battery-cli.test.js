@@ -102,8 +102,25 @@ describe('the empty-selection refusal', () => {
     const { registerChecks } = await import('../lib/remt-battery.js');
     registerChecks([mk('B5', VERDICT.PASS, true, 7, 4), mk('B5b', VERDICT.PASS, false, 9, 2)]);
     const r = await runTier(4, {});
-    expect(r.results.map((x) => x.id)).toEqual(['B5']);
-    expect(r.results[0].examined).toBe(7);
+    const ids4 = r.results.map((x) => x.id);
+    // ⚠️ WIDENED WHEN TIER 4 WAS WIRED (Task 12) — AND THE OBVIOUS REPAIR WOULD HAVE
+    // QUIETLY RETIRED THIS TEST'S WHOLE POINT. Tier 4 was chosen here precisely BECAUSE it
+    // was the one empty tier, so `remt-checks-chapter.js` registering K1-K5 turns the old
+    // `toEqual(['B5'])` red. Relaxing it to `toContain('B5')` — which the tier-2 half above
+    // appears to license — lets the `() => true` mutant SURVIVE: with the filter removed,
+    // tier 4 returns all 31+ registered checks and `toContain('B5')` is still satisfied.
+    // The tier-2 half is safe ONLY because of its `toHaveLength(11)`. So the length
+    // assertion below is load-bearing, not decoration:
+    //   `() => true`      → tier 4 returns every registered check, killed by toHaveLength
+    //   `&& c.blocking`   → drops K1 and K4 (advisory), killed by toHaveLength
+    //   hard-coded tier   → killed by the tier-2 half's not.toContain('B5')
+    expect(ids4).toContain('B5');
+    expect(ids4).not.toContain('B5b');
+    expect(ids4.every((id) => REGISTRY.get(id).tier === 4)).toBe(true);
+    // L37: the COUNT beside the predicate. Task 12 registers K1-K5 (two of them deliberate
+    // scope expansions, K4 and K5), so 5 + the synthetic B5 = 6.
+    expect(ids4).toHaveLength(6);
+    expect(r.results.find((x) => x.id === 'B5').examined).toBe(7);
 
     // ⚠️ WIDENED WHEN TIER 2 WAS WIRED (Task 8), AND THE THREE MUTANTS IT KILLS ARE
     // UNCHANGED. Tier 2 is no longer synthetic-only — `remt-checks-mt.js` registers A1,
@@ -272,7 +289,17 @@ describe('the CLI as a process', () => {
    * moments later when the CLI imports the tier module and it registers. Importing
    * it here first means the CLI's import is an ESM CACHE HIT — the module body
    * never re-runs, so `registerChecks` is never called again and the clear stands.
-   * ▶ Add every newly wired tier module to WIRED below, or its checks reappear.
+   * ▶ Add a newly wired tier module to WIRED below IF A SPAWNED PROBE SELECTS ITS TIER.
+   * ⚠️ THIS LINE READ "Add EVERY newly wired tier module … or its checks reappear" until
+   * Task 12, and it is a comment that generalises past its code — the list holds ONE entry
+   * while FIVE tier modules are wired, so Tasks 7-12 would all have been in violation of
+   * it. Measured: every spawned probe here runs `--tier 1` (`SCOPE`, and the two `--tier`
+   * literals below), so a tier-0/2/3/4 module that the CLI imports fresh really does
+   * re-register in the child — and its checks are then never SELECTED, which is why it has
+   * never mattered. Tier 1 is the exception because that is the tier the probes exercise.
+   * ▶ THE CONDITION IS SELECTION, NOT REGISTRATION. If you ever point a spawned probe at
+   * another tier, that tier's module must join this list in the same commit. Task 12 left
+   * `remt-checks-chapter.js` OUT deliberately, on that measurement.
    *
    * ⚠️ It deliberately does NOT export a registry-emptier from the library. The
    * contract's own tests rejected `resetRegistry()` on the grounds that an exported
