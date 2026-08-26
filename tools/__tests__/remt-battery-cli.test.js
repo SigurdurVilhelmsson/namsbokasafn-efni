@@ -99,7 +99,8 @@ describe('the empty-selection refusal', () => {
     // L37: the COUNT beside the predicate — `[].every(...)` is vacuously true. A premise
     // pin, updated by the task that widens the tier: Task 9 adds A2a, A4 and A8.
     // ✅ TASK 9 DID: 4 free-half + 3 run-record + the synthetic B5b = 8.
-    expect(ids2).toHaveLength(8);
+    // ✅ TASK 10 ADDED A3, A5 and A7 (the gating half): 4 + 3 + 3 + B5b = 11.
+    expect(ids2).toHaveLength(11);
   });
 });
 

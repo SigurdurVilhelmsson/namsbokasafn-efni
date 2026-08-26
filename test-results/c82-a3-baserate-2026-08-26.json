@@ -1,0 +1,4461 @@
+[
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68859",
+  "ch": "appendices",
+  "segmentsExamined": 1,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68860",
+  "ch": "appendices",
+  "segmentsExamined": 117,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68861",
+  "ch": "appendices",
+  "segmentsExamined": 72,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68861:entry:auto-38",
+    {
+     "i": -4
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68862",
+  "ch": "appendices",
+  "segmentsExamined": 34,
+  "segmentsWithDelta": 10,
+  "totalKeys": 1,
+  "total": {
+   "i": -10
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68862:entry:auto-9",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68862:entry:auto-11",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68862:entry:auto-13",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68863",
+  "ch": "appendices",
+  "segmentsExamined": 164,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68864",
+  "ch": "appendices",
+  "segmentsExamined": 38,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68865",
+  "ch": "appendices",
+  "segmentsExamined": 1484,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68866",
+  "ch": "appendices",
+  "segmentsExamined": 85,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68866:entry:auto-5",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68867",
+  "ch": "appendices",
+  "segmentsExamined": 15,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68867:entry:auto-5",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68868",
+  "ch": "appendices",
+  "segmentsExamined": 222,
+  "segmentsWithDelta": 6,
+  "totalKeys": 1,
+  "total": {
+   "i": -6
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68868:entry:auto-4",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68868:entry:auto-60",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68868:entry:auto-62",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68869",
+  "ch": "appendices",
+  "segmentsExamined": 50,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68869:entry:auto-4",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68870",
+  "ch": "appendices",
+  "segmentsExamined": 272,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68870:entry:auto-4",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68871",
+  "ch": "appendices",
+  "segmentsExamined": 182,
+  "segmentsWithDelta": 2,
+  "totalKeys": 1,
+  "total": {
+   "i": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68871:entry:auto-5",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68871:entry:auto-8",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68662",
+  "ch": "ch00",
+  "segmentsExamined": 107,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68663",
+  "ch": "ch01",
+  "segmentsExamined": 11,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68664",
+  "ch": "ch01",
+  "segmentsExamined": 72,
+  "segmentsWithDelta": 8,
+  "totalKeys": 4,
+  "total": {
+   "xref": -5,
+   "i": -9,
+   "sub": -2,
+   "sup": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68664:para:fs-idp128238864",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68664:para:fs-idm166568720",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68664:para:fs-idp4269776",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68667",
+  "ch": "ch01",
+  "segmentsExamined": 201,
+  "segmentsWithDelta": 18,
+  "totalKeys": 5,
+  "total": {
+   "xref": -14,
+   "link": -3,
+   "i": -2,
+   "sup": -2,
+   "sub": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68667:para:fs-idm13881920",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68667:para:fs-idm10031184",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68667:para:fs-idp140507125044944",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68670",
+  "ch": "ch01",
+  "segmentsExamined": 63,
+  "segmentsWithDelta": 5,
+  "totalKeys": 1,
+  "total": {
+   "xref": -5
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68670:para:fs-idp58271744",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68670:para:fs-idp135749488",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68670:para:fs-idp137402768",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68674",
+  "ch": "ch01",
+  "segmentsExamined": 244,
+  "segmentsWithDelta": 69,
+  "totalKeys": 6,
+  "total": {
+   "sup": -81,
+   "docref": -1,
+   "i": -3,
+   "xref": -8,
+   "link": -7,
+   "b": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68674:para:fs-idm128012432",
+    {
+     "sup": -2,
+     "docref": -1
+    }
+   ],
+   [
+    "m68674:para:fs-idm144392592",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68674:para:eip-134",
+    {
+     "i": -1,
+     "sup": -2,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68683",
+  "ch": "ch01",
+  "segmentsExamined": 234,
+  "segmentsWithDelta": 42,
+  "totalKeys": 4,
+  "total": {
+   "i": -22,
+   "xref": -5,
+   "sup": -37,
+   "docref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68683:para:fs-idm319461744",
+    {
+     "i": -3
+    }
+   ],
+   [
+    "m68683:para:fs-idm308822992",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68683:para:fs-idp44099792",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68690",
+  "ch": "ch01",
+  "segmentsExamined": 241,
+  "segmentsWithDelta": 26,
+  "totalKeys": 4,
+  "total": {
+   "i": -3,
+   "xref": -3,
+   "sup": -32,
+   "docref": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68690:para:fs-idm288863760",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68690:para:fs-idm176542448",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68690:para:fs-idm254904560",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68684",
+  "ch": "ch02",
+  "segmentsExamined": 11,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68685",
+  "ch": "ch02",
+  "segmentsExamined": 93,
+  "segmentsWithDelta": 7,
+  "totalKeys": 2,
+  "total": {
+   "xref": -5,
+   "i": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68685:item:fs-idp28280144-item-2",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68685:item:fs-idp28280144-item-4",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68685:item:fs-idp28280144-item-5",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68687",
+  "ch": "ch02",
+  "segmentsExamined": 57,
+  "segmentsWithDelta": 11,
+  "totalKeys": 3,
+  "total": {
+   "xref": -5,
+   "i": -3,
+   "link": -5
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68687:para:fs-idm48255440",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68687:para:fs-idm63743520",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68687:para:fs-idm90581616",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68692",
+  "ch": "ch02",
+  "segmentsExamined": 394,
+  "segmentsWithDelta": 30,
+  "totalKeys": 4,
+  "total": {
+   "xref": -9,
+   "i": -15,
+   "docref": -2,
+   "link": -9
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68692:para:fs-idp188136384",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68692:para:fs-idm166273840",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68692:para:fs-idm159569776",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68693",
+  "ch": "ch02",
+  "segmentsExamined": 92,
+  "segmentsWithDelta": 13,
+  "totalKeys": 3,
+  "total": {
+   "xref": -10,
+   "i": -4,
+   "link": -5
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68693:para:fs-idp69721696",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68693:para:fs-idm155780176",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68693:para:fs-idm43786912",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68695",
+  "ch": "ch02",
+  "segmentsExamined": 140,
+  "segmentsWithDelta": 4,
+  "totalKeys": 3,
+  "total": {
+   "xref": -3,
+   "i": -1,
+   "link": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68695:para:fs-idm421502880",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68695:para:fs-idm330060208",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68695:para:fs-idm177301632",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68696",
+  "ch": "ch02",
+  "segmentsExamined": 222,
+  "segmentsWithDelta": 9,
+  "totalKeys": 3,
+  "total": {
+   "xref": -6,
+   "i": -8,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68696:para:fs-idp207102304",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68696:para:fs-idp244942144",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68696:para:fs-idp9416320",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68698",
+  "ch": "ch02",
+  "segmentsExamined": 340,
+  "segmentsWithDelta": 26,
+  "totalKeys": 4,
+  "total": {
+   "i": -36,
+   "xref": -10,
+   "docref": -1,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68698:para:fs-idp279143120",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68698:para:fs-idp282236928",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68698:para:fs-idm70496",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68699",
+  "ch": "ch03",
+  "segmentsExamined": 3,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68700",
+  "ch": "ch03",
+  "segmentsExamined": 282,
+  "segmentsWithDelta": 18,
+  "totalKeys": 4,
+  "total": {
+   "xref": -11,
+   "i": -8,
+   "link": -1,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68700:para:fs-idp128238864",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68700:para:fs-idp139124096",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68700:para:fs-idm4173824",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68702",
+  "ch": "ch03",
+  "segmentsExamined": 138,
+  "segmentsWithDelta": 12,
+  "totalKeys": 3,
+  "total": {
+   "xref": -4,
+   "i": -8,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68702:para:fs-idm159904272",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68702:para:fs-idm16856224",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68702:para:fs-idp8854528",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68703",
+  "ch": "ch03",
+  "segmentsExamined": 207,
+  "segmentsWithDelta": 70,
+  "totalKeys": 3,
+  "total": {
+   "xref": -11,
+   "i": -103,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68703:para:fs-idm232512",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68703:para:fs-idm62212352",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68703:para:fs-idm62230608",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68704",
+  "ch": "ch03",
+  "segmentsExamined": 98,
+  "segmentsWithDelta": 6,
+  "totalKeys": 2,
+  "total": {
+   "i": -3,
+   "xref": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68704:para:fs-idm3484528",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68704:para:fs-idm21823696",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68704:para:fs-idm16796176",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68709",
+  "ch": "ch04",
+  "segmentsExamined": 232,
+  "segmentsWithDelta": 20,
+  "totalKeys": 4,
+  "total": {
+   "xref": -2,
+   "i": -26,
+   "b": -6,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68709:para:fs-idp47467664",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68709:para:fs-idm33251968",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68709:item:fs-idp42981680-item-1",
+    {
+     "i": -4
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68710",
+  "ch": "ch04",
+  "segmentsExamined": 435,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68710:para:fs-idp140132618169728",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68713",
+  "ch": "ch04",
+  "segmentsExamined": 112,
+  "segmentsWithDelta": 10,
+  "totalKeys": 2,
+  "total": {
+   "i": -4,
+   "xref": -9
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68713:para:fs-idp65325120",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68713:para:fs-idp77269456",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68713:para:fs-idp121952928",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68714",
+  "ch": "ch04",
+  "segmentsExamined": 109,
+  "segmentsWithDelta": 10,
+  "totalKeys": 3,
+  "total": {
+   "i": -11,
+   "xref": -3,
+   "link": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68714:para:fs-idp24998416",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68714:para:fs-idp103911360",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68714:para:fs-idp39531056",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68716",
+  "ch": "ch04",
+  "segmentsExamined": 110,
+  "segmentsWithDelta": 23,
+  "totalKeys": 2,
+  "total": {
+   "xref": -3,
+   "i": -26
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68716:para:fs-idp43277952",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68716:para:fs-idp24080800",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68716:para:fs-idm12966032",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68730",
+  "ch": "ch04",
+  "segmentsExamined": 8,
+  "segmentsWithDelta": 1,
+  "totalKeys": 2,
+  "total": {
+   "i": -1,
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68730:para:fs-idm17418752",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68723",
+  "ch": "ch05",
+  "segmentsExamined": 7,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68724",
+  "ch": "ch05",
+  "segmentsExamined": 193,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68726",
+  "ch": "ch05",
+  "segmentsExamined": 170,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68727",
+  "ch": "ch05",
+  "segmentsExamined": 358,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68728",
+  "ch": "ch06",
+  "segmentsExamined": 8,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68728:para:fs-idm12460464",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68729",
+  "ch": "ch06",
+  "segmentsExamined": 157,
+  "segmentsWithDelta": 2,
+  "totalKeys": 1,
+  "total": {
+   "i": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68729:glossary-term:fs-idp121959824-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68729:glossary-term:fs-idp70511136-term",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68732",
+  "ch": "ch06",
+  "segmentsExamined": 83,
+  "segmentsWithDelta": 20,
+  "totalKeys": 2,
+  "total": {
+   "i": -40,
+   "xref": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68732:para:fs-idp36624368",
+    {
+     "i": -3
+    }
+   ],
+   [
+    "m68732:para:fs-idp27649904",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68732:para:fs-idm70061856",
+    {
+     "i": -2,
+     "xref": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68733",
+  "ch": "ch06",
+  "segmentsExamined": 263,
+  "segmentsWithDelta": 9,
+  "totalKeys": 2,
+  "total": {
+   "i": -9,
+   "sub": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68733:glossary-term:fs-idm176142304-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68733:glossary-term:fs-idp12032-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68733:glossary-term:fs-idm124229040-term",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68734",
+  "ch": "ch06",
+  "segmentsExamined": 168,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68735",
+  "ch": "ch06",
+  "segmentsExamined": 172,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68736",
+  "ch": "ch07",
+  "segmentsExamined": 9,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68737",
+  "ch": "ch07",
+  "segmentsExamined": 105,
+  "segmentsWithDelta": 19,
+  "totalKeys": 2,
+  "total": {
+   "i": -176,
+   "xref": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68737:para:fs-idm91254256",
+    {
+     "i": -4,
+     "xref": -1
+    }
+   ],
+   [
+    "m68737:para:fs-idm111206416",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68737:para:fs-idm59366528",
+    {
+     "i": -11
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68738",
+  "ch": "ch07",
+  "segmentsExamined": 164,
+  "segmentsWithDelta": 10,
+  "totalKeys": 2,
+  "total": {
+   "i": -3,
+   "xref": -12
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68738:para:fs-idp19293424",
+    {
+     "i": -3,
+     "xref": -1
+    }
+   ],
+   [
+    "m68738:para:fs-idp26845616",
+    {
+     "xref": -2
+    }
+   ],
+   [
+    "m68738:para:fs-idp24320096",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68739",
+  "ch": "ch07",
+  "segmentsExamined": 222,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68740",
+  "ch": "ch07",
+  "segmentsExamined": 144,
+  "segmentsWithDelta": 13,
+  "totalKeys": 3,
+  "total": {
+   "i": -12,
+   "xref": -1,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68740:para:fs-idm16217792",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68740:para:fs-idp15200480",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68740:item:fs-idm30182496-item-1",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68741",
+  "ch": "ch07",
+  "segmentsExamined": 356,
+  "segmentsWithDelta": 38,
+  "totalKeys": 4,
+  "total": {
+   "docref": -6,
+   "xref": -10,
+   "i": -39,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68741:para:fs-idm12470240",
+    {
+     "docref": -1
+    }
+   ],
+   [
+    "m68741:para:fs-idp26225392",
+    {
+     "xref": -2
+    }
+   ],
+   [
+    "m68741:para:fs-idp29959728",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68742",
+  "ch": "ch07",
+  "segmentsExamined": 327,
+  "segmentsWithDelta": 32,
+  "totalKeys": 3,
+  "total": {
+   "xref": -35,
+   "i": -4,
+   "link": -9
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68742:para:fs-idp51102864",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68742:para:fs-idp238100128",
+    {
+     "i": -2,
+     "xref": -1
+    }
+   ],
+   [
+    "m68742:para:fs-idm334496",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68743",
+  "ch": "ch08",
+  "segmentsExamined": 8,
+  "segmentsWithDelta": 2,
+  "totalKeys": 2,
+  "total": {
+   "i": -2,
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68743:para:fs-idp262340496",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68743:para:fs-idm1216176",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68744",
+  "ch": "ch08",
+  "segmentsExamined": 127,
+  "segmentsWithDelta": 17,
+  "totalKeys": 2,
+  "total": {
+   "i": -25,
+   "xref": -9
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68744:para:fs-idp41602432",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68744:para:fs-idp45162384",
+    {
+     "xref": -2
+    }
+   ],
+   [
+    "m68744:para:fs-idm5865744",
+    {
+     "xref": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68745",
+  "ch": "ch08",
+  "segmentsExamined": 143,
+  "segmentsWithDelta": 71,
+  "totalKeys": 4,
+  "total": {
+   "i": -189,
+   "xref": -18,
+   "link": -1,
+   "sup": -5
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68745:para:fs-idp15190992",
+    {
+     "i": -7,
+     "xref": -1
+    }
+   ],
+   [
+    "m68745:caption:CNX_Chem_08_02_H2Ovb-caption",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68745:para:fs-idm11485424",
+    {
+     "i": -7,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68746",
+  "ch": "ch08",
+  "segmentsExamined": 63,
+  "segmentsWithDelta": 15,
+  "totalKeys": 2,
+  "total": {
+   "i": -51,
+   "xref": -7
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68746:para:fs-idp40201472",
+    {
+     "i": -9,
+     "xref": -4
+    }
+   ],
+   [
+    "m68746:caption:CNX_Chem_08_03_sp3config-caption",
+    {
+     "i": -4
+    }
+   ],
+   [
+    "m68746:caption:CNX_Chem_08_03_C2H4orbit-caption",
+    {
+     "i": -5
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68747",
+  "ch": "ch08",
+  "segmentsExamined": 232,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68748",
+  "ch": "ch09",
+  "segmentsExamined": 11,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68748:para:fs-idm58981280",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68750",
+  "ch": "ch09",
+  "segmentsExamined": 180,
+  "segmentsWithDelta": 20,
+  "totalKeys": 3,
+  "total": {
+   "xref": -11,
+   "link": -2,
+   "i": -23
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68750:para:fs-idm2965936",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68750:para:fs-idp139792368",
+    {
+     "link": -1
+    }
+   ],
+   [
+    "m68750:para:fs-idm26057840",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68751",
+  "ch": "ch09",
+  "segmentsExamined": 219,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68751:glossary-term:fs-idm78852976-term",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68752",
+  "ch": "ch09",
+  "segmentsExamined": 314,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68752:glossary-term:fs-idp1132336-term",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68754",
+  "ch": "ch09",
+  "segmentsExamined": 86,
+  "segmentsWithDelta": 6,
+  "totalKeys": 2,
+  "total": {
+   "i": -5,
+   "xref": -6
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68754:para:fs-idp34604992",
+    {
+     "i": -1,
+     "xref": -2
+    }
+   ],
+   [
+    "m68754:para:fs-idm29004912",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68754:para:fs-idp161500496",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68758",
+  "ch": "ch09",
+  "segmentsExamined": 87,
+  "segmentsWithDelta": 20,
+  "totalKeys": 4,
+  "total": {
+   "i": -21,
+   "xref": -7,
+   "link": -1,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68758:item:fs-idm178411376-item-4",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68758:item:fs-idm221875200-item-1",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68758:item:fs-idm221875200-item-2",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68759",
+  "ch": "ch09",
+  "segmentsExamined": 93,
+  "segmentsWithDelta": 14,
+  "totalKeys": 2,
+  "total": {
+   "i": -20,
+   "xref": -7
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68759:para:fs-idm10764416",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68759:para:fs-idp138594304",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68759:para:fs-idm92799184",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68760",
+  "ch": "ch10",
+  "segmentsExamined": 9,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68761",
+  "ch": "ch10",
+  "segmentsExamined": 179,
+  "segmentsWithDelta": 24,
+  "totalKeys": 3,
+  "total": {
+   "i": -23,
+   "xref": -14,
+   "link": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68761:para:fs-idp55691520",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68761:para:fs-idm53508384",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68761:para:fs-idm190830512",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68764",
+  "ch": "ch10",
+  "segmentsExamined": 128,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68768",
+  "ch": "ch10",
+  "segmentsExamined": 198,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68769",
+  "ch": "ch10",
+  "segmentsExamined": 137,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68770",
+  "ch": "ch10",
+  "segmentsExamined": 170,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68773",
+  "ch": "ch10",
+  "segmentsExamined": 246,
+  "segmentsWithDelta": 34,
+  "totalKeys": 3,
+  "total": {
+   "xref": -23,
+   "i": -32,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68773:para:fs-idm2181616",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68773:para:fs-idp68860560",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68773:para:fs-idm2044016",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68776",
+  "ch": "ch11",
+  "segmentsExamined": 9,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68778",
+  "ch": "ch11",
+  "segmentsExamined": 95,
+  "segmentsWithDelta": 12,
+  "totalKeys": 3,
+  "total": {
+   "xref": -9,
+   "link": -2,
+   "docref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68778:para:fs-idm75208096",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68778:para:fs-idm40076400",
+    {
+     "link": -1
+    }
+   ],
+   [
+    "m68778:para:fs-idm72001728",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68781",
+  "ch": "ch11",
+  "segmentsExamined": 55,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68782",
+  "ch": "ch11",
+  "segmentsExamined": 107,
+  "segmentsWithDelta": 29,
+  "totalKeys": 4,
+  "total": {
+   "i": -22,
+   "link": -3,
+   "docref": -1,
+   "xref": -14
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68782:para:fs-idp110015984",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68782:para:fs-idp75533376",
+    {
+     "link": -1
+    }
+   ],
+   [
+    "m68782:para:fs-idp69648624",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68783",
+  "ch": "ch11",
+  "segmentsExamined": 423,
+  "segmentsWithDelta": 3,
+  "totalKeys": 1,
+  "total": {
+   "i": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68783:glossary-term:fs-idp141108496-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68783:glossary-term:fs-idp141114480-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68783:glossary-term:fs-idp11034384-term",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68784",
+  "ch": "ch11",
+  "segmentsExamined": 136,
+  "segmentsWithDelta": 10,
+  "totalKeys": 3,
+  "total": {
+   "xref": -9,
+   "i": -4,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68784:para:fs-idm25079776",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68784:para:fs-idm77182288",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68784:para:fs-idm165583920",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68785",
+  "ch": "ch12",
+  "segmentsExamined": 12,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68786",
+  "ch": "ch12",
+  "segmentsExamined": 116,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68787",
+  "ch": "ch12",
+  "segmentsExamined": 39,
+  "segmentsWithDelta": 10,
+  "totalKeys": 3,
+  "total": {
+   "xref": -2,
+   "i": -8,
+   "link": -6
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68787:para:fs-idm89852336",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68787:caption:CNX_Chem_12_02_AcidDissol-caption",
+    {
+     "i": -4
+    }
+   ],
+   [
+    "m68787:para:fs-idm33181984",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68789",
+  "ch": "ch12",
+  "segmentsExamined": 321,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68791",
+  "ch": "ch12",
+  "segmentsExamined": 380,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68793",
+  "ch": "ch12",
+  "segmentsExamined": 143,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68794",
+  "ch": "ch12",
+  "segmentsExamined": 140,
+  "segmentsWithDelta": 17,
+  "totalKeys": 2,
+  "total": {
+   "i": -27,
+   "xref": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68794:para:fs-idp6340064",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68794:para:fs-idm500275472",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68794:para:fs-idp205522704",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68795",
+  "ch": "ch12",
+  "segmentsExamined": 105,
+  "segmentsWithDelta": 18,
+  "totalKeys": 3,
+  "total": {
+   "i": -8,
+   "xref": -11,
+   "link": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68795:para:fs-idm241568976",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68795:para:fs-idm627108512",
+    {
+     "i": -2,
+     "xref": -1
+    }
+   ],
+   [
+    "m68795:para:fs-idm239441760",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68796",
+  "ch": "ch13",
+  "segmentsExamined": 7,
+  "segmentsWithDelta": 1,
+  "totalKeys": 2,
+  "total": {
+   "i": -1,
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68796:para:fs-idp51855856",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68797",
+  "ch": "ch13",
+  "segmentsExamined": 29,
+  "segmentsWithDelta": 4,
+  "totalKeys": 3,
+  "total": {
+   "xref": -6,
+   "i": -3,
+   "b": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68797:para:fs-idp3488592",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68797:para:fs-idm379766304",
+    {
+     "i": -2,
+     "b": -4,
+     "xref": -4
+    }
+   ],
+   [
+    "m68797:para:fs-idp164650592",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68798",
+  "ch": "ch13",
+  "segmentsExamined": 250,
+  "segmentsWithDelta": 101,
+  "totalKeys": 3,
+  "total": {
+   "i": -219,
+   "xref": -8,
+   "docref": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68798:para:fs-idp120703584",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68798:para:fs-idm352046000",
+    {
+     "i": -3
+    }
+   ],
+   [
+    "m68798:caption:CNX_Chem_13_02_quotient-caption",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68799",
+  "ch": "ch13",
+  "segmentsExamined": 136,
+  "segmentsWithDelta": 4,
+  "totalKeys": 1,
+  "total": {
+   "i": -6
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68799:para:fs-idp113339808",
+    {
+     "i": -3
+    }
+   ],
+   [
+    "m68799:para:fs-idm482494176",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68799:para:fs-idm196239168",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68801",
+  "ch": "ch13",
+  "segmentsExamined": 263,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68802",
+  "ch": "ch14",
+  "segmentsExamined": 10,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68802:para:fs-idp162964256",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68803",
+  "ch": "ch14",
+  "segmentsExamined": 165,
+  "segmentsWithDelta": 18,
+  "totalKeys": 3,
+  "total": {
+   "i": -19,
+   "b": -2,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68803:para:fs-idm26037424",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68803:para:fs-idm56373376",
+    {
+     "i": -1,
+     "b": -2
+    }
+   ],
+   [
+    "m68803:para:fs-idm114594272",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68804",
+  "ch": "ch14",
+  "segmentsExamined": 116,
+  "segmentsWithDelta": 40,
+  "totalKeys": 4,
+  "total": {
+   "i": -40,
+   "docref": -3,
+   "xref": -7,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68804:para:fs-idp11137424",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68804:para:fs-idm97029664",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68804:para:fs-idp11266224",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68805",
+  "ch": "ch14",
+  "segmentsExamined": 295,
+  "segmentsWithDelta": 3,
+  "totalKeys": 2,
+  "total": {
+   "i": -1,
+   "sub": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68805:para:fs-idp42421216",
+    {
+     "i": 1
+    }
+   ],
+   [
+    "m68805:glossary-term:fs-idp86058640-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ],
+   [
+    "m68805:glossary-term:fs-idp86060672-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68806",
+  "ch": "ch14",
+  "segmentsExamined": 99,
+  "segmentsWithDelta": 28,
+  "totalKeys": 3,
+  "total": {
+   "i": -43,
+   "docref": -1,
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68806:para:fs-idm238452464",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68806:para:fs-idm249820848",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68806:para:fs-idm656133776",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68807",
+  "ch": "ch14",
+  "segmentsExamined": 53,
+  "segmentsWithDelta": 15,
+  "totalKeys": 1,
+  "total": {
+   "i": -25
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68807:para:fs-idp100346864",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68807:para:fs-idm165541424",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68807:para:fs-idp167647504",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68808",
+  "ch": "ch14",
+  "segmentsExamined": 117,
+  "segmentsWithDelta": 32,
+  "totalKeys": 3,
+  "total": {
+   "i": -56,
+   "xref": -4,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68808:para:fs-idm117447344",
+    {
+     "i": -2,
+     "xref": -1
+    }
+   ],
+   [
+    "m68808:caption:CNX_Chem_14_06_compare-caption",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68808:para:fs-idp41915456",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68809",
+  "ch": "ch14",
+  "segmentsExamined": 164,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68810",
+  "ch": "ch15",
+  "segmentsExamined": 6,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68810:para:fs-idm92459840",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68811",
+  "ch": "ch15",
+  "segmentsExamined": 419,
+  "segmentsWithDelta": 2,
+  "totalKeys": 1,
+  "total": {
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68811:problem:fs-idp2236688",
+    {
+     "i": 1
+    }
+   ],
+   [
+    "m68811:glossary-term:fs-idp3053344-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68813",
+  "ch": "ch15",
+  "segmentsExamined": 114,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68814",
+  "ch": "ch15",
+  "segmentsExamined": 116,
+  "segmentsWithDelta": 38,
+  "totalKeys": 3,
+  "total": {
+   "i": -58,
+   "xref": -3,
+   "link": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68814:para:fs-idm703568",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68814:para:fs-idm173712",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68814:para:fs-idm278224",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68815",
+  "ch": "ch16",
+  "segmentsExamined": 7,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68816",
+  "ch": "ch16",
+  "segmentsExamined": 55,
+  "segmentsWithDelta": 9,
+  "totalKeys": 2,
+  "total": {
+   "i": -13,
+   "xref": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68816:para:fs-idp3956976",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68816:para:fs-idm7164864",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68816:para:fs-idp124196272",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68817",
+  "ch": "ch16",
+  "segmentsExamined": 112,
+  "segmentsWithDelta": 45,
+  "totalKeys": 5,
+  "total": {
+   "i": -81,
+   "xref": -12,
+   "docref": -2,
+   "b": -8,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68817:para:fs-idm1359840",
+    {
+     "i": -4,
+     "xref": -1
+    }
+   ],
+   [
+    "m68817:para:fs-idm194920048",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68817:para:fs-idp173054032",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68818",
+  "ch": "ch16",
+  "segmentsExamined": 154,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": 1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68818:para:fs-idp34700864",
+    {
+     "i": 1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68819",
+  "ch": "ch16",
+  "segmentsExamined": 332,
+  "segmentsWithDelta": 3,
+  "totalKeys": 2,
+  "total": {
+   "i": -2,
+   "MATH": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68819:glossary-term:fs-idm119810368-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68819:glossary-term:fs-idm119807952-term",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68819:glossary-term:fs-idm119806032-term",
+    {
+     "MATH": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68820",
+  "ch": "ch17",
+  "segmentsExamined": 10,
+  "segmentsWithDelta": 1,
+  "totalKeys": 2,
+  "total": {
+   "i": -2,
+   "xref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68820:para:fs-idm9057728",
+    {
+     "i": -2,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68821",
+  "ch": "ch17",
+  "segmentsExamined": 100,
+  "segmentsWithDelta": 1,
+  "totalKeys": 2,
+  "total": {
+   "i": -1,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68821:glossary-term:fs-idp85536816-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68822",
+  "ch": "ch17",
+  "segmentsExamined": 77,
+  "segmentsWithDelta": 1,
+  "totalKeys": 2,
+  "total": {
+   "i": -1,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68822:glossary-term:fs-idm153779040-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68823",
+  "ch": "ch17",
+  "segmentsExamined": 151,
+  "segmentsWithDelta": 2,
+  "totalKeys": 1,
+  "total": {
+   "MATH": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68823:glossary-term:fs-idp227872832-term",
+    {
+     "MATH": -1
+    }
+   ],
+   [
+    "m68823:glossary-term:fs-idm4867824-term",
+    {
+     "MATH": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68824",
+  "ch": "ch17",
+  "segmentsExamined": 108,
+  "segmentsWithDelta": 30,
+  "totalKeys": 4,
+  "total": {
+   "i": -52,
+   "b": -1,
+   "xref": -2,
+   "docref": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68824:para:fs-idm222137520",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68824:para:fs-idm215301376",
+    {
+     "i": -3
+    }
+   ],
+   [
+    "m68824:para:fs-idm648263408",
+    {
+     "i": -3,
+     "b": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68825",
+  "ch": "ch17",
+  "segmentsExamined": 73,
+  "segmentsWithDelta": 24,
+  "totalKeys": 3,
+  "total": {
+   "i": -14,
+   "xref": -5,
+   "link": -7
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68825:para:fs-idp5014576",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ],
+   [
+    "m68825:para:fs-idm383968784",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68825:para:fs-idm30434512",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68826",
+  "ch": "ch17",
+  "segmentsExamined": 45,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68827",
+  "ch": "ch17",
+  "segmentsExamined": 80,
+  "segmentsWithDelta": 16,
+  "totalKeys": 2,
+  "total": {
+   "i": -29,
+   "xref": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68827:para:fs-idm133590080",
+    {
+     "i": -4
+    }
+   ],
+   [
+    "m68827:para:fs-idm157333328",
+    {
+     "i": -2,
+     "xref": -1
+    }
+   ],
+   [
+    "m68827:para:fs-idm174200080",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68828",
+  "ch": "ch18",
+  "segmentsExamined": 15,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68829",
+  "ch": "ch18",
+  "segmentsExamined": 130,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68830",
+  "ch": "ch18",
+  "segmentsExamined": 69,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68831",
+  "ch": "ch18",
+  "segmentsExamined": 142,
+  "segmentsWithDelta": 20,
+  "totalKeys": 4,
+  "total": {
+   "i": -36,
+   "xref": -7,
+   "link": -1,
+   "docref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68831:para:fs-idp189496896",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68831:para:fs-idp63064256",
+    {
+     "i": -6
+    }
+   ],
+   [
+    "m68831:para:fs-idp235228864",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68832",
+  "ch": "ch18",
+  "segmentsExamined": 86,
+  "segmentsWithDelta": 15,
+  "totalKeys": 5,
+  "total": {
+   "xref": -11,
+   "i": -13,
+   "sub": 1,
+   "sup": 1,
+   "MATH": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68832:para:fs-idm155738224",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68832:para:fs-idm146473008",
+    {
+     "i": -3
+    }
+   ],
+   [
+    "m68832:para:fs-idm105671392",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68833",
+  "ch": "ch18",
+  "segmentsExamined": 102,
+  "segmentsWithDelta": 7,
+  "totalKeys": 2,
+  "total": {
+   "xref": -5,
+   "i": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68833:para:fs-idp79258016",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68833:para:fs-idp119542896",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68833:para:fs-idp263935152",
+    {
+     "i": -1,
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68834",
+  "ch": "ch18",
+  "segmentsExamined": 36,
+  "segmentsWithDelta": 4,
+  "totalKeys": 2,
+  "total": {
+   "xref": -2,
+   "i": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68834:para:fs-idm40761024",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68834:para:fs-idp146223104",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68834:problem:fs-idp27024304",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68835",
+  "ch": "ch18",
+  "segmentsExamined": 68,
+  "segmentsWithDelta": 10,
+  "totalKeys": 2,
+  "total": {
+   "xref": -7,
+   "i": -5
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68835:para:fs-idm122679488",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68835:para:fs-idp79367584",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68835:para:fs-idp52451792",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68836",
+  "ch": "ch18",
+  "segmentsExamined": 67,
+  "segmentsWithDelta": 5,
+  "totalKeys": 2,
+  "total": {
+   "xref": -3,
+   "i": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68836:para:fs-idp5816832",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68836:para:fs-idp85748768",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68836:para:fs-idp182518880",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68837",
+  "ch": "ch18",
+  "segmentsExamined": 232,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68838",
+  "ch": "ch18",
+  "segmentsExamined": 36,
+  "segmentsWithDelta": 3,
+  "totalKeys": 2,
+  "total": {
+   "xref": -2,
+   "i": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68838:para:fs-idm222212272",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68838:para:fs-idm89076784",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68838:solution:fs-idm189281632",
+    {
+     "i": -3
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68839",
+  "ch": "ch18",
+  "segmentsExamined": 108,
+  "segmentsWithDelta": 23,
+  "totalKeys": 3,
+  "total": {
+   "i": -18,
+   "xref": -6,
+   "link": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68839:para:fs-idm11606784",
+    {
+     "i": -2
+    }
+   ],
+   [
+    "m68839:para:fs-idm48830656",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68839:para:fs-idm83258560",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68840",
+  "ch": "ch18",
+  "segmentsExamined": 52,
+  "segmentsWithDelta": 3,
+  "totalKeys": 1,
+  "total": {
+   "i": -10
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68840:solution:fs-idp28786176",
+    {
+     "i": -8
+    }
+   ],
+   [
+    "m68840:problem:fs-idm27212064",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68840:problem:fs-idm120825520",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68841",
+  "ch": "ch19",
+  "segmentsExamined": 8,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68842",
+  "ch": "ch19",
+  "segmentsExamined": 256,
+  "segmentsWithDelta": 51,
+  "totalKeys": 4,
+  "total": {
+   "i": -80,
+   "xref": -11,
+   "docref": -3,
+   "link": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68842:para:fs-idm272953936",
+    {
+     "i": -7,
+     "xref": -1
+    }
+   ],
+   [
+    "m68842:para:fs-idm165890960",
+    {
+     "i": -1
+    }
+   ],
+   [
+    "m68842:para:fs-idm9696240",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68843",
+  "ch": "ch19",
+  "segmentsExamined": 260,
+  "segmentsWithDelta": 48,
+  "totalKeys": 4,
+  "total": {
+   "xref": -33,
+   "i": -86,
+   "link": -2,
+   "b": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68843:para:fs-idp120146608",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68843:caption:CNX_Chem_19_02_Colors-caption",
+    {
+     "i": -13
+    }
+   ],
+   [
+    "m68843:para:fs-idp92015616",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68844",
+  "ch": "ch19",
+  "segmentsExamined": 126,
+  "segmentsWithDelta": 3,
+  "totalKeys": 2,
+  "total": {
+   "sub": -3,
+   "i": -3
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68844:glossary-term:fs-idm99275552-term",
+    {
+     "sub": -1
+    }
+   ],
+   [
+    "m68844:glossary-term:fs-idm148194896-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ],
+   [
+    "m68844:glossary-term:fs-idm104611088-term",
+    {
+     "i": -2,
+     "sub": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68845",
+  "ch": "ch20",
+  "segmentsExamined": 8,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68846",
+  "ch": "ch20",
+  "segmentsExamined": 317,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68847",
+  "ch": "ch20",
+  "segmentsExamined": 88,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68848",
+  "ch": "ch20",
+  "segmentsExamined": 96,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68849",
+  "ch": "ch20",
+  "segmentsExamined": 63,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68850",
+  "ch": "ch21",
+  "segmentsExamined": 10,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68850:para:fs-idp145142544",
+    {
+     "i": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68851",
+  "ch": "ch21",
+  "segmentsExamined": 163,
+  "segmentsWithDelta": 18,
+  "totalKeys": 3,
+  "total": {
+   "xref": -13,
+   "link": -1,
+   "i": -12
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68851:para:fs-idm77528832",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68851:para:fs-idp91518256",
+    {
+     "link": -1
+    }
+   ],
+   [
+    "m68851:para:fs-idp28406768",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68852",
+  "ch": "ch21",
+  "segmentsExamined": 82,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "MATH": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68852:glossary-term:fs-idp72108384-term",
+    {
+     "MATH": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68854",
+  "ch": "ch21",
+  "segmentsExamined": 244,
+  "segmentsWithDelta": 2,
+  "totalKeys": 3,
+  "total": {
+   "docref": -1,
+   "i": -1,
+   "sub": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68854:para:fs-idp76857680",
+    {
+     "docref": -1
+    }
+   ],
+   [
+    "m68854:glossary-term:fs-idp172569488-term",
+    {
+     "i": -1,
+     "sub": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68856",
+  "ch": "ch21",
+  "segmentsExamined": 180,
+  "segmentsWithDelta": 18,
+  "totalKeys": 3,
+  "total": {
+   "xref": -13,
+   "link": -5,
+   "docref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68856:para:fs-idp30135024",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68856:para:fs-idm212810400",
+    {
+     "link": -1
+    }
+   ],
+   [
+    "m68856:para:fs-idm59797120",
+    {
+     "link": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68857",
+  "ch": "ch21",
+  "segmentsExamined": 41,
+  "segmentsWithDelta": 6,
+  "totalKeys": 2,
+  "total": {
+   "xref": -6,
+   "docref": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68857:para:fs-idp247341312",
+    {
+     "xref": -1,
+     "docref": -1
+    }
+   ],
+   [
+    "m68857:para:fs-idp117263328",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68857:para:fs-idp240963344",
+    {
+     "xref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "efnafraedi-2e",
+  "m": "m68858",
+  "ch": "ch21",
+  "segmentsExamined": 158,
+  "segmentsWithDelta": 15,
+  "totalKeys": 3,
+  "total": {
+   "xref": -10,
+   "docref": -1,
+   "i": -7
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m68858:para:fs-idp155340368",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68858:para:fs-idp39143744",
+    {
+     "xref": -1
+    }
+   ],
+   [
+    "m68858:para:fs-idp5928944",
+    {
+     "xref": -1,
+     "docref": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch01",
+  "segmentsExamined": 206,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch02",
+  "segmentsExamined": 231,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch03",
+  "segmentsExamined": 227,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00031",
+  "ch": "ch03",
+  "segmentsExamined": 5,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00032",
+  "ch": "ch03",
+  "segmentsExamined": 77,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00033",
+  "ch": "ch03",
+  "segmentsExamined": 87,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00034",
+  "ch": "ch03",
+  "segmentsExamined": 33,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00035",
+  "ch": "ch03",
+  "segmentsExamined": 39,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "b": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m00035:para:para-00002",
+    {
+     "b": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00036",
+  "ch": "ch03",
+  "segmentsExamined": 7,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00037",
+  "ch": "ch03",
+  "segmentsExamined": 10,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00038",
+  "ch": "ch03",
+  "segmentsExamined": 99,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch04",
+  "segmentsExamined": 167,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch05",
+  "segmentsExamined": 255,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch06",
+  "segmentsExamined": 153,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 2,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch07",
+  "segmentsExamined": 289,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch08",
+  "segmentsExamined": 209,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch09",
+  "segmentsExamined": 234,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch10",
+  "segmentsExamined": 176,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch11",
+  "segmentsExamined": 239,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch12",
+  "segmentsExamined": 154,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 2,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00134",
+  "ch": "ch12",
+  "segmentsExamined": 12,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00135",
+  "ch": "ch12",
+  "segmentsExamined": 11,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00136",
+  "ch": "ch12",
+  "segmentsExamined": 22,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00137",
+  "ch": "ch12",
+  "segmentsExamined": 29,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00138",
+  "ch": "ch12",
+  "segmentsExamined": 6,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00139",
+  "ch": "ch12",
+  "segmentsExamined": 21,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00140",
+  "ch": "ch12",
+  "segmentsExamined": 7,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00141",
+  "ch": "ch12",
+  "segmentsExamined": 100,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "m00142",
+  "ch": "ch12",
+  "segmentsExamined": 78,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch13",
+  "segmentsExamined": 392,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch14",
+  "segmentsExamined": 176,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "i": -1
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "14-99-OC-AP41:stem:358557-b0",
+    {
+     "i": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch15",
+  "segmentsExamined": 209,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch16",
+  "segmentsExamined": 245,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch17",
+  "segmentsExamined": 332,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch18",
+  "segmentsExamined": 247,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch19",
+  "segmentsExamined": 328,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch20",
+  "segmentsExamined": 256,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch21",
+  "segmentsExamined": 324,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch22",
+  "segmentsExamined": 198,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch23",
+  "segmentsExamined": 215,
+  "segmentsWithDelta": 12,
+  "totalKeys": 1,
+  "total": {
+   "i": 33
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "23-07-OC-P12:stem:359727-b0",
+    {
+     "i": 4
+    }
+   ],
+   [
+    "23-07-OC-P12:sol:359727-b0",
+    {
+     "i": 1
+    }
+   ],
+   [
+    "23-08-OC-P13:stem:359729-b0",
+    {
+     "i": 2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch24",
+  "segmentsExamined": 317,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch25",
+  "segmentsExamined": 193,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch26",
+  "segmentsExamined": 179,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 2,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch27",
+  "segmentsExamined": 105,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch28",
+  "segmentsExamined": 96,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch29",
+  "segmentsExamined": 123,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 2,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch30",
+  "segmentsExamined": 112,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "lifraen-efnafraedi",
+  "m": "exercises",
+  "ch": "ch31",
+  "segmentsExamined": 77,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58780",
+  "ch": "ch01",
+  "segmentsExamined": 5,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58781",
+  "ch": "ch01",
+  "segmentsExamined": 80,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "b": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m58781:para:fs-id1171360197623",
+    {
+     "b": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58782",
+  "ch": "ch01",
+  "segmentsExamined": 79,
+  "segmentsWithDelta": 1,
+  "totalKeys": 1,
+  "total": {
+   "b": -2
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m58782:para:fs-id1171359044741",
+    {
+     "b": -2
+    }
+   ]
+  ]
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58783",
+  "ch": "ch01",
+  "segmentsExamined": 119,
+  "segmentsWithDelta": 4,
+  "totalKeys": 1,
+  "total": {
+   "b": -4
+  },
+  "unpaired": 0,
+  "bySegmentSample": [
+   [
+    "m58783:para:fs-id1171358938267",
+    {
+     "b": -1
+    }
+   ],
+   [
+    "m58783:para:fs-id1171360345678",
+    {
+     "b": -1
+    }
+   ],
+   [
+    "m58783:para:fs-id1171358993574",
+    {
+     "b": -1
+    }
+   ]
+  ]
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58801",
+  "ch": "ch05",
+  "segmentsExamined": 4,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58802",
+  "ch": "ch05",
+  "segmentsExamined": 101,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58803",
+  "ch": "ch05",
+  "segmentsExamined": 71,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58804",
+  "ch": "ch05",
+  "segmentsExamined": 89,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58805",
+  "ch": "ch05",
+  "segmentsExamined": 58,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ },
+ {
+  "b": "orverufraedi",
+  "m": "m58806",
+  "ch": "ch05",
+  "segmentsExamined": 48,
+  "segmentsWithDelta": 0,
+  "totalKeys": 0,
+  "total": {},
+  "unpaired": 0,
+  "bySegmentSample": []
+ }
+]

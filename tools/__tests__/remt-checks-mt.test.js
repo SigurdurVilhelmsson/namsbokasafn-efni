@@ -893,7 +893,7 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
 });
 
 describe('registry wiring — a check that is never selected does not exist', () => {
-  it('registers exactly the four free-half checks at tier 2', () => {
+  it('registers the four free-half checks, in a tier that now holds ten', () => {
     expect(MT_FREE_CHECKS.map((c) => c.id)).toEqual(['A1', 'A6', 'A2b', 'A2c']);
     for (const c of MT_FREE_CHECKS) {
       expect(REGISTRY.get(c.id)).toBe(c);
@@ -910,12 +910,26 @@ describe('registry wiring — a check that is never selected does not exist', ()
       A2b: 3,
       A2c: 1,
     });
-    // ⚠️ A MEMBERSHIP PIN, WIDENED BY TASK 9 FROM 4 TO 7 — NOT DELETED. Tier 2 now also
-    // holds the run-record half (A2a, A4, A8), which registers from the same module.
-    // Asserting the IDS rather than only the count is what keeps this a pin: a count
-    // alone is satisfied by any seven checks, including seven of the wrong ones.
+    // ⚠️ A MEMBERSHIP PIN, WIDENED BY TASK 9 FROM 4 TO 7 AND BY TASK 10 FROM 7 TO 10 —
+    // NOT DELETED. Tier 2 also holds the run-record half (A2a, A4, A8) and the gating
+    // half (A3, A5, A7), all registering from the same module. Asserting the IDS rather
+    // than only the count is what keeps this a pin: a count alone is satisfied by any ten
+    // checks, including ten of the wrong ones. ⚠️ The COUNT below is kept beside the ids
+    // deliberately (L37) — the ids alone would pass if a duplicate id were registered.
     const tier2 = [...REGISTRY.values()].filter((c) => c.tier === 2);
-    expect(tier2.map((c) => c.id).sort()).toEqual(['A1', 'A2a', 'A2b', 'A2c', 'A4', 'A6', 'A8']);
-    expect(tier2).toHaveLength(7);
+    expect(tier2.map((c) => c.id).sort()).toEqual([
+      // ✅ TASK 10 widened this to all ten: A3, A5 and A7 joined the tier.
+      'A1',
+      'A2a',
+      'A2b',
+      'A2c',
+      'A3',
+      'A4',
+      'A5',
+      'A6',
+      'A7',
+      'A8',
+    ]);
+    expect(tier2).toHaveLength(10);
   });
 });

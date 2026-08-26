@@ -10,15 +10,36 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 — TASKS 1-8 ARE MERGED AND DEPLOYED; TASK 9 IS OPEN AS PR #418.**
-> Tasks 1-7 = PR #416, Task 8 = PR #417 (Tier 2's free half + the MIT `parseSegmentsMit`
-> port), both **deployed** [OPERATOR-REPORTED, not verifiable from a dev session].
-> **Task 9** (Tier 2's run-record half: `A2a`, `A4`, `A8`, all advisory) is **complete and in
-> review on `feat/c82-plan-b-task9-runrecord`, NOT merged**. ▶ **If #418 has merged, start at
-> Task 10** (A3 gating, A5 stages, A7 port); if it has not, that branch is where the work is.
+> ⏩ **UPDATED 2026-08-26 (Task 10) — TASKS 1-9 MERGED; TASK 10 IS BUILT ON A BRANCH, NOT MERGED.**
+> Branch `c82-plan-b-task-10` (`624830cb` + fix round `3ac1a3c2`) carries Tier 2's gating half
+> (`A3`/`A5`/`A7`), so **Tier 2 is complete: 10 checks, 3 blocking.** ▶ **Start at Task 11** once
+> it merges. 🔴 **ALL THREE SHIP ADVISORY — the plan's heading says "A3 gating" and the measured
+> base rate (54.31% / 10.89% vs a ≤5% bar) refuses it.** 🔴 **Read §C82 L51-L62 before Task 11.**
+> Three that generalise: **a vacuous test is why a real bug shipped (L55)**; **an identity claim
+> that nothing cross-checks is worth nothing (L54, found by 4 of 5 lenses)**; **a gate keyed on one
+> representation of "nothing" is walked past by another (L57)**.
+> ⚠️ **TWO INHERITED PREMISES IN THIS FILE ARE NOW MEASURED FALSE — do not re-inherit them:**
+> the "220 pairs" corpus (it is **197**), and **"A5 stage 1 is blocking only after the allowlist is
+> re-derived"** — 0 of 16 allowlist entries use the volatile `auto-N` id form, so the re-extract
+> does **not** void them (§C82 L58). A5 stays advisory for different, honest reasons.
+> ⚠️ **AND ORGANIC IS 5% EXTRACTED** (342 source modules, 19 extracted). The download is complete;
+> the extraction is not. **Extract AFTER Plan B, BEFORE Plan C's loader decision** — doing it
+> sooner destroys Task 13's base-rate sweep (§C82 L59).
+>
+> ⏩ **PREVIOUS (2026-08-26) — TASKS 1-9 ARE ALL MERGED.** Tasks 1-7 = PR #416, Task 8 = PR #417
+> (both **deployed**), Task 9 = PR #418 — Tier 2's run-record half (`A2a`, `A4`, `A8`, all
+> advisory) and the SKIPPED path — ✅ **deployed 2026-08-26 [OPERATOR-REPORTED, not verifiable
+> from a dev session].** ▶ **Start at Task 10** (A3 gating, A5 stages, A7 port). **4 Plan B tasks remain,
+> then all 11 of Plan C.**
 > 🔴 **Read §C82 L48 before Task 10: the plan named a producer field that does not exist, and
 > with 0 of 200 sidecars carrying a run record no corpus test could have caught it. Re-derive
-> every field a check reads FROM THE PRODUCER, not from the plan.**
+> every field a check reads FROM THE PRODUCER, not from the plan.** The same question is worth
+> asking of Task 10's own inherited premises — L45 and L48 are the same shape twice.
+> ⚠️ ~~**Task 10 carries a sequencing constraint that appears in no other document: A5 stage 1 is
+> BLOCKING only AFTER `residue-allowlist.json` is re-derived** — it is segmentId-keyed and the
+> re-extract renumbers seg-ids, so it is wholly voided until then.~~ 🔴 **MEASURED FALSE at
+> Task 10 and corrected in place (§C82 L58): 0 of 16 allowlist entries use the volatile `auto-N`
+> id form, so the re-extract does NOT void them.** A5 is advisory for other reasons.
 > 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still open and still blocks Plan C.**
 > **Status is the register's ⏩ RESUME block, not this file.**
 
@@ -50,7 +71,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 1. **The run record is BUILT AND WIRED** (`tools/lib/run-record.js` → `api-translate.js:1347`) — **but no module carries one.** 200 sidecars, 200 with `"tool"` (positive control), **0** with `schemaVersion: 2`. ▶ `A2(a)`/`A4`/`A8` examine **0 of 220 pairs**; the deliverable is the **SKIPPED** path.
 2. ~~The `{verdict, version, examined}` contract exists nowhere~~ — ✅ **BUILT at Task 1** (`tools/lib/remt-battery.js`) and merged. Its guards are the chokepoint every later check relies on; **read its top-of-file docstring before writing a new check** — it records, in code, why each guard exists and which of them a defect walked past.
 3. **E5 is wired but RED against today's tree, correctly** — **0** alt SEG markers in committed `02-for-mt` for both books, against **21,536** / **7,309** total. It goes green only after the loop's own re-extract. **Do not "fix" it by widening `analyzeModule`'s `hasFindings`** — `extraction-coverage.js:339-343` forbids it in code.
-4. **The validation corpus is 220 EN/IS pairs** (chemistry **170**, organic **50**) — not the spec's 227 across five books. **Chemistry-shaped: say so in the same breath as any pass rate.**
+4. ~~**The validation corpus is 220 EN/IS pairs** (chemistry **170**, organic **50**)~~ 🔴 **MEASURED AT TASK 10: it is 197** — chemistry **149**, organic **48**, `chapter-metadata-*` excluded, walked by `tools/__tests__/helpers/remt-corpus.js`, which is authoritative. (Micro adds 10 fixture-only pairs = 207.) The spec's "227 across five books" and this file's own "220" are both populations that no longer exist. **Chemistry-shaped: say so in the same breath as any pass rate — and note that organic's 48 files are only 17 modules plus 31 `exercises` bundles, in a book that is 5% extracted.**
 5. **Never import `server/` from the battery.** `A2` needs no edge, `A7` is a port, and **`G5` is spawned, not imported**. If any executor adds a static import, root `LICENSE`'s enumeration must be updated in the same commit.
 
 ## Traps this repo will spring on you, measured this session

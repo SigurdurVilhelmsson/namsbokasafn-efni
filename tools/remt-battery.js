@@ -22,7 +22,14 @@
  *   @typedef {object} CheckContext
  *   @property {string}  book          slug, e.g. 'efnafraedi-2e'          (scope)
  *   @property {string} [chapter]      'ch01' | '0' | 'appendices'          (scope)
- *   @property {string} [module]       'm68663'                             (scope)
+ *   @property {string} [module]       'm68663'                    (scope · Task 10: A5)
+ *                                     ⚠️ NO LONGER SCOPE-ONLY. A5 keys the residue
+ *                                     allowlist on it and SKIPS without it. It is
+ *                                     deliberately the existing key rather than a new
+ *                                     `moduleId`: two near-identical names is how a
+ *                                     loader sets one and leaves a check permanently
+ *                                     SKIPPED, which on an ADVISORY check reads as
+ *                                     ignorable rather than as broken.
  *   @property {string} [cnxml]        read-only source CNXML text    (Task 3: E2/E4)
  *   @property {string} [segText]      02-for-mt EN segments  (Task 3: E2/E4 · Task 8: A1/A2b)
  *                                     🔴 A2b REQUIRES it — its cross-side leg is the only
@@ -31,7 +38,22 @@
  *                                     silent single-leg PASS. Same shape as `payloadVerdict`
  *                                     below: a key a check consumes but this typedef does not
  *                                     list is a detector a loader built to the doc leaves unrun.
- *   @property {string} [isText]       02-mt-output IS segments       (Task 8: A2/A6)
+ *   @property {string} [isText]       02-mt-output IS segments  (Task 8: A2/A6 · Task 10: A3/A5/A7)
+ *   @property {object} [residueAllowlist]  the PARSED books/<slug>/residue-allowlist.json
+ *                                     (Task 10: A5 only)
+ *                                     🔴 A5 REQUIRES it and SKIPS without it, because
+ *                                     `classifyResidue` does `(allowlist.entries || [])`:
+ *                                     an absent allowlist tolerates NOTHING, so every
+ *                                     human-triaged residue would report as a finding —
+ *                                     `m68662` alone contributes 76 that look real.
+ *                                     🔴 THE LOADER MUST USE `loadResidueAllowlistOrNull`,
+ *                                     NOT `loadResidueAllowlist`. The latter returns
+ *                                     `{entries: []}` for a MISSING FILE and for a real
+ *                                     empty allowlist — identical values — so A5's guard
+ *                                     accepts the very state it exists to refuse. The
+ *                                     `OrNull` variant returns `null` when the file is
+ *                                     absent, which the guard rejects. Gates are pure, so
+ *                                     no check can tell the two apart on its own.
  *   @property {object} [provenance]   the parsed sidecar        (Task 9: A2a/A4/A8)
  *                                     ⚠️ ALL THREE, not the two this line named until
  *                                     2026-08-26 — A2a reads `run.markersNormalized` and
