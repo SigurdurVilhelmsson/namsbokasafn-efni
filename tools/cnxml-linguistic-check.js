@@ -46,7 +46,7 @@ const LEAF_TAGS = ['para', 'item', 'caption'];
  * Strip metadata and MathML blocks from CNXML before extraction.
  * These contain content that is legitimately identical in both languages.
  */
-function preprocess(cnxml) {
+export function preprocess(cnxml) {
   let result = cnxml;
   // Strip <metadata>...</metadata> blocks
   result = result.replace(/<metadata[\s\S]*?<\/metadata>/g, '');

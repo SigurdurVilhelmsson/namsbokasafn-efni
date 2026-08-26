@@ -95,6 +95,28 @@ Options:
 }
 
 /**
+ * The SOURCE/STRUCTURE chapter directory name — `chNN`, or `appendices` unprefixed.
+ *
+ * 🔴 CLAUDE.md § Directory Structure: source/structure/status dirs are `ch`-PREFIXED while
+ * publication-track OUTPUT dirs are BARE (`chapters/01`, `chapters/appendices`). This tool
+ * touches both, and only the prefixed side was wrong: three sites built
+ * `` `ch${String(chapter).padStart(2,'0')}` ``, which for `appendices` yields the
+ * non-existent **`chappendices`**. The bare publication path needs no branch, because
+ * `String('appendices').padStart(2,'0')` is already `'appendices'` — which is exactly the
+ * kind of coincidence that makes one half of a two-convention pair look fine.
+ *
+ * ⚠️ NOT A REGRESSION FROM THIS BRANCH'S parseArgs MIGRATION, and it is worth being precise:
+ * the previous parser did `parseInt('appendices', 10)` -> NaN -> falsy -> `--chapter is
+ * required`. BOTH refused; the migration did not break appendices, it declined to fix them
+ * while copying the idiom from a sibling (`cnxml-fidelity-check.js`) that HAS the branch.
+ * Fixed here because R4's own base rates are counted per chapter and appendices are 13 real
+ * auditable modules — measured: 13 attempted, 13 audited, 6 errors across 5 modules.
+ */
+function sourceChapterDir(chapter) {
+  return chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+}
+
+/**
  * Count element types in CNXML source.
  */
 function countSourceElements(cnxml) {
@@ -273,7 +295,12 @@ async function auditModule(chapter, moduleId, track, _verbose) {
   const details = {};
 
   // Load source CNXML
-  const sourcePath = path.join(BOOKS_DIR, '01-source', `ch${chapterStr}`, `${moduleId}.cnxml`);
+  const sourcePath = path.join(
+    BOOKS_DIR,
+    '01-source',
+    sourceChapterDir(chapter),
+    `${moduleId}.cnxml`
+  );
   if (!fs.existsSync(sourcePath)) {
     return { moduleId, error: `Source CNXML not found: ${sourcePath}`, issues: [], details: {} };
   }
@@ -429,7 +456,7 @@ async function auditModule(chapter, moduleId, track, _verbose) {
   const manifestPath = path.join(
     BOOKS_DIR,
     '02-structure',
-    `ch${chapterStr}`,
+    sourceChapterDir(chapter),
     `${moduleId}-manifest.json`
   );
   if (fs.existsSync(manifestPath)) {
@@ -461,8 +488,7 @@ async function auditModule(chapter, moduleId, track, _verbose) {
  * Find modules for a chapter.
  */
 function findModules(chapter, moduleId) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const sourceDir = path.join(BOOKS_DIR, '01-source', `ch${chapterStr}`);
+  const sourceDir = path.join(BOOKS_DIR, '01-source', sourceChapterDir(chapter));
 
   if (!fs.existsSync(sourceDir)) {
     throw new Error(`Source directory not found: ${sourceDir}`);

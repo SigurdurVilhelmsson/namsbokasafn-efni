@@ -246,3 +246,61 @@ describe('the --track flag actually arrives', () => {
     expect(fa.stderr).toMatch(/not found/);
   });
 });
+
+/**
+ * 🔴 FIX-ROUND BINDINGS — each closes a mutation an adversarial review showed SURVIVING
+ * the original suite, or a real defect it found in the tool.
+ */
+describe('fix round — gaps an adversarial review found', () => {
+  it('a genuinely clean run exits 0 — the branch the suite never pinned', () => {
+    // 🔴 `process.exitCode = 1` UNCONDITIONAL survived the whole original suite: all four
+    // `.code` assertions were `toBe(1)`, so nothing bound the success branch. The direction
+    // is safe (fail-loud), so the cost is a spuriously halted run rather than a silent pass
+    // — but a gate that can only say "no" is not a gate.
+    const r = runAudit(['--book', 'efnafraedi-2e', '--chapter', '0', '--track', 'mt-preview']);
+    expect(r.stdout).toMatch(/Result: PASS/);
+    expect(r.code).toBe(0);
+    // Non-vacuity: it really audited something.
+    expect(r.stdout).toMatch(/1 module\(s\) attempted, 1 audited/);
+  });
+
+  it('--chapter appendices audits the appendices, not a directory called chappendices', () => {
+    // Three sites built `ch${padStart(2,'0')}`, which for 'appendices' yields the
+    // non-existent `chappendices`. RED BEFORE THE FIX:
+    // `Error: Source directory not found: books/efnafraedi-2e/01-source/chappendices`.
+    // ⚠️ NOT a regression from the parseArgs migration — the old parser did
+    // `parseInt('appendices')` -> NaN and refused too. Both refused; only the reason moved.
+    const r = runAudit([
+      '--book',
+      'efnafraedi-2e',
+      '--chapter',
+      'appendices',
+      '--track',
+      'mt-preview',
+    ]);
+    expect(r.stderr).not.toMatch(/chappendices/);
+    expect(r.stdout).toMatch(/13 module\(s\) attempted, 13 audited/);
+    expect(r.stdout).toMatch(/0 unauditable/);
+  });
+
+  it('--json emits parseable JSON whose entries R4 can consume', () => {
+    // The seam between this tool and the Tier-3 gate was unbound: no test passed --json at
+    // all, so nothing checked that what the tool emits is what `R4.run` expects. Shapes
+    // agreeing today is not the same claim as a test saying so.
+    const r = runAudit([
+      '--book',
+      'lifraen-efnafraedi',
+      '--chapter',
+      '3',
+      '--track',
+      'mt-preview',
+      '--json',
+    ]);
+    const parsed = JSON.parse(r.stdout);
+    expect(Array.isArray(parsed)).toBe(true);
+    expect(parsed).toHaveLength(8); // the COUNT beside the type test — §C82 L33/L37
+    for (const entry of parsed) expect(entry).toHaveProperty('moduleId');
+    // The keys R4 actually reads, asserted here rather than assumed there.
+    expect(parsed.some((e) => Array.isArray(e.issues))).toBe(true);
+  });
+});

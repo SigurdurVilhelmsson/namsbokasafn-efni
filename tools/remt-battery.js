@@ -119,6 +119,17 @@
  *                                     `buildCnxml` is exported at :5154 and is I/O-free
  *                                     (verified by call-site census). The DRIVER calls it;
  *                                     the gate stays pure.
+ *   @property {object} [inlineAttrs] `extractSegments`' inlineAttrs map     (Task 11: R2)
+ *                                     ⚠️ OPTIONAL AND REPORTING-ONLY — R2's verdict does
+ *                                     not depend on it. It exists so the message can state
+ *                                     the JUDGEABLE population beside `examined`: every
+ *                                     R2 leg requires `inlineAttrs[segmentId]` truthy, and
+ *                                     only 666 of 23,154 segments (2.88%) carry an entry,
+ *                                     with 39 of 166 modules (23.5%) carrying none. Keying
+ *                                     `examined` to that count would SKIP 23.5% of modules
+ *                                     on a BLOCKING check — E4's measured ~70% false-halt
+ *                                     trap (L17) in a new place — so the sub-count is
+ *                                     REPORTED rather than gated on.
  *   @property {object} [schemaVerdict] spawnSchemaCheck() result            (Task 11: R3)
  *                                     🔴 Same shape as `payloadVerdict` above: a key a
  *                                     check consumes that the contract does not list is a

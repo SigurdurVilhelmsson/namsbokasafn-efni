@@ -20,7 +20,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import { runCheck, VERDICT } from '../lib/remt-battery.js';
+import { runCheck, REGISTRY, VERDICT } from '../lib/remt-battery.js';
 import {
   R1,
   R2,
@@ -33,6 +33,7 @@ import {
   spawnSchemaCheck,
 } from '../lib/remt-checks-output.js';
 import { loadAllowlist, loadAllowlistOrNull } from '../lib/fidelity-allowlist.js';
+import { extractLeafElements, preprocess } from '../cnxml-linguistic-check.js';
 import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
 import { parseSegments, buildCnxml } from '../cnxml-inject.js';
 
@@ -62,6 +63,46 @@ describe('the tier registers as tier 3, and the blocking split is the measured o
       R4: false,
       R5: false,
     });
+  });
+});
+
+/**
+ * 🔴 THE WIRING PIN — ADDED AFTER AN ADVERSARIAL REVIEW SHOWED IT WAS THE ONE THING
+ * NOTHING BOUND, AND THAT ITS ABSENCE WAS INVISIBLE TO THE WHOLE SUITE.
+ *
+ * Mutating `registerChecks(OUTPUT_CHECKS)` to `registerChecks([R1])` — which drops **R2
+ * and R3, both BLOCKING** — left this branch's three test files at 66/66 and the entire
+ * `tools/__tests__` suite byte-identical to baseline: 183 passed | 1 skipped (184 files),
+ * 2843 passed (2853 tests), 0 FAIL lines. Over an empty ctx the mutant selected R1 alone
+ * and `exitCodeFor` returned **0** where the real tier returns 1 on R2 and R3.
+ *
+ * ▶ The tests above assert `OUTPUT_CHECKS`' contents. NOTHING asserted that the array is
+ * what reaches the REGISTRY — and `registerChecks(...)`'s argument sits one line below the
+ * array it is supposed to pass. **All three sibling tier modules pin this**
+ * (`remt-checks-glossary.test.js`, `remt-checks-extract.test.js`, `remt-checks-mt.test.js`);
+ * this module was the one that did not. §C82 L3/L5: a gate that is never called is
+ * indistinguishable from one that does not exist.
+ */
+describe('the REGISTRY wiring — the array is not the same claim as the registration', () => {
+  it('all five checks are IN the registry, at tier 3, with their blocking flags', () => {
+    for (const c of OUTPUT_CHECKS) {
+      const registered = REGISTRY.get(c.id);
+      expect(registered, `${c.id} is not in the REGISTRY`).toBeDefined();
+      // Identity, not merely presence: a check registered from a different object would
+      // satisfy a `toBeDefined()` while running different code.
+      expect(registered).toBe(c);
+      expect(registered.tier).toBe(3);
+    }
+    // The COUNT beside the predicate (§C82 L37) — a loop over a truncated array is
+    // vacuously true, so assert how many tier-3 entries the registry actually holds.
+    const tier3 = [...REGISTRY.values()]
+      .filter((c) => c.tier === 3)
+      .map((c) => c.id)
+      .sort();
+    expect(tier3).toEqual(['R1', 'R2', 'R3', 'R4', 'R5']);
+    // And specifically that the two BLOCKING ones arrived — they are what makes an
+    // unwired tier exit 0 instead of halting.
+    expect(tier3.filter((id) => REGISTRY.get(id).blocking).sort()).toEqual(['R2', 'R3']);
   });
 });
 
@@ -442,4 +483,115 @@ describe('spawnSchemaCheck — the loader helper', () => {
       })
     ).rejects.toThrow(/could not parse --json/);
   }, 30000);
+});
+
+/**
+ * 🔴 THE FIX-ROUND TESTS — every one of these binds a defect an adversarial review found
+ * on this branch, and every one was measured RED against the code as first written.
+ */
+describe('fix round — guards an adversarial review found missing', () => {
+  it('R3: a RENAMED producer field is SKIPPED, never a clean PASS', () => {
+    // The producer's own internal variable is already called `surviving`
+    // (validate-cnxml.js:271, emitted as `errors: surviving` at :292), so this is one word
+    // away across a process boundary. RED BEFORE THE FIX: PASS, examined 7,
+    // "0 surviving schema error(s)" — a blocking gate certifying 7 files it never read.
+    const real = { filesChecked: 7, errors: [{ type: 'error', message: 'bad' }], suppressed: [] };
+    expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: real }).verdict).toBe(VERDICT.FAIL);
+    for (const bad of [
+      { filesChecked: 7, surviving: real.errors },
+      { filesChecked: 7 },
+      { filesChecked: 7, errors: null },
+      { filesChecked: 7, errors: 'boom' },
+    ]) {
+      const r = R3.run({ book: 'efnafraedi-2e', schemaVerdict: bad });
+      expect(r.verdict).toBe(VERDICT.SKIPPED);
+      expect(r.message).toMatch(/payload shape has changed/);
+    }
+  });
+
+  it('R3: an unrecognised ctx.book is SKIPPED, not silently downgraded to WARN', () => {
+    // RED BEFORE THE FIX: every one of these returned WARN, which `blockingFailures` does
+    // not catch — so a blocking FAIL became exit 0. WARN is the NORMAL path for organic,
+    // so nothing about the output looked anomalous.
+    const err = { filesChecked: 7, errors: [{ type: 'error', message: 'bad' }] };
+    expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: err }).verdict).toBe(VERDICT.FAIL);
+    expect(R3.run({ book: 'lifraen-efnafraedi', schemaVerdict: err }).verdict).toBe(VERDICT.WARN);
+    for (const b of [undefined, null, 'Efnafraedi-2e', 'efnafraedi-2e ', 'books/efnafraedi-2e']) {
+      expect(R3.run({ book: b, schemaVerdict: err }).verdict).toBe(VERDICT.SKIPPED);
+    }
+  });
+
+  it('R3: a verdict that does not cover ctx.module is SKIPPED', () => {
+    // Reproduced with the real instrument before the fix: delete one file from a scratch
+    // copy of a chapter, spawn over the directory, and R3 returned PASS examined 6 for the
+    // module that no longer existed. A verdict over other files is not evidence about this
+    // module.
+    const clean = { filesChecked: 2, errors: [], suppressed: [] };
+    const other = { ...clean, targets: ['/x/ch01/m68664.cnxml', '/x/ch01/m68699.cnxml'] };
+    const mine = { ...clean, targets: ['/x/ch01/m68663.cnxml'] };
+    expect(R3.run({ book: 'efnafraedi-2e', module: 'm68663', schemaVerdict: other }).verdict).toBe(
+      VERDICT.SKIPPED
+    );
+    expect(R3.run({ book: 'efnafraedi-2e', module: 'm68663', schemaVerdict: mine }).verdict).toBe(
+      VERDICT.PASS
+    );
+    // CONTROL: with no module in scope there is nothing to bind, and the verdict stands.
+    expect(R3.run({ book: 'efnafraedi-2e', schemaVerdict: other }).verdict).toBe(VERDICT.PASS);
+  });
+
+  it('R5: `examined` counts what findUntranslatedText ACTUALLY compares, preprocessing included', () => {
+    // 🔴 THE SECOND ROUND OF THE SAME DEFECT. Round 1 stopped re-deriving the PREDICATE;
+    // this binds the INPUT too. `findUntranslatedText` preprocesses (stripping <metadata>
+    // and <m:math>) BEFORE extracting, and the first fix did not — measured across all 161
+    // corpus pairs, raw was larger on 136 and smaller on 0.
+    // RED BEFORE THE FIX on this very module: 10 against 3.
+    const s = SRC('efnafraedi-2e', 'ch01', 'm68663');
+    const t = TR('efnafraedi-2e', 'ch01', 'm68663', 'faithful');
+    const truth = (() => {
+      const a = extractLeafElements(preprocess(s));
+      const b = extractLeafElements(preprocess(t));
+      let n = 0;
+      for (const k of a.keys()) if (b.has(k)) n++;
+      return n;
+    })();
+    expect(leafElementsCompared(s, t)).toBe(truth);
+    // Non-vacuity: the raw count really does differ here, so this is not two zeros agreeing.
+    const raw = (() => {
+      const a = extractLeafElements(s);
+      const b = extractLeafElements(t);
+      let n = 0;
+      for (const k of a.keys()) if (b.has(k)) n++;
+      return n;
+    })();
+    expect(raw).toBeGreaterThan(truth);
+  });
+
+  it('R5: the BOTH-SIDES intersection is what stops an empty translation reading clean', () => {
+    // 🔴 Two mutants survived the original suite: counting only the source side, and
+    // extracting the translated side twice. The intersection is load-bearing, and this is
+    // the case that shows it — a stub document with no content at all.
+    const s = SRC('efnafraedi-2e', 'ch01', 'm68663');
+    const stub = '<document xmlns="http://cnx.rice.edu/cnxml"><content></content></document>';
+    expect(leafElementsCompared(s, stub)).toBe(0);
+    // CONTROL, in the same test: the same source against its real translation is non-zero,
+    // so the zero above is about the stub and not about a broken walk.
+    expect(leafElementsCompared(s, TR('efnafraedi-2e', 'ch01', 'm68663'))).toBeGreaterThan(0);
+    // …and the gate turns that into SKIPPED rather than a clean PASS.
+    return runCheck(R5, { cnxml: s, translatedCnxml: stub }).then((r) => {
+      expect(r.verdict).toBe(VERDICT.SKIPPED);
+      expect(r.examined).toBe(0);
+    });
+  });
+
+  it('R2: the judgeable sub-population is reported beside `examined`, not hidden inside it', () => {
+    // `examined` stays segmentsFound (the E2/E4/E5 precedent — keying it to the judgeable
+    // count would SKIP 23.5% of modules on a BLOCKING check). The sub-count is reported so
+    // a reader is not left inferring health from one number: only 666 of 23,154 segments
+    // (2.88%) carry an inline-attr entry at all.
+    const rep = { segmentsFound: 81, attrMismatches: [] };
+    expect(R2.run({ injectReport: rep }).message).toMatch(/judgeable population unknown/);
+    const withAttrs = R2.run({ injectReport: rep, inlineAttrs: { a: { terms: [1] }, b: {} } });
+    expect(withAttrs.message).toMatch(/of which 2 carry an inline-attr entry/);
+    expect(withAttrs.examined).toBe(81);
+  });
 });

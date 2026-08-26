@@ -118,10 +118,28 @@ import path from 'node:path';
 import { defineCheck, registerChecks, VERDICT } from './remt-battery.js';
 import { compareTagCounts, compareElementOrder } from '../cnxml-fidelity-check.js';
 import { classifyDiff } from './fidelity-allowlist.js';
-import { findUntranslatedText, extractLeafElements } from '../cnxml-linguistic-check.js';
+import {
+  findUntranslatedText,
+  extractLeafElements,
+  preprocess,
+} from '../cnxml-linguistic-check.js';
 
 /** The two publication tracks. Tier 3's inputs are track-scoped; tiers 0-2's are not. */
 export const TRACKS = Object.freeze(['mt-preview', 'faithful']);
+
+/**
+ * R3's FAIL-vs-WARN split, as closed sets rather than a bare `=== 'efnafraedi-2e'`.
+ *
+ * The spec's rule is: a `fatal:` is FAIL always; a structural error is FAIL for chemistry
+ * and WARN elsewhere, because chemistry is the only corpus characterised against the
+ * RelaxNG schema (`experiments/cnxml-validation-gate/FINDINGS.md` §5). Written as a
+ * ternary against one literal, the "elsewhere" branch also swallowed `undefined`, `null`
+ * and every typo — and WARN with a non-zero `examined` exits 0 on a BLOCKING check.
+ * ⚠️ A book in NEITHER set is SKIPPED, not defaulted. Adding a run target means adding it
+ * here deliberately, which is the point: the sets are the policy.
+ */
+export const SCHEMA_STRICT_BOOKS = Object.freeze(new Set(['efnafraedi-2e']));
+export const SCHEMA_WARN_BOOKS = Object.freeze(new Set(['lifraen-efnafraedi']));
 
 /**
  * Count the distinct element NAMES a tag-count comparison would look at.
@@ -333,7 +351,29 @@ export const R2 = defineCheck({
           'shape has changed; re-derive this check against buildCnxml() before trusting it',
       };
     }
+    // 🔴 `examined` STAYS `segmentsFound`, AND THE REVIEW'S OBJECTION TO IT IS RECORDED
+    // RATHER THAN ACTED ON — because acting on it would re-create the defect the register
+    // already decided one tier over.
+    // THE OBJECTION, MEASURED AND CORRECT: every one of R2's three legs requires
+    // `inlineAttrs[segmentId]` truthy, and over all 166 buildable modules with FRESH
+    // extraction only **666 of 23,154 segments (2.88%)** carry such an entry, with
+    // **39 of 166 modules (23.5%) carrying none at all**. So `segmentsFound` overstates the
+    // population R2 could possibly judge by ~35x.
+    // ▶ WHY IT IS STILL THE RIGHT UNIT: keying `examined` to the judgeable sub-count would
+    // make 23.5% of modules report `examined 0`, and R2 is BLOCKING — `runTier` turns that
+    // into a halt. That is precisely the ~70% false-halt trap `remt-checks-extract.js`'s
+    // header records for E4 (L17) and the reason E2/E4/E5 all key `examined` to SEGMENTS
+    // INSPECTED and carry their sub-counts in `message`. A module with no inline-attr
+    // segments has nothing that COULD mismatch, so PASS is honest there, not a false clean.
+    // ▶ THE SUB-COUNT IS REPORTED INSTEAD, whenever the loader supplies `ctx.inlineAttrs`
+    // (the driver already has it — it is `extractSegments`' fourth return value and
+    // `buildCnxml`'s sixth argument), so a reader can see the judgeable population beside
+    // the examined one rather than inferring health from a single number.
     const examined = Number.isInteger(report.segmentsFound) ? report.segmentsFound : 0;
+    const judgeable =
+      ctx?.inlineAttrs && typeof ctx.inlineAttrs === 'object' && !Array.isArray(ctx.inlineAttrs)
+        ? Object.values(ctx.inlineAttrs).filter((v) => v && typeof v === 'object').length
+        : null;
     const findings = report.attrMismatches.map((m) => ({
       kind: 'attr-count-mismatch',
       segmentId: m.segmentId,
@@ -347,7 +387,11 @@ export const R2 = defineCheck({
       findings,
       message:
         `${findings.length} positional-restore attribute mismatch(es) over ${examined} injected ` +
-        `segments. ⚠️ DETECTS ONLY TOTAL per-segment marker annihilation — duplication and ` +
+        `segments` +
+        (judgeable === null
+          ? ' (judgeable population unknown — ctx.inlineAttrs not supplied)'
+          : `, of which ${judgeable} carry an inline-attr entry and are judgeable at all`) +
+        `. ⚠️ DETECTS ONLY TOTAL per-segment marker annihilation — duplication and ` +
         `partial loss are invisible here; A2b is the cross-side detector for those`,
     };
   },
@@ -408,6 +452,35 @@ export const R3 = defineCheck({
           'a SKIPPED here halts the run rather than certifying an unvalidated module',
       };
     }
+    // 🔴 A VERDICT MUST BE ABOUT THE MODULE BEING JUDGED, AND NOTHING BOUND THAT.
+    // Reproduced with the real instrument: copy chemistry ch01's 7 files to a scratch dir,
+    // DELETE `m68663.cnxml` (exactly what a failed re-inject write looks like), spawn ->
+    // `{filesChecked: 6, errors: []}` -> R3 over `{module: 'm68663'}` returned
+    // **PASS examined 6** — the blocking schema gate certifying a module with no artifact.
+    // ▶ AND ON A CLEAN VERDICT THERE IS NOTHING TO BIND TO: the payload's keys are
+    // `schema, allowlist, filesChecked, filesWithErrors, jingMs, errors, suppressed`, and
+    // `errors[]` is the only place a filename ever appears — empty exactly when the verdict
+    // is PASS. So the binding cannot come from the payload; `spawnSchemaCheck` now echoes
+    // back the `targets` it validated, and this refuses a verdict that does not cover the
+    // module. ⚠️ The measured cost of per-module targeting is ~732 ms per spawn (~6 min for
+    // 491 modules inside a multi-hour run), so scoping the spawn is affordable and is the
+    // intended use; a directory-scoped verdict is still accepted when no `module` is set.
+    // ▶ This is the argument the ctx contract already makes about `track` — "a Tier-3 gate
+    // handed 'the translated CNXML' without a track judges AN artifact, not THE artifact" —
+    // applied to the payload-taking checks, where it had not been.
+    if (ctx?.module && Array.isArray(v.targets) && v.targets.length) {
+      const covers = v.targets.some((t) => String(t).includes(ctx.module));
+      if (!covers) {
+        return {
+          verdict: VERDICT.SKIPPED,
+          examined: 0,
+          findings: [],
+          message:
+            `R3: the schema verdict covers ${v.targets.length} target(s), none naming ` +
+            `${ctx.module} — a verdict over other files is not evidence about this module`,
+        };
+      }
+    }
     if (v.instrumentMissing) {
       return {
         verdict: VERDICT.SKIPPED,
@@ -416,8 +489,52 @@ export const R3 = defineCheck({
         message: `R3: the validator could not run — ${v.reason || 'jing or the RelaxNG schema is absent'}`,
       };
     }
+    // 🔴 `errors` MUST FAIL CLOSED, AND THE FIRST DRAFT FAILED OPEN — while `filesChecked`
+    // on the very next line failed closed. Found by adversarial review, reproduced on a
+    // REAL producer payload (jing + the real schema, chemistry ch01 under the default
+    // allowlist = 13 genuine errors):
+    //     real payload                      -> FAIL, 13 findings
+    //     `errors:` renamed to `surviving:`  -> PASS, examined 7, "0 surviving schema error(s)"
+    //     `errors` absent, or not an array   -> PASS, examined 7
+    // ▶ AND IT IS ONE WORD AWAY: the producer's own internal variable is ALREADY called
+    // `surviving` (`validate-cnxml.js:271`), emitted as `errors: surviving` at `:292`,
+    // across a PROCESS boundary with no import-time coupling to break.
+    // ▶ R2 refuses exactly this state 90 lines above, and this file's own header cites it
+    // as §C82 L48's defect. The rule was applied to one check and not the other — which is
+    // §C82 L41 verbatim: a ruling recorded against ONE check is not a change to the others.
+    if (!Array.isArray(v.errors)) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message:
+          'R3: schemaVerdict.errors is absent or not an array — the validator’s payload shape ' +
+          'has changed; re-derive this check against validate-cnxml.js --json before trusting it',
+      };
+    }
+    // 🔴 `ctx.book` DECIDES A BLOCKING VERDICT, SO AN UNRECOGNISED BOOK IS A FINDING.
+    // The first draft wrote `ctx?.book === 'efnafraedi-2e' ? FAIL : WARN`, whose `else`
+    // also catches `undefined`, `null` and every typo — and `blockingFailures` never
+    // catches a WARN that examined something. Measured, identical payload, only book
+    // varying: 'efnafraedi-2e' -> FAIL exit 1; undefined / 'Efnafraedi-2e' /
+    // 'efnafraedi-2e ' / 'books/efnafraedi-2e' -> WARN exit 0.
+    // ⚠️ WARN IS THE NORMAL PATH FOR ORGANIC, so nothing about the output looks anomalous.
+    // ⚠️ This is NOT the "validate in the loader, not the gate" case: that rule is about a
+    // PATH, which needs the filesystem. A closed-set membership test is a PURE policy
+    // lookup — the same kind of pure refusal R1 already performs on `fidelityAllowlist`.
+    if (!SCHEMA_STRICT_BOOKS.has(ctx?.book) && !SCHEMA_WARN_BOOKS.has(ctx?.book)) {
+      return {
+        verdict: VERDICT.SKIPPED,
+        examined: 0,
+        findings: [],
+        message:
+          `R3: ctx.book ${JSON.stringify(ctx?.book)} is not a known run target — its verdict ` +
+          `decides FAIL vs WARN, so an unrecognised book cannot be judged. Known: ` +
+          `${[...SCHEMA_STRICT_BOOKS, ...SCHEMA_WARN_BOOKS].join(', ')}`,
+      };
+    }
     const examined = Number.isInteger(v.filesChecked) ? v.filesChecked : 0;
-    const errors = Array.isArray(v.errors) ? v.errors : [];
+    const errors = v.errors;
     const fatals = errors.filter((e) => String(e?.type || '').toLowerCase() === 'fatal');
     const findings = errors.map((e) => ({
       kind: String(e?.type || '').toLowerCase() === 'fatal' ? 'schema-fatal' : 'schema-error',
@@ -431,7 +548,8 @@ export const R3 = defineCheck({
     // exists because only chemistry's corpus has been characterised against the schema.
     let verdict = VERDICT.PASS;
     if (fatals.length) verdict = VERDICT.FAIL;
-    else if (findings.length) verdict = ctx?.book === 'efnafraedi-2e' ? VERDICT.FAIL : VERDICT.WARN;
+    else if (findings.length)
+      verdict = SCHEMA_STRICT_BOOKS.has(ctx.book) ? VERDICT.FAIL : VERDICT.WARN;
     const suppressed = Array.isArray(v.suppressed) ? v.suppressed.length : 0;
     return {
       verdict,
@@ -593,20 +711,36 @@ export const R5 = defineCheck({
 /**
  * Leaf elements present on BOTH sides — R5's `examined` unit.
  *
- * 🔴 IT CALLS THE CHECK'S OWN `extractLeafElements` RATHER THAN RE-DERIVING THE
- * PREDICATE, AND THE FIRST DRAFT THAT RE-DERIVED IT WAS WRONG BY 3.5×. That draft counted
- * only elements carrying an `id`; the real function ALSO keys id-less elements
- * positionally as `tag#N`, because OpenStax `<item>`s inside `<note>`/`<exercise>` often
- * have no id. Measured on `m68662`: the id-only count is **21** while the check returns
- * **74 findings** — an `examined` SMALLER than `findings`, which is incoherent, and which
- * a reader would have taken as a coverage figure.
- * ▶ This is §C82 L54's shape exactly — two units keyed one derivation apart, where each
- * side's own tests pass and only a cross-check sees it. The repair is not a better port;
- * it is to stop porting. `extractLeafElements` was exported for this.
+ * 🔴 IT CALLS THE CHECK'S OWN `preprocess` AND `extractLeafElements` RATHER THAN
+ * RE-DERIVING EITHER, AND IT TOOK **TWO** ROUNDS TO GET THAT RIGHT — which is the whole
+ * lesson.
+ *
+ * ROUND 1: the original re-derived the PREDICATE and counted only elements carrying an
+ * `id`. The real function ALSO keys id-less elements positionally as `tag#N`, because
+ * OpenStax `<item>`s inside `<note>`/`<exercise>` routinely have none. Measured on
+ * `m68662`: **examined 21 against 74 findings** — a coverage number SMALLER than the count
+ * of things found inside it. Caught by asserting `examined > findings.length` in the test.
+ *
+ * ROUND 2, FOUND BY ADVERSARIAL REVIEW: the round-1 fix's own docstring claimed "the two
+ * cannot drift again". **IT WAS FALSE.** `findUntranslatedText` calls `preprocess()` FIRST
+ * — stripping `<metadata>` and `<m:math>` — and only then `extractLeafElements`. The fix
+ * had removed the divergence from the PREDICATE and left it in the INPUT. Measured over
+ * all 161 corpus pairs: raw intersection **12,268** vs preprocessed **11,720** — raw is
+ * larger on **136 pairs, smaller on 0, equal on 25**. Concrete: `m68663` faithful counted
+ * **10** where **3** were compared, the 7 extra being `<item>`s inside `<metadata>` (7 of
+ * 7) — the OpenStax subject list, which R5 can never say anything about. And `m68663` is
+ * the module the clean-control test uses.
+ *
+ * ▶ **THE GENERALISATION IS WORTH MORE THAN THE FIX: "call the same function" IS NOT THE
+ * SAME CLAIM AS "compute the same thing".** Two call sites of one function still disagree
+ * if they are handed different inputs, and a docstring asserting they cannot drift is the
+ * §C82 L54 shape re-forming one layer up — an identity claim that nothing cross-checks.
+ * What actually binds it is the test below that compares this function's output against
+ * the intersection `findUntranslatedText` really iterates.
  */
 export function leafElementsCompared(sourceCnxml, translatedCnxml) {
-  const a = extractLeafElements(sourceCnxml);
-  const b = extractLeafElements(translatedCnxml);
+  const a = extractLeafElements(preprocess(sourceCnxml));
+  const b = extractLeafElements(preprocess(translatedCnxml));
   let n = 0;
   for (const key of a.keys()) if (b.has(key)) n++;
   return n;
@@ -664,7 +798,9 @@ export function spawnSchemaCheck(targets, { repoRoot, allowlist, env } = {}) {
         return resolve({ instrumentMissing: true, reason: err.trim().split('\n')[0] });
       }
       try {
-        resolve(JSON.parse(out));
+        // `targets` is echoed back so a gate can refuse a verdict that does not cover the
+        // module it is judging. The payload itself names no file on a clean run.
+        resolve({ ...JSON.parse(out), targets: list });
       } catch (e) {
         // A parse failure REJECTS with stderr attached rather than reading as a pass.
         // ⚠️ THE COMMONEST CAUSE IS NOT MALFORMED JSON — it is TRUNCATION. The tool does
