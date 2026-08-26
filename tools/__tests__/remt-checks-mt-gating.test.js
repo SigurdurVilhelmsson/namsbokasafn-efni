@@ -31,6 +31,7 @@ import {
 } from '../lib/remt-checks-mt.js';
 import { mtOutputSegmentFiles, enCounterpart, REPO_ROOT } from './helpers/remt-corpus.js';
 import { loadResidueAllowlist, loadResidueAllowlistOrNull } from '../lib/residue-allowlist.js';
+import { detectResidue, normalizeForComparison } from '../lib/residue-check.js';
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi'];
@@ -597,6 +598,77 @@ describe('the cross-check the review found missing', () => {
     }
     expect(total).toBe(16); // control: chemistry 4 + organic 12
     expect(auto).toBe(0); // ⇒ every entry keys on a stable, source-derived element id
+  });
+});
+
+describe('claims the docstrings make that nothing else binds', () => {
+  it('🔴 the mustache asymmetry: A3 SKIPS where A5/A7 judge — and SKIP is not PASS', async () => {
+    // `pairByOccurrence`'s docstring states this asymmetry and calls it safe. A docstring
+    // that states a rule and is bound by nothing is how a gap survives review — the exact
+    // class this branch closed twice (L54, L58). Binding it here also protects the reason
+    // it is safe: if someone "unifies" the two parsers, this test says why not.
+    const mustache = '{{SEG:m1:para:a}}\nhello [[i:x]] and [[MATH:1]]\n';
+    const damaged = '{{SEG:m1:para:a}}\nhalló\n'; // both markers lost
+
+    const a3 = await runCheck(A3, { segText: mustache, isText: damaged });
+    const a7 = await runCheck(A7, { segText: mustache, isText: damaged });
+    // A3's instrument splits on /(?=<!-- SEG:)/ and sees nothing in the mustache dialect...
+    expect(a3.examined).toBe(0);
+    // ...but it must report SKIPPED, never PASS — runCheck downgrades PASS + examined 0.
+    expect(a3.verdict).toBe(VERDICT.SKIPPED);
+    // ...while parseSegmentsMit normalises the dialect first, so A5/A7 do see the segment.
+    expect(a7.examined).toBe(1);
+
+    // The control that makes the SKIP meaningful: the SAME damage in the HTML-comment
+    // dialect is a WARN with a finding. Without this, a wholly broken A3 also "passes".
+    const html = await runCheck(A3, {
+      segText: '<!-- SEG:m1:para:a -->\nhello [[i:x]] and [[MATH:1]]\n',
+      isText: '<!-- SEG:m1:para:a -->\nhalló\n',
+    });
+    expect(html.verdict).toBe(VERDICT.WARN);
+    expect(html.findings.filter((f) => f.kind === 'marker-delta')).toHaveLength(1);
+  });
+
+  it('🔴 A7 absorbs [[MEDIA:N]] indices as numbers — and can MASK a real loss', () => {
+    // Documented in A7's docstring as a second reason it is advisory, and DELIBERATELY NOT
+    // FIXED: widening the stripper would diverge the port from the AGPL original and unbind
+    // the equivalence pin. This test exists so the behaviour is a recorded, deliberate
+    // property rather than an unexamined one — and so a future "fix" has to face it.
+    expect(extractNumbers('[[MEDIA:5]] see fig')).toEqual(['5']); // absorbed
+    expect(extractNumbers('[[MATH:5]] see fig')).toEqual([]); // MATH is stripped — the contrast
+
+    // The direction that matters: EN loses a real 5, IS carries only the placeholder.
+    expect(
+      checkNumbers('Add 5 grams of salt.', 'Bætið við [[MEDIA:5]] grömmum af salti.')
+    ).toHaveLength(0); // ← MASKED, and this is a false negative
+    // Control: with no placeholder to supply the digit, the same loss IS caught.
+    expect(checkNumbers('Add 5 grams of salt.', 'Bætið við grömmum af salti.')).toHaveLength(1);
+  });
+
+  it('🔴 A5 stage 1 is THREE conjuncts — "EN == IS" alone overstates it ~83x', () => {
+    // A5's docstring used to describe stage 1 as "exact normalized EN==IS". `detectResidue`
+    // also requires NOT isLanguageNeutral AND a content-word floor. Anyone re-deriving the
+    // allowlist from the one-conjunct description enumerates ~83x too many candidates.
+    const formula = '(a) CrP; (b) HgS'; // language-neutral: identical, and NOT a residue
+    const prose = 'The quick brown fox jumps over the lazy dog while the chemist observes.';
+    const tiny = 'Yes no'; // below the 3-content-word floor
+
+    expect(normalizeForComparison(formula)).toBe(normalizeForComparison(formula)); // ① holds
+    expect(detectResidue(formula, formula).exact).toBe(false); // ② demotes it
+    expect(detectResidue(tiny, tiny).exact).toBe(false); // ③ demotes it
+    expect(detectResidue(prose, prose).exact).toBe(true); // all three hold
+
+    // And A5 reflects each: only the prose becomes a finding.
+    const run = (t) =>
+      A5.run({
+        segText: `<!-- SEG:m1:para:a -->\n${t}\n`,
+        isText: `<!-- SEG:m1:para:a -->\n${t}\n`,
+        module: 'm1',
+        residueAllowlist: { entries: [] },
+      }).findings;
+    expect(run(formula)).toHaveLength(0);
+    expect(run(tiny)).toHaveLength(0);
+    expect(run(prose)).toHaveLength(1);
   });
 });
 

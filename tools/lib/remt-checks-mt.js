@@ -1123,6 +1123,22 @@ registerChecks(MT_RUNRECORD_CHECKS);
  * WAY: modules tripping on the PRE-widening type set are 105/197 = 53.30%, and the
  * types added by §C69 account for 2/197 = 1.02% on their own. The widening closes four
  * proven false negatives for ~1%.
+ *
+ * ── `examined` MEANS TWO DIFFERENT UNITS IN THIS TIER, DELIBERATELY. STATED HERE SO THE
+ *    LEDGER DOES NOT HAVE TO INFER IT ─────────────────────────────────────────────────
+ *   A3      EN-side segment OCCURRENCES (`d.segmentsExamined`), INCLUDING ones with no IS
+ *           counterpart — because A3 does not drop an unpaired occurrence, it REPORTS it
+ *           as an `unpaired-segment` finding, so nothing leaves the population silently.
+ *   A5, A7  PAIRED segments only (`pairs.size`) — an unpaired occurrence is A1's and A3's
+ *           finding, and counting it here would report a comparison that never ran.
+ * ▶ SO FOR ONE MODULE THESE CHECKS CAN REPORT DIFFERENT DENOMINATORS, AND THAT IS
+ * CORRECT RATHER THAN A DRIFT. Each is keyed to content its own predicate actually judged
+ * (Global Constraints rule 7); a single shared denominator would make one of them lie.
+ * ⚠️ **Plan C's ledger must not sum or compare `examined` ACROSS checks in this tier**, and
+ * must not compute a per-tier "coverage" from them. This is written down because the same
+ * shape one field over — `segmentId` — shipped as a real defect (§C82 L54): two units that
+ * agree on most inputs are still two units, and the divergence needs deciding once, here,
+ * rather than discovered later by a consumer.
  */
 
 /**
@@ -1260,7 +1276,16 @@ export const A5_LONG_RESIDUE_MIN_ALPHA = 120;
 /**
  * A5 — untranslated-EN residue, in two stages. ADVISORY (sequencing, not rate).
  *
- * Stage 1 (`en-residue`)      exact normalized EN==IS, minus the allowlist.
+ * Stage 1 (`en-residue`)      `detectResidue(...).exact`, minus the allowlist.
+ * 🔴 THAT IS THREE CONJUNCTS, NOT ONE, AND DESCRIBING IT AS "EN == IS" OVERSTATES THE
+ * POPULATION BY ~83×. `detectResidue` returns `exact` only when ALL of: ① the normalized
+ * strings are equal, ② the segment is NOT `isLanguageNeutral` (a formula/unit cell), and
+ * ③ it clears the `minTokens: 3` content-word floor. Measured over the 22,158 paired
+ * non-exercises segments: **6,940 (31.3%) are normalized-identical**, of which **6,851 are
+ * demoted by ② and ③**, leaving A5's actual stage-1 output at **84** findings.
+ * ▶ **6,940 : 84 = 82.6×.** This matters concretely, not academically: anyone re-deriving
+ * `residue-allowlist.json` from the one-conjunct description would enumerate a candidate
+ * set eighty-three times too large and conclude the job is impossible.
  * Stage 2 (`long-en-residue`) a stage-1 hit that is also ≥120 alphabetic characters —
  *                             long enough to be certainly prose rather than a formula or
  *                             a unit cell. WARN → a human queue, never a halt.
@@ -1452,6 +1477,25 @@ export function checkNumbers(enContent, isContent) {
 
 /**
  * A7 — a number present in EN and missing from IS. ADVISORY.
+ *
+ * 🔴 IT ABSORBS `[[MEDIA:N]]` / `[[TABLE:N]]` PLACEHOLDER INDICES AS IF THEY WERE CONTENT
+ * NUMBERS, AND THAT IS A SECOND, INDEPENDENT REASON IT IS ADVISORY.
+ * `stripMathA7` removes `[[MATH:\d+]]` and nothing else; `stripMarkersA7` has no rule for
+ * `MEDIA`/`TABLE`/`SPACE`/`BR`/`lb`/`rb`, so their indices reach `extractNumbers`.
+ * Measured: `extractNumbers('[[MEDIA:5]] see fig')` → `['5']` while the `MATH` form → `[]`.
+ * ▶ **BOTH DIRECTIONS ARE WRONG, AND THE SECOND IS THE ONE THAT MATTERS:**
+ *   noise   — 12 of A7's 118 corpus findings (10.2%) are index artefacts, not lost numbers.
+ *   MASKING — EN carries a real `5`, IS carries only `[[MEDIA:5]]` ⇒ `isKeys` holds `'5'`
+ *             and A7 reports CLEAN. A false negative in the check whose only job is to
+ *             find lost numbers. Reproduced: `checkNumbers('Add 5 grams', '… [[MEDIA:5]] …')`
+ *             returns `[]`.
+ * 🔴 DELIBERATELY NOT FIXED HERE, AND THE REASON IS THE POINT: widening the stripper would
+ * make this port DIVERGE from `server/services/qaCheckService.js`, and the AGPL equivalence
+ * test is the ONLY evidence the port still tracks the code it was copied from — the same
+ * test that was vacuous until §C82 L55, which is precisely how the dropped `ð` shipped.
+ * **Trading a live pin for a noise reduction on an advisory check is the wrong trade.**
+ * ▶ If it is ever fixed, it must be fixed in the AGPL original FIRST and re-ported, so the
+ * pin survives. Logged to the active register; do not "tidy" it here.
  *
  * ⚠️ RUN PER SEGMENT, NOT PER MODULE, so a finding names the segment a human must open.
  * The original is called the same way (`qaCheckService.runChecks` takes ONE segment's
