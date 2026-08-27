@@ -240,12 +240,24 @@ other for reasons that live in different §C82 items.
 
 🔴 **THE ORDER, AND IT IS NOT "PLAN B THEN PLAN C" (added 2026-08-27, after Plan B completed):**
 
-1. **Extract organic's remaining 325 modules.** Free. Sequenced **after Plan B and before the
-   ctx-loader decision** — §C82 L59. ⚠️ **325, not the 323 L59 states — re-measured 2026-08-27.**
-   342 source modules; **17** carry a module EN segment file (and all 17 have an `01-source`
-   sibling — 0 without). L59's "19 segment files" counts the **2 `chapter-metadata` units** among
-   them, and those are not modules and have no source counterpart at all — which is L19's entire
-   subject. The two populations differ by exactly that 2. Earlier destroys the base-rate sweep (it flips E5 green and
+1. ✅ **DONE AS A MEASUREMENT, 2026-08-27 — AND IT DID NOT TOUCH THE TRACKED TREE.** All 342
+   organic modules were extracted in a throwaway scratch (cwd-isolated; `git status books/` = 0
+   before and after), because §C83 makes `--output-dir` accepted-and-ignored and CLAUDE.md's
+   prescription for that is "run it against a throwaway copy first". **342/342, 0 errors.**
+   Result → [`../../test-results/c82-organic-extraction-share-2026-08-27.md`](../../test-results/c82-organic-extraction-share-2026-08-27.md).
+   🔴 **THE SHARE MOVED AND THE EXPOSURE DID NOT: 91.2% → 38.0%, but it is the SAME 6,664
+   exercise segments both times** — only the denominator grew (7,309 → 17,519). Exercises come
+   from `exercise-extract.js`, which `cnxml-extract` never touches. L59's byte-scaled "~39%"
+   lands at a measured **38.0%**, and the BEFORE column reproduces L59's baseline exactly.
+   ▶ **SO STEP 1's PURPOSE IS DISCHARGED — step 2 can be taken now.**
+   ⬜ **What is NOT done: landing that extraction in the tracked tree, and the default is DON'T.**
+   Phase 3 re-extracts everything anyway, so doing it now buys nothing and costs a deliberate
+   two-vintage state inside organic (new EN against the old MT on the 17) — the L51 skew, created
+   on purpose, in the book whose extraction state is already this campaign's most-misread number.
+   ⚠️ **325, not the 323 L59 states.** 342 source modules; **17** carry a module EN segment file
+   (all 17 with an `01-source` sibling — 0 without). L59's "19 segment files" counts the **2
+   `chapter-metadata` units**, which are not modules and have no source counterpart at all — L19's
+   entire subject. The two populations differ by exactly that 2. Earlier destroys the base-rate sweep (it flips E5 green and
    re-creates the L51 vintage skew on all 48 organic pairs); later means the decision in step 2 is
    taken on the wrong numbers, because the extract moves organic's `exercises` share from
    **91.2% to ~39%**.
