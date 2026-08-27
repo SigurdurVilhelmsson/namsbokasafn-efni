@@ -774,6 +774,20 @@ it('L136 (a): E3 is judgeable on EVERY source-less unit kind', async () => {
   }
 });
 
+it('🔴 judgeableIds returns ONLY checks of the tier asked for — runTier will NOT re-check', async () => {
+  // Measured on main: runTier(1, ctx, [G1]) RAN the tier-0 check G1 and reported it as
+  // {tier: 1, ranIds: ['G1']}. `tier` is a LABEL when `checks` is supplied, not a filter, and
+  // the no-checks fallback path DOES filter — so the safe path validates and the explicit path
+  // does not. The loader owns this agreement outright; nothing downstream re-checks it.
+  for (const kind of UNIT_KINDS) {
+    for (const tier of [0, 1]) {
+      for (const id of await judgeableIds(tier, kind)) {
+        expect(REGISTRY.get(id).tier, `${id} leaked into tier ${tier}`).toBe(tier);
+      }
+    }
+  }
+});
+
 it('POSITIVE CONTROL — the `module` kind gets MORE checks than a source-less kind', async () => {
   // Without this, "every kind gets a non-empty subset" is satisfied by giving them all the
   // same set, and Option C would be unimplemented while both assertions above passed.
@@ -1136,6 +1150,33 @@ it('a surviving .locked marker HALTS before any ISK', async () => {
 > ⚠️ **The JS edge is real:** `[]` is **truthy**, so `[] || fallback` yields `[]` — an empty
 > array reaches the throw path while `undefined`/`null` reach the fallback. Three inputs, two
 > destinations.
+>
+> ### 🔴 ⏱ AND A SECOND HAZARD OF THE SAME CLASS — **WITH `checks` SUPPLIED, `tier` IS A LABEL, NOT A FILTER.**
+> **Measured on merged `main`: `runTier(1, ctx, [G1])` ran the TIER-0 check `G1` and returned
+> `{tier: 1, ranIds: ['G1'], exit: 1}`** — no validation, no warning. The control at `tier: 0`
+> ran the same check correctly, and the **no-`checks` fallback path DOES filter** (tier 0 →
+> G1..G5), which is what makes the mislabel invisible: the safe path validates and the explicit
+> path does not. ▶ **THIS LANDS SQUARELY ON OPTION C.** A loader that assembles per-unit-kind
+> subsets by filtering `REGISTRY` itself **owns the tier↔`checks` agreement outright — nothing
+> downstream re-checks it**, and a subset assembled from the wrong tier is judged and reported
+> under the caller's tier number. **Same class as the empty-set bullet: the mechanism trusts the
+> caller's list completely.** ▶ **`judgeableIds(tier, kind)` MUST filter on `c.tier === tier`
+> and Task N2 must pin it** — see the assertion added to N1 Step 12.
+>
+> ⚠️ **AND THE PARAMETER IS DOCUMENTED AS A TEST SEAM.** Its JSDoc on `main` reads
+> *`@param {Array} [checks] explicit set, for tests; otherwise selected from REGISTRY`*.
+> **Option C promotes it to a PRODUCTION selection path.** Recorded here so the promotion is
+> deliberate and on the record — otherwise a later reviewer reading *"for tests"* flags the
+> driver's three-arg call as misuse of a test hook, or a tidy-up narrows it.
+>
+> ⚠️ **`runTier` returns only `{tier, results, blockingFailures}` — no `selected`/`excluded`
+> field.** So L136's *"exclusions reported per unit"* has **no existing mechanism**; the loader's
+> `excludedIds()` and this task's per-unit report are the owner.
+>
+> ⚠️ **CALIBRATION on the Plan-B-has-no-throw correction above: it is TRUE BUT LARGELY INERT.**
+> Plan B is finished and merged (PR #422 → `dd941fe8`); its code shipped six PRs ago and nobody
+> transcribes its text now. **Keep the note only as a reading instruction — anchor on merged
+> `main`, never on Plan B's prose — not as a defect to go and repair.**
 >
 > ### ⏱ L136 (Option C) — the judgeable subset, and reporting exclusions
 > Tier 1 runs `runTier(1, ctx, judgeableIds(1, unit.kind).map((id) => REGISTRY.get(id)))`.

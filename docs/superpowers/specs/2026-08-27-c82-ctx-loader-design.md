@@ -131,6 +131,67 @@ Eight parallel verifiers, each required to pair every null with a positive contr
   `registerChecks()` at import time, taking `REGISTRY` from 0 to 33 in the importing process.
   **That side effect is what makes `runTier(tier, ctx, undefined)` select anything at all.**
 
+### 🔴 ADJUDICATION ROUND — 2026-08-27, later the same day. ONE OF MY OWN CORRECTIONS WAS WRONG.
+
+Eight adjudicators re-measured every `PARTLY-TRUE` from scratch, briefed that **a refuted
+finding is a claim about the verifier too**. Result: **7 SPEC-IS-RIGHT · 1 BOTH-PARTLY-RIGHT ·
+0 SPEC-IS-WRONG.** Three outcomes change what is written above.
+
+**🔴 ① WITHDRAWN — "the 14,634 backup-file figure is mis-scoped" WAS ITSELF THE ERROR, AND
+§C82 L115 HAD ALREADY ADJUDICATED IT.** The number is **CORRECT**. `emittedFiles` is documented
+as *"filenames the extract emitted"*, so the population is the extract's **own** output trees —
+**`02-for-mt` + `02-structure`, which hold 14,634 historical backups (15,605 files, counted with
+E6's own `classifyEmittedFile`)**. The 26,618 figure sweeps in `03-translated` and `tm`, which
+belong to the **injector** and which the key cannot describe. **The first verifier reproduced
+L115's error verbatim and cited L115 as its authority while inverting its finding** — and its
+glob `*.backup.*` also **under-reached by 14 files**, exactly the CLAUDE.md
+`{name}.{YYYY-MM-DD-HHMM}.bak` spelling E6 does classify, so the very arm offered as proof the
+glob was *"neither over- nor under-reaching"* was itself under-reaching.
+▶ **What IS defective is the LABEL, not the number:** *"generated trees"* is under-specified —
+CLAUDE.md § *File Permissions* defines GENERATED as **four** trees, so a careful reader follows
+that definition, computes 26,618, and concludes the cited figure is stale. **Say `02-for-mt` +
+`02-structure`.** This is the remedy L115 prescribed and which never reached the typedef.
+▶ **AND THE STATED RATIONALE IS THE WRONG HAZARD.** Measured: **0** orphan-backup findings over
+4 tree listings and 112 per-directory listings — backups are accounted for, because a tree
+listing contains the base files too (§C82 L29, **discharged** 2026-08-25 by L32). What a
+tree-scoped listing actually costs is **(i)** the **49 committed parenthesised duplicates**,
+which FAIL **9 of 112** directories on a blocking gate *forever* and which no run-scoped listing
+can contain, and **(ii)** `examined` is **content-keyed** (§C82 L6), so a tree listing reports
+`examined: 12,035` for a **one-module** run — a sweep of history reported as a sweep of this run.
+**The obligation stands and must not be withdrawn; it cites the harmless population and omits
+the harmful one.** ⚠️ The typedef and `remt-selftest.js:342` carry the same stale framing — that
+is code work, outside this frozen spec.
+🔑 **The lesson, and it is this file's third instance: a correction is not privileged over the
+thing it corrects.** Mine was newer, measured, and wrong; the register had settled it eleven days
+earlier. **Check whether a number you are about to "fix" has already been adjudicated.**
+
+**🔴 ② A SECOND `runTier` HAZARD, AND IT LANDS ON OPTION C: with `checks` supplied, `tier` is a
+LABEL, not a FILTER.** Measured on `main`: **`runTier(1, ctx, [G1])` ran the TIER-0 check `G1`
+and returned `{tier: 1, ranIds: ['G1'], exit: 1}`** — no validation, no warning. **The
+no-`checks` fallback path DOES filter**, which is what makes the mislabel invisible: the safe
+path validates and the explicit path does not. ▶ **A loader assembling per-unit-kind subsets
+owns the tier↔`checks` agreement outright; nothing downstream re-checks it.** Same class as the
+empty-set refusal — **the mechanism trusts the caller's list completely.** ⚠️ **And the parameter
+is documented as a TEST SEAM** (*"explicit set, for tests"*): **Option C promotes it to a
+production selection path**, recorded so the promotion is deliberate rather than read later as
+misuse of a test hook. ⚠️ `runTier` returns only `{tier, results, blockingFailures}` — **no
+`selected`/`excluded` field**, so L136's *"exclusions reported per unit"* has no existing
+mechanism and the loader owns it.
+
+**⚠️ ③ CALIBRATIONS, each small and each worth carrying.**
+- **"Plan B's `runTier` has no empty-set throw" is TRUE BUT LARGELY INERT.** Plan B is finished
+  and merged (PR #422 → `dd941fe8`); its code shipped six PRs ago and nobody transcribes its
+  prose. **Keep it as a reading instruction — anchor on merged `main` — not as a repair.**
+- **"G5 is the ONLY one of the 13 whose verdict path uses a literal" is a bare ENUMERATION**, the
+  form this repo has been burned by twice. **State the property instead:** *`runCheck`'s
+  `PASS + examined 0 → SKIPPED` backstop protects only checks whose `examined` is DERIVED from
+  the population they judged; a literal defeats it.* Then G5 is an instance, not a list.
+- **`197 / 220 / 23` CARRY NO SCOPE QUALIFIER and are scope-dependent** — two kept books give
+  197/220/23; **all six books give 227/255/28.** Every rate carries its denominator or it
+  describes nothing. **Say "over the two kept books".**
+- The `G3` plus/minus item in §9 is **runbook 1.4**, not this scope; its adjudication found the
+  audit right on both factual halves and wrong on the label. Not folded in here.
+
 ### A positive exemplar the invariants should be written against — `E9`
 
 `remt-checks-extract.js:1100-1258`. E9 emits `{kind: 'leg-not-checked', leg, why}` for **every**
