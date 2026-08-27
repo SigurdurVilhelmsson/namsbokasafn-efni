@@ -416,7 +416,9 @@ it('--dry-run performs no paid step and says so', async () => {
   - `unitsFor(book) -> Unit[]`, `Unit = {book, chapter, module, kind}`, `kind ∈ UNIT_KINDS`
   - `loadTier0Ctx(unit) -> {ctx, provenance}`
   - `loadTier1Ctx(unit, runState) -> {ctx, provenance}`
-  - `judgeableIds(tier, kind) -> string[]` (non-empty; throws if it would be empty)
+  - `judgeableIds(tier, kind, runState) -> string[]` (non-empty; throws if it would be empty)
+  - `excludedIds(tier, kind, runState) -> string[]` — L136 (c), reported per unit
+  - `sentinelCtxFor(kind, runState)`, `representativeUnitFor(kind)`, `assertSameUnit(unit, provenance)`
   - `CTX_CAPABILITY`, `UNIT_KINDS`
   - `Provenance = {unit, sources: {[ctxKey]: {path, mtime, bytes}}, extractRunStartedAt}`
 
@@ -473,7 +475,17 @@ export function assertSameUnit(unit, provenance) {
 
 /** A ctx with a WELL-FORMED value for every key CTX_CAPABILITY[kind] declares. Used ONLY to
  *  probe the judgeable subset — never in a real run. */
-export async function sentinelCtxFor(kind) { /* real values from a representative unit of that kind */ }
+export async function sentinelCtxFor(kind, runState) {
+  // 🔴 MUST take `runState`. Four of E9's five legs and ALL of E6's input come from it
+  // (costEstimate, emittedFiles, force; committedExtract/freshExtract for E7). Build the
+  // sentinel by calling the REAL loader on a representative unit — never by hand.
+  const unit = representativeUnitFor(kind);
+  const { ctx } = await loadCtx(1, unit, runState);
+  return ctx;
+}
+
+/** A real unit of each kind, from the live corpus. Throws if the kind has no member. */
+export function representativeUnitFor(kind) { /* first unit of that kind from unitsFor(RUN_BOOKS) */ }
 
 /** The run's mutable state, owned by tools/remt-loop.js and passed in. Kept OUT of the loader
  *  so the loader stays pure-read: {force, costEstimateFor, emittedFilesFor,
@@ -764,13 +776,13 @@ it('every unit kind gets a NON-EMPTY judgeable subset — an empty one THROWS in
   // is TRUTHY, so `checks || [...]` passes it straight through to the throw. If the loader ever
   // computes an empty subset for a unit kind, the tier does not report — it DIES.
   for (const kind of UNIT_KINDS) {
-    expect((await judgeableIds(1, kind)).length).toBeGreaterThan(0);
+    expect((await judgeableIds(1, kind, runState())).length).toBeGreaterThan(0);
   }
 });
 
 it('L136 (a): E3 is judgeable on EVERY source-less unit kind', async () => {
   for (const kind of UNIT_KINDS.filter((k) => !CTX_CAPABILITY[k].has('cnxml'))) {
-    expect(await judgeableIds(1, kind)).toContain('E3');
+    expect(await judgeableIds(1, kind, runState())).toContain('E3');
   }
 });
 
@@ -781,7 +793,7 @@ it('🔴 judgeableIds returns ONLY checks of the tier asked for — runTier will
   // does not. The loader owns this agreement outright; nothing downstream re-checks it.
   for (const kind of UNIT_KINDS) {
     for (const tier of [0, 1]) {
-      for (const id of await judgeableIds(tier, kind)) {
+      for (const id of await judgeableIds(tier, kind, runState())) {
         expect(REGISTRY.get(id).tier, `${id} leaked into tier ${tier}`).toBe(tier);
       }
     }
@@ -792,8 +804,8 @@ it('POSITIVE CONTROL — the `module` kind gets MORE checks than a source-less k
   // Without this, "every kind gets a non-empty subset" is satisfied by giving them all the
   // same set, and Option C would be unimplemented while both assertions above passed.
   const sourceless = UNIT_KINDS.find((k) => !CTX_CAPABILITY[k].has('cnxml'));
-  expect((await judgeableIds(1, 'module')).length).toBeGreaterThan(
-    (await judgeableIds(1, sourceless)).length
+  expect((await judgeableIds(1, 'module', runState())).length).toBeGreaterThan(
+    (await judgeableIds(1, sourceless, runState())).length
   );
 });
 ```
@@ -830,10 +842,11 @@ export const CTX_CAPABILITY = Object.freeze({
 
 const subsetCache = new Map();
 
-export async function judgeableIds(tier, kind) {
+export async function judgeableIds(tier, kind, runState) {
   const key = `${tier}:${kind}`;
   if (!subsetCache.has(key)) {
-    const sentinel = await sentinelCtxFor(kind);     // well-formed values for every capable key
+    // 🔴 `runState` IS REQUIRED, NOT OPTIONAL — see the warning below this block.
+    const sentinel = await sentinelCtxFor(kind, runState);
     const ids = [];
     const excluded = [];
     for (const c of [...REGISTRY.values()].filter((c) => c.tier === tier)) {
@@ -852,8 +865,8 @@ export async function judgeableIds(tier, kind) {
 }
 
 /** The exclusions, for L136 condition (c) — reported per unit, never dropped silently. */
-export async function excludedIds(tier, kind) {
-  await judgeableIds(tier, kind);                    // populates the cache
+export async function excludedIds(tier, kind, runState) {
+  await judgeableIds(tier, kind, runState);          // populates the cache
   return subsetCache.get(`${tier}:${kind}`).excluded;
 }
 
@@ -861,6 +874,23 @@ export async function excludedIds(tier, kind) {
 export async function loadCtx(tier, unit, runState) {
   return tier === 0 ? loadTier0Ctx(unit) : loadTier1Ctx(unit, runState);
 }
+```
+
+🔴 **THE PROBE MUST BE ABLE TO SATISFY `E9` AND `E6`, AND YOU MUST ASSERT THAT IT DOES.** This is the one way Step 13 fails silently and self-consistently. `sentinelCtxFor` builds the ctx the subset is probed with; **four of E9's five legs and the whole of E6's input come from `runState`** (`costEstimate`, `emittedFiles`, `force`, plus E7's two snapshots). ▶ **If the probe is handed no `runState`, E9 and E6 SKIP during the probe, are excluded from EVERY unit kind, and `I1` then never examines the two blocking checks with the most loader obligations.** The probe and the invariant would agree with each other and **disagree with the run** — green, forever. This is the shape the register records as *"writing a consumer for data that does not exist yet? build every positive fixture by calling the REAL producer."*
+
+**So pin the probe itself, not only its output:**
+
+```javascript
+it('🔴 the SUBSET PROBE can satisfy E9 and E6 — otherwise it silently excludes them everywhere', async () => {
+  // Without this, `judgeableIds` returning a plausible non-empty list is indistinguishable from
+  // a probe too poor to reach a verdict on the checks that matter most.
+  const sentinel = await sentinelCtxFor('module', runState());
+  for (const id of ['E9', 'E6']) {
+    const r = await runCheck(REGISTRY.get(id), sentinel);
+    expect(r.verdict, `${id} SKIPPED during the probe`).not.toBe(VERDICT.SKIPPED);
+  }
+  expect(await judgeableIds(1, 'module', runState())).toEqual(expect.arrayContaining(['E9', 'E6']));
+});
 ```
 
 - [ ] **Step 14: Run, commit**
@@ -898,7 +928,7 @@ it('I1 — no blocking Tier-0/1 check SKIPs, and none reports leg-not-checked', 
   for (const unit of units) {
     for (const tier of [0, 1]) {
       const { ctx } = await loadCtx(tier, unit, runState());
-      for (const id of await judgeableIds(tier, unit.kind)) {
+      for (const id of await judgeableIds(tier, unit.kind, runState())) {
         const c = REGISTRY.get(id);
         if (!c.blocking) continue;
         const r = await runCheck(c, ctx);
@@ -918,7 +948,7 @@ it('🔴 CONTROL — I1 is NOT vacuous: the loop above examined a non-zero numbe
   let pairs = 0;
   for (const unit of unitsFor('lifraen-efnafraedi').slice(0, 5)) {
     for (const tier of [0, 1]) {
-      pairs += (await judgeableIds(tier, unit.kind)).filter((id) => REGISTRY.get(id).blocking).length;
+      pairs += (await judgeableIds(tier, unit.kind, runState())).filter((id) => REGISTRY.get(id).blocking).length;
     }
   }
   expect(pairs).toBeGreaterThan(10);
@@ -1128,7 +1158,7 @@ it('a surviving .locked marker HALTS before any ISK', async () => {
 > it('drives the real REGISTRY through the real loader — no injected verdicts', async () => {
 >   const unit = { book: 'lifraen-efnafraedi', chapter: '1', module: 'm00033', kind: 'module' };
 >   const { ctx } = await loadTier1Ctx(unit, runState());
->   const ids = await judgeableIds(1, unit.kind);
+>   const ids = await judgeableIds(1, unit.kind, runState());
 >   expect(ids.length).toBeGreaterThan(0);          // an EMPTY list makes runTier THROW
 >   const results = await runTier(1, ctx, ids.map((id) => REGISTRY.get(id)));
 >   expect(results).toHaveLength(ids.length);       // CONTROL: non-vacuous
@@ -1160,7 +1190,7 @@ it('a surviving .locked marker HALTS before any ISK', async () => {
 > subsets by filtering `REGISTRY` itself **owns the tier↔`checks` agreement outright — nothing
 > downstream re-checks it**, and a subset assembled from the wrong tier is judged and reported
 > under the caller's tier number. **Same class as the empty-set bullet: the mechanism trusts the
-> caller's list completely.** ▶ **`judgeableIds(tier, kind)` MUST filter on `c.tier === tier`
+> caller's list completely.** ▶ **`judgeableIds(tier, kind, runState)` MUST filter on `c.tier === tier`
 > and Task N2 must pin it** — see the assertion added to N1 Step 12.
 >
 > ⚠️ **AND THE PARAMETER IS DOCUMENTED AS A TEST SEAM.** Its JSDoc on `main` reads
@@ -1179,7 +1209,7 @@ it('a surviving .locked marker HALTS before any ISK', async () => {
 > `main`, never on Plan B's prose — not as a defect to go and repair.**
 >
 > ### ⏱ L136 (Option C) — the judgeable subset, and reporting exclusions
-> Tier 1 runs `runTier(1, ctx, judgeableIds(1, unit.kind).map((id) => REGISTRY.get(id)))`.
+> Tier 1 runs `runTier(1, ctx, (await judgeableIds(1, unit.kind, runState)).map((id) => REGISTRY.get(id)))`.
 > **Exclusions are REPORTED PER UNIT**, never dropped silently — L136 condition (c). And the
 > subset must be **non-empty**: L136 condition (a), *E3 on every source-less unit*, is what keeps
 > it so, which makes that condition load-bearing for more than coverage — **it is what stops
