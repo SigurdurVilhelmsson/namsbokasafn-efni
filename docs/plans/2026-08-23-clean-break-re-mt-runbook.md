@@ -152,6 +152,30 @@ provenance rather than completion** (2.1 carried one while all 8 lock markers we
 A `--dry-run` on a **fresh** chemistry extract costs 0 ISK and resolves the unmeasured vintage
 caveat on the 43,078 figure. **Take it before the chemistry leg, not organic's.**
 
+### 1.4 ⬜ NOT TAKEN — resolve Tier 0's two BLOCKING failures. **[LEAD], needs domain knowledge.**
+🔴 **ADDED 2026-08-27, MEASURED BY THE TASK-13 BASE-RATE SWEEP. `--tier 0` EXITS 1 ON BOTH BOOKS
+TODAY**, so the battery halts before any module is judged:
+- **G1** — glossary term COMPETITIONS: **2 in chemistry, 1 in organic** (one English headword
+  resolving to two approved Icelandic values; `buildGlossaryMap` is last-write-wins, so row order
+  silently decides what readers see).
+- **G3** — **7 headwords per book that are common English function words**, matched
+  case-insensitively because `filterGlossaryForText` is a case-insensitive substring test.
+
+🔴 **THIS IS A PRECONDITION, NOT A CALIBRATION QUESTION, AND THAT DISTINCTION IS THE WHOLE POINT.**
+Tier 0 is the **only** tier whose input the extract→MT→inject→render loop does not regenerate — it
+reads the GLOSSARY. Tiers 1-4 read `02-for-mt` / `02-mt-output` / `03-translated` /
+`05-publication`, all of which the run rewrites, so a tier-1..4 rate over the bar is a statement
+about the committed VINTAGE (E1 62.7%, E5 92.8%, A6 58.4% — **do not "fix" those**). A tier-0
+failure is a statement about data the run will CONSUME, and nothing in the run touches it.
+
+▶ **Each entry needs a call: correct it, or mask it** (the render-side mask is the self-map idiom
+in `books/<slug>/math-label-map.json`). ⚠️ **CLAUDE.md's §C73 rule applies directly: a WRONG
+glossary entry is worse than NO entry, compliance is PARTIAL — the same entry can be obeyed on one
+occurrence and ignored on the next — and this class is invisible to every gate, because the
+entries are well-formed, `approved` and uncontested. Only domain knowledge finds it.**
+▶ Reproduce with `node tools/remt-sweep.js --tier 0 --with-spawns`; the report names the two under
+its **BLOCKING CHECKS OVER … BAR** section with the not-regenerated reading spelled out.
+
 ---
 
 ## Phase 2 — Clear the locks
@@ -163,7 +187,16 @@ survivors cannot stage a deletion.** Delete them all and the glob matches nothin
 only the survivors are staged. Either way a later `git pull` can resurrect them.
 **Gate:** the deletion appears in `git show --stat HEAD` as 7 deletions.
 
-### 2.2 ⚠️ §C88 Unit A **+ §C115** — one branch, one PR. MERGED **AND DEPLOYED** BEFORE PHASE 3.
+### 2.2 ✅ MERGED — §C88 Unit A **+ §C115**, one branch, one PR. ⬜ **DEPLOY UNCONFIRMED FROM HERE.**
+🔴 **UPDATED 2026-08-27: this carried a bare ⚠️ long after the work landed.** Both are on `main` —
+**PR #410 → squash `a9f1e457`, all six checks green** (register). What remains of this row is the
+second half of its own title: it requires merged **AND DEPLOYED** before Phase 3, and a deploy is
+**operator-reported and not verifiable from a dev session**. ▶ **Confirm the deploy; do not re-do
+the work.** ⚠️ This is the third row in this file whose marker lagged its subject (1.3 carried a ✅
+while never having been taken; 2.1 carried one while all 8 lock markers were still on disk) —
+which is exactly why the closing section says to read every marker here as *"someone wrote this
+down"* and confirm against the register.
+
 Ruled at 1.2. Relax `if (!media.id) continue` (`tools/cnxml-extract.js:1557`) and give the 244 a
 key; teach `applyMediaAltString` (`tools/cnxml-inject.js`) the no-`mediaId` case. `buildTable`
 already holds `cell` at its call site, so `collectMediaAlts`' id-keyed table branch need not change.
@@ -200,11 +233,30 @@ Sizing and detectors: [`../../test-results/c88-245-feasibility-2026-08-23.md`](.
 
 ### 3.1 ⚠️ §C82 Plans B (the check battery) and C (driver + ledger)
 This is the bulk of the remaining preparation. §C88 was its last blocker and is merged.
-⚠️ **CORRECTED 2026-08-25 — this said "still unwritten", which stopped being true on 2026-08-24.**
-Both plans are WRITTEN and merged (PR #411 → `2166551b`) and deployed, and Plan B's **Tasks 1-7
-are BUILT** — Tier 0 (`G1`-`G5`) and Tier 1 (`E1`-`E7`, `E9`). **Plan B Tasks 8-13 and the whole of
-Plan C remain.** ▶ **Status lives in the register's ⏩ RESUME block, not here** — this line is
-corrected rather than maintained, per this document's own closing section.
+▶ **Status lives in the register's ⏩ RESUME block, not here** — the lines below are corrected
+rather than maintained, per this document's own closing section. What belongs HERE is the ORDER,
+and it is not derivable from the register: three of these four steps are sequenced against each
+other for reasons that live in different §C82 items.
+
+🔴 **THE ORDER, AND IT IS NOT "PLAN B THEN PLAN C" (added 2026-08-27, after Plan B completed):**
+
+1. **Extract organic's remaining 323 modules.** Free. Sequenced **after Plan B and before the
+   ctx-loader decision** — §C82 L59. Earlier destroys the base-rate sweep (it flips E5 green and
+   re-creates the L51 vintage skew on all 48 organic pairs); later means the decision in step 2 is
+   taken on the wrong numbers, because the extract moves organic's `exercises` share from
+   **91.2% to ~39%**.
+2. **The ctx-loader decision** — §C82 L19 / L21 / L36① / the L19 amendment. **[LEAD].** Organic's
+   `exercises` bundles have no `01-source` counterpart at all: gate them and six BLOCKING checks
+   SKIP good content; skip them and 91% of that book's segments reach the paid MT ungated and
+   report clean. **Neither branch is safe by default**, which is why it is a ruling and not an
+   implementation detail. It blocks Plan C, whose loader owns it.
+3. **Plan C — all 11 tasks** (driver, ledger, fingerprint). ✅ §C82 L105 closed the ctx contract's
+   six-task incompleteness and gated it mechanically, so a loader built to the DOCUMENTED contract
+   is safe to build for the first time.
+4. **Then Phase 3 proper.** ⏰ Runbook **1.3** fires here, not earlier — it needs a FRESH extract.
+
+⚠️ **Step 2 is the only one of the four that cannot be started by a coding session.** Steps 1 and 3
+are ordinary work; step 2 is a ruling.
 
 ### 3.2 ✅ Expect §C110's warning to be SILENT — and do not read silence as proof
 Extraction now warns per module and prints a counted run-end summary when it advances a module
