@@ -49,11 +49,41 @@ orphans in either direction** (the instrument returns all 1,961 against an empty
 capable of reporting a difference). Each JSON even names its parent module by
 `context-cnxmod:<uuid>`, which resolves to a real `01-source/chNN/mNNNNN.cnxml`.
 
-**This does not make the problem smaller. It makes it a different problem:**
+**This does not make the problem smaller. It makes it a different problem** — and a lead
+hypothesis, since confirmed by measurement, explains why.
 
-- **The blocker is unit GRANULARITY, not absence.** One bundle aggregates **35–86** exercises
-  (median 65) and carries **77–392** segments. Tier 1's unit is one module document. There is no
-  single source document for a 206-segment bundle to be compared against.
+### 🔴 Organic uses a POINTER architecture. It is the only one of five books that does.
+
+Organic's CNXML carries **empty exercise shells holding a pointer**; the prose lives in the pool:
+
+```xml
+chemistry:  <exercise><problem><para>Is one liter about an ounce, a pint…</para></problem></exercise>
+organic:    <exercise><problem><para><link class="os-embed" url="#exercise/01-04-OC-P03"/></para></problem></exercise>
+```
+
+| | modules | with `<exercise>` | with `os-embed` | inline prose | pool |
+|---|---|---|---|---|---|
+| **organic** | 342 | 260 | **260** | **0** | **1,961** |
+| the other four | 850 | 692 | **0** | 692 | — |
+
+**No mixed cases anywhere** — a different architecture applied wholesale, not a drift. ⚠️ And
+acquisition order does *not* support "the new OpenStax way": physics was fetched **45 seconds
+before** organic on the same day and is wholly inline. The evidence supports *organic-specific*; it
+cannot distinguish one-off from leading-edge, so **do not plan on future books looking like this.**
+
+### 🔴 AND THE GRANULARITY BLOCKER IS OURS, NOT OPENSTAX'S
+
+- **Placement is 1:1 and exhaustive.** 1,961 references / 1,961 distinct ids / 1,961 pool files ·
+  **0 unreferenced · 0 dangling · 0 reused across modules.** Every exercise belongs to exactly one
+  module, and the CNXML says which.
+- ▶ **So a per-module (or per-exercise) unit is well defined BY THE DATA.** What creates the
+  mismatch is that `exercise-extract.js` bundles a whole **chapter** into one segments file —
+  **35–86** exercises, **77–392** segments — against Tier 1's one-module unit. **That aggregation
+  is a choice we made.**
+- ⚠️ **Re-bundling does not make the Tier-1 checks work.** They compare segment text against
+  CNXML, and organic's CNXML holds only pointers — the prose is in JSON. **But the two problems are
+  now SEPARABLE**, which they were not before: *what the unit is* and *what the unit is compared
+  against* are different questions with different answers.
 - `stimulus_html` is HTML, and the guard the Tier-1 checks share binds on `md:content-id`, which
   has nothing to match in an exercise JSON.
 - ⚠️ **`01-source/exercises/` is a FETCHED CACHE**, not part of the OpenStax CNXML provenance set.
@@ -217,6 +247,13 @@ not part of this ruling. Do not count them twice.
 3. A test pins the loader's unit count against the spender's work-list, so the two cannot drift.
 4. `chapter-metadata` (23 units) and the `(b)/(c)/(d)` variants (49) are handled as hygiene under
    the same mechanism, without a separate ruling.
+5. 🔴 **The unit is the MODULE, not the chapter.** The source gives an unambiguous exercise→module
+   mapping (§2); bundling per chapter is our own choice and it is what makes the unit mismatch.
+   Per module, an exclusion covers one module instead of a whole chapter's worth, the ledger can
+   name what was excluded, and the exercise half stops being a special case in the driver.
+   ⚠️ This is a change to `exercise-extract.js`'s output shape, so it is **not free** and it must
+   not be smuggled in as part of the loader — but it is the direction, and deciding it now costs
+   nothing while deciding it later costs a re-extract.
 
 **What would change my mind:** if you would rather have 31 halts than 6,664 segments judged by one
 0%-base-rate check before the spend, take A — it is the conservative answer and it is defensible.
@@ -231,6 +268,12 @@ not part of this ruling. Do not count them twice.
   and why the exposure did not move).
 - Runbook `docs/plans/2026-08-23-clean-break-re-mt-runbook.md` step **3.1** (the order) and **1.4**
   (Tier 0, separate).
+- `test-results/c82-organic-exercise-architecture-2026-08-27.md` — the pointer architecture, the
+  1:1 census, the id grammar, **and a false finding retracted in full**: two pool entries reported
+  as referenced by nothing are both in the published book. There are two `os-embed` spellings and
+  my pattern matched one; the corpus holds exactly two variant references and they were precisely
+  the two I called orphans. ▶ **A control on the VALUES a detector returns is not a control on its
+  COVERAGE** — §C82 **L135**.
 - The ctx contract: the `CheckContext` typedef in `tools/remt-battery.js`.
 
 ⚠️ Every number in this brief was produced by execution against `main` @ `50f1ea80` with a clean
