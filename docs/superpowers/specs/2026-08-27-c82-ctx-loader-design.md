@@ -12,6 +12,151 @@
 
 ---
 
+## ⏱ AMENDMENT — 2026-08-27, the user-review gate. THREE RULINGS AND FOUR CORRECTIONS.
+
+> **This block is newer than everything below it.** Where it disagrees with §§0-10, this block
+> wins. It was written after the gate; the sections below were written before it.
+> 🔴 **Do not read §§2-8 as final without reading this first** — one of the rulings ADDS a
+> fourth invariant, which §3 does not have.
+
+### The gate's three rulings [LEAD], 2026-08-27
+
+**① I4 IS ADDED AS A BINDING INVARIANT.** §3 states three; **there are four.**
+
+> **I4 — same-unit, same-vintage provenance.** Every ctx the loader emits for a unit carries
+> values derived from **that unit only**, and from **one extraction vintage**. No ctx mixes
+> modules; no ctx mixes vintages.
+
+**Why the other three cannot see it.** `E3` is **blocking**, reads **only** `segText`, and
+cannot detect that it was handed the wrong module's or the wrong vintage's text — it answers
+*correctly about the wrong module* and returns **PASS**. Against that: **I1** sees no SKIP,
+**I2** sees a well-formed string, **I3** sees the right unit count. All three pass; the gate is
+silently wrong. **The code itself already assigned this to the loader** —
+`tools/lib/remt-checks-extract.js:795`, verbatim: *"handed another module's `segText`, E3
+answers correctly about the wrong module. That is the LOADER's contract (§C82 L21), not a
+guard's."* ▶ **This is exactly L21**, the one item of the L19/L21/L36① group the ctx-loader
+ruling did **not** settle. **This document mentioned `L21` zero times before this amendment.**
+⚠️ **Not hypothetical:** CLAUDE.md records that §C82 keeps **two extraction vintages live for
+weeks**, which is the window in which a mixed-vintage ctx is a normal accident rather than an
+exotic one.
+
+**② TASK 8's GAP IS STATED AS AN EXPLICIT LIMIT, NOT LEFT SILENT.** §7 amendment 1 closes the
+injected-verdict gap for Task 6. **Measured: the same shape is in Tasks 5, 8 and 11** —
+`runPreflight({mtOutputPath: lockedFixture()})` (:379), `recordModule({provenance: {...}})`
+(:508), `selfTest({overrides: {skipE9: true}})` (:634). A Tier-0/1-only loader closes Tasks
+5-6 and **leaves Task 8 satisfiable with injected verdicts** — the same defect one layer over,
+in the **post-spend** half. ▶ **The revision must carry an amendment saying so**, and must mark
+Task 8 as **NOT** closing its own gap, so a later executor can tell an open gap from a closed
+one. ⚠️ **Task 11's planted-state table has two Tier-1 rows** — *"a blocking Tier-1 FAIL"* and
+*"a blocking Tier-1 SKIPPED"* — **whose planting mechanism is unspecified**: real broken data,
+or an injected verdict? Under I1 it must be the former. The revision closes that ambiguity.
+
+**③ N1 IS WRITTEN INDEPENDENTLY, WITH A RECORDED DO-NOT-COPY NOTE.** See correction ③ below
+for the prior art and why reusing it is a trap.
+
+### Four corrections to the sections below
+
+**① 🔴 `runTier`'s EMPTY-SET THROW IS A `main`-ONLY HARDENING. PLAN B, AS A DOCUMENT, DOES NOT
+HAVE IT.** §7 amendment 2's 🔴 bullet is true of merged `main` and **false of Plan B's text**:
+Plan B:358 writes the same `runTier(tier, ctx, checks)` signature with the same
+`checks || [...]` fallback but goes **straight from `const set = ...` to the result loop** —
+no refusal. ▶ **A literal Plan B transcription returns a clean run over an EMPTY SET**, which
+is precisely the failure the spec says is guarded. Anyone treating Plan B as the contract gets
+the opposite behaviour. ⚠️ And the JS edge is real and confirmed: `[]` is **truthy**, so
+`[] || fallback` yields `[]` — an empty array reaches the throw path while `undefined`/`null`
+reach the fallback.
+
+**② 🔴 THE CONTRACT TEST CANNOT SEE ALIASED ctx ACCESS, AND `E9` IS 100% ALIASED.** §6 says the
+contract test enforces one direction (checks ⊆ contract). **Even that direction is enforced by
+a coincidence of prose here.** Its `readKeys` arm is `/ctx\??\.(NAME)/` — a literal `ctx`
+followed by `.` or `?.`. Measured, **6 of 6 aliased forms are invisible** (destructuring,
+renamed destructuring, alias-then-dot, bracket access, param destructuring, nested
+destructuring) against **3 of 3 positive controls found in the same probe**.
+`E9` — **blocking, and the check with the most loader obligations** — reads **all five** of its
+keys through `const c = ctx || {}` (`remt-checks-extract.js:1106`). As `ctx.<key>` those five
+names appear **only inside error-message STRING LITERALS** (:1123, :1133, :1169, :1183, :1238).
+▶ Rename `c.force` to `c.forced` and leave the message, and **the contract test still passes
+while the check reads `undefined`.** ▶ This **vindicates** [LEAD]'s *property, not enumeration*
+ruling: a regex-derived key list mis-derives exactly the check that matters most.
+⚠️ **So N2 must NOT derive "what checks require" by regex.**
+
+**③ FIVE ctx BUILDERS ALREADY EXIST ON MERGED `main`, AND THEIR CONTRACT IS THE NEGATION OF
+I1's.** §4 cites `tools/remt-sweep.js` only as a *placement* precedent. It is more than that:
+1,330 lines holding `tier0Ctx` (:427), `tier1Ctx` (:445), `tier2Ctx` (:457), `tier3Ctx` (:487),
+`tier4Ctx` (:586), unit discovery for all four unit kinds and `collectSpawns()`. **L112 already
+ruled the sweep loader is not the run's loader; that ruling stands and this does not reopen
+it.** ▶ **But the reason must be recorded, because the code looks reusable and is not:**
+`tier1Ctx` supplies **5 keys** (`book`, `chapter`, `module`, `cnxml`, `segText`) where Tier 0+1
+read **14**; the sweep is **designed** to under-supply — it exports an `UNMEASURABLE` registry
+(:131) and `SKIPPED` is a legitimate sweep outcome. **The run's loader is the exact inverse:
+I1 forbids a blocking SKIP.** Copying `tier1Ctx` produces a loader that violates I1 on most of
+Tier 1. **N1 is written independently and the plan carries this note.**
+
+**④ TWO FACTUAL CORRECTIONS, ONE OF THEM TO A CLAIM THIS DOCUMENT NEVER MADE.**
+- The `source-write-guard` ALLOW set is **23 entries — 20 read-only + THREE writers**
+  (`download-source.js`, `generate-source-manifest.js`, `resolve-os-embed.js`), not one.
+  ⚠️ **This spec never stated that count**; "20 + 1 writer" was a controller paraphrase at the
+  gate. **There is no line here to hunt for.** The likely origin is reading
+  `download-source.js`'s *"the ONLY guarded CNXML writer"* as *"the only writer"*.
+- `remt-battery.js` contains **0** occurrences of `01-source`, so it was never netted by the
+  guard — **nothing "intentional" is being described** by saying it is excluded. `remt-loop.js`
+  does not exist repo-wide, so its exclusion is **vacuous**. §4's own rule is the one that
+  holds: *do not add a filename to the ALLOW set before the classification is true.*
+- ⚠️ **The guard's blind spot is LIVE, not theoretical: 12 files under `tools/lib/` contain the
+  string `01-source` and are invisible to the tripwire — including three of the battery's own
+  check modules.** This is the second, better reason §4 puts the loader at top level.
+
+### What the gate re-measured and CONFIRMED (safe to build on)
+
+Eight parallel verifiers, each required to pair every null with a positive control:
+- **§1's census zeros are REAL, not manufactured by a NUL-blinded grep** — the Plan C file holds
+  no NUL bytes; plain `grep` and `grep -a` agree term for term; `Task`=17 is the control. *(This
+  was the single largest risk to the spec's premise and it did not materialise.)*
+- **§2's census** — 13 checks, 11 blocking; whole battery 33 / 19; there is no `E8`.
+- **§3's I3 warning**, and its **conclusion is better-founded than its premise**: there is **no**
+  exported work-list builder in `api-translate.js` at all. Two `discover*` exports exist
+  (`discoverModules` 166, `discoverExercisesFile` 31); `discoverChapters` (:1061) is
+  **unexported** and the work-list is assembled inline in `main()`. **197 / 220 / 23 confirmed.**
+- **§5's G5 table**, both arms, with its positive control. ⚠️ Refinement: G5 has **two** literal
+  `examined` values (`0` on its SKIPPED path, `1` on its verdict path) — *"hardcoded to 1"* is
+  exact only for the verdict-bearing path. The consequence is unchanged: **G5 can never return
+  PASS with examined 0.** Census: **G5 is the ONLY one of the 13 whose verdict path uses a
+  literal.**
+- **§6's `skipIfMissing` claim** — 0 in tiers 0/1, 7 in tier 2, one command, tier membership
+  resolved from the **live REGISTRY** rather than from import comments.
+- **§4's top-level-only scope** — proved structurally (`readdirSync` non-recursive; `lib` does
+  not survive `.endsWith('.js')`), not by reading the comment.
+- ⚠️ **Importing the top-level CLI does not self-execute `main()` — confirmed by a matched pair
+  — but it is NOT a no-op**: it transitively evaluates the five tier modules, each calling
+  `registerChecks()` at import time, taking `REGISTRY` from 0 to 33 in the importing process.
+  **That side effect is what makes `runTier(tier, ctx, undefined)` select anything at all.**
+
+### A positive exemplar the invariants should be written against — `E9`
+
+`remt-checks-extract.js:1100-1258`. E9 emits `{kind: 'leg-not-checked', leg, why}` for **every**
+input it could not use, naming the key **and its required provenance** (*"must be a boolean
+produced by `isMtLocked()`"*, *"must be `{isk, withForce}` from `--force --dry-run`"*). Its
+verdict is `findings.length ? FAIL : PASS`, and those findings are **in** `findings`. So:
+- a **partially** loaded ctx becomes a **FAIL** — loud, not a quiet PASS;
+- an **entirely** absent one gives `examined 0` → **SKIPPED**, with a message naming the
+  **loader** as the cause;
+- `examined++` fires only for legs actually checked, so `runCheck`'s backstop works.
+
+**This is I2-compliance by construction, and it is the exact inverse of G5.** ▶ **A mechanisable
+form of I1 that needs no key list and is immune to correction ② 's regex blindness:**
+
+> for every unit the loader emits, no blocking Tier-0/1 check returns `SKIPPED`, **and none
+> returns a finding of `kind: 'leg-not-checked'`.**
+
+⚠️ **Tier 1 is in better shape than §5's Tier-0 evidence implies, and N3 should carry that
+prior:** `skipIfCtxUnusable` (`:165`) guards `E1`/`E2`/`E4`/`E5`; `E3` opts out **with its
+reason stated at `:795`**; `E6` guards on `Array.isArray(emittedFiles)`; `E9` has its own
+equivalent. `leg-not-checked` by file: extract 2, glossary 1, mt/output/chapter 0. **N3 is still
+owed — Tier 1 has never been swept — but Tier 0's first-attempt blocking silent-pass is not the
+prior to carry into it.**
+
+---
+
 ## 0. In one paragraph
 
 Plan B built a battery of 33 pure checks — handed an already-read `ctx` object, returning a
@@ -64,7 +209,13 @@ about a committed vintage. Two opposite readings of the same-looking red.
 
 ---
 
-## 3. The three invariants
+## 3. The invariants — ⚠️ THIS SECTION LISTS THREE; **THERE ARE FOUR**
+
+> 🔴 **`I4` (same-unit, same-vintage provenance) was added at the 2026-08-27 gate and lives in
+> the AMENDMENT block at the top of this file, not here.** The heading below said *"The three
+> invariants"* until then. A count in prose drifts — CLAUDE.md's § *One source of truth* records
+> this exact failure in its own table — so the count is stated here only to point at the owner.
+> **`I1`+`I2`+`I3` are NOT sufficient: each of the three passes on the `E3` wrong-module case.**
 
 **No per-check key enumeration anywhere.** [LEAD] chose *property, not enumeration*
 (2026-08-27), on the standing rule that an enumeration wrong twice should be replaced by the
