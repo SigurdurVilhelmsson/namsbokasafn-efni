@@ -23,6 +23,7 @@
  * 🔴 READ-ONLY. This module performs NO writes. Its only fs calls are existsSync,
  * readFileSync, readdirSync and statSync.
  */
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -58,4 +59,123 @@ export function parseJsonStrict(text, shapeGuard) {
     return null;
   }
   return shapeGuard(v) ? v : null;
+}
+
+/** The two kept books. NOTHING ELSE — [LEAD] 2026-08-22, indefinite and reversible. */
+export const RUN_BOOKS = Object.freeze(['efnafraedi-2e', 'lifraen-efnafraedi']);
+
+const bookDir = (book) => path.join(REPO_ROOT, 'books', book);
+const glossaryPath = (book) => path.join(bookDir(book), 'glossary', 'glossary-unified.json');
+
+/**
+ * `{unit, sources: {[ctxKey]: {path, mtime, bytes}}, extractRunStartedAt}` — I4's evidence.
+ *
+ * ⚠️ AN ABSENT SOURCE IS OMITTED, NEVER RECORDED WITH A NULL mtime. A key present with an
+ * empty value is the shape I2 exists to refuse, and `assertSameUnit` iterates what is here:
+ * a placeholder entry would be checked against a path that was never read.
+ *
+ * @param {object} unit
+ * @param {Record<string,string>} pathsByKey  ctx key -> absolute path
+ * @param {{extractRunStartedAt?: string}} [opts]
+ */
+export function provenanceFor(unit, pathsByKey, opts = {}) {
+  const sources = {};
+  for (const [key, p] of Object.entries(pathsByKey)) {
+    try {
+      const st = fs.statSync(p);
+      sources[key] = { path: p, mtime: st.mtimeMs, bytes: st.size };
+    } catch {
+      // absent — omitted on purpose (see the docstring)
+    }
+  }
+  return { unit, sources, extractRunStartedAt: opts.extractRunStartedAt };
+}
+
+/** I4's assertion, exported so N2 can drive it and so the driver can call it per unit. */
+export function assertSameUnit(unit, provenance) {
+  for (const [key, src] of Object.entries(provenance.sources)) {
+    if (!src.path.includes(unit.module) && !src.path.includes('/glossary/')) {
+      throw new Error(
+        `remt-ctx: ctx key '${key}' does not belong to unit ${unit.module}: ${src.path}`
+      );
+    }
+  }
+}
+
+/**
+ * The glossary payload spawn. Returns the parsed verdict, or `null` on ANY failure — never
+ * partial.
+ *
+ * 🔴 THIS DELIBERATELY SHADOWS A DIFFERENT FUNCTION OF THE SAME NAME, AND THE TWO ARE NOT
+ * INTERCHANGEABLE. `tools/lib/remt-checks-glossary.js` exports `spawnGlossaryPayloadCheck`
+ * too, but it takes `(filePath, {repoRoot})`, is ASYNC, and REJECTS when the child produces
+ * no parseable JSON. This one takes a book slug, is SYNCHRONOUS, and returns `null`.
+ * Both differences are load-bearing:
+ *   · sync — `loadTier0Ctx` is synchronous and its callers destructure `{ctx}` directly; an
+ *     async spawn would hand them a Promise and `ctx` would read `undefined`.
+ *   · null, not a rejection — I2. A loader that throws on a malformed child turns a Tier-0
+ *     FINDING (G5's `leg-not-checked`) into a crash that reports no verdict at all.
+ * ⚠️ THE EXIT CODE IS IGNORED ON PURPOSE (Global Constraint 3: never infer a pass from exit
+ * 0). The verdict is stdout, and `cwd` is pinned to the repo root because a wrong cwd is the
+ * blind spot that prints `Total findings: 0` having read zero files (§C60).
+ *
+ * @param {string} book book slug
+ * @returns {object|null}
+ */
+export function spawnGlossaryPayloadCheck(book) {
+  let res;
+  try {
+    res = spawnSync(
+      process.execPath,
+      [
+        path.join(REPO_ROOT, 'server', 'scripts', 'check-glossary-payload.js'),
+        '--file',
+        glossaryPath(book),
+        '--json',
+      ],
+      { cwd: REPO_ROOT, encoding: 'utf8' }
+    );
+  } catch {
+    return null;
+  }
+  if (!res || res.error) return null;
+  return parseJsonStrict(res.stdout, isPlainRecord);
+}
+
+/**
+ * TIER 0 is BOOK-scoped: all four keys resolve to ONE file,
+ * books/<slug>/glossary/glossary-unified.json.
+ *
+ * 🔴 `payloadVerdict` IS THE I2 CASE THAT MOTIVATED THE INVARIANT. G5 reads it, is BLOCKING,
+ * and PASSes over `{}`, `{error: msg}`, `[]` and `{kind:'ok'}` — while `examined` is a literal
+ * on its verdict path, so runCheck's zero-examined backstop cannot save it. G5 FAILs correctly
+ * only on ABSENT and on `null`. ▶ So this loader emits the spawn's verdict ONLY when it is a
+ * well-formed record carrying a `producer`; anything else is emitted as `null`, which G5 reads
+ * as the finding it is. [LEAD] ruled work-around, not repair (L137).
+ *
+ * ⚠️ `glossariesByBook` CARRIES BOTH KEPT BOOKS REGARDLESS OF `unit.book`, because G4's
+ * subject is a RELATION between books rather than a property of one — handed a single-book
+ * map it examines nothing and reads SKIPPED, reporting agreement it never tested.
+ *
+ * @param {{book: string, kind?: string, module?: string}} unit
+ * @returns {{ctx: object, provenance: object}}
+ */
+export function loadTier0Ctx(unit) {
+  const gPath = glossaryPath(unit.book);
+  const payloadText = readOrNull(gPath);
+  const glossary = parseJsonStrict(payloadText, isPlainRecord);
+
+  const glossariesByBook = {};
+  for (const b of RUN_BOOKS) {
+    const g = parseJsonStrict(readOrNull(glossaryPath(b)), isPlainRecord);
+    if (g) glossariesByBook[b] = g;
+  }
+
+  const raw = spawnGlossaryPayloadCheck(unit.book);
+  const payloadVerdict = isPlainRecord(raw) && typeof raw.producer === 'string' ? raw : null;
+
+  const ctx = { book: unit.book, glossary, glossariesByBook, payloadVerdict };
+  if (payloadText !== null) ctx.payloadText = payloadText;
+
+  return { ctx, provenance: provenanceFor(unit, { glossary: gPath, payloadText: gPath }) };
 }
