@@ -135,6 +135,13 @@ export function assertSameUnit(unit, provenance) {
  * 0). The verdict is stdout, and `cwd` is pinned to the repo root because a wrong cwd is the
  * blind spot that prints `Total findings: 0` having read zero files (§C60).
  *
+ * ⚠️ DELIBERATELY NOT CACHED ACROSS UNITS, THOUGH TIER 0 IS BOOK-SCOPED AND THIS RUNS ONCE
+ * PER UNIT. `scripts/git-backup.sh` REGENERATES `glossary-unified.json` every two hours,
+ * unforced, and this loop runs for weeks — roughly 84 cron ticks a week — so a Tier-0 verdict
+ * cached at the start of a book would be a claim about a file that has since been rewritten.
+ * Re-spawning is what lets the ledger record a verdict beside the glossary state that produced
+ * it. **Do not "optimise" this into a per-book memo.**
+ *
  * @param {string} book book slug
  * @returns {object|null}
  */
@@ -338,7 +345,7 @@ export async function handEditCommits(unit) {
  */
 export function expectedInputs(unit) {
   const wanted = [segPathFor(unit)];
-  if (CTX_CAPABILITY[unit.kind]?.has('cnxml')) wanted.unshift(cnxmlPathFor(unit));
+  if (capabilityFor(unit).has('cnxml')) wanted.unshift(cnxmlPathFor(unit));
   return wanted.map((p) => {
     try {
       const st = fs.statSync(p);
@@ -347,6 +354,25 @@ export function expectedInputs(unit) {
       return { path: p, exists: false, bytes: 0 };
     }
   });
+}
+
+/**
+ * `CTX_CAPABILITY[unit.kind]`, refusing an unrecognised kind rather than defaulting.
+ *
+ * 🔴 NO GUARD MAY DEFAULT, AND THE PERMISSIVE BRANCH HERE COSTS MONEY. A bare
+ * `CTX_CAPABILITY[unit.kind]?.has('cnxml')` reads `false` for a unit whose `kind` is absent
+ * or misspelt, so `expectedInputs` silently drops the source file from E9's leg 3 — the
+ * blocking pre-flight then certifies a module whose source it never looked for. That is this
+ * repo's `parseArgs` class exactly: a misremembered key is a no-op, not an error.
+ */
+function capabilityFor(unit) {
+  const cap = CTX_CAPABILITY[unit?.kind];
+  if (!cap) {
+    throw new Error(
+      `remt-ctx: unit.kind must be one of ${UNIT_KINDS.join(', ')}, got ${JSON.stringify(unit?.kind)}`
+    );
+  }
+  return cap;
 }
 
 /** E7's snapshot shape, read from remt-checks-extract.js:571-580. NOT a guess. */
@@ -573,9 +599,9 @@ export async function judgeableIds(tier, kind, runState) {
     const sentinel = await sentinelCtxFor(kind, runState);
     const ids = [];
     const excluded = [];
-    for (const c of [...REGISTRY.values()].filter((c) => c.tier === tier)) {
-      const r = await runCheck(c, sentinel);
-      (r.verdict === VERDICT.SKIPPED ? excluded : ids).push(c.id);
+    for (const check of [...REGISTRY.values()].filter((c) => c.tier === tier)) {
+      const r = await runCheck(check, sentinel);
+      (r.verdict === VERDICT.SKIPPED ? excluded : ids).push(check.id);
     }
     if (ids.length === 0) {
       throw new Error(

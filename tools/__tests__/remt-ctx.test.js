@@ -20,6 +20,8 @@ import {
   loadTier0Ctx,
   loadTier1Ctx,
   mtOutputPathFor,
+  chapterDirOf,
+  expectedInputs,
   assertSameUnit,
   unitsFor,
   segPathOfUnit,
@@ -318,5 +320,38 @@ describe('judgeableIds — Option C, probed by execution', () => {
     // POSITIVE CONTROL — a source-less kind really does exclude something, so an
     // always-empty `excludedIds` cannot satisfy the assertion above.
     expect((await excludedIds(1, 'exercises', runState())).length).toBeGreaterThan(0);
+  });
+});
+
+describe('the guards that must not default', () => {
+  it('🔴 chapterDirOf keeps chapter 0 and the appendix sentinel apart from a falsy check', () => {
+    expect(chapterDirOf(0)).toBe('ch00'); // numeric 0 is FALSY — `if (!chapter)` drops it
+    expect(chapterDirOf('0')).toBe('ch00');
+    expect(chapterDirOf('00')).toBe('ch00');
+    expect(chapterDirOf('4')).toBe('ch04');
+    expect(chapterDirOf('appendices')).toBe('appendices'); // never `chappendices`
+    // …and a genuinely absent chapter is refused rather than silently building `chNaN`.
+    for (const bad of [null, undefined, '']) {
+      expect(() => chapterDirOf(bad)).toThrow(/chapter is required/);
+    }
+  });
+
+  it('🔴 an unrecognised unit.kind THROWS rather than silently dropping the cnxml input', () => {
+    // The permissive branch costs money: `CTX_CAPABILITY[kind]?.has('cnxml')` reads false for
+    // a misspelt kind, so E9's blocking leg 3 would certify a module whose source it never
+    // looked for. POSITIVE CONTROL below: a real kind does list the source input.
+    const bad = { book: 'efnafraedi-2e', chapter: '0', module: 'm68662', kind: 'modules' };
+    expect(() => expectedInputs(bad)).toThrow(/unit\.kind must be one of/);
+    const good = { ...bad, kind: 'module' };
+    expect(expectedInputs(good).some((i) => i.path.endsWith('m68662.cnxml'))).toBe(true);
+    expect(expectedInputs(good).every((i) => i.exists === true && i.bytes > 0)).toBe(true);
+  });
+
+  it('🔴 loadTier1Ctx refuses a runState missing any member the driver owes it', async () => {
+    const unit = { book: 'efnafraedi-2e', chapter: '0', module: 'm68662', kind: 'module' };
+    await expect(loadTier1Ctx(unit, {})).rejects.toThrow(/runState is missing/);
+    await expect(loadTier1Ctx(unit, null)).rejects.toThrow(/needs the driver's runState/);
+    // POSITIVE CONTROL — the complete one is accepted, so the rejections are not vacuous.
+    await expect(loadTier1Ctx(unit, runState())).resolves.toHaveProperty('ctx.module', 'm68662');
   });
 });
