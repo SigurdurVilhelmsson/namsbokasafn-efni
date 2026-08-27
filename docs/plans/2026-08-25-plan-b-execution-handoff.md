@@ -10,14 +10,47 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 12) — TASK 12 IS BUILT ON BRANCH `c82-plan-b-task-12`, NOT YET
-> MERGED.** Tier 4 ships **FIVE** ids, not the spec's three: `K1` shape-drift (WARN) ·
+> ⏩ **UPDATED 2026-08-27 (Task 13) — PLAN B IS COMPLETE. TASK 13 IS BUILT ON BRANCH
+> `c82-plan-b-task-13`, NOT YET MERGED.** Two deliverables, deliberately in two files:
+> **`--self-test`** (`tools/lib/remt-selftest.js`, wired into `tools/remt-battery.js`) — 33
+> checks, 66 arms, every pair derived and verified by execution — and **`tools/remt-sweep.js`**,
+> the base-rate sweep, a SEPARATE top-level tool.
+> 🔴 **THE SWEEP IS NOT `--sweep` ON THE BATTERY CLI, AND THE THIRD OPTION WAS THE DANGEROUS
+> ONE.** Plan B says "modify `tools/remt-battery.js`". Split because (a) that CLI performs no
+> I/O at all, a claim tied to `source-write-guard.test.js`; (b) a sweep loader is NOT the run's
+> ctx loader, whose design questions (L19/L21/L36①/L141) are OPEN and Plan C's; (c) hiding the
+> reader in `tools/lib/` behind a flag would have been WORSE THAN EITHER — the guard nets
+> top-level TEXT only, so the tripwire would have gone quiet while the tool became a real
+> toucher. `remt-sweep.js` trips it on purpose and is classified read-only.
+> ▶ **NEXT IS PLAN C** — all 11 tasks. 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still
+> open and still blocks it**, and organic's remaining 323 modules are extracted AFTER Plan B,
+> BEFORE that decision (L59).
+> 🔴 **READ §C82 L105-L132 BEFORE PLAN C. The five that change what a Plan C author does:**
+> **① FIVE LIVE COUNTS OF "THE CORPUS", NONE WRONG AND NONE INTERCHANGEABLE** (L106/L126):
+> tier 0 = 2 books · tier 1 = **166** module pairs · tier 2 = **197** IS segment files ·
+> **220** exactly-paired EN/IS basenames · **227** (the spec's) · tier 3 = 161 module×track ·
+> tier 4 = **112** cells, 26 with published HTML. Plan B's "all 220 EN/IS pairs" is NOT stale —
+> it is a fourth unit. **Every rate must carry its own denominator.**
+> **② TIER 0 IS THE ONLY TIER WHOSE INPUT THE LOOP DOES NOT REGENERATE (L110)**, and G1 and G3
+> are BLOCKING and FAIL on both books on live glossary data. `--tier 0` exits 1 today. That is a
+> **PRECONDITION on the run**, not a calibration question — nothing in extract→MT→inject→render
+> touches the glossary. E1 (62.7%), E5 (92.8%) and A6 (58.4%) are the opposite case: blocking,
+> over the bar, and pure VINTAGE — they go green on the loop's own re-extract/re-MT.
+> **③ THE ctx CONTRACT WAS INCOMPLETE FOR SIX TASKS (L105)** — E7 read two keys documented
+> nowhere. Closed, and `remt-ctx-contract.test.js` now DERIVES the read set (both idioms) so a
+> seventh cannot ship. **A loader built to the documented contract is now safe to build.**
+> **④ A COMMENT STATING THE RULE IS NOT THE RULE (L119).** `?? undefined` sat six lines under
+> the comment warning about exactly it, and cost R1 all 8 of organic's units — 6 real findings
+> invisible. **Every OrNull-family key must reach its gate as `null`, never `undefined`.**
+> **⑤ A FIX ROUND IS WHERE DEFECTS ENTER — MEASURED A THIRD TIME.** Budget the second pass.
+>
+> ⏩ **PREVIOUS (Task 12) — TIER 4 (`K1`-`K5`) IS ON `main`** (PR #421 → squash `f51b8813`). Tier 4 ships **FIVE** ids, not the spec's three: `K1` shape-drift (WARN) ·
 > `K2` cross-stage-drop (BLOCKING) · `K3` slug-map renames (BLOCKING) · **`K4`
 > genuine-math-drop** and **`K5` raw-cnxml-leak**, both deliberate scope expansions recorded
 > in the register — two detectors that already ran and would have had their verdicts filtered
 > away. `control-char` gets NO id on purpose (0 of ~2,193 files, so Global Constraint 4 bars
 > blocking and a check that can never fail is not a check).
-> ▶ **NEXT IS TASK 13** (`--self-test` + the base-rate sweep), then all 11 of Plan C.
+> ~~▶ **NEXT IS TASK 13**~~ — ✅ **DONE; see the block above. Next is Plan C.**
 > 🔴 **READ §C82 L88-L104 BEFORE TASK 13.** The four that change what you do:
 > **① TASK 13'S SWEEP WILL SEE `--tier 4` EXIT 1 ON EVERY BOOK×TRACK, AND THAT IS CORRECT** —
 > K3 is structurally SKIPPED (no before-snapshot artifact exists anywhere) and K2 SKIPs on the
