@@ -240,8 +240,12 @@ other for reasons that live in different §C82 items.
 
 🔴 **THE ORDER, AND IT IS NOT "PLAN B THEN PLAN C" (added 2026-08-27, after Plan B completed):**
 
-1. **Extract organic's remaining 323 modules.** Free. Sequenced **after Plan B and before the
-   ctx-loader decision** — §C82 L59. Earlier destroys the base-rate sweep (it flips E5 green and
+1. **Extract organic's remaining 325 modules.** Free. Sequenced **after Plan B and before the
+   ctx-loader decision** — §C82 L59. ⚠️ **325, not the 323 L59 states — re-measured 2026-08-27.**
+   342 source modules; **17** carry a module EN segment file (and all 17 have an `01-source`
+   sibling — 0 without). L59's "19 segment files" counts the **2 `chapter-metadata` units** among
+   them, and those are not modules and have no source counterpart at all — which is L19's entire
+   subject. The two populations differ by exactly that 2. Earlier destroys the base-rate sweep (it flips E5 green and
    re-creates the L51 vintage skew on all 48 organic pairs); later means the decision in step 2 is
    taken on the wrong numbers, because the extract moves organic's `exercises` share from
    **91.2% to ~39%**.
