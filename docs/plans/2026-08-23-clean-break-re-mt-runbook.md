@@ -269,9 +269,14 @@ other for reasons that live in different §C82 items.
    are a pointer architecture into a committed pool (L135); and the share is **38.0%**, not 91%,
    over the same **6,664** segments (L133). ▶ **What replaced it: a TASK-LEVEL REVISION of Plan C**,
    which names no loader and no ctx at all.
-3. **Plan C — all 11 tasks** (driver, ledger, fingerprint). ✅ §C82 L105 closed the ctx contract's
-   six-task incompleteness and gated it mechanically, so a loader built to the DOCUMENTED contract
-   is safe to build for the first time.
+3. 🔴 **Plan C — NOT READY AS WRITTEN. A TASK-LEVEL REVISION COMES FIRST, and it is what a session
+   now opens on.** Plan C names *"loader"/"ctx"/"context"* **0 times**, leaves **24 of 34**
+   CheckContext keys unnamed, gives **1 of 19** blocking checks its inputs, and omits **Tier 0**
+   entirely; the loader is ~5 ctx builders, 3 spawns, 2 snapshots and a pipeline stage **with no
+   task** (§C82 L136). ✅ §C82 L105 closed the ctx contract's six-task incompleteness and gated it
+   mechanically, so a loader built to the DOCUMENTED contract is safe to build — **but "safe to
+   build" is not "has a task", and L105 never claimed it was.** ⚠️ **L21 is still open against that
+   contract** (same-vintage `cnxml`/`segText`) and the L136 ruling does not settle it.
 4. **Then Phase 3 proper.** ⏰ Runbook **1.3** fires here, not earlier — it needs a FRESH extract.
 
 ✅ **Step 2 was the only one of the four that a coding session could not start, and it is now

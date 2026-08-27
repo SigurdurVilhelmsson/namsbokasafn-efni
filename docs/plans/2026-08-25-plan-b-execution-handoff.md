@@ -30,7 +30,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > 🔴 **THE SWEEP IS NOT `--sweep` ON THE BATTERY CLI, AND THE THIRD OPTION WAS THE DANGEROUS
 > ONE.** Plan B says "modify `tools/remt-battery.js`". Split because (a) that CLI performs no
 > I/O at all, a claim tied to `source-write-guard.test.js`; (b) a sweep loader is NOT the run's
-> ctx loader, whose design questions (L19/L21/L36①/L141) are OPEN and Plan C's; (c) hiding the
+> ctx loader, whose design questions are Plan C's — **L21 and L141 still OPEN; L19 ruled by L136 (d), L36① measured false**; (c) hiding the
 > reader in `tools/lib/` behind a flag would have been WORSE THAN EITHER — the guard nets
 > top-level TEXT only, so the tripwire would have gone quiet while the tool became a real
 > toucher. `remt-sweep.js` trips it on purpose and is classified read-only.
@@ -159,7 +159,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > re-extract renumbers seg-ids, so it is wholly voided until then.~~ 🔴 **MEASURED FALSE at
 > Task 10 and corrected in place (§C82 L58): 0 of 16 allowlist entries use the volatile `auto-N`
 > id form, so the re-extract does NOT void them.** A5 is advisory for other reasons.
-> ✅ **The ctx-loader decision is RULED — Option C, MODULE-level unit, four binding conditions. §C82 **L136** owns it; L19/L21/L36① are the superseded framing and L36① is measured FALSE on merged `main`.**
+> ✅ **The ctx-loader decision is RULED — Option C, MODULE-level unit; §C82 **L136** owns it and its four conditions.** 🔴 **BUT THE GROUPED CITATION SPLITS: it settles TWO of the three.** **L19** discharged by condition (d) · **L36①** measured FALSE on merged `main` · **L21 UNTOUCHED AND STILL OPEN** — the loader must guarantee `cnxml` and `segText` are the same VINTAGE of the same module, a CONTRACT item no population ruling can settle.
 > **Status is the register's ⏩ RESUME block, not this file.**
 
 ## Read these, in this order, before touching anything
