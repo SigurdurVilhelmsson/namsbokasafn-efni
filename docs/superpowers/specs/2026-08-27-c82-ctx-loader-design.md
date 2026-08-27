@@ -284,14 +284,36 @@ fresh.** → `[[sdd-agent-mortality]]`: only files survive.
 
 ## 10. Open for the deferred half — recorded so it is not rediscovered as novel
 
-- **`publishedBefore` (Tier 4, `K3`) is the one obligation no pure gate can check**: a snapshot
-  taken *after* the render is the inverse of `renderedModules`, so the rename set is empty and
-  `K3` reports a clean "zero unaccounted" on exactly the runs that destroyed the information —
-  with `snapshotSize` identical in both arms, so the backstop stays silent. **A sequencing
-  obligation on the driver.**
-- **`renderBaseline` (Tier 4, `K1`) has seven representations of "nothing"**, of which `{}` is
-  truthy and malformed JSON throws uncaught, killing the whole run rather than one chapter.
+🔴 **PROVENANCE, STATED BEFORE THE CONTENT, BECAUSE §9's HONESTY ABOUT UNVERIFIED RELAY IS
+WORTHLESS IF THIS SECTION LAUNDERS THE SAME MATERIAL INTO ASSERTION.** Every item below is a
+claim **the `CheckContext` typedef makes about itself** (`tools/remt-battery.js:22–353`), read
+there directly. **None has been executed.** The Tier 3 and Tier 4 agent audits never reached
+disk, so nothing here is corroborated by a second reader either.
+
+▶ **Treat all four as hypotheses to execute, never as findings** — the governing rule is
+CLAUDE.md's: *"the plan says X is missing/broken" is a hypothesis to execute, never a finding*,
+and *a stale premise can be written AFTER the fix that kills it*, so neither the typedef's
+specificity nor its date is evidence. This is not idle caution: the typedef's own text records
+**six** prior instances of its key list being wrong, and several of its annotations are
+in-place corrections of earlier annotations.
+
+- **`publishedBefore` (Tier 4, `K3`) — the typedef states** this is the one obligation no pure
+  gate can check: a snapshot taken *after* the render is claimed to be the inverse of
+  `renderedModules`, so the rename set is empty and `K3` reports a clean "zero unaccounted" on
+  exactly the runs that destroyed the information — with `snapshotSize` identical in both arms,
+  so the backstop stays silent. **If true, a sequencing obligation on the driver.** ⚠️ This is
+  the highest-value one to verify first, because it is the only claim here whose subject
+  (*when* a value was taken) leaves no trace on disk to check afterwards.
+- **`renderBaseline` (Tier 4, `K1`) — the typedef claims** seven representations of "nothing",
+  of which `{}` is truthy and malformed JSON throws uncaught, killing the whole run rather than
+  one chapter. **Verify each of the seven separately**; they are not equally likely to be right.
 - **Tier 3 takes three values from spawns or exported calls** (`schemaVerdict`, `auditResults`,
-  `injectReport`) — precisely the population I2 exists for.
-- **`slugMap` cannot be loaded with `readSlugMap`**: it re-stamps `track` from the caller's
-  argument and discards the on-disk value, making `K3`'s cross-track guard a tautology.
+  `injectReport`) — **this one is structural and cheap to confirm**, and if it holds, that is
+  precisely the population **I2** exists for.
+- **`slugMap` — the typedef claims** `readSlugMap` re-stamps `track` from the caller's argument
+  and discards the on-disk value, making `K3`'s cross-track guard a tautology. **If true, the
+  loader must read the file's own `track` field.**
+
+⚠️ **The Tier-0/1 half of this spec does NOT rest on any of the above.** Sections 2–8 are
+independently measured (§9 lists exactly what and how). This section is a head start for the
+second half, not a foundation for the first.
