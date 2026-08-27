@@ -261,18 +261,23 @@ other for reasons that live in different §C82 items.
    re-creates the L51 vintage skew on all 48 organic pairs); later means the decision in step 2 is
    taken on the wrong numbers, because the extract moves organic's `exercises` share from
    **91.2% to ~39%**.
-2. **The ctx-loader decision** — §C82 L19 / L21 / L36① / the L19 amendment. **[LEAD].** Organic's
-   `exercises` bundles have no `01-source` counterpart at all: gate them and six BLOCKING checks
-   SKIP good content; skip them and 91% of that book's segments reach the paid MT ungated and
-   report clean. **Neither branch is safe by default**, which is why it is a ruling and not an
-   implementation detail. It blocks Plan C, whose loader owns it.
+2. ✅ **The ctx-loader decision — RULED 2026-08-27. NO LONGER A STEP.** [LEAD] chose **Option C
+   (per-unit-kind population)** and, separately, **the MODULE as the unit**. **§C82 L136 owns the
+   ruling and its four binding conditions — read it there, not here.** ⚠️ **The framing this step
+   used to carry was measured WRONG in three places and is kept only as evidence:** the cost is
+   **four** blocking checks, not six (L134); organic's `exercises` are **not** source-less — they
+   are a pointer architecture into a committed pool (L135); and the share is **38.0%**, not 91%,
+   over the same **6,664** segments (L133). ▶ **What replaced it: a TASK-LEVEL REVISION of Plan C**,
+   which names no loader and no ctx at all.
 3. **Plan C — all 11 tasks** (driver, ledger, fingerprint). ✅ §C82 L105 closed the ctx contract's
    six-task incompleteness and gated it mechanically, so a loader built to the DOCUMENTED contract
    is safe to build for the first time.
 4. **Then Phase 3 proper.** ⏰ Runbook **1.3** fires here, not earlier — it needs a FRESH extract.
 
-⚠️ **Step 2 is the only one of the four that cannot be started by a coding session.** Steps 1 and 3
-are ordinary work; step 2 is a ruling.
+✅ **Step 2 was the only one of the four that a coding session could not start, and it is now
+DISCHARGED (§C82 L136).** Every remaining step is ordinary work — but step 3 is **not** ready as
+written: Plan C needs a task-level revision before it can be executed, and that revision is what a
+session now opens on.
 
 ### 3.2 ✅ Expect §C110's warning to be SILENT — and do not read silence as proof
 Extraction now warns per module and prints a counted run-end summary when it advances a module

@@ -34,16 +34,17 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > reader in `tools/lib/` behind a flag would have been WORSE THAN EITHER — the guard nets
 > top-level TEXT only, so the tripwire would have gone quiet while the tool became a real
 > toucher. `remt-sweep.js` trips it on purpose and is classified read-only.
-> 🔴 **▶ THIS SESSION'S FIRST ACT IS NOT CODE. Open
-> [`2026-08-27-ctx-loader-decision-brief.md`](2026-08-27-ctx-loader-decision-brief.md), put the
-> ctx-loader question to the lead, and get a ruling.** It is the ONLY thing blocking Plan C and the
-> only step of the remaining pre-run sequence a session cannot start. **Do not begin Plan C without
-> it.** The measurement that narrows it is done (§C82 L133 — the share is 38.0%, not 91.2%, and the
-> exposure never moved); the research that reframes it is **L134**, which corrected FOUR of the five
-> things this file and the register used to say about it — including that the exercises are **not**
-> source-less, and that the cost is FOUR blocking checks rather than L36①'s six.
-> ⚠️ **And read L134 ⑥ before treating this as the last obstacle:** the source-less question is the
-> SMALLEST of the loader's open questions. Plan C names no loader and no ctx at all.
+> ✅ **▶ THE ctx-LOADER QUESTION IS RULED (2026-08-27) — THIS FILE NO LONGER OPENS ON IT.**
+> [LEAD] chose **Option C (per-unit-kind population)** and, separately, **the MODULE as the unit**.
+> **The ruling and its four binding conditions live in §C82 L136, which owns them.** The brief
+> [`2026-08-27-ctx-loader-decision-brief.md`](2026-08-27-ctx-loader-decision-brief.md) is **frozen
+> evidence and its §7 ASK is SPENT — do not put the question again.**
+> 🔴 **▶ WHAT NOW BLOCKS PLAN C IS PLAN C ITSELF, AND L134 ⑥ SAID SO BEFORE THE RULING DID:** the
+> source-less question was the SMALLEST of the loader's open questions. **Plan C names no loader
+> and no ctx at all** — 0 mentions of *"loader"/"ctx"/"context"*, 24 of 34 CheckContext keys
+> unnamed, 1 of 19 blocking checks given its inputs, Tier 0 absent entirely. The loader is ~5 ctx
+> builders, 3 spawns, 2 snapshots and a pipeline stage **with no task**. **A TASK-LEVEL REVISION OF
+> PLAN C IS THE NEXT ACT — not the loader, and not another ruling.**
 > ▶ **THEN Plan C** — all 11 tasks. ✅ Organic's extraction (L59) is discharged as a MEASUREMENT and
 > deliberately NOT landed in the tracked tree; runbook step 1 records why.
 > 🔴 **READ §C82 L105-L132 BEFORE PLAN C. The five that change what a Plan C author does:**
@@ -158,7 +159,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > re-extract renumbers seg-ids, so it is wholly voided until then.~~ 🔴 **MEASURED FALSE at
 > Task 10 and corrected in place (§C82 L58): 0 of 16 allowlist entries use the volatile `auto-N`
 > id form, so the re-extract does NOT void them.** A5 is advisory for other reasons.
-> 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still open and still blocks Plan C.**
+> ✅ **The ctx-loader decision is RULED — Option C, MODULE-level unit, four binding conditions. §C82 **L136** owns it; L19/L21/L36① are the superseded framing and L36① is measured FALSE on merged `main`.**
 > **Status is the register's ⏩ RESUME block, not this file.**
 
 ## Read these, in this order, before touching anything
