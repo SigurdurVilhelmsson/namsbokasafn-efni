@@ -214,7 +214,12 @@ export const SELF_TEST_FIXTURES = Object.freeze({
 
   /* ── TIER 1 — extract ──────────────────────────────────────────── */
   /**
-   * TRIPS: the legacy mustache-dialect leg.
+   * TRIPS: `legacy-marker` — the `{{i}}…{{/i}}` mustache-dialect leg, verified by
+   * execution (findings[0].kind). UNCOVERED: the `++…++` half of the same check.
+   * ⚠️ E1 IS BLOCKING AND MEASURES 62.7% ON TODAY'S CORPUS (chemistry 69.8% of 149,
+   * organic 0.0% of 17) — a property of the committed VINTAGE, not of the code that
+   * will run, because the re-extract rewrites 02-for-mt. See `tools/remt-sweep.js`'s
+   * TIER_INPUT_REGENERATED.
    * both arms carry the same CNXML; only the segment dialect differs.
    */
   E1: {
@@ -230,7 +235,9 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: the bracket-body mismatch leg.
+   * TRIPS: the bracket-body mismatch leg — findings are keyed by MARKER TYPE, so
+   * `findings[0].leg` reads `i` rather than a kind string. The body inside `[[i:…]]`
+   * must DIFFER from the source element's text; merely absent is a different leg.
    * the body text inside `[[i:...]]` must differ from the source element's text, not merely be
    * absent.
    */
@@ -247,7 +254,8 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: the XML-residue leg.
+   * TRIPS: `xml-residue` — a bare closing tag in segment text, against the closed
+   * `XML_RESIDUE_TAGS` set (25 watched tags).
    * a bare closing tag in segment text is the shape; `XML_RESIDUE_TAGS` is the closed set.
    */
   E3: {
@@ -255,7 +263,15 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     good: () => ({ segText: '<!-- SEG:m1:para:p1 -->Water is a liquid\n' }),
   },
   /**
-   * TRIPS: the segment-count leg.
+   * TRIPS: the DUPLICATE-SEG-ID half (`dupFindings.sourceDup`; findings[0] is
+   * `{id, count}` and carries no `kind`). 🔴 THIS NOTE SAID "the segment-count leg"
+   * AND THAT WAS WRONG — verified by execution: the message reads `0 list, 1
+   * source-dup, 0 raw-dup`. UNCOVERED HERE: E4's OTHER half, list-item coverage —
+   * the BIO-EX3 dropped-list shape. That half is pinned by
+   * `remt-checks-extract.test.js:218` ("a PLANTED dropped list item — the list half,
+   * flip-proof"), which is where a per-leg pin belongs; a fixture tripping BOTH legs
+   * would be strictly worse, because a weakening of either would stay hidden behind
+   * the other (measured for G5 below).
    */
   E4: {
     bad: () => ({
@@ -272,7 +288,16 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: the figure-alt coverage leg.
+   * TRIPS: `alt-orphan-key` — LEG 2, the VALUE comparison that exists because the
+   * tally cannot see a substitution (§C89). 🔴 THIS NOTE SAID "the figure-alt coverage
+   * leg" AND THAT WAS WRONG — verified by execution: the coverage tally is CLEAN in
+   * this fixture (`expected 1, reached 1`) and only the orphan key fires.
+   * ⚠️ SO THE LEG THIS SELF-TEST CERTIFIES IS NOT THE LEG THAT FIRES ON THE CORPUS:
+   * E5's 92.8% is `alt-coverage`, driven by 0 alt SEG markers in the committed
+   * 02-for-mt against 21,536 / 7,309 total. That leg is pinned by
+   * `remt-checks-extract-alt.test.js:192` (`{kind:'alt-coverage', reached:0, delta:-1}`).
+   * E5 IS BLOCKING and its rate is a VINTAGE property — it goes green only after the
+   * loop's own re-extract, and must not be "fixed" before then.
    * E5 is the check the acceptance table expects at ~100% FAIL on today's corpus — the vintage
    * predates §C81.
    */
@@ -290,7 +315,8 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: the emitted-file classification leg.
+   * TRIPS: `unexpected-file:duplicate` — the emitted-file CLASSIFICATION leg, on a
+   * duplicate. UNCOVERED: the other classifications `classifyEmittedFile` returns.
    * `emittedFiles` is a LISTING, not a path; the real loader must scope it to one run's output
    * or 14,634 historical backups drown it.
    */
@@ -307,7 +333,9 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: the committed-vs-fresh comparison leg. ADVISORY => WARN.
+   * TRIPS: the committed-vs-fresh comparison leg — findings[0] is a plain STRING
+   * (`'segment-id-set changed'`), not an object, so do not key an assertion on
+   * `.kind` here. ADVISORY => WARN.
    * E7 reads `ctx.committedExtract` and `ctx.freshExtract`, and NEITHER IS IN THE CheckContext
    * TYPEDEF (measured 2026-08-27, §C82 L105). A loader built to the documented contract leaves
    * E7 permanently SKIPPED, and on an advisory check that reads as ignorable.
@@ -343,7 +371,8 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: the five-leg pre-flight; the bad arm trips one leg.
+   * TRIPS: the `force` leg of the five-leg pre-flight (findings[0].kind === 'force'),
+   * verified by execution. UNCOVERED: `locked`, `handEdits`, `inputs`, `cost`.
    * `examined` is the LEG COUNT (5), not content — Plan B's own E9 test asserts `toBe(5)`,
    * which is why a scope-only ctx once reported PASS/5 over nothing (§C82 L6). The self-test
    * cannot repair that; it only refuses to be fooled by it.

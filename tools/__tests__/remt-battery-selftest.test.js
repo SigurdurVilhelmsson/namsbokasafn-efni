@@ -25,7 +25,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import { defineCheck, VERDICT, REGISTRY } from '../lib/remt-battery.js';
+import { defineCheck, VERDICT, REGISTRY, runCheck } from '../lib/remt-battery.js';
 import { selfTest, formatSelfTest, SELF_TEST_FIXTURES, FAILURE } from '../lib/remt-selftest.js';
 
 const alwaysPass = (id, tier) =>
@@ -204,5 +204,81 @@ describe('formatSelfTest reports the failure, not just the count', () => {
     expect(text).toContain(FAILURE.BLIND);
     expect(text).toMatch(/blind/);
     expect(text).not.toContain('OK —');
+  });
+});
+
+describe("each bad arm trips the leg its note NAMES — not merely 'some' leg", () => {
+  /**
+   * 🔴 TWO OF THESE WERE WRONG WHEN FIRST WRITTEN, AND BOTH WERE HAND-AUTHORED
+   * NOTES RATHER THAN EXECUTED ONES. E5's note said "the figure-alt coverage leg"
+   * while the fixture trips `alt-orphan-key` and leaves the coverage tally CLEAN;
+   * E4's said "the segment-count leg" while the finding is a duplicate seg-id.
+   * Both are §C82 L44③/L98/L103's shape a fourth time — an assertion naming a
+   * thing without binding what distinguishes it — and neither was visible to any
+   * assertion in this file, because every one of them was satisfied by "the bad
+   * arm tripped".
+   *
+   * ⚠️ E5's case is the one with teeth: E5 is BLOCKING and its corpus rate comes
+   * from the COVERAGE leg, so the self-test was certifying the leg that does NOT
+   * fire on the corpus. The gap is acceptable — `remt-checks-extract-alt.test.js`
+   * pins the coverage leg directly — but it had to be SAID, and now it cannot
+   * drift silently.
+   *
+   * The signature is `leg || kind || type`, falling back to the finding's own
+   * shape for the two checks whose findings carry none (E4 emits `{id, count}`;
+   * E7 emits a plain string).
+   */
+  const EXPECTED_LEG = {
+    G1: 'glossary-competition',
+    G2: 'element-suffix',
+    G3: 'function-word-headword',
+    G4: 'cross-book-disagreement',
+    G5: 'payload',
+    E1: 'legacy-marker',
+    E2: 'i',
+    E3: 'xml-residue',
+    E4: '{count,id}',
+    E5: 'alt-orphan-key',
+    E6: 'unexpected-file:duplicate',
+    E7: 'segment-id-set changed',
+    E9: 'force',
+    A1: 'seg-id-set-mismatch',
+    A6: 'legacy-marker',
+    A2b: 'id-charset',
+    A2c: 'spaced-seg-marker',
+    A2a: 'markers-normalized',
+    A4: 'invented-marker',
+    A8: 'malformed-usage',
+    A3: 'marker-delta',
+    A5: 'en-residue',
+    A7: 'number-mismatch',
+    R1: 'unexplained-tag-count',
+    R2: 'attr-count-mismatch',
+    R3: 'schema-error',
+    R4: 'render-error',
+    R5: 'untranslated-leaf',
+    K1: 'shape-drift',
+    K2: 'cross-stage-drop',
+    K3: 'unaccounted-rename',
+    K4: 'genuine-math-drop',
+    K5: 'raw-cnxml-leak',
+  };
+
+  it('every registered check has an expected leg — no id drifts out of this table', () => {
+    expect(Object.keys(EXPECTED_LEG).sort()).toEqual([...REGISTRY.keys()].sort());
+  });
+
+  it('the observed leg matches the expected one for all 33', async () => {
+    expect(Object.keys(EXPECTED_LEG).length).toBe(REGISTRY.size); // control: a vacuous loop passes
+    for (const id of REGISTRY.keys()) {
+      const r = await runCheck(REGISTRY.get(id), SELF_TEST_FIXTURES[id].bad());
+      const f = r.findings[0];
+      expect(f, `${id} bad arm produced no finding`).toBeDefined();
+      const sig =
+        typeof f === 'string'
+          ? f
+          : f.leg || f.kind || f.type || `{${Object.keys(f).sort().join(',')}}`;
+      expect(sig, `${id} tripped a different leg than its note claims`).toBe(EXPECTED_LEG[id]);
+    }
   });
 });
