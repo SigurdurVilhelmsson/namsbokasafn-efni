@@ -36,6 +36,7 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'generate-source-manifest.js', // writes: the .source-manifest.json provenance file (not CNXML)
       'inventory-math-labels.js', // read-only: scans source math text; docstring states "Never writes under 01-source/"
       'preintake-probe.js', // read-only: probes source dir at intake, no writes
+      'remt-sweep.js', // read-only: walks 01-source to build the §C82 battery's measurement populations; VERIFIED — its only fs calls are existsSync/readFileSync/readdirSync, and a full --with-spawns run leaves books/ byte-clean. It spawns audit-render-output.js and the schema validator, both read-only and both already classified here / under experiments/.
       'repair-emphasis.js', // read-only: reads source CNXML only as a fidelity-guard baseline; writes land in 03-translated/
       'resolve-embeds.js', // read-only: scans source CNXML for iframe embeds; writes a book-root embed-mapping.json
       'resolve-os-embed.js', // writes: downloads exercise JSON + images into 01-source/exercises,media (not CNXML)

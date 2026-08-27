@@ -4,7 +4,8 @@
  * ⚠️ IT WALKS `01-source` AND TESTS FOR THE SEGMENT FILE, RATHER THAN WALKING
  * `02-for-mt`. That is the whole point, not an implementation detail: `02-for-mt`
  * holds dated backups beside every live segment file — chemistry ch01 alone has
- * three for `m68663` — so a naive `endsWith('.md')` walk counts each stale vintage
+ * ELEVEN for `m68663` (re-measured 2026-08-27; this said "three", and the shape is
+ * `<name>.backup.<ISO>`, not a dated `.md`) — so a naive `endsWith('.md')` walk counts each stale vintage
  * as a module and inflates every corpus number derived from it. Driving from the
  * `.cnxml` side cannot see a backup at all, because the filter is the extension.
  *

@@ -289,6 +289,27 @@
  *                                     to THIS RUN's output: the two kept books' generated
  *                                     trees already hold 14,634 historical backup files
  *                                     (2026-03-08 → 2026-08-12), and E6 is blocking.
+ *   @property {object} [committedExtract] the module's CURRENT extraction snapshot (Task 5: E7)
+ *   @property {object} [freshExtract]     the module's snapshot AFTER the re-extract (Task 5: E7)
+ *                                     🔴 THESE TWO WERE READ BY E7 AND DOCUMENTED NOWHERE
+ *                                     UNTIL TASK 13 (§C82 L105) — the SIXTH instance of
+ *                                     "a key a check consumes that this contract does not
+ *                                     list is a detector a loader built to the doc leaves
+ *                                     unrun" (G5's `payloadVerdict`, A2a's `provenance`,
+ *                                     R3's `schemaVerdict`, A5's `residueAllowlist`,
+ *                                     A2b's `segText`, and now these).
+ *                                     ⚠️ E7 IS ADVISORY, WHICH IS WHY IT SURVIVED SO LONG:
+ *                                     it returns SKIPPED without them, and a permanent SKIP
+ *                                     on an advisory check reads as ignorable rather than
+ *                                     as broken. A blocking check would have halted and been
+ *                                     found in an afternoon.
+ *                                     ▶ `tools/__tests__/remt-ctx-contract.test.js` now
+ *                                     DERIVES the read set from the tier modules and fails
+ *                                     on any key that is not listed here, so the seventh
+ *                                     instance cannot ship. Both snapshots are absent until
+ *                                     the re-extract, so E7 SKIPs corpus-wide today —
+ *                                     correctly, and `tools/remt-sweep.js` reports it as
+ *                                     unmeasurable rather than as a clean zero.
  *
  * ⚠️ THE PROSE ABOVE DELIBERATELY AVOIDS THE LITERAL STRING `01-` + `source`, AND THAT
  * IS NOT FUSSINESS. `tools/__tests__/source-write-guard.test.js` nets any top-level
@@ -333,6 +354,7 @@
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from './lib/parseArgs.js';
 import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
+import { selfTest, formatSelfTest } from './lib/remt-selftest.js';
 
 /* ── THE REGISTRY WIRING POINT ────────────────────────────────────────────────
  * 🔴 IMPORT EACH TIER MODULE HERE AS IT IS BUILT. Nothing else does.
@@ -476,11 +498,24 @@ function usage(message) {
   process.exit(2);
 }
 
-async function selfTest() {
-  // Defined in Task 13. Stubbed loudly so the CLI never silently no-ops: a
-  // --self-test that prints nothing and exits 0 is indistinguishable from one that
-  // planted a defect and found it.
-  usage('--self-test is not implemented yet (Plan B Task 13)');
+/**
+ * `--self-test` (Task 13). Plants a defective state per check and invokes the
+ * REAL gate; see `lib/remt-selftest.js` for why both arms exist and what the
+ * instrument structurally cannot see.
+ *
+ * ⚠️ IT TAKES NO SCOPE. `--book`/`--tier`/`--chapter` are meaningless here: the
+ * fixtures are synthetic and in-memory, which is exactly what keeps this file
+ * free of I/O. It is checked before those flags are required, so
+ * `--self-test` alone is a complete invocation.
+ *
+ * ⚠️ EXIT 1 ON ANY FAILURE, INCLUDING A FIXTURE ONE. A `fixture` failure means
+ * the self-test could not certify that gate — and "could not certify" must not
+ * read as 0. The distinction is in the printed `kind`, not in the exit code.
+ */
+async function runSelfTest() {
+  const report = await selfTest();
+  console.log(formatSelfTest(report));
+  process.exitCode = report.ok ? 0 : 1;
 }
 
 async function main() {
@@ -504,7 +539,7 @@ async function main() {
     { name: 'selfTest', flags: ['--self-test'], type: 'boolean', default: false },
   ]);
 
-  if (args.selfTest) return selfTest(args);
+  if (args.selfTest) return runSelfTest();
   if (!args.book) usage('--book is required (e.g. --book efnafraedi-2e)');
   if (args.tier == null) usage(`--tier is required (${TIER_MIN}-${TIER_MAX})`);
 
