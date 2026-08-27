@@ -24,9 +24,18 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > reader in `tools/lib/` behind a flag would have been WORSE THAN EITHER — the guard nets
 > top-level TEXT only, so the tripwire would have gone quiet while the tool became a real
 > toucher. `remt-sweep.js` trips it on purpose and is classified read-only.
-> ▶ **NEXT IS PLAN C** — all 11 tasks. 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still
-> open and still blocks it**, and organic's remaining 323 modules are extracted AFTER Plan B,
-> BEFORE that decision (L59).
+> 🔴 **▶ THIS SESSION'S FIRST ACT IS NOT CODE. Open
+> [`2026-08-27-ctx-loader-decision-brief.md`](2026-08-27-ctx-loader-decision-brief.md), put the
+> ctx-loader question to the lead, and get a ruling.** It is the ONLY thing blocking Plan C and the
+> only step of the remaining pre-run sequence a session cannot start. **Do not begin Plan C without
+> it.** The measurement that narrows it is done (§C82 L133 — the share is 38.0%, not 91.2%, and the
+> exposure never moved); the research that reframes it is **L134**, which corrected FOUR of the five
+> things this file and the register used to say about it — including that the exercises are **not**
+> source-less, and that the cost is FOUR blocking checks rather than L36①'s six.
+> ⚠️ **And read L134 ⑥ before treating this as the last obstacle:** the source-less question is the
+> SMALLEST of the loader's open questions. Plan C names no loader and no ctx at all.
+> ▶ **THEN Plan C** — all 11 tasks. ✅ Organic's extraction (L59) is discharged as a MEASUREMENT and
+> deliberately NOT landed in the tracked tree; runbook step 1 records why.
 > 🔴 **READ §C82 L105-L132 BEFORE PLAN C. The five that change what a Plan C author does:**
 > **① FIVE LIVE COUNTS OF "THE CORPUS", NONE WRONG AND NONE INTERCHANGEABLE** (L106/L126):
 > tier 0 = 2 books · tier 1 = **166** module pairs · tier 2 = **197** IS segment files ·
