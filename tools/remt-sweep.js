@@ -214,6 +214,11 @@ export const TIER_INPUT_REGENERATED = Object.freeze({
  * the re-MT lands, not when the extract does. Telling a reader to re-measure one
  * stage too early is telling them to re-measure while the number cannot have
  * changed — and to conclude from it.
+ * ⚠️ IT NAMES THE STAGE THAT PRODUCES A TIER'S OWN ARTEFACT, NOT THE ONLY STAGE
+ * THAT CAN MOVE ITS ROWS. Tier 3 is the exception worth stating: R1/R5 read
+ * `03-translated` (the inject), but R4's `auditResults` come from a tool reading
+ * `05-publication`, which the re-RENDER rewrites. A tier-3 row over the bar may
+ * therefore need re-measuring after EITHER stage, depending which check it is.
  */
 export const TIER_REGENERATED_BY = Object.freeze({
   1: "the run's own re-EXTRACT (02-for-mt)",
@@ -495,9 +500,17 @@ function tier3Ctx(unit, { spawns }) {
     // WARNING ABOUT EXACTLY IT. R1 accepts an object or an explicit `null` and
     // REFUSES `undefined`, so the coercion turned organic's legitimate "no
     // allowlist exists" into "the loader never set the key" and R1 SKIPPED all 8
-    // of organic's translated units — measured: R1's 8 SKIPs of 161 were organic
-    // entire, and the same ctx with an explicit `null` returns PASS. A comment
-    // stating the rule is not the rule.
+    // of organic's translated units. MEASURED, and stated at its real scope:
+    // R1's 8 SKIPs of 161 were organic ENTIRE (chemistry SKIP 0), and the same 8
+    // units with an explicit `null` return **6 FAIL and 2 PASS** — the SKIPs were
+    // hiding 6 real findings, all `unexplained-tag-count`, which is the class
+    // chemistry's 36-entry allowlist explains and organic has none for. R1 is
+    // tier 3, so that is a statement about the committed VINTAGE, not a new defect.
+    // ⚠️ THIS COMMENT SAID "returns PASS" — a claim the commit message shipping the
+    // repair CONTRADICTED in the same breath ("6 real findings, organic 75.0% of
+    // 8"). A file disagreeing with its own commit is the cheapest possible instance
+    // of a comment generalising past its code.
+    // ▶ A comment stating the rule is not the rule.
     fidelityAllowlist: readJsonOrNull(path.join(dir, 'fidelity-allowlist.json')),
     schemaVerdict: spawns ? spawns.schema.get(`${unit.book}|${unit.track}|${unit.ch}`) : undefined,
     auditResults: spawns ? spawns.audit.get(`${unit.book}|${unit.track}|${unit.ch}`) : undefined,
@@ -716,7 +729,14 @@ function spawnRenderAudit(book, track, chapter) {
   });
 }
 
-async function collectSpawns(books, tiers, log) {
+/**
+ * ⚠️ EXPORTED FOR TESTING, AND THE REASON IS NOT CONVENIENCE. This function is the
+ * SOLE producer of the `failures` and `expected` fields that `spawnIncomplete` — and
+ * therefore the rate suppression on three checks, one of them BLOCKING — consumes.
+ * It was module-local and exercised by nothing, so the bookkeeping the repair rests
+ * on had no pin at all. §C82: "a gate never called is a gate that does not exist."
+ */
+export async function collectSpawns(books, tiers, log = () => {}) {
   // 🔴 `failures` AND `expected` ARE NOT BOOKKEEPING. A spawn that dies leaves its
   // Map entry unset, and every consumer downstream then sees exactly what it sees
   // when the spawn was never asked for — except that the suppression keyed on the
@@ -741,12 +761,36 @@ async function collectSpawns(books, tiers, log) {
     out.failures.push({ kind, key, message });
     console.error(`remt-sweep: ${kind} spawn FAILED for ${key}: ${message}`);
   };
+  // 🔴 `expected` COUNTS VERDICTS OWED, NOT SPAWNS ATTEMPTED — AND THE FIRST
+  // VERSION COUNTED THE SECOND. The increments sat INSIDE the loop bodies, AFTER
+  // the early `continue`s, so a unit whose verdict is never even REQUESTED
+  // incremented neither `expected` nor `failures`: `delivered === expected` held
+  // (including the degenerate `0 < 0`), `spawnIncomplete` returned false, and the
+  // suppression stood down again — rebuilding the very hole the delivered-vs-
+  // expected mechanism was written to close, with a new mechanism and the wrong
+  // invariant.
+  // ⚠️ THE REACHABLE ROUTE IS ONE THE CLEAN-BREAK RUN CREATES BY CONSTRUCTION:
+  // once organic is re-injected but not yet re-rendered, `05-publication/faithful`
+  // does not exist, that track's audits are never attempted, and R4's row is
+  // scored over the units that DID get verdicts. `owe()` is called BEFORE every
+  // guard, and a unit that cannot be attempted is recorded as a failure with a
+  // reason — so the row is suppressed and the reader is told why.
+  const owe = (kind) => {
+    out.expected[kind] = (out.expected[kind] || 0) + 1;
+  };
+  const notAttempted = (kind, key, why) => {
+    out.failures.push({ kind, key, message: `not attempted: ${why}` });
+    console.error(`remt-sweep: ${kind} spawn NOT ATTEMPTED for ${key}: ${why}`);
+  };
   if (tiers.includes(0)) {
     for (const book of books) {
       const p = path.join(bookDir(book), 'glossary', 'glossary-unified.json');
-      if (!exists(p)) continue;
+      owe('glossary');
+      if (!exists(p)) {
+        notAttempted('glossary', book, 'no glossary/glossary-unified.json');
+        continue;
+      }
       log(`  spawn G5 payload check: ${book}`);
-      out.expected.glossary = (out.expected.glossary || 0) + 1;
       try {
         out.glossary.set(book, await spawnGlossaryPayloadCheck(p, { repoRoot: REPO_ROOT }));
       } catch (e) {
@@ -764,7 +808,20 @@ async function collectSpawns(books, tiers, log) {
       // payload is not at risk of the 64 KB pipe truncation that bit the schema
       // tool (its own comment at :623 records the fix).
       for (const track of SWEEP_TRACKS) {
-        if (!exists(path.join(bookDir(book), '05-publication', track))) continue;
+        const chapters = new Set(
+          translatedUnits(book)
+            .filter((u) => u.track === track)
+            .map((u) => u.ch)
+        );
+        if (!exists(path.join(bookDir(book), '05-publication', track))) {
+          // Owe one verdict per chapter this track WOULD have audited, so the
+          // shortfall is visible instead of cancelling itself out.
+          for (const ch of chapters) {
+            owe('audit');
+            notAttempted('audit', `${book}|${track}|${ch}`, `no 05-publication/${track}`);
+          }
+          continue;
+        }
         for (const ch of new Set(
           translatedUnits(book)
             .filter((u) => u.track === track)
@@ -772,7 +829,7 @@ async function collectSpawns(books, tiers, log) {
         )) {
           const bare = ch === 'appendices' ? 'appendices' : ch.replace(/^ch0*/, '') || '0';
           log(`  spawn R4 render audit: ${book} / ${track} / ${bare}`);
-          out.expected.audit = (out.expected.audit || 0) + 1;
+          owe('audit');
           try {
             out.audit.set(`${book}|${track}|${ch}`, await spawnRenderAudit(book, track, bare));
           } catch (e) {
@@ -788,7 +845,7 @@ async function collectSpawns(books, tiers, log) {
       }
       for (const [k, targets] of byChapter) {
         log(`  spawn R3 schema check: ${k} (${targets.length} file(s))`);
-        out.expected.schema = (out.expected.schema || 0) + 1;
+        owe('schema');
         try {
           out.schema.set(k, await spawnSchemaCheck(targets, { repoRoot: REPO_ROOT }));
         } catch (e) {
@@ -881,22 +938,12 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
     }
   };
   const bump = (check, unitName, verdict, examined, book) => {
+    // ⚠️ `blank()` IS THE ONLY PLACE THE ROW SHAPE IS WRITTEN. This branch used to
+    // carry a second 11-field literal, which `seed()` had already made unreachable
+    // for every real call path — dead code that nothing could see drift out of
+    // sync with the live one.
     for (const key of [check.id, `${check.id}|${book}`]) {
-      if (!acc.has(key)) {
-        acc.set(key, {
-          id: check.id,
-          tier: check.tier,
-          blocking: check.blocking,
-          version: check.version,
-          unit: unitName,
-          population: 0,
-          PASS: 0,
-          FAIL: 0,
-          WARN: 0,
-          SKIPPED: 0,
-          examinedTotal: 0,
-        });
-      }
+      if (!acc.has(key)) acc.set(key, blank(check, unitName));
       const a = acc.get(key);
       a.population += 1;
       a[verdict] += 1;
@@ -908,9 +955,15 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
   // 🔴 A ctx THAT COULD NOT BE BUILT MUST LEAVE A TRACE IN THE PAYLOAD. It marks
   // every check SKIPPED for that unit, and `evaluable = population - SKIPPED`, so a
   // PARTIAL ctx failure SHRINKS the denominator and the rate RISES: measured, E2
-  // (BLOCKING) moves 1.34% -> 28.57% and joins the over-the-bar alarm on the
-  // strength of 142 units nothing ever read. The message went only to `log`, a
-  // no-op under `--json`. Recorded here so the payload carries it.
+  // (BLOCKING) moves **2/149 = 1.34% -> 2/7 = 28.57%** and joins the over-the-bar
+  // alarm on the strength of 142 units nothing ever read.
+  // ⚠️ BOTH OF THOSE ARE CHEMISTRY-ONLY, AND EVERY OTHER RATE QUOTED IN THIS FILE
+  // IS THE TWO-BOOK AGGREGATE THE TOOL PRINTS (E1 62.7%, A6 58.4%, A5 0.7/23.5/3.0)
+  // — so a reader has every reason to read 1.34% the same way, and the default
+  // two-book run prints **1.20%** (2/166). A number is mis-scoped the moment its
+  // neighbours use a different denominator, even when it is right about its own.
+  // The failure message went only to `log`, a no-op under `--json`. Recorded here
+  // so the payload carries it.
   const ctxFailures = [];
   for (const spec of TIER_SPECS) {
     if (!tiers.includes(spec.tier)) continue;
@@ -951,7 +1004,13 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
             unit: JSON.stringify(unit),
             message: e.message,
           });
-          console.error(`remt-sweep: ctx build FAILED (tier ${spec.tier}, ${book}): ${e.message}`);
+          // ⚠️ NAMES THE UNIT. Reproduced at 142 failures: the lines were
+          // byte-identical and said nothing about WHICH units were lost. Loudness
+          // is right here — silencing it is what caused the defect — but
+          // undifferentiated loudness is not.
+          console.error(
+            `remt-sweep: ctx build FAILED (tier ${spec.tier}, ${book}, ${JSON.stringify(unit)}): ${e.message}`
+          );
           continue;
         }
         for (const c of checks) {
@@ -1123,11 +1182,21 @@ export function formatReport(report) {
       `⚠️ BLOCKING CHECKS WITH NO MEASURABLE RATE (${blockingNoRate.length}) — not over the bar, ` +
         'and not under it either; they supplied no evidence, which `runTier` scores as a halt:'
     );
+    // 🔴 THE COUNTER IS PER CLASS. `SKIPPED n of pop` is true for exactly ONE of
+    // the three ways a blocking row reaches `rate === null` — the K3 case the
+    // heading reasons from. For a SPAWN-SUPPRESSED row it prints "SKIPPED 0 of 2"
+    // beside two real FAILs, and for a row whose tier had NO UNITS it prints
+    // "SKIPPED 0 of 0" under a heading asserting the check supplied no evidence.
+    // Both are the section's own failure mode: a line that reads as a measurement
+    // and is not.
     for (const r of blockingNoRate) {
-      lines.push(
-        `  ${r.id.padEnd(4)} tier ${r.tier}  SKIPPED ${r.SKIPPED} of ${r.population}` +
-          (r.note ? `  — ${r.note}` : '')
-      );
+      const why =
+        r.population === 0
+          ? 'no units in this run — nothing was offered to it'
+          : r.note
+            ? `rate suppressed — ${r.note}`
+            : `SKIPPED ${r.SKIPPED} of ${r.population}`;
+      lines.push(`  ${r.id.padEnd(4)} tier ${r.tier}  ${why}`);
     }
   }
 
@@ -1139,10 +1208,16 @@ export function formatReport(report) {
     for (const f of report.spawnFailures) lines.push(`  ${f.kind} / ${f.key}: ${f.message}`);
   }
   if (report.ctxFailures.length) {
+    // ⚠️ SCOPED TO THE TIERS THAT ACTUALLY FAILED. This said "this run's rates",
+    // condemning rows in tiers no ctx failure touched — the same over-reach the
+    // section exists to warn about, one level up. 🔴 The word `unusable` is PINNED
+    // by remt-sweep.test.js; only the scope changed.
+    const hitTiers = [...new Set(report.ctxFailures.map((f) => f.tier))].sort();
     lines.push('');
     lines.push(
       `🔴 ctx BUILD FAILURES (${report.ctxFailures.length}) — each marks EVERY check SKIPPED for ` +
-        "that unit, which SHRINKS the rate denominator. Treat this run's rates as unusable:"
+        `that unit, which SHRINKS the rate denominator. Treat tier ${hitTiers.join(', ')}'s rates ` +
+        `in this run as unusable:`
     );
     for (const f of report.ctxFailures.slice(0, 20)) {
       lines.push(`  tier ${f.tier} / ${f.book} / ${f.unit}: ${f.message}`);

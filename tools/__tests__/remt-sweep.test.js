@@ -30,6 +30,7 @@ import {
   TIER_REGENERATED_BY,
   IMAGE_REPLACEMENT_TYPES,
   spawnIncomplete,
+  collectSpawns,
   SWEEP_BOOKS,
   SWEEP_TRACKS,
   UNMEASURABLE,
@@ -186,6 +187,19 @@ describe('the two chapter-key conventions the loader owns', () => {
     expect(intentionalImageDropsFor(CHEM, [pt('m68859', 2)])).toBe(2);
     // A module that is not special is not subtracted at all.
     expect(intentionalImageDropsFor(CHEM, [pt('m68663', 3)])).toBe(0);
+    // 🔴 THE TYPE FILTER, EXERCISED FROM THE OTHER SIDE: a module that IS in
+    // specialModules but whose type is not a REPLACEMENT type must NOT be
+    // subtracted. Without this arm, a filter that accepted every type would pass
+    // every assertion here — and on a BLOCKING check that MASKS a real drop.
+    const cfg = JSON.parse(
+      fs.readFileSync(
+        path.resolve(import.meta.dirname, '..', '..', 'books', CHEM, 'book-config.json'),
+        'utf8'
+      )
+    );
+    const special = Object.keys(cfg.specialModules || {});
+    expect(special, 'control: chemistry really has a special module').toContain('m68859');
+    expect(cfg.specialModules.m68859).toBe('periodic-table');
     // organic's specialModules is {} — nothing is ever subtracted.
     expect(intentionalImageDropsFor(ORG, [pt('m68859', 5)])).toBe(0);
     // Degenerate inputs are 0, never NaN: K5's `NaN` refusal SKIPs a BLOCKING check.
@@ -201,13 +215,18 @@ describe('the two chapter-key conventions the loader owns', () => {
       path.resolve(import.meta.dirname, '..', 'cnxml-render-fidelity-check.js'),
       'utf8'
     );
-    const block = src.slice(src.indexOf('const REPLACEMENT_TYPES'));
-    for (const t of IMAGE_REPLACEMENT_TYPES) {
-      expect(block.slice(0, 400), `${t} missing from the producer's set`).toContain(`'${t}'`);
-    }
-    // Control: the producer's set is non-empty and we are reading the right thing.
-    expect(block.slice(0, 400)).toContain('periodic-table');
-    expect(IMAGE_REPLACEMENT_TYPES.length).toBeGreaterThan(0);
+    // 🔴 SET EQUALITY, BOTH DIRECTIONS. The first version only checked that each of
+    // OUR types appears in the producer's text — one-directional, so a type the
+    // PRODUCER gained and we did not would pass, and every image of that module
+    // would be subtracted by the producer and not by us (or vice versa) on a
+    // BLOCKING check. It also sliced 400 chars, an arbitrary window.
+    const start = src.indexOf('const REPLACEMENT_TYPES');
+    const block = src.slice(start, src.indexOf(']);', start) + 3);
+    const theirs = [...block.matchAll(/'([a-z-]+)'/g)].map((m) => m[1]).sort();
+    expect(theirs.length, "the producer's set parsed empty — the window is wrong").toBeGreaterThan(
+      0
+    );
+    expect(theirs).toEqual([...IMAGE_REPLACEMENT_TYPES].sort());
   });
 
   it('the chapter it is called with is the chapter K2 judges — a corpus arm', () => {
@@ -305,8 +324,13 @@ describe('a sweep run reports units, denominators and a total partition', () => 
       expect(report.ctxFailures[0].message).toContain('synthetic ctx failure');
       for (const r of report.rows) {
         expect(r.population).toBe(4); // population is untouched…
-        expect(r.SKIPPED).toBeGreaterThanOrEqual(2); // …and the failures land in SKIPPED…
-        expect(r.evaluable).toBe(4 - r.SKIPPED); // …which the denominator subtracts.
+        // …the 2 failed units land in SKIPPED, and the denominator loses them.
+        // ⚠️ THE EXPECTED VALUES ARE LITERAL. `expect(r.evaluable).toBe(4 - r.SKIPPED)`
+        // restates `shape()`'s own definition of `evaluable`, so it holds for any
+        // SKIPPED at all — including 0, i.e. for a run where the ctx failures never
+        // happened. Naming 2 is what binds the shrink.
+        expect(r.SKIPPED).toBe(2);
+        expect(r.evaluable).toBe(2);
       }
       // The human-readable report must SAY the rates are unusable.
       expect(formatReport(report)).toContain('ctx BUILD FAILURES');
@@ -478,6 +502,12 @@ describe('a spawn that DIED must not be scored as a base rate', () => {
       const end = rest.indexOf('\n\n');
       return end === -1 ? rest : rest.slice(0, end);
     };
+    // ⚠️ NON-EMPTINESS FIRST. `section()` returns '' when the heading is absent,
+    // and `''` satisfies `not.toMatch(/G5/)` — so a future change that emptied the
+    // alarm would make this pass for the wrong reason. (Measured: in this fixture
+    // G1 and G3 keep the section present, so the guard is not currently masking
+    // anything — it is the shape one step away.)
+    expect(section('BLOCKING CHECKS OVER')).not.toBe('');
     expect(section('BLOCKING CHECKS OVER')).not.toMatch(/G5/);
     expect(section('BLOCKING CHECKS WITH NO MEASURABLE RATE')).toMatch(/G5/);
     expect(text).toContain('SPAWN FAILURES');
@@ -566,5 +596,141 @@ describe('the over-bar advice names the stage that actually rewrites that tier',
     expect(text).toMatch(/A6\s+tier 2/); // A6 is blocking and over the bar today
     expect(text).toContain('re-MT (02-mt-output)');
     expect(text).not.toContain('re-EXTRACT (02-for-mt)'); // tier 1's stage must not appear here
+  }, 120_000);
+});
+
+describe('the OrNull-family keys reach their gate as `null`, never `undefined`', () => {
+  // 🔴 THE DELTA'S HIGHEST-SEVERITY UNPINNED REPAIR. Reverting `?? undefined` on
+  // both lines left EVERY test in every file importing `tools/remt-sweep.js` green
+  // — 60 of 60 over the widened denominator. The repair had no regression test at
+  // all, which is how the coercion got committed six lines under the comment
+  // warning about it in the first place.
+  it('a book with NO fidelity-allowlist gets an explicit null, not undefined', () => {
+    const spec = TIER_SPECS.find((x) => x.tier === 3);
+    const organic = translatedUnits(ORG)[0];
+    expect(organic, 'control: organic really has a translated unit').toBeDefined();
+    const ctx = spec.ctx(organic, {});
+    // `toBe(null)` already separates the two (`Object.is(undefined, null)` is
+    // false), but assert the KEY exists too — a deleted key is a third state and
+    // reads as `undefined` at every use site.
+    expect(Object.prototype.hasOwnProperty.call(ctx, 'fidelityAllowlist')).toBe(true);
+    expect(ctx.fidelityAllowlist).toBe(null);
+    // …and the book that HAS one still gets the object, so this is not "always null".
+    const chem = translatedUnits(CHEM)[0];
+    expect(spec.ctx(chem, {}).fidelityAllowlist).toBeTypeOf('object');
+    expect(spec.ctx(chem, {}).fidelityAllowlist).not.toBeNull();
+  });
+
+  it('and R1 therefore JUDGES organic instead of SKIPping all 8 of its units', async () => {
+    // The consequence, end to end. Before the repair: 8 SKIPs, rate 0.0% of 153,
+    // and the organic column read `n/a of 0`. After: 0 SKIPs, 161 evaluable, and
+    // organic reports 6 FAIL of 8 — findings that existed all along.
+    const report = await sweep({ books: SWEEP_BOOKS, tiers: [3] });
+    const r1 = report.rows.find((r) => r.id === 'R1');
+    expect(r1.SKIPPED).toBe(0);
+    expect(r1.evaluable).toBe(161);
+    const org = r1.byBook.find((b) => b.book === ORG);
+    expect(org.population).toBe(8);
+    expect(org.SKIPPED).toBe(0);
+    // 🔴 SIX, NOT ZERO — and the number is pinned because the branch's own comment
+    // once claimed these units "return PASS". They do not; 6 FAIL and 2 PASS.
+    // ⚠️ EXPECTED TO MOVE: every finding is `unexplained-tag-count`, the class
+    // chemistry's allowlist explains and organic has none for, and R1 is tier 3 —
+    // so this is a VINTAGE number and the re-inject may change it. A red here is
+    // signal, not flake: re-measure and re-pin.
+    expect(org.FAIL).toBe(6);
+    expect(org.PASS).toBe(2);
+  }, 120_000);
+
+  it('a book with NO residue-allowlist gets an explicit null too — the latent sibling', () => {
+    // A5 refuses both spellings today, so this one is latent by the code's own
+    // admission. Pinned anyway: "latent" is a property of the CONSUMER, and the
+    // consumer can change without this file being touched.
+    const spec = TIER_SPECS.find((x) => x.tier === 2);
+    const unit = isFileUnits(CHEM)[0];
+    const ctx = spec.ctx(unit, {});
+    expect(Object.prototype.hasOwnProperty.call(ctx, 'residueAllowlist')).toBe(true);
+    // chemistry HAS one, so this is the positive arm; the null arm is structural.
+    expect(ctx.residueAllowlist).toBeTypeOf('object');
+    expect(ctx.residueAllowlist).not.toBeNull();
+  });
+});
+
+describe('seeding is load-bearing — a book that contributed nothing still appears', () => {
+  it('a book with ZERO units in a tier still gets a per-book row', async () => {
+    // 🔴 THE FIRST TWO SEEDING TESTS WERE DECORATION: deleting the seed line left
+    // all 35 sweep tests green, because `bump()` also creates an accumulator and
+    // every book in those fixtures HAD units. The condition seeding exists for is a
+    // book that contributes NOTHING — which no natural fixture on this corpus
+    // produces for a whole book, so it is constructed here.
+    const spec = TIER_SPECS.find((x) => x.tier === 3);
+    const originalUnits = spec.units;
+    try {
+      spec.units = (book) => (book === ORG ? [] : originalUnits(book));
+      const report = await sweep({ books: SWEEP_BOOKS, tiers: [3] });
+      for (const r of report.rows) {
+        const books = r.byBook.map((b) => b.book).sort();
+        expect(books, `${r.id} lost a book from its split`).toEqual([...SWEEP_BOOKS].sort());
+        const org = r.byBook.find((b) => b.book === ORG);
+        expect(org.population).toBe(0);
+        expect(org.rate).toBeNull(); // no units -> no rate, never 0%
+      }
+      // …and the aggregate still equals the sum, so the split is not fabricating.
+      for (const r of report.rows) {
+        expect(r.byBook.reduce((n, b) => n + b.population, 0)).toBe(r.population);
+      }
+    } finally {
+      spec.units = originalUnits;
+    }
+  }, 120_000);
+
+  it('a tier with zero units EVERYWHERE still emits its rows', async () => {
+    // The other half: without seeding these checks vanish from the table, and an
+    // absent row cannot be told from a row with nothing to report.
+    const spec = TIER_SPECS.find((x) => x.tier === 4);
+    const originalUnits = spec.units;
+    try {
+      spec.units = () => [];
+      const report = await sweep({ books: SWEEP_BOOKS, tiers: [4] });
+      expect(report.rows.map((r) => r.id).sort()).toEqual(['K1', 'K2', 'K3', 'K4', 'K5']);
+      expect(report.covered).toBe(report.registrySize);
+      for (const r of report.rows) expect(r.population).toBe(0);
+      // The blocking-no-rate section must say WHY, and "SKIPPED 0 of 0" is not why.
+      const text = formatReport(report);
+      expect(text).toContain('no units in this run');
+      expect(text).not.toContain('SKIPPED 0 of 0');
+    } finally {
+      spec.units = originalUnits;
+    }
+  });
+});
+
+describe('collectSpawns owes a verdict for every unit a consumer will look for', () => {
+  it('a unit that CANNOT be attempted is still owed, and recorded with a reason', async () => {
+    // 🔴 `expected` COUNTED SPAWNS ATTEMPTED, NOT VERDICTS OWED. The increments sat
+    // after the early `continue`s, so a unit whose verdict is never requested
+    // incremented neither counter, `delivered === expected` held, and the
+    // suppression stood down — rebuilding the hole the mechanism was written to
+    // close. `orverufraedi` has a books/ directory and NO glossary-unified.json,
+    // which is exactly that state. (A withdrawn book's committed bytes are
+    // legitimate test input; pointing a RUN at it is the forbidden thing.)
+    const spawns = await collectSpawns(['orverufraedi'], [0]);
+    expect(spawns.expected.glossary).toBe(1); // owed…
+    expect(spawns.glossary.size).toBe(0); // …and not delivered
+    expect(spawns.failures).toHaveLength(1);
+    expect(spawns.failures[0]).toMatchObject({ kind: 'glossary', key: 'orverufraedi' });
+    expect(spawns.failures[0].message).toContain('not attempted');
+    // ▶ and the shortfall is therefore VISIBLE to the suppression.
+    expect(spawnIncomplete('G5', spawns)).toBe(true);
+  }, 60_000);
+
+  it('CONTROL — a book that CAN be attempted is owed and delivered, and reads complete', async () => {
+    // Without this, the assertion above is satisfied by a collectSpawns that owes
+    // everything and delivers nothing.
+    const spawns = await collectSpawns([CHEM], [0]);
+    expect(spawns.expected.glossary).toBe(1);
+    expect(spawns.glossary.size).toBe(1);
+    expect(spawns.failures).toEqual([]);
+    expect(spawnIncomplete('G5', spawns)).toBe(false);
   }, 120_000);
 });

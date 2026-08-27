@@ -44,17 +44,23 @@
  * fixture missing its canonical `SEG:` marker gives `FAIL examined 0`, and
  * nothing in the contract objects. The good arm's `examined > 0` closes the
  * mirror case, where a SKIPPED would otherwise read as "not a failure".
- * ▶ THE GATES THIS CANNOT PROTECT — AND IT IS TWO, NOT ONE. This said "THE ONE
- * GATE… G5"; a false enumeration is how the second one stays invisible.
+ * ▶ THE GATES THIS CANNOT PROTECT — STATED AS A PROPERTY, BECAUSE ENUMERATING
+ * THEM IS HOW THIS SENTENCE HAS NOW BEEN WRONG TWICE. It said "THE ONE GATE… G5";
+ * corrected to "TWO, NOT ONE"; and a second pass then measured a THIRD (R3, whose
+ * `examined` is `targets.length` — the fixture's own array). The list is not the
+ * point and cannot be trusted; **the PROPERTY is: `examined` is not keyed to
+ * content the gate read.** Re-derive it by reading each check's `examined`
+ * expression — that is the only thing that settles it. The three known today:
  *   G5 hard-codes `examined: 1`, so its count is no evidence that it read
  *      anything (a §C82 L6 survivor).
  *   R2 takes `examined` from the PAYLOAD (`injectReport.segmentsFound`), so the
  *      fixture chooses its own count — 81 here — and a gate that read nothing
  *      would report the same 81. R2 is BLOCKING.
- * For both, the VERDICTS are the whole discriminator; the count is decoration.
- * ⚠️ Do not read this list as closed without re-deriving it: the property is
- * "`examined` is not keyed to content the gate read", and only reading each
- * check's `examined` expression settles it.
+ *   R3 takes `examined` from `targets.length`, an array the fixture supplies.
+ *      R3 is BLOCKING.
+ * For all three, the VERDICTS are the whole discriminator; the count is decoration.
+ * ⚠️ THIS LIST IS NOT CLOSED, and treating it as closed is what produced the two
+ * earlier wrong versions.
  *
  * ── EVERY REGISTERED CHECK, OR A NAMED FAILURE ───────────────────────────────
  * 🔴 A CHECK WITH NO FIXTURE IS A `no-fixture` FAILURE, NOT AN OMISSION. An

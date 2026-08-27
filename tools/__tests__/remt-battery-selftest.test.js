@@ -88,7 +88,38 @@ describe('the self-test goes RED when a gate is neutered — it is not a tautolo
     // both from a ctx that never reached the gate AND from a gate that threw, and
     // `runCheck` renders the second as FAIL/0 with the exception in `message`.
     expect(arms[0].detail).toContain('or the gate threw');
+    // ⚠️ `toContain('Message:')` ALONE IS SATISFIED BY THE TEMPLATE'S OWN PREFIX —
+    // measured: a mutant hard-coding the detail to `Message: (none)` SURVIVED it.
+    // The claim is that the gate's message is RENDERED, so the assertion has to
+    // bind a value only a rendered message can produce. That is the next test.
     expect(arms[0].detail).toContain('Message:');
+  });
+
+  it('a gate that THROWS has its exception text rendered, not swallowed', async () => {
+    // 🔴 THE VALUE, NOT THE SHAPE (§C82 L98). `runCheck` converts a throw into
+    // FAIL/examined 0 with the exception in `message`, so a throwing gate arrives
+    // through the same door as a ctx that never reached the gate — which is why the
+    // detail no longer asserts which of the two happened. What it MUST do is print
+    // the message, and only an assertion on the exception's own text can tell a
+    // rendered message from the template's `Message: (none)`.
+    const sentinel = 'SENTINEL-EXCEPTION-9f3a';
+    const thrower = defineCheck({
+      id: 'K5',
+      tier: 4,
+      blocking: true,
+      version: 1,
+      run: () => {
+        throw new Error(sentinel);
+      },
+    });
+    const report = await selfTest({ overrides: [thrower] });
+    const arms = report.failures.filter((f) => f.id === 'K5');
+    expect(arms.length).toBeGreaterThan(0);
+    expect(
+      arms.every((a) => a.detail.includes(sentinel)),
+      'the exception text is not rendered'
+    ).toBe(true);
+    expect(report.ok).toBe(false);
   });
 
   it('CONTROL — with no overrides the self-test is clean, so the three above mean something', async () => {
@@ -319,10 +350,14 @@ describe('the self-test cannot certify a registry it never saw', () => {
       [
         ...fs
           .readFileSync(path.resolve(import.meta.dirname, '..', rel), 'utf8')
-          .matchAll(/^import\s+'\.[./]*(?:lib\/)?(remt-checks-[a-z]+\.js)';/gm),
+          .matchAll(/^import\s+'\.[./]*(?:lib\/)?(remt-checks-[a-z][a-z-]*\.js)';/gm),
       ]
         .map((m) => m[1])
         .sort();
+    // ⚠️ `[a-z-]*` NOT `[a-z]+`: the tier modules are all single-word today, so a
+    // HYPHENATED sixth (`remt-checks-run-record.js`) would match in NEITHER file
+    // and the parity assertion would compare two identical omissions — green, and
+    // blind to exactly the module it exists to catch.
     const cli = grab('remt-battery.js');
     const st = grab('lib/remt-selftest.js');
     expect(cli.length, 'the CLI imports no tier module — the grab pattern broke').toBe(5);
