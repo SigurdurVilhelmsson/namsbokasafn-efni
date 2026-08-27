@@ -39,7 +39,14 @@
  * 🔴 EVERY ROW CARRIES ITS OWN UNIT AND ITS OWN DENOMINATOR. The battery's 33
  * checks judge FIVE different units, and Plan B's own Task 13 text ("--sweep
  * runs every check over all 220 existing EN/IS pairs") is wrong twice over:
- * the count is stale AND "pairs" is only Tier 1's unit. Measured 2026-08-27:
+ * "pairs" is only Tier 1's unit — and the 220 is NOT stale, which is the half a
+ * cold reader gets wrong. Re-measured 2026-08-27: `02-for-mt` holds exactly 220
+ * `-segments.en.md` and `02-mt-output` exactly 220 `-segments.is.md`, and the two
+ * basename multisets are IDENTICAL, so "220 EN/IS pairs" is a current, exactly
+ * paired count OF A THIRD UNIT. It is not Tier 1's 166 (which additionally
+ * requires a source CNXML) and not Tier 2's 197 (220 - 23 chapter-metadata,
+ * verified). The spec's 227 is a fourth, also real. ▶ FOUR live counts of the
+ * same corpus; none is wrong and none is interchangeable. Measured 2026-08-27:
  *
  *   tier 0  a BOOK                    2
  *   tier 1  a MODULE PAIR           166   source-CNXML + live EN segment file
@@ -199,6 +206,23 @@ export const TIER_INPUT_REGENERATED = Object.freeze({
 });
 
 /**
+ * WHICH STAGE rewrites each tier's input.
+ *
+ * ⚠️ THE OVER-BAR MESSAGE USED TO SAY "re-measure after the run's own EXTRACT"
+ * FOR ALL FOUR, AND THAT IS ONLY TIER 1's STAGE. A6 (tier 2, 58.4%, BLOCKING) is
+ * a live instance: it reads `ctx.isText` and nothing else, so its rate moves when
+ * the re-MT lands, not when the extract does. Telling a reader to re-measure one
+ * stage too early is telling them to re-measure while the number cannot have
+ * changed — and to conclude from it.
+ */
+export const TIER_REGENERATED_BY = Object.freeze({
+  1: "the run's own re-EXTRACT (02-for-mt)",
+  2: 'the re-MT (02-mt-output)',
+  3: 'the re-INJECT (03-translated)',
+  4: 'the re-RENDER (05-publication)',
+});
+
+/**
  * Checks whose ctx comes from ANOTHER PROCESS, and what their row means without
  * `--with-spawns`.
  *
@@ -286,13 +310,19 @@ function readJsonOrNull(p) {
 /**
  * TIER 1's unit: a module with BOTH a source CNXML and a live EN segment file.
  *
- * ⚠️ IT DRIVES FROM THE SOURCE SIDE, AND THAT IS THE POINT. `02-for-mt` holds
- * dated backups beside every live segment file — chemistry ch01 alone has three
- * for `m68663` — so an `endsWith('.md')` walk counts each stale vintage as a
- * module. The `.cnxml` filter cannot see a backup at all.
+ * ⚠️ IT DRIVES FROM THE SOURCE SIDE, AND THAT IS THE POINT — BUT NOT FOR THE
+ * REASON USUALLY GIVEN. The inherited rationale is that a naive `endsWith('.md')`
+ * walk over `02-for-mt` counts dated backups as modules. **Measured 2026-08-27:
+ * it cannot.** Chemistry's `02-for-mt` holds 3,102 backups and **0 of them end in
+ * `.md`** — the shape is `<name>-segments.en.md.backup.<ISO>`. The real
+ * over-count is 70: **49 `(b)`/`(c)`/`(d)` re-extract variants** (`m68865-segments(b).en.md`)
+ * **plus 21 `chapter-metadata`**, taking a naive walk from 149 to 219. A
+ * `.cnxml`-driven walk sees neither, so the CONSTRUCTION is right and only its
+ * stated cause was wrong.
  * (Same construction as `tools/__tests__/helpers/remt-corpus.js`'s
- * `modulesWithSegments`; `remt-sweep-corpus.test.js` asserts the two agree
- * unit-for-unit, so they cannot drift apart silently.)
+ * `modulesWithSegments`; `tools/__tests__/remt-sweep.test.js`'s "the sweep's
+ * walkers agree UNIT-FOR-UNIT with the test helper's" asserts the two against each
+ * other, with a non-empty control, so they cannot drift apart silently.)
  */
 export function modulePairUnits(book) {
   const srcRoot = path.join(bookDir(book), '01-source');
@@ -428,7 +458,12 @@ function tier2Ctx(unit) {
   // missing allowlist and must not be handed `{entries: []}` for one, because a
   // real empty allowlist and an absent file are different states and A5's guard
   // exists to tell them apart. `readJsonOrNull` returns null for absent.
-  const residueAllowlist = readJsonOrNull(path.join(dir, 'residue-allowlist.json')) ?? undefined;
+  // 🔴 NO `?? undefined` HERE. `null` and `undefined` are DIFFERENT VALUES to the
+  // OrNull-family keys, and coercing one to the other is the exact defect the ctx
+  // contract warns about six lines above its sibling. A5 happens to refuse both
+  // today, so this line is latent rather than live — but it is the same class as
+  // the `fidelityAllowlist` one below, which was NOT latent.
+  const residueAllowlist = readJsonOrNull(path.join(dir, 'residue-allowlist.json'));
   const provenancePath = unit.isPath.replace(/-segments\.is\.md$/, '-provenance.json');
   return {
     book: unit.book,
@@ -456,7 +491,14 @@ function tier3Ctx(unit, { spawns }) {
     // 🔴 `loadAllowlistOrNull`, not `loadAllowlist`: a missing file, `{entries: []}`
     // and `{entries: null}` all collapse to the same value through the eager
     // loader, and organic HAS no fidelity-allowlist (§C82 L57, third instance).
-    fidelityAllowlist: readJsonOrNull(path.join(dir, 'fidelity-allowlist.json')) ?? undefined,
+    // 🔴 AND NO `?? undefined` — THIS LINE CARRIED ONE, ONE LINE BELOW THE COMMENT
+    // WARNING ABOUT EXACTLY IT. R1 accepts an object or an explicit `null` and
+    // REFUSES `undefined`, so the coercion turned organic's legitimate "no
+    // allowlist exists" into "the loader never set the key" and R1 SKIPPED all 8
+    // of organic's translated units — measured: R1's 8 SKIPs of 161 were organic
+    // entire, and the same ctx with an explicit `null` returns PASS. A comment
+    // stating the rule is not the rule.
+    fidelityAllowlist: readJsonOrNull(path.join(dir, 'fidelity-allowlist.json')),
     schemaVerdict: spawns ? spawns.schema.get(`${unit.book}|${unit.track}|${unit.ch}`) : undefined,
     auditResults: spawns ? spawns.audit.get(`${unit.book}|${unit.track}|${unit.ch}`) : undefined,
   };
@@ -475,23 +517,57 @@ export function baselineKeyFor(chapter) {
 }
 
 /**
- * Images this CHAPTER deliberately omits — never the book total.
- *
- * 🔴 PER CHAPTER, NOT PER BOOK, AND K2 IS BLOCKING. `checkChapter` subtracts the
- * value from THAT CHAPTER's `<image>` count, so handing it the book total masks
- * a real one-image drop as PASS (§C82 L96①). Handing it 0 where a special module
- * really is in the chapter produces the opposite error — the chemistry
- * appendices false positive that moves K2's rate from 3.8% to 7.7%, across the
- * ~5% blocking bar (§C82 L88).
+ * Only these `specialModules` types replace their static images with an
+ * interactive element. MIRRORS `computeIntentionalImageDrops`'s own set in
+ * `tools/cnxml-render-fidelity-check.js` — which is MODULE-LOCAL and therefore
+ * cannot be imported (that unavailability is §C82 L88's whole subject).
+ * ⚠️ A NEW TYPE MUST BE ADDED IN BOTH PLACES. `remt-sweep.test.js` asserts this
+ * set against the producer's, by reading its source, so a divergence goes red.
  */
-export function intentionalImageDropsFor(book, chapter) {
+export const IMAGE_REPLACEMENT_TYPES = Object.freeze(['periodic-table']);
+
+/**
+ * Images this CHAPTER deliberately omits, computed from THE SAME CNXML K2 JUDGES.
+ *
+ * 🔴 PER CHAPTER, NEVER THE BOOK TOTAL, AND K2 IS BLOCKING. `checkChapter`
+ * subtracts this from THAT CHAPTER's `<image>` count, so the book total masks a
+ * real one-image drop as PASS (§C82 L96①); zero where the special module really
+ * is manufactures the chemistry-appendices false positive that moves K2's rate
+ * 3.8% -> 7.7%, across the ~5% blocking bar (§C82 L88).
+ *
+ * 🔴 THREE DIVERGENCES FROM THE PRODUCER, ALL PRESENT IN THE FIRST VERSION AND
+ * ALL INVISIBLE ON TODAY'S CORPUS. It counted MODULES, applied NO type filter,
+ * and read `01-source`. The producer counts `<image>` OCCURRENCES, filters on
+ * REPLACEMENT_TYPES, and takes the INJECTED CNXML. They agree today only because
+ * chemistry's one special module (`m68859`, the periodic table) has exactly ONE
+ * `<image>` and its type IS `periodic-table` — measured. Each divergence breaks
+ * a different way:
+ *   - modules-not-images  -> a 2-image special module UNDER-counts -> K2 reports
+ *                            a drop that was deliberate: a FALSE HALT.
+ *   - no type filter      -> a special module of a non-replacement type is
+ *                            subtracted -> K2 MASKS a real drop: a false pass.
+ *   - source-not-injected -> the two trees diverge the moment a track is
+ *                            partially injected, which the clean-break run does
+ *                            by construction.
+ * ▶ Taking `chapterInputs.cnxml` closes all three at once, because that is
+ * literally the array `checkChapter` is about to read.
+ *
+ * @param {string} book
+ * @param {string[]} chapterCnxml  `readChapterFromDisk(...).cnxml` for THIS chapter
+ */
+export function intentionalImageDropsFor(book, chapterCnxml) {
   const cfg = readJsonOrNull(path.join(bookDir(book), 'book-config.json'));
   const special = (cfg && cfg.specialModules) || {};
-  const ids = Object.keys(special);
-  if (ids.length === 0) return 0;
-  const chDir = chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
-  const srcCh = path.join(bookDir(book), '01-source', chDir);
-  return ids.filter((id) => exists(path.join(srcCh, `${id}.cnxml`))).length;
+  if (Object.keys(special).length === 0) return 0;
+  const types = new Set(IMAGE_REPLACEMENT_TYPES);
+  let drops = 0;
+  for (const text of Array.isArray(chapterCnxml) ? chapterCnxml : []) {
+    const m = /<md:content-id>(m\d+)<\/md:content-id>/.exec(String(text));
+    if (!m) continue;
+    const type = special[m[1]];
+    if (type && types.has(type)) drops += (String(text).match(/<image\b/g) || []).length;
+  }
+  return drops;
 }
 
 function tier4Ctx(unit) {
@@ -520,7 +596,7 @@ function tier4Ctx(unit) {
     track: unit.track,
     chapterInputs: inputs,
     renderBaseline,
-    knownIntentionalImageDrops: intentionalImageDropsFor(unit.book, unit.chapter),
+    knownIntentionalImageDrops: intentionalImageDropsFor(unit.book, inputs.cnxml),
     slugMap,
     // 🔴 DELIBERATELY ABSENT, AND K3 IS BLOCKING SO THIS COSTS AN EXIT 1.
     // `publishedBefore` is the only ctx key whose correctness is a property of
@@ -641,22 +717,49 @@ function spawnRenderAudit(book, track, chapter) {
 }
 
 async function collectSpawns(books, tiers, log) {
-  const out = { glossary: new Map(), schema: new Map(), audit: new Map() };
+  // 🔴 `failures` AND `expected` ARE NOT BOOKKEEPING. A spawn that dies leaves its
+  // Map entry unset, and every consumer downstream then sees exactly what it sees
+  // when the spawn was never asked for — except that the suppression keyed on the
+  // FLAG stands down, so the resulting verdict is scored as a base rate. Measured:
+  // with `--with-spawns` and a dead glossary spawn, G5 (BLOCKING) reports 100.0%
+  // with no note and joins the over-the-bar alarm, which under Global Constraint 4
+  // disqualifies the only detector for a wholesale glossary producer swap.
+  // ⚠️ AND THE ONLY RECORD WENT TO `log`, A NO-OP UNDER `--json`/`--quiet` — i.e.
+  // silenced in exactly the mode a decision document is built from, in a file whose
+  // own comment credits a LOGGED spawn failure with making the 161-SKIP incident
+  // diagnosable.
+  const out = {
+    glossary: new Map(),
+    schema: new Map(),
+    audit: new Map(),
+    failures: [],
+    expected: {},
+  };
+  // A failure ALWAYS reaches stderr, whatever `log` is, and is always recorded on
+  // the report object so `--json` carries it.
+  const fail = (kind, key, message) => {
+    out.failures.push({ kind, key, message });
+    console.error(`remt-sweep: ${kind} spawn FAILED for ${key}: ${message}`);
+  };
   if (tiers.includes(0)) {
     for (const book of books) {
       const p = path.join(bookDir(book), 'glossary', 'glossary-unified.json');
       if (!exists(p)) continue;
       log(`  spawn G5 payload check: ${book}`);
+      out.expected.glossary = (out.expected.glossary || 0) + 1;
       try {
         out.glossary.set(book, await spawnGlossaryPayloadCheck(p, { repoRoot: REPO_ROOT }));
       } catch (e) {
-        log(`    FAILED: ${e.message}`);
+        fail('glossary', book, e.message);
       }
     }
   }
   if (tiers.includes(3)) {
     for (const book of books) {
-      // R4: one audit per book x track. `audit-render-output.js` already writes
+      // R4: one audit per book x track x CHAPTER — 26 spawns on today's corpus
+      // (chemistry mt-preview 23 + chemistry faithful 2 + organic mt-preview 1;
+      // organic has no faithful directory). The tool REQUIRES `--chapter`.
+      // `audit-render-output.js` already writes
       // its `--json` with `process.exitCode` rather than `process.exit()`, so the
       // payload is not at risk of the 64 KB pipe truncation that bit the schema
       // tool (its own comment at :623 records the fix).
@@ -669,10 +772,11 @@ async function collectSpawns(books, tiers, log) {
         )) {
           const bare = ch === 'appendices' ? 'appendices' : ch.replace(/^ch0*/, '') || '0';
           log(`  spawn R4 render audit: ${book} / ${track} / ${bare}`);
+          out.expected.audit = (out.expected.audit || 0) + 1;
           try {
             out.audit.set(`${book}|${track}|${ch}`, await spawnRenderAudit(book, track, bare));
           } catch (e) {
-            log(`    FAILED: ${e.message}`);
+            fail('audit', `${book}|${track}|${bare}`, e.message);
           }
         }
       }
@@ -684,10 +788,11 @@ async function collectSpawns(books, tiers, log) {
       }
       for (const [k, targets] of byChapter) {
         log(`  spawn R3 schema check: ${k} (${targets.length} file(s))`);
+        out.expected.schema = (out.expected.schema || 0) + 1;
         try {
           out.schema.set(k, await spawnSchemaCheck(targets, { repoRoot: REPO_ROOT }));
         } catch (e) {
-          log(`    FAILED: ${e.message}`);
+          fail('schema', k, e.message);
         }
       }
     }
@@ -707,21 +812,74 @@ async function collectSpawns(books, tiers, log) {
  * @param {number}   [opts.limit]   cap units per tier per book (smoke runs only)
  * @param {Function} [opts.log]
  */
+/** Which spawn map feeds which check. */
+const SPAWN_SOURCE = Object.freeze({ G5: 'glossary', R3: 'schema', R4: 'audit' });
+
+/**
+ * True when a spawn-dependent check did not receive every verdict it was owed —
+ * because spawns were never collected, or because some died.
+ * ⚠️ COMPARES DELIVERED AGAINST EXPECTED rather than testing for zero: a run in
+ * which 3 of 26 audits died still produces a partial, quotable-looking rate, and
+ * that is precisely the case a `size > 0` test would wave through.
+ */
+export function spawnIncomplete(id, spawns) {
+  const src = SPAWN_SOURCE[id];
+  if (!src) return false;
+  if (!spawns) return true;
+  return (spawns[src] ? spawns[src].size : 0) < (spawns.expected ? spawns.expected[src] || 0 : 0);
+}
+
 export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} }) {
+  // 🔴 AN EMPTY REGISTRY MUST THROW, NOT REPORT CLEAN. `runTier` already refuses
+  // "a clean run over an empty set"; this is the same rule one level up, and it
+  // was missing — a sweep over 0 checks returned a well-formed report with empty
+  // `rows` and a partition line reading "0 of 0", which is §C60 verbatim. The
+  // registry is populated by IMPORT, so an empty one means the tier modules never
+  // loaded — exactly the failure that is invisible without this.
+  if (REGISTRY.size === 0) {
+    throw new Error(
+      'remt-sweep: the check registry is EMPTY — the tier modules did not load. Refusing to ' +
+        'report a clean sweep over zero checks.'
+    );
+  }
   assertTotalPartition(REGISTRY.values());
 
   /**
    * id -> accumulator, and `id|book` -> the same shape.
    *
    * 🔴 THE PER-BOOK SPLIT IS NOT A CONVENIENCE. Measured on this corpus, A5's
-   * rate is 3.4% in chemistry and 23.5% in organic — a 7x spread inside one
-   * aggregate, and the aggregate (5.4%) sits right on the ~5% blocking bar that
-   * decides whether the check may halt a paid run. [[engineering-lessons]]:
+   * rate is **0.7% in chemistry and 23.5% in organic — a 35x spread** inside one
+   * aggregate of 3.0%.
+   * ⚠️ THIS COMMENT PREVIOUSLY QUOTED 3.4% / 5.4%, WHICH ARE THE RATES WITH THE
+   * ALLOWLIST **NOT APPLIED** — i.e. numbers this tool does not print, in the
+   * docstring justifying the column that prints them. (A5's own message reports
+   * post-allowlist residues first and `tolerated` separately; reading the leading
+   * number as "raw" is what produced them.) The raw figures are real and belong
+   * beside the acceptance criterion, which is written in raw terms — they simply
+   * are not what the table shows. [[engineering-lessons]]:
    * "a saturated rate is a CATEGORY, not a result — look for the split that
    * separates it before believing an aggregate." Two books is the split that is
    * always available, so it is always computed.
    */
   const acc = new Map();
+  const blank = (check, unitName) => ({
+    id: check.id,
+    tier: check.tier,
+    blocking: check.blocking,
+    version: check.version,
+    unit: unitName,
+    population: 0,
+    PASS: 0,
+    FAIL: 0,
+    WARN: 0,
+    SKIPPED: 0,
+    examinedTotal: 0,
+  });
+  const seed = (check, unitName, book) => {
+    for (const key of [check.id, `${check.id}|${book}`]) {
+      if (!acc.has(key)) acc.set(key, blank(check, unitName));
+    }
+  };
   const bump = (check, unitName, verdict, examined, book) => {
     for (const key of [check.id, `${check.id}|${book}`]) {
       if (!acc.has(key)) {
@@ -747,6 +905,13 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
   };
 
   const truncated = [];
+  // 🔴 A ctx THAT COULD NOT BE BUILT MUST LEAVE A TRACE IN THE PAYLOAD. It marks
+  // every check SKIPPED for that unit, and `evaluable = population - SKIPPED`, so a
+  // PARTIAL ctx failure SHRINKS the denominator and the rate RISES: measured, E2
+  // (BLOCKING) moves 1.34% -> 28.57% and joins the over-the-bar alarm on the
+  // strength of 142 units nothing ever read. The message went only to `log`, a
+  // no-op under `--json`. Recorded here so the payload carries it.
+  const ctxFailures = [];
   for (const spec of TIER_SPECS) {
     if (!tiers.includes(spec.tier)) continue;
     const checks = [...REGISTRY.values()].filter(
@@ -761,6 +926,14 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
         truncated.push(`tier ${spec.tier} / ${book}: ${units.length} -> ${limit}`);
         units = units.slice(0, limit);
       }
+      // 🔴 SEEDED BEFORE THE UNIT LOOP, SO A BOOK THAT CONTRIBUTED NOTHING STILL
+      // APPEARS. The per-book split prints only when `byBook.length > 1`, and a book
+      // with zero units had no accumulator entry at all — so the split VANISHED
+      // exactly when it mattered most, and an aggregate covering ONE book read as
+      // covering both. A tier with zero units everywhere made its checks disappear
+      // from the table entirely, and an absent row cannot be told from a row with
+      // nothing to report.
+      for (const c of checks) seed(c, spec.unit, book);
       log(
         `tier ${spec.tier} · ${book} · ${units.length} ${spec.unit}(s) x ${checks.length} check(s)`
       );
@@ -772,7 +945,13 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
           // A ctx that cannot be built is a FINDING about this unit, not a
           // reason to drop it from the denominator.
           for (const c of checks) bump(c, spec.unit, VERDICT.SKIPPED, 0, book);
-          log(`  ctx build failed for ${JSON.stringify(unit)}: ${e.message}`);
+          ctxFailures.push({
+            tier: spec.tier,
+            book,
+            unit: JSON.stringify(unit),
+            message: e.message,
+          });
+          console.error(`remt-sweep: ctx build FAILED (tier ${spec.tier}, ${book}): ${e.message}`);
           continue;
         }
         for (const c of checks) {
@@ -786,10 +965,16 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
   const shape = (a) => {
     const evaluable = a.population - a.SKIPPED;
     const tripped = a.FAIL + a.WARN;
-    // A spawn-dependent row without its spawn is not a rate at ALL — see
-    // SPAWN_DEPENDENT. Suppressed rather than annotated, because a number in a
-    // table gets quoted and a note does not.
-    const spawnGap = !spawns && SPAWN_DEPENDENT[a.id] ? SPAWN_DEPENDENT[a.id] : null;
+    // A spawn-dependent row whose spawn did not DELIVER is not a rate at all.
+    // 🔴 KEYED ON THE ROW'S INPUT, NEVER ON THE RUN FLAG. The first version was
+    // `!spawns && SPAWN_DEPENDENT[a.id]`, which stands down the moment
+    // `--with-spawns` is passed — even when the spawn it enabled then died. So
+    // passing the flag was enough to DISABLE the suppression that exists for
+    // exactly that state.
+    const spawnGap =
+      SPAWN_DEPENDENT[a.id] && spawnIncomplete(a.id, spawns)
+        ? SPAWN_DEPENDENT[a.id] + (spawns ? ' — AND ITS SPAWN FAILED IN THIS RUN' : '')
+        : null;
     return {
       ...a,
       evaluable,
@@ -832,6 +1017,8 @@ export async function sweep({ books, tiers, spawns, limit = 0, log = () => {} })
     books,
     tiers,
     spawnsEnabled: Boolean(spawns),
+    spawnFailures: (spawns && spawns.failures) || [],
+    ctxFailures,
     truncated,
     registrySize: REGISTRY.size,
     rows,
@@ -880,7 +1067,7 @@ export function formatReport(report) {
         String(r.examinedTotal).padStart(9),
       ].join(' ') +
         // 🔴 THE SPLIT IS PRINTED, NOT HIDDEN BEHIND A FLAG. An aggregate over two
-        // books whose rates differ 7x (A5: chemistry 3.4%, organic 23.5%) is the
+        // books whose rates differ 35x (A5: chemistry 0.7%, organic 23.5%) is the
         // shape "a saturated rate is a CATEGORY" warns about, and the aggregate is
         // what a reader quotes. One continuation line costs nothing and removes the
         // chance of quoting a number that describes neither book.
@@ -916,10 +1103,52 @@ export function formatReport(report) {
         `  ${r.id.padEnd(4)} tier ${r.tier}  ${pct(r.rate).trim()} of ${r.evaluable}  ` +
           (regen
             ? '— tier input is REGENERATED by the loop: a statement about the committed VINTAGE, ' +
-              "not about the code that will run. Re-measure after the run's own extract."
+              `not about the code that will run. Re-measure after ${TIER_REGENERATED_BY[r.tier]}.`
             : '— tier input is NOT regenerated by the loop: a statement about DATA THE RUN WILL ' +
               'CONSUME. A PRECONDITION, not a calibration question.')
       );
+    }
+  }
+
+  // 🔴 A BLOCKING CHECK WITH NO RATE IS INVISIBLE TO THE ALARM ABOVE, because
+  // `overBar` filters on `r.rate !== null`. K3 is the standing example: 112 of 112
+  // SKIPPED, blocking, and named by no section. Its ROW does not read clean
+  // (SKIP 112 / EVAL 0 / n/a / EXAMINED 0), so this is a completeness note rather
+  // than a §C60 hazard — but a reader scanning only the alarm would miss that a
+  // blocking gate supplied no evidence at all, which `runTier` scores as a halt.
+  const blockingNoRate = report.rows.filter((r) => r.blocking && r.rate === null);
+  if (blockingNoRate.length) {
+    lines.push('');
+    lines.push(
+      `⚠️ BLOCKING CHECKS WITH NO MEASURABLE RATE (${blockingNoRate.length}) — not over the bar, ` +
+        'and not under it either; they supplied no evidence, which `runTier` scores as a halt:'
+    );
+    for (const r of blockingNoRate) {
+      lines.push(
+        `  ${r.id.padEnd(4)} tier ${r.tier}  SKIPPED ${r.SKIPPED} of ${r.population}` +
+          (r.note ? `  — ${r.note}` : '')
+      );
+    }
+  }
+
+  if (report.spawnFailures.length) {
+    lines.push('');
+    lines.push(
+      `🔴 SPAWN FAILURES (${report.spawnFailures.length}) — every affected row is NOT a rate:`
+    );
+    for (const f of report.spawnFailures) lines.push(`  ${f.kind} / ${f.key}: ${f.message}`);
+  }
+  if (report.ctxFailures.length) {
+    lines.push('');
+    lines.push(
+      `🔴 ctx BUILD FAILURES (${report.ctxFailures.length}) — each marks EVERY check SKIPPED for ` +
+        "that unit, which SHRINKS the rate denominator. Treat this run's rates as unusable:"
+    );
+    for (const f of report.ctxFailures.slice(0, 20)) {
+      lines.push(`  tier ${f.tier} / ${f.book} / ${f.unit}: ${f.message}`);
+    }
+    if (report.ctxFailures.length > 20) {
+      lines.push(`  … and ${report.ctxFailures.length - 20} more`);
     }
   }
 
@@ -938,6 +1167,11 @@ export function formatReport(report) {
   );
   lines.push(
     '⚠️ * = blocking. RATE is (FAIL+WARN)/EVAL, i.e. tripped over non-SKIPPED. ' +
+      '🔴 A BLOCKING **SKIP** ALSO HALTS THE LOOP, and SKIPs are subtracted from EVAL — so ' +
+      'this RATE is a base rate, NOT a halt rate, and the SKIP column is the other half of ' +
+      'what a blocking check costs. (That is correct for Global Constraint 4, which is about ' +
+      'how often a check TRIPS; do not fold SKIPs into it — on this corpus that would ' +
+      'disqualify K2 and K5 over chapters the re-render has not produced yet.) ' +
       'A blocking FAIL halts the loop; a blocking WARN that examined something does not. ' +
       'The corpus is chemistry-shaped and every unit predates the re-extract — ' +
       'state that beside any rate quoted from this table.'
@@ -966,6 +1200,18 @@ async function main() {
   const books = args.book ? [args.book] : [...SWEEP_BOOKS];
   for (const b of books) {
     if (!exists(bookDir(b))) usage(`unknown book '${b}' (no books/${b} directory)`);
+    // ⚠️ ACCEPTED, NOT REFUSED, AND SAID OUT LOUD. A withdrawn book's committed
+    // bytes are legitimate MEASUREMENT input (CLAUDE.md: pointing a RUN at them is
+    // what is forbidden, and this tool never runs anything) — but a rate quoted
+    // from such a sweep would look exactly like an in-scope rate, so the report
+    // must not be silent about it.
+    if (!SWEEP_BOOKS.includes(b)) {
+      console.error(
+        `remt-sweep: ⚠️ '${b}' is NOT one of the two kept books (${SWEEP_BOOKS.join(', ')}). ` +
+          'It is withdrawn from publication (§C80/§C109); measuring it is fine, quoting the ' +
+          'result as an in-scope base rate is not.'
+      );
+    }
   }
 
   let tiers = [0, 1, 2, 3, 4];

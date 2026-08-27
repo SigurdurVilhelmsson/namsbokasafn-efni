@@ -62,6 +62,11 @@ describe('the self-test goes RED when a gate is neutered — it is not a tautolo
     const f = report.failures.find((x) => x.id === 'K2');
     expect(f).toBeDefined();
     expect(f.kind).toBe(FAILURE.TRIGGER_HAPPY);
+    // 🔴 `ok` WAS BOUND FOR ONLY ONE OF THE FOUR KINDS. `--self-test`'s exit code
+    // and its "OK —" banner both read `report.ok`, so a rule that softened any
+    // other kind would let the CLI print reassurance over a filed failure, with
+    // every meta-test still green.
+    expect(report.ok).toBe(false);
   });
 
   it('a gate that FAILs having examined nothing is a FIXTURE failure on BOTH arms', async () => {
@@ -78,6 +83,12 @@ describe('the self-test goes RED when a gate is neutered — it is not a tautolo
     const arms = report.failures.filter((f) => f.id === 'R3');
     expect(arms.map((a) => a.arm).sort()).toEqual(['bad', 'good']);
     expect(new Set(arms.map((a) => a.kind))).toEqual(new Set([FAILURE.FIXTURE]));
+    expect(report.ok).toBe(false);
+    // The detail must NOT assert a mechanism it cannot know: examined 0 arrives
+    // both from a ctx that never reached the gate AND from a gate that threw, and
+    // `runCheck` renders the second as FAIL/0 with the exception in `message`.
+    expect(arms[0].detail).toContain('or the gate threw');
+    expect(arms[0].detail).toContain('Message:');
   });
 
   it('CONTROL — with no overrides the self-test is clean, so the three above mean something', async () => {
@@ -117,6 +128,7 @@ describe('the self-test covers the whole registry, or says which id it does not'
     const f = report.failures.find((x) => x.id === 'Z9');
     expect(f).toBeDefined();
     expect(f.kind).toBe(FAILURE.NO_FIXTURE);
+    expect(report.ok).toBe(false);
   });
 
   it('an override naming an unregistered id is refused', async () => {
@@ -280,5 +292,40 @@ describe("each bad arm trips the leg its note NAMES — not merely 'some' leg", 
           : f.leg || f.kind || f.type || `{${Object.keys(f).sort().join(',')}}`;
       expect(sig, `${id} tripped a different leg than its note claims`).toBe(EXPECTED_LEG[id]);
     }
+  });
+});
+
+describe('the self-test cannot certify a registry it never saw', () => {
+  it('an EMPTY registry throws instead of reporting ok', async () => {
+    // Measured before the fix: `{ok: true, checked: 0, failures: []}` — a
+    // self-test that certified nothing, reporting success. The registry is
+    // populated by IMPORT, so empty means the tier modules never loaded.
+    await expect(selfTest({ registry: new Map() })).rejects.toThrow(/registry is EMPTY/);
+  });
+
+  it('the self-test imports the SAME tier modules the CLI wires', () => {
+    // 🔴 THE "every registered check has a fixture" GUARANTEE IS IMPORT-SCOPED.
+    // `REGISTRY` holds whatever has been imported, so a sixth tier module wired
+    // into the CLI but not into `remt-selftest.js` would never appear in
+    // `selfTest`'s registry — and the coverage assertion, which compares fixtures
+    // against that same registry, would stay green while the new tier went
+    // uncertified. The assertion belongs BETWEEN the two files, because neither
+    // one's own tests can see the divergence.
+    // ⚠️ LINE-ANCHORED (`^import`) ON PURPOSE. The CLI's docstring QUOTES all five
+    // import lines as example text, so an unanchored pattern found 10 — which the
+    // control below caught on the first run. A comment that looks like code is
+    // indistinguishable from code to a regex.
+    const grab = (rel) =>
+      [
+        ...fs
+          .readFileSync(path.resolve(import.meta.dirname, '..', rel), 'utf8')
+          .matchAll(/^import\s+'\.[./]*(?:lib\/)?(remt-checks-[a-z]+\.js)';/gm),
+      ]
+        .map((m) => m[1])
+        .sort();
+    const cli = grab('remt-battery.js');
+    const st = grab('lib/remt-selftest.js');
+    expect(cli.length, 'the CLI imports no tier module — the grab pattern broke').toBe(5);
+    expect(st).toEqual(cli);
   });
 });

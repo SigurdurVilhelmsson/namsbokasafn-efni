@@ -365,8 +365,15 @@ import { selfTest, formatSelfTest } from './lib/remt-selftest.js';
  *   import './lib/remt-checks-output.js';     // Task 11 — R1-R5
  *   import './lib/remt-checks-chapter.js';    // Task 12 — K1-K3
  *
- * Each module calls `registerChecks()` at import time; importing it here is the
- * ONLY thing that puts its checks in the REGISTRY. Measured (register §C82 L3):
+ * Each module calls `registerChecks()` at import time; importing it here is what
+ * puts its checks in the REGISTRY.
+ * ⚠️ "THE ONLY THING" WAS TRUE UNTIL TASK 13 AND IS NOT ANY MORE. `lib/remt-selftest.js`
+ * imports the same five, so these lines are no longer the sole wiring point — and
+ * because ESM evaluates a module once, importing it there ALREADY registers them,
+ * which makes the five below load-bearing only for a consumer that does not reach
+ * the self-test. They are kept because this is the documented wiring point and a
+ * sixth tier module must be added HERE; `remt-battery-selftest.test.js` asserts the
+ * two import sets agree, so they cannot diverge silently. Measured (register §C82 L3):
  * no task in either plan ever calls `registerChecks()` — Plan B's two occurrences
  * of `registerChecks(` are its doc comment and its definition, and the third
  * mention is an import BINDING, which a keyword grep cannot tell from a call.

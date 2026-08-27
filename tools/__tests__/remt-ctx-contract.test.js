@@ -60,7 +60,21 @@ function documentedKeys() {
   );
 }
 
-/** Keys any check actually reads, as key -> the module that reads it. */
+/**
+ * Keys any check actually reads, as key -> the module that reads it.
+ *
+ * 🔴 TWO IDIOMS, NOT ONE, AND THE SECOND WAS INVISIBLE TO THE FIRST VERSION.
+ * `remt-checks-mt.js`'s `skipIfMissing(ctx, id, keys)` reads through COMPUTED
+ * access (`ctx?.[k]`), so the key names live in the string-array literals at its
+ * seven call sites and no `ctx.<name>` pattern can see them. Measured: every key
+ * reaching that path today (`segText`, `isText`, `module`) is also read directly
+ * somewhere, so there is no LIVE gap — but "no gap today" is not "the gate covers
+ * the idiom", and a check added tomorrow that reads a new key only through
+ * `skipIfMissing` would walk straight past this file.
+ * ⚠️ The idiom-specific arm is deliberately narrow (it matches the helper by name)
+ * rather than "any string inside any array": a broad pattern would sweep in
+ * unrelated literals and make the diff below noisy enough to be ignored.
+ */
 function readKeys() {
   const out = new Map();
   for (const file of tierModules()) {
@@ -70,6 +84,24 @@ function readKeys() {
     const src = fs.readFileSync(file, 'utf8');
     for (const m of src.matchAll(/ctx\??\.([A-Za-z][A-Za-z0-9_]*)/g)) {
       if (!out.has(m[1])) out.set(m[1], path.basename(file));
+    }
+    // computed access via the shared guard: skipIfMissing(ctx, 'A5', ['a','b'])
+    for (const call of src.matchAll(/skipIfMissing\(\s*ctx\s*,\s*'[^']*'\s*,\s*\[([^\]]*)\]/g)) {
+      for (const k of call[1].matchAll(/'([A-Za-z][A-Za-z0-9_]*)'/g)) {
+        if (!out.has(k[1])) out.set(k[1], `${path.basename(file)} (via skipIfMissing)`);
+      }
+    }
+  }
+  return out;
+}
+
+/** Keys reachable ONLY through the computed-access idiom — the control for that arm. */
+function computedAccessKeys() {
+  const out = new Set();
+  for (const file of tierModules()) {
+    const src = fs.readFileSync(file, 'utf8');
+    for (const call of src.matchAll(/skipIfMissing\(\s*ctx\s*,\s*'[^']*'\s*,\s*\[([^\]]*)\]/g)) {
+      for (const k of call[1].matchAll(/'([A-Za-z][A-Za-z0-9_]*)'/g)) out.add(k[1]);
     }
   }
   return out;
@@ -126,6 +158,17 @@ describe('the ctx contract is COMPLETE — every key a check reads is documented
     // MESSAGE NAMES THE KEY AND THE FILE. A count tells the next person that
     // something is wrong; this tells them what to add and where it is read.
     expect(undocumented).toEqual([]);
+  });
+
+  it('the computed-access arm finds keys — a silent zero would make it decoration', () => {
+    // Without this, the arm added above could match nothing at all (a renamed
+    // helper, a reformatted call site) and the whole gate would silently narrow
+    // back to the single idiom it started with. §C82's "a gate never called is a
+    // gate that does not exist", at the level of one clause inside a gate.
+    const computed = computedAccessKeys();
+    expect([...computed].sort()).toEqual(['isText', 'module', 'segText']);
+    const read = readKeys();
+    for (const k of computed) expect(read.has(k), `${k} via skipIfMissing`).toBe(true);
   });
 
   it('exactly one CheckContext typedef exists — two would split the contract', () => {

@@ -2,12 +2,24 @@
  * remt-corpus.js — the §C82 battery's corpus walker, shared by every Tier-1 test file.
  *
  * ⚠️ IT WALKS `01-source` AND TESTS FOR THE SEGMENT FILE, RATHER THAN WALKING
- * `02-for-mt`. That is the whole point, not an implementation detail: `02-for-mt`
- * holds dated backups beside every live segment file — chemistry ch01 alone has
- * ELEVEN for `m68663` (re-measured 2026-08-27; this said "three", and the shape is
- * `<name>.backup.<ISO>`, not a dated `.md`) — so a naive `endsWith('.md')` walk counts each stale vintage
- * as a module and inflates every corpus number derived from it. Driving from the
- * `.cnxml` side cannot see a backup at all, because the filter is the extension.
+ * `02-for-mt`. That is the whole point, not an implementation detail — but the
+ * REASON usually given for it is false, and was false here until 2026-08-27.
+ *
+ * 🔴 THE INHERITED RATIONALE: "`02-for-mt` holds dated backups beside every live
+ * segment file — chemistry ch01 alone has three for `m68663` — so a naive
+ * `endsWith('.md')` walk counts each stale vintage as a module."
+ * 🔴 MEASURED: **IT CANNOT.** Chemistry's `02-for-mt` holds **3,102** backups and
+ * **0 of them end in `.md`** — the shape is `<name>-segments.en.md.backup.<ISO>`,
+ * so an `endsWith('.md')` filter excludes every one. (`m68663` has ELEVEN of them,
+ * not three, which is a second wrong number in the same sentence.)
+ * ✅ THE REAL OVER-COUNT IS **70**, and a naive `.md` walk gives **219** against
+ * 149 module pairs: **49** `(b)`/`(c)`/`(d)` re-extract variants
+ * (`m68865-segments(b).en.md`) plus **21** `chapter-metadata` files. A
+ * `.cnxml`-driven walk sees neither — the variants because nothing tests for them,
+ * the metadata because it has no source module.
+ * ▶ SO THE CONSTRUCTION IS RIGHT AND ITS STATED CAUSE WAS WRONG, which is the
+ * more dangerous shape: anyone verifying the rationale finds no backups ending in
+ * `.md`, concludes the hazard is imaginary, and "simplifies" the walker.
  *
  * ⚠️ THE POPULATION IS "MODULES WITH BOTH SIDES", WHICH IS SMALLER THAN "MODULES".
  * Only 17 of organic's 342 and 10 of micro's 159 carry a segment file today. Any

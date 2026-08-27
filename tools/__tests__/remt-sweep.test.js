@@ -21,9 +21,15 @@
  * (§C82 test convention: "corpus tests must assert a control count").
  */
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
+import { readChapterFromDisk } from '../cnxml-render-fidelity-check.js';
 import {
   BLOCKING_RATE_BAR,
   TIER_INPUT_REGENERATED,
+  TIER_REGENERATED_BY,
+  IMAGE_REPLACEMENT_TYPES,
+  spawnIncomplete,
   SWEEP_BOOKS,
   SWEEP_TRACKS,
   UNMEASURABLE,
@@ -161,16 +167,64 @@ describe('the two chapter-key conventions the loader owns', () => {
     expect(baselineKeyFor('03')).not.toBe('03');
   });
 
-  it('intentionalImageDropsFor is PER CHAPTER, never the book total', () => {
-    // 🔴 BOTH DIRECTIONS ARE LIVE DEFECTS. The book total handed to every chapter
-    // MASKS a real one-image drop as PASS on a blocking check (§C82 L96①); zero
-    // handed to the chapter that really holds the special module manufactures the
-    // chemistry appendices false positive that moves K2's rate 3.8% -> 7.7%,
-    // across the ~5% blocking bar (§C82 L88).
-    expect(intentionalImageDropsFor(CHEM, 'appendices')).toBe(1); // m68859, the periodic table
-    expect(intentionalImageDropsFor(CHEM, '01')).toBe(0);
-    expect(intentionalImageDropsFor(CHEM, '04')).toBe(0);
-    expect(intentionalImageDropsFor(ORG, '03')).toBe(0); // organic's specialModules is {}
+  it('intentionalImageDropsFor counts IMAGES, filters by TYPE, and reads the INJECTED cnxml', () => {
+    // 🔴 THREE DIVERGENCES FROM THE PRODUCER, ALL INVISIBLE ON TODAY'S CORPUS. The
+    // first version counted MODULES, applied NO type filter, and read `01-source`.
+    // `computeIntentionalImageDrops` counts `<image>` OCCURRENCES, filters on
+    // REPLACEMENT_TYPES, and takes the INJECTED CNXML — the array `checkChapter` is
+    // about to read. They agreed only because chemistry's one special module has
+    // exactly one image and its type IS `periodic-table`.
+    const pt = (id, images) =>
+      `<document><metadata><md:content-id>${id}</md:content-id></metadata>` +
+      '<image src="a"/>'.repeat(images) +
+      '</document>';
+    // m68859 is chemistry's `periodic-table` special module.
+    expect(intentionalImageDropsFor(CHEM, [pt('m68859', 1)])).toBe(1);
+    // IMAGES, not modules — a 2-image special module counts 2. Counting modules
+    // would UNDER-count and make K2 (BLOCKING) report a deliberate omission as a
+    // drop: a false halt.
+    expect(intentionalImageDropsFor(CHEM, [pt('m68859', 2)])).toBe(2);
+    // A module that is not special is not subtracted at all.
+    expect(intentionalImageDropsFor(CHEM, [pt('m68663', 3)])).toBe(0);
+    // organic's specialModules is {} — nothing is ever subtracted.
+    expect(intentionalImageDropsFor(ORG, [pt('m68859', 5)])).toBe(0);
+    // Degenerate inputs are 0, never NaN: K5's `NaN` refusal SKIPs a BLOCKING check.
+    for (const bad of [undefined, null, [], ['<document/>']]) {
+      expect(intentionalImageDropsFor(CHEM, bad), String(bad)).toBe(0);
+    }
+  });
+
+  it('the type filter is REAL — a special module of an unrecognised type is not subtracted', () => {
+    // The producer's REPLACEMENT_TYPES set exists because only some special
+    // modules replace their images. Without the filter, K2 would MASK a real drop.
+    const src = fs.readFileSync(
+      path.resolve(import.meta.dirname, '..', 'cnxml-render-fidelity-check.js'),
+      'utf8'
+    );
+    const block = src.slice(src.indexOf('const REPLACEMENT_TYPES'));
+    for (const t of IMAGE_REPLACEMENT_TYPES) {
+      expect(block.slice(0, 400), `${t} missing from the producer's set`).toContain(`'${t}'`);
+    }
+    // Control: the producer's set is non-empty and we are reading the right thing.
+    expect(block.slice(0, 400)).toContain('periodic-table');
+    expect(IMAGE_REPLACEMENT_TYPES.length).toBeGreaterThan(0);
+  });
+
+  it('the chapter it is called with is the chapter K2 judges — a corpus arm', () => {
+    const inputs = readChapterFromDisk(
+      path.resolve(import.meta.dirname, '..', '..', 'books', CHEM),
+      'appendices',
+      'mt-preview'
+    );
+    expect(inputs.cnxml.length, 'control: appendices really has injected cnxml').toBeGreaterThan(0);
+    expect(intentionalImageDropsFor(CHEM, inputs.cnxml)).toBe(1); // m68859, the periodic table
+    const ch1 = readChapterFromDisk(
+      path.resolve(import.meta.dirname, '..', '..', 'books', CHEM),
+      '01',
+      'mt-preview'
+    );
+    expect(ch1.cnxml.length).toBeGreaterThan(0);
+    expect(intentionalImageDropsFor(CHEM, ch1.cnxml)).toBe(0);
   });
 });
 
@@ -229,24 +283,43 @@ describe('a sweep run reports units, denominators and a total partition', () => 
     expect(formatReport(report)).toContain(CHEM);
   });
 
-  it('a ctx builder that throws SKIPs the unit but keeps it in the denominator', async () => {
-    // Dropping it instead would shrink the base silently — the class of defect
-    // this whole file exists for.
-    const broken = TIER_SPECS.find((s) => s.tier === 1);
-    const original = broken.ctx;
+  it('a ctx failure SHRINKS the rate denominator, and the report must carry it', async () => {
+    // 🔴 THIS TEST WAS TITLED "…but keeps it in the denominator" AND ASSERTED
+    // `rate === null` — i.e. it pinned the shrink it claimed to refute, and it
+    // only ever exercised TOTAL failure, where every unit fails and the effect is
+    // invisible. The dangerous case is PARTIAL: measured, E2 (BLOCKING) moves
+    // 1.34% -> 28.57% and joins the over-the-bar alarm on the strength of units
+    // nothing ever read. The rate cannot honestly be repaired — the units really
+    // were not judged — so the fix is that the failure REACHES THE PAYLOAD.
+    const spec = TIER_SPECS.find((x) => x.tier === 1);
+    const original = spec.ctx;
     try {
-      broken.ctx = () => {
-        throw new Error('synthetic ctx failure');
+      let n = 0;
+      spec.ctx = (u, o) => {
+        if (n++ % 2 === 0) throw new Error('synthetic ctx failure');
+        return original(u, o);
       };
-      const report = await sweep({ books: [CHEM], tiers: [1], limit: 3 });
+      const report = await sweep({ books: [CHEM], tiers: [1], limit: 4 });
+      expect(report.ctxFailures.length, 'the payload must record every ctx failure').toBe(2);
+      expect(report.ctxFailures[0]).toMatchObject({ tier: 1, book: CHEM });
+      expect(report.ctxFailures[0].message).toContain('synthetic ctx failure');
       for (const r of report.rows) {
-        expect(r.population).toBe(3);
-        expect(r.SKIPPED).toBe(3);
-        expect(r.rate).toBeNull();
+        expect(r.population).toBe(4); // population is untouched…
+        expect(r.SKIPPED).toBeGreaterThanOrEqual(2); // …and the failures land in SKIPPED…
+        expect(r.evaluable).toBe(4 - r.SKIPPED); // …which the denominator subtracts.
       }
+      // The human-readable report must SAY the rates are unusable.
+      expect(formatReport(report)).toContain('ctx BUILD FAILURES');
+      expect(formatReport(report)).toContain('unusable');
     } finally {
-      broken.ctx = original;
+      spec.ctx = original;
     }
+  });
+
+  it('CONTROL — with no ctx failures the payload is empty and the section is absent', async () => {
+    const report = await sweep({ books: [CHEM], tiers: [1], limit: 4 });
+    expect(report.ctxFailures).toEqual([]);
+    expect(formatReport(report)).not.toContain('ctx BUILD FAILURES');
   });
 });
 
@@ -349,4 +422,149 @@ describe("the blocking-bar readout — the sweep's most decision-relevant output
     // ...and the real one DOES, so the difference is the rate and not the shape.
     expect(formatReport(report)).toContain('BLOCKING CHECKS OVER');
   }, 60_000);
+});
+
+describe('a spawn that DIED must not be scored as a base rate', () => {
+  const dead = (expected) => ({
+    glossary: new Map(),
+    schema: new Map(),
+    audit: new Map(),
+    failures: [{ kind: 'glossary', key: CHEM, message: 'boom' }],
+    expected,
+  });
+  const alive = () => ({
+    glossary: new Map(SWEEP_BOOKS.map((b) => [b, { kind: 'ok', producer: 'x' }])),
+    schema: new Map(),
+    audit: new Map(),
+    failures: [],
+    expected: { glossary: 2 },
+  });
+
+  it('spawnIncomplete compares DELIVERED against EXPECTED, not against zero', () => {
+    // A run in which 3 of 26 audits died still produces a partial, quotable rate —
+    // exactly the case a `size > 0` test waves through.
+    expect(spawnIncomplete('G5', undefined)).toBe(true);
+    expect(spawnIncomplete('G5', dead({ glossary: 2 }))).toBe(true);
+    expect(spawnIncomplete('G5', alive())).toBe(false);
+    const partial = alive();
+    partial.expected.glossary = 3; // one more was owed than arrived
+    expect(spawnIncomplete('G5', partial)).toBe(true);
+    // Not spawn-dependent -> never incomplete, whatever the spawns look like.
+    expect(spawnIncomplete('G1', undefined)).toBe(false);
+  });
+
+  it('--with-spawns + a dead spawn suppresses the rate and says so', async () => {
+    // 🔴 THE SUPPRESSION USED TO KEY ON THE FLAG (`!spawns`), so passing
+    // `--with-spawns` DISABLED the guard that exists for exactly this state.
+    // Measured: G5 (BLOCKING) reported 100.0% with no note and joined the
+    // over-the-bar alarm — which under Global Constraint 4 disqualifies the only
+    // detector for a wholesale glossary producer swap.
+    const report = await sweep({ books: SWEEP_BOOKS, tiers: [0], spawns: dead({ glossary: 2 }) });
+    const g5 = report.rows.find((r) => r.id === 'G5');
+    expect(g5.blocking).toBe(true);
+    expect(g5.FAIL).toBe(2); // it really did report FAIL — the verdict is not the issue
+    expect(g5.rate).toBeNull(); // …but that is a refusal, not a rate
+    expect(g5.note).toContain('SPAWN FAILED IN THIS RUN');
+    const text = formatReport(report);
+    // ⚠️ SCOPED TO THE OVER-BAR BLOCK, NOT SEARCHED ACROSS THE WHOLE REPORT. A bare
+    // `not.toMatch(/G5\s+tier 0/)` fails for the RIGHT reason and the wrong one:
+    // G5 now legitimately appears under "BLOCKING CHECKS WITH NO MEASURABLE RATE",
+    // which is the correct destination for a refusal. The claim is that it is not
+    // in the ALARM — so the assertion has to bind the section.
+    const section = (heading) => {
+      const i = text.indexOf(heading);
+      if (i === -1) return '';
+      const rest = text.slice(i);
+      const end = rest.indexOf('\n\n');
+      return end === -1 ? rest : rest.slice(0, end);
+    };
+    expect(section('BLOCKING CHECKS OVER')).not.toMatch(/G5/);
+    expect(section('BLOCKING CHECKS WITH NO MEASURABLE RATE')).toMatch(/G5/);
+    expect(text).toContain('SPAWN FAILURES');
+    expect(report.spawnFailures).toHaveLength(1);
+  });
+
+  it('CONTROL — a HEALTHY spawn still produces a real rate, so the guard is not blanket', async () => {
+    const report = await sweep({ books: SWEEP_BOOKS, tiers: [0], spawns: alive() });
+    const g5 = report.rows.find((r) => r.id === 'G5');
+    expect(g5.rate).not.toBeNull();
+    expect(g5.note).toBeNull();
+    // …and a non-spawn-dependent row is unaffected in BOTH arms.
+    const dr = await sweep({ books: SWEEP_BOOKS, tiers: [0], spawns: dead({ glossary: 2 }) });
+    expect(dr.rows.find((r) => r.id === 'G1').rate).toBe(
+      report.rows.find((r) => r.id === 'G1').rate
+    );
+  });
+});
+
+describe('a book or tier that contributed nothing must still be visible', () => {
+  it('every swept book gets a per-book row, even with zero units', async () => {
+    // 🔴 THE SPLIT PRINTS ONLY WHEN `byBook.length > 1`, and a book with zero units
+    // had no accumulator entry — so the split VANISHED exactly when it mattered,
+    // and an aggregate covering ONE book read as covering both. Organic has no
+    // `faithful` track at all, so tier 3 over both books is the natural fixture.
+    const report = await sweep({ books: SWEEP_BOOKS, tiers: [3] });
+    for (const r of report.rows) {
+      expect(r.byBook.map((b) => b.book).sort(), r.id).toEqual([...SWEEP_BOOKS].sort());
+      expect(
+        r.byBook.reduce((n, b) => n + b.population, 0),
+        r.id
+      ).toBe(r.population);
+    }
+  }, 120_000);
+
+  it('a tier whose population is empty still emits its rows, with rate null', async () => {
+    // An absent row cannot be told from a row with nothing to report. Organic has
+    // no faithful publication track and only one rendered chapter, so scoping to
+    // it alone gives tiers with very small or empty populations.
+    const report = await sweep({ books: [ORG], tiers: [3] });
+    expect(report.rows.length).toBeGreaterThan(0);
+    expect(report.covered).toBe(report.registrySize);
+    for (const r of report.rows) expect(r.byBook).toHaveLength(1);
+  });
+});
+
+describe('the sweep refuses to certify a registry it never saw', () => {
+  it('an EMPTY registry throws instead of reporting a clean sweep', async () => {
+    // `runTier` already refuses "a clean run over an empty set"; the same rule was
+    // missing one level up. Measured before the fix: a well-formed report with
+    // empty `rows` and a partition line reading "0 of 0" — §C60 verbatim.
+    const saved = [...REGISTRY.entries()];
+    REGISTRY.clear();
+    try {
+      await expect(sweep({ books: [CHEM], tiers: [1] })).rejects.toThrow(/registry is EMPTY/);
+    } finally {
+      for (const [k, v] of saved) REGISTRY.set(k, v);
+    }
+    expect(REGISTRY.size).toBe(saved.length); // restored
+  });
+});
+
+describe('the over-bar advice names the stage that actually rewrites that tier', () => {
+  it('every regenerated tier has its own stage, and tier 0 has none', () => {
+    // 🔴 THE MESSAGE SAID "re-measure after the run\'s own EXTRACT" FOR ALL FOUR,
+    // and that is only tier 1\'s stage. A6 (tier 2, 58.4%, BLOCKING) reads
+    // `ctx.isText` and nothing else — its rate moves when the re-MT lands, not
+    // when the extract does. Advising one stage too early is advising someone to
+    // re-measure while the number cannot have changed, and to conclude from it.
+    for (const t of [1, 2, 3, 4]) {
+      expect(TIER_REGENERATED_BY[t], `tier ${t}`).toBeTruthy();
+      expect(TIER_INPUT_REGENERATED[t]).toBe(true);
+    }
+    expect(TIER_REGENERATED_BY[0]).toBeUndefined();
+    expect(TIER_REGENERATED_BY[1]).toMatch(/EXTRACT/);
+    expect(TIER_REGENERATED_BY[2]).toMatch(/re-MT/);
+    expect(TIER_REGENERATED_BY[3]).toMatch(/INJECT/);
+    expect(TIER_REGENERATED_BY[4]).toMatch(/RENDER/);
+    // …and they are genuinely different strings, not four copies.
+    expect(new Set(Object.values(TIER_REGENERATED_BY)).size).toBe(4);
+  });
+
+  it('a tier-2 over-bar row is told to re-measure after the re-MT, not the extract', async () => {
+    const report = await sweep({ books: SWEEP_BOOKS, tiers: [2] });
+    const text = formatReport(report);
+    expect(text).toMatch(/A6\s+tier 2/); // A6 is blocking and over the bar today
+    expect(text).toContain('re-MT (02-mt-output)');
+    expect(text).not.toContain('re-EXTRACT (02-for-mt)'); // tier 1's stage must not appear here
+  }, 120_000);
 });

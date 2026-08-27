@@ -20,13 +20,21 @@
  *     bad  -> must NOT be PASS, and must have examined > 0
  *     good -> must BE PASS,     and must have examined > 0
  *
- * — and the pairing is load-bearing by MEASUREMENT, not by argument. Mutating
- * the Tier-0 module one gate at a time (on a scratch copy, golden-restored and
- * `cmp`'d after every round): of five mutations, THREE were invisible to the bad
- * arm and TWO were invisible to the good arm. Neither arm alone would have
- * caught the set. The over-broadening mutations — a gate that fires on things it
- * should not — are visible ONLY through the good arm, and those are the ones
- * that halt a paid run over healthy content.
+ * — and the pairing is load-bearing by MEASUREMENT, not by argument. Mutating the
+ * Tier-0 module one gate at a time (scratch copy, golden-restored and `cmp`'d after
+ * every round), THE FIVE MUTATIONS AND WHICH ARM CAUGHT EACH — named, because an
+ * aggregate ("3 of 5") is a claim nobody can re-run:
+ *
+ *   M1  G1  `findGlossaryCollisions(terms, …)` -> `([], …)`      BAD arm only
+ *   M2  G2  delete `&& IN_ENDING.test(t.targetWord)`             GOOD arm only
+ *   M3  G3  `FUNCTION_WORDS.has(…)` -> `length <= 3`             GOOD arm only
+ *   M4  G4  `vals.size > 1` -> `>= 1`                            GOOD arm only
+ *   M5  G5  delete the `payload === null ||` clause              BAD arm only
+ *
+ * ▶ 3 of 5 invisible to the bad arm, 2 of 5 invisible to the good arm; neither arm
+ * alone catches the set. Note the pattern: every OVER-BROADENING mutation (M2, M3,
+ * M4 — a gate that fires on things it should not) is visible ONLY through the good
+ * arm, and those are exactly the ones that halt a paid run over healthy content.
  *
  * ── WHY `examined > 0` IS ASSERTED ON *BOTH* ARMS ────────────────────────────
  * 🔴 BECAUSE `runCheck` DOWNGRADES ONLY `PASS`. A bad-arm fixture that never
@@ -36,9 +44,17 @@
  * fixture missing its canonical `SEG:` marker gives `FAIL examined 0`, and
  * nothing in the contract objects. The good arm's `examined > 0` closes the
  * mirror case, where a SKIPPED would otherwise read as "not a failure".
- * ▶ THE ONE GATE THIS CANNOT PROTECT: G5 hard-codes `examined: 1`, so its count
- * is no evidence that it read anything (a §C82 L6 survivor). Its verdicts are
- * the whole discriminator, and that is stated at its fixture.
+ * ▶ THE GATES THIS CANNOT PROTECT — AND IT IS TWO, NOT ONE. This said "THE ONE
+ * GATE… G5"; a false enumeration is how the second one stays invisible.
+ *   G5 hard-codes `examined: 1`, so its count is no evidence that it read
+ *      anything (a §C82 L6 survivor).
+ *   R2 takes `examined` from the PAYLOAD (`injectReport.segmentsFound`), so the
+ *      fixture chooses its own count — 81 here — and a gate that read nothing
+ *      would report the same 81. R2 is BLOCKING.
+ * For both, the VERDICTS are the whole discriminator; the count is decoration.
+ * ⚠️ Do not read this list as closed without re-deriving it: the property is
+ * "`examined` is not keyed to content the gate read", and only reading each
+ * check's `examined` expression settles it.
  *
  * ── EVERY REGISTERED CHECK, OR A NAMED FAILURE ───────────────────────────────
  * 🔴 A CHECK WITH NO FIXTURE IS A `no-fixture` FAILURE, NOT AN OMISSION. An
@@ -817,7 +833,11 @@ export const SELF_TEST_FIXTURES = Object.freeze({
   },
   /**
    * TRIPS: unaccounted-rename. BLOCKING.
-   * UNCOVERED: the module-in-multiple-files leg and the cross-track refusal.
+   * UNCOVERED: the module-in-multiple-files leg, the `module-disappeared` leg (a
+   * page present BEFORE and absent after, with no replacement — the one thing the
+   * filename list exists to see) and the cross-track refusal. That is three of
+   * K3's four legs uncertified here, on a BLOCKING gate; `remt-checks-chapter.test.js`
+   * is where they are pinned.
    * 🔴 `slugMap.renames` IS AN OBJECT KEYED BY `from`, NOT AN ARRAY — the producer writes
    * `map.renames[from] = {to, moduleId, recordedAt}` and `readSlugMap` explicitly refuses an
    * array. Reading it as an array coerced every correctly-recorded rename to UNACCOUNTED, i.e.
@@ -904,6 +924,18 @@ export const SELF_TEST_FIXTURES = Object.freeze({
  * @returns {Promise<{ok:boolean, checked:number, results:Array, failures:Array}>}
  */
 export async function selfTest({ overrides = [], registry = REGISTRY } = {}) {
+  // 🔴 AN EMPTY REGISTRY MUST THROW, NOT REPORT `ok: true`. Measured:
+  // `selfTest({registry: new Map()})` returned `{ok: true, checked: 0, failures: []}`
+  // — a self-test that certified nothing, reporting success. `runTier` refuses
+  // "a clean run over an empty set" for exactly this reason; the rule was missing
+  // here. The registry is populated by IMPORT, so empty means the tier modules
+  // never loaded, which is the failure this is least able to survive silently.
+  if (registry.size === 0) {
+    throw new Error(
+      'selfTest: the check registry is EMPTY — the tier modules did not load. Refusing to ' +
+        'report a clean self-test over zero checks.'
+    );
+  }
   const byId = new Map(registry);
   for (const o of overrides) {
     // 🔴 AN OVERRIDE FOR AN UNKNOWN ID IS REFUSED, AND THAT IS NOT PEDANTRY. A
@@ -971,7 +1003,18 @@ export async function selfTest({ overrides = [], registry = REGISTRY } = {}) {
           blocking: check.blocking,
           arm,
           kind: FAILURE.FIXTURE,
-          detail: `${arm} arm examined 0 units (${r.verdict}) — the ctx never reached the gate; this is a fixture defect, not a verdict`,
+          // ⚠️ THE WORDING IS DELIBERATELY TWO-SIDED, AND THE MESSAGE IS RENDERED.
+          // It used to assert "the ctx never reached the gate", which is one of TWO
+          // ways to arrive here: the other is a gate that THREW, which `runCheck`
+          // converts to FAIL/examined 0 with the exception in `message`. Measured:
+          // a gate throwing only on the planted-CLEAN ctx — i.e. one that would halt
+          // healthy content — was filed as `fixture` with a detail naming a cause
+          // that had not happened, and the exception text ("Cannot read properties
+          // of undefined") was never printed anywhere.
+          detail:
+            `${arm} arm examined 0 units (${r.verdict}) — either the ctx never reached the ` +
+            `gate's logic or the gate threw. Either way the self-test could not certify it. ` +
+            `Message: ${r.message || '(none)'}`,
         });
         continue;
       }
