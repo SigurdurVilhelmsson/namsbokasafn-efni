@@ -43,6 +43,7 @@
 | `normalize-svg-dimensions` | Make translated figure SVGs render at full figure size in the reader. |
 | `preintake-probe` | Scans a candidate book's raw CNXML and prints a go/no-go fitness checklist: |
 | `remt-battery` | Runs one tier of the battery over one book/chapter/module and reports every |
+| `remt-sweep` | Runs every registered check over the EXISTING corpus and reports, per check: |
 | `repair-emphasis` | Compares EN and IS segment files to find segments where the MT API dropped |
 | `resolve-embeds` | Scans a book's 01-source CNXML for <iframe src="...openstax.org/l/..."> embeds, |
 | `resolve-os-embed` | Resolves <link class="os-embed" url="#exercise/{nickname}"/> references |
@@ -66,6 +67,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*45 tools total (45 active, 0 deprecated)*
+*46 tools total (46 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
