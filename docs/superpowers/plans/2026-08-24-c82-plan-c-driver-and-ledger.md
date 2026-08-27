@@ -917,24 +917,47 @@ Expected: **RED**, naming `tools/remt-ctx.js`. **That red is the review prompt t
 
 **Interfaces:** Consumes everything Task N1 produces.
 
+⚠️ **I1's STATEMENT IS AMENDED (controller ruling, 2026-08-27, after the N1 review).** It read *"no blocking Tier-0/1 check SKIPs over a unit the loader emitted"*. **That is structurally blind to the worse failure** — an excluded check is never invoked, so it never SKIPs. **The binding statement is now: *every blocking Tier-0/1 check either judges the unit, or is excluded AND provably unjudgeable (it SKIPs when run anyway).*** The second clause is what makes the loader's exclusion decision falsifiable; without it a subset that silently drops four blocking checks over all 166 modules satisfies I1 perfectly.
+
 🔴 **`tools/__tests__/remt-ctx-contract.test.js` enforces ONE direction only — *no check reads a key the contract does not document* (checks ⊆ contract). NOTHING enforces `loader ⊇ what checks require`.** That is this task, and it is the whole reason the loader can otherwise ship silently incomplete.
 
 - [ ] **Step 1: Write I1 — no blocking check SKIPs over a unit the loader emitted**
 
 ```javascript
-it('I1 — no blocking Tier-0/1 check SKIPs, and none reports leg-not-checked', async () => {
+it('I1 — every blocking check either judges the unit or is EXCLUDED and provably unjudgeable', async () => {
+  // 🔴 ITERATE THE WHOLE TIER, NOT THE JUDGEABLE SUBSET. I1's original wording — "no blocking
+  // check SKIPs over a unit the loader emitted" — is STRUCTURALLY BLIND to the worse failure:
+  // an EXCLUDED check is never invoked, so it never SKIPs, so a subset that wrongly drops four
+  // blocking checks over all 166 modules satisfies the invariant perfectly. (Measured: the
+  // `module` representative is `efnafraedi-2e/appendices/m68859`, because `unitsFor` sorts
+  // lexically and `'appendices' < 'ch00'` — one appendix module decides the subset for every
+  // module unit.) ▶ So assert BOTH directions and make the exclusion decision FALSIFIABLE:
+  //   in the subset  → must NOT SKIP        (the loader failed to load something it could have)
+  //   excluded       → must SKIP            (if it reaches a real verdict, the subset dropped
+  //                                          a check that could have run — the F1 hole)
   const units = unitsFor('lifraen-efnafraedi').slice(0, 5);
   const offences = [];
   for (const unit of units) {
     for (const tier of [0, 1]) {
       const { ctx } = await loadCtx(tier, unit, runState());
-      for (const id of await judgeableIds(tier, unit.kind, runState())) {
-        const c = REGISTRY.get(id);
-        if (!c.blocking) continue;
+      const judgeable = new Set(await judgeableIds(tier, unit.kind, runState()));
+      const blocking = [...REGISTRY.values()].filter((c) => c.tier === tier && c.blocking);
+      expect(blocking.length, `tier ${tier} has no blocking checks — I1 would be vacuous`)
+        .toBeGreaterThan(0);
+      for (const c of blocking) {
         const r = await runCheck(c, ctx);
-        if (r.verdict === VERDICT.SKIPPED) offences.push(`${unit.module}/${id}: SKIPPED`);
-        for (const f of r.findings || []) {
-          if (f.kind === 'leg-not-checked') offences.push(`${unit.module}/${id}: leg ${f.leg}`);
+        if (judgeable.has(c.id)) {
+          if (r.verdict === VERDICT.SKIPPED) offences.push(`${unit.module}/${c.id}: SKIPPED`);
+          for (const f of r.findings || []) {
+            if (f.kind === 'leg-not-checked') {
+              offences.push(`${unit.module}/${c.id}: leg ${f.leg}`);
+            }
+          }
+        } else if (r.verdict !== VERDICT.SKIPPED) {
+          offences.push(
+            `${unit.module}/${c.id}: EXCLUDED from kind '${unit.kind}' but reached ${r.verdict}` +
+              ` (examined ${r.examined}) — the subset dropped a judgeable blocking check`
+          );
         }
       }
     }
