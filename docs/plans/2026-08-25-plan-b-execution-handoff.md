@@ -10,6 +10,16 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
+> 🔴 **FIRST, RUN `git log --oneline origin/main..HEAD`.** As of 2026-08-27 `main` carries **unpushed
+> docs commits** — the merge/deploy record, the runbook ORDER and the Tier-0 precondition, two number
+> corrections, the organic extraction measurement, the ctx-loader decision brief, and the
+> exercise-architecture findings. **The command prints the count; this line deliberately does not**
+> (it said "seven" for about ninety seconds, until the commit adding it made eight — a count in prose
+> going stale inside the sentence warning about staleness).
+> **They are held DELIBERATELY** — the batching rule: a docs-only push to `main` strands prod's
+> content backup. **They must ride with the next code branch.** ⚠️ **Do not re-derive any of it, and
+> do not push them alone** — cut the branch, and they go with it.
+>
 > ⏩ **UPDATED 2026-08-27 (Task 13) — PLAN B IS COMPLETE, MERGED AND DEPLOYED.** Task 13 is on
 > `main` (PR #422 → squash `dd941fe8`); deploy 2026-08-27 [OPERATOR-REPORTED — not verifiable
 > from a dev session]. Merge verified by tree diff (0 lines) with a 1,755-line control.
