@@ -10,8 +10,10 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-27 (Task 13) — PLAN B IS COMPLETE. TASK 13 IS BUILT ON BRANCH
-> `c82-plan-b-task-13`, NOT YET MERGED.** Two deliverables, deliberately in two files:
+> ⏩ **UPDATED 2026-08-27 (Task 13) — PLAN B IS COMPLETE, MERGED AND DEPLOYED.** Task 13 is on
+> `main` (PR #422 → squash `dd941fe8`); deploy 2026-08-27 [OPERATOR-REPORTED — not verifiable
+> from a dev session]. Merge verified by tree diff (0 lines) with a 1,755-line control.
+> Two deliverables, deliberately in two files:
 > **`--self-test`** (`tools/lib/remt-selftest.js`, wired into `tools/remt-battery.js`) — 33
 > checks, 66 arms, every pair derived and verified by execution — and **`tools/remt-sweep.js`**,
 > the base-rate sweep, a SEPARATE top-level tool.
