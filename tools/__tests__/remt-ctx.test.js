@@ -10,6 +10,8 @@
  * nothing of — so both imports are needed, and both are load-bearing.
  */
 import { describe, it, expect } from 'vitest';
+import { existsSync, readdirSync } from 'node:fs';
+import path from 'node:path';
 import '../remt-battery.js'; // side-effect ONLY: takes REGISTRY from 0 to 33 entries
 import { REGISTRY, runCheck, VERDICT } from '../lib/remt-battery.js';
 import {
@@ -19,7 +21,15 @@ import {
   loadTier1Ctx,
   mtOutputPathFor,
   assertSameUnit,
+  unitsFor,
+  segPathOfUnit,
+  judgeableIds,
+  excludedIds,
+  sentinelCtxFor,
+  UNIT_KINDS,
+  CTX_CAPABILITY,
   RUN_BOOKS,
+  REPO_ROOT,
 } from '../remt-ctx.js';
 import { runState } from './helpers/remt-run-state.js';
 
@@ -200,5 +210,113 @@ describe('Tier-1 ctx — module-scoped, E9 five legs, the bare chapter form', ()
     // NEGATIVE CONTROL — the assertion is not vacuous: another module's provenance throws.
     const other = { ...unit, module: 'm68663' };
     expect(() => assertSameUnit(other, provenance)).toThrow(/does not belong to unit/);
+  });
+});
+
+describe('unitsFor — I3, the corpus enumerated honestly', () => {
+  it('enumerates the two kept books and nothing else', () => {
+    const units = RUN_BOOKS.flatMap((b) => unitsFor(b));
+    expect(new Set(units.map((u) => u.book))).toEqual(new Set(RUN_BOOKS));
+    expect(units.every((u) => UNIT_KINDS.includes(u.kind))).toBe(true);
+    expect(units.length).toBeGreaterThan(0); // the container is not the payload
+  });
+
+  it('every unit kind is actually present in the corpus — an empty kind would throw later', () => {
+    const units = RUN_BOOKS.flatMap((b) => unitsFor(b));
+    for (const kind of UNIT_KINDS) {
+      expect(units.filter((u) => u.kind === kind).length).toBeGreaterThan(0);
+    }
+  });
+
+  it('🔴 every unit round-trips to a segment file that exists — the chapter form is not decorative', () => {
+    // A unit whose chapter form does not rebuild its own directory reads an empty ctx, and
+    // four blocking checks then SKIP over inputs that are on disk. Asserted over the WHOLE
+    // population rather than a sample, because the appendix and ch00 cases are each one dir.
+    for (const u of RUN_BOOKS.flatMap((b) => unitsFor(b))) {
+      expect(existsSync(segPathOfUnit(u)), `${u.book}/${u.chapter}/${u.module}`).toBe(true);
+    }
+  });
+
+  it('excludes the parenthesised re-extract duplicates — they are not units', () => {
+    // `m68865-segments(b).en.md`-shaped files are COMMITTED in chemistry's 02-for-mt —
+    // measured 2026-08-27: 49 of them, spread over 9 chapter dirs.
+    // POSITIVE CONTROL: they exist, so this exclusion is not vacuous. Scanned across the
+    // whole book rather than one named chapter, because a hardcoded dir manufactures the
+    // absence it is meant to rule out — this control failed exactly that way when first
+    // written against ch20, which holds none.
+    const forMt = path.join(REPO_ROOT, 'books', 'efnafraedi-2e', '02-for-mt');
+    const dupes = readdirSync(forMt, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .flatMap((e) => readdirSync(path.join(forMt, e.name)))
+      .filter((f) => /\(\w+\)\.en\.md$/.test(f));
+    expect(dupes.length).toBeGreaterThan(0);
+    const modules = unitsFor('efnafraedi-2e').map((u) => u.module);
+    expect(modules.every((m) => !m.includes('('))).toBe(true);
+  });
+});
+
+describe('judgeableIds — Option C, probed by execution', () => {
+  it('every unit kind gets a NON-EMPTY judgeable subset — an empty one THROWS in runTier', async () => {
+    // 🔴 `runTier(tier, ctx, checks)` refuses a clean run over an empty set BY DESIGN, and `[]`
+    // is TRUTHY, so `checks || [...]` passes it straight through to the throw. If the loader ever
+    // computes an empty subset for a unit kind, the tier does not report — it DIES.
+    for (const kind of UNIT_KINDS) {
+      expect((await judgeableIds(1, kind, runState())).length).toBeGreaterThan(0);
+    }
+  });
+
+  it('L136 (a): E3 is judgeable on EVERY source-less unit kind', async () => {
+    for (const kind of UNIT_KINDS.filter((k) => !CTX_CAPABILITY[k].has('cnxml'))) {
+      expect(await judgeableIds(1, kind, runState())).toContain('E3');
+    }
+  });
+
+  it('🔴 judgeableIds returns ONLY checks of the tier asked for — runTier will NOT re-check', async () => {
+    // Measured on main: runTier(1, ctx, [G1]) RAN the tier-0 check G1 and reported it as
+    // {tier: 1, ranIds: ['G1']}. `tier` is a LABEL when `checks` is supplied, not a filter, and
+    // the no-checks fallback path DOES filter — so the safe path validates and the explicit path
+    // does not. The loader owns this agreement outright; nothing downstream re-checks it.
+    for (const kind of UNIT_KINDS) {
+      for (const tier of [0, 1]) {
+        for (const id of await judgeableIds(tier, kind, runState())) {
+          expect(REGISTRY.get(id).tier, `${id} leaked into tier ${tier}`).toBe(tier);
+        }
+      }
+    }
+  });
+
+  it('POSITIVE CONTROL — the `module` kind gets MORE checks than a source-less kind', async () => {
+    // Without this, "every kind gets a non-empty subset" is satisfied by giving them all the
+    // same set, and Option C would be unimplemented while both assertions above passed.
+    const sourceless = UNIT_KINDS.find((k) => !CTX_CAPABILITY[k].has('cnxml'));
+    expect((await judgeableIds(1, 'module', runState())).length).toBeGreaterThan(
+      (await judgeableIds(1, sourceless, runState())).length
+    );
+  });
+
+  it('🔴 the SUBSET PROBE can satisfy E9 and E6 — otherwise it silently excludes them everywhere', async () => {
+    // Without this, `judgeableIds` returning a plausible non-empty list is indistinguishable from
+    // a probe too poor to reach a verdict on the checks that matter most.
+    const sentinel = await sentinelCtxFor('module', runState());
+    for (const id of ['E9', 'E6']) {
+      const r = await runCheck(REGISTRY.get(id), sentinel);
+      expect(r.verdict, `${id} SKIPPED during the probe`).not.toBe(VERDICT.SKIPPED);
+    }
+    expect(await judgeableIds(1, 'module', runState())).toEqual(
+      expect.arrayContaining(['E9', 'E6'])
+    );
+  });
+
+  it('L136 (c): the exclusions are REPORTED, never dropped silently', async () => {
+    for (const kind of UNIT_KINDS) {
+      const ids = await judgeableIds(1, kind, runState());
+      const excluded = await excludedIds(1, kind, runState());
+      // Together they must account for the whole tier — nothing may vanish between them.
+      const tierIds = [...REGISTRY.values()].filter((c) => c.tier === 1).map((c) => c.id);
+      expect([...ids, ...excluded].sort()).toEqual(tierIds.sort());
+    }
+    // POSITIVE CONTROL — a source-less kind really does exclude something, so an
+    // always-empty `excludedIds` cannot satisfy the assertion above.
+    expect((await excludedIds(1, 'exercises', runState())).length).toBeGreaterThan(0);
   });
 });

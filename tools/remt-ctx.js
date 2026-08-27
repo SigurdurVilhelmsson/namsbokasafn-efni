@@ -29,6 +29,16 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
+// 🔴 SIDE-EFFECT IMPORT, AND NOT OPTIONAL. The REGISTRY is populated by the five tier-module
+// imports that ONLY the top-level CLI performs; importing `lib/remt-battery.js` alone gives a
+// registry of 0, and `judgeableIds` would then probe an empty tier and throw its empty-subset
+// error over a set that is fully judgeable. The CLI's `main()` is guarded by
+// `process.argv[1] === fileURLToPath(import.meta.url)`, so nothing runs. ⚠️ Do NOT "fix" this
+// by importing the tier modules from `lib/remt-battery.js` — hoisting evaluates them before
+// that module's own bindings exist and they die in the temporal dead zone.
+import './remt-battery.js';
+import { REGISTRY, runCheck, VERDICT } from './lib/remt-battery.js';
+
 const require = createRequire(import.meta.url);
 const { isMtLocked } = require('./lib/mt-lock.cjs');
 const execFileAsync = promisify(execFile);
@@ -424,4 +434,162 @@ export async function loadTier1Ctx(unit, runState) {
       { extractRunStartedAt: runState.extractRunStartedAt }
     ),
   };
+}
+
+/** The `02-for-mt` EN segment file a unit is derived from — the round-trip of `unitsFor`. */
+export const segPathOfUnit = (unit) => segPathFor(unit);
+
+/** Live EN segment files end in exactly this. A dated backup and a `(b)` variant do not. */
+const EN_SEGMENT_SUFFIX = '-segments.en.md';
+
+/** Which unit kind a segment-file basename describes. */
+function kindOfBasename(base) {
+  if (base.startsWith('chapter-metadata')) return 'chapter-metadata';
+  if (base.startsWith('exercises')) return 'exercises';
+  return 'module';
+}
+
+/**
+ * Every unit of `book`, in stable (chapter, module) order — I3's work-list.
+ *
+ * 🔴 IT WALKS `02-for-mt`, NOT `01-source`, AND THAT IS THE WHOLE POINT. A source-driven walk
+ * silently drops the two kinds that have no source module: organic's 31 `exercises` bundles
+ * (whose source is 1,961 JSONs under the read-only tree, not CNXML) and the 23
+ * `chapter-metadata` units. Those are 54 of 220 units — a quarter of the work-list, and the
+ * spender's list is what I3 must equal.
+ *
+ * ⚠️ `endsWith('-segments.en.md')` IS LOAD-BEARING TWICE OVER. It excludes dated backups
+ * (`…-segments.en.md.backup.<ISO>`) and, less obviously, the **49 committed parenthesised
+ * re-extract duplicates** (`m68865-segments(b).en.md`) — which are tracked, so no
+ * untracked-file or gitignore-based filter can see them.
+ *
+ * ⚠️ `chapter` IS THE DIRECTORY'S BARE FORM, PADDING KEPT: `ch00` -> `'00'`, `appendices` ->
+ * `'appendices'`. Keeping the padding is what makes a unit round-trip through `chapterDirOf`
+ * to the directory it came from; `remt-ctx.test.js` asserts that over the whole population.
+ *
+ * ✅ MEASURED 2026-08-27 over the two kept books: **220 units = 166 module + 31 exercises +
+ * 23 chapter-metadata**, and all 220 have an `02-mt-output` IS sibling. That reproduces the
+ * register's 166 module pairs and its 220 exactly-paired basenames from one honest walk.
+ * The unit is the LIVE `02-for-mt` EN segment file; the denominator is the two kept books.
+ *
+ * @param {string} book book slug
+ * @returns {Array<{book:string, chapter:string, module:string, kind:string}>}
+ */
+export function unitsFor(book) {
+  const root = path.join(bookDir(book), '02-for-mt');
+  let chapterDirs = [];
+  try {
+    chapterDirs = fs
+      .readdirSync(root, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name)
+      .sort();
+  } catch {
+    return [];
+  }
+  const units = [];
+  for (const dir of chapterDirs) {
+    const chapter = dir === 'appendices' ? 'appendices' : dir.replace(/^ch/, '');
+    for (const f of fs.readdirSync(path.join(root, dir)).sort()) {
+      if (!f.endsWith(EN_SEGMENT_SUFFIX)) continue;
+      const moduleName = f.slice(0, -EN_SEGMENT_SUFFIX.length);
+      units.push({ book, chapter, module: moduleName, kind: kindOfBasename(moduleName) });
+    }
+  }
+  return units;
+}
+
+/** A real unit of each kind, from the live corpus. Throws if the kind has no member. */
+export function representativeUnitFor(kind) {
+  for (const book of RUN_BOOKS) {
+    const u = unitsFor(book).find((x) => x.kind === kind);
+    if (u) return u;
+  }
+  throw new Error(
+    `remt-ctx: no unit of kind '${kind}' exists in ${RUN_BOOKS.join(', ')} — the subset probe has nothing real to build a sentinel from`
+  );
+}
+
+/** Tier-dispatching convenience used by Task N2, Task 5 and Task 6. */
+export async function loadCtx(tier, unit, runState) {
+  return tier === 0 ? loadTier0Ctx(unit) : loadTier1Ctx(unit, runState);
+}
+
+/**
+ * A ctx with a WELL-FORMED value for every key `CTX_CAPABILITY[kind]` declares. Used ONLY to
+ * probe the judgeable subset — never in a real run.
+ *
+ * 🔴 IT MUST TAKE `runState`. Four of E9's five legs and ALL of E6's input come from it
+ * (`costEstimate`, `emittedFiles`, `force`; plus E7's two snapshots). A probe handed no
+ * runState makes E9 and E6 SKIP, excluding the two blocking checks with the most loader
+ * obligations from EVERY unit kind — and the probe and the invariant would then agree with
+ * each other and disagree with the run, green forever.
+ *
+ * 🔴 IT MERGES BOTH TIERS, WHICH THE TASK BRIEF'S `loadCtx(1, …)` DID NOT. The Tier-0 keys are
+ * book-scoped, so they are supplied for every unit kind and belong in the sentinel; without
+ * them `judgeableIds(0, kind)` probes G1-G5 against a Tier-1 ctx, all five SKIP, and the
+ * empty-subset guard THROWS on a set that is in fact fully judgeable.
+ *
+ * ⚠️ Built by calling the REAL loader on a REAL unit, never by hand — with an empty or
+ * hand-built population, the probe and the checks agree with each other and disagree with
+ * the producer.
+ */
+export async function sentinelCtxFor(kind, runState) {
+  const unit = representativeUnitFor(kind);
+  const { ctx: tier0 } = await loadCtx(0, unit, runState);
+  const { ctx: tier1 } = await loadCtx(1, unit, runState);
+  return { ...tier0, ...tier1 };
+}
+
+/**
+ * OPTION C (L136): a per-unit-kind check population.
+ *
+ * 🔴 THE SUBSET IS PROBED BY EXECUTION, NOT DECLARED IN A TABLE. A table would be an
+ * enumeration of what each CHECK requires — which [LEAD] ruled against (property, not
+ * enumeration) and which cannot be derived mechanically anyway: the contract test's
+ * `/ctx\??\.(NAME)/` arm is blind to all six aliased-access forms, and E9 — the blocking
+ * check with the most loader obligations — reads ALL FIVE of its keys through
+ * `const c = ctx || {}`, its key names appearing as `ctx.<key>` ONLY inside error strings.
+ *
+ * What the loader legitimately DOES know is its OWN capability: which keys it can supply for
+ * a unit kind. So: build a sentinel ctx from that capability, run every check in the tier, and
+ * whatever SKIPs is structurally unjudgeable for the kind.
+ *
+ * ▶ L136 condition (a) — E3 on every source-less unit — then holds BY CONSTRUCTION rather than
+ * by decree, because E3 reads only `segText`, which the loader supplies for every kind.
+ * ▶ And condition (c) — exclusions REPORTED PER UNIT — is satisfied by returning them, not by
+ * dropping them silently.
+ *
+ * ⚠️ THE CACHE IS KEYED ON `tier:kind` AND NOT ON `runState`, so the FIRST runState a process
+ * probes with decides the subset for that process. That is correct for a run (one driver, one
+ * runState) and is stated because it is not obvious: a test that probes with a deliberately
+ * impoverished runState would poison the cache for every later call in the same file.
+ */
+const subsetCache = new Map();
+
+export async function judgeableIds(tier, kind, runState) {
+  const key = `${tier}:${kind}`;
+  if (!subsetCache.has(key)) {
+    const sentinel = await sentinelCtxFor(kind, runState);
+    const ids = [];
+    const excluded = [];
+    for (const c of [...REGISTRY.values()].filter((c) => c.tier === tier)) {
+      const r = await runCheck(c, sentinel);
+      (r.verdict === VERDICT.SKIPPED ? excluded : ids).push(c.id);
+    }
+    if (ids.length === 0) {
+      throw new Error(
+        `remt-ctx: tier ${tier} has an EMPTY judgeable subset for unit kind '${kind}'. ` +
+          `runTier would throw over it rather than report. Excluded: ${excluded.join(', ')}`
+      );
+    }
+    subsetCache.set(key, { ids, excluded });
+  }
+  return subsetCache.get(key).ids;
+}
+
+/** The exclusions, for L136 condition (c) — reported per unit, never dropped silently. */
+export async function excludedIds(tier, kind, runState) {
+  await judgeableIds(tier, kind, runState); // populates the cache
+  return subsetCache.get(`${tier}:${kind}`).excluded;
 }
