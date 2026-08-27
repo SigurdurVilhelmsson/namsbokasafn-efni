@@ -13,6 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parseSegmentsMap } from './lib/seg-markers.cjs';
+import { chapterProvided } from './lib/parseArgs.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -140,7 +141,21 @@ function processChapter(chapter, dryRun) {
   const isDir = fs.existsSync(faithfulDir) ? faithfulDir : enDir;
 
   if (!fs.existsSync(enDir)) {
+    // 🔴 THIS `process.exitCode` IS PART OF THE CHAPTER-0 FIX, NOT AN UNRELATED
+    // TIDY-UP — WITHOUT IT THE FIX ABOVE REGRESSES AN EXIT CODE.
+    // This path reported the error and `return`ed, so the process exited **0** — a
+    // §C60-shaped false green (measured: `--book lifraen-efnafraedi --chapter 99
+    // --dry-run` prints "directory not found" and exits 0). That was latent while
+    // the guard rejected chapter 0, because organic has no `02-for-mt/ch00` at all
+    // and so never reached here. Accepting chapter 0 newly ROUTES organic into this
+    // branch: unpatched `--book lifraen-efnafraedi --chapter 0` exits 1 (the guard),
+    // and with the guard alone fixed it would exit 0. A fix that converts a correct
+    // refusal into a silent success is not a fix.
+    // ⚠️ `process.exitCode`, never `process.exit()` — CLAUDE.md's durable rule: Node
+    // writes stdout to a pipe asynchronously, so an exit with output in flight
+    // discards it with the code still correct.
     console.error(`Error: Chapter ${chapter} directory not found: ${enDir}`);
+    process.exitCode = 1;
     return;
   }
 
@@ -328,7 +343,23 @@ function processChapter(chapter, dryRun) {
 const args = parseArgs(process.argv.slice(2));
 BOOKS_DIR = `books/${args.book}`;
 
-if (args.help || !args.chapter) {
+// 🔴 §C82 L65 — `!args.chapter` READ A REAL CHAPTER 0 AS "NO CHAPTER GIVEN".
+// `--chapter 0` parses to the NUMBER 0, which is falsy. `ch00` is the Preface and a
+// real content chapter in 5 of 5 books holding any CNXML ([LEAD] 2026-08-26);
+// chemistry's holds m68662, and `books/efnafraedi-2e/02-for-mt/ch00/` is on disk.
+// `chapterProvided` is the canonical predicate (`tools/lib/parseArgs.js`), already
+// used by the four tools Plan A and Task 11 fixed. It is shape-compatible with this
+// file's hand-rolled parser (`chapter` is `null` | number | NaN).
+// ⚠️ IT DELIBERATELY DOES NOT MAKE `--chapter appendices` WORK, and that is the
+// safe half: `parseInt('appendices', 10)` is NaN, which `chapterProvided` rejects.
+// This tool's only chapter-directory builder is the hand-rolled
+// `` `ch${String(chapter).padStart(2, '0')}` `` at :131, so an accepted 'appendices'
+// would proceed into `chNaN` — the §C82 L77 shape, and precisely the
+// "clean rejection turned into a proceed-into-broken-path" the byte-perfect roadmap
+// warns a blanket truthiness flip produces. 0 is safe for the same reason
+// 'appendices' is not: `String(0).padStart(2, '0')` is `'00'`, a directory that
+// really exists.
+if (args.help || !chapterProvided(args)) {
   printHelp();
   process.exit(args.help ? 0 : 1);
 }

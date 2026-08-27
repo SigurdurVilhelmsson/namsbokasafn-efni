@@ -248,8 +248,25 @@ This project was built iteratively with AI assistance. Known areas of concern:
   discovery falls to `vitest.config.js`, which sets **`fileParallelism: false`
   globally** — *nothing* runs in parallel. `vitest.config.js:5`'s own docstring
   ("Test discovery is handled by vitest.workspace.js") is wrong for the same reason.
-  Two consequences worth knowing: a test that mutates shared module state poisons
-  every **later** file in the run, and the suite is slower than the config claims.
+  🔴 **CORRECTED AGAIN 2026-08-26 — THIS BULLET'S OWN "consequence" WAS FALSE, AND
+  IT IS THE SECOND TIME THIS LINE HAS BEEN WRONG.** It said *"a test that mutates
+  shared module state poisons every **later** file in the run"*. **Measured: it does
+  not.** `fileParallelism: false` makes files run **sequentially**; it does not make
+  them share a process. `pool` and `isolate` are unset, so vitest's defaults apply —
+  a **forked, isolated child process per test file** — and neither module state nor
+  `globalThis` crosses the boundary. ⚠️ **AND THE WORD "later" IS WRONG TWICE OVER:
+  file order is NOT the order you pass on the command line.** Measured on a
+  two-file probe: `zz-probe-b` ran **before** `zz-probe-a` despite the reverse
+  argument order. ▶ **That reordering is exactly what made the first attempt at this
+  measurement worthless** — the second file's "no leak" assertion passed because it
+  had run FIRST, an absence manufactured by the harness. It took a **cross-process
+  ordering witness on disk** plus *symmetric* probes (each file checks for a leak only
+  if it finds itself second) to settle it. **Pair every null with a control that
+  proves the thing you are testing for actually happened.** ✅ What survives: the
+  suite is slower than the config's docstring implies, and **`vitest.workspace.js`
+  still cannot load**. ⚠️ This does NOT retire the battery CLI's preload +
+  `REGISTRY.clear()` machinery — that addresses a different mechanism (a **spawned**
+  CLI has its own module instance, which the parent cannot reach into).
   **⚠️ And `npm test` is `vitest run` — it does NOT run Playwright.** E2E is
   `server/`'s `test:e2e`, a **separate CI job**; a green `npm test` is never evidence
   for an E2E change. **No count is recorded here — run `npm test`.** Remediation Units 0–5 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.

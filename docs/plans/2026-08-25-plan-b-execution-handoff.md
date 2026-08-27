@@ -10,10 +10,46 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-26 (Task 11) — TASKS 1-10 ARE MERGED AND DEPLOYED; TASK 11 IS BUILT AND ON A BRANCH.**
-> Branch `c82-plan-b-task-11` carries **TIER 3 (`R1`-`R5`)**, so Tier 3 is complete: **5 checks, 2
-> blocking (`R2`, `R3`)**. ▶ **Start at Task 12 once it merges** — 2 Plan B tasks remain (12, 13),
-> then all 11 of Plan C.
+> ⏩ **UPDATED 2026-08-26 (Task 12) — TASK 12 IS BUILT ON BRANCH `c82-plan-b-task-12`, NOT YET
+> MERGED.** Tier 4 ships **FIVE** ids, not the spec's three: `K1` shape-drift (WARN) ·
+> `K2` cross-stage-drop (BLOCKING) · `K3` slug-map renames (BLOCKING) · **`K4`
+> genuine-math-drop** and **`K5` raw-cnxml-leak**, both deliberate scope expansions recorded
+> in the register — two detectors that already ran and would have had their verdicts filtered
+> away. `control-char` gets NO id on purpose (0 of ~2,193 files, so Global Constraint 4 bars
+> blocking and a check that can never fail is not a check).
+> ▶ **NEXT IS TASK 13** (`--self-test` + the base-rate sweep), then all 11 of Plan C.
+> 🔴 **READ §C82 L88-L104 BEFORE TASK 13.** The four that change what you do:
+> **① TASK 13'S SWEEP WILL SEE `--tier 4` EXIT 1 ON EVERY BOOK×TRACK, AND THAT IS CORRECT** —
+> K3 is structurally SKIPPED (no before-snapshot artifact exists anywhere) and K2 SKIPs on the
+> 86 of 112 cells with no published HTML. **Do not "fix" it by making either advisory.**
+> **② THE ctx CONTRACT'S `chapter` KEY WAS A TRAP AND IS NOW CORRECTED** — `'ch01'` and `-1`
+> (CLAUDE.md's own appendix sentinel!) both read as EMPTY, which SKIPs every content check.
+> Pass `1`/`'01'`/`'appendices'`.
+> **③ TWO GUARDS ARE LOADER OBLIGATIONS THE GATE CANNOT CLOSE (L104)** — K3's cross-track
+> refusal is a tautology against `readSlugMap` (it re-stamps `track` from the caller), and
+> `chapterContent` cannot tell a file PATH from a document without I/O.
+> **④ A FIX ROUND IS WHERE DEFECTS ENTER, MEASURED TWICE NOW: 6 of 14 second-pass findings
+> were defects in the fix round's OWN repairs** — the same ratio Task 11 measured. Budget for
+> a second pass; it is not optional.
+> ✅ **The owed L65 follow-up is DONE** (see below).
+>
+> ⏩ **PREVIOUS (Task 11) — TASKS 1-11 ARE ALL MERGED AND DEPLOYED** (Task 11 = PR #420 → squash `fa208375`; deploy operator-reported).
+> **TIER 3 IS COMPLETE: 5 checks, 2 blocking (`R2`, `R3`).** ▶ **START AT TASK 12** — 2 Plan B tasks
+> remain (12 = Tier 4 `K1`/`K2`/`K3`, 13 = `--self-test` + the base-rate sweep), then all 11 of Plan C.
+> ✅ **THE OWED L65 FOLLOW-UP IS DONE — branch `c82-l65-chapter0-followup`, 2026-08-26** (§C82
+> **L85/L86/L87**). ~~[LEAD] ruled that `auto-insert-placeholders.js:331` and `docx-import.js:968`
+> — the last two live chapter-0 sites — are fixed on a follow-up branch. Each wants its own
+> red-first test.~~ 🔴 **THE TWO GOT OPPOSITE TREATMENTS, WHICH IS THE FINDING:**
+> `auto-insert-placeholders` **accepts** 0 (`ch00` exists, `padStart` builds it correctly);
+> `docx-import` **still refuses** it, because **no book JSON models a chapter 0** — all three
+> number chapters from 1 and carry the preface as a top-level `preface` key — so flipping its
+> guard alone parses 57 docx blocks of real work and *then* dies `Chapter 0 not found in
+> server/data/chemistry-2e.json`, the roadmap's proceed-into-broken-path reproduced. **The shared
+> class is fixed in both; the per-tool answer differs.** ⚠️ **And the flip alone would have
+> REGRESSED an exit code** (L86) — organic has no `02-for-mt/ch00`, so accepting 0 routes it into
+> a branch that reported to stderr and exited **0**. ⚠️ **L87 ①: `auto-insert-placeholders` is a
+> no-op on EVERY chapter** (0 of 220 EN files have a matching `.is.md` in its search path) — the
+> fix makes ch00 *reachable*, not *working*. **Status is the register's RESUME, not this line.**
 > 🔴 **READ §C82 L63-L78 BEFORE TASK 12.** The three that generalise furthest:
 > **① THE WIRING IS A SEPARATE FACT FROM THE ARRAY (L71)** — dropping both BLOCKING checks from the
 > registry left the ENTIRE `tools/__tests__` suite byte-identical to baseline. Task 12 registers
@@ -85,7 +121,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 | | |
 |---|---|
 | `main` | ⚠️ **No sha is recorded here on purpose — this table pinned `d6c5e38b` and went stale the day Task 8 merged.** Tiers 0+1 (PR #416) and Tier 2's free half (PR #417) are both on `main` and both deployed. **`git rev-parse --short main` is the answer; the register's ⏩ RESUME owns what is merged.** |
-| Branch | ⚠️ **`c82-plan-b-task-11` is LIVE and unmerged** (Tier 3). Cut Task 12's branch from `main` only AFTER it merges, or from it if you are continuing the same thread — `git branch --show-current` is the answer, not this row. |
+| Branch | none live — #420 merged and its branch deleted. **Cut Task 12's from `main`.** ⚠️ `git branch --show-current` is the answer, not this row. |
 | Runbook | Phases 0, 1.1, 1.2, **2.1**, **2.2** complete. **3.1 is Plans B + C — this work.** |
 | Locks | ✅ **cleared on PROD.** 0 chemistry `.locked` on `origin/main`; biology's 1 remains, deliberately. ▶ **So E9's lock leg has NO natural fixture — synthetic only.** |
 | Scope | `efnafraedi-2e` (149 modules) + `lifraen-efnafraedi` (342). **Nothing else.** |

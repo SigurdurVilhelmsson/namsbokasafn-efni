@@ -21,7 +21,30 @@
  *
  *   @typedef {object} CheckContext
  *   @property {string}  book          slug, e.g. 'efnafraedi-2e'          (scope)
- *   @property {string} [chapter]      'ch01' | '0' | 'appendices'          (scope)
+ *   @property {string} [chapter]      '1' | '01' | 1 | '0' | 'appendices'  (scope)
+ *                                     🔴 THIS LINE READ `'ch01' | '0' | 'appendices'` UNTIL
+ *                                     TASK 12, AND THE FIRST SPELLING IT DOCUMENTED IS ONE
+ *                                     THAT SILENTLY READS NOTHING. Measured against
+ *                                     `readChapterFromDisk`, the producer of Tier 4's
+ *                                     `chapterInputs`:
+ *                                       4 · '4' · '04' · 0 · '0' · 'appendices'  → content
+ *                                       'ch04' · 'ch4' · 'ch00' · -1             → {cnxml:[], html:[]}
+ *                                     An empty read makes every Tier-4 content check SKIP,
+ *                                     and K2/K5 are BLOCKING — so a driver built to the old
+ *                                     wording halts on every chapter while looking like a
+ *                                     tier that simply found nothing to judge.
+ *                                     ⚠️ **`-1` IS THE TRAP A CAREFUL READER IS MOST LIKELY
+ *                                     TO HIT, BECAUSE CLAUDE.md SENDS THEM THERE**: its
+ *                                     Directory-Structure section prescribes `-1` as the
+ *                                     appendix sentinel, and that is right for
+ *                                     `chapterLabel.chapterDir()` and wrong here — both of
+ *                                     the render-fidelity tool's path builders compare
+ *                                     `chapter === 'appendices'` as a STRING, so `-1`
+ *                                     builds `ch-1` and `chapters/-1`. **Pass the string.**
+ *                                     ▶ The `ch`-prefixed forms are the source-tree
+ *                                     convention; Tier 4 reads publication-track output,
+ *                                     whose dirs are BARE. Two conventions, and this key
+ *                                     takes the bare one.
  *   @property {string} [module]       'm68663'                    (scope · Task 10: A5)
  *                                     ⚠️ NO LONGER SCOPE-ONLY. A5 keys the residue
  *                                     allowlist on it and SKIPS without it. It is
@@ -161,6 +184,105 @@
  *                                     them from `examined`; treating the array length as
  *                                     the examined count is the §C60 defect this check was
  *                                     built around.
+ *   @property {object} [chapterInputs] readChapterFromDisk()'s `{cnxml, html}` for ONE
+ *                                     chapter x track                (Task 12: K1/K2/K4/K5)
+ *                                     🔴 TIER 4 IS PER CHAPTER, NOT PER MODULE — the
+ *                                     chapter is the closed reconciliation unit, because
+ *                                     rollup pages re-present content from several modules
+ *                                     and a per-module count of anything in the published
+ *                                     tree is wrong by construction.
+ *                                     ⚠️ BOTH ARRAYS MUST BE NON-EMPTY or every check that
+ *                                     reads it SKIPs. A chapter rendered on one side only
+ *                                     cannot be judged; §C82 L78② measured a one-sided
+ *                                     guard reporting PASS over an empty document.
+ *   @property {number} [knownIntentionalImageDrops] images deliberately omitted **from THIS
+ *                                     CHAPTER**                            (Task 12: K2)
+ *                                     🔴 REQUIRED, NEVER DEFAULTED TO 0, AND K2 IS
+ *                                     BLOCKING. `computeIntentionalImageDrops` is
+ *                                     module-local in the render-fidelity tool, so a gate
+ *                                     that calls `checkChapter` without this option reports
+ *                                     chemistry appendices as an image drop (m68859, the
+ *                                     periodic table) — taking the tier's measured rate
+ *                                     from 3.8% to 7.7%, across the ~5% blocking bar.
+ *                                     ⚠️ A wrapper tested only against organic passes
+ *                                     without it: organic's specialModules is `{}`.
+ *                                     🔴 PER CHAPTER, NOT PER BOOK — THIS LINE SAID "this
+ *                                     book" AND POINTED AT THE BOOK-LEVEL `specialModules`
+ *                                     UNTIL A REVIEW MEASURED IT. `checkChapter` subtracts
+ *                                     the value from THAT CHAPTER's `<image>` count, so a
+ *                                     driver following the old wording would hand
+ *                                     chemistry's book total to all 23 chapters and MASK a
+ *                                     real one-image drop as PASS — L88's false positive
+ *                                     inverted into a false negative, on a blocking check.
+ *                                     Count only the special modules IN the chapter judged.
+ *                                     ⚠️ K1 AND K5 ARE NOT CONSUMERS — this said
+ *                                     "K1/K2/K5". Both filter finding types the option
+ *                                     cannot move, and K5's demand for it was a pure
+ *                                     false-halt surface on a blocking check (§C82 L96②).
+ *   @property {object|null} [renderBaseline] the PARSED per-CHAPTER bucket histogram from
+ *                                     `render-fidelity-baseline.json`, or `null` when this
+ *                                     chapter has none                      (Task 12: K1)
+ *                                     🔴 TRI-STATE, AND THE FOURTH INSTANCE OF §C21/§C82
+ *                                     L57 — the worst yet, with SEVEN representations of
+ *                                     "nothing" against `fidelityAllowlist`'s three: a
+ *                                     missing file · a file with no `chapters` key · this
+ *                                     chapter absent (84 of 112 cells) · the entry present
+ *                                     but `{}` · malformed JSON · the four bytes `null` ·
+ *                                     `chapters` not an object. **`{}` is TRUTHY and
+ *                                     manufactures 16 false findings, every one
+ *                                     `expected: 0`; malformed JSON throws UNCAUGHT and
+ *                                     kills the whole run rather than one chapter.**
+ *                                     `undefined` means the loader never set the key and is
+ *                                     refused separately from `null`.
+ *                                     ⚠️ ITS KEYS ARE A THIRD CHAPTER CONVENTION —
+ *                                     UNPADDED (`"3"`), while the publication directory is
+ *                                     `"03"`. The loader owns that mapping; a gate handed
+ *                                     the wrong key reads "no baseline" and SKIPs, which
+ *                                     looks exactly like the expected inert state.
+ *   @property {Map<string,string>} [publishedBefore] snapshotModuleIds() filename ->
+ *                                     moduleId, taken BEFORE the render     (Task 12: K3)
+ *                                     🔴 THE ONLY ctx KEY WHOSE CORRECTNESS IS A PROPERTY
+ *                                     OF *WHEN* IT WAS TAKEN, AND NO PURE GATE CAN CHECK
+ *                                     IT. The slug map is not regenerable. Measured: a
+ *                                     snapshot taken AFTER the render is the inverse of
+ *                                     `renderedModules`, so the rename set is empty and K3
+ *                                     reports a clean "zero unaccounted" on exactly the
+ *                                     runs that destroyed the information — and
+ *                                     `snapshotSize` is identical in both arms, so the
+ *                                     `PASS + examined 0 -> SKIPPED` backstop is silent.
+ *                                     Nothing on disk witnesses vintage: the map payload
+ *                                     carries no run id, sha or timestamp, and the write is
+ *                                     skipped entirely when nothing was pruned, so absence
+ *                                     of the file is also absence of evidence.
+ *                                     ▶ THIS IS A SEQUENCING OBLIGATION ON THE DRIVER.
+ *                                     A `Map` is required rather than a serialisable
+ *                                     object precisely because it cannot be reconstructed
+ *                                     from a file written at an unknown time.
+ *   @property {Map<string,string>} [publishedAfter] the same, after the render (Task 12: K3)
+ *   @property {object|null} [slugMap] the PARSED track-qualified
+ *                                     `slug-map.<track>.json`, or null      (Task 12: K3)
+ *                                     ⚠️ TRACK-QUALIFIED IS LOAD-BEARING — vefur flattens
+ *                                     both tracks into one directory, so a shared
+ *                                     `slug-map.json` means a `faithful` map overwrites
+ *                                     `mt-preview`'s. K3 refuses a map whose own `track`
+ *                                     disagrees with `ctx.track`.
+ *                                     🔴 THAT REFUSAL CANNOT FIRE IF YOU LOAD WITH
+ *                                     `readSlugMap`, AND THE LOADER MUST KNOW IT.
+ *                                     `readSlugMap(mapPath, {book, track})` RE-STAMPS
+ *                                     `track` from the CALLER's argument and discards the
+ *                                     value on disk — by design, since it also fabricates
+ *                                     an empty map for a missing file — so `map.track`
+ *                                     always equals whatever the loader just passed, and a
+ *                                     cross-track comparison against it is a tautology.
+ *                                     ▶ **To make the guard real, the loader must read the
+ *                                     FILE's own `track` field** (parse the JSON directly,
+ *                                     or compare `readSlugMap`'s output against the raw
+ *                                     bytes) and hand K3 the on-disk value. Same shape as
+ *                                     `loadAllowlistOrNull` above: a gate is pure, so it
+ *                                     cannot tell a re-stamped field from a read one, and
+ *                                     the contract is the only place the distinction can
+ *                                     be stated. K3's guard still catches an absent
+ *                                     `ctx.track` and a map assembled by any other route.
  *   @property {string[]} [emittedFiles] filenames the extract emitted (Task 5: E6)
  *                                     ⚠️ A LISTING, NOT A PATH — gates are pure, so the
  *                                     loader walks the directory. It must scope the list
@@ -258,6 +380,7 @@ import './lib/remt-checks-glossary.js'; // Task 7 — G1-G5 (tier 0)
 import './lib/remt-checks-extract.js'; // Tasks 3-6 — E1-E7, E9 (tier 1)
 import './lib/remt-checks-mt.js'; // Task 8 — A1, A6, A2b, A2c (tier 2); Task 9 adds A2a/A4/A8
 import './lib/remt-checks-output.js'; // Task 11 — R1-R5 (tier 3)
+import './lib/remt-checks-chapter.js'; // Task 12 — K1-K5 (tier 4)
 
 /** Tiers the battery defines: 0 glossary · 1 extract · 2 MT · 3 output · 4 chapter. */
 export const TIER_MIN = 0;

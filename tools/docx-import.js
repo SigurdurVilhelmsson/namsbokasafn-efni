@@ -27,6 +27,7 @@ import { fileURLToPath } from 'url';
 import mammoth from 'mammoth';
 import { parseSegmentRecords } from './lib/seg-markers.cjs';
 import { writeProvenance } from './lib/provenance.js';
+import { chapterProvided } from './lib/parseArgs.js';
 
 // =====================================================================
 // ARGUMENT PARSING
@@ -965,9 +966,44 @@ async function main() {
     process.exit(0);
   }
 
-  if (!args.docx || !args.chapter) {
+  // 🔴 §C82 L65, AND THE ANSWER HERE IS THE OPPOSITE OF ITS SIBLING'S.
+  // `!args.chapter` conflated a real chapter 0 with an absent argument, so
+  // `--chapter 0` reported "--docx and --chapter are required" while `--docx` had in
+  // fact been supplied and the file existed — a diagnostic that names the wrong
+  // argument. `chapterProvided` fixes exactly that: 0 is provided, `null` and NaN
+  // are not.
+  if (!args.docx || !chapterProvided(args)) {
     console.error('Error: --docx and --chapter are required');
     printHelp();
+    process.exit(1);
+  }
+
+  // 🔴 AND THEN CHAPTER 0 IS STILL REFUSED — DELIBERATELY, ON A MEASUREMENT.
+  // The [LEAD] ruling of 2026-08-26 settles the GENERAL question ("ch00 is the
+  // Preface, a real content chapter in 5 of 5 intaken books") and explicitly leaves
+  // the per-tool question open: does THIS tool's own operation make sense on a
+  // preface? For a docx import the answer is measurably NO, because the tool's data
+  // model has no chapter 0 to import INTO. `loadModuleMetadata` resolves a chapter
+  // via `bookData.chapters.find((c) => c.chapter === chapter)`, and every book JSON
+  // numbers its chapters from 1 — chemistry-2e [1..21], organic-chemistry [1..31],
+  // biology-2e [1..47] — carrying the preface instead as a top-level `preface` key
+  // (m68662 / m00001 / m66425). So `chapters.find(c => c.chapter === 0)` cannot match.
+  // ▶ MEASURED, and this is why the refusal is here rather than left to that lookup:
+  // with only the guard above flipped, `--chapter 0 --docx <preface.docx> --dry-run`
+  // parses the whole document (57 blocks of real work) and THEN dies with
+  // "Chapter 0 not found in server/data/chemistry-2e.json" — an argument error
+  // degraded into a data-model error, which is exactly the
+  // "clean rejection turned into a proceed-into-broken-path" that
+  // `docs/plans/2026-07-07-byte-perfect-efnafraedi-roadmap.md` warns a blanket
+  // truthiness flip produces. Refusing before Stage 1 keeps it an argument error.
+  // ▶ DELETE THIS GUARD, NOT THE ONE ABOVE, the day a book JSON models its preface
+  // as chapter 0. The refusal is about the DATA MODEL, not about ch00 being unreal.
+  if (args.chapter === 0) {
+    console.error(
+      'Error: --chapter 0 (the Preface) is not importable: the book data model numbers ' +
+        'chapters from 1 and carries the preface as a separate `preface` entry, so there ' +
+        'is no chapter 0 to import into.'
+    );
     process.exit(1);
   }
 
