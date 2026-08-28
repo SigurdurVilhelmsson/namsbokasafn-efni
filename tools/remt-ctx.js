@@ -48,7 +48,22 @@ export const REPO_ROOT = path.resolve(import.meta.dirname, '..');
 /** A plain, non-null, non-array object. `typeof x === 'object'` is NOT this. */
 export const isPlainRecord = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
-/** Read a file, or null. Never throws, never returns ''. */
+/**
+ * Read a file, or `null` when it is absent or unreadable. Never throws.
+ *
+ * 🔴 A ZERO-BYTE FILE RETURNS `''`, NOT `null`, AND THAT IS DELIBERATE. This docstring used to
+ * claim "never returns ''" and that was simply false — `fs.readFileSync` on an empty file
+ * returns exactly that, and both callers set the ctx key on `!== null`, so `''` REACHES ctx.
+ * ▶ Collapsing `''` to `null` would make ABSENT and EMPTY indistinguishable, which is the
+ * anti-pattern this whole loader is built to avoid (§C21: a gate keyed on one representation
+ * of "nothing" is walked past by another representation of it). Emitting `''` is what makes a
+ * zero-byte source LOUD: its consumers guard `!== ''` (`skipIfCtxUnusable`), so the blocking
+ * check SKIPs and the run halts — which is what a zero-byte source deserves. The invariant
+ * suite's I2 table classifies `''` as a violation for the same reason, and is deliberately
+ * stricter than the `!== null` guard here.
+ * ▶ [Controller ruling R18, 2026-08-28: the BEHAVIOUR is correct and stays; the docstring was
+ * the defect.] Do not "fix" this by returning `null`.
+ */
 export const readOrNull = (p) => {
   try {
     return fs.existsSync(p) ? fs.readFileSync(p, 'utf8') : null;
@@ -118,6 +133,31 @@ const iso = (ms) => (Number.isFinite(ms) ? new Date(ms).toISOString() : String(m
  * Exported so N2 can drive it and so the driver can call it per unit; nothing in this loader
  * calls it, by design (a loader that asserted on its own output could not report a finding).
  *
+ * ── THE SAME-UNIT HALF: THREE CLAUSES, BECAUSE THE MODULE NAME ALONE IS NOT AN IDENTITY ──
+ * 🔴 THE PREDICATE WAS `src.path.includes(unit.module)` AND THAT ENFORCED NOTHING FOR A
+ * QUARTER OF THE CORPUS. Measured 2026-08-28: **54 of 220 units carry a module basename that
+ * is a shared LITERAL** — `exercises` ×31 and `chapter-metadata` ×23 — so for those units
+ * "this source belongs to that unit" was satisfied by ANY unit of the same kind, in any
+ * chapter, in either book. Cross-wiring organic ch01 `exercises` with organic ch02
+ * `exercises` passed silently. A module name is unique only for the 166 `module` units, and
+ * an identity claim that holds for 166 of 220 is not an identity claim.
+ * ▶ So a source must be under the unit's own BOOK, and — unless it is book-scoped — must name
+ * the unit's own MODULE and sit in the unit's own CHAPTER DIRECTORY. The three clauses are
+ * ordered widest-first so the error names the outermost thing that is wrong.
+ *
+ * ⚠️ THE BOOK CLAUSE APPLIES TO THE GLOSSARY TOO, AND THAT IS THE POINT OF ITS PLACEMENT.
+ * Tier-0 provenance is `{glossary, payloadText}`, both under `books/<book>/glossary/`, and
+ * with the module clause carved out (correctly — they are book-scoped, not module-scoped)
+ * the tier-0 arm could not throw on ANY input: it was a no-op wearing a test's clothes.
+ * Scoping it to the book is what makes tier 0 falsifiable — cross-wire the two books'
+ * glossaries and it now throws.
+ *
+ * ⚠️ THE CHAPTER DIRECTORY IS RESOLVED LAZILY, PER SOURCE, AND MOVING IT TO THE TOP OF THE
+ * FUNCTION BREAKS TIER 0. `chapterDirOf` THROWS on an absent chapter (by design), and a
+ * legitimate tier-0 unit has none — it is book-scoped, so callers build `{book, kind, module}`
+ * and nothing else. Computing it eagerly would turn every tier-0 assertion into a crash about
+ * a field tier 0 does not have.
+ *
  * ── THE VINTAGE HALF (added 2026-08-28) ──
  * 🔴 IT WAS DECLARED AND NEVER ENFORCED, AND BOTH VALUES IT NEEDS WERE ALREADY IN THE
  * PROVENANCE OBJECT. `EXTRACTION_DERIVED` named the population and was referenced by nothing.
@@ -147,10 +187,49 @@ const iso = (ms) => (Number.isFinite(ms) ? new Date(ms).toISOString() : String(m
  *      drift.
  */
 export function assertSameUnit(unit, provenance) {
+  // The book clause reads `unit.book`, so an absent one must fail HERE, naming the field.
+  // Without this it surfaces as a `path.join` TypeError from `bookDir` — which reads as a
+  // loader bug rather than as the caller having handed over a unit with no book.
+  if (typeof unit?.book !== 'string' || unit.book === '') {
+    throw new Error(
+      `remt-ctx: assertSameUnit needs unit.book to scope provenance to a book, got ` +
+        `${JSON.stringify(unit?.book)}. Every source must sit under books/<unit.book>/.`
+    );
+  }
+  const ownBookDir = bookDir(unit.book) + path.sep;
+  const GLOSSARY_SEG = `${path.sep}glossary${path.sep}`;
+
   for (const [key, src] of Object.entries(provenance.sources)) {
-    if (!src.path.includes(unit.module) && !src.path.includes('/glossary/')) {
+    // (i) BOOK — every source, the book-scoped ones included. `startsWith` on the resolved
+    // directory rather than `includes(unit.book)`: a slug can appear anywhere in a path.
+    if (!src.path.startsWith(ownBookDir)) {
       throw new Error(
-        `remt-ctx: ctx key '${key}' does not belong to unit ${unit.module}: ${src.path}`
+        `remt-ctx: ctx key '${key}' does not belong to unit ${unit.module}: wrong BOOK — ` +
+          `expected a source under ${ownBookDir}, got ${src.path}`
+      );
+    }
+
+    // (ii) The book-scoped carve-out. `glossary`/`payloadText` are one file per book by
+    // design, so they name no module and live in no chapter directory. They have already
+    // been scoped to the right book by (i), which is the whole of their identity.
+    if (src.path.includes(GLOSSARY_SEG)) continue;
+
+    // (iii) MODULE — unique for the 166 `module` units, a shared literal for the other 54.
+    if (!src.path.includes(unit.module)) {
+      throw new Error(
+        `remt-ctx: ctx key '${key}' does not belong to unit ${unit.module}: wrong MODULE — ` +
+          `the path names no '${unit.module}': ${src.path}`
+      );
+    }
+
+    // (iv) CHAPTER DIRECTORY — the discriminator (iii) lacks for `exercises` and
+    // `chapter-metadata`. Resolved here, per source, never at the top: see the docstring.
+    const chapterSeg = `${path.sep}${chapterDirOf(unit.chapter)}${path.sep}`;
+    if (!src.path.includes(chapterSeg)) {
+      throw new Error(
+        `remt-ctx: ctx key '${key}' does not belong to unit ${unit.module}: wrong CHAPTER ` +
+          `DIRECTORY — expected ${chapterSeg} (chapter ${JSON.stringify(unit.chapter)}), got ` +
+          `${src.path}. A shared module basename makes the chapter the only discriminator.`
       );
     }
   }

@@ -32,7 +32,9 @@ import '../remt-battery.js'; // side-effect ONLY: takes REGISTRY from 0 to 33 en
 import { REGISTRY, runCheck, VERDICT } from '../lib/remt-battery.js';
 import {
   assertSameUnit,
+  chapterDirOf, // re-imported for the FLIPPED gap test: it binds the expected chapter dir
   EXTRACTION_DERIVED,
+  excludedIds,
   isPlainRecord,
   isSnapshot,
   judgeableIds,
@@ -59,16 +61,37 @@ const TIER0_COMBOS = RUN_BOOKS.flatMap((book) =>
 );
 
 /**
- * I2 IN A TABLE: the shape each loader-supplied value must satisfy WHEN PRESENT. Every key
- * here reaches ctx through a parse, a spawn, a file read or a shape guard — i.e. through
- * something that can half-succeed. The property is *absent, `null`, or well-formed*; the
- * shape I2 exists to refuse is present-but-shapeless, which is truthy and passes every
- * `if (ctx.key)` its consumers write.
+ * I2 IN A TABLE: the shape each value the LOADER ITSELF PRODUCES must satisfy WHEN PRESENT.
+ * The property is *absent, `null`, or well-formed*; the shape I2 exists to refuse is
+ * present-but-shapeless, which is truthy and passes every `if (ctx.key)` its consumers write.
+ *
+ * ⚠️ THE SCOPE SENTENCE IS NARROW ON PURPOSE — IT USED TO CLAIM "every key that reaches ctx
+ * through a parse, a spawn, a file read or a shape guard", AND THAT WAS UNTRUE OF ITS OWN
+ * CONTENTS. Three such keys were missing (`handEdits`, a `git log` spawn; `inputs`, a set of
+ * `fs.statSync` reads; `locked`, an fs-backed `isMtLocked`), so the next author could read the
+ * docstring, conclude spawn-sourced values were covered, and add a fourth without a counter.
+ * That is this repo's own "a comment that generalises past its code". Two of the three are now
+ * IN the table; the third is named below as excluded, with its mechanism.
+ *
+ * ── WHAT IS DELIBERATELY NOT HERE, AND WHY ──
+ * · `locked` — a BOOLEAN, and a guard on it could not fire on its realistic failure. A broken
+ *   `isMtLocked` yields `undefined`, which `censusI2` skips BY DESIGN (absent is legal), so
+ *   `typeof v === 'boolean'` would only ever catch a string or a number, which nothing
+ *   produces. Measured 2026-08-28: `boolean` on 220/220 units and `true` on **0** — a
+ *   saturated value, so such a counter would read as coverage while separating nothing.
+ * · `book`, `chapter`, `module` — copied straight off `unit`; they cannot half-succeed.
+ * · `force`, `costEstimate`, `emittedFiles` — the DRIVER's, passed through unexamined. The
+ *   loader is not their producer, so guarding them here would pin the test fixture rather than
+ *   the loader. ▶ THEY ARE NOT UNCOVERED: the judgeable-subset pin below is what catches one
+ *   of them going missing, and `emittedFiles` is precisely the key it was added for.
  *
  * ⚠️ `payloadVerdict` DEMANDS A `producer` STRING, not merely a non-empty record, because
  * that is the value G5 reads. ⚠️ The two string keys demand `!== ''`: an empty file read
  * yields `''`, which is falsy-but-present — the mirror image of the same defect, and
- * `skipIfCtxUnusable` tests for it explicitly.
+ * `skipIfCtxUnusable` tests for it explicitly. This is STRICTER than the loader's own
+ * `!== null` guard, and deliberately so (see `readOrNull`, ruling R18).
+ * ⚠️ The two ARRAY guards are satisfied by `[]` — `[].every()` is vacuously true — so the
+ * container alone proves nothing. `i2NonEmptyPayloads` counts the payload separately.
  */
 const WELL_FORMED = {
   glossary: (v) => isPlainRecord(v) && Object.keys(v).length > 0,
@@ -82,7 +105,69 @@ const WELL_FORMED = {
   segText: (v) => typeof v === 'string' && v !== '',
   committedExtract: isSnapshot,
   freshExtract: isSnapshot,
+  // `git log` output. An EMPTY array is legitimate (a unit nobody hand-edited), so emptiness
+  // is not a violation — but every element must be a subject string.
+  handEdits: (v) => Array.isArray(v) && v.every((s) => typeof s === 'string'),
+  // `fs.statSync` results. `[]` IS a defect here — `expectedInputs` always returns at least
+  // the EN segment path — and an empty one silently empties E9's leg 3.
+  inputs: (v) =>
+    Array.isArray(v) &&
+    v.length > 0 &&
+    v.every(
+      (i) =>
+        isPlainRecord(i) &&
+        typeof i.path === 'string' &&
+        typeof i.exists === 'boolean' &&
+        typeof i.bytes === 'number'
+    ),
 };
+
+/** The array-valued keys above, whose CONTAINER passing says nothing about their PAYLOAD. */
+const ARRAY_PAYLOAD_KEYS = ['handEdits', 'inputs'];
+
+/**
+ * 🔴 C1's ANCHOR: THE MEASURED JUDGEABLE/EXCLUDED SUBSET, FROZEN AS A LITERAL.
+ *
+ * ── WHY A GOLDEN MASTER IS THE ONLY THING THAT WORKS HERE ──
+ * `sentinelCtxForUnit` builds its probe ctx from THE SAME LOADER the sweep then runs. So a
+ * SYSTEMATICALLY omitted ctx key is invisible to both directions of I1: the check SKIPs during
+ * the probe → recorded `excluded` → the sweep runs it on an equally deficient ctx → it SKIPs →
+ * direction B is satisfied. The three representatives agree with each other, so the
+ * disagreement tripwire never fires either. **Demonstrated by the N2 reviewer: mutating
+ * `emittedFiles: undefined` in `loadTier1Ctx` stopped E6 — a BLOCKING check — running on all
+ * 220 units, with 23/23 tests passing and exit 0.** That is *a gate whose two sides derive
+ * from the same token cannot see damage to its own anchor*, exactly.
+ * ▶ This table is the cross-side anchor: a literal the loader's damage cannot reach.
+ *
+ * ⚠️ IT IS NOT THE ENUMERATION [LEAD] RULED AGAINST. That ruling forbids a table of *which ctx
+ * keys each check requires* — which cannot be derived mechanically anyway (E9 reads all five
+ * of its keys through `const c = ctx || {}`). This is a different object: a pin on the
+ * MEASURED RESULT of the probe, derived by running it and then frozen.
+ *
+ * ⚠️ EVERY `excluded: []` BELOW IS LOAD-BEARING — DO NOT DELETE THEM AS `[]`-vs-`[]` NOISE.
+ * `'1:module'.excluded` is THE Mutation-B assertion: E6 appearing in that array is the
+ * failure, and an empty literal is the only way to say "nothing was dropped here".
+ * ⚠️ A NEWLY REGISTERED CHECK REDDENS THIS TABLE, ON PURPOSE. Adding a check changes which
+ * kinds it can judge; that is a decision a human should confirm and record here, not one the
+ * suite should absorb silently. Re-derive with `probeJudgeableSubset(tier, kind, runState())`.
+ *
+ * ✅ MEASURED 2026-08-28 over the live corpus, both tiers, all three kinds.
+ */
+const EXPECTED_SUBSET = Object.freeze({
+  '0:module': { judgeable: ['G1', 'G2', 'G3', 'G4', 'G5'], excluded: [] },
+  '0:exercises': { judgeable: ['G1', 'G2', 'G3', 'G4', 'G5'], excluded: [] },
+  '0:chapter-metadata': { judgeable: ['G1', 'G2', 'G3', 'G4', 'G5'], excluded: [] },
+  '1:module': {
+    judgeable: ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E9'],
+    excluded: [],
+  },
+  // E1/E2/E4/E5 are source-side: these kinds have no CNXML, so their exclusion is REAL.
+  '1:exercises': { judgeable: ['E3', 'E6', 'E7', 'E9'], excluded: ['E1', 'E2', 'E4', 'E5'] },
+  '1:chapter-metadata': {
+    judgeable: ['E3', 'E6', 'E7', 'E9'],
+    excluded: ['E1', 'E2', 'E4', 'E5'],
+  },
+});
 
 /**
  * The whole measurement: every unit, both tiers, every BLOCKING check, plus the I2 shape
@@ -109,12 +194,14 @@ async function sweepCorpus() {
     // I2
     i2Violations: [],
     i2Observed: {}, // ctx key -> how many well-formed values were actually seen
+    i2NonEmptyPayloads: {}, // array key -> how many NON-EMPTY ones were seen
     // I4
     i4UnitOffences: [],
     i4VintageOffences: [],
     i4AssertOffences: [],
     i4SourcesChecked: 0,
     i4VintageChecked: 0,
+    i4AssertChecked: { t0: 0, t1: 0 }, // per TIER: a global total hides a vacuous tier
   };
 
   const censusI2 = (ctx, where) => {
@@ -123,6 +210,15 @@ async function sweepCorpus() {
       if (wellFormed(ctx[key])) out.i2Observed[key] = (out.i2Observed[key] || 0) + 1;
       else
         out.i2Violations.push(`${where}: ctx.${key} = ${JSON.stringify(ctx[key])?.slice(0, 80)}`);
+    }
+    // 🔴 THE CONTAINER IS NOT THE PAYLOAD. Both array guards above accept `[]` (`handEdits`
+    // legitimately, `inputs` only because `length > 0` is inside the guard), so an
+    // `i2Observed` count proves a value was SHAPED, never that it CARRIED anything. Counted
+    // separately so the control can say which of the two it is asserting.
+    for (const key of ARRAY_PAYLOAD_KEYS) {
+      if (Array.isArray(ctx[key]) && ctx[key].length > 0) {
+        out.i2NonEmptyPayloads[key] = (out.i2NonEmptyPayloads[key] || 0) + 1;
+      }
     }
   };
 
@@ -159,6 +255,7 @@ async function sweepCorpus() {
     const before = out.judgeablePairs + out.excludedPairs;
     await judgeBlocking(0, unit, ctx, new Set(await judgeableIds(0, unit.kind, state)));
     out.tier0Pairs += out.judgeablePairs + out.excludedPairs - before;
+    out.i4AssertChecked.t0++;
     try {
       assertSameUnit(unit, provenance);
     } catch (e) {
@@ -187,6 +284,7 @@ async function sweepCorpus() {
         );
       }
     }
+    out.i4AssertChecked.t1++;
     try {
       assertSameUnit(unit, provenance);
     } catch (e) {
@@ -291,6 +389,85 @@ describe('I1 — the book-scope premise that licenses sweeping tier 0 over 5 com
   });
 });
 
+describe('I1 — the judgeable subset itself, pinned against a literal the loader cannot reach', () => {
+  // 🔴 THIS IS THE ONLY ASSERTION IN THE FILE WHOSE ANCHOR IS NOT DERIVED FROM THE LOADER.
+  // Everything else above compares the loader's probe against the loader's sweep — and when a
+  // ctx key goes missing SYSTEMATICALLY, both sides move together and every one of them stays
+  // green. See `EXPECTED_SUBSET` for the executed demonstration (E6, blocking, silently
+  // dropped from all 220 units at 23/23 passing).
+
+  for (const [key, expected] of Object.entries(EXPECTED_SUBSET)) {
+    const [tierStr, kind] = [key.slice(0, 1), key.slice(2)];
+    const tier = Number(tierStr);
+
+    it(`${key} — the JUDGEABLE set is exactly the pinned literal`, async () => {
+      const ids = [...(await judgeableIds(tier, kind, runState()))].sort();
+      // Named per combination so a shrink says WHICH check stopped being judgeable on WHICH
+      // kind, rather than printing two anonymous arrays.
+      expect(ids, `tier ${tier} / kind '${kind}' judgeable subset changed`).toEqual(
+        [...expected.judgeable].sort()
+      );
+    });
+
+    it(`${key} — the EXCLUDED set is exactly the pinned literal`, async () => {
+      const ids = [...(await excludedIds(tier, kind, runState()))].sort();
+      expect(ids, `tier ${tier} / kind '${kind}' exclusions changed`).toEqual(
+        [...expected.excluded].sort()
+      );
+    });
+  }
+
+  it('🔴 CONTROL — the pin covers EVERY (tier, kind) combination, so none is silently unpinned', () => {
+    // A table missing a row pins nothing for that row while looking complete. 2 tiers × 3
+    // kinds = 6; a new unit kind or a new tier must be added here deliberately.
+    const wanted = [0, 1].flatMap((t) => UNIT_KINDS.map((k) => `${t}:${k}`));
+    expect(Object.keys(EXPECTED_SUBSET).sort()).toEqual(wanted.sort());
+  });
+
+  it('🔴 CONTROL — the pin is a PARTITION of each tier: judgeable ∪ excluded = every check', async () => {
+    // Binds the pin to the REGISTRY. Without it, a check added to a tier is absent from both
+    // pinned arrays and the golden master silently stops describing the whole tier.
+    for (const [key, expected] of Object.entries(EXPECTED_SUBSET)) {
+      const tier = Number(key.slice(0, 1));
+      const all = [...REGISTRY.values()].filter((c) => c.tier === tier).map((c) => c.id);
+      expect(all.length, `tier ${tier} has no checks at all`).toBeGreaterThan(0);
+      expect(
+        [...expected.judgeable, ...expected.excluded].sort(),
+        `${key} is not a partition`
+      ).toEqual([...all].sort());
+      // …and the two halves are disjoint, so a check cannot be pinned as both.
+      expect(expected.judgeable.filter((id) => expected.excluded.includes(id))).toEqual([]);
+    }
+  });
+
+  it('🔴 CONTROL — every BLOCKING check is pinned judgeable somewhere, so dropping one is red', () => {
+    // 🔑 THE CONTROL THAT SEPARATES THE CASE WE CARE ABOUT. The pin only catches a dropped
+    // blocking check if that check is named in some `judgeable` array to begin with. E6 is
+    // blocking and appears in `1:module`, `1:exercises` and `1:chapter-metadata` — which is
+    // exactly why `emittedFiles: undefined` now reddens three assertions instead of none.
+    for (const tier of [0, 1]) {
+      const pinnedJudgeable = new Set(
+        Object.entries(EXPECTED_SUBSET)
+          .filter(([k]) => Number(k.slice(0, 1)) === tier)
+          .flatMap(([, v]) => v.judgeable)
+      );
+      const blocking = blockingOf(tier).map((c) => c.id);
+      expect(blocking.length, `tier ${tier} has no blocking checks`).toBeGreaterThan(0);
+      for (const id of blocking) {
+        expect(pinnedJudgeable.has(id), `blocking ${id} is pinned judgeable on NO kind`).toBe(true);
+      }
+    }
+  });
+
+  it('🔴 CONTROL — the EXCLUDED half of the pin is not uniformly empty', () => {
+    // Six `excluded: []` literals would make that half of the pin an `[]`-vs-`[]` comparison
+    // that no exclusion change could ever move. Live content: {exercises, chapter-metadata} ×
+    // {E1,E2,E4,E5} — the four source-side checks the two source-less kinds cannot judge.
+    const totalExcluded = Object.values(EXPECTED_SUBSET).reduce((n, v) => n + v.excluded.length, 0);
+    expect(totalExcluded).toBeGreaterThan(0);
+  });
+});
+
 describe('I2 — every spawn/parse/read-sourced value is well-formed or null, never shapeless', () => {
   it('no ctx the loader emitted carries a present-but-shapeless value', () => {
     expect(sweep.i2Violations).toEqual([]);
@@ -305,6 +482,22 @@ describe('I2 — every spawn/parse/read-sourced value is well-formed or null, ne
       expect(
         sweep.i2Observed[key] ?? 0,
         `ctx.${key} was never observed well-formed`
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  it('🔴 CONTROL — the ARRAY-valued keys were seen carrying a PAYLOAD, not just a container', () => {
+    // 🔴 THE COUNTER ABOVE CANNOT SEPARATE `[]` FROM A REAL VALUE. `handEdits`' guard accepts
+    // an empty array on purpose (a unit nobody hand-edited is legal), and `[].every()` is
+    // vacuously true — so without this, "observed well-formed 220 times" is satisfied by a
+    // loader that returned 220 empty arrays, i.e. by `handEditCommits` silently failing.
+    // Measured 2026-08-28: NON-EMPTY on 220/220 for both keys — `handEdits` lengths 1..10,
+    // `inputs` 1 for the 54 source-less units and 2 for the 166 modules. So the control is
+    // live and free, and it is what makes E9's hand-edit leg provably fed.
+    for (const key of ARRAY_PAYLOAD_KEYS) {
+      expect(
+        sweep.i2NonEmptyPayloads[key] ?? 0,
+        `ctx.${key} was never observed NON-EMPTY — the container passed, the payload is absent`
       ).toBeGreaterThan(0);
     }
   });
@@ -369,7 +562,17 @@ describe('I4 — same-unit, same-vintage provenance', () => {
   // right count. `remt-checks-extract.js:795` assigns this to the loader by name: "That is the
   // LOADER's contract (§C82 L21), not a guard's."
 
-  it('every source a ctx read belongs to THAT unit, over the whole corpus', () => {
+  it('every source the loader RECORDED belongs to THAT unit, over the whole corpus', () => {
+    // ⚠️ "RECORDED", NOT "READ", AND THE DIFFERENCE IS REAL RATHER THAN PEDANTIC. This title
+    // said "every source a ctx read", which is not what any assertion here checks. Measured
+    // 2026-08-28: for a chemistry unit `ctx.glossariesByBook` carries BOTH books' glossaries
+    // while `provenance.sources` records only chemistry's path. That is correct by design —
+    // G4 is the one cross-book gate and needs both — but it means provenance is a record of
+    // what the loader OPENED FOR THIS UNIT, not an inventory of every byte in the ctx.
+    // ▶ Stating it makes the gap legible instead of papering over it.
+    // ⚠️ This predicate is the test's OWN (`path.includes(unit.module)`), deliberately kept
+    // independent of `assertSameUnit` so the two cannot fail together for one reason. It is
+    // the WEAKER of the pair; `i4AssertOffences` below runs the real function.
     expect(sweep.i4UnitOffences).toEqual([]);
   });
 
@@ -400,6 +603,31 @@ describe('I4 — same-unit, same-vintage provenance', () => {
     expect(sweep.i4AssertOffences).toEqual([]);
   });
 
+  it('🔴 CONTROL — the sweep ran assertSameUnit at BOTH tiers, counted separately', () => {
+    // 🔴 A GLOBAL `[]` HIDES A VACUOUS TIER. Until 2026-08-28 the tier-0 arm could not throw
+    // on ANY input — tier-0 provenance is {glossary, payloadText}, both under `/glossary/`,
+    // both carved out of the module check, and with no extraction-derived key the function
+    // returned at vintage state 1. "at both tiers" was therefore true of the LOOP and false
+    // of the CHECK. The book clause (R17) fixed the function; this counter plus the cross-book
+    // control below prove the tier-0 arm is now doing work rather than being counted.
+    expect(sweep.i4AssertChecked.t0).toBeGreaterThan(0);
+    expect(sweep.i4AssertChecked.t1).toBe(ALL_UNITS.length);
+  });
+
+  it('🔴 CONTROL — assertSameUnit THROWS on a cross-BOOK tier-0 ctx (the arm that was a no-op)', () => {
+    // The failure this separates: a tier-0 source that belongs to the OTHER book. Before R17
+    // the `/glossary/` carve-out exempted these paths from every clause, so chemistry could be
+    // judged against organic's glossary and the sweep would report nothing.
+    const [chem, org] = RUN_BOOKS.map((book) => TIER0_COMBOS.find((u) => u.book === book));
+    expect(chem.book).not.toBe(org.book); // bind what makes this case different
+    const { provenance } = loadTier0Ctx(org);
+    expect(Object.keys(provenance.sources).length).toBeGreaterThan(0); // not an empty loop
+    expect(() => assertSameUnit(chem, provenance)).toThrow(/wrong BOOK/);
+    // …and the SAME provenance against its own unit does not throw, so the throw is a property
+    // of the cross-wiring rather than of tier-0 provenance being rejected wholesale.
+    expect(() => assertSameUnit(org, provenance)).not.toThrow();
+  });
+
   it('🔴 CONTROL — assertSameUnit THROWS on a deliberately cross-wired MODULE ctx', async () => {
     // Without a synthesised violation, the assertion above is satisfied by a function that
     // checks nothing. Two DISTINCT module units, because module ids are unique — see the
@@ -411,44 +639,54 @@ describe('I4 — same-unit, same-vintage provenance', () => {
     expect(() => assertSameUnit(a, crossed)).toThrow(/does not belong to unit/);
   });
 
-  it('🔴 KNOWN GAP — cross-wiring two units whose module BASENAME is shared is NOT detected', async () => {
-    // 🔴 MEASURED 2026-08-28, AND IT REFUTES THE TASK BRIEF'S OWN I4 CONTROL, WHICH USED
-    // `unitsFor('lifraen-efnafraedi')[0]` AND `[1]` — both of them `exercises` units. Written
-    // as the brief has it, that control does NOT throw and ships red.
+  it('🔴 cross-wiring two units whose module BASENAME is shared IS detected — by the chapter', async () => {
+    // 🔴 THIS WAS A KNOWN-GAP PIN ASSERTING THE ABSENCE OF A THROW. It is now a positive test,
+    // flipped in the same change that closed the gap (controller ruling R17, 2026-08-28) —
+    // which is the whole reason the gap was pinned as a test rather than filed in a report.
     //
-    // The predicate is `src.path.includes(unit.module)`, and 54 of 220 units carry a module
-    // basename that is a shared LITERAL: `exercises` ×31 and `chapter-metadata` ×23. For those
-    // units "this source belongs to that unit" is satisfied by ANY unit of the same kind, in
-    // any chapter, in either book. ▶ So I4's same-unit half is enforced on 166 units, not 220,
-    // and the discriminator it is missing is the chapter directory.
+    // The old predicate was `src.path.includes(unit.module)`, and 54 of 220 units carry a
+    // module basename that is a shared LITERAL: `exercises` ×31 and `chapter-metadata` ×23.
+    // For those, "this source belongs to that unit" was satisfied by ANY unit of the same
+    // kind, in any chapter, in either book — so I4's same-unit half was enforced on 166 units,
+    // not 220. `assertSameUnit` now also requires the unit's own BOOK and, for
+    // non-book-scoped sources, its own CHAPTER DIRECTORY.
     //
-    // ▶ THIS IS PINNED, NOT ACCEPTED. Whether `assertSameUnit` should also require
-    // `chapterDirOf(unit.chapter)` in the path is a [LEAD]/loader-owner call, not a test
-    // author's — Task N2 creates one test file and N1's loader is reviewed and committed. The
-    // pin is here so the gap is VISIBLE and so a fix goes RED and lands on this comment,
-    // rather than the gap living only in a report nobody re-reads.
-    // ⚠️ THE BLAST RADIUS IS DELIBERATELY NARROW, AND THAT COST A REVISION. A first version
-    // asserted the crossed paths' chapter DIRECTORIES and used a bare `.not.toThrow()` — and
-    // two mutation rounds that touched neither `assertSameUnit` nor the shared-basename
-    // property (a fabricated provenance path; a zeroed mtime) both turned it red, landing a
-    // future reader on a comment saying the gap was closed when it was not. A pin that reddens
-    // for reasons other than its own subject becomes noise and gets deleted.
-    // ▶ So: an EXPLICIT `null` vintage (state 3 — a declared pre-extract pass) decouples this
-    // from I4's other half, and the assertion names the SPECIFIC throw it is pinning the
-    // absence of, rather than any throw at all.
+    // ⚠️ IT MUST BE THE **CHAPTER** CLAUSE THAT FIRES, AND THE TEST BINDS THAT RATHER THAN
+    // TRUSTING IT. All 31 `exercises` units are organic today (chemistry has none), so a and b
+    // share a book and the chapter is the only discriminator left — but nothing about that is
+    // guaranteed, and if the population ever spans books this would pass on the BOOK clause
+    // while the comment claimed the chapter one was pinned. So: same book, same module
+    // literal, different chapter, and the message is matched on the chapter-specific stem
+    // carrying the expected directory.
+    //
+    // ⚠️ THE BLAST RADIUS STAYS DELIBERATELY NARROW, AND THAT COST A REVISION. A first version
+    // used a bare `.not.toThrow()`, and two mutation rounds that touched neither
+    // `assertSameUnit` nor the shared-basename property (a fabricated provenance path; a
+    // zeroed mtime) both turned it red, landing a future reader on a comment about a gap they
+    // had not touched. A pin that reddens for reasons other than its own subject becomes noise
+    // and gets deleted. ▶ So the EXPLICIT `null` vintage (state 3 — a declared pre-extract
+    // pass) still decouples this from I4's other half, and the assertion still names the
+    // SPECIFIC throw rather than any throw at all.
     const [a, b] = ALL_UNITS.filter((u) => u.kind === 'exercises');
-    expect(a.module).toBe(b.module); // the shared literal — this is what defeats the check
-    expect(a.chapter).not.toBe(b.chapter); // …while the units are genuinely different
+    expect(a.module).toBe(b.module); // the shared literal — this is what defeated the check
+    expect(a.book).toBe(b.book); // …so the BOOK clause cannot be what fires…
+    expect(a.chapter).not.toBe(b.chapter); // …leaving the chapter as the only discriminator
     const own = (await loadTier1Ctx(a, runState())).provenance;
     const crossed = {
       ...own,
       sources: (await loadTier1Ctx(b, runState())).provenance.sources,
       extractRunStartedAt: null,
     };
-    // The provenance really did cross: b's source file is not a's. Without this the pin is
+    // The provenance really did cross: b's source file is not a's. Without this the test is
     // satisfied by provenance that never crossed at all.
     expect(crossed.sources.segText.path).not.toBe(own.sources.segText.path);
-    // ← goes RED when the gap is closed, and ONLY then
-    expect(() => assertSameUnit(a, crossed)).not.toThrow(/does not belong to unit/);
+    expect(() => assertSameUnit(a, crossed)).toThrow(/wrong CHAPTER DIRECTORY/);
+    // …naming the directory it expected, so the message diagnoses rather than merely refusing.
+    expect(() => assertSameUnit(a, crossed)).toThrow(
+      new RegExp(`expected .${chapterDirOf(a.chapter)}.`)
+    );
+    // POSITIVE CONTROL — a's OWN provenance is accepted, so the throw above is a property of
+    // the cross-wiring and not of `exercises` units being rejected wholesale.
+    expect(() => assertSameUnit(a, { ...own, extractRunStartedAt: null })).not.toThrow();
   });
 });
