@@ -32,7 +32,6 @@ import '../remt-battery.js'; // side-effect ONLY: takes REGISTRY from 0 to 33 en
 import { REGISTRY, runCheck, VERDICT } from '../lib/remt-battery.js';
 import {
   assertSameUnit,
-  chapterDirOf,
   EXTRACTION_DERIVED,
   isPlainRecord,
   isSnapshot,
@@ -428,17 +427,28 @@ describe('I4 — same-unit, same-vintage provenance', () => {
     // author's — Task N2 creates one test file and N1's loader is reviewed and committed. The
     // pin is here so the gap is VISIBLE and so a fix goes RED and lands on this comment,
     // rather than the gap living only in a report nobody re-reads.
+    // ⚠️ THE BLAST RADIUS IS DELIBERATELY NARROW, AND THAT COST A REVISION. A first version
+    // asserted the crossed paths' chapter DIRECTORIES and used a bare `.not.toThrow()` — and
+    // two mutation rounds that touched neither `assertSameUnit` nor the shared-basename
+    // property (a fabricated provenance path; a zeroed mtime) both turned it red, landing a
+    // future reader on a comment saying the gap was closed when it was not. A pin that reddens
+    // for reasons other than its own subject becomes noise and gets deleted.
+    // ▶ So: an EXPLICIT `null` vintage (state 3 — a declared pre-extract pass) decouples this
+    // from I4's other half, and the assertion names the SPECIFIC throw it is pinning the
+    // absence of, rather than any throw at all.
     const [a, b] = ALL_UNITS.filter((u) => u.kind === 'exercises');
     expect(a.module).toBe(b.module); // the shared literal — this is what defeats the check
     expect(a.chapter).not.toBe(b.chapter); // …while the units are genuinely different
-    const crossed = { ...(await loadTier1Ctx(a, runState())).provenance };
-    crossed.sources = (await loadTier1Ctx(b, runState())).provenance.sources;
-    // …and the crossed source really is the OTHER unit's file: its chapter directory is b's,
-    // not a's. Without this the pin could be satisfied by provenance that never crossed.
-    const paths = Object.values(crossed.sources).map((s) => s.path);
-    expect(paths.length).toBeGreaterThan(0);
-    expect(paths.every((p) => p.includes(`/${chapterDirOf(b.chapter)}/`))).toBe(true);
-    expect(paths.some((p) => p.includes(`/${chapterDirOf(a.chapter)}/`))).toBe(false);
-    expect(() => assertSameUnit(a, crossed)).not.toThrow(); // ← goes RED when the gap is closed
+    const own = (await loadTier1Ctx(a, runState())).provenance;
+    const crossed = {
+      ...own,
+      sources: (await loadTier1Ctx(b, runState())).provenance.sources,
+      extractRunStartedAt: null,
+    };
+    // The provenance really did cross: b's source file is not a's. Without this the pin is
+    // satisfied by provenance that never crossed at all.
+    expect(crossed.sources.segText.path).not.toBe(own.sources.segText.path);
+    // ← goes RED when the gap is closed, and ONLY then
+    expect(() => assertSameUnit(a, crossed)).not.toThrow(/does not belong to unit/);
   });
 });
