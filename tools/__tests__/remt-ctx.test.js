@@ -19,6 +19,12 @@ import {
   isPlainRecord,
   loadTier0Ctx,
   loadTier1Ctx,
+  loadCtx,
+  provenanceFor,
+  representativeUnitFor,
+  representativeUnitsFor,
+  probeJudgeableSubset,
+  PROBE_REPRESENTATIVES,
   mtOutputPathFor,
   chapterDirOf,
   expectedInputs,
@@ -33,7 +39,7 @@ import {
   RUN_BOOKS,
   REPO_ROOT,
 } from '../remt-ctx.js';
-import { runState } from './helpers/remt-run-state.js';
+import { runState, snapshotFixture } from './helpers/remt-run-state.js';
 
 describe('parseJsonStrict — I2, the three states of "nothing" collapsed to null', () => {
   it('parseJsonStrict returns null for a missing file, not {}', () => {
@@ -62,9 +68,23 @@ describe('parseJsonStrict — I2, the three states of "nothing" collapsed to nul
 });
 
 describe('Tier-0 ctx — the book-scoped glossary keys', () => {
-  it('Tier-0 ctx: payloadVerdict is a well-formed object or absent — never a bare {}', () => {
+  it('Tier-0 ctx: payloadVerdict is ALWAYS PRESENT, and is a record or `null`', () => {
+    // 🔴 THIS TEST USED TO GO RED WHEN THE LOADER BEHAVED EXACTLY AS L137 REQUIRES. It read
+    // `if ('payloadVerdict' in ctx) expect(isPlainRecord(ctx.payloadVerdict)).toBe(true)`, and
+    // `loadTier0Ctx` sets that key UNCONDITIONALLY — so the branch is always entered, and
+    // `isPlainRecord(null)` is `false`. The moment `spawnGlossaryPayloadCheck` returns `null`
+    // (the child script deleted or renamed, a fork failure, a child crash — the DESIGNED path)
+    // this went red while the loader was correct, and it contradicted the test below it, which
+    // explicitly allows `null`.
+    // 🔴 THE REPAIR IT INVITED IS THE HAZARD L137 EXISTS TO PREVENT: making the loader omit the
+    // key or emit `{}`. G5 is BLOCKING, `examined` is a literal on its verdict path so
+    // runCheck's zero-examined backstop cannot save it, and it PASSES over `{}`.
+    // ▶ What is pinned HERE is the half the neighbour does not cover: the key is never OMITTED.
+    // Whether a TRUTHY value is judgeable is the next test's job — do not fold it back in here,
+    // or the contradiction returns.
     const { ctx } = loadTier0Ctx({ book: 'lifraen-efnafraedi', kind: 'module' });
-    if ('payloadVerdict' in ctx) expect(isPlainRecord(ctx.payloadVerdict)).toBe(true);
+    expect('payloadVerdict' in ctx).toBe(true);
+    expect(ctx.payloadVerdict === null || isPlainRecord(ctx.payloadVerdict)).toBe(true);
   });
 
   it('🔴 the loader never emits a SHAPELESS payloadVerdict — L137 is a value property', () => {
@@ -353,5 +373,178 @@ describe('the guards that must not default', () => {
     await expect(loadTier1Ctx(unit, null)).rejects.toThrow(/needs the driver's runState/);
     // POSITIVE CONTROL — the complete one is accepted, so the rejections are not vacuous.
     await expect(loadTier1Ctx(unit, runState())).resolves.toHaveProperty('ctx.module', 'm68662');
+  });
+});
+
+describe('the subset probe SAMPLES the corpus — one unit may not decide a whole kind', () => {
+  it('probes PROBE_REPRESENTATIVES DISTINCT units per kind, spread rather than first-N', () => {
+    for (const kind of UNIT_KINDS) {
+      const reps = representativeUnitsFor(kind);
+      expect(reps.length, kind).toBe(PROBE_REPRESENTATIVES);
+      expect(new Set(reps.map((u) => `${u.book}/${u.chapter}/${u.module}`)).size).toBe(
+        PROBE_REPRESENTATIVES
+      );
+      expect(reps.every((u) => u.kind === kind)).toBe(true);
+    }
+    // POSITIVE CONTROL — the sample really is spread. `unitsFor` sorts chapter dirs lexically,
+    // so `'appendices' < 'ch00'` and the FIRST three `module` units are three chemistry
+    // APPENDIX modules out of one directory: a sample that agrees with itself by construction
+    // and would make the disagreement check below vacuous.
+    expect(new Set(representativeUnitsFor('module').map((u) => u.chapter)).size).toBeGreaterThan(1);
+    // …and the single-representative export still names the first, which is what the sentinel
+    // is built from.
+    expect(representativeUnitFor('module')).toEqual(representativeUnitsFor('module', 1)[0]);
+  });
+
+  it('🔴 the probe THROWS when representatives DISAGREE — the failure I1 structurally cannot see', async () => {
+    // The hazard: a module unit with an absent or zero-byte `cnxml` sorts first for its kind,
+    // `skipIfCtxUnusable` makes E1/E2/E4/E5 SKIP during the probe, all four are recorded
+    // `excluded`, `ids` is still non-empty so the empty-subset guard never fires — and four
+    // BLOCKING checks silently stop running over all 166 modules. A check that was excluded is
+    // never invoked, so it never SKIPs, so an invariant watching for SKIPs is blind to it.
+    // Planted here through E7's snapshots because they are the one ctx input a runState can
+    // withhold per unit; the ctx damage it stands in for is the `cnxml` case above.
+    // ⚠️ `probeJudgeableSubset` is the UNCACHED probe on purpose — `judgeableIds` memoises on
+    // `tier:kind`, so probing through it with a deliberately impoverished runState would poison
+    // the cache for every later call in this file.
+    const reps = representativeUnitsFor('module');
+    const odd = reps[reps.length - 1];
+    const crippled = runState({
+      freshExtractFor: (u) => (u.module === odd.module ? null : snapshotFixture()),
+    });
+    let msg = '';
+    try {
+      await probeJudgeableSubset(1, 'module', crippled);
+    } catch (e) {
+      msg = e.message;
+    }
+    expect(msg).toMatch(/DISAGREES/);
+    expect(msg).toContain('E7'); // the differing check id
+    expect(msg).toContain(`${odd.book}/${odd.chapter}/${odd.module}`); // the unit it came from
+    expect(msg).toContain(`${reps[0].book}/${reps[0].chapter}/${reps[0].module}`); // …and the other side
+
+    // POSITIVE CONTROL — the same probe over an intact runState AGREES and keeps E7, so the
+    // throw above is a property of the planted defect and not of probing three units at all.
+    const intact = await probeJudgeableSubset(1, 'module', runState());
+    expect(intact.ids).toContain('E7');
+    expect(intact.excluded).toEqual([]);
+  });
+});
+
+describe('I4 vintage — assertSameUnit enforces the half EXTRACTION_DERIVED only NAMED', () => {
+  // The middle representative, so this is not the same unit every other test uses.
+  const unit = representativeUnitsFor('module')[1];
+  const provWith = (extractRunStartedAt) =>
+    provenanceFor(unit, { segText: segPathOfUnit(unit) }, { extractRunStartedAt });
+
+  it('🔴 NEGATIVE CONTROL — a source OLDER than the run start throws, naming key, both times and the drift', () => {
+    // Without this the assertion below passes on a function that checks nothing at all.
+    const stamp = new Date().toISOString(); // now: after every committed segment file
+    let msg = '';
+    try {
+      assertSameUnit(unit, provWith(stamp));
+    } catch (e) {
+      msg = e.message;
+    }
+    expect(msg).toMatch(/OLDER extraction vintage/);
+    expect(msg).toContain("'segText'"); // the key
+    expect(msg).toContain(stamp); // the run start
+    expect(msg).toMatch(/mtime \d{4}-\d{2}-\d{2}T/); // the source's own timestamp
+    expect(msg).toMatch(/drift \d+ ms/); // and the size of the gap
+  });
+
+  it('POSITIVE CONTROL — the SAME source with a run start that precedes it does not throw', () => {
+    // 2026-07-01 precedes the oldest committed EN segment file (2026-07-07T09:12:25.604Z,
+    // efnafraedi-2e/appendices/m68859, measured over all 220 units on 2026-08-28).
+    expect(() => assertSameUnit(unit, provWith('2026-07-01T00:00:00.000Z'))).not.toThrow();
+    expect(() =>
+      assertSameUnit(unit, provWith(Date.parse('2026-07-01T00:00:00.000Z')))
+    ).not.toThrow();
+  });
+
+  it('🔴 an UNDEFINED stamp THROWS — the second representation of "nothing" may not walk past', () => {
+    // `requireRunState` does not validate `extractRunStartedAt`, so a driver that forgets it
+    // produces `extractRunStartedAt: undefined` silently — and that is precisely the input the
+    // missing assertion needed. Standing the clause down over it is §C21's type collision.
+    expect(() => assertSameUnit(unit, provWith(undefined))).toThrow(/UNDEFINED/);
+  });
+
+  it('an EXPLICIT null declares a pre-extract pass, and only then is the clause inapplicable', () => {
+    // The pre-extract pass judges the COMMITTED vintage before the loop re-extracts anything,
+    // so its sources legitimately predate every run. The driver must SAY so rather than omit.
+    expect(() => assertSameUnit(unit, provWith(null))).not.toThrow();
+  });
+
+  it('an unparseable stamp throws rather than comparing against NaN', () => {
+    // `mtime >= NaN` is false for every operand, so this would otherwise read as drift.
+    expect(() => assertSameUnit(unit, provWith('not-a-date'))).toThrow(/unparseable/);
+  });
+
+  it('tier-0 provenance carries no extraction-derived source, so the clause never engages', () => {
+    // glossary/payloadText are book-scoped, not extract output. A tier-0 provenance has no
+    // stamp at all, and must not be refused for it.
+    const u0 = { book: 'efnafraedi-2e', kind: 'module', module: 'm68662' };
+    const { provenance } = loadTier0Ctx(u0);
+    expect(provenance.extractRunStartedAt).toBeUndefined(); // the state that throws at tier 1
+    expect(Object.keys(provenance.sources).length).toBeGreaterThan(0); // …and it is not empty
+    expect(() => assertSameUnit(u0, provenance)).not.toThrow();
+  });
+});
+
+describe('CTX_CAPABILITY is TRUE about the sentinel — asserted in BOTH directions', () => {
+  it('🔴 every declared key is in the sentinel, and every sentinel key is declared', async () => {
+    // The table under-declared by exactly `committedExtract`/`freshExtract` — the two keys E7
+    // reads — while E7 is judgeable on all three kinds. An author reasoning from the table
+    // ("no kind declares them, so E7 cannot be judgeable anywhere") would write an invariant
+    // that TOLERATES a blocking check being dropped. The reverse containment is the direction
+    // that actually failed, so it is asserted first-class rather than implied.
+    for (const kind of UNIT_KINDS) {
+      const sentinel = await sentinelCtxFor(kind, runState());
+      const declared = [...CTX_CAPABILITY[kind]];
+      expect(declared.length, kind).toBeGreaterThan(0); // the container is not the payload
+      expect(
+        declared.filter((k) => !(k in sentinel)),
+        `${kind}: declared but not supplied`
+      ).toEqual([]);
+      expect(
+        Object.keys(sentinel).filter((k) => !CTX_CAPABILITY[kind].has(k)),
+        `${kind}: supplied but not declared`
+      ).toEqual([]);
+    }
+  });
+
+  it('E7 is judgeable on EVERY unit kind — which is what the two added keys claim', async () => {
+    for (const kind of UNIT_KINDS) {
+      expect(await judgeableIds(1, kind, runState()), kind).toContain('E7');
+    }
+  });
+});
+
+describe('loadCtx dispatches strictly — NO GUARD MAY DEFAULT applies to the dispatcher too', () => {
+  const unit = { book: 'efnafraedi-2e', chapter: '0', module: 'm68662', kind: 'module' };
+
+  it('tier 0 and tier 1 each return their OWN ctx, and they are not interchangeable', async () => {
+    const { ctx: t0 } = await loadCtx(0, unit, runState());
+    expect('glossary' in t0).toBe(true);
+    expect('cnxml' in t0).toBe(false);
+    const { ctx: t1 } = await loadCtx(1, unit, runState());
+    expect('cnxml' in t1).toBe(true);
+    expect('glossary' in t1).toBe(false); // the ctx a defaulting dispatcher handed tier 0
+  });
+
+  it('🔴 every other tier value THROWS — the STRING "0" above all', async () => {
+    // Measured before the fix: `loadCtx(2,…)`, `loadCtx(4,…)`, `loadCtx('x',…)` and
+    // `loadCtx(undefined,…)` all returned a 13-key TIER-1 ctx and reported success. The live
+    // trigger is `'0'`: a resumed driver reading the tier out of the JSON ledger gets a ctx
+    // with no glossary key at all, and all five of G1-G5 then SKIP — four of them blocking —
+    // so the pre-spend glossary gate reports nothing while looking like an empty tier.
+    for (const bad of [2, 4, -1, 1.5, 'x', '0', '1', undefined, null, {}]) {
+      await expect(
+        loadCtx(bad, unit, runState()),
+        `tier ${JSON.stringify(bad)} should be refused`
+      ).rejects.toThrow(/loadCtx handles tier 0 and tier 1 only/);
+    }
+    // …and the refusal NAMES the value and its type, so a driver author can see what to fix.
+    await expect(loadCtx('0', unit, runState())).rejects.toThrow(/"0" \(string\)/);
   });
 });

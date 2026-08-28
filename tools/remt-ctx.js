@@ -107,12 +107,86 @@ export function provenanceFor(unit, pathsByKey, opts = {}) {
   return { unit, sources, extractRunStartedAt: opts.extractRunStartedAt };
 }
 
-/** I4's assertion, exported so N2 can drive it and so the driver can call it per unit. */
+/** Epoch ms from either an epoch-ms number or an ISO string; `NaN` for anything else. */
+const toEpochMs = (v) => (typeof v === 'number' ? v : typeof v === 'string' ? Date.parse(v) : NaN);
+
+const iso = (ms) => (Number.isFinite(ms) ? new Date(ms).toISOString() : String(ms));
+
+/**
+ * I4 IN ONE FUNCTION — **both halves**: same UNIT, and same extraction VINTAGE.
+ *
+ * Exported so N2 can drive it and so the driver can call it per unit; nothing in this loader
+ * calls it, by design (a loader that asserted on its own output could not report a finding).
+ *
+ * ── THE VINTAGE HALF (added 2026-08-28) ──
+ * 🔴 IT WAS DECLARED AND NEVER ENFORCED, AND BOTH VALUES IT NEEDS WERE ALREADY IN THE
+ * PROVENANCE OBJECT. `EXTRACTION_DERIVED` named the population and was referenced by nothing.
+ * The run is paused for most of the weeks it takes: the driver captures `emittedFilesFor(unit)`
+ * at extract time T0, this loader reads `segText` from disk at T, and a re-extract, a
+ * `git pull` or the 2-hourly backup cron can land in between. E6 and E2/E4 then judge a
+ * mismatched pair, and nothing reports it.
+ *
+ * ⚠️ THE CLAUSE COVERS THE *STALE* DIRECTION, AND SAYING SO IS THE POINT: it catches a source
+ * that PREDATES the run's extract (the extract silently did not write this unit, so the
+ * committed vintage is still there). It does not, and cannot, catch a source that is newer
+ * than the extract but older than some other artefact — that would need a per-artefact stamp
+ * this provenance does not carry.
+ *
+ * ── THE FOUR STATES OF `extractRunStartedAt`, ALL EXPLICIT, NONE DEFAULTING ──
+ *   1. no extraction-derived source in `provenance.sources` → nothing to compare (every
+ *      Tier-0 provenance lands here: `glossary`/`payloadText` are not extraction-derived);
+ *   2. `undefined` → **THROWS**. This is the driver having *forgotten* to thread the stamp,
+ *      and `requireRunState` does not validate it, so it arrives as `undefined` silently.
+ *      Letting it stand down is this repo's own "a gate keyed on one representation of
+ *      nothing is walked past by another representation of nothing" (§C21);
+ *   3. `null` → the driver EXPLICITLY claims no vintage. That is the legitimate **pre-extract
+ *      pass**, which judges the committed vintage before the loop re-extracts anything, and
+ *      whose sources therefore predate any run. It must be said, not omitted;
+ *   4. a parseable epoch-ms number or ISO string → **enforced**. Unparseable throws rather
+ *      than comparing against `NaN`, which is `false` for every operand and would read as
+ *      drift.
+ */
 export function assertSameUnit(unit, provenance) {
   for (const [key, src] of Object.entries(provenance.sources)) {
     if (!src.path.includes(unit.module) && !src.path.includes('/glossary/')) {
       throw new Error(
         `remt-ctx: ctx key '${key}' does not belong to unit ${unit.module}: ${src.path}`
+      );
+    }
+  }
+
+  const derived = Object.entries(provenance.sources).filter(([key]) => EXTRACTION_DERIVED.has(key));
+  if (derived.length === 0) return; // state 1
+  const claimed = provenance.extractRunStartedAt;
+  if (claimed === null) return; // state 3 — an explicit "no vintage claimed"
+  if (claimed === undefined) {
+    throw new Error(
+      `remt-ctx: unit ${unit.module} carries extraction-derived ctx (${derived
+        .map(([k]) => k)
+        .join(', ')}) but provenance.extractRunStartedAt is UNDEFINED, so the vintage half of ` +
+        `I4 cannot be checked. The driver owes this stamp on runState. Pass the timestamp the ` +
+        `extract for this unit started at, or pass an explicit \`null\` to declare a ` +
+        `pre-extract pass that judges the committed vintage.`
+    );
+  }
+  const startedAt = toEpochMs(claimed);
+  if (!Number.isFinite(startedAt)) {
+    throw new Error(
+      `remt-ctx: provenance.extractRunStartedAt is unparseable for unit ${unit.module}: ` +
+        `${JSON.stringify(claimed)} (${typeof claimed}). Expected epoch ms or an ISO string.`
+    );
+  }
+  for (const [key, src] of derived) {
+    if (!(src.mtime >= startedAt)) {
+      // Rounded: `mtimeMs` is fractional, and `4496224661.851074 ms` in an operator-facing
+      // error is noise, not precision.
+      const driftMs = Math.round(startedAt - src.mtime);
+      throw new Error(
+        `remt-ctx: ctx key '${key}' is from an OLDER extraction vintage than this run for unit ` +
+          `${unit.module}: ${src.path} mtime ${iso(src.mtime)} < extractRunStartedAt ` +
+          `${iso(startedAt)} — drift ${driftMs} ms (~${(driftMs / 86400000).toFixed(1)} days). ` +
+          `The extract did not write this source, so ctx.${key} and the run's emittedFiles ` +
+          `describe different vintages.`
       );
     }
   }
@@ -240,11 +314,37 @@ export const UNIT_KINDS = Object.freeze(['module', 'exercises', 'chapter-metadat
  * JSONs under the read-only source tree — but they have no CNXML: nothing named
  * `exercises*.cnxml` exists in either book. `chapter-metadata` units carry `SEG:chapter:…`
  * markers and have no source module at all.
+ *
+ * 🔴 `committedExtract` AND `freshExtract` ARE DECLARED FOR ALL THREE KINDS BECAUSE THE
+ * LOADER SUPPLIES THEM FOR ALL THREE, AND THE TABLE'S ONLY JOB IS TO BE TRUE. They were
+ * missing until 2026-08-28, which under-declared the table by exactly the two keys E7 reads
+ * — and E7 is judgeable on ALL THREE kinds today. An N2/Task-5 author reasoning from the
+ * table ("no kind declares them, so E7 cannot be judgeable anywhere, so its exclusion is
+ * expected") would have written an invariant test that tolerates a blocking check being
+ * dropped. ▶ Both containment directions are now pinned in `remt-ctx.test.js`; the reverse
+ * one — every sentinel key is DECLARED — is the direction that actually failed.
+ * ⚠️ They are listed here, beside `cnxml`/`segText`, rather than folded into `MODULE_KEYS`,
+ * because this file's convention is that CONDITIONAL keys live in the per-kind table:
+ * `MODULE_KEYS` names what is always set, these are set only when `isSnapshot` accepts the
+ * driver's value.
  */
 export const CTX_CAPABILITY = Object.freeze({
-  module: new Set([...BOOK_KEYS, ...MODULE_KEYS, 'cnxml', 'segText']),
-  exercises: new Set([...BOOK_KEYS, ...MODULE_KEYS, 'segText']),
-  'chapter-metadata': new Set([...BOOK_KEYS, ...MODULE_KEYS, 'segText']),
+  module: new Set([
+    ...BOOK_KEYS,
+    ...MODULE_KEYS,
+    'cnxml',
+    'segText',
+    'committedExtract',
+    'freshExtract',
+  ]),
+  exercises: new Set([...BOOK_KEYS, ...MODULE_KEYS, 'segText', 'committedExtract', 'freshExtract']),
+  'chapter-metadata': new Set([
+    ...BOOK_KEYS,
+    ...MODULE_KEYS,
+    'segText',
+    'committedExtract',
+    'freshExtract',
+  ]),
 });
 
 /** ctx keys whose value is produced by the extract step — the population I4's vintage clause covers. */
@@ -525,20 +625,75 @@ export function unitsFor(book) {
   return units;
 }
 
-/** A real unit of each kind, from the live corpus. Throws if the kind has no member. */
-export function representativeUnitFor(kind) {
-  for (const book of RUN_BOOKS) {
-    const u = unitsFor(book).find((x) => x.kind === kind);
-    if (u) return u;
+/** How many representatives the subset probe runs per unit kind. See `representativeUnitsFor`. */
+export const PROBE_REPRESENTATIVES = 3;
+
+/** `book/chapter/module`, for error messages that have to name which unit disagreed. */
+const unitLabel = (u) => `${u.book}/${u.chapter}/${u.module}`;
+
+/**
+ * `count` real units of `kind`, SPREAD across the corpus. Throws if the kind has no member.
+ *
+ * 🔴 SPREAD, NOT THE FIRST N, AND THE DIFFERENCE IS THE WHOLE POINT. `unitsFor` sorts chapter
+ * dirs lexically, so `'appendices' < 'ch00'` and the first three `module` units are three
+ * chemistry APPENDIX modules from one directory — a sample that agrees with itself by
+ * construction. Taking first / middle / last spans both books and three chapter shapes.
+ *
+ * ⚠️ A KIND WITH FEWER THAN `count` UNITS GETS WHAT EXISTS — the probe is then weaker for that
+ * kind, and `judgeableIds`' agreement check degenerates to a tautology at exactly one unit.
+ * Measured 2026-08-28: module 166, exercises 31, chapter-metadata 23, so all three kinds are
+ * genuinely sampled today.
+ */
+export function representativeUnitsFor(kind, count = PROBE_REPRESENTATIVES) {
+  const pool = RUN_BOOKS.flatMap((book) => unitsFor(book)).filter((u) => u.kind === kind);
+  if (pool.length === 0) {
+    throw new Error(
+      `remt-ctx: no unit of kind '${kind}' exists in ${RUN_BOOKS.join(', ')} — the subset probe has nothing real to build a sentinel from`
+    );
   }
-  throw new Error(
-    `remt-ctx: no unit of kind '${kind}' exists in ${RUN_BOOKS.join(', ')} — the subset probe has nothing real to build a sentinel from`
-  );
+  if (count <= 1) return [pool[0]];
+  if (pool.length <= count) return pool;
+  const step = (pool.length - 1) / (count - 1);
+  const picked = [...new Set(Array.from({ length: count }, (_, i) => Math.round(i * step)))];
+  return picked.map((i) => pool[i]);
 }
 
-/** Tier-dispatching convenience used by Task N2, Task 5 and Task 6. */
+/** A real unit of `kind`, from the live corpus. Throws if the kind has no member. */
+export function representativeUnitFor(kind) {
+  return representativeUnitsFor(kind, 1)[0];
+}
+
+/**
+ * Tier-dispatching convenience used by Task N2, Task 5 and Task 6.
+ *
+ * 🔴 IT REFUSES EVERY TIER IT DOES NOT HANDLE. It used to be
+ * `tier === 0 ? loadTier0Ctx(unit) : loadTier1Ctx(unit, runState)`, i.e. it DEFAULTED every
+ * non-zero tier to Tier 1 — the exact class `chapterDirOf` and `capabilityFor` refuse, six
+ * lines under a docstring that says NO GUARD MAY DEFAULT. Measured before the fix:
+ * `loadCtx(2, …)`, `loadCtx(4, …)`, `loadCtx('x', …)` and `loadCtx(undefined, …)` all
+ * returned a 13-key Tier-1 ctx and reported success.
+ *
+ * 🔴 A STRING TIER IS REFUSED, NOT COERCED, AND THAT IS THE DECISION THIS DOCSTRING EXISTS TO
+ * RECORD. `'0' === 0` is false, so the old ternary sent the STRING `'0'` to Tier 1 and handed
+ * back a ctx with no glossary key at all (`'glossary' in ctx` → `false`); run Tier 0 over that
+ * and all five of G1-G5 SKIP, four of them blocking — the pre-spend glossary gate reporting
+ * nothing while looking like a tier that found nothing to judge. That value arrives from
+ * exactly one place: a resumed driver reading the tier out of the JSON ledger, which the plan
+ * requires to be safe on a cold machine days apart with the ledger as the only memory.
+ * ▶ Coercing it here would hide a driver defect at the one seam that can still see it, so the
+ * fix belongs at the ledger boundary: `Number(entry.tier)`. The throw says so.
+ *
+ * @param {0|1} tier the NUMBER 0 or 1 — never a string
+ */
 export async function loadCtx(tier, unit, runState) {
-  return tier === 0 ? loadTier0Ctx(unit) : loadTier1Ctx(unit, runState);
+  if (tier === 0) return loadTier0Ctx(unit);
+  if (tier === 1) return loadTier1Ctx(unit, runState);
+  throw new Error(
+    `remt-ctx: loadCtx handles tier 0 and tier 1 only, got ${JSON.stringify(tier)} ` +
+      `(${typeof tier}). Tiers 2-4 are deferred and have no loader. A STRING tier is refused ` +
+      `rather than coerced — if this came from the ledger, convert it there with ` +
+      `Number(entry.tier) so a bad value fails at the ledger and not silently as Tier 1.`
+  );
 }
 
 /**
@@ -561,7 +716,11 @@ export async function loadCtx(tier, unit, runState) {
  * the producer.
  */
 export async function sentinelCtxFor(kind, runState) {
-  const unit = representativeUnitFor(kind);
+  return sentinelCtxForUnit(representativeUnitFor(kind), runState);
+}
+
+/** The same sentinel, for a NAMED unit — what `judgeableIds` probes each representative with. */
+async function sentinelCtxForUnit(unit, runState) {
   const { ctx: tier0 } = await loadCtx(0, unit, runState);
   const { ctx: tier1 } = await loadCtx(1, unit, runState);
   return { ...tier0, ...tier1 };
@@ -579,7 +738,10 @@ export async function sentinelCtxFor(kind, runState) {
  *
  * What the loader legitimately DOES know is its OWN capability: which keys it can supply for
  * a unit kind. So: build a sentinel ctx from that capability, run every check in the tier, and
- * whatever SKIPs is structurally unjudgeable for the kind.
+ * whatever SKIPs is structurally unjudgeable for the kind — repeated over
+ * `PROBE_REPRESENTATIVES` units spread across the corpus, because ONE unit deciding the subset
+ * for a whole kind is how four blocking checks stop running corpus-wide in silence. See
+ * `probeJudgeableSubset`, which owns the probe and the disagreement throw.
  *
  * ▶ L136 condition (a) — E3 on every source-less unit — then holds BY CONSTRUCTION rather than
  * by decree, because E3 reads only `segText`, which the loader supplies for every kind.
@@ -593,23 +755,78 @@ export async function sentinelCtxFor(kind, runState) {
  */
 const subsetCache = new Map();
 
+/**
+ * The probe itself, WITHOUT the cache — `judgeableIds` is the memoised wrapper.
+ *
+ * 🔴 IT PROBES `PROBE_REPRESENTATIVES` UNITS AND REFUSES TO PROCEED IF THEY DISAGREE. One
+ * representative used to decide the subset for a whole unit kind, and the mechanism that would
+ * hide a mistake is the same one I1 is scoped to. The failure: a module unit with an absent or
+ * zero-byte `cnxml` sorts first, `skipIfCtxUnusable` makes E1/E2/E4/E5 SKIP during the probe,
+ * all four are recorded `excluded`, `ids` is still non-empty so the empty-subset guard never
+ * fires — and **four blocking checks silently stop running over all 166 modules**. Nothing can
+ * see it after the fact: a check that was EXCLUDED is never invoked, so it never SKIPs, so an
+ * invariant that watches for SKIPs is structurally blind to it.
+ *
+ * ▶ SO THE DISAGREEMENT IS THE SIGNAL, AND IT IS FATAL RATHER THAN AVERAGED. The union is what
+ * gets cached, but a union computed from representatives that disagree would silently apply one
+ * unit's ctx damage — or one unit's extra capability — to every unit of the kind. Throwing names
+ * the kind, the checks, and the units on each side, which is the whole diagnosis.
+ *
+ * ✅ MEASURED 2026-08-28 over first/middle/last of every kind, both tiers: all three agree
+ * everywhere (module `G1-G5` / `E1,E2,E3,E4,E5,E6,E7,E9`; exercises and chapter-metadata
+ * `G1-G5` / `E3,E6,E7,E9`). So the throw is a tripwire on a corpus that is uniform today, not
+ * a live failure.
+ */
+export async function probeJudgeableSubset(tier, kind, runState) {
+  const tierChecks = [...REGISTRY.values()].filter((c) => c.tier === tier);
+  const probes = representativeUnitsFor(kind);
+  const perUnit = [];
+  for (const unit of probes) {
+    const sentinel = await sentinelCtxForUnit(unit, runState);
+    const judged = new Set();
+    for (const check of tierChecks) {
+      const r = await runCheck(check, sentinel);
+      if (r.verdict !== VERDICT.SKIPPED) judged.add(check.id);
+    }
+    perUnit.push({ unit, judged });
+  }
+
+  const disagreed = tierChecks.filter(
+    (c) => perUnit.some((p) => p.judged.has(c.id)) && perUnit.some((p) => !p.judged.has(c.id))
+  );
+  if (disagreed.length > 0) {
+    const detail = disagreed
+      .map((c) => {
+        const yes = perUnit.filter((p) => p.judged.has(c.id)).map((p) => unitLabel(p.unit));
+        const no = perUnit.filter((p) => !p.judged.has(c.id)).map((p) => unitLabel(p.unit));
+        return `${c.id} judgeable on [${yes.join(' ')}] but SKIPPED on [${no.join(' ')}]`;
+      })
+      .join('; ');
+    throw new Error(
+      `remt-ctx: tier ${tier}'s judgeable subset DISAGREES across the ${perUnit.length} ` +
+        `representatives of unit kind '${kind}' — ${detail}. A subset probed from ONE unit is ` +
+        `cached and applied to every unit of the kind, so this is how a blocking check stops ` +
+        `running corpus-wide without ever SKIPping. Fix the ctx for the representative that ` +
+        `SKIPped, or split the unit kind; do not widen the sample until they agree.`
+    );
+  }
+
+  const ids = tierChecks.filter((c) => perUnit.some((p) => p.judged.has(c.id))).map((c) => c.id);
+  const excluded = tierChecks.filter((c) => !ids.includes(c.id)).map((c) => c.id);
+  if (ids.length === 0) {
+    throw new Error(
+      `remt-ctx: tier ${tier} has an EMPTY judgeable subset for unit kind '${kind}' over ` +
+        `${probes.map(unitLabel).join(', ')}. runTier would throw over it rather than report. ` +
+        `Excluded: ${excluded.join(', ')}`
+    );
+  }
+  return { ids, excluded };
+}
+
 export async function judgeableIds(tier, kind, runState) {
   const key = `${tier}:${kind}`;
   if (!subsetCache.has(key)) {
-    const sentinel = await sentinelCtxFor(kind, runState);
-    const ids = [];
-    const excluded = [];
-    for (const check of [...REGISTRY.values()].filter((c) => c.tier === tier)) {
-      const r = await runCheck(check, sentinel);
-      (r.verdict === VERDICT.SKIPPED ? excluded : ids).push(check.id);
-    }
-    if (ids.length === 0) {
-      throw new Error(
-        `remt-ctx: tier ${tier} has an EMPTY judgeable subset for unit kind '${kind}'. ` +
-          `runTier would throw over it rather than report. Excluded: ${excluded.join(', ')}`
-      );
-    }
-    subsetCache.set(key, { ids, excluded });
+    subsetCache.set(key, await probeJudgeableSubset(tier, kind, runState));
   }
   return subsetCache.get(key).ids;
 }

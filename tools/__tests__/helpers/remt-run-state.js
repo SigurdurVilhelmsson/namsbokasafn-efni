@@ -20,12 +20,16 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+// 🔴 IMPORTED, NOT RE-IMPLEMENTED. This file used to keep a private `chapterDirOf` (without the
+// loader's null/'' guard) and its own `REPO_ROOT` — duplication the header above argues against
+// two paragraphs up. The failure it invites: change the loader's padding (a third book with
+// 3-digit chapters is the realistic trigger) and `emittedFilesForUnit` keeps listing from
+// `chNN` while the loader reads `chNNN`. E6 is then probed AND run against a directory
+// belonging to a different chapter — and because E6 classifies FILENAMES it returns a plausible
+// verdict rather than an error, so the suite stays green over a fixture describing another unit.
+import { chapterDirOf, REPO_ROOT } from '../../remt-ctx.js';
 
-export const REPO_ROOT = path.resolve(import.meta.dirname, '..', '..', '..');
-
-/** `chNN` | `appendices` — the on-disk chapter dir for a bare chapter value. */
-const chapterDirOf = (chapter) =>
-  String(chapter) === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+export { REPO_ROOT };
 
 /**
  * The files a re-extract of `unit` would emit, approximated by the ones that exist for it
@@ -95,7 +99,16 @@ export function runState(overrides = {}) {
     emittedFilesFor: emittedFilesForUnit,
     committedExtractFor: () => snapshotFixture(),
     freshExtractFor: () => snapshotFixture(),
-    extractRunStartedAt: '2026-08-27T00:00:00.000Z',
+    // 🔴 IT MUST PRECEDE THE COMMITTED CORPUS, AND THAT IS A STATEMENT ABOUT THE RUN, NOT A
+    // CONVENIENCE. `assertSameUnit` now enforces I4's vintage half: every extraction-derived
+    // source must have `mtime >= extractRunStartedAt`. The re-MT loop's extract has NOT run,
+    // so what is on disk is the COMMITTED vintage — measured 2026-08-28, the oldest of the 220
+    // `02-for-mt` EN segment files is 2026-07-07T09:12:25.604Z (efnafraedi-2e/appendices/
+    // m68859). A fixture claiming a later start would trip the vintage clause CORRECTLY, and
+    // "fixing" that by loosening the clause is how the invariant gets deleted. The clause is
+    // proved live by the negative control in `remt-ctx.test.js`, which stamps a run start of
+    // `now` and asserts the throw.
+    extractRunStartedAt: '2026-07-01T00:00:00.000Z',
     ...overrides,
   };
 }
