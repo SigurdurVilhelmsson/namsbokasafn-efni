@@ -130,8 +130,18 @@ const iso = (ms) => (Number.isFinite(ms) ? new Date(ms).toISOString() : String(m
 /**
  * I4 IN ONE FUNCTION — **both halves**: same UNIT, and same extraction VINTAGE.
  *
- * Exported so N2 can drive it and so the driver can call it per unit; nothing in this loader
- * calls it, by design (a loader that asserted on its own output could not report a finding).
+ * 🔴 THIS DOCSTRING USED TO SAY "NOTHING IN THIS LOADER CALLS IT, BY DESIGN" — AND THAT MADE I4
+ * A GATE NEVER CALLED, WHICH IS A GATE THAT DOESN'T EXIST. Measured 2026-08-28: a grep across
+ * `tools/`, `server/` and `scripts/` found only this function's own definition, its own error
+ * string, and test files — so I4 was enforced at TEST time only, and at runtime the loader
+ * would return a cross-wired ctx without complaint. `loadTier0Ctx` and `loadTier1Ctx` now call
+ * this on the provenance they just built, right before returning, as a POSTCONDITION SELF-CHECK.
+ * ⚠️ THAT IS NOT A SECOND OPINION — the same module produces and validates the provenance, so a
+ * defect shared between a path builder here and this predicate could still pass both. It
+ * converts *"the tests found the loader correct on 220 units at test time"* into *"the loader
+ * refuses to return a bad ctx, ever"* — a real strengthening, but not independent verification.
+ * **The test-side sweep in `remt-ctx-invariants.test.js` remains the audit; do not delete it as
+ * redundant just because this function is wired in now.**
  *
  * ── THE SAME-UNIT HALF: THREE CLAUSES, BECAUSE THE MODULE NAME ALONE IS NOT AN IDENTITY ──
  * 🔴 THE PREDICATE WAS `src.path.includes(unit.module)` AND THAT ENFORCED NOTHING FOR A
@@ -333,6 +343,13 @@ export function spawnGlossaryPayloadCheck(book) {
  * subject is a RELATION between books rather than a property of one — handed a single-book
  * map it examines nothing and reads SKIPPED, reporting agreement it never tested.
  *
+ * 🔴 CALLS `assertSameUnit` ON ITS OWN OUTPUT BEFORE RETURNING (R22) — a POSTCONDITION
+ * SELF-CHECK, not an independent audit; see `assertSameUnit`'s docstring. Tier-0 provenance is
+ * `{glossary, payloadText}`, both under `books/<book>/glossary/`, so no key is in
+ * `EXTRACTION_DERIVED` and I4's vintage clause is vacuous here by construction — no
+ * `extractRunStartedAt` is passed, and none should be invented for a book-scoped tier that has
+ * no extraction step.
+ *
  * @param {{book: string, kind?: string, module?: string}} unit
  * @returns {{ctx: object, provenance: object}}
  */
@@ -353,7 +370,9 @@ export function loadTier0Ctx(unit) {
   const ctx = { book: unit.book, glossary, glossariesByBook, payloadVerdict };
   if (payloadText !== null) ctx.payloadText = payloadText;
 
-  return { ctx, provenance: provenanceFor(unit, { glossary: gPath, payloadText: gPath }) };
+  const provenance = provenanceFor(unit, { glossary: gPath, payloadText: gPath });
+  assertSameUnit(unit, provenance);
+  return { ctx, provenance };
 }
 
 /** Scope keys the loader supplies for every unit kind. */
@@ -600,6 +619,13 @@ function requireRunState(runState) {
  * ⚠️ `costEstimate` must come from `--force --dry-run`. A bare `--dry-run` reports ~0 ISK once
  * output exists — a wrong answer that looks like an answer. E9 refuses `withForce !== true`.
  *
+ * 🔴 CALLS `assertSameUnit` ON ITS OWN OUTPUT BEFORE RETURNING (R22) — a POSTCONDITION
+ * SELF-CHECK, not an independent audit; see `assertSameUnit`'s docstring. `runState`'s
+ * `extractRunStartedAt` is passed through UNCHANGED, never defaulted: `undefined` must reach
+ * `assertSameUnit` and throw when the driver forgot to thread the stamp, and an explicit `null`
+ * must reach it and stand down for a declared pre-extract pass. Substituting either would defeat
+ * the very state I4 added it to catch.
+ *
  * @param {{book:string, chapter:string, module:string, kind:string}} unit
  * @param {object} runState the driver's, see requireRunState
  * @returns {Promise<{ctx: object, provenance: object}>}
@@ -631,14 +657,14 @@ export async function loadTier1Ctx(unit, runState) {
   if (isSnapshot(committed)) ctx.committedExtract = committed;
   if (isSnapshot(fresh)) ctx.freshExtract = fresh;
 
-  return {
-    ctx,
-    provenance: provenanceFor(
-      unit,
-      { cnxml: cnxmlPath, segText: segPath },
-      { extractRunStartedAt: runState.extractRunStartedAt }
-    ),
-  };
+  const provenance = provenanceFor(
+    unit,
+    { cnxml: cnxmlPath, segText: segPath },
+    { extractRunStartedAt: runState.extractRunStartedAt }
+  );
+  assertSameUnit(unit, provenance);
+
+  return { ctx, provenance };
 }
 
 /** The `02-for-mt` EN segment file a unit is derived from — the round-trip of `unitsFor`. */
