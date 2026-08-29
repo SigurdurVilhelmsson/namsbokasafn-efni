@@ -18,8 +18,6 @@
  * excluding the two blocking checks with the most loader obligations from EVERY unit kind —
  * and the probe and the invariant would then agree with each other and disagree with the run.
  */
-import fs from 'node:fs';
-import path from 'node:path';
 // 🔴 IMPORTED, NOT RE-IMPLEMENTED. This file used to keep a private `chapterDirOf` (without the
 // loader's null/'' guard) and its own `REPO_ROOT` — duplication the header above argues against
 // two paragraphs up. The failure it invites: change the loader's padding (a third book with
@@ -27,7 +25,9 @@ import path from 'node:path';
 // `chNN` while the loader reads `chNNN`. E6 is then probed AND run against a directory
 // belonging to a different chapter — and because E6 classifies FILENAMES it returns a plausible
 // verdict rather than an error, so the suite stays green over a fixture describing another unit.
-import { chapterDirOf, REPO_ROOT } from '../../remt-ctx.js';
+// ▶ 2026-08-29: the whole LISTING now comes from the loader for that same reason, so the
+// `fs`/`path`/`chapterDirOf` imports this file used to need are gone with the private copy.
+import { committedEmittedFilesFor, REPO_ROOT } from '../../remt-ctx.js';
 
 export { REPO_ROOT };
 
@@ -42,21 +42,16 @@ export { REPO_ROOT };
  * shapes the tree does not contain. It deliberately includes the unit's own dated backups:
  * `safeWrite` mints one per rewritten output, and E6's backup ACCOUNTING (an orphan is a
  * finding, an accompanied backup is not) is only exercised when they are present.
+ *
+ * 🔴 DELEGATES to the loader's `committedEmittedFilesFor` (2026-08-29) — SAME BEHAVIOUR, ONE
+ * CONSTRUCTION POINT. Verified before the move: byte-identical output for all **220 units**
+ * (15,605 entries, 0 empty listings). The loader needs this same listing for its subset probe,
+ * and the header above already argues that a second copy is the hazard — this is that argument
+ * applied to itself. ⚠️ THE SEMANTICS ARE UNCHANGED AND SO IS EVERY PIN THAT DEPENDS ON THEM;
+ * what the listing MEANS is now stated once, in `loadTier1Ctx`'s `emittedFiles` note.
  */
 export function emittedFilesForUnit(unit) {
-  const chDir = chapterDirOf(unit.chapter);
-  const out = [];
-  for (const tree of ['02-for-mt', '02-structure']) {
-    const dir = path.join(REPO_ROOT, 'books', unit.book, tree, chDir);
-    let names = [];
-    try {
-      names = fs.readdirSync(dir);
-    } catch {
-      continue;
-    }
-    for (const n of names) if (n.startsWith(`${unit.module}-`)) out.push(n);
-  }
-  return out;
+  return committedEmittedFilesFor(unit);
 }
 
 /**

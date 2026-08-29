@@ -125,6 +125,41 @@ export function provenanceFor(unit, pathsByKey, opts = {}) {
 /** Epoch ms from either an epoch-ms number or an ISO string; `NaN` for anything else. */
 const toEpochMs = (v) => (typeof v === 'number' ? v : typeof v === 'string' ? Date.parse(v) : NaN);
 
+/**
+ * The earliest instant that can be a REAL run start. A parseable stamp below this is refused.
+ *
+ * 🔴 WHY A FLOOR AND NOT A BARE `> 0` — `Date.parse('0')` IS 2000-01-01, AND `'0'` IS THE VALUE
+ * THIS FILE'S OWN PRESCRIBED LEDGER IDIOM MANUFACTURES. Measured 2026-08-29 against the vintage
+ * clause, with a live positive control (a future stamp threw on the same unit):
+ *   `0`  → `Number.isFinite(0)`, so it was ENFORCED against `startedAt = 0`, and `mtime >= 0`
+ *          holds for every file that has ever existed — the clause was a NO-OP wearing an
+ *          enforcement's clothes;
+ *   `-1` → identical;
+ *   `'0'`→ the nastiest of the three. It does not stand down AT zero: it is enforced against
+ *          2000-01-01, a plausible-looking instant nothing in a 2026 corpus can fail, so an
+ *          operator reading the error sees a real comparison and concludes the gate is live.
+ * ▶ These are the FIFTH representation of "nothing" to reach this field — after absent,
+ * `undefined`, `null` and unparseable — and §C21's rule is that a gate keyed on one
+ * representation of nothing is walked past by another. A floor refuses the whole class by a
+ * PROPERTY (*"this cannot be when a run started"*) rather than by enumerating three literals.
+ *
+ * ── WHY THIS PARTICULAR INSTANT ──
+ * Three constraints fix it, and the value is the round date that satisfies all three with margin:
+ *   1. **> 2000-01-01T00:00:00Z**, because that is exactly `Date.parse('0')` — the instant the
+ *      floor exists to refuse. A floor at or below it would let `'0'` through.
+ *   2. **≤ any legitimate run start.** No run of this loop can predate the repository that holds
+ *      the loop and the corpus: `git log --reverse | head -1` is 2025-05-18T21:03:58Z.
+ *   3. **≤ the oldest committed source mtime** (2026-07-07T09:12:25.604Z), so a declared
+ *      pre-extract pass that stamps a real early instant is not refused by the floor before the
+ *      vintage comparison it came for.
+ * ⚠️ IT IS DELIBERATELY *NOT* THE FIRST COMMIT'S TIMESTAMP, AND NOT THE OLDEST CORPUS MTIME.
+ * Pinning either would bind this constant to a value that moves: `.git` is 4.2 GB and a history
+ * rewrite has been discussed in this repo, which would re-date the first commit; and the oldest
+ * mtime changes on every re-extract, checkout or `git pull`. A round instant safely below both
+ * is stable under both, and the floor's job is to separate 2000 from 2026 — not to be tight.
+ */
+export const RUN_START_FLOOR_MS = Date.parse('2025-01-01T00:00:00.000Z');
+
 const iso = (ms) => (Number.isFinite(ms) ? new Date(ms).toISOString() : String(ms));
 
 /**
@@ -192,9 +227,14 @@ const iso = (ms) => (Number.isFinite(ms) ? new Date(ms).toISOString() : String(m
  *   3. `null` → the driver EXPLICITLY claims no vintage. That is the legitimate **pre-extract
  *      pass**, which judges the committed vintage before the loop re-extracts anything, and
  *      whose sources therefore predate any run. It must be said, not omitted;
- *   4. a parseable epoch-ms number or ISO string → **enforced**. Unparseable throws rather
- *      than comparing against `NaN`, which is `false` for every operand and would read as
- *      drift.
+ *   4. a parseable epoch-ms number or ISO string **at or after `RUN_START_FLOOR_MS`** →
+ *      **enforced**. Unparseable throws rather than comparing against `NaN`, which is `false`
+ *      for every operand and would read as drift.
+ *   5. 🔴 a parseable instant BEFORE that floor — `0`, `-1`, `'0'` — → **THROWS** (added
+ *      2026-08-29). This was the FIFTH representation of "nothing" and the only one that was
+ *      silent: `0` made `mtime >= 0` vacuously true, and `'0'` parses to 2000-01-01 and was
+ *      *enforced* against a bar nothing in a 2026 corpus can fail. See `RUN_START_FLOOR_MS`
+ *      for why it is a floor rather than a `> 0` test or a list of three literals.
  */
 export function assertSameUnit(unit, provenance) {
   // The book clause reads `unit.book`, so an absent one must fail HERE, naming the field.
@@ -259,10 +299,19 @@ export function assertSameUnit(unit, provenance) {
     );
   }
   const startedAt = toEpochMs(claimed);
-  if (!Number.isFinite(startedAt)) {
+  // 🔴 ONE BRANCH FOR BOTH REFUSALS, ON PURPOSE. "Unparseable" and "parseable but cannot be a
+  // run start" are the same operator problem — the stamp does not describe when this run began
+  // — and they must not be distinguishable by a caller, or one of the two grows an exception.
+  // The floor is what makes the clause refuse `0`, `-1` and `'0'`; see `RUN_START_FLOOR_MS`.
+  if (!Number.isFinite(startedAt) || startedAt < RUN_START_FLOOR_MS) {
     throw new Error(
-      `remt-ctx: provenance.extractRunStartedAt is unparseable for unit ${unit.module}: ` +
-        `${JSON.stringify(claimed)} (${typeof claimed}). Expected epoch ms or an ISO string.`
+      `remt-ctx: provenance.extractRunStartedAt is not a usable run start for unit ` +
+        `${unit.module}: ${JSON.stringify(claimed)} (${typeof claimed}). Expected epoch ms or ` +
+        `an ISO string at or after ${iso(RUN_START_FLOOR_MS)}. REFUSED: anything unparseable, ` +
+        `and any instant before that floor — which is what rules out 0, negative numbers and ` +
+        `the STRING '0' (Date.parse('0') is 2000-01-01, so it would be enforced against a bar ` +
+        `nothing in this corpus can fail, and the vintage half of I4 would silently stand down ` +
+        `while LOOKING enforced). To declare a pre-extract pass, pass an explicit \`null\`.`
     );
   }
   for (const [key, src] of derived) {
@@ -590,6 +639,77 @@ const RUN_STATE_FNS = Object.freeze([
 ]);
 
 /**
+ * WHAT EACH `RUN_STATE_FNS` MEMBER MAY RETURN — the value half of the seam `requireRunState`
+ * guards the existence half of. Keyed by the ctx key the value becomes.
+ *
+ * 🔴 `requireRunState` CHECKED ONLY THAT THE FOUR MEMBERS ARE FUNCTIONS, AND A FUNCTION
+ * RETURNING THE WRONG THING WAS ACCEPTED IN SILENCE — three of the four with a measured cost:
+ *   · `emittedFilesFor` → non-array: E6 SKIPs at `remt-checks-extract.js:961` ("missing an
+ *     emittedFiles array"). This is the N2 incident — a BLOCKING check stopped on all 220 units
+ *     with 23/23 tests passing and exit 0.
+ *   · `committedExtractFor` / `freshExtractFor` → not a snapshot: the value was **dropped
+ *     silently** by the `isSnapshot` guard below, the key never reached ctx, and E7 — also
+ *     blocking — SKIPped. Measured 2026-08-29: either one alone costs E7 on all three kinds.
+ *   · `costEstimateFor` → measured harmless to judgeability (E9 answers with `leg-not-checked`
+ *     findings rather than SKIPping), and validated anyway: E9's leg 5 is a spend assertion,
+ *     and a shapeless cost estimate is a driver defect whichever verdict it produces.
+ *
+ * ⚠️ NULLISH IS TOLERATED AND WRONG-SHAPE IS NOT, AND THE DISTINCTION IS THE WHOLE DESIGN.
+ * `null`/`undefined` is a driver truthfully answering *"this run has not produced that yet"* —
+ * which is the honest answer for any unit the loop has not reached, and the state the subset
+ * probe is built to survive (see `probeRunStateFor`). A number, a string or a half-built object
+ * is a driver DEFECT, and there is no unit for which it is the truth. Collapsing the two is how
+ * a defect gets read as an absence and an absence gets read as "unjudgeable".
+ */
+const RUN_STATE_VALUE_CONTRACT = Object.freeze({
+  costEstimate: {
+    fn: 'costEstimateFor',
+    wellFormed: isPlainRecord,
+    expected: 'a record, `{isk, withForce: true}`',
+  },
+  emittedFiles: {
+    fn: 'emittedFilesFor',
+    wellFormed: Array.isArray,
+    expected: 'an ARRAY of listing entries (E6 SKIPs on anything else)',
+  },
+  committedExtract: {
+    fn: 'committedExtractFor',
+    wellFormed: isSnapshot,
+    expected: '{segIds:Set, segText:Map, equations:Map, inlineAttrs:string}',
+  },
+  freshExtract: {
+    fn: 'freshExtractFor',
+    wellFormed: isSnapshot,
+    expected: '{segIds:Set, segText:Map, equations:Map, inlineAttrs:string}',
+  },
+});
+
+/**
+ * Call one `RUN_STATE_FNS` member and hold it to `RUN_STATE_VALUE_CONTRACT`. Returns the value,
+ * `null`/`undefined` unchanged, or THROWS naming the unit, the ctx key and the function.
+ *
+ * ⚠️ CALLED EXACTLY ONCE PER KEY PER LOAD, from `loadTier1Ctx`. A driver's accessor is
+ * documented to return a value it already holds, not to compute one — but `costEstimateFor`
+ * stands for `api-translate --force --dry-run`, so calling it twice to validate it separately
+ * would be a second spawn per unit over a 220-unit run.
+ */
+function runStateValue(unit, runState, key) {
+  const { fn, wellFormed, expected } = RUN_STATE_VALUE_CONTRACT[key];
+  const v = runState[fn](unit);
+  if (v === null || v === undefined) return v; // "this run has not produced that yet"
+  if (!wellFormed(v)) {
+    throw new Error(
+      `remt-ctx: runState.${fn}(${unitLabel(unit)}) returned a value the loader cannot use as ` +
+        `ctx.${key}: expected ${expected}, got ${Array.isArray(v) ? 'array' : typeof v} ` +
+        `${JSON.stringify(v)?.slice(0, 80)}. This is a DRIVER defect, not a content one — a ` +
+        `wrong shape here is dropped silently and costs a BLOCKING check its verdict, so it ` +
+        `fails here instead. Return null/undefined to say the run has not produced it yet.`
+    );
+  }
+  return v;
+}
+
+/**
  * The loader/driver seam, guarded loudly. Without this a missing member surfaces as
  * `TypeError: runState.costEstimateFor is not a function` from deep inside the loader —
  * which reads as a loader bug, and which `runCheck` would convert into a content FAIL
@@ -614,8 +734,23 @@ function requireRunState(runState) {
  * that is right for `chapterLabel.chapterDir()` and WRONG here. Pass the string.
  * ⚠️ `locked` comes from `isMtLocked()`, NOT `fs.existsSync` — the marker is a SIBLING
  * (`-segments.is.md` -> `-segments.locked`), so the two disagree in BOTH directions.
- * ⚠️ `emittedFiles` is a LISTING, not a path, and MUST be scoped to THIS RUN's output — the
- * generated trees hold thousands of historical backups and E6 is BLOCKING.
+ * ⚠️ `emittedFiles` IS A LISTING, NOT A PATH. 🔴 **ONE RULE, TWO MODES — and this paragraph
+ * replaces the two instructions that used to disagree** (this line said "THIS RUN's listing
+ * only"; the shared test helper listed the COMMITTED tree and called itself "an approximation",
+ * so a driver author reading both was told two different things about the same key):
+ *   ▶ **THE RULE: the listing must describe the SAME VINTAGE as the rest of this ctx** — the
+ *     same vintage `segText`/`cnxml` were read at, which is the vintage `extractRunStartedAt`
+ *     declares. That is I4's vintage half stated for a key `provenanceFor` cannot stat, and it
+ *     is the whole of the contract.
+ *   · **Post-extract judgement** (`extractRunStartedAt` = the run's start): THIS RUN's output,
+ *     and nothing else. The generated trees hold thousands of historical backups, and E6 is
+ *     BLOCKING — hand it the committed tree here and it reports a clean sweep of the wrong
+ *     vintage.
+ *   · **Declared pre-extract pass** (`extractRunStartedAt: null`): the COMMITTED tree listing,
+ *     because that is the vintage this pass is judging. `committedEmittedFilesFor` builds it,
+ *     the test helper delegates to it, and the SUBSET PROBE runs in exactly this mode.
+ *   ⚠️ Neither mode is an approximation of the other, and the two are not interchangeable: the
+ *   stamp says which one this ctx is, so read the stamp before judging the listing.
  * ⚠️ `costEstimate` must come from `--force --dry-run`. A bare `--dry-run` reports ~0 ISK once
  * output exists — a wrong answer that looks like an answer. E9 refuses `withForce !== true`.
  *
@@ -643,8 +778,8 @@ export async function loadTier1Ctx(unit, runState) {
     handEdits: await handEditCommits(unit),
     inputs: expectedInputs(unit),
     force: runState.force === true,
-    costEstimate: runState.costEstimateFor(unit), // {isk, withForce:true}
-    emittedFiles: runState.emittedFilesFor(unit), // THIS RUN's listing only
+    costEstimate: runStateValue(unit, runState, 'costEstimate'), // {isk, withForce:true}
+    emittedFiles: runStateValue(unit, runState, 'emittedFiles'), // this ctx's VINTAGE; see below
   };
 
   const cnxml = readOrNull(cnxmlPath);
@@ -652,8 +787,11 @@ export async function loadTier1Ctx(unit, runState) {
   const segText = readOrNull(segPath);
   if (segText !== null) ctx.segText = segText;
 
-  const committed = runState.committedExtractFor(unit);
-  const fresh = runState.freshExtractFor(unit);
+  // ⚠️ `runStateValue` has already REFUSED a present-but-shapeless snapshot, so reaching the
+  // `isSnapshot` guard below now means the value is well-formed or nullish. Both guards stay:
+  // the throw is about a driver defect, this one is about a legitimate "not produced yet".
+  const committed = runStateValue(unit, runState, 'committedExtract');
+  const fresh = runStateValue(unit, runState, 'freshExtract');
   if (isSnapshot(committed)) ctx.committedExtract = committed;
   if (isSnapshot(fresh)) ctx.freshExtract = fresh;
 
@@ -728,6 +866,47 @@ export function unitsFor(book) {
     }
   }
   return units;
+}
+
+/**
+ * The files that EXIST for `unit` today in the two generated trees — the COMMITTED-vintage
+ * listing, derived from the read-only corpus and from nothing the run has done.
+ *
+ * 🔴 THIS IS NOT A SUBSTITUTE FOR THE RUN'S OWN `emittedFiles`, AND THE TWO ARE NOT
+ * INTERCHANGEABLE — see `loadTier1Ctx`'s `emittedFiles` note for the one rule that covers both.
+ * It exists because the SUBSET PROBE asks a question about a unit the run has not reached, and
+ * the committed tree is the only honest listing for such a unit. It is exactly what a declared
+ * **pre-extract pass** (`extractRunStartedAt: null`) holds, which is what the probe declares
+ * itself to be.
+ *
+ * ⚠️ IT DELIBERATELY INCLUDES THE UNIT'S OWN DATED BACKUPS. `safeWrite` mints one per rewritten
+ * output, and E6's backup ACCOUNTING (an orphan is a finding, an accompanied backup is not) is
+ * only exercised when they are present — a listing filtered down to "clean" names would probe
+ * E6 against shapes the tree does not contain.
+ *
+ * ⚠️ SINGLE CONSTRUCTION POINT: `tools/__tests__/helpers/remt-run-state.js` DELEGATES here
+ * rather than keeping its own copy. Its previous private copy was byte-identical in behaviour
+ * (verified over all 220 units when it was moved); the hazard of two copies is the one that
+ * file's own header names — change the chapter padding and the fixture lists from `chNN` while
+ * the loader reads `chNNN`, and E6 returns a plausible verdict over another unit's directory.
+ *
+ * @param {{book:string, chapter:string, module:string}} unit
+ * @returns {string[]} bare file names, never paths
+ */
+export function committedEmittedFilesFor(unit) {
+  const chDir = chapterDirOf(unit.chapter);
+  const out = [];
+  for (const tree of ['02-for-mt', '02-structure']) {
+    const dir = path.join(bookDir(unit.book), tree, chDir);
+    let names = [];
+    try {
+      names = fs.readdirSync(dir);
+    } catch {
+      continue;
+    }
+    for (const n of names) if (n.startsWith(`${unit.module}-`)) out.push(n);
+  }
+  return out;
 }
 
 /** How many representatives the subset probe runs per unit kind. See `representativeUnitsFor`. */
@@ -824,10 +1003,93 @@ export async function sentinelCtxFor(kind, runState) {
   return sentinelCtxForUnit(representativeUnitFor(kind), runState);
 }
 
+/**
+ * The ctx keys whose value comes from THE RUN rather than from the read-only corpus. Derived
+ * from `RUN_STATE_VALUE_CONTRACT` so the two cannot drift — this is the same population, named
+ * for the question A3's guard asks of it.
+ *
+ * 🔑 THIS IS THE DISCRIMINATOR THAT MAKES "MAY THIS EXCLUSION STAND?" ANSWERABLE. A blocking
+ * check may be excluded when it is STRUCTURALLY unjudgeable for a unit kind — `E1/E2/E4/E5` for
+ * `exercises` and `chapter-metadata` are exactly that, and their exclusion is correct: those
+ * kinds have no CNXML, a fact derived from files on disk that no run can change. It may NOT be
+ * excluded because a value the RUN supplies was missing, empty or unusable, because that is a
+ * statement about how far the loop has got — and the subset is cached for the process and
+ * applied to every unit of the kind.
+ * ▶ So the rule is about the PROVENANCE of the value, never about which check or which message.
+ */
+export const RUN_PROVENANCE_KEYS = Object.freeze(Object.keys(RUN_STATE_VALUE_CONTRACT));
+
+/**
+ * Is `v` a value the PROBE can decide a whole unit kind's subset on?
+ *
+ * 🔴 WELL-FORMED IS NOT ENOUGH — THE CONTAINER IS NOT THE PAYLOAD, AND THAT GAP IS THE MEASURED
+ * DEFECT. `emittedFilesFor: () => []` returns a perfectly well-formed array; `Array.isArray`
+ * accepts it, E6 classifies 0 entries, `runCheck` downgrades a zero-examined PASS to SKIPPED
+ * (`remt-battery.js:187`), and E6 — BLOCKING — is recorded `excluded` for the entire kind.
+ */
+const usableForProbe = (key, v) =>
+  RUN_STATE_VALUE_CONTRACT[key].wellFormed(v) && !(Array.isArray(v) && v.length === 0);
+
+/**
+ * The runState the PROBE loads its sentinel with: the driver's, with the two RUN-PROGRESS
+ * values replaced by the corpus-derived ones a **declared pre-extract pass** holds.
+ *
+ * 🔴 WHY THE PROBE MUST NOT ASK THE DRIVER ABOUT RUN PROGRESS AT ALL. `probeJudgeableSubset`
+ * samples `PROBE_REPRESENTATIVES` units SPREAD across the corpus — deliberately not the unit
+ * being judged, because one unit deciding a whole kind is the failure the disagreement tripwire
+ * exists for. At the moment the probe runs, the loop has not extracted those three units, so a
+ * run-scoped driver obeying this file's own `emittedFiles` contract has **no honest answer**:
+ * `[]` and `undefined` are the truthful ones, and BOTH are read as "unjudgeable". Measured on
+ * this loader: `[]` costs E6 (blocking) on all three kinds, `undefined` likewise by the other
+ * route, and neither ever SKIPs afterwards — an excluded check is never invoked, so I1's
+ * SKIP-watching direction is structurally blind to it.
+ * ▶ THE SUBSET IS A PROPERTY OF `(tier, kind, loader capability, registry)`. It is NOT a
+ * property of how far the run has got — which is why it is CACHED for the process. A probe that
+ * consults run progress is asking a different question from the one it caches the answer to.
+ *
+ * ── THE TWO SUBSTITUTIONS, AND WHY THEY ARE ONE DECISION ──
+ * The probe declares itself a **pre-extract pass**, which is an existing, first-class mode of
+ * this loop (`assertSameUnit` state 3), and takes both of that mode's values:
+ *   · `extractRunStartedAt: null` — an explicit "no vintage claimed". Without it I4's vintage
+ *     clause throws on the first real invocation: the driver's stamp is the run's start, the
+ *     representatives' sources are committed and therefore older, and the probe dies before it
+ *     can answer anything (measured, 3 of 3 unit kinds). The probe asks a CAPABILITY question
+ *     — *can this check reach a verdict from the keys the loader can supply for this kind?* —
+ *     and a capability does not have a vintage. A JUDGED unit is the opposite case and keeps
+ *     the clause in full: it is about to be spent on, so its sources must be this run's.
+ *   · `emittedFilesFor` → `committedEmittedFilesFor` — the committed-tree listing, which is
+ *     precisely what a pre-extract pass holds, and which is derived from the corpus rather than
+ *     from run progress.
+ *
+ * ⚠️ WHY THE TWO EXTRACT SNAPSHOTS ARE *NOT* SUBSTITUTED, THOUGH THEY ARE RUN-PROGRESS-DEPENDENT
+ * TOO. The loader can DERIVE a listing from the read-only corpus; it cannot derive an extraction
+ * snapshot — the real producers (`segMap`, `eqMap`, `loadCommitted`, `loadDisk`) are module-local
+ * and unexported in `tools/verify-reextract-equivalence.js`, so the loader would have to INVENT
+ * a fixture, and a probe built from an invented population agrees with the checks and disagrees
+ * with the producer. So the rule is: **substitute what the corpus can supply; for what it
+ * cannot, refuse to exclude a blocking check and say so** — which is what `probeJudgeableSubset`
+ * does next. Measured 2026-08-29: withholding either snapshot costs E7, also blocking.
+ *
+ * 🔴 SUBSTITUTED ON THE runState, BEFORE `loadCtx` — NEVER ON THE ctx THE LOADER RETURNED.
+ * Patching the returned ctx would overwrite loader-side damage with the probe's own value: the
+ * N2 mutation (`emittedFiles: undefined` inside `loadTier1Ctx`) would be repaired on its way
+ * out, E6 would judge, `EXPECTED_SUBSET` would stay green, and the cross-side anchor R20 exists
+ * for would be gone with the suite green. Both placements pass the honest-`[]` regression test,
+ * so no test here discriminates them — only this comment and the re-run of Mutation B do.
+ */
+function probeRunStateFor(runState) {
+  return {
+    ...runState,
+    extractRunStartedAt: null, // state 3: an explicit "no vintage claimed"
+    emittedFilesFor: committedEmittedFilesFor,
+  };
+}
+
 /** The same sentinel, for a NAMED unit — what `judgeableIds` probes each representative with. */
 async function sentinelCtxForUnit(unit, runState) {
-  const { ctx: tier0 } = await loadCtx(0, unit, runState);
-  const { ctx: tier1 } = await loadCtx(1, unit, runState);
+  const probeState = probeRunStateFor(runState);
+  const { ctx: tier0 } = await loadCtx(0, unit, probeState);
+  const { ctx: tier1 } = await loadCtx(1, unit, probeState);
   return { ...tier0, ...tier1 };
 }
 
@@ -857,6 +1119,9 @@ async function sentinelCtxForUnit(unit, runState) {
  * probes with decides the subset for that process. That is correct for a run (one driver, one
  * runState) and is stated because it is not obvious: a test that probes with a deliberately
  * impoverished runState would poison the cache for every later call in the same file.
+ * ▶ **`resetSubsetCache()` is the way back** (added 2026-08-29 — there was none before, and a
+ * grep for `subsetCache` found no invalidation anywhere in `tools/`). Its docstring says what a
+ * driver must call and when.
  */
 const subsetCache = new Map();
 
@@ -893,7 +1158,11 @@ export async function probeJudgeableSubset(tier, kind, runState) {
       const r = await runCheck(check, sentinel);
       if (r.verdict !== VERDICT.SKIPPED) judged.add(check.id);
     }
-    perUnit.push({ unit, judged });
+    // Recorded per representative, from the SENTINEL rather than from the runState, so that
+    // loader-side damage counts too: under the N2 mutation the driver's value is fine and the
+    // ctx key is `undefined`, and it is the ctx the checks were actually judged on.
+    const unusable = RUN_PROVENANCE_KEYS.filter((k) => !usableForProbe(k, sentinel[k]));
+    perUnit.push({ unit, judged, unusable });
   }
 
   const disagreed = tierChecks.filter(
@@ -918,6 +1187,51 @@ export async function probeJudgeableSubset(tier, kind, runState) {
 
   const ids = tierChecks.filter((c) => perUnit.some((p) => p.judged.has(c.id))).map((c) => c.id);
   const excluded = tierChecks.filter((c) => !ids.includes(c.id)).map((c) => c.id);
+
+  // ── A3: AN EXCLUSION MUST BE STRUCTURAL. IT MAY NEVER BE A STATEMENT ABOUT RUN PROGRESS ──
+  //
+  // 🔴 THE INVARIANT, NOT THE MECHANISM: a BLOCKING check may be dropped from a unit kind only
+  // when the loader structurally cannot supply what it needs for that kind — a fact about files
+  // on disk, which no run can change. `E1/E2/E4/E5` on `exercises`/`chapter-metadata` are
+  // exactly that and are excluded correctly: those kinds have no CNXML. What may NOT drop a
+  // blocking check is a value the RUN supplies (`RUN_PROVENANCE_KEYS`) arriving missing, empty
+  // or unusable — that says only that the loop has not got there yet, and the subset is cached
+  // for the process and applied to every unit of the kind. A blanket "never exclude a blocking
+  // check" would be wrong and would fire on those four legitimate exclusions every run.
+  //
+  // ⚠️ DELIBERATELY CONSERVATIVE, AND SAYING SO IS THE POINT: this cannot ATTRIBUTE a given
+  // SKIP to a given key — the only honest attribution would be the check's own SKIP message,
+  // and a guard keyed on message text is a guard keyed on the mechanism, which the mechanism
+  // then walks past. So it refuses to exclude ANY blocking check while ANY run-provenance value
+  // is unusable, which is a superset of the exclusions that are actually attributable. The cost
+  // of the over-refusal is a loud, immediate throw naming the key and the accessor to fix; the
+  // cost of under-refusing is a blocking gate silently retired over a ~51,267 ISK spend.
+  const excludedBlocking = tierChecks.filter((c) => c.blocking && excluded.includes(c.id));
+  const impoverished = perUnit.filter((p) => p.unusable.length > 0);
+  if (excludedBlocking.length > 0 && impoverished.length > 0) {
+    const keys = [...new Set(impoverished.flatMap((p) => p.unusable))];
+    throw new Error(
+      `remt-ctx: tier ${tier} would EXCLUDE the blocking check(s) ` +
+        `${excludedBlocking.map((c) => c.id).join(', ')} from unit kind '${kind}', but the ` +
+        `probe's own ctx was impoverished in a way that depends on RUN PROGRESS, so the ` +
+        `exclusion is not credible: ` +
+        impoverished
+          .map(
+            (p) =>
+              `${unitLabel(p.unit)} has no usable ${p.unusable.map((k) => `ctx.${k}`).join(', ')}`
+          )
+          .join('; ') +
+        `. Those values come from the driver — ` +
+        `${keys.map((k) => `runState.${RUN_STATE_VALUE_CONTRACT[k].fn}`).join(', ')} — and an ` +
+        `EXCLUDED check is never invoked, so it never SKIPs, so nothing downstream can see it ` +
+        `stop running. An exclusion may only be STRUCTURAL (this kind has no such source on ` +
+        `disk, as with E1/E2/E4/E5 and CNXML). ▶ Supply the value for the probe's ` +
+        `representatives, or — if the run genuinely cannot produce it yet — note that the probe ` +
+        `already declares itself a PRE-EXTRACT pass and substitutes what the corpus can supply ` +
+        `(see probeRunStateFor); an extraction snapshot is not one of those, by design.`
+    );
+  }
+
   if (ids.length === 0) {
     throw new Error(
       `remt-ctx: tier ${tier} has an EMPTY judgeable subset for unit kind '${kind}' over ` +
@@ -940,4 +1254,30 @@ export async function judgeableIds(tier, kind, runState) {
 export async function excludedIds(tier, kind, runState) {
   await judgeableIds(tier, kind, runState); // populates the cache
   return subsetCache.get(`${tier}:${kind}`).excluded;
+}
+
+/**
+ * Forget every probed subset, so the next `judgeableIds`/`excludedIds` re-probes from scratch.
+ *
+ * 🔴 WITHOUT THIS THE FIRST runState A PROCESS PROBES WITH DECIDES THE SUBSET FOR THE LIFE OF
+ * THE PROCESS, WITH NO WAY BACK. `subsetCache` is keyed on `tier:kind` and nothing else — a
+ * grep for it across `tools/` returned only the lines inside this file, so before 2026-08-29
+ * there was no invalidation or reset anywhere. That is correct for one run with one driver, and
+ * it is exactly wrong for the two cases that follow.
+ *
+ * ── WHAT A DRIVER MUST CALL, AND WHEN ──
+ *   · **On adopting a different runState in the same process** — a resumed run reading the
+ *     ledger, a second book, or a retry that rebuilt its accessors. The cached subset was probed
+ *     against the old one and is a claim about it.
+ *   · **NOT between units of one run.** The subset is a property of `(tier, kind, loader
+ *     capability, registry)`, so re-probing per unit would cost three sentinel loads per unit
+ *     and could only ever return the same answer — the caching is the point.
+ * ⚠️ A TEST THAT PROBES WITH A DELIBERATELY IMPOVERISHED runState MUST EITHER CALL THIS
+ * AFTERWARDS OR USE `probeJudgeableSubset`, THE UNCACHED PROBE. Otherwise it poisons the cache
+ * for every later call in the same file, and — because vitest runs a file's tests in source
+ * order but that order is not the order you read them in — the poisoning surfaces as an
+ * unrelated test failing somewhere below.
+ */
+export function resetSubsetCache() {
+  subsetCache.clear();
 }

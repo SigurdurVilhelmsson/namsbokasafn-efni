@@ -38,6 +38,8 @@ import {
   CTX_CAPABILITY,
   RUN_BOOKS,
   REPO_ROOT,
+  RUN_START_FLOOR_MS,
+  resetSubsetCache,
 } from '../remt-ctx.js';
 import { runState, snapshotFixture } from './helpers/remt-run-state.js';
 
@@ -431,6 +433,125 @@ describe('the subset probe SAMPLES the corpus — one unit may not decide a whol
   });
 });
 
+describe('the probe asks a CAPABILITY question — run progress may not decide a kind"s subset', () => {
+  // 🔴 THE DEFECT THESE PIN. `remt-ctx.js` tells the driver `emittedFiles` is "THIS RUN's
+  // listing only". An honest run-scoped `emittedFilesFor` therefore returns [] or undefined for
+  // the three representatives `probeJudgeableSubset` samples — the run has not extracted them.
+  // Measured at c291313d: BOTH answers excluded E6, a BLOCKING check, from every unit kind, and
+  // nothing downstream could see it (an excluded check is never invoked, so it never SKIPs, so
+  // I1's SKIP-watching direction is structurally blind to it). No mutation was needed: a driver
+  // author obeying a comment in this file reaches it.
+  // ⚠️ `probeJudgeableSubset` throughout, never `judgeableIds` — the latter memoises on
+  // `tier:kind`, so probing with a deliberately impoverished runState would poison the cache
+  // for every later test in this file.
+
+  it('🔴 A6 REGRESSION — an honest run-scoped `emittedFilesFor: () => []` does NOT exclude E6', async () => {
+    const honest = runState({ emittedFilesFor: () => [] });
+    const { ids, excluded } = await probeJudgeableSubset(1, 'module', honest);
+    expect(excluded, 'E6 was silently excluded — this is the c291313d defect').not.toContain('E6');
+    expect(ids).toContain('E6');
+    // …and the `undefined` answer, which reaches the same SKIP by E6's own not-an-array arm
+    // rather than by runCheck's zero-examined downgrade. Two routes, one defect.
+    const undef = await probeJudgeableSubset(
+      1,
+      'module',
+      runState({ emittedFilesFor: () => undefined })
+    );
+    expect(undef.excluded).not.toContain('E6');
+    expect(undef.ids).toContain('E6');
+    // 🔴 CONTROL — the assertions above are not satisfied by a probe that judges everything
+    // unconditionally: the source-less kinds still exclude their four source-side checks.
+    const sourceless = await probeJudgeableSubset(1, 'exercises', honest);
+    expect(sourceless.excluded.sort()).toEqual(['E1', 'E2', 'E4', 'E5']);
+  });
+
+  it('🔴 A1 — the probe is EXEMPT from I4"s vintage clause, and a JUDGED unit is NOT', async () => {
+    // Both directions, or the exemption silently widens from the probe to the whole run.
+    // A real driver stamps the run's start, which is AFTER every committed source, so before
+    // the exemption the very first probe threw (measured, 3 of 3 unit kinds).
+    const future = new Date(Date.now() + 86400000).toISOString();
+    const state = runState({ extractRunStartedAt: future });
+
+    // DIRECTION 1 — the probe asks a capability question, and a capability has no vintage.
+    await expect(probeJudgeableSubset(1, 'module', state)).resolves.toBeTruthy();
+    await expect(sentinelCtxFor('module', state)).resolves.toBeTruthy();
+
+    // DIRECTION 2 — the NEGATIVE CONTROL that keeps the exemption narrow. The same stamp on a
+    // unit that is actually being judged still throws: that unit is about to be spent on.
+    const unit = representativeUnitFor('module');
+    await expect(loadTier1Ctx(unit, state)).rejects.toThrow(/OLDER extraction vintage/);
+  });
+
+  it('🔴 A2 — a runState function returning the WRONG SHAPE throws, naming unit, key and function', async () => {
+    // `requireRunState` checked only that the four members are functions. A function returning
+    // the wrong thing was accepted in silence, and for three of the four that cost a check its
+    // verdict — `emittedFilesFor` → non-array is the N2 incident exactly.
+    const unit = representativeUnitFor('module');
+    const cases = [
+      ['emittedFilesFor', 'emittedFiles', 'not-an-array'],
+      ['costEstimateFor', 'costEstimate', 42],
+      ['committedExtractFor', 'committedExtract', { segIds: new Set() }], // half-built
+      ['freshExtractFor', 'freshExtract', 'snapshot'],
+    ];
+    for (const [fn, key, bad] of cases) {
+      let msg = '';
+      try {
+        await loadTier1Ctx(unit, runState({ [fn]: () => bad }));
+      } catch (e) {
+        msg = e.message;
+      }
+      expect(msg, `${fn} returning ${JSON.stringify(bad)}`).toContain(`runState.${fn}`);
+      expect(msg).toContain(`ctx.${key}`); // the key it would have become
+      expect(msg).toContain(unit.module); // the unit it was loading
+    }
+    // 🔴 CONTROL — nullish is NOT a wrong shape. A driver truthfully saying "this run has not
+    // produced that yet" must not be refused, or the honest answer becomes an error and the
+    // pressure is to return a plausible-looking fake instead.
+    for (const [fn] of cases) {
+      await expect(loadTier1Ctx(unit, runState({ [fn]: () => undefined }))).resolves.toBeTruthy();
+      await expect(loadTier1Ctx(unit, runState({ [fn]: () => null }))).resolves.toBeTruthy();
+    }
+  });
+
+  it('🔴 A3 — a BLOCKING check may not be excluded while a run-supplied value is unusable', async () => {
+    // The discriminator is the PROVENANCE of the key, never the check or the message: a value
+    // the RUN supplies says how far the loop has got, and the subset is cached and applied to
+    // every unit of the kind.
+    let msg = '';
+    try {
+      await probeJudgeableSubset(1, 'exercises', runState({ costEstimateFor: () => undefined }));
+    } catch (e) {
+      msg = e.message;
+    }
+    expect(msg).toMatch(/would EXCLUDE the blocking check/);
+    expect(msg).toContain('ctx.costEstimate'); // the key
+    expect(msg).toContain('runState.costEstimateFor'); // the accessor that owes it
+    expect(msg).toMatch(/E1|E2|E4|E5/); // the blocking checks it refused to drop
+
+    // 🔴 CONTROL, AND IT IS THE WHOLE POINT OF A3 — this is NOT "never exclude a blocking
+    // check". With every run-supplied value intact, the SAME four blocking checks are excluded
+    // from the SAME kind without complaint, because that exclusion is STRUCTURAL: these kinds
+    // have no CNXML, a fact about files on disk that no run can change.
+    const ok = await probeJudgeableSubset(1, 'exercises', runState());
+    expect(ok.excluded.sort()).toEqual(['E1', 'E2', 'E4', 'E5']);
+  });
+
+  it('A4 — resetSubsetCache is the way back from a poisoned subset', async () => {
+    // Without it the FIRST runState a process probes with decides the subset for the life of
+    // the process, with no way back — and there was no reset anywhere before 2026-08-29.
+    const first = await judgeableIds(1, 'module', runState());
+    expect(first).toContain('E6');
+    resetSubsetCache();
+    // CONTROL — the reset really cleared it: a probe that would now be REFUSED throws rather
+    // than quietly returning the cached answer from before the reset.
+    await expect(
+      judgeableIds(1, 'exercises', runState({ committedExtractFor: () => undefined }))
+    ).rejects.toThrow(/would EXCLUDE the blocking check/);
+    resetSubsetCache(); // …and leave the cache clean for whatever runs after this file's block
+    expect(await judgeableIds(1, 'module', runState())).toEqual(first);
+  });
+});
+
 describe('I4 vintage — assertSameUnit enforces the half EXTRACTION_DERIVED only NAMED', () => {
   // The middle representative, so this is not the same unit every other test uses.
   const unit = representativeUnitsFor('module')[1];
@@ -477,7 +598,77 @@ describe('I4 vintage — assertSameUnit enforces the half EXTRACTION_DERIVED onl
 
   it('an unparseable stamp throws rather than comparing against NaN', () => {
     // `mtime >= NaN` is false for every operand, so this would otherwise read as drift.
-    expect(() => assertSameUnit(unit, provWith('not-a-date'))).toThrow(/unparseable/);
+    expect(() => assertSameUnit(unit, provWith('not-a-date'))).toThrow(/not a usable run start/);
+  });
+
+  // ── THE FIFTH REPRESENTATION OF "NOTHING" (2026-08-29) ────────────────────────────────
+  // Measured on this exact function before the floor landed: `0` and `-1` were ENFORCED
+  // against `startedAt <= 0`, so `mtime >= startedAt` held for every file that has ever
+  // existed; and `'0'` parses to 2000-01-01, so it was enforced against a bar nothing in a
+  // 2026 corpus can fail. All three stood down SILENTLY while looking enforced.
+  // 🔴 ASSERTED AS A PROPERTY, NOT AS THREE LITERALS. An enumeration that has been wrong once
+  // should be replaced by the property — the three literals are only the members of it that
+  // were measured, and `Number(entry.tier)`-style coercion can mint others (`''`, `false`,
+  // `null` all coerce to 0 through arithmetic, and a truncated ISO string parses low).
+  it('🔴 EVERY stamp that cannot be a real run start is refused — the property, not the literals', () => {
+    const belowFloor = [
+      0, // the measured no-op
+      -1, // the measured no-op, negative
+      '0', // 🔴 the nastiest: Date.parse('0') = 2000-01-01, enforced against an unfailable bar
+      1, // one millisecond after the epoch
+      -86400000, // a day before the epoch
+      RUN_START_FLOOR_MS - 1, // the boundary, from the wrong side
+      '1970-01-01T00:00:00.000Z',
+      '1999-12-31T23:59:59.999Z',
+      '2000-01-01T00:00:00.000Z', // exactly what `'0'` parses to
+      new Date(RUN_START_FLOOR_MS - 1).toISOString(), // the boundary again, as a string
+    ];
+    for (const v of belowFloor) {
+      expect(() => assertSameUnit(unit, provWith(v)), `stamp ${JSON.stringify(v)}`).toThrow(
+        /not a usable run start/
+      );
+    }
+    // 🔴 CONTROL — the floor is a FLOOR, not a blanket refusal. The boundary instant itself and
+    // anything above it pass it; without this the assertions above are satisfied by a function
+    // that refuses every stamp, which would break the clause in the opposite direction.
+    expect(() => assertSameUnit(unit, provWith(RUN_START_FLOOR_MS))).not.toThrow();
+    expect(() => assertSameUnit(unit, provWith(RUN_START_FLOOR_MS + 1))).not.toThrow();
+    expect(() =>
+      assertSameUnit(unit, provWith(new Date(RUN_START_FLOOR_MS).toISOString()))
+    ).not.toThrow();
+    // 🔴 CONTROL — and the clause it guards is still LIVE, so none of the above passed because
+    // the vintage comparison had been disabled. A future stamp still throws, and throws the
+    // OTHER error: the drift one, not the floor one.
+    expect(() => assertSameUnit(unit, provWith(Date.now() + 86400000))).toThrow(
+      /OLDER extraction vintage/
+    );
+  });
+
+  it('the refusal NAMES the representations it refuses, so an operator is not left guessing', () => {
+    // A bare "invalid timestamp" would send an operator looking for a typo. The three silent
+    // representations have to be named, and the legitimate stand-down has to be signposted.
+    let msg = '';
+    try {
+      assertSameUnit(unit, provWith('0'));
+    } catch (e) {
+      msg = e.message;
+    }
+    expect(msg).toContain(String(new Date(RUN_START_FLOOR_MS).toISOString())); // the floor itself
+    expect(msg).toMatch(/2000-01-01/); // what `'0'` actually parses to
+    expect(msg).toMatch(/null/); // the way to declare a pre-extract pass instead
+    expect(msg).toContain('"0"'); // the value it was given
+  });
+
+  it('the floor sits below every legitimate run start AND above the `0` trap — the three constraints', () => {
+    // The constant's docstring states three constraints. They are cheap to assert, and a
+    // future edit that "tidies" the floor upward would silently refuse real runs.
+    expect(RUN_START_FLOOR_MS).toBeGreaterThan(Date.parse('0')); // (1) refuses the `'0'` trap
+    expect(RUN_START_FLOOR_MS).toBeLessThan(Date.parse('2025-05-18T21:03:58Z')); // (2) < first commit
+    // (3) below the oldest committed source, or a declared early pass is refused before it is compared
+    expect(RUN_START_FLOOR_MS).toBeLessThan(Date.parse('2026-07-07T09:12:25.604Z'));
+    // …and below the value the shared test helper stamps, or every pin in this suite reddens
+    // for a reason that has nothing to do with its own subject.
+    expect(RUN_START_FLOOR_MS).toBeLessThan(Date.parse(runState().extractRunStartedAt));
   });
 
   it('tier-0 provenance carries no extraction-derived source, so the clause never engages', () => {
