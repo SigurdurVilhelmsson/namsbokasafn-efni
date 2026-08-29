@@ -523,10 +523,17 @@ describe('the probe asks a CAPABILITY question — run progress may not decide a
     } catch (e) {
       msg = e.message;
     }
-    expect(msg).toMatch(/would EXCLUDE the blocking check/);
+    expect(msg).toMatch(/REFUSES TO DECIDE the judgeable subset/);
     expect(msg).toContain('ctx.costEstimate'); // the key
     expect(msg).toContain('runState.costEstimateFor'); // the accessor that owes it
-    expect(msg).toMatch(/E1|E2|E4|E5/); // the blocking checks it refused to drop
+    expect(msg).toMatch(/E1|E2|E4|E5/); // the blocking checks it declined to drop
+    // 🔴 THE WORDING IS PINNED, because the case this guard fires on most often is one where
+    // the exclusion IS legitimate. A message blaming the excluded checks would teach the next
+    // reader that the guard is wrong, and a pin that reads as wrong gets deleted rather than
+    // understood. It must name the KEY as the blocker and concede the exclusion may be sound.
+    expect(msg).toContain("the blocker is the probe's own ctx");
+    expect(msg).toMatch(/MAY WELL BE\s+LEGITIMATE/);
+    expect(msg).toMatch(/not a "never exclude a blocking check" rule/);
 
     // 🔴 CONTROL, AND IT IS THE WHOLE POINT OF A3 — this is NOT "never exclude a blocking
     // check". With every run-supplied value intact, the SAME four blocking checks are excluded
@@ -546,7 +553,7 @@ describe('the probe asks a CAPABILITY question — run progress may not decide a
     // than quietly returning the cached answer from before the reset.
     await expect(
       judgeableIds(1, 'exercises', runState({ committedExtractFor: () => undefined }))
-    ).rejects.toThrow(/would EXCLUDE the blocking check/);
+    ).rejects.toThrow(/REFUSES TO DECIDE the judgeable subset/);
     resetSubsetCache(); // …and leave the cache clean for whatever runs after this file's block
     expect(await judgeableIds(1, 'module', runState())).toEqual(first);
   });

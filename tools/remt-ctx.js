@@ -1016,6 +1016,16 @@ export async function sentinelCtxFor(kind, runState) {
  * statement about how far the loop has got — and the subset is cached for the process and
  * applied to every unit of the kind.
  * ▶ So the rule is about the PROVENANCE of the value, never about which check or which message.
+ *
+ * ⚠️ `force` IS RUN-SUPPLIED TOO AND IS DELIBERATELY *NOT* HERE — because it is not a member of
+ * `RUN_STATE_FNS`, this set could not have covered it by construction, so it was MEASURED
+ * separately rather than assumed harmless (2026-08-29, all three kinds, positive control
+ * `force: true`): `false`, `undefined` and the key omitted entirely all leave **E9 judgeable**
+ * and the excluded set **identical to the control**. E9 answers a bad `force` with a
+ * `leg-not-checked` FINDING — a verdict — rather than by SKIPping, so it cannot go missing the
+ * way E6 did. ▶ If a future check ever SKIPs on `force`, this set is the wrong shape for it and
+ * the guard needs a scalar arm; the measurement, not the reasoning, is what says it does not
+ * today.
  */
 export const RUN_PROVENANCE_KEYS = Object.freeze(Object.keys(RUN_STATE_VALUE_CONTRACT));
 
@@ -1068,7 +1078,20 @@ const usableForProbe = (key, v) =>
  * a fixture, and a probe built from an invented population agrees with the checks and disagrees
  * with the producer. So the rule is: **substitute what the corpus can supply; for what it
  * cannot, refuse to exclude a blocking check and say so** — which is what `probeJudgeableSubset`
- * does next. Measured 2026-08-29: withholding either snapshot costs E7, also blocking.
+ * does next. Measured 2026-08-29: withholding either snapshot costs E7 — which is
+ * `blocking: false` (`remt-checks-extract.js:543`), so it is the same defect class in an
+ * ADVISORY check. Only the `emittedFiles` arm costs a blocking gate. Stated precisely because
+ * the first draft of this comment called E7 blocking, and a count of a word is not a count of
+ * a thing.
+ *
+ * ▶ WHY DECOUPLING THE PROBE FROM THE DRIVER'S REAL LISTING IS NOT A WEAKENING, AND WHERE THE
+ * DAMAGE SURFACES INSTEAD. A systematically broken driver listing no longer vanishes into an
+ * `excluded` entry that nothing can observe. The check stays judgeable, so it is RUN — and it
+ * then SKIPs over a real unit, which `runTier` counts as a **blockingFailure**
+ * (`remt-battery.js`: `r.blocking && (FAIL || SKIPPED || examined === 0)`), and `exitCodeFor`
+ * returns **1**. So the protection is real at RUN TIME, not only at test time — where I1
+ * direction A ("no judgeable blocking check SKIPs over a unit the loader emitted") catches it
+ * as well. Detection moves from invisible to a hard halt; that is the whole trade.
  *
  * 🔴 SUBSTITUTED ON THE runState, BEFORE `loadCtx` — NEVER ON THE ctx THE LOADER RETURNED.
  * Patching the returned ctx would overwrite loader-side damage with the probe's own value: the
@@ -1206,15 +1229,19 @@ export async function probeJudgeableSubset(tier, kind, runState) {
   // is unusable, which is a superset of the exclusions that are actually attributable. The cost
   // of the over-refusal is a loud, immediate throw naming the key and the accessor to fix; the
   // cost of under-refusing is a blocking gate silently retired over a ~51,267 ISK spend.
+  //
+  // ⚠️ THE MESSAGE'S WORDING IS LOAD-BEARING, NOT DECORATION. It must name the IMPOVERISHED KEY
+  // as the blocker and say the exclusion may well be legitimate — because the case it fires on
+  // most often (`E1/E2/E4/E5` on a source-less kind) IS legitimate, and a message calling that
+  // "not credible" teaches the next reader that the guard is simply wrong. This repo's record is
+  // that a pin which reddens off-subject gets deleted rather than understood.
   const excludedBlocking = tierChecks.filter((c) => c.blocking && excluded.includes(c.id));
   const impoverished = perUnit.filter((p) => p.unusable.length > 0);
   if (excludedBlocking.length > 0 && impoverished.length > 0) {
     const keys = [...new Set(impoverished.flatMap((p) => p.unusable))];
     throw new Error(
-      `remt-ctx: tier ${tier} would EXCLUDE the blocking check(s) ` +
-        `${excludedBlocking.map((c) => c.id).join(', ')} from unit kind '${kind}', but the ` +
-        `probe's own ctx was impoverished in a way that depends on RUN PROGRESS, so the ` +
-        `exclusion is not credible: ` +
+      `remt-ctx: tier ${tier} REFUSES TO DECIDE the judgeable subset for unit kind '${kind}' — ` +
+        `the blocker is the probe's own ctx, NOT the check(s) it would have dropped. ` +
         impoverished
           .map(
             (p) =>
@@ -1222,11 +1249,16 @@ export async function probeJudgeableSubset(tier, kind, runState) {
           )
           .join('; ') +
         `. Those values come from the driver — ` +
-        `${keys.map((k) => `runState.${RUN_STATE_VALUE_CONTRACT[k].fn}`).join(', ')} — and an ` +
-        `EXCLUDED check is never invoked, so it never SKIPs, so nothing downstream can see it ` +
-        `stop running. An exclusion may only be STRUCTURAL (this kind has no such source on ` +
-        `disk, as with E1/E2/E4/E5 and CNXML). ▶ Supply the value for the probe's ` +
-        `representatives, or — if the run genuinely cannot produce it yet — note that the probe ` +
+        `${keys.map((k) => `runState.${RUN_STATE_VALUE_CONTRACT[k].fn}`).join(', ')} — so they ` +
+        `say how far the RUN has got, not what this unit kind structurally supports. ` +
+        `⚠️ The exclusion of ${excludedBlocking.map((c) => c.id).join(', ')} MAY WELL BE ` +
+        `LEGITIMATE — E1/E2/E4/E5 on a source-less kind are structural and correct, and this is ` +
+        `not a "never exclude a blocking check" rule. What this probe cannot do is ESTABLISH ` +
+        `that while a run-supplied value is unusable, and it must not guess: an EXCLUDED check ` +
+        `is never invoked, so it never SKIPs, so nothing downstream can see it stop running. ` +
+        `▶ FIX THE KEY, not the exclusion: supply ` +
+        `${keys.map((k) => `ctx.${k}`).join(', ')} for this kind's ${probes.length} probe ` +
+        `representatives. If the run genuinely cannot produce it yet, note that the probe ` +
         `already declares itself a PRE-EXTRACT pass and substitutes what the corpus can supply ` +
         `(see probeRunStateFor); an extraction snapshot is not one of those, by design.`
     );
