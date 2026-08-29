@@ -12,6 +12,126 @@
 
 ---
 
+## ⏱ AMENDMENT — 2026-08-29, the ctx loader as BUILT. EIGHT RULINGS THAT BIND SHIPPED CODE.
+
+> **This block is newer than everything below it, including the 2026-08-27 amendment.** Where it
+> disagrees with anything beneath, this block wins. It was written after Tasks N1/N2/N3 were built,
+> reviewed and fixed; everything below was written before any of it existed.
+> 🔴 **Why it is here rather than in the SDD ledger:** the branch's 38 rulings live in
+> `.superpowers/sdd/2026-08-24-c82-plan-c-driver-and-ledger/`, which is **gitignored** — that is
+> register **§C97** exactly ("a citation to a gitignored path is not evidence; it is a promise the
+> repo cannot keep"). §C97's own prescribed fix is to copy what must outlive the plan into a frozen
+> spec. **These eight are the ones that BIND SHIPPED CODE.** The rest stay session-local.
+> ⚠️ **They are auditable decisions, not settled law.** Re-open one on NEW EVIDENCE — that is review
+> working. Do not re-litigate from first principles, and do not reverse one because a reviewer
+> stated it confidently. Each carries what it costs if wrong.
+
+### The rulings, as built [branch `feat/c82-plan-c-ctx-loader`, 19 commits, unmerged]
+
+**① `readOrNull` RETURNING `''` FOR A ZERO-BYTE FILE IS CORRECT — do not "fix" it to `null`.**
+Its docstring once claimed it never returns `''`; **the docstring was what was wrong.** Emitting
+`''` is right: every consumer guards `typeof === 'string' && !== ''`, so a zero-byte source makes a
+blocking check SKIP, which under I1 is a **loud halt** — what a zero-byte source deserves. Returning
+`null` instead would make **ABSENT and EMPTY indistinguishable**, the exact anti-pattern this design
+exists to avoid. *Cost if wrong: none — behaviour unchanged.*
+
+**② `EXPECTED_SUBSET` IS A DELIBERATE HARDCODED PIN, AND IT IS THE FILE'S ONLY CROSS-SIDE ANCHOR.**
+It does **not** violate the [LEAD] "property, not enumeration" ruling: it pins a *measured result*
+(which checks the probe found judgeable), never per-check key requirements. It is necessary because
+`sentinelCtxForUnit` builds its probe ctx from **the same loader the sweep then runs** — a
+systematically omitted key makes a blocking check SKIP during the probe, get recorded `excluded`,
+and then never run. **Mutation-proven:** `emittedFiles: undefined` once stopped blocking **E6** on
+all 220 units with **23/23 tests passing, exit 0**. Post-pin the same mutation gives **6 failed,
+exit 1, naming E6**. *Cost if wrong: a legitimate subset change goes red and a human adjudicates —
+correct behaviour for a pre-spend gate.*
+
+**③ `assertSameUnit` IS CALLED BY BOTH LOADERS, AND IT IS A POSTCONDITION SELF-CHECK — SAID SO IN
+ITS OWN DOCSTRING.** It was exported and never invoked; *a gate never called is a gate that does not
+exist*. Wiring it converts "the tests found the loader correct at test time" into "the loader
+refuses to return a bad ctx, ever". ⚠️ **It is not a second opinion — the same module produces and
+validates the provenance. The test-side I4 sweep remains the independent audit; do not delete either
+as redundant.** ⚠️ **And its same-unit half cannot fire from either call site** (both sides of all
+three clauses derive from the same `unit` object): **the runtime call covers the VINTAGE half.**
+A driver that calls `assertSameUnit(itsOwnUnitObject, returnedProvenance)` supplies the two
+independently-held unit objects that make it cross-side — one line at the driver seam.
+
+**④ THE PROBE ASKS A CAPABILITY QUESTION, NOT A VINTAGE ONE, AND IT DECLARES ITSELF A PRE-EXTRACT
+PASS.** `probeJudgeableSubset` samples representatives *spread across the corpus*, then asked the
+driver for run-progress state about units the run has not reached — **for which there is no honest
+answer.** Measured: an honest run-scoped `emittedFilesFor` returning `[]` or `undefined` made
+blocking **E6** SKIP uniformly, land in `excluded`, and freeze there in an un-invalidatable cache —
+**with no mutation at all, by a driver author obeying the loader's own comment.** The probe now
+takes the pre-extract mode's values (`extractRunStartedAt: null` + the committed-tree listing),
+**substituted on the runState BEFORE `loadCtx`, never on the returned ctx** — the other placement
+would heal loader-side damage on its way out and silently destroy ②.
+
+**⑤ THE PROBE MAY NOT EXCLUDE A BLOCKING CHECK WHOSE SKIP IS ATTRIBUTABLE TO A RUN-SUPPLIED KEY —
+AND THIS IS NOT "NEVER EXCLUDE A BLOCKING CHECK".** That blanket rule is **wrong**: `E1/E2/E4/E5`
+are blocking and *legitimately* excluded for the `exercises` and `chapter-metadata` kinds. The
+discriminator is the **provenance of the value** — supplied by `runState` (run-progress-dependent)
+versus derived from files on disk (structural). **State the invariant, not the mechanism**; a
+suppression keyed on the mechanism is disabled by the mechanism.
+
+**⑥ `freshExtract` IS EXEMPT FROM THE PROBE'S USABILITY DEMAND — AND THE REASON MATTERS AS MUCH AS
+THE EXEMPTION.** 🔴 **The justification that was FIRST offered is measured FALSE and must not be
+written anywhere:** *"the `EXPECTED_SUBSET` anchor already covers a future blocking check reading
+`freshExtract`"* — it does not, because every call behind that anchor probes with a fixture that
+hardcodes a snapshot. **The true reasons:** `loadCommitted` is `git show HEAD:`, so
+`committedExtract` is supplyable at any time, while `freshExtract` comes from `loadDisk` and is
+**impossible in the mode the probe declares**; and as a demand it fired on **correct** usage —
+54 of 220 units, and **220/220** the moment any blocking check reads that key. **A guard that fires
+on correct usage does not fail closed; it gets routed around** — and the cheapest route is a driver
+handing over a snapshot **byte-equal to the committed one**, which satisfies the guard, makes E7
+pass **vacuously**, and looks honest.
+
+**⑦ THE EXEMPTION'S CONDITION IS AN EXECUTABLE PIN (`A7`), STATED AS A PROPERTY, AND IT LANDED IN
+THE SAME COMMIT.** *For every unit kind, the set of blocking checks excluded when `freshExtract` is
+withheld from the probe must equal the set excluded when it is supplied* — today `[]` for `module`
+and `[E1,E2,E4,E5]` for the two source-less kinds. 🔴 **Two conditions, both load-bearing:**
+**(a)** the **supplied** side is asserted against the **structural literal**, not merely against the
+withheld side — otherwise a future blocking check that SKIPs on *both* sides makes the two sets
+compare equal and **the pin goes vacuously green on precisely the check it exists to catch**
+(measured: a check registered to do exactly that turned A7 **red on the supplied arm**, while the
+cross-side comparison alone was **equal on all three kinds**); **(b)** A7 **hardcodes** what it
+withholds and does not import the exemption constant — importing would make its two sides move
+together with the thing under test, rebuilding the cancellation hazard **inside the guard**.
+
+**⑧ `extractRunStartedAt` REQUIRES A PLAUSIBLE INSTANT, NOT MERELY A FINITE NUMBER.** `0`, `-1` and
+the string `'0'` all passed `Number.isFinite` and made the vintage clause **stand down silently**;
+`'0'` is the worst — it parses to **2000-01-01**, so it is *enforced* against a bar nothing in a
+2026 corpus can fail, and the error path looks like a real comparison. A named floor constant
+refuses all three. **Reachability was in-tree, not hypothetical: the prescribed `Number(entry.tier)`
+ledger idiom turns `null`/`''`/`false` into `0`** — and the ledger is what this plan writes next.
+🔑 **The class is "a gate keyed on one representation of nothing is walked past by another"** (§C21);
+the fix asserts the **property**, not the three literals that happened to be found.
+
+### Two properties of the SUITE, not of the code — record them or they will be re-derived
+
+- 🔴 **`A3`'s throw lands in `beforeAll`, so ANY run-provenance impoverishment skips the ENTIRE
+  invariants file** — I1, I2, I4 and the cross-side anchor together — reporting **"42 skipped, zero
+  assertions evaluated"**, an outcome **indistinguishable from the anchor being dead.** Exit 1 still
+  fires, so nothing is un-gated. **Disarm A3 to observe the anchor.** *(The tripwire and the
+  invariant can both own a mutation, and the first to fire hides the other.)*
+- 🔴 **THE AUTHORITATIVE GATE REQUIRES AN EXCLUSIVE TREE — no live writer of any kind, a reviewer
+  with mutation permission included.** Violated 2026-08-29: a reviewer mutated `tools/remt-ctx.js`
+  four times *inside* the 408-second window of the authoritative `npm test`, and it was caught only
+  because it **volunteered the fact** — by the time anyone looked the tree was clean and
+  byte-identical. **A green result carries no record of what the tree was during the run.**
+
+### Still OPEN after this branch — do not read the above as closure
+
+- **`I4`/`L21`'s identity half is enforced only where provenance records a path.** `emittedFiles`
+  never enters `provenance.sources`, so `assertSameUnit` structurally cannot see it: cross-wiring
+  one unit's listing to another leaves the suite **93/93 green**. Pre-existing residue, **open**.
+- **An honest pre-extract driver loses advisory `E7` across all 166 module units** — and this is
+  **pre-existing, NOT caused by ⑥**: E7 needs *both* snapshots and `committedExtract` is still
+  demanded, so E7 was already lost before the exemption; what changed is only whether that state
+  additionally *throws*. Verified by execution at both shas. **Fusing the two would look like a
+  reason to revert ⑥, and would be wrong.**
+- **Tiers 2/3/4 have no loader**, so Plan C Task 8's verdicts stay injected. A second loader task is
+  owed and is in no plan.
+
+---
 ## ⏱ AMENDMENT — 2026-08-27, the user-review gate. THREE RULINGS AND FOUR CORRECTIONS.
 
 > **This block is newer than everything below it.** Where it disagrees with §§0-10, this block
