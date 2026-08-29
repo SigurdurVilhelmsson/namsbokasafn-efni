@@ -543,6 +543,67 @@ describe('the probe asks a CAPABILITY question — run progress may not decide a
     expect(ok.excluded.sort()).toEqual(['E1', 'E2', 'E4', 'E5']);
   });
 
+  it('🔴 A7 — withholding `freshExtract` changes NO kind"s BLOCKING exclusions', async () => {
+    // 🔴 THIS PIN IS THE CONDITION OF THE `freshExtract` EXEMPTION, NOT AN EXTRA. The probe no
+    // longer DEMANDS a usable `freshExtract` (see `PROBE_EXEMPT_KEY`): it is the one demanded
+    // value impossible in the pre-extract mode the probe declares, and as a demand it fired on
+    // correct usage, which gets routed around rather than obeyed. What the demand was there for
+    // is the case where a BLOCKING check reads `freshExtract` — then withholding it would
+    // silently retire that check for a whole unit kind. So pin exactly that, as a PROPERTY:
+    //
+    //   for every unit kind, the set of BLOCKING checks excluded when `freshExtract` is
+    //   WITHHELD from the probe equals the set excluded when it is SUPPLIED.
+    //
+    // Blocking-only on purpose: E7 is `blocking: false` and DOES depend on both snapshots, so
+    // it legitimately moves between the two sides. Its loss is a known, reported residue (it
+    // appears in `excluded`), not the hazard this guards.
+    //
+    // 🔴 IT HARDCODES WHAT IT WITHHOLDS AND WHAT IT EXPECTS — it must NOT import the loader's
+    // exempt-key list. Two sides deriving from one token cannot see damage to that token; that
+    // is this repo's named cancellation hazard, and importing the list would rebuild it INSIDE
+    // the pin that exists to prevent it.
+    //
+    // ⚠️ `probeJudgeableSubset` (uncached) throughout — `judgeableIds` memoises on `tier:kind`.
+    const blockingIds = new Set(
+      [...REGISTRY.values()].filter((c) => c.tier === 1 && c.blocking).map((c) => c.id)
+    );
+    // NON-VACUITY — without this, an empty registry makes every set below `[]` and `module`'s
+    // literal passes on nothing. `THE CONTAINER IS NOT THE PAYLOAD`.
+    expect(blockingIds.size).toBeGreaterThan(0);
+
+    // 🔴 CONDITION 1 — the SUPPLIED side is asserted against this STRUCTURAL literal, not merely
+    // against the withheld side. The supplied side comes from `snapshotFixture()`; if a future
+    // blocking check reads a field that fixture does not populate realistically, it SKIPs on
+    // BOTH sides, the two sets are equal, and the pin goes vacuously green on precisely the
+    // check it exists to catch. The literal is what stops that.
+    const STRUCTURAL_BLOCKING_EXCLUSIONS = {
+      module: [], // has CNXML: nothing blocking is structurally unjudgeable
+      exercises: ['E1', 'E2', 'E4', 'E5'], // source-less kinds: no CNXML, so the four
+      'chapter-metadata': ['E1', 'E2', 'E4', 'E5'], // source-side checks cannot be judged
+    };
+    // …and a kind added to the loader without a literal here must go RED, not silently skip.
+    expect(Object.keys(STRUCTURAL_BLOCKING_EXCLUSIONS).sort()).toEqual([...UNIT_KINDS].sort());
+
+    const blockingExcluded = (r) => r.excluded.filter((id) => blockingIds.has(id)).sort();
+    for (const kind of UNIT_KINDS) {
+      const supplied = await probeJudgeableSubset(1, kind, runState());
+      const withheld = await probeJudgeableSubset(
+        1,
+        kind,
+        runState({ freshExtractFor: () => undefined })
+      );
+      expect(blockingExcluded(supplied), `SUPPLIED side, kind '${kind}'`).toEqual(
+        STRUCTURAL_BLOCKING_EXCLUSIONS[kind]
+      );
+      expect(
+        blockingExcluded(withheld),
+        `WITHHELD side, kind '${kind}' — a BLOCKING check now depends on ctx.freshExtract, so ` +
+          `withholding it retires that check for the whole kind. The exemption at ` +
+          `PROBE_EXEMPT_KEY must be reconsidered; do not relax this pin.`
+      ).toEqual(blockingExcluded(supplied));
+    }
+  });
+
   it('A4 — resetSubsetCache is the way back from a poisoned subset', async () => {
     // Without it the FIRST runState a process probes with decides the subset for the life of
     // the process, with no way back — and there was no reset anywhere before 2026-08-29.

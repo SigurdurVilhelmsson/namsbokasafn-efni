@@ -1041,6 +1041,55 @@ const usableForProbe = (key, v) =>
   RUN_STATE_VALUE_CONTRACT[key].wellFormed(v) && !(Array.isArray(v) && v.length === 0);
 
 /**
+ * The run-provenance key the probe does NOT demand. Note the framing: `freshExtract` is not
+ * "always usable" — `usableForProbe` would still call `undefined` unusable, correctly. It is
+ * simply not DEMANDED, because the probe cannot honestly ask for it.
+ *
+ * 🔴 WHY THIS ONE AND NOT THE OTHER THREE — IT IS IMPOSSIBLE IN THE MODE THE PROBE DECLARES.
+ * `probeRunStateFor` declares a pre-extract pass. `committedExtract` comes from
+ * `loadCommitted` — `git show HEAD:` — so it depends on the git object store and on nothing
+ * the run has done; it is supplyable at any time, and so is `costEstimate` (a `--force
+ * --dry-run`). `freshExtract` comes from `loadDisk`, i.e. from what the extract just wrote,
+ * and a run that has not extracted a representative has no fresh snapshot for it — exactly as
+ * it has no vintage stamp, which this probe already concedes by declaring `null`.
+ *
+ * 🔴 AND BECAUSE, AS A DEMAND, IT FIRED ON *CORRECT* USAGE — WHICH IS NOT FAILING CLOSED.
+ * Measured 2026-08-29: it hard-blocked an honest driver on the two source-less kinds (54 of
+ * 220 units; `module` does not block, because its only exclusion is the advisory E7), and it
+ * would block 220/220 the moment any blocking check reads `freshExtract`. **A guard that fires
+ * on correct usage does not hold; it gets routed around** — and the cheapest route is the
+ * worst one available. Pre-extract on a clean tree the working tree still holds the committed
+ * bytes, so a driver satisfies the demand by handing over a `freshExtract` BYTE-EQUAL to
+ * `committedExtract`: the guard is satisfied, E7 compares a thing to itself and PASSES
+ * VACUOUSLY, and the driver source looks entirely honest. That relocates the exact thing this
+ * loader deliberately refused to do — invent a snapshot — into code nobody reviews.
+ *
+ * ⚠️ THE EXEMPTION'S CONDITION IS AN EXECUTABLE PIN, NOT THIS COMMENT. `remt-ctx.test.js`'s
+ * A7 asserts the property *for every unit kind, the set of BLOCKING checks excluded when
+ * `freshExtract` is withheld equals the set excluded when it is supplied*, with the supplied
+ * side asserted against the structural literal so it cannot go vacuously green. The moment a
+ * blocking check reads `freshExtract`, that pin fails naming the check — and this exemption
+ * must then be reconsidered rather than the pin relaxed.
+ */
+const PROBE_EXEMPT_KEY = 'freshExtract';
+
+// A rename of the contract key would otherwise make the filter below match nothing, silently
+// restoring the demand — and it would surface as A7's WITHHELD arm THROWING instead of
+// returning a set, a red naming the wrong cause. Fail at import instead.
+if (!Object.hasOwn(RUN_STATE_VALUE_CONTRACT, PROBE_EXEMPT_KEY)) {
+  throw new Error(
+    `remt-ctx: PROBE_EXEMPT_KEY '${PROBE_EXEMPT_KEY}' is not a RUN_STATE_VALUE_CONTRACT key ` +
+      `(have: ${Object.keys(RUN_STATE_VALUE_CONTRACT).join(', ')}). It was exempted from the ` +
+      `probe's usability demand for a stated reason; if the key was renamed, rename it here too.`
+  );
+}
+
+/** The run-provenance keys the probe demands a usable value for — all but the exempt one. */
+const PROBE_DEMANDED_KEYS = Object.freeze(
+  RUN_PROVENANCE_KEYS.filter((k) => k !== PROBE_EXEMPT_KEY)
+);
+
+/**
  * The runState the PROBE loads its sentinel with: the driver's, with the two RUN-PROGRESS
  * values replaced by the corpus-derived ones a **declared pre-extract pass** holds.
  *
@@ -1184,7 +1233,7 @@ export async function probeJudgeableSubset(tier, kind, runState) {
     // Recorded per representative, from the SENTINEL rather than from the runState, so that
     // loader-side damage counts too: under the N2 mutation the driver's value is fine and the
     // ctx key is `undefined`, and it is the ctx the checks were actually judged on.
-    const unusable = RUN_PROVENANCE_KEYS.filter((k) => !usableForProbe(k, sentinel[k]));
+    const unusable = PROBE_DEMANDED_KEYS.filter((k) => !usableForProbe(k, sentinel[k]));
     perUnit.push({ unit, judged, unusable });
   }
 
@@ -1217,10 +1266,14 @@ export async function probeJudgeableSubset(tier, kind, runState) {
   // when the loader structurally cannot supply what it needs for that kind — a fact about files
   // on disk, which no run can change. `E1/E2/E4/E5` on `exercises`/`chapter-metadata` are
   // exactly that and are excluded correctly: those kinds have no CNXML. What may NOT drop a
-  // blocking check is a value the RUN supplies (`RUN_PROVENANCE_KEYS`) arriving missing, empty
+  // blocking check is a value the RUN supplies (`PROBE_DEMANDED_KEYS`) arriving missing, empty
   // or unusable — that says only that the loop has not got there yet, and the subset is cached
   // for the process and applied to every unit of the kind. A blanket "never exclude a blocking
   // check" would be wrong and would fire on those four legitimate exclusions every run.
+  //
+  // ⚠️ THE DEMANDED SET IS `PROBE_DEMANDED_KEYS`, NOT `RUN_PROVENANCE_KEYS` — `freshExtract` is
+  // exempt, for the reason stated at `PROBE_EXEMPT_KEY`, and A7 is the pin that condition rests
+  // on. Read that comment before widening this back.
   //
   // ⚠️ DELIBERATELY CONSERVATIVE, AND SAYING SO IS THE POINT: this cannot ATTRIBUTE a given
   // SKIP to a given key — the only honest attribution would be the check's own SKIP message,
@@ -1258,9 +1311,12 @@ export async function probeJudgeableSubset(tier, kind, runState) {
         `is never invoked, so it never SKIPs, so nothing downstream can see it stop running. ` +
         `▶ FIX THE KEY, not the exclusion: supply ` +
         `${keys.map((k) => `ctx.${k}`).join(', ')} for this kind's ${probes.length} probe ` +
-        `representatives. If the run genuinely cannot produce it yet, note that the probe ` +
-        `already declares itself a PRE-EXTRACT pass and substitutes what the corpus can supply ` +
-        `(see probeRunStateFor); an extraction snapshot is not one of those, by design.`
+        `representatives. Every key that can appear above is producible BEFORE the loop has ` +
+        `extracted anything: costEstimate from a --force --dry-run, emittedFiles from the ` +
+        `committed tree (the probe already substitutes that one itself — see probeRunStateFor), ` +
+        `and committedExtract from 'git show HEAD:'. The one value a pre-extract pass genuinely ` +
+        `cannot hold — freshExtract, which comes from what the extract just wrote — is NOT ` +
+        `demanded here (see PROBE_EXEMPT_KEY). So do not satisfy this by inventing a snapshot.`
     );
   }
 
