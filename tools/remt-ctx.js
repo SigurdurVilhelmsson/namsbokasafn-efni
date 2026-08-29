@@ -1361,10 +1361,18 @@ export async function excludedIds(tier, kind, runState) {
  *     capability, registry)`, so re-probing per unit would cost three sentinel loads per unit
  *     and could only ever return the same answer — the caching is the point.
  * ⚠️ A TEST THAT PROBES WITH A DELIBERATELY IMPOVERISHED runState MUST EITHER CALL THIS
- * AFTERWARDS OR USE `probeJudgeableSubset`, THE UNCACHED PROBE. Otherwise it poisons the cache
- * for every later call in the same file, and — because vitest runs a file's tests in source
- * order but that order is not the order you read them in — the poisoning surfaces as an
- * unrelated test failing somewhere below.
+ * AFTERWARDS OR USE `probeJudgeableSubset`, THE UNCACHED PROBE. `subsetCache` is keyed on
+ * `tier:kind` and NOTHING ELSE, so the impoverished answer is not scoped to the test that
+ * planted it: it is what every later `judgeableIds`/`excludedIds` call in the process reads.
+ * The failure therefore surfaces in whichever test asks next — which is not the one that
+ * caused it, and which asserts something unrelated. That is the whole hazard, and it does not
+ * depend on the order tests run in.
+ * ⚠️ *(The reason given here until 2026-08-29 was that "vitest runs a file's tests in source
+ * order but that order is not the order you read them in". That is false — source order IS
+ * reading order; the repo's measured lesson is about FILE order not matching command-line
+ * argument order, a different claim and not this one. The PRESCRIPTION above was right and is
+ * unchanged. Recorded rather than quietly deleted because this repo's record is that a false
+ * rationale gets verified, found imaginary, and the real protection simplified away.)*
  */
 export function resetSubsetCache() {
   subsetCache.clear();

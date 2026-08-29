@@ -445,7 +445,15 @@ describe('the probe asks a CAPABILITY question — run progress may not decide a
   // `tier:kind`, so probing with a deliberately impoverished runState would poison the cache
   // for every later test in this file.
 
-  it('🔴 A6 REGRESSION — an honest run-scoped `emittedFilesFor: () => []` does NOT exclude E6', async () => {
+  it('🔴 A6 REGRESSION — an honest run-scoped `emittedFilesFor` is no longer ASKED, so E6 is not excluded', async () => {
+    // ⚠️ WHAT THIS PIN DEMONSTRATES, PRECISELY — *the probe no longer asks*, NOT *the probe
+    // copes*. `probeRunStateFor` substitutes `emittedFilesFor` → `committedEmittedFilesFor`
+    // BEFORE `loadCtx`, so the functions passed in below are **never called** on the probe
+    // path. The title said "…`emittedFilesFor: () => []` does NOT exclude E6", which is a true
+    // statement of the OUTCOME but invites the wrong mechanism — a reader infers the probe
+    // tolerates an empty listing, and would then "simplify" the substitution away.
+    // ▶ The inputs are still exactly right: they are the two honest answers a run-scoped
+    // driver has for a unit the loop has not reached, and both excluded E6 at c291313d.
     const honest = runState({ emittedFilesFor: () => [] });
     const { ids, excluded } = await probeJudgeableSubset(1, 'module', honest);
     expect(excluded, 'E6 was silently excluded — this is the c291313d defect').not.toContain('E6');

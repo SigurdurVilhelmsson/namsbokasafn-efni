@@ -22,6 +22,21 @@
  * rather than assumed. If the loader ever becomes unit-scoped at tier 0, that pin goes red and
  * this reduction must be revisited.
  *
+ * 🔴 IF YOU ARE MUTATION-TESTING THIS FILE AND SEE "42 SKIPPED, ZERO ASSERTIONS EVALUATED",
+ * THE ANCHOR IS PRE-EMPTED, NOT DEAD — DISARM A3 AND RE-RUN BEFORE CONCLUDING ANYTHING.
+ * A3's refusal (`remt-ctx.js`, "REFUSES TO DECIDE the judgeable subset") throws inside the
+ * `beforeAll` sweep below, so ANY run-provenance impoverishment skips this ENTIRE file — I1,
+ * I2, I4 and the `EXPECTED_SUBSET` cross-side anchor together. The run reports every test
+ * skipped and no assertion evaluated, which is an outcome **indistinguishable from the anchor
+ * being dead**, and the obvious reading of it is wrong. Nothing is un-gated: exit 1 still
+ * fires. Measured 2026-08-29 on `emittedFiles: undefined` inside `loadTier1Ctx` — as shipped,
+ * 42 skipped and 0 `EXPECTED_SUBSET` failures; with A3's guard `if (false)`, the SAME mutation
+ * gives 6 failed / 36 passed, each naming `E6`. The two layers are independent; the first one
+ * to fire simply hides the other.
+ * ▶ This is the standing form of the lesson that the tripwire and the invariant can both own a
+ * mutation. Pair any null you get out of this file with the disarmed arm, or you are reading
+ * an absence you manufactured.
+ *
  * ── THE SWEEP RUNS ONCE ──
  * Every invariant below reads one `beforeAll` sweep instead of rebuilding its own. A control
  * that recomputes a 16 s corpus walk to count what the assertion just measured doubles the
