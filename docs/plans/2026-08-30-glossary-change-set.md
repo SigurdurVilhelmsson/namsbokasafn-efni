@@ -130,6 +130,43 @@ with a working control), so physics is currently contributing *correct* element 
 that it is actively harmful no longer holds. **What the other ~1,600 terms contain has NOT been
 audited**, which is the honest limit on Shape 2.
 
+### The ~1,600 unaudited terms — now audited [MEASURED 2026-08-30]
+
+Every term Shape 2 removes, bucketed against the corpus: does the headword fire in the English, and
+does its Icelandic value appear anywhere in the model's own output?
+
+| set | terms | redundant | never fires | **divergent** |
+|---|---:|---:|---:|---:|
+| **chemistry — removed** | 1,634 | 81.6% | 0.2% | **18.2%** |
+| chemistry — **kept** (control) | 387 | 98.7% | 0% | **1.3%** |
+| **organic — removed** | 670 | 70.6% | 0.1% | **29.3%** |
+| organic — **kept** (control) | 170 | 97.1% | 0% | **2.9%** |
+
+**Divergent** = the headword fires but its Icelandic appears in **none** of 3.4M chars of MT output —
+the model is not producing that word, so the entry is not shaping the translation as it claims.
+
+🔑 **THE CONTROL IS WHAT MAKES THIS INTERPRETABLE.** Chemistry-domain terms diverge at **1.3% / 2.9%**;
+the imported foreign-domain terms at **18.2% / 29.3%** — a **10-14× gap, replicated independently in
+two books**. ▶ **No removed term is load-bearing:** each is either redundant (the model produces the
+word anyway) or already ignored — and removing an ignored one also retires §C73's partial-compliance
+risk, where an entry is obeyed on *some* occurrences unpredictably.
+
+Two the 50-row review did not reach, both high-frequency: **`appendix → botnlangi`** (72 — the
+anatomical appendix, in a book that has appendices) and **`alcohol → vínandi`** (65, organic —
+*drinking* alcohol, where the book means the functional-group class). Also `similar → einslaga` (214),
+`ring → baugur` (94, organic), `phases → kvartilaskipti` (moon phases, 42), `bottom → blíða` (43).
+
+⚠️ **Honest limit:** "redundant" tests whether the Icelandic stem appears *anywhere* in the output,
+not that it was produced *for that headword* — a weaker claim than it sounds. The divergence gap is
+what decides the question, and it is measured identically on both sides of the control.
+
+▶ **This makes Shape 2 a decision with evidence rather than a leap.** It is one reversible row per
+book (`DELETE FROM book_domain_priority WHERE book_id=? AND domain IN ('biology','physics')`), it
+clears 47 of the 50 reviewed headwords plus the two above, and it keeps `enthalpy → vermi`,
+`atom → atóm`, `mole → mól`, `molar mass → mólmassi`, `titration → títrun`, `electron → rafeind`.
+**It loses element names, units and `pH`** — which §C73 measured the MT rendering correctly
+unprompted, and which can be re-added as `chemistry` concepts (probe F, confirmed).
+
 ## 4. Two rows that are a different job
 
 The `carbohydrate`/`hydrocarbon` group is **not** on the 50-row sheet and is the mirror image of the
