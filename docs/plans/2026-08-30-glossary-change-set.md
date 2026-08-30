@@ -74,36 +74,61 @@ The [LEAD] filled all 50. I recommend changing **7**, each with the measurement 
 | 49 | `character` | einkenni \ | stafur | Pick einkenni | — agree |
 | 50 | `family` | fjölskylda \ | ætt | Pick ætt | — agree |
 
-## 3. 🔴 THE MECHANISM IS NOT SETTLED — do not apply from this document yet
+## 3. ✅ THE MECHANISM — SETTLED BY PROBE, 2026-08-30
 
-The obvious operation — set the row's `status` away from `approved` in `terminology_translations` —
-is **not proven to work**, and applying it blind would look successful while changing nothing.
+Run against a consistent `db.backup()` snapshot of production, mutated only on local copies.
+**Nothing in the tracked tree was written** (all four committed glossaries `md5sum -c` OK, git clean).
+Every mutation was asserted PRESENT before its result was read.
 
-What is established [MEASURED 2026-08-30]:
+| # | hypothesis | result |
+|---|---|---|
+| A | `terminology_translations.status = 'rejected'` | 🔴 **REFUTED** — mutation applied (1 row, read back `rejected`); glossary **identical**, 2,021 terms, `moles → moldvörpur [approved]` |
+| B | `UPDATE concept_term.text` (lang `is`) | ✅ **CONFIRMED** — sentinel propagated; control `enthalpy → vermi` untouched |
+| C | `DELETE` the `concept_term` row | ✅ **CONFIRMED** — 2,021 → **2,020**, term ABSENT (predicted delta −1) |
+| D | `concept_term.lifecycle = 'retired'` | 🔴 **REFUTED** — inert. `null` on all 192,142 rows; nothing reads it |
+| E | drop a domain from `book_domain_priority` | ✅ **CONFIRMED** — one row → **2,021 → 1,438** |
+| F | add a `chemistry` concept after E | ✅ **CONFIRMED** — reappears; and it **OUTRANKS physics** (1,438 → 1,439, predicted) |
 
-- `formatGlossary` (the MT wire) filters `status === 'approved'`, and `buildGlossaryMap` (the render
-  path, `tools/lib/math-label-substitute.js:20`) filters it too. So a non-approved row would drop from
-  **both** paths — this is the reversible operation, better than deleting data.
-- `rejected` and `disputed` are real statuses with existing service functions
-  (`terminologyService.js:659` and `:622`).
-- ⚠️ **But all 28,903 translation rows on production are currently `approved`** — there is no live
-  example of any other value, so this is an untested path in production data.
-- 🔴 **AND THE EXPORTER MAY NOT READ THAT TABLE AT ALL.** `glossary-unified.json` is written by
-  `export-terminology-resolved`, which builds from the **concept model** via `buildResolvedGlossary`
-  → `conceptResolver`/`conceptMatcher` — and neither of those files references
-  `terminology_translations` (measured: 0 occurrences in each, against a working control). It then
-  **hardcodes `status: 'approved'`** on every term it emits (`server/lib/resolvedGlossary.js:122`,
-  commented *"D2: load-bearing. buildGlossaryMap drops anything else."*).
+🔴 **A IS THE ONE THE PREVIOUS DRAFT PROPOSED, AND IT DOES NOTHING.** `formatGlossary` *and*
+`buildGlossaryMap` both filter `status === 'approved'`, so it looks right from every angle — but
+`resolvedGlossary.js:122` **re-stamps `status: 'approved'`** on every term it emits from the
+**concept model**, a different table. The edit would have reported success and changed nothing,
+and the 2-hourly cron would have republished the bad term.
 
-▶ **So a `status` change on `terminology_translations` may be re-stamped `approved` on export and have
-no effect.** The concept model is the likely real owner, and that path has not been traced to the bottom.
+### The structural finding
 
-**The next step is a measurement, not an edit:** copy production's `sessions.db`, change ONE term
-locally (`moles` is the safest — unambiguously wrong, 214 occurrences), run
-`server/scripts/export-terminology.js` against the copy, and diff the emitted
-`glossary-unified.json`. If the term disappears, the mechanism is confirmed. If it survives, the fix
-belongs in the concept model and this document needs a §3 rewrite. **Pair it with a control: a term
-you did NOT change must be unaffected.**
+**The chemistry book's glossary is only 19% chemistry**, and organic's is 20%:
+
+| book | physics | biology | chemistry | total |
+|---|---:|---:|---:|---:|
+| `efnafraedi-2e` | 1,051 | 583 | **387** | 2,021 |
+| `lifraen-efnafraedi` | 243 | 427 | **170** | 840 |
+
+`book_domain_priority` is why: chemistry resolves `chemistry → physics → biology`, so a headword with
+no chemistry concept falls through to another field's Íðorðabankinn dictionary. `moles → moldvörpur`
+is a **correct** LIFORD (biology) entry reached by fall-through — not our error, and deleting it
+would destroy imported reference data.
+
+### Two shapes, both measured
+
+**Shape 1 — surgical (3 steps).**
+① drop `biology` from chemistry's priority: **one reversible row, −582 terms**, clears 16 of the 18
+DELETEs plus `site`. ② re-add the 6 wanted terms as `chemistry` concepts (`pH`, `nm`, `ppm`, `kcal`,
+`drug`, `blood`) — confirmed working and non-destructive. ③ the **12 remaining DELETEs are ALL
+physics-domain** (`molar`, `specific`, `equivalent`, `tube`, `laboratory`, `fit`, `barrier`,
+`degenerate`, `variation`, `character`, `family`, `quantity`) and need per-term handling; the 10
+PICK rows can be **overridden non-destructively** by adding a chemistry concept, which outranks physics.
+
+**Shape 2 — chemistry-only.** Drop both `biology` and `physics`: **2,021 → 387**, removing **47 of
+the 50** reviewed headwords in one change. It keeps what matters — `enthalpy → vermi`,
+`atom → atóm`, `mole → mól`, **`molar mass → mólmassi`** (multi-word headwords survive),
+`titration → títrun`, `electron → rafeind` — and loses element names, units and `pH`.
+⚠️ **Weighing it:** §C73 measured that the MT renders `sodium → natríum` and `magnesium → magnesíum`
+correctly **with no glossary at all**, which is most of what physics contributes. **But** the 44 bad
+`-ium → -ín` spellings are already retired (measured: 21 `-ium` headwords remain, **0** ending `-ín`,
+with a working control), so physics is currently contributing *correct* element names — the argument
+that it is actively harmful no longer holds. **What the other ~1,600 terms contain has NOT been
+audited**, which is the honest limit on Shape 2.
 
 ## 4. Two rows that are a different job
 
