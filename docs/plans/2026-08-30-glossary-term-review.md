@@ -58,56 +58,56 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 | # | English | current Icelandic | occurs | in real MT output? | my read | VERDICT | CORRECTED |
 |---|---|---|---:|---|---|---|---|
-| 1 | [`is`](#1-is) | lófalægur | 9,202 | 🔴 **never in corpus** | **DELETE** — English copula. "lófalægur" is anatomical (palmar). Cannot be right in any chemistry sentence. | | |
-| 2 | [`at`](#2-at) | marsnákaætt | 2,085 | 🔴 **never in corpus** | **DELETE** — English preposition. "marsnákaætt" is a snake family. | | |
-| 3 | [`atom`](#3-atom) | atóm \| frumeind | 1,172 | ✓ in corpus | **PICK** — atóm vs frumeind — both real; pick one per book. | | |
-| 4 | [`form`](#4-form) | tilbrigði | 804 | 🔴 **never in corpus** | **DELETE** — "tilbrigði" = variant. Ordinary English word. | | |
-| 5 | [`structure`](#5-structure) | gerð | 794 | ✓ in corpus | **DELETE** — "gerð" is generic; fires 794x. | | |
-| 6 | [`no`](#6-no) | blóð- | 640 | ✓ in corpus | **DELETE** — English negation. "blóð-" is a blood- prefix. | | |
-| 7 | [`cell`](#7-cell) | fruma \| rafhlað | 462 | ✓ in corpus | **PICK** — "fruma" is a biological cell; here a cell is electrochemical. | | |
-| 8 | [`OR`](#8-or) | gagnlíkindahlutfall | 400 | 🔴 **never in corpus** | **DELETE** — Odds ratio (epidemiology). In organic chemistry OR is an alkoxy group, or the English word "or". | | |
-| 9 | [`pH`](#9-ph) | sýrustig | 314 | ✓ in corpus | **KEEP** — sýrustig is standard. | | |
-| 10 | [`learning`](#10-learning) | nám | 303 | ✓ in corpus | **DELETE** — From "learning objectives" boilerplate. | | |
-| 11 | [`equal`](#11-equal) | eins | 294 | ✓ in corpus | **DELETE** — Ordinary English. | | |
-| 12 | [`molar`](#12-molar) | jaxl \| mól- | 275 | ✓ in corpus | **PICK** — "jaxl" is a molar TOOTH. | | |
-| 13 | [`result`](#13-result) | niðurstaða | 226 | ✓ in corpus | **DELETE** — Ordinary English. | | |
-| 14 | [`moles`](#14-moles) | moldvörpur | 214 | 🔴 **never in corpus** | **FIX** — **"moldvörpur" is the ANIMAL.** Chemistry plural of mól. | | |
-| 15 | [`specific`](#15-specific) | eðlis- \| sértækur | 206 | ✓ in corpus | **PICK** — eðlis- (specific heat) vs sértækur (selective) — different meanings. | | |
-| 16 | [`species`](#16-species) | tegund | 205 | ✓ in corpus | **?** — Chemistry does use "species" technically (efnategund). Your call. | | |
-| 17 | [`behavior`](#17-behavior) | hegðun | 201 | ✓ in corpus | **DELETE** — Ordinary English. | | |
-| 18 | [`case`](#18-case) | tilfelli | 169 | ✓ in corpus | **DELETE** — Ordinary English. | | |
-| 19 | [`initial`](#19-initial) | upphafs- \| upphafsfruma | 147 | ✓ in corpus | **PICK** — "upphafsfruma" is a biology term; chemistry wants upphafs-. | | |
-| 20 | [`terms`](#20-terms) | tíðir | 136 | 🔴 **never in corpus** | **DELETE** — "tíðir" = menstruation. | | |
-| 21 | [`information`](#21-information) | upplýsingar | 130 | ✓ in corpus | **DELETE** — Ordinary English. | | |
-| 22 | [`simple`](#22-simple) | einfaldur | 119 | ✓ in corpus | **DELETE** — Ordinary English. | | |
-| 23 | [`blood`](#23-blood) | blóð | 118 | ✓ in corpus | **KEEP** — Correct, just tagged biology. | | |
-| 24 | [`production`](#24-production) | framleiðsla \| myndun | 108 | ✓ in corpus | **PICK** — framleiðsla vs myndun. | | |
-| 25 | [`hydrocarbon`](#25-hydrocarbon) | kolvatnsefni \| vetniskol | 88 | ⚠️ absent: kolvatnsefni | **PICK** — kolvatnsefni vs vetniskol. | | |
-| 26 | [`equivalent`](#26-equivalent) | jafngildi \| jafngildur | 86 | ✓ in corpus | **PICK** — noun vs adjective. | | |
-| 27 | [`tube`](#27-tube) | lampi \| pípa | 74 | ⚠️ absent: lampi | **PICK** — lampi = lamp; chemistry wants pípa. | | |
-| 28 | [`rays`](#28-rays) | skötur | 67 | 🔴 **never in corpus** | **DELETE** — "skötur" = skates (the fish). | | |
-| 29 | [`laboratory`](#29-laboratory) | rannsókna \| rannsóknarstofa | 63 | ✓ in corpus | **PICK** — rannsóknarstofa is the noun. | | |
-| 30 | [`absorb`](#30-absorb) | gleypa \| taka upp | 58 | ✓ in corpus | **PICK** — gleypa vs taka upp. | | |
-| 31 | [`methanol`](#31-methanol) | metanól \| tréspíri | 58 | ⚠️ absent: tréspíri | **PICK** — "tréspíri" is archaic (wood spirit). | | |
-| 32 | [`quantity`](#32-quantity) | magn \| stærð | 58 | ✓ in corpus | **PICK** — magn vs stærð. | | |
-| 33 | [`nm`](#33-nm) | nanómetri | 55 | ✓ in corpus | **KEEP** — nanómetri correct. | | |
-| 34 | [`protein`](#34-protein) | hvíta \| prótín | 37 | ✓ in corpus | **PICK** — prótín vs hvíta. | | |
-| 35 | [`CoA`](#35-coa) | kóensím A | 34 | ✓ in corpus | **KEEP** — coenzyme A, correct. | | |
-| 36 | [`fit`](#36-fit) | hviða \| mátun | 33 | 🔴 **never in corpus** | **PICK** — "hviða" = a seizure. Chemistry wants mátun. | | |
-| 37 | [`rank`](#37-rank) | raðgildi | 31 | 🔴 **never in corpus** | **?** — "raðgildi" — check. | | |
-| 38 | [`drug`](#38-drug) | lyf | 30 | ✓ in corpus | **KEEP** — lyf is correct. | | |
-| 39 | [`ppm`](#39-ppm) | milljónarhluti | 30 | ✓ in corpus | **KEEP** — correct. | | |
-| 40 | [`site`](#40-site) | set | 30 | ✓ in corpus | **?** — check against virkt set / hvarfset. | | |
-| 41 | [`kcal`](#41-kcal) | kílókaloría | 27 | ✓ in corpus | **KEEP** — correct. | | |
-| 42 | [`flow`](#42-flow) | flæði | 27 | ✓ in corpus | **KEEP** — flæði correct. | | |
-| 43 | [`degenerate`](#43-degenerate) | margfaldur \| margræður | 25 | ⚠️ absent: margræður | **PICK** — orbital degeneracy sense. | | |
-| 44 | [`diffraction`](#44-diffraction) | beygja \| bognun | 25 | ⚠️ absent: bognun | **PICK** — beygja vs bognun. | | |
-| 45 | [`barrier`](#45-barrier) | hindrun \| þröskuldur | 24 | ✓ in corpus | **PICK** — activation barrier. | | |
-| 46 | [`reagent`](#46-reagent) | prófefni \| virkt efni | 24 | ⚠️ absent: prófefni | **PICK** — "prófefni" is analytical; organic wants hvarfefni. | | |
-| 47 | [`variation`](#47-variation) | breytileiki \| hnikun | 23 | ⚠️ absent: hnikun | **PICK** — breytileiki vs hnikun. | | |
-| 48 | [`anti`](#48-anti) | and- | 21 | ✓ in corpus | **KEEP** — anti- prefix is used in stereochemistry. | | |
-| 49 | [`character`](#49-character) | einkenni \| stafur | 20 | ✓ in corpus | **PICK** — einkenni vs stafur (letter). | | |
-| 50 | [`family`](#50-family) | fjölskylda \| ætt | 20 | ✓ in corpus | **PICK** — ætt (periodic-table family) vs fjölskylda. | | |
+| 1 | [`is`](#1-is) | lófalægur | 9,202 | 🔴 **never in corpus** | **DELETE** — English copula. "lófalægur" is anatomical (palmar). Cannot be right in any chemistry sentence. | Delete | |
+| 2 | [`at`](#2-at) | marsnákaætt | 2,085 | 🔴 **never in corpus** | **DELETE** — English preposition. "marsnákaætt" is a snake family. | Delete | |
+| 3 | [`atom`](#3-atom) | atóm \| frumeind | 1,172 | ✓ in corpus | **PICK** — atóm vs frumeind — both real; pick one per book. | Pick atóm | |
+| 4 | [`form`](#4-form) | tilbrigði | 804 | 🔴 **never in corpus** | **DELETE** — "tilbrigði" = variant. Ordinary English word. | Delete | |
+| 5 | [`structure`](#5-structure) | gerð | 794 | ✓ in corpus | **DELETE** — "gerð" is generic; fires 794x. | Delete (structure in chemistry is usually "bygging") | |
+| 6 | [`no`](#6-no) | blóð- | 640 | ✓ in corpus | **DELETE** — English negation. "blóð-" is a blood- prefix. | Delete | |
+| 7 | [`cell`](#7-cell) | fruma \| rafhlað | 462 | ✓ in corpus | **PICK** — "fruma" is a biological cell; here a cell is electrochemical. | Pick rafhlað | |
+| 8 | [`OR`](#8-or) | gagnlíkindahlutfall | 400 | 🔴 **never in corpus** | **DELETE** — Odds ratio (epidemiology). In organic chemistry OR is an alkoxy group, or the English word "or". | Delete | |
+| 9 | [`pH`](#9-ph) | sýrustig | 314 | ✓ in corpus | **KEEP** — sýrustig is standard. | Keep | |
+| 10 | [`learning`](#10-learning) | nám | 303 | ✓ in corpus | **DELETE** — From "learning objectives" boilerplate. | Delete | |
+| 11 | [`equal`](#11-equal) | eins | 294 | ✓ in corpus | **DELETE** — Ordinary English. | Delete | |
+| 12 | [`molar`](#12-molar) | jaxl \| mól- | 275 | ✓ in corpus | **PICK** — "jaxl" is a molar TOOTH. | Pick mól- (molar on its own is usually "mólar", but molar mass, molar ratio, molar volume etc usually have a compound word in the chemistry glossary, eg mólmassi, mólhlutfall, mólrúmmál) | |
+| 13 | [`result`](#13-result) | niðurstaða | 226 | ✓ in corpus | **DELETE** — Ordinary English. | Delete | |
+| 14 | [`moles`](#14-moles) | moldvörpur | 214 | 🔴 **never in corpus** | **FIX** — **"moldvörpur" is the ANIMAL.** Chemistry plural of mól. | FIX (moles is mól (plural and singular are the same in Icelandic)) | |
+| 15 | [`specific`](#15-specific) | eðlis- \| sértækur | 206 | ✓ in corpus | **PICK** — eðlis- (specific heat) vs sértækur (selective) — different meanings. | Pick eðlis- (same as molar, usually appears as compound icelandic words such as eðlisvarmi - specific heat) | |
+| 16 | [`species`](#16-species) | tegund | 205 | ✓ in corpus | **?** — Chemistry does use "species" technically (efnategund). Your call. | Delete. Let MT decide on context and leave for edit. | |
+| 17 | [`behavior`](#17-behavior) | hegðun | 201 | ✓ in corpus | **DELETE** — Ordinary English. | Delete | |
+| 18 | [`case`](#18-case) | tilfelli | 169 | ✓ in corpus | **DELETE** — Ordinary English. | Delete | |
+| 19 | [`initial`](#19-initial) | upphafs- \| upphafsfruma | 147 | ✓ in corpus | **PICK** — "upphafsfruma" is a biology term; chemistry wants upphafs-. | Pick upphafs- | |
+| 20 | [`terms`](#20-terms) | tíðir | 136 | 🔴 **never in corpus** | **DELETE** — "tíðir" = menstruation. | Delete | |
+| 21 | [`information`](#21-information) | upplýsingar | 130 | ✓ in corpus | **DELETE** — Ordinary English. | Delete | |
+| 22 | [`simple`](#22-simple) | einfaldur | 119 | ✓ in corpus | **DELETE** — Ordinary English. | Delete | |
+| 23 | [`blood`](#23-blood) | blóð | 118 | ✓ in corpus | **KEEP** — Correct, just tagged biology. | Keep | |
+| 24 | [`production`](#24-production) | framleiðsla \| myndun | 108 | ✓ in corpus | **PICK** — framleiðsla vs myndun. | Pick myndun | |
+| 25 | [`hydrocarbon`](#25-hydrocarbon) | kolvatnsefni \| vetniskol | 88 | ⚠️ absent: kolvatnsefni | **PICK** — kolvatnsefni vs vetniskol. | Pick kolhýdrat (not in glossary, but the correct term) | |
+| 26 | [`equivalent`](#26-equivalent) | jafngildi \| jafngildur | 86 | ✓ in corpus | **PICK** — noun vs adjective. | Might be best to Delete (compound words like equivalent point - jafngildispunktur) or pick jafngildi. | |
+| 27 | [`tube`](#27-tube) | lampi \| pípa | 74 | ⚠️ absent: lampi | **PICK** — lampi = lamp; chemistry wants pípa. | Delete. Too generic and a problem for compound words (test tube - tilraunaglas etc) | |
+| 28 | [`rays`](#28-rays) | skötur | 67 | 🔴 **never in corpus** | **DELETE** — "skötur" = skates (the fish). | rays should be geislar. Probably best to delete and let MT decide on context. | |
+| 29 | [`laboratory`](#29-laboratory) | rannsókna \| rannsóknarstofa | 63 | ✓ in corpus | **PICK** — rannsóknarstofa is the noun. | Pick rannsóknarstofa. However, there are compound Icelandic words that depend on the next word (laboratory equipment etc) | |
+| 30 | [`absorb`](#30-absorb) | gleypa \| taka upp | 58 | ✓ in corpus | **PICK** — gleypa vs taka upp. | Pick gleypa | |
+| 31 | [`methanol`](#31-methanol) | metanól \| tréspíri | 58 | ⚠️ absent: tréspíri | **PICK** — "tréspíri" is archaic (wood spirit). | Pick metanól | |
+| 32 | [`quantity`](#32-quantity) | magn \| stærð | 58 | ✓ in corpus | **PICK** — magn vs stærð. | Pick magn | |
+| 33 | [`nm`](#33-nm) | nanómetri | 55 | ✓ in corpus | **KEEP** — nanómetri correct. | Keep | |
+| 34 | [`protein`](#34-protein) | hvíta \| prótín | 37 | ✓ in corpus | **PICK** — prótín vs hvíta. | Pick prótín | |
+| 35 | [`CoA`](#35-coa) | kóensím A | 34 | ✓ in corpus | **KEEP** — coenzyme A, correct. | Keep | |
+| 36 | [`fit`](#36-fit) | hviða \| mátun | 33 | 🔴 **never in corpus** | **PICK** — "hviða" = a seizure. Chemistry wants mátun. | Delte (let MT decide on context and allow for edit) | |
+| 37 | [`rank`](#37-rank) | raðgildi | 31 | 🔴 **never in corpus** | **?** — "raðgildi" — check. | Delete (let MT decide on context and allow for edit) | |
+| 38 | [`drug`](#38-drug) | lyf | 30 | ✓ in corpus | **KEEP** — lyf is correct. | Keep | |
+| 39 | [`ppm`](#39-ppm) | milljónarhluti | 30 | ✓ in corpus | **KEEP** — correct. | Keep | |
+| 40 | [`site`](#40-site) | set | 30 | ✓ in corpus | **?** — check against virkt set / hvarfset. | Keep? Site in chemistry is usually set, but can be generic. | |
+| 41 | [`kcal`](#41-kcal) | kílókaloría | 27 | ✓ in corpus | **KEEP** — correct. | Keep | |
+| 42 | [`flow`](#42-flow) | flæði | 27 | ✓ in corpus | **KEEP** — flæði correct. | Keep | |
+| 43 | [`degenerate`](#43-degenerate) | margfaldur \| margræður | 25 | ⚠️ absent: margræður | **PICK** — orbital degeneracy sense. | This is difficult. The physics glossary gives "kulefni" for "degenerate matter" and "kulgas" for "degenerate gas". This might be a case of letting the MT engine decide and allow for new terms and propagation in the glossary/editor UX. | |
+| 44 | [`diffraction`](#44-diffraction) | beygja \| bognun | 25 | ⚠️ absent: bognun | **PICK** — beygja vs bognun. | Pick beygja (the term used in the physics glossary) | |
+| 45 | [`barrier`](#45-barrier) | hindrun \| þröskuldur | 24 | ✓ in corpus | **PICK** — activation barrier. | Pick þröskuldur (this might be similar to 43, i.e. new, sometimes compound terms that will be added to the glossary) | |
+| 46 | [`reagent`](#46-reagent) | prófefni \| virkt efni | 24 | ⚠️ absent: prófefni | **PICK** — "prófefni" is analytical; organic wants hvarfefni. | Pick prófefni | |
+| 47 | [`variation`](#47-variation) | breytileiki \| hnikun | 23 | ⚠️ absent: hnikun | **PICK** — breytileiki vs hnikun. | Pick breytileiki | |
+| 48 | [`anti`](#48-anti) | and- | 21 | ✓ in corpus | **KEEP** — anti- prefix is used in stereochemistry. | Keep | |
+| 49 | [`character`](#49-character) | einkenni \| stafur | 20 | ✓ in corpus | **PICK** — einkenni vs stafur (letter). | Pick einkenni | |
+| 50 | [`family`](#50-family) | fjölskylda \| ætt | 20 | ✓ in corpus | **PICK** — ætt (periodic-table family) vs fjölskylda. | Pick ætt | |
 
 ---
 
