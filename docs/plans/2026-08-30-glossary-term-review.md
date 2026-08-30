@@ -19,12 +19,22 @@ contained. Nine rows are flagged. Controls: the stem `efnas` returns 1,031, a no
 **② The context sections below.**
 
 Every example shows real English from these books **and the Icelandic the pipeline produced for that exact
-segment**. That Icelandic was generated against a **1,117-term glossary containing none of the entries under
-review**. So each example shows **what Málstaður does UNPROMPTED** — which is exactly §C73's test:
+segment**. That Icelandic was generated against the **1,117-term glossary of 2026-03-11**, of which — measured
+by running the real `formatGlossary` over it — only **589 terms actually reached the API** (it sends `approved`
+only, then omits collisions). So each example shows **what Málstaður does UNPROMPTED** — which is exactly
+§C73's test:
 
 > *Before adding or defending a term, ask what the model does unprompted.*
 
 **If the unprompted Icelandic is already right, the entry buys nothing and risks everything.**
+
+🔴 **ONE EXCEPTION, and it is row 9.** Of the 50 headwords reviewed here, four were in that old file
+(`atom`, `pH`, `hydrocarbon`, `diffraction`) and **exactly one was emitted: `pH → pH`.** So row 9's Icelandic
+is *not* unprompted — the model was primed for that headword. (The priming was the identity `pH → pH`, so it
+is harmless, but the control does not apply there.) The other three were withheld: `atom` had two approved
+values so the collision filter dropped both, `hydrocarbon` was `proposed`, `diffraction` had an empty value.
+**For the remaining 49 rows the control holds** — controls in the same measurement: a real chemistry term
+(`enthalpy`) was emitted, a nonsense headword was not.
 
 ⚠️ **Element symbols are deliberately absent.** `As→arsen` is a correct term with a broken *matching rule* —
 `filterGlossaryForText` lowercases both sides, so `As` fires on the English word "as" 3,168 times. That is a

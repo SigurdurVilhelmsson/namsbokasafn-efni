@@ -85,12 +85,13 @@ clean. They are independent and need not share a schedule.
 `tools/api-translate.js` already takes `--book`/`--chapter`/`--module`. Releasing a chapter at a
 time therefore gives natural checkpoints, resumability (a chapter finished or it did not), and
 the lead's own release order — **without** the unbuilt `tools/remt-loop.js`, its ledger, or the
-resume mechanism whose absence a review had flagged as a risk. A chemistry chapter costs roughly **1,100–1,700 ISK** (ch15, the first the
-lead wants, is **1,129**), against a book total of **35,257** and an approved ceiling of 65,583 —
-small enough that re-buying a chapter is insurance rather than a budget event.
-⚠️ **These are the tool's own `--force --dry-run` figures.** A hand count that strips SEG markers
-before measuring comes out ~25% LOW, because the markers are billed with the file; that error was
-made and corrected on 2026-08-30. **Price a chapter with the tool, never with a character count.**
+resume mechanism whose absence a review had flagged as a risk. A chemistry chapter is **small enough that re-buying one is insurance rather than a budget event** —
+roughly one to two thousand ISK against an approved ceiling of 65,583. **The register owns the
+figures** (§C82 L145) and states them in two bases, because `--dry-run` is a *ceiling* while §C91 ①'s
+measured billing model is the *expectation*; they differ by ~26% for chemistry and ~36% for organic.
+⚠️ **No ISK number is restated here on purpose.** A frozen record carrying a live figure is how a
+correct decision acquires a wrong number — which happened to this paragraph on the day it was
+written, and is why it now points instead.
 
 ### The bin test needed three clauses, not one
 
