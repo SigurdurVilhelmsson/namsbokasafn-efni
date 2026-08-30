@@ -9,7 +9,14 @@ partially and unpredictably** (§C73 measured `sodium→natrín` obeyed on 2 of 
 set*), so it is baked into scattered occurrences everywhere and cannot be found by spot-checking output.
 No gate can see them — they are well-formed, approved and uncontested. **Only domain knowledge finds them.**
 
-## 🔑 The context sections are a control, not decoration
+## 🔑 Two controls on this page, not one
+
+**① The `in real MT output?` column.** Each candidate Icelandic word was searched (stemmed) across all
+4.2M characters of existing Icelandic MT for these two books. 🔴 **never in corpus** means the model has
+NEVER produced that word here — forcing it in via the glossary injects vocabulary the corpus has never
+contained. Nine rows are flagged. Controls: the stem `efnas` returns 1,031, a nonsense stem returns 0.
+
+**② The context sections below.**
 
 Every example shows real English from these books **and the Icelandic the pipeline produced for that exact
 segment**. That Icelandic was generated against a **1,117-term glossary containing none of the entries under
@@ -39,58 +46,58 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ---
 
-| # | English | current Icelandic | occurs | my read | VERDICT | CORRECTED |
-|---|---|---|---:|---|---|---|
-| 1 | [`is`](#1-is) | lófalægur | 9,202 | **DELETE** — English copula. "lófalægur" is anatomical (palmar). Cannot be right in any chemistry sentence. | | |
-| 2 | [`at`](#2-at) | marsnákaætt | 2,085 | **DELETE** — English preposition. "marsnákaætt" is a snake family. | | |
-| 3 | [`atom`](#3-atom) | atóm \| frumeind | 1,172 | **PICK** — atóm vs frumeind — both real; pick one per book. | | |
-| 4 | [`form`](#4-form) | tilbrigði | 804 | **DELETE** — "tilbrigði" = variant. Ordinary English word. | | |
-| 5 | [`structure`](#5-structure) | gerð | 794 | **DELETE** — "gerð" is generic; fires 794x. | | |
-| 6 | [`no`](#6-no) | blóð- | 640 | **DELETE** — English negation. "blóð-" is a blood- prefix. | | |
-| 7 | [`cell`](#7-cell) | fruma \| rafhlað | 462 | **PICK** — "fruma" is a biological cell; here a cell is electrochemical. | | |
-| 8 | [`OR`](#8-or) | gagnlíkindahlutfall | 400 | **DELETE** — Odds ratio (epidemiology). In organic chemistry OR is an alkoxy group, or the English word "or". | | |
-| 9 | [`pH`](#9-ph) | sýrustig | 314 | **KEEP** — sýrustig is standard. | | |
-| 10 | [`learning`](#10-learning) | nám | 303 | **DELETE** — From "learning objectives" boilerplate. | | |
-| 11 | [`equal`](#11-equal) | eins | 294 | **DELETE** — Ordinary English. | | |
-| 12 | [`molar`](#12-molar) | jaxl \| mól- | 275 | **PICK** — "jaxl" is a molar TOOTH. | | |
-| 13 | [`result`](#13-result) | niðurstaða | 226 | **DELETE** — Ordinary English. | | |
-| 14 | [`moles`](#14-moles) | moldvörpur | 214 | **FIX** — **"moldvörpur" is the ANIMAL.** Chemistry plural of mól. | | |
-| 15 | [`specific`](#15-specific) | eðlis- \| sértækur | 206 | **PICK** — eðlis- (specific heat) vs sértækur (selective) — different meanings. | | |
-| 16 | [`species`](#16-species) | tegund | 205 | **?** — Chemistry does use "species" technically (efnategund). Your call. | | |
-| 17 | [`behavior`](#17-behavior) | hegðun | 201 | **DELETE** — Ordinary English. | | |
-| 18 | [`case`](#18-case) | tilfelli | 169 | **DELETE** — Ordinary English. | | |
-| 19 | [`initial`](#19-initial) | upphafs- \| upphafsfruma | 147 | **PICK** — "upphafsfruma" is a biology term; chemistry wants upphafs-. | | |
-| 20 | [`terms`](#20-terms) | tíðir | 136 | **DELETE** — "tíðir" = menstruation. | | |
-| 21 | [`information`](#21-information) | upplýsingar | 130 | **DELETE** — Ordinary English. | | |
-| 22 | [`simple`](#22-simple) | einfaldur | 119 | **DELETE** — Ordinary English. | | |
-| 23 | [`blood`](#23-blood) | blóð | 118 | **KEEP** — Correct, just tagged biology. | | |
-| 24 | [`production`](#24-production) | framleiðsla \| myndun | 108 | **PICK** — framleiðsla vs myndun. | | |
-| 25 | [`hydrocarbon`](#25-hydrocarbon) | kolvatnsefni \| vetniskol | 88 | **PICK** — kolvatnsefni vs vetniskol. | | |
-| 26 | [`equivalent`](#26-equivalent) | jafngildi \| jafngildur | 86 | **PICK** — noun vs adjective. | | |
-| 27 | [`tube`](#27-tube) | lampi \| pípa | 74 | **PICK** — lampi = lamp; chemistry wants pípa. | | |
-| 28 | [`rays`](#28-rays) | skötur | 67 | **DELETE** — "skötur" = skates (the fish). | | |
-| 29 | [`laboratory`](#29-laboratory) | rannsókna \| rannsóknarstofa | 63 | **PICK** — rannsóknarstofa is the noun. | | |
-| 30 | [`absorb`](#30-absorb) | gleypa \| taka upp | 58 | **PICK** — gleypa vs taka upp. | | |
-| 31 | [`methanol`](#31-methanol) | metanól \| tréspíri | 58 | **PICK** — "tréspíri" is archaic (wood spirit). | | |
-| 32 | [`quantity`](#32-quantity) | magn \| stærð | 58 | **PICK** — magn vs stærð. | | |
-| 33 | [`nm`](#33-nm) | nanómetri | 55 | **KEEP** — nanómetri correct. | | |
-| 34 | [`protein`](#34-protein) | hvíta \| prótín | 37 | **PICK** — prótín vs hvíta. | | |
-| 35 | [`CoA`](#35-coa) | kóensím A | 34 | **KEEP** — coenzyme A, correct. | | |
-| 36 | [`fit`](#36-fit) | hviða \| mátun | 33 | **PICK** — "hviða" = a seizure. Chemistry wants mátun. | | |
-| 37 | [`rank`](#37-rank) | raðgildi | 31 | **?** — "raðgildi" — check. | | |
-| 38 | [`drug`](#38-drug) | lyf | 30 | **KEEP** — lyf is correct. | | |
-| 39 | [`ppm`](#39-ppm) | milljónarhluti | 30 | **KEEP** — correct. | | |
-| 40 | [`site`](#40-site) | set | 30 | **?** — check against virkt set / hvarfset. | | |
-| 41 | [`kcal`](#41-kcal) | kílókaloría | 27 | **KEEP** — correct. | | |
-| 42 | [`flow`](#42-flow) | flæði | 27 | **KEEP** — flæði correct. | | |
-| 43 | [`degenerate`](#43-degenerate) | margfaldur \| margræður | 25 | **PICK** — orbital degeneracy sense. | | |
-| 44 | [`diffraction`](#44-diffraction) | beygja \| bognun | 25 | **PICK** — beygja vs bognun. | | |
-| 45 | [`barrier`](#45-barrier) | hindrun \| þröskuldur | 24 | **PICK** — activation barrier. | | |
-| 46 | [`reagent`](#46-reagent) | prófefni \| virkt efni | 24 | **PICK** — "prófefni" is analytical; organic wants hvarfefni. | | |
-| 47 | [`variation`](#47-variation) | breytileiki \| hnikun | 23 | **PICK** — breytileiki vs hnikun. | | |
-| 48 | [`anti`](#48-anti) | and- | 21 | **KEEP** — anti- prefix is used in stereochemistry. | | |
-| 49 | [`character`](#49-character) | einkenni \| stafur | 20 | **PICK** — einkenni vs stafur (letter). | | |
-| 50 | [`family`](#50-family) | fjölskylda \| ætt | 20 | **PICK** — ætt (periodic-table family) vs fjölskylda. | | |
+| # | English | current Icelandic | occurs | in real MT output? | my read | VERDICT | CORRECTED |
+|---|---|---|---:|---|---|---|---|
+| 1 | [`is`](#1-is) | lófalægur | 9,202 | 🔴 **never in corpus** | **DELETE** — English copula. "lófalægur" is anatomical (palmar). Cannot be right in any chemistry sentence. | | |
+| 2 | [`at`](#2-at) | marsnákaætt | 2,085 | 🔴 **never in corpus** | **DELETE** — English preposition. "marsnákaætt" is a snake family. | | |
+| 3 | [`atom`](#3-atom) | atóm \| frumeind | 1,172 | ✓ in corpus | **PICK** — atóm vs frumeind — both real; pick one per book. | | |
+| 4 | [`form`](#4-form) | tilbrigði | 804 | 🔴 **never in corpus** | **DELETE** — "tilbrigði" = variant. Ordinary English word. | | |
+| 5 | [`structure`](#5-structure) | gerð | 794 | ✓ in corpus | **DELETE** — "gerð" is generic; fires 794x. | | |
+| 6 | [`no`](#6-no) | blóð- | 640 | ✓ in corpus | **DELETE** — English negation. "blóð-" is a blood- prefix. | | |
+| 7 | [`cell`](#7-cell) | fruma \| rafhlað | 462 | ✓ in corpus | **PICK** — "fruma" is a biological cell; here a cell is electrochemical. | | |
+| 8 | [`OR`](#8-or) | gagnlíkindahlutfall | 400 | 🔴 **never in corpus** | **DELETE** — Odds ratio (epidemiology). In organic chemistry OR is an alkoxy group, or the English word "or". | | |
+| 9 | [`pH`](#9-ph) | sýrustig | 314 | ✓ in corpus | **KEEP** — sýrustig is standard. | | |
+| 10 | [`learning`](#10-learning) | nám | 303 | ✓ in corpus | **DELETE** — From "learning objectives" boilerplate. | | |
+| 11 | [`equal`](#11-equal) | eins | 294 | ✓ in corpus | **DELETE** — Ordinary English. | | |
+| 12 | [`molar`](#12-molar) | jaxl \| mól- | 275 | ✓ in corpus | **PICK** — "jaxl" is a molar TOOTH. | | |
+| 13 | [`result`](#13-result) | niðurstaða | 226 | ✓ in corpus | **DELETE** — Ordinary English. | | |
+| 14 | [`moles`](#14-moles) | moldvörpur | 214 | 🔴 **never in corpus** | **FIX** — **"moldvörpur" is the ANIMAL.** Chemistry plural of mól. | | |
+| 15 | [`specific`](#15-specific) | eðlis- \| sértækur | 206 | ✓ in corpus | **PICK** — eðlis- (specific heat) vs sértækur (selective) — different meanings. | | |
+| 16 | [`species`](#16-species) | tegund | 205 | ✓ in corpus | **?** — Chemistry does use "species" technically (efnategund). Your call. | | |
+| 17 | [`behavior`](#17-behavior) | hegðun | 201 | ✓ in corpus | **DELETE** — Ordinary English. | | |
+| 18 | [`case`](#18-case) | tilfelli | 169 | ✓ in corpus | **DELETE** — Ordinary English. | | |
+| 19 | [`initial`](#19-initial) | upphafs- \| upphafsfruma | 147 | ✓ in corpus | **PICK** — "upphafsfruma" is a biology term; chemistry wants upphafs-. | | |
+| 20 | [`terms`](#20-terms) | tíðir | 136 | 🔴 **never in corpus** | **DELETE** — "tíðir" = menstruation. | | |
+| 21 | [`information`](#21-information) | upplýsingar | 130 | ✓ in corpus | **DELETE** — Ordinary English. | | |
+| 22 | [`simple`](#22-simple) | einfaldur | 119 | ✓ in corpus | **DELETE** — Ordinary English. | | |
+| 23 | [`blood`](#23-blood) | blóð | 118 | ✓ in corpus | **KEEP** — Correct, just tagged biology. | | |
+| 24 | [`production`](#24-production) | framleiðsla \| myndun | 108 | ✓ in corpus | **PICK** — framleiðsla vs myndun. | | |
+| 25 | [`hydrocarbon`](#25-hydrocarbon) | kolvatnsefni \| vetniskol | 88 | ⚠️ absent: kolvatnsefni | **PICK** — kolvatnsefni vs vetniskol. | | |
+| 26 | [`equivalent`](#26-equivalent) | jafngildi \| jafngildur | 86 | ✓ in corpus | **PICK** — noun vs adjective. | | |
+| 27 | [`tube`](#27-tube) | lampi \| pípa | 74 | ⚠️ absent: lampi | **PICK** — lampi = lamp; chemistry wants pípa. | | |
+| 28 | [`rays`](#28-rays) | skötur | 67 | 🔴 **never in corpus** | **DELETE** — "skötur" = skates (the fish). | | |
+| 29 | [`laboratory`](#29-laboratory) | rannsókna \| rannsóknarstofa | 63 | ✓ in corpus | **PICK** — rannsóknarstofa is the noun. | | |
+| 30 | [`absorb`](#30-absorb) | gleypa \| taka upp | 58 | ✓ in corpus | **PICK** — gleypa vs taka upp. | | |
+| 31 | [`methanol`](#31-methanol) | metanól \| tréspíri | 58 | ⚠️ absent: tréspíri | **PICK** — "tréspíri" is archaic (wood spirit). | | |
+| 32 | [`quantity`](#32-quantity) | magn \| stærð | 58 | ✓ in corpus | **PICK** — magn vs stærð. | | |
+| 33 | [`nm`](#33-nm) | nanómetri | 55 | ✓ in corpus | **KEEP** — nanómetri correct. | | |
+| 34 | [`protein`](#34-protein) | hvíta \| prótín | 37 | ✓ in corpus | **PICK** — prótín vs hvíta. | | |
+| 35 | [`CoA`](#35-coa) | kóensím A | 34 | ✓ in corpus | **KEEP** — coenzyme A, correct. | | |
+| 36 | [`fit`](#36-fit) | hviða \| mátun | 33 | 🔴 **never in corpus** | **PICK** — "hviða" = a seizure. Chemistry wants mátun. | | |
+| 37 | [`rank`](#37-rank) | raðgildi | 31 | 🔴 **never in corpus** | **?** — "raðgildi" — check. | | |
+| 38 | [`drug`](#38-drug) | lyf | 30 | ✓ in corpus | **KEEP** — lyf is correct. | | |
+| 39 | [`ppm`](#39-ppm) | milljónarhluti | 30 | ✓ in corpus | **KEEP** — correct. | | |
+| 40 | [`site`](#40-site) | set | 30 | ✓ in corpus | **?** — check against virkt set / hvarfset. | | |
+| 41 | [`kcal`](#41-kcal) | kílókaloría | 27 | ✓ in corpus | **KEEP** — correct. | | |
+| 42 | [`flow`](#42-flow) | flæði | 27 | ✓ in corpus | **KEEP** — flæði correct. | | |
+| 43 | [`degenerate`](#43-degenerate) | margfaldur \| margræður | 25 | ⚠️ absent: margræður | **PICK** — orbital degeneracy sense. | | |
+| 44 | [`diffraction`](#44-diffraction) | beygja \| bognun | 25 | ⚠️ absent: bognun | **PICK** — beygja vs bognun. | | |
+| 45 | [`barrier`](#45-barrier) | hindrun \| þröskuldur | 24 | ✓ in corpus | **PICK** — activation barrier. | | |
+| 46 | [`reagent`](#46-reagent) | prófefni \| virkt efni | 24 | ⚠️ absent: prófefni | **PICK** — "prófefni" is analytical; organic wants hvarfefni. | | |
+| 47 | [`variation`](#47-variation) | breytileiki \| hnikun | 23 | ⚠️ absent: hnikun | **PICK** — breytileiki vs hnikun. | | |
+| 48 | [`anti`](#48-anti) | and- | 21 | ✓ in corpus | **KEEP** — anti- prefix is used in stereochemistry. | | |
+| 49 | [`character`](#49-character) | einkenni \| stafur | 20 | ✓ in corpus | **PICK** — einkenni vs stafur (letter). | | |
+| 50 | [`family`](#50-family) | fjölskylda \| ætt | 20 | ✓ in corpus | **PICK** — ætt (periodic-table family) vs fjölskylda. | | |
 
 ---
 
@@ -98,7 +105,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 1. `is`
 
-**lófalægur** · 9,202 occurrences · domain `biology` · my read: **DELETE**
+**lófalægur** · 9,202 occurrences · domain `biology` · my read: **DELETE** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `lófalægur` 0*
 
 *efnafraedi-2e · `m68784:caption:CNX_Chem_11_05_srchlight-caption`*
 
@@ -115,7 +124,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 2. `at`
 
-**marsnákaætt** · 2,085 occurrences · domain `biology` · my read: **DELETE**
+**marsnákaætt** · 2,085 occurrences · domain `biology` · my read: **DELETE** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `marsnákaætt` 0*
 
 *efnafraedi-2e · `m68784:solution:fs-idm96918992`*
 
@@ -132,7 +143,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 3. `atom`
 
-**atóm | frumeind** · 1,172 occurrences · domain `chemistry` · my read: **PICK**
+**atóm | frumeind** · 1,172 occurrences · domain `chemistry` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `atóm` 939; `frumeind` 2175*
 
 *efnafraedi-2e · `m68735:caption:CNX_Chem_06_05_CovalradiT-caption`*
 
@@ -149,7 +162,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 4. `form`
 
-**tilbrigði** · 804 occurrences · domain `biology` · my read: **DELETE**
+**tilbrigði** · 804 occurrences · domain `biology` · my read: **DELETE** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `tilbrigði` 0*
 
 *efnafraedi-2e · `m68784:item:fs-idp50702640-item-2`*
 
@@ -166,7 +181,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 5. `structure`
 
-**gerð** · 794 occurrences · domain `biology` · my read: **DELETE**
+**gerð** · 794 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `gerð` 550*
 
 *efnafraedi-2e · `m68784:caption:CNX_Chem_11_05_oilspill-caption`*
 
@@ -183,7 +200,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 6. `no`
 
-**blóð-** · 640 occurrences · domain `biology` · my read: **DELETE**
+**blóð-** · 640 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `blóð-` 156*
 
 *efnafraedi-2e · `m68781:para:fs-idm10993712`*
 
@@ -200,7 +219,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 7. `cell`
 
-**fruma | rafhlað** · 462 occurrences · domain `biology,physics` · my read: **PICK**
+**fruma | rafhlað** · 462 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `fruma` 9; `rafhlað` 45*
 
 *efnafraedi-2e · `m68784:solution:fs-idm96918992`*
 
@@ -217,7 +238,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 8. `OR`
 
-**gagnlíkindahlutfall** · 400 occurrences · domain `biology` · my read: **DELETE**
+**gagnlíkindahlutfall** · 400 occurrences · domain `biology` · my read: **DELETE** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `gagnlíkindahlutfall` 0*
 
 *efnafraedi-2e · `m68784:para:fs-idm77182288`*
 
@@ -234,7 +257,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 9. `pH`
 
-**sýrustig** · 314 occurrences · domain `biology` · my read: **KEEP**
+**sýrustig** · 314 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `sýrustig` 56*
 
 *efnafraedi-2e · `m68836:problem:fs-idm66070064`*
 
@@ -251,7 +276,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 10. `learning`
 
-**nám** · 303 occurrences · domain `biology` · my read: **DELETE**
+**nám** · 303 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `nám` 148*
 
 *efnafraedi-2e · `m68727:problem:fs-idm121017200`*
 
@@ -268,7 +295,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 11. `equal`
 
-**eins** · 294 occurrences · domain `biology` · my read: **DELETE**
+**eins** · 294 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `eins` 2309*
 
 *efnafraedi-2e · `m68783:para:fs-idm378409280`*
 
@@ -285,7 +314,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 12. `molar`
 
-**jaxl | mól-** · 275 occurrences · domain `biology,physics` · my read: **PICK**
+**jaxl | mól-** · 275 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `jaxl` 1; `mól-` 1515*
 
 *efnafraedi-2e · `m68783:para:fs-idp135152880`*
 
@@ -302,7 +333,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 13. `result`
 
-**niðurstaða** · 226 occurrences · domain `biology` · my read: **DELETE**
+**niðurstaða** · 226 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `niðurstaða` 176*
 
 *efnafraedi-2e · `m68783:item:fs-idm38965696-item-1`*
 
@@ -319,7 +352,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 14. `moles`
 
-**moldvörpur** · 214 occurrences · domain `biology` · my read: **FIX**
+**moldvörpur** · 214 occurrences · domain `biology` · my read: **FIX** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `moldvörpur` 0*
 
 *efnafraedi-2e · `m68783:para:fs-idp89990944`*
 
@@ -336,7 +371,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 15. `specific`
 
-**eðlis- | sértækur** · 206 occurrences · domain `biology,physics` · my read: **PICK**
+**eðlis- | sértækur** · 206 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `eðlis-` 578; `sértækur` 34*
 
 *efnafraedi-2e · `m68776:caption:CNX_Chem_11_00_coralreef-caption`*
 
@@ -353,7 +390,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 16. `species`
 
-**tegund** · 205 occurrences · domain `biology` · my read: **?**
+**tegund** · 205 occurrences · domain `biology` · my read: **?** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `tegund` 410*
 
 *efnafraedi-2e · `m68784:solution:fs-idm95482864`*
 
@@ -370,7 +409,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 17. `behavior`
 
-**hegðun** · 201 occurrences · domain `biology` · my read: **DELETE**
+**hegðun** · 201 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `hegðun` 202*
 
 *efnafraedi-2e · `m68783:para:fs-idm111724384`*
 
@@ -387,7 +428,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 18. `case`
 
-**tilfelli** · 169 occurrences · domain `biology` · my read: **DELETE**
+**tilfelli** · 169 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `tilfelli` 120*
 
 *efnafraedi-2e · `m68783:para:fs-idp102839264`*
 
@@ -404,7 +447,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 19. `initial`
 
-**upphafs- | upphafsfruma** · 147 occurrences · domain `biology,physics` · my read: **PICK**
+**upphafs- | upphafsfruma** · 147 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `upphafs-` 287; `upphafsfruma` 287*
 
 *efnafraedi-2e · `m68733:para:fs-idm187603312`*
 
@@ -421,7 +466,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 20. `terms`
 
-**tíðir** · 136 occurrences · domain `biology` · my read: **DELETE**
+**tíðir** · 136 occurrences · domain `biology` · my read: **DELETE** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `tíðir` 0*
 
 *efnafraedi-2e · `m68783:para:fs-idp135152880`*
 
@@ -438,7 +485,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 21. `information`
 
-**upplýsingar** · 130 occurrences · domain `biology` · my read: **DELETE**
+**upplýsingar** · 130 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `upplýsingar` 142*
 
 *efnafraedi-2e · `m68783:para:fs-idp14421616`*
 
@@ -455,7 +504,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 22. `simple`
 
-**einfaldur** · 119 occurrences · domain `biology` · my read: **DELETE**
+**einfaldur** · 119 occurrences · domain `biology` · my read: **DELETE** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `einfaldur` 185*
 
 *efnafraedi-2e · `m68734:caption:CNX_Chem_06_04_Econtable-caption`*
 
@@ -472,7 +523,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 23. `blood`
 
-**blóð** · 118 occurrences · domain `biology` · my read: **KEEP**
+**blóð** · 118 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `blóð` 156*
 
 *efnafraedi-2e · `m68783:caption:CNX_Chem_11_04_bloodcell-caption`*
 
@@ -489,7 +542,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 24. `production`
 
-**framleiðsla | myndun** · 108 occurrences · domain `biology,physics` · my read: **PICK**
+**framleiðsla | myndun** · 108 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `framleiðsla` 618; `myndun` 467*
 
 *efnafraedi-2e · `m68667:caption:CNX_Chem_01_02_ConsMatter-caption`*
 
@@ -506,7 +561,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 25. `hydrocarbon`
 
-**kolvatnsefni | vetniskol** · 88 occurrences · domain `biology,physics` · my read: **PICK**
+**kolvatnsefni | vetniskol** · 88 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: kolvatnsefni
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `kolvatnsefni` 0; `vetniskol` 759*
 
 *efnafraedi-2e · `m68784:caption:CNX_Chem_11_05_soap-caption`*
 
@@ -523,7 +580,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 26. `equivalent`
 
-**jafngildi | jafngildur** · 86 occurrences · domain `biology,physics` · my read: **PICK**
+**jafngildi | jafngildur** · 86 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `jafngildi` 197; `jafngildur` 197*
 
 *efnafraedi-2e · `m68674:para:fs-idm163691744`*
 
@@ -540,7 +599,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 27. `tube`
 
-**lampi | pípa** · 74 occurrences · domain `biology,physics` · my read: **PICK**
+**lampi | pípa** · 74 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: lampi
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `lampi` 0; `pípa` 5*
 
 *efnafraedi-2e · `m68832:para:fs-idm41398960`*
 
@@ -557,7 +618,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 28. `rays`
 
-**skötur** · 67 occurrences · domain `biology` · my read: **DELETE**
+**skötur** · 67 occurrences · domain `biology` · my read: **DELETE** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `skötur` 0*
 
 *efnafraedi-2e · `m68729:glossary-def:fs-idm51371008-def`*
 
@@ -574,7 +637,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 29. `laboratory`
 
-**rannsókna | rannsóknarstofa** · 63 occurrences · domain `biology,physics` · my read: **PICK**
+**rannsókna | rannsóknarstofa** · 63 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `rannsókna` 158; `rannsóknarstofa` 158*
 
 *efnafraedi-2e · `m68783:para:fs-idp99432368`*
 
@@ -591,7 +656,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 30. `absorb`
 
-**gleypa | taka upp** · 58 occurrences · domain `biology,physics` · my read: **PICK**
+**gleypa | taka upp** · 58 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `gleypa` 51; `taka upp` 6*
 
 *efnafraedi-2e · `m68778:abstract-item:abstract-item-3`*
 
@@ -608,7 +675,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 31. `methanol`
 
-**metanól | tréspíri** · 58 occurrences · domain `biology,physics` · my read: **PICK**
+**metanól | tréspíri** · 58 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: tréspíri
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `metanól` 59; `tréspíri` 0*
 
 *efnafraedi-2e · `m68781:problem:fs-idm67036112`*
 
@@ -625,7 +694,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 32. `quantity`
 
-**magn | stærð** · 58 occurrences · domain `biology,physics` · my read: **PICK**
+**magn | stærð** · 58 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `magn` 1128; `stærð` 363*
 
 *efnafraedi-2e · `m68782:para:fs-idp72770704`*
 
@@ -642,7 +713,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 33. `nm`
 
-**nanómetri** · 55 occurrences · domain `biology` · my read: **KEEP**
+**nanómetri** · 55 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `nanómetri` 2*
 
 *efnafraedi-2e · `m68729:para:fs-idp152169520`*
 
@@ -659,7 +732,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 34. `protein`
 
-**hvíta | prótín** · 37 occurrences · domain `biology,physics` · my read: **PICK**
+**hvíta | prótín** · 37 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `hvíta` 18; `prótín` 11*
 
 *efnafraedi-2e · `m68783:para:fs-idp189571392`*
 
@@ -676,7 +751,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 35. `CoA`
 
-**kóensím A** · 34 occurrences · domain `biology` · my read: **KEEP**
+**kóensím A** · 34 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `kóensím A` 6*
 
 *lifraen-efnafraedi · `28-99-OC-MP02:stem:354976-b0`*
 
@@ -693,7 +770,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 36. `fit`
 
-**hviða | mátun** · 33 occurrences · domain `biology,physics` · my read: **PICK**
+**hviða | mátun** · 33 occurrences · domain `biology,physics` · my read: **PICK** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `hviða` 0; `mátun` 0*
 
 *efnafraedi-2e · `m68733:caption:CNX_Chem_06_03_elecw-caption`*
 
@@ -710,7 +789,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 37. `rank`
 
-**raðgildi** · 31 occurrences · domain `biology` · my read: **?**
+**raðgildi** · 31 occurrences · domain `biology` · my read: **?** · 🔴 **never in corpus**
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `raðgildi` 0*
 
 *efnafraedi-2e · `m68735:problem:fs-idm156789200`*
 
@@ -727,7 +808,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 38. `drug`
 
-**lyf** · 30 occurrences · domain `biology` · my read: **KEEP**
+**lyf** · 30 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `lyf` 168*
 
 *efnafraedi-2e · `m68841:para:fs-idm19578416`*
 
@@ -744,7 +827,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 39. `ppm`
 
-**milljónarhluti** · 30 occurrences · domain `biology` · my read: **KEEP**
+**milljónarhluti** · 30 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `milljónarhluti` 49*
 
 *efnafraedi-2e · `m68752:caption:CNX_Chem_09_03_GlobalWarming2-caption`*
 
@@ -761,7 +846,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 40. `site`
 
-**set** · 30 occurrences · domain `biology` · my read: **?**
+**set** · 30 occurrences · domain `biology` · my read: **?** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `set` 1313*
 
 *efnafraedi-2e · `m68674:para:fs-idm169361696`*
 
@@ -778,7 +865,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 41. `kcal`
 
-**kílókaloría** · 27 occurrences · domain `biology` · my read: **KEEP**
+**kílókaloría** · 27 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `kílókaloría` 1*
 
 *efnafraedi-2e · `m68727:problem:fs-idp25402576`*
 
@@ -795,7 +884,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 42. `flow`
 
-**flæði** · 27 occurrences · domain `biology` · my read: **KEEP**
+**flæði** · 27 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `flæði` 26*
 
 *efnafraedi-2e · `m68716:para:fs-idm26289056`*
 
@@ -812,7 +903,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 43. `degenerate`
 
-**margfaldur | margræður** · 25 occurrences · domain `biology,physics` · my read: **PICK**
+**margfaldur | margræður** · 25 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: margræður
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `margfaldur` 54; `margræður` 0*
 
 *efnafraedi-2e · `m68734:para:fs-idm6887808`*
 
@@ -829,7 +922,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 44. `diffraction`
 
-**beygja | bognun** · 25 occurrences · domain `biology,physics` · my read: **PICK**
+**beygja | bognun** · 25 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: bognun
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `beygja` 8; `bognun` 0*
 
 *efnafraedi-2e · `m68773:abstract-item:abstract-item-3`*
 
@@ -846,7 +941,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 45. `barrier`
 
-**hindrun | þröskuldur** · 24 occurrences · domain `biology,physics` · my read: **PICK**
+**hindrun | þröskuldur** · 24 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `hindrun` 26; `þröskuldur` 9*
 
 *efnafraedi-2e · `m68829:glossary-def:fs-idp8939856-def`*
 
@@ -863,7 +960,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 46. `reagent`
 
-**prófefni | virkt efni** · 24 occurrences · domain `biology,physics` · my read: **PICK**
+**prófefni | virkt efni** · 24 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: prófefni
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `prófefni` 0; `virkt efni` 51*
 
 *efnafraedi-2e · `m68703:problem:fs-idm26426432`*
 
@@ -880,7 +979,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 47. `variation`
 
-**breytileiki | hnikun** · 23 occurrences · domain `biology,physics` · my read: **PICK**
+**breytileiki | hnikun** · 23 occurrences · domain `biology,physics` · my read: **PICK** · ⚠️ absent: hnikun
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `breytileiki` 1360; `hnikun` 0*
 
 *efnafraedi-2e · `m68831:glossary-def:fs-idp20554272-def`*
 
@@ -897,7 +998,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 48. `anti`
 
-**and-** · 21 occurrences · domain `biology` · my read: **KEEP**
+**and-** · 21 occurrences · domain `biology` · my read: **KEEP** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `and-` 1726*
 
 *efnafraedi-2e · `m68700:para:fs-idp70748048`*
 
@@ -914,7 +1017,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 49. `character`
 
-**einkenni | stafur** · 20 occurrences · domain `biology,physics` · my read: **PICK**
+**einkenni | stafur** · 20 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `einkenni` 119; `stafur` 37*
 
 *efnafraedi-2e · `m68761:problem:fs-idp57555904`*
 
@@ -931,7 +1036,9 @@ regenerates that file from the DB, so a JSON edit is overwritten within the hour
 
 ## 50. `family`
 
-**fjölskylda | ætt** · 20 occurrences · domain `biology,physics` · my read: **PICK**
+**fjölskylda | ætt** · 20 occurrences · domain `biology,physics` · my read: **PICK** · ✓ in corpus
+
+*occurrences of each candidate in the 4.2M chars of existing Icelandic MT: `fjölskylda` 21; `ætt` 809*
 
 *efnafraedi-2e · `m68713:para:fs-idp78338704`*
 
