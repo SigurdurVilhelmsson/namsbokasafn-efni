@@ -435,3 +435,88 @@ export function walkContent(content, handlers, context = {}) {
     }
   }
 }
+
+/**
+ * Find the `<title>` that is a DIRECT CHILD of a container's inner content.
+ *
+ * §C82 L143/L144 — stated as a SHAPE, never as a book. Measured 2026-08-31 by
+ * running `extractSegments` over all 491 source modules of the two kept books:
+ * organic (`lifraen-efnafraedi`) writes a container's own title as a direct child
+ *
+ *     <example id="exam-00001">
+ *       <title>Predicting the Number of Bonds Formed by Atoms in Molecules</title>
+ *       <para id="para-00011"><title>Strategy</title> Identify the group…</para>
+ *
+ * while chemistry (`efnafraedi-2e`) writes it inside the first para
+ *
+ *     <example><para id="fs-id…"><title>Measuring Heat</title> body…</para>
+ *
+ * and PHYSICS uses organic's title shape with chemistry's id style — so the axis
+ * is the SHAPE, not the book, and a book/legacy split would have needed a third
+ * branch within a week (L144).
+ *
+ * ⚠️ DEPTH-AWARE ON PURPOSE, AND THAT IS THE WHOLE POINT. A `<title>` nested
+ * inside a child element belongs to that CHILD, not to the container: organic's
+ * `<para><title>Strategy</title> body…</para>` is a paragraph sub-heading, and
+ * mistaking it for the container's title is exactly the defect this closes —
+ * measured, all 102 organic `example-title` segments carried only "Strategy"
+ * (101) or "Solution" (1), i.e. ZERO carried a real example title.
+ *
+ * ⚠️ Depth is tracked by SCANNING, not by an enumeration of which child tags may
+ * contain a title. An enumeration here would be wrong the first time a book uses
+ * a container this list forgot (CLAUDE.md: an enumeration that has been wrong
+ * twice should become the property — this one arrives as the property).
+ *
+ * ⚠️ §C115 — the open-tag span is quote-aware (`TAG_ATTR_SPAN`) and LAZY, for the
+ * same two reasons `extractElements` gives: a bare `>` is legal inside an
+ * attribute value, so `[^>]*` truncates mid-attribute silently; and a greedy span
+ * eats the `/` of a self-closing tag, which would corrupt the depth count.
+ *
+ * XML comments are masked first: `01-source` CNXML carries commented-out elements
+ * (§C90, organic ch28/m00309), and a commented `<para>` would otherwise open a
+ * depth that never closes and hide every subsequent direct-child title.
+ *
+ * @param {string} content - a container's raw inner CNXML (NOT the whole element)
+ * @returns {{ inner: string, fullMatch: string } | null} the direct-child title's
+ *   inner CNXML and its full `<title>…</title>` span, or null when there is none
+ */
+export function firstDirectChildTitle(content) {
+  if (!content) return null;
+  // Mask comments to spaces so offsets into `content` stay valid.
+  const scan = content.replace(/<!--[\s\S]*?-->/g, (m) => ' '.repeat(m.length));
+  const tagPattern = new RegExp(`<(\\/)?([A-Za-z_][\\w.:-]*)(${TAG_ATTR_SPAN}?)(?:(\\/)>|>)`, 'g');
+  let depth = 0;
+  let match;
+  while ((match = tagPattern.exec(scan)) !== null) {
+    const [full, closing, tagName, , selfClosing] = match;
+    if (closing) {
+      depth = Math.max(0, depth - 1);
+      continue;
+    }
+    if (selfClosing) {
+      // ⚠️ A SELF-CLOSING `<title/>` IS STILL A DIRECT-CHILD TITLE — it is just
+      // an empty one. Skipping it made this function disagree with its DOM
+      // counterpart `directChildTitle` on 5 real organic containers (organic
+      // source carries 20 literal `<title/>`; chemistry carries none), and two
+      // primitives documented as answering the same question that disagree on
+      // real data are worth nothing as a pair.
+      if (depth === 0 && tagName === 'title') {
+        return { inner: '', fullMatch: content.slice(match.index, match.index + full.length) };
+      }
+      continue;
+    }
+    if (depth === 0 && tagName === 'title') {
+      // CNXML titles do not nest, so the first `</title>` after the open tag is
+      // this title's. (If that ever changes, this becomes a depth scan too.)
+      const innerStart = match.index + full.length;
+      const closeAt = scan.indexOf('</title>', innerStart);
+      if (closeAt === -1) return null; // unterminated: report nothing rather than guess
+      return {
+        inner: content.slice(innerStart, closeAt),
+        fullMatch: content.slice(match.index, closeAt + '</title>'.length),
+      };
+    }
+    depth++;
+  }
+  return null;
+}

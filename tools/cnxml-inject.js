@@ -46,7 +46,12 @@ import {
   requireBook,
 } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
-import { extractGlossary, TAG_ATTR_SPAN } from './lib/cnxml-parser.js';
+import {
+  extractGlossary,
+  TAG_ATTR_SPAN,
+  extractElements,
+  firstDirectChildTitle,
+} from './lib/cnxml-parser.js';
 import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
@@ -59,6 +64,7 @@ import {
   replaceListItems as replaceListItemsDom,
   removeElementsByTag,
   insertCnxmlBefore,
+  directChildTitle,
 } from './lib/cnxml-dom.js';
 import {
   loadMathLabelResolver,
@@ -2898,6 +2904,42 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
     if (match) {
       let tableCnxml = match[0];
 
+      // 🔴 §C82 L143/L144 — WRITE THE TABLE'S OWN <title> BACK. This branch
+      // preserves the source table block and replaces cell content inside it,
+      // so without this the <title> ships in ENGLISH: extracted, sent to the
+      // paid MT, and then silently not written (the §C89 class).
+      //
+      // ⚠️ Anchored on the table's INNER content, never on a tag-boundary
+      // calculation: `firstDirectChildTitle` is depth-aware, so a <title>
+      // belonging to a nested container cannot be overwritten with the table's
+      // translation. `extractElements` supplies the inner span quote-aware
+      // (§C115), so a bare `>` in an attribute cannot mislocate the boundary.
+      //
+      // ⚠️ Chemistry has ZERO <table> elements with a direct-child <title>
+      // (0 of 191), so this branch is unreachable there.
+      if (element.title?.segmentId) {
+        const translatedTitle = getSeg(element.title.segmentId);
+        if (translatedTitle) {
+          const [tableEl] = extractElements(tableCnxml, 'table');
+          const titleHit = tableEl && firstDirectChildTitle(tableEl.content);
+          if (titleHit) {
+            // ⚠️ FUNCTION REPLACERS, NOT STRING ONES. `String.replace` expands
+            // `$&`, `` $` ``, `$'`, `$$` and `$n` IN THE REPLACEMENT, and the
+            // replacement here is TRANSLATED text — editor- and MT-authored,
+            // so its content is not ours to predict. Measured: a title
+            // containing `$&` rewrites to
+            // `<title>A <title>Old</title> B</title>` — corrupt nested markup
+            // from a value that merely passed through. A function replacer is
+            // immune, and is behaviour-identical for every other input.
+            const rewritten = tableEl.content.replace(
+              titleHit.fullMatch,
+              () => `<title>${translatedTitle}</title>`
+            );
+            tableCnxml = tableCnxml.replace(tableEl.content, () => rewritten);
+          }
+        }
+      }
+
       // Expand self-closing <entry.../> to <entry...></entry> so the
       // replacement regex can match all entries and cellIdx stays aligned.
       // Without this, <entry align="left"/> gets mismatched by the regex
@@ -2928,7 +2970,19 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
                       const paraPattern = new RegExp(
                         `(<para\\s+id="${paraInfo.paraId}"[^>]*>)[\\s\\S]*?(</para>)`
                       );
-                      newContent = newContent.replace(paraPattern, `$1${paraText}$2`);
+                      // ⚠️ FUNCTION REPLACER — same class as the table-title site
+                      // above, and this one is PRE-EXISTING. The replacement
+                      // interpolates TRANSLATED cell text, and `String.replace`
+                      // expands `$&`, `` $` ``, `$'`, `$$` and `$n` inside it,
+                      // so a cell translated as "kostar $5" or carrying `$&`
+                      // rewrites itself with the matched span. The `$1`/`$2`
+                      // here are deliberate capture references, which is exactly
+                      // why the string form looked correct; taking the groups as
+                      // ARGUMENTS keeps them while making the payload inert.
+                      newContent = newContent.replace(
+                        paraPattern,
+                        (_m, open, close) => `${open}${paraText}${close}`
+                      );
                     }
                   }
                   cellIdx++;
@@ -3479,6 +3533,57 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   const exampleEl = doc.getElementById(element.id);
   if (!exampleEl) return match[0]; // fallback
 
+  // §C82 L149 — nested notes are preserved here, so their titles are ours to write.
+  writeNestedNoteTitles(doc, element, getSeg);
+
+  // 🔴 §C82 L143/L144 — WHERE THE EXAMPLE'S TITLE GOES DEPENDS ON THE SOURCE
+  // SHAPE, AND THE SHAPE IS READ FROM `01-source`, NEVER INFERRED FROM TEXT.
+  //
+  // Chemistry writes the example title INSIDE the first para
+  //     <example><para id="fs-id…"><title>Measuring Heat</title> body…</para>
+  // so the `isFirstPara` branches below correctly put the translation there.
+  // Organic writes it as a DIRECT CHILD of <example>, alongside paras that have
+  // sub-headings of their own ("Strategy", "Solution"). Running the chemistry
+  // branch on that shape does BOTH halves wrong: the example's own <title>
+  // element is preserved verbatim from the source and ships ENGLISH, while the
+  // translation is written over the first paragraph's heading.
+  //
+  // ⚠️ MEASURED, and it is why the extract-side fix alone is reader-invisible:
+  // injecting organic ch03/m00033 before and after that fix produced BYTE-
+  // IDENTICAL output — `<title>Drawing the Structures of Isomers</title>` in
+  // English with "Leiðarvísir" on para-00009 — because nothing ever wrote the
+  // container's own title. This is the §C89 class (extracted, paid for, then
+  // discarded) and the reason CLAUDE.md requires both sides in one change.
+  //
+  // ⚠️ The discriminator is the DOM shape of the READ-ONLY source, never a
+  // comparison of two translated strings: every segment is independently
+  // editable in the segment editor, so an equality test stops matching the
+  // first time an editor revises one side (CLAUDE.md § inject behaviour).
+  //
+  // ⚠️ Chemistry is unreachable through this branch by construction: it has
+  // ZERO <title> elements whose parent is <example> (0 of 301, measured over
+  // all 149 source modules), so `exampleDirectTitleEl` is always null there and
+  // the `isFirstPara` behaviour below is bit-for-bit what it always was.
+  const exampleDirectTitleEl = directChildTitle(exampleEl);
+  // 🔴 GATE ON OWNERSHIP, NOT ON THE ELEMENT'S MERE EXISTENCE. An empty or
+  // self-closing `<title/>` is a direct-child ELEMENT that carries no segment,
+  // so the structure's title (if any) still came from a paragraph. Gating the
+  // isFirstPara branches on the element alone would suppress that paragraph's
+  // write and STRAND the title — measured exposure: organic source carries 20
+  // literal `<title/>`. Chemistry has none, so it was never at risk, which is
+  // exactly the kind of luck this repo does not rely on.
+  const exampleOwnsTitle = Boolean(exampleDirectTitleEl && element.title?.segmentId);
+  if (exampleOwnsTitle) {
+    const translated = getSeg(element.title.segmentId);
+    if (translated) {
+      // Same idiom as buildNoteDom: clear and re-insert as CNXML, because a
+      // title's text may carry inline markup (<sub>, <sup>, <emphasis>).
+      while (exampleDirectTitleEl.firstChild)
+        exampleDirectTitleEl.removeChild(exampleDirectTitleEl.firstChild);
+      insertCnxmlBefore(doc, exampleDirectTitleEl, translated, null);
+    }
+  }
+
   // Step 3: Replace para content and list items via DOM.
   // Track replaced para IDs: if a list contains an already-replaced para,
   // skip list-item replacement to avoid destroying the para content
@@ -3537,7 +3642,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         const textWithoutMedia = paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
 
         let titleText = '';
-        if (isFirstPara && element.title?.segmentId) {
+        if (!exampleOwnsTitle && isFirstPara && element.title?.segmentId) {
           titleText = getSeg(element.title.segmentId) || '';
         } else if (child.title?.segmentId) {
           titleText = getSeg(child.title.segmentId) || child.title.text || '';
@@ -3567,7 +3672,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
 
       let titleText = '';
-      if (isFirstPara && element.title?.segmentId) {
+      if (!exampleOwnsTitle && isFirstPara && element.title?.segmentId) {
         titleText = getSeg(element.title.segmentId) || '';
       } else if (child.title?.segmentId) {
         titleText = getSeg(child.title.segmentId) || child.title.text || '';
@@ -3852,6 +3957,9 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   const exerciseEl = doc.getElementById(element.id);
   if (!exerciseEl) return match[0];
 
+  // §C82 L149 — same nested-note gap as buildExampleDom.
+  writeNestedNoteTitles(doc, element, getSeg);
+
   // Process problem and solution content via DOM
   const replacedParaIds = new Set();
   const keptFigureIds = new Set();
@@ -4124,6 +4232,79 @@ function buildNote(element, getSeg, equations, originalCnxml, ctx) {
   }
 
   return buildGenericElement('note', element, getSeg, equations, originalCnxml);
+}
+
+/**
+ * 🔴 §C82 L149 — WRITE BACK THE TITLES OF `<note>`s PRESERVED INSIDE A CONTAINER.
+ *
+ * `buildNoteDom` deliberately returns null for a note nested in an
+ * `<example>`/`<exercise>` so the note is not ALSO emitted standalone. The
+ * consequence nobody wrote down is that its `<title>` was then written by
+ * nobody: the enclosing builder keeps the note's subtree, so the title shipped
+ * in ENGLISH after being extracted and sent to the paid MT — the §C89 class.
+ *
+ * MEASURED 2026-08-31 by a title sentinel over all 491 source modules:
+ * chemistry emitted 365 note-title segments and only 72 reached the injected
+ * output. The 293-way gap is exactly the nested population — 292 notes are
+ * inside an example/exercise and 72 are recoverable standalone, and 292 + 72
+ * reconciles with the sentinel to one segment.
+ *
+ * ⚠️ SEVERITY IS LOWER THAN §C82 L149 STATES, AND ONLY TRACING THE CONSUMER
+ * SHOWS IT. All 292 nested titles are the single string "Answer:", and
+ * `SHARED_TITLE_TRANSLATIONS` in tools/lib/book-rendering-config.js maps
+ * 'Answer:' → 'Svar:' at RENDER time. So the published page already reads
+ * "Svar:" (verified in
+ * books/efnafraedi-2e/05-publication/mt-preview/chapters/01/1-4-maelingar.html)
+ * even though 87 of 153 injected chemistry modules carry the English string.
+ * ▶ This is a FIDELITY fix — the injected CNXML is what an OpenStax remerge and
+ * any future renderer read — not a reader-visible one, and it removes a silent
+ * dependence on a hardcoded render-time patch rather than a visible defect.
+ *
+ * ⚠️ Uses `directChildTitle`, never `getElementsByTagName('title')[0]`: that
+ * selector is depth-blind and returns a nested PARAGRAPH's sub-heading for 301
+ * of 301 chemistry examples, which would overwrite a para heading with the
+ * note's translation.
+ *
+ * @param {Document} doc - the parsed container fragment
+ * @param {object} element - the container's structure node
+ * @param {Function} getSeg - segment lookup
+ */
+function writeNestedNoteTitles(doc, element, getSeg) {
+  // ⚠️ TRAVERSE THE SHAPE, NOT ONE KEY. An earlier version walked `node.content`
+  // only, which made the `buildExerciseDom` call DEAD CODE that still read as
+  // coverage: `processExercise` builds `{type, id, problem, solution}` and has
+  // no `content` key at all, so the walker never descended into an exercise.
+  // It happened to matter not at all today — measured, ZERO titled notes sit
+  // inside an <exercise> in either book (chemistry 292 are all in <example>,
+  // organic has 3 and none is nested) — which is exactly why it would have
+  // stayed invisible. A gate that cannot fire is worse than no gate.
+  const childrenOf = (node) => {
+    if (!node || typeof node !== 'object') return [];
+    if (Array.isArray(node)) return node;
+    return [node.content, node.problem, node.solution, node.items]
+      .filter(Boolean)
+      .flatMap((v) => (Array.isArray(v) ? v : [v]));
+  };
+  const seen = new Set();
+  const visit = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (seen.has(node)) return; // structures are trees today; cheap cycle guard
+    seen.add(node);
+    const children = childrenOf(node);
+    for (const child of children) {
+      if (child && child.type === 'note' && child.id && child.title?.segmentId) {
+        const noteEl = doc.getElementById(child.id);
+        const titleEl = noteEl && directChildTitle(noteEl);
+        const translated = getSeg(child.title.segmentId);
+        if (titleEl && translated) {
+          while (titleEl.firstChild) titleEl.removeChild(titleEl.firstChild);
+          insertCnxmlBefore(doc, titleEl, translated, null);
+        }
+      }
+      visit(child);
+    }
+  };
+  visit(element);
 }
 
 /**

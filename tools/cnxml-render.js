@@ -34,6 +34,7 @@ import {
   parseAttributes,
   stripTags,
   TAG_ATTR_SPAN,
+  firstDirectChildTitle,
 } from './lib/cnxml-parser.js';
 import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
 import {
@@ -1354,7 +1355,38 @@ function renderExample(example, context) {
   const allParas = extractElements(example.content, 'para');
   let exampleTitle = null;
 
+  // 🔴 §C82 L143/L144 — A DIRECT-CHILD <title> IS THE EXAMPLE'S OWN TITLE, AND
+  // THIS IS THE THIRD SITE OF THE SAME PRECEDENCE DEFECT. Extract and inject
+  // were fixed first; without this leg the example half of that fix is
+  // READER-INVISIBLE, which was measured rather than suspected: 102 organic
+  // example titles reached the injected CNXML and **0** reached the rendered
+  // HTML, because this function resolved the heading by the same para-donation
+  // heuristic and rendered "Strategy" (chemistry, whose titles really do live
+  // in the first para, was 300/300/300 throughout).
+  //
+  // The block walk cannot save it either — there is no `title` handler in
+  // renderBlockChildrenInOrder and the loud-seam guard whitelists 'title' as
+  // "handled by each container's own renderer", which was untrue of this one.
+  //
+  // ⚠️ Chemistry is unreachable through this branch: it has ZERO <title>
+  // elements parented by <example> (0 of 301, measured over all 149 modules).
+  //
+  // ⚠️ OWNERSHIP, NOT EXISTENCE — the same predicate buildExampleDom uses. A
+  // self-closing or empty `<title/>` is a direct-child ELEMENT that carries no
+  // title, and `firstDirectChildTitle` deliberately reports it (so the raw and
+  // DOM primitives agree). Treating it as ownership would leave `exampleTitle`
+  // empty while suppressing the para scan, and the standalone fallback below
+  // would then re-match a paragraph's heading — the donation defect restored by
+  // its own fix. 0 organic examples carry an empty title today; that is luck,
+  // and this predicate is what makes it not matter.
+  const directTitle = firstDirectChildTitle(example.content);
+  const titleIsDirectChild = Boolean(directTitle && directTitle.inner.trim());
+  if (titleIsDirectChild) {
+    exampleTitle = directTitle.inner;
+  }
+
   for (const para of allParas) {
+    if (titleIsDirectChild) break;
     // The leading <title> may carry inline markup (E<sub>a</sub>); matchLeadingTitle
     // captures it whole — the old [^<]+ pattern skipped such titles and fell through
     // to the next plain-text para-title.
@@ -1395,7 +1427,11 @@ function renderExample(example, context) {
     let contentWithoutTitle = para.content;
 
     if (title) {
-      if (!exampleTitleStripped && exampleTitle && title === exampleTitle) {
+      // ⚠️ A direct-child title was never IN a para, so nothing may be stripped
+      // from one on its account — and the equality test below must not run,
+      // because comparing two independently-editable strings is exactly what
+      // CLAUDE.md forbids as a decision procedure.
+      if (!titleIsDirectChild && !exampleTitleStripped && exampleTitle && title === exampleTitle) {
         // The example title — already rendered as the <h4> header; strip it.
         contentWithoutTitle = rest;
         exampleTitleStripped = true;
@@ -1627,8 +1663,49 @@ function renderTable(table, context) {
   if (tableNum) attrs.push(`data-table-number="${tableNum}"`);
 
   lines.push(`<table ${attrs.join(' ')}>`);
-  if (tableNum) {
-    lines.push(`  <caption><span class="table-label">Tafla ${tableNum}</span></caption>`);
+
+  // 🔴 §C82 L143/L144 — THE TABLE'S OWN <title> REACHES THE READER HERE, OR
+  // NOWHERE. Measured 2026-08-31 by sentinel: before this, renderTable emitted
+  // a <caption> holding ONLY the synthesised "Tafla N" label, so organic's 70
+  // source table titles — 70 DISTINCT prose headings — were rendered nowhere,
+  // and organic ch03's five published captions carried 0 title bytes.
+  //
+  // ⚠️ The drop was SILENT BY CONSTRUCTION: the loud-seam guard whitelists
+  // 'title' as container metadata "handled by each container's own renderer",
+  // which was simply untrue of this renderer.
+  //
+  // One <caption> per table is all HTML permits, so the title joins the label
+  // inside it rather than becoming a second element.
+  //
+  // ⚠️ `.table-title` is a NEW class and has NO rule in ../namsbokasafn-vefur's
+  // content.css — but "unstyled" is the wrong word for what that means, and an
+  // earlier version of this comment said it. The span INHERITS
+  // `article.cnx-module table caption` (content.css:593), which sets
+  // `caption-side: bottom`, so the table's own heading renders BELOW the table
+  // in the caption's type — where OpenStax puts it above. The text reaches the
+  // reader either way, which is this change's purpose; the placement is a
+  // cross-repo styling decision that belongs to vefur, not a blocker here.
+  //
+  // Measured safe against the render-fidelity shape baseline: over organic
+  // ch03 (the only chapter that baseline covers) not one counted bucket moves —
+  // figure/img/table/ul/ol/li/em/strong/div.equation/a[href] are identical
+  // before and after, because `span.table-title` is in no bucket and ch03's
+  // five table titles carry no markup that would land in one.
+  // ⚠️ Same ownership predicate. Measured: without the `.trim()`, organic's two
+  // empty-titled tables (m00124, m00126) rendered
+  // `<span class="table-title"></span>` AND — because a truthy title forces the
+  // caption — two captions that carry no `Tafla N` label at all, i.e. an empty
+  // caption element where there had been none.
+  const tableTitleHit = firstDirectChildTitle(table.content);
+  const tableTitleHtml =
+    tableTitleHit && tableTitleHit.inner.trim()
+      ? `<span class="table-title">${processInlineContent(tableTitleHit.inner, context)}</span>`
+      : '';
+  if (tableNum || tableTitleHtml) {
+    const label = tableNum ? `<span class="table-label">Tafla ${tableNum}</span>` : '';
+    lines.push(
+      `  <caption>${label}${label && tableTitleHtml ? ' ' : ''}${tableTitleHtml}</caption>`
+    );
   }
 
   // Process tgroup
