@@ -78,6 +78,18 @@ const REMOVE = Object.freeze([
   { english: 'OS', domain: 'physics' },
   { english: 'As', domain: 'physics' },
   { english: 'At', domain: 'physics' },
+  // Second batch, 2026-08-31: surfaced by G3 (function-word headwords) once the first batch
+  // landed. Both are ordinary English words carrying a specialist abbreviation's sense, and
+  // both fail §C73 outright — the forced value appears 0 times in 3.4M chars of committed MT.
+  //   AM -> víddarmótun          (amplitude modulation)  ×0
+  //   OR -> gagnlíkindahlutfall  (odds ratio)            ×0
+  // ⚠️ `minus → mínus` and `plus → plús` are ALSO flagged by G3 and are deliberately NOT here:
+  // they are CORRECT, the model produces them unprompted (×3 and ×8), and the render side
+  // resolves both to the right value. G3's function-word heuristic is over-broad for these
+  // two; deleting a correct term to turn a check green is the §C73 error in reverse.
+  { english: 'AM', domain: 'physics' },
+  { english: 'OR', domain: 'biology' },
+  { english: 'OR', domain: 'physics' },
 ]);
 
 function main() {
