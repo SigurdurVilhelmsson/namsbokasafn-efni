@@ -10,21 +10,43 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 
 **Execute [`docs/superpowers/plans/2026-08-24-c82-plan-b-check-battery.md`](../superpowers/plans/2026-08-24-c82-plan-b-check-battery.md) — subagent-driven, a fresh agent per task with review between.** Plan C follows; it imports Plan B's registry and cannot start first.
 
-> ⏩ **UPDATED 2026-08-27 (Task 13) — PLAN B IS COMPLETE. TASK 13 IS BUILT ON BRANCH
-> `c82-plan-b-task-13`, NOT YET MERGED.** Two deliverables, deliberately in two files:
+> 🔴 **FIRST, RUN `git log --oneline origin/main..HEAD`.** As of 2026-08-27 `main` carries **unpushed
+> docs commits** — the merge/deploy record, the runbook ORDER and the Tier-0 precondition, two number
+> corrections, the organic extraction measurement, the ctx-loader decision brief, and the
+> exercise-architecture findings. **The command prints the count; this line deliberately does not**
+> (it said "seven" for about ninety seconds, until the commit adding it made eight — a count in prose
+> going stale inside the sentence warning about staleness).
+> **They are held DELIBERATELY** — the batching rule: a docs-only push to `main` strands prod's
+> content backup. **They must ride with the next code branch.** ⚠️ **Do not re-derive any of it, and
+> do not push them alone** — cut the branch, and they go with it.
+>
+> ⏩ **UPDATED 2026-08-27 (Task 13) — PLAN B IS COMPLETE, MERGED AND DEPLOYED.** Task 13 is on
+> `main` (PR #422 → squash `dd941fe8`); deploy 2026-08-27 [OPERATOR-REPORTED — not verifiable
+> from a dev session]. Merge verified by tree diff (0 lines) with a 1,755-line control.
+> Two deliverables, deliberately in two files:
 > **`--self-test`** (`tools/lib/remt-selftest.js`, wired into `tools/remt-battery.js`) — 33
 > checks, 66 arms, every pair derived and verified by execution — and **`tools/remt-sweep.js`**,
 > the base-rate sweep, a SEPARATE top-level tool.
 > 🔴 **THE SWEEP IS NOT `--sweep` ON THE BATTERY CLI, AND THE THIRD OPTION WAS THE DANGEROUS
 > ONE.** Plan B says "modify `tools/remt-battery.js`". Split because (a) that CLI performs no
 > I/O at all, a claim tied to `source-write-guard.test.js`; (b) a sweep loader is NOT the run's
-> ctx loader, whose design questions (L19/L21/L36①/L141) are OPEN and Plan C's; (c) hiding the
+> ctx loader, whose design questions are Plan C's — **L21 and L141 still OPEN; L19 ruled by L136 (d), L36① measured false**; (c) hiding the
 > reader in `tools/lib/` behind a flag would have been WORSE THAN EITHER — the guard nets
 > top-level TEXT only, so the tripwire would have gone quiet while the tool became a real
 > toucher. `remt-sweep.js` trips it on purpose and is classified read-only.
-> ▶ **NEXT IS PLAN C** — all 11 tasks. 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still
-> open and still blocks it**, and organic's remaining 323 modules are extracted AFTER Plan B,
-> BEFORE that decision (L59).
+> ✅ **▶ THE ctx-LOADER QUESTION IS RULED (2026-08-27) — THIS FILE NO LONGER OPENS ON IT.**
+> [LEAD] chose **Option C (per-unit-kind population)** and, separately, **the MODULE as the unit**.
+> **The ruling and its four binding conditions live in §C82 L136, which owns them.** The brief
+> [`2026-08-27-ctx-loader-decision-brief.md`](2026-08-27-ctx-loader-decision-brief.md) is **frozen
+> evidence and its §7 ASK is SPENT — do not put the question again.**
+> 🔴 **▶ WHAT NOW BLOCKS PLAN C IS PLAN C ITSELF, AND L134 ⑥ SAID SO BEFORE THE RULING DID:** the
+> source-less question was the SMALLEST of the loader's open questions. **Plan C names no loader
+> and no ctx at all** — 0 mentions of *"loader"/"ctx"/"context"*, 24 of 34 CheckContext keys
+> unnamed, 1 of 19 blocking checks given its inputs, Tier 0 absent entirely. The loader is ~5 ctx
+> builders, 3 spawns, 2 snapshots and a pipeline stage **with no task**. **A TASK-LEVEL REVISION OF
+> PLAN C IS THE NEXT ACT — not the loader, and not another ruling.**
+> ▶ **THEN Plan C** — all 11 tasks. ✅ Organic's extraction (L59) is discharged as a MEASUREMENT and
+> deliberately NOT landed in the tracked tree; runbook step 1 records why.
 > 🔴 **READ §C82 L105-L132 BEFORE PLAN C. The five that change what a Plan C author does:**
 > **① FIVE LIVE COUNTS OF "THE CORPUS", NONE WRONG AND NONE INTERCHANGEABLE** (L106/L126):
 > tier 0 = 2 books · tier 1 = **166** module pairs · tier 2 = **197** IS segment files ·
@@ -137,7 +159,7 @@ This is a briefing, not a status record. **If they disagree, the register wins.*
 > re-extract renumbers seg-ids, so it is wholly voided until then.~~ 🔴 **MEASURED FALSE at
 > Task 10 and corrected in place (§C82 L58): 0 of 16 allowlist entries use the volatile `auto-N`
 > id form, so the re-extract does NOT void them.** A5 is advisory for other reasons.
-> 🔴 **The ctx-loader decision (§C82 L19/L21/L36①) is still open and still blocks Plan C.**
+> ✅ **The ctx-loader decision is RULED — Option C, MODULE-level unit; §C82 **L136** owns it and its four conditions.** 🔴 **BUT THE GROUPED CITATION SPLITS: it settles TWO of the three.** **L19** discharged by condition (d) · **L36①** measured FALSE on merged `main` · **L21 UNTOUCHED AND STILL OPEN** — the loader must guarantee `cnxml` and `segText` are the same VINTAGE of the same module, a CONTRACT item no population ruling can settle.
 > **Status is the register's ⏩ RESUME block, not this file.**
 
 ## Read these, in this order, before touching anything

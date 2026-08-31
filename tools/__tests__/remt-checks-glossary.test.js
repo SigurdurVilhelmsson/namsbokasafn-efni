@@ -86,12 +86,34 @@ describe('the wire body is the population every Tier-0 predicate reads', () => {
     expect(glossaryTerms('a string')).toBeNull();
   });
 
-  it('the wire is SMALLER than the file — a file-reading gate judges the wrong population', () => {
-    const raw = live('efnafraedi-2e');
+  it('the wire is SMALLER than the file whenever anything is omitted — the MECHANISM', () => {
+    // 🔴 PINNED ON A SYNTHETIC FIXTURE, NOT ON THE LIVE CORPUS. This used to read the
+    // committed chemistry glossary and assert `wire < file`, which held only because that
+    // file contained term competitions. The 2026-08-30 glossary cleanup removed them
+    // (§C82 L151), so on the live corpus the two are now EQUAL and the old form failed —
+    // correctly, but for a reason that says nothing about the mechanism it names.
+    // A planted competition exercises the omission path directly and cannot evaporate.
+    const raw = {
+      producer: 'test',
+      terms: [term('atom', 'frumeind'), term('atom', 'atóm'), term('bond', 'tengi')],
+    };
     const file = glossaryTerms(raw).length;
     const wire = wireTerms(raw).length;
-    expect(file).toBeGreaterThan(0); // control: an empty read must not pass
+    expect(file).toBe(3); // control: the fixture really carries three rows
+    expect(wire).toBe(1); // both `atom` candidates omitted; only `bond` survives
     expect(wire).toBeLessThan(file);
+  });
+
+  it('📌 PREMISE — the live books now omit NOTHING, so file === wire on both', () => {
+    // The other half of the statement above, over real data. This is a PREMISE PIN on
+    // glossary DATA: it goes red if a competition or comma-list is reintroduced, which is
+    // the state G1 exists to block. If it fails, read G1's verdict before touching this.
+    for (const slug of ['efnafraedi-2e', 'lifraen-efnafraedi']) {
+      const raw = live(slug);
+      const file = glossaryTerms(raw).length;
+      expect(file, `${slug}: empty read`).toBeGreaterThan(0); // control
+      expect(wireTerms(raw).length, `${slug}: something is being omitted again`).toBe(file);
+    }
   });
 });
 
@@ -226,36 +248,37 @@ describe('G3 — function-word headwords (§C77)', () => {
     expect(r.verdict).toBe(VERDICT.FAIL);
   });
 
-  it('🔴 FIRES ON BOTH LIVE BOOKS TODAY — a natural known-bad fixture, which is what lets it block', async () => {
-    // ⚠️ PREMISE PIN over live glossary DATA: this goes green when the entries are fixed,
-    // which is the point of Tier 0. Update it in the commit that fixes them.
+  it('✅ PASSES ON BOTH LIVE BOOKS SINCE 2026-08-30 — the entries it fired on were removed', async () => {
+    // 🔴 THIS PIN WAS INVERTED ON 2026-08-30, EXACTLY AS ITS PREVIOUS FORM INSTRUCTED.
+    // It used to assert FAIL on both books and carried the note: "PREMISE PIN over live
+    // glossary DATA: this goes green when the entries are fixed, which is the point of
+    // Tier 0. Update it in the commit that fixes them." The entries were fixed — the
+    // glossary cleanup (§C82 L151) dropped the foreign-domain fall-through that supplied
+    // `is → lófalægur`, `in → tomma`, `no → blóð-` and the rest — so this now pins the
+    // CLEAN state and reddens if any of them returns.
+    // ⚠️ The mechanism is pinned above on synthetic fixtures (`As → arsen` etc.), so G3's
+    // detector is NOT resting on live data; only this regression guard is.
     const chem = await runCheck(G3, { glossary: live('efnafraedi-2e') });
     const org = await runCheck(G3, { glossary: live('lifraen-efnafraedi') });
-    expect(chem.verdict).toBe(VERDICT.FAIL);
-    expect(org.verdict).toBe(VERDICT.FAIL);
-    // ⚠️ SEVEN, NOT FIVE, SINCE THE 2026-08-25 WIDENING — and TWO of the seven are BENIGN.
-    // `plus→plús` and `minus→mínus` are same-sense and correct; they are reported because G3
-    // cannot know sense, only homography. That over-report is deliberate: a gate that hid benign
-    // instances to keep its list tidy would need a sense model it does not have. Whoever triages
-    // §C82 L38 dismisses these two and acts on the other five.
-    expect(chem.findings.map((f) => f.english).sort()).toEqual([
-      'AM',
-      'As',
-      'in',
-      'is',
-      'minus',
-      'no',
-      'plus',
-    ]);
-    expect(org.findings.map((f) => f.english).sort()).toEqual([
-      'As',
-      'OR',
-      'in',
-      'is',
-      'minus',
-      'no',
-      'plus',
-    ]);
+    expect(chem.examined, 'examined 0 would make PASS meaningless').toBeGreaterThan(0); // control
+    expect(chem.verdict).toBe(VERDICT.PASS);
+    expect(org.verdict).toBe(VERDICT.PASS);
+    // ⚠️ THIS LIST USED TO CARRY SEVEN ENTRIES PER BOOK and is now EMPTY, which is the
+    // whole point of the change that emptied it. For the record of what G3 was firing on
+    // before 2026-08-30 — chemistry `AM As in is minus no plus`, organic `As OR in is
+    // minus no plus`, of which `plus→plús` and `minus→mínus` were BENIGN (same-sense, and
+    // reported only because G3 knows homography and not sense) — see §C82 L142/L151. The
+    // five real ones went with the foreign-domain fall-through.
+    // 🔴 ASSERTED AS EMPTY RATHER THAN DELETED: an absent assertion would let any of them
+    // return unnoticed, and the message names what a non-empty result means.
+    expect(
+      chem.findings.map((f) => f.english).sort(),
+      'a function-word headword is back in chemistry'
+    ).toEqual([]);
+    expect(
+      org.findings.map((f) => f.english).sort(),
+      'a function-word headword is back in organic'
+    ).toEqual([]);
   });
 });
 

@@ -152,6 +152,30 @@ provenance rather than completion** (2.1 carried one while all 8 lock markers we
 A `--dry-run` on a **fresh** chemistry extract costs 0 ISK and resolves the unmeasured vintage
 caveat on the 43,078 figure. **Take it before the chemistry leg, not organic's.**
 
+### 1.4 ⬜ NOT TAKEN — resolve Tier 0's two BLOCKING failures. **[LEAD], needs domain knowledge.**
+🔴 **ADDED 2026-08-27, MEASURED BY THE TASK-13 BASE-RATE SWEEP. `--tier 0` EXITS 1 ON BOTH BOOKS
+TODAY**, so the battery halts before any module is judged:
+- **G1** — glossary term COMPETITIONS: **2 in chemistry, 1 in organic** (one English headword
+  resolving to two approved Icelandic values; `buildGlossaryMap` is last-write-wins, so row order
+  silently decides what readers see).
+- **G3** — **7 headwords per book that are common English function words**, matched
+  case-insensitively because `filterGlossaryForText` is a case-insensitive substring test.
+
+🔴 **THIS IS A PRECONDITION, NOT A CALIBRATION QUESTION, AND THAT DISTINCTION IS THE WHOLE POINT.**
+Tier 0 is the **only** tier whose input the extract→MT→inject→render loop does not regenerate — it
+reads the GLOSSARY. Tiers 1-4 read `02-for-mt` / `02-mt-output` / `03-translated` /
+`05-publication`, all of which the run rewrites, so a tier-1..4 rate over the bar is a statement
+about the committed VINTAGE (E1 62.7%, E5 92.8%, A6 58.4% — **do not "fix" those**). A tier-0
+failure is a statement about data the run will CONSUME, and nothing in the run touches it.
+
+▶ **Each entry needs a call: correct it, or mask it** (the render-side mask is the self-map idiom
+in `books/<slug>/math-label-map.json`). ⚠️ **CLAUDE.md's §C73 rule applies directly: a WRONG
+glossary entry is worse than NO entry, compliance is PARTIAL — the same entry can be obeyed on one
+occurrence and ignored on the next — and this class is invisible to every gate, because the
+entries are well-formed, `approved` and uncontested. Only domain knowledge finds it.**
+▶ Reproduce with `node tools/remt-sweep.js --tier 0 --with-spawns`; the report names the two under
+its **BLOCKING CHECKS OVER … BAR** section with the not-regenerated reading spelled out.
+
 ---
 
 ## Phase 2 — Clear the locks
@@ -163,7 +187,16 @@ survivors cannot stage a deletion.** Delete them all and the glob matches nothin
 only the survivors are staged. Either way a later `git pull` can resurrect them.
 **Gate:** the deletion appears in `git show --stat HEAD` as 7 deletions.
 
-### 2.2 ⚠️ §C88 Unit A **+ §C115** — one branch, one PR. MERGED **AND DEPLOYED** BEFORE PHASE 3.
+### 2.2 ✅ MERGED — §C88 Unit A **+ §C115**, one branch, one PR. ⬜ **DEPLOY UNCONFIRMED FROM HERE.**
+🔴 **UPDATED 2026-08-27: this carried a bare ⚠️ long after the work landed.** Both are on `main` —
+**PR #410 → squash `a9f1e457`, all six checks green** (register). What remains of this row is the
+second half of its own title: it requires merged **AND DEPLOYED** before Phase 3, and a deploy is
+**operator-reported and not verifiable from a dev session**. ▶ **Confirm the deploy; do not re-do
+the work.** ⚠️ This is the third row in this file whose marker lagged its subject (1.3 carried a ✅
+while never having been taken; 2.1 carried one while all 8 lock markers were still on disk) —
+which is exactly why the closing section says to read every marker here as *"someone wrote this
+down"* and confirm against the register.
+
 Ruled at 1.2. Relax `if (!media.id) continue` (`tools/cnxml-extract.js:1557`) and give the 244 a
 key; teach `applyMediaAltString` (`tools/cnxml-inject.js`) the no-`mediaId` case. `buildTable`
 already holds `cell` at its call site, so `collectMediaAlts`' id-keyed table branch need not change.
@@ -200,11 +233,56 @@ Sizing and detectors: [`../../test-results/c88-245-feasibility-2026-08-23.md`](.
 
 ### 3.1 ⚠️ §C82 Plans B (the check battery) and C (driver + ledger)
 This is the bulk of the remaining preparation. §C88 was its last blocker and is merged.
-⚠️ **CORRECTED 2026-08-25 — this said "still unwritten", which stopped being true on 2026-08-24.**
-Both plans are WRITTEN and merged (PR #411 → `2166551b`) and deployed, and Plan B's **Tasks 1-7
-are BUILT** — Tier 0 (`G1`-`G5`) and Tier 1 (`E1`-`E7`, `E9`). **Plan B Tasks 8-13 and the whole of
-Plan C remain.** ▶ **Status lives in the register's ⏩ RESUME block, not here** — this line is
-corrected rather than maintained, per this document's own closing section.
+▶ **Status lives in the register's ⏩ RESUME block, not here** — the lines below are corrected
+rather than maintained, per this document's own closing section. What belongs HERE is the ORDER,
+and it is not derivable from the register: three of these four steps are sequenced against each
+other for reasons that live in different §C82 items.
+
+🔴 **THE ORDER, AND IT IS NOT "PLAN B THEN PLAN C" (added 2026-08-27, after Plan B completed):**
+
+1. ✅ **DONE AS A MEASUREMENT, 2026-08-27 — AND IT DID NOT TOUCH THE TRACKED TREE.** All 342
+   organic modules were extracted in a throwaway scratch (cwd-isolated; `git status books/` = 0
+   before and after), because §C83 makes `--output-dir` accepted-and-ignored and CLAUDE.md's
+   prescription for that is "run it against a throwaway copy first". **342/342, 0 errors.**
+   Result → [`../../test-results/c82-organic-extraction-share-2026-08-27.md`](../../test-results/c82-organic-extraction-share-2026-08-27.md).
+   🔴 **THE SHARE MOVED AND THE EXPOSURE DID NOT: 91.2% → 38.0%, but it is the SAME 6,664
+   exercise segments both times** — only the denominator grew (7,309 → 17,519). Exercises come
+   from `exercise-extract.js`, which `cnxml-extract` never touches. L59's byte-scaled "~39%"
+   lands at a measured **38.0%**, and the BEFORE column reproduces L59's baseline exactly.
+   ▶ **SO STEP 1's PURPOSE IS DISCHARGED — step 2 can be taken now.**
+   ⬜ **What is NOT done: landing that extraction in the tracked tree, and the default is DON'T.**
+   Phase 3 re-extracts everything anyway, so doing it now buys nothing and costs a deliberate
+   two-vintage state inside organic (new EN against the old MT on the 17) — the L51 skew, created
+   on purpose, in the book whose extraction state is already this campaign's most-misread number.
+   ⚠️ **325, not the 323 L59 states.** 342 source modules; **17** carry a module EN segment file
+   (all 17 with an `01-source` sibling — 0 without). L59's "19 segment files" counts the **2
+   `chapter-metadata` units**, which are not modules and have no source counterpart at all — L19's
+   entire subject. The two populations differ by exactly that 2. Earlier destroys the base-rate sweep (it flips E5 green and
+   re-creates the L51 vintage skew on all 48 organic pairs); later means the decision in step 2 is
+   taken on the wrong numbers, because the extract moves organic's `exercises` share from
+   **91.2% to ~39%**.
+2. ✅ **The ctx-loader decision — RULED 2026-08-27. NO LONGER A STEP.** [LEAD] chose **Option C
+   (per-unit-kind population)** and, separately, **the MODULE as the unit**. **§C82 L136 owns the
+   ruling and its four binding conditions — read it there, not here.** ⚠️ **The framing this step
+   used to carry was measured WRONG in three places and is kept only as evidence:** the cost is
+   **four** blocking checks, not six (L134); organic's `exercises` are **not** source-less — they
+   are a pointer architecture into a committed pool (L135); and the share is **38.0%**, not 91%,
+   over the same **6,664** segments (L133). ▶ **What replaced it: a TASK-LEVEL REVISION of Plan C**,
+   which names no loader and no ctx at all.
+3. 🔴 **Plan C — NOT READY AS WRITTEN. A TASK-LEVEL REVISION COMES FIRST, and it is what a session
+   now opens on.** Plan C names *"loader"/"ctx"/"context"* **0 times**, leaves **24 of 34**
+   CheckContext keys unnamed, gives **1 of 19** blocking checks its inputs, and omits **Tier 0**
+   entirely; the loader is ~5 ctx builders, 3 spawns, 2 snapshots and a pipeline stage **with no
+   task** (§C82 L136). ✅ §C82 L105 closed the ctx contract's six-task incompleteness and gated it
+   mechanically, so a loader built to the DOCUMENTED contract is safe to build — **but "safe to
+   build" is not "has a task", and L105 never claimed it was.** ⚠️ **L21 is still open against that
+   contract** (same-vintage `cnxml`/`segText`) and the L136 ruling does not settle it.
+4. **Then Phase 3 proper.** ⏰ Runbook **1.3** fires here, not earlier — it needs a FRESH extract.
+
+✅ **Step 2 was the only one of the four that a coding session could not start, and it is now
+DISCHARGED (§C82 L136).** Every remaining step is ordinary work — but step 3 is **not** ready as
+written: Plan C needs a task-level revision before it can be executed, and that revision is what a
+session now opens on.
 
 ### 3.2 ✅ Expect §C110's warning to be SILENT — and do not read silence as proof
 Extraction now warns per module and prints a counted run-end summary when it advances a module

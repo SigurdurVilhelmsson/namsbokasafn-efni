@@ -413,16 +413,35 @@ describe("the blocking-bar readout — the sweep's most decision-relevant output
   });
 
   it('a blocking check over the bar is REPORTED, with the right one of the two readings', async () => {
+    // 🔴 THE OVER-BAR ROW IS NOW SYNTHESISED, BECAUSE TIER 0 IS CLEAN. This used to rely on
+    // G1 and G3 failing on the live glossaries — real term competitions and English
+    // function-word headwords. The 2026-08-30 cleanup (§C82 L151) removed both, so the live
+    // tier-0 sweep has nothing over the bar and the assertion failed for a reason that says
+    // nothing about the FORMATTING property it names. Pushing a real row over the bar keeps
+    // the property pinned and cannot evaporate with the corpus.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [0] });
+    const g1 = report.rows.find((r) => r.id === 'G1');
+    expect(g1, 'G1 missing from a tier-0 sweep').toBeTruthy(); // control: the row exists
+    expect(g1.blocking, 'G1 is not blocking — this fixture assumes it is').toBe(true);
+    g1.rate = 0.9; // over any plausible bar
     const text = formatReport(report);
-    // G1 and G3 are BLOCKING and FAIL on both books today: real term competitions
-    // and English function-word headwords in the committed glossaries. Tier 0's
-    // input is not regenerated, so this is a PRECONDITION on the run.
     expect(text).toContain('BLOCKING CHECKS OVER');
     expect(text).toMatch(/G1\s+tier 0/);
-    expect(text).toMatch(/G3\s+tier 0/);
     expect(text).toContain('DATA THE RUN WILL CONSUME');
     expect(text).not.toContain('committed VINTAGE'); // tier 0 must not get tier 1-4's reading
+  }, 30_000);
+
+  it('📌 PREMISE — the LIVE tier-0 sweep now has NOTHING over the bar', async () => {
+    // The other half of the statement above, and the record of why the fixture above had to
+    // change. G1 (competitions) and G3 (function-word headwords) both PASS since 2026-08-30.
+    // ▶ If this reddens, a Tier-0 precondition has regressed — read the named check first.
+    const report = await sweep({ books: SWEEP_BOOKS, tiers: [0] });
+    expect(
+      report.rows.length,
+      'empty sweep — the zero below would be manufactured'
+    ).toBeGreaterThan(0);
+    const overBar = report.rows.filter((r) => r.blocking && r.rate !== null && r.rate > 0.05);
+    expect(overBar.map((r) => r.id)).toEqual([]);
   }, 30_000);
 
   it('a tier whose input the loop regenerates gets the VINTAGE reading instead', async () => {
@@ -507,7 +526,25 @@ describe('a spawn that DIED must not be scored as a base rate', () => {
     // alarm would make this pass for the wrong reason. (Measured: in this fixture
     // G1 and G3 keep the section present, so the guard is not currently masking
     // anything — it is the shape one step away.)
-    expect(section('BLOCKING CHECKS OVER')).not.toBe('');
+    // 🔴 THE ALARM IS NOW SYNTHESISED TOO. The comment above says this guard was "not
+    // currently masking anything — it is the shape one step away", because G1 and G3 kept
+    // the section present. The 2026-08-30 glossary cleanup emptied it, so the shape arrived
+    // and this assertion fired exactly as designed. Pushing a real row over the bar restores
+    // a non-empty alarm, so the claim being tested — that G5's REFUSAL is not in it — still
+    // binds against something.
+    const g1row = report.rows.find((r) => r.id === 'G1');
+    expect(g1row, 'G1 missing from a tier-0 sweep').toBeTruthy(); // control
+    g1row.rate = 0.9;
+    const text2 = formatReport(report);
+    const section2 = (heading) => {
+      const i = text2.indexOf(heading);
+      if (i === -1) return '';
+      const rest = text2.slice(i);
+      const end = rest.indexOf('\n\n');
+      return end === -1 ? rest : rest.slice(0, end);
+    };
+    expect(section2('BLOCKING CHECKS OVER')).not.toBe('');
+    expect(section2('BLOCKING CHECKS OVER')).not.toMatch(/G5\s+tier 0/);
     expect(section('BLOCKING CHECKS OVER')).not.toMatch(/G5/);
     expect(section('BLOCKING CHECKS WITH NO MEASURABLE RATE')).toMatch(/G5/);
     expect(text).toContain('SPAWN FAILURES');

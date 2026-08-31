@@ -87,14 +87,41 @@ describe('contested headwords are masked in math labels', () => {
     expect(`${slug}: ${bad.join(', ')}`).toBe(`${slug}: `);
   });
 
-  it('the guard is NOT vacuous — some book really does have a contested math label', () => {
-    // Without this, deleting every overlay would still pass if no contested
-    // headword happened to appear in math. The exposure is what makes the
-    // masks load-bearing; assert it exists.
+  it('📌 THE EXPOSURE IS GONE SINCE 2026-08-30 — so the guard above is now VACUOUS, and that is DECLARED', () => {
+    // 🔴 THIS ASSERTION WAS INVERTED, NOT DELETED. It used to read
+    // `expect(exposed.length).toBeGreaterThan(0)` — a non-vacuity guard on the test above,
+    // because "no contested headword reaches a math label" passes trivially if no contested
+    // headword exists at all. Its subject was chemistry's `at → astat | marsnákaætt`, which
+    // §C71/§C72 measured reaching 21 leaf math labels.
+    //
+    // The 2026-08-30 glossary cleanup (§C82 L151) removed the cross-domain fall-through that
+    // CREATED those competitions, so across every book the exposure is now zero and the old
+    // form failed — correctly. Deleting it would hide that; asserting the opposite records it.
+    //
+    // ⚠️ TWO CONSEQUENCES, both worth knowing:
+    //   1. The test above is now vacuous. It is kept because the exposure can return the
+    //      moment a competing translation is re-approved, and it costs nothing.
+    //   2. `books/<slug>/math-label-map.json`'s self-map masks (`"at": "at"`) are therefore
+    //      INERT for the two kept books. They are harmless and are NOT removed here —
+    //      retiring them is a separate decision, since a returning competition would need
+    //      them again.
+    // ▶ If this goes red, a contested headword is reaching math labels again: read the list
+    // it prints, then check G1's verdict on that book before touching the masks.
     const exposed = books.flatMap((slug) => {
       const c = contested(slug);
-      return [...mathLabels(slug).keys()].filter((l) => c.has(l.toLowerCase()));
+      return [...mathLabels(slug).keys()]
+        .filter((l) => c.has(l.toLowerCase()))
+        .map((l) => `${slug}:${l}`);
     });
-    expect(exposed.length).toBeGreaterThan(0);
+    // Control: the scan really did look at something — a zero from an empty book list would
+    // otherwise be indistinguishable from a zero from a clean corpus.
+    expect(books.length, 'no books scanned — the zero below would be manufactured').toBeGreaterThan(
+      0
+    );
+    expect(
+      books.some((s) => mathLabels(s).size > 0),
+      'no math labels found in any book'
+    ).toBe(true);
+    expect(exposed).toEqual([]);
   });
 });
