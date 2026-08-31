@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-31T10:03:07.710Z",
+  "generated": "2026-08-31T10:13:12.021Z",
   "book": "lifraen-efnafraedi",
   "stats": {
-    "total": 828,
-    "approved": 828,
+    "total": 827,
+    "approved": 827,
     "ties": 166,
     "nominalTies": 71,
     "outOfScopeOnly": 458,
@@ -194,19 +194,6 @@
       "position": 3,
       "conceptId": 1822,
       "alternatives": []
-    },
-    {
-      "english": "OR",
-      "icelandic": "gagnlíkindahlutfall",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 2,
-      "conceptId": 6446,
-      "alternatives": [
-        "hlutfall hlutfallslíka",
-        "líkindahlutfall"
-      ]
     },
     {
       "english": "PTH",
