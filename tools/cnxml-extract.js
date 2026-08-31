@@ -1493,8 +1493,33 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
     id: table.id,
     class: table.attributes.class,
     summary: table.attributes.summary,
+    title: null,
     rows: [],
   };
+
+  // 🔴 §C82 L143/L144 — THE TABLE'S OWN <title>, keyed on the table's own id.
+  // Same shape rule as the example branch in processExample: a <title> that is
+  // a direct child of the container belongs to the container.
+  //
+  // Measured 2026-08-31 over all 491 source modules: organic has 70 of these
+  // and chemistry has ZERO, so the branch is unreachable in chemistry and that
+  // book cannot regress through it. They are real prose — 70 DISTINCT values
+  // ("Acidity Constants for Some Organic Compounds"), not a structural label,
+  // and title != caption wherever both exist (only 2 of the 70 have a caption,
+  // and those two duplicate the title byte-for-byte).
+  //
+  // Emitted BEFORE the rows so a reviewer reads the table's heading before
+  // judging its cells, mirroring processFigure's caption-then-alt order.
+  //
+  // ⚠️ <title> is legal on <table> in CNXML 0.7 with the order fixed as
+  // title-then-body-then-caption, so this is OpenStax's own shape and stays
+  // per the clean-break rule — never "tidied away" because it looks redundant.
+  const tableTitle = firstDirectChildTitle(table.content);
+  if (tableTitle) {
+    const titleText = extractInlineText(tableTitle.inner, mathMap, counters);
+    const titleId = addSegment('table-title', titleText, table.id ? `${table.id}-title` : null);
+    if (titleId) tableStructure.title = { segmentId: titleId, text: titleText };
+  }
 
   // Process rows
   const rows = extractNestedElements(table.content, 'row');

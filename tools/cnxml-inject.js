@@ -46,7 +46,12 @@ import {
   requireBook,
 } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
-import { extractGlossary, TAG_ATTR_SPAN } from './lib/cnxml-parser.js';
+import {
+  extractGlossary,
+  TAG_ATTR_SPAN,
+  extractElements,
+  firstDirectChildTitle,
+} from './lib/cnxml-parser.js';
 import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
@@ -2899,6 +2904,34 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
     if (match) {
       let tableCnxml = match[0];
 
+      // 🔴 §C82 L143/L144 — WRITE THE TABLE'S OWN <title> BACK. This branch
+      // preserves the source table block and replaces cell content inside it,
+      // so without this the <title> ships in ENGLISH: extracted, sent to the
+      // paid MT, and then silently not written (the §C89 class).
+      //
+      // ⚠️ Anchored on the table's INNER content, never on a tag-boundary
+      // calculation: `firstDirectChildTitle` is depth-aware, so a <title>
+      // belonging to a nested container cannot be overwritten with the table's
+      // translation. `extractElements` supplies the inner span quote-aware
+      // (§C115), so a bare `>` in an attribute cannot mislocate the boundary.
+      //
+      // ⚠️ Chemistry has ZERO <table> elements with a direct-child <title>
+      // (0 of 191), so this branch is unreachable there.
+      if (element.title?.segmentId) {
+        const translatedTitle = getSeg(element.title.segmentId);
+        if (translatedTitle) {
+          const [tableEl] = extractElements(tableCnxml, 'table');
+          const titleHit = tableEl && firstDirectChildTitle(tableEl.content);
+          if (titleHit) {
+            const rewritten = tableEl.content.replace(
+              titleHit.fullMatch,
+              `<title>${translatedTitle}</title>`
+            );
+            tableCnxml = tableCnxml.replace(tableEl.content, rewritten);
+          }
+        }
+      }
+
       // Expand self-closing <entry.../> to <entry...></entry> so the
       // replacement regex can match all entries and cellIdx stays aligned.
       // Without this, <entry align="left"/> gets mismatched by the regex
@@ -3480,6 +3513,9 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   const exampleEl = doc.getElementById(element.id);
   if (!exampleEl) return match[0]; // fallback
 
+  // §C82 L149 — nested notes are preserved here, so their titles are ours to write.
+  writeNestedNoteTitles(doc, element, getSeg);
+
   // 🔴 §C82 L143/L144 — WHERE THE EXAMPLE'S TITLE GOES DEPENDS ON THE SOURCE
   // SHAPE, AND THE SHAPE IS READ FROM `01-source`, NEVER INFERRED FROM TEXT.
   //
@@ -3893,6 +3929,9 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   const exerciseEl = doc.getElementById(element.id);
   if (!exerciseEl) return match[0];
 
+  // §C82 L149 — same nested-note gap as buildExampleDom.
+  writeNestedNoteTitles(doc, element, getSeg);
+
   // Process problem and solution content via DOM
   const replacedParaIds = new Set();
   const keptFigureIds = new Set();
@@ -4165,6 +4204,61 @@ function buildNote(element, getSeg, equations, originalCnxml, ctx) {
   }
 
   return buildGenericElement('note', element, getSeg, equations, originalCnxml);
+}
+
+/**
+ * 🔴 §C82 L149 — WRITE BACK THE TITLES OF `<note>`s PRESERVED INSIDE A CONTAINER.
+ *
+ * `buildNoteDom` deliberately returns null for a note nested in an
+ * `<example>`/`<exercise>` so the note is not ALSO emitted standalone. The
+ * consequence nobody wrote down is that its `<title>` was then written by
+ * nobody: the enclosing builder keeps the note's subtree, so the title shipped
+ * in ENGLISH after being extracted and sent to the paid MT — the §C89 class.
+ *
+ * MEASURED 2026-08-31 by a title sentinel over all 491 source modules:
+ * chemistry emitted 365 note-title segments and only 72 reached the injected
+ * output. The 293-way gap is exactly the nested population — 292 notes are
+ * inside an example/exercise and 72 are recoverable standalone, and 292 + 72
+ * reconciles with the sentinel to one segment.
+ *
+ * ⚠️ SEVERITY IS LOWER THAN §C82 L149 STATES, AND ONLY TRACING THE CONSUMER
+ * SHOWS IT. All 292 nested titles are the single string "Answer:", and
+ * `SHARED_TITLE_TRANSLATIONS` in tools/lib/book-rendering-config.js maps
+ * 'Answer:' → 'Svar:' at RENDER time. So the published page already reads
+ * "Svar:" (verified in
+ * books/efnafraedi-2e/05-publication/mt-preview/chapters/01/1-4-maelingar.html)
+ * even though 87 of 153 injected chemistry modules carry the English string.
+ * ▶ This is a FIDELITY fix — the injected CNXML is what an OpenStax remerge and
+ * any future renderer read — not a reader-visible one, and it removes a silent
+ * dependence on a hardcoded render-time patch rather than a visible defect.
+ *
+ * ⚠️ Uses `directChildTitle`, never `getElementsByTagName('title')[0]`: that
+ * selector is depth-blind and returns a nested PARAGRAPH's sub-heading for 301
+ * of 301 chemistry examples, which would overwrite a para heading with the
+ * note's translation.
+ *
+ * @param {Document} doc - the parsed container fragment
+ * @param {object} element - the container's structure node
+ * @param {Function} getSeg - segment lookup
+ */
+function writeNestedNoteTitles(doc, element, getSeg) {
+  const visit = (node) => {
+    const children = (node && node.content) || [];
+    if (!Array.isArray(children)) return;
+    for (const child of children) {
+      if (child && child.type === 'note' && child.id && child.title?.segmentId) {
+        const noteEl = doc.getElementById(child.id);
+        const titleEl = noteEl && directChildTitle(noteEl);
+        const translated = getSeg(child.title.segmentId);
+        if (titleEl && translated) {
+          while (titleEl.firstChild) titleEl.removeChild(titleEl.firstChild);
+          insertCnxmlBefore(doc, titleEl, translated, null);
+        }
+      }
+      visit(child);
+    }
+  };
+  visit(element);
 }
 
 /**

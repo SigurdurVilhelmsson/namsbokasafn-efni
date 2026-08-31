@@ -34,6 +34,7 @@ import {
   parseAttributes,
   stripTags,
   TAG_ATTR_SPAN,
+  firstDirectChildTitle,
 } from './lib/cnxml-parser.js';
 import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
 import {
@@ -1627,8 +1628,30 @@ function renderTable(table, context) {
   if (tableNum) attrs.push(`data-table-number="${tableNum}"`);
 
   lines.push(`<table ${attrs.join(' ')}>`);
-  if (tableNum) {
-    lines.push(`  <caption><span class="table-label">Tafla ${tableNum}</span></caption>`);
+
+  // 🔴 §C82 L143/L144 — THE TABLE'S OWN <title> REACHES THE READER HERE, OR
+  // NOWHERE. Measured 2026-08-31 by sentinel: before this, renderTable emitted
+  // a <caption> holding ONLY the synthesised "Tafla N" label, so organic's 70
+  // source table titles — 70 DISTINCT prose headings — were rendered nowhere,
+  // and organic ch03's five published captions carried 0 title bytes.
+  //
+  // ⚠️ The drop was SILENT BY CONSTRUCTION: the loud-seam guard whitelists
+  // 'title' as container metadata "handled by each container's own renderer",
+  // which was simply untrue of this renderer.
+  //
+  // One <caption> per table is all HTML permits, so the title joins the label
+  // inside it rather than becoming a second element. `.table-title` is a NEW
+  // class — it renders unstyled until ../namsbokasafn-vefur's content.css
+  // gains a rule, which is a cross-repo coordination item, not a blocker.
+  const tableTitleHit = firstDirectChildTitle(table.content);
+  const tableTitleHtml = tableTitleHit
+    ? `<span class="table-title">${processInlineContent(tableTitleHit.inner, context)}</span>`
+    : '';
+  if (tableNum || tableTitleHtml) {
+    const label = tableNum ? `<span class="table-label">Tafla ${tableNum}</span>` : '';
+    lines.push(
+      `  <caption>${label}${label && tableTitleHtml ? ' ' : ''}${tableTitleHtml}</caption>`
+    );
   }
 
   // Process tgroup
