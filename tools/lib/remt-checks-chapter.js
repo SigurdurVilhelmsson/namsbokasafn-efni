@@ -38,7 +38,8 @@
  *   id  finding type        source                blocking  base rate (denominator below)
  *   K1  shape-drift         checkChapter §3       no        3 of 14 evaluable cells (21%)
  *   K2  cross-stage-drop    checkChapter §2       YES       1 of 26 (3.8%)
- *   K3  (slug map)          this file             YES       0 of 4 — SKIPPED, see K3
+ *   K3  (slug map)          this file             no*       0 of 4 — SKIPPED, see K3
+ *       * advisory since 2026-08-30 ([LEAD] clean-break decision); was YES. See K3.
  *   K4  genuine-math-drop   identityDiffChapter   no        1 of 26 (3.8%)
  *   K5  raw-cnxml-leak      checkChapter §1b      YES       0 of 278 run-target files
  *                                                            (1 of 334 files = 1 of 31
@@ -116,10 +117,18 @@
  *   K3  no before-snapshot artifact exists anywhere in the repo, tracked or untracked
  *   K2  86 of 112 cells have no published HTML at all
  * `runTier` counts SKIPPED on a blocking check as a blocking failure, deliberately: a gate
- * that supplied no evidence must not let a paid module through. ▶ **Do not make either
- * advisory, and do not let K3 PASS on an absent snapshot** — a PASS from an absent snapshot
- * is exactly the false-clean the check exists to prevent. This is the same shape Task 13
- * already prescribes for A2(a)/A4/A8. → §C82 L92.
+ * that supplied no evidence must not let a paid module through.
+ * 🔴 AMENDED 2026-08-31 — THIS BLOCK USED TO READ "**Do not make either advisory, and do not
+ * let K3 PASS on an absent snapshot**". THE SECOND HALF STANDS; THE FIRST WAS OVERTURNED by
+ * the [LEAD]'s 2026-08-30 clean-break decision, which made the past-facing gates advisory.
+ * **K3 is now `blocking: false`; K2 is unchanged and still blocking.** The two prohibitions
+ * were always separable and only the second carries the false-clean hazard §C82 L92③ argues
+ * against — an advisory K3 still SKIPs at `examined: 0` and still prints its message, it just
+ * stops setting the exit code, whereas a PASS would manufacture evidence that was never
+ * gathered. ▶ **A PASS on an absent snapshot is still forbidden.**
+ * ⚠️ `--tier 4` STILL EXITS 1 ON EVERY BOOK x TRACK — K2 (and K5) are untouched, so anyone
+ * verifying K3's flip by the tier's exit code will read it as a no-op. Read K3's own row.
+ * This is the same shape Task 13 already prescribes for A2(a)/A4/A8. → §C82 L92.
  *
  * ⚠️ DENOMINATORS, STATED ONCE SO EVERY RATE ABOVE IS READABLE. A "cell" is
  * book x track x chapter-dir, chapter-dirs read with the tool's own `discoverChapters`
@@ -575,8 +584,19 @@ export const K2 = defineCheck({
 export const K3 = defineCheck({
   id: 'K3',
   tier: 4,
-  blocking: true,
-  version: 1,
+  // 🔴 ADVISORY SINCE 2026-08-30, BY [LEAD] DECISION — AND THIS FILE USED TO FORBID EXACTLY
+  // THAT, SO READ WHY BEFORE RESTORING IT.
+  // docs/decisions/2026-08-30-c82-clean-break-refocus.md made the run's purpose STRUCTURAL and
+  // the past-facing gates advisory. K3 is past-facing: it judges renames that already happened.
+  // ⚠️ §C82 L92③ and this file's own header prohibited "making K3 advisory OR letting it PASS
+  // on an absent snapshot". Those are TWO prohibitions and only the SECOND survives — it is the
+  // one carrying the false-clean hazard L92③ actually argues against ("a snapshot taken late
+  // flips K3 to a clean PASS with a plausible non-zero `examined`, which is strictly WORSE than
+  // the halt"). Advisory does NOT do that: K3 still returns SKIPPED with `examined: 0`, still
+  // reports every finding, and still prints its message — it simply stops setting the exit
+  // code. ▶ **A PASS on an absent snapshot remains forbidden and is not what this changes.**
+  blocking: false,
+  version: 2,
   run: (ctx) => {
     const before = ctx?.publishedBefore;
     const after = ctx?.publishedAfter;
@@ -596,8 +616,9 @@ export const K3 = defineCheck({
           'K3: ctx.publishedBefore and ctx.publishedAfter must both be snapshotModuleIds() ' +
           'Maps (filename -> moduleId), the BEFORE one taken before the render. No ' +
           'before-snapshot artifact exists in this repo, so SKIPPED is the expected verdict ' +
-          'for every sweep run before the loop itself — and K3 is blocking, so it halts. ' +
-          'That is correct: a gate that supplied no evidence must not certify a chapter',
+          'for every sweep run before the loop itself. K3 is ADVISORY since 2026-08-30, so ' +
+          'this does NOT halt — but it is still not evidence of a clean rename ledger: no ' +
+          'rename claim was made either way, and a PASS here would remain forbidden',
       };
     }
     if (before.size === 0) {
@@ -617,7 +638,8 @@ export const K3 = defineCheck({
     // REAL MAP TO EMPTY. `recordRename` does `map.renames[from] = {to, moduleId,
     // recordedAt}` and `readSlugMap` explicitly REFUSES an array, so the array branch was
     // unreachable against every shape the §C9 producer can emit: every correctly-recorded
-    // rename read as UNACCOUNTED, and K3 is BLOCKING, so the direction was a FALSE HALT on
+    // rename read as UNACCOUNTED, and K3 was BLOCKING at the time, so the direction was a
+    // FALSE HALT on
     // exactly the chapters whose renames had been recorded properly.
     // ▶ IT SHIPPED THROUGH 39 GREEN TESTS BECAUSE EVERY FIXTURE WAS HAND-BUILT — and this
     // file's own test header claimed the opposite. That is the campaign's recorded lesson

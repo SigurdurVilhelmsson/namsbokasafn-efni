@@ -154,8 +154,14 @@ export const UNMEASURABLE = Object.freeze({
     reason:
       'a PRE-FLIGHT over run state, not a corpus unit: it takes `locked`, `handEdits`, ' +
       "`inputs`, `force` and `costEstimate`. Leg 5's estimate comes from " +
-      '`api-translate --force --dry-run`, which spends real money — the ctx typedef says so ' +
-      'in as many words, and no test or sweep may reach it.',
+      '`api-translate --force --dry-run`. ⚠️ CORRECTED 2026-08-31: this reason used to say ' +
+      'that invocation "spends real money". It does NOT — the `--dry-run` block reads files, ' +
+      'sums characters, calls `estimateIsk` and `process.exit(0)`s BEFORE `createClient()`, so ' +
+      'it opens no API client. The TOOL costs money; that FLAG PATH does not, and the ' +
+      "register's own 1,129 ISK figure for chemistry ch15 was obtained through it at 0 ISK. " +
+      'E9 stays unmeasurable in a sweep for the reason above — it is a pre-flight over RUN ' +
+      'state the driver produces once per run, not a property of a corpus unit — not because ' +
+      'reaching leg 5 would cost anything.',
     availableAfter: 'never in a sweep; the driver produces it once, per run',
   },
   R2: {
@@ -1170,11 +1176,16 @@ export function formatReport(report) {
   }
 
   // 🔴 A BLOCKING CHECK WITH NO RATE IS INVISIBLE TO THE ALARM ABOVE, because
-  // `overBar` filters on `r.rate !== null`. K3 is the standing example: 112 of 112
-  // SKIPPED, blocking, and named by no section. Its ROW does not read clean
-  // (SKIP 112 / EVAL 0 / n/a / EXAMINED 0), so this is a completeness note rather
+  // `overBar` filters on `r.rate !== null`. Such a row does not read clean
+  // (SKIP n / EVAL 0 / n/a / EXAMINED 0), so this is a completeness note rather
   // than a §C60 hazard — but a reader scanning only the alarm would miss that a
   // blocking gate supplied no evidence at all, which `runTier` scores as a halt.
+  // ⚠️ AMENDED 2026-08-31 — K3 WAS THIS SECTION'S STANDING EXAMPLE AND HAS LEFT IT.
+  // K3 went `blocking: false` with the [LEAD] clean-break decision, so it no longer
+  // matches this filter and the section can now be EMPTY. That is not evidence the
+  // hazard was fixed; it is evidence the membership moved. This is the same shape
+  // that emptied the "BLOCKING CHECKS OVER <bar>" section when the glossary cleanup
+  // dropped G3 below its bar — a section going quiet because its population left.
   const blockingNoRate = report.rows.filter((r) => r.blocking && r.rate === null);
   if (blockingNoRate.length) {
     lines.push('');

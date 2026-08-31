@@ -104,15 +104,22 @@ describe('the wire body is the population every Tier-0 predicate reads', () => {
     expect(wire).toBeLessThan(file);
   });
 
-  it('📌 PREMISE — the live books now omit NOTHING, so file === wire on both', () => {
-    // The other half of the statement above, over real data. This is a PREMISE PIN on
-    // glossary DATA: it goes red if a competition or comma-list is reintroduced, which is
-    // the state G1 exists to block. If it fails, read G1's verdict before touching this.
-    for (const slug of ['efnafraedi-2e', 'lifraen-efnafraedi']) {
+  it('📌 PREMISE — chemistry omits EXACTLY the `si` competition; organic omits nothing', () => {
+    // The other half of the statement above, over real data — a PREMISE PIN on glossary DATA.
+    // 🔴 REWRITTEN 2026-08-31. It asserted `wire === file` on both books, true only under the
+    // 2026-08-30 domain-scoped glossary (389 terms). §C116 restored the cross-domain fallback
+    // and removed the harmful headwords individually instead, so chemistry again carries one
+    // competition: `si` = `alþjóðlega einingakerfið` vs `kísill`. `formatGlossary` omits BOTH
+    // candidates, so the wire is 2 shorter than the file.
+    // ▶ PINNED AS AN EXACT DELTA, NOT AS "some omission happens": a THIRD candidate, or a
+    // second competition, or a comma-list still turns this red. That is strictly stronger
+    // than the `toBe(file)` it replaces was after the cleanup emptied its subject.
+    const EXPECTED_OMISSIONS = { 'efnafraedi-2e': 2, 'lifraen-efnafraedi': 0 };
+    for (const [slug, omitted] of Object.entries(EXPECTED_OMISSIONS)) {
       const raw = live(slug);
       const file = glossaryTerms(raw).length;
       expect(file, `${slug}: empty read`).toBeGreaterThan(0); // control
-      expect(wireTerms(raw).length, `${slug}: something is being omitted again`).toBe(file);
+      expect(file - wireTerms(raw).length, `${slug}: omission count moved`).toBe(omitted);
     }
   });
 });
@@ -248,7 +255,7 @@ describe('G3 — function-word headwords (§C77)', () => {
     expect(r.verdict).toBe(VERDICT.FAIL);
   });
 
-  it('✅ PASSES ON BOTH LIVE BOOKS SINCE 2026-08-30 — the entries it fired on were removed', async () => {
+  it('📌 FIRES ON EXACTLY THE TWO BENIGN HEADWORDS — the five harmful ones were removed 2026-08-31', async () => {
     // 🔴 THIS PIN WAS INVERTED ON 2026-08-30, EXACTLY AS ITS PREVIOUS FORM INSTRUCTED.
     // It used to assert FAIL on both books and carried the note: "PREMISE PIN over live
     // glossary DATA: this goes green when the entries are fixed, which is the point of
@@ -258,27 +265,57 @@ describe('G3 — function-word headwords (§C77)', () => {
     // CLEAN state and reddens if any of them returns.
     // ⚠️ The mechanism is pinned above on synthetic fixtures (`As → arsen` etc.), so G3's
     // detector is NOT resting on live data; only this regression guard is.
+    // 🔴 REWRITTEN 2026-08-31 (§C116). This asserted PASS on both books, which held only
+    // under the 2026-08-30 domain-scoped glossary. That approach was replaced — it dropped
+    // 1,632 of 2,021 terms to fix 67 — by a matching fix plus targeted removals, so the
+    // cross-domain terms are back and G3 fires again. ▶ WHAT IT FIRES ON IS NOW PINNED
+    // EXACTLY, which is stronger than `toBe(PASS)`: the harmful seven are gone and any
+    // return of one turns this red, while the two that remain are the two this file's own
+    // note below already classified as BENIGN — `minus → mínus`, `plus → plús`, same-sense,
+    // reported only because G3 knows homography and not sense.
+    // Measured against the committed 02-mt-output, which is §C73's unprompted control:
+    // `mínus` ×3 and `plús` ×8 — the model produces both, and the render side resolves
+    // both correctly. **Deleting a correct term to turn a check green is the §C73 error in
+    // reverse, so they stay.** The removed ones fail that same test outright: `víddarmótun`
+    // (AM) ×0, `gagnlíkindahlutfall` (OR) ×0, `lófalægur` (is) ×0, `tomma` (in) ×2.
+    const BENIGN = ['minus', 'plus'];
     const chem = await runCheck(G3, { glossary: live('efnafraedi-2e') });
     const org = await runCheck(G3, { glossary: live('lifraen-efnafraedi') });
-    expect(chem.examined, 'examined 0 would make PASS meaningless').toBeGreaterThan(0); // control
-    expect(chem.verdict).toBe(VERDICT.PASS);
-    expect(org.verdict).toBe(VERDICT.PASS);
+    expect(chem.examined, 'examined 0 would make this meaningless').toBeGreaterThan(0); // control
+    expect(org.examined, 'examined 0 would make this meaningless').toBeGreaterThan(0); // control
+    for (const [slug, r] of [
+      ['efnafraedi-2e', chem],
+      ['lifraen-efnafraedi', org],
+    ]) {
+      expect(r.findings.map((f) => f.english).sort(), `${slug}: G3's finding set moved`).toEqual(
+        BENIGN
+      );
+    }
     // ⚠️ THIS LIST USED TO CARRY SEVEN ENTRIES PER BOOK and is now EMPTY, which is the
     // whole point of the change that emptied it. For the record of what G3 was firing on
     // before 2026-08-30 — chemistry `AM As in is minus no plus`, organic `As OR in is
     // minus no plus`, of which `plus→plús` and `minus→mínus` were BENIGN (same-sense, and
     // reported only because G3 knows homography and not sense) — see §C82 L142/L151. The
     // five real ones went with the foreign-domain fall-through.
-    // 🔴 ASSERTED AS EMPTY RATHER THAN DELETED: an absent assertion would let any of them
-    // return unnoticed, and the message names what a non-empty result means.
+    // 🔴 ASSERTED AS AN EXACT SET RATHER THAN DELETED OR RELAXED: an absent assertion would
+    // let any of the harmful five return unnoticed, and `toEqual(BENIGN)` reddens in BOTH
+    // directions — a sixth entry appearing, or one of these two disappearing (which would
+    // mean someone deleted a CORRECT term to turn a check green, the §C73 error in reverse).
+    // The five real ones — `AM As in is no` chemistry, `As OR in is no` organic — were
+    // removed from the concept model on 2026-08-31 (§C116), each failing §C73's unprompted
+    // test outright: víddarmótun ×0, gagnlíkindahlutfall ×0, lófalægur ×0, arsen ×20 (the
+    // model already says it, so the entry bought nothing while firing on sentence-initial
+    // "As"). This assertion is duplicated with the one above on purpose: that one is keyed
+    // to the per-book loop, this one names the books individually so a failure message says
+    // WHICH book without reading the loop.
     expect(
       chem.findings.map((f) => f.english).sort(),
-      'a function-word headword is back in chemistry'
-    ).toEqual([]);
+      'chemistry: G3 finding set moved — a function-word headword is back, or a benign one went'
+    ).toEqual(BENIGN);
     expect(
       org.findings.map((f) => f.english).sort(),
-      'a function-word headword is back in organic'
-    ).toEqual([]);
+      'organic: G3 finding set moved — a function-word headword is back, or a benign one went'
+    ).toEqual(BENIGN);
   });
 });
 

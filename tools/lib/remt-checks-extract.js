@@ -1031,6 +1031,31 @@ export const E6 = defineCheck({
 export const E9_LEGS = Object.freeze(['locked', 'handEdits', 'inputs', 'force', 'cost']);
 
 /**
+ * The two legs the [LEAD]'s 2026-08-30 clean-break decision made ADVISORY
+ * (docs/decisions/2026-08-30-c82-clean-break-refocus.md). Both are PAST-FACING: they judge what
+ * was already done to `02-mt-output`, and the 2026-08-22 decision had already authorised
+ * overwriting exactly those bytes — so `handEdits` was refusing 220 of 220 units to protect
+ * work a human had already ruled disposable. A gate re-asking a question a human has answered.
+ *
+ * 🔴 ADVISORY IS A PROPERTY OF THE (leg, kind) PAIR, NEVER OF THE LEG ALONE — AND THE `kind`
+ * HALF IS THE LOAD-BEARING ONE. Only a `preflight` finding (we LOOKED and found prior hand
+ * work) stands down. A `leg-not-checked` finding on the very same leg still FAILS, because it
+ * says the opposite thing: nobody looked. Downgrading that too was measured to produce
+ * `WARN · exit 0 · handEdits report EMPTY` for a loader that silently stopped supplying the
+ * leg — byte-identical to a genuinely clean run, and the N2-class incident this file's own
+ * `runStateValue` contract exists to prevent. It would also destroy the artifact the decision
+ * doc chose advisory OVER DELETION to keep: "the handEdits report is the artifact that names
+ * which modules had prior hand work — the input to re-applying it."
+ * ▶ **Advisory means "we looked and are not halting", never "we did no work".**
+ */
+// ⚠️ A FROZEN ARRAY, NOT A FROZEN SET — `Object.freeze` DOES NOTHING TO A `Set`. Measured:
+// `Object.freeze(new Set(['locked'])).add('cost')` SILENTLY SUCCEEDS and the member is added,
+// while a frozen array's `.push` throws `TypeError`. A `Set` here would have read as protected
+// and not been, which is this repo's "a claim of discipline is not the discipline" shape in one
+// line. It also matches `E9_LEGS`'s own idiom directly above.
+export const E9_ADVISORY_LEGS = Object.freeze(['locked', 'handEdits']);
+
+/**
  * E9 — the pre-MT pre-flight. Five independent legs, every one of which has actually gone
  * wrong on this project at least once, and all five gating a step that spends money.
  *
@@ -1101,7 +1126,7 @@ export const E9 = defineCheck({
   id: 'E9',
   tier: 1,
   blocking: true,
-  version: 2,
+  version: 3,
   run: (ctx) => {
     const c = ctx || {};
     const findings = [];
@@ -1251,11 +1276,33 @@ export const E9 = defineCheck({
       };
     }
 
+    // 🔴 PARTITION ON (leg, kind) — see E9_ADVISORY_LEGS. E9 STAYS `blocking: true`; what
+    // changes is the VERDICT it reaches. `runTier`'s filter is
+    // `blocking && (FAIL || SKIPPED || examined === 0)`, so a WARN that DID examine exits 0
+    // while keeping every finding and the message intact. That is the framework's existing
+    // advisory idiom (E7 and the tier-4 checks already use it); no new machinery is needed,
+    // and `blocking: false` would be the WRONG lever — it would also stand down `inputs`,
+    // `force` and `cost`, the three legs that gate a run which spends money.
+    // ⚠️ `findings` IS RETURNED IN ITS ORIGINAL LEG ORDER, NOT PARTITIONED. The self-test
+    // asserts `findings[0].leg === 'force'` for E9's bad fixture, and reordering to put the
+    // advisory ones last would break it while looking like a tidy-up.
+    const isAdvisory = (f) => f.kind === 'preflight' && E9_ADVISORY_LEGS.includes(f.leg);
+    const advisory = findings.filter(isAdvisory);
+    const blocking = findings.filter((f) => !isAdvisory(f));
+
     return {
-      verdict: findings.length ? VERDICT.FAIL : VERDICT.PASS,
+      // WARN only once something was actually examined — a WARN at `examined === 0` is caught
+      // by `runTier`'s third clause anyway, but the early return above already handles that.
+      verdict: blocking.length ? VERDICT.FAIL : advisory.length ? VERDICT.WARN : VERDICT.PASS,
       examined,
       findings,
-      message: `${examined} of ${E9_LEGS.length} pre-flight legs checked, ${findings.length} findings`,
+      // 🔴 THE TWO COUNTS ARE REPORTED SEPARATELY, DELIBERATELY. A single tally would let a
+      // WARN carrying 467 hand-edit findings read like a PASS, burying the one artifact this
+      // downgrade exists to preserve.
+      message:
+        `${examined} of ${E9_LEGS.length} pre-flight legs checked, ` +
+        `${blocking.length} blocking findings, ${advisory.length} advisory ` +
+        `(${E9_ADVISORY_LEGS.join('/')})`,
     };
   },
 });
