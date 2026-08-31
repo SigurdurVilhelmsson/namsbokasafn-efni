@@ -177,3 +177,37 @@ describe('§C82 L143/L149 — titles REACH the injected output (values, not coun
     expect(r.ctlReached).toBe(r.ctlEmitted);
   });
 });
+
+describe('§C82 — a translated title is DATA, not a replacement pattern', () => {
+  it('a table title containing $& survives injection intact', () => {
+    // `String.replace` expands `$&`, `` $` ``, `$'`, `$$` and `$n` in the
+    // REPLACEMENT string. The replacement here is translated text, authored by
+    // an editor or the MT, so its content is not ours to predict. With a string
+    // replacer, `A $& B` rewrote to `<title>A <title>Old</title> B</title>` —
+    // corrupt nested markup produced by a value that merely passed through.
+    const src = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Doc</title>
+<content>
+<section id="s1"><title>S1</title>
+<table id="t1" summary="s"><title>Original Title</title>
+<tgroup cols="1"><tbody><row><entry>cell</entry></row></tbody></tgroup>
+</table>
+</section>
+</content>
+</document>`;
+    const { segments, structure, equations, inlineAttrs } = extractSegments(src);
+    const title = segments.find((s) => s.type === 'table-title');
+    expect(title).toBeDefined(); // the fixture actually exercises the path
+
+    const map = new Map(segments.map((s) => [s.id, s.text]));
+    map.set(title.id, 'Verð $& kostnaður');
+    const out = buildCnxml(structure, map, equations, src, {}, inlineAttrs).cnxml;
+
+    // `&` is XML-escaped downstream, which is correct and not what is under
+    // test — so assert the ESCAPED form, and separately assert the corruption
+    // signature is absent. Verified to go red against a string replacer.
+    expect(out).toContain('<title>Verð $&amp; kostnaður</title>');
+    // The corruption signature: the matched span re-inserted inside itself.
+    expect(out).not.toContain('Original Title');
+  });
+});

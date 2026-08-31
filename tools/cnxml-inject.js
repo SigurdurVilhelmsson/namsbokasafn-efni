@@ -2923,11 +2923,19 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
           const [tableEl] = extractElements(tableCnxml, 'table');
           const titleHit = tableEl && firstDirectChildTitle(tableEl.content);
           if (titleHit) {
+            // ⚠️ FUNCTION REPLACERS, NOT STRING ONES. `String.replace` expands
+            // `$&`, `` $` ``, `$'`, `$$` and `$n` IN THE REPLACEMENT, and the
+            // replacement here is TRANSLATED text — editor- and MT-authored,
+            // so its content is not ours to predict. Measured: a title
+            // containing `$&` rewrites to
+            // `<title>A <title>Old</title> B</title>` — corrupt nested markup
+            // from a value that merely passed through. A function replacer is
+            // immune, and is behaviour-identical for every other input.
             const rewritten = tableEl.content.replace(
               titleHit.fullMatch,
-              `<title>${translatedTitle}</title>`
+              () => `<title>${translatedTitle}</title>`
             );
-            tableCnxml = tableCnxml.replace(tableEl.content, rewritten);
+            tableCnxml = tableCnxml.replace(tableEl.content, () => rewritten);
           }
         }
       }
