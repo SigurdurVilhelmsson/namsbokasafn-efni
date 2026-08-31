@@ -1640,9 +1640,22 @@ function renderTable(table, context) {
   // which was simply untrue of this renderer.
   //
   // One <caption> per table is all HTML permits, so the title joins the label
-  // inside it rather than becoming a second element. `.table-title` is a NEW
-  // class — it renders unstyled until ../namsbokasafn-vefur's content.css
-  // gains a rule, which is a cross-repo coordination item, not a blocker.
+  // inside it rather than becoming a second element.
+  //
+  // ⚠️ `.table-title` is a NEW class and has NO rule in ../namsbokasafn-vefur's
+  // content.css — but "unstyled" is the wrong word for what that means, and an
+  // earlier version of this comment said it. The span INHERITS
+  // `article.cnx-module table caption` (content.css:593), which sets
+  // `caption-side: bottom`, so the table's own heading renders BELOW the table
+  // in the caption's type — where OpenStax puts it above. The text reaches the
+  // reader either way, which is this change's purpose; the placement is a
+  // cross-repo styling decision that belongs to vefur, not a blocker here.
+  //
+  // Measured safe against the render-fidelity shape baseline: over organic
+  // ch03 (the only chapter that baseline covers) not one counted bucket moves —
+  // figure/img/table/ul/ol/li/em/strong/div.equation/a[href] are identical
+  // before and after, because `span.table-title` is in no bucket and ch03's
+  // five table titles carry no markup that would land in one.
   const tableTitleHit = firstDirectChildTitle(table.content);
   const tableTitleHtml = tableTitleHit
     ? `<span class="table-title">${processInlineContent(tableTitleHit.inner, context)}</span>`
