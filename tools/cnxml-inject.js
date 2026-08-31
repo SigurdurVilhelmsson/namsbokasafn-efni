@@ -59,6 +59,7 @@ import {
   replaceListItems as replaceListItemsDom,
   removeElementsByTag,
   insertCnxmlBefore,
+  directChildTitle,
 } from './lib/cnxml-dom.js';
 import {
   loadMathLabelResolver,
@@ -3479,6 +3480,46 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   const exampleEl = doc.getElementById(element.id);
   if (!exampleEl) return match[0]; // fallback
 
+  // 🔴 §C82 L143/L144 — WHERE THE EXAMPLE'S TITLE GOES DEPENDS ON THE SOURCE
+  // SHAPE, AND THE SHAPE IS READ FROM `01-source`, NEVER INFERRED FROM TEXT.
+  //
+  // Chemistry writes the example title INSIDE the first para
+  //     <example><para id="fs-id…"><title>Measuring Heat</title> body…</para>
+  // so the `isFirstPara` branches below correctly put the translation there.
+  // Organic writes it as a DIRECT CHILD of <example>, alongside paras that have
+  // sub-headings of their own ("Strategy", "Solution"). Running the chemistry
+  // branch on that shape does BOTH halves wrong: the example's own <title>
+  // element is preserved verbatim from the source and ships ENGLISH, while the
+  // translation is written over the first paragraph's heading.
+  //
+  // ⚠️ MEASURED, and it is why the extract-side fix alone is reader-invisible:
+  // injecting organic ch03/m00033 before and after that fix produced BYTE-
+  // IDENTICAL output — `<title>Drawing the Structures of Isomers</title>` in
+  // English with "Leiðarvísir" on para-00009 — because nothing ever wrote the
+  // container's own title. This is the §C89 class (extracted, paid for, then
+  // discarded) and the reason CLAUDE.md requires both sides in one change.
+  //
+  // ⚠️ The discriminator is the DOM shape of the READ-ONLY source, never a
+  // comparison of two translated strings: every segment is independently
+  // editable in the segment editor, so an equality test stops matching the
+  // first time an editor revises one side (CLAUDE.md § inject behaviour).
+  //
+  // ⚠️ Chemistry is unreachable through this branch by construction: it has
+  // ZERO <title> elements whose parent is <example> (0 of 301, measured over
+  // all 149 source modules), so `exampleDirectTitleEl` is always null there and
+  // the `isFirstPara` behaviour below is bit-for-bit what it always was.
+  const exampleDirectTitleEl = directChildTitle(exampleEl);
+  if (exampleDirectTitleEl && element.title?.segmentId) {
+    const translated = getSeg(element.title.segmentId);
+    if (translated) {
+      // Same idiom as buildNoteDom: clear and re-insert as CNXML, because a
+      // title's text may carry inline markup (<sub>, <sup>, <emphasis>).
+      while (exampleDirectTitleEl.firstChild)
+        exampleDirectTitleEl.removeChild(exampleDirectTitleEl.firstChild);
+      insertCnxmlBefore(doc, exampleDirectTitleEl, translated, null);
+    }
+  }
+
   // Step 3: Replace para content and list items via DOM.
   // Track replaced para IDs: if a list contains an already-replaced para,
   // skip list-item replacement to avoid destroying the para content
@@ -3537,7 +3578,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         const textWithoutMedia = paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
 
         let titleText = '';
-        if (isFirstPara && element.title?.segmentId) {
+        if (!exampleDirectTitleEl && isFirstPara && element.title?.segmentId) {
           titleText = getSeg(element.title.segmentId) || '';
         } else if (child.title?.segmentId) {
           titleText = getSeg(child.title.segmentId) || child.title.text || '';
@@ -3567,7 +3608,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
 
       let titleText = '';
-      if (isFirstPara && element.title?.segmentId) {
+      if (!exampleDirectTitleEl && isFirstPara && element.title?.segmentId) {
         titleText = getSeg(element.title.segmentId) || '';
       } else if (child.title?.segmentId) {
         titleText = getSeg(child.title.segmentId) || child.title.text || '';

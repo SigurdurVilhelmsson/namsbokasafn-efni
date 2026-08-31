@@ -36,6 +36,7 @@ import {
   stripTags,
   extractGlossary,
   TAG_ATTR_SPAN,
+  firstDirectChildTitle,
 } from './lib/cnxml-parser.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
@@ -1799,10 +1800,59 @@ function processExample(
   // Extract all paragraphs first to find the example title
   const paras = extractElements(example.content, 'para');
 
-  // The example title comes from the FIRST paragraph that has a <title> child
-  // Use regex that allows whitespace between para tag and title
   let exampleTitleFound = false;
   let donorPara = null;
+
+  // 🔴 §C82 L143/L144 — A DIRECT-CHILD <title> IS THE EXAMPLE'S OWN TITLE, AND
+  // IT OUTRANKS THE PARA-DONATION HEURISTIC BELOW. This must be tested FIRST:
+  // the donor loop wins on 102 of 102 organic examples and 300 of 301 chemistry
+  // ones (measured 2026-08-31 over all 491 source modules), so anything placed
+  // after it is unreachable on the real corpus.
+  //
+  // Organic writes the real title as a direct child AND uses a para sub-heading
+  // in the same example:
+  //     <example id="exam-00001">
+  //       <title>Predicting the Number of Bonds Formed by Atoms in Molecules</title>
+  //       <para id="para-00010">How many hydrogen atoms…</para>
+  //       <para id="para-00011"><title>Strategy</title> Identify the group…</para>
+  // The donor loop reached para-00011 first, donated "Strategy" as the example
+  // title and discarded the real one. Measured: all 102 organic `example-title`
+  // segments carried just two distinct values — "Strategy" (101) and "Solution"
+  // (1) — i.e. ZERO carried a real example title. ONE defect, THREE symptoms:
+  // the real title dropped, the slot FABRICATED with a sub-heading, and the
+  // donor para stripped of its own title (102 of organic's 203 para titles).
+  //
+  // ⚠️ THE FABRICATION IS THE WORSE HALF. An absent title is visible; a slot
+  // holding "Strategy" reads as a correct translation in the segment editor,
+  // which shows segments rather than injected CNXML (§C82 L146's third
+  // category). No coverage count can see it — the slot is populated either way.
+  //
+  // ⚠️ Chemistry CANNOT regress through this branch, and that is structural
+  // rather than lucky: chemistry has ZERO <title> elements whose parent is
+  // <example> (0 of 301), so `firstDirectChildTitle` returns null on every one.
+  // Pinned by tools/__tests__/container-title-corpus.test.js.
+  //
+  // ⚠️ Stated as a SHAPE, never as a book (L144): physics uses organic's title
+  // shape with chemistry's id style, so a legacy/new book split would have
+  // needed a third branch within a week.
+  const directTitle = firstDirectChildTitle(example.content);
+  if (directTitle) {
+    const titleText = extractInlineText(directTitle.inner, mathMap, counters);
+    const titleId = addSegment(
+      'example-title',
+      titleText,
+      example.id ? `${example.id}-title` : null
+    );
+    // addSegment returns null for empty text; an empty <title/> must leave the
+    // structure's `title` at its null sentinel rather than a broken reference.
+    if (titleId) {
+      exampleStructure.title = { segmentId: titleId, text: titleText };
+      exampleTitleFound = true;
+    }
+  }
+
+  // The example title comes from the FIRST paragraph that has a <title> child
+  // Use regex that allows whitespace between para tag and title
   for (const para of paras) {
     const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     if (titleMatch && !exampleTitleFound) {

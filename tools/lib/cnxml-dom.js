@@ -265,6 +265,34 @@ function removeElementsByTag(parentElement, tagNames) {
   }
 }
 
+/**
+ * The `<title>` element that is a DIRECT CHILD of `element`, or null.
+ *
+ * §C82 L143/L144 — the DOM counterpart of `firstDirectChildTitle` in
+ * cnxml-parser.js. On a parsed tree "direct child" is a PROPERTY rather than
+ * something to scan for, so this needs no depth bookkeeping and none of the
+ * open-tag hazards apply; the two exist because extraction works on raw source
+ * text and injection works on a parsed fragment.
+ *
+ * ⚠️ `getElementsByTagName('title')[0]` is NOT a substitute and is the bug this
+ * guards against: it is depth-blind, so on organic's
+ *     <example id="…"><title>Real</title><para id="…"><title>Strategy</title> …
+ * it happens to return the right node, but on an example whose own title is
+ * absent it returns a PARAGRAPH's sub-heading and the caller then overwrites a
+ * para heading with the container's translation.
+ *
+ * @param {Element} element - parsed container element
+ * @returns {Element|null}
+ */
+function directChildTitle(element) {
+  if (!element || !element.childNodes) return null;
+  for (let i = 0; i < element.childNodes.length; i++) {
+    const node = element.childNodes[i];
+    if (node.nodeType === 1 && node.nodeName === 'title') return node;
+  }
+  return null;
+}
+
 export {
   parseCnxmlFragment,
   serializeCnxmlFragment,
@@ -272,6 +300,7 @@ export {
   replaceListItems,
   removeElementsByTag,
   insertCnxmlBefore,
+  directChildTitle,
   BLOCK_TAGS,
   CNXML_NS,
   MATHML_NS,
