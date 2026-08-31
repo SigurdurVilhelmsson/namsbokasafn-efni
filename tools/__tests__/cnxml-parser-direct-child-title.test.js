@@ -54,16 +54,34 @@ describe('firstDirectChildTitle — depth', () => {
 });
 
 describe('firstDirectChildTitle — §C115 open-tag hazards', () => {
-  it('survives a bare > inside an attribute value', () => {
+  // ⚠️ THE DISCRIMINATING SHAPE IS A **SELF-CLOSING** TAG WITH A BARE `>`, AND
+  // NOTHING ELSE IS. Established by mutation: swapping TAG_ATTR_SPAN for
+  // `[^>]*?` left an earlier version of these tests entirely green, because on a
+  // PAIRED element the truncation damages the match but the depth bookkeeping
+  // still nets out — `<media alt="U > 0">` truncates to tagName `media`, depth
+  // goes 0→1, and its `</media>` brings it back to 0, so the later title is
+  // still found. On a self-closing tag it does NOT net out: the `/>` branch
+  // never fires, depth is left at 1, and every subsequent direct-child title is
+  // hidden. Measured, aware vs unaware: self-closing "After" vs null; paired
+  // "After" vs "After". Keep the paired case as a control, not as the check.
+  it('survives a bare > in a SELF-CLOSING tag (the case that discriminates)', () => {
     // A raw `>` is legal in an attribute value and OpenStax ships one
-    // (chemistry ch05/m68727: “Δ U > 0”). A `[^>]*` span truncates there,
-    // leaving an unterminated attribute and a corrupted depth count.
-    const content = '<media alt="Δ U > 0 always"><image src="x.png"/></media><title>After</title>';
+    // (chemistry ch05/m68727: “Δ U > 0”, whose `<` in the same sentence IS
+    // escaped). A `[^>]*` span stops there, so the tag reads as paired.
+    const content = '<image alt="Δ U > 0 always" src="x.png"/><title>After</title>';
     expect(firstDirectChildTitle(content)?.inner).toBe('After');
   });
 
-  it('survives a bare > inside a SINGLE-quoted attribute value', () => {
-    const content = "<media alt='a > b'><image src='x.png'/></media><title>After</title>";
+  it('survives a bare > in a SINGLE-quoted attribute of a self-closing tag', () => {
+    expect(
+      firstDirectChildTitle("<image alt='a > b' src='x.png'/><title>After</title>")?.inner
+    ).toBe('After');
+  });
+
+  it('control: a bare > in a PAIRED tag is survivable either way', () => {
+    // Documented as a control so a future reader does not mistake it for the
+    // quote-awareness check. It passes with a quote-unaware span too.
+    const content = '<media alt="Δ U > 0 always"><image src="x.png"/></media><title>After</title>';
     expect(firstDirectChildTitle(content)?.inner).toBe('After');
   });
 
