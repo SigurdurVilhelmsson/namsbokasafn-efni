@@ -355,12 +355,20 @@ describe('K3 — renames accounted for by the slug map', () => {
   };
   const base = { book: 'efnafraedi-2e', track: 'mt-preview', chapter: '10' };
 
-  it('🔴 SKIPs with no before-snapshot — and that HALTS, because K3 is blocking', async () => {
+  it('🔴 SKIPs with no before-snapshot — and since 2026-08-30 that does NOT halt', async () => {
     // The predicted verdict for every sweep run before the loop itself. No before-snapshot
     // artifact exists anywhere in the repo. Task 13 must assert this rather than "fix" it.
+    // 🔴 THE VERDICT IS THE INVARIANT; THE EXIT CODE IS THE THING THAT CHANGED. K3 went
+    // advisory with the [LEAD]'s clean-break decision, so a SKIP here no longer sets the
+    // exit code — but it is still a SKIP, NOT a PASS. A PASS on an absent snapshot would
+    // manufacture evidence that was never gathered and remains forbidden (§C82 L92③).
     const r = await runCheck(K3, base);
     expect(r.verdict).toBe(VERDICT.SKIPPED);
-    expect(K3.blocking).toBe(true);
+    expect(K3.blocking).toBe(false);
+    // The message must not still claim it halts — no other test binds this string, so a
+    // check whose own output contradicts its behaviour would ship silently.
+    expect(r.message).not.toMatch(/K3 is blocking/);
+    expect(r.message).toMatch(/ADVISORY/);
   });
 
   it('refuses a plain object — the producer returns a Map, which cannot come from a file', async () => {
@@ -983,7 +991,7 @@ describe('the REGISTRY wiring — the array is not the same claim as the registr
     expect(Object.fromEntries(CHAPTER_CHECKS.map((c) => [c.id, c.blocking]))).toEqual({
       K1: false, // 21% of evaluable cells drift
       K2: true, //  3.8%, with a known-bad fixture
-      K3: true, //  the information is destroyed if it is not checked
+      K3: false, // past-facing; advisory by [LEAD] decision 2026-08-30. A PASS is still forbidden
       K4: false, // would qualify; advisory on stated reasons
       K5: true, //  0 of 278 run-target files, 1 of 334 corpus-wide
     });

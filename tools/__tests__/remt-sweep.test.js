@@ -388,9 +388,15 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
     const k3 = report.rows.find((r) => r.id === 'K3');
     expect(k3.SKIPPED).toBe(112);
     expect(k3.rate).toBeNull();
-    // 🔴 DO NOT "FIX" THIS BY MAKING K3 ADVISORY OR BY LETTING IT PASS ON AN
-    // ABSENT SNAPSHOT (§C82 L92③). A snapshot taken late flips K3 to a clean PASS
-    // with a plausible non-zero `examined`, which is strictly WORSE than the halt.
+    // 🔴 AMENDED 2026-08-31 — HALF OF THIS PROHIBITION WAS OVERTURNED, AND THE
+    // ASSERTIONS ABOVE ARE UNAFFECTED EITHER WAY. §C82 L92③ forbade TWO things:
+    // making K3 advisory, and letting it PASS on an absent snapshot. The [LEAD]'s
+    // 2026-08-30 clean-break decision made the past-facing gates advisory, so K3
+    // is now `blocking: false` — but it still SKIPs on all 112 cells and still
+    // reports `rate: null`, which is why nothing here moved. ▶ THE SECOND HALF
+    // STANDS AND IS THE ONE WITH TEETH: a snapshot taken late flips K3 to a clean
+    // PASS with a plausible non-zero `examined`, which is strictly WORSE than
+    // either a halt or an advisory SKIP. DO NOT "FIX" THIS BY LETTING K3 PASS.
     // Control: sibling tier-4 checks DID evaluate, so this is K3's state and not
     // the tier failing to run.
     expect(report.rows.find((r) => r.id === 'K2').evaluable).toBe(26);

@@ -71,10 +71,14 @@ describe('E9 — the five-leg pre-flight', () => {
     expect(unchecked.sort()).toEqual(['cost', 'handEdits', 'inputs', 'locked']);
   });
 
-  it('FAILS when a .locked sibling is present — the split-vintage guard', async () => {
+  it('WARNs — no longer FAILs — when a .locked sibling is present (advisory since 2026-08-30)', async () => {
     const r = await runCheck(E9, { ...cleanCtx(), locked: true });
-    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.verdict).toBe(VERDICT.WARN);
+    // 🔴 THE FINDING MUST SURVIVE THE DOWNGRADE. Advisory was chosen OVER DELETION precisely
+    // so the report still names the affected units; a WARN that dropped its findings would be
+    // indistinguishable from a PASS and would defeat the reason for the choice.
     expect(r.findings.map((f) => f.leg)).toContain('locked');
+    expect(r.examined).toBe(5); // a WARN at examined 0 is still a blocking failure in runTier
   });
 
   it('treats a NON-boolean locked as not-checked, never as "not locked"', async () => {
@@ -93,10 +97,53 @@ describe('E9 — the five-leg pre-flight', () => {
     expect(r.findings.map((f) => f.leg)).toContain('force');
   });
 
-  it('FAILS on a hand-edited 02-mt-output baseline, and carries the commit', async () => {
+  it('WARNs on a hand-edited 02-mt-output baseline, and still carries the commit', async () => {
     const r = await runCheck(E9, { ...cleanCtx(), handEdits: ['deadbeef'] });
-    expect(r.verdict).toBe(VERDICT.FAIL);
+    expect(r.verdict).toBe(VERDICT.WARN);
+    // The commit list IS the artifact the decision doc names as the reason for advisory over
+    // deletion — "the input to re-applying it". Assert the payload, never just the container.
     expect(r.findings.find((f) => f.leg === 'handEdits')?.commit).toBe('deadbeef');
+    expect(r.examined).toBe(5);
+  });
+
+  /**
+   * 🔴 THE PARTITION IS ON (leg, kind), AND THIS IS THE HALF THAT PROTECTS THE ARTIFACT.
+   * `leg-not-checked` on an advisory leg still FAILS. Without this, a loader that silently
+   * stopped supplying `handEdits` would return WARN / exit 0 with an EMPTY hand-edit report —
+   * byte-identical to a genuinely clean run, and the exact N2-class shape `remt-ctx.js`'s
+   * runState contract exists to prevent. Advisory means "we looked and are not halting",
+   * never "we did no work".
+   */
+  describe('advisory is a property of the (leg, kind) PAIR, never of the leg alone', () => {
+    for (const leg of ['locked', 'handEdits']) {
+      it(`a leg-not-checked on the advisory leg '${leg}' still FAILS`, async () => {
+        const ctx = { ...cleanCtx() };
+        delete ctx[leg];
+        const r = await runCheck(E9, ctx);
+        expect(r.verdict).toBe(VERDICT.FAIL);
+        expect(r.findings.some((f) => f.kind === 'leg-not-checked' && f.leg === leg)).toBe(true);
+      });
+    }
+
+    it('a blocking finding beats a concurrent advisory one — FAIL, not WARN', async () => {
+      const r = await runCheck(E9, { ...cleanCtx(), handEdits: ['deadbeef'], force: false });
+      expect(r.verdict).toBe(VERDICT.FAIL);
+      // Control: the advisory finding is still recorded alongside the blocking one, so this
+      // is a verdict change and not a suppression.
+      expect(r.findings.map((f) => f.leg)).toEqual(expect.arrayContaining(['handEdits', 'force']));
+    });
+
+    it('the message reports the two counts SEPARATELY, so a WARN cannot read as a PASS', async () => {
+      const r = await runCheck(E9, { ...cleanCtx(), handEdits: ['a', 'b'] });
+      expect(r.message).toMatch(/0 blocking findings/);
+      expect(r.message).toMatch(/2 advisory/);
+    });
+
+    it('E9 stays BLOCKING — the downgrade is in the VERDICT, not in the flag', () => {
+      // `blocking: false` would be the wrong lever: it would also stand down inputs, force
+      // and cost, the three legs that gate a run which spends money.
+      expect(E9.blocking).toBe(true);
+    });
   });
 
   it('FAILS on a missing input', async () => {
