@@ -437,17 +437,29 @@ describe("the blocking-bar readout — the sweep's most decision-relevant output
     expect(text).not.toContain('committed VINTAGE'); // tier 0 must not get tier 1-4's reading
   }, 30_000);
 
-  it('📌 PREMISE — the LIVE tier-0 sweep now has NOTHING over the bar', async () => {
+  it('📌 PREMISE — the LIVE tier-0 sweep is over the bar on EXACTLY G1 and G3', async () => {
     // The other half of the statement above, and the record of why the fixture above had to
-    // change. G1 (competitions) and G3 (function-word headwords) both PASS since 2026-08-30.
-    // ▶ If this reddens, a Tier-0 precondition has regressed — read the named check first.
+    // change.
+    // 🔴 REWRITTEN 2026-08-31 (§C116). This asserted an EMPTY over-bar list, true only under
+    // the 2026-08-30 domain-scoped glossary. That approach was replaced (it dropped 1,632 of
+    // 2,021 terms to fix 67), so the cross-domain terms are back and both checks fire again:
+    //   G1 — one competition: `si` = `alþjóðlega einingakerfið` vs `kísill`
+    //   G3 — `minus → mínus` and `plus → plús`, BOTH BENIGN (same-sense; G3 knows homography
+    //        and not sense). The seven harmful entries it used to fire on are gone.
+    // ▶ PINNED AS AN EXACT SET, WHICH IS STRONGER THAN THE EMPTY LIST IT REPLACES: a THIRD
+    // check going over the bar reddens this, and so does either of these two going clean —
+    // the second direction being the one an empty-list assertion can never catch.
+    // ⚠️ Neither is a reader-visible defect today: `formatGlossary` OMITS both `si`
+    // candidates from the MT wire, and on the render side all 21 `Si` math labels resolve to
+    // `english`. The MT-side and render-side protections are independent (CLAUDE.md), and
+    // here they happen to both hold — which is a measurement, not a guarantee.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [0] });
     expect(
       report.rows.length,
-      'empty sweep — the zero below would be manufactured'
+      'empty sweep — the result below would be manufactured'
     ).toBeGreaterThan(0);
     const overBar = report.rows.filter((r) => r.blocking && r.rate !== null && r.rate > 0.05);
-    expect(overBar.map((r) => r.id)).toEqual([]);
+    expect(overBar.map((r) => r.id).sort()).toEqual(['G1', 'G3']);
   }, 30_000);
 
   it('a tier whose input the loop regenerates gets the VINTAGE reading instead', async () => {

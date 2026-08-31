@@ -87,7 +87,7 @@ describe('contested headwords are masked in math labels', () => {
     expect(`${slug}: ${bad.join(', ')}`).toBe(`${slug}: `);
   });
 
-  it('📌 THE EXPOSURE IS GONE SINCE 2026-08-30 — so the guard above is now VACUOUS, and that is DECLARED', () => {
+  it('📌 THE EXPOSURE IS BACK SINCE 2026-08-31 — so the guard above is NON-VACUOUS again', () => {
     // 🔴 THIS ASSERTION WAS INVERTED, NOT DELETED. It used to read
     // `expect(exposed.length).toBeGreaterThan(0)` — a non-vacuity guard on the test above,
     // because "no contested headword reaches a math label" passes trivially if no contested
@@ -122,6 +122,23 @@ describe('contested headwords are masked in math labels', () => {
       books.some((s) => mathLabels(s).size > 0),
       'no math labels found in any book'
     ).toBe(true);
-    expect(exposed).toEqual([]);
+    // 🔴 RE-INVERTED 2026-08-31 — BACK TO THE ORIGINAL NON-VACUITY FORM, because the
+    // population it guards is NON-EMPTY AGAIN. §C116 replaced the 2026-08-30 domain-scoping
+    // (which emptied it by deleting 1,632 of 2,021 terms) with a matching fix plus targeted
+    // removals, so the cross-domain terms — and with them one competition — are back:
+    // `si` = `alþjóðlega einingakerfið` (SI) vs `kísill` (silicon), on 21 `Si` math labels.
+    // ▶ THE GUARD ABOVE IS THEREFORE MEANINGFUL AGAIN, which is the whole reason to assert
+    // this direction: it proves "no contested headword resolves through the glossary" is
+    // being tested against something.
+    // ⚠️ AND THE EXPOSURE IS NOT A DEFECT TODAY — measured: all 21 occurrences are `Si`,
+    // which resolves to `english` (unchanged), because `resolveLabel` never case-folds a
+    // label under 3 chars while `buildGlossaryMap` lowercases its keys, so a 2-char
+    // mixed-case label can never hit the map. Lowercase `si` WOULD resolve to `kísill` and
+    // occurs 0 times. `math-label-map.json` now carries `"si": "si"` so that structural
+    // accident is stated rather than relied upon.
+    expect(
+      exposed.length,
+      'the exposure population is empty — the guard above is vacuous'
+    ).toBeGreaterThan(0);
   });
 });
