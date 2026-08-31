@@ -3,6 +3,7 @@ import {
   normalizeUnicode,
   repairSegTags,
   filterGlossaryForText,
+  SHORT_HEADWORD_MAX_LEN,
   loadEnvFile,
   discoverModules,
   validateMarkers,
@@ -380,6 +381,100 @@ describe('filterGlossaryForText', () => {
 });
 
 // ─── splitAtSegBoundaries ──────────────────────────────────────────
+
+/**
+ * §C82 L142 / §C116 — the short-headword matching rule.
+ *
+ * The defect: `filterGlossaryForText` was `lowerText.includes(sourceWord.toLowerCase())`, so
+ * `As → arsen` reached the paid MT wherever the letters *as* appeared AT ALL. Measured over
+ * efnafraedi-2e's 4.00M chars of `02-for-mt`: `Ti → títan` was sent for 218 of 219 files and
+ * `Se → selen` for 219 of 219; the rule below takes them to 9 and 21. Whole-corpus term-file
+ * pairs on the wire drop 37,311 → 27,549 (26.2%) with no long headword changing at all.
+ */
+describe('filterGlossaryForText — short headwords are case-sensitive and word-bounded', () => {
+  const G = (...pairs) => ({
+    domain: 'chemistry',
+    terms: pairs.map(([sourceWord, targetWord]) => ({ sourceWord, targetWord })),
+  });
+  const hits = (glossary, text) => {
+    const f = filterGlossaryForText(glossary, text);
+    return f ? f.terms.map((t) => t.sourceWord) : [];
+  };
+
+  it('does NOT send an element symbol for a lowercase English word — the founding defect', () => {
+    // "as" and "at" are ordinary English; `As`/`At` are arsenic and astatine.
+    expect(hits(G(['As', 'arsen'], ['At', 'astat']), 'Water, as we saw at the start.')).toEqual([]);
+  });
+
+  it('DOES send it when the symbol genuinely appears — the positive control', () => {
+    // Without this, the test above passes for a rule that matches nothing at all.
+    expect(hits(G(['As', 'arsen'], ['At', 'astat']), 'The sample contained As and At.')).toEqual([
+      'As',
+      'At',
+    ]);
+  });
+
+  it('does not fire on a symbol embedded in a longer token', () => {
+    // `Cl` inside NaCl is part of a formula, not a standalone label.
+    expect(hits(G(['Cl', 'klór']), 'Dissolve NaCl in water.')).toEqual([]);
+    expect(hits(G(['Cl', 'klór']), 'Cl is a halogen.')).toEqual(['Cl']); // control
+  });
+
+  it('does not fire on letters buried inside ordinary words', () => {
+    // `Ti` was reaching 218 of 219 corpus files this way (multiplication, ratio, …).
+    expect(
+      hits(G(['Ti', 'títan'], ['Se', 'selen'], ['ic', 'sýrukær']), 'The ratio increases.')
+    ).toEqual([]);
+  });
+
+  it('keeps lowercase short units, which are legitimate and word-bounded', () => {
+    expect(
+      hits(G(['kg', 'kíló'], ['pH', 'sýrustig'], ['nm', 'nanómetri']), 'Add 5 kg; the pH was 7.')
+    ).toEqual(['kg', 'pH']);
+  });
+
+  it('leaves LONG headwords on the historical substring path — inflections still match', () => {
+    // `\bbond\b` would not match "bonds". Widening the strict rule would DROP useful terms,
+    // which is the opposite failure from the one being fixed.
+    expect(
+      hits(G(['bond', 'tengi'], ['molecule', 'sameind']), 'Covalent bonds between molecules.')
+    ).toEqual(['bond', 'molecule']);
+  });
+
+  it('is case-INSENSITIVE for long headwords, as before', () => {
+    expect(hits(G(['acid', 'sýra']), 'ACID rain.')).toEqual(['acid']);
+  });
+
+  it('🔴 still matches a wrong-sense HOMOGRAPH — matching is not the whole defect', () => {
+    // `is → lófalægur` really is the English word "is", so no matching rule can exclude it.
+    // These are removed from the concept model instead (§C116). Pinning it here so a future
+    // reader does not assume this rule covers them.
+    expect(hits(G(['is', 'lófalægur'], ['no', 'blóð-']), 'There is no change.')).toEqual([
+      'is',
+      'no',
+    ]);
+  });
+
+  it('the boundary is a LENGTH, and it is asserted rather than left implicit', () => {
+    expect(SHORT_HEADWORD_MAX_LEN).toBe(3);
+    // 3 chars → strict: "arc" must not match inside "search".
+    expect(hits(G(['arc', 'bogi']), 'We search for it.')).toEqual([]);
+    expect(hits(G(['arc', 'bogi']), 'The arc is bright.')).toEqual(['arc']); // control
+    // 4 chars → historical substring path: "atom" still matches inside "atoms".
+    expect(hits(G(['atom', 'atóm']), 'Two atoms bond.')).toEqual(['atom']);
+  });
+
+  it('word boundaries use Unicode lookarounds, not \\b — an accented neighbour is not a boundary', () => {
+    // `\b` is ASCII-only, so it would treat í as a non-word char and fire mid-word.
+    expect(hits(G(['ml', 'millilítri']), 'Bættu við 5 mlítrum.')).toEqual([]);
+    expect(hits(G(['ml', 'millilítri']), 'Add 5 ml of water.')).toEqual(['ml']); // control
+  });
+
+  it('a headword carrying regex metacharacters is escaped, not compiled as a pattern', () => {
+    expect(() => hits(G(['a.c', 'x'], ['(b', 'y']), 'abc (b')).not.toThrow();
+    expect(hits(G(['a.c', 'x']), 'abc')).toEqual([]); // '.' must be literal
+  });
+});
 
 describe('splitAtSegBoundaries', () => {
   it('returns single chunk when under max size', () => {

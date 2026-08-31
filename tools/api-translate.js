@@ -1074,13 +1074,83 @@ function discoverChapters(bookDir) {
 // ─── Glossary Filtering ─────────────────────────────────────────────
 
 /**
+ * Headwords at or below this length are matched CASE-SENSITIVELY and at WORD
+ * BOUNDARIES. Longer ones keep the historical case-insensitive substring test.
+ *
+ * 🔴 WHY A LENGTH THRESHOLD RATHER THAN A BLANKET RULE — MEASURED, NOT CHOSEN BY TASTE.
+ * Over the 2,021-term efnafraedi-2e payload the headwords partition sharply by length:
+ *   len 2 → 67 headwords, **51 of them UPPERCASE** element symbols (As, At, Cl, Fe, Hg …)
+ *   len 3 → 51 headwords, only 4 uppercase; the rest are ordinary words (arc, bar, bit, atm)
+ *   len 4+ → 118+ headwords, **zero** uppercase
+ * The damage is concentrated in the short bucket because that is where a symbol collides
+ * with ordinary English: `As → arsen` fired wherever the letters *as* appeared AT ALL, so
+ * even a word-boundary count understated it several-fold. Widening the strict rule to long
+ * headwords would be a behaviour change with no measured defect behind it, and it would
+ * silently DROP useful terms (`\bbond\b` does not match "bonds"), which is the opposite
+ * failure. → CLAUDE.md's own prescription: "a word-boundary + case-sensitive rule for short
+ * headwords".
+ */
+export const SHORT_HEADWORD_MAX_LEN = 3;
+
+const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// Built once per headword, not once per chunk: `filterGlossaryForText` runs per API chunk
+// over the whole corpus, so constructing ~600 regexes per chunk would be the dominant cost.
+const shortHeadwordRe = new Map();
+
+/**
+ * Does `sourceWord` occur in `text`?
+ *
+ * ⚠️ THIS IS A FILTER OVER WHAT REACHES THE PAID MT, AND THE TWO ERROR DIRECTIONS ARE NOT
+ * SYMMETRIC. Sending a WRONG term is actively harmful — §C73 measured Málstaður OBEYING a
+ * bad entry on 2 of 5 occurrences within one segment set, and the wrong stem then propagated
+ * into every compound. Omitting a term the model already handles costs little, because the
+ * committed `02-mt-output` shows it rendering `sýrustig`, `efnatengi`, `koltvíoxíð` and
+ * `köfnunarefni` correctly with no glossary at all. So the strict side is the safe side —
+ * but only where a defect was measured, hence the length threshold above.
+ *
+ * ⚠️ WORD BOUNDARIES ARE SPELLED AS LOOKAROUNDS, NOT `\b`. `\b` is ASCII-only, so it treats
+ * a letter like `í` as a non-word character and would fire in the middle of a word carrying
+ * one. The source text here is English, but it is not guaranteed to be ASCII.
+ *
+ * @param {string} sourceWord  the headword, in its stored case (formatGlossary trims but
+ *                             never lowercases, so `As` arrives as `As`)
+ * @param {string} text        the source text
+ * @param {string} lowerText   `text.toLowerCase()`, hoisted by the caller
+ * @returns {boolean}
+ */
+export function headwordAppearsIn(sourceWord, text, lowerText) {
+  const hw = typeof sourceWord === 'string' ? sourceWord : '';
+  if (!hw) return false;
+  if (hw.length > SHORT_HEADWORD_MAX_LEN) return lowerText.includes(hw.toLowerCase());
+  let re = shortHeadwordRe.get(hw);
+  if (!re) {
+    // No `i` flag: case-sensitivity is the half that rescues the 51 uppercase symbols.
+    re = new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegex(hw)}(?![\\p{L}\\p{N}])`, 'u');
+    shortHeadwordRe.set(hw, re);
+  }
+  return re.test(text);
+}
+
+/**
  * Filter glossary to only include terms that appear in the source text.
  * Reduces payload from ~35KB (617 terms) to typically 2-5KB.
+ *
+ * 🔴 THE MATCH IS NOT A PLAIN SUBSTRING ANY MORE (§C82 L142). It was
+ * `lowerText.includes(t.sourceWord.toLowerCase())`, which selected `As → arsen` wherever the
+ * letters *as* appeared at all — putting element symbols and two-letter words on the paid
+ * wire against ordinary English prose. See `headwordAppearsIn`.
+ *
+ * ⚠️ THIS FIXES MATCHING ONLY, AND MATCHING IS NOT THE WHOLE DEFECT. A headword that IS an
+ * ordinary English word in its own right — `is → lófalægur`, `in → tomma`, `no → blóð-`,
+ * `at → marsnákaætt` — still matches correctly here, because "is" really is the word "is".
+ * Those are WRONG-SENSE HOMOGRAPHS, not a matching bug, and no rule in this file can fix
+ * them: they are removed from the concept model. → active register §C116.
  */
 export function filterGlossaryForText(glossary, text) {
   if (!glossary) return null;
   const lowerText = text.toLowerCase();
-  const filtered = glossary.terms.filter((t) => lowerText.includes(t.sourceWord.toLowerCase()));
+  const filtered = glossary.terms.filter((t) => headwordAppearsIn(t.sourceWord, text, lowerText));
   if (filtered.length === 0) return null;
   return { ...glossary, terms: filtered };
 }
