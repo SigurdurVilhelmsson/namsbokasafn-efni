@@ -1,10 +1,10 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-31T10:03:07.086Z",
+  "generated": "2026-08-31T10:13:11.509Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 2007,
-    "approved": 2007,
+    "total": 2006,
+    "approved": 2006,
     "ties": 299,
     "nominalTies": 119,
     "outOfScopeOnly": 1190,
@@ -22,16 +22,6 @@
       "alternatives": [
         "tvíyrki"
       ]
-    },
-    {
-      "english": "AM",
-      "icelandic": "víddarmótun",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4369,
-      "alternatives": []
     },
     {
       "english": "ATP",
