@@ -2970,7 +2970,19 @@ function buildTable(element, getSeg, originalCnxml, tableCellGaps, ctx = null) {
                       const paraPattern = new RegExp(
                         `(<para\\s+id="${paraInfo.paraId}"[^>]*>)[\\s\\S]*?(</para>)`
                       );
-                      newContent = newContent.replace(paraPattern, `$1${paraText}$2`);
+                      // ⚠️ FUNCTION REPLACER — same class as the table-title site
+                      // above, and this one is PRE-EXISTING. The replacement
+                      // interpolates TRANSLATED cell text, and `String.replace`
+                      // expands `$&`, `` $` ``, `$'`, `$$` and `$n` inside it,
+                      // so a cell translated as "kostar $5" or carrying `$&`
+                      // rewrites itself with the matched span. The `$1`/`$2`
+                      // here are deliberate capture references, which is exactly
+                      // why the string form looked correct; taking the groups as
+                      // ARGUMENTS keeps them while making the payload inert.
+                      newContent = newContent.replace(
+                        paraPattern,
+                        (_m, open, close) => `${open}${paraText}${close}`
+                      );
                     }
                   }
                   cellIdx++;
@@ -3553,7 +3565,15 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // all 149 source modules), so `exampleDirectTitleEl` is always null there and
   // the `isFirstPara` behaviour below is bit-for-bit what it always was.
   const exampleDirectTitleEl = directChildTitle(exampleEl);
-  if (exampleDirectTitleEl && element.title?.segmentId) {
+  // 🔴 GATE ON OWNERSHIP, NOT ON THE ELEMENT'S MERE EXISTENCE. An empty or
+  // self-closing `<title/>` is a direct-child ELEMENT that carries no segment,
+  // so the structure's title (if any) still came from a paragraph. Gating the
+  // isFirstPara branches on the element alone would suppress that paragraph's
+  // write and STRAND the title — measured exposure: organic source carries 20
+  // literal `<title/>`. Chemistry has none, so it was never at risk, which is
+  // exactly the kind of luck this repo does not rely on.
+  const exampleOwnsTitle = Boolean(exampleDirectTitleEl && element.title?.segmentId);
+  if (exampleOwnsTitle) {
     const translated = getSeg(element.title.segmentId);
     if (translated) {
       // Same idiom as buildNoteDom: clear and re-insert as CNXML, because a
@@ -3622,7 +3642,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         const textWithoutMedia = paraText.replace(/<media\b[^>]*>[\s\S]*?<\/media>/g, '').trim();
 
         let titleText = '';
-        if (!exampleDirectTitleEl && isFirstPara && element.title?.segmentId) {
+        if (!exampleOwnsTitle && isFirstPara && element.title?.segmentId) {
           titleText = getSeg(element.title.segmentId) || '';
         } else if (child.title?.segmentId) {
           titleText = getSeg(child.title.segmentId) || child.title.text || '';
@@ -3652,7 +3672,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
 
       let titleText = '';
-      if (!exampleDirectTitleEl && isFirstPara && element.title?.segmentId) {
+      if (!exampleOwnsTitle && isFirstPara && element.title?.segmentId) {
         titleText = getSeg(element.title.segmentId) || '';
       } else if (child.title?.segmentId) {
         titleText = getSeg(child.title.segmentId) || child.title.text || '';
@@ -4250,9 +4270,27 @@ function buildNote(element, getSeg, equations, originalCnxml, ctx) {
  * @param {Function} getSeg - segment lookup
  */
 function writeNestedNoteTitles(doc, element, getSeg) {
+  // ⚠️ TRAVERSE THE SHAPE, NOT ONE KEY. An earlier version walked `node.content`
+  // only, which made the `buildExerciseDom` call DEAD CODE that still read as
+  // coverage: `processExercise` builds `{type, id, problem, solution}` and has
+  // no `content` key at all, so the walker never descended into an exercise.
+  // It happened to matter not at all today — measured, ZERO titled notes sit
+  // inside an <exercise> in either book (chemistry 292 are all in <example>,
+  // organic has 3 and none is nested) — which is exactly why it would have
+  // stayed invisible. A gate that cannot fire is worse than no gate.
+  const childrenOf = (node) => {
+    if (!node || typeof node !== 'object') return [];
+    if (Array.isArray(node)) return node;
+    return [node.content, node.problem, node.solution, node.items]
+      .filter(Boolean)
+      .flatMap((v) => (Array.isArray(v) ? v : [v]));
+  };
+  const seen = new Set();
   const visit = (node) => {
-    const children = (node && node.content) || [];
-    if (!Array.isArray(children)) return;
+    if (!node || typeof node !== 'object') return;
+    if (seen.has(node)) return; // structures are trees today; cheap cycle guard
+    seen.add(node);
+    const children = childrenOf(node);
     for (const child of children) {
       if (child && child.type === 'note' && child.id && child.title?.segmentId) {
         const noteEl = doc.getElementById(child.id);

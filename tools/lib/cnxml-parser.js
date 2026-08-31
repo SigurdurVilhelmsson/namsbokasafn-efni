@@ -493,7 +493,18 @@ export function firstDirectChildTitle(content) {
       depth = Math.max(0, depth - 1);
       continue;
     }
-    if (selfClosing) continue;
+    if (selfClosing) {
+      // ⚠️ A SELF-CLOSING `<title/>` IS STILL A DIRECT-CHILD TITLE — it is just
+      // an empty one. Skipping it made this function disagree with its DOM
+      // counterpart `directChildTitle` on 5 real organic containers (organic
+      // source carries 20 literal `<title/>`; chemistry carries none), and two
+      // primitives documented as answering the same question that disagree on
+      // real data are worth nothing as a pair.
+      if (depth === 0 && tagName === 'title') {
+        return { inner: '', fullMatch: content.slice(match.index, match.index + full.length) };
+      }
+      continue;
+    }
     if (depth === 0 && tagName === 'title') {
       // CNXML titles do not nest, so the first `</title>` after the open tag is
       // this title's. (If that ever changes, this becomes a depth scan too.)

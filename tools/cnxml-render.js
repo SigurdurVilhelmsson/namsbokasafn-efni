@@ -1355,7 +1355,30 @@ function renderExample(example, context) {
   const allParas = extractElements(example.content, 'para');
   let exampleTitle = null;
 
+  // 🔴 §C82 L143/L144 — A DIRECT-CHILD <title> IS THE EXAMPLE'S OWN TITLE, AND
+  // THIS IS THE THIRD SITE OF THE SAME PRECEDENCE DEFECT. Extract and inject
+  // were fixed first; without this leg the example half of that fix is
+  // READER-INVISIBLE, which was measured rather than suspected: 102 organic
+  // example titles reached the injected CNXML and **0** reached the rendered
+  // HTML, because this function resolved the heading by the same para-donation
+  // heuristic and rendered "Strategy" (chemistry, whose titles really do live
+  // in the first para, was 300/300/300 throughout).
+  //
+  // The block walk cannot save it either — there is no `title` handler in
+  // renderBlockChildrenInOrder and the loud-seam guard whitelists 'title' as
+  // "handled by each container's own renderer", which was untrue of this one.
+  //
+  // ⚠️ Chemistry is unreachable through this branch: it has ZERO <title>
+  // elements parented by <example> (0 of 301, measured over all 149 modules).
+  const directTitle = firstDirectChildTitle(example.content);
+  let titleIsDirectChild = false;
+  if (directTitle) {
+    exampleTitle = directTitle.inner;
+    titleIsDirectChild = true;
+  }
+
   for (const para of allParas) {
+    if (titleIsDirectChild) break;
     // The leading <title> may carry inline markup (E<sub>a</sub>); matchLeadingTitle
     // captures it whole — the old [^<]+ pattern skipped such titles and fell through
     // to the next plain-text para-title.
@@ -1396,7 +1419,11 @@ function renderExample(example, context) {
     let contentWithoutTitle = para.content;
 
     if (title) {
-      if (!exampleTitleStripped && exampleTitle && title === exampleTitle) {
+      // ⚠️ A direct-child title was never IN a para, so nothing may be stripped
+      // from one on its account — and the equality test below must not run,
+      // because comparing two independently-editable strings is exactly what
+      // CLAUDE.md forbids as a decision procedure.
+      if (!titleIsDirectChild && !exampleTitleStripped && exampleTitle && title === exampleTitle) {
         // The example title — already rendered as the <h4> header; strip it.
         contentWithoutTitle = rest;
         exampleTitleStripped = true;

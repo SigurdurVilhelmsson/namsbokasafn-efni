@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import { extractSegments } from '../cnxml-extract.js';
 import { buildCnxml } from '../cnxml-inject.js';
 import { extractElements, firstDirectChildTitle } from '../lib/cnxml-parser.js';
+import { directChildTitle as domDirectChildTitle } from '../lib/cnxml-dom.js';
+import { DOMParser } from '@xmldom/xmldom';
 
 /**
  * §C82 L143/L144 — CORPUS ANCHORS FOR THE CONTAINER-TITLE RULE.
@@ -76,10 +78,47 @@ describe('§C82 L144 — corpus shape anchors', () => {
     expect(countDirectChildTitles(chemFiles, 'note')).toBe(364);
   });
 
-  it('organic has 102 example, 70 table and 66 figure direct-child titles', () => {
+  it('organic has 102 example, 72 table and 69 figure direct-child title ELEMENTS', () => {
+    // ⚠️ ELEMENTS, not segments — the two differ and the gap is load-bearing.
+    // Organic source carries 20 literal `<title/>`, and 2 of the 72 tables have
+    // an EMPTY direct-child title. An empty title is still a direct-child title
+    // element (the raw and DOM primitives must agree that it is, or they are
+    // worthless as a pair) but it produces NO segment, because addSegment
+    // returns null for empty text. The segment count is pinned separately
+    // below at 70; a change that collapses these two numbers into one is a
+    // regression in whichever direction it moves. Figures split the same way:
+    // 69 elements, 66 of them carrying text. The 5 empty titles (2 table +
+    // 3 figure) reconcile exactly with the raw/DOM disagreement this pair of
+    // primitives used to have.
     expect(countDirectChildTitles(orgFiles, 'example')).toBe(102);
-    expect(countDirectChildTitles(orgFiles, 'table')).toBe(70);
-    expect(countDirectChildTitles(orgFiles, 'figure')).toBe(66);
+    expect(countDirectChildTitles(orgFiles, 'table')).toBe(72);
+    expect(countDirectChildTitles(orgFiles, 'figure')).toBe(69);
+  });
+
+  it('the raw and DOM primitives AGREE on every corpus container', () => {
+    // Two primitives documented as answering the same question are worth
+    // nothing as a pair unless something cross-checks them. They DISAGREED on
+    // 5 real organic containers until 2026-08-31: the raw scanner skipped a
+    // self-closing `<title/>` while the DOM returned the element. Chemistry has
+    // none, so chemistry was safe by luck rather than by construction.
+    for (const [files, label] of [
+      [chemFiles, 'chemistry'],
+      [orgFiles, 'organic'],
+    ]) {
+      let raw = 0;
+      let dom = 0;
+      for (const f of files) {
+        const src = readFileSync(f, 'utf8');
+        const doc = new DOMParser({ onError: () => {} }).parseFromString(src, 'text/xml');
+        for (const tag of ['example', 'table', 'figure', 'note']) {
+          for (const el of extractElements(src, tag)) if (firstDirectChildTitle(el.content)) raw++;
+          const els = doc.getElementsByTagName(tag);
+          for (let i = 0; i < els.length; i++) if (domDirectChildTitle(els[i])) dom++;
+        }
+      }
+      expect(dom).toBeGreaterThan(0); // control: the DOM side actually found things
+      expect({ label, raw }).toEqual({ label, raw: dom });
+    }
   });
 });
 
@@ -209,5 +248,69 @@ describe('§C82 — a translated title is DATA, not a replacement pattern', () =
     expect(out).toContain('<title>Verð $&amp; kostnaður</title>');
     // The corruption signature: the matched span re-inserted inside itself.
     expect(out).not.toContain('Original Title');
+  });
+});
+
+describe('§C82 L149 — the exercise leg, pinned as it actually is', () => {
+  it('a titled <note> inside an <exercise> emits NO note-title segment at all', () => {
+    // Measured, and it corrects a plausible-looking assumption: the inject-side
+    // walker was given an <exercise> call on the theory that the enclosing
+    // builder preserves such notes. It cannot help — EXTRACTION never emits the
+    // segment. processExercise routes the note's paras into `solution` segments
+    // and drops the <title> entirely, so there is nothing for inject to write.
+    //
+    // Corpus exposure is ZERO and measured in both books: chemistry's 292
+    // nested titled notes are ALL inside <example>, organic has 3 and none is
+    // nested. That zero is why this stayed invisible, and why it is pinned here
+    // rather than fixed — a fix would be extraction-side, needs its own
+    // verification, and has no instance to verify against.
+    const src = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Doc</title>
+<content>
+<section id="s1"><title>S1</title>
+<exercise id="ex1">
+<problem id="pr1"><para id="p1">Question text.</para></problem>
+<solution id="so1"><para id="p2">Answer text.</para>
+<note id="n1"><title>Answer:</title><para id="p3">Note body.</para></note>
+</solution>
+</exercise>
+</section>
+</content>
+</document>`;
+    const { segments } = extractSegments(src);
+    // The absence, paired with a control proving the fixture IS being extracted.
+    expect(segments.filter((s) => s.type === 'note-title')).toEqual([]);
+    expect(segments.some((s) => s.text === 'Note body.')).toBe(true);
+  });
+});
+
+describe('§C82 — the same $-expansion class in buildTable’s multi-para cell', () => {
+  it('a translated table cell containing $& survives injection intact', () => {
+    // PRE-EXISTING, not introduced by the title work, and fixed here because it
+    // is the same class in the same file (CLAUDE.md: fix the class, not the
+    // line). The replacement at that site legitimately uses `$1`/`$2` capture
+    // references, which is exactly why the string form looked correct — the
+    // groups are now function ARGUMENTS, so they still work while the
+    // translated payload becomes inert.
+    const src = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Doc</title>
+<content>
+<section id="s1"><title>S1</title>
+<table id="t2" summary="s"><tgroup cols="1"><tbody>
+<row><entry><para id="c1">Cell one.</para><para id="c2">Cell two.</para></entry></row>
+</tbody></tgroup></table>
+</section>
+</content>
+</document>`;
+    const { segments, structure, equations, inlineAttrs } = extractSegments(src);
+    const cell = segments.find((s) => s.text === 'Cell one.');
+    expect(cell).toBeDefined(); // the fixture reaches the multi-para branch
+
+    const map = new Map(segments.map((s) => [s.id, s.text]));
+    map.set(cell.id, 'kostar $& krónur');
+    const out = buildCnxml(structure, map, equations, src, {}, inlineAttrs).cnxml;
+    expect(out).toContain('kostar $&amp; krónur');
+    // The corruption signature: the matched span re-inserted inside itself.
+    expect(out).not.toContain('Cell one.');
   });
 });
