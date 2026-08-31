@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-31T08:00:03.395Z",
+  "generated": "2026-08-31T10:03:07.086Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 2021,
-    "approved": 2021,
+    "total": 2007,
+    "approved": 2007,
     "ties": 299,
-    "nominalTies": 120,
-    "outOfScopeOnly": 1187,
+    "nominalTies": 119,
+    "outOfScopeOnly": 1190,
     "censusStrings": 94697
   },
   "terms": [
@@ -86,16 +86,6 @@
       "alternatives": []
     },
     {
-      "english": "As",
-      "icelandic": "arsen",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 140,
-      "alternatives": []
-    },
-    {
       "english": "Aspergillus",
       "icelandic": "fruggur",
       "status": "approved",
@@ -108,16 +98,6 @@
         "könnusveppir",
         "ýrumyglusveppir"
       ]
-    },
-    {
-      "english": "At",
-      "icelandic": "astat",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 141,
-      "alternatives": []
     },
     {
       "english": "Au",
@@ -411,16 +391,6 @@
       "domain": "physics",
       "position": 2,
       "conceptId": 2538,
-      "alternatives": []
-    },
-    {
-      "english": "OS",
-      "icelandic": "gamli stíll",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 926,
       "alternatives": []
     },
     {
@@ -1255,18 +1225,6 @@
       ]
     },
     {
-      "english": "alcohol",
-      "icelandic": "vínandi",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47622,
-      "alternatives": [
-        "alkóhól"
-      ]
-    },
-    {
       "english": "aldehyde",
       "icelandic": "aldehýð",
       "status": "approved",
@@ -1913,18 +1871,6 @@
       "alternatives": []
     },
     {
-      "english": "appendix",
-      "icelandic": "botnlangi",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 45556,
-      "alternatives": [
-        "botnlangatota"
-      ]
-    },
-    {
       "english": "approximation",
       "icelandic": "nálgun",
       "status": "approved",
@@ -2188,16 +2134,6 @@
       "alternatives": [
         "stjarnfræði"
       ]
-    },
-    {
-      "english": "at",
-      "icelandic": "marsnákaætt",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47692,
-      "alternatives": []
     },
     {
       "english": "atm",
@@ -6113,16 +6049,6 @@
       "alternatives": [
         "tól"
       ]
-    },
-    {
-      "english": "di",
-      "icelandic": "sprettfiskaætt",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 50558,
-      "alternatives": []
     },
     {
       "english": "diagnosis",
@@ -10126,16 +10052,6 @@
       ]
     },
     {
-      "english": "ic",
-      "icelandic": "sýrukær",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 53217,
-      "alternatives": []
-    },
-    {
       "english": "ice",
       "icelandic": "ís",
       "status": "approved",
@@ -10226,18 +10142,6 @@
       "position": 2,
       "conceptId": 1606,
       "alternatives": []
-    },
-    {
-      "english": "in",
-      "icelandic": "tomma",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 4018,
-      "alternatives": [
-        "þumlungur"
-      ]
     },
     {
       "english": "in photosynthesis",
@@ -11001,18 +10905,6 @@
       "position": 3,
       "conceptId": 50827,
       "alternatives": []
-    },
-    {
-      "english": "is",
-      "icelandic": "lófalægur",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 53213,
-      "alternatives": [
-        "lófa-"
-      ]
     },
     {
       "english": "isolated",
@@ -12863,18 +12755,6 @@
       "alternatives": []
     },
     {
-      "english": "molar",
-      "icelandic": "mól-",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 2,
-      "conceptId": 2429,
-      "alternatives": [
-        "á mól"
-      ]
-    },
-    {
       "english": "molar concentration",
       "icelandic": "mólstyrkur",
       "status": "approved",
@@ -13014,16 +12894,6 @@
       "domain": "chemistry",
       "position": 1,
       "conceptId": 5039,
-      "alternatives": []
-    },
-    {
-      "english": "moles",
-      "icelandic": "moldvörpur",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 54005,
       "alternatives": []
     },
     {
@@ -13507,18 +13377,6 @@
       "position": 3,
       "conceptId": 54249,
       "alternatives": []
-    },
-    {
-      "english": "no",
-      "icelandic": "blóð-",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47815,
-      "alternatives": [
-        "blóðs-"
-      ]
     },
     {
       "english": "noble gas",
@@ -16186,16 +16044,6 @@
       "domain": "biology",
       "position": 3,
       "conceptId": 56381,
-      "alternatives": []
-    },
-    {
-      "english": "py",
-      "icelandic": "graftar-",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 52088,
       "alternatives": []
     },
     {

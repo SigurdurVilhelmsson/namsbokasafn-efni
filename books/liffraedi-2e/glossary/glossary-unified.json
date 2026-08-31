@@ -1,13 +1,13 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T20:00:03.557Z",
+  "generated": "2026-08-31T10:03:07.342Z",
   "book": "liffraedi-2e",
   "stats": {
-    "total": 771,
-    "approved": 771,
-    "ties": 190,
-    "nominalTies": 126,
-    "outOfScopeOnly": 210,
+    "total": 767,
+    "approved": 767,
+    "ties": 191,
+    "nominalTies": 125,
+    "outOfScopeOnly": 205,
     "censusStrings": 13951
   },
   "terms": [
@@ -405,14 +405,14 @@
     },
     {
       "english": "alcohol",
-      "icelandic": "vínandi",
+      "icelandic": "alkóhól",
       "status": "approved",
       "reason": "head-form",
-      "domain": "biology",
-      "position": 1,
-      "conceptId": 47622,
+      "domain": "anatomy-physiology",
+      "position": 2,
+      "conceptId": 12106,
       "alternatives": [
-        "alkóhól"
+        "vínandi"
       ]
     },
     {
@@ -608,18 +608,6 @@
       "alternatives": []
     },
     {
-      "english": "appendix",
-      "icelandic": "botnlangi",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 1,
-      "conceptId": 45556,
-      "alternatives": [
-        "botnlangatota"
-      ]
-    },
-    {
       "english": "applied",
       "icelandic": "hagnýttur",
       "status": "approved",
@@ -708,16 +696,6 @@
       "alternatives": [
         "ósamhverfur"
       ]
-    },
-    {
-      "english": "at",
-      "icelandic": "marsnákaætt",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 1,
-      "conceptId": 47692,
-      "alternatives": []
     },
     {
       "english": "atom",
@@ -4427,18 +4405,6 @@
       ]
     },
     {
-      "english": "is",
-      "icelandic": "lófalægur",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 1,
-      "conceptId": 53213,
-      "alternatives": [
-        "lófa-"
-      ]
-    },
-    {
       "english": "isoleucine",
       "icelandic": "ísóleusín",
       "status": "approved",
@@ -5463,18 +5429,6 @@
       "position": 1,
       "conceptId": 54249,
       "alternatives": []
-    },
-    {
-      "english": "no",
-      "icelandic": "blóð-",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 1,
-      "conceptId": 47815,
-      "alternatives": [
-        "blóðs-"
-      ]
     },
     {
       "english": "non-self",

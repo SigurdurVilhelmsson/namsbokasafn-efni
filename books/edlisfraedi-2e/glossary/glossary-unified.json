@@ -1,36 +1,16 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-08-12T22:00:01.437Z",
+  "generated": "2026-08-31T10:03:05.840Z",
   "book": "edlisfraedi-2e",
   "stats": {
-    "total": 457,
-    "approved": 457,
+    "total": 454,
+    "approved": 454,
     "ties": 149,
     "nominalTies": 21,
-    "outOfScopeOnly": 136,
+    "outOfScopeOnly": 133,
     "censusStrings": 12137
   },
   "terms": [
-    {
-      "english": "As",
-      "icelandic": "arsen",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 140,
-      "alternatives": []
-    },
-    {
-      "english": "At",
-      "icelandic": "astat",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 141,
-      "alternatives": []
-    },
     {
       "english": "Jupiter",
       "icelandic": "Júpíter",
@@ -2114,18 +2094,6 @@
       "alternatives": [
         "hafa í för með sér",
         "leiða til"
-      ]
-    },
-    {
-      "english": "in",
-      "icelandic": "tomma",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "physics",
-      "position": 1,
-      "conceptId": 4018,
-      "alternatives": [
-        "þumlungur"
       ]
     },
     {
