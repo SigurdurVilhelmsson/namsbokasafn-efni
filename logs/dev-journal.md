@@ -318,3 +318,28 @@ Its sibling: **a prune has consumers beyond the directory it prunes** — the re
 entries in the subject index, which nothing had looked at.
 
 ---
+
+## 2026-08-31 11:00 - Shipped §C82 action ⓪ (E9/K3 advisory) and §C116 (glossary regression: root-caused, fixed durably, applied to prod); surveyed the remaining homograph hazards as §C117
+
+**Branch:** main
+**Modified:**
+
+(clean — everything committed and pushed)
+
+**Recent commits:**
+fdb8ecd0 docs(§C117): inventory the remaining homograph hazards; correct two CLAUDE.md prescriptions
+10d15b21 docs(CLAUDE.md): correct a prescription §C116 falsified, and record the shipped matcher rule
+462a00a4 §C82 action ⓪ (E9/K3 advisory) + §C116 (glossary regression: root cause, matcher fix, 19 removals applied to prod) (#424)
+
+**Why:** Action ⓪ was the planned work. Verifying it surfaced that the 2026-08-30
+glossary cleanup had been reverted overnight — it was applied as hand-run SQL to a
+table migration 047 rewrites from a file on every boot. Re-diagnosing it showed the
+original approach was also too blunt (1,632 of 2,021 terms dropped to fix 67), so it
+was replaced with a matching rule plus 19 targeted removals. §C117 surveys what that
+leaves, as an inventory rather than a fix, because the remedies split into three
+classes and merging them would delete correct terms.
+
+**Next:** ② organic container-title extractor fix → ③ the free 491-module loop at
+0 ISK → ④ buy chemistry ch15. §C117 is logged, not scheduled.
+
+---
