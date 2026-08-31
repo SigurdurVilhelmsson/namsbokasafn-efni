@@ -3,6 +3,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { extractSegments } from '../cnxml-extract.js';
 import { buildCnxml } from '../cnxml-inject.js';
+import { renderCnxmlToHtml } from '../cnxml-render.js';
 import { extractElements, firstDirectChildTitle } from '../lib/cnxml-parser.js';
 import { directChildTitle as domDirectChildTitle } from '../lib/cnxml-dom.js';
 import { DOMParser } from '@xmldom/xmldom';
@@ -312,5 +313,76 @@ describe('§C82 — the same $-expansion class in buildTable’s multi-para cell
     expect(out).toContain('kostar $&amp; krónur');
     // The corruption signature: the matched span re-inserted inside itself.
     expect(out).not.toContain('Cell one.');
+  });
+});
+
+describe('§C82 — an EMPTY direct-child title is an element, not an owned title', () => {
+  // Making `firstDirectChildTitle` report a self-closing `<title/>` (so it
+  // agrees with its DOM counterpart) made it TRUTHY, and truthiness leaked
+  // straight into the render leg. Measured before the guard: organic's two
+  // empty-titled tables (m00124, m00126) rendered an empty
+  // `<span class="table-title"></span>` AND — because a truthy title forces the
+  // caption — two <caption> elements carrying no `Tafla N` label at all, where
+  // there had been no caption. A fix creating its own defect.
+  const wrap = (
+    inner
+  ) => `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Doc</title>
+<content>
+<section id="s1"><title>S1</title>
+${inner}
+</section>
+</content>
+</document>`;
+  const pipeline = (inner) => {
+    const src = wrap(inner);
+    const { segments, structure, equations, inlineAttrs } = extractSegments(src);
+    const cn = buildCnxml(
+      structure,
+      new Map(segments.map((s) => [s.id, s.text])),
+      equations,
+      src,
+      {},
+      inlineAttrs
+    ).cnxml;
+    const r = renderCnxmlToHtml(cn, { moduleId: structure.moduleId });
+    return { segments, html: typeof r === 'string' ? r : r.html || '' };
+  };
+
+  it('an empty table title emits no span, and no title-only caption', () => {
+    const { html } = pipeline(
+      `<table id="t3" summary="s"><title/><tgroup cols="1"><tbody><row><entry>cell</entry></row></tbody></tgroup></table>`
+    );
+    expect(html).toContain('cell'); // control: the table rendered at all
+    expect(html).not.toContain('class="table-title"');
+    // The label-only caption is correct and pre-existing. What must not happen
+    // is a caption that exists ONLY because an empty title forced it.
+    for (const cap of html.match(/<caption>[\s\S]*?<\/caption>/g) || []) {
+      expect(cap).toContain('table-label');
+    }
+  });
+
+  it('extract and render AGREE on the example title when the direct one is empty', () => {
+    // Agreement between the two is the invariant; which one they pick (here the
+    // donated "Strategy", because an empty title owns nothing) is pre-existing.
+    //
+    // ⚠️ STATED PLAINLY SO NOBODY READS THIS AS COVERAGE IT IS NOT: this
+    // assertion does NOT currently discriminate renderExample's `.trim()`
+    // ownership guard. Mutation-checked both ways, on a self-closing `<title/>`
+    // AND an empty paired `<title></title>`: with the guard removed the output
+    // is identical, because renderExample's standalone fallback skips the empty
+    // title and recovers the same paragraph heading. The guard is kept because
+    // it makes render's predicate match buildExampleDom's — a real consistency
+    // win — not because anything here proves it. The TABLE guard beside it does
+    // discriminate (mutation: 1 failing test), and that is the one that had a
+    // measured defect behind it.
+    const { segments, html } = pipeline(
+      `<example id="e9"><title/><para id="q1"><title>Strategy</title> Work it out.</para></example>`
+    );
+    expect(html).toContain('Work it out.'); // control: the example rendered
+    const fromExtract = segments.find((s) => s.type === 'example-title');
+    const fromRender = html.match(/<h4>([\s\S]*?)<\/h4>/);
+    expect(Boolean(fromExtract)).toBe(Boolean(fromRender));
+    if (fromExtract) expect(fromRender[1].trim()).toBe(fromExtract.text);
   });
 });

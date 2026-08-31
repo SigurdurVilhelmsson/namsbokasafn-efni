@@ -1370,11 +1370,19 @@ function renderExample(example, context) {
   //
   // ⚠️ Chemistry is unreachable through this branch: it has ZERO <title>
   // elements parented by <example> (0 of 301, measured over all 149 modules).
+  //
+  // ⚠️ OWNERSHIP, NOT EXISTENCE — the same predicate buildExampleDom uses. A
+  // self-closing or empty `<title/>` is a direct-child ELEMENT that carries no
+  // title, and `firstDirectChildTitle` deliberately reports it (so the raw and
+  // DOM primitives agree). Treating it as ownership would leave `exampleTitle`
+  // empty while suppressing the para scan, and the standalone fallback below
+  // would then re-match a paragraph's heading — the donation defect restored by
+  // its own fix. 0 organic examples carry an empty title today; that is luck,
+  // and this predicate is what makes it not matter.
   const directTitle = firstDirectChildTitle(example.content);
-  let titleIsDirectChild = false;
-  if (directTitle) {
+  const titleIsDirectChild = Boolean(directTitle && directTitle.inner.trim());
+  if (titleIsDirectChild) {
     exampleTitle = directTitle.inner;
-    titleIsDirectChild = true;
   }
 
   for (const para of allParas) {
@@ -1683,10 +1691,16 @@ function renderTable(table, context) {
   // figure/img/table/ul/ol/li/em/strong/div.equation/a[href] are identical
   // before and after, because `span.table-title` is in no bucket and ch03's
   // five table titles carry no markup that would land in one.
+  // ⚠️ Same ownership predicate. Measured: without the `.trim()`, organic's two
+  // empty-titled tables (m00124, m00126) rendered
+  // `<span class="table-title"></span>` AND — because a truthy title forces the
+  // caption — two captions that carry no `Tafla N` label at all, i.e. an empty
+  // caption element where there had been none.
   const tableTitleHit = firstDirectChildTitle(table.content);
-  const tableTitleHtml = tableTitleHit
-    ? `<span class="table-title">${processInlineContent(tableTitleHit.inner, context)}</span>`
-    : '';
+  const tableTitleHtml =
+    tableTitleHit && tableTitleHit.inner.trim()
+      ? `<span class="table-title">${processInlineContent(tableTitleHit.inner, context)}</span>`
+      : '';
   if (tableNum || tableTitleHtml) {
     const label = tableNum ? `<span class="table-label">Tafla ${tableNum}</span>` : '';
     lines.push(
